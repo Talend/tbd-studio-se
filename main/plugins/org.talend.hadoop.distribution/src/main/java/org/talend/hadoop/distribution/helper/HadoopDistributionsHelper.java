@@ -24,7 +24,9 @@ import org.talend.hadoop.distribution.DistributionFactory;
 import org.talend.hadoop.distribution.component.HBaseComponent;
 import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
-import org.talend.hadoop.distribution.component.SparkComponent;
+import org.talend.hadoop.distribution.component.MRComponent;
+import org.talend.hadoop.distribution.component.SparkBatchComponent;
+import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.constants.Constant;
 
 /**
@@ -40,6 +42,13 @@ public class HadoopDistributionsHelper {
     public static final DistributionsManager HADOOP = new DistributionsManager(HadoopComponent.class.getName());
 
     /**
+     * for MapReduce Distributions.
+     * 
+     * @link MRComponent
+     */
+    public static final DistributionsManager MR = new DistributionsManager(MRComponent.class.getName());
+
+    /**
      * for HBase Distributions.
      * 
      * @link HBaseComponent
@@ -47,11 +56,18 @@ public class HadoopDistributionsHelper {
     public static final DistributionsManager HBASE = new DistributionsManager(HBaseComponent.class.getName());
 
     /**
-     * for Spark Distributions.
+     * for Spark Streaming Distributions.
      * 
-     * @link SparkComponent
+     * @link SparkStreamingComponent
      */
-    public static final DistributionsManager SPARK = new DistributionsManager(SparkComponent.class.getName());
+    public static final DistributionsManager SPARK_STREAMING = new DistributionsManager(SparkStreamingComponent.class.getName());
+
+    /**
+     * for Spark Batch Distributions.
+     * 
+     * @link SparkBatchComponent
+     */
+    public static final DistributionsManager SPARK_BATCH = new DistributionsManager(SparkBatchComponent.class.getName());
 
     /**
      * for Hive Distributions.
