@@ -60,13 +60,23 @@ public class HadoopDistributionService implements IHadoopDistributionService {
     }
 
     @Override
+    public IDistributionsManager getMapReduceDistributionManager() {
+        return HadoopDistributionsHelper.MR;
+    }
+
+    @Override
     public IDistributionsManager getHBaseDistributionManager() {
         return HadoopDistributionsHelper.HBASE;
     }
 
     @Override
-    public IDistributionsManager getSparkDistributionManager() {
-        return HadoopDistributionsHelper.SPARK;
+    public IDistributionsManager getSparkStreamingDistributionManager() {
+        return HadoopDistributionsHelper.SPARK_STREAMING;
+    }
+
+    @Override
+    public IDistributionsManager getSparkBatchDistributionManager() {
+        return HadoopDistributionsHelper.SPARK_BATCH;
     }
 
     @Override
