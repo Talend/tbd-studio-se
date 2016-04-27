@@ -21,7 +21,6 @@ import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
-import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
@@ -36,8 +35,8 @@ import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.Constant;
 import org.talend.hadoop.distribution.constants.hdinsight.IMicrosoftHDInsightDistribution;
 
-public class HDInsight32Distribution extends AbstractDistribution implements MRComponent, PigComponent, HiveComponent,
-        SparkBatchComponent, SparkStreamingComponent, IMicrosoftHDInsightDistribution {
+public class HDInsight32Distribution extends AbstractDistribution implements MRComponent, PigComponent, SparkBatchComponent,
+        SparkStreamingComponent, IMicrosoftHDInsightDistribution {
 
     public static final String VERSION = "MICROSOFT_HD_INSIGHT_3_2";
 
@@ -131,61 +130,6 @@ public class HDInsight32Distribution extends AbstractDistribution implements MRC
 
     @Override
     public boolean doSupportImpersonation() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportEmbeddedMode() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportStandaloneMode() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHive1() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHive2() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportTezForHive() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHBaseForHive() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportSSL() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportORCFormat() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportAvroFormat() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportParquetFormat() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportStoreAsParquet() {
         return false;
     }
 
