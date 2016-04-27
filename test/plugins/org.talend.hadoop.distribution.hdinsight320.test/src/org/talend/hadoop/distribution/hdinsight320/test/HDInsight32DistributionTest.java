@@ -12,7 +12,10 @@
 // ============================================================================
 package org.talend.hadoop.distribution.hdinsight320.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.talend.hadoop.distribution.EHadoopVersion;
@@ -20,7 +23,6 @@ import org.talend.hadoop.distribution.component.HBaseComponent;
 import org.talend.hadoop.distribution.component.HCatalogComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HadoopComponent;
-import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
@@ -61,18 +63,7 @@ public class HDInsight32DistributionTest {
         assertFalse(((PigComponent) distribution).pigVersionPriorTo_0_12());
         assertFalse(((PigComponent) distribution).doSupportHBase());
         assertFalse(((PigComponent) distribution).doSupportTezForPig());
-        assertFalse(((HiveComponent) distribution).doSupportEmbeddedMode());
-        assertFalse(((HiveComponent) distribution).doSupportStandaloneMode());
-        assertFalse(((HiveComponent) distribution).doSupportHive1());
-        assertFalse(((HiveComponent) distribution).doSupportHive2());
-        assertFalse(((HiveComponent) distribution).doSupportTezForHive());
-        assertFalse(((HiveComponent) distribution).doSupportHBaseForHive());
-        assertFalse(((HiveComponent) distribution).doSupportSSL());
-        assertTrue(((HiveComponent) distribution).doSupportORCFormat());
-        assertTrue(((HiveComponent) distribution).doSupportAvroFormat());
-        assertTrue(((HiveComponent) distribution).doSupportParquetFormat());
-        assertFalse(((HiveComponent) distribution).doSupportStoreAsParquet());
-        assertFalse(((HiveComponent) distribution).doSupportClouderaNavigator());
+        assertFalse(((MRComponent) distribution).doSupportClouderaNavigator());
         assertFalse(((SparkBatchComponent) distribution).isSpark14());
         assertTrue(((SparkBatchComponent) distribution).isSpark13());
         assertFalse(((SparkBatchComponent) distribution).doSupportDynamicMemoryAllocation());
