@@ -9,6 +9,7 @@
 		org.talend.core.model.metadata.IMetadataTable
 		org.talend.core.model.process.IConnectionCategory
 		java.util.List
+		java.util.Map
 "
 %>
 <%
@@ -22,6 +23,8 @@
 
 	String hashKeyName = ElementParameterParser.getValue(node, "__PARTITION_KEY__");
 	String rangeKeyName = ElementParameterParser.getValue(node, "__SORT_KEY__");
+	
+	List<Map<String, String>> nameMap = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__NAME_MAPPING__");
 	
 	IConnection inConn = null;
 	IMetadataTable metadata = null;
@@ -101,7 +104,22 @@
 					Object hashKeyValue_<%=cid%> = null;
 					Object rangeKeyValue_<%=cid%> = null;
 					
-					java.util.HashMap<String, Object> valueMap_<%=cid%> = new java.util.HashMap<String, Object>();					
+					java.util.HashMap<String, Object> valueMap_<%=cid%> = new java.util.HashMap<String, Object>();	
+					java.util.HashMap<String,String> nameMap_<%=cid%> = new java.util.HashMap<String,String>();	
+					java.util.HashMap<String,String> nameMapRevert_<%=cid%> = new java.util.HashMap<String,String>();						
+					
+					<%	
+					for(Map<String,String> subNameMap : nameMap)
+					{
+						String placeholder = subNameMap.get("PLACEHOLDER");
+						String name = subNameMap.get("NAME");
+						%>
+							nameMap_<%=cid%>.put("<%=placeholder%>", "<%=name%>");
+							nameMapRevert_<%=cid%>.put("<%=name%>","<%=placeholder%>");
+						<%
+					}
+					%>
+					
 					StringBuffer updateExpressionBuffer_<%=cid%> = new StringBuffer();
 					updateExpressionBuffer_<%=cid%>.append("set ");
 					<%
@@ -132,8 +150,13 @@
 								updateExpressionBuffer_<%=cid%>.append(", ");
 							}
 							
-							updateExpressionBuffer_<%=cid%>.append("<%=column.getOriginalDbColumnName() %>  =:<%=column.getOriginalDbColumnName() %>");
-							
+							if(nameMapRevert_<%=cid%>.containsKey("<%=column.getOriginalDbColumnName() %>")){
+								updateExpressionBuffer_<%=cid%>.append(nameMapRevert_<%=cid%>.get("<%=column.getOriginalDbColumnName() %>"));
+								updateExpressionBuffer_<%=cid%>.append(" =:<%=column.getOriginalDbColumnName() %>");
+							}else{
+								updateExpressionBuffer_<%=cid%>.append("<%=column.getOriginalDbColumnName() %>  =:<%=column.getOriginalDbColumnName() %>");
+							}
+																			
 							valueMap_<%=cid%>.put(":<%=column.getOriginalDbColumnName() %>", <%=conn.getName() %>.<%=column.getLabel() %>);
 							countValue_<%=cid%>++;
 							
@@ -151,6 +174,10 @@
 					
 					updateItemSpec_<%=cid%> = updateItemSpec_<%=cid%>.withUpdateExpression(updateExpressionBuffer_<%=cid%>.toString()).withValueMap(valueMap_<%=cid%>);	
 					
+					if(nameMap_<%=cid%>.size()>0)
+					{
+						updateItemSpec_<%=cid%> = updateItemSpec_<%=cid%>.withNameMap(nameMap_<%=cid%>);
+					}
 					<%
 					
   				}
