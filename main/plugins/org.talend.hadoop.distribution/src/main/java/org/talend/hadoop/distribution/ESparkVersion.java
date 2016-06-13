@@ -13,11 +13,14 @@
 package org.talend.hadoop.distribution;
 
 /**
- * Enumeration that describes the Spark version.
+ * Describes the spark version.
+ * 
+ * The enum order is used to determine whether a spark version is later than another.
  */
 public enum ESparkVersion {
     SPARK_1_3,
     SPARK_1_4,
     SPARK_1_5,
-    SPARK_1_6;
+    SPARK_1_6,
+    SPARK_2_0;
 }
