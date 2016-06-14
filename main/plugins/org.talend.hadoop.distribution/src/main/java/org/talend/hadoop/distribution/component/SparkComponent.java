@@ -48,6 +48,11 @@ public interface SparkComponent extends MRComponent {
     public boolean isSpark16();
 
     /**
+     * @return true if the Spark version included in the distribution is 2.0.
+     */
+    public boolean isSpark20();
+
+    /**
      * @return true if the distribution supports the Spark Standalone mode.
      */
     public boolean doSupportSparkStandaloneMode();

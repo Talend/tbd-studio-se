@@ -110,7 +110,14 @@ public abstract class AbstractDistribution {
     // Only used if SparkComponent is implemented
     public boolean isSpark16() {
         ESparkVersion vers = getSparkVersion();
-        return (vers == ESparkVersion.SPARK_1_6 || (vers != ESparkVersion.SPARK_1_3 && vers != ESparkVersion.SPARK_1_4 && vers != ESparkVersion.SPARK_1_5));
+        return (vers == ESparkVersion.SPARK_1_6 || (vers != ESparkVersion.SPARK_2_0 && vers != ESparkVersion.SPARK_1_4
+                && vers != ESparkVersion.SPARK_1_5 && vers != ESparkVersion.SPARK_1_5));
+    }
+
+    // Only used if SparkComponent is implemented
+    public boolean isSpark20() {
+        ESparkVersion vers = getSparkVersion();
+        return (vers == ESparkVersion.SPARK_2_0);
     }
 
     public boolean doSupportTezForPig() {
