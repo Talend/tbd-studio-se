@@ -655,10 +655,10 @@
                         MVN="mvn:org.talend.libraries/netty-common-4.0.33.Final/6.0.0"
                         UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/netty-common-4.0.33.Final.jar"
                         NAME="netty-common-4.0.33.Final.jar" />  
-                    <IMPORT MODULE="talend-cassandra-1.0.jar"
-                        MVN="mvn:org.talend.libraries/talend-cassandra-1.0/6.0.0"
-                        UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/talend-cassandra-1.0.jar"
-                        NAME="talend-cassandra-1.0.jar" />                     
+                    <IMPORT MODULE="talend-cassandra-1.1.jar"
+                        MVN="mvn:org.talend.libraries/talend-cassandra-1.1/6.0.0"
+                        UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/talend-cassandra-1.1.jar"
+                        NAME="talend-cassandra-1.1.jar" />                     
                 </IMPORTS>
             </IMPORTS>
         </IMPORTS>
