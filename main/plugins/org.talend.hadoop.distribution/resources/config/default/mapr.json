@@ -10,6 +10,10 @@
     "CLOUDERA_NAVIGATOR_URL":"http://localhost:7187/api/v8/",
     "CLOUDERA_NAVIGATOR_METADATA_URL":"http://localhost:7187/api/v8/metadata/plugin",
     "CLOUDERA_NAVIGATOR_CLIENT_URL":"http://localhost",
+    "MAPRTICKET_CLUSTER":"demo.mapr.com",
+    "MAPRTICKET_DURATION":"86400L",
+    "MAPR_HOME_DIR":"/opt/mapr",
+    "HADOOP_LOGIN":"kerberos",
     "HIVE":{
         "EMBEDDED":{
             "PORT":9083

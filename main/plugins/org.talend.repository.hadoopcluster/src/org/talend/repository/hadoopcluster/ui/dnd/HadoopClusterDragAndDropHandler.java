@@ -98,6 +98,16 @@ public class HadoopClusterDragAndDropHandler extends AbstractDragAndDropServiceH
             return getRepositoryValueOfStringType(hcConnection, StringUtils.trimToNull(hcConnection.getMaprTCluster()));
         } else if (EHDFSRepositoryToComponent.MAPRTICKET_DURATION.getRepositoryValue().equals(value)) {
             return hcConnection.getMaprTDuration();
+        } else if (EHDFSRepositoryToComponent.SET_MAPR_HOME_DIR.getRepositoryValue().equals(value)) {
+            return hcConnection.isSetMaprTHomeDir();
+        } else if (EHDFSRepositoryToComponent.MAPR_HOME_DIR.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection, StringUtils.trimToNull(hcConnection.getMaprTHomeDir()));
+        } else if (EHDFSRepositoryToComponent.SET_HADOOP_LOGIN.getRepositoryValue().equals(value)) {
+            return hcConnection.isSetHadoopLogin();
+        } else if (EHDFSRepositoryToComponent.HADOOP_LOGIN.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection, StringUtils.trimToNull(hcConnection.getMaprTHadoopLogin()));
+        } else if (EHDFSRepositoryToComponent.PRELOAD_AUTHENTIFICATION.getRepositoryValue().equals(value)) {
+            return hcConnection.isPreloadAuthentification();
         } else if (EHDFSRepositoryToComponent.LOCAL.getRepositoryValue().equals(value)) {
             return false;
         } else if (EHDFSRepositoryToComponent.MAPREDUCE.getRepositoryValue().equals(value)) {
@@ -320,6 +330,31 @@ public class HadoopClusterDragAndDropHandler extends AbstractDragAndDropServiceH
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setMaprTDuration(value);
+            }
+        } else if (EHDFSRepositoryToComponent.SET_MAPR_HOME_DIR.getRepositoryValue().equals(param.getRepositoryValue())) {
+            String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
+            if (value != null) {
+                hcConnection.setSetMaprTHomeDir(Boolean.valueOf(value));
+            }
+        } else if (EHDFSRepositoryToComponent.MAPR_HOME_DIR.getRepositoryValue().equals(param.getRepositoryValue())) {
+            String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
+            if (value != null) {
+                hcConnection.setMaprTHomeDir(value);
+            }
+        } else if (EHDFSRepositoryToComponent.SET_HADOOP_LOGIN.getRepositoryValue().equals(param.getRepositoryValue())) {
+            String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
+            if (value != null) {
+                hcConnection.setSetHadoopLogin(Boolean.valueOf(value));
+            }
+        } else if (EHDFSRepositoryToComponent.HADOOP_LOGIN.getRepositoryValue().equals(param.getRepositoryValue())) {
+            String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
+            if (value != null) {
+                hcConnection.setMaprTHadoopLogin(value);
+            }
+        } else if (EHDFSRepositoryToComponent.PRELOAD_AUTHENTIFICATION.getRepositoryValue().equals(param.getRepositoryValue())) {
+            String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
+            if (value != null) {
+                hcConnection.setPreloadAuthentification(Boolean.valueOf(value));
             }
         }
     }

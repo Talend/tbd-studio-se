@@ -83,6 +83,16 @@ public class HCRepositoryUtil {
         hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_USEKEYTAB);
         hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_KEYTAB_PRINCIPAL);
         hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_KEYTAB);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_USE_MAPRTICKET);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_USERNAME);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_MAPRTICKET_PASSWORD);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_MAPRTICKET_CLUSTER);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_MAPRTICKET_DURATION);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_HIVE_AUTHENTICATION_USE_MAPRTICKET);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_HIVE_AUTHENTICATION_USERNAME);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_HIVE_AUTHENTICATION_MAPRTICKET_PASSWORD);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_HIVE_AUTHENTICATION_MAPRTICKET_CLUSTER);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_HIVE_AUTHENTICATION_MAPRTICKET_DURATION);
     }
 
     /**
@@ -469,8 +479,30 @@ public class HCRepositoryUtil {
                             ConnectionContextHelper.getParamValueOffContext(hcConnection, hcConnection.getKeytab()));
                 }
             }
+            // hbase/hive
+            map.put(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_USE_MAPRTICKET,
+                    String.valueOf(hcConnection.isEnableMaprT()));
+            map.put(ConnParameterKeys.CONN_PARA_KEY_HIVE_AUTHENTICATION_USE_MAPRTICKET,
+                    String.valueOf(hcConnection.isEnableMaprT()));
+            if (hcConnection.isEnableMaprT()) {
+                map.put(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_USERNAME,
+                        ConnectionContextHelper.getParamValueOffContext(hcConnection, hcConnection.getUserName()));
+                map.put(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_MAPRTICKET_PASSWORD,
+                        ConnectionContextHelper.getParamValueOffContext(hcConnection, hcConnection.getMaprTPassword()));
+                map.put(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_MAPRTICKET_CLUSTER,
+                        ConnectionContextHelper.getParamValueOffContext(hcConnection, hcConnection.getMaprTCluster()));
+                map.put(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_MAPRTICKET_DURATION,
+                        ConnectionContextHelper.getParamValueOffContext(hcConnection, hcConnection.getMaprTDuration()));
+                map.put(ConnParameterKeys.CONN_PARA_KEY_HIVE_AUTHENTICATION_USERNAME,
+                        ConnectionContextHelper.getParamValueOffContext(hcConnection, hcConnection.getUserName()));
+                map.put(ConnParameterKeys.CONN_PARA_KEY_HIVE_AUTHENTICATION_MAPRTICKET_PASSWORD,
+                        ConnectionContextHelper.getParamValueOffContext(hcConnection, hcConnection.getMaprTPassword()));
+                map.put(ConnParameterKeys.CONN_PARA_KEY_HIVE_AUTHENTICATION_MAPRTICKET_CLUSTER,
+                        ConnectionContextHelper.getParamValueOffContext(hcConnection, hcConnection.getMaprTCluster()));
+                map.put(ConnParameterKeys.CONN_PARA_KEY_HIVE_AUTHENTICATION_MAPRTICKET_DURATION,
+                        ConnectionContextHelper.getParamValueOffContext(hcConnection, hcConnection.getMaprTDuration()));
+            }
         }
-
         return map;
     }
 
@@ -632,5 +664,28 @@ public class HCRepositoryUtil {
         if (defaultClouderaClientUrl != null) {
             connection.setClouderaNaviClientUrl(defaultClouderaClientUrl);
         }
+
+        String defaultMaprticket_Cluster = hiveVersion.getDefaultConfig(distribution,
+                EHadoopProperties.MAPRTICKET_CLUSTER.getName());
+        if (defaultMaprticket_Cluster != null) {
+            connection.setMaprTCluster(defaultMaprticket_Cluster);
+        }
+
+        String defaultMaprticket_Duration = hiveVersion.getDefaultConfig(distribution,
+                EHadoopProperties.MAPRTICKET_DURATION.getName());
+        if (defaultMaprticket_Duration != null) {
+            connection.setMaprTDuration(defaultMaprticket_Duration);
+        }
+
+        String defaultMapr_Home_Dir = hiveVersion.getDefaultConfig(distribution, EHadoopProperties.MAPR_HOME_DIR.getName());
+        if (defaultMapr_Home_Dir != null) {
+            connection.setMaprTHomeDir(defaultMapr_Home_Dir);
+        }
+
+        String defaultHadoop_Login = hiveVersion.getDefaultConfig(distribution, EHadoopProperties.HADOOP_LOGIN.getName());
+        if (defaultHadoop_Login != null) {
+            connection.setMaprTHadoopLogin(defaultHadoop_Login);
+        }
+        connection.setPreloadAuthentification(true);
     }
 }
