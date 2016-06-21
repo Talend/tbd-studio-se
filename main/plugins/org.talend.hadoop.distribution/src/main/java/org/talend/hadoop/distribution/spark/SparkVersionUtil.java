@@ -16,6 +16,7 @@ import java.util.List;
 
 import org.talend.core.model.process.IElementParameter;
 import org.talend.core.model.process.INode;
+import org.talend.core.model.process.IProcess;
 import org.talend.hadoop.distribution.DistributionFactory;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.component.SparkComponent;
@@ -111,10 +112,11 @@ public class SparkVersionUtil {
     }
 
     /**
-     * Strongly coupled to a tSparkConfiguration node (in Spark Batch or Streaming), this method returns the
-     * {@link ESparkVersion} depending on some parameters value coming from the tSparkConfiguration.
+     * This method returns the {@link ESparkVersion} depending on some parameters value coming from the
+     * tSparkConfiguration.
      * 
-     * @param sparkConfig - current tsparkConfiguration Node of the job.
+     * @param sparkConfig Either a Spark configuration node direction (which is the most effective), or any node in a
+     * spark process that can be used to find a Spark configuration node.
      * @return the {@link ESparkVersion} corresponding to the different parameters.
      */
     public static ESparkVersion getSparkVersion(INode sparkConfig) {
@@ -141,8 +143,49 @@ public class SparkVersionUtil {
             return getSparkVersion(isLocalMode, sparkLocalVersion, distribution, sparkCustomVersion, sparkDistrib);
         }
 
-        List<? extends INode> sparkConfigs = sparkConfig.getProcess().getNodesOfType("tSparkConfiguration");
+        // Try to get the version from any compatible node in the process.
+        List<? extends INode> sparkConfigs = sparkConfig.getProcess().getNodesOfType("tSparkConfiguration"); //$NON-NLS-1$
         if (sparkConfigs != null && sparkConfigs.size() > 0 && sparkConfig != sparkConfigs.get(0)) {
+            return getSparkVersion(sparkConfigs.get(0));
+        }
+        return null;
+    }
+
+    /**
+     * This method returns the {@link ESparkVersion} depending on some parameters value coming from the
+     * tSparkConfiguration.
+     * 
+     * @param sparkConfig Either a Spark configuration node direction (which is the most effective), or any node in a
+     * spark process that can be used to find a Spark configuration node.
+     * @return the {@link ESparkVersion} corresponding to the different parameters.
+     */
+    public static ESparkVersion getSparkVersion(IProcess process) {
+        IElementParameter sparkLocalModeParameter = process.getElementParameter("SPARK_LOCAL_MODE"); //$NON-NLS-1$
+        IElementParameter sparkLocalVersionParameter = process.getElementParameter("SPARK_LOCAL_VERSION"); //$NON-NLS-1$
+        IElementParameter sparkCustomVersionParameter = process.getElementParameter("SPARK_API_VERSION"); //$NON-NLS-1$
+        IElementParameter distributionParameter = process.getElementParameter("DISTRIBUTION"); //$NON-NLS-1$
+        IElementParameter versionParameter = process.getElementParameter("SPARK_VERSION"); //$NON-NLS-1$
+        if (sparkLocalModeParameter != null && sparkLocalVersionParameter != null && sparkCustomVersionParameter != null
+                && distributionParameter != null && versionParameter != null) {
+            boolean isLocalMode = (Boolean) sparkLocalModeParameter.getValue();
+            String sparkLocalVersion = (String) sparkLocalVersionParameter.getValue();
+            String sparkCustomVersion = (String) sparkCustomVersionParameter.getValue();
+            String distribution = (String) distributionParameter.getValue();
+            String version = (String) versionParameter.getValue();
+
+            SparkComponent sparkDistrib = null;
+            try {
+                sparkDistrib = (SparkComponent) DistributionFactory.buildDistribution(distribution, version);
+            } catch (java.lang.Exception e) {
+                e.printStackTrace();
+            }
+
+            return getSparkVersion(isLocalMode, sparkLocalVersion, distribution, sparkCustomVersion, sparkDistrib);
+        }
+
+        // Try to get the version from any compatible node in the process.
+        List<? extends INode> sparkConfigs = process.getNodesOfType("tSparkConfiguration"); //$NON-NLS-1$
+        if (sparkConfigs != null && sparkConfigs.size() > 0) {
             return getSparkVersion(sparkConfigs.get(0));
         }
         return null;
