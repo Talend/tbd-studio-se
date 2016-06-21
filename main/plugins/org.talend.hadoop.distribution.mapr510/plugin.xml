@@ -574,6 +574,23 @@
             <library id="avro-1.7.4.jar" />
         </libraryNeededGroup>
         
+        <!-- Sqoop Parquet group -->
+        <!-- Kite jars are defined in HDP240 -->
+        <!-- jackson jars are defined localprovider plugin.xml -->
+        <!-- parquet-avro jar is defined in HDP240 -->
+        <libraryNeededGroup
+                description="Sqoop Parquet libraries for MapR 5.1.0"
+                id="SQOOP-PARQUET-LIB-MAPR510"
+                name="SQOOP-PARQUET-LIB-MAPR510">
+            <library id="kite-data-core-1.0.0.jar"/>
+            <library id="kite-data-mapreduce-1.0.0.jar"/>
+            <library id="kite-hadoop-compatibility-1.0.0.jar"/>
+            <library id="jackson-databind-2.2.3.jar"/>
+            <library id="jackson-core-2.2.3.jar"/>
+            <library id="parquet-hadoop-bundle-1.6.0.jar" />
+            <library id="parquet-avro-1.4.1.jar"/>
+        </libraryNeededGroup>
+        
     </extension>
     <extension
           point="org.talend.core.runtime.classloader_provider">

@@ -502,7 +502,7 @@
 						props_<%=cid%>.put("mapreduce.jobhistory.principal", <%=jobHistoryPrincipal%>);
 <%
 					}
-					if((!isCustom && pigDistrib.doSupportMapRTicket() && useMapRTicket)) {
+					if ((isCustom || pigDistrib.doSupportMapRTicket()) && useMapRTicket) {
                         %>
                         System.setProperty("pname", "MapRLogin");
                         System.setProperty("https.protocols", "TLSv1.2");
@@ -515,7 +515,7 @@
 						org.apache.hadoop.security.UserGroupInformation.loginUserFromKeytab(<%=userPrincipal%>, <%=keytabPath%>);
 <%
 					}
-					if ((!isCustom && pigDistrib.doSupportMapRTicket() && useMapRTicket)) {
+					if ((isCustom || pigDistrib.doSupportMapRTicket()) && useMapRTicket) {
                         %>
                         com.mapr.login.client.MapRLoginHttpsClient maprLogin_<%=cid%> = new com.mapr.login.client.MapRLoginHttpsClient();
                         maprLogin_<%=cid%>.getMapRCredentialsViaKerberos(<%=mapRTicketCluster%>, <%=mapRTicketDuration%>);
@@ -523,7 +523,7 @@
                     }
 				} else {
                     // Mapr ticket
-                    if((!isCustom && pigDistrib.doSupportMapRTicket() && useMapRTicket)) {
+				    if ((isCustom || pigDistrib.doSupportMapRTicket()) && useMapRTicket) {
                         passwordFieldName = "__MAPRTICKET_PASSWORD__";
                         %>
                         System.setProperty("pname", "MapRLogin");

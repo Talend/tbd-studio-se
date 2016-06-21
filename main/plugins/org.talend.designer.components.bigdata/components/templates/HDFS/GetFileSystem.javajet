@@ -83,7 +83,7 @@ if(!useExistingConnection) { // if we don't use an existing connection, we creat
 	
 	if(!((!isCustom && hdfsDistrib.doSupportKerberos() && useKrb) || (isCustom && "KRB".equals(auth)))) {
 		user = ElementParameterParser.getValue(node, "__USERNAME__");
-		if((!isCustom && hdfsDistrib.doSupportMapRTicket() && useMapRTicket)) {
+		if ((isCustom || hdfsDistrib.doSupportMapRTicket()) && useMapRTicket) {
             String passwordFieldName = "__MAPRTICKET_PASSWORD__";
             %>
             System.setProperty("pname", "MapRLogin");
@@ -107,7 +107,7 @@ if(!useExistingConnection) { // if we don't use an existing connection, we creat
             <%
         }
 	} else {
-        if((!isCustom && hdfsDistrib.doSupportMapRTicket() && useMapRTicket)) {
+	    if ((isCustom || hdfsDistrib.doSupportMapRTicket()) && useMapRTicket) {
             %>
             System.setProperty("pname", "MapRLogin");
             System.setProperty("https.protocols", "TLSv1.2");
@@ -123,7 +123,7 @@ if(!useExistingConnection) { // if we don't use an existing connection, we creat
 			org.apache.hadoop.security.UserGroupInformation.loginUserFromKeytab(<%=userPrincipal%>, <%=keytabPath%>);
 <%
 		}
-        if ((!isCustom && hdfsDistrib.doSupportMapRTicket() && useMapRTicket)) {
+        if ((isCustom || hdfsDistrib.doSupportMapRTicket()) && useMapRTicket) {
             %>
             com.mapr.login.client.MapRLoginHttpsClient maprLogin_<%=cid%> = new com.mapr.login.client.MapRLoginHttpsClient();
             maprLogin_<%=cid%>.getMapRCredentialsViaKerberos(<%=mapRTicketCluster%>, <%=mapRTicketDuration%>);

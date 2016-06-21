@@ -220,4 +220,9 @@ public class CustomDistribution extends AbstractDistribution implements HDFSComp
     public boolean doSupportS3() {
         return true;
     }
+
+    @Override
+    public boolean doSupportMapRTicket() {
+        return true;
+    }
 }

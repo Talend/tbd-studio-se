@@ -122,7 +122,7 @@
 		}
 		
 		if((!isCustom && hdfsDistrib.doSupportKerberos() && useKrb) || (isCustom && "KRB".equals(auth))) {
-            if((!isCustom && hdfsDistrib.doSupportMapRTicket() && useMapRTicket)) {
+            if ((isCustom || hdfsDistrib.doSupportMapRTicket()) && useMapRTicket) {
                 %>
                 System.setProperty("pname", "MapRLogin");
                 System.setProperty("https.protocols", "TLSv1.2");
@@ -138,14 +138,14 @@
 				org.apache.hadoop.security.UserGroupInformation.loginUserFromKeytab(<%=userPrincipal%>, <%=keytabPath%>);
 <%
 			}
-            if ((!isCustom && hdfsDistrib.doSupportMapRTicket() && useMapRTicket)) {
+            if ((isCustom || hdfsDistrib.doSupportMapRTicket()) && useMapRTicket) {
                 %>
                 com.mapr.login.client.MapRLoginHttpsClient maprLogin_<%=cid%> = new com.mapr.login.client.MapRLoginHttpsClient();
                 maprLogin_<%=cid%>.getMapRCredentialsViaKerberos(<%=mapRTicketCluster%>, <%=mapRTicketDuration%>);
                 <%
             }
 		} else { // no kerberos
-            if((!isCustom && hdfsDistrib.doSupportMapRTicket() && useMapRTicket)) {
+		    if ((isCustom || hdfsDistrib.doSupportMapRTicket()) && useMapRTicket) {
                 String passwordFieldName = "__MAPRTICKET_PASSWORD__";
                 %>
                 System.setProperty("pname", "MapRLogin");

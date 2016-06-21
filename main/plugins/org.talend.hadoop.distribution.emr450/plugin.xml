@@ -754,6 +754,23 @@
                 name="SPARK-FLUME-LIB-MRREQUIRED-EMR_4_5_0_LATEST">
             <library id="spark-streaming-flume-emr450-latest"/>        
         </libraryNeededGroup>
+        
+        <!-- Sqoop Parquet group -->
+        <!-- Kite jars are defined in HDP240 -->
+        <!-- jackson jars are defined localprovider plugin.xml -->
+        <libraryNeededGroup
+                description="Sqoop Parquet libraries for EMR 4.5.0"
+                id="SQOOP-PARQUET-LIB-EMR_4_5_0_LATEST"
+                name="SQOOP-PARQUET-LIB-EMR_4_5_0_LATEST">
+            <library id="kite-data-core-1.0.0.jar"/>
+            <library id="kite-data-mapreduce-1.0.0.jar"/>
+            <library id="kite-hadoop-compatibility-1.0.0.jar"/>
+            <library id="jackson-databind-2.2.3.jar"/>
+            <library id="jackson-core-2.2.3.jar"/>
+            <library id="parquet-hadoop-bundle-1.6.0.jar" />
+            <library id="parquet-avro-emr450-latest"/>
+        </libraryNeededGroup>
+        
     </extension>
     
     <extension

@@ -337,4 +337,9 @@ public class MapR510Distribution extends AbstractMapRDistribution implements HDF
         return true;
     }
 
+    @Override
+    public boolean doSupportParquetOutput() {
+        return true;
+    }
+
 }

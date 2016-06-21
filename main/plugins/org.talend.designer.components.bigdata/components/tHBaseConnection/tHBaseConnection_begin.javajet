@@ -111,7 +111,7 @@
 		}
 
 		if(hbaseDistrib.doSupportKerberos() && useKrb){
-            if((!isCustom && hbaseDistrib.doSupportMapRTicket() && useMapRTicket)) {
+            if ((isCustom || hbaseDistrib.doSupportMapRTicket()) && useMapRTicket) {
                 %>
                 System.setProperty("pname", "MapRLogin");
                 System.setProperty("https.protocols", "TLSv1.2");
@@ -131,7 +131,7 @@
 				org.apache.hadoop.security.UserGroupInformation.loginUserFromKeytab(<%=userPrincipal%>, <%=keytabPath%>);
 <%
 			}
-            if ((!isCustom && hbaseDistrib.doSupportMapRTicket() && useMapRTicket)) {
+            if ((isCustom || hbaseDistrib.doSupportMapRTicket()) && useMapRTicket) {
                 %>
                 com.mapr.login.client.MapRLoginHttpsClient maprLogin_<%=cid%> = new com.mapr.login.client.MapRLoginHttpsClient();
                 maprLogin_<%=cid%>.getMapRCredentialsViaKerberos(<%=mapRTicketCluster%>, <%=mapRTicketDuration%>);
@@ -139,7 +139,7 @@
             }
 		} else {
 		    // MapR ticket
-            if((!isCustom && hbaseDistrib.doSupportMapRTicket() && useMapRTicket)) {
+		    if ((isCustom || hbaseDistrib.doSupportMapRTicket()) && useMapRTicket) {
                 String passwordFieldName = "__MAPRTICKET_PASSWORD__";
                 %>
                 System.setProperty("pname", "MapRLogin");

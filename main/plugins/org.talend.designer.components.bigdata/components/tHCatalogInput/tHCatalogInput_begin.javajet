@@ -131,7 +131,7 @@
 %>
 		org.apache.cxf.jaxrs.client.WebClient.getConfig(client_<%=cid%>).getOutInterceptors().add(kbInterceptor_<%=cid%>);
 <%
-	} else if((!isCustom && hcatDistrib.doSupportMapRTicket() && useMapRTicket)) {
+	} else if ((isCustom || hcatDistrib.doSupportMapRTicket()) && useMapRTicket) {
 	    if (ElementParameterParser.canEncrypt(node, passwordFieldName)) {
 %>
 	        final String decryptedPassword_client_<%=cid%> = routines.system.PasswordEncryptUtil.decryptPassword(<%=ElementParameterParser.getEncryptedValue(node, passwordFieldName)%>);
@@ -246,7 +246,7 @@
 		conf_<%=cid%>.set("fs.default.name", namenode_<%=cid%>);
 <%
 		if(useKerberos) {
-            if((!isCustom && hcatDistrib.doSupportMapRTicket() && useMapRTicket)) {
+		    if ((isCustom || hcatDistrib.doSupportMapRTicket()) && useMapRTicket) {
                 %>
                 System.setProperty("pname", "MapRLogin");
                 System.setProperty("https.protocols", "TLSv1.2");
@@ -262,7 +262,7 @@
 				org.apache.hadoop.security.UserGroupInformation.loginUserFromKeytab(<%=userPrincipal%>, <%=keytabPath%>);
 <%
 			}
-            if ((!isCustom && hcatDistrib.doSupportMapRTicket() && useMapRTicket)) {
+            if ((isCustom || hcatDistrib.doSupportMapRTicket()) && useMapRTicket) {
                 %>
                 com.mapr.login.client.MapRLoginHttpsClient maprLogin_<%=cid%> = new com.mapr.login.client.MapRLoginHttpsClient();
                 maprLogin_<%=cid%>.getMapRCredentialsViaKerberos(<%=mapRTicketCluster%>, <%=mapRTicketDuration%>);
@@ -270,7 +270,7 @@
             }
 		} else {
 		    // MapR Ticket
-		    if((!isCustom && hcatDistrib.doSupportMapRTicket() && useMapRTicket)) {
+		    if ((isCustom || hcatDistrib.doSupportMapRTicket()) && useMapRTicket) {
                 %>
                 System.setProperty("pname", "MapRLogin");
                 System.setProperty("https.protocols", "TLSv1.2");

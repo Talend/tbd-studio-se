@@ -157,7 +157,7 @@
 			String userPrincipal = ElementParameterParser.getValue(node, "__PRINCIPAL__");
 			String keytabPath = ElementParameterParser.getValue(node, "__KEYTAB_PATH__");
 
-            if((!isCustom && hiveDistrib.doSupportMapRTicket() && useMapRTicket)) {
+            if ((isCustom || hiveDistrib.doSupportMapRTicket()) && useMapRTicket) {
                 %>
                 System.setProperty("pname", "MapRLogin");
                 System.setProperty("https.protocols", "TLSv1.2");
@@ -170,7 +170,7 @@
 				org.apache.hadoop.security.UserGroupInformation.loginUserFromKeytab(<%=userPrincipal%>, <%=keytabPath%>);
 <%
 			}
-            if ((!isCustom && hiveDistrib.doSupportMapRTicket() && useMapRTicket)) {
+			if ((isCustom || hiveDistrib.doSupportMapRTicket()) && useMapRTicket) {
                 %>
                 com.mapr.login.client.MapRLoginHttpsClient maprLogin_<%=uniqueNameComponent%> = new com.mapr.login.client.MapRLoginHttpsClient();
                 maprLogin_<%=uniqueNameComponent%>.getMapRCredentialsViaKerberos(<%=mapRTicketCluster%>, <%=mapRTicketDuration%>);
@@ -179,7 +179,7 @@
 		}
 		
 		// Mapr ticket
-        if((!isCustom && !securedStandaloneHive2 && !securedEmbedded && hiveDistrib.doSupportMapRTicket() && useMapRTicket)) {
+        if((!securedStandaloneHive2 && !securedEmbedded && (isCustom || hiveDistrib.doSupportMapRTicket()) && useMapRTicket)) {
             passwordFieldName = "__MAPRTICKET_PASSWORD__";
             %>
             System.setProperty("pname", "MapRLogin");
