@@ -61,7 +61,7 @@ public class CustomDistribution extends AbstractDistribution implements HDFSComp
 
     @Override
     public boolean doSupportKerberos() {
-        return false;
+        return true;
     }
 
     @Override

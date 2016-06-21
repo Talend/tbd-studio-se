@@ -139,6 +139,7 @@ if(isUseSpeedParallel && isUseAdditionParams){
 <%if(useTarget || useQuery){%>, "--target-dir", <%=target%><%}%>
 <%if(fileFormat.equals("sequencefile")){%>, "--as-sequencefile"<%}%>
 <%if(fileFormat.equals("avrofile")){%>, "--as-avrodatafile"<%}%>
+<%if(fileFormat.equals("parquetfile")){%>, "--as-parquetfile"<%}%>
 <%if(mysqlDelimiters){%>, "--mysql-delimiters"<%}%>
 <%if(useMappers){%>, "--num-mappers", <%=mappers%><%}%>
 <%if(useSplit){%>, "--split-by", <%=split%><%}%>

@@ -80,6 +80,7 @@ import org.talend.repository.model.hadoopcluster.HadoopClusterPackage;
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#isSetHadoopLogin <em>Set Hadoop Login</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#getMaprTHadoopLogin <em>Mapr THadoop Login</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#isPreloadAuthentification <em>Preload Authentification</em>}</li>
+ *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#getConfFile <em>Conf File</em>}</li>
  * </ul>
  * </p>
  *
@@ -925,6 +926,26 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * @ordered
      */
     protected boolean preloadAuthentification = PRELOAD_AUTHENTIFICATION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getConfFile() <em>Conf File</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getConfFile()
+     * @generated
+     * @ordered
+     */
+    protected static final byte[] CONF_FILE_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getConfFile() <em>Conf File</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getConfFile()
+     * @generated
+     * @ordered
+     */
+    protected byte[] confFile = CONF_FILE_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -1835,6 +1856,27 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
+    public byte[] getConfFile() {
+        return confFile;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setConfFile(byte[] newConfFile) {
+        byte[] oldConfFile = confFile;
+        confFile = newConfFile;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONF_FILE, oldConfFile, confFile));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -1939,6 +1981,8 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
                 return getMaprTHadoopLogin();
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__PRELOAD_AUTHENTIFICATION:
                 return isPreloadAuthentification();
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONF_FILE:
+                return getConfFile();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -2082,6 +2126,9 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__PRELOAD_AUTHENTIFICATION:
                 setPreloadAuthentification((Boolean)newValue);
                 return;
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONF_FILE:
+                setConfFile((byte[])newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -2223,6 +2270,9 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__PRELOAD_AUTHENTIFICATION:
                 setPreloadAuthentification(PRELOAD_AUTHENTIFICATION_EDEFAULT);
                 return;
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONF_FILE:
+                setConfFile(CONF_FILE_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -2321,6 +2371,8 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
                 return MAPR_THADOOP_LOGIN_EDEFAULT == null ? maprTHadoopLogin != null : !MAPR_THADOOP_LOGIN_EDEFAULT.equals(maprTHadoopLogin);
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__PRELOAD_AUTHENTIFICATION:
                 return preloadAuthentification != PRELOAD_AUTHENTIFICATION_EDEFAULT;
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONF_FILE:
+                return CONF_FILE_EDEFAULT == null ? confFile != null : !CONF_FILE_EDEFAULT.equals(confFile);
         }
         return super.eIsSet(featureID);
     }
@@ -2419,6 +2471,8 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
         result.append(maprTHadoopLogin);
         result.append(", preloadAuthentification: ");
         result.append(preloadAuthentification);
+        result.append(", confFile: ");
+        result.append(confFile);
         result.append(')');
         return result.toString();
     }

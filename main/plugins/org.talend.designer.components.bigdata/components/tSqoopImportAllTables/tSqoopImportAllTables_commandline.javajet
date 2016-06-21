@@ -68,6 +68,7 @@ String[] cmd_<%=cid %> = new String[] {"sqoop", "import-all-tables", "--connect"
 }%>
 <%if(fileFormat.equals("sequencefile")){%>, "--as-sequencefile"<%}%>
 <%if(fileFormat.equals("avrofile")){%>, "--as-avrodatafile"<%}%>
+<%if(fileFormat.equals("parquetfile")){%>, "--as-parquetfile"<%}%>
 <%if(mysqlDelimiters){%>, "--mysql-delimiters"<%}%>
 <%if(useMappers){%>, "--num-mappers", <%=mappers%><%}%>
 <%

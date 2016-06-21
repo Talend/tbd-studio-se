@@ -30,7 +30,6 @@ import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.graphics.Image;
 import org.talend.commons.exception.ExceptionHandler;
-import org.talend.commons.utils.PasswordEncryptUtil;
 import org.talend.core.GlobalServiceRegister;
 import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
@@ -172,6 +171,9 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
                 .getParameter(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_MAPRTICKET_DURATION);
         Long desiredTicketDurInSecs = 86400L;
         if (mapRTicketDuration != null && StringUtils.isNotBlank(mapRTicketDuration)) {
+            if (mapRTicketDuration.endsWith("L")) {//$NON-NLS-1$ 
+                mapRTicketDuration = mapRTicketDuration.substring(0, mapRTicketDuration.length() - 1);
+            }
             desiredTicketDurInSecs = Long.parseLong(mapRTicketDuration);
         }
         Object mapRClientConfig = ReflectionUtils.newInstance(
@@ -183,12 +185,11 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
                             mapRClientConfig,
                             "getMapRCredentialsViaKerberos", new Object[] { ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketCluster), desiredTicketDurInSecs }); //$NON-NLS-1$
         } else {
-            String decryptedPassword = PasswordEncryptUtil.encryptPassword(mapRTicketPassword);
             ReflectionUtils.invokeMethod(mapRClientConfig, "setCheckUGI", new Object[] { false }, boolean.class);//$NON-NLS-1$
             ReflectionUtils
                     .invokeMethod(
                             mapRClientConfig,
-                            "getMapRCredentialsViaPassword", new Object[] { ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketCluster), ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketUsername), decryptedPassword, desiredTicketDurInSecs }); //$NON-NLS-1$
+                            "getMapRCredentialsViaPassword", new Object[] { ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketCluster), ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketUsername), ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketPassword), desiredTicketDurInSecs }); //$NON-NLS-1$
         }
     }
 

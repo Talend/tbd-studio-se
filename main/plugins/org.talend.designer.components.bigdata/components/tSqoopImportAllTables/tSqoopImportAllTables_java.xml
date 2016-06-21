@@ -264,6 +264,8 @@
 				<ITEM NAME="sequencefile" VALUE="sequencefile" />
 				<ITEM NAME="avrofile" VALUE="avrofile"
 					NOT_SHOW_IF="(USE_JAVAAPI=='true' AND DISTRIBUTION!='CUSTOM' AND (DISTRIB[DISTRIBUTION, DB_VERSION].isHadoop1[]))" />
+				<ITEM NAME="parquetfile" VALUE="parquetfile" 
+					SHOW_IF="(DISTRIB[DISTRIBUTION, DB_VERSION].doSupportParquetOutput[])" />
 			</ITEMS>
 		</PARAMETER>
 

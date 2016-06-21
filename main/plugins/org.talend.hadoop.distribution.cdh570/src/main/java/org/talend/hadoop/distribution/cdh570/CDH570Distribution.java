@@ -379,4 +379,9 @@ public class CDH570Distribution extends AbstractDistribution implements HDFSComp
     public boolean doSupportSSLwithKerberos() {
         return true;
     }
+
+    @Override
+    public boolean doSupportParquetOutput() {
+        return true;
+    }
 }

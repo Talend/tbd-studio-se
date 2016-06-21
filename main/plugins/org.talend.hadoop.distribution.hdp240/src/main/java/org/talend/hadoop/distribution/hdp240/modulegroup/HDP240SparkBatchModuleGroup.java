@@ -20,6 +20,7 @@ import org.talend.hadoop.distribution.condition.BasicExpression;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
+import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.hdp240.HDP240Constant;
 
@@ -34,7 +35,8 @@ public class HDP240SparkBatchModuleGroup {
         hs.add(new DistributionModuleGroup(HDP240Constant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
         hs.add(new DistributionModuleGroup(HDP240Constant.HDFS_MODULE_GROUP.getModuleName(), false, condition));
         hs.add(new DistributionModuleGroup(HDP240Constant.MAPREDUCE_MODULE_GROUP.getModuleName(), false, condition));
-
+        ComponentCondition useAtlas = new SimpleComponentCondition(new BasicExpression(MRConstant.USE_ATLAS));
+        hs.add(new DistributionModuleGroup(HDP240Constant.ATLAS_HDP_2_4.getModuleName(), true, useAtlas));
         return hs;
     }
 

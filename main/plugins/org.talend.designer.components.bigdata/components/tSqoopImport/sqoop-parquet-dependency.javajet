@@ -1,0 +1,53 @@
+<%@ jet 
+%>
+<%
+	// Register jars to handle the Parquet format.
+	
+	boolean parquetGenerateAddJarCodeForAll = "parquetfile".equals(fileFormat);
+	boolean parquetEmptyStringBuilder = true; // true when we don't import any dependency in the libjars.
+		
+	java.util.List<String> parquetJarsToRegister = null;
+	java.util.List<String> parquetJars = null;
+	if(parquetGenerateAddJarCodeForAll) {
+		String[] commandLine = new String[] {"<command>"};
+		try {
+			commandLine = ProcessorUtilities.getCommandLine("win32",true, processId, "",org.talend.designer.runprocess.IProcessor.NO_STATISTICS,org.talend.designer.runprocess.IProcessor.NO_TRACES, new String[]{});
+		} catch (ProcessorException e) {
+			e.printStackTrace();
+		}
+	
+		parquetJarsToRegister = new java.util.ArrayList();
+		parquetJarsToRegister.add("kite-data-core-");
+		parquetJarsToRegister.add("kite-data-mapreduce-");
+		parquetJarsToRegister.add("kite-hadoop-compatibility-");
+		parquetJarsToRegister.add("jackson-databind-");
+		parquetJarsToRegister.add("jackson-core-");
+		parquetJarsToRegister.add("parquet-");
+	
+		for (int j = 0; j < commandLine.length; j++) {
+			if(commandLine[j].contains("jar")) {
+				parquetJars = java.util.Arrays.asList(commandLine[j].split(";"));
+				break;
+			}
+		}
+	}
+		
+	if(parquetJarsToRegister!=null && parquetJars!=null) {
+%>
+		routines.system.GetJarsToRegister getJarsToRegister_<%=cid %> = new routines.system.GetJarsToRegister();
+		java.lang.StringBuilder sb_<%=cid%> = new java.lang.StringBuilder();
+<%
+		
+		for(int i=0; i<parquetJarsToRegister.size(); i++) {
+			String parquetJarToRegister = parquetJarsToRegister.get(i);
+			for(int j=0; j<parquetJars.size(); j++) {
+				if(parquetJars.get(j).contains(parquetJarToRegister)) {
+					emptyStringBuilder = false;
+%>
+					sb_<%=cid%>.append(getJarsToRegister_<%=cid %>.replaceJarPaths("<%=parquetJars.get(j)%>", "file:///") + ",");
+<%
+				}
+			}
+		}
+	}
+%>

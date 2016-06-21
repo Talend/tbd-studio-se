@@ -354,6 +354,34 @@
             name="avro-ipc-1.7.3.jar"
             mvn_uri="mvn:org.talend.libraries/avro-ipc-1.7.3/6.1.0">
         </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.hdp240"
+            id="kite-data-mapreduce-1.0.0"
+            name="kite-data-mapreduce-1.0.0.jar"
+            mvn_uri="mvn:org.talend.libraries/kite-data-mapreduce-1.0.0/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.hdp240"
+            id="kite-hadoop-compatibility-1.0.0"
+            name="kite-hadoop-compatibility-1.0.0.jar"
+            mvn_uri="mvn:org.talend.libraries/kite-hadoop-compatibility-1.0.0/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.hdp240"
+            id="kite-data-core-1.0.0"
+            name="kite-data-core-1.0.0.jar"
+            mvn_uri="mvn:org.talend.libraries/kite-data-core-1.0.0/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.hdp240"
+            id="parquet-avro-1.4.1"
+            name="parquet-avro-1.4.1.jar"
+            mvn_uri="mvn:org.talend.libraries/parquet-avro-1.4.1/6.1.0">
+        </libraryNeeded>
                                    
         <!-- Groups -->
         
@@ -901,7 +929,60 @@
             <library id="flume-ng-sdk-HDP_2_4"/>
             <library id="flume-ng-core-HDP_2_4"/>            
             <library id="avro-ipc-HDP_2_4"/>            
-        </libraryNeededGroup>     
+        </libraryNeededGroup>
+        
+        <!-- group of atlas libraries -->
+        <libraryNeededGroup
+                description="Atlas lineage API"
+                id="ATLAS_HDP_2_4"
+                name="ATLAS_HDP_2_4"  >
+             <library id="talend-lineage-api-0.1.0" />
+             <library id="atlas-client-0.5-incubating" />
+             <library id="atlas-typesystem-0.5-incubating" />
+             <library id="json4s-native_2.10-3.2.11" />
+             <library id="json4s-core_2.10-3.2.11" />
+             <library id="json4s-ast_2.10-3.2.11" />
+             <library id="jettison-1.3.4.jar" />
+             <library id="stax-api-1.0.1.jar" />
+             <library id="scala-compiler-2.10.4" />
+             <library id="scala-reflect-2.10.4" />
+             <library id="jline-2.10.4" />
+             <library id="jansi-1.4" />
+             <library id="scala-library-2.10.4" />
+             <library id="scala-actors-2.10.4" />
+             <library id="scalap-2.10.4" />
+             <library id="quasiquotes_2.10-2.0.1" />
+             <library id="nscala-time_2.10-1.6.0" />
+             <library id="joda-convert-1.2" />
+             <library id="config-1.2.1" />
+             <library id="gson-2.3.1" />
+             <library id="fastutil-6.5.16" />
+             <library id="guice-4.0" />
+             <library id="javax.inject-1.jar" />
+             <library id="commons-lang3-3.4" />
+             <library id="hadoop-common-HDP_2_4" />
+             <library id="hadoop-annotations-HDP_2_4" />
+             <library id="jersey-client-1.9.jar" />
+             <library id="paranamer-2.3.jar"/>
+             <library id="commons-configuration-1.6.jar"/>
+             <library id="slf4j-api-1.7.10.jar"/>
+             <library id="slf4j-log4j12-1.7.10.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- Sqoop Parquet group -->
+        <libraryNeededGroup
+                description="Sqoop Parquet libraries for HDP 2.4"
+                id="SQOOP-PARQUET-LIB-HDP_2_4"
+                name="SQOOP-PARQUET-LIB-HDP_2_4">
+            <library id="kite-data-core-1.0.0.jar"/>
+            <library id="kite-data-mapreduce-1.0.0.jar"/>
+            <library id="kite-hadoop-compatibility-1.0.0.jar"/>
+            <library id="jackson-databind-2.2.3.jar"/>
+            <library id="jackson-core-2.2.3.jar"/>
+            <library id="parquet-hadoop-bundle-1.6.0.jar" />
+            <library id="parquet-avro-1.4.1.jar"/>
+        </libraryNeededGroup>
+             
     </extension>
     <extension
           point="org.talend.core.runtime.classloader_provider">

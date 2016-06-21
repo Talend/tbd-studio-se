@@ -35,4 +35,9 @@ public interface SqoopComponent extends MRComponent {
      */
     public boolean doJavaAPISqoopImportAllTablesSupportExcludeTable();
 
+    /**
+     * @return true if the distribution does support parquet output format (sqoop >= 1.4.6)
+     */
+    public boolean doSupportParquetOutput();
+
 }

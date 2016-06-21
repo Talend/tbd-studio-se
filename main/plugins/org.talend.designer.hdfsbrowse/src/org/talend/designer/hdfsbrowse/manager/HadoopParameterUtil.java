@@ -78,8 +78,8 @@ public class HadoopParameterUtil {
         return port;
     }
 
-    public static String getConfsJarDefaultName(String itemId) {
-        return CONFS_JAR_PREFIX.concat(itemId).concat(CONFS_JAR_EXT);
+    public static String getConfsJarDefaultName(String uid) {
+        return CONFS_JAR_PREFIX.concat(uid).concat(CONFS_JAR_EXT);
     }
 
 }

@@ -45,7 +45,7 @@ public class CustomDistributionTest {
         assertEquals(CustomDistribution.DISTRIBUTION_NAME, distribution.getDistribution());
         assertNull(distribution.getVersion());
         assertNull(distribution.getHadoopVersion());
-        assertFalse(distribution.doSupportKerberos());
+        assertTrue(distribution.doSupportKerberos());
         assertTrue(distribution.doSupportUseDatanodeHostname());
         assertFalse(distribution.doSupportGroup());
         assertTrue(distribution.doSupportOldImportMode());

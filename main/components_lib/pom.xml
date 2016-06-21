@@ -11,7 +11,7 @@
 	<url>http://www.talend.com</url>
 
 	<modules>
-		<module>talend-cloudera-navigator-api</module>
+		<module>talend-lineage-api</module>
 	</modules>
 
 

@@ -13,9 +13,13 @@
 package org.talend.repository.hadoopcluster.conf;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashSet;
+import java.util.Set;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.wizard.IWizard;
@@ -24,11 +28,13 @@ import org.eclipse.ui.PlatformUI;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.commons.utils.io.FilesUtils;
 import org.talend.core.GlobalServiceRegister;
+import org.talend.core.ILibraryManagerService;
 import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.hadoop.conf.EHadoopConfProperties;
 import org.talend.core.hadoop.conf.EHadoopConfs;
 import org.talend.core.model.general.ILibrariesService;
 import org.talend.core.model.general.Project;
+import org.talend.core.model.properties.Item;
 import org.talend.core.model.repository.ResourceModelUtils;
 import org.talend.designer.hdfsbrowse.manager.HadoopParameterUtil;
 import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
@@ -60,6 +66,8 @@ public class HadoopConfsUtils {
     public final static String CONFS_SITES_FOLDER = "sites"; //$NON-NLS-1$
 
     public final static String CONFS_JAR_FOLDER = "jar"; //$NON-NLS-1$
+
+    private static Set<String> cachedDeployedJars = new HashSet<>();
 
     public static void openHadoopConfsWizard(AbstractHadoopForm parentForm, HadoopClusterConnectionItem connectionItem,
             boolean creation) {
@@ -104,7 +112,7 @@ public class HadoopConfsUtils {
         return confFolder.getAbsolutePath();
     }
 
-    public static void buildAndDeployConfsJar(String dir, String jarName) {
+    public static void buildAndDeployConfsJar(HadoopClusterConnectionItem connectionItem, String dir, String jarName) {
         try {
             File parentFile = new File(getConfsJarTempFolder());
             File jarFile = new File(parentFile, jarName);
@@ -113,19 +121,80 @@ public class HadoopConfsUtils {
             jarBuilder.setIncludeDir(null);
             jarBuilder.setExcludeDir(null);
             jarBuilder.buildJar();
+            HadoopClusterConnection connection = (HadoopClusterConnection) connectionItem.getConnection();
+            connection.setConfFile(FileUtils.readFileToByteArray(jarFile));
             if (GlobalServiceRegister.getDefault().isServiceRegistered(ILibrariesService.class)) {
                 ILibrariesService service = (ILibrariesService) GlobalServiceRegister.getDefault().getService(
                         ILibrariesService.class);
-                service.deployLibrary(jarFile.toURI().toURL());
+                if (service != null) {
+                    service.deployLibrary(jarFile.toURI().toURL());
+                    addToDeployedCache(connectionItem, jarName);
+                }
             }
         } catch (Exception e) {
             ExceptionHandler.process(e);
         }
     }
 
+    public static synchronized void removeFromDeployedCache(Item item, String jarName) {
+        cachedDeployedJars.remove(getCachedJarKey(item, jarName));
+    }
+
+    public static synchronized void addToDeployedCache(Item item, String jarName) {
+        cachedDeployedJars.add(getCachedJarKey(item, jarName));
+    }
+
+    public static synchronized boolean containsInDeployedCache(Item item, String jarName) {
+        return cachedDeployedJars.contains(getCachedJarKey(item, jarName));
+    }
+
+    private static String getCachedJarKey(Item item, String jarName) {
+        return item.getProperty().getId() + jarName;
+    }
+
     public static String getConfsJarDefaultName(HadoopClusterConnectionItem connectionItem) {
-        String itemId = connectionItem.getProperty().getId();
-        return HadoopParameterUtil.getConfsJarDefaultName(itemId);
+        return getConfsJarDefaultName(connectionItem, true);
+    }
+
+    public static String getConfsJarDefaultName(HadoopClusterConnectionItem connectionItem, boolean createJarIfNotExist) {
+        String connLabel = connectionItem.getProperty().getLabel();
+        String confsJarDefaultName = HadoopParameterUtil.getConfsJarDefaultName(connLabel);
+        if (createJarIfNotExist) {
+            try {
+                createAndDeployConfJar(connectionItem, confsJarDefaultName);
+            } catch (IOException e) {
+                ExceptionHandler.process(e);
+            }
+        }
+        return confsJarDefaultName;
+    }
+
+    private static void createAndDeployConfJar(HadoopClusterConnectionItem connectionItem, String confJarName) throws IOException {
+        // If the conf jar has been deployed before then no need to deploy again.
+        if (containsInDeployedCache(connectionItem, confJarName)) {
+            return;
+        }
+        HadoopClusterConnection connection = (HadoopClusterConnection) connectionItem.getConnection();
+        byte[] confFileBA = connection.getConfFile();
+        if (confFileBA != null) {
+            File confsTempFolder = new File(getConfsJarTempFolder());
+            File confFile = new File(confsTempFolder, confJarName);
+            FileUtils.writeByteArrayToFile(confFile, confFileBA);
+            if (GlobalServiceRegister.getDefault().isServiceRegistered(ILibraryManagerService.class)) {
+                ILibraryManagerService libService = (ILibraryManagerService) GlobalServiceRegister.getDefault().getService(
+                        ILibraryManagerService.class);
+                if (libService != null && libService.isJarNeedToBeDeployed(confFile)) {
+                    if (GlobalServiceRegister.getDefault().isServiceRegistered(ILibrariesService.class)) {
+                        ILibrariesService service = (ILibrariesService) GlobalServiceRegister.getDefault().getService(
+                                ILibrariesService.class);
+                        if (service != null) {
+                            service.deployLibrary(confFile.toURI().toURL());
+                            addToDeployedCache(connectionItem, confJarName);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public static HadoopConfigurationManager getConfigurationManager(DistributionBean distribution) {

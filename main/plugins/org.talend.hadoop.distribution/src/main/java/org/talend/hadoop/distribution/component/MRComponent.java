@@ -55,4 +55,9 @@ public interface MRComponent extends HadoopComponent {
      */
     public String getCustomMRApplicationCP();
 
+    /**
+     * @return true if the distribution is supports sending lineage data to Apache Atlas.
+     */
+    public boolean doSupportAtlas();
+
 }

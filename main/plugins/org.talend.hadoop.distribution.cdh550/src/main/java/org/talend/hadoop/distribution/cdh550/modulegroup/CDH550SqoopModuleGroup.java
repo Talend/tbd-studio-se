@@ -17,6 +17,11 @@ import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.cdh550.CDH550Constant;
+import org.talend.hadoop.distribution.condition.BasicExpression;
+import org.talend.hadoop.distribution.condition.ComponentCondition;
+import org.talend.hadoop.distribution.condition.EqualityOperator;
+import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
+import org.talend.hadoop.distribution.constants.SqoopConstant;
 
 public class CDH550SqoopModuleGroup {
 
@@ -25,6 +30,10 @@ public class CDH550SqoopModuleGroup {
         hs.add(new DistributionModuleGroup(CDH550Constant.SQOOP_MODULE_GROUP.getModuleName()));
         hs.add(new DistributionModuleGroup(CDH550Constant.HDFS_MODULE_GROUP.getModuleName()));
         hs.add(new DistributionModuleGroup(CDH550Constant.MAPREDUCE_MODULE_GROUP.getModuleName()));
+        ComponentCondition parquetOutputCondition = new SimpleComponentCondition(new BasicExpression(SqoopConstant.FILE_FORMAT,
+                EqualityOperator.EQ, SqoopConstant.PAQUET_OUTPUT_FORMAT));
+        hs.add(new DistributionModuleGroup(CDH550Constant.SQOOP_PARQUET_MODULE_GROUP.getModuleName(), true,
+                parquetOutputCondition));
         return hs;
     }
 

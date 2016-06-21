@@ -170,8 +170,8 @@
 		<module>test/plugins/org.talend.hadoop.distribution.test</module>
 		<module>test/plugins/org.talend.oozie.scheduler.test</module>
 		<module>test/plugins/org.talend.repository.nosql.test</module>
-        	<module>test/plugins/org.talend.repository.hadoopcluster.configurator.test</module>
-
+        <module>test/plugins/org.talend.repository.hadoopcluster.configurator.test</module>
+        <module>test/plugins/org.talend.repository.hadoopcluster.test</module>
 	</modules>
 	<build>
 		<plugins>

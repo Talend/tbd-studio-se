@@ -64,6 +64,7 @@ import org.talend.core.model.metadata.builder.connection.Connection;
  *   <li>{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#isSetHadoopLogin <em>Set Hadoop Login</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getMaprTHadoopLogin <em>Mapr THadoop Login</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#isPreloadAuthentification <em>Preload Authentification</em>}</li>
+ *   <li>{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getConfFile <em>Conf File</em>}</li>
  * </ul>
  * </p>
  *
@@ -1192,5 +1193,31 @@ public interface HadoopClusterConnection extends Connection {
      * @generated
      */
     void setPreloadAuthentification(boolean value);
+
+    /**
+     * Returns the value of the '<em><b>Conf File</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Conf File</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Conf File</em>' attribute.
+     * @see #setConfFile(byte[])
+     * @see org.talend.repository.model.hadoopcluster.HadoopClusterPackage#getHadoopClusterConnection_ConfFile()
+     * @model
+     * @generated
+     */
+    byte[] getConfFile();
+
+    /**
+     * Sets the value of the '{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getConfFile <em>Conf File</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Conf File</em>' attribute.
+     * @see #getConfFile()
+     * @generated
+     */
+    void setConfFile(byte[] value);
 
 } // HadoopClusterConnection

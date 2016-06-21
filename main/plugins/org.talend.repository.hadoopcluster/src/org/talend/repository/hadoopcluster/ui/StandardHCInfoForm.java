@@ -12,7 +12,6 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.ui;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,7 +40,6 @@ import org.talend.commons.ui.swt.formtools.LabelledText;
 import org.talend.commons.ui.swt.formtools.UtilsButton;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.hadoop.version.EAuthenticationMode;
-import org.talend.core.hadoop.version.EHadoopVersion4Drivers;
 import org.talend.core.hadoop.version.custom.ECustomVersionGroup;
 import org.talend.core.model.properties.ConnectionItem;
 import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
@@ -80,6 +78,8 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
     private LabelledCombo authenticationCombo;
 
     private Button kerberosBtn;
+
+    private Composite authPartComposite;
 
     private Composite authCommonComposite;
 
@@ -259,14 +259,6 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         jobHistoryPrincipalText.setReadOnly(readOnly);
         userNameText.setReadOnly(readOnly);
         groupText.setReadOnly(readOnly);
-
-        kerberosBtn.setEnabled(!readOnly);
-        namenodePrincipalText.setReadOnly(readOnly);
-        jtOrRmPrincipalText.setReadOnly(readOnly);
-        jobHistoryPrincipalText.setReadOnly(readOnly);
-        userNameText.setReadOnly(readOnly);
-        groupText.setReadOnly(readOnly);
-
         maprTBtn.setEnabled(!readOnly);
         maprTPasswordText.setReadOnly(readOnly);
         maprTClusterText.setReadOnly(readOnly);
@@ -291,7 +283,7 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         boolean isKerberosEditable = kerberosBtn.isEnabled() && kerberosBtn.getSelection();
         namenodePrincipalText.setEditable(isKerberosEditable);
         jtOrRmPrincipalText.setEditable(isKerberosEditable);
-        jobHistoryPrincipalText.setEditable(isKerberosEditable);
+        jobHistoryPrincipalText.setEditable(isEditable && isJobHistoryPrincipalEditable());
         userNameText.setEditable(isEditable && !kerberosBtn.getSelection());
         groupText.setEditable(isEditable && (isCurrentHadoopVersionSupportGroup() || isCustomUnsupportHasGroup()));
         keytabBtn.setEnabled(isEditable && kerberosBtn.getSelection());
@@ -361,7 +353,7 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         Group authGroup = Form.createGroup(this, 1, Messages.getString("HadoopClusterForm.authenticationSettings"), 110); //$NON-NLS-1$
         authGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
-        Composite authPartComposite = new Composite(authGroup, SWT.NULL);
+        authPartComposite = new Composite(authGroup, SWT.NULL);
         GridLayout authPartLayout = new GridLayout(1, false);
         authPartLayout.marginWidth = 0;
         authPartLayout.marginHeight = 0;
@@ -402,7 +394,7 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         userNameText = new LabelledText(placeHolder, Messages.getString("HadoopClusterForm.text.userName"), 1); //$NON-NLS-1$
         groupText = new LabelledText(placeHolder, Messages.getString("HadoopClusterForm.text.group"), 1); //$NON-NLS-1$
 
-        authKeytabComposite = new Composite(authGroup, SWT.NULL);
+        authKeytabComposite = new Composite(authPartComposite, SWT.NULL);
         GridLayout authKeytabCompLayout = new GridLayout(5, false);
         authKeytabCompLayout.marginWidth = 0;
         authKeytabCompLayout.marginHeight = 0;
@@ -418,7 +410,7 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         keytabText = new LabelledFileField(authKeytabComposite, Messages.getString("HadoopClusterForm.text.keytab"), extensions); //$NON-NLS-1$
 
         // Mapr Ticket Authentication
-        authMaprTComposite = new Composite(authGroup, SWT.NULL);
+        authMaprTComposite = new Composite(authPartComposite, SWT.NULL);
         GridLayout authMaprTicketCompLayout = new GridLayout(1, false);
         authMaprTicketCompLayout.marginWidth = 0;
         authMaprTicketCompLayout.marginHeight = 0;
@@ -584,6 +576,16 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
                 String originalAuthName = getConnection().getAuthMode();
                 EAuthenticationMode originalAuthMode = EAuthenticationMode.getAuthenticationByName(originalAuthName, false);
                 if (newAuthMode != null && newAuthMode != originalAuthMode) {
+                    if (EAuthenticationMode.UGI.equals(newAuthMode)) {
+                        maprTBtn.setEnabled(true);
+                        hideControl(maprTBtn, false);
+                        if (maprTBtn.getSelection()) {
+                            hideControl(maprTPCDCompposite, false);
+                            hideControl(maprTSetComposite, false);
+                        }
+                        authMaprTComposite.layout();
+                        authMaprTComposite.getParent().layout();
+                    }
                     getConnection().setAuthMode(newAuthMode.getName());
                     updateForm();
                     checkFieldsValue();
@@ -989,23 +991,32 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
                     kerberosBtn.setEnabled(true);
                     namenodePrincipalText.setEditable(kerberosBtn.isEnabled() && kerberosBtn.getSelection());
                     jtOrRmPrincipalText.setEditable(namenodePrincipalText.getEditable());
-                    jobHistoryPrincipalText.setEditable(namenodePrincipalText.getEditable());
+                    jobHistoryPrincipalText.setEditable(isJobHistoryPrincipalEditable());
                     keytabBtn.setEnabled(kerberosBtn.isEnabled() && kerberosBtn.getSelection());
                     keytabPrincipalText.setEditable(keytabBtn.isEnabled() && keytabBtn.getSelection());
                     keytabText.setEditable(keytabBtn.isEnabled() && keytabBtn.getSelection());
                     userNameText.setEditable(false);
                     groupText.setEditable(false);
+                    hideKerberosControl(!kerberosBtn.getSelection());
+                    hideMaprTicketControl(true);
+                    maprTPasswordText.setEditable(false);
                     break;
                 case UGI:
-                    kerberosBtn.setEnabled(false);
-                    namenodePrincipalText.setEditable(false);
-                    jtOrRmPrincipalText.setEditable(false);
-                    jobHistoryPrincipalText.setEditable(false);
-                    keytabBtn.setEnabled(false);
-                    keytabPrincipalText.setEditable(false);
-                    keytabText.setEditable(false);
-                    userNameText.setEditable(true);
-                    groupText.setEditable(true);
+                    kerberosBtn.setEnabled(true);
+                    namenodePrincipalText.setEditable(kerberosBtn.isEnabled() && kerberosBtn.getSelection());
+                    jtOrRmPrincipalText.setEditable(namenodePrincipalText.getEditable());
+                    jobHistoryPrincipalText.setEditable(namenodePrincipalText.getEditable());
+                    keytabBtn.setEnabled(kerberosBtn.isEnabled() && kerberosBtn.getSelection());
+                    keytabPrincipalText.setEditable(keytabBtn.isEnabled() && keytabBtn.getSelection());
+                    keytabText.setEditable(keytabBtn.isEnabled() && keytabBtn.getSelection());
+                    userNameText.setEditable(maprTBtn.isEnabled()
+                            && (maprTBtn.getSelection() && !(kerberosBtn.isEnabled() && kerberosBtn.getSelection())));
+                    groupText.setEditable(false);
+                    hideKerberosControl(!kerberosBtn.getSelection());
+                    // maprt
+                    hideMaprTicketChildControl(!maprTBtn.getSelection());
+                    maprTPasswordText.setEditable(maprTBtn.isEnabled()
+                            && (maprTBtn.getSelection() && !(kerberosBtn.isEnabled() && kerberosBtn.getSelection())));
                     break;
                 default:
                     kerberosBtn.setEnabled(false);
@@ -1017,14 +1028,9 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
                     keytabText.setEditable(false);
                     userNameText.setEditable(true);
                     groupText.setEditable(false);
-
-                    // maprt
+                    hideKerberosControl(true);
+                    hideMaprTicketControl(true);
                     maprTPasswordText.setEditable(false);
-                    maprTClusterText.setEditable(false);
-                    maprTDurationText.setEditable(false);
-                    hideControl(maprTBtn, true);
-                    hideControl(maprTPCDCompposite, true);
-                    hideControl(maprTSetComposite, true);
                     break;
                 }
             }
@@ -1034,22 +1040,13 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
             kerberosBtn.setEnabled(isCurrentHadoopVersionSupportSecurity());
             namenodePrincipalText.setEditable(kerberosBtn.isEnabled() && kerberosBtn.getSelection());
             jtOrRmPrincipalText.setEditable(namenodePrincipalText.getEditable());
-            jobHistoryPrincipalText.setEditable(namenodePrincipalText.getEditable()
-                    && isCurrentHadoopVersionSupportJobHistoryPrincipal());
+            jobHistoryPrincipalText.setEditable(isJobHistoryPrincipalEditable());
             keytabBtn.setEnabled(kerberosBtn.isEnabled() && kerberosBtn.getSelection());
             keytabPrincipalText.setEditable(keytabBtn.isEnabled() && keytabBtn.getSelection());
             keytabText.setEditable(keytabBtn.isEnabled() && keytabBtn.getSelection());
             groupText.setEditable(isCurrentHadoopVersionSupportGroup());
             userNameText.setEditable(!kerberosBtn.getSelection());
-            if (kerberosBtn.getSelection()) {
-                hideControl(authNodejtOrRmHistoryComposite, false);
-                hideControl(authKeytabComposite, false);
-            } else {
-                hideControl(authNodejtOrRmHistoryComposite, true);
-                hideControl(authKeytabComposite, true);
-            }
-            authCommonComposite.layout();
-            authCommonComposite.getParent().layout();
+            hideKerberosControl(!kerberosBtn.getSelection());
 
             // maprt
             hideControl(maprTBtn, !isCurrentHadoopVersionSupportMapRTicket());
@@ -1061,21 +1058,7 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
             setMaprTHomeDirBtn.setEnabled(maprTBtn.isEnabled() && maprTBtn.getSelection());
             setHadoopLoginBtn.setEnabled(maprTBtn.isEnabled() && maprTBtn.getSelection());
             preloadAuthentificationBtn.setEnabled(maprTBtn.isEnabled() && maprTBtn.getSelection());
-            maprTHomeDirText.setEditable(maprTBtn.isEnabled() && maprTBtn.getSelection() && setMaprTHomeDirBtn.isEnabled()
-                    && setMaprTHomeDirBtn.getSelection());
-            maprTHadoopLoginText.setEditable(maprTBtn.isEnabled() && maprTBtn.getSelection() && setHadoopLoginBtn.isEnabled()
-                    && setHadoopLoginBtn.getSelection());
-            if (maprTBtn.getSelection()) {
-                hideControl(maprTPCDCompposite, false);
-                hideControl(maprTSetComposite, false);
-                hideControl(maprTPasswordCompposite, kerberosBtn.getSelection());
-            } else {
-                hideControl(maprTPCDCompposite, true);
-                hideControl(maprTSetComposite, true);
-            }
-            authMaprTComposite.layout();
-            authMaprTComposite.getParent().layout();
-
+            hideMaprTicketChildControl(!maprTBtn.getSelection());
         }
         updateMRRelatedContent();
         updateConnectionContent();
@@ -1084,47 +1067,43 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         }
     }
 
-    /**
-     * is current hadoop version support JobHistoryPrincipal
-     * 
-     * @return
-     */
-    protected boolean isCurrentHadoopVersionSupportJobHistoryPrincipal() {
-        if (hadoopDistribution == null || hadoopVersison == null) {
-            return false;
-        }
-        boolean isSupport = false;
-        // this strategy is based on tMRConfiguration_java.xml, Parameter: JOBHISTORY_PRINCIPAL
-        if (hadoopVersison.version != null
-                && (hadoopVersison.version.equals(EHadoopVersion4Drivers.MICROSOFT_HD_INSIGHT_3_1.getVersionValue()) || hadoopVersison.version
-                        .equals(EHadoopVersion4Drivers.MICROSOFT_HD_INSIGHT_3_2.getVersionValue()))) {
-            return false;
-        } else {
-            if (hadoopDistribution.useCustom()) {
-                return true;
-            } else {
-                List<String> supportVersions = new ArrayList<String>();
+    private void hideMaprTicketControl(boolean hide) {
+        maprTClusterText.setEditable(!hide);
+        maprTDurationText.setEditable(!hide);
+        hideControl(maprTBtn, hide);
+        hideControl(maprTPCDCompposite, hide);
+        hideControl(maprTSetComposite, hide);
+        authMaprTComposite.layout();
+        authMaprTComposite.getParent().layout();
+    }
 
-                supportVersions.add(EHadoopVersion4Drivers.PIVOTAL_HD_1_0_1.getVersionValue());
-                supportVersions.add(EHadoopVersion4Drivers.PIVOTAL_HD_2_0.getVersionValue());
-                supportVersions.add(EHadoopVersion4Drivers.HDP_2_0.getVersionValue());
-                supportVersions.add(EHadoopVersion4Drivers.HDP_2_1.getVersionValue());
-                supportVersions.add(EHadoopVersion4Drivers.HDP_2_2.getVersionValue());
-                supportVersions.add(EHadoopVersion4Drivers.HDP_2_3.getVersionValue());
-                supportVersions.add(EHadoopVersion4Drivers.CLOUDERA_CDH4_YARN.getVersionValue());
-                supportVersions.add(EHadoopVersion4Drivers.CLOUDERA_CDH5.getVersionValue());
-                supportVersions.add(EHadoopVersion4Drivers.CLOUDERA_CDH5_1.getVersionValue());
-                supportVersions.add(EHadoopVersion4Drivers.CLOUDERA_CDH5_4.getVersionValue());
-                supportVersions.add(EHadoopVersion4Drivers.CLOUDERA_CDH5_5.getVersionValue());
-                supportVersions.add(EHadoopVersion4Drivers.MAPR401.getVersionValue());
-                supportVersions.add(EHadoopVersion4Drivers.MAPR500.getVersionValue());
-                supportVersions.add(EHadoopVersion4Drivers.APACHE_2_4_0_EMR.getVersionValue());
-                supportVersions.add(EHadoopVersion4Drivers.EMR_4_0_0.getVersionValue());
+    private void hideMaprTicketChildControl(boolean hide) {
+        maprTClusterText.setEditable(maprTBtn.isEnabled() && maprTBtn.getSelection());
+        maprTDurationText.setEditable(maprTBtn.isEnabled() && maprTBtn.getSelection());
+        maprTHomeDirText.setEditable(!hide && setMaprTHomeDirBtn.isEnabled() && setMaprTHomeDirBtn.getSelection());
+        maprTHadoopLoginText.setEditable(!hide && setHadoopLoginBtn.isEnabled() && setHadoopLoginBtn.getSelection());
+        hideControl(maprTPCDCompposite, hide);
+        hideControl(maprTSetComposite, hide);
+        authMaprTComposite.layout();
+        authMaprTComposite.getParent().layout();
+    }
 
-                isSupport = supportVersions.contains(hadoopVersison.version);
-            }
-        }
-        return isSupport;
+    private void hideKerberosControl(boolean hide) {
+        hideControl(authNodejtOrRmHistoryComposite, hide);
+        hideControl(authKeytabComposite, hide);
+        authCommonComposite.layout();
+        authCommonComposite.getParent().layout();
+    }
+
+    private boolean isJobHistoryPrincipalEditable() {
+        return isCurrentHadoopVersionSupportJobHistoryPrincipal()
+                && getConnection().isEnableKerberos()
+                && (!hadoopDistribution.useCustom() || hadoopDistribution.useCustom() && isCustomUnsupportHasSecurity()
+                        && getConnection().isUseYarn());
+    }
+
+    private boolean isCurrentHadoopVersionSupportJobHistoryPrincipal() {
+        return isCurrentHadoopVersionSupportSecurity() && (isCurrentHadoopVersionSupportYarn() || hadoopDistribution.useCustom());
     }
 
     private DistributionBean getDistribution() {
@@ -1177,7 +1156,6 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
     }
 
     private boolean isCurrentHadoopVersionSupportYarn() {
-
         boolean supportYarn = false;
         final DistributionVersion distributionVersion = getDistributionVersion();
         if (distributionVersion != null && distributionVersion.hadoopComponent != null) {

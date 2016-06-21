@@ -374,4 +374,9 @@ public class CDH550Distribution extends AbstractDistribution implements HDFSComp
     public boolean doSupportS3() {
         return true;
     }
+
+    @Override
+    public boolean doSupportParquetOutput() {
+        return true;
+    }
 }

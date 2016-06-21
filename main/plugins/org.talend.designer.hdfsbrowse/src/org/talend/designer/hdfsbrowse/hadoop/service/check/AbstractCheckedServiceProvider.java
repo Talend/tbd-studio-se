@@ -19,7 +19,6 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.talend.commons.exception.ExceptionHandler;
-import org.talend.commons.utils.PasswordEncryptUtil;
 import org.talend.core.classloader.DynamicClassLoader;
 import org.talend.core.utils.ReflectionUtils;
 import org.talend.designer.hdfsbrowse.exceptions.HadoopServerException;
@@ -101,6 +100,9 @@ public abstract class AbstractCheckedServiceProvider implements ICheckedServiceP
         String mapRTicketDuration = serviceProperties.getMaprTDuration();
         Long desiredTicketDurInSecs = 86400L;
         if (mapRTicketDuration != null && StringUtils.isNotBlank(mapRTicketDuration)) {
+            if (mapRTicketDuration.endsWith("L")) {//$NON-NLS-1$ 
+                mapRTicketDuration = mapRTicketDuration.substring(0, mapRTicketDuration.length() - 1);
+            }
             desiredTicketDurInSecs = Long.parseLong(mapRTicketDuration);
         }
         try {
@@ -111,12 +113,11 @@ public abstract class AbstractCheckedServiceProvider implements ICheckedServiceP
                 ReflectionUtils.invokeMethod(mapRClientConfig,
                         "getMapRCredentialsViaKerberos", new Object[] { mapRTicketCluster, desiredTicketDurInSecs }); //$NON-NLS-1$
             } else {
-                String decryptedPassword = PasswordEncryptUtil.encryptPassword(mapRTicketPassword);
                 ReflectionUtils.invokeMethod(mapRClientConfig, "setCheckUGI", new Object[] { false }, boolean.class);//$NON-NLS-1$
                 ReflectionUtils
                         .invokeMethod(
                                 mapRClientConfig,
-                                "getMapRCredentialsViaPassword", new Object[] { mapRTicketCluster, mapRTicketUsername, decryptedPassword, desiredTicketDurInSecs }); //$NON-NLS-1$
+                                "getMapRCredentialsViaPassword", new Object[] { mapRTicketCluster, mapRTicketUsername, mapRTicketPassword, desiredTicketDurInSecs }); //$NON-NLS-1$
             }
         } catch (Exception e) {
             throw new SQLException(e);

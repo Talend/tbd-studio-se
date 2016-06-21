@@ -31,7 +31,7 @@ public class HiveMetadataHelper4HortonworksTest extends AbstractDistributionTest
 
     @Override
     protected String[] getDistributionVersionsDisplay() {
-        return new String[] { "Hortonworks Data Platform V2.4.0", "Hortonworks Data Platform V2.3.0",
+        return new String[] { "Hortonworks Data Platform V2.4.0", "Hortonworks Data Platform V2.3.2",
                 "Hortonworks Data Platform V2.2.0", "Hortonworks Data Platform V2.1.0(Baikal)",
                 "Hortonworks Data Platform V2.0.0(BigWheel)", "Hortonworks Data Platform V1.3.0(Condor)",
                 "Hortonworks Data Platform V1.2.0(Bimota)" };
