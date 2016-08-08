@@ -96,6 +96,10 @@ public abstract class AbstractHadoopSubForm<T extends HadoopSubConnection> exten
         } else {
             enableGroup = EAuthenticationMode.UGI.getName().equals(clusterConnection.getAuthMode());
         }
+        if ((enableKerberos && version4Drivers != null && enableGroup && EHadoopVersion4Drivers.MAPR500.equals(version4Drivers))
+                || (enableKerberos && EAuthenticationMode.UGI.getName().equals(clusterConnection.getAuthMode()))) {
+            enableGroup = false;
+        }
         isHDI = isHDI(clusterConnection);
         setupForm(true);
     }
