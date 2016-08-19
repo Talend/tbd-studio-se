@@ -21,29 +21,40 @@ import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
+import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
 import org.talend.hadoop.distribution.cdh580.modulegroup.CDH580HBaseModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.CDH580HCatalogModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.CDH580HDFSModuleGroup;
+import org.talend.hadoop.distribution.cdh580.modulegroup.CDH580HiveModuleGroup;
+import org.talend.hadoop.distribution.cdh580.modulegroup.CDH580ImpalaModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.CDH580MapReduceModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.CDH580PigModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.CDH580PigOutputModuleGroup;
+import org.talend.hadoop.distribution.cdh580.modulegroup.CDH580SparkBatchModuleGroup;
+import org.talend.hadoop.distribution.cdh580.modulegroup.CDH580SqoopModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.node.mr.CDH580MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.node.pigoutput.CDH580PigOutputNodeModuleGroup;
+import org.talend.hadoop.distribution.cdh580.modulegroup.node.sparkbatch.CDH580SparkBatchParquetNodeModuleGroup;
+import org.talend.hadoop.distribution.cdh580.modulegroup.node.sparkbatch.CDH580SparkBatchS3NodeModuleGroup;
 import org.talend.hadoop.distribution.component.HBaseComponent;
 import org.talend.hadoop.distribution.component.HCatalogComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
+import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
+import org.talend.hadoop.distribution.component.SparkBatchComponent;
+import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
+import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
 
 @SuppressWarnings("nls")
 public class CDH580Distribution extends AbstractDistribution implements IClouderaDistribution, HDFSComponent, HBaseComponent,
-        HCatalogComponent, PigComponent, MRComponent, HiveComponent {
+        HCatalogComponent, PigComponent, MRComponent, HiveComponent, ImpalaComponent, SqoopComponent, SparkBatchComponent {
 
     public final static String VERSION = "Cloudera_CDH5_8";
 
@@ -71,6 +82,11 @@ public class CDH580Distribution extends AbstractDistribution implements IClouder
         moduleGroups.put(ComponentType.MAPREDUCE, CDH580MapReduceModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.PIG, CDH580PigModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.PIGOUTPUT, CDH580PigOutputModuleGroup.getModuleGroups());
+        moduleGroups.put(ComponentType.SQOOP, CDH580SqoopModuleGroup.getModuleGroups());
+        moduleGroups.put(ComponentType.HIVE, CDH580HiveModuleGroup.getModuleGroups());
+        moduleGroups.put(ComponentType.IMPALA, CDH580ImpalaModuleGroup.getModuleGroups());
+        moduleGroups.put(ComponentType.SPARKBATCH, CDH580SparkBatchModuleGroup.getModuleGroups());
+
         // moduleGroups.put(ComponentType.SPARKBATCH, CDH580SparkBatchModuleGroup.getModuleGroups());
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
@@ -82,6 +98,13 @@ public class CDH580Distribution extends AbstractDistribution implements IClouder
                 CDH580MRS3NodeModuleGroup.getModuleGroups(distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
                 CDH580PigOutputNodeModuleGroup.getModuleGroups(distribution, version));
+
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
+                CDH580SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
+                CDH580SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.S3_CONFIGURATION_COMPONENT),
+                CDH580SparkBatchS3NodeModuleGroup.getModuleGroups(distribution, version));
 
         displayConditions = new HashMap<>();
     }
@@ -214,5 +237,60 @@ public class CDH580Distribution extends AbstractDistribution implements IClouder
     @Override
     public boolean doSupportStoreAsParquet() {
         return true;
+    }
+
+    @Override
+    public boolean doJavaAPISupportStorePasswordInFile() {
+        return true;
+    }
+
+    @Override
+    public boolean doJavaAPISqoopImportSupportDeleteTargetDir() {
+        return true;
+    }
+
+    @Override
+    public boolean doJavaAPISqoopImportAllTablesSupportExcludeTable() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportParquetOutput() {
+        return true;
+    }
+
+    @Override
+    public ESparkVersion getSparkVersion() {
+        return ESparkVersion.SPARK_1_6;
+    }
+
+    @Override
+    public boolean isExecutedThroughSparkJobServer() {
+        return false;
+    }
+
+    @Override
+    public boolean doSupportSparkStandaloneMode() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportSparkYarnClientMode() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportDynamicMemoryAllocation() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportS3() {
+        return true;
+    }
+
+    @Override
+    public int getClouderaNavigatorAPIVersion() {
+        return 9;
     }
 }
