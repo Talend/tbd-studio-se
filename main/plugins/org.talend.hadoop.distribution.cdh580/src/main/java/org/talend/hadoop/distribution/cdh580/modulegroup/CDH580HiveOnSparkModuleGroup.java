@@ -18,11 +18,12 @@ import java.util.Set;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.cdh580.CDH580Constant;
 
-public class CDH580HBaseModuleGroup {
+public class CDH580HiveOnSparkModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        DistributionModuleGroup dmg = new DistributionModuleGroup(CDH580Constant.HBASE_MODULE_GROUP.getModuleName(), true, null);
+        DistributionModuleGroup dmg = new DistributionModuleGroup(
+                CDH580Constant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), true, null);
         hs.add(dmg);
         return hs;
     }
