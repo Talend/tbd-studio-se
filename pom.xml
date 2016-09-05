@@ -61,7 +61,9 @@
 		<module>main/plugins/org.talend.hadoop.distribution.cdh550</module>
 		<module>main/plugins/org.talend.hadoop.distribution.cdh550.jars</module>
 		<module>main/plugins/org.talend.hadoop.distribution.cdh570</module>
-		<module>main/plugins/org.talend.hadoop.distribution.cdh570.jars</module>		
+		<module>main/plugins/org.talend.hadoop.distribution.cdh570.jars</module>
+		<module>main/plugins/org.talend.hadoop.distribution.cdh580</module>
+		<module>main/plugins/org.talend.hadoop.distribution.cdh580.jars</module>				
 		<module>main/plugins/org.talend.hadoop.distribution.custom</module>
 		<module>main/plugins/org.talend.hadoop.distribution.emr103</module>
 		<module>main/plugins/org.talend.hadoop.distribution.emr240</module>
@@ -138,7 +140,8 @@
 		<module>test/plugins/org.talend.hadoop.distribution.cdh510mr2.test</module>
 		<module>test/plugins/org.talend.hadoop.distribution.cdh540.test</module>
 		<module>test/plugins/org.talend.hadoop.distribution.cdh550.test</module>
-		<module>test/plugins/org.talend.hadoop.distribution.cdh570.test</module>		
+		<module>test/plugins/org.talend.hadoop.distribution.cdh570.test</module>
+		<module>test/plugins/org.talend.hadoop.distribution.cdh580.test</module>		
 		<module>test/plugins/org.talend.hadoop.distribution.custom.test</module>
 		<module>test/plugins/org.talend.hadoop.distribution.emr103.test</module>
 		<module>test/plugins/org.talend.hadoop.distribution.emr240.test</module>

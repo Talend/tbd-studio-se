@@ -330,7 +330,13 @@
          id="org.talend.hadoop.distribution.cdh570.jars"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>         
+         version="0.0.0"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.cdh580.jars"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>                  
 
    <plugin
          id="org.talend.hadoop.distribution.hdp240.jars"
