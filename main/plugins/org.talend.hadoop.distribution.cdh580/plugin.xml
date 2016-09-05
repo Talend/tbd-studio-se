@@ -379,7 +379,7 @@
             context="plugin:org.talend.hadoop.distribution.cdh580"
             id="hadoop-aws-cdh5.8.1"
             name="hadoop-aws-2.6.0-cdh5.8.1.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-aws-2.6.0-cdh5.8.1/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/hadoop-aws-2.6.0-cdh5.8.1/6.1.0">
         </libraryNeeded>
                 
         <libraryNeeded
@@ -444,14 +444,14 @@
             context="plugin:org.talend.hadoop.distribution.cdh580"
             id="spark-streaming-kafka-cdh5.8.1"
             name="spark-streaming-kafka_2.10-1.6.0-cdh5.8.1.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka_2.10-1.6.0-cdh5.8.1/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka_2.10-1.6.0-cdh5.8.1/6.1.0">
         </libraryNeeded>
                 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh580"
             id="kafka-cdh5.8.1"
             name="kafka_2.10-0.9.0-kafka-2.1.0.jar"
-            mvn_uri="mvn:org.talend.libraries/kafka_2.10-0.9.0-kafka-2.1.0/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/kafka_2.10-0.9.0-kafka-2.1.0/6.1.0">
         </libraryNeeded> 
         
         <libraryNeeded
@@ -465,56 +465,56 @@
             context="plugin:org.talend.libraries.apache.kafka"
             id="kafka-clients-cdh5.8.1"
             name="kafka-clients-0.9.0-kafka-2.1.0.jar"
-            mvn_uri="mvn:org.talend.libraries/kafka-clients-0.9.0-kafka-2.1.0/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/kafka-clients-0.9.0-kafka-2.1.0/6.1.0">
         </libraryNeeded>   
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh580"
             id="kite-data-core-1.0.0-cdh5.8.1"
             name="kite-data-core-1.0.0-cdh5.8.1.jar"
-            mvn_uri="mvn:org.talend.libraries/kite-data-core-1.0.0-cdh5.8.1/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/kite-data-core-1.0.0-cdh5.8.1/6.1.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh580"
             id="kite-data-mapreduce-1.0.0-cdh5.8.1.jar"
             name="kite-data-mapreduce-1.0.0-cdh5.8.1.jar"
-            mvn_uri="mvn:org.talend.libraries/kite-data-mapreduce-1.0.0-cdh5.8.1/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/kite-data-mapreduce-1.0.0-cdh5.8.1/6.1.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh580"
             id="kite-hadoop-compatibility-1.0.0-cdh5.8.1"
             name="kite-hadoop-compatibility-1.0.0-cdh5.8.1.jar"
-            mvn_uri="mvn:org.talend.libraries/kite-hadoop-compatibility-1.0.0-cdh5.8.1/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/kite-hadoop-compatibility-1.0.0-cdh5.8.1/6.1.0">
         </libraryNeeded> 
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh580"
             id="flume-ng-core-1.6.0-cdh5.8.1"
             name="flume-ng-core-1.6.0-cdh5.8.1.jar"
-            mvn_uri="mvn:org.talend.libraries/flume-ng-core-1.6.0-cdh5.8.1/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/flume-ng-core-1.6.0-cdh5.8.1/6.1.0">
         </libraryNeeded>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh580"
             id="flume-ng-sdk-1.6.0-cdh5.8.1"
             name="flume-ng-sdk-1.6.0-cdh5.8.1.jar"
-            mvn_uri="mvn:org.talend.libraries/flume-ng-sdk-1.6.0-cdh5.8.1/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/flume-ng-sdk-1.6.0-cdh5.8.1/6.1.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh580"
             id="spark-streaming-flume_2.10-1.6.0-cdh5.8.1"
             name="spark-streaming-flume_2.10-1.6.0-cdh5.8.1.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-streaming-flume_2.10-1.6.0-cdh5.8.1/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/spark-streaming-flume_2.10-1.6.0-cdh5.8.1/6.1.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh580"
             id="spark-streaming-flume-sink_2.10-1.6.0-cdh5.8.1"
             name="spark-streaming-flume-sink_2.10-1.6.0-cdh5.8.1.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-streaming-flume-sink_2.10-1.6.0-cdh5.8.1/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/spark-streaming-flume-sink_2.10-1.6.0-cdh5.8.1/6.1.0">
         </libraryNeeded>
         <!-- Groups -->
         
