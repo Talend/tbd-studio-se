@@ -62,8 +62,8 @@ public class MetadataHadoopClusterContentProvider extends AbstractMetadataConten
          */
         @Override
         protected IPath getTopLevelNodePath(RepositoryNode repoNode) {
+            IPath topLevelNodeWorkspaceRelativePath = null;
             if ((repoNode.getContentType() == HadoopClusterRepositoryNodeType.HADOOPCLUSTER)) {
-                IPath topLevelNodeWorkspaceRelativePath = null;
                 IProjectRepositoryNode root = repoNode.getRoot();
                 if (root != null) {
                     String projectName = root.getProject().getTechnicalLabel();
@@ -71,9 +71,8 @@ public class MetadataHadoopClusterContentProvider extends AbstractMetadataConten
                             root.getRootRepositoryNode(HadoopClusterRepositoryNodeType.HADOOPCLUSTER).getContentType()
                                     .getFolder());
                 }
-                return topLevelNodeWorkspaceRelativePath;
             }
-            return null;
+            return topLevelNodeWorkspaceRelativePath;
         }
 
         /*
@@ -136,6 +135,14 @@ public class MetadataHadoopClusterContentProvider extends AbstractMetadataConten
     @Override
     protected RepositoryNode getTopLevelNodeFromProjectRepositoryNode(ProjectRepositoryNode projectNode) {
         return projectNode.getRootRepositoryNode(HadoopClusterRepositoryNodeType.HADOOPCLUSTER);
+    }
+
+    @Override
+    public Set<RepositoryNode> getTopLevelNodes() {
+        Set<RepositoryNode> topLevelNodes = super.getTopLevelNodes();
+        topLevelNodes.clear();
+        topLevelNodes.add(getTopLevelNodeFromProjectRepositoryNode(ProjectRepositoryNode.getInstance()));
+        return topLevelNodes;
     }
 
     @Override

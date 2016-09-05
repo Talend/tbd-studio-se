@@ -28,9 +28,8 @@ public class EMR450HiveOnSparkModuleGroupTest {
     public void testModuleGroups() throws Exception {
         Map<String, String> results = new HashMap<>();
         results.put(EMR450HiveOnSparkModuleGroup.MODULE_GROUP_NAME, null);
-        results.put(EMR450HiveOnSparkModuleGroup.MRREQUIRED_MODULE_GROUP_NAME, null);
         Set<DistributionModuleGroup> moduleGroups = EMR450HiveOnSparkModuleGroup.getModuleGroups();
-        assertEquals(2, moduleGroups.size());
+        assertEquals(1, moduleGroups.size());
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$
             if (results.get(module.getModuleName()) == null) {

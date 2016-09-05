@@ -18,9 +18,6 @@
   	CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
   	INode node = (INode)codeGenArgument.getArgument();
   	String cid = node.getUniqueName();
-
-	String accessKey   = ElementParameterParser.getValue(node, "__ACCESS_KEY__");
-	String secretKey   = ElementParameterParser.getValue(node, "__SECRET_KEY__");
 	
 	String region = ElementParameterParser.getValue(node, "__REGION__");
 
@@ -79,11 +76,9 @@
 		<%
 			}
 		%>	
-			com.amazonaws.auth.AWSCredentials credentials_<%=cid%> = new com.amazonaws.auth.BasicAWSCredentials(
-				<%=accessKey%>,
-				<%=secretKey%>);		
-			
-			com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient dynamoDBClient_<%=cid%> = new com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient(credentials_<%=cid%>);
+			<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Amazon/CredentialsProvider.javajet"%>
+
+			com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient dynamoDBClient_<%=cid%> = new com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient(credentialsProvider_<%=cid%>);
    
 			<%
 			if(useEndPoint)

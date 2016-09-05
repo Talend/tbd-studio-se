@@ -21,6 +21,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.talend.commons.exception.ExceptionHandler;
@@ -112,8 +113,14 @@ public class HDFSSchemaWizard extends AbstractRepositoryFileTableWizard implemen
                 @Override
                 public void run(IProgressMonitor monitor) throws CoreException {
                     saveMetaData();
-                    RepositoryUpdateManager.updateMultiSchema(connectionItem, oldMetadataTable, oldTableMap);
-                    closeLockStrategy();
+                    Display.getDefault().asyncExec(new Runnable() {
+                        
+                        @Override
+                        public void run() {
+                            RepositoryUpdateManager.updateMultiSchema(connectionItem, oldMetadataTable, oldTableMap);
+                            closeLockStrategy();
+                        }
+                    });
                     connection = null;
                 }
             };

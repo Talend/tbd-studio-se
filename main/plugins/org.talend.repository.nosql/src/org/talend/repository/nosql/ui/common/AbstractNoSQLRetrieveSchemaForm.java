@@ -12,11 +12,13 @@
 // ============================================================================
 package org.talend.repository.nosql.ui.common;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -53,6 +55,7 @@ import org.talend.commons.ui.swt.formtools.LabelledText;
 import org.talend.core.model.metadata.MetadataToolHelper;
 import org.talend.core.model.metadata.builder.connection.MetadataTable;
 import org.talend.core.model.properties.ConnectionItem;
+import org.talend.cwm.helper.ConnectionHelper;
 import org.talend.repository.nosql.exceptions.NoSQLExtractSchemaException;
 import org.talend.repository.nosql.factory.NoSQLRepositoryFactory;
 import org.talend.repository.nosql.i18n.Messages;
@@ -64,6 +67,7 @@ import org.talend.repository.nosql.ui.provider.IWizardPageProvider;
 import org.talend.repository.nosql.ui.provider.NoSQLSelectorTreeViewerProvider;
 import org.talend.repository.nosql.ui.thread.RetrieveColumnRunnable;
 import org.talend.repository.nosql.ui.thread.RetrieveSchemaThreadPoolExecutor;
+import org.talend.repository.nosql.ui.wizards.NoSQLRetrieveSchemaWizardPage;
 import org.talend.repository.nosql.util.NoSQLRepositoryUtil;
 
 /**
@@ -289,9 +293,25 @@ public abstract class AbstractNoSQLRetrieveSchemaForm extends AbstractNoSQLForm 
                     } catch (Exception exception) {
                         ExceptionHandler.process(exception);
                     }
+                    boolean pageC = pageComplete();
+                    if (pageC) {
+                        parentWizardPage.setPageComplete(false);
+                    }
                 }
             }
         });
+    }
+
+    private boolean pageComplete() {
+        if (parentWizardPage instanceof NoSQLRetrieveSchemaWizardPage) {
+            List<MetadataTable> list = new ArrayList<MetadataTable>();
+            Set<MetadataTable> tables = ConnectionHelper.getTables(getConnection());
+            list.addAll(tables);
+            if (list.size() <= 0) {
+                return true;
+            }
+        }
+        return false;
     }
 
     protected void performCheckStateChanged(INoSQLSchemaNode node) {
@@ -415,7 +435,7 @@ public abstract class AbstractNoSQLRetrieveSchemaForm extends AbstractNoSQLForm 
                 @Override
                 public void widgetSelected(SelectionEvent e) {
                     super.widgetSelected(e);
-                    parentWizardPage.setPageComplete(false);
+                    // parentWizardPage.setPageComplete(false);
                 }
             });
         }

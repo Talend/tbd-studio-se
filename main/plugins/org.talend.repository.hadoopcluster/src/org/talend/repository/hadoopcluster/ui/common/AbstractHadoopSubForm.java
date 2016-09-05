@@ -25,12 +25,16 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 import org.talend.commons.ui.swt.formtools.Form;
 import org.talend.commons.ui.swt.formtools.LabelledCombo;
+import org.talend.core.GlobalServiceRegister;
+import org.talend.core.hadoop.IHadoopDistributionService;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.hadoop.version.EAuthenticationMode;
-import org.talend.core.hadoop.version.EHadoopVersion4Drivers;
 import org.talend.core.model.properties.ConnectionItem;
 import org.talend.designer.hdfsbrowse.util.EHDFSFieldSeparator;
 import org.talend.designer.hdfsbrowse.util.EHDFSRowSeparator;
+import org.talend.hadoop.distribution.helper.HadoopDistributionsHelper;
+import org.talend.hadoop.distribution.model.DistributionBean;
+import org.talend.hadoop.distribution.model.DistributionVersion;
 import org.talend.metadata.managment.ui.dialog.HadoopPropertiesDialog;
 import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
@@ -90,14 +94,32 @@ public abstract class AbstractHadoopSubForm<T extends HadoopSubConnection> exten
         distribution = clusterConnection.getDistribution();
         version = clusterConnection.getDfVersion();
         enableKerberos = clusterConnection.isEnableKerberos();
-        EHadoopVersion4Drivers version4Drivers = EHadoopVersion4Drivers.indexOfByVersion(version);
-        if (version4Drivers != null) {
-            enableGroup = version4Drivers.isSupportGroup();
-        } else {
-            enableGroup = EAuthenticationMode.UGI.getName().equals(clusterConnection.getAuthMode());
+        if (!enableKerberos && (isCurrentHadoopVersionSupportGroup()
+                || EAuthenticationMode.UGI.getName().equals(clusterConnection.getAuthMode()))) {
+            enableGroup = true;
         }
         isHDI = isHDI(clusterConnection);
         setupForm(true);
+    }
+
+    private boolean isCurrentHadoopVersionSupportGroup() {
+        boolean supportGroup = false;
+        DistributionVersion distributionVersion;
+        DistributionBean distributionBean = HadoopDistributionsHelper.HADOOP.getDistribution(distribution, false);
+        if (distributionBean != null) {
+            distributionVersion = distributionBean.getVersion(version, false);
+            IHadoopDistributionService hadoopDistributionService = (IHadoopDistributionService) GlobalServiceRegister.getDefault()
+                    .getService(IHadoopDistributionService.class);
+            if (distributionVersion != null && hadoopDistributionService != null) {
+                try {
+                    supportGroup = hadoopDistributionService.doSupportMethod(distributionVersion, "doSupportGroup");
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }
+        return supportGroup;
     }
 
     private boolean isHDI(HadoopClusterConnection hcConnection) {

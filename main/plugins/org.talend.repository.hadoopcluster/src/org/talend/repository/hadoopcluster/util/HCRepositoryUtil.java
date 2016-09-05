@@ -36,6 +36,7 @@ import org.talend.core.model.process.IProcess;
 import org.talend.core.model.properties.ConnectionItem;
 import org.talend.core.model.properties.DatabaseConnectionItem;
 import org.talend.core.model.properties.Item;
+import org.talend.core.model.properties.Property;
 import org.talend.core.model.repository.ERepositoryObjectType;
 import org.talend.core.model.repository.IRepositoryViewObject;
 import org.talend.core.repository.model.ProxyRepositoryFactory;
@@ -171,12 +172,19 @@ public class HCRepositoryUtil {
      */
     public static HadoopClusterConnectionItem getHCConnectionItemFromRepositoryNode(IRepositoryNode node) {
         IRepositoryViewObject viewObject = node.getObject();
-        if (viewObject != null && viewObject.getProperty() != null) {
-            Item item = viewObject.getProperty().getItem();
-            if (item instanceof HadoopClusterConnectionItem) {
-                return (HadoopClusterConnectionItem) item;
-            } else if (item instanceof ConnectionItem) {
-                return getRelativeHadoopClusterItem(item);
+        ERepositoryObjectType repositoryObjectType = viewObject != null ? viewObject.getRepositoryObjectType() : null;
+        if (viewObject != null
+                && repositoryObjectType != null
+                && (repositoryObjectType.equals(ERepositoryObjectType.METADATA_CONNECTIONS) || repositoryObjectType
+                        .equals(HadoopClusterRepositoryNodeType.HADOOPCLUSTER))) {
+            final Property property = viewObject.getProperty();
+            if (property != null) {
+                Item item = property.getItem();
+                if (item instanceof HadoopClusterConnectionItem) {
+                    return (HadoopClusterConnectionItem) item;
+                } else if (item instanceof ConnectionItem) {
+                    return getRelativeHadoopClusterItem(item);
+                }
             }
         } else if (isHadoopFolderNode(node)) {
             return getHCConnectionItemFromRepositoryNode(node.getParent());

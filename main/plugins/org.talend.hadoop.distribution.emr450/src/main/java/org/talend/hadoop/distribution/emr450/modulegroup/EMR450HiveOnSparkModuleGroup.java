@@ -26,7 +26,6 @@ public class EMR450HiveOnSparkModuleGroup {
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         hs.add(new DistributionModuleGroup(MODULE_GROUP_NAME, true, null));
-        hs.add(new DistributionModuleGroup(MRREQUIRED_MODULE_GROUP_NAME, true, null));
         return hs;
     }
 
