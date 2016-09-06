@@ -31,7 +31,7 @@
               <stripVersion>true</stripVersion>
               <outputDirectory>${project.basedir}/lib</outputDirectory>
               <artifactItems>
-                <artifactItem>
+                <!-- artifactItem>
                   <groupId>${talend.groupid}</groupId>
                   <artifactId>hadoop-common-2.6.0-cdh5.8.1</artifactId>
                   <version>${talend.version.610}</version>
@@ -230,7 +230,7 @@
                   <groupId>${talend.groupid}</groupId>
                   <artifactId>hbase-common-cdh5.8.1</artifactId>
                   <version>${talend.version.610}</version>
-                </artifactItem>
+                </artifactItem-->
               </artifactItems>
             </configuration>
           </execution>
