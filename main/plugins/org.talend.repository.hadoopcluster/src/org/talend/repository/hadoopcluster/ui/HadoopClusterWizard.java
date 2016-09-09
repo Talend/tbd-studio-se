@@ -255,6 +255,9 @@ public class HadoopClusterWizard extends CheckLastVersionRepositoryWizard {
             } else if (dbConn.getDatabaseType().equals(EDatabaseTypeName.HBASE.getDisplayName())) {
                 connParameters.put(ConnParameterKeys.CONN_PARA_KEY_HADOOP_CUSTOM_JARS,
                         connection.getParameters().get(ECustomVersionGroup.HBASE.getName()));
+            } else if (dbConn.getDatabaseType().equals(EDatabaseTypeName.MAPRDB.getDisplayName())) {
+                connParameters.put(ConnParameterKeys.CONN_PARA_KEY_HADOOP_CUSTOM_JARS,
+                        connection.getParameters().get(ECustomVersionGroup.MAPRDB.getName()));
             }
             factory.save(dbItem);
         }
