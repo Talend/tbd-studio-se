@@ -219,6 +219,14 @@
              level="10"
              name="Metadata/Create HBase">
        </Action>
+       <Action
+             class="org.talend.repository.maprdb.action.CreateMaprdbAction"
+             id="org.talend.repository.maprdb.action.CreateMaprdbAction"
+             isEditAction="true"
+             isReadAction="true"
+             level="10"
+             name="Metadata/Create MapR-DB">
+       </Action>
     </extension>
     <extension
           point="org.talend.repository.items.importexport.handler">
