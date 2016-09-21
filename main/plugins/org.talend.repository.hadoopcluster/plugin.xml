@@ -225,7 +225,7 @@
              isEditAction="true"
              isReadAction="true"
              level="10"
-             name="Metadata/Create MapR-DB">
+             name="Metadata/Create MapRDB">
        </Action>
     </extension>
     <extension

@@ -15,10 +15,12 @@ package org.talend.repository.maprdbprovider.creator;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.CoreException;
 import org.talend.core.database.EDatabaseTypeName;
 import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.database.conn.template.EDatabaseConnTemplate;
+import org.talend.core.hadoop.conf.EHadoopConfProperties;
 import org.talend.core.hadoop.conf.EHadoopConfs;
 import org.talend.core.model.metadata.builder.connection.ConnectionFactory;
 import org.talend.core.model.metadata.builder.connection.DatabaseConnection;
@@ -72,24 +74,22 @@ public class MapRDBConnectionCreator extends AbstractHadoopDBConnectionCreator {
         }
         Map<String, String> params = initParams.get(getTypeName());
         if (params != null) {
-            // String server = params.get(EHadoopConfProperties.MAPRDB_ZOOKEEPER_QUORUM.getName());
-            // if (StringUtils.isNotEmpty(server)) {
-            // paramsMap.put(ConnParameterKeys.CONN_PARA_KEY_DB_SERVER, server);
-            // }
-            // String port = params.get(EHadoopConfProperties.MAPRDB_ZOOKEEPER_PROPERTY_CLIENTPORT.getName());
-            // if (StringUtils.isNotEmpty(port)) {
-            // paramsMap.put(ConnParameterKeys.CONN_PARA_KEY_DB_PORT, port);
-            // }
-            // String masterPrincipal = params.get(EHadoopConfProperties.MAPRDB_MASTER_KERBEROS_PRINCIPAL.getName());
-            // if (StringUtils.isNotEmpty(masterPrincipal)) {
-            // paramsMap.put(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_AUTHENTICATION_MASTERPRINCIPAL, masterPrincipal);
-            // }
-            // String regionServerPrincipal =
-            // params.get(EHadoopConfProperties.MAPRDB_REGIONSERVER_KERBEROS_PRINCIPAL.getName());
-            // if (StringUtils.isNotEmpty(regionServerPrincipal)) {
-            // paramsMap.put(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_AUTHENTICATION_REGIONSERVERPRINCIPAL,
-            // regionServerPrincipal);
-            // }
+            String server = params.get(EHadoopConfProperties.MAPRDB_ZOOKEEPER_QUORUM.getName());
+            if (StringUtils.isNotEmpty(server)) {
+                paramsMap.put(ConnParameterKeys.CONN_PARA_KEY_DB_SERVER, server);
+            }
+            String port = params.get(EHadoopConfProperties.MAPRDB_ZOOKEEPER_PROPERTY_CLIENTPORT.getName());
+            if (StringUtils.isNotEmpty(port)) {
+                paramsMap.put(ConnParameterKeys.CONN_PARA_KEY_DB_PORT, port);
+            }
+            String masterPrincipal = params.get(EHadoopConfProperties.MAPRDB_MASTER_KERBEROS_PRINCIPAL.getName());
+            if (StringUtils.isNotEmpty(masterPrincipal)) {
+                paramsMap.put(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_AUTHENTICATION_MASTERPRINCIPAL, masterPrincipal);
+            }
+            String regionServerPrincipal = params.get(EHadoopConfProperties.MAPRDB_REGIONSERVER_KERBEROS_PRINCIPAL.getName());
+            if (StringUtils.isNotEmpty(regionServerPrincipal)) {
+                paramsMap.put(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_AUTHENTICATION_REGIONSERVERPRINCIPAL, regionServerPrincipal);
+            }
         }
     }
 }

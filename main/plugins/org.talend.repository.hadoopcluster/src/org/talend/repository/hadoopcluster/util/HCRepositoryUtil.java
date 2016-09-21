@@ -103,6 +103,13 @@ public class HCRepositoryUtil {
         hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_MAPRTICKET_MAPRHOMEDIR);
         hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_MAPRTICKET_SETMAPRHADOOPLOGIN);
         hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_MAPRTICKET_MAPRHADOOPLOGIN);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_DISTRIBUTION);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_VERSION);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_AUTHENTICATION_USE_MAPRTICKET);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_AUTHENTICATION_USERNAME);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_AUTHENTICATION_MAPRTICKET_PASSWORD);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_AUTHENTICATION_MAPRTICKET_CLUSTER);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_AUTHENTICATION_MAPRTICKET_DURATION);
     }
 
     /**
@@ -181,8 +188,8 @@ public class HCRepositoryUtil {
         if (viewObject != null
                 && repositoryObjectType != null
                 && (repositoryObjectType.equals(ERepositoryObjectType.METADATA_CONNECTIONS)
-                        || repositoryObjectType.equals(HadoopClusterRepositoryNodeType.HADOOPCLUSTER)
-                        || isHadoopSubItem(repositoryObjectType, node))) {
+                        || repositoryObjectType.equals(HadoopClusterRepositoryNodeType.HADOOPCLUSTER) || isHadoopSubItem(
+                            repositoryObjectType, node))) {
             final Property property = viewObject.getProperty();
             if (property != null) {
                 Item item = property.getItem();
@@ -201,8 +208,7 @@ public class HCRepositoryUtil {
 
     private static boolean isHadoopSubItem(ERepositoryObjectType repType, IRepositoryNode node) {
 
-        if (ERepositoryObjectType.METADATA_CON_TABLE.equals(repType)
-                || ERepositoryObjectType.METADATA_CON_COLUMN.equals(repType)) {
+        if (ERepositoryObjectType.METADATA_CON_TABLE.equals(repType) || ERepositoryObjectType.METADATA_CON_COLUMN.equals(repType)) {
             List<ERepositoryObjectType> allLinkedTypes = getAllLinkedTypes(node);
             if (allLinkedTypes.contains(ERepositoryObjectType.METADATA_CONNECTIONS)
                     || allLinkedTypes.contains(HadoopClusterRepositoryNodeType.HADOOPCLUSTER)) {
@@ -554,6 +560,8 @@ public class HCRepositoryUtil {
         parameters.put(ConnParameterKeys.CONN_PARA_KEY_HIVE_VERSION, hcConnection.getDfVersion());
         parameters.put(ConnParameterKeys.CONN_PARA_KEY_HBASE_DISTRIBUTION, hcConnection.getDistribution());
         parameters.put(ConnParameterKeys.CONN_PARA_KEY_HBASE_VERSION, hcConnection.getDfVersion());
+        parameters.put(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_DISTRIBUTION, hcConnection.getDistribution());
+        parameters.put(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_VERSION, hcConnection.getDfVersion());
         if (hcConnection.isEnableKerberos()) {
             parameters.put(ConnParameterKeys.CONN_PARA_KEY_USEKEYTAB, String.valueOf(hcConnection.isUseKeytab()));
             if (hcConnection.isUseKeytab()) {
@@ -561,8 +569,10 @@ public class HCRepositoryUtil {
                 parameters.put(ConnParameterKeys.CONN_PARA_KEY_KEYTAB, hcConnection.getKeytab());
             }
         }
-        // hbase/hive
+        // hbase/hive/maprdb
         parameters.put(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_USE_MAPRTICKET,
+                String.valueOf(hcConnection.isEnableMaprT()));
+        parameters.put(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_AUTHENTICATION_USE_MAPRTICKET,
                 String.valueOf(hcConnection.isEnableMaprT()));
         parameters.put(ConnParameterKeys.CONN_PARA_KEY_HIVE_AUTHENTICATION_USE_MAPRTICKET,
                 String.valueOf(hcConnection.isEnableMaprT()));
@@ -573,6 +583,13 @@ public class HCRepositoryUtil {
             parameters.put(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_MAPRTICKET_CLUSTER,
                     hcConnection.getMaprTCluster());
             parameters.put(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_MAPRTICKET_DURATION,
+                    hcConnection.getMaprTDuration());
+            parameters.put(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_AUTHENTICATION_USERNAME, hcConnection.getUserName());
+            parameters.put(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_AUTHENTICATION_MAPRTICKET_PASSWORD,
+                    hcConnection.getMaprTPassword());
+            parameters.put(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_AUTHENTICATION_MAPRTICKET_CLUSTER,
+                    hcConnection.getMaprTCluster());
+            parameters.put(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_AUTHENTICATION_MAPRTICKET_DURATION,
                     hcConnection.getMaprTDuration());
             parameters.put(ConnParameterKeys.CONN_PARA_KEY_HIVE_AUTHENTICATION_USERNAME, hcConnection.getUserName());
             parameters.put(ConnParameterKeys.CONN_PARA_KEY_HIVE_AUTHENTICATION_MAPRTICKET_PASSWORD,

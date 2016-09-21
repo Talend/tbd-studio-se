@@ -74,8 +74,7 @@ public class HadoopDistributionService implements IHadoopDistributionService {
 
     @Override
     public IDistributionsManager getMaprdbDistributionManager() {
-        // return HadoopDistributionsHelper.MAPRDB;
-        return HadoopDistributionsHelper.HBASE;
+        return HadoopDistributionsHelper.MAPRDB;
     }
 
     @Override

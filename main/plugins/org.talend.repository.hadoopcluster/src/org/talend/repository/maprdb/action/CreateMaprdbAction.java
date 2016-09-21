@@ -61,11 +61,8 @@ public class CreateMaprdbAction extends CreateHadoopDBNodeAction {
         HadoopClusterConnectionItem hcConnectionItem = HCRepositoryUtil.getHCConnectionItemFromRepositoryNode(node);
         if (hcConnectionItem != null) {
             HadoopClusterConnection hcConnection = (HadoopClusterConnection) hcConnectionItem.getConnection();
-            // note: if component team had add the support , will update to use maprdb
-            // DistributionBean maprdbDistribution = HadoopDistributionsHelper.MAPRDB.getDistribution(
-            // hcConnection.getDistribution(), false);
-            DistributionBean maprdbDistribution = HadoopDistributionsHelper.HBASE.getDistribution(hcConnection.getDistribution(),
-                    false);
+            DistributionBean maprdbDistribution = HadoopDistributionsHelper.MAPRDB.getDistribution(
+                    hcConnection.getDistribution(), false);
             if (maprdbDistribution != null) {
                 IHDistributionVersion hdVersion = maprdbDistribution.getHDVersion(hcConnection.getDfVersion(), false);
                 if (hdVersion != null) { // found, don't hide

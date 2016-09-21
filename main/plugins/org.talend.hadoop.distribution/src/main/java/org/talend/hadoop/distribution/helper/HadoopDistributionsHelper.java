@@ -27,7 +27,7 @@ import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.MaprdbComponent;
+import org.talend.hadoop.distribution.component.MapRDBComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.constants.Constant;
@@ -72,7 +72,7 @@ public class HadoopDistributionsHelper {
      * 
      * @link MaprdbComponent
      */
-    public static final DistributionsManager MAPRDB = new DistributionsManager(MaprdbComponent.class.getName());
+    public static final DistributionsManager MAPRDB = new DistributionsManager(MapRDBComponent.class.getName());
 
     /**
      * for HCatalog Distributions.
