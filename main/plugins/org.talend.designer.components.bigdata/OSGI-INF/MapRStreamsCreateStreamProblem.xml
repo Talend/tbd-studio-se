@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<component name="MapRStreamsCreateStreamProblem">
+  <implementation class="org.talend.designer.bigdata.problems.MapRStreamsCreateStreamProblem"/>
+  <service>
+    <provide interface="org.talend.designer.core.ui.editor.nodes.NodeProblem"/>
+  </service>
+</component>

@@ -26,12 +26,13 @@ import org.talend.hadoop.distribution.component.HCatalogComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
+import org.talend.hadoop.distribution.component.MapRDBComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.constants.mapr.IMapRDistribution;
 
 public class MapR310Distribution extends AbstractMapRDistribution implements HDFSComponent, MRComponent, HBaseComponent,
-        SqoopComponent, PigComponent, HiveComponent, HCatalogComponent, IMapRDistribution {
+        SqoopComponent, PigComponent, HiveComponent, HCatalogComponent, MapRDBComponent, IMapRDistribution {
 
     public static final String VERSION = "MAPR310";
 

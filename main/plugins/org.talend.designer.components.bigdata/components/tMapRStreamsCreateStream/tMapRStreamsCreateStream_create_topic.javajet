@@ -1,0 +1,28 @@
+try {
+<%
+	if (tMapRStreamsCreateStreamUtil.isSetNbPartitions()) {
+%>
+		admin_<%=cid%>.createTopic(<%=tMapRStreamsCreateStreamUtil.getStream()%>, <%=tMapRStreamsCreateStreamUtil.getTopic()%>, <%=tMapRStreamsCreateStreamUtil.getNbPartitions()%>);
+<%
+	} else {
+%>
+		admin_<%=cid%>.createTopic(<%=tMapRStreamsCreateStreamUtil.getStream()%>, <%=tMapRStreamsCreateStreamUtil.getTopic()%>);
+<%
+	}
+%>
+} catch (java.io.IOException e) {
+<%
+	if (tMapRStreamsCreateStreamUtil.isCreateTopicIfNotExists()) {
+%>
+		// nothing to do even through the topic already exists, continue the job
+<%
+	} else {
+%>
+		// topic already exists, stop the job
+		throw e;
+<%
+	}
+%>
+} finally {
+	admin_<%=cid%>.close();
+}

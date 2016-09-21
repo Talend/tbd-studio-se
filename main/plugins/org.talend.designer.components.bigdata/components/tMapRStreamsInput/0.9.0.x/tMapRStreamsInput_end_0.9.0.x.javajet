@@ -1,0 +1,36 @@
+<%
+	// This is the tMapRStreamsInput_end javajet part for any MapR Streams version based on Kafka 0.9.0.x
+	
+	// Since the new Consumer API was introduced in Kafka 0.9.0.x, we must split the javajets
+	// in order to generate code with the relevant Consumer API depending of the current Kafka version.
+%>
+		} // end for ConsumerRecord
+<%
+
+	// Stopping conditions for the loop.
+	if (tMapRStreamsInputUtil.isStopOnMaxSize()) {
+%>
+		// Stop reading if the maximum number of input messages has been reached.
+		if (tos_count_<%=cid%> >= <%=tMapRStreamsInputUtil.getMaxSize()%>) {
+		    break;
+		}
+<%
+	}
+	
+	// Save the global deadline for all messages.
+	if (tMapRStreamsInputUtil.isStopOnMaxDuration()) {
+%>
+    // Immediately stop processing messagesDeadline if the max duration deadline has passed.
+    if (System.currentTimeMillis() > maxDurationDeadline_<%=cid%>)
+        break;
+<%
+	}
+
+// Close the loop scope.
+%>
+    } catch (org.apache.kafka.common.KafkaException e) {
+		// Unexpected exception
+		e.printStackTrace();
+		break;
+	}
+} // end while(true)

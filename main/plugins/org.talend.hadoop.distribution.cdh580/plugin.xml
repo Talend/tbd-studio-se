@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+    <extension point="org.talend.core.runtime.librariesNeeded">
+        
+        <!-- HDFS libraries -->    
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hadoop-common-cdh5.8.1"
+            name="hadoop-common-2.6.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-common-2.6.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hadoop-hdfs-cdh5.8.1"
+            name="hadoop-hdfs-2.6.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-hdfs-2.6.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hadoop-auth-cdh5.8.1"
+            name="hadoop-auth-2.6.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-auth-2.6.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+        
+        <!-- HBase libraries -->      
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hbase-common-cdh5.8.1"
+            name="hbase-common-1.2.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hbase-common-1.2.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+                
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hbase-client-cdh5.8.1"
+            name="hbase-client-1.2.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hbase-client-1.2.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+                
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hbase-protocol-cdh5.8.1"
+            name="hbase-protocol-1.2.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hbase-protocol-1.2.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hbase-server-cdh5.8.1"
+            name="hbase-server-1.2.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hbase-server-1.2.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hbase-hadoop-compat-cdh5.8.1"
+            name="hbase-hadoop-compat-1.2.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hbase-hadoop-compat-1.2.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+        
+        <!-- Map/Reduce libraries -->    
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hadoop-yarn-api-cdh5.8.1"
+            name="hadoop-yarn-api-2.6.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-api-2.6.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hadoop-yarn-common-cdh5.8.1"
+            name="hadoop-yarn-common-2.6.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-common-2.6.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hadoop-yarn-client-cdh5.8.1"
+            name="hadoop-yarn-client-2.6.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-client-2.6.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hadoop-yarn-server-web-proxy-cdh5.8.1"
+            name="hadoop-yarn-server-web-proxy-2.6.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-server-web-proxy-2.6.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+                
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hadoop-mapreduce-client-common-cdh5.8.1"
+            name="hadoop-mapreduce-client-common-2.6.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-common-2.6.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hadoop-mapreduce-client-core-cdh5.8.1"
+            name="hadoop-mapreduce-client-core-2.6.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-core-2.6.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hadoop-mapreduce-client-jobclient-cdh5.8.1"
+            name="hadoop-mapreduce-client-jobclient-2.6.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-jobclient-2.6.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="parquet-hadoop-bundle-cdh5.7.0"
+            name="parquet-hadoop-bundle-1.5.0-cdh5.7.0.jar"
+            mvn_uri="mvn:org.talend.libraries/parquet-hadoop-bundle-1.5.0-cdh5.7.0/6.1.0">
+        </libraryNeeded>
+                        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="jodd-core-3.5.2.jar"
+            name="jodd-core-3.5.2.jar"
+            mvn_uri="mvn:org.talend.libraries/jodd-core-3.5.2/6.0.0">
+        </libraryNeeded>  
+        
+        <!-- Hive libraries -->
+
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hive-exec-cdh5.8.1"
+            name="hive-exec-1.1.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hive-exec-1.1.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hive-common-cdh5.8.1"
+            name="hive-common-1.1.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hive-common-1.1.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hive-serde-cdh5.8.1"
+            name="hive-serde-1.1.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hive-serde-1.1.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+                
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hive-metastore-cdh5.8.1"
+            name="hive-metastore-1.1.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hive-metastore-1.1.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+                
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hive-service-cdh5.8.1"
+            name="hive-service-1.1.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hive-service-1.1.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+                
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hive-jdbc-cdh5.8.1"
+            name="hive-jdbc-1.1.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hive-jdbc-1.1.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+                
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hive-hcatalog-core-cdh5.8.1"
+            name="hive-hcatalog-core-1.1.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-core-1.1.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+                        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hive-hcatalog-pig-adapter-cdh5.8.1"
+            name="hive-hcatalog-pig-adapter-1.1.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-pig-adapter-1.1.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>                
+                        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hive-hcatalog-server-extensions-cdh5.8.1"
+            name="hive-hcatalog-server-extensions-1.1.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-server-extensions-1.1.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+           
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hive-hbase-handler-cdh5.8.1"
+            name="hive-hbase-handler-1.1.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hive-hbase-handler-1.1.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+        
+        <!-- Pig libraries -->
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="parquet-pig-bundle-cdh5.7.0"
+            name="parquet-pig-bundle-1.5.0-cdh5.7.0.jar"
+            mvn_uri="mvn:org.talend.libraries/parquet-pig-bundle-1.5.0-cdh5.7.0/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="pig-cdh5.8.1"
+            name="pig-0.12.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/pig-0.12.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+        
+        <!-- Spark libraries -->
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="spark-assembly-cdh5.8.1"
+            name="talend-spark-assembly-1.6.0-cdh5.8.1-hadoop2.6.0-cdh5.8.1-with-hive.jar"
+            mvn_uri="mvn:org.talend.libraries/talend-spark-assembly-1.6.0-cdh5.8.1-hadoop2.6.0-cdh5.8.1-with-hive/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="parquet-avro-cdh5.7.0"
+            name="parquet-avro-1.5.0-cdh5.7.0.jar"
+            mvn_uri="mvn:org.talend.libraries/parquet-avro-1.5.0-cdh5.7.0/6.1.0">
+        </libraryNeeded>
+              
+        <!-- Sqoop libraries -->
+        <libraryNeeded
+            context="plugin:org.talend.libraries.apache"
+            id="avro-mapred-cdh5.8.1"
+            name="avro-mapred-1.7.6-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/avro-mapred-1.7.6-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="sqoop-cdh5.8.1"
+            name="sqoop-1.4.6-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/sqoop-1.4.6-cdh5.8.1/6.1.0">
+        </libraryNeeded>  
+        
+        <!-- Third parties libraries -->
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="avro-cdh5.8.1"
+            name="avro-1.7.6-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/avro-1.7.6-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="htrace-core4-4.0.1-incubating.jar"
+            name="htrace-core4-4.0.1-incubating.jar"
+            mvn_uri="mvn:org.talend.libraries/htrace-core4-4.0.1-incubating/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="htrace-core-3.2.0-incubating.jar"
+            name="htrace-core-3.2.0-incubating.jar"
+            mvn_uri="mvn:org.talend.libraries/htrace-core-3.2.0-incubating/6.1.0">
+        </libraryNeeded>   
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="jersey-server-1.14.jar"
+            name="jersey-server-1.14.jar"
+            mvn_uri="mvn:org.talend.libraries/jersey-server-1.14/6.1.0">
+        </libraryNeeded>
+                 
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="jersey-servlet-1.14.jar"
+            name="jersey-servlet-1.14.jar"
+            mvn_uri="mvn:org.talend.libraries/jersey-servlet-1.14/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="jackson-databind-2.2.3.jar"
+            name="jackson-databind-2.2.3.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-databind-2.2.3/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="jackson-core-2.2.3.jar"
+            name="jackson-core-2.2.3.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-core-2.2.3/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="jackson-annotations-2.2.3.jar"
+            name="jackson-annotations-2.2.3.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-annotations-2.2.3/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="zookeeper-cdh5.8.1"
+            name="zookeeper-3.4.5-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/zookeeper-3.4.5-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="jackson-jaxrs-1.8.8.jar"
+            name="jackson-jaxrs-1.8.8.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-jaxrs-1.8.8/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="jackson-xc-1.8.8.jar"
+            name="jackson-xc-1.8.8.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-xc-1.8.8/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.libraries.jline"
+            id="jline-2.11.jar"
+            name="jline-2.11.jar"
+            mvn_uri="mvn:org.talend.libraries/jline-2.11/6.0.0"
+            uripath="platform:/plugin/org.talend.libraries.jline/lib/jline-2.11.jar">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.libraries.pig"
+            id="datafu-1.2.0.jar"
+            name="datafu-1.2.0.jar"
+            mvn_uri="mvn:org.talend.libraries/datafu-1.2.0/6.0.0"
+            uripath="platform:/plugin/org.talend.libraries.pig/lib/datafu-1.2.0.jar">
+        </libraryNeeded>
+                        
+        <libraryNeeded
+            context="plugin:org.talend.libraries.pig"
+            id="elephant-bird-core-4.9.jar"
+            name="elephant-bird-core-4.9.jar"
+            mvn_uri="mvn:org.talend.libraries/elephant-bird-core-4.9/6.0.0"
+            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-core-4.9.jar">
+        </libraryNeeded>                
+                        
+        <libraryNeeded
+            context="plugin:org.talend.libraries.pig"
+            id="elephant-bird-hadoop-compat-4.9.jar"
+            name="elephant-bird-hadoop-compat-4.9.jar"
+            mvn_uri="mvn:org.talend.libraries/elephant-bird-hadoop-compat-4.9/6.0.0"
+            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-hadoop-compat-4.9.jar">
+        </libraryNeeded>                
+                        
+        <libraryNeeded
+            context="plugin:org.talend.libraries.pig"
+            id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
+            name="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
+            mvn_uri="mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0"
+            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-rcfile-4.9-patched-hive-1.x.jar">
+        </libraryNeeded>
+                        
+        <libraryNeeded
+            context="plugin:org.talend.libraries.pig"
+            id="elephant-bird-pig-4.9.jar"
+            name="elephant-bird-pig-4.9.jar"
+            mvn_uri="mvn:org.talend.libraries/elephant-bird-pig-4.9/6.0.0"
+            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-pig-4.9.jar">
+        </libraryNeeded>
+                        
+        <libraryNeeded
+            context="plugin:org.talend.libraries.pig"
+            id="pigutil.jar"
+            name="pigutil.jar"
+            mvn_uri="mvn:org.talend.libraries/pigutil/6.0.0"
+            uripath="platform:/plugin/org.talend.libraries.pig/lib/pigutil.jar">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="hadoop-aws-cdh5.8.1"
+            name="hadoop-aws-2.6.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-aws-2.6.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+                
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="aws-java-sdk-1.7.4.jar"
+            name="aws-java-sdk-1.7.4.jar"
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-1.7.4/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="avro-ipc-1.7.6-cdh5.8.1"
+            name="avro-ipc-1.7.6-cdh5.8.1.jar"
+            uripath="platform:/plugin/org.talend.libraries.apache/lib/avro-ipc-1.7.6-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/avro-ipc-1.7.6-cdh5.8.1/6.1.0">
+        </libraryNeeded>        
+                
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="amazon-kinesis-client-1.2.1.jar"
+            name="amazon-kinesis-client-1.2.1.jar"
+            mvn_uri="mvn:org.talend.libraries/amazon-kinesis-client-1.2.1/6.0.0">
+        </libraryNeeded>        
+                
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="aws-java-sdk-kinesis-1.9.16.jar"
+            name="aws-java-sdk-kinesis-1.9.16.jar"
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-kinesis-1.9.16/6.0.0">
+        </libraryNeeded>        
+                
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="aws-java-sdk-dynamodb-1.9.16.jar"
+            name="aws-java-sdk-dynamodb-1.9.16.jar"
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-dynamodb-1.9.16/6.0.0">
+        </libraryNeeded>        
+                
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="aws-java-sdk-cloudwatch-1.9.16.jar"
+            name="aws-java-sdk-cloudwatch-1.9.16.jar"
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-cloudwatch-1.9.16/6.0.0">
+        </libraryNeeded>        
+                
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="aws-java-sdk-core-1.9.16.jar"
+            name="aws-java-sdk-core-1.9.16.jar"
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-core-1.9.16/6.0.0">
+        </libraryNeeded>  
+        
+       
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="automaton-1.11-8"
+            name="automaton-1.11-8.jar"
+            mvn_uri="mvn:org.talend.libraries/automaton-1.11-8/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="spark-streaming-kafka-cdh5.8.1"
+            name="spark-streaming-kafka_2.10-1.6.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka_2.10-1.6.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+                
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="kafka-cdh5.8.1"
+            name="kafka_2.10-0.9.0-kafka-2.1.0.jar"
+            mvn_uri="mvn:org.talend.libraries/kafka_2.10-0.9.0-kafka-2.1.0/6.1.0">
+        </libraryNeeded> 
+        
+        <libraryNeeded
+            context="plugin:org.talend.libraries.esb"
+            id="joda-time-2.7.jar"
+            name="joda-time-2.7.jar"
+            mvn_uri="mvn:org.talend.libraries/joda-time-2.7/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.libraries.apache.kafka"
+            id="kafka-clients-cdh5.8.1"
+            name="kafka-clients-0.9.0-kafka-2.1.0.jar"
+            mvn_uri="mvn:org.talend.libraries/kafka-clients-0.9.0-kafka-2.1.0/6.1.0">
+        </libraryNeeded>   
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="kite-data-core-1.0.0-cdh5.8.1"
+            name="kite-data-core-1.0.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/kite-data-core-1.0.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="kite-data-mapreduce-1.0.0-cdh5.8.1.jar"
+            name="kite-data-mapreduce-1.0.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/kite-data-mapreduce-1.0.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="kite-hadoop-compatibility-1.0.0-cdh5.8.1"
+            name="kite-hadoop-compatibility-1.0.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/kite-hadoop-compatibility-1.0.0-cdh5.8.1/6.1.0">
+        </libraryNeeded> 
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="flume-ng-core-1.6.0-cdh5.8.1"
+            name="flume-ng-core-1.6.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/flume-ng-core-1.6.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="flume-ng-sdk-1.6.0-cdh5.8.1"
+            name="flume-ng-sdk-1.6.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/flume-ng-sdk-1.6.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="spark-streaming-flume_2.10-1.6.0-cdh5.8.1"
+            name="spark-streaming-flume_2.10-1.6.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-streaming-flume_2.10-1.6.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="spark-streaming-flume-sink_2.10-1.6.0-cdh5.8.1"
+            name="spark-streaming-flume-sink_2.10-1.6.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-streaming-flume-sink_2.10-1.6.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+        <!-- Groups -->
+        
+        <!-- HDFS group -->
+        <libraryNeededGroup
+                description="HDFS libraries for CDH 5.8"
+                id="HDFS-LIB-CDH_5_8"
+                name="HDFS-LIB-CDH_5_8"  >
+             <library id="hadoop-common-cdh5.8.1" />
+             <library id="hadoop-hdfs-cdh5.8.1" />
+             <library id="hadoop-auth-cdh5.8.1" />
+             <library id="commons-configuration-1.6.jar" />
+             <library id="commons-lang-2.6.jar" />
+             <library id="commons-logging-1.2.jar" />
+             <library id="commons-cli-1.2.jar" />
+             <library id="commons-collections-3.2.2.jar" />
+             <library id="commons-codec-1.9.jar" /> <!-- This jar is required for HDFS SSL connection-->
+             <library id="avro-cdh5.8.1" />
+             <library id="guava-12.0.1.jar" />
+             <library id="protobuf-java-2.5.0.jar" />
+             <library id="slf4j-api-1.7.5.jar" />
+             <library id="slf4j-log4j12-1.7.5.jar" />
+             <library id="log4j-1.2.17.jar" />
+             <library id="jersey-core-1.9.jar" />
+             <library id="htrace-core4-4.0.1-incubating.jar" />
+             <library id="servlet-api-2.5.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- Map/Reduce group -->
+        <libraryNeededGroup
+                description="Map/Reduce libraries for CDH 5.8"
+                id="MAPREDUCE-LIB-CDH_5_8"
+                name="MAPREDUCE-LIB-CDH_5_8"  >
+             <library id="hadoop-mapreduce-client-common-cdh5.8.1"/>
+             <library id="hadoop-mapreduce-client-core-cdh5.8.1"/>
+             <library id="hadoop-mapreduce-client-jobclient-cdh5.8.1"/>
+             <library id="hadoop-yarn-api-cdh5.8.1"/>
+             <library id="hadoop-yarn-client-cdh5.8.1"/>
+             <library id="hadoop-yarn-common-cdh5.8.1"/>                          
+             <library id="hadoop-yarn-server-web-proxy-cdh5.8.1"/>                          
+             <library id="commons-io-2.4.jar"/>
+             <library id="commons-codec-1.9.jar" />
+             <library id="commons-httpclient-3.0.1.jar"/>
+             <library id="htrace-core-3.2.0-incubating.jar" />
+             <library id="jackson-mapper-asl-1.8.8.jar" />
+             <library id="jackson-core-asl-1.8.8.jar" />
+             <library id="jackson-jaxrs-1.8.8.jar"/>
+             <library id="jackson-xc-1.8.8.jar"/>
+             <library id="jersey-client-1.9.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- Map/Reduce parquet group -->
+        <libraryNeededGroup
+                description="Map/Reduce parquet libraries for CDH 5.8"
+                id="MAPREDUCE-PARQUET-LIB-CDH_5_8"
+                name="MAPREDUCE-PARQUET-LIB-CDH_5_8"  >
+             <library id="parquet-hadoop-bundle-cdh5.7.0" />
+             <library id="snappy-java-1.0.4.1.jar" />
+        </libraryNeededGroup>
+        
+        <!-- Map/Reduce parquet group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Map/Reduce parquet libraries for CDH 5.8 that are MRREQUIRED"
+                id="MAPREDUCE-PARQUET-LIB-MRREQUIRED-CDH_5_8"
+                name="MAPREDUCE-PARQUET-LIB-MRREQUIRED-CDH_5_8"  >
+             <library id="jodd-core-3.5.2.jar" />
+        </libraryNeededGroup>
+        
+        <!-- HBase group -->
+        <libraryNeededGroup
+                description="HBase libraries for CDH 5.8"
+                id="HBASE-LIB-CDH_5_8"
+                name="HBASE-LIB-CDH_5_8"  >
+             <library id="hbase-common-cdh5.8.1" />
+             <library id="hbase-client-cdh5.8.1" />
+             <library id="hbase-protocol-cdh5.8.1" />
+             <library id="hadoop-common-cdh5.8.1" />
+             <library id="hadoop-auth-cdh5.8.1" />
+             <library id="commons-logging-1.2.jar" />
+             <library id="commons-codec-1.9.jar" />
+             <library id="commons-configuration-1.6.jar" />
+             <library id="commons-lang-2.6.jar" />
+             <library id="commons-collections-3.2.2.jar" />
+             <library id="zookeeper-cdh5.8.1" />
+             <library id="htrace-core-3.2.0-incubating.jar" />
+             <library id="htrace-core4-4.0.1-incubating.jar" />
+             <library id="guava-12.0.1.jar" />
+             <library id="jackson-mapper-asl-1.8.8.jar" />
+             <library id="jackson-core-asl-1.8.8.jar" />
+             <library id="netty-3.6.6.Final.jar" />
+             <library id="protobuf-java-2.5.0.jar" />
+             <library id="log4j-1.2.17.jar" />
+             <library id="slf4j-api-1.7.5.jar" />
+             <library id="slf4j-log4j12-1.7.5.jar" />
+             <library id="metrics-core-2.2.0.jar" />
+        </libraryNeededGroup>
+        
+        <!-- Pig group -->
+        <libraryNeededGroup
+                description="Pig libraries for CDH 5.8"
+                id="PIG-LIB-CDH_5_8"
+                name="PIG-LIB-CDH_5_8">
+            <library id="pig-cdh5.8.1"/>
+            <library id="antlr-runtime-3.4.jar"/>
+            <library id="jline-2.11.jar"/>
+            <library id="jline-1.0.jar"/>
+            <library id="joda-time-2.5.jar"/>
+            <library id="snappy-java-1.0.4.1.jar"/>
+            <library id="datafu-1.2.0.jar"/>
+            <library id="automaton-1.11-8"/>
+            <library id="parquet-pig-bundle-1.6.0.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- Pig HCatalog group -->
+        <libraryNeededGroup
+                description="Pig HCatalog libraries for CDH 5.8"
+                id="PIG-HCATALOG-LIB-CDH_5_8"
+                name="PIG-HCATALOG-LIB-CDH_5_8">
+            <library id="hive-exec-cdh5.8.1"/>
+            <library id="hive-hcatalog-core-cdh5.8.1"/>
+            <library id="hive-hcatalog-pig-adapter-cdh5.8.1"/>
+            <library id="hive-hcatalog-server-extensions-cdh5.8.1"/>
+            <library id="hive-metastore-cdh5.8.1"/>
+            <library id="jdo-api-3.0.1.jar"/>
+            <library id="libfb303-0.9.2.jar"/>
+            <library id="libthrift-0.9.2.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- Pig HBase group -->
+        <libraryNeededGroup
+                description="Pig HBase libraries for CDH 5.8"
+                id="PIG-HBASE-LIB-CDH_5_8"
+                name="PIG-HBASE-LIB-CDH_5_8">
+            <library id="hbase-server-cdh5.8.1"/>
+            <library id="netty-all-4.0.23.Final.jar"/>
+            <library id="hbase-hadoop-compat-cdh5.8.1" />
+        </libraryNeededGroup>
+
+        <!-- Pig parquet group -->
+        <libraryNeededGroup
+                description="Pig Parquet libraries for CDH 5.8"
+                id="PIG-PARQUET-LIB-CDH_5_8"
+                name="PIG-PARQUET-LIB-CDH_5_8">
+            <library id="parquet-pig-bundle-cdh5.7.0"/>
+        </libraryNeededGroup>
+        
+        <!-- Pig avro group -->
+        <libraryNeededGroup
+                description="Pig Avro libraries for CDH 5.8"
+                id="PIG-AVRO-LIB-CDH_5_8"
+                name="PIG-AVRO-LIB-CDH_5_8">
+            <library id="avro-cdh5.8.1" />
+            <library id="commons-io-2.4.jar"/>
+            <library id="piggybank-cdh5.4.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- Pig RCFile group -->
+        <libraryNeededGroup
+                description="Pig RCFile libraries for CDH 5.8"
+                id="PIG-RCFILE-LIB-CDH_5_8"
+                name="PIG-RCFILE-LIB-CDH_5_8">
+            <library id="hive-common-cdh5.8.1"/>
+            <library id="hive-exec-cdh5.8.1"/>
+            <library id="hive-serde-cdh5.8.1"/>
+            <library id="elephant-bird-core-4.9.jar"/>
+            <library id="elephant-bird-hadoop-compat-4.9.jar"/>
+            <library id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- Pig SequenceFile group -->
+        <libraryNeededGroup
+                description="Pig SequenceFile libraries for CDH 5.8"
+                id="PIG-SEQUENCEFILE-LIB-CDH_5_8"
+                name="PIG-SEQUENCEFILE-LIB-CDH_5_8">
+            <library id="elephant-bird-core-4.9.jar"/>
+            <library id="elephant-bird-hadoop-compat-4.9.jar"/>
+            <library id="elephant-bird-pig-4.9.jar"/>
+            <library id="pigutil.jar"/>
+        </libraryNeededGroup>
+        
+            <!-- Sqoop group -->
+        <libraryNeededGroup
+                description="Sqoop libraries for CDH 5.8"
+                id="SQOOP-LIB-CDH_5_8"
+                name="SQOOP-LIB-CDH_5_8">
+            <library id="sqoop-cdh5.8.1"/>
+            <library id="commons-lang3-3.4.jar" />
+            <library id="avro-mapred-cdh5.8.1"/>
+            <library id="json-20080701.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- Hive group -->
+        <libraryNeededGroup
+                description="Hive libraries for CDH 5.8"
+                id="HIVE-LIB-CDH_5_8"
+                name="HIVE-LIB-CDH_5_8">
+            <library id="antlr-runtime-3.4.jar"/>
+            <library id="commons-httpclient-3.0.1.jar"/>
+            <library id="curator-client-2.6.0.jar"/>
+            <library id="curator-framework-2.6.0.jar"/>
+            <library id="datanucleus-api-jdo-3.2.6.jar"/>
+            <library id="datanucleus-core-3.2.10.jar"/>
+            <library id="datanucleus-rdbms-3.2.9.jar"/>
+            <library id="derby-10.11.1.1.jar"/>
+            <library id="hive-exec-cdh5.8.1"/>
+            <library id="hive-jdbc-cdh5.8.1"/>
+            <library id="hive-metastore-cdh5.8.1"/>
+            <library id="hive-service-cdh5.8.1"/>
+            <library id="httpclient-4.2.5.jar"/>
+            <library id="httpcore-4.2.5.jar"/>
+            <library id="jdo-api-3.0.1.jar"/>
+            <library id="libfb303-0.9.2.jar"/>
+            <library id="libthrift-0.9.2.jar"/>
+            <library id="zookeeper-cdh5.8.1" />
+        </libraryNeededGroup>
+        
+        <!-- Hive HBase group -->
+        <libraryNeededGroup
+                description="Hive HBase libraries for CDH 5.8"
+                id="HIVE-HBASE-LIB-CDH_5_8"
+                name="HIVE-HBASE-LIB-CDH_5_8">
+            <library id="hbase-common-cdh5.8.1" />
+            <library id="hbase-client-cdh5.8.1" />
+            <library id="hbase-protocol-cdh5.8.1" />
+            <library id="hbase-server-cdh5.8.1" />
+            <library id="hbase-hadoop-compat-cdh5.8.1" />
+            <library id="high-scale-lib-1.1.1.jar"/>
+            <library id="hive-hbase-handler-cdh5.8.1"/>
+            <library id="netty-all-4.0.23.Final.jar"/>
+            <library id="parquet-avro-cdh5.7.0"/>
+        </libraryNeededGroup>
+        
+         <!-- Spark group -->
+        <libraryNeededGroup
+                description="Spark libraries for CDH 5.8"
+                id="SPARK-LIB-CDH_5_8"
+                name="SPARK-LIB-CDH_5_8">
+             <library id="spark-assembly-cdh5.8.1" />
+             <library id="jersey-server-1.14.jar" />
+             <library id="jersey-servlet-1.14.jar" />
+             <library id="jackson-databind-2.2.3.jar" />
+             <library id="jackson-core-2.2.3.jar" />
+             <library id="jackson-annotations-2.2.3.jar" />
+             <library id="snappy-java-1.0.4.1.jar"/>
+             <library id="parquet-hadoop-bundle-cdh5.7.0"/>
+        </libraryNeededGroup>
+        
+        <!-- Spark group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark libraries for CDH 5.8 that are MRREQUIRED"
+                id="SPARK-LIB-MRREQUIRED-CDH_5_8"
+                name="SPARK-LIB-MRREQUIRED-CDH_5_8">
+             <library id="snappy-java-1.0.4.1.jar"/>
+        </libraryNeededGroup>
+                
+        <!-- Spark Parquet group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark libraries for CDH 5.8 that are MRREQUIRED"
+                id="SPARK-PARQUET-LIB-MRREQUIRED-CDH_5_8"
+                name="SPARK-PARQUET-LIB-MRREQUIRED-CDH_5_8">
+             <library id="parquet-avro-cdh5.7.0"/>
+             <library id="parquet-hadoop-bundle-cdh5.7.0"/>
+             <library id="jodd-core-3.5.2.jar" />             
+        </libraryNeededGroup>
+        
+        <!-- Spark S3 group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark S3 libraries for CDH 5.8 that are MRREQUIRED"
+                id="SPARK-S3-LIB-MRREQUIRED-CDH_5_8"
+                name="SPARK-S3-LIB-MRREQUIRED-CDH_5_8">
+             <library id="hadoop-aws-cdh5.8.1"/>
+             <library id="aws-java-sdk-1.8.6.jar"/>
+             <library id="jets3t-0.9.0" />
+             <library id="httpclient-4.2.5.jar" />
+             <library id="httpcore-4.2.5.jar" />
+        </libraryNeededGroup>
+        
+        <!-- Spark Hive group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Hive libraries for CDH 5.8 that are MRREQUIRED"
+                id="SPARK-HIVE-LIB-MRREQUIRED-CDH_5_8"
+                name="SPARK-HIVE-LIB-MRREQUIRED-CDH_5_8">
+            <library id="hive-exec-cdh5.8.1"/>
+            <library id="hive-metastore-cdh5.8.1"/>
+            <library id="libfb303-0.9.2.jar"/>            
+        </libraryNeededGroup>
+        
+        <!-- Spark Kinesis group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Kinesis libraries for CDH 5.8 that are MRREQUIRED"
+                id="SPARK-KINESIS-LIB-MRREQUIRED-CDH_5_8"
+                name="SPARK-KINESIS-LIB-MRREQUIRED-CDH_5_8">
+            <library id="spark-streaming-kinesis-asl-assembly_2.10-1.6.0.jar"/>
+            <library id="amazon-kinesis-client-1.2.1.jar"/>
+            <library id="aws-java-sdk-kinesis-1.9.16.jar"/>
+            <library id="aws-java-sdk-core-1.9.16.jar"/>            
+            <library id="aws-java-sdk-dynamodb-1.9.16.jar"/>            
+            <library id="aws-java-sdk-cloudwatch-1.9.16.jar"/>            
+            <library id="joda-time-2.7.jar"/>            
+        </libraryNeededGroup>
+        
+        <!-- Spark Flume group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Flume libraries for CDH 5.8 that are MRREQUIRED"
+                id="SPARK-FLUME-LIB-MRREQUIRED-CDH_5_8"
+                name="SPARK-FLUME-LIB-MRREQUIRED-CDH_5_8">
+            <library id="spark-streaming-flume_2.10-1.6.0-cdh5.8.1"/>
+            <library id="spark-streaming-flume-sink_2.10-1.6.0-cdh5.8.1"/>
+            <library id="flume-ng-sdk-1.6.0-cdh5.8.1"/>
+            <library id="flume-ng-core-1.6.0-cdh5.8.1"/>            
+            <library id="avro-ipc-1.7.6-cdh5.8.1"/>            
+        </libraryNeededGroup>
+        
+        <!-- Spark Kafka group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Kafka assembly libraries for CDH 5.8 that are MRREQUIRED"
+                id="SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-CDH_5_8"
+                name="SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-CDH_5_8">
+            <library id="spark-streaming-kafka-cdh5.8.1"/>
+            <library id="kafka-cdh5.8.1"/>
+            <library id="kafka-clients-cdh5.8.1"/>
+            <library id="metrics-core-2.2.0.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- Spark Kafka Client group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Kafka client libraries for CDH 5.8 that are MRREQUIRED"
+                id="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-CDH_5_8"
+                name="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-CDH_5_8">
+            <library id="kafka-clients-cdh5.8.1"/>
+        </libraryNeededGroup>
+        
+        <!-- Spark Kafka Avro group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Kafka Avro libraries for CDH 5.8 that are MRREQUIRED"
+                id="SPARK-KAFKA-AVRO-LIB-MRREQUIRED-CDH_5_8"
+                name="SPARK-KAFKA-AVRO-LIB-MRREQUIRED-CDH_5_8">
+            <library id="avro-cdh5.8.1"/>
+            <library id="jackson-mapper-asl-1.8.8.jar" />
+            <library id="jackson-core-asl-1.8.8.jar" />
+        </libraryNeededGroup>
+        
+        <!-- group of cloudera navigator libraries -->
+        <libraryNeededGroup
+                description="Talend cloudera navigator API."
+                id="TALEND_CLOUDERA_CDH_5_8_NAVIGATOR"
+                name="TALEND_CLOUDERA_CDH_5_8_NAVIGATOR"  >
+             <library id="talend-lineage-api-0.1.0" />
+             <library id="navigator-sdk-client-2.0-20160624" />
+             <library id="navigator-sdk-model-2.0-20160624" />
+             <library id="spring-core-4.0.7.RELEASE"/>
+             <library id="spring-web-4.0.7.RELEASE"/>
+             <library id="jackson-databind-2.2.3.jar"/>
+             <library id="jackson-annotations-2.2.3.jar"/>
+             <library id="jackson-core-2.2.3.jar"/>
+             <library id="commons-net-3.1"/>
+             <library id="jackson-datatype-joda-2.1.0"/>
+             <library id="joda-time-2.5.jar"/>
+             <library id="httpclient-4.2.5.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- Sqoop Parquet group -->
+        <libraryNeededGroup
+                description="Sqoop Parquet libraries for CDH 5.8"
+                id="SQOOP-PARQUET-LIB-CDH_5_8"
+                name="SQOOP-PARQUET-LIB-CDH_5_8">
+            <library id="kite-data-core-1.0.0-cdh5.8.1"/>
+            <library id="kite-data-mapreduce-1.0.0-cdh5.8.1.jar"/>
+            <library id="kite-hadoop-compatibility-1.0.0-cdh5.8.1"/>
+            <library id="jackson-databind-2.2.3.jar"/>
+            <library id="jackson-core-2.2.3.jar"/>
+            <library id="parquet-avro-cdh5.7.0"/>
+        </libraryNeededGroup>
+    </extension>
+</plugin>

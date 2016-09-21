@@ -1,0 +1,27 @@
+<%@ jet
+    imports="
+    org.talend.core.model.process.INode 
+    org.talend.core.model.process.ElementParameterParser 
+    org.talend.core.model.process.IConnection
+    org.talend.core.model.process.IConnectionCategory
+    org.talend.core.model.metadata.IMetadataTable 
+    org.talend.core.model.metadata.IMetadataColumn 
+    org.talend.designer.codegen.config.CodeGeneratorArgument
+    java.util.List
+    java.util.Map
+    java.util.HashMap
+" 
+%>
+
+<%
+CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+INode node = (INode)codeGenArgument.getArgument();
+String cid = node.getUniqueName();
+
+%>
+
+org.apache.kafka.clients.producer.KafkaProducer<byte[], byte[]> <%=cid%>_producerToClose = (org.apache.kafka.clients.producer.KafkaProducer<byte[], byte[]>)globalMap.get("<%=cid%>_producer");
+if(null != <%=cid%>_producerToClose) {
+    <%=cid%>_producerToClose.close();
+    globalMap.remove("<%=cid%>_producer");
+}

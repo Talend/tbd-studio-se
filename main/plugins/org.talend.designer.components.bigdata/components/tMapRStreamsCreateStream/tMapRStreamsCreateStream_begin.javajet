@@ -1,0 +1,44 @@
+<%@ jet
+    imports="
+    org.talend.core.model.process.INode
+    org.talend.core.model.process.ElementParameterParser
+    org.talend.designer.codegen.config.CodeGeneratorArgument
+    java.util.List
+    java.util.Map
+    java.util.HashMap
+    java.util.Map.Entry
+"
+%>
+
+<%@ include file="@{org.talend.designer.components.bigdata}/components/tMapRStreamsCreateStream/tMapRStreamsCreateStream_util.javajet"%>
+
+<%
+CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+INode node = (INode)codeGenArgument.getArgument();
+String cid = node.getUniqueName();
+
+TMapRStreamsCreateStreamUtil tMapRStreamsCreateStreamUtil = new TMapRStreamsCreateStreamUtil(node);
+%>
+
+org.apache.hadoop.conf.Configuration conf_<%=cid%> = (org.apache.hadoop.conf.Configuration) globalMap.get("conf_<%=tMapRStreamsCreateStreamUtil.getConnectionCid()%>");
+com.mapr.streams.Admin admin_<%=cid%> = com.mapr.streams.Streams.newAdmin(conf_<%=cid%>);
+
+<%
+if (tMapRStreamsCreateStreamUtil.isCreateStream()) {
+%>
+	<%@ include file="@{org.talend.designer.components.bigdata}/components/tMapRStreamsCreateStream/tMapRStreamsCreateStream_create_stream.javajet"%>
+<%
+} else if (tMapRStreamsCreateStreamUtil.isAlterStream()) {
+%>
+	<%@ include file="@{org.talend.designer.components.bigdata}/components/tMapRStreamsCreateStream/tMapRStreamsCreateStream_alter_stream.javajet"%>
+<%
+} else if (tMapRStreamsCreateStreamUtil.isCreateTopic()) {
+%>
+	<%@ include file="@{org.talend.designer.components.bigdata}/components/tMapRStreamsCreateStream/tMapRStreamsCreateStream_create_topic.javajet"%>
+<%
+} else if (tMapRStreamsCreateStreamUtil.isAlterTopic()) {
+%>
+	<%@ include file="@{org.talend.designer.components.bigdata}/components/tMapRStreamsCreateStream/tMapRStreamsCreateStream_alter_topic.javajet"%>
+<%
+}
+%>

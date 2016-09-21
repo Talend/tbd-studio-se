@@ -19,6 +19,8 @@ import org.talend.hadoop.distribution.constants.HiveConstant;
 import org.talend.hadoop.distribution.constants.HiveOnSparkConstant;
 import org.talend.hadoop.distribution.constants.ImpalaConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
+import org.talend.hadoop.distribution.constants.MapRDBConstant;
+import org.talend.hadoop.distribution.constants.MapRStreamsConstant;
 import org.talend.hadoop.distribution.constants.PigConstant;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
@@ -102,7 +104,19 @@ public enum ComponentType {
                 HiveOnSparkConstant.DISTRIBUTION_PARAMETER,
                 HiveOnSparkConstant.DISTRIBUTION_REPOSITORYVALUE,
                 HiveOnSparkConstant.VERSION_PARAMETER,
-                HiveOnSparkConstant.VERSION_REPOSITORYVALUE);
+                HiveOnSparkConstant.VERSION_REPOSITORYVALUE),
+    MAPRSTREAMS(
+                MapRStreamsConstant.SERVICE,
+                MapRStreamsConstant.DISTRIBUTION_PARAMETER,
+                MapRStreamsConstant.DISTRIBUTION_REPOSITORYVALUE,
+                MapRStreamsConstant.VERSION_PARAMETER,
+                MapRStreamsConstant.VERSION_REPOSITORYVALUE),
+    MAPRDB(
+           MapRDBConstant.SERVICE,
+           HBaseConstant.DISTRIBUTION_PARAMETER,
+           HBaseConstant.DISTRIBUTION_REPOSITORYVALUE,
+           HBaseConstant.VERSION_PARAMETER,
+           HBaseConstant.VERSION_REPOSITORYVALUE);
 
     /**
      * @param service - the interface of the service

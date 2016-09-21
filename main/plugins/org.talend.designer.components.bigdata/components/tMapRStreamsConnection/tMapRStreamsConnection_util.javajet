@@ -1,0 +1,76 @@
+<%
+
+class TMapRStreamsConnectionUtil {
+
+    private INode node;
+
+    public TMapRStreamsConnectionUtil(INode node) {
+        this.node = node;
+    }
+
+    public boolean isUsingMapRTicket() {
+        return "true".equals(ElementParameterParser.getValue(node, "__USE_MAPRTICKET__"));
+    }
+    
+    public boolean isUsingKerberos() {
+        return "true".equals(ElementParameterParser.getValue(node, "__USE_KRB__"));
+    }
+
+    public String getPrincipal() {
+        return ElementParameterParser.getValue(node, "__PRINCIPAL__");
+    }
+
+    public String getKeytabPath() {
+        return ElementParameterParser.getValue(node, "__KEYTAB_PATH__");
+    }
+    
+    public String getUsername() {
+        return ElementParameterParser.getValue(node, "__MAPRTICKET_USERNAME__");
+    }
+    
+    public String getPassword() {
+        return ElementParameterParser.getPasswordValue(node, "__MAPRTICKET_PASSWORD__");
+    }
+    
+    public String getCluster() {
+        return ElementParameterParser.getValue(node, "__MAPRTICKET_CLUSTER__");
+    }
+    
+    public String getMapRTicketDuration() {
+        return ElementParameterParser.getValue(node, "__MAPRTICKET_DURATION__");
+    }
+
+    public boolean isSetMapRHomeDir() {
+        return "true".equals(ElementParameterParser.getValue(node, "__SET_MAPR_HOME_DIR__"));
+    }
+
+    public String getMapRHomeDir() {
+        return ElementParameterParser.getValue(node, "__MAPR_HOME_DIR__");
+	 }
+	 
+	 public boolean isSetMapRHadoopLogin() {
+        return "true".equals(ElementParameterParser.getValue(node, "__SET_HADOOP_LOGIN__"));
+    }
+
+    public String getMapRHadoopLogin() {
+        return ElementParameterParser.getValue(node, "__HADOOP_LOGIN__");
+	 }
+	 
+	 public String getFsDefaultName() {
+        return ElementParameterParser.getValue(node, "__FS_DEFAULT_NAME__");
+	 }
+	 
+ 	 public String getNamenodePrincipal() {
+        return ElementParameterParser.getValue(node, "__NAMENODE_PRINCIPAL__");
+	 }
+	 
+ 	 public boolean useDatanodeHostname() {
+        return "true".equals(ElementParameterParser.getValue(node, "__USE_DATANODE_HOSTNAME__"));
+    }
+    
+    public List<Map<String,String>> getHadoopProperties() {
+		  return (List<Map<String,String>>) ElementParameterParser.getObjectValue(node, "__HADOOP_ADVANCED_PROPERTIES__");
+    }
+}
+%>
+

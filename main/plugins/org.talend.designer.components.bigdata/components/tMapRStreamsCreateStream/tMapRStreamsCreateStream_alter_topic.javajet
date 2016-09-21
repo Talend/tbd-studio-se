@@ -1,0 +1,5 @@
+try {
+	admin_<%=cid%>.editTopic(<%=tMapRStreamsCreateStreamUtil.getStream()%>, <%=tMapRStreamsCreateStreamUtil.getTopic()%>, <%=tMapRStreamsCreateStreamUtil.getNbPartitions()%>);
+} finally {
+	admin_<%=cid%>.close();
+}

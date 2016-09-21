@@ -180,8 +180,17 @@
             <%} else {%>
                 final String decryptedMapRPassword_<%=cid%> = <%= ElementParameterParser.getValue(node, passwordFieldName)%>; 
             <%}%>
-            maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=mapRTicketUsername%>, decryptedMapRPassword_<%=cid%>, <%=mapRTicketDuration%>);
+
             <%
+            if(sqoopDistrib.doSupportMaprTicketV52API()){
+				%>
+            	maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=mapRTicketUsername%>, decryptedMapRPassword_<%=cid%>, <%=mapRTicketDuration%>, "");
+            	<%
+            } else {
+				%>
+            	maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=mapRTicketUsername%>, decryptedMapRPassword_<%=cid%>, <%=mapRTicketDuration%>);
+            	<%
+            }
         }
 	}
 

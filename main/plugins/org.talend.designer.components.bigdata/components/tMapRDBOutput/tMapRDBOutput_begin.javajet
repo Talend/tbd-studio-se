@@ -1,0 +1,10 @@
+<%@ jet 
+imports="
+		java.util.List
+		java.util.Map
+		org.talend.core.model.process.ElementParameterParser
+		org.talend.core.model.process.INode
+		org.talend.designer.codegen.config.CodeGeneratorArgument
+		"
+%>
+<%@ include file="@{org.talend.designer.components.bigdata}/components/tHBaseOutput/tHBaseOutput_begin.javajet"%>

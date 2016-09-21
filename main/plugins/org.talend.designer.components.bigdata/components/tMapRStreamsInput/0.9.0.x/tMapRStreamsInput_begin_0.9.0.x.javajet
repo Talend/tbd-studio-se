@@ -1,0 +1,178 @@
+<%
+	// This is the tMapRStreamsInput_begin javajet part for any MapR Streams version based on Kafka 0.9.0.x
+
+	// Since the new Consumer API was introduced in Kafka 0.9.0.x, we must split the javajets
+	// in order to generate code with the relevant Consumer API depending of the current Kafka version.
+%>
+
+<%
+String outStructName = tMapRStreamsInputUtil.getOutStructName();
+%>
+
+class <%=cid%>_ValueDeserializer implements org.apache.kafka.common.serialization.Deserializer<<%=outStructName%>> {
+
+	private org.apache.kafka.common.serialization.StringDeserializer stringDeserializer;
+
+	public void configure(java.util.Map<java.lang.String,?> configs, boolean isKey) {
+		stringDeserializer = new org.apache.kafka.common.serialization.StringDeserializer();
+		stringDeserializer.configure(configs, isKey);
+	}
+
+	public <%=outStructName%> deserialize(String topic, byte[] data) {
+		<%=outStructName%> result = new <%=outStructName%>();
+<%
+		if("STRING".equals(tMapRStreamsInputUtil.getOutputType())) {
+%>
+		    String line = stringDeserializer.deserialize(topic, data);
+		    result.<%=tMapRStreamsInputUtil.getOutgoingColumnName()%> = line;
+<%
+		} else if("BYTES".equals(tMapRStreamsInputUtil.getOutputType())) {
+%>
+		    result.<%=tMapRStreamsInputUtil.getOutgoingColumnName()%> = data;
+<%
+		}
+%>
+		return result;
+    }
+
+	public void close() {
+		// nothing
+	}
+}
+
+class <%=cid%>_KeyDeserializer implements org.apache.kafka.common.serialization.Deserializer<byte[]> {
+
+	public void configure(java.util.Map<java.lang.String,?> configs, boolean isKey) {
+		// nothing
+	}
+
+	public byte[] deserialize(String topic, byte[] data) {
+	    return data;
+	}
+
+	public void close() {
+		// nothing
+	}
+}
+
+// Consumer configuration
+java.util.Properties <%=cid%>_kafkaProperties = new java.util.Properties();
+<%
+// Basic and advanced configuration
+for (java.util.Map.Entry<String, String> consumerProperty : tMapRStreamsInputUtil.getConsumerProperties().entrySet()) {
+%>
+    <%=cid%>_kafkaProperties.put(<%=consumerProperty.getKey()%>, <%=consumerProperty.getValue()%>);
+<%
+}
+%>
+
+// Value deserializer configuration
+<%=cid%>_ValueDeserializer instance_<%=cid%>_ValueDeserializer = new <%=cid%>_ValueDeserializer();
+java.util.Map<String, String> instance_<%=cid%>_ValueDeserializer_configs = new java.util.HashMap<String, String>();
+instance_<%=cid%>_ValueDeserializer_configs.put("serializer.encoding", <%=tMapRStreamsInputUtil.getEncoding()%>);
+instance_<%=cid%>_ValueDeserializer.configure(instance_<%=cid%>_ValueDeserializer_configs, false);
+
+// Single-threaded consumer. Make sure the new security information is picked up.
+javax.security.auth.login.Configuration.setConfiguration(null);
+org.apache.kafka.clients.consumer.KafkaConsumer<byte[], <%=outStructName%>> <%=cid%>_kafkaConsumer = new org.apache.kafka.clients.consumer.KafkaConsumer<byte[], <%=outStructName%>>(<%=cid%>_kafkaProperties, new <%=cid%>_KeyDeserializer(), instance_<%=cid%>_ValueDeserializer);
+<%=cid%>_kafkaConsumer.subscribe(java.util.Arrays.asList(<%=tMapRStreamsInputUtil.getTopic()%>));
+
+globalMap.put("<%=cid%>_consumer", <%=cid%>_kafkaConsumer);
+
+<%
+if (tMapRStreamsInputUtil.isResetNewConsumerGroup()) {
+%>
+	// We first have to do a quick poll() in order to know which partitions are assigned to the consumer before
+	// "resetting" offsets by seeking to the beginning/end of the current partitions.
+	// Those polled records are not processed since we wanted to reset the offsets first.
+	<%=cid%>_kafkaConsumer.poll(0);
+	java.util.Set<org.apache.kafka.common.TopicPartition> <%=cid%>_assignedtopicPartitions = <%=cid%>_kafkaConsumer.assignment();
+<%
+	if ("earliest".equals(tMapRStreamsInputUtil.getAutoOffsetReset())) {
+%>
+	<%=cid%>_kafkaConsumer.seekToBeginning(<%=cid%>_assignedtopicPartitions.toArray(new org.apache.kafka.common.TopicPartition[<%=cid%>_assignedtopicPartitions.size()]));
+<%
+	} else if ("latest".equals(tMapRStreamsInputUtil.getAutoOffsetReset())) {
+%>
+	<%=cid%>_kafkaConsumer.seekToEnd(<%=cid%>_assignedtopicPartitions.toArray(new org.apache.kafka.common.TopicPartition[<%=cid%>_assignedtopicPartitions.size()]));
+<%
+	}
+
+	if (!tMapRStreamsInputUtil.isAutoCommitOffset()) {
+%>
+		// Commit the offsets to ensure that the next job(s) use the reset offset.
+		{
+		java.util.HashMap<org.apache.kafka.common.TopicPartition, org.apache.kafka.clients.consumer.OffsetAndMetadata> <%=cid%>_resetOffsets = new java.util.HashMap<>();
+		for (org.apache.kafka.common.TopicPartition topic : <%=cid%>_assignedtopicPartitions) {
+			<%=cid%>_resetOffsets.put(topic, new org.apache.kafka.clients.consumer.OffsetAndMetadata(
+				<%=cid%>_kafkaConsumer.position(topic)));
+		}
+		<%=cid%>_kafkaConsumer.commitSync(<%=cid%>_resetOffsets);
+		}
+<%
+	}
+}
+
+// Save the global deadline for all messages.
+if (tMapRStreamsInputUtil.isStopOnMaxDuration()) {
+%>
+    // Stop processing messages if the job has passed this time.
+	 long initialTime_<%=cid%> = System.currentTimeMillis();
+    long maxDurationDeadline_<%=cid%> = System.currentTimeMillis() + <%=tMapRStreamsInputUtil.getAsLong(tMapRStreamsInputUtil.getMaxDuration())%>;
+<%
+}
+%>
+
+// Start consumption
+while (true) {
+	try {
+<%
+		if (tMapRStreamsInputUtil.isStopOnMaxMsgWait()) {
+			if (tMapRStreamsInputUtil.isStopOnMaxDuration()) {
+%>
+				// When both max duration and timeout between two messages are set, the poll timeout should be the lowest one between
+				// the provided timeout and the remaining execution time.
+				long remainingTime_<%=cid%> = maxDurationDeadline_<%=cid%> - System.currentTimeMillis();
+				if(remainingTime_<%=cid%> < 0) {
+					break;
+				}
+				long <%=cid%>_timeout = java.lang.Math.min(<%=tMapRStreamsInputUtil.getAsLong(tMapRStreamsInputUtil.getMaxMsgWait())%>, remainingTime_<%=cid%>);
+				org.apache.kafka.clients.consumer.ConsumerRecords<byte[], <%=outStructName%>> <%=cid%>_consumerRecords = <%=cid%>_kafkaConsumer.poll(<%=cid%>_timeout);
+<%
+			} else {
+%>
+				// Use the provided consumer timeout and the consumer has to be stopped if there is no record polled from the topic
+				org.apache.kafka.clients.consumer.ConsumerRecords<byte[], <%=outStructName%>> <%=cid%>_consumerRecords = <%=cid%>_kafkaConsumer.poll(<%=tMapRStreamsInputUtil.getAsLong(tMapRStreamsInputUtil.getMaxMsgWait())%>);
+<%
+			}
+		} else if (tMapRStreamsInputUtil.isStopOnMaxDuration()) {
+%>
+			// Poll timeout has to be recomputed for every single poll
+			long <%=cid%>_timeout = maxDurationDeadline_<%=cid%> - System.currentTimeMillis();
+			if(<%=cid%>_timeout < 0) {
+				break;
+			}
+			org.apache.kafka.clients.consumer.ConsumerRecords<byte[], <%=outStructName%>> <%=cid%>_consumerRecords = <%=cid%>_kafkaConsumer.poll(<%=cid%>_timeout);
+<%
+		} else {
+%>
+			// Either use a default poll timeout of 1s or the provided timeout precision. The consumer won't stop if there is no record polled from the topic.
+			org.apache.kafka.clients.consumer.ConsumerRecords<byte[], <%=outStructName%>> <%=cid%>_consumerRecords = <%=cid%>_kafkaConsumer.poll(<%=tMapRStreamsInputUtil.getConsumerTimeout()%>);
+<%
+		}
+
+		if (tMapRStreamsInputUtil.isStopOnMaxMsgWait()) {
+%>
+			// If there is no record polled from the topic, we know that we exceeded the provided consumer timeout. So immediately stop processing.
+			if(<%=cid%>_consumerRecords.isEmpty()) {
+				break;
+			}
+<%
+		}
+%>
+		if(<%=cid%>_consumerRecords == null) {
+			// Dummy condition to make sure we have a way to break the current loop, regardless of the tKafkaInput configuration (compilation matter).
+			break;
+		}
+
+		for(org.apache.kafka.clients.consumer.ConsumerRecord<byte[], <%=outStructName%>> <%=cid%>_consumerRecord : <%=cid%>_consumerRecords) {

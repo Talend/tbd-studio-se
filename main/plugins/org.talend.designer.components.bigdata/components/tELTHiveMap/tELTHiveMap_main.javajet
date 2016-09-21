@@ -201,8 +201,16 @@
             <%} else {%>
                 String decryptedMaprPassword_<%=uniqueNameComponent%> = <%= ElementParameterParser.getValue(node, passwordFieldName)%>;
             <%}%>
-            maprLogin_<%=uniqueNameComponent%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=mapRTicketUsername%>, decryptedMaprPassword_<%=uniqueNameComponent%>, <%=mapRTicketDuration%>);
             <%
+            if(hiveDistrib.doSupportMaprTicketV52API()){
+            	%>
+            	maprLogin_<%=uniqueNameComponent%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=mapRTicketUsername%>, decryptedMaprPassword_<%=uniqueNameComponent%>, <%=mapRTicketDuration%>, "");
+            	<%
+            } else {
+            	%>
+            	maprLogin_<%=uniqueNameComponent%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=mapRTicketUsername%>, decryptedMaprPassword_<%=uniqueNameComponent%>, <%=mapRTicketDuration%>);
+            	<%
+            }
         }
 
 		if(((isCustom && !useYarn) || (!isCustom && hiveDistrib.isHadoop1())) && setMapredJT) {

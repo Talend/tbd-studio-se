@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MapR 5.2.0 distribution
+Bundle-SymbolicName: org.talend.hadoop.distribution.mapr520;singleton:=true
+Bundle-Version: 6.3.0.qualifier
+Bundle-Vendor: .Talend SA.
+Service-Component: OSGI-INF/mapr520.xml
+Require-Bundle: org.talend.core.runtime,
+ org.talend.hadoop.distribution
+Bundle-ActivationPolicy: lazy

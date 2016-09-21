@@ -4,12 +4,16 @@ Bundle-Name: TIS ComponentProvider Plug-in
 Bundle-SymbolicName: org.talend.designer.components.bigdata;singleton:=true
 Bundle-Version: 6.3.0.qualifier
 Bundle-Vendor: .Talend SA.
+Service-Component: OSGI-INF/*.xml
 Require-Bundle: org.eclipse.ui.workbench,
  org.talend.commons.ui,
  org.eclipse.core.runtime,
  org.talend.core,
+ org.talend.core.ui,
  org.apache.log4j,
- org.talend.designer.codegen
+ org.talend.designer.codegen,
+ org.talend.designer.core,
+ org.talend.hadoop.distribution;bundle-version="6.1.0"
 Bundle-Activator: org.talend.designer.components.tishadoopprovider.TisHadoopComponentProviderActivator
 Eclipse-LazyStart: true
 Eclipse-BundleShape: dir

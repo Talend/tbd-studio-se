@@ -29,6 +29,7 @@ import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
+import org.talend.hadoop.distribution.component.MapRDBComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
@@ -42,7 +43,7 @@ import org.talend.hadoop.distribution.mapr410.modulegroup.MapR410PigOutputNodeMo
 import org.talend.hadoop.distribution.mapr410.modulegroup.MapR410SparkBatchS3NodeModuleGroup;
 
 public class MapR410Distribution extends AbstractMapRDistribution implements HDFSComponent, MRComponent, HBaseComponent,
-        SqoopComponent, PigComponent, HiveComponent, HCatalogComponent, SparkBatchComponent, HiveOnSparkComponent,
+        SqoopComponent, PigComponent, HiveComponent, HCatalogComponent, SparkBatchComponent, HiveOnSparkComponent, MapRDBComponent,
         IMapRDistribution {
 
     public static final String VERSION = "MAPR410";

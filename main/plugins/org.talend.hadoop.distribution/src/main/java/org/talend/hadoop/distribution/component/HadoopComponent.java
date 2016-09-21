@@ -75,6 +75,14 @@ public interface HadoopComponent {
     public boolean doSupportMapRTicket();
 
     /**
+     * The method getMapRCredentialsViaPassword from maprfs-x.x-mapr.jar By v52 we mean the follwoing signature :
+     * getMapRCredentialsViaPassword(STRING, STRING, STRING, LONG, STRING)
+     * 
+     * @return
+     */
+    public boolean doSupportMaprTicketV52API();
+
+    /**
      * @return a boolean that indicates if the distribution supports the USE_DATANODE_HOSTNAME property.
      */
     public boolean doSupportUseDatanodeHostname();

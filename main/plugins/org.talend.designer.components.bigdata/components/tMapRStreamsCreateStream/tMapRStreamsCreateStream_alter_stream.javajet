@@ -1,0 +1,53 @@
+try {
+	com.mapr.streams.StreamDescriptor descriptor_<%=cid%> = admin_<%=cid%>.getStreamDescriptor(<%=tMapRStreamsCreateStreamUtil.getStream()%>);
+<%
+	if (tMapRStreamsCreateStreamUtil.isAlterAdminPerms()) {
+%>
+		descriptor_<%=cid%>.setAdminPerms(<%=tMapRStreamsCreateStreamUtil.getAdminPerms()%>);
+<%
+	}
+	if (tMapRStreamsCreateStreamUtil.isAlterConsumePerms()) {
+%>
+		descriptor_<%=cid%>.setConsumePerms(<%=tMapRStreamsCreateStreamUtil.getConsumePerms()%>);
+<%
+	}
+	if (tMapRStreamsCreateStreamUtil.isAlterCopyPerms()) {
+%>
+		descriptor_<%=cid%>.setCopyPerms(<%=tMapRStreamsCreateStreamUtil.getCopyPerms()%>);
+<%
+	}
+	if (tMapRStreamsCreateStreamUtil.isAlterProducePerms()) {
+%>
+		descriptor_<%=cid%>.setProducePerms(<%=tMapRStreamsCreateStreamUtil.getProducePerms()%>);
+<%
+	}
+	if (tMapRStreamsCreateStreamUtil.isAlterTopicPerms()) {
+%>
+		descriptor_<%=cid%>.setTopicPerms(<%=tMapRStreamsCreateStreamUtil.getTopicPerms()%>);
+<%
+	}
+	if (tMapRStreamsCreateStreamUtil.isAlterCompression()) {
+%>
+		descriptor_<%=cid%>.setCompressionAlgo("<%=tMapRStreamsCreateStreamUtil.getCompression()%>");
+<%
+	}
+	if (tMapRStreamsCreateStreamUtil.isAlterDefaultPartitions()) {
+%>
+		descriptor_<%=cid%>.setDefaultPartitions(<%=tMapRStreamsCreateStreamUtil.getDefaultPartitions()%>);
+<%
+	}
+	if (tMapRStreamsCreateStreamUtil.isAlterTimeToLive()) {
+%>
+		descriptor_<%=cid%>.setTimeToLiveSec(<%=tMapRStreamsCreateStreamUtil.getTimeToLive()%>);
+<%
+	}
+	if (tMapRStreamsCreateStreamUtil.isAlterAutoCreateTopics()) {
+%>
+		descriptor_<%=cid%>.setAutoCreateTopics(<%=tMapRStreamsCreateStreamUtil.isAutoCreateTopics()%>);
+<%
+	}
+%>
+	admin_<%=cid%>.editStream(<%=tMapRStreamsCreateStreamUtil.getStream()%>, descriptor_<%=cid%>);
+}  finally {
+	admin_<%=cid%>.close();
+}

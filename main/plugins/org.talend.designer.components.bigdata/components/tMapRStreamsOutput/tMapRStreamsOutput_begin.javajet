@@ -1,0 +1,44 @@
+<%@ jet
+    imports="
+    org.talend.core.model.process.INode
+    org.talend.core.model.process.ElementParameterParser
+    org.talend.core.model.process.IConnection
+    org.talend.core.model.process.IConnectionCategory
+    org.talend.core.model.metadata.IMetadataTable
+    org.talend.core.model.metadata.IMetadataColumn
+    org.talend.designer.codegen.config.CodeGeneratorArgument
+    java.util.List
+    java.util.Map
+    java.util.Map.Entry
+    java.util.HashMap
+    "
+%>
+
+<%@ include file="@{org.talend.designer.components.bigdata}/components/tMapRStreamsOutput/tMapRStreamsOutput_util.javajet"%>
+
+<%
+// Parse the inputs to this javajet generator.
+final CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+final INode node = (INode)codeGenArgument.getArgument();
+final String cid = node.getUniqueName();
+
+TMapRStreamsOutputUtil tMapRStreamsOutputUtil = new TMapRStreamsOutputUtil(node);
+%>
+
+// Producer configuration
+java.util.Properties <%=cid%>_producerProperties = new java.util.Properties();
+<%=cid%>_producerProperties.setProperty("compression.type", "<%=tMapRStreamsOutputUtil.getCompression()%>");
+<%
+	// Advanced configuration
+	for(Entry<String, String> producerProperty : tMapRStreamsOutputUtil.getProducerProperties().entrySet()) {
+%>
+		<%=cid%>_producerProperties.setProperty(<%=producerProperty.getKey()%>, <%=producerProperty.getValue()%>);
+<%
+	} // end for
+%>
+
+org.apache.kafka.clients.producer.KafkaProducer<byte[], byte[]> <%=cid%>_producer = (org.apache.kafka.clients.producer.KafkaProducer<byte[], byte[]>)globalMap.get("<%=cid%>_producer");
+if(null == <%=cid%>_producer) {
+    <%=cid%>_producer = new org.apache.kafka.clients.producer.KafkaProducer<byte[], byte[]>(<%=cid%>_producerProperties, new org.apache.kafka.common.serialization.ByteArraySerializer(), new org.apache.kafka.common.serialization.ByteArraySerializer());
+    globalMap.put("<%=cid%>_producer", <%=cid%>_producer);
+}

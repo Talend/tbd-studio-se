@@ -551,10 +551,17 @@ imports="
                         <%} else {%>
                             String decryptedMaprPassword_<%=cid%> = <%= ElementParameterParser.getValue(node, passwordFieldName)%>;
                         <%}%>
-                        maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=mapRTicketUsername%>, decryptedMaprPassword_<%=cid%>, <%=mapRTicketDuration%>);
                         <%
+                        if(hiveDistrib.doSupportMaprTicketV52API()){
+							%>
+                        	maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=mapRTicketUsername%>, decryptedMaprPassword_<%=cid%>, <%=mapRTicketDuration%>, "");
+                        	<%
+                        } else {
+                        	%>
+                        	maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=mapRTicketUsername%>, decryptedMaprPassword_<%=cid%>, <%=mapRTicketDuration%>);
+                        	<%
+                        }
                     }
-
                     // Using SSL in non Secure Mode
 					if(useSsl && this.hiveDistrib.doSupportSSL()){
 						if (ElementParameterParser.canEncrypt(node, sslStorepasswordFieldName)) {

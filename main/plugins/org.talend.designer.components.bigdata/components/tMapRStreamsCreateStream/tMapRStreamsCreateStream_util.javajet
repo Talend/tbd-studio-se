@@ -1,0 +1,140 @@
+<%@ jet
+    imports="
+    org.talend.core.model.process.INode
+    org.talend.core.model.process.ElementParameterParser
+    org.talend.designer.codegen.config.CodeGeneratorArgument
+    java.util.List
+    java.util.Map
+    java.util.HashMap
+"
+%>
+
+<%
+class TMapRStreamsCreateStreamUtil {
+
+	private INode node;
+	
+	private INode connNode;
+
+	public TMapRStreamsCreateStreamUtil(INode node) {
+		this.node = node;
+		this.connNode = ElementParameterParser.getLinkedNodeValue(node, "__CONNECTION__");
+	}
+	
+	public String getConnectionCid() {
+		return this.connNode.getUniqueName();
+	}
+
+	public boolean isCreateStream() {
+		return "CREATE_STREAM".equals(ElementParameterParser.getValue(node, "__ACTION__")) || isCreateStreamIfNotExists();
+	}
+
+	public boolean isCreateStreamIfNotExists() {
+		return "CREATE_STREAM_IF_NOT_EXISTS".equals(ElementParameterParser.getValue(node, "__ACTION__"));
+	}
+
+	public boolean isAlterStream() {
+		return "ALTER_STREAM".equals(ElementParameterParser.getValue(node, "__ACTION__"));
+	}
+	
+	public boolean isCreateTopic() {
+		return "CREATE_TOPIC".equals(ElementParameterParser.getValue(node, "__ACTION__")) || isCreateTopicIfNotExists();
+	}
+
+	public boolean isCreateTopicIfNotExists() {
+		return "CREATE_TOPIC_IF_NOT_EXISTS".equals(ElementParameterParser.getValue(node, "__ACTION__"));
+	}
+
+	public boolean isAlterTopic() {
+		return "ALTER_TOPIC".equals(ElementParameterParser.getValue(node, "__ACTION__"));
+	}
+	
+	public String getStream() {
+		return ElementParameterParser.getValue(node, "__STREAM__");
+	}
+
+	public boolean isAlterAdminPerms() {
+		return "true".equals(ElementParameterParser.getValue(node, "__ALTER_ADMIN_PERMS__"));
+	}
+	
+	public boolean isAlterConsumePerms() {
+		return "true".equals(ElementParameterParser.getValue(node, "__ALTER_CONSUME_PERMS__"));
+	}
+	
+	public boolean isAlterProducePerms() {
+		return "true".equals(ElementParameterParser.getValue(node, "__ALTER_PRODUCE_PERMS__"));
+	}
+	
+	public boolean isAlterCopyPerms() {
+		return "true".equals(ElementParameterParser.getValue(node, "__ALTER_COPY_PERMS__"));
+	}
+	
+	public boolean isAlterTopicPerms() {
+		return "true".equals(ElementParameterParser.getValue(node, "__ALTER_TOPIC_PERMS__"));
+	}
+	
+	public boolean isAlterAutoCreateTopics() {
+		return "true".equals(ElementParameterParser.getValue(node, "__ALTER_AUTO_CREATE_TOPICS__"));
+	}
+	
+	public boolean isAlterDefaultPartitions() {
+		return "true".equals(ElementParameterParser.getValue(node, "__ALTER_DEFAULT_PARTITIONS__"));
+	}
+	
+	public boolean isAlterTimeToLive() {
+		return "true".equals(ElementParameterParser.getValue(node, "__ALTER_TIME_TO_LIVE__"));
+	}
+	
+	public boolean isAlterCompression() {
+		return "true".equals(ElementParameterParser.getValue(node, "__ALTER_COMPRESSION__"));
+	}
+	
+	public String getAdminPerms() {
+		return ElementParameterParser.getValue(node, "__STREAM_ADMIN_PERMS__");
+	}
+	
+	public String getConsumePerms() {
+		return ElementParameterParser.getValue(node, "__STREAM_CONSUME_PERMS__");
+	}
+	
+	public String getProducePerms() {
+		return ElementParameterParser.getValue(node, "__STREAM_PRODUCE_PERMS__");
+	}
+	
+	public String getCopyPerms() {
+		return ElementParameterParser.getValue(node, "__STREAM_COPY_PERMS__");
+	}
+	
+	public String getTopicPerms() {
+		return ElementParameterParser.getValue(node, "__STREAM_TOPIC_PERMS__");
+	}
+	
+	public boolean isAutoCreateTopics() {
+		return "true".equals(ElementParameterParser.getValue(node, "__STREAM_AUTO_CREATE_TOPICS__"));
+	}
+	
+	public String getDefaultPartitions() {
+		return ElementParameterParser.getValue(node, "__STREAM_DEFAULT_PARTITIONS__");
+	}
+	
+	public String getTimeToLive() {
+		return ElementParameterParser.getValue(node, "__STREAM_TIME_TO_LIVE__");
+	}
+	
+	public String getCompression() {
+		return ElementParameterParser.getValue(node, "__STREAM_COMPRESSION__").toLowerCase();
+	}
+	
+	public String getTopic() {
+		return ElementParameterParser.getValue(node, "__TOPIC__");
+	}
+	
+	public boolean isSetNbPartitions() {
+		return "true".equals(ElementParameterParser.getValue(node, "__SET_NB_PARTITIONS__"));
+	}
+	
+	public String getNbPartitions() {
+		return ElementParameterParser.getValue(node, "__TOPIC_NB_PARTITIONS__");
+	}
+}
+%>

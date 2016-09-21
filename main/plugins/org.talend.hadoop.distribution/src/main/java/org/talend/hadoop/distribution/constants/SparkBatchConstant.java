@@ -41,4 +41,11 @@ public final class SparkBatchConstant {
     public static final String USE_CLOUDERA_NAVIGATOR = "USE_CLOUDERA_NAVIGATOR";//$NON-NLS-1$
 
     public static final String USE_ATLAS = "USE_ATLAS"; //$NON-NLS-1$
+
+    public static final String MAPRDB_CONFIGURATION_COMPONENT = "tMapRDBConfiguration"; //$NON-NLS-1$
+
+    public static final String MAPRDB_INPUT_COMPONENT = "tMapRDBInput"; //$NON-NLS-1$
+
+    public static final String MAPRDB_OUTPUT_COMPONENT = "tMapRDBOutput"; //$NON-NLS-1$
+
 }

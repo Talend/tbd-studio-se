@@ -83,6 +83,28 @@
             mvn_uri="mvn:org.talend.libraries/parquet-hive-bundle-1.6.0/6.2.0" >
         </libraryNeeded>
         
+        <!-- MapR Streams libraries -->
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.mapr510"
+            id="mapr-streams-5.1.0-mapr.jar"
+            name="mapr-streams-5.1.0-mapr.jar"
+            mvn_uri="mvn:org.talend.libraries/mapr-streams-5.1.0-mapr/6.3.0"/>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.mapr510"
+            id="kafka_2.10-0.9.0.0-mapr-1607.jar"
+            name="kafka_2.10-0.9.0.0-mapr-1607.jar"
+            mvn_uri="mvn:org.talend.libraries/kafka_2.10-0.9.0.0-mapr-1607/6.3.0"/>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.mapr510"
+            id="kafka-clients-0.9.0.0-mapr-1607.jar"
+            name="kafka-clients-0.9.0.0-mapr-1607.jar"
+            mvn_uri="mvn:org.talend.libraries/kafka-clients-0.9.0.0-mapr-1607/6.3.0"/>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.mapr510"
+            id="spark-streaming-kafka-v09_2.10-1.5.2-mapr-1605.jar"
+            name="spark-streaming-kafka-v09_2.10-1.5.2-mapr-1605.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka-v09_2.10-1.5.2-mapr-1605/6.3.0"/>
+
 
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop"
@@ -561,7 +583,7 @@
                 description="Spark Kafka client libraries for MapR 5.1.0 that are MRREQUIRED"
                 id="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-MAPR510"
                 name="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-MAPR510">
-            <library id="kafka-clients-0.9.0.0-mapr-1602.jar"/>
+            <library id="kafka-clients-0.9.0.0-mapr-1607.jar"/>
         </libraryNeededGroup>
         
         <!-- Spark Kafka Avro group MRREQUIRED -->
@@ -589,6 +611,58 @@
             <library id="jackson-core-2.2.3.jar"/>
             <library id="parquet-hadoop-bundle-1.6.0.jar" />
             <library id="parquet-avro-1.4.1.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- MapRStreams group -->    
+        <libraryNeededGroup
+                description="MapRStreams 5.1.0 libraries (based on Kafka 2.10-0.9.0.0-mapr-1607)"
+                id="MAPRSTREAMS-LIB-MAPR510"
+                name="MAPRSTREAMS-LIB-MAPR510">
+            <library id="maprfs-5.1.X-lastest"/>
+            <library id="hadoop-common-mapr-5.0.X-lastest"/>
+            <library id="hadoop-auth-mapr-5.0.X-lastest"/>
+            <library id="commons-logging-1.1.3.jar"/>
+            <library id="commons-collections-3.2.2.jar"/>
+            <library id="commons-configuration-1.6.jar"/>
+            <library id="commons-lang-2.6.jar"/>
+            <library id="commons-io-2.4.jar"/>
+            <library id="protobuf-java-2.5.0.jar"/>
+            <library id="mapr-streams-5.1.0-mapr.jar"/>
+            <library id="kafka_2.10-0.9.0.0-mapr-1607.jar"/>
+            <library id="scala-library-2.10.5.jar"/>
+            <library id="jopt-simple-3.2.jar"/>
+            <library id="kafka-clients-0.9.0.0-mapr-1607.jar"/>
+            <library id="lz4-1.2.0.jar"/>
+            <library id="metrics-core-2.2.0.jar"/>
+            <library id="snappy-java-1.1.1.7.jar"/>
+            <library id="zkclient-0.7.jar"/>
+            <library id="zookeeper-3.4.6.jar"/>
+            <library id="log4j-1.2.17.jar"/>
+            <library id="slf4j-api-1.7.6.jar"/>
+            <library id="slf4j-log4j12-1.7.6.jar"/>
+            <library id="json-20080701.jar"/>
+            <library id="flexjson-2.1.jar"/>
+            <library id="guava-14.0.1.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- Spark MapR Streams group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark MapR Streams libraries for MapR 5.1.0 that are MRREQUIRED"
+                id="SPARK-MAPRSTREAMS-ASSEMBLY-LIB-MRREQUIRED-MAPR510"
+                name="SPARK-MAPRSTREAMS-ASSEMBLY-LIB-MRREQUIRED-MAPR510">
+            <library id="spark-streaming-kafka-v09_2.10-1.5.2-mapr-1605.jar"/>
+            <library id="kafka_2.10-0.9.0.0-mapr-1607.jar"/>
+            <library id="mapr-streams-5.1.0-mapr.jar"/>
+            <library id="metrics-core-2.2.0.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- Spark MapR Streams Client group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark MapR Streams client libraries for MapR 5.1.0 that are MRREQUIRED"
+                id="SPARK-MAPRSTREAMS-CLIENT-LIB-MRREQUIRED-MAPR510"
+                name="SPARK-MAPRSTREAMS-CLIENT-LIB-MRREQUIRED-MAPR510">
+            <library id="kafka-clients-0.9.0.0-mapr-1607.jar"/>
+            <library id="mapr-streams-5.1.0-mapr.jar"/>
         </libraryNeededGroup>
         
     </extension>

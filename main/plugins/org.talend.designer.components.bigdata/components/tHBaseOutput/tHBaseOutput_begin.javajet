@@ -261,8 +261,16 @@ if(!"true".equals(useExistingConn)){
             %>
             <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
 
-            maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=username%>, decryptedPassword_<%=cid%>, <%=mapRTicketDuration%>);
             <%
+            if(hbaseDistrib.doSupportMaprTicketV52API()){
+				%>
+            	maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=username%>, decryptedPassword_<%=cid%>, <%=mapRTicketDuration%>, "");
+            	<%
+            } else {
+            	%>
+            	maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=username%>, decryptedPassword_<%=cid%>, <%=mapRTicketDuration%>);
+            	<%
+            }
         }
     }
 	List<Map<String, String>> properties =

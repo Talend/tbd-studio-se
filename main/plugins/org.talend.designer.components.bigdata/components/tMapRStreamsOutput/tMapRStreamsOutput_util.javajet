@@ -1,0 +1,93 @@
+<%@ jet
+    imports="
+    org.talend.core.model.process.INode 
+    org.talend.core.model.process.ElementParameterParser 
+    org.talend.core.model.process.IConnection
+    org.talend.core.model.process.IConnectionCategory
+    org.talend.core.model.metadata.IMetadataTable 
+    org.talend.core.model.metadata.IMetadataColumn 
+    org.talend.designer.codegen.config.CodeGeneratorArgument
+    java.util.List
+    java.util.Map
+    java.util.HashMap
+" 
+%>
+
+<%
+class TMapRStreamsOutputUtil {
+	
+	 private INode node;
+	 
+	 private INode connNode;
+
+    private IConnection incomingConnection;
+
+    private Map<String, String> producerProperties;
+    
+    public TMapRStreamsOutputUtil(INode node) {
+        this.node = node;
+        this.connNode = Boolean.valueOf(ElementParameterParser.getValue(node, "__USE_EXISTING_CONNECTION__"))
+				? ElementParameterParser.getLinkedNodeValue(node, "__CONNECTION__")
+				: node;
+        this.incomingConnection = findIncomingConnection();
+        this.producerProperties = findProducerProperties();
+    }
+    
+    public String getInStructName() {
+		return this.incomingConnection.getName() + "Struct";
+	 }
+
+    public String getEncoding() {
+        return ElementParameterParser.getValue(node, "__ENCODING__");
+    }
+
+    public String getCompression() {
+        String compression = "none";
+        if ("true".equals(ElementParameterParser.getValue(node, "__COMPRESS__"))) {
+            compression = ElementParameterParser.getValue(node, "__COMPRESSION__").toLowerCase();
+        }
+        return compression;
+    }
+
+    public IConnection getIncomingConnection() {
+        return this.incomingConnection;
+    }
+
+    public Map<String, String> getProducerProperties() {
+        return this.producerProperties;
+    }
+
+    public String getTopic() {
+        return ElementParameterParser.getValue(node, "__STREAM_TOPIC__");
+    }
+
+    public String getIncomingColumnName() {
+        return this.incomingConnection.getMetadataTable().getListColumns().get(0).getLabel();
+    }
+    
+    private IConnection findIncomingConnection() {
+        IConnection result = null;
+        if (node.getIncomingConnections() != null) {
+            for (IConnection in : node.getIncomingConnections()) {
+                if (in.getLineStyle().hasConnectionCategory(IConnectionCategory.DATA)) {
+                    result = in;
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
+    private Map<String, String> findProducerProperties() {
+        Map<String, String> result = new HashMap<String, String>();
+        List<Map<String, String>> producerPropertiesFromStudio = (List<Map<String, String>>) ElementParameterParser
+                .getObjectValue(node, "__PRODUCER_PROPERTIES__");
+        if(producerPropertiesFromStudio != null) {
+	        for (Map<String, String> producerPropertyFromStudio : producerPropertiesFromStudio) {
+	            result.put(producerPropertyFromStudio.get("PROPERTY"), producerPropertyFromStudio.get("VALUE"));
+	        }
+        }
+        return result;
+    }
+}
+%>

@@ -30,6 +30,8 @@ import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
+import org.talend.hadoop.distribution.component.MapRDBComponent;
+import org.talend.hadoop.distribution.component.MapRStreamsComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
@@ -46,6 +48,7 @@ import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510HiveModuleGroup
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510ImpalaModuleGroup;
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510MRS3NodeModuleGroup;
+import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510MapRStreamsModuleGroup;
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510MapReduceModuleGroup;
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510PigModuleGroup;
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510PigOutputModuleGroup;
@@ -56,19 +59,24 @@ import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510SparkBatchS3Nod
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510SparkStreamingKafkaAssemblyModuleGroup;
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510SparkStreamingKafkaAvroModuleGroup;
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510SparkStreamingKafkaClientModuleGroup;
+import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510SparkStreamingMapRStreamsAssemblyModuleGroup;
+import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510SparkStreamingMapRStreamsAvroModuleGroup;
+import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510SparkStreamingMapRStreamsClientModuleGroup;
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510SqoopModuleGroup;
 
 public class MapR510Distribution extends AbstractMapRDistribution implements HDFSComponent, MRComponent, HBaseComponent,
         SqoopComponent, PigComponent, HiveComponent, HCatalogComponent, SparkBatchComponent, SparkStreamingComponent,
-        HiveOnSparkComponent, ImpalaComponent, IMapRDistribution {
+        HiveOnSparkComponent, ImpalaComponent, MapRStreamsComponent, MapRDBComponent, IMapRDistribution {
 
-    public final static String VERSION = "MAPR510";
+    public final static String VERSION = "MAPR510"; //$NON-NLS-1$
 
-    public static final String VERSION_DISPLAY = "MapR 5.1.0(YARN mode)";
+    public static final String VERSION_DISPLAY = "MapR 5.1.0(YARN mode)"; //$NON-NLS-1$
 
     private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*,$HADOOP_YARN_HOME/share/hadoop/tools/lib/*"; //$NON-NLS-1$
+
+    public static final String MAPR_STREAMS_JAR_PATH = "/opt/mapr/lib/mapr-streams-5.1.0-mapr.jar"; //$NON-NLS-1$
 
     private static Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
 
@@ -88,6 +96,8 @@ public class MapR510Distribution extends AbstractMapRDistribution implements HDF
         moduleGroups.put(ComponentType.SPARKBATCH, MapR510SparkBatchModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SPARKSTREAMING, MapR510SparkStreamingModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVEONSPARK, MapR510HiveOnSparkModuleGroup.getModuleGroups());
+        moduleGroups.put(ComponentType.MAPRSTREAMS, MapR510MapRStreamsModuleGroup.getModuleGroups());
+        moduleGroups.put(ComponentType.MAPRDB, MapR510HBaseModuleGroup.getModuleGroups());
 
         nodeModuleGroups = new HashMap<>();
 
@@ -135,6 +145,17 @@ public class MapR510Distribution extends AbstractMapRDistribution implements HDF
                 SparkStreamingConstant.KAFKA_AVRO_INPUT_COMPONENT), kafkaAvroModuleGroups);
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT), MapR510SparkStreamingKafkaClientModuleGroup.getModuleGroups());
+
+        // Spark MapR Streams
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.MAPRSTREAMS_INPUT_COMPONENT), MapR510SparkStreamingMapRStreamsAssemblyModuleGroup
+                .getModuleGroups());
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.MAPRSTREAMS_AVRO_INPUT_COMPONENT), MapR510SparkStreamingMapRStreamsAvroModuleGroup
+                .getModuleGroups());
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.MAPRSTREAMS_OUTPUT_COMPONENT), MapR510SparkStreamingMapRStreamsClientModuleGroup
+                .getModuleGroups());
     }
 
     @Override
@@ -324,7 +345,7 @@ public class MapR510Distribution extends AbstractMapRDistribution implements HDF
 
     @Override
     public boolean doSupportBackpressure() {
-        return false;
+        return true;
     }
 
     @Override
@@ -340,6 +361,11 @@ public class MapR510Distribution extends AbstractMapRDistribution implements HDF
     @Override
     public boolean doSupportParquetOutput() {
         return true;
+    }
+
+    @Override
+    public String getMapRStreamsJarPath() {
+        return MAPR_STREAMS_JAR_PATH;
     }
 
 }

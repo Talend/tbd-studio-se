@@ -54,6 +54,10 @@ public abstract class AbstractDistribution {
         return false;
     }
 
+    public boolean doSupportMaprTicketV52API() {
+        return false;
+    }
+
     public boolean doSupportGroup() {
         return false;
     }
@@ -236,5 +240,13 @@ public abstract class AbstractDistribution {
     public int getClouderaNavigatorAPIVersion() {
         // Version 8 is the first version of Cloudera Navigator Supported by SDK
         return 8;
+    }
+
+    public String getMapRStreamsJarPath() {
+        return null;
+    }
+
+    public boolean canCreateMapRStream() {
+        return false;
     }
 }

@@ -103,8 +103,16 @@ if(!useExistingConnection) { // if we don't use an existing connection, we creat
             %>
             <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
 
-            maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=user%>, decryptedPassword_<%=cid%>, <%=mapRTicketDuration%>);
             <%
+            if(hdfsDistrib.doSupportMaprTicketV52API()){
+				%>
+            	maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=user%>, decryptedPassword_<%=cid%>, <%=mapRTicketDuration%>, "");
+            	<%
+            }else{
+            	%>
+            	maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=user%>, decryptedPassword_<%=cid%>, <%=mapRTicketDuration%>);
+            	<%
+            }
         }
 	} else {
 	    if ((isCustom || hdfsDistrib.doSupportMapRTicket()) && useMapRTicket) {

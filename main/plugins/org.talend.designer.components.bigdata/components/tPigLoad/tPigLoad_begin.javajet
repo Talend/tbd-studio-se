@@ -548,8 +548,16 @@
                         }
                         %>
                         <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
-                        maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=mapRTicketUsername%>, decryptedPassword_<%=cid%>, <%=mapRTicketDuration%>);
                         <%
+                        if(pigDistrib.doSupportMaprTicketV52API()){
+							%>
+                        	maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=mapRTicketUsername%>, decryptedPassword_<%=cid%>, <%=mapRTicketDuration%>, "");
+                        	<%
+                        } else {
+                        	%>
+                        	maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=mapRTicketUsername%>, decryptedPassword_<%=cid%>, <%=mapRTicketDuration%>);
+                        	<%
+                        }
                     }
 				}
 

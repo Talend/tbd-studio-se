@@ -1,0 +1,85 @@
+<%@ jet
+    imports="
+    org.talend.core.model.process.INode
+    org.talend.core.model.process.ElementParameterParser
+    org.talend.core.model.process.IConnection
+    org.talend.core.model.process.IConnectionCategory
+    org.talend.core.model.metadata.IMetadataTable
+    org.talend.core.model.metadata.IMetadataColumn
+    org.talend.designer.codegen.config.CodeGeneratorArgument
+    java.util.List
+    java.util.Map
+    java.util.HashMap
+"
+%>
+
+<%@ include file="@{org.talend.designer.components.bigdata}/components/tMapRStreamsConnection/tMapRStreamsConnection_util.javajet"%>
+
+<%
+CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+INode node = (INode)codeGenArgument.getArgument();
+String cid = node.getUniqueName();
+
+TMapRStreamsConnectionUtil tMapRStreamsConnectionUtil = new TMapRStreamsConnectionUtil(node);
+
+// We need to know what the current distribution is since MapR Login API is subject to change between versions.
+String distribution = ElementParameterParser.getValue(node, "__DISTRIBUTION__");
+String hadoopVersion = ElementParameterParser.getValue(node, "__MAPRSTREAMS_VERSION__");
+org.talend.hadoop.distribution.component.HDFSComponent hdfsDistrib = null;
+try {
+	hdfsDistrib = (org.talend.hadoop.distribution.component.HDFSComponent) org.talend.hadoop.distribution.DistributionFactory.buildDistribution(distribution, hadoopVersion);
+} catch (java.lang.Exception e) {
+	e.printStackTrace();
+	return "";
+}
+%>
+	org.apache.hadoop.conf.Configuration conf_<%=cid%> = new org.apache.hadoop.conf.Configuration();
+	conf_<%=cid%>.set("fs.default.name", <%=tMapRStreamsConnectionUtil.getFsDefaultName()%>);
+<%
+if (tMapRStreamsConnectionUtil.useDatanodeHostname()) {
+%>
+		conf_<%=cid%>.set("dfs.client.use.datanode.hostname", "true");
+<%
+}
+
+List<Map<String,String>> hadoopProperties = tMapRStreamsConnectionUtil.getHadoopProperties();
+for(Map<String, String> item : hadoopProperties) {
+%>
+		conf_<%=cid%>.set(<%=item.get("PROPERTY")%> ,<%=item.get("VALUE")%>);
+<% 
+}
+
+if(tMapRStreamsConnectionUtil.isUsingMapRTicket()) {
+%>
+	System.setProperty("pname", "MapRLogin");
+	System.setProperty("https.protocols", "TLSv1.2");
+	System.setProperty("mapr.home.dir", <%=tMapRStreamsConnectionUtil.isSetMapRHomeDir() ? tMapRStreamsConnectionUtil.getMapRHomeDir() : "\"/opt/mapr\"" %>);
+	
+	com.mapr.login.client.MapRLoginHttpsClient maprLogin_<%=cid%> = new com.mapr.login.client.MapRLoginHttpsClient();
+
+<%
+	if(tMapRStreamsConnectionUtil.isUsingKerberos()) {
+%>
+		System.setProperty("hadoop.login", <%=tMapRStreamsConnectionUtil.isSetMapRHadoopLogin() ? tMapRStreamsConnectionUtil.getMapRHadoopLogin() : "\"kerberos\""%>);
+		conf_<%=cid%>.set("dfs.namenode.kerberos.principal", <%=tMapRStreamsConnectionUtil.getNamenodePrincipal()%>);
+		org.apache.hadoop.security.UserGroupInformation.loginUserFromKeytab(<%=tMapRStreamsConnectionUtil.getPrincipal()%>, <%=tMapRStreamsConnectionUtil.getKeytabPath()%>);
+		maprLogin_<%=cid%>.getMapRCredentialsViaKerberos(<%=tMapRStreamsConnectionUtil.getCluster()%>, <%=tMapRStreamsConnectionUtil.getMapRTicketDuration()%>);
+<%
+	} else {
+%>
+		String decryptedMaprPassword_<%=cid%> = <%=tMapRStreamsConnectionUtil.getPassword()%>;
+<%
+			if(hdfsDistrib.doSupportMaprTicketV52API()){
+%>
+				maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=tMapRStreamsConnectionUtil.getCluster()%>, <%=tMapRStreamsConnectionUtil.getUsername()%>, decryptedPassword_<%=cid%>, <%=tMapRStreamsConnectionUtil.getMapRTicketDuration()%>, "");
+<%
+			} else {
+%>
+				maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=tMapRStreamsConnectionUtil.getCluster()%>, <%=tMapRStreamsConnectionUtil.getUsername()%>, decryptedPassword_<%=cid%>, <%=tMapRStreamsConnectionUtil.getMapRTicketDuration()%>);
+<%
+			}
+	}
+} // end if(tMapRStreamsConnectionUtil.isUsingMapRTicket())
+%>
+
+globalMap.put("conf_<%=cid%>", conf_<%=cid%>);

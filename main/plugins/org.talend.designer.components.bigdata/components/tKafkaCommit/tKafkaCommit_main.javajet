@@ -31,7 +31,7 @@ if(tKafkaInputUtil.isKafkaVersion("KAFKA_0_8_2_0")) {
 	if (globalMap.containsKey("<%=kiCid%>_consumerConnector")) {
 	    ((kafka.javaapi.consumer.ConsumerConnector) globalMap.get("<%=kiCid%>_consumerConnector")).commitOffsets();
 	} else {
-	    throw new RuntimeException("HEY");
+	    throw new RuntimeException("Could not commit offsets : no consumer has been found from <%=kiCid%>");
 	}
 <%
 } else if(tKafkaInputUtil.isKafkaVersion("KAFKA_0_9_0_1")) {
@@ -39,7 +39,7 @@ if(tKafkaInputUtil.isKafkaVersion("KAFKA_0_8_2_0")) {
 	if (globalMap.containsKey("<%=kiCid%>_kafkaConsumer")) {
 	    ((org.apache.kafka.clients.consumer.KafkaConsumer) globalMap.get("<%=kiCid%>_kafkaConsumer")).commitSync();
 	} else {
-	    throw new RuntimeException("HEY");
+	    throw new RuntimeException("Could not commit offsets : no consumer has been found from <%=kiCid%>");
 	}
 <%
 }

@@ -1,0 +1,28 @@
+try {
+	com.mapr.streams.StreamDescriptor descriptor_<%=cid%> = com.mapr.streams.Streams.newStreamDescriptor();
+	descriptor_<%=cid%>.setAdminPerms(<%=tMapRStreamsCreateStreamUtil.getAdminPerms()%>);
+	descriptor_<%=cid%>.setConsumePerms(<%=tMapRStreamsCreateStreamUtil.getConsumePerms()%>);
+	descriptor_<%=cid%>.setCopyPerms(<%=tMapRStreamsCreateStreamUtil.getCopyPerms()%>);
+	descriptor_<%=cid%>.setProducePerms(<%=tMapRStreamsCreateStreamUtil.getProducePerms()%>);
+	descriptor_<%=cid%>.setTopicPerms(<%=tMapRStreamsCreateStreamUtil.getTopicPerms()%>);
+	descriptor_<%=cid%>.setCompressionAlgo("<%=tMapRStreamsCreateStreamUtil.getCompression()%>");
+	descriptor_<%=cid%>.setDefaultPartitions(<%=tMapRStreamsCreateStreamUtil.getDefaultPartitions()%>);
+	descriptor_<%=cid%>.setTimeToLiveSec(<%=tMapRStreamsCreateStreamUtil.getTimeToLive()%>);
+	descriptor_<%=cid%>.setAutoCreateTopics(<%=tMapRStreamsCreateStreamUtil.isAutoCreateTopics()%>);	
+	admin_<%=cid%>.createStream(<%=tMapRStreamsCreateStreamUtil.getStream()%>, descriptor_<%=cid%>);
+} catch (com.mapr.db.exceptions.TableExistsException e) {
+<%
+	if (tMapRStreamsCreateStreamUtil.isCreateStreamIfNotExists()) {
+%>
+		// nothing to do even through the stream already exists, continue the job
+<%
+	} else {
+%>
+		// stream already exists, stop the job
+		throw e;
+<%
+	}
+%>
+} finally {
+	admin_<%=cid%>.close();
+}

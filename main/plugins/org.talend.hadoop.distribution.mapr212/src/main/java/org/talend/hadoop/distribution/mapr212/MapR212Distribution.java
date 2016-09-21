@@ -25,6 +25,7 @@ import org.talend.hadoop.distribution.component.HBaseComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
+import org.talend.hadoop.distribution.component.MapRDBComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.BasicExpression;
@@ -35,7 +36,7 @@ import org.talend.hadoop.distribution.constants.Constant;
 import org.talend.hadoop.distribution.constants.mapr.IMapRDistribution;
 
 public class MapR212Distribution extends AbstractMapRDistribution implements HDFSComponent, MRComponent, HBaseComponent,
-        SqoopComponent, PigComponent, HiveComponent, IMapRDistribution {
+        SqoopComponent, PigComponent, HiveComponent, MapRDBComponent, IMapRDistribution {
 
     public static final String VERSION = "MAPR212";
 

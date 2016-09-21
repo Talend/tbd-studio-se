@@ -33,4 +33,9 @@ public final class MRConstant {
     public static final String S3_OUTPUT_COMPONENT = "tS3Output"; //$NON-NLS-1$
 
     public static final String USE_ATLAS = "USE_ATLAS"; //$NON-NLS-1$
+
+    public static final String MAPRDB_INPUT_COMPONENT = "tMapRDBInput"; //$NON-NLS-1$
+
+    public static final String MAPRDB_OUTPUT_COMPONENT = "tMapRDBOutput"; //$NON-NLS-1$
+
 }

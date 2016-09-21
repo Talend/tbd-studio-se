@@ -1,0 +1,36 @@
+<%@ jet
+    imports="
+    org.talend.core.model.process.INode
+    org.talend.core.model.process.ElementParameterParser
+    org.talend.core.model.process.IConnection
+    org.talend.core.model.process.IConnectionCategory
+    org.talend.core.model.metadata.IMetadataTable
+    org.talend.core.model.metadata.IMetadataColumn
+    org.talend.designer.codegen.config.CodeGeneratorArgument
+    java.util.List
+    java.util.Map
+    java.util.HashMap
+"
+%>
+
+<%@ include file="@{org.talend.designer.components.bigdata}/components/tMapRStreamsInput/tMapRStreamsInput_util.javajet"%>
+
+<%
+CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+INode node = (INode)codeGenArgument.getArgument();
+String cid = node.getUniqueName();
+
+INode msiNode = ElementParameterParser.getLinkedNodeValue(node, "__MAPRSTREAMS_INPUT_COMPONENT__");
+String msiCid = msiNode.getUniqueName();
+
+TMapRStreamsInputUtil tMapRStreamsInputUtil = new TMapRStreamsInputUtil(msiNode);
+%>
+
+if (globalMap.containsKey("<%=msiCid%>_consumer")) {
+    ((org.apache.kafka.clients.consumer.KafkaConsumer) globalMap.get("<%=msiCid%>_consumer")).commitSync();
+} else {
+    throw new RuntimeException("Could not commit offsets : no consumer has been found from <%=msiCid%>");
+}
+
+
+

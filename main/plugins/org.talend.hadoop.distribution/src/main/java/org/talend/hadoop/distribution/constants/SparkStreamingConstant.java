@@ -36,6 +36,8 @@ public final class SparkStreamingConstant {
 
     public static final String PARQUET_STREAM_INPUT_COMPONENT = "tFileStreamInputParquet"; //$NON-NLS-1$
 
+    public static final String MAPRSTREAMS_SPARKCONFIGURATION_LINKEDPARAMETER = "STORAGE_CONFIGURATION"; //$NON-NLS-1$
+
     public static final String KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER = "STORAGE_CONFIGURATION"; //$NON-NLS-1$
 
     public static final String FLUME_SPARKCONFIGURATION_LINKEDPARAMETER = "STORAGE_CONFIGURATION"; //$NON-NLS-1$
@@ -57,5 +59,17 @@ public final class SparkStreamingConstant {
     public static final String FLUME_OUTPUT_COMPONENT = "tFlumeOutput"; //$NON-NLS-1$
 
     public static final String FLUME_INPUT_COMPONENT = "tFlumeInput"; //$NON-NLS-1$
+
+    public static final String MAPRSTREAMS_INPUT_COMPONENT = "tMapRStreamsInput"; //$NON-NLS-1$
+
+    public static final String MAPRSTREAMS_AVRO_INPUT_COMPONENT = "tMapRStreamsInputAvro"; //$NON-NLS-1$
+
+    public static final String MAPRSTREAMS_OUTPUT_COMPONENT = "tMapRStreamsOutput"; //$NON-NLS-1$
+
+    public static final String MAPRDB_CONFIGURATION_COMPONENT = "tMapRDBConfiguration"; //$NON-NLS-1$
+
+    public static final String MAPRDB_LOOKUPINPUT_COMPONENT = "tMapRDBLookupInput"; //$NON-NLS-1$
+
+    public static final String MAPRDB_OUTPUT_COMPONENT = "tMapRDBOutput"; //$NON-NLS-1$
 
 }
