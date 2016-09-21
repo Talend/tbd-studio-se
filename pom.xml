@@ -127,6 +127,7 @@
 		<module>main/plugins/org.talend.repository.hadoopcluster</module>
 		<module>main/plugins/org.talend.repository.hadoopcluster.configurator</module>
 		<module>main/plugins/org.talend.repository.hbaseprovider</module>
+        <module>main/plugins/org.talend.repository.maprdbprovider</module>
 		<module>main/plugins/org.talend.repository.hcatalog</module>
 		<module>main/plugins/org.talend.repository.hdfs</module>
 		<module>main/plugins/org.talend.repository.nosql</module>
