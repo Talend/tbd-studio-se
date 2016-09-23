@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: HDP 2.5.0 distribution jars fragment
+Bundle-SymbolicName: org.talend.hadoop.distribution.hdp250.jars
+Bundle-Version: 6.3.0.qualifier
+Fragment-Host: org.talend.hadoop.distribution.hdp250
+Eclipse-BundleShape: dir

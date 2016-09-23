@@ -303,8 +303,6 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         boolean isKeyTabEditable = keytabBtn.isEnabled() && keytabBtn.getSelection();
         keytabText.setEditable(isKeyTabEditable);
         keytabPrincipalText.setEditable(isKeyTabEditable);
-
-        //
         maprTBtn.setEnabled(isEditable && isCurrentHadoopVersionSupportMapRTicket());
         boolean isMaprTEditable = maprTBtn.isEnabled() && maprTBtn.getSelection();
         maprTPasswordText.setEditable(isMaprTEditable && !isKerberosEditable);

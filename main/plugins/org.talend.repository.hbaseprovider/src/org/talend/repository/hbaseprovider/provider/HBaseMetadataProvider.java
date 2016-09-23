@@ -212,7 +212,7 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
             Object[] argsObj = new Object[] { ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketCluster),
                     ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketUsername),
                     ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketPassword), desiredTicketDurInSecs };
-            if ("MAPR520".equals(version)) {//$NON-NLS-1$
+            if (version != null && "MAPR520".compareTo(version) <= 0) {//$NON-NLS-1$
                 argsObj = new Object[] { ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketCluster),
                         ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketUsername),
                         ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketPassword),

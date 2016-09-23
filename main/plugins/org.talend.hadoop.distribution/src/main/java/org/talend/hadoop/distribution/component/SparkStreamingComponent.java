@@ -32,4 +32,12 @@ public interface SparkStreamingComponent extends SparkComponent {
      */
     public boolean doSupportBackpressure();
 
+    /**
+     * Most of the distributions stick with the official spark-streaming-kafka implementation. Some MapR distributions
+     * have their own spark-streaming-kafka implementation and their own API.
+     * 
+     * @return true if the distribution supports the official spark-streaming-kafka implementation.
+     */
+    public boolean doSupportOfficialSparkStreamingKafka();
+
 }

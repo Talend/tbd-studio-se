@@ -141,7 +141,7 @@ public abstract class AbstractCheckedServiceProvider implements ICheckedServiceP
             }
             String version = serviceProperties.getVersion();
             Object[] argsObj = new Object[] { mapRTicketCluster, mapRTicketUsername, mapRTicketPassword, desiredTicketDurInSecs };
-            if ("MAPR520".equals(version)) {//$NON-NLS-1$
+            if (version != null && "MAPR520".compareTo(version) <= 0) {//$NON-NLS-1$
                 argsObj = new Object[] { mapRTicketCluster, mapRTicketUsername, mapRTicketPassword, desiredTicketDurInSecs, "" };//$NON-NLS-1$
             }
             ReflectionUtils.invokeMethod(mapRClientConfig, "getMapRCredentialsViaPassword", argsObj); //$NON-NLS-1$

@@ -249,4 +249,8 @@ public abstract class AbstractDistribution {
     public boolean canCreateMapRStream() {
         return false;
     }
+
+    public boolean doSupportOfficialSparkStreamingKafka() {
+        return true;
+    }
 }

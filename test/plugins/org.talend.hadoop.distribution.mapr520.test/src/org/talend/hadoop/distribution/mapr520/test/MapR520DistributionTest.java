@@ -96,7 +96,7 @@ public class MapR520DistributionTest {
         assertTrue(distribution instanceof MapRStreamsComponent);
         assertTrue(((MapRStreamsComponent) distribution).canCreateMapRStream());
         assertEquals(MapR520Distribution.MAPR_STREAMS_JAR_PATH, ((MapRStreamsComponent) distribution).getMapRStreamsJarPath());
-
+        assertFalse(((SparkStreamingComponent) distribution).doSupportOfficialSparkStreamingKafka());
     }
 
 }

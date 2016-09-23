@@ -93,7 +93,7 @@
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.5.2.0"
             id="hadoop-mapreduce-client-hs-2.7.0-mapr-1607.jar"
-            name="hadoop-mapreduce-client-hs-2.7.0-mapr-1607.jar" mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-hs-2.7.0-mapr-1602/6.2.0" >
+            name="hadoop-mapreduce-client-hs-2.7.0-mapr-1607.jar" mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-hs-2.7.0-mapr-1607/6.2.0" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.5.2.0"

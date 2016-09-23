@@ -382,4 +382,9 @@ public class MapR520Distribution extends AbstractMapRDistribution implements HDF
         return true;
     }
 
+    @Override
+    public boolean doSupportOfficialSparkStreamingKafka() {
+        return false;
+    }
+
 }

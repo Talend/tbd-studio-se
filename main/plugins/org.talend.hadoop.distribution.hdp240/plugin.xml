@@ -196,7 +196,7 @@
             id="parquet-pig-bundle-1.3.2.jar"
             name="parquet-pig-bundle-1.3.2.jar"
             mvn_uri="mvn:org.talend.libraries/parquet-pig-bundle-1.3.2/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/parquet-pig-bundle-1.3.2.jar">
+            uripath="platform:/plugin/org.talend.libraries.hadoop/lib/parquet-pig-bundle-1.3.2.jar">
         </libraryNeeded>       
                 
         <!-- Sqoop libraries -->        
