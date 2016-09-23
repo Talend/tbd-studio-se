@@ -93,7 +93,7 @@
                 </artifactItem>
                 <artifactItem>
                   <groupId>${talend.groupid}</groupId>
-                  <artifactId>kafka_2.10-0.9.0-kafka-2.1.0</artifactId>
+                  <artifactId>kafka_2.10-0.9.0-kafka-2.0.0</artifactId>
                   <version>${talend.version.610}</version>
                 </artifactItem>
                 <artifactItem>
