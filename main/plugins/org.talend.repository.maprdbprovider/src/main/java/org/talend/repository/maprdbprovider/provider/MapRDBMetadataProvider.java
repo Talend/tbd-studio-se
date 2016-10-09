@@ -210,10 +210,17 @@ public class MapRDBMetadataProvider implements IDBMetadataProvider {
             } else {
                 ReflectionUtils.invokeMethod(mapRClientConfig, "setCheckUGI", new Object[] { false }, boolean.class);//$NON-NLS-1$
             }
-            ReflectionUtils
-                    .invokeMethod(
-                            mapRClientConfig,
-                            "getMapRCredentialsViaPassword", new Object[] { ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketCluster), ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketUsername), ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketPassword), desiredTicketDurInSecs }); //$NON-NLS-1$
+            String version = (String) metadataConn.getParameter(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_VERSION);
+            Object[] argsObj = new Object[] { ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketCluster),
+                    ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketUsername),
+                    ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketPassword), desiredTicketDurInSecs };
+            if (version != null && "MAPR520".compareTo(version) <= 0) {//$NON-NLS-1$
+                argsObj = new Object[] { ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketCluster),
+                        ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketUsername),
+                        ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketPassword),
+                        desiredTicketDurInSecs, "" };//$NON-NLS-1$
+            }
+            ReflectionUtils.invokeMethod(mapRClientConfig, "getMapRCredentialsViaPassword", argsObj); //$NON-NLS-1$
         }
     }
 
