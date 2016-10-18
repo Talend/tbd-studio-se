@@ -14,12 +14,15 @@ package org.talend.repository.maprdb.action;
 
 import java.util.Map;
 
+import org.eclipse.jface.wizard.IWizard;
 import org.talend.core.GlobalServiceRegister;
 import org.talend.core.database.EDatabaseTypeName;
 import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.database.conn.template.EDatabaseConnTemplate;
 import org.talend.core.hadoop.IHadoopDistributionService;
 import org.talend.core.hadoop.version.custom.ECustomVersionGroup;
+import org.talend.core.model.metadata.builder.connection.Connection;
+import org.talend.core.model.metadata.builder.connection.DatabaseConnection;
 import org.talend.core.runtime.hd.IHDistributionVersion;
 import org.talend.hadoop.distribution.helper.HadoopDistributionsHelper;
 import org.talend.hadoop.distribution.model.DistributionBean;
@@ -28,6 +31,7 @@ import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.model.RepositoryNode;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnectionItem;
+import org.talend.repository.ui.wizards.metadata.connection.database.DatabaseWizard;
 
 /**
  * created by hcyi on Sep 13, 2016 Detailled comment
@@ -77,5 +81,15 @@ public class CreateMaprdbAction extends CreateHadoopDBNodeAction {
             }
         }
         return true;
+    }
+    
+    @Override
+    protected void initDatabaseType(IWizard wizard) {
+        if (wizard instanceof DatabaseWizard) {
+            Connection connection = ((DatabaseWizard) wizard).getConnectionItem().getConnection();
+            if (connection != null && connection instanceof DatabaseConnection) {
+                ((DatabaseConnection) connection).setDatabaseType(EDatabaseTypeName.MAPRDB.getDisplayName());
+            }
+        }
     }
 }
