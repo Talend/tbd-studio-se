@@ -64,12 +64,17 @@ public abstract class CreateHadoopNodeAction extends AbstractCreateAction {
         if (isToolbar()) {
             init(repositoryNode);
         }
+        initDatabaseType(wizard);
         WizardDialog wizardDialog = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
         if (Platform.getOS().equals(Platform.OS_LINUX)) {
             wizardDialog.setPageSize(getWizardWidth(), getWizardHeight() + 80);
         }
         wizardDialog.create();
         wizardDialog.open();
+    }
+
+    protected void initDatabaseType(IWizard wizard) {
+        
     }
 
     @Override

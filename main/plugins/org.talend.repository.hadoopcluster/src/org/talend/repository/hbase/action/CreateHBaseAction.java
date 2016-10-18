@@ -2,10 +2,13 @@ package org.talend.repository.hbase.action;
 
 import java.util.Map;
 
+import org.eclipse.jface.wizard.IWizard;
 import org.talend.core.database.EDatabaseTypeName;
 import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.database.conn.template.EDatabaseConnTemplate;
 import org.talend.core.hadoop.version.custom.ECustomVersionGroup;
+import org.talend.core.model.metadata.builder.connection.Connection;
+import org.talend.core.model.metadata.builder.connection.DatabaseConnection;
 import org.talend.core.runtime.hd.IHDistributionVersion;
 import org.talend.hadoop.distribution.helper.HadoopDistributionsHelper;
 import org.talend.hadoop.distribution.model.DistributionBean;
@@ -14,6 +17,7 @@ import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.model.RepositoryNode;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnectionItem;
+import org.talend.repository.ui.wizards.metadata.connection.database.DatabaseWizard;
 
 /**
  * 
@@ -59,6 +63,16 @@ public class CreateHBaseAction extends CreateHadoopDBNodeAction {
         }
 
         return true;
+    }
+    
+    @Override
+    protected void initDatabaseType(IWizard wizard) {
+        if (wizard instanceof DatabaseWizard) {
+            Connection connection = ((DatabaseWizard) wizard).getConnectionItem().getConnection();
+            if (connection != null && connection instanceof DatabaseConnection) {
+                ((DatabaseConnection) connection).setDatabaseType(EDatabaseTypeName.HBASE.getDisplayName());
+            }
+        }
     }
 
 }
