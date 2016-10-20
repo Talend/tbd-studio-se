@@ -15,6 +15,7 @@ package org.talend.designer.hdfsbrowse.hadoop.service.check.provider;
 import java.net.URI;
 
 import org.apache.commons.lang.StringUtils;
+import org.talend.core.hadoop.EHadoopCategory;
 import org.talend.core.hadoop.HadoopClassLoaderFactory2;
 import org.talend.core.utils.ReflectionUtils;
 import org.talend.designer.hdfsbrowse.hadoop.service.HadoopServiceProperties;
@@ -93,7 +94,7 @@ public class CheckedNamenodeProvider extends AbstractCheckedServiceProvider {
         } else {
             loader = HadoopClassLoaderFactory2.getHDFSClassLoader(serviceProperties.getRelativeHadoopClusterId(),
                     serviceProperties.getDistribution(), serviceProperties.getVersion(), serviceProperties.isUseKrb());
-            loader = addCustomConfsJarIfNeeded(loader, serviceProperties);
+            loader = addCustomConfsJarIfNeeded(loader, serviceProperties, EHadoopCategory.HDFS);
         }
 
         return loader;

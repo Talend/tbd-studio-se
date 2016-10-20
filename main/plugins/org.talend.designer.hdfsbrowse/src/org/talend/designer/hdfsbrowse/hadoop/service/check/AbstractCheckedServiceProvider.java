@@ -20,6 +20,8 @@ import java.util.Set;
 import org.apache.commons.lang.StringUtils;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.core.classloader.DynamicClassLoader;
+import org.talend.core.hadoop.EHadoopCategory;
+import org.talend.core.hadoop.HadoopClassLoaderFactory2;
 import org.talend.core.utils.ReflectionUtils;
 import org.talend.designer.hdfsbrowse.exceptions.HadoopServerException;
 import org.talend.designer.hdfsbrowse.hadoop.service.HadoopServiceProperties;
@@ -72,7 +74,8 @@ public abstract class AbstractCheckedServiceProvider implements ICheckedServiceP
         }
     }
 
-    protected ClassLoader addCustomConfsJarIfNeeded(ClassLoader baseLoader, HadoopServiceProperties serviceProperties) {
+    protected ClassLoader addCustomConfsJarIfNeeded(ClassLoader baseLoader, HadoopServiceProperties serviceProperties,
+            EHadoopCategory category) {
         ClassLoader classLoader = baseLoader;
         if (serviceProperties.isUseCustomConfs()) {
             String clusterLabel = serviceProperties.getRelativeHadoopClusterLabel();
@@ -88,8 +91,10 @@ public abstract class AbstractCheckedServiceProvider implements ICheckedServiceP
                 }
                 if (!confFileExist) {
                     try {
+                        // remove the default jars, since it will be conflict with the new jars
+                        String[] excludedJars = HadoopClassLoaderFactory2.getSecurityJars(category);
                         classLoader = DynamicClassLoader.createNewOneBaseLoader((DynamicClassLoader) baseLoader,
-                                new String[] { customConfsJarName }, null);
+                                new String[] { customConfsJarName }, excludedJars);
                     } catch (MalformedURLException e) {
                         ExceptionHandler.process(e);
                     }
