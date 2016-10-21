@@ -165,13 +165,9 @@ public class MapRDBMetadataProvider implements IDBMetadataProvider {
         boolean setMapRHomeDir = Boolean.valueOf((String) metadataConn
                 .getParameter(ConnParameterKeys.CONN_PARA_KEY_MAPRTICKET_SETMAPRHOMEDIR));
         String mapRHomeDir = (String) metadataConn.getParameter(ConnParameterKeys.CONN_PARA_KEY_MAPRTICKET_MAPRHOMEDIR);
-        boolean setMapRHadoopLogin = Boolean.valueOf((String) metadataConn
-                .getParameter(ConnParameterKeys.CONN_PARA_KEY_MAPRTICKET_SETMAPRHADOOPLOGIN));
-        String mapRHadoopLogin = (String) metadataConn.getParameter(ConnParameterKeys.CONN_PARA_KEY_MAPRTICKET_MAPRHADOOPLOGIN);
         System.setProperty("pname", "MapRLogin");//$NON-NLS-1$ //$NON-NLS-2$
         System.setProperty("https.protocols", "TLSv1.2");//$NON-NLS-1$ //$NON-NLS-2$
         System.setProperty("mapr.home.dir", setMapRHomeDir ? mapRHomeDir : "/opt/mapr");//$NON-NLS-1$ //$NON-NLS-2$
-        System.setProperty("hadoop.login", setMapRHadoopLogin ? mapRHadoopLogin : "kerberos");//$NON-NLS-1$ //$NON-NLS-2$
     }
 
     private void setMaprTicketConfig(IMetadataConnection metadataConn, ClassLoader classLoader, boolean useKerberos)
@@ -199,7 +195,7 @@ public class MapRDBMetadataProvider implements IDBMetadataProvider {
         Object mapRClientConfig = ReflectionUtils.newInstance(
                 "com.mapr.login.client.MapRLoginHttpsClient", classLoader, new Object[] {}); //$NON-NLS-1$
         if (useKerberos) {
-            System.setProperty("hadoop.login", "kerberos");//$NON-NLS-1$ //$NON-NLS-2$
+            System.setProperty("hadoop.login", setMapRHadoopLogin ? mapRHadoopLogin : "kerberos");//$NON-NLS-1$ //$NON-NLS-2$
             ReflectionUtils
                     .invokeMethod(
                             mapRClientConfig,
