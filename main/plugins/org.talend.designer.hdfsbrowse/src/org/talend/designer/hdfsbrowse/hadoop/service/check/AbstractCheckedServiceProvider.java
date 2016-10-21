@@ -107,12 +107,9 @@ public abstract class AbstractCheckedServiceProvider implements ICheckedServiceP
     protected void setMaprTicketPropertiesConfig(HadoopServiceProperties serviceProperties) {
         boolean setMapRHomeDir = serviceProperties.isSetMaprTHomeDir();
         String mapRHomeDir = serviceProperties.getMaprTHomeDir();
-        boolean setMapRHadoopLogin = serviceProperties.isSetHadoopLogin();
-        String mapRHadoopLogin = serviceProperties.getMaprTHadoopLogin();
         System.setProperty("pname", "MapRLogin");//$NON-NLS-1$ //$NON-NLS-2$
         System.setProperty("https.protocols", "TLSv1.2");//$NON-NLS-1$ //$NON-NLS-2$
         System.setProperty("mapr.home.dir", setMapRHomeDir ? mapRHomeDir : "/opt/mapr");//$NON-NLS-1$ //$NON-NLS-2$
-        System.setProperty("hadoop.login", setMapRHadoopLogin ? mapRHadoopLogin : "kerberos");//$NON-NLS-1$ //$NON-NLS-2$
     }
 
     protected void setMaprTicketConfig(HadoopServiceProperties serviceProperties, ClassLoader classLoader, boolean useKerberos)
@@ -125,7 +122,7 @@ public abstract class AbstractCheckedServiceProvider implements ICheckedServiceP
         String mapRHadoopLogin = serviceProperties.getMaprTHadoopLogin();
         Long desiredTicketDurInSecs = 86400L;
         if (mapRTicketDuration != null && StringUtils.isNotBlank(mapRTicketDuration)) {
-            if (mapRTicketDuration.endsWith("L")) {//$NON-NLS-1$ 
+            if (mapRTicketDuration.endsWith("L")) {//$NON-NLS-1$
                 mapRTicketDuration = mapRTicketDuration.substring(0, mapRTicketDuration.length() - 1);
                 desiredTicketDurInSecs = Long.valueOf(mapRTicketDuration) + 'L';
             } else if (StringUtils.isNumeric(mapRTicketDuration)) {
@@ -135,7 +132,7 @@ public abstract class AbstractCheckedServiceProvider implements ICheckedServiceP
         Object mapRClientConfig = ReflectionUtils.newInstance(
                 "com.mapr.login.client.MapRLoginHttpsClient", classLoader, new Object[] {}); //$NON-NLS-1$
         if (useKerberos) {
-            System.setProperty("hadoop.login", "kerberos");//$NON-NLS-1$ //$NON-NLS-2$  
+            System.setProperty("hadoop.login", setMapRHadoopLogin ? mapRHadoopLogin : "kerberos");//$NON-NLS-1$ //$NON-NLS-2$
             ReflectionUtils.invokeMethod(mapRClientConfig,
                     "getMapRCredentialsViaKerberos", new Object[] { mapRTicketCluster, desiredTicketDurInSecs }); //$NON-NLS-1$
         } else {

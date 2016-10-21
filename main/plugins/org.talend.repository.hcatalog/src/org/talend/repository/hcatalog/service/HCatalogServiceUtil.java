@@ -124,12 +124,9 @@ public class HCatalogServiceUtil {
     private static void setMaprTicketPropertiesConfig(HadoopClusterConnection hcConnection) {
         boolean setMapRHomeDir = hcConnection.isSetMaprTHomeDir();
         String mapRHomeDir = hcConnection.getMaprTHomeDir();
-        boolean setMapRHadoopLogin = hcConnection.isSetHadoopLogin();
-        String mapRHadoopLogin = hcConnection.getMaprTHadoopLogin();
         System.setProperty("pname", "MapRLogin");//$NON-NLS-1$ //$NON-NLS-2$
         System.setProperty("https.protocols", "TLSv1.2");//$NON-NLS-1$ //$NON-NLS-2$
         System.setProperty("mapr.home.dir", setMapRHomeDir ? mapRHomeDir : "/opt/mapr");//$NON-NLS-1$ //$NON-NLS-2$
-        System.setProperty("hadoop.login", setMapRHadoopLogin ? mapRHadoopLogin : "kerberos");//$NON-NLS-1$ //$NON-NLS-2$
     }
 
     private static void setMaprTicketConfig(HadoopClusterConnection hcConnection, ClassLoader classLoader, boolean useKerberos)
@@ -154,6 +151,7 @@ public class HCatalogServiceUtil {
         if (useKerberos) {
             Object conf = Class.forName("org.apache.hadoop.conf.Configuration", true, classLoader).newInstance(); //$NON-NLS-1$
             String nameNodePrincipal = hcConnection.getPrincipal();
+            System.setProperty("hadoop.login", setMapRHadoopLogin ? mapRHadoopLogin : "kerberos");//$NON-NLS-1$ //$NON-NLS-2$
             ReflectionUtils.invokeMethod(conf, "set", new Object[] { "dfs.namenode.kerberos.principal", nameNodePrincipal }); //$NON-NLS-1$//$NON-NLS-2$
             ReflectionUtils.invokeMethod(mapRClientConfig,
                     "getMapRCredentialsViaKerberos", new Object[] { mapRTicketCluster, desiredTicketDurInSecs }); //$NON-NLS-1$
