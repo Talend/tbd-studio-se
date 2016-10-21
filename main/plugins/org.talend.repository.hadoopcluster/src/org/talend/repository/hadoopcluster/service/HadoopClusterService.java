@@ -37,6 +37,7 @@ import org.talend.core.model.properties.DatabaseConnectionItem;
 import org.talend.core.model.properties.Item;
 import org.talend.core.model.repository.ERepositoryObjectType;
 import org.talend.core.model.repository.IRepositoryTypeProcessor;
+import org.talend.core.model.repository.IRepositoryViewObject;
 import org.talend.core.repository.model.ProxyRepositoryFactory;
 import org.talend.designer.core.model.components.EParameterName;
 import org.talend.designer.core.model.components.EmfComponent;
@@ -426,4 +427,25 @@ public class HadoopClusterService implements IHadoopClusterService {
         return false;
     }
 
+    @Override
+    public String getRelHadoopClusterId(String repositoryId) {
+        if (repositoryId == null) {
+            return null;
+        }
+        IRepositoryViewObject repObj = null;
+        try {
+            repObj = ProxyRepositoryFactory.getInstance().getLastVersion(repositoryId);
+        } catch (PersistenceException e) {
+            ExceptionHandler.process(e);
+        }
+        if (repObj != null && repObj.getProperty() != null) {
+            Item item = repObj.getProperty().getItem();
+            if (item != null && item instanceof HadoopSubConnectionItem) {
+                String hcId = ((HadoopSubConnection) ((HadoopSubConnectionItem) item).getConnection())
+                        .getRelativeHadoopClusterId();
+                return hcId;
+            }
+        }
+        return null;
+    }
 }

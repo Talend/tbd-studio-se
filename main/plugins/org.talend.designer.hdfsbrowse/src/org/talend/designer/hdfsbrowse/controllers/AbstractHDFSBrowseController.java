@@ -44,11 +44,14 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.commons.ui.runtime.image.ImageProvider;
 import org.talend.commons.ui.swt.dialogs.ErrorDialogWidthDetailArea;
+import org.talend.core.GlobalServiceRegister;
+import org.talend.core.hadoop.IHadoopClusterService;
 import org.talend.core.hadoop.version.EHadoopDistributions;
 import org.talend.core.hadoop.version.EHadoopVersion4Drivers;
 import org.talend.core.hadoop.version.custom.ECustomVersionGroup;
 import org.talend.core.model.components.IComponent;
 import org.talend.core.model.process.BigDataNode;
+import org.talend.core.model.process.EParameterFieldType;
 import org.talend.core.model.process.ElementParameterParser;
 import org.talend.core.model.process.IContext;
 import org.talend.core.model.process.IContextManager;
@@ -61,6 +64,8 @@ import org.talend.core.model.utils.ContextParameterUtils;
 import org.talend.core.ui.CoreUIPlugin;
 import org.talend.core.ui.properties.tab.IDynamicProperty;
 import org.talend.core.utils.TalendQuoteUtils;
+import org.talend.designer.core.model.components.EParameterName;
+import org.talend.designer.core.model.components.EmfComponent;
 import org.talend.designer.core.model.process.DataNode;
 import org.talend.designer.core.ui.editor.cmd.PropertyChangeCommand;
 import org.talend.designer.core.ui.editor.nodes.Node;
@@ -250,6 +255,26 @@ public abstract class AbstractHDFSBrowseController extends AbstractElementProper
         if (process instanceof IProcess2) {
             IProcess2 pro = (IProcess2) process;
             connectionBean.setRelativeHadoopClusterId(pro.getProperty().getId());
+            IElementParameter propertyParam = node.getElementParameterFromField(EParameterFieldType.PROPERTY_TYPE);
+            if (propertyParam != null) {
+                IElementParameter repositoryType = propertyParam.getChildParameters().get(EParameterName.PROPERTY_TYPE.getName());
+                if (repositoryType != null && EmfComponent.REPOSITORY.equals(repositoryType.getValue())) {
+                    IHadoopClusterService hadoopClusterService = null;
+                    String relativeHadoopClusterId = null;
+                    IElementParameter repositoryId = propertyParam.getChildParameters()
+                            .get((EParameterName.REPOSITORY_PROPERTY_TYPE.getName()));
+                    if (GlobalServiceRegister.getDefault().isServiceRegistered(IHadoopClusterService.class)) {
+                        hadoopClusterService = (IHadoopClusterService) GlobalServiceRegister.getDefault()
+                                .getService(IHadoopClusterService.class);
+                    }
+                    if (hadoopClusterService != null) {
+                        relativeHadoopClusterId = hadoopClusterService.getRelHadoopClusterId(((String) repositoryId.getValue()));
+                        if (relativeHadoopClusterId != null) {
+                            connectionBean.setRelativeHadoopClusterId(relativeHadoopClusterId);
+                        }
+                    }
+                }
+            }
         }
 
         return connectionBean;

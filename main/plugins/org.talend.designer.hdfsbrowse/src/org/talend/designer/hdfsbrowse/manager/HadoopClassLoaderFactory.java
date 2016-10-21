@@ -52,11 +52,15 @@ public class HadoopClassLoaderFactory {
         }
 
         loader = getClassLoader(distribution, version, enableKerberos, true);
-        if (connectionBean.isUseCustomConfs() && loader instanceof DynamicClassLoader) {
+        if ((connectionBean.getRelativeHadoopClusterId() != null || connectionBean.isUseCustomConfs())
+                && loader instanceof DynamicClassLoader) {
             try {
-                loader = DynamicClassLoader.createNewOneBaseLoader((DynamicClassLoader) loader,
-                        new String[] { getCustomConfsJarName(connectionBean.getRelativeHadoopClusterId()) },
-                        EHadoopConfigurationJars.HDFS.getEnableSecurityJars());
+                String customConfsJarName = getCustomConfsJarName(connectionBean.getRelativeHadoopClusterId());
+                if (customConfsJarName != null) {
+                    loader = DynamicClassLoader.createNewOneBaseLoader((DynamicClassLoader) loader,
+                            new String[] { customConfsJarName },
+                            EHadoopConfigurationJars.HDFS.getEnableSecurityJars());
+                }
             } catch (MalformedURLException e) {
                 ExceptionHandler.process(e);
             }
