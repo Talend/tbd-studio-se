@@ -157,6 +157,7 @@ public class MapRDBMetadataProvider implements IDBMetadataProvider {
         if (useMaprTicket) {
             setMaprTicketConfig(metadataConnection, classLoader, useKerberos);
         }
+        ReflectionUtils.invokeMethod(config, "set", new Object[] { "hbase.table.namespace.mappings", "*:/tables" }); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         updateHadoopProperties(config, metadataConnection);
         return config;
     }
