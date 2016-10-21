@@ -17,5 +17,6 @@
         },
         "DATABASE":"default",
         "HIVE_PRINCIPAL":"hive/_HOST@EXAMPLE.COM"
-    }
+    },
+    "HADOOP_CONFIG_LIST":["HDFS","MAPREDUCE2","YARN","WEBHCAT","HIVE","HBASE","OOZIE","SPARK","PIG","SQOOP","STORM","TEZ","ZOOKEEPER"]
 }

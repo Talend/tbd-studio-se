@@ -220,10 +220,9 @@ public class HadoopConfsUtils {
     }
 
     public static void setConnectionParameters(HadoopClusterConnectionItem connectionItem, DistributionBean distribution,
-            String version, IRetrieveConfsService confsService) throws Exception {
+            DistributionVersion distributionVersion, IRetrieveConfsService confsService) throws Exception {
         HadoopClusterConnection connection = (HadoopClusterConnection) connectionItem.getConnection();
         connection.setUseCustomConfs(confsService != null);
-        final DistributionVersion distributionVersion = distribution.getVersion(version, true);
         connection.setDistribution(distribution.name);
         connection.setDfVersion(distributionVersion.version);
         boolean supportYARN = distributionVersion.hadoopComponent != null && distributionVersion.hadoopComponent.isHadoop2();

@@ -157,7 +157,7 @@ public class HadoopImportConfsOptionPage extends AbstractHadoopImportConfsPage {
         if (remoteBtn.getSelection()) {
             optionPage = new HadoopImportRemoteOptionPage(getDistribution());
         } else if (localBtn.getSelection()) {
-            optionPage = new HadoopImportLocalOptionPage();
+            optionPage = new HadoopImportLocalOptionPage(getVersion());
         }
         return optionPage;
     }
@@ -172,8 +172,8 @@ public class HadoopImportConfsOptionPage extends AbstractHadoopImportConfsPage {
         return manualBtn.getSelection();
     }
 
-    public String getVersion() {
-        return versionCombo.getText();
+    public DistributionVersion getVersion() {
+        return HadoopDistributionsHelper.HADOOP.getDistributionVersion(versionCombo.getText(), true);
     }
 
 }

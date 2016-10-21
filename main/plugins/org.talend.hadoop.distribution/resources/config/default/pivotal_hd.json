@@ -26,5 +26,6 @@
     },
     "HBASE":{
         "PORT":2181
-    }
+    },
+    "HADOOP_CONFIG_LIST":["HDFS","MAPREDUCE2","YARN","WEBHCAT","HIVE","HBASE","OOZIE","SPARK","PIG","SQOOP","STORM","TEZ","ZOOKEEPER"]
 }

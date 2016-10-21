@@ -28,9 +28,14 @@ import java.util.Set;
 
 import org.apache.hadoop.conf.Configuration;
 import org.dom4j.Document;
+import org.talend.commons.exception.ExceptionHandler;
 import org.talend.commons.utils.io.FilesUtils;
 import org.talend.core.hadoop.conf.EHadoopConfs;
+import org.talend.hadoop.distribution.model.DistributionVersion;
 import org.talend.repository.hadoopcluster.service.IRetrieveConfsService;
+import org.talend.utils.json.JSONArray;
+import org.talend.utils.json.JSONException;
+import org.talend.utils.json.JSONObject;
 
 /**
  * created by ycbai on 2015年6月1日 Detailled comment
@@ -44,8 +49,11 @@ public class RetrieveLocalConfsService implements IRetrieveConfsService {
 
     private List<String> filterProps = new ArrayList<>();
 
-    public RetrieveLocalConfsService(String confsDirPath) {
+    DistributionVersion distributionVersion;
+
+    public RetrieveLocalConfsService(String confsDirPath, DistributionVersion distributionVersion) {
         this.confsDirPath = confsDirPath;
+        this.distributionVersion = distributionVersion;
     }
 
     @Override
@@ -61,7 +69,12 @@ public class RetrieveLocalConfsService implements IRetrieveConfsService {
             confFilesMap.put(confFile.getName(), confFile);
         }
         EHadoopConfs[] confs = EHadoopConfs.values();
+
+        List<String> supportConfs = getSupportConfsList();
         for (EHadoopConfs conf : confs) {
+            if (supportConfs != null && !supportConfs.contains(conf.getName())) {
+                continue;
+            }
             String[] confFileNames = conf.getConfFiles();
             Configuration configuration = new Configuration();
             boolean addedResource = false;
@@ -79,6 +92,26 @@ public class RetrieveLocalConfsService implements IRetrieveConfsService {
             }
         }
         return confsMap;
+    }
+
+    private List<String> getSupportConfsList() {
+        try {
+            List<String> supportConfs = new ArrayList<String>();
+            String confStr = distributionVersion.getDefaultConfig(distributionVersion.getDistribution().getName());
+            JSONArray jsonArray = new JSONObject(confStr).getJSONArray("HADOOP_CONFIG_LIST"); //$NON-NLS-1$
+            for (int i = 0; i < jsonArray.length(); i++) {
+                Object obj = jsonArray.get(i);
+                if (obj instanceof String) {
+                    supportConfs.add((String) obj);
+                }
+            }
+            if (!supportConfs.isEmpty()) {
+                return supportConfs;
+            }
+        } catch (JSONException e) {
+            ExceptionHandler.process(e);
+        }
+        return null;
     }
 
     private Map<String, String> configurationToMap(Configuration configuration) {

@@ -10,6 +10,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.commons.ui.swt.formtools.LabelledDirectoryField;
+import org.talend.hadoop.distribution.model.DistributionVersion;
 import org.talend.repository.hadoopcluster.conf.RetrieveLocalConfsService;
 import org.talend.repository.hadoopcluster.i18n.Messages;
 
@@ -23,9 +24,12 @@ public class HadoopImportLocalOptionPage extends AbstractHadoopImportConfsPage {
     private LabelledDirectoryField locationDirField;
 
     private HadoopServicesTableComposite servicesTableComp;
+    
+    DistributionVersion distributionVersion;
 
-    public HadoopImportLocalOptionPage() {
+    public HadoopImportLocalOptionPage(DistributionVersion distributionVersion) {
         super("HadoopImportLocalOptionPage"); //$NON-NLS-1$
+        this.distributionVersion = distributionVersion;
         setTitle(Messages.getString("HadoopImportLocalOptionPage.title")); //$NON-NLS-1$
         setDescription(Messages.getString("HadoopImportLocalOptionPage.desc")); //$NON-NLS-1$
     }
@@ -67,7 +71,7 @@ public class HadoopImportLocalOptionPage extends AbstractHadoopImportConfsPage {
 
             @Override
             public void modifyText(final ModifyEvent e) {
-                confsService = new RetrieveLocalConfsService(locationDirField.getText());
+                confsService = new RetrieveLocalConfsService(locationDirField.getText(), distributionVersion);
                 try {
                     servicesTableComp.setServices(confsService.getAllServices());
                 } catch (Exception ex) {
