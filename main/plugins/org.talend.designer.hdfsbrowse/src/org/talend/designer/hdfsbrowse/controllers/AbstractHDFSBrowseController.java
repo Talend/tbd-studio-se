@@ -60,6 +60,7 @@ import org.talend.core.model.process.IElementParameter;
 import org.talend.core.model.process.INode;
 import org.talend.core.model.process.IProcess;
 import org.talend.core.model.process.IProcess2;
+import org.talend.core.model.properties.Item;
 import org.talend.core.model.utils.ContextParameterUtils;
 import org.talend.core.ui.CoreUIPlugin;
 import org.talend.core.ui.properties.tab.IDynamicProperty;
@@ -268,9 +269,12 @@ public abstract class AbstractHDFSBrowseController extends AbstractElementProper
                                 .getService(IHadoopClusterService.class);
                     }
                     if (hadoopClusterService != null) {
-                        relativeHadoopClusterId = hadoopClusterService.getRelHadoopClusterId(((String) repositoryId.getValue()));
-                        if (relativeHadoopClusterId != null) {
-                            connectionBean.setRelativeHadoopClusterId(relativeHadoopClusterId);
+                        Item item = hadoopClusterService.getHadoopClusterBySubitemId(((String) repositoryId.getValue()));
+                        if (item != null) {
+                            relativeHadoopClusterId = item.getProperty().getId();
+                            if (relativeHadoopClusterId != null) {
+                                connectionBean.setRelativeHadoopClusterId(relativeHadoopClusterId);
+                            }
                         }
                     }
                 }
