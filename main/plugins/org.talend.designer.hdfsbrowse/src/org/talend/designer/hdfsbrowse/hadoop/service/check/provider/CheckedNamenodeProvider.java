@@ -38,6 +38,8 @@ public class CheckedNamenodeProvider extends AbstractCheckedServiceProvider {
             ReflectionUtils.invokeMethod(conf, "set", new Object[] { "dfs.client.retry.policy.enabled", "false" }); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
             ReflectionUtils.invokeMethod(conf, "set", new Object[] { "ipc.client.connect.max.retries", "0" }); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
             setHadoopProperties(conf, serviceProperties);
+            ReflectionUtils.invokeStaticMethod("org.apache.hadoop.security.UserGroupInformation", classLoader, //$NON-NLS-1$
+                    "setConfiguration", new Object[] { conf }); //$NON-NLS-1$
             String userName = StringUtils.trimToNull(serviceProperties.getUserName());
             String group = StringUtils.trimToNull(serviceProperties.getGroup());
             boolean useKrb = serviceProperties.isUseKrb();

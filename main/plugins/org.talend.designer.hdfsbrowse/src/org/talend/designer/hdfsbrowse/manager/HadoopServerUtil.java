@@ -87,6 +87,8 @@ public class HadoopServerUtil {
             }
             Thread.currentThread().setContextClassLoader(classLoader);
             Object conf = getConfiguration(connection, classLoader);
+            ReflectionUtils.invokeStaticMethod("org.apache.hadoop.security.UserGroupInformation", classLoader, //$NON-NLS-1$
+                    "setConfiguration", new Object[] { conf }); //$NON-NLS-1$
             boolean enableKerberos = connection.isEnableKerberos();
             String userName = StringUtils.trimToNull(connection.getUserName());
             if (enableKerberos) {

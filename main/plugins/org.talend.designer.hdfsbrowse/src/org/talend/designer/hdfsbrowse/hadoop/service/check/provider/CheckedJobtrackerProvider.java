@@ -35,6 +35,8 @@ public class CheckedJobtrackerProvider extends AbstractCheckedServiceProvider {
         ReflectionUtils.invokeMethod(conf, "set", new Object[] { "ipc.client.connection.maxidletime", "2000" }); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
         ReflectionUtils.invokeMethod(conf, "set", new Object[] { "ipc.client.connect.max.retries", "1" }); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
         setHadoopProperties(conf, serviceProperties);
+        ReflectionUtils.invokeStaticMethod("org.apache.hadoop.security.UserGroupInformation", classLoader, //$NON-NLS-1$
+                "setConfiguration", new Object[] { conf }); //$NON-NLS-1$
         boolean useKrb = serviceProperties.isUseKrb();
         boolean useMaprTicket = serviceProperties.isMaprT();
         if (useMaprTicket) {
