@@ -91,6 +91,9 @@ public class HadoopServerUtil {
                     "setConfiguration", new Object[] { conf }); //$NON-NLS-1$
             boolean enableKerberos = connection.isEnableKerberos();
             String userName = StringUtils.trimToNull(connection.getUserName());
+            if(userName != null) {
+                userName = TalendQuoteUtils.removeQuotesIfExist(userName);
+            }
             if (enableKerberos) {
                 userName = null;
             }
@@ -101,6 +104,7 @@ public class HadoopServerUtil {
             } else {
                 dfs = ReflectionUtils.invokeStaticMethod("org.apache.hadoop.fs.FileSystem", classLoader, "get", new Object[] { //$NON-NLS-1$ //$NON-NLS-2$
                         new URI(EHadoopConfProperties.FS_DEFAULT_URI.get(conf)), conf, userName });
+
             }
         } catch (Exception e) {
             throw new HadoopServerException(e);

@@ -228,6 +228,7 @@ public abstract class AbstractHDFSBrowseController extends AbstractElementProper
         }
         String userName = getParameterValueWithContext(node, context, EHadoopParameter.USERNAME.getName());
         Boolean useKrb = (Boolean) getParameterValue(node, EHadoopParameter.USE_KRB.getName());
+        Boolean useMaprTicket = (Boolean) getParameterValue(node, EHadoopParameter.USE_MAPRTICKET.getName());
         String nnPrincipal = getParameterValueWithContext(node, context, EHadoopParameter.NAMENODE_PRINCIPAL.getName());
         Boolean useKeytab = (Boolean) getParameterValue(node, EHadoopParameter.USE_KEYTAB.getName());
         String ktPrincipal = getParameterValueWithContext(node, context, EHadoopParameter.PRINCIPAL.getName());
@@ -237,6 +238,12 @@ public abstract class AbstractHDFSBrowseController extends AbstractElementProper
             Object authMode = getParameterValue(node, EHadoopParameter.AUTHENTICATION_MODE.getName());
             if ("KRB".equals(authMode)) { //$NON-NLS-1$
                 useKrb = true;
+            }
+        }
+
+        if (!isMr && node != null && node.getComponent() != null && node.getComponent().getName().equals("tHDFSInput")) {
+            if ("true".equalsIgnoreCase(useExistingConnection) || useKrb || (distribution.equals("MAPR") && !useMaprTicket)) {
+                userName = "";
             }
         }
         String customJars = (String) getParameterValue(node, EHadoopParameter.HADOOP_CUSTOM_JARS.getName());

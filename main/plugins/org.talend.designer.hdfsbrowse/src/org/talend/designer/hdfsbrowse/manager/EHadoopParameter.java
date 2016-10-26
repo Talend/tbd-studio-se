@@ -26,6 +26,8 @@ public enum EHadoopParameter {
 
     USE_KRB,
 
+    USE_MAPRTICKET,
+
     NAMENODE_PRINCIPAL,
 
     USE_KEYTAB,
