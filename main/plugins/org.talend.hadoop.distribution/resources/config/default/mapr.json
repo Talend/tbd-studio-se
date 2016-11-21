@@ -29,6 +29,7 @@
     },
     "HBASE":{
         "PORT":5181,
+        "HBASE_TABLE_NS_MAPPING":"*:/tables",
         "HBASE_MASTER_PRINCIPAL":"hbase/_HOST@EXAMPLE.COM",
         "HBASE_REGIONSERVER_PRINCIPAL":"hbase/_HOST@EXAMPLE.COM"
     },

@@ -118,6 +118,15 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
         ReflectionUtils.invokeMethod(config, "set", //$NON-NLS-1$
                 new Object[] { "hbase.zookeeper.property.clientPort", metadataConnection.getPort() }); //$NON-NLS-1$
         ReflectionUtils.invokeMethod(config, "set", new Object[] { "zookeeper.recovery.retry", "1" }); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        // Table Namespace mappings
+        String setTableNSMappingStr = (String) metadataConnection
+                .getParameter(ConnParameterKeys.CONN_PARA_KEY_HBASE_SET_TABLE_NS_MAPPING);
+        String tableNSMapping = (String) metadataConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_HBASE_TABLE_NS_MAPPING);
+        boolean check = Boolean.valueOf(setTableNSMappingStr);
+        if (check) {
+            ReflectionUtils.invokeMethod(config, "set", new Object[] { "hbase.table.namespace.mappings", //$NON-NLS-1$//$NON-NLS-2$
+                    ConnectionContextHelper.getParamValueOffContext(metadataConnection, tableNSMapping) });
+        }
         boolean useKerberos = Boolean.valueOf((String) metadataConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_USE_KRB));
         boolean useMaprTicket = Boolean.valueOf((String) metadataConnection
                 .getParameter(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_USE_MAPRTICKET));
