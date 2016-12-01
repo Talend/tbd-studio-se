@@ -28,4 +28,11 @@ public abstract class AbstractDistributionTest {
 			assertFalse(sqoop.withBugSQOOP2995());
 		}
 	}
+	
+	@Test
+	public void doSupportFetchPasswordFromFile() {
+		if (sqoop != null) {
+			assertFalse(sqoop.doSupportFetchPasswordFromFile());
+		}
+	}
 }

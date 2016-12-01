@@ -271,5 +271,9 @@ public abstract class AbstractDistribution {
     public boolean withBugSQOOP2995() {
     	return false;
     }
+    
+    public boolean doSupportFetchPasswordFromFile() {
+    	return false;
+    }
 
 }

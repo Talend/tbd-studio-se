@@ -46,5 +46,10 @@ public interface SqoopComponent extends MRComponent {
      * But the key hasn't been used.
      */
     public boolean withBugSQOOP2995();
+    
+    /**
+     * @return true if the distribution does support fetch password from file
+     */
+    public boolean doSupportFetchPasswordFromFile();
 
 }
