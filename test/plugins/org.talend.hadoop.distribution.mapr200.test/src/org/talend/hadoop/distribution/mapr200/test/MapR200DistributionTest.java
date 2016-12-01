@@ -37,10 +37,10 @@ import org.talend.hadoop.distribution.test.AbstractDistributionTest;
 public class MapR200DistributionTest extends AbstractDistributionTest {
 
     public MapR200DistributionTest() {
-		super(new MapR200Distribution());
-	}
+        super(new MapR200Distribution());
+    }
 
-	private final static String EMPTY = ""; //$NON-NLS-1$
+    private final static String EMPTY = ""; //$NON-NLS-1$
 
     @Test
     public void testMapR200Distribution() throws Exception {

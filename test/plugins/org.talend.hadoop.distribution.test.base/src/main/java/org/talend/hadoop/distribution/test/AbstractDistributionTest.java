@@ -9,30 +9,30 @@ import org.talend.hadoop.distribution.component.SqoopComponent;
 
 public abstract class AbstractDistributionTest {
 
-	protected HadoopComponent distribution;
+    protected HadoopComponent distribution;
 
-	protected SqoopComponent sqoop;
+    protected SqoopComponent sqoop;
 
-	public AbstractDistributionTest(HadoopComponent distribution) {
-		this.distribution = distribution;
-		try {
-			sqoop = (SqoopComponent) distribution;
-		} catch (Exception ex) {
-			// Some distribution do not implement SqoopComponent, ignore
-		}
-	}
+    public AbstractDistributionTest(HadoopComponent distribution) {
+        this.distribution = distribution;
+        try {
+            sqoop = (SqoopComponent) distribution;
+        } catch (Exception ex) {
+            // Some distribution do not implement SqoopComponent, ignore
+        }
+    }
 
-	@Test
-	public void withBugSQOOP2995() {
-		if (sqoop != null) {
-			assertFalse(sqoop.withBugSQOOP2995());
-		}
-	}
-	
-	@Test
-	public void doSupportFetchPasswordFromFile() {
-		if (sqoop != null) {
-			assertFalse(sqoop.doSupportFetchPasswordFromFile());
-		}
-	}
+    @Test
+    public void isImpactedBySqoop2995() {
+        if (sqoop != null) {
+            assertFalse(sqoop.isImpactedBySqoop2995());
+        }
+    }
+
+    @Test
+    public void doSupportFetchPasswordFromFile() {
+        if (sqoop != null) {
+            assertFalse(sqoop.doSupportFetchPasswordFromFile());
+        }
+    }
 }

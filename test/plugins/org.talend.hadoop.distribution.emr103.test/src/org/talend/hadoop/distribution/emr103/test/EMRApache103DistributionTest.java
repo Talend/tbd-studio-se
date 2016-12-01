@@ -37,10 +37,10 @@ import org.talend.hadoop.distribution.test.AbstractDistributionTest;
 public class EMRApache103DistributionTest extends AbstractDistributionTest {
 
     public EMRApache103DistributionTest() {
-		super(new EMRApache103Distribution());
-	}
+        super(new EMRApache103Distribution());
+    }
 
-	private static final String EMPTY = ""; //$NON-NLS-1$
+    private static final String EMPTY = ""; //$NON-NLS-1$
 
     @Test
     public void testEMRApache103Distribution() throws Exception {

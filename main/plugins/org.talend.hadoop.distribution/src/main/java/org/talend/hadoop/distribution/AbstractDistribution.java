@@ -83,7 +83,7 @@ public abstract class AbstractDistribution {
         // Not used in Hadoop 1
         return ""; //$NON-NLS-1$
     }
-    
+
     public String getSparkYarnJarsPath() {
         // Not used before Spark2
         return ""; //$NON-NLS-1$
@@ -267,13 +267,13 @@ public abstract class AbstractDistribution {
     public boolean doSupportBasicAtlasAuthentification() {
         return false;
     }
-    
-    public boolean withBugSQOOP2995() {
-    	return false;
+
+    public boolean isImpactedBySqoop2995() {
+        return false;
     }
-    
+
     public boolean doSupportFetchPasswordFromFile() {
-    	return false;
+        return false;
     }
 
 }

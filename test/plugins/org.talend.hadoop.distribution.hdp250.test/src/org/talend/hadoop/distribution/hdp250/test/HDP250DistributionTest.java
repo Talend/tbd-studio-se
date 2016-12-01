@@ -36,15 +36,15 @@ import org.talend.hadoop.distribution.test.AbstractDistributionTest;
 public class HDP250DistributionTest extends AbstractDistributionTest {
 
     public HDP250DistributionTest() {
-		super(new HDP250Distribution());
-	}
-    
-    @Override
-    public void withBugSQOOP2995() {
-    	assertTrue(sqoop.withBugSQOOP2995());
+        super(new HDP250Distribution());
     }
 
-	private final static String DEFAULT_YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,/usr/hdp/current/hadoop-client/*,/usr/hdp/current/hadoop-client/lib/*,/usr/hdp/current/hadoop-hdfs-client/*,/usr/hdp/current/hadoop-hdfs-client/lib/*,/usr/hdp/current/hadoop-mapreduce-client/*,/usr/hdp/current/hadoop-mapreduce-client/lib/*,/usr/hdp/current/hadoop-yarn-client/*,/usr/hdp/current/hadoop-yarn-client/lib/*"; //$NON-NLS-1$
+    @Override
+    public void isImpactedBySqoop2995() {
+        assertTrue(sqoop.isImpactedBySqoop2995());
+    }
+
+    private final static String DEFAULT_YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,/usr/hdp/current/hadoop-client/*,/usr/hdp/current/hadoop-client/lib/*,/usr/hdp/current/hadoop-hdfs-client/*,/usr/hdp/current/hadoop-hdfs-client/lib/*,/usr/hdp/current/hadoop-mapreduce-client/*,/usr/hdp/current/hadoop-mapreduce-client/lib/*,/usr/hdp/current/hadoop-yarn-client/*,/usr/hdp/current/hadoop-yarn-client/lib/*"; //$NON-NLS-1$
 
     @Test
     public void testHDP250Distribution() throws Exception {

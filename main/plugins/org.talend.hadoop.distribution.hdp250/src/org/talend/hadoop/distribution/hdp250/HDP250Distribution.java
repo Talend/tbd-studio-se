@@ -405,9 +405,9 @@ public class HDP250Distribution extends AbstractDistribution implements HDFSComp
     public boolean doSupportBasicAtlasAuthentification() {
         return true;
     }
-    
+
     @Override
-    public boolean withBugSQOOP2995() {
-    	return true;
+    public boolean isImpactedBySqoop2995() {
+        return true;
     }
 }

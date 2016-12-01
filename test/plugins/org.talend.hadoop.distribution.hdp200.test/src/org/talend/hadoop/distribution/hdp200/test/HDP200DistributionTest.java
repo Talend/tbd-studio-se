@@ -37,15 +37,15 @@ import org.talend.hadoop.distribution.test.AbstractDistributionTest;
 public class HDP200DistributionTest extends AbstractDistributionTest {
 
     public HDP200DistributionTest() {
-		super(new HDP200Distribution());
-	}
-    
-    @Override
-    public void doSupportFetchPasswordFromFile() {
-    	assertTrue(sqoop.doSupportFetchPasswordFromFile());
+        super(new HDP200Distribution());
     }
 
-	private final static String DEFAULT_YARN_APPLICATION_CLASSPATH = "/etc/hadoop/conf,/usr/lib/hadoop/*,/usr/lib/hadoop/lib/*,/usr/lib/hadoop-hdfs/*,/usr/lib/hadoop-hdfs/lib/*,/usr/lib/hadoop-yarn/*,/usr/lib/hadoop-yarn/lib/*,/usr/lib/hadoop-mapreduce/*,/usr/lib/hadoop-mapreduce/lib/*"; //$NON-NLS-1$
+    @Override
+    public void doSupportFetchPasswordFromFile() {
+        assertTrue(sqoop.doSupportFetchPasswordFromFile());
+    }
+
+    private final static String DEFAULT_YARN_APPLICATION_CLASSPATH = "/etc/hadoop/conf,/usr/lib/hadoop/*,/usr/lib/hadoop/lib/*,/usr/lib/hadoop-hdfs/*,/usr/lib/hadoop-hdfs/lib/*,/usr/lib/hadoop-yarn/*,/usr/lib/hadoop-yarn/lib/*,/usr/lib/hadoop-mapreduce/*,/usr/lib/hadoop-mapreduce/lib/*"; //$NON-NLS-1$
 
     @Test
     public void testHDP200Distribution() throws Exception {
