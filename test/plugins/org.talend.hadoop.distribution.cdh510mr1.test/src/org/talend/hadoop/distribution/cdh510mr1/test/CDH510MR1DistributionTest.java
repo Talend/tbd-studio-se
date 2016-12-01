@@ -28,14 +28,19 @@ import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
+import org.talend.hadoop.distribution.test.AbstractDistributionTest;
 
 /**
  * Test class for the {@link CDH510MR1Distribution} distribution.
  *
  */
-public class CDH510MR1DistributionTest {
+public class CDH510MR1DistributionTest extends AbstractDistributionTest {
 
-    private static final String EMPTY = ""; //$NON-NLS-1$
+    public CDH510MR1DistributionTest() {
+		super(new CDH510MR1Distribution());
+	}
+
+	private static final String EMPTY = ""; //$NON-NLS-1$
 
     @Test
     public void testCDH510MR1Distribution() throws Exception {

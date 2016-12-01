@@ -190,7 +190,7 @@
 	
 	java.util.Properties additionalProperties_<%=cid%> = new java.util.Properties();
 	<%
-	if("HDP_2_5".equals(version)){
+	if(sqoopDistrib.withBugSQOOP2995()){
 	//TODO, relate with https://issues.apache.org/jira/browse/SQOOP-2995, have to set a init value to the new map type key "customtool.options.jsonmap". But the key hasn't been used
 	%>
 		additionalProperties_<%=cid%>.put("customtool.options.jsonmap", "{\"\":\"\"}");

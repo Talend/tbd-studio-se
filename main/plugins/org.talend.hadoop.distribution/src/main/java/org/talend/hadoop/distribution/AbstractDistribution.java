@@ -267,5 +267,9 @@ public abstract class AbstractDistribution {
     public boolean doSupportBasicAtlasAuthentification() {
         return false;
     }
+    
+    public boolean withBugSQOOP2995() {
+    	return false;
+    }
 
 }

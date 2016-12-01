@@ -28,14 +28,19 @@ import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.mapr301.MapR301Distribution;
+import org.talend.hadoop.distribution.test.AbstractDistributionTest;
 
 /**
  * Test class for the {@link MapR301Distribution} distribution.
  *
  */
-public class MapR301DistributionTest {
+public class MapR301DistributionTest extends AbstractDistributionTest {
 
-    private final static String EMPTY = ""; //$NON-NLS-1$
+    public MapR301DistributionTest() {
+		super(new MapR301Distribution());
+	}
+
+	private final static String EMPTY = ""; //$NON-NLS-1$
 
     @Test
     public void testMapR301Distribution() throws Exception {

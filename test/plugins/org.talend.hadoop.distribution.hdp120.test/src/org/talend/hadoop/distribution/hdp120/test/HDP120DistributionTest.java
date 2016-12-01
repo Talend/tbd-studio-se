@@ -28,14 +28,19 @@ import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.hdp120.HDP120Distribution;
+import org.talend.hadoop.distribution.test.AbstractDistributionTest;
 
 /**
  * Test class for the {@link HDP120Distribution} distribution.
  *
  */
-public class HDP120DistributionTest {
+public class HDP120DistributionTest extends AbstractDistributionTest {
 
-    private static final String EMPTY = ""; //$NON-NLS-1$
+    public HDP120DistributionTest() {
+		super(new HDP120Distribution());
+	}
+
+	private static final String EMPTY = ""; //$NON-NLS-1$
 
     @Test
     public void testHDP120Distribution() throws Exception {

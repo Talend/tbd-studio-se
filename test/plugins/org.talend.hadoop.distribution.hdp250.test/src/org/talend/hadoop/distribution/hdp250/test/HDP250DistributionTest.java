@@ -28,14 +28,23 @@ import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.hdp250.HDP250Distribution;
+import org.talend.hadoop.distribution.test.AbstractDistributionTest;
 
 /**
- * Test class for the {@link HDP240Distribution} distribution.
- *
+ * Test class for the {@link HDP250Distribution} distribution.
  */
-public class HDP250DistributionTest {
+public class HDP250DistributionTest extends AbstractDistributionTest {
 
-    private final static String DEFAULT_YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,/usr/hdp/current/hadoop-client/*,/usr/hdp/current/hadoop-client/lib/*,/usr/hdp/current/hadoop-hdfs-client/*,/usr/hdp/current/hadoop-hdfs-client/lib/*,/usr/hdp/current/hadoop-mapreduce-client/*,/usr/hdp/current/hadoop-mapreduce-client/lib/*,/usr/hdp/current/hadoop-yarn-client/*,/usr/hdp/current/hadoop-yarn-client/lib/*"; //$NON-NLS-1$
+    public HDP250DistributionTest() {
+		super(new HDP250Distribution());
+	}
+    
+    @Override
+    public void withBugSQOOP2995() {
+    	assertTrue(sqoop.withBugSQOOP2995());
+    }
+
+	private final static String DEFAULT_YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,/usr/hdp/current/hadoop-client/*,/usr/hdp/current/hadoop-client/lib/*,/usr/hdp/current/hadoop-hdfs-client/*,/usr/hdp/current/hadoop-hdfs-client/lib/*,/usr/hdp/current/hadoop-mapreduce-client/*,/usr/hdp/current/hadoop-mapreduce-client/lib/*,/usr/hdp/current/hadoop-yarn-client/*,/usr/hdp/current/hadoop-yarn-client/lib/*"; //$NON-NLS-1$
 
     @Test
     public void testHDP250Distribution() throws Exception {
@@ -100,4 +109,5 @@ public class HDP250DistributionTest {
         assertTrue(distribution.doSupportHDFSEncryption());
 
     }
+
 }
