@@ -98,8 +98,6 @@ public class MapR520DistributionTest {
         assertTrue(((MapRStreamsComponent) distribution).canCreateMapRStream());
         assertEquals(MapR520Distribution.MAPR_STREAMS_JAR_PATH, ((MapRStreamsComponent) distribution).getMapRStreamsJarPath());
         assertEquals(SparkStreamingKafkaVersion.MAPR, ((SparkStreamingComponent) distribution).getSparkStreamingKafkaVersion());
-
-        assertTrue(distribution.doSupportHDFSEncryption());
     }
 
 }

@@ -96,8 +96,6 @@ public class MapR500DistributionTest extends AbstractDistributionTest {
         assertFalse(distribution instanceof ImpalaComponent);
         assertTrue(((SparkStreamingComponent) distribution).doSupportCheckpointing());
         assertFalse(((SparkStreamingComponent) distribution).doSupportBackpressure());
-
-        assertTrue(distribution.doSupportHDFSEncryption());
     }
 
 }
