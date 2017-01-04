@@ -13,7 +13,7 @@
             "PORT":9083
         },
         "STANDALONE":{
-            "PORT":10004
+            "PORT":10000
         },
         "DATABASE":"default",
         "HIVE_PRINCIPAL":"hive/_HOST@EXAMPLE.COM"
