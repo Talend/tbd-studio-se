@@ -56,7 +56,7 @@ import org.talend.repository.model.hadoopcluster.HadoopSubConnectionItem;
 
 /**
  * created by ycbai on 2013-1-28 Detailled comment
- * 
+ *
  */
 public class HadoopClusterService implements IHadoopClusterService {
 
@@ -231,7 +231,7 @@ public class HadoopClusterService implements IHadoopClusterService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.hadoop.IHadoopClusterService#getHadoopCustomLibraries()
      */
     @Override
@@ -425,5 +425,9 @@ public class HadoopClusterService implements IHadoopClusterService {
         }
         return false;
     }
-    
+
+    public String getRepositoryTypeOfHadoopSubItem(Item subItem) {
+        return HCRepositoryUtil.getRepositoryTypeOfHadoopSubItem(subItem);
+    }
+
 }

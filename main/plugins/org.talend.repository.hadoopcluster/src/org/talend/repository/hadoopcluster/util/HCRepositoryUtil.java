@@ -49,6 +49,8 @@ import org.talend.repository.ProjectManager;
 import org.talend.repository.hadoopcluster.node.HadoopFolderRepositoryNode;
 import org.talend.repository.hadoopcluster.node.model.HadoopClusterRepositoryNodeType;
 import org.talend.repository.hadoopcluster.tester.HadoopClusterMetadataNodeTester;
+import org.talend.repository.hadoopcluster.ui.viewer.HadoopSubnodeRepositoryContentManager;
+import org.talend.repository.hadoopcluster.ui.viewer.handler.IHadoopSubnodeRepositoryContentHandler;
 import org.talend.repository.model.IProxyRepositoryFactory;
 import org.talend.repository.model.IRepositoryNode;
 import org.talend.repository.model.IRepositoryNode.ENodeType;
@@ -62,7 +64,7 @@ import org.talend.repository.model.hadoopcluster.HadoopSubConnectionItem;
 
 /**
  * created by ycbai on 2013-1-22 Detailled comment
- * 
+ *
  */
 public class HCRepositoryUtil {
 
@@ -114,9 +116,9 @@ public class HCRepositoryUtil {
 
     /**
      * DOC ycbai Comment method "isHadoopClusterItem".
-     * 
+     *
      * Estimate whether or not the item is a hadoop cluster item.
-     * 
+     *
      * @param item
      * @return
      */
@@ -126,9 +128,9 @@ public class HCRepositoryUtil {
 
     /**
      * DOC ycbai Comment method "setupConnectionToHadoopCluster".
-     * 
+     *
      * Setup the relation from hadoop subnode to hadoop cluster.
-     * 
+     *
      * @param node
      * @param connectionID
      * @throws PersistenceException
@@ -149,9 +151,9 @@ public class HCRepositoryUtil {
 
     /**
      * DOC ycbai Comment method "removeFromHadoopCluster".
-     * 
+     *
      * Remove the connection from hadoop cluster.
-     * 
+     *
      * @param clusterConnectionItem
      * @param connectionID
      * @throws PersistenceException
@@ -176,9 +178,9 @@ public class HCRepositoryUtil {
 
     /**
      * DOC ycbai Comment method "getHCConnectionItemFromRepositoryNode".
-     * 
+     *
      * Get the HadoopClusterConnectionItem from RepositoryNode recursively.
-     * 
+     *
      * @param node
      * @return
      */
@@ -276,9 +278,9 @@ public class HCRepositoryUtil {
 
     /**
      * DOC ycbai Comment method "getRelativeHadoopClusterConnection".
-     * 
+     *
      * Get the HadoopClusterConnection from HadoopConnection.
-     * 
+     *
      * @param hadoopConnection
      * @return
      */
@@ -377,9 +379,9 @@ public class HCRepositoryUtil {
 
     /**
      * DOC ycbai Comment method "getSubitemsOfHadoopCluster".
-     * 
+     *
      * Get subitems of hadoop cluster like hdfs, hcatalog, hive etc.
-     * 
+     *
      * @param item
      * @return
      * @throws PersistenceException
@@ -424,9 +426,9 @@ public class HCRepositoryUtil {
 
     /**
      * DOC ycbai Comment method "isHadoopNode".
-     * 
+     *
      * Estimate whether or not the node belong to hadoop cluster.
-     * 
+     *
      * @param node
      * @return
      */
@@ -436,9 +438,9 @@ public class HCRepositoryUtil {
 
     /**
      * DOC ycbai Comment method "isHadoopSubnode".
-     * 
+     *
      * Estimate whether or not the node is a subnode of a hadoop cluster.
-     * 
+     *
      * @param node
      * @return
      */
@@ -448,9 +450,9 @@ public class HCRepositoryUtil {
 
     /**
      * DOC ycbai Comment method "isHadoopFolderNode".
-     * 
+     *
      * Estimate whether or not the folder node belong to hadoop cluster.
-     * 
+     *
      * @param node
      * @return
      */
@@ -460,9 +462,9 @@ public class HCRepositoryUtil {
 
     /**
      * DOC ycbai Comment method "isHadoopContainerNode".
-     * 
+     *
      * Estimate whether or not the node can be a container.
-     * 
+     *
      * @param node
      * @return
      */
@@ -472,9 +474,9 @@ public class HCRepositoryUtil {
 
     /**
      * DOC ycbai Comment method "isHadoopClusterNode".
-     * 
+     *
      * Estimate whether or not the type of node is HadoopClusterRepositoryNodeType.HADOOPCLUSTER.
-     * 
+     *
      * @param node
      * @return
      */
@@ -522,9 +524,9 @@ public class HCRepositoryUtil {
 
     /**
      * DOC ycbai Comment method "getHadoopDbParameters".
-     * 
+     *
      * Get db connection(like hbase, hive) parameters by hadoop cluster.
-     * 
+     *
      * @param clusterId
      * @return
      */
@@ -612,9 +614,9 @@ public class HCRepositoryUtil {
 
     /**
      * DOC ycbai Comment method "removeHadoopDbParameters".
-     * 
+     *
      * Remove all db connection related parameters.
-     * 
+     *
      * @param connection
      */
     public static void removeHadoopDbParameters(DatabaseConnection connection) {
@@ -630,11 +632,11 @@ public class HCRepositoryUtil {
 
     /**
      * DOC ycbai Comment method "detectClusterChangeOfMRProcess".
-     * 
+     *
      * <p>
      * Detect the changes of hadoop related parameters from Process to Hadoop cluster.
      * </p>
-     * 
+     *
      * @param hcConnection
      * @param process
      * @return true if there are some changes from them, otherwise return false.
@@ -792,4 +794,21 @@ public class HCRepositoryUtil {
         }
         connection.setPreloadAuthentification(true);
     }
+
+    public static String getRepositoryTypeOfHadoopSubItem(Item item) {
+        if (item instanceof DatabaseConnectionItem) {
+            DatabaseConnectionItem dbItem = (DatabaseConnectionItem) item;
+            DatabaseConnection dbConnection = (DatabaseConnection) dbItem.getConnection();
+            return dbConnection.getDatabaseType().toUpperCase();
+        }
+
+        for (IHadoopSubnodeRepositoryContentHandler handler : HadoopSubnodeRepositoryContentManager.getHandlers()) {
+            if (handler.isProcess(item) && handler.getProcessType() != null) {
+                return handler.getProcessType().getType().toUpperCase();
+            }
+        }
+
+        return null;
+    }
+
 }
