@@ -1,5 +1,5 @@
 {
-    "NAMENODE_URI":"maprfs:///localhost:7222",
+    "NAMENODE_URI":"maprfs:///",
     "JOBTRACKER":"localhost:9001",
     "RESOURCE_MANAGER":"localhost:8032",
     "RESOURCEMANAGER_SCHEDULER_ADDRESS":"localhost:8030",
