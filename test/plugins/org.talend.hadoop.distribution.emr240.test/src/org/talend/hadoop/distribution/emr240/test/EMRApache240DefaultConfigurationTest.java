@@ -45,7 +45,7 @@ public class EMRApache240DefaultConfigurationTest extends AbstractTest4DefaultCo
     @Test
     public void testHive() {
         doTestExistedProperty("9083", EHadoopCategory.HIVE.getName(), HiveModeInfo.EMBEDDED.getName(), PORT);
-        doTestExistedProperty("10004", EHadoopCategory.HIVE.getName(), HiveModeInfo.STANDALONE.getName(), PORT);
+        doTestExistedProperty("10000", EHadoopCategory.HIVE.getName(), HiveModeInfo.STANDALONE.getName(), PORT);
 
         doTestExistedProperty("default", EHadoopCategory.HIVE.getName(), DATABASE);
         doTestExistedProperty("hive/_HOST@EXAMPLE.COM", EHadoopCategory.HIVE.getName(), HIVE_PRINCIPAL);
