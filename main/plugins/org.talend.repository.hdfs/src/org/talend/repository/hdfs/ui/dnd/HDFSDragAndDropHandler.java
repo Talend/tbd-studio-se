@@ -91,10 +91,17 @@ public class HDFSDragAndDropHandler extends AbstractDragAndDropServiceHandler {
         } else if (EHDFSRepositoryToComponent.DB_VERSION.getRepositoryValue().equals(value)) {
             return hcConnection.getDfVersion();
         } else if (EHDFSRepositoryToComponent.HADOOP_CUSTOM_JARS.getRepositoryValue().equals(value)) {
-            if (targetComponent != null && targetComponent.startsWith("tPig")) { //$NON-NLS-1$
-                return hcConnection.getParameters().get(ECustomVersionGroup.PIG.getName());
+            ECustomVersionGroup versionGroup = ECustomVersionGroup.COMMON;
+            if (targetComponent == null) { // Indicate target is a mapreduce process.
+                versionGroup = ECustomVersionGroup.MAP_REDUCE;
+            } else if (targetComponent.startsWith("tPig")) { //$NON-NLS-1$
+                versionGroup = ECustomVersionGroup.PIG;
             }
-            return HCVersionUtil.getCompCustomJarsParamFromRep(hcConnection, ECustomVersionGroup.COMMON);
+            return HCVersionUtil.getCompCustomJarsParamFromRep(hcConnection, versionGroup);
+        } else if (EHDFSRepositoryToComponent.HADOOP_CUSTOM_JARS_FOR_SPARK.getRepositoryValue().equals(value)) {
+            return HCVersionUtil.getCompCustomJarsParamFromRep(hcConnection, ECustomVersionGroup.SPARK);
+        } else if (EHDFSRepositoryToComponent.HADOOP_CUSTOM_JARS_FOR_SPARKSTREAMING.getRepositoryValue().equals(value)) {
+            return HCVersionUtil.getCompCustomJarsParamFromRep(hcConnection, ECustomVersionGroup.SPARK_STREAMING);
         } else if (EHDFSRepositoryToComponent.USE_YARN.getRepositoryValue().equals(value)) {
             return hcConnection.isUseYarn();
         } else if (EHDFSRepositoryToComponent.AUTHENTICATION_MODE.getRepositoryValue().equals(value)) {
