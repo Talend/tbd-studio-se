@@ -82,6 +82,11 @@ public class HBaseConnectionCreator extends AbstractHadoopDBConnectionCreator {
             if (StringUtils.isNotEmpty(port)) {
                 paramsMap.put(ConnParameterKeys.CONN_PARA_KEY_DB_PORT, port);
             }
+            String znodeParent = params.get(EHadoopConfProperties.HBASE_ZNODE_PARENT.getName());
+            if (StringUtils.isNotEmpty(znodeParent)) {
+                paramsMap.put(ConnParameterKeys.CONN_PARA_KEY_HBASE_SET_ZNODE_PARENT, Boolean.TRUE.toString());
+                paramsMap.put(ConnParameterKeys.CONN_PARA_KEY_HBASE_ZNODE_PARENT, znodeParent);
+            }
             String tableNSMapping = params.get(EHadoopConfProperties.HBASE_TABLE_NS_MAPPING.getName());
             if (StringUtils.isNotEmpty(tableNSMapping)) {
                 paramsMap.put(ConnParameterKeys.CONN_PARA_KEY_HBASE_TABLE_NS_MAPPING, tableNSMapping);
