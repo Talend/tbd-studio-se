@@ -329,9 +329,12 @@ public class ExecuteJobCompositeController {
 
     /**
      * When clicking the "Run" button, this action will be invoked.<br>
-     * Workflow job state valid transitions: <li>--> PREP <li>PREP --> RUNNING | KILLED <li>RUNNING --> SUSPENDED |
-     * SUCCEEDED | KILLED | FAILED <li>SUSPENDED --> RUNNING | KILLED
-     * 
+     * Workflow job state valid transitions:
+     * <li>--> PREP
+     * <li>PREP --> RUNNING | KILLED
+     * <li>RUNNING --> SUSPENDED | SUCCEEDED | KILLED | FAILED
+     * <li>SUSPENDED --> RUNNING | KILLED
+     *
      * @param iContext
      */
     public void doRunAction(IContext iContext) {
@@ -416,7 +419,7 @@ public class ExecuteJobCompositeController {
     /**
      * Deploys job on Hadoop, about the detail steps refer to
      * {@link OozieJobDeployer#deployJob(IProcess2, IProgressMonitor)}.
-     * 
+     *
      * @param output
      * @param jobContext
      * @throws OozieJobDeployException
@@ -432,7 +435,7 @@ public class ExecuteJobCompositeController {
 
     /**
      * Submits a job to run remotely on Hadoop,
-     * 
+     *
      * @param monitor
      * @param jobContext
      * @param output
@@ -482,7 +485,7 @@ public class ExecuteJobCompositeController {
 
     /**
      * Updates the contents of the widget "Output" using logs and status.
-     * 
+     *
      * @param output
      */
     private void updateOutputTextContents(final String output, final String oozieJobName) {
@@ -615,9 +618,12 @@ public class ExecuteJobCompositeController {
     }
 
     /**
-     * Workflow job state valid transitions: <li>--> PREP <li>PREP --> RUNNING | KILLED <li>RUNNING --> SUSPENDED |
-     * SUCCEEDED | KILLED | FAILED <li>SUSPENDED --> RUNNING | KILLED
-     * 
+     * Workflow job state valid transitions:
+     * <li>--> PREP
+     * <li>PREP --> RUNNING | KILLED
+     * <li>RUNNING --> SUSPENDED | SUCCEEDED | KILLED | FAILED
+     * <li>SUSPENDED --> RUNNING | KILLED
+     *
      * @param status
      */
     // protected void updateAllEnabledOrNot(final OozieJobProcessStatus status) {
@@ -710,7 +716,7 @@ public class ExecuteJobCompositeController {
     /**
      * Format outputing message beginning with date like "[yyyy-MM-dd HH:mm:ss]Starting job remote running...". About
      * details refer to {@link TOozieStringUtils#outputLogWithPrefixDate(String)}.
-     * 
+     *
      * @param message output message like "Starting job remote running...".
      * @return
      */
@@ -729,7 +735,7 @@ public class ExecuteJobCompositeController {
     }
 
     /**
-     * 
+     *
      * @return
      */
     private JobContext initJobContextForOozie(JobSubmissionType jobSubType, IContext context) {
@@ -943,7 +949,7 @@ public class ExecuteJobCompositeController {
     protected void initSettingForJob(TOozieSettingDialog settingDialog) {
         String propertyTypeValue = getPropertyType();
         // This is for distinguishing the Repository and Built-in
-        if (TOozieParamUtils.isBuiltInForOozie() && !"Repository".equals(settingDialog.getDialogPropertyTypeValue())) {
+        if (!"Repository".equals(propertyTypeValue)) {
             String hadoopDistributionValue = getBIHadoopDistribution();
             String hadoopVersionValue = getBIHadoopVersion();
             String nameNodeEPValue = getBINameNode();
@@ -1142,7 +1148,7 @@ public class ExecuteJobCompositeController {
 
     /**
      * Checks if the current process is read-only.
-     * 
+     *
      * @return <code>true</code> if it is read-only, otherwise, <code>false</code>.
      */
     private boolean isJobReadOnly() {
@@ -1479,7 +1485,7 @@ public class ExecuteJobCompositeController {
     /**
      * Checks if the scheduler setting is done from preference page, returns <code>true</code> if done, otherwise,
      * returns <code>false</code> .
-     * 
+     *
      * @return
      */
     protected boolean isSettingDone() {
@@ -1500,7 +1506,7 @@ public class ExecuteJobCompositeController {
     }
 
     /**
-     * 
+     *
      * @return
      * @throws JobSubmissionException
      */

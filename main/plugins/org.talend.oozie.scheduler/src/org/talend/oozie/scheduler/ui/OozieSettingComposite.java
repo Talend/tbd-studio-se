@@ -73,7 +73,7 @@ import org.talend.repository.ui.dialog.RepositoryReviewDialog;
 
 /**
  * created by ycbai on 2013-2-26 Detailled comment
- * 
+ *
  */
 public class OozieSettingComposite extends ScrolledComposite {
 
@@ -167,7 +167,7 @@ public class OozieSettingComposite extends ScrolledComposite {
 
     /**
      * DOC ycbai OozieSettingComposite constructor comment.
-     * 
+     *
      * @param parent
      * @param style
      * @param tOozieSettingDialog
@@ -272,7 +272,6 @@ public class OozieSettingComposite extends ScrolledComposite {
 
         propertyTypeCombo = new LabelledCombo(propertyTypeGroup, TOozieUIConstants.OOZIE_LBL_PROPERTY_TYPE, "",
                 propertyTypes.toArray(new String[0]), 2, true);
-        propertyTypeCombo.setText(propertyType);
         oozieRepositoryText = new Text(propertyTypeGroup, SWT.BORDER);
         oozieRepositoryText.setEditable(false);
         GridDataFactory.fillDefaults().grab(true, false).span(1, 1).align(SWT.FILL, SWT.CENTER).applyTo(oozieRepositoryText);
@@ -303,12 +302,16 @@ public class OozieSettingComposite extends ScrolledComposite {
                     oozieRepositoryText.setText(connection.getLabel());
                     oozieRepositoryText.setVisible(true);
                     oozieSelectBtn.setVisible(true);
-                    return;
                 }
             }
+            if (StringUtils.isEmpty(propertyType)) {
+                propertyType = BUILT_IN;
+            }
+            propertyTypeCombo.setText(propertyType);
         }
         oozieRepositoryText.setVisible(true);
         oozieSelectBtn.setVisible(true);
+        oozieSelectBtn.setEnabled(REPOSITORY.equals(propertyType));
     }
 
     protected void preInitialization() {
@@ -429,7 +432,7 @@ public class OozieSettingComposite extends ScrolledComposite {
 
     /**
      * DOC plv Comment method "updateSetting".
-     * 
+     *
      * @param isSupportSecurity
      */
     private void updateSetting(IHDistributionVersion hdVersion) {
@@ -587,6 +590,7 @@ public class OozieSettingComposite extends ScrolledComposite {
     }
 
     protected void addListeners() {
+        IProcess2 process = OozieJobTrackerListener.getProcess();
         propertyTypeCombo.addModifyListener(new ModifyListener() {
 
             @Override
@@ -601,10 +605,12 @@ public class OozieSettingComposite extends ScrolledComposite {
                     propertyType = REPOSITORY;
                     OozieSettingComposite.this.tOozieSettingDialog.setPropertyTypeValue(REPOSITORY);
                     OozieSettingComposite.this.tOozieSettingDialog.setPropertyType(REPOSITORY);
-                    initPropertyCombo();
                     oozieSelectBtn.setEnabled(true);
                     TOozieParamUtils.setBuiltInForOozie(false);
                 }
+                process.getElementParameter(EOozieParameterName.OOZIE_PROPERTY_TYPENAME.getName())
+                        .setValue(propertyTypeCombo.getText());
+                initPropertyCombo();
                 initUI();
                 ExecuteJobCompositeController executeJobCompController = new ExecuteJobCompositeController(
                         OozieSettingComposite.this);
@@ -715,6 +721,7 @@ public class OozieSettingComposite extends ScrolledComposite {
                         propertiesTableView.getTable().redraw();
                     }
                     updateProperty();
+                    initUI();
                 }
             });
         }
@@ -1063,7 +1070,7 @@ public class OozieSettingComposite extends ScrolledComposite {
 
     /**
      * Getter for group.
-     * 
+     *
      * @return the group
      */
     public String getGroup() {
@@ -1072,7 +1079,7 @@ public class OozieSettingComposite extends ScrolledComposite {
 
     /**
      * Sets the group.
-     * 
+     *
      * @param group the group to set
      */
     public void setGroup(String group) {
@@ -1125,7 +1132,7 @@ public class OozieSettingComposite extends ScrolledComposite {
 
     /**
      * Getter for useKeytab.
-     * 
+     *
      * @return the useKeytab
      */
     public boolean isUseKeytab() {
@@ -1134,7 +1141,7 @@ public class OozieSettingComposite extends ScrolledComposite {
 
     /**
      * Sets the useKeytab.
-     * 
+     *
      * @param useKeytab the useKeytab to set
      */
     public void setUseKeytab(boolean useKeytab) {
@@ -1143,7 +1150,7 @@ public class OozieSettingComposite extends ScrolledComposite {
 
     /**
      * Getter for ktPrincipal.
-     * 
+     *
      * @return the ktPrincipal
      */
     public String getKtPrincipal() {
@@ -1152,7 +1159,7 @@ public class OozieSettingComposite extends ScrolledComposite {
 
     /**
      * Sets the ktPrincipal.
-     * 
+     *
      * @param ktPrincipal the ktPrincipal to set
      */
     public void setKtPrincipal(String ktPrincipal) {
@@ -1161,7 +1168,7 @@ public class OozieSettingComposite extends ScrolledComposite {
 
     /**
      * Getter for keytab.
-     * 
+     *
      * @return the keytab
      */
     public String getKeytab() {
@@ -1170,7 +1177,7 @@ public class OozieSettingComposite extends ScrolledComposite {
 
     /**
      * Sets the keytab.
-     * 
+     *
      * @param keytab the keytab to set
      */
     public void setKeytab(String keytab) {
@@ -1179,7 +1186,7 @@ public class OozieSettingComposite extends ScrolledComposite {
 
     /**
      * Getter for useYarn.
-     * 
+     *
      * @return the useYarn
      */
     public boolean isUseYarn() {
@@ -1188,7 +1195,7 @@ public class OozieSettingComposite extends ScrolledComposite {
 
     /**
      * Sets the useYarn.
-     * 
+     *
      * @param useYarn the useYarn to set
      */
     public void setUseYarn(boolean useYarn) {
@@ -1197,7 +1204,7 @@ public class OozieSettingComposite extends ScrolledComposite {
 
     /**
      * Getter for authMode.
-     * 
+     *
      * @return the authMode
      */
     public String getAuthMode() {
@@ -1206,7 +1213,7 @@ public class OozieSettingComposite extends ScrolledComposite {
 
     /**
      * Sets the authMode.
-     * 
+     *
      * @param authMode the authMode to set
      */
     public void setAuthMode(String authMode) {
@@ -1215,7 +1222,7 @@ public class OozieSettingComposite extends ScrolledComposite {
 
     /**
      * Getter for enableOoKerberos.
-     * 
+     *
      * @return the enableOoKerberos
      */
     public boolean isEnableOoKerberos() {
@@ -1224,7 +1231,7 @@ public class OozieSettingComposite extends ScrolledComposite {
 
     /**
      * Sets the enableOoKerberos.
-     * 
+     *
      * @param enableOoKerberos the enableOoKerberos to set
      */
     public void setEnableOoKerberos(boolean enableOoKerberos) {
