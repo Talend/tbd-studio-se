@@ -133,7 +133,21 @@ public class HCatalogDragAndDropHandler extends AbstractDragAndDropServiceHandle
             return HCVersionUtil.getCompCustomJarsParamFromRep(hcConnection, ECustomVersionGroup.COMMON);
         } else if (EHCatalogRepositoryToComponent.HADOOP_ADVANCED_PROPERTIES.getRepositoryValue().equals(value)) {
             return HadoopRepositoryUtil.getHadoopPropertiesFullList(connection, connection.getHadoopProperties(), true);
-        } else if (EHDFSRepositoryToComponent.USE_CLOUDERA_NAVIGATOR.getRepositoryValue().equals(value)) {
+        } else if (EHDFSRepositoryToComponent.SET_SCHEDULER_ADDRESS.getRepositoryValue().equals(value)) {
+            return true;
+        } else if (EHDFSRepositoryToComponent.RESOURCEMANAGER_SCHEDULER_ADDRESS.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection, StringUtils.trimToNull(hcConnection.getRmScheduler()));
+        } else if (EHDFSRepositoryToComponent.SET_JOBHISTORY_ADDRESS.getRepositoryValue().equals(value)) {
+            return true;
+        } else if (EHDFSRepositoryToComponent.JOBHISTORY_ADDRESS.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection, StringUtils.trimToNull(hcConnection.getJobHistory()));
+        } else if (EHDFSRepositoryToComponent.SET_STAGING_DIRECTORY.getRepositoryValue().equals(value)) {
+            return true;
+        } else if (EHDFSRepositoryToComponent.STAGING_DIRECTORY.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection, StringUtils.trimToNull(hcConnection.getStagingDirectory()));
+        } else if (EHDFSRepositoryToComponent.USE_DATANODE_HOSTNAME.getRepositoryValue().equals(value)) {
+            return hcConnection.isUseDNHost();
+        }else if (EHDFSRepositoryToComponent.USE_CLOUDERA_NAVIGATOR.getRepositoryValue().equals(value)) {
             return hcConnection.isUseClouderaNavi();
         } else if (EHDFSRepositoryToComponent.CLOUDERA_NAVIGATOR_USERNAME.getRepositoryValue().equals(value)) {
             return getRepositoryValueOfStringType(connection, HadoopRepositoryUtil.getClouderaNaviUserName(connection));
