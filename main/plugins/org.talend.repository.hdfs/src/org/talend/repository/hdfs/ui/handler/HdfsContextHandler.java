@@ -22,6 +22,7 @@ import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.language.ECodeLanguage;
 import org.talend.core.language.LanguageManager;
 import org.talend.core.model.metadata.builder.connection.Connection;
+import org.talend.core.model.metadata.types.JavaTypesManager;
 import org.talend.core.model.process.IContextParameter;
 import org.talend.core.model.properties.ContextItem;
 import org.talend.core.model.utils.ContextParameterUtils;
@@ -70,7 +71,8 @@ public class HdfsContextHandler extends AbstractRepositoryContextHandler {
                         ConnectionContextHelper.createParameters(varList, paramName, conn.getFieldSeparator());
                         break;
                     case HdfsRowHeader:
-                        ConnectionContextHelper.createParameters(varList, paramName, conn.getHeaderValue());
+                        ConnectionContextHelper.createParameters(varList, paramName, conn.getHeaderValue(),
+                                JavaTypesManager.INTEGER);
                         break;
                     default:
                     }
