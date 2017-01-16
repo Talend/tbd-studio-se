@@ -66,7 +66,7 @@ import org.talend.repository.model.hdfs.HDFSConnection;
 
 /**
  * created by ycbai on 2014-5-29 Detailled comment
- * 
+ *
  */
 public class ExtractTextFileSchemaService implements IExtractSchemaService<HDFSConnection> {
 
@@ -120,9 +120,9 @@ public class ExtractTextFileSchemaService implements IExtractSchemaService<HDFSC
             return columns;
         }
         File tmpFile = createTmpFile(inputStream, tmpFileName);
-        CsvArray csvArray = ShadowProcessHelper
-                .getCsvArray(getProcessDescription(connection, tmpFile), DEFAULT_SHADOW_TYPE, true);
-        return guessSchemaFromArray(csvArray, connection.isFirstLineCaption(), connection.getHeaderValue());
+        ProcessDescription processDescription = getProcessDescription(connection, tmpFile);
+        CsvArray csvArray = ShadowProcessHelper.getCsvArray(processDescription, DEFAULT_SHADOW_TYPE, true);
+        return guessSchemaFromArray(csvArray, connection.isFirstLineCaption(), processDescription.getHeaderRow());
     }
 
     private ProcessDescription getProcessDescription(HDFSConnection connection, File tmpFile) throws IOException {
@@ -135,9 +135,11 @@ public class ExtractTextFileSchemaService implements IExtractSchemaService<HDFSC
                 ConnectionContextHelper.getContextTypeForContextMode(connection), connection.getRowSeparator())));
         processDescription.setFilepath(TalendQuoteUtils.addQuotesIfNotExist(formatFilePath(tmpFile.getAbsolutePath())));
         processDescription.setFooterRow(0);
-        int i = -1;
+        int i = 0;
         if (connection.isUseHeader()) {
-            i = ConnectionContextHelper.convertValue(connection.getHeaderValue());
+            String header = ContextParameterUtils.getOriginalValue(
+                    ConnectionContextHelper.getContextTypeForContextMode(connection), connection.getHeaderValue());
+            i = ConnectionContextHelper.convertValue(header);
             if (i != -1) {
                 i--;
             }
@@ -160,9 +162,9 @@ public class ExtractTextFileSchemaService implements IExtractSchemaService<HDFSC
 
     /**
      * DOC ycbai Comment method "createTmpFile".
-     * 
+     *
      * Create a temporary file which contents are readed from the inputStream.
-     * 
+     *
      * @param inputStream the inputStream to read
      * @param fileName the name of temporary file
      * @param maxLineNum the max quantity lines to read. If is "-1" means not limit the quantity.
@@ -228,15 +230,9 @@ public class ExtractTextFileSchemaService implements IExtractSchemaService<HDFSC
         return path.replace("\\", "/"); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
-    public List<MetadataColumn> guessSchemaFromArray(final CsvArray csvArray, boolean isFirstLineCaption, String header) {
+    public List<MetadataColumn> guessSchemaFromArray(final CsvArray csvArray, boolean isFirstLineCaption, int headerValue) {
         List<MetadataColumn> columns = new ArrayList<MetadataColumn>();
         List<String> exisColumnNames = new ArrayList<String>();
-
-        int headerValue = 0;
-        if (StringUtils.isNotBlank(header)) {
-            headerValue = Integer.parseInt(header);
-        }
-
         if (csvArray == null) {
             return columns;
         } else {
@@ -272,10 +268,10 @@ public class ExtractTextFileSchemaService implements IExtractSchemaService<HDFSC
                             if (fields[i] != null && !("").equals(fields[i])) { //$NON-NLS-1$
                                 label[i] = fields[i].trim().replaceAll(" ", "_"); //$NON-NLS-1$ //$NON-NLS-2$
                             } else {
-                                label[i] = DEFAULT_COLUMN_LABEL + " " + i; //$NON-NLS-1$ 
+                                label[i] = DEFAULT_COLUMN_LABEL + " " + i; //$NON-NLS-1$
                             }
                         } else {
-                            label[i] = DEFAULT_COLUMN_LABEL + " " + i; //$NON-NLS-1$ 
+                            label[i] = DEFAULT_COLUMN_LABEL + " " + i; //$NON-NLS-1$
                         }
                     }
                 }
