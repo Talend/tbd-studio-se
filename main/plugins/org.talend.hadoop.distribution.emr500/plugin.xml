@@ -949,6 +949,8 @@
         </libraryNeededGroup>
                 
         <!-- Spark2 group -->
+        <!-- All ids in this module group should imperatively equal to jar file names-->
+        <!-- No latest or shortcuts as the jars will be looked up at runtime to construct the real job classpath-->
          <libraryNeededGroup
                 description="The latest Spark libraries for EMR 5.0.0"
                 id="SPARK2-LIB-EMR_5_0_0_LATEST"

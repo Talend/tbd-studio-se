@@ -12,6 +12,8 @@
 // ============================================================================
 package org.talend.hadoop.distribution.component;
 
+import java.util.List;
+
 import org.talend.hadoop.distribution.ESparkVersion;
 
 /**
@@ -81,12 +83,10 @@ public interface SparkComponent extends MRComponent {
     /**
      * @return true if the distribution executes its Spark job through Livy.
      */
-    public boolean isExecutedThroughLivy();    
-    
-    /**
-     * @return the Spark Jars path . This method won't be used for Spark 1.x
-     */
-    public String getSparkYarnJarsPath();
-    
+    public boolean isExecutedThroughLivy();
 
+    /**
+     * @return A string with all of the Spark jars (from the module group SPARK) mapped local Studio paths.
+     */
+    public String generateSparkJarsPaths(List<String> commandLineJarsPaths);
 }

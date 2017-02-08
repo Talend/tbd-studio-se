@@ -13,6 +13,7 @@
 package org.talend.hadoop.distribution;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.collections.map.MultiKeyMap;
@@ -81,11 +82,6 @@ public abstract class AbstractDistribution {
 
     public String getYarnApplicationClasspath() {
         // Not used in Hadoop 1
-        return ""; //$NON-NLS-1$
-    }
-
-    public String getSparkYarnJarsPath() {
-        // Not used before Spark2
         return ""; //$NON-NLS-1$
     }
 
@@ -276,4 +272,7 @@ public abstract class AbstractDistribution {
         return false;
     }
 
+    public String generateSparkJarsPaths(List<String> commandLineJarsPaths) {
+        return ""; //$NON-NLS-1$
+    }
 }
