@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2015 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2016 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -23,7 +23,6 @@ import org.eclipse.core.runtime.Platform;
 
 /**
  * Utilities for distributions module groups (plugin.xml)
- *
  */
 public class ModuleGroupsUtils {
 
@@ -39,7 +38,7 @@ public class ModuleGroupsUtils {
      * Get all module's libraries IDs
      * 
      * @param moduleGroupName The name of the module group
-     * @return A list of libraries IDs
+     * @return A list of libraries IDs contained in the module group
      */
     public static List<String> getModuleLibrariesIDs(String moduleGroupName) {
 
@@ -47,14 +46,14 @@ public class ModuleGroupsUtils {
 
         IExtensionRegistry registry = Platform.getExtensionRegistry();
         IExtensionPoint point = registry.getExtensionPoint(EXTENSION_POINT);
-        IExtension[] extensions = point.getExtensions();
-        for (IExtension extension : extensions) {
-            IConfigurationElement[] elements = extension.getConfigurationElements();
-            for (IConfigurationElement element : elements) {
-                if (LIBRARY_NEEDED_GROUP.equals(element.getName())) {
-                    if (moduleGroupName.equals(element.getAttribute(NAME_ATTRIBUTE))) {
-                        for (IConfigurationElement ice : element.getChildren()) {
-                            moduleLibrariesIDs.add(ice.getAttribute(ID_ATTRIBUTE));
+        if (point != null) {
+            for (IExtension extension : point.getExtensions()) {
+                for (IConfigurationElement element : extension.getConfigurationElements()) {
+                    if (LIBRARY_NEEDED_GROUP.equals(element.getName())) {
+                        if (moduleGroupName.equals(element.getAttribute(NAME_ATTRIBUTE))) {
+                            for (IConfigurationElement ice : element.getChildren()) {
+                                moduleLibrariesIDs.add(ice.getAttribute(ID_ATTRIBUTE));
+                            }
                         }
                     }
                 }

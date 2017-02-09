@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2015 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2016 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -21,23 +21,21 @@ import org.talend.hadoop.distribution.utils.ModuleGroupsUtils;
 
 /**
  * Utilities to manage and generate Spark classpaths
- *
  */
 public class SparkClassPathUtils {
 
     private static String SEPARATOR = ","; //$NON-NLS-1$
 
     /**
-     * 
      * The method takes the list of all jars present in the jobs classpath (parsed from the commandline) and the Spark
-     * module group name. Then it proceeds to extarct all jars' IDs from the module group. The list of all Spark jars'
-     * IDs is then used generate a new list, from the list of all classpath jars, that only contains classpath jars that
-     * are present in the Spark module group. The final list is then transformed to java like classpath string
+     * module group name. Then it proceeds to extract all jars' IDs from the module group. The list of all Spark jars'
+     * IDs is then used to generate a new list, from the list of all classpath jars, that only contains classpath jars
+     * that are present in the Spark module group. The final list is then transformed to java like classpath string
      * 
      * @return A string with all of the Spark jars.
      * @param commandLineJarsPaths the list of all the job's classpath jars
      * @param sparkModuleGroupName The Spark module group name
-     * @return Classpath with Spark jars paths
+     * @return the string representation of the classpath with Spark jars paths
      */
     public static String generateSparkJarsPaths(List<String> commandLineJarsPaths, String sparkModuleGroupName) {
         Set<String> sparkYarnJarsIDs = new HashSet<>(ModuleGroupsUtils.getModuleLibrariesIDs(sparkModuleGroupName));

@@ -86,7 +86,7 @@ public interface SparkComponent extends MRComponent {
     public boolean isExecutedThroughLivy();
 
     /**
-     * @return A string with all of the Spark jars (from the module group SPARK) mapped local Studio paths.
+     * @return A string with all of the Spark jars (from the module group SPARK) mapped to local Studio paths.
      */
     public String generateSparkJarsPaths(List<String> commandLineJarsPaths);
 }
