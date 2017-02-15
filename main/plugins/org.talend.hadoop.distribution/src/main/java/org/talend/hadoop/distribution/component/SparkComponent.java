@@ -86,11 +86,6 @@ public interface SparkComponent extends MRComponent {
     public boolean isExecutedThroughLivy();
 
     /**
-     * @return the Spark Jars path . This method won't be used for Spark 1.x
-     */
-    public String getSparkYarnJarsPath();
-
-    /**
      * @return A string with all of the Spark jars (from the module group SPARK) mapped to local Studio paths.
      */
     public String generateSparkJarsPaths(List<String> commandLineJarsPaths);

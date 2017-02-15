@@ -82,8 +82,6 @@ public class EMR500Distribution extends AbstractDistribution implements HBaseCom
 
     private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,/usr/lib/hadoop-lzo/lib/*,/usr/share/aws/emr/emrfs/conf, /usr/share/aws/emr/emrfs/lib/*,/usr/share/aws/emr/emrfs/auxlib/*,/usr/share/aws/emr/lib/*,/usr/share/aws/emr/ddb/lib/emr-ddb-hadoop.jar, /usr/share/aws/emr/goodies/lib/emr-hadoop-goodies.jar,/usr/share/aws/emr/kinesis/lib/emr-kinesis-hadoop.jar,/usr/lib/spark/yarn/lib/datanucleus-api-jdo.jar,/usr/lib/spark/yarn/lib/datanucleus-core.jar,/usr/lib/spark/yarn/lib/datanucleus-rdbms.jar,/usr/share/aws/emr/cloudwatch-sink/lib/*"; //$NON-NLS-1$
 
-    private final static String SPARK_YARN_JARS_PATH = "/usr/lib/spark/jars/*"; //$NON-NLS-1$
-
     private final static String SPARK_MODULE_GROUP_NAME = "SPARK2-LIB-EMR_5_0_0_LATEST"; //$NON-NLS-1$
 
     protected Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
@@ -250,11 +248,6 @@ public class EMR500Distribution extends AbstractDistribution implements HBaseCom
     @Override
     public String getYarnApplicationClasspath() {
         return YARN_APPLICATION_CLASSPATH;
-    }
-
-    @Override
-    public String getSparkYarnJarsPath() {
-        return SPARK_YARN_JARS_PATH;
     }
 
     @Override
