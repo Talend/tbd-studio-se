@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<component name="CDH580Spark2Distribution">
+  <implementation class="org.talend.hadoop.distribution.cdh580spark2.CDH580Spark2Distribution"/>
+  <service>
+    <provide interface="org.talend.hadoop.distribution.component.HadoopComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.SparkBatchComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.SparkStreamingComponent"/>
+  </service>
+</component>
