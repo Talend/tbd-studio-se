@@ -31,9 +31,9 @@ import org.talend.repository.nosql.db.common.neo4j.INeo4jConstants;
 import org.talend.repository.nosql.ui.dnd.AbstractDNDProvider;
 
 /**
- * 
+ *
  * created by ycbai on Jul 22, 2014 Detailled comment
- * 
+ *
  */
 public class Neo4jDNDProvider extends AbstractDNDProvider {
 
@@ -45,6 +45,8 @@ public class Neo4jDNDProvider extends AbstractDNDProvider {
             return getCanonicalRepositoryValue(connection, connection.getAttributes().get(INeo4jAttributes.DATABASE_PATH));
         } else if (INeo4jAttributes.SERVER_URL.equals(value)) {
             return getCanonicalRepositoryValue(connection, connection.getAttributes().get(INeo4jAttributes.SERVER_URL));
+        } else if (INeo4jAttributes.SET_USERNAME.equals(value)) {
+            return getCanonicalRepositoryValue(connection, connection.getAttributes().get(INeo4jAttributes.SET_USERNAME), false);
         } else if (INeo4jAttributes.USERNAME.equals(value)) {
             return getCanonicalRepositoryValue(connection, connection.getAttributes().get(INeo4jAttributes.USERNAME));
         } else if (INeo4jAttributes.PASSWORD.equals(value)) {
@@ -83,31 +85,23 @@ public class Neo4jDNDProvider extends AbstractDNDProvider {
 
     @Override
     public void setRepositoryValue(NoSQLConnection connection, INode node, IElementParameter param) {
-        if (INeo4jAttributes.REMOTE_SERVER.equals(param.getRepositoryValue())) {
-            String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
-            if (value != null) {
-                connection.getAttributes().put(INeo4jAttributes.REMOTE_SERVER, value);
-            }
-        } else if (INeo4jAttributes.DATABASE_PATH.equals(param.getRepositoryValue())) {
-            String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
-            if (value != null) {
-                connection.getAttributes().put(INeo4jAttributes.DATABASE_PATH, value);
-            }
-        } else if (INeo4jAttributes.SERVER_URL.equals(param.getRepositoryValue())) {
-            String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
-            if (value != null) {
-                connection.getAttributes().put(INeo4jAttributes.SERVER_URL, value);
-            }
-        } else if (INeo4jAttributes.PASSWORD.equals(param.getRepositoryValue())) {
-            String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
-            if (value != null) {
-                connection.getAttributes().put(INeo4jAttributes.PASSWORD, connection.getValue(value, true));
-            }
-        } else if (INeo4jAttributes.USERNAME.equals(param.getRepositoryValue())) {
-            String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
-            if (value != null) {
-                connection.getAttributes().put(INeo4jAttributes.USERNAME, value);
-            }
+        String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
+        if (value == null) {
+            return;
+        }
+        String repositoryValue = param.getRepositoryValue();
+        if (INeo4jAttributes.REMOTE_SERVER.equals(repositoryValue)) {
+            connection.getAttributes().put(INeo4jAttributes.REMOTE_SERVER, value);
+        } else if (INeo4jAttributes.DATABASE_PATH.equals(repositoryValue)) {
+            connection.getAttributes().put(INeo4jAttributes.DATABASE_PATH, value);
+        } else if (INeo4jAttributes.SERVER_URL.equals(repositoryValue)) {
+            connection.getAttributes().put(INeo4jAttributes.SERVER_URL, value);
+        } else if (INeo4jAttributes.SET_USERNAME.equals(repositoryValue)) {
+            connection.getAttributes().put(INeo4jAttributes.SET_USERNAME, value);
+        } else if (INeo4jAttributes.PASSWORD.equals(repositoryValue)) {
+            connection.getAttributes().put(INeo4jAttributes.PASSWORD, connection.getValue(value, true));
+        } else if (INeo4jAttributes.USERNAME.equals(repositoryValue)) {
+            connection.getAttributes().put(INeo4jAttributes.USERNAME, value);
         }
     }
 

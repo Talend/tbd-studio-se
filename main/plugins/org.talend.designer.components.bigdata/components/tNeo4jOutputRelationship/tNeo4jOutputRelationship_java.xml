@@ -72,7 +72,7 @@
 
 		<!-- username only on remote server, but mandatory for neo4j 2.2.x -->
 		<PARAMETER NAME="SET_USERNAME" FIELD="CHECK" NUM_ROW="7"
-            GROUP="CONNECTION_GROUP"
+            GROUP="CONNECTION_GROUP" REPOSITORY_VALUE="SET_USERNAME"
             SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND (REMOTE_SERVER == 'true') AND ((DB_VERSION == 'NEO4J_1_X_X') OR (DB_VERSION == 'NEO4J_2_1_X'))">
 			<DEFAULT>false</DEFAULT>
 		</PARAMETER>

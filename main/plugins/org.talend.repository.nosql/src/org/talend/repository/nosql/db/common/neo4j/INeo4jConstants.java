@@ -13,9 +13,9 @@
 package org.talend.repository.nosql.db.common.neo4j;
 
 /**
- * 
+ *
  * created by ycbai on Jul 22, 2014 Detailled comment
- * 
+ *
  */
 public interface INeo4jConstants {
 
@@ -31,9 +31,13 @@ public interface INeo4jConstants {
 
     public final static String QUERY = "QUERY"; //$NON-NLS-1$
 
+    public final static String NEO4J_1_X_X = "NEO4J_1_X_X"; //$NON-NLS-1$
+
+    public final static String NEO4J_2_1_X = "NEO4J_2_1_X"; //$NON-NLS-1$
+
     public final static String NEO4J_2_2_X = "NEO4J_2_2_X"; //$NON-NLS-1$
-    
+
     public final static String NEO4J_2_3_X = "NEO4J_2_3_X"; //$NON-NLS-1$
 
-    public final static String[] DBVERSIONS = { "NEO4J_1_X_X", "NEO4J_2_1_X", NEO4J_2_2_X,NEO4J_2_3_X};//$NON-NLS-1$//$NON-NLS-2$
+    public final static String[] DBVERSIONS = { NEO4J_1_X_X, NEO4J_2_1_X, NEO4J_2_2_X, NEO4J_2_3_X };
 }

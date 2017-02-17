@@ -30,9 +30,9 @@ import org.talend.repository.nosql.i18n.Messages;
 import org.talend.repository.nosql.reflection.NoSQLReflection;
 
 /**
- * 
+ *
  * created by ycbai on Jul 22, 2014 Detailled comment
- * 
+ *
  */
 public class Neo4jConnectionUtil {
 
@@ -81,14 +81,16 @@ public class Neo4jConnectionUtil {
                 new Object[0]);
     }
 
-    public static boolean isNeedAuthorization(String neo4jVersion) {
-        if (INeo4jConstants.NEO4J_2_2_X.equals(neo4jVersion)) {
-            return true;
-        }if (INeo4jConstants.NEO4J_2_3_X.equals(neo4jVersion)) {
-            return true;
-        } else {
-            return false;
-        }
+    public static boolean isHasSetUsernameOption(NoSQLConnection connection) {
+        boolean isRemote = Boolean.valueOf(connection.getAttributes().get(INeo4jAttributes.REMOTE_SERVER));
+        String neo4jVersion = connection.getAttributes().get(INeo4jAttributes.DB_VERSION);
+        return isRemote && (INeo4jConstants.NEO4J_1_X_X.equals(neo4jVersion) || INeo4jConstants.NEO4J_2_1_X.equals(neo4jVersion));
+    }
+
+    public static boolean isNeedAuthorization(NoSQLConnection connection) {
+        boolean isRemote = Boolean.valueOf(connection.getAttributes().get(INeo4jAttributes.REMOTE_SERVER));
+        boolean setUsername = Boolean.valueOf(connection.getAttributes().get(INeo4jAttributes.SET_USERNAME));
+        return isRemote && (setUsername || !isHasSetUsernameOption(connection));
     }
 
     public static synchronized Object getDB(NoSQLConnection connection) throws NoSQLServerException {
@@ -103,7 +105,7 @@ public class Neo4jConnectionUtil {
                     ContextType contextType = ConnectionContextHelper.getContextTypeForContextMode(connection);
                     serverUrl = ContextParameterUtils.getOriginalValue(contextType, serverUrl);
                 }
-                if (isNeedAuthorization(connection.getAttributes().get(INeo4jAttributes.DB_VERSION))) {
+                if (isNeedAuthorization(connection)) {
                     String usename = StringUtils.trimToEmpty(connection.getAttributes().get(INeo4jAttributes.USERNAME));
                     String password = StringUtils.trimToEmpty(connection.getAttributes().get(INeo4jAttributes.PASSWORD));
                     if (connection.isContextMode()) {

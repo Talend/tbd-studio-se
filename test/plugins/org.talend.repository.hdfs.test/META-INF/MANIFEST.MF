@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Repository HDFS Test
+Bundle-SymbolicName: org.talend.repository.hdfs.test
+Bundle-Version: 6.4.0.qualifier
+Fragment-Host: org.talend.repository.hdfs
+Bundle-Vendor: .Talend SA.
+Require-Bundle: org.talend.testutils;bundle-version="6.4.0"

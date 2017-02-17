@@ -15,9 +15,9 @@ package org.talend.repository.nosql.db.common.neo4j;
 import org.talend.repository.nosql.constants.INoSQLCommonAttributes;
 
 /**
- * 
+ *
  * created by ycbai on Jul 22, 2014 Detailled comment
- * 
+ *
  */
 public interface INeo4jAttributes extends INoSQLCommonAttributes {
 
@@ -26,6 +26,8 @@ public interface INeo4jAttributes extends INoSQLCommonAttributes {
     public final static String DATABASE_PATH = "DATABASE_PATH"; //$NON-NLS-1$
 
     public final static String SERVER_URL = "SERVER_URL"; //$NON-NLS-1$
+
+    public final static String SET_USERNAME = "SET_USERNAME"; //$NON-NLS-1$
 
     public final static String COLUMN_MAPPING = "COLUMN_MAPPING"; //$NON-NLS-1$
 

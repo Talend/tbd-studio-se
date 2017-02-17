@@ -31,7 +31,7 @@ public class MapR310DefaultConfigurationTest extends AbstractTest4DefaultConfigu
 
     @Test
     public void testBasic() {
-        doTestExistedProperty("maprfs:///localhost:7222", NAMENODE_URI);
+        doTestExistedProperty("maprfs:///", NAMENODE_URI);
         doTestExistedProperty("localhost:9001", JOBTRACKER);
         doTestExistedProperty("localhost:8032", RESOURCE_MANAGER);
         doTestExistedProperty("localhost:8030", RESOURCEMANAGER_SCHEDULER_ADDRESS);

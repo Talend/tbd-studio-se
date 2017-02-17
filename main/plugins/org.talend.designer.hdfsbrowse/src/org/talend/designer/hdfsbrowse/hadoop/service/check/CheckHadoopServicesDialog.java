@@ -81,7 +81,7 @@ public class CheckHadoopServicesDialog extends TitleAreaDialog {
 
     public CheckHadoopServicesDialog(Shell parentShell, Map<EHadoopServiceType, HadoopServiceProperties> serviceTypeToProperties) {
         super(parentShell);
-        setShellStyle(getShellStyle() | SWT.RESIZE | SWT.MIN | SWT.APPLICATION_MODAL);
+        setShellStyle(getShellStyle() | SWT.RESIZE | SWT.MIN | SWT.APPLICATION_MODAL | SWT.MAX);
         this.serviceTypeToProperties = serviceTypeToProperties;
     }
 
