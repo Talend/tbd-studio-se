@@ -105,7 +105,7 @@ public class HadoopContextConfConfigDialog extends TitleAreaDialog {
         HadoopClusterConnection connection = (HadoopClusterConnection) connectionItem.getConnection();
         if (connection.isContextMode()) {
             EMap<String, byte[]> confFiles = connection.getConfFiles();
-            ContextItem contextItem = ContextUtils.getContextItemById2(connectionItem.getConnection().getContextId());
+            ContextItem contextItem = ContextUtils.getContextItemById2(connection.getContextId());
             if (contextItem != null) {
                 EList<ContextType> contexts = contextItem.getContext();
                 for (ContextType contextType : contexts) {

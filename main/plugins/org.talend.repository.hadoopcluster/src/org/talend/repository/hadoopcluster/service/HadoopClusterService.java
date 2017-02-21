@@ -341,24 +341,27 @@ public class HadoopClusterService implements IHadoopClusterService {
             HadoopClusterConnectionItem connectionItem = (HadoopClusterConnectionItem) item;
             HadoopClusterConnection connection = (HadoopClusterConnection) connectionItem.getConnection();
             if (connection.isUseCustomConfs()) {
-                String extraIds = null;
-                if (connection.isContextMode()) {
-                    extraIds = connection.getContextName();
+                Set<String> confsJarNames = HadoopConfsUtils.getConfsJarDefaultNames(connectionItem);
+                for (String confsJarName : confsJarNames) {
+                    addConfsModule(modulesNeeded, confsJarName);
                 }
-                String customConfsJarName = HadoopConfsUtils.getConfsJarDefaultName(connectionItem, extraIds);
-                String context = customConfsJarName.substring(0, customConfsJarName.lastIndexOf(".")); //$NON-NLS-1$
-                ModuleNeeded customConfsModule = new ModuleNeeded(context, customConfsJarName, null, true);
-                Iterator<ModuleNeeded> moduleIterator = modulesNeeded.iterator();
-                while (moduleIterator.hasNext()) {
-                    ModuleNeeded module = moduleIterator.next();
-                    String moduleName = module.getModuleName();
-                    if ("hadoop-conf.jar".equals(moduleName) || "hadoop-conf-kerberos.jar".equals(moduleName) || customConfsJarName.equals(moduleName)) { //$NON-NLS-1$ //$NON-NLS-2$
-                        moduleIterator.remove();
-                    }
-                }
-                modulesNeeded.add(customConfsModule);
             }
         }
+    }
+
+    private void addConfsModule(List<ModuleNeeded> modulesNeeded, String customConfsJarName) {
+        String context = customConfsJarName.substring(0, customConfsJarName.lastIndexOf(".")); //$NON-NLS-1$
+        ModuleNeeded customConfsModule = new ModuleNeeded(context, customConfsJarName, null, true);
+        Iterator<ModuleNeeded> moduleIterator = modulesNeeded.iterator();
+        while (moduleIterator.hasNext()) {
+            ModuleNeeded module = moduleIterator.next();
+            String moduleName = module.getModuleName();
+            if ("hadoop-conf.jar".equals(moduleName) || "hadoop-conf-kerberos.jar".equals(moduleName) //$NON-NLS-1$ //$NON-NLS-2$
+                    || customConfsJarName.equals(moduleName)) {
+                moduleIterator.remove();
+            }
+        }
+        modulesNeeded.add(customConfsModule);
     }
 
     @Override
