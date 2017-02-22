@@ -353,7 +353,7 @@ public class HadoopClusterService implements IHadoopClusterService {
     private void addConfsModule(List<ModuleNeeded> modulesNeeded, String customConfsJarName) {
         String context = customConfsJarName.substring(0, customConfsJarName.lastIndexOf(".")); //$NON-NLS-1$
         ModuleNeeded customConfsModule = new ModuleNeeded(context, customConfsJarName, null, true);
-        customConfsModule.getExtraAttributes().put(HadoopConstants.IS_HADOOP_CONFS, true);
+        customConfsModule.getExtraAttributes().put(HadoopConstants.IS_HADOOP_CUSTOM_CONFS, true);
         Iterator<ModuleNeeded> moduleIterator = modulesNeeded.iterator();
         while (moduleIterator.hasNext()) {
             ModuleNeeded module = moduleIterator.next();
