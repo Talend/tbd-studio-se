@@ -26,6 +26,7 @@ import org.talend.commons.exception.BusinessException;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.commons.exception.PersistenceException;
 import org.talend.core.database.conn.ConnParameterKeys;
+import org.talend.core.hadoop.HadoopConstants;
 import org.talend.core.hadoop.IHadoopClusterService;
 import org.talend.core.model.general.ModuleNeeded;
 import org.talend.core.model.general.Project;
@@ -352,6 +353,7 @@ public class HadoopClusterService implements IHadoopClusterService {
     private void addConfsModule(List<ModuleNeeded> modulesNeeded, String customConfsJarName) {
         String context = customConfsJarName.substring(0, customConfsJarName.lastIndexOf(".")); //$NON-NLS-1$
         ModuleNeeded customConfsModule = new ModuleNeeded(context, customConfsJarName, null, true);
+        customConfsModule.getExtraAttributes().put(HadoopConstants.IS_HADOOP_CONFS, true);
         Iterator<ModuleNeeded> moduleIterator = modulesNeeded.iterator();
         while (moduleIterator.hasNext()) {
             ModuleNeeded module = moduleIterator.next();
