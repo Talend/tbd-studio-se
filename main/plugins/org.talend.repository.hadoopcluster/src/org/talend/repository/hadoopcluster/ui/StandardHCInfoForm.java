@@ -74,6 +74,8 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
 
     private Composite parentForm;
 
+    private Composite propertiesComposite;
+
     private Composite hadoopPropertiesComposite;
 
     private Composite sparkPropertiesComposite;
@@ -333,6 +335,12 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         addCustomFields();
         addConnectionFields();
         addAuthenticationFields();
+        propertiesComposite = new Composite(this, SWT.NONE);
+        GridLayout propertiesLayout = new GridLayout(2, false);
+        propertiesLayout.marginWidth = 0;
+        propertiesLayout.marginHeight = 0;
+        propertiesComposite.setLayout(propertiesLayout);
+        propertiesComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         addHadoopPropertiesFields();
         addSparkPropertiesFields();
         addNavigatorFields();
@@ -490,7 +498,7 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
     }
 
     private void addHadoopPropertiesFields() {
-        hadoopPropertiesComposite = new Composite(this, SWT.NONE);
+        hadoopPropertiesComposite = new Composite(propertiesComposite, SWT.NONE);
         GridLayout hadoopPropertiesLayout = new GridLayout(1, false);
         hadoopPropertiesLayout.marginWidth = 0;
         hadoopPropertiesLayout.marginHeight = 0;
@@ -525,7 +533,7 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
     }
 
     private void addSparkPropertiesFields() {
-        sparkPropertiesComposite = new Composite(this, SWT.NONE);
+        sparkPropertiesComposite = new Composite(propertiesComposite, SWT.NONE);
         GridLayout sparkPropertiesLayout = new GridLayout(3, false);
         sparkPropertiesLayout.marginWidth = 5;
         sparkPropertiesLayout.marginHeight = 5;
@@ -578,7 +586,7 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
             return;
         }
 
-        Composite clouderaNaviComposite = new Composite(this, SWT.NONE);
+        Composite clouderaNaviComposite = new Composite(propertiesComposite, SWT.NONE);
         GridLayout hadoopConfsCompLayout = new GridLayout(3, false);
         hadoopConfsCompLayout.marginWidth = 5;
         hadoopConfsCompLayout.marginHeight = 5;
@@ -600,7 +608,7 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
     }
 
     private void addHadoopConfsFields() {
-        Composite hadoopConfsComposite = new Composite(this, SWT.NONE);
+        Composite hadoopConfsComposite = new Composite(propertiesComposite, SWT.NONE);
         GridLayout hadoopConfsCompLayout = new GridLayout(3, false);
         hadoopConfsCompLayout.marginWidth = 5;
         hadoopConfsCompLayout.marginHeight = 5;
