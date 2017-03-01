@@ -40,6 +40,7 @@ import org.talend.core.model.repository.IRepositoryTypeProcessor;
 import org.talend.core.repository.model.ProxyRepositoryFactory;
 import org.talend.designer.core.model.components.EParameterName;
 import org.talend.designer.core.model.components.EmfComponent;
+import org.talend.repository.ProjectManager;
 import org.talend.repository.hadoopcluster.conf.HadoopConfsUtils;
 import org.talend.repository.hadoopcluster.node.model.HadoopClusterRepositoryNodeType;
 import org.talend.repository.hadoopcluster.ui.viewer.HadoopSubMultiRepTypeProcessor;
@@ -231,7 +232,7 @@ public class HadoopClusterService implements IHadoopClusterService {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see org.talend.core.hadoop.IHadoopClusterService#getHadoopCustomLibraries()
      */
     @Override
@@ -297,6 +298,13 @@ public class HadoopClusterService implements IHadoopClusterService {
         HadoopClusterConnectionItem connectionItem = HCRepositoryUtil.getRelativeHadoopClusterItem(id);
         if (connectionItem == null) { // In case it is a hadoopsubconnection.
             connectionItem = HCRepositoryUtil.getHadoopClusterItemBySubitemId(id);
+            if (connectionItem == null) {
+                Item item = HCRepositoryUtil.getRelativeItem(id);
+                if (item != null) {
+                    Project project = new Project(ProjectManager.getInstance().getProject(item.getProperty()));
+                    connectionItem = HCRepositoryUtil.getHadoopClusterItemBySubitemId(project, id);
+                }
+            }
         }
         return connectionItem;
     }
@@ -426,6 +434,7 @@ public class HadoopClusterService implements IHadoopClusterService {
         return false;
     }
 
+    @Override
     public String getRepositoryTypeOfHadoopSubItem(Item subItem) {
         return HCRepositoryUtil.getRepositoryTypeOfHadoopSubItem(subItem);
     }
