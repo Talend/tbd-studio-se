@@ -46,6 +46,8 @@ public enum EHadoopParameter {
 
     HADOOP_ADVANCED_PROPERTIES,
 
+    SPARK_ADVANCED_PROPERTIES,
+
     ;
 
     public String getName() {

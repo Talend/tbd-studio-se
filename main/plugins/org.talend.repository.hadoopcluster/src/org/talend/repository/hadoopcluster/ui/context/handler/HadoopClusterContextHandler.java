@@ -105,7 +105,8 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                         ConnectionContextHelper.createParameters(varList, paramName, conn.getMaprTCluster());
                         break;
                     case maprTDuration:
-                        ConnectionContextHelper.createParameters(varList, paramName, conn.getMaprTDuration(), JavaTypesManager.LONG);
+                        ConnectionContextHelper.createParameters(varList, paramName, conn.getMaprTDuration(),
+                                JavaTypesManager.LONG);
                         break;
                     case maprTHomeDir:
                         ConnectionContextHelper.createParameters(varList, paramName, conn.getMaprTHomeDir());
@@ -182,6 +183,7 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                 }
             }
             createHadoopPropertiesContextVariable(prefixName, varList, conn.getHadoopProperties());
+            createHadoopPropertiesContextVariable(prefixName, varList, conn.getSparkProperties());
         }
         return varList;
     }
@@ -207,6 +209,11 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
             List<Map<String, Object>> propertiesAfterContext = transformHadoopPropertiesForContextMode(
                     HadoopRepositoryUtil.getHadoopPropertiesList(hadoopProperties), prefixName);
             hadoopConn.setHadoopProperties(HadoopRepositoryUtil.getHadoopPropertiesJsonStr(propertiesAfterContext));
+            //
+            String sparkProperties = hadoopConn.getSparkProperties();
+            List<Map<String, Object>> sparkPropertiesAfterContext = transformHadoopPropertiesForContextMode(
+                    HadoopRepositoryUtil.getHadoopPropertiesList(sparkProperties), prefixName);
+            hadoopConn.setSparkProperties(HadoopRepositoryUtil.getHadoopPropertiesJsonStr(sparkPropertiesAfterContext));
         }
 
     }
@@ -255,6 +262,9 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                 List<Map<String, Object>> hadoopListProperties = HadoopRepositoryUtil.getHadoopPropertiesList(hadoopConn
                         .getHadoopProperties());
                 Set<String> keys = getConAdditionPropertiesForContextMode(conn);
+                List<Map<String, Object>> sparkListProperties = HadoopRepositoryUtil.getHadoopPropertiesList(hadoopConn
+                        .getSparkProperties());
+                Set<String> sparkKeys = getConAdditionPropertiesForContextMode(conn);
                 for (Map.Entry<ContextItem, List<ConectionAdaptContextVariableModel>> entry : adaptMap.entrySet()) {
                     List<ConectionAdaptContextVariableModel> modelList = entry.getValue();
                     for (ConectionAdaptContextVariableModel model : modelList) {
@@ -264,6 +274,12 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                                     hadoopListProperties, propertyKey, model.getName());
                             hadoopConn.setHadoopProperties(HadoopRepositoryUtil
                                     .getHadoopPropertiesJsonStr(propertiesAfterContext));
+                        }
+                        if (sparkKeys.contains(propertyKey)) {
+                            List<Map<String, Object>> propertiesAfterContext = transformHadoopPropertiesForExistContextMode(
+                                    sparkListProperties, propertyKey, model.getName());
+                            hadoopConn
+                                    .setSparkProperties(HadoopRepositoryUtil.getHadoopPropertiesJsonStr(propertiesAfterContext));
                         }
                     }
                 }
@@ -453,6 +469,11 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                     HadoopRepositoryUtil.getHadoopPropertiesList(hadoopProperties), contextType);
             conn.setHadoopProperties(HadoopRepositoryUtil.getHadoopPropertiesJsonStr(propertiesAfterRevert));
 
+            String sparkProperties = conn.getSparkProperties();
+            List<Map<String, Object>> sparkPropertiesAfterRevert = transformContextModeToHadoopProperties(
+                    HadoopRepositoryUtil.getHadoopPropertiesList(sparkProperties), contextType);
+            conn.setSparkProperties(HadoopRepositoryUtil.getHadoopPropertiesJsonStr(sparkPropertiesAfterRevert));
+
             conn.setNameNodeURI(nameNodeUri);
             conn.setJobTrackerURI(jobTrackerUri);
             conn.setRmScheduler(rmScheduler);
@@ -484,6 +505,7 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
         if (conn instanceof HadoopClusterConnection) {
             HadoopClusterConnection hadoopConn = (HadoopClusterConnection) conn;
             conVarList = getConAdditionProperties(HadoopRepositoryUtil.getHadoopPropertiesList(hadoopConn.getHadoopProperties()));
+            conVarList = getConAdditionProperties(HadoopRepositoryUtil.getHadoopPropertiesList(hadoopConn.getSparkProperties()));
         }
         return conVarList;
     }

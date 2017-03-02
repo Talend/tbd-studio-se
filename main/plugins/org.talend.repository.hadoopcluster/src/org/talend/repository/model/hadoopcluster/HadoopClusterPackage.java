@@ -632,13 +632,31 @@ public interface HadoopClusterPackage extends EPackage {
     int HADOOP_CLUSTER_CONNECTION__HADOOP_PROPERTIES = ConnectionPackage.CONNECTION_FEATURE_COUNT + 19;
 
     /**
+     * The feature id for the '<em><b>Use Spark Properties</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HADOOP_CLUSTER_CONNECTION__USE_SPARK_PROPERTIES = ConnectionPackage.CONNECTION_FEATURE_COUNT + 20;
+
+    /**
+     * The feature id for the '<em><b>Spark Properties</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HADOOP_CLUSTER_CONNECTION__SPARK_PROPERTIES = ConnectionPackage.CONNECTION_FEATURE_COUNT + 21;
+
+    /**
      * The feature id for the '<em><b>Rm Scheduler</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__RM_SCHEDULER = ConnectionPackage.CONNECTION_FEATURE_COUNT + 20;
+    int HADOOP_CLUSTER_CONNECTION__RM_SCHEDULER = ConnectionPackage.CONNECTION_FEATURE_COUNT + 22;
 
     /**
      * The feature id for the '<em><b>Job History</b></em>' attribute.
@@ -647,7 +665,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__JOB_HISTORY = ConnectionPackage.CONNECTION_FEATURE_COUNT + 21;
+    int HADOOP_CLUSTER_CONNECTION__JOB_HISTORY = ConnectionPackage.CONNECTION_FEATURE_COUNT + 23;
 
     /**
      * The feature id for the '<em><b>Staging Directory</b></em>' attribute.
@@ -656,7 +674,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__STAGING_DIRECTORY = ConnectionPackage.CONNECTION_FEATURE_COUNT + 22;
+    int HADOOP_CLUSTER_CONNECTION__STAGING_DIRECTORY = ConnectionPackage.CONNECTION_FEATURE_COUNT + 24;
 
     /**
      * The feature id for the '<em><b>Use DN Host</b></em>' attribute.
@@ -665,7 +683,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__USE_DN_HOST = ConnectionPackage.CONNECTION_FEATURE_COUNT + 23;
+    int HADOOP_CLUSTER_CONNECTION__USE_DN_HOST = ConnectionPackage.CONNECTION_FEATURE_COUNT + 25;
 
     /**
      * The feature id for the '<em><b>Use Custom Confs</b></em>' attribute.
@@ -674,7 +692,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__USE_CUSTOM_CONFS = ConnectionPackage.CONNECTION_FEATURE_COUNT + 24;
+    int HADOOP_CLUSTER_CONNECTION__USE_CUSTOM_CONFS = ConnectionPackage.CONNECTION_FEATURE_COUNT + 26;
 
     /**
      * The feature id for the '<em><b>Use Cloudera Navi</b></em>' attribute.
@@ -683,7 +701,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__USE_CLOUDERA_NAVI = ConnectionPackage.CONNECTION_FEATURE_COUNT + 25;
+    int HADOOP_CLUSTER_CONNECTION__USE_CLOUDERA_NAVI = ConnectionPackage.CONNECTION_FEATURE_COUNT + 27;
 
     /**
      * The feature id for the '<em><b>Cloudera Navi User Name</b></em>' attribute.
@@ -692,7 +710,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__CLOUDERA_NAVI_USER_NAME = ConnectionPackage.CONNECTION_FEATURE_COUNT + 26;
+    int HADOOP_CLUSTER_CONNECTION__CLOUDERA_NAVI_USER_NAME = ConnectionPackage.CONNECTION_FEATURE_COUNT + 28;
 
     /**
      * The feature id for the '<em><b>Cloudera Navi Password</b></em>' attribute.
@@ -701,7 +719,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__CLOUDERA_NAVI_PASSWORD = ConnectionPackage.CONNECTION_FEATURE_COUNT + 27;
+    int HADOOP_CLUSTER_CONNECTION__CLOUDERA_NAVI_PASSWORD = ConnectionPackage.CONNECTION_FEATURE_COUNT + 29;
 
     /**
      * The feature id for the '<em><b>Cloudera Navi Url</b></em>' attribute.
@@ -710,7 +728,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__CLOUDERA_NAVI_URL = ConnectionPackage.CONNECTION_FEATURE_COUNT + 28;
+    int HADOOP_CLUSTER_CONNECTION__CLOUDERA_NAVI_URL = ConnectionPackage.CONNECTION_FEATURE_COUNT + 30;
 
     /**
      * The feature id for the '<em><b>Cloudera Navi Metadata Url</b></em>' attribute.
@@ -719,7 +737,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__CLOUDERA_NAVI_METADATA_URL = ConnectionPackage.CONNECTION_FEATURE_COUNT + 29;
+    int HADOOP_CLUSTER_CONNECTION__CLOUDERA_NAVI_METADATA_URL = ConnectionPackage.CONNECTION_FEATURE_COUNT + 31;
 
     /**
      * The feature id for the '<em><b>Cloudera Navi Client Url</b></em>' attribute.
@@ -728,7 +746,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__CLOUDERA_NAVI_CLIENT_URL = ConnectionPackage.CONNECTION_FEATURE_COUNT + 30;
+    int HADOOP_CLUSTER_CONNECTION__CLOUDERA_NAVI_CLIENT_URL = ConnectionPackage.CONNECTION_FEATURE_COUNT + 32;
 
     /**
      * The feature id for the '<em><b>Cloudera Disable SSL</b></em>' attribute.
@@ -737,7 +755,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__CLOUDERA_DISABLE_SSL = ConnectionPackage.CONNECTION_FEATURE_COUNT + 31;
+    int HADOOP_CLUSTER_CONNECTION__CLOUDERA_DISABLE_SSL = ConnectionPackage.CONNECTION_FEATURE_COUNT + 33;
 
     /**
      * The feature id for the '<em><b>Cloudera Auto Commit</b></em>' attribute.
@@ -746,7 +764,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__CLOUDERA_AUTO_COMMIT = ConnectionPackage.CONNECTION_FEATURE_COUNT + 32;
+    int HADOOP_CLUSTER_CONNECTION__CLOUDERA_AUTO_COMMIT = ConnectionPackage.CONNECTION_FEATURE_COUNT + 34;
 
     /**
      * The feature id for the '<em><b>Cloudera Die No Error</b></em>' attribute.
@@ -755,7 +773,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__CLOUDERA_DIE_NO_ERROR = ConnectionPackage.CONNECTION_FEATURE_COUNT + 33;
+    int HADOOP_CLUSTER_CONNECTION__CLOUDERA_DIE_NO_ERROR = ConnectionPackage.CONNECTION_FEATURE_COUNT + 35;
 
     /**
      * The feature id for the '<em><b>Enable Mapr T</b></em>' attribute.
@@ -764,7 +782,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__ENABLE_MAPR_T = ConnectionPackage.CONNECTION_FEATURE_COUNT + 34;
+    int HADOOP_CLUSTER_CONNECTION__ENABLE_MAPR_T = ConnectionPackage.CONNECTION_FEATURE_COUNT + 36;
 
     /**
      * The feature id for the '<em><b>Mapr TPassword</b></em>' attribute.
@@ -773,7 +791,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__MAPR_TPASSWORD = ConnectionPackage.CONNECTION_FEATURE_COUNT + 35;
+    int HADOOP_CLUSTER_CONNECTION__MAPR_TPASSWORD = ConnectionPackage.CONNECTION_FEATURE_COUNT + 37;
 
     /**
      * The feature id for the '<em><b>Mapr TCluster</b></em>' attribute.
@@ -782,7 +800,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__MAPR_TCLUSTER = ConnectionPackage.CONNECTION_FEATURE_COUNT + 36;
+    int HADOOP_CLUSTER_CONNECTION__MAPR_TCLUSTER = ConnectionPackage.CONNECTION_FEATURE_COUNT + 38;
 
     /**
      * The feature id for the '<em><b>Mapr TDuration</b></em>' attribute.
@@ -791,7 +809,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__MAPR_TDURATION = ConnectionPackage.CONNECTION_FEATURE_COUNT + 37;
+    int HADOOP_CLUSTER_CONNECTION__MAPR_TDURATION = ConnectionPackage.CONNECTION_FEATURE_COUNT + 39;
 
     /**
      * The feature id for the '<em><b>Set Mapr THome Dir</b></em>' attribute.
@@ -800,7 +818,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__SET_MAPR_THOME_DIR = ConnectionPackage.CONNECTION_FEATURE_COUNT + 38;
+    int HADOOP_CLUSTER_CONNECTION__SET_MAPR_THOME_DIR = ConnectionPackage.CONNECTION_FEATURE_COUNT + 40;
 
     /**
      * The feature id for the '<em><b>Mapr THome Dir</b></em>' attribute.
@@ -809,7 +827,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__MAPR_THOME_DIR = ConnectionPackage.CONNECTION_FEATURE_COUNT + 39;
+    int HADOOP_CLUSTER_CONNECTION__MAPR_THOME_DIR = ConnectionPackage.CONNECTION_FEATURE_COUNT + 41;
 
     /**
      * The feature id for the '<em><b>Set Hadoop Login</b></em>' attribute.
@@ -818,7 +836,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__SET_HADOOP_LOGIN = ConnectionPackage.CONNECTION_FEATURE_COUNT + 40;
+    int HADOOP_CLUSTER_CONNECTION__SET_HADOOP_LOGIN = ConnectionPackage.CONNECTION_FEATURE_COUNT + 42;
 
     /**
      * The feature id for the '<em><b>Mapr THadoop Login</b></em>' attribute.
@@ -827,7 +845,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__MAPR_THADOOP_LOGIN = ConnectionPackage.CONNECTION_FEATURE_COUNT + 41;
+    int HADOOP_CLUSTER_CONNECTION__MAPR_THADOOP_LOGIN = ConnectionPackage.CONNECTION_FEATURE_COUNT + 43;
 
     /**
      * The feature id for the '<em><b>Preload Authentification</b></em>' attribute.
@@ -836,7 +854,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__PRELOAD_AUTHENTIFICATION = ConnectionPackage.CONNECTION_FEATURE_COUNT + 42;
+    int HADOOP_CLUSTER_CONNECTION__PRELOAD_AUTHENTIFICATION = ConnectionPackage.CONNECTION_FEATURE_COUNT + 44;
 
     /**
      * The feature id for the '<em><b>Conf File</b></em>' attribute.
@@ -845,7 +863,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION__CONF_FILE = ConnectionPackage.CONNECTION_FEATURE_COUNT + 43;
+    int HADOOP_CLUSTER_CONNECTION__CONF_FILE = ConnectionPackage.CONNECTION_FEATURE_COUNT + 45;
 
     /**
      * The number of structural features of the '<em>Connection</em>' class.
@@ -854,7 +872,7 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION_FEATURE_COUNT = ConnectionPackage.CONNECTION_FEATURE_COUNT + 44;
+    int HADOOP_CLUSTER_CONNECTION_FEATURE_COUNT = ConnectionPackage.CONNECTION_FEATURE_COUNT + 46;
 
     /**
      * The meta object id for the '{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionItemImpl <em>Connection Item</em>}' class.
@@ -1704,6 +1722,28 @@ public interface HadoopClusterPackage extends EPackage {
     EAttribute getHadoopClusterConnection_HadoopProperties();
 
     /**
+     * Returns the meta object for the attribute '{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#isUseSparkProperties <em>Use Spark Properties</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Use Spark Properties</em>'.
+     * @see org.talend.repository.model.hadoopcluster.HadoopClusterConnection#isUseSparkProperties()
+     * @see #getHadoopClusterConnection()
+     * @generated
+     */
+    EAttribute getHadoopClusterConnection_UseSparkProperties();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getSparkProperties <em>Spark Properties</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Spark Properties</em>'.
+     * @see org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getSparkProperties()
+     * @see #getHadoopClusterConnection()
+     * @generated
+     */
+    EAttribute getHadoopClusterConnection_SparkProperties();
+
+    /**
      * Returns the meta object for the attribute '{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getRmScheduler <em>Rm Scheduler</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2244,6 +2284,22 @@ public interface HadoopClusterPackage extends EPackage {
          * @generated
          */
         EAttribute HADOOP_CLUSTER_CONNECTION__HADOOP_PROPERTIES = eINSTANCE.getHadoopClusterConnection_HadoopProperties();
+
+        /**
+         * The meta object literal for the '<em><b>Use Spark Properties</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute HADOOP_CLUSTER_CONNECTION__USE_SPARK_PROPERTIES = eINSTANCE.getHadoopClusterConnection_UseSparkProperties();
+
+        /**
+         * The meta object literal for the '<em><b>Spark Properties</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute HADOOP_CLUSTER_CONNECTION__SPARK_PROPERTIES = eINSTANCE.getHadoopClusterConnection_SparkProperties();
 
         /**
          * The meta object literal for the '<em><b>Rm Scheduler</b></em>' attribute feature.

@@ -57,6 +57,8 @@ import org.talend.repository.model.hadoopcluster.HadoopClusterPackage;
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#getKeytabPrincipal <em>Keytab Principal</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#getKeytab <em>Keytab</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#getHadoopProperties <em>Hadoop Properties</em>}</li>
+ *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#isUseSparkProperties <em>Use Spark Properties</em>}</li>
+ *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#getSparkProperties <em>Spark Properties</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#getRmScheduler <em>Rm Scheduler</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#getJobHistory <em>Job History</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#getStagingDirectory <em>Staging Directory</em>}</li>
@@ -466,6 +468,46 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * @ordered
      */
     protected String hadoopProperties = HADOOP_PROPERTIES_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isUseSparkProperties() <em>Use Spark Properties</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isUseSparkProperties()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean USE_SPARK_PROPERTIES_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isUseSparkProperties() <em>Use Spark Properties</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isUseSparkProperties()
+     * @generated
+     * @ordered
+     */
+    protected boolean useSparkProperties = USE_SPARK_PROPERTIES_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getSparkProperties() <em>Spark Properties</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getSparkProperties()
+     * @generated
+     * @ordered
+     */
+    protected static final String SPARK_PROPERTIES_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getSparkProperties() <em>Spark Properties</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getSparkProperties()
+     * @generated
+     * @ordered
+     */
+    protected String sparkProperties = SPARK_PROPERTIES_EDEFAULT;
 
     /**
      * The default value of the '{@link #getRmScheduler() <em>Rm Scheduler</em>}' attribute.
@@ -1373,6 +1415,48 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
+    public boolean isUseSparkProperties() {
+        return useSparkProperties;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setUseSparkProperties(boolean newUseSparkProperties) {
+        boolean oldUseSparkProperties = useSparkProperties;
+        useSparkProperties = newUseSparkProperties;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__USE_SPARK_PROPERTIES, oldUseSparkProperties, useSparkProperties));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getSparkProperties() {
+        return sparkProperties;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setSparkProperties(String newSparkProperties) {
+        String oldSparkProperties = sparkProperties;
+        sparkProperties = newSparkProperties;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__SPARK_PROPERTIES, oldSparkProperties, sparkProperties));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public String getRmScheduler() {
         return rmScheduler;
     }
@@ -1935,6 +2019,10 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
                 return getKeytab();
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__HADOOP_PROPERTIES:
                 return getHadoopProperties();
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__USE_SPARK_PROPERTIES:
+                return isUseSparkProperties();
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__SPARK_PROPERTIES:
+                return getSparkProperties();
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__RM_SCHEDULER:
                 return getRmScheduler();
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__JOB_HISTORY:
@@ -2056,6 +2144,12 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
                 return;
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__HADOOP_PROPERTIES:
                 setHadoopProperties((String)newValue);
+                return;
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__USE_SPARK_PROPERTIES:
+                setUseSparkProperties((Boolean)newValue);
+                return;
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__SPARK_PROPERTIES:
+                setSparkProperties((String)newValue);
                 return;
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__RM_SCHEDULER:
                 setRmScheduler((String)newValue);
@@ -2201,6 +2295,12 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__HADOOP_PROPERTIES:
                 setHadoopProperties(HADOOP_PROPERTIES_EDEFAULT);
                 return;
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__USE_SPARK_PROPERTIES:
+                setUseSparkProperties(USE_SPARK_PROPERTIES_EDEFAULT);
+                return;
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__SPARK_PROPERTIES:
+                setSparkProperties(SPARK_PROPERTIES_EDEFAULT);
+                return;
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__RM_SCHEDULER:
                 setRmScheduler(RM_SCHEDULER_EDEFAULT);
                 return;
@@ -2325,6 +2425,10 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
                 return KEYTAB_EDEFAULT == null ? keytab != null : !KEYTAB_EDEFAULT.equals(keytab);
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__HADOOP_PROPERTIES:
                 return HADOOP_PROPERTIES_EDEFAULT == null ? hadoopProperties != null : !HADOOP_PROPERTIES_EDEFAULT.equals(hadoopProperties);
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__USE_SPARK_PROPERTIES:
+                return useSparkProperties != USE_SPARK_PROPERTIES_EDEFAULT;
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__SPARK_PROPERTIES:
+                return SPARK_PROPERTIES_EDEFAULT == null ? sparkProperties != null : !SPARK_PROPERTIES_EDEFAULT.equals(sparkProperties);
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__RM_SCHEDULER:
                 return RM_SCHEDULER_EDEFAULT == null ? rmScheduler != null : !RM_SCHEDULER_EDEFAULT.equals(rmScheduler);
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__JOB_HISTORY:
@@ -2425,6 +2529,10 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
         result.append(keytab);
         result.append(", hadoopProperties: ");
         result.append(hadoopProperties);
+        result.append(", useSparkProperties: ");
+        result.append(useSparkProperties);
+        result.append(", sparkProperties: ");
+        result.append(sparkProperties);
         result.append(", rmScheduler: ");
         result.append(rmScheduler);
         result.append(", jobHistory: ");
