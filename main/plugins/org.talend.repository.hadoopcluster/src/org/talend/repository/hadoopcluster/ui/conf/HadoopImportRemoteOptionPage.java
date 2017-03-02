@@ -14,11 +14,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.commons.ui.swt.formtools.Form;
+import org.talend.designer.runprocess.ProcessorException;
 import org.talend.hadoop.distribution.model.DistributionBean;
 import org.talend.repository.hadoopcluster.conf.HadoopConfsUtils;
 import org.talend.repository.hadoopcluster.conf.IPropertyConstants;
 import org.talend.repository.hadoopcluster.conf.RetrieveRemoteConfsService;
-import org.talend.repository.hadoopcluster.configurator.HadoopCluster;
+import org.talend.repository.hadoopcluster.configurator.AbsHadoopCluster;
 import org.talend.repository.hadoopcluster.configurator.HadoopConfigurationManager;
 import org.talend.repository.hadoopcluster.configurator.HadoopConfigurator;
 import org.talend.repository.hadoopcluster.i18n.Messages;
@@ -39,6 +40,8 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
     private HadoopServicesTableComposite servicesTableComp;
 
     private HadoopConfigurator configurator;
+    
+    private AbstractConnectionForm connectionForm;
 
     public HadoopImportRemoteOptionPage(DistributionBean distribution) {
         super("HadoopImportRemoteOptionPage"); //$NON-NLS-1$
@@ -67,7 +70,12 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
             public void widgetSelected(SelectionEvent e) {
                 if (configurator != null) {
                     try {
-                        HadoopCluster cluster = configurator.getCluster(clustersCombo.getText());
+                        AbsHadoopCluster cluster = configurator.getCluster(clustersCombo.getText());
+                        if (connectionForm.isRetrieveConfigByJobServer()) {
+                            cluster.setRetrieveJobServer(connectionForm.getRetrieveJobServer());
+                        } else {
+                            cluster.setRetrieveJobServer(null);
+                        }
                         confsService = new RetrieveRemoteConfsService(cluster);
                         servicesTableComp.setServices(confsService.getAllServices());
                     } catch (Exception ex) {
@@ -79,7 +87,6 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
     }
 
     private void addConnectionFields(Composite parent) {
-        AbstractConnectionForm connectionForm = null;
         HadoopConfigurationManager configurationManager = HadoopConfsUtils.getConfigurationManager(distribution);
         if (HadoopConfigurationManager.AMBARI.equals(configurationManager)) {
             connectionForm = new ABRConnectionForm(parent, SWT.NONE);
@@ -120,6 +127,7 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
+        setErrorMessage(null);
         Exception exception = null;
         String propertyName = evt.getPropertyName();
         Object newValue = evt.getNewValue();
@@ -139,9 +147,13 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
                 exception = (Exception) newValue;
             }
             if (exception != null) {
-                setErrorMessage(Messages.getString("HadoopImportRemoteOptionPage.connectionFailed")); //$NON-NLS-1$
+                if (exception instanceof ProcessorException) {
+                    setErrorMessage(Messages.getString("HadoopImportRemoteOptionPage.jobServerFailed")); //$NON-NLS-1$
+                } else {
+                    setErrorMessage(Messages.getString("HadoopImportRemoteOptionPage.connectionFailed")); //$NON-NLS-1$
+                }
                 ExceptionHandler.process(exception);
-            }
+            } 
         }
     }
 

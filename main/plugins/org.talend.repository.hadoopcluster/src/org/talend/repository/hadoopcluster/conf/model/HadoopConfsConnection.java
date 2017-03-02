@@ -12,6 +12,8 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.conf.model;
 
+import org.talend.designer.runprocess.remote.model.NetworkConfiguration;
+
 /**
  * created by ycbai on 2015年6月4日 Detailled comment
  *
@@ -31,6 +33,8 @@ public class HadoopConfsConnection {
     private String trustStoreFile;
 
     private String trustStorePassword;
+    
+    private NetworkConfiguration jobServerConfiguration;
 
     public String getConnURL() {
         return this.connURL;
@@ -88,4 +92,12 @@ public class HadoopConfsConnection {
         this.trustStorePassword = trustStorePassword;
     }
 
+    public NetworkConfiguration getJobServerConfiguration() {
+        return jobServerConfiguration;
+    }
+ 
+    public void setJobServerConfiguration(NetworkConfiguration jobServerConfiguration) {
+        this.jobServerConfiguration = jobServerConfiguration;
+    }
+    
 }

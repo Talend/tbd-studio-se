@@ -36,7 +36,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.talend.repository.hadoopcluster.configurator,
  org.talend.hadoop.distribution,
  org.talend.components.api,
- org.talend.libraries.dom4j-jaxen
+ org.talend.libraries.dom4j-jaxen,
+ org.talend.designer.runprocess.remote
 Bundle-ActivationPolicy: lazy
 Export-Package: org.talend.repository.hadoopcluster.action,
  org.talend.repository.hadoopcluster.action.common,
@@ -54,4 +55,5 @@ Export-Package: org.talend.repository.hadoopcluster.action,
  org.talend.repository.model.hadoopcluster.util
 Bundle-Activator: org.talend.repository.hadoopcluster.HadoopClusterPlugin
 Import-Package: org.talend.core.ui.context.model.table,
- org.talend.core.ui.token
+ org.talend.core.ui.token,
+ org.talend.designer.runprocess.remote.prefs.jobserver

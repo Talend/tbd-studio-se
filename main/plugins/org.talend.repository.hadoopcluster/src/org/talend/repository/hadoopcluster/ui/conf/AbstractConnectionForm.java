@@ -14,7 +14,13 @@ package org.talend.repository.hadoopcluster.ui.conf;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.ComboViewer;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -27,6 +33,13 @@ import org.talend.commons.ui.swt.formtools.Form;
 import org.talend.commons.ui.swt.formtools.LabelledCombo;
 import org.talend.commons.ui.swt.formtools.LabelledFileField;
 import org.talend.commons.ui.swt.formtools.LabelledText;
+import org.talend.core.service.CheckJobServerManager;
+import org.talend.core.service.ICheckJobServerService;
+import org.talend.designer.runprocess.ProcessorException;
+import org.talend.designer.runprocess.remote.model.NetworkConfiguration;
+import org.talend.designer.runprocess.remote.model.TargetExecutionConfiguration;
+import org.talend.designer.runprocess.remote.prefs.jobserver.RunRemoteProcessPrefsHelper;
+import org.talend.designer.runprocess.remote.ui.ConfigurationComboLabelProvider;
 import org.talend.repository.hadoopcluster.conf.ETrustStoreType;
 import org.talend.repository.hadoopcluster.conf.HadoopConfsUtils;
 import org.talend.repository.hadoopcluster.conf.IPropertyConstants;
@@ -56,7 +69,13 @@ public abstract class AbstractConnectionForm extends Composite {
     protected LabelledText trustStorePasswordText;
 
     protected Button connButton;
-
+    
+    protected Button retrieveButton;
+    
+    protected ComboViewer jobServerCombo;
+    // The job server configuration list
+    private List<TargetExecutionConfiguration> jobServerList= new ArrayList<TargetExecutionConfiguration>();
+    
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     public AbstractConnectionForm(Composite parent, int style) {
@@ -139,6 +158,53 @@ public abstract class AbstractConnectionForm extends Composite {
                 Messages.getString("HadoopImportRemoteOptionPage.auth.file"), new String[] { "*.*" }); //$NON-NLS-1$ //$NON-NLS-2$
         updateAuthFieldsState(false);
     }
+    
+    protected void createRetieveMetaFields(Composite parent) {
+        retrieveButton = new Button(parent, SWT.CHECK);
+        GridData retrieveData = new GridData();
+        retrieveData.horizontalSpan = 1;
+        retrieveButton.setLayoutData(retrieveData);
+        retrieveButton.setText("Retieve metadata by job server");
+        retrieveButton.setSelection(false);
+        retrieveButton.addSelectionListener(new SelectionAdapter(){
+            public void widgetSelected(SelectionEvent e) {
+                jobServerCombo.getControl().setEnabled(retrieveButton.getSelection());
+            } 
+        });
+        
+        jobServerCombo = new ComboViewer(parent);
+        jobServerCombo.setContentProvider(new ArrayContentProvider());
+        jobServerCombo.setLabelProvider(new ConfigurationComboLabelProvider());
+        GridData jobServerData = new GridData(GridData.FILL_HORIZONTAL);
+        jobServerData.horizontalSpan = 1;
+        jobServerCombo.getControl().setLayoutData(jobServerData);
+        jobServerCombo.getControl().setEnabled(false);
+        loadRemoteServers();
+        jobServerCombo.addSelectionChangedListener(new ISelectionChangedListener(){
+            @Override
+            public void selectionChanged(SelectionChangedEvent event) {
+                checkConnection();
+            }
+        });
+    }
+    
+    private void loadRemoteServers() {
+        jobServerList.clear();
+
+        TargetExecutionConfiguration localTargetExecution = TargetExecutionConfiguration.getInstance();
+        List<NetworkConfiguration> configurations = RunRemoteProcessPrefsHelper.getInstance().getRemoteServers();
+        if (!configurations.contains(localTargetExecution) || !configurations.get(0).equals(localTargetExecution)) {
+            configurations.add(0, localTargetExecution);
+        }
+        for (NetworkConfiguration configuration : configurations) {
+            if (configuration instanceof TargetExecutionConfiguration) {
+                jobServerList.add((TargetExecutionConfiguration) configuration);
+            }
+        }
+
+        jobServerCombo.setInput(jobServerList);
+    }
+
 
     protected HadoopConfigurator getHadoopConfigurator() throws Exception {
         return HadoopConfsUtils.getHadoopConfigurator(getHadoopConfigurationManager(), getHadoopConfsConnection());
@@ -151,7 +217,35 @@ public abstract class AbstractConnectionForm extends Composite {
         } catch (Exception e) {
             firePropertyChange(IPropertyConstants.PROPERTY_CONNECT, null, e);
         }
+
+        if (retrieveButton.getSelection()) {
+            try {
+                checkJobServer();
+            } catch (ProcessorException e) {
+                firePropertyChange(IPropertyConstants.PROPERTY_CONNECT, null, e);
+            }
+        }
         firePropertyChange(IPropertyConstants.PROPERTY_CONNECT, null, hadoopConfigurator);
+    }
+    
+    protected void checkJobServer() throws ProcessorException {
+        List<ICheckJobServerService> jobServerServices = CheckJobServerManager.getCheckJobServerService();
+        NetworkConfiguration config = getRetrieveJobServer();
+        boolean isFindJobServer = true;
+//        for (ICheckJobServerService checkService : jobServerServices) {
+//            if (config instanceof TargetExecutionConfiguration) {
+//                TargetExecutionConfiguration tarConfig = (TargetExecutionConfiguration) config;
+//                isFindJobServer = true;
+//                String checkServerResult = checkService.checkJobServer(tarConfig.getHost(), tarConfig.getPort(),
+//                        tarConfig.getFileTransferPort(), tarConfig.getUser(), tarConfig.getPassword(), tarConfig.useSSL());
+//                if (checkServerResult != null && !checkServerResult.equals("")) {
+//                    throw new ProcessorException(checkServerResult);
+//                }
+//            }
+//        }
+        if (!isFindJobServer) {
+            throw new ProcessorException("no job server selected");
+        }
     }
 
     protected abstract HadoopConfigurationManager getHadoopConfigurationManager();
@@ -165,6 +259,7 @@ public abstract class AbstractConnectionForm extends Composite {
         confsConnection.setTrustStoreType(getTrustStoreType());
         confsConnection.setTrustStorePassword(getTrustStorePassword());
         confsConnection.setTrustStoreFile(getTrustStoreFile());
+        
         return confsConnection;
     }
 
@@ -215,6 +310,20 @@ public abstract class AbstractConnectionForm extends Composite {
             return useAuthBtn.getSelection();
         }
         return false;
+    }
+    
+    public boolean isRetrieveConfigByJobServer() {
+        if (retrieveButton != null) {
+            return retrieveButton.getSelection();
+        }
+        return false;
+    }
+
+    public TargetExecutionConfiguration getRetrieveJobServer() {
+        if (jobServerCombo.getCombo().getSelectionIndex() >= 0) {
+            return jobServerList.get(jobServerCombo.getCombo().getSelectionIndex());
+        }
+        return null;
     }
 
 }

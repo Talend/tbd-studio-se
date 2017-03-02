@@ -18,7 +18,7 @@ import java.util.List;
 
 import javax.net.ssl.TrustManager;
 
-import org.talend.repository.hadoopcluster.configurator.HadoopCluster;
+import org.talend.repository.hadoopcluster.configurator.AbsHadoopCluster;
 import org.talend.repository.hadoopcluster.configurator.HadoopConfigurator;
 
 import com.cloudera.api.ClouderaManagerClientBuilder;
@@ -95,7 +95,7 @@ public class HadoopCMConfigurator implements HadoopConfigurator {
      * @see org.talend.repository.hadoopcluster.configurator.HadoopConfigurator#getCluster(java.lang.String)
      */
     @Override
-    public HadoopCluster getCluster(String name) {
+    public AbsHadoopCluster getCluster(String name) {
         ServicesResourceV3 cluster = api.getClustersResource().getServicesResource(name);
         return new HadoopCMCluster(cluster);
     }
