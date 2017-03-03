@@ -14,12 +14,12 @@ package org.talend.repository.hadoopcluster.ui.conf;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -33,19 +33,15 @@ import org.talend.commons.ui.swt.formtools.Form;
 import org.talend.commons.ui.swt.formtools.LabelledCombo;
 import org.talend.commons.ui.swt.formtools.LabelledFileField;
 import org.talend.commons.ui.swt.formtools.LabelledText;
-import org.talend.core.service.CheckJobServerManager;
-import org.talend.core.service.ICheckJobServerService;
+import org.talend.core.GlobalServiceRegister;
 import org.talend.designer.runprocess.ProcessorException;
-import org.talend.designer.runprocess.remote.model.NetworkConfiguration;
-import org.talend.designer.runprocess.remote.model.TargetExecutionConfiguration;
-import org.talend.designer.runprocess.remote.prefs.jobserver.RunRemoteProcessPrefsHelper;
-import org.talend.designer.runprocess.remote.ui.ConfigurationComboLabelProvider;
 import org.talend.repository.hadoopcluster.conf.ETrustStoreType;
 import org.talend.repository.hadoopcluster.conf.HadoopConfsUtils;
 import org.talend.repository.hadoopcluster.conf.IPropertyConstants;
 import org.talend.repository.hadoopcluster.conf.model.HadoopConfsConnection;
 import org.talend.repository.hadoopcluster.configurator.HadoopConfigurationManager;
 import org.talend.repository.hadoopcluster.configurator.HadoopConfigurator;
+import org.talend.repository.hadoopcluster.configurator.IHadoopRetrieveConfigurationJobService;
 import org.talend.repository.hadoopcluster.i18n.Messages;
 
 /**
@@ -72,9 +68,7 @@ public abstract class AbstractConnectionForm extends Composite {
     
     protected Button retrieveButton;
     
-    protected ComboViewer jobServerCombo;
-    // The job server configuration list
-    private List<TargetExecutionConfiguration> jobServerList= new ArrayList<TargetExecutionConfiguration>();
+    protected ComboViewer serverCombo;
     
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
@@ -160,52 +154,48 @@ public abstract class AbstractConnectionForm extends Composite {
     }
     
     protected void createRetieveMetaFields(Composite parent) {
-        retrieveButton = new Button(parent, SWT.CHECK);
-        GridData retrieveData = new GridData();
-        retrieveData.horizontalSpan = 1;
-        retrieveButton.setLayoutData(retrieveData);
-        retrieveButton.setText("Retieve metadata by job server");
-        retrieveButton.setSelection(false);
-        retrieveButton.addSelectionListener(new SelectionAdapter(){
-            public void widgetSelected(SelectionEvent e) {
-                jobServerCombo.getControl().setEnabled(retrieveButton.getSelection());
-            } 
-        });
-        
-        jobServerCombo = new ComboViewer(parent);
-        jobServerCombo.setContentProvider(new ArrayContentProvider());
-        jobServerCombo.setLabelProvider(new ConfigurationComboLabelProvider());
-        GridData jobServerData = new GridData(GridData.FILL_HORIZONTAL);
-        jobServerData.horizontalSpan = 1;
-        jobServerCombo.getControl().setLayoutData(jobServerData);
-        jobServerCombo.getControl().setEnabled(false);
-        loadRemoteServers();
-        jobServerCombo.addSelectionChangedListener(new ISelectionChangedListener(){
-            @Override
-            public void selectionChanged(SelectionChangedEvent event) {
-                checkConnection();
-            }
-        });
+        List<String> serverList = getJobServerList();
+        if (serverList != null) { // If find the service
+            retrieveButton = new Button(parent, SWT.CHECK);
+            GridData retrieveData = new GridData();
+            retrieveData.horizontalSpan = 1;
+            retrieveButton.setLayoutData(retrieveData);
+            retrieveButton.setText("Retieve metadata by job server");
+            retrieveButton.setSelection(false);
+            retrieveButton.addSelectionListener(new SelectionAdapter(){
+                public void widgetSelected(SelectionEvent e) {
+                    serverCombo.getControl().setEnabled(retrieveButton.getSelection());
+                } 
+            });
+            
+            serverCombo = new ComboViewer(parent);
+            serverCombo.setContentProvider(new ArrayContentProvider());
+            serverCombo.setLabelProvider(new LabelProvider());
+            GridData jobServerData = new GridData(GridData.FILL_HORIZONTAL);
+            jobServerData.horizontalSpan = 1;
+            serverCombo.getControl().setLayoutData(jobServerData);
+            serverCombo.getControl().setEnabled(false);
+            serverCombo.setInput(serverList);
+            serverCombo.addSelectionChangedListener(new ISelectionChangedListener(){
+                @Override
+                public void selectionChanged(SelectionChangedEvent event) {
+                    checkConnection();
+                }
+            });
+        }
     }
     
-    private void loadRemoteServers() {
-        jobServerList.clear();
-
-        TargetExecutionConfiguration localTargetExecution = TargetExecutionConfiguration.getInstance();
-        List<NetworkConfiguration> configurations = RunRemoteProcessPrefsHelper.getInstance().getRemoteServers();
-        if (!configurations.contains(localTargetExecution) || !configurations.get(0).equals(localTargetExecution)) {
-            configurations.add(0, localTargetExecution);
+    private List<String> getJobServerList() {
+        IHadoopRetrieveConfigurationJobService service = null;
+        if (GlobalServiceRegister.getDefault().isServiceRegistered(IHadoopRetrieveConfigurationJobService.class)) {
+            service = (IHadoopRetrieveConfigurationJobService) GlobalServiceRegister.getDefault().getService(
+                    IHadoopRetrieveConfigurationJobService.class);
+            return service.getAllJobServerLabel();
         }
-        for (NetworkConfiguration configuration : configurations) {
-            if (configuration instanceof TargetExecutionConfiguration) {
-                jobServerList.add((TargetExecutionConfiguration) configuration);
-            }
-        }
-
-        jobServerCombo.setInput(jobServerList);
+        
+        return null;
     }
-
-
+    
     protected HadoopConfigurator getHadoopConfigurator() throws Exception {
         return HadoopConfsUtils.getHadoopConfigurator(getHadoopConfigurationManager(), getHadoopConfsConnection());
     }
@@ -229,23 +219,7 @@ public abstract class AbstractConnectionForm extends Composite {
     }
     
     protected void checkJobServer() throws ProcessorException {
-        List<ICheckJobServerService> jobServerServices = CheckJobServerManager.getCheckJobServerService();
-        NetworkConfiguration config = getRetrieveJobServer();
-        boolean isFindJobServer = true;
-//        for (ICheckJobServerService checkService : jobServerServices) {
-//            if (config instanceof TargetExecutionConfiguration) {
-//                TargetExecutionConfiguration tarConfig = (TargetExecutionConfiguration) config;
-//                isFindJobServer = true;
-//                String checkServerResult = checkService.checkJobServer(tarConfig.getHost(), tarConfig.getPort(),
-//                        tarConfig.getFileTransferPort(), tarConfig.getUser(), tarConfig.getPassword(), tarConfig.useSSL());
-//                if (checkServerResult != null && !checkServerResult.equals("")) {
-//                    throw new ProcessorException(checkServerResult);
-//                }
-//            }
-//        }
-        if (!isFindJobServer) {
-            throw new ProcessorException("no job server selected");
-        }
+        //TODO --KK
     }
 
     protected abstract HadoopConfigurationManager getHadoopConfigurationManager();
@@ -319,9 +293,9 @@ public abstract class AbstractConnectionForm extends Composite {
         return false;
     }
 
-    public TargetExecutionConfiguration getRetrieveJobServer() {
-        if (jobServerCombo.getCombo().getSelectionIndex() >= 0) {
-            return jobServerList.get(jobServerCombo.getCombo().getSelectionIndex());
+    public String getRetrieveJobServer() {
+        if (serverCombo != null) {
+            return serverCombo.getCombo().getText();
         }
         return null;
     }
