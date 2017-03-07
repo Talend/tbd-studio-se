@@ -315,7 +315,11 @@ public class HadoopClusterService implements IHadoopClusterService {
         if (connectionItem != null) {
             HadoopClusterConnection connection = (HadoopClusterConnection) connectionItem.getConnection();
             if (connection != null && connection.isUseCustomConfs()) {
-                return HadoopConfsUtils.getConfsJarDefaultName(connectionItem);
+                String extraIds = null;
+                if (connection.isContextMode()) {
+                    extraIds = connection.getContextName();
+                }
+                return HadoopConfsUtils.getConfsJarDefaultName(connectionItem, extraIds);
             }
         }
         return null;
@@ -328,7 +332,11 @@ public class HadoopClusterService implements IHadoopClusterService {
             HadoopClusterConnectionItem connectionItem = (HadoopClusterConnectionItem) item;
             HadoopClusterConnection connection = (HadoopClusterConnection) connectionItem.getConnection();
             if (connection.isUseCustomConfs()) {
-                String customConfsJarName = HadoopConfsUtils.getConfsJarDefaultName(connectionItem);
+                String extraIds = null;
+                if (connection.isContextMode()) {
+                    extraIds = connection.getContextName();
+                }
+                String customConfsJarName = HadoopConfsUtils.getConfsJarDefaultName(connectionItem, extraIds);
                 String context = customConfsJarName.substring(0, customConfsJarName.lastIndexOf(".")); //$NON-NLS-1$
                 ModuleNeeded customConfsModule = new ModuleNeeded(context, customConfsJarName, null, true);
                 Iterator<ModuleNeeded> moduleIterator = modulesNeeded.iterator();

@@ -15,11 +15,11 @@ import org.talend.core.model.metadata.builder.connection.Connection;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.talend.repository.model.hadoopcluster.HadoopSubConnection#getRelativeHadoopClusterId <em>Relative Hadoop Cluster Id</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.HadoopSubConnection#getHadoopProperties <em>Hadoop Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.talend.repository.model.hadoopcluster.HadoopClusterPackage#getHadoopSubConnection()
  * @model

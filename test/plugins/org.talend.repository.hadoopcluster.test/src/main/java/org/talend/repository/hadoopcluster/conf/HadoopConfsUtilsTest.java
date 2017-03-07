@@ -72,4 +72,34 @@ public class HadoopConfsUtilsTest {
         }
     }
 
+    @Test
+    public void testBuildAndDeployConfsJar() throws IOException {
+        HadoopClusterConnectionItem hcConnectionItem = ClusterTestUtil.createDefaultHadoopClusterItem();
+        HadoopClusterConnection hcConnection = (HadoopClusterConnection) hcConnectionItem.getConnection();
+
+        File testConfJarDir = File.createTempFile("testConfDir", "tmp"); //$NON-NLS-1$ //$NON-NLS-2$
+        testConfJarDir.delete();
+        testConfJarDir.mkdirs();
+        testConfJarDir.deleteOnExit();
+
+        String testConfJarName = "testConf"; //$NON-NLS-1$
+        String testContextGroup = "TEST"; //$NON-NLS-1$
+
+        HadoopConfsUtils.buildAndDeployConfsJar(hcConnectionItem, null, testConfJarDir.getAbsolutePath(),
+                testConfJarName);
+        assertNotNull(hcConnection.getConfFile());
+
+        // Context mode
+        hcConnection.setContextMode(true);
+        HadoopConfsUtils.buildAndDeployConfsJar(hcConnectionItem, testContextGroup, testConfJarDir.getAbsolutePath(),
+                testConfJarName);
+        assertNotNull(hcConnection.getConfFiles());
+        assertEquals(1, hcConnection.getConfFiles().size());
+
+        hcConnection.getConfFiles().clear();
+        // If connection is context mode but context group is null then will not save conf jar.
+        HadoopConfsUtils.buildAndDeployConfsJar(hcConnectionItem, null, testConfJarDir.getAbsolutePath(), testConfJarName);
+        assertEquals(0, hcConnection.getConfFiles().size());
+    }
+
 }
