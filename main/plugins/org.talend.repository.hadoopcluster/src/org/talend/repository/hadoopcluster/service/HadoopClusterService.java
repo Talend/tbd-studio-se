@@ -232,7 +232,7 @@ public class HadoopClusterService implements IHadoopClusterService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.hadoop.IHadoopClusterService#getHadoopCustomLibraries()
      */
     @Override
@@ -310,16 +310,25 @@ public class HadoopClusterService implements IHadoopClusterService {
     }
 
     @Override
-    public String getCustomConfsJarName(String clusterId) {
-        HadoopClusterConnectionItem connectionItem = HCRepositoryUtil.getRelativeHadoopClusterItem(clusterId);
+    public String getCustomConfsJarName(String id) {
+        return getCustomConfsJarName(id, true, true);
+    }
+
+    @Override
+    public String getCustomConfsJarName(String id, boolean createJarIfNotExist, boolean addExtraIds) {
+        HadoopClusterConnectionItem connectionItem = (HadoopClusterConnectionItem) getHadoopClusterItemById(id);
         if (connectionItem != null) {
             HadoopClusterConnection connection = (HadoopClusterConnection) connectionItem.getConnection();
             if (connection != null && connection.isUseCustomConfs()) {
                 String extraIds = null;
-                if (connection.isContextMode()) {
+                if (addExtraIds && connection.isContextMode()) {
                     extraIds = connection.getContextName();
                 }
-                return HadoopConfsUtils.getConfsJarDefaultName(connectionItem, extraIds);
+                if (extraIds == null) {
+                    return HadoopConfsUtils.getConfsJarDefaultName(connectionItem, createJarIfNotExist);
+                } else {
+                    return HadoopConfsUtils.getConfsJarDefaultName(connectionItem, createJarIfNotExist, extraIds);
+                }
             }
         }
         return null;

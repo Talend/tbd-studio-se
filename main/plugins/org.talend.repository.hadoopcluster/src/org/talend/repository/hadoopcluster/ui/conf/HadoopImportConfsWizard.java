@@ -92,7 +92,12 @@ public class HadoopImportConfsWizard extends Wizard {
                                 monitor.beginTask(
                                         Messages.getString("HadoopImportConfsWizard.doingImport"), IProgressMonitor.UNKNOWN); //$NON-NLS-1$
                                 try {
-                                    confJarName = HadoopConfsUtils.getConfsJarDefaultName(connectionItem, false, contextGroup);
+                                    if (contextGroup == null) {
+                                        confJarName = HadoopConfsUtils.getConfsJarDefaultName(connectionItem, false);
+                                    } else {
+                                        confJarName = HadoopConfsUtils.getConfsJarDefaultName(connectionItem, false,
+                                                contextGroup);
+                                    }
                                     HadoopConfsUtils.buildAndDeployConfsJar(connectionItem, contextGroup, confsDir, confJarName);
                                 } catch (Exception e) {
                                     confJarName = null;

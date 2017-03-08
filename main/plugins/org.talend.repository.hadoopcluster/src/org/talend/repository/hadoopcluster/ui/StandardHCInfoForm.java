@@ -1026,7 +1026,7 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         HadoopClusterConnection connection = getConnection();
         ContextType contextType = null;
         if (getConnection().isContextMode()) {
-            contextType = ConnectionContextHelper.getContextTypeForContextMode(connection);
+            contextType = ConnectionContextHelper.getContextTypeForContextMode(connection, connection.getContextName(), false);
         }
         properties.setContextType(contextType);
         properties.setDistribution(connection.getDistribution());
