@@ -239,6 +239,12 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                         ConnectionContextHelper.createParameters(varList, paramName,
                                 conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_DBFS_DEP_FOLDER));
                         break;
+                    case WebHDFSSSLTrustStorePath:
+                        ConnectionContextHelper.createParameters(varList, paramName, conn.getWebHDFSSSLTrustStorePath());
+                        break;
+                    case WebHDFSSSLTrustStorePassword:
+                        ConnectionContextHelper.createParameters(varList, paramName, conn.getWebHDFSSSLTrustStorePassword());
+                        break;
                     default:
                     }
 
@@ -539,6 +545,11 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
         case DataBricksDBFSDepFolder:
             hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_DBFS_DEP_FOLDER,
                     ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
+        case WebHDFSSSLTrustStorePath:
+            hadoopConn.setWebHDFSSSLTrustStorePath(ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
+            break;
+        case WebHDFSSSLTrustStorePassword:
+            hadoopConn.setWebHDFSSSLTrustStorePassword(ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
             break;
         default:
         }
@@ -597,6 +608,11 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
             String maprTHadoopLogin = TalendQuoteUtils.removeQuotes(ContextParameterUtils.getOriginalValue(contextType,
                     conn.getMaprTHadoopLogin()));
 
+            String webHDFSSSLTrustStorePath = TalendQuoteUtils.removeQuotes(ContextParameterUtils.getOriginalValue(contextType,
+                    conn.getWebHDFSSSLTrustStorePath()));
+            String webHDFSSSLTrustStorePassword = TalendQuoteUtils.removeQuotes(ContextParameterUtils.getOriginalValue(
+                    contextType, conn.getWebHDFSSSLTrustStorePassword()));
+
             for (String paramKey : ((HadoopClusterConnection) hadoopConn).getParameters().keySet()) {
                 String originalValue = ContextParameterUtils.getOriginalValue(contextType, conn.getParameters().get(paramKey));
                 conn.getParameters().put(paramKey, originalValue);
@@ -634,6 +650,8 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
             conn.setMaprTDuration(maprTDuration);
             conn.setMaprTHomeDir(maprTHomeDir);
             conn.setMaprTHadoopLogin(maprTHadoopLogin);
+            conn.setWebHDFSSSLTrustStorePath(webHDFSSSLTrustStorePath);
+            conn.setWebHDFSSSLTrustStorePassword(webHDFSSSLTrustStorePassword);
         }
     }
 

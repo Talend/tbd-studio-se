@@ -54,6 +54,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hadoopcluster.ecore#//HadoopClusterConnection/preloadAuthentification"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hadoopcluster.ecore#//HadoopClusterConnection/confFile"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hadoopcluster.ecore#//HadoopClusterConnection/confFiles"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hadoopcluster.ecore#//HadoopClusterConnection/useWebHDFSSSL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hadoopcluster.ecore#//HadoopClusterConnection/webHDFSSSLTrustStorePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hadoopcluster.ecore#//HadoopClusterConnection/webHDFSSSLTrustStorePassword"/>
     </genClasses>
     <genClasses ecoreClass="hadoopcluster.ecore#//HadoopClusterConnectionItem"/>
     <genClasses ecoreClass="hadoopcluster.ecore#//HadoopAdditionalProperties">

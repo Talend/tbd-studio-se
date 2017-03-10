@@ -102,6 +102,10 @@ public class HadoopParameterValidator {
         return isValid(maprTDuration, HadoopPatternConstants.WITHOUT_SPACE);
     }
 
+    public static boolean isValidWebHDFSSSLTrustStorePassword(String trustStorePassword) {
+        return isValid(trustStorePassword, HadoopPatternConstants.WITHOUT_SPACE);
+    }
+
     /**
      * Check whether or not the realm is valid.
      * <p>
