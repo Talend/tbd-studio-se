@@ -433,4 +433,30 @@ public class HadoopConfsUtils {
         }
         return newParam;
     }
+
+    public static boolean updateContextualHadoopConfs(HadoopClusterConnectionItem hcItem) {
+        if (hcItem == null) {
+            return false;
+        }
+        boolean isUpdated = false;
+        HadoopClusterConnection connection = (HadoopClusterConnection) hcItem.getConnection();
+        if (connection.isContextMode() && connection.isUseCustomConfs()) {
+            EMap<String, byte[]> confFiles = connection.getConfFiles();
+            byte[] confFile = connection.getConfFile();
+            if (confFiles.size() == 0 && confFile != null) {
+                ContextItem contextItem = ContextUtils.getContextItemById2(connection.getContextId());
+                if (contextItem != null) {
+                    EList<ContextType> contexts = contextItem.getContext();
+                    for (ContextType contextType : contexts) {
+                        String contextName = contextType.getName();
+                        HadoopConfsUtils.getConfsJarDefaultName(hcItem, true, contextName);
+                        confFiles.put(contextName, confFile);
+                        isUpdated = true;
+                    }
+                }
+            }
+        }
+        return isUpdated;
+    }
+
 }

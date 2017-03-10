@@ -300,5 +300,14 @@
              name="ReviseInvalidContextNamesOfHadoopPropertiesMigrationTask"
              version="6.1.2">
        </projecttask>
+       <projecttask
+             beforeLogon="false"
+             breaks="6.4.0"
+             class="org.talend.repository.hadoopcluster.migration.UpdateHadoopConfsForContextualHadoopClusterMigrationTask"
+             description="Reuse the old conf files of old hadoop cluster conection to the new one."
+             id="org.talend.repository.hadoopcluster.migration.UpdateHadoopConfsForContextualHadoopClusterMigrationTask"
+             name="UpdateHadoopConfsForContextualHadoopClusterMigrationTask"
+             version="6.4.1">
+       </projecttask>
     </extension>
 </plugin>

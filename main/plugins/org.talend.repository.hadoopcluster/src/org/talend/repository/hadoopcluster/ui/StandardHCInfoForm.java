@@ -1023,6 +1023,7 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
     }
 
     private void initCommonProperties(HadoopServiceProperties properties) {
+        properties.setItem(this.connectionItem);
         HadoopClusterConnection connection = getConnection();
         ContextType contextType = null;
         if (getConnection().isContextMode()) {
@@ -1545,4 +1546,11 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         addContextParams(EHadoopParamName.maprTHomeDir, useMaprT);
         addContextParams(EHadoopParamName.maprTHadoopLogin, useMaprT);
     }
+
+    @Override
+    protected void exportAsContext() {
+        super.exportAsContext();
+        HadoopConfsUtils.updateContextualHadoopConfs((HadoopClusterConnectionItem) this.connectionItem);
+    }
+
 }

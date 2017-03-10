@@ -15,7 +15,6 @@ package org.talend.repository.hadoopcluster.ui.conf;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.lang3.StringUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -110,14 +109,12 @@ public class HadoopContextConfConfigDialog extends TitleAreaDialog {
                 EList<ContextType> contexts = contextItem.getContext();
                 for (ContextType contextType : contexts) {
                     String contextName = contextType.getName();
+                    String jarName = HadoopConfsUtils.getConfsJarDefaultName(connectionItem, false, contextName);
                     byte[] bs = confFiles.get(contextName);
-                    String jarName = null;
-                    if (bs != null) {
-                        jarName = HadoopConfsUtils.getConfsJarDefaultName(connectionItem, false, contextName);
-                    } else if (connection.getConfFile() != null) {
-                        jarName = HadoopConfsUtils.getConfsJarDefaultName(connectionItem, false);
+                    if (bs == null) {
+                        jarName = Messages.getString("HadoopContextConfConfigDialog.prompt.importJar"); //$NON-NLS-1$
                     }
-                    context2Jar.put(contextType.getName(), StringUtils.trimToEmpty(jarName));
+                    context2Jar.put(contextName, jarName);
                 }
                 return super.open();
             }

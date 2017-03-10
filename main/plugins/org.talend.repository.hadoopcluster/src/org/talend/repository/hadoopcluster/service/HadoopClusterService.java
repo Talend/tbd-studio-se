@@ -34,6 +34,7 @@ import org.talend.core.model.metadata.builder.connection.Connection;
 import org.talend.core.model.metadata.builder.connection.DatabaseConnection;
 import org.talend.core.model.process.IElementParameter;
 import org.talend.core.model.process.IProcess;
+import org.talend.core.model.properties.ConnectionItem;
 import org.talend.core.model.properties.DatabaseConnectionItem;
 import org.talend.core.model.properties.Item;
 import org.talend.core.model.repository.ERepositoryObjectType;
@@ -319,19 +320,29 @@ public class HadoopClusterService implements IHadoopClusterService {
     public String getCustomConfsJarName(String id, boolean createJarIfNotExist, boolean addExtraIds) {
         HadoopClusterConnectionItem connectionItem = (HadoopClusterConnectionItem) getHadoopClusterItemById(id);
         if (connectionItem != null) {
-            HadoopClusterConnection connection = (HadoopClusterConnection) connectionItem.getConnection();
+            return getCustomConfsJarName(connectionItem, createJarIfNotExist, addExtraIds);
+        }
+        return null;
+    }
+
+    @Override
+    public String getCustomConfsJarName(ConnectionItem connectionItem, boolean createJarIfNotExist, boolean addExtraIds) {
+        if (connectionItem instanceof HadoopClusterConnectionItem) {
+            HadoopClusterConnectionItem item = (HadoopClusterConnectionItem) connectionItem;
+            HadoopClusterConnection connection = (HadoopClusterConnection) item.getConnection();
             if (connection != null && connection.isUseCustomConfs()) {
                 String extraIds = null;
                 if (addExtraIds && connection.isContextMode()) {
                     extraIds = connection.getContextName();
                 }
                 if (extraIds == null) {
-                    return HadoopConfsUtils.getConfsJarDefaultName(connectionItem, createJarIfNotExist);
+                    return HadoopConfsUtils.getConfsJarDefaultName(item, createJarIfNotExist);
                 } else {
-                    return HadoopConfsUtils.getConfsJarDefaultName(connectionItem, createJarIfNotExist, extraIds);
+                    return HadoopConfsUtils.getConfsJarDefaultName(item, createJarIfNotExist, extraIds);
                 }
             }
         }
+
         return null;
     }
 
