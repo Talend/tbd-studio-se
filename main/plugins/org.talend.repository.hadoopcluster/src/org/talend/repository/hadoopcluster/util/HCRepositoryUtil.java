@@ -585,6 +585,10 @@ public class HCRepositoryUtil {
                 parameters.put(ConnParameterKeys.CONN_PARA_KEY_KEYTAB, hcConnection.getKeytab());
             }
         }
+        parameters.put(ConnParameterKeys.CONN_PARA_KEY_USE_WEBHDFS_SSL, String.valueOf(hcConnection.isUseWebHDFSSSL()));
+        parameters.put(ConnParameterKeys.CONN_PARA_KEY_WEBHDFS_SSL_TRUST_STORE_PATH, hcConnection.getWebHDFSSSLTrustStorePath());
+        parameters.put(ConnParameterKeys.CONN_PARA_KEY_WEBHDFS_SSL_TRUST_STORE_PASSWORD,
+                hcConnection.getWebHDFSSSLTrustStorePassword());
         // hbase/hive/maprdb
         parameters.put(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_USE_MAPRTICKET,
                 String.valueOf(hcConnection.isEnableMaprT()));
