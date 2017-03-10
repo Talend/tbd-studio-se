@@ -14,6 +14,11 @@ package org.talend.repository.hadoopcluster.configurator;
 
 import org.talend.core.GlobalServiceRegister;
 
+/**
+ * 
+ * @author Kevin Wang
+ *
+ */
 public abstract class AbsHadoopCluster implements HadoopCluster {
 
     // Retrieve configuration job server

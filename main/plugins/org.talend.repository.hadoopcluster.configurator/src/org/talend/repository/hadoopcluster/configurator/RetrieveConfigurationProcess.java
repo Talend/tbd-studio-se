@@ -12,24 +12,18 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.configurator;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.talend.core.model.process.AbstractNode;
 import org.talend.core.model.process.EComponentCategory;
 import org.talend.core.model.process.EParameterFieldType;
-import org.talend.core.model.process.IConnection;
 import org.talend.core.model.process.IContextManager;
 import org.talend.core.model.properties.Property;
 import org.talend.designer.core.model.components.EParameterName;
 import org.talend.designer.core.model.components.ElementParameter;
-import org.talend.designer.runprocess.shadow.ShadowConnection;
 
 public class RetrieveConfigurationProcess extends org.talend.designer.core.ui.editor.process.Process {
 
     protected IContextManager contextManager;
 
-    protected SocketOutputNode logRowNode;
 
     protected AbstractNode node;
     
@@ -49,25 +43,7 @@ public class RetrieveConfigurationProcess extends org.talend.designer.core.ui.ed
 
         nodes.add(inputNode);
 
-        logRowNode = new SocketOutputNode();
-        nodes.add(logRowNode);
-
-        ShadowConnection cnx = new ShadowConnection(inputNode, logRowNode);
-        cnx.setConnectorName("MAIN");
-        List<IConnection> cnxs = new ArrayList<IConnection>();
-        cnxs.add(cnx);
-        inputNode.setOutgoingConnections(cnxs);
-        logRowNode.setIncomingConnections(cnxs);
-
-        String jvmEncoding = System.getProperty("file.encoding");
-        if (jvmEncoding != null) {
-            logRowNode.addEncodingParameters(jvmEncoding);
-        } else {
-            logRowNode.addEncodingParameters("utf-8"); //$NON-NLS-1$
-        }
-
         inputNode.setProcess(this);
-        logRowNode.setProcess(this);
     }
 
     /**
