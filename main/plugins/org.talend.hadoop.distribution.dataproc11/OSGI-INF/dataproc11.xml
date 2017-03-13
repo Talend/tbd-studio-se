@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<component name="Dataproc11Distribution">
+  <implementation class="org.talend.hadoop.distribution.dataproc11.Dataproc11Distribution"/>
+  <service>
+    <provide interface="org.talend.hadoop.distribution.component.HadoopComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.HDFSComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.SparkBatchComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.SparkStreamingComponent"/>
+  </service>
+</component>
