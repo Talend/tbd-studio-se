@@ -114,8 +114,7 @@ public class Dataproc11Distribution extends AbstractDistribution implements HDFS
 
     @Override
     public boolean doSupportDynamicMemoryAllocation() {
-        // TODO Auto-generated method stub // to check
-        return false;
+        return true;
     }
 
     @Override
