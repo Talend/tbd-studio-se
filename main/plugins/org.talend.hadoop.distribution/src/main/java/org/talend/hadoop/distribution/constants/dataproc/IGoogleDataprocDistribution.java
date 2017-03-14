@@ -12,12 +12,13 @@
 // ============================================================================
 package org.talend.hadoop.distribution.constants.dataproc;
 
-/** 
+/**
  * DOC ggu class global comment. Detailled comment
  */
 @SuppressWarnings("nls")
-
 public interface IGoogleDataprocDistribution {
+
     static final String DISTRIBUTION_NAME = "GOOGLE_CLOUD_DATAPROC";
-    static final String DISTRIBUTION_DISPLAY_NAME = "GOOGLE CLOUD DATAPROC";
+
+    static final String DISTRIBUTION_DISPLAY_NAME = "Google Cloud Dataproc";
 }

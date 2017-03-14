@@ -146,4 +146,17 @@ public interface HadoopComponent {
      * @return true if the distribution supports HDFS encryption which is supported on Hadoop >= 2.6.0.
      */
     public boolean doSupportHDFSEncryption();
+
+    /**
+     *
+     * @return true if the distribution is a Cloud distribution (Google dataproc, HDInsight, ...) Cloud distributions do
+     * not require all of the standard Hadoop conf (ports, conf files, ...) They usually provide their own REST APIs.
+     */
+    public boolean isCloudDistribution();
+
+    /**
+     *
+     * @return true if the distribution is a Google dataproc distribution
+     */
+    public boolean isGoogleDataprocDistribution();
 }

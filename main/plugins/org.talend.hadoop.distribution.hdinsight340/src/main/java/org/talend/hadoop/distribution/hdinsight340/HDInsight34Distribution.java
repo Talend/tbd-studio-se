@@ -93,7 +93,7 @@ public class HDInsight34Distribution extends AbstractDistribution implements MRC
                 HDInsight34SparkBatchParquetNodeModuleGroup.getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
                 HDInsight34SparkBatchGraphFramesNodeModuleGroup.getModuleGroups(DISTRIBUTION_NAME, VERSION));
-        
+
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.PARQUET_INPUT_COMPONENT), HDInsight34SparkStreamingParquetNodeModuleGroup
                 .getModuleGroups());
@@ -298,6 +298,11 @@ public class HDInsight34Distribution extends AbstractDistribution implements MRC
 
     @Override
     public boolean doSupportHDFSEncryption() {
+        return true;
+    }
+
+    @Override
+    public boolean isCloudDistribution() {
         return true;
     }
 
