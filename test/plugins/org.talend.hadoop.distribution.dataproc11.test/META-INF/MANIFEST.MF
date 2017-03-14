@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Amazon EMR 5.0.0 Distribution Test
+Bundle-Name: Google CloudDataproc 1.1 Distribution Test
 Bundle-SymbolicName: org.talend.hadoop.distribution.dataproc11.test
 Bundle-Version: 6.4.0.qualifier
 Bundle-Vendor: .Talend SA.
