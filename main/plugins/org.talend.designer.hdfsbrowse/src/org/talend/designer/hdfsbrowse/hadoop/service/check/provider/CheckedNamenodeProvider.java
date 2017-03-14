@@ -17,6 +17,7 @@ import java.net.URI;
 import org.apache.commons.lang.StringUtils;
 import org.talend.core.hadoop.EHadoopCategory;
 import org.talend.core.hadoop.HadoopClassLoaderFactory2;
+import org.talend.core.hadoop.HadoopClassLoaderUtil;
 import org.talend.core.utils.ReflectionUtils;
 import org.talend.designer.hdfsbrowse.hadoop.service.HadoopServiceProperties;
 import org.talend.designer.hdfsbrowse.hadoop.service.check.AbstractCheckedServiceProvider;
@@ -108,8 +109,9 @@ public class CheckedNamenodeProvider extends AbstractCheckedServiceProvider {
             loader = HadoopClassLoaderFactory2.getHDFSClassLoader(serviceProperties.getRelativeHadoopClusterId(),
                     serviceProperties.getDistribution(), serviceProperties.getVersion(), serviceProperties.isUseKrb());
             loader = addCustomConfsJarIfNeeded(loader, serviceProperties, EHadoopCategory.HDFS);
+            // Add webhdfs extra jars
+            loader = HadoopClassLoaderUtil.addExtraJars(loader, EHadoopCategory.HDFS, serviceProperties.getNameNode());
         }
-
         return loader;
     }
 
