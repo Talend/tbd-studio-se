@@ -81,15 +81,11 @@ public class MapR510DistributionTest extends AbstractDistributionTest {
         assertTrue(((HiveComponent) distribution).doSupportParquetFormat());
         assertFalse(((HiveComponent) distribution).doSupportStoreAsParquet());
         assertFalse(((HiveComponent) distribution).doSupportClouderaNavigator());
-        assertFalse(((SparkBatchComponent) distribution).isSpark14());
-        assertTrue(((SparkBatchComponent) distribution).isSpark15());
         assertFalse(((SparkBatchComponent) distribution).doSupportDynamicMemoryAllocation());
         assertFalse(((SparkBatchComponent) distribution).isExecutedThroughSparkJobServer());
         assertTrue(((SparkBatchComponent) distribution).doSupportSparkStandaloneMode());
         assertTrue(((SparkBatchComponent) distribution).doSupportSparkYarnClientMode());
         assertTrue(distribution instanceof SparkStreamingComponent);
-        assertFalse(((SparkStreamingComponent) distribution).isSpark14());
-        assertTrue(((SparkStreamingComponent) distribution).isSpark15());
         assertTrue(((SparkStreamingComponent) distribution).doSupportSparkStandaloneMode());
         assertTrue(((SparkStreamingComponent) distribution).doSupportSparkYarnClientMode());
         assertTrue(distribution instanceof HCatalogComponent);

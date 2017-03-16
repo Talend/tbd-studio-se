@@ -78,14 +78,10 @@ public class HDInsight32DistributionTest extends AbstractDistributionTest {
         assertTrue(((HiveComponent) distribution).doSupportParquetFormat());
         assertFalse(((HiveComponent) distribution).doSupportStoreAsParquet());
         assertFalse(((HiveComponent) distribution).doSupportClouderaNavigator());
-        assertFalse(((SparkBatchComponent) distribution).isSpark14());
-        assertTrue(((SparkBatchComponent) distribution).isSpark13());
         assertFalse(((SparkBatchComponent) distribution).doSupportDynamicMemoryAllocation());
         assertTrue(((SparkBatchComponent) distribution).isExecutedThroughSparkJobServer());
         assertTrue(((SparkBatchComponent) distribution).doSupportSparkStandaloneMode());
         assertFalse(((SparkBatchComponent) distribution).doSupportSparkYarnClientMode());
-        assertFalse(((SparkStreamingComponent) distribution).isSpark14());
-        assertTrue(((SparkStreamingComponent) distribution).isSpark13());
         assertFalse(((SparkStreamingComponent) distribution).doSupportDynamicMemoryAllocation());
         assertTrue(((SparkStreamingComponent) distribution).isExecutedThroughSparkJobServer());
         assertFalse(((SparkStreamingComponent) distribution).doSupportCheckpointing());

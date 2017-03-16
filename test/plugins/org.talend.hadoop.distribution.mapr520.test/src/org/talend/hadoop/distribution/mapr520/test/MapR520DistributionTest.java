@@ -77,17 +77,11 @@ public class MapR520DistributionTest {
         assertTrue(((HiveComponent) distribution).doSupportParquetFormat());
         assertFalse(((HiveComponent) distribution).doSupportStoreAsParquet());
         assertFalse(((HiveComponent) distribution).doSupportClouderaNavigator());
-        assertFalse(((SparkBatchComponent) distribution).isSpark14());
-        assertFalse(((SparkBatchComponent) distribution).isSpark15());
-        assertTrue(((SparkBatchComponent) distribution).isSpark16());
         assertFalse(((SparkBatchComponent) distribution).doSupportDynamicMemoryAllocation());
         assertFalse(((SparkBatchComponent) distribution).isExecutedThroughSparkJobServer());
         assertTrue(((SparkBatchComponent) distribution).doSupportSparkStandaloneMode());
         assertTrue(((SparkBatchComponent) distribution).doSupportSparkYarnClientMode());
         assertTrue(distribution instanceof SparkStreamingComponent);
-        assertFalse(((SparkStreamingComponent) distribution).isSpark14());
-        assertFalse(((SparkStreamingComponent) distribution).isSpark15());
-        assertTrue(((SparkStreamingComponent) distribution).isSpark16());
         assertTrue(((SparkStreamingComponent) distribution).doSupportSparkStandaloneMode());
         assertTrue(((SparkStreamingComponent) distribution).doSupportSparkYarnClientMode());
         assertTrue(distribution instanceof HCatalogComponent);

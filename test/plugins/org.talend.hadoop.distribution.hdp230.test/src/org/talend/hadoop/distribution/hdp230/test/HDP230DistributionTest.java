@@ -82,10 +82,8 @@ public class HDP230DistributionTest extends AbstractDistributionTest {
         assertFalse(((HiveComponent) distribution).doSupportClouderaNavigator());
         assertTrue(distribution instanceof SparkBatchComponent);
         assertTrue(distribution instanceof SparkStreamingComponent);
-        assertTrue(((SparkBatchComponent) distribution).isSpark14());
         assertFalse(((SparkBatchComponent) distribution).doSupportSparkStandaloneMode());
         assertTrue(((SparkBatchComponent) distribution).doSupportSparkYarnClientMode());
-        assertTrue(((SparkStreamingComponent) distribution).isSpark14());
         assertFalse(((SparkStreamingComponent) distribution).doSupportSparkStandaloneMode());
         assertTrue(((SparkStreamingComponent) distribution).doSupportSparkYarnClientMode());
         assertFalse(((SparkStreamingComponent) distribution).doSupportBackpressure());
