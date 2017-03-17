@@ -221,7 +221,7 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         jobHistoryText.setText(StringUtils.trimToEmpty(connection.getJobHistory()));
         stagingDirectoryText.setText(StringUtils.trimToEmpty(connection.getStagingDirectory()));
         useDNHostBtn.setSelection(connection.isUseDNHost());
-        useSparkPropertiesBtn.setSelection(creation ? creation : connection.isUseSparkProperties());
+        useSparkPropertiesBtn.setSelection(connection.isUseSparkProperties());
         useCustomConfBtn.setSelection(connection.isUseCustomConfs());
         if (useClouderaNaviBtn != null) {
             useClouderaNaviBtn.setSelection(connection.isUseClouderaNavi());
