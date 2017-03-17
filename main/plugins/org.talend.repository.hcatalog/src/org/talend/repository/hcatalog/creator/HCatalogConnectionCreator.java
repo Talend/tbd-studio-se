@@ -29,7 +29,7 @@ import org.talend.repository.model.hcatalog.HCatalogConnection;
 import org.talend.repository.model.hcatalog.HCatalogFactory;
 
 /**
- * 
+ *
  * created by ycbai on 2015年7月1日 Detailled comment
  *
  */
@@ -55,6 +55,12 @@ public class HCatalogConnectionCreator extends AbstractHadoopSubConnectionCreato
     @Override
     public String getTypeName() {
         return EHadoopConfs.WEBHCAT.getName();
+    }
+
+    @Override
+    protected void setPropertyParameters(Property connectionProperty) {
+        super.setPropertyParameters(connectionProperty);
+        connectionProperty.setDisplayName(relativeHadoopClusterItem.getProperty().getLabel() + "_HCATALOG"); //$NON-NLS-1$
     }
 
     protected void setParameters(HCatalogConnection connection, Map<String, Map<String, String>> initParams) {
