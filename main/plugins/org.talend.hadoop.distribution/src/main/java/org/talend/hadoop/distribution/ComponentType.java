@@ -174,4 +174,8 @@ public enum ComponentType {
     public String getVersionRepositoryValueParameter() {
         return this.mVersionRepositoryValueParameter;
     }
+
+    public static boolean isSparkComponent(ComponentType ct) {
+        return ct == ComponentType.SPARKBATCH || ct == ComponentType.SPARKSTREAMING;
+    }
 }
