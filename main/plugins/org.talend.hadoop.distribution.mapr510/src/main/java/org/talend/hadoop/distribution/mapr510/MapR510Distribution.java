@@ -305,7 +305,7 @@ public class MapR510Distribution extends AbstractMapRDistribution implements HDF
     }
 
     @Override
-    public Set<ESparkVersion> getSparkVersion() {
+    public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
         version.add(ESparkVersion.SPARK_1_5);
         return version;

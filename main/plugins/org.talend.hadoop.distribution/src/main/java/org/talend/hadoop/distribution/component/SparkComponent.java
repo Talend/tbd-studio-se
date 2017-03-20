@@ -28,7 +28,7 @@ public interface SparkComponent extends MRComponent {
      * 
      * @return the collection of supported @link{ESparkVersion} in the distribution.
      */
-    public Set<ESparkVersion> getSparkVersion();
+    public Set<ESparkVersion> getSparkVersions();
 
     /**
      * @return true if the distribution supports the Spark Standalone mode.

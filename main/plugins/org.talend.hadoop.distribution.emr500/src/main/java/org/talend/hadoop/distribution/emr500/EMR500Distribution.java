@@ -337,7 +337,7 @@ public class EMR500Distribution extends AbstractDistribution implements HBaseCom
     }
 
     @Override
-    public Set<ESparkVersion> getSparkVersion() {
+    public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
         version.add(ESparkVersion.SPARK_2_0);
         return version;

@@ -347,7 +347,7 @@ public class CDH580Distribution extends AbstractDistribution implements IClouder
     }
 
     @Override
-    public Set<ESparkVersion> getSparkVersion() {
+    public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
         version.add(ESparkVersion.SPARK_1_6);
         return version;

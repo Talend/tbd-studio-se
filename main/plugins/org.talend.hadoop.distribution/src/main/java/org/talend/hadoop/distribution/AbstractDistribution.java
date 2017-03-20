@@ -94,7 +94,7 @@ public abstract class AbstractDistribution {
     }
 
     // Only used if SparkComponent is implemented
-    public Set<ESparkVersion> getSparkVersion() {
+    public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
         version.add(ESparkVersion.SPARK_1_3);
         return version;

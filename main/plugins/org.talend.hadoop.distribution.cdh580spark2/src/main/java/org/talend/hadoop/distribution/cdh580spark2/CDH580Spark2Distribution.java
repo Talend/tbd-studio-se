@@ -229,7 +229,7 @@ public class CDH580Spark2Distribution extends AbstractDistribution implements IC
     }
 
     @Override
-    public Set<ESparkVersion> getSparkVersion() {
+    public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
         version.add(ESparkVersion.SPARK_2_0);
         return version;

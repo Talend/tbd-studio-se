@@ -273,7 +273,7 @@ public class HDInsight34Distribution extends AbstractDistribution implements MRC
     }
 
     @Override
-    public Set<ESparkVersion> getSparkVersion() {
+    public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
         version.add(ESparkVersion.SPARK_1_6);
         return version;

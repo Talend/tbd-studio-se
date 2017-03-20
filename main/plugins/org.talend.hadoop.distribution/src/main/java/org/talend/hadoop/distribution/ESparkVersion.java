@@ -12,6 +12,8 @@
 // ============================================================================
 package org.talend.hadoop.distribution;
 
+import java.util.Comparator;
+
 /**
  * Describes the spark version.
  * 
@@ -39,5 +41,16 @@ public enum ESparkVersion {
 
     public String getSparkVersion() {
         return this.sparkVersion;
+    }
+
+    public static Comparator<ESparkVersion> descComparator() {
+        return new Comparator<ESparkVersion>() {
+
+            @Override
+            public int compare(ESparkVersion version1, ESparkVersion version2) {
+                return version1.sparkVersion.compareTo(version2.sparkVersion);
+            }
+
+        };
     }
 }

@@ -307,7 +307,7 @@ public class HDP240Distribution extends AbstractDistribution implements HDFSComp
     }
 
     @Override
-    public Set<ESparkVersion> getSparkVersion() {
+    public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
         version.add(ESparkVersion.SPARK_1_6);
         return version;
