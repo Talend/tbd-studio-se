@@ -24,6 +24,7 @@ public class HDP250HiveOnSparkModuleGroup {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         DistributionModuleGroup dmg = new DistributionModuleGroup(
                 HDP250Constant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), true, null);
+        hs.add(new DistributionModuleGroup(HDP250Constant.TEZ_MODULE_GROUP.getModuleName(), false, null));
         hs.add(dmg);
         return hs;
     }

@@ -17,6 +17,7 @@
             isResouce="true"
             key="HDFS"
             label="%HDFS"
+            name_pattern="[^\s\t~!`#^&amp;$*%@\\/?:;\.()，。&apos;￥‘”、《，》&lt;&gt;]+"
             ordinal="50"
             products="DI"
             type="HDFS">

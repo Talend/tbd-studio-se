@@ -249,4 +249,16 @@ public abstract class AbstractDistribution {
     public String generateSparkJarsPaths(List<String> commandLineJarsPaths) {
         return ""; //$NON-NLS-1$
     }
+
+    public boolean isCloudDistribution() {
+        return false;
+    }
+
+    public boolean useCloudLauncher() {
+        return false;
+    }
+
+    public boolean isGoogleDataprocDistribution() {
+        return false;
+    }
 }

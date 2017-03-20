@@ -26,14 +26,16 @@ public class HadoopDistributionsHelperTest {
     @Test
     public void testGetHadoopDistributionsDisplay_Sorted() {
         String[] hadoopDistributionsDisplay = HadoopDistributionsHelper.HADOOP.getDistributionsDisplay(false);
-        Assert.assertArrayEquals(new String[] { "Amazon EMR", "Apache", "Cloudera", "HortonWorks", "MapR",
+        Assert.assertArrayEquals(new String[] { "Amazon EMR", "Apache", "Cloudera", "Google Cloud Dataproc", "HortonWorks",
+                "MapR",
                 "Microsoft HD Insight", "Pivotal HD" }, hadoopDistributionsDisplay);
     }
 
     @Test
     public void testGetHadoopDistributionsDisplay_withCustom__Sorted() {
         String[] hadoopDistributionsDisplay = HadoopDistributionsHelper.HADOOP.getDistributionsDisplay(true);
-        Assert.assertArrayEquals(new String[] { "Amazon EMR", "Apache", "Cloudera", "HortonWorks", "MapR",
+        Assert.assertArrayEquals(new String[] { "Amazon EMR", "Apache", "Cloudera", "Google Cloud Dataproc", "HortonWorks",
+                "MapR",
                 "Microsoft HD Insight", "Pivotal HD", "Custom - Unsupported" }, hadoopDistributionsDisplay);
     }
 
@@ -145,10 +147,10 @@ public class HadoopDistributionsHelperTest {
                 distribution.componentType);
 
         if (supportVersions != null) {
-            for (int i = 0; i < supportVersions.length; i++) {
-                String versionName = supportVersions[i][0];
-                String versionDisplay = supportVersions[i][1];
-                String hadoopVersion = supportVersions[i][2];
+            for (String[] supportVersion : supportVersions) {
+                String versionName = supportVersion[0];
+                String versionDisplay = supportVersion[1];
+                String hadoopVersion = supportVersion[2];
                 DistributionVersion version = distribution.getVersion(versionDisplay, true);
                 Assert.assertNotNull("Now, Don't support the version : " + versionDisplay, version);
 

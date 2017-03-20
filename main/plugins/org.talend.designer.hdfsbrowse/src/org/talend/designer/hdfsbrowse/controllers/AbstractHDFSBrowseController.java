@@ -17,6 +17,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -63,6 +64,7 @@ import org.talend.core.model.process.IProcess;
 import org.talend.core.model.process.IProcess2;
 import org.talend.core.model.properties.Item;
 import org.talend.core.model.utils.ContextParameterUtils;
+import org.talend.core.repository.model.connection.ConnectionStatus;
 import org.talend.core.ui.CoreUIPlugin;
 import org.talend.core.ui.properties.tab.IDynamicProperty;
 import org.talend.core.utils.TalendQuoteUtils;
@@ -381,31 +383,22 @@ public abstract class AbstractHDFSBrowseController extends AbstractElementProper
     }
 
     protected boolean checkHDFSConnection(final HDFSConnectionBean connection) {
-        final boolean[] result = new boolean[] { true };
+        AtomicBoolean result = new AtomicBoolean(true);
         IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 
             @Override
             public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                 monitor.beginTask(Messages.getString("AbstractHDFSBrowseController.checkConnection"), IProgressMonitor.UNKNOWN); //$NON-NLS-1$
-                Object dfs = null;
-                try {
-                    dfs = HadoopOperationManager.getInstance().getDFS(connection);
-                } catch (Exception e) {
-                    ExceptionHandler.process(e);
-                } finally {
-                    monitor.done();
-                }
-                if (dfs == null) {
+                ConnectionStatus connectionStatus = HadoopOperationManager.getInstance().testConnection(connection);
+                if (!connectionStatus.getResult()) {
                     PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
 
                         @Override
                         public void run() {
                             String mainMsg = Messages.getString("AbstractHDFSBrowseController.connectionFailure.mainMsg"); //$NON-NLS-1$
-                            String detailMsg = Messages.getString("AbstractHDFSBrowseController.connectionFailure.detailMsg", //$NON-NLS-1$
-                                    connection.getNameNodeURI());
                             new ErrorDialogWidthDetailArea(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
-                                    HDFSPlugin.PLUGIN_ID, mainMsg, detailMsg);
-                            result[0] = false;
+                                    HDFSPlugin.PLUGIN_ID, mainMsg, connectionStatus.getMessageException());
+                            result.set(false);
                             return;
                         }
                     });
@@ -416,11 +409,11 @@ public abstract class AbstractHDFSBrowseController extends AbstractElementProper
         try {
             dialog.run(true, true, runnableWithProgress);
         } catch (Exception e) {
-            result[0] = false;
+            result.set(false);
             ExceptionHandler.process(e);
         }
 
-        return result[0];
+        return result.get();
     }
 
     @Override
