@@ -13,6 +13,7 @@
 package org.talend.hadoop.distribution.dataproc11;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -38,19 +39,19 @@ import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 public class Dataproc11Distribution extends AbstractDistribution implements HDFSComponent, SparkBatchComponent,
         SparkStreamingComponent, HiveOnSparkComponent, IGoogleDataprocDistribution {
 
-    public static final String                                         VERSION                 = "DATAPROC_1_1";               //$NON-NLS-1$
+    public static final String VERSION = "DATAPROC_1_1"; //$NON-NLS-1$
 
-    public static final String                                         VERSION_DISPLAY         = "Dataproc 1.1 (Apache 2.7.3)"; //$NON-NLS-1$
+    public static final String VERSION_DISPLAY = "Dataproc 1.1 (Apache 2.7.3)"; //$NON-NLS-1$
 
-    private final static String                                        SPARK_MODULE_GROUP_NAME = "SPARK2-LIB-DATAPROC11";      //$NON-NLS-1$
+    private final static String SPARK_MODULE_GROUP_NAME = "SPARK2-LIB-DATAPROC11"; //$NON-NLS-1$
 
-    protected Map<ComponentType, Set<DistributionModuleGroup>>         moduleGroups;
+    protected Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
 
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodeModuleGroups;
 
-    protected Map<ComponentType, ComponentCondition>                   displayConditions;
+    protected Map<ComponentType, ComponentCondition> displayConditions;
 
-    protected Map<ComponentType, String>                               customVersionDisplayNames;
+    protected Map<ComponentType, String> customVersionDisplayNames;
 
     public Dataproc11Distribution() {
         displayConditions = buildDisplayConditions();
@@ -173,8 +174,10 @@ public class Dataproc11Distribution extends AbstractDistribution implements HDFS
     }
 
     @Override
-    public ESparkVersion getSparkVersion() {
-        return ESparkVersion.SPARK_2_0;
+    public Set<ESparkVersion> getSparkVersions() {
+        Set<ESparkVersion> version = new HashSet<>();
+        version.add(ESparkVersion.SPARK_2_0);
+        return version;
     }
 
     @Override
