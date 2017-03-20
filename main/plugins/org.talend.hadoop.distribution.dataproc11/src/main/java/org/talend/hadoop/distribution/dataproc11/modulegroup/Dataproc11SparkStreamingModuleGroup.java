@@ -36,6 +36,9 @@ public class Dataproc11SparkStreamingModuleGroup {
         hs.add(new DistributionModuleGroup(Dataproc11Constant.SPARK_MODULE_GROUP.getModuleName(), false, condition));
         hs.add(new DistributionModuleGroup(Dataproc11Constant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), true, condition));
         hs.add(new DistributionModuleGroup(Dataproc11Constant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), false, condition));
+        hs.add(new DistributionModuleGroup(Dataproc11Constant.SPARK_KAFKA_CLIENT_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
+        hs.add(new DistributionModuleGroup(Dataproc11Constant.SPARK_KAFKA_AVRO_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
+        hs.add(new DistributionModuleGroup(Dataproc11Constant.SPARK_KAFKA_ASSEMBLY_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
         return hs;
     }
 }

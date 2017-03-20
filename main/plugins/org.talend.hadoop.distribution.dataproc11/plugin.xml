@@ -162,7 +162,7 @@
         </libraryNeeded>
         
         <!-- Parquet -->
-        	 <library id="jodd-core-3.5.2.jar"/>
+ 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
             id="jodd-core-3.5.2"
@@ -176,7 +176,43 @@
             name="parquet-hadoop-bundle-1.6.0.jar"
             mvn_uri="mvn:org.talend.libraries/parquet-hadoop-bundle-1.6.0/6.0.0">
         </libraryNeeded>
-      
+        
+       <!-- Kafka libraries -->    
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc11"
+            id="spark-streaming-kafka-dataproc11"
+            name="spark-streaming-kafka-0-10-assembly_2.11-2.0.0.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka-0-10-assembly_2.11-2.0.0/6.0.0">
+        </libraryNeeded>
+        
+         <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc11"
+            id="kafka-clients-0.10.0.1-dataproc11"
+            name="kafka-clients-0.10.0.1.jar"
+            mvn_uri="mvn:org.talend.libraries/kafka-clients-0.10.0.1/6.3.0">
+        </libraryNeeded>
+            
+         <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc11"
+            id="avro-1.7.7.jar"
+            name="avro-1.7.7.jar"
+            mvn_uri="mvn:org.talend.libraries/avro-1.7.7/6.0.0">
+        </libraryNeeded> 
+        
+          <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc11"
+            id="jackson-mapper-asl-1.9.13.jar"
+            name="jackson-mapper-asl-1.9.13.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-mapper-asl-1.9.13/6.0.0">
+        </libraryNeeded>     
+        
+         <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc11"
+            id="jackson-core-asl-1.9.13.jar"
+            name="jackson-core-asl-1.9.13.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.13/6.0.0">
+        </libraryNeeded>  
+              
         
         <!-- SPARK libraries --> 
         
@@ -539,6 +575,34 @@
              <library id="parquet-hadoop-bundle-1.6.0"/>
              <library id="jodd-core-3.5.2"/>      
         </libraryNeededGroup>
+      
+         <!-- Spark Kafka group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Kafka assembly libraries for DATAPROC 1.1 that are MRREQUIRED"
+                id="SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-DATAPROC11"
+                name="SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-DATAPROC11">
+            <library id="spark-streaming-kafka-dataproc11"/>
+        </libraryNeededGroup>
+        
+        <!-- Spark Kafka Avro group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Kafka Avro libraries for DATAPROC 1.1 that are MRREQUIRED"
+                id="SPARK-KAFKA-AVRO-LIB-MRREQUIRED-DATAPROC11"
+                name="SPARK-KAFKA-AVRO-LIB-MRREQUIRED-DATAPROC11">
+            <library id="avro-1.7.7.jar"/>
+            <library id="jackson-mapper-asl-1.9.13.jar" />
+            <library id="jackson-core-asl-1.9.13.jar" />
+        </libraryNeededGroup>
+        
+        <!-- Spark Kafka Client group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Kafka client libraries for DATAPROC 1.1 that are MRREQUIRED"
+                id="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-DATAPROC11"
+                name="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-DATAPROC11">
+            <library id="kafka-clients-0.10.0.1-dataproc11"/>
+        </libraryNeededGroup>     
+        
     </extension>
+    
 
 </plugin>
