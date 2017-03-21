@@ -329,7 +329,7 @@
         </libraryNeeded>
         
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.dataproc11"
-            id="kryo-shaded-3.0.3.jar"
+            id="kryo-shaded-3.0.3"
             name="kryo-shaded-3.0.3.jar"
             mvn_uri="mvn:org.talend.libraries/kryo-shaded-3.0.3/6.0.0">
         </libraryNeeded>
