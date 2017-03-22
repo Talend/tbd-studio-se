@@ -94,36 +94,10 @@ public abstract class AbstractDistribution {
     }
 
     // Only used if SparkComponent is implemented
-    public ESparkVersion getSparkVersion() {
-        return ESparkVersion.SPARK_1_3;
-    }
-
-    // Only used if SparkComponent is implemented
-    public boolean isSpark13() {
-        return getSparkVersion() == ESparkVersion.SPARK_1_3;
-    }
-
-    // Only used if SparkComponent is implemented
-    public boolean isSpark14() {
-        return getSparkVersion() == ESparkVersion.SPARK_1_4;
-    }
-
-    // Only used if SparkComponent is implemented
-    public boolean isSpark15() {
-        return getSparkVersion() == ESparkVersion.SPARK_1_5;
-    }
-
-    // Only used if SparkComponent is implemented
-    public boolean isSpark16() {
-        ESparkVersion vers = getSparkVersion();
-        return (vers == ESparkVersion.SPARK_1_6 || (vers != ESparkVersion.SPARK_2_0 && vers != ESparkVersion.SPARK_1_4
-                && vers != ESparkVersion.SPARK_1_5 && vers != ESparkVersion.SPARK_1_5));
-    }
-
-    // Only used if SparkComponent is implemented
-    public boolean isSpark20() {
-        ESparkVersion vers = getSparkVersion();
-        return (vers == ESparkVersion.SPARK_2_0);
+    public Set<ESparkVersion> getSparkVersions() {
+        Set<ESparkVersion> version = new HashSet<>();
+        version.add(ESparkVersion.SPARK_1_3);
+        return version;
     }
 
     public boolean doSupportTezForPig() {

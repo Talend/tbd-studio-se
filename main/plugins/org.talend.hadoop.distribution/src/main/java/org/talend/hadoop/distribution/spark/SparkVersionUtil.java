@@ -18,9 +18,7 @@ import org.talend.core.model.process.IElement;
 import org.talend.core.model.process.IElementParameter;
 import org.talend.core.model.process.INode;
 import org.talend.core.model.process.IProcess;
-import org.talend.hadoop.distribution.DistributionFactory;
 import org.talend.hadoop.distribution.ESparkVersion;
-import org.talend.hadoop.distribution.component.SparkComponent;
 
 /**
  * Utility class to deal with the Spark versions.
@@ -33,13 +31,6 @@ public class SparkVersionUtil {
         } else {
             return "CUSTOM".equals(distributionName); //$NON-NLS-1$
         }
-    }
-
-    private static ESparkVersion getSparkVersion(SparkComponent sc) {
-        if (sc != null) {
-            return sc.getSparkVersion();
-        }
-        return null;
     }
 
     public static ESparkVersion getSparkAPIVersion(String apiVersion) {
@@ -61,20 +52,20 @@ public class SparkVersionUtil {
         return null;
     }
 
-    public static ESparkVersion getSparkLocalVersion(String localVersion) {
-        if ("SPARK_1_3_0".equals(localVersion)) { //$NON-NLS-1$
+    public static ESparkVersion getSparkVersion(String version) {
+        if ("SPARK_1_3_0".equals(version)) { //$NON-NLS-1$
             return ESparkVersion.SPARK_1_3;
         }
-        if ("SPARK_1_4_0".equals(localVersion)) { //$NON-NLS-1$
+        if ("SPARK_1_4_0".equals(version)) { //$NON-NLS-1$
             return ESparkVersion.SPARK_1_4;
         }
-        if ("SPARK_1_5_0".equals(localVersion)) { //$NON-NLS-1$
+        if ("SPARK_1_5_0".equals(version)) { //$NON-NLS-1$
             return ESparkVersion.SPARK_1_5;
         }
-        if ("SPARK_1_6_0".equals(localVersion)) { //$NON-NLS-1$
+        if ("SPARK_1_6_0".equals(version)) { //$NON-NLS-1$
             return ESparkVersion.SPARK_1_6;
         }
-        if ("SPARK_2_0_0".equals(localVersion)) { //$NON-NLS-1$
+        if ("SPARK_2_0_0".equals(version)) { //$NON-NLS-1$
             return ESparkVersion.SPARK_2_0;
         }
         return null;
@@ -93,7 +84,7 @@ public class SparkVersionUtil {
      * @return the {@link ESparkVersion} corresponding to the different parameters.
      */
     public static ESparkVersion getSparkVersion(boolean useLocalMode, String sparkLocalVersion, String sparkDistributionName,
-            String sparkApiVersion, SparkComponent sc) {
+            String sparkApiVersion, String sparkVersion) {
         // First we check if the Custom mode is chosen, in local mode or not.
         boolean isSparkCustom = isSparkCustom(useLocalMode, sparkLocalVersion, sparkDistributionName);
         if (isSparkCustom) {
@@ -105,11 +96,11 @@ public class SparkVersionUtil {
         if (useLocalMode) {
             // If the local mode is chosen, then we return the ESparkVersion corresponding to the sparkLocalVersion
             // parameter.
-            return getSparkLocalVersion(sparkLocalVersion);
+            return getSparkVersion(sparkLocalVersion);
         }
 
         // Then, we check the Spark Version corresponding to SparkComponent given in parameter.
-        return getSparkVersion(sc);
+        return getSparkVersion(sparkVersion);
     }
 
     /**
@@ -122,23 +113,16 @@ public class SparkVersionUtil {
         IElementParameter sparkLocalVersionParameter = element.getElementParameter("SPARK_LOCAL_VERSION"); //$NON-NLS-1$
         IElementParameter sparkCustomVersionParameter = element.getElementParameter("SPARK_API_VERSION"); //$NON-NLS-1$
         IElementParameter distributionParameter = element.getElementParameter("DISTRIBUTION"); //$NON-NLS-1$
-        IElementParameter versionParameter = element.getElementParameter("SPARK_VERSION"); //$NON-NLS-1$
+        IElementParameter supportedVersionParameter = element.getElementParameter("SUPPORTED_SPARK_VERSION"); //$NON-NLS-1$
         if (sparkLocalModeParameter != null && sparkLocalVersionParameter != null && sparkCustomVersionParameter != null
-                && distributionParameter != null && versionParameter != null) {
+                && distributionParameter != null) {
             boolean isLocalMode = (Boolean) sparkLocalModeParameter.getValue();
             String sparkLocalVersion = (String) sparkLocalVersionParameter.getValue();
             String sparkCustomVersion = (String) sparkCustomVersionParameter.getValue();
             String distribution = (String) distributionParameter.getValue();
-            String version = (String) versionParameter.getValue();
+            String supportedVersion = (String) supportedVersionParameter.getValue();
 
-            SparkComponent sparkDistrib = null;
-            try {
-                sparkDistrib = (SparkComponent) DistributionFactory.buildDistribution(distribution, version);
-            } catch (java.lang.Exception e) {
-                e.printStackTrace();
-            }
-
-            return getSparkVersion(isLocalMode, sparkLocalVersion, distribution, sparkCustomVersion, sparkDistrib);
+            return getSparkVersion(isLocalMode, sparkLocalVersion, distribution, sparkCustomVersion, supportedVersion);
         }
         return null;
     }

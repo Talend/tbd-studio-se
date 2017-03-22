@@ -14,6 +14,7 @@
 package org.talend.hadoop.distribution.mapr510;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -304,8 +305,10 @@ public class MapR510Distribution extends AbstractMapRDistribution implements HDF
     }
 
     @Override
-    public ESparkVersion getSparkVersion() {
-        return ESparkVersion.SPARK_1_5;
+    public Set<ESparkVersion> getSparkVersions() {
+        Set<ESparkVersion> version = new HashSet<>();
+        version.add(ESparkVersion.SPARK_1_5);
+        return version;
     }
 
     @Override

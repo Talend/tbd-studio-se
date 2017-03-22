@@ -14,6 +14,7 @@
 package org.talend.hadoop.distribution.emr450;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -152,9 +153,9 @@ public class EMR450Distribution extends AbstractDistribution implements HDFSComp
         // Spark Batch S3 nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.S3_CONFIGURATION_COMPONENT),
                 EMR450SparkBatchS3NodeModuleGroup.getModuleGroups(distribution, version));
-        
+
         // Spark Batch GraphFrames nodes
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT), 
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
                 EMR450GraphFramesNodeModuleGroup.getModuleGroups(distribution, version));
 
         // Spark Streaming Parquet nodes
@@ -332,8 +333,10 @@ public class EMR450Distribution extends AbstractDistribution implements HDFSComp
     }
 
     @Override
-    public ESparkVersion getSparkVersion() {
-        return ESparkVersion.SPARK_1_6;
+    public Set<ESparkVersion> getSparkVersions() {
+        Set<ESparkVersion> version = new HashSet<>();
+        version.add(ESparkVersion.SPARK_1_6);
+        return version;
     }
 
     @Override
