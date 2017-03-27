@@ -21,8 +21,6 @@ import org.talend.repository.model.hadoopcluster.HadoopSubConnectionItem;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Hadoop Sub Connection Item</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

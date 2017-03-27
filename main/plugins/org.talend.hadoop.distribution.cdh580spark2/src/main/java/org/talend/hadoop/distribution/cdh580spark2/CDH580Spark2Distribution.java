@@ -14,6 +14,7 @@
 package org.talend.hadoop.distribution.cdh580spark2;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -88,7 +89,7 @@ public class CDH580Spark2Distribution extends AbstractDistribution implements IC
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.PARQUET_INPUT_COMPONENT), CDH580Spark2SparkStreamingParquetNodeModuleGroup
-						.getModuleGroups(distribution, version));
+                .getModuleGroups(distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.PARQUET_OUTPUT_COMPONENT), CDH580Spark2SparkStreamingParquetNodeModuleGroup
                 .getModuleGroups(distribution, version));
@@ -228,8 +229,10 @@ public class CDH580Spark2Distribution extends AbstractDistribution implements IC
     }
 
     @Override
-    public ESparkVersion getSparkVersion() {
-        return ESparkVersion.SPARK_2_0;
+    public Set<ESparkVersion> getSparkVersions() {
+        Set<ESparkVersion> version = new HashSet<>();
+        version.add(ESparkVersion.SPARK_2_0);
+        return version;
     }
 
     @Override

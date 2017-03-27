@@ -13,6 +13,7 @@
 package org.talend.hadoop.distribution.component;
 
 import java.util.List;
+import java.util.Set;
 
 import org.talend.hadoop.distribution.ESparkVersion;
 
@@ -23,36 +24,11 @@ import org.talend.hadoop.distribution.ESparkVersion;
 public interface SparkComponent extends MRComponent {
 
     /**
-     * A distribution can be using Spark 1.3 or Spark 1.4. This method returns the used Spark version.
+     * A distribution can be using Spark 1.3 or Spark 1.4. This method returns the supported Spark versions.
      * 
-     * @return the @link{ESparkVersion} of the distribution.
+     * @return the collection of supported @link{ESparkVersion} in the distribution.
      */
-    public ESparkVersion getSparkVersion();
-
-    /**
-     * @return true if the Spark version included in the distribution is 1.3.
-     */
-    public boolean isSpark13();
-
-    /**
-     * @return true if the Spark version included in the distribution is 1.4.
-     */
-    public boolean isSpark14();
-
-    /**
-     * @return true if the Spark version included in the distribution is 1.5.
-     */
-    public boolean isSpark15();
-
-    /**
-     * @return true if the Spark version included in the distribution is 1.6 or more.
-     */
-    public boolean isSpark16();
-
-    /**
-     * @return true if the Spark version included in the distribution is 2.0.
-     */
-    public boolean isSpark20();
+    public Set<ESparkVersion> getSparkVersions();
 
     /**
      * @return true if the distribution supports the Spark Standalone mode.

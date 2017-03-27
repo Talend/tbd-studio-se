@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.talend.studio</groupId>
     <artifactId>tbd-studio-se</artifactId>
-    <version>6.3.2-SNAPSHOT</version>
+    <version>6.4.0-SNAPSHOT</version>
     <relativePath>../../../</relativePath>
   </parent>
   <artifactId>org.talend.hadoop.distribution.cdh580spark2.jars</artifactId>
@@ -241,7 +241,7 @@
   <repositories>
     <repository>
       <id>talend_nexus</id>
-      <url>https://talend-update.talend.com/nexus/content/repositories/libraries</url>
+      <url>https://artifacts-oss.talend.com/nexus/content/repositories/talend-update/</url>
     </repository>
   </repositories>
 </project>

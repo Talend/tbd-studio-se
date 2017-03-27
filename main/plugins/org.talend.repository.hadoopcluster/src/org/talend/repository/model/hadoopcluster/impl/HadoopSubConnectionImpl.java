@@ -26,11 +26,11 @@ import org.talend.repository.model.hadoopcluster.HadoopSubConnectionItem;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopSubConnectionImpl#getRelativeHadoopClusterId <em>Relative Hadoop Cluster Id</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopSubConnectionImpl#getHadoopProperties <em>Hadoop Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

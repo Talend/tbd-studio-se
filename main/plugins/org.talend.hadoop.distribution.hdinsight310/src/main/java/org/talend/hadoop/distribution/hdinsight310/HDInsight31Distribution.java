@@ -193,4 +193,8 @@ public class HDInsight31Distribution extends AbstractDistribution implements MRC
         return displayConditions.get(componentType);
     }
 
+    @Override
+    public boolean isCloudDistribution() {
+        return true;
+    }
 }

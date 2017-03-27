@@ -22,6 +22,8 @@ import org.talend.core.model.properties.PropertiesFactory;
 import org.talend.core.model.properties.Property;
 import org.talend.repository.hadoopcluster.creator.AbstractHadoopSubConnectionCreator;
 import org.talend.repository.hadoopcluster.service.IExtractSchemaService;
+import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
+import org.talend.repository.model.hadoopcluster.HadoopClusterConnectionItem;
 import org.talend.repository.model.hadoopcluster.HadoopSubConnectionItem;
 import org.talend.repository.model.hdfs.HDFSConnection;
 import org.talend.repository.model.hdfs.HDFSFactory;
@@ -59,6 +61,14 @@ public class HDFSConnectionCreator extends AbstractHadoopSubConnectionCreator {
             return;
         }
         HDFSConnection connection = (HDFSConnection) conn;
+        if (relativeHadoopClusterItem instanceof HadoopClusterConnectionItem) {
+            HadoopClusterConnection hcConnection = (HadoopClusterConnection) ((HadoopClusterConnectionItem) relativeHadoopClusterItem)
+                    .getConnection();
+            String userName = hcConnection.getUserName();
+            if (userName != null) {
+                connection.setUserName(userName);
+            }
+        }
         connection.setRowSeparator(IExtractSchemaService.DEFAULT_ROW_SEPARATOR);
         connection.setFieldSeparator(IExtractSchemaService.DEFAULT_FIELD_SEPARATOR);
     }

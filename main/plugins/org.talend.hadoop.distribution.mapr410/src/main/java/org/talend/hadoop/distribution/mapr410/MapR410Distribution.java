@@ -14,6 +14,7 @@
 package org.talend.hadoop.distribution.mapr410;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -43,8 +44,8 @@ import org.talend.hadoop.distribution.mapr410.modulegroup.MapR410PigOutputNodeMo
 import org.talend.hadoop.distribution.mapr410.modulegroup.MapR410SparkBatchS3NodeModuleGroup;
 
 public class MapR410Distribution extends AbstractMapRDistribution implements HDFSComponent, MRComponent, HBaseComponent,
-        SqoopComponent, PigComponent, HiveComponent, HCatalogComponent, SparkBatchComponent, HiveOnSparkComponent, MapRDBComponent,
-        IMapRDistribution {
+        SqoopComponent, PigComponent, HiveComponent, HCatalogComponent, SparkBatchComponent, HiveOnSparkComponent,
+        MapRDBComponent, IMapRDistribution {
 
     public static final String VERSION = "MAPR410";
 
@@ -217,8 +218,10 @@ public class MapR410Distribution extends AbstractMapRDistribution implements HDF
     }
 
     @Override
-    public ESparkVersion getSparkVersion() {
-        return ESparkVersion.SPARK_1_3;
+    public Set<ESparkVersion> getSparkVersions() {
+        Set<ESparkVersion> version = new HashSet<>();
+        version.add(ESparkVersion.SPARK_1_3);
+        return version;
     }
 
     @Override

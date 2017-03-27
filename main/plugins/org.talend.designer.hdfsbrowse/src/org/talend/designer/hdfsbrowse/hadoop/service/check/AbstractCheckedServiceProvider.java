@@ -19,9 +19,11 @@ import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.talend.commons.exception.ExceptionHandler;
+import org.talend.core.GlobalServiceRegister;
 import org.talend.core.classloader.DynamicClassLoader;
 import org.talend.core.hadoop.EHadoopCategory;
 import org.talend.core.hadoop.HadoopClassLoaderFactory2;
+import org.talend.core.hadoop.IHadoopClusterService;
 import org.talend.core.utils.ReflectionUtils;
 import org.talend.designer.hdfsbrowse.exceptions.HadoopServerException;
 import org.talend.designer.hdfsbrowse.hadoop.service.HadoopServiceProperties;
@@ -78,9 +80,15 @@ public abstract class AbstractCheckedServiceProvider implements ICheckedServiceP
             EHadoopCategory category) {
         ClassLoader classLoader = baseLoader;
         if (serviceProperties.isUseCustomConfs()) {
-            String clusterLabel = serviceProperties.getRelativeHadoopClusterLabel();
-            if (classLoader instanceof DynamicClassLoader && clusterLabel != null) {
-                String customConfsJarName = HadoopParameterUtil.getConfsJarDefaultName(clusterLabel);
+            if (classLoader instanceof DynamicClassLoader) {
+                String customConfsJarName;
+                IHadoopClusterService hadoopClusterService = getHadoopClusterService();
+                if (hadoopClusterService != null) {
+                    customConfsJarName = hadoopClusterService.getCustomConfsJarName(serviceProperties.getItem(), true, true);
+                } else {
+                    customConfsJarName = HadoopParameterUtil
+                            .getConfsJarDefaultName(serviceProperties.getRelativeHadoopClusterLabel());
+                }
                 boolean confFileExist = false;
                 Set<String> libraries = ((DynamicClassLoader) classLoader).getLibraries();
                 for (String lib : libraries) {
@@ -149,4 +157,14 @@ public abstract class AbstractCheckedServiceProvider implements ICheckedServiceP
             ReflectionUtils.invokeMethod(mapRClientConfig, "getMapRCredentialsViaPassword", argsObj); //$NON-NLS-1$
         }
     }
+
+    protected IHadoopClusterService getHadoopClusterService() {
+        IHadoopClusterService hadoopClusterService = null;
+        if (GlobalServiceRegister.getDefault().isServiceRegistered(IHadoopClusterService.class)) {
+            hadoopClusterService = (IHadoopClusterService) GlobalServiceRegister.getDefault()
+                    .getService(IHadoopClusterService.class);
+        }
+        return hadoopClusterService;
+    }
+
 }
