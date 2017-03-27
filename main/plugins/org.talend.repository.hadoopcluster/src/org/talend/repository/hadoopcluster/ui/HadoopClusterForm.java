@@ -221,12 +221,14 @@ public class HadoopClusterForm extends AbstractHadoopForm<HadoopClusterConnectio
         if (hcInfoForm != null) {
             hcInfoForm.dispose();
         }
+        DistributionBean hadoopDistribution = HadoopDistributionsHelper.HADOOP.getDistribution(distributionCombo.getText(), true);
+        DistributionVersion hadoopVersion = hadoopDistribution.getVersion(versionCombo.getText(), true);
         if (HCVersionUtil.isHDI(getConnection())) {
             hcInfoForm = new HDIInfoForm(this, connectionItem, existingNamesArray, creation);
+        } else if (HCVersionUtil.isGoogleDataproc(getConnection())) {
+            hcInfoForm = new GoogleDataprocInfoForm(this, connectionItem, existingNamesArray, creation, hadoopDistribution,
+                    hadoopVersion);
         } else {
-            DistributionBean hadoopDistribution = HadoopDistributionsHelper.HADOOP.getDistribution(distributionCombo.getText(),
-                    true);
-            DistributionVersion hadoopVersion = hadoopDistribution.getVersion(versionCombo.getText(), true);
             hcInfoForm = new StandardHCInfoForm(this, connectionItem, existingNamesArray, creation, hadoopDistribution,
                     hadoopVersion);
         }

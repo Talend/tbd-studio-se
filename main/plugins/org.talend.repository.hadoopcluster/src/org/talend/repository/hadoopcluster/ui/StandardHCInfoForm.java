@@ -75,7 +75,7 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
 
     private Composite parentForm;
 
-    private Composite propertiesComposite;
+    protected Composite propertiesComposite;
 
     private Composite hadoopPropertiesComposite;
 
@@ -533,7 +533,7 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         return hadoopPropertiesList;
     }
 
-    private void addSparkPropertiesFields() {
+    protected void addSparkPropertiesFields() {
         sparkPropertiesComposite = new Composite(propertiesComposite, SWT.NONE);
         GridLayout sparkPropertiesLayout = new GridLayout(3, false);
         sparkPropertiesLayout.marginWidth = 5;

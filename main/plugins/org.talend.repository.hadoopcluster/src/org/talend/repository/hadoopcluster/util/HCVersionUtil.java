@@ -131,8 +131,20 @@ public class HCVersionUtil {
                 return true;
             }
         }
-
         return false;
     }
 
+    public static boolean isGoogleDataproc(HadoopSubConnection connection) {
+        HadoopClusterConnection hcConnection = HCRepositoryUtil.getRelativeHadoopClusterConnection(connection);
+        return isGoogleDataproc(hcConnection);
+    }
+
+    public static boolean isGoogleDataproc(HadoopClusterConnection connection) {
+        if (connection != null) {
+            if (EHadoopDistributions.GOOGLE_CLOUD_DATAPROC.getName().equals(connection.getDistribution())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

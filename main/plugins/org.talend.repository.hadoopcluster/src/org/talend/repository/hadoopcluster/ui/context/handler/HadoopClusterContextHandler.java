@@ -162,20 +162,26 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                         ConnectionContextHelper.createParameters(varList, paramName,
                                 conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_DEPLOY_BLOB));
                         break;
-                    case ClouderaNavigatorUsername:
-                        ConnectionContextHelper.createParameters(varList, paramName, conn.getClouderaNaviUserName());
+
+                    case GoogleProjectId:
+                        ConnectionContextHelper.createParameters(varList, paramName,
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_GOOGLE_PROJECT_ID));
                         break;
-                    case ClouderaNavigatorPassword:
-                        ConnectionContextHelper.createParameters(varList, paramName, conn.getClouderaNaviPassword());
+                    case GoogleClusterId:
+                        ConnectionContextHelper.createParameters(varList, paramName,
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_GOOGLE_CLUSTER_ID));
                         break;
-                    case ClouderaNavigatorUrl:
-                        ConnectionContextHelper.createParameters(varList, paramName, conn.getClouderaNaviUrl());
+                    case GoogleRegion:
+                        ConnectionContextHelper.createParameters(varList, paramName,
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_GOOGLE_REGION));
                         break;
-                    case ClouderaNavigatorMetadataUrl:
-                        ConnectionContextHelper.createParameters(varList, paramName, conn.getClouderaNaviMetadataUrl());
+                    case GoogleJarsBucket:
+                        ConnectionContextHelper.createParameters(varList, paramName,
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_GOOGLE_JARS_BUCKET));
                         break;
-                    case ClouderaNavigatorClientUrl:
-                        ConnectionContextHelper.createParameters(varList, paramName, conn.getClouderaNaviClientUrl());
+                    case PathToGoogleCredentials:
+                        ConnectionContextHelper.createParameters(varList, paramName,
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_PATH_TO_GOOGLE_CREDENTIALS));
                         break;
                     default:
                     }
@@ -401,6 +407,26 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
             break;
         case maprTHadoopLogin:
             hadoopConn.setMaprTHadoopLogin(ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
+            break;
+        case GoogleProjectId:
+            hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_GOOGLE_PROJECT_ID,
+                    ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
+            break;
+        case GoogleClusterId:
+            hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_GOOGLE_CLUSTER_ID,
+                    ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
+            break;
+        case GoogleRegion:
+            hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_GOOGLE_REGION,
+                    ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
+            break;
+        case GoogleJarsBucket:
+            hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_GOOGLE_JARS_BUCKET,
+                    ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
+            break;
+        case PathToGoogleCredentials:
+            hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_PATH_TO_GOOGLE_CREDENTIALS,
+                    ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
             break;
         default:
         }
