@@ -6,9 +6,9 @@
 		<!-- Big Data launcher libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
-            id="talend-bigdata-launcher-1.2.0-20170316"
-            name="talend-bigdata-launcher-1.2.0-20170316.jar"
-            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-1.2.0-20170316/6.0.0">
+            id="talend-bigdata-launcher-1.2.0-20170321"
+            name="talend-bigdata-launcher-1.2.0-20170321.jar"
+            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-1.2.0-20170321/6.0.0">
         </libraryNeeded>
 
         <libraryNeeded
