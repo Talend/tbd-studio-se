@@ -12,6 +12,9 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.ui;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.swt.SWT;
@@ -27,9 +30,11 @@ import org.eclipse.swt.widgets.Group;
 import org.talend.commons.ui.swt.formtools.Form;
 import org.talend.commons.ui.swt.formtools.LabelledText;
 import org.talend.core.database.conn.ConnParameterKeys;
+import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.model.properties.ConnectionItem;
 import org.talend.hadoop.distribution.model.DistributionBean;
 import org.talend.hadoop.distribution.model.DistributionVersion;
+import org.talend.metadata.managment.ui.dialog.SparkPropertiesDialog;
 import org.talend.metadata.managment.ui.utils.ExtendedNodeConnectionContextUtils.EHadoopParamName;
 import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopForm;
@@ -59,6 +64,14 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
 
     private LabelledText pathToCredentialsNameText;
 
+    protected Composite propertiesComposite;
+
+    private Composite sparkPropertiesComposite;
+
+    private SparkPropertiesDialog sparkPropertiesDialog;
+
+    private Button useSparkPropertiesBtn;
+
     public GoogleDataprocInfoForm(Composite parent, ConnectionItem connectionItem, String[] existingNames, boolean creation,
             DistributionBean hadoopDistribution, DistributionVersion hadoopVersison) {
         super(parent, SWT.NONE, existingNames);
@@ -82,7 +95,13 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
     protected void addFields() {
         addConfigurationFields();
         addAuthenticationFields();
-        // addSparkPropertiesFields();
+        propertiesComposite = new Composite(this, SWT.NONE);
+        GridLayout propertiesLayout = new GridLayout(2, false);
+        propertiesLayout.marginWidth = 0;
+        propertiesLayout.marginHeight = 0;
+        propertiesComposite.setLayout(propertiesLayout);
+        propertiesComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        addSparkPropertiesFields();
     }
 
     private void addConfigurationFields() {
@@ -119,6 +138,45 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
         credentialsComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         pathToCredentialsNameText = new LabelledText(credentialsComposite,
                 Messages.getString("GoogleDataprocInfoForm.text.authentication.credentials"), 1); //$NON-NLS-1$
+    }
+
+    protected void addSparkPropertiesFields() {
+        sparkPropertiesComposite = new Composite(propertiesComposite, SWT.NONE);
+        GridLayout sparkPropertiesLayout = new GridLayout(3, false);
+        sparkPropertiesLayout.marginWidth = 5;
+        sparkPropertiesLayout.marginHeight = 5;
+        sparkPropertiesComposite.setLayout(sparkPropertiesLayout);
+        sparkPropertiesComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+
+        useSparkPropertiesBtn = new Button(sparkPropertiesComposite, SWT.CHECK);
+        useSparkPropertiesBtn.setText(Messages.getString("HadoopClusterForm.button.useSparkProperties")); //$NON-NLS-1$
+        useSparkPropertiesBtn.setLayoutData(new GridData());
+
+        sparkPropertiesDialog = new SparkPropertiesDialog(getShell(), getSparkProperties()) {
+
+            @Override
+            protected boolean isReadOnly() {
+                return !(useSparkPropertiesBtn.getSelection() && isEditable());
+            }
+
+            @Override
+            protected List<Map<String, Object>> getLatestInitProperties() {
+                return getSparkProperties();
+            }
+
+            @Override
+            public void applyProperties(List<Map<String, Object>> properties) {
+                getConnection().setSparkProperties(HadoopRepositoryUtil.getHadoopPropertiesJsonStr(properties));
+            }
+
+        };
+        sparkPropertiesDialog.createPropertiesFields(sparkPropertiesComposite);
+    }
+
+    private List<Map<String, Object>> getSparkProperties() {
+        String sparkProperties = getConnection().getSparkProperties();
+        List<Map<String, Object>> sparkPropertiesList = HadoopRepositoryUtil.getHadoopPropertiesList(sparkProperties);
+        return sparkPropertiesList;
     }
 
     @Override
@@ -179,6 +237,15 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
             public void modifyText(final ModifyEvent e) {
                 getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_PATH_TO_GOOGLE_CREDENTIALS,
                         pathToCredentialsNameText.getText());
+                checkFieldsValue();
+            }
+        });
+        useSparkPropertiesBtn.addSelectionListener(new SelectionAdapter() {
+
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                sparkPropertiesDialog.propertyButton.setEnabled(useSparkPropertiesBtn.getSelection());
+                getConnection().setUseSparkProperties(useSparkPropertiesBtn.getSelection());
                 checkFieldsValue();
             }
         });
@@ -243,6 +310,8 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
         String pathToCredentialsName = StringUtils.trimToEmpty(getConnection().getParameters().get(
                 ConnParameterKeys.CONN_PARA_KEY_PATH_TO_GOOGLE_CREDENTIALS));
         pathToCredentialsNameText.setText(pathToCredentialsName);
+
+        useSparkPropertiesBtn.setSelection(getConnection().isUseSparkProperties());
         updateStatus(IStatus.OK, EMPTY_STRING);
     }
 
@@ -255,6 +324,8 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
         jarsBucketNameText.setReadOnly(readOnly);
         credentialsBtn.setEnabled(!readOnly);
         pathToCredentialsNameText.setReadOnly(readOnly);
+        useSparkPropertiesBtn.setEnabled(!readOnly);
+        sparkPropertiesDialog.propertyButton.setEnabled(!readOnly && useSparkPropertiesBtn.getSelection());
     }
 
     @Override
@@ -265,6 +336,8 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
         jarsBucketNameText.setEditable(isEditable);
         credentialsBtn.setEnabled(isEditable);
         pathToCredentialsNameText.setEditable(isEditable);
+        useSparkPropertiesBtn.setEnabled(isEditable);
+        sparkPropertiesDialog.updateStatusLabel(getSparkProperties());
         ((HadoopClusterForm) this.getParent()).updateEditableStatus(isEditable);
     }
 

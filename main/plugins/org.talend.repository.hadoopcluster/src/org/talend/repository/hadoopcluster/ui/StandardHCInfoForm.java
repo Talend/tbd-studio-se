@@ -328,6 +328,7 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         maprTHadoopLoginText.setEditable(isMaprTEditable);
 
         propertiesDialog.updateStatusLabel(getHadoopProperties());
+        useSparkPropertiesBtn.setEnabled(isEditable);
         sparkPropertiesDialog.updateStatusLabel(getSparkProperties());
     }
 
