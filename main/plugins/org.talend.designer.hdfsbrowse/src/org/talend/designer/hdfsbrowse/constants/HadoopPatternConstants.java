@@ -14,7 +14,7 @@ package org.talend.designer.hdfsbrowse.constants;
 
 /**
  * created by ycbai on 2013-2-1 Detailled comment
- * 
+ *
  */
 public interface HadoopPatternConstants {
 
@@ -66,5 +66,7 @@ public interface HadoopPatternConstants {
     public final static String WITHOUT_SPACE = "[^\\s]+"; //$NON-NLS-1$
 
     public final static String NUMBER = "\\d+"; //$NON-NLS-1$
+
+    public final static String HADOOP_CONNECTION_NAME = "[^\\s\\t~!`#^&$*%@\\\\/?:;\\.()，。'￥‘”、《，》<>]+"; //$NON-NLS-1$
 
 }

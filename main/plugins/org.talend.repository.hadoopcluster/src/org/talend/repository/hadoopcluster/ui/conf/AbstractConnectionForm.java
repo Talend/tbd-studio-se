@@ -126,7 +126,7 @@ public abstract class AbstractConnectionForm extends Composite {
 
     protected void createAuthenticationFields(Composite parent) {
         useAuthBtn = new Button(parent, SWT.CHECK);
-        useAuthBtn.setText(Messages.getString("HadoopImportRemoteOptionPage.auth.check")); //$NON-NLS-1$
+        useAuthBtn.setText(Messages.getString("HadoopImportRemoteOptionPage.auth.check2")); //$NON-NLS-1$
         GridData useAuthGD = new GridData();
         useAuthGD.horizontalSpan = 3;
         useAuthBtn.setLayoutData(useAuthGD);

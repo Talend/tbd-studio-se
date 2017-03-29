@@ -146,6 +146,7 @@ public class HadoopClusterWizard extends CheckLastVersionRepositoryWizard {
     private void initParameters() {
         if (creation) {
             connection.setUseDNHost(true);
+            connection.setUseSparkProperties(true);
         }
     }
 

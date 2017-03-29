@@ -14,6 +14,7 @@
 package org.talend.hadoop.distribution.emr500;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -336,8 +337,10 @@ public class EMR500Distribution extends AbstractDistribution implements HBaseCom
     }
 
     @Override
-    public ESparkVersion getSparkVersion() {
-        return ESparkVersion.SPARK_2_0;
+    public Set<ESparkVersion> getSparkVersions() {
+        Set<ESparkVersion> version = new HashSet<>();
+        version.add(ESparkVersion.SPARK_2_0);
+        return version;
     }
 
     @Override

@@ -1,20 +1,15 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package org.talend.repository.model.hadoopcluster.impl;
 
 import java.util.Collection;
-import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.common.util.EMap;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -22,9 +17,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
-
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.talend.core.model.metadata.builder.connection.impl.ConnectionImpl;
 
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
@@ -83,6 +78,7 @@ import org.talend.repository.model.hadoopcluster.HadoopClusterPackage;
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#getMaprTHadoopLogin <em>Mapr THadoop Login</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#isPreloadAuthentification <em>Preload Authentification</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#getConfFile <em>Conf File</em>}</li>
+ *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#getConfFiles <em>Conf Files</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#isUseWebHDFSSSL <em>Use Web HDFSSSL</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#getWebHDFSSSLTrustStorePath <em>Web HDFSSSL Trust Store Path</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#getWebHDFSSSLTrustStorePassword <em>Web HDFSSSL Trust Store Password</em>}</li>
@@ -991,6 +987,16 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * @ordered
      */
     protected byte[] confFile = CONF_FILE_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getConfFiles() <em>Conf Files</em>}' map.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getConfFiles()
+     * @generated
+     * @ordered
+     */
+    protected EMap<String, byte[]> confFiles;
 
     /**
      * The default value of the '{@link #isUseWebHDFSSSL() <em>Use Web HDFSSSL</em>}' attribute.
@@ -2024,6 +2030,18 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
+    public EMap<String, byte[]> getConfFiles() {
+        if (confFiles == null) {
+            confFiles = new EcoreEMap<String,byte[]>(HadoopClusterPackage.Literals.HADOOP_CONF_JAR_ENTRY, HadoopConfJarEntryImpl.class, this, HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONF_FILES);
+        }
+        return confFiles;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public boolean isUseWebHDFSSSL() {
         return useWebHDFSSSL;
     }
@@ -2092,6 +2110,8 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
         switch (featureID) {
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__PARAMETERS:
                 return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONF_FILES:
+                return ((InternalEList<?>)getConfFiles()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -2197,6 +2217,9 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
                 return isPreloadAuthentification();
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONF_FILE:
                 return getConfFile();
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONF_FILES:
+                if (coreType) return getConfFiles();
+                else return getConfFiles().map();
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__USE_WEB_HDFSSSL:
                 return isUseWebHDFSSSL();
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__WEB_HDFSSSL_TRUST_STORE_PATH:
@@ -2354,6 +2377,9 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
                 return;
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONF_FILE:
                 setConfFile((byte[])newValue);
+                return;
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONF_FILES:
+                ((EStructuralFeature.Setting)getConfFiles()).set(newValue);
                 return;
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__USE_WEB_HDFSSSL:
                 setUseWebHDFSSSL((Boolean)newValue);
@@ -2514,6 +2540,9 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONF_FILE:
                 setConfFile(CONF_FILE_EDEFAULT);
                 return;
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONF_FILES:
+                getConfFiles().clear();
+                return;
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__USE_WEB_HDFSSSL:
                 setUseWebHDFSSSL(USE_WEB_HDFSSSL_EDEFAULT);
                 return;
@@ -2627,6 +2656,8 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
                 return preloadAuthentification != PRELOAD_AUTHENTIFICATION_EDEFAULT;
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONF_FILE:
                 return CONF_FILE_EDEFAULT == null ? confFile != null : !CONF_FILE_EDEFAULT.equals(confFile);
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONF_FILES:
+                return confFiles != null && !confFiles.isEmpty();
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__USE_WEB_HDFSSSL:
                 return useWebHDFSSSL != USE_WEB_HDFSSSL_EDEFAULT;
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__WEB_HDFSSSL_TRUST_STORE_PATH:

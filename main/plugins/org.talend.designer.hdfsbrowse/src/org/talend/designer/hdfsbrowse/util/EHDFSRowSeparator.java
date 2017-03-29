@@ -22,7 +22,7 @@ import org.talend.core.utils.TalendQuoteUtils;
  */
 public enum EHDFSRowSeparator {
 
-    STANDART_EOL("Standart EOL", "\"\\n\""), //$NON-NLS-1$
+    STANDARD_EOL("Standard EOL", "\"\\n\""), //$NON-NLS-1$ //$NON-NLS-2$
 
     ;
 
@@ -79,7 +79,7 @@ public enum EHDFSRowSeparator {
     }
 
     public static EHDFSRowSeparator getDefaultSeparator() {
-        return STANDART_EOL;
+        return STANDARD_EOL;
     }
 
 }

@@ -12,6 +12,7 @@
 // ============================================================================
 package org.talend.hadoop.distribution;
 
+import org.talend.hadoop.distribution.component.SparkComponent;
 import org.talend.hadoop.distribution.constants.HBaseConstant;
 import org.talend.hadoop.distribution.constants.HCatalogConstant;
 import org.talend.hadoop.distribution.constants.HDFSConstant;
@@ -173,5 +174,15 @@ public enum ComponentType {
 
     public String getVersionRepositoryValueParameter() {
         return this.mVersionRepositoryValueParameter;
+    }
+
+    /**
+     * Defines whether a {@link ComponentType} is a {@link SparkComponent} or not.
+     *
+     * @param ct the {@link ComponentType} to check
+     * @return true if the {@link ComponentType} is a {@link SparkComponent}. Else, false.
+     */
+    public static boolean isSparkComponent(ComponentType ct) {
+        return ct == ComponentType.SPARKBATCH || ct == ComponentType.SPARKSTREAMING;
     }
 }
