@@ -90,13 +90,12 @@ public class HadoopServiceProperties {
 
     private String maprTHadoopLogin;
 
-<<<<<<< HEAD
     private boolean useWebHDFSSSL;
 
     private String webHDFSSSLTrustStorePassword;
 
     private String webHDFSSSLTrustStorePath;
-=======
+
     public ConnectionItem getItem() {
         return this.item;
     }
@@ -104,7 +103,7 @@ public class HadoopServiceProperties {
     public void setItem(ConnectionItem item) {
         this.item = item;
     }
->>>>>>> refs/heads/master
+
 
     private String getRealValue(String value) {
         if (contextType == null) {
