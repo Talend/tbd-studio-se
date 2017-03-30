@@ -181,8 +181,8 @@
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
             id="spark-streaming-kafka-dataproc11"
-            name="spark-streaming-kafka-0-10-assembly_2.11-2.0.0-dataproc11.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka-0-10-assembly_2.11-2.0.0-dataproc11/6.0.0">
+            name="spark-streaming-kafka-0-10-assembly_2.11-2.0.0.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka-0-10-assembly_2.11-2.0.0/6.0.0">
         </libraryNeeded>
         
          <libraryNeeded
