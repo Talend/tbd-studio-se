@@ -58,6 +58,13 @@
             serviceType="RESOURCE_MANAGER"
             timeout="40">
       </checkedService>
+      <checkedService
+            checkedServiceProvider="org.talend.designer.hdfsbrowse.hadoop.service.check.provider.CheckedGoogleDataprocProvider"
+            consuming="400"
+            serviceName="Google Dataproc"
+            serviceType="GOOGLE_DATAPROC"
+            timeout="40">
+      </checkedService>
    </extension>
    <extension
          point="org.talend.core.runtime.librariesNeeded">

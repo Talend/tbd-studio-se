@@ -12,6 +12,7 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.ui;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,12 +30,18 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.talend.commons.ui.swt.formtools.Form;
 import org.talend.commons.ui.swt.formtools.LabelledText;
+import org.talend.commons.ui.swt.formtools.UtilsButton;
 import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.model.properties.ConnectionItem;
+import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
+import org.talend.designer.hdfsbrowse.hadoop.service.EHadoopServiceType;
+import org.talend.designer.hdfsbrowse.hadoop.service.HadoopServiceProperties;
+import org.talend.designer.hdfsbrowse.hadoop.service.check.CheckHadoopServicesDialog;
 import org.talend.hadoop.distribution.model.DistributionBean;
 import org.talend.hadoop.distribution.model.DistributionVersion;
 import org.talend.metadata.managment.ui.dialog.SparkPropertiesDialog;
+import org.talend.metadata.managment.ui.utils.ConnectionContextHelper;
 import org.talend.metadata.managment.ui.utils.ExtendedNodeConnectionContextUtils.EHadoopParamName;
 import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopForm;
@@ -72,6 +79,8 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
 
     private Button useSparkPropertiesBtn;
 
+    private UtilsButton checkServicesBtn;
+
     public GoogleDataprocInfoForm(Composite parent, ConnectionItem connectionItem, String[] existingNames, boolean creation,
             DistributionBean hadoopDistribution, DistributionVersion hadoopVersison) {
         super(parent, SWT.NONE, existingNames);
@@ -102,6 +111,8 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
         propertiesComposite.setLayout(propertiesLayout);
         propertiesComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         addSparkPropertiesFields();
+
+        addCheckFields();
     }
 
     private void addConfigurationFields() {
@@ -171,6 +182,21 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
 
         };
         sparkPropertiesDialog.createPropertiesFields(sparkPropertiesComposite);
+    }
+
+    private void addCheckFields() {
+        Composite checkGroup = new Composite(this, SWT.NONE);
+        GridLayout checkGridLayout = new GridLayout(1, false);
+        checkGroup.setLayout(checkGridLayout);
+        GridData checkGridData = new GridData(GridData.FILL_HORIZONTAL);
+        checkGridData.minimumHeight = 5;
+        checkGroup.setLayoutData(checkGridData);
+        Composite checkButtonComposite = Form.startNewGridLayout(checkGroup, 1, false, SWT.CENTER, SWT.BOTTOM);
+        GridLayout checkButtonLayout = (GridLayout) checkButtonComposite.getLayout();
+        checkButtonLayout.marginHeight = 0;
+        checkButtonLayout.marginWidth = 0;
+        checkServicesBtn = new UtilsButton(checkButtonComposite, Messages.getString("HadoopClusterForm.button.check"), true); //$NON-NLS-1$
+        checkServicesBtn.setEnabled(false);
     }
 
     private List<Map<String, Object>> getSparkProperties() {
@@ -252,7 +278,45 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
     }
 
     @Override
+    protected void addUtilsButtonListeners() {
+        checkServicesBtn.addSelectionListener(new SelectionAdapter() {
+
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                checkServices();
+            }
+        });
+    }
+
+    private void checkServices() {
+        Map<EHadoopServiceType, HadoopServiceProperties> serviceTypeToProperties = new HashMap<EHadoopServiceType, HadoopServiceProperties>();
+        HadoopServiceProperties nnProperties = new HadoopServiceProperties();
+        initCommonProperties(nnProperties);
+        nnProperties.setProjectId(projectIdNameText.getText());
+        nnProperties.setRegion(regionNameText.getText());
+        nnProperties.setClusterName(clusterIdNameText.getText());
+        serviceTypeToProperties.put(EHadoopServiceType.GOOGLE_DATAPROC, nnProperties);
+        new CheckHadoopServicesDialog(getShell(), serviceTypeToProperties).open();
+    }
+
+    private void initCommonProperties(HadoopServiceProperties properties) {
+        properties.setItem(this.connectionItem);
+        HadoopClusterConnection connection = getConnection();
+        ContextType contextType = null;
+        if (getConnection().isContextMode()) {
+            contextType = ConnectionContextHelper.getContextTypeForContextMode(connection, connection.getContextName(), false);
+        }
+        properties.setContextType(contextType);
+        properties.setRelativeHadoopClusterId(connectionItem.getProperty().getId());
+        properties.setRelativeHadoopClusterLabel(connectionItem.getProperty().getLabel());
+        properties.setDistribution(connection.getDistribution());
+        properties.setVersion(connection.getDfVersion());
+        properties.setUseKrb(connection.isEnableKerberos());
+    }
+
+    @Override
     public boolean checkFieldsValue() {
+        checkServicesBtn.setEnabled(false);
         if (!validText(projectIdNameText.getText())) {
             updateStatus(IStatus.ERROR, Messages.getString("GoogleDataprocInfoForm.check.configuration.projectId")); //$NON-NLS-1$
             return false;
@@ -273,6 +337,7 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
             updateStatus(IStatus.ERROR, Messages.getString("GoogleDataprocInfoForm.check.authentication.credentials")); //$NON-NLS-1$
             return false;
         }
+        checkServicesBtn.setEnabled(true);
         updateStatus(IStatus.OK, null);
         return true;
     }

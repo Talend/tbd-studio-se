@@ -24,6 +24,7 @@ public enum EHadoopServiceType {
 
     RESOURCE_MANAGER,
 
+    GOOGLE_DATAPROC,
     ;
 
     public String getName() {

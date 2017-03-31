@@ -90,6 +90,12 @@ public class HadoopServiceProperties {
 
     private String maprTHadoopLogin;
 
+    private String projectId;
+
+    private String region;
+
+    private String clusterName;
+
     public ConnectionItem getItem() {
         return this.item;
     }
@@ -350,4 +356,27 @@ public class HadoopServiceProperties {
         this.maprTHadoopLogin = maprTHadoopLogin;
     }
 
+    public String getProjectId() {
+        return this.projectId;
+    }
+
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
+    }
+
+    public String getRegion() {
+        return this.region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getClusterName() {
+        return this.clusterName;
+    }
+
+    public void setClusterName(String clusterName) {
+        this.clusterName = clusterName;
+    }
 }
