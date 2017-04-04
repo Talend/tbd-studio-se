@@ -78,7 +78,7 @@ public class CDH580Spark2DistributionTest {
         assertTrue(((SparkBatchComponent) distribution).isSpark16());
         assertTrue(((SparkBatchComponent) distribution).doSupportDynamicMemoryAllocation());
         assertFalse(((SparkBatchComponent) distribution).isExecutedThroughSparkJobServer());
-        assertTrue(((SparkBatchComponent) distribution).doSupportSparkStandaloneMode());
+        assertFalse(((SparkBatchComponent) distribution).doSupportSparkStandaloneMode());
         assertTrue(((SparkBatchComponent) distribution).doSupportSparkYarnClientMode());
         assertFalse(((SparkStreamingComponent) distribution).isSpark14());
         assertFalse(((SparkStreamingComponent) distribution).isSpark13());
