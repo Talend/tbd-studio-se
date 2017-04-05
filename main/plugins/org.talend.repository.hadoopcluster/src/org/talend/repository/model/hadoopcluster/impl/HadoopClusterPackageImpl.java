@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package org.talend.repository.model.hadoopcluster.impl;
 
@@ -579,6 +575,33 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    public EAttribute getHadoopClusterConnection_UseWebHDFSSSL() {
+        return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(47);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getHadoopClusterConnection_WebHDFSSSLTrustStorePath() {
+        return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(48);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getHadoopClusterConnection_WebHDFSSSLTrustStorePassword() {
+        return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(49);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getHadoopClusterConnectionItem() {
         return hadoopClusterConnectionItemEClass;
     }
@@ -749,6 +772,9 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
         createEAttribute(hadoopClusterConnectionEClass, HADOOP_CLUSTER_CONNECTION__PRELOAD_AUTHENTIFICATION);
         createEAttribute(hadoopClusterConnectionEClass, HADOOP_CLUSTER_CONNECTION__CONF_FILE);
         createEReference(hadoopClusterConnectionEClass, HADOOP_CLUSTER_CONNECTION__CONF_FILES);
+        createEAttribute(hadoopClusterConnectionEClass, HADOOP_CLUSTER_CONNECTION__USE_WEB_HDFSSSL);
+        createEAttribute(hadoopClusterConnectionEClass, HADOOP_CLUSTER_CONNECTION__WEB_HDFSSSL_TRUST_STORE_PATH);
+        createEAttribute(hadoopClusterConnectionEClass, HADOOP_CLUSTER_CONNECTION__WEB_HDFSSSL_TRUST_STORE_PASSWORD);
 
         hadoopClusterConnectionItemEClass = createEClass(HADOOP_CLUSTER_CONNECTION_ITEM);
 
@@ -854,6 +880,9 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
         initEAttribute(getHadoopClusterConnection_PreloadAuthentification(), theXMLTypePackage.getBoolean(), "preloadAuthentification", null, 0, 1, HadoopClusterConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getHadoopClusterConnection_ConfFile(), ecorePackage.getEByteArray(), "confFile", null, 0, 1, HadoopClusterConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getHadoopClusterConnection_ConfFiles(), this.getHadoopConfJarEntry(), null, "confFiles", null, 0, -1, HadoopClusterConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getHadoopClusterConnection_UseWebHDFSSSL(), theXMLTypePackage.getBoolean(), "useWebHDFSSSL", null, 0, 1, HadoopClusterConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getHadoopClusterConnection_WebHDFSSSLTrustStorePath(), theXMLTypePackage.getString(), "webHDFSSSLTrustStorePath", "", 0, 1, HadoopClusterConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getHadoopClusterConnection_WebHDFSSSLTrustStorePassword(), theXMLTypePackage.getString(), "webHDFSSSLTrustStorePassword", "", 0, 1, HadoopClusterConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(hadoopClusterConnectionItemEClass, HadoopClusterConnectionItem.class, "HadoopClusterConnectionItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

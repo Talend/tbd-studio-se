@@ -90,6 +90,12 @@ public class HadoopServiceProperties {
 
     private String maprTHadoopLogin;
 
+    private boolean useWebHDFSSSL;
+
+    private String webHDFSSSLTrustStorePassword;
+
+    private String webHDFSSSLTrustStorePath;
+
     public ConnectionItem getItem() {
         return this.item;
     }
@@ -97,6 +103,7 @@ public class HadoopServiceProperties {
     public void setItem(ConnectionItem item) {
         this.item = item;
     }
+
 
     private String getRealValue(String value) {
         if (contextType == null) {
@@ -350,4 +357,27 @@ public class HadoopServiceProperties {
         this.maprTHadoopLogin = maprTHadoopLogin;
     }
 
+    public boolean isUseWebHDFSSSL() {
+        return this.useWebHDFSSSL;
+    }
+
+    public void setUseWebHDFSSSL(boolean useWebHDFSSSL) {
+        this.useWebHDFSSSL = useWebHDFSSSL;
+    }
+
+    public String getWebHDFSSSLTrustStorePassword() {
+        return this.webHDFSSSLTrustStorePassword;
+    }
+
+    public void setWebHDFSSSLTrustStorePassword(String webHDFSSSLTrustStorePassword) {
+        this.webHDFSSSLTrustStorePassword = webHDFSSSLTrustStorePassword;
+    }
+
+    public String getWebHDFSSSLTrustStorePath() {
+        return this.webHDFSSSLTrustStorePath;
+    }
+
+    public void setWebHDFSSSLTrustStorePath(String webHDFSSSLTrustStorePath) {
+        this.webHDFSSSLTrustStorePath = webHDFSSSLTrustStorePath;
+    }
 }

@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package org.talend.repository.model.hadoopcluster.impl;
 
@@ -10,16 +6,22 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.talend.core.model.metadata.builder.connection.impl.ConnectionImpl;
+
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
 import org.talend.repository.model.hadoopcluster.HadoopClusterPackage;
 
@@ -29,7 +31,6 @@ import org.talend.repository.model.hadoopcluster.HadoopClusterPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#getDistribution <em>Distribution</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#getDfVersion <em>Df Version</em>}</li>
@@ -78,7 +79,11 @@ import org.talend.repository.model.hadoopcluster.HadoopClusterPackage;
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#isPreloadAuthentification <em>Preload Authentification</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#getConfFile <em>Conf File</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#getConfFiles <em>Conf Files</em>}</li>
+ *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#isUseWebHDFSSSL <em>Use Web HDFSSSL</em>}</li>
+ *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#getWebHDFSSSLTrustStorePath <em>Web HDFSSSL Trust Store Path</em>}</li>
+ *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl#getWebHDFSSSLTrustStorePassword <em>Web HDFSSSL Trust Store Password</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -994,6 +999,66 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
     protected EMap<String, byte[]> confFiles;
 
     /**
+     * The default value of the '{@link #isUseWebHDFSSSL() <em>Use Web HDFSSSL</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isUseWebHDFSSSL()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean USE_WEB_HDFSSSL_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isUseWebHDFSSSL() <em>Use Web HDFSSSL</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isUseWebHDFSSSL()
+     * @generated
+     * @ordered
+     */
+    protected boolean useWebHDFSSSL = USE_WEB_HDFSSSL_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getWebHDFSSSLTrustStorePath() <em>Web HDFSSSL Trust Store Path</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getWebHDFSSSLTrustStorePath()
+     * @generated
+     * @ordered
+     */
+    protected static final String WEB_HDFSSSL_TRUST_STORE_PATH_EDEFAULT = "";
+
+    /**
+     * The cached value of the '{@link #getWebHDFSSSLTrustStorePath() <em>Web HDFSSSL Trust Store Path</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getWebHDFSSSLTrustStorePath()
+     * @generated
+     * @ordered
+     */
+    protected String webHDFSSSLTrustStorePath = WEB_HDFSSSL_TRUST_STORE_PATH_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getWebHDFSSSLTrustStorePassword() <em>Web HDFSSSL Trust Store Password</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getWebHDFSSSLTrustStorePassword()
+     * @generated
+     * @ordered
+     */
+    protected static final String WEB_HDFSSSL_TRUST_STORE_PASSWORD_EDEFAULT = "";
+
+    /**
+     * The cached value of the '{@link #getWebHDFSSSLTrustStorePassword() <em>Web HDFSSSL Trust Store Password</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getWebHDFSSSLTrustStorePassword()
+     * @generated
+     * @ordered
+     */
+    protected String webHDFSSSLTrustStorePassword = WEB_HDFSSSL_TRUST_STORE_PASSWORD_EDEFAULT;
+
+    /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1017,7 +1082,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getDistribution() {
         return distribution;
     }
@@ -1027,7 +1091,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setDistribution(String newDistribution) {
         String oldDistribution = distribution;
         distribution = newDistribution;
@@ -1040,7 +1103,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getDfVersion() {
         return dfVersion;
     }
@@ -1050,7 +1112,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setDfVersion(String newDfVersion) {
         String oldDfVersion = dfVersion;
         dfVersion = newDfVersion;
@@ -1063,7 +1124,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public boolean isUseCustomVersion() {
         return useCustomVersion;
     }
@@ -1073,7 +1133,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setUseCustomVersion(boolean newUseCustomVersion) {
         boolean oldUseCustomVersion = useCustomVersion;
         useCustomVersion = newUseCustomVersion;
@@ -1086,7 +1145,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public boolean isUseYarn() {
         return useYarn;
     }
@@ -1096,7 +1154,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setUseYarn(boolean newUseYarn) {
         boolean oldUseYarn = useYarn;
         useYarn = newUseYarn;
@@ -1109,7 +1166,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getServer() {
         return server;
     }
@@ -1119,7 +1175,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setServer(String newServer) {
         String oldServer = server;
         server = newServer;
@@ -1132,7 +1187,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getNameNodeURI() {
         return nameNodeURI;
     }
@@ -1142,7 +1196,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setNameNodeURI(String newNameNodeURI) {
         String oldNameNodeURI = nameNodeURI;
         nameNodeURI = newNameNodeURI;
@@ -1155,7 +1208,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getJobTrackerURI() {
         return jobTrackerURI;
     }
@@ -1165,7 +1217,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setJobTrackerURI(String newJobTrackerURI) {
         String oldJobTrackerURI = jobTrackerURI;
         jobTrackerURI = newJobTrackerURI;
@@ -1178,7 +1229,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public boolean isEnableKerberos() {
         return enableKerberos;
     }
@@ -1188,7 +1238,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setEnableKerberos(boolean newEnableKerberos) {
         boolean oldEnableKerberos = enableKerberos;
         enableKerberos = newEnableKerberos;
@@ -1201,7 +1250,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getPrincipal() {
         return principal;
     }
@@ -1211,7 +1259,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setPrincipal(String newPrincipal) {
         String oldPrincipal = principal;
         principal = newPrincipal;
@@ -1224,7 +1271,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getJtOrRmPrincipal() {
         return jtOrRmPrincipal;
     }
@@ -1234,7 +1280,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setJtOrRmPrincipal(String newJtOrRmPrincipal) {
         String oldJtOrRmPrincipal = jtOrRmPrincipal;
         jtOrRmPrincipal = newJtOrRmPrincipal;
@@ -1247,7 +1292,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getJobHistoryPrincipal() {
         return jobHistoryPrincipal;
     }
@@ -1257,7 +1301,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setJobHistoryPrincipal(String newJobHistoryPrincipal) {
         String oldJobHistoryPrincipal = jobHistoryPrincipal;
         jobHistoryPrincipal = newJobHistoryPrincipal;
@@ -1270,7 +1313,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getUserName() {
         return userName;
     }
@@ -1280,7 +1322,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setUserName(String newUserName) {
         String oldUserName = userName;
         userName = newUserName;
@@ -1293,7 +1334,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getGroup() {
         return group;
     }
@@ -1303,7 +1343,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setGroup(String newGroup) {
         String oldGroup = group;
         group = newGroup;
@@ -1316,7 +1355,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getAuthMode() {
         return authMode;
     }
@@ -1326,7 +1364,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setAuthMode(String newAuthMode) {
         String oldAuthMode = authMode;
         authMode = newAuthMode;
@@ -1339,7 +1376,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public EList<String> getConnectionList() {
         if (connectionList == null) {
             connectionList = new EDataTypeUniqueEList<String>(String.class, this, HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONNECTION_LIST);
@@ -1352,7 +1388,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public EMap<String, String> getParameters() {
         if (parameters == null) {
             parameters = new EcoreEMap<String,String>(HadoopClusterPackage.Literals.HADOOP_ADDITIONAL_PROPERTIES, HadoopAdditionalPropertiesImpl.class, this, HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__PARAMETERS);
@@ -1365,7 +1400,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public boolean isUseKeytab() {
         return useKeytab;
     }
@@ -1375,7 +1409,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setUseKeytab(boolean newUseKeytab) {
         boolean oldUseKeytab = useKeytab;
         useKeytab = newUseKeytab;
@@ -1388,7 +1421,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getKeytabPrincipal() {
         return keytabPrincipal;
     }
@@ -1398,7 +1430,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setKeytabPrincipal(String newKeytabPrincipal) {
         String oldKeytabPrincipal = keytabPrincipal;
         keytabPrincipal = newKeytabPrincipal;
@@ -1411,7 +1442,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getKeytab() {
         return keytab;
     }
@@ -1421,7 +1451,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setKeytab(String newKeytab) {
         String oldKeytab = keytab;
         keytab = newKeytab;
@@ -1434,7 +1463,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getHadoopProperties() {
         return hadoopProperties;
     }
@@ -1444,7 +1472,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setHadoopProperties(String newHadoopProperties) {
         String oldHadoopProperties = hadoopProperties;
         hadoopProperties = newHadoopProperties;
@@ -1457,7 +1484,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public boolean isUseSparkProperties() {
         return useSparkProperties;
     }
@@ -1467,7 +1493,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setUseSparkProperties(boolean newUseSparkProperties) {
         boolean oldUseSparkProperties = useSparkProperties;
         useSparkProperties = newUseSparkProperties;
@@ -1480,7 +1505,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getSparkProperties() {
         return sparkProperties;
     }
@@ -1490,7 +1514,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setSparkProperties(String newSparkProperties) {
         String oldSparkProperties = sparkProperties;
         sparkProperties = newSparkProperties;
@@ -1503,7 +1526,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getRmScheduler() {
         return rmScheduler;
     }
@@ -1513,7 +1535,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setRmScheduler(String newRmScheduler) {
         String oldRmScheduler = rmScheduler;
         rmScheduler = newRmScheduler;
@@ -1526,7 +1547,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getJobHistory() {
         return jobHistory;
     }
@@ -1536,7 +1556,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setJobHistory(String newJobHistory) {
         String oldJobHistory = jobHistory;
         jobHistory = newJobHistory;
@@ -1549,7 +1568,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getStagingDirectory() {
         return stagingDirectory;
     }
@@ -1559,7 +1577,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setStagingDirectory(String newStagingDirectory) {
         String oldStagingDirectory = stagingDirectory;
         stagingDirectory = newStagingDirectory;
@@ -1572,7 +1589,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public boolean isUseDNHost() {
         return useDNHost;
     }
@@ -1582,7 +1598,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setUseDNHost(boolean newUseDNHost) {
         boolean oldUseDNHost = useDNHost;
         useDNHost = newUseDNHost;
@@ -1595,7 +1610,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public boolean isUseCustomConfs() {
         return useCustomConfs;
     }
@@ -1605,7 +1619,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setUseCustomConfs(boolean newUseCustomConfs) {
         boolean oldUseCustomConfs = useCustomConfs;
         useCustomConfs = newUseCustomConfs;
@@ -1618,7 +1631,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public boolean isUseClouderaNavi() {
         return useClouderaNavi;
     }
@@ -1628,7 +1640,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setUseClouderaNavi(boolean newUseClouderaNavi) {
         boolean oldUseClouderaNavi = useClouderaNavi;
         useClouderaNavi = newUseClouderaNavi;
@@ -1641,7 +1652,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getClouderaNaviUserName() {
         return clouderaNaviUserName;
     }
@@ -1651,7 +1661,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setClouderaNaviUserName(String newClouderaNaviUserName) {
         String oldClouderaNaviUserName = clouderaNaviUserName;
         clouderaNaviUserName = newClouderaNaviUserName;
@@ -1664,7 +1673,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getClouderaNaviPassword() {
         return clouderaNaviPassword;
     }
@@ -1674,7 +1682,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setClouderaNaviPassword(String newClouderaNaviPassword) {
         String oldClouderaNaviPassword = clouderaNaviPassword;
         clouderaNaviPassword = newClouderaNaviPassword;
@@ -1687,7 +1694,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getClouderaNaviUrl() {
         return clouderaNaviUrl;
     }
@@ -1697,7 +1703,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setClouderaNaviUrl(String newClouderaNaviUrl) {
         String oldClouderaNaviUrl = clouderaNaviUrl;
         clouderaNaviUrl = newClouderaNaviUrl;
@@ -1710,7 +1715,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getClouderaNaviMetadataUrl() {
         return clouderaNaviMetadataUrl;
     }
@@ -1720,7 +1724,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setClouderaNaviMetadataUrl(String newClouderaNaviMetadataUrl) {
         String oldClouderaNaviMetadataUrl = clouderaNaviMetadataUrl;
         clouderaNaviMetadataUrl = newClouderaNaviMetadataUrl;
@@ -1733,7 +1736,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getClouderaNaviClientUrl() {
         return clouderaNaviClientUrl;
     }
@@ -1743,7 +1745,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setClouderaNaviClientUrl(String newClouderaNaviClientUrl) {
         String oldClouderaNaviClientUrl = clouderaNaviClientUrl;
         clouderaNaviClientUrl = newClouderaNaviClientUrl;
@@ -1756,7 +1757,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public boolean isClouderaDisableSSL() {
         return clouderaDisableSSL;
     }
@@ -1766,7 +1766,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setClouderaDisableSSL(boolean newClouderaDisableSSL) {
         boolean oldClouderaDisableSSL = clouderaDisableSSL;
         clouderaDisableSSL = newClouderaDisableSSL;
@@ -1779,7 +1778,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public boolean isClouderaAutoCommit() {
         return clouderaAutoCommit;
     }
@@ -1789,7 +1787,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setClouderaAutoCommit(boolean newClouderaAutoCommit) {
         boolean oldClouderaAutoCommit = clouderaAutoCommit;
         clouderaAutoCommit = newClouderaAutoCommit;
@@ -1802,7 +1799,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public boolean isClouderaDieNoError() {
         return clouderaDieNoError;
     }
@@ -1812,7 +1808,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setClouderaDieNoError(boolean newClouderaDieNoError) {
         boolean oldClouderaDieNoError = clouderaDieNoError;
         clouderaDieNoError = newClouderaDieNoError;
@@ -1825,7 +1820,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public boolean isEnableMaprT() {
         return enableMaprT;
     }
@@ -1835,7 +1829,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setEnableMaprT(boolean newEnableMaprT) {
         boolean oldEnableMaprT = enableMaprT;
         enableMaprT = newEnableMaprT;
@@ -1848,7 +1841,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getMaprTPassword() {
         return maprTPassword;
     }
@@ -1858,7 +1850,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setMaprTPassword(String newMaprTPassword) {
         String oldMaprTPassword = maprTPassword;
         maprTPassword = newMaprTPassword;
@@ -1871,7 +1862,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getMaprTCluster() {
         return maprTCluster;
     }
@@ -1881,7 +1871,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setMaprTCluster(String newMaprTCluster) {
         String oldMaprTCluster = maprTCluster;
         maprTCluster = newMaprTCluster;
@@ -1894,7 +1883,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getMaprTDuration() {
         return maprTDuration;
     }
@@ -1904,7 +1892,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setMaprTDuration(String newMaprTDuration) {
         String oldMaprTDuration = maprTDuration;
         maprTDuration = newMaprTDuration;
@@ -1917,7 +1904,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public boolean isSetMaprTHomeDir() {
         return setMaprTHomeDir;
     }
@@ -1927,7 +1913,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setSetMaprTHomeDir(boolean newSetMaprTHomeDir) {
         boolean oldSetMaprTHomeDir = setMaprTHomeDir;
         setMaprTHomeDir = newSetMaprTHomeDir;
@@ -1940,7 +1925,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getMaprTHomeDir() {
         return maprTHomeDir;
     }
@@ -1950,7 +1934,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setMaprTHomeDir(String newMaprTHomeDir) {
         String oldMaprTHomeDir = maprTHomeDir;
         maprTHomeDir = newMaprTHomeDir;
@@ -1963,7 +1946,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public boolean isSetHadoopLogin() {
         return setHadoopLogin;
     }
@@ -1973,7 +1955,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setSetHadoopLogin(boolean newSetHadoopLogin) {
         boolean oldSetHadoopLogin = setHadoopLogin;
         setHadoopLogin = newSetHadoopLogin;
@@ -1986,7 +1967,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public String getMaprTHadoopLogin() {
         return maprTHadoopLogin;
     }
@@ -1996,7 +1976,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setMaprTHadoopLogin(String newMaprTHadoopLogin) {
         String oldMaprTHadoopLogin = maprTHadoopLogin;
         maprTHadoopLogin = newMaprTHadoopLogin;
@@ -2009,7 +1988,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public boolean isPreloadAuthentification() {
         return preloadAuthentification;
     }
@@ -2019,7 +1997,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setPreloadAuthentification(boolean newPreloadAuthentification) {
         boolean oldPreloadAuthentification = preloadAuthentification;
         preloadAuthentification = newPreloadAuthentification;
@@ -2032,7 +2009,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public byte[] getConfFile() {
         return confFile;
     }
@@ -2042,7 +2018,6 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public void setConfFile(byte[] newConfFile) {
         byte[] oldConfFile = confFile;
         confFile = newConfFile;
@@ -2055,12 +2030,74 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     public EMap<String, byte[]> getConfFiles() {
         if (confFiles == null) {
             confFiles = new EcoreEMap<String,byte[]>(HadoopClusterPackage.Literals.HADOOP_CONF_JAR_ENTRY, HadoopConfJarEntryImpl.class, this, HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONF_FILES);
         }
         return confFiles;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public boolean isUseWebHDFSSSL() {
+        return useWebHDFSSSL;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setUseWebHDFSSSL(boolean newUseWebHDFSSSL) {
+        boolean oldUseWebHDFSSSL = useWebHDFSSSL;
+        useWebHDFSSSL = newUseWebHDFSSSL;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__USE_WEB_HDFSSSL, oldUseWebHDFSSSL, useWebHDFSSSL));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getWebHDFSSSLTrustStorePath() {
+        return webHDFSSSLTrustStorePath;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setWebHDFSSSLTrustStorePath(String newWebHDFSSSLTrustStorePath) {
+        String oldWebHDFSSSLTrustStorePath = webHDFSSSLTrustStorePath;
+        webHDFSSSLTrustStorePath = newWebHDFSSSLTrustStorePath;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__WEB_HDFSSSL_TRUST_STORE_PATH, oldWebHDFSSSLTrustStorePath, webHDFSSSLTrustStorePath));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getWebHDFSSSLTrustStorePassword() {
+        return webHDFSSSLTrustStorePassword;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setWebHDFSSSLTrustStorePassword(String newWebHDFSSSLTrustStorePassword) {
+        String oldWebHDFSSSLTrustStorePassword = webHDFSSSLTrustStorePassword;
+        webHDFSSSLTrustStorePassword = newWebHDFSSSLTrustStorePassword;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__WEB_HDFSSSL_TRUST_STORE_PASSWORD, oldWebHDFSSSLTrustStorePassword, webHDFSSSLTrustStorePassword));
     }
 
     /**
@@ -2183,6 +2220,12 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONF_FILES:
                 if (coreType) return getConfFiles();
                 else return getConfFiles().map();
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__USE_WEB_HDFSSSL:
+                return isUseWebHDFSSSL();
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__WEB_HDFSSSL_TRUST_STORE_PATH:
+                return getWebHDFSSSLTrustStorePath();
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__WEB_HDFSSSL_TRUST_STORE_PASSWORD:
+                return getWebHDFSSSLTrustStorePassword();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -2338,6 +2381,15 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONF_FILES:
                 ((EStructuralFeature.Setting)getConfFiles()).set(newValue);
                 return;
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__USE_WEB_HDFSSSL:
+                setUseWebHDFSSSL((Boolean)newValue);
+                return;
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__WEB_HDFSSSL_TRUST_STORE_PATH:
+                setWebHDFSSSLTrustStorePath((String)newValue);
+                return;
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__WEB_HDFSSSL_TRUST_STORE_PASSWORD:
+                setWebHDFSSSLTrustStorePassword((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -2491,6 +2543,15 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONF_FILES:
                 getConfFiles().clear();
                 return;
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__USE_WEB_HDFSSSL:
+                setUseWebHDFSSSL(USE_WEB_HDFSSSL_EDEFAULT);
+                return;
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__WEB_HDFSSSL_TRUST_STORE_PATH:
+                setWebHDFSSSLTrustStorePath(WEB_HDFSSSL_TRUST_STORE_PATH_EDEFAULT);
+                return;
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__WEB_HDFSSSL_TRUST_STORE_PASSWORD:
+                setWebHDFSSSLTrustStorePassword(WEB_HDFSSSL_TRUST_STORE_PASSWORD_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -2597,6 +2658,12 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
                 return CONF_FILE_EDEFAULT == null ? confFile != null : !CONF_FILE_EDEFAULT.equals(confFile);
             case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__CONF_FILES:
                 return confFiles != null && !confFiles.isEmpty();
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__USE_WEB_HDFSSSL:
+                return useWebHDFSSSL != USE_WEB_HDFSSSL_EDEFAULT;
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__WEB_HDFSSSL_TRUST_STORE_PATH:
+                return WEB_HDFSSSL_TRUST_STORE_PATH_EDEFAULT == null ? webHDFSSSLTrustStorePath != null : !WEB_HDFSSSL_TRUST_STORE_PATH_EDEFAULT.equals(webHDFSSSLTrustStorePath);
+            case HadoopClusterPackage.HADOOP_CLUSTER_CONNECTION__WEB_HDFSSSL_TRUST_STORE_PASSWORD:
+                return WEB_HDFSSSL_TRUST_STORE_PASSWORD_EDEFAULT == null ? webHDFSSSLTrustStorePassword != null : !WEB_HDFSSSL_TRUST_STORE_PASSWORD_EDEFAULT.equals(webHDFSSSLTrustStorePassword);
         }
         return super.eIsSet(featureID);
     }
@@ -2701,6 +2768,12 @@ public class HadoopClusterConnectionImpl extends ConnectionImpl implements Hadoo
         result.append(preloadAuthentification);
         result.append(", confFile: ");
         result.append(confFile);
+        result.append(", useWebHDFSSSL: ");
+        result.append(useWebHDFSSSL);
+        result.append(", webHDFSSSLTrustStorePath: ");
+        result.append(webHDFSSSLTrustStorePath);
+        result.append(", webHDFSSSLTrustStorePassword: ");
+        result.append(webHDFSSSLTrustStorePassword);
         result.append(')');
         return result.toString();
     }

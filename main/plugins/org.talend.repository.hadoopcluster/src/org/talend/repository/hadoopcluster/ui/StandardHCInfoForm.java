@@ -174,6 +174,14 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
 
     private Composite maprTSetComposite;
 
+    private Button useWebHDFSSSLEncryptionBtn;
+
+    private Composite webHDFSSSLEncryptionDetailComposite;
+
+    private LabelledFileField webHDFSSSLTrustStorePath;
+
+    private LabelledText webHDFSSSLTrustStorePassword;
+
     public StandardHCInfoForm(Composite parent, ConnectionItem connectionItem, String[] existingNames, boolean creation,
             DistributionBean hadoopDistribution, DistributionVersion hadoopVersison) {
         super(parent, SWT.NONE, existingNames);
@@ -247,6 +255,10 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         preloadAuthentificationBtn.setSelection(connection.isPreloadAuthentification());
         maprTHomeDirText.setText(connection.getMaprTHomeDir());
         maprTHadoopLoginText.setText(connection.getMaprTHadoopLogin());
+        //
+        useWebHDFSSSLEncryptionBtn.setSelection(connection.isUseWebHDFSSSL());
+        webHDFSSSLTrustStorePath.setText(connection.getWebHDFSSSLTrustStorePath());
+        webHDFSSSLTrustStorePassword.setText(connection.getWebHDFSSSLTrustStorePassword());
 
         needInitializeContext = true;
         updateStatus(IStatus.OK, EMPTY_STRING);
@@ -284,6 +296,10 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         preloadAuthentificationBtn.setEnabled(!readOnly);
         maprTHomeDirText.setReadOnly(readOnly);
         maprTHadoopLoginText.setReadOnly(readOnly);
+
+        useWebHDFSSSLEncryptionBtn.setEnabled(!readOnly);
+        webHDFSSSLTrustStorePath.setReadOnly(readOnly);
+        webHDFSSSLTrustStorePassword.setReadOnly(readOnly);
     }
 
     @Override
@@ -291,8 +307,10 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         super.adaptFormToEditable();
         if (isContextMode()) {
             maprTPasswordText.getTextControl().setEchoChar('\0');
+            webHDFSSSLTrustStorePassword.getTextControl().setEchoChar('\0');
         } else {
             maprTPasswordText.getTextControl().setEchoChar('*');
+            webHDFSSSLTrustStorePassword.getTextControl().setEchoChar('*');
         }
     }
 
@@ -326,6 +344,11 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         preloadAuthentificationBtn.setEnabled(isEditable && maprTBtn.getSelection());
         maprTHomeDirText.setEditable(isMaprTEditable);
         maprTHadoopLoginText.setEditable(isMaprTEditable);
+        useWebHDFSSSLEncryptionBtn.setEnabled(isEditable);
+        boolean isUseWebHDFSSSLEncryptionBtnEditable = useWebHDFSSSLEncryptionBtn.isEnabled()
+                && useWebHDFSSSLEncryptionBtn.getSelection();
+        webHDFSSSLTrustStorePath.setEditable(isUseWebHDFSSSLEncryptionBtnEditable);
+        webHDFSSSLTrustStorePassword.setEditable(isUseWebHDFSSSLEncryptionBtnEditable);
 
         propertiesDialog.updateStatusLabel(getHadoopProperties());
         sparkPropertiesDialog.updateStatusLabel(getSparkProperties());
@@ -335,6 +358,7 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
     protected void addFields() {
         addCustomFields();
         addConnectionFields();
+        addWebHDFSEncryptionFields();
         addAuthenticationFields();
         propertiesComposite = new Composite(this, SWT.NONE);
         GridLayout propertiesLayout = new GridLayout(2, false);
@@ -378,6 +402,28 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         useDNHostBtn = new Button(uriPartComposite, SWT.CHECK);
         useDNHostBtn.setText(Messages.getString("HadoopClusterForm.button.useDNHost")); //$NON-NLS-1$
         useDNHostBtn.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 2, 1));
+    }
+
+    private void addWebHDFSEncryptionFields() {
+        Group webHDFSSSLEncryptionGrp = Form
+                .createGroup(this, 1, Messages.getString("HadoopClusterForm.webHDFS.encryption"), 110); //$NON-NLS-1$
+        webHDFSSSLEncryptionGrp.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        useWebHDFSSSLEncryptionBtn = new Button(webHDFSSSLEncryptionGrp, SWT.CHECK);
+        useWebHDFSSSLEncryptionBtn.setText(Messages.getString("HadoopClusterForm.webHDFS.encryption.useSSLEncryption")); //$NON-NLS-1$
+        useWebHDFSSSLEncryptionBtn.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 5, 1));
+
+        webHDFSSSLEncryptionDetailComposite = new Composite(webHDFSSSLEncryptionGrp, SWT.NULL);
+        GridLayout webHDFSSSLEncryptionDetailCompLayout = new GridLayout(5, false);
+        webHDFSSSLEncryptionDetailCompLayout.marginWidth = 0;
+        webHDFSSSLEncryptionDetailCompLayout.marginHeight = 0;
+        webHDFSSSLEncryptionDetailComposite.setLayout(webHDFSSSLEncryptionDetailCompLayout);
+        webHDFSSSLEncryptionDetailComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        String[] extensions = { "*.*" }; //$NON-NLS-1$
+        webHDFSSSLTrustStorePath = new LabelledFileField(webHDFSSSLEncryptionDetailComposite,
+                Messages.getString("HadoopClusterForm.webHDFS.encryption.useSSLEncryption.trustStorePath"), extensions); //$NON-NLS-1$
+        webHDFSSSLTrustStorePassword = new LabelledText(webHDFSSSLEncryptionDetailComposite,
+                Messages.getString("HadoopClusterForm.webHDFS.encryption.useSSLEncryption.trustStorePassword"), 1, SWT.PASSWORD | SWT.BORDER | SWT.SINGLE); //$NON-NLS-1$
+        webHDFSSSLTrustStorePassword.getTextControl().setEchoChar('*');
     }
 
     private void addAuthenticationFields() {
@@ -983,6 +1029,34 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
             }
         });
 
+        useWebHDFSSSLEncryptionBtn.addSelectionListener(new SelectionAdapter() {
+
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                hideControl(webHDFSSSLEncryptionDetailComposite, !useWebHDFSSSLEncryptionBtn.getSelection());
+                getConnection().setUseWebHDFSSSL(useWebHDFSSSLEncryptionBtn.getSelection());
+                updateForm();
+                checkFieldsValue();
+            }
+
+        });
+        webHDFSSSLTrustStorePath.addModifyListener(new ModifyListener() {
+
+            @Override
+            public void modifyText(ModifyEvent e) {
+                getConnection().setWebHDFSSSLTrustStorePath(webHDFSSSLTrustStorePath.getText());
+                checkFieldsValue();
+            }
+        });
+        webHDFSSSLTrustStorePassword.addModifyListener(new ModifyListener() {
+
+            @Override
+            public void modifyText(ModifyEvent e) {
+                getConnection().setWebHDFSSSLTrustStorePassword(webHDFSSSLTrustStorePassword.getText());
+                checkFieldsValue();
+            }
+        });
+
     }
 
     @Override
@@ -1057,6 +1131,10 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         properties.setPreloadAuthentification(connection.isPreloadAuthentification());
         properties.setMaprTHomeDir(connection.getMaprTHomeDir());
         properties.setMaprTHadoopLogin(connection.getMaprTHadoopLogin());
+
+        properties.setUseWebHDFSSSL(connection.isUseWebHDFSSSL());
+        properties.setWebHDFSSSLTrustStorePath(connection.getWebHDFSSSLTrustStorePath());
+        properties.setWebHDFSSSLTrustStorePassword(connection.getWebHDFSSSLTrustStorePassword());
     }
 
     @Override
@@ -1166,6 +1244,17 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
             setHadoopLoginBtn.setEnabled(maprTBtn.isEnabled() && maprTBtn.getSelection());
             preloadAuthentificationBtn.setEnabled(maprTBtn.isEnabled() && maprTBtn.getSelection());
             hideMaprTicketChildControl(!maprTBtn.getSelection());
+            //
+            hideControl(webHDFSSSLEncryptionDetailComposite, !useWebHDFSSSLEncryptionBtn.getSelection());
+            webHDFSSSLTrustStorePath.setEditable(useWebHDFSSSLEncryptionBtn.isEnabled()
+                    && useWebHDFSSSLEncryptionBtn.getSelection());
+            webHDFSSSLTrustStorePassword.setEditable(useWebHDFSSSLEncryptionBtn.isEnabled()
+                    && useWebHDFSSSLEncryptionBtn.getSelection());
+            webHDFSSSLTrustStorePath.setVisible(useWebHDFSSSLEncryptionBtn.isEnabled()
+                    && useWebHDFSSSLEncryptionBtn.getSelection());
+            webHDFSSSLTrustStorePassword.setHideWidgets(!(useWebHDFSSSLEncryptionBtn.isEnabled() && useWebHDFSSSLEncryptionBtn
+                    .getSelection()));
+
         }
         updateMRRelatedContent();
         updateConnectionContent();
@@ -1307,6 +1396,12 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         }
         if (!userNameText.getEditable()) {
             userNameText.setText(EMPTY_STRING);
+        }
+        if (!useWebHDFSSSLEncryptionBtn.isEnabled()) {
+            useWebHDFSSSLEncryptionBtn.setSelection(false);
+            webHDFSSSLTrustStorePath.setText(EMPTY_STRING);
+            webHDFSSSLTrustStorePassword.setText(EMPTY_STRING);
+            getConnection().setUseWebHDFSSSL(false);
         }
     }
 
@@ -1472,6 +1567,25 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
                 return false;
             }
         }
+
+        if (webHDFSSSLTrustStorePassword.getEditable()) {
+            if (!validText(webHDFSSSLTrustStorePassword.getText())) {
+                updateStatus(IStatus.ERROR, Messages.getString("HadoopClusterForm.webHDFS.check.trustStorePassword")); //$NON-NLS-1$
+                return false;
+            }
+            if (!isContextMode()
+                    && !HadoopParameterValidator.isValidWebHDFSSSLTrustStorePassword(webHDFSSSLTrustStorePassword.getText())) {
+                updateStatus(IStatus.ERROR, Messages.getString("HadoopClusterForm.webHDFS.check.trustStorePassword.invalid")); //$NON-NLS-1$
+                return false;
+            }
+        }
+
+        if (webHDFSSSLTrustStorePath.getEditable()) {
+            if (!validText(webHDFSSSLTrustStorePath.getText())) {
+                updateStatus(IStatus.ERROR, Messages.getString("HadoopClusterForm.webHDFS.check.trustStorePath")); //$NON-NLS-1$
+                return false;
+            }
+        }
         checkServicesBtn.setEnabled(true);
         updateStatus(IStatus.OK, null);
         return true;
@@ -1500,6 +1614,7 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
     @Override
     protected void collectConParameters() {
         collectConFieldContextParameters(isCurrentHadoopVersionSupportYarn());
+        collectWebHDFSSSLContextParameters(useWebHDFSSSLEncryptionBtn.getSelection());
         collectAuthFieldContextParameters(kerberosBtn.getSelection());
         collectKeyTabContextParameters(kerberosBtn.getSelection() && keytabBtn.getSelection());
         collectAuthMaprTFieldContextParameters(maprTBtn.getSelection());
@@ -1523,6 +1638,11 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         addContextParams(EHadoopParamName.ResourceManagerScheduler, true);
         addContextParams(EHadoopParamName.JobHistory, true);
         addContextParams(EHadoopParamName.StagingDirectory, true);
+    }
+
+    private void collectWebHDFSSSLContextParameters(boolean useWebHDFSSSL) {
+        addContextParams(EHadoopParamName.WebHDFSSSLTrustStorePath, useWebHDFSSSL);
+        addContextParams(EHadoopParamName.WebHDFSSSLTrustStorePassword, useWebHDFSSSL);
     }
 
     private void collectAuthFieldContextParameters(boolean useKerberos) {

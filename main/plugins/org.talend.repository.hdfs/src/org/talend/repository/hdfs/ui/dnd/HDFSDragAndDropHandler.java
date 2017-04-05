@@ -207,6 +207,14 @@ public class HDFSDragAndDropHandler extends AbstractDragAndDropServiceHandler {
             return HadoopRepositoryUtil.clouderaNaviDisableSSL(connection);
         } else if (EHDFSRepositoryToComponent.CLOUDERA_NAVIGATOR_DIE_ON_ERROR.getRepositoryValue().equals(value)) {
             return HadoopRepositoryUtil.clouderaNaviDieOnError(connection);
+        } else if (EHDFSRepositoryToComponent.USE_WEBHDFS_SSL.getRepositoryValue().equals(value)) {
+            return hcConnection.isUseWebHDFSSSL();
+        } else if (EHDFSRepositoryToComponent.WEBHDFS_SSL_TRUST_STORE_PATH.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    StringUtils.trimToNull(hcConnection.getWebHDFSSSLTrustStorePath()));
+        } else if (EHDFSRepositoryToComponent.WEBHDFS_SSL_TRUST_STORE_PASSWORD.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    StringUtils.trimToNull(hcConnection.getWebHDFSSSLTrustStorePassword()));
         }
 
         return null;

@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package org.talend.repository.model.hadoopcluster;
 
@@ -10,7 +6,9 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.talend.core.model.metadata.builder.connection.ConnectionPackage;
+
 import org.talend.core.model.properties.PropertiesPackage;
 
 /**
@@ -873,13 +871,40 @@ public interface HadoopClusterPackage extends EPackage {
     int HADOOP_CLUSTER_CONNECTION__CONF_FILES = ConnectionPackage.CONNECTION_FEATURE_COUNT + 46;
 
     /**
+     * The feature id for the '<em><b>Use Web HDFSSSL</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HADOOP_CLUSTER_CONNECTION__USE_WEB_HDFSSSL = ConnectionPackage.CONNECTION_FEATURE_COUNT + 47;
+
+    /**
+     * The feature id for the '<em><b>Web HDFSSSL Trust Store Path</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HADOOP_CLUSTER_CONNECTION__WEB_HDFSSSL_TRUST_STORE_PATH = ConnectionPackage.CONNECTION_FEATURE_COUNT + 48;
+
+    /**
+     * The feature id for the '<em><b>Web HDFSSSL Trust Store Password</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HADOOP_CLUSTER_CONNECTION__WEB_HDFSSSL_TRUST_STORE_PASSWORD = ConnectionPackage.CONNECTION_FEATURE_COUNT + 49;
+
+    /**
      * The number of structural features of the '<em>Connection</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION_FEATURE_COUNT = ConnectionPackage.CONNECTION_FEATURE_COUNT + 47;
+    int HADOOP_CLUSTER_CONNECTION_FEATURE_COUNT = ConnectionPackage.CONNECTION_FEATURE_COUNT + 50;
 
     /**
      * The meta object id for the '{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionItemImpl <em>Connection Item</em>}' class.
@@ -1497,7 +1522,6 @@ public interface HadoopClusterPackage extends EPackage {
      */
     int HADOOP_SUB_CONNECTION_ITEM_FEATURE_COUNT = PropertiesPackage.CONNECTION_ITEM_FEATURE_COUNT + 0;
 
-
     /**
      * The meta object id for the '{@link org.talend.repository.model.hadoopcluster.impl.HadoopConfJarEntryImpl <em>Hadoop Conf Jar Entry</em>}' class.
      * <!-- begin-user-doc -->
@@ -2064,6 +2088,39 @@ public interface HadoopClusterPackage extends EPackage {
     EReference getHadoopClusterConnection_ConfFiles();
 
     /**
+     * Returns the meta object for the attribute '{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#isUseWebHDFSSSL <em>Use Web HDFSSSL</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Use Web HDFSSSL</em>'.
+     * @see org.talend.repository.model.hadoopcluster.HadoopClusterConnection#isUseWebHDFSSSL()
+     * @see #getHadoopClusterConnection()
+     * @generated
+     */
+    EAttribute getHadoopClusterConnection_UseWebHDFSSSL();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getWebHDFSSSLTrustStorePath <em>Web HDFSSSL Trust Store Path</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Web HDFSSSL Trust Store Path</em>'.
+     * @see org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getWebHDFSSSLTrustStorePath()
+     * @see #getHadoopClusterConnection()
+     * @generated
+     */
+    EAttribute getHadoopClusterConnection_WebHDFSSSLTrustStorePath();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getWebHDFSSSLTrustStorePassword <em>Web HDFSSSL Trust Store Password</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Web HDFSSSL Trust Store Password</em>'.
+     * @see org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getWebHDFSSSLTrustStorePassword()
+     * @see #getHadoopClusterConnection()
+     * @generated
+     */
+    EAttribute getHadoopClusterConnection_WebHDFSSSLTrustStorePassword();
+
+    /**
      * Returns the meta object for class '{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnectionItem <em>Connection Item</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2590,6 +2647,30 @@ public interface HadoopClusterPackage extends EPackage {
          * @generated
          */
         EReference HADOOP_CLUSTER_CONNECTION__CONF_FILES = eINSTANCE.getHadoopClusterConnection_ConfFiles();
+
+        /**
+         * The meta object literal for the '<em><b>Use Web HDFSSSL</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute HADOOP_CLUSTER_CONNECTION__USE_WEB_HDFSSSL = eINSTANCE.getHadoopClusterConnection_UseWebHDFSSSL();
+
+        /**
+         * The meta object literal for the '<em><b>Web HDFSSSL Trust Store Path</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute HADOOP_CLUSTER_CONNECTION__WEB_HDFSSSL_TRUST_STORE_PATH = eINSTANCE.getHadoopClusterConnection_WebHDFSSSLTrustStorePath();
+
+        /**
+         * The meta object literal for the '<em><b>Web HDFSSSL Trust Store Password</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute HADOOP_CLUSTER_CONNECTION__WEB_HDFSSSL_TRUST_STORE_PASSWORD = eINSTANCE.getHadoopClusterConnection_WebHDFSSSLTrustStorePassword();
 
         /**
          * The meta object literal for the '{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionItemImpl <em>Connection Item</em>}' class.

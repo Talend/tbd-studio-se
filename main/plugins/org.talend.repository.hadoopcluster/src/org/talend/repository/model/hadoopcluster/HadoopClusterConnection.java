@@ -1,16 +1,10 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package org.talend.repository.model.hadoopcluster;
 
-import java.util.Map;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.common.util.EMap;
+
 import org.talend.core.model.metadata.builder.connection.Connection;
 
 /**
@@ -20,7 +14,6 @@ import org.talend.core.model.metadata.builder.connection.Connection;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getDistribution <em>Distribution</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getDfVersion <em>Df Version</em>}</li>
@@ -69,7 +62,11 @@ import org.talend.core.model.metadata.builder.connection.Connection;
  *   <li>{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#isPreloadAuthentification <em>Preload Authentification</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getConfFile <em>Conf File</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getConfFiles <em>Conf Files</em>}</li>
+ *   <li>{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#isUseWebHDFSSSL <em>Use Web HDFSSSL</em>}</li>
+ *   <li>{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getWebHDFSSSLTrustStorePath <em>Web HDFSSSL Trust Store Path</em>}</li>
+ *   <li>{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getWebHDFSSSLTrustStorePassword <em>Web HDFSSSL Trust Store Password</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.talend.repository.model.hadoopcluster.HadoopClusterPackage#getHadoopClusterConnection()
  * @model
@@ -1291,5 +1288,85 @@ public interface HadoopClusterConnection extends Connection {
      * @generated
      */
     EMap<String, byte[]> getConfFiles();
+
+    /**
+     * Returns the value of the '<em><b>Use Web HDFSSSL</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Use Web HDFSSSL</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Use Web HDFSSSL</em>' attribute.
+     * @see #setUseWebHDFSSSL(boolean)
+     * @see org.talend.repository.model.hadoopcluster.HadoopClusterPackage#getHadoopClusterConnection_UseWebHDFSSSL()
+     * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+     * @generated
+     */
+    boolean isUseWebHDFSSSL();
+
+    /**
+     * Sets the value of the '{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#isUseWebHDFSSSL <em>Use Web HDFSSSL</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Use Web HDFSSSL</em>' attribute.
+     * @see #isUseWebHDFSSSL()
+     * @generated
+     */
+    void setUseWebHDFSSSL(boolean value);
+
+    /**
+     * Returns the value of the '<em><b>Web HDFSSSL Trust Store Path</b></em>' attribute.
+     * The default value is <code>""</code>.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Web HDFSSSL Trust Store Path</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Web HDFSSSL Trust Store Path</em>' attribute.
+     * @see #setWebHDFSSSLTrustStorePath(String)
+     * @see org.talend.repository.model.hadoopcluster.HadoopClusterPackage#getHadoopClusterConnection_WebHDFSSSLTrustStorePath()
+     * @model default="" dataType="org.eclipse.emf.ecore.xml.type.String"
+     * @generated
+     */
+    String getWebHDFSSSLTrustStorePath();
+
+    /**
+     * Sets the value of the '{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getWebHDFSSSLTrustStorePath <em>Web HDFSSSL Trust Store Path</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Web HDFSSSL Trust Store Path</em>' attribute.
+     * @see #getWebHDFSSSLTrustStorePath()
+     * @generated
+     */
+    void setWebHDFSSSLTrustStorePath(String value);
+
+    /**
+     * Returns the value of the '<em><b>Web HDFSSSL Trust Store Password</b></em>' attribute.
+     * The default value is <code>""</code>.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Web HDFSSSL Trust Store Password</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Web HDFSSSL Trust Store Password</em>' attribute.
+     * @see #setWebHDFSSSLTrustStorePassword(String)
+     * @see org.talend.repository.model.hadoopcluster.HadoopClusterPackage#getHadoopClusterConnection_WebHDFSSSLTrustStorePassword()
+     * @model default="" dataType="org.eclipse.emf.ecore.xml.type.String"
+     * @generated
+     */
+    String getWebHDFSSSLTrustStorePassword();
+
+    /**
+     * Sets the value of the '{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getWebHDFSSSLTrustStorePassword <em>Web HDFSSSL Trust Store Password</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Web HDFSSSL Trust Store Password</em>' attribute.
+     * @see #getWebHDFSSSLTrustStorePassword()
+     * @generated
+     */
+    void setWebHDFSSSLTrustStorePassword(String value);
 
 } // HadoopClusterConnection
