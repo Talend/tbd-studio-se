@@ -32,7 +32,7 @@ public class CDH580Spark2SparkBatchParquetNodeModuleGroupTest {
 
         results.put(
                 CDH580Spark2Constant.SPARK_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName(),
-                "((#LINK@NODE.SPARK_CONFIGURATION.DISTRIBUTION=='CLOUDERA') AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_VERSION=='Cloudera_CDH5_8')) AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+                "((#LINK@NODE.SPARK_CONFIGURATION.DISTRIBUTION=='CLOUDERA') AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_VERSION=='Cloudera_CDH580_Spark2')) AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
 
         Set<DistributionModuleGroup> moduleGroups = CDH580Spark2SparkBatchParquetNodeModuleGroup.getModuleGroups(
                 CDH580Spark2Distribution.DISTRIBUTION_NAME, CDH580Spark2Distribution.VERSION);
