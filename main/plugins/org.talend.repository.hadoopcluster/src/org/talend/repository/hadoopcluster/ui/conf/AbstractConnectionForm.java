@@ -14,8 +14,11 @@ package org.talend.repository.hadoopcluster.ui.conf;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.List;
+import java.lang.reflect.InvocationTargetException;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -28,20 +31,21 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Group;
+import org.talend.commons.exception.ExceptionHandler;
 import org.talend.commons.ui.swt.formtools.Form;
 import org.talend.commons.ui.swt.formtools.LabelledCombo;
 import org.talend.commons.ui.swt.formtools.LabelledFileField;
 import org.talend.commons.ui.swt.formtools.LabelledText;
 import org.talend.core.GlobalServiceRegister;
-import org.talend.designer.runprocess.ProcessorException;
 import org.talend.repository.hadoopcluster.conf.ETrustStoreType;
 import org.talend.repository.hadoopcluster.conf.HadoopConfsUtils;
 import org.talend.repository.hadoopcluster.conf.IPropertyConstants;
 import org.talend.repository.hadoopcluster.conf.model.HadoopConfsConnection;
 import org.talend.repository.hadoopcluster.configurator.HadoopConfigurationManager;
 import org.talend.repository.hadoopcluster.configurator.HadoopConfigurator;
-import org.talend.repository.hadoopcluster.configurator.IHadoopRetrieveConfigurationJobService;
+import org.talend.repository.hadoopcluster.configurator.IRetrieveConfsJobService;
 import org.talend.repository.hadoopcluster.i18n.Messages;
 
 /**
@@ -65,11 +69,13 @@ public abstract class AbstractConnectionForm extends Composite {
     protected LabelledText trustStorePasswordText;
 
     protected Button connButton;
-    
+
     protected Button retrieveButton;
-    
+
     protected ComboViewer serverCombo;
-    
+
+    protected IRetrieveConfsJobService retrieveJobService;
+
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     public AbstractConnectionForm(Composite parent, int style) {
@@ -148,26 +154,27 @@ public abstract class AbstractConnectionForm extends Composite {
         trustStoreTypeCombo.select(0);
         trustStorePasswordText = new LabelledText(parent, Messages.getString("HadoopImportRemoteOptionPage.auth.pwd"), 2); //$NON-NLS-1$
         trustStorePasswordText.getTextControl().setEchoChar('*');
-        trustStoreFileText = new LabelledFileField(parent,
-                Messages.getString("HadoopImportRemoteOptionPage.auth.file"), new String[] { "*.*" }); //$NON-NLS-1$ //$NON-NLS-2$
+        trustStoreFileText = new LabelledFileField(parent, Messages.getString("HadoopImportRemoteOptionPage.auth.file"), //$NON-NLS-1$
+                new String[] { "*.*" }); //$NON-NLS-1$
         updateAuthFieldsState(false);
     }
-    
-    protected void createRetieveMetaFields(Composite parent) {
-        List<String> serverList = getJobServerList();
-        if (serverList != null) { // If find the service
+
+    protected boolean createRetieveMetaFields(Composite parent) {
+        IRetrieveConfsJobService service = this.findRetrieveJobService();
+        if (service != null) { // If find the service
             retrieveButton = new Button(parent, SWT.CHECK);
             GridData retrieveData = new GridData();
             retrieveData.horizontalSpan = 1;
             retrieveButton.setLayoutData(retrieveData);
-            retrieveButton.setText("Retieve metadata by job server");
+            retrieveButton.setText(Messages.getString("HadoopImportRemoteOptionPage.retrieve.check"));
             retrieveButton.setSelection(false);
-            retrieveButton.addSelectionListener(new SelectionAdapter(){
+            retrieveButton.addSelectionListener(new SelectionAdapter() {
+
                 public void widgetSelected(SelectionEvent e) {
                     serverCombo.getControl().setEnabled(retrieveButton.getSelection());
-                } 
+                }
             });
-            
+
             serverCombo = new ComboViewer(parent);
             serverCombo.setContentProvider(new ArrayContentProvider());
             serverCombo.setLabelProvider(new LabelProvider());
@@ -175,51 +182,76 @@ public abstract class AbstractConnectionForm extends Composite {
             jobServerData.horizontalSpan = 1;
             serverCombo.getControl().setLayoutData(jobServerData);
             serverCombo.getControl().setEnabled(false);
-            serverCombo.setInput(serverList);
-            serverCombo.addSelectionChangedListener(new ISelectionChangedListener(){
+            serverCombo.setInput(service.getAllJobServerLabel());
+            serverCombo.addSelectionChangedListener(new ISelectionChangedListener() {
+
                 @Override
                 public void selectionChanged(SelectionChangedEvent event) {
-                    checkConnection();
+                    retrieveJobService = null;
                 }
             });
+            return true;
         }
+        return false;
     }
-    
-    private List<String> getJobServerList() {
-        IHadoopRetrieveConfigurationJobService service = null;
-        if (GlobalServiceRegister.getDefault().isServiceRegistered(IHadoopRetrieveConfigurationJobService.class)) {
-            service = (IHadoopRetrieveConfigurationJobService) GlobalServiceRegister.getDefault().getService(
-                    IHadoopRetrieveConfigurationJobService.class);
-            return service.getAllJobServerLabel();
+
+    IRetrieveConfsJobService findRetrieveJobService() {
+        if (GlobalServiceRegister.getDefault().isServiceRegistered(IRetrieveConfsJobService.class)) {
+            return (IRetrieveConfsJobService) GlobalServiceRegister.getDefault().getService(IRetrieveConfsJobService.class);
         }
-        
         return null;
     }
-    
+
+    private void retrieveByJobServer() {
+        IRunnableWithProgress iRunnableWithProgress = new IRunnableWithProgress() {
+
+            @Override
+            public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+                retrieveJobService = findRetrieveJobService();
+                if (retrieveJobService != null) {
+                    try {
+                        retrieveJobService.retrieveConfigurationByJobServer(getHadoopConfigurationManager().toString(),
+                                getConnURL(), true, getUsername(), getPassword(), isUseAuth(), getTrustStoreType(),
+                                getTrustStorePassword(), getTrustStoreFile(), serverCombo.getCombo().getText());
+                        firePropertyChange(IPropertyConstants.PROPERTY_RETRIEVE_JOB, null, retrieveJobService);
+                    } catch (Exception e) {
+                        firePropertyChange(IPropertyConstants.PROPERTY_RETRIEVE_JOB, null, e);
+                        throw new InvocationTargetException(e);
+                    }
+                }
+            }
+        };
+        Display.getDefault().syncExec(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    new ProgressMonitorDialog(null).run(false, false, iRunnableWithProgress);
+                } catch (InvocationTargetException e) {
+                    ExceptionHandler.process(e);
+                } catch (InterruptedException e) {
+                    ExceptionHandler.process(e);
+                }
+            }
+        });
+    }
+
     protected HadoopConfigurator getHadoopConfigurator() throws Exception {
         return HadoopConfsUtils.getHadoopConfigurator(getHadoopConfigurationManager(), getHadoopConfsConnection());
     }
 
     protected void checkConnection() {
         HadoopConfigurator hadoopConfigurator = null;
-        try {
-            hadoopConfigurator = getHadoopConfigurator();
-        } catch (Exception e) {
-            firePropertyChange(IPropertyConstants.PROPERTY_CONNECT, null, e);
-        }
-
         if (retrieveButton.getSelection()) {
+            retrieveByJobServer();
+        } else {
             try {
-                checkJobServer();
-            } catch (ProcessorException e) {
+                hadoopConfigurator = getHadoopConfigurator();
+                firePropertyChange(IPropertyConstants.PROPERTY_CONNECT, null, hadoopConfigurator);
+            } catch (Exception e) {
                 firePropertyChange(IPropertyConstants.PROPERTY_CONNECT, null, e);
             }
         }
-        firePropertyChange(IPropertyConstants.PROPERTY_CONNECT, null, hadoopConfigurator);
-    }
-    
-    protected void checkJobServer() throws ProcessorException {
-        //TODO --KK
     }
 
     protected abstract HadoopConfigurationManager getHadoopConfigurationManager();
@@ -233,7 +265,7 @@ public abstract class AbstractConnectionForm extends Composite {
         confsConnection.setTrustStoreType(getTrustStoreType());
         confsConnection.setTrustStorePassword(getTrustStorePassword());
         confsConnection.setTrustStoreFile(getTrustStoreFile());
-        
+
         return confsConnection;
     }
 
@@ -285,19 +317,8 @@ public abstract class AbstractConnectionForm extends Composite {
         }
         return false;
     }
-    
-    public boolean isRetrieveConfigByJobServer() {
-        if (retrieveButton != null) {
-            return retrieveButton.getSelection();
-        }
-        return false;
-    }
 
-    public String getRetrieveJobServer() {
-        if (serverCombo != null) {
-            return serverCombo.getCombo().getText();
-        }
-        return null;
+    public IRetrieveConfsJobService getRetrieveJobService() {
+        return retrieveJobService;
     }
-
 }

@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.talend.repository.hadoopcluster.configurator.AbsHadoopCluster;
+import org.talend.repository.hadoopcluster.configurator.HadoopCluster;
 import org.talend.repository.hadoopcluster.configurator.HadoopClusterService;
 import org.talend.repository.hadoopcluster.configurator.HadoopHostedService;
 import org.talend.repository.hadoopcluster.service.IRetrieveConfsService;
@@ -31,11 +31,11 @@ import org.talend.repository.hadoopcluster.service.IRetrieveConfsService;
  */
 public class RetrieveRemoteConfsService implements IRetrieveConfsService {
 
-    private AbsHadoopCluster cluster;
+    private HadoopCluster cluster;
 
     private Map<String, Map<String, String>> confsMap;
 
-    public RetrieveRemoteConfsService(AbsHadoopCluster cluster) {
+    public RetrieveRemoteConfsService(HadoopCluster cluster) {
         this.cluster = cluster;
     }
 
@@ -83,22 +83,16 @@ public class RetrieveRemoteConfsService implements IRetrieveConfsService {
 
     @Override
     public String exportConfs(List<String> services) throws Exception {
+        if (services == null) {
+            return null;
+        }
         String targetFolderPath = HadoopConfsUtils.getConfsSitesTempFolder();
-        if (cluster != null && cluster.getRetrieveJobServer() != null) {
-            cluster.retrieveConfigurationByJobServer(targetFolderPath);
-        } else {
-            if (services == null) {
-                return null;
-            }
-
-            Map<HadoopHostedService, HadoopClusterService> hadoopHostedServices = cluster.getHostedServices();
-            for (HadoopHostedService serviceName : hadoopHostedServices.keySet()) {
-                if (services.contains(serviceName.name())) {
-                    hadoopHostedServices.get(serviceName).exportConfigurationToXml(targetFolderPath);
-                }
+        Map<HadoopHostedService, HadoopClusterService> hadoopHostedServices = cluster.getHostedServices();
+        for (HadoopHostedService serviceName : hadoopHostedServices.keySet()) {
+            if (services.contains(serviceName.name())) {
+                hadoopHostedServices.get(serviceName).exportConfigurationToXml(targetFolderPath);
             }
         }
-
         return targetFolderPath;
     }
 

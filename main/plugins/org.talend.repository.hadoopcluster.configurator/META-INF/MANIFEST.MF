@@ -29,5 +29,7 @@ Require-Bundle: org.talend.libraries.apache.common,
  org.eclipse.ui;bundle-version="3.106.0",
  org.talend.components.api;bundle-version="0.18.0"
 Import-Package: org.eclipse.swt.widgets,
+ org.talend.designer.core.generic.model,
  org.talend.designer.rowgenerator.shadow,
- org.talend.designer.runprocess.remote.model
+ org.talend.designer.runprocess.remote.model,
+ org.talend.hadoop.distribution.model

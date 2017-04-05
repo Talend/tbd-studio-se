@@ -14,15 +14,17 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.commons.ui.swt.formtools.Form;
-import org.talend.designer.runprocess.ProcessorException;
 import org.talend.hadoop.distribution.model.DistributionBean;
+import org.talend.hadoop.distribution.model.DistributionVersion;
 import org.talend.repository.hadoopcluster.conf.HadoopConfsUtils;
 import org.talend.repository.hadoopcluster.conf.IPropertyConstants;
 import org.talend.repository.hadoopcluster.conf.RetrieveRemoteConfsService;
-import org.talend.repository.hadoopcluster.configurator.AbsHadoopCluster;
+import org.talend.repository.hadoopcluster.configurator.HadoopCluster;
 import org.talend.repository.hadoopcluster.configurator.HadoopConfigurationManager;
 import org.talend.repository.hadoopcluster.configurator.HadoopConfigurator;
+import org.talend.repository.hadoopcluster.configurator.IRetrieveConfsJobService;
 import org.talend.repository.hadoopcluster.i18n.Messages;
+import org.talend.repository.hadoopcluster.service.IRetrieveConfsService;
 
 /**
  * 
@@ -32,6 +34,7 @@ import org.talend.repository.hadoopcluster.i18n.Messages;
 public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage implements PropertyChangeListener {
 
     private DistributionBean distribution;
+    private  DistributionVersion distriVersion;
 
     private Combo clustersCombo;
 
@@ -40,13 +43,14 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
     private HadoopServicesTableComposite servicesTableComp;
 
     private HadoopConfigurator configurator;
-    
+
     private AbstractConnectionForm connectionForm;
 
-    public HadoopImportRemoteOptionPage(DistributionBean distribution) {
+    public HadoopImportRemoteOptionPage(DistributionBean distribution, DistributionVersion distriVersion) {
         super("HadoopImportRemoteOptionPage"); //$NON-NLS-1$
         setTitle(Messages.getString("HadoopImportRemoteOptionPage.title")); //$NON-NLS-1$
         this.distribution = distribution;
+        this.distriVersion = distriVersion;
     }
 
     @Override
@@ -68,19 +72,19 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
 
             @Override
             public void widgetSelected(SelectionEvent e) {
-                if (configurator != null) {
-                    try {
-                        AbsHadoopCluster cluster = configurator.getCluster(clustersCombo.getText());
-                        if (connectionForm.isRetrieveConfigByJobServer()) {
-                            cluster.setRetrieveJobServer(connectionForm.getRetrieveJobServer());
-                        } else {
-                            cluster.setRetrieveJobServer(null);
-                        }
+                try {
+                    IRetrieveConfsJobService retrieveJobServer = connectionForm.getRetrieveJobService();
+                    if (retrieveJobServer != null) {
+                        retrieveJobServer.setDistributionVersion(distriVersion);
+                        retrieveJobServer.setSelectedCluster(clustersCombo.getText());
+                        confsService = (IRetrieveConfsService) retrieveJobServer;
+                    } else if (configurator != null) {
+                        HadoopCluster cluster = configurator.getCluster(clustersCombo.getText());
                         confsService = new RetrieveRemoteConfsService(cluster);
-                        servicesTableComp.setServices(confsService.getAllServices());
-                    } catch (Exception ex) {
-                        ExceptionHandler.process(ex);
                     }
+                    servicesTableComp.setServices(confsService.getAllServices());
+                } catch (Exception ex) {
+                    ExceptionHandler.process(ex);
                 }
             }
         });
@@ -145,15 +149,21 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
                 }
             } else if (newValue instanceof Exception) {
                 exception = (Exception) newValue;
+                setErrorMessage(Messages.getString("HadoopImportRemoteOptionPage.connectionFailed")); //$NON-NLS-1$
             }
-            if (exception != null) {
-                if (exception instanceof ProcessorException) {
-                    setErrorMessage(Messages.getString("HadoopImportRemoteOptionPage.jobServerFailed")); //$NON-NLS-1$
-                } else {
-                    setErrorMessage(Messages.getString("HadoopImportRemoteOptionPage.connectionFailed")); //$NON-NLS-1$
-                }
+        }
+
+        if (IPropertyConstants.PROPERTY_RETRIEVE_JOB.equals(propertyName)) {
+            if (newValue instanceof IRetrieveConfsJobService) {
+                IRetrieveConfsJobService retrieveConfigJobService = (IRetrieveConfsJobService) newValue;
+                List<String> clusters = retrieveConfigJobService.getAllClusterName();
+                clustersCombo.setItems(clusters.toArray(new String[0]));
+                clustersCombo.select(0);
+            } else if (newValue instanceof Exception) {
+                exception = (Exception) newValue;
+                setErrorMessage(Messages.getString("HadoopImportRemoteOptionPage.connectionFailed")); //$NON-NLS-1$
                 ExceptionHandler.process(exception);
-            } 
+            }
         }
     }
 

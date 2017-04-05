@@ -87,10 +87,10 @@ public class HadoopImportConfsWizard extends Wizard {
                         this.getContainer().run(true, true, new IRunnableWithProgress() {
 
                             @Override
-                            public void run(final IProgressMonitor monitor) throws InvocationTargetException,
-                                    InterruptedException {
-                                monitor.beginTask(
-                                        Messages.getString("HadoopImportConfsWizard.doingImport"), IProgressMonitor.UNKNOWN); //$NON-NLS-1$
+                            public void run(final IProgressMonitor monitor)
+                                    throws InvocationTargetException, InterruptedException {
+                                monitor.beginTask(Messages.getString("HadoopImportConfsWizard.doingImport"), //$NON-NLS-1$
+                                        IProgressMonitor.UNKNOWN);
                                 try {
                                     if (contextGroup == null) {
                                         confJarName = HadoopConfsUtils.getConfsJarDefaultName(connectionItem, false);

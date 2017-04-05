@@ -23,7 +23,7 @@ import org.apache.ambari.api.model.ApiCluster;
 import org.apache.ambari.api.model.ApiClusterList;
 import org.apache.ambari.api.v1.ClusterResource;
 import org.apache.ambari.api.v1.RootResourceV1;
-import org.talend.repository.hadoopcluster.configurator.AbsHadoopCluster;
+import org.talend.repository.hadoopcluster.configurator.HadoopCluster;
 import org.talend.repository.hadoopcluster.configurator.HadoopConfigurator;
 
 /**
@@ -93,7 +93,7 @@ public class HadoopAmbariConfigurator implements HadoopConfigurator {
      * @see org.talend.repository.hadoopcluster.configurator.HadoopConfigurator#getCluster(java.lang.String)
      */
     @Override
-    public AbsHadoopCluster getCluster(String name) {
+    public HadoopCluster getCluster(String name) {
         ClusterResource cluster = api.getClustersResource().getClusterResource(name);
         return new HadoopAmbariCluster(cluster);
     }

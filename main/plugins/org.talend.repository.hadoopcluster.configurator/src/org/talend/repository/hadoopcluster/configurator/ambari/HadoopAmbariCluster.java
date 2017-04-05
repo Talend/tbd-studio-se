@@ -30,7 +30,7 @@ import org.apache.ambari.api.model.ApiService;
 import org.apache.ambari.api.model.ApiServiceList;
 import org.apache.ambari.api.v1.ClusterResource;
 import org.apache.ambari.api.v1.ServicesResource;
-import org.talend.repository.hadoopcluster.configurator.AbsHadoopCluster;
+import org.talend.repository.hadoopcluster.configurator.HadoopCluster;
 import org.talend.repository.hadoopcluster.configurator.HadoopClusterService;
 import org.talend.repository.hadoopcluster.configurator.HadoopHostedService;
 
@@ -38,7 +38,7 @@ import org.talend.repository.hadoopcluster.configurator.HadoopHostedService;
  * created by bchen on Jun 3, 2015 Detailled comment
  *
  */
-public class HadoopAmbariCluster extends AbsHadoopCluster {
+public class HadoopAmbariCluster implements HadoopCluster {
 
     ClusterResource cluster;
 

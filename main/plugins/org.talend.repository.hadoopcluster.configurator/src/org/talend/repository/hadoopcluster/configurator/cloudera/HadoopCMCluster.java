@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.talend.repository.hadoopcluster.configurator.AbsHadoopCluster;
+import org.talend.repository.hadoopcluster.configurator.HadoopCluster;
 import org.talend.repository.hadoopcluster.configurator.HadoopClusterService;
 import org.talend.repository.hadoopcluster.configurator.HadoopHostedService;
 
@@ -29,7 +29,7 @@ import com.cloudera.api.v3.ServicesResourceV3;
  * created by bchen on May 28, 2015 Detailled comment
  *
  */
-public class HadoopCMCluster extends AbsHadoopCluster {
+public class HadoopCMCluster implements HadoopCluster {
 
     ServicesResourceV3 cluster;
     
