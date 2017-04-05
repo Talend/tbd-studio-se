@@ -30,6 +30,10 @@ public class CDH580Spark2SparkStreamingModuleGroupTest {
         Map<String, String> results = new HashMap<>();
 
         results.put(CDH580Spark2Constant.SPARK_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+        results.put(CDH580Spark2Constant.HDFS_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+        results.put(CDH580Spark2Constant.MAPREDUCE_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+        results.put(CDH580Spark2Constant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+        results.put(CDH580Spark2Constant.TALEND_CLOUDERA_CDH_5_5_NAVIGATOR.getModuleName(), "(USE_CLOUDERA_NAVIGATOR=='true')"); //$NON-NLS-1$
 
         Set<DistributionModuleGroup> moduleGroups = CDH580Spark2SparkStreamingModuleGroup.getModuleGroups();
         assertEquals(3, moduleGroups.size());
