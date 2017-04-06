@@ -15,6 +15,7 @@ package org.talend.repository.hdfs.action;
 import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.ui.IWorkbench;
 import org.talend.commons.ui.runtime.image.IImage;
+import org.talend.core.hadoop.version.EHadoopDistributions;
 import org.talend.core.model.repository.ERepositoryObjectType;
 import org.talend.core.runtime.hd.IHDistributionVersion;
 import org.talend.hadoop.distribution.helper.HadoopDistributionsHelper;
@@ -59,6 +60,9 @@ public class CreateHDFSAction extends CreateHadoopNodeAction {
             DistributionBean hdfsDistribution = HadoopDistributionsHelper.HDFS.getDistribution(hcConnection.getDistribution(),
                     false);
             if (hdfsDistribution != null) {
+                if (hdfsDistribution.getDisplayName() == EHadoopDistributions.GOOGLE_CLOUD_DATAPROC.getDisplayName()) {
+                    return true;
+                }
                 IHDistributionVersion hdVersion = hdfsDistribution.getHDVersion(hcConnection.getDfVersion(), false);
                 if (hdVersion != null) { // found, don't hide
                     return false;
