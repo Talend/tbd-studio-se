@@ -24,12 +24,10 @@ Require-Bundle: org.talend.libraries.apache.common,
  org.talend.model,
  org.talend.designer.core,
  org.talend.designer.runprocess,
- org.talend.designer.runprocess.remote,
  org.talend.core.ui;bundle-version="6.4.0",
  org.eclipse.ui;bundle-version="3.106.0",
  org.talend.components.api;bundle-version="0.18.0"
 Import-Package: org.eclipse.swt.widgets,
  org.talend.designer.core.generic.model,
  org.talend.designer.rowgenerator.shadow,
- org.talend.designer.runprocess.remote.model,
  org.talend.hadoop.distribution.model
