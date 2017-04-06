@@ -32,8 +32,6 @@ public class HadoopConfsConnection {
 
     private String trustStorePassword;
 
-    private String retrieveServer;;
-
     public String getConnURL() {
         return this.connURL;
     }
@@ -88,13 +86,5 @@ public class HadoopConfsConnection {
 
     public void setTrustStorePassword(String trustStorePassword) {
         this.trustStorePassword = trustStorePassword;
-    }
-
-    public String getRetrieveServer() {
-        return retrieveServer;
-    }
-
-    public void setRetrieveServer(String retrieveServer) {
-        this.retrieveServer = retrieveServer;
     }
 }

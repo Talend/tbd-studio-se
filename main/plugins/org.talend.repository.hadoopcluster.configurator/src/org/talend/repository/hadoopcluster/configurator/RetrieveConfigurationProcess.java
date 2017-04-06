@@ -31,7 +31,6 @@ import org.talend.core.model.process.IConnection;
 import org.talend.core.model.process.IElementParameter;
 import org.talend.core.model.properties.Item;
 import org.talend.core.model.properties.ProcessItem;
-import org.talend.core.model.properties.PropertiesFactory;
 import org.talend.core.model.properties.Property;
 import org.talend.core.ui.component.ComponentsFactoryProvider;
 import org.talend.designer.core.generic.model.GenericElementParameter;
@@ -135,10 +134,7 @@ public class RetrieveConfigurationProcess extends org.talend.designer.core.ui.ed
         IComponent component = ComponentsFactoryProvider.getInstance().get(HADOOP_COMPONET_NAME,
                 ComponentCategory.CATEGORY_4_DI.getName());
         if (component != null) {
-            Property property = PropertiesFactory.eINSTANCE.createProperty();
-            org.talend.designer.core.ui.editor.process.Process process = new org.talend.designer.core.ui.editor.process.Process(
-                    property);
-            Node node = new Node(component, process);
+            Node node = new Node(component, this);
             return node;
         }
         return null;
@@ -148,10 +144,7 @@ public class RetrieveConfigurationProcess extends org.talend.designer.core.ui.ed
         String componentName = "tLogRow";//$NON-NLS-1$
         IComponent component = ComponentsFactoryProvider.getInstance().get(componentName,
                 ComponentCategory.CATEGORY_4_DI.getName());
-        Property property = PropertiesFactory.eINSTANCE.createProperty();
-        org.talend.designer.core.ui.editor.process.Process process = new org.talend.designer.core.ui.editor.process.Process(
-                property);
-        Node node = new Node(component, process);
+        Node node = new Node(component, this);
 
         node.getElementParameter("UNIQUE_NAME").setValue(logUniqueId);//$NON-NLS-1$
         node.getElementParameter("FIELDSEPARATOR").setValue(getWrapedStringValue(fieldSeparetor));//$NON-NLS-1$
