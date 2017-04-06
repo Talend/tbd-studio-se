@@ -175,20 +175,14 @@ public class HadoopConfsUtils {
         return item.getProperty().getId() + jarName;
     }
 
-    public static Set<String> getConfsJarDefaultNames(HadoopClusterConnectionItem connectionItem) {
-        return getConfsJarDefaultNames(connectionItem, false);
-    }
-
     /**
      * Get all conf jars names. If the connection is in context mode each context group will has one conf jar, otherwise
      * there will be only one conf jar.
      *
      * @param connectionItem
-     * @param createJarIfNotExist
-     *
      * @return
      */
-    public static Set<String> getConfsJarDefaultNames(HadoopClusterConnectionItem connectionItem, boolean createJarIfNotExist) {
+    public static Set<String> getConfsJarDefaultNames(HadoopClusterConnectionItem connectionItem) {
         Set<String> jarNames = new HashSet<>();
         HadoopClusterConnection connection = (HadoopClusterConnection) connectionItem.getConnection();
         if (connection.isContextMode()) {
@@ -196,12 +190,11 @@ public class HadoopConfsUtils {
             if (contextItem != null) {
                 EList<ContextType> contexts = contextItem.getContext();
                 for (ContextType contextType : contexts) {
-                    jarNames.add(
-                            HadoopConfsUtils.getConfsJarDefaultName(connectionItem, createJarIfNotExist, contextType.getName()));
+                    jarNames.add(HadoopConfsUtils.getConfsJarDefaultName(connectionItem, false, contextType.getName()));
                 }
             }
         } else {
-            jarNames.add(HadoopConfsUtils.getConfsJarDefaultName(connectionItem, createJarIfNotExist));
+            jarNames.add(HadoopConfsUtils.getConfsJarDefaultName(connectionItem, false));
         }
         return jarNames;
     }
