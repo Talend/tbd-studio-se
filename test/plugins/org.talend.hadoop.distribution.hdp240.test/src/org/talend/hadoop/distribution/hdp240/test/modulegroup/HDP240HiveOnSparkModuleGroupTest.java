@@ -33,8 +33,9 @@ public class HDP240HiveOnSparkModuleGroupTest {
     public void testModuleGroups() throws Exception {
         Map<String, String> results = new HashMap<String, String>();
         results.put(HDP240Constant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
+        results.put(HDP240Constant.TEZ_MODULE_GROUP.getModuleName(), null);
         Set<DistributionModuleGroup> moduleGroups = HDP240HiveOnSparkModuleGroup.getModuleGroups();
-        assertEquals(1, moduleGroups.size());
+        assertEquals(2, moduleGroups.size());
         moduleGroups.iterator();
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName()));

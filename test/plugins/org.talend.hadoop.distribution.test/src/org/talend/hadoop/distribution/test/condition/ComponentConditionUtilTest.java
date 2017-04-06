@@ -12,11 +12,13 @@
 // ============================================================================
 package org.talend.hadoop.distribution.test.condition;
 
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -122,9 +124,9 @@ public class ComponentConditionUtilTest {
         sparkVersionsMap.put(ESparkVersion.SPARK_1_6, distributionVersions);
         String[] showIfs = ComponentConditionUtil.generateSparkVersionShowIfConditions(sparkVersionsMap);
         assertTrue(showIfs.length == 2);
-        assertEquals("(((DISTRIBUTION=='DISTRIB1') AND (SPARK_VERSION=='VERSION1')))", showIfs[1]); //$NON-NLS-1$
-        assertEquals(
-                "(((DISTRIBUTION=='DISTRIB3') AND (SPARK_VERSION=='VERSION3')) OR ((DISTRIBUTION=='DISTRIB2') AND (SPARK_VERSION=='VERSION2')))", showIfs[0]); //$NON-NLS-1$
-
+        assertThat(Arrays.asList(showIfs), hasItem("(((DISTRIBUTION=='DISTRIB1') AND (SPARK_VERSION=='VERSION1')))")); //$NON-NLS-1$
+        assertThat(
+                Arrays.asList(showIfs),
+                hasItem("(((DISTRIBUTION=='DISTRIB3') AND (SPARK_VERSION=='VERSION3')) OR ((DISTRIBUTION=='DISTRIB2') AND (SPARK_VERSION=='VERSION2')))")); //$NON-NLS-1$
     }
 }

@@ -242,7 +242,7 @@ public class CDH580Spark2Distribution extends AbstractDistribution implements IC
 
     @Override
     public boolean doSupportSparkStandaloneMode() {
-        return true;
+        return false;
     }
 
     @Override

@@ -29,11 +29,19 @@ import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
+import org.talend.hadoop.distribution.constants.SparkBatchConstant;
+import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.dataproc.IGoogleDataprocDistribution;
 import org.talend.hadoop.distribution.dataproc11.modulegroup.Dataproc11HDFSModuleGroup;
 import org.talend.hadoop.distribution.dataproc11.modulegroup.Dataproc11HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.dataproc11.modulegroup.Dataproc11SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.dataproc11.modulegroup.Dataproc11SparkStreamingModuleGroup;
+import org.talend.hadoop.distribution.dataproc11.modulegroup.node.sparkbatch.Dataproc11SparkBatchParquetNodeModuleGroup;
+import org.talend.hadoop.distribution.dataproc11.modulegroup.node.sparkstreaming.Dataproc11SparkStreamingParquetNodeModuleGroup;
+import org.talend.hadoop.distribution.dataproc11.modulegroup.node.sparkstreaming.Dataproc11SparkStreamingKafkaAssemblyModuleGroup;
+import org.talend.hadoop.distribution.dataproc11.modulegroup.node.sparkstreaming.Dataproc11SparkStreamingKafkaAvroModuleGroup;
+import org.talend.hadoop.distribution.dataproc11.modulegroup.node.sparkstreaming.Dataproc11SparkStreamingKafkaClientModuleGroup;
+import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
 public class Dataproc11Distribution extends AbstractDistribution implements HDFSComponent, SparkBatchComponent,
@@ -80,8 +88,31 @@ public class Dataproc11Distribution extends AbstractDistribution implements HDFS
 
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(String distribution, String version) {
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
-        // Mapreduce nodes
+        // Mapreduce node
+        
+        // Spark Batch Parquet nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
+                Dataproc11SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
+                Dataproc11SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
+        
+        // Spark Streaming Parquet nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_INPUT_COMPONENT),
+                Dataproc11SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_OUTPUT_COMPONENT),
+                Dataproc11SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
+        result.put(
+                new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_STREAM_INPUT_COMPONENT),
+                Dataproc11SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
 
+     // Spark Streaming Kafka nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_INPUT_COMPONENT),
+                Dataproc11SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_AVRO_INPUT_COMPONENT),
+                Dataproc11SparkStreamingKafkaAvroModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT),
+                Dataproc11SparkStreamingKafkaClientModuleGroup.getModuleGroups(distribution, version));
+        
         return result;
     }
 
@@ -203,5 +234,10 @@ public class Dataproc11Distribution extends AbstractDistribution implements HDFS
     @Override
     public boolean doSupportOldImportMode() {
         return false;
+    }
+    
+    @Override
+    public SparkStreamingKafkaVersion getSparkStreamingKafkaVersion() {
+        return SparkStreamingKafkaVersion.KAFKA_0_10;
     }
 }

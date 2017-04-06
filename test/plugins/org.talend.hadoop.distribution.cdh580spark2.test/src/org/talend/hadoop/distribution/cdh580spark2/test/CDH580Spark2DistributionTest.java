@@ -51,7 +51,7 @@ public class CDH580Spark2DistributionTest {
         assertFalse(((SparkBatchComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_1_3));
         assertTrue(((SparkBatchComponent) distribution).doSupportDynamicMemoryAllocation());
         assertFalse(((SparkBatchComponent) distribution).isExecutedThroughSparkJobServer());
-        assertTrue(((SparkBatchComponent) distribution).doSupportSparkStandaloneMode());
+        assertFalse(((SparkBatchComponent) distribution).doSupportSparkStandaloneMode());
         assertTrue(((SparkBatchComponent) distribution).doSupportSparkYarnClientMode());
         assertTrue(((SparkStreamingComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_2_0));
         assertFalse(((SparkStreamingComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_1_6));
@@ -61,7 +61,7 @@ public class CDH580Spark2DistributionTest {
         assertTrue(((SparkStreamingComponent) distribution).doSupportDynamicMemoryAllocation());
         assertFalse(((SparkStreamingComponent) distribution).isExecutedThroughSparkJobServer());
         assertTrue(((SparkStreamingComponent) distribution).doSupportCheckpointing());
-        assertTrue(((SparkStreamingComponent) distribution).doSupportSparkStandaloneMode());
+        assertFalse(((SparkStreamingComponent) distribution).doSupportSparkStandaloneMode());
         assertTrue(((SparkStreamingComponent) distribution).doSupportSparkYarnClientMode());
         assertTrue(((SparkStreamingComponent) distribution).doSupportSparkYarnClientMode());
         assertTrue(((SparkStreamingComponent) distribution).doSupportBackpressure());

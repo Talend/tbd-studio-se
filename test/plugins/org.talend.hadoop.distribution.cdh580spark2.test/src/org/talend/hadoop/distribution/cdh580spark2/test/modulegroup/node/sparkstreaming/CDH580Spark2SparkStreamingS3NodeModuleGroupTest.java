@@ -32,7 +32,7 @@ public class CDH580Spark2SparkStreamingS3NodeModuleGroupTest {
 
         results.put(
                 CDH580Spark2Constant.SPARK_S3_MRREQUIRED_MODULE_GROUP.getModuleName(),
-                "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION=='CLOUDERA') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION=='Cloudera_CDH5_8')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+                "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION=='CLOUDERA') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION=='Cloudera_CDH580_Spark2')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
 
         Set<DistributionModuleGroup> moduleGroups = CDH580Spark2SparkStreamingS3NodeModuleGroup.getModuleGroups(
                 CDH580Spark2Distribution.DISTRIBUTION_NAME, CDH580Spark2Distribution.VERSION);
