@@ -357,7 +357,7 @@ public class HadoopServiceProperties {
     }
 
     public String getProjectId() {
-        return this.projectId;
+        return getRealValue(this.projectId);
     }
 
     public void setProjectId(String projectId) {
@@ -365,7 +365,7 @@ public class HadoopServiceProperties {
     }
 
     public String getRegion() {
-        return this.region;
+        return getRealValue(this.region);
     }
 
     public void setRegion(String region) {
@@ -373,7 +373,7 @@ public class HadoopServiceProperties {
     }
 
     public String getClusterName() {
-        return this.clusterName;
+        return getRealValue(this.clusterName);
     }
 
     public void setClusterName(String clusterName) {
