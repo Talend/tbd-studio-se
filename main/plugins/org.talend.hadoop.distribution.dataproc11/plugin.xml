@@ -412,7 +412,7 @@
 		<!-- hive on spark -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
-            id="hive-exec-dataproc1.1"
+            id="hive-exec-dataproc11"
             name="hive-exec-2.1.0-dataproc11.jar"
             mvn_uri="mvn:org.talend.libraries/hive-exec-2.1.0-dataproc11/6.0.0">
         </libraryNeeded>
