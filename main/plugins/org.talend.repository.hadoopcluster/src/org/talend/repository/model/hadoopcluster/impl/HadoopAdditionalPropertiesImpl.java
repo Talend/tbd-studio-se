@@ -25,11 +25,11 @@ import org.talend.repository.model.hadoopcluster.HadoopClusterPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopAdditionalPropertiesImpl#getTypedKey <em>Key</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.impl.HadoopAdditionalPropertiesImpl#getTypedValue <em>Value</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
