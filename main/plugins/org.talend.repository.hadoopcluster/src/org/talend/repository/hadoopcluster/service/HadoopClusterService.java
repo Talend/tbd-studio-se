@@ -472,4 +472,17 @@ public class HadoopClusterService implements IHadoopClusterService {
         return HCRepositoryUtil.getRepositoryTypeOfHadoopSubItem(subItem);
     }
 
+    @Override
+    public boolean isUseSparkProperties(Connection connection) {
+        HadoopClusterConnection hadoopClusterConnection = null;
+        if (connection != null && connection instanceof HadoopClusterConnection) {
+            hadoopClusterConnection = (HadoopClusterConnection) connection;
+        } else {
+            hadoopClusterConnection = HCRepositoryUtil.getRelativeHadoopClusterConnection(connection);
+        }
+        if (hadoopClusterConnection != null) {
+            return hadoopClusterConnection.isUseSparkProperties();
+        }
+        return false;
+    }
 }
