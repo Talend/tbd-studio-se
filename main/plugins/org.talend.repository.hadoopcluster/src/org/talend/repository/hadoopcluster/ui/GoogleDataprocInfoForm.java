@@ -425,6 +425,8 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
         hideControl(credentialsComposite, hide);
         authPartComposite.layout();
         authPartComposite.getParent().layout();
+        this.layout();
+        this.getParent().layout();
     }
 
     @Override
