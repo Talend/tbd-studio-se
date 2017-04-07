@@ -40,6 +40,7 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-ActivationPolicy: lazy
 Export-Package: org.talend.repository.hadoopcluster.action,
  org.talend.repository.hadoopcluster.action.common,
+ org.talend.repository.hadoopcluster.conf,
  org.talend.repository.hadoopcluster.creator,
  org.talend.repository.hadoopcluster.model.migration,
  org.talend.repository.hadoopcluster.node.model,

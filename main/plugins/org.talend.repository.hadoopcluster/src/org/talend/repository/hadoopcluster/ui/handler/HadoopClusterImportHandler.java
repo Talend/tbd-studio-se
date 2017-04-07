@@ -23,7 +23,6 @@ import org.talend.core.hadoop.IHadoopClusterService;
 import org.talend.core.model.metadata.builder.connection.DatabaseConnection;
 import org.talend.core.model.properties.DatabaseConnectionItem;
 import org.talend.core.model.properties.Item;
-import org.talend.repository.hadoopcluster.conf.HadoopConfsUtils;
 import org.talend.repository.items.importexport.handlers.imports.ImportRepTypeHandler;
 import org.talend.repository.items.importexport.handlers.model.ImportItem;
 import org.talend.repository.items.importexport.manager.ResourcesManager;
@@ -43,7 +42,7 @@ public class HadoopClusterImportHandler extends ImportRepTypeHandler {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see
      * org.talend.repository.items.importexport.handlers.imports.ImportRepTypeHandler#findRelatedImportItems(org.eclipse
      * .core.runtime.IProgressMonitor,
@@ -91,17 +90,6 @@ public class HadoopClusterImportHandler extends ImportRepTypeHandler {
             }
         }
         return relatedItemRecords;
-    }
-
-    @Override
-    public void afterImportingItems(IProgressMonitor monitor, ResourcesManager resManager, ImportItem importItem) {
-        super.afterImportingItems(monitor, resManager, importItem);
-        Item item = importItem.getItem();
-        if (item instanceof HadoopClusterConnectionItem) {
-            // Deploy the conf jars if needed.
-            HadoopConfsUtils.getConfsJarDefaultNames((HadoopClusterConnectionItem) item, true);
-        }
-
     }
 
 }

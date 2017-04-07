@@ -10,7 +10,9 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.talend.core.model.metadata.builder.connection.ConnectionPackage;
+
 import org.talend.core.model.properties.PropertiesPackage;
 
 /**
@@ -864,22 +866,13 @@ public interface HadoopClusterPackage extends EPackage {
     int HADOOP_CLUSTER_CONNECTION__CONF_FILE = ConnectionPackage.CONNECTION_FEATURE_COUNT + 45;
 
     /**
-     * The feature id for the '<em><b>Conf Files</b></em>' map.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int HADOOP_CLUSTER_CONNECTION__CONF_FILES = ConnectionPackage.CONNECTION_FEATURE_COUNT + 46;
-
-    /**
      * The number of structural features of the '<em>Connection</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int HADOOP_CLUSTER_CONNECTION_FEATURE_COUNT = ConnectionPackage.CONNECTION_FEATURE_COUNT + 47;
+    int HADOOP_CLUSTER_CONNECTION_FEATURE_COUNT = ConnectionPackage.CONNECTION_FEATURE_COUNT + 46;
 
     /**
      * The meta object id for the '{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionItemImpl <em>Connection Item</em>}' class.
@@ -1499,44 +1492,6 @@ public interface HadoopClusterPackage extends EPackage {
 
 
     /**
-     * The meta object id for the '{@link org.talend.repository.model.hadoopcluster.impl.HadoopConfJarEntryImpl <em>Hadoop Conf Jar Entry</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.talend.repository.model.hadoopcluster.impl.HadoopConfJarEntryImpl
-     * @see org.talend.repository.model.hadoopcluster.impl.HadoopClusterPackageImpl#getHadoopConfJarEntry()
-     * @generated
-     */
-    int HADOOP_CONF_JAR_ENTRY = 5;
-
-    /**
-     * The feature id for the '<em><b>Key</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int HADOOP_CONF_JAR_ENTRY__KEY = 0;
-
-    /**
-     * The feature id for the '<em><b>Value</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int HADOOP_CONF_JAR_ENTRY__VALUE = 1;
-
-    /**
-     * The number of structural features of the '<em>Hadoop Conf Jar Entry</em>' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int HADOOP_CONF_JAR_ENTRY_FEATURE_COUNT = 2;
-
-
-    /**
      * Returns the meta object for class '{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection <em>Connection</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2053,17 +2008,6 @@ public interface HadoopClusterPackage extends EPackage {
     EAttribute getHadoopClusterConnection_ConfFile();
 
     /**
-     * Returns the meta object for the map '{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getConfFiles <em>Conf Files</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for the map '<em>Conf Files</em>'.
-     * @see org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getConfFiles()
-     * @see #getHadoopClusterConnection()
-     * @generated
-     */
-    EReference getHadoopClusterConnection_ConfFiles();
-
-    /**
      * Returns the meta object for class '{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnectionItem <em>Connection Item</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2148,40 +2092,6 @@ public interface HadoopClusterPackage extends EPackage {
      * @generated
      */
     EClass getHadoopSubConnectionItem();
-
-    /**
-     * Returns the meta object for class '{@link java.util.Map.Entry <em>Hadoop Conf Jar Entry</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for class '<em>Hadoop Conf Jar Entry</em>'.
-     * @see java.util.Map.Entry
-     * @model keyDataType="org.eclipse.emf.ecore.xml.type.String"
-     *        valueDataType="org.eclipse.emf.ecore.EByteArray"
-     * @generated
-     */
-    EClass getHadoopConfJarEntry();
-
-    /**
-     * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Key</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for the attribute '<em>Key</em>'.
-     * @see java.util.Map.Entry
-     * @see #getHadoopConfJarEntry()
-     * @generated
-     */
-    EAttribute getHadoopConfJarEntry_Key();
-
-    /**
-     * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Value</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for the attribute '<em>Value</em>'.
-     * @see java.util.Map.Entry
-     * @see #getHadoopConfJarEntry()
-     * @generated
-     */
-    EAttribute getHadoopConfJarEntry_Value();
 
     /**
      * Returns the factory that creates the instances of the model.
@@ -2584,14 +2494,6 @@ public interface HadoopClusterPackage extends EPackage {
         EAttribute HADOOP_CLUSTER_CONNECTION__CONF_FILE = eINSTANCE.getHadoopClusterConnection_ConfFile();
 
         /**
-         * The meta object literal for the '<em><b>Conf Files</b></em>' map feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        EReference HADOOP_CLUSTER_CONNECTION__CONF_FILES = eINSTANCE.getHadoopClusterConnection_ConfFiles();
-
-        /**
          * The meta object literal for the '{@link org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionItemImpl <em>Connection Item</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -2662,32 +2564,6 @@ public interface HadoopClusterPackage extends EPackage {
          * @generated
          */
         EClass HADOOP_SUB_CONNECTION_ITEM = eINSTANCE.getHadoopSubConnectionItem();
-
-        /**
-         * The meta object literal for the '{@link org.talend.repository.model.hadoopcluster.impl.HadoopConfJarEntryImpl <em>Hadoop Conf Jar Entry</em>}' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see org.talend.repository.model.hadoopcluster.impl.HadoopConfJarEntryImpl
-         * @see org.talend.repository.model.hadoopcluster.impl.HadoopClusterPackageImpl#getHadoopConfJarEntry()
-         * @generated
-         */
-        EClass HADOOP_CONF_JAR_ENTRY = eINSTANCE.getHadoopConfJarEntry();
-
-        /**
-         * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        EAttribute HADOOP_CONF_JAR_ENTRY__KEY = eINSTANCE.getHadoopConfJarEntry_Key();
-
-        /**
-         * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        EAttribute HADOOP_CONF_JAR_ENTRY__VALUE = eINSTANCE.getHadoopConfJarEntry_Value();
 
     }
 

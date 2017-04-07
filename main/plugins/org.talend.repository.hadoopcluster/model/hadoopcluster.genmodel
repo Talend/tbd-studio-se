@@ -53,7 +53,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hadoopcluster.ecore#//HadoopClusterConnection/maprTHadoopLogin"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hadoopcluster.ecore#//HadoopClusterConnection/preloadAuthentification"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hadoopcluster.ecore#//HadoopClusterConnection/confFile"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hadoopcluster.ecore#//HadoopClusterConnection/confFiles"/>
     </genClasses>
     <genClasses ecoreClass="hadoopcluster.ecore#//HadoopClusterConnectionItem"/>
     <genClasses ecoreClass="hadoopcluster.ecore#//HadoopAdditionalProperties">
@@ -65,9 +64,5 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hadoopcluster.ecore#//HadoopSubConnection/hadoopProperties"/>
     </genClasses>
     <genClasses ecoreClass="hadoopcluster.ecore#//HadoopSubConnectionItem"/>
-    <genClasses ecoreClass="hadoopcluster.ecore#//HadoopConfJarEntry">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hadoopcluster.ecore#//HadoopConfJarEntry/key"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hadoopcluster.ecore#//HadoopConfJarEntry/value"/>
-    </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -19,5 +19,6 @@ package org.talend.repository.hadoopcluster.conf;
 public interface IPropertyConstants {
 
     public final static String PROPERTY_CONNECT = "PROPERTY_CONNECT"; //$NON-NLS-1$
+    public final static String PROPERTY_RETRIEVE_JOB ="PROPERTY_RETRIEVE_JOB";//$NON-NLS-1$
 
 }

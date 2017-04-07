@@ -22,6 +22,6 @@ public interface HadoopConfigurator {
 
     public List<String> getAllClusters();
 
-    public HadoopCluster getCluster(String name);
-
+    public HadoopCluster getCluster(String name);    
+    
 }

@@ -60,14 +60,13 @@ import org.talend.repository.hadoopcluster.conf.HadoopConfsUtils;
 import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopForm;
 import org.talend.repository.hadoopcluster.ui.common.IHadoopClusterInfoForm;
-import org.talend.repository.hadoopcluster.ui.conf.HadoopContextConfConfigDialog;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.hadoopcluster.util.HCVersionUtil;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnectionItem;
 
 /**
- *
+ * 
  * created by ycbai on 2014年9月16日 Detailled comment
  *
  */
@@ -755,7 +754,7 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
                 if (parentForm instanceof AbstractHadoopForm) {
                     form = (AbstractHadoopForm) parentForm;
                 }
-                new HadoopContextConfConfigDialog(getShell(), form, (HadoopClusterConnectionItem) connectionItem).open();
+                HadoopConfsUtils.openHadoopConfsWizard(form, (HadoopClusterConnectionItem) connectionItem, creation);
             }
         });
         if (useClouderaNaviBtn != null) {
@@ -1024,11 +1023,10 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
     }
 
     private void initCommonProperties(HadoopServiceProperties properties) {
-        properties.setItem(this.connectionItem);
         HadoopClusterConnection connection = getConnection();
         ContextType contextType = null;
         if (getConnection().isContextMode()) {
-            contextType = ConnectionContextHelper.getContextTypeForContextMode(connection, connection.getContextName(), false);
+            contextType = ConnectionContextHelper.getContextTypeForContextMode(connection);
         }
         properties.setContextType(contextType);
         properties.setDistribution(connection.getDistribution());
@@ -1480,7 +1478,7 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see org.eclipse.swt.widgets.Control#setVisible(boolean)
      */
     @Override
@@ -1547,11 +1545,4 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         addContextParams(EHadoopParamName.maprTHomeDir, useMaprT);
         addContextParams(EHadoopParamName.maprTHadoopLogin, useMaprT);
     }
-
-    @Override
-    protected void exportAsContext() {
-        super.exportAsContext();
-        HadoopConfsUtils.updateContextualHadoopConfs((HadoopClusterConnectionItem) this.connectionItem);
-    }
-
 }

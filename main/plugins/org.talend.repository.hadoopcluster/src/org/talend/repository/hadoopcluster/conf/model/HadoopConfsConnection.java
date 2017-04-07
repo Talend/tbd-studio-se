@@ -87,5 +87,4 @@ public class HadoopConfsConnection {
     public void setTrustStorePassword(String trustStorePassword) {
         this.trustStorePassword = trustStorePassword;
     }
-
 }

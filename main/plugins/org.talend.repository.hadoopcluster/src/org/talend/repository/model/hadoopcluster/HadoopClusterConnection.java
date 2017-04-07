@@ -20,7 +20,6 @@ import org.talend.core.model.metadata.builder.connection.Connection;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getDistribution <em>Distribution</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getDfVersion <em>Df Version</em>}</li>
@@ -68,8 +67,8 @@ import org.talend.core.model.metadata.builder.connection.Connection;
  *   <li>{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getMaprTHadoopLogin <em>Mapr THadoop Login</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#isPreloadAuthentification <em>Preload Authentification</em>}</li>
  *   <li>{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getConfFile <em>Conf File</em>}</li>
- *   <li>{@link org.talend.repository.model.hadoopcluster.HadoopClusterConnection#getConfFiles <em>Conf Files</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.talend.repository.model.hadoopcluster.HadoopClusterPackage#getHadoopClusterConnection()
  * @model
@@ -1274,22 +1273,5 @@ public interface HadoopClusterConnection extends Connection {
      * @generated
      */
     void setConfFile(byte[] value);
-
-    /**
-     * Returns the value of the '<em><b>Conf Files</b></em>' map.
-     * The key is of type {@link java.lang.String},
-     * and the value is of type {@link byte[]},
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Conf Files</em>' map isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     * @return the value of the '<em>Conf Files</em>' map.
-     * @see org.talend.repository.model.hadoopcluster.HadoopClusterPackage#getHadoopClusterConnection_ConfFiles()
-     * @model mapType="org.talend.repository.model.hadoopcluster.HadoopConfJarEntry<org.eclipse.emf.ecore.xml.type.String, org.eclipse.emf.ecore.EByteArray>"
-     * @generated
-     */
-    EMap<String, byte[]> getConfFiles();
 
 } // HadoopClusterConnection

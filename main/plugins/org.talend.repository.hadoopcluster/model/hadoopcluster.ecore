@@ -73,8 +73,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="preloadAuthentification"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="confFile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="confFiles" upperBound="-1"
-        eType="#//HadoopConfJarEntry" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HadoopClusterConnectionItem" eSuperTypes="../../org.talend.model/model/properties.ecore#//ConnectionItem"/>
   <eClassifiers xsi:type="ecore:EClass" name="HadoopAdditionalProperties" instanceClassName="java.util.Map$Entry">
@@ -88,9 +86,4 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hadoopProperties" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HadoopSubConnectionItem" eSuperTypes="../../org.talend.model/model/properties.ecore#//ConnectionItem"/>
-  <eClassifiers xsi:type="ecore:EClass" name="HadoopConfJarEntry" instanceClassName="java.util.Map$Entry">
-    <eAnnotations source="MapEntry"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
-  </eClassifiers>
 </ecore:EPackage>

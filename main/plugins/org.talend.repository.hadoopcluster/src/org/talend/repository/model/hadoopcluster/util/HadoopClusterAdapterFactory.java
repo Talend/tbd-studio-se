@@ -108,10 +108,6 @@ public class HadoopClusterAdapterFactory extends AdapterFactoryImpl {
                 return createHadoopSubConnectionItemAdapter();
             }
             @Override
-            public Adapter caseHadoopConfJarEntry(Map.Entry<String, byte[]> object) {
-                return createHadoopConfJarEntryAdapter();
-            }
-            @Override
             public Adapter caseElement(Element object) {
                 return createElementAdapter();
             }
@@ -242,20 +238,6 @@ public class HadoopClusterAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createHadoopSubConnectionItemAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Hadoop Conf Jar Entry</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * @return the new adapter.
-     * @see java.util.Map.Entry
-     * @generated
-     */
-    public Adapter createHadoopConfJarEntryAdapter() {
         return null;
     }
 

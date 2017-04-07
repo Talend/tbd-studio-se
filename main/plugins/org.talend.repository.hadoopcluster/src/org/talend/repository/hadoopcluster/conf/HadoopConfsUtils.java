@@ -22,9 +22,6 @@ import java.util.Set;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.EMap;
-import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
@@ -35,13 +32,10 @@ import org.talend.core.ILibraryManagerService;
 import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.hadoop.conf.EHadoopConfProperties;
 import org.talend.core.hadoop.conf.EHadoopConfs;
-import org.talend.core.model.context.ContextUtils;
 import org.talend.core.model.general.ILibrariesService;
 import org.talend.core.model.general.Project;
-import org.talend.core.model.properties.ContextItem;
 import org.talend.core.model.properties.Item;
 import org.talend.core.model.repository.ResourceModelUtils;
-import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
 import org.talend.designer.hdfsbrowse.manager.HadoopParameterUtil;
 import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
 import org.talend.hadoop.distribution.constants.hdp.IHortonworksDistribution;
@@ -75,20 +69,12 @@ public class HadoopConfsUtils {
 
     private static Set<String> cachedDeployedJars = new HashSet<>();
 
-    public static String openHadoopConfsWizard(AbstractHadoopForm parentForm, HadoopClusterConnectionItem connectionItem,
+    public static void openHadoopConfsWizard(AbstractHadoopForm parentForm, HadoopClusterConnectionItem connectionItem,
             boolean creation) {
-        return openHadoopConfsWizard(parentForm, connectionItem, null, creation);
-    }
-
-    public static String openHadoopConfsWizard(AbstractHadoopForm parentForm, HadoopClusterConnectionItem connectionItem,
-            String contextGroup, boolean creation) {
-        HadoopImportConfsWizard wizard = new HadoopImportConfsWizard(parentForm, connectionItem, contextGroup, creation);
+        IWizard wizard = new HadoopImportConfsWizard(parentForm, connectionItem, creation);
         WizardDialog wizardDialog = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
         wizardDialog.create();
-        if (wizardDialog.open() == IDialogConstants.OK_ID) {
-            return wizard.getConfJarName();
-        }
-        return null;
+        wizardDialog.open();
     }
 
     public static void openClouderaNaviWizard(AbstractHadoopForm parentForm, HadoopClusterConnectionItem connectionItem,
@@ -126,8 +112,7 @@ public class HadoopConfsUtils {
         return confFolder.getAbsolutePath();
     }
 
-    public static void buildAndDeployConfsJar(HadoopClusterConnectionItem connectionItem, String contextGroup, String dir,
-            String jarName) {
+    public static void buildAndDeployConfsJar(HadoopClusterConnectionItem connectionItem, String dir, String jarName) {
         try {
             File parentFile = new File(getConfsJarTempFolder());
             File jarFile = new File(parentFile, jarName);
@@ -136,19 +121,11 @@ public class HadoopConfsUtils {
             jarBuilder.setIncludeDir(null);
             jarBuilder.setExcludeDir(null);
             jarBuilder.buildJar();
-            byte[] confFileByteArray = FileUtils.readFileToByteArray(jarFile);
             HadoopClusterConnection connection = (HadoopClusterConnection) connectionItem.getConnection();
-            if (connection.isContextMode()) {
-                if (contextGroup == null) {
-                    throw new Exception("contextGroup cannot be null in context mode!"); //$NON-NLS-1$
-                }
-                connection.getConfFiles().put(contextGroup, confFileByteArray);
-            } else {
-                connection.setConfFile(confFileByteArray);
-            }
+            connection.setConfFile(FileUtils.readFileToByteArray(jarFile));
             if (GlobalServiceRegister.getDefault().isServiceRegistered(ILibrariesService.class)) {
-                ILibrariesService service = (ILibrariesService) GlobalServiceRegister.getDefault()
-                        .getService(ILibrariesService.class);
+                ILibrariesService service = (ILibrariesService) GlobalServiceRegister.getDefault().getService(
+                        ILibrariesService.class);
                 if (service != null) {
                     service.deployLibrary(jarFile.toURI().toURL());
                     addToDeployedCache(connectionItem, jarName);
@@ -175,55 +152,16 @@ public class HadoopConfsUtils {
         return item.getProperty().getId() + jarName;
     }
 
-    public static Set<String> getConfsJarDefaultNames(HadoopClusterConnectionItem connectionItem) {
-        return getConfsJarDefaultNames(connectionItem, false);
+    public static String getConfsJarDefaultName(HadoopClusterConnectionItem connectionItem) {
+        return getConfsJarDefaultName(connectionItem, true);
     }
 
-    /**
-     * Get all conf jars names. If the connection is in context mode each context group will has one conf jar, otherwise
-     * there will be only one conf jar.
-     *
-     * @param connectionItem
-     * @param createJarIfNotExist
-     *
-     * @return
-     */
-    public static Set<String> getConfsJarDefaultNames(HadoopClusterConnectionItem connectionItem, boolean createJarIfNotExist) {
-        Set<String> jarNames = new HashSet<>();
-        HadoopClusterConnection connection = (HadoopClusterConnection) connectionItem.getConnection();
-        if (connection.isContextMode()) {
-            ContextItem contextItem = ContextUtils.getContextItemById2(connection.getContextId());
-            if (contextItem != null) {
-                EList<ContextType> contexts = contextItem.getContext();
-                for (ContextType contextType : contexts) {
-                    jarNames.add(
-                            HadoopConfsUtils.getConfsJarDefaultName(connectionItem, createJarIfNotExist, contextType.getName()));
-                }
-            }
-        } else {
-            jarNames.add(HadoopConfsUtils.getConfsJarDefaultName(connectionItem, createJarIfNotExist));
-        }
-        return jarNames;
-    }
-
-    public static String getConfsJarDefaultName(HadoopClusterConnectionItem connectionItem, String... extraIds) {
-        return getConfsJarDefaultName(connectionItem, true, extraIds);
-    }
-
-    public static String getConfsJarDefaultName(HadoopClusterConnectionItem connectionItem, boolean createJarIfNotExist,
-            String... extraIds) {
+    public static String getConfsJarDefaultName(HadoopClusterConnectionItem connectionItem, boolean createJarIfNotExist) {
         String connLabel = connectionItem.getProperty().getLabel();
-        StringBuffer uid = new StringBuffer(connLabel);
-        if (extraIds != null && extraIds.length > 0) {
-            for (String extraId : extraIds) {
-                uid.append("_"); //$NON-NLS-1$
-                uid.append(extraId);
-            }
-        }
-        String confsJarDefaultName = HadoopParameterUtil.getConfsJarDefaultName(uid.toString());
+        String confsJarDefaultName = HadoopParameterUtil.getConfsJarDefaultName(connLabel);
         if (createJarIfNotExist) {
             try {
-                createAndDeployConfJar(connectionItem, uid.toString(), confsJarDefaultName);
+                createAndDeployConfJar(connectionItem, confsJarDefaultName);
             } catch (IOException e) {
                 ExceptionHandler.process(e);
             }
@@ -231,44 +169,24 @@ public class HadoopConfsUtils {
         return confsJarDefaultName;
     }
 
-    private static void createAndDeployConfJar(HadoopClusterConnectionItem connectionItem, String confJarId, String confJarName)
-            throws IOException {
+    private static void createAndDeployConfJar(HadoopClusterConnectionItem connectionItem, String confJarName) throws IOException {
         // If the conf jar has been deployed before then no need to deploy again.
         if (containsInDeployedCache(connectionItem, confJarName)) {
             return;
         }
-        byte[] confFileBA = null;
         HadoopClusterConnection connection = (HadoopClusterConnection) connectionItem.getConnection();
-        if (connection.isContextMode()) {
-            ContextItem contextItem = ContextUtils.getContextItemById2(connection.getContextId());
-            if (contextItem != null) {
-                EMap<String, byte[]> confFiles = connection.getConfFiles();
-                EList<ContextType> contexts = contextItem.getContext();
-                for (ContextType contextType : contexts) {
-                    String contextName = contextType.getName();
-                    byte[] bs = confFiles.get(contextName);
-                    if (confJarId.contains(contextName) && bs != null) {
-                        confFileBA = bs;
-                    }
-                }
-            }
-            if (confFileBA == null) { // either conf jar name is wrong or it is a old item.
-                confFileBA = connection.getConfFile(); // then take the old hadoop conf file content.
-            }
-        } else {
-            confFileBA = connection.getConfFile();
-        }
+        byte[] confFileBA = connection.getConfFile();
         if (confFileBA != null) {
             File confsTempFolder = new File(getConfsJarTempFolder());
             File confFile = new File(confsTempFolder, confJarName);
             FileUtils.writeByteArrayToFile(confFile, confFileBA);
             if (GlobalServiceRegister.getDefault().isServiceRegistered(ILibraryManagerService.class)) {
-                ILibraryManagerService libService = (ILibraryManagerService) GlobalServiceRegister.getDefault()
-                        .getService(ILibraryManagerService.class);
+                ILibraryManagerService libService = (ILibraryManagerService) GlobalServiceRegister.getDefault().getService(
+                        ILibraryManagerService.class);
                 if (libService != null && libService.isJarNeedToBeDeployed(confFile)) {
                     if (GlobalServiceRegister.getDefault().isServiceRegistered(ILibrariesService.class)) {
-                        ILibrariesService service = (ILibrariesService) GlobalServiceRegister.getDefault()
-                                .getService(ILibrariesService.class);
+                        ILibrariesService service = (ILibrariesService) GlobalServiceRegister.getDefault().getService(
+                                ILibrariesService.class);
                         if (service != null) {
                             service.deployLibrary(confFile.toURI().toURL());
                             addToDeployedCache(connectionItem, confJarName);
@@ -440,30 +358,4 @@ public class HadoopConfsUtils {
         }
         return newParam;
     }
-
-    public static boolean updateContextualHadoopConfs(HadoopClusterConnectionItem hcItem) {
-        if (hcItem == null) {
-            return false;
-        }
-        boolean isUpdated = false;
-        HadoopClusterConnection connection = (HadoopClusterConnection) hcItem.getConnection();
-        if (connection.isContextMode() && connection.isUseCustomConfs()) {
-            EMap<String, byte[]> confFiles = connection.getConfFiles();
-            byte[] confFile = connection.getConfFile();
-            if (confFiles.size() == 0 && confFile != null) {
-                ContextItem contextItem = ContextUtils.getContextItemById2(connection.getContextId());
-                if (contextItem != null) {
-                    EList<ContextType> contexts = contextItem.getContext();
-                    for (ContextType contextType : contexts) {
-                        String contextName = contextType.getName();
-                        HadoopConfsUtils.getConfsJarDefaultName(hcItem, true, contextName);
-                        confFiles.put(contextName, confFile);
-                        isUpdated = true;
-                    }
-                }
-            }
-        }
-        return isUpdated;
-    }
-
 }

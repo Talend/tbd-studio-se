@@ -39,9 +39,14 @@ public class ABRConnectionForm extends AbstractConnectionForm {
         passwordText = new LabelledText(connectionGroup, Messages.getString("HadoopImportRemoteOptionPage.text.password"), 2); //$NON-NLS-1$
         passwordText.getTextControl().setEchoChar('*');
         createAuthenticationFields(connectionGroup);
+        boolean createResult = createRetieveMetaFields(connectionGroup);    
         connButton = new Button(connectionGroup, SWT.PUSH);
         GridData connBtnGD = new GridData(SWT.END, SWT.CENTER, false, false);
-        connBtnGD.horizontalSpan = 3;
+        if (createResult) {
+            connBtnGD.horizontalSpan = 1;
+        } else {
+            connBtnGD.horizontalSpan = 3;
+        }
         connButton.setLayoutData(connBtnGD);
         connButton.setText(Messages.getString("HadoopImportRemoteOptionPage.button.connect")); //$NON-NLS-1$
     }

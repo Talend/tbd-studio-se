@@ -154,12 +154,6 @@ public class HadoopClusterSwitch<T> {
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
-            case HadoopClusterPackage.HADOOP_CONF_JAR_ENTRY: {
-                @SuppressWarnings("unchecked") Map.Entry<String, byte[]> hadoopConfJarEntry = (Map.Entry<String, byte[]>)theEObject;
-                T result = caseHadoopConfJarEntry(hadoopConfJarEntry);
-                if (result == null) result = defaultCase(theEObject);
-                return result;
-            }
             default: return defaultCase(theEObject);
         }
     }
@@ -236,21 +230,6 @@ public class HadoopClusterSwitch<T> {
      * @generated
      */
     public T caseHadoopSubConnectionItem(HadoopSubConnectionItem object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '<em>Hadoop Conf Jar Entry</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-     * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Hadoop Conf Jar Entry</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseHadoopConfJarEntry(Map.Entry<String, byte[]> object) {
         return null;
     }
 
