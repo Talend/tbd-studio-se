@@ -120,7 +120,6 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="httpcore-4.4.4.jar" name="httpcore-4.4.4.jar" mvn_uri="mvn:org.talend.libraries/httpcore-4.4.4/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="ivy-2.4.0.jar" name="ivy-2.4.0.jar" mvn_uri="mvn:org.talend.libraries/ivy-2.4.0/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="jackson-annotations-2.6.5.jar" name="jackson-annotations-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-annotations-2.6.5/6.0.0"/>
-
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="jackson-core-2.6.5.jar" name="jackson-core-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-core-2.6.5/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="jackson-databind-2.6.5.jar" name="jackson-databind-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-databind-2.6.5/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="jackson-module-paranamer-2.6.5.jar" name="jackson-module-paranamer-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-module-paranamer-2.6.5/6.0.0"/>
@@ -191,7 +190,6 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="scala-library-2.11.8.jar" name="scala-library-2.11.8.jar" mvn_uri="mvn:org.talend.libraries/scala-library-2.11.8/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="scalap-2.11.8.jar" name="scalap-2.11.8.jar" mvn_uri="mvn:org.talend.libraries/scalap-2.11.8/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="scala-parser-combinators_2.11-1.0.4.jar" name="scala-parser-combinators_2.11-1.0.4.jar" mvn_uri="mvn:org.talend.libraries/scala-parser-combinators_2.11-1.0.4/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="scala-library-2.9.2.jar" name="scala-library-2.9.2.jar" mvn_uri="mvn:org.talend.libraries/scala-library-2.9.2/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="scala-reflect-2.11.8.jar" name="scala-reflect-2.11.8.jar" mvn_uri="mvn:org.talend.libraries/scala-reflect-2.11.8/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="scala-xml_2.11-1.0.2.jar" name="scala-xml_2.11-1.0.2.jar" mvn_uri="mvn:org.talend.libraries/scala-xml_2.11-1.0.2/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="spark-catalyst_2.11-2.0.0.cloudera1.jar" name="spark-catalyst_2.11-2.0.0.cloudera1.jar" mvn_uri="mvn:org.talend.libraries/spark-catalyst_2.11-2.0.0.cloudera1/6.0.0"/>
@@ -243,7 +241,6 @@
             mvn_uri="mvn:org.talend.libraries/sqoop-1.4.6-cdh5.8.1/6.1.0">
         </libraryNeeded>
 
-
         <!-- hive -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh580"
@@ -256,12 +253,6 @@
             id="hbase-protocol-1.2.0-cdh5.8.1.jar"
             name="hbase-protocol-1.2.0-cdh5.8.1.jar"
             mvn_uri="mvn:org.talend.libraries/hbase-protocol-1.2.0-cdh5.8.1/6.1.0">
-        </libraryNeeded>
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh580"
-            id="hive-exec-1.1.0-cdh5.8.1.jar"
-            name="hive-exec-1.1.0-cdh5.8.1.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-exec-1.1.0-cdh5.8.1/6.1.0">
         </libraryNeeded>
 
         <!-- GraphFrames libraries -->
@@ -585,10 +576,8 @@
              <library id="aopalliance-repackaged-2.4.0-b34.jar"/>
              <library id="apache-log4j-extras-1.2.17.jar"/>
              <library id="arpack_combined_all-0.1.jar"/>
-
              <library id="avro-1.7.6-cdh5.8.1.jar"/>
              <library id="avro-ipc-1.7.6-cdh5.8.1.jar"/>
-
              <library id="avro-mapred-1.7.6-cdh5.8.1.jar"/>
              <library id="blas-0.8.jar"/>             
              <library id="bonecp-0.7.1.jar"/>
@@ -623,20 +612,13 @@
              <library id="eigenbase-properties-1.1.5.jar"/>
              <library id="fastutil-6.3.jar"/>
              <library id="findbugs-annotations-1.3.9-1.jar"/>
-
-             <library id="flume-ng-configuration-1.6.0-cdh5.8.1.jar"/>
-             <library id="flume-ng-core-1.6.0-cdh5.8.1.jar"/>
-             <library id="flume-ng-sdk-1.6.0-cdh5.8.1.jar"/>
-
              <library id="gson-2.2.4.jar"/>
-
              <library id="hbase-annotations-1.2.0-cdh5.8.1.jar"/>
              <library id="hbase-common-1.2.0-cdh5.8.1.jar"/>
              <library id="hbase-protocol-1.2.0-cdh5.8.1.jar"/>
              <library id="hive-exec-1.1.0-cdh5.8.1.jar"/>
              <library id="hive-exec-1.2.1.spark2.jar"/>
              <library id="hive-metastore-1.1.0-cdh5.8.1.jar"/>
-
              <library id="hk2-api-2.4.0-b34.jar"/>
              <library id="hk2-locator-2.4.0-b34.jar"/>
              <library id="hk2-utils-2.4.0-b34.jar"/>
@@ -676,8 +658,6 @@
              <library id="jta-1.1.jar"/>
              <library id="jtransforms-2.4.0.jar"/>
              <library id="jul-to-slf4j-1.7.16.jar"/>
-             <library id="kafka_2.11-0.9.0-kafka-2.0.0.jar"/>
-             <library id="kafka-clients-0.9.0-kafka-2.0.0.jar"/>
              <library id="kryo-shaded-3.0.3.jar"/>
              <library id="libfb303-0.9.2.jar"/>
              <library id="libthrift-0.9.2.jar"/>
@@ -699,26 +679,15 @@
              <library id="oro-2.0.8.jar"/>
              <library id="osgi-resource-locator-1.0.1.jar"/>
              <library id="paranamer-2.3.jar"/>
-
-             <library id="parquet-avro-1.8.1.jar"/>
-             <library id="parquet-column-1.8.1.jar"/>
-             <library id="parquet-common-1.8.1.jar"/>
-             <library id="parquet-encoding-2.3.1.jar"/>
-             <library id="parquet-format-2.1.0.jar"/>
-             <library id="parquet-hadoop-1.5.0-cdh5.7.0.jar"/>
-             <library id="parquet-hadoop-1.7.0.jar"/>
-             <library id="parquet-jackson-1.5.0.jar"/>
-
              <library id="pmml-model-1.2.15.jar"/>
              <library id="pmml-schema-1.2.15.jar"/>
              <library id="py4j-0.10.1.jar"/>
              <library id="pyrolite-4.13.jar"/>
              <library id="RoaringBitmap-0.5.11.jar"/>
+             
              <library id="scala-compiler-2.11.8.jar"/>
              <library id="scala-library-2.11.8.jar"/>
-             <library id="scala-library-2.9.2.jar"/>
              <library id="scalap-2.11.8.jar"/>
-             
              <library id="scala-parser-combinators_2.11-1.0.4.jar"/>
              <library id="scala-reflect-2.11.8.jar"/>
              <library id="scala-xml_2.11-1.0.2.jar"/>
@@ -736,11 +705,7 @@
              <library id="spark-sketch_2.11-2.0.0.cloudera1.jar"/>
              <library id="spark-sql_2.11-2.0.0.cloudera1.jar"/>
              <library id="spark-streaming_2.11-2.0.0.cloudera1.jar"/>
-             <library id="spark-streaming-flume_2.11-2.0.0.cloudera1.jar"/>
-             <library id="spark-streaming-flume-sink_2.11-2.0.0.cloudera1.jar"/>
-             <library id="spark-streaming-kafka-0-8_2.11-2.0.0.cloudera1.jar"/>
-             <library id="spark-streaming-kinesis-asl-assembly_2.11-2.0.0.jar"/>
-             
+
              <library id="spark-tags_2.11-2.0.0.cloudera1.jar"/>
              <library id="spark-unsafe_2.11-2.0.0.cloudera1.jar"/>
              <library id="spark-yarn_2.11-2.0.0.cloudera1.jar"/>
@@ -772,9 +737,15 @@
                 description="Spark libraries for CDH 5.8 that are MRREQUIRED"
                 id="SPARK-PARQUET-LIB-MRREQUIRED-CDH580_SPARK2"
                 name="SPARK-PARQUET-LIB-MRREQUIRED-CDH580_SPARK2">
-             <library id="parquet-avro-cdh5.7.0"/>
-             <library id="parquet-hadoop-bundle-cdh5.7.0"/>
-             <library id="jodd-core-3.5.2.jar" />             
+             <library id="jodd-core-3.5.2.jar" />
+             <library id="parquet-avro-1.8.1.jar"/>
+             <library id="parquet-column-1.8.1.jar"/>
+             <library id="parquet-common-1.8.1.jar"/>
+             <library id="parquet-encoding-2.3.1.jar"/>
+             <library id="parquet-format-2.1.0.jar"/>
+             <library id="parquet-hadoop-1.5.0-cdh5.7.0.jar"/>
+             <library id="parquet-hadoop-1.7.0.jar"/>
+             <library id="parquet-jackson-1.5.0.jar"/>        
         </libraryNeededGroup>
         
         <!-- Spark S3 group MRREQUIRED -->
@@ -838,8 +809,9 @@
                 description="Spark Flume libraries for CDH 5.8 that are MRREQUIRED"
                 id="SPARK-FLUME-LIB-MRREQUIRED-CDH580_SPARK2"
                 name="SPARK-FLUME-LIB-MRREQUIRED-CDH580_SPARK2">
-            <library id="spark-streaming-flume_2.10-1.6.0-cdh5.8.1"/>
-            <library id="spark-streaming-flume-sink_2.10-1.6.0-cdh5.8.1"/>
+            <library id="spark-streaming-flume_2.11-2.0.0.cloudera1.jar"/>
+            <library id="spark-streaming-flume-sink_2.11-2.0.0.cloudera1.jar"/>
+            <library id="flume-ng-configuration-1.6.0-cdh5.8.1.jar"/>
             <library id="flume-ng-sdk-1.6.0-cdh5.8.1.jar"/>
             <library id="flume-ng-core-1.6.0-cdh5.8.1.jar"/>
             <library id="avro-ipc-1.7.6-cdh5.8.1.jar"/>
@@ -851,9 +823,9 @@
                 id="SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-CDH580_SPARK2"
                 name="SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-CDH580_SPARK2">
             <library id="spark-streaming-kafka-cdh5.8.1"/>
-            <library id="kafka-cdh5.8.1"/>
-            <library id="kafka-clients-cdh5.8.1"/>
-            <library id="metrics-core-2.2.0.jar"/>
+            <library id="kafka_2.11-0.9.0-kafka-2.0.0.jar"/>
+            <library id="kafka-clients-0.9.0-kafka-2.0.0.jar"/>
+            <library id="spark-streaming-kafka-0-8_2.11-2.0.0.cloudera1.jar"/>
         </libraryNeededGroup>
         
         <!-- Spark Kafka Client group MRREQUIRED -->
@@ -861,7 +833,11 @@
                 description="Spark Kafka client libraries for CDH 5.8 that are MRREQUIRED"
                 id="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-CDH580_SPARK2"
                 name="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-CDH580_SPARK2">
-            <library id="kafka-clients-cdh5.8.1"/>
+            <library id="spark-streaming-kafka-cdh5.8.1"/>
+            <library id="kafka_2.11-0.9.0-kafka-2.0.0.jar"/>
+            <library id="kafka-clients-0.9.0-kafka-2.0.0.jar"/>
+            <library id="spark-streaming-kafka-0-8_2.11-2.0.0.cloudera1.jar"/>
+            
         </libraryNeededGroup>
         
         <!-- Spark Kafka Avro group MRREQUIRED -->
