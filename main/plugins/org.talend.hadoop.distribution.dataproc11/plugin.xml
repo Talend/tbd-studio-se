@@ -6,9 +6,9 @@
 		<!-- Big Data launcher libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
-            id="talend-bigdata-launcher-1.2.0-20170321"
-            name="talend-bigdata-launcher-1.2.0-20170321.jar"
-            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-1.2.0-20170321/6.0.0">
+            id="talend-bigdata-launcher-1.2.0-20170410"
+            name="talend-bigdata-launcher-1.2.0-20170410.jar"
+            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-1.2.0-20170410/6.0.0">
         </libraryNeeded>
 
         <libraryNeeded
@@ -430,7 +430,7 @@
                 description="Big Data launcher libraries for Dataproc 1.1"
                 id="BIGDATA-LAUNCHER-LIB-DATAPROC11"
                 name="BIGDATA-LAUNCHER-LIB-DATAPROC11"  >
-			<library id="talend-bigdata-launcher-1.2.0-20170321" />
+			<library id="talend-bigdata-launcher-1.2.0-20170410" />
 
 			<library id="google-api-client-1.22.0" />
 			<library id="google-api-client-appengine-1.21.0" />
@@ -501,7 +501,7 @@
                 description="The latest Spark libraries for GOOGLE DATAPROC 1.1"
                 id="SPARK-LIB-DATAPROC11"
                 name="SPARK-LIB-DATAPROC11">
-             <library id="talend-bigdata-launcher-1.2.0-20170321" />
+             <library id="talend-bigdata-launcher-1.2.0-20170410" />
 			 <library id="scala-reflect-2.11.8.jar"/>
              <library id="kryo-shaded-3.0.3"/>
              
