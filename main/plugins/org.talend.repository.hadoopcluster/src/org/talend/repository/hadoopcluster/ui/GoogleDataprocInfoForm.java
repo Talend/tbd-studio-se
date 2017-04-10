@@ -46,6 +46,7 @@ import org.talend.metadata.managment.ui.utils.ExtendedNodeConnectionContextUtils
 import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopForm;
 import org.talend.repository.hadoopcluster.ui.common.IHadoopClusterInfoForm;
+import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
 
 
@@ -81,10 +82,13 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
 
     private UtilsButton checkServicesBtn;
 
+    private final boolean creation;
+
     public GoogleDataprocInfoForm(Composite parent, ConnectionItem connectionItem, String[] existingNames, boolean creation,
             DistributionBean hadoopDistribution, DistributionVersion hadoopVersison) {
         super(parent, SWT.NONE, existingNames);
         this.connectionItem = connectionItem;
+        this.creation = creation;
         setConnectionItem(connectionItem);
         setupForm(true);
         init();
@@ -355,6 +359,9 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
 
     @Override
     public void init() {
+        if (isNeedFillDefaults()) {
+            fillDefaults();
+        }
         if (isContextMode()) {
             adaptFormToEditable();
         }
@@ -445,5 +452,12 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
 
     private void collectAuthenticationParameters(boolean isUse) {
         addContextParams(EHadoopParamName.PathToGoogleCredentials, isUse);
+    }
+
+    private void fillDefaults() {
+        HadoopClusterConnection connection = getConnection();
+        if (creation && !connection.isUseCustomConfs()) {
+            HCRepositoryUtil.fillDefaultValuesOfHadoopCluster(connection);
+        }
     }
 }

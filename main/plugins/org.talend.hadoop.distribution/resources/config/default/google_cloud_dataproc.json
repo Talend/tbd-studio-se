@@ -1,0 +1,6 @@
+{
+    "GOOGLE_PROJECT_ID": "my-google-project", 
+    "GOOGLE_CLUSTER_ID": "my-cluster-id", 
+    "GOOGLE_REGION": "global", 
+    "GOOGLE_JARS_BUCKET": "gs://my-bucket/talend/jars"
+}
