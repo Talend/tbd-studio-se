@@ -242,7 +242,7 @@ public abstract class AbstractConnectionForm extends Composite {
 
     protected void checkConnection() {
         HadoopConfigurator hadoopConfigurator = null;
-        if (retrieveButton.getSelection()) {
+        if (retrieveButton != null && retrieveButton.getSelection()) {
             retrieveByJobServer();
         } else {
             try {
