@@ -113,21 +113,36 @@ public class RetrieveConfigurationProcess extends org.talend.designer.core.ui.ed
         MetadataTable targetTable = getMetadataTable();
 
         Node outputNode = getLogRowNode(targetTable);
+        
+        Node javaNode = getTJavaNode();
 
-        Connection cnx = new Connection(inputNode, outputNode, EConnectionType.FLOW_MAIN, "MAIN", "MAIN", "row1", "MAIN", false);//$NON-NLS-1$
+        List<IConnection> inputConns = new ArrayList<IConnection>();
+        List<IConnection> logConns = new ArrayList<IConnection>();
+        List<IConnection> javaConns = new ArrayList<IConnection>();
+        
+        Connection mainConn = new Connection(inputNode, outputNode, EConnectionType.FLOW_MAIN, "MAIN", "MAIN", "row1", "MAIN", false);//$NON-NLS-1$
+        Connection subConn = new Connection(inputNode, javaNode, EConnectionType.ON_SUBJOB_OK, "SUBJOB_OK", "HadoopClusterConfigurationInput_1", "SUBJOB_OK", "SUBJOB_OK", false);//$NON-NLS-1$
 
-        List<IConnection> cnxs = new ArrayList<IConnection>();
-        cnxs.add(cnx);
-        inputNode.setOutgoingConnections(cnxs);
-        outputNode.setIncomingConnections(cnxs);
-
+        inputConns.add(mainConn);
+        inputConns.add(subConn);
+        
+        logConns.add(mainConn);
+        javaConns.add(subConn);
+        
+        inputNode.setOutgoingConnections(inputConns);
+        outputNode.setIncomingConnections(logConns);
+        javaNode.setIncomingConnections(javaConns);
+        
         inputNode.setProcess(this);
         outputNode.setProcess(this);
+        javaNode.setProcess(this);
 
         NodeContainer inputContainer = new NodeContainer(inputNode);
         this.addNodeContainer(inputContainer);
         NodeContainer outputContainer = new NodeContainer(outputNode);
-        this.addNodeContainer(outputContainer);
+        this.addNodeContainer(outputContainer);       
+        NodeContainer javaContainer = new NodeContainer(javaNode);
+        this.addNodeContainer(javaContainer);
     }
 
     private Node getInputNode() {
@@ -164,6 +179,19 @@ public class RetrieveConfigurationProcess extends org.talend.designer.core.ui.ed
         node.setMetadataList(metadatas);
 
         setActivate(true);
+
+        return node;
+    }
+    
+    private Node getTJavaNode() {
+        String componentName = "tJava";//$NON-NLS-1$
+        IComponent component = ComponentsFactoryProvider.getInstance().get(componentName,
+                ComponentCategory.CATEGORY_4_DI.getName());
+        Node node = new Node(component, this);
+        node.getElementParameter("UNIQUE_NAME").setValue("tJava_1");//$NON-NLS-1$
+        StringBuffer sb = new StringBuffer();
+        sb.append("System.out.println(\"").append(getLogUniqueIdSeparator()).append("\");");//$NON-NLS-1$
+        node.getElementParameter("CODE").setValue(sb.toString());//$NON-NLS-1$
 
         return node;
     }
