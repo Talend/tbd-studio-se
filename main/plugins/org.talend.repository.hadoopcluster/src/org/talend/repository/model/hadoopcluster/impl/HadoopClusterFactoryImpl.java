@@ -67,6 +67,7 @@ public class HadoopClusterFactoryImpl extends EFactoryImpl implements HadoopClus
             case HadoopClusterPackage.HADOOP_ADDITIONAL_PROPERTIES: return (EObject)createHadoopAdditionalProperties();
             case HadoopClusterPackage.HADOOP_SUB_CONNECTION: return createHadoopSubConnection();
             case HadoopClusterPackage.HADOOP_SUB_CONNECTION_ITEM: return createHadoopSubConnectionItem();
+            case HadoopClusterPackage.HADOOP_CONF_JAR_ENTRY: return (EObject)createHadoopConfJarEntry();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -120,6 +121,16 @@ public class HadoopClusterFactoryImpl extends EFactoryImpl implements HadoopClus
     public HadoopSubConnectionItem createHadoopSubConnectionItem() {
         HadoopSubConnectionItemImpl hadoopSubConnectionItem = new HadoopSubConnectionItemImpl();
         return hadoopSubConnectionItem;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public Map.Entry<String, byte[]> createHadoopConfJarEntry() {
+        HadoopConfJarEntryImpl hadoopConfJarEntry = new HadoopConfJarEntryImpl();
+        return hadoopConfJarEntry;
     }
 
     /**
