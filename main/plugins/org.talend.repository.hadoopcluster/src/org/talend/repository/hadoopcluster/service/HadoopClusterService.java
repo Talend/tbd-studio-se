@@ -355,16 +355,15 @@ public class HadoopClusterService implements IHadoopClusterService {
             if (connection.isUseCustomConfs()) {
                 Set<String> confsJarNames = HadoopConfsUtils.getConfsJarDefaultNames(connectionItem);
                 for (String confsJarName : confsJarNames) {
-                    addConfsModule(modulesNeeded, confsJarName);
+                    addConfsModule(modulesNeeded, connection, confsJarName);
                 }
             }
         }
     }
 
-    private void addConfsModule(List<ModuleNeeded> modulesNeeded, String customConfsJarName) {
+    private void addConfsModule(List<ModuleNeeded> modulesNeeded, HadoopClusterConnection connection, String customConfsJarName) {
         String context = customConfsJarName.substring(0, customConfsJarName.lastIndexOf(".")); //$NON-NLS-1$
         ModuleNeeded customConfsModule = new ModuleNeeded(context, customConfsJarName, null, true);
-        customConfsModule.getExtraAttributes().put(HadoopConstants.IS_HADOOP_CUSTOM_CONFS, true);
         Iterator<ModuleNeeded> moduleIterator = modulesNeeded.iterator();
         while (moduleIterator.hasNext()) {
             ModuleNeeded module = moduleIterator.next();
@@ -373,6 +372,9 @@ public class HadoopClusterService implements IHadoopClusterService {
                     || customConfsJarName.equals(moduleName)) {
                 moduleIterator.remove();
             }
+        }
+        if (connection.isContextMode()) {
+            customConfsModule.getExtraAttributes().put(HadoopConstants.IS_DYNAMIC_JAR, true);
         }
         modulesNeeded.add(customConfsModule);
     }
@@ -470,6 +472,16 @@ public class HadoopClusterService implements IHadoopClusterService {
     @Override
     public String getRepositoryTypeOfHadoopSubItem(Item subItem) {
         return HCRepositoryUtil.getRepositoryTypeOfHadoopSubItem(subItem);
+    }
+
+    public boolean isUseDynamicConfJar(String id) {
+        Item item = getHadoopClusterItemById(id);
+        if (item instanceof HadoopClusterConnectionItem) {
+            HadoopClusterConnectionItem hcItem = (HadoopClusterConnectionItem) item;
+            HadoopClusterConnection hcConnection = (HadoopClusterConnection) hcItem.getConnection();
+            return hcConnection.isUseCustomConfs() && hcConnection.isContextMode();
+        }
+        return false;
     }
 
 }

@@ -22,6 +22,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.talend.commons.exception.PersistenceException;
+import org.talend.core.hadoop.HadoopConstants;
 import org.talend.core.hadoop.IHadoopClusterService;
 import org.talend.core.model.general.ModuleNeeded;
 import org.talend.core.model.properties.ContextItem;
@@ -64,6 +65,8 @@ public class HadoopClusterServiceTest {
         assertEquals(1, modulesNeeded.size());
         String expectConfsJarName = HadoopParameterUtil.getConfsJarDefaultName(clusterLabel);
         assertEquals(expectConfsJarName, modulesNeeded.get(0).getModuleName());
+        assertFalse(
+                Boolean.valueOf(String.valueOf(modulesNeeded.get(0).getExtraAttributes().get(HadoopConstants.IS_DYNAMIC_JAR))));
 
         // useCustomConfs is true and context mode
         List<ContextType> contexts = new ArrayList<>();
@@ -80,11 +83,36 @@ public class HadoopClusterServiceTest {
         List<String> moduleNames = new ArrayList<>();
         for (ModuleNeeded module : modulesNeeded) {
             moduleNames.add(module.getModuleName());
+            assertTrue(Boolean
+                    .valueOf(String.valueOf(modulesNeeded.get(0).getExtraAttributes().get(HadoopConstants.IS_DYNAMIC_JAR))));
         }
         for (String contextName : contextNames) {
             assertTrue(moduleNames.contains(HadoopParameterUtil.getConfsJarDefaultName(clusterLabel + "_" + contextName))); //$NON-NLS-1$
         }
         ClusterTestUtil.deleteItem(contextItem);
+    }
+
+    @Test
+    public void testIsUseDynamicConfJar() {
+        HadoopClusterConnection hadoopClusterConnection = (HadoopClusterConnection) hadoopClusterItem.getConnection();
+        String id = hadoopClusterItem.getProperty().getId();
+
+        // useCustomConfs is false and not context mode
+        assertFalse(service.isUseDynamicConfJar(id));
+
+        // useCustomConfs is true and not context mode
+        hadoopClusterConnection.setUseCustomConfs(true);
+        assertFalse(service.isUseDynamicConfJar(id));
+
+        // useCustomConfs is false and context mode
+        hadoopClusterConnection.setUseCustomConfs(false);
+        hadoopClusterConnection.setContextMode(true);
+        assertFalse(service.isUseDynamicConfJar(id));
+
+        // useCustomConfs is true and context mode
+        hadoopClusterConnection.setUseCustomConfs(true);
+        hadoopClusterConnection.setContextMode(true);
+        assertTrue(service.isUseDynamicConfJar(id));
     }
 
     @After
