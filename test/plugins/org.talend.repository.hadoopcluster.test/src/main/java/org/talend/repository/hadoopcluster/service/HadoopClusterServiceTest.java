@@ -28,6 +28,7 @@ import org.talend.core.model.general.ModuleNeeded;
 import org.talend.core.model.properties.ContextItem;
 import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
 import org.talend.designer.hdfsbrowse.manager.HadoopParameterUtil;
+import org.talend.designer.runprocess.ProcessorUtilities;
 import org.talend.repository.hadoopcluster.util.ClusterTestUtil;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnectionItem;
@@ -113,6 +114,10 @@ public class HadoopClusterServiceTest {
         hadoopClusterConnection.setUseCustomConfs(true);
         hadoopClusterConnection.setContextMode(true);
         assertTrue(service.isUseDynamicConfJar(id));
+
+        // useCustomConfs is true and context mode but exportAsOSGI is true
+        ProcessorUtilities.setExportAsOSGI(true);
+        assertFalse(service.isUseDynamicConfJar(id));
     }
 
     @After
@@ -122,6 +127,7 @@ public class HadoopClusterServiceTest {
         } catch (PersistenceException e) {
             // Ignore it.
         }
+        ProcessorUtilities.setExportAsOSGI(false);
     }
 
 }

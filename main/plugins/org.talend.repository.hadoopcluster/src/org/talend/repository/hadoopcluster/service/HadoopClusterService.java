@@ -42,6 +42,7 @@ import org.talend.core.model.repository.IRepositoryTypeProcessor;
 import org.talend.core.repository.model.ProxyRepositoryFactory;
 import org.talend.designer.core.model.components.EParameterName;
 import org.talend.designer.core.model.components.EmfComponent;
+import org.talend.designer.runprocess.ProcessorUtilities;
 import org.talend.repository.ProjectManager;
 import org.talend.repository.hadoopcluster.conf.HadoopConfsUtils;
 import org.talend.repository.hadoopcluster.node.model.HadoopClusterRepositoryNodeType;
@@ -474,12 +475,13 @@ public class HadoopClusterService implements IHadoopClusterService {
         return HCRepositoryUtil.getRepositoryTypeOfHadoopSubItem(subItem);
     }
 
+    @Override
     public boolean isUseDynamicConfJar(String id) {
         Item item = getHadoopClusterItemById(id);
         if (item instanceof HadoopClusterConnectionItem) {
             HadoopClusterConnectionItem hcItem = (HadoopClusterConnectionItem) item;
             HadoopClusterConnection hcConnection = (HadoopClusterConnection) hcItem.getConnection();
-            return hcConnection.isUseCustomConfs() && hcConnection.isContextMode();
+            return hcConnection.isUseCustomConfs() && hcConnection.isContextMode() && !ProcessorUtilities.isExportAsOSGI();
         }
         return false;
     }
