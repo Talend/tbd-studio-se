@@ -42,6 +42,7 @@ import org.talend.hadoop.distribution.cdh580.modulegroup.node.sparkbatch.CDH580G
 import org.talend.hadoop.distribution.cdh580.modulegroup.node.sparkbatch.CDH580SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.node.sparkbatch.CDH580SparkBatchS3NodeModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.node.sparkstreaming.CDH580SparkStreamingFlumeNodeModuleGroup;
+import org.talend.hadoop.distribution.cdh580.modulegroup.node.sparkstreaming.CDH580SparkStreamingGSNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.node.sparkstreaming.CDH580SparkStreamingKafkaAssemblyModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.node.sparkstreaming.CDH580SparkStreamingKafkaAvroModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.node.sparkstreaming.CDH580SparkStreamingKafkaClientModuleGroup;
@@ -124,7 +125,7 @@ public class CDH580Distribution extends AbstractDistribution implements IClouder
                 CDH580SparkBatchS3NodeModuleGroup.getModuleGroups(distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
                 CDH580GraphFramesNodeModuleGroup.getModuleGroups(distribution, version));
-
+        
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.PARQUET_INPUT_COMPONENT), CDH580SparkStreamingParquetNodeModuleGroup.getModuleGroups(
                 distribution, version));
@@ -137,6 +138,9 @@ public class CDH580Distribution extends AbstractDistribution implements IClouder
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.S3_CONFIGURATION_COMPONENT), CDH580SparkStreamingS3NodeModuleGroup.getModuleGroups(
                 distribution, version));
+        
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.GS_CONFIGURATION_COMPONENT),
+                CDH580SparkStreamingGSNodeModuleGroup.getModuleGroups(distribution, version));
 
         Set<DistributionModuleGroup> kinesisNodeModuleGroups = CDH580SparkStreamingKinesisNodeModuleGroup.getModuleGroups(
                 distribution, version);

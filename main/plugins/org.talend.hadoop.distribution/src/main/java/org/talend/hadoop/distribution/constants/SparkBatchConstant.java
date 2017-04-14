@@ -38,6 +38,8 @@ public final class SparkBatchConstant {
 
     public static final String S3_CONFIGURATION_COMPONENT = "tS3Configuration"; //$NON-NLS-1$
     
+    public static final String GS_CONFIGURATION_COMPONENT = "tGSConfiguration"; //$NON-NLS-1$
+    
     public static final String MATCH_PREDICT_COMPONENT = "tMatchPredict";//$NON-NLS-1$
 
     public static final String USE_CLOUDERA_NAVIGATOR = "USE_CLOUDERA_NAVIGATOR";//$NON-NLS-1$

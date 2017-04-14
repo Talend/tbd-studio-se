@@ -413,6 +413,13 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh580"
+            id="gcs-connector-latest-hadoop2.jar"
+            name="gcs-connector-latest-hadoop2.jar"
+            mvn_uri="mvn:org.talend.libraries/gcs-connector-latest-hadoop2/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580"
             id="avro-ipc-1.7.6-cdh5.8.1"
             name="avro-ipc-1.7.6-cdh5.8.1.jar"
             uripath="platform:/plugin/org.talend.libraries.apache/lib/avro-ipc-1.7.6-cdh5.8.1.jar"
@@ -816,6 +823,14 @@
              <library id="jets3t-0.9.0" />
              <library id="httpclient-4.3.3.jar" />
              <library id="httpcore-4.3.3.jar" />
+        </libraryNeededGroup>
+        
+        <!-- Spark GS group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark GS libraries for CDH 5.8 that are MRREQUIRED"
+                id="SPARK-GS-LIB-MRREQUIRED-CDH_5_8"
+                name="SPARK-GS-LIB-MRREQUIRED-CDH_5_8">
+             <library id="gcs-connector-latest-hadoop2.jar"/>
         </libraryNeededGroup>
         
         <!-- Pig S3 group -->
