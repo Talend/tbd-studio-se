@@ -211,98 +211,98 @@
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
             id="spark-graphx-dataproc11"
-            name="spark-graphx_2.11-2.0.2.jar"
+            name="spark-graphx_2.11-2.0.2-dataproc11.jar"
             mvn_uri="mvn:org.talend.libraries/spark-graphx_2.11-2.0.2-dataproc11/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
             id="spark-hive-dataproc11"
-            name="spark-hive_2.11-2.0.2.jar"
+            name="spark-hive_2.11-2.0.2-dataproc11.jar"
             mvn_uri="mvn:org.talend.libraries/spark-hive_2.11-2.0.2-dataproc11/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
             id="spark-launcher-dataproc11"
-            name="spark-launcher_2.11-2.0.2.jar"
+            name="spark-launcher_2.11-2.0.2-dataproc11.jar"
             mvn_uri="mvn:org.talend.libraries/spark-launcher_2.11-2.0.2-dataproc11/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
             id="spark-mllib-dataproc11"
-            name="spark-mllib_2.11-2.0.2.jar"
+            name="spark-mllib_2.11-2.0.2-dataproc11.jar"
             mvn_uri="mvn:org.talend.libraries/spark-mllib_2.11-2.0.2-dataproc11/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
             id="spark-mllib-local-dataproc11"
-            name="spark-mllib-local_2.11-2.0.2.jar"
+            name="spark-mllib-local_2.11-2.0.2-dataproc11.jar"
             mvn_uri="mvn:org.talend.libraries/spark-mllib-local_2.11-2.0.2-dataproc11/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
             id="spark-network-common-dataproc11"
-            name="spark-network-common_2.11-2.0.2.jar"
+            name="spark-network-common_2.11-2.0.2-dataproc11.jar"
             mvn_uri="mvn:org.talend.libraries/spark-network-common_2.11-2.0.2-dataproc11/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
             id="spark-network-shuffle-dataproc11"
-            name="spark-network-shuffle_2.11-2.0.2.jar"
+            name="spark-network-shuffle_2.11-2.0.2-dataproc11.jar"
             mvn_uri="mvn:org.talend.libraries/spark-network-shuffle_2.11-2.0.2-dataproc11/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
             id="spark-repl-dataproc11"
-            name="spark-repl_2.11-2.0.2.jar"
+            name="spark-repl_2.11-2.0.2-dataproc11.jar"
             mvn_uri="mvn:org.talend.libraries/spark-repl_2.11-2.0.2-dataproc11/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
             id="spark-sketch-dataproc11"
-            name="spark-sketch_2.11-2.0.2.jar"
+            name="spark-sketch_2.11-2.0.2-dataproc11.jar"
             mvn_uri="mvn:org.talend.libraries/spark-sketch_2.11-2.0.2-dataproc11/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
             id="spark-sql-dataproc11"
-            name="spark-sql_2.11-2.0.2.jar"
+            name="spark-sql_2.11-2.0.2-dataproc11.jar"
             mvn_uri="mvn:org.talend.libraries/spark-sql_2.11-2.0.2-dataproc11/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
             id="spark-streaming-dataproc11"
-            name="spark-streaming_2.11-2.0.2.jar"
+            name="spark-streaming_2.11-2.0.2-dataproc11.jar"
             mvn_uri="mvn:org.talend.libraries/spark-streaming_2.11-2.0.2-dataproc11/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
             id="spark-tags-dataproc11"
-            name="spark-tags_2.11-2.0.2.jar"
+            name="spark-tags_2.11-2.0.2-dataproc11.jar"
             mvn_uri="mvn:org.talend.libraries/spark-tags_2.11-2.0.2-dataproc11/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
             id="spark-unsafe-dataproc11"
-            name="spark-unsafe_2.11-2.0.2.jar"
+            name="spark-unsafe_2.11-2.0.2-dataproc11.jar"
             mvn_uri="mvn:org.talend.libraries/spark-unsafe_2.11-2.0.2-dataproc11/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
             id="spark-yarn-dataproc11"
-            name="spark-yarn_2.11-2.0.2.jar"
+            name="spark-yarn_2.11-2.0.2-dataproc11.jar"
             mvn_uri="mvn:org.talend.libraries/spark-yarn_2.11-2.0.2-dataproc11/6.0.0">
         </libraryNeeded>
         

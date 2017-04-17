@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -112,7 +113,7 @@ public class ComponentConditionUtilTest {
         assertNull(ComponentConditionUtil.generateSparkVersionShowIfConditions(null));
 
         Map<ESparkVersion, Set<DistributionVersion>> sparkVersionsMap = new HashMap<>();
-        Set<DistributionVersion> distributionVersions = new HashSet<>();
+        Set<DistributionVersion> distributionVersions = new LinkedHashSet<>();
         distributionVersions.add(new DistributionVersion(null,
                 new DistributionBean(ComponentType.SPARKBATCH, "DISTRIB1", ""), "VERSION1", "")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
         sparkVersionsMap.put(ESparkVersion.SPARK_2_0, distributionVersions);

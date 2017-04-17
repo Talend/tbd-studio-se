@@ -27,6 +27,10 @@
         	
 	        	String comment = metadataColumn.getComment();
 	        	if(comment!=null && !"".equals(comment) && !"\"\"".equals(comment)) {
+	        	
+	        		if(!comment.trim().startsWith("\"") && !comment.trim().endsWith("\"")) {
+	        			comment = "\"" + comment + "\"";
+	        		}
 %>
 					String comment_<%=index%>_<%=count%>_<%=cid%> = <%=comment%>;
 <%
@@ -94,6 +98,10 @@
         	
         		String comment = metadataColumn.getComment();
         		if(comment!=null && !"".equals(comment) && !"\"\"".equals(comment)) {
+        		
+        			if(!comment.trim().startsWith("\"") && !comment.trim().endsWith("\"")) {
+	        			comment = "\"" + comment + "\"";
+	        		}
         			schemaBuilder.append(", ");
 %>
 					String comment_<%=index%>_<%=count%>_<%=cid%> = <%=comment%>;

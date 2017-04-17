@@ -136,11 +136,11 @@
          unpack="false"/>
 
    <plugin
-        id="org.talend.hadoop.distribution.dataproc11.test"
-        download-size="0"
-        install-size="0"
-        version="0.0.0"
-        unpack="false"/>
+         id="org.talend.hadoop.distribution.dataproc11.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.talend.hadoop.distribution.emr400.test"
@@ -173,7 +173,6 @@
          version="0.0.0"
          fragment="true"
          unpack="false"/>
-
 
    <plugin
          id="org.talend.hadoop.distribution.piv200.test"
@@ -310,7 +309,7 @@
          version="0.0.0"
          fragment="true"
          unpack="false"/>
-         
+
    <plugin
          id="org.talend.hadoop.distribution.cdh580spark2.test"
          download-size="0"
@@ -396,6 +395,14 @@
          download-size="0"
          install-size="0"
          version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.cdh5100.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
          unpack="false"/>
 
 </feature>
