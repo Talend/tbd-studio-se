@@ -402,4 +402,9 @@ public class CDH580Distribution extends AbstractDistribution implements IClouder
     public boolean doSupportHDFSEncryption() {
         return true;
     }
+
+    @Override
+    public boolean doSupportOozie() {
+        return false;
+    }
 }

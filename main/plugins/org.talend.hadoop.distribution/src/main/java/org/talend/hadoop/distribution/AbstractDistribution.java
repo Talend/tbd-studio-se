@@ -261,4 +261,8 @@ public abstract class AbstractDistribution {
     public boolean isGoogleDataprocDistribution() {
         return false;
     }
+    
+    public boolean doSupportOozie() {
+    	return true;
+    }
 }
