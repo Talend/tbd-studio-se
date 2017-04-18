@@ -42,7 +42,7 @@ public class HDInsight36DistributionTest extends AbstractDistributionTest {
     private final static String DEFAULT_YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,/usr/hdp/current/hadoop-client/*,/usr/hdp/current/hadoop-client/lib/*,/usr/hdp/current/hadoop-hdfs-client/*,/usr/hdp/current/hadoop-hdfs-client/lib/*,/usr/hdp/current/hadoop-yarn-client/*,/usr/hdp/current/hadoop-yarn-client/lib/*"; //$NON-NLS-1$
 
     @Test
-    public void testHDInsight34Distribution() throws Exception {
+    public void testHDInsight36Distribution() throws Exception {
         HadoopComponent distribution = new HDInsight36Distribution();
         assertNotNull(distribution.getDistributionName());
         assertNotNull(distribution.getVersionName(null));
