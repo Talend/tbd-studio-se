@@ -184,6 +184,11 @@ public class Apache100Distribution extends AbstractDistribution implements HDFSC
     }
 
     @Override
+    public boolean doSupportOozie() {
+        return false;
+    }
+
+    @Override
     public ComponentCondition getDisplayCondition(ComponentType componentType) {
         return displayConditions.get(componentType);
     }

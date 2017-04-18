@@ -305,6 +305,11 @@ public class HDInsight34Distribution extends AbstractDistribution implements MRC
     }
 
     @Override
+    public boolean doSupportOozie() {
+        return false;
+    }
+
+    @Override
     public boolean isCloudDistribution() {
         return true;
     }

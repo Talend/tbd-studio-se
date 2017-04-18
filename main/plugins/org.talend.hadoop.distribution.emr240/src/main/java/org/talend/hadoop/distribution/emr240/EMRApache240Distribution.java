@@ -242,4 +242,9 @@ public class EMRApache240Distribution extends AbstractDistribution implements HD
     public boolean doSupportS3() {
         return true;
     }
+
+    @Override
+    public boolean doSupportOozie() {
+        return false;
+    }
 }

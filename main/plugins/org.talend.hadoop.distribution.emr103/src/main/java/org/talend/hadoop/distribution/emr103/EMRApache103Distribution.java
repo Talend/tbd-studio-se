@@ -189,6 +189,11 @@ public class EMRApache103Distribution extends AbstractDistribution implements HD
     }
 
     @Override
+    public boolean doSupportOozie() {
+        return false;
+    }
+
+    @Override
     public ComponentCondition getDisplayCondition(ComponentType componentType) {
         return displayConditions.get(componentType);
     }
