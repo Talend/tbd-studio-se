@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+    <extension point="org.talend.core.runtime.librariesNeeded">
+
+        <!-- Big Data launcher libraries -->
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.hdinsight360"
+            id="talend-bigdata-launcher-1.1.0-20160405"
+            name="talend-bigdata-launcher-1.1.0-20160405.jar"
+            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-1.1.0-20160405/6.0.0">
+        </libraryNeeded>
+
+        <!-- Groups -->
+
+        <!-- Big Data launcher group -->
+        <libraryNeededGroup
+                description="Big Data launcher libraries for HDInsight 3.6.0"
+                id="BIGDATA-LAUNCHER-LIB-HD_INSIGHT_3_6_0"
+                name="BIGDATA-LAUNCHER-LIB-HD_INSIGHT_3_6_0"  >
+             <library id="talend-bigdata-launcher-1.1.0-20160405" />
+        </libraryNeededGroup>
+
+    </extension>
+</plugin>
