@@ -3,23 +3,23 @@
 <plugin>
     <extension point="org.talend.core.runtime.librariesNeeded">
     
-    <!-- HDFS libraries -->    
+        <!-- HDFS libraries -->    
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh580"
+            context="plugin:org.talend.hadoop.distribution.cdh580spark2"
             id="hadoop-common-cdh5.8.1"
             name="hadoop-common-2.6.0-cdh5.8.1.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-common-2.6.0-cdh5.8.1/6.1.0">
         </libraryNeeded>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh580"
+            context="plugin:org.talend.hadoop.distribution.cdh580spark2"
             id="hadoop-hdfs-cdh5.8.1"
             name="hadoop-hdfs-2.6.0-cdh5.8.1.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-hdfs-2.6.0-cdh5.8.1/6.1.0">
         </libraryNeeded>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh580"
+            context="plugin:org.talend.hadoop.distribution.cdh580spark2"
             id="hadoop-auth-cdh5.8.1"
             name="hadoop-auth-2.6.0-cdh5.8.1.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-auth-2.6.0-cdh5.8.1/6.1.0">
