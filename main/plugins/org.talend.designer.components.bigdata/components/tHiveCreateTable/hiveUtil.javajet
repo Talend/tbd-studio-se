@@ -18,11 +18,14 @@
 				if(metadataColumn.getType() == null || metadataColumn.getType().trim().length() == 0) {
 					hiveType = mappingType.getDefaultSelectedDbType(metadataColumn.getTalendType());
 				} else {
-					hiveType = metadataColumn.getType();
+					// Replace VARCHAR2 with VARCHAR since Hive can only handle the latter
+					hiveType = "VARCHAR2".equals(metadataColumn.getType()) ? "VARCHAR" : metadataColumn.getType();
 				}
         		createTableSQL.append(hiveType);
         		if(metadataColumn.getLength() != null && metadataColumn.getPrecision() != null && "DECIMAL".equals(hiveType)) {
         			createTableSQL.append("(" + metadataColumn.getLength() + ", " + metadataColumn.getPrecision() + ")");
+        		} else if(metadataColumn.getLength() != null && "VARCHAR".equals(hiveType)) {
+        			createTableSQL.append("(" + metadataColumn.getLength() + ")");
         		}
         	
 	        	String comment = metadataColumn.getComment();
