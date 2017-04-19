@@ -165,7 +165,7 @@ public class HDInsight36Distribution extends AbstractDistribution implements Spa
     @Override
     public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
-        version.add(ESparkVersion.SPARK_2_0);
+        version.add(ESparkVersion.SPARK_2_1);
         return version;
     }
 
