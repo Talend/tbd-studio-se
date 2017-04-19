@@ -403,8 +403,5 @@ public class CDH580Distribution extends AbstractDistribution implements IClouder
         return true;
     }
 
-    @Override
-    public boolean doSupportOozie() {
-        return false;
-    }
+
 }
