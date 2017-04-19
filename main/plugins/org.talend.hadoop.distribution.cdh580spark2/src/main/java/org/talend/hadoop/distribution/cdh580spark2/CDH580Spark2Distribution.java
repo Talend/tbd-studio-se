@@ -289,4 +289,9 @@ public class CDH580Spark2Distribution extends AbstractDistribution implements IC
     public boolean doSupportS3V4() {
         return true;
     }
+
+    @Override
+    public boolean doSupportOozie() {
+        return false;
+    }
 }

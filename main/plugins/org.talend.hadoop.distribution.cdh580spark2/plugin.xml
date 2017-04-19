@@ -616,7 +616,6 @@
              <library id="hbase-annotations-1.2.0-cdh5.8.1.jar"/>
              <library id="hbase-common-1.2.0-cdh5.8.1.jar"/>
              <library id="hbase-protocol-1.2.0-cdh5.8.1.jar"/>
-             <library id="hive-exec-1.1.0-cdh5.8.1.jar"/>
              <library id="hive-exec-1.2.1.spark2.jar"/>
              <library id="hive-metastore-1.1.0-cdh5.8.1.jar"/>
              <library id="hk2-api-2.4.0-b34.jar"/>

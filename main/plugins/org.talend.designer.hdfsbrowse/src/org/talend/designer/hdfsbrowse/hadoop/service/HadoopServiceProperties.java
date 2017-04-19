@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.talend.core.model.properties.ConnectionItem;
 import org.talend.core.model.utils.ContextParameterUtils;
 import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
 
@@ -24,6 +25,8 @@ import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
  *
  */
 public class HadoopServiceProperties {
+
+    private ConnectionItem item;
 
     private ContextType contextType;
 
@@ -92,6 +95,14 @@ public class HadoopServiceProperties {
     private String region;
 
     private String clusterName;
+
+    public ConnectionItem getItem() {
+        return this.item;
+    }
+
+    public void setItem(ConnectionItem item) {
+        this.item = item;
+    }
 
     private String getRealValue(String value) {
         if (contextType == null) {

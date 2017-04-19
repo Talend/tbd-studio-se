@@ -21,7 +21,8 @@ Require-Bundle: org.eclipse.ui,
  org.talend.core.runtime,
  org.talend.core,
  org.talend.repository.items.importexport,
- org.eclipse.gef
+ org.eclipse.gef,
+ org.talend.hadoop.distribution
 Bundle-Vendor: %providerName
 Bundle-ClassPath: .,
  lib/json-simple-1.1.jar,

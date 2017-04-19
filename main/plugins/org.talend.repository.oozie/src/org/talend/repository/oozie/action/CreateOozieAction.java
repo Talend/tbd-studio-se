@@ -6,6 +6,9 @@ import org.talend.commons.ui.runtime.image.IImage;
 import org.talend.core.hadoop.version.EHadoopDistributions;
 import org.talend.core.hadoop.version.EHadoopVersion4Drivers;
 import org.talend.core.model.repository.ERepositoryObjectType;
+import org.talend.hadoop.distribution.helper.HadoopDistributionsHelper;
+import org.talend.hadoop.distribution.model.DistributionBean;
+import org.talend.hadoop.distribution.model.DistributionVersion;
 import org.talend.repository.hadoopcluster.action.common.CreateHadoopNodeAction;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.model.RepositoryNode;
@@ -58,6 +61,13 @@ public class CreateOozieAction extends CreateHadoopNodeAction {
             if (distribution == EHadoopDistributions.MICROSOFT_HD_INSIGHT
                     || distribution == EHadoopDistributions.GOOGLE_CLOUD_DATAPROC) {
                 return true;
+            }
+
+            DistributionBean distributionBean = HadoopDistributionsHelper.HADOOP.getDistribution(hcConnection.getDistribution(), false);
+            if (distributionBean != null) {
+                 DistributionVersion distributionVersion = distributionBean.getVersion(hcConnection.getDfVersion(), false);
+                 boolean isSupportOozie = distributionVersion.hadoopComponent.doSupportOozie();
+                 return !isSupportOozie;
             }
         }
 

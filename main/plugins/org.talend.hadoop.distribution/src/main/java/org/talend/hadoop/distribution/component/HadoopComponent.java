@@ -165,4 +165,6 @@ public interface HadoopComponent {
      * @return true if the distribution is a Google dataproc distribution
      */
     public boolean isGoogleDataprocDistribution();
+    
+    public boolean doSupportOozie();
 }
