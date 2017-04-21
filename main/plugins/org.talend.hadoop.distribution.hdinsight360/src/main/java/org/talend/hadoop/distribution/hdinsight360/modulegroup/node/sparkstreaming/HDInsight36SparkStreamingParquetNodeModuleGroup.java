@@ -16,23 +16,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
+import org.talend.hadoop.distribution.condition.common.SparkBatchLinkedNodeCondition;
 import org.talend.hadoop.distribution.hdinsight360.HDInsight36Constant;
 
 public class HDInsight36SparkStreamingParquetNodeModuleGroup {
 
-    public static Set<DistributionModuleGroup> getModuleGroups() {
+    public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
+        SparkBatchLinkedNodeCondition c1 = new SparkBatchLinkedNodeCondition(distribution, version);
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        hs.add(new DistributionModuleGroup(HDInsight36Constant.SPARK_SQL_MRREQUIRED_MODULE_GROUP.getModuleName(), false, null));
-        hs.add(new DistributionModuleGroup(HDInsight36Constant.SPARK_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName(), false, null));
+        hs.add(new DistributionModuleGroup(HDInsight36Constant.SPARK_SQL_MRREQUIRED_MODULE_GROUP.getModuleName(), false, c1
+                .getCondition()));
+        hs.add(new DistributionModuleGroup(HDInsight36Constant.SPARK_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName(), false, c1
+                .getCondition()));
         hs.add(new DistributionModuleGroup(HDInsight36Constant.SPARK_STREAMING_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName(),
-                false, null));
+                false, c1.getCondition()));
         return hs;
     }
-
-    /*
-     * public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
-     * Set<DistributionModuleGroup> hs = new HashSet<>(); DistributionModuleGroup dmg = new DistributionModuleGroup(
-     * HDInsight36Constant.SPARK_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName(), true, new
-     * SparkStreamingLinkedNodeCondition(distribution, version).getCondition()); hs.add(dmg); return hs; }
-     */
 }

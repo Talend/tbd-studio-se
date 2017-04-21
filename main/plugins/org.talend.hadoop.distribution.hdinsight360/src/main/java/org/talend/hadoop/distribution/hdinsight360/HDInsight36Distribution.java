@@ -68,19 +68,19 @@ public class HDInsight36Distribution extends AbstractDistribution implements Spa
         nodeModuleGroups = new HashMap<>();
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
-                HDInsight36SparkBatchParquetNodeModuleGroup.getModuleGroups());
+                HDInsight36SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
-                HDInsight36SparkBatchParquetNodeModuleGroup.getModuleGroups());
+                HDInsight36SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.PARQUET_OUTPUT_COMPONENT), HDInsight36SparkStreamingParquetNodeModuleGroup
-                .getModuleGroups());
+                .getModuleGroups(distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.PARQUET_INPUT_COMPONENT), HDInsight36SparkStreamingParquetNodeModuleGroup
-                .getModuleGroups());
+                SparkStreamingConstant.PARQUET_INPUT_COMPONENT), HDInsight36SparkStreamingParquetNodeModuleGroup.getModuleGroups(
+                distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.PARQUET_STREAM_INPUT_COMPONENT), HDInsight36SparkStreamingParquetNodeModuleGroup
-                .getModuleGroups());
+                .getModuleGroups(distribution, version));
     }
 
     @Override
