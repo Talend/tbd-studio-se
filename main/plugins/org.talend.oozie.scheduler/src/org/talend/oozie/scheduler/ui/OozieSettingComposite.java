@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -906,6 +907,7 @@ public class OozieSettingComposite extends ScrolledComposite {
             hideControl(customButton, false);
             hideControl(useYarnButton, false);
             hideControl(customGroup, false);
+
         } else {
             hadoopVersionCombo.setHideWidgets(false);
             distriData.horizontalSpan = 2;
@@ -913,9 +915,16 @@ public class OozieSettingComposite extends ScrolledComposite {
             hideControl(useYarnButton, true);
             hideControl(customGroup, true);
             List<String> items = getDistributionVersions(distribution);
-            if (distribution.getName().equals("PIVOTAL_HD")) { //$NON-NLS-1$
-                items.remove("Pivotal HD 1.0.1"); //$NON-NLS-1$
+
+            Iterator<String> iter = items.iterator();
+            while (iter.hasNext()) {
+                String version = iter.next();
+                IHDistributionVersion distributionVersion = distribution.getHDVersion(version, true);
+                if (!distributionVersion.doSupportOozie()) {
+                    iter.remove();
+                }
             }
+
             String[] versions = new String[items.size()];
             items.toArray(versions);
             hadoopVersionCombo.getCombo().setItems(versions);
@@ -949,7 +958,7 @@ public class OozieSettingComposite extends ScrolledComposite {
     }
 
     private List<String> getDistributionVersions(IHDistribution distribution) {
-        return Arrays.asList(distribution.getVersionsDisplay());
+        return new ArrayList<String>(Arrays.asList(distribution.getVersionsDisplay()));
     }
 
     protected void hideControl(Control control, boolean hide) {

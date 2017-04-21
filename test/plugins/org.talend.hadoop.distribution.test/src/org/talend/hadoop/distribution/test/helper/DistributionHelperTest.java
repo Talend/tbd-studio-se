@@ -69,6 +69,11 @@ public class DistributionHelperTest {
                 return null;
             }
 
+            @Override
+            public boolean doSupportOozie() {
+                return true;
+            }
+
         }, null));
     }
 

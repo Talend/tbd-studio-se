@@ -531,7 +531,8 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
         if (conn instanceof HadoopClusterConnection) {
             HadoopClusterConnection hadoopConn = (HadoopClusterConnection) conn;
             conVarList = getConAdditionProperties(HadoopRepositoryUtil.getHadoopPropertiesList(hadoopConn.getHadoopProperties()));
-            conVarList = getConAdditionProperties(HadoopRepositoryUtil.getHadoopPropertiesList(hadoopConn.getSparkProperties()));
+            conVarList.addAll(
+                    getConAdditionProperties(HadoopRepositoryUtil.getHadoopPropertiesList(hadoopConn.getSparkProperties())));
         }
         return conVarList;
     }

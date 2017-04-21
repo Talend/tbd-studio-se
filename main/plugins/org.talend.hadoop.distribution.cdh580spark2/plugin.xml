@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <plugin>
-    <extension point="org.talend.core.runtime.librariesNeeded">  
+    <extension point="org.talend.core.runtime.librariesNeeded">
+    
+        <!-- HDFS libraries -->    
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580spark2"
+            id="hadoop-common-cdh5.8.1"
+            name="hadoop-common-2.6.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-common-2.6.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580spark2"
+            id="hadoop-hdfs-cdh5.8.1"
+            name="hadoop-hdfs-2.6.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-hdfs-2.6.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580spark2"
+            id="hadoop-auth-cdh5.8.1"
+            name="hadoop-auth-2.6.0-cdh5.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-auth-2.6.0-cdh5.8.1/6.1.0">
+        </libraryNeeded>
+      
         <!-- Map/Reduce libraries -->    
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh580spark2"
@@ -225,6 +248,35 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="xbean-asm5-shaded-4.4.jar" name="xbean-asm5-shaded-4.4.jar" mvn_uri="mvn:org.talend.libraries/xbean-asm5-shaded-4.4/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="xz-1.0.jar" name="xz-1.0.jar" mvn_uri="mvn:org.talend.libraries/xz-1.0/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="zkclient-0.7.jar" name="zkclient-0.7.jar" mvn_uri="mvn:org.talend.libraries/zkclient-0.7/6.0.0"/>
+                        
+        <!-- HDFS group -->
+        <libraryNeededGroup
+                description="HDFS libraries for CDH 5.8 Spark 2"
+                id="HDFS-LIB-CDH580_SPARK2"
+                name="HDFS-LIB-CDH580_SPARK2"  >
+             <library id="hadoop-common-cdh5.8.1" />
+             <library id="hadoop-hdfs-cdh5.8.1" />
+             <library id="hadoop-auth-cdh5.8.1" />
+             <library id="commons-configuration-1.6.jar" />
+             <library id="commons-lang-2.6.jar" />
+             <library id="commons-logging-1.1.3.jar" />
+             <library id="commons-cli-1.2.jar" />
+             <library id="commons-collections-3.2.2.jar" />
+             <library id="commons-codec-1.10.jar" /> <!-- This jar is required for HDFS SSL connection-->
+             <library id="avro-cdh5.8.1" />
+             <library id="guava-12.0.1.jar" />
+             <library id="protobuf-java-2.5.0.jar" />
+             <library id="slf4j-api-1.7.5.jar" />
+             <library id="slf4j-log4j12-1.7.5.jar" />
+             <library id="log4j-1.2.17.jar" />
+             <library id="jersey-core-1.9.jar" />
+             <library id="htrace-core4-4.0.1-incubating.jar" />
+             <library id="servlet-api-2.5.jar"/>
+             <library id="httpclient-4.3.3.jar"/>
+             <library id="httpcore-4.4.4.jar"/>
+             <library id="jackson-mapper-asl-1.8.8.jar" />
+             <library id="jackson-core-asl-1.8.8.jar" />
+        </libraryNeededGroup>                
                          
         <!-- Sqoop libraries -->
         <libraryNeeded

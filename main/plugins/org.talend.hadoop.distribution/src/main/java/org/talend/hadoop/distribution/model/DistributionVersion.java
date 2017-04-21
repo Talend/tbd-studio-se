@@ -98,6 +98,7 @@ public class DistributionVersion implements IHDistributionVersion {
         }
     }
 
+    @Override
     public List<ModuleNeeded> getModulesNeeded() {
         if (modulesNeeded.isEmpty()) {
             synchronized (DistributionVersion.class) {
@@ -143,6 +144,7 @@ public class DistributionVersion implements IHDistributionVersion {
         }
     }
 
+    @Override
     public String getDefaultConfig(String... keys) {
         return hadoopComponent != null ? hadoopComponent.getDefaultConfig(keys) : null;
     }
@@ -180,6 +182,11 @@ public class DistributionVersion implements IHDistributionVersion {
     @Override
     public String toString() {
         return version + ',' + displayVersion;
+    }
+
+    @Override
+    public boolean doSupportOozie() {
+        return hadoopComponent.doSupportOozie();
     }
 
 }

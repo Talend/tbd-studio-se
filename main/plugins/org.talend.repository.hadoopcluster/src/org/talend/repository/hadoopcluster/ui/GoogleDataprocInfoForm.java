@@ -29,6 +29,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.talend.commons.ui.swt.formtools.Form;
+import org.talend.commons.ui.swt.formtools.LabelledFileField;
 import org.talend.commons.ui.swt.formtools.LabelledText;
 import org.talend.commons.ui.swt.formtools.UtilsButton;
 import org.talend.core.database.conn.ConnParameterKeys;
@@ -70,7 +71,7 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
 
     private Composite credentialsComposite;
 
-    private LabelledText pathToCredentialsNameText;
+    private LabelledFileField pathToCredentialsNameText;
 
     protected Composite propertiesComposite;
 
@@ -146,13 +147,14 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
         credentialsBtn.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 4, 1));
 
         credentialsComposite = new Composite(authPartComposite, SWT.NULL);
-        GridLayout credentialsLayout = new GridLayout(2, false);
+        GridLayout credentialsLayout = new GridLayout(3, false);
         credentialsLayout.marginWidth = 0;
         credentialsLayout.marginHeight = 0;
         credentialsComposite.setLayout(credentialsLayout);
         credentialsComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-        pathToCredentialsNameText = new LabelledText(credentialsComposite,
-                Messages.getString("GoogleDataprocInfoForm.text.authentication.credentials"), 1); //$NON-NLS-1$
+        String[] extensions = { "*.*" }; //$NON-NLS-1$
+        pathToCredentialsNameText = new LabelledFileField(credentialsComposite,
+                Messages.getString("GoogleDataprocInfoForm.text.authentication.credentials"), extensions); //$NON-NLS-1$
     }
 
     protected void addSparkPropertiesFields() {

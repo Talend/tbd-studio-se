@@ -233,4 +233,9 @@ public class HDInsight32Distribution extends AbstractDistribution implements MRC
     public boolean isCloudDistribution() {
         return true;
     }
+
+    @Override
+    public boolean doSupportOozie() {
+        return false;
+    }
 }

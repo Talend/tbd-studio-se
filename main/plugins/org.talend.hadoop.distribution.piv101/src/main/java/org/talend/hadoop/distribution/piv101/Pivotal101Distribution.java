@@ -197,6 +197,11 @@ public class Pivotal101Distribution extends AbstractDistribution implements HDFS
     }
 
     @Override
+    public boolean doSupportOozie() {
+        return false;
+    }
+
+    @Override
     public ComponentCondition getDisplayCondition(ComponentType componentType) {
         return displayConditions.get(componentType);
     }
