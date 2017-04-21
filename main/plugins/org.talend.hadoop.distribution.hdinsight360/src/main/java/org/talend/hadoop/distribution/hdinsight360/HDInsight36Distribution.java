@@ -28,10 +28,14 @@ import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
+import org.talend.hadoop.distribution.constants.SparkBatchConstant;
+import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.hdinsight.IMicrosoftHDInsightDistribution;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.HDInsight36HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.HDInsight36SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.HDInsight36SparkStreamingModuleGroup;
+import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.sparkbatch.HDInsight36SparkBatchParquetNodeModuleGroup;
+import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.sparkstreaming.HDInsight36SparkStreamingParquetNodeModuleGroup;
 
 public class HDInsight36Distribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent,
         IMicrosoftHDInsightDistribution, HiveOnSparkComponent {
@@ -48,7 +52,10 @@ public class HDInsight36Distribution extends AbstractDistribution implements Spa
 
     private static Map<ComponentType, ComponentCondition> displayConditions = new HashMap<>();
 
-    static {
+    public HDInsight36Distribution() {
+
+        String distribution = getDistribution();
+        String version = getVersion();
 
         // Used to add a module group import for the components that have a HADOOP_DISTRIBUTION parameter, aka. the
         // components that have the distribution list.
@@ -60,6 +67,20 @@ public class HDInsight36Distribution extends AbstractDistribution implements Spa
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
         nodeModuleGroups = new HashMap<>();
 
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
+                HDInsight36SparkBatchParquetNodeModuleGroup.getModuleGroups());
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
+                HDInsight36SparkBatchParquetNodeModuleGroup.getModuleGroups());
+
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.PARQUET_OUTPUT_COMPONENT), HDInsight36SparkStreamingParquetNodeModuleGroup
+                .getModuleGroups());
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.PARQUET_INPUT_COMPONENT), HDInsight36SparkStreamingParquetNodeModuleGroup
+                .getModuleGroups());
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.PARQUET_STREAM_INPUT_COMPONENT), HDInsight36SparkStreamingParquetNodeModuleGroup
+                .getModuleGroups());
     }
 
     @Override
