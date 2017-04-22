@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Amazon EMR 5.4.0 distribution jars fragment
+Bundle-SymbolicName: org.talend.hadoop.distribution.emr540.jars
+Bundle-Version: 6.4.0.qualifier
+Fragment-Host: org.talend.hadoop.distribution.emr540
+Eclipse-BundleShape: dir

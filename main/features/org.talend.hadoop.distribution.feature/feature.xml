@@ -105,7 +105,7 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
+
    <plugin
          id="org.talend.hadoop.distribution.cdh580spark2"
          download-size="0"
@@ -164,6 +164,13 @@
 
    <plugin
          id="org.talend.hadoop.distribution.emr500"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.emr540"
          download-size="0"
          install-size="0"
          version="0.0.0"
