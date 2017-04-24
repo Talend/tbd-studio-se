@@ -307,7 +307,7 @@
              description="Reuse the old conf files of old hadoop cluster conection to the new one."
              id="org.talend.repository.hadoopcluster.migration.UpdateHadoopConfsForContextualHadoopClusterMigrationTask"
              name="UpdateHadoopConfsForContextualHadoopClusterMigrationTask"
-             version="6.4.1">
+             version="6.4.0">
        </projecttask>
     </extension>
 </plugin>
