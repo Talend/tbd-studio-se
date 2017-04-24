@@ -25,12 +25,6 @@ import org.talend.hadoop.distribution.hdinsight360.HDInsight36Constant;
 
 public class HDInsight36HiveOnSparkModuleGroup {
 
-    /*
-     * public static Set<DistributionModuleGroup> getModuleGroups() { Set<DistributionModuleGroup> hs = new HashSet<>();
-     * DistributionModuleGroup dmg = new DistributionModuleGroup(
-     * HDInsight36Constant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), true, null); hs.add(dmg); return hs; }
-     */
-
     private final static ComponentCondition condition = new SimpleComponentCondition(new BasicExpression(
             SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false")); //$NON-NLS-1$
 

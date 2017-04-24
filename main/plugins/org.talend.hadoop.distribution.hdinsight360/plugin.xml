@@ -3,230 +3,33 @@
 <plugin>
     <extension point="org.talend.core.runtime.librariesNeeded">
 
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="activation-1.1.1" name="activation-1.1.1.jar" mvn_uri="mvn:org.talend.libraries/activation-1.1.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="antlr-2.7.7" name="antlr-2.7.7.jar" mvn_uri="mvn:org.talend.libraries/antlr-2.7.7/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="antlr-runtime-3.4" name="antlr-runtime-3.4.jar" mvn_uri="mvn:org.talend.libraries/antlr-runtime-3.4/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="antlr4-runtime-4.5.3" name="antlr4-runtime-4.5.3.jar" mvn_uri="mvn:org.talend.libraries/antlr4-runtime-4.5.3/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="aopalliance-1.0" name="aopalliance-1.0.jar" mvn_uri="mvn:org.talend.libraries/aopalliance-1.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="aopalliance-repackaged-2.4.0-b34" name="aopalliance-repackaged-2.4.0-b34.jar" mvn_uri="mvn:org.talend.libraries/aopalliance-repackaged-2.4.0-b34/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="apache-log4j-extras-1.2.17" name="apache-log4j-extras-1.2.17.jar" mvn_uri="mvn:org.talend.libraries/apache-log4j-extras-1.2.17/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="apacheds-i18n-2.0.0-M15" name="apacheds-i18n-2.0.0-M15.jar" mvn_uri="mvn:org.talend.libraries/apacheds-i18n-2.0.0-M15/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="apacheds-kerberos-codec-2.0.0-M15" name="apacheds-kerberos-codec-2.0.0-M15.jar" mvn_uri="mvn:org.talend.libraries/apacheds-kerberos-codec-2.0.0-M15/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="api-asn1-api-1.0.0-M20" name="api-asn1-api-1.0.0-M20.jar" mvn_uri="mvn:org.talend.libraries/api-asn1-api-1.0.0-M20/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="api-util-1.0.0-M20" name="api-util-1.0.0-M20.jar" mvn_uri="mvn:org.talend.libraries/api-util-1.0.0-M20/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="arpack_combined_all-0.1" name="arpack_combined_all-0.1.jar" mvn_uri="mvn:org.talend.libraries/arpack_combined_all-0.1/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="avro-1.7.7" name="avro-1.7.7.jar" mvn_uri="mvn:org.talend.libraries/avro-1.7.7/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="avro-ipc-1.7.7" name="avro-ipc-1.7.7.jar" mvn_uri="mvn:org.talend.libraries/avro-ipc-1.7.7/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="avro-mapred-1.7.7-hadoop2" name="avro-mapred-1.7.7-hadoop2.jar" mvn_uri="mvn:org.talend.libraries/avro-mapred-1.7.7-hadoop2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="aws-java-sdk-core-1.10.6" name="aws-java-sdk-core-1.10.6.jar" mvn_uri="mvn:org.talend.libraries/aws-java-sdk-core-1.10.6/6.3.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="aws-java-sdk-kms-1.10.6" name="aws-java-sdk-kms-1.10.6.jar" mvn_uri="mvn:org.talend.libraries/aws-java-sdk-kms-1.10.6/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="aws-java-sdk-s3-1.10.6" name="aws-java-sdk-s3-1.10.6.jar" mvn_uri="mvn:org.talend.libraries/aws-java-sdk-s3-1.10.6/6.3.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="azure-data-lake-store-sdk-2.1.4" name="azure-data-lake-store-sdk-2.1.4.jar" mvn_uri="mvn:org.talend.libraries/azure-data-lake-store-sdk-2.1.4/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="azure-keyvault-core-0.8.0" name="azure-keyvault-core-0.8.0.jar" mvn_uri="mvn:org.talend.libraries/azure-keyvault-core-0.8.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="azure-storage-4.2.0" name="azure-storage-4.2.0.jar" mvn_uri="mvn:org.talend.libraries/azure-storage-4.2.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="base64-2.3.8" name="base64-2.3.8.jar" mvn_uri="mvn:org.talend.libraries/base64-2.3.8/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="bcprov-jdk15on-1.51" name="bcprov-jdk15on-1.51.jar" mvn_uri="mvn:org.talend.libraries/bcprov-jdk15on-1.51/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="bonecp-0.8.0.RELEASE" name="bonecp-0.8.0.RELEASE.jar" mvn_uri="mvn:org.talend.libraries/bonecp-0.8.0.RELEASE/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="breeze-macros_2.11-0.12" name="breeze-macros_2.11-0.12.jar" mvn_uri="mvn:org.talend.libraries/breeze-macros_2.11-0.12/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="breeze_2.11-0.12" name="breeze_2.11-0.12.jar" mvn_uri="mvn:org.talend.libraries/breeze_2.11-0.12/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="calcite-avatica-1.2.0-incubating" name="calcite-avatica-1.2.0-incubating.jar" mvn_uri="mvn:org.talend.libraries/calcite-avatica-1.2.0-incubating/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="calcite-core-1.2.0-incubating" name="calcite-core-1.2.0-incubating.jar" mvn_uri="mvn:org.talend.libraries/calcite-core-1.2.0-incubating/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="calcite-linq4j-1.2.0-incubating" name="calcite-linq4j-1.2.0-incubating.jar" mvn_uri="mvn:org.talend.libraries/calcite-linq4j-1.2.0-incubating/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="chill-java-0.8.0" name="chill-java-0.8.0.jar" mvn_uri="mvn:org.talend.libraries/chill-java-0.8.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="chill_2.11-0.8.0" name="chill_2.11-0.8.0.jar" mvn_uri="mvn:org.talend.libraries/chill_2.11-0.8.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-beanutils-1.7.0" name="commons-beanutils-1.7.0.jar" mvn_uri="mvn:org.talend.libraries/commons-beanutils-1.7.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-beanutils-core-1.8.0" name="commons-beanutils-core-1.8.0.jar" mvn_uri="mvn:org.talend.libraries/commons-beanutils-core-1.8.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-cli-1.2" name="commons-cli-1.2.jar" mvn_uri="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-codec-1.10" name="commons-codec-1.10.jar" mvn_uri="mvn:org.talend.libraries/commons-codec-1.10/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-collections-3.2.2" name="commons-collections-3.2.2.jar" mvn_uri="mvn:org.talend.libraries/commons-collections-3.2.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-compiler-3.0.0" name="commons-compiler-3.0.0.jar" mvn_uri="mvn:org.talend.libraries/commons-compiler-3.0.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-compress-1.4.1" name="commons-compress-1.4.1.jar" mvn_uri="mvn:org.talend.libraries/commons-compress-1.4.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-configuration-1.6" name="commons-configuration-1.6.jar" mvn_uri="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-crypto-1.0.0" name="commons-crypto-1.0.0.jar" mvn_uri="mvn:org.talend.libraries/commons-crypto-1.0.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-dbcp-1.4" name="commons-dbcp-1.4.jar" mvn_uri="mvn:org.talend.libraries/commons-dbcp-1.4/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-digester-1.8" name="commons-digester-1.8.jar" mvn_uri="mvn:org.talend.libraries/commons-digester-1.8/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-httpclient-3.1" name="commons-httpclient-3.1.jar" mvn_uri="mvn:org.talend.libraries/commons-httpclient-3.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-io-2.4" name="commons-io-2.4.jar" mvn_uri="mvn:org.talend.libraries/commons-io-2.4/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-lang-2.6" name="commons-lang-2.6.jar" mvn_uri="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-lang3-3.5" name="commons-lang3-3.5.jar" mvn_uri="mvn:org.talend.libraries/commons-lang3-3.5/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-logging-1.1.3" name="commons-logging-1.1.3.jar" mvn_uri="mvn:org.talend.libraries/commons-logging-1.1.3/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-math3-3.4.1" name="commons-math3-3.4.1.jar" mvn_uri="mvn:org.talend.libraries/commons-math3-3.4.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-net-2.2" name="commons-net-2.2.jar" mvn_uri="mvn:org.talend.libraries/commons-net-2.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-pool-1.5.4" name="commons-pool-1.5.4.jar" mvn_uri="mvn:org.talend.libraries/commons-pool-1.5.4/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="compress-lzf-1.0.3" name="compress-lzf-1.0.3.jar" mvn_uri="mvn:org.talend.libraries/compress-lzf-1.0.3/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="core-1.1.2" name="core-1.1.2.jar" mvn_uri="mvn:org.talend.libraries/core-1.1.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="curator-client-2.6.0" name="curator-client-2.6.0.jar" mvn_uri="mvn:org.talend.libraries/curator-client-2.6.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="curator-framework-2.6.0" name="curator-framework-2.6.0.jar" mvn_uri="mvn:org.talend.libraries/curator-framework-2.6.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="curator-recipes-2.6.0" name="curator-recipes-2.6.0.jar" mvn_uri="mvn:org.talend.libraries/curator-recipes-2.6.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="datanucleus-api-jdo-3.2.6" name="datanucleus-api-jdo-3.2.6.jar" mvn_uri="mvn:org.talend.libraries/datanucleus-api-jdo-3.2.6/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="datanucleus-core-3.2.10" name="datanucleus-core-3.2.10.jar" mvn_uri="mvn:org.talend.libraries/datanucleus-core-3.2.10/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="datanucleus-rdbms-3.2.9" name="datanucleus-rdbms-3.2.9.jar" mvn_uri="mvn:org.talend.libraries/datanucleus-rdbms-3.2.9/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="derby-10.12.1.1" name="derby-10.12.1.1.jar" mvn_uri="mvn:org.talend.libraries/derby-10.12.1.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="eigenbase-properties-1.1.5" name="eigenbase-properties-1.1.5.jar" mvn_uri="mvn:org.talend.libraries/eigenbase-properties-1.1.5/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="gson-2.2.4" name="gson-2.2.4.jar" mvn_uri="mvn:org.talend.libraries/gson-2.2.4/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="guava-14.0.1" name="guava-14.0.1.jar" mvn_uri="mvn:org.talend.libraries/guava-14.0.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="guice-3.0" name="guice-3.0.jar" mvn_uri="mvn:org.talend.libraries/guice-3.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="guice-servlet-3.0" name="guice-servlet-3.0.jar" mvn_uri="mvn:org.talend.libraries/guice-servlet-3.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hadoop-annotations-2.7.3.2.6.0.2-76" name="hadoop-annotations-2.7.3.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/hadoop-annotations-2.7.3.2.6.0.2-76/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hadoop-auth-2.7.3.2.6.0.2-76" name="hadoop-auth-2.7.3.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/hadoop-auth-2.7.3.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hadoop-aws-2.7.3.2.6.0.2-76" name="hadoop-aws-2.7.3.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/hadoop-aws-2.7.3.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hadoop-azure-2.7.3.2.6.0.2-76" name="hadoop-azure-2.7.3.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/hadoop-azure-2.7.3.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hadoop-azure-datalake-2.7.3.2.6.0.2-76" name="hadoop-azure-datalake-2.7.3.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/hadoop-azure-datalake-2.7.3.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hadoop-client-2.7.3.2.6.0.2-76" name="hadoop-client-2.7.3.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/hadoop-client-2.7.3.2.6.0.2-76/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hadoop-common-2.7.3.2.6.0.2-76" name="hadoop-common-2.7.3.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/hadoop-common-2.7.3.2.6.0.2-76/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hadoop-hdfs-2.7.3.2.6.0.2-76" name="hadoop-hdfs-2.7.3.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/hadoop-hdfs-2.7.3.2.6.0.2-76/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hadoop-mapreduce-client-app-2.7.3.2.6.0.2-76" name="hadoop-mapreduce-client-app-2.7.3.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-app-2.7.3.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hadoop-mapreduce-client-common-2.7.3.2.6.0.2-76" name="hadoop-mapreduce-client-common-2.7.3.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-common-2.7.3.2.6.0.2-76/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hadoop-mapreduce-client-core-2.7.3.2.6.0.2-76" name="hadoop-mapreduce-client-core-2.7.3.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-core-2.7.3.2.6.0.2-76/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hadoop-mapreduce-client-jobclient-2.7.3.2.6.0.2-76" name="hadoop-mapreduce-client-jobclient-2.7.3.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-jobclient-2.7.3.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hadoop-mapreduce-client-shuffle-2.7.3.2.6.0.2-76" name="hadoop-mapreduce-client-shuffle-2.7.3.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-shuffle-2.7.3.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hadoop-openstack-2.7.3.2.6.0.2-76" name="hadoop-openstack-2.7.3.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/hadoop-openstack-2.7.3.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hadoop-yarn-api-2.7.3.2.6.0.2-76" name="hadoop-yarn-api-2.7.3.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/hadoop-yarn-api-2.7.3.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hadoop-yarn-client-2.7.3.2.6.0.2-76" name="hadoop-yarn-client-2.7.3.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/hadoop-yarn-client-2.7.3.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hadoop-yarn-common-2.7.3.2.6.0.2-76" name="hadoop-yarn-common-2.7.3.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/hadoop-yarn-common-2.7.3.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hadoop-yarn-registry-2.7.3.2.6.0.2-76" name="hadoop-yarn-registry-2.7.3.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/hadoop-yarn-registry-2.7.3.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hadoop-yarn-server-common-2.7.3.2.6.0.2-76" name="hadoop-yarn-server-common-2.7.3.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/hadoop-yarn-server-common-2.7.3.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hadoop-yarn-server-web-proxy-2.7.3.2.6.0.2-76" name="hadoop-yarn-server-web-proxy-2.7.3.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/hadoop-yarn-server-web-proxy-2.7.3.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hive-beeline-1.2.1.spark2.hdp" name="hive-beeline-1.2.1.spark2.hdp.jar" mvn_uri="mvn:org.talend.libraries/hive-beeline-1.2.1.spark2.hdp/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hive-cli-1.2.1.spark2.hdp" name="hive-cli-1.2.1.spark2.hdp.jar" mvn_uri="mvn:org.talend.libraries/hive-cli-1.2.1.spark2.hdp/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hive-exec-1.2.1.spark2.hdp" name="hive-exec-1.2.1.spark2.hdp.jar" mvn_uri="mvn:org.talend.libraries/hive-exec-1.2.1.spark2.hdp/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hive-jdbc-1.2.1.spark2.hdp" name="hive-jdbc-1.2.1.spark2.hdp.jar" mvn_uri="mvn:org.talend.libraries/hive-jdbc-1.2.1.spark2.hdp/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hive-metastore-1.2.1.spark2.hdp" name="hive-metastore-1.2.1.spark2.hdp.jar" mvn_uri="mvn:org.talend.libraries/hive-metastore-1.2.1.spark2.hdp/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hk2-api-2.4.0-b34" name="hk2-api-2.4.0-b34.jar" mvn_uri="mvn:org.talend.libraries/hk2-api-2.4.0-b34/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hk2-locator-2.4.0-b34" name="hk2-locator-2.4.0-b34.jar" mvn_uri="mvn:org.talend.libraries/hk2-locator-2.4.0-b34/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="hk2-utils-2.4.0-b34" name="hk2-utils-2.4.0-b34.jar" mvn_uri="mvn:org.talend.libraries/hk2-utils-2.4.0-b34/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="htrace-core-3.1.0-incubating" name="htrace-core-3.1.0-incubating.jar" mvn_uri="mvn:org.talend.libraries/htrace-core-3.1.0-incubating/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="httpclient-4.5.2" name="httpclient-4.5.2.jar" mvn_uri="mvn:org.talend.libraries/httpclient-4.5.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="httpcore-4.4.4" name="httpcore-4.4.4.jar" mvn_uri="mvn:org.talend.libraries/httpcore-4.4.4/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="ivy-2.4.0" name="ivy-2.4.0.jar" mvn_uri="mvn:org.talend.libraries/ivy-2.4.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jackson-annotations-2.6.5" name="jackson-annotations-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-annotations-2.6.5/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jackson-core-2.6.5" name="jackson-core-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-core-2.6.5/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jackson-core-asl-1.9.13" name="jackson-core-asl-1.9.13.jar" mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.13/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jackson-databind-2.6.5" name="jackson-databind-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-databind-2.6.5/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jackson-dataformat-cbor-2.6.5" name="jackson-dataformat-cbor-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-dataformat-cbor-2.6.5/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jackson-jaxrs-1.9.13" name="jackson-jaxrs-1.9.13.jar" mvn_uri="mvn:org.talend.libraries/jackson-jaxrs-1.9.13/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jackson-mapper-asl-1.9.13" name="jackson-mapper-asl-1.9.13.jar" mvn_uri="mvn:org.talend.libraries/jackson-mapper-asl-1.9.13/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jackson-module-paranamer-2.6.5" name="jackson-module-paranamer-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-module-paranamer-2.6.5/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jackson-module-scala_2.11-2.6.5" name="jackson-module-scala_2.11-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-module-scala_2.11-2.6.5/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jackson-xc-1.9.13" name="jackson-xc-1.9.13.jar" mvn_uri="mvn:org.talend.libraries/jackson-xc-1.9.13/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="janino-3.0.0" name="janino-3.0.0.jar" mvn_uri="mvn:org.talend.libraries/janino-3.0.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="java-xmlbuilder-1.0" name="java-xmlbuilder-1.0.jar" mvn_uri="mvn:org.talend.libraries/java-xmlbuilder-1.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="JavaEWAH-0.3.2" name="JavaEWAH-0.3.2.jar" mvn_uri="mvn:org.talend.libraries/JavaEWAH-0.3.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="javassist-3.18.1-GA" name="javassist-3.18.1-GA.jar" mvn_uri="mvn:org.talend.libraries/javassist-3.18.1-GA/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="javax.annotation-api-1.2" name="javax.annotation-api-1.2.jar" mvn_uri="mvn:org.talend.libraries/javax.annotation-api-1.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="javax.inject-1" name="javax.inject-1.jar" mvn_uri="mvn:org.talend.libraries/javax.inject-1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="javax.inject-2.4.0-b34" name="javax.inject-2.4.0-b34.jar" mvn_uri="mvn:org.talend.libraries/javax.inject-2.4.0-b34/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="javax.servlet-api-3.1.0" name="javax.servlet-api-3.1.0.jar" mvn_uri="mvn:org.talend.libraries/javax.servlet-api-3.1.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="javax.ws.rs-api-2.0.1" name="javax.ws.rs-api-2.0.1.jar" mvn_uri="mvn:org.talend.libraries/javax.ws.rs-api-2.0.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="javolution-5.5.1" name="javolution-5.5.1.jar" mvn_uri="mvn:org.talend.libraries/javolution-5.5.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jaxb-api-2.2.2" name="jaxb-api-2.2.2.jar" mvn_uri="mvn:org.talend.libraries/jaxb-api-2.2.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jcip-annotations-1.0" name="jcip-annotations-1.0.jar" mvn_uri="mvn:org.talend.libraries/jcip-annotations-1.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jcl-over-slf4j-1.7.16" name="jcl-over-slf4j-1.7.16.jar" mvn_uri="mvn:org.talend.libraries/jcl-over-slf4j-1.7.16/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jdo-api-3.0.1" name="jdo-api-3.0.1.jar" mvn_uri="mvn:org.talend.libraries/jdo-api-3.0.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jersey-client-2.22.2" name="jersey-client-2.22.2.jar" mvn_uri="mvn:org.talend.libraries/jersey-client-2.22.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jersey-common-2.22.2" name="jersey-common-2.22.2.jar" mvn_uri="mvn:org.talend.libraries/jersey-common-2.22.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jersey-container-servlet-2.22.2" name="jersey-container-servlet-2.22.2.jar" mvn_uri="mvn:org.talend.libraries/jersey-container-servlet-2.22.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jersey-container-servlet-core-2.22.2" name="jersey-container-servlet-core-2.22.2.jar" mvn_uri="mvn:org.talend.libraries/jersey-container-servlet-core-2.22.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jersey-guava-2.22.2" name="jersey-guava-2.22.2.jar" mvn_uri="mvn:org.talend.libraries/jersey-guava-2.22.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jersey-media-jaxb-2.22.2" name="jersey-media-jaxb-2.22.2.jar" mvn_uri="mvn:org.talend.libraries/jersey-media-jaxb-2.22.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jersey-server-2.22.2" name="jersey-server-2.22.2.jar" mvn_uri="mvn:org.talend.libraries/jersey-server-2.22.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jets3t-0.9.3" name="jets3t-0.9.3.jar" mvn_uri="mvn:org.talend.libraries/jets3t-0.9.3/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jetty-6.1.26.hwx" name="jetty-6.1.26.hwx.jar" mvn_uri="mvn:org.talend.libraries/jetty-6.1.26.hwx/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jetty-sslengine-6.1.26.hwx" name="jetty-sslengine-6.1.26.hwx.jar" mvn_uri="mvn:org.talend.libraries/jetty-sslengine-6.1.26.hwx/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jetty-util-6.1.26.hwx" name="jetty-util-6.1.26.hwx.jar" mvn_uri="mvn:org.talend.libraries/jetty-util-6.1.26.hwx/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jline-2.12.1" name="jline-2.12.1.jar" mvn_uri="mvn:org.talend.libraries/jline-2.12.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="joda-time-2.9.3" name="joda-time-2.9.3.jar" mvn_uri="mvn:org.talend.libraries/joda-time-2.9.3/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jodd-core-3.5.2" name="jodd-core-3.5.2.jar" mvn_uri="mvn:org.talend.libraries/jodd-core-3.5.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jpam-1.1" name="jpam-1.1.jar" mvn_uri="mvn:org.talend.libraries/jpam-1.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="json-smart-1.1.1" name="json-smart-1.1.1.jar" mvn_uri="mvn:org.talend.libraries/json-smart-1.1.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="json4s-ast_2.11-3.2.11" name="json4s-ast_2.11-3.2.11.jar" mvn_uri="mvn:org.talend.libraries/json4s-ast_2.11-3.2.11/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="json4s-core_2.11-3.2.11" name="json4s-core_2.11-3.2.11.jar" mvn_uri="mvn:org.talend.libraries/json4s-core_2.11-3.2.11/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="json4s-jackson_2.11-3.2.11" name="json4s-jackson_2.11-3.2.11.jar" mvn_uri="mvn:org.talend.libraries/json4s-jackson_2.11-3.2.11/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jsp-api-2.1" name="jsp-api-2.1.jar" mvn_uri="mvn:org.talend.libraries/jsp-api-2.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jsr305-1.3.9" name="jsr305-1.3.9.jar" mvn_uri="mvn:org.talend.libraries/jsr305-1.3.9/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jta-1.1" name="jta-1.1.jar" mvn_uri="mvn:org.talend.libraries/jta-1.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jtransforms-2.4.0" name="jtransforms-2.4.0.jar" mvn_uri="mvn:org.talend.libraries/jtransforms-2.4.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="jul-to-slf4j-1.7.16" name="jul-to-slf4j-1.7.16.jar" mvn_uri="mvn:org.talend.libraries/jul-to-slf4j-1.7.16/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="kryo-shaded-3.0.3" name="kryo-shaded-3.0.3.jar" mvn_uri="mvn:org.talend.libraries/kryo-shaded-3.0.3/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="leveldbjni-all-1.8" name="leveldbjni-all-1.8.jar" mvn_uri="mvn:org.talend.libraries/leveldbjni-all-1.8/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="libfb303-0.9.3" name="libfb303-0.9.3.jar" mvn_uri="mvn:org.talend.libraries/libfb303-0.9.3/6.3.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="libthrift-0.9.3" name="libthrift-0.9.3.jar" mvn_uri="mvn:org.talend.libraries/libthrift-0.9.3/6.3.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="log4j-1.2.17" name="log4j-1.2.17.jar" mvn_uri="mvn:org.talend.libraries/log4j-1.2.17/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="lz4-1.3.0" name="lz4-1.3.0.jar" mvn_uri="mvn:org.talend.libraries/lz4-1.3.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="mail-1.4.7" name="mail-1.4.7.jar" mvn_uri="mvn:org.talend.libraries/mail-1.4.7/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="metrics-core-3.1.2" name="metrics-core-3.1.2.jar" mvn_uri="mvn:org.talend.libraries/metrics-core-3.1.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="metrics-graphite-3.1.2" name="metrics-graphite-3.1.2.jar" mvn_uri="mvn:org.talend.libraries/metrics-graphite-3.1.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="metrics-json-3.1.2" name="metrics-json-3.1.2.jar" mvn_uri="mvn:org.talend.libraries/metrics-json-3.1.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="metrics-jvm-3.1.2" name="metrics-jvm-3.1.2.jar" mvn_uri="mvn:org.talend.libraries/metrics-jvm-3.1.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="minlog-1.3.0" name="minlog-1.3.0.jar" mvn_uri="mvn:org.talend.libraries/minlog-1.3.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="mx4j-3.0.2" name="mx4j-3.0.2.jar" mvn_uri="mvn:org.talend.libraries/mx4j-3.0.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="netty-3.8.0.Final" name="netty-3.8.0.Final.jar" mvn_uri="mvn:org.talend.libraries/netty-3.8.0.Final/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="netty-all-4.0.42.Final" name="netty-all-4.0.42.Final.jar" mvn_uri="mvn:org.talend.libraries/netty-all-4.0.42.Final/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="nimbus-jose-jwt-3.9" name="nimbus-jose-jwt-3.9.jar" mvn_uri="mvn:org.talend.libraries/nimbus-jose-jwt-3.9/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="objenesis-2.1" name="objenesis-2.1.jar" mvn_uri="mvn:org.talend.libraries/objenesis-2.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="okhttp-2.4.0" name="okhttp-2.4.0.jar" mvn_uri="mvn:org.talend.libraries/okhttp-2.4.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="okio-1.4.0" name="okio-1.4.0.jar" mvn_uri="mvn:org.talend.libraries/okio-1.4.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="opencsv-2.3" name="opencsv-2.3.jar" mvn_uri="mvn:org.talend.libraries/opencsv-2.3/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="oro-2.0.8" name="oro-2.0.8.jar" mvn_uri="mvn:org.talend.libraries/oro-2.0.8/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="osgi-resource-locator-1.0.1" name="osgi-resource-locator-1.0.1.jar" mvn_uri="mvn:org.talend.libraries/osgi-resource-locator-1.0.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="paranamer-2.3" name="paranamer-2.3.jar" mvn_uri="mvn:org.talend.libraries/paranamer-2.3/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="parquet-column-1.8.1" name="parquet-column-1.8.1.jar" mvn_uri="mvn:org.talend.libraries/parquet-column-1.8.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="parquet-common-1.8.1" name="parquet-common-1.8.1.jar" mvn_uri="mvn:org.talend.libraries/parquet-common-1.8.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="parquet-encoding-1.8.1" name="parquet-encoding-1.8.1.jar" mvn_uri="mvn:org.talend.libraries/parquet-encoding-1.8.1/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="parquet-format-2.3.0-incubating" name="parquet-format-2.3.0-incubating.jar" mvn_uri="mvn:org.talend.libraries/parquet-format-2.3.0-incubating/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="parquet-hadoop-1.8.1" name="parquet-hadoop-1.8.1.jar" mvn_uri="mvn:org.talend.libraries/parquet-hadoop-1.8.1/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="parquet-hadoop-bundle-1.6.0" name="parquet-hadoop-bundle-1.6.0.jar" mvn_uri="mvn:org.talend.libraries/parquet-hadoop-bundle-1.6.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="parquet-jackson-1.8.1" name="parquet-jackson-1.8.1.jar" mvn_uri="mvn:org.talend.libraries/parquet-jackson-1.8.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="pmml-model-1.2.15" name="pmml-model-1.2.15.jar" mvn_uri="mvn:org.talend.libraries/pmml-model-1.2.15/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="pmml-schema-1.2.15" name="pmml-schema-1.2.15.jar" mvn_uri="mvn:org.talend.libraries/pmml-schema-1.2.15/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="protobuf-java-2.5.0" name="protobuf-java-2.5.0.jar" mvn_uri="mvn:org.talend.libraries/protobuf-java-2.5.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="py4j-0.10.4" name="py4j-0.10.4.jar" mvn_uri="mvn:org.talend.libraries/py4j-0.10.4/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="pyrolite-4.13" name="pyrolite-4.13.jar" mvn_uri="mvn:org.talend.libraries/pyrolite-4.13/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="RoaringBitmap-0.5.11" name="RoaringBitmap-0.5.11.jar" mvn_uri="mvn:org.talend.libraries/RoaringBitmap-0.5.11/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="scala-compiler-2.11.8" name="scala-compiler-2.11.8.jar" mvn_uri="mvn:org.talend.libraries/scala-compiler-2.11.8/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="scala-library-2.11.8" name="scala-library-2.11.8.jar" mvn_uri="mvn:org.talend.libraries/scala-library-2.11.8/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="scala-parser-combinators_2.11-1.0.4" name="scala-parser-combinators_2.11-1.0.4.jar" mvn_uri="mvn:org.talend.libraries/scala-parser-combinators_2.11-1.0.4/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="scala-reflect-2.11.8" name="scala-reflect-2.11.8.jar" mvn_uri="mvn:org.talend.libraries/scala-reflect-2.11.8/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="scala-xml_2.11-1.0.2" name="scala-xml_2.11-1.0.2.jar" mvn_uri="mvn:org.talend.libraries/scala-xml_2.11-1.0.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="scalap-2.11.8" name="scalap-2.11.8.jar" mvn_uri="mvn:org.talend.libraries/scalap-2.11.8/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="shapeless_2.11-2.0.0" name="shapeless_2.11-2.0.0.jar" mvn_uri="mvn:org.talend.libraries/shapeless_2.11-2.0.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="slf4j-api-1.7.16" name="slf4j-api-1.7.16.jar" mvn_uri="mvn:org.talend.libraries/slf4j-api-1.7.16/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="slf4j-log4j12-1.7.16" name="slf4j-log4j12-1.7.16.jar" mvn_uri="mvn:org.talend.libraries/slf4j-log4j12-1.7.16/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="snappy-0.2" name="snappy-0.2.jar" mvn_uri="mvn:org.talend.libraries/snappy-0.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="snappy-java-1.1.2.6" name="snappy-java-1.1.2.6.jar" mvn_uri="mvn:org.talend.libraries/snappy-java-1.1.2.6/6.3.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-catalyst_2.11-2.1.0.2.6.0.2-76" name="spark-catalyst_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-catalyst_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-cloud_2.11-2.1.0.2.6.0.2-76" name="spark-cloud_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-cloud_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-core_2.11-2.1.0.2.6.0.2-76" name="spark-core_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-core_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-graphx_2.11-2.1.0.2.6.0.2-76" name="spark-graphx_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-graphx_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-hive-thriftserver_2.11-2.1.0.2.6.0.2-76" name="spark-hive-thriftserver_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-hive-thriftserver_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-hive_2.11-2.1.0.2.6.0.2-76" name="spark-hive_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-hive_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-launcher_2.11-2.1.0.2.6.0.2-76" name="spark-launcher_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-launcher_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-mllib-local_2.11-2.1.0.2.6.0.2-76" name="spark-mllib-local_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-mllib-local_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-mllib_2.11-2.1.0.2.6.0.2-76" name="spark-mllib_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-mllib_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-network-common_2.11-2.1.0.2.6.0.2-76" name="spark-network-common_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-network-common_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-network-shuffle_2.11-2.1.0.2.6.0.2-76" name="spark-network-shuffle_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-network-shuffle_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-repl_2.11-2.1.0.2.6.0.2-76" name="spark-repl_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-repl_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-sketch_2.11-2.1.0.2.6.0.2-76" name="spark-sketch_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-sketch_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-sql_2.11-2.1.0.2.6.0.2-76" name="spark-sql_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-sql_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-streaming_2.11-2.1.0.2.6.0.2-76" name="spark-streaming_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-streaming_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-tags_2.11-2.1.0.2.6.0.2-76" name="spark-tags_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-tags_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-unsafe_2.11-2.1.0.2.6.0.2-76" name="spark-unsafe_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-unsafe_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-yarn_2.11-2.1.0.2.6.0.2-76" name="spark-yarn_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-yarn_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spire-macros_2.11-0.7.4" name="spire-macros_2.11-0.7.4.jar" mvn_uri="mvn:org.talend.libraries/spire-macros_2.11-0.7.4/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spire_2.11-0.7.4" name="spire_2.11-0.7.4.jar" mvn_uri="mvn:org.talend.libraries/spire_2.11-0.7.4/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="ST4-4.0.4" name="ST4-4.0.4.jar" mvn_uri="mvn:org.talend.libraries/ST4-4.0.4/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="stax-api-1.0-2" name="stax-api-1.0-2.jar" mvn_uri="mvn:org.talend.libraries/stax-api-1.0-2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="stax-api-1.0.1" name="stax-api-1.0.1.jar" mvn_uri="mvn:org.talend.libraries/stax-api-1.0.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="stream-2.7.0" name="stream-2.7.0.jar" mvn_uri="mvn:org.talend.libraries/stream-2.7.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="stringtemplate-3.2.1" name="stringtemplate-3.2.1.jar" mvn_uri="mvn:org.talend.libraries/stringtemplate-3.2.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="super-csv-2.2.0" name="super-csv-2.2.0.jar" mvn_uri="mvn:org.talend.libraries/super-csv-2.2.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="univocity-parsers-2.2.1" name="univocity-parsers-2.2.1.jar" mvn_uri="mvn:org.talend.libraries/univocity-parsers-2.2.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="validation-api-1.1.0.Final" name="validation-api-1.1.0.Final.jar" mvn_uri="mvn:org.talend.libraries/validation-api-1.1.0.Final/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="xbean-asm5-shaded-4.4" name="xbean-asm5-shaded-4.4.jar" mvn_uri="mvn:org.talend.libraries/xbean-asm5-shaded-4.4/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="xercesImpl-2.9.1" name="xercesImpl-2.9.1.jar" mvn_uri="mvn:org.talend.libraries/xercesImpl-2.9.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="xmlenc-0.52" name="xmlenc-0.52.jar" mvn_uri="mvn:org.talend.libraries/xmlenc-0.52/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="xz-1.0" name="xz-1.0.jar" mvn_uri="mvn:org.talend.libraries/xz-1.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="zookeeper-3.4.6.2.6.0.2-76" name="zookeeper-3.4.6.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/zookeeper-3.4.6.2.6.0.2-76/6.0.0"/>
 
         <!-- Big Data launcher libraries -->
         <libraryNeeded
@@ -314,6 +117,14 @@
              <library id="parquet-format-2.3.0-incubating" />
              <library id="parquet-hadoop-1.8.1" />
              <library id="parquet-hadoop-bundle-1.6.0" />
+        </libraryNeededGroup>
+        
+        <!-- GraphFrames group MRREQUIRED -->
+        <libraryNeededGroup
+            description="GraphFrames libraries for HDInsight 3.4.0 that are MRREQUIRED" 
+            id="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-HD_INSIGHT_3_6_0"
+            name="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-HD_INSIGHT_3_6_0">
+            <library id="spark-graphx_2.11-2.1.0.2.6.0.2-76.jar" />
         </libraryNeededGroup>
         
     </extension>

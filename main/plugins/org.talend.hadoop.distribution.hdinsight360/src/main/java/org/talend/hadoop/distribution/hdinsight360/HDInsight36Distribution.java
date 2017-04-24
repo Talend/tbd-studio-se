@@ -35,7 +35,11 @@ import org.talend.hadoop.distribution.hdinsight360.modulegroup.HDInsight36HiveOn
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.HDInsight36SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.HDInsight36SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.sparkbatch.HDInsight36SparkBatchParquetNodeModuleGroup;
+import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.sparkbatch.HDInsight36SparkBatchSQLNodeModuleGroup;
+import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.sparkbatch.HDInsight36SparkBatchTModelEncoderNodeModuleGroup;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.sparkstreaming.HDInsight36SparkStreamingParquetNodeModuleGroup;
+import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.sparkstreaming.HDInsight36SparkStreamingSQLNodeModuleGroup;
+import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.sparkstreaming.HDInsight36SparkStreamingTModelEncoderNodeModuleGroup;
 
 public class HDInsight36Distribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent,
         IMicrosoftHDInsightDistribution, HiveOnSparkComponent {
@@ -71,6 +75,10 @@ public class HDInsight36Distribution extends AbstractDistribution implements Spa
                 HDInsight36SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
                 HDInsight36SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.SPARK_SQL_ROW_COMPONENT),
+                HDInsight36SparkBatchSQLNodeModuleGroup.getModuleGroups(distribution, version));
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.TMODEL_ENCODER_COMPONENT),
+                HDInsight36SparkBatchTModelEncoderNodeModuleGroup.getModuleGroups(distribution, version));
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.PARQUET_OUTPUT_COMPONENT), HDInsight36SparkStreamingParquetNodeModuleGroup
@@ -80,6 +88,13 @@ public class HDInsight36Distribution extends AbstractDistribution implements Spa
                 distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.PARQUET_STREAM_INPUT_COMPONENT), HDInsight36SparkStreamingParquetNodeModuleGroup
+                .getModuleGroups(distribution, version));
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.SPARK_SQL_ROW_COMPONENT), HDInsight36SparkStreamingSQLNodeModuleGroup.getModuleGroups(
+                distribution, version));
+
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.TMODEL_ENCODER_COMPONENT), HDInsight36SparkStreamingTModelEncoderNodeModuleGroup
                 .getModuleGroups(distribution, version));
     }
 
