@@ -46,8 +46,8 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.commons.ui.runtime.image.ImageProvider;
 import org.talend.commons.ui.swt.dialogs.ErrorDialogWidthDetailArea;
-import org.talend.core.GlobalServiceRegister;
 import org.talend.core.hadoop.IHadoopClusterService;
+import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.hadoop.version.EHadoopDistributions;
 import org.talend.core.hadoop.version.EHadoopVersion4Drivers;
 import org.talend.core.hadoop.version.custom.ECustomVersionGroup;
@@ -270,14 +270,10 @@ public abstract class AbstractHDFSBrowseController extends AbstractElementProper
             if (propertyParam != null) {
                 IElementParameter repositoryType = propertyParam.getChildParameters().get(EParameterName.PROPERTY_TYPE.getName());
                 if (repositoryType != null && EmfComponent.REPOSITORY.equals(repositoryType.getValue())) {
-                    IHadoopClusterService hadoopClusterService = null;
+                    IHadoopClusterService hadoopClusterService = HadoopRepositoryUtil.getHadoopClusterService();
                     String relativeHadoopClusterId = null;
-                    IElementParameter repositoryId = propertyParam.getChildParameters()
-                            .get((EParameterName.REPOSITORY_PROPERTY_TYPE.getName()));
-                    if (GlobalServiceRegister.getDefault().isServiceRegistered(IHadoopClusterService.class)) {
-                        hadoopClusterService = (IHadoopClusterService) GlobalServiceRegister.getDefault()
-                                .getService(IHadoopClusterService.class);
-                    }
+                    IElementParameter repositoryId = propertyParam.getChildParameters().get(
+                            (EParameterName.REPOSITORY_PROPERTY_TYPE.getName()));
                     if (hadoopClusterService != null) {
                         Item item = hadoopClusterService.getHadoopClusterBySubitemId(((String) repositoryId.getValue()));
                         if (item != null) {

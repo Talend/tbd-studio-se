@@ -32,25 +32,12 @@ import org.talend.repository.model.hadoopcluster.HadoopClusterConnectionItem;
 import org.talend.repository.model.hadoopcluster.HadoopSubConnection;
 import org.talend.repository.model.hadoopcluster.HadoopSubConnectionItem;
 
-/**
- * DOC ggu class global comment. Detailled comment
- */
 public class HadoopClusterImportHandler extends ImportRepTypeHandler {
 
     public HadoopClusterImportHandler() {
         super();
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see
-     * org.talend.repository.items.importexport.handlers.imports.ImportRepTypeHandler#findRelatedImportItems(org.eclipse
-     * .core.runtime.IProgressMonitor,
-     * org.talend.repository.items.importexport.ui.wizard.imports.managers.ResourcesManager,
-     * org.talend.repository.items.importexport.ui.wizard.imports.models.ItemRecord,
-     * org.talend.repository.items.importexport.ui.wizard.imports.models.ItemRecord[])
-     */
     @Override
     public List<ImportItem> findRelatedImportItems(IProgressMonitor monitor, ResourcesManager resManager, ImportItem importItem,
             ImportItem[] allImportItemRecords) throws Exception {
