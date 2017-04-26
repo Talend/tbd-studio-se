@@ -413,4 +413,9 @@ public class HDP250Distribution extends AbstractDistribution implements HDFSComp
     public boolean isImpactedBySqoop2995() {
         return true;
     }
+
+    @Override
+    public boolean doSupportKerberizedKafka() {
+        return true;
+    }
 }
