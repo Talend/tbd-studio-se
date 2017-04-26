@@ -7,6 +7,6 @@
     <version>6.3.2-SNAPSHOT</version>
     <relativePath>../../../</relativePath>
   </parent>
-  <artifactId>org.talend.hadoop.distribution.cdhspark2.test</artifactId>
+  <artifactId>org.talend.hadoop.distribution.cdh580spark2.test</artifactId>
   <packaging>eclipse-plugin</packaging>
 </project>
