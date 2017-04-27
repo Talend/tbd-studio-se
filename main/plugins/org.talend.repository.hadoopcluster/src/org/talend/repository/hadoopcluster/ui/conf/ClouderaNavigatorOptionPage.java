@@ -169,4 +169,8 @@ public class ClouderaNavigatorOptionPage extends AbstractHadoopImportConfsPage {
         connection.setClouderaDisableSSL(navigator_disable_sslBtn.getSelection());
         connection.setClouderaDieNoError(navigator_die_on_errorBtn.getSelection());
     }
+    
+    public boolean isSuppurtCreateServiceConnection() {
+        return true;
+    }
 }

@@ -166,5 +166,18 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
             }
         }
     }
-
+    
+    public boolean isSuppurtCreateServiceConnection() {
+        if (distriVersion != null) {
+            return distriVersion.doSupportFetchService();
+        }
+        return true;
+    }
+    
+    public List<String> getNecessaryServiceName() {
+        if (distriVersion != null) {
+            return distriVersion.getNecessaryServiceName();
+        }
+        return null;
+    }
 }

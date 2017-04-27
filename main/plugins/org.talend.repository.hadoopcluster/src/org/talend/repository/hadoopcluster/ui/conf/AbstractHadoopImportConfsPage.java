@@ -24,6 +24,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.talend.core.hadoop.conf.EHadoopConfs;
 import org.talend.repository.hadoopcluster.service.IRetrieveConfsService;
 import org.talend.repository.hadoopcluster.ui.AbstractCheckedComposite;
 import org.talend.repository.hadoopcluster.ui.ICheckListener;
@@ -144,5 +145,11 @@ public abstract class AbstractHadoopImportConfsPage extends WizardPage implement
     public List<String> getSelectedServices() {
         return null;
     }
-
+    
+   public boolean isSuppurtCreateServiceConnection() {
+       return true;
+   }
+   public List<String> getNecessaryServiceName() {
+       return null;
+   }
 }

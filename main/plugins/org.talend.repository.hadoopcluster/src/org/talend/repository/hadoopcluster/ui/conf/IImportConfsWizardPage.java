@@ -30,5 +30,9 @@ public interface IImportConfsWizardPage extends IWizardPage {
     public List<String> getSelectedServices();
 
     public void applyFilter();
+    
+    public boolean isSuppurtCreateServiceConnection();
+    
+    public List<String> getNecessaryServiceName();
 
 }

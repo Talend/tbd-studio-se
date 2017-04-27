@@ -86,4 +86,17 @@ public class HadoopImportLocalOptionPage extends AbstractHadoopImportConfsPage {
         return servicesTableComp.getSelectedServices();
     }
 
+    public boolean isSuppurtCreateServiceConnection() {
+        if (distributionVersion != null) {
+            return distributionVersion.doSupportFetchService();
+        }
+        return true;
+    }
+
+    public List<String> getNecessaryServiceName() {
+        if (distributionVersion != null) {
+            return distributionVersion.getNecessaryServiceName();
+        }
+        return null;
+    }
 }

@@ -13,6 +13,7 @@
 // ============================================================================
 package org.talend.hadoop.distribution.component;
 
+import java.util.List;
 import java.util.Set;
 
 import org.talend.hadoop.distribution.ComponentType;
@@ -167,4 +168,8 @@ public interface HadoopComponent {
     public boolean isGoogleDataprocDistribution();
     
     public boolean doSupportOozie();
+    
+    public boolean doSupportCreateServiceConnection();
+    
+    public List<String> getNecessaryServiceName();
 }

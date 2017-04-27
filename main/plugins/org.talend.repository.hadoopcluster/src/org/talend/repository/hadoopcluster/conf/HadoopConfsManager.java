@@ -47,6 +47,8 @@ public class HadoopConfsManager {
     private String hadoopClusterId;
 
     private Map<String, Map<String, String>> confsMap;
+    
+    private boolean isSupportCreateServiceConnection;
 
     private HadoopConfsManager() {
         factory = CoreRuntimePlugin.getInstance().getProxyRepositoryFactory();
@@ -132,5 +134,17 @@ public class HadoopConfsManager {
     public void setConfsMap(Map<String, Map<String, String>> confsMap) {
         this.confsMap = confsMap;
     }
+
+    
+    public boolean isSupportCreateServiceConnection() {
+        return isSupportCreateServiceConnection;
+    }
+
+    
+    public void setSupportCreateServiceConnection(boolean isSupportCreateServiceConnection) {
+        this.isSupportCreateServiceConnection = isSupportCreateServiceConnection;
+    }
+    
+    
 
 }
