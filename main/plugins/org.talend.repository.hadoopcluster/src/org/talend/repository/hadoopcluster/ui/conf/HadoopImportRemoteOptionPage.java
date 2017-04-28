@@ -47,7 +47,7 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
     private AbstractConnectionForm connectionForm;
 
     public HadoopImportRemoteOptionPage(DistributionBean distribution, DistributionVersion distriVersion) {
-        super("HadoopImportRemoteOptionPage"); //$NON-NLS-1$
+        super("HadoopImportRemoteOptionPage", distriVersion); //$NON-NLS-1$
         setTitle(Messages.getString("HadoopImportRemoteOptionPage.title")); //$NON-NLS-1$
         this.distribution = distribution;
         this.distriVersion = distriVersion;
@@ -116,7 +116,7 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
         selectClusterButton.setLayoutData(selectClusterBtnGD);
         selectClusterButton.setText(Messages.getString("HadoopImportRemoteOptionPage.button.fetch")); //$NON-NLS-1$
 
-        servicesTableComp = new HadoopServicesTableComposite(clusterGroup, SWT.NONE);
+        servicesTableComp = new HadoopServicesTableComposite(clusterGroup, SWT.NONE, distriVersion);
         GridData servicesTableGD = new GridData(GridData.FILL_BOTH);
         servicesTableGD.horizontalSpan = 2;
         servicesTableComp.setLayoutData(servicesTableGD);
@@ -165,19 +165,5 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
                 ExceptionHandler.process(exception);
             }
         }
-    }
-    
-    public boolean isSuppurtCreateServiceConnection() {
-        if (distriVersion != null) {
-            return distriVersion.doSupportFetchService();
-        }
-        return true;
-    }
-    
-    public List<String> getNecessaryServiceName() {
-        if (distriVersion != null) {
-            return distriVersion.getNecessaryServiceName();
-        }
-        return null;
     }
 }

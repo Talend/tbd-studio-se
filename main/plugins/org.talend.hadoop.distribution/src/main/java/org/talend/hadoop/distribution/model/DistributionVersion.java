@@ -189,10 +189,10 @@ public class DistributionVersion implements IHDistributionVersion {
         return hadoopComponent.doSupportOozie();
     }
     
-    public boolean doSupportFetchService() {
+    public boolean doSupportCreateServiceConnection() {
         return hadoopComponent.doSupportCreateServiceConnection();
     }
-    
+
     public List<String> getNecessaryServiceName() {
         return hadoopComponent.getNecessaryServiceName();
     }

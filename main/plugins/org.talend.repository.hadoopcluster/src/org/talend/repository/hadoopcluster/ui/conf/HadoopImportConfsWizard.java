@@ -80,18 +80,12 @@ public class HadoopImportConfsWizard extends Wizard {
         IImportConfsWizardPage currentPage = getCurrentConfPage();
         if (currentPage != null) {
             final IRetrieveConfsService confsService = currentPage.getConfsService();
-            final boolean isSupportSelectService = currentPage.isSuppurtCreateServiceConnection();
+            final boolean isCreateConnectionFromConfs = currentPage.isSuppurtCreateServiceConnection();
             try {
                 if (confsService != null) {
                     currentPage.applyFilter();
                      
-                    List<String> selectedServices = currentPage.getSelectedServices();
-                    if (!isSupportSelectService) {
-                        selectedServices = new ArrayList<String>();
-                        if (currentPage.getNecessaryServiceName() != null) {
-                            selectedServices = currentPage.getNecessaryServiceName();
-                        }
-                    }
+                    List<String> selectedServices = currentPage.getSelectedServices(); 
                     final String confsDir = confsService.exportConfs(selectedServices);
                     if (confsDir != null) {
                         this.getContainer().run(true, true, new IRunnableWithProgress() {
@@ -121,7 +115,7 @@ public class HadoopImportConfsWizard extends Wizard {
                     HadoopConfsManager confsManager = HadoopConfsManager.getInstance();
                     confsManager.setHadoopClusterId(connectionItem.getProperty().getId());
                     confsManager.setConfsMap(getSelectedConfsMap(selectedServices, confsService.getConfsMap()));
-                    confsManager.setSupportCreateServiceConnection(isSupportSelectService);
+                    confsManager.setCreateConnectionFromConfs(isCreateConnectionFromConfs);
                 }
                 if (creation) {
                     HadoopConfsUtils.setConnectionParameters(connectionItem, optionPage.getDistribution(),

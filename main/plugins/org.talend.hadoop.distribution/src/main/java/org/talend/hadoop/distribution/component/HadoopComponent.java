@@ -169,7 +169,15 @@ public interface HadoopComponent {
     
     public boolean doSupportOozie();
     
+    /**
+     * 
+     * @return true if current component support create service connection
+     */
     public boolean doSupportCreateServiceConnection();
     
+    /**
+     * 
+     * @return only doSupportCreateServiceConnection() return true, return the necessary service name
+     */
     public List<String> getNecessaryServiceName();
 }

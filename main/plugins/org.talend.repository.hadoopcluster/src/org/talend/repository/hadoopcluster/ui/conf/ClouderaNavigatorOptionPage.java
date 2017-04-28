@@ -44,7 +44,7 @@ public class ClouderaNavigatorOptionPage extends AbstractHadoopImportConfsPage {
     private boolean creation;
     
     public ClouderaNavigatorOptionPage(HadoopClusterConnectionItem connectionItem,boolean creation) {
-        super("ClouderaNavigatorOptionPage"); //$NON-NLS-1$
+        super("ClouderaNavigatorOptionPage", null); //$NON-NLS-1$
         setTitle(Messages.getString("ClouderaNavigatorOptionPage.title")); //$NON-NLS-1$
         setDescription(Messages.getString("ClouderaNavigatorOptionPage.title")); //$NON-NLS-1$
         this.connectionItem = connectionItem;
@@ -168,9 +168,5 @@ public class ClouderaNavigatorOptionPage extends AbstractHadoopImportConfsPage {
         connection.setClouderaAutoCommit(navigator_autocommitBtn.getSelection());
         connection.setClouderaDisableSSL(navigator_disable_sslBtn.getSelection());
         connection.setClouderaDieNoError(navigator_die_on_errorBtn.getSelection());
-    }
-    
-    public boolean isSuppurtCreateServiceConnection() {
-        return true;
     }
 }

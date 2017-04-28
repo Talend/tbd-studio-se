@@ -28,7 +28,7 @@ public class HadoopImportLocalOptionPage extends AbstractHadoopImportConfsPage {
     DistributionVersion distributionVersion;
 
     public HadoopImportLocalOptionPage(DistributionVersion distributionVersion) {
-        super("HadoopImportLocalOptionPage"); //$NON-NLS-1$
+        super("HadoopImportLocalOptionPage", distributionVersion); //$NON-NLS-1$
         this.distributionVersion = distributionVersion;
         setTitle(Messages.getString("HadoopImportLocalOptionPage.title")); //$NON-NLS-1$
         setDescription(Messages.getString("HadoopImportLocalOptionPage.desc")); //$NON-NLS-1$
@@ -54,7 +54,7 @@ public class HadoopImportLocalOptionPage extends AbstractHadoopImportConfsPage {
         servicesCompLayout.marginHeight = 0;
         servicesComp.setLayout(servicesCompLayout);
 
-        servicesTableComp = new HadoopServicesTableComposite(servicesComp, SWT.NONE);
+        servicesTableComp = new HadoopServicesTableComposite(servicesComp, SWT.NONE, distributionVersion);
         servicesTableComp.setLayoutData(new GridData(GridData.FILL_BOTH));
         addCheckListener(servicesTableComp);
 
@@ -84,19 +84,5 @@ public class HadoopImportLocalOptionPage extends AbstractHadoopImportConfsPage {
     @Override
     public List<String> getSelectedServices() {
         return servicesTableComp.getSelectedServices();
-    }
-
-    public boolean isSuppurtCreateServiceConnection() {
-        if (distributionVersion != null) {
-            return distributionVersion.doSupportFetchService();
-        }
-        return true;
-    }
-
-    public List<String> getNecessaryServiceName() {
-        if (distributionVersion != null) {
-            return distributionVersion.getNecessaryServiceName();
-        }
-        return null;
     }
 }

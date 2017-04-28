@@ -30,6 +30,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.talend.commons.ui.runtime.image.ImageProvider;
+import org.talend.hadoop.distribution.model.DistributionVersion;
 import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.ui.AbstractCheckedComposite;
 import org.talend.repository.hadoopcluster.util.EHadoopClusterImage;
@@ -45,9 +46,12 @@ public class HadoopServicesTableComposite extends AbstractCheckedComposite {
     private Button selectAllBtn;
 
     private Button deselectAllBtn;
+    
+    private DistributionVersion distriVersion;
 
-    public HadoopServicesTableComposite(Composite parent, int style) {
+    public HadoopServicesTableComposite(Composite parent, int style, DistributionVersion distriVersion) {
         super(parent, style);
+        this.distriVersion = distriVersion;
         GridLayout layout = new GridLayout();
         layout.marginWidth = 0;
         layout.marginHeight = 0;
@@ -79,7 +83,7 @@ public class HadoopServicesTableComposite extends AbstractCheckedComposite {
 
     private void checkServices() {
         boolean hasServiceSelected = servicesTableViewer.getCheckedElements().length > 0;
-        if (hasServiceSelected) {
+        if (hasServiceSelected || !isSuppurtCreateServiceConnection()) {
             updateStatus(IStatus.OK, null);
         } else {
             updateStatus(IStatus.ERROR, Messages.getString("HadoopServicesTableComposite.checkServiceSelected")); //$NON-NLS-1$
@@ -121,17 +125,23 @@ public class HadoopServicesTableComposite extends AbstractCheckedComposite {
     }
 
     public void setServices(List<String> services) {
-        servicesTableViewer.setInput(services);
-        doSelectAll();
+        if (isSuppurtCreateServiceConnection()) {
+            servicesTableViewer.setInput(services);
+            doSelectAll();
+        }
+        checkServices();
     }
 
     public List<String> getSelectedServices() {
-        List<String> selectedServices = new ArrayList<>();
-        Object[] checkedElements = servicesTableViewer.getCheckedElements();
-        for (Object ele : checkedElements) {
-            selectedServices.add(String.valueOf(ele));
+        if (isSuppurtCreateServiceConnection()) {
+            List<String> selectedServices = new ArrayList<>();
+            Object[] checkedElements = servicesTableViewer.getCheckedElements();
+            for (Object ele : checkedElements) {
+                selectedServices.add(String.valueOf(ele));
+            }
+            return selectedServices;
         }
-        return selectedServices;
+        return getNecessaryServiceName();
     }
 
     public class ServiceLabelProvider extends LabelProvider {
@@ -145,5 +155,19 @@ public class HadoopServicesTableComposite extends AbstractCheckedComposite {
         public String getText(Object object) {
             return object.toString();
         }
+    }
+    
+    private boolean isSuppurtCreateServiceConnection() {
+        if (distriVersion != null) {
+            return distriVersion.doSupportCreateServiceConnection();
+        }
+        return true;
+    }
+
+    private List<String> getNecessaryServiceName() {
+        if (distriVersion != null) {
+            return distriVersion.getNecessaryServiceName();
+        }
+        return null;
     }
 }

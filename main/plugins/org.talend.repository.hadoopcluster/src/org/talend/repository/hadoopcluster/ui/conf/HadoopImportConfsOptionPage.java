@@ -40,7 +40,7 @@ public class HadoopImportConfsOptionPage extends AbstractHadoopImportConfsPage {
     private Button manualBtn;
 
     public HadoopImportConfsOptionPage() {
-        super("HadoopImportConfsOptionPage"); //$NON-NLS-1$
+        super("HadoopImportConfsOptionPage", null); //$NON-NLS-1$
         setTitle(Messages.getString("HadoopImportConfsOptionPage.title")); //$NON-NLS-1$
         setDescription(Messages.getString("HadoopImportConfsOptionPage.desc")); //$NON-NLS-1$
     }
@@ -177,21 +177,4 @@ public class HadoopImportConfsOptionPage extends AbstractHadoopImportConfsPage {
     public DistributionVersion getVersion() {
         return HadoopDistributionsHelper.HADOOP.getDistributionVersion(versionCombo.getText(), true);
     }
-    
-    public boolean isSuppurtCreateServiceConnection() {
-        DistributionVersion distriVersion = getVersion();
-        if (distriVersion != null) {
-            return distriVersion.doSupportFetchService();
-        }
-        return true;
-    }
-    
-    public List<String> getNecessaryServiceName() {
-        DistributionVersion distriVersion = getVersion();
-        if (distriVersion != null) {
-            return distriVersion.getNecessaryServiceName();
-        }
-        return null;
-    }
-
 }
