@@ -25,9 +25,8 @@ public class HDInsight34SparkBatchGraphFramesNodeModuleGroup {
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         DistributionModuleGroup dmg = new DistributionModuleGroup(
-                HDInsight34Constant.GRAPHFRAMES_MRREQUIRED_MODULE_GROUP.getModuleName(), true,
-                new SparkBatchLinkedNodeCondition(distribution, version,
-                        SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition());
+                HDInsight34Constant.GRAPHFRAMES_MRREQUIRED_MODULE_GROUP.getModuleName(), true, new SparkBatchLinkedNodeCondition(
+                        distribution, version, SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition());
         hs.add(dmg);
         return hs;
     }

@@ -419,7 +419,7 @@ public class EMR500Distribution extends AbstractDistribution implements HBaseCom
     }
 
     @Override
-    public SparkStreamingKafkaVersion getSparkStreamingKafkaVersion() {
+    public SparkStreamingKafkaVersion getSparkStreamingKafkaVersion(ESparkVersion sparkVersion) {
         return SparkStreamingKafkaVersion.KAFKA_0_10;
     }
 }

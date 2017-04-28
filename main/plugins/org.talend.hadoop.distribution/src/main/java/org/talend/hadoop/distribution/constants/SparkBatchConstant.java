@@ -37,7 +37,7 @@ public final class SparkBatchConstant {
     public static final String PARQUET_OUTPUT_COMPONENT = "tFileOutputParquet"; //$NON-NLS-1$
 
     public static final String S3_CONFIGURATION_COMPONENT = "tS3Configuration"; //$NON-NLS-1$
-    
+
     public static final String MATCH_PREDICT_COMPONENT = "tMatchPredict";//$NON-NLS-1$
 
     public static final String USE_CLOUDERA_NAVIGATOR = "USE_CLOUDERA_NAVIGATOR";//$NON-NLS-1$
@@ -49,5 +49,9 @@ public final class SparkBatchConstant {
     public static final String MAPRDB_INPUT_COMPONENT = "tMapRDBInput"; //$NON-NLS-1$
 
     public static final String MAPRDB_OUTPUT_COMPONENT = "tMapRDBOutput"; //$NON-NLS-1$
+
+    public static final String SPARK_SQL_ROW_COMPONENT = "tSqlRow"; //$NON-NLS-1$
+
+    public static final String TMODEL_ENCODER_COMPONENT = "tModelEncoder"; //$NON-NLS-1$
 
 }

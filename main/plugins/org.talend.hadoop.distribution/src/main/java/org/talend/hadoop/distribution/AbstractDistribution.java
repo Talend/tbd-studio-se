@@ -226,7 +226,7 @@ public abstract class AbstractDistribution {
         return false;
     }
 
-    public SparkStreamingKafkaVersion getSparkStreamingKafkaVersion() {
+    public SparkStreamingKafkaVersion getSparkStreamingKafkaVersion(ESparkVersion sparkVersion) {
         return SparkStreamingKafkaVersion.KAFKA_0_8;
     }
 

@@ -94,7 +94,7 @@ public class EMR500DistributionTest {
         assertTrue(((SparkStreamingComponent) distribution).doSupportSparkYarnClientMode());
         assertTrue(((SparkStreamingComponent) distribution).doSupportBackpressure());
         assertEquals(SparkStreamingKafkaVersion.KAFKA_0_10,
-                ((SparkStreamingComponent) distribution).getSparkStreamingKafkaVersion());
+                ((SparkStreamingComponent) distribution).getSparkStreamingKafkaVersion(ESparkVersion.SPARK_1_6));
         assertTrue(((HiveComponent) distribution).doSupportStoreAsParquet());
         assertFalse(((HiveComponent) distribution).doSupportClouderaNavigator());
         assertTrue(distribution instanceof HCatalogComponent);

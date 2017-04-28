@@ -49,5 +49,6 @@ public class Dataproc11DistributionTest {
         assertFalse(((SparkStreamingComponent) distribution).doSupportSparkStandaloneMode());
         assertTrue(((SparkStreamingComponent) distribution).doSupportSparkYarnClientMode());
         assertTrue(((SparkStreamingComponent) distribution).doSupportBackpressure());
+        assertFalse(distribution.doSupportOozie());
     }
 }
