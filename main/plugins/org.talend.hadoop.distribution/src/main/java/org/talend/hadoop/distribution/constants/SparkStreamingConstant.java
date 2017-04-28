@@ -55,7 +55,7 @@ public final class SparkStreamingConstant {
     public static final String KINESIS_INPUT_AVRO_COMPONENT = "tKinesisInputAvro"; //$NON-NLS-1$
 
     public static final String KINESIS_OUTPUT_COMPONENT = "tKinesisOutput"; //$NON-NLS-1$
-
+    
     public static final String FLUME_OUTPUT_COMPONENT = "tFlumeOutput"; //$NON-NLS-1$
 
     public static final String FLUME_INPUT_COMPONENT = "tFlumeInput"; //$NON-NLS-1$
@@ -71,5 +71,9 @@ public final class SparkStreamingConstant {
     public static final String MAPRDB_LOOKUPINPUT_COMPONENT = "tMapRDBLookupInput"; //$NON-NLS-1$
 
     public static final String MAPRDB_OUTPUT_COMPONENT = "tMapRDBOutput"; //$NON-NLS-1$
+
+    public static final String SPARK_SQL_ROW_COMPONENT = "tSqlRow"; //$NON-NLS-1$
+
+    public static final String TMODEL_ENCODER_COMPONENT = "tModelEncoder"; //$NON-NLS-1$
 
 }

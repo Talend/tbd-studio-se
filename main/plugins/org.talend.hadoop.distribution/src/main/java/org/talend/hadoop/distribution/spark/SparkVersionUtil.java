@@ -83,7 +83,7 @@ public class SparkVersionUtil {
      * @param sparkLocalVersion - the Spark version selected when the local mode set to true.
      * @param sparkDistributionName - the name of the distribution when the local mode is set to false.
      * @param sparkApiVersion - the Spark version selected when the custom mode is chosen.
-     * @param sc - the SparkComponent created from the distribution and the version selected in the tSparkConfiguration.
+     * @param sparkVersion - the Spark version selected in the tSparkConfiguration when the custom mode is not chosen.
      * @return the {@link ESparkVersion} corresponding to the different parameters.
      */
     public static ESparkVersion getSparkVersion(boolean useLocalMode, String sparkLocalVersion, String sparkDistributionName,

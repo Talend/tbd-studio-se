@@ -12,6 +12,7 @@
 // ============================================================================
 package org.talend.hadoop.distribution.component;
 
+import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 
 /**
@@ -36,9 +37,10 @@ public interface SparkStreamingComponent extends SparkComponent {
 
     /**
      * This method defines which version of the spark-streaming-kafka connector the distribution does support.
+     * @param sparkVersion version of spark used for streaming
      * 
      * @return the version of the spark-streaming-kafka connector.
      */
-    public SparkStreamingKafkaVersion getSparkStreamingKafkaVersion();
+    public SparkStreamingKafkaVersion getSparkStreamingKafkaVersion(ESparkVersion sparkVersion);
 
 }
