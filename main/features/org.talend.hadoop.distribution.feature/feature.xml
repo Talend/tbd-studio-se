@@ -170,7 +170,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.talend.hadoop.distribution.emr540"
+         id="org.talend.hadoop.distribution.emr550"
          download-size="0"
          install-size="0"
          version="0.0.0"

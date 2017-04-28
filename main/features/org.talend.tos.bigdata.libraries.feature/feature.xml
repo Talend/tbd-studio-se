@@ -372,7 +372,7 @@
          id="org.talend.hadoop.distribution.hdinsight360.jars"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>         
+         version="0.0.0"/>
 
    <plugin
          id="org.talend.hadoop.distribution.emr450.jars"
@@ -388,7 +388,7 @@
 
 
    <plugin
-         id="org.talend.hadoop.distribution.emr540.jars"
+         id="org.talend.hadoop.distribution.emr550.jars"
          download-size="0"
          install-size="0"
          version="0.0.0"/>

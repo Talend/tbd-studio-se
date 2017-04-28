@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2016 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2017 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.emr500.test;
+package org.talend.hadoop.distribution.emr550.test;
 
 import static org.junit.Assert.*;
 
@@ -28,25 +28,25 @@ import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
-import org.talend.hadoop.distribution.emr500.EMR500Distribution;
+import org.talend.hadoop.distribution.emr550.EMR550Distribution;
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 
 /**
- * Test class for the {@link EMR500Distribution} distribution.
+ * Test class for the {@link EMR550Distribution} distribution.
  *
  */
-public class EMR500DistributionTest {
+public class EMR550DistributionTest {
 
     private final static String DEFAULT_YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,/usr/lib/hadoop-lzo/lib/*,/usr/share/aws/emr/emrfs/conf, /usr/share/aws/emr/emrfs/lib/*,/usr/share/aws/emr/emrfs/auxlib/*,/usr/share/aws/emr/lib/*,/usr/share/aws/emr/ddb/lib/emr-ddb-hadoop.jar, /usr/share/aws/emr/goodies/lib/emr-hadoop-goodies.jar,/usr/share/aws/emr/kinesis/lib/emr-kinesis-hadoop.jar,/usr/lib/spark/yarn/lib/datanucleus-api-jdo.jar,/usr/lib/spark/yarn/lib/datanucleus-core.jar,/usr/lib/spark/yarn/lib/datanucleus-rdbms.jar,/usr/share/aws/emr/cloudwatch-sink/lib/*"; //$NON-NLS-1$
 
     @Test
     public void testEMR500Distribution() throws Exception {
-        HadoopComponent distribution = new EMR500Distribution();
+        HadoopComponent distribution = new EMR550Distribution();
         assertNotNull(distribution.getDistributionName());
         assertNotNull(distribution.getVersionName(null));
         assertTrue(distribution.doSupportS3());
-        assertEquals(EMR500Distribution.DISTRIBUTION_NAME, distribution.getDistribution());
-        assertEquals(EMR500Distribution.VERSION, distribution.getVersion());
+        assertEquals(EMR550Distribution.DISTRIBUTION_NAME, distribution.getDistribution());
+        assertEquals(EMR550Distribution.VERSION, distribution.getVersion());
         assertEquals(EHadoopVersion.HADOOP_2, distribution.getHadoopVersion());
         assertFalse(distribution.doSupportKerberos());
         assertTrue(distribution.doSupportUseDatanodeHostname());
@@ -73,7 +73,6 @@ public class EMR500DistributionTest {
         assertTrue(((HiveComponent) distribution).doSupportORCFormat());
         assertTrue(((HiveComponent) distribution).doSupportAvroFormat());
         assertTrue(((HiveComponent) distribution).doSupportParquetFormat());
-        assertFalse(((SparkBatchComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_2_1));
         assertTrue(((SparkBatchComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_2_0));
         assertFalse(((SparkBatchComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_1_6));
         assertFalse(((SparkBatchComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_1_5));
@@ -83,7 +82,6 @@ public class EMR500DistributionTest {
         assertFalse(((SparkBatchComponent) distribution).isExecutedThroughSparkJobServer());
         assertFalse(((SparkBatchComponent) distribution).doSupportSparkStandaloneMode());
         assertTrue(((SparkBatchComponent) distribution).doSupportSparkYarnClientMode());
-        assertFalse(((SparkStreamingComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_2_1));
         assertTrue(((SparkStreamingComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_2_0));
         assertFalse(((SparkStreamingComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_1_6));
         assertFalse(((SparkStreamingComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_1_5));
@@ -96,7 +94,7 @@ public class EMR500DistributionTest {
         assertTrue(((SparkStreamingComponent) distribution).doSupportSparkYarnClientMode());
         assertTrue(((SparkStreamingComponent) distribution).doSupportBackpressure());
         assertEquals(SparkStreamingKafkaVersion.KAFKA_0_10,
-                ((SparkStreamingComponent) distribution).getSparkStreamingKafkaVersion(ESparkVersion.SPARK_2_0));
+                ((SparkStreamingComponent) distribution).getSparkStreamingKafkaVersion(ESparkVersion.SPARK_2_1));
         assertTrue(((HiveComponent) distribution).doSupportStoreAsParquet());
         assertFalse(((HiveComponent) distribution).doSupportClouderaNavigator());
         assertTrue(distribution instanceof HCatalogComponent);
