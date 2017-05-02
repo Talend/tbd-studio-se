@@ -300,4 +300,9 @@ public class CDH580Spark2Distribution extends AbstractDistribution implements IC
     public SparkStreamingKafkaVersion getSparkStreamingKafkaVersion(ESparkVersion sparkVersion) {
         return SparkStreamingKafkaVersion.KAFKA_0_10;
     }
+
+    @Override
+    public short orderingWeight() {
+        return 5;
+    }
 }

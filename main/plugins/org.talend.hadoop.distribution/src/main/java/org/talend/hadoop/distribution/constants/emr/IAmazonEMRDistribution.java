@@ -12,10 +12,6 @@
 // ============================================================================
 package org.talend.hadoop.distribution.constants.emr;
 
-
-/**
- * DOC ggu class global comment. Detailled comment
- */
 @SuppressWarnings("nls")
 public interface IAmazonEMRDistribution {
 

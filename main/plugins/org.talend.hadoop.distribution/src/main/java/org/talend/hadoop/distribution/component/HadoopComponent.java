@@ -165,6 +165,14 @@ public interface HadoopComponent {
      * @return true if the distribution is a Google dataproc distribution
      */
     public boolean isGoogleDataprocDistribution();
-    
+
+    /**
+     * @return a weight for the distribution, which will be used to sort the distributions in the components drop down
+     * list.
+     */
+    public default short orderingWeight() {
+        return 0;
+    }
+
     public boolean doSupportOozie();
 }

@@ -68,7 +68,6 @@ import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
-import org.talend.hadoop.distribution.spark.SparkVersionUtil;
 
 @SuppressWarnings("nls")
 public class CDH5100Distribution extends AbstractDistribution implements IClouderaDistribution, HDFSComponent, HBaseComponent,
@@ -425,8 +424,13 @@ public class CDH5100Distribution extends AbstractDistribution implements ICloude
         // Using Kafka 0.10 for Spark 2
         if (ESparkVersion.SPARK_2_0.compareTo(sparkVersion) <= 0) {
             return SparkStreamingKafkaVersion.KAFKA_0_10;
-        }else {
+        } else {
             return SparkStreamingKafkaVersion.KAFKA_0_8;
         }
+    }
+
+    @Override
+    public short orderingWeight() {
+        return 10;
     }
 }
