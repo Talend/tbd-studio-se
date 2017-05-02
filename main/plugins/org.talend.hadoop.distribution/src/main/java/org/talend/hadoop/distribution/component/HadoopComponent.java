@@ -169,6 +169,9 @@ public interface HadoopComponent {
     /**
      * @return a weight for the distribution, which will be used to sort the distributions in the components drop down
      * list.
+     *
+     * For example, the CDH580Spark2Distribution must be displayed on top of others but below the CDH5100Distribution.
+     * The former weight is then 5 and the latter one is 10.
      */
     public default short orderingWeight() {
         return 0;
