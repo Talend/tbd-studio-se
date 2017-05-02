@@ -328,13 +328,6 @@
             name="spark-streaming-kafka-assembly_2.10-1.6.2.2.5.0.0-1245.jar"
             mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka-assembly_2.10-1.6.2.2.5.0.0-1245/6.3.0">
         </libraryNeeded>
-       
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdp250"
-            id="kafka-HDP_2_5"
-            name="kafka_2.10-0.10.0.2.5.0.0-1245.jar"
-            mvn_uri="mvn:org.talend.libraries/kafka_2.10-0.10.0.2.5.0.0-1245/6.3.0">
-        </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
@@ -1042,7 +1035,6 @@
                 id="SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-HDP_2_5"
                 name="SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-HDP_2_5">
             <library id="spark-streaming-kafka-HDP_2_5"/>
-            <library id="kafka-HDP_2_5"/>
             <library id="metrics-core-2.2.0.jar"/>
         </libraryNeededGroup>
         

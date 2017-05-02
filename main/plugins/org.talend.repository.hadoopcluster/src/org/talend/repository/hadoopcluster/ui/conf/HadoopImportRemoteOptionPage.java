@@ -149,7 +149,6 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
                 }
             } else if (newValue instanceof Exception) {
                 exception = (Exception) newValue;
-                setErrorMessage(Messages.getString("HadoopImportRemoteOptionPage.connectionFailed")); //$NON-NLS-1$
             }
         }
 
@@ -161,9 +160,12 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
                 clustersCombo.select(0);
             } else if (newValue instanceof Exception) {
                 exception = (Exception) newValue;
-                setErrorMessage(Messages.getString("HadoopImportRemoteOptionPage.connectionFailed")); //$NON-NLS-1$
-                ExceptionHandler.process(exception);
             }
+        }
+
+        if (exception != null) {
+            setErrorMessage(Messages.getString("HadoopImportRemoteOptionPage.connectionFailed")); //$NON-NLS-1$
+            ExceptionHandler.process(exception);
         }
     }
 }

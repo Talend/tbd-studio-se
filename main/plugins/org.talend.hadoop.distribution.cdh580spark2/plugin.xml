@@ -172,9 +172,9 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="json4s-jackson_2.11-3.2.11.jar" name="json4s-jackson_2.11-3.2.11.jar" mvn_uri="mvn:org.talend.libraries/json4s-jackson_2.11-3.2.11/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="jta-1.1.jar" name="jta-1.1.jar" mvn_uri="mvn:org.talend.libraries/jta-1.1/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="jtransforms-2.4.0.jar" name="jtransforms-2.4.0.jar" mvn_uri="mvn:org.talend.libraries/jtransforms-2.4.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="jul-to-slf4j-1.7.16.jar" name="jul-to-slf4j-1.7.16.jar" mvn_uri="mvn:org.talend.libraries/jul-to-slf4j-1.7.16/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="kafka_2.11-0.9.0-kafka-2.0.0.jar" name="kafka_2.11-0.9.0-kafka-2.0.0.jar" mvn_uri="mvn:org.talend.libraries/kafka_2.11-0.9.0-kafka-2.0.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="kafka-clients-0.9.0-kafka-2.0.0.jar" name="kafka-clients-0.9.0-kafka-2.0.0.jar" mvn_uri="mvn:org.talend.libraries/kafka-clients-0.9.0-kafka-2.0.0/6.0.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="jul-to-slf4j-1.7.16.jar" name="jul-to-slf4j-1.7.16.jar" mvn_uri="mvn:org.talend.libraries/jul-to-slf4j-1.7.16/6.0.0"/>        
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="kafka_2.11-0.10.0-kafka-2.1.0.jar" name="kafka_2.11-0.10.0-kafka-2.1.0.jar" mvn_uri="mvn:org.talend.libraries/kafka_2.11-0.10.0-kafka-2.1.0/6.0.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="kafka-clients-0.10.0-kafka-2.1.0.jar" name="kafka-clients-0.10.0-kafka-2.1.0.jar" mvn_uri="mvn:org.talend.libraries/kafka-clients-0.10.0-kafka-2.1.0/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="kryo-shaded-3.0.3.jar" name="kryo-shaded-3.0.3.jar" mvn_uri="mvn:org.talend.libraries/kryo-shaded-3.0.3/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="libfb303-0.9.2.jar" name="libfb303-0.9.2.jar" mvn_uri="mvn:org.talend.libraries/libfb303-0.9.2/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="libthrift-0.9.2.jar" name="libthrift-0.9.2.jar" mvn_uri="mvn:org.talend.libraries/libthrift-0.9.2/6.0.0"/>
@@ -231,7 +231,7 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="spark-streaming_2.11-2.0.0.cloudera1.jar" name="spark-streaming_2.11-2.0.0.cloudera1.jar" mvn_uri="mvn:org.talend.libraries/spark-streaming_2.11-2.0.0.cloudera1/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="spark-streaming-flume_2.11-2.0.0.cloudera1.jar" name="spark-streaming-flume_2.11-2.0.0.cloudera1.jar" mvn_uri="mvn:org.talend.libraries/spark-streaming-flume_2.11-2.0.0.cloudera1/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="spark-streaming-flume-sink_2.11-2.0.0.cloudera1.jar" name="spark-streaming-flume-sink_2.11-2.0.0.cloudera1.jar" mvn_uri="mvn:org.talend.libraries/spark-streaming-flume-sink_2.11-2.0.0.cloudera1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="spark-streaming-kafka-0-8_2.11-2.0.0.cloudera1.jar" name="spark-streaming-kafka-0-8_2.11-2.0.0.cloudera1.jar" mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka-0-8_2.11-2.0.0.cloudera1/6.0.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="spark-streaming-kafka-0-10_2.11-2.0.0.cloudera1.jar" name="spark-streaming-kafka-0-10_2.11-2.0.0.cloudera1.jar" mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka-0-10_2.11-2.0.0.cloudera1/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="spark-streaming-kinesis-asl-assembly_2.11-2.0.0.jar" name="spark-streaming-kinesis-asl-assembly_2.11-2.0.0.jar" mvn_uri="mvn:org.talend.libraries/spark-streaming-kinesis-asl-assembly_2.11-2.0.0/6.0.0"/>                
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="spark-tags_2.11-2.0.0.cloudera1.jar" name="spark-tags_2.11-2.0.0.cloudera1.jar" mvn_uri="mvn:org.talend.libraries/spark-tags_2.11-2.0.0.cloudera1/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="spark-unsafe_2.11-2.0.0.cloudera1.jar" name="spark-unsafe_2.11-2.0.0.cloudera1.jar" mvn_uri="mvn:org.talend.libraries/spark-unsafe_2.11-2.0.0.cloudera1/6.0.0"/>
@@ -510,13 +510,6 @@
             id="automaton-1.11-8"
             name="automaton-1.11-8.jar"
             mvn_uri="mvn:org.talend.libraries/automaton-1.11-8/6.1.0">
-        </libraryNeeded>
-        
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh580spark2"
-            id="spark-streaming-kafka-cdh5.8.1"
-            name="spark-streaming-kafka_2.10-1.6.0-cdh5.8.1.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka_2.10-1.6.0-cdh5.8.1/6.1.0">
         </libraryNeeded>
                 
         <libraryNeeded
@@ -873,10 +866,9 @@
                 description="Spark Kafka assembly libraries for CDH 5.8 that are MRREQUIRED"
                 id="SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-CDH580_SPARK2"
                 name="SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-CDH580_SPARK2">
-            <library id="spark-streaming-kafka-cdh5.8.1"/>
-            <library id="kafka_2.11-0.9.0-kafka-2.0.0.jar"/>
-            <library id="kafka-clients-0.9.0-kafka-2.0.0.jar"/>
-            <library id="spark-streaming-kafka-0-8_2.11-2.0.0.cloudera1.jar"/>
+            <library id="kafka_2.11-0.10.0-kafka-2.1.0.jar"/>
+            <library id="kafka-clients-0.10.0-kafka-2.1.0.jar"/>
+            <library id="spark-streaming-kafka-0-10_2.11-2.0.0.cloudera1.jar"/>
         </libraryNeededGroup>
         
         <!-- Spark Kafka Client group MRREQUIRED -->
@@ -884,11 +876,7 @@
                 description="Spark Kafka client libraries for CDH 5.8 that are MRREQUIRED"
                 id="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-CDH580_SPARK2"
                 name="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-CDH580_SPARK2">
-            <library id="spark-streaming-kafka-cdh5.8.1"/>
-            <library id="kafka_2.11-0.9.0-kafka-2.0.0.jar"/>
-            <library id="kafka-clients-0.9.0-kafka-2.0.0.jar"/>
-            <library id="spark-streaming-kafka-0-8_2.11-2.0.0.cloudera1.jar"/>
-            
+            <library id="kafka-clients-0.10.0-kafka-2.1.0.jar"/> 
         </libraryNeededGroup>
         
         <!-- Spark Kafka Avro group MRREQUIRED -->

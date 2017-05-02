@@ -156,7 +156,7 @@ public class HadoopClusterService implements IHadoopClusterService {
     @Override
     public List<String> getSubitemIdsOfHadoopCluster(Item item) {
         if (!isHadoopClusterItem(item)) {
-            return new ArrayList<String>();
+            return new ArrayList<>();
         }
         HadoopClusterConnectionItem clusterConnectionItem = (HadoopClusterConnectionItem) item;
         HadoopClusterConnection clusterConnection = (HadoopClusterConnection) clusterConnectionItem.getConnection();
@@ -235,12 +235,12 @@ public class HadoopClusterService implements IHadoopClusterService {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see org.talend.core.hadoop.IHadoopClusterService#getHadoopCustomLibraries()
      */
     @Override
     public Map<String, String> getHadoopCustomLibraries(String clusterId) {
-        Map<String, String> customLibraries = new HashMap<String, String>();
+        Map<String, String> customLibraries = new HashMap<>();
         HadoopClusterConnection hadoopClusterConnection = HCRepositoryUtil.getRelativeHadoopClusterConnection(clusterId);
         if (hadoopClusterConnection != null) {
             EMap<String, String> parameters = hadoopClusterConnection.getParameters();

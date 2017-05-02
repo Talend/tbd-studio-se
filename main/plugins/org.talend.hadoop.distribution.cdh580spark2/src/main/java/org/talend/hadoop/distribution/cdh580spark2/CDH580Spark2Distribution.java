@@ -45,6 +45,7 @@ import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
+import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
 @SuppressWarnings("nls")
@@ -309,5 +310,10 @@ public class CDH580Spark2Distribution extends AbstractDistribution implements IC
         list.add(EHadoopConfs.YARN.getName());
         list.add(EHadoopConfs.MAPREDUCE2.getName());
         return list;
+    }
+
+    @Override
+    public SparkStreamingKafkaVersion getSparkStreamingKafkaVersion(ESparkVersion sparkVersion) {
+        return SparkStreamingKafkaVersion.KAFKA_0_10;
     }
 }
