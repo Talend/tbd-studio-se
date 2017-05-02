@@ -70,5 +70,7 @@ public class CDH580Spark2DistributionTest {
                 ((SparkStreamingComponent) distribution).getSparkStreamingKafkaVersion(ESparkVersion.SPARK_2_0));
 
         assertTrue(distribution.doSupportHDFSEncryption());
+        assertFalse(distribution.doSupportCreateServiceConnection());
+        assertTrue(distribution.getNecessaryServiceName().size() > 0);
     }
 }

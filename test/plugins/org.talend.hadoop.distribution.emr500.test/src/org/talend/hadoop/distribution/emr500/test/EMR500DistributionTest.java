@@ -103,6 +103,8 @@ public class EMR500DistributionTest {
         assertTrue(((SqoopComponent) distribution).doJavaAPISqoopImportSupportDeleteTargetDir());
         assertTrue(((SqoopComponent) distribution).doJavaAPISupportStorePasswordInFile());
         assertTrue(((HBaseComponent) distribution).doSupportNewHBaseAPI());
+        assertTrue(distribution.doSupportCreateServiceConnection());
+        assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
     }
 
 }

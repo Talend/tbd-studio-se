@@ -50,5 +50,7 @@ public class Dataproc11DistributionTest {
         assertTrue(((SparkStreamingComponent) distribution).doSupportSparkYarnClientMode());
         assertTrue(((SparkStreamingComponent) distribution).doSupportBackpressure());
         assertFalse(distribution.doSupportOozie());
+        assertTrue(distribution.doSupportCreateServiceConnection());
+        assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
     }
 }

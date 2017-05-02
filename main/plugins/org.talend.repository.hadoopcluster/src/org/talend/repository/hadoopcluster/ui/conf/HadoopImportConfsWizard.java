@@ -78,7 +78,7 @@ public class HadoopImportConfsWizard extends Wizard {
         IImportConfsWizardPage currentPage = getCurrentConfPage();
         if (currentPage != null) {
             final IRetrieveConfsService confsService = currentPage.getConfsService();
-            final boolean isCreateConnectionFromConfs = currentPage.isSuppurtCreateServiceConnection();
+            final boolean isCreateConnectionFromConfs = currentPage.isSupportCreateServiceConnection();
             try {
                 if (confsService != null) {
                     currentPage.applyFilter();

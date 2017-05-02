@@ -106,6 +106,8 @@ public class MapR510DistributionTest extends AbstractDistributionTest {
         assertTrue(distribution instanceof MapRStreamsComponent);
         assertFalse(((MapRStreamsComponent) distribution).canCreateMapRStream());
         assertEquals(MapR510Distribution.MAPR_STREAMS_JAR_PATH, ((MapRStreamsComponent) distribution).getMapRStreamsJarPath());
+        assertTrue(distribution.doSupportCreateServiceConnection());
+        assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
     }
 
 }

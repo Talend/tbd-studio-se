@@ -84,6 +84,8 @@ public class CDH4MR1DistributionTest extends AbstractDistributionTest {
         assertFalse(distribution instanceof SparkBatchComponent);
         assertFalse(distribution instanceof SparkStreamingComponent);
         assertFalse(distribution instanceof HCatalogComponent);
-        assertFalse(distribution instanceof ImpalaComponent);
+        assertFalse(distribution instanceof ImpalaComponent);     
+        assertTrue(distribution.doSupportCreateServiceConnection());
+        assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
     }
 }

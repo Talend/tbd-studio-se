@@ -102,6 +102,8 @@ public class EMR400DistributionTest extends AbstractDistributionTest {
         assertFalse(distribution instanceof HCatalogComponent);
         assertFalse(distribution instanceof ImpalaComponent);
         assertTrue(distribution.doSupportHDFSEncryption());
+        assertTrue(distribution.doSupportCreateServiceConnection());
+        assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
     }
 
 }

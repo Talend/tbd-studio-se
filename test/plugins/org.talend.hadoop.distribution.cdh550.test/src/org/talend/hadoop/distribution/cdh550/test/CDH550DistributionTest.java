@@ -107,6 +107,8 @@ public class CDH550DistributionTest extends AbstractDistributionTest {
         assertTrue(distribution instanceof ImpalaComponent);
 
         assertTrue(distribution.doSupportHDFSEncryption());
+        assertTrue(distribution.doSupportCreateServiceConnection());
+        assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
 
     }
 }

@@ -79,6 +79,8 @@ public class EMRApache240_Hive_0_13_1_DistributionTest extends AbstractDistribut
         assertFalse(distribution instanceof SparkStreamingComponent);
         assertFalse(distribution instanceof HCatalogComponent);
         assertFalse(distribution instanceof ImpalaComponent);
+        assertTrue(distribution.doSupportCreateServiceConnection());
+        assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
     }
 
 }

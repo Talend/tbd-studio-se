@@ -83,7 +83,7 @@ public class HadoopServicesTableComposite extends AbstractCheckedComposite {
 
     private void checkServices() {
         boolean hasServiceSelected = servicesTableViewer.getCheckedElements().length > 0;
-        if (hasServiceSelected || !isSuppurtCreateServiceConnection()) {
+        if (hasServiceSelected || !isSupportCreateServiceConnection()) {
             updateStatus(IStatus.OK, null);
         } else {
             updateStatus(IStatus.ERROR, Messages.getString("HadoopServicesTableComposite.checkServiceSelected")); //$NON-NLS-1$
@@ -125,7 +125,7 @@ public class HadoopServicesTableComposite extends AbstractCheckedComposite {
     }
 
     public void setServices(List<String> services) {
-        if (isSuppurtCreateServiceConnection()) {
+        if (isSupportCreateServiceConnection()) {
             servicesTableViewer.setInput(services);
             doSelectAll();
         }
@@ -133,7 +133,7 @@ public class HadoopServicesTableComposite extends AbstractCheckedComposite {
     }
 
     public List<String> getSelectedServices() {
-        if (isSuppurtCreateServiceConnection()) {
+        if (isSupportCreateServiceConnection()) {
             List<String> selectedServices = new ArrayList<>();
             Object[] checkedElements = servicesTableViewer.getCheckedElements();
             for (Object ele : checkedElements) {
@@ -157,7 +157,7 @@ public class HadoopServicesTableComposite extends AbstractCheckedComposite {
         }
     }
     
-    private boolean isSuppurtCreateServiceConnection() {
+    private boolean isSupportCreateServiceConnection() {
         if (distriVersion != null) {
             return distriVersion.doSupportCreateServiceConnection();
         }

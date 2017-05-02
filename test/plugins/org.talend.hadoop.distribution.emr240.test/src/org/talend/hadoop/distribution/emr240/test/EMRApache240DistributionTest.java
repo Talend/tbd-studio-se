@@ -84,6 +84,8 @@ public class EMRApache240DistributionTest extends AbstractDistributionTest {
         assertFalse(distribution instanceof SparkStreamingComponent);
         assertFalse(distribution instanceof HCatalogComponent);
         assertFalse(distribution instanceof ImpalaComponent);
+        assertTrue(distribution.doSupportCreateServiceConnection());
+        assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
     }
 
 }

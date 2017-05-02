@@ -86,6 +86,9 @@ public class HDP220DistributionTest extends AbstractDistributionTest {
         assertTrue(distribution instanceof HCatalogComponent);
         assertFalse(distribution instanceof ImpalaComponent);
         assertTrue(distribution.doSupportHDFSEncryption());
+        
+        assertTrue(distribution.doSupportCreateServiceConnection());
+        assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
     }
 
 }

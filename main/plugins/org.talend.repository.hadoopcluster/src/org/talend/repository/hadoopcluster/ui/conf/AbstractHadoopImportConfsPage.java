@@ -148,7 +148,7 @@ public abstract class AbstractHadoopImportConfsPage extends WizardPage implement
         return null;
     }
     
-    public boolean isSuppurtCreateServiceConnection() {
+    public boolean isSupportCreateServiceConnection() {
         if (distriVersion != null) {
             return distriVersion.doSupportCreateServiceConnection();
         }
