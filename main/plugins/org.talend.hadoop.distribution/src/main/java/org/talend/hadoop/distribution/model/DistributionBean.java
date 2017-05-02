@@ -72,14 +72,16 @@ public class DistributionBean implements IHDistribution {
             @Override
             public int compare(DistributionVersion b1, DistributionVersion b2) {
                 // Versions are sorted by weight, then by name in a descending order
-                if (b1.hadoopComponent.orderingWeight() > b2.hadoopComponent.orderingWeight()) {
-                    return -1;
-                } else if (b1.hadoopComponent.orderingWeight() < b2.hadoopComponent.orderingWeight()) {
-                    return 1;
-                } else {
-                    return b1.version != null && b2.version != null ? b2.version.compareTo(b1.version) : 0;
+                if (b1.hadoopComponent != null && b2.hadoopComponent != null) {
+                    if (b1.hadoopComponent.orderingWeight() > b2.hadoopComponent.orderingWeight()) {
+                        return -1;
+                    } else if (b1.hadoopComponent.orderingWeight() < b2.hadoopComponent.orderingWeight()) {
+                        return 1;
+                    }
                 }
+                return b1.version != null && b2.version != null ? b2.version.compareTo(b1.version) : 0;
             }
+
         });
         return versions.toArray(new DistributionVersion[versions.size()]);
     }
