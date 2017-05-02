@@ -230,6 +230,10 @@ public abstract class AbstractDistribution {
         return SparkStreamingKafkaVersion.KAFKA_0_8;
     }
 
+    public boolean doSupportKerberizedKafka() {
+        return false;
+    }
+
     public boolean doSupportHDFSEncryption() {
         return false;
     }
@@ -261,9 +265,9 @@ public abstract class AbstractDistribution {
     public boolean isGoogleDataprocDistribution() {
         return false;
     }
-    
+
     public boolean doSupportOozie() {
-    	return true;
+        return true;
     }
     
     public boolean doSupportCreateServiceConnection() {

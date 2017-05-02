@@ -19,11 +19,11 @@ import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.talend.commons.exception.ExceptionHandler;
-import org.talend.core.GlobalServiceRegister;
 import org.talend.core.classloader.DynamicClassLoader;
 import org.talend.core.hadoop.EHadoopCategory;
 import org.talend.core.hadoop.HadoopClassLoaderFactory2;
 import org.talend.core.hadoop.IHadoopClusterService;
+import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.utils.ReflectionUtils;
 import org.talend.designer.hdfsbrowse.exceptions.HadoopServerException;
 import org.talend.designer.hdfsbrowse.hadoop.service.HadoopServiceProperties;
@@ -86,8 +86,8 @@ public abstract class AbstractCheckedServiceProvider implements ICheckedServiceP
                 if (hadoopClusterService != null) {
                     customConfsJarName = hadoopClusterService.getCustomConfsJarName(serviceProperties.getItem(), true, true);
                 } else {
-                    customConfsJarName = HadoopParameterUtil
-                            .getConfsJarDefaultName(serviceProperties.getRelativeHadoopClusterLabel());
+                    customConfsJarName = HadoopParameterUtil.getConfsJarDefaultName(serviceProperties
+                            .getRelativeHadoopClusterLabel());
                 }
                 boolean confFileExist = false;
                 Set<String> libraries = ((DynamicClassLoader) classLoader).getLibraries();
@@ -159,11 +159,7 @@ public abstract class AbstractCheckedServiceProvider implements ICheckedServiceP
     }
 
     protected IHadoopClusterService getHadoopClusterService() {
-        IHadoopClusterService hadoopClusterService = null;
-        if (GlobalServiceRegister.getDefault().isServiceRegistered(IHadoopClusterService.class)) {
-            hadoopClusterService = (IHadoopClusterService) GlobalServiceRegister.getDefault()
-                    .getService(IHadoopClusterService.class);
-        }
+        IHadoopClusterService hadoopClusterService = HadoopRepositoryUtil.getHadoopClusterService();
         return hadoopClusterService;
     }
 

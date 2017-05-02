@@ -22,6 +22,7 @@ import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
+import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 
 /**
  * Test class for the {@link CDH580Spark2Distribution} distribution.
@@ -65,6 +66,8 @@ public class CDH580Spark2DistributionTest {
         assertTrue(((SparkStreamingComponent) distribution).doSupportSparkYarnClientMode());
         assertTrue(((SparkStreamingComponent) distribution).doSupportSparkYarnClientMode());
         assertTrue(((SparkStreamingComponent) distribution).doSupportBackpressure());
+        assertEquals(SparkStreamingKafkaVersion.KAFKA_0_10,
+                ((SparkStreamingComponent) distribution).getSparkStreamingKafkaVersion(ESparkVersion.SPARK_2_0));
 
         assertTrue(distribution.doSupportHDFSEncryption());
     }

@@ -16,11 +16,11 @@ import java.net.MalformedURLException;
 import java.util.Set;
 
 import org.talend.commons.exception.ExceptionHandler;
-import org.talend.core.GlobalServiceRegister;
 import org.talend.core.classloader.ClassLoaderFactory;
 import org.talend.core.classloader.DynamicClassLoader;
 import org.talend.core.hadoop.EHadoopConfigurationJars;
 import org.talend.core.hadoop.IHadoopClusterService;
+import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.hadoop.version.custom.ECustomVersionGroup;
 import org.talend.core.hadoop.version.custom.ECustomVersionType;
 import org.talend.designer.hdfsbrowse.model.HDFSConnectionBean;
@@ -58,8 +58,7 @@ public class HadoopClassLoaderFactory {
                 String customConfsJarName = getCustomConfsJarName(connectionBean.getRelativeHadoopClusterId());
                 if (customConfsJarName != null) {
                     loader = DynamicClassLoader.createNewOneBaseLoader((DynamicClassLoader) loader,
-                            new String[] { customConfsJarName },
-                            EHadoopConfigurationJars.HDFS.getEnableSecurityJars());
+                            new String[] { customConfsJarName }, EHadoopConfigurationJars.HDFS.getEnableSecurityJars());
                 }
             } catch (MalformedURLException e) {
                 ExceptionHandler.process(e);
@@ -70,11 +69,7 @@ public class HadoopClassLoaderFactory {
     }
 
     private static String getCustomConfsJarName(String clusterId) {
-        IHadoopClusterService hadoopClusterService = null;
-        if (GlobalServiceRegister.getDefault().isServiceRegistered(IHadoopClusterService.class)) {
-            hadoopClusterService = (IHadoopClusterService) GlobalServiceRegister.getDefault().getService(
-                    IHadoopClusterService.class);
-        }
+        IHadoopClusterService hadoopClusterService = HadoopRepositoryUtil.getHadoopClusterService();
         if (hadoopClusterService != null) {
             return hadoopClusterService.getCustomConfsJarName(clusterId);
         }

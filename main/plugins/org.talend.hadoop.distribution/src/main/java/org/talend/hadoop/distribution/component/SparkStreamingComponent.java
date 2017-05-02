@@ -37,10 +37,23 @@ public interface SparkStreamingComponent extends SparkComponent {
 
     /**
      * This method defines which version of the spark-streaming-kafka connector the distribution does support.
+     * 
      * @param sparkVersion version of spark used for streaming
      * 
      * @return the version of the spark-streaming-kafka connector.
      */
     public SparkStreamingKafkaVersion getSparkStreamingKafkaVersion(ESparkVersion sparkVersion);
+
+    /**
+     * This method defines whether the distribution provides a degraded Kerberos support with the spark-streaming-kafka
+     * connector. "Degraded" because the spark-streaming-kafka connector does not provide any official Kerberos support
+     * at the time of writing, but some vendors such as HDP provided workarounds.
+     *
+     * All Spark 2 distributions can support kerberized Kafka regardless of the return value of this method.
+     * 
+     * @return whether a workaround is available regarding the support of Kerberos using the spark-streaming-kafka
+     * connector.
+     */
+    public boolean doSupportKerberizedKafka();
 
 }
