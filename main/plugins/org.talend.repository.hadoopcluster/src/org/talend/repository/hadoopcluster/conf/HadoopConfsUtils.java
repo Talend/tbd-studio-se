@@ -41,6 +41,7 @@ import org.talend.core.model.general.Project;
 import org.talend.core.model.properties.ContextItem;
 import org.talend.core.model.properties.Item;
 import org.talend.core.model.repository.ResourceModelUtils;
+import org.talend.core.runtime.maven.MavenUrlHelper;
 import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
 import org.talend.designer.hdfsbrowse.manager.HadoopParameterUtil;
 import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
@@ -234,7 +235,7 @@ public class HadoopConfsUtils {
     private static void createAndDeployConfJar(HadoopClusterConnectionItem connectionItem, String confJarId, String confJarName)
             throws IOException {
         // If the conf jar has been deployed before then no need to deploy again.
-        if (containsInDeployedCache(connectionItem, confJarName)) {
+        if (containsInDeployedCache(connectionItem, confJarName) || isDeployedInRepository(connectionItem, confJarName)) {
             return;
         }
         byte[] confFileBA = null;
@@ -277,6 +278,22 @@ public class HadoopConfsUtils {
                 }
             }
         }
+    }
+
+    private static boolean isDeployedInRepository(HadoopClusterConnectionItem connectionItem, String confJarName) {
+        String mvnUri = MavenUrlHelper.generateMvnUrlForJarName(confJarName);
+        boolean isDeployed = false;
+        if (GlobalServiceRegister.getDefault().isServiceRegistered(ILibrariesService.class)) {
+            ILibrariesService service = (ILibrariesService) GlobalServiceRegister.getDefault()
+                    .getService(ILibrariesService.class);
+            if (service != null) {
+                isDeployed = service.isMavenArtifactAvailable(mvnUri);
+            }
+        }
+        if (isDeployed) {
+            addToDeployedCache(connectionItem, confJarName);
+        }
+        return isDeployed;
     }
 
     public static HadoopConfigurationManager getConfigurationManager(DistributionBean distribution) {
