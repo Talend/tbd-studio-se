@@ -1041,7 +1041,6 @@
 			 <library id="hk2-api-2.4.0-b34.jar"/>
 			 <library id="hk2-locator-2.4.0-b34.jar"/>
 			 <library id="hk2-utils-2.4.0-b34.jar"/>
-			 <library id="hive-common-emr500-latest"/>
 			 <library id="htrace-core-3.1.0-incubating.jar"/> 
     		 <library id="httpclient-4.5.2.jar"/>
 			 <library id="httpcore-4.4.4.jar"/>
@@ -1203,9 +1202,8 @@
                 description="Spark Hive libraries for EMR 5.0.0 that are MRREQUIRED"
                 id="SPARK-HIVE-LIB-MRREQUIRED-EMR_5_0_0_LATEST"
                 name="SPARK-HIVE-LIB-MRREQUIRED-EMR_5_0_0_LATEST">
-            <library id="hive-exec-emr500-latest"/>
             <library id="hive-exec-1.2.1.spark2.jar"/>
-            <library id="hive-metastore-emr500-latest"/>
+            <library id="hive-metastore-1.2.1.spark2.jar"/>
             <library id="libfb303-0.9.2.jar"/>            
         </libraryNeededGroup>
         
