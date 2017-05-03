@@ -180,9 +180,6 @@ imports="
         %>
         <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/GetDataprocConnection.javajet"%>
         <%
-        if("false".equals(useExistingConn)) { // This variable is declared and initialized in the GetDataprocConnection.javajet
-            // TODO set the Memory option on GetDataprocConnection.javaje
-        }
         node = nodeBackup;
     } else {
         boolean useExistingConn = ("true").equals(ElementParameterParser.getValue(previousNode, "__USE_EXISTING_CONNECTION__"));
@@ -876,6 +873,7 @@ if(originalHadoopUsername_<%=cid%>!=null) {
     } else { // dataproc
         %>
             int exitCode_<%=cid%> = instance_<%=cid%>.executeJob();
+            System.out.println(instance_<%=cid%>.getJobLog());
             if(exitCode_<%=cid%> > 0) {
                     throw new Exception("The Hive job failed. Please read the logs for more details");
             }
