@@ -1714,7 +1714,7 @@
              <library id="guava-14.0.1.jar" />
              <library id="jackson-mapper-asl-1.9.13.jar" />
              <library id="jackson-core-asl-1.9.13.jar" />
-             <library id="netty-all-4.0.23.Final.jar" />
+             <library id="netty-all-4.0.42.Final.jar" />
              <library id="protobuf-java-2.5.0.jar" />
              <library id="log4j-1.2.17.jar" />
              <library id="slf4j-api-1.7.10.jar"/>
@@ -1760,7 +1760,7 @@
             <library id="hbase-hadoop-compat-1.3.0.jar" />
             <library id="high-scale-lib-1.1.1.jar"/>
             <library id="hive-hbase-handler-2.1.1-amzn-0.jar"/>
-            <library id="netty-all-4.0.23.Final.jar"/>
+            <library id="netty-all-4.0.42.Final.jar"/>
         </libraryNeededGroup>
 
         <!-- Sqoop group -->
@@ -2108,7 +2108,7 @@
       </classloader>
       <classloader
             index="HBASE:AMAZON_EMR:EMR_5_5_0"
-            libraries="hbase-common-1.3.0.jar;hbase-client-1.3.0.jar;hbase-protocol-1.3.0.jar;hadoop-common-2.7.3-amzn-2.jar;hadoop-auth-2.7.3-amzn-2.jar;commons-logging-1.2.jar;commons-codec-1.9.jar;commons-configuration-1.6.jar;commons-lang-2.6.jar;commons-collections-3.2.2.jar;zookeeper-3.4.8.jar;htrace-core-3.1.0-incubating.jar;guava-12.0.1.jar;jackson-mapper-asl-1.9.13.jar;jackson-core-asl-1.9.13.jar;netty-all-4.0.23.Final.jar;protobuf-java-2.5.0.jar;log4j-1.2.17.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;hbase-server-1.3.0.jar;metrics-core-2.2.0.jar;netty-3.9.0.Final.jar">
+            libraries="hbase-common-1.3.0.jar;hbase-client-1.3.0.jar;hbase-protocol-1.3.0.jar;hadoop-common-2.7.3-amzn-2.jar;hadoop-auth-2.7.3-amzn-2.jar;commons-logging-1.2.jar;commons-codec-1.9.jar;commons-configuration-1.6.jar;commons-lang-2.6.jar;commons-collections-3.2.2.jar;zookeeper-3.4.8.jar;htrace-core-3.1.0-incubating.jar;guava-12.0.1.jar;jackson-mapper-asl-1.9.13.jar;jackson-core-asl-1.9.13.jar;netty-all-4.0.42.Final.jar;protobuf-java-2.5.0.jar;log4j-1.2.17.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;hbase-server-1.3.0.jar;metrics-core-2.2.0.jar;netty-3.9.0.Final.jar">
       </classloader>
     </extension>
 </plugin>
