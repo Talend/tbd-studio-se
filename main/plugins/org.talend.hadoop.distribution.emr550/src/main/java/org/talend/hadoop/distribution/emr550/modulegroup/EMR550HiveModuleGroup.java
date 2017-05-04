@@ -26,6 +26,10 @@ import org.talend.hadoop.distribution.constants.HiveConstant;
 
 public class EMR550HiveModuleGroup {
 
+    public static final String HDFS_GROUP_NAME = "HDFS-LIB-EMR_5_5_0_LATEST"; //$NON-NLS-1$
+
+    public static final String MAPREDUCE_GROUP_NAME = "MAPREDUCE-LIB-EMR_5_5_0_LATEST"; //$NON-NLS-1$
+
     public static final String HIVE_HBASE_MODULE_GROUP = "HIVE-HBASE-LIB-EMR_5_5_0_LATEST"; //$NON-NLS-1$
 
     public static final String MODULE_GROUP_NAME = "HIVE-LIB-EMR_5_5_0_LATEST"; //$NON-NLS-1$
@@ -38,6 +42,8 @@ public class EMR550HiveModuleGroup {
 
         Set<DistributionModuleGroup> hs = new HashSet<>();
         hs.add(new DistributionModuleGroup(MODULE_GROUP_NAME));
+        hs.add(new DistributionModuleGroup(HDFS_GROUP_NAME));
+        hs.add(new DistributionModuleGroup(MAPREDUCE_GROUP_NAME));
         // The Hive components need to import some hbase libraries if the "Use HBase storage" is checked.
         hs.add(new DistributionModuleGroup(HIVE_HBASE_MODULE_GROUP, false, hbaseLoaderCondition));
         return hs;

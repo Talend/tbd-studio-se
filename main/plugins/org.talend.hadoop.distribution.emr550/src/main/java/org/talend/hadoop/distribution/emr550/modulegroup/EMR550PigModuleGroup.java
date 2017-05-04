@@ -25,6 +25,10 @@ import org.talend.hadoop.distribution.emr550.modulegroup.node.mr.EMR550MRS3NodeM
 
 public class EMR550PigModuleGroup {
 
+    public static final String HDFS_GROUP_NAME = "HDFS-LIB-EMR_5_5_0_LATEST"; //$NON-NLS-1$
+
+    public static final String MAPREDUCE_GROUP_NAME = "MAPREDUCE-LIB-EMR_5_5_0_LATEST"; //$NON-NLS-1$
+
     public static final String PIG_GROUP_NAME = "PIG-LIB-EMR_5_5_0_LATEST"; //$NON-NLS-1$
 
     public static final String PIG_PARQUET_GROUP_NAME = "PIG-PARQUET-LIB-EMR_5_5_0_LATEST"; //$NON-NLS-1$
@@ -59,6 +63,8 @@ public class EMR550PigModuleGroup {
 
         Set<DistributionModuleGroup> hs = new HashSet<>();
         hs.add(new DistributionModuleGroup(PIG_GROUP_NAME));
+        hs.add(new DistributionModuleGroup(HDFS_GROUP_NAME));
+        hs.add(new DistributionModuleGroup(MAPREDUCE_GROUP_NAME));
         hs.add(new DistributionModuleGroup(PIG_PARQUET_GROUP_NAME, false, parquetLoaderCondition));
         hs.add(new DistributionModuleGroup(PIG_AVRO_GROUP_NAME, false, avroLoaderCondition));
         hs.add(new DistributionModuleGroup(PIG_RCFILE_GROUP_NAME, false, rcfileLoaderCondition));
