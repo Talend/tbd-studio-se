@@ -179,7 +179,7 @@ public class RetrieveLocalConfsService implements IRetrieveConfsService {
         filterProps = filterProperties;
     }
 
-    private void applyFilterInConfFile(File confFile, List<String> filterProperties) {
+    public void applyFilterInConfFile(File confFile, List<String> filterProperties) {
         if (confFile == null || filterProperties == null || filterProperties.size() == 0) {
             return;
         }
