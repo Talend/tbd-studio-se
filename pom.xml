@@ -184,7 +184,6 @@
         <module>test/plugins/org.talend.hadoop.distribution.hdp230.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdp240.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdp250.test</module>
-        <module>test/plugins/org.talend.hadoop.distribution.hdp260.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.mapr200.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.mapr212.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.mapr213.test</module>

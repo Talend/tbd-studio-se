@@ -118,14 +118,6 @@
          version="0.0.0"
          fragment="true"
          unpack="false"/>
-        
-   <plugin
-         id="org.talend.hadoop.distribution.hdp260.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
 
    <plugin
          id="org.talend.hadoop.distribution.piv101.test"
