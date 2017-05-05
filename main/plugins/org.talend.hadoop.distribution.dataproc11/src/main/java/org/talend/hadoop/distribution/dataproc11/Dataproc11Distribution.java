@@ -27,6 +27,7 @@ import org.talend.hadoop.distribution.NodeComponentTypeBean;
 import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
+import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
@@ -46,8 +47,8 @@ import org.talend.hadoop.distribution.dataproc11.modulegroup.node.sparkstreaming
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
-public class Dataproc11Distribution extends AbstractDistribution implements HDFSComponent, SparkBatchComponent, HiveComponent,
-        SparkStreamingComponent, HiveOnSparkComponent, IGoogleDataprocDistribution {
+public class Dataproc11Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, SparkBatchComponent,
+        HiveComponent, SparkStreamingComponent, HiveOnSparkComponent, IGoogleDataprocDistribution {
 
     public static final String VERSION = "DATAPROC_1_1"; //$NON-NLS-1$
 
