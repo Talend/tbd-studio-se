@@ -55,7 +55,7 @@ public abstract class AbstractOozieForm extends AbstractHadoopSubForm<OozieConne
             }
         } else {
             String connectException = connectionStatus.getMessageException();
-            String mainMsg = Messages.getString("AbstractOozieForm.connectionFailure"); //$NON-NLS-1$
+            String mainMsg = Messages.getString("AbstractOozieForm.OozieconnectionFailure"); //$NON-NLS-1$
             if (!isReadOnly()) {
                 updateStatus(IStatus.WARNING, mainMsg);
             }
