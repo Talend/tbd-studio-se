@@ -11,6 +11,7 @@ import org.eclipse.ui.PlatformUI;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.core.GlobalServiceRegister;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
+import org.talend.core.hadoop.version.EHadoopDistributions;
 import org.talend.core.hadoop.version.custom.ECustomVersionGroup;
 import org.talend.core.model.components.IComponent;
 import org.talend.core.model.components.IComponentsService;
@@ -147,7 +148,7 @@ public class HCatalogDragAndDropHandler extends AbstractDragAndDropServiceHandle
             return getRepositoryValueOfStringType(hcConnection, StringUtils.trimToNull(hcConnection.getStagingDirectory()));
         } else if (EHDFSRepositoryToComponent.USE_DATANODE_HOSTNAME.getRepositoryValue().equals(value)) {
             return hcConnection.isUseDNHost();
-        }else if (EHDFSRepositoryToComponent.USE_CLOUDERA_NAVIGATOR.getRepositoryValue().equals(value)) {
+        } else if (EHDFSRepositoryToComponent.USE_CLOUDERA_NAVIGATOR.getRepositoryValue().equals(value)) {
             return hcConnection.isUseClouderaNavi();
         } else if (EHDFSRepositoryToComponent.CLOUDERA_NAVIGATOR_USERNAME.getRepositoryValue().equals(value)) {
             return getRepositoryValueOfStringType(connection, HadoopRepositoryUtil.getClouderaNaviUserName(connection));
@@ -211,14 +212,22 @@ public class HCatalogDragAndDropHandler extends AbstractDragAndDropServiceHandle
 
     protected boolean isSubValid(Item item, ERepositoryObjectType type, RepositoryNode seletetedNode, IComponent component,
             String repositoryType) {
-        boolean tableWithMap = true;
+        boolean isSubValid = true;
+        HadoopClusterConnection hcConnection = HCRepositoryUtil.getRelativeHadoopClusterConnection((HCatalogConnectionItem) item);
+        if (hcConnection != null) {
+            if (EHadoopDistributions.MICROSOFT_HD_INSIGHT.getName().equals(hcConnection.getDistribution())) {
+                if (component.getName().toUpperCase().contains(HCATALOG)) {
+                    isSubValid = false;
+                }
+            }
+        }
         if (type == ERepositoryObjectType.METADATA_CON_TABLE) {
             if (component.getName().toUpperCase().endsWith(MAP)) {
-                tableWithMap = false;
+                isSubValid = false;
 
             }
         }
-        return tableWithMap;
+        return isSubValid;
     }
 
     @Override
