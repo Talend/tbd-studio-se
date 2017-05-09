@@ -48,8 +48,6 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
 
     private LabelledText whcUsernameText;
 
-    private LabelledText whcJobResultFolderText;
-
     private LabelledText hdiUsernameText;
 
     private LabelledText hdiPasswordText;
@@ -116,9 +114,7 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
         String whcUsername = StringUtils.trimToEmpty(getConnection().getParameters().get(
                 ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_USERNAME));
         whcUsernameText.setText(whcUsername);
-        String whcJobResultFolder = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_JOB_RESULT_FOLDER));
-        whcJobResultFolderText.setText(whcJobResultFolder);
+
         String hdiUsername = StringUtils.trimToEmpty(getConnection().getParameters().get(
                 ConnParameterKeys.CONN_PARA_KEY_HDI_USERNAME));
         hdiUsernameText.setText(hdiUsername);
@@ -151,7 +147,6 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
         whcHostnameText.setReadOnly(readOnly);
         whcPortText.setReadOnly(readOnly);
         whcUsernameText.setEnabled(!readOnly);
-        whcJobResultFolderText.setReadOnly(readOnly);
         hdiUsernameText.setReadOnly(readOnly);
         hdiPasswordText.setReadOnly(readOnly);
         azureHostnameText.setReadOnly(readOnly);
@@ -167,7 +162,6 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
         whcPortText.setEditable(isEditable);
         whcPortText.setEditable(isEditable);
         whcUsernameText.setEditable(isEditable);
-        whcJobResultFolderText.setEditable(isEditable);
         hdiUsernameText.setEditable(isEditable);
         hdiPasswordText.setEditable(isEditable);
         azureHostnameText.setEditable(isEditable);
@@ -191,8 +185,7 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
         whcHostnameText = new LabelledText(whcGroup, Messages.getString("HadoopClusterForm.text.webHCat.hostname"), 1); //$NON-NLS-1$
         whcPortText = new LabelledText(whcGroup, Messages.getString("HadoopClusterForm.text.webHCat.port"), 1); //$NON-NLS-1$
         whcUsernameText = new LabelledText(whcGroup, Messages.getString("HadoopClusterForm.text.webHCat.username"), 1); //$NON-NLS-1$
-        whcJobResultFolderText = new LabelledText(whcGroup,
-                Messages.getString("HadoopClusterForm.text.webHCat.jobResultFolder"), 1); //$NON-NLS-1$
+
     }
 
     private void addInsightFields() {
@@ -242,15 +235,7 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
                 checkFieldsValue();
             }
         });
-        whcJobResultFolderText.addModifyListener(new ModifyListener() {
 
-            @Override
-            public void modifyText(final ModifyEvent e) {
-                getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_JOB_RESULT_FOLDER,
-                        whcJobResultFolderText.getText());
-                checkFieldsValue();
-            }
-        });
         hdiUsernameText.addModifyListener(new ModifyListener() {
 
             @Override
@@ -330,10 +315,7 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
             updateStatus(IStatus.ERROR, Messages.getString("HadoopClusterForm.check.webHCat.username")); //$NON-NLS-1$
             return false;
         }
-        if (!validText(whcJobResultFolderText.getText())) {
-            updateStatus(IStatus.ERROR, Messages.getString("HadoopClusterForm.check.webHCat.jobResultFolder")); //$NON-NLS-1$
-            return false;
-        }
+
         if (!validText(hdiUsernameText.getText())) {
             updateStatus(IStatus.ERROR, Messages.getString("HadoopClusterForm.check.hdi.username")); //$NON-NLS-1$
             return false;
