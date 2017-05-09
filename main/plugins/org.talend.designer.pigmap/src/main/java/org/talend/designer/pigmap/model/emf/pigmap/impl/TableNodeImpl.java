@@ -11,6 +11,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.talend.designer.pigmap.model.emf.pigmap.Connection;
+import org.talend.designer.pigmap.model.emf.pigmap.FilterConnection;
 import org.talend.designer.pigmap.model.emf.pigmap.LookupConnection;
 import org.talend.designer.pigmap.model.emf.pigmap.PigmapPackage;
 import org.talend.designer.pigmap.model.emf.pigmap.TableNode;
@@ -161,6 +163,64 @@ public class TableNodeImpl extends AbstractNodeImpl implements TableNode {
                 return lookupIncomingConnections != null && !lookupIncomingConnections.isEmpty();
         }
         return super.eIsSet(featureID);
+    }
+    
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated not
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        TableNodeImpl other = (TableNodeImpl) obj;
+        if(this.getLookupIncomingConnections().size() != other.getLookupIncomingConnections().size()){
+            return false;
+        }
+        if(this.getLookupOutgoingConnections().size() != other.getLookupOutgoingConnections().size()){
+            return false;
+        }
+        
+        for(LookupConnection conn:this.lookupOutgoingConnections){
+            boolean found = false;
+            for(LookupConnection otherConn:other.lookupOutgoingConnections){
+                if(conn.getName().equals(otherConn.getName())){
+                    found = true;
+                    if(!conn.equals(otherConn)){
+                        return false;
+                    }
+                    break;
+                }
+            }
+            if(found == false){
+                return false;
+            }
+        }
+        
+        for(LookupConnection conn:this.lookupIncomingConnections){
+            boolean found = false;
+            for(LookupConnection otherConn:other.lookupIncomingConnections){
+                if(conn.getName().equals(otherConn.getName())){
+                    found = true;
+                    if(!conn.equals(otherConn)){
+                        return false;
+                    }
+                    break;
+                }
+            }
+            if(found == false){
+                return false;
+            }
+        }
+        return super.equals(obj);
     }
 
 } //TableNodeImpl

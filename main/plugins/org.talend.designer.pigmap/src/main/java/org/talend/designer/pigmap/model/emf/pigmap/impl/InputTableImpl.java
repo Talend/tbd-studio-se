@@ -379,4 +379,55 @@ public class InputTableImpl extends AbstractInOutTableImpl implements InputTable
         return result.toString();
     }
 
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated not
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        InputTableImpl other = (InputTableImpl) obj;
+        if (this.lookup != other.lookup) {
+            return false;
+        }
+        if (this.joinModel == null) {
+            if (other.joinModel != null) {
+                return false;
+            }
+        } else if (!this.joinModel.equals(other.joinModel)) {
+            return false;
+        }
+        if (this.joinOptimization == null) {
+            if (other.joinOptimization != null) {
+                return false;
+            }
+        } else if (!this.joinOptimization.equals(other.joinOptimization)) {
+            return false;
+        }
+        if (this.customPartitioner == null) {
+            if (other.customPartitioner != null) {
+                return false;
+            }
+        } else if (!this.customPartitioner.equals(other.customPartitioner)) {
+            return false;
+        }
+        if (this.increaseParallelism == null) {
+            if (other.increaseParallelism != null) {
+                return false;
+            }
+        } else if (!this.increaseParallelism.equals(other.increaseParallelism)) {
+            return false;
+        }
+        
+        return true;
+    }
 } //InputTableImpl

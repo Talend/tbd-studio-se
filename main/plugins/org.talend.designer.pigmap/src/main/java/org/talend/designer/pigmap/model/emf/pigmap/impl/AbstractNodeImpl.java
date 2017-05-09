@@ -544,5 +544,118 @@ public abstract class AbstractNodeImpl extends EObjectImpl implements AbstractNo
         result.append(')');
         return result.toString();
     }
+    
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated not
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        AbstractNodeImpl other = (AbstractNodeImpl) obj;
+        if (this.name == null) {
+            if (other.name != null) {
+                return false;
+            }
+        } else if (!this.name.equals(other.name)) {
+            return false;
+        }
+        if (this.pattern == null) {
+            if (other.pattern != null) {
+                return false;
+            }
+        } else if (!this.pattern.equals(other.pattern)) {
+            return false;
+        }
+        
+        if (this.expression == null) {
+            if (other.expression != null) {
+                return false;
+            }
+        } else if (!this.expression.equals(other.expression)) {
+            return false;
+        }
+        
+        if (this.type == null) {
+            if (other.type != null) {
+                return false;
+            }
+        } else if (!this.type.equals(other.type)) {
+            return false;
+        }
+        if(this.nullable != other.nullable){
+            return false;
+        }
+        if(this.key != other.key){
+            return false;
+        }
+        if(this.getFilterOutGoingConnections().size() != other.getFilterOutGoingConnections().size()){
+            return false;
+        }
+        if(this.getIncomingConnections().size() != other.getIncomingConnections().size()){
+            return false;
+        }
+        if(this.getOutgoingConnections().size() != other.getOutgoingConnections().size()){
+            return false;
+        }
+        
+        for(FilterConnection filter:this.filterOutGoingConnections){
+            boolean found = false;
+            for(FilterConnection otherFilter:other.filterOutGoingConnections){
+                if(filter.getName().equals(otherFilter.getName())){
+                    found = true;
+                    if(!filter.equals(otherFilter)){
+                        return false;
+                    }
+                    break;
+                }
+            }
+            if(found == false){
+                return false;
+            }
+        }
+        
+        for(Connection conn:this.outgoingConnections){
+            boolean found = false;
+            for(Connection otherConn:other.outgoingConnections){
+                if(conn.getName().equals(otherConn.getName())){
+                    found = true;
+                    if(!conn.equals(otherConn)){
+                        return false;
+                    }
+                    break;
+                }
+            }
+            if(found == false){
+                return false;
+            }
+        }
+        
+        for(Connection conn:this.incomingConnections){
+            boolean found = false;
+            for(Connection otherConn:other.incomingConnections){
+                if(conn.getName().equals(otherConn.getName())){
+                    found = true;
+                    if(!conn.equals(otherConn)){
+                        return false;
+                    }
+                    break;
+                }
+            }
+            if(found == false){
+                return false;
+            }
+        }
+        return true;
+    }
 
 } //AbstractNodeImpl

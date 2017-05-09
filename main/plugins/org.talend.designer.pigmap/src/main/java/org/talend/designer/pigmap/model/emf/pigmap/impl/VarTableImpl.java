@@ -21,8 +21,9 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
+import org.talend.designer.pigmap.model.emf.pigmap.FilterConnection;
 import org.talend.designer.pigmap.model.emf.pigmap.PigmapPackage;
+import org.talend.designer.pigmap.model.emf.pigmap.TableNode;
 import org.talend.designer.pigmap.model.emf.pigmap.VarNode;
 import org.talend.designer.pigmap.model.emf.pigmap.VarTable;
 
@@ -275,6 +276,58 @@ public class VarTableImpl extends EObjectImpl implements VarTable {
         result.append(minimized);
         result.append(')');
         return result.toString();
+    }
+    
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated not
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        VarTableImpl other = (VarTableImpl) obj;
+        if(this.minimized != other.minimized){
+            return false;
+        }
+        if (this.name == null) {
+            if (other.name != null) {
+                return false;
+            }
+        } else if (!this.name.equals(other.name)) {
+            return false;
+        }
+        
+        EList<VarNode> otherNodes = other.getNodes();
+        
+        if(this.getNodes().size() != otherNodes.size()){
+            return false;
+        }
+        
+        for(VarNode node:nodes){
+            boolean found = false;
+            for(VarNode otherNode:otherNodes){
+                if(node.getName().equals(otherNode.getName())){
+                    found = true;
+                    if(!node.equals(otherNode)){
+                        return false;
+                    }
+                    break;
+                }
+            }
+            if(found == false){
+                return false;
+            }
+        }
+        return true;
     }
 
 } //VarTableImpl

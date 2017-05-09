@@ -383,5 +383,40 @@ public class OutputTableImpl extends AbstractInOutTableImpl implements OutputTab
         result.append(')');
         return result.toString();
     }
+    
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated not
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        OutputTableImpl other = (OutputTableImpl) obj;
+        if (this.reject != other.reject) {
+            return false;
+        }
+        if (this.rejectInnerJoin != other.rejectInnerJoin) {
+            return false;
+        }
+        if (this.errorReject != other.errorReject) {
+            return false;
+        }
+        if (this.enableEmptyElement != other.enableEmptyElement) {
+            return false;
+        }
+        if (this.allInOne != other.allInOne) {
+            return false;
+        }
+        return true;
+    }
 
 } //OutputTableImpl

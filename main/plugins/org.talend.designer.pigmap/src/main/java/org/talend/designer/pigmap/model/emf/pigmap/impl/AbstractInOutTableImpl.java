@@ -474,5 +474,89 @@ public abstract class AbstractInOutTableImpl extends EObjectImpl implements Abst
         result.append(')');
         return result.toString();
     }
+    
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated not
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        AbstractInOutTableImpl other = (AbstractInOutTableImpl) obj;
+        if(this.activateCondensedTool != other.activateCondensedTool){
+            return false;
+        }
+        if(this.activateExpressionFilter != other.activateExpressionFilter){
+            return false;
+        }
+        if(this.minimized != other.minimized){
+            return false;
+        }
+        if (this.name == null) {
+            if (other.name != null) {
+                return false;
+            }
+        } else if (!this.name.equals(other.name)) {
+            return false;
+        }
+        
+        if (this.expressionFilter == null) {
+            if (other.expressionFilter != null) {
+                return false;
+            }
+        } else if (!this.expressionFilter.equals(other.expressionFilter)) {
+            return false;
+        }
+        EList<FilterConnection> otherFilters = other.filterIncomingConnections;
+        EList<TableNode> otherNodes = other.nodes;
+        
+        if(this.filterIncomingConnections.size() != otherFilters.size()){
+            return false;
+        }
+        if(this.nodes.size() != otherNodes.size()){
+            return false;
+        }
+        for(FilterConnection filter:filterIncomingConnections){
+            boolean found = false;
+            for(FilterConnection otherFilter:otherFilters){
+                if(filter.getName().equals(otherFilter.getName())){
+                    found = true;
+                    if(!filter.equals(otherFilter)){
+                        return false;
+                    }
+                    break;
+                }
+            }
+            if(found == false){
+                return false;
+            }
+        }
+        
+        for(TableNode node:nodes){
+            boolean found = false;
+            for(TableNode otherNode:otherNodes){
+                if(node.getName().equals(otherNode.getName())){
+                    found = true;
+                    if(!node.equals(otherNode)){
+                        return false;
+                    }
+                    break;
+                }
+            }
+            if(found == false){
+                return false;
+            }
+        }
+        return true;
+    }
 
 } //AbstractInOutTableImpl
