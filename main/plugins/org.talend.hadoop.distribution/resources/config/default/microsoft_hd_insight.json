@@ -1,0 +1,10 @@
+{
+    "HD_WEBHCAT_HOSTNAME": "clustername.azurehdinsight.net", 
+    "HD_WEBHCAT_PORT": "443", 
+    "HD_WEBHCAT_USERNAME": "admin", 
+    "HD_INSIGHT_USERNAME": "admin",
+	"HD_AZURE_HOSTNAME": "storage.blob.core.windows.net",
+	"HD_AZURE_CONTAINER": "clustername",
+	"HD_AZURE_USERNAME": "admin",
+	"HD_AZURE_DEPLOYBOLB": "D:\\blobdir"
+}
