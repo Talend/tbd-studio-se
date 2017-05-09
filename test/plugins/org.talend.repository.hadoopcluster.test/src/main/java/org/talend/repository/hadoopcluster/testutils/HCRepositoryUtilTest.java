@@ -12,12 +12,13 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.testutils;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Map;
 
 import org.junit.Test;
 import org.talend.core.database.conn.ConnParameterKeys;
+import org.talend.hadoop.distribution.constants.hdinsight.IMicrosoftHDInsightDistribution;
 import org.talend.repository.hadoopcluster.util.ClusterTestUtil;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
@@ -42,4 +43,23 @@ public class HCRepositoryUtilTest {
         assertEquals(NAME_NODE, dbParameters.get(ConnParameterKeys.CONN_PARA_KEY_NAME_NODE_URL));
     }
 
+    @Test
+    public void testFillDefaultValuesOfHadoopCluster() {
+        HadoopClusterConnectionItem hcItem = ClusterTestUtil.createDefaultHadoopClusterItem();
+        HadoopClusterConnection hcConnection = (HadoopClusterConnection) hcItem.getConnection();
+        hcConnection.setDistribution(IMicrosoftHDInsightDistribution.DISTRIBUTION_NAME);
+        hcConnection.setDfVersion("MICROSOFT_HD_INSIGHT_3_4");
+
+        HCRepositoryUtil.fillDefaultValuesOfHadoopCluster(hcConnection);
+        assertEquals("clustername.azurehdinsight.net",
+                hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_HOSTNAME));
+        assertEquals("443", hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_PORT));
+        assertEquals("admin", hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_USERNAME));
+        assertEquals("admin", hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_USERNAME));
+        assertEquals("storage.blob.core.windows.net",
+                hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HOSTNAME));
+        assertEquals("clustername", hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_CONTAINER));
+        assertEquals("admin", hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_USERNAME));
+        assertEquals("D:\\blobdir", hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_DEPLOY_BLOB));
+    }
 }
