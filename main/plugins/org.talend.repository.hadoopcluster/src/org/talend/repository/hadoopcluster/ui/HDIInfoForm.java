@@ -30,6 +30,7 @@ import org.talend.metadata.managment.ui.utils.ExtendedNodeConnectionContextUtils
 import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopForm;
 import org.talend.repository.hadoopcluster.ui.common.IHadoopClusterInfoForm;
+import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
 
 /**
@@ -63,10 +64,13 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
 
     private LabelledText azureDeployBlobText;
 
+    private boolean creation;
+
     public HDIInfoForm(Composite parent, ConnectionItem connectionItem, String[] existingNames, boolean creation) {
         super(parent, SWT.NONE, existingNames);
         this.parentForm = parent;
         this.connectionItem = connectionItem;
+        this.creation = creation;
         setConnectionItem(connectionItem);
         setupForm(true);
         init();
@@ -99,6 +103,10 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
 
     @Override
     public void init() {
+        if (isNeedFillDefaults()) {
+            fillDefaults();
+        }
+
         String whcHostName = StringUtils.trimToEmpty(getConnection().getParameters().get(
                 ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_HOSTNAME));
         whcHostnameText.setText(whcHostName);
@@ -401,6 +409,13 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
         addContextParams(EHadoopParamName.KeyAzuresUser, isUse);
         addContextParams(EHadoopParamName.KeyAzurePassword, isUse);
         addContextParams(EHadoopParamName.KeyAzureDeployBlob, isUse);
+    }
+
+    private void fillDefaults() {
+        HadoopClusterConnection connection = getConnection();
+        if (creation && !connection.isUseCustomConfs()) {
+            HCRepositoryUtil.fillDefaultValuesOfHadoopCluster(connection);
+        }
     }
 
 }

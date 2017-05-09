@@ -827,6 +827,50 @@ public class HCRepositoryUtil {
         if (defaultGoogleJarsBucket != null) {
             connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_GOOGLE_JARS_BUCKET, defaultGoogleJarsBucket);
         }
+        String defaultWebHCatHostName = hiveVersion.getDefaultConfig(distribution,
+                EHadoopProperties.HD_WEBHCAT_HOSTNAME.getName());
+        if (defaultWebHCatHostName != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_HOSTNAME, defaultWebHCatHostName);
+        }
+
+        String defaultWebHCatPort = hiveVersion.getDefaultConfig(distribution, EHadoopProperties.HD_WEBHCAT_PORT.getName());
+        if (defaultWebHCatPort != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_PORT, defaultWebHCatPort);
+        }
+
+        String defaultWebHCatUserName = hiveVersion.getDefaultConfig(distribution,
+                EHadoopProperties.HD_WEBHCAT_USERNAME.getName());
+        if (defaultWebHCatUserName != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_USERNAME, defaultWebHCatUserName);
+        }
+
+        String defaultHDInsightUserName = hiveVersion.getDefaultConfig(distribution,
+                EHadoopProperties.HD_INSIGHT_USERNAME.getName());
+        if (defaultHDInsightUserName != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_HDI_USERNAME, defaultHDInsightUserName);
+        }
+
+        String defaultAzureHostName = hiveVersion.getDefaultConfig(distribution, EHadoopProperties.HD_AZURE_HOSTNAME.getName());
+        if (defaultAzureHostName != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_AZURE_HOSTNAME, defaultAzureHostName);
+        }
+
+        String defaultAzureContainer = hiveVersion.getDefaultConfig(distribution, EHadoopProperties.HD_AZURE_CONTAINER.getName());
+        if (defaultAzureContainer != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_AZURE_CONTAINER, defaultAzureContainer);
+        }
+
+        String defaultAzureUserName = hiveVersion.getDefaultConfig(distribution, EHadoopProperties.HD_AZURE_USERNAME.getName());
+        if (defaultAzureUserName != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_AZURE_USERNAME, defaultAzureUserName);
+        }
+
+        String defaultAzureDeployBlob = hiveVersion.getDefaultConfig(distribution,
+                EHadoopProperties.HD_AZURE_DEPLOYBOLB.getName());
+        if (defaultAzureDeployBlob != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_AZURE_DEPLOY_BLOB, defaultAzureDeployBlob);
+        }
+
     }
 
     public static String getRepositoryTypeOfHadoopSubItem(Item item) {
