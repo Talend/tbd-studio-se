@@ -41,7 +41,11 @@ import org.talend.commons.ui.swt.formtools.UtilsButton;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.hadoop.version.EAuthenticationMode;
 import org.talend.core.hadoop.version.custom.ECustomVersionGroup;
+import org.talend.core.model.components.ComponentCategory;
+import org.talend.core.model.process.INode;
 import org.talend.core.model.properties.ConnectionItem;
+import org.talend.core.runtime.CoreRuntimePlugin;
+import org.talend.designer.core.IDesignerCoreService;
 import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
 import org.talend.designer.hdfsbrowse.hadoop.service.EHadoopServiceType;
 import org.talend.designer.hdfsbrowse.hadoop.service.HadoopServiceProperties;
@@ -1020,7 +1024,19 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
             rmORjtProperties.setCustomJars(HCVersionUtil.getCustomVersionMap(getConnection()).get(
                     ECustomVersionGroup.MAP_REDUCE.getName()));
         }
-        new CheckHadoopServicesDialog(getShell(), serviceTypeToProperties).open();
+        new CheckHadoopServicesDialog(getShell(), filterTypes(serviceTypeToProperties)).open();
+    }
+
+    private Map<EHadoopServiceType, HadoopServiceProperties> filterTypes(
+            Map<EHadoopServiceType, HadoopServiceProperties> serviceTypeToProperties) {
+        Map<EHadoopServiceType, HadoopServiceProperties> filteredTypes = serviceTypeToProperties;
+        IDesignerCoreService designerCoreService = CoreRuntimePlugin.getInstance().getDesignerCoreService();
+        INode node = designerCoreService.getRefrenceNode("tMRConfiguration", ComponentCategory.CATEGORY_4_MAPREDUCE.getName());//$NON-NLS-1$
+        if (node == null) {
+            filteredTypes.remove(EHadoopServiceType.JOBTRACKER);
+            filteredTypes.remove(EHadoopServiceType.RESOURCE_MANAGER);
+        }
+        return filteredTypes;
     }
 
     private void initCommonProperties(HadoopServiceProperties properties) {
