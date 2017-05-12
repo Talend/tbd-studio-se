@@ -58,8 +58,7 @@ public class HDFSModelUtil {
             if (hcConnection != null) {
                 ContextType parentContextType = null;
                 if (hcConnection.isContextMode()) {
-                    parentContextType = ConnectionContextHelper.getContextTypeForContextMode(hcConnection,
-                            hcConnection.getContextName(), false);
+                    parentContextType = ConnectionContextHelper.getContextTypeForContextMode(hcConnection, true);
                 }
                 bean.setParentContextType(parentContextType);
                 BeanUtils.copyProperties(bean, hcConnection);
