@@ -45,8 +45,10 @@ public class Neo4jConnectionUtil {
     public static synchronized boolean checkConnection(NoSQLConnection connection) throws NoSQLServerException {
         boolean canConnect = true;
         final ClassLoader classLoader = NoSQLClassLoaderFactory.getClassLoader(connection);
+        Object dbConnection = null;
         try {
             final Object db = getDB(connection);
+            dbConnection = db;
             boolean isRemote = Boolean.valueOf(connection.getAttributes().get(INeo4jAttributes.REMOTE_SERVER));
             if (isRemote) {
                 NoSQLReflection.invokeMethod(db, "getAllNodes", //$NON-NLS-1$
@@ -69,6 +71,10 @@ public class Neo4jConnectionUtil {
             canConnect = false;
             resetAll();
             throw new NoSQLServerException(Messages.getString("Neo4jConnectionUtil.cannotConnectDatabase"), e); //$NON-NLS-1$
+        } finally {
+            if (dbConnection != null) {
+                shutdownNeo4JDb(dbConnection);
+            }
         }
 
         return canConnect;
@@ -94,6 +100,14 @@ public class Neo4jConnectionUtil {
     }
 
     public static synchronized Object getDB(NoSQLConnection connection) throws NoSQLServerException {
+        return getDB(connection, false);
+    }
+
+    public static synchronized Object getDB(NoSQLConnection connection, boolean useCache) throws NoSQLServerException {
+        if (useCache && graphDb != null) {
+            return graphDb;
+        }
+
         Object db = null;
 
         ClassLoader classLoader = NoSQLClassLoaderFactory.getClassLoader(connection);
@@ -138,7 +152,7 @@ public class Neo4jConnectionUtil {
         } catch (NoSQLReflectionException e) {
             throw new NoSQLServerException(e);
         }
-
+        
         return graphDb = db;
     }
 
@@ -155,7 +169,7 @@ public class Neo4jConnectionUtil {
         });
     }
 
-    private static void shutdownNeo4JDb(final Object db) {
+    public static void shutdownNeo4JDb(final Object db) {
         try {
             NoSQLReflection.invokeMethod(db, "shutdown", new Object[0]); //$NON-NLS-1$
         } catch (NoSQLReflectionException e) {
@@ -164,14 +178,16 @@ public class Neo4jConnectionUtil {
         }
     }
 
-    public static synchronized Iterator<Map<String, Object>> getResultIterator(NoSQLConnection connection, String cypher)
+    public static synchronized Iterator<Map<String, Object>> getResultIterator(NoSQLConnection connection, String cypher,
+            Object db1)
             throws NoSQLServerException {
         Iterator<Map<String, Object>> resultIterator = null;
-        Object db = getDB(connection);
-        ClassLoader classLoader = NoSQLClassLoaderFactory.getClassLoader(connection);
-        String isRemoteAttr = connection.getAttributes().get(INeo4jAttributes.REMOTE_SERVER);
-        boolean isRemote = isRemoteAttr == null ? false : Boolean.valueOf(isRemoteAttr);
+        Object db = db1;
         try {
+            db = getDB(connection, true);
+            ClassLoader classLoader = NoSQLClassLoaderFactory.getClassLoader(connection);
+            String isRemoteAttr = connection.getAttributes().get(INeo4jAttributes.REMOTE_SERVER);
+            boolean isRemote = isRemoteAttr == null ? false : Boolean.valueOf(isRemoteAttr);
             if (isRemote) {
                 Object queryResult = NoSQLReflection.invokeMethod(getQueryEngine(db, classLoader),
                         "query", new Object[] { cypher, null }, String.class, Map.class); //$NON-NLS-1$
