@@ -12,15 +12,22 @@
 // ============================================================================
 package org.talend.repository.nosql.db.util.neo4j;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.io.IOException;
 
 import org.eclipse.emf.common.util.EMap;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.talend.repository.model.nosql.NoSQLConnection;
 import org.talend.repository.model.nosql.NosqlFactory;
 import org.talend.repository.nosql.db.common.neo4j.INeo4jAttributes;
 import org.talend.repository.nosql.db.common.neo4j.INeo4jConstants;
+import org.talend.repository.nosql.exceptions.NoSQLServerException;
+import org.talend.utils.io.FilesUtils;
 
 /**
  * created by ycbai on 2016年12月30日 Detailled comment
@@ -30,9 +37,25 @@ public class Neo4jConnectionUtilTest {
 
     NoSQLConnection connection;
 
+    NoSQLConnection localConnection;
+
+    File tmpFolder = null;
+
+    @Before
+    public void prepare() {
+        tmpFolder = org.talend.utils.files.FileUtils.createTmpFolder("neo4jLocalConnection", "test"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+
+    @After
+    public void clean() {
+        if (tmpFolder != null) {
+            FilesUtils.deleteFolder(tmpFolder, true);
+        }
+    }
     @Before
     public void before() {
         connection = NosqlFactory.eINSTANCE.createNoSQLConnection();
+        localConnection = NosqlFactory.eINSTANCE.createNoSQLConnection();
     }
 
     @Test
@@ -57,11 +80,28 @@ public class Neo4jConnectionUtilTest {
 
         attributes.put(INeo4jAttributes.DB_VERSION, INeo4jConstants.NEO4J_2_3_X);
         assertFalse(Neo4jConnectionUtil.isHasSetUsernameOption(connection));
-        assertTrue(Neo4jConnectionUtil.isNeedAuthorization(connection));
 
         attributes.put(INeo4jAttributes.REMOTE_SERVER, "false"); //$NON-NLS-1$
         assertFalse(Neo4jConnectionUtil.isHasSetUsernameOption(connection));
         assertFalse(Neo4jConnectionUtil.isNeedAuthorization(connection));
+    }
+
+    @Test
+    public void testLocalConnection() throws NoSQLServerException {
+        EMap<String, String> attributes = localConnection.getAttributes();
+        attributes.put(INeo4jAttributes.REMOTE_SERVER, "false"); //$NON-NLS-1$
+
+        try {
+            attributes.put(INeo4jAttributes.DATABASE_PATH, tmpFolder.getCanonicalPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+            }
+
+        attributes.put(INeo4jAttributes.DB_VERSION, INeo4jConstants.NEO4J_2_3_X);
+
+        localConnection.setDbType("NEO4J");
+        assertTrue(Neo4jConnectionUtil.checkConnection(localConnection));
+        assertTrue(Neo4jConnectionUtil.checkConnection(localConnection));
     }
 
 }
