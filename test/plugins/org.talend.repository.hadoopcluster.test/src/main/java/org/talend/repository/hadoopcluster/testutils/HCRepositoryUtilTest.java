@@ -59,7 +59,9 @@ public class HCRepositoryUtilTest {
         assertEquals("storage.blob.core.windows.net",
                 hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HOSTNAME));
         assertEquals("clustername", hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_CONTAINER));
-        assertEquals("admin", hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_USERNAME));
+        assertEquals("storage", hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_USERNAME));
         assertEquals("D:\\blobdir", hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_DEPLOY_BLOB));
+        assertEquals("D:\\hdJobResult",
+                hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_JOB_RESULT_FOLDER));
     }
 }
