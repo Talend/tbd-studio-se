@@ -16,7 +16,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-import java.io.IOException;
 
 import org.eclipse.emf.common.util.EMap;
 import org.junit.After;
@@ -26,7 +25,6 @@ import org.talend.repository.model.nosql.NoSQLConnection;
 import org.talend.repository.model.nosql.NosqlFactory;
 import org.talend.repository.nosql.db.common.neo4j.INeo4jAttributes;
 import org.talend.repository.nosql.db.common.neo4j.INeo4jConstants;
-import org.talend.repository.nosql.exceptions.NoSQLServerException;
 import org.talend.utils.io.FilesUtils;
 
 /**
@@ -44,6 +42,8 @@ public class Neo4jConnectionUtilTest {
     @Before
     public void prepare() {
         tmpFolder = org.talend.utils.files.FileUtils.createTmpFolder("neo4jLocalConnection", "test"); //$NON-NLS-1$ //$NON-NLS-2$
+        connection = NosqlFactory.eINSTANCE.createNoSQLConnection();
+        localConnection = NosqlFactory.eINSTANCE.createNoSQLConnection();
     }
 
     @After
@@ -52,11 +52,7 @@ public class Neo4jConnectionUtilTest {
             FilesUtils.deleteFolder(tmpFolder, true);
         }
     }
-    @Before
-    public void before() {
-        connection = NosqlFactory.eINSTANCE.createNoSQLConnection();
-        localConnection = NosqlFactory.eINSTANCE.createNoSQLConnection();
-    }
+
 
     @Test
     public void testAuthorization() {
@@ -87,15 +83,11 @@ public class Neo4jConnectionUtilTest {
     }
 
     @Test
-    public void testLocalConnection() throws NoSQLServerException {
+    public void testLocalConnection() throws Exception {
         EMap<String, String> attributes = localConnection.getAttributes();
         attributes.put(INeo4jAttributes.REMOTE_SERVER, "false"); //$NON-NLS-1$
 
-        try {
-            attributes.put(INeo4jAttributes.DATABASE_PATH, tmpFolder.getCanonicalPath());
-        } catch (IOException e) {
-            e.printStackTrace();
-            }
+        attributes.put(INeo4jAttributes.DATABASE_PATH, tmpFolder.getCanonicalPath());
 
         attributes.put(INeo4jAttributes.DB_VERSION, INeo4jConstants.NEO4J_2_3_X);
 

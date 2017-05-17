@@ -32,6 +32,7 @@ import org.talend.repository.nosql.exceptions.NoSQLExtractSchemaException;
 import org.talend.repository.nosql.exceptions.NoSQLServerException;
 import org.talend.repository.nosql.factory.NoSQLClassLoaderFactory;
 import org.talend.repository.nosql.metadata.AbstractMetadataProvider;
+
 import orgomg.cwm.objectmodel.core.CoreFactory;
 import orgomg.cwm.objectmodel.core.TaggedValue;
 
@@ -71,8 +72,7 @@ public class Neo4jMetadataProvider extends AbstractMetadataProvider {
             if (db == null) {
                 return metadataColumns;
             }
-            Iterator<Map<String, Object>> resultIterator = Neo4jConnectionUtil.getResultIterator(connection, cypher,
-                    db);
+            Iterator<Map<String, Object>> resultIterator = Neo4jConnectionUtil.getResultIterator(connection, cypher, db);
             if (resultIterator == null) {
                 return metadataColumns;
             }
@@ -96,8 +96,7 @@ public class Neo4jMetadataProvider extends AbstractMetadataProvider {
             }
         } catch (Exception e) {
             throw new NoSQLExtractSchemaException(e);
-        }
-        finally {
+        } finally {
             if (db != null) {
                 Neo4jConnectionUtil.shutdownNeo4JDb(db);
             }
