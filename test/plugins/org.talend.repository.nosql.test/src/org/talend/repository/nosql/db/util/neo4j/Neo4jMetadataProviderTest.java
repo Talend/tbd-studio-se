@@ -54,7 +54,7 @@ public class Neo4jMetadataProviderTest {
         String cypher = "create (n:Test {first_name : 'Peppa', last_name : 'Pig'})\r\nreturn n;";
         IMetadataProvider metadataProvider = NoSQLRepositoryFactory.getInstance()
                 .getMetadataProvider(localConnection.getDbType());
-            metadataColumns = metadataProvider.extractColumns(localConnection, cypher);
+        metadataColumns = metadataProvider.extractColumns(localConnection, cypher);
 
         String lastName = metadataColumns.get(0).getName();
         assertEquals("last_name", lastName);

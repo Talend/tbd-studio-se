@@ -76,6 +76,7 @@ public class Neo4jConnectionUtilTest {
 
         attributes.put(INeo4jAttributes.DB_VERSION, INeo4jConstants.NEO4J_2_3_X);
         assertFalse(Neo4jConnectionUtil.isHasSetUsernameOption(connection));
+        assertTrue(Neo4jConnectionUtil.isNeedAuthorization(connection));
 
         attributes.put(INeo4jAttributes.REMOTE_SERVER, "false"); //$NON-NLS-1$
         assertFalse(Neo4jConnectionUtil.isHasSetUsernameOption(connection));
@@ -92,6 +93,8 @@ public class Neo4jConnectionUtilTest {
         attributes.put(INeo4jAttributes.DB_VERSION, INeo4jConstants.NEO4J_2_3_X);
 
         localConnection.setDbType("NEO4J");
+        // TUP-15696:"Check Service" for Neo4j does not work after first check.
+        // so check twice here
         assertTrue(Neo4jConnectionUtil.checkConnection(localConnection));
         assertTrue(Neo4jConnectionUtil.checkConnection(localConnection));
     }
