@@ -62,6 +62,8 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
 
     private LabelledText azureDeployBlobText;
 
+    private LabelledText whcJobResultFolderText;
+
     private boolean creation;
 
     public HDIInfoForm(Composite parent, ConnectionItem connectionItem, String[] existingNames, boolean creation) {
@@ -105,36 +107,38 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
             fillDefaults();
         }
 
-        String whcHostName = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_HOSTNAME));
+        String whcHostName = StringUtils
+                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_HOSTNAME));
         whcHostnameText.setText(whcHostName);
-        String whcPort = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_PORT));
+        String whcPort = StringUtils
+                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_PORT));
         whcPortText.setText(whcPort);
-        String whcUsername = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_USERNAME));
+        String whcUsername = StringUtils
+                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_USERNAME));
         whcUsernameText.setText(whcUsername);
-
-        String hdiUsername = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_HDI_USERNAME));
+        String whcJobResultFolder = StringUtils
+                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_JOB_RESULT_FOLDER));
+        whcJobResultFolderText.setText(whcJobResultFolder);
+        String hdiUsername = StringUtils
+                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_USERNAME));
         hdiUsernameText.setText(hdiUsername);
-        String hdiPassword = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_HDI_PASSWORD));
+        String hdiPassword = StringUtils
+                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_PASSWORD));
         hdiPasswordText.setText(hdiPassword);
-        String azureHostname = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_AZURE_HOSTNAME));
+        String azureHostname = StringUtils
+                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HOSTNAME));
         azureHostnameText.setText(azureHostname);
-        String azureContainer = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_AZURE_CONTAINER));
+        String azureContainer = StringUtils
+                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_CONTAINER));
         azureContainerText.setText(azureContainer);
-        String azureUsername = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_AZURE_USERNAME));
+        String azureUsername = StringUtils
+                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_USERNAME));
         azureUsernameText.setText(azureUsername);
-        String azurePassword = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_AZURE_PASSWORD));
+        String azurePassword = StringUtils
+                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_PASSWORD));
         azurePasswordText.setText(azurePassword);
-        String azureDeployBlob = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_AZURE_DEPLOY_BLOB));
+        String azureDeployBlob = StringUtils
+                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_DEPLOY_BLOB));
         azureDeployBlobText.setText(azureDeployBlob);
 
         updatePasswordFields();
@@ -147,6 +151,7 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
         whcHostnameText.setReadOnly(readOnly);
         whcPortText.setReadOnly(readOnly);
         whcUsernameText.setEnabled(!readOnly);
+        whcJobResultFolderText.setReadOnly(readOnly);
         hdiUsernameText.setReadOnly(readOnly);
         hdiPasswordText.setReadOnly(readOnly);
         azureHostnameText.setReadOnly(readOnly);
@@ -162,6 +167,7 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
         whcPortText.setEditable(isEditable);
         whcPortText.setEditable(isEditable);
         whcUsernameText.setEditable(isEditable);
+        whcJobResultFolderText.setEditable(isEditable);
         hdiUsernameText.setEditable(isEditable);
         hdiPasswordText.setEditable(isEditable);
         azureHostnameText.setEditable(isEditable);
@@ -185,6 +191,8 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
         whcHostnameText = new LabelledText(whcGroup, Messages.getString("HadoopClusterForm.text.webHCat.hostname"), 1); //$NON-NLS-1$
         whcPortText = new LabelledText(whcGroup, Messages.getString("HadoopClusterForm.text.webHCat.port"), 1); //$NON-NLS-1$
         whcUsernameText = new LabelledText(whcGroup, Messages.getString("HadoopClusterForm.text.webHCat.username"), 1); //$NON-NLS-1$
+        whcJobResultFolderText = new LabelledText(whcGroup, Messages.getString("HadoopClusterForm.text.webHCat.jobResultFolder"), //$NON-NLS-1$
+                1);
 
     }
 
@@ -232,6 +240,16 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
             @Override
             public void modifyText(final ModifyEvent e) {
                 getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_USERNAME, whcUsernameText.getText());
+                checkFieldsValue();
+            }
+        });
+
+        whcJobResultFolderText.addModifyListener(new ModifyListener() {
+
+            @Override
+            public void modifyText(final ModifyEvent e) {
+                getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_JOB_RESULT_FOLDER,
+                        whcJobResultFolderText.getText());
                 checkFieldsValue();
             }
         });
@@ -315,7 +333,10 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
             updateStatus(IStatus.ERROR, Messages.getString("HadoopClusterForm.check.webHCat.username")); //$NON-NLS-1$
             return false;
         }
-
+        if (!validText(whcJobResultFolderText.getText())) {
+            updateStatus(IStatus.ERROR, Messages.getString("HadoopClusterForm.check.webHCat.jobResultFolder")); //$NON-NLS-1$
+            return false;
+        }
         if (!validText(hdiUsernameText.getText())) {
             updateStatus(IStatus.ERROR, Messages.getString("HadoopClusterForm.check.hdi.username")); //$NON-NLS-1$
             return false;

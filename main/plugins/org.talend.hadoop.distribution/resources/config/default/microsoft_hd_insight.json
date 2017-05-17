@@ -5,6 +5,7 @@
     "HD_INSIGHT_USERNAME": "admin",
 	"HD_AZURE_HOSTNAME": "storage.blob.core.windows.net",
 	"HD_AZURE_CONTAINER": "clustername",
-	"HD_AZURE_USERNAME": "admin",
-	"HD_AZURE_DEPLOYBOLB": "D:\\blobdir"
+	"HD_AZURE_USERNAME": "storage",
+	"HD_AZURE_DEPLOYBOLB": "D:\\blobdir",
+	"HD_JOB_RESULT_FOLDER": "D:\\hdJobResult"
 }

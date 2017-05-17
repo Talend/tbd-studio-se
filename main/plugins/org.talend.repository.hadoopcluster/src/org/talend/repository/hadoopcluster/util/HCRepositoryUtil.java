@@ -871,6 +871,12 @@ public class HCRepositoryUtil {
             connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_AZURE_DEPLOY_BLOB, defaultAzureDeployBlob);
         }
 
+        String defaultJobResultFolder = hiveVersion.getDefaultConfig(distribution,
+                EHadoopProperties.HD_JOB_RESULT_FOLDER.getName());
+        if (defaultJobResultFolder != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_JOB_RESULT_FOLDER, defaultJobResultFolder);
+        }
+
     }
 
     public static String getRepositoryTypeOfHadoopSubItem(Item item) {
