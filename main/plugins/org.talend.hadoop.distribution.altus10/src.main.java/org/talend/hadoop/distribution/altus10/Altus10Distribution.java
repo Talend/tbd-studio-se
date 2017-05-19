@@ -13,6 +13,7 @@
 package org.talend.hadoop.distribution.altus10;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -20,22 +21,23 @@ import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
+import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
-import org.talend.hadoop.distribution.component.HDFSComponent;
-import org.talend.hadoop.distribution.component.HiveComponent;
-import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
-import org.talend.hadoop.distribution.component.MRComponent;
+import org.talend.hadoop.distribution.altus10.modulegroup.Altus10SparkBatchModuleGroup;
+import org.talend.hadoop.distribution.altus10.modulegroup.Altus10SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
 
-public class Altus10Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, SparkBatchComponent,
-        SparkStreamingComponent, HiveComponent, HiveOnSparkComponent, IClouderaDistribution {
+public class Altus10Distribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent,
+        IClouderaDistribution {
 
     public static final String VERSION = "ALTUS_1_0";
 
     public static final String VERSION_DISPLAY = "Cloudera Altus 1.0";
+
+    private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*"; //$NON-NLS-1$
 
     protected Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
 
@@ -65,9 +67,9 @@ public class Altus10Distribution extends AbstractDistribution implements HDFSCom
         Map<ComponentType, Set<DistributionModuleGroup>> result = new HashMap<>();
         // result.put(ComponentType.HDFS, Dataproc11HDFSModuleGroup.getModuleGroups());
         // result.put(ComponentType.HIVE, Dataproc11HiveModuleGroup.getModuleGroups());
-        // result.put(ComponentType.SPARKBATCH, Dataproc11SparkBatchModuleGroup.getModuleGroups());
+        result.put(ComponentType.SPARKBATCH, Altus10SparkBatchModuleGroup.getModuleGroups());
         // result.put(ComponentType.MAPREDUCE, Dataproc11MapReduceModuleGroup.getModuleGroups());
-        // result.put(ComponentType.SPARKSTREAMING, Dataproc11SparkStreamingModuleGroup.getModuleGroups());
+        result.put(ComponentType.SPARKSTREAMING, Altus10SparkStreamingModuleGroup.getModuleGroups());
         // result.put(ComponentType.HIVEONSPARK, Dataproc11HiveOnSparkModuleGroup.getModuleGroups());
         return result;
     }
@@ -120,9 +122,40 @@ public class Altus10Distribution extends AbstractDistribution implements HDFSCom
     }
 
     @Override
+    public String getDistribution() {
+        return DISTRIBUTION_NAME;
+    }
+
+    @Override
+    public String getVersion() {
+        return VERSION;
+    }
+
+    @Override
+    public EHadoopVersion getHadoopVersion() {
+        return EHadoopVersion.HADOOP_2;
+    }
+
+    @Override
+    public Set<ESparkVersion> getSparkVersions() {
+        Set<ESparkVersion> version = new HashSet<>();
+        version.add(ESparkVersion.SPARK_2_1);
+        return version;
+    }
+
+    @Override
+    public boolean doSupportKerberos() {
+        return true;
+    }
+
+    @Override
     public boolean doSupportUseDatanodeHostname() {
-        // TODO Auto-generated method stub
         return false;
+    }
+
+    @Override
+    public String getYarnApplicationClasspath() {
+        return YARN_APPLICATION_CLASSPATH;
     }
 
     @Override
@@ -131,129 +164,53 @@ public class Altus10Distribution extends AbstractDistribution implements HDFSCom
     }
 
     @Override
+    public boolean isCloudDistribution() {
+        return true;
+    }
+
+    @Override
+    public boolean useCloudLauncher() {
+        return true;
+    }
+
+    @Override
+    public boolean isAltusDistribution() {
+        return true;
+    }
+
+    @Override
     public boolean doSupportSparkStandaloneMode() {
-        // TODO Auto-generated method stub
         return false;
     }
 
     @Override
     public boolean doSupportSparkYarnClientMode() {
-        // TODO Auto-generated method stub
-        return false;
+        return true;
     }
 
     @Override
     public boolean doSupportDynamicMemoryAllocation() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHive1() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHive2() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean doSupportTezForHive() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHBaseForHive() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean doSupportSSL() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean doSupportORCFormat() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean doSupportAvroFormat() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean doSupportParquetFormat() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean doSupportStoreAsParquet() {
-        // TODO Auto-generated method stub
-        return false;
+        return true;
     }
 
     @Override
     public boolean doSupportCheckpointing() {
-        // TODO Auto-generated method stub
-        return false;
+        return true;
     }
 
     @Override
     public boolean doSupportBackpressure() {
-        // TODO Auto-generated method stub
-        return false;
+        return true;
     }
 
     @Override
     public boolean doSupportCrossPlatformSubmission() {
-        // TODO Auto-generated method stub
+        // TODO Auto-generated method stub ?
         return false;
     }
 
     @Override
     public boolean doSupportImpersonation() {
-        // TODO Auto-generated method stub
         return false;
     }
-
-    @Override
-    public boolean doSupportSequenceFileShortType() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public String getDistribution() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public String getVersion() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public EHadoopVersion getHadoopVersion() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public boolean doSupportKerberos() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
 }

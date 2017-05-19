@@ -266,10 +266,14 @@ public abstract class AbstractDistribution {
         return false;
     }
 
+    public boolean isAltusDistribution() {
+        return false;
+    }
+
     public boolean doSupportOozie() {
         return true;
     }
-    
+
     public boolean doSupportCreateServiceConnection() {
         return true;
     }
