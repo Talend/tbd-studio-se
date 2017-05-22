@@ -212,6 +212,19 @@
             <library id="xz-1.0.jar"/>
         	<library id="zkclient-0.7.jar"/>
         </libraryNeededGroup>
+        
+        <!-- Spark S3 group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark S3 libraries for CDH 5.10 that are MRREQUIRED"
+                id="SPARK-S3-LIB-MRREQUIRED-ALTUS10"
+                name="SPARK-S3-LIB-MRREQUIRED-ALTUS10">
+             <library id="hadoop-aws-2.6.0-cdh5.10"/>
+             <library id="aws-java-sdk-core-1.10.6.jar"/>
+             <library id="aws-java-sdk-kms-1.10.6.jar"/>
+             <library id="aws-java-sdk-s3-1.10.6.jar"/>
+             <library id="aws-java-sdk-sts-1.10.6.jar"/>
+             <library id="jets3t-0.9.0" />
+        </libraryNeededGroup>
 
         <!-- Map/Reduce group -->
         <libraryNeededGroup
