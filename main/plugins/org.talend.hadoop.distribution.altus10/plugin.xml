@@ -3,6 +3,14 @@
 <plugin>
    <extension
          point="org.talend.core.runtime.librariesNeeded">
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.altus10"
+            id="talend-bigdata-launcher-1.2.2-20170630"
+            name="talend-bigdata-launcher-1.2.2-20170630.jar"
+            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-1.2.2-20170630/6.0.0">
+        </libraryNeeded>
+
         <!-- HDFS common group -->
         <libraryNeededGroup
                 description="HDFS libraries for CDH 5.10"
@@ -32,6 +40,7 @@
                 description="HDFS libraries for CDH 5.10"
                 id="SPARK-LIB-ALTUS10"
                 name="SPARK-LIB-ALTUS10" >
+			<library id="talend-bigdata-launcher-1.2.2-20170630" />
         	<library id="httpclient-4.5.2.jar"/>
             <library id="httpcore-4.4.4.jar"/>
             <library id="guava-14.0.1.jar" />

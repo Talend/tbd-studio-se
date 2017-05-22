@@ -25,11 +25,9 @@ import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
 import org.talend.hadoop.distribution.altus10.modulegroup.Altus10SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.altus10.modulegroup.Altus10SparkStreamingModuleGroup;
-import org.talend.hadoop.distribution.altus10.modulegroup.node.sparkbatch.Altus10SparkBatchS3NodeModuleGroup;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
-import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
 
 public class Altus10Distribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent,
@@ -73,16 +71,11 @@ public class Altus10Distribution extends AbstractDistribution implements SparkBa
         // result.put(ComponentType.MAPREDUCE, Dataproc11MapReduceModuleGroup.getModuleGroups());
         result.put(ComponentType.SPARKSTREAMING, Altus10SparkStreamingModuleGroup.getModuleGroups());
         // result.put(ComponentType.HIVEONSPARK, Dataproc11HiveOnSparkModuleGroup.getModuleGroups());
-        
         return result;
     }
 
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(String distribution, String version) {
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
-        
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.S3_CONFIGURATION_COMPONENT),
-                Altus10SparkBatchS3NodeModuleGroup.getModuleGroups(distribution, version));
-        
         // // Mapreduce node
         //
         // // Spark Batch Parquet nodes
@@ -220,7 +213,7 @@ public class Altus10Distribution extends AbstractDistribution implements SparkBa
     public boolean doSupportImpersonation() {
         return false;
     }
-    
+
     @Override
     public boolean doSupportS3() {
         return true;
