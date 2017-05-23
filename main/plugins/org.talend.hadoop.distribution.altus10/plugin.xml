@@ -49,14 +49,19 @@
              <library id="jackson-core-asl-1.8.8.jar" />
         </libraryNeededGroup>
         
+        <libraryNeededGroup
+        	  description="Big Data launcher libraries for Altus 1.0"
+              id="BIGDATA-LAUNCHER-LIB-ALTUS10"
+              name="BIGDATA-LAUNCHER-LIB-ALTUS10">
+            <library id="talend-bigdata-launcher-1.2.2-20170630"/>
+        </libraryNeededGroup>
+        
         <!-- HDFS Spark 1.6 group -->
         <libraryNeededGroup
                 description="HDFS libraries for CDH 5.10"
                 id="SPARK-LIB-ALTUS10"
                 name="SPARK-LIB-ALTUS10" >
-            <library id="aws-java-sdk-s3-1.11.132"/>
-            <library id="aws-java-sdk-core-1.11.132" />
-			<library id="talend-bigdata-launcher-1.2.2-20170630" />
+            <group id="SPARK-S3-LIB-MRREQUIRED-ALTUS10"/>
         	<library id="httpclient-4.5.2.jar"/>
             <library id="httpcore-4.4.4.jar"/>
             <library id="guava-14.0.1.jar" />
@@ -243,6 +248,8 @@
                 description="Spark S3 libraries for CDH 5.10 that are MRREQUIRED"
                 id="SPARK-S3-LIB-MRREQUIRED-ALTUS10"
                 name="SPARK-S3-LIB-MRREQUIRED-ALTUS10">
+            <library id="aws-java-sdk-s3-1.11.132"/>
+            <library id="aws-java-sdk-core-1.11.132" />
         </libraryNeededGroup>
 
         <!-- Map/Reduce group -->
