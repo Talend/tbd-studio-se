@@ -41,9 +41,11 @@ import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.hdp.IHortonworksDistribution;
+import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260HBaseModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260HDFSModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260HiveModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260HiveOnSparkModuleGroup;
+import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260MapReduceModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.node.mr.HDP260MRS3NodeModuleGroup;
@@ -88,9 +90,9 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
         // components that have the distribution list.
         moduleGroups = new HashMap<>();
         moduleGroups.put(ComponentType.HDFS, HDP260HDFSModuleGroup.getModuleGroups());
-        // moduleGroups.put(ComponentType.HBASE, HDP260HBaseModuleGroup.getModuleGroups());
+        moduleGroups.put(ComponentType.HBASE, HDP260HBaseModuleGroup.getModuleGroups());
         // moduleGroups.put(ComponentType.HCATALOG, HDP260HCatalogModuleGroup.getModuleGroups());
-        // moduleGroups.put(ComponentType.MAPREDUCE, HDP260MapReduceModuleGroup.getModuleGroups());
+        moduleGroups.put(ComponentType.MAPREDUCE, HDP260MapReduceModuleGroup.getModuleGroups());
         // moduleGroups.put(ComponentType.PIG, HDP260PigModuleGroup.getModuleGroups());
         // moduleGroups.put(ComponentType.PIGOUTPUT, HDP260PigOutputModuleGroup.getModuleGroups());
         // moduleGroups.put(ComponentType.SQOOP, HDP260SqoopModuleGroup.getModuleGroups());
