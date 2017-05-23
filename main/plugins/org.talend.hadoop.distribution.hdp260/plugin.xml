@@ -464,9 +464,9 @@
 
 		<libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
-            id="parquet-hadoop-bundle-1.6.0"
-            name="parquet-hadoop-bundle-1.6.0.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-hadoop-bundle-1.6.0/6.3.0">
+            id="parquet-hadoop-bundle-1.8.1"
+            name="parquet-hadoop-bundle-1.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/parquet-hadoop-bundle-1.8.1/6.3.0">
         </libraryNeeded>
         
         <libraryNeeded
@@ -871,6 +871,7 @@
                 id="MAPREDUCE-PARQUET-LIB-MRREQUIRED-HDP_2_6"
                 name="MAPREDUCE-PARQUET-LIB-MRREQUIRED-HDP_2_6"  >
              <library id="jodd-core-3.5.2.jar" />
+             <!--library id="parquet-hadoop-bundle-1.8.1.jar" /--><!--HDP 2.6 hive provide this-->
              <library id="parquet-hadoop-bundle-1.6.0.jar" />
              <library id="snappy-java-1.0.4.1.jar" />
         </libraryNeededGroup>
@@ -1477,6 +1478,7 @@
                 description="Spark libraries for HDP 2.6 that are MRREQUIRED"
                 id="SPARK-PARQUET-LIB-MRREQUIRED-HDP_2_6"
                 name="SPARK-PARQUET-LIB-MRREQUIRED-HDP_2_6">
+             <!--library id="parquet-hadoop-bundle-1.8.1.jar" /--><!--hdp 2.6 hive provide this-->
              <library id="parquet-hadoop-bundle-1.6.0.jar" />
              <library id="jodd-core-3.5.2.jar" />    
              <library id="snappy-java-1.0.4.1.jar" />         
@@ -1642,7 +1644,7 @@
             <library id="kite-hadoop-compatibility-1.0.0-HDP-25"/>
             <library id="jackson-databind-2.3.1.jar"/>
             <library id="jackson-core-2.3.1.jar"/>
-            <library id="parquet-hadoop-bundle-1.6.0.jar"/>
+            <library id="parquet-hadoop-bundle-1.8.1.jar"/>
             <library id="parquet-avro-1.4.1.jar"/>
             <library id="parquet-hadoop-1.4.1.jar"/>
             <library id="parquet-format-2.0.0.jar"/>
