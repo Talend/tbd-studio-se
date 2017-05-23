@@ -94,7 +94,7 @@ public class EMRApache103Distribution extends AbstractDistribution implements HD
 
     @Override
     public boolean doSupportKerberos() {
-        return true;
+        return false;
     }
 
     @Override
