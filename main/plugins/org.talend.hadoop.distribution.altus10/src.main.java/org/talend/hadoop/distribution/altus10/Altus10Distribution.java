@@ -28,14 +28,14 @@ import org.talend.hadoop.distribution.altus10.modulegroup.Altus10SparkStreamingM
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
-import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
+import org.talend.hadoop.distribution.constants.cdh.altus.IClouderaAltusDistribution;
 
 public class Altus10Distribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent,
-        IClouderaDistribution {
+        IClouderaAltusDistribution {
 
-    public static final String VERSION = "ALTUS_1_0";
+    public final static String VERSION = "Cloudera_Altus_CDH5_11";
 
-    public static final String VERSION_DISPLAY = "Cloudera Altus 1.0";
+    public static final String VERSION_DISPLAY = "Cloudera CDH5.11(YARN mode)";
 
     private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*"; //$NON-NLS-1$
 
