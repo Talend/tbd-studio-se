@@ -65,48 +65,16 @@ public class Altus10Distribution extends AbstractDistribution implements SparkBa
 
     protected Map<ComponentType, Set<DistributionModuleGroup>> buildModuleGroups() {
         Map<ComponentType, Set<DistributionModuleGroup>> result = new HashMap<>();
-        // result.put(ComponentType.HDFS, Dataproc11HDFSModuleGroup.getModuleGroups());
-        // result.put(ComponentType.HIVE, Dataproc11HiveModuleGroup.getModuleGroups());
         result.put(ComponentType.SPARKBATCH, Altus10SparkBatchModuleGroup.getModuleGroups());
-        // result.put(ComponentType.MAPREDUCE, Dataproc11MapReduceModuleGroup.getModuleGroups());
         result.put(ComponentType.SPARKSTREAMING, Altus10SparkStreamingModuleGroup.getModuleGroups());
-        // result.put(ComponentType.HIVEONSPARK, Dataproc11HiveOnSparkModuleGroup.getModuleGroups());
         return result;
     }
 
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(String distribution, String version) {
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
-        // // Mapreduce node
-        //
-        // // Spark Batch Parquet nodes
-        // result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
-        // Dataproc11SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
-        // result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
-        // Dataproc11SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
-        //
-        // // Spark Streaming Parquet nodes
-        // result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-        // SparkStreamingConstant.PARQUET_INPUT_COMPONENT),
-        // Dataproc11SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
-        // result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-        // SparkStreamingConstant.PARQUET_OUTPUT_COMPONENT),
-        // Dataproc11SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
-        // result.put(
-        // new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-        // SparkStreamingConstant.PARQUET_STREAM_INPUT_COMPONENT),
-        // Dataproc11SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
-        //
-        // // Spark Streaming Kafka nodes
-        // result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-        // SparkStreamingConstant.KAFKA_INPUT_COMPONENT),
-        // Dataproc11SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(distribution, version));
-        // result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-        // SparkStreamingConstant.KAFKA_AVRO_INPUT_COMPONENT),
-        // Dataproc11SparkStreamingKafkaAvroModuleGroup.getModuleGroups(distribution, version));
-        // result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-        // SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT),
-        // Dataproc11SparkStreamingKafkaClientModuleGroup.getModuleGroups(distribution, version));
-
+        // result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
+        // SparkBatchConstant.S3_CONFIGURATION_COMPONENT),
+        // Altus10SparkBatchS3NodeModuleGroup.getModuleGroups(distribution, version));
         return result;
     }
 
@@ -161,6 +129,11 @@ public class Altus10Distribution extends AbstractDistribution implements SparkBa
     @Override
     public Set<DistributionModuleGroup> getModuleGroups(ComponentType componentType) {
         return moduleGroups.get(componentType);
+    }
+
+    @Override
+    public Set<DistributionModuleGroup> getModuleGroups(ComponentType componentType, String componentName) {
+        return nodeModuleGroups.get(new NodeComponentTypeBean(componentType, componentName));
     }
 
     @Override

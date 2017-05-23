@@ -10,6 +10,20 @@
             name="talend-bigdata-launcher-1.2.2-20170630.jar"
             mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-1.2.2-20170630/6.0.0">
         </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.altus10"
+            id="aws-java-sdk-core-1.11.132"
+            name="aws-java-sdk-core-1.11.132.jar"
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-core-1.11.132/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.altus10"
+            id="aws-java-sdk-s3-1.11.132"
+            name="aws-java-sdk-s3-1.11.132.jar"
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-s3-1.11.132/6.0.0">
+        </libraryNeeded>
 
         <!-- HDFS common group -->
         <libraryNeededGroup
@@ -40,6 +54,8 @@
                 description="HDFS libraries for CDH 5.10"
                 id="SPARK-LIB-ALTUS10"
                 name="SPARK-LIB-ALTUS10" >
+            <library id="aws-java-sdk-s3-1.11.132"/>
+            <library id="aws-java-sdk-core-1.11.132" />
 			<library id="talend-bigdata-launcher-1.2.2-20170630" />
         	<library id="httpclient-4.5.2.jar"/>
             <library id="httpcore-4.4.4.jar"/>
@@ -227,12 +243,6 @@
                 description="Spark S3 libraries for CDH 5.10 that are MRREQUIRED"
                 id="SPARK-S3-LIB-MRREQUIRED-ALTUS10"
                 name="SPARK-S3-LIB-MRREQUIRED-ALTUS10">
-             <library id="hadoop-aws-2.6.0-cdh5.10"/>
-             <library id="aws-java-sdk-core-1.10.6.jar"/>
-             <library id="aws-java-sdk-kms-1.10.6.jar"/>
-             <library id="aws-java-sdk-s3-1.10.6.jar"/>
-             <library id="aws-java-sdk-sts-1.10.6.jar"/>
-             <library id="jets3t-0.9.0" />
         </libraryNeededGroup>
 
         <!-- Map/Reduce group -->
