@@ -12,6 +12,9 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.ui;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.swt.SWT;
@@ -24,8 +27,10 @@ import org.eclipse.swt.widgets.Group;
 import org.talend.commons.ui.swt.formtools.Form;
 import org.talend.commons.ui.swt.formtools.LabelledText;
 import org.talend.core.database.conn.ConnParameterKeys;
+import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.model.properties.ConnectionItem;
 import org.talend.core.model.utils.ContextParameterUtils;
+import org.talend.metadata.managment.ui.dialog.HadoopPropertiesDialog;
 import org.talend.metadata.managment.ui.utils.ExtendedNodeConnectionContextUtils.EHadoopParamName;
 import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopForm;
@@ -63,6 +68,12 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
     private LabelledText azureDeployBlobText;
 
     private LabelledText whcJobResultFolderText;
+
+    protected Composite propertiesComposite;
+
+    private Composite hadoopPropertiesComposite;
+
+    private HadoopPropertiesDialog propertiesDialog;
 
     private boolean creation;
 
@@ -107,38 +118,38 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
             fillDefaults();
         }
 
-        String whcHostName = StringUtils
-                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_HOSTNAME));
+        String whcHostName = StringUtils.trimToEmpty(getConnection().getParameters().get(
+                ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_HOSTNAME));
         whcHostnameText.setText(whcHostName);
-        String whcPort = StringUtils
-                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_PORT));
+        String whcPort = StringUtils.trimToEmpty(getConnection().getParameters().get(
+                ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_PORT));
         whcPortText.setText(whcPort);
-        String whcUsername = StringUtils
-                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_USERNAME));
+        String whcUsername = StringUtils.trimToEmpty(getConnection().getParameters().get(
+                ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_USERNAME));
         whcUsernameText.setText(whcUsername);
-        String whcJobResultFolder = StringUtils
-                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_JOB_RESULT_FOLDER));
+        String whcJobResultFolder = StringUtils.trimToEmpty(getConnection().getParameters().get(
+                ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_JOB_RESULT_FOLDER));
         whcJobResultFolderText.setText(whcJobResultFolder);
-        String hdiUsername = StringUtils
-                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_USERNAME));
+        String hdiUsername = StringUtils.trimToEmpty(getConnection().getParameters().get(
+                ConnParameterKeys.CONN_PARA_KEY_HDI_USERNAME));
         hdiUsernameText.setText(hdiUsername);
-        String hdiPassword = StringUtils
-                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_PASSWORD));
+        String hdiPassword = StringUtils.trimToEmpty(getConnection().getParameters().get(
+                ConnParameterKeys.CONN_PARA_KEY_HDI_PASSWORD));
         hdiPasswordText.setText(hdiPassword);
-        String azureHostname = StringUtils
-                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HOSTNAME));
+        String azureHostname = StringUtils.trimToEmpty(getConnection().getParameters().get(
+                ConnParameterKeys.CONN_PARA_KEY_AZURE_HOSTNAME));
         azureHostnameText.setText(azureHostname);
-        String azureContainer = StringUtils
-                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_CONTAINER));
+        String azureContainer = StringUtils.trimToEmpty(getConnection().getParameters().get(
+                ConnParameterKeys.CONN_PARA_KEY_AZURE_CONTAINER));
         azureContainerText.setText(azureContainer);
-        String azureUsername = StringUtils
-                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_USERNAME));
+        String azureUsername = StringUtils.trimToEmpty(getConnection().getParameters().get(
+                ConnParameterKeys.CONN_PARA_KEY_AZURE_USERNAME));
         azureUsernameText.setText(azureUsername);
-        String azurePassword = StringUtils
-                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_PASSWORD));
+        String azurePassword = StringUtils.trimToEmpty(getConnection().getParameters().get(
+                ConnParameterKeys.CONN_PARA_KEY_AZURE_PASSWORD));
         azurePasswordText.setText(azurePassword);
-        String azureDeployBlob = StringUtils
-                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_DEPLOY_BLOB));
+        String azureDeployBlob = StringUtils.trimToEmpty(getConnection().getParameters().get(
+                ConnParameterKeys.CONN_PARA_KEY_AZURE_DEPLOY_BLOB));
         azureDeployBlobText.setText(azureDeployBlob);
 
         updatePasswordFields();
@@ -175,6 +186,7 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
         azureUsernameText.setEditable(isEditable);
         azurePasswordText.setEditable(isEditable);
         azureDeployBlobText.setEditable(isEditable);
+        propertiesDialog.updateStatusLabel(getHadoopProperties());
         ((HadoopClusterForm) this.getParent()).updateEditableStatus(isEditable);
     }
 
@@ -183,6 +195,13 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
         addWebHCatFields();
         addInsightFields();
         addAzureFields();
+        propertiesComposite = new Composite(this, SWT.NONE);
+        GridLayout propertiesLayout = new GridLayout(2, false);
+        propertiesLayout.marginWidth = 0;
+        propertiesLayout.marginHeight = 0;
+        propertiesComposite.setLayout(propertiesLayout);
+        propertiesComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        addHadoopPropertiesFields();
     }
 
     private void addWebHCatFields() {
@@ -215,6 +234,41 @@ public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> imp
                 Messages.getString("HadoopClusterForm.text.azure.password"), 1, SWT.PASSWORD | SWT.BORDER | SWT.SINGLE); //$NON-NLS-1$
         azurePasswordText.getTextControl().setEchoChar('*');
         azureDeployBlobText = new LabelledText(azureGroup, Messages.getString("HadoopClusterForm.text.azure.deployBlob"), 1); //$NON-NLS-1$
+    }
+
+    private void addHadoopPropertiesFields() {
+        hadoopPropertiesComposite = new Composite(propertiesComposite, SWT.NONE);
+        GridLayout hadoopPropertiesLayout = new GridLayout(1, false);
+        hadoopPropertiesLayout.marginWidth = 0;
+        hadoopPropertiesLayout.marginHeight = 0;
+        hadoopPropertiesComposite.setLayout(hadoopPropertiesLayout);
+        hadoopPropertiesComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+
+        propertiesDialog = new HadoopPropertiesDialog(getShell(), getHadoopProperties()) {
+
+            @Override
+            protected boolean isReadOnly() {
+                return !isEditable();
+            }
+
+            @Override
+            protected List<Map<String, Object>> getLatestInitProperties() {
+                return getHadoopProperties();
+            }
+
+            @Override
+            public void applyProperties(List<Map<String, Object>> properties) {
+                getConnection().setHadoopProperties(HadoopRepositoryUtil.getHadoopPropertiesJsonStr(properties));
+            }
+
+        };
+        propertiesDialog.createPropertiesFields(hadoopPropertiesComposite);
+    }
+
+    private List<Map<String, Object>> getHadoopProperties() {
+        String hadoopProperties = getConnection().getHadoopProperties();
+        List<Map<String, Object>> hadoopPropertiesList = HadoopRepositoryUtil.getHadoopPropertiesList(hadoopProperties);
+        return hadoopPropertiesList;
     }
 
     @Override
