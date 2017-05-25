@@ -187,8 +187,8 @@
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="pig-HDP_2_6"
-            name="pig-0.16.0.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/pig-0.16.0.2.6.0.3-8/6.3.0">
+            name="pig-0.16.0.2.6.0.3-8-core-h2.jar" 
+            mvn_uri="mvn:org.talend.libraries/pig-0.16.0.2.6.0.3-8-core-h2/6.3.0">
         </libraryNeeded>
         
         <!-- Sqoop libraries -->        
