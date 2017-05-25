@@ -39,6 +39,8 @@ import org.talend.core.repository.model.connection.ConnectionStatus;
 import org.talend.core.utils.ReflectionUtils;
 import org.talend.core.utils.TalendQuoteUtils;
 import org.talend.designer.hdfsbrowse.exceptions.HadoopServerException;
+import org.talend.designer.hdfsbrowse.model.EHadoopAdditionalJars;
+import org.talend.designer.hdfsbrowse.model.EHadoopAdditionalJarsMapping;
 import org.talend.designer.hdfsbrowse.model.ELinuxAuthority;
 import org.talend.designer.hdfsbrowse.model.HDFSConnectionBean;
 import org.talend.librariesmanager.model.ModulesNeededProvider;
@@ -87,11 +89,23 @@ public class HadoopServerUtil {
             }
             Thread.currentThread().setContextClassLoader(classLoader);
             Object conf = getConfiguration(connection, classLoader);
+            // add the needed jars automatically
+            List<String> classIds = EHadoopAdditionalJars.getBaseLoaderClassIds();
+            for (String classId : classIds) {
+                Object obj = ReflectionUtils.invokeMethod(conf, "get", new Object[] { classId }, String.class, String.class);//$NON-NLS-1$ 
+                if (obj != null && obj instanceof String) {
+                    String[] addedJars = EHadoopAdditionalJarsMapping.getAddedJarsByClassName(obj.toString());
+                    if (classLoader instanceof DynamicClassLoader) {
+                        classLoader = DynamicClassLoader.updateBaseLoader((DynamicClassLoader) classLoader, addedJars);
+                        Thread.currentThread().setContextClassLoader(classLoader);
+                    }
+                }
+            }
             ReflectionUtils.invokeStaticMethod("org.apache.hadoop.security.UserGroupInformation", classLoader, //$NON-NLS-1$
                     "setConfiguration", new Object[] { conf }); //$NON-NLS-1$
             boolean enableKerberos = connection.isEnableKerberos();
             String userName = StringUtils.trimToNull(connection.getUserName());
-            if(userName != null) {
+            if (userName != null) {
                 userName = TalendQuoteUtils.removeQuotesIfExist(userName);
             }
             if (enableKerberos) {

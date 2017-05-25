@@ -41,6 +41,7 @@ import org.talend.designer.hdfsbrowse.hadoop.service.HadoopServiceProperties;
 import org.talend.designer.hdfsbrowse.hadoop.service.check.CheckHadoopServicesDialog;
 import org.talend.hadoop.distribution.model.DistributionBean;
 import org.talend.hadoop.distribution.model.DistributionVersion;
+import org.talend.metadata.managment.ui.dialog.HadoopPropertiesDialog;
 import org.talend.metadata.managment.ui.dialog.SparkPropertiesDialog;
 import org.talend.metadata.managment.ui.utils.ConnectionContextHelper;
 import org.talend.metadata.managment.ui.utils.ExtendedNodeConnectionContextUtils.EHadoopParamName;
@@ -49,7 +50,6 @@ import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopForm;
 import org.talend.repository.hadoopcluster.ui.common.IHadoopClusterInfoForm;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
-
 
 /**
  * created by hcyi on Mar 24, 2017 Detailled comment
@@ -74,6 +74,10 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
     private LabelledFileField pathToCredentialsNameText;
 
     protected Composite propertiesComposite;
+
+    private Composite hadoopPropertiesComposite;
+
+    private HadoopPropertiesDialog propertiesDialog;
 
     private Composite sparkPropertiesComposite;
 
@@ -115,6 +119,7 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
         propertiesLayout.marginHeight = 0;
         propertiesComposite.setLayout(propertiesLayout);
         propertiesComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        addHadoopPropertiesFields();
         addSparkPropertiesFields();
 
         addCheckFields();
@@ -155,6 +160,41 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
         String[] extensions = { "*.*" }; //$NON-NLS-1$
         pathToCredentialsNameText = new LabelledFileField(credentialsComposite,
                 Messages.getString("GoogleDataprocInfoForm.text.authentication.credentials"), extensions); //$NON-NLS-1$
+    }
+
+    private void addHadoopPropertiesFields() {
+        hadoopPropertiesComposite = new Composite(propertiesComposite, SWT.NONE);
+        GridLayout hadoopPropertiesLayout = new GridLayout(1, false);
+        hadoopPropertiesLayout.marginWidth = 0;
+        hadoopPropertiesLayout.marginHeight = 0;
+        hadoopPropertiesComposite.setLayout(hadoopPropertiesLayout);
+        hadoopPropertiesComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+
+        propertiesDialog = new HadoopPropertiesDialog(getShell(), getHadoopProperties()) {
+
+            @Override
+            protected boolean isReadOnly() {
+                return !isEditable();
+            }
+
+            @Override
+            protected List<Map<String, Object>> getLatestInitProperties() {
+                return getHadoopProperties();
+            }
+
+            @Override
+            public void applyProperties(List<Map<String, Object>> properties) {
+                getConnection().setHadoopProperties(HadoopRepositoryUtil.getHadoopPropertiesJsonStr(properties));
+            }
+
+        };
+        propertiesDialog.createPropertiesFields(hadoopPropertiesComposite);
+    }
+
+    private List<Map<String, Object>> getHadoopProperties() {
+        String hadoopProperties = getConnection().getHadoopProperties();
+        List<Map<String, Object>> hadoopPropertiesList = HadoopRepositoryUtil.getHadoopPropertiesList(hadoopProperties);
+        return hadoopPropertiesList;
     }
 
     protected void addSparkPropertiesFields() {
@@ -349,7 +389,6 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
         return true;
     }
 
-
     @Override
     public void updateForm() {
         adaptFormToEditable();
@@ -411,6 +450,7 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
         jarsBucketNameText.setEditable(isEditable);
         credentialsBtn.setEnabled(isEditable);
         pathToCredentialsNameText.setEditable(isEditable);
+        propertiesDialog.updateStatusLabel(getHadoopProperties());
         useSparkPropertiesBtn.setEnabled(isEditable);
         sparkPropertiesDialog.updateStatusLabel(getSparkProperties());
         ((HadoopClusterForm) this.getParent()).updateEditableStatus(isEditable);

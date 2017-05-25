@@ -383,8 +383,10 @@ public class Neo4jConnForm extends AbstractNoSQLConnForm {
         collectValidateEntry(new SpecialValueValidator(dbVersionCombo.getSelectionIndex(), -1), true,
                 Messages.getString("AbstractNoSQLConnForm.InvalidDBVersion")); //$NON-NLS-1$
         if (localDbBtn.getSelection()) {
-            collectValidateEntry(new NonemptyValidator(dbPathTxt.getText()),
+            NonemptyValidator validator = new NonemptyValidator(dbPathTxt.getText());
+            collectValidateEntry(validator,
                     Messages.getString("Neo4jConnForm.validate.invalidDbPath")); //$NON-NLS-1$
+            checkBtn.setEnabled(validator.validate());
         }
         if (remoteDbBtn.getSelection()) {
             collectValidateEntry(new NonemptyValidator(serverURLTxt.getText()),

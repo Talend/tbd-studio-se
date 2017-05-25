@@ -24,6 +24,7 @@ Bundle-ActivationPolicy: lazy
 Bundle-Vendor: .Talend SA.
 Bundle-Localization: plugin
 Export-Package: org.talend.designer.hdfsbrowse,
+ org.talend.designer.hdfsbrowse.constants,
  org.talend.designer.hdfsbrowse.controllers,
  org.talend.designer.hdfsbrowse.exceptions,
  org.talend.designer.hdfsbrowse.generators,

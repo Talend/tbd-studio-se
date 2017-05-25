@@ -120,4 +120,9 @@ public class EMR460Distribution extends EMR450Distribution implements HBaseCompo
     public boolean doSupportHBaseForHive() {
         return false;
     }
+
+    @Override
+    public boolean doSupportKerberos() {
+        return false;
+    }
 }

@@ -27,6 +27,7 @@ import org.talend.designer.hdfsbrowse.manager.HadoopParameterValidator;
 import org.talend.metadata.managment.ui.i18n.Messages;
 import org.talend.metadata.managment.ui.wizard.PropertiesWizardPage;
 import org.talend.repository.ProjectManager;
+import org.talend.repository.model.RepositoryConstants;
 
 /**
  *
@@ -118,6 +119,18 @@ public class HadoopPropertiesWizardPage extends PropertiesWizardPage {
             getProperty().setModificationDate(new Date());
         }
         updatePageStatus();
+    }
+
+    @Override
+    protected String getPropertyLabel(String name) {
+        String label = name;
+        if (label != null) {
+            for (String toReplace : RepositoryConstants.ITEM_FORBIDDEN_IN_LABEL) {
+                label = label.replace(toReplace, "_"); //$NON-NLS-1$
+            }
+            return label;
+        }
+        return null;
     }
 
     @Override
