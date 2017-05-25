@@ -18,7 +18,7 @@ package org.talend.hadoop.distribution.constants.cdh.altus;
 @SuppressWarnings("nls")
 public interface IClouderaAltusDistribution {
 
-    static final String DISTRIBUTION_NAME = "ALTUS";
+    static final String DISTRIBUTION_NAME = "CLOUDERA_ALTUS";
 
     static final String DISTRIBUTION_DISPLAY_NAME = "Cloudera altus";
 }
