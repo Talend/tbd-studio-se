@@ -24,6 +24,13 @@
             name="aws-java-sdk-s3-1.11.132.jar"
             mvn_uri="mvn:org.talend.libraries/aws-java-sdk-s3-1.11.132/6.0.0">
         </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5100"
+            id="aws-java-sdk-kinesis-1.10.6"
+            name="aws-java-sdk-kinesis-1.10.6.jar"
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-kinesis-1.10.6/6.0.0">
+        </libraryNeeded>
 
         <!-- HDFS common group -->
         <libraryNeededGroup
@@ -274,6 +281,21 @@
              <library id="jackson-xc-1.8.8.jar"/>
              <library id="jersey-client-1.9.jar"/>
         </libraryNeededGroup>
+        
+        <!-- Spark Kinesis group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Kinesis libraries for CDH 5.10 that are MRREQUIRED"
+                id="SPARK-KINESIS-LIB-MRREQUIRED-ALTUS10"
+                name="SPARK-KINESIS-LIB-MRREQUIRED-ALTUS10">
+            <!--this is for tKinesisInput, but where to find this jar, and it's not assembly-->
+            <!--library id="spark-streaming-kinesis-asl_2.11-2.1.0.cloudera1"/-->
+            <!--this is for tKinesisInput, because aws-java-sdk version is 1.10.6, use this version may better-->
+            <!--library id="amazon-kinesis-client-1.6.0.jar"/-->
+            
+            <!--to make tKinesisOutput working, need this, in CDH cluster aws-java-sdk-core version is 1.10.6-->
+            <library id="aws-java-sdk-kinesis-1.10.6.jar"/>
+        </libraryNeededGroup>
+        
         
    </extension>
    <extension

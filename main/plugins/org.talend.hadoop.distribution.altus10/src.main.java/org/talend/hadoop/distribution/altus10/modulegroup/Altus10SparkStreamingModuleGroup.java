@@ -35,10 +35,7 @@ public class Altus10SparkStreamingModuleGroup {
         hs.add(new DistributionModuleGroup(Altus10Constant.MAPREDUCE_MODULE_GROUP.getModuleName(), false, condition));
         hs.add(new DistributionModuleGroup(Altus10Constant.SPARK_MODULE_GROUP.getModuleName(), false, condition));
         hs.add(new DistributionModuleGroup(Altus10Constant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), true, condition));
-        hs.add(new DistributionModuleGroup(Altus10Constant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), false, condition));
-        hs.add(new DistributionModuleGroup(Altus10Constant.SPARK_KAFKA_CLIENT_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
-        hs.add(new DistributionModuleGroup(Altus10Constant.SPARK_KAFKA_AVRO_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
-        hs.add(new DistributionModuleGroup(Altus10Constant.SPARK_KAFKA_ASSEMBLY_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
+        hs.add(new DistributionModuleGroup(Altus10Constant.SPARK_KINESIS_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
         return hs;
     }
 }
