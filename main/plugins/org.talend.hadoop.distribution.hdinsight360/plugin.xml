@@ -85,6 +85,11 @@
         	name="guava-14.0.1.jar" 
         	mvn_uri="mvn:org.talend.libraries/guava-14.0.1/6.0.0">
         </libraryNeeded>
+        <libraryNeeded 
+        	context="plugin:org.talend.hadoop.distribution.hdinsight360" 
+        	id="jackson-core-asl-1.9.13" 
+        	name="jackson-core-asl-1.9.13.jar" 
+        	mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.13/6.0.0"/>
         
         <!-- Hive libraries -->  
         <libraryNeeded
@@ -184,7 +189,7 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-network-common_2.11-2.1.0.2.6.0.2-76" name="spark-network-common_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-network-common_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-sql_2.11-2.1.0.2.6.0.2-76" name="spark-sql_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-sql_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="spark-streaming_2.11-2.1.0.2.6.0.2-76" name="spark-streaming_2.11-2.1.0.2.6.0.2-76.jar" mvn_uri="mvn:org.talend.libraries/spark-streaming_2.11-2.1.0.2.6.0.2-76/6.0.0"/>
-
+        
         <!-- Big Data launcher libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdinsight360"
@@ -370,6 +375,7 @@
             <library id="wsdl4j-1.6.3.jar" />
             <library id="azure-storage-5.0.0.jar" />
             <library id="jackson-core-2.8.4.jar" />
+        	<library id="jackson-core-asl-1.9.13" />
         </libraryNeededGroup>
         
     </extension>
