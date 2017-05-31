@@ -20,6 +20,7 @@ import org.talend.core.model.metadata.builder.connection.Connection;
 import org.talend.core.model.properties.ConnectionItem;
 import org.talend.core.model.properties.PropertiesFactory;
 import org.talend.core.model.properties.Property;
+import org.talend.metadata.managment.ui.utils.ConnectionContextHelper;
 import org.talend.repository.hadoopcluster.creator.AbstractHadoopSubConnectionCreator;
 import org.talend.repository.hadoopcluster.service.IExtractSchemaService;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
@@ -64,7 +65,7 @@ public class HDFSConnectionCreator extends AbstractHadoopSubConnectionCreator {
         if (relativeHadoopClusterItem instanceof HadoopClusterConnectionItem) {
             HadoopClusterConnection hcConnection = (HadoopClusterConnection) ((HadoopClusterConnectionItem) relativeHadoopClusterItem)
                     .getConnection();
-            String userName = hcConnection.getUserName();
+            String userName = ConnectionContextHelper.getParamValueOffContext(hcConnection, hcConnection.getUserName());
             if (userName != null) {
                 connection.setUserName(userName);
             }
