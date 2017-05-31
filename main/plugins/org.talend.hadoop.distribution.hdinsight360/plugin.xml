@@ -376,6 +376,7 @@
             <library id="azure-storage-5.0.0.jar" />
             <library id="jackson-core-2.8.4.jar" />
         	<library id="jackson-core-asl-1.9.13" />
+        	<library id="commons-logging-1.1.3" />
         </libraryNeededGroup>
         
     </extension>
