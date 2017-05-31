@@ -1,0 +1,52 @@
+<%@ jet 
+	imports="
+		org.talend.core.model.process.INode 
+		org.talend.designer.codegen.config.CodeGeneratorArgument
+		org.talend.core.model.process.ElementParameterParser
+		java.util.List
+		org.talend.core.model.metadata.IMetadataTable
+		org.talend.core.model.process.IConnection    
+		org.talend.core.model.process.IConnectionCategory
+		org.talend.core.model.utils.NodeUtil
+		org.talend.core.model.process.EConnectionType
+	"
+%>
+<%
+    CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+    INode node = (INode)codeGenArgument.getArgument();
+    String cid = node.getUniqueName();
+	String useExistingConn = ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__");
+	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+	String strJobCid=cid.replace("_Out","");
+	
+	List<IMetadataTable> metadatas = node.getMetadataList();
+	if ((metadatas!=null)&&(metadatas.size()>0)) {
+    	IMetadataTable metadata = metadatas.get(0);
+		if (metadata!=null) {
+			if(!"true".equals(useExistingConn)){
+			%>
+				if(resourceMap.get("finish_<%=cid%>") == null){
+					if(resourceMap.get("mongo_<%=cid%>") != null){
+						<%
+						if(isLog4jEnabled){
+						%>
+							log.info("<%=cid%> - Closing the connection " + ((com.mongodb.Mongo)resourceMap.get("mongo_<%=cid%>")).getServerAddressList() + ".");
+						<%
+						}
+						%>
+							((com.mongodb.Mongo)resourceMap.get("mongo_<%=cid%>")).close();
+						<%
+						if(isLog4jEnabled){
+						%>
+							log.info("<%=cid%> - The connection was closed successfully.");
+						<%
+						}
+						%>
+					}
+				}
+			<%
+			}
+		}
+	}
+
+%>

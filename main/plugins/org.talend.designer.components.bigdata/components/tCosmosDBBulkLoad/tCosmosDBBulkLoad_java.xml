@@ -1,0 +1,305 @@
+<COMPONENT>
+  	<HEADER
+	    PLATEFORM="ALL"
+	    SERIAL=""
+	    VERSION="0.102"
+	    STATUS="ALPHA"
+
+	    COMPATIBILITY="ALL"
+	    AUTHOR="Talend"
+	    RELEASE_DATE="201300828A"
+	    STARTABLE="true"
+		PARTITIONING="NONE"
+		LOG4J_ENABLED="true"
+  	>
+    	<SIGNATURE/>
+  	</HEADER>
+	<FAMILIES>
+		<FAMILY>Databases/Azure Cosmos DB</FAMILY>
+		<FAMILY>Cloud/Azure Cosmos DB</FAMILY>
+	</FAMILIES>
+	<DOCUMENTATION>
+		<URL />
+	</DOCUMENTATION>
+	<CONNECTORS>
+	    <CONNECTOR CTYPE="FLOW" MAX_INPUT="0" MAX_OUTPUT="0"/>
+	    <CONNECTOR CTYPE="SUBJOB_OK" MAX_INPUT="1" />
+	    <CONNECTOR CTYPE="SUBJOB_ERROR" MAX_INPUT="1" />
+	    <CONNECTOR CTYPE="COMPONENT_OK"/>
+	    <CONNECTOR CTYPE="COMPONENT_ERROR"/>
+	    <CONNECTOR CTYPE="RUN_IF"/>
+	</CONNECTORS>
+
+	<PARAMETERS>
+		<PARAMETER
+			NAME="SCHEMA_FLOW"
+			FIELD="SCHEMA_TYPE"
+			NUM_ROW="2"
+		>
+			<DEFAULT>""</DEFAULT>
+		</PARAMETER>
+
+		<PARAMETER
+      		NAME="MONGODB_DIR"
+	      	FIELD="DIRECTORY"
+	      	NUM_ROW="5"
+	      	REQUIRED="true"
+	      	GROUP="CONNECTION"
+    	>
+      		<DEFAULT>""</DEFAULT>
+   		</PARAMETER>
+
+   		<PARAMETER
+            FIELD="CHECK"
+            NAME="USE_REPLICA_SET"
+            NUM_ROW="15"
+            GROUP="CONNECTION"
+      	>
+            <DEFAULT>"false"</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER
+            FIELD="CHECK"
+            NAME="SPECIFY_REPLICA_SET"
+            NUM_ROW="19"
+            SHOW_IF="(USE_REPLICA_SET=='true')"
+            GROUP="CONNECTION"
+        >
+            <DEFAULT>true</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER
+			FIELD="TEXT"
+			NAME="REPLICA_NAME"
+			NUM_ROW="20"
+			SHOW_IF="(USE_REPLICA_SET=='true') AND (SPECIFY_REPLICA_SET == 'true')"
+			GROUP="CONNECTION"
+		>
+			<DEFAULT>"rep1"</DEFAULT>
+		</PARAMETER>
+
+        <PARAMETER
+            NAME="REPLICA_SET"
+            FIELD="TABLE"
+            REQUIRED="false"
+            NUM_ROW="25"
+            NB_LINES="5"
+            SHOW_IF="(USE_REPLICA_SET=='true')"
+            GROUP="CONNECTION"
+      	>
+            <ITEMS>
+                <ITEM NAME="REPLICA_HOST" FIELD="TEXT" />
+                <ITEM NAME="REPLICA_PORT" FIELD="TEXT" />
+            </ITEMS>
+        </PARAMETER>
+
+         <PARAMETER
+			FIELD="TEXT"
+			NAME="HOST"
+			NUM_ROW="30"
+			SHOW_IF="(USE_REPLICA_SET=='false')"
+			GROUP="CONNECTION"
+		>
+			<DEFAULT>""</DEFAULT>
+		</PARAMETER>
+		<PARAMETER
+			FIELD="TEXT"
+			NAME="PORT"
+			NUM_ROW="30"
+			SHOW_IF="(USE_REPLICA_SET=='false')"
+			GROUP="CONNECTION"
+		>
+			<DEFAULT></DEFAULT>
+		</PARAMETER>
+
+		<PARAMETER
+			FIELD="TEXT"
+			NAME="DATABASE"
+			NUM_ROW="35"
+			REQUIRED="true"
+			GROUP="CONNECTION"
+		>
+			<DEFAULT>""</DEFAULT>
+		</PARAMETER>
+
+		<PARAMETER
+			FIELD="TEXT"
+			NAME="COLLECTION"
+			NUM_ROW="35"
+			REQUIRED="true"
+			GROUP="CONNECTION"
+		>
+			<DEFAULT>""</DEFAULT>
+		</PARAMETER>
+
+        <PARAMETER
+            FIELD="CHECK"
+            NAME="USE_SSL"
+            NUM_ROW="36"
+            GROUP="CONNECTION">
+            <DEFAULT>"false"</DEFAULT>
+        </PARAMETER>
+
+		<PARAMETER
+			NAME="DROP_COLLECTION_CREATE"
+			FIELD="CHECK"
+			NUM_ROW="40"
+			GROUP="CONNECTION"
+		>
+			<DEFAULT>false</DEFAULT>
+		</PARAMETER>
+
+		<PARAMETER
+			NAME="REQUIRED_AUTHENTICATION"
+			FIELD="CHECK"
+			NUM_ROW="45"
+			GROUP="AUTHENTICATION"
+		>
+			<DEFAULT>false</DEFAULT>
+        </PARAMETER>
+        <PARAMETER NAME="AUTHENTICATION_MECHANISM" FIELD="CLOSED_LIST" NUM_ROW="47"
+                SHOW_IF="(REQUIRED_AUTHENTICATION == 'true')" GROUP="AUTHENTICATION">
+            <ITEMS DEFAULT="MONGODBCR_MEC">
+                <ITEM NAME="MONGODBCR_MEC" VALUE="MONGODBCR_MEC"/>
+                <ITEM NAME="PLAIN_MEC" VALUE="PLAIN_MEC"/>
+                <ITEM NAME="SCRAMSHA1_MEC" VALUE="SCRAMSHA1_MEC"/>
+            </ITEMS>
+        </PARAMETER>
+
+        <PARAMETER FIELD="CHECK" NAME="SET_AUTHENTICATION_DATABASE"
+            NUM_ROW="48" SHOW_IF="((AUTHENTICATION_MECHANISM=='MONGODBCR_MEC') OR (AUTHENTICATION_MECHANISM=='SCRAMSHA1_MEC')) AND (REQUIRED_AUTHENTICATION == 'true')" GROUP="AUTHENTICATION">
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER FIELD="TEXT" NAME="AUTHENTICATION_DATABASE" NUM_ROW="49"
+            SHOW_IF="(SET_AUTHENTICATION_DATABASE=='true') AND (isShow[SET_AUTHENTICATION_DATABASE])" GROUP="AUTHENTICATION">
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+
+		<PARAMETER
+			FIELD="TEXT"
+			NAME="USERNAME"
+			NUM_ROW="50"
+			SHOW_IF="(REQUIRED_AUTHENTICATION == 'true')"
+			GROUP="AUTHENTICATION"
+		>
+			<DEFAULT>""</DEFAULT>
+		</PARAMETER>
+		
+		<PARAMETER
+			FIELD="PASSWORD"
+			NAME="PASSWORD"
+			NUM_ROW="50"
+			SHOW_IF="(REQUIRED_AUTHENTICATION == 'true')"
+			GROUP="AUTHENTICATION"
+		>
+			<DEFAULT>""</DEFAULT>
+		</PARAMETER>
+
+   		<PARAMETER
+	      	NAME="DATA"
+	      	FIELD="FILE"
+	      	NUM_ROW="55"
+	      	REQUIRED="true"
+    	>
+      		<DEFAULT>"__COMP_DEFAULT_FILE_DIR__/in.csv"</DEFAULT>
+    	</PARAMETER>
+
+   		<PARAMETER
+            NAME="FILE_TYPE"
+            FIELD="CLOSED_LIST"
+            NUM_ROW="60"
+            REQUIRED="true"
+       	>
+            <ITEMS DEFAULT="CSV">
+                <ITEM NAME="CSV" VALUE="csv"/>
+                <ITEM NAME="JSON" VALUE="json"/>
+                <ITEM NAME="TSV" VALUE="tsv"/>
+            </ITEMS>
+        </PARAMETER>
+
+		<PARAMETER
+	      	NAME="DATA_ACTION"
+	      	FIELD="CLOSED_LIST"
+	      	NUM_ROW="65"
+	      	REQUIRED="true"
+    	>
+	   		<ITEMS DEFAULT="INSERT">
+		        <ITEM NAME="INSERT"           VALUE="INSERT" />
+		        <ITEM NAME="UPSERT"           VALUE="UPSERT" />
+	      	</ITEMS>
+    	</PARAMETER>
+
+    	<PARAMETER
+	    	NAME="UPSERT_FIELDS"
+	    	FIELD="TABLE"
+	    	REQUIRED="false"
+			NUM_ROW="70"
+			NB_LINES="3"
+			SHOW_IF="(DATA_ACTION == 'UPSERT')"
+		>
+			<ITEMS>
+				<ITEM NAME="COLNAME" FIELD="COLUMN_LIST" />
+			</ITEMS>
+		</PARAMETER>
+
+		<PARAMETER
+   			NAME="HEADERLINE"
+            FIELD="CHECK"
+            NUM_ROW="75"
+            SHOW_IF="(FILE_TYPE == 'CSV') OR (FILE_TYPE == 'TSV')"
+     	>
+            <DEFAULT>"false"</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER
+   			NAME="IGNORE_BLANKS"
+            FIELD="CHECK"
+            NUM_ROW="80"
+            SHOW_IF="(FILE_TYPE == 'CSV') OR (FILE_TYPE == 'TSV')"
+     	>
+            <DEFAULT>"false"</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER
+            NAME="JSON_ARRAY"
+            FIELD="CHECK"
+            NUM_ROW="90"
+            SHOW_IF="(FILE_TYPE == 'JSON')"
+        >
+            <DEFAULT>"false"</DEFAULT>
+        </PARAMETER>
+
+		<PARAMETER
+			NAME="PRINT_LOG"
+			FIELD="CHECK"
+			NUM_ROW="100"
+		>
+			<DEFAULT>false</DEFAULT>
+		</PARAMETER>
+	</PARAMETERS>
+
+	<ADVANCED_PARAMETERS>
+
+		<PARAMETER
+			NAME="ADDITIONAL_ARGS"
+			FIELD="TABLE"
+			REQUIRED="false"
+			NUM_ROW="10"
+			NB_LINES="3"
+		>
+			<ITEMS>
+				<ITEM NAME="ARGUMENT" />
+				<ITEM NAME="VALUE" />
+			</ITEMS>
+		</PARAMETER>
+
+   	</ADVANCED_PARAMETERS>
+
+	<CODEGENERATION>
+		<IMPORTS/>
+	</CODEGENERATION>
+	<RETURNS>
+		<RETURN AVAILABILITY="AFTER" NAME="NB_LINE" TYPE="id_Integer" />
+	</RETURNS>
+</COMPONENT>

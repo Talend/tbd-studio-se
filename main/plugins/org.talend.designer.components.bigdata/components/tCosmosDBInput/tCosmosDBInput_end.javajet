@@ -1,0 +1,53 @@
+<%@ jet 
+	imports="
+    	org.talend.core.model.process.INode
+		org.talend.designer.codegen.config.CodeGeneratorArgument
+		org.talend.core.model.metadata.IMetadataTable 
+		org.talend.core.model.process.ElementParameterParser
+		java.util.List
+	"
+%>
+<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Log4j/Log4jFileUtil.javajet"%>
+<%
+CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+INode node = (INode)codeGenArgument.getArgument();
+String cid = node.getUniqueName();
+String useExistingConn = ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__");
+boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+
+List<IMetadataTable> metadatas = node.getMetadataList();
+if ((metadatas!=null) && (metadatas.size() > 0)) {
+	IMetadataTable metadata = metadatas.get(0);
+	if (metadata != null) {
+	%>
+		}
+		<%
+		log4jFileUtil.retrievedDataNumberInfo(node);
+		if(!"true".equals(useExistingConn)){
+		%>
+			}finally{
+				if(mongo_<%=cid%> != null )
+				{
+					<%
+					if(isLog4jEnabled){
+					%>
+						log.info("<%=cid%> - Closing the connection " + mongo_<%=cid%>.getServerAddressList() + ".");
+					<%
+					}
+					%>
+						mongo_<%=cid%>.close();
+					<%
+					if(isLog4jEnabled){
+					%>
+						log.info("<%=cid%> - The connection was closed successfully.");
+					<%
+					}
+					%>
+				}
+			}
+		<%
+		}
+	}
+}
+%>
+globalMap.put("<%=cid %>_NB_LINE", nb_line_<%=cid%>);

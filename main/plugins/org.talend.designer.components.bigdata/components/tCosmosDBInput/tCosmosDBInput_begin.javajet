@@ -1,0 +1,438 @@
+<%@ jet 
+	imports="
+		org.talend.core.model.process.INode 
+		org.talend.core.model.process.ElementParameterParser 
+		org.talend.core.model.metadata.IMetadataTable 
+		org.talend.core.model.metadata.IMetadataColumn 
+		org.talend.core.model.process.IConnection
+		org.talend.designer.codegen.config.CodeGeneratorArgument
+		org.talend.core.model.metadata.types.JavaTypesManager
+		org.talend.core.model.metadata.types.JavaType
+		org.talend.core.model.process.IConnectionCategory
+		java.util.List 
+    	java.util.Map		
+	" 
+%>
+<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Log4j/Log4jFileUtil.javajet"%>
+<%
+  	CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+  	INode node = (INode)codeGenArgument.getArgument();
+  	String cid = node.getUniqueName();
+
+    String dbhost   = ElementParameterParser.getValue(node, "__HOST__");
+    String dbname   = ElementParameterParser.getValue(node, "__DATABASE__");
+    String dbuser   = ElementParameterParser.getValue(node, "__USERNAME__");
+    boolean authentication="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REQUIRED_AUTHENTICATION__"));
+    String authenticationMechanism = ElementParameterParser.getValue(node, "__AUTHENTICATION_MECHANISM__");
+    String krbUserPrincipal = ElementParameterParser.getValue(node, "__KRB_USER_PRINCIPAL__");
+    String krbRealm = ElementParameterParser.getValue(node, "__KRB_REALM__");
+    String krbKdc = ElementParameterParser.getValue(node, "__KRB_KDC__");
+    String dbpass   = ElementParameterParser.getValue(node, "__PASSWORD__");
+    String mongoPort = ElementParameterParser.getValue(node, "__PORT__");
+    String dbport = mongoPort.startsWith("context.") ? "Integer.valueOf(" + mongoPort + ").intValue()" : mongoPort.replace("\"", "");
+    boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"));
+    String collection = ElementParameterParser.getValue(node,"__COLLECTION__");
+    String query = ElementParameterParser.getValue(node,"__QUERY__");
+    query = query.replaceAll("\n","");
+    query = query.replaceAll("\r","");
+  	String limit = ElementParameterParser.getValue(node,"__LIMIT__");
+
+  	List<Map<String, String>> mapping = (List<Map<String,String>>)ElementParameterParser.getObjectValueXML(node, "__MAPPING__");
+  	List<Map<String, String>> sorts = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__SORT__");
+  	boolean useReplicaSet="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_REPLICA_SET__"));
+  	boolean setReadPreference = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_READ_PREFERENCE__"));
+    String readPreference = ElementParameterParser.getValue(node, "__READ_PREFERENCE__");
+    boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+    List<Map<String, String>> aggregationStages = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__AGGREGATION_STAGES__");
+    boolean isAggregationQuery = "AGGREGATION_QUERY".equals(ElementParameterParser.getValue(node,"__QUERY_TYPE__"));
+    boolean useAuthDB = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_AUTHENTICATION_DATABASE__"));
+    String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
+    String usedAuthenticationDB = useAuthDB ? authDB : dbname;
+    boolean useExternalSort = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__EXTERNAL_SORT_AGGREGATION__"));
+    boolean queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
+
+  	List<IMetadataTable> metadatas = node.getMetadataList();
+  	List<IMetadataColumn> columnList = null;
+  	List<? extends IConnection> outputs = node.getOutgoingSortedConnections();
+  	String firstConnName = "";
+  	if (outputs.size() > 0){
+		IConnection out = outputs.get(0);
+		if(out!=null && out.getLineStyle().hasConnectionCategory(IConnectionCategory.DATA)){
+			firstConnName = out.getName();
+		}
+    }
+	%>
+	int nb_line_<%=cid %> = 0;
+	<%
+  	if(metadatas != null && metadatas.size() > 0){
+      	IMetadataTable metadata = metadatas.get(0);
+      	if(metadata != null){
+		%>
+			com.mongodb.Mongo mongo_<%=cid%>=null;
+			com.mongodb.DB db_<%=cid%>=null;
+			<%
+      		if (useExistingConnection){
+      			String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+				%>
+				mongo_<%=cid%>=(com.mongodb.Mongo)globalMap.get("mongo_<%=connection%>");
+				db_<%=cid%> = (com.mongodb.DB) globalMap.get("db_<%=connection%>");
+				<%
+				if(isLog4jEnabled){
+				%>	
+					log.info("<%=cid%> - Get an existing client from " + "<%=connection%>" + ".");
+					log.info("<%=cid%> - Get an existing DB from " + "<%=connection%>" + ".");
+				<%
+				}
+			}else{
+			%>
+			try{ // link with the "finally" on the "finally.javajet"
+				<%
+	 			List<Map<String,String>> replicaAddrs= (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__REPLICA_SET__");
+
+                boolean useSSL = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_SSL__"));
+                String mongoDbDriver = "com.mongodb.MongoClient";
+                %>
+
+                // Empty client options
+                com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().build();
+                <%
+                if (useSSL) {
+                    %>
+                    clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder()
+                    .socketFactory(javax.net.ssl.SSLSocketFactory.getDefault())
+                    .build();
+                    <%
+                }
+                
+                // Client Credentials
+                %>
+                // Empty client credentials list
+                java.util.List<com.mongodb.MongoCredential> mongoCredentialList_<%=cid%> = new java.util.ArrayList<com.mongodb.MongoCredential>();
+
+                <%
+                // Authentication
+                if (authentication){
+                    %>
+                    com.mongodb.MongoCredential mongoCredential_<%=cid%>;
+                    <%
+                    if((authenticationMechanism.equals("NEGOTIATE_MEC"))||(authenticationMechanism.equals("PLAIN_MEC"))||(authenticationMechanism.equals("SCRAMSHA1_MEC"))){
+                        String passwordFieldName = "__PASSWORD__";
+                        %>
+                        <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
+                        <%
+                        if(authenticationMechanism.equals("NEGOTIATE_MEC")){
+%>
+                    			mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createCredential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
+<%                    
+                        } else if(authenticationMechanism.equals("PLAIN_MEC")){
+                            %>
+                            mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createPlainCredential(<%=dbuser%>, "$external", new String(decryptedPassword_<%=cid%>).toCharArray());
+                            <%
+                        } else if(authenticationMechanism.equals("SCRAMSHA1_MEC")){
+                            %>
+                            mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createScramSha1Credential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
+                            <%
+                        }
+                    } else { // GSSAPI SASL (KERBEROS)
+                        %>
+                        System.setProperty("java.security.krb5.realm", <%=krbRealm%>);
+                        System.setProperty("java.security.krb5.kdc", <%=krbKdc%>);
+                        System.setProperty("javax.security.auth.useSubjectCredsOnly", "false");
+                        mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createGSSAPICredential(<%=krbUserPrincipal%>);
+                        <%
+                    }
+                    %>
+                    mongoCredentialList_<%=cid%>.add(mongoCredential_<%=cid%>);
+                    <%
+                }
+
+                // the client
+				if(useReplicaSet){
+				    %>
+					List<com.mongodb.ServerAddress> addrs_<%=cid%> = new java.util.ArrayList<com.mongodb.ServerAddress>();
+					<%
+					for(Map<String,String> replicaAddr:replicaAddrs){
+					%>
+						addrs_<%=cid%>.add(new com.mongodb.ServerAddress(<%=replicaAddr.get("REPLICA_HOST")%>,<%=replicaAddr.get("REPLICA_PORT")%>));
+					<%
+					}
+                    %>
+                    mongo_<%=cid%> = new <%=mongoDbDriver%>(addrs_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
+                    <%
+				}else{
+                    %>
+                    com.mongodb.ServerAddress serverAddress_<%=cid%> = new com.mongodb.ServerAddress(<%=dbhost%>, <%=dbport%>);
+                    mongo_<%=cid%> = new <%=mongoDbDriver%>(serverAddress_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
+                    <%
+				}
+                %>
+
+				db_<%=cid%> = mongo_<%=cid%>.getDB(<%=dbname%>);
+				<%
+			}
+
+			if (setReadPreference) {
+			        if (readPreference.equals("PRIMARY")) {
+			            %>
+			            mongo_<%=cid%>.setReadPreference(com.mongodb.ReadPreference.primary());
+			            <%
+			        } else if (readPreference.equals("PRIMARY_PREFERRED")) {
+			            %>
+			            mongo_<%=cid%>.setReadPreference(com.mongodb.ReadPreference.primaryPreferred());
+			            <%
+			        } else if (readPreference.equals("SECONDARY")) {
+			            %>
+			            mongo_<%=cid%>.setReadPreference(com.mongodb.ReadPreference.secondary());
+			            <%
+			        } else if (readPreference.equals("SECONDARY_PREFERRED")) {
+			            %>
+			            mongo_<%=cid%>.setReadPreference(com.mongodb.ReadPreference.secondaryPreferred());
+			            <%
+			        } else if (readPreference.equals("NEAREST")) {
+			            %>
+			            mongo_<%=cid%>.setReadPreference(com.mongodb.ReadPreference.nearest());
+			            <%
+			        } else {
+			            %>
+			            // Unhandled
+			            <%
+			        }
+			}
+
+			if(queryOptionNoTimeOut && !useExistingConnection){
+		        %>
+		            mongo_<%=cid%>.addOption(com.mongodb.Bytes.QUERYOPTION_NOTIMEOUT);
+		        <%
+    		}
+
+			if(isLog4jEnabled){
+			    %>	
+				log.info("<%=cid%> - Connecting to " + mongo_<%=cid%>.getServerAddressList() + ".");
+				<%
+			}
+			log4jFileUtil.startRetriveDataInfo();
+
+			%>
+
+				com.mongodb.DBCollection coll_<%=cid%> = db_<%=cid%>.getCollection(<%=collection%>);
+				
+				try{
+					// Add warning if an index is not in the query.
+					boolean needIndexWarning = true;
+					String indexList = "";
+	                for (com.mongodb.DBObject index: coll_<%=cid%>.getIndexInfo()) {
+	                    for (String key: ((com.mongodb.DBObject)index.get("key")).keySet()) {
+	                        // The regexp is:
+	                        // - contain the db DBcolumnName between two backslashed quotes
+	                        // - is followed at some point by a colon
+	                        // - there is no comma between the the DBcolumnName and the colon
+	                        if  ((<%=query%>).matches(".*" + key + "[^,]*:.*")) {
+	                            // We have an index, do not print error message
+	                            needIndexWarning = false;
+	                        } else {
+	                            // This index is not in the query, add it into the indexList
+	                            indexList += ", " + key;
+	                        }
+	                    }
+	                }
+	                if ((!"".equals(indexList)) && (needIndexWarning)) {
+	                    <%
+	                    if(isLog4jEnabled){
+	                        %>
+	                        log.warn("<%=cid%> - The query does not contain any reference an index.  [" + indexList.substring(1) + " ]");
+	                        <%
+	                    } else {
+	                        %>
+	                        System.err.println("<%=cid%> - The query does not contain any reference an index.  [" + indexList.substring(1) + " ]");
+	                        <%
+	                    }
+	                    %>
+	                }
+	            }catch(com.mongodb.MongoException e){
+	            	// caught an exception after issuing the getIndexInfo()
+	            	// don't fail the whole job
+	            	// maybe due to authorization
+	            }
+
+                <%
+                // AGGREGATION QUERY
+                if(isAggregationQuery){
+	                %>
+	                	java.util.List<com.mongodb.DBObject> aggregationStages = new java.util.ArrayList<com.mongodb.DBObject>();
+	                <%
+	                for (int i=0; i<aggregationStages.size(); i++){
+	                %>
+	                	aggregationStages.add((com.mongodb.DBObject) com.mongodb.util.JSON.parse(<%=aggregationStages.get(i).get("AGGREGATION_STAGE")%>));
+	                <%
+	                }
+	                %>
+	                com.mongodb.Cursor cursor_<%=cid%> = coll_<%=cid%>.aggregate(aggregationStages, com.mongodb.AggregationOptions.builder().outputMode(com.mongodb.AggregationOptions.OutputMode.CURSOR).allowDiskUse(<%=useExternalSort%>).build());
+	                <%
+	            // FIND QUERY
+                } else {
+	                %>
+	                com.mongodb.DBObject myQuery_<%=cid%> = (com.mongodb.DBObject) com.mongodb.util.JSON.parse(<%=query%>);
+		    		com.mongodb.DBObject fields_<%=cid%> = new com.mongodb.BasicDBObject();
+		  			com.mongodb.DBCursor cursor_<%=cid%> = coll_<%=cid%>.find(myQuery_<%=cid%>, fields_<%=cid%>);
+	                <%
+                }
+                %>
+				
+				class DBObjectInputUtil_<%=cid%>{
+					// Get the node value in embedded document, 
+					//If have no embedded document get root document node.
+					public Object getValue(String parentNode,String currentName,com.mongodb.DBObject dbObject){
+						Object value=null;
+						if(dbObject==null){
+							return null;
+						}
+						if (parentNode == null || "".equals(parentNode)) {
+						    if ("*".equals(currentName)) {
+						        value = dbObject;
+						    } else if (dbObject.get(currentName)!=null){
+								value=dbObject.get(currentName);
+							}
+						}else{
+							String objNames[] = objNames = parentNode.split("\\.");
+							com.mongodb.DBObject currentObj=dbObject;
+							for(int i=0;i<objNames.length;i++){
+								currentObj=(com.mongodb.DBObject)currentObj.get(objNames[i]);
+								if(currentObj==null){
+									break;
+								}
+							}
+							if ("*".equals(currentName)) {
+                                value = currentObj;
+                            } else if(currentObj!=null){
+								value=currentObj.get(currentName);
+							}
+						}
+						return value;
+					}
+				}
+				DBObjectInputUtil_<%=cid%> dbObjectInputUtil_<%=cid%>=new DBObjectInputUtil_<%=cid%>();
+				java.util.Map<String, String> pathMap_<%=cid%>=new java.util.HashMap<String, String>();
+<%
+			for (int i=0;i<mapping.size();i++) {
+				String path = mapping.get(i).get("PARENT_NODE_PATH");
+				if(path==null || "".equals(path)){
+					path="\"\"";
+				}
+				String schemaColumn=mapping.get(i).get("SCHEMA_COLUMN");
+%>
+				pathMap_<%=cid%>.put("<%=schemaColumn%>",<%=path%>);
+<%
+			}
+
+			// Note: Aggregation queriess do not support limit
+			if (limit != null && !"\"\"".equals(limit) && limit.length() > 0 && !isAggregationQuery){
+%>
+	  			cursor_<%=cid%> = cursor_<%=cid%>.limit(<%=limit%>);
+<%
+			}
+
+			// Note: Aggregation queriess do not support sort
+			if(sorts.size()>0 && !isAggregationQuery){
+%>
+		  		com.mongodb.DBObject orderBy_<%=cid%> = new com.mongodb.BasicDBObject();
+<%
+				for(Map<String, String> line:sorts){
+					int order=-1;
+					if(("asc").equals(line.get("ORDER"))){
+        				order=1;
+        			}
+%>
+		  		orderBy_<%=cid%>.put(<%=line.get("COLNAME")%>,<%=order%>);
+<%
+				}
+%>
+				cursor_<%=cid%>.sort(orderBy_<%=cid%>);
+<%
+			}
+%>
+				while (cursor_<%=cid%>.hasNext()){
+<%
+          	columnList = metadata.getListColumns();
+          	int sizeColumns = columnList.size();
+%>
+				com.mongodb.DBObject o_<%=cid%> = cursor_<%=cid%>.next();
+				nb_line_<%=cid %>++;
+<%
+			if(firstConnName.length()>0){
+%>
+				Object valueObj_<%=cid%>=null;
+<%
+				for (int i = 0; i < sizeColumns; i++) {
+					IMetadataColumn column = columnList.get(i);
+					String typeToGenerate = JavaTypesManager.getTypeToGenerate(column.getTalendType(), column.isNullable());
+					JavaType javaType = JavaTypesManager.getJavaTypeFromId(column.getTalendType());
+					String patternValue = column.getPattern() == null || column.getPattern().trim().length() == 0 ? null : column.getPattern();
+%>
+                    valueObj_<%=cid%>=dbObjectInputUtil_<%=cid%>.getValue(pathMap_<%=cid%>.get("<%=column.getLabel() %>"),"<%=column.getOriginalDbColumnName() %>",o_<%=cid%>);
+<%
+          			if(javaType == JavaTypesManager.OBJECT) {
+%>
+				<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>;
+<%
+          			}else{
+%>
+				if(valueObj_<%=cid%>!=null && valueObj_<%=cid%>.toString().length() > 0) {
+<%
+						if(javaType == JavaTypesManager.DATE) {
+%>
+                            if (valueObj_<%=cid%> instanceof java.util.Date) {
+																																<%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_Date((java.util.Date)valueObj_<%=cid%>, <%= patternValue %>);
+                            } else {
+                                <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_Date((String)valueObj_<%=cid%>, <%= patternValue %>);
+                            }
+<%
+						}else if(javaType == JavaTypesManager.BYTE_ARRAY) {
+%>
+					<%=firstConnName %>.<%=column.getLabel() %> = java.nio.charset.Charset.defaultCharset().decode(java.nio.ByteBuffer.wrap((byte[])valueObj_<%=cid%>)).toString().getBytes(utf8Charset);
+<%
+						} else if(javaType == JavaTypesManager.STRING){
+%>
+					<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.toString();
+<%
+						} else if (javaType == JavaTypesManager.INTEGER){
+%>
+                            if (valueObj_<%=cid%>.getClass().equals(Double.class)) {
+                                <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_Double(valueObj_<%=cid%>.toString()).intValue();
+                            } else {
+                                <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_<%=typeToGenerate %>(valueObj_<%=cid%>.toString());
+                            }
+<%
+                        } else if (javaType == JavaTypesManager.LONG){
+%>
+                            if (valueObj_<%=cid%>.getClass().equals(Double.class)) {
+                                <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_Double(valueObj_<%=cid%>.toString()).longValue();
+                            } else {
+                                <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_<%=typeToGenerate %>(valueObj_<%=cid%>.toString());
+                            }
+<%
+                        } else if (javaType == JavaTypesManager.SHORT){
+%>
+                            if (valueObj_<%=cid%>.getClass().equals(Double.class)) {
+                                <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_Double(valueObj_<%=cid%>.toString()).shortValue();
+                            } else {
+                                <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_<%=typeToGenerate %>(valueObj_<%=cid%>.toString());
+                            }
+<%
+                        } else {
+%>
+                            <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_<%=typeToGenerate %>(valueObj_<%=cid%>.toString());
+<%
+						}
+%>
+				}else{
+					<%=firstConnName %>.<%=column.getLabel() %> = <%=JavaTypesManager.getDefaultValueFromJavaType(typeToGenerate)%>;
+				}
+<%
+          			}
+				}
+				log4jFileUtil.debugRetriveData(node);
+			}
+      	}
+  	}
+%>
+

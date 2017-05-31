@@ -1,0 +1,458 @@
+<COMPONENT>
+    <HEADER
+        PLATEFORM="ALL"
+        SERIAL=""
+        VERSION="0.101"
+        STATUS="ALPHA"
+        COMPATIBILITY="ALL"
+        AUTHOR="Talend"
+        SCHEMA_AUTO_PROPAGATE="true"
+        DATA_AUTO_PROPAGATE="false"
+        EXTENSION="org.talend.designer.fileoutputxml"
+        RELEASE_DATE="20070210A"
+        STARTABLE="false"
+        PARTITIONING="NONE"
+        LOG4J_ENABLED="true"
+    >
+        <SIGNATURE/>
+    </HEADER>
+    <FAMILIES>
+        <FAMILY>Databases/Azure Cosmos DB</FAMILY>
+        <FAMILY>Cloud/Azure Cosmos DB</FAMILY>
+    </FAMILIES>
+    <DOCUMENTATION>
+        <URL />
+    </DOCUMENTATION>
+    <CONNECTORS>
+        <CONNECTOR CTYPE="FLOW" MAX_INPUT="1" MAX_OUTPUT="0"/>
+        <CONNECTOR CTYPE="ITERATE" MAX_OUTPUT="0" MAX_INPUT="0"/>
+        <CONNECTOR CTYPE="SUBJOB_OK" MAX_INPUT="1" />
+        <CONNECTOR CTYPE="SUBJOB_ERROR" MAX_INPUT="1" />
+        <CONNECTOR CTYPE="COMPONENT_OK"/>
+        <CONNECTOR CTYPE="COMPONENT_ERROR"/>
+        <CONNECTOR CTYPE="RUN_IF"/>
+    </CONNECTORS>
+    <PARAMETERS>
+        <PARAMETER
+            NAME="USE_EXISTING_CONNECTION"
+            FIELD="CHECK"
+            NUM_ROW="2"
+            GROUP="CONNECTION"
+        >
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+        <PARAMETER
+            NAME="CONNECTION"
+            FIELD="COMPONENT_LIST"
+            REQUIRED="true" FILTER="tCosmosDBConnection"
+            NUM_ROW="2"
+            SHOW_IF="USE_EXISTING_CONNECTION == 'true'"
+            GROUP="CONNECTION"
+        />
+        <PARAMETER
+            NAME="API"
+            FIELD="CLOSED_LIST"
+            NUM_ROW="3"
+            SHOW_IF="(USE_EXISTING_CONNECTION == 'false')"
+            GROUP="CONNECTION"
+        >
+            <ITEMS DEFAULT="MONGODB">
+                <ITEM NAME="MONGODB" VALUE="MONGODB" />
+            </ITEMS>
+        </PARAMETER>
+        <PARAMETER
+            FIELD="CHECK"
+            NAME="USE_REPLICA_SET"
+            NUM_ROW="4"
+            SHOW_IF="(USE_EXISTING_CONNECTION == 'false')"
+            GROUP="CONNECTION">
+            <DEFAULT>"false"</DEFAULT>
+        </PARAMETER>
+        <PARAMETER
+            NAME="REPLICA_SET"
+            FIELD="TABLE"
+            REQUIRED_IF="(USE_REPLICA_SET=='true')"
+            NUM_ROW="5"
+            NB_LINES="5"
+            SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND (USE_REPLICA_SET=='true')"
+            GROUP="CONNECTION">
+            <ITEMS>
+                <ITEM NAME="REPLICA_HOST" FIELD="TEXT" />
+                <ITEM NAME="REPLICA_PORT" FIELD="TEXT" />
+            </ITEMS>
+        </PARAMETER>
+        <PARAMETER
+            FIELD="TEXT"
+            NAME="HOST"
+            NUM_ROW="6"
+            REQUIRED="true"
+            SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND (USE_REPLICA_SET=='false')"
+            GROUP="CONNECTION"
+        >
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+        <PARAMETER
+            FIELD="TEXT"
+            NAME="PORT"
+            NUM_ROW="6"
+            SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND (USE_REPLICA_SET=='false')"
+            GROUP="CONNECTION"
+        >
+            <DEFAULT>10255</DEFAULT>
+        </PARAMETER>
+        <PARAMETER
+            FIELD="TEXT"
+            NAME="DATABASE"
+            NUM_ROW="7"
+            REQUIRED="true"
+            SHOW_IF="USE_EXISTING_CONNECTION == 'false'"
+            GROUP="CONNECTION"
+        >
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER FIELD="CHECK" NAME="USE_SSL" NUM_ROW="8" SHOW_IF="(USE_EXISTING_CONNECTION == 'false')" GROUP="CONNECTION">
+            <DEFAULT>"false"</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER FIELD="CHECK" NAME="SET_WRITE_CONCERN" NUM_ROW="9" GROUP="WRITE_CONCERN_GROUP">
+            <DEFAULT>"false"</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER NAME="WRITE_CONCERN" FIELD="CLOSED_LIST" NUM_ROW="10" SHOW_IF="SET_WRITE_CONCERN=='true'" GROUP="WRITE_CONCERN_GROUP">
+            <ITEMS DEFAULT="ACKNOWLEDGED">
+                <ITEM NAME="ACKNOWLEDGED" VALUE="ACKNOWLEDGED"/>
+                <ITEM NAME="UNACKNOWLEDGED" VALUE="UNACKNOWLEDGED"/>
+                <ITEM NAME="JOURNALED" VALUE="JOURNALED"/>
+                <ITEM NAME="REPLICA_ACKNOWLEDGED" VALUE="REPLICA_ACKNOWLEDGED"/>
+            </ITEMS>
+        </PARAMETER>
+
+        <PARAMETER FIELD="CHECK" NAME="SET_BULK_WRITE" NUM_ROW="11" GROUP="BULK_WRITE_GROUP">
+            <DEFAULT>"false"</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER NAME="BULK_WRITE_TYPE" FIELD="CLOSED_LIST" NUM_ROW="12" SHOW_IF="(SET_BULK_WRITE=='true')" GROUP="BULK_WRITE_GROUP">
+            <ITEMS DEFAULT="UNORDERED">
+                <ITEM NAME="UNORDERED" VALUE="Unordered"/>
+                <ITEM NAME="ORDERED" VALUE="Ordered"/>
+            </ITEMS>
+        </PARAMETER>
+
+        <PARAMETER FIELD="TEXT" NAME="BULK_WRITE_SIZE" NUM_ROW="13" SHOW_IF="(SET_BULK_WRITE=='true')" GROUP="BULK_WRITE_GROUP">
+            <DEFAULT>"1000"</DEFAULT>
+        </PARAMETER>
+
+
+        <PARAMETER
+            NAME="REQUIRED_AUTHENTICATION"
+            FIELD="CHECK"
+            NUM_ROW="15"
+            SHOW_IF="USE_EXISTING_CONNECTION == 'false'"
+            GROUP="AUTHENTICATION"
+        >
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER NAME="AUTHENTICATION_MECHANISM" FIELD="CLOSED_LIST" NUM_ROW="16"
+                SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND (REQUIRED_AUTHENTICATION == 'true')" GROUP="AUTHENTICATION">
+            <ITEMS DEFAULT="NEGOTIATE_MEC">
+                <ITEM NAME="NEGOTIATE_MEC" VALUE="NEGOTIATE_MEC"/>
+                <ITEM NAME="PLAIN_MEC" VALUE="PLAIN_MEC"/>
+                <ITEM NAME="SCRAMSHA1_MEC" VALUE="SCRAMSHA1_MEC"/>
+            </ITEMS>
+        </PARAMETER>
+
+        <PARAMETER FIELD="CHECK" NAME="SET_AUTHENTICATION_DATABASE"
+            NUM_ROW="18" SHOW_IF="((AUTHENTICATION_MECHANISM=='NEGOTIATE_MEC') OR (AUTHENTICATION_MECHANISM=='SCRAMSHA1_MEC')) AND (REQUIRED_AUTHENTICATION == 'true') AND (USE_EXISTING_CONNECTION == 'false')" GROUP="AUTHENTICATION">
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER FIELD="TEXT" NAME="AUTHENTICATION_DATABASE" NUM_ROW="19"
+            SHOW_IF="(SET_AUTHENTICATION_DATABASE=='true') AND (isShow[SET_AUTHENTICATION_DATABASE])" GROUP="AUTHENTICATION">
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER
+            FIELD="TEXT"
+            NAME="USERNAME"
+            NUM_ROW="20"
+            SHOW_IF="((AUTHENTICATION_MECHANISM=='NEGOTIATE_MEC') OR (AUTHENTICATION_MECHANISM=='PLAIN_MEC') OR (AUTHENTICATION_MECHANISM=='SCRAMSHA1_MEC')) AND (REQUIRED_AUTHENTICATION == 'true') AND (USE_EXISTING_CONNECTION == 'false')"
+            GROUP="AUTHENTICATION"
+        >
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+        <PARAMETER
+            FIELD="PASSWORD"
+            NAME="PASSWORD"
+            NUM_ROW="20"
+            SHOW_IF="((AUTHENTICATION_MECHANISM=='NEGOTIATE_MEC') OR (AUTHENTICATION_MECHANISM=='PLAIN_MEC') OR (AUTHENTICATION_MECHANISM=='SCRAMSHA1_MEC')) AND (REQUIRED_AUTHENTICATION == 'true') AND (USE_EXISTING_CONNECTION == 'false')"
+            GROUP="AUTHENTICATION"
+        >
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER
+            FIELD="TEXT"
+            NAME="COLLECTION"
+            REQUIRED="true"
+            NUM_ROW="30"
+        >
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+        <PARAMETER
+            NAME="DROP_COLLECTION_CREATE"
+            FIELD="CHECK"
+            NUM_ROW="35"
+        >
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+        <PARAMETER
+            NAME="DATA_ACTION"
+          FIELD="CLOSED_LIST"
+          NUM_ROW="40"
+        >
+            <ITEMS DEFAULT="INSERT">
+                <ITEM NAME="INSERT" VALUE="INSERT" />
+                <ITEM NAME="UPDATE" VALUE="UPDATE"/>
+                <ITEM NAME="SET" VALUE="SET"/>
+                <ITEM NAME="UPSERT" VALUE="UPSERT"/>
+                <ITEM NAME="UPSERT_WITH_SET" VALUE="UPSERT_WITH_SET"/>
+                <ITEM NAME="DELETE" VALUE="DELETE"/>
+            </ITEMS>
+        </PARAMETER>
+        <PARAMETER
+            NAME="UPDATE_ALL"
+            FIELD="CHECK"
+            NUM_ROW="40"
+            SHOW_IF="((DATA_ACTION=='SET') OR (DATA_ACTION=='UPSERT_WITH_SET')) AND (IS_VIRTUAL_COMPONENT == 'false')">
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+        <PARAMETER
+            NAME="SCHEMA_FLOW"
+            FIELD="SCHEMA_TYPE"
+            NUM_ROW="45"
+        >
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+        <PARAMETER
+            NAME="MAPPING"
+            FIELD="TABLE"
+            REQUIRED="true"
+            NUM_ROW="46"
+            NB_LINES="5"
+            SHOW_IF="(IS_VIRTUAL_COMPONENT == 'false')"
+        >
+            <ITEMS BASED_ON_SCHEMA="true">
+                <ITEM NAME="PARENT_NODE_PATH" FIELD="TEXT" />
+                <ITEM NAME="REMOVE_NULL_FIELD" FIELD="CHECK" VALUE="false"/>
+            </ITEMS>
+        </PARAMETER>
+        <PARAMETER
+            NAME="DIE_ON_ERROR"
+            FIELD="CHECK"
+            NUM_ROW="50">
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+    </PARAMETERS>
+    <ADVANCED_PARAMETERS>
+        <PARAMETER FIELD="CHECK" NAME="QUERYOPTION_NOTIMEOUT"
+            NUM_ROW="1" GROUP="ADVANCED_QUERY_OPTIONS" SHOW_IF="(USE_EXISTING_CONNECTION == 'false')">
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER
+            NAME="IS_VIRTUAL_COMPONENT"
+            FIELD="CHECK"
+            REQUIRED="true"
+            NUM_ROW="5"
+        >
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+        
+
+        
+        
+        <PARAMETER
+            NAME="ROOT"
+            FIELD="TABLE"
+            REQUIRED_IF="(IS_VIRTUAL_COMPONENT == 'true')"
+            NUM_ROW="10"
+            NB_LINES="3"
+            SHOW="false"
+        >
+            <ITEMS>
+                <ITEM NAME="PATH" FIELD="TEXT" />
+                <ITEM NAME="COLUMN" FIELD="TEXT" />
+                <ITEM NAME="VALUE" FIELD="TEXT" />
+                <ITEM NAME="ATTRIBUTE" FIELD="TEXT" />
+                <ITEM NAME="ORDER" FIELD="TEXT" />
+            </ITEMS>
+        </PARAMETER>
+
+        <PARAMETER
+            NAME="GROUP"
+            FIELD="TABLE"
+            REQUIRED="false"
+            NUM_ROW="20"
+            NB_LINES="5"
+            SHOW="false"
+        >
+            <ITEMS>
+                <ITEM NAME="PATH" FIELD="TEXT" />
+                <ITEM NAME="COLUMN" FIELD="TEXT" />
+                <ITEM NAME="VALUE" FIELD="TEXT" />
+                <ITEM NAME="ATTRIBUTE" FIELD="TEXT" />
+                <ITEM NAME="ORDER" FIELD="TEXT" />
+            </ITEMS>
+        </PARAMETER>
+
+        <PARAMETER
+            NAME="LOOP"
+            FIELD="TABLE"
+            REQUIRED_IF="(IS_VIRTUAL_COMPONENT == 'true')"
+            NUM_ROW="30"
+            SHOW="false"
+        >
+            <ITEMS>
+                <ITEM NAME="PATH" FIELD="TEXT" />
+                <ITEM NAME="COLUMN" FIELD="TEXT" />
+                <ITEM NAME="VALUE" FIELD="TEXT" />
+                <ITEM NAME="ATTRIBUTE" FIELD="TEXT" />
+                <ITEM NAME="ORDER" FIELD="TEXT" />
+            </ITEMS>
+        </PARAMETER>
+
+        <PARAMETER
+            NAME="MAP"
+            FIELD="EXTERNAL"
+            NUM_ROW="40"
+            SHOW_IF="(IS_VIRTUAL_COMPONENT == 'true')"
+            GROUP="JSON_CONFIGURATION"
+        >
+            <DEFAULT />
+        </PARAMETER>
+
+        <PARAMETER
+            NAME="CREATE_EMPTY_ELEMENT"
+            FIELD="CHECK"
+            NUM_ROW="50"
+            SHOW_IF="(IS_VIRTUAL_COMPONENT == 'true')"
+            GROUP="JSON_CONFIGURATION"
+        >
+            <DEFAULT>true</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER
+            NAME="GROUPBYS"
+            FIELD="TABLE"
+            NUM_ROW="60"
+            NB_LINES="3"
+            SHOW_IF="(IS_VIRTUAL_COMPONENT == 'true')"
+            GROUP="JSON_CONFIGURATION"
+        >
+            <ITEMS>
+                <ITEM NAME="INPUT_COLUMN" FIELD="PREV_COLUMN_LIST" />
+            </ITEMS>
+        </PARAMETER>
+        <PARAMETER
+            NAME="REMOVE_ROOT"
+            FIELD="CHECK"
+            NUM_ROW="70"
+            SHOW_IF="(IS_VIRTUAL_COMPONENT == 'true')"
+            GROUP="JSON_CONFIGURATION"
+        >
+            <DEFAULT>true</DEFAULT>
+        </PARAMETER>
+        <PARAMETER
+            FIELD="TEXT"
+            NAME="DATA_NODE"
+            REQUIRED_IF="(IS_VIRTUAL_COMPONENT == 'true')"
+            NUM_ROW="75"
+            SHOW_IF="(IS_VIRTUAL_COMPONENT == 'true') AND (DATA_ACTION !='INSERT') AND (DATA_ACTION !='DELETE')"
+            GROUP="JSON_CONFIGURATION"
+        >
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+        <PARAMETER
+            FIELD="TEXT"
+            NAME="QUERY_NODE"
+            REQUIRED_IF="(IS_VIRTUAL_COMPONENT == 'true')"
+            NUM_ROW="75"
+            SHOW_IF="(IS_VIRTUAL_COMPONENT == 'true') AND (DATA_ACTION !='INSERT') AND (DATA_ACTION !='DELETE')"
+            GROUP="JSON_CONFIGURATION"
+        >
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+        <PARAMETER
+            NAME="COMPACT_FORMAT"
+            FIELD="CHECK"
+            REQUIRED_IF="(IS_VIRTUAL_COMPONENT == 'true')"
+            NUM_ROW="80"
+            SHOW="false"
+            GROUP="JSON_CONFIGURATION"
+        >
+            <DEFAULT>true</DEFAULT>
+        </PARAMETER>
+    </ADVANCED_PARAMETERS>
+
+    <CODEGENERATION>
+        <TEMPLATES INPUT="In" OUTPUT="Out">
+            <TEMPLATE NAME="In" COMPONENT="tWriteXMLFieldOut">
+                <LINK_TO NAME="Out" CTYPE="COMPONENT_OK" />
+            </TEMPLATE>
+
+            <TEMPLATE NAME="Out" COMPONENT="tCosmosDBWriteConf" />
+
+            <TEMPLATE_PARAM SOURCE="self.GROUPBYS" TARGET="In.GROUPBYS" />
+
+            <TEMPLATE_PARAM SOURCE="self.ROOT" TARGET="In.ROOT" />
+            <TEMPLATE_PARAM SOURCE="self.GROUP" TARGET="In.GROUP" />
+            <TEMPLATE_PARAM SOURCE="self.LOOP" TARGET="In.LOOP" />
+            <TEMPLATE_PARAM SOURCE="self.COMPACT_FORMAT" TARGET="In.COMPACT_FORMAT" />
+            <TEMPLATE_PARAM SOURCE="self.SCHEMA_FLOW" TARGET="In.SCHEMA" />
+            <TEMPLATE_PARAM SOURCE="self.CREATE_EMPTY_ELEMENT" TARGET="In.CREATE_EMPTY_ELEMENT" />
+
+            <TEMPLATE_PARAM SOURCE="self.ROOT" TARGET="Out.ROOT" />
+            <TEMPLATE_PARAM SOURCE="self.GROUP" TARGET="Out.GROUP" />
+            <TEMPLATE_PARAM SOURCE="self.LOOP" TARGET="Out.LOOP" />
+            <TEMPLATE_PARAM SOURCE="self.SCHEMA_FLOW" TARGET="Out.SCHEMA" />
+            <TEMPLATE_PARAM SOURCE="self.USE_EXISTING_CONNECTION" TARGET="Out.USE_EXISTING_CONNECTION" />
+            <TEMPLATE_PARAM SOURCE="self.CONNECTION" TARGET="Out.CONNECTION" />
+            <TEMPLATE_PARAM SOURCE="self.USE_REPLICA_SET" TARGET="Out.USE_REPLICA_SET" />
+            <TEMPLATE_PARAM SOURCE="self.REPLICA_SET" TARGET="Out.REPLICA_SET" />
+            <TEMPLATE_PARAM SOURCE="self.HOST" TARGET="Out.HOST" />
+            <TEMPLATE_PARAM SOURCE="self.PORT" TARGET="Out.PORT" />
+            <TEMPLATE_PARAM SOURCE="self.DATABASE" TARGET="Out.DATABASE" />
+            <TEMPLATE_PARAM SOURCE="self.USE_SSL" TARGET="Out.USE_SSL" />
+            <TEMPLATE_PARAM SOURCE="self.SET_WRITE_CONCERN" TARGET="Out.SET_WRITE_CONCERN" />
+            <TEMPLATE_PARAM SOURCE="self.WRITE_CONCERN" TARGET="Out.WRITE_CONCERN" />
+            <TEMPLATE_PARAM SOURCE="self.SET_BULK_WRITE" TARGET="Out.SET_BULK_WRITE" />
+            <TEMPLATE_PARAM SOURCE="self.BULK_WRITE_TYPE" TARGET="Out.BULK_WRITE_TYPE" />
+            <TEMPLATE_PARAM SOURCE="self.BULK_WRITE_SIZE" TARGET="Out.BULK_WRITE_SIZE" />
+            <TEMPLATE_PARAM SOURCE="self.REQUIRED_AUTHENTICATION" TARGET="Out.REQUIRED_AUTHENTICATION" />
+            <TEMPLATE_PARAM SOURCE="self.AUTHENTICATION_MECHANISM" TARGET="Out.AUTHENTICATION_MECHANISM" />
+            <TEMPLATE_PARAM SOURCE="self.SET_AUTHENTICATION_DATABASE" TARGET="Out.SET_AUTHENTICATION_DATABASE" />
+            <TEMPLATE_PARAM SOURCE="self.AUTHENTICATION_DATABASE" TARGET="Out.AUTHENTICATION_DATABASE" />
+            <TEMPLATE_PARAM SOURCE="self.USERNAME" TARGET="Out.USERNAME" />
+            <TEMPLATE_PARAM SOURCE="self.PASSWORD" TARGET="Out.PASSWORD" />
+            <TEMPLATE_PARAM SOURCE="self.COLLECTION" TARGET="Out.COLLECTION" />
+            <TEMPLATE_PARAM SOURCE="self.DROP_COLLECTION_CREATE" TARGET="Out.DROP_COLLECTION_CREATE" />
+            <TEMPLATE_PARAM SOURCE="self.DATA_ACTION" TARGET="Out.DATA_ACTION" />
+            <TEMPLATE_PARAM SOURCE="self.DATA_NODE" TARGET="Out.DATA_NODE" />
+            <TEMPLATE_PARAM SOURCE="self.QUERY_NODE" TARGET="Out.QUERY_NODE" />
+            <TEMPLATE_PARAM SOURCE="self.REMOVE_ROOT" TARGET="Out.REMOVE_ROOT" />
+            <TEMPLATE_PARAM SOURCE="self.DIE_ON_ERROR" TARGET="Out.DIE_ON_ERROR" />
+            <TEMPLATE_PARAM SOURCE="self.QUERYOPTION_NOTIMEOUT" TARGET="Out.QUERYOPTION_NOTIMEOUT" />
+            
+        </TEMPLATES>
+        <IMPORTS>
+
+            <IMPORT MODULE="mongo-java-driver-2.14.1.jar" MVN="mvn:org.talend.libraries/mongo-java-driver-2.14.1/6.0.0"  NAME="mongo-java-driver-2.14.1" UrlPath="platform:/plugin/org.talend.libraries.mongo/lib/mongo-java-driver-2.14.1.jar" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (API=='MONGODB')" />
+
+        </IMPORTS>
+    </CODEGENERATION>
+    <RETURNS>
+        <RETURN AVAILABILITY="AFTER" NAME="NB_LINE" TYPE="id_Integer" />
+    </RETURNS>
+</COMPONENT>

@@ -1,0 +1,293 @@
+<COMPONENT>
+    <HEADER
+        PLATEFORM="ALL"
+        SERIAL=""
+        VERSION="0.102"
+        STATUS="ALPHA"
+
+        COMPATIBILITY="ALL"
+        AUTHOR="Talend"
+        RELEASE_DATE="20120706A"
+        STARTABLE="true"
+        LOG4J_ENABLED="true"
+    >
+        <SIGNATURE/>
+    </HEADER>
+    <FAMILIES>
+        <FAMILY>Databases/Azure Cosmos DB</FAMILY>
+        <FAMILY>Cloud/Azure Cosmos DB</FAMILY>
+    </FAMILIES>
+    <DOCUMENTATION>
+        <URL />
+    </DOCUMENTATION>
+    <CONNECTORS>
+        <CONNECTOR CTYPE="FLOW" MAX_INPUT="0" MAX_OUTPUT="1"/>
+        <CONNECTOR CTYPE="ITERATE" MAX_OUTPUT="1" MAX_INPUT="1"/>
+        <CONNECTOR CTYPE="SUBJOB_OK" MAX_INPUT="1" />
+        <CONNECTOR CTYPE="SUBJOB_ERROR" MAX_INPUT="1" />
+        <CONNECTOR CTYPE="COMPONENT_OK"/>
+        <CONNECTOR CTYPE="COMPONENT_ERROR"/>
+        <CONNECTOR CTYPE="RUN_IF"/>
+    </CONNECTORS>
+
+    <PARAMETERS>
+        <PARAMETER
+            NAME="USE_EXISTING_CONNECTION"
+            FIELD="CHECK"
+            NUM_ROW="2"
+            GROUP="CONNECTION"
+        >
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+        <PARAMETER
+            NAME="CONNECTION"
+            FIELD="COMPONENT_LIST"
+            REQUIRED="true" FILTER="tCosmosDBConnection"
+            NUM_ROW="2"
+            SHOW_IF="USE_EXISTING_CONNECTION == 'true'"
+            GROUP="CONNECTION"
+        />
+		<PARAMETER
+			NAME="API"
+			FIELD="CLOSED_LIST"
+			NUM_ROW="3"
+			SHOW_IF="(USE_EXISTING_CONNECTION == 'false')"
+			GROUP="CONNECTION"
+		>
+			<ITEMS DEFAULT="MONGODB">
+				<ITEM NAME="MONGODB" VALUE="MONGODB" />
+			</ITEMS>
+		</PARAMETER>
+        <PARAMETER
+            FIELD="CHECK"
+            NAME="USE_REPLICA_SET"
+            NUM_ROW="4"
+            SHOW_IF="(USE_EXISTING_CONNECTION == 'false')"
+            GROUP="CONNECTION">
+            <DEFAULT>"false"</DEFAULT>
+        </PARAMETER>
+        <PARAMETER
+            NAME="REPLICA_SET"
+            FIELD="TABLE"
+            REQUIRED="true"
+            NUM_ROW="5"
+            NB_LINES="5"
+            SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND (USE_REPLICA_SET=='true')"
+            GROUP="CONNECTION">
+            <ITEMS>
+                <ITEM NAME="REPLICA_HOST" FIELD="TEXT" />
+                <ITEM NAME="REPLICA_PORT" FIELD="TEXT" />
+            </ITEMS>
+        </PARAMETER>
+        <PARAMETER
+            FIELD="TEXT"
+            NAME="HOST"
+            NUM_ROW="6"
+            REQUIRED="true"
+            SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND (USE_REPLICA_SET=='false')"
+            GROUP="CONNECTION"
+        >
+            <DEFAULT>"localhost"</DEFAULT>
+        </PARAMETER>
+        <PARAMETER
+            FIELD="TEXT"
+            NAME="PORT"
+            NUM_ROW="6"
+            SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND (USE_REPLICA_SET=='false')"
+            GROUP="CONNECTION"
+        >
+            <DEFAULT>10255</DEFAULT>
+        </PARAMETER>
+        <PARAMETER
+            FIELD="TEXT"
+            NAME="DATABASE"
+            NUM_ROW="7"
+            REQUIRED="true"
+            SHOW_IF="USE_EXISTING_CONNECTION == 'false'"
+            GROUP="CONNECTION"
+        >
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER FIELD="CHECK" NAME="USE_SSL" NUM_ROW="8" SHOW_IF="(USE_EXISTING_CONNECTION == 'false')" GROUP="CONNECTION">
+            <DEFAULT>"false"</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER FIELD="CHECK" NAME="SET_READ_PREFERENCE" NUM_ROW="9" GROUP="READ_PREFERENCE_GROUP">
+            <DEFAULT>"false"</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER NAME="READ_PREFERENCE" FIELD="CLOSED_LIST" NUM_ROW="10" SHOW_IF="SET_READ_PREFERENCE=='true'" GROUP="READ_PREFERENCE_GROUP">
+            <ITEMS DEFAULT="PRIMARY">
+                <ITEM NAME="PRIMARY" VALUE="PRIMARY"/>
+                <ITEM NAME="PRIMARY_PREFERRED" VALUE="PRIMARY_PREFERRED"/>
+                <ITEM NAME="SECONDARY" VALUE="SECONDARY"/>
+                <ITEM NAME="SECONDARY_PREFERRED" VALUE="SECONDARY_PREFERRED"/>
+                <ITEM NAME="NEAREST" VALUE="NEAREST"/>
+            </ITEMS>
+        </PARAMETER>
+
+        <PARAMETER
+            NAME="REQUIRED_AUTHENTICATION"
+            FIELD="CHECK"
+            NUM_ROW="11"
+            SHOW_IF="USE_EXISTING_CONNECTION == 'false'"
+            GROUP="AUTHENTICATION"
+        >
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER NAME="AUTHENTICATION_MECHANISM" FIELD="CLOSED_LIST" NUM_ROW="15"
+                SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND (REQUIRED_AUTHENTICATION == 'true')" GROUP="AUTHENTICATION">
+            <ITEMS DEFAULT="NEGOTIATE_MEC">
+                <ITEM NAME="NEGOTIATE_MEC" VALUE="NEGOTIATE_MEC"/>
+                <ITEM NAME="PLAIN_MEC" VALUE="PLAIN_MEC"/>
+                <ITEM NAME="SCRAMSHA1_MEC" VALUE="SCRAMSHA1_MEC"/>
+            </ITEMS>
+        </PARAMETER>
+
+        <PARAMETER FIELD="CHECK" NAME="SET_AUTHENTICATION_DATABASE"
+            NUM_ROW="18" SHOW_IF="((AUTHENTICATION_MECHANISM=='NEGOTIATE_MEC') OR (AUTHENTICATION_MECHANISM=='SCRAMSHA1_MEC')) AND (REQUIRED_AUTHENTICATION == 'true') AND (USE_EXISTING_CONNECTION == 'false')" GROUP="AUTHENTICATION">
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER FIELD="TEXT" NAME="AUTHENTICATION_DATABASE" NUM_ROW="19"
+            SHOW_IF="(SET_AUTHENTICATION_DATABASE=='true') AND (isShow[SET_AUTHENTICATION_DATABASE])" GROUP="AUTHENTICATION">
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER
+            FIELD="TEXT"
+            NAME="USERNAME"
+            NUM_ROW="20"
+            SHOW_IF="((AUTHENTICATION_MECHANISM=='NEGOTIATE_MEC') OR (AUTHENTICATION_MECHANISM=='PLAIN_MEC') OR (AUTHENTICATION_MECHANISM=='SCRAMSHA1_MEC')) AND (REQUIRED_AUTHENTICATION == 'true') AND (USE_EXISTING_CONNECTION == 'false')"
+            GROUP="AUTHENTICATION"
+        >
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+        <PARAMETER
+            FIELD="PASSWORD"
+            NAME="PASSWORD"
+            NUM_ROW="20"
+            SHOW_IF="((AUTHENTICATION_MECHANISM=='NEGOTIATE_MEC') OR (AUTHENTICATION_MECHANISM=='PLAIN_MEC') OR (AUTHENTICATION_MECHANISM=='SCRAMSHA1_MEC')) AND (REQUIRED_AUTHENTICATION == 'true') AND (USE_EXISTING_CONNECTION == 'false')"
+            GROUP="AUTHENTICATION"
+        >
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER
+            FIELD="TEXT"
+            NAME="COLLECTION"
+            REQUIRED="true"
+            NUM_ROW="30"
+        >
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+        <PARAMETER
+            NAME="SCHEMA_FLOW"
+            FIELD="SCHEMA_TYPE"
+            NUM_ROW="35"
+        >
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER NAME="QUERY_TYPE" FIELD="CLOSED_LIST" NUM_ROW="39" GROUP="QUERY_SPECS">
+            <ITEMS DEFAULT="FIND_QUERY">
+                <ITEM NAME="FIND_QUERY" VALUE="FIND_QUERY"/>
+                <ITEM NAME="AGGREGATION_QUERY" VALUE="AGGREGATION_QUERY"/>
+            </ITEMS>
+        </PARAMETER>
+
+        <PARAMETER NAME="NOTE_ISOLATION" FIELD="LABEL"
+            NUM_ROW="40" GROUP="QUERY_SPECS">
+            <DEFAULT>Note : Surround String values in your query with single quotes
+Note : If you are running on a Sharded Cluster, please make sure to include the shard key in the query.</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER
+            FIELD="MEMO"
+            NAME="QUERY"
+            REQUIRED="true"
+            NUM_ROW="41"
+            NB_LINES="5"
+            GROUP="QUERY_SPECS"
+            SHOW_IF="QUERY_TYPE=='FIND_QUERY'">
+            <DEFAULT>"{}"</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER
+            NAME="AGGREGATION_STAGES"
+            FIELD="TABLE"
+            REQUIRED="false"
+            NUM_ROW="45"
+            NB_LINES="5"
+            GROUP="QUERY_SPECS"
+            SHOW_IF="QUERY_TYPE=='AGGREGATION_QUERY'">
+            <ITEMS>
+                <ITEM NAME="AGGREGATION_STAGE" FIELD="TEXT" />
+            </ITEMS>
+        </PARAMETER>
+
+        <PARAMETER
+            NAME="MAPPING"
+            FIELD="TABLE"
+            REQUIRED="true"
+            NUM_ROW="48"
+            NB_LINES="5"
+            GROUP="QUERY_SPECS" >
+            <ITEMS BASED_ON_SCHEMA="true">
+                <ITEM NAME="PARENT_NODE_PATH" FIELD="TEXT" />
+            </ITEMS>
+        </PARAMETER>
+
+        <PARAMETER
+            NAME="SORT"
+            FIELD="TABLE"
+            REQUIRED="false"
+            NUM_ROW="50"
+            NB_LINES="5"
+            GROUP="QUERY_SPECS"
+            SHOW_IF="QUERY_TYPE=='FIND_QUERY'">
+            <ITEMS>
+                <ITEM NAME="COLNAME" FIELD="TEXT" VALUE=""/>
+                <ITEM NAME="ORDER" FIELD="CLOSED_LIST">
+                    <ITEMS DEFAULT="ASC">
+                        <ITEM NAME="ASC" VALUE="asc" />
+                        <ITEM NAME="DESC" VALUE="desc" />
+                    </ITEMS>
+                </ITEM>
+            </ITEMS>
+        </PARAMETER>
+
+        <PARAMETER
+            FIELD="TEXT"
+            NAME="LIMIT"
+            NUM_ROW="55"
+            GROUP="QUERY_SPECS"
+            SHOW_IF="QUERY_TYPE=='FIND_QUERY'"
+        />
+    </PARAMETERS>
+
+    <ADVANCED_PARAMETERS>
+        <PARAMETER FIELD="CHECK" NAME="QUERYOPTION_NOTIMEOUT"
+            NUM_ROW="40" GROUP="ADVANCED_QUERY_OPTIONS" SHOW_IF="(USE_EXISTING_CONNECTION == 'false')">
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER FIELD="CHECK" NAME="EXTERNAL_SORT_AGGREGATION"
+            NUM_ROW="50" GROUP="ADVANCED_AGGREGATION_OPTIONS" SHOW_IF="QUERY_TYPE=='AGGREGATION_QUERY'">
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+    </ADVANCED_PARAMETERS>
+
+    <CODEGENERATION>
+        <IMPORTS>
+
+            <IMPORT MODULE="mongo-java-driver-2.14.1.jar" MVN="mvn:org.talend.libraries/mongo-java-driver-2.14.1/6.0.0"  NAME="mongo-java-driver-2.14.1" UrlPath="platform:/plugin/org.talend.libraries.mongo/lib/mongo-java-driver-2.14.1.jar" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (API=='MONGODB')" />
+            
+        </IMPORTS>
+    </CODEGENERATION>
+    <RETURNS>
+        <RETURN AVAILABILITY="AFTER" NAME="NB_LINE" TYPE="id_Integer" />
+    </RETURNS>
+</COMPONENT>

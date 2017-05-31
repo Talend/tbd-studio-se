@@ -1,0 +1,429 @@
+<%@ jet 
+	imports="
+		org.talend.core.model.process.INode 
+		org.talend.core.model.process.ElementParameterParser 
+		org.talend.designer.codegen.config.CodeGeneratorArgument
+		org.talend.core.model.metadata.IMetadataTable
+		org.talend.core.model.metadata.IMetadataColumn
+		
+		java.util.List 
+    	java.util.Map		
+	" 
+%>
+<%
+  	CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+  	INode node = (INode)codeGenArgument.getArgument();
+  	String cid = node.getUniqueName();
+
+    String dbhost   = ElementParameterParser.getValue(node, "__HOST__");
+    String dbname   = ElementParameterParser.getValue(node, "__DATABASE__");
+    String collection = ElementParameterParser.getValue(node,"__COLLECTION__");
+    boolean useSSL ="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_SSL__"));
+    boolean authentication="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REQUIRED_AUTHENTICATION__"));
+    String authenticationMechanism = ElementParameterParser.getValue(node, "__AUTHENTICATION_MECHANISM__");
+    String gssapiServiceName = ElementParameterParser.getValue(node, "__KRB_SERVICE_NAME__");
+    String gssapiHostName = ElementParameterParser.getValue(node, "__KRB_HOST_NAME__");
+    String userPrincipal = ElementParameterParser.getValue(node, "__KRB_USER_PRINCIPAL__");
+    String authenticationDatabase = ElementParameterParser.getValue(node, "__KRB_AUTH_DATABASE__");
+    String dbuser   = ElementParameterParser.getValue(node, "__USERNAME__");
+    String dbpass   = ElementParameterParser.getValue(node, "__PASSWORD__");
+    String dbport  	= ElementParameterParser.getValue(node, "__PORT__");
+  	String mongoBinFolder = ElementParameterParser.getValue(node, "__MONGODB_DIR__");
+  	String dataFileName = ElementParameterParser.getValue(node, "__DATA__");
+  	String fileType = ElementParameterParser.getValue(node, "__FILE_TYPE__");
+  	boolean isFirstLineHeader = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__HEADERLINE__"));
+  	boolean useReplicaSet="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_REPLICA_SET__"));
+  	boolean useLocalDBpath="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_LOCAL_DBPATH__"));
+  	String localDBpath=ElementParameterParser.getValue(node, "__LOCAL_DB_PATH__");
+  	boolean printLog="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__PRINT_LOG__"));
+  	boolean dropCreateColl="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__DROP_COLLECTION_CREATE__"));
+    boolean ignoreBlanks="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__IGNORE_BLANKS__"));
+    boolean jsonArray = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__JSON_ARRAY__"));
+    boolean useAuthDB = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_AUTHENTICATION_DATABASE__"));
+    String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
+    String usedAuthenticationDB = useAuthDB ? authDB : dbname;
+  	
+  	String dataAction = ElementParameterParser.getValue(node,"__DATA_ACTION__");
+  	List<Map<String, String>> additionalParams = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__ADDITIONAL_ARGS__");
+  	
+  	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+  	
+  	List<IMetadataTable> metadatas = node.getMetadataList();
+  	String fileds="";
+  	if(!"JSON".equalsIgnoreCase(fileType) && metadatas != null && metadatas.size() > 0){
+      	IMetadataTable metadata = metadatas.get(0);
+      	if(metadata != null){
+      		List<IMetadataColumn> columnList = metadata.getListColumns();
+      		boolean isFirstColumn=true;
+      		for (IMetadataColumn column:columnList) {
+      			if(isFirstColumn){
+      				isFirstColumn=false;
+      			}else{
+      				fileds=fileds+",";
+      			}
+      			fileds=fileds + column.getOriginalDbColumnName();
+			}
+		}
+	}
+  	%>
+
+
+	StringBuffer comand_<%=cid%>=new StringBuffer();
+	<%	
+	if(mongoBinFolder!= null && !"".equals(mongoBinFolder)&& !"\"\"".equals(mongoBinFolder)){
+	%>
+		comand_<%=cid%>.append(<%=mongoBinFolder%>);
+	<%
+	}
+	%>
+	comand_<%=cid%>.append("/bin/mongoimport");
+ 	List<String> args_<%=cid%> = new java.util.ArrayList<String>();
+ 	args_<%=cid%>.add(comand_<%=cid%>.toString());
+ 	ProcessBuilder runtime_<%=cid%> = new ProcessBuilder(args_<%=cid%>);
+	<%	
+
+ 
+	if(useLocalDBpath){
+	%>
+		args_<%=cid%>.add("--dbpath");
+		args_<%=cid%>.add(<%=localDBpath%>);
+	<%
+	}else{
+		if(!useReplicaSet){
+			if(dbhost!= null && !"".equals(dbhost)&& !"\"\"".equals(dbhost)){
+			%>
+				args_<%=cid%>.add("--host");
+				args_<%=cid%>.add(<%=dbhost%>);
+			<%	
+			}
+			if(dbport!= null && !"".equals(dbport)&& !"\"\"".equals(dbport)){
+			%>
+				args_<%=cid%>.add("--port");
+				args_<%=cid%>.add("" + <%=dbport%>);
+			<%
+			}
+		}else{
+		    %>
+		    StringBuffer repHosts_<%=cid%>=new StringBuffer();
+            <%
+            boolean specifyReplicaSet ="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SPECIFY_REPLICA_SET__"));
+            if (specifyReplicaSet) {
+                String replicaSetName = ElementParameterParser.getValue(node, "__REPLICA_NAME__");
+                %>
+                repHosts_<%=cid%>.append(<%=replicaSetName%>+"/");
+                <%
+            }
+		  	List<Map<String,String>> replicaAddrs= (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__REPLICA_SET__");
+		  	boolean isFirstHost=true;
+		  	for(Map<String,String> replicaAddr:replicaAddrs){
+		  		String repHost = replicaAddr.get("REPLICA_HOST");
+		  		String repPort = replicaAddr.get("REPLICA_PORT");
+				if(repHost!= null && !"".equals(repHost)&& !"\"\"".equals(repHost)){
+					if(isFirstHost){
+						isFirstHost=false;
+					}else{
+					%>
+						repHosts_<%=cid%>.append(",");
+					<%
+					}
+					%>
+						repHosts_<%=cid%>.append(<%=repHost%>);
+					<%
+					if(repPort!= null && !"".equals(repPort)&& !"\"\"".equals(repPort)){
+					%>
+						repHosts_<%=cid%>.append(":"+<%=repPort%>);
+					<%
+					}
+				}else{
+					break;
+				}
+		  	}
+			%>
+			args_<%=cid%>.add("--host");
+			args_<%=cid%>.add(repHosts_<%=cid%>.toString());
+		<%
+		}
+		// SSL is not compatible with Kerberos in mongoimport
+		if (useSSL && !(authenticationMechanism.equals("KERBEROS_MEC"))) {
+		    %>
+            args_<%=cid%>.add("--ssl");
+            <%
+		}
+	}
+	
+	if(dbname!= null && !"".equals(dbname)&& !"\"\"".equals(dbname)){
+	%>
+		args_<%=cid%>.add("--db");
+		args_<%=cid%>.add(<%=dbname%>);
+	<%
+	}
+	if(collection!= null && !"".equals(collection)&& !"\"\"".equals(collection)){
+	%>
+		args_<%=cid%>.add("--collection");
+		args_<%=cid%>.add(<%=collection%>);
+	<%
+	}
+
+	if (authentication){
+        if((authenticationMechanism.equals("SCRAMSHA1_MEC")) || (authenticationMechanism.equals("MONGODBX509_MEC"))
+                || (authenticationMechanism.equals("MONGODBCR_MEC") || (authenticationMechanism.equals("PLAIN_MEC")))) {
+            if(dbuser!= null && !"".equals(dbuser)&& !"\"\"".equals(dbuser)){
+            %>
+                args_<%=cid%>.add("--username"); 
+                args_<%=cid%>.add(<%=dbuser%>); 
+            <%
+            }
+            if(dbpass!= null && !"".equals(dbpass)&& !"\"\"".equals(dbpass)){
+                String passwordFieldName = "__PASSWORD__";
+                %>
+
+                <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
+
+                args_<%=cid%>.add("--password"); 
+                args_<%=cid%>.add(decryptedPassword_<%=cid%>); 
+                <%
+            }
+
+            if(authenticationMechanism.equals("SCRAMSHA1_MEC")){
+                %>
+                args_<%=cid%>.add("--authenticationMechanism");
+                args_<%=cid%>.add("SCRAM-SHA-1");
+                args_<%=cid%>.add("--authenticationDatabase");
+                args_<%=cid%>.add(<%=usedAuthenticationDB%>);
+                <%
+                // X509 can't work today without adding a property to locate the x509 certificate
+            } else if(authenticationMechanism.equals("MONGODBX509_MEC")){
+                %>
+                args_<%=cid%>.add("--authenticationMechanism");
+                args_<%=cid%>.add("MONGODB-X509");
+                args_<%=cid%>.add("--authenticationDatabase");
+                args_<%=cid%>.add(<%=usedAuthenticationDB%>);
+                <%
+            } else if(authenticationMechanism.equals("MONGODBCR_MEC")){
+                %>
+                args_<%=cid%>.add("--authenticationMechanism");
+                args_<%=cid%>.add("MONGODB-CR");
+                args_<%=cid%>.add("--authenticationDatabase");
+                args_<%=cid%>.add(<%=usedAuthenticationDB%>);
+                <%
+            } else if(authenticationMechanism.equals("PLAIN_MEC")){
+                %>
+                args_<%=cid%>.add("--authenticationMechanism");
+                args_<%=cid%>.add("PLAIN");
+                args_<%=cid%>.add("--authenticationDatabase");
+                args_<%=cid%>.add("'$external'");
+                <%
+            }
+        } else { // GSSAPI SASL (KERBEROS)
+        	// SSL is not compatible with Kerberos in mongoimport
+        	if(!useSSL){
+	        	%>
+	            args_<%=cid%>.add("--authenticationMechanism");
+	            args_<%=cid%>.add("GSSAPI");
+	            <%
+	            if(gssapiServiceName!= null && !"".equals(gssapiServiceName)&& !"\"\"".equals(gssapiServiceName)){
+	                %>
+	                args_<%=cid%>.add("--gssapiServiceName");
+	                args_<%=cid%>.add(<%=gssapiServiceName%>);
+	                <%
+	            }
+	            if(gssapiHostName!= null && !"".equals(gssapiHostName)&& !"\"\"".equals(gssapiHostName)){
+	                %>
+	                args_<%=cid%>.add("--gssapiHostName");
+	                args_<%=cid%>.add(<%=gssapiHostName%>);
+	                <%
+	            }
+	            if(userPrincipal!= null && !"".equals(userPrincipal)&& !"\"\"".equals(userPrincipal)){
+	                %>
+	                args_<%=cid%>.add("--username");
+	                args_<%=cid%>.add(<%=userPrincipal%>);
+	                <%
+	            }
+	            if(authenticationDatabase!= null && !"".equals(authenticationDatabase)&& !"\"\"".equals(authenticationDatabase)){
+	                %>
+	                args_<%=cid%>.add("--authenticationDatabase");
+	                args_<%=cid%>.add(<%=authenticationDatabase%>);
+	                <%
+	            }
+        	}
+        }
+	} // authentication
+
+	if(fileType!= null && !"".equals(fileType)&& !"\"\"".equals(fileType)){
+	%>
+		args_<%=cid%>.add("--type");
+		args_<%=cid%>.add("<%=fileType%>");
+	<%
+	}
+	if(dataFileName!= null && !"".equals(dataFileName)&& !"\"\"".equals(dataFileName)){
+	%>
+		args_<%=cid%>.add("--file");
+		args_<%=cid%>.add(<%=dataFileName%>);
+	<%
+	}
+	if(dropCreateColl){
+	%>
+		args_<%=cid%>.add("--drop");
+	<%
+	}
+	if("UPSERT".equalsIgnoreCase(dataAction)){
+		List<Map<String, String>> upsertFieldList = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__UPSERT_FIELDS__");
+		String upsertFields = "";
+		if(upsertFieldList!=null && upsertFieldList.size()>0){
+			upsertFields = upsertFieldList.get(0).get("COLNAME");
+			for(int i=1;i<upsertFieldList.size();i++){
+				Map<String, String> field = upsertFieldList.get(i);
+				upsertFields=upsertFields+","+field.get("COLNAME");
+			}
+		}
+		%>
+		args_<%=cid%>.add("--upsert");
+		<%
+		if(!"".equals(upsertFields)){
+		%>
+			args_<%=cid%>.add("--upsertFields");
+			args_<%=cid%>.add("<%=upsertFields%>");
+		<%
+		}
+	}
+	if(!"JSON".equalsIgnoreCase(fileType)){
+		if(ignoreBlanks){
+		%>
+			args_<%=cid%>.add("--ignoreBlanks");
+		<%
+		}
+		if(isFirstLineHeader){
+		    %>
+		    args_<%=cid%>.add("--headerline");
+		    <%
+		} else if(!"".equals(fileds)){
+		    %>
+			args_<%=cid%>.add("--fields");
+	        args_<%=cid%>.add("<%=fileds%>");
+	        <%
+		}
+
+	} else {
+	    if (jsonArray) {
+	        %>
+	            args_<%=cid%>.add("--jsonArray");
+	        <%
+	    }
+	}
+
+	if(additionalParams != null && additionalParams.size()>0){
+		for(Map<String, String> param : additionalParams){
+			String arg = param.get("ARGUMENT");
+			String value = param.get("VALUE");
+			if(arg!=null && !"".equals(arg)){
+			%>
+				args_<%=cid%>.add("" + <%=arg%>);
+				<%
+				if(value!=null && !"".equals(value)){
+				%>
+					args_<%=cid%>.add(""+<%=value%>);
+				<%
+				}
+			}
+		}
+	}
+	if(isLog4jEnabled){
+	%>	
+		StringBuilder sb = new StringBuilder();
+		for (String s : args_<%=cid%>) {
+			sb.append(s + " ");
+		}
+		log.info("<%=cid%> - Execute command " + sb.toString() + ".");
+		<%
+		if (useReplicaSet) {
+		    %>
+	        log.info("<%=cid%> - Start to import the data");
+		    <%
+		} else {
+		    %>
+	        log.info("<%=cid%> - Start to import the data into ["+<%=dbhost%>+":"+"<%=dbport%>"+"/"+<%=dbname%>+"]");
+		    <%
+		}
+	}
+	%>
+	// Redirect stderr to stdout
+	runtime_<%=cid%>.redirectErrorStream(true);
+
+	final Process process_<%=cid%> = runtime_<%=cid%>.start();
+
+	Thread normal_<%=cid %> = new Thread() {
+		public void run() {
+			try {
+				java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(process_<%=cid %>.getInputStream()));
+				String line = "";
+				try {
+					while((line = reader.readLine()) != null) {
+						<%
+					    if(printLog){
+						%>
+							System.out.println(line);
+						<%
+					    }
+						%>				
+						int im=line.indexOf("imported");
+						int obj=line.indexOf("object");
+						int doc=line.indexOf("document");
+						if(im > 0 && obj > 0){
+							line = line.substring(im+8, obj).trim();
+						} else if(im > 0 && doc > 0){
+							line = line.substring(im+8, doc).trim();
+						}
+						if(line.matches("^[\\d]+$")){
+							globalMap.put("<%=cid %>_NB_LINE", Integer.parseInt(line));
+						}else{
+							globalMap.put("<%=cid %>_NB_LINE", 0);
+						}
+					}
+				} finally {
+					reader.close();
+				}
+			} catch(java.io.IOException ioe) {
+				ioe.printStackTrace();
+			}
+		}
+	};
+	normal_<%=cid%>.start();
+	<%
+    if(printLog){
+	%>
+		Thread error_<%=cid%> = new Thread() {
+			public void run() {
+				try {
+					java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(process_<%=cid %>.getErrorStream()));
+					String line = "";
+					try {
+						while((line = reader.readLine()) != null) {
+							System.err.println(line);
+						}
+					} finally {
+						reader.close();
+					}
+				} catch(java.io.IOException ioe) {
+					ioe.printStackTrace();
+				}
+			}
+		};
+		error_<%=cid%>.start();
+	<%
+    }
+	%>			
+	process_<%=cid %>.waitFor();
+	normal_<%=cid%>.interrupt();
+	<%
+    if(printLog){
+	%>
+		error_<%=cid%>.interrupt();
+	<%
+    }
+    if(isLog4jEnabled){
+	%>	
+		log.info("<%=cid%> - Has been imported "+globalMap.get("<%=cid %>_NB_LINE")+" objects.");
+		log.info("<%=cid%> - Finish imported.");
+	<%
+	}
+	%>	

@@ -1,0 +1,36 @@
+<%@ jet 
+	imports="
+    	org.talend.core.model.process.INode 
+    	org.talend.core.model.process.ElementParameterParser 
+    	org.talend.designer.codegen.config.CodeGeneratorArgument
+" 
+%>
+<%
+    CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+    INode node = (INode)codeGenArgument.getArgument();
+
+    String cid = node.getUniqueName();
+
+   	String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+%>
+	com.mongodb.Mongo mongo_<%=cid%>=(com.mongodb.Mongo)globalMap.get("mongo_<%=connection%>");
+	if(mongo_<%=cid%> != null )
+	{
+		<%
+		if(isLog4jEnabled){
+		%>
+			log.info("<%=cid%> - Closing the connection " + mongo_<%=cid%>.getServerAddressList() + ".");
+		<%
+		}
+		%>
+			mongo_<%=cid%>.close();
+		<%
+		if(isLog4jEnabled){
+		%>
+			log.info("<%=cid%> - Connection closed.");
+		<%
+		}
+		%>
+	}
+	

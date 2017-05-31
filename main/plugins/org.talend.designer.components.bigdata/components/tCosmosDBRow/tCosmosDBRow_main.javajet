@@ -1,0 +1,135 @@
+<%@ jet 
+	imports="
+		org.talend.core.model.process.INode 
+		org.talend.core.model.process.ElementParameterParser 
+		org.talend.designer.codegen.config.CodeGeneratorArgument
+		java.util.List
+    	java.util.Map
+	"
+%>
+<%
+  	CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+  	INode node = (INode)codeGenArgument.getArgument();
+  	String cid = node.getUniqueName();
+
+    boolean isExecuteCommand = "true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__EXECUTE_COMMAND__"));
+    String function = ElementParameterParser.getValue(node,"__FUNCTION__");
+    function = function.replaceAll("\n"," ");
+    function = function.replaceAll("\r"," ");
+  	String command = ElementParameterParser.getValue(node,"__COMMAND__");
+  	List<Map<String, String>> parameters = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__FUNCTION_PARAMETERS__");
+  	boolean dieOnError = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__DIE_ON_ERROR__"));
+  	
+  	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+  	boolean isKeyValueCommand = ("true").equalsIgnoreCase(ElementParameterParser.getValue(node, "__EXECUTE_KEYVALUECOMMAND__"));
+  	java.util.List<java.util.Map<String, String>> commandKeyValues = (java.util.List<java.util.Map<String, String>>)ElementParameterParser.getObjectValue(node, "__COMMAND_KEYVALUES__");
+  	boolean isJsonCommand = ("true").equalsIgnoreCase(ElementParameterParser.getValue(node, "__EXECUTE_JSONCOMMAND__"));
+  	String jsonCommand = ElementParameterParser.getValue(node,"__JSON_COMMAND__");
+  	jsonCommand = jsonCommand.replaceAll("\n"," ");
+  	jsonCommand = jsonCommand.replaceAll("\r"," ");
+
+  	if (isLog4jEnabled) {
+	%>
+		final StringBuffer log4jSb_<%=cid%> = new StringBuffer();
+	<%
+	}
+	%>
+	try{
+		<%
+		if(isExecuteCommand){
+			if(isKeyValueCommand){
+%>
+				com.mongodb.DBObject dbObjectCommand_<%=cid%> = new com.mongodb.BasicDBObject();
+<%
+				for(java.util.Map<String, String> keyValue : commandKeyValues){
+%>
+					dbObjectCommand_<%=cid%>.put(<%=keyValue.get("KEY")%>, <%=keyValue.get("VALUE")%>);
+<%
+				}
+%>
+				result_<%=cid%>=db_<%=cid%>.command(dbObjectCommand_<%=cid%>);
+<%
+			} else if (isJsonCommand){
+%>
+				result_<%=cid%> = db_<%=cid%>.command((com.mongodb.BasicDBObject) com.mongodb.util.JSON.parse(<%=jsonCommand%>));
+<%
+			} else{
+				if(isLog4jEnabled){
+%>					log.info("<%=cid%> - Execute command: \"" + <%=command%> + "\" .");
+<%
+				}
+%>
+				result_<%=cid%>=db_<%=cid%>.command(<%=command%>);
+<%
+			}
+		}else{
+			if(isLog4jEnabled){
+			%>	
+				log.info("<%=cid%> - Execute script function: " + <%=function%> + ".");
+				<%
+				for(Map<String, String> parameter:parameters){
+				%>
+					log4jSb_<%=cid%>.append(<%=parameter.get("PARAMETER")%>);
+					log4jSb_<%=cid%>.append("|");
+				<%
+				}
+				%>
+				log.info("<%=cid%> - Arguments : " + log4jSb_<%=cid%>+".");
+				log4jSb_<%=cid%>.delete(0,log4jSb_<%=cid%>.length());	
+			<%
+			}
+			%>
+			result_<%=cid%>=db_<%=cid%>.doEval(<%=function%><%for(Map<String, String> parameter:parameters){%>,<%=parameter.get("PARAMETER")%><%}%>);
+		<%
+		}
+		%>
+		if(result_<%=cid%>.ok()){
+			<%
+			if(isLog4jEnabled){
+			%>
+				log.info("<%=cid%> - Return the result is : "+result_<%=cid%>);
+			<%
+			} else {
+			%>
+			    System.out.println(result_<%=cid%>);
+		    <%
+			}
+			%>
+		}else{
+			<%
+			if(isLog4jEnabled){
+			%>
+				log.error("<%=cid%> - Error result: " + result_<%=cid%>);
+			<%
+			} else {
+            %>
+                System.out.println(result_<%=cid%>);
+            <%
+            }
+	        if (dieOnError) {
+	        %>
+	            throw new Exception("Error result: " + result_<%=cid%>);
+	        <%
+	        }
+	        %>
+		}
+	} catch(Exception e_<%=cid%>) {
+		<%
+		if (dieOnError) {
+		%>
+			e_<%=cid%>.printStackTrace();
+			throw e_<%=cid%>;
+		<%
+		} else {
+			if(isLog4jEnabled){
+			%>
+				log.error("<%=cid%> - " + e_<%=cid%>.getMessage());
+			<%
+			} else {
+			    %>
+			    System.err.println(e_<%=cid%>.getMessage());
+			    <%
+			}
+		}
+		%>
+	}

@@ -1,0 +1,413 @@
+<%@ jet 
+	imports="
+		org.talend.core.model.process.INode 
+		org.talend.core.model.process.ElementParameterParser 
+		org.talend.core.model.metadata.IMetadataTable 
+		org.talend.designer.codegen.config.CodeGeneratorArgument
+		java.util.List
+		java.util.Map
+	   	org.talend.core.model.process.IConnection    
+		org.talend.core.model.process.IConnectionCategory
+		org.talend.core.model.process.EConnectionType
+		org.talend.core.model.utils.NodeUtil
+	" 
+%>
+	<% 
+	CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+	INode node = (INode)codeGenArgument.getArgument();
+  	String cid = node.getUniqueName();
+
+    String dbhost   = ElementParameterParser.getValue(node, "__HOST__");
+    String dbname   = ElementParameterParser.getValue(node, "__DATABASE__");
+    boolean authentication="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REQUIRED_AUTHENTICATION__"));
+    String authenticationMechanism = ElementParameterParser.getValue(node, "__AUTHENTICATION_MECHANISM__");
+    String krbUserPrincipal = ElementParameterParser.getValue(node, "__KRB_USER_PRINCIPAL__");
+    String krbRealm = ElementParameterParser.getValue(node, "__KRB_REALM__");
+    String krbKdc = ElementParameterParser.getValue(node, "__KRB_KDC__");
+    String dbuser   = ElementParameterParser.getValue(node, "__USERNAME__");
+    String dbpass   = ElementParameterParser.getValue(node, "__PASSWORD__");
+    String mongoPort = ElementParameterParser.getValue(node, "__PORT__");
+    String dbport = mongoPort.startsWith("context.") ? "Integer.valueOf(" + mongoPort + ").intValue()" : mongoPort.replace("\"", "");
+    String collection=ElementParameterParser.getValue(node, "__COLLECTION__");
+    boolean dropExistCollection="true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__DROP_COLLECTION_CREATE__"));
+    boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"));
+    boolean useReplicaSet="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_REPLICA_SET__"));
+    boolean removeRoot="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REMOVE_ROOT__"));
+
+    boolean setWriteConcern = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_WRITE_CONCERN__"));
+    String writeConcern = ElementParameterParser.getValue(node, "__WRITE_CONCERN__");
+
+    boolean bulkWrite = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_BULK_WRITE__"));
+    String bulkWriteOperationSize = ElementParameterParser.getValue(node, "__BULK_WRITE_SIZE__");
+    String bulkWriteType = ElementParameterParser.getValue(node, "__BULK_WRITE_TYPE__");
+    boolean useAuthDB = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_AUTHENTICATION_DATABASE__"));
+    String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
+    String usedAuthenticationDB = useAuthDB ? authDB : dbname;
+    boolean queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
+
+    boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+	%>
+	int nb_line_<%=cid %> = 0;
+	<%
+    List<IMetadataTable> metadatas = node.getMetadataList();
+  	if(metadatas != null && metadatas.size() > 0){
+      	IMetadataTable metadata = metadatas.get(0);
+      	if(metadata != null){
+		%>
+			com.mongodb.Mongo mongo_<%=cid%>=null;
+			com.mongodb.DB db_<%=cid%> =null;
+			<%
+      		if (useExistingConnection){
+      			String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+				%>
+				mongo_<%=cid%>=(com.mongodb.Mongo)globalMap.get("mongo_<%=connection%>");
+				db_<%=cid%> = (com.mongodb.DB) globalMap.get("db_<%=connection%>");
+				<%
+				if(isLog4jEnabled){
+				%>	
+					log.info("<%=cid%> - Get an existing client from " + "<%=connection%>" + ".");
+					log.info("<%=cid%> - Get an existing DB from " + "<%=connection%>" + ".");
+				<%
+				}
+			}else{
+			%>
+				<%
+	 			List<Map<String,String>> replicaAddrs= (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__REPLICA_SET__");
+		        boolean useSSL = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_SSL__"));
+
+		        String mongoDbDriver = "com.mongodb.MongoClient";
+
+		        %>
+                // Empty client options
+                com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().build();
+                <%
+                if (useSSL) {
+                    %>
+                    clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder()
+                    .socketFactory(javax.net.ssl.SSLSocketFactory.getDefault())
+                    .build();
+                    <%
+                }
+                
+                // Client Credentials
+                %>
+                // Empty client credentials list
+                java.util.List<com.mongodb.MongoCredential> mongoCredentialList_<%=cid%> = new java.util.ArrayList<com.mongodb.MongoCredential>();
+
+                <%
+                // Authentication
+                if (authentication){
+                    %>
+                    com.mongodb.MongoCredential mongoCredential_<%=cid%>;
+                    <%
+                    if((authenticationMechanism.equals("NEGOTIATE_MEC"))||(authenticationMechanism.equals("PLAIN_MEC"))||(authenticationMechanism.equals("SCRAMSHA1_MEC"))){
+                        String passwordFieldName = "__PASSWORD__";
+                        %>
+                        <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
+                        <%
+                        if(authenticationMechanism.equals("NEGOTIATE_MEC")){
+%>
+                    	    mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createCredential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
+<%                    
+                        } else if(authenticationMechanism.equals("PLAIN_MEC")){
+                            %>
+                            mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createPlainCredential(<%=dbuser%>, "$external", new String(decryptedPassword_<%=cid%>).toCharArray());
+                            <%
+                        } else if(authenticationMechanism.equals("SCRAMSHA1_MEC")){
+                            %>
+                            mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createScramSha1Credential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
+                            <%
+                        }
+                    } else { // GSSAPI SASL (KERBEROS)
+                        %>
+                        System.setProperty("java.security.krb5.realm", <%=krbRealm%>);
+                        System.setProperty("java.security.krb5.kdc", <%=krbKdc%>);
+                        System.setProperty("javax.security.auth.useSubjectCredsOnly", "false");
+                        mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createGSSAPICredential(<%=krbUserPrincipal%>);
+                        <%
+                    }
+                    %>
+                    mongoCredentialList_<%=cid%>.add(mongoCredential_<%=cid%>);
+                    <%
+                }
+
+                // the client
+                if(useReplicaSet){
+                    %>
+                    List<com.mongodb.ServerAddress> addrs_<%=cid%> = new java.util.ArrayList<com.mongodb.ServerAddress>();
+                    <%
+                    for(Map<String,String> replicaAddr:replicaAddrs){
+                    %>
+                        addrs_<%=cid%>.add(new com.mongodb.ServerAddress(<%=replicaAddr.get("REPLICA_HOST")%>,<%=replicaAddr.get("REPLICA_PORT")%>));
+                    <%
+                    }
+                    %>
+                    mongo_<%=cid%> = new <%=mongoDbDriver%>(addrs_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
+                    <%
+                }else{
+                    %>
+                    com.mongodb.ServerAddress serverAddress_<%=cid%> = new com.mongodb.ServerAddress(<%=dbhost%>, <%=dbport%>);
+                    mongo_<%=cid%> = new <%=mongoDbDriver%>(serverAddress_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
+                    <%
+                }
+                %>
+				resourceMap.put("mongo_<%=cid%>", mongo_<%=cid%>);
+				db_<%=cid%> = mongo_<%=cid%>.getDB(<%=dbname%>);
+				<%
+			}
+
+			if(queryOptionNoTimeOut){
+		        %>
+		        mongo_<%=cid%>.addOption(com.mongodb.Bytes.QUERYOPTION_NOTIMEOUT);
+		        <%
+    		}
+
+			if(setWriteConcern){
+				%>
+				mongo_<%=cid%>.setWriteConcern(com.mongodb.WriteConcern.<%=writeConcern%>);
+				<%
+			}
+
+			if(isLog4jEnabled){
+			%>	
+				log.info("<%=cid%> - Connecting to " + mongo_<%=cid%>.getServerAddressList() + ".");
+			<%
+			}
+			if(dropExistCollection){
+			%>
+				if(db_<%=cid%>.collectionExists(<%=collection%>)){
+					db_<%=cid%>.getCollection(<%=collection%>).drop();
+				}
+			<%
+			}
+			%>
+			com.mongodb.DBCollection coll_<%=cid%> = db_<%=cid%>.getCollection(<%=collection%>);
+
+			<%
+			// BulkWrite
+			if(bulkWrite){
+			%>
+				com.mongodb.BulkWriteOperation bulkWriteOperation_<%=cid%> = coll_<%=cid%>.initialize<%=bulkWriteType%>BulkOperation();
+				int bulkWriteOperationCounter_<%=cid%> = 1;
+				int bulkWriteOperationSize_<%=cid%> = Integer.parseInt(<%=bulkWriteOperationSize%>);
+				<%
+			}
+
+			%>
+				
+			net.sf.json.xml.XMLSerializer xmlSerializer_<%=cid%> = new net.sf.json.xml.XMLSerializer(); 
+		    xmlSerializer_<%=cid%>.clearNamespaces();
+		    xmlSerializer_<%=cid%>.setSkipNamespaces(true);
+		    xmlSerializer_<%=cid%>.setForceTopLevelObject(<%=(removeRoot?false:true)%>);
+		    <%
+		    INode sourceNode = node.getIncomingConnections(EConnectionType.ON_COMPONENT_OK).get(0).getSource();
+			String virtualSourceCid = sourceNode.getUniqueName();
+			INode startNode = NodeUtil.getSpecificStartNode(sourceNode);
+			String startNodeCid = null; 
+			if(startNode != null){
+				startNodeCid = startNode.getUniqueName();
+			} 
+			IConnection nextMergeConn = NodeUtil.getNextMergeConnection(node);
+			if(nextMergeConn != null && nextMergeConn.getInputId()>1 && startNodeCid != null){
+			%>
+				java.util.Queue<String> queue_<%=cid%> = new java.util.concurrent.ConcurrentLinkedQueue<String>();
+				
+				class ThreadXMLField_<%=cid%> extends Thread {
+					java.util.Queue<String> queue;
+					java.util.List<java.util.Map<String,String>> flows;
+					java.lang.Exception lastException;
+					String currentComponent;
+					
+					ThreadXMLField_<%=cid%>(java.util.Queue q) {
+						this.queue = q;
+						globalMap.put("queue_<%=virtualSourceCid%>", queue);
+						lastException = null;
+					}
+					
+					ThreadXMLField_<%=cid%>(java.util.Queue q, java.util.List<java.util.Map<String,String>> l) {
+						this.queue = q;
+						this.flows = l;
+						lastException = null;
+						globalMap.put("queue_<%=virtualSourceCid%>", queue);
+						globalMap.put("flows_<%=virtualSourceCid%>", flows);
+					}
+					
+					public java.lang.Exception getLastException() {
+						return this.lastException;
+					}
+					public String getCurrentComponent() {
+						return this.currentComponent;
+					}
+				
+					@Override
+					public void run() {
+						try {
+							<%=startNodeCid%>Process(globalMap);
+						} catch (TalendException te) {
+							this.lastException = te.getException();
+							this.currentComponent = te.getCurrentComponent();
+							globalMap.put("<%=cid%>_FINISH" + (this.queue==null?"":this.queue.hashCode()), "true");
+						}
+					}
+				}
+				
+				ThreadXMLField_<%=cid%> txf_<%=cid%> = new ThreadXMLField_<%=cid%>(queue_<%=cid%>);
+				txf_<%=cid%>.start();
+			<%
+			}else{
+			%>
+				java.util.Queue<String> queue_<%=cid%> = (java.util.Queue<String>) globalMap.get("queue_<%=cid%>");
+			<%
+			}
+		    %>
+			String readFinishMarkWithPipeId_<%=cid%> = "<%=cid%>_FINISH"+(queue_<%=cid%>==null?"":queue_<%=cid%>.hashCode());
+			String str_<%=cid %> = null;
+			<%
+			if(isLog4jEnabled){
+			%>
+				log.info("<%=cid%> - Start to write data into database ["+db_<%=cid%>.getName()+"], data is generated by [<%=virtualSourceCid%>].");
+			<%
+			}
+			%>
+	         /**
+             * Convert Date and Byte array in mongo DB format
+             *
+             */
+            class MongoDBTreeConverter_<%=cid%> {
+
+                /**
+                 * header method to ease javajet implementation.
+                 **/
+                public void processTree(Object currentElement, String[] path, String pattern) {
+                    if (currentElement instanceof com.mongodb.BasicDBObject) {
+                        // Start index at 1, in order to remove the first unwanted or empty string.
+                        processTree((com.mongodb.BasicDBObject)currentElement, path, 1, pattern);
+                   } else if (currentElement instanceof com.mongodb.BasicDBList) {
+                       // Start index at 1, in order to remove the first unwanted or empty string.
+                       processTree((com.mongodb.BasicDBList) currentElement, path, 1, pattern);
+                   }
+                }
+
+                public void processTree(com.mongodb.BasicDBObject currentElement, String[] path, int index, String pattern) {
+                    if (index  < path.length - 1) {
+                        Object nextElement = currentElement.get(path[index]);
+                        if (nextElement instanceof com.mongodb.BasicDBObject) {
+                             processTree((com.mongodb.BasicDBObject)nextElement, path, index + 1, pattern);
+                        } else if (nextElement instanceof com.mongodb.BasicDBList) {
+                            processTree((com.mongodb.BasicDBList) nextElement, path, index + 1, pattern);
+                        } else if (nextElement == null && index > 0) {
+                            // some loop are not reported by the XML tree
+                            nextElement = currentElement.get(path[index - 1]);
+                            if (nextElement != null) {
+                                if (nextElement instanceof com.mongodb.BasicDBObject) {
+                                    processTree((com.mongodb.BasicDBObject)nextElement, path, index, pattern);
+                               } else if (nextElement instanceof com.mongodb.BasicDBList) {
+                                   processTree((com.mongodb.BasicDBList) nextElement, path, index, pattern);
+                               }
+                            }
+                        }
+                    } else {
+                        // process leaf
+                        if (currentElement.get(path[path.length - 1]) instanceof com.mongodb.BasicDBList) {
+                            // if the leaf is a list
+                            com.mongodb.BasicDBList finalObjects = (com.mongodb.BasicDBList) currentElement.get(path[path.length - 1]);
+                            com.mongodb.BasicDBList convertedElements = new com.mongodb.BasicDBList();
+                            for (Object finalObject: finalObjects) {
+                                if (pattern == null) {
+                                    // no pattern, we want to parse to a byte array.
+                                    if (finalObject != null) {
+								                                convertedElements.add(
+								                                        ((String)finalObject).getBytes());
+                                    }
+                                } else {
+                                    if (finalObject != null) {
+                                        convertedElements.add(
+                                                ParserUtils.parseTo_Date((String)finalObject,
+                                                        pattern));
+                                    }
+                                }
+                            }
+                            finalObjects.clear();
+                            finalObjects.addAll(convertedElements);
+                        } else {
+                            if (pattern == null) {
+                                // no pattern, we want to parse to a byte array.
+                                if (currentElement.get(path[path.length - 1]) != null) {
+								                            currentElement.put(path[path.length - 1],
+								                                    ((String)currentElement.get(path[path.length - 1])).getBytes());
+                                }
+                            } else {
+                                if (currentElement.get(path[path.length - 1]) != null) {
+                                    currentElement.put(path[path.length - 1],
+                                            ParserUtils.parseTo_Date((String)(currentElement).get(path[path.length - 1]),
+                                                    pattern));
+                                }
+                            }
+                        }
+                    }
+                }
+
+                public void processTree(com.mongodb.BasicDBList currentElements, String[] path, int index, String pattern) {
+                    if (index  < path.length - 1) {
+                        for (Object currentElement: currentElements) {
+                            if (currentElement instanceof com.mongodb.BasicDBObject) {
+                                processTree((com.mongodb.BasicDBObject)currentElement, path, index + 1, pattern);
+                            } else if (currentElement instanceof com.mongodb.BasicDBList) {
+                                processTree((com.mongodb.BasicDBList) currentElement, path, index + 1, pattern);
+                            }
+                        }
+                    } else {
+                        // process leaf
+                        com.mongodb.BasicDBList convertedElements = new com.mongodb.BasicDBList();
+                        for (Object finalObject: currentElements) {
+                            if (finalObject instanceof com.mongodb.BasicDBObject) {
+                                com.mongodb.BasicDBObject currentElement = (com.mongodb.BasicDBObject) finalObject;
+                                if (pattern == null) {
+                                    // no pattern, we want to parse to a byte array.
+                                    if (currentElement.get(path[path.length - 1]) != null) {
+								                                currentElement.put(path[path.length - 1],
+								                                        ((String)currentElement.get(path[path.length - 1])).getBytes());
+                                    }
+                                } else {
+                                    if (currentElement.get(path[path.length - 1]) != null) {
+                                        currentElement.put(path[path.length - 1],
+                                                ParserUtils.parseTo_Date((String)(currentElement).get(path[path.length - 1]),
+                                                        pattern));
+                                    }
+                                }
+                            } else { // loop with raw types
+                                if (pattern == null) {
+                                    // no pattern, we want to parse to a byte array.
+                                    if (finalObject != null) {
+								                                convertedElements.add(
+								                                        ((String)finalObject).getBytes());
+                                    }
+                                } else {
+                                    if (finalObject != null) {
+                                        convertedElements.add(
+                                                ParserUtils.parseTo_Date((String)finalObject,
+                                                        pattern));
+                                    }
+                                }
+                            }
+                        }
+                        if (convertedElements.size() > 0) {
+                            currentElements.clear();
+                            currentElements.addAll(convertedElements);
+                        }
+                    }
+
+                }
+            }
+            MongoDBTreeConverter_<%=cid%> mongoDBTreeConverter_<%=cid%> = new MongoDBTreeConverter_<%=cid%>();
+			while(!globalMap.containsKey(readFinishMarkWithPipeId_<%=cid%>) || !queue_<%=cid%>.isEmpty()) {
+				if (!queue_<%=cid%>.isEmpty()) {
+					str_<%=cid %> = queue_<%=cid %>.poll();
+					//Convert XML to JSON
+			        net.sf.json.JSON json_<%=cid%> = xmlSerializer_<%=cid%>.read(str_<%=cid %>);
+					nb_line_<%=cid%>++;
+
+		<%
+    	}
+    }
+	%>
