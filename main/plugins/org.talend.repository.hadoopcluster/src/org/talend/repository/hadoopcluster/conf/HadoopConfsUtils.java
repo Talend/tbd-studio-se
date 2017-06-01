@@ -16,7 +16,11 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
@@ -232,6 +236,34 @@ public class HadoopConfsUtils {
         return confsJarDefaultName;
     }
 
+    public static boolean renameContextGroups(HadoopClusterConnection connection, Map<String, String> contextGroupRanamedMap) {
+        if (connection == null || contextGroupRanamedMap == null || contextGroupRanamedMap.isEmpty()) {
+            return false;
+        }
+        boolean modified = false;
+        if (connection.isContextMode()) {
+            EMap<String, byte[]> confFiles = connection.getConfFiles();
+            Map<String, byte[]> newConfFiles = new HashMap<>();
+            Set<Entry<String, byte[]>> confFilesEntrySet = confFiles.entrySet();
+            Iterator<Entry<String, byte[]>> confFilesIterator = confFilesEntrySet.iterator();
+            while (confFilesIterator.hasNext()) {
+                Entry<String, byte[]> confFileEntry = confFilesIterator.next();
+                String newContextGroupName = contextGroupRanamedMap.get(confFileEntry.getKey());
+                if (newContextGroupName != null) {
+                    newConfFiles.put(newContextGroupName, confFileEntry.getValue());
+                    modified = true;
+                } else {
+                    newConfFiles.put(confFileEntry.getKey(), confFileEntry.getValue());
+                }
+            }
+            if (modified) {
+                confFiles.clear();
+                confFiles.putAll(newConfFiles);
+            }
+        }
+        return modified;
+    }
+
     private static void createAndDeployConfJar(HadoopClusterConnectionItem connectionItem, String confJarId, String confJarName)
             throws IOException {
         // If the conf jar has been deployed before then no need to deploy again.
@@ -248,8 +280,9 @@ public class HadoopConfsUtils {
                 for (ContextType contextType : contexts) {
                     String contextName = contextType.getName();
                     byte[] bs = confFiles.get(contextName);
-                    if (confJarId.contains(contextName) && bs != null) {
+                    if (confJarId.endsWith(contextName) && bs != null) {
                         confFileBA = bs;
+                        break;
                     }
                 }
             }

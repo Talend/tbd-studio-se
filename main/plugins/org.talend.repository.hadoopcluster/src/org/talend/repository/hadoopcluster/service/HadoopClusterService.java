@@ -35,10 +35,12 @@ import org.talend.core.model.metadata.builder.connection.DatabaseConnection;
 import org.talend.core.model.process.IElementParameter;
 import org.talend.core.model.process.IProcess;
 import org.talend.core.model.properties.ConnectionItem;
+import org.talend.core.model.properties.ContextItem;
 import org.talend.core.model.properties.DatabaseConnectionItem;
 import org.talend.core.model.properties.Item;
 import org.talend.core.model.repository.ERepositoryObjectType;
 import org.talend.core.model.repository.IRepositoryTypeProcessor;
+import org.talend.core.model.repository.IRepositoryViewObject;
 import org.talend.core.repository.model.ProxyRepositoryFactory;
 import org.talend.designer.core.model.components.EParameterName;
 import org.talend.designer.core.model.components.EmfComponent;
@@ -235,7 +237,7 @@ public class HadoopClusterService implements IHadoopClusterService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.hadoop.IHadoopClusterService#getHadoopCustomLibraries()
      */
     @Override
@@ -484,6 +486,31 @@ public class HadoopClusterService implements IHadoopClusterService {
             return hcConnection.isUseCustomConfs() && hcConnection.isContextMode() && !ProcessorUtilities.isExportAsOSGI();
         }
         return false;
+    }
+
+    @Override
+    public boolean updateConfJarsByContextGroup(ContextItem contextItem, Map<String, String> contextGroupRanamedMap) {
+        boolean updated = false;
+        try {
+            List<IRepositoryViewObject> allHadoopClusterRepObjs = ProxyRepositoryFactory.getInstance()
+                    .getAll(ProjectManager.getInstance().getCurrentProject(), getHadoopClusterType());
+            for (IRepositoryViewObject repObj : allHadoopClusterRepObjs) {
+                HadoopClusterConnectionItem hcItem = (HadoopClusterConnectionItem) repObj.getProperty().getItem();
+                HadoopClusterConnection hcConnection = (HadoopClusterConnection) hcItem.getConnection();
+                if (hcConnection.isUseCustomConfs()) {
+                    String contextId = hcConnection.getContextId();
+                    if (contextId != null && contextId.equals(contextItem.getProperty().getId())) {
+                        boolean renamed = HadoopConfsUtils.renameContextGroups(hcConnection, contextGroupRanamedMap);
+                        if (renamed) {
+                            HadoopConfsUtils.getConfsJarDefaultNames(hcItem, true);
+                        }
+                    }
+                }
+            }
+        } catch (PersistenceException e) {
+            ExceptionHandler.process(e);
+        }
+        return updated;
     }
 
 }
