@@ -194,7 +194,6 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="parquet-format-2.3.1.jar" name="parquet-format-2.3.1.jar" mvn_uri="mvn:org.talend.libraries/parquet-format-2.3.1/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="parquet-hadoop-1.5.0-cdh5.7.0.jar" name="parquet-hadoop-1.5.0-cdh5.7.0.jar" mvn_uri="mvn:org.talend.libraries/parquet-hadoop-1.5.0-cdh5.7.0/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="parquet-hadoop-bundle-1.5.0-cdh5.8.0.jar" name="parquet-hadoop-bundle-1.5.0-cdh5.8.0.jar" mvn_uri="mvn:org.talend.libraries/parquet-hadoop-bundle-1.5.0-cdh5.8.0/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="parquet-hadoop-bundle-1.8.1.jar" name="parquet-hadoop-bundle-1.8.1.jar" mvn_uri="mvn:org.talend.libraries/parquet-hadoop-bundle-1.8.1/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="parquet-hadoop-1.8.1.jar" name="parquet-hadoop-1.8.1.jar" mvn_uri="mvn:org.talend.libraries/parquet-hadoop-1.8.1/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="parquet-jackson-1.8.1.jar" name="parquet-jackson-1.8.1.jar" mvn_uri="mvn:org.talend.libraries/parquet-jackson-1.8.1/6.0.0"/> 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="pmml-model-1.2.15.jar" name="pmml-model-1.2.15.jar" mvn_uri="mvn:org.talend.libraries/pmml-model-1.2.15/6.0.0"/>
