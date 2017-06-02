@@ -13,37 +13,30 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.altus10"
-            id="aws-java-sdk-core-1.11.132"
+            id="aws-java-sdk-core-1.11.132.jar"
             name="aws-java-sdk-core-1.11.132.jar"
             mvn_uri="mvn:org.talend.libraries/aws-java-sdk-core-1.11.132/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.altus10"
-            id="aws-java-sdk-s3-1.11.132"
+            id="aws-java-sdk-s3-1.11.132.jar"
             name="aws-java-sdk-s3-1.11.132.jar"
             mvn_uri="mvn:org.talend.libraries/aws-java-sdk-s3-1.11.132/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh5100"
-            id="aws-java-sdk-kinesis-1.11.132"
-            name="aws-java-sdk-kinesis-1.11.132.jar"
-            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-kinesis-1.11.132/6.0.0">
+            context="plugin:org.talend.hadoop.distribution.altus10"
+            id="aws-java-sdk-kinesis-1.10.6.jar"
+            name="aws-java-sdk-kinesis-1.10.6.jar"
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-kinesis-1.10.6/6.0.0">
         </libraryNeeded>
-
+        
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.altus10"
             id="amazon-kinesis-client-1.6.0.jar"
             name="amazon-kinesis-client-1.6.0.jar"
             mvn_uri="mvn:org.talend.libraries/amazon-kinesis-client-1.6.0/6.0.0">
-        </libraryNeeded>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh5100"
-            id="jackson-dataformat-cbor-2.6.6"
-            name="jackson-dataformat-cbor-2.6.6.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-dataformat-cbor-2.6.6/6.0.0">
         </libraryNeeded>
 
         <!-- HDFS common group -->
@@ -120,7 +113,7 @@
             <library id="commons-configuration-1.6.jar"/>
             <library id="commons-crypto-1.0.0.jar"/>
             <library id="commons-dbcp-1.4.jar"/>
-            <library id="commons-httpclient-3.1"/>
+            <library id="commons-httpclient-3.1.jar"/>
             <library id="commons-io-2.4.jar"/>
             <library id="commons-lang-2.6.jar"/>
             <library id="commons-lang3-3.5.jar"/>
@@ -269,8 +262,8 @@
                 description="Spark S3 libraries for CDH 5.10 that are MRREQUIRED"
                 id="SPARK-S3-LIB-MRREQUIRED-ALTUS10"
                 name="SPARK-S3-LIB-MRREQUIRED-ALTUS10">
-            <library id="aws-java-sdk-s3-1.11.132" />
-            <library id="aws-java-sdk-core-1.11.132" />
+            <library id="aws-java-sdk-s3-1.11.132.jar"/>
+            <library id="aws-java-sdk-core-1.11.132.jar" />
         </libraryNeededGroup>
 
         <!-- Map/Reduce group -->
@@ -287,7 +280,7 @@
              <library id="hadoop-yarn-server-web-proxy-cdh5.10"/>                          
              <library id="commons-io-2.4.jar"/>
              <library id="commons-codec-1.9.jar" />
-             <library id="commons-httpclient-3.1"/>
+             <library id="commons-httpclient-3.0.1.jar"/>
              <library id="htrace-core-3.2.0-incubating.jar" />
              <library id="jackson-mapper-asl-1.8.8.jar" />
              <library id="jackson-core-asl-1.8.8.jar" />
@@ -301,18 +294,13 @@
                 description="Spark Kinesis libraries for CDH 5.10 that are MRREQUIRED"
                 id="SPARK-KINESIS-LIB-MRREQUIRED-ALTUS10"
                 name="SPARK-KINESIS-LIB-MRREQUIRED-ALTUS10">
-            <group id="SPARK-S3-LIB-MRREQUIRED-ALTUS10" />
-            <group id="HDFS-LIB-ALTUS10" />
             <library id="spark-streaming-kinesis-asl_2.11-2.1.0.jar"/>
-
-            <!--this is for tKinesisInput, because aws-java-sdk version is 1.10.6, use this version may better-->
+            <!--this is for tKinesisInput, because aws-java-sdk version is 1.10.6 in CDH5.11 , use this version is better-->
             <library id="amazon-kinesis-client-1.6.0.jar"/>
             <library id="aws-java-sdk-cloudwatch-1.10.6.jar"/>
-
-            <!--to make tKinesisOutput working, need this, in CDH cluster aws-java-sdk-core version is 1.10.6-->
-            <library id="aws-java-sdk-kinesis-1.11.132.jar" />
-			<library id="httpclient-4.5.2.jar"/>
-			<library id="jackson-dataformat-cbor-2.6.6" />
+            
+            <!--to make tKinesisOutput working, in CDH5.11 aws-java-sdk version is 1.10.6-->
+            <library id="aws-java-sdk-kinesis-1.10.6.jar"/>
         </libraryNeededGroup>
         
         
