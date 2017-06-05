@@ -588,6 +588,10 @@
 				MVN="mvn:org.talend.libraries/netty-3.6.6.Final/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh5.1/lib/netty-3.6.6.Final.jar"
 				REQUIRED_IF="HBASE_VERSION=='Cloudera_CDH5' AND (DISTRIBUTION!='CUSTOM')" />
+			<IMPORT NAME="netty-all-4.0.29.Final.jar" MODULE="netty-all-4.0.29.Final.jar"
+				MVN="mvn:org.talend.libraries/netty-all-4.0.29.Final/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.netty-all/lib/netty-all-4.0.29.Final.jar"
+				REQUIRED_IF="(HBASE_VERSION=='Cloudera_CDH5_8') AND (DISTRIBUTION!='CUSTOM')" />
 
 			<!-- Cloudera_CDH5_1 -->
 			<IMPORT MODULE_GROUP="HBASE-LIB-CDH_5_1_LASTEST"
