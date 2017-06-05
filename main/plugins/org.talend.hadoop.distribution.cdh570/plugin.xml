@@ -323,6 +323,13 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh570"
+            id="jackson-annotations-2.3.0.jar"
+            name="jackson-annotations-2.3.0.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-annotations-2.3.0/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh570"
             id="zookeeper-cdh5.7.0"
             name="zookeeper-3.4.5-cdh5.7.0.jar"
             mvn_uri="mvn:org.talend.libraries/zookeeper-3.4.5-cdh5.7.0/6.1.0">
