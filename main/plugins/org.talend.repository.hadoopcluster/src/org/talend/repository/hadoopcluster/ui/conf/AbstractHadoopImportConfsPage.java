@@ -37,6 +37,7 @@ import org.talend.repository.hadoopcluster.ui.ICheckListener;
 public abstract class AbstractHadoopImportConfsPage extends WizardPage implements IImportConfsWizardPage {
 
     protected IRetrieveConfsService confsService;
+
     protected DistributionVersion distriVersion;
 
     private List<String> filterProperties;
@@ -108,6 +109,9 @@ public abstract class AbstractHadoopImportConfsPage extends WizardPage implement
         Set<String> fProps = new HashSet<>();
         fProps.add("net.topology.script.file.name"); //$NON-NLS-1$
         fProps.add("hbase.rpc.controllerfactory.class"); //$NON-NLS-1$
+        fProps.add("hive.exec.failure.hooks"); //$NON-NLS-1$
+        fProps.add("hive.exec.post.hooks"); //$NON-NLS-1$
+        fProps.add("hive.exec.pre.hooks"); //$NON-NLS-1$
         return fProps;
     }
 
@@ -147,14 +151,16 @@ public abstract class AbstractHadoopImportConfsPage extends WizardPage implement
     public List<String> getSelectedServices() {
         return null;
     }
-    
+
+    @Override
     public boolean isSupportCreateServiceConnection() {
         if (distriVersion != null) {
             return distriVersion.doSupportCreateServiceConnection();
         }
         return true;
     }
-    
+
+    @Override
     public List<String> getNecessaryServiceName() {
         if (distriVersion != null) {
             return distriVersion.getNecessaryServiceName();
