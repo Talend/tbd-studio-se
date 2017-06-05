@@ -325,4 +325,9 @@ public class HDP230Distribution extends AbstractDistribution implements HDFSComp
     public boolean doSupportHDFSEncryption() {
         return true;
     }
+
+    @Override
+    public boolean isHortonworksDistribution() {
+        return true;
+    }
 }

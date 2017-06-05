@@ -269,12 +269,16 @@ public abstract class AbstractDistribution {
     public boolean doSupportOozie() {
         return true;
     }
-    
+
     public boolean doSupportCreateServiceConnection() {
         return true;
     }
 
     public List<String> getNecessaryServiceName() {
         return null;
+    }
+
+    public boolean isHortonworksDistribution() {
+        return false;
     }
 }

@@ -418,4 +418,9 @@ public class HDP250Distribution extends AbstractDistribution implements HDFSComp
     public boolean doSupportKerberizedKafka() {
         return true;
     }
+
+    @Override
+    public boolean isHortonworksDistribution() {
+        return true;
+    }
 }
