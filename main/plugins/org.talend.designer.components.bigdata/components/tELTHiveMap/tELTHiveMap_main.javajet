@@ -247,18 +247,34 @@
         	continue;
         }
 
-        String sqlQuery = gm.buildSqlSelect((DbMapComponent) node, outputTable.getName());
-        
+        gm.buildSqlSelect((DbMapComponent) node, outputTable.getName());
+        List<String> querySegments = gm.getQuerySegments();
+        List<String> queryColumnsSegments = gm.getQueryColumnsSegments();
 	%>
-
-			globalMap.put(
-				"<%=uniqueNameComponent %>"+"QUERY" + "<%= connection.getUniqueName() %>",
-				<%= sqlQuery.replaceAll("[\r\n]", " ") %>
-			);
-			globalMap.put(
-					"<%=uniqueNameComponent %>"+"QUERY_COLUMNS_NAME" + "<%= connection.getUniqueName() %>",
-					<%= gm.getQueryColumnsName() %>
-			);
+			class SQLBuilder_<%=uniqueNameComponent%> {//avoid 65535 issue in a separate class
+			
+				String getQuerySegments() {
+					return new StringBuilder()
+    					<%for(String segment : querySegments) {%>
+    					.append("<%=segment.replaceAll("[\r\n]", " ")%>")
+    					<%}%>
+    					.toString();
+				}
+				
+				String getQueryColumnsSegments() {
+					return new StringBuilder()
+        				<%for(String segment : queryColumnsSegments) {%>
+        				.append("<%=segment%>")
+        				<%}%>
+        				.toString();
+				}
+			}
+			
+			SQLBuilder_<%=uniqueNameComponent%> sqlBuilder_<%=uniqueNameComponent%> = new SQLBuilder_<%=uniqueNameComponent%>();
+			
+			globalMap.put("<%=uniqueNameComponent %>"+"QUERY" + "<%= connection.getUniqueName() %>", sqlBuilder_<%=uniqueNameComponent%>.getQuerySegments());
+			
+			globalMap.put("<%=uniqueNameComponent %>"+"QUERY_COLUMNS_NAME" + "<%= connection.getUniqueName() %>", sqlBuilder_<%=uniqueNameComponent%>.getQueryColumnsSegments());
 			<%
             if(!tablesProcessed.contains(outputTable.getTableName())) {          
             %>       
