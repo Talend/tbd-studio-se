@@ -13,6 +13,7 @@
 package org.talend.repository.hadoopcluster.ui.dnd;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -229,7 +230,7 @@ public class HadoopClusterDragAndDropHandler extends AbstractDragAndDropServiceH
             return neededComponents;
         }
         IComponentsService service = (IComponentsService) GlobalServiceRegister.getDefault().getService(IComponentsService.class);
-        Set<IComponent> components = service.getComponentsFactory().getComponents();
+        Collection<IComponent> components = service.getComponentsFactory().readComponents();
         for (IComponent component : components) {
             if (isValid(item, type, seletetedNode, component, HadoopClusterRepositoryNodeType.HADOOPCLUSTER.name())
                     && !neededComponents.contains(component)) {

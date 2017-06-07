@@ -1,8 +1,8 @@
 package org.talend.repository.hcatalog.ui.dnd;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -186,7 +186,7 @@ public class HCatalogDragAndDropHandler extends AbstractDragAndDropServiceHandle
             return neededComponents;
         }
         IComponentsService service = (IComponentsService) GlobalServiceRegister.getDefault().getService(IComponentsService.class);
-        Set<IComponent> components = service.getComponentsFactory().getComponents();
+        Collection<IComponent> components = service.getComponentsFactory().readComponents();
         for (IComponent component : components) {
             if (isValid(item, type, seletetedNode, component, HCATALOG) && !neededComponents.contains(component)) {
                 neededComponents.add(component);

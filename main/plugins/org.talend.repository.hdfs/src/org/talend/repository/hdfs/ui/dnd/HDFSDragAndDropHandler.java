@@ -13,6 +13,7 @@
 package org.talend.repository.hdfs.ui.dnd;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -219,7 +220,7 @@ public class HDFSDragAndDropHandler extends AbstractDragAndDropServiceHandler {
             return neededComponents;
         }
         IComponentsService service = (IComponentsService) GlobalServiceRegister.getDefault().getService(IComponentsService.class);
-        Set<IComponent> components = service.getComponentsFactory().getComponents();
+        Collection<IComponent> components = service.getComponentsFactory().readComponents();
         for (IComponent component : components) {
             if (isValid(item, type, seletetedNode, component, HDFS) && !neededComponents.contains(component)) {
                 neededComponents.add(component);

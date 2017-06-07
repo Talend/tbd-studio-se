@@ -13,8 +13,8 @@
 package org.talend.repository.nosql.ui.dnd;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.core.GlobalServiceRegister;
@@ -72,7 +72,7 @@ public class NoSQLDragAndDropHandler extends AbstractNoSQLDragAndDropHandler {
         }
         NoSQLConnection connection = (NoSQLConnection) ((NoSQLConnectionItem) item).getConnection();
         IComponentsService service = (IComponentsService) GlobalServiceRegister.getDefault().getService(IComponentsService.class);
-        Set<IComponent> components = service.getComponentsFactory().getComponents();
+        Collection<IComponent> components = service.getComponentsFactory().readComponents();
         for (IComponent component : components) {
             if (isValid(item, type, seletetedNode, component, getRepType(connection)) && !neededComponents.contains(component)) {
                 neededComponents.add(component);
