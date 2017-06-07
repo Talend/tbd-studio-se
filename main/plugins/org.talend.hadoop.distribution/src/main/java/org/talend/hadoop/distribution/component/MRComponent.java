@@ -19,7 +19,7 @@ package org.talend.hadoop.distribution.component;
 public interface MRComponent extends HadoopComponent {
 
     /**
-     * @return true if the distribution executes its M/R job trhough WebHCat. It returns false if the distribution
+     * @return true if the distribution executes its M/R job through WebHCat. It returns false if the distribution
      * executes through the resource manager.
      */
     public boolean isExecutedThroughWebHCat();

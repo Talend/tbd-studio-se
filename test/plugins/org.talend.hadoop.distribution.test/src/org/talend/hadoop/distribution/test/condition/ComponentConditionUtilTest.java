@@ -12,8 +12,11 @@
 // ============================================================================
 package org.talend.hadoop.distribution.test.condition;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.hasItem;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -117,7 +120,7 @@ public class ComponentConditionUtilTest {
         distributionVersions.add(new DistributionVersion(null,
                 new DistributionBean(ComponentType.SPARKBATCH, "DISTRIB1", ""), "VERSION1", "")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
         sparkVersionsMap.put(ESparkVersion.SPARK_2_0, distributionVersions);
-        distributionVersions = new HashSet<>();
+        distributionVersions = new LinkedHashSet<>();
         distributionVersions.add(new DistributionVersion(null,
                 new DistributionBean(ComponentType.SPARKBATCH, "DISTRIB2", ""), "VERSION2", "")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
         distributionVersions.add(new DistributionVersion(null,
@@ -128,6 +131,6 @@ public class ComponentConditionUtilTest {
         assertThat(Arrays.asList(showIfs), hasItem("(((DISTRIBUTION=='DISTRIB1') AND (SPARK_VERSION=='VERSION1')))")); //$NON-NLS-1$
         assertThat(
                 Arrays.asList(showIfs),
-                hasItem("(((DISTRIBUTION=='DISTRIB3') AND (SPARK_VERSION=='VERSION3')) OR ((DISTRIBUTION=='DISTRIB2') AND (SPARK_VERSION=='VERSION2')))")); //$NON-NLS-1$
+                hasItem("(((DISTRIBUTION=='DISTRIB2') AND (SPARK_VERSION=='VERSION2')) OR ((DISTRIBUTION=='DISTRIB3') AND (SPARK_VERSION=='VERSION3')))")); //$NON-NLS-1$
     }
 }

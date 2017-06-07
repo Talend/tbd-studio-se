@@ -18,10 +18,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
+import org.eclipse.emf.common.util.EMap;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -142,6 +145,50 @@ public class HadoopConfsUtilsTest {
         // If connection is context mode but context group is null then will not save conf jar.
         HadoopConfsUtils.buildAndDeployConfsJar(hcConnectionItem, null, testConfJarDir.getAbsolutePath(), testConfJarName);
         assertEquals(0, hcConnection.getConfFiles().size());
+    }
+
+    @Test
+    public void testRenameContextGroups_connectionIsNull() {
+        assertFalse(HadoopConfsUtils.renameContextGroups(null, createTestRenamedMap()));
+    }
+
+    @Test
+    public void testRenameContextGroups_ranamedMapIsNull() {
+        HadoopClusterConnection hcConnection = (HadoopClusterConnection) hcConnectionItem.getConnection();
+        assertFalse(HadoopConfsUtils.renameContextGroups(hcConnection, null));
+        assertFalse(HadoopConfsUtils.renameContextGroups(hcConnection, new HashMap<>()));
+    }
+
+    @Test
+    public void testRenameContextGroups_nonContextMode() {
+        HadoopClusterConnection hcConnection = (HadoopClusterConnection) hcConnectionItem.getConnection();
+        assertFalse(HadoopConfsUtils.renameContextGroups(hcConnection, createTestRenamedMap()));
+    }
+
+    @Test
+    public void testRenameContextGroups_contextMode() {
+        HadoopClusterConnection hcConnection = (HadoopClusterConnection) hcConnectionItem.getConnection();
+        hcConnection.setContextMode(true);
+        String oldContextGroup1 = "old"; //$NON-NLS-1$
+        String newContextGroup1 = "new"; //$NON-NLS-1$
+        byte[] jarContent1 = "jarcontent".getBytes(); //$NON-NLS-1$
+        String oldContextGroup2 = "old2"; //$NON-NLS-1$
+        byte[] jarContent2 = "jarcontent2".getBytes(); //$NON-NLS-1$
+        hcConnection.getConfFiles().put(oldContextGroup1, jarContent1);
+        hcConnection.getConfFiles().put(oldContextGroup2, jarContent2);
+        Map<String, String> renamedMap = new HashMap<>();
+        renamedMap.put(oldContextGroup1, newContextGroup1);
+        assertTrue(HadoopConfsUtils.renameContextGroups(hcConnection, renamedMap));
+        EMap<String, byte[]> newConfFiles = hcConnection.getConfFiles();
+        assertEquals(2, newConfFiles.size());
+        assertEquals(jarContent1, newConfFiles.get(newContextGroup1));
+        assertEquals(jarContent2, newConfFiles.get(oldContextGroup2));
+    }
+
+    private Map<String, String> createTestRenamedMap() {
+        Map<String, String> renamedMap = new HashMap<>();
+        renamedMap.put("old", "new"); //$NON-NLS-1$ //$NON-NLS-2$
+        return renamedMap;
     }
 
     @After

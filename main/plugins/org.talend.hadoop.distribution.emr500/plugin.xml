@@ -551,9 +551,9 @@
             
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr500"
-            id="spark-streaming-kinesis-asl_2.11"
-            name="spark-streaming-kinesis-asl_2.11.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-streaming-kinesis-asl_2.11/6.0.0"/>    
+            id="spark-streaming-kinesis-asl_2.11-emr500-latest"
+            name="spark-streaming-kinesis-asl_2.11-2.0.0.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-streaming-kinesis-asl_2.11-2.0.0/6.0.0"/>    
             
         <libraryNeeded 
             context="plugin:org.talend.hadoop.distribution.emr500"
@@ -1224,7 +1224,7 @@
                 id="SPARK-KINESIS-LIB-MRREQUIRED-EMR_5_0_0_LATEST"
                 name="SPARK-KINESIS-LIB-MRREQUIRED-EMR_5_0_0_LATEST">
             <!--<library id="spark-streaming-kinesis-asl-assembly-emr500-latest"/> -->
-            <library id="spark-streaming-kinesis-asl_2.11"/>
+            <library id="spark-streaming-kinesis-asl_2.11-emr500-latest"/>
             <library id="amazon-kinesis-client-1.2.1.jar"/>
             <library id="aws-java-sdk-kinesis-emr500-latest"/>
             <library id="aws-java-sdk-core-emr500-latest"/>            

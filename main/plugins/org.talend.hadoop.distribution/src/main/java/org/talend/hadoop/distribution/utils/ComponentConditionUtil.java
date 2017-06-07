@@ -12,8 +12,8 @@
 // ============================================================================
 package org.talend.hadoop.distribution.utils;
 
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -79,7 +79,7 @@ public class ComponentConditionUtil {
             int conditionIndex = 0;
 
             for (Map.Entry<ESparkVersion, Set<DistributionVersion>> entry : supportedSparkVersions.entrySet()) {
-                Set<ComponentCondition> multiComponentConditions = new HashSet<>();
+                Set<ComponentCondition> multiComponentConditions = new LinkedHashSet<>();
                 for (DistributionVersion distributionVersion : entry.getValue()) {
                     SimpleComponentCondition distribution = new SimpleComponentCondition(new BasicExpression(
                             "DISTRIBUTION", EqualityOperator.EQ, distributionVersion.distribution.getName())); //$NON-NLS-1$

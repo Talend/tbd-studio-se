@@ -266,10 +266,14 @@ public abstract class AbstractDistribution {
         return false;
     }
 
+    public boolean isAltusDistribution() {
+        return false;
+    }
+
     public boolean doSupportOozie() {
         return true;
     }
-    
+
     public boolean doSupportCreateServiceConnection() {
         return true;
     }
@@ -285,4 +289,8 @@ public abstract class AbstractDistribution {
 	public String getHiveMetastoreVersionForSpark() {
 		return null;
 	}
+
+  public boolean isHortonworksDistribution() {
+        return false;
+  }
 }

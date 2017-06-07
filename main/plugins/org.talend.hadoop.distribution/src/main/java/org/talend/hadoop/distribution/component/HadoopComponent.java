@@ -168,6 +168,12 @@ public interface HadoopComponent {
     public boolean isGoogleDataprocDistribution();
 
     /**
+     *
+     * @return true if the distribution is a cloudera altus cloud distribution
+     */
+    public boolean isAltusDistribution();
+
+    /**
      * @return a weight for the distribution, which will be used to sort the distributions in the components drop down
      * list.
      *
@@ -179,16 +185,23 @@ public interface HadoopComponent {
     }
 
     public boolean doSupportOozie();
-    
+
     /**
      * 
      * @return true if current component support create service connection
      */
     public boolean doSupportCreateServiceConnection();
-    
+
     /**
      * 
      * @return only doSupportCreateServiceConnection() return true, return the necessary service name
      */
     public List<String> getNecessaryServiceName();
+
+    /**
+     * Hortonworks specific method.
+     *
+     * @return true if the distribution is Hortonworks
+     */
+    public boolean isHortonworksDistribution();
 }

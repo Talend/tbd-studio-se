@@ -631,6 +631,7 @@
              <library id="jackson-mapper-asl-1.8.8.jar" />
              <library id="jackson-core-asl-1.8.8.jar" />
              <library id="netty-3.6.6.Final.jar" />
+             <library id="netty-all-4.0.23.Final.jar"/>
              <library id="protobuf-java-2.5.0.jar" />
              <library id="log4j-1.2.17.jar" />
              <library id="slf4j-api-1.7.5.jar" />

@@ -51,7 +51,7 @@ public class EMRApache103DistributionTest extends AbstractDistributionTest {
         assertEquals(EMRApache103Distribution.DISTRIBUTION_NAME, distribution.getDistribution());
         assertEquals(EMRApache103Distribution.VERSION, distribution.getVersion());
         assertEquals(EHadoopVersion.HADOOP_1, distribution.getHadoopVersion());
-        assertTrue(distribution.doSupportKerberos());
+        assertFalse(distribution.doSupportKerberos());
         assertFalse(distribution.doSupportUseDatanodeHostname());
         assertFalse(distribution.doSupportGroup());
         assertTrue(distribution.doSupportOldImportMode());

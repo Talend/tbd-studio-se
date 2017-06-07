@@ -183,11 +183,6 @@ public class DistributionVersion implements IHDistributionVersion {
     public String toString() {
         return version + ',' + displayVersion;
     }
-
-    @Override
-    public boolean doSupportOozie() {
-        return hadoopComponent.doSupportOozie();
-    }
     
     public boolean doSupportCreateServiceConnection() {
         return hadoopComponent.doSupportCreateServiceConnection();
@@ -197,4 +192,8 @@ public class DistributionVersion implements IHDistributionVersion {
         return hadoopComponent.getNecessaryServiceName();
     }
 
+    @Override
+    public boolean doSupportOozie() {
+        return hadoopComponent.doSupportOozie();
+    }
 }

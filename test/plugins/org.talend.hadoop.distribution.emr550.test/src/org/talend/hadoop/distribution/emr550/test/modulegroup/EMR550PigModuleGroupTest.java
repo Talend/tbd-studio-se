@@ -37,9 +37,12 @@ public class EMR550PigModuleGroupTest {
         results.put(EMR550PigModuleGroup.PIG_S3_GROUP_NAME, "(S3_LOCATION_LOAD=='true')"); //$NON-NLS-1$
         results.put(EMR550HBaseModuleGroup.MODULE_GROUP_NAME, "(LOAD=='HBASESTORAGE')"); //$NON-NLS-1$
         results.put(EMR550PigModuleGroup.PIG_HBASE_GROUP_NAME, "(LOAD=='HBASESTORAGE')"); //$NON-NLS-1$
+        results.put(EMR550PigModuleGroup.HDFS_GROUP_NAME, null);
+        results.put(EMR550HBaseModuleGroup.MODULE_GROUP_NAME, "(LOAD=='HBASESTORAGE')"); //$NON-NLS-1$
+        results.put(EMR550PigModuleGroup.MAPREDUCE_GROUP_NAME, null);
 
         Set<DistributionModuleGroup> moduleGroups = EMR550PigModuleGroup.getModuleGroups();
-        assertEquals(9, moduleGroups.size());
+        assertEquals(results.size(), moduleGroups.size());
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$
             if (results.get(module.getModuleName()) == null) {
@@ -48,7 +51,8 @@ public class EMR550PigModuleGroupTest {
             } else {
                 assertTrue("The condition of the module " + module.getModuleName() + " is null, but it should be " //$NON-NLS-1$ //$NON-NLS-2$
                         + results.get(module.getModuleName()) + ".", results.get(module.getModuleName()) != null); //$NON-NLS-1$
-                assertEquals(results.get(module.getModuleName()), module.getRequiredIf().getConditionString());
+                assertEquals(results.get(module.getModuleName()), module.getRequiredIf() != null ? module.getRequiredIf()
+                        .getConditionString() : null);
             }
         }
     }

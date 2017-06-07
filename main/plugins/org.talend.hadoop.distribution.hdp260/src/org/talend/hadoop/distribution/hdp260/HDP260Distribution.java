@@ -86,7 +86,7 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
     private static Map<ComponentType, ComponentCondition> displayConditions;
 
     public HDP260Distribution() {
-        
+
         String distribution = getDistribution();
         String version = getVersion();
 
@@ -133,9 +133,10 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
                 .getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.S3_CONFIGURATION_COMPONENT), HDP260SparkStreamingS3NodeModuleGroup.getModuleGroups());
-        
+
         // Kinesis
-        Set<DistributionModuleGroup> kinesisNodeModuleGroups = HDP260SparkStreamingKinesisNodeModuleGroup.getModuleGroups(distribution, version);
+        Set<DistributionModuleGroup> kinesisNodeModuleGroups = HDP260SparkStreamingKinesisNodeModuleGroup.getModuleGroups(
+                distribution, version);
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.KINESIS_INPUT_COMPONENT), kinesisNodeModuleGroups);
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
@@ -144,8 +145,10 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
                 SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT), kinesisNodeModuleGroups);
 
         // Kafka
-        Set<DistributionModuleGroup> kafkaAssemblyModuleGroups = HDP260SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(distribution, version);
-        Set<DistributionModuleGroup> kafkaAvroModuleGroups = HDP260SparkStreamingKafkaAvroModuleGroup.getModuleGroups(distribution, version);
+        Set<DistributionModuleGroup> kafkaAssemblyModuleGroups = HDP260SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(
+                distribution, version);
+        Set<DistributionModuleGroup> kafkaAvroModuleGroups = HDP260SparkStreamingKafkaAvroModuleGroup.getModuleGroups(
+                distribution, version);
         nodeModuleGroups.put(
                 new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_INPUT_COMPONENT),
                 kafkaAssemblyModuleGroups);
@@ -153,7 +156,7 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
                 SparkStreamingConstant.KAFKA_AVRO_INPUT_COMPONENT), kafkaAvroModuleGroups);
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT), HDP260SparkStreamingKafkaClientModuleGroup.getModuleGroups());
-        
+
         // Flume
         Set<DistributionModuleGroup> flumeNodeModuleGroups = HDP260SparkStreamingFlumeNodeModuleGroup.getModuleGroups();
         nodeModuleGroups.put(
@@ -439,10 +442,14 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
             return SparkStreamingKafkaVersion.KAFKA_0_8;
         }
     }
-    
+
     @Override
     public boolean doSupportKerberizedKafka() {
         return true;
     }
 
+    @Override
+    public boolean isHortonworksDistribution() {
+        return true;
+    }
 }

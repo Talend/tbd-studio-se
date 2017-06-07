@@ -8,70 +8,70 @@
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hadoop-annotations-HDP_2_6"
             name="hadoop-annotations-2.7.3.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hadoop-annotations-2.7.3.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hadoop-annotations-2.7.3.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hadoop-auth-HDP_2_6"
             name="hadoop-auth-2.7.3.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hadoop-auth-2.7.3.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hadoop-auth-2.7.3.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hadoop-common-HDP_2_6"
             name="hadoop-common-2.7.3.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hadoop-common-2.7.3.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hadoop-common-2.7.3.2.6.0.3-8/6.4.0">
         </libraryNeeded>
              
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hadoop-hdfs-HDP_2_6"
             name="hadoop-hdfs-2.7.3.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hadoop-hdfs-2.7.3.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hadoop-hdfs-2.7.3.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hadoop-mapreduce-client-common-HDP_2_6"
             name="hadoop-mapreduce-client-common-2.7.3.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-common-2.7.3.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-common-2.7.3.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hadoop-mapreduce-client-core-HDP_2_6"
             name="hadoop-mapreduce-client-core-2.7.3.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-core-2.7.3.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-core-2.7.3.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hadoop-mapreduce-client-jobclient-HDP_2_6"
             name="hadoop-mapreduce-client-jobclient-2.7.3.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-jobclient-2.7.3.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-jobclient-2.7.3.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hadoop-yarn-api-HDP_2_6"
             name="hadoop-yarn-api-2.7.3.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-api-2.7.3.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-api-2.7.3.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hadoop-yarn-client-HDP_2_6"
             name="hadoop-yarn-client-2.7.3.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-client-2.7.3.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-client-2.7.3.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hadoop-yarn-common-HDP_2_6"
             name="hadoop-yarn-common-2.7.3.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-common-2.7.3.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-common-2.7.3.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <!-- Map/Reduce libraries -->                
@@ -81,35 +81,35 @@
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hbase-client-HDP_2_6"
             name="hbase-client-1.1.2.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hbase-client-1.1.2.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hbase-client-1.1.2.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hbase-common-HDP_2_6"
             name="hbase-common-1.1.2.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hbase-common-1.1.2.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hbase-common-1.1.2.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hbase-hadoop-compat-HDP_2_6"
             name="hbase-hadoop-compat-1.1.2.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hbase-hadoop-compat-1.1.2.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hbase-hadoop-compat-1.1.2.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hbase-protocol-HDP_2_6"
             name="hbase-protocol-1.1.2.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hbase-protocol-1.1.2.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hbase-protocol-1.1.2.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hbase-server-HDP_2_6"
             name="hbase-server-1.1.2.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hbase-server-1.1.2.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hbase-server-1.1.2.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <!-- Hive libraries -->
@@ -117,70 +117,77 @@
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hive-common-HDP_2_6"
             name="hive-common-1.2.1000.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hive-common-1.2.1000.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hive-common-1.2.1000.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hive-exec-HDP_2_6"
             name="hive-exec-1.2.1000.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hive-exec-1.2.1000.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hive-exec-1.2.1000.2.6.0.3-8/6.4.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.hdp260"
+            id="hive-exec-1.2.1000.2.6.0.3-8-no-commons-lang"
+            name="hive-exec-1.2.1000.2.6.0.3-8-no-commons-lang.jar" 
+            mvn_uri="mvn:org.talend.libraries/hive-exec-1.2.1000.2.6.0.3-8-no-commons-lang/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hive-hbase-handler-HDP_2_6"
             name="hive-hbase-handler-1.2.1000.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hive-hbase-handler-1.2.1000.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hive-hbase-handler-1.2.1000.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hive-hcatalog-core-HDP_2_6"
             name="hive-hcatalog-core-1.2.1000.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-core-1.2.1000.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-core-1.2.1000.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hive-hcatalog-pig-adapter-HDP_2_6"
             name="hive-hcatalog-pig-adapter-1.2.1000.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-pig-adapter-1.2.1000.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-pig-adapter-1.2.1000.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hive-hcatalog-server-extensions-HDP_2_6"
             name="hive-hcatalog-server-extensions-1.2.1000.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-server-extensions-1.2.1000.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-server-extensions-1.2.1000.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hive-jdbc-HDP_2_6"
             name="hive-jdbc-1.2.1000.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hive-jdbc-1.2.1000.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hive-jdbc-1.2.1000.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hive-metastore-HDP_2_6"
             name="hive-metastore-1.2.1000.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hive-metastore-1.2.1000.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hive-metastore-1.2.1000.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hive-serde-HDP_2_6"
             name="hive-serde-1.2.1000.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hive-serde-1.2.1000.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hive-serde-1.2.1000.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hive-service-HDP_2_6"
             name="hive-service-1.2.1000.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hive-service-1.2.1000.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hive-service-1.2.1000.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <!-- Pig libraries -->
@@ -188,7 +195,7 @@
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="pig-HDP_2_6"
             name="pig-0.16.0.2.6.0.3-8-core-h2.jar" 
-            mvn_uri="mvn:org.talend.libraries/pig-0.16.0.2.6.0.3-8-core-h2/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/pig-0.16.0.2.6.0.3-8-core-h2/6.4.0">
         </libraryNeeded>
         
         <!-- Sqoop libraries -->        
@@ -196,7 +203,7 @@
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="sqoop-HDP_2_6"
             name="sqoop-1.4.6.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/sqoop-1.4.6.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/sqoop-1.4.6.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <!-- Tez libraries -->
@@ -204,49 +211,49 @@
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="tez-api-HDP_2_6"
             name="tez-api-0.7.0.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/tez-api-0.7.0.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/tez-api-0.7.0.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="tez-common-HDP_2_6"
             name="tez-common-0.7.0.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/tez-common-0.7.0.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/tez-common-0.7.0.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="tez-dag-HDP_2_6"
             name="tez-dag-0.7.0.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/tez-dag-0.7.0.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/tez-dag-0.7.0.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="tez-mapreduce-HDP_2_6"
             name="tez-mapreduce-0.7.0.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/tez-mapreduce-0.7.0.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/tez-mapreduce-0.7.0.2.6.0.3-8/6.4.0">
         </libraryNeeded>
                
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="tez-runtime-internals-HDP_2_6"
             name="tez-runtime-internals-0.7.0.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/tez-runtime-internals-0.7.0.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/tez-runtime-internals-0.7.0.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="tez-runtime-library-HDP_2_6"
             name="tez-runtime-library-0.7.0.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/tez-runtime-library-0.7.0.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/tez-runtime-library-0.7.0.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="tez-yarn-timeline-history-HDP_2_6"
             name="tez-yarn-timeline-history-0.7.0.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/tez-yarn-timeline-history-0.7.0.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/tez-yarn-timeline-history-0.7.0.2.6.0.3-8/6.4.0">
         </libraryNeeded>
                 
         <!-- Zookeeper libraries -->
@@ -262,7 +269,7 @@
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hadoop-aws-HDP_2_6"
             name="hadoop-aws-2.7.3.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hadoop-aws-2.7.3.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/hadoop-aws-2.7.3.2.6.0.3-8/6.4.0">
         </libraryNeeded>
 		
 		<!-- ?? -->
@@ -284,7 +291,7 @@
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="amazon-kinesis-client-1.6.1.jar"
             name="amazon-kinesis-client-1.6.1.jar"
-            mvn_uri="mvn:org.talend.libraries/amazon-kinesis-client-1.6.1/6.4.0">
+            mvn_uri="mvn:org.talend.libraries/amazon-kinesis-client-1.6.1/6.0.0">
         </libraryNeeded>
         
         <!-- GraphFrames libraries -->
@@ -308,7 +315,7 @@
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="avro-1.8.0.jar"
             name="avro-1.8.0.jar" 
-            mvn_uri="mvn:org.talend.libraries/avro-1.8.0/6.3.0"
+            mvn_uri="mvn:org.talend.libraries/avro-1.8.0/6.0.0"
             uripath="platform:/plugin/org.talend.libraries.apache/lib/avro-1.8.0.jar">
         </libraryNeeded>
                
@@ -317,7 +324,7 @@
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="spark-assembly-HDP_2_6"
             name="spark-assembly-1.6.3.2.6.0.3-8-hadoop2.7.3.2.6.0.3-8.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-assembly-1.6.3.2.6.0.3-8-hadoop2.7.3.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/spark-assembly-1.6.3.2.6.0.3-8-hadoop2.7.3.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <!-- Spark libraries -->
@@ -325,42 +332,42 @@
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="spark-streaming-kafka-HDP_2_6"
             name="spark-streaming-kafka-assembly_2.10-1.6.3.2.6.0.3-8.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka-assembly_2.10-1.6.3.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka-assembly_2.10-1.6.3.2.6.0.3-8/6.4.0">
         </libraryNeeded>
        
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="kafka-HDP_2_6"
             name="kafka_2.10-0.10.1.2.6.0.3-8.jar"
-            mvn_uri="mvn:org.talend.libraries/kafka_2.10-0.10.1.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/kafka_2.10-0.10.1.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="kafka-clients-HDP_2_6"
             name="kafka-clients-0.10.1.2.6.0.3-8.jar"
-            mvn_uri="mvn:org.talend.libraries/kafka-clients-0.10.1.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/kafka-clients-0.10.1.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="spark-streaming-flume-assembly-HDP_2_6"
             name="spark-streaming-flume-assembly_2.10-1.6.3.2.6.0.3-8.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-streaming-flume-assembly_2.10-1.6.3.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/spark-streaming-flume-assembly_2.10-1.6.3.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="flume-ng-sdk-HDP_2_6"
             name="flume-ng-sdk-1.5.2.2.6.0.3-8.jar"
-            mvn_uri="mvn:org.talend.libraries/flume-ng-sdk-1.5.2.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/flume-ng-sdk-1.5.2.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="flume-ng-core-HDP_2_6"
             name="flume-ng-core-1.5.2.2.6.0.3-8.jar"
-            mvn_uri="mvn:org.talend.libraries/flume-ng-core-1.5.2.2.6.0.3-8/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/flume-ng-core-1.5.2.2.6.0.3-8/6.4.0">
         </libraryNeeded>
         
         <!-- Add this version based on avro-mapred-1.7.5 -->
@@ -382,7 +389,7 @@
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="libfb303-0.9.3"
             name="libfb303-0.9.3.jar"
-            mvn_uri="mvn:org.talend.libraries/libfb303-0.9.3/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/libfb303-0.9.3/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
@@ -396,14 +403,14 @@
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="aws-java-sdk-core-1.10.6"
             name="aws-java-sdk-core-1.10.6.jar"
-            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-core-1.10.6/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-core-1.10.6/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="aws-java-sdk-s3-1.10.6"
             name="aws-java-sdk-s3-1.10.6.jar"
-            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-s3-1.10.6/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-s3-1.10.6/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
@@ -431,14 +438,14 @@
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="httpclient-4.5.2"
             name="httpclient-4.5.2.jar"
-            mvn_uri="mvn:org.talend.libraries/httpclient-4.5.2/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/httpclient-4.5.2/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="httpcore-4.4.4"
             name="httpcore-4.4.4.jar"
-            mvn_uri="mvn:org.talend.libraries/httpcore-4.4.4/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/httpcore-4.4.4/6.4.0">
         </libraryNeeded>
         
         <libraryNeeded
@@ -564,7 +571,7 @@
 		    context="plugin:org.talend.hadoop.distribution.hdp260"
 		    id="aws-java-sdk-core-1.10.6.jar"
 		    name="aws-java-sdk-core-1.10.6.jar"
-		    mvn_uri="mvn:org.talend.libraries/aws-java-sdk-core-1.10.6/6.3.0">
+		    mvn_uri="mvn:org.talend.libraries/aws-java-sdk-core-1.10.6/6.4.0">
 		</libraryNeeded>
 		
 		<libraryNeeded
@@ -583,10 +590,10 @@
 		
 		<!-- Spark 2 libraries -->
 		
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="aws-java-sdk-kinesis-1.10.20.jar" name="aws-java-sdk-kinesis-1.10.20.jar" mvn_uri="mvn:org.talend.libraries/aws-java-sdk-kinesis-1.10.20/6.4.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="aws-java-sdk-kinesis-1.10.20.jar" name="aws-java-sdk-kinesis-1.10.20.jar" mvn_uri="mvn:org.talend.libraries/aws-java-sdk-kinesis-1.10.20/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="aws-java-sdk-core-1.10.20.jar" name="aws-java-sdk-core-1.10.20.jar" mvn_uri="mvn:org.talend.libraries/aws-java-sdk-core-1.10.20/6.4.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="aws-java-sdk-dynamodb-1.10.20.jar" name="aws-java-sdk-dynamodb-1.10.20.jar" mvn_uri="mvn:org.talend.libraries/aws-java-sdk-dynamodb-1.10.20/6.4.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="aws-java-sdk-cloudwatch-1.10.20.jar" name="aws-java-sdk-cloudwatch-1.10.20.jar" mvn_uri="mvn:org.talend.libraries/aws-java-sdk-cloudwatch-1.10.20/6.4.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="aws-java-sdk-dynamodb-1.10.20.jar" name="aws-java-sdk-dynamodb-1.10.20.jar" mvn_uri="mvn:org.talend.libraries/aws-java-sdk-dynamodb-1.10.20/6.0.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="aws-java-sdk-cloudwatch-1.10.20.jar" name="aws-java-sdk-cloudwatch-1.10.20.jar" mvn_uri="mvn:org.talend.libraries/aws-java-sdk-cloudwatch-1.10.20/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="activation-1.1.1.jar" name="activation-1.1.1.jar" mvn_uri="mvn:org.talend.libraries/activation-1.1.1/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="antlr-2.7.7.jar" name="antlr-2.7.7.jar" mvn_uri="mvn:org.talend.libraries/antlr-2.7.7/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="antlr4-runtime-4.5.3.jar" name="antlr4-runtime-4.5.3.jar" mvn_uri="mvn:org.talend.libraries/antlr4-runtime-4.5.3/6.4.0"/>
@@ -640,8 +647,8 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="compress-lzf-1.0.3.jar" name="compress-lzf-1.0.3.jar" mvn_uri="mvn:org.talend.libraries/compress-lzf-1.0.3/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="core-1.1.2.jar" name="core-1.1.2.jar" mvn_uri="mvn:org.talend.libraries/core-1.1.2/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="curator-client-2.6.0.jar" name="curator-client-2.6.0.jar" mvn_uri="mvn:org.talend.libraries/curator-client-2.6.0/6.4.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="curator-framework-2.6.0.jar" name="curator-framework-2.6.0.jar" mvn_uri="mvn:org.talend.libraries/curator-framework-2.6.0/6.4.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="curator-recipes-2.6.0.jar" name="curator-recipes-2.6.0.jar" mvn_uri="mvn:org.talend.libraries/curator-recipes-2.6.0/6.4.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="curator-framework-2.6.0.jar" name="curator-framework-2.6.0.jar" mvn_uri="mvn:org.talend.libraries/curator-framework-2.6.0/6.0.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="curator-recipes-2.6.0.jar" name="curator-recipes-2.6.0.jar" mvn_uri="mvn:org.talend.libraries/curator-recipes-2.6.0/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="datanucleus-api-jdo-3.2.6.jar" name="datanucleus-api-jdo-3.2.6.jar" mvn_uri="mvn:org.talend.libraries/datanucleus-api-jdo-3.2.6/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="datanucleus-core-3.2.10.jar" name="datanucleus-core-3.2.10.jar" mvn_uri="mvn:org.talend.libraries/datanucleus-core-3.2.10/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="datanucleus-rdbms-3.2.9.jar" name="datanucleus-rdbms-3.2.9.jar" mvn_uri="mvn:org.talend.libraries/datanucleus-rdbms-3.2.9/6.4.0"/>
@@ -734,7 +741,7 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="kryo-shaded-3.0.3.jar" name="kryo-shaded-3.0.3.jar" mvn_uri="mvn:org.talend.libraries/kryo-shaded-3.0.3/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="leveldbjni-all-1.8.jar" name="leveldbjni-all-1.8.jar" mvn_uri="mvn:org.talend.libraries/leveldbjni-all-1.8/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="libfb303-0.9.3.jar" name="libfb303-0.9.3.jar" mvn_uri="mvn:org.talend.libraries/libfb303-0.9.3/6.4.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="libthrift-0.9.3.jar" name="libthrift-0.9.3.jar" mvn_uri="mvn:org.talend.libraries/libthrift-0.9.3.jar/6.3.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="libthrift-0.9.3.jar" name="libthrift-0.9.3.jar" mvn_uri="mvn:org.talend.libraries/libthrift-0.9.3/6.3.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="log4j-1.2.17.jar" name="log4j-1.2.17.jar" mvn_uri="mvn:org.talend.libraries/log4j-1.2.17/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="lz4-1.3.0.jar" name="lz4-1.3.0.jar" mvn_uri="mvn:org.talend.libraries/lz4-1.3.0/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="mail-1.4.7.jar" name="mail-1.4.7.jar" mvn_uri="mvn:org.talend.libraries/mail-1.4.7/6.4.0"/>
@@ -1258,7 +1265,6 @@
             <library id="commons-httpclient-3.1.jar" />
             <library id="commons-io-2.4.jar" />
             <library id="commons-lang-2.6.jar" />
-            <library id="commons-lang3-3.5.jar" />
             <library id="commons-logging-1.1.3.jar" />
             <library id="commons-math3-3.4.1.jar" />
             <library id="commons-net-2.2.jar" />
@@ -1507,7 +1513,7 @@
                 description="Spark 2 Hive libraries for HDP 2.6 that are MRREQUIRED"
                 id="SPARK2-HIVE-LIB-MRREQUIRED-HDP_2_6"
                 name="SPARK2-HIVE-LIB-MRREQUIRED-HDP_2_6">
-                <library id="hive-exec-HDP_2_6"/>
+                <library id="hive-exec-1.2.1000.2.6.0.3-8-no-commons-lang"/>
         </libraryNeededGroup>        
         
         <!-- Spark Kafka group MRREQUIRED -->

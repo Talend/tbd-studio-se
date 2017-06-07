@@ -384,13 +384,14 @@ public class Neo4jConnForm extends AbstractNoSQLConnForm {
                 Messages.getString("AbstractNoSQLConnForm.InvalidDBVersion")); //$NON-NLS-1$
         if (localDbBtn.getSelection()) {
             NonemptyValidator validator = new NonemptyValidator(dbPathTxt.getText());
-            collectValidateEntry(validator,
-                    Messages.getString("Neo4jConnForm.validate.invalidDbPath")); //$NON-NLS-1$
+            collectValidateEntry(validator, Messages.getString("Neo4jConnForm.validate.invalidDbPath")); //$NON-NLS-1$
             checkBtn.setEnabled(validator.validate());
         }
         if (remoteDbBtn.getSelection()) {
-            collectValidateEntry(new NonemptyValidator(serverURLTxt.getText()),
-                    Messages.getString("Neo4jConnForm.validate.invalidServerURL")); //$NON-NLS-1$
+            NonemptyValidator validator = new NonemptyValidator(serverURLTxt.getText());
+            collectValidateEntry(validator, Messages.getString("Neo4jConnForm.validate.invalidServerURL")); //$NON-NLS-1$
+            checkBtn.setEnabled(validator.validate());
+
         }
 
         // username/password are not required for neo4j remote mode, since the authorization can be closed in server

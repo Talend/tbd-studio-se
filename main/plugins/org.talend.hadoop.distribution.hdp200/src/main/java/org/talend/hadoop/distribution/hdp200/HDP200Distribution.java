@@ -218,10 +218,14 @@ public class HDP200Distribution extends AbstractDistribution implements HDFSComp
     public ComponentCondition getDisplayCondition(ComponentType componentType) {
         return displayConditions.get(componentType);
     }
-    
+
     @Override
     public boolean doSupportFetchPasswordFromFile() {
-    	return true;
+        return true;
     }
 
+    @Override
+    public boolean isHortonworksDistribution() {
+        return true;
+    }
 }
