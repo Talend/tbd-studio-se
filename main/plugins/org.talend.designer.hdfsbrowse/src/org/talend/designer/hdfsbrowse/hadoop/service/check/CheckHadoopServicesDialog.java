@@ -412,7 +412,7 @@ public class CheckHadoopServicesDialog extends TitleAreaDialog {
                                 progressBar.setState(SWT.ERROR);
                                 isFinished = true;
                                 statusLink.setText(
-                                        "<a>" + Messages.getString("CheckHadoopServicesDialog.status.error.descript") + "</a>"); //$NON-NLS-1$
+                                        "<a>" + Messages.getString("CheckHadoopServicesDialog.status.error.desc") + "</a>"); //$NON-NLS-1$
                             } else {
                                 if (serviceBean.isChecked()) {
                                     progressBar.setSelection(progressBar.getMaximum());
