@@ -23,7 +23,18 @@ import org.talend.hadoop.distribution.ESparkVersion;
  */
 public interface SparkComponent extends MRComponent {
 
-    /**
+	/**
+	 * Spark uses Hive 1.2.1 internally (https://spark.apache.org/docs/latest/sql-programming-guide.html#interacting-with-different-versions-of-hive-metastore),
+	 * If we're using another Hive version for table creation, we need to override default hive version with the one which spark uses. 
+	 * @return true if distribution creates hive tables with hive other than Spark uses internally
+	 */
+	public boolean doRequireMetastoreVersionOverride();
+	/**
+	 * Returns Spark's internal Hive version (currently 1.2.1, as described here: https://spark.apache.org/docs/latest/sql-programming-guide.html#interacting-with-different-versions-of-hive-metastore)
+	 * @return Spark internal hive version
+	 */
+	public String getHiveMetastoreVersionForSpark();
+	/**
      * A distribution can be using Spark 1.3 or Spark 1.4. This method returns the supported Spark versions.
      * 
      * @return the collection of supported @link{ESparkVersion} in the distribution.

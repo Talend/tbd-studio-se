@@ -277,4 +277,12 @@ public abstract class AbstractDistribution {
     public List<String> getNecessaryServiceName() {
         return null;
     }
+
+	public boolean doRequireMetastoreVersionOverride() {
+		return false;
+	}
+	
+	public String getHiveMetastoreVersionForSpark() {
+		return null;
+	}
 }

@@ -300,4 +300,14 @@ public class Dataproc11Distribution extends AbstractDistribution implements HDFS
         // TODO Auto-generated method stub
         return true;
     }
+
+    @Override
+    public boolean doRequireMetastoreVersionOverride() {
+		return true;
+	}
+
+    @Override
+    public String getHiveMetastoreVersionForSpark() {
+		return "1.2.1";
+	}
 }
