@@ -290,7 +290,7 @@ public abstract class AbstractDistribution {
         return null;
     }
 
-  public boolean isHortonworksDistribution() {
+    public boolean isHortonworksDistribution() {
         return false;
     }
 }
