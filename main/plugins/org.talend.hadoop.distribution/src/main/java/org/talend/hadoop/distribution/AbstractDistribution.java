@@ -288,9 +288,9 @@ public abstract class AbstractDistribution {
 	
 	public String getHiveMetastoreVersionForSpark() {
         return null;
-	}
+    }
 
   public boolean isHortonworksDistribution() {
         return false;
-  }
+    }
 }
