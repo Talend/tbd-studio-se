@@ -159,6 +159,9 @@ public final class DistributionsManager implements IDistributionsManager {
             if (!withCustom && bean.useCustom()) {
                 continue;
             }
+            if ("CLOUDERA_ALTUS".equals(bean.getName())) {
+                continue;
+            }
             distributionsDisplay.add(bean.displayName);
         }
         return distributionsDisplay.toArray(new String[0]);
