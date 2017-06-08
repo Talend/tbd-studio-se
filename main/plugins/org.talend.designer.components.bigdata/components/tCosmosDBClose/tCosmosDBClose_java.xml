@@ -7,7 +7,7 @@
          
 		COMPATIBILITY="ALL"
     	AUTHOR="Talend"
- 		RELEASE_DATE="20070210A"
+ 		RELEASE_DATE="20170608A"
     	STARTABLE="true"
     	LOG4J_ENABLED="true"
   		>

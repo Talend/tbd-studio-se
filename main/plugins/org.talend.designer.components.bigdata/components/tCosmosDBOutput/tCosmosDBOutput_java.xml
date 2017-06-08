@@ -9,7 +9,7 @@
         SCHEMA_AUTO_PROPAGATE="true"
         DATA_AUTO_PROPAGATE="false"
         EXTENSION="org.talend.designer.fileoutputxml"
-        RELEASE_DATE="20070210A"
+        RELEASE_DATE="20170608A"
         STARTABLE="false"
         PARTITIONING="NONE"
         LOG4J_ENABLED="true"
