@@ -29,12 +29,14 @@ public interface SparkComponent extends MRComponent {
      * @return true if distribution creates hive tables with hive other than Spark uses internally
      */
     public boolean doRequireMetastoreVersionOverride();
+	
     /**
      * Returns Spark's internal Hive version (currently 1.2.1, as described here: https://spark.apache.org/docs/latest/sql-programming-guide.html#interacting-with-different-versions-of-hive-metastore)
      * @return Spark internal hive version
      */
     public String getHiveMetastoreVersionForSpark();
-	/**
+	
+    /**
      * A distribution can be using Spark 1.3 or Spark 1.4. This method returns the supported Spark versions.
      * 
      * @return the collection of supported @link{ESparkVersion} in the distribution.
