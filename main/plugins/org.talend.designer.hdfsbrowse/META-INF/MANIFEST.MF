@@ -36,3 +36,4 @@ Export-Package: org.talend.designer.hdfsbrowse,
  org.talend.designer.hdfsbrowse.ui.provider,
  org.talend.designer.hdfsbrowse.util
 Bundle-ClassPath: .
+Import-Package: org.talend.hadoop.distribution.constants.dataproc

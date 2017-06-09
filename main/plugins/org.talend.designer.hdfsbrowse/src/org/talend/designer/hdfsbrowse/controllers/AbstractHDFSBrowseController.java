@@ -392,6 +392,9 @@ public abstract class AbstractHDFSBrowseController extends AbstractElementProper
                         @Override
                         public void run() {
                             String mainMsg = Messages.getString("AbstractHDFSBrowseController.connectionFailure.mainMsg"); //$NON-NLS-1$
+                            if(connectionStatus.getMainMessage() != null) {
+                                mainMsg = connectionStatus.getMainMessage();
+                            }
                             new ErrorDialogWidthDetailArea(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
                                     HDFSPlugin.PLUGIN_ID, mainMsg, connectionStatus.getMessageException());
                             result.set(false);
