@@ -36,7 +36,7 @@ public class HDP260MapReduceModuleGroupTest {
         results.put(HDP260Constant.MAPREDUCE_MODULE_GROUP.getModuleName(), null);
         results.put(HDP260Constant.MAPREDUCE_PARQUET_MODULE_GROUP.getModuleName(), null);
         results.put(HDP260Constant.MAPREDUCE_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
-        results.put(HDP260Constant.ATLAS_HDP_2_6.getModuleName(), null);
+        results.put(HDP260Constant.ATLAS_SPARK_1_HDP_2_6.getModuleName(), null);
         
         Set<DistributionModuleGroup> moduleGroups = HDP260MapReduceModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());

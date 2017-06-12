@@ -41,7 +41,7 @@ public class HDP260SparkBatchModuleGroupTest {
         results.put(HDP260Constant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), new ArrayList<String>( Arrays.asList("(SPARK_LOCAL_MODE=='false') AND (SUPPORTED_SPARK_VERSION=='SPARK_1_6_0')", "(SPARK_LOCAL_MODE=='false') AND (SUPPORTED_SPARK_VERSION=='SPARK_2_1_0')")));
         results.put(HDP260Constant.HDFS_MODULE_GROUP.getModuleName(), new ArrayList<String>( Arrays.asList("(SPARK_LOCAL_MODE=='false') AND (SUPPORTED_SPARK_VERSION=='SPARK_1_6_0')", "(SPARK_LOCAL_MODE=='false') AND (SUPPORTED_SPARK_VERSION=='SPARK_2_1_0')")));
         results.put(HDP260Constant.MAPREDUCE_MODULE_GROUP.getModuleName(), new ArrayList<String>( Arrays.asList("(SPARK_LOCAL_MODE=='false') AND (SUPPORTED_SPARK_VERSION=='SPARK_1_6_0')", "(SPARK_LOCAL_MODE=='false') AND (SUPPORTED_SPARK_VERSION=='SPARK_2_1_0')")));
-        results.put(HDP260Constant.ATLAS_HDP_2_6.getModuleName(), new ArrayList<String>( Arrays.asList("(USE_ATLAS=='true')")));
+        results.put(HDP260Constant.ATLAS_SPARK_1_HDP_2_6.getModuleName(), new ArrayList<String>( Arrays.asList("(USE_ATLAS=='true')")));
         
         Set<DistributionModuleGroup> moduleGroups = HDP260SparkBatchModuleGroup.getModuleGroups();
         assertEquals(9, moduleGroups.size());
