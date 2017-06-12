@@ -162,31 +162,7 @@ public abstract class AbstractHDFSBrowseController extends AbstractElementProper
             }
             String distribution = (String) getParameterValue(node, EHadoopParameter.DISTRIBUTION.getName());
             if(IGoogleDataprocDistribution.DISTRIBUTION_NAME.equals(distribution)) {
-                IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
-
-                    @Override
-                    public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-                        monitor.beginTask(
-                                Messages.getString("AbstractHDFSBrowseController.checkConnection"), IProgressMonitor.UNKNOWN); //$NON-NLS-1$
-                        PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-
-                            @Override
-                            public void run() {
-                                new ErrorDialogWidthDetailArea(
-                                        PlatformUI.getWorkbench().getDisplay().getActiveShell(),
-                                        HDFSPlugin.PLUGIN_ID,
-                                        Messages.getString("AbstractHDFSBrowseController.unsupportedOperation.mainMsg"), Messages.getString("AbstractHDFSBrowseController.unsupportedOperation.detailMsg")); //$NON-NLS-1$ //$NON-NLS-2$
-                                return;
-                            }
-                        });
-                    }
-                };
-                ProgressMonitorDialog dialog = new ProgressMonitorDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell());
-                try {
-                    dialog.run(true, true, runnableWithProgress);
-                } catch (Exception e) {
-                    ExceptionHandler.process(e);
-                }
+                displayUnsupportedOperationDialog();
                 return null;
             }
         } else if (node != null && node.getComponent() != null && node.getComponent().getPaletteType() != null
@@ -217,31 +193,7 @@ public abstract class AbstractHDFSBrowseController extends AbstractElementProper
                 }
             }
             if (!browseIsSupported) {
-                IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
-
-                    @Override
-                    public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-                        monitor.beginTask(
-                                Messages.getString("AbstractHDFSBrowseController.checkConnection"), IProgressMonitor.UNKNOWN); //$NON-NLS-1$
-                        PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-
-                            @Override
-                            public void run() {
-                                new ErrorDialogWidthDetailArea(
-                                        PlatformUI.getWorkbench().getDisplay().getActiveShell(),
-                                        HDFSPlugin.PLUGIN_ID,
-                                        Messages.getString("AbstractHDFSBrowseController.unsupportedOperation.mainMsg"), Messages.getString("AbstractHDFSBrowseController.unsupportedOperation.detailMsg")); //$NON-NLS-1$ //$NON-NLS-2$
-                                return;
-                            }
-                        });
-                    }
-                };
-                ProgressMonitorDialog dialog = new ProgressMonitorDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell());
-                try {
-                    dialog.run(true, true, runnableWithProgress);
-                } catch (Exception e) {
-                    ExceptionHandler.process(e);
-                }
+                displayUnsupportedOperationDialog();
                 return null;
             }
         }
@@ -586,4 +538,31 @@ public abstract class AbstractHDFSBrowseController extends AbstractElementProper
     public void propertyChange(PropertyChangeEvent arg0) {
     }
 
+    private void displayUnsupportedOperationDialog() {
+        IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
+
+            @Override
+            public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+                monitor.beginTask(
+                        Messages.getString("AbstractHDFSBrowseController.checkConnection"), IProgressMonitor.UNKNOWN); //$NON-NLS-1$
+                PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        new ErrorDialogWidthDetailArea(
+                                PlatformUI.getWorkbench().getDisplay().getActiveShell(),
+                                HDFSPlugin.PLUGIN_ID,
+                                Messages.getString("AbstractHDFSBrowseController.unsupportedOperation.mainMsg"), Messages.getString("AbstractHDFSBrowseController.unsupportedOperation.detailMsg")); //$NON-NLS-1$ //$NON-NLS-2$
+                        return;
+                    }
+                });
+            }
+        };
+        ProgressMonitorDialog dialog = new ProgressMonitorDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell());
+        try {
+            dialog.run(true, true, runnableWithProgress);
+        } catch (Exception e) {
+            ExceptionHandler.process(e);
+        }
+    }
 }
