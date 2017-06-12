@@ -39,12 +39,10 @@ import org.talend.core.repository.model.connection.ConnectionStatus;
 import org.talend.core.utils.ReflectionUtils;
 import org.talend.core.utils.TalendQuoteUtils;
 import org.talend.designer.hdfsbrowse.exceptions.HadoopServerException;
-import org.talend.designer.hdfsbrowse.i18n.Messages;
 import org.talend.designer.hdfsbrowse.model.EHadoopAdditionalJars;
 import org.talend.designer.hdfsbrowse.model.EHadoopAdditionalJarsMapping;
 import org.talend.designer.hdfsbrowse.model.ELinuxAuthority;
 import org.talend.designer.hdfsbrowse.model.HDFSConnectionBean;
-import org.talend.hadoop.distribution.constants.dataproc.IGoogleDataprocDistribution;
 import org.talend.librariesmanager.model.ModulesNeededProvider;
 
 /**
@@ -364,11 +362,6 @@ public class HadoopServerUtil {
     public static ConnectionStatus testConnection(HDFSConnectionBean connection) {
         ConnectionStatus connectionStatus = new ConnectionStatus();
         connectionStatus.setResult(false);
-        if(IGoogleDataprocDistribution.DISTRIBUTION_NAME.equals(connection.getDistribution())) {
-            connectionStatus.setMainMessage(Messages.getString("AbstractHDFSBrowseController.unsupportedOperation.mainMsg"));
-            connectionStatus.setMessageException(Messages.getString("AbstractHDFSBrowseController.unsupportedOperation.detailMsg"));
-            return connectionStatus;
-        }
         String errorMsg = "Cannot connect to HDFS \"" + connection.getNameNodeURI()
                 + "\". Please check the connection parameters. ";
         Object dfs = null;

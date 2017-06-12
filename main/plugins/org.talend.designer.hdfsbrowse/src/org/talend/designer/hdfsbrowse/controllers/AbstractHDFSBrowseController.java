@@ -83,6 +83,7 @@ import org.talend.designer.hdfsbrowse.manager.HadoopOperationManager;
 import org.talend.designer.hdfsbrowse.model.EHadoopFileTypes;
 import org.talend.designer.hdfsbrowse.model.HDFSConnectionBean;
 import org.talend.designer.hdfsbrowse.model.IHDFSNode;
+import org.talend.hadoop.distribution.constants.dataproc.IGoogleDataprocDistribution;
 
 /**
  * DOC ycbai class global comment. Detailled comment
@@ -140,6 +141,7 @@ public abstract class AbstractHDFSBrowseController extends AbstractElementProper
             }
         } else if (node != null && node.getComponent() != null && node.getComponent().getPaletteType() != null
                 && node.getComponent().getPaletteType().equals("MR")) { //$NON-NLS-1$
+            
             List<? extends INode> nodes = node.getProcess().getGeneratingNodes();
             for (INode iNode : nodes) {
                 IComponent component = iNode.getComponent();
@@ -158,6 +160,35 @@ public abstract class AbstractHDFSBrowseController extends AbstractElementProper
                         }
                     }
                 }
+            }
+            String distribution = (String) getParameterValue(node, EHadoopParameter.DISTRIBUTION.getName());
+            if(IGoogleDataprocDistribution.DISTRIBUTION_NAME.equals(distribution)) {
+                IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
+
+                    @Override
+                    public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+                        monitor.beginTask(
+                                Messages.getString("AbstractHDFSBrowseController.checkConnection"), IProgressMonitor.UNKNOWN); //$NON-NLS-1$
+                        PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+
+                            @Override
+                            public void run() {
+                                new ErrorDialogWidthDetailArea(
+                                        PlatformUI.getWorkbench().getDisplay().getActiveShell(),
+                                        HDFSPlugin.PLUGIN_ID,
+                                        Messages.getString("AbstractHDFSBrowseController.unsupportedOperation.mainMsg"), Messages.getString("AbstractHDFSBrowseController.unsupportedOperation.detailMsg")); //$NON-NLS-1$ //$NON-NLS-2$
+                                return;
+                            }
+                        });
+                    }
+                };
+                ProgressMonitorDialog dialog = new ProgressMonitorDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell());
+                try {
+                    dialog.run(true, true, runnableWithProgress);
+                } catch (Exception e) {
+                    ExceptionHandler.process(e);
+                }
+                return null;
             }
         } else if (node != null && node.getComponent() != null && node.getComponent().getPaletteType() != null
                 && node.getComponent().getPaletteType().startsWith("SPARK")) { //$NON-NLS-1$
@@ -392,9 +423,6 @@ public abstract class AbstractHDFSBrowseController extends AbstractElementProper
                         @Override
                         public void run() {
                             String mainMsg = Messages.getString("AbstractHDFSBrowseController.connectionFailure.mainMsg"); //$NON-NLS-1$
-                            if(connectionStatus.getMainMessage() != null) {
-                                mainMsg = connectionStatus.getMainMessage();
-                            }
                             new ErrorDialogWidthDetailArea(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
                                     HDFSPlugin.PLUGIN_ID, mainMsg, connectionStatus.getMessageException());
                             result.set(false);
