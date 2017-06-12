@@ -141,7 +141,6 @@ public abstract class AbstractHDFSBrowseController extends AbstractElementProper
             }
         } else if (node != null && node.getComponent() != null && node.getComponent().getPaletteType() != null
                 && node.getComponent().getPaletteType().equals("MR")) { //$NON-NLS-1$
-            
             List<? extends INode> nodes = node.getProcess().getGeneratingNodes();
             for (INode iNode : nodes) {
                 IComponent component = iNode.getComponent();
