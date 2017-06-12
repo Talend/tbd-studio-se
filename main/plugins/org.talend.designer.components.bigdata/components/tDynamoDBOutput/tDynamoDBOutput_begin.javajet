@@ -80,7 +80,7 @@
 
 			com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient dynamoDBClient_<%=cid%> = new com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient(
 				credentialsProvider_<%=cid%>,
-				com.amazonaws.PredefinedClientConfigurations.dynamoDefault().withUserAgent("Talend/6.4.1")
+				com.amazonaws.PredefinedClientConfigurations.dynamoDefault().withUserAgent(routines.system.Constant.TALEND_USER_AGENT)
 			);
    
 			<%
