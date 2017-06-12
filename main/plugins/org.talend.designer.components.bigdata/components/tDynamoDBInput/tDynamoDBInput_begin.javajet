@@ -62,7 +62,10 @@
 
 			<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Amazon/CredentialsProvider.javajet"%>
 
-			com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient dynamoDBClient_<%=cid%> = new com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient(credentialsProvider_<%=cid%>);
+			com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient dynamoDBClient_<%=cid%> = new com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient(
+				credentialsProvider_<%=cid%>,
+				com.amazonaws.PredefinedClientConfigurations.dynamoDefault().withUserAgent("Talend/6.4.1")
+			);
    
 			if(<%=useEndPoint%>)
 			{
