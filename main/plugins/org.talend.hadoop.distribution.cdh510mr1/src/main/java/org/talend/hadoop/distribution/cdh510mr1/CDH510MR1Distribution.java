@@ -36,7 +36,7 @@ public class CDH510MR1Distribution extends AbstractDistribution implements HDFSC
 
     public static final String VERSION = "Cloudera_CDH5_1_MR1";
 
-    public static final String VERSION_DISPLAY = "Cloudera CDH5.1(MR 1 mode)";
+    public static final String VERSION_DISPLAY = "Cloudera CDH5.1(MR 1 mode) - DEPRECATED";
 
     private static Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
 

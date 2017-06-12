@@ -41,7 +41,7 @@ public class HDP200Distribution extends AbstractDistribution implements HDFSComp
 
     public static final String VERSION = "HDP_2_0";
 
-    public static final String VERSION_DISPLAY = "Hortonworks Data Platform V2.0.0(BigWheel)";
+    public static final String VERSION_DISPLAY = "Hortonworks Data Platform V2.0.0(BigWheel) - DEPRECATED";
 
     private final static String YARN_APPLICATION_CLASSPATH = "/etc/hadoop/conf,/usr/lib/hadoop/*,/usr/lib/hadoop/lib/*,/usr/lib/hadoop-hdfs/*,/usr/lib/hadoop-hdfs/lib/*,/usr/lib/hadoop-yarn/*,/usr/lib/hadoop-yarn/lib/*,/usr/lib/hadoop-mapreduce/*,/usr/lib/hadoop-mapreduce/lib/*"; //$NON-NLS-1$
 

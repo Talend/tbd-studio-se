@@ -43,7 +43,7 @@ public class CDH4MR1Distribution extends AbstractDistribution implements HDFSCom
 
     public static final String VERSION = "Cloudera_CDH4";
 
-    public static final String VERSION_DISPLAY = "Cloudera CDH4.X(MR1 mode)";
+    public static final String VERSION_DISPLAY = "Cloudera CDH4.X(MR1 mode) - DEPRECATED";
 
     private static Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
 

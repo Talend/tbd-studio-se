@@ -40,9 +40,9 @@ public class MapR200Distribution extends AbstractMapRDistribution implements HDF
 
     public static final String VERSION = "MAPR2";
 
-    public static final String VERSION_DISPLAY = "MapR 2.0.0";
+    public static final String VERSION_DISPLAY = "MapR 2.0.0 - DEPRECATED";
 
-    public static final String VERSION_SQOOP_DISPLAY = "MapR 2.0.0 (Sqoop 1.4)";
+    public static final String VERSION_SQOOP_DISPLAY = "MapR 2.0.0 (Sqoop 1.4) - DEPRECATED";
 
     private static Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
 

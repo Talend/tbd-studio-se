@@ -36,7 +36,7 @@ public class HDP120Distribution extends AbstractDistribution implements HDFSComp
 
     public static final String VERSION = "HDP_1_2";
 
-    public static final String VERSION_DISPLAY = "Hortonworks Data Platform V1.2.0(Bimota)";
+    public static final String VERSION_DISPLAY = "Hortonworks Data Platform V1.2.0(Bimota) - DEPRECATED";
 
     private static Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
 

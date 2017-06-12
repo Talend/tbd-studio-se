@@ -36,7 +36,7 @@ public class HDP130Distribution extends AbstractDistribution implements HDFSComp
 
     public static final String VERSION = "HDP_1_3";
 
-    public static final String VERSION_DISPLAY = "Hortonworks Data Platform V1.3.0(Condor)";
+    public static final String VERSION_DISPLAY = "Hortonworks Data Platform V1.3.0(Condor) - DEPRECATED";
 
     private static Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
 

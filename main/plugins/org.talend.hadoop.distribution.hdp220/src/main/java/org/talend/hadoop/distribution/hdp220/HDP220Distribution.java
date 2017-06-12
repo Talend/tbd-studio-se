@@ -42,7 +42,7 @@ public class HDP220Distribution extends AbstractDistribution implements HDFSComp
 
     public static final String VERSION = "HDP_2_2"; //$NON-NLS-1$
 
-    public static final String VERSION_DISPLAY = "Hortonworks Data Platform V2.2.0"; //$NON-NLS-1$
+    public static final String VERSION_DISPLAY = "Hortonworks Data Platform V2.2.0 - DEPRECATED"; //$NON-NLS-1$
 
     private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,/usr/hdp/current/hadoop-client/*,/usr/hdp/current/hadoop-client/lib/*,/usr/hdp/current/hadoop-hdfs-client/*,/usr/hdp/current/hadoop-hdfs-client/lib/*,/usr/hdp/current/hadoop-mapreduce-client/*,/usr/hdp/current/hadoop-mapreduce-client/lib/*,/usr/hdp/current/hadoop-yarn-client/*,/usr/hdp/current/hadoop-yarn-client/lib/*"; //$NON-NLS-1$
 

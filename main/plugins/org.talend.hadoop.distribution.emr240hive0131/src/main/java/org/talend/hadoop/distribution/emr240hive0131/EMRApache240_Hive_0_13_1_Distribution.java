@@ -28,7 +28,7 @@ public class EMRApache240_Hive_0_13_1_Distribution extends AbstractDistribution 
 
     public static final String VERSION = "APACHE_2_4_0_EMR_0_13_1";
 
-    public static final String VERSION_DISPLAY = "Apache 2.4.0 (Hive 0.13.1)";
+    public static final String VERSION_DISPLAY = "Apache 2.4.0 (Hive 0.13.1) - DEPRECATED";
 
     private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*,/usr/share/aws/emr/emr-fs/lib/*,/usr/share/aws/emr/lib/*"; //$NON-NLS-1$ {
 

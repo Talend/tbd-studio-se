@@ -36,7 +36,7 @@ public class MapR310Distribution extends AbstractMapRDistribution implements HDF
 
     public static final String VERSION = "MAPR310";
 
-    public static final String VERSION_DISPLAY = "MapR 3.1.0";
+    public static final String VERSION_DISPLAY = "MapR 3.1.0 - DEPRECATED";
 
     private static Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
 

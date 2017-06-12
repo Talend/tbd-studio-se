@@ -39,13 +39,13 @@ public class EMRApache103Distribution extends AbstractDistribution implements HD
 
     public static final String VERSION = "APACHE_1_0_3_EMR";
 
-    public static final String VERSION_DISPLAY = "Apache 1.0.3";
+    public static final String VERSION_DISPLAY = "Apache 1.0.3 - DEPRECATED";
 
-    public static final String VERSION_PIG_DISPLAY = "Apache 1.0.3 (Pig 0.9.2)";
+    public static final String VERSION_PIG_DISPLAY = "Apache 1.0.3 (Pig 0.9.2) - DEPRECATED";
 
-    public static final String VERSION_HBASE_DISPLAY = "Apache 1.0.3 (HBase 0.92.0)";
+    public static final String VERSION_HBASE_DISPLAY = "Apache 1.0.3 (HBase 0.92.0) - DEPRECATED";
 
-    public static final String VERSION_HIVE_DISPLAY = "Apache 1.0.3 (Hive 0.8.1)";
+    public static final String VERSION_HIVE_DISPLAY = "Apache 1.0.3 (Hive 0.8.1) - DEPRECATED";
 
     private static Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
 
