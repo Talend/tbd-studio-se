@@ -588,6 +588,13 @@
 		    mvn_uri="mvn:org.talend.libraries/aws-java-sdk-cloudwatch-1.10.6/6.3.0">
 		</libraryNeeded>
 		
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.hdp260"
+            id="json4s-native_2.11-3.2.11"
+            name="json4s-native_2.11-3.2.11.jar"
+            mvn_uri="mvn:org.talend.libraries/json4s-native_2.11-3.2.11/6.0.0">
+        </libraryNeeded>     
+		
 		<!-- Spark 2 libraries -->
 		
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="aws-java-sdk-kinesis-1.10.20.jar" name="aws-java-sdk-kinesis-1.10.20.jar" mvn_uri="mvn:org.talend.libraries/aws-java-sdk-kinesis-1.10.20/6.0.0"/>
@@ -1594,11 +1601,11 @@
             <library id="avro-ipc-HDP_2_6"/>            
         </libraryNeededGroup>
         
-        <!-- group of atlas libraries -->
+        <!-- group of Atlas for spark 1 & MapReduce libraries -->
         <libraryNeededGroup
-                description="Atlas lineage API"
-                id="ATLAS_HDP_2_6"
-                name="ATLAS_HDP_2_6"  >
+                description="Atlas lineage API for Spark 1.x"
+                id="ATLAS_SPARK_1_HDP_2_6"
+                name="ATLAS_SPARK_1_HDP_2_6"  >
              <library id="talend-lineage-api-0.1.1" />
              <library id="atlas-client-0.7-incubating" />
              <library id="atlas-typesystem-0.7-incubating" />
@@ -1617,6 +1624,46 @@
              <library id="scalap-2.10.4" />
              <library id="quasiquotes_2.10-2.0.1" />
              <library id="nscala-time_2.10-1.6.0" />
+             <library id="joda-convert-1.2" />
+             <library id="config-1.2.1" />
+             <library id="gson-2.5" />
+             <library id="fastutil-6.5.16" />
+             <library id="guice-4.0" />
+             <library id="javax.inject-1.jar" />
+             <library id="commons-lang3-3.4" />
+             <library id="spring-beans-3.1.3.RELEASE" />
+             <library id="spring-core-3.1.3.RELEASE" />
+             <library id="spring-asm-3.1.3.RELEASE" />
+             <library id="hadoop-common-HDP_2_6" />
+             <library id="hadoop-annotations-HDP_2_6" />
+             <library id="jersey-client-1.9.jar" />
+             <library id="slf4j-api-1.7.10.jar"/>
+             <library id="slf4j-log4j12-1.7.10.jar"/>
+             <library id="slf4j-log4j12-1.7.10.jar"/> 
+             <library id="httpclient-4.5.2.jar"/>
+             <library id="httpcore-4.4.4.jar"/>
+             <library id="commons-logging-1.2.jar"/>
+             <library id="commons-codec-1.9.jar"/>
+             <library id="paranamer-2.3.jar"/>
+             <library id="atlas-properties-0.1.1-0.7-0.0.1.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- group of Atlas for Spark 2 libraries -->
+        <libraryNeededGroup
+                description="Atlas lineage API for Spark 2.x"
+                id="ATLAS_SPARK_2_HDP_2_6"
+                name="ATLAS_SPARK_2_HDP_2_6"  >
+             <library id="talend-lineage-api-0.1.1" />
+             <library id="atlas-client-0.7-incubating" />
+             <library id="atlas-typesystem-0.7-incubating" />
+             <library id="atlas-common-0.7-incubating" />
+             <library id="json4s-core_2.11-3.2.11" />
+             <library id="json4s-ast_2.11-3.2.11" />
+             <library id="json4s-native_2.11-3.2.11" />
+             <library id="jettison-1.3.4.jar" />
+             <library id="stax-api-1.0.1.jar" />
+             <library id="jline-2.10.4" />
+             <library id="jansi-1.4" />
              <library id="joda-convert-1.2" />
              <library id="config-1.2.1" />
              <library id="gson-2.5" />

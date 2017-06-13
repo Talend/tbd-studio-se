@@ -10,6 +10,12 @@
             name="talend-bigdata-launcher-1.2.1-20170511.jar"
             mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-1.2.1-20170511/6.0.0">
         </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc11"
+            id="talend-bigdata-launcher-1.2.2-20170613"
+            name="talend-bigdata-launcher-1.2.2-20170613.jar"
+            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-1.2.2-20170613/6.0.0">
+        </libraryNeeded>
 
         <libraryNeeded
 		    context="plugin:org.talend.hadoop.distribution.dataproc11"
@@ -482,6 +488,35 @@
 			<library id="jackson-core-asl-1.8.8" />
 			<library id="jackson-mapper-asl-1.8.8" />
 			<library id="commons-lang-2.6"/>
+        </libraryNeededGroup>
+        
+        <!-- tGoogleDataprocManage group -->
+        <libraryNeededGroup
+                description="tGoogleDataprocManage libraries for Dataproc 1.1"
+                id="GOOGLE-DATAPROC-MANAGE-LIB-DATAPROC11"
+                name="GOOGLE-DATAPROC-MANAGE-LIB-DATAPROC11"  >
+            <library id="talend-bigdata-launcher-1.2.2-20170613" />
+            <library id="google-api-client-1.22.0" />
+            <library id="google-api-client-appengine-1.21.0" />
+            <library id="google-api-client-servlet-1.21.0" />
+            <library id="google-api-services-storage-v1-rev85-1.22.0" />
+            <library id="google-api-services-dataproc-v1-rev46-1.22.0" />
+            <library id="google-http-client-1.21.0" />
+            <library id="google-http-client-appengine-1.21.0" />
+            <library id="google-http-client-jackson-1.21.0" />
+            <library id="google-http-client-jackson2-1.22.0" />
+            <library id="google-oauth-client-1.22.0" />
+            <library id="google-cloud-storage-0.9.4-beta" />
+            <library id="google-cloud-core-0.9.4-alpha" />
+            <library id="google-auth-library-credentials-0.6.0" />
+            <library id="google-auth-library-oauth2-http-0.6.0" />
+            <library id="gax-0.1.4" />
+            <library id="json-20151123" />
+            <library id="guava-19.0" />
+            <library id="jackson-core-2.2.3" />
+            <library id="jackson-core-asl-1.8.8" />
+            <library id="jackson-mapper-asl-1.8.8" />
+            <library id="commons-lang-2.6"/>
         </libraryNeededGroup>
 
         <!-- Hive group -->

@@ -55,10 +55,16 @@ public final class SparkStreamingConstant {
     public static final String KINESIS_INPUT_AVRO_COMPONENT = "tKinesisInputAvro"; //$NON-NLS-1$
 
     public static final String KINESIS_OUTPUT_COMPONENT = "tKinesisOutput"; //$NON-NLS-1$
-    
+
     public static final String FLUME_OUTPUT_COMPONENT = "tFlumeOutput"; //$NON-NLS-1$
 
     public static final String FLUME_INPUT_COMPONENT = "tFlumeInput"; //$NON-NLS-1$
+
+    public static final String DYNAMODB_CONFIGURATION_COMPONENT = "tDynamoDBConfiguration"; //$NON-NLS-1$
+
+    public static final String DYNAMODB_OUTPUT_COMPONENT = "tDynamoDBOutput"; //$NON-NLS-1$
+
+    public static final String DYNAMODB_INPUT_COMPONENT = "tDynamoDBLookupInput"; //$NON-NLS-1$
 
     public static final String MAPRSTREAMS_INPUT_COMPONENT = "tMapRStreamsInput"; //$NON-NLS-1$
 

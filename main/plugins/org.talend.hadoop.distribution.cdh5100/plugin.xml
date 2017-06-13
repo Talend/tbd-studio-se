@@ -491,6 +491,34 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5100"
+            id="aws-java-sdk-dynamodb-1.10.6.jar"
+            name="aws-java-sdk-dynamodb-1.10.6.jar"
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-dynamodb-1.10.6/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5100"
+            id="emr-ddb-hadoop-3.0.0.jar"
+            name="emr-ddb-hadoop-3.0.0.jar"
+            mvn_uri="mvn:org.talend.libraries/emr-ddb-hadoop-3.0.0/6.2.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5100"
+            id="emr-core-2.4.0.jar"
+            name="emr-core-2.4.0.jar"
+            mvn_uri="mvn:org.talend.libraries/emr-core-2.4.0/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5100"
+            id="commons-pool2-2.4.2.jar"
+            name="commons-pool2-2.4.2.jar"
+            mvn_uri="mvn:org.talend.libraries/commons-pool2-2.4.2/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5100"
             id="aws-java-sdk-kms-1.10.6.jar"
             name="aws-java-sdk-kms-1.10.6.jar"
             mvn_uri="mvn:org.talend.libraries/aws-java-sdk-kms-1.10.6/6.0.0">
@@ -704,8 +732,8 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="arpack_combined_all-0.1.jar" name="arpack_combined_all-0.1.jar" mvn_uri="mvn:org.talend.libraries/arpack_combined_all-0.1/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="blas-0.8.jar" name="blas-0.8.jar" mvn_uri="mvn:org.talend.libraries/blas-0.8/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="bonecp-0.7.1.jar" name="bonecp-0.7.1.jar" mvn_uri="mvn:org.talend.libraries/bonecp-0.7.1/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="breeze_2.11-0.11.2.jar" name="breeze_2.11-0.11.2.jar" mvn_uri="mvn:org.talend.libraries/breeze_2.11-0.11.2/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="breeze-macros_2.11-0.11.2.jar" name="breeze-macros_2.11-0.11.2.jar" mvn_uri="mvn:org.talend.libraries/breeze-macros_2.11-0.11.2/6.0.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="breeze_2.11-0.12.jar" name="breeze_2.11-0.12.jar" mvn_uri="mvn:org.talend.libraries/breeze_2.11-0.12/6.0.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="breeze-macros_2.11-0.12.jar" name="breeze-macros_2.11-0.12.jar" mvn_uri="mvn:org.talend.libraries/breeze-macros_2.11-0.12/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="calcite-avatica-1.2.0-incubating.jar" name="calcite-avatica-1.2.0-incubating.jar" mvn_uri="mvn:org.talend.libraries/calcite-avatica-1.2.0-incubating/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="calcite-core-1.2.0-incubating.jar" name="calcite-core-1.2.0-incubating.jar" mvn_uri="mvn:org.talend.libraries/calcite-core-1.2.0-incubating/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="calcite-linq4j-1.2.0-incubating.jar" name="calcite-linq4j-1.2.0-incubating.jar" mvn_uri="mvn:org.talend.libraries/calcite-linq4j-1.2.0-incubating/6.0.0"/>
@@ -1193,8 +1221,8 @@
             <library id="avro-mapred-1.7.6-cdh5.10.1-hadoop2.jar"/>
             <library id="blas-0.8.jar"/>
             <library id="bonecp-0.7.1.jar"/>
-            <library id="breeze_2.11-0.11.2.jar"/>
-            <library id="breeze-macros_2.11-0.11.2.jar"/>
+            <library id="breeze_2.11-0.12.jar"/>
+            <library id="breeze-macros_2.11-0.12.jar"/>
             <library id="calcite-avatica-1.2.0-incubating.jar"/>
             <library id="calcite-core-1.2.0-incubating.jar"/>
             <library id="calcite-linq4j-1.2.0-incubating.jar"/>
@@ -1358,6 +1386,18 @@
                description="The latest Spark libraries for CDH 5.10 spark 2 that are MRREQUIRED"
                 id="SPARK-LIB-MRREQUIRED-CDH_5_10_SPARK2"
                 name="SPARK-LIB-MRREQUIRED-CDH_5_10_SPARK2">
+        </libraryNeededGroup>
+
+        <!-- Spark DynamoDB group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark DynamoDB libraries for CDH 5.10 that are MRREQUIRED"
+                id="SPARK-DYNAMODB-LIB-MRREQUIRED-CDH_5_10"
+                name="SPARK-DYNAMODB-LIB-MRREQUIRED-CDH_5_10">
+             <library id="aws-java-sdk-core-1.10.6.jar"/>
+             <library id="aws-java-sdk-dynamodb-1.10.6.jar"/>
+             <library id="emr-core-2.4.0.jar"/>
+             <library id="emr-ddb-hadoop-3.0.0.jar"/>
+             <library id="commons-pool2-2.4.2.jar"/>
         </libraryNeededGroup>
 
         <!-- Spark group MRREQUIRED -->
