@@ -82,6 +82,13 @@
             mvn_uri="mvn:org.talend.libraries/jodd-core-3.5.2/6.0.0">
         </libraryNeeded>
         
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh580spark2"
+            id="httpclient-4.3.3.jar"
+            name="httpclient-4.3.3.jar"
+            mvn_uri="mvn:org.talend.libraries/httpclient-4.3.3/6.0.0">
+        </libraryNeeded>
+        
         <!-- Spark2 libraries -->
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="akka-actor.jar" name="akka-actor.jar" mvn_uri="mvn:org.talend.libraries/akka-actor/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh580spark2" id="antlr-2.7.7.jar" name="antlr-2.7.7.jar" mvn_uri="mvn:org.talend.libraries/antlr-2.7.7/6.0.0"/>
@@ -660,6 +667,7 @@
              <library id="hk2-locator-2.4.0-b34.jar"/>
              <library id="hk2-utils-2.4.0-b34.jar"/>
              <library id="htrace-core-3.2.0-incubating.jar"/>
+             <library id="httpclient-4.3.3.jar"/>
              <library id="httpcore-4.4.4.jar"/>
              <library id="ivy-2.4.0.jar"/>
              <library id="jackson-annotations-2.6.5.jar"/>
