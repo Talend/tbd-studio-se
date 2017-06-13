@@ -46,7 +46,7 @@ public class EMRApache240Distribution extends AbstractDistribution implements HD
 
     public static final String VERSION = "APACHE_2_4_0_EMR";
 
-    public static final String VERSION_DISPLAY = "Apache 2.4.0";
+    public static final String VERSION_DISPLAY = "Apache 2.4.0 - DEPRECATED"";
 
     public static final String VERSION_PIG_DISPLAY = "Apache 2.4.0 (Pig 0.12.0) - DEPRECATED";
 
