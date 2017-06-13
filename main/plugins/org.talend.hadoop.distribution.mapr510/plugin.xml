@@ -529,7 +529,7 @@
                 description="Pig Avro libraries for MapR 5.1.0"
                 id="PIG-AVRO-LIB-MAPR510"
                 name="PIG-AVRO-LIB-MAPR510">
-            <library id="avro1.7.5.jar" />
+            <library id="avro-1.7.5.jar" />
             <library id="commons-io-2.3.jar"/>
             <library id="piggybank-MAPR510.jar"/>
         </libraryNeededGroup>
