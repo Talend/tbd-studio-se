@@ -285,12 +285,16 @@ public abstract class AbstractDistribution {
     public boolean doRequireMetastoreVersionOverride() {
         return false;
     }
-	
+
     public String getHiveMetastoreVersionForSpark() {
         return null;
     }
 
     public boolean isHortonworksDistribution() {
+        return false;
+    }
+
+    public boolean doImportDynamoDBDependencies() {
         return false;
     }
 }

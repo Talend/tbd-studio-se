@@ -491,6 +491,34 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5100"
+            id="aws-java-sdk-dynamodb-1.10.6.jar"
+            name="aws-java-sdk-dynamodb-1.10.6.jar"
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-dynamodb-1.10.6/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5100"
+            id="emr-ddb-hadoop-3.0.0.jar"
+            name="emr-ddb-hadoop-3.0.0.jar"
+            mvn_uri="mvn:org.talend.libraries/emr-ddb-hadoop-3.0.0/6.2.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5100"
+            id="emr-core-2.4.0.jar"
+            name="emr-core-2.4.0.jar"
+            mvn_uri="mvn:org.talend.libraries/emr-core-2.4.0/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5100"
+            id="commons-pool2-2.4.2.jar"
+            name="commons-pool2-2.4.2.jar"
+            mvn_uri="mvn:org.talend.libraries/commons-pool2-2.4.2/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5100"
             id="aws-java-sdk-kms-1.10.6.jar"
             name="aws-java-sdk-kms-1.10.6.jar"
             mvn_uri="mvn:org.talend.libraries/aws-java-sdk-kms-1.10.6/6.0.0">
@@ -1358,6 +1386,18 @@
                description="The latest Spark libraries for CDH 5.10 spark 2 that are MRREQUIRED"
                 id="SPARK-LIB-MRREQUIRED-CDH_5_10_SPARK2"
                 name="SPARK-LIB-MRREQUIRED-CDH_5_10_SPARK2">
+        </libraryNeededGroup>
+
+        <!-- Spark DynamoDB group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark DynamoDB libraries for CDH 5.10 that are MRREQUIRED"
+                id="SPARK-DYNAMODB-LIB-MRREQUIRED-CDH_5_10"
+                name="SPARK-DYNAMODB-LIB-MRREQUIRED-CDH_5_10">
+             <library id="aws-java-sdk-core-1.10.6.jar"/>
+             <library id="aws-java-sdk-dynamodb-1.10.6.jar"/>
+             <library id="emr-core-2.4.0.jar"/>
+             <library id="emr-ddb-hadoop-3.0.0.jar"/>
+             <library id="commons-pool2-2.4.2.jar"/>
         </libraryNeededGroup>
 
         <!-- Spark group MRREQUIRED -->
