@@ -119,6 +119,26 @@ public class HadoopClusterServiceTest {
         ProcessorUtilities.setExportAsOSGI(true);
         assertFalse(service.isUseDynamicConfJar(id));
     }
+    
+    @Test
+    public void testGetCustomConfsJarName() throws PersistenceException {
+        // test getCustomConfsJarName() not using context group set in connection but default group in repository context.
+        HadoopClusterConnection hadoopClusterConnection = (HadoopClusterConnection) hadoopClusterItem.getConnection();
+        hadoopClusterConnection.setUseCustomConfs(true);
+        String clusterLabel = hadoopClusterItem.getProperty().getLabel();
+        List<ContextType> contexts = new ArrayList<>();
+        List<String> contextNames = Arrays.asList("TEST", "DEV"); //$NON-NLS-1$ //$NON-NLS-2$
+        for (String contextName : contextNames) {
+            contexts.add(ClusterTestUtil.createContextType(contextName));
+        }
+        ContextItem contextItem = ClusterTestUtil.createContextItem(clusterLabel, contexts, true);
+        contextItem.setDefaultContext("TEST"); //$NON-NLS-1$
+        hadoopClusterConnection.setContextMode(true);
+        hadoopClusterConnection.setContextId(contextItem.getProperty().getId());
+        hadoopClusterConnection.setContextName("DEV"); //$NON-NLS-1$
+        String jarName = service.getCustomConfsJarName(hadoopClusterItem, false, true);
+        assertTrue(jarName.contains(clusterLabel + "_" + contextItem.getDefaultContext())); //$NON-NLS-1$
+    }
 
     @After
     public void after() {

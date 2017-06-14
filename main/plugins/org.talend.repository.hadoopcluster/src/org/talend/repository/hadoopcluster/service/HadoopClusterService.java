@@ -44,7 +44,9 @@ import org.talend.core.model.repository.IRepositoryViewObject;
 import org.talend.core.repository.model.ProxyRepositoryFactory;
 import org.talend.designer.core.model.components.EParameterName;
 import org.talend.designer.core.model.components.EmfComponent;
+import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
 import org.talend.designer.runprocess.ProcessorUtilities;
+import org.talend.metadata.managment.ui.utils.ConnectionContextHelper;
 import org.talend.repository.ProjectManager;
 import org.talend.repository.hadoopcluster.conf.HadoopConfsUtils;
 import org.talend.repository.hadoopcluster.node.model.HadoopClusterRepositoryNodeType;
@@ -336,7 +338,8 @@ public class HadoopClusterService implements IHadoopClusterService {
             if (connection != null && connection.isUseCustomConfs()) {
                 String extraIds = null;
                 if (addExtraIds && connection.isContextMode()) {
-                    extraIds = connection.getContextName();
+                    ContextType contextType = ConnectionContextHelper.getContextTypeForContextMode(connection, true);
+                    extraIds = contextType.getName();
                 }
                 if (extraIds == null) {
                     return HadoopConfsUtils.getConfsJarDefaultName(item, createJarIfNotExist);
