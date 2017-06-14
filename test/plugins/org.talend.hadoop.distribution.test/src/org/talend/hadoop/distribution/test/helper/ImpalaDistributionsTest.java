@@ -22,6 +22,7 @@ import org.talend.hadoop.distribution.constants.custom.ICustomDistribution;
 import org.talend.hadoop.distribution.constants.mapr.IMapRDistribution;
 import org.talend.hadoop.distribution.helper.HadoopDistributionsHelper;
 import org.talend.hadoop.distribution.model.DistributionBean;
+import org.talend.hadoop.distribution.test.TestUtils;
 
 /**
  * DOC ggu class global comment. Detailled comment
@@ -57,7 +58,7 @@ public class ImpalaDistributionsTest {
         DistributionBean distribution = HadoopDistributionsHelper.IMPALA.getDistribution(IClouderaDistribution.DISTRIBUTION_NAME,
                 false);
         Assert.assertNotNull(distribution);
-        String[] versionsDisplay = distribution.getVersionsDisplay();
+        String[] versionsDisplay = TestUtils.getVersionsDisplayDeprecatedSuffixRemoved(distribution.getVersionsDisplay());
         List<String> versions = Arrays.asList(versionsDisplay);
 
         String message = "Should contain the version";

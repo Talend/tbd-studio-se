@@ -12,16 +12,13 @@
 // ============================================================================
 package org.talend.hadoop.distribution.test.hive;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
 import org.talend.core.runtime.hd.IHDistribution;
 import org.talend.core.runtime.hd.hive.HiveMetadataHelper;
+import org.talend.hadoop.distribution.test.TestUtils;
 
 /**
  * DOC ggu class global comment. Detailled comment
@@ -82,7 +79,8 @@ public abstract class AbstractDistributionTest4HiveMetadataHelper extends Abstra
     @Test
     public void testGetDistributionVersionsDisplay() {
         String[] distributionVersionsDisplay = HiveMetadataHelper.getDistributionVersionsDisplay(getDistribution(), false);
-        doTestArray("Versions are different", getDistributionVersionsDisplay(), distributionVersionsDisplay);
+        doTestArray("Versions are different", getDistributionVersionsDisplay(),
+                TestUtils.getVersionsDisplayDeprecatedSuffixRemoved(distributionVersionsDisplay));
     }
 
 }
