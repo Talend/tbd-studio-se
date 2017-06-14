@@ -136,8 +136,9 @@
             FIELD="CHECK"
             NAME="USE_SSL"
             NUM_ROW="36"
+            SHOW="false"
             GROUP="CONNECTION">
-            <DEFAULT>"false"</DEFAULT>
+            <DEFAULT>true</DEFAULT>
         </PARAMETER>
 
 		<PARAMETER
@@ -153,9 +154,10 @@
 			NAME="REQUIRED_AUTHENTICATION"
 			FIELD="CHECK"
 			NUM_ROW="45"
+			SHOW="false"
 			GROUP="AUTHENTICATION"
 		>
-			<DEFAULT>false</DEFAULT>
+			<DEFAULT>true</DEFAULT>
         </PARAMETER>
         <PARAMETER NAME="AUTHENTICATION_MECHANISM" FIELD="CLOSED_LIST" NUM_ROW="47"
                 SHOW_IF="(REQUIRED_AUTHENTICATION == 'true')" GROUP="AUTHENTICATION">
