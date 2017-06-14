@@ -54,6 +54,7 @@ import org.talend.hadoop.distribution.emr550.modulegroup.EMR550SparkStreamingMod
 import org.talend.hadoop.distribution.emr550.modulegroup.EMR550SqoopModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.node.mr.EMR550MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.node.pigoutput.EMR550PigOutputNodeModuleGroup;
+import org.talend.hadoop.distribution.emr550.modulegroup.node.spark.EMR550SparkDynamoDBNodeModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.node.sparkbatch.EMR550GraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.node.sparkbatch.EMR550SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.node.sparkbatch.EMR550SparkBatchS3NodeModuleGroup;
@@ -67,6 +68,7 @@ import org.talend.hadoop.distribution.emr550.modulegroup.node.sparkstreaming.EMR
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
+@SuppressWarnings("nls")
 public class EMR550Distribution extends AbstractDistribution implements HBaseComponent, HDFSComponent, MRComponent, PigComponent,
         HCatalogComponent, HiveComponent, SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, SqoopComponent,
         IAmazonEMRDistribution {
@@ -186,6 +188,26 @@ public class EMR550Distribution extends AbstractDistribution implements HBaseCom
                 EMR550SparkStreamingFlumeNodeModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.FLUME_OUTPUT_COMPONENT),
                 EMR550SparkStreamingFlumeNodeModuleGroup.getModuleGroups(distribution, version));
+
+        // DynamoDB nodes ...
+        Set<DistributionModuleGroup> dynamoDBNodeModuleGroups = EMR550SparkDynamoDBNodeModuleGroup.getModuleGroups(distribution,
+                version, "USE_EXISTING_CONNECTION == 'false'");
+        Set<DistributionModuleGroup> dynamoDBConfigurationModuleGroups = EMR550SparkDynamoDBNodeModuleGroup.getModuleGroups(
+                distribution, version, null);
+        // ... in Spark batch
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_INPUT_COMPONENT),
+                dynamoDBNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_OUTPUT_COMPONENT),
+                dynamoDBNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_CONFIGURATION_COMPONENT),
+                dynamoDBConfigurationModuleGroups);
+        // ... in Spark streaming
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_INPUT_COMPONENT),
+                dynamoDBNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_OUTPUT_COMPONENT),
+                dynamoDBNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.DYNAMODB_CONFIGURATION_COMPONENT), dynamoDBConfigurationModuleGroups);
 
         return result;
     }
@@ -422,4 +444,10 @@ public class EMR550Distribution extends AbstractDistribution implements HBaseCom
     public SparkStreamingKafkaVersion getSparkStreamingKafkaVersion(ESparkVersion version) {
         return SparkStreamingKafkaVersion.KAFKA_0_10;
     }
+
+    @Override
+    public boolean doImportDynamoDBDependencies() {
+        return true;
+    }
+
 }

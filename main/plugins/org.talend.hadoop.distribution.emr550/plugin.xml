@@ -1475,6 +1475,27 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr550"
+            id="emr-ddb-hadoop-3.0.0.jar"
+            name="emr-ddb-hadoop-3.0.0.jar"
+            mvn_uri="mvn:org.talend.libraries/emr-ddb-hadoop-3.0.0/6.2.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr550"
+            id="emr-core-2.4.0.jar"
+            name="emr-core-2.4.0.jar"
+            mvn_uri="mvn:org.talend.libraries/emr-core-2.4.0/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr550"
+            id="commons-pool2-2.4.2.jar"
+            name="commons-pool2-2.4.2.jar"
+            mvn_uri="mvn:org.talend.libraries/commons-pool2-2.4.2/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr550"
             id="aws-java-sdk-dynamodb-1.10.75.1.jar"
             name="aws-java-sdk-dynamodb-1.10.75.1.jar"
             mvn_uri="mvn:org.talend.libraries/aws-java-sdk-dynamodb-1.10.75.1/6.0.0"/>
@@ -1989,6 +2010,18 @@
                 id="SPARK-LIB-MRREQUIRED-EMR_5_5_0_LATEST"
                 name="SPARK-LIB-MRREQUIRED-EMR_5_5_0_LATEST">
              <library id="snappy-java-1.1.2.6.jar"/>
+        </libraryNeededGroup>
+
+        <!-- Spark DynamoDB group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark DynamoDB libraries for EMR 5.5.0 that are MRREQUIRED"
+                id="SPARK-DYNAMODB-LIB-MRREQUIRED-EMR_5_5_0"
+                name="SPARK-DYNAMODB-LIB-MRREQUIRED-EMR_5_5_0">
+             <library id="aws-java-sdk-core-1.10.75.1.jar"/>
+             <library id="aws-java-sdk-dynamodb-1.10.75.1.jar"/>
+             <library id="emr-core-2.4.0.jar"/>
+             <library id="emr-ddb-hadoop-3.0.0.jar"/>
+             <library id="commons-pool2-2.4.2.jar"/>
         </libraryNeededGroup>
 
         <!-- Spark Parquet group MRREQUIRED -->

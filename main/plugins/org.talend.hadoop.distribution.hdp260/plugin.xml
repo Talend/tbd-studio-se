@@ -580,13 +580,34 @@
 		    name="aws-java-sdk-dynamodb-1.10.6.jar"
 		    mvn_uri="mvn:org.talend.libraries/aws-java-sdk-dynamodb-1.10.6/6.3.0">
 		</libraryNeeded>
-		
-		<libraryNeeded
-		    context="plugin:org.talend.hadoop.distribution.hdp260"
-		    id="aws-java-sdk-cloudwatch-1.10.6.jar"
-		    name="aws-java-sdk-cloudwatch-1.10.6.jar"
-		    mvn_uri="mvn:org.talend.libraries/aws-java-sdk-cloudwatch-1.10.6/6.3.0">
-		</libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.hdp260"
+            id="emr-ddb-hadoop-3.0.0.jar"
+            name="emr-ddb-hadoop-3.0.0.jar"
+            mvn_uri="mvn:org.talend.libraries/emr-ddb-hadoop-3.0.0/6.2.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.hdp260"
+            id="emr-core-2.4.0.jar"
+            name="emr-core-2.4.0.jar"
+            mvn_uri="mvn:org.talend.libraries/emr-core-2.4.0/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.hdp260"
+            id="commons-pool2-2.4.2.jar"
+            name="commons-pool2-2.4.2.jar"
+            mvn_uri="mvn:org.talend.libraries/commons-pool2-2.4.2/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.hdp260"
+            id="aws-java-sdk-cloudwatch-1.10.6.jar"
+            name="aws-java-sdk-cloudwatch-1.10.6.jar"
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-cloudwatch-1.10.6/6.3.0">
+        </libraryNeeded>
 		
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
@@ -1462,7 +1483,19 @@
                 name="SPARK-LIB-MRREQUIRED-HDP_2_6">
              <library id="snappy-java-1.0.4.1.jar"/>
         </libraryNeededGroup>
-        
+
+        <!-- Spark DynamoDB group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark DynamoDB libraries for HDP 2.6 that are MRREQUIRED"
+                id="SPARK-DYNAMODB-LIB-MRREQUIRED-HDP_2_6"
+                name="SPARK-DYNAMODB-LIB-MRREQUIRED-HDP_2_6">
+             <library id="aws-java-sdk-core-1.10.6.jar"/>
+             <library id="aws-java-sdk-dynamodb-1.10.6.jar"/>
+             <library id="emr-core-2.4.0.jar"/>
+             <library id="emr-ddb-hadoop-3.0.0.jar"/>
+             <library id="commons-pool2-2.4.2.jar"/>
+        </libraryNeededGroup>
+
         <!-- Spark S3 group MRREQUIRED -->
         <libraryNeededGroup
                 description="Spark S3 libraries for HDP 2.6 that are MRREQUIRED"

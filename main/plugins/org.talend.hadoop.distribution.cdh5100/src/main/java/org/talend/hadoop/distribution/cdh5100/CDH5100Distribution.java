@@ -39,10 +39,10 @@ import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100SparkStreamingM
 import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100SqoopModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.mr.CDH5100MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.pigoutput.CDH5100PigOutputNodeModuleGroup;
+import org.talend.hadoop.distribution.cdh5100.modulegroup.node.spark.CDH5100SparkDynamoDBNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.sparkbatch.CDH5100GraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.sparkbatch.CDH5100SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.sparkbatch.CDH5100SparkBatchS3NodeModuleGroup;
-import org.talend.hadoop.distribution.cdh5100.modulegroup.node.sparkbatch.CDH5100SparkDynamoDBNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.sparkstreaming.CDH5100SparkStreamingFlumeNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.sparkstreaming.CDH5100SparkStreamingKafkaAssemblyModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.sparkstreaming.CDH5100SparkStreamingKafkaAvroModuleGroup;
