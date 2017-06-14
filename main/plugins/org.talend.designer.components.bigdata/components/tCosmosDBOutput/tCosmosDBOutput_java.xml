@@ -448,7 +448,7 @@
         </TEMPLATES>
         <IMPORTS>
 
-            <IMPORT MODULE="mongo-java-driver-2.14.1.jar" MVN="mvn:org.talend.libraries/mongo-java-driver-2.14.1/6.0.0"  NAME="mongo-java-driver-2.14.1" UrlPath="platform:/plugin/org.talend.libraries.mongo/lib/mongo-java-driver-2.14.1.jar" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (API=='MONGODB')" />
+            <IMPORT MODULE="mongo-java-driver-3.4.2.jar" MVN="mvn:org.talend.libraries/mongo-java-driver-3.4.2/6.0.0"  NAME="mongo-java-driver-3.4.2" UrlPath="platform:/plugin/org.talend.libraries.mongo/lib/mongo-java-driver-3.4.2.jar" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (API=='MONGODB')" />
 
         </IMPORTS>
     </CODEGENERATION>
