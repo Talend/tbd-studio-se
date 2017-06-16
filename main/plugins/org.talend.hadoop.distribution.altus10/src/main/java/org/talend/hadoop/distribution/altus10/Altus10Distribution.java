@@ -25,9 +25,12 @@ import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
 import org.talend.hadoop.distribution.altus10.modulegroup.Altus10SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.altus10.modulegroup.Altus10SparkStreamingModuleGroup;
+import org.talend.hadoop.distribution.altus10.modulegroup.node.spark.Altus10SparkDynamoDBNodeModuleGroup;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
+import org.talend.hadoop.distribution.constants.SparkBatchConstant;
+import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.cdh.altus.IClouderaAltusDistribution;
 
 public class Altus10Distribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent,
@@ -72,9 +75,25 @@ public class Altus10Distribution extends AbstractDistribution implements SparkBa
 
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(String distribution, String version) {
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
-        // result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
-        // SparkBatchConstant.S3_CONFIGURATION_COMPONENT),
-        // Altus10SparkBatchS3NodeModuleGroup.getModuleGroups(distribution, version));
+        // DynamoDB ...
+        Set<DistributionModuleGroup> dynamoDBNodeModuleGroups = Altus10SparkDynamoDBNodeModuleGroup.getModuleGroups(distribution,
+                version, "USE_EXISTING_CONNECTION == 'false'");
+        Set<DistributionModuleGroup> dynamoDBConfigurationModuleGroups = Altus10SparkDynamoDBNodeModuleGroup.getModuleGroups(
+                distribution, version, null);
+        // ... in Spark batch
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_INPUT_COMPONENT),
+                dynamoDBNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_OUTPUT_COMPONENT),
+                dynamoDBNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
+                SparkBatchConstant.DYNAMODB_CONFIGURATION_COMPONENT), dynamoDBConfigurationModuleGroups);
+        // ... in Spark streaming
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.DYNAMODB_INPUT_COMPONENT), dynamoDBNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.DYNAMODB_OUTPUT_COMPONENT), dynamoDBNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.DYNAMODB_CONFIGURATION_COMPONENT), dynamoDBConfigurationModuleGroups);
         return result;
     }
 
@@ -204,6 +223,11 @@ public class Altus10Distribution extends AbstractDistribution implements SparkBa
 
     @Override
     public boolean doSupportSparkYarnClusterMode() {
+        return true;
+    }
+    
+    @Override
+    public boolean doImportDynamoDBDependencies() {
         return true;
     }
 }

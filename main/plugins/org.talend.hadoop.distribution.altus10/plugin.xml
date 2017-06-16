@@ -303,6 +303,15 @@
             <library id="aws-java-sdk-kinesis-1.10.6.jar"/>
         </libraryNeededGroup>
         
+        <libraryNeededGroup
+                description="Spark DynamoDB libraries for CDH 5.10 that are MRREQUIRED"
+                id="SPARK-DYNAMODB-LIB-MRREQUIRED-ALTUS10"
+                name="SPARK-DYNAMODB-LIB-MRREQUIRED-ALTUS10">
+			<library id="aws-java-sdk-dynamodb-1.10.6.jar"/>
+			<library id="emr-core-2.4.0.jar"/>
+			<library id="emr-ddb-hadoop-3.0.0.jar"/>
+			<library id="commons-pool2-2.4.2.jar"/>
+        </libraryNeededGroup>
         
    </extension>
    <extension
