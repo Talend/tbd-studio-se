@@ -41,7 +41,7 @@
 
         <!-- HDFS common group -->
         <libraryNeededGroup
-                description="HDFS libraries for CDH 5.10"
+                description="HDFS libraries for Altus 1.0"
                 id="HDFS-LIB-ALTUS10"
                 name="HDFS-LIB-ALTUS10" >
              <library id="hadoop-common-cdh5.10" />
@@ -72,7 +72,7 @@
         
         <!-- HDFS Spark 1.6 group -->
         <libraryNeededGroup
-                description="HDFS libraries for CDH 5.10"
+                description="HDFS libraries for Altus 1.0"
                 id="SPARK-LIB-ALTUS10"
                 name="SPARK-LIB-ALTUS10" >
             <group id="SPARK-S3-LIB-MRREQUIRED-ALTUS10"/>
@@ -259,7 +259,7 @@
         
         <!-- Spark S3 group MRREQUIRED -->
         <libraryNeededGroup
-                description="Spark S3 libraries for CDH 5.10 that are MRREQUIRED"
+                description="Spark S3 libraries for Altus 1.0 that are MRREQUIRED"
                 id="SPARK-S3-LIB-MRREQUIRED-ALTUS10"
                 name="SPARK-S3-LIB-MRREQUIRED-ALTUS10">
             <library id="aws-java-sdk-s3-1.11.132.jar"/>
@@ -268,7 +268,7 @@
 
         <!-- Map/Reduce group -->
         <libraryNeededGroup
-                description="Map/Reduce libraries for CDH 5.10"
+                description="Map/Reduce libraries for Altus 1.0"
                 id="MAPREDUCE-LIB-ALTUS10"
                 name="MAPREDUCE-LIB-ALTUS10"  >
              <library id="hadoop-mapreduce-client-common-cdh5.10"/>
@@ -291,7 +291,7 @@
         
         <!-- Spark Kinesis group MRREQUIRED -->
         <libraryNeededGroup
-                description="Spark Kinesis libraries for CDH 5.10 that are MRREQUIRED"
+                description="Spark Kinesis libraries for Altus 1.0 that are MRREQUIRED"
                 id="SPARK-KINESIS-LIB-MRREQUIRED-ALTUS10"
                 name="SPARK-KINESIS-LIB-MRREQUIRED-ALTUS10">
             <library id="spark-streaming-kinesis-asl_2.11-2.1.0.jar"/>
@@ -304,7 +304,7 @@
         </libraryNeededGroup>
         
         <libraryNeededGroup
-                description="Spark DynamoDB libraries for CDH 5.10 that are MRREQUIRED"
+                description="Spark DynamoDB libraries for Altus 1.0 that are MRREQUIRED"
                 id="SPARK-DYNAMODB-LIB-MRREQUIRED-ALTUS10"
                 name="SPARK-DYNAMODB-LIB-MRREQUIRED-ALTUS10">
 			<library id="aws-java-sdk-dynamodb-1.10.6.jar"/>
