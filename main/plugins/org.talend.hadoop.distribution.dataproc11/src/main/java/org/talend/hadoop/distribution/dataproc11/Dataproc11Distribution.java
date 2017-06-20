@@ -40,6 +40,7 @@ import org.talend.hadoop.distribution.dataproc11.modulegroup.Dataproc11HiveOnSpa
 import org.talend.hadoop.distribution.dataproc11.modulegroup.Dataproc11MapReduceModuleGroup;
 import org.talend.hadoop.distribution.dataproc11.modulegroup.Dataproc11SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.dataproc11.modulegroup.Dataproc11SparkStreamingModuleGroup;
+import org.talend.hadoop.distribution.dataproc11.modulegroup.node.sparkbatch.Dataproc11SparkBatchGraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.dataproc11.modulegroup.node.sparkbatch.Dataproc11SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.dataproc11.modulegroup.node.sparkstreaming.Dataproc11SparkStreamingKafkaAssemblyModuleGroup;
 import org.talend.hadoop.distribution.dataproc11.modulegroup.node.sparkstreaming.Dataproc11SparkStreamingKafkaAvroModuleGroup;
@@ -102,6 +103,10 @@ public class Dataproc11Distribution extends AbstractDistribution implements HDFS
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
                 Dataproc11SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
 
+        // Spark Batch DQ Match nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
+                Dataproc11SparkBatchGraphFramesNodeModuleGroup.getModuleGroups(distribution, version));
+
         // Spark Streaming Parquet nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_INPUT_COMPONENT),
                 Dataproc11SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
@@ -141,6 +146,11 @@ public class Dataproc11Distribution extends AbstractDistribution implements HDFS
     @Override
     public Set<DistributionModuleGroup> getModuleGroups(ComponentType componentType) {
         return moduleGroups.get(componentType);
+    }
+    
+    @Override
+    public Set<DistributionModuleGroup> getModuleGroups(ComponentType componentType, String componentName) {
+        return nodeModuleGroups.get(new NodeComponentTypeBean(componentType, componentName));
     }
 
     @Override

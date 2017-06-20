@@ -182,7 +182,15 @@
             name="parquet-hadoop-bundle-1.6.0.jar"
             mvn_uri="mvn:org.talend.libraries/parquet-hadoop-bundle-1.6.0/6.0.0">
         </libraryNeeded>
-        
+                
+        <!-- GraphFrames libraries -->
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc11"
+            id="graphframes-0.3.0-spark2.0-s_2.11"
+            name="graphframes-0.3.0-spark2.0-s_2.11.jar"
+            mvn_uri="mvn:org.talend.libraries/graphframes-0.3.0-spark2.0-s_2.11/6.0.0">
+		</libraryNeeded>
+		
        <!-- Kafka libraries -->    
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
@@ -655,6 +663,14 @@
                 name="SPARK-PARQUET-LIB-MRREQUIRED-DATAPROC11">
              <library id="parquet-hadoop-bundle-1.6.0"/>
              <library id="jodd-core-3.5.2"/>      
+        </libraryNeededGroup>
+        
+        <!-- Spark GraphFrames group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark libraries for GOOGLE DATAPROC 1.1 that are MRREQUIRED"
+                id="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-DATAPROC11"
+                name="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-DATAPROC11">
+             <library id="graphframes-0.3.0-spark2.0-s_2.11"/>
         </libraryNeededGroup>
       
          <!-- Spark Kafka group MRREQUIRED -->
