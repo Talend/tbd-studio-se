@@ -57,7 +57,6 @@ import org.talend.repository.maprdbprovider.Activator;
 import org.talend.repository.maprdbprovider.util.MapRDBClassLoaderFactory;
 import org.talend.repository.model.IProxyRepositoryFactory;
 import org.talend.repository.ui.wizards.metadata.table.database.SelectorTreeViewerProvider;
-
 import orgomg.cwm.objectmodel.core.TaggedValue;
 import orgomg.cwm.resource.relational.Catalog;
 
@@ -404,7 +403,13 @@ public class MapRDBMetadataProvider implements IDBMetadataProvider {
                             new Object[] { config, tableName });
 
                     ReflectionUtils.invokeMethod(scan, "addFamily", new Object[] { tableNode.getValue().getBytes() }); //$NON-NLS-1$
-
+                    // Limit
+                    int limit = -1;
+                    if (GlobalServiceRegister.getDefault().isServiceRegistered(IDesignerCoreService.class)) {
+                        IDesignerCoreService designerService = (IDesignerCoreService) GlobalServiceRegister.getDefault()
+                                .getService(IDesignerCoreService.class);
+                        limit = designerService.getDBConnectionLimit();
+                    }
                     Object resultSetscanner = ReflectionUtils.invokeMethod(table, "getScanner", new Object[] { scan }); //$NON-NLS-1$
                     List<String> columnExsit = new ArrayList<String>();
                     Object result = ReflectionUtils.invokeMethod(resultSetscanner, "next", new Object[0]); //$NON-NLS-1$
@@ -439,6 +444,9 @@ public class MapRDBMetadataProvider implements IDBMetadataProvider {
                                     columnNode.setTable(tableNode.getTable());
                                     tableNode.getChildren().add(columnNode);
                                     columnExsit.add(exsistColumn);
+                                    if (columnExsit.size() == limit) {
+                                        break;
+                                    }
                                 }
                             }
                         }
