@@ -408,7 +408,7 @@ public class MapRDBMetadataProvider implements IDBMetadataProvider {
                     if (GlobalServiceRegister.getDefault().isServiceRegistered(IDesignerCoreService.class)) {
                         IDesignerCoreService designerService = (IDesignerCoreService) GlobalServiceRegister.getDefault()
                                 .getService(IDesignerCoreService.class);
-                        limit = designerService.getDBConnectionLimit();
+                        limit = designerService.getHadoopFetchLimit();
                     }
                     Object resultSetscanner = ReflectionUtils.invokeMethod(table, "getScanner", new Object[] { scan }); //$NON-NLS-1$
                     List<String> columnExsit = new ArrayList<String>();
