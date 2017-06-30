@@ -119,12 +119,20 @@ public class HCatalogWizard extends HadoopRepositoryWizard<HCatalogConnection> {
             HadoopClusterConnection hcConnection = (HadoopClusterConnection) hcConnectionItem.getConnection();
             hadoopConnection.setRelativeHadoopClusterId(hcConnectionItem.getProperty().getId());
             if (HCVersionUtil.isHDI(hcConnection)) {
-                hadoopConnection.setUserName(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_USERNAME));
-                hadoopConnection.setHostName(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_HOSTNAME));
-                hadoopConnection.setPort(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_PORT));
-                hadoopConnection.setPassword(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_PASSWORD));
-            } else {
                 hadoopConnection.setUserName(ConnectionContextHelper.getParamValueOffContext(hcConnection,
+                        hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_USERNAME)));
+
+                hadoopConnection.setHostName(ConnectionContextHelper.getParamValueOffContext(hcConnection,
+                        hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_HOSTNAME)));
+
+                hadoopConnection.setPort(ConnectionContextHelper.getParamValueOffContext(hcConnection,
+                        hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_PORT)));
+
+                hadoopConnection.setPassword(ConnectionContextHelper.getParamValueOffContext(hcConnection,
+                        hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_PASSWORD)));
+            } else {
+                hadoopConnection
+                        .setUserName(ConnectionContextHelper.getParamValueOffContext(hcConnection,
                         hcConnection.getUserName()));
                 String originalNameNodeUri = ConnectionContextHelper.getParamValueOffContext(hcConnection,
                         hcConnection.getNameNodeURI());
