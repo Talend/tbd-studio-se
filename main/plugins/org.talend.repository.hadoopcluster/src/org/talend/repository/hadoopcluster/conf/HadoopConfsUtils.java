@@ -155,7 +155,8 @@ public class HadoopConfsUtils {
                 ILibrariesService service = (ILibrariesService) GlobalServiceRegister.getDefault()
                         .getService(ILibrariesService.class);
                 if (service != null) {
-                    service.deployLibrary(jarFile.toURI().toURL());
+                    // Only deploy a new jar, no need to reset all
+                    service.deployLibrary(jarFile.toURI().toURL(), false);
                     addToDeployedCache(connectionItem, jarName);
                 }
             }
@@ -304,7 +305,8 @@ public class HadoopConfsUtils {
                         ILibrariesService service = (ILibrariesService) GlobalServiceRegister.getDefault()
                                 .getService(ILibrariesService.class);
                         if (service != null) {
-                            service.deployLibrary(confFile.toURI().toURL());
+                            // Only deploy a new jar, no need to reset all
+                            service.deployLibrary(confFile.toURI().toURL(), false);
                             addToDeployedCache(connectionItem, confJarName);
                         }
                     }
