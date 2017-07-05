@@ -57,6 +57,7 @@ import org.talend.repository.hbaseprovider.Activator;
 import org.talend.repository.hbaseprovider.util.HBaseClassLoaderFactory;
 import org.talend.repository.model.IProxyRepositoryFactory;
 import org.talend.repository.ui.wizards.metadata.table.database.SelectorTreeViewerProvider;
+
 import orgomg.cwm.objectmodel.core.TaggedValue;
 import orgomg.cwm.resource.relational.Catalog;
 
@@ -458,11 +459,11 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
                                     columnNode.setTable(tableNode.getTable());
                                     tableNode.getChildren().add(columnNode);
                                     columnExsit.add(exsistColumn);
-                                    if (columnExsit.size() == limit) {
-                                        break;
-                                    }
                                 }
                             }
+                        }
+                        if (columnExsit.size() == limit) {
+                            break;
                         }
                         result = ReflectionUtils.invokeMethod(resultSetscanner, "next", new Object[0]); //$NON-NLS-1$
                     }
@@ -811,6 +812,13 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
             if (StringUtils.isNotEmpty(schema)) {
                 ReflectionUtils.invokeMethod(scan, "addFamily", new Object[] { schema.getBytes() }); //$NON-NLS-1$
             }
+            // Limit
+            int limit = -1;
+            if (GlobalServiceRegister.getDefault().isServiceRegistered(IDesignerCoreService.class)) {
+                IDesignerCoreService designerService = (IDesignerCoreService) GlobalServiceRegister.getDefault()
+                        .getService(IDesignerCoreService.class);
+                limit = designerService.getHBaseOrMaprDBScanLimit();
+            }
             List<String> columnExsit = new ArrayList<String>();
             Object resultSetscanner = ReflectionUtils.invokeMethod(table, "getScanner", new Object[] { scan }); //$NON-NLS-1$
             Object result = ReflectionUtils.invokeMethod(resultSetscanner, "next", new Object[0]); //$NON-NLS-1$
@@ -847,6 +855,9 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
                             }
                         }
                     }
+                }
+                if (columnExsit.size() == limit) {
+                    break;
                 }
                 result = ReflectionUtils.invokeMethod(resultSetscanner, "next", new Object[0]); //$NON-NLS-1$
             }
