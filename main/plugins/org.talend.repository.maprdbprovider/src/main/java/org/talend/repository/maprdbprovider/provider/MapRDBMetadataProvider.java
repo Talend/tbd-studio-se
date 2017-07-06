@@ -409,6 +409,7 @@ public class MapRDBMetadataProvider implements IDBMetadataProvider {
 
                     ReflectionUtils.invokeMethod(scan, "addFamily", new Object[] { tableNode.getValue().getBytes() }); //$NON-NLS-1$
                     // Limit
+                    int count = 0;
                     int limit = -1;
                     if (GlobalServiceRegister.getDefault().isServiceRegistered(IDesignerCoreService.class)) {
                         IDesignerCoreService designerService = (IDesignerCoreService) GlobalServiceRegister.getDefault()
@@ -452,7 +453,8 @@ public class MapRDBMetadataProvider implements IDBMetadataProvider {
                                 }
                             }
                         }
-                        if (columnExsit.size() == limit) {
+                        count++;
+                        if (count == limit) {
                             break;
                         }
                         result = ReflectionUtils.invokeMethod(resultSetscanner, "next", new Object[0]); //$NON-NLS-1$
@@ -831,6 +833,7 @@ public class MapRDBMetadataProvider implements IDBMetadataProvider {
                 ReflectionUtils.invokeMethod(scan, "addFamily", new Object[] { schema.getBytes() }); //$NON-NLS-1$
             }
             // Limit
+            int count = 0;
             int limit = -1;
             if (GlobalServiceRegister.getDefault().isServiceRegistered(IDesignerCoreService.class)) {
                 IDesignerCoreService designerService = (IDesignerCoreService) GlobalServiceRegister.getDefault()
@@ -874,7 +877,8 @@ public class MapRDBMetadataProvider implements IDBMetadataProvider {
                         }
                     }
                 }
-                if (columnExsit.size() == limit) {
+                count++;
+                if (count == limit) {
                     break;
                 }
                 result = ReflectionUtils.invokeMethod(resultSetscanner, "next", new Object[0]); //$NON-NLS-1$
