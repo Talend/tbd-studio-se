@@ -359,7 +359,7 @@ public class HadoopClusterService implements IHadoopClusterService {
             HadoopClusterConnectionItem connectionItem = (HadoopClusterConnectionItem) item;
             HadoopClusterConnection connection = (HadoopClusterConnection) connectionItem.getConnection();
             if (connection.isUseCustomConfs()) {
-                Set<String> confsJarNames = HadoopConfsUtils.getConfsJarDefaultNames(connectionItem, true);
+                Set<String> confsJarNames = HadoopConfsUtils.getConfsJarDefaultNames(connectionItem);
                 for (String confsJarName : confsJarNames) {
                     addConfsModule(modulesNeeded, connection, confsJarName);
                 }
