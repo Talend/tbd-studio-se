@@ -130,6 +130,12 @@ public class HCatalogWizard extends HadoopRepositoryWizard<HCatalogConnection> {
 
                 hadoopConnection.setPassword(ConnectionContextHelper.getParamValueOffContext(hcConnection,
                         hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_PASSWORD)));
+
+                hadoopConnection
+                        .setThriftServer("thrift://"
+                                + ConnectionContextHelper.getParamValueOffContext(hcConnection,
+                                        hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_HOSTNAME))
+                                + ":9083");
             } else {
                 hadoopConnection
                         .setUserName(ConnectionContextHelper.getParamValueOffContext(hcConnection,

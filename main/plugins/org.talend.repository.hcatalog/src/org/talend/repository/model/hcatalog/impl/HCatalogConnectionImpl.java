@@ -38,6 +38,7 @@ import org.talend.repository.model.hcatalog.HCatalogPackage;
  *   <li>{@link org.talend.repository.model.hcatalog.impl.HCatalogConnectionImpl#getNnPrincipal <em>Nn Principal</em>}</li>
  *   <li>{@link org.talend.repository.model.hcatalog.impl.HCatalogConnectionImpl#getRowSeparator <em>Row Separator</em>}</li>
  *   <li>{@link org.talend.repository.model.hcatalog.impl.HCatalogConnectionImpl#getFieldSeparator <em>Field Separator</em>}</li>
+ *   <li>{@link org.talend.repository.model.hcatalog.impl.HCatalogConnectionImpl#getThriftServer <em>Thrift Server</em>}</li>
  * </ul>
  * </p>
  *
@@ -323,6 +324,26 @@ public class HCatalogConnectionImpl extends HadoopSubConnectionImpl implements H
      * @ordered
      */
     protected String fieldSeparator = FIELD_SEPARATOR_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getThriftServer() <em>Thrift Server</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getThriftServer()
+     * @generated
+     * @ordered
+     */
+    protected static final String THRIFT_SERVER_EDEFAULT = "";
+
+    /**
+     * The cached value of the '{@link #getThriftServer() <em>Thrift Server</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getThriftServer()
+     * @generated
+     * @ordered
+     */
+    protected String thriftServer = THRIFT_SERVER_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -642,6 +663,27 @@ public class HCatalogConnectionImpl extends HadoopSubConnectionImpl implements H
      * <!-- end-user-doc -->
      * @generated
      */
+    public String getThriftServer() {
+        return thriftServer;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setThriftServer(String newThriftServer) {
+        String oldThriftServer = thriftServer;
+        thriftServer = newThriftServer;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, HCatalogPackage.HCATALOG_CONNECTION__THRIFT_SERVER, oldThriftServer, thriftServer));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
@@ -673,6 +715,8 @@ public class HCatalogConnectionImpl extends HadoopSubConnectionImpl implements H
                 return getRowSeparator();
             case HCatalogPackage.HCATALOG_CONNECTION__FIELD_SEPARATOR:
                 return getFieldSeparator();
+            case HCatalogPackage.HCATALOG_CONNECTION__THRIFT_SERVER:
+                return getThriftServer();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -726,6 +770,9 @@ public class HCatalogConnectionImpl extends HadoopSubConnectionImpl implements H
                 return;
             case HCatalogPackage.HCATALOG_CONNECTION__FIELD_SEPARATOR:
                 setFieldSeparator((String)newValue);
+                return;
+            case HCatalogPackage.HCATALOG_CONNECTION__THRIFT_SERVER:
+                setThriftServer((String)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -781,6 +828,9 @@ public class HCatalogConnectionImpl extends HadoopSubConnectionImpl implements H
             case HCatalogPackage.HCATALOG_CONNECTION__FIELD_SEPARATOR:
                 setFieldSeparator(FIELD_SEPARATOR_EDEFAULT);
                 return;
+            case HCatalogPackage.HCATALOG_CONNECTION__THRIFT_SERVER:
+                setThriftServer(THRIFT_SERVER_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -821,6 +871,8 @@ public class HCatalogConnectionImpl extends HadoopSubConnectionImpl implements H
                 return ROW_SEPARATOR_EDEFAULT == null ? rowSeparator != null : !ROW_SEPARATOR_EDEFAULT.equals(rowSeparator);
             case HCatalogPackage.HCATALOG_CONNECTION__FIELD_SEPARATOR:
                 return FIELD_SEPARATOR_EDEFAULT == null ? fieldSeparator != null : !FIELD_SEPARATOR_EDEFAULT.equals(fieldSeparator);
+            case HCatalogPackage.HCATALOG_CONNECTION__THRIFT_SERVER:
+                return THRIFT_SERVER_EDEFAULT == null ? thriftServer != null : !THRIFT_SERVER_EDEFAULT.equals(thriftServer);
         }
         return super.eIsSet(featureID);
     }
@@ -863,6 +915,8 @@ public class HCatalogConnectionImpl extends HadoopSubConnectionImpl implements H
         result.append(rowSeparator);
         result.append(", fieldSeparator: ");
         result.append(fieldSeparator);
+        result.append(", thriftServer: ");
+        result.append(thriftServer);
         result.append(')');
         return result.toString();
     }

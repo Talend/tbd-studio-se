@@ -30,6 +30,7 @@ import org.talend.repository.model.hadoopcluster.HadoopSubConnection;
  *   <li>{@link org.talend.repository.model.hcatalog.HCatalogConnection#getNnPrincipal <em>Nn Principal</em>}</li>
  *   <li>{@link org.talend.repository.model.hcatalog.HCatalogConnection#getRowSeparator <em>Row Separator</em>}</li>
  *   <li>{@link org.talend.repository.model.hcatalog.HCatalogConnection#getFieldSeparator <em>Field Separator</em>}</li>
+ *   <li>{@link org.talend.repository.model.hcatalog.HCatalogConnection#getThriftServer <em>Thrift Server</em>}</li>
  * </ul>
  * </p>
  *
@@ -411,5 +412,32 @@ public interface HCatalogConnection extends HadoopSubConnection {
      * @generated
      */
     void setFieldSeparator(String value);
+
+    /**
+     * Returns the value of the '<em><b>Thrift Server</b></em>' attribute.
+     * The default value is <code>""</code>.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Thrift Server</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Thrift Server</em>' attribute.
+     * @see #setThriftServer(String)
+     * @see org.talend.repository.model.hcatalog.HCatalogPackage#getHCatalogConnection_ThriftServer()
+     * @model default=""
+     * @generated
+     */
+    String getThriftServer();
+
+    /**
+     * Sets the value of the '{@link org.talend.repository.model.hcatalog.HCatalogConnection#getThriftServer <em>Thrift Server</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Thrift Server</em>' attribute.
+     * @see #getThriftServer()
+     * @generated
+     */
+    void setThriftServer(String value);
 
 } // HCatalogConnection

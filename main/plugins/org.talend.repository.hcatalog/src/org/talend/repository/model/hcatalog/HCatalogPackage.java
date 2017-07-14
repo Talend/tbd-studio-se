@@ -593,13 +593,22 @@ public interface HCatalogPackage extends EPackage {
     int HCATALOG_CONNECTION__FIELD_SEPARATOR = HadoopClusterPackage.HADOOP_SUB_CONNECTION_FEATURE_COUNT + 13;
 
     /**
+     * The feature id for the '<em><b>Thrift Server</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HCATALOG_CONNECTION__THRIFT_SERVER = HadoopClusterPackage.HADOOP_SUB_CONNECTION_FEATURE_COUNT + 14;
+
+    /**
      * The number of structural features of the '<em>Connection</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int HCATALOG_CONNECTION_FEATURE_COUNT = HadoopClusterPackage.HADOOP_SUB_CONNECTION_FEATURE_COUNT + 14;
+    int HCATALOG_CONNECTION_FEATURE_COUNT = HadoopClusterPackage.HADOOP_SUB_CONNECTION_FEATURE_COUNT + 15;
 
     /**
      * The meta object id for the '{@link org.talend.repository.model.hcatalog.impl.HCatalogConnectionItemImpl <em>Connection Item</em>}' class.
@@ -849,6 +858,17 @@ public interface HCatalogPackage extends EPackage {
     EAttribute getHCatalogConnection_FieldSeparator();
 
     /**
+     * Returns the meta object for the attribute '{@link org.talend.repository.model.hcatalog.HCatalogConnection#getThriftServer <em>Thrift Server</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Thrift Server</em>'.
+     * @see org.talend.repository.model.hcatalog.HCatalogConnection#getThriftServer()
+     * @see #getHCatalogConnection()
+     * @generated
+     */
+    EAttribute getHCatalogConnection_ThriftServer();
+
+    /**
      * Returns the meta object for class '{@link org.talend.repository.model.hcatalog.HCatalogConnectionItem <em>Connection Item</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1001,6 +1021,14 @@ public interface HCatalogPackage extends EPackage {
          * @generated
          */
         EAttribute HCATALOG_CONNECTION__FIELD_SEPARATOR = eINSTANCE.getHCatalogConnection_FieldSeparator();
+
+        /**
+         * The meta object literal for the '<em><b>Thrift Server</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute HCATALOG_CONNECTION__THRIFT_SERVER = eINSTANCE.getHCatalogConnection_ThriftServer();
 
         /**
          * The meta object literal for the '{@link org.talend.repository.model.hcatalog.impl.HCatalogConnectionItemImpl <em>Connection Item</em>}' class.

@@ -21,6 +21,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcatalog.ecore#//HCatalogConnection/nnPrincipal"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcatalog.ecore#//HCatalogConnection/rowSeparator"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcatalog.ecore#//HCatalogConnection/fieldSeparator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hcatalog.ecore#//HCatalogConnection/thriftServer"/>
     </genClasses>
     <genClasses ecoreClass="hcatalog.ecore#//HCatalogConnectionItem"/>
   </genPackages>

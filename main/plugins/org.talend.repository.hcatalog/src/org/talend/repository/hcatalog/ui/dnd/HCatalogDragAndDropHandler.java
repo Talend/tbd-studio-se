@@ -10,6 +10,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.core.GlobalServiceRegister;
+import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.hadoop.version.EHadoopDistributions;
 import org.talend.core.hadoop.version.custom.ECustomVersionGroup;
@@ -27,6 +28,7 @@ import org.talend.core.model.utils.AbstractDragAndDropServiceHandler;
 import org.talend.core.model.utils.IComponentName;
 import org.talend.core.repository.RepositoryComponentSetting;
 import org.talend.designer.hdfsbrowse.util.EHDFSRepositoryToComponent;
+import org.talend.metadata.managment.ui.utils.ConnectionContextHelper;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.hadoopcluster.util.HCVersionUtil;
 import org.talend.repository.hcatalog.i18n.Messages;
@@ -174,6 +176,39 @@ public class HCatalogDragAndDropHandler extends AbstractDragAndDropServiceHandle
             return getRepositoryValueOfStringType(hcConnection, StringUtils.trimToNull(hcConnection.getMaprTCluster()));
         } else if (EHDFSRepositoryToComponent.MAPRTICKET_DURATION.getRepositoryValue().equals(value)) {
             return hcConnection.getMaprTDuration();
+        } else if (EHCatalogRepositoryToComponent.WEBHCAT_HOST.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(connection, StringUtils.trimToNull(connection.getHostName()));
+        } else if (EHCatalogRepositoryToComponent.WEBHCAT_PORT.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(connection, StringUtils.trimToNull(connection.getPort()));
+        } else if (EHCatalogRepositoryToComponent.WEBHCAT_USERNAME.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(connection, StringUtils.trimToNull(connection.getUserName()));
+        } else if (EHCatalogRepositoryToComponent.STATUSDIR.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(connection, StringUtils
+                    .trimToEmpty(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_JOB_RESULT_FOLDER)));
+        } else if (EHCatalogRepositoryToComponent.HDINSIGHT_USERNAME.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(connection,
+                    StringUtils.trimToEmpty(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_USERNAME)));
+        } else if (EHCatalogRepositoryToComponent.HDINSIGHT_PASSWORD.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(connection,
+                    StringUtils.trimToEmpty(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_PASSWORD)));
+        } else if (EHCatalogRepositoryToComponent.WASB_HOST.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(connection,
+                    StringUtils.trimToEmpty(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HOSTNAME)));
+        } else if (EHCatalogRepositoryToComponent.WASB_USERNAME.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(connection,
+                    StringUtils.trimToEmpty(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_USERNAME)));
+        } else if (EHCatalogRepositoryToComponent.WASB_CONTAINER.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(connection,
+                    StringUtils.trimToEmpty(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_CONTAINER)));
+        } else if (EHCatalogRepositoryToComponent.WASB_PASSWORD.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(connection,
+                    StringUtils.trimToEmpty(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_PASSWORD)));
+        } else if (EHCatalogRepositoryToComponent.REMOTE_FOLDER.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(connection,
+                    StringUtils.trimToEmpty(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_DEPLOY_BLOB)));
+        } else if (EHCatalogRepositoryToComponent.THRIFT_SERVER.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(connection, StringUtils.trimToNull(connection.getThriftServer()));
+
         }
 
         return null;
@@ -280,6 +315,8 @@ public class HCatalogDragAndDropHandler extends AbstractDragAndDropServiceHandle
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.setHostName(value);
+                connection.setThriftServer(ConnectionContextHelper.getParamValueOffContext(hcConnection,
+                        hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_HOSTNAME)));
             }
         } else if (EHCatalogRepositoryToComponent.TEMPLETON_PORT.getRepositoryValue().equals(param.getRepositoryValue())) {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);

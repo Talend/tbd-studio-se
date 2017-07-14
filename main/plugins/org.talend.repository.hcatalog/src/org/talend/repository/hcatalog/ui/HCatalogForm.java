@@ -302,6 +302,8 @@ public class HCatalogForm extends AbstractHCatalogForm {
             @Override
             public void modifyText(final ModifyEvent e) {
                 getConnection().setHostName(hostText.getText());
+                getConnection().setThriftServer("thrift://"
+                        + ConnectionContextHelper.getParamValueOffContext(getConnection(), hostText.getText()) + ":9083");
                 checkFieldsValue();
             }
         });
