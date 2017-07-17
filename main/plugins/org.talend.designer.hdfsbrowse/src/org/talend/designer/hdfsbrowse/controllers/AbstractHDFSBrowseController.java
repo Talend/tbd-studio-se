@@ -552,7 +552,8 @@ public abstract class AbstractHDFSBrowseController extends AbstractElementProper
                         new ErrorDialogWidthDetailArea(
                                 PlatformUI.getWorkbench().getDisplay().getActiveShell(),
                                 HDFSPlugin.PLUGIN_ID,
-                                Messages.getString("AbstractHDFSBrowseController.unsupportedOperation.mainMsg"), Messages.getString("AbstractHDFSBrowseController.unsupportedOperation.detailMsg")); //$NON-NLS-1$ //$NON-NLS-2$
+                                Messages.getString("AbstractHDFSBrowseController.unsupportedOperation.warningMsg"), //$NON-NLS-1$
+                                Messages.getString("AbstractHDFSBrowseController.unsupportedOperation.detailMsg1")); //$NON-NLS-1$
                         return;
                     }
                 });
