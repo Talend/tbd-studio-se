@@ -118,7 +118,7 @@
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr500"
             id="hive-exec-2.1.1-amzn-0-talend-nolang3"
-            name="hive-exec-2.1.1-amzn-0-talend-nolang3.jar" 
+            name="hive-exec-2.1.1-amzn-0-talend-nolang3.jar"
             mvn_uri="mvn:org.talend.libraries/hive-exec-2.1.1-amzn-0-talend-nolang3/6.0.0"/>
 
         <libraryNeeded
@@ -197,7 +197,7 @@
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop"
             id="parquet-pig-bundle-1.6.0.jar"
-            name="parquet-pig-bundle-1.6.0.jar" 
+            name="parquet-pig-bundle-1.6.0.jar"
             mvn_uri="mvn:org.talend.libraries/parquet-pig-bundle-1.6.0/6.0.0"
             uripath="platform:/plugin/org.talend.libraries.hadoop/lib/parquet-pig-bundle-1.6.0.jar"/>
 
@@ -251,12 +251,12 @@
         </libraryNeeded>
 
         <!-- S3 libraries -->
-            
+
          <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr550"
             id="hadoop-aws-2.7.3-amzn-2.jar"
             name="hadoop-aws-2.7.3-amzn-2.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-aws-2.7.3-amzn-2/6.0.0"/>            
+            mvn_uri="mvn:org.talend.libraries/hadoop-aws-2.7.3-amzn-2/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.libraries.s3"
@@ -288,43 +288,43 @@
             id="tez-api-0.8.4.jar"
             name="tez-api-0.8.4.jar"
             mvn_uri="mvn:org.talend.libraries/tez-api-0.8.4/6.0.0"/>
-            
+
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr550"
             id="tez-common-0.8.4.jar"
             name="tez-common-0.8.4.jar"
             mvn_uri="mvn:org.talend.libraries/tez-common-0.8.4/6.0.0"/>
-            
+
          <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr550"
             id="tez-dag-0.8.4.jar"
             name="tez-dag-0.8.4.jar"
             mvn_uri="mvn:org.talend.libraries/tez-dag-0.8.4/6.0.0"/>
-            
+
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr550"
             id="tez-mapreduce-0.8.4.jar"
             name="tez-mapreduce-0.8.4.jar"
             mvn_uri="mvn:org.talend.libraries/tez-mapreduce-0.8.4/6.0.0"/>
-            
+
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr550"
             id="tez-runtime-internals-0.8.4.jar"
             name="tez-runtime-internals-0.8.4.jar"
             mvn_uri="mvn:org.talend.libraries/tez-runtime-internals-0.8.4/6.0.0"/>
-            
+
          <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr550"
             id="tez-runtime-library-0.8.4.jar"
             name="tez-runtime-library-0.8.4.jar"
             mvn_uri="mvn:org.talend.libraries/tez-runtime-library-0.8.4/6.0.0"/>
-            
+
           <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr550"
             id="tez-yarn-timeline-history-0.8.4.jar"
             name="tez-yarn-timeline-history-0.8.4.jar"
             mvn_uri="mvn:org.talend.libraries/tez-yarn-timeline-history-0.8.4/6.0.0"/>
-            
+
           <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr550"
             id="tez-yarn-timeline-history-with-acls-0.8.4.jar"
@@ -337,19 +337,19 @@
             id="metrics-graphite-3.1.2.jar"
             name="metrics-graphite-3.1.2.jar"
             mvn_uri="mvn:org.talend.libraries/metrics-graphite-3.1.2/6.0.0"/>
-            
+
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr550"
             id="osgi-resource-locator-1.0.1.jar"
             name="osgi-resource-locator-1.0.1.jar"
             mvn_uri="mvn:org.talend.libraries/osgi-resource-locator-1.0.1/6.0.0"/>
-            
+
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr550"
             id="minlog-1.3.0.jar"
             name="minlog-1.3.0.jar"
             mvn_uri="mvn:org.talend.libraries/minlog-1.3.0/6.0.0"/>
- 
+
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr550"
             id="javax.inject-1.jar"
@@ -1584,7 +1584,7 @@
              <library id="jetty-util-6.1.26-emr.jar"/>
              <library id="htrace-core-3.1.0-incubating.jar"/>
              <library id="servlet-api-2.5.jar"/>
-             <library id="avro-1.7.4.jar"/>
+             <library id="avro-1.7.7.jar"/>
              <library id="jackson-mapper-asl-1.9.13.jar"/>
              <library id="jackson-core-asl-1.9.13.jar"/>
         </libraryNeededGroup>
