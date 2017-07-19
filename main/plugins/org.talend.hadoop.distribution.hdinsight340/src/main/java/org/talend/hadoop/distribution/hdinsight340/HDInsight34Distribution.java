@@ -290,11 +290,6 @@ public class HDInsight34Distribution extends AbstractDistribution implements MRC
     }
 
     @Override
-    public boolean doSupportSparkYarnClusterMode() {
-        return true;
-    }
-
-    @Override
     public boolean doSupportBackpressure() {
         return false;
     }

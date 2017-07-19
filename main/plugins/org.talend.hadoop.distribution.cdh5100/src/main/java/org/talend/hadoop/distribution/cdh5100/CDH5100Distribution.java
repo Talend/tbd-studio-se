@@ -460,8 +460,4 @@ public class CDH5100Distribution extends AbstractDistribution implements ICloude
         return true;
     }
 
-    @Override
-    public boolean doSupportSparkYarnClusterMode() {
-        return true;
-    }
 }

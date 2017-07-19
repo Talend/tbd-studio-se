@@ -125,7 +125,7 @@ public abstract class AbstractDistribution {
     }
 
     public boolean doSupportSparkYarnClusterMode() {
-        return false;
+        return true;
     }
 
     public boolean doSupportS3() {

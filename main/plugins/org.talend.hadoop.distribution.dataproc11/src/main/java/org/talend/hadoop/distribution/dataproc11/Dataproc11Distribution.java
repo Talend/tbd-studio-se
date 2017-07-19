@@ -147,7 +147,7 @@ public class Dataproc11Distribution extends AbstractDistribution implements HDFS
     public Set<DistributionModuleGroup> getModuleGroups(ComponentType componentType) {
         return moduleGroups.get(componentType);
     }
-    
+
     @Override
     public Set<DistributionModuleGroup> getModuleGroups(ComponentType componentType, String componentName) {
         return nodeModuleGroups.get(new NodeComponentTypeBean(componentType, componentName));
@@ -319,5 +319,10 @@ public class Dataproc11Distribution extends AbstractDistribution implements HDFS
     @Override
     public String getHiveMetastoreVersionForSpark() {
         return "1.2.1";
+    }
+
+    @Override
+    public boolean doSupportSparkYarnClusterMode() {
+        return false;
     }
 }

@@ -246,11 +246,6 @@ public class HDInsight36Distribution extends AbstractDistribution implements Spa
     }
 
     @Override
-    public boolean doSupportSparkYarnClusterMode() {
-        return true;
-    }
-
-    @Override
     public boolean doSupportBackpressure() {
         return false;
     }
@@ -334,5 +329,4 @@ public class HDInsight36Distribution extends AbstractDistribution implements Spa
     public boolean pigVersionPriorTo_0_12() {
         return false;
     }
-
 }
