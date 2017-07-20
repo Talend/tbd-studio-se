@@ -20,6 +20,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.talend.core.model.metadata.MetadataTable;
 import org.talend.core.model.metadata.builder.connection.Connection;
 import org.talend.core.model.metadata.designerproperties.RepositoryToComponentProperty;
+import org.talend.core.model.process.IElement;
 import org.talend.core.model.properties.DatabaseConnectionItem;
 import org.talend.core.model.properties.FolderItem;
 import org.talend.core.model.properties.Item;
@@ -83,7 +84,7 @@ public class HadoopSubMultiRepTypeProcessor extends MultiTypesProcessor {
      * org.talend.repository.model.RepositoryNode, org.talend.repository.model.RepositoryNode)
      */
     @Override
-    protected boolean selectRepositoryNode(Viewer viewer, RepositoryNode parentNode, RepositoryNode node) {
+    protected boolean selectRepositoryNode(Viewer viewer, RepositoryNode parentNode, RepositoryNode node, IElement elem) {
         if (node == null || repositoryTypes == null || repositoryTypes.length == 0) {
             return false;
         }
@@ -99,7 +100,7 @@ public class HadoopSubMultiRepTypeProcessor extends MultiTypesProcessor {
 
         if (HadoopClusterRepositoryNodeType.HADOOPCLUSTER.equals(repObjType)
                 && ArrayUtils.contains(repositoryTypes, "HADOOPCLUSTER")) { //$NON-NLS-1$
-            return isValidAttributes(node);
+            return isValidAttributes(node, elem);
         }
 
         if (node.getType() == ENodeType.SIMPLE_FOLDER || HCRepositoryUtil.isHadoopContainerNode(node)) {
@@ -121,15 +122,21 @@ public class HadoopSubMultiRepTypeProcessor extends MultiTypesProcessor {
         return true;
     }
 
-    private boolean isValidAttributes(RepositoryNode node) {
+    private boolean isValidAttributes(RepositoryNode node, IElement elem) {
         if (node == null) {
             return true;
         }
+        HadoopClusterConnection hcConnection = HCRepositoryUtil.getRelativeHadoopClusterConnection(node.getId());
+        DistributionBean hadoopDistribution = HadoopDistributionsHelper.HADOOP.getDistribution(
+                hcConnection.getDistribution(), false);
+        if (elem != null) {
+        if ((elem.getClass().getName().contains("MapReduceProcess"))
+                && "Cloudera_CDH580_Spark2".equals(hcConnection.getDfVersion())) {
+            return false;
+        }
+        }
         if (attributesMap != null && !attributesMap.isEmpty()) {
-            HadoopClusterConnection hcConnection = HCRepositoryUtil.getRelativeHadoopClusterConnection(node.getId());
             if (hcConnection != null) {
-                DistributionBean hadoopDistribution = HadoopDistributionsHelper.HADOOP.getDistribution(
-                        hcConnection.getDistribution(), false);
                 if (hadoopDistribution != null) {
                     DistributionVersion distributionVersion = hadoopDistribution.getVersion(hcConnection.getDfVersion(), false);
                     if (distributionVersion != null && distributionVersion.hadoopComponent != null) {
@@ -153,6 +160,7 @@ public class HadoopSubMultiRepTypeProcessor extends MultiTypesProcessor {
 
             }
         }
+        
         return true;
     }
 
