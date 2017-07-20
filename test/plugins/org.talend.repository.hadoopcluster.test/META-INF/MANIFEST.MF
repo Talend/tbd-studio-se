@@ -6,3 +6,4 @@ Bundle-Version: 6.5.0.qualifier
 Fragment-Host: org.talend.repository.hadoopcluster
 Bundle-Vendor: .Talend SA.
 Require-Bundle: org.talend.testutils
+Import-Package: org.talend.core.ui.component
