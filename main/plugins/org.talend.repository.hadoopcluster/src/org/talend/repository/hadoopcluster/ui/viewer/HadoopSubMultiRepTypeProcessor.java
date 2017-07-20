@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.eclipse.jface.viewers.Viewer;
+import org.talend.core.model.components.ComponentCategory;
 import org.talend.core.model.metadata.MetadataTable;
 import org.talend.core.model.metadata.builder.connection.Connection;
 import org.talend.core.model.metadata.designerproperties.RepositoryToComponentProperty;
@@ -127,13 +128,15 @@ public class HadoopSubMultiRepTypeProcessor extends MultiTypesProcessor {
             return true;
         }
         HadoopClusterConnection hcConnection = HCRepositoryUtil.getRelativeHadoopClusterConnection(node.getId());
-        DistributionBean hadoopDistribution = HadoopDistributionsHelper.HADOOP.getDistribution(
-                hcConnection.getDistribution(), false);
-        if (elem != null) {
-        if ((elem.getClass().getName().contains("MapReduceProcess"))
-                && "Cloudera_CDH580_Spark2".equals(hcConnection.getDfVersion())) {
-            return false;
-        }
+        DistributionBean hadoopDistribution = HadoopDistributionsHelper.HADOOP.getDistribution(hcConnection.getDistribution(),
+                false);
+        if ((elem != null) && (elem instanceof org.talend.designer.core.ui.editor.process.Process)) {
+            if ((ComponentCategory.CATEGORY_4_MAPREDUCE.getName()
+                    .equals(((org.talend.designer.core.ui.editor.process.Process) elem).getComponentsType()))
+                    && "Cloudera_CDH580_Spark2".equals(hcConnection.getDfVersion())) {
+                return false;
+            }
+
         }
         if (attributesMap != null && !attributesMap.isEmpty()) {
             if (hcConnection != null) {
