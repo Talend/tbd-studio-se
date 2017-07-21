@@ -132,20 +132,20 @@ public class HadoopSubMultiRepTypeProcessor extends MultiTypesProcessor {
         }
         if (attributesMap != null && !attributesMap.isEmpty()) {
             HadoopClusterConnection hcConnection = HCRepositoryUtil.getRelativeHadoopClusterConnection(node.getId());
-            DistributionBean hadoopDistribution = HadoopDistributionsHelper.HADOOP.getDistribution(hcConnection.getDistribution(),
-                    false);
-            IElement elem = (IElement) attributesMap.get(ELEMENT);
-            if ((elem != null) && (elem instanceof org.talend.designer.core.ui.editor.process.Process)) {
-                if ((ComponentCategory.CATEGORY_4_MAPREDUCE.getName()
-                        .equals(((org.talend.designer.core.ui.editor.process.Process) elem).getComponentsType()))
-                        && "Cloudera_CDH580_Spark2".equals(hcConnection.getDfVersion())) {
-                    return false;
-                }
-
-            }
-
             if (hcConnection != null) {
+                IElement elem = (IElement) attributesMap.get(ELEMENT);
+                if ((elem != null) && (elem instanceof org.talend.designer.core.ui.editor.process.Process)) {
+                    if ((ComponentCategory.CATEGORY_4_MAPREDUCE.getName()
+                            .equals(((org.talend.designer.core.ui.editor.process.Process) elem).getComponentsType()))
+                            && "Cloudera_CDH580_Spark2".equals(hcConnection.getDfVersion())) {
+                        return false;
+                    }
+                }
+                DistributionBean hadoopDistribution = HadoopDistributionsHelper.HADOOP
+                        .getDistribution(hcConnection.getDistribution(), false);
+
                 if (hadoopDistribution != null) {
+
                     DistributionVersion distributionVersion = hadoopDistribution.getVersion(hcConnection.getDfVersion(), false);
                     if (distributionVersion != null && distributionVersion.hadoopComponent != null) {
                         boolean validated = true;
