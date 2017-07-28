@@ -35,6 +35,7 @@ public class MetadataTableEditorViewExt extends MetadataTableEditorView {
 
     private Neo4jUI neo4jUI;
 
+
     public MetadataTableEditorViewExt(Composite parentComposite, int mainCompositeStyle,
             ExtendedTableModel<IMetadataColumn> extendedTableModel, boolean readOnly, boolean toolbarVisible,
             Neo4jComponent neo4jComponent) {
@@ -44,6 +45,7 @@ public class MetadataTableEditorViewExt extends MetadataTableEditorView {
     @Override
     public void initGraphicComponents() {
         mainComposite = new Composite(parentComposite, SWT.NONE);
+        tableComposite = mainComposite;
         if (parentComposite.getBackground() != null && !parentComposite.getBackground().equals(mainComposite.getBackground())) {
             mainComposite.setBackground(parentComposite.getBackground());
         }
