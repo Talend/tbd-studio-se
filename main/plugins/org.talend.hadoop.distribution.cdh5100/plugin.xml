@@ -60,22 +60,6 @@
             mvn_uri="mvn:org.talend.libraries/commons-logging-1.1.3/6.0.0">
         </libraryNeeded>
 
-        <!-- cdh5.10 uses httpclient-4.3.3 -->
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh5100"
-            id="httpclient-4.3.3"
-            name="httpclient-4.3.3.jar"
-            mvn_uri="mvn:org.talend.libraries/httpclient-4.3.3/6.0.0">
-        </libraryNeeded>
-
-		<!-- cdh5.10 uses httpclient-4.3.3 -->
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh5100"
-            id="httpcore-4.3.3.jar"
-            name="httpcore-4.3.3.jar"
-            mvn_uri="mvn:org.talend.libraries/httpcore-4.3.3/6.0.0">
-        </libraryNeeded>
-
         <!-- HBase libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5100"
@@ -933,8 +917,8 @@
                 description="HDFS libraries for CDH 5.10"
                 id="HDFS-SPARK1_6-LIB-CDH_5_10"
                 name="HDFS-SPARK1_6-LIB-CDH_5_10" >
-        	<library id="httpclient-4.3.3"/>
-            <library id="httpcore-4.3.3.jar"/>
+            <library id="httpclient-4.5.2.jar"/>
+            <library id="httpcore-4.4.4.jar"/>
             <library id="guava-12.0.1.jar" />
             <library id="commons-codec-1.9.jar" /> <!-- This jar is required for HDFS SSL connection-->
             <library id="commons-logging-1.2.jar" />
@@ -975,8 +959,8 @@
              <library id="jersey-core-1.9.jar" />
              <library id="htrace-core4-4.0.1-incubating.jar" />
              <library id="servlet-api-2.5.jar"/>
-             <library id="httpclient-4.3.3"/>
-             <library id="httpcore-4.3.3.jar"/>
+             <library id="httpclient-4.5.2.jar"/>
+             <library id="httpcore-4.4.4.jar"/>
              <library id="jackson-mapper-asl-1.8.8.jar" />
              <library id="jackson-core-asl-1.8.8.jar" />
         </libraryNeededGroup>
@@ -1161,8 +1145,8 @@
             <library id="hive-jdbc-cdh5.10"/>
             <library id="hive-metastore-1.1.0-cdh5.10.1"/>
             <library id="hive-service-cdh5.10"/>
-            <library id="httpclient-4.3.3"/>
-            <library id="httpcore-4.3.3.jar"/>
+            <library id="httpclient-4.5.2.jar"/>
+            <library id="httpcore-4.4.4.jar"/>
             <library id="jdo-api-3.0.1.jar"/>
             <library id="libfb303-0.9.3"/>
             <library id="libthrift-0.9.2.jar"/>
@@ -1438,8 +1422,8 @@
              <library id="hadoop-aws-cdh5.8.1"/>
              <library id="aws-java-sdk-1.10.52.jar"/>
              <library id="jets3t-0.9.0" />
-             <library id="httpclient-4.3.3" />
-             <library id="httpcore-4.3.3.jar" />
+             <library id="httpclient-4.5.2.jar" />
+             <library id="httpcore-4.4.4.jar" />
         </libraryNeededGroup>
 
         <!-- GraphFrames group MRREQUIRED -->
@@ -1567,7 +1551,7 @@
              <library id="commons-net-3.1"/>
              <library id="jackson-datatype-joda-2.1.0"/>
              <library id="joda-time-2.5.jar"/>
-             <library id="httpclient-4.3.3"/>
+             <library id="httpclient-4.5.2.jar"/>
         </libraryNeededGroup>
 
         <!-- Sqoop Parquet group -->
