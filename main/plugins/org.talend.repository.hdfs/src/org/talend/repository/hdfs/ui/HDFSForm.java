@@ -86,7 +86,7 @@ public class HDFSForm extends AbstractHDFSForm {
             getConnection().setRowSeparator(rowSeparatorVal);
         }
         EHDFSRowSeparator rowSeparator = EHDFSRowSeparator.indexOf(ContextParameterUtils.getOriginalValue(
-                ConnectionContextHelper.getContextTypeForContextMode(getConnection()), rowSeparatorVal), false);
+                ConnectionContextHelper.getContextTypeForContextMode(getConnection(), true), rowSeparatorVal), false);
         if (rowSeparator != null) {
             rowSeparatorCombo.setText(rowSeparator.getDisplayName());
         }
@@ -99,7 +99,7 @@ public class HDFSForm extends AbstractHDFSForm {
             getConnection().setFieldSeparator(fieldSeparatorVal);
         }
         EHDFSFieldSeparator fieldSeparator = EHDFSFieldSeparator.indexOf(ContextParameterUtils.getOriginalValue(
-                ConnectionContextHelper.getContextTypeForContextMode(getConnection()), fieldSeparatorVal), false);
+                ConnectionContextHelper.getContextTypeForContextMode(getConnection(), true), fieldSeparatorVal), false);
         if (fieldSeparator != null) {
             fieldSeparatorCombo.setText(fieldSeparator.getDisplayName());
         }

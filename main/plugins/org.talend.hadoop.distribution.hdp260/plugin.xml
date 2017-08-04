@@ -952,7 +952,7 @@
             <library id="servlet-api-2.5.jar"/>
             <library id="commons-io-2.4.jar"/>
             <library id="commons-cli-1.2.jar"/>
-            <library id="netty-all-4.0.23.Final.jar"/>
+            <library id="netty-all-4.0.42.Final.jar"/>
         </libraryNeededGroup>
         
         <!-- Pig group -->

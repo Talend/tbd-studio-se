@@ -18,11 +18,18 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.SashForm;
+import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.events.ControlAdapter;
+import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -76,6 +83,16 @@ import org.talend.repository.model.hadoopcluster.HadoopClusterConnectionItem;
  *
  */
 public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnection> implements IHadoopClusterInfoForm {
+
+    private SashForm sash;
+
+    private Composite upsash;
+
+    private Composite downsash;
+
+    private ScrolledComposite scrolledComposite;
+
+    private Composite bigComposite;
 
     private Composite parentForm;
 
@@ -177,6 +194,8 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
     private Composite maprTPasswordCompposite;
 
     private Composite maprTSetComposite;
+
+    private Group authGroup;
 
     public StandardHCInfoForm(Composite parent, ConnectionItem connectionItem, String[] existingNames, boolean creation,
             DistributionBean hadoopDistribution, DistributionVersion hadoopVersison) {
@@ -338,10 +357,38 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
 
     @Override
     protected void addFields() {
+
+        Composite parent = new Composite(this, SWT.NONE);
+        parent.setLayout(new FillLayout());
+        GridData parentGridData = new GridData(SWT.FILL, SWT.FILL, true, true);
+        parent.setLayoutData(parentGridData);
+
+        sash = new SashForm(parent, SWT.VERTICAL | SWT.SMOOTH);
+        sash.setBackground(parent.getDisplay().getSystemColor(SWT.COLOR_WHITE));
+        GridLayout layout = new GridLayout();
+        sash.setLayout(layout);
+        upsash = new Composite(sash, SWT.NONE);
+        GridLayout upsashLayout = new GridLayout(1, false);
+        upsash.setLayout(upsashLayout);
+
+        downsash = new Composite(sash, SWT.NONE);
+        GridLayout downsashLayout = new GridLayout(1, false);
+        downsash.setLayout(downsashLayout);
+        sash.setWeights(new int[] { 21, 12 });
+
+        scrolledComposite = new ScrolledComposite(upsash, SWT.V_SCROLL | SWT.H_SCROLL);
+        scrolledComposite.setExpandHorizontal(true);
+        scrolledComposite.setExpandVertical(true);
+        scrolledComposite.setLayoutData(new GridData(GridData.FILL_BOTH));
+
+        bigComposite = Form.startNewGridLayout(scrolledComposite, 1);
+        scrolledComposite.setContent(bigComposite);
+       
+
         addCustomFields();
-        addConnectionFields();
-        addAuthenticationFields();
-        propertiesComposite = new Composite(this, SWT.NONE);
+        addConnectionFields(bigComposite);
+        addAuthenticationFields(bigComposite);
+        propertiesComposite = new Composite(downsash, SWT.NONE);
         GridLayout propertiesLayout = new GridLayout(2, false);
         propertiesLayout.marginWidth = 0;
         propertiesLayout.marginHeight = 0;
@@ -353,6 +400,19 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         addHadoopConfsFields();
 
         addCheckFields();
+
+        scrolledComposite.addControlListener(new ControlAdapter() {
+            @Override
+            public void controlResized(ControlEvent e) {
+                Rectangle r = scrolledComposite.getClientArea();
+                // scrolledComposite.setMinSize(bigComposite.computeSize(r.width-100, 550));
+                    if (Platform.getOS().equals(Platform.OS_LINUX)) {
+                        scrolledComposite.setMinSize(bigComposite.computeSize(SWT.DEFAULT, 900));
+                    } else {
+                    scrolledComposite.setMinSize(bigComposite.computeSize(SWT.DEFAULT, 620));
+                    }
+            }
+        });
     }
 
     private void addCustomFields() {
@@ -365,8 +425,9 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
                         .toArray(new String[0]), 1, false);
     }
 
-    private void addConnectionFields() {
-        Group connectionGroup = Form.createGroup(this, 1, Messages.getString("HadoopClusterForm.connectionSettings"), 110); //$NON-NLS-1$
+    private void addConnectionFields(Composite scrolledComposite) {
+        Group connectionGroup = Form.createGroup(scrolledComposite, 1, Messages.getString("HadoopClusterForm.connectionSettings"), //$NON-NLS-1$
+                110);
         connectionGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         Composite uriPartComposite = new Composite(connectionGroup, SWT.NULL);
         GridLayout uriPartLayout = new GridLayout(2, false);
@@ -385,8 +446,8 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
         useDNHostBtn.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 2, 1));
     }
 
-    private void addAuthenticationFields() {
-        Group authGroup = Form.createGroup(this, 1, Messages.getString("HadoopClusterForm.authenticationSettings"), 110); //$NON-NLS-1$
+    private void addAuthenticationFields(Composite downsash) {
+        authGroup = Form.createGroup(downsash, 1, Messages.getString("HadoopClusterForm.authenticationSettings"), 110); //$NON-NLS-1$
         authGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
         authPartComposite = new Composite(authGroup, SWT.NULL);
@@ -875,6 +936,8 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
                 hideControl(maprTPasswordCompposite, kerberosBtn.getSelection() && maprTBtn.getSelection());
                 getConnection().setEnableKerberos(kerberosBtn.getSelection());
                 updateForm();
+                authGroup.layout();
+                authGroup.getParent().layout();
                 checkFieldsValue();
             }
         });
@@ -913,8 +976,11 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
             public void widgetSelected(SelectionEvent e) {
                 hideControl(maprTPCDCompposite, !maprTBtn.getSelection());
                 hideControl(maprTSetComposite, !maprTBtn.getSelection());
+                hideControl(maprTPasswordCompposite, kerberosBtn.getSelection() && maprTBtn.getSelection());
                 getConnection().setEnableMaprT(maprTBtn.getSelection());
                 updateForm();
+                authGroup.layout();
+                authGroup.getParent().layout();
                 checkFieldsValue();
             }
         });
