@@ -503,7 +503,7 @@
 <%
 							if(javaType == JavaTypesManager.DATE) {
 %>
-								<%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_Date((java.util.Date)valueObj_<%=cid%>, <%= patternValue %>);
+								<%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_Date((String)valueObj_<%=cid%>, <%= patternValue %>);
 <%
 							}else if(javaType == JavaTypesManager.BYTE_ARRAY) {
 %>

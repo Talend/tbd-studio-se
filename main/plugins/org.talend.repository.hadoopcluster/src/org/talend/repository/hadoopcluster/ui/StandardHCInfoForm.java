@@ -195,6 +195,8 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
 
     private Composite maprTSetComposite;
 
+    private Group authGroup;
+
     public StandardHCInfoForm(Composite parent, ConnectionItem connectionItem, String[] existingNames, boolean creation,
             DistributionBean hadoopDistribution, DistributionVersion hadoopVersison) {
         super(parent, SWT.NONE, existingNames);
@@ -445,7 +447,7 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
     }
 
     private void addAuthenticationFields(Composite downsash) {
-        Group authGroup = Form.createGroup(downsash, 1, Messages.getString("HadoopClusterForm.authenticationSettings"), 110); //$NON-NLS-1$
+        authGroup = Form.createGroup(downsash, 1, Messages.getString("HadoopClusterForm.authenticationSettings"), 110); //$NON-NLS-1$
         authGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
         authPartComposite = new Composite(authGroup, SWT.NULL);
@@ -934,6 +936,8 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
                 hideControl(maprTPasswordCompposite, kerberosBtn.getSelection() && maprTBtn.getSelection());
                 getConnection().setEnableKerberos(kerberosBtn.getSelection());
                 updateForm();
+                authGroup.layout();
+                authGroup.getParent().layout();
                 checkFieldsValue();
             }
         });
@@ -972,8 +976,11 @@ public class StandardHCInfoForm extends AbstractHadoopForm<HadoopClusterConnecti
             public void widgetSelected(SelectionEvent e) {
                 hideControl(maprTPCDCompposite, !maprTBtn.getSelection());
                 hideControl(maprTSetComposite, !maprTBtn.getSelection());
+                hideControl(maprTPasswordCompposite, kerberosBtn.getSelection() && maprTBtn.getSelection());
                 getConnection().setEnableMaprT(maprTBtn.getSelection());
                 updateForm();
+                authGroup.layout();
+                authGroup.getParent().layout();
                 checkFieldsValue();
             }
         });

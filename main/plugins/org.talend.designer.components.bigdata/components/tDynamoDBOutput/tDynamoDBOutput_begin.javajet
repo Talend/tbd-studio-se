@@ -20,250 +20,151 @@
   	String cid = node.getUniqueName();
 	
 	String region = ElementParameterParser.getValue(node, "__REGION__");
-
 	boolean useEndPoint = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_ENDPOINT__"));
-	
     String endPoint   = ElementParameterParser.getValue(node, "__ENDPOINT__");
-    
 	String dataAction = ElementParameterParser.getValue(node,"__DATA_ACTION__");
-	
 	String tableAction = ElementParameterParser.getValue(node,"__TABLE_ACTION__");
-	
 	String table   = ElementParameterParser.getValue(node, "__TABLE__");
-	
-	String hashKeyName = ElementParameterParser.getValue(node, "__PARTITION_KEY__");
-	String rangeKeyName = ElementParameterParser.getValue(node, "__SORT_KEY__");
-	
+	String partitionKey = ElementParameterParser.getValue(node, "__PARTITION_KEY__");
+	String sortKey = ElementParameterParser.getValue(node, "__SORT_KEY__");
 	long rcu = Long.parseLong(ElementParameterParser.getValue(node, "__RCU__"));
 	long wcu = Long.parseLong(ElementParameterParser.getValue(node, "__WCU__"));
-		
 	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
-	
+
+  	
   	List<IMetadataTable> outputMetadatas = node.getMetadataList();
-  	List<IMetadataColumn> outPutColumns = null;
-  	List<? extends IConnection> outputs = node.getOutgoingSortedConnections();
-  	String firstConnName = "";
-  	if (outputs.size() > 0){
-		IConnection out = outputs.get(0);
-		if(out!=null && out.getLineStyle().hasConnectionCategory(IConnectionCategory.DATA)){
-			firstConnName = out.getName();
+  	if(outputMetadatas == null || outputMetadatas.size() == 0 || outputMetadatas.get(0) == null){
+  		return "";
+  	}
+  	
+	IMetadataTable metadata = outputMetadatas.get(0);
+	List<IMetadataColumn> outPutColumns = metadata.getListColumns();
+%>
+
+int nb_line_<%=cid %> = 0;
+
+<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Amazon/CredentialsProvider.javajet"%>
+
+com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient dynamoDBClient_<%=cid%> = new com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient(
+																					credentialsProvider_<%=cid%>,
+																					com.amazonaws.PredefinedClientConfigurations.dynamoDefault()
+																					.withUserAgent(routines.system.Constant.TALEND_USER_AGENT));
+ 
+<%	if(useEndPoint)	{	%>
+		dynamoDBClient_<%=cid%> = dynamoDBClient_<%=cid%>.withEndpoint(<%=endPoint%>);
+<%	} %>		
+
+<% 	if(!useEndPoint && region!=null && !region.isEmpty() && !"DEFAULT".equalsIgnoreCase(region)) {	%>
+		dynamoDBClient_<%=cid%>.setRegion(com.amazonaws.regions.RegionUtils.getRegion(<%=region%>));
+<%	} %>
+					
+com.amazonaws.services.dynamodbv2.document.DynamoDB dynamoDB_<%=cid%> = new com.amazonaws.services.dynamodbv2.document.DynamoDB(dynamoDBClient_<%=cid%>);
+com.amazonaws.services.dynamodbv2.document.Table table_<%=cid%> = dynamoDB_<%=cid%>.getTable(<%=table%>);
+
+<%	if(!"NONE".equalsIgnoreCase(tableAction))	{	%>
+
+		List<com.amazonaws.services.dynamodbv2.model.AttributeDefinition> attributeDefinitions_<%=cid%> = new java.util.ArrayList<com.amazonaws.services.dynamodbv2.model.AttributeDefinition>();
+		List<com.amazonaws.services.dynamodbv2.model.KeySchemaElement> keySchemaElements_<%=cid%> = new java.util.ArrayList<com.amazonaws.services.dynamodbv2.model.KeySchemaElement>();
+		
+		keySchemaElements_<%=cid%>.add(new com.amazonaws.services.dynamodbv2.model.KeySchemaElement(<%=partitionKey%>, com.amazonaws.services.dynamodbv2.model.KeyType.HASH));
+		
+		<% if(sortKey != null && !sortKey.isEmpty() && !sortKey.equals("\"\"")) { %>
+			keySchemaElements_<%=cid%>.add(new com.amazonaws.services.dynamodbv2.model.KeySchemaElement(<%=sortKey%>, com.amazonaws.services.dynamodbv2.model.KeyType.RANGE));
+		<% } %>
+		
+	   <%
+		for (int i = 0; i < outPutColumns.size(); i++) {
+			IMetadataColumn column = outPutColumns.get(i);
+			if(column.isKey()) {				
+				JavaType javaType = JavaTypesManager.getJavaTypeFromId(column.getTalendType());
+				 // For the more details on the below type mapping
+				 // see http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBMapper.DataTypes.html
+				 //
+				 // String and Date type are converted to ScalarAttributeType.S
+				 // The Date values are stored as ISO-8601 formatted strings.
+				 // We use the Talend Date pattern defined by the user to store the date
+				 if (javaType == JavaTypesManager.STRING || javaType == JavaTypesManager.DATE) {
+		%>		
+					attributeDefinitions_<%=cid%>.add(new com.amazonaws.services.dynamodbv2.model.AttributeDefinition("<%=column.getLabel()%>", 
+					com.amazonaws.services.dynamodbv2.model.ScalarAttributeType.S));
+				
+		<%
+				// All number types are converted to ScalarAttributeType.N
+				 } else if (javaType == JavaTypesManager.BIGDECIMAL
+                            || javaType == JavaTypesManager.LONG
+                            || javaType == JavaTypesManager.INTEGER
+                            || javaType == JavaTypesManager.SHORT
+                            || javaType == JavaTypesManager.DOUBLE
+                            || javaType == JavaTypesManager.FLOAT
+                            || javaType == JavaTypesManager.BOOLEAN) {
+		%>
+					attributeDefinitions_<%=cid%>.add(new com.amazonaws.services.dynamodbv2.model.AttributeDefinition("<%=column.getLabel()%>",
+					com.amazonaws.services.dynamodbv2.model.ScalarAttributeType.N));			
+			<%	
+				}								
+			}
 		}
-    }
-	%>
-	int nb_line_<%=cid %> = 0;
-	
-	<%
-  	if(outputMetadatas != null && outputMetadatas.size() > 0){
-      	IMetadataTable metadata = outputMetadatas.get(0);
-      	if(metadata != null){
-			if ("INSERT".equalsIgnoreCase(dataAction)) {
-		%>
-				com.amazonaws.services.dynamodbv2.document.Item item_<%=cid%> = new com.amazonaws.services.dynamodbv2.document.Item(); 
-				com.amazonaws.services.dynamodbv2.document.spec.PutItemSpec putItemSpec_<%=cid%>;
-				com.amazonaws.services.dynamodbv2.document.PutItemOutcome putItemOutcome_<%=cid%>;
-		<%
-			}
-			else if ("UPDATE".equalsIgnoreCase(dataAction)) {			
-		%>
-				com.amazonaws.services.dynamodbv2.document.spec.UpdateItemSpec updateItemSpec_<%=cid%> = new com.amazonaws.services.dynamodbv2.document.spec.UpdateItemSpec();
-				com.amazonaws.services.dynamodbv2.document.UpdateItemOutcome updateItemOutcome_<%=cid%>;
-		<%
-			}
-			else if ("DELETE".equalsIgnoreCase(dataAction)) {				
-		%>
-				com.amazonaws.services.dynamodbv2.document.spec.DeleteItemSpec deleteItemSpec_<%=cid%> = new com.amazonaws.services.dynamodbv2.document.spec.DeleteItemSpec();
-				com.amazonaws.services.dynamodbv2.document.DeleteItemOutcome deleteItemOutcome_<%=cid%>;
-		<%
-			}
-		%>	
-			<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Amazon/CredentialsProvider.javajet"%>
+	   
+} 
 
-			com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient dynamoDBClient_<%=cid%> = new com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient(
-				credentialsProvider_<%=cid%>,
-				com.amazonaws.PredefinedClientConfigurations.dynamoDefault().withUserAgent(routines.system.Constant.TALEND_USER_AGENT)
-			);
-   
-			<%
-			if(useEndPoint)
-			{
-			%>
-				dynamoDBClient_<%=cid%> = dynamoDBClient_<%=cid%>.withEndpoint(<%=endPoint%>);
-			<%
-			}		
-		
-			if(!useEndPoint && region!=null && !region.isEmpty() && !"DEFAULT".equalsIgnoreCase(region)){
-			%>
-				dynamoDBClient_<%=cid%>.setRegion(com.amazonaws.regions.RegionUtils.getRegion(<%=region%>));
-			<%
-			}
-		%>
-							
-			com.amazonaws.services.dynamodbv2.document.DynamoDB dynamoDB_<%=cid%> = new com.amazonaws.services.dynamodbv2.document.DynamoDB(dynamoDBClient_<%=cid%>);
-			
-			<%
-			if(!"NONE".equalsIgnoreCase(tableAction))
-			{
-				%>
-				List<com.amazonaws.services.dynamodbv2.model.AttributeDefinition> attributeDefinitionList_<%=cid%> = new java.util.ArrayList<com.amazonaws.services.dynamodbv2.model.AttributeDefinition>();
-				
-				List<com.amazonaws.services.dynamodbv2.model.KeySchemaElement> keyList_<%=cid%> = new java.util.ArrayList<com.amazonaws.services.dynamodbv2.model.KeySchemaElement>();
-				
-				keyList_<%=cid%>.add(new com.amazonaws.services.dynamodbv2.model.KeySchemaElement(<%=hashKeyName%>, com.amazonaws.services.dynamodbv2.model.KeyType.HASH));
-				
-				if(<%=rangeKeyName%> != null && !<%=rangeKeyName%>.isEmpty())
-				{	
-					keyList_<%=cid%>.add(new com.amazonaws.services.dynamodbv2.model.KeySchemaElement(<%=rangeKeyName%>, com.amazonaws.services.dynamodbv2.model.KeyType.RANGE));
-				}
-				
-				<%
-				outPutColumns = metadata.getListColumns();
-				int sizeColumns = outPutColumns.size();
-				
-				for (int i = 0; i < sizeColumns; i++) {
-					IMetadataColumn column = outPutColumns.get(i);
-					if(column.isKey()){				
-						String type = column.getTalendType();
-						if(type.toUpperCase().indexOf("STRING") >=0)
-						{
-					%>		
-							attributeDefinitionList_<%=cid%>.add(new com.amazonaws.services.dynamodbv2.model.AttributeDefinition("<%=column.getLabel()%>", com.amazonaws.services.dynamodbv2.model.ScalarAttributeType.S));
-					<%	
-						}
-						else if(type.toUpperCase().indexOf("INTEGER") >= 0 || type.toUpperCase().indexOf("LONG") >= 0 )
-						{
-					%>		
-							attributeDefinitionList_<%=cid%>.add(new com.amazonaws.services.dynamodbv2.model.AttributeDefinition("<%=column.getLabel()%>", com.amazonaws.services.dynamodbv2.model.ScalarAttributeType.N));			
-					<%	
-						}								
-					}
-				}
-			}
-			
-			if ("NONE".equalsIgnoreCase(tableAction)) {
-			%>
-		
-			<%
-			} else if ("CREATE".equalsIgnoreCase(tableAction)) {
-			%>
-				com.amazonaws.services.dynamodbv2.document.Table tableTemp_<%=cid%> = dynamoDB_<%=cid%>.createTable(
-					<%=table%>,
-					keyList_<%=cid%>,
-					attributeDefinitionList_<%=cid%>,
-					new com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput((long)<%=rcu%>, (long)<%=wcu%>));
-				tableTemp_<%=cid%>.waitForActive();
-				<%
-				if(isLog4jEnabled){
-				%>
-					log.info(<%=table%> + " has been created.");
-				<%
-				}
+if ("DROP_CREATE".equalsIgnoreCase(tableAction) || "DROP_IF_EXISTS_AND_CREATE".equalsIgnoreCase(tableAction)) {	%>
 
-			} else if ("CREATE_IF_NOT_EXISTS".equalsIgnoreCase(tableAction)) {
-			%>
-				try{
-					com.amazonaws.services.dynamodbv2.document.Table tableTemp_<%=cid%> = dynamoDB_<%=cid%>.getTable(<%=table%>);
+	<% if("DROP_IF_EXISTS_AND_CREATE".equalsIgnoreCase(tableAction)) { %>
+		try {
+	<% } %>
+				table_<%=cid%>.delete();
+				table_<%=cid%>.waitForDelete();
 				
-					
-					
-					tableTemp_<%=cid%> = dynamoDB_<%=cid%>.createTable(
-						<%=table%>,
-						keyList_<%=cid%>,
-						attributeDefinitionList_<%=cid%>,
-					new com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput((long)<%=rcu%>, (long)<%=wcu%>));
-					tableTemp_<%=cid%>.waitForActive();
-					<%
-					if(isLog4jEnabled){
-					%>
-						log.info(<%=table%> + " has been created.");
-					<%
-					}
-					%>
-				}
-				catch(com.amazonaws.services.dynamodbv2.model.ResourceInUseException ex)
-				{
-					<%
-					if(isLog4jEnabled){
-					%>
-						log.info(<%=table%> + " already exist.");
-					<%
-					}
-					%>
-				}
-				
-	
-			<%
-			} else if ("DROP_CREATE".equalsIgnoreCase(tableAction)) {
-			%>
-				com.amazonaws.services.dynamodbv2.document.Table tableTemp_<%=cid%> = dynamoDB_<%=cid%>.getTable(<%=table%>);
-				
-				tableTemp_<%=cid%>.delete();
-				tableTemp_<%=cid%>.waitForDelete();
-				<%
-				if(isLog4jEnabled){
-				%>
+				<%	if(isLog4jEnabled){ %>
 					log.info(<%=table%> + " has been deleted.");
-				<%
-				}
-				%>
+				<%	} %>
 				
-				tableTemp_<%=cid%> = dynamoDB_<%=cid%>.createTable(
-					<%=table%>,
-					keyList_<%=cid%>,
-					attributeDefinitionList_<%=cid%>,
-					new com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput((long)<%=rcu%>, (long)<%=wcu%>));
-				tableTemp_<%=cid%>.waitForActive();			
-				<%
-				if(isLog4jEnabled){
-				%>	
-					log.info(<%=table%> + " has been created.");
-				<%
-				}				
-
-			} else if ("DROP_IF_EXISTS_AND_CREATE".equalsIgnoreCase(tableAction)) {
-			%>
-				com.amazonaws.services.dynamodbv2.document.Table tableTemp_<%=cid%> = dynamoDB_<%=cid%>.getTable(<%=table%>);
-				
-				try{				
-					tableTemp_<%=cid%>.delete();
-					tableTemp_<%=cid%>.waitForDelete();
-					<%
-					if(isLog4jEnabled){
-					%>	
-						log.info(<%=table%> + " has been deleted.");
-					<%
-					}
-					%>					
-				}
-				catch(com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException ex)
-				{	
-					<%
-					if(isLog4jEnabled){
-					%>	
-						log.info(<%=table%> + " doesn't exist.");
-					<%
-					}
-					%>					
-				}
-
-				tableTemp_<%=cid%> = dynamoDB_<%=cid%>.createTable(
-					<%=table%>,
-					keyList_<%=cid%>,
-					attributeDefinitionList_<%=cid%>,
-					new com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput((long)<%=rcu%>, (long)<%=wcu%>));
-				tableTemp_<%=cid%>.waitForActive();				
-				<%
-				if(isLog4jEnabled){
-				%>	
-					log.info(<%=table%> + " has been created.");
-				<%
-				}
+	<%  //Handle error if table don't exist and option DROP_IF_EXISTS_AND_CREATE selected
+		if("DROP_IF_EXISTS_AND_CREATE".equalsIgnoreCase(tableAction)) {  %>
+			} catch(com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException ex) {	
+				<%	if(isLog4jEnabled) { %>	
+					log.info(<%=table%> + " doesn't exist.");
+				<% } %>					
 			}
-			%>			
-			com.amazonaws.services.dynamodbv2.document.Table table_<%=cid%> = dynamoDB_<%=cid%>.getTable(<%=table%>);
+	<% } %>
 
-				
-	<%						
+<% }
+
+// Create the table if necessary
+if(!"NONE".equalsIgnoreCase(tableAction))	{	%>
+
+	<% if("CREATE_IF_NOT_EXISTS".equalsIgnoreCase(tableAction)) { %>
+		try {
+	<% } %>
+	
+			table_<%=cid%> = dynamoDB_<%=cid%>.createTable(
+													<%=table%>,
+													keySchemaElements_<%=cid%>,
+													attributeDefinitions_<%=cid%>,
+													new com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput((long)<%=rcu%>, (long)<%=wcu%>));
+			table_<%=cid%>.waitForActive();				
+			<% if(isLog4jEnabled){ %>	
+				log.info(<%=table%> + " has been created.");
+			<%	} %>
+	
+	<% 
+	//Handle error if table exist and option create if not exist selected
+	if("CREATE_IF_NOT_EXISTS".equalsIgnoreCase(tableAction)) { %>
+		} catch(com.amazonaws.services.dynamodbv2.model.ResourceInUseException ex) {
+			<%	if(isLog4jEnabled) { %>
+				log.info(<%=table%> + " already exist.");
+			<%	} %>
 		}
-	} 
-	%>
+	<% } %>
+	
+<% } %>
 
+
+<% if ("INSERT".equalsIgnoreCase(dataAction)) {  %>
+		com.amazonaws.services.dynamodbv2.document.Item item_<%=cid%> = new com.amazonaws.services.dynamodbv2.document.Item(); 
+		com.amazonaws.services.dynamodbv2.document.spec.PutItemSpec putItemSpec_<%=cid%>;
+<% } else if ("UPDATE".equalsIgnoreCase(dataAction)) {	%>
+		com.amazonaws.services.dynamodbv2.document.spec.UpdateItemSpec updateItemSpec_<%=cid%> = new com.amazonaws.services.dynamodbv2.document.spec.UpdateItemSpec();
+<%	} else if ("DELETE".equalsIgnoreCase(dataAction)) { %>
+		com.amazonaws.services.dynamodbv2.document.spec.DeleteItemSpec deleteItemSpec_<%=cid%> = new com.amazonaws.services.dynamodbv2.document.spec.DeleteItemSpec();
+<%	} %>

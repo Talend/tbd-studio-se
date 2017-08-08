@@ -8,6 +8,8 @@
 		org.talend.core.model.metadata.IMetadataColumn
 		org.talend.core.model.metadata.IMetadataTable
 		org.talend.core.model.process.IConnectionCategory
+		org.talend.core.model.metadata.types.JavaTypesManager
+		org.talend.core.model.metadata.types.JavaType
 		java.util.List
 		java.util.Map
 "
@@ -16,261 +18,179 @@
 	CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
 	INode node = (INode)codeGenArgument.getArgument();
 	String cid = node.getUniqueName();
-	
-	String dataAction = ElementParameterParser.getValue(node,"__DATA_ACTION__");
-
 	List<? extends IConnection> inConns = node.getIncomingConnections(EConnectionType.FLOW_MAIN);
+	
+	String dataAction 	= ElementParameterParser.getValue(node,"__DATA_ACTION__");
+	String partitionKey = ElementParameterParser.getValue(node, "__PARTITION_KEY__");
+	String sortKey 		= ElementParameterParser.getValue(node, "__SORT_KEY__");
+	List<Map<String, String>> nameMappingTable = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__NAME_MAPPING__");
+	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+	
+	List<IMetadataTable> metadatas = node.getMetadataList();
+	List< ? extends IConnection> connections = node.getIncomingConnections();
+	if (connections == null || connections.size() == 0 || metadatas == null || metadatas.size() == 0){
+	    return "";
+	}
+	
+	List<IMetadataColumn> outPutColumns =  metadatas.get(0).getListColumns();
+	if (outPutColumns == null || outPutColumns.isEmpty()) {
+		return "";
+	}
+	
+	IConnection conn = connections.get(0);
+	if (!conn.getLineStyle().hasConnectionCategory(IConnectionCategory.DATA)) {
+		return "";
+	}
+%>
+	
+Object partitionKeyValue_<%=cid%>	= null;
+Object sortKeyValue_<%=cid%>	= null;
+java.util.Map<String, Object> mapValues_<%=cid%> = new java.util.HashMap<>();
 
-	String hashKeyName = ElementParameterParser.getValue(node, "__PARTITION_KEY__");
-	String rangeKeyName = ElementParameterParser.getValue(node, "__SORT_KEY__");
-	
-	List<Map<String, String>> nameMap = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__NAME_MAPPING__");
-	
+<% for (int i = 0; i < outPutColumns.size(); i++) { 
+		IMetadataColumn column = outPutColumns.get(i);
+		JavaType javaType = JavaTypesManager.getJavaTypeFromId(column.getTalendType());	
+		String name 		= "\""+column.getOriginalDbColumnName()+"\"";
+		String columnNode	= conn.getName() + "." + column.getLabel(); 			
+		boolean isDate		= (javaType == JavaTypesManager.DATE);
+		boolean isString	= (javaType == JavaTypesManager.STRING);
+		boolean isByteArray	= (javaType == JavaTypesManager.BYTE_ARRAY);
 		
-	IConnection inConn = null;
-	IMetadataTable metadata = null;
+		// This is the Hash Key
+		if(column.isKey() &&  name.equals(partitionKey)){ 
 	
-	if(inConns!=null && inConns.size()> 0) {
-		inConn = inConns.get(0);
-		metadata = inConn.getMetadataTable();
-	}
+			 if(isDate){ %>
+		 			partitionKeyValue_<%=cid%> = FormatterUtils.format_DateInUTC(<%=columnNode%>,  <%=column.getPattern()%>);
+			 <% } else { %>
+				 	partitionKeyValue_<%=cid%> = <%=columnNode%>;
+			 <% } 
+		
+		// This is the Range Key
+ 		}else if(column.isKey() &&  name.equals(sortKey)){
+ 			
+ 			if(isDate){ %>
+		 			sortKeyValue_<%=cid%> = FormatterUtils.format_DateInUTC(<%=columnNode%>,  <%=column.getPattern()%>);
+			 <% } else { %>
+				 	sortKeyValue_<%=cid%> = <%=columnNode%>;
+			 <% } 
+		
+ 		// Other row items 
+		}else {
+			   // Handle Nullable Items (also if String is empty we submitted as null)
+			   if(column.isNullable()) {  %>
+			   
+			   		if(null == <%=columnNode%> <%if(isString) {%> || <%=columnNode%>.isEmpty() <%}%> <%if(isByteArray) {%> || <%=columnNode%>.length == 0 <%}%>) {
+			   			mapValues_<%=cid%>.put(<%=name%>, null);
+			   		}else {
+			   			<% if(isDate){ %>
+					 			mapValues_<%=cid%>.put(<%=name%>, FormatterUtils.format_DateInUTC(<%=columnNode%>,  <%=column.getPattern()%>));
+						 <% } else { %>
+							 	mapValues_<%=cid%>.put(<%=name%>, <%=columnNode%>);
+						 <% } %> 
+			   		}
+			<% }
+				// Handle the mandatory column (if columns are null or string empty we ignore them)  
+			   else { %>
+			   
+				   if(null != <%=columnNode%> <%if(isString) {%> && !<%=columnNode%>.isEmpty() <%}%> <%if(isByteArray) {%> && <%=columnNode%>.length != 0 <%}%>) {
+						<% if(isDate){ %>
+					 		mapValues_<%=cid%>.put(<%=name%>, FormatterUtils.format_DateInUTC(<%=columnNode%>,  <%=column.getPattern()%>));
+				 		<% } else { %>
+					 		mapValues_<%=cid%>.put(<%=name%>, <%=columnNode%>);
+						<% } %>
+				   }
+				   
+			<%   }
+		} 		
+ } 	
 	
-	List<IMetadataColumn> outPutColumns = null;
-	if( node.getMetadataList() != null && !node.getMetadataList().isEmpty()){
-		outPutColumns = node.getMetadataList().get(0).getListColumns();
-	}
-
-	if (metadata!=null && outPutColumns!=null && !outPutColumns.isEmpty()) {
-		List< ? extends IConnection> conns = node.getIncomingConnections();
-		for (IConnection conn : conns) {
-			if (conn.getLineStyle().hasConnectionCategory(IConnectionCategory.DATA)) {
-				
-				int sizeColumns = outPutColumns.size();
-
-				if(!"INSERT".equalsIgnoreCase(dataAction)){
-				%>
-					int countKey_<%=cid%>=0;
-					int countValue_<%=cid%>=0;
-				<%
-				}
-				
-				if ("INSERT".equalsIgnoreCase(dataAction)) {
-					%>	
-					Object hashKeyValue_<%=cid%> = null;
-					Object rangeKeyValue_<%=cid%> = null;
-					item_<%=cid%> = new com.amazonaws.services.dynamodbv2.document.Item();
-					<%
-					for (int i = 0; i < sizeColumns; i++) {
-						IMetadataColumn column = outPutColumns.get(i);
-						%>				
-						if (<%=conn.getName() %>.<%=column.getLabel() %> != null 
-							&& (!((Object) <%=conn.getName() %>.<%=column.getLabel() %> instanceof String) || !(String.valueOf(<%=conn.getName() %>.<%=column.getLabel() %>)).isEmpty())) {  				
-						<%
-						
-							if(column.isKey())
-							{	
-								%>							
-								if("<%=column.getOriginalDbColumnName()%>".equalsIgnoreCase(<%=hashKeyName%>))
-								{																		
-									hashKeyValue_<%=cid%> = <%=conn.getName() %>.<%=column.getLabel() %>;
-								}
-								else if(<%=rangeKeyName%>!=null && !<%=rangeKeyName%>.isEmpty() && "<%=column.getOriginalDbColumnName()%>".equalsIgnoreCase(<%=rangeKeyName%>))
-								{																		
-									rangeKeyValue_<%=cid%> = <%=conn.getName() %>.<%=column.getLabel() %>;
-								}
-								<%
-							}
-							else
-							{
-								%>
-								item_<%=cid%> = item_<%=cid%>.with("<%=column.getOriginalDbColumnName() %>", <%=conn.getName() %>.<%=column.getLabel() %>);
-							<%
-							}	
-							%>
-						}
-					<%			
-					}
-					
-					%>
-					if(<%=rangeKeyName%>!=null && !<%=rangeKeyName%>.isEmpty()){					
-						item_<%=cid%> = item_<%=cid%>.withPrimaryKey(<%=hashKeyName%>, hashKeyValue_<%=cid%>, <%=rangeKeyName%>, rangeKeyValue_<%=cid%>);				
-					}
-					else{
-						item_<%=cid%> = item_<%=cid%>.withPrimaryKey(<%=hashKeyName%>, hashKeyValue_<%=cid%>);
-					}
-					putItemSpec_<%=cid%> = new com.amazonaws.services.dynamodbv2.document.spec.PutItemSpec().withItem(item_<%=cid%>);
-                    				
-					<%
-					
-  				}
-				
-				if ("UPDATE".equalsIgnoreCase(dataAction)) {
-					%>
-					Object hashKeyValue_<%=cid%> = null;
-					Object rangeKeyValue_<%=cid%> = null;
-					
-					java.util.HashMap<String, Object> valueMap_<%=cid%> = new java.util.HashMap<String, Object>();	
-					java.util.HashMap<String,String> nameMap_<%=cid%> = new java.util.HashMap<String,String>();	
-					java.util.HashMap<String,String> nameMapRevert_<%=cid%> = new java.util.HashMap<String,String>();						
-					
-					<%	
-					for(Map<String,String> subNameMap : nameMap)
-					{
-						String placeholder = subNameMap.get("PLACEHOLDER");
-						String name = subNameMap.get("NAME");
-						%>
-							nameMap_<%=cid%>.put("<%=placeholder%>", "<%=name%>");
-							nameMapRevert_<%=cid%>.put("<%=name%>","<%=placeholder%>");
-						<%
-					}
-					%>
-					
-					StringBuffer updateExpressionBuffer_<%=cid%> = new StringBuffer();
-					updateExpressionBuffer_<%=cid%>.append("set ");
-					<%
-					for (int i = 0; i < sizeColumns; i++) {
-						IMetadataColumn column = outPutColumns.get(i);
-						
-						if(column.isKey()) 
-						{		
-							%>							
-							if("<%=column.getOriginalDbColumnName()%>".equalsIgnoreCase(<%=hashKeyName%>))
-							{																		
-								hashKeyValue_<%=cid%> = <%=conn.getName() %>.<%=column.getLabel() %>;
-							}
-							else if(<%=rangeKeyName%>!=null && !<%=rangeKeyName%>.isEmpty() && "<%=column.getOriginalDbColumnName()%>".equalsIgnoreCase(<%=rangeKeyName%>))
-							{																		
-								rangeKeyValue_<%=cid%> = <%=conn.getName() %>.<%=column.getLabel() %>;
-							}
-
-							countKey_<%=cid%>++;
-							<%
-						
-						}
-						else
-						{
-							%>
-							if(countValue_<%=cid%> > 0)
-							{
-								updateExpressionBuffer_<%=cid%>.append(", ");
-							}
-							
-							if(nameMapRevert_<%=cid%>.containsKey("<%=column.getOriginalDbColumnName() %>")){
-								updateExpressionBuffer_<%=cid%>.append(nameMapRevert_<%=cid%>.get("<%=column.getOriginalDbColumnName() %>"));
-								updateExpressionBuffer_<%=cid%>.append(" =:<%=column.getOriginalDbColumnName() %>");
-							}else{
-								updateExpressionBuffer_<%=cid%>.append("<%=column.getOriginalDbColumnName() %>  =:<%=column.getOriginalDbColumnName() %>");
-							}
-																			
-							valueMap_<%=cid%>.put(":<%=column.getOriginalDbColumnName() %>", <%=conn.getName() %>.<%=column.getLabel() %>);
-							countValue_<%=cid%>++;
-							
-						<%
-						}				
-					}
-			
-					%>
-					if(<%=rangeKeyName%>!=null && !<%=rangeKeyName%>.isEmpty()){					
-						updateItemSpec_<%=cid%> = updateItemSpec_<%=cid%>.withPrimaryKey(<%=hashKeyName%>, hashKeyValue_<%=cid%>, <%=rangeKeyName%>, rangeKeyValue_<%=cid%>);				
-					}
-					else{
-						updateItemSpec_<%=cid%> = updateItemSpec_<%=cid%>.withPrimaryKey(<%=hashKeyName%>, hashKeyValue_<%=cid%>);
-					}
-					
-					updateItemSpec_<%=cid%> = updateItemSpec_<%=cid%>.withUpdateExpression(updateExpressionBuffer_<%=cid%>.toString()).withValueMap(valueMap_<%=cid%>);	
-					
-					if(nameMap_<%=cid%>.size()>0)
-					{
-						updateItemSpec_<%=cid%> = updateItemSpec_<%=cid%>.withNameMap(nameMap_<%=cid%>);
-					}
-					<%
-					
-  				}
-				
-				if ("DELETE".equalsIgnoreCase(dataAction)) {
-					%>
-					Object hashKeyValue_<%=cid%> = null;
-					Object rangeKeyValue_<%=cid%> = null;
-					
-					<%
-					for (int i = 0; i < sizeColumns; i++) {
-						IMetadataColumn column = outPutColumns.get(i);
-
-						%>
-						if (<%=conn.getName() %>.<%=column.getLabel() %> != null) {
-   
-						<%
-						
-							if(column.isKey()) 
-							{	
-								%>							
-								if("<%=column.getOriginalDbColumnName()%>".equalsIgnoreCase(<%=hashKeyName%>))
-								{																		
-									hashKeyValue_<%=cid%> = <%=conn.getName() %>.<%=column.getLabel() %>;
-								}
-								else if(<%=rangeKeyName%>!=null && !<%=rangeKeyName%>.isEmpty() && "<%=column.getOriginalDbColumnName()%>".equalsIgnoreCase(<%=rangeKeyName%>))
-								{																		
-									rangeKeyValue_<%=cid%> = <%=conn.getName() %>.<%=column.getLabel() %>;
-								}
-
-								countKey_<%=cid%>++;
-								<%
-							
-							}
-							%>
-
-						}
-						
-						
-					<%			
-					}
-					%>
-					if(<%=rangeKeyName%>!=null && !<%=rangeKeyName%>.isEmpty()){					
-						deleteItemSpec_<%=cid%> = deleteItemSpec_<%=cid%>.withPrimaryKey(<%=hashKeyName%>, hashKeyValue_<%=cid%>, <%=rangeKeyName%>, rangeKeyValue_<%=cid%>);				
-					}
-					else{
-						deleteItemSpec_<%=cid%> = deleteItemSpec_<%=cid%>.withPrimaryKey(<%=hashKeyName%>, hashKeyValue_<%=cid%>);
-					}
-					<%
-  				}
-				
-
-				// INSERT operation
-				if ("INSERT".equalsIgnoreCase(dataAction)) {
-				%>									
-					putItemOutcome_<%=cid%> = table_<%=cid%>.putItem(putItemSpec_<%=cid%>);
-				<%
-				// Other operations (UPDATE, UPSERT, DELETE)
-				}else{
-				%>
-
-						<%
-						// UPDATE
-						if("UPDATE".equalsIgnoreCase(dataAction)){
-							%>
-							updateItemOutcome_<%=cid%> = table_<%=cid%>.updateItem(updateItemSpec_<%=cid%>);
-						<%							
-                        // UPSERT
-						} else if("UPSERT".equalsIgnoreCase(dataAction)){
-                          
-
-                        // DELETE
-                        } else if("DELETE".equalsIgnoreCase(dataAction)){
-							%>
-							deleteItemOutcome_<%=cid%> = table_<%=cid%>.deleteItem(deleteItemSpec_<%=cid%>);
-							<%							
-						}
-						%>
-
-				<%
-				}
-
-    			%>
-				nb_line_<%=cid %> ++;
-				
-				<%
-				
+if ("INSERT".equalsIgnoreCase(dataAction)) {	
+		
+		// Add resolved Primary keys to the Item
+		if(sortKey !=null && !sortKey.isEmpty() && !sortKey.equals("\"\"")) { %>	
+				item_<%=cid%> = item_<%=cid%>.withPrimaryKey(<%=partitionKey%>, partitionKeyValue_<%=cid%>, 
+															 <%=sortKey%>, sortKeyValue_<%=cid%>);	
+		<% } else { %>
+				item_<%=cid%> = item_<%=cid%>.withPrimaryKey(<%=partitionKey%>, partitionKeyValue_<%=cid%>);
+		<% } %>
+		
+		for (java.util.Map.Entry<String, Object> entry : mapValues_<%=cid%>.entrySet()) {
+			if(entry.getValue() == null){
+				item_<%=cid%> = item_<%=cid%>.withNull(entry.getKey());
+			}else{
+				item_<%=cid%> = item_<%=cid%>.with(entry.getKey(), entry.getValue());
 			}
-		}
-	}
+		}	
+		putItemSpec_<%=cid%> = new com.amazonaws.services.dynamodbv2.document.spec.PutItemSpec().withItem(item_<%=cid%>);
+		table_<%=cid%>.putItem(putItemSpec_<%=cid%>);
+        
+		
+<% } else if ("UPDATE".equalsIgnoreCase(dataAction)) {	%>
+
+		<% if(sortKey !=null && !sortKey.isEmpty() && !sortKey.equals("\"\"")){	%>				
+			updateItemSpec_<%=cid%> = updateItemSpec_<%=cid%>.withPrimaryKey(<%=partitionKey%>, partitionKeyValue_<%=cid%>,
+																			 <%=sortKey%>, sortKeyValue_<%=cid%>);				
+		<% } else { %>
+			updateItemSpec_<%=cid%> = updateItemSpec_<%=cid%>.withPrimaryKey(<%=partitionKey%>, partitionKeyValue_<%=cid%>);
+		<% } %>
+		
+		java.util.HashMap<String, Object> valueMap_<%=cid%> = new java.util.HashMap<String, Object>();	
+		java.util.HashMap<String,String> nameMap_<%=cid%> = new java.util.HashMap<String,String>();	
+		java.util.HashMap<String,String> nameMapRevert_<%=cid%> = new java.util.HashMap<String,String>();						
+		
+	<%	for(Map<String,String> mapping : nameMappingTable) {
+			String placeholder = mapping.get("PLACEHOLDER");
+			String name = mapping.get("NAME");
 	%>
+			nameMap_<%=cid%>.put("<%=placeholder%>", "<%=name%>");
+			nameMapRevert_<%=cid%>.put("<%=name%>","<%=placeholder%>");
+	<% 	} %>
+		
+		StringBuilder updateExpression_<%=cid%> = new StringBuilder();
+		updateExpression_<%=cid%>.append("set ");
+		int countValue_<%=cid%>=0;
+		for (java.util.Map.Entry<String, Object> entry : mapValues_<%=cid%>.entrySet()) {
+			if(countValue_<%=cid%> > 0)	{
+					updateExpression_<%=cid%>.append(", ");
+			}
+				
+			if(nameMapRevert_<%=cid%>.containsKey(entry.getKey())){
+					updateExpression_<%=cid%>.append(nameMapRevert_<%=cid%>.get(entry.getKey()));
+					updateExpression_<%=cid%>.append(" =:"+entry.getKey());
+			}else{
+					updateExpression_<%=cid%>.append(entry.getKey()+"  =:"+entry.getKey());
+			}
+																
+			valueMap_<%=cid%>.put(":"+entry.getKey(), entry.getValue());
+			countValue_<%=cid%>++;
+		}
+		
+		<%	if(isLog4jEnabled) { %>	
+			log.debug("update expression: "+updateExpression_<%=cid%>.toString());
+			log.debug("value map: "+nameMap_<%=cid%>.toString());
+			log.debug("value map: "+valueMap_<%=cid%>.toString());
+		<%	} %>
+		
+		updateItemSpec_<%=cid%> = updateItemSpec_<%=cid%>.withUpdateExpression(updateExpression_<%=cid%>.toString())
+														 .withValueMap(valueMap_<%=cid%>);	
+		if(nameMap_<%=cid%>.size()>0) {
+			updateItemSpec_<%=cid%> = updateItemSpec_<%=cid%>.withNameMap(nameMap_<%=cid%>);
+		}
+		
+		table_<%=cid%>.updateItem(updateItemSpec_<%=cid%>);
+		
+
+<% } else if ("DELETE".equalsIgnoreCase(dataAction)) { 	%>
+		
+		<% if(sortKey !=null && !sortKey.isEmpty() && !sortKey.equals("\"\"")){	%>				
+			deleteItemSpec_<%=cid%> = deleteItemSpec_<%=cid%>.withPrimaryKey(<%=partitionKey%>, partitionKeyValue_<%=cid%>, 
+																			 <%=sortKey%>, sortKeyValue_<%=cid%>);				
+		<% }else { %>
+			deleteItemSpec_<%=cid%> = deleteItemSpec_<%=cid%>.withPrimaryKey(<%=partitionKey%>, partitionKeyValue_<%=cid%>);
+		<% } %>
+		
+		table_<%=cid%>.deleteItem(deleteItemSpec_<%=cid%>);
+<% } %>
+	 
+nb_line_<%=cid %> ++;
+		
