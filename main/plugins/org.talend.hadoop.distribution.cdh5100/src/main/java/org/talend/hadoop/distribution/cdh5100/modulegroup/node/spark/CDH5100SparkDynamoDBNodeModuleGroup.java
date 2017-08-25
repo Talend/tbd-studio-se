@@ -16,12 +16,12 @@ import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.CDH5100Constant;
-import org.talend.hadoop.distribution.utils.dynamodb.SparkDynamoDBNodeModuleGroupUtil;
+import org.talend.hadoop.distribution.utils.ModuleGroupsUtils;
 
 public class CDH5100SparkDynamoDBNodeModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version, String condition) {
-        return SparkDynamoDBNodeModuleGroupUtil.getModuleGroups(distribution, version, condition,
-                CDH5100Constant.SPARK_DYNAMODB_MRREQUIRED_MODULE_GROUP.getModuleName());
+        return ModuleGroupsUtils.getModuleGroups(distribution, version, condition,
+                CDH5100Constant.SPARK_DYNAMODB_MRREQUIRED_MODULE_GROUP.getModuleName(), true);
     }
 }

@@ -26,7 +26,6 @@ Export-Package: org.talend.hadoop.distribution,
  org.talend.hadoop.distribution.kafka,
  org.talend.hadoop.distribution.model,
  org.talend.hadoop.distribution.spark,
- org.talend.hadoop.distribution.utils,
- org.talend.hadoop.distribution.utils.dynamodb
+ org.talend.hadoop.distribution.utils
 Import-Package: org.osgi.framework
 Bundle-ActivationPolicy: lazy

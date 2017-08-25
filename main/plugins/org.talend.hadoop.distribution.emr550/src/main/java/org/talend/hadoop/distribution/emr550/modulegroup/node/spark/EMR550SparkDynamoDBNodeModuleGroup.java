@@ -15,13 +15,13 @@ package org.talend.hadoop.distribution.emr550.modulegroup.node.spark;
 import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
-import org.talend.hadoop.distribution.utils.dynamodb.SparkDynamoDBNodeModuleGroupUtil;
+import org.talend.hadoop.distribution.utils.ModuleGroupsUtils;
 
 public class EMR550SparkDynamoDBNodeModuleGroup {
 
     public static final String MODULE_GROUP_NAME = "SPARK-DYNAMODB-LIB-MRREQUIRED-EMR_5_5_0"; //$NON-NLS-1$
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version, String condition) {
-        return SparkDynamoDBNodeModuleGroupUtil.getModuleGroups(distribution, version, condition, MODULE_GROUP_NAME);
+        return ModuleGroupsUtils.getModuleGroups(distribution, version, condition, MODULE_GROUP_NAME, true);
     }
 }

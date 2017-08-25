@@ -16,12 +16,12 @@ import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.altus10.Altus10Constant;
-import org.talend.hadoop.distribution.utils.dynamodb.SparkDynamoDBNodeModuleGroupUtil;
+import org.talend.hadoop.distribution.utils.ModuleGroupsUtils;
 
 public class Altus10SparkDynamoDBNodeModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version, String condition) {
-        return SparkDynamoDBNodeModuleGroupUtil.getModuleGroups(distribution, version, condition,
-                Altus10Constant.SPARK_DYNAMODB_MRREQUIRED_MODULE_GROUP.getModuleName());
+        return ModuleGroupsUtils.getModuleGroups(distribution, version, condition,
+                Altus10Constant.SPARK_DYNAMODB_MRREQUIRED_MODULE_GROUP.getModuleName(), true);
     }
 }
