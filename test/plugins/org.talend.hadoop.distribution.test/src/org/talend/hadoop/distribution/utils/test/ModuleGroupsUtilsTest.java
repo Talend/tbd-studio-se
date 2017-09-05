@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.utils.dynamodb.test;
+package org.talend.hadoop.distribution.utils.test;
 
 import static org.junit.Assert.*;
 
@@ -19,10 +19,10 @@ import java.util.Set;
 import org.junit.Test;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.SparkBatchLinkedNodeCondition;
-import org.talend.hadoop.distribution.utils.dynamodb.SparkDynamoDBNodeModuleGroupUtil;
+import org.talend.hadoop.distribution.utils.ModuleGroupsUtils;
 
 @SuppressWarnings("nls")
-public class SparkDynamoDBNodeModuleGroupUtilTest {
+public class ModuleGroupsUtilsTest {
 
     String groupName = "GROUPNAME";
 
@@ -32,8 +32,7 @@ public class SparkDynamoDBNodeModuleGroupUtilTest {
 
     @Test
     public void getModuleGroupsTest_withoutAdditionCondition() {
-        Set<DistributionModuleGroup> groups = SparkDynamoDBNodeModuleGroupUtil.getModuleGroups(distribution, version, null,
-                groupName);
+        Set<DistributionModuleGroup> groups = ModuleGroupsUtils.getModuleGroups(distribution, version, null, groupName, true);
         assertEquals(groups.size(), 1);
         DistributionModuleGroup dmg = groups.iterator().next();
         SparkBatchLinkedNodeCondition underlyingCondition = new SparkBatchLinkedNodeCondition(distribution, version);
@@ -45,8 +44,7 @@ public class SparkDynamoDBNodeModuleGroupUtilTest {
     @Test
     public void getModuleGroupsTest_withAdditionCondition() {
         String conditon = "A == 'true'";
-        Set<DistributionModuleGroup> groups = SparkDynamoDBNodeModuleGroupUtil.getModuleGroups(distribution, version, conditon,
-                groupName);
+        Set<DistributionModuleGroup> groups = ModuleGroupsUtils.getModuleGroups(distribution, version, conditon, groupName, true);
         assertEquals(groups.size(), 1);
         DistributionModuleGroup dmg = groups.iterator().next();
         SparkBatchLinkedNodeCondition underlyingCondition = new SparkBatchLinkedNodeCondition(distribution, version);

@@ -41,6 +41,7 @@ import org.talend.hadoop.distribution.cdh5100.modulegroup.node.mr.CDH5100MRS3Nod
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.pigoutput.CDH5100PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.spark.CDH5100SparkDynamoDBNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.sparkbatch.CDH5100GraphFramesNodeModuleGroup;
+import org.talend.hadoop.distribution.cdh5100.modulegroup.node.sparkbatch.CDH5100SparkBatchKuduNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.sparkbatch.CDH5100SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.sparkbatch.CDH5100SparkBatchS3NodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.sparkstreaming.CDH5100SparkStreamingFlumeNodeModuleGroup;
@@ -127,6 +128,20 @@ public class CDH5100Distribution extends AbstractDistribution implements ICloude
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
                 CDH5100GraphFramesNodeModuleGroup.getModuleGroups(distribution, version));
 
+        // Kudu
+        Set<DistributionModuleGroup> kuduNodeModuleGroups = CDH5100SparkBatchKuduNodeModuleGroup.getModuleGroups(distribution,
+                version, "USE_EXISTING_CONNECTION == 'false'");
+        Set<DistributionModuleGroup> kuduConfigurationNodeModuleGroups = CDH5100SparkBatchKuduNodeModuleGroup.getModuleGroups(
+                distribution, version, null);
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.KUDU_INPUT_COMPONENT),
+                kuduNodeModuleGroups);
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.KUDU_OUTPUT_COMPONENT),
+                kuduNodeModuleGroups);
+        nodeModuleGroups.put(
+                new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.KUDU_CONFIGURATION_COMPONENT),
+                kuduConfigurationNodeModuleGroups);
+
+        // Parquet
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.PARQUET_INPUT_COMPONENT), CDH5100SparkStreamingParquetNodeModuleGroup.getModuleGroups(
                 distribution, version));
@@ -136,6 +151,8 @@ public class CDH5100Distribution extends AbstractDistribution implements ICloude
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.PARQUET_STREAM_INPUT_COMPONENT), CDH5100SparkStreamingParquetNodeModuleGroup
                 .getModuleGroups(distribution, version));
+
+        // S3
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.S3_CONFIGURATION_COMPONENT), CDH5100SparkStreamingS3NodeModuleGroup.getModuleGroups(
                 distribution, version));

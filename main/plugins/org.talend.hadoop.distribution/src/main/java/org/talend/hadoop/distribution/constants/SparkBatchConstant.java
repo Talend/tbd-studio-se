@@ -44,6 +44,12 @@ public final class SparkBatchConstant {
 
     public static final String DYNAMODB_INPUT_COMPONENT = "tDynamoDBInput"; //$NON-NLS-1$
 
+    public static final String KUDU_CONFIGURATION_COMPONENT = "tKuduConfiguration"; //$NON-NLS-1$
+
+    public static final String KUDU_OUTPUT_COMPONENT = "tKuduOutput"; //$NON-NLS-1$
+
+    public static final String KUDU_INPUT_COMPONENT = "tKuduInput"; //$NON-NLS-1$
+
     public static final String MATCH_PREDICT_COMPONENT = "tMatchPredict";//$NON-NLS-1$
 
     public static final String USE_CLOUDERA_NAVIGATOR = "USE_CLOUDERA_NAVIGATOR";//$NON-NLS-1$

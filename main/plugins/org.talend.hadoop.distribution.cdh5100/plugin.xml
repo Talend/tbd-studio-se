@@ -705,6 +705,27 @@
             name="spark-streaming-kinesis-asl-assembly_2.11-2.1.0.cloudera1.jar"
             mvn_uri="mvn:org.talend.libraries/spark-streaming-kinesis-asl-assembly_2.11-2.1.0.cloudera1/6.4.0">
         </libraryNeeded>
+        
+        <!-- Kudu libraries -->
+        
+        <!--
+        CDH 5.10 comes with Kudu 1.2.0.
+        The 1.2.0 Kudu client is buggy (see https://issues.apache.org/jira/browse/KUDU-1824).
+        Consequently, we use the 1.3.0 client coming from CDH 5.11.
+        --> 
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5100"
+            id="kudu-spark_2.10-1.3.0-cdh5.11.1.jar"
+            name="kudu-spark_2.10-1.3.0-cdh5.11.1.jar"
+            mvn_uri="mvn:org.talend.libraries/kudu-spark_2.10-1.3.0-cdh5.11.1/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5100"
+            id="kudu-spark2_2.11-1.3.0-cdh5.11.1.jar"
+            name="kudu-spark2_2.11-1.3.0-cdh5.11.1.jar"
+            mvn_uri="mvn:org.talend.libraries/kudu-spark2_2.11-1.3.0-cdh5.11.1/6.0.0">
+        </libraryNeeded>
 
         <!-- Spark2 libraries -->
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="akka-actor.jar" name="akka-actor.jar" mvn_uri="mvn:org.talend.libraries/akka-actor/6.0.0"/>
@@ -1533,6 +1554,22 @@
             <library id="avro-1.7.6-cdh5.10.1"/>
             <library id="jackson-mapper-asl-1.8.8.jar" />
             <library id="jackson-core-asl-1.8.8.jar" />
+        </libraryNeededGroup>
+        
+        <!-- Spark Kudu group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Kudu libraries for CDH 5.10 that are MRREQUIRED"
+                id="SPARK_KUDU_MRREQUIRED_MODULE_GROUP"
+                name="SPARK_KUDU_MRREQUIRED_MODULE_GROUP">
+            <library id="kudu-spark_2.10-1.3.0-cdh5.11.1.jar"/>
+        </libraryNeededGroup>
+
+        <!-- Spark2 Kudu group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark2 Kudu libraries for CDH 5.10 that are MRREQUIRED"
+                id="SPARK2_KUDU_MRREQUIRED_MODULE_GROUP"
+                name="SPARK2_KUDU_MRREQUIRED_MODULE_GROUP">
+            <library id="kudu-spark2_2.11-1.3.0-cdh5.11.1.jar"/>
         </libraryNeededGroup>
 
         <!-- group of cloudera navigator libraries -->

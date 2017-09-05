@@ -276,11 +276,6 @@
 			
 			globalMap.put("<%=uniqueNameComponent %>"+"QUERY_COLUMNS_NAME" + "<%= connection.getUniqueName() %>", sqlBuilder_<%=uniqueNameComponent%>_<%=connection.getUniqueName()%>.getQueryColumnsSegments());
 			<%
-            if(!tablesProcessed.contains(outputTable.getTableName())) {          
-            %>       
-                Object <%= outputTable.getTableName() %> = new Object();         
-            <%       
-            } 
 			tablesProcessed.add(outputTable.getTableName());
     }
 
