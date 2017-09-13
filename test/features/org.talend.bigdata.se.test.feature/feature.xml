@@ -80,6 +80,14 @@
          unpack="false"/>
 
    <plugin
+         id="org.talend.hadoop.distribution.mapr600.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>         
+
+   <plugin
          id="org.talend.hadoop.distribution.cdh4mr1.test"
          download-size="0"
          install-size="0"
