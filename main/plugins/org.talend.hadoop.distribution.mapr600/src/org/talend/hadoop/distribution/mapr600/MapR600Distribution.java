@@ -72,17 +72,16 @@ import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkStreamingM
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SqoopModuleGroup;
 
-public class MapR600Distribution extends AbstractMapRDistribution implements HDFSComponent, MRComponent, HBaseComponent,
-        SqoopComponent, PigComponent, HiveComponent, HCatalogComponent, SparkBatchComponent, SparkStreamingComponent,
-        HiveOnSparkComponent, ImpalaComponent, MapRStreamsComponent, MapRDBComponent, IMapRDistribution {
+public class MapR600Distribution extends AbstractMapRDistribution implements HDFSComponent, SparkBatchComponent,
+        HiveOnSparkComponent, MapRDBComponent, IMapRDistribution {
 
     public final static String VERSION = "MAPR600"; //$NON-NLS-1$
 
     public static final String VERSION_DISPLAY = "MapR 6.0.0(YARN mode)"; //$NON-NLS-1$
 
-    private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*,$HADOOP_YARN_HOME/share/hadoop/tools/lib/*"; //$NON-NLS-1$
+    private final static String YARN_APPLICATION_CLASSPATH = "/opt/mapr/hadoop/hadoop-2.7.0/etc/hadoop:/opt/mapr/hadoop/hadoop-2.7.0/etc/hadoop:/opt/mapr/hadoop/hadoop-2.7.0/etc/hadoop:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/common/lib/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/common/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/hdfs:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/hdfs/lib/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/hdfs/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/yarn/lib/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/yarn/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/mapreduce/lib/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/mapreduce/*:/opt/mapr/hadoop/hadoop-2.7.0/contrib/capacity-scheduler/*.jar:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/yarn/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/yarn/lib/*:/opt/mapr/spark/spark-2.1.0/jars/*"; //$NON-NLS-1$
 
-    public static final String MAPR_STREAMS_JAR_PATH = "/opt/mapr/lib/mapr-streams-6.0.0-mapr.jar"; //$NON-NLS-1$
+    public static final String MAPR_STREAMS_JAR_PATH = "/opt/mapr/lib/mapr-streams-6.0.0-mapr-beta.jar"; //$NON-NLS-1$
 
     private static Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
 
@@ -90,15 +89,15 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
     static {
         moduleGroups = new HashMap<>();
         moduleGroups.put(ComponentType.HDFS, MapR600HDFSModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.MAPREDUCE, MapR600MapReduceModuleGroup.getModuleGroups());
+        // moduleGroups.put(ComponentType.MAPREDUCE, MapR600MapReduceModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HBASE, MapR600HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVE, MapR600HiveModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIG, MapR600PigModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIGOUTPUT, MapR600PigOutputModuleGroup.getModuleGroups());
+        // moduleGroups.put(ComponentType.PIG, MapR600PigModuleGroup.getModuleGroups());
+        // moduleGroups.put(ComponentType.PIGOUTPUT, MapR600PigOutputModuleGroup.getModuleGroups());
 
-        moduleGroups.put(ComponentType.HCATALOG, MapR600HCatalogModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.SQOOP, MapR600SqoopModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.IMPALA, MapR600ImpalaModuleGroup.getModuleGroups());
+        // moduleGroups.put(ComponentType.HCATALOG, MapR600HCatalogModuleGroup.getModuleGroups());
+        // moduleGroups.put(ComponentType.SQOOP, MapR600SqoopModuleGroup.getModuleGroups());
+        // moduleGroups.put(ComponentType.IMPALA, MapR600ImpalaModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SPARKBATCH, MapR600SparkBatchModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SPARKSTREAMING, MapR600SparkStreamingModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVEONSPARK, MapR600HiveOnSparkModuleGroup.getModuleGroups());
@@ -110,61 +109,67 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPRSTREAMS, MapRStreamsConstant.CREATE_STREAM_COMPONENT),
                 MapR600MapRStreamsCreateStreamModuleGroup.getModuleGroups());
 
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
-                MapR600PigOutputNodeModuleGroup.getModuleGroups());
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
-                MapR600MRS3NodeModuleGroup.getModuleGroups());
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),
-                MapR600MRS3NodeModuleGroup.getModuleGroups());
+        // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
+        // MapR600PigOutputNodeModuleGroup.getModuleGroups());
+        // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
+        // MapR600MRS3NodeModuleGroup.getModuleGroups());
+        // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),
+        // MapR600MRS3NodeModuleGroup.getModuleGroups());
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.S3_CONFIGURATION_COMPONENT),
                 MapR600SparkBatchS3NodeModuleGroup.getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
                 MapR600GraphFramesNodeModuleGroup.getModuleGroups());
 
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkBatchConstant.S3_CONFIGURATION_COMPONENT), MapR600SparkBatchS3NodeModuleGroup.getModuleGroups());
+        // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+        // SparkBatchConstant.S3_CONFIGURATION_COMPONENT), MapR600SparkBatchS3NodeModuleGroup.getModuleGroups());
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
                 MapR600SparkBatchParquetNodeModuleGroup.getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
                 MapR600SparkBatchParquetNodeModuleGroup.getModuleGroups());
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.PARQUET_INPUT_COMPONENT), MapR600SparkStreamingParquetNodeModuleGroup.getModuleGroups());
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.PARQUET_OUTPUT_COMPONENT), MapR600SparkStreamingParquetNodeModuleGroup.getModuleGroups());
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.PARQUET_STREAM_INPUT_COMPONENT), MapR600SparkStreamingParquetNodeModuleGroup
-                .getModuleGroups());
+        // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+        // SparkStreamingConstant.PARQUET_INPUT_COMPONENT),
+        // MapR600SparkStreamingParquetNodeModuleGroup.getModuleGroups());
+        // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+        // SparkStreamingConstant.PARQUET_OUTPUT_COMPONENT),
+        // MapR600SparkStreamingParquetNodeModuleGroup.getModuleGroups());
+        // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+        // SparkStreamingConstant.PARQUET_STREAM_INPUT_COMPONENT), MapR600SparkStreamingParquetNodeModuleGroup
+        // .getModuleGroups());
 
-        Set<DistributionModuleGroup> kinesisNodeModuleGroups = MapR600SparkStreamingKinesisNodeModuleGroup.getModuleGroups();
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.KINESIS_INPUT_COMPONENT), kinesisNodeModuleGroups);
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.KINESIS_INPUT_AVRO_COMPONENT), kinesisNodeModuleGroups);
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT), kinesisNodeModuleGroups);
+        // Set<DistributionModuleGroup> kinesisNodeModuleGroups =
+        // MapR600SparkStreamingKinesisNodeModuleGroup.getModuleGroups();
+        // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+        // SparkStreamingConstant.KINESIS_INPUT_COMPONENT), kinesisNodeModuleGroups);
+        // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+        // SparkStreamingConstant.KINESIS_INPUT_AVRO_COMPONENT), kinesisNodeModuleGroups);
+        // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+        // SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT), kinesisNodeModuleGroups);
 
-        Set<DistributionModuleGroup> kafkaAssemblyModuleGroups = MapR600SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups();
-        Set<DistributionModuleGroup> kafkaAvroModuleGroups = MapR600SparkStreamingKafkaAvroModuleGroup.getModuleGroups();
-        nodeModuleGroups.put(
-                new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_INPUT_COMPONENT),
-                kafkaAssemblyModuleGroups);
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.KAFKA_AVRO_INPUT_COMPONENT), kafkaAvroModuleGroups);
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT), MapR600SparkStreamingKafkaClientModuleGroup.getModuleGroups());
+        // Set<DistributionModuleGroup> kafkaAssemblyModuleGroups =
+        // MapR600SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups();
+        // Set<DistributionModuleGroup> kafkaAvroModuleGroups =
+        // MapR600SparkStreamingKafkaAvroModuleGroup.getModuleGroups();
+        // nodeModuleGroups.put(
+        // new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_INPUT_COMPONENT),
+        // kafkaAssemblyModuleGroups);
+        // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+        // SparkStreamingConstant.KAFKA_AVRO_INPUT_COMPONENT), kafkaAvroModuleGroups);
+        // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+        // SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT),
+        // MapR600SparkStreamingKafkaClientModuleGroup.getModuleGroups());
 
         // Spark MapR Streams
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.MAPRSTREAMS_INPUT_COMPONENT), MapR600SparkStreamingMapRStreamsAssemblyModuleGroup
-                .getModuleGroups());
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.MAPRSTREAMS_AVRO_INPUT_COMPONENT), MapR600SparkStreamingMapRStreamsAvroModuleGroup
-                .getModuleGroups());
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.MAPRSTREAMS_OUTPUT_COMPONENT), MapR600SparkStreamingMapRStreamsClientModuleGroup
-                .getModuleGroups());
+        // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+        // SparkStreamingConstant.MAPRSTREAMS_INPUT_COMPONENT), MapR600SparkStreamingMapRStreamsAssemblyModuleGroup
+        // .getModuleGroups());
+        // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+        // SparkStreamingConstant.MAPRSTREAMS_AVRO_INPUT_COMPONENT), MapR600SparkStreamingMapRStreamsAvroModuleGroup
+        // .getModuleGroups());
+        // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+        // SparkStreamingConstant.MAPRSTREAMS_OUTPUT_COMPONENT), MapR600SparkStreamingMapRStreamsClientModuleGroup
+        // .getModuleGroups());
     }
 
     @Override
@@ -237,25 +242,25 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
         return true;
     }
 
-    @Override
-    public boolean doJavaAPISupportStorePasswordInFile() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return true;
-    }
+    // @Override
+    // public boolean doJavaAPISupportStorePasswordInFile() {
+    // return false;
+    // }
+    //
+    // @Override
+    // public boolean doSupportHCatalog() {
+    // return true;
+    // }
+    //
+    // @Override
+    // public boolean pigVersionPriorTo_0_12() {
+    // return false;
+    // }
+    //
+    // @Override
+    // public boolean doSupportHBase() {
+    // return true;
+    // }
 
     @Override
     public boolean doSupportEmbeddedMode() {
@@ -267,55 +272,55 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
         return true;
     }
 
-    @Override
-    public boolean doSupportHive1() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHive2() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportTezForHive() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHBaseForHive() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportSSL() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportORCFormat() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportOldImportMode() {
-        return false;
-    };
-
-    @Override
-    public boolean doSupportAvroFormat() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportParquetFormat() {
-        return true;
-    }
+    // @Override
+    // public boolean doSupportHive1() {
+    // return false;
+    // }
+    //
+    // @Override
+    // public boolean doSupportHive2() {
+    // return true;
+    // }
+    //
+    // @Override
+    // public boolean doSupportTezForHive() {
+    // return false;
+    // }
+    //
+    // @Override
+    // public boolean doSupportHBaseForHive() {
+    // return true;
+    // }
+    //
+    // @Override
+    // public boolean doSupportSSL() {
+    // return false;
+    // }
+    //
+    // @Override
+    // public boolean doSupportORCFormat() {
+    // return true;
+    // }
+    //
+    // @Override
+    // public boolean doSupportOldImportMode() {
+    // return false;
+    // };
+    //
+    // @Override
+    // public boolean doSupportAvroFormat() {
+    // return true;
+    // }
+    //
+    // @Override
+    // public boolean doSupportParquetFormat() {
+    // return true;
+    // }
 
     @Override
     public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
-        version.add(ESparkVersion.SPARK_1_6);
+        version.add(ESparkVersion.SPARK_2_1);
         return version;
     }
 
@@ -329,20 +334,20 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
         return false;
     }
 
-    @Override
-    public boolean doSupportStoreAsParquet() {
-        return false;
-    }
+    // @Override
+    // public boolean doSupportStoreAsParquet() {
+    // return false;
+    // }
 
     @Override
     public boolean doSupportMapRDB() {
         return true;
     }
 
-    @Override
-    public boolean doSupportCheckpointing() {
-        return true;
-    }
+    // @Override
+    // public boolean doSupportCheckpointing() {
+    // return true;
+    // }
 
     @Override
     public boolean doSupportSparkStandaloneMode() {
@@ -354,10 +359,10 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
         return true;
     }
 
-    @Override
-    public boolean doSupportBackpressure() {
-        return true;
-    }
+    // @Override
+    // public boolean doSupportBackpressure() {
+    // return true;
+    // }
 
     @Override
     public boolean doSupportS3() {
