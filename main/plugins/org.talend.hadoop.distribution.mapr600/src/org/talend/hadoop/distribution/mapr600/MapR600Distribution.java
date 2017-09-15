@@ -72,7 +72,7 @@ import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkStreamingM
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SqoopModuleGroup;
 
-public class MapR600Distribution extends AbstractMapRDistribution implements HDFSComponent, SparkBatchComponent,
+public class MapR600Distribution extends AbstractMapRDistribution implements HDFSComponent, SparkBatchComponent, HBaseComponent,
         HiveOnSparkComponent, MapRDBComponent, IMapRDistribution {
 
     public final static String VERSION = "MAPR600"; //$NON-NLS-1$
@@ -257,10 +257,10 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
     // return false;
     // }
     //
-    // @Override
-    // public boolean doSupportHBase() {
-    // return true;
-    // }
+//     @Override
+//     public boolean doSupportHBase() {
+//     return true;
+//     }
 
     @Override
     public boolean doSupportEmbeddedMode() {
