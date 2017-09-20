@@ -9,7 +9,7 @@
 String outStructName = tKafkaInputUtil.getOutStructName();
 %>
 
-<%=tKafkaInputUtil.getOutgoingConnectionName()%> = <%=cid%>_consumerRecord.value();
+<%=tKafkaInputUtil.getOutgoingConnectionName()%> = <%=cid%>_consumerRecord.value() == null ? new <%=outStructName%>() : <%=cid%>_consumerRecord.value();
 <%
 if (ElementParameterParser.getBooleanValue(node, "__SAVE_OFFSET__")) {
     %>

@@ -1,3 +1,4 @@
+<%@jet%>
 <%
 	// This is the tKafkaInput_main javajet part for Kafka 0.9.0.x
 	
@@ -9,7 +10,7 @@
 String outStructName = tKafkaInputUtil.getOutStructName();
 %>
 
-<%=tKafkaInputUtil.getOutgoingConnectionName()%> = <%=cid%>_consumerRecord.value();
+<%=tKafkaInputUtil.getOutgoingConnectionName()%> = <%=cid%>_consumerRecord.value() == null ? new <%=outStructName%>() : <%=cid%>_consumerRecord.value();
 <%
 if (ElementParameterParser.getBooleanValue(node, "__SAVE_OFFSET__")) {
     %>

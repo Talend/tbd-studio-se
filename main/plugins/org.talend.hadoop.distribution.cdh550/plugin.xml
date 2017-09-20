@@ -44,14 +44,14 @@
             context="plugin:org.talend.hadoop.distribution.cdh550"
             id="azure-storage-2.2.0"
             name="azure-storage-2.2.0.jar"
-            mvn_uri="mvn:org.talend.libraries/azure-storage-2.2.0/6.1.0">
+            mvn_uri="mvn:org.talend.libraries/azure-storage-2.2.0/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh550"
             id="hadoop-azure-2.7.4"
             name="hadoop-azure-2.7.4.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-azure-2.7.4/6.1.0">
+            mvn_uri="mvn:org.talend.libraries/hadoop-azure-2.7.4/6.0.0">
         </libraryNeeded>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh550" 

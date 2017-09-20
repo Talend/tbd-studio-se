@@ -34,7 +34,7 @@ if(tKafkaInputUtil.isKafkaVersion("KAFKA_0_8_2_0")) {
 	    throw new RuntimeException("Could not commit offsets : no consumer has been found from <%=kiCid%>");
 	}
 <%
-} else if(tKafkaInputUtil.isKafkaVersion("KAFKA_0_9_0_1")) {
+} else if(tKafkaInputUtil.isKafkaVersion("KAFKA_0_9_0_1") || tKafkaInputUtil.isKafkaVersion("KAFKA_0_10_0_1")) {
 %>
 	if (globalMap.containsKey("<%=kiCid%>_kafkaConsumer")) {
 	    ((org.apache.kafka.clients.consumer.KafkaConsumer) globalMap.get("<%=kiCid%>_kafkaConsumer")).commitSync();
