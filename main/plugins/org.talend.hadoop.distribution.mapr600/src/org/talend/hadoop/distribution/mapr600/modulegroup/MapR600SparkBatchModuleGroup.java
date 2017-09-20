@@ -34,6 +34,7 @@ public class MapR600SparkBatchModuleGroup {
         // can be used for parquet, need to check
         // hs.add(new DistributionModuleGroup(MapR510Constant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), true,
         // condition));
+        hs.add(new DistributionModuleGroup(MapR600Constant.SPARK_YARN_CLUSTER_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
         hs.add(new DistributionModuleGroup(MapR600Constant.HDFS_MODULE_GROUP.getModuleName(), false, condition));
         hs.add(new DistributionModuleGroup(MapR600Constant.MAPREDUCE_MODULE_GROUP.getModuleName(), false, condition));
         return hs;

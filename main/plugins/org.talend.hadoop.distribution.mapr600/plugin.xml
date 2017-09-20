@@ -827,6 +827,13 @@
 			<library id="xz-1.0.jar"/>
 			<library id="zkclient-0.7.jar"/>
          </libraryNeededGroup>
+         
+         <libraryNeededGroup
+         	description="Spark yarn cluster libraries for MapR 6.0.0"
+         	id="SPARK-YARN-CLUSTER-LIB-MAPR600"
+         	name="SPARK-YARN-CLUSTER-LIB-MAPR600" >
+         	<library id="flexjson-2.1.jar"/>
+         </libraryNeededGroup>
 
         <libraryNeededGroup
                 description="MapReduce parquet libraries for MapR 6.0.0"
