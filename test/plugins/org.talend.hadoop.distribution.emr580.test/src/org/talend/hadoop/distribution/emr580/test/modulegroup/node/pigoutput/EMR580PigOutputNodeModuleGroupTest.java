@@ -31,9 +31,9 @@ public class EMR580PigOutputNodeModuleGroupTest {
         Map<String, String> results = new HashMap<>();
 
         results.put(EMR580PigModuleGroup.PIG_PARQUET_GROUP_NAME,
-                "(#LINK@NODE.ASSOCIATED_PIG_LOAD.DISTRIBUTION=='AMAZON_EMR') AND (#LINK@NODE.ASSOCIATED_PIG_LOAD.PIG_VERSION=='EMR_5_5_0')"); //$NON-NLS-1$
+                "(#LINK@NODE.ASSOCIATED_PIG_LOAD.DISTRIBUTION=='AMAZON_EMR') AND (#LINK@NODE.ASSOCIATED_PIG_LOAD.PIG_VERSION=='EMR_5_8_0')"); //$NON-NLS-1$
         results.put(EMR580PigModuleGroup.PIG_S3_GROUP_NAME,
-                "(#LINK@NODE.ASSOCIATED_PIG_LOAD.DISTRIBUTION=='AMAZON_EMR') AND (#LINK@NODE.ASSOCIATED_PIG_LOAD.PIG_VERSION=='EMR_5_5_0') " //$NON-NLS-1$
+                "(#LINK@NODE.ASSOCIATED_PIG_LOAD.DISTRIBUTION=='AMAZON_EMR') AND (#LINK@NODE.ASSOCIATED_PIG_LOAD.PIG_VERSION=='EMR_5_8_0') " //$NON-NLS-1$
                         + "AND (S3_LOCATION=='true') AND ((STORE!='HBASESTORAGE'))"); //$NON-NLS-1$
 
         Set<DistributionModuleGroup> moduleGroups = EMR580PigOutputNodeModuleGroup.getModuleGroups(
