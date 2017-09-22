@@ -185,6 +185,9 @@ List<IMetadataTable> metadatas = node.getMetadataList();
 <%
 if ((metadatas!=null) && (metadatas.size() > 0)) {
     IMetadataTable metadata = metadatas.get(0);
+    boolean retrieveTimestamp = ElementParameterParser.getBooleanValue(node, "__RETRIEVE_TIMESTAMP__");
+    String sourceTimestampColumn = ElementParameterParser.getValue(node, "__TIMESTAMP_SOURCE_COLUMN__");
+	String timestampColumn = ElementParameterParser.getValue(node, "__TIMESTAMP_COLUMN__");
     if (metadata != null) {
 		List<IMetadataColumn> columns = metadata.getListColumns();
 		List<Map<String, String>> mapping = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node,"__MAPPING__");
@@ -193,9 +196,11 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 			IMetadataColumn column = columns.get(i);
 			String schema_column = map.get("SCHEMA_COLUMN");
 			String family_column= map.get("FAMILY_COLUMN");
+			if(!(retrieveTimestamp && schema_column.equals(timestampColumn))){
 %>
 				scan_<%=cid %>.addColumn(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=family_column%>), org.apache.hadoop.hbase.util.Bytes.toBytes("<%=column.getOriginalDbColumnName()%>"));
 <%
+			}
 		}
 		if(isByFilter){
 			List<Map<String, String>> filterMapping = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node,"__FILTER__");
@@ -364,7 +369,7 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 							IMetadataColumn column = columns.get(i);
 							String columnName = column.getLabel();
 							String defaultValue = column.getDefault();
-							if(columnName.equals(schema_column)) {//
+							if(columnName.equals(schema_column) && !(retrieveTimestamp && schema_column.equals(timestampColumn))) {//
 								String typeToGenerate = JavaTypesManager.getTypeToGenerate(column.getTalendType(), column.isNullable());
 								JavaType javaType = JavaTypesManager.getJavaTypeFromId(column.getTalendType());
 								String patternValue = column.getPattern() == null || column.getPattern().trim().length() == 0 ? null : column.getPattern();
@@ -395,6 +400,11 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 %>
 										<%=connName%>.<%=columnName%>=ParserUtils.parseTo_<%= typeToGenerate %>(temp_<%=cid %>);
 <%									}
+
+									if(retrieveTimestamp && sourceTimestampColumn.equals(schema_column)){ // TODO separate use of getColumnLatest by distribution as it is deprecated since HBase 1.0, replaced by getColumnLatestCell up to latest (HBase 3.0)
+%>										
+										<%=connName %>.<%=timestampColumn %> = rr_<%=cid %>.getColumnLatest(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=family_column%>),org.apache.hadoop.hbase.util.Bytes.toBytes("<%=column.getOriginalDbColumnName()%>")).getTimestamp();
+<%									}
 %>
 								}else{
 <%
@@ -412,6 +422,10 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 										throw new RuntimeException("Value is empty for column : '<%=columnName %>' in '<%=connName %>' connection, value is invalid or this column should be nullable or have a default value.");									
 <%
 									}
+									if(retrieveTimestamp && sourceTimestampColumn.equals(schema_column)){
+%>										
+										<%=connName %>.<%=timestampColumn %> = null;
+<%									}
 %>
 								}
 <%
