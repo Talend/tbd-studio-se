@@ -65,7 +65,7 @@ public class HbaseTimestampTypeProblem implements NodeProblem {
 				String timestampColumn = (String) node.getElementParameter("TIMESTAMP_COLUMN").getValue();
 				
 				IMetadataColumn localTimestampColumn = null;
-				for(int familyNum=0;familyNum<mapping.size();familyNum++){
+				for(int familyNum = 0 ; familyNum < mapping.size() ; familyNum++){
 					IMetadataColumn localColumn = columns.get(familyNum);
 					if(localColumn.getLabel().equals(timestampColumn)){
 						localTimestampColumn = localColumn;
