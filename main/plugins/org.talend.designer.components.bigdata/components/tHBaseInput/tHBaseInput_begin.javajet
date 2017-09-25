@@ -402,9 +402,24 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 <%									}
 
 									if(retrieveTimestamp && sourceTimestampColumn.equals(schema_column)){ // TODO separate use of getColumnLatest by distribution as it is deprecated since HBase 1.0, replaced by getColumnLatestCell up to latest (HBase 3.0)
-%>										
-										<%=connName %>.<%=timestampColumn %> = rr_<%=cid %>.getColumnLatest(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=family_column%>),org.apache.hadoop.hbase.util.Bytes.toBytes("<%=column.getOriginalDbColumnName()%>")).getTimestamp();
-<%									}
+										IMetadataColumn localTimestampColumn = null;
+										for(int familyNum=0;familyNum<mapping.size();familyNum++){
+											IMetadataColumn localColumn = columns.get(familyNum);
+											if(localColumn.getLabel().equals(timestampColumn)){
+												localTimestampColumn = localColumn;
+												break;
+											}
+										}
+										if(localTimestampColumn != null && JavaTypesManager.getJavaTypeFromId(localTimestampColumn.getTalendType()) == JavaTypesManager.LONG){
+										%>
+											<%=connName %>.<%=timestampColumn %> = rr_<%=cid %>.getColumnLatest(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=family_column%>),org.apache.hadoop.hbase.util.Bytes.toBytes("<%=column.getOriginalDbColumnName()%>")).getTimestamp();
+										<%
+										}else{
+										%>
+											throw new Exception("Output Timestamp Column should be long-typed");
+										<%
+										}
+									}
 %>
 								}else{
 <%
