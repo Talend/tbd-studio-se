@@ -7,8 +7,10 @@ import org.talend.designer.bigdata.i18n.Messages;
 import org.talend.designer.core.ui.editor.nodes.Node;
 import org.talend.designer.core.ui.editor.nodes.NodeProblem;
 import org.talend.designer.core.ui.views.problems.Problems;
+
 import java.util.List;
 import java.util.Map;
+
 import org.talend.core.model.metadata.IMetadataColumn;
 import org.talend.core.model.metadata.IMetadataTable;
 import org.talend.core.model.metadata.types.JavaTypesManager;
@@ -34,61 +36,46 @@ public class HbaseTimestampTypeProblem implements NodeProblem {
         return false;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void check(Node node) {
 		String currentComponentName = node.getComponent().getName();
 		
 		switch(currentComponentName){
 		case HBASE_INPUT_COMPONENT:
-			if((boolean) node.getElementParameter("__RETRIEVE_TIMESTAMP__").getValue()){
-				List<IMetadataTable> metadatas = node.getMetadataList();
-				if ((metadatas!=null) && (metadatas.size() > 0)) {
-					IMetadataTable metadata = metadatas.get(0);
-				    if (metadata != null) {
-				    	List<IMetadataColumn> columns = metadata.getListColumns();
-				    	List<Map<String,String>> mapping = (List<Map<String,String>>) node.getElementParameter("__MAPPING__").getValue();
-						String customTimestampColumn = (String) node.getElementParameter("__TIMESTAMP_COLUMN__").getValue();
-						
-						IMetadataColumn localTimestampColumn = null;
-						for(int familyNum=0;familyNum<mapping.size();familyNum++){
-							IMetadataColumn localColumn = columns.get(familyNum);
-							if(localColumn.getLabel().equals(customTimestampColumn)){
-								localTimestampColumn = localColumn;
-								break;
-							}
-						}
-						if(localTimestampColumn != null && JavaTypesManager.getJavaTypeFromId(localTimestampColumn.getTalendType()) == JavaTypesManager.LONG){
-							Problems.add(ProblemStatus.ERROR, node, Messages.getString("Node.checkHBaseCustomTimestamps"));
-						}
-				    }
-				}
+			if((boolean) node.getElementParameter("RETRIEVE_TIMESTAMP").getValue()){
+				checkTimestampInMapping(node, "MAPPING");
 			}
 			break;
 		case HBASE_OUTPUT_COMPONENT:
-			if((boolean) node.getElementParameter("__CUSTOM_TIMESTAMP_COLUMN__").getValue()){
-				List<IMetadataTable> metadatas = node.getMetadataList();
-				if ((metadatas!=null) && (metadatas.size() > 0)) {
-					IMetadataTable metadata = metadatas.get(0);
-				    if (metadata != null) {
-				    	List<IMetadataColumn> columns = metadata.getListColumns();
-				    	List<Map<String,String>> families = (List<Map<String,String>>) node.getElementParameter("__FAMILIES__").getValue();
-						String customTimestampColumn = (String) node.getElementParameter("__TIMESTAMP_COLUMN__").getValue();
-						
-						IMetadataColumn localTimestampColumn = null;
-						for(int familyNum=0;familyNum<families.size();familyNum++){
-							IMetadataColumn localColumn = columns.get(familyNum);
-							if(localColumn.getLabel().equals(customTimestampColumn)){
-								localTimestampColumn = localColumn;
-								break;
-							}
-						}
-						if(localTimestampColumn != null && JavaTypesManager.getJavaTypeFromId(localTimestampColumn.getTalendType()) == JavaTypesManager.LONG){
-							Problems.add(ProblemStatus.ERROR, node, Messages.getString("Node.checkHBaseCustomTimestamps"));
-						}
-				    }
-				}
+			if((boolean) node.getElementParameter("CUSTOM_TIMESTAMP_COLUMN").getValue()){
+				checkTimestampInMapping(node, "FAMILIES");
 			}
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void checkTimestampInMapping(Node node, String mappingVariable){
+		List<IMetadataTable> metadatas = node.getMetadataList();
+		if ((metadatas!=null) && (metadatas.size() > 0)) {
+			IMetadataTable metadata = metadatas.get(0);
+		    if (metadata != null) {
+		    	List<Map<String,String>> mapping = (List<Map<String,String>>) node.getElementParameter(mappingVariable).getValue();
+				
+		    	List<IMetadataColumn> columns = metadata.getListColumns();
+				String timestampColumn = (String) node.getElementParameter("TIMESTAMP_COLUMN").getValue();
+				
+				IMetadataColumn localTimestampColumn = null;
+				for(int familyNum=0;familyNum<mapping.size();familyNum++){
+					IMetadataColumn localColumn = columns.get(familyNum);
+					if(localColumn.getLabel().equals(timestampColumn)){
+						localTimestampColumn = localColumn;
+						break;
+					}
+				}
+				if(localTimestampColumn != null && JavaTypesManager.getJavaTypeFromId(localTimestampColumn.getTalendType()) != JavaTypesManager.LONG){
+					Problems.add(ProblemStatus.ERROR, node, Messages.getString("Node.checkHBaseCustomTimestamps"));
+				}
+		    }
 		}
 	}
 
