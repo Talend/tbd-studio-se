@@ -362,7 +362,7 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 					IConnection conn =conns.get(0);
 					String connName = conn.getName();
 					if (conn.getLineStyle().hasConnectionCategory(IConnectionCategory.DATA)) {
-						for(int i=0;i<mapping.size();i++){
+						for(int i=0; i<mapping.size(); i++){
 							Map<String, String> map = mapping.get(i);
 							String schema_column = map.get("SCHEMA_COLUMN");
 							String family_column= map.get("FAMILY_COLUMN");
@@ -416,7 +416,7 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 										<%
 										}else{
 										%>
-											throw new Exception("Output Timestamp Column should be long-typed");
+											throw new RuntimeException("Output Timestamp Column should be long-typed");
 										<%
 										}
 									}
