@@ -22,8 +22,12 @@ INode node = (INode)codeGenArgument.getArgument();
 String cid = node.getUniqueName();
 List<Map<String,String>> families = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node,"__FAMILIES__");
 String customUseRowKey = ElementParameterParser.getValue(node, "__CUSTOM_ROW_KEY__");
-boolean useCustomTimestampColumn = ElementParameterParser.getBooleanValue(node, "__CUSTOM_TIMESTAMP_COLUMN__");
-String customTimestampColumn = ElementParameterParser.getValue(node, "__TIMESTAMP_COLUMN__");
+boolean useCustomTimestampColumn = false;
+String customTimestampColumn = "";
+if(node.getElementParameter("__CUSTOM_TIMESTAMP_COLUMN__") != null){
+	useCustomTimestampColumn = ElementParameterParser.getBooleanValue(node, "__CUSTOM_TIMESTAMP_COLUMN__");
+	customTimestampColumn = ElementParameterParser.getValue(node, "__TIMESTAMP_COLUMN__");
+}
 String dieOnError = ElementParameterParser.getValue(node, "__DIE_ON_ERROR__");
 
 final boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
