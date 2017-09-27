@@ -185,15 +185,9 @@ List<IMetadataTable> metadatas = node.getMetadataList();
 <%
 if ((metadatas!=null) && (metadatas.size() > 0)) {
     IMetadataTable metadata = metadatas.get(0);
-    boolean retrieveTimestamp = false;
-    String sourceTimestampColumn = "";
-	String timestampColumn = "";
-    if(node.getElementParameter("__RETRIEVE_TIMESTAMP__") != null){
-    	retrieveTimestamp = ElementParameterParser.getBooleanValue(node, "__RETRIEVE_TIMESTAMP__");
-        sourceTimestampColumn = ElementParameterParser.getValue(node, "__TIMESTAMP_SOURCE_COLUMN__");
-    	timestampColumn = ElementParameterParser.getValue(node, "__TIMESTAMP_COLUMN__");
-    }
-    
+    boolean retrieveTimestamp = ElementParameterParser.getBooleanValue(node, "__RETRIEVE_TIMESTAMP__");
+    String sourceTimestampColumn = ElementParameterParser.getValue(node, "__TIMESTAMP_SOURCE_COLUMN__");
+	String timestampColumn = ElementParameterParser.getValue(node, "__TIMESTAMP_COLUMN__");
     if (metadata != null) {
 		List<IMetadataColumn> columns = metadata.getListColumns();
 		List<Map<String, String>> mapping = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node,"__MAPPING__");
