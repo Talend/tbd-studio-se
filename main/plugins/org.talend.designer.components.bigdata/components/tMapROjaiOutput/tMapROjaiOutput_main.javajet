@@ -64,16 +64,13 @@ imports="
 	}
 	
 	  		java.util.Map<String, String> pathMap = new java.util.HashMap<String, String>();
-	  		java.util.Map<String, Boolean> vacantMap = new java.util.HashMap<String, Boolean>();
 			for (int i=0;i<mappings.size();i++) {
-				String path = mappings.get(i).get("PARENT_NODE_PATH");
+				String path = mappings.get(i).get("PARENT_FIELD_PATH");
 				if(path==null || "".equals(path)){
 					path="";
 				}
 				String schemaColumn=mappings.get(i).get("SCHEMA_COLUMN");
 				pathMap.put(schemaColumn,path);
-				boolean vacant = "true".equals(mappings.get(i).get("REMOVE_NULL_FIELD"));
-				vacantMap.put(schemaColumn,vacant);
 			}
 	
 	if (metadata!=null) {
@@ -111,19 +108,13 @@ imports="
 				                schemaData=pathMap.get(column.getLabel()).replaceAll("\"","")+"."+column.getOriginalDbColumnName();
 				            }
 					        
-	                        if (vacantMap.get(column.getLabel())) {
 	                            %>
 	                            if (<%=conn.getName() %>.<%=column.getLabel() %> != null) {
                                     doc_<%=cid%>.set("<%=schemaData%>",<%=rowData%>);
 	                            }
                                 <%
-                                }else{
-                                %>
-                                doc_<%=cid%>.set("<%=schemaData%>",<%=rowData%>);
-                                <%
-                                }
-                            }
-                        }
+                     }
+                }
   				// Get the BasicDBObject
   			}
   		}
@@ -189,7 +180,6 @@ imports="
 		
 		<%}%>
 				}catch(Exception e_<%=cid%>){
-				whetherReject_<%=cid%> = true;
 				    <%if(dieOnError){%>
 				        throw e_<%=cid%>;
 				    <%}else{%>
@@ -224,7 +214,8 @@ imports="
             <%
                 for(IConnection outgoingConn : outgoingConns) {
                     if(rejectConnName == null || (rejectConnName != null && !outgoingConn.getName().equals(rejectConnName))) {
-                        if(outgoingConn.getLineStyle().hasConnectionCategory(IConnectionCategory.DATA)) {
+                        if(outgoingConn.getLineStyle().hasConnectionCategory(IConnectionCategory.DATA)) {  
+                        
 
                             %>
                             <%=outgoingConn.getName()%> = new <%=outgoingConn.getName()%>Struct();
@@ -238,6 +229,8 @@ imports="
                     }
                 }
             %>
+            }else{
+                whetherReject_<%=cid%> = false;
             }
             <%
         }

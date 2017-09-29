@@ -100,10 +100,9 @@ public class MapR600DistributionTest {
         // assertTrue(distribution instanceof ImpalaComponent);
         // assertTrue(((SparkStreamingComponent) distribution).doSupportCheckpointing());
         // assertTrue(((SparkStreamingComponent) distribution).doSupportBackpressure());
-        // assertTrue(distribution instanceof MapRStreamsComponent);
-        // assertTrue(((MapRStreamsComponent) distribution).canCreateMapRStream());
-        // assertEquals(MapR600Distribution.MAPR_STREAMS_JAR_PATH, ((MapRStreamsComponent)
-        // distribution).getMapRStreamsJarPath());
+        assertTrue(distribution instanceof MapRStreamsComponent);
+        assertTrue(((MapRStreamsComponent) distribution).canCreateMapRStream());
+        assertEquals(MapR600Distribution.MAPR_STREAMS_JAR_PATH, ((MapRStreamsComponent) distribution).getMapRStreamsJarPath());
         // assertEquals(SparkStreamingKafkaVersion.MAPR,
         // ((SparkStreamingComponent) distribution).getSparkStreamingKafkaVersion(ESparkVersion.SPARK_1_6));
         assertTrue(distribution.doSupportCreateServiceConnection());

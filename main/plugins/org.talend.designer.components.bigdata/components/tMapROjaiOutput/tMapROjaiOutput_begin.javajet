@@ -12,6 +12,7 @@ imports="
 		java.util.List
 		java.util.Map" 
 %>
+<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Log4j/Log4jFileUtil.javajet"%>
 <% 
 	CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
 	INode node = (INode)codeGenArgument.getArgument();
@@ -20,15 +21,12 @@ imports="
     String tableAction = ElementParameterParser.getValue(node,"__TABLE_ACTION__");
     String table = ElementParameterParser.getValue(node,"__TABLE__");
     boolean setBulkWrite = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_BULK_WRITE__"));
-    boolean InsertionOrder = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_WRITE_ORDER__"));
-    boolean AutoSplit = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__Auto_Split__"));
     String bulkWriteOperationSize = ElementParameterParser.getValue(node, "__BULK_WRITE_SIZE__");
     boolean useKrb = "true".equals(ElementParameterParser.getValue(node, "__USE_KRB__"));
 	boolean useKeytab = "true".equals(ElementParameterParser.getValue(node, "__USE_KEYTAB__"));
 	String userPrincipal = ElementParameterParser.getValue(node, "__PRINCIPAL__");
 	String keytabPath = ElementParameterParser.getValue(node, "__KEYTAB_PATH__");
     List<? extends IConnection> inConns = node.getIncomingConnections(EConnectionType.FLOW_MAIN);
-    String splitSize = ElementParameterParser.getValue(node, "__SPLIT_SIZE__");
 
     %>
     <%if(useKrb){%>
@@ -40,7 +38,7 @@ imports="
 		        boolean result = true;
 		    
 		        Process process = Runtime.getRuntime().exec(arg0);
-		        
+				log.debug("Commend: " + java.util.Arrays.asList(arg0).toString());
 		        if(UsePwd){
 		            java.io.PrintWriter pwout = new java.io.PrintWriter(process.getOutputStream());
 		        <%if(!useKeytab){
@@ -77,6 +75,7 @@ imports="
 		cmd_<%=cid%>.add("kinit");
 		
 		<%if(useKeytab){%>
+		cmd_<%=cid%>.add("-k");
 		cmd_<%=cid%>.add("-t");
 		cmd_<%=cid%>.add(<%=keytabPath%>);
 		<%}else{%>
@@ -110,11 +109,7 @@ imports="
   	    boolean whetherReject_<%=cid%> = false;
   	  	com.mapr.db.Admin admin_<%=cid%> = com.mapr.db.MapRDB.newAdmin();
   		com.mapr.db.TableDescriptor tableDescriptor_<%=cid%> = com.mapr.db.MapRDB.newTableDescriptor(<%=table%>);
-  		tableDescriptor_<%=cid%>.setInsertionOrder(<%=InsertionOrder%>);
-  		tableDescriptor_<%=cid%>.setAutoSplit(<%=AutoSplit%>);
   		long bulkWriteSize_<%=cid%> = Long.parseLong(<%=bulkWriteOperationSize%>);
-  		long splitSize_<%=cid%> = Long.parseLong(<%=splitSize%>);
-  		tableDescriptor_<%=cid%>.setSplitSize(splitSize_<%=cid%>);
   		com.mapr.db.Table table_<%=cid%>=null;
   	<%
   		if("NONE".equals(tableAction)){
@@ -188,7 +183,7 @@ imports="
 	
 		  		java.util.Map<String, String> pathMap = new java.util.HashMap<String, String>();
 			for (int i=0;i<mappings.size();i++) {
-				String path = mappings.get(i).get("PARENT_NODE_PATH");
+				String path = mappings.get(i).get("PARENT_FIELD_PATH");
 				if(path==null || "".equals(path)){
 					path="";
 				}

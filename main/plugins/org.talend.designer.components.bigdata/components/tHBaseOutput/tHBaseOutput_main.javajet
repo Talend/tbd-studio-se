@@ -22,6 +22,8 @@ INode node = (INode)codeGenArgument.getArgument();
 String cid = node.getUniqueName();
 List<Map<String,String>> families = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node,"__FAMILIES__");
 String customUseRowKey = ElementParameterParser.getValue(node, "__CUSTOM_ROW_KEY__");
+boolean useCustomTimestampColumn = ElementParameterParser.getBooleanValue(node, "__CUSTOM_TIMESTAMP_COLUMN__");
+String customTimestampColumn = ElementParameterParser.getValue(node, "__TIMESTAMP_COLUMN__");
 String dieOnError = ElementParameterParser.getValue(node, "__DIE_ON_ERROR__");
 
 final boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
@@ -53,11 +55,34 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 						byte[] rowKey_<%=cid%> = org.apache.hadoop.hbase.util.Bytes.toBytes("myRow_"+<%=connName %>.toString());
 					<%
 					}
+					if(useCustomTimestampColumn){
+						IMetadataColumn localTimestampColumn = null;
+						for(int familyNum = 0 ; familyNum < families.size() ; familyNum++){
+							IMetadataColumn localColumn = columns.get(familyNum);
+							if(localColumn.getLabel().equals(customTimestampColumn)){
+								localTimestampColumn = localColumn;
+								break;
+							}
+						}
+						if(localTimestampColumn != null && JavaTypesManager.getJavaTypeFromId(localTimestampColumn.getTalendType()) == JavaTypesManager.LONG){
+						%>
+							p_<%=cid%> = new org.apache.hadoop.hbase.client.Put(rowKey_<%=cid%>, <%=connName%>.<%=customTimestampColumn%>);
+						<%
+						}else{
+						%>
+							throw new RuntimeException("Custom Timestamp Column should be long-typed");
+						<%
+						}
+					}else{
 					%>
-					p_<%=cid%> = new org.apache.hadoop.hbase.client.Put(rowKey_<%=cid%>);
+						p_<%=cid%> = new org.apache.hadoop.hbase.client.Put(rowKey_<%=cid%>);
 					<%
-					for(int familyNum=0;familyNum<families.size();familyNum++){
+					}
+					for(int familyNum = 0 ; familyNum < families.size() ; familyNum++){
 						IMetadataColumn column = columns.get(familyNum);
+						if(useCustomTimestampColumn && column.getLabel().equals(customTimestampColumn)){
+							continue;
+						}
 						JavaType javaType = JavaTypesManager.getJavaTypeFromId(column.getTalendType());
 						String pattern = column.getPattern() == null || column.getPattern().trim().length() == 0 ? null : column.getPattern();
 						Map<String,String> mapLine = families.get(familyNum);

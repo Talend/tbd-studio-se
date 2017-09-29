@@ -51,9 +51,12 @@ public class CreateOozieAction extends CreateHadoopNodeAction {
 
             DistributionBean distributionBean = HadoopDistributionsHelper.HADOOP.getDistribution(hcConnection.getDistribution(), false);
             if (distributionBean != null) {
-                 DistributionVersion distributionVersion = distributionBean.getVersion(hcConnection.getDfVersion(), false);
-                 boolean isSupportOozie = distributionVersion.hadoopComponent.doSupportOozie();
-                 return !isSupportOozie;
+                DistributionVersion distributionVersion = distributionBean.getVersion(hcConnection.getDfVersion(), false);
+                if (distributionVersion == null) {
+                    return true;
+                }
+                boolean isSupportOozie = distributionVersion.hadoopComponent.doSupportOozie();
+                return !isSupportOozie;
             }
         }
 

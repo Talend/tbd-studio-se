@@ -145,7 +145,7 @@ try{
 
 	List<Map<String, String>> properties =
         (List<Map<String,String>>)ElementParameterParser.getObjectValue(node,"__HBASE_PARAMETERS__");
-   	for(int i=0;i<properties.size();i++){
+   	for(int i = 0 ; i < properties.size() ; i++){
    		Map<String, String> map = properties.get(i);
    		String property = map.get("PROPERTY");
    		String value= map.get("VALUE");
@@ -185,23 +185,28 @@ List<IMetadataTable> metadatas = node.getMetadataList();
 <%
 if ((metadatas!=null) && (metadatas.size() > 0)) {
     IMetadataTable metadata = metadatas.get(0);
+    boolean retrieveTimestamp = ElementParameterParser.getBooleanValue(node, "__RETRIEVE_TIMESTAMP__");
+    String sourceTimestampColumn = ElementParameterParser.getValue(node, "__TIMESTAMP_SOURCE_COLUMN__");
+	String timestampColumn = ElementParameterParser.getValue(node, "__TIMESTAMP_COLUMN__");
     if (metadata != null) {
 		List<IMetadataColumn> columns = metadata.getListColumns();
 		List<Map<String, String>> mapping = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node,"__MAPPING__");
-		for(int i=0;i<mapping.size();i++){
+		for(int i = 0 ; i < mapping.size() ; i++){
 			Map<String, String> map = mapping.get(i);
 			IMetadataColumn column = columns.get(i);
 			String schema_column = map.get("SCHEMA_COLUMN");
 			String family_column= map.get("FAMILY_COLUMN");
+			if(!(retrieveTimestamp && schema_column.equals(timestampColumn))){
 %>
 				scan_<%=cid %>.addColumn(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=family_column%>), org.apache.hadoop.hbase.util.Bytes.toBytes("<%=column.getOriginalDbColumnName()%>"));
 <%
+			}
 		}
 		if(isByFilter){
 			List<Map<String, String>> filterMapping = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node,"__FILTER__");
 			String logical = ElementParameterParser.getValue(node,"__LOGICAL_OP__");
 			boolean hasMultipleColumnPrefixFilterType = false;
-			for(int i=0;i<filterMapping.size();i++){
+			for(int i = 0 ; i < filterMapping.size() ; i++){
 				Map<String, String> filterMap = filterMapping.get(i);
 				String filterType = filterMap.get("FILTER_TYPE");
 				if("MultipleColumnPrefixFilter".equals(filterType)){
@@ -219,7 +224,7 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 			org.apache.hadoop.hbase.filter.FilterList filterList_<%=cid%> = new org.apache.hadoop.hbase.filter.FilterList(org.apache.hadoop.hbase.filter.FilterList.Operator.<%=logical%>);
 			org.apache.hadoop.hbase.filter.Filter filter_<%=cid%> = null;
 <%		
-			for(int j=0;j<filterMapping.size();j++){
+			for(int j = 0 ; j < filterMapping.size() ; j++){
 				Map<String, String> filterMap = filterMapping.get(j);
 				String filterType = filterMap.get("FILTER_TYPE");//"SingleColumnValueFilter","FamilyFilter","QualifierFilter","ColumnPrefixFilter","MultipleColumnPrefixFilter","MultipleColumnPrefixFilter","RowFilter"
 				String filterColumn = filterMap.get("FILTER_COLUMN");
@@ -288,7 +293,7 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 					if(<%=filterColumn%>!=null && !"".equals(<%=filterColumn%>)){
 						multipleValues_<%=cid %> = <%=filterColumn%>.split(",");
 						multipleBytesValues_<%=cid %> = new byte [multipleValues_<%=cid %>.length] [];
-						for(int i=0;i< multipleValues_<%=cid %>.length;i++){
+						for(int i = 0 ; i < multipleValues_<%=cid %>.length ; i++){
 							multipleBytesValues_<%=cid %>[i] = org.apache.hadoop.hbase.util.Bytes.toBytes(multipleValues_<%=cid %>[i]);
 						}
 						filter_<%=cid%> =  new org.apache.hadoop.hbase.filter.MultipleColumnPrefixFilter(multipleBytesValues_<%=cid%>);
@@ -354,17 +359,17 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 %>
 				for (org.apache.hadoop.hbase.client.Result rr_<%=cid %> = scanner_<%=cid %>.next(); rr_<%=cid %> != null; rr_<%=cid %> = scanner_<%=cid %>.next()) {
 <%
-					IConnection conn =conns.get(0);
+					IConnection conn = conns.get(0);
 					String connName = conn.getName();
 					if (conn.getLineStyle().hasConnectionCategory(IConnectionCategory.DATA)) {
-						for(int i=0;i<mapping.size();i++){
+						for(int i = 0 ; i < mapping.size() ; i++){
 							Map<String, String> map = mapping.get(i);
 							String schema_column = map.get("SCHEMA_COLUMN");
 							String family_column= map.get("FAMILY_COLUMN");
 							IMetadataColumn column = columns.get(i);
 							String columnName = column.getLabel();
 							String defaultValue = column.getDefault();
-							if(columnName.equals(schema_column)) {//
+							if(columnName.equals(schema_column) && !(retrieveTimestamp && schema_column.equals(timestampColumn))) {//
 								String typeToGenerate = JavaTypesManager.getTypeToGenerate(column.getTalendType(), column.isNullable());
 								JavaType javaType = JavaTypesManager.getJavaTypeFromId(column.getTalendType());
 								String patternValue = column.getPattern() == null || column.getPattern().trim().length() == 0 ? null : column.getPattern();
@@ -395,6 +400,26 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 %>
 										<%=connName%>.<%=columnName%>=ParserUtils.parseTo_<%= typeToGenerate %>(temp_<%=cid %>);
 <%									}
+
+									if(retrieveTimestamp && sourceTimestampColumn.equals(schema_column)){ // TODO separate use of getColumnLatest by distribution as it is deprecated since HBase 1.0, replaced by getColumnLatestCell up to latest (HBase 3.0)
+										IMetadataColumn localTimestampColumn = null;
+										for(int familyNum = 0 ; familyNum < mapping.size() ; familyNum++){
+											IMetadataColumn localColumn = columns.get(familyNum);
+											if(localColumn.getLabel().equals(timestampColumn)){
+												localTimestampColumn = localColumn;
+												break;
+											}
+										}
+										if(localTimestampColumn != null && JavaTypesManager.getJavaTypeFromId(localTimestampColumn.getTalendType()) == JavaTypesManager.LONG){
+										%>
+											<%=connName %>.<%=timestampColumn %> = rr_<%=cid %>.getColumnLatest(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=family_column%>),org.apache.hadoop.hbase.util.Bytes.toBytes("<%=column.getOriginalDbColumnName()%>")).getTimestamp();
+										<%
+										}else{
+										%>
+											throw new RuntimeException("Output Timestamp Column should be long-typed");
+										<%
+										}
+									}
 %>
 								}else{
 <%
@@ -412,6 +437,10 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 										throw new RuntimeException("Value is empty for column : '<%=columnName %>' in '<%=connName %>' connection, value is invalid or this column should be nullable or have a default value.");									
 <%
 									}
+									if(retrieveTimestamp && sourceTimestampColumn.equals(schema_column)){
+%>										
+										<%=connName %>.<%=timestampColumn %> = null;
+<%									}
 %>
 								}
 <%

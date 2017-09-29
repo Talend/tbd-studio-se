@@ -72,8 +72,8 @@ import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkStreamingM
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SqoopModuleGroup;
 
-public class MapR600Distribution extends AbstractMapRDistribution implements HDFSComponent, SparkBatchComponent, HBaseComponent,
-        HiveOnSparkComponent, MapRDBComponent, IMapRDistribution {
+public class MapR600Distribution extends AbstractMapRDistribution implements HDFSComponent, MRComponent, SparkBatchComponent,
+        SparkStreamingComponent, HBaseComponent, HiveOnSparkComponent, MapRDBComponent, MapRStreamsComponent, IMapRDistribution {
 
     public final static String VERSION = "MAPR600"; //$NON-NLS-1$
 
@@ -89,7 +89,7 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
     static {
         moduleGroups = new HashMap<>();
         moduleGroups.put(ComponentType.HDFS, MapR600HDFSModuleGroup.getModuleGroups());
-        // moduleGroups.put(ComponentType.MAPREDUCE, MapR600MapReduceModuleGroup.getModuleGroups());
+        moduleGroups.put(ComponentType.MAPREDUCE, MapR600MapReduceModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HBASE, MapR600HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVE, MapR600HiveModuleGroup.getModuleGroups());
         // moduleGroups.put(ComponentType.PIG, MapR600PigModuleGroup.getModuleGroups());
@@ -111,10 +111,10 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
 
         // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
         // MapR600PigOutputNodeModuleGroup.getModuleGroups());
-        // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
-        // MapR600MRS3NodeModuleGroup.getModuleGroups());
-        // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),
-        // MapR600MRS3NodeModuleGroup.getModuleGroups());
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
+                MapR600MRS3NodeModuleGroup.getModuleGroups());
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),
+                MapR600MRS3NodeModuleGroup.getModuleGroups());
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.S3_CONFIGURATION_COMPONENT),
                 MapR600SparkBatchS3NodeModuleGroup.getModuleGroups());
@@ -257,10 +257,10 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
     // return false;
     // }
     //
-//     @Override
-//     public boolean doSupportHBase() {
-//     return true;
-//     }
+    // @Override
+    // public boolean doSupportHBase() {
+    // return true;
+    // }
 
     @Override
     public boolean doSupportEmbeddedMode() {
@@ -344,10 +344,10 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
         return true;
     }
 
-    // @Override
-    // public boolean doSupportCheckpointing() {
-    // return true;
-    // }
+    @Override
+    public boolean doSupportCheckpointing() {
+        return true;
+    }
 
     @Override
     public boolean doSupportSparkStandaloneMode() {
@@ -359,10 +359,10 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
         return true;
     }
 
-    // @Override
-    // public boolean doSupportBackpressure() {
-    // return true;
-    // }
+    @Override
+    public boolean doSupportBackpressure() {
+        return true;
+    }
 
     @Override
     public boolean doSupportS3() {

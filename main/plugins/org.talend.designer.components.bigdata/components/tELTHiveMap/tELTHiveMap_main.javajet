@@ -264,7 +264,7 @@
 				String getQueryColumnsSegments() {
 					return new StringBuilder()
         				<%for(String segment : queryColumnsSegments) {%>
-        				.append("<%=segment%>")
+        				.append("<%=segment.replaceAll("[\r\n]", " ")%>")
         				<%}%>
         				.toString();
 				}
