@@ -145,18 +145,15 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
         // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
         // SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT), kinesisNodeModuleGroups);
 
-        // Set<DistributionModuleGroup> kafkaAssemblyModuleGroups =
-        // MapR600SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups();
-        // Set<DistributionModuleGroup> kafkaAvroModuleGroups =
-        // MapR600SparkStreamingKafkaAvroModuleGroup.getModuleGroups();
-        // nodeModuleGroups.put(
-        // new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_INPUT_COMPONENT),
-        // kafkaAssemblyModuleGroups);
-        // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-        // SparkStreamingConstant.KAFKA_AVRO_INPUT_COMPONENT), kafkaAvroModuleGroups);
-        // nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-        // SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT),
-        // MapR600SparkStreamingKafkaClientModuleGroup.getModuleGroups());
+        Set<DistributionModuleGroup> kafkaAssemblyModuleGroups = MapR600SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups();
+        Set<DistributionModuleGroup> kafkaAvroModuleGroups = MapR600SparkStreamingKafkaAvroModuleGroup.getModuleGroups();
+        nodeModuleGroups.put(
+                new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_INPUT_COMPONENT),
+                kafkaAssemblyModuleGroups);
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.KAFKA_AVRO_INPUT_COMPONENT), kafkaAvroModuleGroups);
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT), MapR600SparkStreamingKafkaClientModuleGroup.getModuleGroups());
 
         // Spark MapR Streams
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
@@ -394,7 +391,7 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
 
     @Override
     public SparkStreamingKafkaVersion getSparkStreamingKafkaVersion(ESparkVersion sparkVersion) {
-        return SparkStreamingKafkaVersion.MAPR;
+        return SparkStreamingKafkaVersion.MAPR_KAFKA_0_9_NEW;
     }
 
     // Note :

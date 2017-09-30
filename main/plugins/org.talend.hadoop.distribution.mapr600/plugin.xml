@@ -968,7 +968,7 @@
         </libraryNeededGroup>
 
         <!-- Spark Kafka group MRREQUIRED -->
-        <!-- EMPTY since Mapr52 spark assembly contains the required kafka utils -->
+        <!-- EMPTY since Mapr600 spark assembly contains the required kafka utils -->
         <libraryNeededGroup
                 description="Spark Kafka assembly libraries for MapR 6.0.0 that are MRREQUIRED"
                 id="SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-MAPR600"
@@ -977,7 +977,7 @@
         </libraryNeededGroup>
         
         <!-- Spark Kafka Client group MRREQUIRED -->
-        <!-- EMPTY since Mapr52 spark assembly contains the required kafka clients -->
+        <!-- EMPTY since Mapr600 spark assembly contains the required kafka clients -->
         <libraryNeededGroup
                 description="Spark Kafka client libraries for MapR 6.0.0 that are MRREQUIRED"
                 id="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-MAPR600"
