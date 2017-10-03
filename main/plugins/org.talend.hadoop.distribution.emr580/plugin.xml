@@ -1342,7 +1342,7 @@
             context="plugin:org.talend.hadoop.distribution.emr580"
             id="httpclient-4.5.3.jar"
             name="httpclient-4.5.3.jar"
-            mvn_uri="mvn:org.talend.libraries/httpclient-4.5.3/6.3.0"/>
+            mvn_uri="mvn:org.talend.libraries/httpclient-4.5.3/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
