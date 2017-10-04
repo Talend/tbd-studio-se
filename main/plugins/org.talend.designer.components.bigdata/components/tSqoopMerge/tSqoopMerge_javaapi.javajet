@@ -46,6 +46,7 @@
     String mapRHadoopLogin = ElementParameterParser.getValue(node, "__HADOOP_LOGIN__");
 
     String fsDefalutName = "fs.default.name";
+    String driverClass = ElementParameterParser.getValue(node, "__DRIVER_CLASS__");
 	
 	boolean dieOnError = "true".equals(ElementParameterParser.getValue(node, "__DIE_ON_ERROR__"));
 	
@@ -61,7 +62,7 @@
         com.cloudera.sqoop.SqoopOptions needGenereateJarSqoopOptions_<%=cid%> = new com.cloudera.sqoop.SqoopOptions(configuration_<%=cid%>);
         needGenereateJarSqoopOptions_<%=cid%>.setConnectString(<%=connection%>); // __CONNECTION__
         needGenereateJarSqoopOptions_<%=cid%>.setUsername(<%=username%>);
-        
+        needGenereateJarSqoopOptions_<%=cid%>.setDriverClassName(<%=driverClass%>);//driver class name
         <%
         passwordFieldName = "__PASSWORD__";
         %>
