@@ -31,6 +31,7 @@
 	List<Map<String,String>> additionalList = (List<Map<String, String>>)ElementParameterParser.getObjectValue(node,"__ADDITIONAL_JAVA__");
 
 	String fsDefalutName = "fs.default.name";
+	String driverClass = ElementParameterParser.getValue(node, "__DRIVER_CLASS__");
 
 	boolean useBatchMode = "true".equals(ElementParameterParser.getValue(node, "__USE_BATCH_MODE__"));
 	boolean clearStagingTable = "true".equals(ElementParameterParser.getValue(node, "__CLEAR_STAGING_TABLE__"));
@@ -76,6 +77,7 @@
 %>
 	sqoopOptions_<%=cid%>.setExportDir(<%=exportDir%>);
 	sqoopOptions_<%=cid%>.setUsername(<%=username%>); // __USERNAME__
+	sqoopOptions_<%=cid%>.setDriverClassName(<%=driverClass%>);//driver class name
 	
 	<%if(!passwordStoredInFile || !sqoopDistrib.doJavaAPISupportStorePasswordInFile()) {%>
 		<%
