@@ -865,6 +865,7 @@
              <library id="avro-1.7.5.jar"/>
              <library id="commons-cli-1.2.jar"/>
              <library id="commons-collections-3.2.2.jar"/>
+             <library id="commons-codec-1.4.jar"/>
              <library id="commons-io-2.4.jar"/>
              <library id="commons-configuration-1.6.jar"/>
              <library id="commons-lang-2.6.jar"/>
