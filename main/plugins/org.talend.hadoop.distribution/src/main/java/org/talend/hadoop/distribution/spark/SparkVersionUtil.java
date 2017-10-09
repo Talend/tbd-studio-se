@@ -71,6 +71,9 @@ public class SparkVersionUtil {
         if ("SPARK_2_1_0".equals(version)) { //$NON-NLS-1$
             return ESparkVersion.SPARK_2_1;
         }
+        if ("SPARK_2_2_0".equals(version)) { //$NON-NLS-1$
+            return ESparkVersion.SPARK_2_2;
+        }
         return null;
     }
 

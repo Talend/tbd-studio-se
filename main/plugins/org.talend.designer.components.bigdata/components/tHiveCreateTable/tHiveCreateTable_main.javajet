@@ -305,6 +305,7 @@ if(likeTable) {
         if(!hiveDistrib.useCloudLauncher()) {
 %>
             try {
+				<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/SetQueryName.javajet"%>
                 stmt_<%=cid%>.execute(querySQL_<%=cid %>);
             } catch(java.sql.SQLException e_<%=cid%>) {
                 <%if(("true").equals(dieOnError)) {%>
@@ -648,6 +649,7 @@ String querySQL_<%=cid %> = "<%=createTableSQL.toString()%>";
     if(!hiveDistrib.useCloudLauncher()) {
 %>
 try {
+	<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/SetQueryName.javajet"%>
     stmt_<%=cid%>.execute(querySQL_<%=cid %>);
 } catch(java.sql.SQLException e_<%=cid%>) {
 <%

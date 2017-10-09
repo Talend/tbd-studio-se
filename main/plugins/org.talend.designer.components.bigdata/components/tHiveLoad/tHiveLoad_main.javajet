@@ -263,13 +263,12 @@ imports="
 
 %>
     <%@ include file="@{org.talend.designer.components.bigdata}/components/tHiveLoad/loadQueryGeneration.javajet"%>
-<%
+	<%
     if(!hiveDistrib.useCloudLauncher()) {
-%>
-
+    %>
         java.sql.Statement stmt_<%=cid %> = conn_<%=cid %>.createStatement();
-
         try {
+			<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/SetQueryName.javajet"%>
             stmt_<%=cid%>.execute(querySQL_<%=cid %>);
         } catch(java.sql.SQLException e_<%=cid%>) {
             <%if(("true").equals(dieOnError)) {

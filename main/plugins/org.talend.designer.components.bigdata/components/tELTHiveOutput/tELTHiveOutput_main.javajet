@@ -792,6 +792,7 @@ if(columnList != null && columnList.size()>0){
         }
         if (!hiveDistrib.useCloudLauncher()) {
 %>
+			<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/SetQueryName.javajet"%>
             stmt_<%=cid %>.execute(insertQuery_<%=cid %>);
 <%
         } else if(hiveDistrib.isExecutedThroughWebHCat()) {
@@ -814,6 +815,7 @@ if(columnList != null && columnList.size()>0){
         }
         if (!hiveDistrib.useCloudLauncher()) {
 %>
+			<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/SetQueryName.javajet"%>
             stmt_<%=cid %>.execute(overwriteQuery_<%=cid %>);
 
 <%

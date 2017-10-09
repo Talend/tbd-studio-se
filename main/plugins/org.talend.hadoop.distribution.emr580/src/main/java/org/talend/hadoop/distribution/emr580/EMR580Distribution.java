@@ -29,6 +29,7 @@ import org.talend.hadoop.distribution.component.HBaseComponent;
 import org.talend.hadoop.distribution.component.HCatalogComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
+import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
@@ -37,22 +38,39 @@ import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
+import org.talend.hadoop.distribution.constants.SparkBatchConstant;
+import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.emr.IAmazonEMRDistribution;
+import org.talend.hadoop.distribution.emr580.modulegroup.node.spark.EMR580SparkDynamoDBNodeModuleGroup;
+import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkbatch.EMR580SparkBatchParquetNodeModuleGroup;
+import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkbatch.EMR580SparkBatchS3NodeModuleGroup;
+import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkstreaming.EMR580SparkStreamingFlumeNodeModuleGroup;
+import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkstreaming.EMR580SparkStreamingKafkaAssemblyModuleGroup;
+import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkstreaming.EMR580SparkStreamingKafkaAvroModuleGroup;
+import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkstreaming.EMR580SparkStreamingKafkaClientModuleGroup;
+import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkstreaming.EMR580SparkStreamingKinesisNodeModuleGroup;
+import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkstreaming.EMR580SparkStreamingParquetNodeModuleGroup;
+import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkstreaming.EMR580SparkStreamingS3NodeModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.EMR580HBaseModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.EMR580HCatalogModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.EMR580HDFSModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.EMR580HiveModuleGroup;
+import org.talend.hadoop.distribution.emr580.modulegroup.EMR580HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.EMR580MapReduceModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.EMR580PigModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.EMR580PigOutputModuleGroup;
+import org.talend.hadoop.distribution.emr580.modulegroup.EMR580SparkBatchModuleGroup;
+import org.talend.hadoop.distribution.emr580.modulegroup.EMR580SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.EMR580SqoopModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.node.mr.EMR580MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.node.pigoutput.EMR580PigOutputNodeModuleGroup;
+import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
+import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
 @SuppressWarnings("nls")
 public class EMR580Distribution extends AbstractDistribution implements
 		HBaseComponent, HDFSComponent, MRComponent, PigComponent,
-		HCatalogComponent, HiveComponent, SqoopComponent,
+		HCatalogComponent, HiveComponent, HiveOnSparkComponent, SqoopComponent, SparkBatchComponent, SparkStreamingComponent,
 		IAmazonEMRDistribution {
 
 	public static final String VERSION = "EMR_5_8_0"; //$NON-NLS-1$
@@ -103,6 +121,7 @@ public class EMR580Distribution extends AbstractDistribution implements
 				EMR580HCatalogModuleGroup.getModuleGroups());
 		result.put(ComponentType.HDFS, EMR580HDFSModuleGroup.getModuleGroups());
 		result.put(ComponentType.HIVE, EMR580HiveModuleGroup.getModuleGroups());
+		result.put(ComponentType.HIVEONSPARK, EMR580HiveOnSparkModuleGroup.getModuleGroups());
 		result.put(ComponentType.MAPREDUCE,
 				EMR580MapReduceModuleGroup.getModuleGroups());
 		result.put(ComponentType.PIG, EMR580PigModuleGroup.getModuleGroups());
@@ -112,6 +131,8 @@ public class EMR580Distribution extends AbstractDistribution implements
 				EMR580SqoopModuleGroup.getModuleGroups());
 		result.put(ComponentType.HBASE,
 				EMR580HBaseModuleGroup.getModuleGroups());
+		result.put(ComponentType.SPARKBATCH, EMR580SparkBatchModuleGroup.getModuleGroups());
+        result.put(ComponentType.SPARKSTREAMING, EMR580SparkStreamingModuleGroup.getModuleGroups());
 
 		return result;
 	}
@@ -131,7 +152,64 @@ public class EMR580Distribution extends AbstractDistribution implements
 				PigOutputConstant.PIGSTORE_COMPONENT),
 				EMR580PigOutputNodeModuleGroup.getModuleGroups(distribution,
 						version));
+		
+		// Spark Batch Parquet nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
+                EMR580SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
+                EMR580SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
+        
+        // Spark Batch S3 nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.S3_CONFIGURATION_COMPONENT),
+                EMR580SparkBatchS3NodeModuleGroup.getModuleGroups(distribution, version));
+        
+        // DynamoDB nodes ...
+        Set<DistributionModuleGroup> dynamoDBNodeModuleGroups = EMR580SparkDynamoDBNodeModuleGroup.getModuleGroups(distribution,
+                version, "USE_EXISTING_CONNECTION == 'false'");
+        Set<DistributionModuleGroup> dynamoDBConfigurationModuleGroups = EMR580SparkDynamoDBNodeModuleGroup.getModuleGroups(
+                distribution, version, null);
+        // ... in Spark batch
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_INPUT_COMPONENT),
+                dynamoDBNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_OUTPUT_COMPONENT),
+                dynamoDBNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_CONFIGURATION_COMPONENT),
+                dynamoDBConfigurationModuleGroups);
 
+        // Spark Streaming Parquet nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_INPUT_COMPONENT),
+                EMR580SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_OUTPUT_COMPONENT),
+        		EMR580SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_STREAM_INPUT_COMPONENT),
+                EMR580SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
+
+        // Spark Streaming S3 nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.S3_CONFIGURATION_COMPONENT),
+        		EMR580SparkStreamingS3NodeModuleGroup.getModuleGroups(distribution, version));
+
+        // Spark Streaming Kinesis nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_COMPONENT),
+        		EMR580SparkStreamingKinesisNodeModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_AVRO_COMPONENT),
+        		EMR580SparkStreamingKinesisNodeModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT),
+        		EMR580SparkStreamingKinesisNodeModuleGroup.getModuleGroups(distribution, version));
+
+        // Spark Streaming Kafka nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_INPUT_COMPONENT),
+                EMR580SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_AVRO_INPUT_COMPONENT),
+                EMR580SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT),
+                EMR580SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(distribution, version));
+
+        // Spark Streaming Flume nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.FLUME_INPUT_COMPONENT),
+        		EMR580SparkStreamingFlumeNodeModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.FLUME_OUTPUT_COMPONENT),
+        		EMR580SparkStreamingFlumeNodeModuleGroup.getModuleGroups(distribution, version));
+        
 		return result;
 	}
 
@@ -198,6 +276,11 @@ public class EMR580Distribution extends AbstractDistribution implements
 	public String getYarnApplicationClasspath() {
 		return YARN_APPLICATION_CLASSPATH;
 	}
+	
+	@Override
+	public String generateSparkJarsPaths(List<String> commandLineJarsPaths) {
+        return SparkClassPathUtils.generateSparkJarsPaths(commandLineJarsPaths, SPARK_MODULE_GROUP_NAME);
+    }
 
 	@Override
 	public boolean doSupportHCatalog() {
@@ -278,6 +361,18 @@ public class EMR580Distribution extends AbstractDistribution implements
 	public boolean doSupportStoreAsParquet() {
 		return true;
 	}
+	
+	@Override
+    public Set<ESparkVersion> getSparkVersions() {
+        Set<ESparkVersion> version = new HashSet<>();
+        version.add(ESparkVersion.SPARK_2_2);
+        return version;
+    }
+	
+    @Override
+    public boolean isExecutedThroughSparkJobServer() {
+        return false;
+    }
 
 	@Override
 	public ComponentCondition getDisplayCondition(ComponentType componentType) {
@@ -318,4 +413,44 @@ public class EMR580Distribution extends AbstractDistribution implements
 	public boolean doSupportParquetOutput() {
 		return true;
 	}
+
+    @Override
+    public boolean doSupportSparkStandaloneMode() {
+        return false;
+    }
+
+    @Override
+    public boolean doSupportSparkYarnClientMode() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportDynamicMemoryAllocation() {
+        return false;
+    }
+
+    @Override
+    public boolean doSupportCheckpointing() {
+        return false;
+    }
+
+    @Override
+    public boolean doSupportBackpressure() {
+        return false;
+    }
+    
+    @Override
+    public boolean doSupportHDFSEncryption() {
+        return true;
+    }
+    
+    @Override
+    public SparkStreamingKafkaVersion getSparkStreamingKafkaVersion(ESparkVersion version) {
+        return SparkStreamingKafkaVersion.KAFKA_0_10;
+    }
+
+    @Override
+    public boolean doImportDynamoDBDependencies() {
+        return true;
+    }
 }

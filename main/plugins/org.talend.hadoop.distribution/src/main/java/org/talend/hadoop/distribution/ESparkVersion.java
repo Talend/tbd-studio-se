@@ -25,7 +25,8 @@ public enum ESparkVersion {
     SPARK_1_5("SPARK_1_5_0", "1.5"), //$NON-NLS-1$ //$NON-NLS-2$
     SPARK_1_6("SPARK_1_6_0", "1.6"), //$NON-NLS-1$ //$NON-NLS-2$
     SPARK_2_0("SPARK_2_0_0", "2.0"), //$NON-NLS-1$ //$NON-NLS-2$
-    SPARK_2_1("SPARK_2_1_0", "2.1"); //$NON-NLS-1$ //$NON-NLS-2$
+    SPARK_2_1("SPARK_2_1_0", "2.1"), //$NON-NLS-1$ //$NON-NLS-2$
+    SPARK_2_2("SPARK_2_2_0", "2.2"); //$NON-NLS-1$ //$NON-NLS-2$
 
     private String sparkVersion;
 

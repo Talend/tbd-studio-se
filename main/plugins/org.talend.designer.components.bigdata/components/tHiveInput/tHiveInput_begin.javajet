@@ -709,6 +709,13 @@ imports="
 			// End of parquet format handling.
 
 			super.createStatement(node);
+			%>
+			try {
+				<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/SetQueryName.javajet"%>
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			<%
 		}
 
 	}//end class

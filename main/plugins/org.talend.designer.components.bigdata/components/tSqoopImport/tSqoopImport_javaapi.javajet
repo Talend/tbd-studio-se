@@ -71,6 +71,7 @@
 	String split = ElementParameterParser.getValue(node,"__SPLIT__");
 	
 	String fsDefalutName = "fs.default.name";
+    String driverClass = ElementParameterParser.getValue(node, "__DRIVER_CLASS__");
 	
 	boolean dieOnError = "true".equals(ElementParameterParser.getValue(node, "__DIE_ON_ERROR__"));
 	String passwordFieldName = "";
@@ -91,6 +92,7 @@
 	com.cloudera.sqoop.SqoopOptions sqoopOptions_<%=cid%> = new com.cloudera.sqoop.SqoopOptions(configuration_<%=cid%>);
 	sqoopOptions_<%=cid%>.setConnectString(<%=connection%>); // __CONNECTION__
 	sqoopOptions_<%=cid%>.setUsername(<%=username%>); // __USERNAME__
+	sqoopOptions_<%=cid%>.setDriverClassName(<%=driverClass%>);//driver class name
 	
    <%if(!passwordStoredInFile || !sqoopDistrib.doJavaAPISupportStorePasswordInFile()) {%>
 		<%
