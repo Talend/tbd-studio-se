@@ -106,7 +106,7 @@ public class MapR600DistributionTest {
         assertTrue(distribution instanceof MapRStreamsComponent);
         assertTrue(((MapRStreamsComponent) distribution).canCreateMapRStream());
         assertEquals(MapR600Distribution.MAPR_STREAMS_JAR_PATH, ((MapRStreamsComponent) distribution).getMapRStreamsJarPath());
-        assertEquals(SparkStreamingKafkaVersion.MAPR_KAFKA_0_9_NEW,
+        assertEquals(SparkStreamingKafkaVersion.MAPR_600_KAFKA,
                 ((SparkStreamingComponent) distribution).getSparkStreamingKafkaVersion(ESparkVersion.SPARK_2_1));
         assertTrue(distribution.doSupportCreateServiceConnection());
         assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);

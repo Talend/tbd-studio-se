@@ -391,7 +391,7 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
 
     @Override
     public SparkStreamingKafkaVersion getSparkStreamingKafkaVersion(ESparkVersion sparkVersion) {
-        return SparkStreamingKafkaVersion.MAPR_KAFKA_0_9_NEW;
+        return SparkStreamingKafkaVersion.MAPR_600_KAFKA;
     }
 
     // Note :

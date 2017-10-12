@@ -29,6 +29,7 @@ import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
+import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.mapr510.MapR510Distribution;
 import org.talend.hadoop.distribution.test.AbstractDistributionTest;
 
@@ -106,6 +107,7 @@ public class MapR510DistributionTest extends AbstractDistributionTest {
         assertTrue(distribution instanceof MapRStreamsComponent);
         assertFalse(((MapRStreamsComponent) distribution).canCreateMapRStream());
         assertEquals(MapR510Distribution.MAPR_STREAMS_JAR_PATH, ((MapRStreamsComponent) distribution).getMapRStreamsJarPath());
+        assertEquals(SparkStreamingKafkaVersion.MAPR_5X0_KAFKA, ((SparkStreamingComponent) distribution).getSparkStreamingKafkaVersion(ESparkVersion.SPARK_1_5));
         assertTrue(distribution.doSupportCreateServiceConnection());
         assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
     }
