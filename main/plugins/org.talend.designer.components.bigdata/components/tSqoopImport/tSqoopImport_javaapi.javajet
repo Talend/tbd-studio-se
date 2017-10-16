@@ -71,7 +71,7 @@
 	String split = ElementParameterParser.getValue(node,"__SPLIT__");
 	
 	String fsDefalutName = "fs.default.name";
-    String driverClass = ElementParameterParser.getValue(node, "__DRIVER_CLASS__");
+	String driverClass = ElementParameterParser.getValue(node, "__DRIVER_CLASS__");
 	
 	boolean dieOnError = "true".equals(ElementParameterParser.getValue(node, "__DIE_ON_ERROR__"));
 	String passwordFieldName = "";

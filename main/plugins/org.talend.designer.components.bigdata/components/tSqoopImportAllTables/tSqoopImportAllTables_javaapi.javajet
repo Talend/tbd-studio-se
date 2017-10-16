@@ -56,6 +56,7 @@
     String mapRHadoopLogin = ElementParameterParser.getValue(node, "__HADOOP_LOGIN__");
 
 	String fsDefalutName = "fs.default.name";
+	String driverClass = ElementParameterParser.getValue(node, "__DRIVER_CLASS__");
 
 	String passwordFieldName = "";
 	
@@ -68,6 +69,7 @@
 	
 	sqoopOptions_<%=cid%>.setConnectString(<%=connection%>); // __CONNECTION__
 	sqoopOptions_<%=cid%>.setUsername(<%=username%>); // __USERNAME__
+	sqoopOptions_<%=cid%>.setDriverClassName(<%=driverClass%>);//driver class name
 	
    <%if(!passwordStoredInFile || !sqoopDistrib.doJavaAPISupportStorePasswordInFile()) {%>
 		<%

@@ -750,6 +750,13 @@
             mvn_uri="mvn:org.talend.libraries/snappy-0.2/6.0.0">
         </libraryNeeded>
 
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5100"
+            id="snappy-0.2.jar"
+            name="snappy-0.2.jar"
+            mvn_uri="mvn:org.talend.libraries/snappy-0.2/6.0.0">
+        </libraryNeeded>
+
         <!-- Spark2 libraries -->
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="akka-actor.jar" name="akka-actor.jar" mvn_uri="mvn:org.talend.libraries/akka-actor/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="antlr-2.7.7.jar" name="antlr-2.7.7.jar" mvn_uri="mvn:org.talend.libraries/antlr-2.7.7/6.0.0"/>
