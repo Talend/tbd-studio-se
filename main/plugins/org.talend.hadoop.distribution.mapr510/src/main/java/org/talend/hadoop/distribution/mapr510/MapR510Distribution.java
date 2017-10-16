@@ -42,6 +42,7 @@ import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.mapr.IMapRDistribution;
+import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510HBaseModuleGroup;
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510HCatalogModuleGroup;
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510HDFSModuleGroup;
@@ -369,6 +370,11 @@ public class MapR510Distribution extends AbstractMapRDistribution implements HDF
     @Override
     public String getMapRStreamsJarPath() {
         return MAPR_STREAMS_JAR_PATH;
+    }
+    
+    @Override
+    public SparkStreamingKafkaVersion getSparkStreamingKafkaVersion(ESparkVersion sparkVersion) {
+        return SparkStreamingKafkaVersion.MAPR_5X0_KAFKA;
     }
 
     // Note :

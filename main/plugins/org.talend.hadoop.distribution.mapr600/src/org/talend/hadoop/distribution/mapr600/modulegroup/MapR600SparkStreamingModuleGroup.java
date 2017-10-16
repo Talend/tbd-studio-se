@@ -31,6 +31,7 @@ public class MapR600SparkStreamingModuleGroup {
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         hs.add(new DistributionModuleGroup(MapR600Constant.SPARK_MODULE_GROUP.getModuleName(), false, condition));
+        hs.add(new DistributionModuleGroup(MapR600Constant.SPARK_YARN_CLUSTER_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
         hs.add(new DistributionModuleGroup(MapR600Constant.HDFS_MODULE_GROUP.getModuleName(), false, condition));
         hs.add(new DistributionModuleGroup(MapR600Constant.MAPREDUCE_MODULE_GROUP.getModuleName(), false, condition));
         return hs;

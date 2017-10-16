@@ -426,17 +426,17 @@ public class EMR580Distribution extends AbstractDistribution implements
 
     @Override
     public boolean doSupportDynamicMemoryAllocation() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean doSupportCheckpointing() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean doSupportBackpressure() {
-        return false;
+        return true;
     }
     
     @Override

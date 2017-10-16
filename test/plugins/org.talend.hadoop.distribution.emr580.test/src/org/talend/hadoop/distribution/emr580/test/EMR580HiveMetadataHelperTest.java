@@ -25,12 +25,12 @@ public class EMR580HiveMetadataHelperTest extends AbstractVersionTest4HiveMetada
     }
 
     @Test
-    public void testHiveMode_EMR500_Standalone_Only() {
+    public void testHiveMode_EMR580_Standalone_Only() {
         doTestGetHiveModesDisplay(getDistributionVersion(), HIVE_MODE_DISPLAY_STANDALONE_ONLY);
     }
 
     @Test
-    public void testHiveServer_EMR500_Server2_Only() {
+    public void testHiveServer_EMR580_Server2_Only() {
         doTestGetHiveServersDisplay(getDistributionVersion(), HIVE_SERVER_DISPLAY_SERVER2_ONLY);
     }
 

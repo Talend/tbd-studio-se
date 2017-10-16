@@ -88,23 +88,26 @@ public class MapR600DistributionTest {
         assertFalse(((SparkBatchComponent) distribution).isExecutedThroughSparkJobServer());
         assertTrue(((SparkBatchComponent) distribution).doSupportSparkStandaloneMode());
         assertTrue(((SparkBatchComponent) distribution).doSupportSparkYarnClientMode());
-        // assertTrue(distribution instanceof SparkStreamingComponent);
-        // assertFalse(((SparkStreamingComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_2_0));
-        // assertTrue(((SparkStreamingComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_1_6));
-        // assertFalse(((SparkStreamingComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_1_5));
-        // assertFalse(((SparkStreamingComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_1_4));
-        // assertFalse(((SparkStreamingComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_1_3));
-        // assertTrue(((SparkStreamingComponent) distribution).doSupportSparkStandaloneMode());
-        // assertTrue(((SparkStreamingComponent) distribution).doSupportSparkYarnClientMode());
+        assertTrue(((SparkBatchComponent) distribution).doSupportSparkYarnClusterMode());
+        assertTrue(distribution instanceof SparkStreamingComponent);
+        assertTrue(((SparkStreamingComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_2_1));
+        assertFalse(((SparkStreamingComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_2_0));
+        assertFalse(((SparkStreamingComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_1_6));
+        assertFalse(((SparkStreamingComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_1_5));
+        assertFalse(((SparkStreamingComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_1_4));
+        assertFalse(((SparkStreamingComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_1_3));
+        assertTrue(((SparkStreamingComponent) distribution).doSupportSparkStandaloneMode());
+        assertTrue(((SparkStreamingComponent) distribution).doSupportSparkYarnClientMode());
+        assertTrue(((SparkStreamingComponent) distribution).doSupportSparkYarnClusterMode());
         // assertTrue(distribution instanceof HCatalogComponent);
         // assertTrue(distribution instanceof ImpalaComponent);
-        // assertTrue(((SparkStreamingComponent) distribution).doSupportCheckpointing());
-        // assertTrue(((SparkStreamingComponent) distribution).doSupportBackpressure());
+        assertTrue(((SparkStreamingComponent) distribution).doSupportCheckpointing());
+        assertTrue(((SparkStreamingComponent) distribution).doSupportBackpressure());
         assertTrue(distribution instanceof MapRStreamsComponent);
         assertTrue(((MapRStreamsComponent) distribution).canCreateMapRStream());
         assertEquals(MapR600Distribution.MAPR_STREAMS_JAR_PATH, ((MapRStreamsComponent) distribution).getMapRStreamsJarPath());
-        // assertEquals(SparkStreamingKafkaVersion.MAPR,
-        // ((SparkStreamingComponent) distribution).getSparkStreamingKafkaVersion(ESparkVersion.SPARK_1_6));
+        assertEquals(SparkStreamingKafkaVersion.MAPR_600_KAFKA,
+                ((SparkStreamingComponent) distribution).getSparkStreamingKafkaVersion(ESparkVersion.SPARK_2_1));
         assertTrue(distribution.doSupportCreateServiceConnection());
         assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
     }

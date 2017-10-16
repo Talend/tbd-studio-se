@@ -31,6 +31,7 @@ public class MapR600SparkStreamingMapRStreamsAssemblyModuleGroup {
                 new SparkStreamingLinkedNodeCondition(EHadoopDistributions.MAPR.getName(), MapR600Distribution.VERSION,
                         SparkStreamingConstant.MAPRSTREAMS_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition());
         hs.add(dmg);
+        hs.addAll(MapR600SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups());
         return hs;
     }
 }

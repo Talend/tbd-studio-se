@@ -12,7 +12,7 @@
     <!--provide interface="org.talend.hadoop.distribution.component.PigComponent"/-->
     <!--provide interface="org.talend.hadoop.distribution.component.SqoopComponent"/-->
     <provide interface="org.talend.hadoop.distribution.component.SparkBatchComponent"/>
-    <!--provide interface="org.talend.hadoop.distribution.component.SparkStreamingComponent"/-->
+    <provide interface="org.talend.hadoop.distribution.component.SparkStreamingComponent"/>
     <!--provide interface="org.talend.hadoop.distribution.component.ImpalaComponent"/-->
     <provide interface="org.talend.hadoop.distribution.component.MapRStreamsComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.MapRDBComponent"/>
