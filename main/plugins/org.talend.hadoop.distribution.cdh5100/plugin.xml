@@ -1414,6 +1414,7 @@
                description="The latest Spark libraries for CDH 5.10 spark 2 that are MRREQUIRED"
                 id="SPARK-LIB-MRREQUIRED-CDH_5_10_SPARK2"
                 name="SPARK-LIB-MRREQUIRED-CDH_5_10_SPARK2">
+            <library id="avro-mapred-1.7.6-cdh5.10.1-hadoop2"/>
         </libraryNeededGroup>
 
         <!-- Spark DynamoDB group MRREQUIRED -->
