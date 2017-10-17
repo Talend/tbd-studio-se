@@ -1251,8 +1251,8 @@
             <library id="aopalliance-repackaged-2.4.0-b34.jar"/>
             <library id="apache-log4j-extras-1.2.17.jar"/>
             <library id="arpack_combined_all-0.1.jar"/>
-            <library id="avro-1.7.6-cdh5.8.1.jar"/>
-            <library id="avro-ipc-1.7.6-cdh5.8.1.jar"/>
+            <library id="avro-1.7.6-cdh5.10.1.jar"/>
+            <library id="avro-ipc-1.7.6-cdh5.10.1.jar"/>
             <library id="avro-mapred-1.7.6-cdh5.10.1-hadoop2.jar"/>
             <library id="blas-0.8.jar"/>
             <library id="bonecp-0.7.1.jar"/>
@@ -1421,6 +1421,7 @@
                description="The latest Spark libraries for CDH 5.10 spark 2 that are MRREQUIRED"
                 id="SPARK-LIB-MRREQUIRED-CDH_5_10_SPARK2"
                 name="SPARK-LIB-MRREQUIRED-CDH_5_10_SPARK2">
+            <library id="avro-mapred-1.7.6-cdh5.10.1-hadoop2"/>
         </libraryNeededGroup>
 
         <!-- Spark DynamoDB group MRREQUIRED -->
