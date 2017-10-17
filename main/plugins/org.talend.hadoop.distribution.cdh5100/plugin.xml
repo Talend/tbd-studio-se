@@ -329,7 +329,7 @@
         <!-- Third parties libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5100"
-            id="avro-1.7.6-cdh5.10.1"
+            id="avro-1.7.6-cdh5.10.1.jar"
             name="avro-1.7.6-cdh5.10.1.jar"
             mvn_uri="mvn:org.talend.libraries/avro-1.7.6-cdh5.10.1/6.1.0">
         </libraryNeeded>
@@ -524,9 +524,8 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5100"
-            id="avro-ipc-1.7.6-cdh5.10"
+            id="avro-ipc-1.7.6-cdh5.10.1.jar"
             name="avro-ipc-1.7.6-cdh5.10.1.jar"
-            uripath="platform:/plugin/org.talend.libraries.apache/lib/avro-ipc-1.7.6-cdh5.10.1.jar"
             mvn_uri="mvn:org.talend.libraries/avro-ipc-1.7.6-cdh5.10.1/6.1.0">
         </libraryNeeded>
 
@@ -907,7 +906,7 @@
              <library id="commons-lang-2.6.jar" />
              <library id="commons-cli-1.2.jar" />
              <library id="commons-collections-3.2.2.jar" />
-             <library id="avro-1.7.6-cdh5.10.1" />
+             <library id="avro-1.7.6-cdh5.10.1.jar" />
              <library id="protobuf-java-2.5.0.jar" />
              <library id="slf4j-api-1.7.5.jar" />
              <library id="slf4j-log4j12-1.7.5.jar" />
@@ -957,7 +956,7 @@
              <library id="commons-cli-1.2.jar" />
              <library id="commons-collections-3.2.2.jar" />
              <library id="commons-codec-1.9.jar" /> <!-- This jar is required for HDFS SSL connection-->
-             <library id="avro-1.7.6-cdh5.10.1" />
+             <library id="avro-1.7.6-cdh5.10.1.jar" />
              <library id="guava-12.0.1.jar" />
              <library id="protobuf-java-2.5.0.jar" />
              <library id="slf4j-api-1.7.5.jar" />
@@ -1095,7 +1094,7 @@
                 description="Pig Avro libraries for CDH 5.10"
                 id="PIG-AVRO-LIB-CDH_5_10"
                 name="PIG-AVRO-LIB-CDH_5_10">
-            <library id="avro-1.7.6-cdh5.10.1" />
+            <library id="avro-1.7.6-cdh5.10.1.jar" />
             <library id="commons-io-2.4.jar"/>
             <library id="piggybank-cdh5.4.jar"/><!-- Where it is defined??? -->
         </libraryNeededGroup>
@@ -1492,7 +1491,7 @@
             <library id="spark-streaming-flume-sink_2.10-1.6.0-cdh5.10.1"/>
             <library id="flume-ng-sdk-1.6.0-cdh5.10.1"/>
             <library id="flume-ng-core-1.6.0-cdh5.10.1"/>
-            <library id="avro-ipc-1.7.6-cdh5.10.1"/>
+            <library id="avro-ipc-1.7.6-cdh5.10.1.jar"/>
         </libraryNeededGroup>
 
         <!-- Spark Kafka group MRREQUIRED -->
@@ -1539,7 +1538,7 @@
                 description="Spark Kafka Avro libraries for CDH 5.10 that are MRREQUIRED"
                 id="SPARK-KAFKA-AVRO-LIB-MRREQUIRED-CDH_5_10"
                 name="SPARK-KAFKA-AVRO-LIB-MRREQUIRED-CDH_5_10">
-            <library id="avro-1.7.6-cdh5.10.1"/>
+            <library id="avro-1.7.6-cdh5.10.1.jar"/>
             <library id="jackson-mapper-asl-1.8.8.jar" />
             <library id="jackson-core-asl-1.8.8.jar" />
         </libraryNeededGroup>
