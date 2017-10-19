@@ -85,13 +85,13 @@ public class Altus10Distribution extends AbstractDistribution implements SparkBa
                 dynamoDBNodeModuleGroups);
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_OUTPUT_COMPONENT),
                 dynamoDBNodeModuleGroups);
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_CONFIGURATION_COMPONENT),
-                dynamoDBConfigurationModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
+                SparkBatchConstant.DYNAMODB_CONFIGURATION_COMPONENT), dynamoDBConfigurationModuleGroups);
         // ... in Spark streaming
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_INPUT_COMPONENT),
-                dynamoDBNodeModuleGroups);
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_OUTPUT_COMPONENT),
-                dynamoDBNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.DYNAMODB_INPUT_COMPONENT), dynamoDBNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.DYNAMODB_OUTPUT_COMPONENT), dynamoDBNodeModuleGroups);
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.DYNAMODB_CONFIGURATION_COMPONENT), dynamoDBConfigurationModuleGroups);
         return result;
@@ -225,25 +225,9 @@ public class Altus10Distribution extends AbstractDistribution implements SparkBa
     public boolean doSupportSparkYarnClusterMode() {
         return true;
     }
-
+    
     @Override
     public boolean doImportDynamoDBDependencies() {
         return true;
     }
-
-    // Note :
-    // Azure Blob & Datalake support have been disabled for now on this distribution
-    // New versions of this distribution should be tested for Azure support and
-    // the changes backported to all earlier versions
-    @Override
-    public boolean doSupportAzureBlobStorage() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportAzureDataLakeStorage() {
-        return false;
-    }
-    // End
-
 }

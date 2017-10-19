@@ -40,7 +40,6 @@ public class CDH5100SparkBatchModuleGroupTest {
 
         Set<String> hs3 = new HashSet<>();
         hs3.add("(SPARK_LOCAL_MODE=='false') AND (SUPPORTED_SPARK_VERSION=='SPARK_1_6_0')");//$NON-NLS-1$
-        hs3.add("(SPARK_LOCAL_MODE=='false') AND (SUPPORTED_SPARK_VERSION=='SPARK_2_1_0')");//$NON-NLS-1$
         results.put(CDH5100Constant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), hs3);
 
         Set<String> hs4 = new HashSet<>();
@@ -64,6 +63,10 @@ public class CDH5100SparkBatchModuleGroupTest {
         Set<String> hs8 = new HashSet<>();
         hs8.add("(USE_CLOUDERA_NAVIGATOR=='true')");//$NON-NLS-1$
         results.put(CDH5100Constant.TALEND_CLOUDERA_CDH_5_10_NAVIGATOR.getModuleName(), hs8);
+
+        Set<String> hs9 = new HashSet<>();
+        hs9.add("(SPARK_LOCAL_MODE=='false') AND (SUPPORTED_SPARK_VERSION=='SPARK_2_1_0')");//$NON-NLS-1$
+        results.put(CDH5100Constant.SPARK2_MRREQUIRED_MODULE_GROUP.getModuleName(), hs9);
 
         Set<DistributionModuleGroup> moduleGroups = CDH5100SparkBatchModuleGroup.getModuleGroups();
         assertEquals(11, moduleGroups.size());

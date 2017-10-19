@@ -1285,19 +1285,6 @@
             <library id="parquet-avro-emr500-latest"/>
         </libraryNeededGroup>
         
-        <!-- Spark Azure group MRREQUIRED 
-             Azure Blob & Datalake support have been disabled for now on this distribution
-             New versions of this distribution should be tested for Azure support and
-             the changes backported to all earlier versions
-        <libraryNeededGroup
-                description="Spark Azure libraries for CDH 5.8 that are MRREQUIRED"
-                id="SPARK-AZURE-LIB-MRREQUIRED-CDH_5_8"
-                name="SPARK-AZURE-LIB-MRREQUIRED-CDH_5_8">
-                <library id="azure-storage-2.2.0"/>
-                <library id="hadoop-azure-2.7.4"/>
-                <library id="jetty-util-6.1.26"/>
-        </libraryNeededGroup> -->
-        
     </extension>
     
     <extension

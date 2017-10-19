@@ -2,7 +2,7 @@
 <feature
       id="org.talend.bigdata.se.test.feature"
       label="BigData SE Test Feature"
-      version="6.5.0.qualifier">
+      version="6.4.2.qualifier">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -78,14 +78,6 @@
          version="0.0.0"
          fragment="true"
          unpack="false"/>
-
-   <plugin
-         id="org.talend.hadoop.distribution.mapr600.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>         
 
    <plugin
          id="org.talend.hadoop.distribution.cdh4mr1.test"
@@ -184,14 +176,6 @@
 
    <plugin
          id="org.talend.hadoop.distribution.emr550.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
-         
-   <plugin
-         id="org.talend.hadoop.distribution.emr580.test"
          download-size="0"
          install-size="0"
          version="0.0.0"
