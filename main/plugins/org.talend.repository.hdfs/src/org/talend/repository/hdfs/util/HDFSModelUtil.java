@@ -49,7 +49,7 @@ public class HDFSModelUtil {
     public static HDFSConnectionBean convert2HDFSConnectionBean(HDFSConnection connection) {
         ContextType contextType = null;
         if (connection.isContextMode()) {
-            contextType = ConnectionContextHelper.getContextTypeForContextMode(connection, true);
+            contextType = ConnectionContextHelper.getContextTypeForContextMode(connection);
         }
         HDFSConnectionBean bean = new HDFSConnectionBean();
         bean.setContextType(contextType);

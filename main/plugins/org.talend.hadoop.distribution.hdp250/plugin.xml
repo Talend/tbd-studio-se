@@ -74,22 +74,6 @@
             mvn_uri="mvn:org.talend.libraries/hadoop-yarn-common-2.7.3.2.5.0.0-1245/6.3.0">
         </libraryNeeded>
         
-        <!-- Azure libraries -->
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdp250"
-            id="azure-storage-2.2.0"
-            name="azure-storage-2.2.0.jar"
-            mvn_uri="mvn:org.talend.libraries/azure-storage-2.2.0/6.0.0">
-        </libraryNeeded>
-        
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdp250"
-            id="hadoop-azure-2.7.4"
-            name="hadoop-azure-2.7.4.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-azure-2.7.4/6.0.0">
-        </libraryNeeded>
-        <!-- Azure libraries -->
-
         <!-- Map/Reduce libraries -->                
         
         <!-- HBase libraries -->
@@ -990,16 +974,6 @@
              <library id="snappy-java-1.0.4.1.jar"/>
         </libraryNeededGroup>
         
-        <!-- Spark Azure group MRREQUIRED -->
-        <libraryNeededGroup
-                description="Spark Azure libraries for HDP 2.5 that are MRREQUIRED"
-                id="SPARK-AZURE-LIB-MRREQUIRED-HDP_2_5"
-                name="SPARK-AZURE-LIB-MRREQUIRED-HDP_2_5">
-                <library id="azure-storage-2.2.0"/>
-                <library id="hadoop-azure-2.7.4"/>
-	            <library id="jetty-util-6.1.26.hwx.jar"/>
-        </libraryNeededGroup>
-
         <!-- Spark S3 group MRREQUIRED -->
         <libraryNeededGroup
                 description="Spark S3 libraries for HDP 2.5 that are MRREQUIRED"

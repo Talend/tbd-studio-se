@@ -43,7 +43,7 @@ public class CDH5100SparkBatchModuleGroup {
         hs.add(new DistributionModuleGroup(CDH5100Constant.SPARK_MODULE_GROUP.getModuleName(), false, condition));
         hs.add(new DistributionModuleGroup(CDH5100Constant.SPARK2_MODULE_GROUP.getModuleName(), false, conditionSpark2_1));
         hs.add(new DistributionModuleGroup(CDH5100Constant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
-        hs.add(new DistributionModuleGroup(CDH5100Constant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), true, conditionSpark2_1));
+        hs.add(new DistributionModuleGroup(CDH5100Constant.SPARK2_MRREQUIRED_MODULE_GROUP.getModuleName(), true, conditionSpark2_1));
         hs.add(new DistributionModuleGroup(CDH5100Constant.HDFS_MODULE_GROUP_SPARK1_6.getModuleName(), false, condition));
         hs.add(new DistributionModuleGroup(CDH5100Constant.HDFS_MODULE_GROUP_SPARK2_1.getModuleName(), false, conditionSpark2_1));
         hs.add(new DistributionModuleGroup(CDH5100Constant.HDFS_MODULE_GROUP_COMMON.getModuleName(), false, condition));

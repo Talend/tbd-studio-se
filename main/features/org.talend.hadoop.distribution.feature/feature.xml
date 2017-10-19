@@ -2,7 +2,7 @@
 <feature
       id="org.talend.hadoop.distribution.feature"
       label="Talend Hadoop distributions Feature"
-      version="6.5.0.qualifier"
+      version="6.4.2.qualifier"
       provider-name=".Talend SA.">
 
    <description url="http://www.talend.com/online/featuresdescription.html#hadoop-distribution">
@@ -107,13 +107,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.talend.hadoop.distribution.cdh5x"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.talend.hadoop.distribution.cdh580spark2"
          download-size="0"
          install-size="0"
@@ -185,13 +178,6 @@
 
    <plugin
          id="org.talend.hadoop.distribution.emr550"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-         
-   <plugin
-         id="org.talend.hadoop.distribution.emr580"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -353,13 +339,6 @@
 
    <plugin
          id="org.talend.hadoop.distribution.mapr520"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.talend.hadoop.distribution.mapr600"
          download-size="0"
          install-size="0"
          version="0.0.0"

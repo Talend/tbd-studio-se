@@ -39,7 +39,6 @@ import org.talend.hadoop.distribution.cdh580.modulegroup.CDH580SqoopModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.node.mr.CDH580MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.node.pigoutput.CDH580PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.node.sparkbatch.CDH580GraphFramesNodeModuleGroup;
-import org.talend.hadoop.distribution.cdh580.modulegroup.node.sparkbatch.CDH580SparkBatchAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.node.sparkbatch.CDH580SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.node.sparkbatch.CDH580SparkBatchS3NodeModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.node.sparkstreaming.CDH580SparkStreamingFlumeNodeModuleGroup;
@@ -110,13 +109,6 @@ public class CDH580Distribution extends AbstractDistribution implements IClouder
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
         nodeModuleGroups = new HashMap<>();
 
-        // Azure
-        nodeModuleGroups.put(
-                new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT),
-                CDH580SparkBatchAzureNodeModuleGroup.getModuleGroups(distribution, version));
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), 
-                CDH580SparkBatchAzureNodeModuleGroup.getModuleGroups(distribution, version));
-        
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
                 CDH580MRS3NodeModuleGroup.getModuleGroups(distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),
@@ -411,13 +403,5 @@ public class CDH580Distribution extends AbstractDistribution implements IClouder
         return true;
     }
 
-    @Override
-    public boolean doSupportAzureBlobStorage() {
-        return true;
-    }
 
-    @Override
-    public boolean doSupportAzureDataLakeStorage() {
-        return false;
-    }
 }

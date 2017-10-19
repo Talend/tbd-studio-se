@@ -22,20 +22,15 @@ import java.util.List;
 import java.util.Map;
 
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.Constants;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
-import org.osgi.framework.ServiceEvent;
-import org.osgi.framework.ServiceListener;
 import org.osgi.framework.ServiceReference;
 import org.talend.commons.exception.CommonExceptionHandler;
-import org.talend.commons.exception.ExceptionHandler;
 import org.talend.core.runtime.hd.IDistributionsManager;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionFactory;
 import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.constants.Constant;
-import org.talend.hadoop.distribution.dynamic.IDynamicDistribution;
 import org.talend.hadoop.distribution.model.DistributionBean;
 import org.talend.hadoop.distribution.model.DistributionVersion;
 
@@ -45,90 +40,15 @@ public final class DistributionsManager implements IDistributionsManager {
 
     private final ComponentType componentType;
 
-    private Map<String, DistributionBean> distributionsMap;
-
-    private DistributionBean[] distributionsCache;
-
-    private ServiceListener serviceListener;
-
-    static {
-        try {
-            BundleContext bc = getBundleContext();
-            Collection<ServiceReference<IDynamicDistribution>> serviceReferences = bc
-                    .getServiceReferences(IDynamicDistribution.class, null);
-            if (serviceReferences != null && !serviceReferences.isEmpty()) {
-                for (ServiceReference<IDynamicDistribution> sr : serviceReferences) {
-                    IDynamicDistribution service = bc.getService(sr);
-                    try {
-                        service.regist();
-                    } catch (Exception e) {
-                        ExceptionHandler.process(e);
-                    }
-                }
-            }
-        } catch (Exception e) {
-            ExceptionHandler.process(e);
-        }
-    }
+    private DistributionBean[] distributionBeans;
 
     /**
      * Service can't be null. if the service is HadoopComponent directly, the componentType will be null.
      */
     public DistributionsManager(String serviceName, ComponentType componentType) {
-        this(serviceName, componentType, false);
-    }
-
-    public DistributionsManager(String serviceName, ComponentType componentType, boolean registListener) {
         super();
         this.serviceName = serviceName;
         this.componentType = componentType;
-        this.distributionsMap = new HashMap<String, DistributionBean>();
-        if (registListener) {
-            this.serviceListener = new ServiceListener() {
-
-                @Override
-                public void serviceChanged(ServiceEvent event) {
-                    if (event.getType() == ServiceEvent.REGISTERED) {
-                        ServiceReference<? extends Object> sr = event.getServiceReference();
-                        if (sr != null) {
-                            BundleContext bc = getBundleContext();
-                            Object obj = bc.getService(sr);
-                            if (obj instanceof HadoopComponent) {
-                                Map<String, DistributionBean> map;
-                                if (distributionsMap.isEmpty()) {
-                                    map = new HashMap<>();
-                                } else {
-                                    map = distributionsMap;
-                                }
-                                addDistribution(bc, map, componentType, (ServiceReference<? extends HadoopComponent>) sr);
-                            }
-                        }
-                    } else if (event.getType() == ServiceEvent.UNREGISTERING) {
-                        ServiceReference<? extends Object> sr = event.getServiceReference();
-                        if (sr != null) {
-                            BundleContext bc = getBundleContext();
-                            Object obj = bc.getService(sr);
-                            if (obj instanceof HadoopComponent) {
-                                Map<String, DistributionBean> map;
-                                if (distributionsMap.isEmpty()) {
-                                    map = new HashMap<>();
-                                } else {
-                                    map = distributionsMap;
-                                }
-                                removeDistribution(bc, map, componentType, (ServiceReference<? extends HadoopComponent>) sr);
-                            }
-                        }
-                    }
-                }
-            };
-            try {
-                getBundleContext().addServiceListener(this.serviceListener, "(" //$NON-NLS-1$
-                        + Constants.OBJECTCLASS + "=" //$NON-NLS-1$
-                        + serviceName + ")"); //$NON-NLS-1$
-            } catch (InvalidSyntaxException e) {
-                ExceptionHandler.process(e);
-            }
-        }
     }
 
     public DistributionsManager(String serviceName) {
@@ -137,12 +57,6 @@ public final class DistributionsManager implements IDistributionsManager {
 
     public DistributionsManager(ComponentType componentType) {
         this(componentType.getService(), componentType);
-    }
-
-    public void dispose() {
-        if (this.serviceListener != null) {
-            getBundleContext().removeServiceListener(this.serviceListener);
-        }
     }
 
     private String getServiceName() {
@@ -165,22 +79,63 @@ public final class DistributionsManager implements IDistributionsManager {
 
     @Override
     public DistributionBean[] getDistributions() {
-        if (distributionsCache == null) {
-            if (distributionsMap.isEmpty()) {
-                synchronized (DistributionsManager.class) {
-                    if (distributionsMap.isEmpty()) {
-                        distributionsMap = getDistributionsDelegate();
-                    }
+        if (distributionBeans == null) {
+            synchronized (DistributionsManager.class) {
+                if (distributionBeans == null) {
+                    distributionBeans = getDistributionsDelegate();
                 }
             }
-            List<DistributionBean> distributionsList = new ArrayList<>(distributionsMap.values());
-            sortDistributionBeans(distributionsList);
-            distributionsCache = distributionsList.toArray(new DistributionBean[0]);
         }
-        return distributionsCache;
+        return distributionBeans;
     }
 
-    private void sortDistributionBeans(List<DistributionBean> distributionsList) {
+    DistributionBean[] getDistributionsDelegate() {
+        if (getServiceName() == null) {
+            return new DistributionBean[0];
+        }
+        final ComponentType type = getComponentType();
+
+        // We retrieve all the implementations of the HadoopComponent service.
+        BundleContext bc = FrameworkUtil.getBundle(DistributionFactory.class).getBundleContext();
+        Collection<ServiceReference<? extends HadoopComponent>> distributions = new LinkedList<>();
+        try {
+            Class<? extends HadoopComponent> clazz = (Class<? extends HadoopComponent>) Class.forName(getServiceName());
+            distributions.addAll(bc.getServiceReferences(clazz, null));
+        } catch (InvalidSyntaxException | ClassNotFoundException e) {
+            CommonExceptionHandler.process(e);
+            return new DistributionBean[0];
+        }
+        Map<String, DistributionBean> disctributionsMap = new HashMap<>();
+
+        for (ServiceReference<? extends HadoopComponent> sr : distributions) {
+            HadoopComponent hc = bc.getService(sr);
+            final String distribution = hc.getDistribution();
+            final String distributionName = hc.getDistributionName();
+
+            DistributionBean disctributionBean = disctributionsMap.get(distribution);
+            if (disctributionBean == null) {
+                disctributionBean = new DistributionBean(type, distribution, distributionName);
+                disctributionsMap.put(distribution, disctributionBean);
+            } else {// check the name and displayName
+                if (!distribution.equals(disctributionBean.name) || !distributionName.equals(disctributionBean.displayName)) {
+                    CommonExceptionHandler.warn(" There are different distribution name for " + disctributionBean); //$NON-NLS-1$
+                    continue;
+                }
+            }
+
+            final String version = hc.getVersion();
+            // if (version!=null){ //sometimes, will be null, like Custom. but still need add the null version.
+            DistributionVersion versionBean = new DistributionVersion(hc, disctributionBean, version, hc.getVersionName(type));
+            versionBean.addModuleGroups(hc.getModuleGroups(type));
+            // special condition for current version
+            versionBean.displayCondition = hc.getDisplayCondition(type);
+            disctributionBean.addVersion(versionBean);
+
+            // add all version conditions ?
+            disctributionBean.addCondition(hc.getDisplayCondition(type));
+        }
+
+        List<DistributionBean> distributionsList = new ArrayList<>(disctributionsMap.values());
         Collections.sort(distributionsList, new Comparator<DistributionBean>() {
 
             @Override
@@ -194,108 +149,7 @@ public final class DistributionsManager implements IDistributionsManager {
                 return b1.name.compareTo(b2.name);
             }
         });
-    }
-
-    Map<String, DistributionBean> getDistributionsDelegate() {
-        if (getServiceName() == null) {
-            return new HashMap<String, DistributionBean>();
-        }
-        final ComponentType type = getComponentType();
-
-        // We retrieve all the implementations of the HadoopComponent service.
-        BundleContext bc = getBundleContext();
-        Collection<ServiceReference<? extends HadoopComponent>> distributions = new LinkedList<>();
-        try {
-            Class<? extends HadoopComponent> clazz = (Class<? extends HadoopComponent>) Class.forName(getServiceName());
-            distributions.addAll(bc.getServiceReferences(clazz, null));
-        } catch (InvalidSyntaxException | ClassNotFoundException e) {
-            CommonExceptionHandler.process(e);
-            return new HashMap<String, DistributionBean>();
-        }
-        Map<String, DistributionBean> disctributionsMap = new HashMap<>();
-
-        for (ServiceReference<? extends HadoopComponent> sr : distributions) {
-            addDistribution(bc, disctributionsMap, type, sr);
-        }
-
-        return disctributionsMap;
-    }
-
-    private static BundleContext getBundleContext() {
-        return FrameworkUtil.getBundle(DistributionFactory.class).getBundleContext();
-    }
-
-    private void addDistribution(BundleContext bc, Map<String, DistributionBean> disctributionsMap, ComponentType type,
-            ServiceReference<? extends HadoopComponent> sr) {
-        HadoopComponent hc = bc.getService(sr);
-        final String distribution = hc.getDistribution();
-        final String distributionName = hc.getDistributionName();
-
-        String key = getKey(hc);
-        DistributionBean distributionBean = disctributionsMap.get(key);
-        if (distributionBean == null) {
-            clearCache();
-            distributionBean = new DistributionBean(type, distribution, distributionName);
-            disctributionsMap.put(key, distributionBean);
-        } else {// check the name and displayName
-            if (!distribution.equals(distributionBean.name) || !distributionName.equals(distributionBean.displayName)) {
-                CommonExceptionHandler.warn(" There are different distribution name for " + distributionBean); //$NON-NLS-1$
-                return;
-            }
-        }
-
-        final String version = hc.getVersion();
-        // if (version!=null){ //sometimes, will be null, like Custom. but still need add the null version.
-        DistributionVersion versionBean = new DistributionVersion(hc, distributionBean, version, hc.getVersionName(type));
-        versionBean.addModuleGroups(hc.getModuleGroups(type));
-        // special condition for current version
-        versionBean.displayCondition = hc.getDisplayCondition(type);
-        distributionBean.addVersion(versionBean);
-
-        // add all version conditions ?
-        distributionBean.addCondition(hc.getDisplayCondition(type));
-    }
-
-    private void clearCache() {
-        distributionsCache = null;
-    }
-
-    private void removeDistribution(BundleContext bc, Map<String, DistributionBean> distributionsMap, ComponentType type,
-            ServiceReference<? extends HadoopComponent> sr) {
-        HadoopComponent hc = bc.getService(sr);
-        final String distribution = hc.getDistribution();
-        final String distributionName = hc.getDistributionName();
-
-        String key = getKey(hc);
-        DistributionBean distributionBean = distributionsMap.get(key);
-        if (distributionBean == null) {
-            // not exsit, no need to remove
-            return;
-        } else {// check the name and displayName
-            if (!distribution.equals(distributionBean.name) || !distributionName.equals(distributionBean.displayName)) {
-                CommonExceptionHandler.warn(" There are different distribution name for " + distributionBean); //$NON-NLS-1$
-                // return;
-            }
-        }
-
-        final String version = hc.getVersion();
-        // if (version!=null){ //sometimes, will be null, like Custom. but still need add the null version.
-        DistributionVersion versionBean = new DistributionVersion(hc, distributionBean, version, hc.getVersionName(type));
-        versionBean.addModuleGroups(hc.getModuleGroups(type));
-        // special condition for current version
-        versionBean.displayCondition = hc.getDisplayCondition(type);
-        distributionBean.removeVersion(versionBean);
-        distributionBean.setDefaultVersion(null);
-
-        DistributionVersion[] versions = distributionBean.getVersions();
-        if (versions == null || versions.length <= 0) {
-            distributionsMap.remove(key);
-            clearCache();
-        }
-    }
-
-    private String getKey(HadoopComponent hc) {
-        return hc.getDistribution();
+        return distributionsList.toArray(new DistributionBean[0]);
     }
 
     @Override
