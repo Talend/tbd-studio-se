@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: CDH 5.13.0 Distribution Test
+Bundle-SymbolicName: org.talend.hadoop.distribution.cdh5130.test
+Bundle-Version: 6.5.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Vendor: .Talend SA.
+Require-Bundle: org.junit;bundle-version="4.11.0",
+ org.talend.utils;bundle-version="6.0.0",
+ org.talend.testutils;bundle-version="6.0.0",
+ org.talend.hadoop.distribution.test.base
+Fragment-Host: org.talend.hadoop.distribution.cdh5130
