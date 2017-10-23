@@ -10,7 +10,7 @@ java.util.Properties <%=cid%>_topicProperties = new java.util.Properties();
 <%
 	if(tKafkaCreateTopicUtil.isRetentionSet()) {
 %>
-		<%=cid%>_topicProperties.put("retention.ms", "<%=tKafkaCreateTopicUtil.getRetention()%>");
+		<%=cid%>_topicProperties.put("retention.ms", new java.lang.StringBuilder().append(<%=tKafkaCreateTopicUtil.getRetention()%>).toString());
 <%
 	}
 %>

@@ -2,7 +2,7 @@
 <feature
       id="org.talend.hadoop.distribution.feature"
       label="Talend Hadoop distributions Feature"
-      version="6.5.0.qualifier"
+      version="7.0.1.qualifier"
       provider-name=".Talend SA.">
 
    <description url="http://www.talend.com/online/featuresdescription.html#hadoop-distribution">

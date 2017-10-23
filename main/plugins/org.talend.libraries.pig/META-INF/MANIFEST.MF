@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Pig
 Bundle-SymbolicName: org.talend.libraries.pig;singleton:=true
-Bundle-Version: 6.5.0.qualifier
+Bundle-Version: 7.0.1.qualifier
 Bundle-ClassPath: .,
  lib/pig-0.10.0.jar
 Export-Package: org.apache.pig

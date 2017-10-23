@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.talend.repository.hadoopcluster.configurator.test
 Bundle-SymbolicName: org.talend.repository.hadoopcluster.configurator.test
-Bundle-Version: 6.5.0.qualifier
+Bundle-Version: 7.0.1.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.talend.utils,
  org.talend.repository.hadoopcluster.configurator,

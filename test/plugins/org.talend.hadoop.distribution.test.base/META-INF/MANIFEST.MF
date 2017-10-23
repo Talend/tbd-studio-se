@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: HD Test Base
 Bundle-SymbolicName: org.talend.hadoop.distribution.test.base
-Bundle-Version: 6.5.0.qualifier
+Bundle-Version: 7.0.1.qualifier
 Bundle-Vendor: .Talend SA.
 Require-Bundle: org.eclipse.core.runtime,
  org.talend.testutils,

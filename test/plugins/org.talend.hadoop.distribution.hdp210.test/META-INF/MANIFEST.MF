@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: HDP 2.1.0 Distribution Test
 Bundle-SymbolicName: org.talend.hadoop.distribution.hdp210.test
-Bundle-Version: 6.5.0.qualifier
+Bundle-Version: 7.0.1.qualifier
 Bundle-Vendor: .Talend SA.
 Fragment-Host: org.talend.hadoop.distribution.hdp210
 Require-Bundle: org.junit;bundle-version="4.11.0",

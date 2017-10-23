@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: HDP 2.6.0 distribution
 Bundle-SymbolicName: org.talend.hadoop.distribution.hdp260;singleton:=true
-Bundle-Version: 6.5.0.qualifier
+Bundle-Version: 7.0.1.qualifier
 Bundle-Vendor: .Talend SA.
 Service-Component: OSGI-INF/hdp260.xml
 Bundle-ActivationPolicy: lazy

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Talend Oozie Test
 Bundle-SymbolicName: org.talend.oozie.scheduler.test
-Bundle-Version: 6.5.0.qualifier
+Bundle-Version: 7.0.1.qualifier
 Bundle-Vendor: Marvin Wang
 Fragment-Host: org.talend.oozie.scheduler
 Require-Bundle: org.talend.testutils

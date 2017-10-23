@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Repository NoSQL Plug-in Test
 Bundle-SymbolicName: org.talend.repository.nosql.test
-Bundle-Version: 6.5.0.qualifier
+Bundle-Version: 7.0.1.qualifier
 Fragment-Host: org.talend.repository.nosql
 Bundle-Vendor: .Talend SA.
 Require-Bundle: org.talend.testutils
