@@ -77,8 +77,15 @@
             needGenereateJarSqoopOptions_<%=cid%>.setClassName("SqoopMerge_<%=cid%>");
         <%}%>
 
-        java.util.Properties generateJarAdditionalProperties_<%=cid%> = new java.util.Properties();
-<%
+	java.util.Properties generateJarAdditionalProperties_<%=cid%> = new java.util.Properties();
+	<%
+	if(sqoopDistrib.isImpactedBySqoop2995()){
+	//TODO, relate with https://issues.apache.org/jira/browse/SQOOP-2995, have to set a init value to the new map type key "customtool.options.jsonmap". But the key hasn't been used
+	%>
+		generateJarAdditionalProperties_<%=cid%>.put("customtool.options.jsonmap", "{\"\":\"\"}");
+
+	<%
+		}
         if(generateJarAdditionalList != null){ 
             for(Map<String,String> generateJarAdditionalMap : generateJarAdditionalList){
                 if(generateJarAdditionalMap.get("GENERATE_JAR_ADDITIONAL_VALUE")==null || "".equals(generateJarAdditionalMap.get("GENERATE_JAR_ADDITIONAL_VALUE"))) { 
