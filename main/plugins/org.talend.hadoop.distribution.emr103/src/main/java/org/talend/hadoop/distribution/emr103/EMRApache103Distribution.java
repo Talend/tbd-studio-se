@@ -197,19 +197,4 @@ public class EMRApache103Distribution extends AbstractDistribution implements HD
     public ComponentCondition getDisplayCondition(ComponentType componentType) {
         return displayConditions.get(componentType);
     }
-
-    // Note :
-    // Azure Blob & Datalake support have been disabled for now on this distribution
-    // New versions of this distribution should be tested for Azure support and
-    // the changes backported to all earlier versions
-    @Override
-    public boolean doSupportAzureBlobStorage() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportAzureDataLakeStorage() {
-        return false;
-    }
-    // End
 }

@@ -233,7 +233,6 @@
             NAME="PROPERTIES"
             FIELD="TEXT"
             NUM_ROW="10"
-            REPOSITORY_VALUE="PROPERTIES_STRING"
             SHOW_IF="USE_EXISTING_CONNECTION == 'false'"
             >
             <DEFAULT>""</DEFAULT>

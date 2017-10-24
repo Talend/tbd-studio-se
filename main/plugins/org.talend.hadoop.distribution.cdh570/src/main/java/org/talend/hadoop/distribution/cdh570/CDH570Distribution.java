@@ -39,7 +39,6 @@ import org.talend.hadoop.distribution.cdh570.modulegroup.CDH570SqoopModuleGroup;
 import org.talend.hadoop.distribution.cdh570.modulegroup.node.mr.CDH570MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.cdh570.modulegroup.node.pigoutput.CDH570PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh570.modulegroup.node.sparkbatch.CDH570GraphFramesNodeModuleGroup;
-import org.talend.hadoop.distribution.cdh570.modulegroup.node.sparkbatch.CDH570SparkBatchAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh570.modulegroup.node.sparkbatch.CDH570SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh570.modulegroup.node.sparkbatch.CDH570SparkBatchS3NodeModuleGroup;
 import org.talend.hadoop.distribution.cdh570.modulegroup.node.sparkstreaming.CDH570SparkStreamingFlumeNodeModuleGroup;
@@ -107,13 +106,6 @@ public class CDH570Distribution extends AbstractDistribution implements HDFSComp
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
         nodeModuleGroups = new HashMap<>();
-
-        // Azure
-        nodeModuleGroups.put(
-                new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT),
-                CDH570SparkBatchAzureNodeModuleGroup.getModuleGroups(distribution, version));
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), 
-                CDH570SparkBatchAzureNodeModuleGroup.getModuleGroups(distribution, version));
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
                 CDH570MRS3NodeModuleGroup.getModuleGroups(distribution, version));
@@ -409,15 +401,5 @@ public class CDH570Distribution extends AbstractDistribution implements HDFSComp
     @Override
     public boolean doSupportHDFSEncryption() {
         return true;
-    }
-
-    @Override
-    public boolean doSupportAzureBlobStorage() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportAzureDataLakeStorage() {
-        return false;
     }
 }

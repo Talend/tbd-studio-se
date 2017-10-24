@@ -125,7 +125,7 @@ public abstract class AbstractDistribution {
     }
 
     public boolean doSupportSparkYarnClusterMode() {
-        return true;
+        return false;
     }
 
     public boolean doSupportS3() {
@@ -295,14 +295,6 @@ public abstract class AbstractDistribution {
     }
 
     public boolean doImportDynamoDBDependencies() {
-        return false;
-    }
-
-    public boolean doSupportAzureBlobStorage() {
-        return false;
-    }
-
-    public boolean doSupportAzureDataLakeStorage() {
         return false;
     }
 }

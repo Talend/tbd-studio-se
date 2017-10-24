@@ -56,7 +56,6 @@ import org.talend.hadoop.distribution.hdp260.modulegroup.node.mr.HDP260MRS3NodeM
 import org.talend.hadoop.distribution.hdp260.modulegroup.node.pigoutput.HDP260PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.node.spark.HDP260SparkDynamoDBNodeModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.node.sparkbatch.HDP260GraphFramesNodeModuleGroup;
-import org.talend.hadoop.distribution.hdp260.modulegroup.node.sparkbatch.HDP260SparkBatchAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.node.sparkbatch.HDP260SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.node.sparkbatch.HDP260SparkBatchS3NodeModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.node.sparkstreaming.HDP260SparkStreamingFlumeNodeModuleGroup;
@@ -136,13 +135,6 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
                 .getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.S3_CONFIGURATION_COMPONENT), HDP260SparkStreamingS3NodeModuleGroup.getModuleGroups());
-
-        // Azure
-        nodeModuleGroups.put(
-                new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT),
-                HDP260SparkBatchAzureNodeModuleGroup.getModuleGroups());
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), HDP260SparkBatchAzureNodeModuleGroup.getModuleGroups());
 
         // Kinesis
         Set<DistributionModuleGroup> kinesisNodeModuleGroups = HDP260SparkStreamingKinesisNodeModuleGroup.getModuleGroups(
@@ -485,16 +477,6 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
 
     @Override
     public boolean doImportDynamoDBDependencies() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportAzureBlobStorage() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportAzureDataLakeStorage() {
         return true;
     }
 }
