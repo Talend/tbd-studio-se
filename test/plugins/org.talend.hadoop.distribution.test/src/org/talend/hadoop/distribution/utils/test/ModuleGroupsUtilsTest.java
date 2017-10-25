@@ -32,7 +32,8 @@ public class ModuleGroupsUtilsTest {
 
     @Test
     public void getModuleGroupsTest_withoutAdditionCondition() {
-        Set<DistributionModuleGroup> groups = ModuleGroupsUtils.getModuleGroups(distribution, version, null, groupName, true);
+    	String condition = null;
+        Set<DistributionModuleGroup> groups = ModuleGroupsUtils.getModuleGroups(distribution, version, condition, groupName, true);
         assertEquals(groups.size(), 1);
         DistributionModuleGroup dmg = groups.iterator().next();
         SparkBatchLinkedNodeCondition underlyingCondition = new SparkBatchLinkedNodeCondition(distribution, version);

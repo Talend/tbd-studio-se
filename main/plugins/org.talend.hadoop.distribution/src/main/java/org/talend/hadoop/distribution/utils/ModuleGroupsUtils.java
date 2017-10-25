@@ -68,7 +68,7 @@ public class ModuleGroupsUtils {
      */
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version, String condition,
             String moduleName, boolean mrRequired) {
-        return getModuleGroups(distribution, version, new SimpleComponentCondition(new RawExpression(condition)), moduleName, mrRequired);
+        return getModuleGroups(distribution, version, condition == null ? null : new SimpleComponentCondition(new RawExpression(condition)), moduleName, mrRequired);
     }
     
     /**

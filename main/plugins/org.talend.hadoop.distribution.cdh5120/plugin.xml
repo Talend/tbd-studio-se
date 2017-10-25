@@ -636,7 +636,6 @@
         </libraryNeeded>
         
         <!-- Kudu libraries -->
-        <!--Didn't find it yet, make sure the name after get the jar-->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5120"
             id="kudu-spark2_2.11-1.4.0-cdh5.12.1.jar"
