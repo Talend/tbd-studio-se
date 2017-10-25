@@ -146,8 +146,5 @@
         <%
     }
     %>
-    <%if(version_3_5_X) {%>
-    globalMap.put("queryOptionNoTimeOut_<%=cid%>", <%=queryOptionNoTimeOut%>);
-    <%}%>
     globalMap.put("mongo_<%=cid%>", mongo_<%=cid%>);
     globalMap.put("db_<%=cid%>", db_<%=cid%>);

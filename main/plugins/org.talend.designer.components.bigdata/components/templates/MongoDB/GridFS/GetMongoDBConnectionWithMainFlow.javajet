@@ -43,14 +43,16 @@
     boolean useAuthDB = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_AUTHENTICATION_DATABASE__"));
     String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
     String usedAuthenticationDB = useAuthDB ? authDB : dbname;
-    boolean queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
+    boolean queryOptionNoTimeOut;
     String dbversion;
 	if(useExistingConnection){
 	    String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
         INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
         dbversion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
+        queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(connectionNode, "__QUERYOPTION_NOTIMEOUT__"));
     }else{
         dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
+        queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
     }
     boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
 
@@ -74,7 +76,6 @@
 		<%if(version_3_5_X) {%>
 			com.mongodb.MongoClient mongo_<%=cid%>=null;
 			com.mongodb.client.MongoDatabase db_<%=cid%>=null;
-			boolean queryOptionNoTimeOut_<%=cid%> = false;
 		<%} else {%>
 			com.mongodb.Mongo mongo_<%=cid%>=null;
 			com.mongodb.DB db_<%=cid%>=null;
@@ -86,7 +87,6 @@
 				<%if(version_3_5_X) {%>
 				mongo_<%=cid%>=(com.mongodb.MongoClient)globalMap.get("mongo_<%=connection%>");
 				db_<%=cid%> = (com.mongodb.client.MongoDatabase) globalMap.get("db_<%=connection%>");
-				queryOptionNoTimeOut_<%=cid%> =(boolean) globalMap.get("queryOptionNoTimeOut_<%=connection%>");
 				<%} else {%>
 				mongo_<%=cid%>=(com.mongodb.Mongo)globalMap.get("mongo_<%=connection%>");
 				db_<%=cid%> = (com.mongodb.DB) globalMap.get("db_<%=connection%>");
@@ -169,11 +169,7 @@
 
                 if(queryOptionNoTimeOut){
                     %>
-                        <%if(version_3_5_X) {%>
-							queryOptionNoTimeOut_<%=cid%> = true;
-						<%} else {%>
 							mongo_<%=cid%>.addOption(com.mongodb.Bytes.QUERYOPTION_NOTIMEOUT);
-						<%}%>
                     <%
                 }
 
