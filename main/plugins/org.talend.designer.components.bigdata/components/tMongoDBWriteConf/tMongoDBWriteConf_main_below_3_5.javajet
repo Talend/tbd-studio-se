@@ -1,0 +1,355 @@
+<%@ jet
+	imports="
+		org.talend.designer.codegen.config.CodeGeneratorArgument
+		org.talend.core.model.process.INode
+		org.talend.core.model.process.ElementParameterParser
+        org.talend.core.model.metadata.IMetadataTable
+        org.talend.core.model.metadata.IMetadataColumn
+        java.util.List
+        java.util.Map
+	    org.talend.core.model.metadata.types.JavaTypesManager
+	    org.talend.core.model.metadata.types.JavaType
+"
+%>
+<%
+	
+	String dataAction = ElementParameterParser.getValue(node,"__DATA_ACTION__");
+	String dataNode = ElementParameterParser.getValue(node,"__DATA_NODE__");
+	String queryNode = ElementParameterParser.getValue(node,"__QUERY_NODE__");
+	boolean dieOnError = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__DIE_ON_ERROR__"));
+	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+    boolean setBulkWrite = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_BULK_WRITE__"));
+    String bulkWriteOperationSize = ElementParameterParser.getValue(node, "__BULK_WRITE_SIZE__");
+    String bulkWriteType = ElementParameterParser.getValue(node, "__BULK_WRITE_TYPE__");
+
+    boolean removeRoot = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REMOVE_ROOT__"));
+    List<Map<String, String>> rootTable = 
+        (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__ROOT__");
+    List<Map<String, String>> loopTable = 
+        (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__LOOP__");
+    List<Map<String, String>> groupTable = 
+            (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__GROUP__");
+
+    // BulkWrite is only supportted on Mongo 2.6+ drivers
+    final boolean bulkWrite = setBulkWrite & (!"MONGODB_2_5_X".equalsIgnoreCase(dbversion));
+    
+    List<IMetadataTable> metadatas = node.getMetadataList();
+  	if(metadatas != null && metadatas.size() > 0){
+      	IMetadataTable metadata = metadatas.get(0);
+      	if(metadata != null){
+		%>
+			com.mongodb.WriteResult resultMessage_<%=cid%>=null;
+			<%
+			if(isLog4jEnabled){
+			%>
+				log.info("<%=cid%> - Trying to parse a json string.");
+				log.debug("<%=cid%> - The JSON string:"+json_<%=cid%>.toString());
+			<%
+			}
+			%>
+			Object data_<%=cid%>=com.mongodb.BasicDBObject.parse(json_<%=cid%>.toString());
+			<%
+			if(isLog4jEnabled){
+			%>
+				log.info("<%=cid%> - Parsed Successfully.");
+			<%
+			}
+			%>
+
+			// Replace Date and Bytes by true mongoDB types.
+            Object <%=cid%>_dbobject = data_<%=cid%>;
+            String pathString_<%=cid%> = "";
+            String[] path_<%=cid%>;
+			<%
+            for (IMetadataColumn column: metadata.getListColumns()) {
+                JavaType javaType = JavaTypesManager.getJavaTypeFromId(column.getTalendType());
+                if ((javaType == JavaTypesManager.DATE) || (javaType == JavaTypesManager.BYTE_ARRAY)) {
+                    for (Map<String, String> root: rootTable) {
+                        if (root.get("COLUMN").equals(column.getLabel())) {
+                            %>
+                            // root
+                            <%=cid%>_dbobject = (com.mongodb.BasicDBObject) data_<%=cid%>;
+                            pathString_<%=cid%> = "<%=root.get("PATH")%>";
+                            <%
+                            if (removeRoot) {
+                                %>
+                                pathString_<%=cid%> = pathString_<%=cid%>.substring(pathString_<%=cid%>.indexOf("/") + 1);
+                                <%
+                            }
+                            %>
+                            path_<%=cid%> = pathString_<%=cid%>.split("/");
+                            <%
+                            if (javaType == JavaTypesManager.DATE) {
+                                %>
+                                mongoDBTreeConverter_<%=cid%>.processTree(<%=cid%>_dbobject, path_<%=cid%>, <%=column.getPattern()%>);
+                                <%
+                            } else { // Byte Array
+                                %>
+                                mongoDBTreeConverter_<%=cid%>.processTree(<%=cid%>_dbobject, path_<%=cid%>, null);
+                                <%
+                            }
+                            // note: we cannot break here, they may be multiple values
+                        }
+                    }
+
+                    for (Map<String, String> loop: loopTable) {
+                        if (loop.get("COLUMN").equals(column.getLabel())) {
+                            %>
+                            // loop
+                            <%=cid%>_dbobject = (com.mongodb.BasicDBObject) data_<%=cid%>;
+                            pathString_<%=cid%> = "<%=loop.get("PATH")%>";
+                            <%
+                            if (removeRoot) {
+                                %>
+                                pathString_<%=cid%> = pathString_<%=cid%>.substring(pathString_<%=cid%>.indexOf("/") + 1);
+                                <%
+                            }
+                            %>
+                            path_<%=cid%> = pathString_<%=cid%>.split("/");
+                            <%
+                            if (javaType == JavaTypesManager.DATE) {
+                                %>
+                                mongoDBTreeConverter_<%=cid%>.processTree(<%=cid%>_dbobject, path_<%=cid%>, <%=column.getPattern()%>);
+                                <%
+                            } else { // Byte Array
+                                %>
+                                mongoDBTreeConverter_<%=cid%>.processTree(<%=cid%>_dbobject, path_<%=cid%>, null);
+                                <%
+                            }
+                            // note: we cannot break here, they may be multiple values
+                        }
+                    }
+
+                    for (Map<String, String> group: groupTable) {
+                        if (group.get("COLUMN").equals(column.getLabel())) {
+                            %>
+                            // group
+                            <%=cid%>_dbobject = (com.mongodb.BasicDBObject) data_<%=cid%>;
+                            pathString_<%=cid%> = "<%=group.get("PATH")%>";
+                            <%
+                            if (removeRoot) {
+                                %>
+                                pathString_<%=cid%> = pathString_<%=cid%>.substring(pathString_<%=cid%>.indexOf("/") + 1);
+                                <%
+                            }
+                            %>
+                            path_<%=cid%> = pathString_<%=cid%>.split("/");
+                            <%
+                            if (javaType == JavaTypesManager.DATE) {
+                                %>
+                                mongoDBTreeConverter_<%=cid%>.processTree(<%=cid%>_dbobject, path_<%=cid%>, <%=column.getPattern()%>);
+                                <%
+                            } else { // Byte Array
+                                %>
+                                mongoDBTreeConverter_<%=cid%>.processTree(<%=cid%>_dbobject, path_<%=cid%>, null);
+                                <%
+                            }
+                            // note: we cannot break here, they may be multiple values
+                        }
+                    }
+                }
+            }
+			%>
+			
+			Object queryObj_<%=cid%>=null;
+			if(data_<%=cid%>!=null){
+				<%
+				if("Insert".equalsIgnoreCase(dataAction)){
+					// Bulk Writes
+					if(bulkWrite){
+						// Add inserts untill bulksize is reached then execute and re-initialze the bulk operation
+						%>
+						if(bulkWriteOperationCounter_<%=cid%> < bulkWriteOperationSize_<%=cid%>){
+							bulkWriteOperation_<%=cid%>.insert((com.mongodb.DBObject)data_<%=cid%>);
+							bulkWriteOperationCounter_<%=cid%>++;
+						} else {
+                            bulkWriteOperation_<%=cid%>.insert((com.mongodb.DBObject)data_<%=cid%>);
+							bulkWriteOperation_<%=cid%>.execute();
+							bulkWriteOperationCounter_<%=cid%>=1;
+							bulkWriteOperation_<%=cid%> = coll_<%=cid%>.initialize<%=bulkWriteType%>BulkOperation();
+						}
+						<%
+					// Single Writes
+					}else{
+					%>
+						resultMessage_<%=cid%>=coll_<%=cid%>.insert((com.mongodb.DBObject)data_<%=cid%>);
+					<%
+					}
+				// Other operations (UPDATE, UPSERT, DELETE)
+				}else if("DELETE".equalsIgnoreCase(dataAction)){
+				// Bulk Delete
+					if(bulkWrite){
+						%>
+						if(bulkWriteOperationCounter_<%=cid%> < bulkWriteOperationSize_<%=cid%>){
+							bulkWriteOperation_<%=cid%>.find((com.mongodb.DBObject)data_<%=cid%>).remove();
+							bulkWriteOperationCounter_<%=cid%>++;
+						}else{
+                            bulkWriteOperation_<%=cid%>.find((com.mongodb.DBObject)data_<%=cid%>).remove();
+							bulkWriteOperation_<%=cid%>.execute();
+							bulkWriteOperationCounter_<%=cid%>=1;
+							bulkWriteOperation_<%=cid%> = coll_<%=cid%>.initialize<%=bulkWriteType%>BulkOperation();
+						}
+						<%
+					}else{
+						%>
+						resultMessage_<%=cid%>=coll_<%=cid%>.remove((com.mongodb.DBObject)data_<%=cid%>);
+						<%
+					}
+				}else{
+				%>
+					queryObj_<%=cid%> =((com.mongodb.DBObject)data_<%=cid%>).get(<%=queryNode%>);
+					data_<%=cid%>=((com.mongodb.DBObject)data_<%=cid%>).get(<%=dataNode%>);
+					if(data_<%=cid%>!=null && queryObj_<%=cid%>!=null){
+						<%
+						if("UPDATE".equalsIgnoreCase(dataAction)){
+	                        // Bulk Updates
+                            if(bulkWrite){
+                                %>
+                                if(bulkWriteOperationCounter_<%=cid%> < bulkWriteOperationSize_<%=cid%>){
+                                    bulkWriteOperation_<%=cid%>.find((com.mongodb.DBObject)queryObj_<%=cid%>).replaceOne((com.mongodb.DBObject)data_<%=cid%>);
+                                    bulkWriteOperationCounter_<%=cid%>++;
+                                }else{
+                                    bulkWriteOperation_<%=cid%>.find((com.mongodb.DBObject)queryObj_<%=cid%>).replaceOne((com.mongodb.DBObject)data_<%=cid%>);
+                                    bulkWriteOperation_<%=cid%>.execute();
+                                    bulkWriteOperationCounter_<%=cid%>=1;
+                                    bulkWriteOperation_<%=cid%> = coll_<%=cid%>.initialize<%=bulkWriteType%>BulkOperation();
+                                }
+                                <%
+                            }else{
+                                %>
+                                resultMessage_<%=cid%>=coll_<%=cid%>.update((com.mongodb.DBObject)queryObj_<%=cid%>,(com.mongodb.DBObject)data_<%=cid%>);
+                                <%
+                            }
+                        } else if("SET".equalsIgnoreCase(dataAction)){
+                            // Bulk Updates
+                            if(bulkWrite){
+                                %>
+                                if(bulkWriteOperationCounter_<%=cid%> < bulkWriteOperationSize_<%=cid%>){
+                                    bulkWriteOperation_<%=cid%>.find((com.mongodb.DBObject)queryObj_<%=cid%>).update(new com.mongodb.BasicDBObject("$set", (com.mongodb.DBObject)data_<%=cid%>));
+                                    bulkWriteOperationCounter_<%=cid%>++;
+                                }else{
+                                    bulkWriteOperation_<%=cid%>.find((com.mongodb.DBObject)queryObj_<%=cid%>).update(new com.mongodb.BasicDBObject("$set", (com.mongodb.DBObject)data_<%=cid%>));
+                                    bulkWriteOperation_<%=cid%>.execute();
+                                    bulkWriteOperationCounter_<%=cid%>=1;
+                                    bulkWriteOperation_<%=cid%> = coll_<%=cid%>.initialize<%=bulkWriteType%>BulkOperation();
+                                }
+                                <%
+                            }else{
+                                %>
+                                resultMessage_<%=cid%>=coll_<%=cid%>.update((com.mongodb.DBObject)queryObj_<%=cid%>,new com.mongodb.BasicDBObject("$set", (com.mongodb.DBObject)data_<%=cid%>));
+                                <%
+                            }
+                        } else if("UPSERT".equalsIgnoreCase(dataAction)){
+                            // Bulk Upsert
+							if(bulkWrite){
+								%>
+								if(bulkWriteOperationCounter_<%=cid%> < bulkWriteOperationSize_<%=cid%>){
+									com.mongodb.BulkWriteRequestBuilder bulkWriteRequestBuilder_<%=cid%> = bulkWriteOperation_<%=cid%>.find((com.mongodb.DBObject)queryObj_<%=cid%>);
+									com.mongodb.BulkUpdateRequestBuilder bulkUpdateRequestBuilder_<%=cid%> = bulkWriteRequestBuilder_<%=cid%>.upsert();
+									bulkUpdateRequestBuilder_<%=cid%>.replaceOne((com.mongodb.DBObject)data_<%=cid%>);
+									bulkWriteOperationCounter_<%=cid%>++;
+								}else{
+                                    com.mongodb.BulkWriteRequestBuilder bulkWriteRequestBuilder_<%=cid%> = bulkWriteOperation_<%=cid%>.find((com.mongodb.DBObject)queryObj_<%=cid%>);
+                                    com.mongodb.BulkUpdateRequestBuilder bulkUpdateRequestBuilder_<%=cid%> = bulkWriteRequestBuilder_<%=cid%>.upsert();
+                                    bulkUpdateRequestBuilder_<%=cid%>.replaceOne((com.mongodb.DBObject)data_<%=cid%>);
+									bulkWriteOperation_<%=cid%>.execute();
+									bulkWriteOperationCounter_<%=cid%>=1;
+									bulkWriteOperation_<%=cid%> = coll_<%=cid%>.initialize<%=bulkWriteType%>BulkOperation();
+								}
+								<%
+							}else{
+								%>
+								resultMessage_<%=cid%>=coll_<%=cid%>.update((com.mongodb.DBObject)queryObj_<%=cid%>,(com.mongodb.DBObject)data_<%=cid%>,true,false);
+								<%
+							}
+                        } else if("UPSERT_WITH_SET".equalsIgnoreCase(dataAction)){
+                            // Bulk Upsert
+                            if(bulkWrite){
+                                %>
+                                if(bulkWriteOperationCounter_<%=cid%> < bulkWriteOperationSize_<%=cid%>){
+                                    com.mongodb.BulkWriteRequestBuilder bulkWriteRequestBuilder_<%=cid%> = bulkWriteOperation_<%=cid%>.find((com.mongodb.DBObject)queryObj_<%=cid%>);
+                                    com.mongodb.BulkUpdateRequestBuilder bulkUpdateRequestBuilder_<%=cid%> = bulkWriteRequestBuilder_<%=cid%>.upsert();
+                                    bulkUpdateRequestBuilder_<%=cid%>.update(new com.mongodb.BasicDBObject("$set", (com.mongodb.DBObject)data_<%=cid%>));
+                                    bulkWriteOperationCounter_<%=cid%>++;
+                                }else{
+                                    com.mongodb.BulkWriteRequestBuilder bulkWriteRequestBuilder_<%=cid%> = bulkWriteOperation_<%=cid%>.find((com.mongodb.DBObject)queryObj_<%=cid%>);
+                                    com.mongodb.BulkUpdateRequestBuilder bulkUpdateRequestBuilder_<%=cid%> = bulkWriteRequestBuilder_<%=cid%>.upsert();
+                                    bulkUpdateRequestBuilder_<%=cid%>.update(new com.mongodb.BasicDBObject("$set", (com.mongodb.DBObject)data_<%=cid%>));
+                                    bulkWriteOperation_<%=cid%>.execute();
+                                    bulkWriteOperationCounter_<%=cid%>=1;
+                                    bulkWriteOperation_<%=cid%> = coll_<%=cid%>.initialize<%=bulkWriteType%>BulkOperation();
+                                }
+                                <%
+                            }else{
+                                %>
+                                resultMessage_<%=cid%>=coll_<%=cid%>.update((com.mongodb.DBObject)queryObj_<%=cid%>,new com.mongodb.BasicDBObject("$set", (com.mongodb.DBObject)data_<%=cid%>),true,false);
+                                <%
+                            }
+                        }
+						%>	
+					}else{
+						<%
+						if(dieOnError){
+						%>
+							throw new Exception("Data node or Query node configuration error! ");
+						<%
+						}else{
+							if(isLog4jEnabled){
+							%>
+								log.error("<%=cid%> - Data node or Query node configuration error!");
+							<%
+							}
+							%>
+							System.err.println("Data node or Query node configuration error!");
+						<%
+						}
+						%>	
+					}
+				<%
+				}
+				
+                if (dbversion.equals("MONGODB_2_5_X")) {
+                %>
+    				if(resultMessage_<%=cid%>!=null && resultMessage_<%=cid%>.getError()!=null){
+    					<%
+    					if(dieOnError){
+    					%>
+    						throw new Exception(resultMessage_<%=cid%>.getError());
+    					<%
+    					}else{
+    						if(isLog4jEnabled){
+    						%>
+    							log.error("<%=cid%> - " + resultMessage_<%=cid%>.getError());
+    						<%
+    						}
+    						%>
+    						System.err.println(resultMessage_<%=cid%>.getError());
+    					<%
+    					}
+    					%>
+    				}
+    				<%
+                }
+    			%>
+			}else{
+				<%
+				if(dieOnError){
+				%>
+					throw new Exception("There no data in json,Please check the json configuration");
+				<%
+				}else{
+					if(isLog4jEnabled){
+					%>
+					log.error("<%=cid%> - There no data in json,Please check the json configuration");
+					<%
+					}
+					%>
+					System.err.println("There no data in json,Please check the json configuration");
+				<%
+				}
+				%>	
+			}		
+		<%
+		}
+	}
+	%>

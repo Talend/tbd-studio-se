@@ -16,12 +16,15 @@
 	
 	boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"));
 	String dbversion;
+	boolean queryOptionNoTimeOut;
 	if(useExistingConnection){
 	    String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
         INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
         dbversion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
+        queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(connectionNode, "__QUERYOPTION_NOTIMEOUT__"));
     }else{
         dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
+        queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
     }
 %>
 

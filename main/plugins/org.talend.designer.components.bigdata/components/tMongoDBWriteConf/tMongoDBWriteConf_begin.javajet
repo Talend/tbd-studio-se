@@ -43,6 +43,7 @@
     boolean useAuthDB = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_AUTHENTICATION_DATABASE__"));
     String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
     String usedAuthenticationDB = useAuthDB ? authDB : dbname;
+    String dataAction = ElementParameterParser.getValue(node,"__DATA_ACTION__");
     boolean queryOptionNoTimeOut;
 	String dbversion;
 	if(useExistingConnection){
@@ -213,9 +214,14 @@
 			}
 			if(dropExistCollection){
 			%>
+				<%if(version_3_5_X) {%>
+					db_<%=cid%>.getCollection(<%=collection%>).drop();
+				<%} else {%>
 				if(db_<%=cid%>.collectionExists(<%=collection%>)){
 					db_<%=cid%>.getCollection(<%=collection%>).drop();
 				}
+				<%}%>
+
 			<%
 			}
 			%>
@@ -229,9 +235,24 @@
 			// BulkWrite
 			if(bulkWrite){
 			%>
-				com.mongodb.BulkWriteOperation bulkWriteOperation_<%=cid%> = coll_<%=cid%>.initialize<%=bulkWriteType%>BulkOperation();
-				int bulkWriteOperationCounter_<%=cid%> = 1;
-				int bulkWriteOperationSize_<%=cid%> = Integer.parseInt(<%=bulkWriteOperationSize%>);
+			int bulkWriteOperationCounter_<%=cid%> = 1;
+			int bulkWriteOperationSize_<%=cid%> = Integer.parseInt(<%=bulkWriteOperationSize%>);
+				<%if(version_3_5_X) {
+					if("INSERT".equalsIgnoreCase(dataAction)){%>
+						List<com.mongodb.client.model.InsertOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.InsertOneModel<org.bson.Document>>();
+					<%}else if("UPSERT".equalsIgnoreCase(dataAction)){%>
+						List<com.mongodb.client.model.ReplaceOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.ReplaceOneModel<org.bson.Document>>();
+					<%}else if("DELETE".equalsIgnoreCase(dataAction)){%>
+						List<com.mongodb.client.model.DeleteOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.DeleteOneModel<org.bson.Document>>();
+					<%}else { //update set upset_with_set
+					%>
+						List<com.mongodb.client.model.UpdateOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.UpdateOneModel<org.bson.Document>>();
+					<%}%>
+					
+				<%} else {%>
+					com.mongodb.BulkWriteOperation bulkWriteOperation_<%=cid%> = coll_<%=cid%>.initialize<%=bulkWriteType%>BulkOperation();
+				<%}%>
+
 				<%
 			}
 

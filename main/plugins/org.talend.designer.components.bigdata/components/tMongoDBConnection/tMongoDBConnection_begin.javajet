@@ -116,22 +116,12 @@
         <%
         }
         %>
-        
-		<%if(version_3_5_X) {%>
-			com.mongodb.MongoClient mongo_<%=cid%> = new <%=mongoDbDriver%>(serverAddressList_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
-		<%} else {%>
 			com.mongodb.Mongo mongo_<%=cid%> = new <%=mongoDbDriver%>(serverAddressList_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
-		<%}%>
-        
         <%
     }else{
         %>
         com.mongodb.ServerAddress serverAddress_<%=cid%> = new com.mongodb.ServerAddress(<%=dbhost%>, <%=dbport%>);
-        <%if(version_3_5_X) {%>
-			com.mongodb.MongoClient mongo_<%=cid%> = new <%=mongoDbDriver%>(serverAddress_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
-		<%} else {%>
-			com.mongodb.Mongo mongo_<%=cid%> = new <%=mongoDbDriver%>(serverAddress_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
-		<%}%>
+		com.mongodb.Mongo mongo_<%=cid%> = new <%=mongoDbDriver%>(serverAddress_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
         
         <%
     }
@@ -139,7 +129,7 @@
     %>
     mongo_<%=cid%>.getAddress() ;
     <%if(version_3_5_X) {%>
-		com.mongodb.client.MongoDatabase db_<%=cid%> = mongo_<%=cid%>.getDatabase(<%=dbname%>);
+		com.mongodb.client.MongoDatabase db_<%=cid%> = ((<%=mongoDbDriver%>)mongo_<%=cid%>).getDatabase(<%=dbname%>);
 	<%} else {%>
 		com.mongodb.DB db_<%=cid%> = mongo_<%=cid%>.getDB(<%=dbname%>);
 	<%}%>

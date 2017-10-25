@@ -36,7 +36,6 @@
     boolean useAuthDB = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_AUTHENTICATION_DATABASE__"));
     String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
     String usedAuthenticationDB = useAuthDB ? authDB : dbname;
-    boolean queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
     String dataAction = ElementParameterParser.getValue(node,"__DATA_ACTION__");
 
     boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
@@ -123,7 +122,6 @@
 			java.util.Map<String, String> pathMap_<%=cid%>=new java.util.HashMap<String, String>();
 			com.mongodb.MongoClient mongo_<%=cid%>=null;
 			com.mongodb.client.MongoDatabase db_<%=cid%>=null;
-			boolean queryOptionNoTimeOut_<%=cid%> = false;
 			<%
 			for (int i=0;i<mapping.size();i++) {
 				String path = mapping.get(i).get("PARENT_NODE_PATH");
@@ -141,7 +139,6 @@
 				%>
 				mongo_<%=cid%>=(com.mongodb.MongoClient)globalMap.get("mongo_<%=connection%>");
 				db_<%=cid%> = (com.mongodb.client.MongoDatabase) globalMap.get("db_<%=connection%>");
-				queryOptionNoTimeOut_<%=cid%> =(boolean) globalMap.get("queryOptionNoTimeOut_<%=connection%>");
 				<%
 				if(isLog4jEnabled){
 				%>	
@@ -238,19 +235,9 @@
 
 			if(setWriteConcern){
 				%>
-					<%if(version_3_5_X) {%>
 			    db_<%=cid%>.withWriteConcern(com.mongodb.WriteConcern.<%=writeConcern%>);
-					<%} else {%>
-				mongo_<%=cid%>.setWriteConcern(com.mongodb.WriteConcern.<%=writeConcern%>);
-					<%}%>
 				<%
 			}
-
-			if(queryOptionNoTimeOut && !useExistingConnection){
-		        %>
-		        queryOptionNoTimeOut_<%=cid%> = true;
-		        <%
-    		}
 
 			%>
 			<%

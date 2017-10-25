@@ -247,7 +247,7 @@ try{
 								<%
 							}else{
 								%>
-								coll_<%=cid%>.removeOne(queryObj_<%=cid%>);
+								coll_<%=cid%>.deleteOne(queryObj_<%=cid%>);
 								<%
 							}
 						}

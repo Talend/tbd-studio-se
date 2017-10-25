@@ -238,13 +238,9 @@
 			        }
 			}
 
-			if(queryOptionNoTimeOut && !useExistingConnection){
+			if(queryOptionNoTimeOut && !useExistingConnection &&!version_3_5_X){
 		        %>
-		        <%if(version_3_5_X) {%>
-					queryOptionNoTimeOut_<%=cid%> = true;
-				<%} else {%>
 					mongo_<%=cid%>.addOption(com.mongodb.Bytes.QUERYOPTION_NOTIMEOUT);
-				<%}%>
 		        <%
     		}
 
@@ -331,7 +327,7 @@
 	                
 	                <%if(version_3_5_X) {%>
 					com.mongodb.BasicDBObject myQuery_<%=cid%> = com.mongodb.BasicDBObject.parse(<%=query%>);
-	                com.mongodb.client.FindIterable<org.bson.Document> fi_<%=cid%> = coll_<%=cid%>.find(myQuery_<%=cid%>).noCursorTimeout(queryOptionNoTimeOut_<%=cid%>);
+	                com.mongodb.client.FindIterable<org.bson.Document> fi_<%=cid%> = coll_<%=cid%>.find(myQuery_<%=cid%>).noCursorTimeout(<%=queryOptionNoTimeOut%>);
 					<%} else {%>
 					com.mongodb.DBObject myQuery_<%=cid%> = (com.mongodb.DBObject) com.mongodb.util.JSON.parse(<%=query%>);
 		    		com.mongodb.DBObject fields_<%=cid%> = new com.mongodb.BasicDBObject();
