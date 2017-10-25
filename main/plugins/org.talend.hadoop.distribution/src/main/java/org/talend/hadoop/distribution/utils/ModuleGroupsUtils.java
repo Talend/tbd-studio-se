@@ -68,19 +68,32 @@ public class ModuleGroupsUtils {
      */
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version, String condition,
             String moduleName, boolean mrRequired) {
+        return getModuleGroups(distribution, version, condition == null ? null : new SimpleComponentCondition(new RawExpression(condition)), moduleName, mrRequired);
+    }
+    
+    /**
+     * Utility method to create the collection of {@link DistributionModuleGroup} with a condition made of a
+     * {@link SparkBatchLinkedNodeCondition} and an additional raw condition
+     * 
+     * @param distribution the distribution key
+     * @param version the version key
+     * @param condition a nullable additional condition
+     * @param moduleName the module name
+     * @param mrRequired if the module group is mrRequired
+     * @return a set of {@link DistributionModuleGroup}
+     */
+    public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version, ComponentCondition condition,
+            String moduleName, boolean mrRequired) {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         ComponentCondition distribCondition = new SparkBatchLinkedNodeCondition(distribution, version,
                 SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition();
         ComponentCondition cc = null;
         if (condition != null) {
-            cc = new MultiComponentCondition( //
-                    new SimpleComponentCondition( //
-                            new RawExpression(condition) //
-                    ), BooleanOperator.AND, distribCondition);
+            cc = new MultiComponentCondition(condition, BooleanOperator.AND, distribCondition);
         } else {
             cc = distribCondition;
         }
-        DistributionModuleGroup dmg = new DistributionModuleGroup(moduleName, true, cc);
+        DistributionModuleGroup dmg = new DistributionModuleGroup(moduleName, mrRequired, cc);
         hs.add(dmg);
         return hs;
     }

@@ -67,6 +67,7 @@
         <module>main/plugins/org.talend.hadoop.distribution.cdh580.jars</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh580spark2.jars</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh5100</module>
+        <module>main/plugins/org.talend.hadoop.distribution.cdh5120</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh5x</module>
         <module>main/plugins/org.talend.hadoop.distribution.altus10</module>
 <!--         <module>main/plugins/org.talend.hadoop.distribution.cdh5100.jars</module>  -->
@@ -168,6 +169,7 @@
         <module>test/plugins/org.talend.hadoop.distribution.cdh580.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.cdh580spark2.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.cdh5100.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.cdh5120.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.custom.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.dataproc11.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.emr103.test</module>
