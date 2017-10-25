@@ -21,3 +21,8 @@ String cid = node.getUniqueName();
 //%cid%_kafkaProducer.close();
 %>
 
+synchronized (producerException) {
+	while (producerException.containsKey("exception"))
+		if (producerException.get("exception") != null)
+			throw producerException.get("exception");
+}
