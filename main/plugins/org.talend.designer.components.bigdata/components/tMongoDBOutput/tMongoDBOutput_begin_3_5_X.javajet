@@ -1,0 +1,297 @@
+<%@ jet 
+	imports="
+		org.talend.core.model.process.INode 
+		org.talend.core.model.process.ElementParameterParser 
+		org.talend.core.model.metadata.IMetadataTable 
+		org.talend.designer.codegen.config.CodeGeneratorArgument
+		java.util.List
+		java.util.Map
+	" 
+%>
+<% 
+
+    String dbhost   = ElementParameterParser.getValue(node, "__HOST__");
+    String dbname   = ElementParameterParser.getValue(node, "__DATABASE__");
+    boolean authentication="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REQUIRED_AUTHENTICATION__"));
+    String authenticationMechanism = ElementParameterParser.getValue(node, "__AUTHENTICATION_MECHANISM__");
+    String krbUserPrincipal = ElementParameterParser.getValue(node, "__KRB_USER_PRINCIPAL__");
+    String krbRealm = ElementParameterParser.getValue(node, "__KRB_REALM__");
+    String krbKdc = ElementParameterParser.getValue(node, "__KRB_KDC__");
+    String dbuser   = ElementParameterParser.getValue(node, "__USERNAME__");
+    String dbpass   = ElementParameterParser.getValue(node, "__PASSWORD__");
+    String mongoPort = ElementParameterParser.getValue(node, "__PORT__");
+    String dbport = mongoPort.startsWith("context.") ? "Integer.valueOf(" + mongoPort + ").intValue()" : mongoPort.replace("\"", "");
+    String collection=ElementParameterParser.getValue(node, "__COLLECTION__");
+    boolean dropExistCollection="true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__DROP_COLLECTION_CREATE__"));
+    
+    List<Map<String, String>> mapping = (List<Map<String,String>>)ElementParameterParser.getObjectValueXML(node, "__MAPPING__");
+    boolean useReplicaSet="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_REPLICA_SET__"));
+
+    boolean setWriteConcern = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_WRITE_CONCERN__"));
+    String writeConcern = ElementParameterParser.getValue(node, "__WRITE_CONCERN__");
+
+    boolean bulkWrite = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_BULK_WRITE__"));
+    String bulkWriteOperationSize = ElementParameterParser.getValue(node, "__BULK_WRITE_SIZE__");
+    String bulkWriteType = ElementParameterParser.getValue(node, "__BULK_WRITE_TYPE__");
+    boolean useAuthDB = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_AUTHENTICATION_DATABASE__"));
+    String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
+    String usedAuthenticationDB = useAuthDB ? authDB : dbname;
+    boolean queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
+    String dataAction = ElementParameterParser.getValue(node,"__DATA_ACTION__");
+
+    boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+	%>
+	int nb_line_<%=cid %> = 0;
+	<%
+    List<IMetadataTable> metadatas = node.getMetadataList();
+  	if(metadatas != null && metadatas.size() > 0){
+      	IMetadataTable metadata = metadatas.get(0);
+      	if(metadata != null){
+		%>
+			class DBObjectUtil_<%=cid%> {
+				
+				private org.bson.Document object = null;
+				//Put value to embedded document
+				//If have no embedded document, put the value to root document
+				public void put(String parentNode, String curentName, Object value) {
+					if (parentNode == null || "".equals(parentNode)) {
+						object.put(curentName, value);
+					} else {
+						String objNames[]= parentNode.split("\\.");
+						org.bson.Document lastNode = getParentNode(parentNode, objNames.length-1);
+						lastNode.put(curentName, value);
+						org.bson.Document parenttNode = null;
+						for (int i = objNames.length - 1; i >=0; i--) {
+							parenttNode=getParentNode(parentNode, i-1);
+							parenttNode.put(objNames[i], lastNode);
+							lastNode=clone(parenttNode);
+						}
+						object=lastNode;
+					}
+				}
+				
+				private org.bson.Document clone(org.bson.Document source){
+					org.bson.Document to = new org.bson.Document();
+					for(java.util.Map.Entry<String,Object> cur:source.entrySet()) {
+						to.append(cur.getKey(), cur.getValue());
+					}
+					return to;
+				}
+				
+				//Get node(embedded document) by path configuration
+				public org.bson.Document getParentNode(String parentNode, int index) {
+					org.bson.Document document = object;
+					if (parentNode == null || "".equals(parentNode)) {
+						return object;
+					} else {
+						String objNames[] = parentNode.split("\\.");
+						for (int i = 0; i <= index; i++) {
+							document = (org.bson.Document) document
+									.get(objNames[i]);
+							if (document == null) {
+								document = new org.bson.Document();
+								return document;
+							}
+							if (i == index) {
+								break;
+							}
+						}
+						return document;
+					}
+				}
+				
+				public void putkeyNode(String parentNode, String curentName, Object value){
+					if (parentNode == null || "".equals(parentNode) || ".".equals(parentNode)) {
+						put(parentNode, curentName, value);
+					}else{
+						put("", parentNode+"."+curentName, value);
+					}
+				}
+			
+				public org.bson.Document getObject() {
+					return this.object;
+				}
+				
+				public void setObject(org.bson.Document object){
+					this.object=object;
+				}
+			
+			}
+
+			DBObjectUtil_<%=cid%> updateObjectUtil_<%=cid%>=new DBObjectUtil_<%=cid%>();
+			DBObjectUtil_<%=cid%> queryObjectUtil_<%=cid%>=new DBObjectUtil_<%=cid%>();
+			java.util.Map<String, String> pathMap_<%=cid%>=new java.util.HashMap<String, String>();
+			com.mongodb.MongoClient mongo_<%=cid%>=null;
+			com.mongodb.client.MongoDatabase db_<%=cid%>=null;
+			boolean queryOptionNoTimeOut_<%=cid%> = false;
+			<%
+			for (int i=0;i<mapping.size();i++) {
+				String path = mapping.get(i).get("PARENT_NODE_PATH");
+				if(path==null || "".equals(path)){
+					path="\"\"";
+				}
+				String schemaColumn=mapping.get(i).get("SCHEMA_COLUMN");
+
+				%>
+				pathMap_<%=cid%>.put("<%=schemaColumn%>",<%=path%>);
+				<%
+			}
+      		if (useExistingConnection){
+      			String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+				%>
+				mongo_<%=cid%>=(com.mongodb.MongoClient)globalMap.get("mongo_<%=connection%>");
+				db_<%=cid%> = (com.mongodb.client.MongoDatabase) globalMap.get("db_<%=connection%>");
+				queryOptionNoTimeOut_<%=cid%> =(boolean) globalMap.get("queryOptionNoTimeOut_<%=connection%>");
+				<%
+				if(isLog4jEnabled){
+				%>	
+					log.info("<%=cid%> - Get an existing client from " + "<%=connection%>" + ".");
+					log.info("<%=cid%> - Get an existing DB from " + "<%=connection%>" + ".");
+				<%
+				}
+			}else{
+	 			List<Map<String,String>> replicaAddrs= (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__REPLICA_SET__");
+	 		    boolean useSSL = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_SSL__"));
+
+	 		    String mongoDbDriver = "com.mongodb.MongoClient";
+
+	 		    %>
+	 		    // Empty client options
+                com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().build();
+                <%
+                if (useSSL) {
+                    %>
+                    clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder()
+                    .socketFactory(javax.net.ssl.SSLSocketFactory.getDefault())
+                    .build();
+                    <%
+                }
+                
+                // Client Credentials
+                %>
+                // Empty client credentials list
+                java.util.List<com.mongodb.MongoCredential> mongoCredentialList_<%=cid%> = new java.util.ArrayList<com.mongodb.MongoCredential>();
+
+                <%
+                // Authentication
+                if (authentication){
+                    %>
+                    com.mongodb.MongoCredential mongoCredential_<%=cid%>;
+                    <%
+                    if((authenticationMechanism.equals("NEGOTIATE_MEC"))||(authenticationMechanism.equals("PLAIN_MEC"))||(authenticationMechanism.equals("SCRAMSHA1_MEC"))){
+                        String passwordFieldName = "__PASSWORD__";
+                        %>
+                        <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
+                        <%
+                        if(authenticationMechanism.equals("NEGOTIATE_MEC")){
+%>
+                    			mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createCredential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
+
+<%
+                        } else if(authenticationMechanism.equals("PLAIN_MEC")){
+                            %>
+                            mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createPlainCredential(<%=dbuser%>, "$external", new String(decryptedPassword_<%=cid%>).toCharArray());
+                            <%
+                        } else if(authenticationMechanism.equals("SCRAMSHA1_MEC")){
+                            %>
+                            mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createScramSha1Credential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
+                            <%
+                        }
+                    } else { // GSSAPI SASL (KERBEROS)
+                        %>
+                        System.setProperty("java.security.krb5.realm", <%=krbRealm%>);
+                        System.setProperty("java.security.krb5.kdc", <%=krbKdc%>);
+                        System.setProperty("javax.security.auth.useSubjectCredsOnly", "false");
+                        mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createGSSAPICredential(<%=krbUserPrincipal%>);
+                        <%
+                    }
+                    %>
+                    mongoCredentialList_<%=cid%>.add(mongoCredential_<%=cid%>);
+                    <%
+                }
+
+                // the client
+                if(useReplicaSet){
+                    %>
+                    List<com.mongodb.ServerAddress> addrs_<%=cid%> = new java.util.ArrayList<com.mongodb.ServerAddress>();
+                    <%
+                    for(Map<String,String> replicaAddr:replicaAddrs){
+                    %>
+                        addrs_<%=cid%>.add(new com.mongodb.ServerAddress(<%=replicaAddr.get("REPLICA_HOST")%>,<%=replicaAddr.get("REPLICA_PORT")%>));
+                    <%
+                    }
+                    %>
+                    mongo_<%=cid%> = new <%=mongoDbDriver%>(addrs_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
+                    <%
+                }else{
+                    %>
+                    com.mongodb.ServerAddress serverAddress_<%=cid%> = new com.mongodb.ServerAddress(<%=dbhost%>, <%=dbport%>);
+                    mongo_<%=cid%> = new <%=mongoDbDriver%>(serverAddress_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
+                    <%
+                }
+                %>
+				resourceMap.put("mongo_<%=cid%>", mongo_<%=cid%>);
+				db_<%=cid%> = mongo_<%=cid%>.getDatabase(<%=dbname%>);
+				<%
+
+			}
+
+			if(setWriteConcern){
+				%>
+					<%if(version_3_5_X) {%>
+			    db_<%=cid%>.withWriteConcern(com.mongodb.WriteConcern.<%=writeConcern%>);
+					<%} else {%>
+				mongo_<%=cid%>.setWriteConcern(com.mongodb.WriteConcern.<%=writeConcern%>);
+					<%}%>
+				<%
+			}
+
+			if(queryOptionNoTimeOut && !useExistingConnection){
+		        %>
+		        queryOptionNoTimeOut_<%=cid%> = true;
+		        <%
+    		}
+
+			%>
+			<%
+			if(isLog4jEnabled){
+			%>	
+				log.info("<%=cid%> - Connecting to " + mongo_<%=cid%>.getServerAddressList() + ".");
+			<%
+			}
+			if(dropExistCollection){
+			%>
+					db_<%=cid%>.getCollection(<%=collection%>).drop();
+			<%
+			}
+			%>
+			com.mongodb.client.MongoCollection<org.bson.Document> coll_<%=cid%> = db_<%=cid%>.getCollection(<%=collection%>);
+			<%
+
+			// BulkWrite
+			if(bulkWrite){
+			
+			    if("INSERT".equalsIgnoreCase(dataAction)){%>
+				List<com.mongodb.client.model.InsertOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.InsertOneModel<org.bson.Document>>();
+				<%}else if("UPSERT".equalsIgnoreCase(dataAction)){%>
+				List<com.mongodb.client.model.ReplaceOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.ReplaceOneModel<org.bson.Document>>();
+				<%}else if("DELETE".equalsIgnoreCase(dataAction)){%>
+				List<com.mongodb.client.model.DeleteOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.DeleteOneModel<org.bson.Document>>();
+				<%}else { //update set upset_with_set
+				%>
+				List<com.mongodb.client.model.UpdateOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.UpdateOneModel<org.bson.Document>>();
+				<%}%>
+				
+				int bulkWriteOperationCounter_<%=cid%> = 1;
+				int bulkWriteOperationSize_<%=cid%> = Integer.parseInt(<%=bulkWriteOperationSize%>);
+				<%
+			}
+
+			if (isLog4jEnabled) {
+			%>
+				log.info("<%=cid%> - Start to write data into database [" + db_<%=cid%>.getName() + "].");
+			<%
+			}
+    	}
+    }
+	%>

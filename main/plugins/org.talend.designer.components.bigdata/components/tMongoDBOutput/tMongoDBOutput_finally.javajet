@@ -11,18 +11,25 @@
     String cid = node.getUniqueName();
 	String useExistingConn = ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__");
 	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+	    String dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
 	if(!"true".equals(useExistingConn)){
 %>
 		if(resourceMap.get("finish_<%=cid%>") == null){
 			if(resourceMap.get("mongo_<%=cid%>") != null){
-				<%
-			if(isLog4jEnabled){
-			%>
-				log.info("<%=cid%> - Closing the connection " + ((com.mongodb.Mongo)resourceMap.get("mongo_<%=cid%>")).getServerAddressList() + ".");
-			<%
-			}
-			%>
-				((com.mongodb.Mongo)resourceMap.get("mongo_<%=cid%>")).close();
+
+			
+		    <%if(dbversion.equals("MONGODB_3_5_X")){%>
+		    			<%if(isLog4jEnabled){%>
+		                       log.info("<%=cid%> - Closing the connection " + ((com.mongodb.MongoClient)resourceMap.get("mongo_<%=cid%>")).getServerAddressList() + ".");
+		    			<%}%>
+		    			       ((com.mongodb.MongoClient)resourceMap.get("mongo_<%=cid%>")).close();
+		    <%} else {%>
+		               <%if(isLog4jEnabled){%>
+		                       log.info("<%=cid%> - Closing the connection " + ((com.mongodb.Mongo)resourceMap.get("mongo_<%=cid%>")).getServerAddressList() + ".");
+		               <%}%>
+		                       ((com.mongodb.Mongo)resourceMap.get("mongo_<%=cid%>")).close();
+		    <%}%>
+		    
 			<%
 			if(isLog4jEnabled){
 			%>

@@ -57,11 +57,12 @@
             NUM_ROW="3"
             SHOW_IF="(USE_EXISTING_CONNECTION == 'false')"
             GROUP="CONNECTION">
-            <ITEMS DEFAULT="MONGODB_3_2_X">
+            <ITEMS DEFAULT="MONGODB_3_5_X">
                 <ITEM NAME="MONGODB_2_5_X" VALUE="MONGODB_2_5_X"/>
                 <ITEM NAME="MONGODB_2_6_X" VALUE="MONGODB_2_6_X"/>
                 <ITEM NAME="MONGODB_3_0_X" VALUE="MONGODB_3_0_X"/>
                 <ITEM NAME="MONGODB_3_2_X" VALUE="MONGODB_3_2_X"/>
+                <ITEM NAME="MONGODB_3_5_X" VALUE="MONGODB_3_5_X"/>
             </ITEMS>
         </PARAMETER>
         <PARAMETER

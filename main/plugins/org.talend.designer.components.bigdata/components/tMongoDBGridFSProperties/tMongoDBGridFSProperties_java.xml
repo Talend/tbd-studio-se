@@ -55,11 +55,12 @@
             NUM_ROW="3"
             SHOW_IF="(USE_EXISTING_CONNECTION == 'false')"
             GROUP="CONNECTION">
-            <ITEMS DEFAULT="MONGODB_3_2_X">
+            <ITEMS DEFAULT="MONGODB_3_5_X">
                 <ITEM NAME="MONGODB_2_5_X" VALUE="MONGODB_2_5_X"/>
                 <ITEM NAME="MONGODB_2_6_X" VALUE="MONGODB_2_6_X"/>
                 <ITEM NAME="MONGODB_3_0_X" VALUE="MONGODB_3_0_X"/>
                 <ITEM NAME="MONGODB_3_2_X" VALUE="MONGODB_3_2_X"/>
+                <ITEM NAME="MONGODB_3_5_X" VALUE="MONGODB_3_5_X"/>
             </ITEMS>
         </PARAMETER>
         <PARAMETER
@@ -223,7 +224,7 @@
                 <COLUMN NAME="chunkSize" TYPE="id_Long"/>
                 <COLUMN NAME="uploadDate" TYPE="id_Date" PATTERN='"yyyy-MM-dd HH:mm:ss"'/>
                 <COLUMN NAME="length" TYPE="id_Long"/>
-                <COLUMN NAME="contentType" TYPE="id_String"/>
+                <COLUMN NAME="metadata" TYPE="id_Object"/>
                 <COLUMN NAME="md5" TYPE="id_String"/>
             </TABLE>
         </PARAMETER>

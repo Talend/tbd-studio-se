@@ -9,6 +9,7 @@
 		org.talend.core.model.metadata.types.JavaTypesManager
 		org.talend.core.model.metadata.types.JavaType
 		org.talend.core.model.process.IConnectionCategory
+		org.talend.core.model.utils.NodeUtil
 		java.util.List 
     	java.util.Map		
 	" 
@@ -23,9 +24,36 @@
     String bucketName = ElementParameterParser.getValue(node, "__BUCKET__");
     String sortBy = ElementParameterParser.getValue(node, "__SORTBY__");
     String sortOrder = ElementParameterParser.getValue(node, "__SORTORDER__");
+    %>
+    
+    <%if(version_3_5_X){%>
+    
+    	com.mongodb.client.gridfs.GridFSBucket gridfs_<%=cid%> = com.mongodb.client.gridfs.GridFSBuckets.create(db_<%=cid%>, <%=bucketName%>);
+    	org.bson.Document gridFSQuery_<%=cid%> = org.bson.Document.parse(<%=query%>);
+    	org.bson.Document sortField_<%=cid%> = new org.bson.Document("<%=sortBy%>", <%=sortOrder%>);
+    	com.mongodb.client.MongoCursor<com.mongodb.client.gridfs.model.GridFSFile>	filesCursor_<%=cid%> = gridfs_<%=cid%>.find().sort(sortField_<%=cid%>).iterator();
+    	
+             while(filesCursor_<%=cid%>.hasNext()){
+                 com.mongodb.client.gridfs.model.GridFSFile file_<%=cid%> = filesCursor_<%=cid%>.next();
+				 nb_line_<%=cid %>++;
+<%
+				if(isLog4jEnabled){
+%>
+					log.info("<%=cid%> - Current file " + file_<%=cid%>.getFilename());
+<%
+				}
+%>
+				globalMap.put("<%=cid%>_CURRENT_FILEID", file_<%=cid%>.getObjectId().toString());
+				globalMap.put("<%=cid%>_CURRENT_FILENAME", file_<%=cid%>.getFilename());
+				globalMap.put("<%=cid%>_CURRENT_FILEUPLOADDATE", file_<%=cid%>.getUploadDate());
+				globalMap.put("<%=cid%>_CURRENT_FILELENGTH", file_<%=cid%>.getLength());
+				globalMap.put("<%=cid%>_CURRENT_FILEMD5", file_<%=cid%>.getMD5());
+
+    <%
+    }else{
 %>
 			com.mongodb.gridfs.GridFS gridfs_<%=cid%> = new com.mongodb.gridfs.GridFS(db_<%=cid%>, <%=bucketName%>);
-			com.mongodb.DBObject gridFSQuery_<%=cid%> = (com.mongodb.DBObject) com.mongodb.util.JSON.parse(<%=query%>);
+			com.mongodb.DBObject gridFSQuery_<%=cid%> = com.mongodb.BasicDBObject.parse(<%=query%>);
 			com.mongodb.DBCursor filesCursor_<%=cid%> = gridfs_<%=cid%>.getFileList(gridFSQuery_<%=cid%>);
 
 			<%
@@ -51,5 +79,6 @@
 				globalMap.put("<%=cid%>_CURRENT_FILELENGTH", (Long) file_<%=cid%>.get("length"));
 				globalMap.put("<%=cid%>_CURRENT_FILEMD5", (String) file_<%=cid%>.get("md5"));
 <%
+}
 %>
 

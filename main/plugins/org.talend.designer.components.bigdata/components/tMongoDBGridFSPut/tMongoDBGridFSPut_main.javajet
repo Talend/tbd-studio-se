@@ -9,6 +9,7 @@
 		org.talend.core.model.metadata.types.JavaTypesManager
 		org.talend.core.model.metadata.types.JavaType
 		org.talend.core.model.process.IConnectionCategory
+		org.talend.core.model.utils.NodeUtil
 		java.util.List 
     	java.util.Map		
 	" 
@@ -22,6 +23,16 @@
   	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
 	String localdir = ElementParameterParser.getValue(node, "__LOCALDIR__");
 	boolean useGlob = ("true").equals(ElementParameterParser.getValue(node, "__PERL5_REGEX__"));
+	boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"));
+	String dbversion;
+	if(useExistingConnection){
+	    String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+        INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
+        dbversion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
+    }else{
+        dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
+    }
+    boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
 
 %>
 		java.util.Set<String> keySet_<%=cid %> = map_<%=cid %>.keySet();
@@ -92,15 +103,28 @@
 					if(("").equals(gridfsFilename_<%=cid%>)){
 						gridfsFilename_<%=cid%> = listings_<%=cid %>[m_<%=cid %>].getName();
 					}
+				<%if(version_3_5_X) {%>
+					try (java.io.InputStream streamToUploadFrom_<%=cid%> = new java.io.FileInputStream(new java.io.File("D:/test/dog/defaultfilename.txt"))){
+		    				// Create some custom options
+		    			com.mongodb.client.gridfs.model.GridFSUploadOptions options_<%=cid%> = new com.mongodb.client.gridfs.model.GridFSUploadOptions()
+		    				.chunkSizeBytes(358400);
+		    			if(info_<%=cid%>.setMetadata) {
+							options_<%=cid%>.metadata(org.bson.Document.parse(info_<%=cid%>.metadataJson));
+					}
+		    		    gridfs_<%=cid%>.uploadFromStream(gridfsFilename_<%=cid%>, streamToUploadFrom_<%=cid%>, options_<%=cid%>);
+					}
+				<%} else {%>
 					com.mongodb.gridfs.GridFSInputFile gridfsFile_<%=cid%> = gridfs_<%=cid%>.createFile(listings_<%=cid %>[m_<%=cid %>]);
 					gridfsFile_<%=cid%>.setFilename(gridfsFilename_<%=cid%>);
 					
 					if(info_<%=cid%>.setMetadata) {
-						com.mongodb.DBObject metadata_<%=cid%> = (com.mongodb.DBObject)com.mongodb.util.JSON.parse(info_<%=cid%>.metadataJson);
+						com.mongodb.DBObject metadata_<%=cid%> = com.mongodb.BasicDBObject.parse(info_<%=cid%>.metadataJson);
 						gridfsFile_<%=cid%>.setMetaData(metadata_<%=cid%>);
 					}
 					
 					gridfsFile_<%=cid%>.save();
+				<%}%>
+
 					nb_line_<%=cid %>++;
 <%					if(isLog4jEnabled) {
 %>

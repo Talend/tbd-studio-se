@@ -9,6 +9,7 @@
 		org.talend.core.model.metadata.types.JavaTypesManager
 		org.talend.core.model.metadata.types.JavaType
 		org.talend.core.model.process.IConnectionCategory
+		org.talend.core.model.utils.NodeUtil
 		java.util.List 
     	java.util.Map		
 	" 
@@ -21,8 +22,23 @@
   	String cid = node.getUniqueName();
   	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
 // Delete the files one by one; instead of calling gridfs.remove; this allows us to confirm the delete and to print the message.
+    boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"));
+	String dbversion;
+	if(useExistingConnection){
+	    String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+        INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
+        dbversion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
+    }else{
+        dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
+    }
+    boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
 %>
+		
+		<%if(version_3_5_X){%>
+		gridfs_<%=cid%>.delete(gridFSfile.getId());
+		<%} else {%>
 		gridfs_<%=cid%>.remove(new org.bson.types.ObjectId(gridFSfile.getId().toString()));
+		<%}%>
 		nb_line_<%=cid %>++;
 		<%if(isLog4jEnabled) {%>
 				log.info("<%=cid%> - file : " + gridFSfile.getFilename() + " was successfully deleted.");

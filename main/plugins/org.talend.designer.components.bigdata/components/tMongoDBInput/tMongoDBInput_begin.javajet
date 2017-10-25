@@ -9,6 +9,7 @@
 		org.talend.core.model.metadata.types.JavaTypesManager
 		org.talend.core.model.metadata.types.JavaType
 		org.talend.core.model.process.IConnectionCategory
+		org.talend.core.model.utils.NodeUtil
 		java.util.List 
     	java.util.Map		
 	" 
@@ -49,7 +50,19 @@
     String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
     String usedAuthenticationDB = useAuthDB ? authDB : dbname;
     boolean useExternalSort = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__EXTERNAL_SORT_AGGREGATION__"));
-    boolean queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
+    boolean queryOptionNoTimeOut;
+	String dbversion;
+	if(useExistingConnection){
+	    String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+        INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
+        dbversion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
+        queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(connectionNode, "__QUERYOPTION_NOTIMEOUT__"));
+    }else{
+        dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
+        queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
+    }
+    boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
+    String objectType = version_3_5_X?"org.bson.Document":"com.mongodb.DBObject";
 
   	List<IMetadataTable> metadatas = node.getMetadataList();
   	List<IMetadataColumn> columnList = null;
@@ -68,14 +81,30 @@
       	IMetadataTable metadata = metadatas.get(0);
       	if(metadata != null){
 		%>
+		
+		<%if(version_3_5_X) {%>
+			com.mongodb.MongoClient mongo_<%=cid%>=null;
+			com.mongodb.client.MongoDatabase db_<%=cid%>=null;
+		<%} else {%>
 			com.mongodb.Mongo mongo_<%=cid%>=null;
 			com.mongodb.DB db_<%=cid%>=null;
+		<%}%>
+
+			
 			<%
       		if (useExistingConnection){
       			String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
 				%>
+				
+				<%if(version_3_5_X) {%>
+				mongo_<%=cid%>=(com.mongodb.MongoClient)globalMap.get("mongo_<%=connection%>");
+				db_<%=cid%> = (com.mongodb.client.MongoDatabase) globalMap.get("db_<%=connection%>");
+				<%} else {%>
 				mongo_<%=cid%>=(com.mongodb.Mongo)globalMap.get("mongo_<%=connection%>");
 				db_<%=cid%> = (com.mongodb.DB) globalMap.get("db_<%=connection%>");
+				<%}%>
+
+
 				<%
 				if(isLog4jEnabled){
 				%>	
@@ -90,8 +119,6 @@
 	 			List<Map<String,String>> replicaAddrs= (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__REPLICA_SET__");
 
                 boolean useSSL = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_SSL__"));
-                String dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
-
                 String mongoDbDriver = "com.mongodb.MongoClient";
                 %>
 
@@ -174,8 +201,12 @@
                     <%
 				}
                 %>
-
-				db_<%=cid%> = mongo_<%=cid%>.getDB(<%=dbname%>);
+                <%if(version_3_5_X) {%>
+					db_<%=cid%> = mongo_<%=cid%>.getDatabase(<%=dbname%>);
+				<%} else {%>
+					db_<%=cid%> = mongo_<%=cid%>.getDB(<%=dbname%>);
+				<%}%>
+				
 				<%
 			}
 
@@ -209,7 +240,11 @@
 
 			if(queryOptionNoTimeOut && !useExistingConnection){
 		        %>
-		            mongo_<%=cid%>.addOption(com.mongodb.Bytes.QUERYOPTION_NOTIMEOUT);
+		        <%if(version_3_5_X) {%>
+					queryOptionNoTimeOut_<%=cid%> = true;
+				<%} else {%>
+					mongo_<%=cid%>.addOption(com.mongodb.Bytes.QUERYOPTION_NOTIMEOUT);
+				<%}%>
 		        <%
     		}
 
@@ -221,14 +256,23 @@
 			log4jFileUtil.startRetriveDataInfo();
 
 			%>
-
-				com.mongodb.DBCollection coll_<%=cid%> = db_<%=cid%>.getCollection(<%=collection%>);
+				<%if(version_3_5_X) {%>
+					com.mongodb.client.MongoCollection<org.bson.Document> coll_<%=cid%> = db_<%=cid%>.getCollection(<%=collection%>);
+				<%} else {%>
+					com.mongodb.DBCollection coll_<%=cid%> = db_<%=cid%>.getCollection(<%=collection%>);
+				<%}%>
+				
 				
 				try{
 					// Add warning if an index is not in the query.
 					boolean needIndexWarning = true;
 					String indexList = "";
-	                for (com.mongodb.DBObject index: coll_<%=cid%>.getIndexInfo()) {
+					<%if(version_3_5_X) {%>
+					for (com.mongodb.DBObject index: coll_<%=cid%>.listIndexes(com.mongodb.DBObject.class)) {
+					<%} else {%>
+					for (com.mongodb.DBObject index: coll_<%=cid%>.getIndexInfo()) {
+					<%}%>
+	                
 	                    for (String key: ((com.mongodb.DBObject)index.get("key")).keySet()) {
 	                        // The regexp is:
 	                        // - contain the db DBcolumnName between two backslashed quotes
@@ -270,7 +314,12 @@
 	                <%
 	                for (int i=0; i<aggregationStages.size(); i++){
 	                %>
-	                	aggregationStages.add((com.mongodb.DBObject) com.mongodb.util.JSON.parse(<%=aggregationStages.get(i).get("AGGREGATION_STAGE")%>));
+	                	<%if(version_3_5_X) {%>
+							aggregationStages.add(com.mongodb.BasicDBObject.parse(<%=aggregationStages.get(i).get("AGGREGATION_STAGE")%>));
+						<%} else {%>
+							aggregationStages.add((com.mongodb.DBObject) com.mongodb.util.JSON.parse(<%=aggregationStages.get(i).get("AGGREGATION_STAGE")%>));
+						<%}%>
+	                	
 	                <%
 	                }
 	                %>
@@ -279,9 +328,20 @@
 	            // FIND QUERY
                 } else {
 	                %>
-	                com.mongodb.DBObject myQuery_<%=cid%> = (com.mongodb.DBObject) com.mongodb.util.JSON.parse(<%=query%>);
+	                
+	                <%if(version_3_5_X) {%>
+					com.mongodb.BasicDBObject myQuery_<%=cid%> = com.mongodb.BasicDBObject.parse(<%=query%>);
+	                com.mongodb.client.FindIterable<org.bson.Document> fi_<%=cid%> = coll_<%=cid%>.find(myQuery_<%=cid%>).noCursorTimeout(queryOptionNoTimeOut_<%=cid%>);
+					<%} else {%>
+					com.mongodb.DBObject myQuery_<%=cid%> = (com.mongodb.DBObject) com.mongodb.util.JSON.parse(<%=query%>);
 		    		com.mongodb.DBObject fields_<%=cid%> = new com.mongodb.BasicDBObject();
 		  			com.mongodb.DBCursor cursor_<%=cid%> = coll_<%=cid%>.find(myQuery_<%=cid%>, fields_<%=cid%>);
+					<%}%>
+	                
+		  			
+		  			
+
+		  			 
 	                <%
                 }
                 %>
@@ -289,7 +349,8 @@
 				class DBObjectInputUtil_<%=cid%>{
 					// Get the node value in embedded document, 
 					//If have no embedded document get root document node.
-					public Object getValue(String parentNode,String currentName,com.mongodb.DBObject dbObject){
+					
+					public Object getValue(String parentNode,String currentName,<%=objectType%> dbObject){
 						Object value=null;
 						if(dbObject==null){
 							return null;
@@ -302,9 +363,9 @@
 							}
 						}else{
 							String objNames[] = objNames = parentNode.split("\\.");
-							com.mongodb.DBObject currentObj=dbObject;
+							<%=objectType%> currentObj=dbObject;
 							for(int i=0;i<objNames.length;i++){
-								currentObj=(com.mongodb.DBObject)currentObj.get(objNames[i]);
+								currentObj=(<%=objectType%>)currentObj.get(objNames[i]);
 								if(currentObj==null){
 									break;
 								}
@@ -335,14 +396,24 @@
 			// Note: Aggregation queriess do not support limit
 			if (limit != null && !"\"\"".equals(limit) && limit.length() > 0 && !isAggregationQuery){
 %>
-	  			cursor_<%=cid%> = cursor_<%=cid%>.limit(<%=limit%>);
+						<%if(version_3_5_X) {%>
+					fi_<%=cid%> = fi_<%=cid%>.limit(<%=limit%>);
+						<%} else {%>
+					cursor_<%=cid%> = cursor_<%=cid%>.limit(<%=limit%>);
+						<%}%>
+	  			
 <%
 			}
 
 			// Note: Aggregation queriess do not support sort
 			if(sorts.size()>0 && !isAggregationQuery){
 %>
-		  		com.mongodb.DBObject orderBy_<%=cid%> = new com.mongodb.BasicDBObject();
+						<%if(version_3_5_X) {%>
+					com.mongodb.BasicDBObject orderBy_<%=cid%> = new com.mongodb.BasicDBObject();
+						<%} else {%>
+					com.mongodb.DBObject orderBy_<%=cid%> = new com.mongodb.BasicDBObject();
+						<%}%>
+		  		
 <%
 				for(Map<String, String> line:sorts){
 					int order=-1;
@@ -354,16 +425,25 @@
 <%
 				}
 %>
-				cursor_<%=cid%>.sort(orderBy_<%=cid%>);
+						<%if(version_3_5_X) {%>
+					fi_<%=cid%>.sort(orderBy_<%=cid%>);
+						<%} else {%>
+					cursor_<%=cid%>.sort(orderBy_<%=cid%>);
+						<%}%>
+				
 <%
 			}
 %>
+
+						<%if(version_3_5_X) {%>
+					com.mongodb.client.MongoCursor<org.bson.Document> cursor_<%=cid%> = fi_<%=cid%>.iterator();
+						<%}%>
 				while (cursor_<%=cid%>.hasNext()){
 <%
           	columnList = metadata.getListColumns();
           	int sizeColumns = columnList.size();
 %>
-				com.mongodb.DBObject o_<%=cid%> = cursor_<%=cid%>.next();
+				<%=objectType%> o_<%=cid%> = cursor_<%=cid%>.next();
 				nb_line_<%=cid %>++;
 <%
 			if(firstConnName.length()>0){

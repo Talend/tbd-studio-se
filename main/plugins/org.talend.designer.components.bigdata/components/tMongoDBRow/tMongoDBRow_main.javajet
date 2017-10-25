@@ -51,7 +51,7 @@
 <%
 			} else if (isJsonCommand){
 %>
-				result_<%=cid%> = db_<%=cid%>.command((com.mongodb.BasicDBObject) com.mongodb.util.JSON.parse(<%=jsonCommand%>));
+				result_<%=cid%> = db_<%=cid%>.command(com.mongodb.BasicDBObject.parse(<%=jsonCommand%>));
 <%
 			} else{
 				if(isLog4jEnabled){

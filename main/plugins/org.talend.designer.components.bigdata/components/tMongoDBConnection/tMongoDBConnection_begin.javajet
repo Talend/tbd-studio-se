@@ -34,6 +34,7 @@
     String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
     String usedAuthenticationDB = useAuthDB ? authDB : dbname;
     boolean queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
+    boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
     
     String mongoDbDriver = "com.mongodb.MongoClient";
     
@@ -115,32 +116,48 @@
         <%
         }
         %>
-        com.mongodb.Mongo mongo_<%=cid%> = new <%=mongoDbDriver%>(serverAddressList_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
+        
+		<%if(version_3_5_X) {%>
+			com.mongodb.MongoClient mongo_<%=cid%> = new <%=mongoDbDriver%>(serverAddressList_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
+		<%} else {%>
+			com.mongodb.Mongo mongo_<%=cid%> = new <%=mongoDbDriver%>(serverAddressList_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
+		<%}%>
+        
         <%
     }else{
         %>
         com.mongodb.ServerAddress serverAddress_<%=cid%> = new com.mongodb.ServerAddress(<%=dbhost%>, <%=dbport%>);
-        com.mongodb.Mongo mongo_<%=cid%> = new <%=mongoDbDriver%>(serverAddress_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
+        <%if(version_3_5_X) {%>
+			com.mongodb.MongoClient mongo_<%=cid%> = new <%=mongoDbDriver%>(serverAddress_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
+		<%} else {%>
+			com.mongodb.Mongo mongo_<%=cid%> = new <%=mongoDbDriver%>(serverAddress_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
+		<%}%>
+        
         <%
     }
 
     %>
     mongo_<%=cid%>.getAddress() ;
-    com.mongodb.DB db_<%=cid%> = mongo_<%=cid%>.getDB(<%=dbname%>);
+    <%if(version_3_5_X) {%>
+		com.mongodb.client.MongoDatabase db_<%=cid%> = mongo_<%=cid%>.getDatabase(<%=dbname%>);
+	<%} else {%>
+		com.mongodb.DB db_<%=cid%> = mongo_<%=cid%>.getDB(<%=dbname%>);
+	<%}%>
+    
     <%
-
     if(isLog4jEnabled){
     %>
         log.info("<%=cid%> - Connecting to " + mongo_<%=cid%>.getServerAddressList() + ".");
     <%
     }
-
-    if(queryOptionNoTimeOut){
+    if(queryOptionNoTimeOut&&!version_3_5_X){
         %>
             mongo_<%=cid%>.addOption(com.mongodb.Bytes.QUERYOPTION_NOTIMEOUT);
         <%
     }
-
     %>
+    <%if(version_3_5_X) {%>
+    globalMap.put("queryOptionNoTimeOut_<%=cid%>", <%=queryOptionNoTimeOut%>);
+    <%}%>
     globalMap.put("mongo_<%=cid%>", mongo_<%=cid%>);
     globalMap.put("db_<%=cid%>", db_<%=cid%>);

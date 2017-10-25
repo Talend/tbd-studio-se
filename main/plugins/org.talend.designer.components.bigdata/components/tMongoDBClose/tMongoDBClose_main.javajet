@@ -14,7 +14,7 @@
    	String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
 	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
 %>
-	com.mongodb.Mongo mongo_<%=cid%>=(com.mongodb.Mongo)globalMap.get("mongo_<%=connection%>");
+	com.mongodb.MongoClient mongo_<%=cid%>=(com.mongodb.MongoClient)globalMap.get("mongo_<%=connection%>");
 	if(mongo_<%=cid%> != null )
 	{
 		<%

@@ -9,6 +9,7 @@
 		org.talend.core.model.metadata.types.JavaTypesManager
 		org.talend.core.model.metadata.types.JavaType
 		org.talend.core.model.process.IConnectionCategory
+		org.talend.core.model.utils.NodeUtil
 		java.util.List 
     	java.util.Map		
 	" 
@@ -25,27 +26,37 @@
     query = query.replaceAll("\n","");
     query = query.replaceAll("\r","");
     String bucketName = ElementParameterParser.getValue(node, "__BUCKET__");
+    String fileType = version_3_5_X?"com.mongodb.client.gridfs.model.GridFSFile":"com.mongodb.gridfs.GridFSDBFile";
 %>
-			com.mongodb.gridfs.GridFS gridfs_<%=cid%> = new com.mongodb.gridfs.GridFS(db_<%=cid%>, <%=bucketName%>);
-			java.util.List<com.mongodb.gridfs.GridFSDBFile> gridfsFiles_<%=cid%>;
-
-			<%
-			// FIND files with given filename
-			if(givenStringFileName){
-				%>
+			
+	<%if(version_3_5_X){%>
+			com.mongodb.client.gridfs.GridFSBucket gridfs_<%=cid%> = com.mongodb.client.gridfs.GridFSBuckets.create(db_<%=cid%>, <%=bucketName%>);
+	    	<%if(givenStringFileName){%>
+	    		org.bson.Document gridFSQuery_<%=cid%> = new org.bson.Document("filename",<%=stringFileName%>);
+			 <%}else{%>
+			 	org.bson.Document gridFSQuery_<%=cid%> = org.bson.Document.parse(<%=query%>);
+			 <%}%>
+			 com.mongodb.client.gridfs.GridFSFindIterable gridfsFiles_<%=cid%> = gridfs_<%=cid%>.find(gridFSQuery_<%=cid%>);
+    <%}else{%>
+    		com.mongodb.gridfs.GridFS gridfs_<%=cid%> = new com.mongodb.gridfs.GridFS(db_<%=cid%>, <%=bucketName%>);
+			java.util.List<<%=fileType%>> gridfsFiles_<%=cid%>;
+			<%// FIND files with given filename
+			if(givenStringFileName){%>
+				
 				gridfsFiles_<%=cid%> = gridfs_<%=cid%>.find(<%=stringFileName%>);
-				<%
-			}
+				
+				<%}
 			// FIND files from a given Mongo Query 
 			else {
 				%>
-				com.mongodb.DBObject gridFSQuery_<%=cid%> = (com.mongodb.DBObject) com.mongodb.util.JSON.parse(<%=query%>);
+				com.mongodb.DBObject gridFSQuery_<%=cid%> = com.mongodb.BasicDBObject.parse(<%=query%>);
 				gridfsFiles_<%=cid%> = gridfs_<%=cid%>.find(gridFSQuery_<%=cid%>);
 				<%
 			}
 			%>
+    <%}%>
 
-			for(com.mongodb.gridfs.GridFSDBFile file : gridfsFiles_<%=cid%>){
+			for(<%=fileType%> file : gridfsFiles_<%=cid%>){
 				nb_line_<%=cid %>++;
 				Object valueObj_<%=cid%>=null;
 				<%
@@ -57,9 +68,32 @@
 						String typeToGenerate = JavaTypesManager.getTypeToGenerate(column.getTalendType(), column.isNullable());
 						JavaType javaType = JavaTypesManager.getJavaTypeFromId(column.getTalendType());
 						String patternValue = column.getPattern() == null || column.getPattern().trim().length() == 0 ? null : column.getPattern();
+						if(version_3_5_X){
+						  String columnName = column.getOriginalDbColumnName();
+						    if("_id".equalsIgnoreCase(columnName)){
 						%>
-						valueObj_<%=cid%> = file.get("<%=column.getOriginalDbColumnName()%>");
+							valueObj_<%=cid%> = file.getObjectId();
+							<%} else if ("filename".equalsIgnoreCase(columnName)){%>
+							valueObj_<%=cid%> = file.getFilename();
+							<%} else if ("chunkSize".equalsIgnoreCase(columnName)){%>
+							valueObj_<%=cid%> = file.getChunkSize();
+							<%} else if ("uploadDate".equalsIgnoreCase(columnName)){%>
+							valueObj_<%=cid%> = file.getUploadDate();
+							<%} else if ("length".equalsIgnoreCase(columnName)){%>
+							valueObj_<%=cid%> = file.getLength();
+							<%} else if ("contentType".equalsIgnoreCase(columnName)){%>
+							valueObj_<%=cid%> = file.getContentType();
+							<%} else if ("md5".equalsIgnoreCase(columnName)){%>
+							valueObj_<%=cid%> = file.getMD5();
+							<%} else if ("Metadata".equalsIgnoreCase(columnName)){%>
+							valueObj_<%=cid%> = file.getMetadata();
+							<%}else{%>
+							valueObj_<%=cid%> = null;
+							<%}%>
 						<%
+						}else{%>
+						valueObj_<%=cid%> = file.get("<%=column.getOriginalDbColumnName()%>");
+						<%}
 
 						if(javaType == JavaTypesManager.OBJECT) {
 							%>

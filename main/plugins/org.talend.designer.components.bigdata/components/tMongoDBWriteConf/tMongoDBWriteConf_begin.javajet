@@ -31,7 +31,6 @@
     String collection=ElementParameterParser.getValue(node, "__COLLECTION__");
     boolean dropExistCollection="true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__DROP_COLLECTION_CREATE__"));
     boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"));
-    String dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
     boolean useReplicaSet="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_REPLICA_SET__"));
     boolean removeRoot="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REMOVE_ROOT__"));
 
@@ -41,12 +40,24 @@
     boolean setBulkWrite = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_BULK_WRITE__"));
     String bulkWriteOperationSize = ElementParameterParser.getValue(node, "__BULK_WRITE_SIZE__");
     String bulkWriteType = ElementParameterParser.getValue(node, "__BULK_WRITE_TYPE__");
-    // BulkWrite is only supportted on Mongo 2.6+
-    final boolean bulkWrite = setBulkWrite & (!"MONGODB_2_5_X".equalsIgnoreCase(dbversion));
     boolean useAuthDB = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_AUTHENTICATION_DATABASE__"));
     String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
     String usedAuthenticationDB = useAuthDB ? authDB : dbname;
-    boolean queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
+    boolean queryOptionNoTimeOut;
+	String dbversion;
+	if(useExistingConnection){
+	    String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+        INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
+        dbversion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
+        queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(connectionNode, "__QUERYOPTION_NOTIMEOUT__"));
+    }else{
+        dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
+        queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
+    }
+    boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
+    String objectType = version_3_5_X?"org.bson.Document":"com.mongodb.DBObject";
+        // BulkWrite is only supportted on Mongo 2.6+
+    final boolean bulkWrite = setBulkWrite & (!"MONGODB_2_5_X".equalsIgnoreCase(dbversion));
 
     boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
 	%>
@@ -57,14 +68,28 @@
       	IMetadataTable metadata = metadatas.get(0);
       	if(metadata != null){
 		%>
+		
+		<%if(version_3_5_X) {%>
+			com.mongodb.MongoClient mongo_<%=cid%>=null;
+			com.mongodb.client.MongoDatabase db_<%=cid%>=null;
+		<%} else {%>
 			com.mongodb.Mongo mongo_<%=cid%>=null;
-			com.mongodb.DB db_<%=cid%> =null;
+			com.mongodb.DB db_<%=cid%>=null;
+		<%}%>
+		
 			<%
       		if (useExistingConnection){
       			String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
 				%>
+				
+				<%if(version_3_5_X) {%>
+				mongo_<%=cid%>=(com.mongodb.MongoClient)globalMap.get("mongo_<%=connection%>");
+				db_<%=cid%> = (com.mongodb.client.MongoDatabase) globalMap.get("db_<%=connection%>");
+				<%} else {%>
 				mongo_<%=cid%>=(com.mongodb.Mongo)globalMap.get("mongo_<%=connection%>");
 				db_<%=cid%> = (com.mongodb.DB) globalMap.get("db_<%=connection%>");
+				<%}%>
+				
 				<%
 				if(isLog4jEnabled){
 				%>	
@@ -161,7 +186,11 @@
                 }
                 %>
 				resourceMap.put("mongo_<%=cid%>", mongo_<%=cid%>);
-				db_<%=cid%> = mongo_<%=cid%>.getDB(<%=dbname%>);
+				<%if(version_3_5_X) {%>
+					db_<%=cid%> = mongo_<%=cid%>.getDatabase(<%=dbname%>);
+				<%} else {%>
+					db_<%=cid%> = mongo_<%=cid%>.getDB(<%=dbname%>);
+				<%}%>
 				<%
 			}
 
@@ -190,7 +219,11 @@
 			<%
 			}
 			%>
-			com.mongodb.DBCollection coll_<%=cid%> = db_<%=cid%>.getCollection(<%=collection%>);
+				<%if(version_3_5_X) {%>
+					com.mongodb.client.MongoCollection<org.bson.Document> coll_<%=cid%> = db_<%=cid%>.getCollection(<%=collection%>);
+				<%} else {%>
+					com.mongodb.DBCollection coll_<%=cid%> = db_<%=cid%>.getCollection(<%=collection%>);
+				<%}%>
 
 			<%
 			// BulkWrite

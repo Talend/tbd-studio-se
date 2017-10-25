@@ -9,6 +9,7 @@
 		org.talend.core.model.metadata.types.JavaTypesManager
 		org.talend.core.model.metadata.types.JavaType
 		org.talend.core.model.process.IConnectionCategory
+		org.talend.core.model.utils.NodeUtil
 		java.util.List 
     	java.util.Map		
 	" 
@@ -23,11 +24,26 @@
   	String outputLocalPath = ElementParameterParser.getValue(node, "__OUTPUT_LOCAL_PATH__");
     boolean overWriteLocalFiles = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__OVERWRITE_LOCAL_FILES__"));
     boolean idAsFilename = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__ID_AS_FILENAME__"));
+    boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"));
+	String dbversion;
+	if(useExistingConnection){
+	    String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+        INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
+        dbversion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
+    }else{
+        dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
+    }
+    boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
 
     // Generate output filename
     if(idAsFilename){
 %>
-		String outputFileName_<%=cid%> = <%=outputLocalPath%> + "/" + gridFSfile.getId();
+			    <%if(version_3_5_X){%>
+					String outputFileName_<%=cid%> = <%=outputLocalPath%> + "/" + gridFSfile.getObjectId();
+				<%} else {%>
+					String outputFileName_<%=cid%> = <%=outputLocalPath%> + "/" + gridFSfile.getId();
+				<%}%>
+		
 <%
 	}else{
 %>
@@ -48,13 +64,21 @@
 				log.error("<%=cid%> - file : " + outputFileName_<%=cid%> + " exists, will not be overwritten.");
 			<%}%>
 		}else{
-			gridFSfile.writeTo(outputFile_<%=cid%>);
+			    <%if(version_3_5_X){%>
+					gridfs_<%=cid%>.downloadToStream(gridFSfile.getId(),new java.io.FileOutputStream(outputFile_<%=cid%>));
+				<%} else {%>
+					gridFSfile.writeTo(outputFile_<%=cid%>);
+				<%}%>
 			nb_line_<%=cid %>++;
 		}
 <%
 	} else {
 %>
+        <%if(version_3_5_X){%>
+		gridfs_<%=cid%>.downloadToStream(gridFSfile.getId(),new java.io.FileOutputStream(outputFile_<%=cid%>));
+		<%} else {%>
 		gridFSfile.writeTo(outputFile_<%=cid%>);
+		<%}%>
 		nb_line_<%=cid %>++;
 <%
 	}

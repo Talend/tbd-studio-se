@@ -30,11 +30,11 @@
 						<%
 						if(isLog4jEnabled){
 						%>
-							log.info("<%=cid%> - Closing the connection " + ((com.mongodb.Mongo)resourceMap.get("mongo_<%=cid%>")).getServerAddressList() + ".");
+							log.info("<%=cid%> - Closing the connection " + ((com.mongodb.MongoClient)resourceMap.get("mongo_<%=cid%>")).getServerAddressList() + ".");
 						<%
 						}
 						%>
-							((com.mongodb.Mongo)resourceMap.get("mongo_<%=cid%>")).close();
+							((com.mongodb.MongoClient)resourceMap.get("mongo_<%=cid%>")).close();
 						<%
 						if(isLog4jEnabled){
 						%>

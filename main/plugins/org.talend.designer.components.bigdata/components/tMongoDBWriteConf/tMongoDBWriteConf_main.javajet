@@ -52,7 +52,7 @@
 			<%
 			}
 			%>
-			Object data_<%=cid%>=com.mongodb.util.JSON.parse(json_<%=cid%>.toString());
+			Object data_<%=cid%>=com.mongodb.BasicDBObject.parse(json_<%=cid%>.toString());
 			<%
 			if(isLog4jEnabled){
 			%>

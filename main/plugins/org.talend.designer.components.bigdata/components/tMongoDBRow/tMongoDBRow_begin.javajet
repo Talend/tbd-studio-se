@@ -3,7 +3,7 @@
 		org.talend.core.model.process.INode 
 		org.talend.core.model.process.ElementParameterParser 
 		org.talend.designer.codegen.config.CodeGeneratorArgument
-		
+		org.talend.core.model.utils.NodeUtil
 		java.util.List 
     	java.util.Map		
 	" 
@@ -37,9 +37,11 @@
 	<%
 	if (useExistingConnection){
   		String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+        INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
+        String database = ElementParameterParser.getValue(connectionNode, "__DATABASE__");
 		%>
 		mongo_<%=cid%>=(com.mongodb.Mongo)globalMap.get("mongo_<%=connection%>");
-		db_<%=cid%> = (com.mongodb.DB) globalMap.get("db_<%=connection%>");
+		db_<%=cid%> = mongo_<%=cid%>.getDB("<%=database%>");
 		<%
 		if(isLog4jEnabled){
 		%>	
@@ -83,7 +85,7 @@
                 <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
                 <%
                 if(authenticationMechanism.equals("NEGOTIATE_MEC")){
-                    if(dbversion.equals("MONGODB_3_0_X") || dbversion.equals("MONGODB_3_2_X")) {
+                    if(dbversion.equals("MONGODB_3_0_X") || dbversion.equals("MONGODB_3_2_X")|| dbversion.equals("MONGODB_3_5_X")) {
 %>
                         mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createCredential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
 <%                    

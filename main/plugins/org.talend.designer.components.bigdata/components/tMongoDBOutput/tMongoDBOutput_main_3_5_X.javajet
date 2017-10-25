@@ -1,0 +1,295 @@
+<%@ jet
+	imports="
+		org.talend.designer.codegen.config.CodeGeneratorArgument
+		org.talend.core.model.process.INode
+		org.talend.core.model.process.EConnectionType
+		org.talend.core.model.process.ElementParameterParser
+		org.talend.core.model.process.IConnection
+		org.talend.core.model.metadata.IMetadataColumn
+		org.talend.core.model.metadata.IMetadataTable
+		org.talend.core.model.process.IConnectionCategory
+		java.util.List
+"
+%>
+<%
+	
+	String dataAction = ElementParameterParser.getValue(node,"__DATA_ACTION__");
+	boolean dieOnError = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__DIE_ON_ERROR__"));
+	List<? extends IConnection> inConns = node.getIncomingConnections(EConnectionType.FLOW_MAIN);
+	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+    java.util.List<java.util.Map<String, String>> mappings = (java.util.List<java.util.Map<String, String>>)ElementParameterParser.getObjectValueXML(node, "__MAPPING__");
+
+    boolean bulkWrite = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_BULK_WRITE__"));
+    String bulkWriteOperationSize = ElementParameterParser.getValue(node, "__BULK_WRITE_SIZE__");
+    boolean bulkWriteType = "Ordered".equalsIgnoreCase(ElementParameterParser.getValue(node, "__BULK_WRITE_TYPE__"));
+    boolean updateAll = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__UPDATE_ALL__"));
+
+	IConnection inConn = null;
+	IMetadataTable metadata = null;
+	
+	if(inConns!=null && inConns.size()> 0) {
+		inConn = inConns.get(0);
+		metadata = inConn.getMetadataTable();
+	}
+%>
+try{
+<%
+
+	if (metadata!=null) {
+		List< ? extends IConnection> conns = node.getIncomingConnections();
+		for (IConnection conn : conns) {
+			if (conn.getLineStyle().hasConnectionCategory(IConnectionCategory.DATA)) {
+				List<IMetadataColumn> columnList = metadata.getListColumns();
+				int sizeColumns = columnList.size();
+
+				// Create the BasicDBObject
+				%>
+				updateObjectUtil_<%=cid%>.setObject(new org.bson.Document());
+
+				<%
+				if(!"INSERT".equalsIgnoreCase(dataAction)){
+				%>
+					queryObjectUtil_<%=cid%>.setObject(new org.bson.Document());
+					int countKey_<%=cid%>=0;
+				<%
+				}
+				// Set key/values of the BasicObject
+				for (int i = 0; i < sizeColumns; i++) {
+					IMetadataColumn column = columnList.get(i);
+					
+					for (java.util.Map<String, String> mapping: mappings) {
+					    if (column.getLabel().equals(mapping.get("SCHEMA_COLUMN"))) {
+	                        if ("true".equals(mapping.get("REMOVE_NULL_FIELD"))) {
+	                            %>
+	                            if (<%=conn.getName() %>.<%=column.getLabel() %> != null) {
+    	                            <%
+    	                            if (!"INSERT".equalsIgnoreCase(dataAction) && column.isKey()){
+    	                                %>
+    	                                    queryObjectUtil_<%=cid%>.putkeyNode(pathMap_<%=cid%>.get("<%=column.getLabel() %>"),"<%=column.getOriginalDbColumnName() %>", <%=conn.getName() %>.<%=column.getLabel() %>);
+    	                                    countKey_<%=cid%>++;
+    	                                <%
+                                    }
+                                    %>
+                                    updateObjectUtil_<%=cid%>.put(pathMap_<%=cid%>.get("<%=column.getLabel() %>"),"<%=column.getOriginalDbColumnName() %>", <%=conn.getName() %>.<%=column.getLabel() %>);
+	                            }
+                                <%
+                            } else {
+                                if (!"INSERT".equalsIgnoreCase(dataAction) && column.isKey()){
+                                    %>
+                                        queryObjectUtil_<%=cid%>.putkeyNode(pathMap_<%=cid%>.get("<%=column.getLabel() %>"),"<%=column.getOriginalDbColumnName() %>", <%=conn.getName() %>.<%=column.getLabel() %>);
+                                        countKey_<%=cid%>++;
+                                    <%
+                                }
+                                %>
+                                updateObjectUtil_<%=cid%>.put(pathMap_<%=cid%>.get("<%=column.getLabel() %>"),"<%=column.getOriginalDbColumnName() %>", <%=conn.getName() %>.<%=column.getLabel() %>);
+                                <%
+                            }
+                            break;
+                        }
+		            }
+  				}
+  				// Get the BasicDBObject
+				%>
+				org.bson.Document updateObj_<%=cid%> = updateObjectUtil_<%=cid%>.getObject();
+				<%
+
+				// INSERT operation
+				if ("INSERT".equalsIgnoreCase(dataAction)) {
+					// Bulk Writes
+					if(bulkWrite){
+						// Add inserts untill bulksize is reached then execute and re-initialze the bulk operation
+						%>
+						if(bulkWriteOperationCounter_<%=cid%> < bulkWriteOperationSize_<%=cid%>){
+							bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.InsertOneModel<org.bson.Document>(updateObj_<%=cid%>));
+							bulkWriteOperationCounter_<%=cid%>++;
+						} else {
+                            bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.InsertOneModel<org.bson.Document>(updateObj_<%=cid%>));
+							coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
+							bulkWriteOperationCounter_<%=cid%>=1;
+							bulkWriteOperation_<%=cid%> = new java.util.ArrayList();
+						}
+						<%
+					// Single Writes
+					}else{
+					%>
+						coll_<%=cid%>.insertOne(updateObj_<%=cid%>);
+					<%
+					}
+				// Other operations (UPDATE, UPSERT, DELETE)
+				}else{
+				%>
+					if(countKey_<%=cid%> <=0){
+						<%
+						if(dieOnError){
+						%>
+							throw new Exception("Must have at least one key in schema");
+						<%
+						}else{
+							if(isLog4jEnabled){
+							%>
+								log.error("<%=cid%> - Must have at least one key in schema");
+							<%
+							}
+							%>
+							System.err.println("Must have at least one key in schema");
+						<%
+						}
+						%>
+					}else{
+						org.bson.Document queryObj_<%=cid%> = queryObjectUtil_<%=cid%>.getObject();
+						<%
+						// UPDATE
+						if("UPDATE".equalsIgnoreCase(dataAction)){
+							// Bulk Updates 
+							if(bulkWrite){
+								%>
+								if(bulkWriteOperationCounter_<%=cid%> < bulkWriteOperationSize_<%=cid%>){
+									bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.UpdateOneModel<org.bson.Document>(queryObj_<%=cid%>,updateObj_<%=cid%>));
+									bulkWriteOperationCounter_<%=cid%>++;
+								}else{
+                                    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.UpdateOneModel<org.bson.Document>(queryObj_<%=cid%>,updateObj_<%=cid%>));
+									coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
+									bulkWriteOperationCounter_<%=cid%>=1;
+									bulkWriteOperation_<%=cid%> = new java.util.ArrayList();
+								}
+								<%
+							}else{
+								%>
+								coll_<%=cid%>.updateOne(queryObj_<%=cid%>, updateObj_<%=cid%>);
+								<%
+							}
+						// SET
+						} else if("SET".equalsIgnoreCase(dataAction)){
+                            // Bulk Updates
+                            if(bulkWrite){
+                                %>
+                                if(bulkWriteOperationCounter_<%=cid%> < bulkWriteOperationSize_<%=cid%>){
+                                    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.UpdateOneModel<org.bson.Document>(queryObj_<%=cid%>,new org.bson.Document("$set", updateObj_<%=cid%>)));
+                                    bulkWriteOperationCounter_<%=cid%>++;
+                                }else{
+                                    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.UpdateOneModel<org.bson.Document>(queryObj_<%=cid%>,new org.bson.Document("$set", updateObj_<%=cid%>)));
+                                    coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
+                                    bulkWriteOperationCounter_<%=cid%>=1;
+                                    bulkWriteOperation_<%=cid%> = new java.util.ArrayList();
+                                }
+                                <%
+                            }else{
+                                if(updateAll){
+                            	%>
+                                coll_<%=cid%>.updateMany(queryObj_<%=cid%>,new org.bson.Document("$set", updateObj_<%=cid%>));
+                                <%
+                                } else {
+                                %>
+                                coll_<%=cid%>.updateOne(queryObj_<%=cid%>,new org.bson.Document("$set", updateObj_<%=cid%>));
+                                <%
+                                }
+                            }
+                        // UPSERT
+						} else if("UPSERT".equalsIgnoreCase(dataAction)){
+                            // Bulk Upsert
+                            if(bulkWrite){
+                                %>
+                                if(bulkWriteOperationCounter_<%=cid%> < bulkWriteOperationSize_<%=cid%>){
+                                    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.ReplaceOneModel<org.bson.Document>(queryObj_<%=cid%>,updateObj_<%=cid%>,new com.mongodb.client.model.UpdateOptions().upsert(true)));
+                                    bulkWriteOperationCounter_<%=cid%>++;
+                                }else{
+                                    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.ReplaceOneModel<org.bson.Document>(queryObj_<%=cid%>,updateObj_<%=cid%>),new com.mongodb.client.model.UpdateOptions().upsert(true)));
+                                    coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
+                                    bulkWriteOperationCounter_<%=cid%>=1;
+                                    bulkWriteOperation_<%=cid%> = new java.util.ArrayList();
+                                }
+                                <%
+                            }else{
+                                %>
+                                coll_<%=cid%>.ReplaceOne(queryObj_<%=cid%>,updateObj_<%=cid%>,new com.mongodb.client.model.UpdateOptions().upsert(true));
+                                <%
+                            }
+                        // UPSERT WITH SET
+                        } else if("UPSERT_WITH_SET".equalsIgnoreCase(dataAction)){
+                            // Bulk Upsert
+                            if(bulkWrite){
+                                %>
+                                if(bulkWriteOperationCounter_<%=cid%> < bulkWriteOperationSize_<%=cid%>){
+                                    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.UpdateOneModel<org.bson.Document>(queryObj_<%=cid%>,new org.bson.Document("$set", updateObj_<%=cid%>),new com.mongodb.client.model.UpdateOptions().upsert(true)));
+                                    bulkWriteOperationCounter_<%=cid%>++;
+                                }else{
+                                    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.UpdateOneModel<org.bson.Document>(queryObj_<%=cid%>,new org.bson.Document("$set", updateObj_<%=cid%>),new com.mongodb.client.model.UpdateOptions().upsert(true)));
+                                    coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
+                                    bulkWriteOperationCounter_<%=cid%>=1;
+                                    bulkWriteOperation_<%=cid%> = new java.util.ArrayList();
+                                }
+                                <%
+                            }else{
+                                if(updateAll){
+                            	%>
+                                coll_<%=cid%>.updateMany(queryObj_<%=cid%>,new org.bson.Document("$set", updateObj_<%=cid%>));
+                                <%
+                                } else {
+                                %>
+                                coll_<%=cid%>.updateOne(queryObj_<%=cid%>,new org.bson.Document("$set", updateObj_<%=cid%>));
+                                <%
+                                }
+                            }
+                        // DELETE
+                        } else if("DELETE".equalsIgnoreCase(dataAction)){
+							// Bulk Delete
+							if(bulkWrite){
+								%>
+								if(bulkWriteOperationCounter_<%=cid%> < bulkWriteOperationSize_<%=cid%>){
+									bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.DeleteOneModel<org.bson.Document>(queryObj_<%=cid%>)));
+									bulkWriteOperationCounter_<%=cid%>++;
+								}else{
+								    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.DeleteOneModel<org.bson.Document>(queryObj_<%=cid%>)));
+									coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>);
+									bulkWriteOperationCounter_<%=cid%>=1;
+									bulkWriteOperation_<%=cid%> = new java.util.ArrayList();
+								}
+								<%
+							}else{
+								%>
+								coll_<%=cid%>.removeOne(queryObj_<%=cid%>);
+								<%
+							}
+						}
+						%>
+					}
+				<%
+				}
+				%>
+				} catch (Exception e_<%=cid%>) {
+				<%
+
+				// Die on Error 
+				// Used only with MONGODB 2.5
+				// 2.5 doesn't support BulkWrites => No BulkWrites Die and Error
+                    %>
+    					<%
+    					if(dieOnError){
+    					%>
+    						throw e_<%=cid%>;
+    					<%
+    					}else{
+    						if(isLog4jEnabled){
+    						%>
+    							log.error("<%=cid%> - " + e_<%=cid%>.getMessage());
+    						<%
+    						}
+    						%>
+    						System.err.println(e_<%=cid%>.getMessage());
+    					<%
+    					}
+    					%>
+    			}
+				nb_line_<%=cid %> ++;
+				<%
+
+				if(isLog4jEnabled){
+				%>
+					log.debug("<%=cid%> - [<%=dataAction%>] - Writing the record " + nb_line_<%=cid %> + " into database.");
+				<%
+				}
+
+			}
+		}
+	}
+	%>
