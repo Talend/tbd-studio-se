@@ -92,7 +92,9 @@
 	com.cloudera.sqoop.SqoopOptions sqoopOptions_<%=cid%> = new com.cloudera.sqoop.SqoopOptions(configuration_<%=cid%>);
 	sqoopOptions_<%=cid%>.setConnectString(<%=connection%>); // __CONNECTION__
 	sqoopOptions_<%=cid%>.setUsername(<%=username%>); // __USERNAME__
+	if((<%=driverClass%> != null) && !"".equals(<%=driverClass%>)) {
 	sqoopOptions_<%=cid%>.setDriverClassName(<%=driverClass%>);//driver class name
+	}
 	
    <%if(!passwordStoredInFile || !sqoopDistrib.doJavaAPISupportStorePasswordInFile()) {%>
 		<%
