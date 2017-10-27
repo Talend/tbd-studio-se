@@ -106,7 +106,7 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5120"
-            id="hadoop-azure-datalake-2.6.05.1212.1.jar"
+            id="hadoop-azure-datalake-2.6.0-cdh5.12.1.jar"
             name="hadoop-azure-datalake-2.6.0-cdh5.12.1.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-azure-datalake-2.6.0-cdh5.12.1/6.0.0">
         </libraryNeeded>
@@ -1286,7 +1286,7 @@
                 id="SPARK-AZURE-LIB-MRREQUIRED-CDH_5_12"
                 name="SPARK-AZURE-LIB-MRREQUIRED-CDH_5_12">
                 <library id="hadoop-azure-2.6.0-cdh5.12.1.jar"/>
-                <library id="hadoop-azure-datalake-2.6.05.1212.1.jar"/>
+                <library id="hadoop-azure-datalake-2.6.0-cdh5.12.1.jar"/>
                 <library id="azure-data-lake-store-sdk-2.1.4.jar" />
                 <library id="azure-common-1.7.1.jar"/>
                 <library id="microsoft-windowsazure-storage-sdk-0.6.0.jar"/>
