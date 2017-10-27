@@ -74,7 +74,7 @@
             <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
             <%
             if(authenticationMechanism.equals("NEGOTIATE_MEC")){
-                if(dbversion.equals("MONGODB_3_0_X") || dbversion.equals("MONGODB_3_2_X")) {
+                if(dbversion.equals("MONGODB_3_0_X") || dbversion.equals("MONGODB_3_2_X") || version_3_5_X) {
 %>
                     mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createCredential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
 <%                    

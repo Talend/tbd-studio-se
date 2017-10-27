@@ -150,7 +150,7 @@
                         <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
                         <%
                         if(authenticationMechanism.equals("NEGOTIATE_MEC")){
-                			if(dbversion.equals("MONGODB_3_0_X") || dbversion.equals("MONGODB_3_2_X")) {
+                			if(dbversion.equals("MONGODB_3_0_X") || dbversion.equals("MONGODB_3_2_X") || version_3_5_X) {
 %>
                     			mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createCredential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
 <%                    
@@ -306,12 +306,18 @@
                 // AGGREGATION QUERY
                 if(isAggregationQuery){
 	                %>
-	                	java.util.List<com.mongodb.DBObject> aggregationStages = new java.util.ArrayList<com.mongodb.DBObject>();
+	                	<%if(version_3_5_X) {%>
+							java.util.List<org.bson.Document> aggregationStages = new java.util.ArrayList<org.bson.Document>();
+						<%} else {%>
+							java.util.List<com.mongodb.DBObject> aggregationStages = new java.util.ArrayList<com.mongodb.DBObject>();
+						<%}%>
+	                	
 	                <%
 	                for (int i=0; i<aggregationStages.size(); i++){
 	                %>
-	                	<%if(version_3_5_X) {%>
-							aggregationStages.add(com.mongodb.BasicDBObject.parse(<%=aggregationStages.get(i).get("AGGREGATION_STAGE")%>));
+	                	<%if(version_3_5_X) {
+	                	%>
+							aggregationStages.add(org.bson.Document.parse(<%=aggregationStages.get(i).get("AGGREGATION_STAGE")%>));
 						<%} else {%>
 							aggregationStages.add((com.mongodb.DBObject) com.mongodb.util.JSON.parse(<%=aggregationStages.get(i).get("AGGREGATION_STAGE")%>));
 						<%}%>
@@ -319,14 +325,19 @@
 	                <%
 	                }
 	                %>
-	                com.mongodb.Cursor cursor_<%=cid%> = coll_<%=cid%>.aggregate(aggregationStages, com.mongodb.AggregationOptions.builder().outputMode(com.mongodb.AggregationOptions.OutputMode.CURSOR).allowDiskUse(<%=useExternalSort%>).build());
+	                	<%if(version_3_5_X) {%>
+							com.mongodb.client.MongoCursor<org.bson.Document> cursor_<%=cid%> = coll_<%=cid%>.aggregate(aggregationStages).	useCursor(true).allowDiskUse(<%=useExternalSort%>).iterator();
+						<%} else {%>
+							com.mongodb.Cursor cursor_<%=cid%> = coll_<%=cid%>.aggregate(aggregationStages, com.mongodb.AggregationOptions.builder().outputMode(com.mongodb.AggregationOptions.OutputMode.CURSOR).allowDiskUse(<%=useExternalSort%>).build());
+						<%}%>
+	                
 	                <%
 	            // FIND QUERY
                 } else {
 	                %>
 	                
 	                <%if(version_3_5_X) {%>
-					com.mongodb.BasicDBObject myQuery_<%=cid%> = com.mongodb.BasicDBObject.parse(<%=query%>);
+					org.bson.Document myQuery_<%=cid%> = org.bson.Document.parse(<%=query%>);
 	                com.mongodb.client.FindIterable<org.bson.Document> fi_<%=cid%> = coll_<%=cid%>.find(myQuery_<%=cid%>).noCursorTimeout(<%=queryOptionNoTimeOut%>);
 					<%} else {%>
 					com.mongodb.DBObject myQuery_<%=cid%> = (com.mongodb.DBObject) com.mongodb.util.JSON.parse(<%=query%>);
@@ -431,7 +442,7 @@
 			}
 %>
 
-						<%if(version_3_5_X) {%>
+						<%if(version_3_5_X && !isAggregationQuery) {%>
 					com.mongodb.client.MongoCursor<org.bson.Document> cursor_<%=cid%> = fi_<%=cid%>.iterator();
 						<%}%>
 				while (cursor_<%=cid%>.hasNext()){
