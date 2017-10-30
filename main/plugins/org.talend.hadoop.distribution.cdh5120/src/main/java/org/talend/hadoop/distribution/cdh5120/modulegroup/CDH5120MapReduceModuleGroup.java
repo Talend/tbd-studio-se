@@ -30,10 +30,13 @@ public class CDH5120MapReduceModuleGroup {
         hs.add(new DistributionModuleGroup(CDH5120Constant.MAPREDUCE_MODULE_GROUP.getModuleName()));
         hs.add(new DistributionModuleGroup(CDH5120Constant.MAPREDUCE_PARQUET_MODULE_GROUP.getModuleName()));
         hs.add(new DistributionModuleGroup(CDH5120Constant.MAPREDUCE_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName(), true, null));
-        ComponentCondition conditionUseNavigator = new SimpleComponentCondition(new BasicExpression(
-                MRConstant.USE_CLOUDERA_NAVIGATOR));
-        hs.add(new DistributionModuleGroup(CDH5120Constant.TALEND_CLOUDERA_CDH_5_12_NAVIGATOR.getModuleName(), true,
-                conditionUseNavigator));
+		// ComponentCondition conditionUseNavigator = new SimpleComponentCondition(new
+		// BasicExpression(
+		// MRConstant.USE_CLOUDERA_NAVIGATOR));
+		// hs.add(new
+		// DistributionModuleGroup(CDH5120Constant.TALEND_CLOUDERA_CDH_5_12_NAVIGATOR.getModuleName(),
+		// true,
+		// conditionUseNavigator));
         return hs;
     }
 

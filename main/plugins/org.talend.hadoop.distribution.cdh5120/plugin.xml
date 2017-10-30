@@ -1263,8 +1263,8 @@
                 description="Spark libraries for CDH 5.12 that are MRREQUIRED"
                 id="SPARK-PARQUET-LIB-MRREQUIRED-CDH_5_12"
                 name="SPARK-PARQUET-LIB-MRREQUIRED-CDH_5_12">
-             <library id="parquet-avro-1.5.0-cdh5.12.1.jar"/>
-             <library id="parquet-hadoop-bundle-1.5.0-cdh5.12.1.jar"/>
+             <!--library id="parquet-avro-1.5.0-cdh5.12.1.jar"/-->
+             <!--library id="parquet-hadoop-bundle-1.5.0-cdh5.12.1.jar"/-->
         </libraryNeededGroup>
 
         <!-- Spark S3 group MRREQUIRED -->

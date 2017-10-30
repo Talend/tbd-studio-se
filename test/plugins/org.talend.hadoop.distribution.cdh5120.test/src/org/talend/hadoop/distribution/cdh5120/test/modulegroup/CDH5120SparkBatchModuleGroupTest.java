@@ -50,12 +50,12 @@ public class CDH5120SparkBatchModuleGroupTest {
         hs7.add("(SPARK_LOCAL_MODE=='false')");//$NON-NLS-1$
         results.put(CDH5120Constant.MAPREDUCE_MODULE_GROUP.getModuleName(), hs7);
 
-        Set<String> hs8 = new HashSet<>();
-        hs8.add("(USE_CLOUDERA_NAVIGATOR=='true')");//$NON-NLS-1$
-        results.put(CDH5120Constant.TALEND_CLOUDERA_CDH_5_12_NAVIGATOR.getModuleName(), hs8);
+		// Set<String> hs8 = new HashSet<>();
+		// hs8.add("(USE_CLOUDERA_NAVIGATOR=='true')");//$NON-NLS-1$
+		// results.put(CDH5120Constant.TALEND_CLOUDERA_CDH_5_12_NAVIGATOR.getModuleName(), hs8);
 
         Set<DistributionModuleGroup> moduleGroups = CDH5120SparkBatchModuleGroup.getModuleGroups();
-        assertEquals(6, moduleGroups.size());
+        assertEquals(results.keySet().size(), moduleGroups.size());
         moduleGroups.iterator();
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$
