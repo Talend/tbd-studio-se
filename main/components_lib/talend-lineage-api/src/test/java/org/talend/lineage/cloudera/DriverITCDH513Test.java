@@ -36,7 +36,7 @@ public class DriverITCDH513Test {
     @Test
     public void test() {
         
-        NavigatorPlugin plugin = NavigatorPlugin.fromConfigFile("src/test/resources/sample.conf"); // src/test/resources/sample.conf
+        NavigatorPlugin plugin = NavigatorPlugin.fromConfigFile("src/test/resources/sample.conf");
 
         plugin.registerModels(DriverITCDH513Test.class.getClass().getPackage().getName());
 
