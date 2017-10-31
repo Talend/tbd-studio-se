@@ -12,10 +12,13 @@
 // ============================================================================
 package org.talend.lineage.cloudera;
 
+import static org.junit.Assert.*;
+
 import java.util.Arrays;
 import java.util.Map;
 
 import org.joda.time.Instant;
+import org.junit.Test;
 import org.talend.lineage.cloudera.entity.MyCustomEntity;
 
 import com.cloudera.nav.sdk.client.MetadataResultIterator;
@@ -27,13 +30,15 @@ import com.cloudera.nav.sdk.model.entities.EndPointProxy;
 import com.cloudera.nav.sdk.model.entities.EntityType;
 import com.google.common.collect.Lists;
 
-public class DriverITCDH513 {
 
-    public static void main(String[] args) {
+public class DriverITCDH513Test {
 
-        NavigatorPlugin plugin = NavigatorPlugin.fromConfigFile("C:\\Users\\zafkir\\Documents\\sample.conf"); // src/test/resources/sample.conf
+    @Test
+    public void test() {
+        
+        NavigatorPlugin plugin = NavigatorPlugin.fromConfigFile("src/test/resources/sample.conf"); // src/test/resources/sample.conf
 
-        plugin.registerModels(DriverITCDH513.class.getClass().getPackage().getName());
+        plugin.registerModels(DriverITCDH513Test.class.getClass().getPackage().getName());
 
         MyCustomEntity myCustomEntity = new MyCustomEntity(plugin.getNamespace(), "My custom entity 1");
         myCustomEntity.setDescription("I am a custom entity 1");
@@ -62,28 +67,30 @@ public class DriverITCDH513 {
         myCustomEntity2.sourceProxies.add(endPointProxy1);
         myCustomEntity2.targetProxies.add(endPointProxy2);
 
+        // Write custom entities to cloudera navigator
         ResultSet results = plugin.write(Arrays.asList(myCustomEntity, myCustomEntity2));
-
-        if (results.hasErrors()) {
-            throw new RuntimeException(results.toString());
-        }
-
+        
+        assertFalse(results.hasErrors());
+        
+        // Read and check custom entities from cloudera navigator
         MetadataResultIterator metadataResultIterator = new MetadataResultIterator(plugin.getClient(), MetadataType.ENTITIES,
                 "identity:" + myCustomEntity.generateId(), 1, Lists.newArrayList());
-        if(metadataResultIterator.hasNext()) {
-            Map<String, Object> result = metadataResultIterator.next();
-            System.out.println("Entity[identity: " + result.get("identity") + ", source: " + result.get("sourceType") + ", type: " + result.get("type") + ", name: " + result.get("originalName") + "]");
-        } else {
-            throw new RuntimeException("Entity (identity: " + myCustomEntity.generateId() + ") not found");
-        }
+        
+        assertTrue(metadataResultIterator.hasNext());
+        
+        Map<String, Object> result = metadataResultIterator.next();
+        assertEquals(myCustomEntity.getSourceType().toString(), result.get("sourceType"));
+        assertEquals(myCustomEntity.getEntityType().toString(), result.get("type"));
+        assertEquals(myCustomEntity.getName().toString(), result.get("originalName"));
         
         metadataResultIterator = new MetadataResultIterator(plugin.getClient(), MetadataType.ENTITIES,
                 "identity:" + myCustomEntity2.generateId(), 1, Lists.newArrayList());
-        if(metadataResultIterator.hasNext()) {
-            Map<String, Object> result = metadataResultIterator.next();
-            System.out.println("Entity[identity: " + result.get("identity") + ", source: " + result.get("sourceType") + ", type: " + result.get("type") + ", name: " + result.get("originalName") + "]");
-        } else {
-            throw new RuntimeException("Entity (identity: " + myCustomEntity2.generateId() + ") not found");
-        }
+        
+        assertTrue(metadataResultIterator.hasNext());
+        
+        result = metadataResultIterator.next();
+        assertEquals(myCustomEntity2.getSourceType().toString(), result.get("sourceType"));
+        assertEquals(myCustomEntity2.getEntityType().toString(), result.get("type"));
+        assertEquals(myCustomEntity2.getName().toString(), result.get("originalName"));
     }
 }
