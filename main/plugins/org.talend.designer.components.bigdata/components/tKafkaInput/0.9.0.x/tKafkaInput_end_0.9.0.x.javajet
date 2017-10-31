@@ -28,9 +28,14 @@
 
 // Close the loop scope.
 %>
-    } catch (org.apache.kafka.common.KafkaException e) {
-		// Unexpected exception
-		e.printStackTrace();
+    } catch (org.apache.kafka.common.errors.AuthenticationException|org.apache.kafka.common.errors.AuthorizationException|org.apache.kafka.common.errors.UnknownServerException|org.apache.kafka.common.errors.UnsupportedVersionException e) {
+    	// the process stops when there is AuthenticationException, AuthorizationException, UnknownServerException or UnsupportedVersionException
+		throw e;
+	} catch (org.apache.kafka.common.KafkaException e) {
+		<%if(isLog4jEnabled){%>	
+			log.error("<%=cid%> - " + e.getMessage());
+		<%}%>
+		System.err.println(e);
 		break;
 	}
 } // end while(true)

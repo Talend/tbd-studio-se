@@ -24,8 +24,41 @@ final INode node = (INode)codeGenArgument.getArgument();
 final TKafkaOutputUtil tKafkaOutputUtil = new TKafkaOutputUtil(node);
 
 final String cid = node.getUniqueName();
+
+final boolean dieOnError = "true".equals(ElementParameterParser.getValue(node, "__DIE_ON_ERROR__"));
+final boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
 %>
 
-<%=cid%>_kafkaProducer.send(new org.apache.kafka.clients.producer.ProducerRecord<byte[], byte[]>(<%=tKafkaOutputUtil.getKafkaTopic()%>, <%=tKafkaOutputUtil.getIncomingConnection().getName()%>.<%=tKafkaOutputUtil.getIncomingColumnName()%>));
+<%=cid%>_kafkaProducer.send(new org.apache.kafka.clients.producer.ProducerRecord<byte[], byte[]>(<%=tKafkaOutputUtil.getKafkaTopic()%>, <%=tKafkaOutputUtil.getIncomingConnection().getName()%>.<%=tKafkaOutputUtil.getIncomingColumnName()%>), new org.apache.kafka.clients.producer.Callback() {
+	public void onCompletion(org.apache.kafka.clients.producer.RecordMetadata metadata, Exception e) {
+		if (e != null) {
+			<%=cid%>_producerExceptions.add(e);
+		}
+		<%=cid%>_counter_rev.getAndIncrement();
+	}
+});
+<%=cid%>_counter_send++;
 
-
+if (!<%=cid%>_producerExceptions.isEmpty()) {
+	Exception e = <%=cid%>_producerExceptions.iterator().next();
+	<%
+	if (dieOnError) {
+	%>
+		throw e;
+	<%
+	} else {
+	// if DIE_ON_ERROR unchecked, the process stops when there is AuthenticationException, AuthorizationException, UnknownServerException or UnsupportedVersionException
+	%>
+		if (e instanceof org.apache.kafka.common.errors.AuthenticationException || e instanceof org.apache.kafka.common.errors.AuthorizationException || e instanceof org.apache.kafka.common.errors.UnknownServerException || e instanceof org.apache.kafka.common.errors.UnsupportedVersionException) {
+			throw e;
+		} else {
+			<%if(isLog4jEnabled){%>	
+				log.error("<%=cid%> - " + e.getMessage());
+			<%}%>
+			System.err.println(e);
+		}
+	<%
+	}
+	%>
+}
+	

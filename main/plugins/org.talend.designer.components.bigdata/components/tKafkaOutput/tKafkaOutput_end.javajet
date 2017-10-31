@@ -18,6 +18,35 @@ CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
 INode node = (INode)codeGenArgument.getArgument();
 String cid = node.getUniqueName();
 
+final boolean dieOnError = "true".equals(ElementParameterParser.getValue(node, "__DIE_ON_ERROR__"));
+final boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+
 //%cid%_kafkaProducer.close();
 %>
 
+final long <%=cid%>_startCheckingTime = System.nanoTime();
+while (<%=cid%>_counter_send > <%=cid%>_counter_rev.intValue() && java.util.concurrent.TimeUnit.NANOSECONDS.toSeconds(System.nanoTime() - <%=cid%>_startCheckingTime) < <%=cid%>_EXCEPTION_CATCH_TIMEOUT);
+if (<%=cid%>_counter_send <= <%=cid%>_counter_rev.intValue()) {
+	if (!<%=cid%>_producerExceptions.isEmpty()) {
+		Exception e = <%=cid%>_producerExceptions.iterator().next();
+		<%
+		if (dieOnError) {
+		%>
+			throw e;
+		<%
+		} else {
+		// if DIE_ON_ERROR unchecked, the process stops when there is AuthenticationException, AuthorizationException, UnknownServerException or UnsupportedVersionException
+		%>
+			if (e instanceof org.apache.kafka.common.errors.AuthenticationException || e instanceof org.apache.kafka.common.errors.AuthorizationException || e instanceof org.apache.kafka.common.errors.UnknownServerException || e instanceof org.apache.kafka.common.errors.UnsupportedVersionException) {
+				throw e;
+			} else {
+				<%if(isLog4jEnabled){%>	
+					log.error("<%=cid%> - " + e.getMessage());
+				<%}%>
+				System.err.println(e);
+			}
+		<%
+		}
+		%>
+	}
+}

@@ -22,6 +22,7 @@ INode node = (INode)codeGenArgument.getArgument();
 String cid = node.getUniqueName();
 
 TKafkaInputUtil tKafkaInputUtil = new TKafkaInputUtil(node);
+final boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
 
 if(tKafkaInputUtil.isKafkaVersion("KAFKA_0_8_2_0")) {
 %>

@@ -96,3 +96,8 @@ if(null == <%=cid%>_kafkaProducer) {
     <%=cid%>_kafkaProducer = new org.apache.kafka.clients.producer.KafkaProducer<byte[], byte[]>(<%=cid%>_kafkaProperties, new org.apache.kafka.common.serialization.ByteArraySerializer(), new org.apache.kafka.common.serialization.ByteArraySerializer());
     globalMap.put("<%=cid%>_kafkaProducer", <%=cid%>_kafkaProducer);
 }
+
+final java.util.Set<Exception> <%=cid%>_producerExceptions = java.util.Collections.newSetFromMap(new java.util.concurrent.ConcurrentHashMap<Exception, Boolean>());
+final int <%=cid%>_EXCEPTION_CATCH_TIMEOUT = 5;
+int <%=cid%>_counter_send = 0;
+java.util.concurrent.atomic.AtomicInteger <%=cid%>_counter_rev = new java.util.concurrent.atomic.AtomicInteger();
