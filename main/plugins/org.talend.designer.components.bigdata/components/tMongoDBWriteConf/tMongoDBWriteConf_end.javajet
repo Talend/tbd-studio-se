@@ -24,6 +24,7 @@
 	String dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
 	boolean setBulkWrite = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_BULK_WRITE__"));
 	final boolean bulkWrite = setBulkWrite & (!"MONGODB_2_5_X".equalsIgnoreCase(dbversion));
+	boolean bulkWriteType = "Ordered".equalsIgnoreCase(ElementParameterParser.getValue(node, "__BULK_WRITE_TYPE__"));
 	
 	List<IMetadataTable> metadatas = node.getMetadataList();
 	if ((metadatas!=null)&&(metadatas.size()>0)) {
@@ -68,7 +69,11 @@
 		        %>
 		        // if bulkWriteOperationCounter_<%=cid%> == 1 the ulkWriteOperation_<%=cid%> is empty, do not execute.
 		        if (bulkWriteOperationCounter_<%=cid%> != 1) {
-		            bulkWriteOperation_<%=cid%>.execute();
+		    <%if(dbversion.equals("MONGODB_3_5_X")){%>
+		    	coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
+		    <%} else {%>
+		    	bulkWriteOperation_<%=cid%>.execute();
+		    <%}%>
 		        }
 		        <%
 			}

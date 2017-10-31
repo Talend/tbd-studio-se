@@ -107,6 +107,11 @@
 		        String mongoDbDriver = "com.mongodb.MongoClient";
 
 		        %>
+            <%if(isLog4jEnabled){%>
+			java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.OFF);
+			<%}else{%>
+			java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.SEVERE);
+          <%}%>
                 // Empty client options
                 com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().build();
                 <%
@@ -240,7 +245,7 @@
 				<%if(version_3_5_X) {
 					if("INSERT".equalsIgnoreCase(dataAction)){%>
 						List<com.mongodb.client.model.InsertOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.InsertOneModel<org.bson.Document>>();
-					<%}else if("UPSERT".equalsIgnoreCase(dataAction)){%>
+					<%}else if("UPSERT".equalsIgnoreCase(dataAction)||"UPDATE".equalsIgnoreCase(dataAction)){%>
 						List<com.mongodb.client.model.ReplaceOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.ReplaceOneModel<org.bson.Document>>();
 					<%}else if("DELETE".equalsIgnoreCase(dataAction)){%>
 						List<com.mongodb.client.model.DeleteOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.DeleteOneModel<org.bson.Document>>();
@@ -342,28 +347,28 @@
                  * header method to ease javajet implementation.
                  **/
                 public void processTree(Object currentElement, String[] path, String pattern) {
-                    if (currentElement instanceof com.mongodb.BasicDBObject) {
+                    if (currentElement instanceof <%=objectType%>) {
                         // Start index at 1, in order to remove the first unwanted or empty string.
-                        processTree((com.mongodb.BasicDBObject)currentElement, path, 1, pattern);
+                        processTree((<%=objectType%>)currentElement, path, 1, pattern);
                    } else if (currentElement instanceof com.mongodb.BasicDBList) {
                        // Start index at 1, in order to remove the first unwanted or empty string.
                        processTree((com.mongodb.BasicDBList) currentElement, path, 1, pattern);
                    }
                 }
 
-                public void processTree(com.mongodb.BasicDBObject currentElement, String[] path, int index, String pattern) {
+                public void processTree(<%=objectType%> currentElement, String[] path, int index, String pattern) {
                     if (index  < path.length - 1) {
                         Object nextElement = currentElement.get(path[index]);
-                        if (nextElement instanceof com.mongodb.BasicDBObject) {
-                             processTree((com.mongodb.BasicDBObject)nextElement, path, index + 1, pattern);
+                        if (nextElement instanceof <%=objectType%>) {
+                             processTree((<%=objectType%>)nextElement, path, index + 1, pattern);
                         } else if (nextElement instanceof com.mongodb.BasicDBList) {
                             processTree((com.mongodb.BasicDBList) nextElement, path, index + 1, pattern);
                         } else if (nextElement == null && index > 0) {
                             // some loop are not reported by the XML tree
                             nextElement = currentElement.get(path[index - 1]);
                             if (nextElement != null) {
-                                if (nextElement instanceof com.mongodb.BasicDBObject) {
-                                    processTree((com.mongodb.BasicDBObject)nextElement, path, index, pattern);
+                                if (nextElement instanceof <%=objectType%>) {
+                                    processTree((<%=objectType%>)nextElement, path, index, pattern);
                                } else if (nextElement instanceof com.mongodb.BasicDBList) {
                                    processTree((com.mongodb.BasicDBList) nextElement, path, index, pattern);
                                }
@@ -413,8 +418,8 @@
                 public void processTree(com.mongodb.BasicDBList currentElements, String[] path, int index, String pattern) {
                     if (index  < path.length - 1) {
                         for (Object currentElement: currentElements) {
-                            if (currentElement instanceof com.mongodb.BasicDBObject) {
-                                processTree((com.mongodb.BasicDBObject)currentElement, path, index + 1, pattern);
+                            if (currentElement instanceof <%=objectType%>) {
+                                processTree((<%=objectType%>)currentElement, path, index + 1, pattern);
                             } else if (currentElement instanceof com.mongodb.BasicDBList) {
                                 processTree((com.mongodb.BasicDBList) currentElement, path, index + 1, pattern);
                             }
@@ -423,8 +428,8 @@
                         // process leaf
                         com.mongodb.BasicDBList convertedElements = new com.mongodb.BasicDBList();
                         for (Object finalObject: currentElements) {
-                            if (finalObject instanceof com.mongodb.BasicDBObject) {
-                                com.mongodb.BasicDBObject currentElement = (com.mongodb.BasicDBObject) finalObject;
+                            if (finalObject instanceof <%=objectType%>) {
+                                <%=objectType%> currentElement = (<%=objectType%>) finalObject;
                                 if (pattern == null) {
                                     // no pattern, we want to parse to a byte array.
                                     if (currentElement.get(path[path.length - 1]) != null) {

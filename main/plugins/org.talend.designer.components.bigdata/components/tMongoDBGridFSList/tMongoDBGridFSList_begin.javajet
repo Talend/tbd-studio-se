@@ -31,7 +31,7 @@
     	com.mongodb.client.gridfs.GridFSBucket gridfs_<%=cid%> = com.mongodb.client.gridfs.GridFSBuckets.create(db_<%=cid%>, <%=bucketName%>);
     	org.bson.Document gridFSQuery_<%=cid%> = org.bson.Document.parse(<%=query%>);
     	org.bson.Document sortField_<%=cid%> = new org.bson.Document("<%=sortBy%>", <%=sortOrder%>);
-    	com.mongodb.client.MongoCursor<com.mongodb.client.gridfs.model.GridFSFile>	filesCursor_<%=cid%> = gridfs_<%=cid%>.find().sort(sortField_<%=cid%>).iterator();
+    	com.mongodb.client.MongoCursor<com.mongodb.client.gridfs.model.GridFSFile>	filesCursor_<%=cid%> = gridfs_<%=cid%>.find(gridFSQuery_<%=cid%>).sort(sortField_<%=cid%>).iterator();
     	
              while(filesCursor_<%=cid%>.hasNext()){
                  com.mongodb.client.gridfs.model.GridFSFile file_<%=cid%> = filesCursor_<%=cid%>.next();

@@ -145,6 +145,11 @@
 	 		    String mongoDbDriver = "com.mongodb.MongoClient";
 
 	 		    %>
+            <%if(isLog4jEnabled){%>
+			java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.OFF);
+			<%}else{%>
+			java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.SEVERE);
+          <%}%>
 	 		    // Empty client options
                 com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().build();
                 <%

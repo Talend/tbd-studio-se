@@ -67,6 +67,12 @@
         }
     }
     %>
+	    <%
+            if(isLog4jEnabled){%>
+			java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.OFF);
+			<%}else{%>
+			java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.SEVERE);
+          <%}%>
     int nb_line_<%=cid %> = 0;
     <%
     if(metadatas != null && metadatas.size() > 0){

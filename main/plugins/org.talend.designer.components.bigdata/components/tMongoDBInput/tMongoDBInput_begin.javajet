@@ -114,6 +114,11 @@
 				}
 			}else{
 			%>
+	    <%if(isLog4jEnabled){%>
+			java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.OFF);
+			<%}else{%>
+			java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.SEVERE);
+          <%}%>
 			try{ // link with the "finally" on the "finally.javajet"
 				<%
 	 			List<Map<String,String>> replicaAddrs= (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__REPLICA_SET__");
@@ -483,7 +488,11 @@
 <%
 						}else if(javaType == JavaTypesManager.BYTE_ARRAY) {
 %>
+						<%if(version_3_5_X) {%>
+					<%=firstConnName %>.<%=column.getLabel() %> = java.nio.charset.Charset.defaultCharset().decode(java.nio.ByteBuffer.wrap(((org.bson.types.Binary)valueObj_<%=cid%>).getData())).toString().getBytes(utf8Charset);
+						<%} else {%>
 					<%=firstConnName %>.<%=column.getLabel() %> = java.nio.charset.Charset.defaultCharset().decode(java.nio.ByteBuffer.wrap((byte[])valueObj_<%=cid%>)).toString().getBytes(utf8Charset);
+						<%}%>
 <%
 						} else if(javaType == JavaTypesManager.STRING){
 %>

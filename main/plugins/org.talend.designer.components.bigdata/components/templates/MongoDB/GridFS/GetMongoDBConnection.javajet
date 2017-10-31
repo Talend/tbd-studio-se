@@ -56,6 +56,11 @@
     }
     boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
 	%>
+	    <%if(isLog4jEnabled){%>
+			java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.OFF);
+			<%}else{%>
+			java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.SEVERE);
+          <%}%>
             int nb_line_<%=cid %> = 0;
 		<%if(version_3_5_X) {%>
 			com.mongodb.MongoClient mongo_<%=cid%>=null;

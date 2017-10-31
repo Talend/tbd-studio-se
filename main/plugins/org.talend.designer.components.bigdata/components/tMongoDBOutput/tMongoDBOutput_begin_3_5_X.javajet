@@ -152,7 +152,12 @@
 
 	 		    String mongoDbDriver = "com.mongodb.MongoClient";
 
-	 		    %>
+	 	  %>
+            <%if(isLog4jEnabled){%>
+			java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.OFF);
+			<%}else{%>
+			java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.SEVERE);
+          <%}%>
 	 		    // Empty client options
                 com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().build();
                 <%
@@ -260,7 +265,7 @@
 			
 			    if("INSERT".equalsIgnoreCase(dataAction)){%>
 				List<com.mongodb.client.model.InsertOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.InsertOneModel<org.bson.Document>>();
-				<%}else if("UPSERT".equalsIgnoreCase(dataAction)){%>
+				<%}else if("UPSERT".equalsIgnoreCase(dataAction)||"UPDATE".equalsIgnoreCase(dataAction)){%>
 				List<com.mongodb.client.model.ReplaceOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.ReplaceOneModel<org.bson.Document>>();
 				<%}else if("DELETE".equalsIgnoreCase(dataAction)){%>
 				List<com.mongodb.client.model.DeleteOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.DeleteOneModel<org.bson.Document>>();

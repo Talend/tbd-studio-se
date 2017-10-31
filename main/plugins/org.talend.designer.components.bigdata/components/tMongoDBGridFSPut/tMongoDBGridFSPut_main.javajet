@@ -104,7 +104,7 @@
 						gridfsFilename_<%=cid%> = listings_<%=cid %>[m_<%=cid %>].getName();
 					}
 				<%if(version_3_5_X) {%>
-					try (java.io.InputStream streamToUploadFrom_<%=cid%> = new java.io.FileInputStream(new java.io.File("D:/test/dog/defaultfilename.txt"))){
+					try (java.io.InputStream streamToUploadFrom_<%=cid%> = new java.io.FileInputStream(listings_<%=cid %>[m_<%=cid %>])){
 		    				// Create some custom options
 		    			com.mongodb.client.gridfs.model.GridFSUploadOptions options_<%=cid%> = new com.mongodb.client.gridfs.model.GridFSUploadOptions()
 		    				.chunkSizeBytes(358400);
