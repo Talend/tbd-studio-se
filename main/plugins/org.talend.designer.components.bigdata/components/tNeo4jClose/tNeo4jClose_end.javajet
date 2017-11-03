@@ -11,10 +11,18 @@
     String cid = node.getUniqueName();	
     String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
     String dbconn = "dbService_" + connection;
+    String idBatchConn = "neo4jBatchDatabase_" + connection;
 %>
 
 org.neo4j.graphdb.GraphDatabaseService databaseService_<%=cid%> = (org.neo4j.graphdb.GraphDatabaseService) globalMap.get("<%=dbconn%>");
 
 if (databaseService_<%=cid%> != null) {
 	databaseService_<%=cid%>.shutdown();
+}
+
+//Close batch connection
+org.neo4j.talend.Neo4jBatchDatabase neo4jBatchDatabase_<%=cid%> = (org.neo4j.talend.Neo4jBatchDatabase) globalMap.get("<%=idBatchConn%>");
+if (neo4jBatchDatabase_<%=cid%> != null) {
+    neo4jBatchDatabase_<%=cid%>.shutdown();
+    globalMap.remove("<%=idBatchConn%>");
 }
