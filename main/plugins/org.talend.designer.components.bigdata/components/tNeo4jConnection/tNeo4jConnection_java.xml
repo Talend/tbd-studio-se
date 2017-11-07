@@ -293,7 +293,7 @@
 			<IMPORT NAME="jackson-core-asl-1.9.7" 				MODULE="jackson-core-asl-1.9.7.jar"						MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.7/6.1.0"																																		REQUIRED_IF="(BATCH_CONNECTION=='false') AND ((DB_VERSION=='NEO4J_2_2_X') OR (DB_VERSION=='NEO4J_3_X_X'))" />
 			<IMPORT NAME="parboiled-scala_2.10-1.1.7" 			MODULE="parboiled-scala_2.10-1.1.7.jar"					MVN="mvn:org.talend.libraries/parboiled-scala_2.10-1.1.7/6.1.0"						UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/parboiled-scala_2.10-1.1.7.jar"					REQUIRED_IF="(BATCH_CONNECTION=='false') AND ((DB_VERSION=='NEO4J_2_2_X') OR (DB_VERSION=='NEO4J_3_X_X'))" />
 			<IMPORT NAME="parboiled-core-1.1.7" 				MODULE="parboiled-core-1.1.7.jar"						MVN="mvn:org.talend.libraries/parboiled-core-1.1.7/6.1.0"							UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/parboiled-core-1.1.7.jar"							REQUIRED_IF="(BATCH_CONNECTION=='false') AND ((DB_VERSION=='NEO4J_2_2_X') OR (DB_VERSION=='NEO4J_3_X_X'))" />
-				
+			<IMPORT NAME="neo4j-logging-3.2.6"	 				MODULE="neo4j-logging-3.2.6.jar"  						MVN="mvn:org.talend.libraries/neo4j-logging-3.2.6/6.0.0"  																																		REQUIRED_IF="(BATCH_CONNECTION=='false') AND ((DB_VERSION=='NEO4J_2_2_X') OR (DB_VERSION=='NEO4J_3_X_X'))"/>	
 			
 
 
