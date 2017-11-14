@@ -1555,6 +1555,17 @@
             name="joda-time-2.9.3.jar"
             mvn_uri="mvn:org.talend.libraries/joda-time-2.9.3/6.0.0"/>
 
+		<libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr580"
+            id="breeze_2.11-0.12.jar"
+            name="breeze_2.11-0.12.jar"
+            mvn_uri="mvn:org.talend.libraries/breeze_2.11-0.12/6.0.0"/>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr580"
+            id="breeze-macros_2.11-0.12.jar"
+            name="breeze-macros_2.11-0.12.jar"
+            mvn_uri="mvn:org.talend.libraries/breeze-macros_2.11-0.12/6.0.0"/>
 
         <!-- Groups -->
 
@@ -1820,8 +1831,8 @@
 			<library id="base64-2.3.8.jar"/>
 	        <library id="bcprov-jdk15on-1.51.jar"/>
 			<library id="bonecp-0.8.0.RELEASE.jar"/>
-			<library id="breeze-macros_2.11-0.11.2.jar"/>
-			<library id="breeze_2.11-0.11.2.jar"/>
+			<library id="breeze-macros_2.11-0.12.jar"/>
+			<library id="breeze_2.11-0.12.jar"/>
 			<library id="calcite-avatica-1.2.0-incubating.jar"/>
 			<library id="calcite-core-1.2.0-incubating.jar"/>
 			<library id="calcite-linq4j-1.2.0-incubating.jar"/>
