@@ -18,9 +18,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.talend.commons.utils.VersionUtils;
 import org.talend.core.utils.TalendQuoteUtils;
+import org.talend.repository.model.nosql.NoSQLConnection;
+import org.talend.repository.model.nosql.NosqlFactory;
+import org.talend.repository.nosql.constants.INoSQLCommonAttributes;
+import org.talend.repository.nosql.db.common.cassandra.ICassandraConstants;
 import org.talend.repository.nosql.db.common.mongodb.IMongoConstants;
 
 /**
@@ -67,6 +73,28 @@ public class MongoDBConnectionUtilTest {
             assertFalse(
                     portParam.startsWith(TalendQuoteUtils.QUOTATION_MARK) || portParam.endsWith(TalendQuoteUtils.QUOTATION_MARK));
         }
+    }
+    
+    @Test
+    public void testIsUpgradeVersion() {
+        NoSQLConnection connection = NosqlFactory.eINSTANCE.createNoSQLConnection();
+        connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, VersionUtils.DEFAULT_VERSION);
+        Assert.assertFalse(MongoDBConnectionUtil.isUpgradeVersion(connection));
+        
+        connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, "MONGODB_2_5_X");
+        Assert.assertFalse(MongoDBConnectionUtil.isUpgradeVersion(connection));
+        
+        connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, "MONGODB_2_6_X");
+        Assert.assertFalse(MongoDBConnectionUtil.isUpgradeVersion(connection));
+        
+        connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, "MONGODB_3_2_X");
+        Assert.assertFalse(MongoDBConnectionUtil.isUpgradeVersion(connection));
+        
+        connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, "MONGODB_3_5_X");
+        Assert.assertTrue(MongoDBConnectionUtil.isUpgradeVersion(connection));
+        
+        connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, "MONGODB_4_5_X");
+        Assert.assertTrue(MongoDBConnectionUtil.isUpgradeVersion(connection));
     }
 
 }
