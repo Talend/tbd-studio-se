@@ -43,7 +43,8 @@ public class ModuleGroupsUtils {
 
         List<String> moduleLibrariesIDs = new ArrayList<>();
 
-        List<ModuleNeeded> moduleNeededList = ExtensionModuleManager.getInstance().getModuleNeeded(moduleGroupName, true);
+        List<ModuleNeeded> moduleNeededList =
+                ExtensionModuleManager.getInstance().getModuleNeeded(moduleGroupName, true);
 
         if (moduleNeededList != null && !moduleNeededList.isEmpty()) {
             for (ModuleNeeded moduleNeeded : moduleNeededList) {
@@ -68,9 +69,10 @@ public class ModuleGroupsUtils {
      */
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version, String condition,
             String moduleName, boolean mrRequired) {
-        return getModuleGroups(distribution, version, condition == null ? null : new SimpleComponentCondition(new RawExpression(condition)), moduleName, mrRequired);
+        return getModuleGroups(distribution, version, condition == null ? null : new SimpleComponentCondition(
+                new RawExpression(condition)), moduleName, mrRequired);
     }
-    
+
     /**
      * Utility method to create the collection of {@link DistributionModuleGroup} with a condition made of a
      * {@link SparkBatchLinkedNodeCondition} and an additional raw condition
@@ -82,11 +84,12 @@ public class ModuleGroupsUtils {
      * @param mrRequired if the module group is mrRequired
      * @return a set of {@link DistributionModuleGroup}
      */
-    public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version, ComponentCondition condition,
-            String moduleName, boolean mrRequired) {
+    public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version,
+            ComponentCondition condition, String moduleName, boolean mrRequired) {
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        ComponentCondition distribCondition = new SparkBatchLinkedNodeCondition(distribution, version,
-                SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition();
+        ComponentCondition distribCondition =
+                new SparkBatchLinkedNodeCondition(distribution, version,
+                        SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition();
         ComponentCondition cc = null;
         if (condition != null) {
             cc = new MultiComponentCondition(condition, BooleanOperator.AND, distribCondition);

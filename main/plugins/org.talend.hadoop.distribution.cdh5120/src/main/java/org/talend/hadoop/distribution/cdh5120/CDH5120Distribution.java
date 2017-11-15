@@ -73,15 +73,16 @@ import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
 @SuppressWarnings("nls")
-public class CDH5120Distribution extends AbstractDistribution implements IClouderaDistribution, HDFSComponent, HBaseComponent,
-        HCatalogComponent, PigComponent, MRComponent, HiveComponent, HiveOnSparkComponent, ImpalaComponent, SqoopComponent,
-        SparkBatchComponent, SparkStreamingComponent {
+public class CDH5120Distribution extends AbstractDistribution implements IClouderaDistribution, HDFSComponent,
+        HBaseComponent, HCatalogComponent, PigComponent, MRComponent, HiveComponent, HiveOnSparkComponent,
+        ImpalaComponent, SqoopComponent, SparkBatchComponent, SparkStreamingComponent {
 
     public final static String VERSION = "Cloudera_CDH5_12";
 
     public static final String VERSION_DISPLAY = "Cloudera CDH5.12(YARN mode)";
 
-    private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*"; //$NON-NLS-1$
+    private final static String YARN_APPLICATION_CLASSPATH =
+            "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*"; //$NON-NLS-1$
 
     private static Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
 
@@ -120,55 +121,59 @@ public class CDH5120Distribution extends AbstractDistribution implements ICloude
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
                 CDH5120PigOutputNodeModuleGroup.getModuleGroups(distribution, version));
 
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
-                CDH5120SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
-                CDH5120SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.S3_CONFIGURATION_COMPONENT),
-                CDH5120SparkBatchS3NodeModuleGroup.getModuleGroups(distribution, version));
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
-                CDH5120GraphFramesNodeModuleGroup.getModuleGroups(distribution, version));
-
-        // Azure
-        nodeModuleGroups.put(
-                new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT),
-                CDH5120SparkBatchAzureNodeModuleGroup.getModuleGroups(distribution, version));
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), CDH5120SparkBatchAzureNodeModuleGroup.getModuleGroups(
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
+                SparkBatchConstant.PARQUET_INPUT_COMPONENT), CDH5120SparkBatchParquetNodeModuleGroup.getModuleGroups(
+                distribution, version));
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
+                SparkBatchConstant.PARQUET_OUTPUT_COMPONENT), CDH5120SparkBatchParquetNodeModuleGroup.getModuleGroups(
+                distribution, version));
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
+                SparkBatchConstant.S3_CONFIGURATION_COMPONENT), CDH5120SparkBatchS3NodeModuleGroup.getModuleGroups(
+                distribution, version));
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
+                SparkBatchConstant.MATCH_PREDICT_COMPONENT), CDH5120GraphFramesNodeModuleGroup.getModuleGroups(
                 distribution, version));
 
+        // Azure
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
+                SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT), CDH5120SparkBatchAzureNodeModuleGroup
+                .getModuleGroups(distribution, version));
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), CDH5120SparkBatchAzureNodeModuleGroup
+                .getModuleGroups(distribution, version));
+
         // Kudu
-        Set<DistributionModuleGroup> kuduNodeModuleGroups = CDH5120SparkBatchKuduNodeModuleGroup.getModuleGroups(distribution,
-                version, "USE_EXISTING_CONNECTION == 'false'");
-        Set<DistributionModuleGroup> kuduConfigurationNodeModuleGroups = CDH5120SparkBatchKuduNodeModuleGroup.getModuleGroups(
-                distribution, version, null);
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.KUDU_INPUT_COMPONENT),
-                kuduNodeModuleGroups);
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.KUDU_OUTPUT_COMPONENT),
-                kuduNodeModuleGroups);
-        nodeModuleGroups.put(
-                new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.KUDU_CONFIGURATION_COMPONENT),
-                kuduConfigurationNodeModuleGroups);
+        Set<DistributionModuleGroup> kuduNodeModuleGroups =
+                CDH5120SparkBatchKuduNodeModuleGroup.getModuleGroups(distribution, version,
+                        "USE_EXISTING_CONNECTION == 'false'");
+        Set<DistributionModuleGroup> kuduConfigurationNodeModuleGroups =
+                CDH5120SparkBatchKuduNodeModuleGroup.getModuleGroups(distribution, version, null);
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
+                SparkBatchConstant.KUDU_INPUT_COMPONENT), kuduNodeModuleGroups);
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
+                SparkBatchConstant.KUDU_OUTPUT_COMPONENT), kuduNodeModuleGroups);
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
+                SparkBatchConstant.KUDU_CONFIGURATION_COMPONENT), kuduConfigurationNodeModuleGroups);
 
         // Parquet
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.PARQUET_INPUT_COMPONENT), CDH5120SparkStreamingParquetNodeModuleGroup.getModuleGroups(
-                distribution, version));
+                SparkStreamingConstant.PARQUET_INPUT_COMPONENT), CDH5120SparkStreamingParquetNodeModuleGroup
+                .getModuleGroups(distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.PARQUET_OUTPUT_COMPONENT), CDH5120SparkStreamingParquetNodeModuleGroup.getModuleGroups(
-                distribution, version));
+                SparkStreamingConstant.PARQUET_OUTPUT_COMPONENT), CDH5120SparkStreamingParquetNodeModuleGroup
+                .getModuleGroups(distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.PARQUET_STREAM_INPUT_COMPONENT), CDH5120SparkStreamingParquetNodeModuleGroup
                 .getModuleGroups(distribution, version));
 
         // S3
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.S3_CONFIGURATION_COMPONENT), CDH5120SparkStreamingS3NodeModuleGroup.getModuleGroups(
-                distribution, version));
+                SparkStreamingConstant.S3_CONFIGURATION_COMPONENT), CDH5120SparkStreamingS3NodeModuleGroup
+                .getModuleGroups(distribution, version));
 
         // Kinesis
-        Set<DistributionModuleGroup> kinesisNodeModuleGroups = CDH5120SparkStreamingKinesisNodeModuleGroup.getModuleGroups(
-                distribution, version);
+        Set<DistributionModuleGroup> kinesisNodeModuleGroups =
+                CDH5120SparkStreamingKinesisNodeModuleGroup.getModuleGroups(distribution, version);
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.KINESIS_INPUT_COMPONENT), kinesisNodeModuleGroups);
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
@@ -177,38 +182,37 @@ public class CDH5120Distribution extends AbstractDistribution implements ICloude
                 SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT), kinesisNodeModuleGroups);
 
         // Flume
-        Set<DistributionModuleGroup> flumeNodeModuleGroups = CDH5120SparkStreamingFlumeNodeModuleGroup.getModuleGroups(
-                distribution, version);
-        nodeModuleGroups.put(
-                new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.FLUME_INPUT_COMPONENT),
-                flumeNodeModuleGroups);
+        Set<DistributionModuleGroup> flumeNodeModuleGroups =
+                CDH5120SparkStreamingFlumeNodeModuleGroup.getModuleGroups(distribution, version);
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.FLUME_INPUT_COMPONENT), flumeNodeModuleGroups);
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.FLUME_OUTPUT_COMPONENT), flumeNodeModuleGroups);
 
         // Kafka
-        Set<DistributionModuleGroup> kafkaAssemblyModuleGroups = CDH5120SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(
-                distribution, version);
-        Set<DistributionModuleGroup> kafkaAvroModuleGroups = CDH5120SparkStreamingKafkaAvroModuleGroup.getModuleGroups(
-                distribution, version);
-        nodeModuleGroups.put(
-                new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_INPUT_COMPONENT),
-                kafkaAssemblyModuleGroups);
+        Set<DistributionModuleGroup> kafkaAssemblyModuleGroups =
+                CDH5120SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(distribution, version);
+        Set<DistributionModuleGroup> kafkaAvroModuleGroups =
+                CDH5120SparkStreamingKafkaAvroModuleGroup.getModuleGroups(distribution, version);
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.KAFKA_INPUT_COMPONENT), kafkaAssemblyModuleGroups);
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.KAFKA_AVRO_INPUT_COMPONENT), kafkaAvroModuleGroups);
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT), CDH5120SparkStreamingKafkaClientModuleGroup.getModuleGroups(
-                distribution, version));
+                SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT), CDH5120SparkStreamingKafkaClientModuleGroup
+                .getModuleGroups(distribution, version));
 
         // DynamoDB ...
-        Set<DistributionModuleGroup> dynamoDBNodeModuleGroups = CDH5120SparkDynamoDBNodeModuleGroup.getModuleGroups(distribution,
-                version, "USE_EXISTING_CONNECTION == 'false'");
-        Set<DistributionModuleGroup> dynamoDBConfigurationModuleGroups = CDH5120SparkDynamoDBNodeModuleGroup.getModuleGroups(
-                distribution, version, null);
+        Set<DistributionModuleGroup> dynamoDBNodeModuleGroups =
+                CDH5120SparkDynamoDBNodeModuleGroup.getModuleGroups(distribution, version,
+                        "USE_EXISTING_CONNECTION == 'false'");
+        Set<DistributionModuleGroup> dynamoDBConfigurationModuleGroups =
+                CDH5120SparkDynamoDBNodeModuleGroup.getModuleGroups(distribution, version, null);
         // ... in Spark batch
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_INPUT_COMPONENT),
-                dynamoDBNodeModuleGroups);
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_OUTPUT_COMPONENT),
-                dynamoDBNodeModuleGroups);
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
+                SparkBatchConstant.DYNAMODB_INPUT_COMPONENT), dynamoDBNodeModuleGroups);
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
+                SparkBatchConstant.DYNAMODB_OUTPUT_COMPONENT), dynamoDBNodeModuleGroups);
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
                 SparkBatchConstant.DYNAMODB_CONFIGURATION_COMPONENT), dynamoDBConfigurationModuleGroups);
         // ... in Spark streaming
@@ -395,7 +399,7 @@ public class CDH5120Distribution extends AbstractDistribution implements ICloude
 
     @Override
     public boolean doSupportClouderaNavigator() {
-        return false; 
+        return false;
     }
 
     @Override
