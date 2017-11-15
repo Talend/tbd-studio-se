@@ -354,7 +354,23 @@
             id="antlr4-runtime-4.5.3.jar"
             name="antlr4-runtime-4.5.3.jar"
             mvn_uri="mvn:org.talend.libraries/antlr4-runtime-4.5.3/6.3.0" >
-        </libraryNeeded> 
+        </libraryNeeded>
+        
+        <!-- Azure -->
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" 
+        	id="azure-storage-2.0.0.jar" 
+        	name="azure-storage-2.0.0.jar" 
+        	mvn_uri="mvn:org.talend.libraries/azure-storage-2.0.0/6.0.0"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" 
+        	id="hadoop-azure-2.7.0-mapr-1710.jar" 
+        	name="hadoop-azure-2.7.0-mapr-1710.jar" 
+        	mvn_uri="mvn:org.talend.libraries/hadoop-azure-2.7.0-mapr-1710/6.0.0"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" 
+        	id="jetty-util-6.1.26.jar" 
+        	name="jetty-util-6.1.26.jar" 
+        	mvn_uri="mvn:org.talend.libraries/jetty-util-6.1.26.jar/6.0.0"/>
         
         <!-- GraphFrames libraries -->
         <libraryNeeded
@@ -813,6 +829,16 @@
          	name="SPARK-YARN-CLUSTER-LIB-MAPR600" >
          	<library id="flexjson-2.1.jar"/>
          </libraryNeededGroup>
+
+        <!-- Spark Azure group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Azure libraries for MapR 6.0.0"
+                id="SPARK-AZURE-LIB-MRREQUIRED-MAPR600"
+                name="SPARK-AZURE-LIB-MRREQUIRED-MAPR600">
+                <library id="azure-storage-2.0.0.jar"/>
+                <library id="hadoop-azure-2.7.0-mapr-1710.jar"/>
+                <library id="jetty-util-6.1.26.jar"/>
+        </libraryNeededGroup>
 
         <libraryNeededGroup
                 description="MapReduce parquet libraries for MapR 6.0.0"

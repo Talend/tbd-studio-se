@@ -58,6 +58,7 @@ import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600MapReduceModule
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600PigModuleGroup;
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600PigOutputModuleGroup;
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600PigOutputNodeModuleGroup;
+import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkBatchAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkBatchS3NodeModuleGroup;
@@ -147,6 +148,13 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
                 new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                         SparkStreamingConstant.PARQUET_STREAM_INPUT_COMPONENT),
                 MapR600SparkStreamingParquetNodeModuleGroup.getModuleGroups());
+
+        // Azure
+        nodeModuleGroups.put(
+                new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT),
+                MapR600SparkBatchAzureNodeModuleGroup.getModuleGroups());
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), MapR600SparkBatchAzureNodeModuleGroup.getModuleGroups());
 
         Set<DistributionModuleGroup> kinesisNodeModuleGroups =
                 MapR600SparkStreamingKinesisNodeModuleGroup.getModuleGroups();
@@ -413,15 +421,15 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
         return SparkStreamingKafkaVersion.MAPR_600_KAFKA;
     }
 
-    // Note :
-    // Azure Blob & Datalake support have been disabled for now on this distribution
-    // New versions of this distribution should be tested for Azure support and
-    // the changes backported to all earlier versions
     @Override
     public boolean doSupportAzureBlobStorage() {
-        return false;
+        return true;
     }
 
+    // Note :
+    // Azure Datalake support have been disabled for now on this distribution
+    // New versions of this distribution should be tested for Azure support and
+    // the changes backported to all earlier versions
     @Override
     public boolean doSupportAzureDataLakeStorage() {
         return false;
