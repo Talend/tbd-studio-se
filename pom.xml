@@ -202,8 +202,15 @@
         <module>test/plugins/org.talend.hadoop.distribution.mapr410.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.mapr500.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.mapr510.test</module>
+<<<<<<< HEAD
         <module>test/plugins/org.talend.hadoop.distribution.mapr520.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.mapr600.test</module>
+||||||| merged common ancestors
+        <module>test/plugins/org.talend.hadoop.distribution.mapr520.test</module>
+=======
+	<module>test/plugins/org.talend.hadoop.distribution.mapr600.test</module>
+	<module>test/plugins/org.talend.hadoop.distribution.mapr520.test</module>
+>>>>>>> maintenance/6.5
         <module>test/plugins/org.talend.hadoop.distribution.piv101.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.piv200.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.test.base</module>

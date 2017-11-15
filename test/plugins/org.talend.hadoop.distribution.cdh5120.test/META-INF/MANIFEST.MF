@@ -9,3 +9,4 @@ Require-Bundle: org.junit;bundle-version="4.11.0",
  org.talend.utils;bundle-version="6.0.0",
  org.talend.testutils;bundle-version="6.0.0",
  org.talend.hadoop.distribution.test.base
+ 
