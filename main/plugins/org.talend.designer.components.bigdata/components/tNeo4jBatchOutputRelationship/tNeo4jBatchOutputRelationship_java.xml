@@ -49,26 +49,41 @@
     </CONNECTORS>
 
     <PARAMETERS>
+    	<PARAMETER NAME="USE_EXISTING_CONNECTION" FIELD="CHECK"
+			NUM_ROW="10" GROUP="CONNECTION_GROUP">
+			<DEFAULT>false</DEFAULT>
+		</PARAMETER>
 
         <PARAMETER NAME="CONNECTION"
                    FIELD="COMPONENT_LIST"
                    REQUIRED="true"
                    FILTER="tNeo4jConnection"
-                   NUM_ROW="1"
+                   NUM_ROW="20"
+                   SHOW_IF="USE_EXISTING_CONNECTION == 'true'"
                    GROUP="CONNECTION_GROUP"/>
+                   
+		<PARAMETER NAME="DATABASE_PATH" FIELD="DIRECTORY"	REPOSITORY_VALUE="DATABASE_PATH" REQUIRED="true" NUM_ROW="25"
+			SHOW_IF="USE_EXISTING_CONNECTION == 'false'" GROUP="CONNECTION_GROUP">
+			<DEFAULT>""</DEFAULT>
+		</PARAMETER>
+		
+		<PARAMETER NAME="SHUTDOWN_DB" FIELD="CHECK" NUM_ROW="26"
+			SHOW_IF="USE_EXISTING_CONNECTION == 'true'" GROUP="CONNECTION_GROUP">
+			<DEFAULT>false</DEFAULT>
+		</PARAMETER>
 
         <PARAMETER NAME="RELATIONSHIP_TYPE"
                    FIELD="COLUMN_LIST"
                    REQUIRED="true"
                    GROUP="RELATIONSHIP_GROUP"
-                   NUM_ROW="2">
+                   NUM_ROW="30">
         </PARAMETER>
 
         <PARAMETER NAME="RELATIONSHIP_DIRECTION"
                    FIELD="CLOSED_LIST"
                    REQUIRED="true"
                    GROUP="RELATIONSHIP_GROUP"
-                   NUM_ROW="3">
+                   NUM_ROW="40">
             <ITEMS DEFAULT="OUTGOING">
                 <ITEM NAME="OUTGOING" VALUE="OUTGOING" />
                 <ITEM NAME="INCOMING" VALUE="INCOMING" />
@@ -79,13 +94,13 @@
                    FIELD="COMPONENT_LIST"
                    FILTER="tNeo4jBatchOutput"
                    REQUIRED="true"
-                   NUM_ROW="5"
+                   NUM_ROW="50"
                    GROUP="START_NODE_GROUP" />
 
         <PARAMETER NAME="START_INDEX_FIELD"
                    FIELD="COLUMN_LIST"
                    REQUIRED="true"
-                   NUM_ROW="6"
+                   NUM_ROW="60"
                    GROUP="START_NODE_GROUP" />
 
 
@@ -94,26 +109,38 @@
                    FILTER="tNeo4jBatchOutput"
                    REPOSITORY_VALUE="NEO4J_BATCH_INDEXNAME"
                    REQUIRED="true"
-                   NUM_ROW="8"
+                   NUM_ROW="80"
                    GROUP="END_NODE_GROUP" />
 
         <PARAMETER NAME="END_INDEX_FIELD"
                    FIELD="COLUMN_LIST"
                    REQUIRED="true"
-                   NUM_ROW="9"
+                   NUM_ROW="90"
                    GROUP="END_NODE_GROUP" />
+                   
+        <PARAMETER
+                NAME="DIE_ON_ERROR"
+                FIELD="CHECK"
+                REQUIRED="true"
+                NUM_ROW="100">
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
 
     </PARAMETERS>
 
 
-    <ADVANCED_PARAMETERS>
+	<ADVANCED_PARAMETERS>
+        <PARAMETER NAME="CONFIGURATION"
+                   FIELD="TABLE"
+                   GROUP="FINE_TUNING_GROUP"
+                   NUM_ROW="10"
+                   NB_LINES="10"
+                   SHOW_IF="USE_EXISTING_CONNECTION == 'false'">
+            <ITEMS>
+                <ITEM NAME="KEY" VALUE="dbms.pagecache.memory"/>
+                <ITEM NAME="VALUE" VALUE="2G"/>
+            </ITEMS>
 
-        <PARAMETER
-                NAME="SKIP_ON_ERROR"
-                FIELD="CHECK"
-                REQUIRED="true"
-                NUM_ROW="1">
-            <DEFAULT>true</DEFAULT>
         </PARAMETER>
 
     </ADVANCED_PARAMETERS>

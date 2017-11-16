@@ -3,6 +3,8 @@
 		org.talend.core.model.process.INode
 		org.talend.core.model.process.ElementParameterParser
 		org.talend.designer.codegen.config.CodeGeneratorArgument
+		java.util.List
+		java.util.Map
 	"
 %>
 <%
@@ -12,19 +14,40 @@
     String cid = node.getUniqueName();
 
     // Component parameters
-    String idConn = "neo4jBatchDatabase_" + ElementParameterParser.getValue(node, "__CONNECTION__");;
+    String idConn = "neo4jBatchDatabase_" + ElementParameterParser.getValue(node, "__CONNECTION__");
     String relationshipTypeField = ElementParameterParser.getValue(node, "__RELATIONSHIP_TYPE__");
     String direction = ElementParameterParser.getValue(node, "__RELATIONSHIP_DIRECTION__");
     String startIndexNameCid = ElementParameterParser.getValue(node, "__START_INDEX_NAME__");
     String startIndexField = ElementParameterParser.getValue(node, "__START_INDEX_FIELD__");
     String endIndexNameCid = ElementParameterParser.getValue(node, "__END_INDEX_NAME__");
     String endIndexField = ElementParameterParser.getValue(node, "__END_INDEX_FIELD__");
-    Boolean skipOnError = Boolean.valueOf(ElementParameterParser.getValue(node, "__SKIP_ON_ERROR__"));
-%>
+    Boolean skipOnError = !Boolean.valueOf(ElementParameterParser.getValue(node, "__DIE_ON_ERROR__"));
+    boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_EXISTING_CONNECTION__"));
+    
+	if(!useExistingConnection) {
+	    List<Map<String, String>> configuration = (List<Map<String, String>>) ElementParameterParser.getObjectValue(node, "__CONFIGURATION__");
+	    String dbPath = ElementParameterParser.getValue(node, "__DATABASE_PATH__");
+	%>
+		// Transform configuration to Map configuration
+		java.util.Map<String, String> config = new java.util.HashMap();
+	<%
+	    if (configuration != null) {
+	        for (Map<String, String> params : configuration) {
+	            %>
+	                config.put("<%=params.get("KEY")%>", <%=params.get("VALUE")%>);
+	            <%
+	        }
+	    }
+	%>
+		// Just put the database into the global map
+		org.neo4j.talend.Neo4jBatchDatabase neo4jBatchDatabase_<%=cid%> = new org.neo4j.talend.Neo4jBatchDatabase(<%=dbPath%>, config);
+	
+	<%	
+	}else{%>
 
 // Retrieve connection
 org.neo4j.talend.Neo4jBatchDatabase neo4jBatchDatabase_<%=cid%> = (org.neo4j.talend.Neo4jBatchDatabase) globalMap.get("<%=idConn%>");
-
+	<%}%>
 // Retrieve start index name
 String startIndexName = (String) globalMap.get("neo4jBatchDatabaseIndexName_<%=startIndexNameCid%>");
 
@@ -38,3 +61,4 @@ startIndexName, "<%=startIndexField%>", endIndexName, "<%=endIndexField%>", <%=s
 
 // Create counter
 int nb_line_<%=cid%> = 0;
+    try{

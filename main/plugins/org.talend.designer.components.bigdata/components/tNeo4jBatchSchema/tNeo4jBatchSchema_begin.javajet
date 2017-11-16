@@ -17,12 +17,37 @@
     // Component parameter
     String idConn = "neo4jBatchDatabase_" + ElementParameterParser.getValue(node, "__CONNECTION__");
     List<Map<String, String>> schemaDefinitions = (List<Map<String, String>>) ElementParameterParser.getObjectValue(node, "__SCHEMA__");
-%>
+    boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_EXISTING_CONNECTION__"));
+    boolean shutdownDb = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SHUTDOWN_DB__"));
+    
+	if(!useExistingConnection) {
+	    List<Map<String, String>> configuration = (List<Map<String, String>>) ElementParameterParser.getObjectValue(node, "__CONFIGURATION__");
+	    String dbPath = ElementParameterParser.getValue(node, "__DATABASE_PATH__");
+	%>
+		// Transform configuration to Map configuration
+		java.util.Map<String, String> config = new java.util.HashMap();
+	<%
+	    if (configuration != null) {
+	        for (Map<String, String> params : configuration) {
+	            %>
+	                config.put("<%=params.get("KEY")%>", <%=params.get("VALUE")%>);
+	            <%
+	        }
+	    }
+	%>
+		// Just put the database into the global map
+		org.neo4j.talend.Neo4jBatchDatabase neo4jBatchDatabase_<%=cid%> = new org.neo4j.talend.Neo4jBatchDatabase(<%=dbPath%>, config);
+	
+	<%	
+	}else{%>
 
 // Retrieve connection
 org.neo4j.talend.Neo4jBatchDatabase neo4jBatchDatabase_<%=cid%> = (org.neo4j.talend.Neo4jBatchDatabase) globalMap.get("<%=idConn%>");
-
-<%
+	<%
+	}
+	%>
+	try{
+	<%
     if (schemaDefinitions != null) {
         for (Map<String, String> definition : schemaDefinitions) {
             %>
@@ -31,3 +56,11 @@ org.neo4j.talend.Neo4jBatchDatabase neo4jBatchDatabase_<%=cid%> = (org.neo4j.tal
         }
     }
 %>
+    }finally{
+<%
+        if(!useExistingConnection||(useExistingConnection && shutdownDb)){
+%>
+    	neo4jBatchDatabase_<%=cid%>.shutdown();
+	<%}%>
+    }
+

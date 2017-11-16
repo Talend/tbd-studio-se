@@ -76,7 +76,7 @@ if (databaseService_<%=cid%> instanceof org.neo4j.rest.graphdb.RestGraphDatabase
         %>
         org.neo4j.cypher.ExecutionEngine engine_<%=cid%> = new org.neo4j.cypher.ExecutionEngine(databaseService_<%=cid%>);
         <%
-    } else if (("NEO4J_2_1_X".equals(dbVersion)) || ("NEO4J_2_2_X".equals(dbVersion)) || ("NEO4J_3_X_X".equals(dbVersion))) { // NEO4J_2_X before moving to spring framework
+    } else if (("NEO4J_2_1_X".equals(dbVersion)) || ("NEO4J_2_2_X".equals(dbVersion))) { // NEO4J_2_X before moving to spring framework
         %>
         org.neo4j.cypher.ExecutionEngine engine_<%=cid%> = new org.neo4j.cypher.ExecutionEngine(databaseService_<%=cid%>, org.neo4j.kernel.impl.util.StringLogger.SYSTEM);
         <%
