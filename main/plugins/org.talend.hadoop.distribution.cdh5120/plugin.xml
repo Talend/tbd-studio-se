@@ -590,7 +590,7 @@
             context="plugin:org.talend.hadoop.distribution.cdh5120"
             id="kafka_2.11-0.10.0-kafka-2.1.0.jar"
             name="kafka_2.11-0.10.0-kafka-2.1.0.jar"
-            mvn_uri="mvn:org.talend.libraries/kafka_2.11-0.10.0-kafka-2.1.0/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/kafka_2.11-0.10.0-kafka-2.1.0/6.4.0">
         </libraryNeeded>
 
         <libraryNeeded
