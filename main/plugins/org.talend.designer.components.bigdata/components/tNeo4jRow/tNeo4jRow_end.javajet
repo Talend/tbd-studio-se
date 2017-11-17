@@ -3,7 +3,7 @@
 		org.talend.core.model.process.INode 
 		org.talend.designer.codegen.config.CodeGeneratorArgument
 		org.talend.core.model.process.ElementParameterParser
-		java.util.List
+		org.talend.core.model.utils.NodeUtil
 	"
 %>
 <%
@@ -15,18 +15,29 @@
 
     boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_EXISTING_CONNECTION__"));
     String dbVersion = ElementParameterParser.getValue(node,"__DB_VERSION__");
-
-    if (useExistingConnection) {
-        String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
-        List<? extends INode> nodes = node.getProcess().getGeneratingNodes();
-        for(INode targetNode : nodes){
-            if (targetNode.getUniqueName().equals(connection)) {
-                dbVersion = ElementParameterParser.getValue(targetNode, "__DB_VERSION__");
-                break;
-            }
-        }
+	if(useExistingConnection){
+	    String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+        INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
+        dbVersion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
     }
-    if ("NEO4J_1_X_X".equals(dbVersion)) {
+    if ("NEO4J_3_2_X".equals(dbVersion)) {
+    %>
+        transaction_<%=cid%>.success();
+    	transaction_<%=cid%>.close();
+        globalMap.put("<%=cid %>_NB_NODE_INSERTED", nbNodeInserted_<%=cid%>);
+		globalMap.put("<%=cid %>_NB_RELATIONSHIP_INSERTED", nbRelationshipInserted_<%=cid%>);
+		globalMap.put("<%=cid %>_NB_PROPERTY_UPDATED", nbPropertiesUpdated_<%=cid%>);
+		globalMap.put("<%=cid %>_NB_NODE_DELETED", nbNodeDeleted_<%=cid%>);
+		globalMap.put("<%=cid %>_NB_RELATIONSHIP_DELETED", nbRelationshipDeleted_<%=cid%>);
+    }finally{
+    <%if (!useExistingConnection||(useExistingConnection && shutdownDb)) {%>
+    	driver_<%=cid%>.close();
+
+    <%}%>
+    }
+    <%
+    } else{
+    	 if ("NEO4J_1_X_X".equals(dbVersion)) {
         %>
         if (counter_<%=cid%> % Long.parseLong(<%=commitEvery%>) > 0) {
             tx_<%=cid%>.success();
@@ -56,4 +67,5 @@
 		globalMap.put("<%=cid %>_NB_NODE_DELETED", nbNodeDeleted_<%=cid%>);
 		globalMap.put("<%=cid %>_NB_RELATIONSHIP_DELETED", nbRelationshipDeleted_<%=cid%>);
 	}
+	<%}%>
 	

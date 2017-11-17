@@ -16,9 +16,10 @@
 
 	boolean remoteServer = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REMOTE_SERVER__"));
 	boolean readOnlyMode = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__READ_ONLY_MODE__"));
-	boolean forBatch 	 = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__BATCH_CONNECTION__"));
+	String dbVersion = ElementParameterParser.getValue(node,"__DB_VERSION__");
+
 	
-	if(forBatch) {
+	if("NEO4J_3_2_X".equals(dbVersion)&&!remoteServer) {
 	    List<Map<String, String>> configuration = (List<Map<String, String>>) ElementParameterParser.getObjectValue(node, "__CONFIGURATION__");
 	%>
 		// Transform configuration to Map configuration
@@ -37,9 +38,18 @@
 	
 	<%	
 	} else {
+	    if("NEO4J_3_2_X".equals(dbVersion)){
+            String serverUrl = ElementParameterParser.getValue(node, "__SERVER_URL__");
+            String username = ElementParameterParser.getValue(node, "__USERNAME__");
+            String passwordFieldName = "__PASSWORD__";
+        %>
+        <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
+        org.neo4j.driver.v1.Driver driver_<%=cid%> = org.neo4j.driver.v1.GraphDatabase.driver(<%=serverUrl%>, org.neo4j.driver.v1.AuthTokens.basic(<%=username%>, decryptedPassword_<%=cid%>));
+        globalMap.put("dbService_<%=cid%>", driver_<%=cid%>);
+        <%
+        }else{
 		if (remoteServer) {
 			String serverUrl = ElementParameterParser.getValue(node, "__SERVER_URL__");
-			String dbVersion = ElementParameterParser.getValue(node, "__DB_VERSION__");
 	        boolean setUsername = ElementParameterParser.getBooleanValue(node, "__SET_USERNAME__");
 	        String username = ElementParameterParser.getValue(node, "__USERNAME__");
 	        String passwordFieldName = "__PASSWORD__";
@@ -73,5 +83,6 @@
 		%>
 		globalMap.put("dbService_<%=cid%>_path", <%=dbPath%>);
 	    globalMap.put("dbService_<%=cid%>", databaseService_<%=cid%>);
-	<% } %>
+	<% } 
+	}%>
 	

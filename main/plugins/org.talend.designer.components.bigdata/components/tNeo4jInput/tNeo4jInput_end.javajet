@@ -3,6 +3,7 @@
 		org.talend.core.model.process.INode 
 		org.talend.core.model.process.ElementParameterParser 
 		org.talend.designer.codegen.config.CodeGeneratorArgument
+		org.talend.core.model.utils.NodeUtil
 	" 
 %>
 <% 
@@ -12,17 +13,35 @@
     
     boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_EXISTING_CONNECTION__"));
     boolean shutdownDb = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SHUTDOWN_DB__"));
-%>
-}
+    String dbVersion = ElementParameterParser.getValue(node,"__DB_VERSION__");
+	if(useExistingConnection){
+	    String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+        INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
+        dbVersion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
+    }%>
+    }
+    <%
+    if ("NEO4J_3_2_X".equals(dbVersion)) {
+    %>
+    	
+    }finally{
+    <%if (!useExistingConnection||(useExistingConnection && shutdownDb)) {%>
+    	driver_<%=cid%>.close();
 
-<%
+    <%}%>
+    }
+    <%
+    } else{
 	if (!useExistingConnection||(useExistingConnection && shutdownDb)) {
 %>
+		
 	}finally{
 		databaseService_<%=cid%>.shutdown();
 	}
 <%
 	}
+}
 %>
+
 
 globalMap.put("<%=cid%>_NB_LINE", nb_line_<%=cid%>);
