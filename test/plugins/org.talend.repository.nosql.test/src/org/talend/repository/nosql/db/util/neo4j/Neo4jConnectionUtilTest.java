@@ -19,10 +19,13 @@ import java.io.File;
 
 import org.eclipse.emf.common.util.EMap;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.talend.commons.utils.VersionUtils;
 import org.talend.repository.model.nosql.NoSQLConnection;
 import org.talend.repository.model.nosql.NosqlFactory;
+import org.talend.repository.nosql.constants.INoSQLCommonAttributes;
 import org.talend.repository.nosql.db.common.neo4j.INeo4jAttributes;
 import org.talend.repository.nosql.db.common.neo4j.INeo4jConstants;
 import org.talend.utils.io.FilesUtils;
@@ -98,5 +101,32 @@ public class Neo4jConnectionUtilTest {
         assertTrue(Neo4jConnectionUtil.checkConnection(localConnection));
         assertTrue(Neo4jConnectionUtil.checkConnection(localConnection));
     }
+    
+    @Test
+    public void testIsUpgradeVersion() throws Exception {
+
+        connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, VersionUtils.DEFAULT_VERSION);
+        Assert.assertFalse(Neo4jConnectionUtil.isUpgradeVersion(connection));
+        
+        connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, INeo4jConstants.NEO4J_2_3_X);
+        Assert.assertFalse(Neo4jConnectionUtil.isUpgradeVersion(connection));
+        
+        connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, "NEO4J_1_2_2");
+        Assert.assertFalse(Neo4jConnectionUtil.isUpgradeVersion(connection));
+        
+        connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, INeo4jConstants.NEO4J_2_2_X);
+        Assert.assertFalse(Neo4jConnectionUtil.isUpgradeVersion(connection));
+        
+        connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, "NEO4J_3_1_X");
+        Assert.assertFalse(Neo4jConnectionUtil.isUpgradeVersion(connection));
+        
+        connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, INeo4jConstants.NEO4J_3_2_X);
+        Assert.assertTrue(Neo4jConnectionUtil.isUpgradeVersion(connection));
+        
+        connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, "NEO4J_4_1_X");
+        Assert.assertTrue(Neo4jConnectionUtil.isUpgradeVersion(connection));
+    
+    }
+    
 
 }

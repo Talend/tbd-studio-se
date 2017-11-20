@@ -32,6 +32,7 @@ import org.talend.repository.nosql.exceptions.NoSQLServerException;
 import org.talend.repository.nosql.factory.NoSQLClassLoaderFactory;
 import org.talend.repository.nosql.i18n.Messages;
 import org.talend.repository.nosql.reflection.NoSQLReflection;
+import org.talend.utils.security.CryptoHelper;
 
 /**
  *
@@ -51,9 +52,29 @@ public class Neo4jConnectionUtil {
         final ClassLoader classLoader = NoSQLClassLoaderFactory.getClassLoader(connection);
         Object dbConnection = null;
         try {
+            boolean isRemote = Boolean.valueOf(connection.getAttributes().get(INeo4jAttributes.REMOTE_SERVER));
+            if(isRemote && isUpgradeVersion(connection)){
+                String usename = StringUtils.trimToEmpty(connection.getAttributes().get(INeo4jAttributes.USERNAME));
+                String password = StringUtils.trimToEmpty(connection.getAttributes().get(INeo4jAttributes.PASSWORD));
+                String serverUrl = StringUtils.trimToEmpty(connection.getAttributes().get(INeo4jAttributes.SERVER_URL));
+                if (connection.isContextMode()) {
+                    ContextType contextType = ConnectionContextHelper.getContextTypeForContextMode(connection);
+                    if(contextType != null){
+                        usename = ContextParameterUtils.getOriginalValue(contextType, usename);
+                        password = ContextParameterUtils.getOriginalValue(contextType, password);
+                        serverUrl = ContextParameterUtils.getOriginalValue(contextType, serverUrl);
+                    }
+                }else {
+                    password = connection.getValue(password, false);
+                }
+                Object basic = NoSQLReflection.invokeStaticMethod("org.neo4j.driver.v1.AuthTokens", "basic", 
+                        new Object[] { usename, password }, classLoader, String.class, String.class);
+                NoSQLReflection.invokeStaticMethod("org.neo4j.driver.v1.GraphDatabase", "driver", new Object[] {serverUrl, basic }, 
+                        classLoader, String.class, Class.forName("org.neo4j.driver.v1.AuthToken", true, classLoader));
+                return canConnect;
+            }
             final Object db = getDB(connection);
             dbConnection = db;
-            boolean isRemote = Boolean.valueOf(connection.getAttributes().get(INeo4jAttributes.REMOTE_SERVER));
             if (isRemote) {
                 NoSQLReflection.invokeMethod(db, "getAllNodes", //$NON-NLS-1$
                         new Object[0]);
@@ -249,6 +270,32 @@ public class Neo4jConnectionUtil {
 
         return propertiesMap;
     }
+    
+    public static synchronized Map<String, Object> getNodeProperties(final Object node, final ClassLoader classLoader) throws NoSQLServerException {
+        final Map<String, Object> propertiesMap = new HashMap<String, Object>();
+        try {
+            if (isDriverNode(node, classLoader)) {
+                collectInternalNodeProperties(propertiesMap, node, classLoader);
+            }
+        } catch (NoSQLReflectionException e) {
+            throw new NoSQLServerException(e);
+        }
+
+        return propertiesMap;
+    }
+    
+    private static void collectInternalNodeProperties(Map<String, Object> propertiesMap, Object node, ClassLoader classLoader)
+            throws NoSQLReflectionException {
+        Iterable<String> propertieKeys = (Iterable<String>) NoSQLReflection.invokeMethod(node, "keys"); //$NON-NLS-1$
+        Iterator<String> propertyKeysIter = propertieKeys.iterator();
+        while (propertyKeysIter.hasNext()) {
+            String proKey = propertyKeysIter.next();
+            Object proValue = NoSQLReflection.invokeMethod(node, "get", new Object[] { proKey });
+            if (proKey != null || proValue != null) {
+                propertiesMap.put(proKey, proValue);
+            }
+        }
+    }
 
     private static void collectNodeProperties(Map<String, Object> propertiesMap, Object node, ClassLoader classLoader)
             throws NoSQLReflectionException {
@@ -269,6 +316,17 @@ public class Neo4jConnectionUtil {
         }
         try {
             return NoSQLReflection.isInstance(obj, Class.forName("org.neo4j.graphdb.Node", true, classLoader)); //$NON-NLS-1$
+        } catch (Exception e) {
+            throw new NoSQLServerException(e);
+        }
+    }
+    
+    public static boolean isDriverNode(Object obj, ClassLoader classLoader) throws NoSQLServerException {
+        if (obj == null) {
+            return false;
+        }
+        try {
+            return NoSQLReflection.isInstance(obj, Class.forName("org.neo4j.driver.v1.types.Node", true, classLoader)); //$NON-NLS-1$
         } catch (Exception e) {
             throw new NoSQLServerException(e);
         }

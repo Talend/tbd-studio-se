@@ -25,13 +25,20 @@ import org.talend.core.model.metadata.builder.connection.ConnectionFactory;
 import org.talend.core.model.metadata.builder.connection.MetadataColumn;
 import org.talend.core.model.metadata.types.JavaType;
 import org.talend.core.model.metadata.types.JavaTypesManager;
+import org.talend.core.model.utils.ContextParameterUtils;
+import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
+import org.talend.metadata.managment.ui.utils.ConnectionContextHelper;
 import org.talend.repository.model.nosql.NoSQLConnection;
+import org.talend.repository.nosql.db.common.neo4j.INeo4jAttributes;
 import org.talend.repository.nosql.db.common.neo4j.INeo4jConstants;
 import org.talend.repository.nosql.db.util.neo4j.Neo4jConnectionUtil;
 import org.talend.repository.nosql.exceptions.NoSQLExtractSchemaException;
+import org.talend.repository.nosql.exceptions.NoSQLReflectionException;
 import org.talend.repository.nosql.exceptions.NoSQLServerException;
 import org.talend.repository.nosql.factory.NoSQLClassLoaderFactory;
 import org.talend.repository.nosql.metadata.AbstractMetadataProvider;
+import org.talend.repository.nosql.reflection.NoSQLReflection;
+import org.talend.utils.security.CryptoHelper;
 
 import orgomg.cwm.objectmodel.core.CoreFactory;
 import orgomg.cwm.objectmodel.core.TaggedValue;
@@ -68,30 +75,38 @@ public class Neo4jMetadataProvider extends AbstractMetadataProvider {
         try {
             ClassLoader classLoader = NoSQLClassLoaderFactory.getClassLoader(connection);
             Neo4jConnectionUtil.closeConnections();
-            db = Neo4jConnectionUtil.getDB(connection);
-            if (db == null) {
-                return metadataColumns;
-            }
-            Iterator<Map<String, Object>> resultIterator = Neo4jConnectionUtil.getResultIterator(connection, cypher, db);
-            if (resultIterator == null) {
-                return metadataColumns;
-            }
-            List<String> columnLabels = new ArrayList<String>();
-            int rowNum = 0;
-            while (resultIterator.hasNext()) {
-                if (rowNum > COUNT_ROWS) {
-                    break;
+            
+            Iterator<Map<String, Object>> resultIterator = null;
+            if(Neo4jConnectionUtil.isUpgradeVersion(connection)){
+                return getTheColumns(connection, classLoader, cypher);
+            }else{
+                db = Neo4jConnectionUtil.getDB(connection);
+                if (db == null) {
+                    return metadataColumns;
                 }
-                rowNum++;
-                Map<String, Object> row = resultIterator.next();
-                for (Entry<String, Object> column : row.entrySet()) {
-                    String key = column.getKey();
-                    Object value = column.getValue();
-                    if (StringUtils.isEmpty(key) || value == null) {
-                        continue;
+                resultIterator = Neo4jConnectionUtil.getResultIterator(connection, cypher, db);
+                
+
+                if (resultIterator == null) {
+                    return metadataColumns;
+                }
+                List<String> columnLabels = new ArrayList<String>();
+                int rowNum = 0;
+                while (resultIterator.hasNext()) {
+                    if (rowNum > COUNT_ROWS) {
+                        break;
                     }
-                    addMetadataColumns(classLoader, db, key, value, metadataColumns, columnLabels,
-                            Neo4jConnectionUtil.isVersion1(connection));
+                    rowNum++;
+                    Map<String, Object> row = (Map<String, Object>) resultIterator.next();
+                    for (Entry<String, Object> column : row.entrySet()) {
+                        String key = column.getKey();
+                        Object value = column.getValue();
+                        if (StringUtils.isEmpty(key) || value == null) {
+                            continue;
+                        }
+                        addMetadataColumns(classLoader, db, key, value, metadataColumns, columnLabels,
+                                Neo4jConnectionUtil.isVersion1(connection));
+                    }
                 }
             }
         } catch (Exception e) {
@@ -103,6 +118,66 @@ public class Neo4jMetadataProvider extends AbstractMetadataProvider {
         }
 
         return metadataColumns;
+    }
+    
+    private List<MetadataColumn> getTheColumns(NoSQLConnection connection, ClassLoader classLoader, String cypher) 
+            throws NoSQLReflectionException, ClassNotFoundException, NoSQLServerException{
+        List<MetadataColumn> metadataColumns = new ArrayList<MetadataColumn>();
+        String usename = StringUtils.trimToEmpty(connection.getAttributes().get(INeo4jAttributes.USERNAME));
+        String password = StringUtils.trimToEmpty(connection.getAttributes().get(INeo4jAttributes.PASSWORD));
+        String serverUrl = StringUtils.trimToEmpty(connection.getAttributes().get(INeo4jAttributes.SERVER_URL));
+        if (connection.isContextMode()) {
+            ContextType contextType = ConnectionContextHelper.getContextTypeForContextMode(connection);
+            if(contextType != null){
+                usename = ContextParameterUtils.getOriginalValue(contextType, usename);
+                password = ContextParameterUtils.getOriginalValue(contextType, password);
+                serverUrl = ContextParameterUtils.getOriginalValue(contextType, serverUrl);
+            }
+        }else {
+            password = connection.getValue(password, false);
+        }
+        Object basic = NoSQLReflection.invokeStaticMethod("org.neo4j.driver.v1.AuthTokens", "basic", 
+                new Object[] { usename, password}, classLoader, String.class, String.class);
+        Object driver = NoSQLReflection.invokeStaticMethod("org.neo4j.driver.v1.GraphDatabase", "driver", new Object[] {serverUrl, basic }, 
+                classLoader, String.class, Class.forName("org.neo4j.driver.v1.AuthToken", true, classLoader));
+        Object session = NoSQLReflection.invokeMethod(driver, "session");
+        Iterator<Map<String, Object>> resultIterator = (Iterator<Map<String, Object>>) NoSQLReflection.
+                invokeMethod(session, "run", new Object[] {cypher}, String.class);
+        List<String> columnLabels = new ArrayList<String>();
+        int rowNum = 0;
+        while (resultIterator.hasNext()) {
+            if (rowNum > COUNT_ROWS) {
+                break;
+            }
+            rowNum++;
+            Object record = resultIterator.next();
+            Map<String, Object> row = (Map<String, Object>) NoSQLReflection.invokeMethod(record, "asMap");
+            for (Entry<String, Object> column : row.entrySet()) {
+                String key = column.getKey();
+                Object value = column.getValue();
+                if (StringUtils.isEmpty(key) || value == null) {
+                    continue;
+                }
+                addMetadataColumns(classLoader, key, value, metadataColumns, columnLabels);
+            }
+        }
+        return metadataColumns;
+    }
+    
+    private void addMetadataColumns(ClassLoader classLoader, String columnKey, Object columnValue,
+            List<MetadataColumn> metadataColumns, List<String> columnLabels) throws NoSQLServerException {
+        boolean isNode = Neo4jConnectionUtil.isDriverNode(columnValue, classLoader);
+        if (isNode) {
+            Map<String, Object> nodeProperties = Neo4jConnectionUtil.getNodeProperties(columnValue, classLoader);
+            Iterator<Entry<String, Object>> proIterator = nodeProperties.entrySet().iterator();
+            while (proIterator.hasNext()) {
+                Map.Entry<String, Object> proEntry = proIterator.next();
+                addMetadataColumn(columnKey.concat(DOT).concat(proEntry.getKey()), proEntry.getValue(), metadataColumns,
+                        columnLabels);
+            }
+        } else {
+            addMetadataColumn(columnKey, columnValue, metadataColumns, columnLabels);
+        }
     }
 
     private void addMetadataColumns(ClassLoader classLoader, Object db, String columnKey, Object columnValue,

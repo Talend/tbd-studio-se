@@ -54,10 +54,6 @@ import org.talend.repository.nosql.validator.SpecialValueValidator;
  */
 public class Neo4jConnForm extends AbstractNoSQLConnForm {
 
-    private Button localDbBtn;
-
-    private Button remoteDbBtn;
-
     private StackLayout dbLayout;
 
     private Composite dbComposite;
@@ -107,8 +103,6 @@ public class Neo4jConnForm extends AbstractNoSQLConnForm {
         } else {
             dbVersionCombo.select(0);
         }
-        localDbBtn.setSelection(!isRemote);
-        remoteDbBtn.setSelection(isRemote);
         setUsernameBtn.setSelection(setUsername);
         updateAuthArea();
         if (Neo4jConnectionUtil.isNeedAuthorization(getConnection())) {
@@ -148,8 +142,6 @@ public class Neo4jConnForm extends AbstractNoSQLConnForm {
     @Override
     protected void updateEditableStatus(boolean editable) {
         dbVersionCombo.setEnabled(editable);
-        localDbBtn.setEnabled(editable);
-        remoteDbBtn.setEnabled(editable);
         browseDbPathBtn.setEnabled(editable);
         // dbPathTxt.setEditable(editable);
         serverURLTxt.setEditable(editable);
@@ -187,14 +179,7 @@ public class Neo4jConnForm extends AbstractNoSQLConnForm {
         dbVersionCombo = new LabelledCombo(
                 versionComposite,
                 Messages.getString("MongoDBConnForm.dbVersion"), Messages.getString("MongoDBConnForm.dbVersionTip"), dbVersionLabels.toArray(new String[0]), 3, true); //$NON-NLS-1$ //$NON-NLS-2$
-        localDbBtn = new Button(connectionGroup, SWT.RADIO);
-        localDbBtn.setText(Messages.getString("Neo4jConnForm.button.localDB.label")); //$NON-NLS-1$
-        localDbBtn.setSelection(true);
-        localDbBtn.setLayoutData(new GridData());
-
-        remoteDbBtn = new Button(connectionGroup, SWT.RADIO);
-        remoteDbBtn.setText(Messages.getString("Neo4jConnForm.button.remoteDB.label")); //$NON-NLS-1$
-        remoteDbBtn.setLayoutData(new GridData());
+        getConnection().getAttributes().put(INeo4jAttributes.REMOTE_SERVER, String.valueOf(true));
 
         authArea = new Composite(connectionGroup, SWT.NONE);
         GridData authParentGd = new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1);
@@ -270,29 +255,6 @@ public class Neo4jConnForm extends AbstractNoSQLConnForm {
                 updateAuthArea();
             }
         });
-        localDbBtn.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                checkFieldsValue();
-                getConnection().getAttributes().put(INeo4jAttributes.REMOTE_SERVER, String.valueOf(remoteDbBtn.getSelection()));
-                udpateDBConnPart(!localDbBtn.getSelection());
-                updateAuthArea();
-                updateAttributes();
-            }
-        });
-
-        remoteDbBtn.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                checkFieldsValue();
-                getConnection().getAttributes().put(INeo4jAttributes.REMOTE_SERVER, String.valueOf(remoteDbBtn.getSelection()));
-                updateAuthArea();
-                udpateDBConnPart(remoteDbBtn.getSelection());
-                updateAttributes();
-            }
-        });
 
         setUsernameBtn.addSelectionListener(new SelectionAdapter() {
 
@@ -320,15 +282,15 @@ public class Neo4jConnForm extends AbstractNoSQLConnForm {
 
             @Override
             public void modifyText(ModifyEvent e) {
-                if (localDbBtn.getSelection()) {
-                    checkFieldsValue();
-                    String originalDBPath = getConnection().getAttributes().get(INeo4jAttributes.DATABASE_PATH);
-                    String currentDBPath = dbPathTxt.getText();
-                    if (!StringUtils.equals(originalDBPath, currentDBPath)) {
-                        getConnection().getAttributes().put(INeo4jAttributes.DATABASE_PATH, currentDBPath);
-                        udpateConnectionConfig();
-                    }
-                }
+//                if (localDbBtn.getSelection()) {
+//                    checkFieldsValue();
+//                    String originalDBPath = getConnection().getAttributes().get(INeo4jAttributes.DATABASE_PATH);
+//                    String currentDBPath = dbPathTxt.getText();
+//                    if (!StringUtils.equals(originalDBPath, currentDBPath)) {
+//                        getConnection().getAttributes().put(INeo4jAttributes.DATABASE_PATH, currentDBPath);
+//                        udpateConnectionConfig();
+//                    }
+//                }
             }
         });
 
@@ -336,14 +298,12 @@ public class Neo4jConnForm extends AbstractNoSQLConnForm {
 
             @Override
             public void modifyText(ModifyEvent e) {
-                if (remoteDbBtn.getSelection()) {
-                    checkFieldsValue();
-                    String originalServerURL = getConnection().getAttributes().get(INeo4jAttributes.SERVER_URL);
-                    String currentServerURL = serverURLTxt.getText();
-                    if (!StringUtils.equals(originalServerURL, currentServerURL)) {
-                        getConnection().getAttributes().put(INeo4jAttributes.SERVER_URL, currentServerURL);
-                        udpateConnectionConfig();
-                    }
+                checkFieldsValue();
+                String originalServerURL = getConnection().getAttributes().get(INeo4jAttributes.SERVER_URL);
+                String currentServerURL = serverURLTxt.getText();
+                if (!StringUtils.equals(originalServerURL, currentServerURL)) {
+                    getConnection().getAttributes().put(INeo4jAttributes.SERVER_URL, currentServerURL);
+                    udpateConnectionConfig();
                 }
             }
         });
@@ -382,18 +342,9 @@ public class Neo4jConnForm extends AbstractNoSQLConnForm {
         super.updateValidatorEntries();
         collectValidateEntry(new SpecialValueValidator(dbVersionCombo.getSelectionIndex(), -1), true,
                 Messages.getString("AbstractNoSQLConnForm.InvalidDBVersion")); //$NON-NLS-1$
-        if (localDbBtn.getSelection()) {
-            NonemptyValidator validator = new NonemptyValidator(dbPathTxt.getText());
-            collectValidateEntry(validator, Messages.getString("Neo4jConnForm.validate.invalidDbPath")); //$NON-NLS-1$
-            checkBtn.setEnabled(validator.validate());
-        }
-        if (remoteDbBtn.getSelection()) {
-            NonemptyValidator validator = new NonemptyValidator(serverURLTxt.getText());
-            collectValidateEntry(validator, Messages.getString("Neo4jConnForm.validate.invalidServerURL")); //$NON-NLS-1$
-            checkBtn.setEnabled(validator.validate());
-
-        }
-
+        NonemptyValidator validator = new NonemptyValidator(serverURLTxt.getText());
+        collectValidateEntry(validator, Messages.getString("Neo4jConnForm.validate.invalidServerURL")); //$NON-NLS-1$
+        checkBtn.setEnabled(validator.validate());
         // username/password are not required for neo4j remote mode, since the authorization can be closed in server
         // if (!isNeedUpdateUINeo4JVersion()) {
         // collectValidateEntry(new NonemptyValidator(userText.getText()),
@@ -406,11 +357,7 @@ public class Neo4jConnForm extends AbstractNoSQLConnForm {
     @Override
     protected void updateAttributes() {
         super.updateAttributes();
-        if (remoteDbBtn.getSelection()) {
-            attributes.add(INeo4jAttributes.SERVER_URL);
-        } else {
-            attributes.add(INeo4jAttributes.DATABASE_PATH);
-        }
+        attributes.add(INeo4jAttributes.SERVER_URL);
         if (Neo4jConnectionUtil.isNeedAuthorization(getConnection())) {
             attributes.add(INeo4jAttributes.USERNAME);
             attributes.add(INeo4jAttributes.PASSWORD);
@@ -420,7 +367,7 @@ public class Neo4jConnForm extends AbstractNoSQLConnForm {
     @Override
     protected void saveAttributes() {
         super.saveAttributes();
-        getConnection().getAttributes().put(INeo4jAttributes.REMOTE_SERVER, String.valueOf(remoteDbBtn.getSelection()));
+        getConnection().getAttributes().put(INeo4jAttributes.REMOTE_SERVER, String.valueOf(true));
         getConnection().getAttributes().put(INeo4jAttributes.DATABASE_PATH, dbPathTxt.getText());
         getConnection().getAttributes().put(INeo4jAttributes.SERVER_URL, serverURLTxt.getText());
         getConnection().getAttributes().put(INoSQLCommonAttributes.DB_VERSION,
@@ -442,8 +389,8 @@ public class Neo4jConnForm extends AbstractNoSQLConnForm {
 
     @Override
     protected void collectConParameters() {
-        addContextParams(EHadoopParamName.Databasepath, localDbBtn.getSelection());
-        addContextParams(EHadoopParamName.ServerUrl, remoteDbBtn.getSelection());
+        addContextParams(EHadoopParamName.Databasepath, false);
+        addContextParams(EHadoopParamName.ServerUrl, true);
         boolean needAuthorization = Neo4jConnectionUtil.isNeedAuthorization(getConnection());
         addContextParams(EHadoopParamName.UserName, needAuthorization);
         addContextParams(EHadoopParamName.Password, needAuthorization);
@@ -456,13 +403,7 @@ public class Neo4jConnForm extends AbstractNoSQLConnForm {
      */
     @Override
     protected void collectNoSqlAttributesForContext() {
-        if (localDbBtn.getSelection()) {
-            getConnection().getAttributes().put(INeo4jAttributes.DATABASE_PATH, dbPathTxt.getText());
-        }
-        if (remoteDbBtn.getSelection()) {
-            getConnection().getAttributes().put(INeo4jAttributes.SERVER_URL, serverURLTxt.getText());
-        }
-
+        getConnection().getAttributes().put(INeo4jAttributes.SERVER_URL, serverURLTxt.getText());
         if (Neo4jConnectionUtil.isNeedAuthorization(getConnection())) {
             getConnection().getAttributes().put(INoSQLCommonAttributes.USERNAME, userText.getText());
             getConnection().getAttributes().put(INoSQLCommonAttributes.PASSWORD, pwdText.getText());
