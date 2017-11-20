@@ -51,6 +51,7 @@ org.neo4j.talend.Neo4jBatchInserterNode neo4jBatchNodeInserter_<%=cid%> = new or
 
 // Put the index name into the global map
 globalMap.put("neo4jBatchDatabaseIndexName_<%=cid%>", <%=batchIndexName%>);
+globalMap.put("neo4jBatchDatabaseIndexMap_<%=cid%>", neo4jBatchDatabase_<%=cid%>.getBatchInserterIndexes());
 
 // Create counter
 int nb_line_<%=cid%> = 0;

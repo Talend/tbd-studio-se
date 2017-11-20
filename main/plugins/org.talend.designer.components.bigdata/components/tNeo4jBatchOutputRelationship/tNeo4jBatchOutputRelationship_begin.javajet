@@ -50,9 +50,11 @@ org.neo4j.talend.Neo4jBatchDatabase neo4jBatchDatabase_<%=cid%> = (org.neo4j.tal
 	<%}%>
 // Retrieve start index name
 String startIndexName = (String) globalMap.get("neo4jBatchDatabaseIndexName_<%=startIndexNameCid%>");
+neo4jBatchDatabase_<%=cid%>.setBatchInserterIndexes(globalMap.get("neo4jBatchDatabaseIndexMap_<%=startIndexNameCid%>"));
 
 // Retrieve end index name
 String endIndexName = (String)  globalMap.get("neo4jBatchDatabaseIndexName_<%=endIndexNameCid%>");
+neo4jBatchDatabase_<%=cid%>.setBatchInserterIndexes(globalMap.get("neo4jBatchDatabaseIndexMap_<%=endIndexNameCid%>"));
 
 // Create Batch insert
 org.neo4j.talend.Neo4jBatchInserterRelationship neo4jBatchRelInserter_<%=cid%> = new org.neo4j.talend
