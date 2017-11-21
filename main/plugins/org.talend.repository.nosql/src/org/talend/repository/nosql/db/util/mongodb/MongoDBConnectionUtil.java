@@ -132,8 +132,9 @@ public class MongoDBConnectionUtil {
         if (contextType != null) {
             user = ContextParameterUtils.getOriginalValue(contextType, user);
             pass = ContextParameterUtils.getOriginalValue(contextType, pass);
+        }else{
+            pass = connection.getValue(pass, false);
         }
-        pass = CryptoHelper.getDefault().decrypt(pass);
         try {
             for(String host : hosts.keySet()){
                 String port = hosts.get(host);
