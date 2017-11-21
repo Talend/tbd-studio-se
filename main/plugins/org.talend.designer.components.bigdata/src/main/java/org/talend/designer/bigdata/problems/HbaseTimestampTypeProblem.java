@@ -10,6 +10,7 @@ import org.talend.designer.core.ui.views.problems.Problems;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Arrays;
 
 import org.talend.core.model.metadata.IMetadataColumn;
 import org.talend.core.model.metadata.IMetadataTable;
@@ -21,17 +22,19 @@ import org.talend.core.model.metadata.types.JavaTypesManager;
  */
 public class HbaseTimestampTypeProblem implements NodeProblem {
 	
-	private static final String HBASE_INPUT_COMPONENT = "tHBaseInput";
-	private static final String HBASE_OUTPUT_COMPONENT = "tHBaseOutput";
+	private static final List<String> COMPONENTS = Arrays.asList(
+			"tHBaseInput",
+			"tHBaseOutput",
+			"tMapRDBInput",
+			"tMapRDBOutput"
+	);
 
 	@Override
 	public boolean needsCheck(Node node) {
 		ComponentCategory cat = ComponentCategory.getComponentCategoryFromName(node.getComponent().getType());
         if (ComponentCategory.CATEGORY_4_DI == cat) {
             String currentComponentName = node.getComponent().getName();
-            if (HBASE_INPUT_COMPONENT.equals(currentComponentName) || HBASE_OUTPUT_COMPONENT.equals(currentComponentName)) {
-                return true;
-            }
+            return COMPONENTS.contains(currentComponentName);
         }
         return false;
 	}
@@ -41,12 +44,14 @@ public class HbaseTimestampTypeProblem implements NodeProblem {
 		String currentComponentName = node.getComponent().getName();
 		
 		switch(currentComponentName){
-		case HBASE_INPUT_COMPONENT:
+		case "tHBaseInput":
+		case "tMapRDBInput":
 			if((boolean) node.getElementParameter("RETRIEVE_TIMESTAMP").getValue()){
 				checkTimestampInMapping(node, "MAPPING");
 			}
 			break;
-		case HBASE_OUTPUT_COMPONENT:
+		case "tHBaseOutput":
+		case "tMapRDBOutput":
 			if((boolean) node.getElementParameter("CUSTOM_TIMESTAMP_COLUMN").getValue()){
 				checkTimestampInMapping(node, "FAMILIES");
 			}
