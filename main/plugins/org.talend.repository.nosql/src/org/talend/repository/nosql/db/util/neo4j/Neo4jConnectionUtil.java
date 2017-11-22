@@ -53,7 +53,7 @@ public class Neo4jConnectionUtil {
         Object dbConnection = null;
         try {
             boolean isRemote = Boolean.valueOf(connection.getAttributes().get(INeo4jAttributes.REMOTE_SERVER));
-            if(isRemote && isUpgradeVersion(connection)){
+            if(isRemote && isVersionSince32(connection)){
                 String usename = StringUtils.trimToEmpty(connection.getAttributes().get(INeo4jAttributes.USERNAME));
                 String password = StringUtils.trimToEmpty(connection.getAttributes().get(INeo4jAttributes.PASSWORD));
                 String serverUrl = StringUtils.trimToEmpty(connection.getAttributes().get(INeo4jAttributes.SERVER_URL));
@@ -106,7 +106,7 @@ public class Neo4jConnectionUtil {
     }
     
     private static void doCheck(Object db, ClassLoader classLoader, NoSQLConnection connection) throws NoSQLReflectionException, ClassNotFoundException {
-        if(connection != null && isUpgradeVersion(connection)){
+        if(connection != null && isVersionSince32(connection)){
             NoSQLReflection.invokeMethod(db, "getAllNodes", //$NON-NLS-1$
                     new Object[0]);
         }else{
@@ -179,7 +179,7 @@ public class Neo4jConnectionUtil {
                 }
                 Object dbFactory = NoSQLReflection.newInstance("org.neo4j.graphdb.factory.GraphDatabaseFactory", new Object[0], //$NON-NLS-1$
                         classLoader);
-                if(isUpgradeVersion(connection)){
+                if(isVersionSince32(connection)){
                     File dbFile = new File(dbPath);
                     db = NoSQLReflection.invokeMethod(dbFactory, "newEmbeddedDatabase", //$NON-NLS-1$
                             new Object[] { dbFile });
@@ -360,7 +360,7 @@ public class Neo4jConnectionUtil {
         }
 
         try {
-            if(connection != null && isUpgradeVersion(connection)){
+            if(connection != null && isVersionSince32(connection)){
                 ee = NoSQLReflection.newInstance("org.neo4j.cypher.internal.javacompat.ExecutionEngine", new Object[] { db }, //$NON-NLS-1$
                         classLoader, Class.forName("org.neo4j.kernel.impl.factory.GraphDatabaseFacade", true, classLoader)); //$NON-NLS-1$
             }else{
@@ -396,7 +396,7 @@ public class Neo4jConnectionUtil {
         executionEngine = null;
     }
     
-    public static boolean isUpgradeVersion(NoSQLConnection connection) {
+    public static boolean isVersionSince32(NoSQLConnection connection) {
         String dbVersion = connection.getAttributes().get(INoSQLCommonAttributes.DB_VERSION);
         try{
              Pattern pattern = Pattern.compile("NEO4J_(\\d+)_(\\d+)");//$NON-NLS-1$

@@ -77,7 +77,7 @@ public class Neo4jMetadataProvider extends AbstractMetadataProvider {
             Neo4jConnectionUtil.closeConnections();
             
             Iterator<Map<String, Object>> resultIterator = null;
-            if(Neo4jConnectionUtil.isUpgradeVersion(connection)){
+            if(Neo4jConnectionUtil.isVersionSince32(connection)){
                 return getTheColumns(connection, classLoader, cypher);
             }else{
                 db = Neo4jConnectionUtil.getDB(connection);
