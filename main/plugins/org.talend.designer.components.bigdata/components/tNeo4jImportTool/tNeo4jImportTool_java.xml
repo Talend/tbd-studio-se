@@ -61,15 +61,15 @@
         <PARAMETER NAME="DATABASE_PATH"
                    FIELD="DIRECTORY"
                    REQUIRED="true"
-                   NUM_ROW="1"
+                   NUM_ROW="10"
                    GROUP="DATABASE_GROUP">
-            <DEFAULT>""</DEFAULT>
+            <DEFAULT>"/tmp/neo4j_graph.db"</DEFAULT>
         </PARAMETER>
 
         <PARAMETER NAME="NODE_FILES"
                    FIELD="TABLE"
                    GROUP="IMPORT_FILES_GROUP"
-                   NUM_ROW="2"
+                   NUM_ROW="20"
                    NB_LINES="5">
             <ITEMS>
                 <ITEM NAME="FILE" VALUE="" />
@@ -80,7 +80,7 @@
         <PARAMETER NAME="RELATIONSHIP_FILES"
                    FIELD="TABLE"
                    GROUP="IMPORT_FILES_GROUP"
-                   NUM_ROW="3"
+                   NUM_ROW="30"
                    NB_LINES="5">
             <ITEMS>
                 <ITEM NAME="FILE" VALUE="" />
@@ -95,7 +95,7 @@
         <PARAMETER NAME="NEO4J_CONFIGURATION"
                    FIELD="TABLE"
                    GROUP="NEO4J_CONFIGURATION_GROUP"
-                   NUM_ROW="1"
+                   NUM_ROW="10"
                    NB_LINES="5">
             <ITEMS>
                 <ITEM NAME="KEY" VALUE="dbms.pagecache.memory"/>
@@ -106,7 +106,7 @@
         <PARAMETER NAME="IMPORT_CONFIGURATION"
                    FIELD="TABLE"
                    GROUP="IMPORT_CONFIGURATION_GROUP"
-                   NUM_ROW="2"
+                   NUM_ROW="20"
                    NB_LINES="5">
             <ITEMS>
                 <ITEM NAME="KEY" VALUE=""/>
