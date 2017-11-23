@@ -113,7 +113,13 @@ public class Neo4jConnForm extends AbstractNoSQLConnForm {
         }
         udpateDBConnPart(isRemote);
         dbPathTxt.setText(dbPath);
-        serverURLTxt.setText(serverURL == null ? INeo4jConstants.DEFAULT_SERVER_URL : serverURL);
+        getConnection().getAttributes().put(INoSQLCommonAttributes.DB_VERSION,
+                repositoryTranslator.getValue(dbVersionCombo.getText()));
+        if(Neo4jConnectionUtil.isVersionSince32(getConnection())){
+            serverURLTxt.setText(serverURL == null ? INeo4jConstants.DEFAULT_NEO4J_URL : serverURL);
+        }else{
+            serverURLTxt.setText(serverURL == null ? INeo4jConstants.DEFAULT_SERVER_URL : serverURL);
+        }
     }
 
     private void updateAuthArea() {
@@ -253,6 +259,11 @@ public class Neo4jConnForm extends AbstractNoSQLConnForm {
                 getConnection().getAttributes().put(INoSQLCommonAttributes.DB_VERSION,
                         repositoryTranslator.getValue(dbVersionCombo.getText()));
                 updateAuthArea();
+                if(Neo4jConnectionUtil.isVersionSince32(getConnection())){
+                    serverURLTxt.setText(INeo4jConstants.DEFAULT_NEO4J_URL);
+                }else{
+                    serverURLTxt.setText(INeo4jConstants.DEFAULT_SERVER_URL);
+                }
             }
         });
 

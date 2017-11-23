@@ -22,6 +22,8 @@ public interface INeo4jConstants {
     public final static String NEO4J_SCHEMA = "NEO4J_SCHEMA"; //$NON-NLS-1$
 
     public final static String DEFAULT_SERVER_URL = "http://localhost:7474/db/data"; //$NON-NLS-1$
+    
+    public final static String DEFAULT_NEO4J_URL = "bolt://localhost:7687"; //$NON-NLS-1$
 
     public final static String CYPHER = "CYPHER"; //$NON-NLS-1$
 
