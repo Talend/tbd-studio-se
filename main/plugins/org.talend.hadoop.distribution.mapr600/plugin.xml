@@ -874,6 +874,7 @@
                 id="SQOOP-LIB-MAPR600"
                 name="SQOOP-LIB-MAPR600">
             <library id="sqoop-1.4.6-mapr-1710.jar"/>
+            <library id="commons-lang3-3.4.jar" />
             <library id="avro-mapred-1.7.7-hadoop2.jar"/>
         </libraryNeededGroup>
 
