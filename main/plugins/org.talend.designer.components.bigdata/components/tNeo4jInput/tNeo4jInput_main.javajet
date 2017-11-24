@@ -60,7 +60,7 @@
     
      if ("NEO4J_3_2_X".equals(dbVersion)) {
 %>
-     org.neo4j.driver.v1.Value row_<%=cid%> = resultIterator_<%=cid%>.next().get(0);
+     org.neo4j.driver.v1.Record row_<%=cid%> = resultIterator_<%=cid%>.next();
      org.neo4j.driver.v1.Value value_<%=cid%> = null;
      <%
      for (Map.Entry<String, IMetadataColumn> columnMapped : columnsMapped.entrySet()) {
@@ -72,7 +72,7 @@
 		value_<%=cid%> = neo4jUtil_<%=cid%>.getPropertyValue(expression_<%=cid%>,row_<%=cid%>);
 		<%
 		}else{%>
-		value_<%=cid%> = row_<%=cid%>;
+		value_<%=cid%> = row_<%=cid%>.get(0);
 		<%
 		}
 		String cType = column.getTalendType();

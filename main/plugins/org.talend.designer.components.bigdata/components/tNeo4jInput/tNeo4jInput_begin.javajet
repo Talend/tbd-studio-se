@@ -77,12 +77,12 @@ if ("NEO4J_3_2_X".equals(dbVersion)){%>
         String expression_<%=cid%> = "";
         
   class Neo4jUtil_<%=cid%>{
-	public org.neo4j.driver.v1.Value getPropertyValue(String expression,org.neo4j.driver.v1.Value row){
+	public org.neo4j.driver.v1.Value getPropertyValue(String expression,org.neo4j.driver.v1.Record row){
 		org.neo4j.driver.v1.Value value=row.get(expression);
 		if(value.isNull()){
-			if(expression!=null&&expression.contains(".")){
-					String suffix=expression.split("\\.")[0];
-					String propertyName=expression.split("\\.")[1];
+			if(expression != null && expression.contains(".")){
+					String suffix = expression.split("\\.")[0];
+					String propertyName = expression.split("\\.")[1];
 					org.neo4j.driver.v1.Value propertyContainer = (org.neo4j.driver.v1.Value) row.get(suffix);
 						if (!propertyContainer.isNull()) {
 						    value=propertyContainer.get(propertyName);

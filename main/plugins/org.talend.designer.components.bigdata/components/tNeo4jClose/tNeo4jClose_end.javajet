@@ -16,13 +16,21 @@
     INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
     String dbVersion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
     boolean remoteServer = "true".equalsIgnoreCase(ElementParameterParser.getValue(connectionNode, "__REMOTE_SERVER__"));
-    if("NEO4J_3_2_X".equals(dbVersion)&&remoteServer){%>
-    org.neo4j.driver.v1.Driver driver_<%=cid%> = (org.neo4j.driver.v1.Driver)globalMap.get("<%=dbconn%>");
-    if(driver_<%=cid%>!=null){
-        driver_<%=cid%>.close();
-    }
-    
-    <%}else{%>
+    if("NEO4J_3_2_X".equals(dbVersion)){
+    	if(remoteServer){%>
+ 	   org.neo4j.driver.v1.Driver driver_<%=cid%> = (org.neo4j.driver.v1.Driver)globalMap.get("<%=dbconn%>");
+	    if(driver_<%=cid%>!=null){
+       	 	driver_<%=cid%>.close();
+    	}
+       <% }else{%>
+    		//Close batch connection
+		org.neo4j.talend.Neo4jBatchDatabase neo4jBatchDatabase_<%=cid%> = (org.neo4j.talend.Neo4jBatchDatabase) globalMap.get("<%=idBatchConn%>");
+		if (neo4jBatchDatabase_<%=cid%> != null) {
+	    	neo4jBatchDatabase_<%=cid%>.shutdown();
+    		globalMap.remove("<%=idBatchConn%>");
+    		}
+		<%}
+     }else{ %>
 
 org.neo4j.graphdb.GraphDatabaseService databaseService_<%=cid%> = (org.neo4j.graphdb.GraphDatabaseService) globalMap.get("<%=dbconn%>");
 
@@ -30,10 +38,5 @@ if (databaseService_<%=cid%> != null) {
 	databaseService_<%=cid%>.shutdown();
 }
 
-//Close batch connection
-org.neo4j.talend.Neo4jBatchDatabase neo4jBatchDatabase_<%=cid%> = (org.neo4j.talend.Neo4jBatchDatabase) globalMap.get("<%=idBatchConn%>");
-if (neo4jBatchDatabase_<%=cid%> != null) {
-    neo4jBatchDatabase_<%=cid%>.shutdown();
-    globalMap.remove("<%=idBatchConn%>");
-}
+
 <%}%>
