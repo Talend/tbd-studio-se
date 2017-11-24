@@ -62,6 +62,7 @@ import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkBatchAzure
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkBatchS3NodeModuleGroup;
+import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkStreamingFlumeNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkStreamingKafkaAssemblyModuleGroup;
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkStreamingKafkaAvroModuleGroup;
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkStreamingKafkaClientModuleGroup;
@@ -192,6 +193,14 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
                 new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                         SparkStreamingConstant.MAPRSTREAMS_OUTPUT_COMPONENT),
                 MapR600SparkStreamingMapRStreamsClientModuleGroup.getModuleGroups());
+
+        //Flume
+        Set<DistributionModuleGroup> flumeNodeModuleGroups = MapR600SparkStreamingFlumeNodeModuleGroup.getModuleGroups();
+        nodeModuleGroups.put(
+                new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.FLUME_INPUT_COMPONENT),
+                flumeNodeModuleGroups);
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.FLUME_OUTPUT_COMPONENT), flumeNodeModuleGroups);
     }
 
     @Override

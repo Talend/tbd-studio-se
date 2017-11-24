@@ -377,6 +377,26 @@
         	name="jetty-util-6.1.26.jar" 
         	mvn_uri="mvn:org.talend.libraries/jetty-util-6.1.26.jar/6.0.0"/>
         
+        <!-- Flume libraries -->
+        <libraryNeeded
+            context="plugin:org.talend.libraries.hadoop.mapr.6.0.0"
+            id="flume-ng-sdk-1.7.0-mapr-1703.jar"
+            name="flume-ng-sdk-1.7.0-mapr-1703.jar"
+            mvn_uri="mvn:org.talend.libraries/flume-ng-sdk-1.7.0-mapr-1703/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.libraries.hadoop.mapr.6.0.0"
+            id="flume-ng-core-1.7.0-mapr-1703.jar"
+            name="flume-ng-core-1.7.0-mapr-1703.jar"
+            mvn_uri="mvn:org.talend.libraries/flume-ng-core-1.7.0-mapr-1703/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.libraries.hadoop.mapr.6.0.0"
+            id="avro-ipc-1.7.4.jar"
+            name="avro-ipc-1.7.4.jar"
+            mvn_uri="mvn:org.talend.libraries/avro-ipc-1.7.4.jar/6.0.0">
+        </libraryNeeded>
+        
         <!-- GraphFrames libraries -->
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.0"
@@ -983,6 +1003,17 @@
            <library id="datanucleus-api-jdo-4.2.4.jar" />
            <library id="datanucleus-core-4.1.6.jar" />
            <library id="datanucleus-rdbms-4.1.19.jar" />
+        </libraryNeededGroup>
+
+        <!-- Spark Flume group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Flume libraries for MapR 6.0.0 that are MRREQUIRED"
+                id="SPARK-FLUME-LIB-MRREQUIRED-MAPR600"
+                name="SPARK-FLUME-LIB-MRREQUIRED-MAPR600">
+            <!--library id="spark-streaming-flume-sink_x.x.jar"/--><!--Can't find this-->
+            <library id="flume-ng-sdk-1.7.0-mapr-1703.jar"/>
+            <library id="flume-ng-core-1.7.0-mapr-1703.jar"/>
+            <library id="avro-ipc-1.7.4.jar"/>
         </libraryNeededGroup>
 
         <!-- Spark Kafka group MRREQUIRED -->
