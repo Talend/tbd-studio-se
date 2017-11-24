@@ -1,0 +1,59 @@
+<%@ jet
+	imports="
+		org.talend.core.model.process.INode
+		org.talend.core.model.process.ElementParameterParser
+		org.talend.designer.codegen.config.CodeGeneratorArgument
+		java.util.List
+		java.util.Map
+	"
+%>
+<%
+    // General Talend object
+    CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+    INode node = (INode)codeGenArgument.getArgument();
+    String cid = node.getUniqueName();
+
+    // Component parameter
+    String idConn = "neo4jBatchDatabase_" + ElementParameterParser.getValue(node, "__CONNECTION__");
+    String labelsField = (String) ElementParameterParser.getValue(node, "__LABEL_FIELD__");
+    String batchIndexName = (String) ElementParameterParser.getValue(node, "__IMPORT_INDEX_NAME__");
+    String batchIndexFieldName = (String) ElementParameterParser.getValue(node, "__IMPORT_ID_FIELD__");
+    Boolean insertIndexFieldName = Boolean.valueOf(ElementParameterParser.getValue(node, "__INSERT_IMPORT_ID_FIELD__"));
+    Integer indexCacheSize = Integer.valueOf(ElementParameterParser.getValue(node, "__IMPORT_INDEX_CACHE_SIZE__"));
+    boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_EXISTING_CONNECTION__"));
+    
+	if(!useExistingConnection) {
+	    List<Map<String, String>> configuration = (List<Map<String, String>>) ElementParameterParser.getObjectValue(node, "__CONFIGURATION__");
+	    String dbPath = ElementParameterParser.getValue(node, "__DATABASE_PATH__");
+	%>
+		// Transform configuration to Map configuration
+		java.util.Map<String, String> config = new java.util.HashMap();
+	<%
+	    if (configuration != null) {
+	        for (Map<String, String> params : configuration) {
+	            %>
+	                config.put("<%=params.get("KEY")%>", <%=params.get("VALUE")%>);
+	            <%
+	        }
+	    }
+	%>
+		// Just put the database into the global map
+		org.neo4j.talend.Neo4jBatchDatabase neo4jBatchDatabase_<%=cid%> = new org.neo4j.talend.Neo4jBatchDatabase(<%=dbPath%>, config);
+	
+	<%	
+	}else{%>
+
+// Retrieve connection
+org.neo4j.talend.Neo4jBatchDatabase neo4jBatchDatabase_<%=cid%> = (org.neo4j.talend.Neo4jBatchDatabase) globalMap.get("<%=idConn%>");
+	<%}%>
+// Create Batch Node insert
+org.neo4j.talend.Neo4jBatchInserterNode neo4jBatchNodeInserter_<%=cid%> = new org.neo4j.talend.Neo4jBatchInserterNode(neo4jBatchDatabase_<%=cid%>, "<%=labelsField%>", <%=batchIndexName%>, "<%=batchIndexFieldName%>",<%=insertIndexFieldName%>,<%=indexCacheSize%>);
+
+// Put the index name into the global map
+globalMap.put("neo4jBatchDatabaseIndexName_<%=cid%>", <%=batchIndexName%>);
+globalMap.put("neo4jBatchDatabaseIndexMap_<%=cid%>", neo4jBatchDatabase_<%=cid%>.getBatchInserterIndexes());
+
+// Create counter
+int nb_line_<%=cid%> = 0;
+
+   try{
