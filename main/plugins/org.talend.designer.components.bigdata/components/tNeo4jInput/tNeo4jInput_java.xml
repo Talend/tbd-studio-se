@@ -460,7 +460,7 @@
                 
                             <!-- Version 3.2.X -->
             <IMPORT NAME="neo4j-java-driver-1.4.4.jar" MODULE="neo4j-java-driver-1.4.4.jar"
-                MVN="mvn:org.talend.libraries/neo4j-java-driver-1.4.4/6.0.0"
+                MVN="mvn:org.neo4j.driver/neo4j-java-driver/1.4.4"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_3_2_X') AND (USE_EXISTING_CONNECTION == 'false')" />
 		</IMPORTS>
 	</CODEGENERATION>
