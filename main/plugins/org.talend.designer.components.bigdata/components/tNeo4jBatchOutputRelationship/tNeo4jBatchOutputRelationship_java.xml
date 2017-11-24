@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<COMPONENT>
+    <HEADER AUTHOR="Benoit Simard"
+            COMPATIBILITY="ALL"
+            DATA_AUTO_PROPAGATE="false"
+            PLATEFORM="ALL"
+            RELEASE_DATE="20160301"
+            SERIAL=""
+            STARTABLE="true"
+            STATUS="ALPHA"
+            VERSION="1.2">
+        <SIGNATURE/>
+    </HEADER>
+
+    <FAMILIES>
+        <FAMILY>Databases/Neo4j</FAMILY>
+        <FAMILY>Big Data/Neo4j</FAMILY>
+    </FAMILIES>
+
+    <DOCUMENTATION>
+        <URL/>
+    </DOCUMENTATION>
+
+    <CONNECTORS>
+        <CONNECTOR CTYPE="FLOW"
+                   MAX_INPUT="1"
+                   MAX_OUTPUT="0"
+                   MIN_INPUT="0"
+                   MIN_OUTPUT="0" />
+        <CONNECTOR CTYPE="ITERATE"
+                   MAX_OUTPUT="0"
+                   MAX_INPUT="1" />
+        <CONNECTOR CTYPE="SUBJOB_OK"
+                   MAX_INPUT="1" />
+        <CONNECTOR CTYPE="SUBJOB_ERROR"
+                   MAX_INPUT="1" />
+        <CONNECTOR CTYPE="COMPONENT_OK"
+                   MAX_INPUT="0"
+                   MAX_OUTPUT="1"
+                   MIN_INPUT="0"
+                   MIN_OUTPUT="0" />
+        <CONNECTOR CTYPE="COMPONENT_ERROR"
+                   MAX_INPUT="0"
+                   MAX_OUTPUT="1"
+                   MIN_INPUT="0"
+                   MIN_OUTPUT="0" />
+        <CONNECTOR CTYPE="RUN_IF" />
+    </CONNECTORS>
+
+    <PARAMETERS>
+    	<PARAMETER NAME="USE_EXISTING_CONNECTION" FIELD="CHECK"
+			NUM_ROW="10" GROUP="CONNECTION_GROUP">
+			<DEFAULT>false</DEFAULT>
+		</PARAMETER>
+
+        <PARAMETER NAME="CONNECTION"
+                   FIELD="COMPONENT_LIST"
+                   REQUIRED="true"
+                   FILTER="tNeo4jConnection"
+                   NUM_ROW="20"
+                   SHOW_IF="USE_EXISTING_CONNECTION == 'true'"
+                   GROUP="CONNECTION_GROUP"/>
+                   
+		<PARAMETER NAME="DATABASE_PATH" FIELD="DIRECTORY"	REPOSITORY_VALUE="DATABASE_PATH" REQUIRED="true" NUM_ROW="25"
+			SHOW_IF="USE_EXISTING_CONNECTION == 'false'" GROUP="CONNECTION_GROUP">
+			<DEFAULT>""</DEFAULT>
+		</PARAMETER>
+		
+		<PARAMETER NAME="SHUTDOWN_DB" FIELD="CHECK" NUM_ROW="26"
+			SHOW_IF="USE_EXISTING_CONNECTION == 'true'" GROUP="CONNECTION_GROUP">
+			<DEFAULT>false</DEFAULT>
+		</PARAMETER>
+
+        <PARAMETER NAME="RELATIONSHIP_TYPE"
+                   FIELD="COLUMN_LIST"
+                   REQUIRED="true"
+                   GROUP="RELATIONSHIP_GROUP"
+                   NUM_ROW="30">
+        </PARAMETER>
+
+        <PARAMETER NAME="RELATIONSHIP_DIRECTION"
+                   FIELD="CLOSED_LIST"
+                   REQUIRED="true"
+                   GROUP="RELATIONSHIP_GROUP"
+                   NUM_ROW="40">
+            <ITEMS DEFAULT="OUTGOING">
+                <ITEM NAME="OUTGOING" VALUE="OUTGOING" />
+                <ITEM NAME="INCOMING" VALUE="INCOMING" />
+            </ITEMS>
+        </PARAMETER>
+
+        <PARAMETER NAME="START_INDEX_NAME"
+                   FIELD="COMPONENT_LIST"
+                   FILTER="tNeo4jBatchOutput"
+                   REQUIRED="true"
+                   NUM_ROW="50"
+                   GROUP="START_NODE_GROUP" />
+
+        <PARAMETER NAME="START_INDEX_FIELD"
+                   FIELD="COLUMN_LIST"
+                   REQUIRED="true"
+                   NUM_ROW="60"
+                   GROUP="START_NODE_GROUP" />
+
+
+        <PARAMETER NAME="END_INDEX_NAME"
+                   FIELD="COMPONENT_LIST"
+                   FILTER="tNeo4jBatchOutput"
+                   REPOSITORY_VALUE="NEO4J_BATCH_INDEXNAME"
+                   REQUIRED="true"
+                   NUM_ROW="80"
+                   GROUP="END_NODE_GROUP" />
+
+        <PARAMETER NAME="END_INDEX_FIELD"
+                   FIELD="COLUMN_LIST"
+                   REQUIRED="true"
+                   NUM_ROW="90"
+                   GROUP="END_NODE_GROUP" />
+                   
+        <PARAMETER
+                NAME="DIE_ON_ERROR"
+                FIELD="CHECK"
+                REQUIRED="true"
+                NUM_ROW="100">
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+
+    </PARAMETERS>
+
+
+	<ADVANCED_PARAMETERS>
+        <PARAMETER NAME="CONFIGURATION"
+                   FIELD="TABLE"
+                   GROUP="FINE_TUNING_GROUP"
+                   NUM_ROW="10"
+                   NB_LINES="10"
+                   SHOW_IF="USE_EXISTING_CONNECTION == 'false'">
+            <ITEMS>
+                <ITEM NAME="KEY" VALUE="dbms.pagecache.memory"/>
+                <ITEM NAME="VALUE" VALUE="2G"/>
+            </ITEMS>
+
+        </PARAMETER>
+
+    </ADVANCED_PARAMETERS>
+
+    <CODEGENERATION>
+        <IMPORTS>
+			<IMPORT NAME="bcpkix-jdk15on-1.53" MODULE="bcpkix-jdk15on-1.53.jar"  MVN="mvn:org.talend.libraries/bcpkix-jdk15on-1.53/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="bcprov-jdk15on-1.53" MODULE="bcprov-jdk15on-1.53.jar"  MVN="mvn:org.talend.libraries/bcprov-jdk15on-1.53/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="caffeine-2.3.3" MODULE="caffeine-2.3.3.jar"  MVN="mvn:org.talend.libraries/caffeine-2.3.3/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="commons-compress-1.12" MODULE="commons-compress-1.12.jar"  MVN="mvn:org.talend.libraries/commons-compress-1.12/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="commons-lang3-3.3.2" MODULE="commons-lang3-3.3.2.jar"  MVN="mvn:org.talend.libraries/commons-lang3-3.3.2/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="concurrentlinkedhashmap-lru-1.4.2" MODULE="concurrentlinkedhashmap-lru-1.4.2.jar"  MVN="mvn:org.talend.libraries/concurrentlinkedhashmap-lru-1.4.2/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="lucene-analyzers-common-5.5.0" MODULE="lucene-analyzers-common-5.5.0.jar"  MVN="mvn:org.talend.libraries/lucene-analyzers-common-5.5.0/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="lucene-backward-codecs-5.5.0" MODULE="lucene-backward-codecs-5.5.0.jar"  MVN="mvn:org.talend.libraries/lucene-backward-codecs-5.5.0/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="lucene-codecs-5.5.0" MODULE="lucene-codecs-5.5.0.jar"  MVN="mvn:org.talend.libraries/lucene-codecs-5.5.0/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="lucene-core-5.5.0" MODULE="lucene-core-5.5.0.jar"  MVN="mvn:org.talend.libraries/lucene-core-5.5.0/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="lucene-queryparser-5.5.0" MODULE="lucene-queryparser-5.5.0.jar"  MVN="mvn:org.talend.libraries/lucene-queryparser-5.5.0/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-3.2.6" MODULE="neo4j-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-codegen-3.2.6" MODULE="neo4j-codegen-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-codegen-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-collections-3.2.6" MODULE="neo4j-collections-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-collections-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-command-line-3.2.6" MODULE="neo4j-command-line-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-command-line-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-common-3.2.6" MODULE="neo4j-common-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-common-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-configuration-3.2.6" MODULE="neo4j-configuration-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-configuration-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-consistency-check-3.2.6" MODULE="neo4j-consistency-check-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-consistency-check-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-csv-3.2.6" MODULE="neo4j-csv-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-csv-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-cypher-3.2.6" MODULE="neo4j-cypher-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-cypher-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-cypher-compiler-2.3-2.3.11" MODULE="neo4j-cypher-compiler-2.3-2.3.11.jar"  MVN="mvn:org.talend.libraries/neo4j-cypher-compiler-2.3-2.3.11/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-cypher-compiler-3.1-3.1.6" MODULE="neo4j-cypher-compiler-3.1-3.1.6.jar"  MVN="mvn:org.talend.libraries/neo4j-cypher-compiler-3.1-3.1.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-cypher-compiler-3.2-3.2.6" MODULE="neo4j-cypher-compiler-3.2-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-cypher-compiler-3.2-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-cypher-frontend-2.3-2.3.11" MODULE="neo4j-cypher-frontend-2.3-2.3.11.jar"  MVN="mvn:org.talend.libraries/neo4j-cypher-frontend-2.3-2.3.11/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-cypher-frontend-3.1-3.1.6" MODULE="neo4j-cypher-frontend-3.1-3.1.6.jar"  MVN="mvn:org.talend.libraries/neo4j-cypher-frontend-3.1-3.1.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-cypher-frontend-3.2-3.2.6" MODULE="neo4j-cypher-frontend-3.2-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-cypher-frontend-3.2-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-cypher-ir-3.2-3.2.6" MODULE="neo4j-cypher-ir-3.2-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-cypher-ir-3.2-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-dbms-3.2.6" MODULE="neo4j-dbms-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-dbms-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-graph-algo-3.2.6" MODULE="neo4j-graph-algo-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-graph-algo-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-graph-matching-3.1.3" MODULE="neo4j-graph-matching-3.1.3.jar"  MVN="mvn:org.talend.libraries/neo4j-graph-matching-3.1.3/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-graphdb-api-3.2.6" MODULE="neo4j-graphdb-api-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-graphdb-api-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-import-tool-3.2.6" MODULE="neo4j-import-tool-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-import-tool-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-index-3.2.6" MODULE="neo4j-index-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-index-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-io-3.2.6" MODULE="neo4j-io-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-io-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-jmx-3.2.6" MODULE="neo4j-jmx-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-jmx-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-kernel-3.2.6" MODULE="neo4j-kernel-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-kernel-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-logging-3.2.6" MODULE="neo4j-logging-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-logging-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-lucene-index-3.2.6" MODULE="neo4j-lucene-index-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-lucene-index-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-lucene-upgrade-3.2.6" MODULE="neo4j-lucene-upgrade-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-lucene-upgrade-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-primitive-collections-3.2.6" MODULE="neo4j-primitive-collections-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-primitive-collections-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-resource-3.2.6" MODULE="neo4j-resource-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-resource-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-ssl-3.2.6" MODULE="neo4j-ssl-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-ssl-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j_talend-1.2-20171110" MODULE="neo4j_talend-1.2-20171110.jar"  MVN="mvn:org.talend.libraries/neo4j_talend-1.2-20171110/6.0.0" UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/neo4j_talend-1.2-20171110.jar" REQUIRED="true"/>
+			<IMPORT NAME="neo4j-udc-3.2.6" MODULE="neo4j-udc-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-udc-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="neo4j-unsafe-3.2.6" MODULE="neo4j-unsafe-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-unsafe-3.2.6/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="netty-all-4.1.15.Final" MODULE="netty-all-4.1.15.Final.jar"  MVN="mvn:org.talend.libraries/netty-all-4.1.15.Final/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="opencsv-2.3" MODULE="opencsv-2.3.jar"  MVN="mvn:org.talend.libraries/opencsv-2.3/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="parboiled-core-1.1.7" MODULE="parboiled-core-1.1.7.jar"  MVN="mvn:org.talend.libraries/parboiled-core-1.1.7/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="parboiled-scala_2.11-1.1.7" MODULE="parboiled-scala_2.11-1.1.7.jar"  MVN="mvn:org.talend.libraries/parboiled-scala_2.11-1.1.7/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="scala-library-2.11.8" MODULE="scala-library-2.11.8.jar"  MVN="mvn:org.talend.libraries/scala-library-2.11.8/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="scala-reflect-2.11.8" MODULE="scala-reflect-2.11.8.jar"  MVN="mvn:org.talend.libraries/scala-reflect-2.11.8/6.0.0"  REQUIRED="true"/>
+		</IMPORTS>
+    </CODEGENERATION>
+
+    <RETURNS>
+        <RETURN AVAILABILITY="AFTER" NAME="NB_LINE" TYPE="id_Integer" />
+    </RETURNS>
+</COMPONENT>

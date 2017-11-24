@@ -3,7 +3,7 @@
 		org.talend.core.model.process.INode
 		org.talend.core.model.process.ElementParameterParser
 		org.talend.designer.codegen.config.CodeGeneratorArgument
-        java.util.List
+		org.talend.core.model.utils.NodeUtil
 	"
 %>
 <%
@@ -14,93 +14,116 @@
     boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_EXISTING_CONNECTION__"));
     boolean shutdownDb = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SHUTDOWN_DB__"));
     String dbVersion = ElementParameterParser.getValue(node,"__DB_VERSION__");
-
-    if (useExistingConnection) {
-    	String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
-        List<? extends INode> nodes = node.getProcess().getGeneratingNodes();
-        for(INode targetNode : nodes){
-            if (targetNode.getUniqueName().equals(connection)) {
-                dbVersion = ElementParameterParser.getValue(targetNode, "__DB_VERSION__");
-                break;
-            }
-        }
+	if(useExistingConnection){
+	    String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+        INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
+        dbVersion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
     	String dbconn = "dbService_" + connection;
+    	if("NEO4J_3_2_X".equals(dbVersion)){
 		%>
+		org.neo4j.driver.v1.Driver driver_<%=cid%> = (org.neo4j.driver.v1.Driver)globalMap.get("<%=dbconn%>");
+		<%} else {%>
 		org.neo4j.graphdb.GraphDatabaseService databaseService_<%=cid%> = (org.neo4j.graphdb.GraphDatabaseService) globalMap.get("<%=dbconn%>");
 	<%
+		}
     } else {
-    	boolean remoteServer = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REMOTE_SERVER__"));
-    	if (remoteServer) {
+        if("NEO4J_3_2_X".equals(dbVersion)){
             String serverUrl = ElementParameterParser.getValue(node, "__SERVER_URL__");
-            boolean setUsername = ElementParameterParser.getBooleanValue(node, "__SET_USERNAME__");
             String username = ElementParameterParser.getValue(node, "__USERNAME__");
             String passwordFieldName = "__PASSWORD__";
-            if ((setUsername) || ((!"NEO4J_1_X_X".equals(dbVersion)) && (!"NEO4J_2_1_X".equals(dbVersion)))) {
-                %>
-                <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
-                org.neo4j.graphdb.GraphDatabaseService databaseService_<%=cid%> = new org.neo4j.rest.graphdb.RestGraphDatabase(<%=serverUrl%>, <%=username%>, decryptedPassword_<%=cid%>);
-                <%
-            } else {
-                %>
-                org.neo4j.graphdb.GraphDatabaseService databaseService_<%=cid%> = new org.neo4j.rest.graphdb.RestGraphDatabase(<%=serverUrl%>);
-                <%
-            }
-    	} else {
-	    	String databasePath = ElementParameterParser.getValue(node, "__DATABASE_PATH__");
-	    	if ("NEO4J_1_X_X".equals(dbVersion)) {
-                %>
-                org.neo4j.graphdb.GraphDatabaseService databaseService_<%=cid%> = new org.neo4j.kernel.EmbeddedGraphDatabase(<%=databasePath%>);
-                <%
-            } else { // NEO4J_2_1_X or NEO4J_2_2_X or "NEO4J_2_3_X"
-                %>
-                org.neo4j.graphdb.GraphDatabaseService databaseService_<%=cid%> = new org.neo4j.graphdb.factory.GraphDatabaseFactory().newEmbeddedDatabase(<%=databasePath%>);
-                <%
-            }
+        %>
+        <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
+        org.neo4j.driver.v1.Driver driver_<%=cid%> = org.neo4j.driver.v1.GraphDatabase.driver(<%=serverUrl%>, org.neo4j.driver.v1.AuthTokens.basic(<%=username%>, decryptedPassword_<%=cid%>));
+
+        <%
+        }else{
+        	boolean remoteServer = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REMOTE_SERVER__"));
+        	if (remoteServer) {
+                String serverUrl = ElementParameterParser.getValue(node, "__SERVER_URL__");
+                boolean setUsername = ElementParameterParser.getBooleanValue(node, "__SET_USERNAME__");
+                String username = ElementParameterParser.getValue(node, "__USERNAME__");
+                String passwordFieldName = "__PASSWORD__";
+                if ((setUsername) || ((!"NEO4J_1_X_X".equals(dbVersion)) && (!"NEO4J_2_1_X".equals(dbVersion)))) {
+                    %>
+                    <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
+                    org.neo4j.graphdb.GraphDatabaseService databaseService_<%=cid%> = new org.neo4j.rest.graphdb.RestGraphDatabase(<%=serverUrl%>, <%=username%>, decryptedPassword_<%=cid%>);
+                    <%
+                } else {
+                    %>
+                    org.neo4j.graphdb.GraphDatabaseService databaseService_<%=cid%> = new org.neo4j.rest.graphdb.RestGraphDatabase(<%=serverUrl%>);
+                    <%
+                }
+        	} else {
+    	    	String databasePath = ElementParameterParser.getValue(node, "__DATABASE_PATH__");
+    	    	if ("NEO4J_1_X_X".equals(dbVersion)) {
+                    %>
+                    org.neo4j.graphdb.GraphDatabaseService databaseService_<%=cid%> = new org.neo4j.kernel.EmbeddedGraphDatabase(<%=databasePath%>);
+                    <%
+                } else { // NEO4J_2_1_X or NEO4J_2_2_X or "NEO4J_2_3_X"
+                    %>
+                    org.neo4j.graphdb.GraphDatabaseService databaseService_<%=cid%> = new org.neo4j.graphdb.factory.GraphDatabaseFactory().newEmbeddedDatabase(<%=databasePath%>);
+                    <%
+                }
+    		}
 		}
     }
 
-    String userNbLine = ElementParameterParser.getValue(node, "__USE_NB_LINE__");
+if ("NEO4J_3_2_X".equals(dbVersion)){%>
+        try(org.neo4j.driver.v1.Session session_<%=cid%> = driver_<%=cid%>.session()){
+            org.neo4j.driver.v1.Transaction transaction_<%=cid%> = session_<%=cid%>.beginTransaction();
+<%
+}else{
 %>   
-org.neo4j.rest.graphdb.query.QueryEngine<java.util.Map<String, Object>> queryEngine_<%=cid%> = null;
-org.neo4j.cypher.ExecutionEngine engine_<%=cid%> = null;
-if (databaseService_<%=cid%> instanceof org.neo4j.rest.graphdb.RestGraphDatabase) {
-	org.neo4j.rest.graphdb.RestGraphDatabase restDatabase_<%=cid%> = (org.neo4j.rest.graphdb.RestGraphDatabase) databaseService_<%=cid%>; 
-	queryEngine_<%=cid%> = new org.neo4j.rest.graphdb.query.RestCypherQueryEngine(restDatabase_<%=cid%>.getRestAPI());
-} else {
-    <%
-    if ("NEO4J_1_X_X".equals(dbVersion)) {
-        %>
-        engine_<%=cid%> = new org.neo4j.cypher.ExecutionEngine(databaseService_<%=cid%>);
-        <%
-    } else if (("NEO4J_2_1_X".equals(dbVersion)) || ("NEO4J_2_2_X".equals(dbVersion))) { // NEO4J_2_X before moving to spring framework
-        %>
-        engine_<%=cid%> = new org.neo4j.cypher.ExecutionEngine(databaseService_<%=cid%>, org.neo4j.kernel.impl.util.StringLogger.SYSTEM);
-        <%
-    } else { // NEO4J_2_3 and more using spring framework
-        %>
-        engine_<%=cid%> = new org.neo4j.cypher.ExecutionEngine(databaseService_<%=cid%>, org.neo4j.logging.FormattedLogProvider.toOutputStream(System.out));
-        <%
-    }
-    %>
-}
-
-if (databaseService_<%=cid%>.getClass().equals(org.neo4j.kernel.EmbeddedGraphDatabase.class)) {
-    <%
-    if ("NEO4J_2_2_X".equals(dbVersion) || "NEO4J_2_3_X".equals(dbVersion)) { // usage of Spring rest
-
-        %>
-        ((org.neo4j.kernel.EmbeddedGraphDatabase)databaseService_<%=cid%>).isAvailable(10000l);
-        <%
+    org.neo4j.rest.graphdb.query.QueryEngine<java.util.Map<String, Object>> queryEngine_<%=cid%> = null;
+    org.neo4j.cypher.ExecutionEngine engine_<%=cid%> = null;
+    if (databaseService_<%=cid%> instanceof org.neo4j.rest.graphdb.RestGraphDatabase) {
+    	org.neo4j.rest.graphdb.RestGraphDatabase restDatabase_<%=cid%> = (org.neo4j.rest.graphdb.RestGraphDatabase) databaseService_<%=cid%>; 
+    	queryEngine_<%=cid%> = new org.neo4j.rest.graphdb.query.RestCypherQueryEngine(restDatabase_<%=cid%>.getRestAPI());
     } else {
-        %>
-        while (((org.neo4j.kernel.EmbeddedGraphDatabase)databaseService_<%=cid%>).transactionRunning()){
-            // wait the end of the previous transaction
-        }
         <%
+        if ("NEO4J_1_X_X".equals(dbVersion)) {
+            %>
+            engine_<%=cid%> = new org.neo4j.cypher.ExecutionEngine(databaseService_<%=cid%>);
+            <%
+        } else if (("NEO4J_2_1_X".equals(dbVersion)) || ("NEO4J_2_2_X".equals(dbVersion)) || ("NEO4J_3_X_X".equals(dbVersion))) { // NEO4J_2_X before moving to spring framework
+            %>
+            engine_<%=cid%> = new org.neo4j.cypher.ExecutionEngine(databaseService_<%=cid%>, org.neo4j.kernel.impl.util.StringLogger.SYSTEM);
+            <%
+        } else { // NEO4J_2_3 and more using spring framework
+            %>
+            engine_<%=cid%> = new org.neo4j.cypher.ExecutionEngine(databaseService_<%=cid%>, org.neo4j.logging.FormattedLogProvider.toOutputStream(System.out));
+            <%
+        }
+        %>
     }
+    
+    if (databaseService_<%=cid%>.getClass().equals(org.neo4j.kernel.EmbeddedGraphDatabase.class)) {
+        <%
+        if ("NEO4J_2_2_X".equals(dbVersion) || "NEO4J_2_3_X".equals(dbVersion) || ("NEO4J_3_X_X".equals(dbVersion))) { // usage of Spring rest
+    
+            %>
+            ((org.neo4j.kernel.EmbeddedGraphDatabase)databaseService_<%=cid%>).isAvailable(10000l);
+            <%
+        } else {
+            %>
+            while (((org.neo4j.kernel.EmbeddedGraphDatabase)databaseService_<%=cid%>).transactionRunning()){
+                // wait the end of the previous transaction
+            }
+            <%
+        }
+        %>
+    }
+    org.neo4j.graphdb.Transaction tx_<%=cid%> = databaseService_<%=cid%>.beginTx();
+    
+    
+    <%
+    	if (!useExistingConnection||(useExistingConnection && shutdownDb)) {
     %>
+    resourceMap.put("databaseService_<%=cid%>", databaseService_<%=cid%>); 
+    <%
+    	}
 }
-org.neo4j.graphdb.Transaction tx_<%=cid%> = databaseService_<%=cid%>.beginTx();
+%>
 
 long counter_<%=cid%> = 0;
 long nbNodeInserted_<%=cid%> = 0;
@@ -108,10 +131,3 @@ long nbRelationshipInserted_<%=cid%> = 0;
 long nbPropertiesUpdated_<%=cid%> = 0;
 long nbNodeDeleted_<%=cid%> = 0;
 long nbRelationshipDeleted_<%=cid%> = 0;
-<%
-	if (!useExistingConnection||(useExistingConnection && shutdownDb)) {
-%>
-resourceMap.put("databaseService_<%=cid%>", databaseService_<%=cid%>); 
-<%
-	}
-%>

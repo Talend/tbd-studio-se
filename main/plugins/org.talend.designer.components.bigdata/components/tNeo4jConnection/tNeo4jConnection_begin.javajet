@@ -3,6 +3,9 @@
 		org.talend.core.model.process.INode 
 		org.talend.core.model.process.ElementParameterParser 
 		org.talend.designer.codegen.config.CodeGeneratorArgument
+		java.util.List
+        java.util.Map
+        java.util.HashMap
 	" 
 %>
 <% 
@@ -13,41 +16,73 @@
 
 	boolean remoteServer = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REMOTE_SERVER__"));
 	boolean readOnlyMode = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__READ_ONLY_MODE__"));
+	String dbVersion = ElementParameterParser.getValue(node,"__DB_VERSION__");
+
 	
-	
-	if (remoteServer) {
-		String serverUrl = ElementParameterParser.getValue(node, "__SERVER_URL__");
-		String dbVersion = ElementParameterParser.getValue(node, "__DB_VERSION__");
-        boolean setUsername = ElementParameterParser.getBooleanValue(node, "__SET_USERNAME__");
-        String username = ElementParameterParser.getValue(node, "__USERNAME__");
-        String passwordFieldName = "__PASSWORD__";
-        if ((setUsername) || ((!"NEO4J_1_X_X".equals(dbVersion)) && (!"NEO4J_2_1_X".equals(dbVersion)))) {
-		    %>
-	        <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
-		    org.neo4j.graphdb.GraphDatabaseService databaseService_<%=cid%> = new org.neo4j.rest.graphdb.RestGraphDatabase(<%=serverUrl%>, <%=username%>, decryptedPassword_<%=cid%>);
-		    <%
-		} else {
-		    %>
-		    org.neo4j.graphdb.GraphDatabaseService databaseService_<%=cid%> = new org.neo4j.rest.graphdb.RestGraphDatabase(<%=serverUrl%>);
-		    <%
-		}
-	} else {
-		if (readOnlyMode) {
-			%>
-            java.util.Map config = new java.util.HashMap();
-//            config.put( "read_only", "true" );
-			org.neo4j.graphdb.GraphDatabaseService databaseService_<%=cid%> = new org.neo4j.graphdb.factory.GraphDatabaseFactory()
-			        .newEmbeddedDatabaseBuilder(<%=dbPath%>)
-			        .setConfig(org.neo4j.graphdb.factory.GraphDatabaseSettings.read_only, "true").newGraphDatabase();
-//			        .setConfig(config).newGraphDatabase();
-			<%
-		} else {
-			%>
-			org.neo4j.graphdb.GraphDatabaseService databaseService_<%=cid%> = new org.neo4j.graphdb.factory.GraphDatabaseFactory().newEmbeddedDatabase(<%=dbPath%>);
-			<%
-		}
-	}
-	
+	if("NEO4J_3_2_X".equals(dbVersion)&&!remoteServer) {
+	    List<Map<String, String>> configuration = (List<Map<String, String>>) ElementParameterParser.getObjectValue(node, "__CONFIGURATION__");
 	%>
-	globalMap.put("dbService_<%=cid%>_path", <%=dbPath%>);
-    globalMap.put("dbService_<%=cid%>", databaseService_<%=cid%>);
+		// Transform configuration to Map configuration
+		java.util.Map<String, String> config = new java.util.HashMap();
+	<%
+	    if (configuration != null) {
+	        for (Map<String, String> params : configuration) {
+	            %>
+	                config.put("<%=params.get("KEY")%>", <%=params.get("VALUE")%>);
+	            <%
+	        }
+	    }
+	%>
+		// Just put the database into the global map
+		globalMap.put("neo4jBatchDatabase_<%=cid%>", new org.neo4j.talend.Neo4jBatchDatabase(<%=dbPath%>, config));
+	
+	<%	
+	} else {
+	    if("NEO4J_3_2_X".equals(dbVersion)){
+            String serverUrl = ElementParameterParser.getValue(node, "__SERVER_URL__");
+            String username = ElementParameterParser.getValue(node, "__USERNAME__");
+            String passwordFieldName = "__PASSWORD__";
+        %>
+        <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
+        org.neo4j.driver.v1.Driver driver_<%=cid%> = org.neo4j.driver.v1.GraphDatabase.driver(<%=serverUrl%>, org.neo4j.driver.v1.AuthTokens.basic(<%=username%>, decryptedPassword_<%=cid%>));
+        globalMap.put("dbService_<%=cid%>", driver_<%=cid%>);
+        <%
+        }else{
+		if (remoteServer) {
+			String serverUrl = ElementParameterParser.getValue(node, "__SERVER_URL__");
+	        boolean setUsername = ElementParameterParser.getBooleanValue(node, "__SET_USERNAME__");
+	        String username = ElementParameterParser.getValue(node, "__USERNAME__");
+	        String passwordFieldName = "__PASSWORD__";
+	        if ((setUsername) || ((!"NEO4J_1_X_X".equals(dbVersion)) && (!"NEO4J_2_1_X".equals(dbVersion)))) {
+			    %>
+		        <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
+			    org.neo4j.graphdb.GraphDatabaseService databaseService_<%=cid%> = new org.neo4j.rest.graphdb.RestGraphDatabase(<%=serverUrl%>, <%=username%>, decryptedPassword_<%=cid%>);
+			    <%
+			} else {
+			    %>
+			    org.neo4j.graphdb.GraphDatabaseService databaseService_<%=cid%> = new org.neo4j.rest.graphdb.RestGraphDatabase(<%=serverUrl%>);
+			    <%
+			}
+		} else {
+			if (readOnlyMode) {
+				%>
+	            java.util.Map config = new java.util.HashMap();
+//	            config.put( "read_only", "true" );
+				org.neo4j.graphdb.GraphDatabaseService databaseService_<%=cid%> = new org.neo4j.graphdb.factory.GraphDatabaseFactory()
+				        .newEmbeddedDatabaseBuilder(<%=dbPath%>)
+				        .setConfig(org.neo4j.graphdb.factory.GraphDatabaseSettings.read_only, "true").newGraphDatabase();
+//				        .setConfig(config).newGraphDatabase();
+				<%
+			} else {
+				%>
+				org.neo4j.graphdb.GraphDatabaseService databaseService_<%=cid%> = new org.neo4j.graphdb.factory.GraphDatabaseFactory().newEmbeddedDatabase(<%=dbPath%>);
+				<%
+			}
+		}
+		
+		%>
+		globalMap.put("dbService_<%=cid%>_path", <%=dbPath%>);
+	    globalMap.put("dbService_<%=cid%>", databaseService_<%=cid%>);
+	<% } 
+	}%>
+	

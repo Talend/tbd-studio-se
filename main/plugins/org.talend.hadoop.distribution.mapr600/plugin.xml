@@ -740,6 +740,7 @@
 			<library id="datanucleus-rdbms-4.1.19.jar"/>
 			<library id="derby-10.12.1.1.jar"/>
 			<library id="eigenbase-properties-1.1.5.jar"/>
+			<library id="gson-2.2.4.jar"/>
 			<library id="hive-beeline-1.2.0-mapr-1710.jar"/>
 			<library id="hive-cli-1.2.0-mapr-1710.jar"/>
 			<library id="hive-exec-1.2.0-mapr-1710.jar"/>

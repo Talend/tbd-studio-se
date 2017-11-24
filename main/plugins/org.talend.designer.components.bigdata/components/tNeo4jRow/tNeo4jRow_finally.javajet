@@ -3,6 +3,7 @@
 		org.talend.core.model.process.INode 
 		org.talend.designer.codegen.config.CodeGeneratorArgument
 		org.talend.core.model.process.ElementParameterParser
+		org.talend.core.model.utils.NodeUtil
 	" 
 %>
 <% 
@@ -11,8 +12,14 @@
     String cid = node.getUniqueName();	
     boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_EXISTING_CONNECTION__"));
     boolean shutdownDb = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SHUTDOWN_DB__"));
-    String commitEvery = ElementParameterParser.getValue(node, "__COMMIT_EVERY__"); 
-	if (!useExistingConnection||(useExistingConnection && shutdownDb)) {
+    String dbversion = ElementParameterParser.getValue(node,"__DB_VERSION__");
+	if(useExistingConnection){
+	    String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+        INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
+        dbversion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
+    }
+    
+	if (!"NEO4J_3_2_X".equals(dbversion)&&!useExistingConnection||(useExistingConnection && shutdownDb)) {
 %>
 		if(resourceMap.get("finish_<%=cid%>") == null){
 			if(resourceMap.get("databaseService_<%=cid%>") != null){

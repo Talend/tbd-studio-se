@@ -4,7 +4,6 @@
   <service>
     <provide interface="org.talend.hadoop.distribution.component.HadoopComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.HDFSComponent"/>
-    <provide interface="org.talend.hadoop.distribution.component.HBaseComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.HCatalogComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.HiveComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.HiveOnSparkComponent"/>
