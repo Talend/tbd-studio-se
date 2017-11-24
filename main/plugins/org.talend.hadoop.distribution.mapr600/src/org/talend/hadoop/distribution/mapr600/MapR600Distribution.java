@@ -73,7 +73,7 @@ import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkStreamingM
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SqoopModuleGroup;
 
-public class MapR600Distribution extends AbstractMapRDistribution implements HDFSComponent, MRComponent, HBaseComponent,
+public class MapR600Distribution extends AbstractMapRDistribution implements HDFSComponent, MRComponent,
         SqoopComponent, PigComponent, HiveComponent, HCatalogComponent, SparkBatchComponent, SparkStreamingComponent,
         HiveOnSparkComponent, ImpalaComponent, MapRStreamsComponent, MapRDBComponent, IMapRDistribution {
 
