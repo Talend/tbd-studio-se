@@ -59,6 +59,11 @@
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.0"
+            id="emr-dynamodb-hadoop-4.2.0.jar"
+            name="emr-dynamodb-hadoop-4.2.0.jar" mvn_uri="mvn:org.talend.libraries/emr-dynamodb-hadoop-4.2.0/6.0.0" >
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.libraries.hadoop.mapr.6.0.0"
             id="hadoop-yarn-server-web-proxy-2.7.0-mapr-1710.jar"
             name="hadoop-yarn-server-web-proxy-2.7.0-mapr-1710.jar" mvn_uri="mvn:org.talend.libraries/hadoop-yarn-server-web-proxy-2.7.0-mapr-1710/6.0.0" >
         </libraryNeeded>
@@ -694,6 +699,17 @@
             <library id="htrace-core-3.1.0-incubating.jar" />
             <library id="avro-1.7.5.jar" />
          </libraryNeededGroup>
+         
+         <!-- Spark2 DynamoDB group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark DynamoDB libraries for MapR 6.0.0 that are MRREQUIRED"
+                id="SPARK-DYNAMODB-LIB-MRREQUIRED-MAPR600"
+                name="SPARK-DYNAMODB-LIB-MRREQUIRED-MAPR600">
+             <library id="aws-java-sdk-dynamodb-1.9.16.jar"/>
+             <library id="aws-java-sdk-core-1.9.16.jar"/>
+             <library id="emr-dynamodb-hadoop-4.2.0.jar"/>
+             <library id="commons-pool2-2.4.2.jar"/>
+        </libraryNeededGroup>
 
 		<!-- Spark2 group -->
          <libraryNeededGroup
