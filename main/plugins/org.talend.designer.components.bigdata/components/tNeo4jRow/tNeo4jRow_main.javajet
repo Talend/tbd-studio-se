@@ -187,6 +187,8 @@
 	    <%
 	    if ("NEO4J_3_2_X".equals(dbVersion)) {%>
 	    	transaction_<%=cid%>.success();
+	    	transaction_<%=cid%>.close();
+	    	transaction_<%=cid%> = session_<%=cid%>.beginTransaction();
 	    	
 	    <%}else {
 	    	if ("NEO4J_1_X_X".equals(dbVersion)) {
