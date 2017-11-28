@@ -348,6 +348,13 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
+            id="avro-mapred-1.7.7.jar"
+            name="avro-mapred-1.7.7.jar"
+            mvn_uri="mvn:org.talend.libraries/avro-mapred-1.7.7/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc11"
             id="slf4j-api-1.7.10"
             name="slf4j-api-1.7.10.jar"
             mvn_uri="mvn:org.talend.libraries/slf4j-api-1.7.10/6.0.0">
@@ -612,6 +619,7 @@
                 description="The latest Spark libraries for GOOGLE DATAPROC 1.1"
                 id="SPARK-LIB-DATAPROC11"
                 name="SPARK-LIB-DATAPROC11">
+			 <library id="avro-mapred-1.7.7.jar"/>
 			 <library id="talend-bigdata-launcher-1.2.1-20170511" />
 			 <library id="scala-reflect-2.11.8.jar"/>
              <library id="kryo-shaded-3.0.3"/>

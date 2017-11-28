@@ -17,7 +17,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 import org.talend.core.model.utils.ContextParameterUtils;
@@ -25,6 +28,7 @@ import org.talend.core.utils.TalendQuoteUtils;
 import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
 import org.talend.metadata.managment.ui.utils.ConnectionContextHelper;
 import org.talend.repository.model.nosql.NoSQLConnection;
+import org.talend.repository.nosql.constants.INoSQLCommonAttributes;
 import org.talend.repository.nosql.db.common.mongodb.IMongoConstants;
 import org.talend.repository.nosql.db.common.mongodb.IMongoDBAttributes;
 import org.talend.repository.nosql.exceptions.NoSQLReflectionException;
@@ -35,6 +39,7 @@ import org.talend.repository.nosql.reflection.NoSQLReflection;
 import org.talend.utils.json.JSONArray;
 import org.talend.utils.json.JSONException;
 import org.talend.utils.json.JSONObject;
+import org.talend.utils.security.CryptoHelper;
 
 public class MongoDBConnectionUtil {
 
@@ -69,6 +74,96 @@ public class MongoDBConnectionUtil {
 
         return canConnect;
     }
+    
+    public static synchronized Object getMongo(NoSQLConnection connection, boolean requireAuth) throws NoSQLServerException {
+
+        Object mongo = null;
+        ClassLoader classLoader = NoSQLClassLoaderFactory.getClassLoader(connection);
+        String useReplicaAttr = connection.getAttributes().get(IMongoDBAttributes.USE_REPLICA_SET);
+        boolean useReplica = useReplicaAttr == null ? false : Boolean.valueOf(useReplicaAttr);
+        ContextType contextType = null;
+        if (connection.isContextMode()) {
+            contextType = ConnectionContextHelper.getContextTypeForContextMode(connection);
+        }
+        try {
+            if(useReplica){
+                String replicaSet = connection.getAttributes().get(IMongoDBAttributes.REPLICA_SET);
+                List<HashMap<String, Object>> replicaSetList = getReplicaSetList(replicaSet, false);
+                Map<String, String> hosts = new HashMap<String, String>();
+                for (HashMap<String, Object> rowMap : replicaSetList) {
+                    String host = (String) rowMap.get(IMongoConstants.REPLICA_HOST_KEY);
+                    String port = (String) rowMap.get(IMongoConstants.REPLICA_PORT_KEY);
+                    if (contextType != null) {
+                        host = ContextParameterUtils.getOriginalValue(contextType, host);
+                        port = ContextParameterUtils.getOriginalValue(contextType, port);
+                    }
+                    if (host != null && port != null) {
+                        hosts.put(host, port);
+                    }
+                }
+                mongo = getMongo(connection, contextType, classLoader, hosts, requireAuth);
+            }else{
+                String host = connection.getAttributes().get(IMongoDBAttributes.HOST);
+                String port = connection.getAttributes().get(IMongoDBAttributes.PORT);
+                if (contextType != null) {
+                    host = ContextParameterUtils.getOriginalValue(contextType, host);
+                    port = ContextParameterUtils.getOriginalValue(contextType, port);
+                }
+                Map<String, String> hosts = new HashMap<String, String>();
+                if (host != null && port != null) {
+                    hosts.put(host, port);
+                }
+                mongo = getMongo(connection, contextType, classLoader, hosts, requireAuth);
+            }
+        } catch (Exception e) {
+            throw new NoSQLServerException(e);
+        }
+        return mongo;
+    }
+    
+    private static synchronized Object getMongo(NoSQLConnection connection, ContextType contextType,
+            ClassLoader classLoader, Map<String,String> hosts, boolean requireAuth) throws NoSQLServerException{
+        List<Object> addrs = new ArrayList<Object>();
+        List<Object> credentials = new ArrayList<Object>();
+        Object mongo = null;
+        
+        String user = connection.getAttributes().get(IMongoDBAttributes.USERNAME);
+        String pass = connection.getAttributes().get(IMongoDBAttributes.PASSWORD);
+        if (contextType != null) {
+            user = ContextParameterUtils.getOriginalValue(contextType, user);
+            pass = ContextParameterUtils.getOriginalValue(contextType, pass);
+        }else{
+            pass = connection.getValue(pass, false);
+        }
+        try {
+            for(String host : hosts.keySet()){
+                String port = hosts.get(host);
+                Object serverAddress = NoSQLReflection.newInstance(
+                        "com.mongodb.ServerAddress", new Object[] { host, Integer.parseInt(port) }, //$NON-NLS-1$
+                        classLoader, String.class, int.class);
+                addrs.add(serverAddress);
+            }
+            if(!requireAuth){
+                mongo = NoSQLReflection.newInstance(
+                        "com.mongodb.MongoClient", new Object[] { addrs}, //$NON-NLS-1$
+                        classLoader, List.class);
+            }else{
+                String database = connection.getAttributes().get(IMongoDBAttributes.DATABASE);
+                Object credential = NoSQLReflection.invokeStaticMethod("com.mongodb.MongoCredential", 
+                        "createScramSha1Credential", new Object[] { user, database, pass.toCharArray()}, //$NON-NLS-1$
+                        classLoader, String.class, String.class, char[].class);
+                credentials.add(credential);
+                mongo = NoSQLReflection.newInstance(
+                        "com.mongodb.MongoClient", new Object[] { addrs, credentials}, //$NON-NLS-1$
+                        classLoader, List.class, List.class);
+            }
+            mongos.add(mongo);
+        } catch (Exception e) {
+            throw new NoSQLServerException(e);
+        }
+        return mongo;
+    }
+    
 
     public static synchronized Object getMongo(NoSQLConnection connection) throws NoSQLServerException {
         Object mongo = null;
@@ -134,25 +229,29 @@ public class MongoDBConnectionUtil {
             return db;
         }
         try {
-            db = NoSQLReflection.invokeMethod(getMongo(connection), "getDB", new Object[] { dbName }); //$NON-NLS-1$
-            // Do authenticate
             String requireAuthAttr = connection.getAttributes().get(IMongoDBAttributes.REQUIRED_AUTHENTICATION);
             boolean requireAuth = requireAuthAttr == null ? false : Boolean.valueOf(requireAuthAttr);
-            if (requireAuth) {
-                String userName = connection.getAttributes().get(IMongoDBAttributes.USERNAME);
-                String password = connection.getValue(connection.getAttributes().get(IMongoDBAttributes.PASSWORD), false);
-                if (connection.isContextMode()) {
-                    ContextType contextType = ConnectionContextHelper.getContextTypeForContextMode(connection);
-                    userName = ContextParameterUtils.getOriginalValue(contextType, userName);
-                    password = ContextParameterUtils.getOriginalValue(contextType, password);
-                }
-                if (userName != null && password != null) {
-                    boolean authorized = (Boolean) NoSQLReflection.invokeMethod(db,
-                            "authenticate", new Object[] { userName, password.toCharArray() }); //$NON-NLS-1$
-                    if (!authorized) {
-                        throw new NoSQLServerException(Messages.getString("MongoDBConnectionUtil.ConnotLogon", dbName)); //$NON-NLS-1$ 
+            if(isUpgradeVersion(connection)){
+                db = NoSQLReflection.invokeMethod(getMongo(connection, requireAuth), "getDB", new Object[] { dbName}); //$NON-NLS-1$
+            }else{
+                db = NoSQLReflection.invokeMethod(getMongo(connection), "getDB", new Object[] { dbName }); //$NON-NLS-1$
+                // Do authenticate
+                if (requireAuth) {
+                    String userName = connection.getAttributes().get(IMongoDBAttributes.USERNAME);
+                    String password = connection.getValue(connection.getAttributes().get(IMongoDBAttributes.PASSWORD), false);
+                    if (connection.isContextMode()) {
+                        ContextType contextType = ConnectionContextHelper.getContextTypeForContextMode(connection);
+                        userName = ContextParameterUtils.getOriginalValue(contextType, userName);
+                        password = ContextParameterUtils.getOriginalValue(contextType, password);
                     }
-                }
+                    if (userName != null && password != null) {
+                        boolean authorized = (Boolean) NoSQLReflection.invokeMethod(db,
+                                "authenticate", new Object[] { userName, password.toCharArray() }); //$NON-NLS-1$
+                        if (!authorized) {
+                            throw new NoSQLServerException(Messages.getString("MongoDBConnectionUtil.ConnotLogon", dbName)); //$NON-NLS-1$ 
+                        }
+                    }
+                } 
             }
         } catch (NoSQLReflectionException e) {
             throw new NoSQLServerException(e);
@@ -164,7 +263,11 @@ public class MongoDBConnectionUtil {
     public static synchronized List<String> getDatabaseNames(NoSQLConnection connection) throws NoSQLServerException {
         List<String> databaseNames = null;
         try {
-            databaseNames = (List<String>) NoSQLReflection.invokeMethod(getMongo(connection), "getDatabaseNames"); //$NON-NLS-1$
+            if(isUpgradeVersion(connection)){
+                databaseNames = (List<String>) NoSQLReflection.invokeMethod(getMongo(connection, false), "getDatabaseNames"); //$NON-NLS-1$
+            }else{
+                databaseNames = (List<String>) NoSQLReflection.invokeMethod(getMongo(connection), "getDatabaseNames"); //$NON-NLS-1$
+            }
         } catch (NoSQLReflectionException e) {
             throw new NoSQLServerException(e);
         }
@@ -240,6 +343,34 @@ public class MongoDBConnectionUtil {
         }
 
         return replicaSet;
+    }
+    
+    public static boolean isUpgradeVersion(NoSQLConnection connection) {
+        String dbVersion = connection.getAttributes().get(INoSQLCommonAttributes.DB_VERSION);
+        try{
+             Pattern pattern = Pattern.compile("MONGODB_(\\d+)_(\\d+)");//$NON-NLS-1$
+             Matcher matcher = pattern.matcher(dbVersion);
+             while (matcher.find()) {
+                 String firstStr = matcher.group(1);
+                 Integer firstInt = Integer.parseInt(firstStr);
+                 if(firstInt>3){
+                     return true; 
+                 }else if(firstInt<3){
+                     return false;
+                 }else{
+                     String secondStr= matcher.group(2);
+                     Integer secondInt = Integer.parseInt(secondStr);
+                     if(secondInt<5){
+                         return false;
+                     }else{
+                         return true;
+                     }
+                 }
+             }
+        } catch (Exception ex) {
+            //do nothing
+        }
+        return false; 
     }
 
 }

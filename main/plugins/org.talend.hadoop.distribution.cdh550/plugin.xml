@@ -55,9 +55,9 @@
         </libraryNeeded>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh550" 
-        	id="jetty-util-6.1.26.jar" 
-        	name="jetty-util-6.1.26.jar" 
-        	mvn_uri="mvn:org.talend.libraries/jetty-util-6.1.26/6.0.0"/>
+            id="jetty-util-6.1.26.jar" 
+            name="jetty-util-6.1.26.jar" 
+            mvn_uri="mvn:org.talend.libraries/jetty-util-6.1.26/6.0.0"/>
         <!-- Azure libraries -->
 
         <!-- Map/Reduce libraries -->    

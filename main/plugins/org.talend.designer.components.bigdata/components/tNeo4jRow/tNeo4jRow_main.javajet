@@ -6,6 +6,7 @@
 		org.talend.core.model.metadata.IMetadataColumn 
 		org.talend.core.model.process.IConnection
 		org.talend.core.model.process.IConnectionCategory
+		org.talend.core.model.utils.NodeUtil
 		org.talend.designer.codegen.config.CodeGeneratorArgument
 		java.util.List 
     	java.util.Map 
@@ -27,16 +28,10 @@
 
     boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_EXISTING_CONNECTION__"));
     String dbVersion = ElementParameterParser.getValue(node,"__DB_VERSION__");
-
-    if (useExistingConnection) {
-        String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
-        List<? extends INode> nodes = node.getProcess().getGeneratingNodes();
-        for(INode targetNode : nodes){
-            if (targetNode.getUniqueName().equals(connection)) {
-                dbVersion = ElementParameterParser.getValue(targetNode, "__DB_VERSION__");
-                break;
-            }
-        }
+	if(useExistingConnection){
+	    String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+        INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
+        dbVersion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
     }
 
     List<IMetadataColumn> columnList = null;
@@ -102,8 +97,14 @@
     	%>
     	parameters_<%=cid%>.put(<%=parameter.get("PARAMETER_NAME")%>, <%=incomingConnName%>.<%=parameter.get("PARAMETER_VALUE")%>);
     	<%
-    }
+    }   
+    if("NEO4J_3_2_X".equals(dbVersion)){
     %>
+    org.neo4j.driver.v1.StatementResult result_<%=cid%> = null;
+    try{
+        result_<%=cid%> = transaction_<%=cid%>.run(<%=query%>, parameters_<%=cid%>);
+    
+    <%} else {%>
 	org.neo4j.cypher.ExecutionResult result_<%=cid%> = null;
     try {
     	if(engine_<%=cid%>!=null){
@@ -112,6 +113,7 @@
     	if(queryEngine_<%=cid%>!=null){
     		queryEngine_<%=cid%>.query(<%=query%>, parameters_<%=cid%>);
     	}
+    <%}%>
     } catch (Exception e_<%=cid%>) {
     	<%
     	if (dieOnError) {
@@ -143,6 +145,20 @@
     	}
     	%>
     }
+    <%
+        if("NEO4J_3_2_X".equals(dbVersion)){
+    %>
+    if(result_<%=cid%>!=null) {
+        globalMap.put("<%=cid %>_StatementResult", result_<%=cid%>);
+    	org.neo4j.driver.v1.summary.SummaryCounters sc_<%=cid%> = result_<%=cid%>.consume().counters();
+        nbNodeInserted_<%=cid%> += sc_<%=cid%>.nodesCreated();
+        nbRelationshipInserted_<%=cid%> += sc_<%=cid%>.relationshipsCreated();
+        nbPropertiesUpdated_<%=cid%> += sc_<%=cid%>.propertiesSet();
+        nbNodeDeleted_<%=cid%> += sc_<%=cid%>.nodesDeleted();
+        nbRelationshipDeleted_<%=cid%> += sc_<%=cid%>.relationshipsDeleted();
+        
+    }
+    <%} else {%>
 
 	if(result_<%=cid%>!=null) {
 		nbNodeInserted_<%=cid%> += result_<%=cid%>.queryStatistics().nodesCreated();
@@ -163,16 +179,22 @@
 	    %>
 	}
 		
+	<%}%>
+	
 	counter_<%=cid%>++;
 
 	if (counter_<%=cid%> % Long.parseLong(<%=commitEvery%>) == 0) {
 	    <%
-        if ("NEO4J_1_X_X".equals(dbVersion)) {
+	    if ("NEO4J_3_2_X".equals(dbVersion)) {%>
+	    	transaction_<%=cid%>.success();
+	    	
+	    <%}else {
+	    	if ("NEO4J_1_X_X".equals(dbVersion)) {
             %>
             tx_<%=cid%>.success();
             tx_<%=cid%>.finish();
             <%
-        } else if ("NEO4J_2_1_X".equals(dbVersion)) { // NEO4J_2_1_X
+        	} else if ("NEO4J_2_1_X".equals(dbVersion)) { // NEO4J_2_1_X
             %>
             try {
                 tx_<%=cid%>.success();
@@ -186,7 +208,7 @@
                 }
             }
             <%
-        } else { // NEO4J_2_2_X : usage of Spring rest
+        	} else { // NEO4J_2_2_X : usage of Spring rest
             %>
             try {
                 tx_<%=cid%>.success();
@@ -198,8 +220,9 @@
                 ((org.neo4j.kernel.EmbeddedGraphDatabase)databaseService_<%=cid%>).isAvailable(10000l);
             }
             <%
-        }
+        	}
         %>
 
-		tx_<%=cid%> = databaseService_<%=cid%>.beginTx();
+		 tx_<%=cid%> = databaseService_<%=cid%>.beginTx();
+		 <%}%>
 	}

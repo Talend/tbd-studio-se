@@ -590,7 +590,7 @@
             context="plugin:org.talend.hadoop.distribution.cdh5120"
             id="kafka_2.11-0.10.0-kafka-2.1.0.jar"
             name="kafka_2.11-0.10.0-kafka-2.1.0.jar"
-            mvn_uri="mvn:org.talend.libraries/kafka_2.11-0.10.0-kafka-2.1.0/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/kafka_2.11-0.10.0-kafka-2.1.0/6.4.0">
         </libraryNeeded>
 
         <libraryNeeded
@@ -914,7 +914,9 @@
              <library id="hbase-protocol-1.2.0-cdh5.12.1.jar" />
              <library id="hadoop-common-2.6.0-cdh5.12.1.jar" />
              <library id="hadoop-auth-2.6.0-cdh5.12.1.jar" />
+             <library id="hadoop-hdfs-2.6.0-cdh5.12.1.jar" />
              <library id="commons-logging-1.2.jar" />
+             <library id="commons-cli-1.2.jar" />
              <library id="commons-codec-1.9.jar" />
              <library id="commons-configuration-1.6.jar" />
              <library id="commons-lang-2.6.jar" />

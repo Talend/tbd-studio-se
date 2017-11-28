@@ -229,89 +229,75 @@
     <CODEGENERATION>
         <IMPORTS>
             <IMPORT
-                NAME="jersey-apache-client4-1.17"
-                MODULE="jersey-apache-client4-1.17.jar"
-                MVN="mvn:org.talend.libraries/jersey-apache-client4-1.17/6.1.0"
+                NAME="marklogic-client-api-4.0.3"
+                MODULE="marklogic-client-api-4.0.3.jar"
+                MVN="mvn:org.talend.libraries/marklogic-client-api-4.0.3/6.0.0"
                 REQUIRED_IF="USE_EXISTING_CONNECTION == 'false'"
             />
             <IMPORT
-                NAME="java-client-api-3.0.3"
-                MODULE="java-client-api-3.0.3.jar"
-                MVN="mvn:org.talend.libraries/java-client-api-3.0.3/6.1.0"
-                UrlPath="platform:/plugin/org.talend.libraries.apache/lib/java-client-api-3.0.3.jar"
+                NAME="okhttp-3.9.0"
+                MODULE="okhttp-3.9.0.jar"
+                MVN="mvn:org.talend.libraries/okhttp-3.9.0/6.0.0"
                 REQUIRED_IF="USE_EXISTING_CONNECTION == 'false'"
             />
             <IMPORT
-                NAME="slf4j-api-1.7.5"
-                MODULE="slf4j-api-1.7.5.jar"
-                MVN="mvn:org.talend.libraries/slf4j-api-1.7.5/6.1.0"
-                UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-api-1.7.5.jar"
+                NAME="logging-interceptor-3.9.0"
+                MODULE="logging-interceptor-3.9.0.jar"
+                MVN="mvn:org.talend.libraries/logging-interceptor-3.9.0/6.0.0"
                 REQUIRED_IF="USE_EXISTING_CONNECTION == 'false'"
             />
             <IMPORT
-                NAME="jackson-core-2.5.3"
-                MODULE="jackson-core-2.5.3.jar"
-                MVN="mvn:org.talend.libraries/jackson-core-2.5.3/6.1.0"
-                UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-2.5.3.jar"
+                NAME="okhttp-digest-1.15"
+                MODULE="okhttp-digest-1.15.jar"
+                MVN="mvn:org.talend.libraries/okhttp-digest-1.15/6.0.0"
                 REQUIRED_IF="USE_EXISTING_CONNECTION == 'false'"
             />
             <IMPORT
-                NAME="jackson-databind-2.5.3"
-                MODULE="jackson-databind-2.5.3.jar"
-                MVN="mvn:org.talend.libraries/jackson-databind-2.5.3/6.1.0"
-                UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-databind-2.5.3.jar"
+                NAME="slf4j-api-1.7.25"
+                MODULE="slf4j-api-1.7.25.jar"
+                MVN="mvn:org.talend.libraries/slf4j-api-1.7.25/6.0.0"
                 REQUIRED_IF="USE_EXISTING_CONNECTION == 'false'"
             />
             <IMPORT
-                NAME="jersey-core-1.17"
-                MODULE="jersey-core-1.17.jar"
-                MVN="mvn:org.talend.libraries/jersey-core-1.17/6.1.0"
+                NAME="slf4j-log4j12-1.7.25"
+                MODULE="slf4j-log4j12-1.7.25.jar"
+                MVN="mvn:org.talend.libraries/slf4j-log4j12-1.7.25/6.0.0"
                 REQUIRED_IF="USE_EXISTING_CONNECTION == 'false'"
             />
             <IMPORT
-                NAME="httpclient-4.1.1"
-                MODULE="httpclient-4.1.1.jar"
-                MVN="mvn:org.talend.libraries/httpclient-4.1.1/6.1.0"
-                UrlPath="platform:/plugin/org.talend.libraries.apache.http/lib/httpclient-4.1.1.jar"
+                NAME="jackson-core-2.9.1"
+                MODULE="jackson-core-2.9.1.jar"
+                MVN="mvn:org.talend.libraries/jackson-core-2.9.1/6.0.0"
                 REQUIRED_IF="USE_EXISTING_CONNECTION == 'false'"
             />
             <IMPORT
-                NAME="httpcore-4.1"
-                MODULE="httpcore-4.1.jar"
-                MVN="mvn:org.talend.libraries/httpcore-4.1/6.1.0"
-                UrlPath="platform:/plugin/org.talend.libraries.apache.http/lib/httpcore-4.1.jar"
+                NAME="jackson-databind-2.9.1"
+                MODULE="jackson-databind-2.9.1.jar"
+                MVN="mvn:org.talend.libraries/jackson-databind-2.9.1/6.0.0"
                 REQUIRED_IF="USE_EXISTING_CONNECTION == 'false'"
             />
             <IMPORT
-                NAME="jersey-client-1.17"
-                MODULE="jersey-client-1.17.jar"
-                MVN="mvn:org.talend.libraries/jersey-client-1.17/6.1.0"
+                NAME="jackson-annotations-2.9.1"
+                MODULE="jackson-annotations-2.9.1.jar"
+                MVN="mvn:org.talend.libraries/jackson-annotations-2.9.1/6.0.0"
                 REQUIRED_IF="USE_EXISTING_CONNECTION == 'false'"
             />
             <IMPORT
-                NAME="common-logging1.1.3"
-                MODULE="commons-logging-1.1.3.jar"
-                MVN="mvn:org.talend.libraries/commons-logging-1.1.3/6.1.0"
-                UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-logging-1.1.3.jar"
+                NAME="javax.mail-1.6.0"
+                MODULE="javax.mail-1.6.0.jar"
+                MVN="mvn:org.talend.libraries/javax.mail-1.6.0/6.0.0"
                 REQUIRED_IF="USE_EXISTING_CONNECTION == 'false'"
             />
             <IMPORT
-                NAME="logback-classic-1.1.2"
-                MODULE="logback-classic-1.1.2.jar"
-                MVN="mvn:org.talend.libraries/logback-classic-1.1.2/6.1.0"
+                NAME="javax.ws.rs-api-2.1"
+                MODULE="javax.ws.rs-api-2.1.jar"
+                MVN="mvn:org.talend.libraries/javax.ws.rs-api-2.1/6.0.0"
                 REQUIRED_IF="USE_EXISTING_CONNECTION == 'false'"
             />
             <IMPORT
-                NAME="logback-core-1.1.2"
-                MODULE="logback-core-1.1.2.jar"
-                MVN="mvn:org.talend.libraries/logback-core-1.1.2/6.1.0"
-                REQUIRED_IF="USE_EXISTING_CONNECTION == 'false'"
-            />
-            <IMPORT
-                NAME="jackson-annotations-2.5.3"
-                MODULE="jackson-annotations-2.5.3.jar"
-                MVN="mvn:org.talend.libraries/jackson-annotations-2.5.3/6.1.0"
-                UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-annotations-2.5.3.jar"
+                NAME="okio-1.13.0"
+                MODULE="okio-1.13.0.jar"
+                MVN="mvn:org.talend.libraries/okio-1.13.0/6.0.0"
                 REQUIRED_IF="USE_EXISTING_CONNECTION == 'false'"
             />
         </IMPORTS>

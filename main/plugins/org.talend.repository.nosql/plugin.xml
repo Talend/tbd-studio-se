@@ -147,7 +147,7 @@
             dbDNDProvider="org.talend.repository.nosql.db.provider.mongodb.MongoDBDNDProvider"
             dbMetadataProvider="org.talend.repository.nosql.db.provider.mongodb.MongoDBMetadataProvider"
             dbType="MONGODB"
-            dbVersions="MONGODB_3_2_X;MONGODB_3_0_X;MONGODB_2_6_X;MONGODB_2_5_X;"
+            dbVersions="MONGODB_3_5_X;MONGODB_3_2_X;MONGODB_3_0_X;MONGODB_2_6_X;MONGODB_2_5_X;"
             dbWizPageProvider="org.talend.repository.nosql.db.provider.mongodb.MongoDBWizardPageProvider"
             description="MongoDB">
       </factory>
@@ -197,6 +197,10 @@
       <classloader
             index="NOSQL:MONGODB:MONGODB_3_2_X"
             libraries="mongo-java-driver-2.14.1.jar">
+      </classloader>
+      <classloader
+            index="NOSQL:MONGODB:MONGODB_3_5_X"
+            libraries="mongo-java-driver-3.5.0.jar">
       </classloader>
       <classloader
             index="NOSQL:CASSANDRA:CASSANDRA_1_1_2"

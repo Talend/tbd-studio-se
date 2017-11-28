@@ -61,7 +61,6 @@ import org.talend.repository.maprdbprovider.Activator;
 import org.talend.repository.maprdbprovider.util.MapRDBClassLoaderFactory;
 import org.talend.repository.model.IProxyRepositoryFactory;
 import org.talend.repository.ui.wizards.metadata.table.database.SelectorTreeViewerProvider;
-
 import orgomg.cwm.objectmodel.core.TaggedValue;
 import orgomg.cwm.resource.relational.Catalog;
 
@@ -567,6 +566,14 @@ public class MapRDBMetadataProvider implements IDBMetadataProvider {
                 Object table = ReflectionUtils.newInstance("org.apache.hadoop.hbase.client.HTable", classLoader, new Object[] { //$NON-NLS-1$
                         config, tableName });
                 ReflectionUtils.invokeMethod(scan, "addFamily", new Object[] { columnFamilyName.getBytes() }); //$NON-NLS-1$
+                // Limit
+                int count = 0;
+                int limit = -1;
+                if (GlobalServiceRegister.getDefault().isServiceRegistered(IDesignerCoreService.class)) {
+                    IDesignerCoreService designerService = (IDesignerCoreService) GlobalServiceRegister.getDefault().getService(
+                            IDesignerCoreService.class);
+                    limit = designerService.getHBaseOrMaprDBScanLimit();
+                }
                 List<String> columnNameExsit = new ArrayList<String>();
                 Object resultSetscanner = ReflectionUtils.invokeMethod(table, "getScanner", new Object[] { scan }); //$NON-NLS-1$
                 Object result = ReflectionUtils.invokeMethod(resultSetscanner, "next", new Object[0]); //$NON-NLS-1$
@@ -585,7 +592,7 @@ public class MapRDBMetadataProvider implements IDBMetadataProvider {
                                 if (columnName != null && columnName.equals(columnNode.getValue())
                                         && !columnNameExsit.contains(columnName)) {
                                     String originalColumnName = columnName;
-                                    columnName = getUniqueColumnName(getColumnLabels(metadataTable),  columnName);
+                                    columnName = getUniqueColumnName(getColumnLabels(metadataTable), columnName);
                                     TdColumn column = RelationalFactory.eINSTANCE.createTdColumn();
                                     column.setLabel(columnName);
                                     column.setName(originalColumnName);
@@ -635,6 +642,10 @@ public class MapRDBMetadataProvider implements IDBMetadataProvider {
                             }
                         }
                     }
+                    count++;
+                    if (count == limit) {
+                        break;
+                    }
                     result = ReflectionUtils.invokeMethod(resultSetscanner, "next", new Object[0]); //$NON-NLS-1$
                 }
             }
@@ -644,27 +655,27 @@ public class MapRDBMetadataProvider implements IDBMetadataProvider {
             Thread.currentThread().setContextClassLoader(oldClassLoaderLoader);
         }
     }
-    
-    private List<String> getColumnLabels(MetadataTable metadataTable){
+
+    private List<String> getColumnLabels(MetadataTable metadataTable) {
         List<String> columnLabels = new ArrayList<String>();
         List<MetadataColumn> columns = metadataTable.getColumns();
-        for(MetadataColumn column : columns){
+        for (MetadataColumn column : columns) {
             columnLabels.add(column.getLabel());
         }
         return columnLabels;
     }
-    
-    public String getUniqueColumnName(List<String> columnLabels, String columnName){
+
+    public String getUniqueColumnName(List<String> columnLabels, String columnName) {
         columnName = ManagementTextUtils.filterSpecialChar(columnName);
         ICoreService coreService = CoreRuntimePlugin.getInstance().getCoreService();
         if (coreService != null && coreService.isKeyword(columnName)) {
             columnName = "_" + columnName; //$NON-NLS-1$
         }
         int index = 0;
-        for(String columnLabel : columnLabels){
-            if(columnLabel.equals(columnName)){
+        for (String columnLabel : columnLabels) {
+            if (columnLabel.equals(columnName)) {
                 index = index + 1;
-            } 
+            }
         }
         columnName = MetadataToolHelper.validateColumnName(columnName, index, columnLabels);
         return columnName;
@@ -836,8 +847,8 @@ public class MapRDBMetadataProvider implements IDBMetadataProvider {
             int count = 0;
             int limit = -1;
             if (GlobalServiceRegister.getDefault().isServiceRegistered(IDesignerCoreService.class)) {
-                IDesignerCoreService designerService = (IDesignerCoreService) GlobalServiceRegister.getDefault()
-                        .getService(IDesignerCoreService.class);
+                IDesignerCoreService designerService = (IDesignerCoreService) GlobalServiceRegister.getDefault().getService(
+                        IDesignerCoreService.class);
                 limit = designerService.getHBaseOrMaprDBScanLimit();
             }
             List<String> columnExsit = new ArrayList<String>();

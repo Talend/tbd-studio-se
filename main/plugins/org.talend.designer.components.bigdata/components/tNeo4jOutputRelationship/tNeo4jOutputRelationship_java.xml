@@ -46,6 +46,17 @@
 				<ITEM NAME="NEO4J_1_X_X" VALUE="NEO4J_1_X_X" />
 			</ITEMS>
 		</PARAMETER>
+		
+		<PARAMETER
+            NAME="NOTE"
+            FIELD="LABEL"
+            NUM_ROW="4"
+            COLOR="255;0;0"
+            GROUP="CONNECTION_GROUP"
+            SHOW_IF="USE_EXISTING_CONNECTION == 'true'"
+        >
+            <DEFAULT>Please note that this component will not works with tNeo4jConnection setting in version 3.2.X.</DEFAULT>
+        </PARAMETER>
 
 		<PARAMETER NAME="REMOTE_SERVER" FIELD="CHECK"
 			REPOSITORY_VALUE="REMOTE_SERVER" NUM_ROW="4"

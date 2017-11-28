@@ -55,9 +55,9 @@
         </libraryNeeded>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh570" 
-        	id="jetty-util-6.1.26.jar" 
-        	name="jetty-util-6.1.26.jar" 
-        	mvn_uri="mvn:org.talend.libraries/jetty-util-6.1.26/6.0.0"/>
+            id="jetty-util-6.1.26.jar" 
+            name="jetty-util-6.1.26.jar" 
+            mvn_uri="mvn:org.talend.libraries/jetty-util-6.1.26/6.0.0"/>
         <!-- Azure libraries -->
 
         <!-- Map/Reduce libraries -->    
@@ -277,7 +277,7 @@
             mvn_uri="mvn:org.talend.libraries/sqoop-1.4.6-cdh5.5.2/6.1.0">
         </libraryNeeded>                        
         
-		<!-- GraphFrames libraries -->
+        <!-- GraphFrames libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh570"
             id="graphframes-0.3.0-spark1.6-s_2.10.jar"

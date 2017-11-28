@@ -306,12 +306,12 @@
         </libraryNeeded>
         
         <!-- GraphFrames libraries -->
-		<libraryNeeded 
-			context="plugin:org.talend.hadoop.distribution.hdp240"
-			id="graphframes-0.3.0-spark1.6-s_2.10.jar" 
-			name="graphframes-0.3.0-spark1.6-s_2.10.jar"
-			mvn_uri="mvn:org.talend.libraries/graphframes-0.3.0-spark1.6-s_2.10/6.0.0">
-		</libraryNeeded>
+        <libraryNeeded 
+            context="plugin:org.talend.hadoop.distribution.hdp240"
+            id="graphframes-0.3.0-spark1.6-s_2.10.jar" 
+            name="graphframes-0.3.0-spark1.6-s_2.10.jar"
+            mvn_uri="mvn:org.talend.libraries/graphframes-0.3.0-spark1.6-s_2.10/6.0.0">
+        </libraryNeeded>
         
         <!-- Third parties libraries -->
         <libraryNeeded
@@ -885,7 +885,7 @@
                 name="SPARK-AZURE-LIB-MRREQUIRED-HDP_2_4">
                 <library id="azure-storage-2.2.0"/>
                 <library id="hadoop-azure-2.7.4"/>
-	            <library id="jetty-util-6.1.26.hwx.jar"/>
+                <library id="jetty-util-6.1.26.hwx.jar"/>
         </libraryNeededGroup>
 
         <!-- Spark S3 group MRREQUIRED -->
@@ -913,12 +913,12 @@
         </libraryNeededGroup>        
         
         <!-- GraphFrames group MRREQUIRED -->
-		<libraryNeededGroup
-			description="GraphFrames libraries for HDP 2.4 that are MRREQUIRED" 
-			id="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-HDP_2_4"
-			name="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-HDP_2_4">
-			<library id="graphframes-0.3.0-spark1.6-s_2.10.jar" />
-		</libraryNeededGroup>
+        <libraryNeededGroup
+            description="GraphFrames libraries for HDP 2.4 that are MRREQUIRED" 
+            id="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-HDP_2_4"
+            name="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-HDP_2_4">
+            <library id="graphframes-0.3.0-spark1.6-s_2.10.jar" />
+        </libraryNeededGroup>
         
         <!-- Spark Parquet group MRREQUIRED -->
         <libraryNeededGroup

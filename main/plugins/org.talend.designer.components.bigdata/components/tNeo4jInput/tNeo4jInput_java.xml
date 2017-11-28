@@ -38,7 +38,8 @@
 		<PARAMETER NAME="DB_VERSION" FIELD="CLOSED_LIST"
 			REPOSITORY_VALUE="DB_VERSION" NUM_ROW="3"
 			SHOW_IF="USE_EXISTING_CONNECTION == 'false'" GROUP="CONNECTION_GROUP">
-            <ITEMS DEFAULT="NEO4J_2_3_X">
+            <ITEMS DEFAULT="NEO4J_3_2_X">
+            	<ITEM NAME="NEO4J_3_2_X" VALUE="NEO4J_3_2_X" />
                 <ITEM NAME="NEO4J_2_3_X" VALUE="NEO4J_2_3_X" />
                 <ITEM NAME="NEO4J_2_2_X" VALUE="NEO4J_2_2_X" />
 				<ITEM NAME="NEO4J_2_1_X" VALUE="NEO4J_2_1_X" />
@@ -46,25 +47,24 @@
 			</ITEMS>
 		</PARAMETER>
 
-
 		<PARAMETER NAME="REMOTE_SERVER" FIELD="CHECK"
 			REPOSITORY_VALUE="REMOTE_SERVER" NUM_ROW="4"
-			SHOW_IF="USE_EXISTING_CONNECTION == 'false'" GROUP="CONNECTION_GROUP">
+			SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION != 'NEO4J_3_2_X')" GROUP="CONNECTION_GROUP">
 			<DEFAULT>false</DEFAULT>
 		</PARAMETER>
 
 
 		<PARAMETER NAME="DATABASE_PATH" FIELD="DIRECTORY"
 			REPOSITORY_VALUE="DATABASE_PATH" REQUIRED="true" NUM_ROW="5"
-			SHOW_IF="((USE_EXISTING_CONNECTION == 'false') AND (REMOTE_SERVER == 'false'))"
+			SHOW_IF="((USE_EXISTING_CONNECTION == 'false') AND (REMOTE_SERVER == 'false') AND (DB_VERSION != 'NEO4J_3_2_X'))"
 			GROUP="CONNECTION_GROUP">
 			<DEFAULT>""</DEFAULT>
 		</PARAMETER>
 		<PARAMETER NAME="SERVER_URL" FIELD="TEXT" REPOSITORY_VALUE="SERVER_URL"
 			REQUIRED="true" NUM_ROW="5"
-			SHOW_IF="((USE_EXISTING_CONNECTION == 'false') AND (REMOTE_SERVER == 'true'))"
+			SHOW_IF="((USE_EXISTING_CONNECTION == 'false') AND (REMOTE_SERVER == 'true') OR (DB_VERSION == 'NEO4J_3_2_X'))"
 			GROUP="CONNECTION_GROUP">
-			<DEFAULT>"http://localhost:7474/db/data"</DEFAULT>
+			<DEFAULT>"bolt://localhost:7687"</DEFAULT>
 		</PARAMETER>
 		<PARAMETER NAME="SHUTDOWN_DB" FIELD="CHECK" NUM_ROW="6"
 			SHOW_IF="USE_EXISTING_CONNECTION == 'true'" GROUP="CONNECTION_GROUP">
@@ -80,13 +80,13 @@
 
         <PARAMETER NAME="USERNAME" FIELD="TEXT" REQUIRED="true"
             NUM_ROW="9" GROUP="CONNECTION_GROUP" REPOSITORY_VALUE="USERNAME"
-            SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND (REMOTE_SERVER == 'true') AND ((SET_USERNAME == 'true') OR ((DB_VERSION != 'NEO4J_1_X_X') AND (DB_VERSION != 'NEO4J_2_1_X')))">
+            SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND ((REMOTE_SERVER == 'true')OR (DB_VERSION == 'NEO4J_3_2_X')) AND ((SET_USERNAME == 'true') OR ((DB_VERSION != 'NEO4J_1_X_X') AND (DB_VERSION != 'NEO4J_2_1_X')))">
             <DEFAULT>""</DEFAULT>
         </PARAMETER>
 
         <PARAMETER NAME="PASSWORD" FIELD="PASSWORD" REQUIRED="true"
             NUM_ROW="9" GROUP="CONNECTION_GROUP" REPOSITORY_VALUE="PASSWORD"
-            SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND (REMOTE_SERVER == 'true') AND ((SET_USERNAME == 'true') OR ((DB_VERSION != 'NEO4J_1_X_X') AND (DB_VERSION != 'NEO4J_2_1_X')))">
+            SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND ((REMOTE_SERVER == 'true') OR (DB_VERSION == 'NEO4J_3_2_X')) AND ((SET_USERNAME == 'true') OR ((DB_VERSION != 'NEO4J_1_X_X') AND (DB_VERSION != 'NEO4J_2_1_X')))">
         </PARAMETER>
 
 
@@ -457,6 +457,11 @@
                 MVN="mvn:org.talend.libraries/commons-lang3-3.3.2/6.0.0"
                 UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang3-3.3.2.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X') AND (USE_EXISTING_CONNECTION == 'false')" />
+                
+                            <!-- Version 3.2.X -->
+            <IMPORT NAME="neo4j-java-driver-1.4.4.jar" MODULE="neo4j-java-driver-1.4.4.jar"
+                MVN="mvn:org.neo4j.driver/neo4j-java-driver/1.4.4"
+                REQUIRED_IF="(DB_VERSION=='NEO4J_3_2_X') AND (USE_EXISTING_CONNECTION == 'false')" />
 		</IMPORTS>
 	</CODEGENERATION>
 	<RETURNS>
