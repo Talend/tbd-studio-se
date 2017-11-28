@@ -114,6 +114,7 @@ public class Neo4jDNDProvider extends AbstractDNDProvider {
         if (queryParameter != null) {
             String cypher = metadataTable.getAdditionalProperties().get(INeo4jConstants.CYPHER);
             if (StringUtils.trimToNull(cypher) != null) {
+                cypher = cypher.replaceAll("\"", "\\\\\"");  //$NON-NLS-1$ //$NON-NLS-2$
                 queryParameter.setValue(TalendQuoteUtils.addQuotesIfNotExist(cypher));
             }
         }
