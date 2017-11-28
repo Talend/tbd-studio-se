@@ -331,7 +331,7 @@
 	                }
 	                %>
 	                	<%if(version_3_5_X) {%>
-							com.mongodb.client.MongoCursor<org.bson.Document> cursor_<%=cid%> = coll_<%=cid%>.aggregate(aggregationStages).	useCursor(true).allowDiskUse(<%=useExternalSort%>).iterator();
+							com.mongodb.client.MongoCursor<org.bson.Document> cursor_<%=cid%> = coll_<%=cid%>.aggregate(aggregationStages).allowDiskUse(<%=useExternalSort%>).iterator();
 						<%} else {%>
 							com.mongodb.Cursor cursor_<%=cid%> = coll_<%=cid%>.aggregate(aggregationStages, com.mongodb.AggregationOptions.builder().outputMode(com.mongodb.AggregationOptions.OutputMode.CURSOR).allowDiskUse(<%=useExternalSort%>).build());
 						<%}%>
