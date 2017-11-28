@@ -20,7 +20,7 @@
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.0"
             id="datanucleus-rdbms-4.1.19.jar"
-            name="datanucleus-rdbms-4.1.19.jar" mvn_uri="mvn:org.talend.libraries/datanucleus-rdbms-4.1.19/6.2.0" >
+            name="datanucleus-rdbms-4.1.19.jar" mvn_uri="mvn:org.talend.libraries/datanucleus-rdbms-4.1.19/6.0.0" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.0"
@@ -210,14 +210,14 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.0"
             id="parquet-hive-bundle-1.6.0.jar"
             name="parquet-hive-bundle-1.6.0.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-hive-bundle-1.6.0/6.2.0" >
+            mvn_uri="mvn:org.talend.libraries/parquet-hive-bundle-1.6.0/6.0.0" >
         </libraryNeeded>
 
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop"
             id="parquet-hadoop-bundle-1.8.1.jar"
             name="parquet-hadoop-bundle-1.8.1.jar" 
-            mvn_uri="mvn:org.talend.libraries/parquet-hadoop-bundle-1.8.1/6.0.0" >
+            mvn_uri="mvn:org.talend.libraries/parquet-hadoop-bundle-1.8.1/6.3.0" >
         </libraryNeeded>
 
         <libraryNeeded
@@ -336,7 +336,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.0"
             id="commons-collections-3.2.2.jar"
             name="commons-collections-3.2.2.jar"
-            mvn_uri="mvn:org.talend.libraries/commons-collections-3.2.2/6.2.0">
+            mvn_uri="mvn:org.talend.libraries/commons-collections-3.2.2/6.0.0">
         </libraryNeeded>
 
 		<libraryNeeded
@@ -363,7 +363,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.0"
             id="antlr4-runtime-4.5.3.jar"
             name="antlr4-runtime-4.5.3.jar"
-            mvn_uri="mvn:org.talend.libraries/antlr4-runtime-4.5.3/6.3.0" >
+            mvn_uri="mvn:org.talend.libraries/antlr4-runtime-4.5.3/6.0.0" >
         </libraryNeeded>
         
         <!-- Azure -->
@@ -493,7 +493,7 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" id="kryo-shaded-3.0.3.jar" name="kryo-shaded-3.0.3.jar" mvn_uri="mvn:org.talend.libraries/kryo-shaded-3.0.3/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" id="leveldbjni-all-1.8.jar" name="leveldbjni-all-1.8.jar" mvn_uri="mvn:org.talend.libraries/leveldbjni-all-1.8/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" id="libfb303-0.9.3.jar" name="libfb303-0.9.3.jar" mvn_uri="mvn:org.talend.libraries/libfb303-0.9.3/6.0.0"/>
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" id="libthrift-0.9.3.jar" name="libthrift-0.9.3.jar" mvn_uri="mvn:org.talend.libraries/libthrift-0.9.3/6.0.0"/>
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" id="libthrift-0.9.3.jar" name="libthrift-0.9.3.jar" mvn_uri="mvn:org.talend.libraries/libthrift-0.9.3/6.3.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" id="lz4-1.3.0.jar" name="lz4-1.3.0.jar" mvn_uri="mvn:org.talend.libraries/lz4-1.3.0/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" id="maprdb-spark-2.1.0-mapr-1710.jar" name="maprdb-spark-2.1.0-mapr-1710.jar" mvn_uri="mvn:org.talend.libraries/maprdb-spark-2.1.0-mapr-1710/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" id="mesos-1.0.0-shaded-protobuf.jar" name="mesos-1.0.0-shaded-protobuf.jar" mvn_uri="mvn:org.talend.libraries/mesos-1.0.0-shaded-protobuf/6.0.0"/>
