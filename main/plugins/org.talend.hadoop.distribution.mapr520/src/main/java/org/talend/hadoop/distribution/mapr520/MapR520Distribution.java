@@ -390,4 +390,9 @@ public class MapR520Distribution extends AbstractMapRDistribution implements HDF
     public SparkStreamingKafkaVersion getSparkStreamingKafkaVersion() {
         return SparkStreamingKafkaVersion.MAPR;
     }
+    
+    @Override
+    public boolean doImportSparkHiveContextDependencies() {
+        return true;
+    }
 }

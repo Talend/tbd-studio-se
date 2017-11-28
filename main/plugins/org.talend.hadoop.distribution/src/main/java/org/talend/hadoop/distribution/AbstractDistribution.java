@@ -283,4 +283,8 @@ public abstract class AbstractDistribution {
     public List<String> getNecessaryServiceName() {
         return null;
     }
+    
+    public boolean doImportSparkHiveContextDependencies() {
+        return false;
+    }
 }

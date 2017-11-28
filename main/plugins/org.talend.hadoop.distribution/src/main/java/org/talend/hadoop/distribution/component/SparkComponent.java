@@ -89,4 +89,11 @@ public interface SparkComponent extends MRComponent {
      * @return A string with all of the Spark jars (from the module group SPARK) mapped to local Studio paths.
      */
     public String generateSparkJarsPaths(List<String> commandLineJarsPaths);
+    
+    
+    /**
+     * @return true if the distribution implementation is responsible for importing the spark hive context dependencies.
+     * If false, the components themselves are going to import the default version of dependencies on tSqlRow with module name SPARK-HIVECONTEXT-LIB-ALL_LATEST
+     */
+    public boolean doImportSparkHiveContextDependencies();
 }
