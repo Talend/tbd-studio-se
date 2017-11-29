@@ -61,6 +61,7 @@ import org.talend.repository.maprdbprovider.Activator;
 import org.talend.repository.maprdbprovider.util.MapRDBClassLoaderFactory;
 import org.talend.repository.model.IProxyRepositoryFactory;
 import org.talend.repository.ui.wizards.metadata.table.database.SelectorTreeViewerProvider;
+
 import orgomg.cwm.objectmodel.core.TaggedValue;
 import orgomg.cwm.resource.relational.Catalog;
 
@@ -117,8 +118,15 @@ public class MapRDBMetadataProvider implements IDBMetadataProvider {
     }
 
     private Object getConfiguration(IMetadataConnection metadataConnection) throws Exception {
+        String version = (String) metadataConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_VERSION);
         Object config = ReflectionUtils.invokeStaticMethod("org.apache.hadoop.hbase.HBaseConfiguration", classLoader, "create", //$NON-NLS-1$ //$NON-NLS-2$
                 new Object[0]);
+
+        // There is no HBase service on MapR6, so we should check maprdb instead of hbase
+        if (version != null && "MAPR600".compareTo(version) <= 0) {//$NON-NLS-1$
+            ReflectionUtils.invokeMethod(config, "set", new Object[] { "mapr.hbase.default.db", "maprdb" }); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        }
+
         ReflectionUtils
                 .invokeMethod(config, "set", new Object[] { "hbase.zookeeper.quorum", metadataConnection.getServerName() }); //$NON-NLS-1$ //$NON-NLS-2$
         ReflectionUtils.invokeMethod(config, "set", //$NON-NLS-1$
