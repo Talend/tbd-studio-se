@@ -309,4 +309,8 @@ public abstract class AbstractDistribution {
     public boolean doImportSparkHiveContextDependencies() {
         return false;
     }
+    
+    public boolean showDistribution() {
+        return true;
+    }
 }
