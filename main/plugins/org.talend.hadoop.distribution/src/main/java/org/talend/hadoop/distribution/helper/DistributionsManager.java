@@ -228,32 +228,34 @@ public final class DistributionsManager implements IDistributionsManager {
     private void addDistribution(BundleContext bc, Map<String, DistributionBean> disctributionsMap, ComponentType type,
             ServiceReference<? extends HadoopComponent> sr) {
         HadoopComponent hc = bc.getService(sr);
-        final String distribution = hc.getDistribution();
-        final String distributionName = hc.getDistributionName();
-
-        String key = getKey(hc);
-        DistributionBean distributionBean = disctributionsMap.get(key);
-        if (distributionBean == null) {
-            clearCache();
-            distributionBean = new DistributionBean(type, distribution, distributionName);
-            disctributionsMap.put(key, distributionBean);
-        } else {// check the name and displayName
-            if (!distribution.equals(distributionBean.name) || !distributionName.equals(distributionBean.displayName)) {
-                CommonExceptionHandler.warn(" There are different distribution name for " + distributionBean); //$NON-NLS-1$
-                return;
+        if(hc.isActivated()) {
+            final String distribution = hc.getDistribution();
+            final String distributionName = hc.getDistributionName();
+    
+            String key = getKey(hc);
+            DistributionBean distributionBean = disctributionsMap.get(key);
+            if (distributionBean == null) {
+                clearCache();
+                distributionBean = new DistributionBean(type, distribution, distributionName);
+                disctributionsMap.put(key, distributionBean);
+            } else {// check the name and displayName
+                if (!distribution.equals(distributionBean.name) || !distributionName.equals(distributionBean.displayName)) {
+                    CommonExceptionHandler.warn(" There are different distribution name for " + distributionBean); //$NON-NLS-1$
+                    return;
+                }
             }
+    
+            final String version = hc.getVersion();
+            // if (version!=null){ //sometimes, will be null, like Custom. but still need add the null version.
+            DistributionVersion versionBean = new DistributionVersion(hc, distributionBean, version, hc.getVersionName(type));
+            versionBean.addModuleGroups(hc.getModuleGroups(type));
+            // special condition for current version
+            versionBean.displayCondition = hc.getDisplayCondition(type);
+            distributionBean.addVersion(versionBean);
+    
+            // add all version conditions ?
+            distributionBean.addCondition(hc.getDisplayCondition(type));
         }
-
-        final String version = hc.getVersion();
-        // if (version!=null){ //sometimes, will be null, like Custom. but still need add the null version.
-        DistributionVersion versionBean = new DistributionVersion(hc, distributionBean, version, hc.getVersionName(type));
-        versionBean.addModuleGroups(hc.getModuleGroups(type));
-        // special condition for current version
-        versionBean.displayCondition = hc.getDisplayCondition(type);
-        distributionBean.addVersion(versionBean);
-
-        // add all version conditions ?
-        distributionBean.addCondition(hc.getDisplayCondition(type));
     }
 
     private void clearCache() {

@@ -310,7 +310,7 @@ public abstract class AbstractDistribution {
         return false;
     }
     
-    public boolean showDistribution() {
+    public boolean isActivated() {
         return true;
     }
 }

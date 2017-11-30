@@ -206,7 +206,7 @@ public interface HadoopComponent {
     public boolean isHortonworksDistribution();
     
     /**
-     * @return true if the distribution will be shown
+     * @return true if the distribution is activated
      */
-    public boolean showDistribution();
+    public boolean isActivated();
 }
