@@ -56,7 +56,7 @@
             GROUP="CONNECTION_GROUP"
             SHOW_IF="USE_EXISTING_CONNECTION == 'true'"
         >
-            <DEFAULT>Please note that this component will not works with tNeo4jConnection setting in version 3.2.X.</DEFAULT>
+            <DEFAULT>Please note that this component will not work with tNeo4jConnection setting in version 3.2.X.</DEFAULT>
         </PARAMETER>
 
 		<PARAMETER NAME="REMOTE_SERVER" FIELD="CHECK"
