@@ -1077,6 +1077,8 @@
             <library id="hadoop-yarn-api-HDP_2_6"/>
             <library id="hadoop-yarn-client-HDP_2_6"/>
             <library id="hadoop-yarn-common-HDP_2_6"/>
+            <library id="httpclient-4.5.2.jar"/>
+            <library id="httpcore-4.4.4.jar"/>
             <library id="jackson-jaxrs-1.9.13.jar"/>
             <library id="jackson-xc-1.9.13.jar"/>
             <library id="jersey-client-1.9.jar"/>

@@ -161,7 +161,7 @@
 			<IMPORT NAME="neo4j-primitive-collections-3.2.6" MODULE="neo4j-primitive-collections-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-primitive-collections-3.2.6/6.0.0"  REQUIRED="true"/>
 			<IMPORT NAME="neo4j-resource-3.2.6" MODULE="neo4j-resource-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-resource-3.2.6/6.0.0"  REQUIRED="true"/>
 			<IMPORT NAME="neo4j-ssl-3.2.6" MODULE="neo4j-ssl-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-ssl-3.2.6/6.0.0"  REQUIRED="true"/>
-			<IMPORT NAME="neo4j_talend-1.2-20171110" MODULE="neo4j_talend-1.2-20171110.jar"  MVN="mvn:org.talend.libraries/neo4j_talend-1.2-20171110/6.0.0" UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/neo4j_talend-1.2-20171110.jar" REQUIRED="true"/>
+			<IMPORT NAME="neo4j-talend-component" MODULE="neo4j-talend-component.jar"  MVN="mvn:org.talend.libraries/neo4j-talend-component/6.0.0" UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/neo4j-talend-component.jar" REQUIRED="true"/>
 			<IMPORT NAME="neo4j-udc-3.2.6" MODULE="neo4j-udc-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-udc-3.2.6/6.0.0"  REQUIRED="true"/>
 			<IMPORT NAME="neo4j-unsafe-3.2.6" MODULE="neo4j-unsafe-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-unsafe-3.2.6/6.0.0"  REQUIRED="true"/>
 			<IMPORT NAME="netty-all-4.1.15.Final" MODULE="netty-all-4.1.15.Final.jar"  MVN="mvn:org.talend.libraries/netty-all-4.1.15.Final/6.0.0"  REQUIRED="true"/>
