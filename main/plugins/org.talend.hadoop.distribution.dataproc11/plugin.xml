@@ -447,6 +447,12 @@
 		<!-- hive -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
+            id="tez-api-0.7.0.2.6.0.3-8"
+            name="tez-api-0.7.0.2.6.0.3-8.jar"
+            mvn_uri="mvn:org.talend.libraries/tez-api-0.7.0.2.6.0.3-8/6.3.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc11"
             id="jets3t-0.9.0"
             name="jets3t-0.9.0.jar"
             mvn_uri="mvn:org.talend.libraries/jets3t-0.9.0/6.0.0">
@@ -539,6 +545,7 @@
                 description="Hive libraries for CDH 5.8"
                 id="HIVE-LIB-DATAPROC11"
                 name="HIVE-LIB-DATAPROC11">
+	        <library id="tez-api-0.7.0.2.6.0.3-8" />
 	        <library id="jets3t-0.9.0" />
             <library id="hive-exec-dataproc11"/>
             <library id="hive-metastore-dataproc11"/>
