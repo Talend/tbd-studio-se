@@ -26,30 +26,7 @@
             "groupId": "org.apache.hadoop",
             "artifactId": "hadoop-client",
             "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "org.slf4j",
-                    "artifactId": "slf4j-api",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                },
-                {
-                    "groupId": "org.slf4j",
-                    "artifactId": "^slf[\\d]j-api",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                },
-                {
-                    "groupId": "org.slf4j",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
+            "description": ""
         },
         {
             "id": "spark-core_2.10",
@@ -57,6 +34,62 @@
             "context": "{properties.context}",
             "groupId": "org.apache.spark",
             "artifactId": "spark-core_2.10",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "spark-sql_2.10",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-sql_2.10",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "spark-mllib_2.10",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-mllib_2.10",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "spark-mllib-local_2.10",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-mllib-local_2.10",
+            "version": "2.1.0",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "spark-yarn_2.10",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-yarn_2.10",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "jdk.tools",
+                    "artifactId": "jdk.tools",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "scala-reflect",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.scala-lang",
+            "artifactId": "scala-reflect",
+            "version": "2.11.8",
             "classifier": "",
             "description": ""
         },
@@ -107,11 +140,11 @@
             "description": ""
         },
         {
-            "id": "parquet-pig",
+            "id": "pig",
             "type": "BASE",
             "context": "{properties.context}",
-            "groupId": "com.twitter",
-            "artifactId": "parquet-pig",
+            "groupId": "org.apache.pig",
+            "artifactId": "pig",
             "classifier": "",
             "description": ""
         },
@@ -131,7 +164,30 @@
             "groupId": "org.apache.hive",
             "artifactId": "hive-jdbc",
             "classifier": "",
-            "description": ""
+            "description": "",
+            "exclusions": [
+            	{
+                   "groupId": "org.apache.curator",
+                   "artifactId": "apache-curator",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "eigenbase",
+                   "artifactId": "eigenbase-properties",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "org.pentaho",
+                   "artifactId": "pentaho-aggdesigner-algorithm",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               }
+            ]
         },
         {
             "id": "hive-exec",
@@ -140,7 +196,30 @@
             "groupId": "org.apache.hive",
             "artifactId": "hive-exec",
             "classifier": "",
-            "description": ""
+            "description": "",
+            "exclusions": [
+            	{
+                   "groupId": "org.apache.curator",
+                   "artifactId": "apache-curator",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "eigenbase",
+                   "artifactId": "eigenbase-properties",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "org.pentaho",
+                   "artifactId": "pentaho-aggdesigner-algorithm",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               }
+            ]
         },
         {
             "id": "sqoop",
@@ -149,7 +228,30 @@
             "groupId": "org.apache.sqoop",
             "artifactId": "sqoop",
             "classifier": "",
-            "description": ""
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "org.apache.curator",
+                    "artifactId": "apache-curator",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "eigenbase",
+                    "artifactId": "eigenbase-properties",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "org.pentaho",
+                    "artifactId": "pentaho-aggdesigner-algorithm",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
         },
         {
             "id": "avro-mapred",
@@ -240,7 +342,111 @@
             "artifactId": "hcatalog-server-extensions",
             "version": "0.12.0",
             "classifier": "",
-            "description": ""
+            "description": "",
+            "exclusions": [
+            	{
+                   "groupId": "com.google.protobuf",
+                   "artifactId": "protobuf-java",
+                   "version": "2.4.1",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "org.spark-project.protobuf",
+                   "artifactId": "protobuf-java",
+                   "version": "2.4.1-shaded",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               }
+            ]
+        },
+        {
+            "id": "hive-hcatalog-core",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hive.hcatalog",
+            "artifactId": "hive-hcatalog-core",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+            	{
+                   "groupId": "org.apache.curator",
+                   "artifactId": "apache-curator",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               }
+            ]
+        },
+        {
+            "id": "hive-hcatalog-pig-adapter",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hive.hcatalog",
+            "artifactId": "hive-hcatalog-pig-adapter",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+            	{
+                   "groupId": "org.apache.curator",
+                   "artifactId": "apache-curator",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               }
+            ]
+        },
+        {
+            "id": "hive-hcatalog-server-extensions",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hive.hcatalog",
+            "artifactId": "hive-hcatalog-server-extensions",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+            	{
+                   "groupId": "org.apache.curator",
+                   "artifactId": "apache-curator",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               }
+            ]
+        },
+        {
+            "id": "hive-metastore",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hive",
+            "artifactId": "hive-metastore",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+            	{
+                   "groupId": "org.apache.curator",
+                   "artifactId": "apache-curator",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "eigenbase",
+                   "artifactId": "eigenbase-properties",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "org.pentaho",
+                   "artifactId": "pentaho-aggdesigner-algorithm",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               }
+            ]
         },
         {
             "id": "hcatalog-pig-adapter",
@@ -250,7 +456,25 @@
             "artifactId": "hcatalog-pig-adapter",
             "version": "0.12.0",
             "classifier": "",
-            "description": ""
+            "description": "",
+            "exclusions": [
+            	{
+                   "groupId": "com.google.protobuf",
+                   "artifactId": "protobuf-java",
+                   "version": "2.4.1",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "org.spark-project.protobuf",
+                   "artifactId": "protobuf-java",
+                   "version": "2.4.1-shaded",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               }
+            ]
         },
         {
             "id": "parquet-pig-bundle",
@@ -271,6 +495,23 @@
             "description": ""
         },
         {
+            "id": "elephant-bird-rcfile",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "elephant-bird-rcfile-4.9-patched-hive-1.x.jar",
+            "mvnUri": "mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0"
+        },
+        {
+            "id": "elephant-bird-core",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.twitter.elephantbird",
+            "artifactId": "elephant-bird-core",
+            "version": "4.9",
+            "classifier": "",
+            "description": ""
+        },
+        {
             "id": "elephant-bird-hadoop-compat",
             "type": "BASE",
             "context": "{properties.context}",
@@ -287,6 +528,36 @@
             "groupId": "com.twitter.elephantbird",
             "artifactId": "elephant-bird-pig",
             "version": "4.9",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "jodd",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.jodd",
+            "artifactId": "jodd-core",
+            "version": "3.5.2",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "httpclient",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.httpcomponents",
+            "artifactId": "httpclient",
+            "version": "4.5.2",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "guava",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.google.guava",
+            "artifactId": "guava",
+            "version": "14.0.1",
             "classifier": "",
             "description": ""
         },
@@ -316,14 +587,16 @@
             "id": "HDFS-SPARK1_6-LIB-DYNAMIC",
             "description": "",
             "modules": [
-                "spark-core_2.10"
+                "httpclient",
+                "guava"
             ]
         },
         {
             "id": "HDFS-SPARK2_1-LIB-DYNAMIC",
             "description": "",
             "modules": [
-                "spark-core_2.10"
+                "httpclient",
+                "guava"
             ]
         },
         {
@@ -333,7 +606,8 @@
                 "hadoop-mapreduce-client-app",
                 "hadoop-mapreduce-client-jobclient",
                 "commons-httpclient-3.1-dynamic",
-                "htrace-core"
+                "htrace-core",
+                "jodd"
             ]
         },
         {
@@ -348,7 +622,7 @@
             "description": "",
             "modules": [
                 "datafu",
-                "parquet-pig"
+                "pig"
             ]
         },
         {
@@ -404,8 +678,10 @@
             "description": "",
             "modules": [
                 "hive-exec",
-                "hcatalog-server-extensions",
-                "hcatalog-pig-adapter"
+                "hive-hcatalog-core",
+                "hive-hcatalog-pig-adapter",
+                "hive-hcatalog-server-extensions",
+                "hive-metastore"
             ]
         },
         {
@@ -421,13 +697,16 @@
             "modules": [
                 "hive-exec",
                 "hive-serde",
-                "elephant-bird-hadoop-compat"
+                "elephant-bird-core",
+                "elephant-bird-hadoop-compat",
+                "elephant-bird-rcfile"
             ]
         },
         {
             "id": "PIG-SEQUENCEFILE-LIB-DYNAMIC",
             "description": "",
             "modules": [
+            	"elephant-bird-core",
                 "elephant-bird-hadoop-compat",
                 "elephant-bird-pig"
             ]
@@ -443,14 +722,23 @@
             "id": "SPARK-LIB-DYNAMIC",
             "description": "",
             "modules": [
-                "hadoop-client"
+                "spark-core_2.10",
+                "spark-mllib_2.10",
+                "spark-mllib-local_2.10",
+                "spark-sql_2.10",
+                "spark-yarn_2.10"
             ]
         },
         {
             "id": "SPARK-LIB-SPARK2-DYNAMIC",
             "description": "",
             "modules": [
-                "hadoop-client"
+                "spark-core_2.10",
+                "spark-mllib_2.10",
+                "spark-mllib-local_2.10",
+                "spark-sql_2.10",
+                "spark-yarn_2.10",
+                "scala-reflect"
             ]
         },
         {
