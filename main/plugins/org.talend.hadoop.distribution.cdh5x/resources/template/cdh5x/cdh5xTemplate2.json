@@ -26,30 +26,7 @@
             "groupId": "org.apache.hadoop",
             "artifactId": "hadoop-client",
             "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "org.slf4j",
-                    "artifactId": "slf4j-api",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                },
-                {
-                    "groupId": "org.slf4j",
-                    "artifactId": "^slf[\\d]j-api",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                },
-                {
-                    "groupId": "org.slf4j",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
+            "description": ""
         },
         {
             "id": "spark-core_2.10",
@@ -57,6 +34,63 @@
             "context": "{properties.context}",
             "groupId": "org.apache.spark",
             "artifactId": "spark-core_2.10",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "spark-sql_2.10",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-sql_2.10",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "spark-mllib_2.10",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-mllib_2.10",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "spark-mllib-local_2.10",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-mllib-local_2.10",
+            "version": "2.1.0",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "spark-yarn_2.10",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-yarn_2.10",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "jdk.tools",
+                    "artifactId": "jdk.tools",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+            
+        },
+        {
+            "id": "scala-reflect",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.scala-lang",
+            "artifactId": "scala-reflect",
+            "version": "2.11.8",
             "classifier": "",
             "description": ""
         },
@@ -149,7 +183,30 @@
             "groupId": "org.apache.sqoop",
             "artifactId": "sqoop",
             "classifier": "",
-            "description": ""
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "org.apache.curator",
+                    "artifactId": "apache-curator",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "eigenbase",
+                    "artifactId": "eigenbase-properties",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "org.pentaho",
+                    "artifactId": "pentaho-aggdesigner-algorithm",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
         },
         {
             "id": "avro-mapred",
@@ -291,6 +348,36 @@
             "description": ""
         },
         {
+            "id": "jodd",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.jodd",
+            "artifactId": "jodd-core",
+            "version": "3.5.2",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "httpclient",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.httpcomponents",
+            "artifactId": "httpclient",
+            "version": "4.5.2",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "guava",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.google.guava",
+            "artifactId": "guava",
+            "version": "14.0.1",
+            "classifier": "",
+            "description": ""
+        },
+        {
             "id": "MODULE_COMMONS_CODEC",
             "type": "REFERENCE",
             "context": "{properties.context}",
@@ -316,14 +403,16 @@
             "id": "HDFS-SPARK1_6-LIB-DYNAMIC",
             "description": "",
             "modules": [
-                "spark-core_2.10"
+                "httpclient",
+                "guava"
             ]
         },
         {
             "id": "HDFS-SPARK2_1-LIB-DYNAMIC",
             "description": "",
             "modules": [
-                "spark-core_2.10"
+                "httpclient",
+                "guava"
             ]
         },
         {
@@ -333,7 +422,8 @@
                 "hadoop-mapreduce-client-app",
                 "hadoop-mapreduce-client-jobclient",
                 "commons-httpclient-3.1-dynamic",
-                "htrace-core"
+                "htrace-core",
+                "jodd"
             ]
         },
         {
@@ -347,6 +437,7 @@
             "id": "PIG-LIB-DYNAMIC",
             "description": "",
             "modules": [
+                "pig",
                 "datafu",
                 "parquet-pig"
             ]
@@ -443,14 +534,23 @@
             "id": "SPARK-LIB-DYNAMIC",
             "description": "",
             "modules": [
-                "hadoop-client"
+                "spark-core_2.10",
+                "spark-mllib_2.10",
+                "spark-mllib-local_2.10",
+                "spark-sql_2.10",
+                "spark-yarn_2.10"
             ]
         },
         {
             "id": "SPARK-LIB-SPARK2-DYNAMIC",
             "description": "",
             "modules": [
-                "hadoop-client"
+                "spark-core_2.10",
+                "spark-mllib_2.10",
+                "spark-mllib-local_2.10",
+                "spark-sql_2.10",
+                "spark-yarn_2.10",
+                "scala-reflect"
             ]
         },
         {
