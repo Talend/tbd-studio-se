@@ -29,4 +29,10 @@ public interface IDependencyResolver {
 
     public List<String> listHadoopVersions(String baseVersion, String topVersion, IDynamicMonitor monitor) throws Exception;
 
+    public List<String> listVersions(String groupId, String artifactId, String baseVersion, String topVersion,
+            IDynamicMonitor monitor) throws Exception;
+
+    public String getLatestVersion(String groupId, String artifactId, String baseVersion, String topVersion,
+            IDynamicMonitor monitor) throws Exception;
+
 }

@@ -108,6 +108,7 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
             String scope = moduleBean.getScope();
             String classifier = moduleBean.getClassifier();
             String moduleVersion = moduleBean.getVersion();
+            boolean useLatest = Boolean.valueOf(moduleBean.getUseLatest());
 
             List<ExclusionBean> exclusionBeans = moduleBean.getExclusions();
             List<ExclusionNode> exclusions = null;
@@ -120,6 +121,9 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
             baseNode.setArtifactId(artifactId);
             baseNode.setClassifier(classifier);
             baseNode.setScope(scope);
+            if (useLatest) {
+                moduleVersion = dependencyResolver.getLatestVersion(groupId, artifactId, null, null, monitor);
+            }
             baseNode.setVersion(moduleVersion);
             if (exclusions != null && !exclusions.isEmpty()) {
                 baseNode.setExclusions(exclusions);
@@ -306,6 +310,7 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
         String type = (String) DynamicDistributionUtils.calculate(templateBean, moduleBean.getType());
         String uriPath = (String) DynamicDistributionUtils.calculate(templateBean, moduleBean.getUriPath());
         String version = (String) DynamicDistributionUtils.calculate(templateBean, moduleBean.getVersion());
+        String useLatest = (String) DynamicDistributionUtils.calculate(templateBean, moduleBean.getUseLatest());
         String excludeDependencies = (String) DynamicDistributionUtils.calculate(templateBean,
                 moduleBean.getExcludeDependencies());
 
@@ -324,6 +329,7 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
         moduleBean.setType(type);
         moduleBean.setUriPath(uriPath);
         moduleBean.setVersion(version);
+        moduleBean.setUseLatest(useLatest);
         moduleBean.setExcludeDependencies(excludeDependencies);
 
         setResolved(true);

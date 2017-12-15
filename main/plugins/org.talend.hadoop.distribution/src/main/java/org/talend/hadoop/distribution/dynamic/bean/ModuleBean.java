@@ -55,6 +55,8 @@ public class ModuleBean implements IVariable {
 
     public static final String ATTR_DESCRIPTION = "description"; //$NON-NLS-1$
 
+    public static final String ATTR_USE_LATETST = "useLatest"; //$NON-NLS-1$
+
     public static final String TYPE_STANDARD = "STANDARD"; //$NON-NLS-1$
 
     public static final String TYPE_BASE = "BASE"; //$NON-NLS-1$
@@ -94,6 +96,8 @@ public class ModuleBean implements IVariable {
     private String excludeDependencies;
 
     private String description;
+
+    private String useLatest;
 
     private List<ExclusionBean> exclusions;
 
@@ -241,6 +245,14 @@ public class ModuleBean implements IVariable {
         this.exclusions = exclusions;
     }
 
+    public String getUseLatest() {
+        return this.useLatest;
+    }
+
+    public void setUseLatest(String useLatest) {
+        this.useLatest = useLatest;
+    }
+
     @Override
     public Object getVariableValue(String variable) throws Exception {
         Object value = null;
@@ -298,6 +310,9 @@ public class ModuleBean implements IVariable {
             break;
         case ATTR_VERSION:
             value = getVersion();
+            break;
+        case ATTR_USE_LATETST:
+            value = getUseLatest();
             break;
         default:
             throw new UnsupportedOperationException(

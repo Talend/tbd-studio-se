@@ -12,6 +12,8 @@
 // ============================================================================
 package org.talend.hadoop.distribution.dynamic.resolver;
 
+import java.util.List;
+
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.m2e.core.MavenPlugin;
 import org.talend.designer.maven.aether.IDynamicMonitor;
@@ -52,6 +54,38 @@ public abstract class AbstractDependencyResolver implements IDependencyResolver 
         DependencyNode node = DynamicDistributionAetherUtils.collectDepencencies(remoteRepositoryUrl, username, password,
                 localRepositoryPath, baseNode, monitor);
         return node;
+    }
+
+    @Override
+    public List<String> listVersions(String groupId, String artifactId, String baseVersion, String topVersion,
+            IDynamicMonitor monitor) throws Exception {
+        IDynamicDistributionPreference preference = configuration.getPreference();
+        String remoteRepositoryUrl = preference.getRepository();
+        String username = null;
+        String password = null;
+        if (!preference.isAnonymous()) {
+            username = preference.getUsername();
+            password = preference.getPassword();
+        }
+        String localRepositoryPath = getLocalRepositoryPath();
+        return DynamicDistributionAetherUtils.versionRange(remoteRepositoryUrl, username, password, localRepositoryPath, groupId,
+                artifactId, null, null, monitor);
+    }
+
+    @Override
+    public String getLatestVersion(String groupId, String artifactId, String baseVersion, String topVersion,
+            IDynamicMonitor monitor) throws Exception {
+        IDynamicDistributionPreference preference = configuration.getPreference();
+        String remoteRepositoryUrl = preference.getRepository();
+        String username = null;
+        String password = null;
+        if (!preference.isAnonymous()) {
+            username = preference.getUsername();
+            password = preference.getPassword();
+        }
+        String localRepositoryPath = getLocalRepositoryPath();
+        return DynamicDistributionAetherUtils.getHighestVersion(remoteRepositoryUrl, username, password, localRepositoryPath,
+                groupId, artifactId, null, null, monitor);
     }
 
     public DynamicConfiguration getConfiguration() {
