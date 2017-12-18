@@ -29,48 +29,52 @@
             "description": ""
         },
         {
-            "id": "spark-core_2.10",
+            "id": "spark-core_2.11",
             "type": "BASE",
             "context": "{properties.context}",
             "groupId": "org.apache.spark",
-            "artifactId": "spark-core_2.10",
+            "artifactId": "spark-core_2.11",
+            "version": "2.2.0.cloudera1",
             "classifier": "",
             "description": ""
         },
         {
-            "id": "spark-sql_2.10",
+            "id": "spark-sql_2.11",
             "type": "BASE",
             "context": "{properties.context}",
             "groupId": "org.apache.spark",
-            "artifactId": "spark-sql_2.10",
+            "artifactId": "spark-sql_2.11",
+            "version": "2.2.0.cloudera1",
             "classifier": "",
             "description": ""
         },
         {
-            "id": "spark-mllib_2.10",
+            "id": "spark-mllib_2.11",
             "type": "BASE",
             "context": "{properties.context}",
             "groupId": "org.apache.spark",
-            "artifactId": "spark-mllib_2.10",
+            "artifactId": "spark-mllib_2.11",
+            "version": "2.2.0.cloudera1",
             "classifier": "",
             "description": ""
         },
         {
-            "id": "spark-mllib-local_2.10",
+            "id": "spark-mllib-local_2.11",
             "type": "BASE",
             "context": "{properties.context}",
             "groupId": "org.apache.spark",
-            "artifactId": "spark-mllib-local_2.10",
-            "version": "2.1.0",
+            "artifactId": "spark-mllib-local_2.11",
+            "version": "2.2.0.cloudera1",
             "classifier": "",
             "description": ""
         },
         {
-            "id": "spark-yarn_2.10",
+            "id": "spark-yarn_2.11",
             "type": "BASE",
             "context": "{properties.context}",
             "groupId": "org.apache.spark",
-            "artifactId": "spark-yarn_2.10",
+            "artifactId": "spark-yarn_2.11",
+            "version": "2.2.0.cloudera1",
             "classifier": "",
             "description": "",
             "exclusions": [
@@ -84,12 +88,92 @@
             ]
         },
         {
+            "id": "spark-network-common_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-network-common_2.11",
+            "version": "2.2.0",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "spark-network-shuffle_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-network-shuffle_2.11",
+            "version": "2.2.0",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "scala-library",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.scala-lang",
+            "artifactId": "scala-library",
+            "version": "2.11.8",
+            "classifier": "",
+            "description": ""
+        },
+        {
             "id": "scala-reflect",
             "type": "BASE",
             "context": "{properties.context}",
             "groupId": "org.scala-lang",
             "artifactId": "scala-reflect",
             "version": "2.11.8",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "kryo-shaded",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.esotericsoftware",
+            "artifactId": "kryo-shaded",
+            "version": "3.0.3",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "commons-lang3",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.commons",
+            "artifactId": "commons-lang3",
+            "version": "3.5",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "json4s-core_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.json4s",
+            "artifactId": "json4s-core_2.11",
+            "version": "3.2.11",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "json4s-ast_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.json4s",
+            "artifactId": "json4s-ast_2.11",
+            "version": "3.2.11",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "json4s-jackson_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.json4s",
+            "artifactId": "json4s-jackson_2.11",
+            "version": "3.2.11",
             "classifier": "",
             "description": ""
         },
@@ -587,16 +671,12 @@
             "id": "HDFS-SPARK1_6-LIB-DYNAMIC",
             "description": "",
             "modules": [
-                "httpclient",
-                "guava"
             ]
         },
         {
             "id": "HDFS-SPARK2_1-LIB-DYNAMIC",
             "description": "",
             "modules": [
-                "httpclient",
-                "guava"
             ]
         },
         {
@@ -722,23 +802,27 @@
             "id": "SPARK-LIB-DYNAMIC",
             "description": "",
             "modules": [
-                "spark-core_2.10",
-                "spark-mllib_2.10",
-                "spark-mllib-local_2.10",
-                "spark-sql_2.10",
-                "spark-yarn_2.10"
             ]
         },
         {
             "id": "SPARK-LIB-SPARK2-DYNAMIC",
             "description": "",
             "modules": [
-                "spark-core_2.10",
-                "spark-mllib_2.10",
-                "spark-mllib-local_2.10",
-                "spark-sql_2.10",
-                "spark-yarn_2.10",
-                "scala-reflect"
+                "spark-core_2.11",
+                "spark-mllib_2.11",
+                "spark-mllib-local_2.11",
+                "spark-sql_2.11",
+                "spark-yarn_2.11",
+				"spark-network-common_2.11",
+				"spark-network-shuffle_2.11",
+                "scala-reflect",
+                "scala-library",
+                "kryo-shaded",
+                "commons-lang3",
+                "avro-mapred",
+               	"json4s-ast_2.11" ,
+               	"json4s-core_2.11" ,
+               	"json4s-jackson_2.11" 
             ]
         },
         {
