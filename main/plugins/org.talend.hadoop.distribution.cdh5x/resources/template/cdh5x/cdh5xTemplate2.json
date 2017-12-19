@@ -694,6 +694,44 @@
             ]
         },
         {
+            "id": "netty",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "io.netty",
+            "artifactId": "netty",
+            "version": "3.9.9.Final",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "netty-all",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "io.netty",
+            "artifactId": "netty-all",
+            "version": "4.0.43.Final",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
             "id": "jackson-module-paranamer",
             "type": "BASE",
             "context": "{properties.context}",
@@ -1487,6 +1525,8 @@
                	"jackson-databind",
                	"jackson-module-scala_2.11",
                	"jackson-module-paranamer",
+               	"netty",
+               	"netty-all",
                	"objenesis",
                	"xbean-asm5-shaded",
                	"lz4",
