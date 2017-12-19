@@ -331,7 +331,7 @@ public class CDH5xDistributionTemplate extends AbstractDistribution
         if (StringUtils.isEmpty(spark2RuntimeId)) {
             throw new RuntimeException("Can't find configuration for " + CDH5xConstant.SPARK2_MODULE_GROUP.getModuleName());
         }
-        return SparkClassPathUtils.generateSparkJarsPaths(commandLineJarsPaths, spark2RuntimeId);
+        return SparkClassPathUtils.generateSparkJarsPathsWithNames(commandLineJarsPaths, spark2RuntimeId);
     }
 
     @Override

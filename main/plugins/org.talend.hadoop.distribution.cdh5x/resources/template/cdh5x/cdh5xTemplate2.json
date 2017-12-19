@@ -29,6 +29,25 @@
             "description": ""
         },
         {
+            "id": "spark-catalyst_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-catalyst_2.11",
+            "version": "2.2.0.cloudera1",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
             "id": "spark-core_2.11",
             "type": "BASE",
             "context": "{properties.context}",
@@ -36,17 +55,92 @@
             "artifactId": "spark-core_2.11",
             "version": "2.2.0.cloudera1",
             "classifier": "",
-            "description": ""
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
         },
         {
-            "id": "spark-sql_2.11",
+            "id": "spark-graphx_2.11",
             "type": "BASE",
             "context": "{properties.context}",
             "groupId": "org.apache.spark",
-            "artifactId": "spark-sql_2.11",
+            "artifactId": "spark-graphx_2.11",
             "version": "2.2.0.cloudera1",
             "classifier": "",
-            "description": ""
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "spark-hive_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-hive_2.11",
+            "version": "2.2.0.cloudera1",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "spark-hive-exec_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-hive-exec_2.11",
+            "version": "2.2.0.cloudera1",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "spark-launcher_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-launcher_2.11",
+            "version": "2.2.0.cloudera1",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
         },
         {
             "id": "spark-mllib_2.11",
@@ -56,7 +150,16 @@
             "artifactId": "spark-mllib_2.11",
             "version": "2.2.0.cloudera1",
             "classifier": "",
-            "description": ""
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
         },
         {
             "id": "spark-mllib-local_2.11",
@@ -66,21 +169,11 @@
             "artifactId": "spark-mllib-local_2.11",
             "version": "2.2.0.cloudera1",
             "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "spark-yarn_2.11",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.spark",
-            "artifactId": "spark-yarn_2.11",
-            "version": "2.2.0.cloudera1",
-            "classifier": "",
             "description": "",
             "exclusions": [
                 {
-                    "groupId": "jdk.tools",
-                    "artifactId": "jdk.tools",
+                    "groupId": "*",
+                    "artifactId": "*",
                     "classifier": "",
                     "extension": "",
                     "description": ""
@@ -93,9 +186,18 @@
             "context": "{properties.context}",
             "groupId": "org.apache.spark",
             "artifactId": "spark-network-common_2.11",
-            "version": "2.2.0",
+            "version": "2.2.0.cloudera1",
             "classifier": "",
-            "description": ""
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
         },
         {
             "id": "spark-network-shuffle_2.11",
@@ -103,9 +205,132 @@
             "context": "{properties.context}",
             "groupId": "org.apache.spark",
             "artifactId": "spark-network-shuffle_2.11",
-            "version": "2.2.0",
+            "version": "2.2.0.cloudera1",
             "classifier": "",
-            "description": ""
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "spark-repl_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-repl_2.11",
+            "version": "2.2.0.cloudera1",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "spark-sketch_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-sketch_2.11",
+            "version": "2.2.0.cloudera1",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "spark-sql_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-sql_2.11",
+            "version": "2.2.0.cloudera1",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "spark-tags_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-tags_2.11",
+            "version": "2.2.0.cloudera1",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "spark-unsafe_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-unsafe_2.11",
+            "version": "2.2.0.cloudera1",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "spark-yarn_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-yarn_2.11",
+            "version": "2.2.0.cloudera1",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
         },
         {
             "id": "scala-library",
@@ -128,6 +353,16 @@
             "description": ""
         },
         {
+            "id": "scala-xml",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.scala-lang",
+            "artifactId": "scala-xml",
+            "version": "2.11.0-M4",
+            "classifier": "",
+            "description": ""
+        },
+        {
             "id": "kryo-shaded",
             "type": "BASE",
             "context": "{properties.context}",
@@ -138,12 +373,132 @@
             "description": ""
         },
         {
+            "id": "chill_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.twitter",
+            "artifactId": "chill_2.11",
+            "version": "0.8.0",
+            "classifier": "",
+            "description": ""
+        },
+        {
             "id": "commons-lang3",
             "type": "BASE",
             "context": "{properties.context}",
             "groupId": "org.apache.commons",
             "artifactId": "commons-lang3",
             "version": "3.5",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "jersey-container-servlet-core",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.glassfish.jersey.containers",
+            "artifactId": "jersey-container-servlet-core",
+            "version": "2.22.2",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "jersey-container-servlet",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.glassfish.jersey.containers",
+            "artifactId": "jersey-container-servlet",
+            "version": "2.22.2",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "jersey-server",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.glassfish.jersey.core",
+            "artifactId": "jersey-server",
+            "version": "2.22.2",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "javax.servlet-api",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "javax.servlet",
+            "artifactId": "javax.servlet-api",
+            "version": "3.1.0",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "metrics-core",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.codahale.metrics",
+            "artifactId": "metrics-core",
+            "version": "3.0.0",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "metrics-json",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.codahale.metrics",
+            "artifactId": "metrics-json",
+            "version": "3.0.0",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "jackson-module-scala_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.fasterxml.jackson.module",
+            "artifactId": "jackson-module-scala_2.11",
+            "version": "2.9.2",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "jackson-module-paranamer",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.fasterxml.jackson.module",
+            "artifactId": "jackson-module-paranamer",
+            "version": "2.9.2",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "xbean-asm5-shaded",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.xbean",
+            "artifactId": "xbean-asm5-shaded",
+            "version": "4.4",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "lz4",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "net.jpountz.lz4",
+            "artifactId": "lz4",
+            "version": "1.3.0",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "RoaringBitmap",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.roaringbitmap",
+            "artifactId": "RoaringBitmap",
+            "version": "0.5.11",
             "classifier": "",
             "description": ""
         },
@@ -808,21 +1163,43 @@
             "id": "SPARK-LIB-SPARK2-DYNAMIC",
             "description": "",
             "modules": [
+                "spark-catalyst_2.11",
                 "spark-core_2.11",
+                "spark-graphx_2.11",
+                "spark-hive-exec_2.11",
+                "spark-hive_2.11",
+                "spark-launcher_2.11",
                 "spark-mllib_2.11",
                 "spark-mllib-local_2.11",
+                "spark-network-common_2.11",
+                "spark-network-shuffle_2.11",
+                "spark-repl_2.11",
+                "spark-sketch_2.11",
                 "spark-sql_2.11",
+                "spark-tags_2.11",
+                "spark-unsafe_2.11",
                 "spark-yarn_2.11",
-				"spark-network-common_2.11",
-				"spark-network-shuffle_2.11",
                 "scala-reflect",
                 "scala-library",
+                "scala-xml",
                 "kryo-shaded",
                 "commons-lang3",
                 "avro-mapred",
                	"json4s-ast_2.11" ,
                	"json4s-core_2.11" ,
-               	"json4s-jackson_2.11" 
+               	"json4s-jackson_2.11",
+               	"chill_2.11",
+               	"jersey-container-servlet",
+               	"jersey-container-servlet-core",
+               	"jersey-server",
+               	"metrics-core",
+               	"metrics-json",
+               	"javax.servlet-api",
+               	"jackson-module-scala_2.11",
+               	"jackson-module-paranamer",
+               	"xbean-asm5-shaded",
+               	"lz4",
+               	"RoaringBitmap"
             ]
         },
         {
@@ -836,7 +1213,7 @@
             "id": "SPARK-LIB-MRREQUIRED-DYNAMIC",
             "description": "",
             "modules": [
-                "hadoop-client"
+                
             ]
         },
         {
