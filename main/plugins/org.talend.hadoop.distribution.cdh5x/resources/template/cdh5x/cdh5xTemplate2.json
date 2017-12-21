@@ -25,8 +25,25 @@
             "context": "{properties.context}",
             "groupId": "org.apache.hadoop",
             "artifactId": "hadoop-client",
+            "version": "2.6.0-cdh5.12.1",
             "classifier": "",
-            "description": ""
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "com.fasterxml.jackson.core",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "io.netty",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
         },
         {
             "id": "spark-catalyst_2.11",
@@ -182,41 +199,19 @@
         },
         {
             "id": "spark-network-common_2.11",
-            "type": "BASE",
+            "type": "STANDARD",
             "context": "{properties.context}",
-            "groupId": "org.apache.spark",
-            "artifactId": "spark-network-common_2.11",
-            "version": "2.2.0.cloudera1",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
+            "jarName": "spark-network-common_2.11-2.2.0.cloudera1.jar",
+            "mvnUri": "mvn:org.apache.spark/spark-network-common_2.11/2.2.0.cloudera1",
+            "description": ""
         },
         {
             "id": "spark-network-shuffle_2.11",
-            "type": "BASE",
+            "type": "STANDARD",
             "context": "{properties.context}",
-            "groupId": "org.apache.spark",
-            "artifactId": "spark-network-shuffle_2.11",
-            "version": "2.2.0.cloudera1",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
+            "jarName": "spark-network-shuffle_2.11-2.2.0.cloudera1.jar",
+            "mvnUri": "mvn:org.apache.spark/spark-network-shuffle_2.11/2.2.0.cloudera1",
+            "description": ""
         },
         {
             "id": "spark-repl_2.11",
@@ -390,6 +385,36 @@
             ]
         },
         {
+            "id": "antlr",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "antlr",
+            "artifactId": "antlr",
+            "version": "2.7.7",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "antlr-runtime",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.antlr",
+            "artifactId": "antlr-runtime",
+            "version": "3.4",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "antlr4-runtime",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.antlr",
+            "artifactId": "antlr4-runtime",
+            "version": "4.5.3",
+            "classifier": "",
+            "description": ""
+        },
+        {
             "id": "kryo-shaded",
             "type": "BASE",
             "context": "{properties.context}",
@@ -466,6 +491,26 @@
             ]
         },
         {
+            "id": "commons-compiler",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.codehaus.janino",
+            "artifactId": "commons-compiler",
+            "version": "3.0.0",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "janino",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.codehaus.janino",
+            "artifactId": "janino",
+            "version": "3.0.0",
+            "classifier": "",
+            "description": ""
+        },
+        {
             "id": "jersey-container-servlet-core",
             "type": "BASE",
             "context": "{properties.context}",
@@ -540,6 +585,14 @@
                     "description": ""
                 }
             ]
+        },
+        {
+            "id": "jul-to-slf4j",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "jul-to-slf4j-1.7.5.jar",
+            "mvnUri": "mvn:org/slf4j/jul-to-slf4j/1.7.5",
+            "description": ""
         },
         {
             "id": "metrics-core",
@@ -623,7 +676,7 @@
             "context": "{properties.context}",
             "groupId": "com.fasterxml.jackson.core",
             "artifactId": "jackson-annotations",
-            "version": "2.9.2",
+            "version": "2.6.5",
             "classifier": "",
             "description": "",
             "exclusions": [
@@ -642,7 +695,7 @@
             "context": "{properties.context}",
             "groupId": "com.fasterxml.jackson.core",
             "artifactId": "jackson-core",
-            "version": "2.9.2",
+            "version": "2.6.5",
             "classifier": "",
             "description": "",
             "exclusions": [
@@ -661,7 +714,7 @@
             "context": "{properties.context}",
             "groupId": "com.fasterxml.jackson.core",
             "artifactId": "jackson-databind",
-            "version": "2.9.2",
+            "version": "2.6.5",
             "classifier": "",
             "description": "",
             "exclusions": [
@@ -680,7 +733,7 @@
             "context": "{properties.context}",
             "groupId": "com.fasterxml.jackson.module",
             "artifactId": "jackson-module-scala_2.11",
-            "version": "2.9.2",
+            "version": "2.6.5",
             "classifier": "",
             "description": "",
             "exclusions": [
@@ -737,7 +790,7 @@
             "context": "{properties.context}",
             "groupId": "com.fasterxml.jackson.module",
             "artifactId": "jackson-module-paranamer",
-            "version": "2.9.2",
+            "version": "2.6.5",
             "classifier": "",
             "description": "",
             "exclusions": [
@@ -1022,7 +1075,16 @@
             "groupId": "org.apache.avro",
             "artifactId": "avro-mapred",
             "classifier": "hadoop2",
-            "description": ""
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "io.netty",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
         },
         {
             "id": "hbase-server",
@@ -1473,7 +1535,6 @@
             "id": "SPARK-PARQUET-LIB-MRREQUIRED-DYNAMIC",
             "description": "",
             "modules": [
-                "parquet-avro"
             ]
         },
         {
@@ -1505,17 +1566,23 @@
                 "scala-reflect",
                 "scala-library",
                 "scala-xml",
+                "antlr",
+                "antlr-runtime",
+                "antlr4-runtime",
                 "kryo-shaded",
                 "commons-lang3",
+                "commons-compiler",
                 "avro-mapred",
                	"json4s-ast_2.11" ,
                	"json4s-core_2.11" ,
                	"json4s-jackson_2.11",
                	"chill_2.11",
                	"chill-java",
+               	"janino",
                	"jersey-container-servlet",
                	"jersey-container-servlet-core",
                	"jersey-server",
+               	"jul-to-slf4j",
                	"metrics-core",
                	"metrics-json",
                	"minlog",
@@ -1528,6 +1595,8 @@
                	"netty",
                	"netty-all",
                	"objenesis",
+               	"parquet-avro",
+               	"parquet-hadoop-bundle",
                	"xbean-asm5-shaded",
                	"lz4",
                	"RoaringBitmap"
@@ -1544,7 +1613,6 @@
             "id": "SPARK-LIB-MRREQUIRED-DYNAMIC",
             "description": "",
             "modules": [
-                
             ]
         },
         {
