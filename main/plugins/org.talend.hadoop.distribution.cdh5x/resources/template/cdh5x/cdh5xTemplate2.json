@@ -12,11 +12,179 @@
     "description": "",
     "modules": [
         {
+            "id": "avro-mapred",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.avro",
+            "artifactId": "avro-mapred",
+            "classifier": "hadoop2",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "io.netty",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "org.slf4j",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "antlr",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "antlr",
+            "artifactId": "antlr",
+            "version": "2.7.7",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "antlr-runtime",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.antlr",
+            "artifactId": "antlr-runtime",
+            "version": "3.4",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "antlr4-runtime",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.antlr",
+            "artifactId": "antlr4-runtime",
+            "version": "4.5.3",
+            "classifier": "",
+            "description": ""
+        },
+        {
             "id": "commons-httpclient-3.1-dynamic",
             "type": "STANDARD",
             "context": "{properties.context}",
             "jarName": "commons-httpclient-3.1.jar",
             "mvnUri": "mvn:org.talend.libraries/commons-httpclient-3.1/6.0.0",
+            "description": ""
+        },
+        {
+            "id": "chill_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.twitter",
+            "artifactId": "chill_2.11",
+            "version": "0.8.0",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "chill-java",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.twitter",
+            "artifactId": "chill-java",
+            "version": "0.8.0",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "commons-lang3",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.commons",
+            "artifactId": "commons-lang3",
+            "version": "3.5",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "commons-compiler",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.codehaus.janino",
+            "artifactId": "commons-compiler",
+            "version": "3.0.0",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "datafu",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.linkedin.datafu",
+            "artifactId": "datafu",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "elephant-bird-rcfile",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "elephant-bird-rcfile-4.9-patched-hive-1.x.jar",
+            "mvnUri": "mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0"
+        },
+        {
+            "id": "elephant-bird-core",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.twitter.elephantbird",
+            "artifactId": "elephant-bird-core",
+            "version": "4.9",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "elephant-bird-hadoop-compat",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.twitter.elephantbird",
+            "artifactId": "elephant-bird-hadoop-compat",
+            "version": "4.9",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "elephant-bird-pig",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.twitter.elephantbird",
+            "artifactId": "elephant-bird-pig",
+            "version": "4.9",
+            "classifier": "",
             "description": ""
         },
         {
@@ -38,6 +206,783 @@
                 },
                 {
                     "groupId": "io.netty",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "hadoop-mapreduce-client-app",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hadoop",
+            "artifactId": "hadoop-mapreduce-client-app",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "hadoop-mapreduce-client-jobclient",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hadoop",
+            "artifactId": "hadoop-mapreduce-client-jobclient",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "htrace-core",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.htrace",
+            "artifactId": "htrace-core",
+            "version": "3.2.0-incubating",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "hbase-client",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hbase",
+            "artifactId": "hbase-client",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "hive-jdbc",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hive",
+            "artifactId": "hive-jdbc",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+            	{
+                   "groupId": "org.apache.curator",
+                   "artifactId": "apache-curator",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "eigenbase",
+                   "artifactId": "eigenbase-properties",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "org.pentaho",
+                   "artifactId": "pentaho-aggdesigner-algorithm",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               }
+            ]
+        },
+        {
+            "id": "hive-exec",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hive",
+            "artifactId": "hive-exec",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+            	{
+                   "groupId": "org.apache.curator",
+                   "artifactId": "apache-curator",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "eigenbase",
+                   "artifactId": "eigenbase-properties",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "org.pentaho",
+                   "artifactId": "pentaho-aggdesigner-algorithm",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               }
+            ]
+        },
+        {
+            "id": "hbase-server",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hbase",
+            "artifactId": "hbase-server",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "hbase-hadoop-compat",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hbase",
+            "artifactId": "hbase-hadoop-compat",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "hive-hbase-handler",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hive",
+            "artifactId": "hive-hbase-handler",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "hbase-hadoop-compat",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hbase",
+            "artifactId": "hbase-hadoop-compat",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "hbase-server",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hbase",
+            "artifactId": "hbase-server",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "hcatalog-server-extensions",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hive.hcatalog",
+            "artifactId": "hcatalog-server-extensions",
+            "version": "0.12.0",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+            	{
+                   "groupId": "com.google.protobuf",
+                   "artifactId": "protobuf-java",
+                   "version": "2.4.1",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "org.spark-project.protobuf",
+                   "artifactId": "protobuf-java",
+                   "version": "2.4.1-shaded",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               }
+            ]
+        },
+        {
+            "id": "hive-hcatalog-core",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hive.hcatalog",
+            "artifactId": "hive-hcatalog-core",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+            	{
+                   "groupId": "org.apache.curator",
+                   "artifactId": "apache-curator",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               }
+            ]
+        },
+        {
+            "id": "hive-hcatalog-pig-adapter",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hive.hcatalog",
+            "artifactId": "hive-hcatalog-pig-adapter",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+            	{
+                   "groupId": "org.apache.curator",
+                   "artifactId": "apache-curator",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               }
+            ]
+        },
+        {
+            "id": "hive-hcatalog-server-extensions",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hive.hcatalog",
+            "artifactId": "hive-hcatalog-server-extensions",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+            	{
+                   "groupId": "org.apache.curator",
+                   "artifactId": "apache-curator",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               }
+            ]
+        },
+        {
+            "id": "hive-metastore",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hive",
+            "artifactId": "hive-metastore",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+            	{
+                   "groupId": "org.apache.curator",
+                   "artifactId": "apache-curator",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "eigenbase",
+                   "artifactId": "eigenbase-properties",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "org.pentaho",
+                   "artifactId": "pentaho-aggdesigner-algorithm",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               }
+            ]
+        },
+        {
+            "id": "hcatalog-pig-adapter",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hive.hcatalog",
+            "artifactId": "hcatalog-pig-adapter",
+            "version": "0.12.0",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+            	{
+                   "groupId": "com.google.protobuf",
+                   "artifactId": "protobuf-java",
+                   "version": "2.4.1",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "org.spark-project.protobuf",
+                   "artifactId": "protobuf-java",
+                   "version": "2.4.1-shaded",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               }
+            ]
+        },
+        {
+            "id": "hive-serde",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hive",
+            "artifactId": "hive-serde",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "janino",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.codehaus.janino",
+            "artifactId": "janino",
+            "version": "3.0.0",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "jersey-container-servlet-core",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.glassfish.jersey.containers",
+            "artifactId": "jersey-container-servlet-core",
+            "version": "2.22.2",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "jersey-container-servlet",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.glassfish.jersey.containers",
+            "artifactId": "jersey-container-servlet",
+            "version": "2.22.2",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "jersey-server",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.glassfish.jersey.core",
+            "artifactId": "jersey-server",
+            "version": "2.22.2",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "javax.servlet-api",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "javax.servlet",
+            "artifactId": "javax.servlet-api",
+            "version": "3.1.0",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "jul-to-slf4j",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "jul-to-slf4j-1.7.5.jar",
+            "mvnUri": "mvn:org/slf4j/jul-to-slf4j/1.7.5",
+            "description": ""
+        },
+        {
+            "id": "jackson-annotations",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.fasterxml.jackson.core",
+            "artifactId": "jackson-annotations",
+            "version": "2.6.5",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "jackson-core",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.fasterxml.jackson.core",
+            "artifactId": "jackson-core",
+            "version": "2.6.5",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "jackson-databind",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.fasterxml.jackson.core",
+            "artifactId": "jackson-databind",
+            "version": "2.6.5",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "jackson-module-scala_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.fasterxml.jackson.module",
+            "artifactId": "jackson-module-scala_2.11",
+            "version": "2.6.5",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "jackson-module-paranamer",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.fasterxml.jackson.module",
+            "artifactId": "jackson-module-paranamer",
+            "version": "2.6.5",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "jets3t",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "jets3t-0.9.0.jar",
+            "mvnUri": "mvn:net.java.dev.jets3t/jets3t/0.9.0",
+            "description": ""
+        },
+        {
+            "id": "json4s-core_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.json4s",
+            "artifactId": "json4s-core_2.11",
+            "version": "3.2.11",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "json4s-ast_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.json4s",
+            "artifactId": "json4s-ast_2.11",
+            "version": "3.2.11",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "json4s-jackson_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.json4s",
+            "artifactId": "json4s-jackson_2.11",
+            "version": "3.2.11",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "jodd",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.jodd",
+            "artifactId": "jodd-core",
+            "version": "3.5.2",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "kryo-shaded",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.esotericsoftware",
+            "artifactId": "kryo-shaded",
+            "version": "3.0.3",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "lz4",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "net.jpountz.lz4",
+            "artifactId": "lz4",
+            "version": "1.3.0",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "metrics-core",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.codahale.metrics",
+            "artifactId": "metrics-core",
+            "version": "3.0.0",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "metrics-json",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.codahale.metrics",
+            "artifactId": "metrics-json",
+            "version": "3.0.0",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "minlog",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.esotericsoftware.minlog",
+            "artifactId": "minlog",
+            "version": "1.2",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "netty",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "io.netty",
+            "artifactId": "netty",
+            "version": "3.9.9.Final",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "netty-all",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "io.netty",
+            "artifactId": "netty-all",
+            "version": "4.0.43.Final",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "objenesis",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.objenesis",
+            "artifactId": "objenesis",
+            "version": "2.1",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "pig",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.pig",
+            "artifactId": "pig",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "parquet-pig",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.twitter",
+            "artifactId": "parquet-pig",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "parquet-avro",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.twitter",
+            "artifactId": "parquet-avro",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "parquet-hadoop-bundle",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.twitter",
+            "artifactId": "parquet-hadoop-bundle",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "piggybank",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.pig",
+            "artifactId": "piggybank",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "parquet-pig-bundle",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.twitter",
+            "artifactId": "parquet-pig-bundle",
+            "classifier": "",
+            "description": ""
+        },
+        {
+            "id": "RoaringBitmap",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.roaringbitmap",
+            "artifactId": "RoaringBitmap",
+            "version": "0.5.11",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
                     "artifactId": "*",
                     "classifier": "",
                     "extension": "",
@@ -385,658 +1330,6 @@
             ]
         },
         {
-            "id": "antlr",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "antlr",
-            "artifactId": "antlr",
-            "version": "2.7.7",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "antlr-runtime",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.antlr",
-            "artifactId": "antlr-runtime",
-            "version": "3.4",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "antlr4-runtime",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.antlr",
-            "artifactId": "antlr4-runtime",
-            "version": "4.5.3",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "kryo-shaded",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "com.esotericsoftware",
-            "artifactId": "kryo-shaded",
-            "version": "3.0.3",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "chill_2.11",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "com.twitter",
-            "artifactId": "chill_2.11",
-            "version": "0.8.0",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "chill-java",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "com.twitter",
-            "artifactId": "chill-java",
-            "version": "0.8.0",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "commons-lang3",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.commons",
-            "artifactId": "commons-lang3",
-            "version": "3.5",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "commons-compiler",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.codehaus.janino",
-            "artifactId": "commons-compiler",
-            "version": "3.0.0",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "janino",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.codehaus.janino",
-            "artifactId": "janino",
-            "version": "3.0.0",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "jersey-container-servlet-core",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.glassfish.jersey.containers",
-            "artifactId": "jersey-container-servlet-core",
-            "version": "2.22.2",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "jersey-container-servlet",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.glassfish.jersey.containers",
-            "artifactId": "jersey-container-servlet",
-            "version": "2.22.2",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "jersey-server",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.glassfish.jersey.core",
-            "artifactId": "jersey-server",
-            "version": "2.22.2",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "javax.servlet-api",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "javax.servlet",
-            "artifactId": "javax.servlet-api",
-            "version": "3.1.0",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "jul-to-slf4j",
-            "type": "STANDARD",
-            "context": "{properties.context}",
-            "jarName": "jul-to-slf4j-1.7.5.jar",
-            "mvnUri": "mvn:org/slf4j/jul-to-slf4j/1.7.5",
-            "description": ""
-        },
-        {
-            "id": "metrics-core",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "com.codahale.metrics",
-            "artifactId": "metrics-core",
-            "version": "3.0.0",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "metrics-json",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "com.codahale.metrics",
-            "artifactId": "metrics-json",
-            "version": "3.0.0",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "objenesis",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.objenesis",
-            "artifactId": "objenesis",
-            "version": "2.1",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "minlog",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "com.esotericsoftware.minlog",
-            "artifactId": "minlog",
-            "version": "1.2",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "jackson-annotations",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "com.fasterxml.jackson.core",
-            "artifactId": "jackson-annotations",
-            "version": "2.6.5",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "jackson-core",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "com.fasterxml.jackson.core",
-            "artifactId": "jackson-core",
-            "version": "2.6.5",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "jackson-databind",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "com.fasterxml.jackson.core",
-            "artifactId": "jackson-databind",
-            "version": "2.6.5",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "jackson-module-scala_2.11",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "com.fasterxml.jackson.module",
-            "artifactId": "jackson-module-scala_2.11",
-            "version": "2.6.5",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "netty",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "io.netty",
-            "artifactId": "netty",
-            "version": "3.9.9.Final",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "netty-all",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "io.netty",
-            "artifactId": "netty-all",
-            "version": "4.0.43.Final",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "jackson-module-paranamer",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "com.fasterxml.jackson.module",
-            "artifactId": "jackson-module-paranamer",
-            "version": "2.6.5",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "xbean-asm5-shaded",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.xbean",
-            "artifactId": "xbean-asm5-shaded",
-            "version": "4.4",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "lz4",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "net.jpountz.lz4",
-            "artifactId": "lz4",
-            "version": "1.3.0",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "RoaringBitmap",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.roaringbitmap",
-            "artifactId": "RoaringBitmap",
-            "version": "0.5.11",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "json4s-core_2.11",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.json4s",
-            "artifactId": "json4s-core_2.11",
-            "version": "3.2.11",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "json4s-ast_2.11",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.json4s",
-            "artifactId": "json4s-ast_2.11",
-            "version": "3.2.11",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "json4s-jackson_2.11",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.json4s",
-            "artifactId": "json4s-jackson_2.11",
-            "version": "3.2.11",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
-        {
-            "id": "hadoop-mapreduce-client-app",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.hadoop",
-            "artifactId": "hadoop-mapreduce-client-app",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "hadoop-mapreduce-client-jobclient",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.hadoop",
-            "artifactId": "hadoop-mapreduce-client-jobclient",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "htrace-core",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.htrace",
-            "artifactId": "htrace-core",
-            "version": "3.2.0-incubating",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "hbase-client",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.hbase",
-            "artifactId": "hbase-client",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "datafu",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "com.linkedin.datafu",
-            "artifactId": "datafu",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "pig",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.pig",
-            "artifactId": "pig",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "parquet-pig",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "com.twitter",
-            "artifactId": "parquet-pig",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "hive-jdbc",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.hive",
-            "artifactId": "hive-jdbc",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-            	{
-                   "groupId": "org.apache.curator",
-                   "artifactId": "apache-curator",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               },
-               {
-                   "groupId": "eigenbase",
-                   "artifactId": "eigenbase-properties",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               },
-               {
-                   "groupId": "org.pentaho",
-                   "artifactId": "pentaho-aggdesigner-algorithm",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               }
-            ]
-        },
-        {
-            "id": "hive-exec",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.hive",
-            "artifactId": "hive-exec",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-            	{
-                   "groupId": "org.apache.curator",
-                   "artifactId": "apache-curator",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               },
-               {
-                   "groupId": "eigenbase",
-                   "artifactId": "eigenbase-properties",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               },
-               {
-                   "groupId": "org.pentaho",
-                   "artifactId": "pentaho-aggdesigner-algorithm",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               }
-            ]
-        },
-        {
             "id": "sqoop",
             "type": "BASE",
             "context": "{properties.context}",
@@ -1069,321 +1362,23 @@
             ]
         },
         {
-            "id": "avro-mapred",
+            "id": "xbean-asm5-shaded",
             "type": "BASE",
             "context": "{properties.context}",
-            "groupId": "org.apache.avro",
-            "artifactId": "avro-mapred",
-            "classifier": "hadoop2",
+            "groupId": "org.apache.xbean",
+            "artifactId": "xbean-asm5-shaded",
+            "version": "4.4",
+            "classifier": "",
             "description": "",
             "exclusions": [
                 {
-                    "groupId": "io.netty",
+                    "groupId": "*",
                     "artifactId": "*",
                     "classifier": "",
                     "extension": "",
                     "description": ""
                 }
             ]
-        },
-        {
-            "id": "hbase-server",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.hbase",
-            "artifactId": "hbase-server",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "hbase-hadoop-compat",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.hbase",
-            "artifactId": "hbase-hadoop-compat",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "hive-hbase-handler",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.hive",
-            "artifactId": "hive-hbase-handler",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "parquet-avro",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "com.twitter",
-            "artifactId": "parquet-avro",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "parquet-hadoop-bundle",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "com.twitter",
-            "artifactId": "parquet-hadoop-bundle",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "piggybank",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.pig",
-            "artifactId": "piggybank",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "hbase-hadoop-compat",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.hbase",
-            "artifactId": "hbase-hadoop-compat",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "hbase-server",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.hbase",
-            "artifactId": "hbase-server",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "hcatalog-server-extensions",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.hive.hcatalog",
-            "artifactId": "hcatalog-server-extensions",
-            "version": "0.12.0",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-            	{
-                   "groupId": "com.google.protobuf",
-                   "artifactId": "protobuf-java",
-                   "version": "2.4.1",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               },
-               {
-                   "groupId": "org.spark-project.protobuf",
-                   "artifactId": "protobuf-java",
-                   "version": "2.4.1-shaded",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               }
-            ]
-        },
-        {
-            "id": "hive-hcatalog-core",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.hive.hcatalog",
-            "artifactId": "hive-hcatalog-core",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-            	{
-                   "groupId": "org.apache.curator",
-                   "artifactId": "apache-curator",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               }
-            ]
-        },
-        {
-            "id": "hive-hcatalog-pig-adapter",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.hive.hcatalog",
-            "artifactId": "hive-hcatalog-pig-adapter",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-            	{
-                   "groupId": "org.apache.curator",
-                   "artifactId": "apache-curator",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               }
-            ]
-        },
-        {
-            "id": "hive-hcatalog-server-extensions",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.hive.hcatalog",
-            "artifactId": "hive-hcatalog-server-extensions",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-            	{
-                   "groupId": "org.apache.curator",
-                   "artifactId": "apache-curator",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               }
-            ]
-        },
-        {
-            "id": "hive-metastore",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.hive",
-            "artifactId": "hive-metastore",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-            	{
-                   "groupId": "org.apache.curator",
-                   "artifactId": "apache-curator",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               },
-               {
-                   "groupId": "eigenbase",
-                   "artifactId": "eigenbase-properties",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               },
-               {
-                   "groupId": "org.pentaho",
-                   "artifactId": "pentaho-aggdesigner-algorithm",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               }
-            ]
-        },
-        {
-            "id": "hcatalog-pig-adapter",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.hive.hcatalog",
-            "artifactId": "hcatalog-pig-adapter",
-            "version": "0.12.0",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-            	{
-                   "groupId": "com.google.protobuf",
-                   "artifactId": "protobuf-java",
-                   "version": "2.4.1",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               },
-               {
-                   "groupId": "org.spark-project.protobuf",
-                   "artifactId": "protobuf-java",
-                   "version": "2.4.1-shaded",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               }
-            ]
-        },
-        {
-            "id": "parquet-pig-bundle",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "com.twitter",
-            "artifactId": "parquet-pig-bundle",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "hive-serde",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.hive",
-            "artifactId": "hive-serde",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "elephant-bird-rcfile",
-            "type": "STANDARD",
-            "context": "{properties.context}",
-            "jarName": "elephant-bird-rcfile-4.9-patched-hive-1.x.jar",
-            "mvnUri": "mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0"
-        },
-        {
-            "id": "elephant-bird-core",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "com.twitter.elephantbird",
-            "artifactId": "elephant-bird-core",
-            "version": "4.9",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "elephant-bird-hadoop-compat",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "com.twitter.elephantbird",
-            "artifactId": "elephant-bird-hadoop-compat",
-            "version": "4.9",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "elephant-bird-pig",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "com.twitter.elephantbird",
-            "artifactId": "elephant-bird-pig",
-            "version": "4.9",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "jodd",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.jodd",
-            "artifactId": "jodd-core",
-            "version": "3.5.2",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "httpclient",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.httpcomponents",
-            "artifactId": "httpclient",
-            "version": "4.5.2",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "guava",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "com.google.guava",
-            "artifactId": "guava",
-            "version": "14.0.1",
-            "classifier": "",
-            "description": ""
         },
         {
             "id": "MODULE_COMMONS_CODEC",
@@ -1569,37 +1564,37 @@
                 "antlr",
                 "antlr-runtime",
                 "antlr4-runtime",
-                "kryo-shaded",
+                "avro-mapred",
+               	"chill_2.11",
+               	"chill-java",
                 "commons-lang3",
                 "commons-compiler",
-                "avro-mapred",
                	"json4s-ast_2.11" ,
                	"json4s-core_2.11" ,
                	"json4s-jackson_2.11",
-               	"chill_2.11",
-               	"chill-java",
                	"janino",
                	"jersey-container-servlet",
                	"jersey-container-servlet-core",
                	"jersey-server",
                	"jul-to-slf4j",
-               	"metrics-core",
-               	"metrics-json",
-               	"minlog",
                	"javax.servlet-api",
                	"jackson-annotations",
                	"jackson-core",
                	"jackson-databind",
                	"jackson-module-scala_2.11",
                	"jackson-module-paranamer",
+                "kryo-shaded",
+               	"lz4",
+               	"metrics-core",
+               	"metrics-json",
+               	"minlog",
                	"netty",
                	"netty-all",
                	"objenesis",
                	"parquet-avro",
                	"parquet-hadoop-bundle",
-               	"xbean-asm5-shaded",
-               	"lz4",
-               	"RoaringBitmap"
+               	"RoaringBitmap",
+               	"xbean-asm5-shaded"
             ]
         },
         {
@@ -1675,7 +1670,7 @@
             "id": "SPARK-S3-LIB-MRREQUIRED-DYNAMIC",
             "description": "",
             "modules": [
-                "hadoop-client"
+            	"jets3t"
             ]
         },
         {
