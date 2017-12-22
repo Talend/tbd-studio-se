@@ -12,7 +12,10 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.conf;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
@@ -130,8 +133,7 @@ public class HadoopConfsUtilsTest {
         String testConfJarName = "testConf"; //$NON-NLS-1$
         String testContextGroup = "TEST"; //$NON-NLS-1$
 
-        HadoopConfsUtils.buildAndDeployConfsJar(hcConnectionItem, null, testConfJarDir.getAbsolutePath(),
-                testConfJarName);
+        HadoopConfsUtils.buildAndDeployConfsJar(hcConnectionItem, null, testConfJarDir.getAbsolutePath(), testConfJarName);
         assertNotNull(hcConnection.getConfFile());
 
         // Context mode
@@ -194,7 +196,8 @@ public class HadoopConfsUtilsTest {
     @After
     public void after() {
         try {
-            ClusterTestUtil.deleteItem(hcConnectionItem);
+            if (hcConnectionItem != null)
+                ClusterTestUtil.deleteItem(hcConnectionItem);
         } catch (PersistenceException e) {
             // Ignore it.
         }
