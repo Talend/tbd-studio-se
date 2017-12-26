@@ -25,8 +25,38 @@
             "context": "{properties.context}",
             "groupId": "org.apache.hadoop",
             "artifactId": "hadoop-client",
+            "version": "2.6.0-cdh5.12.1",
             "classifier": "",
-            "description": ""
+            "description": "",
+            "exclusions": [
+               {
+                   "groupId": "com.fasterxml.jackson.core",
+                   "artifactId": "*",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "io.netty",
+                   "artifactId": "*",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               }
+           ]
+        },
+        {
+            "id": "hadoop-yarn-client",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hadoop",
+            "artifactId": "hadoop-yarn-client",
+            "version": "2.6.0-cdh5.12.1",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+               
+           ]
         },
         {
             "id": "spark-catalyst_2.11",
@@ -191,7 +221,7 @@
             "description": "",
             "exclusions": [
                 {
-                    "groupId": "*",
+                    "groupId": "io.netty",
                     "artifactId": "*",
                     "classifier": "",
                     "extension": "",
@@ -210,7 +240,7 @@
             "description": "",
             "exclusions": [
                 {
-                    "groupId": "*",
+                    "groupId": "io.netty",
                     "artifactId": "*",
                     "classifier": "",
                     "extension": "",
@@ -1336,13 +1366,15 @@
             "id": "HDFS-LIB-DYNAMIC",
             "description": "jars for hdfs, only module.id permitted",
             "modules": [
-                "hadoop-client"
+                "hadoop-client",
+                "hadoop-yarn-client"
             ]
         },
         {
             "id": "HDFS-COMMON-LIB-DYNAMIC",
             "modules": [
-                "hadoop-client"
+                "hadoop-client",
+                "hadoop-yarn-client"
             ]
         },
         {
