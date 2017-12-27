@@ -402,6 +402,13 @@
                    "classifier": "",
                    "extension": "",
                    "description": ""
+               },
+               {
+                   "groupId": "javax.jms",
+                   "artifactId": "jms",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
                }
             ]
         },
