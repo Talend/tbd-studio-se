@@ -110,7 +110,8 @@ public class ClouderaDependencyResolver extends AbstractDependencyResolver imple
     private List<Pattern> getClouderaDistributionPatterns() {
         if (clouderaDistributionPatterns == null || clouderaDistributionPatterns.isEmpty()) {
             clouderaDistributionPatterns = new ArrayList<>();
-            Pattern clouderaDistributionPattern = Pattern.compile("(?:[Cc][Dd][Hh])([\\d]+\\.[\\d]+\\.[\\d]+)"); //$NON-NLS-1$
+            // In this way the version prior to cdh should contain at least 3 characters (ex. 1.0), normally it's always the case
+            Pattern clouderaDistributionPattern = Pattern.compile("(?:[^m][^r]..[Cc][Dd][Hh])([\\d]+\\.[\\d]+\\.[\\d]+)");
             clouderaDistributionPatterns.add(clouderaDistributionPattern);
         }
         return clouderaDistributionPatterns;
