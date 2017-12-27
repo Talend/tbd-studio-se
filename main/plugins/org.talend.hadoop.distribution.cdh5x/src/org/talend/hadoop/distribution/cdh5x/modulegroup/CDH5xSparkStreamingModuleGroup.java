@@ -40,7 +40,7 @@ public class CDH5xSparkStreamingModuleGroup extends AbstractModuleGroup {
     private final static ComponentCondition spark21Condition = new MultiComponentCondition(
             new BasicExpression(SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false"), //$NON-NLS-1$
             BooleanOperator.AND,
-            new BasicExpression("SUPPORTED_SPARK_VERSION", EqualityOperator.EQ, ESparkVersion.SPARK_2_1.getSparkVersion())); //$NON-NLS-1$
+            new BasicExpression("SUPPORTED_SPARK_VERSION", EqualityOperator.EQ, ESparkVersion.SPARK_2_2.getSparkVersion())); //$NON-NLS-1$
 
     public Set<DistributionModuleGroup> getModuleGroups() throws Exception {
         Set<DistributionModuleGroup> hs = new HashSet<>();

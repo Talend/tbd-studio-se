@@ -407,8 +407,7 @@ public class CDH5xDistributionTemplate extends AbstractDistribution
     @Override
     public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
-        version.add(ESparkVersion.SPARK_1_6);
-        version.add(ESparkVersion.SPARK_2_1);
+        version.add(ESparkVersion.SPARK_2_2);
         return version;
     }
 

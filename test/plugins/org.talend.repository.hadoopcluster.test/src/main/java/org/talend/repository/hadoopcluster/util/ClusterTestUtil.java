@@ -18,8 +18,6 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.EList;
 import org.talend.commons.exception.PersistenceException;
 import org.talend.commons.utils.VersionUtils;
-import org.talend.core.context.Context;
-import org.talend.core.context.RepositoryContext;
 import org.talend.core.model.properties.ContextItem;
 import org.talend.core.model.properties.Item;
 import org.talend.core.model.properties.ItemState;
@@ -27,10 +25,10 @@ import org.talend.core.model.properties.PropertiesFactory;
 import org.talend.core.model.properties.Property;
 import org.talend.core.model.repository.IRepositoryViewObject;
 import org.talend.core.repository.model.ProxyRepositoryFactory;
-import org.talend.core.runtime.CoreRuntimePlugin;
 import org.talend.designer.core.model.utils.emf.talendfile.ContextParameterType;
 import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
 import org.talend.designer.core.model.utils.emf.talendfile.TalendFileFactory;
+import org.talend.repository.ProjectManager;
 import org.talend.repository.model.IProxyRepositoryFactory;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnectionItem;
@@ -61,12 +59,11 @@ public class ClusterTestUtil {
         IProxyRepositoryFactory factory = ProxyRepositoryFactory.getInstance();
         HadoopClusterConnection connection = HadoopClusterFactory.eINSTANCE.createHadoopClusterConnection();
         Property connectionProperty = PropertiesFactory.eINSTANCE.createProperty();
-        connectionProperty.setAuthor(((RepositoryContext) CoreRuntimePlugin.getInstance().getContext()
-                .getProperty(Context.REPOSITORY_CONTEXT_KEY)).getUser());
+        connectionProperty.setAuthor(ProjectManager.getInstance().getCurrentProject().getAuthor());
         connectionProperty.setVersion(VersionUtils.DEFAULT_VERSION);
         connectionProperty.setStatusCode(""); //$NON-NLS-1$
         connectionProperty.setId(factory.getNextId());
-        connectionProperty.setLabel(name);
+        connectionProperty.setLabel(name + System.currentTimeMillis());
 
         HadoopClusterConnectionItem connectionItem = HadoopClusterFactory.eINSTANCE.createHadoopClusterConnectionItem();
         connectionItem.setProperty(connectionProperty);

@@ -1141,7 +1141,8 @@
                 description="Spark MapR Streams libraries for MapR 6.0.0 that are MRREQUIRED"
                 id="SPARK-MAPRSTREAMS-ASSEMBLY-LIB-MRREQUIRED-MAPR600"
                 name="SPARK-MAPRSTREAMS-ASSEMBLY-LIB-MRREQUIRED-MAPR600">
-            <library id="mapr-streams-6.0.0-mapr.jar"/>
+            <group id="SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-MAPR600" />
+            <library id="mapr-streams-6.0.0-mapr.jar" />
         </libraryNeededGroup>
         
         <!-- Spark MapR Streams Client group MRREQUIRED -->
@@ -1149,7 +1150,8 @@
                 description="Spark MapR Streams client libraries for MapR 6.0.0 that are MRREQUIRED"
                 id="SPARK-MAPRSTREAMS-CLIENT-LIB-MRREQUIRED-MAPR600"
                 name="SPARK-MAPRSTREAMS-CLIENT-LIB-MRREQUIRED-MAPR600">
-            <library id="mapr-streams-6.0.0-mapr.jar"/>
+            <group id="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-MAPR600" />
+            <library id="mapr-streams-6.0.0-mapr.jar" />
         </libraryNeededGroup>
         
         <!-- GraphFrames group MRREQUIRED -->
