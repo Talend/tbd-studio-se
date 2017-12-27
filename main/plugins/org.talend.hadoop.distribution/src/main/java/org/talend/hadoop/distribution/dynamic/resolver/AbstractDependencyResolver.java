@@ -12,10 +12,12 @@
 // ============================================================================
 package org.talend.hadoop.distribution.dynamic.resolver;
 
+import java.net.URL;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.eclipse.m2e.core.MavenPlugin;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.osgi.service.datalocation.Location;
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.designer.maven.aether.node.DependencyNode;
 import org.talend.designer.maven.aether.util.DynamicDistributionAetherUtils;
@@ -27,6 +29,14 @@ import org.talend.hadoop.distribution.dynamic.IDynamicDistributionPreference;
  */
 public abstract class AbstractDependencyResolver implements IDependencyResolver {
 
+    private static final String CONFIGURATION_TALEND_FOLDER = "talend"; //$NON-NLS-1$
+
+    private static final String CONFIGURATION_TALEND_DYNAMIC_DISTRIBUTION_FOLDER = "dynamicDistribution"; //$NON-NLS-1$
+
+    private static final String CONFIGURATION_M2 = ".m2"; //$NON-NLS-1$
+
+    private static final String CONFIGURATION_REPOSITORY = "repository"; //$NON-NLS-1$
+
     private DynamicConfiguration configuration;
 
     @Override
@@ -37,7 +47,7 @@ public abstract class AbstractDependencyResolver implements IDependencyResolver 
             String artifactId = baseNode.getArtifactId();
             version = getDependencyVersionByHadoopVersion(groupId, artifactId, monitor);
             if (StringUtils.isEmpty(version)) {
-                throw new Exception("Can't find version of " + groupId + ", " + artifactId);
+                throw new Exception("Can't find version of " + groupId + ", " + artifactId); //$NON-NLS-1$ //$NON-NLS-2$
             }
             baseNode.setVersion(version);
         }
@@ -97,6 +107,10 @@ public abstract class AbstractDependencyResolver implements IDependencyResolver 
     }
 
     public String getLocalRepositoryPath() {
-        return MavenPlugin.getMaven().getLocalRepositoryPath();
+        Location configurationLocation = Platform.getConfigurationLocation();
+        URL configurationUrl = configurationLocation.getURL();
+        String localMavenRepositoryPath = configurationUrl.getPath() + "/" + CONFIGURATION_TALEND_FOLDER + "/" //$NON-NLS-1$ //$NON-NLS-2$
+                + CONFIGURATION_TALEND_DYNAMIC_DISTRIBUTION_FOLDER + "/" + CONFIGURATION_M2 + "/" + CONFIGURATION_REPOSITORY; //$NON-NLS-1$//$NON-NLS-2$
+        return localMavenRepositoryPath;
     }
 }
