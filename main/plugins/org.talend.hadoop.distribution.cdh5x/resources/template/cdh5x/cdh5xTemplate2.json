@@ -67,6 +67,54 @@
             "description": ""
         },
         {
+            "id": "aws-java-sdk-core-1.10.6",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "aws-java-sdk-core-1.10.6.jar",
+            "mvnUri": "mvn:org.talend.libraries/aws-java-sdk-core-1.10.6/6.0.0",
+            "description": ""
+        },
+        {
+            "id": "aws-java-sdk-dynamodb-1.10.6",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "aws-java-sdk-dynamodb-1.10.6.jar",
+            "mvnUri": "mvn:org.talend.libraries/aws-java-sdk-dynamodb-1.10.6/6.0.0",
+            "description": ""
+        },
+        {
+            "id": "azure-common-1.7.1",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "azure-common-1.7.1.jar",
+            "mvnUri": "mvn:org.talend.libraries/azure-common-1.7.1/6.0.0",
+            "description": ""
+        },
+        {
+            "id": "azure-data-lake-store-sdk-2.1.4",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "azure-data-lake-store-sdk-2.1.4.jar",
+            "mvnUri": "mvn:org.talend.libraries/azure-data-lake-store-sdk-2.1.4/6.0.0",
+            "description": ""
+        },
+        {
+            "id": "emr-core-2.4.0",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "emr-core-2.4.0.jar",
+            "mvnUri": "mvn:org.talend.libraries/emr-core-2.4.0/6.0.0",
+            "description": ""
+        },
+        {
+            "id": "emr-ddb-hadoop-3.0.0",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "emr-ddb-hadoop-3.0.0.jar",
+            "mvnUri": "mvn:org.talend.libraries/emr-ddb-hadoop-3.0.0/6.0.0",
+            "description": ""
+        },
+        {
             "id": "commons-httpclient-3.1-dynamic",
             "type": "STANDARD",
             "context": "{properties.context}",
@@ -193,6 +241,7 @@
             "context": "{properties.context}",
             "groupId": "org.apache.hadoop",
             "artifactId": "hadoop-client",
+            "version": "2.6.0-cdh5.13.0",
             "classifier": "",
             "description": "",
             "exclusions": [
@@ -211,6 +260,15 @@
                     "description": ""
                 }
             ]
+        },
+        {
+            "id": "hadoop-mapreduce-client-core",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hadoop",
+            "artifactId": "hadoop-mapreduce-client-core",
+            "classifier": "",
+            "description": ""
         },
         {
             "id": "hadoop-mapreduce-client-app",
@@ -997,16 +1055,7 @@
             "artifactId": "spark-catalyst_2.11",
             "version": "2.2.0.cloudera1",
             "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "*",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
+            "description": ""
         },
         {
             "id": "spark-core_2.11",
@@ -1036,17 +1085,16 @@
             "artifactId": "spark-hive_2.11",
             "version": "2.2.0.cloudera1",
             "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "spark-hive-exec_2.11",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.spark",
-            "artifactId": "spark-hive-exec_2.11",
-            "version": "2.2.0.cloudera1",
-            "classifier": "",
-            "description": ""
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "org.apache.hadoop",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
         },
         {
             "id": "spark-launcher_2.11",
@@ -1152,7 +1200,16 @@
             "artifactId": "spark-yarn_2.11",
             "version": "2.2.0.cloudera1",
             "classifier": "",
-            "description": ""
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "org.apache.hadoop",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
         },
         {
             "id": "scala-library",
@@ -1424,7 +1481,10 @@
             "id": "SPARK-LIB-SPARK2-DYNAMIC",
             "description": "",
             "modules": [
-                "spark-mllib_2.11"
+            	"hadoop-mapreduce-client-core",
+            	"spark-hive_2.11",
+                "spark-mllib_2.11",
+                "spark-yarn_2.11"
             ]
         },
         {
@@ -1444,6 +1504,8 @@
             "id": "SPARK-DYNAMODB-LIB-MRREQUIRED-DYNAMIC",
             "description": "",
             "modules": [
+            	"emr-core-2.4.0",
+            	"emr-ddb-hadoop-3.0.0",
                 "hadoop-client"
             ]
         },
@@ -1501,6 +1563,14 @@
             "description": "",
             "modules": [
             	"jets3t"
+            ]
+        },
+        {
+            "id": "SPARK-AZURE-LIB-MRREQUIRED-DYNAMIC",
+            "description": "",
+            "modules": [
+            	"azure-common-1.7.1",
+            	"azure-data-lake-store-sdk-2.1.4"
             ]
         },
         {
