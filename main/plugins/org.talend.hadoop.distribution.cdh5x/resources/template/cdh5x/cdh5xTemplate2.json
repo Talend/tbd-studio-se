@@ -502,6 +502,13 @@
                    "classifier": "",
                    "extension": "",
                    "description": ""
+               },
+               {
+                   "groupId": "javax.jms",
+                   "artifactId": "jms",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
                }
             ]
         },
@@ -1438,11 +1445,11 @@
             "id": "PIG-HCATALOG-LIB-DYNAMIC",
             "description": "",
             "modules": [
-                "hive-exec",
-                "hive-hcatalog-core",
-                "hive-hcatalog-pig-adapter",
-                "hive-hcatalog-server-extensions",
-                "hive-metastore"
+            	"hive-exec",
+            	"hive-hcatalog-core",
+            	"hive-hcatalog-pig-adapter",
+            	"hive-hcatalog-server-extensions",
+            	"hive-metastore"
             ]
         },
         {
