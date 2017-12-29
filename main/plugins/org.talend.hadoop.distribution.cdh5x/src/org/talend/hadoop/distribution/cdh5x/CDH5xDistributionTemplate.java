@@ -44,6 +44,7 @@ import org.talend.hadoop.distribution.cdh5x.modulegroup.node.mr.CDH5xMRS3NodeMod
 import org.talend.hadoop.distribution.cdh5x.modulegroup.node.pigoutput.CDH5xPigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5x.modulegroup.node.spark.CDH5xSparkDynamoDBNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5x.modulegroup.node.sparkbatch.CDH5xGraphFramesNodeModuleGroup;
+import org.talend.hadoop.distribution.cdh5x.modulegroup.node.sparkbatch.CDH5xSparkBatchAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5x.modulegroup.node.sparkbatch.CDH5xSparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5x.modulegroup.node.sparkbatch.CDH5xSparkBatchS3NodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5x.modulegroup.node.sparkstreaming.CDH5xSparkStreamingFlumeNodeModuleGroup;
@@ -138,6 +139,8 @@ public class CDH5xDistributionTemplate extends AbstractDistribution
                 new CDH5xSparkBatchParquetNodeModuleGroup(pluginAdapter).getModuleGroups(distribution, versionId));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.S3_CONFIGURATION_COMPONENT),
                 new CDH5xSparkBatchS3NodeModuleGroup(pluginAdapter).getModuleGroups(distribution, versionId));
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT),
+                new CDH5xSparkBatchAzureNodeModuleGroup(pluginAdapter).getModuleGroups(distribution, versionId));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
                 new CDH5xGraphFramesNodeModuleGroup(pluginAdapter).getModuleGroups(distribution, versionId));
 

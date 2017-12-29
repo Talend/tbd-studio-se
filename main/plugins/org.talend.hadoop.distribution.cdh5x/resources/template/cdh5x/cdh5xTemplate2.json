@@ -83,19 +83,47 @@
             "description": ""
         },
         {
+            "id": "hadoop-azure",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hadoop",
+            "artifactId": "hadoop-azure",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "com.fasterxml.jackson.core",
+                    "artifactId": "jackson-core",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "hadoop-azure-datalake",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hadoop",
+            "artifactId": "hadoop-azure-datalake",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "com.fasterxml.jackson.core",
+                    "artifactId": "jackson-core",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
             "id": "azure-common-1.7.1",
             "type": "STANDARD",
             "context": "{properties.context}",
             "jarName": "azure-common-1.7.1.jar",
             "mvnUri": "mvn:org.talend.libraries/azure-common-1.7.1/6.0.0",
-            "description": ""
-        },
-        {
-            "id": "azure-data-lake-store-sdk-2.1.4",
-            "type": "STANDARD",
-            "context": "{properties.context}",
-            "jarName": "azure-data-lake-store-sdk-2.1.4.jar",
-            "mvnUri": "mvn:org.talend.libraries/azure-data-lake-store-sdk-2.1.4/6.0.0",
             "description": ""
         },
         {
@@ -1590,7 +1618,8 @@
             "description": "",
             "modules": [
             	"azure-common-1.7.1",
-            	"azure-data-lake-store-sdk-2.1.4"
+            	"hadoop-azure",
+            	"hadoop-azure-datalake"
             ]
         },
         {
