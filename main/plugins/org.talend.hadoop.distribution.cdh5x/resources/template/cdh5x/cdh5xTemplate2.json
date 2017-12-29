@@ -415,7 +415,16 @@
             "groupId": "org.apache.hive",
             "artifactId": "hive-hbase-handler",
             "classifier": "",
-            "description": ""
+            "description": "",
+            "exclusions": [
+               {
+                   "groupId": "eigenbase",
+                   "artifactId": "eigenbase-properties",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               }
+            ]
         },
         {
             "id": "hbase-hadoop-compat",
