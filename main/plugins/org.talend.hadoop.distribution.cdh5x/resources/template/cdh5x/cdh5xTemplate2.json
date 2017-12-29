@@ -1381,10 +1381,6 @@
             "description": "",
             "modules": [
             	"hadoop-client",
-                "hadoop-mapreduce-client-app",
-                "hadoop-mapreduce-client-jobclient",
-                "commons-httpclient-3.1-dynamic",
-                "htrace-core",
                 "jodd"
             ]
         },
