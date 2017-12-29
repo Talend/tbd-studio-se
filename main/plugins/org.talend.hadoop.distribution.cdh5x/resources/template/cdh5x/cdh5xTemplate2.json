@@ -452,6 +452,13 @@
                    "description": ""
                },
                {
+                   "groupId": "eigenbase",
+                   "artifactId": "eigenbase-properties",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
                    "groupId": "javax.jms",
                    "artifactId": "jms",
                    "classifier": "",
@@ -475,6 +482,13 @@
                    "classifier": "",
                    "extension": "",
                    "description": ""
+               },
+               {
+                   "groupId": "eigenbase",
+                   "artifactId": "eigenbase-properties",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
                }
             ]
         },
@@ -490,6 +504,13 @@
             	{
                    "groupId": "org.apache.curator",
                    "artifactId": "apache-curator",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "eigenbase",
+                   "artifactId": "eigenbase-properties",
                    "classifier": "",
                    "extension": "",
                    "description": ""
@@ -1485,8 +1506,8 @@
             "modules": [
             	"hadoop-mapreduce-client-core",
             	"spark-hive_2.11",
-                "spark-mllib_2.11",
-                "spark-yarn_2.11"
+            	"spark-mllib_2.11",
+            	"spark-yarn_2.11"
             ]
         },
         {
