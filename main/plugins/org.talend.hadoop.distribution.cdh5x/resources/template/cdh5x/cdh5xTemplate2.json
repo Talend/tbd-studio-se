@@ -262,6 +262,15 @@
             ]
         },
         {
+            "id": "hadoop-common",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hadoop",
+            "artifactId": "hadoop-common",
+            "classifier": "",
+            "description": ""
+        },
+        {
             "id": "hadoop-mapreduce-client-core",
             "type": "BASE",
             "context": "{properties.context}",
@@ -1371,6 +1380,7 @@
             "id": "MAPREDUCE-LIB-DYNAMIC",
             "description": "",
             "modules": [
+            	"hadoop-client",
                 "hadoop-mapreduce-client-app",
                 "hadoop-mapreduce-client-jobclient",
                 "commons-httpclient-3.1-dynamic",
