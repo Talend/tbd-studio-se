@@ -286,6 +286,13 @@
                     "classifier": "",
                     "extension": "",
                     "description": ""
+                },
+                {
+                    "groupId": "xerces",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
                 }
             ]
         },
@@ -342,7 +349,16 @@
             "groupId": "org.apache.hbase",
             "artifactId": "hbase-client",
             "classifier": "",
-            "description": ""
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "xerces",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
         },
         {
             "id": "hive-jdbc",
