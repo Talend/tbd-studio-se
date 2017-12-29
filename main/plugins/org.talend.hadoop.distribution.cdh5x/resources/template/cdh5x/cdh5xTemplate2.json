@@ -381,24 +381,6 @@
             ]
         },
         {
-            "id": "hbase-server",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.hbase",
-            "artifactId": "hbase-server",
-            "classifier": "",
-            "description": ""
-        },
-        {
-            "id": "hbase-hadoop-compat",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.hbase",
-            "artifactId": "hbase-hadoop-compat",
-            "classifier": "",
-            "description": ""
-        },
-        {
             "id": "hive-hbase-handler",
             "type": "BASE",
             "context": "{properties.context}",
