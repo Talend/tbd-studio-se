@@ -3,7 +3,7 @@
     "childNodes" : [ ],
     "distribution" : "CLOUDERA",
     "id" : "Cloudera_CDH5_13_0_dynamic_20171229105803197_0100",
-    "name" : "Cloudera CDH5.13.0 (Dynamic buildin)",
+    "name" : "Cloudera CDH5.13.0 (Dynamic builtin)",
     "repository" : "https://repository.cloudera.com/cloudera/cdh-releases-rcs/",
     "tagName" : "dynamicPluginConfiguration",
     "templateId" : "CDH5xDistributionTemplate",
