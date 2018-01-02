@@ -817,6 +817,14 @@
 					"classifier": "",
 					"extension": "",
 					"description": ""
+				},
+
+				{
+					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
 				}
 			]
 		},
