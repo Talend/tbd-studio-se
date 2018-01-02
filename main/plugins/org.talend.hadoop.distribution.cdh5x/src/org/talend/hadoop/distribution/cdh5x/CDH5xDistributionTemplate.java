@@ -468,6 +468,16 @@ public class CDH5xDistributionTemplate extends AbstractDistribution
     public boolean doSupportHDFSEncryption() {
         return true;
     }
+    
+    @Override
+    public boolean doSupportAzureBlobStorage() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportAzureDataLakeStorage() {
+        return true;
+    }
 
     @Override
     public SparkStreamingKafkaVersion getSparkStreamingKafkaVersion(ESparkVersion sparkVersion) {
