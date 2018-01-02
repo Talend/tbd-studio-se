@@ -368,30 +368,37 @@
             "artifactId": "hive-jdbc",
             "classifier": "",
             "description": "",
-            "exclusions": [
-            	{
-                   "groupId": "org.apache.curator",
-                   "artifactId": "apache-curator",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               },
-               {
-                   "groupId": "eigenbase",
-                   "artifactId": "eigenbase-properties",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               },
-               {
-                   "groupId": "org.pentaho",
-                   "artifactId": "pentaho-aggdesigner-algorithm",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               }
-            ]
-        },
+			"exclusions": [
+				{
+					"groupId": "org.apache.curator",
+					"artifactId": "apache-curator",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "eigenbase",
+					"artifactId": "eigenbase-properties",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "org.pentaho",
+					"artifactId": "pentaho-aggdesigner-algorithm",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
         {
             "id": "hive-exec",
             "type": "BASE",
@@ -400,30 +407,37 @@
             "artifactId": "hive-exec",
             "classifier": "",
             "description": "",
-            "exclusions": [
-            	{
-                   "groupId": "org.apache.curator",
-                   "artifactId": "apache-curator",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               },
-               {
-                   "groupId": "eigenbase",
-                   "artifactId": "eigenbase-properties",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               },
-               {
-                   "groupId": "org.pentaho",
-                   "artifactId": "pentaho-aggdesigner-algorithm",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               }
-            ]
-        },
+			"exclusions": [
+				{
+					"groupId": "org.apache.curator",
+					"artifactId": "apache-curator",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "eigenbase",
+					"artifactId": "eigenbase-properties",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "org.pentaho",
+					"artifactId": "pentaho-aggdesigner-algorithm",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
         {
             "id": "hive-hbase-handler",
             "type": "BASE",
@@ -517,6 +531,13 @@
                    "classifier": "",
                    "extension": "",
                    "description": ""
+               },
+               {
+                   "groupId": "org.pentaho",
+                   "artifactId": "pentaho-aggdesigner-algorithm",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
                }
             ]
         },
@@ -539,6 +560,13 @@
                {
                    "groupId": "eigenbase",
                    "artifactId": "eigenbase-properties",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "org.pentaho",
+                   "artifactId": "pentaho-aggdesigner-algorithm",
                    "classifier": "",
                    "extension": "",
                    "description": ""
@@ -571,6 +599,13 @@
                {
                    "groupId": "javax.jms",
                    "artifactId": "jms",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "org.pentaho",
+                   "artifactId": "pentaho-aggdesigner-algorithm",
                    "classifier": "",
                    "extension": "",
                    "description": ""
