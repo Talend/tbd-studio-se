@@ -286,6 +286,13 @@
                     "classifier": "",
                     "extension": "",
                     "description": ""
+                },
+                {
+                    "groupId": "xerces",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
                 }
             ]
         },
@@ -324,6 +331,24 @@
             "artifactId": "hadoop-mapreduce-client-jobclient",
             "classifier": "",
             "description": ""
+        },
+        {
+            "id": "hadoop-yarn-server-web-proxy",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hadoop",
+            "artifactId": "hadoop-yarn-server-web-proxy",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "xerces",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
         },
         {
             "id": "htrace-core",
@@ -1126,6 +1151,13 @@
                     "classifier": "",
                     "extension": "",
                     "description": ""
+                },
+                {
+                    "groupId": "xerces",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
                 }
             ]
         },
@@ -1147,7 +1179,16 @@
             "artifactId": "spark-mllib_2.11",
             "version": "2.2.0.cloudera1",
             "classifier": "",
-            "description": ""
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "xerces",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
         },
         {
             "id": "spark-mllib-local_2.11",
@@ -1237,6 +1278,13 @@
             "exclusions": [
                 {
                     "groupId": "org.apache.hadoop",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "xerces",
                     "artifactId": "*",
                     "classifier": "",
                     "extension": "",
@@ -1512,6 +1560,7 @@
             "description": "",
             "modules": [
             	"hadoop-mapreduce-client-core",
+            	"hadoop-yarn-server-web-proxy",
             	"spark-hive_2.11",
                 "spark-mllib_2.11",
                 "spark-yarn_2.11"
@@ -1601,7 +1650,8 @@
             "modules": [
             	"azure-common-1.7.1",
             	"hadoop-azure",
-            	"hadoop-azure-datalake"
+            	"hadoop-azure-datalake",
+            	"hadoop-yarn-server-web-proxy"
             ]
         },
         {
