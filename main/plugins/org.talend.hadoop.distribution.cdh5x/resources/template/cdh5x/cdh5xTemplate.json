@@ -340,6 +340,14 @@
 					"classifier": "",
 					"extension": "",
 					"description": ""
+				},
+
+				{
+					"groupId": "org.apache.spark",
+					"artifactId": "spark-core_2.10",
+					"classifier": "",
+					"extension": "",
+					"description": ""
 				}
 			]
 		},
@@ -746,6 +754,13 @@
 			"description": "",
 			"exclusions": 
 			[
+				{
+					"groupId": "org.apache.hadoop",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
 				{
 					"groupId": "xerces",
 					"artifactId": "*",
