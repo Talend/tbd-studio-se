@@ -367,7 +367,16 @@
             "groupId": "org.apache.hbase",
             "artifactId": "hbase-client",
             "classifier": "",
-            "description": ""
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "xerces",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
         },
         {
             "id": "hive-jdbc",
@@ -377,30 +386,37 @@
             "artifactId": "hive-jdbc",
             "classifier": "",
             "description": "",
-            "exclusions": [
-            	{
-                   "groupId": "org.apache.curator",
-                   "artifactId": "apache-curator",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               },
-               {
-                   "groupId": "eigenbase",
-                   "artifactId": "eigenbase-properties",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               },
-               {
-                   "groupId": "org.pentaho",
-                   "artifactId": "pentaho-aggdesigner-algorithm",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               }
-            ]
-        },
+			"exclusions": [
+				{
+					"groupId": "org.apache.curator",
+					"artifactId": "apache-curator",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "eigenbase",
+					"artifactId": "eigenbase-properties",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "org.pentaho",
+					"artifactId": "pentaho-aggdesigner-algorithm",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
         {
             "id": "hive-exec",
             "type": "BASE",
@@ -409,30 +425,37 @@
             "artifactId": "hive-exec",
             "classifier": "",
             "description": "",
-            "exclusions": [
-            	{
-                   "groupId": "org.apache.curator",
-                   "artifactId": "apache-curator",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               },
-               {
-                   "groupId": "eigenbase",
-                   "artifactId": "eigenbase-properties",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               },
-               {
-                   "groupId": "org.pentaho",
-                   "artifactId": "pentaho-aggdesigner-algorithm",
-                   "classifier": "",
-                   "extension": "",
-                   "description": ""
-               }
-            ]
-        },
+			"exclusions": [
+				{
+					"groupId": "org.apache.curator",
+					"artifactId": "apache-curator",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "eigenbase",
+					"artifactId": "eigenbase-properties",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "org.pentaho",
+					"artifactId": "pentaho-aggdesigner-algorithm",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
         {
             "id": "hive-hbase-handler",
             "type": "BASE",
@@ -440,7 +463,16 @@
             "groupId": "org.apache.hive",
             "artifactId": "hive-hbase-handler",
             "classifier": "",
-            "description": ""
+            "description": "",
+            "exclusions": [
+               {
+                   "groupId": "eigenbase",
+                   "artifactId": "eigenbase-properties",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               }
+            ]
         },
         {
             "id": "hbase-hadoop-compat",
@@ -505,8 +537,22 @@
                    "description": ""
                },
                {
+                   "groupId": "eigenbase",
+                   "artifactId": "eigenbase-properties",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
                    "groupId": "javax.jms",
                    "artifactId": "jms",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "org.pentaho",
+                   "artifactId": "pentaho-aggdesigner-algorithm",
                    "classifier": "",
                    "extension": "",
                    "description": ""
@@ -525,6 +571,20 @@
             	{
                    "groupId": "org.apache.curator",
                    "artifactId": "apache-curator",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "eigenbase",
+                   "artifactId": "eigenbase-properties",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "org.pentaho",
+                   "artifactId": "pentaho-aggdesigner-algorithm",
                    "classifier": "",
                    "extension": "",
                    "description": ""
@@ -548,8 +608,22 @@
                    "description": ""
                },
                {
+                   "groupId": "eigenbase",
+                   "artifactId": "eigenbase-properties",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
                    "groupId": "javax.jms",
                    "artifactId": "jms",
+                   "classifier": "",
+                   "extension": "",
+                   "description": ""
+               },
+               {
+                   "groupId": "org.pentaho",
+                   "artifactId": "pentaho-aggdesigner-algorithm",
                    "classifier": "",
                    "extension": "",
                    "description": ""
@@ -1562,8 +1636,8 @@
             	"hadoop-mapreduce-client-core",
             	"hadoop-yarn-server-web-proxy",
             	"spark-hive_2.11",
-                "spark-mllib_2.11",
-                "spark-yarn_2.11"
+            	"spark-mllib_2.11",
+            	"spark-yarn_2.11"
             ]
         },
         {
