@@ -154,6 +154,13 @@
 					"classifier": "",
 					"extension": "",
 					"description": ""
+				},
+				{
+					"groupId": "com.google.protobuf",
+					"artifactId": "protobuf-java",
+					"classifier": "",
+					"extension": "",
+					"description": ""
 				}
 			]
 		},
@@ -166,7 +173,24 @@
 			"artifactId": "elephant-bird-hadoop-compat",
 			"version": "4.9",
 			"classifier": "",
-			"description": ""
+			"description": "",
+			"exclusions": 
+			[
+				{
+					"groupId": "com.hadoop.gplcompression",
+					"artifactId": "hadoop-lzo",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "com.google.protobuf",
+					"artifactId": "protobuf-java",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
 		},
 
 		{
@@ -177,7 +201,24 @@
 			"artifactId": "elephant-bird-pig",
 			"version": "4.9",
 			"classifier": "",
-			"description": ""
+			"description": "",
+			"exclusions": 
+			[
+				{
+					"groupId": "com.hadoop.gplcompression",
+					"artifactId": "hadoop-lzo",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "com.google.protobuf",
+					"artifactId": "protobuf-java",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
 		},
 
 		{
