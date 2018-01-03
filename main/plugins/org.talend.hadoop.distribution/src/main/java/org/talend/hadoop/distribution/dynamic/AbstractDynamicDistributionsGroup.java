@@ -74,7 +74,7 @@ public abstract class AbstractDynamicDistributionsGroup implements IDynamicDistr
     @Override
     public List<TemplateBean> getAllTemplates(IDynamicMonitor monitor) throws Exception {
         List<TemplateBean> templateBeans = new ArrayList<>();
-        List<IDynamicDistribution> allRegistedDynamicDistributions = getAllRegistedDynamicDistributions(monitor);
+        List<IDynamicDistribution> allRegistedDynamicDistributions = getAllRegisteredDynamicDistributions(monitor);
         if (allRegistedDynamicDistributions != null) {
             for (IDynamicDistribution dynamicDistribution : allRegistedDynamicDistributions) {
                 try {
@@ -151,15 +151,15 @@ public abstract class AbstractDynamicDistributionsGroup implements IDynamicDistr
     }
 
     @Override
-    public List<IDynamicPlugin> getAllBuildinDynamicPlugins(IDynamicMonitor monitor) throws Exception {
+    public List<IDynamicPlugin> getAllBuiltinDynamicPlugins(IDynamicMonitor monitor) throws Exception {
         List<IDynamicPlugin> dynamicPlugins = new ArrayList<>();
-        List<IDynamicDistribution> allRegistedDynamicDistributions = getAllRegistedDynamicDistributions(monitor);
+        List<IDynamicDistribution> allRegistedDynamicDistributions = getAllRegisteredDynamicDistributions(monitor);
         if (allRegistedDynamicDistributions != null) {
             for (IDynamicDistribution dynamicDistribution : allRegistedDynamicDistributions) {
                 try {
-                    List<IDynamicPlugin> allBuildinDynamicPlugins = dynamicDistribution.getAllBuildinDynamicPlugins(monitor);
-                    if (allBuildinDynamicPlugins != null) {
-                        dynamicPlugins.addAll(allBuildinDynamicPlugins);
+                    List<IDynamicPlugin> allBuiltinDynamicPlugins = dynamicDistribution.getAllBuiltinDynamicPlugins(monitor);
+                    if (allBuiltinDynamicPlugins != null) {
+                        dynamicPlugins.addAll(allBuiltinDynamicPlugins);
                     }
                 } catch (Exception e) {
                     ExceptionHandler.process(e);
@@ -169,7 +169,7 @@ public abstract class AbstractDynamicDistributionsGroup implements IDynamicDistr
         return dynamicPlugins;
     }
 
-    protected List<IDynamicDistribution> getAllRegistedDynamicDistributions(IDynamicMonitor monitor) throws Exception {
+    protected List<IDynamicDistribution> getAllRegisteredDynamicDistributions(IDynamicMonitor monitor) throws Exception {
         BundleContext bc = getBundleContext();
 
         List<IDynamicDistribution> registedDynamicDistributions = new ArrayList<>();
@@ -188,14 +188,14 @@ public abstract class AbstractDynamicDistributionsGroup implements IDynamicDistr
     }
 
     @Override
-    public void registAllBuildin(IDynamicMonitor monitor) throws Exception {
-        List<IDynamicDistribution> allRegistedDynamicDistributions = getAllRegistedDynamicDistributions(monitor);
+    public void registerAllBuiltin(IDynamicMonitor monitor) throws Exception {
+        List<IDynamicDistribution> allRegistedDynamicDistributions = getAllRegisteredDynamicDistributions(monitor);
         if (allRegistedDynamicDistributions == null || allRegistedDynamicDistributions.isEmpty()) {
             return;
         }
         for (IDynamicDistribution dynamicDistribution : allRegistedDynamicDistributions) {
             try {
-                dynamicDistribution.registAllBuildin(monitor);
+                dynamicDistribution.registerAllBuiltin(monitor);
             } catch (Throwable e) {
                 ExceptionHandler.process(e);
             }
@@ -203,14 +203,14 @@ public abstract class AbstractDynamicDistributionsGroup implements IDynamicDistr
     }
 
     @Override
-    public void unregistAllBuildin(IDynamicMonitor monitor) throws Exception {
-        List<IDynamicDistribution> allRegistedDynamicDistributions = getAllRegistedDynamicDistributions(monitor);
+    public void unregisterAllBuiltin(IDynamicMonitor monitor) throws Exception {
+        List<IDynamicDistribution> allRegistedDynamicDistributions = getAllRegisteredDynamicDistributions(monitor);
         if (allRegistedDynamicDistributions == null || allRegistedDynamicDistributions.isEmpty()) {
             return;
         }
         for (IDynamicDistribution dynamicDistribution : allRegistedDynamicDistributions) {
             try {
-                dynamicDistribution.unregistAllBuildin(monitor);
+                dynamicDistribution.unregisterAllBuiltin(monitor);
             } catch (Throwable e) {
                 ExceptionHandler.process(e);
             }
@@ -218,7 +218,7 @@ public abstract class AbstractDynamicDistributionsGroup implements IDynamicDistr
     }
 
     @Override
-    public boolean canRegist(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception {
+    public boolean canRegister(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception {
         boolean canRegist = false;
 
         IDynamicPluginConfiguration pluginConfiguration = dynamicPlugin.getPluginConfiguration();
@@ -232,7 +232,7 @@ public abstract class AbstractDynamicDistributionsGroup implements IDynamicDistr
     private IDynamicDistribution getDynamicDistributionForId(String templateId, IDynamicMonitor monitor) throws Exception {
         if (templateIdMap == null || templateIdMap.isEmpty()) {
             templateIdMap = new HashMap<>();
-            List<IDynamicDistribution> allRegistedDynamicDistributions = getAllRegistedDynamicDistributions(monitor);
+            List<IDynamicDistribution> allRegistedDynamicDistributions = getAllRegisteredDynamicDistributions(monitor);
             if (allRegistedDynamicDistributions != null && !allRegistedDynamicDistributions.isEmpty()) {
                 for (IDynamicDistribution dynamicDistribution : allRegistedDynamicDistributions) {
                     try {
@@ -259,13 +259,13 @@ public abstract class AbstractDynamicDistributionsGroup implements IDynamicDistr
     }
 
     @Override
-    public void regist(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception {
+    public void register(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception {
         boolean registed = false;
         IDynamicPluginConfiguration pluginConfiguration = dynamicPlugin.getPluginConfiguration();
         String templateId = pluginConfiguration.getTemplateId();
         IDynamicDistribution dynamicDistribution = getDynamicDistributionForId(templateId, monitor);
         if (dynamicDistribution != null) {
-            dynamicDistribution.regist(dynamicPlugin, monitor);
+            dynamicDistribution.register(dynamicPlugin, monitor);
             registed = true;
         }
         if (!registed) {
@@ -274,13 +274,13 @@ public abstract class AbstractDynamicDistributionsGroup implements IDynamicDistr
     }
 
     @Override
-    public void unregist(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception {
+    public void unregister(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception {
         boolean unregisted = false;
         IDynamicPluginConfiguration pluginConfiguration = dynamicPlugin.getPluginConfiguration();
         String templateId = pluginConfiguration.getTemplateId();
         IDynamicDistribution dynamicDistribution = getDynamicDistributionForId(templateId, monitor);
         if (dynamicDistribution != null) {
-            dynamicDistribution.unregist(dynamicPlugin, monitor);
+            dynamicDistribution.unregister(dynamicPlugin, monitor);
             unregisted = true;
         }
         if (!unregisted) {
@@ -316,7 +316,7 @@ public abstract class AbstractDynamicDistributionsGroup implements IDynamicDistr
     private Map<IDynamicDistribution, List<String>> buildCompatibleDistribuionVersionMap(IDynamicMonitor monitor)
             throws Exception {
         Map<IDynamicDistribution, List<String>> compDistrVersionMap = new HashMap<>();
-        List<IDynamicDistribution> allRegistedDynamicDistributions = getAllRegistedDynamicDistributions(monitor);
+        List<IDynamicDistribution> allRegistedDynamicDistributions = getAllRegisteredDynamicDistributions(monitor);
         if (allRegistedDynamicDistributions != null) {
             for (IDynamicDistribution dynamicDistribution : allRegistedDynamicDistributions) {
                 try {

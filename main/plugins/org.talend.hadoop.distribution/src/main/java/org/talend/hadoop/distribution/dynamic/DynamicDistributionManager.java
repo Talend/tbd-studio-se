@@ -59,9 +59,9 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
 
     private String usersPluginsCacheVersion;
 
-    private Map<String, IDynamicPlugin> buildinIdDistributionMap;
+    private Map<String, IDynamicPlugin> builtinIdDistributionMap;
 
-    private String buildinIdDistributionMapCacheVersion;
+    private String builtinIdDistributionMapCacheVersion;
 
     private Map<String, IDynamicPlugin> usersIdDistributionMap;
 
@@ -99,22 +99,22 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
 
     }
 
-    public List<IDynamicPlugin> getAllBuildinDynamicPlugins(IDynamicMonitor monitor) throws Exception {
-        List<IDynamicPlugin> allBuildinPlugins = new LinkedList<>();
+    public List<IDynamicPlugin> getAllBuiltinDynamicPlugins(IDynamicMonitor monitor) throws Exception {
+        List<IDynamicPlugin> allBuiltinPlugins = new LinkedList<>();
         List<IDynamicDistributionsGroup> dynDistrGroups = getDynamicDistributionsGroups();
         if (dynDistrGroups != null && !dynDistrGroups.isEmpty()) {
             for (IDynamicDistributionsGroup dynDistrGroup : dynDistrGroups) {
                 try {
-                    List<IDynamicPlugin> allBuildinDynamicPlugins = dynDistrGroup.getAllBuildinDynamicPlugins(monitor);
-                    if (allBuildinDynamicPlugins != null && !allBuildinDynamicPlugins.isEmpty()) {
-                        allBuildinPlugins.addAll(allBuildinDynamicPlugins);
+                    List<IDynamicPlugin> allBuiltinDynamicPlugins = dynDistrGroup.getAllBuiltinDynamicPlugins(monitor);
+                    if (allBuiltinDynamicPlugins != null && !allBuiltinDynamicPlugins.isEmpty()) {
+                        allBuiltinPlugins.addAll(allBuiltinDynamicPlugins);
                     }
                 } catch (Throwable e) {
                     ExceptionHandler.process(e);
                 }
             }
         }
-        return allBuildinPlugins;
+        return allBuiltinPlugins;
     }
 
     public void saveUsersDynamicPlugin(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception {
@@ -256,15 +256,15 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
         return fileList;
     }
 
-    public void registAll(IDynamicMonitor monitor, boolean resetCache) throws Exception {
-        registAllBuildin(monitor, false);
-        registAllUsers(monitor, false);
+    public void registerAll(IDynamicMonitor monitor, boolean resetCache) throws Exception {
+        registerAllBuiltin(monitor, false);
+        registerAllUsers(monitor, false);
         if (resetCache) {
             resetSystemCache();
         }
     }
 
-    public void registAllBuildin(IDynamicMonitor monitor, boolean cleanCache) throws Exception {
+    public void registerAllBuiltin(IDynamicMonitor monitor, boolean cleanCache) throws Exception {
 
         isLoaded = true;
         List<IDynamicDistributionsGroup> dynDistriGroups = getDynamicDistributionsGroups();
@@ -275,7 +275,7 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
 
         for (IDynamicDistributionsGroup dynDistriGroup : dynDistriGroups) {
             try {
-                dynDistriGroup.registAllBuildin(monitor);
+                dynDistriGroup.registerAllBuiltin(monitor);
             } catch (Throwable e) {
                 ExceptionHandler.process(e);
             }
@@ -287,7 +287,7 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
 
     }
 
-    public void registAllUsers(IDynamicMonitor monitor, boolean cleanCache) throws Exception {
+    public void registerAllUsers(IDynamicMonitor monitor, boolean cleanCache) throws Exception {
 
         isLoaded = true;
         List<IDynamicPlugin> allUsersDynamicPlugins = getAllUsersDynamicPlugins(monitor);
@@ -304,8 +304,8 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
             boolean registed = false;
             for (IDynamicDistributionsGroup dynDistriGroup : dynDistriGroups) {
                 try {
-                    if (dynDistriGroup.canRegist(dynamicPlugin, monitor)) {
-                        dynDistriGroup.regist(dynamicPlugin, monitor);
+                    if (dynDistriGroup.canRegister(dynamicPlugin, monitor)) {
+                        dynDistriGroup.register(dynamicPlugin, monitor);
                         registed = true;
                     }
                 } catch (Throwable e) {
@@ -324,15 +324,15 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
 
     }
 
-    public void unregistAll(IDynamicMonitor monitor, boolean resetCache) throws Exception {
-        unregistAllUsers(monitor, false);
-        unregistAllBuildin(monitor, false);
+    public void unregisterAll(IDynamicMonitor monitor, boolean resetCache) throws Exception {
+        unregisterAllUsers(monitor, false);
+        unregisterAllBuiltin(monitor, false);
         if (resetCache) {
             resetSystemCache();
         }
     }
 
-    public void unregistAllBuildin(IDynamicMonitor monitor, boolean cleanCache) throws Exception {
+    public void unregisterAllBuiltin(IDynamicMonitor monitor, boolean cleanCache) throws Exception {
 
         List<IDynamicDistributionsGroup> dynDistriGroups = getDynamicDistributionsGroups();
 
@@ -342,7 +342,7 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
 
         for (IDynamicDistributionsGroup dynDistriGroup : dynDistriGroups) {
             try {
-                dynDistriGroup.unregistAllBuildin(monitor);
+                dynDistriGroup.unregisterAllBuiltin(monitor);
             } catch (Throwable e) {
                 ExceptionHandler.process(e);
             }
@@ -354,7 +354,7 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
 
     }
 
-    public void unregistAllUsers(IDynamicMonitor monitor, boolean cleanCache) throws Exception {
+    public void unregisterAllUsers(IDynamicMonitor monitor, boolean cleanCache) throws Exception {
 
         List<IDynamicPlugin> allUsersDynamicPlugins = getAllUsersDynamicPlugins(monitor);
         if (allUsersDynamicPlugins == null || allUsersDynamicPlugins.isEmpty()) {
@@ -370,8 +370,8 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
             boolean registed = false;
             for (IDynamicDistributionsGroup dynDistriGroup : dynDistriGroups) {
                 try {
-                    if (dynDistriGroup.canRegist(dynamicPlugin, monitor)) {
-                        dynDistriGroup.unregist(dynamicPlugin, monitor);
+                    if (dynDistriGroup.canRegister(dynamicPlugin, monitor)) {
+                        dynDistriGroup.unregister(dynamicPlugin, monitor);
                         registed = true;
                     }
                 } catch (Throwable e) {
@@ -425,9 +425,9 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
                 // nothing to do
             }
         };
-        unregistAll(dynamicMonitor, false);
+        unregisterAll(dynamicMonitor, false);
         usersPluginsCache = null;
-        registAll(dynamicMonitor, false);
+        registerAll(dynamicMonitor, false);
         resetSystemCache();
     }
 
@@ -442,38 +442,38 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
     }
 
     @Override
-    public boolean isBuildinDynamicDistribution(String dynamicDistributionId) {
+    public boolean isBuiltinDynamicDistribution(String dynamicDistributionId) {
         try {
-            return getBuildinIdDynamicDistributionMap().containsKey(dynamicDistributionId);
+            return getBuiltinIdDynamicDistributionMap().containsKey(dynamicDistributionId);
         } catch (Exception e) {
             ExceptionHandler.process(e);
         }
         return false;
     }
 
-    private Map<String, IDynamicPlugin> getBuildinIdDynamicDistributionMap() throws Exception {
-        if (buildinIdDistributionMap != null) {
+    private Map<String, IDynamicPlugin> getBuiltinIdDynamicDistributionMap() throws Exception {
+        if (builtinIdDistributionMap != null) {
             String systemCacheVersion = HadoopDistributionsHelper.getCacheVersion();
-            if (StringUtils.equals(systemCacheVersion, buildinIdDistributionMapCacheVersion)) {
-                return buildinIdDistributionMap;
+            if (StringUtils.equals(systemCacheVersion, builtinIdDistributionMapCacheVersion)) {
+                return builtinIdDistributionMap;
             }
         }
-        buildinIdDistributionMap = new HashMap<>();
-        buildinIdDistributionMapCacheVersion = HadoopDistributionsHelper.getCacheVersion();
+        builtinIdDistributionMap = new HashMap<>();
+        builtinIdDistributionMapCacheVersion = HadoopDistributionsHelper.getCacheVersion();
 
         IDynamicMonitor monitor = new DummyDynamicMonitor();
-        List<IDynamicPlugin> allBuildinDynamicPlugins = getAllBuildinDynamicPlugins(monitor);
-        if (allBuildinDynamicPlugins != null && !allBuildinDynamicPlugins.isEmpty()) {
-            for (IDynamicPlugin dynamicPlugin : allBuildinDynamicPlugins) {
+        List<IDynamicPlugin> allBuiltinDynamicPlugins = getAllBuiltinDynamicPlugins(monitor);
+        if (allBuiltinDynamicPlugins != null && !allBuiltinDynamicPlugins.isEmpty()) {
+            for (IDynamicPlugin dynamicPlugin : allBuiltinDynamicPlugins) {
                 IDynamicPluginConfiguration pluginConfiguration = dynamicPlugin.getPluginConfiguration();
                 if (pluginConfiguration != null) {
                     String id = pluginConfiguration.getId();
-                    buildinIdDistributionMap.put(id, dynamicPlugin);
+                    builtinIdDistributionMap.put(id, dynamicPlugin);
                 }
             }
         }
 
-        return buildinIdDistributionMap;
+        return builtinIdDistributionMap;
     }
 
     private Map<String, IDynamicPlugin> getUsersIdDynamicDistributionMap() throws Exception {
@@ -487,9 +487,9 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
         usersIdDistributionMapCacheVersion = HadoopDistributionsHelper.getCacheVersion();
 
         IDynamicMonitor monitor = new DummyDynamicMonitor();
-        List<IDynamicPlugin> allBuildinDynamicPlugins = getAllUsersDynamicPlugins(monitor);
-        if (allBuildinDynamicPlugins != null && !allBuildinDynamicPlugins.isEmpty()) {
-            for (IDynamicPlugin dynamicPlugin : allBuildinDynamicPlugins) {
+        List<IDynamicPlugin> allBuiltinDynamicPlugins = getAllUsersDynamicPlugins(monitor);
+        if (allBuiltinDynamicPlugins != null && !allBuiltinDynamicPlugins.isEmpty()) {
+            for (IDynamicPlugin dynamicPlugin : allBuiltinDynamicPlugins) {
                 IDynamicPluginConfiguration pluginConfiguration = dynamicPlugin.getPluginConfiguration();
                 if (pluginConfiguration != null) {
                     String id = pluginConfiguration.getId();

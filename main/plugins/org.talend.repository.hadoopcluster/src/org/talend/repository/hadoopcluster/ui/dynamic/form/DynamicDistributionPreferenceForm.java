@@ -521,7 +521,7 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
                                         dynDistriGroup));
                     }
                     List<IDynamicPlugin> dynamicPlugins = new LinkedList<>();
-                    List<IDynamicPlugin> allBuildinDynamicPlugins = dynDistriGroup.getAllBuildinDynamicPlugins(monitor);
+                    List<IDynamicPlugin> allBuildinDynamicPlugins = dynDistriGroup.getAllBuiltinDynamicPlugins(monitor);
                     if (allBuildinDynamicPlugins != null && !allBuildinDynamicPlugins.isEmpty()) {
                         dynamicPlugins.addAll(allBuildinDynamicPlugins);
                     }
@@ -596,7 +596,7 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
                             String distribution = pluginConfiguration.getDistribution();
                             IDynamicDistributionsGroup dynamicDistributionGroup = DynamicDistributionManager.getInstance()
                                     .getDynamicDistributionGroup(distribution);
-                            dynamicDistributionGroup.unregist(dynamicPlugin, monitor);
+                            dynamicDistributionGroup.unregister(dynamicPlugin, monitor);
 
                             monitor.setTaskName(Messages.getString("DynamicDistributionPreferenceForm.delete.progress.deleteFile", //$NON-NLS-1$
                                     pluginConfiguration.getName()));

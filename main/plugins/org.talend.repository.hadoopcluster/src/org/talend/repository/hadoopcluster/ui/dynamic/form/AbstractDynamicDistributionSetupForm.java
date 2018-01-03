@@ -76,9 +76,9 @@ public abstract class AbstractDynamicDistributionSetupForm extends AbstractDynam
         dMonitor.setTaskName(
                 Messages.getString("AbstractDynamicDistributionSetupForm.progress.registing", pluginConfiguration.getName())); //$NON-NLS-1$
         if (ActionType.EditExisting.equals(actionType)) {
-            dynDistrGroup.unregist(fDynPlugin, dMonitor);
+            dynDistrGroup.unregister(fDynPlugin, dMonitor);
         }
-        dynDistrGroup.regist(fDynPlugin, dMonitor);
+        dynDistrGroup.register(fDynPlugin, dMonitor);
 
         // step 4: reset system cache
         dMonitor.setTaskName(Messages.getString("AbstractDynamicDistributionSetupForm.progress.resetCache")); //$NON-NLS-1$

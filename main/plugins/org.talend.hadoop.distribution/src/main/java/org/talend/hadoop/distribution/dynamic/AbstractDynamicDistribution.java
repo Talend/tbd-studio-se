@@ -54,7 +54,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 public abstract class AbstractDynamicDistribution implements IDynamicDistribution {
 
-    private List<IDynamicPlugin> buildinPluginsCache;
+    private List<IDynamicPlugin> builtinPluginsCache;
 
     private List<TemplateBean> templateBeansCache;
 
@@ -68,7 +68,7 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
 
     abstract protected String getTemplateFolderPath();
 
-    abstract protected String getBuildinFolderPath();
+    abstract protected String getBuiltinFolderPath();
 
     @Override
     public List<TemplateBean> getTemplates(IDynamicMonitor monitor) throws Exception {
@@ -104,16 +104,16 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
     }
 
     @Override
-    public List<IDynamicPlugin> getAllBuildinDynamicPlugins(IDynamicMonitor monitor) throws Exception {
-        if (buildinPluginsCache != null) {
-            return buildinPluginsCache;
+    public List<IDynamicPlugin> getAllBuiltinDynamicPlugins(IDynamicMonitor monitor) throws Exception {
+        if (builtinPluginsCache != null) {
+            return builtinPluginsCache;
         }
 
         List<IDynamicPlugin> dynamicPlugins = new ArrayList<>();
 
         Bundle bundle = getBundle();
 
-        Enumeration<URL> entries = bundle.findEntries(getBuildinFolderPath(), null, true);
+        Enumeration<URL> entries = bundle.findEntries(getBuiltinFolderPath(), null, true);
 
         if (entries != null) {
             String curProjTechName = null;
@@ -125,12 +125,12 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
                 try {
                     URL curUrl = entries.nextElement();
                     if (curUrl != null) {
-                        String buildinDistributionPath = FileLocator.toFileURL(curUrl).getPath();
-                        String jsonContent = DynamicServiceUtil.readFile(new File(buildinDistributionPath));
+                        String builtinDistributionPath = FileLocator.toFileURL(curUrl).getPath();
+                        String jsonContent = DynamicServiceUtil.readFile(new File(builtinDistributionPath));
                         IDynamicPlugin dynamicPlugin = DynamicFactory.getInstance().createPluginFromJson(jsonContent);
                         IDynamicPluginConfiguration pluginConfiguration = dynamicPlugin.getPluginConfiguration();
                         // pluginConfiguration.setAttribute(DynamicDistriConfigAdapter.ATTR_FILE_PATH,
-                        // buildinDistributionPath);
+                        // builtinDistributionPath);
                         pluginConfiguration.setAttribute(DynamicConstants.ATTR_IS_BUILDIN, Boolean.TRUE.toString());
                         pluginConfiguration.setAttribute(DynamicConstants.ATTR_PROJECT_TECHNICAL_NAME, curProjTechName);
                         dynamicPlugins.add(dynamicPlugin);
@@ -141,9 +141,9 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
             }
         }
 
-        buildinPluginsCache = dynamicPlugins;
+        builtinPluginsCache = dynamicPlugins;
 
-        return buildinPluginsCache;
+        return builtinPluginsCache;
     }
 
     @Override
@@ -273,7 +273,7 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
     }
 
     @Override
-    public void regist(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception {
+    public void register(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception {
         DynamicDistributionManager dynamicDistributionManager = DynamicDistributionManager.getInstance();
         IDynamicPlugin copiedDynamicPlugin = DynamicFactory.getInstance()
                 .createPluginFromJson(dynamicPlugin.toXmlJson().toString());
@@ -287,8 +287,8 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
         pluginAdapter.adapt();
 
         IDynamicPluginConfiguration pluginConfiguration = pluginAdapter.getPluginConfiguration();
-        boolean isBuildin = Boolean.parseBoolean((String) pluginConfiguration.getAttribute(DynamicConstants.ATTR_IS_BUILDIN));
-        if (isBuildin) {
+        boolean isBuiltin = Boolean.parseBoolean((String) pluginConfiguration.getAttribute(DynamicConstants.ATTR_IS_BUILDIN));
+        if (isBuiltin) {
             pluginConfiguration.setName(Messages.getString("DynamicDistribution.name.buildin", pluginConfiguration.getName())); //$NON-NLS-1$
         } else {
             Project currentProject = ProjectManager.getInstance().getCurrentProject();
@@ -349,15 +349,15 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
     }
 
     @Override
-    public void registAllBuildin(IDynamicMonitor monitor) throws Exception {
-        List<IDynamicPlugin> allBuildinDynamicPlugins = getAllBuildinDynamicPlugins(monitor);
-        if (allBuildinDynamicPlugins == null || allBuildinDynamicPlugins.isEmpty()) {
+    public void registerAllBuiltin(IDynamicMonitor monitor) throws Exception {
+        List<IDynamicPlugin> allBuiltinDynamicPlugins = getAllBuiltinDynamicPlugins(monitor);
+        if (allBuiltinDynamicPlugins == null || allBuiltinDynamicPlugins.isEmpty()) {
             ExceptionHandler.log(this.getClass().getSimpleName() + ": no build dynamic plugins found when registing");
             return;
         }
-        for (IDynamicPlugin dynamicPlugin : allBuildinDynamicPlugins) {
+        for (IDynamicPlugin dynamicPlugin : allBuiltinDynamicPlugins) {
             try {
-                regist(dynamicPlugin, monitor);
+                register(dynamicPlugin, monitor);
             } catch (Throwable e) {
                 ExceptionHandler.process(e);
             }
@@ -365,15 +365,15 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
     }
 
     @Override
-    public void unregistAllBuildin(IDynamicMonitor monitor) throws Exception {
-        List<IDynamicPlugin> allBuildinDynamicPlugins = getAllBuildinDynamicPlugins(monitor);
-        if (allBuildinDynamicPlugins == null || allBuildinDynamicPlugins.isEmpty()) {
+    public void unregisterAllBuiltin(IDynamicMonitor monitor) throws Exception {
+        List<IDynamicPlugin> allBuiltinDynamicPlugins = getAllBuiltinDynamicPlugins(monitor);
+        if (allBuiltinDynamicPlugins == null || allBuiltinDynamicPlugins.isEmpty()) {
             ExceptionHandler.log(this.getClass().getSimpleName() + ": no build dynamic plugins found when unregisting");
             return;
         }
-        for (IDynamicPlugin dynamicPlugin : allBuildinDynamicPlugins) {
+        for (IDynamicPlugin dynamicPlugin : allBuiltinDynamicPlugins) {
             try {
-                unregist(dynamicPlugin, monitor);
+                unregister(dynamicPlugin, monitor);
             } catch (Throwable e) {
                 ExceptionHandler.process(e);
             }
@@ -384,7 +384,7 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
             throws Exception;
 
     @Override
-    public void unregist(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception {
+    public void unregister(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception {
         IDynamicPluginConfiguration pluginConfiguration = dynamicPlugin.getPluginConfiguration();
         String id = pluginConfiguration.getId();
 

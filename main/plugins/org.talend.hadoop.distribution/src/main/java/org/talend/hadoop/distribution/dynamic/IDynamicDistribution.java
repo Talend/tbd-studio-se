@@ -36,16 +36,16 @@ public interface IDynamicDistribution {
 
     public IDynamicPlugin buildDynamicPlugin(IDynamicMonitor monitor, DynamicConfiguration configuration) throws Exception;
 
-    public List<IDynamicPlugin> getAllBuildinDynamicPlugins(IDynamicMonitor monitor) throws Exception;
+    public List<IDynamicPlugin> getAllBuiltinDynamicPlugins(IDynamicMonitor monitor) throws Exception;
 
     public String getDistributionName();
 
-    public void regist(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception;
+    public void register(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception;
 
-    public void unregist(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception;
+    public void unregister(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception;
 
-    public void registAllBuildin(IDynamicMonitor monitor) throws Exception;
+    public void registerAllBuiltin(IDynamicMonitor monitor) throws Exception;
 
-    public void unregistAllBuildin(IDynamicMonitor monitor) throws Exception;
+    public void unregisterAllBuiltin(IDynamicMonitor monitor) throws Exception;
 
 }

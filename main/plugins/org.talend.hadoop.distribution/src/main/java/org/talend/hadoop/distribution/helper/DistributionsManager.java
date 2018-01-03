@@ -59,7 +59,7 @@ public final class DistributionsManager implements IDistributionsManager {
             DynamicDistributionManager dynamicDistributionManager = DynamicDistributionManager.getInstance();
             try {
                 IDynamicMonitor monitor = new DummyDynamicMonitor();
-                dynamicDistributionManager.registAll(monitor, true);
+                dynamicDistributionManager.registerAll(monitor, true);
                 dynamicDistributionManager.setLoaded(true);
             } catch (Throwable e) {
                 ExceptionHandler.process(e);
