@@ -26,9 +26,9 @@ import org.talend.repository.ProjectManager;
 /**
  * DOC cmeng class global comment. Detailled comment
  */
-public class DynamicDistriConfigAdapter extends AbstractDynamicAdapter {
+public class DynamicDistribConfigAdapter extends AbstractDynamicAdapter {
 
-    public DynamicDistriConfigAdapter(TemplateBean templateBean, DynamicConfiguration configuration) {
+    public DynamicDistribConfigAdapter(TemplateBean templateBean, DynamicConfiguration configuration) {
         super(templateBean, configuration);
     }
 

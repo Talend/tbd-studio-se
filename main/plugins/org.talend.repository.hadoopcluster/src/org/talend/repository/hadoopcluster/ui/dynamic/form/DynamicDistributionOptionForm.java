@@ -542,7 +542,7 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
         /**
          * Can't edit buildin plugins
          */
-        allBuildinDynamicPlugins = dynamicDistributionsGroup.getAllBuildinDynamicPlugins(monitor);
+        allBuildinDynamicPlugins = dynamicDistributionsGroup.getAllBuiltinDynamicPlugins(monitor);
         if (allBuildinDynamicPlugins != null && !allBuildinDynamicPlugins.isEmpty()) {
             distriDynamicPlugins.addAll(allBuildinDynamicPlugins);
         }
@@ -613,7 +613,7 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
         IDynamicMonitor monitor = new DummyDynamicMonitor();
         DynamicDistributionManager dynDistrManager = DynamicDistributionManager.getInstance();
         List<IDynamicPlugin> allDynamicPlugins = new LinkedList<>();
-        List<IDynamicPlugin> allBuildinDynamicPlugins = dynDistrManager.getAllBuildinDynamicPlugins(monitor);
+        List<IDynamicPlugin> allBuildinDynamicPlugins = dynDistrManager.getAllBuiltinDynamicPlugins(monitor);
         if (allBuildinDynamicPlugins != null && !allBuildinDynamicPlugins.isEmpty()) {
             allDynamicPlugins.addAll(allBuildinDynamicPlugins);
         }

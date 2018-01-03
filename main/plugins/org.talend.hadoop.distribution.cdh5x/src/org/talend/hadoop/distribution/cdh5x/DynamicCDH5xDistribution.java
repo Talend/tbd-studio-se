@@ -69,7 +69,7 @@ public class DynamicCDH5xDistribution extends AbstractDynamicDistribution implem
     }
 
     @Override
-    protected String getBuildinFolderPath() {
+    protected String getBuiltinFolderPath() {
         return BUILD_IN_FOLDER_PATH;
     }
 

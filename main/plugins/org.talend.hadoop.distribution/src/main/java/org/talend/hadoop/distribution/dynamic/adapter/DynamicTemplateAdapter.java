@@ -31,7 +31,7 @@ import org.talend.hadoop.distribution.dynamic.util.DynamicDistributionUtils;
  */
 public class DynamicTemplateAdapter extends AbstractDynamicAdapter {
 
-    private DynamicDistriConfigAdapter distriConfigAdapter;
+    private DynamicDistribConfigAdapter distriConfigAdapter;
 
     private IDynamicPlugin dynamicPlugin;
 
@@ -58,7 +58,7 @@ public class DynamicTemplateAdapter extends AbstractDynamicAdapter {
 
         dynamicPlugin = DynamicFactory.getInstance().createDynamicPlugin();
 
-        distriConfigAdapter = new DynamicDistriConfigAdapter(templateBean, configuration);
+        distriConfigAdapter = new DynamicDistribConfigAdapter(templateBean, configuration);
         IDynamicPluginConfiguration pluginConfiguration = distriConfigAdapter.adapt(monitor);
         dynamicPlugin.setPluginConfiguration(pluginConfiguration);
 
