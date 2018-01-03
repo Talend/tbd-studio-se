@@ -145,7 +145,17 @@
 			"artifactId": "elephant-bird-core",
 			"version": "4.9",
 			"classifier": "",
-			"description": ""
+			"description": "",
+			"exclusions": 
+			[
+				{
+					"groupId": "com.hadoop.gplcompression",
+					"artifactId": "hadoop-lzo",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
 		},
 
 		{
