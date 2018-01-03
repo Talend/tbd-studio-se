@@ -521,4 +521,9 @@ public class CDH5xDistributionTemplate extends AbstractDistribution
     public String getTemplateId() {
         return TEMPLATE_ID;
     }
+    
+    @Override
+    public boolean isDynamicDistribution() {
+        return true;
+    }
 }

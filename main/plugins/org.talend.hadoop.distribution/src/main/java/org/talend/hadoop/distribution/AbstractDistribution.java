@@ -313,4 +313,8 @@ public abstract class AbstractDistribution {
     public boolean isActivated() {
         return true;
     }
+    
+    public boolean isDynamicDistribution() {
+        return false;
+    }
 }

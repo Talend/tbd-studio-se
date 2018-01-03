@@ -882,15 +882,15 @@
 			<IMPORT NAME="elephant-bird-pig-4.9.jar" MODULE="elephant-bird-pig-4.9.jar"
 				MVN="mvn:org.talend.libraries/elephant-bird-pig-4.9/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-pig-4.9.jar"
-				REQUIRED_IF="(STORE=='SEQUENCEFILESTORAGE')" />
+				REQUIRED_IF="(STORE=='SEQUENCEFILESTORAGE') AND DISTRIB[DISTRIBUTION, HBASE_VERSION].isDynamicDistribution[]" />
 			<IMPORT NAME="elephant-bird-core-4.9.jar" MODULE="elephant-bird-core-4.9.jar"
 				MVN="mvn:org.talend.libraries/elephant-bird-core-4.9/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-core-4.9.jar"
-				REQUIRED_IF="(STORE=='SEQUENCEFILESTORAGE')" />
+				REQUIRED_IF="(STORE=='SEQUENCEFILESTORAGE') AND DISTRIB[DISTRIBUTION, HBASE_VERSION].isDynamicDistribution[]" />
 			<IMPORT NAME="elephant-bird-hadoop-compat-4.9.jar" MODULE="elephant-bird-hadoop-compat-4.9.jar"
 				MVN="mvn:org.talend.libraries/elephant-bird-hadoop-compat-4.9/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-hadoop-compat-4.9.jar"
-				REQUIRED_IF="(STORE=='SEQUENCEFILESTORAGE')" />
+				REQUIRED_IF="(STORE=='SEQUENCEFILESTORAGE') AND DISTRIB[DISTRIBUTION, HBASE_VERSION].isDynamicDistribution[]" />
 
 			<IMPORT NAME="elephant-bird-pig-4.1.jar" MODULE="elephant-bird-pig-4.1.jar"
 				MVN="mvn:org.talend.libraries/elephant-bird-pig-4.1/6.0.0"
