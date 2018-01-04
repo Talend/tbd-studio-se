@@ -521,9 +521,9 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
                                         dynDistriGroup));
                     }
                     List<IDynamicPlugin> dynamicPlugins = new LinkedList<>();
-                    List<IDynamicPlugin> allBuildinDynamicPlugins = dynDistriGroup.getAllBuiltinDynamicPlugins(monitor);
-                    if (allBuildinDynamicPlugins != null && !allBuildinDynamicPlugins.isEmpty()) {
-                        dynamicPlugins.addAll(allBuildinDynamicPlugins);
+                    List<IDynamicPlugin> allBuiltinDynamicPlugins = dynDistriGroup.getAllBuiltinDynamicPlugins(monitor);
+                    if (allBuiltinDynamicPlugins != null && !allBuiltinDynamicPlugins.isEmpty()) {
+                        dynamicPlugins.addAll(allBuiltinDynamicPlugins);
                     }
                     List<IDynamicPlugin> allUsersDynamicPlugins = DynamicDistributionManager.getInstance()
                             .getAllUsersDynamicPlugins(monitor);
@@ -630,8 +630,8 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
                 IDynamicPlugin dynamicPlugin = (IDynamicPlugin) selection.getFirstElement();
                 if (dynamicPlugin != null) {
                     IDynamicPluginConfiguration pluginConfiguration = dynamicPlugin.getPluginConfiguration();
-                    String isBuildinStr = (String) pluginConfiguration.getAttribute(DynamicConstants.ATTR_IS_BUILDIN);
-                    if (!Boolean.valueOf(isBuildinStr)) {
+                    String isBuiltinStr = (String) pluginConfiguration.getAttribute(DynamicConstants.ATTR_IS_BUILTIN);
+                    if (!Boolean.valueOf(isBuiltinStr)) {
                         String curProjTechName = ProjectManager.getInstance().getCurrentProject().getTechnicalLabel();
                         String projTechName = (String) pluginConfiguration
                                 .getAttribute(DynamicConstants.ATTR_PROJECT_TECHNICAL_NAME);
