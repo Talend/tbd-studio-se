@@ -18,6 +18,7 @@ import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.designer.maven.aether.node.DependencyNode;
 import org.talend.designer.maven.aether.util.DynamicDistributionAetherUtils;
 import org.talend.hadoop.distribution.dynamic.DynamicConfiguration;
+import org.talend.hadoop.distribution.dynamic.IDynamicDistributionPreference;
 
 /**
  * DOC cmeng class global comment. Detailled comment
@@ -39,10 +40,17 @@ public abstract class AbstractDependencyResolver implements IDependencyResolver 
             baseNode.setVersion(version);
         }
 
-        String remoteRepositoryUrl = configuration.getRemoteRepositoryUrl();
+        IDynamicDistributionPreference preference = configuration.getPreference();
+        String remoteRepositoryUrl = preference.getRepository();
+        String username = null;
+        String password = null;
+        if (!preference.isAnonymous()) {
+            username = preference.getUsername();
+            password = preference.getPassword();
+        }
         String localRepositoryPath = getLocalRepositoryPath();
-        DependencyNode node = DynamicDistributionAetherUtils.collectDepencencies(remoteRepositoryUrl, localRepositoryPath,
-                baseNode, monitor);
+        DependencyNode node = DynamicDistributionAetherUtils.collectDepencencies(remoteRepositoryUrl, username, password,
+                localRepositoryPath, baseNode, monitor);
         return node;
     }
 

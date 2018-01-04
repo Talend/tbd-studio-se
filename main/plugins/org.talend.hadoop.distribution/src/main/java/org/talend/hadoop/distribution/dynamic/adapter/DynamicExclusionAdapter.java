@@ -34,6 +34,7 @@ public class DynamicExclusionAdapter extends AbstractDynamicAdapter {
     }
 
     public void adapt(IDynamicMonitor monitor) throws Exception {
+        DynamicDistributionUtils.checkCancelOrNot(monitor);
         resolve();
 
         exclusion = new ExclusionNode();

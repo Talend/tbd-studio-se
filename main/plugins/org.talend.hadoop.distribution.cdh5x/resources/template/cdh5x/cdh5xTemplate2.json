@@ -1,12 +1,11 @@
 {
-    "id": "CDH5.X",
-    "name": "Cloudera CDH5.X template",
+    "id": "CDH5.X.2",
+    "name": "Cloudera CDH5.X.2 template",
     "distribution": "CLOUDERA",
-    "baseVersion":"2.6.0-mr1-cdh5.10.0",
-    "topVersion":"",
+    "templateId": "CDH5xDistributionTemplate",
+    "baseVersion":"5.11.0",
+    "topVersion":"6.0.0",
     "dynamicVersion":"will be filled during runtime",
-    "repository": "http://localhost:8081/nexus/content/repositories/central",
-    "addRepositoryInMvnUri":"true",
     "properties": {
         "context": "plugin:org.talend.hadoop.distribution.cdh5x"
     },

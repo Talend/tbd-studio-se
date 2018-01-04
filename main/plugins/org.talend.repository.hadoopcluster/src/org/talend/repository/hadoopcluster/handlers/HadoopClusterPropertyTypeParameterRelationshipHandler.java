@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
+import org.talend.core.model.process.EParameterFieldType;
 import org.talend.core.model.properties.Item;
 import org.talend.core.model.relationship.AbstractJobParameterInRepositoryRelationshipHandler;
 import org.talend.core.model.relationship.AbstractJobParameterRelationshipHandler;
@@ -25,6 +26,8 @@ import org.talend.core.model.relationship.Relation;
 import org.talend.core.model.relationship.RelationshipItemBuilder;
 import org.talend.core.repository.handlers.PropertyTypeParameterRelationshipHandler;
 import org.talend.designer.core.model.utils.emf.talendfile.ElementParameterType;
+import org.talend.hadoop.distribution.ComponentType;
+import org.talend.hadoop.distribution.dynamic.DynamicDistributionManager;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 
 /**
@@ -71,6 +74,35 @@ public class HadoopClusterPropertyTypeParameterRelationshipHandler extends Abstr
                 }
             }
         }
+
+        for (ElementParameterType eleParamType : parametersMap.values()) {
+            if (EParameterFieldType.HADOOP_DISTRIBUTION.name().equals(eleParamType.getField())) {
+                String name = eleParamType.getName();
+                if (StringUtils.isNotEmpty(name)) {
+                    ComponentType componentType = ComponentType.getComponentType(name);
+                    if (componentType != null) {
+                        String versionParam = componentType.getVersionParameter();
+                        if (StringUtils.isNotEmpty(versionParam)) {
+                            ElementParameterType elemParam = parametersMap.get(versionParam);
+                            if (elemParam != null) {
+                                String value = elemParam.getValue();
+                                if (StringUtils.isNotEmpty(value)) {
+                                    if (DynamicDistributionManager.getInstance().isUsersDynamicDistribution(value)) {
+                                        Relation addedRelation = new Relation();
+                                        addedRelation.setId(value);
+                                        addedRelation.setType(RelationshipItemBuilder.DYNAMIC_DISTRIBUTION_RELATION);
+                                        addedRelation.setVersion(RelationshipItemBuilder.LATEST_VERSION);
+                                        relationSet.add(addedRelation);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+            }
+        }
+
         return relationSet;
     }
 

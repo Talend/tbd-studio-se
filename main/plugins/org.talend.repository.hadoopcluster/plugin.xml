@@ -250,6 +250,11 @@
              id="org.talend.repository.hadoopcluster.parameterHandler.propertyType"
              name="Property Type (Hadoop Cluster)">
        </parameterHandler>
+       <itemHandler
+             class="org.talend.repository.hadoopcluster.handlers.HadoopClusterConnectionRelationshipHandler"
+             id="org.talend.repository.hadoopcluster.handlers.HadoopClusterConnectionRelationshipHandler"
+             name="Relationship handler for Hadoop Cluster">
+       </itemHandler>
     </extension>
     <extension
           point="org.talend.core.repository.repository_context">
@@ -310,4 +315,14 @@
              version="6.4.0">
        </projecttask>
     </extension>
+    <extension
+         point="org.talend.repository.projectsetting_page">
+      <page
+            category="general"
+            class="org.talend.repository.hadoopcluster.ui.dynamic.page.DynamicDistributionPreferencePage"
+            id="org.talend.repository.hadoopcluster.ui.dynamic.page.DynamicDistributionPreferencePage"
+            order="0"
+            title="%projectsetting.dynamicDistributionSetting">
+      </page>
+   </extension>
 </plugin>

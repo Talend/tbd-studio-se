@@ -10,15 +10,24 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.dynamic.resolver;
+package org.talend.hadoop.distribution.dynamic.comparator;
 
-import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
+import java.util.Comparator;
+
+import org.talend.core.runtime.dynamic.IDynamicPlugin;
+import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
+
 
 /**
  * DOC cmeng  class global comment. Detailled comment
  */
-public interface IClouderaDependencyResolver extends IDependencyResolver {
+public class DynamicPluginComparator implements Comparator<IDynamicPlugin> {
 
-    public static final String DISTRIBUTION = IClouderaDistribution.DISTRIBUTION_NAME;
+    @Override
+    public int compare(IDynamicPlugin o1, IDynamicPlugin o2) {
+        IDynamicPluginConfiguration config1 = o1.getPluginConfiguration();
+        IDynamicPluginConfiguration config2 = o2.getPluginConfiguration();
+        return config1.getName().compareTo(config2.getName());
+    }
 
 }

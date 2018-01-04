@@ -13,6 +13,7 @@
 
 package org.talend.hadoop.distribution.cdh5x;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -55,6 +56,7 @@ import org.talend.hadoop.distribution.cdh5x.modulegroup.node.sparkstreaming.CDH5
 import org.talend.hadoop.distribution.component.HBaseComponent;
 import org.talend.hadoop.distribution.component.HCatalogComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
+import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
@@ -69,6 +71,7 @@ import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
+import org.talend.hadoop.distribution.dynamic.IDynamicDistributionTemplate;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
@@ -76,15 +79,18 @@ import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 @SuppressWarnings("nls")
 public class CDH5xDistributionTemplate extends AbstractDistribution
         implements IClouderaDistribution, HDFSComponent, HBaseComponent, HCatalogComponent, PigComponent, MRComponent,
-        HiveComponent, HiveOnSparkComponent, ImpalaComponent, SqoopComponent, SparkBatchComponent, SparkStreamingComponent {
+        HiveComponent, HiveOnSparkComponent, ImpalaComponent, SqoopComponent, SparkBatchComponent, SparkStreamingComponent,
+        IDynamicDistributionTemplate {
+
+    public final static String TEMPLATE_ID = "CDH5xDistributionTemplate";
 
     private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*"; //$NON-NLS-1$
 
-    private static Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
+    private Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
 
-    private static Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodeModuleGroups;
+    private Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodeModuleGroups;
 
-    private static Map<ComponentType, ComponentCondition> displayConditions;
+    private Map<ComponentType, ComponentCondition> displayConditions;
 
     private DynamicPluginAdapter pluginAdapter;
 
@@ -481,4 +487,26 @@ public class CDH5xDistributionTemplate extends AbstractDistribution
         return true;
     }
 
+    @Override
+    public List<String> getServices() {
+        List<String> services = new ArrayList<>();
+        services.add(HadoopComponent.class.getName());
+        services.add(HDFSComponent.class.getName());
+        services.add(HBaseComponent.class.getName());
+        services.add(HCatalogComponent.class.getName());
+        services.add(HiveComponent.class.getName());
+        services.add(HiveOnSparkComponent.class.getName());
+        services.add(ImpalaComponent.class.getName());
+        services.add(MRComponent.class.getName());
+        services.add(PigComponent.class.getName());
+        services.add(SqoopComponent.class.getName());
+        services.add(SparkBatchComponent.class.getName());
+        services.add(SparkStreamingComponent.class.getName());
+        return services;
+    }
+
+    @Override
+    public String getTemplateId() {
+        return TEMPLATE_ID;
+    }
 }

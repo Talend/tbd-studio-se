@@ -21,8 +21,8 @@ import org.talend.core.runtime.dynamic.IDynamicPlugin;
 import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.hadoop.distribution.dynamic.DynamicConfiguration;
+import org.talend.hadoop.distribution.dynamic.DynamicDistributionManager;
 import org.talend.hadoop.distribution.dynamic.bean.TemplateBean;
-import org.talend.hadoop.distribution.dynamic.resolver.DependencyResolverFactory;
 import org.talend.hadoop.distribution.dynamic.resolver.IDependencyResolver;
 import org.talend.hadoop.distribution.dynamic.util.DynamicDistributionUtils;
 
@@ -44,6 +44,7 @@ public class DynamicTemplateAdapter extends AbstractDynamicAdapter {
     }
 
     public void adapt(IDynamicMonitor monitor) throws Exception {
+        DynamicDistributionUtils.checkCancelOrNot(monitor);
         resolve();
 
         TemplateBean templateBean = getTemplateBean();
@@ -52,7 +53,8 @@ public class DynamicTemplateAdapter extends AbstractDynamicAdapter {
         // use id instead of version
         templateBean.setDynamicVersion(configuration.getId());
 
-        IDependencyResolver dependencyResolver = DependencyResolverFactory.getInstance().getDependencyResolver(configuration);
+        DynamicDistributionManager dynamicDistributionManager = DynamicDistributionManager.getInstance();
+        IDependencyResolver dependencyResolver = dynamicDistributionManager.getDependencyResolver(configuration);
 
         dynamicPlugin = DynamicFactory.getInstance().createDynamicPlugin();
 
@@ -91,22 +93,19 @@ public class DynamicTemplateAdapter extends AbstractDynamicAdapter {
 
         TemplateBean templateBean = getTemplateBean();
 
-        String addRepositoryInMvnUri = (String) DynamicDistributionUtils.calculate(templateBean,
-                templateBean.getAddRepositoryInMvnUri());
         String id = (String) DynamicDistributionUtils.calculate(templateBean, templateBean.getId());
         String name = (String) DynamicDistributionUtils.calculate(templateBean, templateBean.getName());
         String description = (String) DynamicDistributionUtils.calculate(templateBean, templateBean.getDescription());
         String distribution = (String) DynamicDistributionUtils.calculate(templateBean, templateBean.getDistribution());
-        String repository = (String) DynamicDistributionUtils.calculate(templateBean, templateBean.getRepository());
+        String templateId = (String) DynamicDistributionUtils.calculate(templateBean, templateBean.getTemplateId());
         String baseVersion = (String) DynamicDistributionUtils.calculate(templateBean, templateBean.getBaseVersion());
         String topVersion = (String) DynamicDistributionUtils.calculate(templateBean, templateBean.getTopVersion());
 
-        templateBean.setAddRepositoryInMvnUri(addRepositoryInMvnUri);
         templateBean.setId(id);
         templateBean.setName(name);
         templateBean.setDescription(description);
         templateBean.setDistribution(distribution);
-        templateBean.setRepository(repository);
+        templateBean.setTemplateId(templateId);
         templateBean.setBaseVersion(baseVersion);
         templateBean.setTopVersion(topVersion);
 

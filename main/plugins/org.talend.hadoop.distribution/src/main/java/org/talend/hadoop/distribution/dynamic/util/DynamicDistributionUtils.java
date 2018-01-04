@@ -12,7 +12,10 @@
 // ============================================================================
 package org.talend.hadoop.distribution.dynamic.util;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -20,8 +23,10 @@ import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.talend.core.runtime.maven.MavenUrlHelper;
+import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.designer.maven.aether.node.DependencyNode;
 import org.talend.hadoop.distribution.dynamic.bean.IVariable;
+import org.talend.hadoop.distribution.i18n.Messages;
 
 /**
  * DOC cmeng  class global comment. Detailled comment
@@ -156,10 +161,37 @@ public class DynamicDistributionUtils {
         return variables;
     }
 
-    public static String getPluginKey(String distri, String version, String module) {
-        String key = "Dynamic_" + distri + "_" + version + "_" + module;
-        key = key.replaceAll("\\.", "_");
+    public static String getExtensionId(String id) {
+        // MUST have a DOT .!!!
+        return id + ".extensionId"; //$NON-NLS-1$
+    }
+
+    public static String getPluginKey(String distri, String version, String id, String module) {
+        String key = "DYNAMIC_" + id + "_" + module; //$NON-NLS-1$ //$NON-NLS-2$
+        key = formatId(key);
         return key;
+    }
+
+    public static String generateTimestampId() {
+        Calendar cal = Calendar.getInstance();
+        Date date = cal.getTime();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSSZ"); //$NON-NLS-1$
+        String timestamp = dateFormat.format(date);
+        timestamp = formatId(timestamp);
+        return timestamp;
+    }
+
+    public static String appendTimestamp(String versionId) {
+        String timestamp = DynamicDistributionUtils.generateTimestampId();
+        return versionId + "_" + timestamp; //$NON-NLS-1$
+    }
+
+    public static String formatId(String id) {
+        return id.replaceAll("[\\W]", "_"); //$NON-NLS-1$//$NON-NLS-2$
+    }
+
+    public static String getMvnUrl(DependencyNode node) {
+        return getMvnUrl(node, null);
     }
 
     public static String getMvnUrl(DependencyNode node, String repositoryUri) {
@@ -169,6 +201,14 @@ public class DynamicDistributionUtils {
         }
         return MavenUrlHelper.generateMvnUrl(repositoryUri, node.getGroupId(), node.getArtifactId(), node.getVersion(), null,
                 classifier);
+    }
+
+    public static void checkCancelOrNot(IDynamicMonitor monitor) throws InterruptedException {
+        if (monitor != null) {
+            if (monitor.isCanceled()) {
+                throw new InterruptedException(Messages.getString("DynamicDistributionUtils.monitor.userCancel")); //$NON-NLS-1$
+            }
+        }
     }
 
     private static class MapVariable implements IVariable {

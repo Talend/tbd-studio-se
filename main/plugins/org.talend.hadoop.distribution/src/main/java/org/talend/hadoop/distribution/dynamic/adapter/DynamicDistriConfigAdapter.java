@@ -17,10 +17,14 @@ import org.talend.core.runtime.dynamic.DynamicFactory;
 import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.hadoop.distribution.dynamic.DynamicConfiguration;
+import org.talend.hadoop.distribution.dynamic.DynamicConstants;
 import org.talend.hadoop.distribution.dynamic.bean.TemplateBean;
+import org.talend.hadoop.distribution.dynamic.util.DynamicDistributionUtils;
+import org.talend.hadoop.distribution.i18n.Messages;
+import org.talend.repository.ProjectManager;
 
 /**
- * DOC cmeng  class global comment. Detailled comment
+ * DOC cmeng class global comment. Detailled comment
  */
 public class DynamicDistriConfigAdapter extends AbstractDynamicAdapter {
 
@@ -29,6 +33,7 @@ public class DynamicDistriConfigAdapter extends AbstractDynamicAdapter {
     }
 
     public IDynamicPluginConfiguration adapt(IDynamicMonitor monitor) throws Exception {
+        DynamicDistributionUtils.checkCancelOrNot(monitor);
         resolve();
 
         IDynamicPluginConfiguration pluginConfiguration = DynamicFactory.getInstance().createDynamicPluginConfiguration();
@@ -36,20 +41,25 @@ public class DynamicDistriConfigAdapter extends AbstractDynamicAdapter {
         TemplateBean templateBean = getTemplateBean();
         DynamicConfiguration configuration = getConfiguration();
 
-        String description = templateBean.getDescription();
         String distribution = templateBean.getDistribution();
-        String repository = templateBean.getRepository();
+        String templateId = templateBean.getTemplateId();
 
         if (!StringUtils.equals(distribution, configuration.getDistribution())) {
-            throw new Exception("Different distribution: " + distribution + "<>" + configuration.getDistribution());
+            throw new Exception(
+                    Messages.getString("DynamicDistriConfigAdapter.diffDistri", distribution, configuration.getDistribution())); //$NON-NLS-1$
         }
 
-        pluginConfiguration.setId(configuration.getId());
+        String projectTechnicalName = ProjectManager.getInstance().getCurrentProject().getTechnicalLabel();
+        // String id = projectTechnicalName + "_" + configuration.getId(); //$NON-NLS-1$
+        String id = configuration.getId();
+        pluginConfiguration.setId(id);
         pluginConfiguration.setName(configuration.getName());
         pluginConfiguration.setVersion(configuration.getVersion());
-        pluginConfiguration.setDescription(description);
+        pluginConfiguration.setDescription(configuration.getDescription());
         pluginConfiguration.setDistribution(distribution);
-        pluginConfiguration.setRepository(repository);
+        pluginConfiguration.setTemplateId(templateId);
+        pluginConfiguration.setRepository(configuration.getRemoteRepositoryUrl());
+        pluginConfiguration.setAttribute(DynamicConstants.ATTR_PROJECT_TECHNICAL_NAME, projectTechnicalName);
 
         return pluginConfiguration;
     }
