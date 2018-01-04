@@ -223,7 +223,7 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
                     IDynamicPlugin dynamicPlugin = DynamicFactory.getInstance().createPluginFromJson(jsonContent);
                     IDynamicPluginConfiguration pluginConfiguration = dynamicPlugin.getPluginConfiguration();
                     pluginConfiguration.setAttribute(DynamicConstants.ATTR_FILE_PATH, absolutePath);
-                    pluginConfiguration.setAttribute(DynamicConstants.ATTR_IS_BUILDIN, Boolean.FALSE.toString());
+                    pluginConfiguration.setAttribute(DynamicConstants.ATTR_IS_BUILTIN, Boolean.FALSE.toString());
                     pluginConfiguration.setAttribute(DynamicConstants.ATTR_PROJECT_TECHNICAL_NAME, projTechName);
                     dynamicPlugins.add(dynamicPlugin);
                 } catch (Exception e) {

@@ -30,7 +30,7 @@ public class DynamicCDH5xDistribution extends AbstractDynamicDistribution implem
 
     public static final String TEMPLATE_FOLDER_PATH = "resources/template/cdh5x/"; //$NON-NLS-1$
 
-    public static final String BUILD_IN_FOLDER_PATH = "resources/buildin/cdh5x/"; //$NON-NLS-1$
+    public static final String BUILD_IN_FOLDER_PATH = "resources/builtin/cdh5x/"; //$NON-NLS-1$
 
     @Override
     protected IDynamicDistributionTemplate initTemplate(DynamicPluginAdapter pluginAdapter, IDynamicMonitor monitor)

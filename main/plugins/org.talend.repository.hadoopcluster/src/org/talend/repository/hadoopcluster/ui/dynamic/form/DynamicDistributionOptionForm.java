@@ -110,7 +110,7 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
 
     private DynamicConfiguration dynamicConfiguration;
 
-    private List<IDynamicPlugin> allBuildinDynamicPlugins;
+    private List<IDynamicPlugin> allBuiltinDynamicPlugins;
 
     private List<IDynamicPlugin> allCurrentUsersDynamicPlugins;
 
@@ -540,11 +540,11 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
         List<IDynamicPlugin> distriDynamicPlugins = new LinkedList<>();
 
         /**
-         * Can't edit buildin plugins
+         * Can't edit builtin plugins
          */
-        allBuildinDynamicPlugins = dynamicDistributionsGroup.getAllBuiltinDynamicPlugins(monitor);
-        if (allBuildinDynamicPlugins != null && !allBuildinDynamicPlugins.isEmpty()) {
-            distriDynamicPlugins.addAll(allBuildinDynamicPlugins);
+        allBuiltinDynamicPlugins = dynamicDistributionsGroup.getAllBuiltinDynamicPlugins(monitor);
+        if (allBuiltinDynamicPlugins != null && !allBuiltinDynamicPlugins.isEmpty()) {
+            distriDynamicPlugins.addAll(allBuiltinDynamicPlugins);
         }
 
         // List<IDynamicPlugin> allUsersDynamicPlugins = DynamicDistributionManager.getInstance()
@@ -571,12 +571,12 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
         if (namePluginMap == null || namePluginMap.isEmpty()) {
             namePluginMap = new HashMap<>();
             DynamicDistributionSetupData dynamicBuildConfigurationData = getDynamicDistributionSetupData();
-            if (allBuildinDynamicPlugins == null || allBuildinDynamicPlugins.isEmpty()) {
+            if (allBuiltinDynamicPlugins == null || allBuiltinDynamicPlugins.isEmpty()) {
                 copyAllUsersDynamicPlugins(new DummyDynamicMonitor(),
                         dynamicBuildConfigurationData.getDynamicDistributionsGroup());
             }
-            if (allBuildinDynamicPlugins != null) {
-                for (IDynamicPlugin plugin : allBuildinDynamicPlugins) {
+            if (allBuiltinDynamicPlugins != null) {
+                for (IDynamicPlugin plugin : allBuiltinDynamicPlugins) {
                     IDynamicPluginConfiguration pluginConfiguration = plugin.getPluginConfiguration();
                     String name = pluginConfiguration.getName();
                     namePluginMap.put(name, plugin);
@@ -613,9 +613,9 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
         IDynamicMonitor monitor = new DummyDynamicMonitor();
         DynamicDistributionManager dynDistrManager = DynamicDistributionManager.getInstance();
         List<IDynamicPlugin> allDynamicPlugins = new LinkedList<>();
-        List<IDynamicPlugin> allBuildinDynamicPlugins = dynDistrManager.getAllBuiltinDynamicPlugins(monitor);
-        if (allBuildinDynamicPlugins != null && !allBuildinDynamicPlugins.isEmpty()) {
-            allDynamicPlugins.addAll(allBuildinDynamicPlugins);
+        List<IDynamicPlugin> allBuiltinDynamicPlugins = dynDistrManager.getAllBuiltinDynamicPlugins(monitor);
+        if (allBuiltinDynamicPlugins != null && !allBuiltinDynamicPlugins.isEmpty()) {
+            allDynamicPlugins.addAll(allBuiltinDynamicPlugins);
         }
         List<IDynamicPlugin> allUsesDynamicPlugins = dynDistrManager.getAllUsersDynamicPlugins(monitor);
         if (allUsesDynamicPlugins != null && !allUsesDynamicPlugins.isEmpty()) {
@@ -823,12 +823,12 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
 
         getDynamicDistributionSetupData().setDynamicPlugin(dynamicPlugin);
         IDynamicPluginConfiguration pluginConfiguration = dynamicPlugin.getPluginConfiguration();
-        boolean isBuildin = isBuildinDynamicConfiguration(dynamicPlugin);
+        boolean isBuiltin = isBuiltinDynamicConfiguration(dynamicPlugin);
         boolean isInCurrentProject = isInCurrentProject(dynamicPlugin);
-        getDynamicDistributionSetupData().setReadonly(isBuildin || !isInCurrentProject || isReadonly());
+        getDynamicDistributionSetupData().setReadonly(isBuiltin || !isInCurrentProject || isReadonly());
 
-        if (isBuildin) {
-            String warnMessage = Messages.getString("DynamicDistributionOptionForm.editExisting.buildin", //$NON-NLS-1$
+        if (isBuiltin) {
+            String warnMessage = Messages.getString("DynamicDistributionOptionForm.editExisting.builtin", //$NON-NLS-1$
                     pluginConfiguration.getName());
             showMessage(warnMessage, WizardPage.WARNING);
         }
@@ -926,14 +926,14 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
         importConfigText.setToolTipText(""); //$NON-NLS-1$
     }
 
-    private boolean isBuildinDynamicConfiguration(IDynamicPlugin dynamicPlugin) {
-        boolean isBuildin = true;
+    private boolean isBuiltinDynamicConfiguration(IDynamicPlugin dynamicPlugin) {
+        boolean isBuiltin = true;
 
-        if (allBuildinDynamicPlugins != null) {
-            isBuildin = allBuildinDynamicPlugins.contains(dynamicPlugin);
+        if (allBuiltinDynamicPlugins != null) {
+            isBuiltin = allBuiltinDynamicPlugins.contains(dynamicPlugin);
         }
 
-        return isBuildin;
+        return isBuiltin;
     }
 
     private boolean isInCurrentProject(IDynamicPlugin dynamicPlugin) {

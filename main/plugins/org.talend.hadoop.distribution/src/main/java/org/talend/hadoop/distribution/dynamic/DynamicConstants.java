@@ -25,7 +25,7 @@ public class DynamicConstants {
 
     public static final String ATTR_FILE_PATH = "filePath"; //$NON-NLS-1$
 
-    public static final String ATTR_IS_BUILDIN = "isBuildin"; //$NON-NLS-1$
+    public static final String ATTR_IS_BUILTIN = "isBuiltin"; //$NON-NLS-1$
 
     public static final String ATTR_LAST_MODIFIED_USER = "lastModifiedUser"; //$NON-NLS-1$
 

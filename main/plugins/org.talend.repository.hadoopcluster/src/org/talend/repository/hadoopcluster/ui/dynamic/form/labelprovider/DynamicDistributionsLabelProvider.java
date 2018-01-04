@@ -31,10 +31,10 @@ public class DynamicDistributionsLabelProvider extends LabelProvider {
         if (element instanceof IDynamicPlugin) {
             IDynamicPluginConfiguration pluginConfiguration = ((IDynamicPlugin) element).getPluginConfiguration();
             String name = pluginConfiguration.getName();
-            String isBuildinStr = (String) pluginConfiguration.getAttribute(DynamicConstants.ATTR_IS_BUILDIN);
-            boolean isBuildin = Boolean.valueOf(isBuildinStr);
-            if (isBuildin) {
-                name = Messages.getString("DynamicDistributionsLabelProvider.label.existing.buildin", name); //$NON-NLS-1$
+            String isBuiltinStr = (String) pluginConfiguration.getAttribute(DynamicConstants.ATTR_IS_BUILTIN);
+            boolean isBuiltin = Boolean.valueOf(isBuiltinStr);
+            if (isBuiltin) {
+                name = Messages.getString("DynamicDistributionsLabelProvider.label.existing.builtin", name); //$NON-NLS-1$
             } else {
                 Project curProj = ProjectManager.getInstance().getCurrentProject();
                 String curProjTechName = curProj.getTechnicalLabel();

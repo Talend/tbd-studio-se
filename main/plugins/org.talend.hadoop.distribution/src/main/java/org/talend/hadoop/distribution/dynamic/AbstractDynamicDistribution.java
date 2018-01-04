@@ -131,7 +131,7 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
                         IDynamicPluginConfiguration pluginConfiguration = dynamicPlugin.getPluginConfiguration();
                         // pluginConfiguration.setAttribute(DynamicDistriConfigAdapter.ATTR_FILE_PATH,
                         // builtinDistributionPath);
-                        pluginConfiguration.setAttribute(DynamicConstants.ATTR_IS_BUILDIN, Boolean.TRUE.toString());
+                        pluginConfiguration.setAttribute(DynamicConstants.ATTR_IS_BUILTIN, Boolean.TRUE.toString());
                         pluginConfiguration.setAttribute(DynamicConstants.ATTR_PROJECT_TECHNICAL_NAME, curProjTechName);
                         dynamicPlugins.add(dynamicPlugin);
                     }
@@ -287,9 +287,9 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
         pluginAdapter.adapt();
 
         IDynamicPluginConfiguration pluginConfiguration = pluginAdapter.getPluginConfiguration();
-        boolean isBuiltin = Boolean.parseBoolean((String) pluginConfiguration.getAttribute(DynamicConstants.ATTR_IS_BUILDIN));
+        boolean isBuiltin = Boolean.parseBoolean((String) pluginConfiguration.getAttribute(DynamicConstants.ATTR_IS_BUILTIN));
         if (isBuiltin) {
-            pluginConfiguration.setName(Messages.getString("DynamicDistribution.name.buildin", pluginConfiguration.getName())); //$NON-NLS-1$
+            pluginConfiguration.setName(Messages.getString("DynamicDistribution.name.builtin", pluginConfiguration.getName())); //$NON-NLS-1$
         } else {
             Project currentProject = ProjectManager.getInstance().getCurrentProject();
             String curProjLabel = currentProject.getTechnicalLabel();
