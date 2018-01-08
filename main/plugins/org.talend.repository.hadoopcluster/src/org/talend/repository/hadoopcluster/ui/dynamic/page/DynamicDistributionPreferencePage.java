@@ -77,21 +77,30 @@ public class DynamicDistributionPreferencePage extends ProjectSettingPage {
 
     @Override
     protected void performApply() {
-        getCurrentForm().performApply();
+        AbstractDynamicDistributionForm currentForm = getCurrentForm();
+        if (currentForm != null) {
+            currentForm.performApply();
+        }
         super.performApply();
     }
 
     @Override
     protected void performDefaults() {
-        getCurrentForm().performDefaults();
+        AbstractDynamicDistributionForm currentForm = getCurrentForm();
+        if (currentForm != null) {
+            currentForm.performDefaults();
+        }
         super.performDefaults();
     }
 
     @Override
     public boolean performOk() {
-        boolean isOk = getCurrentForm().performOk();
-        if (!isOk) {
-            return false;
+        AbstractDynamicDistributionForm currentForm = getCurrentForm();
+        if (currentForm != null) {
+            boolean isOk = currentForm.performOk();
+            if (!isOk) {
+                return false;
+            }
         }
         return super.performOk();
     }
