@@ -272,8 +272,8 @@
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hadoop-aws-HDP_2_6"
-            name="hadoop-aws-2.7.3.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hadoop-aws-2.7.3.2.6.0.3-8/6.4.0">
+            name="hadoop-aws-2.8.3.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-aws-2.8.3/6.4.0">
         </libraryNeeded>
 		
 		<!-- ?? -->
@@ -417,6 +417,13 @@
             mvn_uri="mvn:org.talend.libraries/aws-java-sdk-s3-1.10.6/6.4.0">
         </libraryNeeded>
         
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.hdp260"
+            id="aws-java-sdk-sts-1.10.6"
+            name="aws-java-sdk-sts-1.10.6.jar"
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-sts-1.10.6/6.0.0">
+        </libraryNeeded>
+
         <libraryNeeded
 		    context="plugin:org.talend.hadoop.distribution.hdp260"
 		    id="datanucleus-api-jdo-4.2.1"
@@ -692,7 +699,6 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="guice-servlet-3.0.jar" name="guice-servlet-3.0.jar" mvn_uri="mvn:org.talend.libraries/guice-servlet-3.0/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="hadoop-annotations-2.7.3.2.6.0.3-8.jar" name="hadoop-annotations-2.7.3.2.6.0.3-8.jar" mvn_uri="mvn:org.talend.libraries/hadoop-annotations-2.7.3.2.6.0.3-8/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="hadoop-auth-2.7.3.2.6.0.3-8.jar" name="hadoop-auth-2.7.3.2.6.0.3-8.jar" mvn_uri="mvn:org.talend.libraries/hadoop-auth-2.7.3.2.6.0.3-8/6.4.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="hadoop-aws-2.7.3.2.6.0.3-8.jar" name="hadoop-aws-2.7.3.2.6.0.3-8.jar" mvn_uri="mvn:org.talend.libraries/hadoop-aws-2.7.3.2.6.0.3-8/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="hadoop-azure-2.7.3.2.6.0.3-8.jar" name="hadoop-azure-2.7.3.2.6.0.3-8.jar" mvn_uri="mvn:org.talend.libraries/hadoop-azure-2.7.3.2.6.0.3-8/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="hadoop-azure-datalake-2.7.3.2.6.0.3-8.jar" name="hadoop-azure-datalake-2.7.3.2.6.0.3-8.jar" mvn_uri="mvn:org.talend.libraries/hadoop-azure-datalake-2.7.3.2.6.0.3-8/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="hadoop-client-2.7.3.2.6.0.3-8.jar" name="hadoop-client-2.7.3.2.6.0.3-8.jar" mvn_uri="mvn:org.talend.libraries/hadoop-client-2.7.3.2.6.0.3-8/6.4.0"/>
@@ -1321,7 +1327,7 @@
             <library id="guice-servlet-3.0.jar" />
             <library id="hadoop-annotations-2.7.3.2.6.0.3-8.jar" />
             <library id="hadoop-auth-2.7.3.2.6.0.3-8.jar" />
-            <library id="hadoop-aws-2.7.3.2.6.0.3-8.jar" />
+            <library id="hadoop-aws-HDP_2_6.jar" />
             <library id="hadoop-azure-2.7.3.2.6.0.3-8.jar" />
             <library id="hadoop-azure-datalake-2.7.3.2.6.0.3-8.jar" />
             <library id="hadoop-client-2.7.3.2.6.0.3-8.jar" />
@@ -1510,6 +1516,7 @@
                 name="SPARK-S3-LIB-MRREQUIRED-HDP_2_6">
              <library id="hadoop-aws-HDP_2_6"/>
              <library id="aws-java-sdk-core-1.10.6.jar"/>
+             <library id="aws-java-sdk-sts-1.10.6"/>
              <library id="jets3t-0.9.0" />
              <library id="httpclient-4.2.5.jar" />
              <library id="httpcore-4.2.5.jar" />
