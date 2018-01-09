@@ -50,6 +50,7 @@ import org.talend.hadoop.distribution.hdinsight360.modulegroup.HDInsight36PigOut
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.HDInsight36SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.HDInsight36SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.pigoutput.HDInsight36PigOutputNodeModuleGroup;
+import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.sparkbatch.HDInsight36SparkBatchGraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.sparkbatch.HDInsight36SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.sparkbatch.HDInsight36SparkBatchSQLNodeModuleGroup;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.sparkbatch.HDInsight36SparkBatchTModelEncoderNodeModuleGroup;
@@ -99,6 +100,10 @@ public class HDInsight36Distribution extends AbstractDistribution implements Spa
                 HDInsight36SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
                 HDInsight36SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
+        
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
+        		HDInsight36SparkBatchGraphFramesNodeModuleGroup.getModuleGroups(distribution, version));
+        
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.SPARK_SQL_ROW_COMPONENT),
                 HDInsight36SparkBatchSQLNodeModuleGroup.getModuleGroups(distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.TMODEL_ENCODER_COMPONENT),
