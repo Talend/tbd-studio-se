@@ -151,6 +151,8 @@ public class EMR550Distribution extends AbstractDistribution implements HBaseCom
         // Spark Batch S3 nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.S3_CONFIGURATION_COMPONENT),
                 EMR550SparkBatchS3NodeModuleGroup.getModuleGroups(distribution, version));
+        
+        // Spark Batch DQ matching
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
                 EMR550GraphFramesNodeModuleGroup.getModuleGroups(distribution, version));
 
