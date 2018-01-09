@@ -125,7 +125,7 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.S3_CONFIGURATION_COMPONENT),
                 HDP260SparkBatchS3NodeModuleGroup.getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
-                HDP260GraphFramesNodeModuleGroup.getModuleGroups());
+                HDP260GraphFramesNodeModuleGroup.getModuleGroups(distribution, version, null));
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.PARQUET_INPUT_COMPONENT), HDP260SparkStreamingParquetNodeModuleGroup.getModuleGroups());
