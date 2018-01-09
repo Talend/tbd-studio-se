@@ -309,9 +309,9 @@
         <!-- GraphFrames libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh580spark2"
-            id="graphframes-0.3.0-spark1.6-s_2.10.jar"
-            name="graphframes-0.3.0-spark1.6-s_2.10.jar"
-            mvn_uri="mvn:org.talend.libraries/graphframes-0.3.0-spark1.6-s_2.10/6.0.0">
+            id="graphframes-0.5.0-spark2.0-s_2.11.jar"
+            name="graphframes-0.5.0-spark2.0-s_2.11.jar"
+            mvn_uri="mvn:org.talend.libraries/graphframes-0.5.0-spark2.0-s_2.11/6.0.0">
         </libraryNeeded>
         
         <!-- Third parties libraries -->
@@ -821,7 +821,7 @@
                 description="GraphFrames libraries for CDH 5.8 that are MRREQUIRED"
                 id="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-CDH580_SPARK2"
                 name="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-CDH580_SPARK2">
-             <library id="graphframes-0.3.0-spark1.6-s_2.10.jar" />
+             <library id="graphframes-0.5.0-spark2.0-s_2.11.jar" />
         </libraryNeededGroup>
         
         <!-- Spark Hive group MRREQUIRED -->

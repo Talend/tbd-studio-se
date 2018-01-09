@@ -337,9 +337,9 @@
         <!-- GraphFrames libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5100"
-            id="graphframes-0.3.0-spark1.6-s_2.10.jar"
-            name="graphframes-0.3.0-spark1.6-s_2.10.jar"
-            mvn_uri="mvn:org.talend.libraries/graphframes-0.3.0-spark1.6-s_2.10/6.0.0">
+            id="graphframes-0.5.0-spark1.6-s_2.10.jar"
+            name="graphframes-0.5.0-spark1.6-s_2.10.jar"
+            mvn_uri="mvn:org.talend.libraries/graphframes-0.5.0-spark1.6-s_2.10/6.0.0">
         </libraryNeeded>
 
         <!-- Third parties libraries -->
@@ -935,7 +935,7 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="spark-streaming-kafka-0-10_2.11-2.1.0.cloudera1" name="spark-streaming-kafka-0-10_2.11-2.1.0.cloudera1.jar" mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka-0-10_2.11-2.1.0.cloudera1/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="kafka_2.11-0.10.0-kafka-2.1.0" name="kafka_2.11-0.10.0-kafka-2.1.0.jar" mvn_uri="mvn:org.talend.libraries/kafka_2.11-0.10.0-kafka-2.1.0/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="kafka-clients-0.10.0-kafka-2.1.0" name="kafka-clients-0.10.0-kafka-2.1.0.jar" mvn_uri="mvn:org.talend.libraries/kafka-clients-0.10.0-kafka-2.1.0/6.4.0"/>
-
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="graphframes-0.5.0-spark2.1-s_2.11.jar" name="graphframes-0.5.0-spark2.1-s_2.11.jar" mvn_uri="mvn:org.talend.libraries/graphframes-0.5.0-spark2.1-s_2.11/6.0.0"/>
         <!-- Groups -->
 
         <!-- HDFS common group -->
@@ -1492,7 +1492,15 @@
                 description="GraphFrames libraries for CDH 5.10 that are MRREQUIRED"
                 id="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-CDH_5_10"
                 name="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-CDH_5_10">
-             <library id="graphframes-0.3.0-spark1.6-s_2.10.jar" />
+             <library id="graphframes-0.5.0-spark1.6-s_2.10.jar" />
+        </libraryNeededGroup>
+
+        <!-- spark 2 GraphFrames group MRREQUIRED -->
+        <libraryNeededGroup
+                description="GraphFrames libraries for CDH 5.10 that are MRREQUIRED"
+                id="SPARK2-GRAPHFRAMES-LIB-MRREQUIRED-CDH_5_10"
+                name="SPARK2-GRAPHFRAMES-LIB-MRREQUIRED-CDH_5_10">
+             <library id="graphframes-0.5.0-spark2.1-s_2.11.jar" />
         </libraryNeededGroup>
 
         <!-- Spark Hive group MRREQUIRED -->
