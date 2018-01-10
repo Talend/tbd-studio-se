@@ -35,6 +35,7 @@ public class Altus10SparkBatchModuleGroup {
      hs.add(new DistributionModuleGroup(Altus10Constant.MAPREDUCE_MODULE_GROUP.getModuleName(), false, condition));
      hs.add(new DistributionModuleGroup(Altus10Constant.SPARK_MODULE_GROUP.getModuleName(), false, condition));
      hs.add(new DistributionModuleGroup(Altus10Constant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), true, condition));
+     hs.add(new DistributionModuleGroup(Altus10Constant.GRAPHFRAMES_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
      return hs;
  }
 }

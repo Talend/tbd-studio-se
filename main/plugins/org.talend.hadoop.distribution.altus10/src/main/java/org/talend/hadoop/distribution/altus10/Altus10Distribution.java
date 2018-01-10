@@ -26,6 +26,7 @@ import org.talend.hadoop.distribution.NodeComponentTypeBean;
 import org.talend.hadoop.distribution.altus10.modulegroup.Altus10SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.altus10.modulegroup.Altus10SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.altus10.modulegroup.node.spark.Altus10SparkDynamoDBNodeModuleGroup;
+import org.talend.hadoop.distribution.altus10.modulegroup.node.spark.Altus10SparkGraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
@@ -87,6 +88,8 @@ public class Altus10Distribution extends AbstractDistribution implements SparkBa
                 dynamoDBNodeModuleGroups);
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_CONFIGURATION_COMPONENT),
                 dynamoDBConfigurationModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
+                Altus10SparkGraphFramesNodeModuleGroup.getModuleGroups(distribution, version, null));
         // ... in Spark streaming
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_INPUT_COMPONENT),
                 dynamoDBNodeModuleGroups);
