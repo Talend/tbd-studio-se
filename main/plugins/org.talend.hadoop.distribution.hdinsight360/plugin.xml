@@ -247,6 +247,7 @@
              <library id="scala-reflect-2.11.8" />
              <library id="spark-catalyst_2.11-2.1.0.2.6.0.2-76" />
              <library id="spark-sql_2.11-2.1.0.2.6.0.2-76" />
+             <library id="spark-graphx_2.11-2.1.0.2.6.0.2-76" />
         </libraryNeededGroup>
 
         <!-- Spark SQL group MRREQUIRED -->
