@@ -15,7 +15,7 @@
   </HEADER>
 
   <FAMILIES>
-    <FAMILY>Databases/HBase</FAMILY>
+    <FAMILY>Databases NoSQL/HBase</FAMILY>
 	<FAMILY>Big Data/HBase</FAMILY>
   </FAMILIES>
 

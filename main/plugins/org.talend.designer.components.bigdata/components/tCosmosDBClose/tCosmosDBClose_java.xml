@@ -14,7 +14,6 @@
     	<SIGNATURE></SIGNATURE>
 	</HEADER>
 	<FAMILIES>
-		<FAMILY>Databases/Azure/Cosmos DB</FAMILY>
 		<FAMILY>Cloud/Azure/Cosmos DB</FAMILY>
 	</FAMILIES>
 	<DOCUMENTATION>
