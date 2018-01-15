@@ -70,4 +70,6 @@ public final class SparkBatchConstant {
 
     public static final String TMODEL_ENCODER_COMPONENT = "tModelEncoder"; //$NON-NLS-1$
 
+    public static final String ALTUS_CLOUD_PROVIDER = "ALTUS_CLOUD_PROVIDER";
+
 }

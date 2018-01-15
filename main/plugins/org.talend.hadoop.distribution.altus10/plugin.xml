@@ -6,9 +6,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.altus10"
-            id="talend-bigdata-launcher-1.2.2-20170613.jar"
-            name="talend-bigdata-launcher-1.2.2-20170613.jar"
-            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-1.2.2-20170613/6.0.0">
+            id="talend-bigdata-launcher-1.2.2-20180101.jar"
+            name="talend-bigdata-launcher-1.2.2-20180101.jar"
+            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-1.2.2-20180101/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
@@ -47,6 +47,13 @@
             mvn_uri="mvn:org.talend.libraries/graphframes-0.5.0-spark2.1-s_2.11/6.0.0">
         </libraryNeeded>
 
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.altus10"
+            id="azure-data-lake-store-sdk-2.2.3.jar"
+            name="azure-data-lake-store-sdk-2.2.3.jar"
+            mvn_uri="mvn:org.talend.libraries/azure-data-lake-store-sdk-2.2.3/6.0.0">
+        </libraryNeeded>
+
         <!-- HDFS common group -->
         <libraryNeededGroup
                 description="HDFS libraries for Altus 1.0"
@@ -75,7 +82,7 @@
         	  description="Big Data launcher libraries for Altus 1.0"
               id="BIGDATA-LAUNCHER-LIB-ALTUS10"
               name="BIGDATA-LAUNCHER-LIB-ALTUS10">
-            <library id="talend-bigdata-launcher-1.2.2-20170613.jar"/>
+            <library id="talend-bigdata-launcher-1.2.2-20180101.jar"/>
         </libraryNeededGroup>
         
         <!-- HDFS Spark 1.6 group -->
@@ -83,7 +90,7 @@
                 description="HDFS libraries for Altus 1.0"
                 id="SPARK-LIB-ALTUS10"
                 name="SPARK-LIB-ALTUS10" >
-            <group id="SPARK-S3-LIB-MRREQUIRED-ALTUS10"/>
+            <!-- <group id="SPARK-S3-LIB-MRREQUIRED-ALTUS10"/> -->
         	<library id="httpclient-4.5.2.jar"/>
             <library id="httpcore-4.4.4.jar"/>
             <library id="guava-14.0.1.jar" />
@@ -329,19 +336,17 @@
 			<library id="commons-pool2-2.4.2.jar"/>
         </libraryNeededGroup>
         
-        <!-- Spark Azure group MRREQUIRED 
-             Azure Blob & Datalake support have been disabled for now on this distribution
-             New versions of this distribution should be tested for Azure support and
-             the changes backported to all earlier versions
+        <!-- Spark Azure group MRREQUIRED --> 
         <libraryNeededGroup
-                description="Spark Azure libraries for CDH 5.8 that are MRREQUIRED"
-                id="SPARK-AZURE-LIB-MRREQUIRED-CDH_5_8"
-                name="SPARK-AZURE-LIB-MRREQUIRED-CDH_5_8">
+                description="Spark Azure libraries that are MRREQUIRED"
+                id="SPARK-AZURE-LIB-MRREQUIRED-ALTUS10"
+                name="SPARK-AZURE-LIB-MRREQUIRED-ALTUS10">
+                <library id="azure-data-lake-store-sdk-2.2.3.jar"/>
                 <library id="azure-storage-2.2.0"/>
                 <library id="hadoop-azure-2.7.4"/>
-                <library id="jetty-util-6.1.26"/>
-        </libraryNeededGroup> -->
-        
+                <library id="jetty-util-6.1.26.cloudera.2.jar"/>
+        </libraryNeededGroup>
+                
    </extension>
    <extension
          point="org.talend.core.runtime.classloader_provider">        

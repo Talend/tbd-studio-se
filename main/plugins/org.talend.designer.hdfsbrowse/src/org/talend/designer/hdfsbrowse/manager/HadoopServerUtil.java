@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URI;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -28,9 +29,11 @@ import java.util.Set;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
+import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.talend.commons.exception.ExceptionHandler;
+import org.talend.core.classloader.ClassLoaderFactory;
 import org.talend.core.classloader.DynamicClassLoader;
 import org.talend.core.hadoop.conf.EHadoopConfProperties;
 import org.talend.core.model.general.ModuleNeeded;
@@ -176,6 +179,7 @@ public class HadoopServerUtil {
                 assert namenodePrincipal != null;
                 userName = null;
                 EHadoopConfProperties.KERBEROS_PRINCIPAL.set(conf, namenodePrincipal);
+                EHadoopConfProperties.AUTHENTICATION.set(conf, "KERBEROS"); //$NON-NLS-1$
             }
             if (group != null) {
                 assert userName != null;
@@ -411,21 +415,42 @@ public class HadoopServerUtil {
      * @return
      */
     public static Set<String> getMissingJars(HDFSConnectionBean connection) {
-        Set<String> set = new HashSet<String>();
         Set<String> jars = new HashSet<String>();
-        ClassLoader classLoader = HadoopClassLoaderFactory.getClassLoader(connection.getDistribution(),
-                connection.getDfVersion(), connection.isEnableKerberos(), false);
-        if (classLoader instanceof DynamicClassLoader) {
-            set.addAll(((DynamicClassLoader) classLoader).getLibraries());
-        }
-        Set jarsNeed = ModulesNeededProvider.getModulesNeeded();
-        for (Object jar : jarsNeed) {
-            if (jar instanceof ModuleNeeded) {
-                String jarName = ((ModuleNeeded) jar).getModuleName();
-                if (set.contains(jarName) && ((ModuleNeeded) jar).getStatus().equals(ELibraryInstallStatus.NOT_INSTALLED)) {
-                    jars.add(jarName);
-                }
+        Set<String> set = getJarsNeeded(connection);
+        Set<ModuleNeeded> modulesNeeded = ModulesNeededProvider.getModulesNeeded();
+        for (ModuleNeeded module : modulesNeeded) {
+            String id = module.getId();
+            if (id != null && set.contains(id) && module.getStatus().equals(ELibraryInstallStatus.NOT_INSTALLED)) {
+                jars.add(module.getModuleName());
             }
+        }
+        return jars;
+    }
+
+    private static Set<String> getJarsNeeded(HDFSConnectionBean connection) {
+        String index = "HDFS" + ":" + connection.getDistribution() + ":" + connection.getDfVersion(); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        if (connection.isEnableKerberos()) {
+            index += "?USE_KRB"; //$NON-NLS-1$
+        }
+        return getJarsNeeded(index);
+    }
+
+    private static Set<String> getJarsNeeded(String index) {
+        Set<String> jars = new HashSet<String>();
+        IConfigurationElement configElement = ClassLoaderFactory.findIndex(index);
+        if (configElement == null) {
+            return jars;
+        }
+        String parentIndex = configElement.getAttribute(ClassLoaderFactory.PARENT_ATTR);
+        if (StringUtils.isNotEmpty(parentIndex)) {
+            Set<String> parentJars = getJarsNeeded(parentIndex);
+            if (parentJars != null && !parentJars.isEmpty()) {
+                jars.addAll(parentJars);
+            }
+        }
+        String[] jarsNeeded = ClassLoaderFactory.getLibs(index);
+        if (jarsNeeded != null && 0 < jarsNeeded.length) {
+            jars.addAll(Arrays.asList(jarsNeeded));
         }
         return jars;
     }
