@@ -714,6 +714,7 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="hive-cli-1.2.1000.2.6.0.3-8.jar" name="hive-cli-1.2.1000.2.6.0.3-8.jar" mvn_uri="mvn:org.talend.libraries/hive-cli-1.2.1000.2.6.0.3-8/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="hive-exec-1.2.1000.2.6.0.3-8.jar" name="hive-exec-1.2.1000.2.6.0.3-8.jar" mvn_uri="mvn:org.talend.libraries/hive-exec-1.2.1000.2.6.0.3-8/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="hive-jdbc-1.2.1000.2.6.0.3-8.jar" name="hive-jdbc-1.2.1000.2.6.0.3-8.jar" mvn_uri="mvn:org.talend.libraries/hive-jdbc-1.2.1000.2.6.0.3-8/6.4.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="hive-metastore-1.2.1000.2.6.0.3-8.jar" name="hive-metastore-1.2.1000.2.6.0.3-8.jar" mvn_uri="mvn:org.talend.libraries/hive-metastore-1.2.1000.2.6.0.3-8/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="hk2-api-2.4.0-b34.jar" name="hk2-api-2.4.0-b34.jar" mvn_uri="mvn:org.talend.libraries/hk2-api-2.4.0-b34/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="hk2-locator-2.4.0-b34.jar" name="hk2-locator-2.4.0-b34.jar" mvn_uri="mvn:org.talend.libraries/hk2-locator-2.4.0-b34/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="hk2-utils-2.4.0-b34.jar" name="hk2-utils-2.4.0-b34.jar" mvn_uri="mvn:org.talend.libraries/hk2-utils-2.4.0-b34/6.4.0"/>
@@ -1342,7 +1343,7 @@
             <library id="hive-cli-1.2.1000.2.6.0.3-8.jar" />
             <library id="hive-exec-1.2.1000.2.6.0.3-8.jar" />
             <library id="hive-jdbc-1.2.1000.2.6.0.3-8.jar" />
-            <library id="hive-metastore-HDP_2_6"/>
+            <library id="hive-metastore-1.2.1000.2.6.0.3-8.jar"/>
             <library id="hk2-api-2.4.0-b34.jar" />
             <library id="hk2-locator-2.4.0-b34.jar" />
             <library id="hk2-utils-2.4.0-b34.jar" />
