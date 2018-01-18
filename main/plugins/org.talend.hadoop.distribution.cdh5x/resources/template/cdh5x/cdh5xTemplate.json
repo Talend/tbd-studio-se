@@ -343,6 +343,16 @@
 		},
 
 		{
+			"id": "hive-jdbc-for-impala",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.hive",
+			"artifactId": "hive-jdbc",
+			"classifier": "",
+			"description": ""
+		},
+
+		{
 			"id": "hive-jdbc",
 			"type": "BASE",
 			"context": "{properties.context}",
@@ -353,8 +363,8 @@
 			"exclusions": 
 			[
 				{
-					"groupId": "org.apache.curator",
-					"artifactId": "apache-curator",
+					"groupId": "commons-logging",
+					"artifactId": "commons-logging",
 					"classifier": "",
 					"extension": "",
 					"description": ""
@@ -363,6 +373,510 @@
 				{
 					"groupId": "eigenbase",
 					"artifactId": "eigenbase-properties",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "jline",
+					"artifactId": "jline",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "junit",
+					"artifactId": "junit",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.mockito",
+					"artifactId": "mockito-all",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.slf4j",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.apache.curator",
+					"artifactId": "apache-curator",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-common",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-serde",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-shims",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "javax.activation",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "antlr",
+					"artifactId": "antlr",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "org.apache.rat",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "asm",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "org.apache.avro",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "com.jolbox",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "commons-cli",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "commons-collections",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "commons-dbcp",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "commons-codec",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "commons-configuration",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "commons-digester",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "commons-el",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "commons-io",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "commons-net",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "org.apache.commons",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "commons-lang",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "commons-pool",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "org.apache.geronimo.specs",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "com.google.guava",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "com.fasterxml.jackson.core",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "jdiff",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "org.eclipse.jetty.aggregate",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "joda-time",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "com.google.code.findbugs",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "javax.transaction",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "javax.mail",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "com.codahale.metrics",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "net.sf.opencsv",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "javax.servlet",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "org.antlr",
+					"artifactId": "stringtemplate",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.apache.directory.server",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.apache.directory.api",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "commons-beanutils",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "com.google.code.gson",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.apache.hadoop",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.apache.htrace",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.codehaus.jackson",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.jamon",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "tomcat",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "javax.xml.bind",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "net.java.dev.jets3t",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.codehaus.jettison",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.mortbay.jetty",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "net.sf.jpam",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "com.jcraft",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "javax.servlet.jsp",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.apache.thrift",
+					"artifactId": "libfb303",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.cloudera.logredactor",
+					"artifactId": "logredactor",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "com.google.protobuf",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "javax.xml.stream",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "xmlenc",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "log4j",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.apache.curator",
+					"artifactId": "curator-recipes",
 					"classifier": "",
 					"extension": "",
 					"description": ""
@@ -397,6 +911,102 @@
 			"exclusions": 
 			[
 				{
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-ant",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-shims",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "commons-codec",
+					"artifactId": "commons-codec",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "commons-io",
+					"artifactId": "commons-io",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.cloudera.logredactor",
+					"artifactId": "logredactor",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "commons-logging",
+					"artifactId": "commons-logging",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "log4j",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.antlr",
+					"artifactId": "ST4",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.apache.ant",
+					"artifactId": "ant",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.apache.commons",
+					"artifactId": "commons-compress",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.apache.thrift",
+					"artifactId": "libfb303",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.apache.ivy",
+					"artifactId": "ivy",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
 					"groupId": "org.apache.curator",
 					"artifactId": "apache-curator",
 					"classifier": "",
@@ -404,6 +1014,326 @@
 					"description": ""
 				},
 
+				{
+					"groupId": "org.apache.curator",
+					"artifactId": "curator-test",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.codehaus.groovy",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.apache.calcite",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "com.google.code.gson",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "stax",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "com.twitter",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "junit",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.mockito",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "jline",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.apache.tez",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+
+				{
+					"groupId": "org.apache.spark",
+					"artifactId": "spark-core_2.10",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "org.apache.hadoop",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "org.apache.hbase",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "org.slf4j",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "javax.activation",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "antlr",
+					"artifactId": "antlr",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "org.apache.rat",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "asm",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "org.apache.avro",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "com.jolbox",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "commons-cli",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "commons-collections",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "commons-dbcp",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "org.apache.commons",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "commons-lang",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "commons-pool",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "org.apache.geronimo.specs",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "com.google.guava",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "com.fasterxml.jackson.core",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "jdiff",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "org.eclipse.jetty.aggregate",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "joda-time",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "com.google.code.findbugs",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "javax.transaction",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "javax.mail",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "com.codahale.metrics",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "net.sf.opencsv",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "javax.servlet",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
+				{
+					"groupId": "org.antlr",
+					"artifactId": "stringtemplate",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				
 				{
 					"groupId": "eigenbase",
 					"artifactId": "eigenbase-properties",
@@ -423,14 +1353,6 @@
 				{
 					"groupId": "xerces",
 					"artifactId": "*",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-
-				{
-					"groupId": "org.apache.spark",
-					"artifactId": "spark-core_2.10",
 					"classifier": "",
 					"extension": "",
 					"description": ""
@@ -1038,7 +1960,7 @@
 			"modules": 
 			[
 				"hadoop-client",
-				"hive-jdbc",
+				"hive-jdbc-for-impala",
 				"hive-exec"
 			]
 		},
