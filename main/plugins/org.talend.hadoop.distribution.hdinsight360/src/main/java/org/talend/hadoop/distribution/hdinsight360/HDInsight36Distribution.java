@@ -139,6 +139,11 @@ public class HDInsight36Distribution extends AbstractDistribution implements Spa
     }
 
     @Override
+    public boolean doRequireElasticsearchSparkPatch() {
+        return true;
+    }
+
+    @Override
     public String getDistribution() {
         return DISTRIBUTION_NAME;
     }

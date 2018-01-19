@@ -116,6 +116,10 @@ public abstract class AbstractDistribution {
         return true;
     }
 
+    public boolean doRequireElasticsearchSparkPatch() {
+        return false;
+    }
+    
     public boolean doSupportCustomMRApplicationCP() {
         return false;
     }

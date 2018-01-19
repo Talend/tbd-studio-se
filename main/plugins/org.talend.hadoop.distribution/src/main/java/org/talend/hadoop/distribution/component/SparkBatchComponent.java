@@ -17,5 +17,8 @@ package org.talend.hadoop.distribution.component;
  *
  */
 public interface SparkBatchComponent extends SparkComponent {
-    // No specific method for Spark Batch currently.
+	/**
+     * @return true if the distribution does require the elasticsearch-hadoop patch (see TDQ-14395)
+     */
+    public boolean doRequireElasticsearchSparkPatch();
 }

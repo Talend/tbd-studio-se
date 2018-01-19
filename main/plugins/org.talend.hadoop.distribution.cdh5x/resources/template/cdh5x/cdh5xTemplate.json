@@ -3,17 +3,14 @@
 	"name": "Cloudera CDH5.X.2 template",
 	"distribution": "CLOUDERA",
 	"templateId": "CDH5xDistributionTemplate",
-	"baseVersion": "5.13.0",
+	"baseVersion": "5.11.0",
 	"topVersion": "6.0.0",
 	"dynamicVersion": "will be filled during runtime",
-	"properties": 
-	{
+	"properties": {
 		"context": "plugin:org.talend.hadoop.distribution.cdh5x"
 	},
-
 	"description": "",
-	"modules": 
-	[
+	"modules": [
 		{
 			"id": "avro-mapred",
 			"type": "BASE",
@@ -22,8 +19,7 @@
 			"artifactId": "avro-mapred",
 			"classifier": "hadoop2",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "io.netty",
 					"artifactId": "*",
@@ -31,7 +27,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "org.slf4j",
 					"artifactId": "*",
@@ -41,7 +36,16 @@
 				}
 			]
 		},
-
+		{
+			"id": "commons-pool2",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.commons",
+			"artifactId": "commons-pool2",
+			"version": "2.4.2",
+			"classifier": "",
+			"description": ""
+		},
 		{
 			"id": "hadoop-azure",
 			"type": "BASE",
@@ -50,75 +54,14 @@
 			"artifactId": "hadoop-azure",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "com.fasterxml.jackson.core",
 					"artifactId": "jackson-core",
 					"classifier": "",
 					"extension": "",
 					"description": ""
-				}
-			]
-		},
-
-		{
-			"id": "hadoop-azure-datalake",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "org.apache.hadoop",
-			"artifactId": "hadoop-azure-datalake",
-			"classifier": "",
-			"description": "",
-			"exclusions": 
-			[
-				{
-					"groupId": "com.fasterxml.jackson.core",
-					"artifactId": "jackson-core",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				}
-			]
-		},
-
-		{
-			"id": "azure-common-1.7.1",
-			"type": "STANDARD",
-			"context": "{properties.context}",
-			"jarName": "azure-common-1.7.1.jar",
-			"mvnUri": "mvn:org.talend.libraries/azure-common-1.7.1/6.0.0",
-			"description": ""
-		},
-
-		{
-			"id": "emr-core-2.4.0",
-			"type": "STANDARD",
-			"context": "{properties.context}",
-			"jarName": "emr-core-2.4.0.jar",
-			"mvnUri": "mvn:org.talend.libraries/emr-core-2.4.0/6.0.0",
-			"description": ""
-		},
-
-		{
-			"id": "emr-ddb-hadoop-3.0.0",
-			"type": "STANDARD",
-			"context": "{properties.context}",
-			"jarName": "emr-ddb-hadoop-3.0.0.jar",
-			"mvnUri": "mvn:org.talend.libraries/emr-ddb-hadoop-3.0.0/6.0.0",
-			"description": ""
-		},
-
-		{
-			"id": "datafu",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "com.linkedin.datafu",
-			"artifactId": "datafu",
-			"classifier": "",
-			"description": "",
-			"exclusions": 
-			[
+				},
 				{
 					"groupId": "xerces",
 					"artifactId": "*",
@@ -128,7 +71,89 @@
 				}
 			]
 		},
-
+		{
+			"id": "hadoop-azure-datalake",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.hadoop",
+			"artifactId": "hadoop-azure-datalake",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "com.fasterxml.jackson.core",
+					"artifactId": "jackson-core",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "azure-common-1.7.1",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "azure-common-1.7.1.jar",
+			"mvnUri": "mvn:org.talend.libraries/azure-common-1.7.1/6.0.0",
+			"description": ""
+		},
+		{
+			"id": "emr-core-2.4.0",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "emr-core-2.4.0.jar",
+			"mvnUri": "mvn:org.talend.libraries/emr-core-2.4.0/6.0.0",
+			"description": ""
+		},
+		{
+			"id": "emr-ddb-hadoop-3.0.0",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "emr-ddb-hadoop-3.0.0.jar",
+			"mvnUri": "mvn:org.talend.libraries/emr-ddb-hadoop-3.0.0/6.0.0",
+			"description": ""
+		},
+		{
+			"id": "httpclient-4.5.2",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "httpclient-4.5.2.jar",
+			"mvnUri": "mvn:org.talend.libraries/httpclient-4.5.2/6.0.0",
+			"description": ""
+		},
+		{
+			"id": "httpcore-4.4.3",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "httpcore-4.4.3.jar",
+			"mvnUri": "mvn:org.talend.libraries/httpcore-4.4.3/6.0.0",
+			"description": ""
+		},
+		{
+			"id": "datafu",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "com.linkedin.datafu",
+			"artifactId": "datafu",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
 		{
 			"id": "elephant-bird-rcfile",
 			"type": "STANDARD",
@@ -136,7 +161,6 @@
 			"jarName": "elephant-bird-rcfile-4.9-patched-hive-1.x.jar",
 			"mvnUri": "mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0"
 		},
-
 		{
 			"id": "elephant-bird-core",
 			"type": "BASE",
@@ -146,8 +170,7 @@
 			"version": "4.9",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "com.hadoop.gplcompression",
 					"artifactId": "hadoop-lzo",
@@ -164,7 +187,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "elephant-bird-hadoop-compat",
 			"type": "BASE",
@@ -174,8 +196,7 @@
 			"version": "4.9",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "com.hadoop.gplcompression",
 					"artifactId": "hadoop-lzo",
@@ -192,7 +213,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "elephant-bird-pig",
 			"type": "BASE",
@@ -202,8 +222,7 @@
 			"version": "4.9",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "com.hadoop.gplcompression",
 					"artifactId": "hadoop-lzo",
@@ -220,7 +239,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "graphframes",
 			"type": "STANDARD",
@@ -229,7 +247,6 @@
 			"mvnUri": "mvn:graphframes/graphframes/0.5.0-spark2.1-s_2.11",
 			"description": ""
 		},
-
 		{
 			"id": "hadoop-client",
 			"type": "BASE",
@@ -238,8 +255,7 @@
 			"artifactId": "hadoop-client",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "com.fasterxml.jackson.core",
 					"artifactId": "*",
@@ -247,7 +263,13 @@
 					"extension": "",
 					"description": ""
 				},
-
+				{
+					"groupId": "org.apache.httpcomponents",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
 				{
 					"groupId": "io.netty",
 					"artifactId": "*",
@@ -255,7 +277,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "xerces",
 					"artifactId": "*",
@@ -265,7 +286,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "hadoop-mapreduce-client-core",
 			"type": "BASE",
@@ -274,8 +294,7 @@
 			"artifactId": "hadoop-mapreduce-client-core",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "io.netty",
 					"artifactId": "*",
@@ -285,7 +304,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "hadoop-yarn-server-web-proxy",
 			"type": "BASE",
@@ -294,8 +312,7 @@
 			"artifactId": "hadoop-yarn-server-web-proxy",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "xerces",
 					"artifactId": "*",
@@ -305,7 +322,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "hbase-client",
 			"type": "BASE",
@@ -314,16 +330,14 @@
 			"artifactId": "hbase-client",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "org.apache.hadoop",
-					"artifactId": "*",
+					"artifactId": "hadoop-core",
 					"classifier": "",
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "xerces",
 					"artifactId": "*",
@@ -331,7 +345,6 @@
 					"extension": "",
 					"description": ""
 				},
-				
 				{
 					"groupId": "io.netty",
 					"artifactId": "*",
@@ -341,7 +354,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "hive-jdbc",
 			"type": "BASE",
@@ -350,8 +362,7 @@
 			"artifactId": "hive-jdbc",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "org.apache.curator",
 					"artifactId": "apache-curator",
@@ -359,7 +370,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "eigenbase",
 					"artifactId": "eigenbase-properties",
@@ -367,7 +377,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "org.pentaho",
 					"artifactId": "pentaho-aggdesigner-algorithm",
@@ -375,7 +384,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "xerces",
 					"artifactId": "*",
@@ -385,7 +393,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "hive-exec",
 			"type": "BASE",
@@ -394,8 +401,7 @@
 			"artifactId": "hive-exec",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "org.apache.curator",
 					"artifactId": "apache-curator",
@@ -403,7 +409,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "eigenbase",
 					"artifactId": "eigenbase-properties",
@@ -411,7 +416,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "org.pentaho",
 					"artifactId": "pentaho-aggdesigner-algorithm",
@@ -419,7 +423,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "xerces",
 					"artifactId": "*",
@@ -427,7 +430,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "org.apache.spark",
 					"artifactId": "spark-core_2.10",
@@ -437,7 +439,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "hive-hbase-handler",
 			"type": "BASE",
@@ -446,8 +447,7 @@
 			"artifactId": "hive-hbase-handler",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "eigenbase",
 					"artifactId": "eigenbase-properties",
@@ -455,7 +455,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "io.netty",
 					"artifactId": "*",
@@ -465,7 +464,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "hbase-hadoop-compat",
 			"type": "BASE",
@@ -475,7 +473,6 @@
 			"classifier": "",
 			"description": ""
 		},
-
 		{
 			"id": "hbase-server",
 			"type": "BASE",
@@ -484,8 +481,7 @@
 			"artifactId": "hbase-server",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "xerces",
 					"artifactId": "*",
@@ -493,7 +489,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "io.netty",
 					"artifactId": "*",
@@ -503,7 +498,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "hive-hcatalog-core",
 			"type": "BASE",
@@ -512,8 +506,7 @@
 			"artifactId": "hive-hcatalog-core",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "org.apache.curator",
 					"artifactId": "apache-curator",
@@ -521,7 +514,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "eigenbase",
 					"artifactId": "eigenbase-properties",
@@ -529,7 +521,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "javax.jms",
 					"artifactId": "jms",
@@ -537,7 +528,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "org.pentaho",
 					"artifactId": "pentaho-aggdesigner-algorithm",
@@ -545,7 +535,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "xerces",
 					"artifactId": "*",
@@ -555,7 +544,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "hive-hcatalog-pig-adapter",
 			"type": "BASE",
@@ -564,8 +552,7 @@
 			"artifactId": "hive-hcatalog-pig-adapter",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "org.apache.curator",
 					"artifactId": "apache-curator",
@@ -573,7 +560,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "eigenbase",
 					"artifactId": "eigenbase-properties",
@@ -581,7 +567,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "org.pentaho",
 					"artifactId": "pentaho-aggdesigner-algorithm",
@@ -589,7 +574,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "xerces",
 					"artifactId": "*",
@@ -599,7 +583,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "hive-hcatalog-server-extensions",
 			"type": "BASE",
@@ -608,8 +591,7 @@
 			"artifactId": "hive-hcatalog-server-extensions",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "org.apache.curator",
 					"artifactId": "apache-curator",
@@ -617,7 +599,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "eigenbase",
 					"artifactId": "eigenbase-properties",
@@ -625,7 +606,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "javax.jms",
 					"artifactId": "jms",
@@ -633,7 +613,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "org.pentaho",
 					"artifactId": "pentaho-aggdesigner-algorithm",
@@ -641,7 +620,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "xerces",
 					"artifactId": "*",
@@ -651,7 +629,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "hive-metastore",
 			"type": "BASE",
@@ -660,8 +637,7 @@
 			"artifactId": "hive-metastore",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "org.apache.curator",
 					"artifactId": "apache-curator",
@@ -669,7 +645,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "eigenbase",
 					"artifactId": "eigenbase-properties",
@@ -677,7 +652,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "org.pentaho",
 					"artifactId": "pentaho-aggdesigner-algorithm",
@@ -685,7 +659,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "xerces",
 					"artifactId": "*",
@@ -695,7 +668,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "hive-serde",
 			"type": "BASE",
@@ -704,8 +676,7 @@
 			"artifactId": "hive-serde",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "xerces",
 					"artifactId": "*",
@@ -715,7 +686,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "jets3t",
 			"type": "STANDARD",
@@ -724,7 +694,6 @@
 			"mvnUri": "mvn:net.java.dev.jets3t/jets3t/0.9.0",
 			"description": ""
 		},
-
 		{
 			"id": "jodd",
 			"type": "BASE",
@@ -735,7 +704,25 @@
 			"classifier": "",
 			"description": ""
 		},
-
+		{
+			"id": "kafka-clients",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.kafka",
+			"artifactId": "kafka-clients",
+			"version": "0.10.0-kafka-2.1.2",
+			"classifier": "",
+			"description": ""
+		},
+		{
+			"id": "kudu-spark2_2.11",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.kudu",
+			"artifactId": "kudu-spark2_2.11",
+			"classifier": "",
+			"description": ""
+		},
 		{
 			"id": "netty-4.0.29.Final",
 			"type": "STANDARD",
@@ -744,7 +731,6 @@
 			"mvnUri": "mvn:io.netty/netty-all/4.0.29.Final",
 			"description": ""
 		},
-
 		{
 			"id": "pig",
 			"type": "BASE",
@@ -753,8 +739,7 @@
 			"artifactId": "pig",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "xerces",
 					"artifactId": "*",
@@ -764,7 +749,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "parquet-pig",
 			"type": "BASE",
@@ -774,7 +758,6 @@
 			"classifier": "",
 			"description": ""
 		},
-
 		{
 			"id": "parquet-avro",
 			"type": "BASE",
@@ -784,7 +767,6 @@
 			"classifier": "",
 			"description": ""
 		},
-
 		{
 			"id": "parquet-hadoop-bundle",
 			"type": "BASE",
@@ -794,7 +776,6 @@
 			"classifier": "",
 			"description": ""
 		},
-
 		{
 			"id": "parquet-pig-bundle",
 			"type": "BASE",
@@ -804,7 +785,6 @@
 			"classifier": "",
 			"description": ""
 		},
-
 		{
 			"id": "piggybank",
 			"type": "BASE",
@@ -813,8 +793,7 @@
 			"artifactId": "piggybank",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "xerces",
 					"artifactId": "*",
@@ -824,7 +803,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "spark-hive_2.11",
 			"type": "BASE",
@@ -834,8 +812,7 @@
 			"version": "2.2.0.cloudera1",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "org.apache.hadoop",
 					"artifactId": "*",
@@ -843,7 +820,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "xerces",
 					"artifactId": "*",
@@ -853,7 +829,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "spark-mllib_2.11",
 			"type": "BASE",
@@ -863,8 +838,7 @@
 			"version": "2.2.0.cloudera1",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "org.apache.hadoop",
 					"artifactId": "*",
@@ -881,7 +855,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "spark-yarn_2.11",
 			"type": "BASE",
@@ -891,8 +864,7 @@
 			"version": "2.2.0.cloudera1",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "org.apache.hadoop",
 					"artifactId": "*",
@@ -900,7 +872,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "xerces",
 					"artifactId": "*",
@@ -910,7 +881,61 @@
 				}
 			]
 		},
-
+		{
+			"id": "spark-streaming-kinesis-asl_2.11",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.spark",
+			"artifactId": "spark-streaming-kinesis-asl_2.11",
+			"version": "2.2.0",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.apache.hadoop",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "spark-streaming-flume",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.spark",
+			"artifactId": "spark-streaming-flume_2.11",
+			"version": "2.2.0.cloudera1",
+			"classifier": "",
+			"description": ""
+		},
+		{
+			"id": "spark-streaming-kafka",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.spark",
+			"artifactId": "spark-streaming-kafka-0-10_2.11",
+			"version": "2.2.0.cloudera1",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
 		{
 			"id": "sqoop",
 			"type": "BASE",
@@ -919,8 +944,7 @@
 			"artifactId": "sqoop",
 			"classifier": "",
 			"description": "",
-			"exclusions": 
-			[
+			"exclusions": [
 				{
 					"groupId": "org.apache.curator",
 					"artifactId": "apache-curator",
@@ -928,7 +952,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "eigenbase",
 					"artifactId": "eigenbase-properties",
@@ -936,7 +959,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "org.pentaho",
 					"artifactId": "pentaho-aggdesigner-algorithm",
@@ -944,7 +966,6 @@
 					"extension": "",
 					"description": ""
 				},
-
 				{
 					"groupId": "xerces",
 					"artifactId": "*",
@@ -954,7 +975,6 @@
 				}
 			]
 		},
-
 		{
 			"id": "MODULE_COMMONS_CODEC",
 			"type": "REFERENCE",
@@ -963,111 +983,90 @@
 			"description": ""
 		}
 	],
-
-	"moduleGroups": 
-	[
+	"moduleGroups": [
 		{
 			"id": "HDFS-LIB-DYNAMIC",
 			"description": "jars for hdfs, only module.id permitted",
-			"modules": 
-			[
-				"hadoop-client"
+			"modules": [
+				"hadoop-client",
+				"httpclient-4.5.2",
+				"httpcore-4.4.3"
 			]
 		},
-
 		{
 			"id": "HDFS-COMMON-LIB-DYNAMIC",
-			"modules": 
-			[
-				"hadoop-client"
+			"modules": [
+				"hadoop-client",
+				"httpclient-4.5.2",
+				"httpcore-4.4.3"
 			]
 		},
-
 		{
 			"id": "HDFS-SPARK1_6-LIB-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
-				
+			"modules": [
 			]
 		},
-
 		{
 			"id": "HDFS-SPARK2_1-LIB-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
-				
+			"modules": [
 			]
 		},
-
 		{
 			"id": "MAPREDUCE-LIB-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"hadoop-client",
 				"jodd"
 			]
 		},
-
 		{
 			"id": "HBASE-LIB-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"hadoop-client",
 				"hbase-client",
 				"netty-4.0.29.Final"
 			]
 		},
-
 		{
 			"id": "PIG-LIB-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"datafu",
 				"pig"
 			]
 		},
-
 		{
 			"id": "IMPALA-LIB-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"hadoop-client",
 				"hive-jdbc",
 				"hive-exec"
 			]
 		},
-
 		{
 			"id": "HIVE-LIB-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"hive-jdbc",
 				"hive-exec"
 			]
 		},
-
 		{
 			"id": "SQOOP-LIB-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"sqoop",
 				"avro-mapred"
 			]
 		},
-
 		{
 			"id": "HIVE-HBASE-LIB-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"hbase-server",
 				"hbase-hadoop-compat",
 				"hive-hbase-handler",
@@ -1075,40 +1074,32 @@
 				"netty-4.0.29.Final"
 			]
 		},
-
 		{
 			"id": "MAPREDUCE-PARQUET-LIB-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"parquet-hadoop-bundle"
 			]
 		},
-
 		{
 			"id": "PIG-AVRO-LIB-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"piggybank"
 			]
 		},
-
 		{
 			"id": "PIG-HBASE-LIB-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"hbase-hadoop-compat",
 				"hbase-server"
 			]
 		},
-
 		{
 			"id": "PIG-HCATALOG-LIB-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"hive-exec",
 				"hive-hcatalog-core",
 				"hive-hcatalog-pig-adapter",
@@ -1116,21 +1107,17 @@
 				"hive-metastore"
 			]
 		},
-
 		{
 			"id": "PIG-PARQUET-LIB-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"parquet-pig-bundle"
 			]
 		},
-
 		{
 			"id": "PIG-RCFILE-LIB-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"hive-exec",
 				"hive-serde",
 				"elephant-bird-core",
@@ -1138,41 +1125,31 @@
 				"elephant-bird-rcfile"
 			]
 		},
-
 		{
 			"id": "PIG-SEQUENCEFILE-LIB-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"elephant-bird-core",
 				"elephant-bird-hadoop-compat",
 				"elephant-bird-pig"
 			]
 		},
-
 		{
 			"id": "SPARK-PARQUET-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
-				
+			"modules": [
 			]
 		},
-
 		{
 			"id": "SPARK-LIB-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
-				
+			"modules": [
 			]
 		},
-
 		{
 			"id": "SPARK-LIB-SPARK2-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"hadoop-mapreduce-client-core",
 				"hadoop-yarn-server-web-proxy",
 				"spark-hive_2.11",
@@ -1180,242 +1157,204 @@
 				"spark-yarn_2.11"
 			]
 		},
-
 		{
 			"id": "MAPREDUCE-PARQUET-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"hadoop-client"
 			]
 		},
-
 		{
 			"id": "SPARK-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
-				
+			"modules": [
 			]
 		},
-
 		{
 			"id": "SPARK-DYNAMODB-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
+				"commons-pool2",
 				"emr-core-2.4.0",
 				"emr-ddb-hadoop-3.0.0",
 				"hadoop-client"
 			]
 		},
-
 		{
 			"id": "SPARK-KINESIS-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
-				"hadoop-client"
+			"modules": [
+				"hadoop-client",
+				"spark-streaming-kinesis-asl_2.11"
 			]
 		},
-
 		{
 			"id": "SPARK2-KINESIS-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
-				"hadoop-client"
+			"modules": [
+				"hadoop-client",
+				"spark-streaming-kinesis-asl_2.11"
 			]
 		},
-
 		{
 			"id": "SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
-				"hadoop-client"
+			"modules": [
+				"spark-streaming-kafka"
 			]
 		},
-
 		{
 			"id": "SPARK2-KAFKA-ASSEMBLY-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
-				"hadoop-client"
+			"modules": [
+				"spark-streaming-kafka"
 			]
 		},
-
 		{
 			"id": "SPARK-KAFKA-AVRO-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"hadoop-client"
 			]
 		},
-
 		{
 			"id": "SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
-				"hadoop-client"
+			"modules": [
+				"kafka-clients"
 			]
 		},
-
 		{
 			"id": "SPARK2-KAFKA-CLIENT-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
-				"hadoop-client"
+			"modules": [
+				"kafka-clients"
 			]
 		},
-
 		{
 			"id": "SPARK-S3-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"jets3t"
 			]
 		},
-
 		{
 			"id": "SPARK-AZURE-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"azure-common-1.7.1",
 				"hadoop-azure",
 				"hadoop-azure-datalake",
 				"hadoop-yarn-server-web-proxy"
 			]
 		},
-
 		{
 			"id": "PIG-S3-LIB-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"hadoop-client"
 			]
 		},
-
 		{
 			"id": "SPARK-GRAPHFRAMES-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"graphframes"
 			]
 		},
-
 		{
 			"id": "SPARK-HIVE-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"hadoop-client"
 			]
 		},
-
 		{
 			"id": "TALEND_CLOUDERA_NAVIGATOR-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"hadoop-client"
 			]
 		},
-
 		{
 			"id": "SPARK-FLUME-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
-				"hadoop-client"
+			"modules": [
+				"spark-streaming-flume"
 			]
 		},
-
 		{
 			"id": "SQOOP-PARQUET-LIB-DYNAMIC",
 			"description": "",
-			"modules": 
-			[
+			"modules": [
 				"hadoop-client"
+			]
+		},
+		{
+			"id": "SPARK2-KUDU-LIB-MRREQUIRED-DYNAMIC",
+			"description": "",
+			"modules": [
+				"kudu-spark2_2.11"
 			]
 		}
 	],
-
-	"classLoaders": 
-	[
+	"classLoaders": [
 		{
 			"id": "hadoop-hdfs",
 			"index": "HDFS:CLOUDERA:{dynamicVersion}",
 			"moduleGroup": "HDFS-LIB-DYNAMIC",
 			"description": ""
 		},
-
 		{
 			"id": "hadoop-hdfs-with-krb",
 			"index": "HDFS:CLOUDERA:{dynamicVersion}?USE_KRB",
 			"moduleGroup": "HDFS-LIB-DYNAMIC",
 			"description": ""
 		},
-
 		{
 			"id": "hive-embedded",
 			"index": "HIVE:CLOUDERA:{dynamicVersion}:EMBEDDED",
 			"moduleGroup": "HIVE-LIB-DYNAMIC",
 			"description": ""
 		},
-
 		{
 			"id": "hive-standalone",
 			"index": "HIVE:CLOUDERA:{dynamicVersion}:STANDALONE",
 			"moduleGroup": "HIVE-LIB-DYNAMIC",
 			"description": ""
 		},
-
 		{
 			"id": "hive2-embedded",
 			"index": "HIVE2:CLOUDERA:{dynamicVersion}:EMBEDDED",
 			"moduleGroup": "HIVE-LIB-DYNAMIC",
 			"description": ""
 		},
-
 		{
 			"id": "hive2-standalone",
 			"index": "HIVE2:CLOUDERA:{dynamicVersion}:STANDALONE",
 			"moduleGroup": "HIVE-LIB-DYNAMIC",
 			"description": ""
 		},
-
 		{
 			"id": "hbase",
 			"index": "HBASE:CLOUDERA:{dynamicVersion}",
 			"moduleGroup": "HBASE-LIB-DYNAMIC",
 			"description": ""
 		},
-
 		{
 			"id": "mapreduce",
 			"index": "MAP_REDUCE:CLOUDERA:{dynamicVersion}",
 			"moduleGroup": "MAPREDUCE-LIB-DYNAMIC",
 			"description": ""
 		},
-
 		{
 			"id": "impala",
 			"index": "IMPALA:CLOUDERA:{dynamicVersion}",
 			"moduleGroup": "IMPALA-LIB-DYNAMIC",
 			"description": ""
 		},
-
 		{
-			"id": "impala-krb",
+			"id": "impala-with-krb",
 			"index": "IMPALA:CLOUDERA:{dynamicVersion}?USE_KRB",
 			"moduleGroup": "IMPALA-LIB-DYNAMIC",
 			"description": ""
