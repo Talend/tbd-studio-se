@@ -321,4 +321,8 @@ public abstract class AbstractDistribution {
     public boolean isDynamicDistribution() {
         return false;
     }
+
+    public boolean useS3AProperties() {
+        return false;
+    }
 }

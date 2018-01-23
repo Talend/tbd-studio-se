@@ -439,4 +439,9 @@ public class EMR500Distribution extends AbstractDistribution implements HBaseCom
         return false;
     }
     // End
+
+	@Override
+	public boolean useS3AProperties() {
+		return false;
+	}
 }

@@ -251,4 +251,9 @@ public class CDH510MR2Distribution extends AbstractDistribution implements HDFSC
         return false;
     }
     // End
+
+	@Override
+	public boolean useS3AProperties() {
+		return false;
+	}
 }

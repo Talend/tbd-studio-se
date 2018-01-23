@@ -428,4 +428,9 @@ public class EMR450Distribution extends AbstractDistribution implements HDFSComp
         return false;
     }
     // End
+
+	@Override
+	public boolean useS3AProperties() {
+		return false;
+	}
 }

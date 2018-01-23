@@ -96,4 +96,9 @@ public interface SparkComponent extends MRComponent {
      * If false, the components themselves are going to import the default version of dependencies on tSqlRow with module name SPARK-HIVECONTEXT-LIB-ALL_LATEST
      */
     public boolean doImportSparkHiveContextDependencies();
+
+    /**
+     * The distribution uses "fs.s3a.secret.key" and "fs.s3a.awsSecretAcessKey" properties for the S3 Authentication with the S3A fileSystem.
+     */
+    public boolean useS3AProperties();
 }

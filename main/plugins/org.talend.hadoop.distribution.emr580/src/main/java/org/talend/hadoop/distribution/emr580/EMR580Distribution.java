@@ -458,4 +458,9 @@ public class EMR580Distribution extends AbstractDistribution implements
     public boolean doImportDynamoDBDependencies() {
         return true;
     }
+
+	@Override
+	public boolean useS3AProperties() {
+		return false;
+	}
 }

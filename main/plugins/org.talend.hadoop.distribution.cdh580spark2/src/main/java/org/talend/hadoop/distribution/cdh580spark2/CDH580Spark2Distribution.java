@@ -321,4 +321,9 @@ public class CDH580Spark2Distribution extends AbstractDistribution implements IC
     public short orderingWeight() {
         return 5;
     }
+
+	@Override
+	public boolean useS3AProperties() {
+		return false;
+	}
 }
