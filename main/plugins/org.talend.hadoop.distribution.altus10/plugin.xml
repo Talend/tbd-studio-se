@@ -34,9 +34,9 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.altus10"
-            id="amazon-kinesis-client-1.6.0.jar"
-            name="amazon-kinesis-client-1.6.0.jar"
-            mvn_uri="mvn:org.talend.libraries/amazon-kinesis-client-1.6.0/6.0.0">
+            id="amazon-kinesis-client-1.6.1.jar"
+            name="amazon-kinesis-client-1.6.1.jar"
+            mvn_uri="mvn:org.talend.libraries/amazon-kinesis-client-1.6.1/6.0.0">
         </libraryNeeded>
         
         <!-- GraphFrames libraries -->
@@ -325,7 +325,7 @@
                 name="SPARK-KINESIS-LIB-MRREQUIRED-ALTUS10">
             <library id="spark-streaming-kinesis-asl_2.11-2.1.0.jar"/>
             <!--this is for tKinesisInput, because aws-java-sdk version is 1.10.6 in CDH5.11 , use this version is better-->
-            <library id="amazon-kinesis-client-1.6.0.jar"/>
+            <library id="amazon-kinesis-client-1.6.1.jar"/>
             <library id="aws-java-sdk-cloudwatch-1.11.132.jar"/>
             
             <!--to make tKinesisOutput working, in CDH5.11 aws-java-sdk version is 1.10.6-->
