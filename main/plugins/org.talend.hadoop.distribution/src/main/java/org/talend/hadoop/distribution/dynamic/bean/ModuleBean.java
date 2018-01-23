@@ -57,6 +57,8 @@ public class ModuleBean implements IVariable {
 
     public static final String ATTR_USE_LATETST = "useLatest"; //$NON-NLS-1$
 
+    public static final String ATTR_USE_STUDIO_REPOSITORY = "useStudioRepository"; //$NON-NLS-1$
+
     public static final String TYPE_STANDARD = "STANDARD"; //$NON-NLS-1$
 
     public static final String TYPE_BASE = "BASE"; //$NON-NLS-1$
@@ -98,6 +100,8 @@ public class ModuleBean implements IVariable {
     private String description;
 
     private String useLatest;
+
+    private String useStudioRepository;
 
     private List<ExclusionBean> exclusions;
 
@@ -253,6 +257,14 @@ public class ModuleBean implements IVariable {
         this.useLatest = useLatest;
     }
 
+    public String getUseStudioRepository() {
+        return this.useStudioRepository;
+    }
+
+    public void setUseStudioRepository(String useStudioRepository) {
+        this.useStudioRepository = useStudioRepository;
+    }
+
     @Override
     public Object getVariableValue(String variable) throws Exception {
         Object value = null;
@@ -313,6 +325,9 @@ public class ModuleBean implements IVariable {
             break;
         case ATTR_USE_LATETST:
             value = getUseLatest();
+            break;
+        case ATTR_USE_STUDIO_REPOSITORY:
+            value = getUseStudioRepository();
             break;
         default:
             throw new UnsupportedOperationException(

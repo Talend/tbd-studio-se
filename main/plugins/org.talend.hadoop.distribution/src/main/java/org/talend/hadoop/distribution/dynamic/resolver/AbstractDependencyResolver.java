@@ -23,6 +23,7 @@ import org.talend.designer.maven.aether.node.DependencyNode;
 import org.talend.designer.maven.aether.util.DynamicDistributionAetherUtils;
 import org.talend.hadoop.distribution.dynamic.DynamicConfiguration;
 import org.talend.hadoop.distribution.dynamic.IDynamicDistributionPreference;
+import org.talend.hadoop.distribution.dynamic.VersionNotFoundException;
 
 /**
  * DOC cmeng class global comment. Detailled comment
@@ -47,7 +48,10 @@ public abstract class AbstractDependencyResolver implements IDependencyResolver 
             String artifactId = baseNode.getArtifactId();
             version = getDependencyVersionByHadoopVersion(groupId, artifactId, monitor);
             if (StringUtils.isEmpty(version)) {
-                throw new Exception("Can't find version of " + groupId + ", " + artifactId); //$NON-NLS-1$ //$NON-NLS-2$
+                VersionNotFoundException versionNotFound = new VersionNotFoundException();
+                versionNotFound.setVersion(configuration.getVersion());
+                versionNotFound.setBaseNode(baseNode);
+                throw versionNotFound;
             }
             baseNode.setVersion(version);
         }

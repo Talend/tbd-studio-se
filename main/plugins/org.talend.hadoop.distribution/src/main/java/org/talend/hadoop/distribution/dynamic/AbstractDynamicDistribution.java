@@ -72,9 +72,9 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
 
     @Override
     public List<TemplateBean> getTemplates(IDynamicMonitor monitor) throws Exception {
-        if (templateBeansCache != null) {
-            return templateBeansCache;
-        }
+//        if (templateBeansCache != null) {
+//            return templateBeansCache;
+//        }
 
         List<TemplateBean> templates = new ArrayList<>();
 

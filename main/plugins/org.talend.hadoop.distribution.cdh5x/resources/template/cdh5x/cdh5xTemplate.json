@@ -38,12 +38,10 @@
 		},
 		{
 			"id": "commons-pool2",
-			"type": "BASE",
+			"type": "STANDARD",
 			"context": "{properties.context}",
-			"groupId": "org.apache.commons",
-			"artifactId": "commons-pool2",
-			"version": "2.4.2",
-			"classifier": "",
+			"jarName": "commons-pool2-2.4.2.jar",
+			"mvnUri": "mvn:org.apache.commons/commons-pool2/2.4.2",
 			"description": ""
 		},
 		{
@@ -102,7 +100,8 @@
 			"context": "{properties.context}",
 			"jarName": "azure-common-1.7.1.jar",
 			"mvnUri": "mvn:org.talend.libraries/azure-common-1.7.1/6.0.0",
-			"description": ""
+			"description": "",
+			"useStudioRepository": "true"
 		},
 		{
 			"id": "emr-core-2.4.0",
@@ -110,7 +109,8 @@
 			"context": "{properties.context}",
 			"jarName": "emr-core-2.4.0.jar",
 			"mvnUri": "mvn:org.talend.libraries/emr-core-2.4.0/6.0.0",
-			"description": ""
+			"description": "",
+			"useStudioRepository": "true"
 		},
 		{
 			"id": "emr-ddb-hadoop-3.0.0",
@@ -118,7 +118,8 @@
 			"context": "{properties.context}",
 			"jarName": "emr-ddb-hadoop-3.0.0.jar",
 			"mvnUri": "mvn:org.talend.libraries/emr-ddb-hadoop-3.0.0/6.0.0",
-			"description": ""
+			"description": "",
+			"useStudioRepository": "true"
 		},
 		{
 			"id": "httpclient-4.5.2",
@@ -126,7 +127,8 @@
 			"context": "{properties.context}",
 			"jarName": "httpclient-4.5.2.jar",
 			"mvnUri": "mvn:org.talend.libraries/httpclient-4.5.2/6.0.0",
-			"description": ""
+			"description": "",
+			"useStudioRepository": "true"
 		},
 		{
 			"id": "httpcore-4.4.3",
@@ -134,7 +136,8 @@
 			"context": "{properties.context}",
 			"jarName": "httpcore-4.4.3.jar",
 			"mvnUri": "mvn:org.talend.libraries/httpcore-4.4.3/6.0.0",
-			"description": ""
+			"description": "",
+			"useStudioRepository": "true"
 		},
 		{
 			"id": "datafu",
@@ -159,7 +162,8 @@
 			"type": "STANDARD",
 			"context": "{properties.context}",
 			"jarName": "elephant-bird-rcfile-4.9-patched-hive-1.x.jar",
-			"mvnUri": "mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0"
+			"mvnUri": "mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0",
+			"useStudioRepository": "true"
 		},
 		{
 			"id": "elephant-bird-core",
@@ -706,12 +710,10 @@
 		},
 		{
 			"id": "kafka-clients",
-			"type": "BASE",
+			"type": "STANDARD",
 			"context": "{properties.context}",
-			"groupId": "org.apache.kafka",
-			"artifactId": "kafka-clients",
-			"version": "0.10.0-kafka-2.1.2",
-			"classifier": "",
+			"jarName": "kafka-clients-0.10.0-kafka-2.1.2.jar",
+			"mvnUri": "mvn:org.apache.kafka/kafka-clients/0.10.0-kafka-2.1.2",
 			"description": ""
 		},
 		{
@@ -908,7 +910,7 @@
 			]
 		},
 		{
-			"id": "spark-streaming-flume",
+			"id": "spark-streaming-flume_2.11",
 			"type": "BASE",
 			"context": "{properties.context}",
 			"groupId": "org.apache.spark",
@@ -918,7 +920,7 @@
 			"description": ""
 		},
 		{
-			"id": "spark-streaming-kafka",
+			"id": "spark-streaming-kafka-0-10_2.11",
 			"type": "BASE",
 			"context": "{properties.context}",
 			"groupId": "org.apache.spark",
@@ -1002,12 +1004,6 @@
 			]
 		},
 		{
-			"id": "HDFS-SPARK1_6-LIB-DYNAMIC",
-			"description": "",
-			"modules": [
-			]
-		},
-		{
 			"id": "HDFS-SPARK2_1-LIB-DYNAMIC",
 			"description": "",
 			"modules": [
@@ -1040,7 +1036,7 @@
 		},
 		{
 			"id": "IMPALA-LIB-DYNAMIC",
-			"description": "",
+			"description": "TODO: This is for classloader only, to be improved later.",
 			"modules": [
 				"hadoop-client",
 				"hive-jdbc",
@@ -1141,12 +1137,6 @@
 			]
 		},
 		{
-			"id": "SPARK-LIB-DYNAMIC",
-			"description": "",
-			"modules": [
-			]
-		},
-		{
 			"id": "SPARK-LIB-SPARK2-DYNAMIC",
 			"description": "",
 			"modules": [
@@ -1159,7 +1149,7 @@
 		},
 		{
 			"id": "MAPREDUCE-PARQUET-LIB-MRREQUIRED-DYNAMIC",
-			"description": "",
+			"description": "TODO: to delete hadoop-client to test.",
 			"modules": [
 				"hadoop-client"
 			]
@@ -1200,19 +1190,19 @@
 			"id": "SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
 			"modules": [
-				"spark-streaming-kafka"
+				"spark-streaming-kafka-0-10_2.11"
 			]
 		},
 		{
 			"id": "SPARK2-KAFKA-ASSEMBLY-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
 			"modules": [
-				"spark-streaming-kafka"
+				"spark-streaming-kafka-0-10_2.11"
 			]
 		},
 		{
 			"id": "SPARK-KAFKA-AVRO-LIB-MRREQUIRED-DYNAMIC",
-			"description": "",
+			"description": "Using hadoop-client to load avro and jackson jars",
 			"modules": [
 				"hadoop-client"
 			]
@@ -1264,7 +1254,7 @@
 		},
 		{
 			"id": "SPARK-HIVE-LIB-MRREQUIRED-DYNAMIC",
-			"description": "",
+			"description": "TODO: to remove hadoop-client",
 			"modules": [
 				"hadoop-client"
 			]
@@ -1278,9 +1268,9 @@
 		},
 		{
 			"id": "SPARK-FLUME-LIB-MRREQUIRED-DYNAMIC",
-			"description": "",
+			"description": "TODO: to remove hadoop-client",
 			"modules": [
-				"spark-streaming-flume"
+				"spark-streaming-flume_2.11"
 			]
 		},
 		{

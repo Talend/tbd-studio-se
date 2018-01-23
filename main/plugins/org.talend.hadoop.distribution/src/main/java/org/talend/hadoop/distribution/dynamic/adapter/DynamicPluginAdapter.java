@@ -30,6 +30,7 @@ import org.talend.core.runtime.dynamic.IDynamicPlugin;
 import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
 import org.talend.core.runtime.maven.MavenArtifact;
 import org.talend.core.runtime.maven.MavenUrlHelper;
+import org.talend.designer.maven.aether.comparator.VersionStringComparator;
 import org.talend.hadoop.distribution.dynamic.IDynamicDistributionPreference;
 import org.talend.hadoop.distribution.dynamic.comparator.DynamicAttributeComparator;
 
@@ -48,12 +49,15 @@ public class DynamicPluginAdapter {
     
     private Map<String, IDynamicConfiguration> moduleMap;
 
+    private VersionStringComparator versionComparator;
+
     public DynamicPluginAdapter(IDynamicPlugin plugin, IDynamicDistributionPreference preference) {
         this.plugin = plugin;
         this.pluginConfiguration = this.plugin.getPluginConfiguration();
         this.preference = preference;
         moduleGroupTemplateMap = new HashMap<>();
         moduleMap = new HashMap<>();
+        versionComparator = new VersionStringComparator();
     }
 
     public IDynamicPlugin getPlugin() {
@@ -117,20 +121,25 @@ public class DynamicPluginAdapter {
                     throw new Exception("Module id is empty!");
                 }
                 moduleMap.put(moduleId, configuration);
-                String mvnUri = (String) configuration.getAttribute(DynamicModuleAdapter.ATTR_MVN_URI);
-                if (StringUtils.isNotEmpty(mvnUri)) {
-                    try {
-                        MavenArtifact ma = MavenUrlHelper.parseMvnUrl(mvnUri);
-                        if (StringUtils.isEmpty(ma.getRepositoryUrl())) {
-                            String newMvnUri = MavenUrlHelper.generateMvnUrl(username, password, repository, ma.getGroupId(),
-                                    ma.getArtifactId(), ma.getVersion(), ma.getType(), ma.getClassifier(), true);
-                            if (StringUtils.isEmpty(newMvnUri)) {
-                                throw new Exception("Convert mvnUri failed! original uri: " + mvnUri);
+                String useStudioRepository = (String) configuration
+                        .getAttribute(DynamicModuleAdapter.ATTR_TEMP_USE_STUDIO_REPOSITORY);
+                configuration.removeAttribute(DynamicModuleAdapter.ATTR_TEMP_USE_STUDIO_REPOSITORY);
+                if (!Boolean.valueOf(useStudioRepository)) {
+                    String mvnUri = (String) configuration.getAttribute(DynamicModuleAdapter.ATTR_MVN_URI);
+                    if (StringUtils.isNotEmpty(mvnUri)) {
+                        try {
+                            MavenArtifact ma = MavenUrlHelper.parseMvnUrl(mvnUri);
+                            if (StringUtils.isEmpty(ma.getRepositoryUrl())) {
+                                String newMvnUri = MavenUrlHelper.generateMvnUrl(username, password, repository, ma.getGroupId(),
+                                        ma.getArtifactId(), ma.getVersion(), ma.getType(), ma.getClassifier(), true);
+                                if (StringUtils.isEmpty(newMvnUri)) {
+                                    throw new Exception("Convert mvnUri failed! original uri: " + mvnUri);
+                                }
+                                configuration.setAttribute(DynamicModuleAdapter.ATTR_MVN_URI, newMvnUri);
                             }
-                            configuration.setAttribute(DynamicModuleAdapter.ATTR_MVN_URI, newMvnUri);
+                        } catch (Exception e) {
+                            ExceptionHandler.process(e);
                         }
-                    } catch (Exception e) {
-                        ExceptionHandler.process(e);
                     }
                 }
             }
@@ -156,7 +165,10 @@ public class DynamicPluginAdapter {
     public void cleanUnusedAndRefresh() throws Exception {
         buildIdMaps();
 
-        // 1. clean unused modules
+        // 1. unify module versions to use latest version
+        unifyModuleVersions();
+
+        // 2. clean unused modules
         Set<String> usedModulesSet = new HashSet<String>();
         Collection<IDynamicConfiguration> moduleGroups = moduleGroupTemplateMap.values();
         Iterator<IDynamicConfiguration> moduleGroupIter = moduleGroups.iterator();
@@ -165,6 +177,8 @@ public class DynamicPluginAdapter {
             List<IDynamicConfiguration> childConfigurations = moduleGroup.getChildConfigurations();
             if (childConfigurations != null) {
                 Set<String> curUsedModules = new HashSet<>();
+                Set<IDynamicConfiguration> oldVersionModuleConfigs = new HashSet<>();
+                Map<String, IDynamicConfiguration> latestGaIdMap = new HashMap<>();
                 Iterator<IDynamicConfiguration> libraryIter = childConfigurations.iterator();
                 while (libraryIter.hasNext()) {
                     IDynamicConfiguration childConfig = libraryIter.next();
@@ -173,10 +187,37 @@ public class DynamicPluginAdapter {
                         if (curUsedModules.contains(libraryId)) {
                             libraryIter.remove();
                         } else {
-                            curUsedModules.add(libraryId);
+                            String mvnUri = getMvnUri(libraryId);
+                            if (mvnUri != null) {
+                                MavenArtifact curMa = MavenUrlHelper.parseMvnUrl(mvnUri);
+                                String key = getGaKey(curMa);
+                                IDynamicConfiguration storedConfig = latestGaIdMap.get(key);
+                                if (storedConfig == null) {
+                                    latestGaIdMap.put(key, childConfig);
+                                    curUsedModules.add(libraryId);
+                                } else {
+                                    String storedId = (String) storedConfig
+                                            .getAttribute(DynamicModuleGroupAdapter.ATTR_LIBRARY_ID);
+                                    String curVersion = curMa.getVersion();
+                                    String storedMvnUri = getMvnUri(storedId);
+                                    MavenArtifact storedMa = MavenUrlHelper.parseMvnUrl(storedMvnUri);
+                                    String storedVersion = storedMa.getVersion();
+                                    if (0 < versionComparator.compare(curVersion, storedVersion)) {
+                                        curUsedModules.remove(storedId);
+                                        curUsedModules.add(libraryId);
+                                        oldVersionModuleConfigs.add(storedConfig);
+                                        latestGaIdMap.put(key, childConfig);
+                                    } else {
+                                        libraryIter.remove();
+                                    }
+                                }
+                            } else {
+                                curUsedModules.add(libraryId);
+                            }
                         }
                     }
                 }
+                childConfigurations.removeAll(oldVersionModuleConfigs);
                 Collections.sort(childConfigurations, new DynamicAttributeComparator(DynamicModuleGroupAdapter.ATTR_LIBRARY_ID));
                 usedModulesSet.addAll(curUsedModules);
             }
@@ -200,7 +241,7 @@ public class DynamicPluginAdapter {
             }
         }
         
-        // 2. refresh classLoader
+        // 3. refresh classLoader
         IDynamicExtension classLoaderExtension = getClassLoaderExtension(plugin);
         List<IDynamicConfiguration> classLoaders = classLoaderExtension.getConfigurations();
         if (classLoaders != null) {
@@ -223,6 +264,86 @@ public class DynamicPluginAdapter {
                 }
 
             }
+        }
+    }
+
+    private String getMvnUri(String id) {
+        IDynamicConfiguration moduleById = getModuleById(id);
+        if (moduleById == null) {
+            return null;
+        }
+        return (String) moduleById.getAttribute(DynamicModuleAdapter.ATTR_MVN_URI);
+    }
+
+    private String getGaKey(MavenArtifact ma) throws Exception {
+        String group = ma.getGroupId();
+        String artifact = ma.getArtifactId();
+        String classifier = ma.getClassifier();
+        String type = ma.getType();
+        return group + "/" + artifact + "/" + classifier + "/" + type; //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$
+    }
+
+    private void unifyModuleVersions() throws Exception {
+        Map<String, IDynamicConfiguration> latestGaMap = new HashMap<>();
+        Set<IDynamicConfiguration> oldVersionModuleSet = new HashSet<>();
+        Set<String> oldVersionModuleIdSet = new HashSet<>();
+        for (IDynamicConfiguration module : moduleMap.values()) {
+            String mvnUri = (String) module.getAttribute(DynamicModuleAdapter.ATTR_MVN_URI);
+            if (StringUtils.isEmpty(mvnUri)) {
+                continue;
+            }
+            MavenArtifact curMa = MavenUrlHelper.parseMvnUrl(mvnUri);
+            String key = getGaKey(curMa);
+            IDynamicConfiguration storedModuleConfig = latestGaMap.get(key);
+            if (storedModuleConfig == null) {
+                latestGaMap.put(key, module);
+                continue;
+            } else {
+                String curVersion = curMa.getVersion();
+                String storedMvnUri = (String) storedModuleConfig.getAttribute(DynamicModuleAdapter.ATTR_MVN_URI);
+                MavenArtifact storedMa = MavenUrlHelper.parseMvnUrl(storedMvnUri);
+                String storedVersion = storedMa.getVersion();
+                if (0 < versionComparator.compare(curVersion, storedVersion)) {
+                    String storedVersionModuleId = (String) storedModuleConfig.getAttribute(DynamicModuleAdapter.ATTR_ID);
+                    oldVersionModuleIdSet.add(storedVersionModuleId);
+                    oldVersionModuleSet.add(storedModuleConfig);
+                    latestGaMap.put(key, module);
+                } else {
+                    String curVersionModuleId = (String) module.getAttribute(DynamicModuleAdapter.ATTR_ID);
+                    oldVersionModuleIdSet.add(curVersionModuleId);
+                    oldVersionModuleSet.add(module);
+                }
+            }
+        }
+        if (!oldVersionModuleIdSet.isEmpty()) {
+            for (IDynamicConfiguration moduleGroup : moduleGroupTemplateMap.values()) {
+                List<IDynamicConfiguration> childConfigurations = moduleGroup.getChildConfigurations();
+                Iterator<IDynamicConfiguration> libraryIter = childConfigurations.iterator();
+                while (libraryIter.hasNext()) {
+                    IDynamicConfiguration childConfig = libraryIter.next();
+                    String libraryId = (String) childConfig.getAttribute(DynamicModuleGroupAdapter.ATTR_LIBRARY_ID);
+                    if (oldVersionModuleIdSet.contains(libraryId)) {
+                        IDynamicConfiguration moduleById = getModuleById(libraryId);
+                        String mvnUri = (String) moduleById.getAttribute(DynamicModuleAdapter.ATTR_MVN_URI);
+                        MavenArtifact ma = MavenUrlHelper.parseMvnUrl(mvnUri);
+                        String key = getGaKey(ma);
+                        if (StringUtils.isEmpty(key)) {
+                            throw new Exception("Can't find GA key");
+                        }
+                        IDynamicConfiguration latestModule = latestGaMap.get(key);
+                        if (latestModule == null) {
+                            throw new Exception("Can't find latest module");
+                        }
+                        String latestModuleId = (String) latestModule.getAttribute(DynamicModuleAdapter.ATTR_ID);
+                        childConfig.setAttribute(DynamicModuleGroupAdapter.ATTR_LIBRARY_ID, latestModuleId);
+                    }
+                }
+            }
+            moduleMap.keySet().removeAll(oldVersionModuleIdSet);
+            IDynamicExtension libNeededExtension = getLibraryNeededExtension(plugin);
+            List<IDynamicConfiguration> configurations = libNeededExtension.getConfigurations();
+            configurations.removeAll(oldVersionModuleSet);
+            Collections.sort(configurations, new DynamicAttributeComparator());
         }
     }
 
