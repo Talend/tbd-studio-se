@@ -54,6 +54,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 public abstract class AbstractDynamicDistribution implements IDynamicDistribution {
 
+    private final static String PROPERTY_FORCE_REFRESH_CACHE = "talend.studio.dynamicDistribution.template.forceRefresh"; //$NON-NLS-1$
+
     private List<IDynamicPlugin> builtinPluginsCache;
 
     private List<TemplateBean> templateBeansCache;
@@ -72,6 +74,9 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
 
     @Override
     public List<TemplateBean> getTemplates(IDynamicMonitor monitor) throws Exception {
+        if (Boolean.valueOf(System.getProperty(PROPERTY_FORCE_REFRESH_CACHE))) {
+            templateBeansCache = null;
+        }
         if (templateBeansCache != null) {
             return templateBeansCache;
         }

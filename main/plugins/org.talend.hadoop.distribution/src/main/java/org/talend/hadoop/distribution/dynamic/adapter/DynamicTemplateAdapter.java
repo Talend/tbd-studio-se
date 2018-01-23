@@ -26,6 +26,8 @@ import org.talend.hadoop.distribution.dynamic.bean.TemplateBean;
 import org.talend.hadoop.distribution.dynamic.resolver.IDependencyResolver;
 import org.talend.hadoop.distribution.dynamic.util.DynamicDistributionUtils;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 /**
  * DOC cmeng  class global comment. Detailled comment
  */
@@ -39,8 +41,13 @@ public class DynamicTemplateAdapter extends AbstractDynamicAdapter {
 
     private Map<String, DynamicModuleGroupAdapter> moduleGroupBeanAdapterMap;
 
-    public DynamicTemplateAdapter(TemplateBean templateBean, DynamicConfiguration configuration) {
+    public DynamicTemplateAdapter(TemplateBean templateBean, DynamicConfiguration configuration) throws Exception {
         super(templateBean, configuration);
+        /**
+         * Do a deep clone, since the values will be changed
+         */
+        ObjectMapper om = new ObjectMapper();
+        setTemplateBean(om.readValue(om.writeValueAsString(templateBean), TemplateBean.class));
     }
 
     public void adapt(IDynamicMonitor monitor) throws Exception {

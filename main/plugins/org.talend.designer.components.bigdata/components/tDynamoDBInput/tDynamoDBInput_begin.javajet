@@ -25,7 +25,7 @@
 	boolean useFilterExpression = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_FILTER_EXPRESSION__"));
 	boolean useAdvancedKeyConditionExpression = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_ADVANCED_KEY_CONDITION_EXPRESSION__"));
 	boolean useAdvancedFilterExpression = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_ADVANCED_FILTER_EXPRESSION__"));
-	final String studioVersion = org.talend.commons.utils.VersionUtils.getDisplayVersion();
+	final String AWSTracker = org.talend.core.utils.TrackerUtil.getAWSTracker();
 	
     String endPoint   = ElementParameterParser.getValue(node, "__ENDPOINT__");
     String table   = ElementParameterParser.getValue(node, "__TABLE__");
@@ -65,7 +65,7 @@
 
 			com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient dynamoDBClient_<%=cid%> = new com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient(
 				credentialsProvider_<%=cid%>,
-				com.amazonaws.PredefinedClientConfigurations.dynamoDefault().withUserAgent(routines.system.Constant.getUserAgent("<%=studioVersion%>"))
+				com.amazonaws.PredefinedClientConfigurations.dynamoDefault().withUserAgent("<%=AWSTracker%>")
 			);
    
 			if(<%=useEndPoint%>)
