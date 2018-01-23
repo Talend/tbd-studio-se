@@ -243,9 +243,4 @@ public class Altus10Distribution extends AbstractDistribution implements SparkBa
     public boolean doSupportAzureDataLakeStorage() {
         return true;
     }
-
-	@Override
-	public boolean useS3AProperties() {
-		return false;
-	}
 }

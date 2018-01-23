@@ -232,9 +232,4 @@ public class CustomDistribution extends AbstractDistribution implements HDFSComp
     public boolean canCreateMapRStream() {
         return true;
     }
-
-	@Override
-	public boolean useS3AProperties() {
-		return false;
-	}
 }

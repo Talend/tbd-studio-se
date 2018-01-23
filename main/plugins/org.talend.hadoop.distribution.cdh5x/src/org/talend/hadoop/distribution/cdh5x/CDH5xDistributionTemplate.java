@@ -544,9 +544,4 @@ public class CDH5xDistributionTemplate extends AbstractDistribution
     public boolean isDynamicDistribution() {
         return true;
     }
-
-	@Override
-	public boolean useS3AProperties() {
-		return false;
-	}
 }

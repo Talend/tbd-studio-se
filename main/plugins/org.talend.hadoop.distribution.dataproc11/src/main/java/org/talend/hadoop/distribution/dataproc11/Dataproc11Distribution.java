@@ -325,9 +325,4 @@ public class Dataproc11Distribution extends AbstractDistribution implements HDFS
     public boolean doSupportSparkYarnClusterMode() {
         return false;
     }
-
-	@Override
-	public boolean useS3AProperties() {
-		return false;
-	}
 }
