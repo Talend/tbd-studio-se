@@ -46,7 +46,7 @@
 Object partitionKeyValue_<%=cid%>	= null;
 Object sortKeyValue_<%=cid%>	= null;
 java.util.Map<String, Object> mapValues_<%=cid%> = new java.util.HashMap<>();
-java.util.Map<String, Boolean> dbTypeJSONMap = new java.util.HashMap<>();
+java.util.Map<String, Boolean> dbTypeJSONMap_<%=cid%> = new java.util.HashMap<>();
 
 <%  List<String[]> isJSONList = new java.util.ArrayList();
     for (int i = 0; i < outPutColumns.size(); i++) {
@@ -111,7 +111,7 @@ java.util.Map<String, Boolean> dbTypeJSONMap = new java.util.HashMap<>();
 
 for(String[] isJSonEntry: isJSONList){
 %>
-        dbTypeJSONMap.put(<%=isJSonEntry[0]%>, <%=isJSonEntry[1]%>);
+        dbTypeJSONMap_<%=cid%>.put(<%=isJSonEntry[0]%>, <%=isJSonEntry[1]%>);
 <%
 }
 %>
@@ -132,7 +132,7 @@ if ("INSERT".equalsIgnoreCase(dataAction)) {
 			if(entry.getValue() == null){
 				item_<%=cid%> = item_<%=cid%>.withNull(entry.getKey());
 			}else{
-			    if(dbTypeJSONMap.get(entry.getKey())){
+			    if(dbTypeJSONMap_<%=cid%>.get(entry.getKey())){
 			        item_<%=cid%> = item_<%=cid%>.withJSON(entry.getKey(), entry.getValue().toString());
 			    }
 			    else{
