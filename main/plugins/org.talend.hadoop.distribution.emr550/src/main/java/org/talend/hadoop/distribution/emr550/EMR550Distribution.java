@@ -466,5 +466,4 @@ public class EMR550Distribution extends AbstractDistribution implements HBaseCom
         return false;
     }
     // End
-
 }

@@ -497,4 +497,9 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
     public boolean doSupportAzureDataLakeStorage() {
         return true;
     }
+
+	@Override
+	public boolean useS3AProperties() {
+		return true;
+	}
 }

@@ -278,10 +278,11 @@ public class CDH540Distribution extends AbstractDistribution implements HDFSComp
     public boolean doSupportAzureDataLakeStorage() {
         return false;
     }
+
     // End
-    
+
     @Override
     public boolean isActivated() {
-        return false;
+        return true;
     }
 }

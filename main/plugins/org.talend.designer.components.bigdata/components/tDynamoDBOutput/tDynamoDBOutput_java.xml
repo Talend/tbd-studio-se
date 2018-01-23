@@ -13,6 +13,7 @@
         STARTABLE="false"
         PARTITIONING="NONE"
         LOG4J_ENABLED="true"
+		SUPPORTS_DB_TYPE="true"
     >
         <SIGNATURE/>
     </HEADER>
@@ -33,6 +34,11 @@
         <CONNECTOR CTYPE="RUN_IF"/>
     </CONNECTORS>
 	<PARAMETERS>
+
+		<PARAMETER NAME="MAPPING" FIELD="MAPPING_TYPE" NUM_ROW="5" SHOW="false">
+			<DEFAULT>dynamodb_id</DEFAULT>
+		</PARAMETER>
+
 		<PARAMETER NAME="ACCESS_KEY" FIELD="TEXT" NUM_ROW="10"
 			GROUP="AUTHENTICATION"
 			SHOW_IF="INHERIT_CREDENTIALS == 'false'">
@@ -192,8 +198,8 @@
 	</ADVANCED_PARAMETERS>
 	<CODEGENERATION>
      <IMPORTS>
-		<IMPORT NAME="aws-java-sdk-1.11.223.jar" MODULE="aws-java-sdk-1.11.223.jar"
-			MVN="mvn:com.amazonaws/aws-java-sdk/1.11.223"
+		<IMPORT NAME="aws-java-sdk-1.11.269.jar" MODULE="aws-java-sdk-1.11.269.jar"
+			MVN="mvn:com.amazonaws/aws-java-sdk/1.11.269"
 			REQUIRED="true" />	 
 		<IMPORT NAME="jackson-core-2.5.3.jar" MODULE="jackson-core-2.5.3.jar"
 			MVN="mvn:org.talend.libraries/jackson-core-2.5.3/6.0.0"
