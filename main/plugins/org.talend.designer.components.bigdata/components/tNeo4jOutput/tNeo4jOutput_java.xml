@@ -276,14 +276,14 @@
 				UrlPath="platform:/plugin/org.talend.libraries.jersey/lib/jersey-client-1.4.jar"
 				NAME="jersey-client-1.4"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="jackson-mapper-asl-1.9.7.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.7/6.0.0" NAME="jackson-mapper-asl-1.9.7"
+			<IMPORT MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" NAME="jackson-mapper-asl-1.9.14-TALEND"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="jackson-jaxrs-1.9.7.jar"
-				MVN="mvn:org.talend.libraries/jackson-jaxrs-1.9.7/6.0.0" NAME="jackson-jaxrs-1.9.7"
+			<IMPORT MODULE="jackson-jaxrs-1.9.13.jar"
+				MVN="mvn:org.codehaus.jackson/jackson-jaxrs/1.9.13" NAME="jackson-jaxrs-1.9.13"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="jackson-core-asl-1.9.7.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.7/6.0.0" NAME="jackson-core-asl-1.9.7"
+			<IMPORT MODULE="jackson-core-asl-1.9.14-TALEND.jar"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND" NAME="jackson-core-asl-1.9.14-TALEND"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X') AND (USE_EXISTING_CONNECTION == 'false')" />
 
 			<!-- Neo4j 2.1.X -->
@@ -358,14 +358,14 @@
 				MVN="mvn:org.talend.libraries/jersey-core-1.4/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jersey/lib/jersey-core-1.4.jar"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_2_1_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.7" MODULE="jackson-mapper-asl-1.9.7.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.7/6.0.0"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_2_1_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT NAME="jackson-jaxrs-1.9.7" MODULE="jackson-jaxrs-1.9.7.jar"
-				MVN="mvn:org.talend.libraries/jackson-jaxrs-1.9.7/6.0.0"
+			<IMPORT NAME="jackson-jaxrs-1.9.13" MODULE="jackson-jaxrs-1.9.13.jar"
+				MVN="mvn:org.codehaus.jackson/jackson-jaxrs/1.9.13"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_2_1_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT NAME="jackson-core-asl-1.9.7" MODULE="jackson-core-asl-1.9.7.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.7/6.0.0"
+			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_2_1_X') AND (USE_EXISTING_CONNECTION == 'false')" />
 
 			<!-- Neo4J 2.2.5 -->
@@ -452,14 +452,14 @@
 				MVN="mvn:org.talend.libraries/neo4j-cypher-2.2.5/6.1.0"
 				UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/neo4j-cypher-2.2.5.jar"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_2_2_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.7" MODULE="jackson-mapper-asl-1.9.7.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.7/6.1.0"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_2_2_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT NAME="jackson-jaxrs-1.9.7" MODULE="jackson-jaxrs-1.9.7.jar"
-				MVN="mvn:org.talend.libraries/jackson-jaxrs-1.9.7/6.1.0"
+			<IMPORT NAME="jackson-jaxrs-1.9.13" MODULE="jackson-jaxrs-1.9.13.jar"
+				MVN="mvn:org.codehaus.jackson/jackson-jaxrs/1.9.13"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_2_2_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT NAME="jackson-core-asl-1.9.7" MODULE="jackson-core-asl-1.9.7.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.7/6.1.0"
+			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_2_2_X') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="parboiled-scala_2.10-1.1.7" MODULE="parboiled-scala_2.10-1.1.7.jar"
 				MVN="mvn:org.talend.libraries/parboiled-scala_2.10-1.1.7/6.1.0"
@@ -587,14 +587,14 @@
                 MVN="mvn:org.talend.libraries/slf4j-api-1.7.12/6.1.0"
                 UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/slf4j-api-1.7.12.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-            <IMPORT NAME="jackson-mapper-asl-1.9.7" MODULE="jackson-mapper-asl-1.9.7.jar"
-                MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.7/6.1.0"
+            <IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
+                MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-            <IMPORT NAME="jackson-jaxrs-1.9.7" MODULE="jackson-jaxrs-1.9.7.jar"
-                MVN="mvn:org.talend.libraries/jackson-jaxrs-1.9.7/6.1.0"
+            <IMPORT NAME="jackson-jaxrs-1.9.13" MODULE="jackson-jaxrs-1.9.13.jar"
+                MVN="mvn:org.codehaus.jackson/jackson-jaxrs/1.9.13"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-            <IMPORT NAME="jackson-core-asl-1.9.7" MODULE="jackson-core-asl-1.9.7.jar"
-                MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.7/6.1.0"
+            <IMPORT NAME="jackson-core-asl-1.9.14-TALEND" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
+                MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X') AND (USE_EXISTING_CONNECTION == 'false')" />
             <IMPORT NAME="commons-lang3-3.3.2.jar" MODULE="commons-lang3-3.3.2.jar"
                 MVN="mvn:org.talend.libraries/commons-lang3-3.3.2/6.0.0"
