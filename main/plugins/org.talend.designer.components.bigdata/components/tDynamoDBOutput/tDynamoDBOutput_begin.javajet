@@ -33,7 +33,7 @@
 	long rcu = Long.parseLong(ElementParameterParser.getValue(node, "__RCU__"));
 	long wcu = Long.parseLong(ElementParameterParser.getValue(node, "__WCU__"));
 	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
-
+	final String AWSTracker = org.talend.core.utils.TrackerUtil.getAWSTracker();
   	
   	List<IMetadataTable> outputMetadatas = node.getMetadataList();
   	if(outputMetadatas == null || outputMetadatas.size() == 0 || outputMetadatas.get(0) == null){
@@ -47,7 +47,10 @@
 int nb_line_<%=cid %> = 0;
 
 com.amazonaws.auth.AWSCredentials credentials_<%=cid%> = new com.amazonaws.auth.BasicAWSCredentials(<%=accessKey%>,	<%=secretKey%>);		
-com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient dynamoDBClient_<%=cid%> = new com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient(credentials_<%=cid%>);
+com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient dynamoDBClient_<%=cid%> = new com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient(
+    credentials_<%=cid%>,		
+    com.amazonaws.PredefinedClientConfigurations.dynamoDefault().withUserAgent("<%=AWSTracker%>")
+    );
    
 <%	if(useEndPoint)	{	%>
 		dynamoDBClient_<%=cid%> = dynamoDBClient_<%=cid%>.withEndpoint(<%=endPoint%>);

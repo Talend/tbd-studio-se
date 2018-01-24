@@ -478,7 +478,15 @@
             id="curator-framework-2.7.1.jar"
             name="curator-framework-2.7.1.jar"
             mvn_uri="mvn:org.talend.libraries/curator-framework-2.7.1/6.0.0"/>
-            
+        
+        <!-- GraphFrames libraries -->
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.mer580"
+            id="graphframes-0.5.0-spark2.1-s_2.11.jar"
+            name="graphframes-0.5.0-spark2.1-s_2.11.jar"
+            mvn_uri="mvn:org.talend.libraries/graphframes-0.5.0-spark2.1-s_2.11/6.0.0">
+        </libraryNeeded>
+        
         <!-- Spark2 libraries -->
 
         <libraryNeeded
@@ -2254,6 +2262,14 @@
             <library id="hive-exec-1.2.1-spark2-amzn-0.jar"/>
             <library id="hive-jdbc-1.2.1-spark2-amzn-0.jar"/>
             <library id="hive-metastore-1.2.1-spark2-amzn-0.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- GraphFrames group MRREQUIRED -->
+        <libraryNeededGroup
+                description="GraphFrames libraries for EMR 5.8.0 that are MRREQUIRED"
+                id="GRAPHFRAMES-LIB-EMR_5_8_0_LATEST"
+                name="GRAPHFRAMES-LIB-EMR_5_8_0_LATEST">
+             <library id="graphframes-0.5.0-spark2.1-s_2.11.jar" />
         </libraryNeededGroup>
 
     </extension>

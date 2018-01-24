@@ -45,6 +45,7 @@ import org.talend.hadoop.distribution.cdh5x.modulegroup.node.pigoutput.CDH5xPigO
 import org.talend.hadoop.distribution.cdh5x.modulegroup.node.spark.CDH5xSparkDynamoDBNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5x.modulegroup.node.sparkbatch.CDH5xGraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5x.modulegroup.node.sparkbatch.CDH5xSparkBatchAzureNodeModuleGroup;
+import org.talend.hadoop.distribution.cdh5x.modulegroup.node.sparkbatch.CDH5xSparkBatchKuduNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5x.modulegroup.node.sparkbatch.CDH5xSparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5x.modulegroup.node.sparkbatch.CDH5xSparkBatchS3NodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5x.modulegroup.node.sparkstreaming.CDH5xSparkStreamingFlumeNodeModuleGroup;
@@ -156,6 +157,9 @@ public class CDH5xDistributionTemplate extends AbstractDistribution
         nodeModuleGroups.put(
                 new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.S3_CONFIGURATION_COMPONENT),
                 new CDH5xSparkStreamingS3NodeModuleGroup(pluginAdapter).getModuleGroups(distribution, versionId));
+        nodeModuleGroups.put(
+                new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT),
+                new CDH5xSparkBatchAzureNodeModuleGroup(pluginAdapter).getModuleGroups(distribution, versionId));
 
         // Kinesis
         Set<DistributionModuleGroup> kinesisNodeModuleGroups = new CDH5xSparkStreamingKinesisNodeModuleGroup(pluginAdapter)
@@ -218,6 +222,20 @@ public class CDH5xDistributionTemplate extends AbstractDistribution
         nodeModuleGroups.put(
                 new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_CONFIGURATION_COMPONENT),
                 dynamoDBConfigurationModuleGroups);
+        
+        // Kudu ...
+        Set<DistributionModuleGroup> kuduNodeModuleGroups = new CDH5xSparkBatchKuduNodeModuleGroup(pluginAdapter)
+                .getModuleGroups(distribution, versionId, "USE_EXISTING_CONNECTION == 'false'");
+        Set<DistributionModuleGroup> kuduConfigurationModuleGroups = new CDH5xSparkBatchKuduNodeModuleGroup(pluginAdapter)
+                .getModuleGroups(distribution, versionId, null);
+        // ... in Spark batch
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.KUDU_INPUT_COMPONENT),
+                kuduNodeModuleGroups);
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.KUDU_OUTPUT_COMPONENT),
+                kuduNodeModuleGroups);
+        nodeModuleGroups.put(
+                new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.KUDU_CONFIGURATION_COMPONENT),
+                kuduConfigurationModuleGroups);
 
         displayConditions = new HashMap<>();
     }
