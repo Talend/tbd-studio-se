@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.talend.core.runtime.classloader_provider">
+      <classloader
+            index="HIVE:PIVOTAL_HD:PIVOTAL_HD_1_0_1:EMBEDDED"
+            libraries="hive-exec-0.9.1-gphd-2.0.1.0.jar;hive-jdbc-0.9.1-gphd-2.0.1.0.jar;hive-metastore-0.9.1-gphd-2.0.1.0.jar;hive-service-0.9.1-gphd-2.0.1.0.jar;libfb303_new.jar;libthrift.jar;log4j-1.2.16.jar;slf4j-api-1.6.1.jar;slf4j-log4j12-1.6.1.jar;hadoop-auth-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-common-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-hdfs-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-mapreduce-client-common-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-mapreduce-client-core-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-mapreduce-client-jobclient-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-yarn-api-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-yarn-client-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-yarn-common-2.0.2-alpha-gphd-2.0.1.0.jar;protobuf-java-2.4.0a.jar;guava-11.0.2.jar;commons-logging-1.1.1.jar;commons-cli-1.2.jar;antlr-runtime-3.0.1.jar;commons-dbcp-1.4.jar;commons-pool-1.5.4.jar;datanucleus-connectionpool-2.0.3.jar;datanucleus-enhancer-2.0.3.jar;derby-10.4.2.0.jar;hive-builtins-0.9.1-gphd-2.0.1.0.jar;commons-configuration-1.6.jar;datanucleus-core-2.0.3.jar;datanucleus-rdbms-2.0.3.jar;jdo2-api-2.3-ec.jar;commons-lang-2.5.jar;jackson-core-asl-1.8.8.jar;jackson-mapper-asl-1.8.8.jar;hbase-0.94.2-gphd-2.0.1.0.jar;zookeeper-3.4.5-gphd-2.0.1.0.jar;hive-hbase-handler-0.9.1-gphd-2.0.1.0.jar;servlet-api-2.5-20081211.jar">
+      </classloader>
+      <classloader
+            index="HIVE:PIVOTAL_HD:PIVOTAL_HD_1_0_1:STANDALONE"
+            libraries="hive-exec-0.9.1-gphd-2.0.1.0.jar;hive-jdbc-0.9.1-gphd-2.0.1.0.jar;hive-metastore-0.9.1-gphd-2.0.1.0.jar;hive-service-0.9.1-gphd-2.0.1.0.jar;libfb303_new.jar;libthrift.jar;log4j-1.2.16.jar;slf4j-api-1.6.1.jar;slf4j-log4j12-1.6.1.jar;hadoop-auth-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-common-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-hdfs-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-mapreduce-client-common-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-mapreduce-client-core-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-mapreduce-client-jobclient-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-yarn-api-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-yarn-client-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-yarn-common-2.0.2-alpha-gphd-2.0.1.0.jar;protobuf-java-2.4.0a.jar;guava-11.0.2.jar;commons-logging-1.1.1.jar;commons-cli-1.2.jar;antlr-runtime-3.0.1.jar;commons-dbcp-1.4.jar;commons-pool-1.5.4.jar;datanucleus-connectionpool-2.0.3.jar;datanucleus-enhancer-2.0.3.jar;derby-10.4.2.0.jar;hive-builtins-0.9.1-gphd-2.0.1.0.jar;commons-configuration-1.6.jar;datanucleus-core-2.0.3.jar;datanucleus-rdbms-2.0.3.jar;jdo2-api-2.3-ec.jar;commons-lang-2.5.jar;jackson-core-asl-1.8.8.jar;jackson-mapper-asl-1.8.8.jar;hbase-0.94.2-gphd-2.0.1.0.jar;zookeeper-3.4.5-gphd-2.0.1.0.jar;hive-hbase-handler-0.9.1-gphd-2.0.1.0.jar;servlet-api-2.5-20081211.jar">
+      </classloader>
+      <classloader
+            index="HBASE:PIVOTAL_HD:PIVOTAL_HD_1_0_1"
+            libraries="commons-lang-2.5.jar;commons-logging-1.1.1.jar;commons-configuration-1.6.jar;guava-11.0.2.jar;protobuf-java-2.4.0a.jar;hadoop-auth-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-common-2.0.2-alpha-gphd-2.0.1.0.jar;hbase-0.94.2-gphd-2.0.1.0.jar;zookeeper-3.4.5-gphd-2.0.1.0.jar;log4j-1.2.16.jar;slf4j-api-1.6.1.jar;slf4j-log4j12-1.6.1.jar">
+      </classloader>   
+      <classloader
+            index="MAP_REDUCE:PIVOTAL_HD:PIVOTAL_HD_1_0_1"
+            libraries="hadoop-auth-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-common-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-hdfs-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-mapreduce-client-common-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-mapreduce-client-core-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-mapreduce-client-jobclient-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-yarn-api-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-yarn-client-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-yarn-common-2.0.2-alpha-gphd-2.0.1.0.jar;guava-11.0.2.jar;protobuf-java-2.4.0a.jar;avro-1.5.4.jar;commons-logging-1.1.1.jar;commons-cli-1.2.jar;commons-configuration-1.6.jar;commons-lang-2.5.jar;commons-codec-1.4.jar;jackson-mapper-asl-1.8.8.jar;jackson-core-asl-1.8.8.jar;slf4j-api-1.6.1.jar;slf4j-log4j12-1.6.1.jar;log4j-1.2.17.jar">
+      </classloader>    
+      <classloader
+            index="HDFS:PIVOTAL_HD:PIVOTAL_HD_1_0_1"
+            libraries="hadoop-hdfs-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-common-2.0.2-alpha-gphd-2.0.1.0.jar;hadoop-auth-2.0.2-alpha-gphd-2.0.1.0.jar;commons-configuration-1.6.jar;commons-lang-2.5.jar;commons-logging-1.1.1.jar;commons-cli-1.2.jar;guava-11.0.2.jar;log4j-1.2.17.jar;protobuf-java-2.4.0a.jar;slf4j-api-1.6.1.jar;slf4j-log4j12-1.6.1.jar;avro-1.5.4.jar;jackson-mapper-asl-1.8.8.jar;jackson-core-asl-1.8.8.jar;jetty-util-6.1.26.jar;jersey-core-1.8.jar;commons-io-2.4.jar">
+      </classloader>          
+   </extension>
+
+</plugin>
