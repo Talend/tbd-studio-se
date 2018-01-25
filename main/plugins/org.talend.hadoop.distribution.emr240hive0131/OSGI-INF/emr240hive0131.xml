@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<component name="EMRApache240_Hive_0_13_1_Distribution">
+  <implementation class="org.talend.hadoop.distribution.emr240hive0131.EMRApache240_Hive_0_13_1_Distribution"/>
+  <service>
+    <provide interface="org.talend.hadoop.distribution.component.HadoopComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.HiveComponent"/>
+  </service>
+</component>

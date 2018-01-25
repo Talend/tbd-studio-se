@@ -255,7 +255,31 @@
          version="0.0.0"/>
 
    <plugin
+         id="org.talend.libraries.hadoop.cloudera.cdh5.1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
          id="org.talend.libraries.hadoop.cloudera.cdh5.4"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.talend.libraries.hadoop.hdp.2.2"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.talend.libraries.hadoop.hdp.2.3"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.talend.libraries.hadoop.emr.4.0.0"
          download-size="0"
          install-size="0"
          version="0.0.0"/>
@@ -268,6 +292,18 @@
 
    <plugin
          id="org.talend.libraries.jxplorer"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.talend.libraries.hadoop.mapr.4.0.1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.talend.libraries.hadoop.mapr.4.1.0"
          download-size="0"
          install-size="0"
          version="0.0.0"/>
