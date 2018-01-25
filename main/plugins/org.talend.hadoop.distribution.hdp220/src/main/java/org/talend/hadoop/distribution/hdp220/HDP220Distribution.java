@@ -270,5 +270,10 @@ public class HDP220Distribution extends AbstractDistribution implements HDFSComp
     public boolean doSupportAzureDataLakeStorage() {
         return false;
     }
+
+    @Override
+    public boolean isActivated() {
+        return false;
+    }
     // End
 }

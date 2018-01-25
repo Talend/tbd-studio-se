@@ -250,5 +250,10 @@ public class CDH510MR2Distribution extends AbstractDistribution implements HDFSC
     public boolean doSupportAzureDataLakeStorage() {
         return false;
     }
+
+    @Override
+    public boolean isActivated() {
+        return false;
+    }
     // End
 }

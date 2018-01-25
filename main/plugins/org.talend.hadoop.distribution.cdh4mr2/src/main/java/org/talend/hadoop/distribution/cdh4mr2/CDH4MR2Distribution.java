@@ -221,6 +221,12 @@ public class CDH4MR2Distribution extends AbstractDistribution implements HDFSCom
     public boolean doSupportAzureDataLakeStorage() {
         return false;
     }
+
+    @Override
+    public boolean isActivated() {
+        return false;
+    }
+
     // End
 
 }

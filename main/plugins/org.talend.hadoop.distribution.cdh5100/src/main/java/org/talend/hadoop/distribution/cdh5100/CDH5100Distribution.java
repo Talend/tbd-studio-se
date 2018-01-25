@@ -499,4 +499,9 @@ public class CDH5100Distribution extends AbstractDistribution implements ICloude
     public boolean doSupportAzureDataLakeStorage() {
         return false;
     }
+
+    @Override
+    public boolean isActivated() {
+        return false;
+    }
 }
