@@ -502,6 +502,6 @@ public class CDH5100Distribution extends AbstractDistribution implements ICloude
 
     @Override
     public boolean isActivated() {
-        return false;
+        return true;
     }
 }
