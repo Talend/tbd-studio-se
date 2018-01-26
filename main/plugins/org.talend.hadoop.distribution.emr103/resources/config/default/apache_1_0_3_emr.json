@@ -1,0 +1,7 @@
+{
+    "NAMENODE_URI":"hdfs://localhost:9000",
+    "JOBTRACKER":"localhost:9001",
+    "HBASE":{
+        "PORT":2181
+    }
+}

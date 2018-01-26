@@ -12,7 +12,6 @@
 // ============================================================================
 package org.talend.hadoop.distribution.cdh540.test;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.talend.hadoop.distribution.cdh540.CDH540Distribution;
 import org.talend.hadoop.distribution.component.HadoopComponent;
@@ -29,13 +28,11 @@ public class CDH540HiveMetadataHelperTest extends AbstractVersionTest4HiveMetada
     }
 
     @Test
-    @Ignore
     public void testHiveMode_CDH540_WithAll() {
         doTestGetHiveModesDisplay(getDistributionVersion(), HIVE_MODE_DISPLAY_ALL);
     }
 
     @Test
-    @Ignore
     public void testHiveServer_CDH540_Server2_Only() {
         doTestGetHiveServersDisplay(getDistributionVersion(), HIVE_SERVER_DISPLAY_SERVER2_ONLY);
     }

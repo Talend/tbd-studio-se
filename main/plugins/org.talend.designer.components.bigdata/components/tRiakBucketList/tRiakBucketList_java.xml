@@ -16,7 +16,7 @@
   	</HEADER>
 
   	<FAMILIES>
-  		<FAMILY>Databases/Riak</FAMILY>
+  		<FAMILY>Databases NoSQL/Riak</FAMILY>
     	<FAMILY>Big Data/Riak</FAMILY>
   	</FAMILIES>
 

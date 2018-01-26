@@ -40,6 +40,22 @@
          unpack="false"/>
 
    <plugin
+         id="org.talend.hadoop.distribution.emr240hive0131.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.hdp220.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
          id="org.talend.hadoop.distribution.mapr500.test"
          download-size="0"
          install-size="0"
@@ -65,6 +81,30 @@
 
    <plugin
          id="org.talend.hadoop.distribution.mapr600.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>         
+
+   <plugin
+         id="org.talend.hadoop.distribution.cdh4mr1.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.emr240.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.hdp230.test"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -96,10 +136,34 @@
          unpack="false"/>
 
    <plugin
+         id="org.talend.hadoop.distribution.piv101.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.cdh4mr2.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
          id="org.talend.hadoop.distribution.dataproc11.test"
          download-size="0"
          install-size="0"
          version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.emr400.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
          unpack="false"/>
 
    <plugin
@@ -135,6 +199,62 @@
          unpack="false"/>
 
    <plugin
+         id="org.talend.hadoop.distribution.mapr200.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.piv200.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.cdh500mr2.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.hdinsight310.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.mapr212.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.cdh510mr1.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.hdinsight320.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
          id="org.talend.hadoop.distribution.hdinsight340.test"
          download-size="0"
          install-size="0"
@@ -151,6 +271,14 @@
          unpack="false"/>
 
    <plugin
+         id="org.talend.hadoop.distribution.mapr213.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
          id="org.talend.oozie.scheduler.test"
          download-size="0"
          install-size="0"
@@ -159,7 +287,31 @@
          unpack="false"/>
 
    <plugin
+         id="org.talend.hadoop.distribution.cdh510mr2.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
          id="org.talend.designer.pigmap.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.hdp120.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.mapr301.test"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -215,7 +367,63 @@
          unpack="false"/>
 
    <plugin
+         id="org.talend.hadoop.distribution.hdp130.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.mapr310.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
          id="org.talend.hadoop.distribution.custom.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.hdp200.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.mapr401.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.emr103.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.hdp210.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.mapr410.test"
          download-size="0"
          install-size="0"
          version="0.0.0"

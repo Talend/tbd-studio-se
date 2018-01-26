@@ -14,7 +14,7 @@
     </HEADER>
 
     <FAMILIES>
-        <FAMILY>Databases/Neo4j</FAMILY>
+        <FAMILY>Databases NoSQL/Neo4j</FAMILY>
         <FAMILY>Big Data/Neo4j</FAMILY>
     </FAMILIES>
 

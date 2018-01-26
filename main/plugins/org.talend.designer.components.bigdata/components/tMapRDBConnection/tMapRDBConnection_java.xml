@@ -5,7 +5,7 @@
 		<SIGNATURE />
 	</HEADER>
 	<FAMILIES>
-		<FAMILY>Databases/MapRDB</FAMILY>
+		<FAMILY>Databases NoSQL/MapRDB</FAMILY>
 		<FAMILY>ELT/Connections</FAMILY>
 		<FAMILY>Big Data/MapRDB</FAMILY>
 	</FAMILIES>

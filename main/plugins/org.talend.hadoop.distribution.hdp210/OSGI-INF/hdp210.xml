@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<component name="HDP210Distribution">
+  <implementation class="org.talend.hadoop.distribution.hdp210.HDP210Distribution"/>
+  <service>
+    <provide interface="org.talend.hadoop.distribution.component.HadoopComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.HDFSComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.HBaseComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.HCatalogComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.HiveComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.MRComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.PigComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.SqoopComponent"/>
+  </service>
+</component>

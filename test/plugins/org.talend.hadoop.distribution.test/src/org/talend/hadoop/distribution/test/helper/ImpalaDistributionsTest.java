@@ -63,7 +63,7 @@ public class ImpalaDistributionsTest {
 
         String message = "Should contain the version";
         arrayContain(versions, "Cloudera CDH5.1(YARN mode)", message);
-        // arrayContain(versions, "Cloudera CDH5.4(YARN mode)", message); // CDH 5.4 is deactivated.
+        arrayContain(versions, "Cloudera CDH5.4(YARN mode)", message);
         arrayContain(versions, "Cloudera CDH5.5(YARN mode)", message);
         arrayContain(versions, "Cloudera CDH5.6(YARN mode)", message);
         arrayContain(versions, "Cloudera CDH5.7(YARN mode)", message);

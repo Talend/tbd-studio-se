@@ -14,7 +14,7 @@
     	<SIGNATURE></SIGNATURE>
 	</HEADER>
 	<FAMILIES>
-		<FAMILY>Databases/CouchDB</FAMILY>
+		<FAMILY>Databases NoSQL/CouchDB</FAMILY>
 		<FAMILY>Big Data/CouchDB</FAMILY>
 	</FAMILIES>
 	<DOCUMENTATION>

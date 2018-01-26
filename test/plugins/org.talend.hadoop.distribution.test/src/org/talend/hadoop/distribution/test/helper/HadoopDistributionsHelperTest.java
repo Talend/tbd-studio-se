@@ -28,14 +28,14 @@ public class HadoopDistributionsHelperTest {
     public void testGetHadoopDistributionsDisplay_Sorted() {
         String[] hadoopDistributionsDisplay = HadoopDistributionsHelper.HADOOP.getDistributionsDisplay(false);
         Assert.assertArrayEquals(new String[] { "Amazon EMR", "Apache", "Cloudera", "Google Cloud Dataproc",
-                "HortonWorks", "MapR", "Microsoft HD Insight" }, hadoopDistributionsDisplay);
+                "HortonWorks", "MapR", "Microsoft HD Insight", "Pivotal HD" }, hadoopDistributionsDisplay);
     }
 
     @Test
     public void testGetHadoopDistributionsDisplay_withCustom__Sorted() {
         String[] hadoopDistributionsDisplay = HadoopDistributionsHelper.HADOOP.getDistributionsDisplay(true);
         Assert.assertArrayEquals(new String[] { "Amazon EMR", "Apache", "Cloudera", "Google Cloud Dataproc",
-                "HortonWorks", "MapR", "Microsoft HD Insight", "Custom - Unsupported" }, hadoopDistributionsDisplay);
+                "HortonWorks", "MapR", "Microsoft HD Insight", "Pivotal HD", "Custom - Unsupported" }, hadoopDistributionsDisplay);
     }
 
     @Test
@@ -73,7 +73,8 @@ public class HadoopDistributionsHelperTest {
     public void testAmazonEMRDistribution() {
         testDistributionOnly("AMAZON_EMR", "Amazon EMR", new String[][] {
                 { "EMR_4_6_0", "EMR 4.6.0 (Apache 2.7.2)", "HADOOP_2" }, { "EMR_4_5_0", "EMR 4.5.0 (Apache 2.7.2)", "HADOOP_2" },
-                { "APACHE_2_4_0_EMR", "Apache 2.4.0", "HADOOP_2" }, { "APACHE_1_0_3_EMR", "Apache 1.0.3", "HADOOP_1" } });
+                { "EMR_4_0_0", "EMR 4.0.0 (Apache 2.6.0)", "HADOOP_2" }, { "APACHE_2_4_0_EMR", "Apache 2.4.0", "HADOOP_2" },
+                { "APACHE_1_0_3_EMR", "Apache 1.0.3", "HADOOP_1" } });
     }
 
     @Test
@@ -87,6 +88,7 @@ public class HadoopDistributionsHelperTest {
                 { "Cloudera_CDH5_7", "Cloudera CDH5.7(YARN mode)", "HADOOP_2" },
                 { "Cloudera_CDH5_6", "Cloudera CDH5.6(YARN mode)", "HADOOP_2" },
                 { "Cloudera_CDH5_5", "Cloudera CDH5.5(YARN mode)", "HADOOP_2" },
+                { "Cloudera_CDH5_4", "Cloudera CDH5.4(YARN mode)", "HADOOP_2" },
                 { "Cloudera_CDH5_1", "Cloudera CDH5.1(YARN mode)", "HADOOP_2" },
                 { "Cloudera_CDH5_1_MR1", "Cloudera CDH5.1(MR 1 mode)", "HADOOP_1" },
                 { "Cloudera_CDH5", "Cloudera CDH5.0(YARN mode)", "HADOOP_2" },
@@ -98,6 +100,7 @@ public class HadoopDistributionsHelperTest {
     public void testHortonWorksDistribution() {
         testDistributionOnly("HORTONWORKS", "HortonWorks", new String[][] {
                 { "HDP_2_4", "Hortonworks Data Platform V2.4.0", "HADOOP_2" },
+                { "HDP_2_3", "Hortonworks Data Platform V2.3.2", "HADOOP_2" },
                 { "HDP_2_2", "Hortonworks Data Platform V2.2.0", "HADOOP_2" },
                 { "HDP_2_1", "Hortonworks Data Platform V2.1.0(Baikal)", "HADOOP_2" },
                 { "HDP_2_0", "Hortonworks Data Platform V2.0.0(BigWheel)", "HADOOP_2" },
@@ -108,17 +111,24 @@ public class HadoopDistributionsHelperTest {
     @Test
     public void testMapRDistribution() {
         testDistributionOnly("MAPR", "MapR", new String[][] { { "MAPR510", "MapR 5.1.0(YARN mode)", "HADOOP_2" },
-                { "MAPR500", "MapR 5.0.0(YARN mode)", "HADOOP_2" }, { "MAPR401", "MapR 4.0.1(YARN mode)", "HADOOP_2" },
-                { "MAPR310", "MapR 3.1.0", "HADOOP_1" }, { "MAPR301", "MapR 3.0.1", "HADOOP_1" },
-                { "MAPR213", "MapR 2.1.3", "HADOOP_1" }, { "MAPR212", "MapR 2.1.2", "HADOOP_1" },
-                { "MAPR2", "MapR 2.0.0", "HADOOP_1" } });
+                { "MAPR500", "MapR 5.0.0(YARN mode)", "HADOOP_2" }, { "MAPR410", "MapR 4.1.0(YARN mode)", "HADOOP_2" },
+                { "MAPR401", "MapR 4.0.1(YARN mode)", "HADOOP_2" }, { "MAPR310", "MapR 3.1.0", "HADOOP_1" },
+                { "MAPR301", "MapR 3.0.1", "HADOOP_1" }, { "MAPR213", "MapR 2.1.3", "HADOOP_1" },
+                { "MAPR212", "MapR 2.1.2", "HADOOP_1" }, { "MAPR2", "MapR 2.0.0", "HADOOP_1" } });
     }
 
     @Test
     public void testMicrosoftHDInsightDistribution() {
         testDistributionOnly("MICROSOFT_HD_INSIGHT", "Microsoft HD Insight", new String[][] {
                 { "MICROSOFT_HD_INSIGHT_3_4", "Microsoft HD Insight 3.4", "HADOOP_2" },
+                { "MICROSOFT_HD_INSIGHT_3_2", "Microsoft HD Insight 3.2", "HADOOP_2" },
                 { "MICROSOFT_HD_INSIGHT_3_1", "Microsoft HD Insight 3.1", "HADOOP_2" } });
+    }
+
+    @Test
+    public void testPivotalHDDistribution() {
+        testDistributionOnly("PIVOTAL_HD", "Pivotal HD", new String[][] { { "PIVOTAL_HD_2_0", "Pivotal HD 2.0", "HADOOP_2" },
+                { "PIVOTAL_HD_1_0_1", "Pivotal HD 1.0.1", "HADOOP_2" } });
     }
 
     @Test

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<component name="EMRApache103Distribution">
+  <implementation class="org.talend.hadoop.distribution.emr103.EMRApache103Distribution"/>
+  <service>
+    <provide interface="org.talend.hadoop.distribution.component.HadoopComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.HDFSComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.HBaseComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.HiveComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.MRComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.PigComponent"/>
+  </service>
+</component>
