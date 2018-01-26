@@ -643,6 +643,14 @@
             mvn_uri="mvn:org.talend.libraries/kudu-spark2_2.11-1.4.0-cdh5.12.1/6.0.0">
         </libraryNeeded>
 
+		<!-- S3 libraries -->
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5120"
+            id="talend-bigdata-aws-1.0.0-20171221.jar"
+            name="talend-bigdata-aws-1.0.0-20171221.jar"
+            mvn_uri="mvn:org.talend.libraries/talend-bigdata-aws-1.0.0-20171221/6.0.0">
+        </libraryNeeded>
+
         <!-- Spark2 libraries -->
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5120" id="antlr-2.7.7.jar" name="antlr-2.7.7.jar" mvn_uri="mvn:org.talend.libraries/antlr-2.7.7/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5120" id="antlr-runtime-3.4.jar" name="antlr-runtime-3.4.jar" mvn_uri="mvn:org.talend.libraries/antlr-runtime-3.4/6.0.0"/>
@@ -1279,6 +1287,7 @@
              <library id="aws-java-sdk-kms-1.10.6.jar"/>
              <library id="aws-java-sdk-s3-1.10.6.jar"/>
              <library id="aws-java-sdk-sts-1.10.6.jar"/>
+             <library id="talend-bigdata-aws-1.0.0-20171221.jar"/>
              <library id="jets3t-0.9.0" />
         </libraryNeededGroup>
         

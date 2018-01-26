@@ -58,13 +58,15 @@
 	String pigVersion = ElementParameterParser.getValue(node, "__HBASE_VERSION__");
 	org.talend.hadoop.distribution.component.PigComponent pigDistrib = null;
 	try {
-		pigDistrib = (org.talend.hadoop.distribution.component.PigComponent) org.talend.hadoop.distribution.DistributionFactory.buildDistribution(distribution, pigVersion);
+		if ((distribution != null) && !"".equals(distribution)) {
+		    pigDistrib = (org.talend.hadoop.distribution.component.PigComponent) org.talend.hadoop.distribution.DistributionFactory.buildDistribution(distribution, pigVersion);
+		}
 	} catch (java.lang.Exception e) {
 		e.printStackTrace();
 		return "";
 	}
 
-	boolean isCustom = pigDistrib instanceof org.talend.hadoop.distribution.custom.CustomDistribution;
+	boolean isCustom = (pigDistrib == null) || (pigDistrib instanceof org.talend.hadoop.distribution.custom.CustomDistribution);
 	
 	String resultFile = ElementParameterParser.getValue(node, "__OUTPUT_FILENAME__");
 	boolean isS3Location = "true".equals(ElementParameterParser.getValue(node, "__S3_LOCATION__"));
@@ -93,7 +95,7 @@
 	boolean generateRegisterJarCodeForHCatalog = ("HCatStorer".equals(function) && !defineJarsToRegister);
 	boolean generateRegisterJarCode = registerJar.size() > 0;
 	
-	String hcatPackage = (pigDistrib.pigVersionPriorTo_0_12() && !isCustom) ? "org.apache.hcatalog.pig" : "org.apache.hive.hcatalog.pig";
+	String hcatPackage = (!isCustom && pigDistrib.pigVersionPriorTo_0_12()) ? "org.apache.hcatalog.pig" : "org.apache.hive.hcatalog.pig";
 	
 	java.util.List<String> jarsToRegister = null;
 	java.util.List<String> jars = null;
