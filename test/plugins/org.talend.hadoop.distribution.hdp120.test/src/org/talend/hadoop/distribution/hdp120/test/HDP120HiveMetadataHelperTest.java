@@ -59,7 +59,7 @@ public class HDP120HiveMetadataHelperTest extends AbstractVersionTest4HiveMetada
             assertTrue(NOT_SUPPORT_TOP_MESSAGE, hiveModesDisplay == null || hiveModesDisplay.length == 0);
         } else {
             doTestGetHiveModesDisplay(getDistributionVersion(), HiveServerVersionInfo.HIVE_SERVER_2.getKey(),
-                    HIVE_MODE_DISPLAY_ALL);
+ new String[0]);
         }
     }
 
@@ -71,7 +71,7 @@ public class HDP120HiveMetadataHelperTest extends AbstractVersionTest4HiveMetada
             assertTrue(NOT_SUPPORT_TOP_MESSAGE, hiveServersDisplay == null || hiveServersDisplay.length == 0);
 
         } else {
-            doTestGetHiveServersDisplay(getDistributionVersion(), HIVE_SERVER_DISPLAY_ALL);
+            doTestGetHiveServersDisplay(getDistributionVersion(), new String[0]);
         }
     }
 

@@ -62,7 +62,6 @@ public class ImpalaDistributionsTest {
         List<String> versions = Arrays.asList(versionsDisplay);
 
         String message = "Should contain the version";
-        arrayContain(versions, "Cloudera CDH5.1(YARN mode)", message);
         arrayContain(versions, "Cloudera CDH5.4(YARN mode)", message);
         arrayContain(versions, "Cloudera CDH5.5(YARN mode)", message);
         arrayContain(versions, "Cloudera CDH5.6(YARN mode)", message);
