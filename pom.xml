@@ -52,6 +52,11 @@
         <module>main/features/org.talend.hadoop.distribution.feature</module>
         <module>main/plugins/org.talend.hadoop.distribution</module>
         <module>main/plugins/org.talend.hadoop.distribution.apache100</module>
+        <module>main/plugins/org.talend.hadoop.distribution.cdh4mr1</module>
+        <module>main/plugins/org.talend.hadoop.distribution.cdh4mr2</module>
+        <module>main/plugins/org.talend.hadoop.distribution.cdh500mr2</module>
+        <module>main/plugins/org.talend.hadoop.distribution.cdh510mr1</module>
+        <module>main/plugins/org.talend.hadoop.distribution.cdh510mr2</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh540</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh550</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh550.jars</module>
@@ -69,6 +74,10 @@
         <module>main/plugins/org.talend.hadoop.distribution.custom</module>
         <module>main/plugins/org.talend.hadoop.distribution.dataproc11</module>
         <module>main/plugins/org.talend.hadoop.distribution.dataproc11.jars</module>
+        <module>main/plugins/org.talend.hadoop.distribution.emr103</module>
+        <module>main/plugins/org.talend.hadoop.distribution.emr240</module>
+        <module>main/plugins/org.talend.hadoop.distribution.emr240hive0131</module>
+        <module>main/plugins/org.talend.hadoop.distribution.emr400</module>
         <module>main/plugins/org.talend.hadoop.distribution.emr450</module>
         <module>main/plugins/org.talend.hadoop.distribution.emr450.jars</module>
         <module>main/plugins/org.talend.hadoop.distribution.emr500</module>
@@ -76,16 +85,31 @@
         <module>main/plugins/org.talend.hadoop.distribution.emr550</module>
         <module>main/plugins/org.talend.hadoop.distribution.emr550.jars</module>
         <module>main/plugins/org.talend.hadoop.distribution.emr580</module>
+        <module>main/plugins/org.talend.hadoop.distribution.hdinsight310</module>
+        <module>main/plugins/org.talend.hadoop.distribution.hdinsight320</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdinsight340</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdinsight340.jars</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdinsight360</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdinsight360.jars</module>
+        <module>main/plugins/org.talend.hadoop.distribution.hdp120</module>
+        <module>main/plugins/org.talend.hadoop.distribution.hdp130</module>
+        <module>main/plugins/org.talend.hadoop.distribution.hdp200</module>
+        <module>main/plugins/org.talend.hadoop.distribution.hdp210</module>
+        <module>main/plugins/org.talend.hadoop.distribution.hdp220</module>
+        <module>main/plugins/org.talend.hadoop.distribution.hdp230</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdp240</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdp240.jars</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdp250</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdp250.jars</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdp260</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdp260.jars</module>
+        <module>main/plugins/org.talend.hadoop.distribution.mapr200</module>
+        <module>main/plugins/org.talend.hadoop.distribution.mapr212</module>
+        <module>main/plugins/org.talend.hadoop.distribution.mapr213</module>
+        <module>main/plugins/org.talend.hadoop.distribution.mapr301</module>
+        <module>main/plugins/org.talend.hadoop.distribution.mapr310</module>
+        <module>main/plugins/org.talend.hadoop.distribution.mapr401</module>
+        <module>main/plugins/org.talend.hadoop.distribution.mapr410</module>
         <module>main/plugins/org.talend.hadoop.distribution.mapr500</module>
         <module>main/plugins/org.talend.hadoop.distribution.mapr510</module>
         <module>main/plugins/org.talend.hadoop.distribution.mapr510.jars</module>
@@ -93,6 +117,8 @@
         <module>main/plugins/org.talend.hadoop.distribution.mapr520.jars</module>
         <module>main/plugins/org.talend.hadoop.distribution.mapr600</module>
         <module>main/plugins/org.talend.hadoop.distribution.mapr600.jars</module>
+        <module>main/plugins/org.talend.hadoop.distribution.piv101</module>
+        <module>main/plugins/org.talend.hadoop.distribution.piv200</module>
         <module>main/plugins/org.talend.demo.bigdata.ce</module>
         <module>main/plugins/org.talend.designer.components.bigdata</module>
         <module>main/plugins/org.talend.designer.hdfsbrowse</module>
@@ -132,6 +158,11 @@
 
         <module>test/features/org.talend.bigdata.se.test.feature</module>
         <module>test/plugins/org.talend.hadoop.distribution.apache100.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.cdh4mr1.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.cdh4mr2.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.cdh500mr2.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.cdh510mr1.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.cdh510mr2.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.cdh540.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.cdh550.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.cdh570.test</module>
@@ -141,19 +172,40 @@
         <module>test/plugins/org.talend.hadoop.distribution.cdh5120.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.custom.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.dataproc11.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.emr103.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.emr240.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.emr240hive0131.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.emr400.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.emr450.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.emr500.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.emr550.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.emr580.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.hdinsight310.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.hdinsight320.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdinsight340.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdinsight360.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.hdp120.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.hdp130.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.hdp200.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.hdp210.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.hdp220.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.hdp230.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdp240.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdp250.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdp260.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.mapr200.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.mapr212.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.mapr213.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.mapr301.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.mapr310.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.mapr401.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.mapr410.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.mapr500.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.mapr510.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.mapr520.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.mapr600.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.piv101.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.piv200.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.test.base</module>
         <module>test/plugins/org.talend.hadoop.distribution.test</module>
         <module>test/plugins/org.talend.oozie.scheduler.test</module>

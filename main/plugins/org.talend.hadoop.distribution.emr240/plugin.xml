@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+    <extension point="org.talend.core.runtime.librariesNeeded">
+
+        <!-- group of spark libraries -->
+        <libraryNeededGroup
+                description="S3 libraries for EMR apache 240"
+                id="S3-LIB-EMR_2_4_0_LATEST"
+                name="S3-LIB-EMR_2_4_0_LATEST">
+            <library id="aws-java-sdk-1.8.6" />
+            <library id="httpclient-4.2" />
+            <library id="httpcore-4.2" />
+        </libraryNeededGroup>
+
+    </extension>
+    <extension
+          point="org.talend.core.runtime.classloader_provider">
+      <classloader
+            index="HIVE:AMAZON_EMR:APACHE_2_4_0_EMR:EMBEDDED"
+            libraries="libfb303-0.9.0-hive-jdbc-0.11.0.jar;commons-logging-1.0.4.jar;slf4j-api-1.6.1-hive-jdbc-0.11.0.jar;hadoop-annotations-2.4.0.jar;hadoop-yarn-api-2.4.0.jar;hadoop-yarn-client-2.4.0.jar;hadoop-yarn-common-2.4.0.jar;hadoop-auth-2.4.0.jar;hadoop-common-2.4.0.jar;hadoop-hdfs-2.4.0.jar;hadoop-mapreduce-client-common-2.4.0.jar;hadoop-mapreduce-client-core-2.4.0.jar;hadoop-mapreduce-client-jobclient-2.4.0.jar;commons-logging-1.1.3.jar;protobuf-java-2.5.0.jar;commons-httpclient-3.1.jar;jets3t-0.9.1-emr-2.4.0.jar;httpclient-4.3.4.jar;httpcore-4.3.2.jar;commons-lang-2.6.jar;commons-cli-1.2.jar;commons-configuration-1.6.jar;commons-codec-1.4.jar;jackson-mapper-asl-1.8.8.jar;jackson-core-asl-1.8.8.jar;guava-11.0.2.jar;commons-collections-3.2.1.jar;slf4j-api-1.7.5.jar;slf4j-log4j12-1.7.5.jar;log4j-1.2.17.jar;EmrMetrics-1.0.jar;hive-jdbc-0.11.0-emr-2.4.0.jar;hive-service-0.11.0-emr-2.4.0.jar;hive-exec-0.11.0-emr-2.4.0.jar;hive-metastore-0.11.0-emr-2.4.0.jar;gson-2.1.jar;jdo2-api-2.3-ec.jar;antlr-runtime-3.4-emr-2.4.0.jar;datanucleus-rdbms-2.0.3-emr-2.4.0.jar;datanucleus-core-2.0.3.jar;datanucleus-enhancer-2.0.3.jar;datanucleus-connectionpool-2.0.3.jar;commons-dbcp-1.4-emr-2.4.0.jar;commons-pool-1.5.4-emr-2.4.0.jar;mysql-connector-java-5.1.10.jar;derby-10.4.2.0-emr-2.4.0.jar;commons-configuration-1.6.jar;hbase-0.94.18.jar;aws-java-sdk-1.8.6.jar;parquet-hive-bundle-current.jar;">
+      </classloader>
+      <classloader
+            index="HIVE:AMAZON_EMR:APACHE_2_4_0_EMR:STANDALONE"
+            libraries="libfb303-0.9.0-hive-jdbc-0.11.0.jar;commons-logging-1.0.4.jar;slf4j-api-1.6.1-hive-jdbc-0.11.0.jar;hadoop-annotations-2.4.0.jar;hadoop-yarn-api-2.4.0.jar;hadoop-yarn-client-2.4.0.jar;hadoop-yarn-common-2.4.0.jar;hadoop-auth-2.4.0.jar;hadoop-common-2.4.0.jar;hadoop-hdfs-2.4.0.jar;hadoop-mapreduce-client-common-2.4.0.jar;hadoop-mapreduce-client-core-2.4.0.jar;hadoop-mapreduce-client-jobclient-2.4.0.jar;commons-logging-1.1.3.jar;protobuf-java-2.5.0.jar;commons-httpclient-3.1.jar;jets3t-0.9.1-emr-2.4.0.jar;httpclient-4.3.4.jar;httpcore-4.3.2.jar;commons-lang-2.6.jar;commons-cli-1.2.jar;commons-configuration-1.6.jar;commons-codec-1.4.jar;jackson-mapper-asl-1.8.8.jar;jackson-core-asl-1.8.8.jar;guava-11.0.2.jar;commons-collections-3.2.1.jar;slf4j-api-1.7.5.jar;slf4j-log4j12-1.7.5.jar;log4j-1.2.17.jar;EmrMetrics-1.0.jar;hive-jdbc-0.11.0-emr-2.4.0.jar;hive-service-0.11.0-emr-2.4.0.jar;hive-exec-0.11.0-emr-2.4.0.jar;hive-metastore-0.11.0-emr-2.4.0.jar;gson-2.1.jar;jdo2-api-2.3-ec.jar;antlr-runtime-3.4-emr-2.4.0.jar;datanucleus-rdbms-2.0.3-emr-2.4.0.jar;datanucleus-core-2.0.3.jar;datanucleus-enhancer-2.0.3.jar;datanucleus-connectionpool-2.0.3.jar;commons-dbcp-1.4-emr-2.4.0.jar;commons-pool-1.5.4-emr-2.4.0.jar;mysql-connector-java-5.1.10.jar;derby-10.4.2.0-emr-2.4.0.jar;commons-configuration-1.6.jar;hbase-0.94.18.jar;aws-java-sdk-1.8.6.jar;parquet-hive-bundle-current.jar;">
+      </classloader>
+      <classloader
+            index="HBASE:AMAZON_EMR:APACHE_2_4_0_EMR"
+            libraries="zookeeper-3.4.5.jar;hbase-0.94.18.jar;hadoop-auth-2.4.0.jar;hadoop-common-2.4.0.jar;hadoop-hdfs-2.4.0.jar;hadoop-mapreduce-client-common-2.4.0.jar;hadoop-mapreduce-client-core-2.4.0.jar;hadoop-mapreduce-client-jobclient-2.4.0.jar;commons-logging-1.1.3.jar;protobuf-java-2.5.0.jar;commons-httpclient-3.1.jar;jets3t-0.9.1-emr-2.4.0.jar;httpclient-4.3.4.jar;httpcore-4.3.2.jar;commons-lang-2.6.jar;gson-2.1.jar;commons-cli-1.2.jar;commons-configuration-1.6.jar;commons-codec-1.4.jar;jackson-mapper-asl-1.8.8.jar;jackson-core-asl-1.8.8.jar;guava-11.0.2.jar;commons-collections-3.2.1.jar;slf4j-api-1.7.5.jar;slf4j-log4j12-1.7.5.jar;log4j-1.2.17.jar;EmrMetrics-1.0.jar">
+      </classloader>      
+      <classloader
+            index="MAP_REDUCE:AMAZON_EMR:APACHE_2_4_0_EMR"
+            libraries="commons-cli-1.2.jar;commons-configuration-1.6.jar;commons-codec-1.4.jar;jackson-mapper-asl-1.8.8.jar;jackson-core-asl-1.8.8.jar;guava-11.0.2.jar;commons-collections-3.2.1.jar;slf4j-api-1.7.5.jar;slf4j-log4j12-1.7.5.jar;hadoop-annotations-2.4.0.jar;hadoop-yarn-api-2.4.0.jar;hadoop-yarn-client-2.4.0.jar;hadoop-yarn-common-2.4.0.jar;hadoop-auth-2.4.0.jar;hadoop-common-2.4.0.jar;hadoop-hdfs-2.4.0.jar;hadoop-mapreduce-client-common-2.4.0.jar;hadoop-mapreduce-client-core-2.4.0.jar;hadoop-mapreduce-client-jobclient-2.4.0.jar;commons-logging-1.1.3.jar;protobuf-java-2.5.0.jar;commons-httpclient-3.1.jar;jets3t-0.9.1-emr-2.4.0.jar;httpclient-4.3.4.jar;httpcore-4.3.2.jar;commons-lang-2.6.jar;gson-2.1.jar;EmrMetrics-1.0.jar;log4j-1.2.17.jar">
+      </classloader>     
+      <classloader
+            index="HDFS:AMAZON_EMR:APACHE_2_4_0_EMR"
+            libraries="hadoop-annotations-2.4.0.jar;hadoop-yarn-api-2.4.0.jar;hadoop-yarn-client-2.4.0.jar;hadoop-yarn-common-2.4.0.jar;hadoop-auth-2.4.0.jar;hadoop-common-2.4.0.jar;hadoop-hdfs-2.4.0.jar;hadoop-mapreduce-client-common-2.4.0.jar;hadoop-mapreduce-client-core-2.4.0.jar;hadoop-mapreduce-client-jobclient-2.4.0.jar;commons-logging-1.1.3.jar;protobuf-java-2.5.0.jar;commons-httpclient-3.1.jar;jets3t-0.9.1-emr-2.4.0.jar;httpclient-4.3.4.jar;httpcore-4.3.2.jar;commons-lang-2.6.jar;gson-2.1.jar;EmrMetrics-1.0.jar;guava-11.0.2.jar;commons-collections-3.2.1.jar;slf4j-api-1.7.5.jar;slf4j-log4j12-1.7.5.jar;log4j-1.2.17.jar;commons-cli-1.2.jar;commons-configuration-1.6.jar;commons-codec-1.4.jar;jackson-mapper-asl-1.8.8.jar;jackson-core-asl-1.8.8.jar;avro-1.5.4.jar">
+      </classloader>
+      <classloader
+            index="HDFS:AMAZON_EMR:APACHE_2_4_0_EMR?USE_KRB"
+            libraries="hadoop-annotations-2.4.0.jar;hadoop-yarn-api-2.4.0.jar;hadoop-yarn-client-2.4.0.jar;hadoop-yarn-common-2.4.0.jar;hadoop-auth-2.4.0.jar;hadoop-common-2.4.0.jar;hadoop-hdfs-2.4.0.jar;hadoop-mapreduce-client-common-2.4.0.jar;hadoop-mapreduce-client-core-2.4.0.jar;hadoop-mapreduce-client-jobclient-2.4.0.jar;commons-logging-1.1.3.jar;protobuf-java-2.5.0.jar;commons-httpclient-3.1.jar;jets3t-0.9.1-emr-2.4.0.jar;httpclient-4.3.4.jar;httpcore-4.3.2.jar;commons-lang-2.6.jar;gson-2.1.jar;EmrMetrics-1.0.jar;guava-11.0.2.jar;commons-collections-3.2.1.jar;slf4j-api-1.7.5.jar;slf4j-log4j12-1.7.5.jar;log4j-1.2.17.jar;commons-cli-1.2.jar;commons-configuration-1.6.jar;commons-codec-1.4.jar;jackson-mapper-asl-1.8.8.jar;jackson-core-asl-1.8.8.jar;hadoop-conf-kerberos.jar;avro-1.5.4.jar">
+      </classloader>      
+    </extension>
+</plugin>

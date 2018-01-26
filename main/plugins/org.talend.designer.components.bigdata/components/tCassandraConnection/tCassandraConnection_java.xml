@@ -13,7 +13,7 @@
     <SIGNATURE/>
   </HEADER>
   <FAMILIES>
-    <FAMILY>Databases/Cassandra</FAMILY>
+    <FAMILY>Databases NoSQL/Cassandra</FAMILY>
 	<FAMILY>Big Data/Cassandra</FAMILY>
   </FAMILIES>
 	<DOCUMENTATION>

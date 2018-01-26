@@ -6,7 +6,7 @@
 	</HEADER>
 
   <FAMILIES>
-    <FAMILY>Databases/DynamoDB</FAMILY>
+    <FAMILY>Databases NoSQL/DynamoDB</FAMILY>
 	<FAMILY>Big Data/DynamoDB</FAMILY>	
   </FAMILIES>
 	<DOCUMENTATION>

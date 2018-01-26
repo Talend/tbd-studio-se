@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<component name="EMR400Distribution">
+  <implementation class="org.talend.hadoop.distribution.emr400.EMR400Distribution"/>
+  <service>
+    <provide interface="org.talend.hadoop.distribution.component.HadoopComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.HDFSComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.HiveComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.HiveOnSparkComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.MRComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.PigComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.SparkBatchComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.SparkStreamingComponent"/>
+  </service>
+</component>
