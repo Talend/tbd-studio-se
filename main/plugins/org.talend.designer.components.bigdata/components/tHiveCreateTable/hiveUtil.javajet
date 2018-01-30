@@ -57,6 +57,9 @@
 		}
 	
 		void generateAvroSchema(List<IMetadataColumn> listColumn,StringBuilder schemaBuilder, String quote) {
+			String nullablePrefix = "[ " + quote + "null" + quote + ", ";
+			String nullablePostfix = "]";
+
 			if(hiveTypeToAvroType == null) {
 				hiveTypeToAvroType = new java.util.HashMap<String,String>();
 				hiveTypeToAvroType.put("SMALLINT","int");
@@ -97,8 +100,17 @@
             
             schemaBuilder.append(quote).append("type").append(quote);
             schemaBuilder.append(" : ");
-        		schemaBuilder.append(quote).append(avroType).append(quote);
+             
+            if (metadataColumn.isNullable()) {
+            	schemaBuilder.append(nullablePrefix);
+            }
+
+       		schemaBuilder.append(quote).append(avroType).append(quote);
         	
+            if (metadataColumn.isNullable()) {
+            	schemaBuilder.append(nullablePostfix);
+            }
+
         		String comment = metadataColumn.getComment();
         		if(comment!=null && !"".equals(comment) && !"\"\"".equals(comment)) {
         		
