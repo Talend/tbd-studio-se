@@ -761,9 +761,9 @@
 				MVN="mvn:org.talend.libraries/commons-io-2.1/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.1.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='Cloudera_CDH4') AND (DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="jackson-core-asl-1.8.8" MODULE="jackson-core-asl-1.8.8.jar"
+			<IMPORT NAME="jackson-core-asl-1.8.8" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.8.8/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.8.8.jar"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='Cloudera_CDH4') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="jackson-mapper-asl-1.8.8" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
@@ -824,9 +824,9 @@
 				MVN="mvn:org.talend.libraries/commons-io-2.4/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.4.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='MAPR2') AND (DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="jackson-core-asl-1.8.8.jar" MODULE="jackson-core-asl-1.8.8.jar"
+			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.8.8/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.8.8.jar"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='MAPR2') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
@@ -857,9 +857,9 @@
 				MVN="mvn:org.talend.libraries/commons-io-2.4/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.4.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='MAPR212') AND (DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="jackson-core-asl-1.8.8.jar" MODULE="jackson-core-asl-1.8.8.jar"
+			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.8.8/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.8.8.jar"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='MAPR212') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
@@ -903,9 +903,9 @@
 				MVN="mvn:org.talend.libraries/commons-io-2.4/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.4.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='MAPR213') AND (DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="jackson-core-asl-1.8.8.jar" MODULE="jackson-core-asl-1.8.8.jar"
+			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.8.8/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.8.8.jar"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='MAPR213') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
@@ -948,9 +948,9 @@
 				MVN="mvn:org.talend.libraries/commons-io-2.4/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.4.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='MAPR301') AND (DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="jackson-core-asl-1.8.8.jar" MODULE="jackson-core-asl-1.8.8.jar"
+			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.8.8/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.8.8.jar"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='MAPR301') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
@@ -993,9 +993,9 @@
 				MVN="mvn:org.talend.libraries/commons-io-2.4/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.4.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='MAPR310') AND (DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="jackson-core-asl-1.8.8.jar" MODULE="jackson-core-asl-1.8.8.jar"
+			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.8.8/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.8.8.jar"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='MAPR310') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
@@ -1083,9 +1083,9 @@
 				MVN="mvn:org.talend.libraries/commons-io-2.1/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.1.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='PIVOTAL_HD_1_0_1') AND (DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="jackson-core-asl-1.8.8" MODULE="jackson-core-asl-1.8.8.jar"
+			<IMPORT NAME="jackson-core-asl-1.8.8" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.8.8/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.8.8.jar"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='PIVOTAL_HD_1_0_1') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="jackson-mapper-asl-1.8.8" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
@@ -1192,9 +1192,9 @@
 				MVN="mvn:org.talend.libraries/commons-io-2.1/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.1.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='PIVOTAL_HD_2_0') AND (DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="jackson-core-asl-1.8.8" MODULE="jackson-core-asl-1.8.8.jar"
+			<IMPORT NAME="jackson-core-asl-1.8.8" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.8.8/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.8.8.jar"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='PIVOTAL_HD_2_0') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="jackson-mapper-asl-1.8.8" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
@@ -1284,9 +1284,9 @@
 				MVN="mvn:org.talend.libraries/commons-io-2.1/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.1.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='Cloudera_CDH4_YARN') AND (DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="jackson-core-asl-1.8.8" MODULE="jackson-core-asl-1.8.8.jar"
+			<IMPORT NAME="jackson-core-asl-1.8.8" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.8.8/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.8.8.jar"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='Cloudera_CDH4_YARN') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="jackson-mapper-asl-1.8.8" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
@@ -1380,9 +1380,9 @@
 				MVN="mvn:org.talend.libraries/commons-collections-3.2.1/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-collections-3.2.1.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='Cloudera_CDH5') AND (DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="jackson-core-asl-1.8.8" MODULE="jackson-core-asl-1.8.8.jar"
+			<IMPORT NAME="jackson-core-asl-1.8.8" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.8.8/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.8.8.jar"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='Cloudera_CDH5') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="jackson-mapper-asl-1.8.8" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
@@ -1503,9 +1503,9 @@
 				MVN="mvn:org.talend.libraries/commons-io-2.1/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.1.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='HDP_2_0') AND (DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="jackson-core-asl-1.8.8" MODULE="jackson-core-asl-1.8.8.jar"
+			<IMPORT NAME="jackson-core-asl-1.8.8" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.8.8/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.8.8.jar"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='HDP_2_0') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="jackson-mapper-asl-1.8.8" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
@@ -1601,9 +1601,9 @@
 				MVN="mvn:org.talend.libraries/commons-collections-3.2.1/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-collections-3.2.1.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='HDP_2_1') AND (DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="jackson-core-asl-1.8.8" MODULE="jackson-core-asl-1.8.8.jar"
+			<IMPORT NAME="jackson-core-asl-1.8.8" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.8.8/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.8.8.jar"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='HDP_2_1') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="jackson-mapper-asl-1.8.8" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
@@ -1760,9 +1760,9 @@
 				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='APACHE_2_4_0_EMR') AND (DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="jackson-core-asl-1.8.8" MODULE="jackson-core-asl-1.8.8.jar"
+			<IMPORT NAME="jackson-core-asl-1.8.8" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.8.8/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.8.8.jar"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='APACHE_2_4_0_EMR') AND (DISTRIBUTION!='CUSTOM')" />
 
 			<IMPORT NAME="sqoop-1.4.4-cdh5.0.4.jar" MODULE="sqoop-1.4.4-cdh5.0.4.jar"

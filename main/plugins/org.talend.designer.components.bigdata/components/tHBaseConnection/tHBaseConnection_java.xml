@@ -331,9 +331,9 @@
 				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(DISTRIBUTION!='CUSTOM') AND (HBASE_VERSION=='APACHE_2_4_0_EMR')" />
-			<IMPORT NAME="jackson-core-asl-1.8.8" MODULE="jackson-core-asl-1.8.8.jar"
+			<IMPORT NAME="jackson-core-asl-1.8.8" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.8.8/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.8.8.jar"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(DISTRIBUTION!='CUSTOM') AND (HBASE_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="guava-11.0.2" MODULE="guava-11.0.2.jar"
 				MVN="mvn:org.talend.libraries/guava-11.0.2/6.0.0"
@@ -580,9 +580,9 @@
 				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="HBASE_VERSION=='Cloudera_CDH5' AND (DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="jackson-core-asl-1.8.8.jar" MODULE="jackson-core-asl-1.8.8.jar"
+			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.8.8/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.8.8.jar"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="HBASE_VERSION=='Cloudera_CDH5' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="netty-3.6.6.Final.jar" MODULE="netty-3.6.6.Final.jar"
 				MVN="mvn:org.talend.libraries/netty-3.6.6.Final/6.0.0"
@@ -938,9 +938,9 @@
 				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="HBASE_VERSION=='PIVOTAL_HD_2_0' AND (DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="jackson-core-asl-1.8.8.jar" MODULE="jackson-core-asl-1.8.8.jar"
+			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.8.8/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.8.8.jar"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="HBASE_VERSION=='PIVOTAL_HD_2_0' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="netty-3.6.6.Final.jar" MODULE="netty-3.6.6.Final.jar"
 				MVN="mvn:org.talend.libraries/netty-3.6.6.Final/6.0.0"
@@ -1018,9 +1018,9 @@
 				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="HBASE_VERSION=='HDP_2_0' AND (DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="jackson-core-asl-1.8.8.jar" MODULE="jackson-core-asl-1.8.8.jar"
+			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.8.8/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.8.8.jar"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="HBASE_VERSION=='HDP_2_0' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="netty-3.6.6.Final.jar" MODULE="netty-3.6.6.Final.jar"
 				MVN="mvn:org.talend.libraries/netty-3.6.6.Final/6.0.0"
@@ -1102,9 +1102,9 @@
 				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="HBASE_VERSION=='HDP_2_1' AND (DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="jackson-core-asl-1.8.8.jar" MODULE="jackson-core-asl-1.8.8.jar"
+			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.8.8/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.8.8.jar"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="HBASE_VERSION=='HDP_2_1' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="netty-3.6.6.Final.jar" MODULE="netty-3.6.6.Final.jar"
 				MVN="mvn:org.talend.libraries/netty-3.6.6.Final/6.0.0"
