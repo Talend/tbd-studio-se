@@ -447,8 +447,8 @@
 				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION=='false') AND (DB_VERSION=='APACHE_2_4_0_EMR')" />
-			<IMPORT NAME="jackson-core-asl-1.8.8" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.8.8/6.0.0"
+			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
+				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION=='false') AND (DB_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="avro-1.5.4.jar" MODULE="avro-1.5.4.jar"
