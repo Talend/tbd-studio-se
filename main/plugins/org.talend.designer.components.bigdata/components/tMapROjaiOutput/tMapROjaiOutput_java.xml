@@ -308,13 +308,13 @@
 			<IMPORT MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.13/6.0.0" NAME="jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND3/6.0.0" NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
+			<IMPORT MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.13/6.0.0" NAME="jackson-mapper-asl-1.9.14-TALEND.jar"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND" NAME="jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
-				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
+			<IMPORT MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" NAME="jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT MODULE="gson-2.2.4.jar" MVN="mvn:org.talend.libraries/gson-2.2.4/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.sap/lib/gson-2.2.4.jar"

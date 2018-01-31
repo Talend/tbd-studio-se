@@ -223,8 +223,8 @@
                 MODULE="jackson-core-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND" 
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_1_1_2'" />
             <IMPORT
-                NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND"
-                MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
+                NAME="jackson-mapper-asl-1.9.14-TALEND"
+                MODULE="jackson-mapper-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_1_1_2'" />
             <IMPORT
                 NAME="libthrift-0.7.0"
@@ -319,8 +319,8 @@
                 MODULE="jackson-core-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND" 
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_1_2_2'" />
             <IMPORT
-                NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND"
-                MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
+                NAME="jackson-mapper-asl-1.9.14-TALEND"
+                MODULE="jackson-mapper-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_1_2_2'" />
             <IMPORT
                 NAME="snakeyaml-1.6"
@@ -436,8 +436,8 @@
                 MODULE="jackson-core-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND" 
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
-                NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND"
-                MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
+                NAME="jackson-mapper-asl-1.9.14-TALEND"
+                MODULE="jackson-mapper-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
                 NAME="super-csv-2.1.0"
@@ -527,8 +527,8 @@
                     MODULE="jackson-core-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND" 
                     />
                 <IMPORT
-                    NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND"
-                    MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
+                    NAME="jackson-mapper-asl-1.9.14-TALEND"
+                    MODULE="jackson-mapper-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
                     />
                 <IMPORT
                     NAME="jamm-0.3.0"
@@ -625,8 +625,8 @@
                     MODULE="jackson-core-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND" 
                     />
                 <IMPORT
-                    NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND"
-                    MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
+                    NAME="jackson-mapper-asl-1.9.14-TALEND"
+                    MODULE="jackson-mapper-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
                     />
                 <IMPORT
                     NAME="jamm-0.3.0"
