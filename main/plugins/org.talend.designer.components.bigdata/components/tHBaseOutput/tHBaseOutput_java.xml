@@ -448,8 +448,8 @@
 				MVN="mvn:org.talend.libraries/commons-codec-1.4/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.4.jar"
 				REQUIRED_IF="(DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false') AND (HBASE_VERSION=='APACHE_2_4_0_EMR')" />
-			<IMPORT NAME="jackson-mapper-asl-1.8.8" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false') AND (HBASE_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
@@ -697,7 +697,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.7.5.jar"
 				REQUIRED_IF="(HBASE_VERSION=='Cloudera_CDH5') AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(HBASE_VERSION=='Cloudera_CDH5') AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
@@ -1056,7 +1056,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.6.1.jar"
 				REQUIRED_IF="HBASE_VERSION=='PIVOTAL_HD_2_0'  AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="HBASE_VERSION=='PIVOTAL_HD_2_0'  AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
@@ -1136,7 +1136,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.6.1.jar"
 				REQUIRED_IF="HBASE_VERSION=='HDP_2_0'  AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="HBASE_VERSION=='HDP_2_0'  AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
@@ -1220,7 +1220,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.6.1.jar"
 				REQUIRED_IF="HBASE_VERSION=='HDP_2_1'  AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.8.8/6.0.0"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="HBASE_VERSION=='HDP_2_1'  AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
