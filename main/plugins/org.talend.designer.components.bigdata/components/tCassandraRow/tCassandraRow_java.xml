@@ -292,8 +292,8 @@
                         MODULE="jackson-core-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND" 
                         />
                     <IMPORT
-                        NAME="jackson-mapper-asl-1.9.14-TALEND"
-                        MODULE="jackson-mapper-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
+                        NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND"
+                        MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
                         />
                 </IMPORTS>
                 <IMPORTS REQUIRED_IF="(((DB_VERSION == 'CASSANDRA_2_0_0') AND (API_TYPE == 'DATASTAX')) OR (DB_VERSION == 'CASSANDRA_2_2') OR (DB_VERSION == 'CASSANDRA_3_0'))">

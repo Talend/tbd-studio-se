@@ -160,8 +160,8 @@
 				MVN="mvn:org.talend.libraries/jersey-client-1.4/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jersey/lib/jersey-client-1.4.jar"
 				NAME="jersey-client-1.4" REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X')" />
-			<IMPORT MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" NAME="jackson-mapper-asl-1.9.14-TALEND"
+			<IMPORT MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X')" />
 			<IMPORT MODULE="jackson-jaxrs-1.9.13.jar"
 				MVN="mvn:org.codehaus.jackson/jackson-jaxrs/1.9.13" NAME="jackson-jaxrs-1.9.13"
@@ -244,7 +244,7 @@
 				MVN="mvn:org.talend.libraries/neo4j-cypher-2.1.2/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/neo4j-cypher-2.1.2.jar"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_2_1_X')" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND" MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
 				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_2_1_X')" />
 			<IMPORT NAME="jackson-jaxrs-1.9.13" MODULE="jackson-jaxrs-1.9.13.jar"
@@ -347,7 +347,7 @@
 				MVN="mvn:org.talend.libraries/neo4j-cypher-2.2.5/6.1.0"
 				UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/neo4j-cypher-2.2.5.jar"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_2_2_X')" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND" MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
 				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_2_2_X')" />
 			<IMPORT NAME="jackson-jaxrs-1.9.13" MODULE="jackson-jaxrs-1.9.13.jar"
@@ -481,7 +481,7 @@
                 MVN="mvn:org.talend.libraries/slf4j-api-1.7.12/6.1.0"
                 UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/slf4j-api-1.7.12.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X')" />
-            <IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
+            <IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND" MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
                 MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X')" />
             <IMPORT NAME="jackson-jaxrs-1.9.13" MODULE="jackson-jaxrs-1.9.13.jar"

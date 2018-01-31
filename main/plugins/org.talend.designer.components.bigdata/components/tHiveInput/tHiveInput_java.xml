@@ -590,9 +590,9 @@
 			<DEFAULT IF="(DISTRIBUTION == 'MAPR') AND (HIVE_VERSION == 'MAPR401')"><![CDATA[avro-1.7.4.jar,commons-cli-1.2.jar,commons-collections4-4.0.jar,guava-11.0.2.jar,guice-3.0.jar,hadoop-mapreduce-client-common-2.4.1-mapr-1408.jar,hadoop-mapreduce-client-core-2.4.1-mapr-1408.jar,hadoop-mapreduce-client-shuffle-2.4.1-mapr-1408.jar,jettison-1.3.4.jar,protobuf-java-2.5.0.jar,snappy-java-1.0.4.1.jar,tez-api-0.4.0-mapr-1408.jar,tez-common-0.4.0-mapr-1408.jar,tez-dag-0.4.0-mapr-1408.jar,tez-mapreduce-0.4.0-mapr-1408.jar,tez-mapreduce-examples-0.4.0-mapr-1408.jar,tez-runtime-internals-0.4.0-mapr-1408.jar,tez-runtime-library-0.4.0-mapr-1408.jar,tez-tests-0.4.0-mapr-1408.jar]]></DEFAULT>
 			<DEFAULT IF="(DISTRIBUTION == 'MAPR') AND (HIVE_VERSION == 'MAPR410')"><![CDATA[avro-1.7.4.jar,commons-cli-1.2.jar,commons-collections4-4.0.jar,guava-11.0.2.jar,guice-3.0.jar,hadoop-mapreduce-client-shuffle-2.5.1-mapr-1503.jar,hadoop-mapreduce-client-core-2.5.1-mapr-1503.jar,hadoop-mapreduce-client-shuffle-2.5.1-mapr-1503.jar,jettison-1.3.4.jar,protobuf-java-2.5.0.jar,snappy-java-1.0.4.1.jar,tez-api-0.5.3-mapr-1504.jar,tez-common-0.5.3-mapr-1504.jar,tez-dag-0.5.3-mapr-1504.jar,tez-mapreduce-0.5.3-mapr-1504.jar,tez-mapreduce-examples-0.4.0-mapr-1408.jar,tez-runtime-internals-0.5.3-mapr-1504.jar,tez-runtime-library-0.5.3-mapr-1504.jar,tez-tests-0.5.3-mapr-1504.jar,tez-yarn-timeline-history-0.5.3-mapr-1504.jar]]></DEFAULT>
 			<DEFAULT
-				IF="(DISTRIBUTION == 'HORTONWORKS') AND (HIVE_VERSION == 'HDP_2_2')"><![CDATA[tez-api-0.5.2.2.2.0.0-2041.jar,tez-common-0.5.2.2.2.0.0-2041.jar,tez-dag-0.5.2.2.2.0.0-2041.jar,tez-mapreduce-0.5.2.2.2.0.0-2041.jar,tez-mbeans-resource-calculator-0.5.2.2.2.0.0-2041.jar,tez-runtime-internals-0.5.2.2.2.0.0-2041.jar,tez-runtime-library-0.5.2.2.2.0.0-2041.jar,tez-yarn-timeline-history-0.5.2.2.2.0.0-2041.jar,aopalliance-1.0.jar,apacheds-i18n-2.0.0-M15.jar,apacheds-kerberos-codec-2.0.0-M15.jar,api-asn1-api-1.0.0-M20.jar,api-util-1.0.0-M20.jar,asm-3.1.jar,avro-1.7.4.jar,commons-beanutils-1.7.0.jar,commons-beanutils-core-1.8.0.jar,commons-cli-1.2.jar,commons-codec-1.4.jar,commons-collections4-4.0.jar,commons-collections-3.2.1.jar,commons-compress-1.4.1.jar,commons-configuration-1.6.jar,commons-digester-1.8.jar,commons-io-2.4.jar,commons-lang-2.6.jar,commons-logging-1.1.3.jar,commons-math3-3.1.1.jar,commons-net-3.1.jar,curator-client-2.6.0.jar,curator-framework-2.6.0.jar,curator-recipes-2.6.0.jar,gson-2.2.4.jar,guice-3.0.jar,guice-servlet-3.0.jar,hadoop-annotations-2.6.0.2.2.0.0-2041.jar,hadoop-auth-2.6.0.2.2.0.0-2041.jar,hadoop-common-2.6.0.2.2.0.0-2041.jar,hadoop-hdfs-2.6.0.2.2.0.0-2041.jar,hadoop-mapreduce-client-common-2.6.0.2.2.0.0-2041.jar,hadoop-mapreduce-client-core-2.6.0.2.2.0.0-2041.jar,hadoop-yarn-api-2.6.0.2.2.0.0-2041.jar,hadoop-yarn-client-2.6.0.2.2.0.0-2041.jar,hadoop-yarn-common-2.6.0.2.2.0.0-2041.jar,htrace-core-3.0.4.jar,httpclient-4.2.5.jar,httpcore-4.2.4.jar,jackson-core-2.2.3.jar,jackson-core-asl-1.9.14-TALEND.jar,jackson-jaxrs-1.9.13.jar,jackson-mapper-asl-1.9.14-TALEND.jar,jackson-xc-1.9.13.jar,javax.inject-1.jar,jaxb-impl-2.2.3-1.jar,jersey-client-1.9.jar,jersey-core-1.9.jar,jersey-guice-1.9.jar,jersey-json-1.9.jar,jersey-server-1.9.jar,jettison-1.3.4.jar,jetty-util-6.1.26.hwx.jar,jsr305-2.0.3.jar,log4j-1.2.17.jar,microsoft-windowsazure-storage-sdk-0.6.0.jar,netty-3.6.2.Final.jar,paranamer-2.3.jar,protobuf-java-2.5.0.jar,servlet-api-2.5.jar,slf4j-api-1.7.5.jar,slf4j-log4j12-1.7.5.jar,snappy-java-1.0.4.1.jar,stax-api-1.0.1.jar,xercesImpl-2.9.1.jar,xml-apis-1.3.04.jar,xmlenc-0.52.jar,xz-1.0.jar,zookeeper-3.4.6.jar]]></DEFAULT>
+				IF="(DISTRIBUTION == 'HORTONWORKS') AND (HIVE_VERSION == 'HDP_2_2')"><![CDATA[tez-api-0.5.2.2.2.0.0-2041.jar,tez-common-0.5.2.2.2.0.0-2041.jar,tez-dag-0.5.2.2.2.0.0-2041.jar,tez-mapreduce-0.5.2.2.2.0.0-2041.jar,tez-mbeans-resource-calculator-0.5.2.2.2.0.0-2041.jar,tez-runtime-internals-0.5.2.2.2.0.0-2041.jar,tez-runtime-library-0.5.2.2.2.0.0-2041.jar,tez-yarn-timeline-history-0.5.2.2.2.0.0-2041.jar,aopalliance-1.0.jar,apacheds-i18n-2.0.0-M15.jar,apacheds-kerberos-codec-2.0.0-M15.jar,api-asn1-api-1.0.0-M20.jar,api-util-1.0.0-M20.jar,asm-3.1.jar,avro-1.7.4.jar,commons-beanutils-1.7.0.jar,commons-beanutils-core-1.8.0.jar,commons-cli-1.2.jar,commons-codec-1.4.jar,commons-collections4-4.0.jar,commons-collections-3.2.1.jar,commons-compress-1.4.1.jar,commons-configuration-1.6.jar,commons-digester-1.8.jar,commons-io-2.4.jar,commons-lang-2.6.jar,commons-logging-1.1.3.jar,commons-math3-3.1.1.jar,commons-net-3.1.jar,curator-client-2.6.0.jar,curator-framework-2.6.0.jar,curator-recipes-2.6.0.jar,gson-2.2.4.jar,guice-3.0.jar,guice-servlet-3.0.jar,hadoop-annotations-2.6.0.2.2.0.0-2041.jar,hadoop-auth-2.6.0.2.2.0.0-2041.jar,hadoop-common-2.6.0.2.2.0.0-2041.jar,hadoop-hdfs-2.6.0.2.2.0.0-2041.jar,hadoop-mapreduce-client-common-2.6.0.2.2.0.0-2041.jar,hadoop-mapreduce-client-core-2.6.0.2.2.0.0-2041.jar,hadoop-yarn-api-2.6.0.2.2.0.0-2041.jar,hadoop-yarn-client-2.6.0.2.2.0.0-2041.jar,hadoop-yarn-common-2.6.0.2.2.0.0-2041.jar,htrace-core-3.0.4.jar,httpclient-4.2.5.jar,httpcore-4.2.4.jar,jackson-core-2.2.3.jar,jackson-core-asl-1.9.14-TALEND.jar,jackson-jaxrs-1.9.13.jar,jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar,jackson-xc-1.9.13.jar,javax.inject-1.jar,jaxb-impl-2.2.3-1.jar,jersey-client-1.9.jar,jersey-core-1.9.jar,jersey-guice-1.9.jar,jersey-json-1.9.jar,jersey-server-1.9.jar,jettison-1.3.4.jar,jetty-util-6.1.26.hwx.jar,jsr305-2.0.3.jar,log4j-1.2.17.jar,microsoft-windowsazure-storage-sdk-0.6.0.jar,netty-3.6.2.Final.jar,paranamer-2.3.jar,protobuf-java-2.5.0.jar,servlet-api-2.5.jar,slf4j-api-1.7.5.jar,slf4j-log4j12-1.7.5.jar,snappy-java-1.0.4.1.jar,stax-api-1.0.1.jar,xercesImpl-2.9.1.jar,xml-apis-1.3.04.jar,xmlenc-0.52.jar,xz-1.0.jar,zookeeper-3.4.6.jar]]></DEFAULT>
 			<DEFAULT
-				IF="(DISTRIBUTION == 'HORTONWORKS') AND (HIVE_VERSION == 'HDP_2_3')"><![CDATA[aopalliance-1.0.jar,apacheds-i18n-2.0.0-M15.jar,apacheds-kerberos-codec-2.0.0-M15.jar,api-asn1-api-1.0.0-M20.jar,api-util-1.0.0-M20.jar,asm-3.2.jar,avro-1.7.5.jar,commons-beanutils-1.7.0.jar,commons-beanutils-core-1.8.0.jar,commons-cli-1.2.jar,commons-codec-1.4.jar,commons-collections-3.2.1.jar,commons-collections4-4.0.jar,commons-compress-1.4.1.jar,commons-configuration-1.6.jar,commons-digester-1.8.jar,commons-io-2.4.jar,commons-lang-2.6.jar,commons-logging-1.1.3.jar,commons-math3-3.1.1.jar,commons-net-3.1.jar,curator-client-2.7.1.jar,curator-framework-2.7.1.jar,curator-recipes-2.7.1.jar,gson-2.2.4.jar,guava-11.0.2.jar,guice-3.0.jar,guice-servlet-3.0.jar,hadoop-annotations-2.7.1.2.3.2.0-2950.jar,hadoop-auth-2.7.1.2.3.2.0-2950.jar,hadoop-common-2.7.1.2.3.2.0-2950.jar,hadoop-hdfs-2.7.1.2.3.2.0-2950.jar,hadoop-mapreduce-client-common-2.7.1.2.3.2.0-2950.jar,hadoop-mapreduce-client-core-2.7.1.2.3.2.0-2950.jar,hadoop-yarn-api-2.7.1.2.3.2.0-2950.jar,hadoop-yarn-client-2.7.1.2.3.2.0-2950.jar,hadoop-yarn-common-2.7.1.2.3.2.0-2950.jar,htrace-core-3.1.0-incubating.jar,httpclient-4.2.5.jar,httpcore-4.2.5.jar,jackson-core-2.2.3.jar,jackson-core-asl-1.9.14-TALEND.jar,jackson-jaxrs-1.9.13.jar,jackson-mapper-asl-1.9.14-TALEND.jar,jackson-xc-1.9.13.jar,javax.inject-1.jar,jaxb-impl-2.2.3-1.jar,jersey-client-1.9.jar,jersey-core-1.9.jar,jersey-guice-1.9.jar,jersey-json-1.9.jar,jersey-server-1.9.jar,jettison-1.3.4.jar,jetty-util-6.1.26.hwx.jar,jsr305-2.0.3.jar,log4j-1.2.17.jar,microsoft-windowsazure-storage-sdk-0.6.0.jar,netty-3.6.2.Final.jar,paranamer-2.3.jar,protobuf-java-2.5.0.jar,servlet-api-2.5.jar,slf4j-api-1.7.10.jar,slf4j-log4j12-1.7.10.jar,snappy-java-1.0.4.1.jar,stax-api-1.0-2.jar,tez-api-0.7.0.2.3.2.0-2950.jar,tez-common-0.7.0.2.3.2.0-2950.jar,tez-dag-0.7.0.2.3.2.0-2950.jar,tez-mapreduce-0.7.0.2.3.2.0-2950.jar,tez-runtime-internals-0.7.0.2.3.2.0-2950.jar,tez-runtime-library-0.7.0.2.3.2.0-2950.jar,tez-yarn-timeline-history-0.7.0.2.3.2.0-2950.jar,xercesImpl-2.9.1.jar,xml-apis-1.3.04.jar,xmlenc-0.52.jar,xz-1.0.jar,zookeeper-3.4.6.2.3.2.0-2950.jar]]></DEFAULT>
+				IF="(DISTRIBUTION == 'HORTONWORKS') AND (HIVE_VERSION == 'HDP_2_3')"><![CDATA[aopalliance-1.0.jar,apacheds-i18n-2.0.0-M15.jar,apacheds-kerberos-codec-2.0.0-M15.jar,api-asn1-api-1.0.0-M20.jar,api-util-1.0.0-M20.jar,asm-3.2.jar,avro-1.7.5.jar,commons-beanutils-1.7.0.jar,commons-beanutils-core-1.8.0.jar,commons-cli-1.2.jar,commons-codec-1.4.jar,commons-collections-3.2.1.jar,commons-collections4-4.0.jar,commons-compress-1.4.1.jar,commons-configuration-1.6.jar,commons-digester-1.8.jar,commons-io-2.4.jar,commons-lang-2.6.jar,commons-logging-1.1.3.jar,commons-math3-3.1.1.jar,commons-net-3.1.jar,curator-client-2.7.1.jar,curator-framework-2.7.1.jar,curator-recipes-2.7.1.jar,gson-2.2.4.jar,guava-11.0.2.jar,guice-3.0.jar,guice-servlet-3.0.jar,hadoop-annotations-2.7.1.2.3.2.0-2950.jar,hadoop-auth-2.7.1.2.3.2.0-2950.jar,hadoop-common-2.7.1.2.3.2.0-2950.jar,hadoop-hdfs-2.7.1.2.3.2.0-2950.jar,hadoop-mapreduce-client-common-2.7.1.2.3.2.0-2950.jar,hadoop-mapreduce-client-core-2.7.1.2.3.2.0-2950.jar,hadoop-yarn-api-2.7.1.2.3.2.0-2950.jar,hadoop-yarn-client-2.7.1.2.3.2.0-2950.jar,hadoop-yarn-common-2.7.1.2.3.2.0-2950.jar,htrace-core-3.1.0-incubating.jar,httpclient-4.2.5.jar,httpcore-4.2.5.jar,jackson-core-2.2.3.jar,jackson-core-asl-1.9.14-TALEND.jar,jackson-jaxrs-1.9.13.jar,jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar,jackson-xc-1.9.13.jar,javax.inject-1.jar,jaxb-impl-2.2.3-1.jar,jersey-client-1.9.jar,jersey-core-1.9.jar,jersey-guice-1.9.jar,jersey-json-1.9.jar,jersey-server-1.9.jar,jettison-1.3.4.jar,jetty-util-6.1.26.hwx.jar,jsr305-2.0.3.jar,log4j-1.2.17.jar,microsoft-windowsazure-storage-sdk-0.6.0.jar,netty-3.6.2.Final.jar,paranamer-2.3.jar,protobuf-java-2.5.0.jar,servlet-api-2.5.jar,slf4j-api-1.7.10.jar,slf4j-log4j12-1.7.10.jar,snappy-java-1.0.4.1.jar,stax-api-1.0-2.jar,tez-api-0.7.0.2.3.2.0-2950.jar,tez-common-0.7.0.2.3.2.0-2950.jar,tez-dag-0.7.0.2.3.2.0-2950.jar,tez-mapreduce-0.7.0.2.3.2.0-2950.jar,tez-runtime-internals-0.7.0.2.3.2.0-2950.jar,tez-runtime-library-0.7.0.2.3.2.0-2950.jar,tez-yarn-timeline-history-0.7.0.2.3.2.0-2950.jar,xercesImpl-2.9.1.jar,xml-apis-1.3.04.jar,xmlenc-0.52.jar,xz-1.0.jar,zookeeper-3.4.6.2.3.2.0-2950.jar]]></DEFAULT>
 		</PARAMETER>
 		<PARAMETER NAME="TEZ_LIB_PATH" FIELD="BOTH_HADOOP" NUM_ROW="1"
 			REQUIRED="true" SHOW_IF="(isShow[TEZ_LIB]) AND (TEZ_LIB == 'USE_EXIST')">
@@ -891,9 +891,9 @@
 				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
 				UrlPath="platform:/base/plugins/org.apache.commons.lang_2.6.0.v201404270220.jar"
 				REQUIRED_IF="(HIVE_VERSION=='MAPR2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND4-TALEND/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
 				REQUIRED_IF="(HIVE_VERSION=='MAPR2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
@@ -1019,9 +1019,9 @@
 				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
 				UrlPath="platform:/base/plugins/org.apache.commons.lang_2.6.0.v201404270220.jar"
 				REQUIRED_IF="(HIVE_VERSION=='MAPR212' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND4-TALEND/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
 				REQUIRED_IF="(HIVE_VERSION=='MAPR212' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
@@ -1142,9 +1142,9 @@
 				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
 				UrlPath="platform:/base/plugins/org.apache.commons.lang_2.6.0.v201404270220.jar"
 				REQUIRED_IF="(HIVE_VERSION=='MAPR213' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND4-TALEND/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
 				REQUIRED_IF="(HIVE_VERSION=='MAPR213' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
@@ -1268,9 +1268,9 @@
 				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
 				UrlPath="platform:/base/plugins/org.apache.commons.lang_2.6.0.v201404270220.jar"
 				REQUIRED_IF="(HIVE_VERSION=='MAPR301' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND4-TALEND/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
 				REQUIRED_IF="(HIVE_VERSION=='MAPR301' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
@@ -1399,9 +1399,9 @@
 				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
 				UrlPath="platform:/base/plugins/org.apache.commons.lang_2.6.0.v201404270220.jar"
 				REQUIRED_IF="(HIVE_VERSION=='MAPR310' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND4-TALEND/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
 				REQUIRED_IF="(HIVE_VERSION=='MAPR310' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
@@ -1617,9 +1617,9 @@
 				MVN="mvn:org.talend.libraries/commons-codec-1.4/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.4.jar"
 				REQUIRED_IF="(DISTRIBUTION!='CUSTOM') AND (HIVE_VERSION=='APACHE_2_4_0_EMR_0_13_1') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND" MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND4-TALEND/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
 				REQUIRED_IF="(DISTRIBUTION!='CUSTOM') AND (HIVE_VERSION=='APACHE_2_4_0_EMR_0_13_1') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
@@ -1770,9 +1770,9 @@
 				MVN="mvn:org.talend.libraries/commons-codec-1.4/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.4.jar"
 				REQUIRED_IF="(DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false') AND (HIVE_VERSION=='APACHE_2_4_0_EMR')" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND" MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND4-TALEND/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
 				REQUIRED_IF="(DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false') AND (HIVE_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
@@ -1959,9 +1959,9 @@
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED="false"
 				REQUIRED_IF="(HIVE_VERSION=='APACHE_1_0_0' OR HIVE_VERSION=='APACHE_1_0_3_EMR') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND4-TALEND/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
 				REQUIRED="false"
 				REQUIRED_IF="(HIVE_VERSION=='APACHE_1_0_0' OR HIVE_VERSION=='APACHE_1_0_3_EMR') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<!-- ############## -->
@@ -2059,9 +2059,9 @@
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(HIVE_VERSION=='HDP_1_2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND4-TALEND/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
 				REQUIRED_IF="(HIVE_VERSION=='HDP_1_2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<!-- HDP 1.2 Hbase -->
 			<IMPORT NAME="guava-r09.jar" MODULE="guava-r09.jar"
@@ -2179,9 +2179,9 @@
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(HIVE_VERSION=='HDP_1_3') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND4-TALEND/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
 				REQUIRED_IF="(HIVE_VERSION=='HDP_1_3') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<!-- HDP 1.3 Hbase -->
 			<IMPORT NAME="guava-11.0.2.jar" MODULE="guava-11.0.2.jar"
@@ -2328,9 +2328,9 @@
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED="false"
 				REQUIRED_IF="(HIVE_VERSION=='Cloudera_CDH4') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND4-TALEND/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
 				REQUIRED="false"
 				REQUIRED_IF="(HIVE_VERSION=='Cloudera_CDH4') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<!-- CDH 4 Hbase -->
@@ -2510,9 +2510,9 @@
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED="false"
 				REQUIRED_IF="(HIVE_VERSION=='Cloudera_CDH4_YARN') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND4-TALEND/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
 				REQUIRED="false"
 				REQUIRED_IF="(HIVE_VERSION=='Cloudera_CDH4_YARN') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -2701,9 +2701,9 @@
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND4-TALEND/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
 				REQUIRED_IF="(HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
 			<!-- Cloudera_CDH5 Hbase -->
@@ -2957,9 +2957,9 @@
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED="false"
 				REQUIRED_IF="(HIVE_VERSION=='PIVOTAL_HD_1_0_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND4-TALEND/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
 				REQUIRED="false"
 				REQUIRED_IF="(HIVE_VERSION=='PIVOTAL_HD_1_0_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -3147,9 +3147,9 @@
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND4-TALEND/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
 				REQUIRED_IF="(HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
 			<!-- PIVOTAL_HD_2_0 Hbase -->
@@ -3354,9 +3354,9 @@
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND4-TALEND/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
 				REQUIRED_IF="(HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
 			<!-- HDP_2_0 Hbase -->
@@ -3570,9 +3570,9 @@
 				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
-			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
+			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
+				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND4-TALEND/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND4-TALEND.jar"
 				REQUIRED_IF="(HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
 			<!-- HDP_2_1 Hbase -->
