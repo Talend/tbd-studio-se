@@ -29,12 +29,12 @@ public class CDH500MR2HiveMetadataHelperTest extends AbstractVersionTest4HiveMet
 
     @Test
     public void testHiveMode_CDH500_WithAll() {
-        doTestGetHiveModesDisplay(getDistributionVersion(), HIVE_MODE_DISPLAY_ALL);
+        doTestGetHiveModesDisplay(getDistributionVersion(), new String[0]);
     }
 
     @Test
     public void testHiveServer_CDH500_WithAll() {
-        doTestGetHiveServersDisplay(getDistributionVersion(), HIVE_SERVER_DISPLAY_ALL);
+        doTestGetHiveServersDisplay(getDistributionVersion(), new String[0]);
     }
 
 }

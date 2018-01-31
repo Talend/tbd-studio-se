@@ -202,13 +202,13 @@
 	                NAME="uuid-3.4"
 	                UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/uuid-3.4.jar"/>
 	            <IMPORT
-	                NAME="jackson-core-asl-1.9.7"
-	                MODULE="jackson-core-asl-1.9.7.jar" MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.7/6.0.0" 
-	                UrlPath="platform:/plugin/org.talend.designer.components.bigdata/components/tNeo4jConnection/jackson-core-asl-1.9.7.jar"/>
+	                NAME="jackson-core-asl-1.9.14-TALEND"
+	                MODULE="jackson-core-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND" 
+	                />
 	            <IMPORT
-	                NAME="jackson-mapper-asl-1.9.7"
-	                MODULE="jackson-mapper-asl-1.9.7.jar" MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.7/6.0.0" 
-	                UrlPath="platform:/plugin/org.talend.designer.components.bigdata/components/tNeo4jConnection/jackson-mapper-asl-1.9.7.jar"/>
+	                NAME="jackson-mapper-asl-1.9.14-TALEND"
+	                MODULE="jackson-mapper-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
+	                />
 	    	</IMPORTS>
 	    	<IMPORTS REQUIRED_IF="(((DB_VERSION == 'CASSANDRA_2_0_0') AND (API_TYPE == 'DATASTAX')) OR (DB_VERSION == 'CASSANDRA_2_2') OR (DB_VERSION == 'CASSANDRA_3_0'))">
                 <IMPORT MODULE="slf4j-api-1.7.7.jar"

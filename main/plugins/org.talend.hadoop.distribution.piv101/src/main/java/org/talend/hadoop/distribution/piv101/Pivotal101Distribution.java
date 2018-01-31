@@ -206,4 +206,8 @@ public class Pivotal101Distribution extends AbstractDistribution implements HDFS
         return displayConditions.get(componentType);
     }
 
+    @Override
+    public boolean isActivated() {
+        return false;
+    }
 }

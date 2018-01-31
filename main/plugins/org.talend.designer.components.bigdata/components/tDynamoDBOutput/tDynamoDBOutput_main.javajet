@@ -133,7 +133,9 @@ if ("INSERT".equalsIgnoreCase(dataAction)) {
 				item_<%=cid%> = item_<%=cid%>.withNull(entry.getKey());
 			}else{
 			    if(dbTypeJSONMap_<%=cid%>.get(entry.getKey())){
-			        item_<%=cid%> = item_<%=cid%>.withJSON(entry.getKey(), entry.getValue().toString());
+			        String json_value_<%=cid%> = entry.getValue().toString().trim();
+			        json_value_<%=cid%> = (json_value_<%=cid%>.isEmpty()) ? "{}" : json_value_<%=cid%>;
+			        item_<%=cid%> = item_<%=cid%>.withJSON(entry.getKey(), json_value_<%=cid%>);
 			    }
 			    else{
 				    item_<%=cid%> = item_<%=cid%>.with(entry.getKey(), entry.getValue());

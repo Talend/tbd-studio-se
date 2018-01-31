@@ -56,7 +56,7 @@ public class MapR520ClassLoaderTest extends AbstractTest4ClassLoaderProvider {
 
     @Test
     public void testHbase() {
-        String libsStr = "commons-codec-1.9.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;guava-14.0.1.jar;hadoop-auth-2.7.0-mapr-1506.jar;hadoop-common-2.7.0-mapr-1506.jar;hadoop-hdfs-2.7.0-mapr-1506.jar;hbase-client-1.1.1-mapr-1602.jar;hbase-common-1.1.1-mapr-1602.jar;hbase-protocol-1.1.1-mapr-1602.jar;htrace-core-3.1.0-incubating.jar;json-20080701.jar;log4j-1.2.17.jar;maprfs-5.1.0-mapr.jar;mapr-hbase-5.1.0-mapr.jar;netty-all-4.0.23.Final.jar;protobuf-java-2.5.0.jar;slf4j-api-1.7.5.jar;slf4j-log4j12-1.7.5.jar;zookeeper-3.4.5-mapr-1503.jar;netty-3.9.0.Final.jar;flexjson-2.1.jar";//$NON-NLS-1$
+        String libsStr = "commons-codec-1.9.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;guava-14.0.1.jar;hadoop-auth-2.7.0-mapr-1607.jar;hadoop-common-2.7.0-mapr-1607.jar;hadoop-hdfs-2.7.0-mapr-1607.jar;hbase-client-1.1.1-mapr-1602.jar;hbase-common-1.1.1-mapr-1602.jar;hbase-protocol-1.1.1-mapr-1602.jar;htrace-core-3.1.0-incubating.jar;json-20080701.jar;log4j-1.2.17.jar;maprfs-5.2.0-mapr.jar;mapr-hbase-5.2.0-mapr.jar;netty-all-4.0.23.Final.jar;protobuf-java-2.5.0.jar;slf4j-api-1.7.5.jar;slf4j-log4j12-1.7.5.jar;zookeeper-3.4.5-mapr-1604.jar;flexjson-2.1.jar";//$NON-NLS-1$
         doTestClassLoader(EHadoopCategory.HBASE.getName(), libsStr);
     }
 
