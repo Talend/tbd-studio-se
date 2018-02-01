@@ -207,14 +207,12 @@
                 UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/high-scale-lib-1.1.2.jar"
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_1_1_2'" />
             <IMPORT
-                NAME="jackson-core-asl-1.9.2"
-                MODULE="jackson-core-asl-1.9.2.jar" MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.2/6.0.0" 
-                UrlPath="platform:/plugin/org.talend.libraries.hadoop/lib/jackson-core-asl-1.9.2.jar"
+                NAME="jackson-core-asl-1.9.14-TALEND"
+                MODULE="jackson-core-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND" 
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_1_1_2'" />
             <IMPORT
-                NAME="jackson-mapper-asl-1.9.2"
-                MODULE="jackson-mapper-asl-1.9.2.jar" MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.2/6.0.0" 
-                UrlPath="platform:/plugin/org.talend.libraries.hadoop/lib/jackson-mapper-asl-1.9.2.jar"
+                NAME="jackson-mapper-asl-1.9.14-TALEND"
+                MODULE="jackson-mapper-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_1_1_2'" />
             <IMPORT
                 NAME="libthrift-0.7.0"
@@ -305,14 +303,12 @@
                 UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/libthrift-0.7.0.jar"
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_1_2_2'" />
             <IMPORT
-                NAME="jackson-core-asl-1.9.2"
-                MODULE="jackson-core-asl-1.9.2.jar" MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.2/6.0.0" 
-                UrlPath="platform:/plugin/org.talend.libraries.hadoop/lib/jackson-core-asl-1.9.2.jar"
+                NAME="jackson-core-asl-1.9.14-TALEND"
+                MODULE="jackson-core-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND" 
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_1_2_2'" />
             <IMPORT
-                NAME="jackson-mapper-asl-1.9.2"
-                MODULE="jackson-mapper-asl-1.9.2.jar" MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.2/6.0.0" 
-                UrlPath="platform:/plugin/org.talend.libraries.hadoop/lib/jackson-mapper-asl-1.9.2.jar"
+                NAME="jackson-mapper-asl-1.9.14-TALEND"
+                MODULE="jackson-mapper-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_1_2_2'" />
             <IMPORT
                 NAME="snakeyaml-1.6"
@@ -424,14 +420,12 @@
                 UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/lz4-1.2.0.jar"
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
-                NAME="jackson-core-asl-1.9.2"
-                MODULE="jackson-core-asl-1.9.2.jar" MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.2/6.0.0" 
-                UrlPath="platform:/plugin/org.talend.libraries.hadoop/lib/jackson-core-asl-1.9.2.jar"
+                NAME="jackson-core-asl-1.9.14-TALEND"
+                MODULE="jackson-core-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND" 
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
-                NAME="jackson-mapper-asl-1.9.2"
-                MODULE="jackson-mapper-asl-1.9.2.jar" MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.2/6.0.0" 
-                UrlPath="platform:/plugin/org.talend.libraries.hadoop/lib/jackson-mapper-asl-1.9.2.jar"
+                NAME="jackson-mapper-asl-1.9.14-TALEND"
+                MODULE="jackson-mapper-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
                 NAME="super-csv-2.1.0"
@@ -514,13 +508,13 @@
                     NAME="high-scale-lib-1.0.6"
                     MODULE="high-scale-lib-1.0.6.jar" MVN="mvn:org.talend.libraries/high-scale-lib-1.0.6/6.0.0" />
                 <IMPORT
-                    NAME="jackson-core-asl-1.9.2"
-                    MODULE="jackson-core-asl-1.9.2.jar" MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.2/6.0.0" 
-                    UrlPath="platform:/plugin/org.talend.libraries.hadoop/lib/jackson-core-asl-1.9.2.jar" />
+                    NAME="jackson-core-asl-1.9.14-TALEND"
+                    MODULE="jackson-core-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND" 
+                    />
                 <IMPORT
-                    NAME="jackson-mapper-asl-1.9.2"
-                    MODULE="jackson-mapper-asl-1.9.2.jar" MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.2/6.0.0" 
-                    UrlPath="platform:/plugin/org.talend.libraries.hadoop/lib/jackson-mapper-asl-1.9.2.jar" />
+                    NAME="jackson-mapper-asl-1.9.14-TALEND"
+                    MODULE="jackson-mapper-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
+                    />
                 <IMPORT
                     NAME="jamm-0.3.0"
                     MODULE="jamm-0.3.0.jar" MVN="mvn:org.talend.libraries/jamm-0.3.0/6.0.0" 
@@ -616,13 +610,13 @@
 				    NAME="high-scale-lib-1.0.6"
 				    MODULE="high-scale-lib-1.0.6.jar" MVN="mvn:org.talend.libraries/high-scale-lib-1.0.6/6.0.0" />
 				<IMPORT
-				    NAME="jackson-core-asl-1.9.2"
-				    MODULE="jackson-core-asl-1.9.2.jar" MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.2/6.0.0" 
-				    UrlPath="platform:/plugin/org.talend.libraries.hadoop/lib/jackson-core-asl-1.9.2.jar" />
+				    NAME="jackson-core-asl-1.9.14-TALEND"
+				    MODULE="jackson-core-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND" 
+				    />
 				<IMPORT
-				    NAME="jackson-mapper-asl-1.9.2"
-				    MODULE="jackson-mapper-asl-1.9.2.jar" MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.2/6.0.0" 
-				    UrlPath="platform:/plugin/org.talend.libraries.hadoop/lib/jackson-mapper-asl-1.9.2.jar" />
+				    NAME="jackson-mapper-asl-1.9.14-TALEND"
+				    MODULE="jackson-mapper-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
+				    />
 				<IMPORT
 				    NAME="jamm-0.3.0"
 				    MODULE="jamm-0.3.0.jar" MVN="mvn:org.talend.libraries/jamm-0.3.0/6.0.0" 

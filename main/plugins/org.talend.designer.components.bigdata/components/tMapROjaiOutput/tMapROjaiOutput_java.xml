@@ -167,12 +167,6 @@
 				REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'MAPROJAI_5_1')" />			
 			<IMPORT MODULE="ojai-1.0.jar" MVN="mvn:org.talend.libraries/ojai-1.0/6.0.0"
 				NAME="ojai-1.0.jar" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'MAPROJAI_5_1')" />
-			<IMPORT MODULE="jackson-databind-2.7.1.jar"
-				MVN="mvn:org.talend.libraries/jackson-databind-2.7.1/6.0.0" NAME="jackson-databind-2.7.1.jar"
-				REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'MAPROJAI_5_1')" />
-			<IMPORT MODULE="jackson-annotations-2.7.1.jar"
-				MVN="mvn:org.talend.libraries/jackson-annotations-2.7.1/6.0.0" NAME="jackson-annotations-2.7.1.jar"
-				REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'MAPROJAI_5_1')" />
 			<IMPORT MODULE="hadoop-annotations-2.7.0-mapr-1602.jar"
 				MVN="mvn:org.talend.libraries/hadoop-annotations-2.7.0-mapr-1602/6.0.0"
 				NAME="hadoop-annotations-2.7.0-mapr-1602.jar" 
@@ -196,12 +190,6 @@
 			<IMPORT MODULE="ojai-1.1.jar" MVN="mvn:org.talend.libraries/ojai-1.1/6.0.0"
 			    UrlPath="platform:/plugin/org.talend.hadoop.distribution.mapr520.jars/lib/ojai-1.1.jar"
 				NAME="ojai-1.1.jar" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'MAPROJAI_5_2')" />
-			<IMPORT MODULE="jackson-databind-2.7.2.jar"
-				MVN="mvn:org.talend.libraries/jackson-databind-2.7.2/6.0.0" NAME="jackson-databind-2.7.2.jar"
-				REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'MAPROJAI_5_2')" />
-			<IMPORT MODULE="jackson-annotations-2.7.2.jar"
-				MVN="mvn:org.talend.libraries/jackson-annotations-2.7.2/6.0.0" NAME="jackson-annotations-2.7.2.jar"
-				REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'MAPROJAI_5_2')" />
 			<IMPORT MODULE="hadoop-annotations-2.7.0-mapr-1607.jar"
 				MVN="mvn:org.talend.libraries/hadoop-annotations-2.7.0-mapr-1607/6.0.0"
 				NAME="hadoop-annotations-2.7.0-mapr-1607.jar" 
@@ -255,8 +243,14 @@
 			<IMPORT MODULE="antlr4-runtime-4.5.jar"
 				MVN="mvn:org.talend.libraries/antlr4-runtime-4.5/6.0.0" NAME="antlr4-runtime-4.5.jar"
 				REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="jackson-core-2.7.1.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-2.7.1/6.0.0" NAME="jackson-core-2.7.1.jar"
+            <IMPORT MODULE="jackson-databind-2.7.9.2.jar"
+                MVN="mvn:com.fasterxml.jackson.core/jackson-databind/2.7.9.2" NAME="jackson-databind-2.7.9.2.jar"
+                REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false')" />
+            <IMPORT MODULE="jackson-annotations-2.7.9.jar"
+                MVN="mvn:com.fasterxml.jackson.core/jackson-annotations/2.7.9" NAME="jackson-annotations-2.7.9.jar"
+                REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false')" />
+			<IMPORT MODULE="jackson-core-2.7.9.jar"
+				MVN="mvn:com.fasterxml.jackson.core/jackson-core/2.7.9" NAME="jackson-core-2.7.9.jar"
 				REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT MODULE="curator-framework-2.7.1.jar"
 				MVN="mvn:org.talend.libraries/curator-framework-2.7.1/6.0.0" NAME="curator-framework-2.7.1.jar"
@@ -311,12 +305,11 @@
 				MVN="mvn:org.talend.libraries/slf4j-log4j12-1.7.10/6.0.0" NAME="slf4j-log4j12-1.7.10.jar"
 				UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.7.10.jar"
 				REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="jackson-core-asl-1.9.13.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.13/6.0.0" NAME="jackson-core-asl-1.9.13.jar"
+			<IMPORT MODULE="jackson-core-asl-1.9.14-TALEND.jar"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND" NAME="jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="jackson-mapper-asl-1.9.13.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.13/6.0.0" NAME="jackson-mapper-asl-1.9.13.jar"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.13.jar"
+			<IMPORT MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" NAME="jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT MODULE="gson-2.2.4.jar" MVN="mvn:org.talend.libraries/gson-2.2.4/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.sap/lib/gson-2.2.4.jar"

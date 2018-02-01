@@ -29,11 +29,11 @@ public class Apache100HiveMetadataHelperTest extends AbstractVersionTest4HiveMet
 
     @Test
     public void testHiveMode_Apache100_WithAll() {
-        doTestGetHiveModesDisplay(getDistributionVersion(), HIVE_MODE_DISPLAY_ALL);
+        doTestGetHiveModesDisplay(getDistributionVersion(), new String[0]);
     }
 
     @Test
     public void testHiveServer_Apache100_Server1_Only() {
-        doTestGetHiveServersDisplay(getDistributionVersion(), HIVE_SERVER_DISPLAY_SERVER1_ONLY);
+        doTestGetHiveServersDisplay(getDistributionVersion(), new String[0]);
     }
 }
