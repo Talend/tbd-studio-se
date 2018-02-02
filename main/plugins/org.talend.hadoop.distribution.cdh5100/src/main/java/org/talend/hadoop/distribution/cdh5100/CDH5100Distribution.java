@@ -132,7 +132,7 @@ public class CDH5100Distribution extends AbstractDistribution implements ICloude
                 distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
                 SparkBatchConstant.MATCH_PREDICT_COMPONENT), CDH5100GraphFramesNodeModuleGroup.getModuleGroups(
-                distribution, version));
+                distribution, version, null));
 
         // Azure
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
@@ -498,5 +498,10 @@ public class CDH5100Distribution extends AbstractDistribution implements ICloude
     @Override
     public boolean doSupportAzureDataLakeStorage() {
         return false;
+    }
+
+    @Override
+    public boolean isActivated() {
+        return true;
     }
 }

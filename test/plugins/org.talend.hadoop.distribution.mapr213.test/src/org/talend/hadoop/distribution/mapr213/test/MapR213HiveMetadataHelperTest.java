@@ -29,12 +29,12 @@ public class MapR213HiveMetadataHelperTest extends AbstractVersionTest4HiveMetad
 
     @Test
     public void testHiveMode_MapR213_WitAll() {
-        doTestGetHiveModesDisplay(getDistributionVersion(), HIVE_MODE_DISPLAY_ALL);
+        doTestGetHiveModesDisplay(getDistributionVersion(), new String[0]);
     }
 
     @Test
     public void testHiveServer_MapR213_WithAll() {
-        doTestGetHiveServersDisplay(getDistributionVersion(), HIVE_SERVER_DISPLAY_ALL);
+        doTestGetHiveServersDisplay(getDistributionVersion(), new String[0]);
     }
 
 }

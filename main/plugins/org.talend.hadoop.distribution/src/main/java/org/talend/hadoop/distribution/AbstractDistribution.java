@@ -116,6 +116,10 @@ public abstract class AbstractDistribution {
         return true;
     }
 
+    public boolean doRequireElasticsearchSparkPatch() {
+        return false;
+    }
+    
     public boolean doSupportCustomMRApplicationCP() {
         return false;
     }
@@ -312,5 +316,13 @@ public abstract class AbstractDistribution {
     
     public boolean isActivated() {
         return true;
+    }
+    
+    public boolean isDynamicDistribution() {
+        return false;
+    }
+
+    public boolean useS3AProperties() {
+        return false;
     }
 }

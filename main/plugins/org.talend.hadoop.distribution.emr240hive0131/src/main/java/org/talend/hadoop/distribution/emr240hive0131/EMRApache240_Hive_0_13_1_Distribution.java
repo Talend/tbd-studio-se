@@ -166,6 +166,11 @@ public class EMRApache240_Hive_0_13_1_Distribution extends AbstractDistribution 
     public boolean doSupportAzureDataLakeStorage() {
         return false;
     }
+
+    @Override
+    public boolean isActivated() {
+        return false;
+    }
     // End
 
 }

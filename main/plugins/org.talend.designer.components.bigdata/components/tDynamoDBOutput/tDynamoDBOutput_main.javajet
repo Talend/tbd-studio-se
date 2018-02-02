@@ -42,20 +42,25 @@
 		return "";
 	}
 %>
-	
+
 Object partitionKeyValue_<%=cid%>	= null;
 Object sortKeyValue_<%=cid%>	= null;
 java.util.Map<String, Object> mapValues_<%=cid%> = new java.util.HashMap<>();
+java.util.Map<String, Boolean> dbTypeJSONMap_<%=cid%> = new java.util.HashMap<>();
 
-<% for (int i = 0; i < outPutColumns.size(); i++) { 
+<%  List<String[]> isJSONList = new java.util.ArrayList();
+    for (int i = 0; i < outPutColumns.size(); i++) {
 		IMetadataColumn column = outPutColumns.get(i);
-		JavaType javaType = JavaTypesManager.getJavaTypeFromId(column.getTalendType());	
+		JavaType javaType   = JavaTypesManager.getJavaTypeFromId(column.getTalendType());
+		String isJSON       = ("JSON".equals(column.getType())) ? "Boolean.TRUE" : "Boolean.FALSE";
 		String name 		= "\""+column.getOriginalDbColumnName()+"\"";
-		String columnNode	= conn.getName() + "." + column.getLabel(); 			
+		String columnNode	= conn.getName() + "." + column.getLabel();
 		boolean isDate		= (javaType == JavaTypesManager.DATE);
 		boolean isString	= (javaType == JavaTypesManager.STRING);
 		boolean isByteArray	= (javaType == JavaTypesManager.BYTE_ARRAY);
-		
+
+        isJSONList.add(new String[]{name, isJSON});
+
 		// This is the Hash Key
 		if(column.isKey() &&  name.equals(partitionKey)){ 
 	
@@ -72,7 +77,7 @@ java.util.Map<String, Object> mapValues_<%=cid%> = new java.util.HashMap<>();
 		 			sortKeyValue_<%=cid%> = FormatterUtils.format_DateInUTC(<%=columnNode%>,  <%=column.getPattern()%>);
 			 <% } else { %>
 				 	sortKeyValue_<%=cid%> = <%=columnNode%>;
-			 <% } 
+			 <% }
 		
  		// Other row items 
 		}else {
@@ -101,11 +106,20 @@ java.util.Map<String, Object> mapValues_<%=cid%> = new java.util.HashMap<>();
 				   }
 				   
 			<%   }
-		} 		
- } 	
+		}
+ }
+
+for(String[] isJSonEntry: isJSONList){
+%>
+        dbTypeJSONMap_<%=cid%>.put(<%=isJSonEntry[0]%>, <%=isJSonEntry[1]%>);
+<%
+}
+%>
+
+<%
 	
-if ("INSERT".equalsIgnoreCase(dataAction)) {	
-		
+if ("INSERT".equalsIgnoreCase(dataAction)) {
+
 		// Add resolved Primary keys to the Item
 		if(sortKey !=null && !sortKey.isEmpty() && !sortKey.equals("\"\"")) { %>	
 				item_<%=cid%> = item_<%=cid%>.withPrimaryKey(<%=partitionKey%>, partitionKeyValue_<%=cid%>, 
@@ -118,7 +132,14 @@ if ("INSERT".equalsIgnoreCase(dataAction)) {
 			if(entry.getValue() == null){
 				item_<%=cid%> = item_<%=cid%>.withNull(entry.getKey());
 			}else{
-				item_<%=cid%> = item_<%=cid%>.with(entry.getKey(), entry.getValue());
+			    if(dbTypeJSONMap_<%=cid%>.get(entry.getKey())){
+			        String json_value_<%=cid%> = entry.getValue().toString().trim();
+			        json_value_<%=cid%> = (json_value_<%=cid%>.isEmpty()) ? "{}" : json_value_<%=cid%>;
+			        item_<%=cid%> = item_<%=cid%>.withJSON(entry.getKey(), json_value_<%=cid%>);
+			    }
+			    else{
+				    item_<%=cid%> = item_<%=cid%>.with(entry.getKey(), entry.getValue());
+			    }
 			}
 		}	
 		putItemSpec_<%=cid%> = new com.amazonaws.services.dynamodbv2.document.spec.PutItemSpec().withItem(item_<%=cid%>);
@@ -160,7 +181,7 @@ if ("INSERT".equalsIgnoreCase(dataAction)) {
 			}else{
 					updateExpression_<%=cid%>.append(entry.getKey()+"  =:"+entry.getKey());
 			}
-																
+
 			valueMap_<%=cid%>.put(":"+entry.getKey(), entry.getValue());
 			countValue_<%=cid%>++;
 		}

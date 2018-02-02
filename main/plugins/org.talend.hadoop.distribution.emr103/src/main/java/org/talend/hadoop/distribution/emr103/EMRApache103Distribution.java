@@ -211,5 +211,10 @@ public class EMRApache103Distribution extends AbstractDistribution implements HD
     public boolean doSupportAzureDataLakeStorage() {
         return false;
     }
+
+    @Override
+    public boolean isActivated() {
+        return false;
+    }
     // End
 }

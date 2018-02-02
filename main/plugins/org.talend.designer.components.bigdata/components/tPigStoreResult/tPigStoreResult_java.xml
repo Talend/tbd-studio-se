@@ -878,6 +878,21 @@
 			<IMPORT MODULE_GROUP="PIG-HBASE-LIB-MAPR41X_LASTEST"
 				REQUIRED_IF="(HBASE_VERSION=='MAPR410' AND STORE=='HBASESTORAGE') AND (DISTRIBUTION!='CUSTOM')" />
 			<!-- HBASE Support End -->
+			
+			<!-- Dynamic distribution, the groupe module PIG-SEQUENCEFILE-LIB-DYNAMIC's Jars can't be included on the job -->
+			<IMPORT NAME="elephant-bird-pig-4.9.jar" MODULE="elephant-bird-pig-4.9.jar"
+				MVN="mvn:org.talend.libraries/elephant-bird-pig-4.9/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-pig-4.9.jar"
+				REQUIRED_IF="(STORE=='SEQUENCEFILESTORAGE') AND DISTRIB[DISTRIBUTION, HBASE_VERSION].isDynamicDistribution[] AND DISTRIBUTION!='CUSTOM'" />
+			<IMPORT NAME="elephant-bird-core-4.9.jar" MODULE="elephant-bird-core-4.9.jar"
+				MVN="mvn:org.talend.libraries/elephant-bird-core-4.9/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-core-4.9.jar"
+				REQUIRED_IF="(STORE=='SEQUENCEFILESTORAGE') AND DISTRIB[DISTRIBUTION, HBASE_VERSION].isDynamicDistribution[] AND DISTRIBUTION!='CUSTOM'" />
+			<IMPORT NAME="elephant-bird-hadoop-compat-4.9.jar" MODULE="elephant-bird-hadoop-compat-4.9.jar"
+				MVN="mvn:org.talend.libraries/elephant-bird-hadoop-compat-4.9/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-hadoop-compat-4.9.jar"
+				REQUIRED_IF="(STORE=='SEQUENCEFILESTORAGE') AND DISTRIB[DISTRIBUTION, HBASE_VERSION].isDynamicDistribution[] AND DISTRIBUTION!='CUSTOM'" />
+			<!-- Dynamic distribution End -->
 
 			<IMPORT NAME="elephant-bird-pig-4.1.jar" MODULE="elephant-bird-pig-4.1.jar"
 				MVN="mvn:org.talend.libraries/elephant-bird-pig-4.1/6.0.0"

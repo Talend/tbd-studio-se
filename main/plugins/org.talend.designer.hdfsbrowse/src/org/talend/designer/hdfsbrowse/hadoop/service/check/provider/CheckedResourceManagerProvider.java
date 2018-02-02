@@ -2,6 +2,7 @@ package org.talend.designer.hdfsbrowse.hadoop.service.check.provider;
 
 import org.talend.core.hadoop.EHadoopCategory;
 import org.talend.core.hadoop.HadoopClassLoaderFactory2;
+import org.talend.core.hadoop.conf.EHadoopConfProperties;
 import org.talend.core.utils.ReflectionUtils;
 import org.talend.designer.hdfsbrowse.hadoop.service.HadoopServiceProperties;
 import org.talend.designer.hdfsbrowse.hadoop.service.check.AbstractCheckedServiceProvider;
@@ -37,6 +38,7 @@ public class CheckedResourceManagerProvider extends AbstractCheckedServiceProvid
         if (useKrb) {
             String yarnPrincipal = serviceProperties.getJtOrRmPrincipal();
             ReflectionUtils.invokeMethod(conf, "set", new Object[] { "yarn.resourcemanager.principal", yarnPrincipal }); //$NON-NLS-1$//$NON-NLS-2$
+            EHadoopConfProperties.AUTHENTICATION.set(conf, "KERBEROS"); //$NON-NLS-1$
             boolean useKeytab = serviceProperties.isUseKeytab();
             if (useKeytab) {
                 String keytabPrincipal = serviceProperties.getKeytabPrincipal();

@@ -15,7 +15,7 @@
   </HEADER>
 
   <FAMILIES>
-    <FAMILY>Databases/MemSQL</FAMILY>
+    <FAMILY>Databases/DB Specifics/MemSQL</FAMILY>
     <FAMILY>Big Data/MemSQL</FAMILY>
   </FAMILIES>
 

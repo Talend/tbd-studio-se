@@ -167,6 +167,14 @@
             name="elephant-bird-rcfile-4.1.jar"
             mvn_uri="mvn:org.talend.libraries/elephant-bird-rcfile-4.1/6.0.0">
         </libraryNeeded>
+        
+        <!-- GraphFrames libraries -->
+		<libraryNeeded 
+			context="plugin:org.talend.hadoop.distribution.hdinsight360"
+			id="graphframes-0.5.0-spark2.1-s_2.11.jar" 
+			name="graphframes-0.5.0-spark2.1-s_2.11.jar"
+			mvn_uri="mvn:org.talend.libraries/graphframes-0.5.0-spark2.1-s_2.11/6.0.0">
+		</libraryNeeded>
 
         <!-- Spark 2 libraries-->
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="avro-1.7.7" name="avro-1.7.7.jar" mvn_uri="mvn:org.talend.libraries/avro-1.7.7/6.0.0"/>
@@ -239,6 +247,7 @@
              <library id="scala-reflect-2.11.8" />
              <library id="spark-catalyst_2.11-2.1.0.2.6.0.2-76" />
              <library id="spark-sql_2.11-2.1.0.2.6.0.2-76" />
+             <library id="spark-graphx_2.11-2.1.0.2.6.0.2-76" />
         </libraryNeededGroup>
 
         <!-- Spark SQL group MRREQUIRED -->
@@ -287,13 +296,13 @@
              <library id="parquet-hadoop-1.8.1" />
              <library id="parquet-hadoop-bundle-1.6.0" />
         </libraryNeededGroup>
-
+        
         <!-- GraphFrames group MRREQUIRED -->
         <libraryNeededGroup
-            description="GraphFrames libraries for HDInsight 3.4.0 that are MRREQUIRED"
-            id="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-HD_INSIGHT_3_6_0"
-            name="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-HD_INSIGHT_3_6_0">
-            <library id="spark-graphx_2.11-2.1.0.2.6.0.2-76.jar" />
+                description="GraphFrames libraries for HDInsight 3.6.0 that are MRREQUIRED" 
+                id="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-HD_INSIGHT_3_6_0"
+                name="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-HD_INSIGHT_3_6_0">
+             <library id="graphframes-0.5.0-spark2.1-s_2.11.jar" />
         </libraryNeededGroup>
 
         <!-- Hive parquet group -->

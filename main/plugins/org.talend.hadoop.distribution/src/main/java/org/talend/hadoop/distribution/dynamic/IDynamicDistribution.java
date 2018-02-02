@@ -12,14 +12,40 @@
 // ============================================================================
 package org.talend.hadoop.distribution.dynamic;
 
+import java.util.List;
+
+import org.talend.core.runtime.dynamic.IDynamicPlugin;
+import org.talend.designer.maven.aether.IDynamicMonitor;
+import org.talend.hadoop.distribution.dynamic.bean.TemplateBean;
 
 /**
  * DOC cmeng  class global comment. Detailled comment
  */
 public interface IDynamicDistribution {
 
-    public void regist() throws Exception;
+    /**
+     * must return a sorted list
+     */
+    public List<String> getCompatibleVersions(IDynamicMonitor monitor) throws Exception;
 
-    public void unregist() throws Exception;
+    public List<String> getAllVersions(IDynamicMonitor monitor) throws Exception;
+
+    public List<String> getSupportedTemplateIds(IDynamicMonitor monitor) throws Exception;
+
+    public List<TemplateBean> getTemplates(IDynamicMonitor monitor) throws Exception;
+
+    public IDynamicPlugin buildDynamicPlugin(IDynamicMonitor monitor, DynamicConfiguration configuration) throws Exception;
+
+    public List<IDynamicPlugin> getAllBuiltinDynamicPlugins(IDynamicMonitor monitor) throws Exception;
+
+    public String getDistributionName();
+
+    public void register(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception;
+
+    public void unregister(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception;
+
+    public void registerAllBuiltin(IDynamicMonitor monitor) throws Exception;
+
+    public void unregisterAllBuiltin(IDynamicMonitor monitor) throws Exception;
 
 }

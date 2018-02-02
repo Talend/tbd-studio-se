@@ -296,8 +296,8 @@
         <!-- GraphFrames libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr450"
-            id="graphframes-0.3.0-spark1.6-s_2.10.jar"
-            name="graphframes-0.3.0-spark1.6-s_2.10.jar"
+            id="graphframes-0.5.0-spark1.6-s_2.10.jar"
+            name="graphframes-0.5.0-spark1.6-s_2.10.jar"
             mvn_uri="mvn:org.talend.libraries/graphframes-0.3.0-spark1.6-s_2.10/6.0.0">
         </libraryNeeded>
             
@@ -385,7 +385,7 @@
                 description="GraphFrames libraries for EMR 4.5.0 that are MRREQUIRED"
                 id="GRAPHFRAMES-LIB-EMR_4_5_0_LATEST"
                 name="GRAPHFRAMES-LIB-EMR_4_5_0_LATEST">
-             <library id="graphframes-0.3.0-spark1.6-s_2.10.jar" />
+             <library id="graphframes-0.5.0-spark1.6-s_2.10.jar" />
         </libraryNeededGroup>
         
         

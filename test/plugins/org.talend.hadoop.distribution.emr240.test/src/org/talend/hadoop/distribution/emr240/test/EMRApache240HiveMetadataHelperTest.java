@@ -29,12 +29,12 @@ public class EMRApache240HiveMetadataHelperTest extends AbstractVersionTest4Hive
 
     @Test
     public void testHiveMode_EMRApache240_WithAll() {
-        doTestGetHiveModesDisplay(getDistributionVersion(), HIVE_MODE_DISPLAY_ALL);
+        doTestGetHiveModesDisplay(getDistributionVersion(), new String[0]);
     }
 
     @Test
     public void testHiveServer_EMRApache240_Server2_Only() {
-        doTestGetHiveServersDisplay(getDistributionVersion(), HIVE_SERVER_DISPLAY_SERVER2_ONLY);
+        doTestGetHiveServersDisplay(getDistributionVersion(), new String[0]);
     }
 
 }

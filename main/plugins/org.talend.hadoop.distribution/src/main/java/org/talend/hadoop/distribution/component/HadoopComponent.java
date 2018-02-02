@@ -209,4 +209,6 @@ public interface HadoopComponent {
      * @return true if the distribution is activated
      */
     public boolean isActivated();
+    
+    public boolean isDynamicDistribution();
 }

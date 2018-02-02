@@ -31,11 +31,13 @@ import org.osgi.framework.ServiceReference;
 import org.talend.commons.exception.CommonExceptionHandler;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.core.runtime.hd.IDistributionsManager;
+import org.talend.designer.maven.aether.DummyDynamicMonitor;
+import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionFactory;
 import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.constants.Constant;
-import org.talend.hadoop.distribution.dynamic.IDynamicDistribution;
+import org.talend.hadoop.distribution.dynamic.DynamicDistributionManager;
 import org.talend.hadoop.distribution.model.DistributionBean;
 import org.talend.hadoop.distribution.model.DistributionVersion;
 
@@ -53,19 +55,16 @@ public final class DistributionsManager implements IDistributionsManager {
 
     static {
         try {
-            BundleContext bc = getBundleContext();
-            Collection<ServiceReference<IDynamicDistribution>> serviceReferences = bc
-                    .getServiceReferences(IDynamicDistribution.class, null);
-            if (serviceReferences != null && !serviceReferences.isEmpty()) {
-                for (ServiceReference<IDynamicDistribution> sr : serviceReferences) {
-                    IDynamicDistribution service = bc.getService(sr);
-                    try {
-                        service.regist();
-                    } catch (Exception e) {
-                        ExceptionHandler.process(e);
-                    }
-                }
+
+            DynamicDistributionManager dynamicDistributionManager = DynamicDistributionManager.getInstance();
+            try {
+                IDynamicMonitor monitor = new DummyDynamicMonitor();
+                dynamicDistributionManager.registerAll(monitor, true);
+                dynamicDistributionManager.setLoaded(true);
+            } catch (Throwable e) {
+                ExceptionHandler.process(e);
             }
+
         } catch (Exception e) {
             ExceptionHandler.process(e);
         }
@@ -78,10 +77,10 @@ public final class DistributionsManager implements IDistributionsManager {
         this(serviceName, componentType, false);
     }
 
-    public DistributionsManager(String serviceName, ComponentType componentType, boolean registListener) {
+    public DistributionsManager(String serviceName, ComponentType compType, boolean registListener) {
         super();
         this.serviceName = serviceName;
-        this.componentType = componentType;
+        this.componentType = compType;
         this.distributionsMap = new HashMap<String, DistributionBean>();
         if (registListener) {
             this.serviceListener = new ServiceListener() {
@@ -94,13 +93,10 @@ public final class DistributionsManager implements IDistributionsManager {
                             BundleContext bc = getBundleContext();
                             Object obj = bc.getService(sr);
                             if (obj instanceof HadoopComponent) {
-                                Map<String, DistributionBean> map;
-                                if (distributionsMap.isEmpty()) {
-                                    map = new HashMap<>();
-                                } else {
-                                    map = distributionsMap;
+                                if (!distributionsMap.isEmpty()) {
+                                    addDistribution(bc, distributionsMap, componentType,
+                                            (ServiceReference<? extends HadoopComponent>) sr);
                                 }
-                                addDistribution(bc, map, componentType, (ServiceReference<? extends HadoopComponent>) sr);
                             }
                         }
                     } else if (event.getType() == ServiceEvent.UNREGISTERING) {
@@ -109,13 +105,10 @@ public final class DistributionsManager implements IDistributionsManager {
                             BundleContext bc = getBundleContext();
                             Object obj = bc.getService(sr);
                             if (obj instanceof HadoopComponent) {
-                                Map<String, DistributionBean> map;
-                                if (distributionsMap.isEmpty()) {
-                                    map = new HashMap<>();
-                                } else {
-                                    map = distributionsMap;
+                                if (!distributionsMap.isEmpty()) {
+                                    removeDistribution(bc, distributionsMap, componentType,
+                                            (ServiceReference<? extends HadoopComponent>) sr);
                                 }
-                                removeDistribution(bc, map, componentType, (ServiceReference<? extends HadoopComponent>) sr);
                             }
                         }
                     }
@@ -228,14 +221,13 @@ public final class DistributionsManager implements IDistributionsManager {
     private void addDistribution(BundleContext bc, Map<String, DistributionBean> disctributionsMap, ComponentType type,
             ServiceReference<? extends HadoopComponent> sr) {
         HadoopComponent hc = bc.getService(sr);
-        if(hc.isActivated()) {
+        if (hc.isActivated()) {
             final String distribution = hc.getDistribution();
             final String distributionName = hc.getDistributionName();
-    
+
             String key = getKey(hc);
             DistributionBean distributionBean = disctributionsMap.get(key);
             if (distributionBean == null) {
-                clearCache();
                 distributionBean = new DistributionBean(type, distribution, distributionName);
                 disctributionsMap.put(key, distributionBean);
             } else {// check the name and displayName
@@ -244,7 +236,8 @@ public final class DistributionsManager implements IDistributionsManager {
                     return;
                 }
             }
-    
+            clearCache();
+
             final String version = hc.getVersion();
             // if (version!=null){ //sometimes, will be null, like Custom. but still need add the null version.
             DistributionVersion versionBean = new DistributionVersion(hc, distributionBean, version, hc.getVersionName(type));
@@ -252,7 +245,7 @@ public final class DistributionsManager implements IDistributionsManager {
             // special condition for current version
             versionBean.displayCondition = hc.getDisplayCondition(type);
             distributionBean.addVersion(versionBean);
-    
+
             // add all version conditions ?
             distributionBean.addCondition(hc.getDisplayCondition(type));
         }
@@ -279,6 +272,7 @@ public final class DistributionsManager implements IDistributionsManager {
                 // return;
             }
         }
+        clearCache();
 
         final String version = hc.getVersion();
         // if (version!=null){ //sometimes, will be null, like Custom. but still need add the null version.
@@ -292,7 +286,6 @@ public final class DistributionsManager implements IDistributionsManager {
         DistributionVersion[] versions = distributionBean.getVersions();
         if (versions == null || versions.length <= 0) {
             distributionsMap.remove(key);
-            clearCache();
         }
     }
 

@@ -29,11 +29,11 @@ public class MapR401HiveMetadataHelperTest extends AbstractVersionTest4HiveMetad
 
     @Test
     public void testHiveMode_MapR401_WitAll() {
-        doTestGetHiveModesDisplay(getDistributionVersion(), HIVE_MODE_DISPLAY_ALL);
+        doTestGetHiveModesDisplay(getDistributionVersion(), new String[0]);
     }
 
     @Test
     public void testHiveServer_MapR401_WithAll() {
-        doTestGetHiveServersDisplay(getDistributionVersion(), HIVE_SERVER_DISPLAY_ALL);
+        doTestGetHiveServersDisplay(getDistributionVersion(), new String[0]);
     }
 }

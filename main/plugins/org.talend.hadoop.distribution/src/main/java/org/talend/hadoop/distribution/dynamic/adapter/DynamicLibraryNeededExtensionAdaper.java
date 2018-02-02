@@ -53,18 +53,19 @@ public class DynamicLibraryNeededExtensionAdaper extends DynamicExtensionAdapter
     }
 
     public IDynamicExtension adapt(IDynamicMonitor monitor) throws Exception {
+        DynamicDistributionUtils.checkCancelOrNot(monitor);
         resolve();
 
         TemplateBean templateBean = getTemplateBean();
         DynamicConfiguration configuration = getConfiguration();
-        String repository = templateBean.getRepository();
-        configuration.setRemoteRepositoryUrl(repository);
+        String templateId = templateBean.getId();
 
         String distributionName = configuration.getDistribution();
         String id = configuration.getId();
 
         IDynamicExtension libNeededExtension = DynamicFactory.getInstance().createDynamicExtension();
-        libNeededExtension.setExtensionId(DynamicDistributionUtils.getPluginKey(distributionName, id, ATTR_POINT));
+        libNeededExtension.setExtensionId(DynamicDistributionUtils
+                .getExtensionId(DynamicDistributionUtils.getPluginKey(distributionName, templateId, id, ATTR_POINT)));
         libNeededExtension.setExtensionPoint(ATTR_POINT);
 
         List<ModuleBean> modules = templateBean.getModules();
@@ -72,6 +73,7 @@ public class DynamicLibraryNeededExtensionAdaper extends DynamicExtensionAdapter
         if (modules != null) {
             Set<String> registedModules = new LinkedHashSet<>();
             for (ModuleBean moduleBean : modules) {
+                DynamicDistributionUtils.checkCancelOrNot(monitor);
                 DynamicModuleAdapter dynamicModuleAdapter = new DynamicModuleAdapter(templateBean, configuration, moduleBean,
                         dependencyResolver, registedModules);
                 List<IDynamicConfiguration> librariesNeeded = dynamicModuleAdapter.adapt(monitor);
@@ -86,6 +88,7 @@ public class DynamicLibraryNeededExtensionAdaper extends DynamicExtensionAdapter
         List<ModuleGroupBean> moduleGroups = templateBean.getModuleGroups();
         if (moduleGroups != null) {
             for (ModuleGroupBean moduleGroupBean : moduleGroups) {
+                DynamicDistributionUtils.checkCancelOrNot(monitor);
                 DynamicModuleGroupAdapter libNeededGroupAdapter = new DynamicModuleGroupAdapter(templateBean, configuration,
                         moduleGroupBean, moduleBeanAdapterMap);
                 IDynamicConfiguration dynamicModuleGroup = libNeededGroupAdapter.adapt(monitor);

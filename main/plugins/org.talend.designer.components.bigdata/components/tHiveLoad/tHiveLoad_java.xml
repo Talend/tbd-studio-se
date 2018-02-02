@@ -5,7 +5,7 @@
 		<SIGNATURE />
 	</HEADER>
 	<FAMILIES>
-		<FAMILY>Databases/Hive</FAMILY>
+	    <FAMILY>Databases/DB Specifics/Hive</FAMILY>
 		<FAMILY>Big Data/Hive</FAMILY>
 	</FAMILIES>
 	<DOCUMENTATION>

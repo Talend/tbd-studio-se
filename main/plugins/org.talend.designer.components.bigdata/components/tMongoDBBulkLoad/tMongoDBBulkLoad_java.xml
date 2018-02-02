@@ -15,7 +15,7 @@
     	<SIGNATURE/>
   	</HEADER>
 	<FAMILIES>
-		<FAMILY>Databases/MongoDB</FAMILY>
+		<FAMILY>Databases NoSQL/MongoDB</FAMILY>
 		<FAMILY>Big Data/MongoDB</FAMILY>
 	</FAMILIES>
 	<DOCUMENTATION>

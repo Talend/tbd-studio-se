@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<component name="DynamicCDHDistribution">
-  <implementation class="org.talend.hadoop.distribution.cdh5x.DynamicCDHDistribution"/>
+<component name="DynamicCDH5xDistribution">
+  <implementation class="org.talend.hadoop.distribution.cdh5x.DynamicCDH5xDistribution"/>
   <service>
-    <provide interface="org.talend.hadoop.distribution.dynamic.IDynamicDistribution"/>
+    <provide interface="org.talend.hadoop.distribution.dynamic.cdh.IDynamicCDHDistribution"/>
   </service>
 </component>

@@ -42,23 +42,25 @@ public class DynamicClassLoaderExtensionAdaper extends DynamicExtensionAdapter {
     }
 
     public IDynamicExtension adapt(IDynamicMonitor monitor) throws Exception {
+        DynamicDistributionUtils.checkCancelOrNot(monitor);
         resolve();
 
         TemplateBean templateBean = getTemplateBean();
         DynamicConfiguration configuration = getConfiguration();
-        String repository = templateBean.getRepository();
-        configuration.setRemoteRepositoryUrl(repository);
+        String id = configuration.getId();
 
         String distributionName = templateBean.getDistribution();
-        String id = templateBean.getId();
+        String templateId = templateBean.getId();
 
         IDynamicExtension classLoaderExtension = DynamicFactory.getInstance().createDynamicExtension();
-        classLoaderExtension.setExtensionId(DynamicDistributionUtils.getPluginKey(distributionName, id, ATTR_POINT));
+        classLoaderExtension.setExtensionId(DynamicDistributionUtils
+                .getExtensionId(DynamicDistributionUtils.getPluginKey(distributionName, templateId, id, ATTR_POINT)));
         classLoaderExtension.setExtensionPoint(ATTR_POINT);
 
         List<ClassLoaderBean> classLoaders = templateBean.getClassLoaders();
         if (classLoaders != null) {
             for (ClassLoaderBean classLoader : classLoaders) {
+                DynamicDistributionUtils.checkCancelOrNot(monitor);
                 DynamicClassloaderAdapter classLoaderAdapter = new DynamicClassloaderAdapter(templateBean, configuration,
                         classLoader, moduleGroupBeanAdapterMap);
                 IDynamicConfiguration dynamicClassLoader = classLoaderAdapter.adapt(monitor);

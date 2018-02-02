@@ -38,6 +38,7 @@ import org.talend.core.model.properties.ConnectionItem;
 import org.talend.core.model.properties.DatabaseConnectionItem;
 import org.talend.core.model.properties.PropertiesFactory;
 import org.talend.core.model.properties.Property;
+import org.talend.core.model.relationship.RelationshipItemBuilder;
 import org.talend.core.repository.model.ProxyRepositoryFactory;
 import org.talend.core.runtime.CoreRuntimePlugin;
 import org.talend.designer.core.IDesignerCoreService;
@@ -224,6 +225,7 @@ public class HadoopClusterWizard extends CheckLastVersionRepositoryWizard {
                         }
                     }
                 }
+                RelationshipItemBuilder.getInstance().addOrUpdateItem(connectionItem);
             } catch (Exception e) {
                 String detailError = e.toString();
                 new ErrorDialogWidthDetailArea(getShell(), HadoopClusterPlugin.PLUGIN_ID,

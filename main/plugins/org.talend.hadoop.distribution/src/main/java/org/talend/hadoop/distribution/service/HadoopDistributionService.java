@@ -18,11 +18,13 @@ import java.util.Map;
 
 import org.talend.core.hadoop.IHadoopDistributionService;
 import org.talend.core.runtime.hd.IDistributionsManager;
+import org.talend.core.runtime.hd.IDynamicDistributionManager;
 import org.talend.core.runtime.hd.IHDistribution;
 import org.talend.core.runtime.hd.IHDistributionVersion;
 import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.constants.apache.IApacheDistribution;
 import org.talend.hadoop.distribution.constants.emr.IAmazonEMRDistribution;
+import org.talend.hadoop.distribution.dynamic.DynamicDistributionManager;
 import org.talend.hadoop.distribution.helper.DistributionHelper;
 import org.talend.hadoop.distribution.helper.DistributionsManager;
 import org.talend.hadoop.distribution.helper.HadoopDistributionsHelper;
@@ -131,5 +133,10 @@ public class HadoopDistributionService implements IHadoopDistributionService {
             }
         }
         return false;
+    }
+
+    @Override
+    public IDynamicDistributionManager getDynamicDistributionManager() {
+        return DynamicDistributionManager.getInstance();
     }
 }

@@ -39,7 +39,7 @@ public class CDH5xSparkBatchModuleGroup extends AbstractModuleGroup {
 
     private final static ComponentCondition conditionSpark2_1 = new MultiComponentCondition(
             new BasicExpression(SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false"), BooleanOperator.AND, //$NON-NLS-1$
-            new BasicExpression("SUPPORTED_SPARK_VERSION", EqualityOperator.EQ, ESparkVersion.SPARK_2_1.getSparkVersion())); //$NON-NLS-1$
+            new BasicExpression("SUPPORTED_SPARK_VERSION", EqualityOperator.EQ, ESparkVersion.SPARK_2_2.getSparkVersion())); //$NON-NLS-1$
 
     public Set<DistributionModuleGroup> getModuleGroups() throws Exception {
         Set<DistributionModuleGroup> hs = new HashSet<>();

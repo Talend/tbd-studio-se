@@ -25,9 +25,10 @@ import org.talend.hadoop.distribution.dynamic.DynamicConfiguration;
 import org.talend.hadoop.distribution.dynamic.bean.ModuleGroupBean;
 import org.talend.hadoop.distribution.dynamic.bean.TemplateBean;
 import org.talend.hadoop.distribution.dynamic.util.DynamicDistributionUtils;
+import org.talend.hadoop.distribution.i18n.Messages;
 
 /**
- * DOC cmeng  class global comment. Detailled comment
+ * DOC cmeng class global comment. Detailled comment
  */
 public class DynamicModuleGroupAdapter extends AbstractDynamicAdapter {
 
@@ -62,32 +63,37 @@ public class DynamicModuleGroupAdapter extends AbstractDynamicAdapter {
     }
 
     public IDynamicConfiguration adapt(IDynamicMonitor monitor) throws Exception {
+        DynamicDistributionUtils.checkCancelOrNot(monitor);
         resolve();
+        if (monitor != null) {
+            monitor.setTaskName(
+                    Messages.getString("DynamicModuleGroupAdapter.monitor.buildModuleGroup", moduleGroupBean.getId())); //$NON-NLS-1$
+        }
 
         DynamicConfiguration configuration = getConfiguration();
         String distribution = configuration.getDistribution();
         String version = configuration.getVersion();
-        String id = moduleGroupBean.getId();
+        String id = configuration.getId();
+        String moduleGroupId = moduleGroupBean.getId();
         String description = moduleGroupBean.getDescription();
 
-        runtimeId = DynamicDistributionUtils.getPluginKey(distribution, version, id);
+        runtimeId = DynamicDistributionUtils.getPluginKey(distribution, version, id, moduleGroupId);
 
         IDynamicConfiguration dynamicModuleGroup = DynamicFactory.getInstance().createDynamicConfiguration();
 
         dynamicModuleGroup.setConfigurationName(TAG_NAME);
         dynamicModuleGroup.setAttribute(ATTR_ID, runtimeId);
-        dynamicModuleGroup.setAttribute(ATTR_GROUP_TEMPLATE_ID, id);
+        dynamicModuleGroup.setAttribute(ATTR_GROUP_TEMPLATE_ID, moduleGroupId);
         dynamicModuleGroup.setAttribute(ATTR_DESCRIPTION, description);
-        
+
         List<String> modules = moduleGroupBean.getModules();
         Set<String> runtimeModulesSet = new HashSet<>();
         if (modules != null) {
             for (String module : modules) {
                 DynamicModuleAdapter moduleAdapter = moduleBeanAdapterMap.get(module);
                 if (moduleAdapter == null) {
-                    throw new Exception(
-                            "Something wrong when collecting dependencies of " + module + " in "
-                                    + DynamicModuleAdapter.class.getName());
+                    throw new Exception(Messages.getString("DynamicModuleGroupAdapter.exception.noModuleAdapterFound", module, //$NON-NLS-1$
+                            DynamicModuleAdapter.class.getName()));
                 }
                 List<String> runtimeIds = moduleAdapter.getRuntimeIds();
                 if (runtimeIds == null || runtimeIds.isEmpty()) {
@@ -140,7 +146,7 @@ public class DynamicModuleGroupAdapter extends AbstractDynamicAdapter {
         setResolved(true);
     }
 
-    private IDynamicConfiguration createDynamicLibrary(String runtimeId) {
+    public static IDynamicConfiguration createDynamicLibrary(String runtimeId) {
         IDynamicConfiguration dynamicLibrary = DynamicFactory.getInstance().createDynamicConfiguration();
 
         dynamicLibrary.setConfigurationName(TAG_LIBRARY_NAME);

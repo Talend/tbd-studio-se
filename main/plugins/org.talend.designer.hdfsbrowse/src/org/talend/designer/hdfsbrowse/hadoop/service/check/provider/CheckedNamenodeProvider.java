@@ -17,6 +17,7 @@ import java.net.URI;
 import org.apache.commons.lang.StringUtils;
 import org.talend.core.hadoop.EHadoopCategory;
 import org.talend.core.hadoop.HadoopClassLoaderFactory2;
+import org.talend.core.hadoop.conf.EHadoopConfProperties;
 import org.talend.core.utils.ReflectionUtils;
 import org.talend.designer.hdfsbrowse.hadoop.service.HadoopServiceProperties;
 import org.talend.designer.hdfsbrowse.hadoop.service.check.AbstractCheckedServiceProvider;
@@ -50,6 +51,7 @@ public class CheckedNamenodeProvider extends AbstractCheckedServiceProvider {
             if (useKrb) {
                 String nameNodePrincipal = serviceProperties.getPrincipal();
                 ReflectionUtils.invokeMethod(conf, "set", new Object[] { "dfs.namenode.kerberos.principal", nameNodePrincipal }); //$NON-NLS-1$//$NON-NLS-2$
+                EHadoopConfProperties.AUTHENTICATION.set(conf, "KERBEROS"); //$NON-NLS-1$
                 boolean useKeytab = serviceProperties.isUseKeytab();
                 if (useKeytab) {
                     String keytabPrincipal = serviceProperties.getKeytabPrincipal();

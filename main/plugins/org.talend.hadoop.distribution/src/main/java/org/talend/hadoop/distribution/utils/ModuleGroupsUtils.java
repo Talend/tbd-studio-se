@@ -55,6 +55,29 @@ public class ModuleGroupsUtils {
 
         return moduleLibrariesIDs;
     }
+    
+    /**
+     * Get all module's libraries names
+     * 
+     * @param moduleGroupName The name of the module group
+     * @return A list of libraries IDs contained in the module group
+     */
+    public static List<String> getModuleLibrariesNames(String moduleGroupName) {
+
+        List<String> moduleLibrariesNames = new ArrayList<>();
+
+        List<ModuleNeeded> moduleNeededList =
+                ExtensionModuleManager.getInstance().getModuleNeeded(moduleGroupName, true);
+
+        if (moduleNeededList != null && !moduleNeededList.isEmpty()) {
+            for (ModuleNeeded moduleNeeded : moduleNeededList) {
+                String name = moduleNeeded.getModuleName();
+                moduleLibrariesNames.add(name);
+            }
+        }
+
+        return moduleLibrariesNames;
+    }
 
     /**
      * Utility method to create the collection of {@link DistributionModuleGroup} with a condition made of a

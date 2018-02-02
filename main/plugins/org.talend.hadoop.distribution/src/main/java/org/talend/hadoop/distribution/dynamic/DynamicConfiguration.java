@@ -12,6 +12,8 @@
 // ============================================================================
 package org.talend.hadoop.distribution.dynamic;
 
+import org.talend.commons.exception.ExceptionHandler;
+import org.talend.repository.ProjectManager;
 
 /**
  * DOC cmeng  class global comment. Detailled comment
@@ -26,7 +28,7 @@ public class DynamicConfiguration {
 
     private String name;
 
-    private String remoteRepositoryUrl;
+    private String description;
 
     public String getId() {
         return this.id;
@@ -61,11 +63,25 @@ public class DynamicConfiguration {
     }
 
     public String getRemoteRepositoryUrl() {
-        return this.remoteRepositoryUrl;
+        return getPreference().getRepository();
     }
 
-    public void setRemoteRepositoryUrl(String remoteRepositoryUrl) {
-        this.remoteRepositoryUrl = remoteRepositoryUrl;
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public IDynamicDistributionPreference getPreference() {
+        try {
+            return DynamicDistributionManager.getInstance().getDynamicDistributionGroup(getDistribution())
+                    .getDynamicDistributionPreference(ProjectManager.getInstance().getCurrentProject());
+        } catch (Exception e) {
+            ExceptionHandler.process(e);
+        }
+        return null;
     }
 
 }
