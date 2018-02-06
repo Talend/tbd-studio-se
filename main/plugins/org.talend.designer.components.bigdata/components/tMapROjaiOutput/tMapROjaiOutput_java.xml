@@ -306,11 +306,6 @@
 				UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.7.10.jar"
 				REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT MODULE="jackson-core-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0" NAME="jackson-core-asl-1.9.14-TALEND.jar"
-				REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0" NAME="jackson-mapper-asl-1.9.14-TALEND.jar"
-				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND" NAME="jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
