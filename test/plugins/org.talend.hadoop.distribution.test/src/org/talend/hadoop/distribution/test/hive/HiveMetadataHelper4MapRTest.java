@@ -18,6 +18,19 @@ import org.talend.hadoop.distribution.constants.mapr.IMapRDistribution;
  * DOC ggu class global comment. Detailled comment
  */
 public class HiveMetadataHelper4MapRTest extends AbstractDistributionTest4HiveMetadataHelper {
+    
+    private static final String[] VERSIONS_NON_DYNAMIC = new String[] {
+        "MapR 6.0.0(YARN mode)",
+        "MapR 5.2.0(YARN mode)",
+        "MapR 5.1.0(YARN mode)",
+        "MapR 5.0.0(YARN mode)",
+        "MapR 4.1.0(YARN mode)",
+        "MapR 4.0.1(YARN mode)",
+        "MapR 3.1.0",
+        "MapR 3.0.1",
+        "MapR 2.1.3",
+        "MapR 2.1.2",
+        "MapR 2.0.0"};
 
     @Override
     protected String getDistribution() {
@@ -31,8 +44,7 @@ public class HiveMetadataHelper4MapRTest extends AbstractDistributionTest4HiveMe
 
     @Override
     protected String[] getDistributionVersionsDisplay() {
-        return new String[] { "MapR 5.2.0(YARN mode)", "MapR 5.1.0(YARN mode)", "MapR 5.0.0(YARN mode)", "MapR 4.1.0(YARN mode)",
-                "MapR 4.0.1(YARN mode)", "MapR 3.1.0", "MapR 3.0.1", "MapR 2.1.3", "MapR 2.1.2", "MapR 2.0.0" };
+        return VERSIONS_NON_DYNAMIC;
     }
 
 }
