@@ -68,14 +68,6 @@ public class HiveMetadataHelperTest {
         assertFalse(HiveMetadataHelper.doSupportMethod(null, null, false, "doTest"));
         assertFalse(HiveMetadataHelper.doSupportMethod("ABC", null, false, "doTest"));
         assertFalse(HiveMetadataHelper.doSupportMethod("ABC", "V1", false, "doTest"));
-        assertFalse(HiveMetadataHelper.doSupportMethod(IApacheDistribution.DISTRIBUTION_NAME, "V1", false, "doSupportKerberos"));
-        assertFalse(HiveMetadataHelper.doSupportMethod(IApacheDistribution.DISTRIBUTION_NAME, "APACHE_1_0_0", false, "doTest123"));
-    }
-
-    @Test
-    public void testDoSupportMethod_Existed() {
-        assertTrue(HiveMetadataHelper.doSupportMethod(IApacheDistribution.DISTRIBUTION_NAME, "APACHE_1_0_0", false,
-                "doSupportKerberos"));
     }
 
     @Test

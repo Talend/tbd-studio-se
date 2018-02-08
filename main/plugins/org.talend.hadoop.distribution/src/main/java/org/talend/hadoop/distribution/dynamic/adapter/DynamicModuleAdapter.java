@@ -18,6 +18,8 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Priority;
+import org.talend.commons.exception.ExceptionHandler;
 import org.talend.core.model.general.ModuleNeeded;
 import org.talend.core.runtime.dynamic.DynamicFactory;
 import org.talend.core.runtime.dynamic.IDynamicConfiguration;
@@ -27,6 +29,7 @@ import org.talend.designer.maven.aether.node.DependencyNode;
 import org.talend.designer.maven.aether.node.ExclusionNode;
 import org.talend.hadoop.distribution.HadoopDistributionPlugin;
 import org.talend.hadoop.distribution.dynamic.DynamicConfiguration;
+import org.talend.hadoop.distribution.dynamic.VersionNotFoundException;
 import org.talend.hadoop.distribution.dynamic.bean.ExclusionBean;
 import org.talend.hadoop.distribution.dynamic.bean.ModuleBean;
 import org.talend.hadoop.distribution.dynamic.bean.TemplateBean;
@@ -60,6 +63,8 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
     public static final String ATTR_LANGUAGE = "language"; //$NON-NLS-1$
 
     public static final String ATTR_EXCLUDE_DEPENDENCIES = "excludeDependencies"; //$NON-NLS-1$
+
+    public static final String ATTR_TEMP_USE_STUDIO_REPOSITORY = "useStudioRepository"; //$NON-NLS-1$
 
     private ModuleBean moduleBean;
 
@@ -108,6 +113,12 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
             String scope = moduleBean.getScope();
             String classifier = moduleBean.getClassifier();
             String moduleVersion = moduleBean.getVersion();
+            String useStudioRepository = moduleBean.getUseStudioRepository();
+            if (StringUtils.isNotEmpty(useStudioRepository)) {
+                ExceptionHandler.process(
+                        new Exception("Currently useStudioRepository is only supported by STANDARD type, will be ignored"), //$NON-NLS-1$
+                        Priority.WARN);
+            }
             boolean useLatest = Boolean.valueOf(moduleBean.getUseLatest());
 
             List<ExclusionBean> exclusionBeans = moduleBean.getExclusions();
@@ -128,9 +139,13 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
             if (exclusions != null && !exclusions.isEmpty()) {
                 baseNode.setExclusions(exclusions);
             }
-            dependencyNode = dependencyResolver.collectDependencies(baseNode, monitor);
-            librariesNeeded = createLibrariesNeeded(dependencyNode, distribution, hadoopVersion, id, moduleBean, runtimeIds,
-                    templateBean);
+            try {
+                dependencyNode = dependencyResolver.collectDependencies(baseNode, monitor);
+                librariesNeeded = createLibrariesNeeded(dependencyNode, distribution, hadoopVersion, id, moduleBean, runtimeIds,
+                        templateBean);
+            } catch (VersionNotFoundException e) {
+                ExceptionHandler.process(e);
+            }
         } else if (ModuleBean.TYPE_REFERENCE.equalsIgnoreCase(type)) {
             List<ExclusionBean> exclusions = moduleBean.getExclusions();
             if (exclusions != null && !exclusions.isEmpty()) {
@@ -153,21 +168,14 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
             }
 
             String beanId = moduleBean.getId();
-            String jarName = moduleBean.getJarName();
-            String runtimeId = null;
-            ModuleNeeded moduleNeeded = existingModuleMap.get(jarName);
-            if (moduleNeeded != null) {
-                runtimeId = moduleNeeded.getId();
-            } else {
-                runtimeId = DynamicDistributionUtils.getPluginKey(distribution, hadoopVersion, id, beanId);
-                if (!registedModules.contains(runtimeId)) {
-                    IDynamicConfiguration libraryNeeded = createLibraryNeeded(moduleBean);
-                    libraryNeeded.setAttribute(ATTR_ID, runtimeId);
-                    librariesNeeded.add(libraryNeeded);
-                    List<String> registedRuntimeIds = new ArrayList<>();
-                    registedRuntimeIds.add(runtimeId);
-                    registedModules.add(runtimeId);
-                }
+            String runtimeId = DynamicDistributionUtils.getPluginKey(distribution, hadoopVersion, id, beanId);
+            if (!registedModules.contains(runtimeId)) {
+                IDynamicConfiguration libraryNeeded = createLibraryNeeded(moduleBean);
+                libraryNeeded.setAttribute(ATTR_ID, runtimeId);
+                librariesNeeded.add(libraryNeeded);
+                List<String> registedRuntimeIds = new ArrayList<>();
+                registedRuntimeIds.add(runtimeId);
+                registedModules.add(runtimeId);
             }
 
             runtimeIds.add(runtimeId);
@@ -198,6 +206,12 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
                 IDynamicConfiguration libraryNeeded = createLibraryNeeded(node, templateBean);
                 libraryNeeded.setAttribute(ATTR_CONTEXT, bean.getContext());
                 libraryNeeded.setAttribute(ATTR_ID, runtimeId);
+                String useStudioRepository = bean.getUseStudioRepository();
+                if (StringUtils.isNotEmpty(useStudioRepository)) {
+                    libraryNeeded.setAttribute(ATTR_TEMP_USE_STUDIO_REPOSITORY, useStudioRepository);
+                } else {
+                    libraryNeeded.removeAttribute(ATTR_TEMP_USE_STUDIO_REPOSITORY);
+                }
                 librariesNeeded.add(libraryNeeded);
             }
             registedModules.add(registedModulesKey);
@@ -252,6 +266,7 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
             String required = bean.getRequired();
             String uriPath = bean.getUriPath();
             String excludeDependencies = bean.getExcludeDependencies();
+            String useStudioRepository = bean.getUseStudioRepository();
 
             libraryNeeded.setAttribute(ATTR_BUNDLE_ID, bundleID);
             libraryNeeded.setAttribute(ATTR_CONTEXT, context);
@@ -262,10 +277,15 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
             libraryNeeded.setAttribute(ATTR_MVN_URI, mvnUri);
             libraryNeeded.setAttribute(ATTR_REQUIRED, required);
             libraryNeeded.setAttribute(ATTR_URI_PATH, uriPath);
-            if (StringUtils.isNotBlank(excludeDependencies)) {
+            if (StringUtils.isNotEmpty(excludeDependencies)) {
                 libraryNeeded.setAttribute(ATTR_EXCLUDE_DEPENDENCIES, excludeDependencies);
             } else {
                 libraryNeeded.setAttribute(ATTR_EXCLUDE_DEPENDENCIES, Boolean.TRUE.toString());
+            }
+            if (StringUtils.isNotEmpty(useStudioRepository)) {
+                libraryNeeded.setAttribute(ATTR_TEMP_USE_STUDIO_REPOSITORY, useStudioRepository);
+            } else {
+                libraryNeeded.removeAttribute(ATTR_TEMP_USE_STUDIO_REPOSITORY);
             }
         }
 
@@ -313,6 +333,8 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
         String useLatest = (String) DynamicDistributionUtils.calculate(templateBean, moduleBean.getUseLatest());
         String excludeDependencies = (String) DynamicDistributionUtils.calculate(templateBean,
                 moduleBean.getExcludeDependencies());
+        String useStudioRepository = (String) DynamicDistributionUtils.calculate(templateBean,
+                moduleBean.getUseStudioRepository());
 
         moduleBean.setArtifactId(artifactId);
         moduleBean.setBundleID(bundleID);
@@ -331,6 +353,7 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
         moduleBean.setVersion(version);
         moduleBean.setUseLatest(useLatest);
         moduleBean.setExcludeDependencies(excludeDependencies);
+        moduleBean.setUseStudioRepository(useStudioRepository);
 
         setResolved(true);
     }

@@ -121,20 +121,25 @@ public class DynamicPluginAdapter {
                     throw new Exception("Module id is empty!");
                 }
                 moduleMap.put(moduleId, configuration);
-                String mvnUri = (String) configuration.getAttribute(DynamicModuleAdapter.ATTR_MVN_URI);
-                if (StringUtils.isNotEmpty(mvnUri)) {
-                    try {
-                        MavenArtifact ma = MavenUrlHelper.parseMvnUrl(mvnUri);
-                        if (StringUtils.isEmpty(ma.getRepositoryUrl())) {
-                            String newMvnUri = MavenUrlHelper.generateMvnUrl(username, password, repository, ma.getGroupId(),
-                                    ma.getArtifactId(), ma.getVersion(), ma.getType(), ma.getClassifier(), true);
-                            if (StringUtils.isEmpty(newMvnUri)) {
-                                throw new Exception("Convert mvnUri failed! original uri: " + mvnUri);
+                String useStudioRepository = (String) configuration
+                        .getAttribute(DynamicModuleAdapter.ATTR_TEMP_USE_STUDIO_REPOSITORY);
+                configuration.removeAttribute(DynamicModuleAdapter.ATTR_TEMP_USE_STUDIO_REPOSITORY);
+                if (!Boolean.valueOf(useStudioRepository)) {
+                    String mvnUri = (String) configuration.getAttribute(DynamicModuleAdapter.ATTR_MVN_URI);
+                    if (StringUtils.isNotEmpty(mvnUri)) {
+                        try {
+                            MavenArtifact ma = MavenUrlHelper.parseMvnUrl(mvnUri);
+                            if (StringUtils.isEmpty(ma.getRepositoryUrl())) {
+                                String newMvnUri = MavenUrlHelper.generateMvnUrl(username, password, repository, ma.getGroupId(),
+                                        ma.getArtifactId(), ma.getVersion(), ma.getType(), ma.getClassifier(), true);
+                                if (StringUtils.isEmpty(newMvnUri)) {
+                                    throw new Exception("Convert mvnUri failed! original uri: " + mvnUri);
+                                }
+                                configuration.setAttribute(DynamicModuleAdapter.ATTR_MVN_URI, newMvnUri);
                             }
-                            configuration.setAttribute(DynamicModuleAdapter.ATTR_MVN_URI, newMvnUri);
+                        } catch (Exception e) {
+                            ExceptionHandler.process(e);
                         }
-                    } catch (Exception e) {
-                        ExceptionHandler.process(e);
                     }
                 }
             }

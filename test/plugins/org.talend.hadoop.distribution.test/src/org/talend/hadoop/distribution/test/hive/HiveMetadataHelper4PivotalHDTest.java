@@ -19,6 +19,8 @@ import org.talend.hadoop.distribution.test.hive.AbstractDistributionTest4HiveMet
  * DOC ggu class global comment. Detailled comment
  */
 public class HiveMetadataHelper4PivotalHDTest extends AbstractDistributionTest4HiveMetadataHelper {
+    
+    private static final String[] VERSIONS_NON_DYNAMIC = new String[] { "Pivotal HD 2.0", "Pivotal HD 1.0.1" };
 
     @Override
     protected String getDistribution() {
@@ -32,7 +34,7 @@ public class HiveMetadataHelper4PivotalHDTest extends AbstractDistributionTest4H
 
     @Override
     protected String[] getDistributionVersionsDisplay() {
-        return new String[] { "Pivotal HD 2.0", "Pivotal HD 1.0.1" };
+        return VERSIONS_NON_DYNAMIC;
     }
 
 }

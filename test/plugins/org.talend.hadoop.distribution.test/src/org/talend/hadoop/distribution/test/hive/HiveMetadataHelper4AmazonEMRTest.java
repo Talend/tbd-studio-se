@@ -18,7 +18,14 @@ import org.talend.hadoop.distribution.constants.emr.IAmazonEMRDistribution;
  * DOC ggu class global comment. Detailled comment
  */
 public class HiveMetadataHelper4AmazonEMRTest extends AbstractDistributionTest4HiveMetadataHelper {
-
+    
+    private static final String[] VERSIONS_NON_DYNAMIC = new String[] {
+        "EMR 5.8.0 (Hive 2.3.0)",
+        "EMR 5.5.0 (Hive 2.1.1)",
+        "EMR 5.0.0 (Hive 2.1.0)",
+        "EMR 4.6.0 (Hive 1.0.0)",
+        "EMR 4.5.0 (Hive 1.0.0)"};
+    
     @Override
     protected String getDistribution() {
         return IAmazonEMRDistribution.DISTRIBUTION_NAME;
@@ -31,9 +38,7 @@ public class HiveMetadataHelper4AmazonEMRTest extends AbstractDistributionTest4H
 
     @Override
     protected String[] getDistributionVersionsDisplay() {
-        return new String[] { "EMR 5.5.0 (Hive 2.1.1)", "EMR 5.0.0 (Hive 2.1.0)", "EMR 4.6.0 (Hive 1.0.0)",
-                "EMR 4.5.0 (Hive 1.0.0)", "EMR 4.0.0 (Hive 1.0.0)",
-                "Apache 1.0.3 (Hive 0.8.1)" };
+        return VERSIONS_NON_DYNAMIC;
     }
 
 }

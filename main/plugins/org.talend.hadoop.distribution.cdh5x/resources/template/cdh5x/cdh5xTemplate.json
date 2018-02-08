@@ -102,7 +102,8 @@
 			"context": "{properties.context}",
 			"jarName": "azure-common-1.7.1.jar",
 			"mvnUri": "mvn:org.talend.libraries/azure-common-1.7.1/6.0.0",
-			"description": ""
+			"useStudioRepository": "true",
+			"description": "The above useStudioRepository controls where we are going to search the jar, in talend nexus or user defined one in studio"
 		},
 		{
 			"id": "emr-core-2.4.0",
@@ -110,6 +111,7 @@
 			"context": "{properties.context}",
 			"jarName": "emr-core-2.4.0.jar",
 			"mvnUri": "mvn:org.talend.libraries/emr-core-2.4.0/6.0.0",
+			"useStudioRepository": "true",
 			"description": ""
 		},
 		{
@@ -118,6 +120,7 @@
 			"context": "{properties.context}",
 			"jarName": "emr-ddb-hadoop-3.0.0.jar",
 			"mvnUri": "mvn:org.talend.libraries/emr-ddb-hadoop-3.0.0/6.0.0",
+			"useStudioRepository": "true",
 			"description": ""
 		},
 		{
@@ -126,6 +129,7 @@
 			"context": "{properties.context}",
 			"jarName": "httpclient-4.5.2.jar",
 			"mvnUri": "mvn:org.talend.libraries/httpclient-4.5.2/6.0.0",
+			"useStudioRepository": "true",
 			"description": ""
 		},
 		{
@@ -134,6 +138,7 @@
 			"context": "{properties.context}",
 			"jarName": "httpcore-4.4.3.jar",
 			"mvnUri": "mvn:org.talend.libraries/httpcore-4.4.3/6.0.0",
+			"useStudioRepository": "true",
 			"description": ""
 		},
 		{
@@ -159,7 +164,8 @@
 			"type": "STANDARD",
 			"context": "{properties.context}",
 			"jarName": "elephant-bird-rcfile-4.9-patched-hive-1.x.jar",
-			"mvnUri": "mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0"
+			"mvnUri": "mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0",
+			"useStudioRepository": "true"
 		},
 		{
 			"id": "elephant-bird-core",

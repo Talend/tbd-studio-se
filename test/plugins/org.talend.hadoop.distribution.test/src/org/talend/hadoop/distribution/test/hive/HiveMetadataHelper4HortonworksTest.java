@@ -18,6 +18,18 @@ import org.talend.hadoop.distribution.constants.hdp.IHortonworksDistribution;
  * DOC ggu class global comment. Detailled comment
  */
 public class HiveMetadataHelper4HortonworksTest extends AbstractDistributionTest4HiveMetadataHelper {
+    
+    // An exhaustive list of all the versions Studio has been supported, some old versions may have been removed.
+    private static final String[] VERSIONS_NON_DYNAMIC = new String[] {
+        "Hortonworks Data Platform V2.6.0",
+        "Hortonworks Data Platform V2.5.0",
+        "Hortonworks Data Platform V2.4.0",
+        "Hortonworks Data Platform V2.3.2",
+        "Hortonworks Data Platform V2.2.0",
+        "Hortonworks Data Platform V2.1.0(Baikal)",
+        "Hortonworks Data Platform V2.0.0(BigWheel)",
+        "Hortonworks Data Platform V1.3.0(Condor)",
+        "Hortonworks Data Platform V1.2.0(Bimota)"};
 
     @Override
     protected String getDistribution() {
@@ -31,10 +43,7 @@ public class HiveMetadataHelper4HortonworksTest extends AbstractDistributionTest
 
     @Override
     protected String[] getDistributionVersionsDisplay() {
-        return new String[] { "Hortonworks Data Platform V2.6.0", "Hortonworks Data Platform V2.5.0",
-                "Hortonworks Data Platform V2.4.0", "Hortonworks Data Platform V2.3.2", "Hortonworks Data Platform V2.2.0",
-                "Hortonworks Data Platform V2.1.0(Baikal)", "Hortonworks Data Platform V2.0.0(BigWheel)",
-                "Hortonworks Data Platform V1.3.0(Condor)", "Hortonworks Data Platform V1.2.0(Bimota)" };
+        return VERSIONS_NON_DYNAMIC;
     }
 
 }
