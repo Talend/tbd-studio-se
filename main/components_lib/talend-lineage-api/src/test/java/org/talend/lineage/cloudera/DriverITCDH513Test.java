@@ -14,7 +14,10 @@ package org.talend.lineage.cloudera;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.joda.time.Instant;
@@ -40,19 +43,19 @@ public class DriverITCDH513Test {
 
         plugin.registerModels(DriverITCDH513Test.class.getClass().getPackage().getName());
 
-        MyCustomEntity myCustomEntity = new MyCustomEntity(plugin.getNamespace(), "My custom entity 5");
-        myCustomEntity.setDescription("I am a custom entity 3");
+        MyCustomEntity myCustomEntity = new MyCustomEntity(plugin.getNamespace(), "My custom entity 1");
+        myCustomEntity.setDescription("My custom entity 1");
         myCustomEntity.setLink("http://fr.talend.com/");
         myCustomEntity.setIndex(10);
-        myCustomEntity.setSteward("chang");
+        myCustomEntity.setSteward("entity 1 steward");
         myCustomEntity.setStarted(Instant.now());
         myCustomEntity.setEnded((new Instant(Instant.now().toDate().getTime() + 10000)));
 
-        MyCustomEntity myCustomEntity2 = new MyCustomEntity(plugin.getNamespace(), "My custom entity 6");
-        myCustomEntity2.setDescription("I am a custom entity 4");
+        MyCustomEntity myCustomEntity2 = new MyCustomEntity(plugin.getNamespace(), "My custom entity 2");
+        myCustomEntity2.setDescription("My custom entity 2");
         myCustomEntity2.setLink("http://fr.talend.com/");
         myCustomEntity2.setIndex(10);
-        myCustomEntity2.setSteward("chang");
+        myCustomEntity2.setSteward("entity 2 steward");
         myCustomEntity2.setStarted(Instant.now());
         myCustomEntity2.setEnded((new Instant(Instant.now().toDate().getTime() + 10000)));
 
@@ -68,14 +71,16 @@ public class DriverITCDH513Test {
         myCustomEntity2.targetProxies.add(endPointProxy2);
 
         // Write custom entities to cloudera navigator
-        ResultSet results = plugin.write(Arrays.asList(myCustomEntity, myCustomEntity2));
+        ResultSet results = plugin.write((Collection)Arrays.asList(myCustomEntity, myCustomEntity2));
         System.out.println("res = " + results.toString());
         assertFalse(results.hasErrors());
         
         // Read and check custom entities from cloudera navigator
-        MetadataResultIterator metadataResultIterator = new MetadataResultIterator(plugin.getClient(), MetadataType.ENTITIES,
-                "identity:" + myCustomEntity.generateId(), 1, Lists.newArrayList());
-        
+
+       String[] test = new String[1];
+       MyIterableTestCDH513<String> iter = new MyIterable<String>(test);
+       MetadataResultIterator metadataResultIterator = new MetadataResultIterator(plugin.getClient(), MetadataType.ENTITIES,
+                "identity:" + myCustomEntity.generateId(), 1, iter);
         assertTrue(metadataResultIterator.hasNext());
         
         Map<String, Object> result = metadataResultIterator.next();
@@ -84,7 +89,7 @@ public class DriverITCDH513Test {
         assertEquals(myCustomEntity.getName().toString(), result.get("originalName"));
         
         metadataResultIterator = new MetadataResultIterator(plugin.getClient(), MetadataType.ENTITIES,
-                "identity:" + myCustomEntity2.generateId(), 1, Lists.newArrayList());
+                "identity:" + myCustomEntity2.generateId(), 1, iter);
         
         assertTrue(metadataResultIterator.hasNext());
         

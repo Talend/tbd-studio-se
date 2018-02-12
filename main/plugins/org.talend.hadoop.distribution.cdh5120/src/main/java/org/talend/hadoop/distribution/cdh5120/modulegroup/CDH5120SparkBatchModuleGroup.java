@@ -31,6 +31,9 @@ public class CDH5120SparkBatchModuleGroup {
     private final static ComponentCondition condition = new SimpleComponentCondition(
             new BasicExpression(SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false"));
     
+    private final static ComponentCondition conditionNavigator = new SimpleComponentCondition(
+            new BasicExpression(SparkBatchConstant.USE_CLOUDERA_NAVIGATOR, EqualityOperator.EQ, "true"));
+
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         hs.add(new DistributionModuleGroup(CDH5120Constant.SPARK2_MODULE_GROUP.getModuleName(), false, condition));
@@ -38,13 +41,7 @@ public class CDH5120SparkBatchModuleGroup {
         hs.add(new DistributionModuleGroup(CDH5120Constant.HDFS_MODULE_GROUP_SPARK2_2.getModuleName(), false, condition));
         hs.add(new DistributionModuleGroup(CDH5120Constant.HDFS_MODULE_GROUP_COMMON.getModuleName(), false, condition));
         hs.add(new DistributionModuleGroup(CDH5120Constant.MAPREDUCE_MODULE_GROUP.getModuleName(), false, condition));
-		// ComponentCondition conditionUseNavigator = new SimpleComponentCondition(new
-		// BasicExpression(
-		// SparkBatchConstant.USE_CLOUDERA_NAVIGATOR));
-		// hs.add(new
-		// DistributionModuleGroup(CDH5120Constant.TALEND_CLOUDERA_CDH_5_12_NAVIGATOR.getModuleName(),
-		// true,
-		// conditionUseNavigator));
+        hs.add(new DistributionModuleGroup(CDH5120Constant.TALEND_CLOUDERA_CDH_5_12_NAVIGATOR.getModuleName(), false, conditionNavigator));
         return hs;
     }
 

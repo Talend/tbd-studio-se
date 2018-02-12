@@ -72,7 +72,7 @@ public class EntityMapper {
                 TalendEntity parentEntity = mapToParentEntity(navigatorNode);
                 List<TalendEntityChild> childrenEntities = mapToChildrenEntities(navigatorNode.getSchema(),
                         parentEntity.getName());
-                // add target for children Entity
+                // add target and source for children Entity
                 connectChildrenToParent(parentEntity, childrenEntities);
                 connectChildrenToTarget(navigatorNode, childrenEntities);
                 output.addAll(childrenEntities);
@@ -164,8 +164,14 @@ public class EntityMapper {
      * Connect schema entities to their parent entity using CHILD -> PARENT relation
      */
     public void connectChildrenToParent(TalendEntity parentEntity, List<TalendEntityChild> children) {
+        String idParent = parentEntity.generateId();
         for (TalendEntityChild child : children) {
             child.setParent(parentEntity);
+            if (child.getEntityType().equals("TABLE")){
+                child.addSource(idParent);
+            } else {
+                child.addSource(child.getEntityId());
+            }
         }
     }
 
@@ -178,12 +184,13 @@ public class EntityMapper {
     public void connectChildrenToTarget(NavigatorNode navigatorNode, List<TalendEntityChild> children) {
         for (TalendEntityChild talendEntityChild : children) {
             if (CollectionUtils.isEmpty(navigatorNode.getOutputNodes())) {
-                // Output components
+                // input Output components
                 if (ClouderaAPIUtil.isFileInputOutputComponent(navigatorNode.getName())) {
                     // File Output children entities should be linked with a dataset
                     String targetComponentId = GeneratorID.generateDatasetID(getJobId(), navigatorNode.getName());
                     talendEntityChild.addTarget(targetComponentId);
                 } else {
+                	// input components
                     // For Output terminal components (tLogRow, ...)
                     // We connect the children to the component itself
                     // TODO: as soon as the API allow us to do that, remove this link.
@@ -191,6 +198,7 @@ public class EntityMapper {
                     talendEntityChild.addTarget(targetComponentId);
                 }
             } else {
+            	// output components
                 Boolean childConnected = false;
                 for (String outputComponent : navigatorNode.getOutputNodes()) {
                     if (ClouderaAPIUtil.isFieldinComponent(outputComponent, talendEntityChild.getName(), this.navigatorNodes)) {
@@ -201,11 +209,12 @@ public class EntityMapper {
                     }
                 }
                 // TODO: as soon as the API allow us to do that, remove this link.
-                if (!childConnected) {
+                /*if (!childConnected) {
                     // This child is never used after this component, we link it to its parent.
                     String targetComponentId = GeneratorID.generateNodeID(getJobId(), navigatorNode.getName());
                     talendEntityChild.addTarget(targetComponentId);
-                }
+                    //talendEntityChild.addSource(targetComponentId);
+                }*/
             }
         }
     }

@@ -38,6 +38,8 @@ public class TalendEntityChild extends DatasetField {
 
     private List<String>        targetEntitiesId;
 
+    private List<String>        sourceEntitiesId;
+
     private String              entityId;
 
     @MProperty
@@ -45,6 +47,9 @@ public class TalendEntityChild extends DatasetField {
 
     @MRelation(role = RelationRole.PARENT)
     private TalendEntity        parent;
+
+    @MRelation(role = RelationRole.SOURCE)
+    private List<EndPointProxy> sources;
 
     @MRelation(role = RelationRole.TARGET)
     private List<EndPointProxy> targets;
@@ -55,7 +60,9 @@ public class TalendEntityChild extends DatasetField {
         setNamespace(GeneratorID.CLOUDERA_NAVIGATOR_APPLICATION_NAMESPACE);
         setDataType(type);
         this.targetEntitiesId = new ArrayList<String>();
+        this.sourceEntitiesId = new ArrayList<String>();
         this.targets = new ArrayList<EndPointProxy>();
+        this.sources = new ArrayList<EndPointProxy>();
     }
 
     @Override
@@ -90,6 +97,12 @@ public class TalendEntityChild extends DatasetField {
         this.parent = parent;
     }
 
+    public void addSource(String sourceId) {
+        this.sourceEntitiesId.add(sourceId);
+        EndPointProxy endpointProxy = new EndPointProxy(sourceId, SourceType.SDK, EntityType.OPERATION_EXECUTION);
+        this.sources.add(endpointProxy);
+    }
+
     public void addTarget(String targetId) {
         this.targetEntitiesId.add(targetId);
         EndPointProxy endpointProxy = new EndPointProxy(targetId, SourceType.SDK, EntityType.OPERATION_EXECUTION);
@@ -121,7 +134,19 @@ public class TalendEntityChild extends DatasetField {
         this.targetEntitiesId = targetEntitiesId;
     }
 
+    public List<String> getSourceEntitiesId() {
+        return sourceEntitiesId;
+    }
+
+    public void setSourceEntitiesId(List<String> sourceEntitiesId) {
+        this.sourceEntitiesId = sourceEntitiesId;
+    }
+
     public List<EndPointProxy> getTargets() {
         return targets;
+    }
+
+    public List<EndPointProxy> getSources() {
+        return sources;
     }
 }
