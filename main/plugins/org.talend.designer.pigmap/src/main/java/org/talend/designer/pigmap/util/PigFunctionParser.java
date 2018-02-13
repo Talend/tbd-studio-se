@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2017 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -41,13 +41,16 @@ import org.talend.core.GlobalServiceRegister;
 import org.talend.core.ILibraryManagerService;
 import org.talend.core.ILibraryManagerUIService;
 import org.talend.core.model.general.Project;
+import org.talend.core.model.repository.ERepositoryObjectType;
 import org.talend.core.model.repository.ResourceModelUtils;
+import org.talend.core.runtime.process.ITalendProcessJavaProject;
 import org.talend.core.utils.TalendQuoteUtils;
 import org.talend.designer.pigmap.PigMapConstants;
 import org.talend.designer.pigmap.PigMapPlugin;
 import org.talend.designer.rowgenerator.data.AbstractTalendFunctionParser;
 import org.talend.designer.rowgenerator.data.Function;
 import org.talend.designer.rowgenerator.data.FunctionManager;
+import org.talend.designer.runprocess.IRunProcessService;
 import org.talend.repository.ProjectManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -321,5 +324,14 @@ public class PigFunctionParser extends AbstractTalendFunctionParser {
             }
             return false;
         }
+    }
+
+    @Override
+    protected ITalendProcessJavaProject getTalendCodeProject() {
+        if(GlobalServiceRegister.getDefault().isServiceRegistered(IRunProcessService.class)) {
+            IRunProcessService service = (IRunProcessService) GlobalServiceRegister.getDefault().getService(IRunProcessService.class);
+            return service.getTalendCodeJavaProject(ERepositoryObjectType.PIG_UDF);
+        }
+        return null;
     }
 }

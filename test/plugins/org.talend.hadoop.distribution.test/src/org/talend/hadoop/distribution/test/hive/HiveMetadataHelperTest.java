@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2017 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -68,14 +68,6 @@ public class HiveMetadataHelperTest {
         assertFalse(HiveMetadataHelper.doSupportMethod(null, null, false, "doTest"));
         assertFalse(HiveMetadataHelper.doSupportMethod("ABC", null, false, "doTest"));
         assertFalse(HiveMetadataHelper.doSupportMethod("ABC", "V1", false, "doTest"));
-        assertFalse(HiveMetadataHelper.doSupportMethod(IApacheDistribution.DISTRIBUTION_NAME, "V1", false, "doSupportKerberos"));
-        assertFalse(HiveMetadataHelper.doSupportMethod(IApacheDistribution.DISTRIBUTION_NAME, "APACHE_1_0_0", false, "doTest123"));
-    }
-
-    @Test
-    public void testDoSupportMethod_Existed() {
-        assertTrue(HiveMetadataHelper.doSupportMethod(IApacheDistribution.DISTRIBUTION_NAME, "APACHE_1_0_0", false,
-                "doSupportKerberos"));
     }
 
     @Test

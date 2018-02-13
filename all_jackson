@@ -1,0 +1,8 @@
+jackson-annotations
+jackson-core
+jackson-databind
+jackson-jaxrs
+jackson-mapper-asl
+jackson-module-jaxb
+jackson-module-paranamer
+jackson-xc

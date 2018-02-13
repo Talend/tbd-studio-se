@@ -1,4 +1,4 @@
-// Copyright (C) 2006-2017 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
 package org.talend.designer.bigdata.problems;
 
 import java.util.Arrays;

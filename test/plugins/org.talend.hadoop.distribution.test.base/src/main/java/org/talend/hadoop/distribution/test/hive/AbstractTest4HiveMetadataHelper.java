@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2017 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -15,6 +15,8 @@ package org.talend.hadoop.distribution.test.hive;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.hamcrest.CoreMatchers.hasItem;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.Arrays;
 
@@ -33,6 +35,12 @@ public abstract class AbstractTest4HiveMetadataHelper {
         } else {
             assertEquals(baseMessages + " , " + Arrays.asList(expecteds) + "<==>" + Arrays.asList(actuals), expecteds.length,
                     actuals.length);
+        }
+    }
+    
+    protected void doTestArrayContains(String message, String[] target, String[] src) {
+        for (String elem : src) {
+            assertThat(message, Arrays.asList(target), hasItem(elem));
         }
     }
 }

@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2017 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -79,7 +79,7 @@ public abstract class AbstractDistributionTest4HiveMetadataHelper extends Abstra
     @Test
     public void testGetDistributionVersionsDisplay() {
         String[] distributionVersionsDisplay = HiveMetadataHelper.getDistributionVersionsDisplay(getDistribution(), false);
-        doTestArray("Versions are different", getDistributionVersionsDisplay(),
+        doTestArrayContains("Version not found in supported list ", getDistributionVersionsDisplay(),
                 TestUtils.getVersionsDisplayDeprecatedSuffixRemoved(distributionVersionsDisplay));
     }
 

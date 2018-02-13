@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2017 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -76,7 +76,7 @@ public class RetrieveLocalConfsServiceTest {
         Map<String, Map<String, String>> confsMap = confsService.getConfsMap();
         assertFalse(confsMap.containsKey("MAPRDB"));
         // test MR
-        IRetrieveConfsService confsService2 = getServiceWithDistribution(IMapRDistribution.DISTRIBUTION_NAME, "MAPR310");
+        IRetrieveConfsService confsService2 = getServiceWithDistribution(IMapRDistribution.DISTRIBUTION_NAME, "MAPR500");
         confsMap = confsService2.getConfsMap();
         assertTrue(confsMap.containsKey("MAPRDB"));
     }
