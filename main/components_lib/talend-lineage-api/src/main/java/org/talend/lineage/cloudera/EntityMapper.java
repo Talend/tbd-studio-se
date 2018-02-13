@@ -209,12 +209,11 @@ public class EntityMapper {
                     }
                 }
                 // TODO: as soon as the API allow us to do that, remove this link.
-                /*if (!childConnected) {
+                if (!childConnected) {
                     // This child is never used after this component, we link it to its parent.
                     String targetComponentId = GeneratorID.generateNodeID(getJobId(), navigatorNode.getName());
                     talendEntityChild.addTarget(targetComponentId);
-                    //talendEntityChild.addSource(targetComponentId);
-                }*/
+                }
             }
         }
     }
