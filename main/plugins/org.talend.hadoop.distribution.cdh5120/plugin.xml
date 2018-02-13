@@ -638,25 +638,32 @@
         <!-- Navigator libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5120"
-            id="navigator-sdk-client-2.0-SNAPSHOT.jar"
-            name="navigator-sdk-client-2.0-SNAPSHOT.jar"
-            mvn_uri="mvn:org.talend.libraries/navigator-sdk-client-2.0-SNAPSHOT/6.0.0">
+            id="navigator-sdk-client-2.0.jar"
+            name="navigator-sdk-client-2.0.jar"
+            mvn_uri="mvn:org.talend.libraries/navigator-sdk-client-2.0/6.0.0">
         </libraryNeeded>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5120"
-            id="navigator-sdk-model-2.0-SNAPSHOT.jar"
-            name="navigator-sdk-model-2.0-SNAPSHOT.jar"
-            mvn_uri="mvn:org.talend.libraries/navigator-sdk-model-2.0-SNAPSHOT/6.0.0">
+            id="navigator-sdk-model-2.0.jar"
+            name="navigator-sdk-model-2.0.jar"
+            mvn_uri="mvn:org.talend.libraries/navigator-sdk-model-2.0/6.0.0">
         </libraryNeeded>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5120"
-            id="jackson-datatype-joda-2.5.3.jar"
-            name="jackson-datatype-joda-2.5.3.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-datatype-joda-2.5.3/6.0.0">
+            id="jackson-datatype-joda-2.5.4.jar"
+            name="jackson-datatype-joda-2.5.4.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-datatype-joda-2.5.4/6.0.0">
         </libraryNeeded>
         
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5120"
+            id="talend-lineage-api-0.2.0.jar"
+            name="talend-lineage-api-0.2.0.jar"
+            mvn_uri="mvn:org.talend.libraries/talend-lineage-api-0.2.0/6.0.0">
+        </libraryNeeded>
+
         <!-- Kudu libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5120"
@@ -1422,16 +1429,16 @@
                 description="Talend cloudera 5.12 navigator API."
                 id="TALEND_CLOUDERA_CDH_5_12_NAVIGATOR"
                 name="TALEND_CLOUDERA_CDH_5_12_NAVIGATOR"  >
-             <library id="talend-lineage-api-0.1.1" />
-             <library id="navigator-sdk-client-2.0-SNAPSHOT.jar" />
-             <library id="navigator-sdk-model-2.0-SNAPSHOT.jar" />
+             <library id="talend-lineage-api-0.2.0.jar" />
+             <library id="navigator-sdk-client-2.0.jar" />
+             <library id="navigator-sdk-model-2.0.jar" />
              <library id="spring-core-4.0.7.RELEASE"/>
              <library id="spring-web-4.0.7.RELEASE"/>
              <library id="jackson-databind-2.6.5.jar"/>
              <library id="jackson-annotations-2.6.5.jar"/>
              <library id="jackson-core-2.6.5.jar"/>
              <library id="commons-net-2.2.jar"/>
-             <library id="jackson-datatype-joda-2.5.3.jar"/>
+             <library id="jackson-datatype-joda-2.5.4.jar"/>
              <library id="joda-time-2.9.3.jar"/>
         </libraryNeededGroup>
 
