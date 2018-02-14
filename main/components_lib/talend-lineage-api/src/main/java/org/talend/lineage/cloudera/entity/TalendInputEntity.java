@@ -88,7 +88,6 @@ public class TalendInputEntity extends TalendEntity {
     @Override
     public void connectToEntity(List<String> inputs, List<String> outputs) {
     	// set the input
-    	String idIn = GeneratorID.generateNodeID(this.getJobId(), this.getName());
     	this.addPreviousEntity(this.getEntityId());
 
     	for (String output : outputs) {
