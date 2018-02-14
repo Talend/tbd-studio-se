@@ -29,7 +29,8 @@ import com.cloudera.nav.sdk.model.relations.RelationRole;
 /**
  * 
  * Represents Talend schema element (column) as a Cloudera Navigator entity
- *
+ * The new Cloudera navigator API (2.0) impose to connect the entity
+ * to its source and its target.
  */
 @MClass(model = "talend")
 public class TalendEntityChild extends DatasetField {

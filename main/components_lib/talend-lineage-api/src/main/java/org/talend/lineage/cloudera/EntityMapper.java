@@ -162,6 +162,9 @@ public class EntityMapper {
 
     /**
      * Connect schema entities to their parent entity using CHILD -> PARENT relation
+     * Note : Due to limitations in the Cloudera navigator API/SDK we need to connect each {@link #TalendEntityChild} to
+     * the previous {@link #TalendEntity} in the flow in order to make visible in the navigator.
+     * The "Table" entityType represents the TalendEntity type. So we filter on it to show the links in the navigator.
      */
     public void connectChildrenToParent(TalendEntity parentEntity, List<TalendEntityChild> children) {
         String idParent = parentEntity.generateId();

@@ -26,6 +26,10 @@ import com.cloudera.nav.sdk.model.relations.RelationRole;
 
 /**
  * Cloudera navigator entity to represent any Talend input component
+ * The new Cloudera navigator API (2.0) impose to connect the entity
+ * to its source and its target.
+ * The source needs to be connected to the inputEntity itself.
+ * The target needs to be connected to another entity.
  *
  */
 @MClass(model = "talend")
@@ -84,6 +88,7 @@ public class TalendInputEntity extends TalendEntity {
 
     /**
      * Connects a parent entity to its output using SOURCE -> TARGET relations
+     * Connects the source (previous) entity to itself to follow the new Cloudera Navigator API (2.0) 
      */
     @Override
     public void connectToEntity(List<String> inputs, List<String> outputs) {
