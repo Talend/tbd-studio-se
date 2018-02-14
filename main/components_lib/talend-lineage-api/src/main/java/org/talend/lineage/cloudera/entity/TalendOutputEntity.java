@@ -96,7 +96,6 @@ public class TalendOutputEntity extends TalendEntity {
         }
 
         // set the output
-        String idOut = GeneratorID.generateNodeID(this.getJobId(), this.getName());
         this.addNextEntity(this.getEntityId());
     }
 }
