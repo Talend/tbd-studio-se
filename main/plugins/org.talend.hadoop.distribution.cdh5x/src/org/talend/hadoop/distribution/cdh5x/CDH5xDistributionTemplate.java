@@ -469,7 +469,7 @@ public class CDH5xDistributionTemplate extends AbstractDistribution
 
     @Override
     public int getClouderaNavigatorAPIVersion() {
-        return 9;
+        return 12;
     }
 
     @Override
