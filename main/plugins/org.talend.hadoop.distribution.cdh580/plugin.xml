@@ -322,9 +322,9 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh580"
-            id="jackson-databind-2.5.4.redhat-2.jar"
-            name="jackson-databind-2.5.4.redhat-2.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-databind-2.5.4.redhat-2/6.1.0">
+            id="jackson-databind-2.5.4.redhat-2.redhat-2.jar"
+            name="jackson-databind-2.5.4.redhat-2.redhat-2.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-databind-2.5.4.redhat-2.redhat-2/6.1.0">
         </libraryNeeded>
         
         <libraryNeeded
@@ -803,7 +803,7 @@
              <library id="spark-assembly-cdh5.8.1" />
              <library id="jersey-server-1.14.jar" />
              <library id="jersey-servlet-1.14.jar" />
-             <library id="jackson-databind-2.5.4.redhat-2.jar" />
+             <library id="jackson-databind-2.5.4.redhat-2.redhat-2.jar" />
              <library id="jackson-core-2.5.4.jar" />
              <library id="jackson-annotations-2.5.4.jar" />
              <library id="snappy-java-1.0.4.1.jar"/>
@@ -945,7 +945,7 @@
              <library id="navigator-sdk-model-2.0-20160624" />
              <library id="spring-core-4.0.7.RELEASE"/>
              <library id="spring-web-4.0.7.RELEASE"/>
-             <library id="jackson-databind-2.5.4.redhat-2.jar"/>
+             <library id="jackson-databind-2.5.4.redhat-2.redhat-2.jar"/>
              <library id="jackson-annotations-2.5.4.jar"/>
              <library id="jackson-core-2.5.4.jar"/>
              <library id="commons-net-3.1"/>
@@ -962,7 +962,7 @@
             <library id="kite-data-core-1.0.0-cdh5.8.1"/>
             <library id="kite-data-mapreduce-1.0.0-cdh5.8.1.jar"/>
             <library id="kite-hadoop-compatibility-1.0.0-cdh5.8.1"/>
-            <library id="jackson-databind-2.5.4.redhat-2.jar"/>
+            <library id="jackson-databind-2.5.4.redhat-2.redhat-2.jar"/>
             <library id="jackson-core-2.5.4.jar"/>
             <library id="parquet-avro-cdh5.7.0"/>
         </libraryNeededGroup>

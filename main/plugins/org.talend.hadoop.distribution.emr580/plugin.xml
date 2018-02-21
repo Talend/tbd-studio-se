@@ -1966,7 +1966,7 @@
             <library id="kite-data-core-1.0.0.jar"/>
             <library id="kite-data-mapreduce-1.0.0.jar"/>
             <library id="kite-hadoop-compatibility-1.0.0.jar"/>
-            <library id="jackson-databind-2.5.4.redhat-2.jar"/>
+            <library id="jackson-databind-2.5.4.redhat-2.redhat-2.jar"/>
             <library id="jackson-core-2.5.4.jar"/>
             <library id="parquet-hadoop-bundle-1.8.1.jar" />
             <library id="parquet-avro-1.4.1.jar"/>
