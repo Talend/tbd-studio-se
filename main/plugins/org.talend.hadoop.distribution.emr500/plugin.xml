@@ -1052,7 +1052,7 @@
 			 <library id="jackson-jaxrs-2.6.7.jar"/>
 			 <library id="jackson-mapper-asl-2.6.7.jar"/>
 			 <library id="jackson-xc-1.9.13.jar"/>
-         	 <library id="jackson-xc-2.6.5.jar"/>
+         	 <library id="jackson-xc-2.6.7.1.jar"/>
 			 <library id="jackson-databind-2.6.7.1.jar"/>
 			 <library id="jackson-module-paranamer-2.6.7.jar"/> 
 			 <library id="jackson-module-scala_2.11-2.6.7.1.jar"/>
