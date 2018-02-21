@@ -330,9 +330,9 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh570"
-            id="jackson-core-2.2.3.jar"
-            name="jackson-core-2.2.3.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-core-2.2.3/6.1.0">
+            id="jackson-core-2.5.4.jar"
+            name="jackson-core-2.5.4.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-core-2.5.4/6.1.0">
         </libraryNeeded>
         
         <libraryNeeded
@@ -942,7 +942,7 @@
              <library id="spring-web-4.0.7.RELEASE"/>
              <library id="jackson-databind-2.2.3.jar"/>
              <library id="jackson-annotations-2.2.3.jar"/>
-             <library id="jackson-core-2.2.3.jar"/>
+             <library id="jackson-core-2.5.4.jar"/>
              <library id="commons-net-3.1"/>
              <library id="jackson-datatype-joda-2.1.0"/>
              <library id="joda-time-2.5.jar"/>
@@ -958,7 +958,7 @@
             <library id="kite-data-mapreduce-1.0.0-cdh5.7.0.jar"/>
             <library id="kite-hadoop-compatibility-1.0.0-cdh5.7.0.jar"/>
             <library id="jackson-databind-2.2.3.jar"/>
-            <library id="jackson-core-2.2.3.jar"/>
+            <library id="jackson-core-2.5.4.jar"/>
             <library id="parquet-avro-cdh5.7.0"/>
         </libraryNeededGroup>
     </extension>
