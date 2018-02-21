@@ -1049,7 +1049,7 @@
 			 <library id="jackson-core-2.6.7.1.jar"/>
 			 <library id="jackson-core-asl-2.6.7.jar"/>
 			 <library id="jackson-jaxrs-1.9.13.jar"/>
-			 <library id="jackson-jaxrs-2.6.5.jar"/>
+			 <library id="jackson-jaxrs-2.6.7.jar"/>
 			 <library id="jackson-mapper-asl-2.6.5.jar"/>
 			 <library id="jackson-xc-1.9.13.jar"/>
          	 <library id="jackson-xc-2.6.5.jar"/>
