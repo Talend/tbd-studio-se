@@ -323,9 +323,9 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh570"
-            id="jackson-databind-2.2.3.jar"
-            name="jackson-databind-2.2.3.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-databind-2.2.3/6.1.0">
+            id="jackson-databind-2.5.4.redhat-2.jar"
+            name="jackson-databind-2.5.4.redhat-2.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-databind-2.5.4.redhat-2/6.1.0">
         </libraryNeeded>
         
         <libraryNeeded
@@ -940,7 +940,7 @@
              <library id="navigator-sdk-model-2.0-20160624" />
              <library id="spring-core-4.0.7.RELEASE"/>
              <library id="spring-web-4.0.7.RELEASE"/>
-             <library id="jackson-databind-2.2.3.jar"/>
+             <library id="jackson-databind-2.5.4.redhat-2.jar"/>
              <library id="jackson-annotations-2.5.4.jar"/>
              <library id="jackson-core-2.5.4.jar"/>
              <library id="commons-net-3.1"/>
@@ -957,7 +957,7 @@
             <library id="kite-data-core-1.0.0-cdh5.7.0.jar"/>
             <library id="kite-data-mapreduce-1.0.0-cdh5.7.0.jar"/>
             <library id="kite-hadoop-compatibility-1.0.0-cdh5.7.0.jar"/>
-            <library id="jackson-databind-2.2.3.jar"/>
+            <library id="jackson-databind-2.5.4.redhat-2.jar"/>
             <library id="jackson-core-2.5.4.jar"/>
             <library id="parquet-avro-cdh5.7.0"/>
         </libraryNeededGroup>
