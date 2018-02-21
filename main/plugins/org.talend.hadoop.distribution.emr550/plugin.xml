@@ -652,7 +652,7 @@
             context="plugin:org.talend.hadoop.distribution.emr550"
             id="jackson-module-scala_2.11-2.6.5.jar"
             name="jackson-module-scala_2.11-2.6.5.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-module-scala_2.11-2.6.5/6.0.0"/>
+            mvn_uri="mvn:org.talend.libraries/jackson-module-scala_2.11-2.6.7.1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr550"

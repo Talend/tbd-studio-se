@@ -384,7 +384,7 @@
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="antlr-2.7.7.jar" name="antlr-2.7.7.jar" mvn_uri="mvn:org.talend.libraries/antlr-2.7.7/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="spark-sql_2.11-2.0.0.jar" name="spark-sql_2.11-2.0.0.jar" mvn_uri="mvn:org.talend.libraries/spark-sql_2.11-2.0.0/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="jcl-over-slf4j-1.7.16.jar" name="jcl-over-slf4j-1.7.16.jar" mvn_uri="mvn:org.talend.libraries/jcl-over-slf4j-1.7.16/6.0.0"/>
-<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="jackson-module-scala_2.11-2.6.5.jar" name="jackson-module-scala_2.11-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-module-scala_2.11-2.6.5/6.0.0"/>
+<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="jackson-module-scala_2.11-2.6.5.jar" name="jackson-module-scala_2.11-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-module-scala_2.11-2.6.7.1/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="paranamer-2.3.jar" name="paranamer-2.3.jar" mvn_uri="mvn:org.talend.libraries/paranamer-2.3/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="parquet-hadoop-1.7.0.jar" name="parquet-hadoop-1.7.0.jar" mvn_uri="mvn:org.talend.libraries/parquet-hadoop-1.7.0/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="commons-compress-1.4.1.jar" name="commons-compress-1.4.1.jar" mvn_uri="mvn:org.talend.libraries/commons-compress-1.4.1/6.0.0"/>
