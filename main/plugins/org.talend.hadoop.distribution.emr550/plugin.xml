@@ -1116,9 +1116,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr550"
-            id="jackson-annotations-2.6.7.1.jar"
-            name="jackson-annotations-2.6.7.1.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-annotations-2.6.7.1/6.0.0"/>
+            id="jackson-annotations-2.6.7.jar"
+            name="jackson-annotations-2.6.7.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-annotations-2.6.7/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr550"
@@ -1897,7 +1897,7 @@
             <library id="httpcore-4.3.2.jar"/>
             <library id="httpclient-4.3.4.jar"/>
 			<library id="ivy-2.4.0.jar"/>
-			<library id="jackson-annotations-2.6.7.1.jar"/>
+			<library id="jackson-annotations-2.6.7.jar"/>
 			<library id="jackson-core-2.6.7.1.jar"/>
 			<library id="jackson-core-asl-1.9.13.jar"/>
 			<library id="jackson-jaxrs-1.9.13.jar"/>

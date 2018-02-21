@@ -471,7 +471,7 @@
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="jersey-guava-2.22.2.jar" name="jersey-guava-2.22.2.jar" mvn_uri="mvn:org.talend.libraries/jersey-guava-2.22.2/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="snappy-java-1.1.2.4.jar" name="snappy-java-1.1.2.4.jar" mvn_uri="mvn:org.talend.libraries/snappy-java-1.1.2.4/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="javolution-5.5.1.jar" name="javolution-5.5.1.jar" mvn_uri="mvn:org.talend.libraries/javolution-5.5.1/6.0.0"/>
-<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="jackson-annotations-2.6.7.1.jar" name="jackson-annotations-2.6.7.1.jar" mvn_uri="mvn:org.talend.libraries/jackson-annotations-2.6.7.1/6.0.0"/>
+<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="jackson-annotations-2.6.7.jar" name="jackson-annotations-2.6.7.jar" mvn_uri="mvn:org.talend.libraries/jackson-annotations-2.6.7/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="curator-recipes-2.6.0.jar" name="curator-recipes-2.6.0.jar" mvn_uri="mvn:org.talend.libraries/curator-recipes-2.6.0/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="commons-beanutils-1.7.0.jar" name="commons-beanutils-1.7.0.jar" mvn_uri="mvn:org.talend.libraries/commons-beanutils-1.7.0/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="hadoop-mapreduce-client-app-2.7.2-amzn-3.jar" name="hadoop-mapreduce-client-app-2.7.2-amzn-3.jar" mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-app-2.7.2-amzn-3/6.0.0"/>
@@ -1045,7 +1045,7 @@
     		 <library id="httpclient-4.5.2.jar"/>
 			 <library id="httpcore-4.4.4.jar"/>
 			 <library id="ivy-2.4.0.jar"/> 
-			 <library id="jackson-annotations-2.6.7.1.jar"/>
+			 <library id="jackson-annotations-2.6.7.jar"/>
 			 <library id="jackson-core-2.6.7.1.jar"/>
 			 <library id="jackson-core-asl-2.6.5.jar"/>
 			 <library id="jackson-jaxrs-1.9.13.jar"/>
