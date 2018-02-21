@@ -232,7 +232,7 @@
 				</artifactItem>
 				<artifactItem>
 				  <groupId>${talend.groupid}</groupId>
-				  <artifactId>jackson-core-2.3.1</artifactId>
+				  <artifactId>jackson-core-2.5.4</artifactId>
 				  <version>${talend.version.630}</version>
 				</artifactItem>
 				<artifactItem>
