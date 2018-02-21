@@ -19,10 +19,15 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.cdh5120.CDH5120Constant;
 import org.talend.hadoop.distribution.condition.BasicExpression;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
+import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.MRConstant;
+import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 
 public class CDH5120MapReduceModuleGroup {
+
+    private final static ComponentCondition conditionNavigator = new SimpleComponentCondition(
+            new BasicExpression(SparkBatchConstant.USE_CLOUDERA_NAVIGATOR, EqualityOperator.EQ, "true"));
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
@@ -30,13 +35,7 @@ public class CDH5120MapReduceModuleGroup {
         hs.add(new DistributionModuleGroup(CDH5120Constant.MAPREDUCE_MODULE_GROUP.getModuleName()));
         hs.add(new DistributionModuleGroup(CDH5120Constant.MAPREDUCE_PARQUET_MODULE_GROUP.getModuleName()));
         hs.add(new DistributionModuleGroup(CDH5120Constant.MAPREDUCE_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName(), true, null));
-		// ComponentCondition conditionUseNavigator = new SimpleComponentCondition(new
-		// BasicExpression(
-		// MRConstant.USE_CLOUDERA_NAVIGATOR));
-		// hs.add(new
-		// DistributionModuleGroup(CDH5120Constant.TALEND_CLOUDERA_CDH_5_12_NAVIGATOR.getModuleName(),
-		// true,
-		// conditionUseNavigator));
+        hs.add(new DistributionModuleGroup(CDH5120Constant.TALEND_CLOUDERA_CDH_5_12_NAVIGATOR.getModuleName(), false, conditionNavigator));
         return hs;
     }
 

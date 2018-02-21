@@ -49,9 +49,13 @@ public class TalendOutputEntityTest {
     public void testConnectToEntity() {
         TalendOutputEntity toe = new TalendOutputEntity("job", "component1");
         assertEquals(0, toe.getPreviousEntitiesId().size());
+        assertEquals(0, toe.getNextEntitiesId().size());
         toe.connectToEntity(Arrays.asList("component2", "component3"), Arrays.asList("component4", "component5"));
+        assertEquals(1, toe.getNextEntitiesId().size());
         assertEquals(2, toe.getPreviousEntitiesId().size());
         assertEquals(2, toe.getSourceProxies().size());
+        assertEquals(1, toe.getTargetProxies().size());
+
 
         assertEquals(
                 "[" + GeneratorID.generateNodeID("job", "component2") + ", " + GeneratorID.generateNodeID("job", "component3")

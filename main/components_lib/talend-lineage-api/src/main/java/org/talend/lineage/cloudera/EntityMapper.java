@@ -72,6 +72,7 @@ public class EntityMapper {
                 TalendEntity parentEntity = mapToParentEntity(navigatorNode);
                 List<TalendEntityChild> childrenEntities = mapToChildrenEntities(navigatorNode.getSchema(),
                         parentEntity.getName());
+                // add target and source for children Entity
                 connectChildrenToParent(parentEntity, childrenEntities);
                 connectChildrenToTarget(navigatorNode, childrenEntities);
                 output.addAll(childrenEntities);
@@ -161,10 +162,19 @@ public class EntityMapper {
 
     /**
      * Connect schema entities to their parent entity using CHILD -> PARENT relation
+     * Note : Due to limitations in the Cloudera navigator API/SDK we need to connect each {@link #TalendEntityChild} to
+     * the previous {@link #TalendEntity} in the flow in order to make visible in the navigator.
+     * The "Table" entityType represents the TalendEntity type. So we filter on it to show the links in the navigator.
      */
     public void connectChildrenToParent(TalendEntity parentEntity, List<TalendEntityChild> children) {
+        String idParent = parentEntity.generateId();
         for (TalendEntityChild child : children) {
             child.setParent(parentEntity);
+            if (child.getEntityType().equals("TABLE")){
+                child.addSource(idParent);
+            } else {
+                child.addSource(child.getEntityId());
+            }
         }
     }
 
@@ -177,12 +187,13 @@ public class EntityMapper {
     public void connectChildrenToTarget(NavigatorNode navigatorNode, List<TalendEntityChild> children) {
         for (TalendEntityChild talendEntityChild : children) {
             if (CollectionUtils.isEmpty(navigatorNode.getOutputNodes())) {
-                // Output components
+                // input Output components
                 if (ClouderaAPIUtil.isFileInputOutputComponent(navigatorNode.getName())) {
                     // File Output children entities should be linked with a dataset
                     String targetComponentId = GeneratorID.generateDatasetID(getJobId(), navigatorNode.getName());
                     talendEntityChild.addTarget(targetComponentId);
                 } else {
+                	// input components
                     // For Output terminal components (tLogRow, ...)
                     // We connect the children to the component itself
                     // TODO: as soon as the API allow us to do that, remove this link.
@@ -190,6 +201,7 @@ public class EntityMapper {
                     talendEntityChild.addTarget(targetComponentId);
                 }
             } else {
+            	// output components
                 Boolean childConnected = false;
                 for (String outputComponent : navigatorNode.getOutputNodes()) {
                     if (ClouderaAPIUtil.isFieldinComponent(outputComponent, talendEntityChild.getName(), this.navigatorNodes)) {

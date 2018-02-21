@@ -26,6 +26,10 @@ import com.cloudera.nav.sdk.model.relations.RelationRole;
 
 /**
  * Cloudera navigator entity to represent any Talend input component
+ * The new Cloudera navigator API (2.0) impose to connect the entity
+ * to its source and its target.
+ * The source needs to be connected to the inputEntity itself.
+ * The target needs to be connected to another entity.
  *
  */
 @MClass(model = "talend")
@@ -33,19 +37,36 @@ public class TalendInputEntity extends TalendEntity {
 
     private List<String>        nextEntitiesId;
 
+    private List<String>        previousEntitiesId;
+
+    @MRelation(role = RelationRole.SOURCE)
+    private List<EndPointProxy> sourceProxies;
+
     @MRelation(role = RelationRole.TARGET)
     private List<EndPointProxy> targetProxies;
 
     public TalendInputEntity(String jobId, String componentName) {
         super(jobId, componentName);
         targetProxies = new ArrayList<EndPointProxy>();
+        sourceProxies = new ArrayList<EndPointProxy>();
         nextEntitiesId = new ArrayList<String>();
+        previousEntitiesId = new ArrayList<String>();
     }
 
     public void addNextEntity(String entityId) {
         this.nextEntitiesId.add(entityId);
         EndPointProxy endpointProxy = new EndPointProxy(entityId, SourceType.SDK, EntityType.OPERATION_EXECUTION);
         this.targetProxies.add(endpointProxy);
+    }
+
+    public void addPreviousEntity(String entityId) {
+        this.previousEntitiesId.add(entityId);
+        EndPointProxy endpointProxy = new EndPointProxy(entityId, SourceType.SDK, EntityType.OPERATION_EXECUTION);
+        this.sourceProxies.add(endpointProxy);
+    }
+
+    public List<String> getPreviousEntitiesId() {
+        return previousEntitiesId;
     }
 
     public List<String> getNextEntitiesId() {
@@ -56,6 +77,10 @@ public class TalendInputEntity extends TalendEntity {
         return targetProxies;
     }
 
+    public List<EndPointProxy> getSourceProxies() {
+        return sourceProxies;
+    }
+
     @Override
     public String toString() {
         return getName() + " (" + getEntityId() + ")" + " --->" + this.nextEntitiesId;
@@ -63,15 +88,18 @@ public class TalendInputEntity extends TalendEntity {
 
     /**
      * Connects a parent entity to its output using SOURCE -> TARGET relations
+     * Connects the source (previous) entity to itself to follow the new Cloudera Navigator API (2.0) 
      */
     @Override
     public void connectToEntity(List<String> inputs, List<String> outputs) {
-        for (String output : outputs) {
-            // generate the id of the component to connect to
-            String id = GeneratorID.generateNodeID(this.getJobId(), output);
-            this.addNextEntity(id);
-        }
+    	// set the input
+    	this.addPreviousEntity(this.getEntityId());
 
+    	for (String output : outputs) {
+    		// generate the id of the component to connect to
+    		String id = GeneratorID.generateNodeID(this.getJobId(), output);
+    		this.addNextEntity(id);
+	     }
     }
 
 }

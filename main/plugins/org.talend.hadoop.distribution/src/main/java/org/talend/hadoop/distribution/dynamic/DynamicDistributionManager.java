@@ -593,4 +593,9 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
         }
         return dynamicDistributionPreferencePaths;
     }
+
+    @Override
+    public String getDynamicDistributionCacheVersion() {
+        return HadoopDistributionsHelper.getCacheVersion();
+    }
 }

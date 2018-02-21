@@ -105,7 +105,7 @@ imports="
 <%                
                 }else if(("java.util.Date").equals(typeToGenerate)) {
 %>
-                    sbValue_<%=cid%>.append("<%=counter==1?"":","%>'" + FormatterUtils.format_Date(<%=incomingConnName%>.<%=column.getName()%>, "yyyy-MM-dd") + "'");
+                    sbValue_<%=cid%>.append("<%=counter==1?"":","%>'" + FormatterUtils.format_Date(<%=incomingConnName%>.<%=column.getName()%>, <%=column.getColumn().getPattern()%>) + "'");
 <%
                 } else {
 %>

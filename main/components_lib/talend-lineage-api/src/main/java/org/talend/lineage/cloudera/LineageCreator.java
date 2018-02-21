@@ -229,5 +229,4 @@ public class LineageCreator extends AbstractLineageCreator implements ILineageCr
         }
 
     }
-
 }

@@ -635,6 +635,35 @@
             mvn_uri="mvn:org.talend.libraries/spark-streaming-kinesis-asl_2.11-2.2.0/6.0.0">
         </libraryNeeded>
         
+        <!-- Navigator libraries -->
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5120"
+            id="navigator-sdk-client-2.0.jar"
+            name="navigator-sdk-client-2.0.jar"
+            mvn_uri="mvn:org.talend.libraries/navigator-sdk-client-2.0/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5120"
+            id="navigator-sdk-model-2.0.jar"
+            name="navigator-sdk-model-2.0.jar"
+            mvn_uri="mvn:org.talend.libraries/navigator-sdk-model-2.0/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5120"
+            id="jackson-datatype-joda-2.5.4.jar"
+            name="jackson-datatype-joda-2.5.4.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-datatype-joda-2.5.4/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5120"
+            id="talend-lineage-api-0.2.0.jar"
+            name="talend-lineage-api-0.2.0.jar"
+            mvn_uri="mvn:org.talend.libraries/talend-lineage-api-0.2.0/6.0.0">
+        </libraryNeeded>
+
         <!-- Kudu libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5120"
@@ -879,11 +908,17 @@
              <library id="commons-io-2.4.jar"/>
              <library id="commons-codec-1.9.jar" />
              <library id="commons-httpclient-3.0.1.jar"/>
+             <library id="commons-net-2.2.jar"/>
              <library id="htrace-core-3.2.0-incubating.jar" />
-             <library id="jackson-mapper-asl-1.9.13.jar" />
-             <library id="jackson-core-asl-1.9.14-TALEND4-TALEND.jar" />
+             <library id="jackson-annotations-2.6.7.jar"/>
+	     <library id="jackson-core-2.6.7.jar"/>
+             <library id="jackson-databind-2.6.7.1.jar"/>
+       	     <library id="jackson-module-paranamer-2.6.7.jar"/>
+             <library id="jackson-mapper-asl-1.9.14-TALEND.jar" />
+             <library id="jackson-core-asl-1.9.14-TALEND.jar" />
              <library id="jackson-jaxrs-1.9.13.jar"/>
              <library id="jackson-xc-1.9.13.jar"/>
+             <library id="joda-time-2.9.3.jar"/>
              <library id="jersey-client-1.9.jar"/>
         </libraryNeededGroup>
 
@@ -1394,11 +1429,12 @@
                 description="Talend cloudera 5.12 navigator API."
                 id="TALEND_CLOUDERA_CDH_5_12_NAVIGATOR"
                 name="TALEND_CLOUDERA_CDH_5_12_NAVIGATOR"  >
-             <library id="talend-lineage-api-0.1.0" />
-             <library id="navigator-sdk-client-2.0-20160624" />
-             <library id="navigator-sdk-model-2.0-20160624" />
+             <library id="talend-lineage-api-0.2.0.jar" />
+             <library id="navigator-sdk-client-2.0.jar" />
+             <library id="navigator-sdk-model-2.0.jar" />
              <library id="spring-core-4.0.7.RELEASE"/>
              <library id="spring-web-4.0.7.RELEASE"/>
+<<<<<<< HEAD
              <library id="jackson-databind-2.5.4.redhat-2.redhat-2.jar"/>
              <library id="jackson-annotations-2.5.4"/>
              <library id="jackson-core-2.5.4.jar"/>
@@ -1406,6 +1442,14 @@
              <library id="jackson-datatype-joda-2.5.4"/>
              <library id="joda-time-2.5.jar"/>
              <library id="httpclient-4.5.2.jar"/>
+=======
+             <library id="jackson-databind-2.6.5.jar"/>
+             <library id="jackson-annotations-2.6.5.jar"/>
+             <library id="jackson-core-2.6.5.jar"/>
+             <library id="commons-net-2.2.jar"/>
+             <library id="jackson-datatype-joda-2.5.4.jar"/>
+             <library id="joda-time-2.9.3.jar"/>
+>>>>>>> 43c9838572c5df8da61f0f0dd550b27a03150531
         </libraryNeededGroup>
 
         <!-- Sqoop Parquet group -->

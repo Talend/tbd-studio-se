@@ -293,6 +293,24 @@
 			]
 		},
 		{
+			"id": "cloudera-navigator",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "com.cloudera.navigator",
+			"artifactId": "navigator-sdk-client",
+			"version": "2.0",
+			"classifier": "",
+			"description": ""
+		},
+{
+			"id": "talend-lineage-api",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "talend-lineage-api-0.2.0.jar",
+			"mvnUri": "mvn:org.talend.libraries/talend-lineage-api-0.2.0/6.0.0",
+			"useStudioRepository": "true"
+		},
+		{
 			"id": "hadoop-mapreduce-client-core",
 			"type": "BASE",
 			"context": "{properties.context}",
@@ -1279,7 +1297,9 @@
 			"id": "TALEND_CLOUDERA_NAVIGATOR-DYNAMIC",
 			"description": "",
 			"modules": [
-				"hadoop-client"
+				"hadoop-client",
+				"cloudera-navigator",
+				"talend-lineage-api"
 			]
 		},
 		{

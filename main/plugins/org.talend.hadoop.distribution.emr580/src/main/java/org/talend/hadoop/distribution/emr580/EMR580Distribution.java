@@ -43,6 +43,7 @@ import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.emr.IAmazonEMRDistribution;
 import org.talend.hadoop.distribution.emr580.modulegroup.node.spark.EMR580SparkDynamoDBNodeModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkbatch.EMR580GraphFramesNodeModuleGroup;
+import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkbatch.EMR580SparkBatchAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkbatch.EMR580SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkbatch.EMR580SparkBatchS3NodeModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkstreaming.EMR580SparkStreamingFlumeNodeModuleGroup;
@@ -214,6 +215,14 @@ public class EMR580Distribution extends AbstractDistribution implements
         		EMR580SparkStreamingFlumeNodeModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.FLUME_OUTPUT_COMPONENT),
         		EMR580SparkStreamingFlumeNodeModuleGroup.getModuleGroups(distribution, version));
+        
+        // Azure
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
+                SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT), EMR580SparkBatchAzureNodeModuleGroup
+                .getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), EMR580SparkBatchAzureNodeModuleGroup
+                .getModuleGroups(distribution, version));
         
 		return result;
 	}
@@ -456,6 +465,11 @@ public class EMR580Distribution extends AbstractDistribution implements
 
     @Override
     public boolean doImportDynamoDBDependencies() {
+        return true;
+    }
+    
+    @Override
+    public boolean doSupportAzureBlobStorage() {
         return true;
     }
 }

@@ -399,7 +399,7 @@ public class CDH5120Distribution extends AbstractDistribution implements ICloude
 
     @Override
     public boolean doSupportClouderaNavigator() {
-        return false;
+        return true;
     }
 
     @Override
@@ -451,7 +451,7 @@ public class CDH5120Distribution extends AbstractDistribution implements ICloude
 
     @Override
     public int getClouderaNavigatorAPIVersion() {
-        return 9;
+        return 12;
     }
 
     @Override
