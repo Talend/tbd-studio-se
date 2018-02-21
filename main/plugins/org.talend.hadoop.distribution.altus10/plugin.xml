@@ -82,7 +82,7 @@
              <library id="htrace-core4-4.0.1-incubating.jar" />
              <library id="servlet-api-2.5.jar"/>
              <library id="jackson-mapper-asl-1.8.8.jar" />
-             <library id="jackson-core-asl-1.8.8.jar" />
+             <library id="jackson-core-asl-1.9.14-TALEND.jar" />
         </libraryNeededGroup>
         
         <libraryNeededGroup
@@ -170,7 +170,7 @@
             <library id="ivy-2.4.0.jar"/>
             <library id="jackson-annotations-2.6.7.jar"/>
             <library id="jackson-core-2.6.7.1.jar"/>
-            <library id="jackson-core-asl-1.8.8.jar"/>
+            <library id="jackson-core-asl-1.9.14-TALEND.jar"/>
             <library id="jackson-databind-2.6.7.1.jar"/>
             <library id="jackson-jaxrs-1.8.8.jar"/>
             <library id="jackson-mapper-asl-1.8.8.jar"/>
@@ -312,7 +312,7 @@
              <library id="commons-httpclient-3.0.1.jar"/>
              <library id="htrace-core-3.2.0-incubating.jar" />
              <library id="jackson-mapper-asl-1.8.8.jar" />
-             <library id="jackson-core-asl-1.8.8.jar" />
+             <library id="jackson-core-asl-1.9.14-TALEND.jar" />
              <library id="jackson-jaxrs-1.8.8.jar"/>
              <library id="jackson-xc-1.8.8.jar"/>
              <library id="jersey-client-1.9.jar"/>
