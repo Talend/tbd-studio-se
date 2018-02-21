@@ -9,7 +9,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/commons-lang3-3.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/hbase-0.90.1-cdh3u0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-core-asl-1.9.14-TALEND.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jackson-mapper-asl-1.9.13.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jackson-mapper-asl-1.9.14-TALEND.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/log4j-1.2.16.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/zookeeper-3.3.3-cdh3u0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/hadoop-core-1.0.0.jar"/>

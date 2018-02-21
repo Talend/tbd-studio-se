@@ -32,25 +32,25 @@ public class MapR301ClassLoaderTest extends AbstractTest4ClassLoaderProvider {
 
     @Test
     public void testHive1Standalone() {
-        String libsStr = "hadoop-0.20.2-dev-core-mapr301.jar;log4j-1.2.16.jar;hive-exec-0.11-mapr.jar;hive-jdbc-0.11-mapr.jar;hive-metastore-0.11-mapr.jar;hive-service-0.11-mapr.jar;libfb303-0.9.0.jar;libthrift-0.9.0.jar;slf4j-api-1.6.1.jar;slf4j-log4j12-1.6.1.jar;commons-logging-1.0.4.jar;commons-logging-api-1.0.4.jar;jdo2-api-2.3-ec.jar;antlr-runtime-3.4.jar;datanucleus-connectionpool-2.0.3.jar;datanucleus-enhancer-2.0.3.jar;datanucleus-core-2.0.3.jar;datanucleus-rdbms-2.0.3.jar;derby-10.4.2.0.jar;maprfs-1.0.3-mapr-3.0.1.jar;zookeeper-3.3.6.jar;commons-lang-2.4.jar;jackson-mapper-asl-1.9.13.jar;jackson-core-asl-1.9.14-TALEND.jar;commons-dbcp-1.4.jar;commons-pool-1.5.4.jar;guava-13.0.1.jar";
+        String libsStr = "hadoop-0.20.2-dev-core-mapr301.jar;log4j-1.2.16.jar;hive-exec-0.11-mapr.jar;hive-jdbc-0.11-mapr.jar;hive-metastore-0.11-mapr.jar;hive-service-0.11-mapr.jar;libfb303-0.9.0.jar;libthrift-0.9.0.jar;slf4j-api-1.6.1.jar;slf4j-log4j12-1.6.1.jar;commons-logging-1.0.4.jar;commons-logging-api-1.0.4.jar;jdo2-api-2.3-ec.jar;antlr-runtime-3.4.jar;datanucleus-connectionpool-2.0.3.jar;datanucleus-enhancer-2.0.3.jar;datanucleus-core-2.0.3.jar;datanucleus-rdbms-2.0.3.jar;derby-10.4.2.0.jar;maprfs-1.0.3-mapr-3.0.1.jar;zookeeper-3.3.6.jar;commons-lang-2.4.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-core-asl-1.9.14-TALEND.jar;commons-dbcp-1.4.jar;commons-pool-1.5.4.jar;guava-13.0.1.jar";
         doTestHiveServerWithMode(HiveServerVersionInfo.HIVE_SERVER_1, HiveModeInfo.STANDALONE, libsStr);
     }
 
     @Test
     public void testHive1Embedded() {
-        String libsStr = "hadoop-0.20.2-dev-core-mapr301.jar;log4j-1.2.16.jar;hive-exec-0.11-mapr.jar;hive-jdbc-0.11-mapr.jar;hive-metastore-0.11-mapr.jar;hive-service-0.11-mapr.jar;libfb303-0.9.0.jar;libthrift-0.9.0.jar;slf4j-api-1.6.1.jar;slf4j-log4j12-1.6.1.jar;commons-logging-1.0.4.jar;commons-logging-api-1.0.4.jar;jdo2-api-2.3-ec.jar;antlr-runtime-3.4.jar;datanucleus-connectionpool-2.0.3.jar;datanucleus-enhancer-2.0.3.jar;datanucleus-core-2.0.3.jar;datanucleus-rdbms-2.0.3.jar;derby-10.4.2.0.jar;maprfs-1.0.3-mapr-3.0.1.jar;zookeeper-3.3.6.jar;commons-lang-2.4.jar;jackson-mapper-asl-1.9.13.jar;jackson-core-asl-1.9.14-TALEND.jar;commons-dbcp-1.4.jar;commons-pool-1.5.4.jar;guava-13.0.1.jar";
+        String libsStr = "hadoop-0.20.2-dev-core-mapr301.jar;log4j-1.2.16.jar;hive-exec-0.11-mapr.jar;hive-jdbc-0.11-mapr.jar;hive-metastore-0.11-mapr.jar;hive-service-0.11-mapr.jar;libfb303-0.9.0.jar;libthrift-0.9.0.jar;slf4j-api-1.6.1.jar;slf4j-log4j12-1.6.1.jar;commons-logging-1.0.4.jar;commons-logging-api-1.0.4.jar;jdo2-api-2.3-ec.jar;antlr-runtime-3.4.jar;datanucleus-connectionpool-2.0.3.jar;datanucleus-enhancer-2.0.3.jar;datanucleus-core-2.0.3.jar;datanucleus-rdbms-2.0.3.jar;derby-10.4.2.0.jar;maprfs-1.0.3-mapr-3.0.1.jar;zookeeper-3.3.6.jar;commons-lang-2.4.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-core-asl-1.9.14-TALEND.jar;commons-dbcp-1.4.jar;commons-pool-1.5.4.jar;guava-13.0.1.jar";
         doTestHiveServerWithMode(HiveServerVersionInfo.HIVE_SERVER_1, HiveModeInfo.EMBEDDED, libsStr);
     }
 
     @Test
     public void testHive2Standalone() {
-        String libsStr = "hadoop-0.20.2-dev-core-mapr301.jar;log4j-1.2.16.jar;hive-exec-0.11-mapr.jar;hive-jdbc-0.11-mapr.jar;hive-metastore-0.11-mapr.jar;hive-service-0.11-mapr.jar;libfb303-0.9.0.jar;libthrift-0.9.0.jar;slf4j-api-1.6.1.jar;slf4j-log4j12-1.6.1.jar;commons-logging-1.0.4.jar;commons-logging-api-1.0.4.jar;jdo2-api-2.3-ec.jar;antlr-runtime-3.4.jar;datanucleus-connectionpool-2.0.3.jar;datanucleus-enhancer-2.0.3.jar;datanucleus-core-2.0.3.jar;datanucleus-rdbms-2.0.3.jar;derby-10.4.2.0.jar;maprfs-1.0.3-mapr-3.0.1.jar;zookeeper-3.3.6.jar;commons-lang-2.4.jar;jackson-mapper-asl-1.9.13.jar;jackson-core-asl-1.9.14-TALEND.jar;commons-dbcp-1.4.jar;commons-pool-1.5.4.jar;guava-13.0.1.jar";
+        String libsStr = "hadoop-0.20.2-dev-core-mapr301.jar;log4j-1.2.16.jar;hive-exec-0.11-mapr.jar;hive-jdbc-0.11-mapr.jar;hive-metastore-0.11-mapr.jar;hive-service-0.11-mapr.jar;libfb303-0.9.0.jar;libthrift-0.9.0.jar;slf4j-api-1.6.1.jar;slf4j-log4j12-1.6.1.jar;commons-logging-1.0.4.jar;commons-logging-api-1.0.4.jar;jdo2-api-2.3-ec.jar;antlr-runtime-3.4.jar;datanucleus-connectionpool-2.0.3.jar;datanucleus-enhancer-2.0.3.jar;datanucleus-core-2.0.3.jar;datanucleus-rdbms-2.0.3.jar;derby-10.4.2.0.jar;maprfs-1.0.3-mapr-3.0.1.jar;zookeeper-3.3.6.jar;commons-lang-2.4.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-core-asl-1.9.14-TALEND.jar;commons-dbcp-1.4.jar;commons-pool-1.5.4.jar;guava-13.0.1.jar";
         doTestHiveServerWithMode(HiveServerVersionInfo.HIVE_SERVER_2, HiveModeInfo.STANDALONE, libsStr);
     }
 
     @Test
     public void testHive2Embedded() {
-        String libsStr = "hadoop-0.20.2-dev-core-mapr301.jar;log4j-1.2.16.jar;hive-exec-0.11-mapr.jar;hive-jdbc-0.11-mapr.jar;hive-metastore-0.11-mapr.jar;hive-service-0.11-mapr.jar;libfb303-0.9.0.jar;libthrift-0.9.0.jar;slf4j-api-1.6.1.jar;slf4j-log4j12-1.6.1.jar;commons-logging-1.0.4.jar;commons-logging-api-1.0.4.jar;jdo2-api-2.3-ec.jar;antlr-runtime-3.4.jar;datanucleus-connectionpool-2.0.3.jar;datanucleus-enhancer-2.0.3.jar;datanucleus-core-2.0.3.jar;datanucleus-rdbms-2.0.3.jar;derby-10.4.2.0.jar;maprfs-1.0.3-mapr-3.0.1.jar;zookeeper-3.3.6.jar;commons-lang-2.4.jar;jackson-mapper-asl-1.9.13.jar;jackson-core-asl-1.9.14-TALEND.jar;commons-dbcp-1.4.jar;commons-pool-1.5.4.jar;guava-13.0.1.jar";
+        String libsStr = "hadoop-0.20.2-dev-core-mapr301.jar;log4j-1.2.16.jar;hive-exec-0.11-mapr.jar;hive-jdbc-0.11-mapr.jar;hive-metastore-0.11-mapr.jar;hive-service-0.11-mapr.jar;libfb303-0.9.0.jar;libthrift-0.9.0.jar;slf4j-api-1.6.1.jar;slf4j-log4j12-1.6.1.jar;commons-logging-1.0.4.jar;commons-logging-api-1.0.4.jar;jdo2-api-2.3-ec.jar;antlr-runtime-3.4.jar;datanucleus-connectionpool-2.0.3.jar;datanucleus-enhancer-2.0.3.jar;datanucleus-core-2.0.3.jar;datanucleus-rdbms-2.0.3.jar;derby-10.4.2.0.jar;maprfs-1.0.3-mapr-3.0.1.jar;zookeeper-3.3.6.jar;commons-lang-2.4.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-core-asl-1.9.14-TALEND.jar;commons-dbcp-1.4.jar;commons-pool-1.5.4.jar;guava-13.0.1.jar";
         doTestHiveServerWithMode(HiveServerVersionInfo.HIVE_SERVER_2, HiveModeInfo.EMBEDDED, libsStr);
     }
 
@@ -62,13 +62,13 @@ public class MapR301ClassLoaderTest extends AbstractTest4ClassLoaderProvider {
 
     @Test
     public void testMapReduce() {
-        String libsStr = "hadoop-0.20.2-dev-core-mapr301.jar;maprfs-1.0.3-mapr-3.0.1.jar;zookeeper-3.3.6.jar;guava-13.0.1.jar;commons-logging-1.1.1.jar;commons-cli-1.2.jar;commons-codec-1.5.jar;jackson-mapper-asl-1.9.13.jar;jackson-core-asl-1.9.14-TALEND.jar;slf4j-api-1.6.1.jar;slf4j-log4j12-1.6.1.jar;log4j-1.2.16.jar;commons-lang-2.5.jar";
+        String libsStr = "hadoop-0.20.2-dev-core-mapr301.jar;maprfs-1.0.3-mapr-3.0.1.jar;zookeeper-3.3.6.jar;guava-13.0.1.jar;commons-logging-1.1.1.jar;commons-cli-1.2.jar;commons-codec-1.5.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-core-asl-1.9.14-TALEND.jar;slf4j-api-1.6.1.jar;slf4j-log4j12-1.6.1.jar;log4j-1.2.16.jar;commons-lang-2.5.jar";
         doTestClassLoader(EHadoopCategory.MAP_REDUCE.getName(), libsStr);
     }
 
     @Test
     public void testHDFS() {
-        String libsStr = "hadoop-0.20.2-dev-core-mapr301.jar;commons-logging-1.0.4.jar;maprfs-1.0.3-mapr-3.0.1.jar;zookeeper-3.3.6.jar;guava-13.0.1.jar;libprotodefs.jar;protobuf-java-2.4.1.jar;avro-1.5.4.jar;jackson-mapper-asl-1.9.13.jar;jackson-core-asl-1.9.14-TALEND.jar;log4j-1.2.17.jar";
+        String libsStr = "hadoop-0.20.2-dev-core-mapr301.jar;commons-logging-1.0.4.jar;maprfs-1.0.3-mapr-3.0.1.jar;zookeeper-3.3.6.jar;guava-13.0.1.jar;libprotodefs.jar;protobuf-java-2.4.1.jar;avro-1.5.4.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-core-asl-1.9.14-TALEND.jar;log4j-1.2.17.jar";
         doTestClassLoader(EHadoopCategory.HDFS.getName(), libsStr);
     }
 
