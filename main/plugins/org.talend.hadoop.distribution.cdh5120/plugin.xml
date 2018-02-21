@@ -392,9 +392,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5120"
-            id="jackson-databind-2.5.4.redhat-2.redhat-2.jar"
-            name="jackson-databind-2.5.4.redhat-2.redhat-2.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-databind-2.5.4.redhat-2.redhat-2/6.1.0">
+            id="jackson-databind-2.5.4.redhat-2.jar"
+            name="jackson-databind-2.5.4.redhat-2.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-databind-2.5.4.redhat-2/6.1.0">
         </libraryNeeded>
 
         <libraryNeeded
@@ -1435,7 +1435,7 @@
              <library id="spring-core-4.0.7.RELEASE"/>
              <library id="spring-web-4.0.7.RELEASE"/>
 <<<<<<< HEAD
-             <library id="jackson-databind-2.5.4.redhat-2.redhat-2.jar"/>
+             <library id="jackson-databind-2.5.4.redhat-2.jar"/>
              <library id="jackson-annotations-2.5.4"/>
              <library id="jackson-core-2.5.4.jar"/>
              <library id="commons-net-3.1"/>
@@ -1460,7 +1460,7 @@
             <library id="kite-data-core-1.0.0-cdh5.12.1.jar"/>
             <library id="kite-data-mapreduce-1.0.0-cdh5.12.1.jar"/>
             <library id="kite-hadoop-compatibility-1.0.0-cdh5.12.1.jar"/>
-            <library id="jackson-databind-2.5.4.redhat-2.redhat-2.jar"/>
+            <library id="jackson-databind-2.5.4.redhat-2.jar"/>
             <library id="jackson-core-2.5.4.jar"/>
             <library id="parquet-avro-1.5.0-cdh5.12.1.jar"/>
         </libraryNeededGroup>
