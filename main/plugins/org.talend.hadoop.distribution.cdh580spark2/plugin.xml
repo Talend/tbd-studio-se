@@ -364,9 +364,9 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh580spark2"
-            id="jackson-annotations-2.2.3.jar"
-            name="jackson-annotations-2.2.3.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-annotations-2.2.3/6.1.0">
+            id="jackson-annotations-2.5.4.jar"
+            name="jackson-annotations-2.5.4.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-annotations-2.5.4/6.1.0">
         </libraryNeeded>
         
         <libraryNeeded
@@ -900,7 +900,7 @@
              <library id="spring-core-4.0.7.RELEASE"/>
              <library id="spring-web-4.0.7.RELEASE"/>
              <library id="jackson-databind-2.2.3.jar"/>
-             <library id="jackson-annotations-2.2.3.jar"/>
+             <library id="jackson-annotations-2.5.4.jar"/>
              <library id="jackson-core-2.5.4.jar"/>
              <library id="commons-net-3.1"/>
              <library id="jackson-datatype-joda-2.1.0"/>

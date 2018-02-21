@@ -327,7 +327,7 @@
              <library id="jersey-servlet-1.14.jar" />
              <library id="jackson-databind-2.2.3.jar" />
              <library id="jackson-core-2.5.4.jar" />
-             <library id="jackson-annotations-2.2.3.jar" />
+             <library id="jackson-annotations-2.5.4.jar" />
              <library id="snappy-java-1.0.5.jar" />
              <library id="parquet-hadoop-bundle-cdh5.5.0"/>
              <library id="avro-hdinsight340" />
