@@ -467,9 +467,9 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
-            id="jackson-databind-2.3.1"
-            name="jackson-databind-2.3.1.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-databind-2.3.1/6.3.0">
+            id="jackson-databind-2.5.4.redhat-2"
+            name="jackson-databind-2.5.4.redhat-2.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-databind-2.5.4.redhat-2/6.3.0">
         </libraryNeeded>
         
         <libraryNeeded
@@ -1162,7 +1162,7 @@
             <library id="kite-data-core-1.0.0-HDP-25"/>
             <library id="kite-data-mapreduce-1.0.0-HDP-25"/>
             <library id="kite-hadoop-compatibility-1.0.0-HDP-25"/>
-            <library id="jackson-databind-2.3.1.jar"/>
+            <library id="jackson-databind-2.5.4.redhat-2.jar"/>
             <library id="jackson-core-2.5.4.jar"/>
             <library id="parquet-hadoop-bundle-1.8.1.jar"/>
             <library id="parquet-avro-1.4.1.jar"/>
