@@ -801,9 +801,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
-            id="jackson-module-scala_2.11-2.6.6.jar"
-            name="jackson-module-scala_2.11-2.6.6.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-module-scala_2.11-2.6.6/6.0.0"/>
+            id="jackson-module-scala_2.11-2.6.7.1.jar"
+            name="jackson-module-scala_2.11-2.6.7.1.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-module-scala_2.11-2.6.7.1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
@@ -2112,7 +2112,7 @@
 			<library id="jackson-jaxrs-1.9.13.jar"/>
 			<library id="jackson-mapper-asl-1.9.13.jar"/>
 			<library id="jackson-module-paranamer-2.6.7.jar"/>
-			<library id="jackson-module-scala_2.11-2.6.6.jar"/>
+			<library id="jackson-module-scala_2.11-2.6.7.1.jar"/>
 			<library id="jackson-xc-1.9.13.jar"/>
 			<library id="janino-3.0.0.jar"/>
 			<library id="java-xmlbuilder-1.0.jar"/>
