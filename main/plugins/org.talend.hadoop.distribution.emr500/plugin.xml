@@ -389,7 +389,7 @@
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="parquet-hadoop-1.7.0.jar" name="parquet-hadoop-1.7.0.jar" mvn_uri="mvn:org.talend.libraries/parquet-hadoop-1.7.0/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="commons-compress-1.4.1.jar" name="commons-compress-1.4.1.jar" mvn_uri="mvn:org.talend.libraries/commons-compress-1.4.1/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="jackson-module-paranamer-2.6.5.jar" name="jackson-module-paranamer-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-module-paranamer-2.6.5/6.0.0"/>
-<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="jackson-core-2.6.5.jar" name="jackson-core-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-core-2.6.5/6.0.0"/>
+<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="jackson-core-2.6.7.1.jar" name="jackson-core-2.6.7.1.jar" mvn_uri="mvn:org.talend.libraries/jackson-core-2.6.7.1/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="compress-lzf-1.0.3.jar" name="compress-lzf-1.0.3.jar" mvn_uri="mvn:org.talend.libraries/compress-lzf-1.0.3/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="stax-api-1.0.1.jar" name="stax-api-1.0.1.jar" mvn_uri="mvn:org.talend.libraries/stax-api-1.0.1/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="chill-java-0.8.0.jar" name="chill-java-0.8.0.jar" mvn_uri="mvn:org.talend.libraries/chill-java-0.8.0/6.0.0"/>
@@ -1046,7 +1046,7 @@
 			 <library id="httpcore-4.4.4.jar"/>
 			 <library id="ivy-2.4.0.jar"/> 
 			 <library id="jackson-annotations-2.6.5.jar"/>
-			 <library id="jackson-core-2.6.5.jar"/>
+			 <library id="jackson-core-2.6.7.1.jar"/>
 			 <library id="jackson-core-asl-2.6.5.jar"/>
 			 <library id="jackson-jaxrs-1.9.13.jar"/>
 			 <library id="jackson-jaxrs-2.6.5.jar"/>
