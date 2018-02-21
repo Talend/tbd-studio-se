@@ -69,10 +69,10 @@
 
         <libraryNeeded
             context="plugin:org.talend.libraries.jackson"
-            id="jackson-core-2.8.4.jar"
-            name="jackson-core-2.8.4.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-core-2.8.4/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-2.8.4.jar">
+            id="jackson-core-2.8.9.jar"
+            name="jackson-core-2.8.9.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-core-2.8.9/6.0.0"
+            uripath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-2.8.9.jar">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.jackson"
@@ -393,7 +393,7 @@
             <library id="javax.ws.rs-api-2.0-m10.jar" />
             <library id="wsdl4j-1.6.3.jar" />
             <library id="azure-storage-5.0.0.jar" />
-            <library id="jackson-core-2.8.4.jar" />
+            <library id="jackson-core-2.8.9.jar" />
             <library id="jackson-databind-2.8.4.jar" />
         	<library id="jackson-core-asl-1.9.13" />
         	<library id="commons-logging-1.1.3" />
