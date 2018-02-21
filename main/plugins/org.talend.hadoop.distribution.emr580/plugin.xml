@@ -1327,9 +1327,9 @@
             
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
-            id="jackson-dataformat-cbor-2.6.6.jar"
-            name="jackson-dataformat-cbor-2.6.6.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-dataformat-cbor-2.6.6/6.0.0"/>
+            id="jackson-dataformat-cbor-2.6.7.jar"
+            name="jackson-dataformat-cbor-2.6.7.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-dataformat-cbor-2.6.7/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
@@ -2108,7 +2108,7 @@
 			<library id="jackson-core-2.6.7.1.jar"/>
 			<library id="jackson-core-asl-1.9.14-TALEND3.jar"/>
 			<library id="jackson-databind-2.6.7.1.jar"/>
-			<library id="jackson-dataformat-cbor-2.6.6"/>
+			<library id="jackson-dataformat-cbor-2.6.7"/>
 			<library id="jackson-jaxrs-1.9.13.jar"/>
 			<library id="jackson-mapper-asl-1.9.13.jar"/>
 			<library id="jackson-module-paranamer-2.6.6.jar"/>
