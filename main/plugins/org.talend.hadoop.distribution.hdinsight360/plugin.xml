@@ -95,7 +95,7 @@
         <libraryNeeded
         	context="plugin:org.talend.hadoop.distribution.hdinsight360"
         	id="jackson-core-asl-1.9.14-TALEND3"
-        	name="jackson-core-asl-1.9.14-TALEND3.jar"
+        	name="jackson-core-asl-1.9.14-TALEND.jar"
         	mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND3/6.0.0"/>
 
         <!-- Hive libraries -->
