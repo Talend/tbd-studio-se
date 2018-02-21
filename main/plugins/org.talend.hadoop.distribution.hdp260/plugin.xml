@@ -731,7 +731,7 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="jackson-annotations-2.6.7.jar" name="jackson-annotations-2.6.7.jar" mvn_uri="mvn:org.talend.libraries/jackson-annotations-2.6.7/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="jackson-core-2.6.7.1.jar" name="jackson-core-2.6.7.1.jar" mvn_uri="mvn:org.talend.libraries/jackson-core-2.6.7.1/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="jackson-core-asl-1.9.13.jar" name="jackson-core-asl-1.9.13.jar" mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.13/6.4.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="jackson-databind-2.6.5.jar" name="jackson-databind-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-databind-2.6.5/6.4.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="jackson-databind-2.6.7.1.jar" name="jackson-databind-2.6.7.1.jar" mvn_uri="mvn:org.talend.libraries/jackson-databind-2.6.7.1/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="jackson-dataformat-cbor-2.6.5.jar" name="jackson-dataformat-cbor-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-dataformat-cbor-2.6.5/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="jackson-jaxrs-1.9.13.jar" name="jackson-jaxrs-1.9.13.jar" mvn_uri="mvn:org.talend.libraries/jackson-jaxrs-1.9.13/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="jackson-mapper-asl-1.9.13.jar" name="jackson-mapper-asl-1.9.13.jar" mvn_uri="mvn:org.talend.libraries/jackson-mapper-asl-1.9.13/6.4.0"/>
@@ -1361,7 +1361,7 @@
             <library id="jackson-annotations-2.6.7.jar" />
             <library id="jackson-core-2.6.7.1.jar" />
             <library id="jackson-core-asl-1.9.13.jar" />
-            <library id="jackson-databind-2.6.5.jar" />
+            <library id="jackson-databind-2.6.7.1.jar" />
             <library id="jackson-dataformat-cbor-2.6.5.jar" />
             <library id="jackson-jaxrs-1.9.13.jar" />
             <library id="jackson-mapper-asl-1.9.13.jar" />
