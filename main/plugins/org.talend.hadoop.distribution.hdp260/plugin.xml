@@ -735,7 +735,7 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="jackson-dataformat-cbor-2.6.7.jar" name="jackson-dataformat-cbor-2.6.7.jar" mvn_uri="mvn:org.talend.libraries/jackson-dataformat-cbor-2.6.7/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="jackson-jaxrs-1.9.13.jar" name="jackson-jaxrs-1.9.13.jar" mvn_uri="mvn:org.talend.libraries/jackson-jaxrs-1.9.13/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="jackson-mapper-asl-1.9.13.jar" name="jackson-mapper-asl-1.9.13.jar" mvn_uri="mvn:org.talend.libraries/jackson-mapper-asl-1.9.13/6.4.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="jackson-module-paranamer-2.6.5.jar" name="jackson-module-paranamer-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-module-paranamer-2.6.5/6.4.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="jackson-module-paranamer-2.6.7.jar" name="jackson-module-paranamer-2.6.7.jar" mvn_uri="mvn:org.talend.libraries/jackson-module-paranamer-2.6.7/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="jackson-module-scala_2.11-2.6.5.jar" name="jackson-module-scala_2.11-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-module-scala_2.11-2.6.5/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="jackson-xc-1.9.13.jar" name="jackson-xc-1.9.13.jar" mvn_uri="mvn:org.talend.libraries/jackson-xc-1.9.13/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="janino-3.0.0.jar" name="janino-3.0.0.jar" mvn_uri="mvn:org.talend.libraries/janino-3.0.0/6.4.0"/>
@@ -1365,7 +1365,7 @@
             <library id="jackson-dataformat-cbor-2.6.7.jar" />
             <library id="jackson-jaxrs-1.9.13.jar" />
             <library id="jackson-mapper-asl-1.9.13.jar" />
-            <library id="jackson-module-paranamer-2.6.5.jar" />
+            <library id="jackson-module-paranamer-2.6.7.jar" />
             <library id="jackson-module-scala_2.11-2.6.5.jar" />
             <library id="jackson-xc-1.9.13.jar" />
             <library id="janino-3.0.0.jar" />

@@ -703,7 +703,7 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5120" id="jackson-core-2.6.7.1.jar" name="jackson-core-2.6.7.1.jar" mvn_uri="mvn:org.talend.libraries/jackson-core-2.6.7.1/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5120" id="jackson-databind-2.6.7.1.jar" name="jackson-databind-2.6.7.1.jar" mvn_uri="mvn:org.talend.libraries/jackson-databind-2.6.7.1/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5120" id="jackson-jaxrs-1.9.13.jar" name="jackson-jaxrs-1.9.13.jar" mvn_uri="mvn:org.talend.libraries/jackson-jaxrs-1.9.13/6.0.0"/>
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5120" id="jackson-module-paranamer-2.6.5.jar" name="jackson-module-paranamer-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-module-paranamer-2.6.5/6.0.0"/>
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5120" id="jackson-module-paranamer-2.6.7.jar" name="jackson-module-paranamer-2.6.7.jar" mvn_uri="mvn:org.talend.libraries/jackson-module-paranamer-2.6.7/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5120" id="jackson-module-scala_2.11-2.6.5.jar" name="jackson-module-scala_2.11-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-module-scala_2.11-2.6.5/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5120" id="jackson-xc-1.8.8.jar" name="jackson-xc-1.8.8.jar" mvn_uri="mvn:org.talend.libraries/jackson-xc-1.8.8/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5120" id="janino-3.0.0.jar" name="janino-3.0.0.jar" mvn_uri="mvn:org.talend.libraries/janino-3.0.0/6.0.0"/>
@@ -1134,7 +1134,7 @@
 			<library id="jackson-core-2.6.7.1.jar"/>
 			<library id="jackson-databind-2.6.7.1.jar"/>
 			<library id="jackson-jaxrs-1.9.13.jar"/>
-			<library id="jackson-module-paranamer-2.6.5.jar"/>
+			<library id="jackson-module-paranamer-2.6.7.jar"/>
 			<library id="jackson-module-scala_2.11-2.6.5.jar"/>
 			<library id="jackson-xc-1.8.8.jar"/>
 			<library id="janino-3.0.0.jar"/>

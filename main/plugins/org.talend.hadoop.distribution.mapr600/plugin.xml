@@ -461,7 +461,7 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" id="jackson-annotations-2.6.7.jar" name="jackson-annotations-2.6.7.jar" mvn_uri="mvn:org.talend.libraries/jackson-annotations-2.6.7/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" id="jackson-core-2.6.7.1.jar" name="jackson-core-2.6.7.1.jar" mvn_uri="mvn:org.talend.libraries/jackson-core-2.6.7.1/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" id="jackson-databind-2.6.7.1.jar" name="jackson-databind-2.6.7.1.jar" mvn_uri="mvn:org.talend.libraries/jackson-databind-2.6.7.1/6.0.0"/>
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" id="jackson-module-paranamer-2.6.5.jar" name="jackson-module-paranamer-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-module-paranamer-2.6.5/6.0.0"/>
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" id="jackson-module-paranamer-2.6.7.jar" name="jackson-module-paranamer-2.6.7.jar" mvn_uri="mvn:org.talend.libraries/jackson-module-paranamer-2.6.7/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" id="jackson-module-scala_2.11-2.6.5.jar" name="jackson-module-scala_2.11-2.6.5.jar" mvn_uri="mvn:org.talend.libraries/jackson-module-scala_2.11-2.6.5/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" id="janino-3.0.0.jar" name="janino-3.0.0.jar" mvn_uri="mvn:org.talend.libraries/janino-3.0.0/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" id="javassist-3.18.1-GA.jar" name="javassist-3.18.1-GA.jar" mvn_uri="mvn:org.talend.libraries/javassist-3.18.1-GA/6.0.0"/>
@@ -772,7 +772,7 @@
 			<library id="jackson-annotations-2.6.7.jar"/>
 			<library id="jackson-core-2.6.7.1.jar"/>
 			<library id="jackson-databind-2.6.7.1.jar"/>
-			<library id="jackson-module-paranamer-2.6.5.jar"/>
+			<library id="jackson-module-paranamer-2.6.7.jar"/>
 			<library id="jackson-module-scala_2.11-2.6.5.jar"/>
 			<library id="janino-3.0.0.jar"/>
 			<library id="javassist-3.18.1-GA.jar"/>
