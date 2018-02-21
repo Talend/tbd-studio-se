@@ -1434,22 +1434,12 @@
              <library id="navigator-sdk-model-2.0.jar" />
              <library id="spring-core-4.0.7.RELEASE"/>
              <library id="spring-web-4.0.7.RELEASE"/>
-<<<<<<< HEAD
-             <library id="jackson-databind-2.5.4.redhat-2.jar"/>
-             <library id="jackson-annotations-2.5.4"/>
-             <library id="jackson-core-2.5.4.jar"/>
-             <library id="commons-net-3.1"/>
-             <library id="jackson-datatype-joda-2.5.4"/>
-             <library id="joda-time-2.5.jar"/>
-             <library id="httpclient-4.5.2.jar"/>
-=======
-             <library id="jackson-databind-2.6.5.jar"/>
-             <library id="jackson-annotations-2.6.5.jar"/>
-             <library id="jackson-core-2.6.5.jar"/>
+             <library id="jackson-databind-2.6.7.1.jar"/>
+             <library id="jackson-annotations-2.6.7.jar"/>
+             <library id="jackson-core-2.6.7.1.jar"/>
              <library id="commons-net-2.2.jar"/>
              <library id="jackson-datatype-joda-2.5.4.jar"/>
              <library id="joda-time-2.9.3.jar"/>
->>>>>>> 43c9838572c5df8da61f0f0dd550b27a03150531
         </libraryNeededGroup>
 
         <!-- Sqoop Parquet group -->
