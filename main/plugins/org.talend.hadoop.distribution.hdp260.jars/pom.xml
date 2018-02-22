@@ -11,6 +11,7 @@
   <packaging>eclipse-plugin</packaging>
   <properties>
     <talend.groupid>org.talend.libraries</talend.groupid>
+    <talend.version.600>6.0.0</talend.version.600>
     <talend.version.630>6.3.0</talend.version.630>
   </properties>
   <build>
