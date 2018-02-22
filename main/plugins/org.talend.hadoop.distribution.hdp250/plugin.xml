@@ -476,7 +476,7 @@
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="jackson-annotations-2.5.4"
             name="jackson-annotations-2.5.4.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-annotations-2.5.4/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/jackson-annotations-2.5.4/6.0.0">
         </libraryNeeded>        
 
         <libraryNeeded
