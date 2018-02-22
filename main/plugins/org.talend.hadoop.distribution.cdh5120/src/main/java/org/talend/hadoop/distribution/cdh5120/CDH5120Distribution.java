@@ -451,7 +451,7 @@ public class CDH5120Distribution extends AbstractDistribution implements ICloude
 
     @Override
     public int getClouderaNavigatorAPIVersion() {
-        return 12;
+        return 9;
     }
 
     @Override
