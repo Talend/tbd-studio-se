@@ -43,12 +43,6 @@
 
         <libraryNeeded
         	context="plugin:org.talend.hadoop.distribution.emr580"
-        	id="jetty-util-6.1.26-emr.jar"
-        	name="jetty-util-6.1.26-emr.jar"
-        	mvn_uri="mvn:org.talend.libraries/jetty-util-6.1.26-emr/6.0.0"/>
-
-        <libraryNeeded
-        	context="plugin:org.talend.hadoop.distribution.emr580"
         	id="azure-storage-2.0.0.jar"
         	name="azure-storage-2.0.0.jar"
         	mvn_uri="mvn:org.talend.libraries/azure-storage-2.0.0/6.0.0"/>
