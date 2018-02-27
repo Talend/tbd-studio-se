@@ -35,6 +35,24 @@
         	mvn_uri="mvn:org.talend.libraries/libthrift-0.9.3/6.3.0"/>
         	
         <!-- Azure libraries -->
+        <libraryNeeded
+        	context="plugin:org.talend.hadoop.distribution.emr580"
+        	id="hadoop-azure-2.7.3-amzn-3.jar"
+        	name="hadoop-azure-2.7.3-amzn-3.jar"
+        	mvn_uri="mvn:org.talend.libraries/hadoop-azure-2.7.3-amzn-3/6.0.0"/>
+
+        <libraryNeeded
+        	context="plugin:org.talend.hadoop.distribution.emr580"
+        	id="jetty-util-6.1.26-emr.jar"
+        	name="jetty-util-6.1.26-emr.jar"
+        	mvn_uri="mvn:org.talend.libraries/jetty-util-6.1.26-emr/6.0.0"/>
+
+        <libraryNeeded
+        	context="plugin:org.talend.hadoop.distribution.emr580"
+        	id="azure-storage-2.0.0.jar"
+        	name="azure-storage-2.0.0.jar"
+        	mvn_uri="mvn:org.talend.libraries/azure-storage-2.0.0/6.0.0"/>
+
 		<!-- Map/Reduce libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
