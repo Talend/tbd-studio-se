@@ -35,28 +35,6 @@
         	mvn_uri="mvn:org.talend.libraries/libthrift-0.9.3/6.3.0"/>
         	
         <!-- Azure libraries -->
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
-            id="hadoop-azure-2.7.3.jar"
-            name="hadoop-azure-2.7.3.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-azure-2.7.3/6.0.0">
-        </libraryNeeded>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
-            id="azure-common-1.7.1.jar"
-            name="azure-common-1.7.1.jar"
-            mvn_uri="mvn:org.talend.libraries/azure-common-1.7.1/6.0.0">
-        </libraryNeeded>
-        
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh5100"
-            id="azure-storage-2.2.0"
-            name="azure-storage-2.2.0.jar"
-            mvn_uri="mvn:org.talend.libraries/azure-storage-2.2.0/6.0.0">
-        </libraryNeeded>
-        <!-- Azure libraries -->
-
 		<!-- Map/Reduce libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
@@ -2292,9 +2270,9 @@
                 description="Spark Azure libraries for EMR 5.8.0 that are MRREQUIRED"
                 id="SPARK-AZURE-LIB-MRREQUIRED-EMR_5_8_0_LATEST"
                 name="SPARK-AZURE-LIB-MRREQUIRED-EMR_5_8_0_LATEST">
-                <library id="hadoop-azure-2.7.3.jar"/>
-                <library id="azure-common-1.7.1.jar"/>
-                <library id="azure-storage-2.2.0"/>
+                <library id="hadoop-azure-2.7.3-amzn-3.jar"/>
+                <library id="jetty-util-6.1.26-emr.jar"/>
+                <library id="azure-storage-2.0.0"/>
         </libraryNeededGroup>
         
         <!-- GraphFrames group MRREQUIRED -->
