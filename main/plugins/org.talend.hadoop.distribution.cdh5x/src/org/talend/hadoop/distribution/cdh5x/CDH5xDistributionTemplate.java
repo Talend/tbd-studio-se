@@ -544,4 +544,9 @@ public class CDH5xDistributionTemplate extends AbstractDistribution
     public boolean isDynamicDistribution() {
         return true;
     }
+
+    @Override
+    public boolean doSupportAssumeRole() {
+        return true;
+    }
 }

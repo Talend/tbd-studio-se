@@ -502,4 +502,9 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
 	public boolean useS3AProperties() {
 		return true;
 	}
+
+    @Override
+    public boolean doSupportAssumeRole() {
+        return true;
+    }
 }
