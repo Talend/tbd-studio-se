@@ -317,7 +317,7 @@
             context="plugin:org.talend.hadoop.distribution.cdh550"
             id="jackson-databind-2.5.4.redhat-2.jar"
             name="jackson-databind-2.5.4.redhat-2.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-databind-2.5.4.redhat-2/6.1.0">
+            mvn_uri="mvn:org.talend.libraries/jackson-databind-2.5.4.redhat-2/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
