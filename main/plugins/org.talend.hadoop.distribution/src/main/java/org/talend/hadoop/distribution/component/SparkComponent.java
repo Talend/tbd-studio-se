@@ -101,4 +101,9 @@ public interface SparkComponent extends MRComponent {
      * The distribution uses "fs.s3a.secret.key" and "fs.s3a.awsSecretAcessKey" properties for the S3 Authentication with the S3A fileSystem.
      */
     public boolean useS3AProperties();
+
+    /**
+     * The distribution supports STS Assume Role.
+     */
+    public boolean doSupportAssumeRole();
 }

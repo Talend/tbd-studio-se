@@ -325,4 +325,8 @@ public abstract class AbstractDistribution {
     public boolean useS3AProperties() {
         return false;
     }
+
+    public boolean doSupportAssumeRole() {
+        return false;
+    }
 }
