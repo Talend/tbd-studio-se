@@ -332,7 +332,7 @@
             context="plugin:org.talend.hadoop.distribution.cdh570"
             id="jackson-core-2.5.4.jar"
             name="jackson-core-2.5.4.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-core-2.5.4/6.1.0">
+            mvn_uri="mvn:org.talend.libraries/jackson-core-2.5.4/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
