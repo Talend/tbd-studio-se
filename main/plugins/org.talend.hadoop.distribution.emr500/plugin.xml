@@ -332,7 +332,7 @@
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="guice-servlet-3.0.jar" name="guice-servlet-3.0.jar" mvn_uri="mvn:org.talend.libraries/guice-servlet-3.0/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="spark-graphx_2.11-2.0.0.jar" name="spark-graphx_2.11-2.0.0.jar" mvn_uri="mvn:org.talend.libraries/spark-graphx_2.11-2.0.0/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="spark-tags_2.11-2.0.0.jar" name="spark-tags_2.11-2.0.0.jar" mvn_uri="mvn:org.talend.libraries/spark-tags_2.11-2.0.0/6.0.0"/>
-<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="jackson-core-asl-1.9.14-TALEND.jar" name="jackson-core-asl-1.9.14-TALEND.jar" mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND3/6.0.0"/>
+<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="jackson-core-asl-1.9.14-TALEND.jar" name="jackson-core-asl-1.9.14-TALEND.jar" mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="xbean-asm5-shaded-4.4.jar" name="xbean-asm5-shaded-4.4.jar" mvn_uri="mvn:org.talend.libraries/xbean-asm5-shaded-4.4/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="apache-log4j-extras-1.2.17.jar" name="apache-log4j-extras-1.2.17.jar" mvn_uri="mvn:org.talend.libraries/apache-log4j-extras-1.2.17/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="derby-10.11.1.1.jar" name="derby-10.11.1.1.jar" mvn_uri="mvn:org.talend.libraries/derby-10.11.1.1/6.0.0"/>

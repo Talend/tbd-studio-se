@@ -369,9 +369,9 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc11"
-            id="jackson-core-asl-1.9.14-TALEND3"
+            id="jackson-core-asl-1.9.14-TALEND"
             name="jackson-core-asl-1.9.14-TALEND.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND3/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
@@ -593,7 +593,7 @@
              <library id="commons-lang-2.6" />
              <library id="commons-configuration-1.6" />
              <library id="commons-collections-3.2.2" />
-             <library id="jackson-core-asl-1.9.14-TALEND3" />
+             <library id="jackson-core-asl-1.9.14-TALEND" />
              <library id="jackson-mapper-asl-1.9.14-TALEND" />
              <library id="guava-11.0.2" />
         </libraryNeededGroup>
@@ -696,7 +696,7 @@
                 name="SPARK-KAFKA-AVRO-LIB-MRREQUIRED-DATAPROC11">
             <library id="avro-1.7.7"/>
             <library id="jackson-mapper-asl-1.9.14-TALEND" />
-            <library id="jackson-core-asl-1.9.14-TALEND3" />
+            <library id="jackson-core-asl-1.9.14-TALEND" />
         </libraryNeededGroup>
         
         <!-- Spark Kafka Client group MRREQUIRED -->
