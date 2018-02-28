@@ -128,13 +128,6 @@
         <module>main/plugins/org.talend.libraries.couchbase</module>
         <module>main/plugins/org.talend.libraries.couchdb</module>
         <module>main/plugins/org.talend.libraries.hadoop</module>
-        <module>main/plugins/org.talend.libraries.hadoop.cloudera.cdh5.1</module>
-        <module>main/plugins/org.talend.libraries.hadoop.cloudera.cdh5.4</module>
-        <module>main/plugins/org.talend.libraries.hadoop.hdp.2.2</module>
-        <module>main/plugins/org.talend.libraries.hadoop.hdp.2.3</module>
-        <module>main/plugins/org.talend.libraries.hadoop.emr.4.0.0</module>
-        <module>main/plugins/org.talend.libraries.hadoop.mapr.4.0.1</module>
-        <module>main/plugins/org.talend.libraries.hadoop.mapr.4.1.0</module>
         <module>main/plugins/org.talend.libraries.hadoop.mapr.5.0.0.jars</module>
         <module>main/plugins/org.talend.libraries.hcatalog</module>
         <module>main/plugins/org.talend.libraries.mongo</module>
