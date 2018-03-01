@@ -509,4 +509,9 @@ public class CDH5100Distribution extends AbstractDistribution implements ICloude
     public boolean doSupportAssumeRole() {
         return true;
     }
+
+    @Override
+    public boolean doSupportAvroDeflateProperties(){
+        return true;
+    }
 }

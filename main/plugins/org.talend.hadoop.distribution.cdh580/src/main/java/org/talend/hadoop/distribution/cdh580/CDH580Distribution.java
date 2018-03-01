@@ -420,4 +420,9 @@ public class CDH580Distribution extends AbstractDistribution implements IClouder
     public boolean doSupportAzureDataLakeStorage() {
         return false;
     }
+    
+    @Override
+    public boolean doSupportAvroDeflateProperties(){
+        return true;
+    }
 }
