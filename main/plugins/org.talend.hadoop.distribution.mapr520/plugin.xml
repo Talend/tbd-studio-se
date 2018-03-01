@@ -520,6 +520,7 @@
             <library id="jackson-mapper-asl-1.9.13.jar" />
             <library id="htrace-core-3.1.0-incubating.jar" />
             <library id="avro-1.7.5.jar" />
+            <library id="avro-mapred-1.7.5.jar"/>
          </libraryNeededGroup>
 
          <libraryNeededGroup

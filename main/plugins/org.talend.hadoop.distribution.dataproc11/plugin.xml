@@ -605,6 +605,7 @@
                 name="MAPREDUCE-LIB-DATAPROC11">
                 
             <library id="hadoop-mapreduce-client-core-dataproc11"/>
+            <library id="avro-mapred-1.7.7.jar"/>
 
         </libraryNeededGroup>
         

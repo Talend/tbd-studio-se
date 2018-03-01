@@ -618,6 +618,7 @@
              <library id="jackson-jaxrs-1.8.8.jar"/>
              <library id="jackson-xc-1.8.8.jar"/>
              <library id="jersey-client-1.9.jar"/>
+             <library id="avro-mapred-cdh5.5.2"/>
         </libraryNeededGroup>
         
         <!-- Map/Reduce parquet group -->

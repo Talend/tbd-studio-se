@@ -869,7 +869,7 @@
                 description="HDFS libraries for HDP 2.6"
                 id="HDFS-LIB-HDP_2_6"
                 name="HDFS-LIB-HDP_2_6"  >
-             <library id="avro-1.7.5.jar"/>
+             <library id="avro-1.8.0.jar"/>
              <library id="commons-cli-1.2.jar"/>
              <library id="commons-collections-3.2.2.jar"/>
              <library id="commons-codec-1.4.jar"/>
