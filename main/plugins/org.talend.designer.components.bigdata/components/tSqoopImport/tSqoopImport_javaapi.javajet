@@ -139,8 +139,9 @@
 		<%}%>
 	<%}%>
 	
+	String mapColumnJava_<%=cid%> = null;
+
 	<%
-	
 	if(overrideJavaMapping) {
 		List<Map<String,String>> javaMappings = (List<Map<String, String>>)ElementParameterParser.getObjectValue(node,"__JAVA_TYPE_MAPPING__");
 		if(javaMappings!=null && javaMappings.size()>0) {
@@ -161,11 +162,16 @@
 				}	
 			}
 	%>
-			sqoopOptions_<%=cid%>.setMapColumnJava(sb_java_<%=cid%>.toString());
+			mapColumnJava_<%=cid%> = sb_java_<%=cid%>.toString();
+			sqoopOptions_<%=cid%>.setMapColumnJava(mapColumnJava_<%=cid%>);
 	<%
 		}
 	}
+	%>
 
+	String mapColumnHive_<%=cid%> = null;
+
+	<%
 	if(overrideHiveMapping) {
 		List<Map<String,String>> hiveMappings = (List<Map<String, String>>)ElementParameterParser.getObjectValue(node,"__HIVE_TYPE_MAPPING__");
 		if(hiveMappings!=null && hiveMappings.size()>0) {
@@ -186,7 +192,8 @@
 				}	
 			}
 	%>
-			sqoopOptions_<%=cid%>.setMapColumnHive(sb_hive_<%=cid%>.toString());
+			mapColumnHive_<%=cid%> = sb_hive_<%=cid%>.toString();
+			sqoopOptions_<%=cid%>.setMapColumnHive(mapColumnHive_<%=cid%>);
 	<%
 		}
 	}
@@ -218,7 +225,18 @@
 		} 
 	} 
 %>
+
 	sqoopOptions_<%=cid%>.loadProperties(additionalProperties_<%=cid%>);
+	
+	//restoring java/hive mapping because SqoopOptions.loadProperties() rewrites it completely
+	if (mapColumnJava_<%=cid%> != null) {
+		sqoopOptions_<%=cid%>.setMapColumnJava(mapColumnJava_<%=cid%>);
+	}
+
+	if (mapColumnHive_<%=cid%> != null) {
+		sqoopOptions_<%=cid%>.setMapColumnHive(mapColumnHive_<%=cid%>);
+	}
+		
 	org.apache.sqoop.Sqoop sqoop_<%=cid%> = new org.apache.sqoop.Sqoop(sqoopTool_<%=cid%>, configuration_<%=cid%>, sqoopOptions_<%=cid%>);
 	<%@ include file="@{org.talend.designer.components.bigdata}/components/tSqoopImport/sqoop-avro-dependency.javajet"%>
 	<%@ include file="@{org.talend.designer.components.bigdata}/components/tSqoopImport/sqoop-parquet-dependency.javajet"%>
