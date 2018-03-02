@@ -139,9 +139,8 @@
 		<%}%>
 	<%}%>
 	
-	String mapColumnJava_<%=cid%> = null;
-
 	<%
+	
 	if(overrideJavaMapping) {
 		List<Map<String,String>> javaMappings = (List<Map<String, String>>)ElementParameterParser.getObjectValue(node,"__JAVA_TYPE_MAPPING__");
 		if(javaMappings!=null && javaMappings.size()>0) {
@@ -162,16 +161,11 @@
 				}	
 			}
 	%>
-			mapColumnJava_<%=cid%> = sb_java_<%=cid%>.toString();
-			sqoopOptions_<%=cid%>.setMapColumnJava(mapColumnJava_<%=cid%>);
+			sqoopOptions_<%=cid%>.setMapColumnJava(sb_java_<%=cid%>.toString());
 	<%
 		}
 	}
-	%>
 
-	String mapColumnHive_<%=cid%> = null;
-
-	<%
 	if(overrideHiveMapping) {
 		List<Map<String,String>> hiveMappings = (List<Map<String, String>>)ElementParameterParser.getObjectValue(node,"__HIVE_TYPE_MAPPING__");
 		if(hiveMappings!=null && hiveMappings.size()>0) {
@@ -192,14 +186,16 @@
 				}	
 			}
 	%>
-			mapColumnHive_<%=cid%> = sb_hive_<%=cid%>.toString();
-			sqoopOptions_<%=cid%>.setMapColumnHive(mapColumnHive_<%=cid%>);
+			sqoopOptions_<%=cid%>.setMapColumnHive(sb_hive_<%=cid%>.toString());
 	<%
 		}
 	}
 	%>
 	
 	java.util.Properties additionalProperties_<%=cid%> = new java.util.Properties();
+	java.util.Properties storedJavaMapping_<%=cid%> = sqoopOptions_<%=cid%>.getMapColumnJava();
+	java.util.Properties storedHiveMapping_<%=cid%> = sqoopOptions_<%=cid%>.getMapColumnHive();
+	 
 	<%
 	if(sqoopDistrib.isImpactedBySqoop2995()){
 	//TODO, relate with https://issues.apache.org/jira/browse/SQOOP-2995, have to set a init value to the new map type key "customtool.options.jsonmap". But the key hasn't been used
@@ -213,30 +209,44 @@
 				break; 
 			}
             		String currentArgument = additionalMap.get("ADDITIONAL_ARGUMENT");
+            		String currentValue = additionalMap.get("ADDITIONAL_VALUE");
+            		
+            		if (currentArgument.startsWith("\"map.column.java.")) {
+%> 
+            			storedJavaMapping_<%=cid%>.put(<%=currentArgument%>.substring(0, "map.column.java.".length() - 1), <%=currentValue%>); 
+<%
+            		}
+            		if (currentArgument.startsWith("\"map.column.hive.")) {
+%> 
+	            		storedHiveMapping_<%=cid%>.put(<%=currentArgument%>.substring(0, "map.column.hive.".length() - 1), <%=currentValue%>); 
+<%
+            		}
+            		
 		        if(currentArgument.contains("delimiters") && !currentArgument.contains("required")) {
 %> 
-				additionalProperties_<%=cid%>.put(<%=currentArgument%>, ""+<%=additionalMap.get("ADDITIONAL_VALUE")%>.codePointAt(0)); 
+					additionalProperties_<%=cid%>.put(<%=currentArgument%>, ""+<%=currentValue%>.codePointAt(0)); 
 <%
 			} else {
-%> 
-				additionalProperties_<%=cid%>.put(<%=currentArgument%>, <%=additionalMap.get("ADDITIONAL_VALUE")%>); 
+%>
+ 				
+				additionalProperties_<%=cid%>.put(<%=currentArgument%>, <%=currentValue%>); 
 <%
 			}
 		} 
 	} 
 %>
-
 	sqoopOptions_<%=cid%>.loadProperties(additionalProperties_<%=cid%>);
 	
 	//restoring java/hive mapping because SqoopOptions.loadProperties() rewrites it completely
-	if (mapColumnJava_<%=cid%> != null) {
-		sqoopOptions_<%=cid%>.setMapColumnJava(mapColumnJava_<%=cid%>);
-	}
+	//all mapping from additional properties are preserved
+	String storedJavaMappingStr_<%=cid%> = storedJavaMapping_<%=cid%>.toString().replaceAll(", ", ",");
+	storedJavaMappingStr_<%=cid%> = storedJavaMappingStr_<%=cid%>.substring(1, storedJavaMappingStr_<%=cid%>.length()-1);//removing "{" and "}"
+	sqoopOptions_<%=cid%>.setMapColumnJava(storedJavaMappingStr_<%=cid%>);
 
-	if (mapColumnHive_<%=cid%> != null) {
-		sqoopOptions_<%=cid%>.setMapColumnHive(mapColumnHive_<%=cid%>);
-	}
-		
+	String storedHiveMappingStr_<%=cid%> = storedHiveMapping_<%=cid%>.toString().replaceAll(", ", ",");
+	storedHiveMappingStr_<%=cid%> = storedHiveMappingStr_<%=cid%>.substring(1, storedHiveMappingStr_<%=cid%>.length()-1);//removing "{" and "}"
+	sqoopOptions_<%=cid%>.setMapColumnHive(storedHiveMappingStr_<%=cid%>);
+	
 	org.apache.sqoop.Sqoop sqoop_<%=cid%> = new org.apache.sqoop.Sqoop(sqoopTool_<%=cid%>, configuration_<%=cid%>, sqoopOptions_<%=cid%>);
 	<%@ include file="@{org.talend.designer.components.bigdata}/components/tSqoopImport/sqoop-avro-dependency.javajet"%>
 	<%@ include file="@{org.talend.designer.components.bigdata}/components/tSqoopImport/sqoop-parquet-dependency.javajet"%>
