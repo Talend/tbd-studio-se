@@ -334,7 +334,19 @@ public class HCRepositoryUtil {
     }
 
     public static HadoopClusterConnectionItem getHadoopClusterItemBySubitemId(String subitemId) {
-        return getHadoopClusterItemBySubitemId(ProjectManager.getInstance().getCurrentProject(), subitemId);
+        ProjectManager projectManager = ProjectManager.getInstance();
+        HadoopClusterConnectionItem item = getHadoopClusterItemBySubitemId(projectManager.getCurrentProject(), subitemId);
+        if (item == null) {
+            // if not exist in current project, try to find it from reference projects
+            List<Project> allReferencedProjects = projectManager.getAllReferencedProjects();
+            for (Project referencedProject : allReferencedProjects) {
+                item = getHadoopClusterItemBySubitemId(referencedProject, subitemId);
+                if (item != null) {
+                    break;
+                }
+            }
+        }
+        return item;
     }
 
     public static HadoopClusterConnectionItem getHadoopClusterItemBySubitemId(Project project, String subitemId) {

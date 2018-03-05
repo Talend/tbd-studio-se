@@ -473,6 +473,7 @@
             <library id="servlet-api-2.5.jar"/>
             <library id="slf4j-api-1.7.10.jar"/>
             <library id="slf4j-log4j12-1.7.10.jar"/>
+            <library id="avro-mapred-1.7.5-hadoop2-HDP_2_4"/>
         </libraryNeededGroup>
         
         <!--Map/Reduce parquet group MRREQUIRED -->

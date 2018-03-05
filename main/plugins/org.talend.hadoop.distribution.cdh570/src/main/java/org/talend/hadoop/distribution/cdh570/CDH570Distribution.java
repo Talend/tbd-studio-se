@@ -420,4 +420,9 @@ public class CDH570Distribution extends AbstractDistribution implements HDFSComp
     public boolean doSupportAzureDataLakeStorage() {
         return false;
     }
+    
+    @Override
+    public boolean doSupportAvroDeflateProperties(){
+        return true;
+    }
 }

@@ -920,6 +920,7 @@
              <library id="jackson-xc-1.8.8.jar"/>
              <library id="joda-time-2.9.3.jar"/>
              <library id="jersey-client-1.9.jar"/>
+             <library id="avro-mapred-1.7.6-cdh5.12.1-hadoop2.jar"/>
         </libraryNeededGroup>
 
         <!-- Map/Reduce parquet group -->

@@ -33,6 +33,19 @@
         	id="libthrift-0.9.3.jar"
         	name="libthrift-0.9.3.jar"
         	mvn_uri="mvn:org.talend.libraries/libthrift-0.9.3/6.3.0"/>
+        	
+        <!-- Azure libraries -->
+        <libraryNeeded
+        	context="plugin:org.talend.hadoop.distribution.emr580"
+        	id="hadoop-azure-2.7.3-amzn-3.jar"
+        	name="hadoop-azure-2.7.3-amzn-3.jar"
+        	mvn_uri="mvn:org.talend.libraries/hadoop-azure-2.7.3-amzn-3/6.0.0"/>
+
+        <libraryNeeded
+        	context="plugin:org.talend.hadoop.distribution.emr580"
+        	id="azure-storage-2.0.0.jar"
+        	name="azure-storage-2.0.0.jar"
+        	mvn_uri="mvn:org.talend.libraries/azure-storage-2.0.0/6.0.0"/>
 
 		<!-- Map/Reduce libraries -->
         <libraryNeeded
@@ -1788,6 +1801,7 @@
              <library id="jackson-xc-1.9.13.jar"/>
              <library id="jersey-client-1.9.jar"/>
              <library id="emr-metrics-client-2.1.0.jar"/>
+             <library id="avro-mapred-1.7.7-hadoop2.jar"/>
         </libraryNeededGroup>
 
         <!-- Map/Reduce parquet group MRREQUIRED -->
@@ -2262,6 +2276,16 @@
             <library id="hive-exec-1.2.1-spark2-amzn-0.jar"/>
             <library id="hive-jdbc-1.2.1-spark2-amzn-0.jar"/>
             <library id="hive-metastore-1.2.1-spark2-amzn-0.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- Spark Azure group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Azure libraries for EMR 5.8.0 that are MRREQUIRED"
+                id="SPARK-AZURE-LIB-MRREQUIRED-EMR_5_8_0_LATEST"
+                name="SPARK-AZURE-LIB-MRREQUIRED-EMR_5_8_0_LATEST">
+                <library id="hadoop-azure-2.7.3-amzn-3.jar"/>
+                <library id="jetty-util-6.1.26-emr.jar"/>
+                <library id="azure-storage-2.0.0"/>
         </libraryNeededGroup>
         
         <!-- GraphFrames group MRREQUIRED -->

@@ -598,7 +598,7 @@
                 description="HDFS libraries for HDP 2.5"
                 id="HDFS-LIB-HDP_2_5"
                 name="HDFS-LIB-HDP_2_5"  >
-             <library id="avro-1.7.5.jar"/>
+             <library id="avro-1.8.0.jar"/>
              <library id="commons-cli-1.2.jar"/>
              <library id="commons-collections-3.2.2.jar"/>
              <library id="commons-io-2.4.jar"/>
@@ -638,6 +638,7 @@
             <library id="jackson-jaxrs-1.9.13.jar"/>
             <library id="jackson-xc-1.9.13.jar"/>
             <library id="jersey-client-1.9.jar"/>
+            <library id="avro-mapred-1.8.0-hadoop2-HDP_2_5"/>
         </libraryNeededGroup>
         
         <!--Map/Reduce parquet group MRREQUIRED -->
