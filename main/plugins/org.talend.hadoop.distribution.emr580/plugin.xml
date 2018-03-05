@@ -2285,7 +2285,7 @@
                 name="SPARK-AZURE-LIB-MRREQUIRED-EMR_5_8_0_LATEST">
                 <library id="hadoop-azure-2.7.3-amzn-3.jar"/>
                 <library id="jetty-util-6.1.26-emr.jar"/>
-                <library id="azure-storage-2.0.0"/>
+                <library id="azure-storage-2.0.0.jar"/>
         </libraryNeededGroup>
         
         <!-- GraphFrames group MRREQUIRED -->
