@@ -193,7 +193,6 @@
 	%>
 	
 	java.util.Properties additionalProperties_<%=cid%> = new java.util.Properties();
-	 
 	<%
 	if(sqoopDistrib.isImpactedBySqoop2995()){
 	//TODO, relate with https://issues.apache.org/jira/browse/SQOOP-2995, have to set a init value to the new map type key "customtool.options.jsonmap". But the key hasn't been used
@@ -207,14 +206,12 @@
 				break; 
 			}
             		String currentArgument = additionalMap.get("ADDITIONAL_ARGUMENT");
-            		
 		        if(currentArgument.contains("delimiters") && !currentArgument.contains("required")) {
 %> 
-					additionalProperties_<%=cid%>.put(<%=currentArgument%>, ""+<%=additionalMap.get("ADDITIONAL_VALUE")%>.codePointAt(0)); 
+				additionalProperties_<%=cid%>.put(<%=currentArgument%>, ""+<%=additionalMap.get("ADDITIONAL_VALUE")%>.codePointAt(0)); 
 <%
 			} else {
 %>
- 				
 				additionalProperties_<%=cid%>.put(<%=currentArgument%>, <%=additionalMap.get("ADDITIONAL_VALUE")%>); 
 <%
 			}
