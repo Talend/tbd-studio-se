@@ -211,7 +211,7 @@
 				additionalProperties_<%=cid%>.put(<%=currentArgument%>, ""+<%=additionalMap.get("ADDITIONAL_VALUE")%>.codePointAt(0)); 
 <%
 			} else {
-%>
+%> 
 				additionalProperties_<%=cid%>.put(<%=currentArgument%>, <%=additionalMap.get("ADDITIONAL_VALUE")%>); 
 <%
 			}
