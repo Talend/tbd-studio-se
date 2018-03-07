@@ -32,8 +32,7 @@ public class CDH5120MapReduceModuleGroupTest {
 		results.put(CDH5120Constant.MAPREDUCE_MODULE_GROUP.getModuleName(), null);
 		results.put(CDH5120Constant.MAPREDUCE_PARQUET_MODULE_GROUP.getModuleName(), null);
 		results.put(CDH5120Constant.MAPREDUCE_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
-		// results.put(CDH5120Constant.TALEND_CLOUDERA_CDH_5_12_NAVIGATOR.getModuleName(),
-		// "(USE_CLOUDERA_NAVIGATOR=='true')"); //$NON-NLS-1$
+        results.put(CDH5120Constant.TALEND_CLOUDERA_CDH_5_12_NAVIGATOR.getModuleName(), "(USE_CLOUDERA_NAVIGATOR=='true')"); //$NON-NLS-1$
 		Set<DistributionModuleGroup> moduleGroups = CDH5120MapReduceModuleGroup.getModuleGroups();
 		assertEquals(results.keySet().size(), moduleGroups.size());
 		for (DistributionModuleGroup module : moduleGroups) {
