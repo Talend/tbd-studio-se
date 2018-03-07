@@ -59,9 +59,6 @@ public class HadoopOperationManager {
                 return;
             }
             for (Object status : statusList) {
-                if (!canAccess(connection, classLoader, status)) {
-                    continue;
-                }
                 HDFSPath content = null;
                 Object statusPath = ReflectionUtils.invokeMethod(status, "getPath", new Object[0]);
                 if (statusPath == null) {
@@ -181,6 +178,11 @@ public class HadoopOperationManager {
         return table;
     }
 
+    /**
+     * It's meanless to check the access rights here since the groups retrieved are from local OS instead of HDFS. <br>
+     * refer to https://hadoop.apache.org/docs/r2.8.0/hadoop-project-dist/hadoop-common/GroupsMapping.html
+     */
+    @Deprecated
     private boolean canAccess(HDFSConnectionBean connection, ClassLoader classLoader, Object status) throws HadoopServerException {
         if (status == null) {
             return false;
