@@ -28,14 +28,15 @@ public class HadoopDistributionsHelperTest {
     public void testGetHadoopDistributionsDisplay_Sorted() {
         String[] hadoopDistributionsDisplay = HadoopDistributionsHelper.HADOOP.getDistributionsDisplay(false);
         Assert.assertArrayEquals(new String[] { "Amazon EMR", "Cloudera", "Google Cloud Dataproc",
-                "HortonWorks", "MapR", "Microsoft HD Insight" }, hadoopDistributionsDisplay);
+                "HortonWorks", "MapR", "Microsoft HD Insight", "Pivotal HD" }, hadoopDistributionsDisplay);
     }
 
     @Test
     public void testGetHadoopDistributionsDisplay_withCustom__Sorted() {
         String[] hadoopDistributionsDisplay = HadoopDistributionsHelper.HADOOP.getDistributionsDisplay(true);
         Assert.assertArrayEquals(new String[] { "Amazon EMR", "Cloudera", "Google Cloud Dataproc",
-                "HortonWorks", "MapR", "Microsoft HD Insight", "Custom - Unsupported" }, hadoopDistributionsDisplay);
+                "HortonWorks", "MapR", "Microsoft HD Insight", "Pivotal HD", "Custom - Unsupported" },
+                hadoopDistributionsDisplay);
     }
 
     @Test
