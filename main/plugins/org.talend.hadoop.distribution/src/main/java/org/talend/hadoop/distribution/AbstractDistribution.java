@@ -329,4 +329,8 @@ public abstract class AbstractDistribution {
     public boolean doSupportAssumeRole() {
         return false;
     }
+
+    public boolean doSupportAvroDeflateProperties(){
+        return false;
+    }
 }

@@ -1637,6 +1637,7 @@
              <library id="jackson-xc-1.9.13.jar"/>
              <library id="jersey-client-1.9.jar"/>
              <library id="emr-metrics-client-2.1.0.jar"/>
+             <library id="avro-mapred-1.7.7-hadoop2.jar"/>
         </libraryNeededGroup>
 
         <!-- Map/Reduce parquet group MRREQUIRED -->

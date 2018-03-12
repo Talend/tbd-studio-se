@@ -223,7 +223,7 @@ public class EMR580Distribution extends AbstractDistribution implements
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), EMR580SparkBatchAzureNodeModuleGroup
                 .getModuleGroups(distribution, version));
-        
+
 		return result;
 	}
 
@@ -467,9 +467,14 @@ public class EMR580Distribution extends AbstractDistribution implements
     public boolean doImportDynamoDBDependencies() {
         return true;
     }
-    
+
     @Override
     public boolean doSupportAzureBlobStorage() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportAvroDeflateProperties(){
         return true;
     }
 }

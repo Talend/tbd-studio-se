@@ -384,6 +384,29 @@
             mvn_uri="mvn:org.talend.libraries/antlr4-runtime-4.5/6.3.0" >
         </libraryNeeded>
         
+        <!-- Azure -->
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" 
+        	id="azure-storage-2.2.0.jar" 
+        	name="azure-storage-2.2.0.jar" 
+        	mvn_uri="mvn:org.talend.libraries/azure-storage-2.2.0/6.0.0"/>
+        	
+        <libraryNeeded
+        	context="plugin:org.talend.hadoop.distribution.emr580"
+        	id="azure-common-1.7.1.jar"
+        	name="azure-common-1.7.1.jar"
+        	mvn_uri="mvn:org.talend.libraries/azure-common-1.7.1/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" 
+        	id="hadoop-azure-2.7.0-mapr-1710.jar" 
+        	name="hadoop-azure-2.7.0-mapr-1710.jar" 
+        	mvn_uri="mvn:org.talend.libraries/hadoop-azure-2.7.0-mapr-1710/6.0.0"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.0" 
+        	id="jetty-util-6.1.26.jar" 
+        	name="jetty-util-6.1.26.jar" 
+        	mvn_uri="mvn:org.talend.libraries/jetty-util-6.1.26.jar/6.0.0"/>
+
         <!-- GraphFrames libraries -->
 		<libraryNeeded 
 			context="plugin:org.talend.libraries.hadoop.mapr.5.2.0"
@@ -520,6 +543,7 @@
             <library id="jackson-mapper-asl-1.9.14-TALEND.jar" />
             <library id="htrace-core-3.1.0-incubating.jar" />
             <library id="avro-1.7.5.jar" />
+            <library id="avro-mapred-1.7.5.jar"/>
          </libraryNeededGroup>
 
          <libraryNeededGroup
@@ -783,6 +807,17 @@
             <library id="mapr-streams-5.2.0-mapr.jar"/>
         </libraryNeededGroup>
         
+        <!-- Spark Azure group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Azure libraries for MapR 5.2.0 that are MRREQUIRED"
+                id="SPARK-AZURE-LIB-MRREQUIRED-MAPR520"
+                name="SPARK-AZURE-LIB-MRREQUIRED-MAPR520">
+                <library id="hadoop-azure-2.7.0-mapr-1710.jar"/>
+                <library id="azure-common-1.7.1.jar"/>
+                <library id="azure-storage-2.2.0"/>
+                <library id="jetty-util-6.1.26.jar"/>
+        </libraryNeededGroup>
+
  		<!-- GraphFrames group MRREQUIRED -->
 		<libraryNeededGroup
 			description="GraphFrames libraries for MapR 5.2.0 that are MRREQUIRED" 

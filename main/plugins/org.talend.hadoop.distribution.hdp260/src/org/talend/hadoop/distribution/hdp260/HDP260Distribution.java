@@ -507,4 +507,9 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
     public boolean doSupportAssumeRole() {
         return true;
     }
+
+	@Override
+    public boolean doSupportAvroDeflateProperties(){
+        return true;
+    }
 }
