@@ -223,8 +223,8 @@
 	java.util.Properties storedHiveMapping_<%=cid%> = sqoopOptions_<%=cid%>.getMapColumnHive();
 
 	for (java.util.Map.Entry entry: additionalProperties_<%=cid%>.entrySet()) {
-		String curKey = (String)entry.getKey();
-		String curValue = (String)entry.getValue();
+		String curKey = entry.getKey() == null ? "null" : entry.getKey().toString();
+		String curValue = entry.getValue() == null ? "null" : entry.getValue().toString();
 		
 		if (curKey.startsWith("map.column.java.")) {
 			storedJavaMapping_<%=cid%>.put(curKey.substring("map.column.java.".length(), curKey.length()), curValue); 
