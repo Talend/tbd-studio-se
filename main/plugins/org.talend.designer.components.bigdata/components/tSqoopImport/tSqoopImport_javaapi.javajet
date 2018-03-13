@@ -218,7 +218,38 @@
 		} 
 	} 
 %>
+
+	java.util.Properties storedJavaMapping_<%=cid%> = sqoopOptions_<%=cid%>.getMapColumnJava();
+	java.util.Properties storedHiveMapping_<%=cid%> = sqoopOptions_<%=cid%>.getMapColumnHive();
+
+	for (java.util.Map.Entry entry: additionalProperties_<%=cid%>.entrySet()) {
+		String curKey = entry.getKey() == null ? "null" : entry.getKey().toString();
+		String curValue = entry.getValue() == null ? "null" : entry.getValue().toString();
+		
+		if (curKey.startsWith("map.column.java.")) {
+			storedJavaMapping_<%=cid%>.put(curKey.substring("map.column.java.".length(), curKey.length()), curValue); 
+		}
+		if (curKey.startsWith("map.column.hive.")) {
+			storedHiveMapping_<%=cid%>.put(curKey.substring("map.column.hive.".length(), curKey.length()), curValue); 
+		}
+	}
+	
 	sqoopOptions_<%=cid%>.loadProperties(additionalProperties_<%=cid%>);
+	
+	//restoring java/hive mapping because SqoopOptions.loadProperties() rewrites it completely
+	//all mapping from additional properties are preserved
+	if ((storedJavaMapping_<%=cid%> != null) && !storedJavaMapping_<%=cid%>.isEmpty()) {
+		String storedJavaMappingStr_<%=cid%> = storedJavaMapping_<%=cid%>.toString().replaceAll(", ", ",");
+		storedJavaMappingStr_<%=cid%> = storedJavaMappingStr_<%=cid%>.substring(1, storedJavaMappingStr_<%=cid%>.length()-1);//removing "{" and "}"
+		sqoopOptions_<%=cid%>.setMapColumnJava(storedJavaMappingStr_<%=cid%>);
+	}
+
+	if ((storedHiveMapping_<%=cid%> != null) && !storedHiveMapping_<%=cid%>.isEmpty()) {
+		String storedHiveMappingStr_<%=cid%> = storedJavaMapping_<%=cid%>.toString().replaceAll(", ", ",");
+		storedHiveMappingStr_<%=cid%> = storedHiveMappingStr_<%=cid%>.substring(1, storedHiveMappingStr_<%=cid%>.length()-1);//removing "{" and "}"
+		sqoopOptions_<%=cid%>.setMapColumnHive(storedHiveMappingStr_<%=cid%>);
+	}
+	
 	org.apache.sqoop.Sqoop sqoop_<%=cid%> = new org.apache.sqoop.Sqoop(sqoopTool_<%=cid%>, configuration_<%=cid%>, sqoopOptions_<%=cid%>);
 	<%@ include file="@{org.talend.designer.components.bigdata}/components/tSqoopImport/sqoop-avro-dependency.javajet"%>
 	<%@ include file="@{org.talend.designer.components.bigdata}/components/tSqoopImport/sqoop-parquet-dependency.javajet"%>
