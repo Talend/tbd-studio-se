@@ -265,9 +265,9 @@
         <!-- Spark libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5100"
-            id="talend-spark-assembly-1.6.0-hadoop2.6.0-cdh5.10.1-with-hive-6.4.0"
-            name="talend-spark-assembly-1.6.0-hadoop2.6.0-cdh5.10.1-with-hive-6.4.0.jar"
-            mvn_uri="mvn:org.talend.libraries/talend-spark-assembly-1.6.0-hadoop2.6.0-cdh5.10.1-with-hive-6.4.0/6.4.0">
+            id="talend-spark-assembly-1.6.0-hadoop2.6.0-cdh5.10.1-with-hive-7.0.1"
+            name="talend-spark-assembly-1.6.0-hadoop2.6.0-cdh5.10.1-with-hive-7.0.1.jar"
+            mvn_uri="mvn:org.talend.libraries/talend-spark-assembly-1.6.0-hadoop2.6.0-cdh5.10.1-with-hive-7.0.1/6.4.0">
         </libraryNeeded>
 
         <libraryNeeded
@@ -1225,7 +1225,7 @@
                 description="Spark libraries for CDH 5.10"
                 id="SPARK-LIB-CDH_5_10"
                 name="SPARK-LIB-CDH_5_10">
-             <library id="talend-spark-assembly-1.6.0-hadoop2.6.0-cdh5.10.1-with-hive-6.4.0" />
+             <library id="talend-spark-assembly-1.6.0-hadoop2.6.0-cdh5.10.1-with-hive-7.0.1" />
              <library id="jersey-server-1.14.jar" />
              <library id="jersey-servlet-1.14.jar" />
              <library id="jackson-databind-2.5.4.redhat-2.jar" />
