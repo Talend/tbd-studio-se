@@ -669,35 +669,35 @@
             context="plugin:org.talend.hadoop.distribution.cdh5100"
             id="jdo-api-3.0.1"
             name="jdo-api-3.0.1.jar"
-            mvn_uri="mvn:org.talend.libraries/jdo-api-3.0.1/6.1.0">
+            mvn_uri="mvn:org.talend.libraries/jdo-api-3.0.1/6.0.0">
         </libraryNeeded>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5100"
             id="datanucleus-api-jdo-3.2.6"
             name="datanucleus-api-jdo-3.2.6.jar"
-            mvn_uri="mvn:org.talend.libraries/datanucleus-api-jdo-3.2.6/6.1.0">
+            mvn_uri="mvn:org.talend.libraries/datanucleus-api-jdo-3.2.6/6.0.0">
         </libraryNeeded>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5100"
             id="datanucleus-core-3.2.10"
             name="datanucleus-core-3.2.10.jar"
-            mvn_uri="mvn:org.talend.libraries/datanucleus-core-3.2.10/6.1.0">
+            mvn_uri="mvn:org.talend.libraries/datanucleus-core-3.2.10/6.0.0">
         </libraryNeeded>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5100"
             id="derby-10.11.1.1"
             name="derby-10.11.1.1.jar"
-            mvn_uri="mvn:org.talend.libraries/derby-10.11.1.1/6.1.0">
+            mvn_uri="mvn:org.talend.libraries/derby-10.11.1.1/6.0.0">
         </libraryNeeded>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5100"
             id="datanucleus-rdbms-3.2.9"
             name="datanucleus-rdbms-3.2.9.jar"
-            mvn_uri="mvn:org.talend.libraries/datanucleus-rdbms-3.2.9/6.1.0">
+            mvn_uri="mvn:org.talend.libraries/datanucleus-rdbms-3.2.9/6.0.0">
         </libraryNeeded>
 
         <libraryNeeded
