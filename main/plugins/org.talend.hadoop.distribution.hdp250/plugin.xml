@@ -598,7 +598,7 @@
                 description="HDFS libraries for HDP 2.5"
                 id="HDFS-LIB-HDP_2_5"
                 name="HDFS-LIB-HDP_2_5"  >
-             <library id="avro-1.7.5.jar"/>
+             <library id="avro-1.8.0.jar"/>
              <library id="commons-cli-1.2.jar"/>
              <library id="commons-collections-3.2.2.jar"/>
              <library id="commons-io-2.4.jar"/>

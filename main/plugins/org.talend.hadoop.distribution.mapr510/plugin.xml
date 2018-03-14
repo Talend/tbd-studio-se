@@ -426,6 +426,7 @@
             <library id="jackson-mapper-asl-1.9.14-TALEND.jar" />
             <library id="htrace-core-3.1.0-incubating.jar" />
             <library id="avro-1.7.4.jar" />
+            <library id="avro-mapred-1.7.5.jar"/>
          </libraryNeededGroup>
 
          <libraryNeededGroup
@@ -529,7 +530,7 @@
                 description="Pig Avro libraries for MapR 5.1.0"
                 id="PIG-AVRO-LIB-MAPR510"
                 name="PIG-AVRO-LIB-MAPR510">
-            <library id="avro-1.7.5.jar" />
+            <library id="avro-1.7.4.jar" />
             <library id="commons-io-2.3.jar"/>
             <library id="piggybank-MAPR510.jar"/>
         </libraryNeededGroup>

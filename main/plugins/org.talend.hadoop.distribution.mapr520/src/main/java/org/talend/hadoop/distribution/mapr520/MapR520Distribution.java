@@ -58,6 +58,7 @@ import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520MapReduceModule
 import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520PigModuleGroup;
 import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520PigOutputModuleGroup;
 import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520PigOutputNodeModuleGroup;
+import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520SparkAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520SparkBatchS3NodeModuleGroup;
@@ -87,6 +88,7 @@ public class MapR520Distribution extends AbstractMapRDistribution implements HDF
     private static Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
 
     private static Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodeModuleGroups;
+
     static {
         moduleGroups = new HashMap<>();
         moduleGroups.put(ComponentType.HDFS, MapR520HDFSModuleGroup.getModuleGroups());
@@ -154,6 +156,15 @@ public class MapR520Distribution extends AbstractMapRDistribution implements HDF
                 SparkStreamingConstant.KAFKA_AVRO_INPUT_COMPONENT), kafkaAvroModuleGroups);
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT), MapR520SparkStreamingKafkaClientModuleGroup.getModuleGroups());
+        
+        // Azure
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
+                SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT), MapR520SparkAzureNodeModuleGroup
+                .getModuleGroups());
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), MapR520SparkAzureNodeModuleGroup
+                .getModuleGroups());
+
 
         // Spark MapR Streams
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
@@ -394,20 +405,10 @@ public class MapR520Distribution extends AbstractMapRDistribution implements HDF
         return SparkStreamingKafkaVersion.MAPR_5X0_KAFKA;
     }
 
-    // Note :
-    // Azure Blob & Datalake support have been disabled for now on this distribution
-    // New versions of this distribution should be tested for Azure support and
-    // the changes backported to all earlier versions
     @Override
     public boolean doSupportAzureBlobStorage() {
-        return false;
+        return true;
     }
-
-    @Override
-    public boolean doSupportAzureDataLakeStorage() {
-        return false;
-    }
-    // End
 
     @Override
     public boolean doImportSparkHiveContextDependencies() {

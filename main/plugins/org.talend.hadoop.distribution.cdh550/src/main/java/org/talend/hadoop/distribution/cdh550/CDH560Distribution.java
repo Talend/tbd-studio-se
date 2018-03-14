@@ -41,4 +41,9 @@ public class CDH560Distribution extends CDH550Distribution {
     public boolean doSupportSSLwithKerberos() {
         return true;
     }
+    
+    @Override
+    public boolean doSupportAvroDeflateProperties(){
+        return true;
+    }
 }

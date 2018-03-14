@@ -719,6 +719,7 @@
              <library id="jetty-util-emr500-latest"/>
              <library id="emr-metrics-client-emr500-latest"/>
              <library id="htrace-core-3.1.0-incubating.jar"/>
+             <library id="avro-mapred-emr500-latest"/>
         </libraryNeededGroup>
         
         <!-- Map/Reduce parquet group MRREQUIRED -->

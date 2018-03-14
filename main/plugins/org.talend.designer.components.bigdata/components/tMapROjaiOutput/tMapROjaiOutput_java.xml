@@ -243,14 +243,14 @@
 			<IMPORT MODULE="antlr4-runtime-4.5.jar"
 				MVN="mvn:org.talend.libraries/antlr4-runtime-4.5/6.0.0" NAME="antlr4-runtime-4.5.jar"
 				REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false')" />
-            <IMPORT MODULE="jackson-databind-2.7.9.2.jar"
-                MVN="mvn:com.fasterxml.jackson.core/jackson-databind/2.7.9.2" NAME="jackson-databind-2.7.9.2.jar"
+            <IMPORT MODULE="jackson-databind-2.9.4.jar"
+                MVN="mvn:com.fasterxml.jackson.core/jackson-databind/2.9.4" NAME="jackson-databind-2.9.4.jar"
                 REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false')" />
-            <IMPORT MODULE="jackson-annotations-2.7.9.jar"
-                MVN="mvn:com.fasterxml.jackson.core/jackson-annotations/2.7.9" NAME="jackson-annotations-2.7.9.jar"
+            <IMPORT MODULE="jackson-annotations-2.9.4.jar"
+                MVN="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.4" NAME="jackson-annotations-2.9.4.jar"
                 REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="jackson-core-2.7.9.jar"
-				MVN="mvn:com.fasterxml.jackson.core/jackson-core/2.7.9" NAME="jackson-core-2.7.9.jar"
+			<IMPORT MODULE="jackson-core-2.9.4.jar"
+				MVN="mvn:com.fasterxml.jackson.core/jackson-core/2.9.4" NAME="jackson-core-2.9.4.jar"
 				REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT MODULE="curator-framework-2.7.1.jar"
 				MVN="mvn:org.talend.libraries/curator-framework-2.7.1/6.0.0" NAME="curator-framework-2.7.1.jar"

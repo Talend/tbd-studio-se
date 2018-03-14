@@ -69,5 +69,11 @@ public interface MRComponent extends HadoopComponent {
      * @return true if the distribution supports/requires basic username/password authentification
      */
     public boolean doSupportBasicAtlasAuthentification();
+    
+    /**
+     * @return true if avro and avro-mapred are >= 1.7.6 and 
+     * supports that DEFAULT_DEFLATE_LEVEL is in avro instead of avro-mapred
+     */
+    public boolean doSupportAvroDeflateProperties();
 
 }

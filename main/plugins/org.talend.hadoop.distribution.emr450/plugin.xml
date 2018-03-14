@@ -433,6 +433,7 @@
              <library id="jetty-util-emr450-latest"/>
              <library id="emr-metrics-client-emr450-latest"/>
              <library id="htrace-core-3.1.0-incubating.jar"/>
+             <library id="avro-mapred-emr450-latest"/>
         </libraryNeededGroup>
         
         <!-- Map/Reduce parquet group MRREQUIRED -->
