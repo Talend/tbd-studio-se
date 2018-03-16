@@ -333,4 +333,8 @@ public abstract class AbstractDistribution {
     public boolean doSupportAvroDeflateProperties(){
         return false;
     }
+    
+    public boolean useOldAWSAPI() {
+        return true;
+    }
 }

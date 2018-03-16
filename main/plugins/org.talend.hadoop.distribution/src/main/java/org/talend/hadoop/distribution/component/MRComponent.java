@@ -75,5 +75,7 @@ public interface MRComponent extends HadoopComponent {
      * supports that DEFAULT_DEFLATE_LEVEL is in avro instead of avro-mapred
      */
     public boolean doSupportAvroDeflateProperties();
+    
+    public boolean useOldAWSAPI();
 
 }
