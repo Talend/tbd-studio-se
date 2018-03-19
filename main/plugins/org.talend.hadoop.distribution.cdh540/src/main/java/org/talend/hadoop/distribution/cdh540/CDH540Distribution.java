@@ -285,4 +285,9 @@ public class CDH540Distribution extends AbstractDistribution implements HDFSComp
     public boolean isActivated() {
         return true;
     }
+    
+    @Override
+    public boolean useOldAWSAPI() {
+        return true;
+    }
 }

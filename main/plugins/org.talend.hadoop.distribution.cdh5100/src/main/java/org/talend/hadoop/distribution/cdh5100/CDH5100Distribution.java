@@ -514,4 +514,9 @@ public class CDH5100Distribution extends AbstractDistribution implements ICloude
     public boolean doSupportAvroDeflateProperties(){
         return true;
     }
+    
+    @Override
+    public boolean useOldAWSAPI() {
+        return false;
+    }
 }

@@ -323,5 +323,10 @@ public class HDInsight34Distribution extends AbstractDistribution implements MRC
     public boolean doSupportAzureDataLakeStorage() {
         return true;
     }
+    
+    @Override
+    public boolean useOldAWSAPI() {
+        return true;
+    }
 
 }

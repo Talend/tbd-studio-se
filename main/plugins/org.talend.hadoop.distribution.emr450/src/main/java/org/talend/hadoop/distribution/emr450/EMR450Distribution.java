@@ -428,4 +428,9 @@ public class EMR450Distribution extends AbstractDistribution implements HDFSComp
         return false;
     }
     // End
+    
+    @Override
+    public boolean useOldAWSAPI() {
+        return false;
+    }
 }
