@@ -12384,7 +12384,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH5_13_0_dynamic_20180226115614083_0100_emr_ddb_hadoop_3_0_0",
-      "mvn_uri" : "mvn:org.talend.libraries/emr-ddb-hadoop-3.0.0/6.0.0",
+      "mvn_uri" : "mvn:org.talend.libraries/emr-ddb-hadoop-3.0.0/6.2.0",
       "name" : "emr-ddb-hadoop-3.0.0.jar",
       "tagName" : "libraryNeeded",
       "useStudioRepository" : "true"
