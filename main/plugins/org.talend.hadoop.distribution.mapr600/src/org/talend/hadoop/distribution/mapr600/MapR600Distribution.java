@@ -475,9 +475,4 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
         return true;
     }
     
-    @Override
-    public boolean useOldAWSAPI() {
-        return true;
-    }
-    
 }
