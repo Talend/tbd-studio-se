@@ -283,6 +283,6 @@ public class CDH540Distribution extends AbstractDistribution implements HDFSComp
 
     @Override
     public boolean isActivated() {
-        return true;
+        return false;
     }
 }
