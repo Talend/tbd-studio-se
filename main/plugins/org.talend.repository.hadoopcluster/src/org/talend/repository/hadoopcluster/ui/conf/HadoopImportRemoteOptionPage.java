@@ -82,7 +82,9 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
                         HadoopCluster cluster = configurator.getCluster(clustersCombo.getText());
                         confsService = new RetrieveRemoteConfsService(cluster);
                     }
-                    servicesTableComp.setServices(confsService.getAllServices());
+                    if (confsService != null) {
+                        servicesTableComp.setServices(confsService.getAllServices());
+                    }
                 } catch (Exception ex) {
                     ExceptionHandler.process(ex);
                 }
