@@ -196,7 +196,7 @@
       </classloader>
       <classloader
             index="NOSQL:MONGODB:MONGODB_3_2_X"
-            libraries="mongo-java-driver-2.14.1.jar">
+            libraries="mongo-java-driver-2.14.3.jar">
       </classloader>
       <classloader
             index="NOSQL:MONGODB:MONGODB_3_5_X"
