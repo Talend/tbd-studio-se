@@ -916,7 +916,7 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="java-xmlbuilder-1.0.jar" name="java-xmlbuilder-1.0.jar" mvn_uri="mvn:org.talend.libraries/java-xmlbuilder-1.0/6.1.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="javolution-5.5.1.jar" name="javolution-5.5.1.jar" mvn_uri="mvn:org.talend.libraries/javolution-5.5.1/6.1.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="jaxb-api-2.2.2.jar" name="jaxb-api-2.2.2.jar" mvn_uri="mvn:org.talend.libraries/jaxb-api-2.2.2/6.1.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="jaxb-impl-2.2.3-1.jar" name="jaxb-impl-2.2.3-1.jar" mvn_uri="mvn:org.talend.libraries/jaxb-impl-2.2.3-1/6.1.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="jaxb-impl-2.2.3-1.jar" name="jaxb-impl-2.2.3-1.jar" mvn_uri="mvn:org.talend.libraries/jaxb-impl-2.2.3-1/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="janino-3.0.0.jar" name="janino-3.0.0.jar" mvn_uri="mvn:org.talend.libraries/janino-3.0.0/6.1.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="jackson-mapper-asl-1.9.14-TALEND.jar" name="jackson-mapper-asl-1.9.14-TALEND.jar" mvn_uri="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="jackson-core-asl-1.9.14-TALEND.jar" name="jackson-core-asl-1.9.14-TALEND.jar" mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"/>
