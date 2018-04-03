@@ -1036,6 +1036,13 @@
              <library id="jackson-jaxrs-1.9.13.jar"/>
              <library id="jackson-xc-1.9.13.jar"/>
              <library id="jersey-client-1.9.jar"/>
+        </libraryNeededGroup>
+
+        <!-- Map/Reduce avro mapred group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Map/Reduce avro libraries for CDH 5.10 that are MRREQUIRED"
+                id="MAPREDUCE-AVRO-LIB-MRREQUIRED-CDH_5_10"
+                name="MAPREDUCE-AVRO-LIB-MRREQUIRED-CDH_5_10"  >
              <library id="avro-mapred-1.7.6-cdh5.10.1-hadoop2"/>
         </libraryNeededGroup>
 
