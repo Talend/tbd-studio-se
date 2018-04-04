@@ -910,7 +910,14 @@
             <library id="jackson-jaxrs-1.9.13.jar"/>
             <library id="jackson-xc-1.9.13.jar"/>
             <library id="jersey-client-1.9.jar"/>
-            <library id="avro-mapred-1.8.0-hadoop2-HDP_2_6"/>
+        </libraryNeededGroup>
+
+        <!--Map/Reduce avro group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Map/Reduce avro libraries for HDP 2.6 that are MRREQUIRED"
+                id="MAPREDUCE-AVRO-LIB-MRREQUIRED-HDP_2_6"
+                name="MAPREDUCE-AVRO-LIB-MRREQUIRED-HDP_2_6"  >
+             <library id="avro-mapred-1.8.0-hadoop2-HDP_2_6"/>
         </libraryNeededGroup>
         
         <!--Map/Reduce parquet group MRREQUIRED -->

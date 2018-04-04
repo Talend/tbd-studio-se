@@ -30,6 +30,7 @@ public class CDH580MapReduceModuleGroup {
         hs.add(new DistributionModuleGroup(CDH580Constant.MAPREDUCE_MODULE_GROUP.getModuleName()));
         hs.add(new DistributionModuleGroup(CDH580Constant.MAPREDUCE_PARQUET_MODULE_GROUP.getModuleName()));
         hs.add(new DistributionModuleGroup(CDH580Constant.MAPREDUCE_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName(), true, null));
+        hs.add(new DistributionModuleGroup(CDH580Constant.MAPREDUCE_AVRO_MRREQUIRED_MODULE_GROUP.getModuleName(), true, null));
         ComponentCondition conditionUseNavigator = new SimpleComponentCondition(new BasicExpression(
                 MRConstant.USE_CLOUDERA_NAVIGATOR));
         hs.add(new DistributionModuleGroup(CDH580Constant.TALEND_CLOUDERA_CDH_5_5_NAVIGATOR.getModuleName(), true,
