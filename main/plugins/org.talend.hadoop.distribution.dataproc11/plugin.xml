@@ -603,10 +603,15 @@
                 description="Map/Reduce libraries for GOOGLE DATAPROC 1.1"
                 id="MAPREDUCE-LIB-DATAPROC11"
                 name="MAPREDUCE-LIB-DATAPROC11">
-                
             <library id="hadoop-mapreduce-client-core-dataproc11"/>
+        </libraryNeededGroup>
+        
+        <!-- Map/Reduce avro group MRREQUIRED-->
+        <libraryNeededGroup
+                description="Map/Reduce libraries for GOOGLE DATAPROC 1.1 that are MRREQUIRED"
+                id="MAPREDUCE-AVRO-LIB-MRREQUIRED-DATAPROC11"
+                name="MAPREDUCE-AVRO-LIB-MRREQUIRED-DATAPROC11">
             <library id="avro-mapred-1.7.7.jar"/>
-
         </libraryNeededGroup>
         
          <!-- Spark2 group -->
