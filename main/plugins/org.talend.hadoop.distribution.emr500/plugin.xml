@@ -719,7 +719,6 @@
              <library id="jetty-util-emr500-latest"/>
              <library id="emr-metrics-client-emr500-latest"/>
              <library id="htrace-core-3.1.0-incubating.jar"/>
-             <library id="avro-mapred-emr500-latest"/>
         </libraryNeededGroup>
         
         <!-- Map/Reduce parquet group MRREQUIRED -->
@@ -731,7 +730,15 @@
              <library id="snappy-java-1.0.5.jar" />
              <library id="jodd-core-3.5.2.jar" />
         </libraryNeededGroup>
-        
+
+        <!-- Map/Reduce avro group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Map/Reduce avro libraries for EMR 5.0.0 that are MRREQUIRED"
+                id="MAPREDUCE-AVRO-LIB-MRREQUIRED-EMR_5_0_0"
+                name="MAPREDUCE-AVRO-LIB-MRREQUIRED-EMR_5_0_0">
+             <library id="avro-mapred-emr500-latest"/>
+        </libraryNeededGroup>
+
         <!-- Pig group -->
         <libraryNeededGroup
                 description="The lastest Pig libraries for EMR 5.0.0"

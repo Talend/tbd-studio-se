@@ -1637,7 +1637,6 @@
              <library id="jackson-xc-1.9.13.jar"/>
              <library id="jersey-client-1.9.jar"/>
              <library id="emr-metrics-client-2.1.0.jar"/>
-             <library id="avro-mapred-1.7.7-hadoop2.jar"/>
         </libraryNeededGroup>
 
         <!-- Map/Reduce parquet group MRREQUIRED -->
@@ -1649,6 +1648,15 @@
              <library id="snappy-java-1.1.2.6.jar" />
              <library id="jodd-core-3.5.2.jar" />
         </libraryNeededGroup>
+
+        <!-- Map/Reduce avro group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Map/Reduce avro libraries for EMR 5.5.0 that are MRREQUIRED"
+                id="MAPREDUCE-AVRO-LIB-MRREQUIRED-EMR_5_5_0"
+                name="MAPREDUCE-AVRO-LIB-MRREQUIRED-EMR_5_5_0">
+             <library id="avro-mapred-1.7.7-hadoop2.jar"/>
+        </libraryNeededGroup>
+
 
         <!-- Pig group -->
         <libraryNeededGroup

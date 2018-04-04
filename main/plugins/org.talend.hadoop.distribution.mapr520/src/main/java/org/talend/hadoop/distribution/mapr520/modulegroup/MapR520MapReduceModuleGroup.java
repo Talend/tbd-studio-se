@@ -25,6 +25,7 @@ public class MapR520MapReduceModuleGroup {
         hs.add(new DistributionModuleGroup(MapR520Constant.HDFS_MODULE_GROUP.getModuleName()));
         hs.add(new DistributionModuleGroup(MapR520Constant.MAPREDUCE_MODULE_GROUP.getModuleName()));
         hs.add(new DistributionModuleGroup(MapR520Constant.MAPREDUCE_PARQUET_MODULE_GROUP.getModuleName(), true, null));
+        hs.add(new DistributionModuleGroup(MapR520Constant.MAPREDUCE_AVRO_MODULE_GROUP.getModuleName(), true, null));
         return hs;
     }
 }

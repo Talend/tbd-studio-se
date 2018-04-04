@@ -543,6 +543,12 @@
             <library id="jackson-mapper-asl-1.9.14-TALEND.jar" />
             <library id="htrace-core-3.1.0-incubating.jar" />
             <library id="avro-1.7.5.jar" />
+         </libraryNeededGroup>
+
+        <libraryNeededGroup
+           description="The lastest Map Reduce libraries of MapR 5.2.0"
+           id="MAPREDUCE-AVRO-LIB-MAPR520"
+           name="MAPREDUCE-AVRO-LIB-MAPR520">
             <library id="avro-mapred-1.7.5.jar"/>
          </libraryNeededGroup>
 
