@@ -36,7 +36,7 @@ public class CDH580MapReduceModuleGroupTest {
         results.put(CDH580Constant.MAPREDUCE_AVRO_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
         results.put(CDH580Constant.TALEND_CLOUDERA_CDH_5_5_NAVIGATOR.getModuleName(), "(USE_CLOUDERA_NAVIGATOR=='true')"); //$NON-NLS-1$
         Set<DistributionModuleGroup> moduleGroups = CDH580MapReduceModuleGroup.getModuleGroups();
-        assertEquals(8, moduleGroups.size());
+        assertEquals(6, moduleGroups.size());
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$
             if (results.get(module.getModuleName()) == null) {
