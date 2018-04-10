@@ -63,7 +63,11 @@
         needGenereateJarSqoopOptions_<%=cid%>.setConnectString(<%=connection%>); // __CONNECTION__
         needGenereateJarSqoopOptions_<%=cid%>.setUsername(<%=username%>);
         if((<%=driverClass%> != null) && !"".equals(<%=driverClass%>)) {
-        needGenereateJarSqoopOptions_<%=cid%>.setDriverClassName(<%=driverClass%>);//driver class name
+        	com.cloudera.sqoop.metastore.JobData jobData_<%=cid%> = new com.cloudera.sqoop.metastore.JobData(needGenereateJarSqoopOptions_<%=cid%>, null);
+        	org.apache.sqoop.manager.DefaultManagerFactory defaultManagerFactory_<%=cid%> = new org.apache.sqoop.manager.DefaultManagerFactory();
+        	if(null == defaultManagerFactory_<%=cid%>.accept(jobData_<%=cid%>)) {
+        		needGenereateJarSqoopOptions_<%=cid%>.setDriverClassName(<%=driverClass%>);//driver class name
+        	}
         }
         <%
         passwordFieldName = "__PASSWORD__";

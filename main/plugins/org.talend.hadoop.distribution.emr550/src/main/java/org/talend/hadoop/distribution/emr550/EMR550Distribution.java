@@ -471,4 +471,9 @@ public class EMR550Distribution extends AbstractDistribution implements HBaseCom
     public boolean doSupportAvroDeflateProperties(){
         return true;
     }
+    
+    @Override
+    public boolean useOldAWSAPI() {
+        return false;
+    }
 }

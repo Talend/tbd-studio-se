@@ -335,6 +335,11 @@ public class HadoopServerUtil {
         return username;
     }
 
+    /**
+     * It's meanless here since the groups retrieved are from local OS instead of HDFS. <br>
+     * refer to https://hadoop.apache.org/docs/r2.8.0/hadoop-project-dist/hadoop-common/GroupsMapping.html
+     */
+    @Deprecated
     public static String extractGroups(HDFSConnectionBean connection, ClassLoader classLoader) throws HadoopServerException {
         StringBuffer groupBuf = new StringBuffer();
         try {
@@ -343,14 +348,19 @@ public class HadoopServerUtil {
             if (ugi != null) {
                 String[] groups = (String[]) ReflectionUtils.invokeMethod(ugi, "getGroupNames", new Object[0]); //$NON-NLS-1$
                 if (groups != null && groups.length > 0) {
+                    boolean isFirstOne = true;
                     for (String group : groups) {
-                        groupBuf.append(group).append(GROUP_SEPARATOR);
+                        if (isFirstOne) {
+                            isFirstOne = false;
+                        } else {
+                            groupBuf.append(GROUP_SEPARATOR);
+                        }
+                        groupBuf.append(group);
                     }
-                    groupBuf.deleteCharAt(groups.length - 1);
                 }
             }
         } catch (Exception e) {
-            // ignore it.
+            ExceptionHandler.process(e);
         }
 
         return groupBuf.toString();

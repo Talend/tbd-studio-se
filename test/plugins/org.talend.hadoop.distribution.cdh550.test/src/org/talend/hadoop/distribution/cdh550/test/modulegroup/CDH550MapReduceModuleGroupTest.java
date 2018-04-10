@@ -12,7 +12,8 @@
 // ============================================================================
 package org.talend.hadoop.distribution.cdh550.test.modulegroup;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,9 +37,10 @@ public class CDH550MapReduceModuleGroupTest {
         results.put(CDH550Constant.MAPREDUCE_MODULE_GROUP.getModuleName(), null);
         results.put(CDH550Constant.MAPREDUCE_PARQUET_MODULE_GROUP.getModuleName(), null);
         results.put(CDH550Constant.MAPREDUCE_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
+        results.put(CDH550Constant.MAPREDUCE_AVRO_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
         results.put(CDH550Constant.TALEND_CLOUDERA_CDH_5_5_NAVIGATOR.getModuleName(), "(USE_CLOUDERA_NAVIGATOR=='true')"); //$NON-NLS-1$
         Set<DistributionModuleGroup> moduleGroups = CDH550MapReduceModuleGroup.getModuleGroups();
-        assertEquals(5, moduleGroups.size());
+        assertEquals(6, moduleGroups.size());
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$
             if (results.get(module.getModuleName()) == null) {

@@ -4,13 +4,14 @@
   <parent>
     <groupId>org.talend.studio</groupId>
     <artifactId>tbd-studio-se</artifactId>
-    <version>7.0.1-SNAPSHOT</version>
+    <version>7.1.0-SNAPSHOT</version>
     <relativePath>../../../</relativePath>
   </parent>
   <artifactId>org.talend.hadoop.distribution.hdp250.jars</artifactId>
   <packaging>eclipse-plugin</packaging>
   <properties>
     <talend.groupid>org.talend.libraries</talend.groupid>
+    <talend.version.600>6.0.0</talend.version.600>
     <talend.version.630>6.3.0</talend.version.630>
   </properties>
   <build>
@@ -232,13 +233,13 @@
 				</artifactItem>
 				<artifactItem>
 				  <groupId>${talend.groupid}</groupId>
-				  <artifactId>jackson-core-2.3.1</artifactId>
-				  <version>${talend.version.630}</version>
+				  <artifactId>jackson-core-2.5.4</artifactId>
+				  <version>${talend.version.600}</version>
 				</artifactItem>
 				<artifactItem>
 				  <groupId>${talend.groupid}</groupId>
-				  <artifactId>jackson-databind-2.3.1</artifactId>
-				  <version>${talend.version.630}</version>
+				  <artifactId>jackson-databind-2.5.4.redhat-2</artifactId>
+				  <version>${talend.version.600}</version>
 				</artifactItem>
 				<artifactItem>
 				  <groupId>${talend.groupid}</groupId>

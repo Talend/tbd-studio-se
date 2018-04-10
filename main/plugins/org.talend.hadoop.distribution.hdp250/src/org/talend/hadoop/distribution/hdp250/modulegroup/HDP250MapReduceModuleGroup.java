@@ -30,7 +30,7 @@ public class HDP250MapReduceModuleGroup {
         hs.add(new DistributionModuleGroup(HDP250Constant.MAPREDUCE_MODULE_GROUP.getModuleName()));
         hs.add(new DistributionModuleGroup(HDP250Constant.MAPREDUCE_PARQUET_MODULE_GROUP.getModuleName()));
         hs.add(new DistributionModuleGroup(HDP250Constant.MAPREDUCE_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName(), true, null));
-
+        hs.add(new DistributionModuleGroup(HDP250Constant.MAPREDUCE_AVRO_MRREQUIRED_MODULE_GROUP.getModuleName(), true, null));
         ComponentCondition useAtlas = new SimpleComponentCondition(new BasicExpression(MRConstant.USE_ATLAS));
         hs.add(new DistributionModuleGroup(HDP250Constant.ATLAS_HDP_2_5.getModuleName(), false, useAtlas));
         return hs;

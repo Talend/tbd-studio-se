@@ -456,4 +456,9 @@ public class HDP250Distribution extends AbstractDistribution implements HDFSComp
     public boolean doSupportAvroDeflateProperties(){
         return true;
     }
+    
+    @Override
+    public boolean useOldAWSAPI() {
+        return false;
+    }
 }

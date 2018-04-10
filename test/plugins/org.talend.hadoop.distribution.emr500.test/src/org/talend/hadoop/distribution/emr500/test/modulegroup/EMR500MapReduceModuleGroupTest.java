@@ -12,7 +12,8 @@
 // ============================================================================
 package org.talend.hadoop.distribution.emr500.test.modulegroup;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,8 +31,9 @@ public class EMR500MapReduceModuleGroupTest {
         results.put(EMR500MapReduceModuleGroup.HDFS_GROUP_NAME, null);
         results.put(EMR500MapReduceModuleGroup.MAPREDUCE_GROUP_NAME, null);
         results.put(EMR500MapReduceModuleGroup.MAPREDUCE_PARQUET_MRREQUIRED_GROUP_NAME, null);
+        results.put(EMR500MapReduceModuleGroup.MAPREDUCE_AVRO_MRREQUIRED_GROUP_NAME, null);
         Set<DistributionModuleGroup> moduleGroups = EMR500MapReduceModuleGroup.getModuleGroups();
-        assertEquals(3, moduleGroups.size());
+        assertEquals(4, moduleGroups.size());
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$
             if (results.get(module.getModuleName()) == null) {

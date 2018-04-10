@@ -196,7 +196,7 @@
       </classloader>
       <classloader
             index="NOSQL:MONGODB:MONGODB_3_2_X"
-            libraries="mongo-java-driver-2.14.1.jar">
+            libraries="mongo-java-driver-2.14.3.jar">
       </classloader>
       <classloader
             index="NOSQL:MONGODB:MONGODB_3_5_X"
@@ -325,5 +325,34 @@
         name="spring-data-neo4j-rest-3.4.0.RELEASE.jar" 
         mvn_uri="mvn:org.talend.libraries/spring-data-neo4j-rest-3.4.0.RELEASE/6.0.0">
       </libraryNeeded>
+
+	  <libraryNeeded
+        context="Needed for MongoDB Connection"
+        id="mongo-java-driver-2.11.2.jar"
+        name="mongo-java-driver-2.11.2.jar"
+        mvn_uri="mvn:org.talend.libraries/mongo-java-driver-2.11.2/6.0.0">
+      </libraryNeeded>
+
+      <libraryNeeded
+        context="Needed for MongoDB Connection"
+        id="mongo-java-driver-2.12.2.jar"
+        name="mongo-java-driver-2.12.2.jar"
+        mvn_uri="mvn:org.talend.libraries/mongo-java-driver-2.12.2/6.0.0">
+      </libraryNeeded>
+
+      <libraryNeeded
+        context="Needed for MongoDB Connection"
+        id="mongo-java-driver-2.13.2.jar"
+        name="mongo-java-driver-2.13.2.jar"
+        mvn_uri="mvn:org.talend.libraries/mongo-java-driver-2.13.2/6.0.0">
+      </libraryNeeded>
+
+      <libraryNeeded
+        context="Needed for MongoDB Connection"
+        id="mongo-java-driver-2.14.3.jar"
+        name="mongo-java-driver-2.14.3.jar"
+        mvn_uri="mvn:org.talend.libraries/mongo-java-driver-2.14.3/6.0.0">
+      </libraryNeeded>
+
    </extension>
 </plugin>

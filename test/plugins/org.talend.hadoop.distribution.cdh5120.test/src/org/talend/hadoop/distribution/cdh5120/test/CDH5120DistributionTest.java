@@ -72,7 +72,7 @@ public class CDH5120DistributionTest {
         assertTrue(((HiveComponent) distribution).doSupportAvroFormat());
         assertTrue(((HiveComponent) distribution).doSupportParquetFormat());
         assertTrue(((HiveComponent) distribution).doSupportStoreAsParquet());
-        assertFalse(((HiveComponent) distribution).doSupportClouderaNavigator());
+        assertTrue(((HiveComponent) distribution).doSupportClouderaNavigator());
         assertTrue(((SparkBatchComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_2_2));
         assertFalse(((SparkBatchComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_2_1));
         assertFalse(((SparkBatchComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_2_0));

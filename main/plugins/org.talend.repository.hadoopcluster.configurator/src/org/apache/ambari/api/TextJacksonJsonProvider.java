@@ -15,7 +15,7 @@ package org.apache.ambari.api;
 import javax.ws.rs.core.MediaType;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.jaxrs.json.Annotations;
+import com.fasterxml.jackson.jaxrs.cfg.Annotations;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 
 /**
@@ -55,22 +55,13 @@ public class TextJacksonJsonProvider extends JacksonJsonProvider {
     public TextJacksonJsonProvider(ObjectMapper mapper, Annotations[] annotationsToUse) {
         super(mapper, annotationsToUse);
     }
-
-    @Override
-    protected boolean isJsonType(MediaType mediaType) {
-        /*
-         * As suggested by Stephen D, there are 2 ways to check: either being as inclusive as possible (if subtype is
-         * "json"), or exclusive (major type "application", minor type "json"). Let's start with inclusive one, hard to
-         * know which major types we should cover aside from "application".
-         */
+    
+    protected boolean hasMatchingMediaType(MediaType mediaType) {
         if (mediaType != null) {
-            // Ok: there are also "xxx+json" subtypes, which count as well
-            String subtype = mediaType.getSubtype();
-            return "json".equalsIgnoreCase(subtype) || subtype.endsWith("+json") || mediaType.equals(MediaType.TEXT_PLAIN_TYPE);
+            if (MediaType.TEXT_PLAIN_TYPE.equals(mediaType)) {
+                return true;
+            }
         }
-        /*
-         * Not sure if this can happen; but it seems reasonable that we can at least produce json without media type?
-         */
-        return true;
+        return super.hasMatchingMediaType(mediaType);
     }
 }

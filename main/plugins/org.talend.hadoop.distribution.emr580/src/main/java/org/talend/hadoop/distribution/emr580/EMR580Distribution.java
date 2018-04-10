@@ -477,4 +477,9 @@ public class EMR580Distribution extends AbstractDistribution implements
     public boolean doSupportAvroDeflateProperties(){
         return true;
     }
+    
+    @Override
+    public boolean useOldAWSAPI() {
+        return false;
+    }
 }

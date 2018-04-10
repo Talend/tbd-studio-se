@@ -12,6 +12,118 @@
 	"description": "",
 	"modules": [
 		{
+			"id": "avro-1.7.6-cdh5.13.0",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "avro-1.7.6-cdh5.13.0.jar",
+			"mvnUri": "mvn:org.talend.libraries/avro-1.7.6-cdh5.13.0/6.0.0",
+			"useStudioRepository": "true",
+			"description": "This is a workaround for current cdh 5.13, because this cdh avro jar cannot be found with BASE type"
+		},
+		{
+			"id": "azure-common-1.7.1",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "azure-common-1.7.1.jar",
+			"mvnUri": "mvn:org.talend.libraries/azure-common-1.7.1/6.0.0",
+			"useStudioRepository": "true",
+			"description": ""
+		},
+		{
+			"id": "commons-lang3-3.4",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "commons-lang3-3.4.jar",
+			"mvnUri": "mvn:org.talend.libraries/commons-lang3-3.4/6.2.0",
+			"useStudioRepository": "true",
+			"description": ""
+		},
+		{
+			"id": "emr-core-2.4.0",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "emr-core-2.4.0.jar",
+			"mvnUri": "mvn:org.talend.libraries/emr-core-2.4.0/6.0.0",
+			"useStudioRepository": "true",
+			"description": ""
+		},
+		{
+			"id": "emr-ddb-hadoop-3.0.0",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "emr-ddb-hadoop-3.0.0.jar",
+			"mvnUri": "mvn:org.talend.libraries/emr-ddb-hadoop-3.0.0/6.2.0",
+			"useStudioRepository": "true",
+			"description": ""
+		},
+		{
+			"id": "elephant-bird-rcfile",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "elephant-bird-rcfile-4.9-patched-hive-1.x.jar",
+			"mvnUri": "mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0",
+			"useStudioRepository": "true"
+		},
+		{
+			"id": "graphframes",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "graphframes-0.5.0-spark2.1-s_2.11.jar",
+			"mvnUri": "mvn:graphframes/graphframes/0.5.0-spark2.1-s_2.11",
+			"description": ""
+		},
+		{
+			"id": "httpclient-4.5.2",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "httpclient-4.5.2.jar",
+			"mvnUri": "mvn:org.talend.libraries/httpclient-4.5.2/6.0.0",
+			"useStudioRepository": "true",
+			"description": ""
+		},
+		{
+			"id": "httpcore-4.4.3",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "httpcore-4.4.3.jar",
+			"mvnUri": "mvn:org.talend.libraries/httpcore-4.4.3/6.0.0",
+			"useStudioRepository": "true",
+			"description": ""
+		},
+		{
+			"id": "json-20080701",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "json-20080701.jar",
+			"mvnUri": "mvn:org.talend.libraries/json-20080701/6.0.0",
+			"useStudioRepository": "true",
+			"description": ""
+		},
+		{
+			"id": "jets3t",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "jets3t-0.9.0.jar",
+			"mvnUri": "mvn:net.java.dev.jets3t/jets3t/0.9.0",
+			"description": ""
+		},
+		{
+			"id": "netty-4.0.29.Final",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "netty-all-4.0.29.Final.jar",
+			"mvnUri": "mvn:io.netty/netty-all/4.0.29.Final",
+			"description": ""
+		},
+		{
+			"id": "talend-lineage-api",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "talend-lineage-api-0.2.0.jar",
+			"mvnUri": "mvn:org.talend.libraries/talend-lineage-api-0.2.0/6.0.0",
+			"useStudioRepository": "true"
+		},
+		{
 			"id": "avro-mapred",
 			"type": "BASE",
 			"context": "{properties.context}",
@@ -20,6 +132,13 @@
 			"classifier": "hadoop2",
 			"description": "",
 			"exclusions": [
+				{
+					"groupId": "org.apache.avro",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
 				{
 					"groupId": "io.netty",
 					"artifactId": "*",
@@ -47,98 +166,13 @@
 			"description": ""
 		},
 		{
-			"id": "hadoop-azure",
+			"id": "cloudera-navigator",
 			"type": "BASE",
 			"context": "{properties.context}",
-			"groupId": "org.apache.hadoop",
-			"artifactId": "hadoop-azure",
+			"groupId": "com.cloudera.navigator",
+			"artifactId": "navigator-sdk-client",
+			"version": "2.0",
 			"classifier": "",
-			"description": "",
-			"exclusions": [
-				{
-					"groupId": "com.fasterxml.jackson.core",
-					"artifactId": "jackson-core",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
-					"groupId": "xerces",
-					"artifactId": "*",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				}
-			]
-		},
-		{
-			"id": "hadoop-azure-datalake",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "org.apache.hadoop",
-			"artifactId": "hadoop-azure-datalake",
-			"classifier": "",
-			"description": "",
-			"exclusions": [
-				{
-					"groupId": "com.fasterxml.jackson.core",
-					"artifactId": "jackson-core",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
-					"groupId": "xerces",
-					"artifactId": "*",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				}
-			]
-		},
-		{
-			"id": "azure-common-1.7.1",
-			"type": "STANDARD",
-			"context": "{properties.context}",
-			"jarName": "azure-common-1.7.1.jar",
-			"mvnUri": "mvn:org.talend.libraries/azure-common-1.7.1/6.0.0",
-			"useStudioRepository": "true",
-			"description": "The above useStudioRepository controls where we are going to search the jar, in talend nexus or user defined one in studio"
-		},
-		{
-			"id": "emr-core-2.4.0",
-			"type": "STANDARD",
-			"context": "{properties.context}",
-			"jarName": "emr-core-2.4.0.jar",
-			"mvnUri": "mvn:org.talend.libraries/emr-core-2.4.0/6.0.0",
-			"useStudioRepository": "true",
-			"description": ""
-		},
-		{
-			"id": "emr-ddb-hadoop-3.0.0",
-			"type": "STANDARD",
-			"context": "{properties.context}",
-			"jarName": "emr-ddb-hadoop-3.0.0.jar",
-			"mvnUri": "mvn:org.talend.libraries/emr-ddb-hadoop-3.0.0/6.0.0",
-			"useStudioRepository": "true",
-			"description": ""
-		},
-		{
-			"id": "httpclient-4.5.2",
-			"type": "STANDARD",
-			"context": "{properties.context}",
-			"jarName": "httpclient-4.5.2.jar",
-			"mvnUri": "mvn:org.talend.libraries/httpclient-4.5.2/6.0.0",
-			"useStudioRepository": "true",
-			"description": ""
-		},
-		{
-			"id": "httpcore-4.4.3",
-			"type": "STANDARD",
-			"context": "{properties.context}",
-			"jarName": "httpcore-4.4.3.jar",
-			"mvnUri": "mvn:org.talend.libraries/httpcore-4.4.3/6.0.0",
-			"useStudioRepository": "true",
 			"description": ""
 		},
 		{
@@ -158,14 +192,6 @@
 					"description": ""
 				}
 			]
-		},
-		{
-			"id": "elephant-bird-rcfile",
-			"type": "STANDARD",
-			"context": "{properties.context}",
-			"jarName": "elephant-bird-rcfile-4.9-patched-hive-1.x.jar",
-			"mvnUri": "mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0",
-			"useStudioRepository": "true"
 		},
 		{
 			"id": "elephant-bird-core",
@@ -246,12 +272,54 @@
 			]
 		},
 		{
-			"id": "graphframes",
-			"type": "STANDARD",
+			"id": "hadoop-azure",
+			"type": "BASE",
 			"context": "{properties.context}",
-			"jarName": "graphframes-0.5.0-spark2.1-s_2.11.jar",
-			"mvnUri": "mvn:graphframes/graphframes/0.5.0-spark2.1-s_2.11",
-			"description": ""
+			"groupId": "org.apache.hadoop",
+			"artifactId": "hadoop-azure",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "com.fasterxml.jackson.core",
+					"artifactId": "jackson-core",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "hadoop-azure-datalake",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.hadoop",
+			"artifactId": "hadoop-azure-datalake",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "com.fasterxml.jackson.core",
+					"artifactId": "jackson-core",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
 		},
 		{
 			"id": "hadoop-client",
@@ -291,24 +359,6 @@
 					"description": ""
 				}
 			]
-		},
-		{
-			"id": "cloudera-navigator",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "com.cloudera.navigator",
-			"artifactId": "navigator-sdk-client",
-			"version": "2.0",
-			"classifier": "",
-			"description": ""
-		},
-{
-			"id": "talend-lineage-api",
-			"type": "STANDARD",
-			"context": "{properties.context}",
-			"jarName": "talend-lineage-api-0.2.0.jar",
-			"mvnUri": "mvn:org.talend.libraries/talend-lineage-api-0.2.0/6.0.0",
-			"useStudioRepository": "true"
 		},
 		{
 			"id": "hadoop-mapreduce-client-core",
@@ -711,14 +761,6 @@
 			]
 		},
 		{
-			"id": "jets3t",
-			"type": "STANDARD",
-			"context": "{properties.context}",
-			"jarName": "jets3t-0.9.0.jar",
-			"mvnUri": "mvn:net.java.dev.jets3t/jets3t/0.9.0",
-			"description": ""
-		},
-		{
 			"id": "jodd",
 			"type": "BASE",
 			"context": "{properties.context}",
@@ -748,11 +790,12 @@
 			"description": ""
 		},
 		{
-			"id": "netty-4.0.29.Final",
-			"type": "STANDARD",
+			"id": "kite-data-core",
+			"type": "BASE",
 			"context": "{properties.context}",
-			"jarName": "netty-all-4.0.29.Final.jar",
-			"mvnUri": "mvn:io.netty/netty-all/4.0.29.Final",
+			"groupId": "org.kitesdk",
+			"artifactId": "kite-data-core",
+			"classifier": "",
 			"description": ""
 		},
 		{
@@ -1000,6 +1043,24 @@
 			]
 		},
 		{
+			"id": "sqoop_only",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.sqoop",
+			"artifactId": "sqoop",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "*",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
 			"id": "MODULE_COMMONS_CODEC",
 			"type": "REFERENCE",
 			"context": "{properties.context}",
@@ -1041,6 +1102,7 @@
 			"id": "MAPREDUCE-LIB-DYNAMIC",
 			"description": "",
 			"modules": [
+				"avro-mapred",
 				"hadoop-client",
 				"jodd"
 			]
@@ -1077,14 +1139,6 @@
 			"modules": [
 				"hive-jdbc",
 				"hive-exec"
-			]
-		},
-		{
-			"id": "SQOOP-LIB-DYNAMIC",
-			"description": "",
-			"modules": [
-				"sqoop",
-				"avro-mapred"
 			]
 		},
 		{
@@ -1310,17 +1364,28 @@
 			]
 		},
 		{
-			"id": "SQOOP-PARQUET-LIB-DYNAMIC",
-			"description": "",
-			"modules": [
-				"hadoop-client"
-			]
-		},
-		{
 			"id": "SPARK2-KUDU-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
 			"modules": [
 				"kudu-spark2_2.11"
+			]
+		},
+		{
+			"id": "SQOOP-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+				"avro-1.7.6-cdh5.13.0",
+				"commons-lang3-3.4",
+				"json-20080701",
+				"avro-mapred",
+				"sqoop_only"
+			]
+		},
+		{
+			"id": "SQOOP-PARQUET-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+				"kite-data-core"
 			]
 		}
 	],

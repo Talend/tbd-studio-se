@@ -2,17 +2,18 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Configurator
 Bundle-SymbolicName: org.talend.repository.hadoopcluster.configurator
-Bundle-Version: 7.0.1.qualifier
+Bundle-Version: 7.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: .,
  lib/cloudera-manager-api-5.4.0.jar,
  lib/geronimo-javamail_1.4_spec-1.7.1.jar,
  lib/hamcrest-core-1.3.jar,
- lib/jackson-jaxrs-json-provider-2.1.0.jar,
- lib/jackson-module-jaxb-annotations-2.1.0.jar,
  lib/jaxb-impl-2.2.6.jar,
  lib/jsr250-api-1.0.jar,
- lib/joda-time-2.1.jar
+ lib/joda-time-2.1.jar,
+ lib/jackson-jaxrs-base-2.9.4.jar,
+ lib/jackson-jaxrs-json-provider-2.9.4.jar,
+ lib/jackson-module-jaxb-annotations-2.9.4.jar
 Export-Package: org.talend.repository.hadoopcluster.configurator
 Require-Bundle: org.talend.libraries.apache.common,
  org.talend.libraries.apache.cxf,

@@ -34,8 +34,9 @@ public class Dataproc11MapReduceModuleGroupTest {
         results.put(Dataproc11Constant.MAPREDUCE_PARQUET_MODULE_GROUP.getModuleName(), null);
         results.put(Dataproc11Constant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), null);
         results.put(Dataproc11Constant.MAPREDUCE_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
+        results.put(Dataproc11Constant.MAPREDUCE_AVRO_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
         Set<DistributionModuleGroup> moduleGroups = Dataproc11MapReduceModuleGroup.getModuleGroups();
-        assertEquals(5, moduleGroups.size());
+        assertEquals(6, moduleGroups.size());
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$
             if (results.get(module.getModuleName()) == null) {

@@ -546,9 +546,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
-            id="jackson-core-asl-1.9.13.jar"
-            name="jackson-core-asl-1.9.13.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.13/6.0.0"/>
+            id="jackson-core-asl-1.9.14-TALEND.jar"
+            name="jackson-core-asl-1.9.14-TALEND.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
@@ -814,9 +814,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
-            id="jackson-module-scala_2.11-2.6.6.jar"
-            name="jackson-module-scala_2.11-2.6.6.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-module-scala_2.11-2.6.6/6.0.0"/>
+            id="jackson-module-scala_2.11-2.6.7.1.jar"
+            name="jackson-module-scala_2.11-2.6.7.1.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-module-scala_2.11-2.6.7.1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
@@ -832,21 +832,21 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
-            id="jackson-module-paranamer-2.6.6.jar"
-            name="jackson-module-paranamer-2.6.6.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-module-paranamer-2.6.6/6.0.0"/>
+            id="jackson-module-paranamer-2.6.7.jar"
+            name="jackson-module-paranamer-2.6.7.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-module-paranamer-2.6.7/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
-            id="jackson-core-2.6.6.jar"
-            name="jackson-core-2.6.6.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-core-2.6.6/6.0.0"/>
+            id="jackson-core-2.6.7.jar"
+            name="jackson-core-2.6.7.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-core-2.6.7/6.0.0"/>
             
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
-            id="jackson-databind-2.6.6.jar"
-            name="jackson-databind-2.6.6.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-databind-2.6.6/6.0.0"/>
+            id="jackson-databind-2.6.7.1.jar"
+            name="jackson-databind-2.6.7.1.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-databind-2.6.7.1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
@@ -922,9 +922,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
-            id="jackson-databind-2.6.5.jar"
-            name="jackson-databind-2.6.5.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-databind-2.6.5/6.0.0"/>
+            id="jackson-databind-2.6.7.1.jar"
+            name="jackson-databind-2.6.7.1.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-databind-2.6.7.1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
@@ -1334,15 +1334,15 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
-            id="jackson-annotations-2.6.6.jar"
-            name="jackson-annotations-2.6.6.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-annotations-2.6.6/6.0.0"/>
+            id="jackson-annotations-2.6.7.jar"
+            name="jackson-annotations-2.6.7.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-annotations-2.6.7/6.0.0"/>
             
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
-            id="jackson-dataformat-cbor-2.6.6.jar"
-            name="jackson-dataformat-cbor-2.6.6.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-dataformat-cbor-2.6.6/6.0.0"/>
+            id="jackson-dataformat-cbor-2.6.7.jar"
+            name="jackson-dataformat-cbor-2.6.7.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-dataformat-cbor-2.6.7/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
@@ -1648,9 +1648,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
-            id="jackson-mapper-asl-1.9.13.jar"
-            name="jackson-mapper-asl-1.9.13.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-mapper-asl-1.9.13/6.0.0"/>
+            id="jackson-mapper-asl-1.9.14-TALEND.jar"
+            name="jackson-mapper-asl-1.9.14-TALEND.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
@@ -1768,8 +1768,8 @@
              <library id="htrace-core-3.1.0-incubating.jar"/>
              <library id="servlet-api-2.5.jar"/>
              <library id="avro-1.7.7.jar"/>
-             <library id="jackson-mapper-asl-1.9.13.jar"/>
-             <library id="jackson-core-asl-1.9.13.jar"/>
+             <library id="jackson-mapper-asl-1.9.14-TALEND.jar"/>
+             <library id="jackson-core-asl-1.9.14-TALEND.jar"/>
         </libraryNeededGroup>
 
         <!-- S3 group -->
@@ -1801,7 +1801,6 @@
              <library id="jackson-xc-1.9.13.jar"/>
              <library id="jersey-client-1.9.jar"/>
              <library id="emr-metrics-client-2.1.0.jar"/>
-             <library id="avro-mapred-1.7.7-hadoop2.jar"/>
         </libraryNeededGroup>
 
         <!-- Map/Reduce parquet group MRREQUIRED -->
@@ -1812,6 +1811,14 @@
              <library id="parquet-hadoop-bundle-1.6.0.jar" />
              <library id="snappy-java-1.1.2.6.jar" />
              <library id="jodd-core-3.5.2.jar" />
+        </libraryNeededGroup>
+
+        <!-- Map/Reduce avro group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Map/Reduce avro libraries for EMR 5.8.0 that are MRREQUIRED"
+                id="MAPREDUCE-AVRO-LIB-MRREQUIRED-EMR_5_8_0"
+                name="MAPREDUCE-AVRO-LIB-MRREQUIRED-EMR_5_8_0">
+             <library id="avro-mapred-1.7.7-hadoop2.jar"/>
         </libraryNeededGroup>
 
         <!-- Pig group -->
@@ -1909,8 +1916,8 @@
              <library id="zookeeper-3.4.10.jar" />
              <library id="htrace-core-3.1.0-incubating.jar" />
              <library id="guava-14.0.1.jar" />
-             <library id="jackson-mapper-asl-1.9.13.jar" />
-             <library id="jackson-core-asl-1.9.13.jar" />
+             <library id="jackson-mapper-asl-1.9.14-TALEND.jar" />
+             <library id="jackson-core-asl-1.9.14-TALEND.jar" />
              <library id="netty-all-4.0.43.Final.jar" />
              <library id="protobuf-java-2.5.0.jar" />
              <library id="log4j-1.2.17.jar" />
@@ -1980,8 +1987,8 @@
             <library id="kite-data-core-1.0.0.jar"/>
             <library id="kite-data-mapreduce-1.0.0.jar"/>
             <library id="kite-hadoop-compatibility-1.0.0.jar"/>
-            <library id="jackson-databind-2.3.1.jar"/>
-            <library id="jackson-core-2.3.1.jar"/>
+            <library id="jackson-databind-2.5.4.redhat-2.jar"/>
+            <library id="jackson-core-2.5.4.jar"/>
             <library id="parquet-hadoop-bundle-1.8.1.jar" />
             <library id="parquet-avro-1.4.1.jar"/>
         </libraryNeededGroup>
@@ -2010,8 +2017,8 @@
                 id="SPARK-KAFKA-AVRO-LIB-MRREQUIRED-EMR_5_8_0_LATEST"
                 name="SPARK-KAFKA-AVRO-LIB-MRREQUIRED-EMR_5_8_0_LATEST">
             <library id="avro-1.7.7.jar"/>
-            <library id="jackson-mapper-asl-1.9.13.jar" />
-            <library id="jackson-core-asl-1.9.13.jar" />
+            <library id="jackson-mapper-asl-1.9.14-TALEND.jar" />
+            <library id="jackson-core-asl-1.9.14-TALEND.jar" />
         </libraryNeededGroup>
 
         <!-- Spark Kafka Client group MRREQUIRED -->
@@ -2118,15 +2125,15 @@
             <library id="httpcore-4.4.4.jar"/>
             <library id="httpclient-4.5.3.jar"/>
 			<library id="ivy-2.4.0.jar"/>
-			<library id="jackson-annotations-2.6.6.jar"/>
-			<library id="jackson-core-2.6.6.jar"/>
-			<library id="jackson-core-asl-1.9.13.jar"/>
-			<library id="jackson-databind-2.6.6.jar"/>
-			<library id="jackson-dataformat-cbor-2.6.6"/>
+			<library id="jackson-annotations-2.6.7.jar"/>
+			<library id="jackson-core-2.6.7.jar"/>
+			<library id="jackson-core-asl-1.9.14-TALEND.jar"/>
+			<library id="jackson-databind-2.6.7.1.jar"/>
+			<library id="jackson-dataformat-cbor-2.6.7"/>
 			<library id="jackson-jaxrs-1.9.13.jar"/>
-			<library id="jackson-mapper-asl-1.9.13.jar"/>
-			<library id="jackson-module-paranamer-2.6.6.jar"/>
-			<library id="jackson-module-scala_2.11-2.6.6.jar"/>
+			<library id="jackson-mapper-asl-1.9.14-TALEND.jar"/>
+			<library id="jackson-module-paranamer-2.6.7.jar"/>
+			<library id="jackson-module-scala_2.11-2.6.7.1.jar"/>
 			<library id="jackson-xc-1.9.13.jar"/>
 			<library id="janino-3.0.0.jar"/>
 			<library id="java-xmlbuilder-1.0.jar"/>
@@ -2285,7 +2292,7 @@
                 name="SPARK-AZURE-LIB-MRREQUIRED-EMR_5_8_0_LATEST">
                 <library id="hadoop-azure-2.7.3-amzn-3.jar"/>
                 <library id="jetty-util-6.1.26-emr.jar"/>
-                <library id="azure-storage-2.0.0"/>
+                <library id="azure-storage-2.0.0.jar"/>
         </libraryNeededGroup>
         
         <!-- GraphFrames group MRREQUIRED -->
@@ -2307,19 +2314,19 @@
       </classloader>
       <classloader
             index="MAP_REDUCE:AMAZON_EMR:EMR_5_8_0"
-            libraries="avro-1.7.7.jar;commons-cli-1.2.jar;commons-codec-1.4.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-14.0.1.jar;hadoop-auth-2.7.3-amzn-3.jar;hadoop-common-2.7.3-amzn-3.jar;hadoop-hdfs-2.7.3-amzn-3.jar;hadoop-mapreduce-client-common-2.7.3-amzn-3.jar;hadoop-mapreduce-client-core-2.7.3-amzn-3.jar;hadoop-mapreduce-client-jobclient-2.7.3-amzn-3.jar;hadoop-yarn-api-2.7.3-amzn-3.jar;hadoop-yarn-client-2.7.3-amzn-3.jar;hadoop-yarn-common-2.7.3-amzn-3.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.5.3.jar;httpcore-4.4.4.jar;jackson-core-asl-1.9.13.jar;jackson-jaxrs-1.9.13.jar;jackson-mapper-asl-1.9.13.jar;jackson-xc-1.9.13.jar;jersey-client-1.9.jar;jersey-core-1.9.jar;jetty-util-6.1.26-emr.jar;jodd-core-3.5.2.jar;log4j-1.2.17.jar;parquet-hadoop-bundle-1.8.1.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;snappy-java-1.1.2.6.jar">
+            libraries="avro-1.7.7.jar;commons-cli-1.2.jar;commons-codec-1.4.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-14.0.1.jar;hadoop-auth-2.7.3-amzn-3.jar;hadoop-common-2.7.3-amzn-3.jar;hadoop-hdfs-2.7.3-amzn-3.jar;hadoop-mapreduce-client-common-2.7.3-amzn-3.jar;hadoop-mapreduce-client-core-2.7.3-amzn-3.jar;hadoop-mapreduce-client-jobclient-2.7.3-amzn-3.jar;hadoop-yarn-api-2.7.3-amzn-3.jar;hadoop-yarn-client-2.7.3-amzn-3.jar;hadoop-yarn-common-2.7.3-amzn-3.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.5.3.jar;httpcore-4.4.4.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-jaxrs-1.9.13.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-xc-1.9.13.jar;jersey-client-1.9.jar;jersey-core-1.9.jar;jetty-util-6.1.26-emr.jar;jodd-core-3.5.2.jar;log4j-1.2.17.jar;parquet-hadoop-bundle-1.8.1.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;snappy-java-1.1.2.6.jar">
       </classloader>
       <classloader
             index="HDFS:AMAZON_EMR:EMR_5_8_0"
-            libraries="avro-1.7.7.jar;commons-cli-1.2.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-11.0.2.jar;hadoop-auth-2.7.3-amzn-3.jar;hadoop-common-2.7.3-amzn-3.jar;hadoop-hdfs-2.7.3-amzn-3.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.5.3.jar;httpcore-4.4.4.jar;jackson-core-asl-1.9.13.jar;jackson-jaxrs-1.9.13.jar;jackson-mapper-asl-1.9.13.jar;jackson-xc-1.9.13.jar;jersey-core-1.9.jar;jetty-util-6.1.26-emr.jar;log4j-1.2.17.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar">
+            libraries="avro-1.7.7.jar;commons-cli-1.2.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-11.0.2.jar;hadoop-auth-2.7.3-amzn-3.jar;hadoop-common-2.7.3-amzn-3.jar;hadoop-hdfs-2.7.3-amzn-3.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.5.3.jar;httpcore-4.4.4.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-jaxrs-1.9.13.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-xc-1.9.13.jar;jersey-core-1.9.jar;jetty-util-6.1.26-emr.jar;log4j-1.2.17.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar">
       </classloader>
       <classloader
             index="HDFS:AMAZON_EMR:EMR_5_8_0?USE_KRB"
-            libraries="avro-1.7.7.jar;commons-cli-1.2.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-11.0.2.jar;hadoop-auth-2.7.3-amzn-3.jar;hadoop-common-2.7.3-amzn-3.jar;hadoop-hdfs-2.7.3-amzn-3.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.5.3.jar;httpcore-4.4.4.jar;jackson-core-asl-1.9.13.jar;jackson-jaxrs-1.9.13.jar;jackson-mapper-asl-1.9.13.jar;jackson-xc-1.9.13.jar;jersey-core-1.9.jar;jetty-util-6.1.26-emr.jar;log4j-1.2.17.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar">
+            libraries="avro-1.7.7.jar;commons-cli-1.2.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-11.0.2.jar;hadoop-auth-2.7.3-amzn-3.jar;hadoop-common-2.7.3-amzn-3.jar;hadoop-hdfs-2.7.3-amzn-3.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.5.3.jar;httpcore-4.4.4.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-jaxrs-1.9.13.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-xc-1.9.13.jar;jersey-core-1.9.jar;jetty-util-6.1.26-emr.jar;log4j-1.2.17.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar">
       </classloader>
       <classloader
             index="HBASE:AMAZON_EMR:EMR_5_8_0"
-            libraries="hbase-common-1.3.1.jar;hbase-client-1.3.1.jar;hbase-protocol-1.3.1.jar;hadoop-common-2.7.3-amzn-3.jar;hadoop-auth-2.7.3-amzn-3.jar;commons-logging-1.2.jar;commons-codec-1.10.jar;commons-configuration-1.6.jar;commons-lang-2.6.jar;commons-collections-3.2.2.jar;zookeeper-3.4.10.jar;htrace-core-3.1.0-incubating.jar;guava-14.0.1.jar;jackson-mapper-asl-1.9.13.jar;jackson-core-asl-1.9.13.jar;netty-all-4.0.43.Final.jar;protobuf-java-2.5.0.jar;log4j-1.2.17.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;hbase-server-1.3.1.jar;metrics-core-2.2.0.jar;netty-all-4.0.23.Final.jar">
+            libraries="hbase-common-1.3.1.jar;hbase-client-1.3.1.jar;hbase-protocol-1.3.1.jar;hadoop-common-2.7.3-amzn-3.jar;hadoop-auth-2.7.3-amzn-3.jar;commons-logging-1.2.jar;commons-codec-1.10.jar;commons-configuration-1.6.jar;commons-lang-2.6.jar;commons-collections-3.2.2.jar;zookeeper-3.4.10.jar;htrace-core-3.1.0-incubating.jar;guava-14.0.1.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-core-asl-1.9.14-TALEND.jar;netty-all-4.0.43.Final.jar;protobuf-java-2.5.0.jar;log4j-1.2.17.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;hbase-server-1.3.1.jar;metrics-core-2.2.0.jar;netty-all-4.0.23.Final.jar">
       </classloader>
     </extension>
 </plugin>

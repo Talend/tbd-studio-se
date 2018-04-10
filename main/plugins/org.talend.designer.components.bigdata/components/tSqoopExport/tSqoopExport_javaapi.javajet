@@ -78,8 +78,12 @@
 	sqoopOptions_<%=cid%>.setExportDir(<%=exportDir%>);
 	sqoopOptions_<%=cid%>.setUsername(<%=username%>); // __USERNAME__
 	if((<%=driverClass%> != null) && !"".equals(<%=driverClass%>)) {
-		sqoopOptions_<%=cid%>.setDriverClassName(<%=driverClass%>);//driver class name
-	}
+    	com.cloudera.sqoop.metastore.JobData jobData_<%=cid%> = new com.cloudera.sqoop.metastore.JobData(sqoopOptions_<%=cid%>, null);
+    	org.apache.sqoop.manager.DefaultManagerFactory defaultManagerFactory_<%=cid%> = new org.apache.sqoop.manager.DefaultManagerFactory();
+    	if(null == defaultManagerFactory_<%=cid%>.accept(jobData_<%=cid%>)) {
+    		sqoopOptions_<%=cid%>.setDriverClassName(<%=driverClass%>);//driver class name
+    	}
+    }
 	
 	<%if(!passwordStoredInFile || !sqoopDistrib.doJavaAPISupportStorePasswordInFile()) {%>
 		<%

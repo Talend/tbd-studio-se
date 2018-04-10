@@ -12,7 +12,8 @@
 // ============================================================================
 package org.talend.hadoop.distribution.hdp240.test.modulegroup;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,6 +37,7 @@ public class HDP240MapReduceModuleGroupTest {
         results.put(HDP240Constant.MAPREDUCE_MODULE_GROUP.getModuleName(), null);
         results.put(HDP240Constant.MAPREDUCE_PARQUET_MODULE_GROUP.getModuleName(), null);
         results.put(HDP240Constant.MAPREDUCE_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
+        results.put(HDP240Constant.MAPREDUCE_AVRO_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
         results.put(HDP240Constant.ATLAS_HDP_2_4.getModuleName(), null);
         Set<DistributionModuleGroup> moduleGroups = HDP240MapReduceModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());

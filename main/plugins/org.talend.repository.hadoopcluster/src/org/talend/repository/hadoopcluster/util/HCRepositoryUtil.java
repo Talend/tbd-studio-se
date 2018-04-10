@@ -326,8 +326,10 @@ public class HCRepositoryUtil {
             hcId = ((HadoopSubConnection) ((HadoopSubConnectionItem) subConnectionItem).getConnection())
                     .getRelativeHadoopClusterId();
         } else if (subConnectionItem instanceof DatabaseConnectionItem) {
-            hcId = ((DatabaseConnection) ((DatabaseConnectionItem) subConnectionItem).getConnection()).getParameters().get(
-                    ConnParameterKeys.CONN_PARA_KEY_HADOOP_CLUSTER_ID);
+            Connection connection = ((DatabaseConnectionItem) subConnectionItem).getConnection();
+            if (connection != null && connection instanceof DatabaseConnection) {
+                hcId = ((DatabaseConnection) connection).getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HADOOP_CLUSTER_ID);
+            }
         }
 
         return getRelativeHadoopClusterItem(hcId);

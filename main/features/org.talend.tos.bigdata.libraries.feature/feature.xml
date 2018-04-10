@@ -2,7 +2,7 @@
 <feature
       id="org.talend.tos.bigdata.libraries.feature"
       label="Libraries_feature"
-      version="7.0.1.qualifier">
+      version="7.1.0.qualifier">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -255,36 +255,6 @@
          version="0.0.0"/>
 
    <plugin
-         id="org.talend.libraries.hadoop.cloudera.cdh5.1"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.talend.libraries.hadoop.cloudera.cdh5.4"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.talend.libraries.hadoop.hdp.2.2"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.talend.libraries.hadoop.hdp.2.3"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.talend.libraries.hadoop.emr.4.0.0"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
          id="org.talend.libraries.jexcel"
          download-size="0"
          install-size="0"
@@ -292,18 +262,6 @@
 
    <plugin
          id="org.talend.libraries.jxplorer"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.talend.libraries.hadoop.mapr.4.0.1"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.talend.libraries.hadoop.mapr.4.1.0"
          download-size="0"
          install-size="0"
          version="0.0.0"/>
