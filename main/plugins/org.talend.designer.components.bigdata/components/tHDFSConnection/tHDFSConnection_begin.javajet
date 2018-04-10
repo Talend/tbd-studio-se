@@ -28,6 +28,7 @@
 
 	boolean isCustom = hdfsDistrib instanceof org.talend.hadoop.distribution.custom.CustomDistribution;
 
+	boolean useSchemeADLS = "ADLS".equals(ElementParameterParser.getValue(node, "__SCHEME__"));
 	String auth = ElementParameterParser.getValue(node, "__AUTHENTICATION_MODE__");
 	String fsDefalutName = "fs.default.name";
 	String fsDefaultName = ElementParameterParser.getValue(node, "__FS_DEFAULT_NAME__");
@@ -55,7 +56,13 @@
     
     boolean useHDFSEnc = ElementParameterParser.getBooleanValue(node, "__USE_HDFS_ENCRYPTION__");
     String hdfsKMS = ElementParameterParser.getValue(node, "__HDFS_ENCRYPTION_KEY_PROVIDER__");
-
+    
+    String adlsClientID = ElementParameterParser.getValue(node, "__ADLS_CLIENT_ID__");
+    String adlsAuthTokenEndpoint = ElementParameterParser.getEncryptedValue(node, "__ADLS_AUTH_TOKEN_ENDPOINT__");
+    adlsAuthTokenEndpoint = "routines.system.PasswordEncryptUtil.decryptPassword(" + adlsAuthTokenEndpoint + ")";
+    String adlsClientKey = ElementParameterParser.getEncryptedValue(node, "__ADLS_CLIENT_KEY__");
+    adlsClientKey = "routines.system.PasswordEncryptUtil.decryptPassword(" + adlsClientKey + ")";
+    
     log4jFileUtil.componentStartInfo(node);
 	// BEGIN IF01
 	if(configureFromClassPath){
@@ -110,8 +117,16 @@
 %>
 		org.apache.hadoop.conf.Configuration conf_<%=cid%> = new org.apache.hadoop.conf.Configuration();
 		conf_<%=cid%>.set("<%=fsDefalutName%>", <%=fsDefaultName%>);
+<% 		
+		if(useSchemeADLS) {
+%>
+		conf_<%=cid%>.set("dfs.adls.oauth2.access.token.provider.type", "ClientCredential");
+		conf_<%=cid%>.set("fs.AbstractFileSystem.adl.impl", "org.apache.hadoop.fs.adl.Adl");
+		conf_<%=cid%>.set("dfs.adls.oauth2.client.id", <%=adlsClientID%>);
+		conf_<%=cid%>.set("dfs.adls.oauth2.credential", <%=adlsClientKey%>);
+		conf_<%=cid%>.set("dfs.adls.oauth2.refresh.url", <%=adlsAuthTokenEndpoint%>);
 <%
-
+		}
 		if (hdfsDistrib.doSupportUseDatanodeHostname() && mrUseDatanodeHostname) {
 %>
 			conf_<%=cid%>.set("dfs.client.use.datanode.hostname", "true");

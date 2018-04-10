@@ -333,4 +333,12 @@ public abstract class AbstractDistribution {
     public boolean doSupportAvroDeflateProperties(){
         return false;
     }
+    
+    public boolean doSupportWebHDFS(){
+        return true;
+    }
+    
+    public boolean doSupportADLS(){
+        return true;
+    }
 }

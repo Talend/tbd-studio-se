@@ -37,6 +37,7 @@ import org.talend.hadoop.distribution.cdh5120.modulegroup.CDH5120PigOutputModule
 import org.talend.hadoop.distribution.cdh5120.modulegroup.CDH5120SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.cdh5120.modulegroup.CDH5120SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.cdh5120.modulegroup.CDH5120SqoopModuleGroup;
+import org.talend.hadoop.distribution.cdh5120.modulegroup.CDH5120WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.cdh5120.modulegroup.node.mr.CDH5120MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5120.modulegroup.node.pigoutput.CDH5120PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5120.modulegroup.node.spark.CDH5120SparkDynamoDBNodeModuleGroup;
@@ -113,6 +114,11 @@ public class CDH5120Distribution extends AbstractDistribution implements ICloude
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
         nodeModuleGroups = new HashMap<>();
+        
+        // WebHDFS/ADLS
+        Set<DistributionModuleGroup> webHDFSNodeModuleGroups = CDH5120WebHDFSModuleGroup.getModuleGroups();
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.HDFS, "tHDFSConnection"), 
+                webHDFSNodeModuleGroups);
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
                 CDH5120MRS3NodeModuleGroup.getModuleGroups(distribution, version));
@@ -222,7 +228,7 @@ public class CDH5120Distribution extends AbstractDistribution implements ICloude
                 SparkStreamingConstant.DYNAMODB_OUTPUT_COMPONENT), dynamoDBNodeModuleGroups);
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.DYNAMODB_CONFIGURATION_COMPONENT), dynamoDBConfigurationModuleGroups);
-
+        
         displayConditions = new HashMap<>();
     }
 
