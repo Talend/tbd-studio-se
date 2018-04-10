@@ -1102,7 +1102,6 @@
 			"id": "MAPREDUCE-LIB-DYNAMIC",
 			"description": "",
 			"modules": [
-				"avro-mapred",
 				"hadoop-client",
 				"jodd"
 			]
@@ -1242,6 +1241,13 @@
 				"hadoop-client"
 			]
 		},
+        {
+            "id": "MAPREDUCE-AVRO-LIB-MRREQUIRED-DYNAMIC",
+            "description": "",
+            "modules": [
+                "avro-mapred"
+            ]
+        },
 		{
 			"id": "SPARK-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",

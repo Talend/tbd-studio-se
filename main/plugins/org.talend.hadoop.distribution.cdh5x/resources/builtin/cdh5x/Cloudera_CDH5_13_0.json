@@ -3091,6 +3091,24 @@
     }, {
       "childNodes" : [ {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH5_13_0_avro_mapred_1_7_7_hadoop2_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH5_13_0_jackson_core_asl_1_9_13_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH5_13_0_jackson_mapper_asl_1_9_13_jar",
+        "tagName" : "library"
+      } ],
+      "description" : "",
+      "id" : "DYNAMIC_Cloudera_CDH5_13_0_MAPREDUCE_AVRO_LIB_MRREQUIRED_DYNAMIC",
+      "tagName" : "libraryNeededGroup",
+      "templateId" : "MAPREDUCE-AVRO-LIB-MRREQUIRED-DYNAMIC"
+    }, {
+      "childNodes" : [ {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH5_13_0_activation_1_1_1_jar",
         "tagName" : "library"
       }, {
