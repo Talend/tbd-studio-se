@@ -963,6 +963,16 @@
             <library id="parquet-avro-cdh5.5.2"/>
         </libraryNeededGroup>
         
+        <!-- WebHDFS -->
+        <libraryNeededGroup
+                description="Librairies for WebHDFS"
+                id="WEBHDFS-LIB-CDH_5_5"
+                name="WEBHDFS-LIB-CDH_5_5">
+            <library id="commons-io-2.4.jar"/>
+            <library id="jersey-client-1.9.jar"/>
+            <library id="jetty-util-6.1.26.jar"/>
+        </libraryNeededGroup>
+        
     </extension>
     <extension
           point="org.talend.core.runtime.classloader_provider">

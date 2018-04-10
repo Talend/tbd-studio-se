@@ -36,6 +36,7 @@ import org.talend.hadoop.distribution.cdh580.modulegroup.CDH580PigOutputModuleGr
 import org.talend.hadoop.distribution.cdh580.modulegroup.CDH580SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.CDH580SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.CDH580SqoopModuleGroup;
+import org.talend.hadoop.distribution.cdh580.modulegroup.CDH580WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.node.mr.CDH580MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.node.pigoutput.CDH580PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.node.sparkbatch.CDH580GraphFramesNodeModuleGroup;
@@ -61,6 +62,7 @@ import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
+import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
@@ -109,6 +111,11 @@ public class CDH580Distribution extends AbstractDistribution implements IClouder
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
         nodeModuleGroups = new HashMap<>();
+        
+        // WebHDFS
+        Set<DistributionModuleGroup> webHDFSNodeModuleGroups = CDH580WebHDFSModuleGroup.getModuleGroups(distribution, version);
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.HDFS, HDFSConstant.HDFS_CONNECTION_COMPONENT), 
+                webHDFSNodeModuleGroups);
 
         // Azure
         nodeModuleGroups.put(
@@ -424,5 +431,10 @@ public class CDH580Distribution extends AbstractDistribution implements IClouder
     @Override
     public boolean doSupportAvroDeflateProperties(){
         return true;
+    }
+    
+    @Override
+    public boolean doSupportADLS(){
+        return false;
     }
 }
