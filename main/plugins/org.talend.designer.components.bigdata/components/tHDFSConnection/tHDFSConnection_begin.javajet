@@ -121,6 +121,7 @@
 		if(useSchemeADLS) {
 %>
 		conf_<%=cid%>.set("dfs.adls.oauth2.access.token.provider.type", "ClientCredential");
+		conf_<%=cid%>.set("fs.adl.impl", "org.apache.hadoop.fs.adl.AdlFileSystem");
 		conf_<%=cid%>.set("fs.AbstractFileSystem.adl.impl", "org.apache.hadoop.fs.adl.Adl");
 		conf_<%=cid%>.set("dfs.adls.oauth2.client.id", <%=adlsClientID%>);
 		conf_<%=cid%>.set("dfs.adls.oauth2.credential", <%=adlsClientKey%>);

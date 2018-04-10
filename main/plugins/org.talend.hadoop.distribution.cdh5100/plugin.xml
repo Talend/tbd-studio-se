@@ -106,9 +106,23 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5100"
+            id="azure-data-lake-store-sdk-2.1.4.jar"
+            name="azure-data-lake-store-sdk-2.1.4.jar"
+            mvn_uri="mvn:org.talend.libraries/azure-data-lake-store-sdk-2.1.4/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5100"
             id="hadoop-azure-2.7.4"
             name="hadoop-azure-2.7.4.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-azure-2.7.4/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5100"
+            id="hadoop-azure-datalake-2.8.1.jar"
+            name="hadoop-azure-datalake-2.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-azure-datalake-2.8.1/6.0.0">
         </libraryNeeded>
         <!-- Azure libraries -->
 
@@ -1479,8 +1493,11 @@
                 id="SPARK-AZURE-LIB-MRREQUIRED-CDH_5_10"
                 name="SPARK-AZURE-LIB-MRREQUIRED-CDH_5_10">
                 <library id="azure-storage-2.2.0"/>
+                <library id="azure-data-lake-store-sdk-2.1.4.jar" />
                 <library id="hadoop-azure-2.7.4"/>
+                <library id="hadoop-azure-datalake-2.8.1.jar"/>
                 <library id="jetty-util-6.1.26.cloudera.2.jar"/>
+                <library id="jackson-core-2.6.7.jar"/>
         </libraryNeededGroup>
 
         <!-- Pig S3 group -->
@@ -1659,6 +1676,15 @@
             <library id="jackson-databind-2.2.3.jar"/>
             <library id="jackson-core-2.2.3.jar"/>
             <library id="parquet-avro-1.5.0-cdh5.10.1"/>
+        </libraryNeededGroup>
+        
+        <!-- WebHDFS -->
+        <libraryNeededGroup
+                description="Librairies for WebHDFS"
+                id="WEBHDFS-LIB-CDH_5_10"
+                name="WEBHDFS-LIB-CDH_5_10">
+            <library id="commons-io-2.4.jar"/>
+            <library id="jersey-client-1.9.jar"/>
         </libraryNeededGroup>
     </extension>
     <extension

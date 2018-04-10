@@ -65,6 +65,7 @@ import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
+import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
@@ -116,8 +117,8 @@ public class CDH5120Distribution extends AbstractDistribution implements ICloude
         nodeModuleGroups = new HashMap<>();
         
         // WebHDFS/ADLS
-        Set<DistributionModuleGroup> webHDFSNodeModuleGroups = CDH5120WebHDFSModuleGroup.getModuleGroups();
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.HDFS, "tHDFSConnection"), 
+        Set<DistributionModuleGroup> webHDFSNodeModuleGroups = CDH5120WebHDFSModuleGroup.getModuleGroups(distribution, version);
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.HDFS, HDFSConstant.HDFS_CONNECTION_COMPONENT), 
                 webHDFSNodeModuleGroups);
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),

@@ -23,4 +23,12 @@ public final class HDFSConstant {
     public static final String VERSION_PARAMETER = "DB_VERSION";//$NON-NLS-1$
 
     public static final String VERSION_REPOSITORYVALUE = "DB_VERSION";//$NON-NLS-1$
+    
+    public static final String HDFS_CONNECTION_COMPONENT = "tHDFSConnection"; //$NON-NLS-1$
+    
+    public static final String SCHEME_PARAMETER = "SCHEME"; //$NON-NLS-1$
+    
+    public static final String WebHDFS = "WebHDFS"; //$NON-NLS-1$
+    
+    public static final String ADLS = "ADLS"; //$NON-NLS-1$
 }
