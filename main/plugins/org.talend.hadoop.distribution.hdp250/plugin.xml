@@ -1182,6 +1182,14 @@
             <library id="parquet-generator-1.4.1.jar"/>
             <library id="parquet-jackson-1.4.1.jar"/>
         </libraryNeededGroup>
+        
+        <!-- WebHDFS -->
+        <libraryNeededGroup
+                description="Librairies for WebHDFS"
+                id="WEBHDFS-LIB-HDP_2_5"
+                name="WEBHDFS-LIB-HDP_2_5">
+            <library id="jersey-client-1.9.jar"/>
+        </libraryNeededGroup>
              
     </extension>
     <extension

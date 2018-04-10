@@ -1053,6 +1053,14 @@
             <library id="parquet-hadoop-bundle-1.6.0.jar" />
             <library id="parquet-avro-1.4.1.jar"/>
         </libraryNeededGroup>
+        
+        <!-- WebHDFS -->
+        <libraryNeededGroup
+                description="Librairies for WebHDFS"
+                id="WEBHDFS-LIB-HDP_2_4"
+                name="WEBHDFS-LIB-HDP_2_4">
+            <library id="jersey-client-1.9.jar"/>
+        </libraryNeededGroup>
              
     </extension>
     <extension

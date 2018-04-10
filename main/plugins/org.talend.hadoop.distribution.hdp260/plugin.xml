@@ -1542,6 +1542,7 @@
                 <library id="hadoop-azure-2.7.3.2.6.0.3-8.jar"/>
                 <library id="hadoop-azure-datalake-2.7.3.2.6.0.3-8.jar"/>                
                 <library id="jetty-util-6.1.26.hwx.jar"/>
+                <library id="jackson-core-2.6.7.jar" />
         </libraryNeededGroup>
         
         <!-- Pig S3 group -->
@@ -1784,6 +1785,14 @@
 			<library id="parquet-encoding-1.4.1.jar"/>
 			<library id="parquet-generator-1.4.1.jar"/>
 			<library id="parquet-jackson-1.4.1.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- WebHDFS -->
+        <libraryNeededGroup
+                description="Librairies for WebHDFS"
+                id="WEBHDFS-LIB-HDP_2_6"
+                name="WEBHDFS-LIB-HDP_2_6">
+            <library id="jersey-client-1.9.jar"/>
         </libraryNeededGroup>
              
     </extension>
