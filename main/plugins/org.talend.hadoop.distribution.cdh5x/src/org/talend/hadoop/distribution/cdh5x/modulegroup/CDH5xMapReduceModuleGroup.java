@@ -48,10 +48,15 @@ public class CDH5xMapReduceModuleGroup extends AbstractModuleGroup {
                 .getRuntimeModuleGroupIdByTemplateId(CDH5xConstant.MAPREDUCE_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName());
         checkRuntimeId(mrParquetRequired);
 
+        String mrAvroRequired = pluginAdapter
+                .getRuntimeModuleGroupIdByTemplateId(CDH5xConstant.MAPREDUCE_AVRO_MRREQUIRED_MODULE_GROUP.getModuleName());
+        checkRuntimeId(mrAvroRequired);
+
         hs.add(new DistributionModuleGroup(hdfsRuntimeId));
         hs.add(new DistributionModuleGroup(mrRuntimeId));
         hs.add(new DistributionModuleGroup(mrParquetId));
         hs.add(new DistributionModuleGroup(mrParquetRequired, true, null));
+        hs.add(new DistributionModuleGroup(mrAvroRequired, true, null));
         ComponentCondition conditionUseNavigator = new SimpleComponentCondition(
                 new BasicExpression(MRConstant.USE_CLOUDERA_NAVIGATOR));
 
