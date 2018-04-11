@@ -817,6 +817,14 @@
                 <library id="jetty-util-6.1.26"/>
         </libraryNeededGroup> -->
         
+        <!-- WebHDFS -->
+        <libraryNeededGroup
+                description="Librairies for WebHDFS"
+                id="WEBHDFS-LIB-EMR_4_5_0_LATEST"
+                name="WEBHDFS-LIB-EMR_4_5_0_LATEST">
+            <library id="jersey-client-1.9.jar"/>
+        </libraryNeededGroup>
+        
     </extension>
     
     <extension

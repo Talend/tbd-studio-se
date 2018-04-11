@@ -10,21 +10,29 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.cdh5120.modulegroup;
+package org.talend.hadoop.distribution.emr580.modulegroup;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
-import org.talend.hadoop.distribution.cdh5120.CDH5120Constant;
+import org.talend.hadoop.distribution.condition.common.HDFSLinkedNodeCondition;
 
-public class CDH5120HDFSModuleGroup {
+
+public class EMR580WebHDFSModuleGroup {
     
-    public static Set<DistributionModuleGroup> getModuleGroups() {
+    public static final String WEBHDFS_MODULE_GROUP_NAME = "WEBHDFS-LIB-EMR_5_8_0_LATEST";
+
+    public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
+        
+        HDFSLinkedNodeCondition hdfsLinkedNodeCondition = new HDFSLinkedNodeCondition(distribution, version);
+        
+        DistributionModuleGroup dmgWebHDFS =
+                new DistributionModuleGroup(WEBHDFS_MODULE_GROUP_NAME, true, 
+                        hdfsLinkedNodeCondition.getWebHDFSCondition());
+
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        DistributionModuleGroup dmg = new DistributionModuleGroup(CDH5120Constant.HDFS_MODULE_GROUP.getModuleName());
-        hs.add(dmg);
+        hs.add(dmgWebHDFS);
         return hs;
     }
-
 }

@@ -2302,6 +2302,14 @@
                 name="GRAPHFRAMES-LIB-EMR_5_8_0_LATEST">
              <library id="graphframes-0.5.0-spark2.1-s_2.11.jar" />
         </libraryNeededGroup>
+        
+        <!-- WebHDFS -->
+        <libraryNeededGroup
+                description="Librairies for WebHDFS"
+                id="WEBHDFS-LIB-EMR_5_8_0_LATEST"
+                name="WEBHDFS-LIB-EMR_5_8_0_LATEST">
+            <library id="jersey-client-1.9.jar"/>
+        </libraryNeededGroup>
 
     </extension>
 
