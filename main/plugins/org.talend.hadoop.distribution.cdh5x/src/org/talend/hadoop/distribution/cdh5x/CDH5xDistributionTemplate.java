@@ -558,4 +558,9 @@ public class CDH5xDistributionTemplate extends AbstractDistribution
     public boolean doSupportAssumeRole() {
         return true;
     }
+
+    @Override
+    public boolean doSupportAvroDeflateProperties() {
+        return true;
+    }
 }
