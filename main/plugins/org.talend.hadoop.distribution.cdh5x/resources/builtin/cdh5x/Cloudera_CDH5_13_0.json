@@ -7513,6 +7513,10 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH5_13_0_jackson_core_2_6_5_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH5_13_0_jackson_core_asl_1_9_13_jar",
         "tagName" : "library"
       }, {
