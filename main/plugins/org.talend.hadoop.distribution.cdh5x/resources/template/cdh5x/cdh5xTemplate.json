@@ -306,13 +306,6 @@
 			"description": "",
 			"exclusions": [
 				{
-					"groupId": "com.fasterxml.jackson.core",
-					"artifactId": "jackson-core",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
 					"groupId": "xerces",
 					"artifactId": "*",
 					"classifier": "",

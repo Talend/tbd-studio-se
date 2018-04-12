@@ -22,15 +22,15 @@ import org.talend.hadoop.distribution.condition.common.HDFSLinkedNodeCondition;
 
 public class CDH5100WebHDFSModuleGroup {
 
-public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
+    public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
     
-    HDFSLinkedNodeCondition hdfsLinkedNodeCondition = new HDFSLinkedNodeCondition(distribution, version);
+        HDFSLinkedNodeCondition hdfsLinkedNodeCondition = new HDFSLinkedNodeCondition(distribution, version);
     
-    DistributionModuleGroup dmgWebHDFS =
+        DistributionModuleGroup dmgWebHDFS =
             new DistributionModuleGroup(CDH5100Constant.WEBHDFS_MODULE_GROUP.getModuleName(), true, 
                     hdfsLinkedNodeCondition.getWebHDFSCondition());
 
-    DistributionModuleGroup dmgADLS =
+        DistributionModuleGroup dmgADLS =
             new DistributionModuleGroup(CDH5100Constant.SPARK_AZURE_MRREQUIRED_MODULE_GROUP.getModuleName(), true,
                     hdfsLinkedNodeCondition.getAdlsCondition());
 

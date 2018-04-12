@@ -210,4 +210,14 @@ public class Pivotal101Distribution extends AbstractDistribution implements HDFS
     public boolean isActivated() {
         return false;
     }
+    
+    @Override
+    public boolean doSupportWebHDFS(){
+        return false;
+    }
+    
+    @Override
+    public boolean doSupportADLS(){
+        return false;
+    }
 }
