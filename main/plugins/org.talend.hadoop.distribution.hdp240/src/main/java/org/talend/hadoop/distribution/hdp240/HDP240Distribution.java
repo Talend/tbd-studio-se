@@ -441,9 +441,4 @@ public class HDP240Distribution extends AbstractDistribution implements HDFSComp
 	public boolean useS3AProperties() {
 		return true;
 	}
-	
-	@Override
-    public boolean doSupportADLS(){
-        return false;
-    }
 }

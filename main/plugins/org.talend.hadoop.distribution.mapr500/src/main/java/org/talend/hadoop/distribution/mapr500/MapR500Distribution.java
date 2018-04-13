@@ -293,9 +293,4 @@ public class MapR500Distribution extends AbstractMapRDistribution implements HDF
     public boolean doSupportWebHDFS(){
         return false;
     }
-    
-    @Override
-    public boolean doSupportADLS(){
-        return false;
-    }
 }

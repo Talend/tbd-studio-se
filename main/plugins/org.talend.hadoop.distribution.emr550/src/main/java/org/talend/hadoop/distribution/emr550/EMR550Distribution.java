@@ -485,9 +485,4 @@ public class EMR550Distribution extends AbstractDistribution implements HBaseCom
     public boolean useOldAWSAPI() {
         return false;
     }
-    
-    @Override
-    public boolean doSupportADLS(){
-        return false;
-    }
 }

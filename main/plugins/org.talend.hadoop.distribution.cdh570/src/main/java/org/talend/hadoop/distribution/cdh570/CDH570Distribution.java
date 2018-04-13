@@ -433,9 +433,4 @@ public class CDH570Distribution extends AbstractDistribution implements HDFSComp
     public boolean doSupportAvroDeflateProperties(){
         return true;
     }
-    
-    @Override
-    public boolean doSupportADLS(){
-        return false;
-    }
 }

@@ -15,7 +15,6 @@ package org.talend.hadoop.distribution.emr500.test;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.component.HBaseComponent;
@@ -108,10 +107,8 @@ public class EMR500DistributionTest {
         assertTrue(((HBaseComponent) distribution).doSupportNewHBaseAPI());
         assertTrue(distribution.doSupportCreateServiceConnection());
         assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
-        
-        AbstractDistribution emr500Distrib = (EMR500Distribution) distribution;
-        assertFalse(emr500Distrib.doSupportADLS());
-        assertTrue(emr500Distrib.doSupportWebHDFS());
+        assertFalse(distribution.doSupportAzureDataLakeStorage());
+        assertTrue(distribution.doSupportWebHDFS());
     }
 
 }

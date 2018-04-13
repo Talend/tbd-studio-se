@@ -105,7 +105,7 @@ public class CDH5120DistributionTest {
 
         assertTrue(distribution.doSupportHDFSEncryption());
         AbstractDistribution cdh5121Distrib = (CDH5120Distribution) distribution;
-        assertTrue(cdh5121Distrib.doSupportADLS());
+        assertTrue(cdh5121Distrib.doSupportAzureDataLakeStorage());
         assertTrue(cdh5121Distrib.doSupportWebHDFS());
     }
 }

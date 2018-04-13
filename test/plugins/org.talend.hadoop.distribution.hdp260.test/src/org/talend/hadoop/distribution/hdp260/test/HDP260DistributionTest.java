@@ -15,7 +15,6 @@ package org.talend.hadoop.distribution.hdp260.test;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.component.HBaseComponent;
@@ -118,9 +117,8 @@ public class HDP260DistributionTest extends AbstractDistributionTest {
         assertTrue(distribution.doSupportCreateServiceConnection());
         assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
 
-        AbstractDistribution hdp260Distrib = (HDP260Distribution) distribution;
-        assertTrue(hdp260Distrib.doSupportWebHDFS());
-        assertTrue(hdp260Distrib.doSupportADLS());
+        assertTrue(distribution.doSupportWebHDFS());
+        assertTrue(distribution.doSupportAzureDataLakeStorage());
     }
 
 }

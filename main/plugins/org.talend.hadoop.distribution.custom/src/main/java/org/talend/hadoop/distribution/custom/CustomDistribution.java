@@ -237,9 +237,4 @@ public class CustomDistribution extends AbstractDistribution implements HDFSComp
     public boolean doSupportWebHDFS(){
         return false;
     }
-    
-    @Override
-    public boolean doSupportADLS(){
-        return false;
-    }
 }

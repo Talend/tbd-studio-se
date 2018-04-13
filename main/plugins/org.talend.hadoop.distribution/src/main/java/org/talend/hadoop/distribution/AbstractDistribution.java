@@ -338,10 +338,6 @@ public abstract class AbstractDistribution {
         return true;
     }
     
-    public boolean doSupportADLS(){
-        return true;
-    }
-    
     public boolean useOldAWSAPI() {
         return true;
     }
