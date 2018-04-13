@@ -140,8 +140,9 @@ public class EMR450Distribution extends AbstractDistribution implements HDFSComp
         
         // WebHDFS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = EMR450WebHDFSModuleGroup.getModuleGroups(distribution, version);
-        result.put(new NodeComponentTypeBean(ComponentType.HDFS, HDFSConstant.HDFS_CONNECTION_COMPONENT), 
-                webHDFSNodeModuleGroups);
+        for(String hdfsComponent : HDFSConstant.hdfsComponents) {
+            result.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
+        }
         
         // Mapreduce nodes
         result.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),

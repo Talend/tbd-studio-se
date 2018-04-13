@@ -36,6 +36,9 @@ org.apache.hadoop.fs.FileSystem fs_<%=cid%> = null;
 if(!useExistingConnection) { // if we don't use an existing connection, we create a new hadoop configuration
 	distribution = ElementParameterParser.getValue(node, "__DISTRIBUTION__");
 	hadoopVersion = ElementParameterParser.getValue(node, "__DB_VERSION__");
+	
+	boolean useSchemeADLS = "ADLS".equals(ElementParameterParser.getValue(node, "__SCHEME__"));
+	String adlsFSDefaultName = ElementParameterParser.getValue(node, "__ADLS_FS_DEFAULT_NAME__");
 
 	boolean useKrb = "true".equals(ElementParameterParser.getValue(node, "__USE_KRB__"));
 	String kerberosPrincipal = ElementParameterParser.getValue(node, "__NAMENODE_PRINCIPAL__");
@@ -54,6 +57,12 @@ if(!useExistingConnection) { // if we don't use an existing connection, we creat
     boolean setMapRHadoopLogin = ElementParameterParser.getBooleanValue(node, "__SET_HADOOP_LOGIN__");
     String mapRHadoopLogin = ElementParameterParser.getValue(node, "__HADOOP_LOGIN__");
     
+    String adlsClientID = ElementParameterParser.getValue(node, "__ADLS_CLIENT_ID__");
+    String adlsAuthTokenEndpoint = ElementParameterParser.getEncryptedValue(node, "__ADLS_AUTH_TOKEN_ENDPOINT__");
+    adlsAuthTokenEndpoint = "routines.system.PasswordEncryptUtil.decryptPassword(" + adlsAuthTokenEndpoint + ")";
+    String adlsClientKey = ElementParameterParser.getEncryptedValue(node, "__ADLS_CLIENT_KEY__");
+    adlsClientKey = "routines.system.PasswordEncryptUtil.decryptPassword(" + adlsClientKey + ")";
+    
 	try {
 		hdfsDistrib = (org.talend.hadoop.distribution.component.HDFSComponent) org.talend.hadoop.distribution.DistributionFactory.buildDistribution(distribution, hadoopVersion);
 	} catch (java.lang.Exception e) {
@@ -65,78 +74,92 @@ if(!useExistingConnection) { // if we don't use an existing connection, we creat
 	String auth = ElementParameterParser.getValue(node, "__AUTHENTICATION_MODE__");
 	%>
 	org.apache.hadoop.conf.Configuration conf_<%=cid%> = new org.apache.hadoop.conf.Configuration();
-	conf_<%=cid%>.set("<%=fsDefalutName%>", <%=fsDefaultName%>);
-
-	<%
-	if (hdfsDistrib.doSupportUseDatanodeHostname() && mrUseDatanodeHostname) {
-        %>
-        conf_<%=cid%>.set("dfs.client.use.datanode.hostname", "true");
-        <%
-    }
-	if(hadoopProps!=null && hadoopProps.size() > 0){
-		for(Map<String, String> item : hadoopProps){
-		%>
-			conf_<%=cid%>.set(<%=item.get("PROPERTY") %> ,<%=item.get("VALUE") %>);
-		<% 
-		}
-	}
 	
-	if(!((!isCustom && hdfsDistrib.doSupportKerberos() && useKrb) || (isCustom && "KRB".equals(auth)))) {
-		user = ElementParameterParser.getValue(node, "__USERNAME__");
-		if ((isCustom || hdfsDistrib.doSupportMapRTicket()) && useMapRTicket) {
-            String passwordFieldName = "__MAPRTICKET_PASSWORD__";
-            %>
-            System.setProperty("pname", "MapRLogin");
-            System.setProperty("https.protocols", "TLSv1.2");
-            System.setProperty("mapr.home.dir", <%=setMapRHomeDir ? mapRHomeDir : "\"/opt/mapr\"" %>);
-            com.mapr.login.client.MapRLoginHttpsClient maprLogin_<%=cid%> = new com.mapr.login.client.MapRLoginHttpsClient();
-            <%
-            if (setMapRHadoopLogin) {
-                %>
-                System.setProperty("hadoop.login", <%=mapRHadoopLogin%>);
-                <%
-            } else {
-                %>
-                maprLogin_<%=cid%>.setCheckUGI(false);
-                <%
-            }
-            %>
-            <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
-
-            <%
-            if(hdfsDistrib.doSupportMaprTicketV52API()){
-				%>
-            	maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=user%>, decryptedPassword_<%=cid%>, <%=mapRTicketDuration%>, "");
-            	<%
-            }else{
-            	%>
-            	maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=user%>, decryptedPassword_<%=cid%>, <%=mapRTicketDuration%>);
-            	<%
-            }
-        }
+	<%
+	if(useSchemeADLS) {
+	%>
+		conf_<%=cid%>.set("<%=fsDefalutName%>", <%=adlsFSDefaultName%>);
+		conf_<%=cid%>.set("dfs.adls.oauth2.access.token.provider.type", "ClientCredential");
+		conf_<%=cid%>.set("fs.adl.impl", "org.apache.hadoop.fs.adl.AdlFileSystem");
+		conf_<%=cid%>.set("fs.AbstractFileSystem.adl.impl", "org.apache.hadoop.fs.adl.Adl");
+		conf_<%=cid%>.set("dfs.adls.oauth2.client.id", <%=adlsClientID%>);
+		conf_<%=cid%>.set("dfs.adls.oauth2.credential", <%=adlsClientKey%>);
+		conf_<%=cid%>.set("dfs.adls.oauth2.refresh.url", <%=adlsAuthTokenEndpoint%>);
+	<%
 	} else {
-	    if ((isCustom || hdfsDistrib.doSupportMapRTicket()) && useMapRTicket) {
-            %>
-            System.setProperty("pname", "MapRLogin");
-            System.setProperty("https.protocols", "TLSv1.2");
-            System.setProperty("mapr.home.dir", <%=setMapRHomeDir ? mapRHomeDir : "\"/opt/mapr\"" %>);
-            System.setProperty("hadoop.login", <%=setMapRHadoopLogin ? mapRHadoopLogin : "\"kerberos\""%>);
-            <%
-        }
-%>
-		conf_<%=cid%>.set("dfs.namenode.kerberos.principal", <%=kerberosPrincipal%>);
-<%
-		if(useKeytab) {
-%>
-			org.apache.hadoop.security.UserGroupInformation.loginUserFromKeytab(<%=userPrincipal%>, <%=keytabPath%>);
-<%
+	%>
+		conf_<%=cid%>.set("<%=fsDefalutName%>", <%=fsDefaultName%>);
+	<%
+		if (hdfsDistrib.doSupportUseDatanodeHostname() && mrUseDatanodeHostname) {
+	        %>
+	        conf_<%=cid%>.set("dfs.client.use.datanode.hostname", "true");
+	        <%
+	    }
+		if(hadoopProps!=null && hadoopProps.size() > 0){
+			for(Map<String, String> item : hadoopProps){
+			%>
+				conf_<%=cid%>.set(<%=item.get("PROPERTY") %> ,<%=item.get("VALUE") %>);
+			<% 
+			}
 		}
-        if ((isCustom || hdfsDistrib.doSupportMapRTicket()) && useMapRTicket) {
-            %>
-            com.mapr.login.client.MapRLoginHttpsClient maprLogin_<%=cid%> = new com.mapr.login.client.MapRLoginHttpsClient();
-            maprLogin_<%=cid%>.getMapRCredentialsViaKerberos(<%=mapRTicketCluster%>, <%=mapRTicketDuration%>);
-            <%
-        }
+		
+		if(!((!isCustom && hdfsDistrib.doSupportKerberos() && useKrb) || (isCustom && "KRB".equals(auth)))) {
+			user = ElementParameterParser.getValue(node, "__USERNAME__");
+			if ((isCustom || hdfsDistrib.doSupportMapRTicket()) && useMapRTicket) {
+	            String passwordFieldName = "__MAPRTICKET_PASSWORD__";
+	            %>
+	            System.setProperty("pname", "MapRLogin");
+	            System.setProperty("https.protocols", "TLSv1.2");
+	            System.setProperty("mapr.home.dir", <%=setMapRHomeDir ? mapRHomeDir : "\"/opt/mapr\"" %>);
+	            com.mapr.login.client.MapRLoginHttpsClient maprLogin_<%=cid%> = new com.mapr.login.client.MapRLoginHttpsClient();
+	            <%
+	            if (setMapRHadoopLogin) {
+	                %>
+	                System.setProperty("hadoop.login", <%=mapRHadoopLogin%>);
+	                <%
+	            } else {
+	                %>
+	                maprLogin_<%=cid%>.setCheckUGI(false);
+	                <%
+	            }
+	            %>
+	            <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
+	
+	            <%
+	            if(hdfsDistrib.doSupportMaprTicketV52API()){
+					%>
+	            	maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=user%>, decryptedPassword_<%=cid%>, <%=mapRTicketDuration%>, "");
+	            	<%
+	            }else{
+	            	%>
+	            	maprLogin_<%=cid%>.getMapRCredentialsViaPassword(<%=mapRTicketCluster%>, <%=user%>, decryptedPassword_<%=cid%>, <%=mapRTicketDuration%>);
+	            	<%
+	            }
+	        }
+		} else {
+		    if ((isCustom || hdfsDistrib.doSupportMapRTicket()) && useMapRTicket) {
+	            %>
+	            System.setProperty("pname", "MapRLogin");
+	            System.setProperty("https.protocols", "TLSv1.2");
+	            System.setProperty("mapr.home.dir", <%=setMapRHomeDir ? mapRHomeDir : "\"/opt/mapr\"" %>);
+	            System.setProperty("hadoop.login", <%=setMapRHadoopLogin ? mapRHadoopLogin : "\"kerberos\""%>);
+	            <%
+	        }
+	%>
+			conf_<%=cid%>.set("dfs.namenode.kerberos.principal", <%=kerberosPrincipal%>);
+	<%
+			if(useKeytab) {
+	%>
+				org.apache.hadoop.security.UserGroupInformation.loginUserFromKeytab(<%=userPrincipal%>, <%=keytabPath%>);
+	<%
+			}
+	        if ((isCustom || hdfsDistrib.doSupportMapRTicket()) && useMapRTicket) {
+	            %>
+	            com.mapr.login.client.MapRLoginHttpsClient maprLogin_<%=cid%> = new com.mapr.login.client.MapRLoginHttpsClient();
+	            maprLogin_<%=cid%>.getMapRCredentialsViaKerberos(<%=mapRTicketCluster%>, <%=mapRTicketDuration%>);
+	            <%
+	        }
+		}
 	}
 
 %>

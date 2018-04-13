@@ -110,8 +110,9 @@ public class HDP250Distribution extends AbstractDistribution implements HDFSComp
         
         // WebHDFS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = HDP250WebHDFSModuleGroup.getModuleGroups(distribution, version);
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.HDFS, HDFSConstant.HDFS_CONNECTION_COMPONENT), 
-                webHDFSNodeModuleGroups);
+        for(String hdfsComponent : HDFSConstant.hdfsComponents) {
+            nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
+        }
 
         // Azure
         nodeModuleGroups.put(
