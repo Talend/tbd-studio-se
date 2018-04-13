@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.emr550.test;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.component.HBaseComponent;
@@ -103,6 +104,10 @@ public class EMR550DistributionTest {
         assertTrue(((SqoopComponent) distribution).doJavaAPISqoopImportSupportDeleteTargetDir());
         assertTrue(((SqoopComponent) distribution).doJavaAPISupportStorePasswordInFile());
         assertTrue(((HBaseComponent) distribution).doSupportNewHBaseAPI());
+        
+        AbstractDistribution emr550Distrib = (EMR550Distribution) distribution;
+        assertFalse(emr550Distrib.doSupportADLS());
+        assertTrue(emr550Distrib.doSupportWebHDFS());
     }
 
 }

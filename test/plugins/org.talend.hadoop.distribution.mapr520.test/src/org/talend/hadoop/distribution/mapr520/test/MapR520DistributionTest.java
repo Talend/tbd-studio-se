@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.mapr520.test;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.component.HBaseComponent;
@@ -107,6 +108,10 @@ public class MapR520DistributionTest {
         assertTrue(distribution.doSupportCreateServiceConnection());
         assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
         assertTrue(((SparkComponent) distribution).doImportSparkHiveContextDependencies());
+        
+        AbstractDistribution mapr520Distrib = (MapR520Distribution) distribution;
+        assertFalse(mapr520Distrib.doSupportWebHDFS());
+        assertFalse(mapr520Distrib.doSupportADLS());
     }
 
 }

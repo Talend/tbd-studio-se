@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.mapr500.test;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.component.HBaseComponent;
@@ -28,6 +29,7 @@ import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
+import org.talend.hadoop.distribution.hdp240.HDP240Distribution;
 import org.talend.hadoop.distribution.mapr500.MapR500Distribution;
 import org.talend.hadoop.distribution.test.AbstractDistributionTest;
 
@@ -105,6 +107,10 @@ public class MapR500DistributionTest extends AbstractDistributionTest {
         assertFalse(((SparkStreamingComponent) distribution).doSupportBackpressure());
         assertTrue(distribution.doSupportCreateServiceConnection());
         assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
+        
+        AbstractDistribution mapr500Distrib = (MapR500Distribution) distribution;
+        assertFalse(mapr500Distrib.doSupportWebHDFS());
+        assertFalse(mapr500Distrib.doSupportADLS());
     }
 
 }

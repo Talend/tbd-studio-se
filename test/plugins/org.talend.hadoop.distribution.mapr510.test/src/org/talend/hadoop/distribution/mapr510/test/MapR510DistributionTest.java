@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.mapr510.test;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.component.HBaseComponent;
@@ -110,6 +111,10 @@ public class MapR510DistributionTest extends AbstractDistributionTest {
         assertEquals(SparkStreamingKafkaVersion.MAPR_5X0_KAFKA, ((SparkStreamingComponent) distribution).getSparkStreamingKafkaVersion(ESparkVersion.SPARK_1_5));
         assertTrue(distribution.doSupportCreateServiceConnection());
         assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
+        
+        AbstractDistribution mapr510Distrib = (MapR510Distribution) distribution;
+        assertFalse(mapr510Distrib.doSupportWebHDFS());
+        assertFalse(mapr510Distrib.doSupportADLS());
     }
 
 }

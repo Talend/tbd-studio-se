@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.custom.test;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.component.HBaseComponent;
 import org.talend.hadoop.distribution.component.HCatalogComponent;
@@ -104,6 +105,10 @@ public class CustomDistributionTest extends AbstractDistributionTest {
         assertTrue(distribution instanceof ImpalaComponent);
         assertTrue(distribution.doSupportCreateServiceConnection());
         assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
+        
+        AbstractDistribution customDistrib = (CustomDistribution) distribution;
+        assertFalse(customDistrib.doSupportWebHDFS());
+        assertFalse(customDistrib.doSupportADLS());
     }
 
 }

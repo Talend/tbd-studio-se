@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.cdh580.test;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.cdh580.CDH580Distribution;
@@ -102,5 +103,9 @@ public class CDH580DistributionTest {
         
         assertTrue(distribution.doSupportCreateServiceConnection());
         assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
+        
+        AbstractDistribution cdh580Distrib = (CDH580Distribution) distribution;
+        assertFalse(cdh580Distrib.doSupportADLS());
+        assertTrue(cdh580Distrib.doSupportWebHDFS());
     }
 }
