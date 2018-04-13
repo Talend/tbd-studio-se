@@ -30,13 +30,8 @@ public class CDH5100WebHDFSModuleGroup {
             new DistributionModuleGroup(CDH5100Constant.WEBHDFS_MODULE_GROUP.getModuleName(), true, 
                     hdfsLinkedNodeCondition.getWebHDFSCondition());
 
-        DistributionModuleGroup dmgADLS =
-            new DistributionModuleGroup(CDH5100Constant.SPARK_AZURE_MRREQUIRED_MODULE_GROUP.getModuleName(), true,
-                    hdfsLinkedNodeCondition.getAdlsCondition());
-
         Set<DistributionModuleGroup> hs = new HashSet<>();
         hs.add(dmgWebHDFS);
-        hs.add(dmgADLS);
         return hs;
     }
 }
