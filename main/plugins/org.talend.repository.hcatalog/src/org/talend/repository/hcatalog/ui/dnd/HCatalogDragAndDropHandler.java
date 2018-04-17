@@ -3,6 +3,7 @@ package org.talend.repository.hcatalog.ui.dnd;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -63,7 +64,7 @@ public class HCatalogDragAndDropHandler extends AbstractDragAndDropServiceHandle
     }
 
     @Override
-    public Object getComponentValue(Connection connection, String value, IMetadataTable table, String targetComponent) {
+    public Object getComponentValue(Connection connection, String value, IMetadataTable table, String targetComponent, Map<Object, Object> contextMap) {
         if (value != null && canHandle(connection)) {
             return getHCatalogRepositoryValue((HCatalogConnection) connection, value, table, targetComponent);
         }
