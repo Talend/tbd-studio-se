@@ -35,5 +35,5 @@ public final class HDFSConstant {
 
     public static final List<String> hdfsComponents = Arrays.asList("tHDFSConnection", "tHDFSGet", "tHDFSPut",
             "tHDFSList", "tHDFSInput", "tHDFSOutput", "tHDFSCopy", "tHDFSRename", "tHDFSExist", "tHDFSDelete",
-            "tHDFSRowCount", "tHDFSCompare", "tHDFSOutputRow", "tHDFSProperties");
+            "tHDFSRowCount", "tHDFSCompare", "tHDFSOutputRaw", "tHDFSProperties");
 }
