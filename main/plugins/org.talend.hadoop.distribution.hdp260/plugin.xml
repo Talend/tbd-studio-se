@@ -719,7 +719,7 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="hk2-utils-2.4.0-b34.jar" name="hk2-utils-2.4.0-b34.jar" mvn_uri="mvn:org.talend.libraries/hk2-utils-2.4.0-b34/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="htrace-core-3.1.0-incubating.jar" name="htrace-core-3.1.0-incubating.jar" mvn_uri="mvn:org.talend.libraries/htrace-core-3.1.0-incubating/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="httpclient-4.5.2.jar" name="httpclient-4.5.2.jar" mvn_uri="mvn:org.talend.libraries/httpclient-4.5.2/6.4.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="httpcore-4.4.4.jar" name="httpcore-4.4.4.jar" mvn_uri="mvn:org.talend.libraries/httpcore-4.4.4/6.0.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="httpcore-4.4.4.jar" name="httpcore-4.4.4.jar" mvn_uri="mvn:org.talend.libraries/httpcore-4.4.4/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="ivy-2.4.0.jar" name="ivy-2.4.0.jar" mvn_uri="mvn:org.talend.libraries/ivy-2.4.0/6.4.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="jackson-annotations-2.6.7.jar" name="jackson-annotations-2.6.7.jar" mvn_uri="mvn:org.talend.libraries/jackson-annotations-2.6.7/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="jackson-core-2.6.7.jar" name="jackson-core-2.6.7.jar" mvn_uri="mvn:org.talend.libraries/jackson-core-2.6.7/6.0.0"/>
