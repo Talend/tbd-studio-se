@@ -68,13 +68,13 @@ public class HDP250ClassLoaderTest extends AbstractTest4ClassLoaderProvider {
 
     @Test
     public void testHDFS() {
-        String libsStr = "avro-1.7.5.jar;commons-cli-1.2.jar;commons-collections-3.2.2.jar;commons-io-2.4.jar;commons-configuration-1.6.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;guava-11.0.2.jar;hadoop-auth-2.7.3.2.5.0.0-1245.jar;hadoop-common-2.7.3.2.5.0.0-1245.jar;hadoop-hdfs-2.7.3.2.5.0.0-1245.jar;htrace-core-3.1.0-incubating.jar;jersey-core-1.9.jar;log4j-1.2.17.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-mapper-asl-1.9.14-TALEND.jar;commons-codec-1.4.jar;httpclient-4.5.2.jar;httpcore-4.4.4.jar";//$NON-NLS-1$
+        String libsStr = "avro-1.7.5.jar;commons-cli-1.2.jar;commons-collections-3.2.2.jar;commons-io-2.4.jar;commons-configuration-1.6.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;guava-11.0.2.jar;hadoop-auth-2.7.3.2.5.0.0-1245.jar;hadoop-common-2.7.3.2.5.0.0-1245.jar;hadoop-hdfs-2.7.3.2.5.0.0-1245.jar;htrace-core-3.1.0-incubating.jar;jersey-core-1.9.jar;log4j-1.2.17.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-mapper-asl-1.9.14-TALEND.jar;commons-codec-1.4.jar;httpclient-4.5.2.jar;httpcore-4.4.4.jar;jersey-client-1.9.jar";//$NON-NLS-1$
         doTestClassLoader(EHadoopCategory.HDFS.getName(), libsStr);
     }
 
     @Test
     public void testHDFSWithKerberos() {
-        String libsStr = "avro-1.7.5.jar;commons-cli-1.2.jar;commons-collections-3.2.2.jar;commons-io-2.4.jar;commons-configuration-1.6.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;guava-11.0.2.jar;hadoop-auth-2.7.3.2.5.0.0-1245.jar;hadoop-common-2.7.3.2.5.0.0-1245.jar;hadoop-hdfs-2.7.3.2.5.0.0-1245.jar;htrace-core-3.1.0-incubating.jar;jersey-core-1.9.jar;log4j-1.2.17.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-mapper-asl-1.9.14-TALEND.jar;hadoop-conf-kerberos.jar;commons-codec-1.4.jar;httpclient-4.5.2.jar;httpcore-4.4.4.jar";//$NON-NLS-1$
+        String libsStr = "avro-1.7.5.jar;commons-cli-1.2.jar;commons-collections-3.2.2.jar;commons-io-2.4.jar;commons-configuration-1.6.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;guava-11.0.2.jar;hadoop-auth-2.7.3.2.5.0.0-1245.jar;hadoop-common-2.7.3.2.5.0.0-1245.jar;hadoop-hdfs-2.7.3.2.5.0.0-1245.jar;htrace-core-3.1.0-incubating.jar;jersey-core-1.9.jar;log4j-1.2.17.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-mapper-asl-1.9.14-TALEND.jar;hadoop-conf-kerberos.jar;commons-codec-1.4.jar;httpclient-4.5.2.jar;httpcore-4.4.4.jar;jersey-client-1.9.jar";//$NON-NLS-1$
         doTestClassLoader(EHadoopCategory.HDFS.getName(), libsStr, "?USE_KRB");//$NON-NLS-1$
     }
 }
