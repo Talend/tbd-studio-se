@@ -1231,7 +1231,8 @@
 			"id": "MAPREDUCE-PARQUET-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
 			"modules": [
-				"hadoop-client"
+				"hadoop-client",
+				"jodd"
 			]
 		},
         {
