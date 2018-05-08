@@ -18,15 +18,14 @@ import java.util.List;
 import org.osgi.framework.Bundle;
 import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
 import org.talend.designer.maven.aether.IDynamicMonitor;
-import org.talend.hadoop.distribution.dynamic.AbstractDynamicDistribution;
-import org.talend.hadoop.distribution.dynamic.IDynamicDistributionTemplate;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
-import org.talend.hadoop.distribution.dynamic.cdh.IDynamicCDHDistribution;
+import org.talend.hadoop.distribution.dynamic.cdh.AbstractDynamicCDHDistribution;
+import org.talend.hadoop.distribution.dynamic.template.IDynamicDistributionTemplate;
 
 /**
  * DOC cmeng  class global comment. Detailled comment
  */
-public class DynamicCDH5xDistribution extends AbstractDynamicDistribution implements IDynamicCDHDistribution {
+public class DynamicCDH5xDistribution extends AbstractDynamicCDHDistribution {
 
     public static final String TEMPLATE_FOLDER_PATH = "resources/template/cdh5x/"; //$NON-NLS-1$
 
@@ -71,11 +70,6 @@ public class DynamicCDH5xDistribution extends AbstractDynamicDistribution implem
     @Override
     protected String getBuiltinFolderPath() {
         return BUILD_IN_FOLDER_PATH;
-    }
-
-    @Override
-    public String getDistributionName() {
-        return IDynamicCDHDistribution.DISTRIBUTION;
     }
 
 }

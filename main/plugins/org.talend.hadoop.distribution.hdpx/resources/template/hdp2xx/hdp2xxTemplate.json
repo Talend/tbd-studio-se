@@ -1,0 +1,109 @@
+{
+	"id": "HDP2.X.X",
+	"name": "Hortonworks HDP2.X.X template",
+	"distribution": "HORTONWORKS",
+	"templateId": "HDP2xxDistributionTemplate",
+	"baseVersion": "2.6.0",
+	"topVersion": "",
+	"dynamicVersion": "will be filled during runtime",
+	"properties": {
+		"context": "plugin:org.talend.hadoop.distribution.hdpx"
+	},
+	"description": "",
+	"modules": [
+	],
+	"moduleGroups": [
+		{
+			"id": "HDFS-LIB-DYNAMIC",
+			"description": "jars for hdfs, only module.id permitted",
+			"modules": [
+			]
+		},
+		{
+			"id": "HIVE-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+			]
+		},
+		{
+			"id": "HBASE-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+			]
+		},
+		{
+			"id": "MAPREDUCE-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+			]
+		},
+		{
+			"id": "IMPALA-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+			]
+		}
+	],
+	"classLoaders": [
+		{
+			"id": "hadoop-hdfs",
+			"index": "HDFS:CLOUDERA:{dynamicVersion}",
+			"moduleGroup": "HDFS-LIB-DYNAMIC",
+			"description": ""
+		},
+		{
+			"id": "hadoop-hdfs-with-krb",
+			"index": "HDFS:CLOUDERA:{dynamicVersion}?USE_KRB",
+			"moduleGroup": "HDFS-LIB-DYNAMIC",
+			"description": ""
+		},
+		{
+			"id": "hive-embedded",
+			"index": "HIVE:CLOUDERA:{dynamicVersion}:EMBEDDED",
+			"moduleGroup": "HIVE-LIB-DYNAMIC",
+			"description": ""
+		},
+		{
+			"id": "hive-standalone",
+			"index": "HIVE:CLOUDERA:{dynamicVersion}:STANDALONE",
+			"moduleGroup": "HIVE-LIB-DYNAMIC",
+			"description": ""
+		},
+		{
+			"id": "hive2-embedded",
+			"index": "HIVE2:CLOUDERA:{dynamicVersion}:EMBEDDED",
+			"moduleGroup": "HIVE-LIB-DYNAMIC",
+			"description": ""
+		},
+		{
+			"id": "hive2-standalone",
+			"index": "HIVE2:CLOUDERA:{dynamicVersion}:STANDALONE",
+			"moduleGroup": "HIVE-LIB-DYNAMIC",
+			"description": ""
+		},
+		{
+			"id": "hbase",
+			"index": "HBASE:CLOUDERA:{dynamicVersion}",
+			"moduleGroup": "HBASE-LIB-DYNAMIC",
+			"description": ""
+		},
+		{
+			"id": "mapreduce",
+			"index": "MAP_REDUCE:CLOUDERA:{dynamicVersion}",
+			"moduleGroup": "MAPREDUCE-LIB-DYNAMIC",
+			"description": ""
+		},
+		{
+			"id": "impala",
+			"index": "IMPALA:CLOUDERA:{dynamicVersion}",
+			"moduleGroup": "IMPALA-LIB-DYNAMIC",
+			"description": ""
+		},
+		{
+			"id": "impala-with-krb",
+			"index": "IMPALA:CLOUDERA:{dynamicVersion}?USE_KRB",
+			"moduleGroup": "IMPALA-LIB-DYNAMIC",
+			"description": ""
+		}
+	]
+}

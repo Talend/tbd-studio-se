@@ -13,6 +13,7 @@
 package org.talend.hadoop.distribution.dynamic;
 
 import org.talend.commons.exception.ExceptionHandler;
+import org.talend.hadoop.distribution.dynamic.pref.IDynamicDistributionPreference;
 import org.talend.repository.ProjectManager;
 
 /**
