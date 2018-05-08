@@ -31,8 +31,8 @@ import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
 import org.talend.core.runtime.maven.MavenArtifact;
 import org.talend.core.runtime.maven.MavenUrlHelper;
 import org.talend.designer.maven.aether.comparator.VersionStringComparator;
-import org.talend.hadoop.distribution.dynamic.IDynamicDistributionPreference;
 import org.talend.hadoop.distribution.dynamic.comparator.DynamicAttributeComparator;
+import org.talend.hadoop.distribution.dynamic.pref.IDynamicDistributionPreference;
 
 /**
  * DOC cmeng  class global comment. Detailled comment
