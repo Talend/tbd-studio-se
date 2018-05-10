@@ -181,11 +181,15 @@ imports="
 		
 		String schemaColumn = pathElement.get("SCHEMA_COLUMN");
 %>
+
 	pathMap_<%=cid%>.put("<%=schemaColumn%>",<%=path%>);
 <%
 	}
 %>
 
+	String rawPath_<%=cid%> = null;
+	String path_<%=cid%> = null;
+	
     while (itrst_<%=cid %>.hasNext()) {
 		nb_line_<%=cid %> ++;
        	readRecord_<%=cid %> = itrst_<%=cid %>.next();
@@ -198,12 +202,30 @@ imports="
 		if (firstConnName.length() > 0) {
 
 			for (IMetadataColumn column : columnList) {
+				
 				String typeToGenerate = JavaTypesManager.getTypeToGenerate(column.getTalendType(), column.isNullable());
 				JavaType javaType = JavaTypesManager.getJavaTypeFromId(column.getTalendType());
 				String patternValue = column.getPattern() == null || column.getPattern().trim().length() == 0 ? null : column.getPattern();
 %>
 
-        valueObj_<%=cid%> = readRecord_<%=cid%>.getValue(pathMap_<%=cid%>.get("<%=column.getLabel() %>"));
+        rawPath_<%=cid%> = pathMap_<%=cid%>.get("<%=column.getLabel() %>");
+        path_<%=cid%> = null;
+		
+        if ((rawPath_<%=cid%> == null ) || "".equals(rawPath_<%=cid%>)) {
+            if ("*".equals("<%=column.getOriginalDbColumnName() %>")) {
+                path_<%=cid%> = "";
+            } else {
+                path_<%=cid%> = "<%=column.getOriginalDbColumnName() %>";
+            }
+        } else {
+            if ("*".equals("<%=column.getOriginalDbColumnName() %>")) {
+                path_<%=cid%> = rawPath_<%=cid%>;
+            } else {
+                path_<%=cid%> = rawPath_<%=cid%> + ".<%=column.getOriginalDbColumnName() %>";
+            }
+        }
+		
+        valueObj_<%=cid%> = readRecord_<%=cid%>.getValue(path_<%=cid%>);
 
 <%
        			if (javaType == JavaTypesManager.OBJECT) {
@@ -266,6 +288,7 @@ imports="
 		} else {
 			<%=firstConnName %>.<%=column.getLabel() %> = <%=JavaTypesManager.getDefaultValueFromJavaType(typeToGenerate)%>;
 		}
+		
 <%
 				}
 			}
