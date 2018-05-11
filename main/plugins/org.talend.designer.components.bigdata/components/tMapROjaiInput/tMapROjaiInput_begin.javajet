@@ -243,7 +243,7 @@ imports="
 					if(javaType == JavaTypesManager.DATE) {
 %>
 
-			<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.getDate().toDate();
+			<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.getTimestamp().toDate();
             
 <%
 					} else if(javaType == JavaTypesManager.BYTE_ARRAY) {
