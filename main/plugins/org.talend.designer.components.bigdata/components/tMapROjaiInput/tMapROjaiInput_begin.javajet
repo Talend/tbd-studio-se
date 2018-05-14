@@ -242,8 +242,11 @@ imports="
 <%
 					if(javaType == JavaTypesManager.DATE) {
 %>
-
-			<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.getTimestamp().toDate();
+			if (valueObj_<%=cid%>.getType().equals(org.ojai.Value.Type.STRING)) {//when bulk write = true, Date is stored as String
+				<%=firstConnName %>.<%=column.getLabel() %> = (org.ojai.types.OTimestamp.parse(valueObj_<%=cid%>.getString())).toDate();
+			} else {//when bulk write = false, Date is stored as Timestamp 
+				<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.getTimestamp().toDate();
+			}
             
 <%
 					} else if(javaType == JavaTypesManager.BYTE_ARRAY) {

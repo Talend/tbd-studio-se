@@ -211,7 +211,10 @@ imports="
 					            rowType = "BINARY";
 					        }else if ("Integer".equals(typeToGenerate)){
 					            rowType = "INT";
-					        }else{
+					        }else if ("Character".equals(typeToGenerate)){
+					        	rowType = "STRING";
+					        }
+					        else{
 					            rowType = typeToGenerate.toUpperCase();
 					        }
 					        
