@@ -226,7 +226,6 @@ imports="
         }
 		
         valueObj_<%=cid%> = readRecord_<%=cid%>.getValue(path_<%=cid%>);
-
 <%
        			if (javaType == JavaTypesManager.OBJECT) {
 %>
@@ -257,8 +256,7 @@ imports="
 <%
 					} else if (javaType == JavaTypesManager.STRING) {
 %>
-
-			<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.toString();
+			<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.getString();
 			
 <%
 					} else if (javaType == JavaTypesManager.INTEGER) {
