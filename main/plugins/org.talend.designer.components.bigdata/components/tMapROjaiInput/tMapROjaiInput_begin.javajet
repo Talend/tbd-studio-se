@@ -155,12 +155,11 @@ imports="
   		qry_<%=cid %>.select(fieldList_<%=cid %>);
   	}
   	
-  	qry_<%=cid %>.where(<%=query %>).build();//json-style condition support in ojai 2.0 and higher
-  	  	
   	if (<%=restrictPartialSorts %>) {
   		qry_<%=cid %>.setOption("ojai.mapr.query.force-noncovering-sort", "TRUE");
   	}
   	  	
+  	qry_<%=cid %>.where(<%=query %>).build();//json-style condition support in ojai 2.0 and higher
   	rst_<%=cid %> = store_<%=cid %>.findQuery(qry_<%=cid %>);
   	
 <%
