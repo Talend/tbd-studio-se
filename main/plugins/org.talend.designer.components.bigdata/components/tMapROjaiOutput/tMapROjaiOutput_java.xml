@@ -46,20 +46,6 @@
 			<DEFAULT>""</DEFAULT>
 		</PARAMETER>
 		
-		        <!-- PARAMETER
-            NAME="DB_VERSION"
-            FIELD="CLOSED_LIST"
-            REPOSITORY_VALUE="DB_VERSION"
-            NUM_ROW="40"
-            SHOW_IF="(USE_EXISTING_CONNECTION == 'false')"
-            GROUP="CONNECTION">
-            <ITEMS DEFAULT="MAPROJAI_6_0">
-                <ITEM NAME="MAPROJAI_5_1" VALUE="MAPROJAI_5_1"/>
-                <ITEM NAME="MAPROJAI_5_2" VALUE="MAPROJAI_5_2"/>
-                <ITEM NAME="MAPROJAI_6_0" VALUE="MAPROJAI_6_0"/>
-            </ITEMS>
-        </PARAMETER-->
-        
         		<!-- kerberos -->
 		<PARAMETER NAME="USE_KRB" FIELD="CHECK" NUM_ROW="50"
 			REPOSITORY_VALUE="USE_KRB" GROUP="AUTHENTICATION">
