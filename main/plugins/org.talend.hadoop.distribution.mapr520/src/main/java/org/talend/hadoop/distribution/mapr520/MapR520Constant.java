@@ -14,6 +14,7 @@ package org.talend.hadoop.distribution.mapr520;
 
 public enum MapR520Constant {
 
+    OJAI_MODULE_GROUP("OJAI-LIB-MAPR520"), //$NON-NLS-1$
     HDFS_MODULE_GROUP("HDFS-LIB-MAPR520"), //$NON-NLS-1$
     MAPREDUCE_MODULE_GROUP("MAPREDUCE-LIB-MAPR520"), //$NON-NLS-1$
     PIG_MODULE_GROUP("PIG-LIB-MAPR520"), //$NON-NLS-1$

@@ -22,6 +22,7 @@ import org.talend.hadoop.distribution.constants.ImpalaConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.MapRDBConstant;
 import org.talend.hadoop.distribution.constants.MapRStreamsConstant;
+import org.talend.hadoop.distribution.constants.OJAIConstant;
 import org.talend.hadoop.distribution.constants.PigConstant;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
@@ -34,6 +35,12 @@ import org.talend.hadoop.distribution.constants.SqoopConstant;
  *
  */
 public enum ComponentType {
+    OJAI(
+            OJAIConstant.SERVICE,
+            OJAIConstant.DISTRIBUTION_PARAMETER,
+            OJAIConstant.DISTRIBUTION_REPOSITORYVALUE,
+            OJAIConstant.VERSION_PARAMETER,
+            OJAIConstant.VERSION_REPOSITORYVALUE),
     HDFS(
          HDFSConstant.SERVICE,
          HDFSConstant.DISTRIBUTION_PARAMETER,
