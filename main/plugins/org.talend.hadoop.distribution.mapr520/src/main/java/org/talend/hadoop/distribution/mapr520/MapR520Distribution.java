@@ -33,7 +33,7 @@ import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.MapRDBComponent;
 import org.talend.hadoop.distribution.component.MapRStreamsComponent;
-import org.talend.hadoop.distribution.component.OJAIComponent;
+import org.talend.hadoop.distribution.component.MapROJAIComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
@@ -75,7 +75,7 @@ import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520SparkStreamingM
 import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520SqoopModuleGroup;
 
-public class MapR520Distribution extends AbstractMapRDistribution implements HDFSComponent, MRComponent, HBaseComponent, OJAIComponent,
+public class MapR520Distribution extends AbstractMapRDistribution implements HDFSComponent, MRComponent, HBaseComponent, MapROJAIComponent,
         SqoopComponent, PigComponent, HiveComponent, HCatalogComponent, SparkBatchComponent, SparkStreamingComponent,
         HiveOnSparkComponent, ImpalaComponent, MapRStreamsComponent, MapRDBComponent, IMapRDistribution {
 

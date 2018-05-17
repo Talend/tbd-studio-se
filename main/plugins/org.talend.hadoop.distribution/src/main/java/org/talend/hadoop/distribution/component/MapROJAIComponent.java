@@ -13,12 +13,21 @@
 package org.talend.hadoop.distribution.component;
 
 /**
- * Interface that exposes specific HCatalog methods.
+ * Interface that exposes specific MapROJAI methods.
  *
  */
-public interface OJAIComponent extends HadoopComponent {
+public interface MapROJAIComponent extends HadoopComponent {
 
+    /**
+     * Partial sorts can occur due to secondary index lags. This indicates if the Query Service able to explicitly sort the data.
+     * More info here https://maprdocs.mapr.com/home/MapR-DB/JSON_DB/query-orderby-queries.html
+     * @return
+     */
     boolean doSupportExplicitSorts();
+    /**
+     * Json-like 'where' clauses are supported starting from OJAI 2.0 (Query org.ojai.store.Driver.newQuery(String queryJson) )
+     * @return
+     */
     boolean doSupportJsonQueries();
     
 }

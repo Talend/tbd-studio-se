@@ -2,7 +2,7 @@
 <component name="MapR520Distribution">
   <implementation class="org.talend.hadoop.distribution.mapr520.MapR520Distribution"/>
   <service>
-    <provide interface="org.talend.hadoop.distribution.component.OJAIComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.MapROJAIComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.HadoopComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.HDFSComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.HBaseComponent"/>

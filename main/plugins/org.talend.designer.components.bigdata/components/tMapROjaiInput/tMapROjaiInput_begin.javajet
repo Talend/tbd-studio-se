@@ -156,7 +156,7 @@ imports="
   	}
   	
   	if (<%=restrictPartialSorts %>) {
-  		qry_<%=cid %>.setOption("ojai.mapr.query.force-noncovering-sort", "TRUE");
+  		qry_<%=cid %>.setOption("ojai.mapr.query.force-noncovering-sort", true);
   	}
   	  	
   	qry_<%=cid %>.where(<%=query %>).build();//json-style condition support in ojai 2.0 and higher

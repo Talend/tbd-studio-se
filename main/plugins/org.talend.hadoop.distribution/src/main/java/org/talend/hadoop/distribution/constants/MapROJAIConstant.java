@@ -12,7 +12,7 @@
 // ============================================================================
 package org.talend.hadoop.distribution.constants;
 
-public final class OJAIConstant {
+public final class MapROJAIConstant {
 
     public static final String SERVICE = "org.talend.hadoop.distribution.component.OJAIComponent";//$NON-NLS-1$
 
