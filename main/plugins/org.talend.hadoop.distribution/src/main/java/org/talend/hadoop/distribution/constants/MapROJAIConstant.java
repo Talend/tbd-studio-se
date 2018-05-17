@@ -14,7 +14,7 @@ package org.talend.hadoop.distribution.constants;
 
 public final class MapROJAIConstant {
 
-    public static final String SERVICE = "org.talend.hadoop.distribution.component.OJAIComponent";//$NON-NLS-1$
+    public static final String SERVICE = "org.talend.hadoop.distribution.component.MapROJAIComponent";//$NON-NLS-1$
 
     public static final String DISTRIBUTION_PARAMETER = "DISTRIBUTION";//$NON-NLS-1$
 
