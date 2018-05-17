@@ -171,9 +171,9 @@
         <IMPORTS>
              <!-- Cassandra 2.0.8 -->
              <IMPORT
-                NAME="cassandra-all-2.0.8"
-                MODULE="cassandra-all-2.0.8.jar" MVN="mvn:org.talend.libraries/cassandra-all-2.0.8/6.0.0" 
-                UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/cassandra-all-2.0.8.jar"
+                NAME="cassandra-all-2.0.14"
+                MODULE="cassandra-all-2.0.14.jar" MVN="mvn:org.talend.libraries/cassandra-all-2.0.14/6.0.0" 
+                UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/cassandra-all-2.0.14.jar"
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
                 NAME="cassandra-2-0-8-conf"
@@ -181,9 +181,9 @@
                 UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/cassandra-2-0-8-conf.jar"
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
-                NAME="cassandra-thrift-2.0.4"
-                MODULE="cassandra-thrift-2.0.4.jar" MVN="mvn:org.talend.libraries/cassandra-thrift-2.0.4/6.0.0" 
-                UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/cassandra-thrift-2.0.4.jar"
+                NAME="cassandra-thrift-2.0.14"
+                MODULE="cassandra-thrift-2.0.14.jar" MVN="mvn:org.talend.libraries/cassandra-thrift-2.0.14/6.0.0" 
+                UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/cassandra-thrift-2.0.14.jar"
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
                 MODULE="slf4j-api-1.7.5.jar" MVN="mvn:org.talend.libraries/slf4j-api-1.7.5/6.0.0" 
