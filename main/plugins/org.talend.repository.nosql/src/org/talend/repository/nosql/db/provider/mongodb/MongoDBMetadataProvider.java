@@ -122,13 +122,11 @@ public class MongoDBMetadataProvider extends AbstractMetadataProvider {
                     column.setLabel(colName);
                     Object value = NoSQLReflection.invokeMethod(dbObject, "get", new Object[] { colName }); //$NON-NLS-1$
                     JavaType javaType = null;
-                    if(value==null) {
-                        javaType = JavaTypesManager.STRING;
-                    }else {
+                    if (value != null) {
                         javaType = JavaTypesManager.getJavaTypeFromName(value.getClass().getSimpleName());
-                        if (javaType == null) {
-                            javaType = JavaTypesManager.STRING;
-                        }
+                    }
+                    if (javaType == null) {
+                        javaType = JavaTypesManager.STRING;
                     }
                     column.setTalendType(javaType.getId());
                     if (indexColNames.contains(colName)) {
