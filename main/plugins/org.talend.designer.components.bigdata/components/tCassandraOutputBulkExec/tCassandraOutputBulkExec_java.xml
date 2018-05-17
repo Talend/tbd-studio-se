@@ -31,24 +31,6 @@
     <PARAMETERS>
         <PARAMETER NAME="PROPERTY" FIELD="PROPERTY_TYPE" NUM_ROW="1" REPOSITORY_VALUE="NOSQL:CASSANDRA"/>
         <PARAMETER
-            NAME="NOTE"
-            FIELD="LABEL"
-            NUM_ROW="2"
-            COLOR="255;0;0"
-            SHOW_IF="DB_VERSION=='CASSANDRA_1_2_2'"
-        >
-            <DEFAULT>This component requires the server OS and the client OS to be similar.</DEFAULT>
-        </PARAMETER>
-        <PARAMETER
-            NAME="NOTE"
-            FIELD="LABEL"
-            NUM_ROW="2"
-            COLOR="255;0;0"
-            SHOW_IF="DB_VERSION=='CASSANDRA_1_1_2'"
-        >
-            <DEFAULT>This component only works locally on a Linux OS.</DEFAULT>
-        </PARAMETER>
-        <PARAMETER
             NAME="SCHEMA_FLOW"
             FIELD="SCHEMA_TYPE"
             NUM_ROW="3"
@@ -61,7 +43,7 @@
             NUM_ROW="3"
             SHOW="false"
         >
-            <DEFAULT IF="(DB_VERSION == 'CASSANDRA_1_1_2') OR (DB_VERSION == 'CASSANDRA_1_2_2') OR (DB_VERSION == 'CASSANDRA_2_0_0')">cassandra_id</DEFAULT>
+            <DEFAULT IF="(DB_VERSION == 'CASSANDRA_2_0_0')">cassandra_id</DEFAULT>
             <DEFAULT IF="(DB_VERSION == 'CASSANDRA_2_1')">cassandra_datastax_id</DEFAULT>
             <DEFAULT IF="(DB_VERSION == 'CASSANDRA_2_2') OR (DB_VERSION == 'CASSANDRA_3_0')">cassandra22_datastax_id</DEFAULT>
         </PARAMETER>
@@ -84,8 +66,6 @@
             NUM_ROW="5"
             >
             <ITEMS DEFAULT="CASSANDRA_3_0">
-                <ITEM NAME="CASSANDRA_1_1_2" VALUE="CASSANDRA_1_1_2"/>
-                <ITEM NAME="CASSANDRA_1_2_2" VALUE="CASSANDRA_1_2_2"/>
                 <ITEM NAME="CASSANDRA_2_0_0" VALUE="CASSANDRA_2_0_0"/>
                 <ITEM NAME="CASSANDRA_2_1" VALUE="CASSANDRA_2_1"/>
                 <ITEM NAME="CASSANDRA_2_2" VALUE="CASSANDRA_2_2"/>
@@ -108,7 +88,7 @@
             REQUIRED="true"
             NUM_ROW="10"
         >
-            <DEFAULT IF="(DB_VERSION == 'CASSANDRA_1_1_2') OR (DB_VERSION == 'CASSANDRA_1_2_2') OR (DB_VERSION == 'CASSANDRA_2_0_0') OR (DB_VERSION == 'CASSANDRA_2_1')">9160</DEFAULT>
+            <DEFAULT IF="(DB_VERSION == 'CASSANDRA_2_0_0') OR (DB_VERSION == 'CASSANDRA_2_1')">9160</DEFAULT>
             <DEFAULT IF="(DB_VERSION == 'CASSANDRA_2_2') OR (DB_VERSION == 'CASSANDRA_3_0')">9042</DEFAULT>
         </PARAMETER>
         <PARAMETER
@@ -116,7 +96,6 @@
             FIELD="CHECK"
             REPOSITORY_VALUE="REQUIRED_AUTHENTICATION"
             NUM_ROW="15"
-            SHOW_IF="DB_VERSION != 'CASSANDRA_1_1_2'"
         >
             <DEFAULT>false</DEFAULT>
         </PARAMETER>
@@ -183,7 +162,7 @@
         >
             <ITEMS DEFAULT="RANDOMPARTITIONER">
                 <ITEM NAME="RANDOMPARTITIONER" VALUE="RandomPartitioner"/>
-                <ITEM NAME="MURMUR3PARTITIONER" VALUE="Murmur3Partitioner" NOT_SHOW_IF="DB_VERSION == 'CASSANDRA_1_1_2'"/>
+                <ITEM NAME="MURMUR3PARTITIONER" VALUE="Murmur3Partitioner"/>
                 <ITEM NAME="ORDERPRESERVINGPARTITIONER" VALUE="OrderPreservingPartitioner"/>
             </ITEMS>
         </PARAMETER>
@@ -192,7 +171,7 @@
             FIELD="CLOSED_LIST"
             REQUIRED="true"
             NUM_ROW="30"
-            SHOW_IF="(DB_VERSION == 'CASSANDRA_1_1_2') OR (DB_VERSION == 'CASSANDRA_1_2_2') OR ((DB_VERSION == 'CASSANDRA_2_0_0') AND (TABLE_TYPE=='NON_CQL'))"
+            SHOW_IF="((DB_VERSION == 'CASSANDRA_2_0_0') AND (TABLE_TYPE=='NON_CQL'))"
         >
             <ITEMS DEFAULT="ASCIITYPE">
                 <ITEM NAME="ASCIITYPE" VALUE="AsciiType"/>
@@ -219,7 +198,7 @@
             FIELD="TEXT"
             NUM_ROW="26"
             REQUIRED="true"
-            NOT_SHOW_IF="(DB_VERSION == 'CASSANDRA_1_1_2') OR (DB_VERSION == 'CASSANDRA_1_2_2') OR ((DB_VERSION == 'CASSANDRA_2_0_0') AND (TABLE_TYPE=='NON_CQL'))"
+            NOT_SHOW_IF="((DB_VERSION == 'CASSANDRA_2_0_0') AND (TABLE_TYPE=='NON_CQL'))"
         >
           <DEFAULT>"create table ks.tb (id int, name text, birthday timestamp, primary key(id, birthday)) with clustering order by (birthday desc)"</DEFAULT>
         </PARAMETER>
@@ -228,7 +207,7 @@
             FIELD="TEXT"
             NUM_ROW="27"
             REQUIRED="true"
-            NOT_SHOW_IF="(DB_VERSION == 'CASSANDRA_1_1_2') OR (DB_VERSION == 'CASSANDRA_1_2_2') OR ((DB_VERSION == 'CASSANDRA_2_0_0') AND (TABLE_TYPE=='NON_CQL'))"
+            NOT_SHOW_IF="((DB_VERSION == 'CASSANDRA_2_0_0') AND (TABLE_TYPE=='NON_CQL'))"
         >
           <DEFAULT>"insert into ks.tb (id, name, birthday) values (?, ?, ?)"</DEFAULT>
         </PARAMETER>
@@ -246,7 +225,7 @@
             REQUIRED="true"
             NUM_ROW="45"
         >
-            <DEFAULT IF="(DB_VERSION == 'CASSANDRA_1_1_2') OR (DB_VERSION == 'CASSANDRA_1_2_2') OR ((DB_VERSION == 'CASSANDRA_2_0_0') AND (TABLE_TYPE=='NON_CQL'))">64</DEFAULT>
+            <DEFAULT IF="((DB_VERSION == 'CASSANDRA_2_0_0') AND (TABLE_TYPE=='NON_CQL'))">64</DEFAULT>
             <DEFAULT IF="((DB_VERSION == 'CASSANDRA_2_0_0') AND (TABLE_TYPE=='CQL')) OR (DB_VERSION == 'CASSANDRA_2_1') OR (DB_VERSION == 'CASSANDRA_2_2') OR (DB_VERSION == 'CASSANDRA_3_0')">128</DEFAULT>
         </PARAMETER>
     </PARAMETERS>
