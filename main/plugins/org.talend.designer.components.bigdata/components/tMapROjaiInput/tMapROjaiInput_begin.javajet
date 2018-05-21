@@ -134,17 +134,16 @@ imports="
 //<--Kerberos stuff end
 
     java.util.Map<String, String> pathMap_<%=cid%> = new java.util.HashMap<String, String>();
-    List<String> fieldList_<%=cid%> = new java.util.ArrayList<String>();
 
 <%
     for (Map<String, String> pathElement : mapping) {
         String schemaColumn = pathElement.get("SCHEMA_COLUMN");
         String dbColumn = (columnMap.get(schemaColumn)).getOriginalDbColumnName();
         String path = pathElement.get("PARENT_FIELD_PATH") == null ? "" : pathElement.get("PARENT_FIELD_PATH");
+        String fullDbColumnName = "".equals(path) ? dbColumn : path + "." + dbColumn;
 %>
 
-    pathMap_<%=cid%>.put("<%=dbColumn%>","<%=path%>");
-    fieldList_<%=cid%>.add("".equals("<%=path%>") ? "<%=dbColumn%>" : "<%=path%>.<%=dbColumn%>");
+    pathMap_<%=cid%>.put("<%=dbColumn%>","<%=fullDbColumnName%>");
     
 <%
     }
@@ -152,6 +151,7 @@ imports="
 
     int nb_line_<%=cid %> = 0;
 	org.ojai.DocumentStream rst_<%=cid %> = null;
+    java.util.Collection<String> fieldList_<%=cid%> = pathMap_<%=cid%>.values();
 
 <%
 	if ("MAPROJAI_5_1".equals(dbVersion) || "MAPROJAI_5_2".equals(dbVersion)) { //OJAI 1.0)
@@ -160,8 +160,8 @@ imports="
 	com.mapr.db.Table table_<%=cid %> = com.mapr.db.MapRDB.getTable(<%=table%>);
 		
 	//no json-style condition support in ojai 1.0
-	if (!fieldList_<%=cid %>.isEmpty()) {
-  		rst_<%=cid %> = table_<%=cid %>.find(fieldList_<%=cid %>.toArray(new String[fieldList_<%=cid %>.size()]));
+	if (!fieldList_<%=cid%>.isEmpty()) {
+  		rst_<%=cid %> = table_<%=cid %>.find(fieldList_<%=cid%>.toArray(new String[fieldList_<%=cid %>.size()]));
   	} else {
   	  	rst_<%=cid %> = table_<%=cid %>.find();
   	}
@@ -211,8 +211,7 @@ imports="
 				String patternValue = column.getPattern() == null || column.getPattern().trim().length() == 0 ? null : column.getPattern();
 %>
 
-		path_<%=cid%> = "".equals(pathMap_<%=cid%>.get("<%=column.getOriginalDbColumnName() %>")) ? "<%=column.getOriginalDbColumnName() %>" : 
-		    pathMap_<%=cid%>.get("<%=column.getOriginalDbColumnName() %>") + ".<%=column.getOriginalDbColumnName() %>";
+		path_<%=cid%> = pathMap_<%=cid%>.get("<%=column.getOriginalDbColumnName() %>");
         valueObj_<%=cid%> = readRecord_<%=cid%>.getValue(path_<%=cid%>);
 
 <%
