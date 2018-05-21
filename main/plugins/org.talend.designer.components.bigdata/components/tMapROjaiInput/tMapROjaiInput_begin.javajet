@@ -23,7 +23,6 @@ imports="
 	boolean restrictPartialSorts = "true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__RESTRICT_PARTIAL_SORTS__"));
 	String dbVersion = ElementParameterParser.getValue(node, "__DB_VERSION__");
 	String table = ElementParameterParser.getValue(node, "__TABLE__");
-	String fields = ElementParameterParser.getValue(node, "__FIELDS__");
     boolean useKrb = "true".equals(ElementParameterParser.getValue(node, "__USE_KRB__"));
 	boolean useKeytab = "true".equals(ElementParameterParser.getValue(node, "__USE_KEYTAB__"));
 	String userPrincipal = ElementParameterParser.getValue(node, "__PRINCIPAL__");
@@ -43,7 +42,13 @@ imports="
 		}
 	}
 
-  	List<IMetadataColumn> columnList = null;
+  	List<IMetadataColumn> columnList = metadata.getListColumns();
+  	Map<String, IMetadataColumn> columnMap = new java.util.HashMap<String, IMetadataColumn>();
+  	
+  	for  (IMetadataColumn column : columnList) {
+  	    columnMap.put(column.getLabel(), column);
+  	}
+  	
     String query = ElementParameterParser.getValue(node,"__QUERY__");
   	List<Map<String, String>> mapping = (List<Map<String,String>>)ElementParameterParser.getObjectValueXML(node, "__MAPPING__");
     query = query.replaceAll("\n","");
@@ -51,6 +56,7 @@ imports="
 	log4jFileUtil.componentStartInfo(node);
 %>
 
+//-->Kerberos stuff start
     <%if(useKrb){%>
         class ExeCMd_<%=cid%>{
 		    private boolean UsePwd = false;
@@ -125,9 +131,26 @@ imports="
 		}
 		
     <%}%>
+//<--Kerberos stuff end
+
+    Map<String, String> pathMap_<%=cid%> = new java.util.HashMap<String, String>();
+    List<String> fieldList_<%=cid%> = new java.util.ArrayList<String>();
+
+<%
+    for (Map<String, String> pathElement : mapping) {
+        String schemaColumn = pathElement.get("SCHEMA_COLUMN");
+        String dbColumn = (columnMap.get(schemaColumn)).getOriginalDbColumnName();
+        String path = pathElement.get("PARENT_FIELD_PATH") == null ? "" : pathElement.get("PARENT_FIELD_PATH");
+%>
+
+    pathMap_<%=cid%>.put("<%=dbColumn%>","<%=path%>");
+    fieldList_<%=cid%>.add("".equals("<%=path%>") ? "<%=dbColumn%>" : "<%=path%>.<%=dbColumn%>");
+    
+<%
+    }
+%>
 
     int nb_line_<%=cid %> = 0;
-  	String fieldList_<%=cid %>[] = <%=fields %>.trim().split("\\s+");
 	org.ojai.DocumentStream rst_<%=cid %> = null;
 
 <%
@@ -137,8 +160,8 @@ imports="
 	com.mapr.db.Table table_<%=cid %> = com.mapr.db.MapRDB.getTable(<%=table%>);
 		
 	//no json-style condition support in ojai 1.0
-	if (fieldList_<%=cid %>.length > 0) {
-  		rst_<%=cid %> = table_<%=cid %>.find(fieldList_<%=cid %>);
+	if (!fieldList_<%=cid %>.isEmpty()) {
+  		rst_<%=cid %> = table_<%=cid %>.find(fieldList_<%=cid %>.toArray(new String[fieldList_<%=cid %>.size()]));
   	} else {
   	  	rst_<%=cid %> = table_<%=cid %>.find();
   	}
@@ -151,8 +174,8 @@ imports="
 	org.ojai.store.DocumentStore store_<%=cid %> = conn_<%=cid %>.getStore(<%=table %>);
   	org.ojai.store.Query qry_<%=cid %> = conn_<%=cid %>.newQuery();
   	
-  	if (fieldList_<%=cid %>.length > 0) {
-  		qry_<%=cid %>.select(fieldList_<%=cid %>);
+  	if (!fieldList_<%=cid %>.isEmpty()) {
+  		qry_<%=cid %>.select(fieldList_<%=cid %>.toArray(new String[fieldList_<%=cid %>.size()]));
   	}
   	
   	if (<%=restrictPartialSorts %>) {
@@ -168,34 +191,15 @@ imports="
 
   	java.util.Iterator<org.ojai.Document> itrst_<%=cid %> = rst_<%=cid %>.iterator();
     org.ojai.Document readRecord_<%=cid %>;
-	java.util.Map<String, String> pathMap_<%=cid%> = new java.util.HashMap<String, String>();
-
-<%
-	for (Map<String, String> pathElement : mapping) {
-		String path = pathElement.get("PARENT_NODE_PATH");
-
-		if (path == null || "".equals(path)) {
-			path = "\"\"";
-		}
-		
-		String schemaColumn = pathElement.get("SCHEMA_COLUMN");
-%>
-
-	pathMap_<%=cid%>.put("<%=schemaColumn%>",<%=path%>);
-<%
-	}
-%>
-
-	String rawPath_<%=cid%> = null;
 	String path_<%=cid%> = null;
 	
     while (itrst_<%=cid %>.hasNext()) {
 		nb_line_<%=cid %> ++;
-       	readRecord_<%=cid %> = itrst_<%=cid %>.next();
+       	readRecord_<%=cid %> = itrst_<%=cid %>.next();         
 		org.ojai.Value valueObj_<%=cid %> = null;
 
 <%
-      	columnList = metadata.getListColumns();
+      	
        	int sizeColumns = columnList.size();
 
 		if (firstConnName.length() > 0) {
@@ -207,24 +211,10 @@ imports="
 				String patternValue = column.getPattern() == null || column.getPattern().trim().length() == 0 ? null : column.getPattern();
 %>
 
-        rawPath_<%=cid%> = pathMap_<%=cid%>.get("<%=column.getLabel() %>");
-        path_<%=cid%> = null;
-		
-        if ((rawPath_<%=cid%> == null ) || "".equals(rawPath_<%=cid%>)) {
-            if ("*".equals("<%=column.getOriginalDbColumnName() %>")) {
-                path_<%=cid%> = "";
-            } else {
-                path_<%=cid%> = "<%=column.getOriginalDbColumnName() %>";
-            }
-        } else {
-            if ("*".equals("<%=column.getOriginalDbColumnName() %>")) {
-                path_<%=cid%> = rawPath_<%=cid%>;
-            } else {
-                path_<%=cid%> = rawPath_<%=cid%> + ".<%=column.getOriginalDbColumnName() %>";
-            }
-        }
-		
+		path_<%=cid%> = "".equals(pathMap_<%=cid%>.get("<%=column.getOriginalDbColumnName() %>")) ? "<%=column.getOriginalDbColumnName() %>" : 
+		    pathMap_<%=cid%>.get("<%=column.getOriginalDbColumnName() %>") + ".<%=column.getOriginalDbColumnName() %>";
         valueObj_<%=cid%> = readRecord_<%=cid%>.getValue(path_<%=cid%>);
+
 <%
        			if (javaType == JavaTypesManager.OBJECT) {
 %>
