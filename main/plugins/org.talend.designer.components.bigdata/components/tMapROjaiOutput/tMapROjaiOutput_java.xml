@@ -28,25 +28,36 @@
 		<PARAMETER NAME="OJAI" FIELD="HADOOP_DISTRIBUTION"
 			NUM_ROW="5" GROUP="VERSION"/>
 
-		<PARAMETER NAME="PROPERTY" FIELD="PROPERTY_TYPE" NUM_ROW="10"
+        <PARAMETER NAME="SCHEMA_FLOW" FIELD="SCHEMA_TYPE" NUM_ROW="10">
+            <TABLE READONLY="false">
+                <COLUMN NAME="_id" TYPE="id_String" READONLY="false" />
+            </TABLE>
+        </PARAMETER>
+        
+        <PARAMETER NAME="SCHEMA_REJECT" FIELD="SCHEMA_TYPE"
+            REQUIRED="true" NUM_ROW="10" CONTEXT="REJECT" SHOW="true">
+            <TABLE READONLY="true">
+                <COLUMN NAME="errorCode" TYPE="id_String" LENGTH="255"
+                    READONLY="false" CUSTOM="true" />
+                <COLUMN NAME="errorMessage" TYPE="id_String" LENGTH="255"
+                    READONLY="false" CUSTOM="true" />
+            </TABLE>
+        </PARAMETER>
+
+		<!-- PARAMETER NAME="PROPERTY" FIELD="PROPERTY_TYPE" NUM_ROW="10"
 			REPOSITORY_VALUE="NOSQL:MapRDB" NOT_SHOW_IF="USE_EXISTING_CONNECTION == 'true'" />
 	    
 		<PARAMETER NAME="USE_EXISTING_CONNECTION" FIELD="CHECK"
 			NUM_ROW="20" GROUP="CONNECTION" SHOW_IF="false">
 			<DEFAULT>false</DEFAULT>
-		</PARAMETER>
+		</PARAMETER-->
 		<!-- 
 		<PARAMETER NAME="CONNECTION" FIELD="COMPONENT_LIST"
 			REQUIRED="true" FILTER="tMapROjaiConnection" NUM_ROW="20"
 			SHOW_IF="USE_EXISTING_CONNECTION == 'true'" GROUP="CONNECTION" />
 		-->
 			
-		<PARAMETER FIELD="TEXT" NAME="TABLE" REQUIRED="true"
-			NUM_ROW="30">
-			<DEFAULT>""</DEFAULT>
-		</PARAMETER>
-		
-        		<!-- kerberos -->
+      		<!-- kerberos -->
 		<PARAMETER NAME="USE_KRB" FIELD="CHECK" NUM_ROW="50"
 			REPOSITORY_VALUE="USE_KRB" GROUP="AUTHENTICATION">
 			<DEFAULT>false</DEFAULT>
@@ -76,6 +87,11 @@
 			<DEFAULT>"/tmp/hdfs.headless.keytab"</DEFAULT>
 		</PARAMETER>
 
+        <PARAMETER FIELD="TEXT" NAME="TABLE" REQUIRED="true"
+            NUM_ROW="75">
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+        
 		<PARAMETER NAME="TABLE_ACTION" FIELD="CLOSED_LIST" NUM_ROW="80">
 			<ITEMS DEFAULT="NONE">
 				<ITEM NAME="NONE" VALUE="NONE" />
@@ -99,22 +115,6 @@
 		<PARAMETER NAME="UPDATE_ALL" FIELD="CHECK" NUM_ROW="90"
 			SHOW_IF="((DATA_ACTION=='SET') OR (DATA_ACTION=='UPSERT_WITH_SET')) AND (IS_VIRTUAL_COMPONENT == 'false')">
 			<DEFAULT>false</DEFAULT>
-		</PARAMETER>
-
-		<PARAMETER NAME="SCHEMA_FLOW" FIELD="SCHEMA_TYPE" NUM_ROW="95">
-			<TABLE READONLY="false">
-				<COLUMN NAME="_id" TYPE="id_String" READONLY="false" />
-			</TABLE>
-		</PARAMETER>
-		
-		<PARAMETER NAME="SCHEMA_REJECT" FIELD="SCHEMA_TYPE"
-			REQUIRED="true" NUM_ROW="95" CONTEXT="REJECT" SHOW="true">
-			<TABLE READONLY="true">
-				<COLUMN NAME="errorCode" TYPE="id_String" LENGTH="255"
-					READONLY="false" CUSTOM="true" />
-				<COLUMN NAME="errorMessage" TYPE="id_String" LENGTH="255"
-					READONLY="false" CUSTOM="true" />
-			</TABLE>
 		</PARAMETER>
 
 		<PARAMETER FIELD="CHECK" NAME="SET_BULK_WRITE" NUM_ROW="100"
