@@ -15,6 +15,9 @@ package org.talend.repository.hadoopcluster.ui.viewer.handler;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.jface.wizard.IWizard;
+import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.ui.PlatformUI;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.commons.exception.PersistenceException;
 import org.talend.core.model.general.Project;
@@ -28,6 +31,7 @@ import org.talend.core.repository.model.ProxyRepositoryFactory;
 import org.talend.repository.ProjectManager;
 import org.talend.repository.hadoopcluster.ui.viewer.HadoopSubRepositoryTypeProcessor;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
+import org.talend.repository.model.IRepositoryNode;
 import org.talend.repository.model.RepositoryNode;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnectionItem;
 import org.talend.repository.model.hadoopcluster.HadoopSubConnection;
@@ -123,4 +127,11 @@ public abstract class AbstractHadoopSubnodeRepositoryContentHandler extends Abst
         return null;
     }
 
+    @Override
+    public int openWizardDialog(IRepositoryNode repoNode, IWizard wizard) {
+        WizardDialog wizardDialog = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
+        wizardDialog.setPageSize(780, 540);
+        wizardDialog.create();
+        return wizardDialog.open();
+    }
 }
