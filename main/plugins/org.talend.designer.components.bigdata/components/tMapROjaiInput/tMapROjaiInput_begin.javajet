@@ -50,10 +50,27 @@ imports="
   	}
   	
     String query = ElementParameterParser.getValue(node,"__QUERY__");
-  	List<Map<String, String>> mapping = (List<Map<String,String>>)ElementParameterParser.getObjectValueXML(node, "__MAPPING__");
     query = query.replaceAll("\n","");
     query = query.replaceAll("\r","");
+    List<Map<String, String>> mapping = (List<Map<String,String>>)ElementParameterParser.getObjectValueXML(node, "__MAPPING__");
 	log4jFileUtil.componentStartInfo(node);
+%>
+
+    java.util.Map<String, String> pathMap_<%=cid%> = new java.util.HashMap<String, String>();
+    String path_<%=cid%> = null;
+
+<%
+    for (Map<String, String> pathElement : mapping) {
+        String schemaColumn = pathElement.get("SCHEMA_COLUMN");
+        String dbColumn = (columnMap.get(schemaColumn)).getOriginalDbColumnName();
+%>
+
+    path_<%=cid%> = (new String(<%=pathElement.get("PARENT_FIELD_PATH")%>)).equals("") ? "" : new String(<%=pathElement.get("PARENT_FIELD_PATH")%>);
+    path_<%=cid%> = "".equals(path_<%=cid%>) ? "<%=dbColumn%>" : path_<%=cid%> + "." + "<%=dbColumn%>";
+    pathMap_<%=cid%>.put("<%=dbColumn%>", path_<%=cid%>);
+    
+<%
+    }
 %>
 
 //-->Kerberos stuff start
@@ -133,22 +150,6 @@ imports="
     <%}%>
 //<--Kerberos stuff end
 
-    java.util.Map<String, String> pathMap_<%=cid%> = new java.util.HashMap<String, String>();
-
-<%
-    for (Map<String, String> pathElement : mapping) {
-        String schemaColumn = pathElement.get("SCHEMA_COLUMN");
-        String dbColumn = (columnMap.get(schemaColumn)).getOriginalDbColumnName();
-        String path = pathElement.get("PARENT_FIELD_PATH") == null ? "" : pathElement.get("PARENT_FIELD_PATH");
-        String fullDbColumnName = "".equals(path) ? dbColumn : path + "." + dbColumn;
-%>
-
-    pathMap_<%=cid%>.put("<%=dbColumn%>","<%=fullDbColumnName%>");
-    
-<%
-    }
-%>
-
     int nb_line_<%=cid %> = 0;
 	org.ojai.DocumentStream rst_<%=cid %> = null;
     java.util.Collection<String> fieldList_<%=cid%> = pathMap_<%=cid%>.values();
@@ -191,7 +192,6 @@ imports="
 
   	java.util.Iterator<org.ojai.Document> itrst_<%=cid %> = rst_<%=cid %>.iterator();
     org.ojai.Document readRecord_<%=cid %>;
-	String path_<%=cid%> = null;
 	
     while (itrst_<%=cid %>.hasNext()) {
 		nb_line_<%=cid %> ++;
