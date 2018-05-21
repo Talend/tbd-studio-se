@@ -133,7 +133,7 @@ imports="
     <%}%>
 //<--Kerberos stuff end
 
-    Map<String, String> pathMap_<%=cid%> = new java.util.HashMap<String, String>();
+    java.util.Map<String, String> pathMap_<%=cid%> = new java.util.HashMap<String, String>();
     List<String> fieldList_<%=cid%> = new java.util.ArrayList<String>();
 
 <%
