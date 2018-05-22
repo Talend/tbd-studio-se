@@ -232,7 +232,7 @@ imports="
 					            rowType = typeToGenerate.toUpperCase();
 					        }
 %>
-					        path_<%=cid%> = pathMap_<%=cid%>.get(<%=column.getOriginalDbColumnName()%>);
+					        path_<%=cid%> = pathMap_<%=cid%>.get("<%=column.getOriginalDbColumnName()%>");
                             fieldPathTypeMap_<%=cid%>.put(org.ojai.FieldPath.parseFrom(path_<%=cid%>),org.ojai.Value.Type.<%=rowType%>);
 
                      <%
