@@ -155,7 +155,7 @@
             dbDNDProvider="org.talend.repository.nosql.db.provider.cassandra.CassandraDNDProvider"
             dbMetadataProvider="org.talend.repository.nosql.db.provider.cassandra.CassandraMetadataProvider"
             dbType="CASSANDRA"
-            dbVersions="CASSANDRA_3_0;CASSANDRA_2_2;CASSANDRA_2_0_0;CASSANDRA_1_2_2;CASSANDRA_1_1_2"
+            dbVersions="CASSANDRA_3_0;CASSANDRA_2_2;CASSANDRA_2_0_0"
             dbWizPageProvider="org.talend.repository.nosql.db.provider.cassandra.CassandraWizardPageProvider"
             description="Cassandra">
       </factory>
