@@ -38,8 +38,9 @@ imports="
         rejectConnName = rejectConn.getName();
         metadataTable = rejectConn.getMetadataTable();
     }
+
     List<IMetadataColumn> rejectColumnList = null;
-    // IMetadataTable metadataTable = node.getMetadataFromConnector("REJECT");
+
     if(metadataTable != null) {
         rejectColumnList = metadataTable.getListColumns();
     }
@@ -109,8 +110,11 @@ imports="
 				            }
 					        
 	                            %>
+	                            
+	                           path_<%=cid%> = pathMap_<%=cid%>.get("<%=column.getOriginalDbColumnName()%>");
+	
 	                            if (<%=conn.getName() %>.<%=column.getLabel() %> != null) {
-                                    doc_<%=cid%>.set("<%=schemaData%>",<%=rowData%>);
+                                    doc_<%=cid%>.set(path_<%=cid%>,<%=rowData%>);
 	                            }
                                 <%
                      }

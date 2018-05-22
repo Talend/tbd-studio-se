@@ -28,7 +28,40 @@ imports="
 	String keytabPath = ElementParameterParser.getValue(node, "__KEYTAB_PATH__");
     List<? extends IConnection> inConns = node.getIncomingConnections(EConnectionType.FLOW_MAIN);
 
+    IConnection inConn = null;
+    IMetadataTable metadata = null;
+    
+    if(inConns!=null && inConns.size()> 0) {
+        inConn = inConns.get(0);
+        metadata = inConn.getMetadataTable();
+    }
+    
+    List<IMetadataColumn> columnList = metadata.getListColumns();
+    Map<String, IMetadataColumn> columnMap = new java.util.HashMap<String, IMetadataColumn>();
+    
+    for  (IMetadataColumn column : columnList) {
+        columnMap.put(column.getLabel(), column);
+    }
+
     %>
+    java.util.Map<String, String> pathMap_<%=cid%> = new java.util.HashMap<String, String>();
+    String path_<%=cid%> = null;
+
+<%
+    for (Map<String, String> pathElement : mappings) {
+        String schemaColumn = pathElement.get("SCHEMA_COLUMN");
+        String dbColumn = (columnMap.get(schemaColumn)).getOriginalDbColumnName();
+%>
+
+    path_<%=cid%> = new String(<%=pathElement.get("PARENT_FIELD_PATH")%>);
+    path_<%=cid%> = "".equals(path_<%=cid%>) ? "<%=dbColumn%>" : path_<%=cid%> + "." + "<%=dbColumn%>";
+    pathMap_<%=cid%>.put("<%=dbColumn%>", path_<%=cid%>);
+    
+<%
+    }
+%>
+
+
     <%if(useKrb){%>
         class ExeCMd_<%=cid%>{
 		    private boolean UsePwd = false;
@@ -148,7 +181,7 @@ imports="
   		}else if("TRUNCATE".equals(tableAction)){
   		%>
   		table_<%=cid%> = com.mapr.db.MapRDB.getTable(<%=table%>);
-  		  	    // all recordss in the table
+  		  	    // all records in the table
 	    org.ojai.DocumentStream rst_<%=cid%> = table_<%=cid%>.find();
         java.util.Iterator<org.ojai.Document> itrst_<%=cid%> = rst_<%=cid%>.iterator();
         org.ojai.Document readRecord_<%=cid%>;
@@ -173,29 +206,10 @@ imports="
   			DelegateImpl_<%=cid%> di_<%=cid%> = new DelegateImpl_<%=cid%>();
   			java.util.Map<org.ojai.FieldPath, org.ojai.Value.Type> fieldPathTypeMap_<%=cid%> = new java.util.HashMap<org.ojai.FieldPath, org.ojai.Value.Type>();
 <%
-	IConnection inConn = null;
-	IMetadataTable metadata = null;
-	
-	if(inConns!=null && inConns.size()> 0) {
-		inConn = inConns.get(0);
-		metadata = inConn.getMetadataTable();
-	}
-	
-		  		java.util.Map<String, String> pathMap = new java.util.HashMap<String, String>();
-			for (int i=0;i<mappings.size();i++) {
-				String path = mappings.get(i).get("PARENT_FIELD_PATH");
-				if(path==null || "".equals(path)){
-					path="";
-				}
-				String schemaColumn=mappings.get(i).get("SCHEMA_COLUMN");
-				pathMap.put(schemaColumn,path);
-			}
-			
 	if (metadata!=null) {
 		List< ? extends IConnection> conns = node.getIncomingConnections();
 		for (IConnection conn : conns) {
 			if (conn.getLineStyle().hasConnectionCategory(IConnectionCategory.DATA)) {
-				List<IMetadataColumn> columnList = metadata.getListColumns();
 				int sizeColumns = columnList.size();
 				for (int i = 0; i < sizeColumns; i++) {
 					IMetadataColumn column = columnList.get(i);
@@ -217,15 +231,9 @@ imports="
 					        else{
 					            rowType = typeToGenerate.toUpperCase();
 					        }
-					        
-					        String schemaData = null;
-				            if("".equals(pathMap.get(column.getLabel()))){
-				                schemaData=column.getOriginalDbColumnName();
-				            }else{
-				                schemaData=pathMap.get(column.getLabel()).replaceAll("\"","")+"."+column.getOriginalDbColumnName();
-				            }%>
-					        
-                            fieldPathTypeMap_<%=cid%>.put(org.ojai.FieldPath.parseFrom("<%=schemaData%>"),org.ojai.Value.Type.<%=rowType%>);
+%>
+					        path_<%=cid%> = pathMap_<%=cid%>.get(<%=column.getOriginalDbColumnName()%>);
+                            fieldPathTypeMap_<%=cid%>.put(org.ojai.FieldPath.parseFrom(path_<%=cid%>),org.ojai.Value.Type.<%=rowType%>);
 
                      <%
                             }

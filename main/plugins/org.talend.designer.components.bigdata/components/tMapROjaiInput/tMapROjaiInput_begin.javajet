@@ -65,7 +65,7 @@ imports="
         String dbColumn = (columnMap.get(schemaColumn)).getOriginalDbColumnName();
 %>
 
-    path_<%=cid%> = (new String(<%=pathElement.get("PARENT_FIELD_PATH")%>)).equals("") ? "" : new String(<%=pathElement.get("PARENT_FIELD_PATH")%>);
+    path_<%=cid%> = new String(<%=pathElement.get("PARENT_FIELD_PATH")%>);
     path_<%=cid%> = "".equals(path_<%=cid%>) ? "<%=dbColumn%>" : path_<%=cid%> + "." + "<%=dbColumn%>";
     pathMap_<%=cid%>.put("<%=dbColumn%>", path_<%=cid%>);
     
