@@ -482,23 +482,23 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
-            id="kite-data-core-1.0.0-HDP-25"
-            name="kite-data-core-1.0.0.jar"
-            mvn_uri="mvn:org.talend.libraries/kite-data-core-1.0.0/6.3.0">
+            id="kite-data-core-1.1.0-HDP-26"
+            name="kite-data-core-1.1.0.jar"
+            mvn_uri="mvn:org.talend.libraries/kite-data-core-1.1.0/6.3.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
-            id="kite-data-mapreduce-1.0.0-HDP-25"
-            name="kite-data-mapreduce-1.0.0.jar"
-            mvn_uri="mvn:org.talend.libraries/kite-data-mapreduce-1.0.0/6.3.0">
+            id="kite-data-mapreduce-1.1.0-HDP-26"
+            name="kite-data-mapreduce-1.1.0.jar"
+            mvn_uri="mvn:org.talend.libraries/kite-data-mapreduce-1.1.0/6.3.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
-            id="kite-hadoop-compatibility-1.0.0-HDP-25"
-            name="kite-hadoop-compatibility-1.0.0.jar"
-            mvn_uri="mvn:org.talend.libraries/kite-hadoop-compatibility-1.0.0/6.3.0">
+            id="kite-hadoop-compatibility-1.1.0-HDP-26"
+            name="kite-hadoop-compatibility-1.1.0.jar"
+            mvn_uri="mvn:org.talend.libraries/kite-hadoop-compatibility-1.1.0/6.3.0">
         </libraryNeeded>
         
         <libraryNeeded
@@ -1764,9 +1764,9 @@
                 description="Sqoop Parquet libraries for HDP 2.6"
                 id="SQOOP-PARQUET-LIB-HDP_2_6"
                 name="SQOOP-PARQUET-LIB-HDP_2_6">
-            <library id="kite-data-core-1.0.0-HDP-25"/>
-            <library id="kite-data-mapreduce-1.0.0-HDP-25"/>
-            <library id="kite-hadoop-compatibility-1.0.0-HDP-25"/>
+            <library id="kite-data-core-1.1.0-HDP-26"/>
+            <library id="kite-data-mapreduce-1.1.0-HDP-26"/>
+            <library id="kite-hadoop-compatibility-1.1.0-HDP-26"/>
             <library id="jackson-databind-2.5.4.redhat-2.jar"/>
             <library id="jackson-core-2.5.4.jar"/>
             <library id="parquet-hadoop-bundle-1.8.1.jar"/>

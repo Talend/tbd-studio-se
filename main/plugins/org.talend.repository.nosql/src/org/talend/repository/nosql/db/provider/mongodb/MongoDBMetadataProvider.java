@@ -121,7 +121,10 @@ public class MongoDBMetadataProvider extends AbstractMetadataProvider {
                     column.setName(colName);
                     column.setLabel(colName);
                     Object value = NoSQLReflection.invokeMethod(dbObject, "get", new Object[] { colName }); //$NON-NLS-1$
-                    JavaType javaType = JavaTypesManager.getJavaTypeFromName(value.getClass().getSimpleName());
+                    JavaType javaType = null;
+                    if (value != null) {
+                        javaType = JavaTypesManager.getJavaTypeFromName(value.getClass().getSimpleName());
+                    }
                     if (javaType == null) {
                         javaType = JavaTypesManager.STRING;
                     }
