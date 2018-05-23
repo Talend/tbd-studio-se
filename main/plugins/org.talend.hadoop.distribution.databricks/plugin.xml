@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.talend.core.runtime.librariesNeeded">
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.qubole"
+            id="talend-bigdata-launcher-1.2.2-20180101.jar"
+            name="talend-bigdata-launcher-1.2.2-20180101.jar"
+            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-1.2.2-20180101/6.0.0">
+        </libraryNeeded>
+                             
+         <!--  -->
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.databricks"
+            id="commons-lang-2.6.jar"
+            name="commons-lang-2.6.jar"
+            mvn_uri="mvn:org.talend.libraries/commons-lang-2.6/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.databricks"
+            id="commons-lang3-3.5.jar"
+            name="commons-lang3-3.5.jar"
+            mvn_uri="mvn:org.talend.libraries/commons-lang3-3.5/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.databricks"
+            id="hadoop-common-2.7.3.jar"
+            name="hadoop-common-2.7.3.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-common-2.7.3/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.databricks"
+            id="hadoop-mapreduce-client-core-2.7.3.jar"
+            name="hadoop-mapreduce-client-core-2.7.3.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-core-2.7.3/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.databricks"
+            id="kryo-shaded-3.0.3.jar"
+            name="kryo-shaded-3.0.3.jar"
+            mvn_uri="mvn:org.talend.libraries/kryo-shaded-3.0.3/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.databricks"
+            id="scala-library-2.11.8.jar"
+            name="scala-library-2.11.8.jar"
+            mvn_uri="mvn:org.talend.libraries/scala-library-2.11.8/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.databricks"
+            id="scala-reflect-2.11.8.jar"
+            name="scala-reflect-2.11.8.jar"
+            mvn_uri="mvn:org.talend.libraries/scala-reflect-2.11.8/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.databricks"
+            id="slf4j-api-1.7.16.jar"
+            name="slf4j-api-1.7.16.jar"
+            mvn_uri="mvn:org.talend.libraries/slf4j-api-1.7.16/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.databricks"
+            id="spark-core_2.11-2.2.0.jar"
+            name="spark-core_2.11-2.2.0.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-core_2.11-2.2.0/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.databricks"
+            id="spark-mllib-local_2.11-2.2.0.jar"
+            name="spark-mllib-local_2.11-2.2.0.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-mllib-local_2.11-2.2.0/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.databricks"
+            id="spark-sql_2.11-2.2.0.jar"
+            name="spark-sql_2.11-2.2.0.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-sql_2.11-2.2.0/6.0.0">
+        </libraryNeeded>
+        
+        <!-- Big Data launcher group -->
+        <libraryNeededGroup
+                description="Big Data launcher libraries for Qubole"
+                id="BIGDATA-LAUNCHER-LIB-QUBOLE"
+                name="BIGDATA-LAUNCHER-LIB-QUBOLE "  >
+			<library id="talend-bigdata-launcher-1.2.1-20170511" />
+
+        </libraryNeededGroup>
+        
+        <!-- Spark group -->
+        <libraryNeededGroup
+                description="SPARK libraries for Databricks"
+                id="SPARK-LIB-MRREQUIRED-DATABRICKS"
+                name="SPARK-LIB-MRREQUIRED-DATABRICKS"  >
+             <library id="commons-lang-2.6.jar"/>
+             <library id="commons-lang3-3.5.jar"/>
+             <library id="hadoop-common-2.7.3.jar"/>
+             <library id="hadoop-mapreduce-client-core-2.7.3.jar"/>
+             <library id="kryo-shaded-3.0.3.jar"/>
+             <library id="scala-library-2.11.8.jar"/>
+             <library id="scala-reflect-2.11.8.jar"/>
+             <library id="slf4j-api-1.7.16.jar"/>
+             <library id="spark-core_2.11-2.2.0.jar"/>
+             <library id="spark-mllib-local_2.11-2.2.0.jar"/>
+             <library id="spark-sql_2.11-2.2.0.jar"/>
+        </libraryNeededGroup>
+        
+   </extension>
+   <extension
+         point="org.talend.core.runtime.classloader_provider">        
+   </extension>
+
+</plugin>
