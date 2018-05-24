@@ -148,12 +148,6 @@ public class DatabricksDistribution extends AbstractDistribution implements HDFS
 		// TODO Auto-generated method stub
         return moduleGroups.get(componentType);
 	}
-
-	@Override
-	public boolean doSupportSparkStandaloneMode() {
-		// TODO Auto-generated method stub
-		return true;
-	}
 	
 	@Override
 	public Set<ESparkVersion> getSparkVersions() {
@@ -161,12 +155,6 @@ public class DatabricksDistribution extends AbstractDistribution implements HDFS
 		version.add(ESparkVersion.SPARK_2_2);
         return version;
     }
-
-	@Override
-	public boolean doSupportSparkYarnClientMode() {
-		// TODO Auto-generated method stub
-		return true;
-	}
 
 	@Override
 	public boolean doSupportDynamicMemoryAllocation() {
@@ -191,5 +179,30 @@ public class DatabricksDistribution extends AbstractDistribution implements HDFS
 		// TODO Auto-generated method stub
 		return true;
 	}
+	
+	@Override
+	public boolean isDatabricksDistribution() {
+	    return true;
+	}
+	
+	@Override
+	public boolean isCloudDistribution() {
+	    return true;
+    }
+	
+	@Override
+	public boolean useCloudLauncher() {
+	    return true;
+    }
+	
+	@Override
+	public boolean doSupportSparkStandaloneMode() {
+	    return false;
+    }
+	
+	@Override
+	public boolean doSupportSparkYarnClientMode() {
+	    return false;
+    }
 
 }
