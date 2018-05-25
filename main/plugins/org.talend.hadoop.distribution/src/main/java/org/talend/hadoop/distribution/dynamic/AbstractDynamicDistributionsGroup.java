@@ -28,11 +28,14 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.ServiceReference;
 import org.talend.commons.exception.ExceptionHandler;
+import org.talend.core.model.general.Project;
 import org.talend.core.runtime.dynamic.IDynamicPlugin;
 import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.designer.maven.aether.comparator.VersionStringComparator;
 import org.talend.hadoop.distribution.dynamic.bean.TemplateBean;
+import org.talend.hadoop.distribution.dynamic.pref.IDynamicDistributionPreference;
+import org.talend.hadoop.distribution.dynamic.pref.IDynamicDistributionPreferenceFactory;
 import org.talend.hadoop.distribution.dynamic.resolver.IDependencyResolver;
 
 /**
@@ -42,11 +45,17 @@ public abstract class AbstractDynamicDistributionsGroup implements IDynamicDistr
 
     private List<String> allVersionList = new ArrayList<>();
 
+    List<IDynamicDistribution> registedDynamicDistributions = null;
+
     private Map<IDynamicDistribution, List<String>> compatibleDistribuionVersionMap = new HashMap<>();
 
     private Map<String, IDynamicDistribution> templateIdMap;
 
+    private IDynamicDistributionPreferenceFactory preferenceFactory;
+
     abstract protected Class<? extends IDynamicDistribution> getDynamicDistributionClass();
+
+    abstract protected IDynamicDistributionPreferenceFactory createPreferenceFactory();
 
     @Override
     public List<String> getCompatibleVersions(IDynamicMonitor monitor) throws Exception {
@@ -170,17 +179,19 @@ public abstract class AbstractDynamicDistributionsGroup implements IDynamicDistr
     }
 
     protected List<IDynamicDistribution> getAllRegisteredDynamicDistributions(IDynamicMonitor monitor) throws Exception {
-        BundleContext bc = getBundleContext();
+        if (registedDynamicDistributions == null || registedDynamicDistributions.isEmpty()) {
+            BundleContext bc = getBundleContext();
 
-        List<IDynamicDistribution> registedDynamicDistributions = new ArrayList<>();
+            registedDynamicDistributions = new ArrayList<>();
 
-        Class<? extends IDynamicDistribution> distributionClass = getDynamicDistributionClass();
-        Collection<?> serviceReferences = bc.getServiceReferences(distributionClass, null);
-        if (serviceReferences != null && !serviceReferences.isEmpty()) {
-            for (Object obj : serviceReferences) {
-                ServiceReference<IDynamicDistribution> sr = (ServiceReference<IDynamicDistribution>) obj;
-                IDynamicDistribution service = bc.getService(sr);
-                registedDynamicDistributions.add(service);
+            Class<? extends IDynamicDistribution> distributionClass = getDynamicDistributionClass();
+            Collection<?> serviceReferences = bc.getServiceReferences(distributionClass, null);
+            if (serviceReferences != null && !serviceReferences.isEmpty()) {
+                for (Object obj : serviceReferences) {
+                    ServiceReference<IDynamicDistribution> sr = (ServiceReference<IDynamicDistribution>) obj;
+                    IDynamicDistribution service = bc.getService(sr);
+                    registedDynamicDistributions.add(service);
+                }
             }
         }
 
@@ -354,4 +365,21 @@ public abstract class AbstractDynamicDistributionsGroup implements IDynamicDistr
         return new ArrayList<>(versionList);
     }
 
+    protected IDynamicDistributionPreferenceFactory getPreferenceFactory() {
+        if (preferenceFactory == null) {
+            preferenceFactory = createPreferenceFactory();
+        }
+        return preferenceFactory;
+    }
+
+    @Override
+    public IDynamicDistributionPreference getDynamicDistributionPreference(Project project) throws Exception {
+        return getPreferenceFactory().getDynamicDistributionPreference(project);
+    }
+
+    @Override
+    public void resetCache() throws Exception {
+        getPreferenceFactory().clearAllPreferenceCache();
+        registedDynamicDistributions = null;
+    }
 }

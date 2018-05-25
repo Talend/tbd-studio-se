@@ -63,9 +63,9 @@ import org.talend.designer.maven.aether.DummyDynamicMonitor;
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.hadoop.distribution.dynamic.DynamicConstants;
 import org.talend.hadoop.distribution.dynamic.DynamicDistributionManager;
-import org.talend.hadoop.distribution.dynamic.IDynamicDistributionPreference;
 import org.talend.hadoop.distribution.dynamic.IDynamicDistributionsGroup;
 import org.talend.hadoop.distribution.dynamic.comparator.DynamicPluginComparator;
+import org.talend.hadoop.distribution.dynamic.pref.IDynamicDistributionPreference;
 import org.talend.repository.ProjectManager;
 import org.talend.repository.RepositoryWorkUnit;
 import org.talend.repository.hadoopcluster.i18n.Messages;
@@ -363,6 +363,11 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
 
             @Override
             public void selectionChanged(SelectionChangedEvent event) {
+                try {
+                    loadRepositorySetupGroup();
+                } catch (Exception e) {
+                    ExceptionHandler.process(e);
+                }
                 updateButtons();
             }
         });

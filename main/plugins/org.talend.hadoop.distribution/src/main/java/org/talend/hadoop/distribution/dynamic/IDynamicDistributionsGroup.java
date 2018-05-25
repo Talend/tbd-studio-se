@@ -18,6 +18,7 @@ import org.talend.core.model.general.Project;
 import org.talend.core.runtime.dynamic.IDynamicPlugin;
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.hadoop.distribution.dynamic.bean.TemplateBean;
+import org.talend.hadoop.distribution.dynamic.pref.IDynamicDistributionPreference;
 import org.talend.hadoop.distribution.dynamic.resolver.IDependencyResolver;
 
 /**
