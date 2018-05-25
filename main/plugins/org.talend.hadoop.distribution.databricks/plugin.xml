@@ -108,6 +108,48 @@
             name="azure-storage-5.0.0.jar"
             mvn_uri="mvn:org.talend.libraries/azure-storage-5.0.0/6.0.0">
         </libraryNeeded>
+        <libraryNeeded
+              bundleID="org.apache.servicemix.bundles.wsdl4j"
+              context="plugin:org.talend.libraries.apache.cxf"
+              id="wsdl4j-1.6.3.jar"
+              mvn_uri="mvn:org.talend.libraries/wsdl4j-1.6.3/6.0.0"
+              name="wsdl4j-1.6.3.jar"
+              uripath="platform:/plugin/org.talend.libraries.apache.cxf/lib/wsdl4j-1.6.3.jar">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.libraries.jackson"
+            id="jackson-core-2.8.9.jar"
+            name="jackson-core-2.8.9.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-core-2.8.9/6.0.0"
+            uripath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-2.8.9.jar">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.libraries.apache.cxf"
+            id="cxf-rt-rs-client-3.2.4.jar"
+            name="cxf-rt-rs-client-3.2.4.jar"
+            mvn_uri="mvn:org.talend.libraries/cxf-rt-rs-client-3.2.4/6.0.0"
+            uripath="platform:/plugin/org.talend.libraries.apache.cxf/lib/cxf-rt-rs-client-3.2.4.jar">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.libraries.apache.cxf"
+            id="cxf-bundle-jaxrs-2.7.18.jar"
+            name="cxf-bundle-jaxrs-2.7.18.jar"
+            mvn_uri="mvn:org.talend.libraries/cxf-bundle-jaxrs-2.7.18/6.0.0"
+            uripath="platform:/plugin/org.talend.libraries.apache.cxf/lib/cxf-bundle-jaxrs-2.7.18.jar">
+        </libraryNeeded>
+        <libraryNeeded
+            context=""
+            id="javax.ws.rs-api-2.0-m10.jar"
+            name="javax.ws.rs-api-2.0-m10.jar"
+            mvn_uri="mvn:org.talend.libraries/javax.ws.rs-api-2.0-m10/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.libraries.jackson"
+            id="json_simple-1.1.jar"
+            name="json_simple-1.1.jar"
+            mvn_uri="mvn:org.talend.libraries/json_simple-1.1/6.0.0"
+            uripath="platform:/plugin/org.talend.libraries.jackson/lib/json_simple-1.1.jar">
+        </libraryNeeded>
         
         <!-- Big Data launcher group -->
         <libraryNeededGroup
@@ -126,6 +168,8 @@
              <library id="commons-codec-1.10.jar"/>
              <library id="commons-lang-2.6.jar"/>
              <library id="commons-lang3-3.5.jar"/>
+             <library id="cxf-rt-rs-client-3.2.4.jar"/>
+             <library id="cxf-bundle-jaxrs-2.7.18.jar"/>
              <library id="hadoop-common-2.7.3.jar"/>
              <library id="hadoop-mapreduce-client-core-2.7.3.jar"/>
              <library id="kryo-shaded-3.0.3.jar"/>
@@ -138,6 +182,10 @@
              <library id="spark-mllib-local_2.11-2.2.0.jar"/>
              <library id="spark-sql_2.11-2.2.0.jar"/>
              <library id="spark-network-common_2.11-2.2.0.jar"/>
+             <library id="wsdl4j-1.6.3.jar"/>
+             <library id="jackson-core-2.8.9.jar"/>
+             <library id="javax.ws.rs-api-2.0-m10.jar"/>
+             <library id="json_simple-1.1.jar"/>
         </libraryNeededGroup>
         
    </extension>
