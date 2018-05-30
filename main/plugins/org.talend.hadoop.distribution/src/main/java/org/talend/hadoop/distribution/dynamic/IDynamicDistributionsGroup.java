@@ -34,6 +34,8 @@ public interface IDynamicDistributionsGroup {
 
     public List<TemplateBean> getAllTemplates(IDynamicMonitor monitor) throws Exception;
 
+    public IDynamicDistribution getCompatibleDistribution(IDynamicMonitor monitor, String version) throws Exception;
+
     public IDynamicPlugin buildDynamicPlugin(IDynamicMonitor monitor, DynamicConfiguration configuration) throws Exception;
 
     public List<IDynamicPlugin> getAllBuiltinDynamicPlugins(IDynamicMonitor monitor) throws Exception;

@@ -9,6 +9,9 @@
 	"properties": {
 		"context": "plugin:org.talend.hadoop.distribution.cdh5x"
 	},
+	"supportedSparkVersions": [
+       "SPARK_2_2"
+    ],
 	"description": "",
 	"modules": [
 		{

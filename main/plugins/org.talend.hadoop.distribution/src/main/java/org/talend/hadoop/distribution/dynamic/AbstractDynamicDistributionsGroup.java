@@ -31,6 +31,7 @@ import org.talend.commons.exception.ExceptionHandler;
 import org.talend.core.model.general.Project;
 import org.talend.core.runtime.dynamic.IDynamicPlugin;
 import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
+import org.talend.designer.maven.aether.DummyDynamicMonitor;
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.designer.maven.aether.comparator.VersionStringComparator;
 import org.talend.hadoop.distribution.dynamic.bean.TemplateBean;
@@ -103,9 +104,21 @@ public abstract class AbstractDynamicDistributionsGroup implements IDynamicDistr
         if (!StringUtils.equals(getDistribution(), distribution)) {
             throw new Exception("only support to build dynamic plugin of " + getDistribution() + " instead of " + distribution);
         }
-        VersionStringComparator versionStringComparator = new VersionStringComparator();
         String version = configuration.getVersion();
 
+        IDynamicDistribution bestDistribution = getCompatibleDistribution(monitor, version);
+
+        // normally bestDistribution can't be null here
+        return bestDistribution.buildDynamicPlugin(monitor, configuration);
+    }
+
+    @Override
+    public IDynamicDistribution getCompatibleDistribution(IDynamicMonitor monitor, String version) throws Exception {
+        if (monitor == null) {
+            monitor = new DummyDynamicMonitor();
+        }
+
+        VersionStringComparator versionStringComparator = new VersionStringComparator();
         // 1. try to get dynamicDistribution from compatible list
         Set<Entry<IDynamicDistribution, List<String>>> entrySet = getCompatibleDistribuionVersionMap(monitor).entrySet();
         IDynamicDistribution bestDistribution = null;
@@ -154,9 +167,7 @@ public abstract class AbstractDynamicDistributionsGroup implements IDynamicDistr
                 }
             }
         }
-
-        // normally bestDistribution can't be null here
-        return bestDistribution.buildDynamicPlugin(monitor, configuration);
+        return bestDistribution;
     }
 
     @Override

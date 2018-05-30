@@ -36,6 +36,7 @@ import org.talend.core.runtime.dynamic.DynamicFactory;
 import org.talend.core.runtime.dynamic.DynamicServiceUtil;
 import org.talend.core.runtime.dynamic.IDynamicPlugin;
 import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
+import org.talend.designer.maven.aether.DummyDynamicMonitor;
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.designer.maven.aether.comparator.VersionStringComparator;
 import org.talend.designer.maven.aether.util.DynamicDistributionAetherUtils;
@@ -221,9 +222,24 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
             throw new Exception(
                     "only support to build dynamic plugin of " + getDistributionName() + " instead of " + distribution);
         }
-        VersionStringComparator versionStringComparator = new VersionStringComparator();
         String version = configuration.getVersion();
 
+        TemplateBean bestTemplateBean = getCompatibleTemplate(monitor, version);
+
+        // normally bestTemplateBean can't be null here
+        DynamicTemplateAdapter templateAdapter = new DynamicTemplateAdapter(bestTemplateBean, configuration);
+        templateAdapter.adapt(monitor);
+        IDynamicPlugin dynamicPlugin = templateAdapter.getDynamicPlugin();
+
+        return dynamicPlugin;
+    }
+
+    @Override
+    public TemplateBean getCompatibleTemplate(IDynamicMonitor monitor, String version) throws Exception {
+        if (monitor == null) {
+            monitor = new DummyDynamicMonitor();
+        }
+        VersionStringComparator versionStringComparator = new VersionStringComparator();
         // 1. try to get compatible bean
         if (templateBeanCompatibleVersionMap == null) {
             getCompatibleVersions(monitor);
@@ -270,13 +286,7 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
                 }
             }
         }
-
-        // normally bestTemplateBean can't be null here
-        DynamicTemplateAdapter templateAdapter = new DynamicTemplateAdapter(bestTemplateBean, configuration);
-        templateAdapter.adapt(monitor);
-        IDynamicPlugin dynamicPlugin = templateAdapter.getDynamicPlugin();
-
-        return dynamicPlugin;
+        return bestTemplateBean;
     }
 
     @Override

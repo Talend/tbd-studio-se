@@ -60,6 +60,7 @@ import org.talend.hadoop.distribution.dynamic.util.DynamicDistributionUtils;
 import org.talend.repository.hadoopcluster.HadoopClusterPlugin;
 import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.ui.dynamic.DynamicModuleGroupData;
+import org.talend.repository.hadoopcluster.ui.dynamic.form.labelprovider.RowNumberLabelProvider;
 
 /**
  * DOC cmeng class global comment. Detailled comment

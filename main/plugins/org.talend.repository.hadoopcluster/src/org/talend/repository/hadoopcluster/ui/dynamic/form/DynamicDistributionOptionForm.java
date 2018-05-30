@@ -31,15 +31,21 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ComboViewer;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.nebula.jface.tablecomboviewer.TableComboViewer;
+import org.eclipse.nebula.widgets.tablecombo.TableCombo;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.FocusAdapter;
+import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
@@ -60,10 +66,12 @@ import org.talend.designer.maven.aether.AbsDynamicProgressMonitor;
 import org.talend.designer.maven.aether.DummyDynamicMonitor;
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.designer.maven.aether.comparator.VersionStringComparator;
+import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.dynamic.DynamicConfiguration;
 import org.talend.hadoop.distribution.dynamic.DynamicConstants;
 import org.talend.hadoop.distribution.dynamic.DynamicDistributionManager;
 import org.talend.hadoop.distribution.dynamic.IDynamicDistributionsGroup;
+import org.talend.hadoop.distribution.dynamic.bean.TemplateBean;
 import org.talend.hadoop.distribution.dynamic.comparator.DynamicPluginComparator;
 import org.talend.hadoop.distribution.dynamic.util.DynamicDistributionUtils;
 import org.talend.repository.ProjectManager;
@@ -71,6 +79,7 @@ import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.ui.dynamic.DynamicDistributionSetupData;
 import org.talend.repository.hadoopcluster.ui.dynamic.DynamicDistributionSetupData.ActionType;
 import org.talend.repository.hadoopcluster.ui.dynamic.form.labelprovider.DynamicDistributionsLabelProvider;
+import org.talend.repository.hadoopcluster.ui.dynamic.form.labelprovider.SparkVersionsLabelProvider;
 import org.talend.repository.ui.login.LoginDialogV2;
 
 /**
@@ -83,6 +92,8 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
     private Button editExistingConfigBtn;
 
     private Button importConfigBtn;
+    
+    private TableComboViewer sparkVersionsComboViewer;
 
     private ComboViewer existingConfigsComboViewer;
 
@@ -115,10 +126,13 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
     private List<IDynamicPlugin> allCurrentUsersDynamicPlugins;
 
     private Map<String, IDynamicPlugin> namePluginMap;
+    
+    private List<ESparkVersion> selectedSparkVersions;
 
     public DynamicDistributionOptionForm(Composite parent, int style, DynamicDistributionSetupData configData,
             IDynamicMonitor monitor) {
         super(parent, style, configData);
+        selectedSparkVersions = new LinkedList<>();
         createControl();
         initData(monitor);
 
@@ -169,7 +183,7 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
         refreshButton.setLayoutData(formData);
 
         Label versionLabel = new Label(newConfigGroup, SWT.NONE);
-        versionLabel.setText(Messages.getString("DynamicDistributionOptionForm.form.versionLabel")); //$NON-NLS-1$
+        versionLabel.setText(Messages.getString("DynamicDistributionOptionForm.form.versionLabel.distribution")); //$NON-NLS-1$
         formData = new FormData();
         formData.top = new FormAttachment(refreshButton, 0, SWT.CENTER);
         formData.right = new FormAttachment(0, HORZON_WIDTH);
@@ -192,6 +206,44 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
         formData.right = new FormAttachment(versionsComboViewer.getControl(), 0, SWT.RIGHT);
         showOnlyCompatibleBtn.setLayoutData(formData);
 
+        Label sparkVersionLabel = new Label(newConfigGroup, SWT.NONE);
+        sparkVersionLabel.setText(Messages.getString("DynamicDistributionOptionForm.form.versionLabel.spark")); //$NON-NLS-1$
+        formData = new FormData();
+        formData.top = new FormAttachment(showOnlyCompatibleBtn, 0, SWT.CENTER);
+        formData.right = new FormAttachment(versionLabel, 0, SWT.RIGHT);
+        sparkVersionLabel.setLayoutData(formData);
+
+        sparkVersionsComboViewer = new TableComboViewer(newConfigGroup, SWT.READ_ONLY | SWT.BORDER);
+        sparkVersionsComboViewer.setContentProvider(ArrayContentProvider.getInstance());
+        sparkVersionsComboViewer.setLabelProvider(new SparkVersionsLabelProvider() {
+
+            @Override
+            public String getText(Object element) {
+                if (element instanceof ESparkVersion) {
+                    return ((ESparkVersion) element).getVersionLabel();
+                }
+                return super.getText(element);
+            }
+
+            @Override
+            protected boolean isSelected(Object element) {
+                if (selectedSparkVersions.contains(element)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+        TableCombo tableCombo = sparkVersionsComboViewer.getTableCombo();
+        tableCombo.setClosePopupAfterSelection(false);
+        tableCombo.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_GRAY));
+        formData = new FormData();
+        formData.top = new FormAttachment(sparkVersionLabel, 0, SWT.CENTER);
+        formData.left = new FormAttachment(versionsComboViewer.getControl(), 0, SWT.LEFT);
+        // formData.right = new FormAttachment(showOnlyCompatibleBtn, -1 * ALIGN_HORIZON, SWT.LEFT);
+        formData.width = HORZON_WIDTH;
+        sparkVersionsComboViewer.getControl().setLayoutData(formData);
+        
         editExistingConfigBtn = new Button(container, SWT.RADIO);
         editExistingConfigBtn.setText(Messages.getString("DynamicDistributionOptionForm.form.editExistingConfigBtn")); //$NON-NLS-1$
         formData = new FormData();
@@ -213,7 +265,7 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
         existingConfigsComboViewer.setLabelProvider(new DynamicDistributionsLabelProvider());
 
         Label existVersionLabel = new Label(editExistingGroup, SWT.NONE);
-        existVersionLabel.setText(Messages.getString("DynamicDistributionOptionForm.form.versionLabel")); //$NON-NLS-1$
+        existVersionLabel.setText(Messages.getString("DynamicDistributionOptionForm.form.versionLabel.distribution")); //$NON-NLS-1$
         formData = new FormData();
         formData.top = new FormAttachment(existingConfigsComboViewer.getControl(), 0, SWT.CENTER);
         formData.right = new FormAttachment(0, HORZON_WIDTH);
@@ -260,6 +312,33 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
 
     }
 
+    @Override
+    protected int getHorizonWidth() {
+        Composite parent = getParent();
+        Label testFontLabel = new Label(parent, SWT.NONE);
+        String[] labels = new String[] { Messages.getString("DynamicDistributionOptionForm.form.versionLabel.distribution"), //$NON-NLS-1$
+                Messages.getString("DynamicDistributionOptionForm.form.versionLabel.spark") }; //$NON-NLS-1$
+        int width = super.getHorizonWidth();
+        try {
+            for (String label : labels) {
+                testFontLabel.setText(label);
+                Point testFontSize = testFontLabel.computeSize(SWT.DEFAULT, SWT.DEFAULT);
+                if (width < testFontSize.x) {
+                    width = testFontSize.x;
+                }
+            }
+
+            width = width + 20;
+
+        } catch (Exception e) {
+            ExceptionHandler.process(e);
+        } finally {
+            testFontLabel.dispose();
+        }
+
+        return width;
+    }
+
     protected void addListeners() {
 
         newConfigBtn.addSelectionListener(new SelectionAdapter() {
@@ -284,6 +363,25 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
             public void selectionChanged(SelectionChangedEvent event) {
                 onSelectVersion();
                 updateButtons();
+            }
+        });
+
+        sparkVersionsComboViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+
+            @Override
+            public void selectionChanged(SelectionChangedEvent event) {
+                onSparkVersionsSelected(event);
+                updateButtons();
+            }
+        });
+
+        sparkVersionsComboViewer.getTableCombo().getTable().addFocusListener(new FocusAdapter() {
+
+            @Override
+            public void focusGained(FocusEvent e) {
+                for (ESparkVersion sparkVersion : selectedSparkVersions) {
+                    sparkVersionsComboViewer.update(sparkVersion, null);
+                }
             }
         });
 
@@ -373,26 +471,57 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
 
         versionsComboViewer.getControl().setEnabled(selected);
         refreshButton.setEnabled(selected);
+        sparkVersionsComboViewer.getControl().setEnabled(selected);
         showOnlyCompatibleBtn.setEnabled(selected);
     }
 
     private void onSelectVersion() {
-        // will do them in checkNewConfig()
-        // IStructuredSelection selection = (IStructuredSelection) versionsComboViewer.getSelection();
-        // if (selection != null) {
-        // String selectedVersion = (String) selection.getFirstElement();
-        // if (StringUtils.isNotEmpty(selectedVersion)) {
-        // DynamicBuildConfigurationData dynamicBuildConfigurationData = getDynamicBuildConfigurationData();
-        // IDynamicDistributionsGroup dynamicDistributionsGroup = dynamicBuildConfigurationData
-        // .getDynamicDistributionsGroup();
-        // String versionId = dynamicDistributionsGroup.generateVersionId(selectedVersion);
-        // versionId = DynamicDistributionUtils.appendTimestamp(versionId);
-        // String versionName = dynamicDistributionsGroup.generateVersionName(selectedVersion);
-        // dynamicConfiguration.setId(versionId);
-        // dynamicConfiguration.setName(versionName);
-        // dynamicConfiguration.setVersion(selectedVersion);
-        // }
-        // }
+        IStructuredSelection selection = (IStructuredSelection) versionsComboViewer.getSelection();
+        if (selection != null) {
+            String selectedVersion = (String) selection.getFirstElement();
+            if (StringUtils.isNotEmpty(selectedVersion)) {
+                try {
+                    refreshSparkVersionCombo(selectedVersion);
+                } catch (Exception e) {
+                    ExceptionHandler.process(e);
+                }
+            }
+        }
+    }
+
+    private void onSparkVersionsSelected(SelectionChangedEvent event) {
+        ISelection selection = event.getSelection();
+        if (selection != null) {
+            ESparkVersion sparkVersion = (ESparkVersion) ((IStructuredSelection) selection).getFirstElement();
+            if (sparkVersion != null) {
+                onSparkVersionsSelected(sparkVersion);
+            }
+        }
+    }
+
+    private void onSparkVersionsSelected(ESparkVersion sparkVersion) {
+        if (sparkVersion == null) {
+            return;
+        }
+        if (selectedSparkVersions.contains(sparkVersion)) {
+            selectedSparkVersions.remove(sparkVersion);
+        } else {
+            selectedSparkVersions.add(sparkVersion);
+        }
+        sparkVersionsComboViewer.getTableCombo().setText(getSelectedSparkVersionsText());
+        sparkVersionsComboViewer.update(sparkVersion, null);
+    }
+
+    private String getSelectedSparkVersionsText() {
+        String selectionText = ""; //$NON-NLS-1$
+        Collections.sort(selectedSparkVersions, Collections.reverseOrder(ESparkVersion.descComparator()));
+        for (ESparkVersion version : selectedSparkVersions) {
+            if (!selectionText.isEmpty()) {
+                selectionText = selectionText + ", "; //$NON-NLS-1$
+            }
+            selectionText = selectionText + version.getVersionLabel();
+        }
+        return selectionText;
     }
 
     private void onRefreshBtnClicked() {
@@ -400,8 +529,9 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
             List<String> versionList = getVersionList();
             if (versionList != null && !versionList.isEmpty()) {
                 Collections.sort(versionList, Collections.reverseOrder(new VersionStringComparator()));
+                String version = versionList.get(0);
                 versionsComboViewer.setInput(versionList);
-                versionsComboViewer.setSelection(new StructuredSelection(versionList.get(0)));
+                versionsComboViewer.setSelection(new StructuredSelection(version));
             }
         } catch (Exception ex) {
             ExceptionHandler.process(ex);
@@ -445,6 +575,22 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
             String jsonContent = DynamicServiceUtil.readFile(file);
             importedDynamicPlugin = DynamicFactory.getInstance().createPluginFromJson(jsonContent);
             importConfigText.setText(filePath);
+        }
+    }
+
+    private void refreshSparkVersionCombo(String version) throws Exception {
+        selectedSparkVersions.clear();
+        TemplateBean compatibleTemplate = getDynamicDistributionSetupData().getDynamicDistributionsGroup()
+                .getCompatibleDistribution(null, version).getCompatibleTemplate(null, version);
+        List<String> supportedSparkVersions = compatibleTemplate.getSupportedSparkVersions();
+        if (supportedSparkVersions != null && !supportedSparkVersions.isEmpty()) {
+            List<ESparkVersion> versions = DynamicDistributionUtils.convert2ESparkVersions(supportedSparkVersions);
+            sparkVersionsComboViewer.getSelection();
+            sparkVersionsComboViewer.setInput(versions);
+            if (!versions.isEmpty()) {
+                ESparkVersion defaultSparkVersion = versions.get(0);
+                sparkVersionsComboViewer.setSelection(new StructuredSelection(defaultSparkVersion));
+            }
         }
     }
 
@@ -632,6 +778,22 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
         }
     }
 
+    private boolean checkSparkVersonSelection() {
+        TableCombo tableCombo = sparkVersionsComboViewer.getTableCombo();
+        tableCombo.setBackground(null);
+        tableCombo.setToolTipText(getSelectedSparkVersionsText());
+        if (selectedSparkVersions.isEmpty()) {
+            String errorMessage = Messages.getString("DynamicDistributionOptionForm.newConfig.check.sparkVersion.empty"); //$NON-NLS-1$
+            showMessage(errorMessage, WizardPage.ERROR);
+            tableCombo.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_RED));
+            tableCombo.setToolTipText(errorMessage);
+            return false;
+        } else {
+            dynamicConfiguration.setSelectedSparkVersions(new ArrayList<>(selectedSparkVersions));
+        }
+        return true;
+    }
+
     private boolean checkNewConfig() {
         try {
             if (!newConfigBtn.getSelection()) {
@@ -675,6 +837,10 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
             dynamicConfiguration.setId(versionId);
             dynamicConfiguration.setName(versionName);
             dynamicConfiguration.setVersion(selectedVersion);
+
+            if (!checkSparkVersonSelection()) {
+                return false;
+            }
 
             return true;
         } catch (Exception e) {

@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.repository.hadoopcluster.ui.dynamic.form;
+package org.talend.repository.hadoopcluster.ui.dynamic.form.labelprovider;
 
 import java.util.Arrays;
 

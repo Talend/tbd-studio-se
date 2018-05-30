@@ -172,7 +172,12 @@ public class CDH5xDistributionTemplate extends AbstractDynamicCDHDistributionTem
     @Override
     public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
-        version.add(ESparkVersion.SPARK_2_2);
+        Set<ESparkVersion> sparkVersions = super.getSparkVersions();
+        if (sparkVersions == null || sparkVersions.isEmpty()) {
+            version.add(ESparkVersion.SPARK_2_2);
+        } else {
+            version.addAll(sparkVersions);
+        }
         return version;
     }
 

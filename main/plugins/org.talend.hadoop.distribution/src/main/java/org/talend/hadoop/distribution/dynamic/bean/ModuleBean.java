@@ -59,6 +59,8 @@ public class ModuleBean implements IVariable {
 
     public static final String ATTR_USE_STUDIO_REPOSITORY = "useStudioRepository"; //$NON-NLS-1$
 
+    public static final String ATTR_SUPPORTED_SPARK_VERSIONS = "supportedSparkVersions"; //$NON-NLS-1$
+
     public static final String TYPE_STANDARD = "STANDARD"; //$NON-NLS-1$
 
     public static final String TYPE_BASE = "BASE"; //$NON-NLS-1$
@@ -102,6 +104,8 @@ public class ModuleBean implements IVariable {
     private String useLatest;
 
     private String useStudioRepository;
+
+    private List<String> supportedSparkVersions;
 
     private List<ExclusionBean> exclusions;
 
@@ -265,6 +269,14 @@ public class ModuleBean implements IVariable {
         this.useStudioRepository = useStudioRepository;
     }
 
+    public List<String> getSupportedSparkVersions() {
+        return this.supportedSparkVersions;
+    }
+
+    public void setSupportedSparkVersions(List<String> supportedSparkVersions) {
+        this.supportedSparkVersions = supportedSparkVersions;
+    }
+
     @Override
     public Object getVariableValue(String variable) throws Exception {
         Object value = null;
@@ -313,6 +325,9 @@ public class ModuleBean implements IVariable {
             break;
         case ATTR_SCOPE:
             value = getScope();
+            break;
+        case ATTR_SUPPORTED_SPARK_VERSIONS:
+            value = getSupportedSparkVersions();
             break;
         case ATTR_TYPE:
             value = getType();

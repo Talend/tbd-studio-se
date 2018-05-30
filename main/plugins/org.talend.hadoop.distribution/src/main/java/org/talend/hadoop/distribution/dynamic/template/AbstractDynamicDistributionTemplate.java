@@ -2,6 +2,7 @@ package org.talend.hadoop.distribution.dynamic.template;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -28,8 +29,10 @@ import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
+import org.talend.hadoop.distribution.dynamic.DynamicConstants;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.DynamicModuleGroupConstant;
+import org.talend.hadoop.distribution.dynamic.util.DynamicDistributionUtils;
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
@@ -207,6 +210,21 @@ public abstract class AbstractDynamicDistributionTemplate extends AbstractDistri
     @Override
     public String getVersionName(ComponentType componentType) {
         return getVersionDisplay();
+    }
+
+    @Override
+    public Set<ESparkVersion> getSparkVersions() {
+        Set<ESparkVersion> version = new HashSet<>();
+
+        IDynamicPluginConfiguration pluginConfiguration = pluginAdapter.getPluginConfiguration();
+        List<String> selectedSparkVersions = (List<String>) pluginConfiguration
+                .getAttribute(DynamicConstants.ATTR_SELECTED_SPARK_VERSIONS);
+        if (selectedSparkVersions != null) {
+            List<ESparkVersion> sparkVersions = DynamicDistributionUtils.convert2ESparkVersions(selectedSparkVersions);
+            version.addAll(sparkVersions);
+        }
+
+        return version;
     }
 
     @Override

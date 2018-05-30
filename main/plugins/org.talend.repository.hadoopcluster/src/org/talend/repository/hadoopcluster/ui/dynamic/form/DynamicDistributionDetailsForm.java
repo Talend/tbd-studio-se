@@ -81,6 +81,7 @@ import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.ui.dynamic.DynamicDistributionSetupData;
 import org.talend.repository.hadoopcluster.ui.dynamic.DynamicModuleGroupData;
 import org.talend.repository.hadoopcluster.ui.dynamic.DynamicModuleGroupWizard;
+import org.talend.repository.hadoopcluster.ui.dynamic.form.labelprovider.RowNumberLabelProvider;
 import org.talend.repository.ui.login.LoginDialogV2;
 
 /**

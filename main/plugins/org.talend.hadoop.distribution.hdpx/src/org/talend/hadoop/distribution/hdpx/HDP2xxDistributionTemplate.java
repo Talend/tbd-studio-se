@@ -13,10 +13,6 @@
 
 package org.talend.hadoop.distribution.hdpx;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.component.HBaseComponent;
 import org.talend.hadoop.distribution.component.HCatalogComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
@@ -148,14 +144,6 @@ public class HDP2xxDistributionTemplate extends AbstractDynamicHDPDistributionTe
     @Override
     public boolean doSupportStoreAsParquet() {
         return true;
-    }
-
-    @Override
-    public Set<ESparkVersion> getSparkVersions() {
-        Set<ESparkVersion> version = new HashSet<>();
-        version.add(ESparkVersion.SPARK_1_6);
-        version.add(ESparkVersion.SPARK_2_1);
-        return version;
     }
 
     @Override
