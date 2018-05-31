@@ -6,9 +6,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
-            id="talend-bigdata-launcher-1.2.2-20180101.jar"
-            name="talend-bigdata-launcher-1.2.2-20180101.jar"
-            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-1.2.2-20180101/6.0.0">
+            id="talend-bigdata-launcher-1.2.3-20180531.jar"
+            name="talend-bigdata-launcher-1.2.3-20180531.jar"
+            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-1.2.3-20180531/6.0.0">
         </libraryNeeded>
                              
          <!--  -->
@@ -85,6 +85,12 @@
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
+            id="spark-hive_2.11-2.2.0.jar"
+            name="spark-hive_2.11-2.2.0.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-hive_2.11-2.2.0/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.databricks"
             id="spark-mllib-local_2.11-2.2.0.jar"
             name="spark-mllib-local_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-mllib-local_2.11-2.2.0/6.0.0">
@@ -156,7 +162,7 @@
                 description="Big Data launcher libraries for Databricks"
                 id="BIGDATA-LAUNCHER-LIB-DATABRICKS"
                 name="BIGDATA-LAUNCHER-LIB-DATABRICKS"  >
-			<library id="talend-bigdata-launcher-1.2.1-20170511" />
+			<library id="talend-bigdata-launcher-1.2.3-20180531" />
         </libraryNeededGroup>
         
         <!-- Spark group -->
@@ -186,6 +192,14 @@
              <library id="jackson-core-2.8.9.jar"/>
              <library id="javax.ws.rs-api-2.0-m10.jar"/>
              <library id="json_simple-1.1.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- HiveOnSpark group -->
+        <libraryNeededGroup
+                description="Hive On SPARK libraries for Databricks"
+                id="HIVEONSPARK-LIB-MRREQUIRED-DATABRICKS"
+                name="HIVEONSPARK-LIB-MRREQUIRED-DATABRICKS">
+             <library id="spark-hive_2.11-2.2.0.jar"/>
         </libraryNeededGroup>
         
    </extension>

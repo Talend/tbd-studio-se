@@ -25,6 +25,7 @@ import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
 import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
+import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
@@ -33,7 +34,7 @@ import org.talend.hadoop.distribution.constants.databricks.IDatabricksDistributi
 import org.talend.hadoop.distribution.databricks.modulegroup.DatabricksHDFSModuleGroup;
 import org.talend.hadoop.distribution.databricks.modulegroup.DatabricksSparkBatchModuleGroup;
 
-public class DatabricksDistribution extends AbstractDistribution implements HDFSComponent, SparkBatchComponent, IDatabricksDistribution {
+public class DatabricksDistribution extends AbstractDistribution implements HDFSComponent, SparkBatchComponent, HiveOnSparkComponent, IDatabricksDistribution {
 
     public final static String VERSION = "Databricks";
 
@@ -203,6 +204,16 @@ public class DatabricksDistribution extends AbstractDistribution implements HDFS
 	@Override
 	public boolean doSupportSparkYarnClientMode() {
 	    return false;
+    }
+	
+    @Override
+    public boolean doSupportAzureBlobStorage() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportAzureDataLakeStorage() {
+        return true;
     }
 
 }
