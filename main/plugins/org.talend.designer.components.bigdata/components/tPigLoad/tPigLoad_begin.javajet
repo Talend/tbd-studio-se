@@ -103,7 +103,7 @@
 	String quboleS3ResourceBucketKey = new String();
 	if (isQuboleDistribution && isQuboleS3Resource) {
 		quboleS3ResourceAccessKey = ElementParameterParser.getValue(node, "__QUBOLE_S3_ACCESS_KEY__");
-		quboleS3ResourceSecretKey = ElementParameterParser.getValue(node, "__QUBOLE_S3_SECRET_KEY__");
+		quboleS3ResourceSecretKey = ElementParameterParser.getPasswordValue(node, "__QUBOLE_S3_SECRET_KEY__");
 		quboleS3ResourceBucketName = ElementParameterParser.getValue(node, "__QUBOLE_S3_BUCKET_NAME__");
 		quboleS3ResourceBucketKey = ElementParameterParser.getValue(node, "__QUBOLE_S3_BUCKET_KEY__");
 	}
