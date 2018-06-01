@@ -33,7 +33,7 @@ import org.talend.hadoop.distribution.qubole.modulegroup.QuboleHiveModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QubolePigModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QubolePigOutputModuleGroup;
 
-public class QuboleDistribution extends AbstractDistribution implements HDFSComponent, PigComponent, HiveComponent, IQuboleDistribution {
+public class QuboleDistribution extends AbstractDistribution implements PigComponent, HiveComponent, IQuboleDistribution {
 
     public final static String VERSION = "Qubole cloud distribution";
 
@@ -272,11 +272,6 @@ public class QuboleDistribution extends AbstractDistribution implements HDFSComp
 		return false;
 	}
 
-	@Override
-	public boolean doSupportSequenceFileShortType() {
-		return true;
-	}
-	
 	@Override
     public boolean doSupportHDFSEncryption() {
         return true;
