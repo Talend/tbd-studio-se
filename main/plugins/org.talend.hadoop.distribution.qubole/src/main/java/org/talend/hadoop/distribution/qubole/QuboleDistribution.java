@@ -27,10 +27,8 @@ import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
-import org.talend.hadoop.distribution.constants.PigConstant;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.qubole.IQuboleDistribution;
-import org.talend.hadoop.distribution.qubole.modulegroup.QuboleHDFSModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QuboleHiveModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QubolePigModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QubolePigOutputModuleGroup;
@@ -65,6 +63,9 @@ public class QuboleDistribution extends AbstractDistribution implements HDFSComp
 
     protected Map<ComponentType, String> buildCustomVersionDisplayNames() {
         Map<ComponentType, String> result = new HashMap<>();
+        result.put(ComponentType.HIVE, "Qubole Hadoop2 (Hive 2.1.1 Beta)");
+        result.put(ComponentType.PIG, "Qubole Hadoop2");
+        result.put(ComponentType.PIGOUTPUT, "Qubole Hadoop2");
         return result;
     }
 
@@ -73,7 +74,6 @@ public class QuboleDistribution extends AbstractDistribution implements HDFSComp
      */
     protected Map<ComponentType, Set<DistributionModuleGroup>> buildModuleGroups() {
         Map<ComponentType, Set<DistributionModuleGroup>> componentsMap = new HashMap<>();
-        componentsMap.put(ComponentType.HDFS, QuboleHDFSModuleGroup.getModuleGroups());
         componentsMap.put(ComponentType.HIVE, QuboleHiveModuleGroup.getModuleGroups());
         componentsMap.put(ComponentType.PIG, QubolePigModuleGroup.getModuleGroups());
         componentsMap.put(ComponentType.PIGOUTPUT, QubolePigOutputModuleGroup.getModuleGroups());
