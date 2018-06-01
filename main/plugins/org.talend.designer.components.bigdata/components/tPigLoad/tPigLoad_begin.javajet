@@ -692,7 +692,7 @@
 <%
 		}
 
-		// this indent level is for all distributions, without any condition check %>
+%>
 		routines.system.PigHelper helper_<%=cid%> = new routines.system.PigHelper();
 
 <%
@@ -1025,15 +1025,15 @@
 %>
 					sb_<%=cid%>.append(")");
 <%
-				} else if(isParquet) {
+			} else if(isParquet) {
 	                if (isS3Location) {
 	                    %>
 	                    sb_<%=cid%>.append("<%=cid%>_<%=outputConnectionName%>_RESULT = LOAD '" + "s3n://" + <%=s3username%> +":" + decryptedS3Password_<%=cid%> + "@" + <%=s3bucket%>
-	                        + "' using parquet.pig.ParquetLoader('");
+	                        + "' using parquet.pig.ParquetLoader");
 	                    <%
 	                } else {
 	                    %>
-	                    sb_<%=cid%>.append("<%=cid%>_<%=outputConnectionName%>_RESULT = LOAD '"+<%=inputFilename%>+"' using parquet.pig.ParquetLoader('");
+	                    sb_<%=cid%>.append("<%=cid%>_<%=outputConnectionName%>_RESULT = LOAD '"+<%=inputFilename%>+"' using parquet.pig.ParquetLoader");
 	                    <%
 	                }
 				} else {
@@ -1056,40 +1056,20 @@
                     }
 				}
 
-				if (metadata != null) {
+				if(metadata!=null) {
 					if(metadata.getListColumns() != null && metadata.getListColumns().size() > 0) {
-						if (!isParquet) {
 %>
-							sb_<%=cid%>.append(" AS (");
+						sb_<%=cid%>.append(" AS (");
 <%
-						}
 						for(int i=0; i<metadata.getListColumns().size(); i++) {
 %>
 							sb_<%=cid%>.append("<%=i!=0?", ":""%><%=metadata.getListColumns().get(i).getLabel()%>:<%=Java2STLangTypesHelper.getPigType(metadata, metadata.getListColumns().get(i).getLabel())%>");
 <%
-						}
-						if (isParquet) {
-						%>
-							sb_<%=cid%>.append("'");
-						<%
+
 						}
 %>
 						sb_<%=cid%>.append(")");
 <%
-					} else {
-						if (isParquet) {
-						%>
-							sb_<%=cid%>.deleteCharAt(sb_<%=cid%>.length() - 1);
-							sb_<%=cid%>.append(")");
-						<%
-						}
-					}
-				} else {
-					if (isParquet) {
-				%>
-						sb_<%=cid%>.deleteCharAt(sb_<%=cid%>.length() - 1);
-						sb_<%=cid%>.append(")");
-				<%
 					}
 				}
 			}
@@ -1127,4 +1107,4 @@
 		}
 %>
 
-		<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/Pig/RegisterPigLatin.javajet"%>
+<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/Pig/RegisterPigLatin.javajet"%>
