@@ -790,7 +790,7 @@ if(columnList != null && columnList.size()>0){
             log.debug("Insert query for <%=cid%>: " + insertQuery_<%=cid %>);
             <%
         }
-        if (!hiveDistrib.useCloudLauncher()) {
+        if (!hiveDistrib.useCloudLauncher() && hiveDistrib.doSupportTezForHive()) {
 %>
 			<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/SetQueryName.javajet"%>
             stmt_<%=cid %>.execute(insertQuery_<%=cid %>);
@@ -813,7 +813,7 @@ if(columnList != null && columnList.size()>0){
             log.debug("Overwrite query for <%=cid%>: " + overwriteQuery_<%=cid %>);
             <%
         }
-        if (!hiveDistrib.useCloudLauncher()) {
+        if (!hiveDistrib.useCloudLauncher() && hiveDistrib.doSupportTezForHive()) {
 %>
 			<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/SetQueryName.javajet"%>
             stmt_<%=cid %>.execute(overwriteQuery_<%=cid %>);

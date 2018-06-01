@@ -710,11 +710,17 @@ imports="
 
 			super.createStatement(node);
 			%>
-			try {
-				<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/SetQueryName.javajet"%>
-			} catch (Exception e) {
-				e.printStackTrace();
+			<%
+			if(hiveDistrib.doSupportTezForHive()) {
+			%>
+				try {
+					<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/SetQueryName.javajet"%>
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			<%
 			}
+			%>
 			<%
 		}
 

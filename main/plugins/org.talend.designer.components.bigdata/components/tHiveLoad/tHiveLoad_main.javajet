@@ -268,7 +268,13 @@ imports="
     %>
         java.sql.Statement stmt_<%=cid %> = conn_<%=cid %>.createStatement();
         try {
-			<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/SetQueryName.javajet"%>
+        	<%
+        	if(hiveDistrib.doSupportTezForHive()) {
+        	%>
+				<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/SetQueryName.javajet"%>
+			<%
+			}
+			%>
             stmt_<%=cid%>.execute(querySQL_<%=cid %>);
         } catch(java.sql.SQLException e_<%=cid%>) {
             <%if(("true").equals(dieOnError)) {
