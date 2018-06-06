@@ -28,7 +28,155 @@
                 "SPARK_2_3"
             ],
             "description": ""
-        }
+        },
+        {
+			"id": "avro-1.8.0",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "avro-1.8.0.jar",
+			"mvnUri": "mvn:org.talend.libraries/avro-1.8.0/6.0.0",
+			"useStudioRepository": "true",
+			"description": ""
+		},
+        {
+			"id": "hadoop-client",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.hadoop",
+			"artifactId": "hadoop-client",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.mortbay.jetty",
+					"artifactId": "jetty-sslengine",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "hive-jdbc",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.hive",
+			"artifactId": "hive-jdbc",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.apache.curator",
+					"artifactId": "apache-curator",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "org.pentaho",
+					"artifactId": "pentaho-aggdesigner-algorithm",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "org.mortbay.jetty",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "jdk.tools",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "hive-exec",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.hive",
+			"artifactId": "hive-exec",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.apache.curator",
+					"artifactId": "apache-curator",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "org.pentaho",
+					"artifactId": "pentaho-aggdesigner-algorithm",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "org.mortbay.jetty",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "jdk.tools",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "hbase-client",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.hbase",
+			"artifactId": "hbase-client",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.mortbay.jetty",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "jdk.tools",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "sqoop",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.sqoop",
+			"artifactId": "sqoop",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.apache.hadoop",
+					"artifactId": "hadoop-core",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		}
 	],
 	"moduleGroups": [
 		{
@@ -45,19 +193,24 @@
 			"id": "HDFS-LIB-DYNAMIC",
 			"description": "jars for hdfs, only module.id permitted",
 			"modules": [
-			     "commons-lang3-3.4"
+				"commons-lang3-3.4",
+				"hadoop-client"
 			]
 		},
 		{
 			"id": "HIVE-LIB-DYNAMIC",
 			"description": "",
 			"modules": [
+				"hive-exec",
+				"hive-jdbc"
 			]
 		},
 		{
 			"id": "HBASE-LIB-DYNAMIC",
 			"description": "",
 			"modules": [
+				"hadoop-client",
+				"hbase-client"
 			]
 		},
 		{
@@ -70,6 +223,14 @@
 			"id": "IMPALA-LIB-DYNAMIC",
 			"description": "",
 			"modules": [
+			]
+		},
+		{
+			"id": "SQOOP-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+				"avro-1.8.0",
+				"sqoop"
 			]
 		}
 	],

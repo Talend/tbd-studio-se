@@ -21,6 +21,7 @@ import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
+import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.dynamic.template.AbstractDynamicDistributionTemplate;
 import org.talend.hadoop.distribution.dynamic.template.DynamicPigModuleGroupTemplate;
@@ -62,6 +63,9 @@ public abstract class AbstractDynamicHDPDistributionTemplate extends AbstractDyn
         }
         if (this instanceof HiveOnSparkComponent) {
             groupTemplateMap.put(ComponentType.HIVEONSPARK, new DynamicHDPHiveOnSparkModuleGroupTemplate(pluginAdapter));
+        }
+        if (this instanceof SqoopComponent) {
+            groupTemplateMap.put(ComponentType.SQOOP, new DynamicHDPSqoopModuleGroupTemplate(pluginAdapter));
         }
 
         return groupTemplateMap;
