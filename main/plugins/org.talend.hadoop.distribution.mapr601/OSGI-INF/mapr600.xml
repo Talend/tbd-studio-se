@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <component name="MapR600Distribution">
-  <implementation class="org.talend.hadoop.distribution.mapr600.MapR600Distribution"/>
+  <implementation class="org.talend.hadoop.distribution.mapr601.MapR600Distribution"/>
   <service>
     <provide interface="org.talend.hadoop.distribution.component.HadoopComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.HDFSComponent"/>

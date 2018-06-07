@@ -7,6 +7,6 @@
     <version>7.1.1-SNAPSHOT</version>
     <relativePath>../../../</relativePath>
   </parent>
-  <artifactId>org.talend.hadoop.distribution.mapr600</artifactId>
+  <artifactId>org.talend.hadoop.distribution.mapr601</artifactId>
   <packaging>eclipse-plugin</packaging>
 </project>
