@@ -67,45 +67,45 @@
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
-            id="spark-catalyst_2.11-2.2.0.jar"
-            name="spark-catalyst_2.11-2.2.0.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-catalyst_2.11-2.2.0/6.0.0">
+            id="spark-catalyst_2.11-2.2.1.jar"
+            name="spark-catalyst_2.11-2.2.1.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-catalyst_2.11-2.2.1/6.0.0">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
-            id="spark-core_2.11-2.2.0.jar"
-            name="spark-core_2.11-2.2.0.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-core_2.11-2.2.0/6.0.0">
+            id="spark-core_2.11-2.2.1.jar"
+            name="spark-core_2.11-2.2.1.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-core_2.11-2.2.1/6.0.0">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
-            id="spark-graphx_2.11-2.2.0.jar"
-            name="spark-graphx_2.11-2.2.0.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-graphx_2.11-2.2.0/6.0.0">
+            id="spark-graphx_2.11-2.2.1.jar"
+            name="spark-graphx_2.11-2.2.1.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-graphx_2.11-2.2.1/6.0.0">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
-            id="spark-hive_2.11-2.2.0.jar"
-            name="spark-hive_2.11-2.2.0.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-hive_2.11-2.2.0/6.0.0">
+            id="spark-hive_2.11-2.2.1.jar"
+            name="spark-hive_2.11-2.2.1.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-hive_2.11-2.2.1/6.0.0">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
-            id="spark-mllib-local_2.11-2.2.0.jar"
-            name="spark-mllib-local_2.11-2.2.0.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-mllib-local_2.11-2.2.0/6.0.0">
+            id="spark-mllib-local_2.11-2.2.1.jar"
+            name="spark-mllib-local_2.11-2.2.1.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-mllib-local_2.11-2.2.1/6.0.0">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
-            id="spark-network-common_2.11-2.2.0.jar"
-            name="spark-network-common_2.11-2.2.0.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-network-common_2.11-2.2.0/6.0.0">
+            id="spark-network-common_2.11-2.2.1.jar"
+            name="spark-network-common_2.11-2.2.1.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-network-common_2.11-2.2.1/6.0.0">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
-            id="spark-sql_2.11-2.2.0.jar"
-            name="spark-sql_2.11-2.2.0.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-sql_2.11-2.2.0/6.0.0">
+            id="spark-sql_2.11-2.2.1.jar"
+            name="spark-sql_2.11-2.2.1.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-sql_2.11-2.2.1/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
@@ -176,18 +176,18 @@
              <library id="commons-lang3-3.5.jar"/>
              <library id="cxf-rt-rs-client-3.2.4.jar"/>
              <library id="cxf-bundle-jaxrs-2.7.18.jar"/>
-             <library id="hadoop-common-2.7.3.jar"/>
+             <!--<library id="hadoop-common-2.7.3.jar"/>-->
              <library id="hadoop-mapreduce-client-core-2.7.3.jar"/>
              <library id="kryo-shaded-3.0.3.jar"/>
              <library id="scala-library-2.11.8.jar"/>
              <library id="scala-reflect-2.11.8.jar"/>
              <library id="slf4j-api-1.7.16.jar"/>
-             <library id="spark-catalyst_2.11-2.2.0.jar"/>
-             <library id="spark-core_2.11-2.2.0.jar"/>
-             <library id="spark-graphx_2.11-2.2.0.jar"/>
-             <library id="spark-mllib-local_2.11-2.2.0.jar"/>
-             <library id="spark-sql_2.11-2.2.0.jar"/>
-             <library id="spark-network-common_2.11-2.2.0.jar"/>
+             <library id="spark-catalyst_2.11-2.2.1.jar"/>
+             <library id="spark-core_2.11-2.2.1.jar"/>
+             <library id="spark-graphx_2.11-2.2.1.jar"/>
+             <library id="spark-mllib-local_2.11-2.2.1.jar"/>
+             <library id="spark-sql_2.11-2.2.1.jar"/>
+             <library id="spark-network-common_2.11-2.2.1.jar"/>
              <library id="wsdl4j-1.6.3.jar"/>
              <library id="jackson-core-2.8.9.jar"/>
              <library id="javax.ws.rs-api-2.0-m10.jar"/>
@@ -199,7 +199,7 @@
                 description="Hive On SPARK libraries for Databricks"
                 id="HIVEONSPARK-LIB-MRREQUIRED-DATABRICKS"
                 name="HIVEONSPARK-LIB-MRREQUIRED-DATABRICKS">
-             <library id="spark-hive_2.11-2.2.0.jar"/>
+             <library id="spark-hive_2.11-2.2.1.jar"/>
         </libraryNeededGroup>
         
    </extension>
