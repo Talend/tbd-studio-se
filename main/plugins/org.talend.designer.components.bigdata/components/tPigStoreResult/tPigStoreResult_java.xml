@@ -80,9 +80,9 @@
 			<ITEMS DEFAULT="PIGSTORAGE">
 				<ITEM NAME="PIGSTORAGE" VALUE="PigStorage" />
 				<ITEM NAME="BINSTORAGE" VALUE="BinStorage" />
-				<ITEM NAME="PIGDUMP" VALUE="PigDump" />
-				<ITEM NAME="HCATSTORER" VALUE="HCatStorer" />
-				<ITEM NAME="HBASESTORAGE" VALUE="HBaseStorage" />
+				<ITEM NAME="PIGDUMP" VALUE="PigDump" NOT_SHOW_IF="DISTRIB[#LINK@NODE.ASSOCIATED_PIG_LOAD.DISTRIBUTION, #LINK@NODE.ASSOCIATED_PIG_LOAD.PIG_VERSION].isQuboleDistribution[]" />
+				<ITEM NAME="HCATSTORER" VALUE="HCatStorer" NOT_SHOW_IF="DISTRIB[#LINK@NODE.ASSOCIATED_PIG_LOAD.DISTRIBUTION, #LINK@NODE.ASSOCIATED_PIG_LOAD.PIG_VERSION].isQuboleDistribution[]" />
+				<ITEM NAME="HBASESTORAGE" VALUE="HBaseStorage" NOT_SHOW_IF="DISTRIB[#LINK@NODE.ASSOCIATED_PIG_LOAD.DISTRIBUTION, #LINK@NODE.ASSOCIATED_PIG_LOAD.PIG_VERSION].isQuboleDistribution[]" />
 				<ITEM NAME="SEQUENCEFILESTORAGE" VALUE="SequenceFileStorage" />
 				<ITEM NAME="RCFILEPIGSTORAGE" VALUE="RCFilePigStorage" />
 				<ITEM NAME="AVROSTORAGE" VALUE="AvroStorage" />
@@ -1258,8 +1258,7 @@
 				REQUIRED_IF="((STORE=='AVROSTORAGE') AND (HBASE_VERSION=='MAPR500')) AND DISTRIBUTION!='CUSTOM'" />
 			<!-- AVRO Support End -->
 
-			<!-- Parquet Support Begin -->
-
+			<!-- Parquet jars for pig storer -->
 			<IMPORT NAME="parquet-pig-bundle-1.3.2" MODULE="parquet-pig-bundle-1.3.2.jar"
 				MVN="mvn:org.talend.libraries/parquet-pig-bundle-1.3.2/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop/lib/parquet-pig-bundle-1.3.2.jar"

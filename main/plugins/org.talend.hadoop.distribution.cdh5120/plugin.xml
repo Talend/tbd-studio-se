@@ -1034,7 +1034,7 @@
                 name="PIG-AVRO-LIB-CDH_5_12">
             <library id="avro-1.7.6-cdh5.12.1.jar" />
             <library id="commons-io-2.4.jar"/>
-            <library id="piggybank-cdh5.4.jar"/><!-- Where it is defined??? -->
+            <library id="piggybank-cdh5.4.jar"/>  <!-- defined in org.talend.designer.components.localprovider/plugin.xml -->
         </libraryNeededGroup>
 
         <!-- Pig RCFile group -->

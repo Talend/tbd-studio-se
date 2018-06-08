@@ -14,6 +14,7 @@ package org.talend.hadoop.distribution.mapr600;
 
 public enum MapR600Constant {
 
+    OJAI_MODULE_GROUP("OJAI-LIB-MAPR600"), //$NON-NLS-1$
     HDFS_MODULE_GROUP("HDFS-LIB-MAPR600"), //$NON-NLS-1$
     MAPREDUCE_MODULE_GROUP("MAPREDUCE-LIB-MAPR600"), //$NON-NLS-1$
     PIG_MODULE_GROUP("PIG-LIB-MAPR600"), //$NON-NLS-1$

@@ -155,7 +155,7 @@
             dbDNDProvider="org.talend.repository.nosql.db.provider.cassandra.CassandraDNDProvider"
             dbMetadataProvider="org.talend.repository.nosql.db.provider.cassandra.CassandraMetadataProvider"
             dbType="CASSANDRA"
-            dbVersions="CASSANDRA_3_0;CASSANDRA_2_2;CASSANDRA_2_0_0;CASSANDRA_1_2_2;CASSANDRA_1_1_2"
+            dbVersions="CASSANDRA_3_0;CASSANDRA_2_2;CASSANDRA_2_0_0"
             dbWizPageProvider="org.talend.repository.nosql.db.provider.cassandra.CassandraWizardPageProvider"
             description="Cassandra">
       </factory>
@@ -201,14 +201,6 @@
       <classloader
             index="NOSQL:MONGODB:MONGODB_3_5_X"
             libraries="mongo-java-driver-3.5.0.jar">
-      </classloader>
-      <classloader
-            index="NOSQL:CASSANDRA:CASSANDRA_1_1_2"
-            libraries="hector-core-1.1-4.jar;apache-cassandra-1.1.2.jar;apache-cassandra-thrift-1.1.2.jar;slf4j-api-1.6.1.jar;slf4j-log4j12-1.6.1.jar;log4j-1.2.16.jar;libthrift-0.7.0.jar;guava-12.0.1.jar;commons-lang-2.6.jar;uuid-3.4.jar;">
-      </classloader>
-      <classloader
-            index="NOSQL:CASSANDRA:CASSANDRA_1_2_2"
-            libraries="cassandra-driver-core-2.0.3.jar;guava-13.0.1.jar;log4j-1.2.16.jar;metrics-core-3.0.2.jar;netty-3.6.6.Final.jar;slf4j-api-1.7.5.jar;slf4j-log4j12-1.7.5.jar;">
       </classloader>
       <classloader
             index="NOSQL:CASSANDRA:CASSANDRA_2_0_0"

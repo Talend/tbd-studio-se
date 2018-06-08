@@ -26,6 +26,11 @@
     }
 	
 	boolean isExecutedThroughWebHCat = !isLocal && pigDistrib != null && pigDistrib.isExecutedThroughWebHCat();
+	boolean isQuboleDistribution = !isLocal && pigDistrib != null && pigDistrib.isQuboleDistribution();
+	String quboleClusterLabel = "";
+	if (isQuboleDistribution && ElementParameterParser.getBooleanValue(node, "__QUBOLE_CLUSTER__")) {
+		quboleClusterLabel = ElementParameterParser.getValue(node, "__QUBOLE_CLUSTER_LABEL__");
+	}
 
 	boolean dieOnError = "true".equals(ElementParameterParser.getValue(node, "__DIE_ON_ERROR__"));
 	final boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
@@ -67,9 +72,27 @@
 		}
 <%
 	}
+	
+	if (inMain && isQuboleDistribution) {
+		if (isLog4jEnabled) {%>
+			log.info("<%=cid%> - start executing statements:  " + statements_<%=cid%>.toString());
+		<%	
+		}
+		if ("".equals(quboleClusterLabel)) {
+		%>
+			String execution_result_<%=cid%> = quboleJob_<%=cid%>.execute(statements_<%=cid%>.toString()).getResults();
+		<%
+		} else {
+		%>
+			String execution_result_<%=cid%> = quboleJob_<%=cid%>.execute(statements_<%=cid%>.toString(), <%=quboleClusterLabel%>).getResults();
+		<%
+		}
+		if (isLog4jEnabled) {%>
+			log.info("<%=cid%> - statements executed successfully:  " + statements_<%=cid%>.toString());
+			log.info("<%=cid%> - execution result: " + execution_result_<%=cid%>);
+		<%}
+	}
 %>
-
-		
 	} catch (Exception e) {
 <%
 		if(!dieOnError) {

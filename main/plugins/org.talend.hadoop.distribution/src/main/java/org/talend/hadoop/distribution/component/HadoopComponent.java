@@ -175,9 +175,15 @@ public interface HadoopComponent {
 
     /**
     *
+<<<<<<< HEAD
     * @return true if the distribution is a databricks cloud distribution
     */
    public boolean isDatabricksDistribution();
+   
+   /** 
+   * @return true if the distribution is a Qubole cloud distribution
+    */
+   public boolean isQuboleDistribution();
 
     /**
      * @return a weight for the distribution, which will be used to sort the distributions in the components drop down

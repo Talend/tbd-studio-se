@@ -267,6 +267,7 @@
 		    xmlSerializer_<%=cid%>.clearNamespaces();
 		    xmlSerializer_<%=cid%>.setSkipNamespaces(true);
 		    xmlSerializer_<%=cid%>.setForceTopLevelObject(<%=(removeRoot?false:true)%>);
+		    xmlSerializer_<%=cid%>.setUseLongDecimals(true);
 		    <%
 		    INode sourceNode = node.getIncomingConnections(EConnectionType.ON_COMPONENT_OK).get(0).getSource();
 			String virtualSourceCid = sourceNode.getUniqueName();

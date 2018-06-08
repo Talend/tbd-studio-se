@@ -89,7 +89,24 @@
     boolean setMapRHadoopLogin = ElementParameterParser.getBooleanValue(node, "__SET_HADOOP_LOGIN__");
     String mapRHadoopLogin = ElementParameterParser.getValue(node, "__HADOOP_LOGIN__");
 	
-	boolean isExecutedThroughWebHCat = !isLocal && (pigDistrib != null && pigDistrib.isExecutedThroughWebHCat());
+	boolean isExecutedThroughWebHCat = !isLocal && pigDistrib != null && pigDistrib.isExecutedThroughWebHCat();
+	boolean isQuboleDistribution = !isLocal && pigDistrib != null && pigDistrib.isQuboleDistribution();
+	boolean isCloudDistribution = !isLocal && pigDistrib != null && pigDistrib.isCloudDistribution();
+	String quboleEndpoint = "";
+	if (isQuboleDistribution && ElementParameterParser.getBooleanValue(node, "__QUBOLE_ENDPOINT__")) {
+		quboleEndpoint = ElementParameterParser.getValue(node, "__QUBOLE_ENDPOINT_URL__");
+	}
+	boolean isQuboleS3Resource = ElementParameterParser.getBooleanValue(node, "__QUBOLE_S3__");
+	String quboleS3ResourceAccessKey = new String();
+	String quboleS3ResourceSecretKey = new String();
+	String quboleS3ResourceBucketName = new String();
+	String quboleS3ResourceBucketKey = new String();
+	if (isQuboleDistribution && isQuboleS3Resource) {
+		quboleS3ResourceAccessKey = ElementParameterParser.getValue(node, "__QUBOLE_S3_ACCESS_KEY__");
+		quboleS3ResourceSecretKey = ElementParameterParser.getPasswordValue(node, "__QUBOLE_S3_SECRET_KEY__");
+		quboleS3ResourceBucketName = ElementParameterParser.getValue(node, "__QUBOLE_S3_BUCKET_NAME__");
+		quboleS3ResourceBucketKey = ElementParameterParser.getValue(node, "__QUBOLE_S3_BUCKET_KEY__");
+	}
 
 	String hcatPackage = (pigDistrib != null && pigDistrib.pigVersionPriorTo_0_12() && !isCustom) ? "org.apache.hcatalog.pig" : "org.apache.hive.hcatalog.pig";
 
@@ -185,7 +202,7 @@
 		}
 
 		if(generateRegisterJarCodeForParquetFile) {
-			jarsToRegister.add("parquet-pig-bundle");
+			jarsToRegister.add("parquet-pig");
 			jarsToRegister.add("snappy-java");
 		}
 
@@ -216,6 +233,7 @@
 	boolean useTez = !isLocal && pigDistrib != null && pigDistrib.doSupportTezForPig() && "TEZ".equals(ElementParameterParser.getValue(node, "__ENGINE__"));
 %>
 	<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/Pig/PigHeader.javajet"%>
+
 <%
 	if(generateRegisterJarCodeForAll) {
 %>
@@ -223,16 +241,15 @@
 <%
 	}
 
-	if(!isExecutedThroughWebHCat) {
+	if(!isCloudDistribution) {
 %>
 		java.util.Properties props_<%=cid%> = new java.util.Properties();
 <%
-	}
-
-	if(inMain && !isExecutedThroughWebHCat) {
-%>
-		props_<%=cid%>.put(org.apache.pig.impl.PigContext.JOB_NAME, projectName + "_" + jobName + "_" + jobVersion + "_" + "<%=cid%>");
-<%
+		if (inMain) {
+		%>
+			props_<%=cid%>.put(org.apache.pig.impl.PigContext.JOB_NAME, projectName + "_" + jobName + "_" + jobVersion + "_" + "<%=cid%>");
+		<%
+		}
 	}
 
 	// BEGIN IF01
@@ -304,9 +321,40 @@
 		}
 <%
 	} // END IF01
+
+	if (inMain && isQuboleDistribution) {
+		if (ElementParameterParser.canEncrypt(node, "__QUBOLE_API_TOKEN__")) {
+			String encryptedToken = ElementParameterParser.getEncryptedValue(node, "__QUBOLE_API_TOKEN__");
+			%>
+			String api_token_<%=cid%> = routines.system.PasswordEncryptUtil.decryptPassword(<%=encryptedToken%>);
+			<%
+		} else {
+		%>
+			String api_token_<%=cid%> = <%= ElementParameterParser.getValue(node, "__QUBOLE_API_TOKEN__")%>;
+		<%
+		}
+	%>
+
+	try (org.talend.bigdata.launcher.qubole.QubolePigJob quboleJob_<%=cid%> =
+			new org.talend.bigdata.launcher.qubole.QubolePigJob.Builder()
+			.setApiKey(api_token_<%=cid%>)
+			<% if (!"".equals(quboleEndpoint)) {%> .setApiEndpoint(<%=quboleEndpoint%>) <%} %>
+			.build()) {
+		StringBuilder statements_<%=cid%> = new StringBuilder();
+		<% if (isQuboleS3Resource) { %>
+			com.amazonaws.auth.BasicAWSCredentials awsCredentials_<%=cid%> = new com.amazonaws.auth.BasicAWSCredentials(
+				<%=quboleS3ResourceAccessKey%>, routines.system.PasswordEncryptUtil.decryptPassword(<%=quboleS3ResourceSecretKey%>));
+			com.amazonaws.services.s3.AmazonS3 s3Client_<%=cid%> = com.amazonaws.services.s3.AmazonS3ClientBuilder.standard()
+                .withRegion(<%= ElementParameterParser.getValue(node, "__QUBOLE_S3_REGION__")%>)
+                .withCredentials(new com.amazonaws.auth.AWSStaticCredentialsProvider(awsCredentials_<%=cid%>))
+                .build();
+<%
+		}
+	} else {
 %>
 	try {
 <%
+	}
 		// BEGIN IF02
 		if(inMain && isExecutedThroughWebHCat) {
 			passwordFieldName = "__HDINSIGHT_PASSWORD__";
@@ -355,14 +403,15 @@
 			String wasbPath_<%=cid%> = azureFs_<%=cid%>.getFileSystemPrefix() + "/"	+ instance_<%=cid%>.getRemoteFolder()	+ "/libjars/";
 <%
 		} // END IF02
-
 		// BEGIN IF03
 		if(isLocal) { // LOCAL mode
 %>
 			org.apache.pig.impl.PigContext context_<%=cid%> = new org.apache.pig.impl.PigContext(org.apache.pig.ExecType.LOCAL, props_<%=cid%>);
 <%
-		// BEGIN ELSE03
-		} else if(!isLocal && !isExecutedThroughWebHCat && pigDistrib != null) { // MAPREDUCE mode
+		}
+
+		// BEGIN MapReduce Mode
+		if(!isLocal && !isCloudDistribution && pigDistrib != null) {
 			// BEGIn IF04
 			if(inMain) {
 				String yarnClasspathSeparator = ElementParameterParser.getValue(node, "__CLASSPATH_SEPARATOR__");
@@ -612,7 +661,7 @@
 				org.apache.pig.impl.PigContext context_<%=cid%> = new org.apache.pig.impl.PigContext(org.apache.pig.ExecType.MAPREDUCE, props_<%=cid%>);
 <%
 			}
-		} // END ELSE03
+		} // END MapReduce Mode
 
         if (isS3Location) {
             passwordFieldName = "__S3_PASSWORD_LOAD__";
@@ -630,7 +679,7 @@
         }
 
 		if(inMain) {//only main process create the server object,lookup process use the one in main process
-			if(!isExecutedThroughWebHCat) {
+			if(!isCloudDistribution) {
 %>
 				org.apache.pig.PigServer pigServer_<%=start_node%> = new org.apache.pig.PigServer(context_<%=cid%>);
 				pigServer_<%=start_node%>.setBatchOn();
@@ -642,145 +691,148 @@
 			java.util.List<String[]> pigScript_<%=start_node%> = new java.util.ArrayList<String[]>();
 <%
 		}
+
 %>
 		routines.system.PigHelper helper_<%=cid%> = new routines.system.PigHelper();
 
 <%
-	if((advProps.size() > 0) || compress || (isLocal && "HBaseStorage".equals(function)) || useTez){
+		if((advProps.size() > 0) || compress || (isLocal && "HBaseStorage".equals(function)) || useTez){
 %>
-		StringBuilder script_<%=cid%>=new StringBuilder();
+			StringBuilder script_<%=cid%>=new StringBuilder();
 <%
-		for(Map<String, String> item : advProps){
+			for(Map<String, String> item : advProps){
 %>
-		script_<%=cid%>.append("SET "+<%=item.get("PROPERTY") %>+" "+<%=item.get("VALUE") %>+";");
-<%
-		}
-
-		if(compress) {
-%>
-		script_<%=cid%>.append("SET output.compression.enabled true;");
-<%
-			if("GZIP".equals(compression)) {
-%>
-		script_<%=cid%>.append("SET output.compression.codec org.apache.hadoop.io.compress.GzipCodec;");
-<%
-			} else if("BZIP2".equals(compression)) {
-%>
-		script_<%=cid%>.append("SET output.compression.codec org.apache.hadoop.io.compress.BZip2Codec;");
+				script_<%=cid%>.append("SET "+<%=item.get("PROPERTY") %>+" "+<%=item.get("VALUE") %>+";");
 <%
 			}
-		}
 
-		if(isLocal && "HBaseStorage".equals(function)) {
+			if(compress) {
 %>
-		script_<%=cid%>.append("SET hbase.zookeeper.quorum ").append(<%=zookeeper_quorum%>).append(";");
-		script_<%=cid%>.append("SET hbase.zookeeper.property.clientPort ").append(<%=zookeeper_client_port%>).append(";");
+				script_<%=cid%>.append("SET output.compression.enabled true;");
 <%
-			if(setZNodeParent) {
+				if("GZIP".equals(compression)) {
 %>
-			script_<%=cid%>.append("SET zookeeper.znode.parent ").append(<%=zNodeParent%>).append(";");
+					script_<%=cid%>.append("SET output.compression.codec org.apache.hadoop.io.compress.GzipCodec;");
 <%
+				} else if("BZIP2".equals(compression)) {
+%>
+					script_<%=cid%>.append("SET output.compression.codec org.apache.hadoop.io.compress.BZip2Codec;");
+<%
+				}
 			}
-		}
 
-		if(useTez){
-			if(advProps != null){
-    			for(Map<String, String> item : advProps){
-    				if("\"tez.lib.uris\"".equals(item.get("PROPERTY"))){
-    				%>
-    					System.err.println("Please set the path of Tez lib in 'Tez lib path'!");
-    				<%
-    				}
-    			}
-    		}
-			boolean installTez = "INSTALL".equals(ElementParameterParser.getValue(node, "__TEZ_LIB__"));
-			if(installTez){
-				//prepare the folder
-				%>
-				<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/Pig/GetFileSystem.javajet"%>
-				<%
-				(new GetFileSystem()).invoke(node);
-				String tezLibFolder = ElementParameterParser.getValue(node, "__TEZ_LIB_FOLDER__");
-				boolean useDefaultTezLibFolder = "\"/tmp/{USERNAME}/talend_tez_libs/{custom|PIG_VERSION}\"".equals(tezLibFolder);
-				if(useDefaultTezLibFolder){
-					String username = ElementParameterParser.getValue(node, "__USERNAME__");
-					%>
-					String hdfsUserName_<%=cid%> = (<%=username%> != null && !"".equals(<%=username%>)) ? <%=username%> : System.getProperty("user.name");
-	    			String tezLibPath_<%=cid%> = "/tmp/" + hdfsUserName_<%=cid%> + "/talend_tez_libs/<%=isCustom?"custom":pigVersion%>";
-				<%
-				}else{
-				%>
-					String tezLibPath_<%=cid%> = <%=tezLibFolder%>;
-				<%
+			if(isLocal && "HBaseStorage".equals(function)) {
+%>
+				script_<%=cid%>.append("SET hbase.zookeeper.quorum ").append(<%=zookeeper_quorum%>).append(";");
+				script_<%=cid%>.append("SET hbase.zookeeper.property.clientPort ").append(<%=zookeeper_client_port%>).append(";");
+<%
+				if(setZNodeParent) {
+%>
+					script_<%=cid%>.append("SET zookeeper.znode.parent ").append(<%=zNodeParent%>).append(";");
+<%
 				}
-				%>
-				fs_<%=cid%>.mkdirs(new org.apache.hadoop.fs.Path(tezLibPath_<%=cid%>));
-				<%
-				List<String> tezLibJarsName = new java.util.ArrayList<String>();
-				if(isCustom){
-					List<Map<String,String>> tezLibJarsNameValue = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node,"__TEZ_LIB_NAME__");
-					for(Map<String, String> tezLibJarsNameV : tezLibJarsNameValue){
-						tezLibJarsName.add(tezLibJarsNameV.get("JAR_NAME"));
-					}
-				}else{
-					String tezLibJarsNameValue = ElementParameterParser.getValue(node, "__TEZ_JARS_NAME__");
-	    			if(tezLibJarsNameValue != null && !"".equals(tezLibJarsNameValue)){
-	        			tezLibJarsName = java.util.Arrays.asList(tezLibJarsNameValue.split(","));
-					}
-				}
-				%>
-				String[] classPaths_<%=cid%> = System.getProperty("java.class.path").split(<%if(!isLocal && !isExecutedThroughWebHCat && inMain){%>String.valueOf(globalMap.get("current_client_path_separator"))<%}else{%>System.getProperty("path.separator")<%}%>);
-				for(String classPath_<%=cid%> : classPaths_<%=cid%>){
-					<%
-					for(String jarName : tezLibJarsName){
-					%>
-						if(classPath_<%=cid%>.endsWith("<%=jarName%>")){
-							org.apache.hadoop.fs.Path tezJarPath_<%=cid%> = new org.apache.hadoop.fs.Path(tezLibPath_<%=cid%> + "/<%=jarName%>");
-							if(!fs_<%=cid%>.exists(tezJarPath_<%=cid%>)){
-								fs_<%=cid%>.copyFromLocalFile(false, false, new org.apache.hadoop.fs.Path(classPath_<%=cid%>), tezJarPath_<%=cid%>);
-							}
-						}
-					<%
-					}
-					%>
+			}
+
+			if(useTez){
+				if(advProps != null){
+	    			for(Map<String, String> item : advProps){
+	    				if("\"tez.lib.uris\"".equals(item.get("PROPERTY"))){
+	    				%>
+	    					System.err.println("Please set the path of Tez lib in 'Tez lib path'!");
+	    				<%
+	    				}
+	    			}
 	    		}
-			<%
-			}else{
-			%>
-				String tezLibPath_<%=cid%> = <%=ElementParameterParser.getValue(node, "__TEZ_LIB_PATH__")%>;
+				boolean installTez = "INSTALL".equals(ElementParameterParser.getValue(node, "__TEZ_LIB__"));
+				if(installTez){
+					//prepare the folder
+					%>
+					<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/Pig/GetFileSystem.javajet"%>
+					<%
+					(new GetFileSystem()).invoke(node);
+					String tezLibFolder = ElementParameterParser.getValue(node, "__TEZ_LIB_FOLDER__");
+					boolean useDefaultTezLibFolder = "\"/tmp/{USERNAME}/talend_tez_libs/{custom|PIG_VERSION}\"".equals(tezLibFolder);
+					if(useDefaultTezLibFolder){
+						String username = ElementParameterParser.getValue(node, "__USERNAME__");
+						%>
+						String hdfsUserName_<%=cid%> = (<%=username%> != null && !"".equals(<%=username%>)) ? <%=username%> : System.getProperty("user.name");
+		    			String tezLibPath_<%=cid%> = "/tmp/" + hdfsUserName_<%=cid%> + "/talend_tez_libs/<%=isCustom?"custom":pigVersion%>";
+					<%
+					}else{
+					%>
+						String tezLibPath_<%=cid%> = <%=tezLibFolder%>;
+					<%
+					}
+					%>
+					fs_<%=cid%>.mkdirs(new org.apache.hadoop.fs.Path(tezLibPath_<%=cid%>));
+					<%
+					List<String> tezLibJarsName = new java.util.ArrayList<String>();
+					if(isCustom){
+						List<Map<String,String>> tezLibJarsNameValue = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node,"__TEZ_LIB_NAME__");
+						for(Map<String, String> tezLibJarsNameV : tezLibJarsNameValue){
+							tezLibJarsName.add(tezLibJarsNameV.get("JAR_NAME"));
+						}
+					}else{
+						String tezLibJarsNameValue = ElementParameterParser.getValue(node, "__TEZ_JARS_NAME__");
+		    			if(tezLibJarsNameValue != null && !"".equals(tezLibJarsNameValue)){
+		        			tezLibJarsName = java.util.Arrays.asList(tezLibJarsNameValue.split(","));
+						}
+					}
+					%>
+					String[] classPaths_<%=cid%> = System.getProperty("java.class.path").split(<%if(!isLocal && !isExecutedThroughWebHCat && inMain){%>String.valueOf(globalMap.get("current_client_path_separator"))<%}else{%>System.getProperty("path.separator")<%}%>);
+					for(String classPath_<%=cid%> : classPaths_<%=cid%>){
+						<%
+						for(String jarName : tezLibJarsName){
+						%>
+							if(classPath_<%=cid%>.endsWith("<%=jarName%>")){
+								org.apache.hadoop.fs.Path tezJarPath_<%=cid%> = new org.apache.hadoop.fs.Path(tezLibPath_<%=cid%> + "/<%=jarName%>");
+								if(!fs_<%=cid%>.exists(tezJarPath_<%=cid%>)){
+									fs_<%=cid%>.copyFromLocalFile(false, false, new org.apache.hadoop.fs.Path(classPath_<%=cid%>), tezJarPath_<%=cid%>);
+								}
+							}
+						<%
+						}
+						%>
+		    		}
+				<%
+				}else{
+				%>
+					String tezLibPath_<%=cid%> = <%=ElementParameterParser.getValue(node, "__TEZ_LIB_PATH__")%>;
+				<%
+				}
+	    		//define the location of tez lib
+				%>
+				String[] tezLibPaths_<%=cid%> = tezLibPath_<%=cid%>.split(",");
+				script_<%=cid%>.append("SET tez.lib.uris ");
+				int tezLibPathCount_<%=cid%> = 1;
+				for(String tezLibPathKey_<%=cid%> : tezLibPaths_<%=cid%>){
+					 script_<%=cid%>.append(<%=fsDefaultName%> + "/" + tezLibPathKey_<%=cid%>);
+					 if(tezLibPathCount_<%=cid%> < tezLibPaths_<%=cid%>.length){
+					 	script_<%=cid%>.append(",");
+					 }
+					 tezLibPathCount_<%=cid%>++;
+				}
+				script_<%=cid%>.append(";");
 			<%
 			}
-    		//define the location of tez lib
 			%>
-			String[] tezLibPaths_<%=cid%> = tezLibPath_<%=cid%>.split(",");
-			script_<%=cid%>.append("SET tez.lib.uris ");
-			int tezLibPathCount_<%=cid%> = 1;
-			for(String tezLibPathKey_<%=cid%> : tezLibPaths_<%=cid%>){
-				 script_<%=cid%>.append(<%=fsDefaultName%> + "/" + tezLibPathKey_<%=cid%>);
-				 if(tezLibPathCount_<%=cid%> < tezLibPaths_<%=cid%>.length){
-				 	script_<%=cid%>.append(",");
-				 }
-				 tezLibPathCount_<%=cid%>++;
-			}
-			script_<%=cid%>.append(";");
-		<%
-		}
-		%>
-		helper_<%=cid%>.add("script",script_<%=cid%>.toString());
+			helper_<%=cid%>.add("script",script_<%=cid%>.toString());
 <%
-	}
+		}
 %>
 
 		StringBuilder sb_<%=cid%> = new StringBuilder();
-
+		java.util.regex.Pattern jarPattern_<%=cid%> = java.util.regex.Pattern.compile(".*\\.jar");
 <%
 		if(generateRegisterJarCodeForAll) {
-			for(int i=0; i<jarsToRegister.size(); i++) {
+			for(int i = 0; i < jarsToRegister.size(); i++) {
 				String jarToRegister = jarsToRegister.get(i);
 				for(int j=0; j<jars.size(); j++) {
 					if(jars.get(j).contains(jarToRegister) && jars.get(j).endsWith(".jar")) {
 %>
-						helper_<%=cid%>.add("jar",getJarsToRegister_<%=cid %>.replaceJarPaths("<%=jars.get(j)%>"));
+					if (jarPattern_<%=cid%>.matcher(getJarsToRegister_<%=cid %>.replaceJarPaths("<%=jars.get(j)%>")).matches()) {
+						helper_<%=cid%>.add("jar", getJarsToRegister_<%=cid %>.replaceJarPaths("<%=jars.get(j)%>"));
+					}
 <%
 					}
 				}
@@ -973,7 +1025,7 @@
 %>
 					sb_<%=cid%>.append(")");
 <%
-				} else if(isParquet) {
+			} else if(isParquet) {
 	                if (isS3Location) {
 	                    %>
 	                    sb_<%=cid%>.append("<%=cid%>_<%=outputConnectionName%>_RESULT = LOAD '" + "s3n://" + <%=s3username%> +":" + decryptedS3Password_<%=cid%> + "@" + <%=s3bucket%>
@@ -1055,4 +1107,4 @@
 		}
 %>
 
-		<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/Pig/RegisterPigLatin.javajet"%>
+<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/Pig/RegisterPigLatin.javajet"%>

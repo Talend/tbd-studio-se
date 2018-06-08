@@ -20,6 +20,14 @@
 	
 	boolean inMain = true;
 	boolean isExecutedThroughWebHCat = false;
+	
+	boolean isQuboleDistribution = false;
+	boolean isCloudDistribution = false;
+	boolean isQuboleS3Resource = false;
+	String quboleS3ResourceAccessKey = "";
+	String quboleS3ResourceSecretKey = "";
+	String quboleS3ResourceBucketName = "";
+	String quboleS3ResourceBucketKey = "";
 
 	String previousOutputConnectionName = "";
 	
@@ -44,6 +52,14 @@
 
             boolean isCustom = pigDistrib instanceof org.talend.hadoop.distribution.custom.CustomDistribution;
             isExecutedThroughWebHCat = !isCustom && pigDistrib != null && pigDistrib.isExecutedThroughWebHCat();
+            isQuboleDistribution = pigDistrib != null && pigDistrib.isQuboleDistribution();
+            isCloudDistribution = pigDistrib != null && pigDistrib.isCloudDistribution();
+            if (isQuboleDistribution && ElementParameterParser.getBooleanValue(loadNode, "__QUBOLE_S3__")) {
+            	quboleS3ResourceAccessKey = ElementParameterParser.getValue(loadNode, "__QUBOLE_S3_ACCESS_KEY__");
+            	quboleS3ResourceSecretKey = ElementParameterParser.getPasswordValue(loadNode, "__QUBOLE_S3_SECRET_KEY__");
+            	quboleS3ResourceBucketName = ElementParameterParser.getValue(loadNode, "__QUBOLE_S3_BUCKET_NAME__");
+            	quboleS3ResourceBucketKey = ElementParameterParser.getValue(loadNode, "__QUBOLE_S3_BUCKET_KEY__");
+            }
         }
 		
 		inMain = loadNode.isSubtreeStart();

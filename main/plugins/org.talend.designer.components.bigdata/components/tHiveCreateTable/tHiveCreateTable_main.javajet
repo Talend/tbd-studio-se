@@ -35,15 +35,29 @@ imports="
     String theDistribution = ElementParameterParser.getValue(node, "__DISTRIBUTION__");
     String theVersion = ElementParameterParser.getValue(node, "__HIVE_VERSION__");
 
+	String quboleClusterLabel = null;
+	String quboleEndpoint = null;
+	String encryptedToken = null;
     if("true".equals(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"))) {
+		// using connection
         String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
         for (INode pNode : node.getProcess().getNodesOfType("tHiveConnection")) {
             if(connection!=null && connection.equals(pNode.getUniqueName())) {
                 theDistribution = ElementParameterParser.getValue(pNode, "__DISTRIBUTION__");
                 theVersion = ElementParameterParser.getValue(pNode, "__HIVE_VERSION__");
+				if (ElementParameterParser.getBooleanValue(pNode, "__QUBOLE_CLUSTER__")) {
+					quboleClusterLabel = ElementParameterParser.getValue(pNode, "__QUBOLE_CLUSTER_LABEL__");
+				}
             }
         }
-    }
+    } else {
+	    // without connection
+	    encryptedToken = ElementParameterParser.getEncryptedValue(node, "__QUBOLE_API_TOKEN__");
+		if (ElementParameterParser.getBooleanValue(node, "__QUBOLE_ENDPOINT__")) {
+			quboleEndpoint = ElementParameterParser.getValue(node, "__QUBOLE_ENDPOINT_URL__");
+		}
+	}
+
 
     org.talend.hadoop.distribution.component.HiveComponent hiveDistrib = null;
     try {
@@ -53,7 +67,7 @@ imports="
         return "";
     }
     boolean isCustom = hiveDistrib instanceof org.talend.hadoop.distribution.custom.CustomDistribution;
-
+    
     if(hiveDistrib.isExecutedThroughWebHCat()) {
 %>
         <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/GetAzureConnection.javajet"%>
@@ -86,13 +100,17 @@ imports="
             }
 <%
         }
-    } else if(hiveDistrib.isGoogleDataprocDistribution()) {
+    } else if (hiveDistrib.isGoogleDataprocDistribution()) {
 %>
         <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/GetDataprocConnection.javajet"%>
 <%
+    } else if (hiveDistrib.isQuboleDistribution()) { // get qubole connection
+%>
+		<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/GetQuboleConnection.javajet"%>
+<%
     } else { // normal mode
 %>
-    <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/GetConnection.javajet"%>
+    	<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/GetConnection.javajet"%>
 <%
     }
 
@@ -231,6 +249,10 @@ imports="
                                 bw_<%=cid%>.write("ADD JAR " + wasbPath_<%=cid%> + new java.io.File(getJarsToRegister_<%=cid %>.replaceJarPaths("<%=jars.get(j)%>")).getName() + ";");
                                 libjars_<%=cid%>.append(getJarsToRegister_<%=cid %>.replaceJarPaths("<%=jars.get(j)%>") + ",");
 <%
+                            } else if (hiveDistrib.isQuboleDistribution()) {
+%>
+                                // Qubole hive 1.2 supports parquet by default.
+<%
                             } else { // dataproc
                                 if(isLog4jEnabled) {
 %>
@@ -361,6 +383,23 @@ if(likeTable) {
 %>
                 }
 <%
+            } else if (hiveDistrib.isQuboleDistribution()) {
+            %>
+            <%
+            	if (isLog4jEnabled) {
+            	%>
+            		log.info("<%=cid%> - start executing query:  " + querySQL_<%=cid %>.replace("';'", "'\\;'") + ";");
+            	<%
+            	}
+            	if (quboleClusterLabel != null) {
+            	%>
+            		String execution_result_<%=cid%> = instance_<%=cid%>.execute(querySQL_<%=cid %>.replace("';'", "'\\;'") + ";", <%=quboleClusterLabel%>).getResults();
+            	<%
+            	} else {
+%>
+					String execution_result_<%=cid%> = instance_<%=cid%>.execute(querySQL_<%=cid %>.replace("';'", "'\\;'") + ";").getResults();
+<%
+				}
             } else { // dataproc
                 if(isLog4jEnabled) {
 %>
@@ -648,47 +687,47 @@ String querySQL_<%=cid %> = "<%=createTableSQL.toString()%>";
 <%
     if(!hiveDistrib.useCloudLauncher()) {
 %>
-try {
-	<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/SetQueryName.javajet"%>
-    stmt_<%=cid%>.execute(querySQL_<%=cid %>);
-} catch(java.sql.SQLException e_<%=cid%>) {
+		try {
+			<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/SetQueryName.javajet"%>
+		    stmt_<%=cid%>.execute(querySQL_<%=cid %>);
+		} catch(java.sql.SQLException e_<%=cid%>) {
 <%
             if(("true").equals(dieOnError)) {
-    %>
-        throw(e_<%=cid%>);
-    <%
-    }else {
-    %>
-        System.err.println(e_<%=cid%>.getMessage());
-    <%
-            }
+%>
+        		throw(e_<%=cid%>);
+<%
+    		} else {
+%>
+        		System.err.println(e_<%=cid%>.getMessage());
+<%
+    		}
 %>
         }
-stmt_<%=cid %>.close();
-<%if(!("true").equals(useExistingConn)) {%>
-    conn_<%=cid %>.close();
-<%}%>
-globalMap.put("<%=cid%>_QUERY", querySQL_<%=cid %>);
-
-String currentClientPathSeparator_<%=cid%> = (String)globalMap.get("current_client_path_separator");
-if(currentClientPathSeparator_<%=cid%>!=null) {
-    System.setProperty("path.separator", currentClientPathSeparator_<%=cid%>);
-    globalMap.put("current_client_path_separator", null);
-}
-
-String currentClientUsername_<%=cid%> = (String)globalMap.get("current_client_user_name");
-if(currentClientUsername_<%=cid%>!=null) {
-    System.setProperty("user.name", currentClientUsername_<%=cid%>);
-    globalMap.put("current_client_user_name", null);
-}
-
-String originalHadoopUsername_<%=cid%> = (String)globalMap.get("HADOOP_USER_NAME_<%=cid%>");
-if(originalHadoopUsername_<%=cid%>!=null) {
-    System.setProperty("HADOOP_USER_NAME", originalHadoopUsername_<%=cid%>);
-    globalMap.put("HADOOP_USER_NAME_<%=cid%>", null);
-} else {
-    System.clearProperty("HADOOP_USER_NAME");
-}
+		stmt_<%=cid %>.close();
+		<%if(!("true").equals(useExistingConn)) {%>
+		    conn_<%=cid %>.close();
+		<%}%>
+		globalMap.put("<%=cid%>_QUERY", querySQL_<%=cid %>);
+		
+		String currentClientPathSeparator_<%=cid%> = (String)globalMap.get("current_client_path_separator");
+		if(currentClientPathSeparator_<%=cid%>!=null) {
+		    System.setProperty("path.separator", currentClientPathSeparator_<%=cid%>);
+		    globalMap.put("current_client_path_separator", null);
+		}
+		
+		String currentClientUsername_<%=cid%> = (String)globalMap.get("current_client_user_name");
+		if(currentClientUsername_<%=cid%>!=null) {
+		    System.setProperty("user.name", currentClientUsername_<%=cid%>);
+		    globalMap.put("current_client_user_name", null);
+		}
+		
+		String originalHadoopUsername_<%=cid%> = (String)globalMap.get("HADOOP_USER_NAME_<%=cid%>");
+		if(originalHadoopUsername_<%=cid%>!=null) {
+		    System.setProperty("HADOOP_USER_NAME", originalHadoopUsername_<%=cid%>);
+		    globalMap.put("HADOOP_USER_NAME_<%=cid%>", null);
+		} else {
+		    System.clearProperty("HADOOP_USER_NAME");
+		}
 <%
     } else { // useCloudLauncher
         if(hiveDistrib.isExecutedThroughWebHCat()) {
@@ -723,6 +762,38 @@ if(originalHadoopUsername_<%=cid%>!=null) {
 %>
             }
 <%
+        } else if (hiveDistrib.isQuboleDistribution()) { // qubole execution
+        %>
+        	String queries_<%=cid%> = "";
+        	if (connectionCommandList_<%=cid%> != null) {
+        		for (String command : connectionCommandList_<%=cid%>) {
+        			queries_<%=cid%> += command;
+        			<% if (isLog4jEnabled) { %>
+        				log.info("<%=cid%> - query added: " + command);
+        			<% } %>
+        		}
+        	}
+        <%
+			if (isLog4jEnabled) {
+%>
+				log.info("<%=cid%> - query added: " + querySQL_<%=cid %>.replace("';'", "'\\;'") + ";");
+				log.info("<%=cid%> - queries sent to cluster, waiting for execution result ...");
+<%
+			}
+            if (quboleClusterLabel != null) {
+%>
+           		String execution_result_<%=cid%> = instance_<%=cid%>.execute(queries_<%=cid%> + querySQL_<%=cid %>.replace("';'", "'\\;'") + ";", <%=quboleClusterLabel%>).getResults();
+            <%
+            } else {
+%>
+				String execution_result_<%=cid%> = instance_<%=cid%>.execute(queries_<%=cid%> + querySQL_<%=cid %>.replace("';'", "'\\;'") + ";").getResults();
+<%
+			}
+			if (isLog4jEnabled) {
+			%>
+				log.info("<%=cid%> - execution finished.");
+			<%
+			}
         } else { // Dataproc
             if(isLog4jEnabled) {
 %>
