@@ -23,18 +23,14 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
-import org.talend.hadoop.distribution.component.HDFSComponent;
-import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
-import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
+import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.databricks.IDatabricksDistribution;
-import org.talend.hadoop.distribution.databricks.modulegroup.DatabricksHDFSModuleGroup;
 import org.talend.hadoop.distribution.databricks.modulegroup.DatabricksSparkBatchModuleGroup;
 
-public class DatabricksDistribution extends AbstractDistribution implements HDFSComponent, SparkBatchComponent, HiveOnSparkComponent, IDatabricksDistribution {
+public class DatabricksDistribution extends AbstractDistribution implements SparkBatchComponent, HiveOnSparkComponent, IDatabricksDistribution {
 
     public final static String VERSION = "Databricks";
 
@@ -68,36 +64,14 @@ public class DatabricksDistribution extends AbstractDistribution implements HDFS
 
     protected Map<ComponentType, Set<DistributionModuleGroup>> buildModuleGroups() {
         Map<ComponentType, Set<DistributionModuleGroup>> result = new HashMap<>();
-        result.put(ComponentType.HDFS, DatabricksHDFSModuleGroup.getModuleGroups());
         result.put(ComponentType.SPARKBATCH, DatabricksSparkBatchModuleGroup.getModuleGroups());
-
-        //result.put(ComponentType.SPARKSTREAMING, QuboleSparkStreamingModuleGroup.getModuleGroups());
+        result.put(ComponentType.HIVEONSPARK, DatabricksSparkBatchModuleGroup.getModuleGroups());
         return result;
     }
 
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(String distribution, String version) {
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
-        // DynamoDB ...
-        /*Set<DistributionModuleGroup> dynamoDBNodeModuleGroups = QuboleSparkDynamoDBNodeModuleGroup.getModuleGroups(distribution,
-                version, "USE_EXISTING_CONNECTION == 'false'");
-        Set<DistributionModuleGroup> dynamoDBConfigurationModuleGroups = QuboleSparkDynamoDBNodeModuleGroup.getModuleGroups(
-                distribution, version, null);*/
-        /*// ... in Spark batch
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_INPUT_COMPONENT),
-                dynamoDBNodeModuleGroups);
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_OUTPUT_COMPONENT),
-                dynamoDBNodeModuleGroups);
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_CONFIGURATION_COMPONENT),
-                dynamoDBConfigurationModuleGroups);
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
-                QuboleSparkGraphFramesNodeModuleGroup.getModuleGroups(distribution, version, null));
-        // ... in Spark streaming
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_INPUT_COMPONENT),
-                dynamoDBNodeModuleGroups);
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_OUTPUT_COMPONENT),
-                dynamoDBNodeModuleGroups);
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.DYNAMODB_CONFIGURATION_COMPONENT), dynamoDBConfigurationModuleGroups);*/
+        // Azure
         return result;
     }
 
@@ -153,7 +127,7 @@ public class DatabricksDistribution extends AbstractDistribution implements HDFS
 	@Override
 	public Set<ESparkVersion> getSparkVersions() {
 		Set<ESparkVersion> version = new HashSet<>();
-		version.add(ESparkVersion.SPARK_2_2);
+		version.add(ESparkVersion.SPARK_2_2_1);
         return version;
     }
 
@@ -171,12 +145,6 @@ public class DatabricksDistribution extends AbstractDistribution implements HDFS
 
 	@Override
 	public boolean doSupportImpersonation() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean doSupportSequenceFileShortType() {
 		// TODO Auto-generated method stub
 		return true;
 	}

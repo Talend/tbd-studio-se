@@ -30,13 +30,10 @@ public class DatabricksHiveOnSparkModuleGroupTest {
     public void testModuleGroups() throws Exception {
         Map<String, String> results = new HashMap<>();
         results.put(DatabricksConstant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
-        results.put(DatabricksConstant.HDFS_MODULE_GROUP.getModuleName(), null);
-        results.put(DatabricksConstant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
-        results.put(DatabricksConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), null);
 
 
         Set<DistributionModuleGroup> moduleGroups = DatabricksHiveOnSparkModuleGroup.getModuleGroups();
-        assertEquals(3, moduleGroups.size());
+        assertEquals(1, moduleGroups.size());
         moduleGroups.iterator();
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$

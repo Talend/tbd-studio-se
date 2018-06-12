@@ -27,23 +27,10 @@ public class DatabricksHiveOnSparkModuleGroup {
 
     private final static ComponentCondition condition = new SimpleComponentCondition(new BasicExpression(
             SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false")); //$NON-NLS-1$
-/*
-    private final static ComponentCondition conditionS3 = new SimpleComponentCondition(new BasicExpression(
-            SparkBatchConstant.ALTUS_CLOUD_PROVIDER, EqualityOperator.EQ, "\"AWS\"")); //$NON-NLS-1$
 
-    private final static ComponentCondition conditionAzureFS = new SimpleComponentCondition(new BasicExpression(
-            SparkBatchConstant.ALTUS_CLOUD_PROVIDER, EqualityOperator.EQ, "\"Azure\"")); //$NON-NLS-1$
-*/
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        hs.add(new DistributionModuleGroup(DatabricksConstant.HDFS_MODULE_GROUP.getModuleName(), false, condition));
-       hs.add(new DistributionModuleGroup(DatabricksConstant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), false, condition));
-       /* hs.add(new DistributionModuleGroup(QuboleConstant.SPARK_MODULE_GROUP.getModuleName(), false, condition));
-        hs.add(new DistributionModuleGroup(QuboleConstant.SPARK_S3_MRREQUIRED_MODULE_GROUP.getModuleName(), true, conditionS3));
-        hs.add(new DistributionModuleGroup(QuboleConstant.SPARK_AZURE_MRREQUIRED_MODULE_GROUP.getModuleName(), true,
-                conditionAzureFS));*/
-        hs.add(new DistributionModuleGroup(DatabricksConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), true, condition));
-        //hs.add(new DistributionModuleGroup(QuboleConstant.GRAPHFRAMES_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
+        hs.add(new DistributionModuleGroup(DatabricksConstant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
         return hs;
     }
 }
