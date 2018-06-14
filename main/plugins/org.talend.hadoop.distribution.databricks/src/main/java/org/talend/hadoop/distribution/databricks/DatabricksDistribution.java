@@ -28,6 +28,7 @@ import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.databricks.IDatabricksDistribution;
+import org.talend.hadoop.distribution.databricks.modulegroup.DatabricksHiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.databricks.modulegroup.DatabricksSparkBatchModuleGroup;
 
 public class DatabricksDistribution extends AbstractDistribution implements SparkBatchComponent, HiveOnSparkComponent, IDatabricksDistribution {
@@ -65,7 +66,7 @@ public class DatabricksDistribution extends AbstractDistribution implements Spar
     protected Map<ComponentType, Set<DistributionModuleGroup>> buildModuleGroups() {
         Map<ComponentType, Set<DistributionModuleGroup>> result = new HashMap<>();
         result.put(ComponentType.SPARKBATCH, DatabricksSparkBatchModuleGroup.getModuleGroups());
-        result.put(ComponentType.HIVEONSPARK, DatabricksSparkBatchModuleGroup.getModuleGroups());
+        result.put(ComponentType.HIVEONSPARK, DatabricksHiveOnSparkModuleGroup.getModuleGroups());
         return result;
     }
 

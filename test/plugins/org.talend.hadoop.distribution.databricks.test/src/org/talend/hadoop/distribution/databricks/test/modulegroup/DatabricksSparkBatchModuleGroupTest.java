@@ -33,7 +33,7 @@ public class DatabricksSparkBatchModuleGroupTest {
         //results.put(DatabricksConstant.SPARK_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
         results.put(DatabricksConstant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
         results.put(DatabricksConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')");
-        results.put(DatabricksConstant.SPARK_AZURE_MRREQUIRED_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')");
+        results.put(DatabricksConstant.SPARK_AZURE_MRREQUIRED_MODULE_GROUP.getModuleName(), "(ALTUS_CLOUD_PROVIDER=='\"Azure\"')");
 
         Set<DistributionModuleGroup> moduleGroups = DatabricksSparkBatchModuleGroup.getModuleGroups();
         assertEquals(3, moduleGroups.size());
@@ -47,7 +47,7 @@ public class DatabricksSparkBatchModuleGroupTest {
                 assertTrue("The condition of the module " + module.getModuleName() + " is null, but it should be " //$NON-NLS-1$ //$NON-NLS-2$
                         + results.get(module.getModuleName()) + ".", results.get(module.getModuleName()) != null); //$NON-NLS-1$
                 // TODO Fix  TEST
-                //assertEquals(results.get(module.getModuleName()), module.getRequiredIf().getConditionString());
+                assertEquals(results.get(module.getModuleName()), module.getRequiredIf().getConditionString());
             }
         }
     }

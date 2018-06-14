@@ -10,7 +10,13 @@
             name="talend-bigdata-launcher-platform-1.2.3-20180501.jar"
             mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-platform-1.2.3-20180501/6.0.0">
         </libraryNeeded>
-                             
+                           
+		 <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.databricks"
+            id="avro-mapred-1.7.7-hadoop2.jar"
+            name="avro-mapred-1.7.7-hadoop2.jar"
+            mvn_uri="mvn:org.talend.libraries/avro-mapred-1.7.7-hadoop2/6.0.0"/>
+              
          <!--  -->
          <libraryNeeded 
          	context="plugin:org.talend.hadoop.distribution.databricks" 
@@ -178,6 +184,7 @@
                 id="SPARK-LIB-MRREQUIRED-DATABRICKS"
                 name="SPARK-LIB-MRREQUIRED-DATABRICKS">
              <library id="azure-storage-5.0.0.jar"/>
+             <library id="avro-mapred-1.7.7-hadoop2.jar"/>
              <library id="commons-codec-1.10.jar"/>
              <library id="commons-lang-2.6.jar"/>
              <library id="commons-lang3-3.5.jar"/>
@@ -199,7 +206,7 @@
              <library id="wsdl4j-1.6.3.jar"/>
              <library id="jackson-core-2.8.9.jar"/>
              <library id="javax.ws.rs-api-2.0-m10.jar"/>
-             <library id="json_simple-1.1.jar"/>
+             <library id="json_simple-1.1.jar"/>            
         </libraryNeededGroup>
         
         <!-- HiveOnSpark group -->
