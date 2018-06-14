@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MapR 6.0.1 distribution jars fragment
+Bundle-SymbolicName: org.talend.hadoop.distribution.mapr601.jars
+Bundle-Version: 7.1.1.qualifier
+Fragment-Host: org.talend.hadoop.distribution.mapr601
+Eclipse-BundleShape: dir
