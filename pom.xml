@@ -117,6 +117,8 @@
         <module>main/plugins/org.talend.hadoop.distribution.mapr520.jars</module>
         <module>main/plugins/org.talend.hadoop.distribution.mapr600</module>
         <module>main/plugins/org.talend.hadoop.distribution.mapr600.jars</module>
+        <module>main/plugins/org.talend.hadoop.distribution.mapr601</module>
+        <module>main/plugins/org.talend.hadoop.distribution.mapr601.jars</module>
         <module>main/plugins/org.talend.hadoop.distribution.piv101</module>
         <module>main/plugins/org.talend.hadoop.distribution.piv200</module>
         <module>main/plugins/org.talend.hadoop.distribution.qubole</module>
