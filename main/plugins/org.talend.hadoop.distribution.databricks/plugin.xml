@@ -82,43 +82,43 @@
             context="plugin:org.talend.hadoop.distribution.databricks"
             id="spark-catalyst_2.11-2.2.1.jar"
             name="spark-catalyst_2.11-2.2.1.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-catalyst/2.11-2.2.1">
+            mvn_uri="mvn:org.apache.spark/spark-catalyst_2.11/2.2.1">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
             id="spark-core_2.11-2.2.1.jar"
             name="spark-core_2.11-2.2.1.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-core/2.11-2.2.1">
+            mvn_uri="mvn:org.apache.spark/spark-core_2.11/2.2.1">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
             id="spark-graphx_2.11-2.2.1.jar"
             name="spark-graphx_2.11-2.2.1.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-graphx/2.11-2.2.1">
+            mvn_uri="mvn:org.apache.spark/spark-graphx_2.11/2.2.1">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
             id="spark-hive_2.11-2.2.1.jar"
             name="spark-hive_2.11-2.2.1.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-hive/2.11-2.2.1">
+            mvn_uri="mvn:org.apache.spark/spark-hive_2.11/2.2.1">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
             id="spark-mllib-local_2.11-2.2.1.jar"
             name="spark-mllib-local_2.11-2.2.1.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-mllib-local/2.11-2.2.1">
+            mvn_uri="mvn:org.apache.spark/spark-mllib-local_2.11/2.2.1">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
             id="spark-network-common_2.11-2.2.1.jar"
             name="spark-network-common_2.11-2.2.1.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-network-common/2.11-2.2.1">
+            mvn_uri="mvn:org.apache.spark/spark-network-common_2.11/2.2.1">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
             id="spark-sql_2.11-2.2.1.jar"
             name="spark-sql_2.11-2.2.1.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-sql/2.11-2.2.1">
+            mvn_uri="mvn:org.apache.spark/spark-sql_2.11/2.2.1">
         </libraryNeeded>
         
         <libraryNeeded
@@ -175,7 +175,7 @@
                 description="Big Data launcher libraries for Databricks"
                 id="BIGDATA-LAUNCHER-LIB-DATABRICKS"
                 name="BIGDATA-LAUNCHER-LIB-DATABRICKS"  >
-			<library id="talend-bigdata-launcher-1.2.3-20180531.jar" />
+			<library id="talend-bigdata-launcher-platform-1.2.3-20180501.jar" />
         </libraryNeededGroup>
         
         <!-- Spark group -->
@@ -206,7 +206,7 @@
              <library id="wsdl4j-1.6.3.jar"/>
              <library id="jackson-core-2.8.9.jar"/>
              <library id="javax.ws.rs-api-2.0-m10.jar"/>
-             <library id="json_simple-1.1.jar"/>            
+             <library id="json_simple-1.1.jar"/>
         </libraryNeededGroup>
         
         <!-- HiveOnSpark group -->
