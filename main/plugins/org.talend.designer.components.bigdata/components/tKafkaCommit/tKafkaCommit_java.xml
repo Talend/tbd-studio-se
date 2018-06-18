@@ -43,6 +43,10 @@
 			<!-- Kafka libraries for 2_10-0_10_0_1 -->
 			<IMPORT MODULE_GROUP="KAFKA-LIB-2_10-0_10_0_1"
 				REQUIRED_IF="(KAFKA_VERSION=='KAFKA_0_10_0_1') AND USE_EXISTING_CONNECTION=='false'" />
+			
+			<!-- Kafka libraries for 2.11-1.1.0 -->
+			<IMPORT MODULE_GROUP="KAFKA-LIB-2_11-1.1.0"
+				REQUIRED_IF="(KAFKA_VERSION=='KAFKA_1_1_0') AND USE_EXISTING_CONNECTION=='false'" />
 				
 		</IMPORTS>
 	</CODEGENERATION>

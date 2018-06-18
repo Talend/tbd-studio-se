@@ -28,7 +28,7 @@ kafka.utils.ZkUtils <%=cid%>_zkUtils =  kafka.utils.ZkUtils.apply(<%=tKafkaCreat
 %>
 		try{
 			kafka.admin.AdminUtils.createTopic(<%=cid%>_zkUtils, <%=tKafkaCreateTopicUtil.getTopic()%>, Integer.valueOf(<%=tKafkaCreateTopicUtil.getNbPartitions()%>), Integer.valueOf(<%=tKafkaCreateTopicUtil.getReplicationFactor()%>), <%=cid%>_topicProperties, kafka.admin.RackAwareMode.Safe$.MODULE$);
-		} catch (kafka.common.TopicExistsException e) {
+		} catch (org.apache.kafka.common.errors.TopicExistsException e) {
 <%
 		if (tKafkaCreateTopicUtil.isCreateIfNotExists()) {
 %>
