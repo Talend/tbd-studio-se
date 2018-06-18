@@ -16,5 +16,6 @@
     <provide interface="org.talend.hadoop.distribution.component.ImpalaComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.MapRStreamsComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.MapRDBComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.HBaseComponent"/>
   </service>
 </component>

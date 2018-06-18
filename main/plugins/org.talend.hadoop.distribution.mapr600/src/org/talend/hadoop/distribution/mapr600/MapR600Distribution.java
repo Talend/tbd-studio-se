@@ -24,6 +24,7 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
+import org.talend.hadoop.distribution.component.HBaseComponent;
 import org.talend.hadoop.distribution.component.HCatalogComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
@@ -78,7 +79,7 @@ import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SqoopModuleGrou
 
 public class MapR600Distribution extends AbstractMapRDistribution implements HDFSComponent, MRComponent, MapROJAIComponent,
         SqoopComponent, PigComponent, HiveComponent, HCatalogComponent, SparkBatchComponent, SparkStreamingComponent,
-        HiveOnSparkComponent, ImpalaComponent, MapRStreamsComponent, MapRDBComponent, IMapRDistribution {
+        HiveOnSparkComponent, ImpalaComponent, MapRStreamsComponent, MapRDBComponent, IMapRDistribution, HBaseComponent {
 
     public final static String VERSION = "MAPR600"; //$NON-NLS-1$
 
