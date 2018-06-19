@@ -195,7 +195,7 @@ imports="
 	
     while (itrst_<%=cid %>.hasNext()) {
 		nb_line_<%=cid %> ++;
-       	readRecord_<%=cid %> = itrst_<%=cid %>.next();         
+       	readRecord_<%=cid %> = itrst_<%=cid %>.next();
 		org.ojai.Value valueObj_<%=cid %> = null;
 
 <%
@@ -263,6 +263,12 @@ imports="
 %>
 
            	<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.getShort();
+            
+<%
+                   } else if (javaType == JavaTypesManager.BYTE){
+%>
+
+           	<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.getByte();
             
 <%
                    } else {
