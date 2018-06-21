@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.mapr600.test;
+package org.talend.hadoop.distribution.mapr601.test;
 
 import static org.junit.Assert.*;
 
@@ -32,24 +32,24 @@ import org.talend.hadoop.distribution.component.SparkComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
-import org.talend.hadoop.distribution.mapr600.MapR600Distribution;
+import org.talend.hadoop.distribution.mapr601.MapR601Distribution;
 
 /**
- * Test class for the {@link MapR600Distribution} distribution.
+ * Test class for the {@link MapR601Distribution} distribution.
  *
  */
-public class MapR600DistributionTest {
+public class MapR601DistributionTest {
 
     private final static String DEFAULT_YARN_APPLICATION_CLASSPATH = "/opt/mapr/spark/spark-2.1.0/jars/*:/opt/mapr/hadoop/hadoop-2.7.0/etc/hadoop:/opt/mapr/hadoop/hadoop-2.7.0/etc/hadoop:/opt/mapr/hadoop/hadoop-2.7.0/etc/hadoop:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/common/lib/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/common/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/hdfs:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/hdfs/lib/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/hdfs/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/yarn/lib/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/yarn/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/mapreduce/lib/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/mapreduce/*:/opt/mapr/hadoop/hadoop-2.7.0/contrib/capacity-scheduler/*.jar:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/yarn/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/yarn/lib/*"; //$NON-NLS-1$
 
     @Test
-    public void testMapR600Distribution() throws Exception {
-        HadoopComponent distribution = new MapR600Distribution();
+    public void testMapR601Distribution() throws Exception {
+        HadoopComponent distribution = new MapR601Distribution();
         assertNotNull(distribution.getDistributionName());
         assertNotNull(distribution.getVersionName(null));
         assertTrue(distribution.doSupportS3());
-        assertEquals(MapR600Distribution.DISTRIBUTION_NAME, distribution.getDistribution());
-        assertEquals(MapR600Distribution.VERSION, distribution.getVersion());
+        assertEquals(MapR601Distribution.DISTRIBUTION_NAME, distribution.getDistribution());
+        assertEquals(MapR601Distribution.VERSION, distribution.getVersion());
         assertEquals(EHadoopVersion.HADOOP_2, distribution.getHadoopVersion());
         assertTrue(distribution.doSupportKerberos());
         assertFalse(distribution.doSupportUseDatanodeHostname());
@@ -107,7 +107,7 @@ public class MapR600DistributionTest {
         assertTrue(((SparkStreamingComponent) distribution).doSupportBackpressure());
         assertTrue(distribution instanceof MapRStreamsComponent);
         assertTrue(((MapRStreamsComponent) distribution).canCreateMapRStream());
-        assertEquals(MapR600Distribution.MAPR_STREAMS_JAR_PATH, ((MapRStreamsComponent) distribution).getMapRStreamsJarPath());
+        assertEquals(MapR601Distribution.MAPR_STREAMS_JAR_PATH, ((MapRStreamsComponent) distribution).getMapRStreamsJarPath());
         assertEquals(SparkStreamingKafkaVersion.MAPR_600_KAFKA,
                 ((SparkStreamingComponent) distribution).getSparkStreamingKafkaVersion(ESparkVersion.SPARK_2_1));
         assertTrue(distribution.doSupportCreateServiceConnection());

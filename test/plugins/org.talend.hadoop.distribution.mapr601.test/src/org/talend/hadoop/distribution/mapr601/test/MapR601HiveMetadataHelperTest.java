@@ -10,21 +10,21 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.mapr600.test;
+package org.talend.hadoop.distribution.mapr601.test;
 
 import org.junit.Test;
 import org.talend.hadoop.distribution.component.HadoopComponent;
-import org.talend.hadoop.distribution.mapr600.MapR600Distribution;
+import org.talend.hadoop.distribution.mapr601.MapR601Distribution;
 import org.talend.hadoop.distribution.test.hive.AbstractVersionTest4HiveMetadataHelper;
 
 /**
  * DOC ggu class global comment. Detailled comment
  */
-public class MapR600HiveMetadataHelperTest extends AbstractVersionTest4HiveMetadataHelper {
+public class MapR601HiveMetadataHelperTest extends AbstractVersionTest4HiveMetadataHelper {
 
     @Override
     protected Class<? extends HadoopComponent> getHadoopComponentClass() {
-        return MapR600Distribution.class;
+        return MapR601Distribution.class;
     }
 
     @Test

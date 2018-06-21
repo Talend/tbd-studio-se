@@ -10,10 +10,9 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.mapr600.test.modulegroup;
+package org.talend.hadoop.distribution.mapr601.test.modulegroup;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,24 +20,19 @@ import java.util.Set;
 
 import org.junit.Test;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
-import org.talend.hadoop.distribution.mapr600.MapR600Constant;
-import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkStreamingS3NodeModuleGroup;
+import org.talend.hadoop.distribution.mapr601.MapR601Constant;
+import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601MRS3NodeModuleGroup;
 
-/**
- * created by pbailly on 16 Feb 2016 Detailled comment
- *
- */
-public class MapR600SparkStreamingS3NodeModuleGroupTest {
+public class MapR601MRS3NodeModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
         Map<String, String> results = new HashMap<String, String>();
 
-        results.put(MapR600Constant.SPARK_S3_MRREQUIRED_MODULE_GROUP.getModuleName(),
-                "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION=='MAPR') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION=='MAPR600')) "
-                        + "AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE=='false')");
+        results.put(MapR601Constant.SPARK_S3_MRREQUIRED_MODULE_GROUP.getModuleName(),
+                "((#LINK@NODE.MR_CONFIGURATION.DISTRIBUTION=='MAPR') AND (#LINK@NODE.MR_CONFIGURATION.MR_VERSION=='MAPR601'))");
 
-        Set<DistributionModuleGroup> moduleGroups = MapR600SparkStreamingS3NodeModuleGroup.getModuleGroups();
+        Set<DistributionModuleGroup> moduleGroups = MapR601MRS3NodeModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());
         moduleGroups.iterator();
         for (DistributionModuleGroup module : moduleGroups) {
@@ -54,4 +48,5 @@ public class MapR600SparkStreamingS3NodeModuleGroupTest {
             }
         }
     }
+
 }

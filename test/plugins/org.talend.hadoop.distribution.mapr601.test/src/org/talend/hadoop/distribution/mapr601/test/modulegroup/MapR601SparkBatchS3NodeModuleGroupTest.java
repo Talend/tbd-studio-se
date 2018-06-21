@@ -10,9 +10,10 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.mapr600.test.modulegroup;
+package org.talend.hadoop.distribution.mapr601.test.modulegroup;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,19 +21,20 @@ import java.util.Set;
 
 import org.junit.Test;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
-import org.talend.hadoop.distribution.mapr600.MapR600Constant;
-import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600MRS3NodeModuleGroup;
+import org.talend.hadoop.distribution.mapr601.MapR601Constant;
+import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SparkBatchS3NodeModuleGroup;
 
-public class MapR600MRS3NodeModuleGroupTest {
+public class MapR601SparkBatchS3NodeModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
         Map<String, String> results = new HashMap<String, String>();
 
-        results.put(MapR600Constant.SPARK_S3_MRREQUIRED_MODULE_GROUP.getModuleName(),
-                "((#LINK@NODE.MR_CONFIGURATION.DISTRIBUTION=='MAPR') AND (#LINK@NODE.MR_CONFIGURATION.MR_VERSION=='MAPR600'))");
+        results.put(MapR601Constant.SPARK_S3_MRREQUIRED_MODULE_GROUP.getModuleName(),
+                "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION=='MAPR') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION=='MAPR601')) "
+                        + "AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE=='false')");
 
-        Set<DistributionModuleGroup> moduleGroups = MapR600MRS3NodeModuleGroup.getModuleGroups();
+        Set<DistributionModuleGroup> moduleGroups = MapR601SparkBatchS3NodeModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());
         moduleGroups.iterator();
         for (DistributionModuleGroup module : moduleGroups) {
@@ -48,5 +50,4 @@ public class MapR600MRS3NodeModuleGroupTest {
             }
         }
     }
-
 }

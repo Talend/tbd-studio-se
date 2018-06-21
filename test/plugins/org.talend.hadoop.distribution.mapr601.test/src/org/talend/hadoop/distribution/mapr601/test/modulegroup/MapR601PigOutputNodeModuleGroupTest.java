@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.mapr600.test.modulegroup;
+package org.talend.hadoop.distribution.mapr601.test.modulegroup;
 
 import static org.junit.Assert.*;
 
@@ -20,30 +20,22 @@ import java.util.Set;
 
 import org.junit.Test;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
-import org.talend.hadoop.distribution.mapr600.MapR600Constant;
-import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600PigModuleGroup;
+import org.talend.hadoop.distribution.mapr601.MapR601Constant;
+import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601PigOutputNodeModuleGroup;
 
-public class MapR600PigModuleGroupTest {
+public class MapR601PigOutputNodeModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
         Map<String, String> results = new HashMap<String, String>();
+        results.put(MapR601Constant.PIG_PARQUET_MODULE_GROUP.getModuleName(),
+                "(#LINK@NODE.ASSOCIATED_PIG_LOAD.DISTRIBUTION=='MAPR') AND (#LINK@NODE.ASSOCIATED_PIG_LOAD.PIG_VERSION=='MAPR601')");
+        results.put(MapR601Constant.SPARK_S3_MRREQUIRED_MODULE_GROUP.getModuleName(),
+                "(#LINK@NODE.ASSOCIATED_PIG_LOAD.DISTRIBUTION=='MAPR') AND (#LINK@NODE.ASSOCIATED_PIG_LOAD.PIG_VERSION=='MAPR601') "
+                        + "AND (S3_LOCATION=='true') AND (STORE!='HCATSTORER') AND (STORE!='HBASESTORAGE')");
 
-        results.put(MapR600Constant.PIG_MODULE_GROUP.getModuleName(), null);
-        results.put(MapR600Constant.HDFS_MODULE_GROUP.getModuleName(), null);
-        results.put(MapR600Constant.MAPREDUCE_MODULE_GROUP.getModuleName(), null);
-        results.put(MapR600Constant.PIG_HCATALOG_MODULE_GROUP.getModuleName(), "(LOAD=='HCATLOADER')");
-        results.put(MapR600Constant.HBASE_MODULE_GROUP.getModuleName(), "(LOAD=='HBASESTORAGE')");
-        results.put(MapR600Constant.PIG_HBASE_MODULE_GROUP.getModuleName(), "(LOAD=='HBASESTORAGE')");
-        results.put(MapR600Constant.PIG_PARQUET_MODULE_GROUP.getModuleName(), "(LOAD=='PARQUETLOADER')");
-        results.put(MapR600Constant.PIG_AVRO_MODULE_GROUP.getModuleName(), "(LOAD=='AVROSTORAGE')");
-        results.put(MapR600Constant.PIG_RCFILE_MODULE_GROUP.getModuleName(), "(LOAD=='RCFILEPIGSTORAGE')");
-        results.put(MapR600Constant.PIG_SEQUENCEFILE_MODULE_GROUP.getModuleName(), "(LOAD=='SEQUENCEFILELOADER')");
-        results.put(MapR600Constant.SPARK_S3_MRREQUIRED_MODULE_GROUP.getModuleName(), "(S3_LOCATION_LOAD=='true')");
-
-        Set<DistributionModuleGroup> moduleGroups = MapR600PigModuleGroup.getModuleGroups();
+        Set<DistributionModuleGroup> moduleGroups = MapR601PigOutputNodeModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());
-
         moduleGroups.iterator();
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName()));
