@@ -76,9 +76,9 @@ import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SparkStreamingM
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SqoopModuleGroup;
 
-public class MapR601Distribution extends AbstractMapRDistribution implements HDFSComponent, MRComponent, MapROJAIComponent,
-        SqoopComponent, PigComponent, HiveComponent, HCatalogComponent, SparkBatchComponent, SparkStreamingComponent,
-        HiveOnSparkComponent, ImpalaComponent, MapRStreamsComponent, MapRDBComponent, IMapRDistribution {
+public class MapR601Distribution extends AbstractMapRDistribution implements HDFSComponent, /*MRComponent,*/ MapROJAIComponent,
+        SqoopComponent, /*PigComponent, HiveComponent, HCatalogComponent,*/ SparkBatchComponent, /*SparkStreamingComponent,*/
+        HiveOnSparkComponent, /*ImpalaComponent,*/ MapRStreamsComponent, MapRDBComponent, IMapRDistribution {
 
     public final static String VERSION = "MAPR601"; //$NON-NLS-1$
 
