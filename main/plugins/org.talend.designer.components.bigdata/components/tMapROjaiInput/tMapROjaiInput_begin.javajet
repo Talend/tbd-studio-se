@@ -208,6 +208,7 @@ imports="
 				
 				String typeToGenerate = JavaTypesManager.getTypeToGenerate(column.getTalendType(), column.isNullable());
 				JavaType javaType = JavaTypesManager.getJavaTypeFromId(column.getTalendType());
+		        System.out.println("================<[" + column.getOriginalDbColumnName() + "] typeToGenerate: " + typeToGenerate + ", javaType: " + javaType);
 				String patternValue = column.getPattern() == null || column.getPattern().trim().length() == 0 ? null : column.getPattern();
 %>
 
@@ -269,6 +270,15 @@ imports="
 %>
 
            	<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.getByte();
+<%
+                   } else if ("Document".equals(javaType.getLabel())){
+%>
+
+			org.json.JSONObject jsonObj = new org.json.JSONObject(valueObj_<%=cid%>.asJsonString());
+			String xml = org.json.XML.toString(jsonObj);
+			org.dom4j.Document doc = org.dom4j.DocumentHelper.parseText(xml);
+			<%=firstConnName %>.<%=column.getLabel() %> = JavaTypesManager.getDefaultValueFromJavaType(javaType);
+           	<%=firstConnName %>.<%=column.getLabel() %>.setDocument(doc);
             
 <%
                    } else {
