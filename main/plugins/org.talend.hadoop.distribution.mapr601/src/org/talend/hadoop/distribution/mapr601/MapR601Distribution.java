@@ -295,7 +295,7 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
         return false;
     }
 
-    @Override
+    /*@Override
     public boolean doSupportHCatalog() {
         return true;
     }
@@ -308,7 +308,7 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
     @Override
     public boolean doSupportHBase() {
         return true;
-    }
+    }*/
 
     @Override
     public boolean doSupportEmbeddedMode() {
@@ -320,7 +320,7 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
         return true;
     }
 
-    @Override
+    /*@Override
     public boolean doSupportHive1() {
         return false;
     }
@@ -348,14 +348,14 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
     @Override
     public boolean doSupportORCFormat() {
         return true;
-    }
+    }*/
 
     @Override
     public boolean doSupportOldImportMode() {
         return false;
     };
 
-    @Override
+    /*@Override
     public boolean doSupportAvroFormat() {
         return true;
     }
@@ -363,7 +363,7 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
     @Override
     public boolean doSupportParquetFormat() {
         return true;
-    }
+    }*/
 
     @Override
     public Set<ESparkVersion> getSparkVersions() {
@@ -382,20 +382,20 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
         return false;
     }
 
-    @Override
+    /*@Override
     public boolean doSupportStoreAsParquet() {
         return false;
-    }
+    }*/
 
     @Override
     public boolean doSupportMapRDB() {
         return true;
     }
 
-    @Override
+    /*@Override
     public boolean doSupportCheckpointing() {
         return true;
-    }
+    }*/
 
     @Override
     public boolean doSupportSparkStandaloneMode() {
@@ -407,10 +407,10 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
         return true;
     }
 
-    @Override
+    /*@Override
     public boolean doSupportBackpressure() {
         return true;
-    }
+    }*/
 
     @Override
     public boolean doSupportS3() {
