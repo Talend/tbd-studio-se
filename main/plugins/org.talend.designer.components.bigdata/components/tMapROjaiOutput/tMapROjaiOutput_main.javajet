@@ -120,8 +120,12 @@ imports="
 	                           System.out.println("============>2, doc_<%=cid%>=" + doc_<%=cid%> + ", path_<%=cid%>=" + path_<%=cid%> + ",rowData=" + "<%=rowData%>"); 
 	
 	                            if (<%=conn.getName() %>.<%=column.getLabel() %> != null) {
-	                           	System.out.println("============>2.5"); 
+	                           		System.out.println("============>2.5"); 
+	                           		System.out.println("============>doc_cid=" + doc_<%=cid%>);
+	                           		System.out.println("============>path_cid=" + path_<%=cid%>);
+	                           		System.out.println("============>rowData=" + <%=rowData%>);
                                     doc_<%=cid%>.set(path_<%=cid%>,<%=rowData%>);
+	                           	System.out.println("============>2.6"); 
 	                            }
 	                           System.out.println("============>3"); 
                                 <%
