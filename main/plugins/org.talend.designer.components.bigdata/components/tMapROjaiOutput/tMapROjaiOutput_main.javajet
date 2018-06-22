@@ -83,8 +83,8 @@ imports="
 				int sizeColumns = columnList.size();
 
 				// Create the org.ojai.Document
-				System.out.println("=======>creating ojai document======= sizeColumns=" + sizeColumns);
 				%>
+                System.out.println("============>0"); 
 				org.ojai.Document doc_<%=cid%> = com.mapr.db.MapRDB.newDocument();
 				String key = null;
 				<%
@@ -115,12 +115,15 @@ imports="
 				            }
 					        
 	                            %>
-	                            
+	                           System.out.println("============>1"); 
 	                           path_<%=cid%> = pathMap_<%=cid%>.get("<%=column.getOriginalDbColumnName()%>");
+	                           System.out.println("============>2, doc_<%=cid%>=" + doc_<%=cid%> + ", path_<%=cid%>=" + path_<%=cid%> + ",rowData=" + "<%=rowData%>"); 
 	
 	                            if (<%=conn.getName() %>.<%=column.getLabel() %> != null) {
+	                           	System.out.println("============>2.5"); 
                                     doc_<%=cid%>.set(path_<%=cid%>,<%=rowData%>);
 	                            }
+	                           System.out.println("============>3"); 
                                 <%
                      }
                 }
