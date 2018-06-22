@@ -175,7 +175,6 @@ public interface HadoopComponent {
 
     /**
     *
-<<<<<<< HEAD
     * @return true if the distribution is a databricks cloud distribution
     */
    public boolean isDatabricksDistribution();
