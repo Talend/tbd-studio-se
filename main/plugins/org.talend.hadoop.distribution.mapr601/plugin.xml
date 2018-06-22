@@ -274,9 +274,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1"
-            id="piggybank-mapr-1803.jar"
-            name="piggybank-mapr-1803.jar"
-            mvn_uri="mvn:org.talend.libraries/piggybank-mapr-1803/6.0.0">
+            id="piggybank.jar"
+            name="piggybank.jar"
+            mvn_uri="mvn:org.talend.libraries/piggybank/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
@@ -288,9 +288,9 @@
             
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1"
-            id="pig-core-h2-mapr-1803.jar"
-            name="pig-core-h2-mapr-1803.jar"
-            mvn_uri="mvn:org.talend.libraries/pig-core-h2-mapr-1803/6.0.0">
+            id="pig-core-h2.jar"
+            name="pig-core-h2.jar"
+            mvn_uri="mvn:org.talend.libraries/pig-core-h2/6.0.0">
         </libraryNeeded>
 
         <libraryNeeded
@@ -1141,7 +1141,7 @@
             <library id="hive-exec-2.1.1-mapr-1803.jar"/> <!-- was hive-exec-1.2.0-mapr-1710.jar-->
             <library id="hive-metastore-2.1.1-mapr-1803.jar"/>
             <library id="flexjson-2.1.jar"/>
-            <library id="pig-core-h2-mapr-1803.jar"/>
+            <library id="pig-core-h2.jar"/>
             <library id="automaton-1.11-8.jar"/>
         </libraryNeededGroup>
         
@@ -1196,7 +1196,7 @@
                 name="PIG-AVRO-LIB-MAPR601">
             <library id="avro-1.7.7.jar" />
             <library id="commons-io-2.3.jar"/>
-            <library id="piggybank-mapr-1803.jar"/>
+            <library id="piggybank.jar"/>
         </libraryNeededGroup>
         
         <!-- Pig RCFile group -->
