@@ -97,17 +97,11 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
 
         moduleGroups = new HashMap<>();
         moduleGroups.put(ComponentType.HDFS, MapR601HDFSModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.MAPREDUCE, MapR601MapReduceModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HBASE, MapR601HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVE, MapR601HiveModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIG, MapR601PigModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.PIGOUTPUT, MapR601PigOutputModuleGroup.getModuleGroups());
 
-        moduleGroups.put(ComponentType.HCATALOG, MapR601HCatalogModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.SQOOP, MapR601SqoopModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.IMPALA, MapR601ImpalaModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SPARKBATCH, MapR601SparkBatchModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.SPARKSTREAMING, MapR601SparkStreamingModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVEONSPARK, MapR601HiveOnSparkModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPRSTREAMS, MapR601MapRStreamsModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPRDB, MapR601HBaseModuleGroup.getModuleGroups());
