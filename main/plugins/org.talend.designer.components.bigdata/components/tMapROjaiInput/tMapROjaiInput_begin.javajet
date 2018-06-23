@@ -275,7 +275,7 @@ imports="
 %>
 
 			org.json.JSONObject jsonObj = new org.json.JSONObject(valueObj_<%=cid%>.asJsonString());
-			String xml = org.json.XML.toString(jsonObj);
+			String xml = "<xml>" + org.json.XML.toString(jsonObj) + "</xml>";
 			org.dom4j.Document doc = org.dom4j.DocumentHelper.parseText(xml);
 			//===================================
 			<%=firstConnName %>.<%=column.getLabel() %> = new routines.system.Document();

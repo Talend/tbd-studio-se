@@ -100,13 +100,12 @@ imports="
 					        }else if ("BigDecimal".equals(typeToGenerate)){
 					            rowData = conn.getName()+"."+column.getLabel()+".toString()";
 					        }else if ("Document".equals(typeToGenerate)){
-					        	rowData = "com.mapr.db.MapRDB.newDocument(org.json.XML.toJSONObject(" + conn.getName()+"."+column.getLabel()+".getDocument().asXML()))";
+					        	rowData = "com.mapr.db.MapRDB.newDocument(org.json.XML.toJSONObject(\"<xml>\" + " + conn.getName()+"."+column.getLabel()+".getDocument().asXML() + \"</xml>\"))";
 					        }
 					        else{
 					            rowData = conn.getName()+"."+column.getLabel();
 					        }
 					        
-					        System.out.println("================>[" + column.getOriginalDbColumnName() + "] typeToGenerate: " + typeToGenerate + ", rowData: " + rowData);
 					        String schemaData = null;
 				            if("".equals(pathMap.get(column.getLabel()))){
 				                schemaData=column.getOriginalDbColumnName();
@@ -115,15 +114,9 @@ imports="
 				            }
 					        
 	                            %>
-	                           System.out.println("============>1"); 
 	                           path_<%=cid%> = pathMap_<%=cid%>.get("<%=column.getOriginalDbColumnName()%>");
-	                           System.out.println("============>2, doc_<%=cid%>=" + doc_<%=cid%> + ", path_<%=cid%>=" + path_<%=cid%> + ",rowData=" + "<%=rowData%>"); 
 	
 	                            if (<%=conn.getName() %>.<%=column.getLabel() %> != null) {
-	                           		System.out.println("============>2.5"); 
-	                           		System.out.println("============>doc_cid=" + doc_<%=cid%>);
-	                           		System.out.println("============>path_cid=" + path_<%=cid%>);
-	                           		System.out.println("============>rowData=" + <%=rowData%>);
                                     doc_<%=cid%>.set(path_<%=cid%>,<%=rowData%>);
 	                           	System.out.println("============>2.6"); 
 	                            }
