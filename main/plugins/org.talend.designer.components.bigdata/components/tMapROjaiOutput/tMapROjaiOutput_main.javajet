@@ -149,8 +149,8 @@ imports="
 				table_<%=cid%>.flush();
 		<%}else{%>
 		
-	     	    out_<%=cid%>.write(doc_<%=cid%>.toString());
-	        	bulkCount_<%=cid%>++;
+	            out_<%=cid%>.write(doc_<%=cid%>.toString());
+	            bulkCount_<%=cid%>++;
 		     
 		     if(bulkCount_<%=cid%>>=bulkWriteSize_<%=cid%>){
 		         out_<%=cid%>.close();
