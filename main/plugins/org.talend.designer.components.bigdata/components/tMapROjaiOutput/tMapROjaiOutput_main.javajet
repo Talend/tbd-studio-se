@@ -81,10 +81,7 @@ imports="
 				columnList = metadata.getListColumns();
 				incomingConnName = conn.getName();
 				int sizeColumns = columnList.size();
-
-				// Create the org.ojai.Document
 				%>
-                System.out.println("============>0"); 
 				org.ojai.Document doc_<%=cid%> = com.mapr.db.MapRDB.newDocument();
 				String key = null;
 				<%
@@ -100,7 +97,7 @@ imports="
 					        }else if ("BigDecimal".equals(typeToGenerate)){
 					            rowData = conn.getName()+"."+column.getLabel()+".toString()";
 					        }else if ("Document".equals(typeToGenerate)){
-					        	rowData = "com.mapr.db.MapRDB.newDocument(org.json.XML.toJSONObject(\"<xml>\" + " + conn.getName()+"."+column.getLabel()+".getDocument().asXML() + \"</xml>\"))";
+					        	rowData = "com.mapr.db.MapRDB.newDocument(org.json.XML.toJSONObject(" + conn.getName()+"."+column.getLabel()+".getDocument().asXML()).getJSONObject(\"xml\").toString())";
 					        }
 					        else{
 					            rowData = conn.getName()+"."+column.getLabel();
@@ -118,9 +115,7 @@ imports="
 	
 	                            if (<%=conn.getName() %>.<%=column.getLabel() %> != null) {
                                     doc_<%=cid%>.set(path_<%=cid%>,<%=rowData%>);
-	                           	System.out.println("============>2.6"); 
 	                            }
-	                           System.out.println("============>3"); 
                                 <%
                      }
                 }
@@ -151,9 +146,8 @@ imports="
                 %>
 				table_<%=cid%>.flush();
 		<%}else{%>
-		
-		         out_<%=cid%>.write(doc_<%=cid%>.toString());
-		         bulkCount_<%=cid%>++;
+	         out_<%=cid%>.write(doc_<%=cid%>.toString());
+	         bulkCount_<%=cid%>++;
 		     
 		     if(bulkCount_<%=cid%>>=bulkWriteSize_<%=cid%>){
 		         out_<%=cid%>.close();
