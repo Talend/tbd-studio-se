@@ -76,9 +76,8 @@ import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SparkStreamingM
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SqoopModuleGroup;
 
-public class MapR601Distribution extends AbstractMapRDistribution implements HDFSComponent, /*MRComponent,*/ MapROJAIComponent,
-        SqoopComponent, /*PigComponent, HiveComponent, HCatalogComponent,*/ SparkBatchComponent, /*SparkStreamingComponent,*/
-        HiveOnSparkComponent, /*ImpalaComponent,*/ MapRStreamsComponent, MapRDBComponent, IMapRDistribution {
+public class MapR601Distribution extends AbstractMapRDistribution implements HDFSComponent, MapROJAIComponent,
+        SparkBatchComponent, HiveOnSparkComponent, MapRStreamsComponent, MapRDBComponent, IMapRDistribution {
 
     public final static String VERSION = "MAPR601"; //$NON-NLS-1$
 
@@ -98,17 +97,11 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
 
         moduleGroups = new HashMap<>();
         moduleGroups.put(ComponentType.HDFS, MapR601HDFSModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.MAPREDUCE, MapR601MapReduceModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HBASE, MapR601HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVE, MapR601HiveModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIG, MapR601PigModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.PIGOUTPUT, MapR601PigOutputModuleGroup.getModuleGroups());
 
-        moduleGroups.put(ComponentType.HCATALOG, MapR601HCatalogModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.SQOOP, MapR601SqoopModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.IMPALA, MapR601ImpalaModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SPARKBATCH, MapR601SparkBatchModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.SPARKSTREAMING, MapR601SparkStreamingModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVEONSPARK, MapR601HiveOnSparkModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPRSTREAMS, MapR601MapRStreamsModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPRDB, MapR601HBaseModuleGroup.getModuleGroups());
@@ -291,26 +284,6 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
     }
 
     @Override
-    public boolean doJavaAPISupportStorePasswordInFile() {
-        return false;
-    }
-
-    /*@Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return true;
-    }*/
-
-    @Override
     public boolean doSupportEmbeddedMode() {
         return false;
     }
@@ -320,50 +293,10 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
         return true;
     }
 
-    /*@Override
-    public boolean doSupportHive1() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHive2() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportTezForHive() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHBaseForHive() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportSSL() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportORCFormat() {
-        return true;
-    }*/
-
     @Override
     public boolean doSupportOldImportMode() {
         return false;
     };
-
-    /*@Override
-    public boolean doSupportAvroFormat() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportParquetFormat() {
-        return true;
-    }*/
 
     @Override
     public Set<ESparkVersion> getSparkVersions() {
@@ -382,20 +315,10 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
         return false;
     }
 
-    /*@Override
-    public boolean doSupportStoreAsParquet() {
-        return false;
-    }*/
-
     @Override
     public boolean doSupportMapRDB() {
         return true;
     }
-
-    /*@Override
-    public boolean doSupportCheckpointing() {
-        return true;
-    }*/
 
     @Override
     public boolean doSupportSparkStandaloneMode() {
@@ -406,11 +329,6 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
     public boolean doSupportSparkYarnClientMode() {
         return true;
     }
-
-    /*@Override
-    public boolean doSupportBackpressure() {
-        return true;
-    }*/
 
     @Override
     public boolean doSupportS3() {
