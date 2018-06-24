@@ -6,7 +6,7 @@
             context="plugin:org.talend.hadoop.distribution.mapr.6.0.1"
             id="mapr-streams-6.0.1-mapr.jar"
             name="mapr-streams-6.0.1-mapr.jar"
-            mvn_uri="mvn:org.talend.libraries/mapr-streams-6.0.1-mapr/6.0.0"/>
+            mvn_uri="mvn:com.mapr.streams/mapr-streams-6.0.1-mapr/6.0.0"/>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1"
             id="datanucleus-api-jdo-4.2.4.jar"
