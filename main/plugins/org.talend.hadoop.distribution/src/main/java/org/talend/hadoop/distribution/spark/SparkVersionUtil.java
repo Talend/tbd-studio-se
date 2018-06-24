@@ -55,8 +55,8 @@ public class SparkVersionUtil {
         if ("SPARK_220".equals(apiVersion)) { //$NON-NLS-1$
             return ESparkVersion.SPARK_2_2;
         }
-        if ("SPARK_221".equals(apiVersion)) { //$NON-NLS-1$
-            return ESparkVersion.SPARK_2_2_1;
+        if ("SPARK_230".equals(apiVersion)) { //$NON-NLS-1$
+            return ESparkVersion.SPARK_2_3;
         }
         return null;
     }
@@ -83,8 +83,8 @@ public class SparkVersionUtil {
         if ("SPARK_2_2_0".equals(version)) { //$NON-NLS-1$
             return ESparkVersion.SPARK_2_2;
         }
-        if ("SPARK_2_2_1".equals(version)) { //$NON-NLS-1$
-            return ESparkVersion.SPARK_2_2_1;
+        if ("SPARK_2_3_0".equals(version)) { //$NON-NLS-1$
+            return ESparkVersion.SPARK_2_3;
         }
         return null;
     }
