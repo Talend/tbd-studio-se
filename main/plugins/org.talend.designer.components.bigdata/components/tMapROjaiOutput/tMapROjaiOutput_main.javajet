@@ -81,6 +81,8 @@ imports="
 				columnList = metadata.getListColumns();
 				incomingConnName = conn.getName();
 				int sizeColumns = columnList.size();
+				
+				// Create the BasicDBObject
 				%>
 				org.ojai.Document doc_<%=cid%> = com.mapr.db.MapRDB.newDocument();
 				String key = null;
@@ -146,8 +148,9 @@ imports="
                 %>
 				table_<%=cid%>.flush();
 		<%}else{%>
-	         out_<%=cid%>.write(doc_<%=cid%>.toString());
-	         bulkCount_<%=cid%>++;
+		
+	     	    out_<%=cid%>.write(doc_<%=cid%>.toString());
+	        	bulkCount_<%=cid%>++;
 		     
 		     if(bulkCount_<%=cid%>>=bulkWriteSize_<%=cid%>){
 		         out_<%=cid%>.close();
