@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Hadoop distribution
 Bundle-SymbolicName: org.talend.hadoop.distribution;singleton:=true
-Bundle-Version: 7.1.0.qualifier
+Bundle-Version: 7.1.1.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.eclipse.core.runtime,
  org.apache.commons.collections,
@@ -30,6 +30,7 @@ Export-Package: org.talend.hadoop.distribution,
  org.talend.hadoop.distribution.constants.hdp,
  org.talend.hadoop.distribution.constants.mapr,
  org.talend.hadoop.distribution.constants.piv,
+ org.talend.hadoop.distribution.constants.qubole,
  org.talend.hadoop.distribution.dynamic,
  org.talend.hadoop.distribution.dynamic.adapter,
  org.talend.hadoop.distribution.dynamic.bean,

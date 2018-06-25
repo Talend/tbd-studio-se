@@ -24,9 +24,18 @@
 
 	String previous_node="";
 	String start_node="";
-	boolean isExecutedThroughWebHCat = false;
-
 	String previousOutputConnectionName = "";
+
+	boolean isExecutedThroughWebHCat = false;
+	boolean isQuboleDistribution = false;
+	boolean isCloudDistribution = false;
+	String quboleClusterLabel = "";
+	
+	boolean isQuboleS3Resource = false;
+	String quboleS3ResourceAccessKey = new String();
+	String quboleS3ResourceSecretKey = new String();
+	String quboleS3ResourceBucketName = new String();
+	String quboleS3ResourceBucketKey = new String();
 	
 	if(node.getIncomingConnections()!=null && node.getIncomingConnections().size()>0) {
 		IConnection connection = node.getIncomingConnections().get(0);
@@ -47,7 +56,19 @@
     			return "";
     		}
     
-    		isExecutedThroughWebHCat = loadPigDistrib != null && loadPigDistrib.isExecutedThroughWebHCat();
+    		isExecutedThroughWebHCat = !isLocal && loadPigDistrib != null && loadPigDistrib.isExecutedThroughWebHCat();
+			isQuboleDistribution = !isLocal && loadPigDistrib != null && loadPigDistrib.isQuboleDistribution();
+			isCloudDistribution = !isLocal && loadPigDistrib != null && loadPigDistrib.isCloudDistribution();
+			if (isQuboleDistribution && ElementParameterParser.getBooleanValue(loadNode, "__QUBOLE_CLUSTER__")) {
+				quboleClusterLabel = ElementParameterParser.getValue(loadNode, "__QUBOLE_CLUSTER_LABEL__");
+			}
+			isQuboleS3Resource = ElementParameterParser.getBooleanValue(loadNode, "__QUBOLE_S3__");
+			if (isQuboleDistribution && isQuboleS3Resource) {
+				quboleS3ResourceAccessKey = ElementParameterParser.getValue(loadNode, "__QUBOLE_S3_ACCESS_KEY__");
+				quboleS3ResourceSecretKey = ElementParameterParser.getPasswordValue(loadNode, "__QUBOLE_S3_SECRET_KEY__");
+				quboleS3ResourceBucketName = ElementParameterParser.getValue(loadNode, "__QUBOLE_S3_BUCKET_NAME__");
+				quboleS3ResourceBucketKey = ElementParameterParser.getValue(loadNode, "__QUBOLE_S3_BUCKET_KEY__");
+			}
     	}
     	
 		previousOutputConnectionName = connection.getName();
@@ -174,7 +195,7 @@
 		}
 		
 		if(generateRegisterJarCodeForParquetFile) {
-			jarsToRegister.add("parquet-pig-bundle");
+			jarsToRegister.add("parquet-pig");
 			jarsToRegister.add("snappy-java");
 		}
 		
@@ -306,13 +327,15 @@
 	            pigServer_<%=start_node%>.deleteFile("s3n://" + <%=s3username%> + ":" + decryptedS3Password_<%=cid%> + "@" + <%=s3bucket%>);
 	        }
 <%
-		} else if(!isExecutedThroughWebHCat) {
+		}
+		if (!isCloudDistribution) {
 %>
     		if (pigServer_<%=start_node%>.existsFile(<%=resultFile%>)) {
     			pigServer_<%=start_node%>.deleteFile(<%=resultFile%>);
         	}
 <%
-		} else {
+		}
+		if (isExecutedThroughWebHCat) {
 %>
 
 			org.talend.bigdata.launcher.fs.FileSystem azureFs_<%=cid%> = (org.talend.bigdata.launcher.fs.AzureFileSystem)instance_<%=start_node%>.getFileSystem();
@@ -321,12 +344,31 @@
 			azureFs_<%=cid%>.delete(org.talend.bigdata.launcher.utils.Utils.removeFirstSlash(resultFolder_<%=cid%>));
 <%
 		}
+		if (isQuboleDistribution) {
+		%>
+			<% if(isLog4jEnabled) {%>
+				log.info("<%=cid%> - deleting " + <%=resultFile%> + " on hdfs.");
+			<%}
+			if ("".equals(quboleClusterLabel)) {%>
+			quboleJob_<%=start_node%>.execShell("hadoop fs -rm -r -f " + <%=resultFile%>);
+			<%
+			} else {
+			%>
+			quboleJob_<%=start_node%>.execShell("hadoop fs -rm -r -f " + <%=resultFile%>, <%=quboleClusterLabel%>);
+			<%
+			}
+			if(isLog4jEnabled) {%>
+				log.info("<%=cid%> - " + <%=resultFile%> + " deleted.");
+			<%}%>
+		<%
+		}
 	} 
 %>
 	
 	routines.system.PigHelper helper_<%=cid%> = new routines.system.PigHelper();
 	
 	StringBuilder sb_<%=cid%> = new StringBuilder();
+	java.util.regex.Pattern jarPattern_<%=cid%> = java.util.regex.Pattern.compile(".*\\.jar");
 <%	
 	if(generateRegisterJarCodeForAll) {
 		for(int i=0; i<jarsToRegister.size(); i++) {
@@ -334,9 +376,10 @@
 			for(int j=0; j<jars.size(); j++) {
 				if(jars.get(j).contains(jarToRegister)) {
 %>
-					helper_<%=cid%>.add("jar",getJarsToRegister_<%=cid %>.replaceJarPaths("<%=jars.get(j)%>"));
+					if (jarPattern_<%=cid%>.matcher(getJarsToRegister_<%=cid %>.replaceJarPaths("<%=jars.get(j)%>")).matches()) {
+						helper_<%=cid%>.add("jar", getJarsToRegister_<%=cid %>.replaceJarPaths("<%=jars.get(j)%>"));
+					}
 <%
-
 				}
 			}
 		}
@@ -347,7 +390,7 @@
 			if(defineJarsToRegister && registerJarForHCatalog.size() > 0){
 				for(Map<String, String> item : registerJarForHCatalog){
 %>
-					helper_<%=cid%>.add("jar",<%=item.get("JAR_PATH") %>);
+					helper_<%=cid%>.add("jar", <%=item.get("JAR_PATH") %>);
 <% 
 				} 
 			}
@@ -639,7 +682,7 @@
 	<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/Pig/RegisterPigLatin.javajet"%>
 	
 <%
-	if(NodeUtil.isSubTreeEnd(node) && !isExecutedThroughWebHCat) {
+	if(NodeUtil.isSubTreeEnd(node) && !isCloudDistribution) {
 %>
 	pigServer_<%=start_node%>.executeBatch();
 	String currentClientPathSeparator_<%=cid%> = (String)globalMap.get("current_client_path_separator");

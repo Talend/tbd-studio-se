@@ -15,6 +15,7 @@ package org.talend.repository.nosql.ui.dnd;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.core.GlobalServiceRegister;
@@ -47,7 +48,7 @@ public class NoSQLDragAndDropHandler extends AbstractNoSQLDragAndDropHandler {
     }
 
     @Override
-    public Object getComponentValue(Connection connection, String value, IMetadataTable table, String targetComponent) {
+    public Object getComponentValue(Connection connection, String value, IMetadataTable table, String targetComponent, Map<Object, Object> contextMap) {
         if (value != null && canHandle(connection)) {
             return getNoSQLRepositoryValue((NoSQLConnection) connection, value, table, targetComponent);
         }

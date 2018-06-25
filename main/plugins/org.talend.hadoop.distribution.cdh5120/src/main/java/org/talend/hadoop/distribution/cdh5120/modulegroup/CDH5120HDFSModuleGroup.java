@@ -19,7 +19,7 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.cdh5120.CDH5120Constant;
 
 public class CDH5120HDFSModuleGroup {
-
+    
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         DistributionModuleGroup dmg = new DistributionModuleGroup(CDH5120Constant.HDFS_MODULE_GROUP.getModuleName());

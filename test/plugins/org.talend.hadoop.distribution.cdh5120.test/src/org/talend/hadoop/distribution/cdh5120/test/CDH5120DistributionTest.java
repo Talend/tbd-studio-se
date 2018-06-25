@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.cdh5120.test;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.cdh5120.CDH5120Distribution;
@@ -103,5 +104,8 @@ public class CDH5120DistributionTest {
         assertTrue(distribution instanceof ImpalaComponent);
 
         assertTrue(distribution.doSupportHDFSEncryption());
+        AbstractDistribution cdh5121Distrib = (CDH5120Distribution) distribution;
+        assertTrue(cdh5121Distrib.doSupportAzureDataLakeStorage());
+        assertTrue(cdh5121Distrib.doSupportWebHDFS());
     }
 }

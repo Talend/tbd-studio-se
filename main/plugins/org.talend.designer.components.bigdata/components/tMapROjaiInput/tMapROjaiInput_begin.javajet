@@ -1,0 +1,302 @@
+<%@ jet 
+imports="
+		java.util.List
+		java.util.Map
+		org.talend.core.model.process.ElementParameterParser	
+		org.talend.core.model.process.INode
+		org.talend.core.model.metadata.IMetadataTable 
+		org.talend.core.model.metadata.IMetadataColumn 
+		org.talend.designer.codegen.config.CodeGeneratorArgument
+		org.talend.core.model.process.IConnection
+		org.talend.core.model.process.IConnectionCategory
+		org.talend.core.model.metadata.types.JavaTypesManager
+		org.talend.core.model.metadata.types.JavaType
+		"
+%>
+
+	<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Log4j/Log4jFileUtil.javajet"%>
+	
+<%
+	CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+	INode node = (INode)codeGenArgument.getArgument();
+	String cid = node.getUniqueName();
+	boolean restrictPartialSorts = "true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__RESTRICT_PARTIAL_SORTS__"));
+	String dbVersion = ElementParameterParser.getValue(node, "__DB_VERSION__");
+	String table = ElementParameterParser.getValue(node, "__TABLE__");
+    boolean useKrb = "true".equals(ElementParameterParser.getValue(node, "__USE_KRB__"));
+	boolean useKeytab = "true".equals(ElementParameterParser.getValue(node, "__USE_KEYTAB__"));
+	String userPrincipal = ElementParameterParser.getValue(node, "__PRINCIPAL__");
+	String keytabPath = ElementParameterParser.getValue(node, "__KEYTAB_PATH__");
+  	List<? extends IConnection> outputs = node.getOutgoingSortedConnections();
+	IConnection outConn = null;
+	IMetadataTable metadata = null;
+  	String firstConnName = "";
+	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+
+	if(outputs!=null && outputs.size()> 0) {
+		outConn = outputs.get(0);
+
+		if(outConn!=null && outConn.getLineStyle().hasConnectionCategory(IConnectionCategory.DATA)){
+			firstConnName = outConn.getName();
+			metadata = outConn.getMetadataTable();
+		}
+	}
+
+  	List<IMetadataColumn> columnList = metadata.getListColumns();
+  	Map<String, IMetadataColumn> columnMap = new java.util.HashMap<String, IMetadataColumn>();
+  	
+  	for  (IMetadataColumn column : columnList) {
+  	    columnMap.put(column.getLabel(), column);
+  	}
+  	
+    String query = ElementParameterParser.getValue(node,"__QUERY__");
+    query = query.replaceAll("\n","");
+    query = query.replaceAll("\r","");
+    List<Map<String, String>> mapping = (List<Map<String,String>>)ElementParameterParser.getObjectValueXML(node, "__MAPPING__");
+	log4jFileUtil.componentStartInfo(node);
+%>
+
+    java.util.Map<String, String> pathMap_<%=cid%> = new java.util.HashMap<String, String>();
+    String path_<%=cid%> = null;
+
+<%
+    for (Map<String, String> pathElement : mapping) {
+        String schemaColumn = pathElement.get("SCHEMA_COLUMN");
+        String dbColumn = (columnMap.get(schemaColumn)).getOriginalDbColumnName();
+%>
+
+    path_<%=cid%> = new String(<%=pathElement.get("PARENT_FIELD_PATH")%>);
+    path_<%=cid%> = "".equals(path_<%=cid%>) ? "<%=dbColumn%>" : path_<%=cid%> + "." + "<%=dbColumn%>";
+    pathMap_<%=cid%>.put("<%=dbColumn%>", path_<%=cid%>);
+    
+<%
+    }
+%>
+
+//-->Kerberos stuff start
+    <%if(useKrb){%>
+        class ExeCMd_<%=cid%>{
+		    private boolean UsePwd = false;
+		    String message;
+		    
+		    public boolean exec(String[] arg0) throws Exception{
+		        boolean result = true;
+		    
+		        Process process = Runtime.getRuntime().exec(arg0);
+				log.debug("Commend: " + java.util.Arrays.asList(arg0).toString());
+		        if(UsePwd){
+		            java.io.PrintWriter pwout = new java.io.PrintWriter(process.getOutputStream());
+		        <%if(!useKeytab){
+		        String passwordFieldName = "__KERBEROS_PASSWORD__";%>
+		        <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
+		            pwout.println(decryptedPassword_<%=cid%>); 
+		            pwout.flush();
+		        <%}%>
+		        }
+		    
+		        java.io.BufferedReader bufferedReader = new java.io.BufferedReader(new java.io.InputStreamReader(process.getInputStream()));
+		        while ((message = bufferedReader.readLine()) != null) {
+			        System.out.println(message);
+		        }
+		        java.io.BufferedReader bufferedReader2 = new java.io.BufferedReader(new java.io.InputStreamReader(process.getErrorStream()));
+		        while ((message = bufferedReader2.readLine()) != null) {
+			        System.err.println(message);
+			        result = false;
+		        }
+		        process.waitFor();
+		        return result;
+		    }
+		    
+		    public void setUsePwd(boolean usePwd){
+		       UsePwd = usePwd;
+		    }
+		    
+		}
+		
+		ExeCMd_<%=cid%> exeCMd_<%=cid%> = new ExeCMd_<%=cid%>();
+		
+        
+		java.util.ArrayList<String> cmd_<%=cid%> = new java.util.ArrayList<String>();
+		cmd_<%=cid%>.add("kinit");
+		
+		<%if(useKeytab){%>
+		cmd_<%=cid%>.add("-k");
+		cmd_<%=cid%>.add("-t");
+		cmd_<%=cid%>.add(<%=keytabPath%>);
+		<%}else{%>
+		exeCMd_<%=cid%>.setUsePwd(true);
+		<%}%>
+		cmd_<%=cid%>.add(<%=userPrincipal%>);
+		
+		if(!exeCMd_<%=cid%>.exec(cmd_<%=cid%>.toArray(new String[0]))){
+		    throw new RuntimeException("Kerberos Authentication Failed.");
+		}
+		
+		java.util.ArrayList<String> cmd2_<%=cid%> = new java.util.ArrayList<String>();
+		
+		String os_<%=cid%> = System.getProperty("os.name");  
+        if(os_<%=cid%>.toLowerCase().startsWith("win")){  
+           cmd2_<%=cid%>.add("maprlogin.bat");
+        }else{
+           cmd2_<%=cid%>.add("maprlogin");
+        }
+		   cmd2_<%=cid%>.add("kerberos");
+		   
+		boolean loginResult_<%=cid%> = new ExeCMd_<%=cid%>().exec(cmd2_<%=cid%>.toArray(new String[0]));
+		if(!loginResult_<%=cid%>){
+		    throw new RuntimeException("Mapr Login failed. Please see the error log at MAPR_HOME/log for more details");
+		}
+		
+    <%}%>
+//<--Kerberos stuff end
+
+    int nb_line_<%=cid %> = 0;
+	org.ojai.DocumentStream rst_<%=cid %> = null;
+    java.util.Collection<String> fieldList_<%=cid%> = pathMap_<%=cid%>.values();
+
+<%
+	if ("MAPROJAI_5_1".equals(dbVersion) || "MAPROJAI_5_2".equals(dbVersion)) { //OJAI 1.0)
+%>
+	
+	com.mapr.db.Table table_<%=cid %> = com.mapr.db.MapRDB.getTable(<%=table%>);
+		
+	//no json-style condition support in ojai 1.0
+	if (!fieldList_<%=cid%>.isEmpty()) {
+  		rst_<%=cid %> = table_<%=cid %>.find(fieldList_<%=cid%>.toArray(new String[fieldList_<%=cid %>.size()]));
+  	} else {
+  	  	rst_<%=cid %> = table_<%=cid %>.find();
+  	}
+	
+<%
+                   } else { //MAPR 6.0 (OJAI 2.0)
+%>
+
+	org.ojai.store.Connection conn_<%=cid %> = org.ojai.store.DriverManager.getConnection("ojai:mapr:");
+	org.ojai.store.DocumentStore store_<%=cid %> = conn_<%=cid %>.getStore(<%=table %>);
+  	org.ojai.store.Query qry_<%=cid %> = conn_<%=cid %>.newQuery();
+  	
+  	if (!fieldList_<%=cid %>.isEmpty()) {
+  		qry_<%=cid %>.select(fieldList_<%=cid %>.toArray(new String[fieldList_<%=cid %>.size()]));
+  	}
+  	
+  	if (<%=restrictPartialSorts %>) {
+  		qry_<%=cid %>.setOption("ojai.mapr.query.force-noncovering-sort", true);
+  	}
+  	  	
+  	qry_<%=cid %>.where(<%=query %>).build();//json-style condition support in ojai 2.0 and higher
+  	rst_<%=cid %> = store_<%=cid %>.findQuery(qry_<%=cid %>);
+  	
+<%
+    }
+%>
+
+  	java.util.Iterator<org.ojai.Document> itrst_<%=cid %> = rst_<%=cid %>.iterator();
+    org.ojai.Document readRecord_<%=cid %>;
+	
+    while (itrst_<%=cid %>.hasNext()) {
+		nb_line_<%=cid %> ++;
+       	readRecord_<%=cid %> = itrst_<%=cid %>.next();
+		org.ojai.Value valueObj_<%=cid %> = null;
+
+<%
+      	
+       	int sizeColumns = columnList.size();
+
+		if (firstConnName.length() > 0) {
+
+			for (IMetadataColumn column : columnList) {
+				
+				String typeToGenerate = JavaTypesManager.getTypeToGenerate(column.getTalendType(), column.isNullable());
+				JavaType javaType = JavaTypesManager.getJavaTypeFromId(column.getTalendType());
+				String patternValue = column.getPattern() == null || column.getPattern().trim().length() == 0 ? null : column.getPattern();
+%>
+
+		path_<%=cid%> = pathMap_<%=cid%>.get("<%=column.getOriginalDbColumnName() %>");
+        valueObj_<%=cid%> = readRecord_<%=cid%>.getValue(path_<%=cid%>);
+
+<%
+       			if (javaType == JavaTypesManager.OBJECT) {
+%>
+
+		<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%> == null ? null : valueObj_<%=cid%>.getObject();
+		
+<%
+          		} else {
+%>
+
+		if(valueObj_<%=cid%> != null) {
+		
+<%
+					if(javaType == JavaTypesManager.DATE) {
+%>
+			if (valueObj_<%=cid%>.getType().equals(org.ojai.Value.Type.STRING)) {//when bulk write = true, Date is stored as String
+				<%=firstConnName %>.<%=column.getLabel() %> = (org.ojai.types.OTimestamp.parse(valueObj_<%=cid%>.getString())).toDate();
+			} else {//when bulk write = false, Date is stored as Timestamp 
+				<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.getTimestamp().toDate();
+			}
+            
+<%
+					} else if(javaType == JavaTypesManager.BYTE_ARRAY) {
+%>
+
+			<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.getBinary().array();
+			
+<%
+					} else if (javaType == JavaTypesManager.STRING) {
+%>
+			<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.getString();
+			
+<%
+					} else if (javaType == JavaTypesManager.INTEGER) {
+%>
+
+           	<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.getInt();
+            
+<%
+                   } else if (javaType == JavaTypesManager.LONG) {
+%>
+
+           	<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.getLong();
+            
+<%
+                   } else if (javaType == JavaTypesManager.SHORT){
+%>
+
+           	<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.getShort();
+            
+<%
+                   } else if (javaType == JavaTypesManager.BYTE){
+%>
+
+           	<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.getByte();
+<%
+                   } else if ("Document".equals(javaType.getLabel())){
+%>
+
+			org.json.JSONObject jsonObj = new org.json.JSONObject(valueObj_<%=cid%>.asJsonString());
+			String xml = "<xml>" + org.json.XML.toString(jsonObj) + "</xml>";
+			org.dom4j.Document doc = org.dom4j.DocumentHelper.parseText(xml);
+			<%=firstConnName %>.<%=column.getLabel() %> = new routines.system.Document();
+           	<%=firstConnName %>.<%=column.getLabel() %>.setDocument(doc);
+            
+<%
+                   } else {
+%>
+
+            <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_<%=typeToGenerate %>(valueObj_<%=cid%>.toString());
+            
+<%
+				   }
+%>
+
+		} else {
+			<%=firstConnName %>.<%=column.getLabel() %> = <%=JavaTypesManager.getDefaultValueFromJavaType(typeToGenerate)%>;
+		}
+		
+<%
+				}
+			}
+		}
+		
+%>
+		

@@ -99,5 +99,8 @@ public class CDH5100DistributionTest {
         assertTrue(distribution instanceof ImpalaComponent);
 
         assertTrue(distribution.doSupportHDFSEncryption());
+        
+        assertFalse(distribution.doSupportAzureDataLakeStorage());
+        assertTrue(distribution.doSupportWebHDFS());
     }
 }

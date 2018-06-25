@@ -56,7 +56,7 @@ public class HadoopClusterDragAndDropHandler extends AbstractDragAndDropServiceH
     }
 
     @Override
-    public Object getComponentValue(Connection connection, String value, IMetadataTable table, String targetComponent) {
+    public Object getComponentValue(Connection connection, String value, IMetadataTable table, String targetComponent, Map<Object, Object> contextMap) {
         if (value != null && canHandle(connection)) {
             return getHadoopClusterRepositoryValue((HadoopClusterConnection) connection, value, table);
         }

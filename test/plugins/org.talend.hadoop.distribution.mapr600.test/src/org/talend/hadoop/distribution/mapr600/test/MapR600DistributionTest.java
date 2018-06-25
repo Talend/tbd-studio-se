@@ -24,6 +24,7 @@ import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
+import org.talend.hadoop.distribution.component.MapROJAIComponent;
 import org.talend.hadoop.distribution.component.MapRStreamsComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
@@ -79,6 +80,8 @@ public class MapR600DistributionTest {
         // assertTrue(((HiveComponent) distribution).doSupportParquetFormat());
         // assertFalse(((HiveComponent) distribution).doSupportStoreAsParquet());
         // assertFalse(((HiveComponent) distribution).doSupportClouderaNavigator());
+        assertTrue( ((MapROJAIComponent)distribution).doSupportExplicitSorts());
+        assertTrue( ((MapROJAIComponent)distribution).doSupportJsonQueries());
         assertTrue(((SparkBatchComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_2_1));
         assertFalse(((SparkBatchComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_2_0));
         assertFalse(((SparkBatchComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_1_6));
@@ -110,6 +113,8 @@ public class MapR600DistributionTest {
         assertTrue(distribution.doSupportCreateServiceConnection());
         assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
         assertTrue(((SparkComponent) distribution).doImportSparkHiveContextDependencies());
+        assertFalse(distribution.doSupportWebHDFS());
+        assertFalse(distribution.doSupportAzureDataLakeStorage());
     }
 
 }

@@ -174,6 +174,12 @@ public interface HadoopComponent {
     public boolean isAltusDistribution();
 
     /**
+    *
+    * @return true if the distribution is a Qubole cloud distribution
+    */
+   public boolean isQuboleDistribution();
+
+    /**
      * @return a weight for the distribution, which will be used to sort the distributions in the components drop down
      * list.
      *
@@ -211,4 +217,8 @@ public interface HadoopComponent {
     public boolean isActivated();
     
     public boolean isDynamicDistribution();
+    
+    public boolean doSupportAzureDataLakeStorage();
+    
+    public boolean doSupportWebHDFS();
 }

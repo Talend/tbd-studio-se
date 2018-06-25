@@ -35,6 +35,7 @@ import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
+import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
@@ -51,6 +52,7 @@ import org.talend.hadoop.distribution.hdp240.modulegroup.HDP240PigOutputModuleGr
 import org.talend.hadoop.distribution.hdp240.modulegroup.HDP240SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.hdp240.modulegroup.HDP240SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.hdp240.modulegroup.HDP240SqoopModuleGroup;
+import org.talend.hadoop.distribution.hdp240.modulegroup.HDP240WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.hdp240.modulegroup.node.mr.HDP240MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.hdp240.modulegroup.node.pigoutput.HDP240PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.hdp240.modulegroup.node.sparkbatch.HDP240GraphFramesNodeModuleGroup;
@@ -83,7 +85,10 @@ public class HDP240Distribution extends AbstractDistribution implements HDFSComp
 
     private static Map<ComponentType, ComponentCondition> displayConditions;
 
-    static {
+    public HDP240Distribution() {
+        
+        String distribution = getDistribution();
+        String version = getVersion();
 
         // Used to add a module group import for the components that have a HADOOP_DISTRIBUTION parameter, aka. the
         // components that have the distribution list.
@@ -102,6 +107,12 @@ public class HDP240Distribution extends AbstractDistribution implements HDFSComp
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
         nodeModuleGroups = new HashMap<>();
+        
+        // WebHDFS
+        Set<DistributionModuleGroup> webHDFSNodeModuleGroups = HDP240WebHDFSModuleGroup.getModuleGroups(distribution, version);
+        for(String hdfsComponent : HDFSConstant.hdfsComponents) {
+            nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
+        }
 
         // Azure
         nodeModuleGroups.put(

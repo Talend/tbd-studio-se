@@ -274,6 +274,10 @@ public abstract class AbstractDistribution {
         return false;
     }
 
+    public boolean isQuboleDistribution() {
+        return false;
+    }
+
     public boolean doSupportOozie() {
         return true;
     }
@@ -332,6 +336,10 @@ public abstract class AbstractDistribution {
 
     public boolean doSupportAvroDeflateProperties(){
         return false;
+    }
+    
+    public boolean doSupportWebHDFS(){
+        return true;
     }
     
     public boolean useOldAWSAPI() {

@@ -37,6 +37,7 @@ import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100PigOutputModule
 import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100SqoopModuleGroup;
+import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.mr.CDH5100MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.pigoutput.CDH5100PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.spark.CDH5100SparkDynamoDBNodeModuleGroup;
@@ -64,6 +65,7 @@ import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
+import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
@@ -113,6 +115,12 @@ public class CDH5100Distribution extends AbstractDistribution implements ICloude
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
         nodeModuleGroups = new HashMap<>();
+        
+        // WebHDFS/ADLS
+        Set<DistributionModuleGroup> webHDFSNodeModuleGroups = CDH5100WebHDFSModuleGroup.getModuleGroups(distribution, version);
+        for(String hdfsComponent : HDFSConstant.hdfsComponents) {
+            nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
+        }
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
                 CDH5100MRS3NodeModuleGroup.getModuleGroups(distribution, version));

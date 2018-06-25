@@ -33,6 +33,7 @@ import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.MapRDBComponent;
 import org.talend.hadoop.distribution.component.MapRStreamsComponent;
+import org.talend.hadoop.distribution.component.MapROJAIComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
@@ -55,6 +56,7 @@ import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520MRS3NodeModuleG
 import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520MapRStreamsCreateStreamModuleGroup;
 import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520MapRStreamsModuleGroup;
 import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520MapReduceModuleGroup;
+import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520OjaiModuleGroup;
 import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520PigModuleGroup;
 import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520PigOutputModuleGroup;
 import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520PigOutputNodeModuleGroup;
@@ -73,7 +75,7 @@ import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520SparkStreamingM
 import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr520.modulegroup.MapR520SqoopModuleGroup;
 
-public class MapR520Distribution extends AbstractMapRDistribution implements HDFSComponent, MRComponent, HBaseComponent,
+public class MapR520Distribution extends AbstractMapRDistribution implements HDFSComponent, MRComponent, HBaseComponent, MapROJAIComponent,
         SqoopComponent, PigComponent, HiveComponent, HCatalogComponent, SparkBatchComponent, SparkStreamingComponent,
         HiveOnSparkComponent, ImpalaComponent, MapRStreamsComponent, MapRDBComponent, IMapRDistribution {
 
@@ -106,6 +108,7 @@ public class MapR520Distribution extends AbstractMapRDistribution implements HDF
         moduleGroups.put(ComponentType.HIVEONSPARK, MapR520HiveOnSparkModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPRSTREAMS, MapR520MapRStreamsModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPRDB, MapR520HBaseModuleGroup.getModuleGroups());
+        moduleGroups.put(ComponentType.OJAI, MapR520OjaiModuleGroup.getModuleGroups());
 
         nodeModuleGroups = new HashMap<>();
 
@@ -414,5 +417,19 @@ public class MapR520Distribution extends AbstractMapRDistribution implements HDF
     public boolean doImportSparkHiveContextDependencies() {
         return true;
     }
+    
+    @Override
+    public boolean doSupportWebHDFS(){
+        return false;
+    }
 
+    @Override
+    public boolean doSupportExplicitSorts() {
+        return false;
+    }
+
+    @Override
+    public boolean doSupportJsonQueries() {
+        return false;
+    }
 }

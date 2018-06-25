@@ -36,6 +36,7 @@ import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
+import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
@@ -48,8 +49,6 @@ import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkbatch.EMR580S
 import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkbatch.EMR580SparkBatchS3NodeModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkstreaming.EMR580SparkStreamingFlumeNodeModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkstreaming.EMR580SparkStreamingKafkaAssemblyModuleGroup;
-import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkstreaming.EMR580SparkStreamingKafkaAvroModuleGroup;
-import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkstreaming.EMR580SparkStreamingKafkaClientModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkstreaming.EMR580SparkStreamingKinesisNodeModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkstreaming.EMR580SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkstreaming.EMR580SparkStreamingS3NodeModuleGroup;
@@ -64,6 +63,7 @@ import org.talend.hadoop.distribution.emr580.modulegroup.EMR580PigOutputModuleGr
 import org.talend.hadoop.distribution.emr580.modulegroup.EMR580SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.EMR580SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.EMR580SqoopModuleGroup;
+import org.talend.hadoop.distribution.emr580.modulegroup.EMR580WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.node.mr.EMR580MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.node.pigoutput.EMR580PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
@@ -142,6 +142,13 @@ public class EMR580Distribution extends AbstractDistribution implements
 	protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(
 			String distribution, String version) {
 		Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
+		
+		// WebHDFS
+        Set<DistributionModuleGroup> webHDFSNodeModuleGroups = EMR580WebHDFSModuleGroup.getModuleGroups(distribution, version);
+        for(String hdfsComponent : HDFSConstant.hdfsComponents) {
+            result.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
+        }
+        
 		// Mapreduce nodes
 		result.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE,
 				MRConstant.S3_INPUT_COMPONENT), EMR580MRS3NodeModuleGroup

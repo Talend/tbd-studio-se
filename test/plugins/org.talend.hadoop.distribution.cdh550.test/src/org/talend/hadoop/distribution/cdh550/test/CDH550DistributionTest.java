@@ -110,5 +110,7 @@ public class CDH550DistributionTest extends AbstractDistributionTest {
         assertTrue(distribution.doSupportCreateServiceConnection());
         assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
 
+        assertFalse(distribution.doSupportAzureDataLakeStorage());
+        assertTrue(distribution.doSupportWebHDFS());
     }
 }

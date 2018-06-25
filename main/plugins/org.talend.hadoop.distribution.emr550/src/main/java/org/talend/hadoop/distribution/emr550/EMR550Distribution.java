@@ -36,6 +36,7 @@ import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
+import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
@@ -52,6 +53,7 @@ import org.talend.hadoop.distribution.emr550.modulegroup.EMR550PigOutputModuleGr
 import org.talend.hadoop.distribution.emr550.modulegroup.EMR550SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.EMR550SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.EMR550SqoopModuleGroup;
+import org.talend.hadoop.distribution.emr550.modulegroup.EMR550WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.node.mr.EMR550MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.node.pigoutput.EMR550PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.node.spark.EMR550SparkDynamoDBNodeModuleGroup;
@@ -133,6 +135,13 @@ public class EMR550Distribution extends AbstractDistribution implements HBaseCom
 
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(String distribution, String version) {
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
+        
+        // WebHDFS
+        Set<DistributionModuleGroup> webHDFSNodeModuleGroups = EMR550WebHDFSModuleGroup.getModuleGroups(distribution, version);
+        for(String hdfsComponent : HDFSConstant.hdfsComponents) {
+            result.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
+        }
+        
         // Mapreduce nodes
         result.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
                 EMR550MRS3NodeModuleGroup.getModuleGroups(distribution, version));

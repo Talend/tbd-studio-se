@@ -2,7 +2,7 @@
 <feature
       id="org.talend.hadoop.distribution.feature"
       label="Talend Hadoop distributions Feature"
-      version="7.1.0.qualifier"
+      version="7.1.1.qualifier"
       provider-name=".Talend SA.">
 
    <description url="http://www.talend.com/online/featuresdescription.html#hadoop-distribution">
@@ -371,6 +371,13 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+         
+   <plugin
+         id="org.talend.hadoop.distribution.mapr601"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>         
 
    <plugin
          id="org.talend.hadoop.distribution.piv101"
@@ -381,6 +388,13 @@
 
    <plugin
          id="org.talend.hadoop.distribution.piv200"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.qubole"
          download-size="0"
          install-size="0"
          version="0.0.0"

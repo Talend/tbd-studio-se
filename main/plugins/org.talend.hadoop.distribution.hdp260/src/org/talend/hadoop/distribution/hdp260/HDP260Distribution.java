@@ -36,6 +36,7 @@ import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
+import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
@@ -52,6 +53,7 @@ import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260PigOutputModuleGr
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260SqoopModuleGroup;
+import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.node.mr.HDP260MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.node.pigoutput.HDP260PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.node.spark.HDP260SparkDynamoDBNodeModuleGroup;
@@ -110,6 +112,12 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
         nodeModuleGroups = new HashMap<>();
+        
+        // WebHDFS/ADLS
+        Set<DistributionModuleGroup> webHDFSNodeModuleGroups = HDP260WebHDFSModuleGroup.getModuleGroups(distribution, version);
+        for(String hdfsComponent : HDFSConstant.hdfsComponents) {
+            nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
+        }
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
                 HDP260MRS3NodeModuleGroup.getModuleGroups());

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<component name="MapR601Distribution">
+  <implementation class="org.talend.hadoop.distribution.mapr601.MapR601Distribution"/>
+  <service>
+    <provide interface="org.talend.hadoop.distribution.component.HadoopComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.HDFSComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.MapROJAIComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.HiveOnSparkComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.SparkBatchComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.MapRStreamsComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.MapRDBComponent"/>
+  </service>
+</component>

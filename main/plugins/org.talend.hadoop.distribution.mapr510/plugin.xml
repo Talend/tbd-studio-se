@@ -5,6 +5,27 @@
 
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
+            id="mapr-java-utils-1.1-mapr.jar"
+            name="mapr-java-utils-1.1-mapr.jar" mvn_uri="mvn:org.talend.libraries/mapr-java-utils-1.1-mapr/6.2.0" >
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
+            id="maprdb-5.1.0-mapr.jar"
+            name="maprdb-5.1.0-mapr.jar" mvn_uri="mvn:org.talend.libraries/maprdb-5.1.0-mapr/6.2.0" >
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
+            id="ojai-1.0.jar"
+            name="ojai-1.0.jar" mvn_uri="mvn:org.talend.libraries/ojai-1.0/6.0.0" >
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
+            id="hadoop-annotations-2.7.0-mapr-1602.jar"
+            name="hadoop-annotations-2.7.0-mapr-1602.jar" mvn_uri="mvn:org.talend.libraries/hadoop-annotations-2.7.0-mapr-1602/6.2.0" >
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
             id="maprfs-5.1.X-lastest"
             name="maprfs-5.1.0-mapr.jar" mvn_uri="mvn:org.talend.libraries/maprfs-5.1.0-mapr/6.2.0" >
         </libraryNeeded>
@@ -540,6 +561,60 @@
             <library id="avro-1.7.5.jar" />
             <library id="commons-io-2.3.jar"/>
             <library id="piggybank-MAPR510.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- OJAI -->
+        <libraryNeededGroup
+                description="OJAI libraries for MapR 5.1.0"
+                id="OJAI-LIB-MAPR510"
+                name="OJAI-LIB-MAPR510">
+           <library id="hadoop-auth-mapr-5.0.X-lastest"/>
+           <library id="hadoop-common-mapr-5.0.X-lastest"/>
+           <library id="maprfs-5.1.X-lastest"/>
+           <library id="mapr-java-utils-1.1-mapr.jar"/>
+           <library id="maprdb-5.1.0-mapr.jar"/>
+           <library id="ojai-1.0.jar"/>
+           <library id="hadoop-annotations-2.7.0-mapr-1602.jar"/>
+           <library id="hadoop-auth-2.7.0-mapr-1602.jar"/>
+
+            <!-- common part -->
+            <library id="log4j-1.2.17.jar" />
+            <library id="slf4j-api-1.7.10.jar" />
+            <library id="guava-14.0.1.jar" />
+            <library id="commons-logging-1.1.3.jar" />
+            <library id="commons-collections-3.2.2.jar" />
+            <library id="protobuf-java-2.5.0.jar" />
+            <library id="commons-configuration-1.6.jar" />
+            <library id="commons-lang-2.6.jar" />
+            <library id="zookeeper-3.4.5-mapr-1710.jar" /><!--zookeeper-3.4.5-mapr-1503.jar -->
+            <library id="antlr4-runtime-4.5.3.jar" /> <!--antlr4-runtime-4.5.jar-->
+            <library id="jackson-databind-2.9.4.jar" />
+            <library id="jackson-annotations-2.9.4.jar" /><!-- is it really needed? -->
+            <library id="jackson-core-2.9.4.jar" />
+            <library id="curator-framework-2.7.1.jar" />
+            <library id="xercesImpl-2.9.1.jar" />
+            <library id="xml-apis-1.3.04.jar" />
+            <library id="xalan-2.7.1.jar" />
+            <library id="serializer-2.7.1.jar" />
+            <library id="commons-cli-1.2.jar" />
+            <library id="commons-math3-3.1.1.jar" />
+            <library id="xmlenc-0.52.jar" />
+            <library id="commons-httpclient-3.1.jar" />
+            <library id="commons-codec-1.10.jar" /><!-- commons-codec-1.4-->
+            <library id="commons-io-2.4.jar" />
+            <library id="commons-net-3.1.jar" />
+            <library id="commons-digester-1.8.jar" />
+            <library id="commons-beanutils-1.7.0.jar" />
+            <library id="commons-beanutils-core-1.8.0.jar" />
+            <library id="slf4j-log4j12-1.7.10.jar" />
+            <library id="jackson-core-asl-1.9.14-TALEND.jar" />
+            <library id="jackson-mapper-asl-1.9.14-TALEND.jar" />
+            <library id="gson-2.2.4.jar" />
+            <library id="curator-client-2.7.1.jar" />
+            <library id="curator-recipes-2.7.1.jar" />
+            <library id="htrace-core-3.1.0-incubating.jar" />
+            <library id="commons-compress-1.4.1.jar" />
+            <library id="xz-1.0.jar" />
         </libraryNeededGroup>
         
         <!-- Pig RCFile group -->

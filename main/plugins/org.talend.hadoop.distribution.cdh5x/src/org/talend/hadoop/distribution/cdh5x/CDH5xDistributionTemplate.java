@@ -40,6 +40,7 @@ import org.talend.hadoop.distribution.cdh5x.modulegroup.CDH5xPigOutputModuleGrou
 import org.talend.hadoop.distribution.cdh5x.modulegroup.CDH5xSparkBatchModuleGroup;
 import org.talend.hadoop.distribution.cdh5x.modulegroup.CDH5xSparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.cdh5x.modulegroup.CDH5xSqoopModuleGroup;
+import org.talend.hadoop.distribution.cdh5x.modulegroup.CDH5xWebHDFSModuleGroup;
 import org.talend.hadoop.distribution.cdh5x.modulegroup.node.mr.CDH5xMRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5x.modulegroup.node.pigoutput.CDH5xPigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5x.modulegroup.node.spark.CDH5xSparkDynamoDBNodeModuleGroup;
@@ -68,6 +69,7 @@ import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
+import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
@@ -107,6 +109,7 @@ public class CDH5xDistributionTemplate extends AbstractDistribution
         versionDisplay = configuration.getName();
 
         String distribution = getDistribution();
+        String version = getVersion();
 
         // Used to add a module group import for the components that have a HADOOP_DISTRIBUTION parameter, aka. the
         // components that have the distribution list.
@@ -126,6 +129,13 @@ public class CDH5xDistributionTemplate extends AbstractDistribution
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
         nodeModuleGroups = new HashMap<>();
+        
+        // WebHDFS/ADLS
+        CDH5xWebHDFSModuleGroup cdh5xWebHDFSModuleGroup = new CDH5xWebHDFSModuleGroup(pluginAdapter);
+        Set<DistributionModuleGroup> webHDFSNodeModuleGroups = cdh5xWebHDFSModuleGroup.getModuleGroups(distribution, version);
+        for(String hdfsComponent : HDFSConstant.hdfsComponents) {
+            nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
+        }
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
                 new CDH5xMRS3NodeModuleGroup(pluginAdapter).getModuleGroups(distribution, versionId));

@@ -104,6 +104,8 @@ public class CustomDistributionTest extends AbstractDistributionTest {
         assertTrue(distribution instanceof ImpalaComponent);
         assertTrue(distribution.doSupportCreateServiceConnection());
         assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
+        assertFalse(distribution.doSupportAzureDataLakeStorage());
+        assertFalse(distribution.doSupportWebHDFS());
     }
 
 }

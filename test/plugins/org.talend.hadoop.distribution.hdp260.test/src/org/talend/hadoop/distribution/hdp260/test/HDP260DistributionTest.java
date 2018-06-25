@@ -117,6 +117,8 @@ public class HDP260DistributionTest extends AbstractDistributionTest {
         assertTrue(distribution.doSupportCreateServiceConnection());
         assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
 
+        assertTrue(distribution.doSupportWebHDFS());
+        assertTrue(distribution.doSupportAzureDataLakeStorage());
     }
 
 }

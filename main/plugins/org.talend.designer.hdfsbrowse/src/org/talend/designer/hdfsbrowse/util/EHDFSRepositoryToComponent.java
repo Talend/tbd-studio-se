@@ -17,6 +17,8 @@ package org.talend.designer.hdfsbrowse.util;
  * DOC ycbai class global comment. Detailled comment
  */
 public enum EHDFSRepositoryToComponent {
+    
+    SCHEME("SCHEME", "SCHEME"), //$NON-NLS-1$ //$NON-NLS-2$
 
     DISTRIBUTION("DISTRIBUTION", "DISTRIBUTION"), //$NON-NLS-1$ //$NON-NLS-2$
 

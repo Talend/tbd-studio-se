@@ -33,6 +33,7 @@ import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.MapRDBComponent;
 import org.talend.hadoop.distribution.component.MapRStreamsComponent;
+import org.talend.hadoop.distribution.component.MapROJAIComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
@@ -67,8 +68,9 @@ import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510SparkStreamingM
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510SqoopModuleGroup;
+import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510OjaiModuleGroup;
 
-public class MapR510Distribution extends AbstractMapRDistribution implements HDFSComponent, MRComponent, HBaseComponent,
+public class MapR510Distribution extends AbstractMapRDistribution implements HDFSComponent, MRComponent, HBaseComponent, MapROJAIComponent,
         SqoopComponent, PigComponent, HiveComponent, HCatalogComponent, SparkBatchComponent, SparkStreamingComponent,
         HiveOnSparkComponent, ImpalaComponent, MapRStreamsComponent, MapRDBComponent, IMapRDistribution {
 
@@ -100,6 +102,7 @@ public class MapR510Distribution extends AbstractMapRDistribution implements HDF
         moduleGroups.put(ComponentType.HIVEONSPARK, MapR510HiveOnSparkModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPRSTREAMS, MapR510MapRStreamsModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPRDB, MapR510HBaseModuleGroup.getModuleGroups());
+        moduleGroups.put(ComponentType.OJAI, MapR510OjaiModuleGroup.getModuleGroups());
 
         nodeModuleGroups = new HashMap<>();
 
@@ -391,4 +394,19 @@ public class MapR510Distribution extends AbstractMapRDistribution implements HDF
         return false;
     }
     // End
+    
+    @Override
+    public boolean doSupportWebHDFS(){
+        return false;
+    }
+
+    @Override
+    public boolean doSupportExplicitSorts() {
+        return false;
+    }
+
+    @Override
+    public boolean doSupportJsonQueries() {
+        return false;
+    }
 }

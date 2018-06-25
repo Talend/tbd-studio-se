@@ -36,6 +36,7 @@ import org.talend.hadoop.distribution.cdh570.modulegroup.CDH570PigOutputModuleGr
 import org.talend.hadoop.distribution.cdh570.modulegroup.CDH570SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.cdh570.modulegroup.CDH570SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.cdh570.modulegroup.CDH570SqoopModuleGroup;
+import org.talend.hadoop.distribution.cdh570.modulegroup.CDH570WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.cdh570.modulegroup.node.mr.CDH570MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.cdh570.modulegroup.node.pigoutput.CDH570PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh570.modulegroup.node.sparkbatch.CDH570GraphFramesNodeModuleGroup;
@@ -61,6 +62,7 @@ import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
+import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
@@ -107,6 +109,12 @@ public class CDH570Distribution extends AbstractDistribution implements HDFSComp
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
         nodeModuleGroups = new HashMap<>();
+        
+        // WebHDFS
+        Set<DistributionModuleGroup> webHDFSNodeModuleGroups = CDH570WebHDFSModuleGroup.getModuleGroups(distribution, version);
+        for(String hdfsComponent : HDFSConstant.hdfsComponents) {
+            nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
+        }
 
         // Azure
         nodeModuleGroups.put(

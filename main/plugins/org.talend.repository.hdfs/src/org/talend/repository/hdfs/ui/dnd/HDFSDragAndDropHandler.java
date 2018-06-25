@@ -74,7 +74,7 @@ public class HDFSDragAndDropHandler extends AbstractDragAndDropServiceHandler {
     }
 
     @Override
-    public Object getComponentValue(Connection connection, String value, IMetadataTable table, String targetComponent) {
+    public Object getComponentValue(Connection connection, String value, IMetadataTable table, String targetComponent, Map<Object, Object> contextMap) {
         if (value != null && canHandle(connection)) {
             return getHDFSRepositoryValue((HDFSConnection) connection, value, table, targetComponent);
         }
@@ -89,6 +89,8 @@ public class HDFSDragAndDropHandler extends AbstractDragAndDropServiceHandler {
 
         if (EHDFSRepositoryToComponent.DISTRIBUTION.getRepositoryValue().equals(value)) {
             return hcConnection.getDistribution();
+        } else if (EHDFSRepositoryToComponent.SCHEME.getRepositoryValue().equals(value)) {
+            return HDFS;
         } else if (EHDFSRepositoryToComponent.DB_VERSION.getRepositoryValue().equals(value)) {
             return hcConnection.getDfVersion();
         } else if (EHDFSRepositoryToComponent.HADOOP_CUSTOM_JARS.getRepositoryValue().equals(value)) {

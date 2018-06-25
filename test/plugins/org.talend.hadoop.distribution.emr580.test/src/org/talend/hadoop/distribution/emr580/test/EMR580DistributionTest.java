@@ -103,6 +103,8 @@ public class EMR580DistributionTest {
         assertTrue(((SqoopComponent) distribution).doJavaAPISqoopImportSupportDeleteTargetDir());
         assertTrue(((SqoopComponent) distribution).doJavaAPISupportStorePasswordInFile());
         assertTrue(((HBaseComponent) distribution).doSupportNewHBaseAPI());
+        assertFalse(distribution.doSupportAzureDataLakeStorage());
+        assertTrue(distribution.doSupportWebHDFS());
     }
 
 }

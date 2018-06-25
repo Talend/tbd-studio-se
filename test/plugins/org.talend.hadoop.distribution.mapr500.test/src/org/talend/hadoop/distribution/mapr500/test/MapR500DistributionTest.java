@@ -105,6 +105,8 @@ public class MapR500DistributionTest extends AbstractDistributionTest {
         assertFalse(((SparkStreamingComponent) distribution).doSupportBackpressure());
         assertTrue(distribution.doSupportCreateServiceConnection());
         assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
+        assertFalse(distribution.doSupportWebHDFS());
+        assertFalse(distribution.doSupportAzureDataLakeStorage());
     }
 
 }
