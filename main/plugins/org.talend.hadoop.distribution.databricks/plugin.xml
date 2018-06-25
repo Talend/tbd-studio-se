@@ -6,9 +6,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
-            id="talend-bigdata-launcher-platform-1.2.3-20180501.jar"
-            name="talend-bigdata-launcher-platform-1.2.3-20180501.jar"
-            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-platform-1.2.3-20180501/6.0.0">
+            id="talend-bigdata-launcher-platform-1.2.4-20180625.jar"
+            name="talend-bigdata-launcher-platform-1.2.4-20180625.jar"
+            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-platform/1.2.4-20180625">
         </libraryNeeded>
                            
 		 <libraryNeeded
@@ -175,7 +175,7 @@
                 description="Big Data launcher libraries for Databricks"
                 id="BIGDATA-LAUNCHER-LIB-DATABRICKS"
                 name="BIGDATA-LAUNCHER-LIB-DATABRICKS"  >
-			<library id="talend-bigdata-launcher-platform-1.2.3-20180501.jar" />
+			<library id="talend-bigdata-launcher-platform-1.2.4-20180625.jar" />
         </libraryNeededGroup>
         
         <!-- Spark group -->
