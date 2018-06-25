@@ -110,7 +110,11 @@ public class HadoopDistributionsHelperTest {
 
     @Test
     public void testMapRDistribution() {
-        testDistributionOnly("MAPR", "MapR", new String[][] { { "MAPR510", "MapR 5.1.0(YARN mode)", "HADOOP_2" },
+
+        testDistributionOnly("MAPR", "MapR", new String[][] { { "MAPR601", "MapR 6.0.1(YARN mode)", "HADOOP_2" },
+                { "MAPR600", "MapR 6.0.0(YARN mode)", "HADOOP_2" },
+                { "MAPR520", "MapR 5.2.0(YARN mode)", "HADOOP_2" },
+                { "MAPR510", "MapR 5.1.0(YARN mode)", "HADOOP_2" },
                 { "MAPR500", "MapR 5.0.0(YARN mode)", "HADOOP_2" }, { "MAPR410", "MapR 4.1.0(YARN mode)", "HADOOP_2" },
                 { "MAPR401", "MapR 4.0.1(YARN mode)", "HADOOP_2" }, { "MAPR310", "MapR 3.1.0", "HADOOP_1" },
                 { "MAPR301", "MapR 3.0.1", "HADOOP_1" }, { "MAPR213", "MapR 2.1.3", "HADOOP_1" },
