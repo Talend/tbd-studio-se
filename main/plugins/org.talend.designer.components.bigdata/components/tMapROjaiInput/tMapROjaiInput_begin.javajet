@@ -195,7 +195,7 @@ imports="
 	
     while (itrst_<%=cid %>.hasNext()) {
 		nb_line_<%=cid %> ++;
-       	readRecord_<%=cid %> = itrst_<%=cid %>.next();         
+       	readRecord_<%=cid %> = itrst_<%=cid %>.next();
 		org.ojai.Value valueObj_<%=cid %> = null;
 
 <%
@@ -263,6 +263,21 @@ imports="
 %>
 
            	<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.getShort();
+            
+<%
+                   } else if (javaType == JavaTypesManager.BYTE){
+%>
+
+           	<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.getByte();
+<%
+                   } else if ("Document".equals(javaType.getLabel())){
+%>
+
+			org.json.JSONObject jsonObj = new org.json.JSONObject(valueObj_<%=cid%>.asJsonString());
+			String xml = "<xml>" + org.json.XML.toString(jsonObj) + "</xml>";
+			org.dom4j.Document doc = org.dom4j.DocumentHelper.parseText(xml);
+			<%=firstConnName %>.<%=column.getLabel() %> = new routines.system.Document();
+           	<%=firstConnName %>.<%=column.getLabel() %>.setDocument(doc);
             
 <%
                    } else {

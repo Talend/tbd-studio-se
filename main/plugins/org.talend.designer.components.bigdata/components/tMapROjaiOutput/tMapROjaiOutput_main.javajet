@@ -81,7 +81,7 @@ imports="
 				columnList = metadata.getListColumns();
 				incomingConnName = conn.getName();
 				int sizeColumns = columnList.size();
-
+				
 				// Create the BasicDBObject
 				%>
 				org.ojai.Document doc_<%=cid%> = com.mapr.db.MapRDB.newDocument();
@@ -98,7 +98,10 @@ imports="
 					            rowData = "new org.ojai.types.OTimestamp("+conn.getName()+"."+column.getLabel()+".getTime())";
 					        }else if ("BigDecimal".equals(typeToGenerate)){
 					            rowData = conn.getName()+"."+column.getLabel()+".toString()";
-					        }else{
+					        }else if ("Document".equals(typeToGenerate)){
+					        	rowData = "com.mapr.db.MapRDB.newDocument(org.json.XML.toJSONObject(" + conn.getName()+"."+column.getLabel()+".getDocument().asXML()).getJSONObject(\"xml\").toString())";
+					        }
+					        else{
 					            rowData = conn.getName()+"."+column.getLabel();
 					        }
 					        
@@ -110,7 +113,6 @@ imports="
 				            }
 					        
 	                            %>
-	                            
 	                           path_<%=cid%> = pathMap_<%=cid%>.get("<%=column.getOriginalDbColumnName()%>");
 	
 	                            if (<%=conn.getName() %>.<%=column.getLabel() %> != null) {
@@ -147,8 +149,8 @@ imports="
 				table_<%=cid%>.flush();
 		<%}else{%>
 		
-		         out_<%=cid%>.write(doc_<%=cid%>.toString());
-		         bulkCount_<%=cid%>++;
+	            out_<%=cid%>.write(doc_<%=cid%>.toString());
+	            bulkCount_<%=cid%>++;
 		     
 		     if(bulkCount_<%=cid%>>=bulkWriteSize_<%=cid%>){
 		         out_<%=cid%>.close();

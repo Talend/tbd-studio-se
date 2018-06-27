@@ -1,0 +1,61 @@
+<%
+	// This is the tKafkaCreateTopic_begin javajet part for Kafka 1.1.x
+	
+	// Since kafka.admin.AdminUtils methods have been changed in Kafka 1.1.x, we must split the javajets
+	// in order to generate the relevant code depending of the current Kafka version.
+%>
+
+// Topic configuration
+java.util.Properties <%=cid%>_topicProperties = new java.util.Properties();
+<%
+	if(tKafkaCreateTopicUtil.isRetentionSet()) {
+%>
+		<%=cid%>_topicProperties.put("retention.ms", new java.lang.StringBuilder().append(<%=tKafkaCreateTopicUtil.getRetention()%>).toString());
+<%
+	}
+%>
+<%
+	for(Entry<String, String> topicProperty : tKafkaCreateTopicUtil.getKafkaTopicProperties().entrySet()) {
+%>
+		<%=cid%>_topicProperties.put(<%=topicProperty.getKey()%>, <%=topicProperty.getValue()%>);
+<%
+	}
+%>
+boolean isZkSecurityEnabled = <%if(tKafkaCreateTopicUtil.isZookeeperSecurityEnabled()) {%>true<%} else {%>false<%}%>;
+kafka.utils.ZkUtils <%=cid%>_zkUtils =  kafka.utils.ZkUtils.apply(<%=tKafkaCreateTopicUtil.getZookeeperConnect()%>, 10000, 10000, isZkSecurityEnabled);
+<%
+	if(tKafkaCreateTopicUtil.isCreate()) {
+%>
+		try{
+			kafka.admin.AdminUtils.createTopic(<%=cid%>_zkUtils, <%=tKafkaCreateTopicUtil.getTopic()%>, Integer.valueOf(<%=tKafkaCreateTopicUtil.getNbPartitions()%>), Integer.valueOf(<%=tKafkaCreateTopicUtil.getReplicationFactor()%>), <%=cid%>_topicProperties, kafka.admin.RackAwareMode.Safe$.MODULE$);
+		} catch (org.apache.kafka.common.errors.TopicExistsException e) {
+<%
+		if (tKafkaCreateTopicUtil.isCreateIfNotExists()) {
+%>
+			// nothing to do even through the topic already exists, continue the job
+<%
+		} else {
+%>
+			// topic already exists, stop the job
+			throw e;
+<%
+		}
+%>
+		}
+<%
+	} else if(tKafkaCreateTopicUtil.isAlter()) {
+%>
+		// Existing topic configuration
+		java.util.Properties <%=cid%>_initialTopicProperties = kafka.admin.AdminUtils.fetchEntityConfig(<%=cid%>_zkUtils, kafka.server.ConfigType.Topic(), <%=tKafkaCreateTopicUtil.getTopic()%>);
+
+		// Merge existing configuration with the new one
+		java.util.Properties <%=cid%>_newTopicProperties = new java.util.Properties();
+		<%=cid%>_newTopicProperties.putAll(<%=cid%>_initialTopicProperties);
+		<%=cid%>_newTopicProperties.putAll(<%=cid%>_topicProperties);
+		// Push the configuration changes into ZK
+		kafka.admin.AdminUtils.changeTopicConfig(<%=cid%>_zkUtils, <%=tKafkaCreateTopicUtil.getTopic()%>, <%=cid%>_newTopicProperties);
+<%
+	}
+%>
+
+

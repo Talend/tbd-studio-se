@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Qubole
+Bundle-SymbolicName: org.talend.hadoop.distribution.qubole;singleton:=true
+Bundle-Version: 7.1.1.qualifier
+Bundle-Vendor: .Talend SA.
+Service-Component: OSGI-INF/qubole.xml
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.talend.core.runtime,
+ org.talend.hadoop.distribution

@@ -142,6 +142,13 @@
          unpack="false"/>
 
    <plugin
+        id="org.talend.hadoop.distribution.databricks"
+        download-size="0"
+        install-size="0"
+        version="0.0.0"
+        unpack="false"/>
+
+   <plugin
         id="org.talend.hadoop.distribution.dataproc11"
         download-size="0"
         install-size="0"
@@ -378,6 +385,13 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+         
+   <plugin
+         id="org.talend.hadoop.distribution.mapr601"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>         
 
    <plugin
          id="org.talend.hadoop.distribution.piv101"
@@ -388,6 +402,13 @@
 
    <plugin
          id="org.talend.hadoop.distribution.piv200"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.hadoop.distribution.qubole"
          download-size="0"
          install-size="0"
          version="0.0.0"

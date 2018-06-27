@@ -89,7 +89,7 @@
 			"type": "STANDARD",
 			"context": "{properties.context}",
 			"jarName": "httpcore-4.4.3.jar",
-			"mvnUri": "mvn:org.talend.libraries/httpcore-4.4.3/6.0.0",
+			"mvnUri": "mvn:org.talend.libraries/httpcore-4.4.3/6.3.0",
 			"useStudioRepository": "true",
 			"description": ""
 		},

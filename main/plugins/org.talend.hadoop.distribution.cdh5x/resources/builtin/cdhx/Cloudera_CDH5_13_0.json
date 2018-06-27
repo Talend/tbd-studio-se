@@ -12170,7 +12170,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH5_13_0_httpcore_4_4_3",
-      "mvn_uri" : "mvn:org.talend.libraries/httpcore-4.4.3/6.0.0",
+      "mvn_uri" : "mvn:org.talend.libraries/httpcore-4.4.3/6.3.0",
       "name" : "httpcore-4.4.3.jar",
       "tagName" : "libraryNeeded",
       "useStudioRepository" : "true"
