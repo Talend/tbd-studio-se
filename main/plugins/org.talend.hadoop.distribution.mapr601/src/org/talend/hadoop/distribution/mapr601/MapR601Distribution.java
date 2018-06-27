@@ -24,19 +24,13 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
-import org.talend.hadoop.distribution.component.HCatalogComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
-import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
-import org.talend.hadoop.distribution.component.ImpalaComponent;
-import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.MapRDBComponent;
-import org.talend.hadoop.distribution.component.MapRStreamsComponent;
 import org.talend.hadoop.distribution.component.MapROJAIComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
+import org.talend.hadoop.distribution.component.MapRStreamsComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
-import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.MapRStreamsConstant;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
@@ -46,17 +40,13 @@ import org.talend.hadoop.distribution.constants.mapr.IMapRDistribution;
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601GraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601HBaseModuleGroup;
-import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601HCatalogModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601HDFSModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601HiveModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601HiveOnSparkModuleGroup;
-import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601ImpalaModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601MapRStreamsCreateStreamModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601MapRStreamsModuleGroup;
-import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601MapReduceModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601OjaiModuleGroup;
-import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601PigModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601PigOutputModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SparkBatchAzureNodeModuleGroup;
@@ -74,10 +64,9 @@ import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SparkStreamingM
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SparkStreamingMapRStreamsClientModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SparkStreamingParquetNodeModuleGroup;
-import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SqoopModuleGroup;
 
 public class MapR601Distribution extends AbstractMapRDistribution implements HDFSComponent, MapROJAIComponent,
-        SparkBatchComponent, HiveOnSparkComponent, MapRStreamsComponent, MapRDBComponent, IMapRDistribution {
+        SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, MapRStreamsComponent, MapRDBComponent, IMapRDistribution {
 
     public final static String VERSION = "MAPR601"; //$NON-NLS-1$
 
@@ -102,6 +91,7 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
         moduleGroups.put(ComponentType.PIGOUTPUT, MapR601PigOutputModuleGroup.getModuleGroups());
 
         moduleGroups.put(ComponentType.SPARKBATCH, MapR601SparkBatchModuleGroup.getModuleGroups());
+        moduleGroups.put(ComponentType.SPARKSTREAMING, MapR601SparkStreamingModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVEONSPARK, MapR601HiveOnSparkModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPRSTREAMS, MapR601MapRStreamsModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPRDB, MapR601HBaseModuleGroup.getModuleGroups());
@@ -397,6 +387,16 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
 
     @Override
     public boolean doSupportJsonQueries() {
+        return true;
+    }
+    
+    @Override
+    public boolean doSupportCheckpointing() {
+        return true;
+    }
+    
+    @Override
+    public boolean doSupportBackpressure() {
         return true;
     }
 }

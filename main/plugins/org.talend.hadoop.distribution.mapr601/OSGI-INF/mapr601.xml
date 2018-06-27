@@ -9,5 +9,6 @@
     <provide interface="org.talend.hadoop.distribution.component.SparkBatchComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.MapRStreamsComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.MapRDBComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.SparkStreamingComponent"/>
   </service>
 </component>
