@@ -35,7 +35,7 @@ public class DatabricksDistribution extends AbstractDistribution implements Spar
 
     public final static String VERSION = "Databricks";
 
-    public static final String VERSION_DISPLAY = "Databricks (Spark Version 2.2.1)";
+    public static final String VERSION_DISPLAY = "3.5 LTS (includes Apache Spark 2.2.1, Scala 2.11)";
 
     private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*"; //$NON-NLS-1$
 
@@ -167,7 +167,7 @@ public class DatabricksDistribution extends AbstractDistribution implements Spar
 	
 	@Override
 	public boolean doSupportSparkStandaloneMode() {
-	    return false;
+	    return true;
     }
 	
 	@Override
@@ -175,6 +175,11 @@ public class DatabricksDistribution extends AbstractDistribution implements Spar
 	    return false;
     }
 	
+	@Override
+	public boolean doSupportSparkYarnClusterMode() {
+	    return false;
+    }
+
     @Override
     public boolean doSupportAzureBlobStorage() {
         return true;
