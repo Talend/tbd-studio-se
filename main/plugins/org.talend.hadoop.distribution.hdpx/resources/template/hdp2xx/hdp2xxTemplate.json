@@ -3,7 +3,7 @@
 	"name": "Hortonworks HDP2.X.X template",
 	"distribution": "HORTONWORKS",
 	"templateId": "HDP2xxDistributionTemplate",
-	"baseVersion": "2.6.0",
+	"baseVersion": "2.4.0",
 	"topVersion": "3.0.0",
 	"dynamicVersion": "will be filled during runtime",
 	"properties": {
