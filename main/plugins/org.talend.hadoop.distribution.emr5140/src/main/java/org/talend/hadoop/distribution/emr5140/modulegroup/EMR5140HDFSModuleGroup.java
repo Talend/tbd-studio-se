@@ -10,14 +10,14 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.emr580.modulegroup;
+package org.talend.hadoop.distribution.emr5140.modulegroup;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 
-public class EMR580HDFSModuleGroup {
+public class EMR5140HDFSModuleGroup {
 
     public static final String MODULE_GROUP_NAME = "HDFS-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
 

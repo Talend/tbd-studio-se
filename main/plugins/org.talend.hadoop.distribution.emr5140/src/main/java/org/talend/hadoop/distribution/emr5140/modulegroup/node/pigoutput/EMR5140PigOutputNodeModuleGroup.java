@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.emr580.modulegroup.node.pigoutput;
+package org.talend.hadoop.distribution.emr5140.modulegroup.node.pigoutput;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -26,9 +26,9 @@ import org.talend.hadoop.distribution.condition.MultiComponentCondition;
 import org.talend.hadoop.distribution.condition.NestedComponentCondition;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
-import org.talend.hadoop.distribution.emr580.modulegroup.EMR580PigModuleGroup;
+import org.talend.hadoop.distribution.emr5140.modulegroup.EMR5140PigModuleGroup;
 
-public class EMR580PigOutputNodeModuleGroup {
+public class EMR5140PigOutputNodeModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
 
@@ -49,8 +49,8 @@ public class EMR580PigOutputNodeModuleGroup {
                         EqualityOperator.NOT_EQ, PigOutputConstant.HBASE_STORER_VALUE))));
 
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        hs.add(new DistributionModuleGroup(EMR580PigModuleGroup.PIG_PARQUET_GROUP_NAME, false, condition));
-        hs.add(new DistributionModuleGroup(EMR580PigModuleGroup.PIG_S3_GROUP_NAME, false, s3condition));
+        hs.add(new DistributionModuleGroup(EMR5140PigModuleGroup.PIG_PARQUET_GROUP_NAME, false, condition));
+        hs.add(new DistributionModuleGroup(EMR5140PigModuleGroup.PIG_S3_GROUP_NAME, false, s3condition));
         return hs;
     }
 

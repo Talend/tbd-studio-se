@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.emr580.modulegroup;
+package org.talend.hadoop.distribution.emr5140.modulegroup;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,9 +21,9 @@ import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.PigConstant;
-import org.talend.hadoop.distribution.emr580.modulegroup.node.mr.EMR580MRS3NodeModuleGroup;
+import org.talend.hadoop.distribution.emr5140.modulegroup.node.mr.EMR5140MRS3NodeModuleGroup;
 
-public class EMR580PigModuleGroup {
+public class EMR5140PigModuleGroup {
 
     public static final String HDFS_GROUP_NAME = "HDFS-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
 
@@ -41,7 +41,7 @@ public class EMR580PigModuleGroup {
 
     public static final String PIG_HCATALOG_GROUP_NAME = "PIG-HCATALOG-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
 
-    public static final String PIG_S3_GROUP_NAME = EMR580MRS3NodeModuleGroup.S3_GROUP_NAME;
+    public static final String PIG_S3_GROUP_NAME = EMR5140MRS3NodeModuleGroup.S3_GROUP_NAME;
 
     public static final String PIG_HBASE_GROUP_NAME = "PIG-HBASE-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
 
@@ -72,7 +72,7 @@ public class EMR580PigModuleGroup {
         hs.add(new DistributionModuleGroup(PIG_HCATALOG_GROUP_NAME, false, hcatLoaderCondition));
         hs.add(new DistributionModuleGroup(PIG_S3_GROUP_NAME, true, s3condition));
         // Add HBase module groups
-        hs.add(new DistributionModuleGroup(EMR580HBaseModuleGroup.MODULE_GROUP_NAME, false, hbaseLoaderCondition));
+        hs.add(new DistributionModuleGroup(EMR5140HBaseModuleGroup.MODULE_GROUP_NAME, false, hbaseLoaderCondition));
         hs.add(new DistributionModuleGroup(PIG_HBASE_GROUP_NAME, false, hbaseLoaderCondition));
 
         return hs;

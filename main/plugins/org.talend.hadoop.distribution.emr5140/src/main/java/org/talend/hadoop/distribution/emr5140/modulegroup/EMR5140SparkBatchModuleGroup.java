@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.emr580.modulegroup;
+package org.talend.hadoop.distribution.emr5140.modulegroup;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +22,7 @@ import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 
-public class EMR580SparkBatchModuleGroup {
+public class EMR5140SparkBatchModuleGroup {
 
     public static final String MODULE_GROUP_NAME = "SPARK2-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
 

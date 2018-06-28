@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.emr580.modulegroup;
+package org.talend.hadoop.distribution.emr5140.modulegroup;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +22,7 @@ import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.SqoopConstant;
 
-public class EMR580SqoopModuleGroup {
+public class EMR5140SqoopModuleGroup {
 
     public static final String MODULE_GROUP_NAME = "SQOOP-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
 
@@ -31,8 +31,8 @@ public class EMR580SqoopModuleGroup {
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         hs.add(new DistributionModuleGroup(MODULE_GROUP_NAME));
-        hs.add(new DistributionModuleGroup(EMR580MapReduceModuleGroup.MAPREDUCE_GROUP_NAME));
-        hs.add(new DistributionModuleGroup(EMR580HDFSModuleGroup.MODULE_GROUP_NAME));
+        hs.add(new DistributionModuleGroup(EMR5140MapReduceModuleGroup.MAPREDUCE_GROUP_NAME));
+        hs.add(new DistributionModuleGroup(EMR5140HDFSModuleGroup.MODULE_GROUP_NAME));
         ComponentCondition parquetOutputCondition = new SimpleComponentCondition(new BasicExpression(SqoopConstant.FILE_FORMAT,
                 EqualityOperator.EQ, SqoopConstant.PAQUET_OUTPUT_FORMAT));
         hs.add(new DistributionModuleGroup(SQOOP_PARQUET_MODULE_GROUP_NAME, true, parquetOutputCondition));

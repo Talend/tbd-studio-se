@@ -10,21 +10,21 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.emr580.modulegroup.node.sparkstreaming;
+package org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkstreaming;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.SparkStreamingLinkedNodeCondition;
-import org.talend.hadoop.distribution.emr580.modulegroup.node.sparkbatch.EMR580SparkBatchParquetNodeModuleGroup;
+import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkbatch.EMR5140SparkBatchParquetNodeModuleGroup;
 
-public class EMR580SparkStreamingParquetNodeModuleGroup {
+public class EMR5140SparkStreamingParquetNodeModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         DistributionModuleGroup dmg = new DistributionModuleGroup(
-                EMR580SparkBatchParquetNodeModuleGroup.SPARK_PARQUET_GROUP_NAME, true, new SparkStreamingLinkedNodeCondition(
+                EMR5140SparkBatchParquetNodeModuleGroup.SPARK_PARQUET_GROUP_NAME, true, new SparkStreamingLinkedNodeCondition(
                         distribution, version).getCondition());
         hs.add(dmg);
         return hs;

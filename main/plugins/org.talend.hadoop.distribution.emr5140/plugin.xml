@@ -5,247 +5,247 @@
 
         <!-- HDFS libraries -->
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hadoop-common-2.7.3-amzn-3.jar"
             name="hadoop-common-2.7.3-amzn-3.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-common-2.7.3-amzn-3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hadoop-hdfs-2.7.3-amzn-3.jar"
             name="hadoop-hdfs-2.7.3-amzn-3.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-hdfs-2.7.3-amzn-3/6.0.0"/>
 
 		<libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hadoop-archives-2.7.3-amzn-3.jar"
             name="hadoop-archives-2.7.3-amzn-3.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-archives-2.7.3-amzn-3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hadoop-auth-2.7.3-amzn-3.jar"
             name="hadoop-auth-2.7.3-amzn-3.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-auth-2.7.3-amzn-3/6.0.0"/>
 
         <libraryNeeded
-        	context="plugin:org.talend.hadoop.distribution.emr580"
+        	context="plugin:org.talend.hadoop.distribution.emr5140"
         	id="libthrift-0.9.3.jar"
         	name="libthrift-0.9.3.jar"
         	mvn_uri="mvn:org.talend.libraries/libthrift-0.9.3/6.3.0"/>
         	
         <!-- Azure libraries -->
         <libraryNeeded
-        	context="plugin:org.talend.hadoop.distribution.emr580"
+        	context="plugin:org.talend.hadoop.distribution.emr5140"
         	id="hadoop-azure-2.7.3-amzn-3.jar"
         	name="hadoop-azure-2.7.3-amzn-3.jar"
         	mvn_uri="mvn:org.talend.libraries/hadoop-azure-2.7.3-amzn-3/6.0.0"/>
 
         <libraryNeeded
-        	context="plugin:org.talend.hadoop.distribution.emr580"
+        	context="plugin:org.talend.hadoop.distribution.emr5140"
         	id="azure-storage-2.0.0.jar"
         	name="azure-storage-2.0.0.jar"
         	mvn_uri="mvn:org.talend.libraries/azure-storage-2.0.0/6.0.0"/>
 
 		<!-- Map/Reduce libraries -->
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hadoop-mapreduce-client-common-2.7.3-amzn-3.jar"
             name="hadoop-mapreduce-client-common-2.7.3-amzn-3.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-common-2.7.3-amzn-3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hadoop-mapreduce-client-core-2.7.3-amzn-3.jar"
             name="hadoop-mapreduce-client-core-2.7.3-amzn-3.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-core-2.7.3-amzn-3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hadoop-mapreduce-client-jobclient-2.7.3-amzn-3.jar"
             name="hadoop-mapreduce-client-jobclient-2.7.3-amzn-3.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-jobclient-2.7.3-amzn-3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hadoop-yarn-api-2.7.3-amzn-3.jar"
             name="hadoop-yarn-api-2.7.3-amzn-3.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-yarn-api-2.7.3-amzn-3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hadoop-yarn-client-2.7.3-amzn-3.jar"
             name="hadoop-yarn-client-2.7.3-amzn-3.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-yarn-client-2.7.3-amzn-3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hadoop-yarn-common-2.7.3-amzn-3.jar"
             name="hadoop-yarn-common-2.7.3-amzn-3.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-yarn-common-2.7.3-amzn-3/6.0.0"/>
 
         <!-- HBase libraries -->
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hbase-common-1.3.1.jar"
             name="hbase-common-1.3.1.jar"
             mvn_uri="mvn:org.talend.libraries/hbase-common-1.3.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hbase-client-1.3.1.jar"
             name="hbase-client-1.3.1.jar"
             mvn_uri="mvn:org.talend.libraries/hbase-client-1.3.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hbase-protocol-1.3.1.jar"
             name="hbase-protocol-1.3.1.jar"
             mvn_uri="mvn:org.talend.libraries/hbase-protocol-1.3.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hbase-server-1.3.1.jar"
             name="hbase-server-1.3.1.jar"
             mvn_uri="mvn:org.talend.libraries/hbase-server-1.3.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hbase-hadoop-compat-1.3.1.jar"
             name="hbase-hadoop-compat-1.3.1.jar"
             mvn_uri="mvn:org.talend.libraries/hbase-hadoop-compat-1.3.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="netty-all-4.0.23.Final.jar"
             name="netty-all-4.0.23.Final.jar"
             mvn_uri="mvn:org.talend.libraries/netty-all-4.0.23.Final/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="netty-all-4.0.43.Final.jar"
             name="netty-all-4.0.43.Final.jar"
             mvn_uri="mvn:org.talend.libraries/netty-all-4.0.43.Final/6.0.0"/>
 
 		<libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="netty-all-4.0.43.Final.jar"
             name="netty-all-4.0.43.Final.jar"
             mvn_uri="mvn:org.talend.libraries/netty-all-4.0.43.Final/6.0.0"/>
 
         <!-- Hive libraries -->
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-exec-2.3.0-amzn-0.jar"
             name="hive-exec-2.3.0-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-exec-2.3.0-amzn-0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-common-2.3.0-amzn-0.jar"
             name="hive-common-2.3.0-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-common-2.3.0-amzn-0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-serde-2.3.0-amzn-0.jar"
             name="hive-serde-2.3.0-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-serde-2.3.0-amzn-0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-metastore-2.3.0-amzn-0.jar"
             name="hive-metastore-2.3.0-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-metastore-2.3.0-amzn-0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-jdbc-2.3.0-amzn-0.jar"
             name="hive-jdbc-2.3.0-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-jdbc-2.3.0-amzn-0/6.0.0"/>
 
           <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-service-2.3.0-amzn-0.jar"
             name="hive-service-2.3.0-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-service-2.3.0-amzn-0/6.0.0"/>
 
           <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-service-rpc-2.3.0-amzn-0.jar"
             name="hive-service-rpc-2.3.0-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-service-rpc-2.3.0-amzn-0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-hcatalog-core-2.3.0-amzn-0.jar"
             name="hive-hcatalog-core-2.3.0-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-hcatalog-core-2.3.0-amzn-0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-hcatalog-pig-adapter-2.1.1-amzn-0.jar"
             name="hive-hcatalog-pig-adapter-2.1.1-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-hcatalog-pig-adapter-2.1.1-amzn-0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-hcatalog-server-extensions-2.3.0-amzn-0.jar"
             name="hive-hcatalog-server-extensions-2.3.0-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-hcatalog-server-extensions-2.3.0-amzn-0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-hbase-handler-2.3.0-amzn-0.jar"
             name="hive-hbase-handler-2.3.0-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-hbase-handler-2.3.0-amzn-0/6.0.0"/>
             
         <!-- Spark2 Hive libraries -->
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-beeline-1.2.1-spark2-amzn-0.jar"
             name="hive-beeline-1.2.1-spark2-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-beeline-1.2.1-spark2-amzn-0/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-cli-1.2.1-spark2-amzn-0.jar"
             name="hive-cli-1.2.1-spark2-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-cli-1.2.1-spark2-amzn-0/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-exec-1.2.1-spark2-amzn-0.jar"
             name="hive-exec-1.2.1-spark2-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-exec-1.2.1-spark2-amzn-0/6.0.0"/>   
          
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-jdbc-1.2.1-spark2-amzn-0.jar"
             name="hive-jdbc-1.2.1-spark2-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-jdbc-1.2.1-spark2-amzn-0/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-metastore-1.2.1-spark2-amzn-0.jar"
             name="hive-metastore-1.2.1-spark2-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-metastore-1.2.1-spark2-amzn-0/6.0.0"/>
 
         <!-- Pig libraries -->
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hadoop-lzo-0.4.19.jar"
             name="hadoop-lzo-0.4.19.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-lzo-0.4.19/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="pig-0.16.0-amzn-1-core-h2.jar"
             name="pig-0.16.0-amzn-1-core-h2.jar"
             mvn_uri="mvn:org.talend.libraries/pig-0.16.0-amzn-1-core-h2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="piggybank-emr550.jar"
             name="piggybank-emr550.jar"
             mvn_uri="mvn:org.talend.libraries/piggybank-emr550/6.0.0"/>
@@ -288,7 +288,7 @@
         <!-- S3 libraries -->
 
          <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hadoop-aws-2.7.3-amzn-3.jar"
             name="hadoop-aws-2.7.3-amzn-3.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-aws-2.7.3-amzn-3/6.0.0"/>
@@ -343,83 +343,83 @@
 
         <!-- Sqoop libraries -->
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="sqoop-1.4.6.jar"
             name="sqoop-1.4.6.jar"
             mvn_uri="mvn:org.talend.libraries/sqoop-1.4.6/6.0.0"/>
 
         <!-- Tez -->
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="tez-api-0.8.4.jar"
             name="tez-api-0.8.4.jar"
             mvn_uri="mvn:org.talend.libraries/tez-api-0.8.4/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="tez-common-0.8.4.jar"
             name="tez-common-0.8.4.jar"
             mvn_uri="mvn:org.talend.libraries/tez-common-0.8.4/6.0.0"/>
 
          <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="tez-dag-0.8.4.jar"
             name="tez-dag-0.8.4.jar"
             mvn_uri="mvn:org.talend.libraries/tez-dag-0.8.4/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="tez-mapreduce-0.8.4.jar"
             name="tez-mapreduce-0.8.4.jar"
             mvn_uri="mvn:org.talend.libraries/tez-mapreduce-0.8.4/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="tez-runtime-internals-0.8.4.jar"
             name="tez-runtime-internals-0.8.4.jar"
             mvn_uri="mvn:org.talend.libraries/tez-runtime-internals-0.8.4/6.0.0"/>
 
          <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="tez-runtime-library-0.8.4.jar"
             name="tez-runtime-library-0.8.4.jar"
             mvn_uri="mvn:org.talend.libraries/tez-runtime-library-0.8.4/6.0.0"/>
 
           <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="tez-yarn-timeline-history-0.8.4.jar"
             name="tez-yarn-timeline-history-0.8.4.jar"
             mvn_uri="mvn:org.talend.libraries/tez-yarn-timeline-history-0.8.4/6.0.0"/>
 
           <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="tez-yarn-timeline-history-with-acls-0.8.4.jar"
             name="tez-yarn-timeline-history-with-acls-0.8.4.jar"
             mvn_uri="mvn:org.talend.libraries/tez-yarn-timeline-history-with-acls-0.8.4/6.0.0"/>
 
         <!-- Third parties libraries -->
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="avro-mapred-1.7.5-hadoop2.jar"
             name="avro-mapred-1.7.5-hadoop2.jar"
             mvn_uri="mvn:org.talend.libraries/avro-mapred-1.7.5-hadoop2/6.1.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="parquet-avro-1.4.1.jar"
             name="parquet-avro-1.4.1.jar"
             mvn_uri="mvn:org.talend.libraries/parquet-avro-1.4.1/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="parquet-avro-1.8.2-shaded.jar"
             name="parquet-avro-1.8.2-shaded.jar"
             mvn_uri="mvn:org.talend.libraries/parquet-avro-1.8.2-shaded/6.0.0">
         </libraryNeeded>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="parquet-avro-1.8.2-shaded.jar"
             name="parquet-avro-1.8.2-shaded.jar"
             mvn_uri="mvn:org.talend.libraries/parquet-avro-1.8.2-shaded/6.0.0">
@@ -433,68 +433,68 @@
             uripath="platform:/plugin/org.talend.libraries.zookeeper/lib/zookeeper-3.4.10.jar"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="joda-time-2.9.3.jar"
             name="joda-time-2.9.3.jar"
             mvn_uri="mvn:org.talend.libraries/joda-time-2.9.3/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="parquet-hadoop-bundle-1.8.1.jar"
             name="parquet-hadoop-bundle-1.8.1.jar"
             mvn_uri="mvn:org.talend.libraries/parquet-hadoop-bundle-1.8.1/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="parquet-hadoop-bundle-1.6.0.jar"
             name="parquet-hadoop-bundle-1.6.0.jar"
             mvn_uri="mvn:org.talend.libraries/parquet-hadoop-bundle-1.6.0/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-logging-1.2.jar"
             name="commons-logging-1.2.jar"
             mvn_uri="mvn:org.talend.libraries/commons-logging-1.2/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-codec-1.4.jar"
             name="commons-codec-1.4.jar"
             mvn_uri="mvn:org.talend.libraries/commons-codec-1.4/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="metrics-core-2.2.0.jar"
             name="metrics-core-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/metrics-core-2.2.0/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="emr-metrics-client-2.1.0.jar"
             name="emr-metrics-client-2.1.0.jar"
             mvn_uri="mvn:org.talend.libraries/emr-metrics-client-2.1.0/6.2.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-httpclient-3.0.1.jar"
             name="commons-httpclient-3.0.1.jar"
             mvn_uri="mvn:org.talend.libraries/commons-httpclient-3.0.1/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="curator-client-2.7.1.jar"
             name="curator-client-2.7.1.jar"
             mvn_uri="mvn:org.talend.libraries/curator-client-2.7.1/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="curator-framework-2.7.1.jar"
             name="curator-framework-2.7.1.jar"
             mvn_uri="mvn:org.talend.libraries/curator-framework-2.7.1/6.0.0"/>
         
         <!-- GraphFrames libraries -->
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.mer580"
+            context="plugin:org.talend.hadoop.distribution.mer5140"
             id="graphframes-0.5.0-spark2.1-s_2.11.jar"
             name="graphframes-0.5.0-spark2.1-s_2.11.jar"
             mvn_uri="mvn:org.talend.libraries/graphframes-0.5.0-spark2.1-s_2.11/6.0.0">
@@ -503,1193 +503,1193 @@
         <!-- Spark2 libraries -->
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="metrics-graphite-3.1.2.jar"
             name="metrics-graphite-3.1.2.jar"
             mvn_uri="mvn:org.talend.libraries/metrics-graphite-3.1.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="osgi-resource-locator-1.0.1.jar"
             name="osgi-resource-locator-1.0.1.jar"
             mvn_uri="mvn:org.talend.libraries/osgi-resource-locator-1.0.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="minlog-1.3.0.jar"
             name="minlog-1.3.0.jar"
             mvn_uri="mvn:org.talend.libraries/minlog-1.3.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="javax.inject-1.jar"
             name="javax.inject-1.jar"
             mvn_uri="mvn:org.talend.libraries/javax.inject-1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="guice-servlet-3.0.jar"
             name="guice-servlet-3.0.jar"
             mvn_uri="mvn:org.talend.libraries/guice-servlet-3.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spark-graphx_2.11-2.2.0.jar"
             name="spark-graphx_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-graphx_2.11-2.2.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spark-tags_2.11-2.1.0.jar"
             name="spark-tags_2.11-2.1.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-tags_2.11-2.1.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jackson-core-asl-1.9.14-TALEND.jar"
             name="jackson-core-asl-1.9.14-TALEND.jar"
             mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="xbean-asm5-shaded-4.4.jar"
             name="xbean-asm5-shaded-4.4.jar"
             mvn_uri="mvn:org.talend.libraries/xbean-asm5-shaded-4.4/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="apache-log4j-extras-1.2.17.jar"
             name="apache-log4j-extras-1.2.17.jar"
             mvn_uri="mvn:org.talend.libraries/apache-log4j-extras-1.2.17/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-cli-2.3.0-amzn-0.jar"
             name="hive-cli-2.3.0-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-cli-2.3.0-amzn-0/6.0.0"/>
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-exec-2.3.0-amzn-0.jar"
             name="hive-exec-2.3.0-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-exec-2.3.0-amzn-0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jackson-jaxrs-1.9.13.jar"
             name="jackson-jaxrs-1.9.13.jar"
             mvn_uri="mvn:org.talend.libraries/jackson-jaxrs-1.9.13/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jersey-container-servlet-2.22.2.jar"
             name="jersey-container-servlet-2.22.2.jar"
             mvn_uri="mvn:org.talend.libraries/jersey-container-servlet-2.22.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="slf4j-api-1.7.16.jar"
             name="slf4j-api-1.7.16.jar"
             mvn_uri="mvn:org.talend.libraries/slf4j-api-1.7.16/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="protobuf-java-2.5.0.jar"
             name="protobuf-java-2.5.0.jar"
             mvn_uri="mvn:org.talend.libraries/protobuf-java-2.5.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hadoop-annotations-2.7.3-amzn-3.jar"
             name="hadoop-annotations-2.7.3-amzn-3.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-annotations-2.7.3-amzn-3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hadoop-ant-2.7.3-amzn-3.jar"
             name="hadoop-ant-2.7.3-amzn-3.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-ant-2.7.3-amzn-3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="scalap-2.11.8.jar"
             name="scalap-2.11.8.jar"
             mvn_uri="mvn:org.talend.libraries/scalap-2.11.8/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spark-launcher_2.11-2.2.0.jar"
             name="spark-launcher_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-launcher_2.11-2.2.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="core-1.1.2.jar"
             name="core-1.1.2.jar"
             mvn_uri="mvn:org.talend.libraries/core-1.1.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-cli-1.2.jar"
             name="commons-cli-1.2.jar"
             mvn_uri="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="antlr-runtime-3.4.jar"
             name="antlr-runtime-3.4.jar"
             mvn_uri="mvn:org.talend.libraries/antlr-runtime-3.4/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="javax.servlet-api-3.1.0.jar"
             name="javax.servlet-api-3.1.0.jar"
             mvn_uri="mvn:org.talend.libraries/javax.servlet-api-3.1.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-pool-1.5.4.jar"
             name="commons-pool-1.5.4.jar"
             mvn_uri="mvn:org.talend.libraries/commons-pool-1.5.4/6.0.0"/>
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="ST4-4.0.4.jar"
             name="ST4-4.0.4.jar"
             mvn_uri="mvn:org.talend.libraries/ST4-4.0.4/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spark-catalyst_2.11-2.2.0.jar"
             name="spark-catalyst_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-catalyst_2.11-2.2.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spark-network-shuffle_2.11-2.2.0.jar"
             name="spark-network-shuffle_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-network-shuffle_2.11-2.2.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-io-2.4.jar"
             name="commons-io-2.4.jar"
             mvn_uri="mvn:org.talend.libraries/commons-io-2.4/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="janino-3.0.0.jar"
             name="janino-3.0.0.jar"
             mvn_uri="mvn:org.talend.libraries/janino-3.0.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-compiler-3.0.0.jar"
             name="commons-compiler-3.0.0.jar"
             mvn_uri="mvn:org.talend.libraries/commons-compiler-3.0.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="stax-api-1.0-2.jar"
             name="stax-api-1.0-2.jar"
             mvn_uri="mvn:org.talend.libraries/stax-api-1.0-2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="guava-14.0.1.jar"
             name="guava-14.0.1.jar"
             mvn_uri="mvn:org.talend.libraries/guava-14.0.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hadoop-yarn-server-common-2.7.3-amzn-3.jar"
             name="hadoop-yarn-server-common-2.7.3-amzn-3.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-yarn-server-common-2.7.3-amzn-3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jsr305-1.3.9.jar"
             name="jsr305-1.3.9.jar"
             mvn_uri="mvn:org.talend.libraries/jsr305-1.3.9/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="netty-3.9.9.Final.jar"
             name="netty-3.9.9.Final.jar"
             mvn_uri="mvn:org.talend.libraries/netty-3.9.9.Final/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-codec-1.10.jar"
             name="commons-codec-1.10.jar"
             mvn_uri="mvn:org.talend.libraries/commons-codec-1.10/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="datanucleus-core-3.2.10.jar"
             name="datanucleus-core-3.2.10.jar"
             mvn_uri="mvn:org.talend.libraries/datanucleus-core-3.2.10/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="RoaringBitmap-0.5.11.jar"
             name="RoaringBitmap-0.5.11.jar"
             mvn_uri="mvn:org.talend.libraries/RoaringBitmap-0.5.11/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="pmml-model-1.2.15.jar"
             name="pmml-model-1.2.15.jar"
             mvn_uri="mvn:org.talend.libraries/pmml-model-1.2.15/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="pmml-schema-1.2.15.jar"
             name="pmml-schema-1.2.15.jar"
             mvn_uri="mvn:org.talend.libraries/pmml-schema-1.2.15/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spark-streaming_2.11-2.2.0.jar"
             name="spark-streaming_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-streaming_2.11-2.2.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jetty-6.1.26-emr.jar"
             name="jetty-6.1.26-emr.jar"
             mvn_uri="mvn:org.talend.libraries/jetty-6.1.26-emr/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jets3t-0.9.3.jar"
             name="jets3t-0.9.3.jar"
             mvn_uri="mvn:org.talend.libraries/jets3t-0.9.3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="libfb303-0.9.3.jar"
             name="libfb303-0.9.3.jar"
             mvn_uri="mvn:org.talend.libraries/libfb303-0.9.3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jaxb-api-2.2.2.jar"
             name="jaxb-api-2.2.2.jar"
             mvn_uri="mvn:org.talend.libraries/jaxb-api-2.2.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-collections-3.2.2.jar"
             name="commons-collections-3.2.2.jar"
             mvn_uri="mvn:org.talend.libraries/commons-collections-3.2.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jetty-util-6.1.26-emr.jar"
             name="jetty-util-6.1.26-emr.jar"
             mvn_uri="mvn:org.talend.libraries/jetty-util-6.1.26-emr/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-net-2.2.jar"
             name="commons-net-2.2.jar"
             mvn_uri="mvn:org.talend.libraries/commons-net-2.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="antlr-2.7.7.jar"
             name="antlr-2.7.7.jar"
             mvn_uri="mvn:org.talend.libraries/antlr-2.7.7/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spark-sql_2.11-2.2.0.jar"
             name="spark-sql_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-sql_2.11-2.2.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jcl-over-slf4j-1.7.16.jar"
             name="jcl-over-slf4j-1.7.16.jar"
             mvn_uri="mvn:org.talend.libraries/jcl-over-slf4j-1.7.16/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jackson-module-scala_2.11-2.6.7.1.jar"
             name="jackson-module-scala_2.11-2.6.7.1.jar"
             mvn_uri="mvn:org.talend.libraries/jackson-module-scala_2.11-2.6.7.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="paranamer-2.6.jar"
             name="paranamer-2.6.jar"
             mvn_uri="mvn:org.talend.libraries/paranamer-2.6/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-compress-1.4.1.jar"
             name="commons-compress-1.4.1.jar"
             mvn_uri="mvn:org.talend.libraries/commons-compress-1.4.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jackson-module-paranamer-2.6.7.jar"
             name="jackson-module-paranamer-2.6.7.jar"
             mvn_uri="mvn:org.talend.libraries/jackson-module-paranamer-2.6.7/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jackson-core-2.6.7.jar"
             name="jackson-core-2.6.7.jar"
             mvn_uri="mvn:org.talend.libraries/jackson-core-2.6.7/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jackson-databind-2.6.7.1.jar"
             name="jackson-databind-2.6.7.1.jar"
             mvn_uri="mvn:org.talend.libraries/jackson-databind-2.6.7.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="compress-lzf-1.0.3.jar"
             name="compress-lzf-1.0.3.jar"
             mvn_uri="mvn:org.talend.libraries/compress-lzf-1.0.3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="chill-java-0.8.0.jar"
             name="chill-java-0.8.0.jar"
             mvn_uri="mvn:org.talend.libraries/chill-java-0.8.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jersey-client-1.9.jar"
             name="jersey-client-1.9.jar"
             mvn_uri="mvn:org.talend.libraries/jersey-client-1.9/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jersey-client-2.22.2.jar"
             name="jersey-client-2.22.2.jar"
             mvn_uri="mvn:org.talend.libraries/jersey-client-2.22.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jersey-core-1.9.jar"
             name="jersey-core-1.9.jar"
             mvn_uri="mvn:org.talend.libraries/jersey-core-1.9/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-lang3-3.5.jar"
             name="commons-lang3-3.5.jar"
             mvn_uri="mvn:org.talend.libraries/commons-lang3-3.5/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="xmlenc-0.52.jar"
             name="xmlenc-0.52.jar"
             mvn_uri="mvn:org.talend.libraries/xmlenc-0.52/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="scala-reflect-2.11.8.jar"
             name="scala-reflect-2.11.8.jar"
             mvn_uri="mvn:org.talend.libraries/scala-reflect-2.11.8/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="metrics-core-3.1.2.jar"
             name="metrics-core-3.1.2.jar"
             mvn_uri="mvn:org.talend.libraries/metrics-core-3.1.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spark-mllib_2.11-2.2.0.jar"
             name="spark-mllib_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-mllib_2.11-2.2.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="parquet-hadoop-bundle-1.6.0.jar"
             name="parquet-hadoop-bundle-1.6.0.jar"
             mvn_uri="mvn:org.talend.libraries/parquet-hadoop-bundle-1.6.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="stringtemplate-3.2.1.jar"
             name="stringtemplate-3.2.1.jar"
             mvn_uri="mvn:org.talend.libraries/stringtemplate-3.2.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jackson-databind-2.6.7.1.jar"
             name="jackson-databind-2.6.7.1.jar"
             mvn_uri="mvn:org.talend.libraries/jackson-databind-2.6.7.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="scala-library-2.11.8.jar"
             name="scala-library-2.11.8.jar"
             mvn_uri="mvn:org.talend.libraries/scala-library-2.11.8/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="py4j-0.10.4.jar"
             name="py4j-0.10.4.jar"
             mvn_uri="mvn:org.talend.libraries/py4j-0.10.4/6.0.0"/>
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-lang-2.6.jar"
             name="commons-lang-2.6.jar"
             mvn_uri="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="htrace-core-3.1.0-incubating.jar"
             name="htrace-core-3.1.0-incubating.jar"
             mvn_uri="mvn:org.talend.libraries/htrace-core-3.1.0-incubating/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spark-sketch_2.11-2.2.0.jar"
             name="spark-sketch_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-sketch_2.11-2.2.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-httpclient-3.1.jar"
             name="commons-httpclient-3.1.jar"
             mvn_uri="mvn:org.talend.libraries/commons-httpclient-3.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="datanucleus-api-jdo-3.2.6.jar"
             name="datanucleus-api-jdo-3.2.6.jar"
             mvn_uri="mvn:org.talend.libraries/datanucleus-api-jdo-3.2.6/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="datanucleus-api-jdo-4.2.4.jar"
             name="datanucleus-api-jdo-4.2.4.jar"
             mvn_uri="mvn:org.talend.libraries/datanucleus-api-jdo-4.2.4/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="datanucleus-core-4.1.17.jar"
             name="datanucleus-core-4.1.17.jar"
             mvn_uri="mvn:org.talend.libraries/datanucleus-core-4.1.17/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="datanucleus-core-3.2.10.jar"
             name="datanucleus-core-3.2.10.jar"
             mvn_uri="mvn:org.talend.libraries/datanucleus-core-3.2.10/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="datanucleus-rdbms-4.1.19.jar"
             name="datanucleus-rdbms-4.1.19.jar"
             mvn_uri="mvn:org.talend.libraries/datanucleus-rdbms-4.1.19/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="datanucleus-rdbms-3.2.9.jar"
             name="datanucleus-rdbms-3.2.9.jar"
             mvn_uri="mvn:org.talend.libraries/datanucleus-rdbms-3.2.9/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hk2-utils-2.4.0-b34.jar"
             name="hk2-utils-2.4.0-b34.jar"
             mvn_uri="mvn:org.talend.libraries/hk2-utils-2.4.0-b34/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-logging-1.1.3.jar"
             name="commons-logging-1.1.3.jar"
             mvn_uri="mvn:org.talend.libraries/commons-logging-1.1.3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jackson-xc-1.9.13.jar"
             name="jackson-xc-1.9.13.jar"
             mvn_uri="mvn:org.talend.libraries/jackson-xc-1.9.13/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="stream-2.7.0.jar"
             name="stream-2.7.0.jar"
             mvn_uri="mvn:org.talend.libraries/stream-2.7.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-metastore-2.3.0-amzn-0.jar"
             name="hive-metastore-2.3.0-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-metastore-2.3.0-amzn-0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spark-hive_2.11-2.2.0.jar"
             name="spark-hive_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-hive_2.11-2.2.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spark-mllib-local_2.11-2.2.0.jar"
             name="spark-mllib-local_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-mllib-local_2.11-2.2.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="json4s-ast_2.11-3.2.11.jar"
             name="json4s-ast_2.11-3.2.11.jar"
             mvn_uri="mvn:org.talend.libraries/json4s-ast_2.11-3.2.11/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jul-to-slf4j-1.7.16.jar"
             name="jul-to-slf4j-1.7.16.jar"
             mvn_uri="mvn:org.talend.libraries/jul-to-slf4j-1.7.16/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jline-2.12.1.jar"
             name="jline-2.12.1.jar"
             mvn_uri="mvn:org.talend.libraries/jline-2.12.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jersey-container-servlet-core-2.22.2.jar"
             name="jersey-container-servlet-core-2.22.2.jar"
             mvn_uri="mvn:org.talend.libraries/jersey-container-servlet-core-2.22.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="javax.inject-2.4.0-b34.jar"
             name="javax.inject-2.4.0-b34.jar"
             mvn_uri="mvn:org.talend.libraries/javax.inject-2.4.0-b34/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spark-core_2.11-2.2.0.jar"
             name="spark-core_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-core_2.11-2.2.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="bonecp-0.8.0.RELEASE.jar"
             name="bonecp-0.8.0.RELEASE.jar"
             mvn_uri="mvn:org.talend.libraries/bonecp-0.8.0.RELEASE/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="breeze_2.11-0.13.1.jar"
             name="breeze_2.11-0.13.1.jar"
             mvn_uri="mvn:org.talend.libraries/breeze_2.11-0.13.1/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="breeze-macros_2.11-0.13.1.jar"
             name="breeze-macros_2.11-0.13.1.jar"
             mvn_uri="mvn:org.talend.libraries/breeze-macros_2.11-0.13.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jtransforms-2.4.0.jar"
             name="jtransforms-2.4.0.jar"
             mvn_uri="mvn:org.talend.libraries/jtransforms-2.4.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="calcite-avatica-1.2.0-incubating.jar"
             name="calcite-avatica-1.2.0-incubating.jar"
             mvn_uri="mvn:org.talend.libraries/calcite-avatica-1.2.0-incubating/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="calcite-core-1.2.0-incubating.jar"
             name="calcite-core-1.2.0-incubating.jar"
             mvn_uri="mvn:org.talend.libraries/calcite-core-1.2.0-incubating/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="calcite-linq4j-1.2.0-incubating.jar"
             name="calcite-linq4j-1.2.0-incubating.jar"
             mvn_uri="mvn:org.talend.libraries/calcite-linq4j-1.2.0-incubating/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spire-macros_2.11-0.13.0.jar"
             name="spire-macros_2.11-0.13.0.jar"
             mvn_uri="mvn:org.talend.libraries/spire-macros_2.11-0.13.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hk2-api-2.4.0-b34.jar"
             name="hk2-api-2.4.0-b34.jar"
             mvn_uri="mvn:org.talend.libraries/hk2-api-2.4.0-b34/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jdo-api-3.0.1.jar"
             name="jdo-api-3.0.1.jar"
             mvn_uri="mvn:org.talend.libraries/jdo-api-3.0.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hadoop-client-2.7.3-amzn-3.jar"
             name="hadoop-client-2.7.3-amzn-3.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-client-2.7.3-amzn-3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="scala-compiler-2.11.8.jar"
             name="scala-compiler-2.11.8.jar"
             mvn_uri="mvn:org.talend.libraries/scala-compiler-2.11.8/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="xz-1.0.jar"
             name="xz-1.0.jar"
             mvn_uri="mvn:org.talend.libraries/xz-1.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="gson-2.2.4.jar"
             name="gson-2.2.4.jar"
             mvn_uri="mvn:org.talend.libraries/gson-2.2.4/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jersey-server-2.22.2.jar"
             name="jersey-server-2.22.2.jar"
             mvn_uri="mvn:org.talend.libraries/jersey-server-2.22.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-math3-3.4.1.jar"
             name="commons-math3-3.4.1.jar"
             mvn_uri="mvn:org.talend.libraries/commons-math3-3.4.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="base64-2.3.8.jar"
             name="base64-2.3.8.jar"
             mvn_uri="mvn:org.talend.libraries/base64-2.3.8/6.0.0"/>
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="eigenbase-properties-1.1.5.jar"
             name="eigenbase-properties-1.1.5.jar"
             mvn_uri="mvn:org.talend.libraries/eigenbase-properties-1.1.5/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="json4s-jackson_2.11-3.2.11.jar"
             name="json4s-jackson_2.11-3.2.11.jar"
             mvn_uri="mvn:org.talend.libraries/json4s-jackson_2.11-3.2.11/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="curator-client-2.6.0.jar"
             name="curator-client-2.6.0.jar"
             mvn_uri="mvn:org.talend.libraries/curator-client-2.6.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="guice-3.0.jar"
             name="guice-3.0.jar"
             mvn_uri="mvn:org.talend.libraries/guice-3.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="antlr4-runtime-4.5.3.jar"
             name="antlr4-runtime-4.5.3.jar"
             mvn_uri="mvn:org.talend.libraries/antlr4-runtime-4.5.3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="chill_2.11-0.8.0.jar"
             name="chill_2.11-0.8.0.jar"
             mvn_uri="mvn:org.talend.libraries/chill_2.11-0.8.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="curator-framework-2.6.0.jar"
             name="curator-framework-2.6.0.jar"
             mvn_uri="mvn:org.talend.libraries/curator-framework-2.6.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="univocity-parsers-2.2.1.jar"
             name="univocity-parsers-2.2.1.jar"
             mvn_uri="mvn:org.talend.libraries/univocity-parsers-2.2.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-dbcp-1.4.jar"
             name="commons-dbcp-1.4.jar"
             mvn_uri="mvn:org.talend.libraries/commons-dbcp-1.4/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="javassist-3.18.1-GA.jar"
             name="javassist-3.18.1-GA.jar"
             mvn_uri="mvn:org.talend.libraries/javassist-3.18.1-GA/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="opencsv-2.3.jar"
             name="opencsv-2.3.jar"
             mvn_uri="mvn:org.talend.libraries/opencsv-2.3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="oro-2.0.8.jar"
             name="oro-2.0.8.jar"
             mvn_uri="mvn:org.talend.libraries/oro-2.0.8/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spark-unsafe_2.11-2.2.0.jar"
             name="spark-unsafe_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-unsafe_2.11-2.2.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jodd-core-3.5.2.jar"
             name="jodd-core-3.5.2.jar"
             mvn_uri="mvn:org.talend.libraries/jodd-core-3.5.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="json4s-core_2.11-3.2.11.jar"
             name="json4s-core_2.11-3.2.11.jar"
             mvn_uri="mvn:org.talend.libraries/json4s-core_2.11-3.2.11/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="super-csv-2.2.0.jar"
             name="super-csv-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/super-csv-2.2.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="JavaEWAH-0.3.2.jar"
             name="JavaEWAH-0.3.2.jar"
             mvn_uri="mvn:org.talend.libraries/JavaEWAH-0.3.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jersey-common-2.22.2.jar"
             name="jersey-common-2.22.2.jar"
             mvn_uri="mvn:org.talend.libraries/jersey-common-2.22.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="lz4-1.3.0.jar"
             name="lz4-1.3.0.jar"
             mvn_uri="mvn:org.talend.libraries/lz4-1.3.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="libthrift-0.9.3.jar"
             name="libthrift-0.9.3.jar"
             mvn_uri="mvn:org.talend.libraries/libthrift-0.9.3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="slf4j-log4j12-1.7.16.jar"
             name="slf4j-log4j12-1.7.16.jar"
             mvn_uri="mvn:org.talend.libraries/slf4j-log4j12-1.7.16/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spire_2.11-0.13.0.jar"
             name="spire_2.11-0.13.0.jar"
             mvn_uri="mvn:org.talend.libraries/spire_2.11-0.13.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jersey-guava-2.22.2.jar"
             name="jersey-guava-2.22.2.jar"
             mvn_uri="mvn:org.talend.libraries/jersey-guava-2.22.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="snappy-0.2.jar"
             name="snappy-0.2.jar"
             mvn_uri="mvn:org.talend.libraries/snappy-0.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="snappy-java-1.1.2.6.jar"
             name="snappy-java-1.1.2.6.jar"
             mvn_uri="mvn:org.talend.libraries/snappy-java-1.1.2.6/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="javolution-5.5.1.jar"
             name="javolution-5.5.1.jar"
             mvn_uri="mvn:org.talend.libraries/javolution-5.5.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jackson-annotations-2.6.7.jar"
             name="jackson-annotations-2.6.7.jar"
             mvn_uri="mvn:org.talend.libraries/jackson-annotations-2.6.7/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jackson-dataformat-cbor-2.6.7.jar"
             name="jackson-dataformat-cbor-2.6.7.jar"
             mvn_uri="mvn:org.talend.libraries/jackson-dataformat-cbor-2.6.7/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="curator-recipes-2.6.0.jar"
             name="curator-recipes-2.6.0.jar"
             mvn_uri="mvn:org.talend.libraries/curator-recipes-2.6.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-beanutils-1.7.0.jar"
             name="commons-beanutils-1.7.0.jar"
             mvn_uri="mvn:org.talend.libraries/commons-beanutils-1.7.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-jdbc-2.3.0-amzn-0.jar"
             name="hive-jdbc-2.3.0-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-jdbc-2.3.0-amzn-0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="avro-ipc-1.7.7.jar"
             name="avro-ipc-1.7.7.jar"
             mvn_uri="mvn:org.talend.libraries/avro-ipc-1.7.7/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="httpcore-4.4.4.jar"
             name="httpcore-4.4.4.jar"
             mvn_uri="mvn:org.talend.libraries/httpcore-4.4.4/6.3.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="api-util-1.0.0-M20.jar"
             name="api-util-1.0.0-M20.jar"
             mvn_uri="mvn:org.talend.libraries/api-util-1.0.0-M20/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="avro-mapred-1.7.7-hadoop2.jar"
             name="avro-mapred-1.7.7-hadoop2.jar"
             mvn_uri="mvn:org.talend.libraries/avro-mapred-1.7.7-hadoop2/6.0.0"/>
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hadoop-yarn-server-web-proxy-2.7.3-amzn-3.jar"
             name="hadoop-yarn-server-web-proxy-2.7.3-amzn-3.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-yarn-server-web-proxy-2.7.3-amzn-3/6.0.0"/>
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="aopalliance-1.0.jar"
             name="aopalliance-1.0.jar"
             mvn_uri="mvn:org.talend.libraries/aopalliance-1.0/6.0.0"/>
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-beanutils-core-1.8.0.jar"
             name="commons-beanutils-core-1.8.0.jar"
             mvn_uri="mvn:org.talend.libraries/commons-beanutils-core-1.8.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="httpclient-4.5.3.jar"
             name="httpclient-4.5.3.jar"
             mvn_uri="mvn:org.talend.libraries/httpclient-4.5.3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="ivy-2.4.0.jar"
             name="ivy-2.4.0.jar"
             mvn_uri="mvn:org.talend.libraries/ivy-2.4.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="scala-parser-combinators_2.11-1.0.4.jar"
             name="scala-parser-combinators_2.11-1.0.4.jar"
             mvn_uri="mvn:org.talend.libraries/scala-parser-combinators_2.11-1.0.4/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="metrics-jvm-3.1.2.jar"
             name="metrics-jvm-3.1.2.jar"
             mvn_uri="mvn:org.talend.libraries/metrics-jvm-3.1.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="log4j-1.2.17.jar"
             name="log4j-1.2.17.jar"
             mvn_uri="mvn:org.talend.libraries/log4j-1.2.17/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hk2-locator-2.4.0-b34.jar"
             name="hk2-locator-2.4.0-b34.jar"
             mvn_uri="mvn:org.talend.libraries/hk2-locator-2.4.0-b34/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="mx4j-3.0.2.jar"
             name="mx4j-3.0.2.jar"
             mvn_uri="mvn:org.talend.libraries/mx4j-3.0.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="api-asn1-api-1.0.0-M20.jar"
             name="api-asn1-api-1.0.0-M20.jar"
             mvn_uri="mvn:org.talend.libraries/api-asn1-api-1.0.0-M20/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="aopalliance-repackaged-2.4.0-b34.jar"
             name="aopalliance-repackaged-2.4.0-b34.jar"
             mvn_uri="mvn:org.talend.libraries/aopalliance-repackaged-2.4.0-b34/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="pyrolite-4.13.jar"
             name="pyrolite-4.13.jar"
             mvn_uri="mvn:org.talend.libraries/pyrolite-4.13/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-configuration-1.6.jar"
             name="commons-configuration-1.6.jar"
             mvn_uri="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="leveldbjni-all-1.8.jar"
             name="leveldbjni-all-1.8.jar"
             mvn_uri="mvn:org.talend.libraries/leveldbjni-all-1.8/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="javax.annotation-api-1.2.jar"
             name="javax.annotation-api-1.2.jar"
             mvn_uri="mvn:org.talend.libraries/javax.annotation-api-1.2/6.1.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jpam-1.1.jar"
             name="jpam-1.1.jar"
             mvn_uri="mvn:org.talend.libraries/jpam-1.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="objenesis-2.1.jar"
             name="objenesis-2.1.jar"
             mvn_uri="mvn:org.talend.libraries/objenesis-2.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jta-1.1.jar"
             name="jta-1.1.jar"
             mvn_uri="mvn:org.talend.libraries/jta-1.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="datanucleus-rdbms-3.2.9.jar"
             name="datanucleus-rdbms-3.2.9.jar"
             mvn_uri="mvn:org.talend.libraries/datanucleus-rdbms-3.2.9/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="xercesImpl-2.9.1.jar"
             name="xercesImpl-2.9.1.jar"
             mvn_uri="mvn:org.talend.libraries/xercesImpl-2.9.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="scala-xml_2.11-1.0.2.jar"
             name="scala-xml_2.11-1.0.2.jar"
             mvn_uri="mvn:org.talend.libraries/scala-xml_2.11-1.0.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="calcite-linq4j-1.2.0-incubating.jar"
             name="calcite-linq4j-1.2.0-incubating.jar"
             mvn_uri="mvn:org.talend.libraries/calcite-linq4j-1.2.0-incubating/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="metrics-json-3.1.2.jar"
             name="metrics-json-3.1.2.jar"
             mvn_uri="mvn:org.talend.libraries/metrics-json-3.1.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-digester-1.8.jar"
             name="commons-digester-1.8.jar"
             mvn_uri="mvn:org.talend.libraries/commons-digester-1.8/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="avro-1.7.7.jar"
             name="avro-1.7.7.jar"
             mvn_uri="mvn:org.talend.libraries/avro-1.7.7/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hive-beeline-2.3.0-amzn-0.jar"
             name="hive-beeline-2.3.0-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-beeline-2.3.0-amzn-0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="arpack_combined_all-0.1.jar"
             name="arpack_combined_all-0.1.jar"
             mvn_uri="mvn:org.talend.libraries/arpack_combined_all-0.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="apacheds-i18n-2.0.0-M15.jar"
             name="apacheds-i18n-2.0.0-M15.jar"
             mvn_uri="mvn:org.talend.libraries/apacheds-i18n-2.0.0-M15/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="calcite-core-1.2.0-incubating.jar"
             name="calcite-core-1.2.0-incubating.jar"
             mvn_uri="mvn:org.talend.libraries/calcite-core-1.2.0-incubating/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spark-network-common_2.11-2.2.0.jar"
             name="spark-network-common_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-network-common_2.11-2.2.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="mail-1.4.7.jar"
             name="mail-1.4.7.jar"
             mvn_uri="mvn:org.talend.libraries/mail-1.4.7/6.0.0"/>
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jersey-media-jaxb-2.22.2.jar"
             name="jersey-media-jaxb-2.22.2.jar"
             mvn_uri="mvn:org.talend.libraries/jersey-media-jaxb-2.22.2/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="validation-api-1.1.0.Final.jar"
             name="validation-api-1.1.0.Final.jar"
             mvn_uri="mvn:org.talend.libraries/validation-api-1.1.0.Final/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="hadoop-mapreduce-client-shuffle-2.7.3-amzn-3.jar"
             name="hadoop-mapreduce-client-shuffle-2.7.3-amzn-3.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-shuffle-2.7.3-amzn-3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spark-hive-thriftserver_2.11-2.2.0.jar"
             name="spark-hive-thriftserver_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-hive-thriftserver_2.11-2.2.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="kryo-shaded-3.0.3.jar"
             name="kryo-shaded-3.0.3.jar"
             mvn_uri="mvn:org.talend.libraries/kryo-shaded-3.0.3/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="bcprov-jdk15on-1.51.jar"
             name="bcprov-jdk15on-1.51.jar"
             mvn_uri="mvn:org.talend.libraries/bcprov-jdk15on-1.51/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="java-xmlbuilder-1.0.jar"
             name="java-xmlbuilder-1.0.jar"
             mvn_uri="mvn:org.talend.libraries/java-xmlbuilder-1.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spark-repl_2.11-2.2.0.jar"
             name="spark-repl_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-repl_2.11-2.2.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spark-yarn_2.11-2.2.0.jar"
             name="spark-yarn_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-yarn_2.11-2.2.0/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="zookeeper-3.4.6.jar"
             name="zookeeper-3.4.6.jar"
             mvn_uri="mvn:org.talend.libraries/zookeeper-3.4.6/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="apacheds-kerberos-codec-2.0.0-M15.jar"
             name="apacheds-kerberos-codec-2.0.0-M15.jar"
             mvn_uri="mvn:org.talend.libraries/apacheds-kerberos-codec-2.0.0-M15/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="activation-1.1.1.jar"
             name="activation-1.1.1.jar"
             mvn_uri="mvn:org.talend.libraries/activation-1.1.1/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="jackson-mapper-asl-1.9.14-TALEND.jar"
             name="jackson-mapper-asl-1.9.14-TALEND.jar"
             mvn_uri="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"/>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="parquet-jackson-1.8.2.jar"
             name="parquet-jackson-1.8.2.jar"
             mvn_uri="mvn:org.talend.libraries/parquet-jackson-1.8.2/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="parquet-column-1.8.2.jar"
             name="parquet-column-1.8.2.jar"
             mvn_uri="mvn:org.talend.libraries/parquet-column-1.8.2/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="parquet-common-1.8.2.jar"
             name="parquet-common-1.8.2.jar"
             mvn_uri="mvn:org.talend.libraries/parquet-common-1.8.2/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="parquet-encoding-1.8.2.jar"
             name="parquet-encoding-1.8.2.jar"
             mvn_uri="mvn:org.talend.libraries/parquet-encoding-1.8.2/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="parquet-format-2.3.1.jar"
             name="parquet-format-2.3.1.jar"
             mvn_uri="mvn:org.talend.libraries/parquet-format-2.3.1/6.0.0"/>
             
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="parquet-hadoop-1.8.2.jar"
             name="parquet-hadoop-1.8.2.jar"
             mvn_uri="mvn:org.talend.libraries/parquet-hadoop-1.8.2/6.0.0"/>
                         
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="derby-10.12.1.1.jar"
             name="derby-10.12.1.1.jar"
             mvn_uri="mvn:org.talend.libraries/derby-10.12.1.1/6.0.0"/>
@@ -1697,35 +1697,35 @@
         <!-- Kinesis libraries -->
         
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="emr-dynamodb-hadoop-4.4.0.jar"
             name="emr-dynamodb-hadoop-4.4.0.jar"
             mvn_uri="mvn:org.talend.libraries/emr-dynamodb-hadoop-4.4.0/6.0.0">
         </libraryNeeded>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="emr-core-2.6.0.jar"
             name="emr-core-2.6.0.jar"
             mvn_uri="mvn:org.talend.libraries/emr-core-2.6.0/6.0.0">
         </libraryNeeded>
 
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="commons-pool2-2.2.jar"
             name="commons-pool2-2.2.jar"
             mvn_uri="mvn:org.talend.libraries/commons-pool2-2.2/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spark-streaming-kinesis-asl_2.11-2.2.0.jar"
             name="spark-streaming-kinesis-asl_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-streaming-kinesis-asl_2.11-2.2.0/6.0.0"/>
 
 		<!-- Kafka libraries -->
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spark-streaming-kafka-0-10-assembly_2.11-2.2.0.jar"
             name="spark-streaming-kafka-0-10-assembly_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka-0-10-assembly_2.11-2.2.0/6.0.0">
@@ -1733,7 +1733,7 @@
 
 		<!-- Flume libraries -->
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
+            context="plugin:org.talend.hadoop.distribution.emr5140"
             id="spark-streaming-flume-assembly_2.11-2.2.0.jar"
             name="spark-streaming-flume-assembly_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-streaming-flume-assembly_2.11-2.2.0/6.0.0">

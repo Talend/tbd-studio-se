@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.emr580.modulegroup.node.sparkbatch;
+package org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkbatch;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -19,7 +19,7 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.SparkBatchLinkedNodeCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 
-public class EMR580SparkBatchAzureNodeModuleGroup {
+public class EMR5140SparkBatchAzureNodeModuleGroup {
     
     public static final String SPARK_AZURE_MRREQUIRED_MODULE_GROUP = "SPARK-AZURE-LIB-MRREQUIRED-EMR_5_8_0_LATEST";
 

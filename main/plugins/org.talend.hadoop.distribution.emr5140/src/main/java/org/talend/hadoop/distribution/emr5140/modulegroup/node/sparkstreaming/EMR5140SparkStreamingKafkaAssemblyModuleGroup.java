@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.emr580.modulegroup.node.sparkstreaming;
+package org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkstreaming;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -19,7 +19,7 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.SparkStreamingLinkedNodeCondition;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 
-public class EMR580SparkStreamingKafkaAssemblyModuleGroup {
+public class EMR5140SparkStreamingKafkaAssemblyModuleGroup {
 
     public static final String KAFKA_ASSEMBLY_GROUP_NAME = "SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-EMR_5_8_0_LATEST"; //$NON-NLS-1$
 
