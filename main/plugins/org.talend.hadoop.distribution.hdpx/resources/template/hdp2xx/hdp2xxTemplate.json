@@ -520,6 +520,7 @@
 			"id": "MAPREDUCE-LIB-DYNAMIC",
 			"description": "",
 			"modules": [
+				"hadoop-client"
 			]
 		},
 		{
@@ -628,61 +629,61 @@
 	"classLoaders": [
 		{
 			"id": "hadoop-hdfs",
-			"index": "HDFS:CLOUDERA:{dynamicVersion}",
+			"index": "HDFS:{distribution}:{dynamicVersion}",
 			"moduleGroup": "HDFS-LIB-DYNAMIC",
 			"description": ""
 		},
 		{
 			"id": "hadoop-hdfs-with-krb",
-			"index": "HDFS:CLOUDERA:{dynamicVersion}?USE_KRB",
+			"index": "HDFS:{distribution}:{dynamicVersion}?USE_KRB",
 			"moduleGroup": "HDFS-LIB-DYNAMIC",
 			"description": ""
 		},
 		{
 			"id": "hive-embedded",
-			"index": "HIVE:CLOUDERA:{dynamicVersion}:EMBEDDED",
+			"index": "HIVE:{distribution}:{dynamicVersion}:EMBEDDED",
 			"moduleGroup": "HIVE-LIB-DYNAMIC",
 			"description": ""
 		},
 		{
 			"id": "hive-standalone",
-			"index": "HIVE:CLOUDERA:{dynamicVersion}:STANDALONE",
+			"index": "HIVE:{distribution}:{dynamicVersion}:STANDALONE",
 			"moduleGroup": "HIVE-LIB-DYNAMIC",
 			"description": ""
 		},
 		{
 			"id": "hive2-embedded",
-			"index": "HIVE2:CLOUDERA:{dynamicVersion}:EMBEDDED",
+			"index": "HIVE2:{distribution}:{dynamicVersion}:EMBEDDED",
 			"moduleGroup": "HIVE-LIB-DYNAMIC",
 			"description": ""
 		},
 		{
 			"id": "hive2-standalone",
-			"index": "HIVE2:CLOUDERA:{dynamicVersion}:STANDALONE",
+			"index": "HIVE2:{distribution}:{dynamicVersion}:STANDALONE",
 			"moduleGroup": "HIVE-LIB-DYNAMIC",
 			"description": ""
 		},
 		{
 			"id": "hbase",
-			"index": "HBASE:CLOUDERA:{dynamicVersion}",
+			"index": "HBASE:{distribution}:{dynamicVersion}",
 			"moduleGroup": "HBASE-LIB-DYNAMIC",
 			"description": ""
 		},
 		{
 			"id": "mapreduce",
-			"index": "MAP_REDUCE:CLOUDERA:{dynamicVersion}",
+			"index": "MAP_REDUCE:{distribution}:{dynamicVersion}",
 			"moduleGroup": "MAPREDUCE-LIB-DYNAMIC",
 			"description": ""
 		},
 		{
 			"id": "impala",
-			"index": "IMPALA:CLOUDERA:{dynamicVersion}",
+			"index": "IMPALA:{distribution}:{dynamicVersion}",
 			"moduleGroup": "IMPALA-LIB-DYNAMIC",
 			"description": ""
 		},
 		{
 			"id": "impala-with-krb",
-			"index": "IMPALA:CLOUDERA:{dynamicVersion}?USE_KRB",
+			"index": "IMPALA:{distribution}:{dynamicVersion}?USE_KRB",
 			"moduleGroup": "IMPALA-LIB-DYNAMIC",
 			"description": ""
 		}
