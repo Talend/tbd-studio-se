@@ -42,16 +42,6 @@ import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.emr.IAmazonEMRDistribution;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.spark.EMR5140SparkDynamoDBNodeModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkbatch.EMR5140GraphFramesNodeModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkbatch.EMR5140SparkBatchAzureNodeModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkbatch.EMR5140SparkBatchParquetNodeModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkbatch.EMR5140SparkBatchS3NodeModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkstreaming.EMR5140SparkStreamingFlumeNodeModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkstreaming.EMR5140SparkStreamingKafkaAssemblyModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkstreaming.EMR5140SparkStreamingKinesisNodeModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkstreaming.EMR5140SparkStreamingParquetNodeModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkstreaming.EMR5140SparkStreamingS3NodeModuleGroup;
 import org.talend.hadoop.distribution.emr5140.modulegroup.EMR5140HBaseModuleGroup;
 import org.talend.hadoop.distribution.emr5140.modulegroup.EMR5140HCatalogModuleGroup;
 import org.talend.hadoop.distribution.emr5140.modulegroup.EMR5140HDFSModuleGroup;
@@ -66,6 +56,16 @@ import org.talend.hadoop.distribution.emr5140.modulegroup.EMR5140SqoopModuleGrou
 import org.talend.hadoop.distribution.emr5140.modulegroup.EMR5140WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.emr5140.modulegroup.node.mr.EMR5140MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.emr5140.modulegroup.node.pigoutput.EMR5140PigOutputNodeModuleGroup;
+import org.talend.hadoop.distribution.emr5140.modulegroup.node.spark.EMR5140SparkDynamoDBNodeModuleGroup;
+import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkbatch.EMR5140GraphFramesNodeModuleGroup;
+import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkbatch.EMR5140SparkBatchAzureNodeModuleGroup;
+import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkbatch.EMR5140SparkBatchParquetNodeModuleGroup;
+import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkbatch.EMR5140SparkBatchS3NodeModuleGroup;
+import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkstreaming.EMR5140SparkStreamingFlumeNodeModuleGroup;
+import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkstreaming.EMR5140SparkStreamingKafkaAssemblyModuleGroup;
+import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkstreaming.EMR5140SparkStreamingKinesisNodeModuleGroup;
+import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkstreaming.EMR5140SparkStreamingParquetNodeModuleGroup;
+import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkstreaming.EMR5140SparkStreamingS3NodeModuleGroup;
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
@@ -75,19 +75,19 @@ public class EMR5140Distribution extends AbstractDistribution implements
 		HCatalogComponent, HiveComponent, HiveOnSparkComponent, SqoopComponent, SparkBatchComponent, SparkStreamingComponent,
 		IAmazonEMRDistribution {
 
-	public static final String VERSION = "EMR_5_8_0"; //$NON-NLS-1$
+    public static final String VERSION = "EMR_5_14_0"; //$NON-NLS-1$
 
-	public static final String VERSION_DISPLAY = "EMR 5.8.0 (Apache 2.7.3)"; //$NON-NLS-1$
+    public static final String VERSION_DISPLAY = "EMR 5.14.0 (Hadoop 2.8.3)"; //$NON-NLS-1$
 
-	public static final String PIG_EMR5140_DISPLAY = "EMR 5.8.0 (Pig 0.16.0)";//$NON-NLS-1$
+    public static final String PIG_EMR5140_DISPLAY = "EMR 5.14.0 (Pig 0.17.0)";//$NON-NLS-1$
 
-	public static final String SQOOP_EMR5140_DISPLAY = "EMR 5.8.0 (Sqoop 1.4.6)"; //$NON-NLS-1$
+    public static final String SQOOP_EMR5140_DISPLAY = "EMR 5.14.0 (Sqoop 1.4.7)"; //$NON-NLS-1$
 
-	public static final String HIVE_EMR5140_DISPLAY = "EMR 5.8.0 (Hive 2.3.0)"; //$NON-NLS-1$
+    public static final String HIVE_EMR5140_DISPLAY = "EMR 5.14.0 (Hive 2.3.2)"; //$NON-NLS-1$
 
 	private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,/usr/lib/hadoop-lzo/lib/*,/usr/share/aws/emr/emrfs/conf, /usr/share/aws/emr/emrfs/lib/*,/usr/share/aws/emr/emrfs/auxlib/*,/usr/share/aws/emr/lib/*,/usr/share/aws/emr/ddb/lib/emr-ddb-hadoop.jar, /usr/share/aws/emr/goodies/lib/emr-hadoop-goodies.jar,/usr/share/aws/emr/kinesis/lib/emr-kinesis-hadoop.jar,/usr/lib/spark/yarn/lib/datanucleus-api-jdo.jar,/usr/lib/spark/yarn/lib/datanucleus-core.jar,/usr/lib/spark/yarn/lib/datanucleus-rdbms.jar,/usr/share/aws/emr/cloudwatch-sink/lib/*"; //$NON-NLS-1$
 
-	private final static String SPARK_MODULE_GROUP_NAME = "SPARK2-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+	private final static String SPARK_MODULE_GROUP_NAME = "SPARK2-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
 	protected Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
 

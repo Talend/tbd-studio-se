@@ -24,7 +24,7 @@ import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 
 public class EMR5140SparkBatchModuleGroup {
 
-    public static final String MODULE_GROUP_NAME = "SPARK2-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String MODULE_GROUP_NAME = "SPARK2-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
     private final static ComponentCondition condition = new SimpleComponentCondition(new BasicExpression(
             SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false")); //$NON-NLS-1$

@@ -25,25 +25,25 @@ import org.talend.hadoop.distribution.emr5140.modulegroup.node.mr.EMR5140MRS3Nod
 
 public class EMR5140PigModuleGroup {
 
-    public static final String HDFS_GROUP_NAME = "HDFS-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String HDFS_GROUP_NAME = "HDFS-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
-    public static final String MAPREDUCE_GROUP_NAME = "MAPREDUCE-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String MAPREDUCE_GROUP_NAME = "MAPREDUCE-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
-    public static final String PIG_GROUP_NAME = "PIG-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String PIG_GROUP_NAME = "PIG-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
-    public static final String PIG_PARQUET_GROUP_NAME = "PIG-PARQUET-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String PIG_PARQUET_GROUP_NAME = "PIG-PARQUET-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
-    public static final String PIG_AVRO_GROUP_NAME = "PIG-AVRO-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String PIG_AVRO_GROUP_NAME = "PIG-AVRO-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
-    public static final String PIG_RCFILE_GROUP_NAME = "PIG-RCFILE-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String PIG_RCFILE_GROUP_NAME = "PIG-RCFILE-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
-    public static final String PIG_SEQUENCEFILE_GROUP_NAME = "PIG-SEQUENCEFILE-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String PIG_SEQUENCEFILE_GROUP_NAME = "PIG-SEQUENCEFILE-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
-    public static final String PIG_HCATALOG_GROUP_NAME = "PIG-HCATALOG-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String PIG_HCATALOG_GROUP_NAME = "PIG-HCATALOG-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
     public static final String PIG_S3_GROUP_NAME = EMR5140MRS3NodeModuleGroup.S3_GROUP_NAME;
 
-    public static final String PIG_HBASE_GROUP_NAME = "PIG-HBASE-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String PIG_HBASE_GROUP_NAME = "PIG-HBASE-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
         ComponentCondition parquetLoaderCondition = new SimpleComponentCondition(new BasicExpression(

@@ -21,7 +21,7 @@ import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 
 public class EMR5140SparkStreamingFlumeNodeModuleGroup {
 
-    public final static String MODULE_GROUP_NAME = "SPARK-FLUME-LIB-MRREQUIRED-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public final static String MODULE_GROUP_NAME = "SPARK-FLUME-LIB-MRREQUIRED-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> hs = new HashSet<>();

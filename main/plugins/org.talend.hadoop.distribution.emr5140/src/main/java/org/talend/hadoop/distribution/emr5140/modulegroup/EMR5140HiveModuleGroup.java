@@ -26,13 +26,13 @@ import org.talend.hadoop.distribution.constants.HiveConstant;
 
 public class EMR5140HiveModuleGroup {
 
-    public static final String HDFS_GROUP_NAME = "HDFS-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String HDFS_GROUP_NAME = "HDFS-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
-    public static final String MAPREDUCE_GROUP_NAME = "MAPREDUCE-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String MAPREDUCE_GROUP_NAME = "MAPREDUCE-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
-    public static final String HIVE_HBASE_MODULE_GROUP = "HIVE-HBASE-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String HIVE_HBASE_MODULE_GROUP = "HIVE-HBASE-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
-    public static final String MODULE_GROUP_NAME = "HIVE-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String MODULE_GROUP_NAME = "HIVE-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
         ComponentCondition hbaseLoaderCondition = new MultiComponentCondition(new SimpleComponentCondition(new BasicExpression(

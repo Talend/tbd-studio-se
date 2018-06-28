@@ -21,7 +21,7 @@ import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 
 public class EMR5140SparkBatchAzureNodeModuleGroup {
     
-    public static final String SPARK_AZURE_MRREQUIRED_MODULE_GROUP = "SPARK-AZURE-LIB-MRREQUIRED-EMR_5_8_0_LATEST";
+    public static final String SPARK_AZURE_MRREQUIRED_MODULE_GROUP = "SPARK-AZURE-LIB-MRREQUIRED-EMR_5_14_0_LATEST";
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> hs = new HashSet<>();

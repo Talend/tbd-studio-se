@@ -19,13 +19,13 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 
 public class EMR5140MapReduceModuleGroup {
 
-    public static final String HDFS_GROUP_NAME = "HDFS-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String HDFS_GROUP_NAME = "HDFS-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
-    public static final String MAPREDUCE_GROUP_NAME = "MAPREDUCE-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String MAPREDUCE_GROUP_NAME = "MAPREDUCE-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
-    public static final String MAPREDUCE_PARQUET_MRREQUIRED_GROUP_NAME = "MAPREDUCE-PARQUET-LIB-MRREQUIRED-EMR_5_8_0"; //$NON-NLS-1$
+    public static final String MAPREDUCE_PARQUET_MRREQUIRED_GROUP_NAME = "MAPREDUCE-PARQUET-LIB-MRREQUIRED-EMR_5_14_0"; //$NON-NLS-1$
 
-    public static final String MAPREDUCE_AVRO_MRREQUIRED_GROUP_NAME = "MAPREDUCE-AVRO-LIB-MRREQUIRED-EMR_5_8_0"; //$NON-NLS-1$
+    public static final String MAPREDUCE_AVRO_MRREQUIRED_GROUP_NAME = "MAPREDUCE-AVRO-LIB-MRREQUIRED-EMR_5_14_0"; //$NON-NLS-1$
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();

@@ -21,7 +21,7 @@ import org.talend.hadoop.distribution.constants.MRConstant;
 
 public class EMR5140MRS3NodeModuleGroup {
 
-    public static final String S3_GROUP_NAME = "S3-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String S3_GROUP_NAME = "S3-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> hs = new HashSet<>();

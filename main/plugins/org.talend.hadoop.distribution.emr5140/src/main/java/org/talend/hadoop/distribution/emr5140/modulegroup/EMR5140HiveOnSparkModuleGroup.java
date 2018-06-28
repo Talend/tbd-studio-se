@@ -20,9 +20,9 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 
 public class EMR5140HiveOnSparkModuleGroup {
 
-    public static final String MODULE_GROUP_NAME = "SPARK-HIVE-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String MODULE_GROUP_NAME = "SPARK-HIVE-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
-    public static final String MRREQUIRED_MODULE_GROUP_NAME = "SPARK-HIVE-LIB-MRREQUIRED-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String MRREQUIRED_MODULE_GROUP_NAME = "SPARK-HIVE-LIB-MRREQUIRED-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();

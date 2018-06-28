@@ -24,9 +24,9 @@ import org.talend.hadoop.distribution.constants.SqoopConstant;
 
 public class EMR5140SqoopModuleGroup {
 
-    public static final String MODULE_GROUP_NAME = "SQOOP-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String MODULE_GROUP_NAME = "SQOOP-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
-    public static final String SQOOP_PARQUET_MODULE_GROUP_NAME = "SQOOP-PARQUET-LIB-EMR_5_8_0_LATEST"; //$NON-NLS-1$
+    public static final String SQOOP_PARQUET_MODULE_GROUP_NAME = "SQOOP-PARQUET-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
