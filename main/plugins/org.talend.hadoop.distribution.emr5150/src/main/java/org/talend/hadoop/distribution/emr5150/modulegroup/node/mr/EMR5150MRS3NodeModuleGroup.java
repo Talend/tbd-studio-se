@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.emr5140.modulegroup.node.mr;
+package org.talend.hadoop.distribution.emr5150.modulegroup.node.mr;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -19,7 +19,7 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.MRLinkedNodeCondition;
 import org.talend.hadoop.distribution.constants.MRConstant;
 
-public class EMR5140MRS3NodeModuleGroup {
+public class EMR5150MRS3NodeModuleGroup {
 
     public static final String S3_GROUP_NAME = "S3-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 

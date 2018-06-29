@@ -11,7 +11,7 @@
 //
 // ============================================================================
 
-package org.talend.hadoop.distribution.emr5140;
+package org.talend.hadoop.distribution.emr5150;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -39,35 +39,35 @@ import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.emr.IAmazonEMRDistribution;
-import org.talend.hadoop.distribution.emr5140.modulegroup.EMR5140HBaseModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.EMR5140HCatalogModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.EMR5140HDFSModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.EMR5140HiveModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.EMR5140HiveOnSparkModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.EMR5140MapReduceModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.EMR5140PigModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.EMR5140PigOutputModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.EMR5140SparkBatchModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.EMR5140SparkStreamingModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.EMR5140SqoopModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.EMR5140WebHDFSModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.mr.EMR5140MRS3NodeModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.pigoutput.EMR5140PigOutputNodeModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.spark.EMR5140SparkDynamoDBNodeModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkbatch.EMR5140GraphFramesNodeModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkbatch.EMR5140SparkBatchAzureNodeModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkbatch.EMR5140SparkBatchParquetNodeModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkbatch.EMR5140SparkBatchS3NodeModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkstreaming.EMR5140SparkStreamingFlumeNodeModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkstreaming.EMR5140SparkStreamingKafkaAssemblyModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkstreaming.EMR5140SparkStreamingKinesisNodeModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkstreaming.EMR5140SparkStreamingParquetNodeModuleGroup;
-import org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkstreaming.EMR5140SparkStreamingS3NodeModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150HBaseModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150HCatalogModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150HDFSModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150HiveModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150HiveOnSparkModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150MapReduceModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150PigModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150PigOutputModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150SparkBatchModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150SparkStreamingModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150SqoopModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150WebHDFSModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.node.mr.EMR5150MRS3NodeModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.node.pigoutput.EMR5150PigOutputNodeModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.node.spark.EMR5150SparkDynamoDBNodeModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkbatch.EMR5150GraphFramesNodeModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkbatch.EMR5150SparkBatchAzureNodeModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkbatch.EMR5150SparkBatchParquetNodeModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkbatch.EMR5150SparkBatchS3NodeModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkstreaming.EMR5150SparkStreamingFlumeNodeModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkstreaming.EMR5150SparkStreamingKafkaAssemblyModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkstreaming.EMR5150SparkStreamingKinesisNodeModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkstreaming.EMR5150SparkStreamingParquetNodeModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkstreaming.EMR5150SparkStreamingS3NodeModuleGroup;
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
 @SuppressWarnings("nls")
-public class EMR5140Distribution extends AbstractDistribution implements
+public class EMR5150Distribution extends AbstractDistribution implements
  HBaseComponent, HDFSComponent, MRComponent,
         PigComponent, HCatalogComponent, HiveComponent, SqoopComponent, IAmazonEMRDistribution// ,
                                                                                               // HiveOnSparkComponent,SparkBatchComponent,
@@ -78,11 +78,11 @@ public class EMR5140Distribution extends AbstractDistribution implements
 
     public static final String VERSION_DISPLAY = "EMR 5.14.0 (Hadoop 2.8.3)"; //$NON-NLS-1$
 
-    public static final String PIG_EMR5140_DISPLAY = "EMR 5.14.0 (Pig 0.17.0)";//$NON-NLS-1$
+    public static final String PIG_EMR5150_DISPLAY = "EMR 5.14.0 (Pig 0.17.0)";//$NON-NLS-1$
 
-    public static final String SQOOP_EMR5140_DISPLAY = "EMR 5.14.0 (Sqoop 1.4.7)"; //$NON-NLS-1$
+    public static final String SQOOP_EMR5150_DISPLAY = "EMR 5.14.0 (Sqoop 1.4.7)"; //$NON-NLS-1$
 
-    public static final String HIVE_EMR5140_DISPLAY = "EMR 5.14.0 (Hive 2.3.2)"; //$NON-NLS-1$
+    public static final String HIVE_EMR5150_DISPLAY = "EMR 5.14.0 (Hive 2.3.2)"; //$NON-NLS-1$
 
 	private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,/usr/lib/hadoop-lzo/lib/*,/usr/share/aws/emr/emrfs/conf, /usr/share/aws/emr/emrfs/lib/*,/usr/share/aws/emr/emrfs/auxlib/*,/usr/share/aws/emr/lib/*,/usr/share/aws/emr/ddb/lib/emr-ddb-hadoop.jar, /usr/share/aws/emr/goodies/lib/emr-hadoop-goodies.jar,/usr/share/aws/emr/kinesis/lib/emr-kinesis-hadoop.jar,/usr/lib/spark/yarn/lib/datanucleus-api-jdo.jar,/usr/lib/spark/yarn/lib/datanucleus-core.jar,/usr/lib/spark/yarn/lib/datanucleus-rdbms.jar,/usr/share/aws/emr/cloudwatch-sink/lib/*"; //$NON-NLS-1$
 
@@ -96,7 +96,7 @@ public class EMR5140Distribution extends AbstractDistribution implements
 
 	protected Map<ComponentType, String> customVersionDisplayNames;
 
-	public EMR5140Distribution() {
+	public EMR5150Distribution() {
 		displayConditions = buildDisplayConditions();
 		customVersionDisplayNames = buildCustomVersionDisplayNames();
 		moduleGroups = buildModuleGroups();
@@ -110,30 +110,30 @@ public class EMR5140Distribution extends AbstractDistribution implements
 
 	protected Map<ComponentType, String> buildCustomVersionDisplayNames() {
 		Map<ComponentType, String> result = new HashMap<>();
-		result.put(ComponentType.PIG, PIG_EMR5140_DISPLAY);
-		result.put(ComponentType.HIVE, HIVE_EMR5140_DISPLAY);
-		result.put(ComponentType.SQOOP, SQOOP_EMR5140_DISPLAY);
+		result.put(ComponentType.PIG, PIG_EMR5150_DISPLAY);
+		result.put(ComponentType.HIVE, HIVE_EMR5150_DISPLAY);
+		result.put(ComponentType.SQOOP, SQOOP_EMR5150_DISPLAY);
 		return result;
 	}
 
 	protected Map<ComponentType, Set<DistributionModuleGroup>> buildModuleGroups() {
 		Map<ComponentType, Set<DistributionModuleGroup>> result = new HashMap<>();
 		result.put(ComponentType.HCATALOG,
-				EMR5140HCatalogModuleGroup.getModuleGroups());
-		result.put(ComponentType.HDFS, EMR5140HDFSModuleGroup.getModuleGroups());
-		result.put(ComponentType.HIVE, EMR5140HiveModuleGroup.getModuleGroups());
-		result.put(ComponentType.HIVEONSPARK, EMR5140HiveOnSparkModuleGroup.getModuleGroups());
+				EMR5150HCatalogModuleGroup.getModuleGroups());
+		result.put(ComponentType.HDFS, EMR5150HDFSModuleGroup.getModuleGroups());
+		result.put(ComponentType.HIVE, EMR5150HiveModuleGroup.getModuleGroups());
+		result.put(ComponentType.HIVEONSPARK, EMR5150HiveOnSparkModuleGroup.getModuleGroups());
 		result.put(ComponentType.MAPREDUCE,
-				EMR5140MapReduceModuleGroup.getModuleGroups());
-		result.put(ComponentType.PIG, EMR5140PigModuleGroup.getModuleGroups());
+				EMR5150MapReduceModuleGroup.getModuleGroups());
+		result.put(ComponentType.PIG, EMR5150PigModuleGroup.getModuleGroups());
 		result.put(ComponentType.PIGOUTPUT,
-				EMR5140PigOutputModuleGroup.getModuleGroups());
+				EMR5150PigOutputModuleGroup.getModuleGroups());
 		result.put(ComponentType.SQOOP,
-				EMR5140SqoopModuleGroup.getModuleGroups());
+				EMR5150SqoopModuleGroup.getModuleGroups());
 		result.put(ComponentType.HBASE,
-				EMR5140HBaseModuleGroup.getModuleGroups());
-		result.put(ComponentType.SPARKBATCH, EMR5140SparkBatchModuleGroup.getModuleGroups());
-        result.put(ComponentType.SPARKSTREAMING, EMR5140SparkStreamingModuleGroup.getModuleGroups());
+				EMR5150HBaseModuleGroup.getModuleGroups());
+		result.put(ComponentType.SPARKBATCH, EMR5150SparkBatchModuleGroup.getModuleGroups());
+        result.put(ComponentType.SPARKSTREAMING, EMR5150SparkStreamingModuleGroup.getModuleGroups());
 
 		return result;
 	}
@@ -143,42 +143,42 @@ public class EMR5140Distribution extends AbstractDistribution implements
 		Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
 		
 		// WebHDFS
-        Set<DistributionModuleGroup> webHDFSNodeModuleGroups = EMR5140WebHDFSModuleGroup.getModuleGroups(distribution, version);
+        Set<DistributionModuleGroup> webHDFSNodeModuleGroups = EMR5150WebHDFSModuleGroup.getModuleGroups(distribution, version);
         for(String hdfsComponent : HDFSConstant.hdfsComponents) {
             result.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
         }
         
 		// Mapreduce nodes
 		result.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE,
-				MRConstant.S3_INPUT_COMPONENT), EMR5140MRS3NodeModuleGroup
+				MRConstant.S3_INPUT_COMPONENT), EMR5150MRS3NodeModuleGroup
 				.getModuleGroups(distribution, version));
 		result.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE,
-				MRConstant.S3_OUTPUT_COMPONENT), EMR5140MRS3NodeModuleGroup
+				MRConstant.S3_OUTPUT_COMPONENT), EMR5150MRS3NodeModuleGroup
 				.getModuleGroups(distribution, version));
 		// Pig nodes
 		result.put(new NodeComponentTypeBean(ComponentType.PIG,
 				PigOutputConstant.PIGSTORE_COMPONENT),
-				EMR5140PigOutputNodeModuleGroup.getModuleGroups(distribution,
+				EMR5150PigOutputNodeModuleGroup.getModuleGroups(distribution,
 						version));
 		
 		// Spark Batch Parquet nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
-                EMR5140SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
+                EMR5150SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
-                EMR5140SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
+                EMR5150SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
         
         // Spark Batch S3 nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.S3_CONFIGURATION_COMPONENT),
-                EMR5140SparkBatchS3NodeModuleGroup.getModuleGroups(distribution, version));
+                EMR5150SparkBatchS3NodeModuleGroup.getModuleGroups(distribution, version));
         
         // Spark Batch DQ matching
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
-                EMR5140GraphFramesNodeModuleGroup.getModuleGroups(distribution, version));
+                EMR5150GraphFramesNodeModuleGroup.getModuleGroups(distribution, version));
         
         // DynamoDB nodes ...
-        Set<DistributionModuleGroup> dynamoDBNodeModuleGroups = EMR5140SparkDynamoDBNodeModuleGroup.getModuleGroups(distribution,
+        Set<DistributionModuleGroup> dynamoDBNodeModuleGroups = EMR5150SparkDynamoDBNodeModuleGroup.getModuleGroups(distribution,
                 version, "USE_EXISTING_CONNECTION == 'false'");
-        Set<DistributionModuleGroup> dynamoDBConfigurationModuleGroups = EMR5140SparkDynamoDBNodeModuleGroup.getModuleGroups(
+        Set<DistributionModuleGroup> dynamoDBConfigurationModuleGroups = EMR5150SparkDynamoDBNodeModuleGroup.getModuleGroups(
                 distribution, version, null);
         // ... in Spark batch
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_INPUT_COMPONENT),
@@ -190,44 +190,44 @@ public class EMR5140Distribution extends AbstractDistribution implements
 
         // Spark Streaming Parquet nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_INPUT_COMPONENT),
-                EMR5140SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
+                EMR5150SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_OUTPUT_COMPONENT),
-        		EMR5140SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
+        		EMR5150SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_STREAM_INPUT_COMPONENT),
-                EMR5140SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
+                EMR5150SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
 
         // Spark Streaming S3 nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.S3_CONFIGURATION_COMPONENT),
-        		EMR5140SparkStreamingS3NodeModuleGroup.getModuleGroups(distribution, version));
+        		EMR5150SparkStreamingS3NodeModuleGroup.getModuleGroups(distribution, version));
 
         // Spark Streaming Kinesis nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_COMPONENT),
-        		EMR5140SparkStreamingKinesisNodeModuleGroup.getModuleGroups(distribution, version));
+        		EMR5150SparkStreamingKinesisNodeModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_AVRO_COMPONENT),
-        		EMR5140SparkStreamingKinesisNodeModuleGroup.getModuleGroups(distribution, version));
+        		EMR5150SparkStreamingKinesisNodeModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT),
-        		EMR5140SparkStreamingKinesisNodeModuleGroup.getModuleGroups(distribution, version));
+        		EMR5150SparkStreamingKinesisNodeModuleGroup.getModuleGroups(distribution, version));
 
         // Spark Streaming Kafka nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_INPUT_COMPONENT),
-                EMR5140SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(distribution, version));
+                EMR5150SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_AVRO_INPUT_COMPONENT),
-                EMR5140SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(distribution, version));
+                EMR5150SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT),
-                EMR5140SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(distribution, version));
+                EMR5150SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(distribution, version));
 
         // Spark Streaming Flume nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.FLUME_INPUT_COMPONENT),
-        		EMR5140SparkStreamingFlumeNodeModuleGroup.getModuleGroups(distribution, version));
+        		EMR5150SparkStreamingFlumeNodeModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.FLUME_OUTPUT_COMPONENT),
-        		EMR5140SparkStreamingFlumeNodeModuleGroup.getModuleGroups(distribution, version));
+        		EMR5150SparkStreamingFlumeNodeModuleGroup.getModuleGroups(distribution, version));
         
         // Azure
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
-                SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT), EMR5140SparkBatchAzureNodeModuleGroup
+                SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT), EMR5150SparkBatchAzureNodeModuleGroup
                 .getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), EMR5140SparkBatchAzureNodeModuleGroup
+                SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), EMR5150SparkBatchAzureNodeModuleGroup
                 .getModuleGroups(distribution, version));
 
 		return result;

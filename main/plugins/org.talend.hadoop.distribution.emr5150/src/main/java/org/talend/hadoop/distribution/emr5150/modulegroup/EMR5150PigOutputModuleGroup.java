@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.emr5140.modulegroup;
+package org.talend.hadoop.distribution.emr5150.modulegroup;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +22,7 @@ import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
 
-public class EMR5140PigOutputModuleGroup {
+public class EMR5150PigOutputModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
         ComponentCondition hcatStorerCondition = new SimpleComponentCondition(new BasicExpression(
@@ -37,12 +37,12 @@ public class EMR5140PigOutputModuleGroup {
                 PigOutputConstant.STORER_PARAMETER, EqualityOperator.EQ, PigOutputConstant.HBASE_STORER_VALUE));
 
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        hs.add(new DistributionModuleGroup(EMR5140PigModuleGroup.PIG_HCATALOG_GROUP_NAME, false, hcatStorerCondition));
-        hs.add(new DistributionModuleGroup(EMR5140PigModuleGroup.PIG_AVRO_GROUP_NAME, false, avroStorerCondition));
-        hs.add(new DistributionModuleGroup(EMR5140PigModuleGroup.PIG_RCFILE_GROUP_NAME, false, rcfileStorerCondition));
-        hs.add(new DistributionModuleGroup(EMR5140PigModuleGroup.PIG_SEQUENCEFILE_GROUP_NAME, false, sequencefileStorerCondition));
-        hs.add(new DistributionModuleGroup(EMR5140HBaseModuleGroup.MODULE_GROUP_NAME, false, hbaseStorerCondition));
-        hs.add(new DistributionModuleGroup(EMR5140PigModuleGroup.PIG_HBASE_GROUP_NAME, false, hbaseStorerCondition));
+        hs.add(new DistributionModuleGroup(EMR5150PigModuleGroup.PIG_HCATALOG_GROUP_NAME, false, hcatStorerCondition));
+        hs.add(new DistributionModuleGroup(EMR5150PigModuleGroup.PIG_AVRO_GROUP_NAME, false, avroStorerCondition));
+        hs.add(new DistributionModuleGroup(EMR5150PigModuleGroup.PIG_RCFILE_GROUP_NAME, false, rcfileStorerCondition));
+        hs.add(new DistributionModuleGroup(EMR5150PigModuleGroup.PIG_SEQUENCEFILE_GROUP_NAME, false, sequencefileStorerCondition));
+        hs.add(new DistributionModuleGroup(EMR5150HBaseModuleGroup.MODULE_GROUP_NAME, false, hbaseStorerCondition));
+        hs.add(new DistributionModuleGroup(EMR5150PigModuleGroup.PIG_HBASE_GROUP_NAME, false, hbaseStorerCondition));
         return hs;
     }
 

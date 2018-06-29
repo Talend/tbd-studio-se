@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<component name="EMR5140Distribution">
-  <implementation class="org.talend.hadoop.distribution.emr5140.EMR5140Distribution"/>
+<component name="EMR5150Distribution">
+  <implementation class="org.talend.hadoop.distribution.emr5150.EMR5150Distribution"/>
   <service>
     <provide interface="org.talend.hadoop.distribution.component.HadoopComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.HBaseComponent"/>

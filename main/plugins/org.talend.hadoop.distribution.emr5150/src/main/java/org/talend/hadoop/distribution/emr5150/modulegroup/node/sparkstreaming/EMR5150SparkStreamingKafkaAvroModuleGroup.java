@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.emr5140.modulegroup.node.sparkstreaming;
+package org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkstreaming;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -19,7 +19,7 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.SparkStreamingLinkedNodeCondition;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 
-public class EMR5140SparkStreamingKafkaAvroModuleGroup {
+public class EMR5150SparkStreamingKafkaAvroModuleGroup {
 
     public static final String KAFKA_AVRO_GROUP_NAME = "SPARK-KAFKA-AVRO-LIB-MRREQUIRED-EMR_5_14_0_LATEST"; //$NON-NLS-1$
 
@@ -30,7 +30,7 @@ public class EMR5140SparkStreamingKafkaAvroModuleGroup {
                         SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition());
         hs.add(dmg);
         // Add Spark Streaming Kafka dependencies as well
-        hs.addAll(EMR5140SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(distribution, version));
+        hs.addAll(EMR5150SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(distribution, version));
         return hs;
     }
 }
