@@ -20,7 +20,7 @@ import org.talend.hadoop.distribution.utils.ModuleGroupsUtils;
 
 public class EMR5150SparkDynamoDBNodeModuleGroup {
 
-    public static final String MODULE_GROUP_NAME = "SPARK-DYNAMODB-LIB-MRREQUIRED-EMR_5_14_0"; //$NON-NLS-1$
+    public static final String MODULE_GROUP_NAME = "SPARK-DYNAMODB-LIB-MRREQUIRED-EMR_5_15_0"; //$NON-NLS-1$
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version, String condition) {
         return ModuleGroupsUtils.getModuleGroups(distribution, version, condition, MODULE_GROUP_NAME, true);

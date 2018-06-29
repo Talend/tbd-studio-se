@@ -74,7 +74,7 @@ public class EMR5150Distribution extends AbstractDistribution implements
                                                                                               // SparkStreamingComponent
 {
 
-    public static final String VERSION = "EMR_5_14_0"; //$NON-NLS-1$
+    public static final String VERSION = "EMR_5_15_0"; //$NON-NLS-1$
 
     public static final String VERSION_DISPLAY = "EMR 5.14.0 (Hadoop 2.8.3)"; //$NON-NLS-1$
 
@@ -86,7 +86,7 @@ public class EMR5150Distribution extends AbstractDistribution implements
 
 	private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,/usr/lib/hadoop-lzo/lib/*,/usr/share/aws/emr/emrfs/conf, /usr/share/aws/emr/emrfs/lib/*,/usr/share/aws/emr/emrfs/auxlib/*,/usr/share/aws/emr/lib/*,/usr/share/aws/emr/ddb/lib/emr-ddb-hadoop.jar, /usr/share/aws/emr/goodies/lib/emr-hadoop-goodies.jar,/usr/share/aws/emr/kinesis/lib/emr-kinesis-hadoop.jar,/usr/lib/spark/yarn/lib/datanucleus-api-jdo.jar,/usr/lib/spark/yarn/lib/datanucleus-core.jar,/usr/lib/spark/yarn/lib/datanucleus-rdbms.jar,/usr/share/aws/emr/cloudwatch-sink/lib/*"; //$NON-NLS-1$
 
-	private final static String SPARK_MODULE_GROUP_NAME = "SPARK2-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
+	private final static String SPARK_MODULE_GROUP_NAME = "SPARK2-LIB-EMR_5_15_0_LATEST"; //$NON-NLS-1$
 
 	protected Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
 

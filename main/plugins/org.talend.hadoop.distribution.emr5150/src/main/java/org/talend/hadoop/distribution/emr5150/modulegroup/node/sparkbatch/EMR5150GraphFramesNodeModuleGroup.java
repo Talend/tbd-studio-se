@@ -20,7 +20,7 @@ import org.talend.hadoop.distribution.condition.common.SparkBatchLinkedNodeCondi
 
 public class EMR5150GraphFramesNodeModuleGroup {
 
-    public static final String GRAPHFRAMES_GROUP_NAME = "GRAPHFRAMES-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
+    public static final String GRAPHFRAMES_GROUP_NAME = "GRAPHFRAMES-LIB-EMR_5_15_0_LATEST"; //$NON-NLS-1$
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> hs = new HashSet<>();

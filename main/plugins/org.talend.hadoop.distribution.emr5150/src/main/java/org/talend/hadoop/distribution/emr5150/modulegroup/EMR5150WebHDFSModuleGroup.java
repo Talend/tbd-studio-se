@@ -21,7 +21,7 @@ import org.talend.hadoop.distribution.condition.common.HDFSLinkedNodeCondition;
 
 public class EMR5150WebHDFSModuleGroup {
     
-    public static final String WEBHDFS_MODULE_GROUP_NAME = "WEBHDFS-LIB-EMR_5_14_0_LATEST";
+    public static final String WEBHDFS_MODULE_GROUP_NAME = "WEBHDFS-LIB-EMR_5_15_0_LATEST";
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         

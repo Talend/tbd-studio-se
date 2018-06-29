@@ -19,7 +19,7 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 
 public class EMR5150HCatalogModuleGroup {
 
-    public static final String MODULE_GROUP_NAME = "HDFS-LIB-EMR_5_14_0_LATEST"; //$NON-NLS-1$
+    public static final String MODULE_GROUP_NAME = "HDFS-LIB-EMR_5_15_0_LATEST"; //$NON-NLS-1$
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();

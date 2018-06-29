@@ -21,7 +21,7 @@ import org.talend.hadoop.distribution.condition.common.SparkBatchLinkedNodeCondi
 
 public class EMR5150SparkBatchParquetNodeModuleGroup {
 
-    public static final String SPARK_PARQUET_GROUP_NAME = "SPARK-PARQUET-LIB-MRREQUIRED-EMR_5_14_0_LATEST"; //$NON-NLS-1$
+    public static final String SPARK_PARQUET_GROUP_NAME = "SPARK-PARQUET-LIB-MRREQUIRED-EMR_5_15_0_LATEST"; //$NON-NLS-1$
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> hs = new HashSet<>();
