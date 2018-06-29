@@ -25,13 +25,15 @@ import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
+import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.databricks.IDatabricksDistribution;
 import org.talend.hadoop.distribution.databricks.modulegroup.DatabricksHiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.databricks.modulegroup.DatabricksSparkBatchModuleGroup;
+import org.talend.hadoop.distribution.databricks.modulegroup.DatabricksSparkStreamingModuleGroup;
 
-public class DatabricksDistribution extends AbstractDistribution implements SparkBatchComponent, HiveOnSparkComponent, IDatabricksDistribution {
+public class DatabricksDistribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, IDatabricksDistribution {
 
     public final static String VERSION = "Databricks";
 
@@ -66,6 +68,7 @@ public class DatabricksDistribution extends AbstractDistribution implements Spar
     protected Map<ComponentType, Set<DistributionModuleGroup>> buildModuleGroups() {
         Map<ComponentType, Set<DistributionModuleGroup>> result = new HashMap<>();
         result.put(ComponentType.SPARKBATCH, DatabricksSparkBatchModuleGroup.getModuleGroups());
+        result.put(ComponentType.SPARKSTREAMING, DatabricksSparkStreamingModuleGroup.getModuleGroups());
         result.put(ComponentType.HIVEONSPARK, DatabricksHiveOnSparkModuleGroup.getModuleGroups());
         return result;
     }
@@ -187,6 +190,16 @@ public class DatabricksDistribution extends AbstractDistribution implements Spar
 
     @Override
     public boolean doSupportAzureDataLakeStorage() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportCheckpointing() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportBackpressure() {
         return true;
     }
 
