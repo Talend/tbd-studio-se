@@ -23,11 +23,13 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
+import org.talend.hadoop.distribution.databricks.modulegroup.node.sparkbatch.DatabricksSparkBatchAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
+import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.databricks.IDatabricksDistribution;
 import org.talend.hadoop.distribution.databricks.modulegroup.DatabricksHiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.databricks.modulegroup.DatabricksSparkBatchModuleGroup;
@@ -76,6 +78,12 @@ public class DatabricksDistribution extends AbstractDistribution implements Spar
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(String distribution, String version) {
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
         // Azure
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
+                SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT), DatabricksSparkBatchAzureNodeModuleGroup
+                .getModuleGroups(distribution, version));
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), DatabricksSparkBatchAzureNodeModuleGroup
+                .getModuleGroups(distribution, version));
         return result;
     }
 
