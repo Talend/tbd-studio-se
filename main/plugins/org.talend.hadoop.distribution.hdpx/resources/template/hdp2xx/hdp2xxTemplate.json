@@ -160,6 +160,49 @@
 			]
 		},
 		{
+			"id": "hbase-hadoop-compat",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.hbase",
+			"artifactId": "hbase-hadoop-compat",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "jdk.tools",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "hbase-server",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.hbase",
+			"artifactId": "hbase-server",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.mortbay.jetty",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "jdk.tools",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
 			"id": "sqoop",
 			"type": "BASE",
 			"context": "{properties.context}",
@@ -572,6 +615,14 @@
 			"modules": [
 				"hive-hcatalog-pig-adapter",
 				"hive-hcatalog-server-extensions"
+			]
+		},
+		{
+			"id": "PIG-HBASE-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+				"hbase-server",
+				"hbase-hadoop-compat"
 			]
 		},
 		{
