@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Amazon EMR 5.14.0 distribution
+Bundle-Name: Amazon EMR 5.15.0 distribution
 Bundle-SymbolicName: org.talend.hadoop.distribution.emr5150;singleton:=true
 Bundle-Version: 7.1.1.qualifier
 Bundle-Vendor: .Talend SA.
