@@ -29,11 +29,8 @@ import org.talend.hadoop.distribution.component.HBaseComponent;
 import org.talend.hadoop.distribution.component.HCatalogComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
-import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
-import org.talend.hadoop.distribution.component.SparkBatchComponent;
-import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.HDFSConstant;
@@ -71,9 +68,11 @@ import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
 @SuppressWarnings("nls")
 public class EMR5140Distribution extends AbstractDistribution implements
-		HBaseComponent, HDFSComponent, MRComponent, PigComponent,
-		HCatalogComponent, HiveComponent, HiveOnSparkComponent, SqoopComponent, SparkBatchComponent, SparkStreamingComponent,
-		IAmazonEMRDistribution {
+ HBaseComponent, HDFSComponent, MRComponent,
+        PigComponent, HCatalogComponent, HiveComponent, SqoopComponent, IAmazonEMRDistribution// ,
+                                                                                              // HiveOnSparkComponent,SparkBatchComponent,
+                                                                                              // SparkStreamingComponent
+{
 
     public static final String VERSION = "EMR_5_14_0"; //$NON-NLS-1$
 
@@ -435,30 +434,30 @@ public class EMR5140Distribution extends AbstractDistribution implements
 		return true;
 	}
 
-    @Override
-    public boolean doSupportSparkStandaloneMode() {
-        return false;
-    }
+    // @Override
+    // public boolean doSupportSparkStandaloneMode() {
+    // return false;
+    // }
 
-    @Override
-    public boolean doSupportSparkYarnClientMode() {
-        return true;
-    }
+    // @Override
+    // public boolean doSupportSparkYarnClientMode() {
+    // return true;
+    // }
 
-    @Override
-    public boolean doSupportDynamicMemoryAllocation() {
-        return true;
-    }
+    // @Override
+    // public boolean doSupportDynamicMemoryAllocation() {
+    // return true;
+    // }
 
-    @Override
-    public boolean doSupportCheckpointing() {
-        return true;
-    }
+    // @Override
+    // public boolean doSupportCheckpointing() {
+    // return true;
+    // }
 
-    @Override
-    public boolean doSupportBackpressure() {
-        return true;
-    }
+    // @Override
+    // public boolean doSupportBackpressure() {
+    // return true;
+    // }
     
     @Override
     public boolean doSupportHDFSEncryption() {
