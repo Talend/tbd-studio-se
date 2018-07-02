@@ -43,12 +43,9 @@ import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150HBaseModuleGrou
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150HCatalogModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150HDFSModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150HiveModuleGroup;
-import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150MapReduceModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150PigModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150PigOutputModuleGroup;
-import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150SparkBatchModuleGroup;
-import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150SqoopModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.mr.EMR5150MRS3NodeModuleGroup;
@@ -122,7 +119,7 @@ public class EMR5150Distribution extends AbstractDistribution implements
 				EMR5150HCatalogModuleGroup.getModuleGroups());
 		result.put(ComponentType.HDFS, EMR5150HDFSModuleGroup.getModuleGroups());
 		result.put(ComponentType.HIVE, EMR5150HiveModuleGroup.getModuleGroups());
-		result.put(ComponentType.HIVEONSPARK, EMR5150HiveOnSparkModuleGroup.getModuleGroups());
+        // result.put(ComponentType.HIVEONSPARK, EMR5150HiveOnSparkModuleGroup.getModuleGroups());
 		result.put(ComponentType.MAPREDUCE,
 				EMR5150MapReduceModuleGroup.getModuleGroups());
 		result.put(ComponentType.PIG, EMR5150PigModuleGroup.getModuleGroups());
@@ -132,8 +129,8 @@ public class EMR5150Distribution extends AbstractDistribution implements
 				EMR5150SqoopModuleGroup.getModuleGroups());
 		result.put(ComponentType.HBASE,
 				EMR5150HBaseModuleGroup.getModuleGroups());
-		result.put(ComponentType.SPARKBATCH, EMR5150SparkBatchModuleGroup.getModuleGroups());
-        result.put(ComponentType.SPARKSTREAMING, EMR5150SparkStreamingModuleGroup.getModuleGroups());
+        // result.put(ComponentType.SPARKBATCH, EMR5150SparkBatchModuleGroup.getModuleGroups());
+        // result.put(ComponentType.SPARKSTREAMING, EMR5150SparkStreamingModuleGroup.getModuleGroups());
 
 		return result;
 	}
