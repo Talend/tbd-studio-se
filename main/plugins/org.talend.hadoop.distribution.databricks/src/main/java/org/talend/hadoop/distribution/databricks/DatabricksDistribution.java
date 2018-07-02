@@ -78,10 +78,10 @@ public class DatabricksDistribution extends AbstractDistribution implements Spar
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(String distribution, String version) {
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
         // Azure
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
                 SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT), DatabricksSparkBatchAzureNodeModuleGroup
                 .getModuleGroups(distribution, version));
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), DatabricksSparkBatchAzureNodeModuleGroup
                 .getModuleGroups(distribution, version));
         return result;
