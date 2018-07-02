@@ -143,7 +143,7 @@
             context="plugin:org.talend.libraries"
             id="jackson-annotations-2.9.4.jar"
             name="jackson-annotations-2.9.4.jar" 
-            mvn_uri="mvn:org.talend.libraries/jackson-annotations-2.9.4/6.0.0"/>
+            mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.4"/>
             
         <!-- Kafka 0.8.2.0 client group (tKafkaOutput) -->
         <libraryNeededGroup
