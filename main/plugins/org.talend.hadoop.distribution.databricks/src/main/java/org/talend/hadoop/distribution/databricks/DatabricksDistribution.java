@@ -37,7 +37,7 @@ import org.talend.hadoop.distribution.databricks.modulegroup.DatabricksSparkStre
 
 public class DatabricksDistribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, IDatabricksDistribution {
 
-    public final static String VERSION = "Databricks";
+    public final static String VERSION = "Databricks_3_5";
 
     public static final String VERSION_DISPLAY = "3.5 LTS (includes Apache Spark 2.2.1, Scala 2.11)";
 
