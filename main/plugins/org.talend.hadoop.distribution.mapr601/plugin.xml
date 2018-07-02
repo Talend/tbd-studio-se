@@ -715,7 +715,7 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.1" id="validation-api-1.1.0.Final.jar" name="validation-api-1.1.0.Final.jar" mvn_uri="mvn:org.talend.libraries/validation-api-1.1.0.Final/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.1" id="xbean-asm5-shaded-4.4.jar" name="xbean-asm5-shaded-4.4.jar" mvn_uri="mvn:org.talend.libraries/xbean-asm5-shaded-4.4/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.1" id="xz-1.0.jar" name="xz-1.0.jar" mvn_uri="mvn:org.talend.libraries/xz-1.0/6.0.0"/>
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.1" id="zkclient-0.10.jar" name="zkclient-0.10.jar" mvn_uri="mvn:org.talend.libraries/zkclient-0.10/6.0.0"/>
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.1" id="zkclient-0.10.jar" name="zkclient-0.10.jar" mvn_uri="mvn:com.101tec/zkclient/0.10"/>
 		
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.1" id="hadoop-aws-2.7.3.jar" name="hadoop-aws-2.7.3.jar" mvn_uri="mvn:org.talend.libraries/hadoop-aws-2.7.3/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.1" id="jets3t-0.9.3.jar" name="jets3t-0.9.3.jar" mvn_uri="mvn:org.talend.libraries/jets3t-0.9.3/6.0.0"/>
