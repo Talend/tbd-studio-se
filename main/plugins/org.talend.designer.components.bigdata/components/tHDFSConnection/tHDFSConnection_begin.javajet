@@ -83,6 +83,9 @@
 
 		// Adding any talend-site.xml
 		conf_<%=cid%>.addResource("talend-site.xml");
+		
+		// Adding any core-site.xml
+		conf_<%=cid%>.addResource("core-site.xml");
 		String tldKerberosAuth_<%=cid%> = conf_<%=cid%>.get("talend.kerberos.authentication", "");
 		String tldKerberosKtPrincipal_<%=cid%> = conf_<%=cid%>.get("talend.kerberos.keytab.principal", "");
 		String tldKerberosKtPath_<%=cid%> = conf_<%=cid%>.get("talend.kerberos.keytab.path", "");
