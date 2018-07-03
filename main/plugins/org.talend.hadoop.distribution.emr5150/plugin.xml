@@ -38,7 +38,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hadoop-hdfs-client-2.8.3-amzn-1.jar"
             name="hadoop-hdfs-client-2.8.3-amzn-1.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-hdfs-client-2.8.3-amzn-1.jar/6.0.0"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-hdfs-client-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5120"
