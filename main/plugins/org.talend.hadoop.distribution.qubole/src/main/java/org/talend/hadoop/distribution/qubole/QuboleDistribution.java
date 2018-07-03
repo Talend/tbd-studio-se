@@ -68,7 +68,7 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
         result.put(ComponentType.HIVE, "Qubole Hadoop2 (Hive 2.1.1 Beta)");
         result.put(ComponentType.PIG, "Qubole Hadoop2");
         result.put(ComponentType.PIGOUTPUT, "Qubole Hadoop2");
-        result.put(ComponentType.SPARKBATCH, "Qubole Hadoop2");
+        result.put(ComponentType.SPARKBATCH, "Qubole Spark 2.2");
         return result;
     }
 
@@ -283,12 +283,12 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
 
 	@Override
 	public boolean doSupportSparkStandaloneMode() {
-		return true;
+		return false;
 	}
 
 	@Override
 	public boolean doSupportSparkYarnClientMode() {
-		return false;
+		return true;
 	}
 
 	@Override
