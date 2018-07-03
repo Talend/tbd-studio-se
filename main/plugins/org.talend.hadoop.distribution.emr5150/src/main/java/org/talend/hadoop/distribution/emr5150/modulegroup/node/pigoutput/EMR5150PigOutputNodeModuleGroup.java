@@ -27,7 +27,6 @@ import org.talend.hadoop.distribution.condition.NestedComponentCondition;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.emr5150.EMR5150Constant;
-import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150PigModuleGroup;
 
 public class EMR5150PigOutputNodeModuleGroup {
 

@@ -258,7 +258,7 @@ public class EMR5150Distribution extends AbstractDistribution implements
 
 	@Override
 	public boolean doSupportKerberos() {
-		return false;
+		return true;
 	}
 
 	@Override
