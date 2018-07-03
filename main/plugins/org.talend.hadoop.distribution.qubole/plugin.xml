@@ -191,6 +191,11 @@
             <library id="elephant-bird-hadoop-compat-4.9.jar"/>
             <library id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"/>
         </libraryNeededGroup>
+        
+        <!-- Jars for Spark 2 -->
+        <libraryNeededGroup
+           description="Spark 2 libraries for Qubole" id="SPARK-LIB-QUBOLE" name="SPARK-LIB-QUBOLE">
+        </libraryNeededGroup>
 
     </extension>
     <extension point="org.talend.core.runtime.classloader_provider" />
