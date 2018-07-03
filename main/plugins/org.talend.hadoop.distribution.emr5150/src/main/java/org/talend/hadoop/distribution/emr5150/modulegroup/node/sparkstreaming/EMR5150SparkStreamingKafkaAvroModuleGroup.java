@@ -18,16 +18,16 @@ import java.util.Set;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.SparkStreamingLinkedNodeCondition;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
+import org.talend.hadoop.distribution.emr5150.EMR5150Constant;
 
 public class EMR5150SparkStreamingKafkaAvroModuleGroup {
 
-    public static final String KAFKA_AVRO_GROUP_NAME = "SPARK-KAFKA-AVRO-LIB-MRREQUIRED-EMR_5_15_0_LATEST"; //$NON-NLS-1$
-
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        DistributionModuleGroup dmg = new DistributionModuleGroup(KAFKA_AVRO_GROUP_NAME, true,
-                new SparkStreamingLinkedNodeCondition(distribution, version,
-                        SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition());
+        DistributionModuleGroup dmg =
+                new DistributionModuleGroup(EMR5150Constant.SPARK_KAFKA_AVRO_MRREQUIRED_MODULE_GROUP.getModuleName(),
+                        true, new SparkStreamingLinkedNodeCondition(distribution, version,
+                                SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition());
         hs.add(dmg);
         // Add Spark Streaming Kafka dependencies as well
         hs.addAll(EMR5150SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(distribution, version));

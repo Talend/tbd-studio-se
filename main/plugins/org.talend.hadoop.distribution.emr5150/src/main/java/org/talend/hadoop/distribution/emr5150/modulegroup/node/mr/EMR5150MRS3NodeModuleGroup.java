@@ -18,15 +18,16 @@ import java.util.Set;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.MRLinkedNodeCondition;
 import org.talend.hadoop.distribution.constants.MRConstant;
+import org.talend.hadoop.distribution.emr5150.EMR5150Constant;
 
 public class EMR5150MRS3NodeModuleGroup {
 
-    public static final String S3_GROUP_NAME = "S3-LIB-EMR_5_15_0_LATEST"; //$NON-NLS-1$
-
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        DistributionModuleGroup dmg = new DistributionModuleGroup(S3_GROUP_NAME, true, //
-                new MRLinkedNodeCondition(distribution, version, MRConstant.MR_MRCONFIGURATION_LINKEDPARAMETER).getCondition());
+        DistributionModuleGroup dmg =
+                new DistributionModuleGroup(EMR5150Constant.S3_MODULE_GROUP.getModuleName(), true, //
+                        new MRLinkedNodeCondition(distribution, version, MRConstant.MR_MRCONFIGURATION_LINKEDPARAMETER)
+                                .getCondition());
         hs.add(dmg);
         return hs;
     }

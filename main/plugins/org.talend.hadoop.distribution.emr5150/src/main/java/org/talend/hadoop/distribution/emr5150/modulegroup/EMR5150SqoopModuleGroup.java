@@ -21,21 +21,20 @@ import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.SqoopConstant;
+import org.talend.hadoop.distribution.emr5150.EMR5150Constant;
 
 public class EMR5150SqoopModuleGroup {
 
-    public static final String MODULE_GROUP_NAME = "SQOOP-LIB-EMR_5_15_0_LATEST"; //$NON-NLS-1$
-
-    public static final String SQOOP_PARQUET_MODULE_GROUP_NAME = "SQOOP-PARQUET-LIB-EMR_5_15_0_LATEST"; //$NON-NLS-1$
-
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        hs.add(new DistributionModuleGroup(MODULE_GROUP_NAME));
-        hs.add(new DistributionModuleGroup(EMR5150MapReduceModuleGroup.MAPREDUCE_GROUP_NAME));
-        hs.add(new DistributionModuleGroup(EMR5150HDFSModuleGroup.MODULE_GROUP_NAME));
-        ComponentCondition parquetOutputCondition = new SimpleComponentCondition(new BasicExpression(SqoopConstant.FILE_FORMAT,
-                EqualityOperator.EQ, SqoopConstant.PAQUET_OUTPUT_FORMAT));
-        hs.add(new DistributionModuleGroup(SQOOP_PARQUET_MODULE_GROUP_NAME, true, parquetOutputCondition));
+        hs.add(new DistributionModuleGroup(EMR5150Constant.SQOOP_MODULE_GROUP.getModuleName()));
+        hs.add(new DistributionModuleGroup(EMR5150Constant.MAPREDUCE_MODULE_GROUP.getModuleName()));
+        hs.add(new DistributionModuleGroup(EMR5150Constant.HDFS_MODULE_GROUP.getModuleName()));
+        ComponentCondition parquetOutputCondition =
+                new SimpleComponentCondition(new BasicExpression(SqoopConstant.FILE_FORMAT, EqualityOperator.EQ,
+                        SqoopConstant.PAQUET_OUTPUT_FORMAT));
+        hs.add(new DistributionModuleGroup(EMR5150Constant.SQOOP_PARQUET_MODULE_GROUP.getModuleName(), true,
+                parquetOutputCondition));
         return hs;
     }
 

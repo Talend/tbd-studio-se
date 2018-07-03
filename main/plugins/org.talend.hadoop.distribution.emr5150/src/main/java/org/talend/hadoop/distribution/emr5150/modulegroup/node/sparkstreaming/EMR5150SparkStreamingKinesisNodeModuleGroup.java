@@ -17,15 +17,15 @@ import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.SparkStreamingLinkedNodeCondition;
+import org.talend.hadoop.distribution.emr5150.EMR5150Constant;
 
 public class EMR5150SparkStreamingKinesisNodeModuleGroup {
 
-    public static final String KINESIS_ASSEMBLY_GROUP_NAME = "SPARK-KINESIS-LIB-MRREQUIRED-EMR_5_15_0_LATEST"; //$NON-NLS-1$
-
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        DistributionModuleGroup dmg = new DistributionModuleGroup(KINESIS_ASSEMBLY_GROUP_NAME, true,
-                new SparkStreamingLinkedNodeCondition(distribution, version).getCondition());
+        DistributionModuleGroup dmg =
+                new DistributionModuleGroup(EMR5150Constant.SPARK_KINESIS_MRREQUIRED_MODULE_GROUP.getModuleName(),
+                        true, new SparkStreamingLinkedNodeCondition(distribution, version).getCondition());
         hs.add(dmg);
         return hs;
     }

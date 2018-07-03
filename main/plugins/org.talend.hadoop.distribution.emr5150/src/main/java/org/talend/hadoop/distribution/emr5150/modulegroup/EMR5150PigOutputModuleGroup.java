@@ -21,28 +21,40 @@ import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
+import org.talend.hadoop.distribution.emr5150.EMR5150Constant;
 
 public class EMR5150PigOutputModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
-        ComponentCondition hcatStorerCondition = new SimpleComponentCondition(new BasicExpression(
-                PigOutputConstant.STORER_PARAMETER, EqualityOperator.EQ, PigOutputConstant.HCAT_STORER_VALUE));
-        ComponentCondition avroStorerCondition = new SimpleComponentCondition(new BasicExpression(
-                PigOutputConstant.STORER_PARAMETER, EqualityOperator.EQ, PigOutputConstant.AVRO_STORER_VALUE));
-        ComponentCondition rcfileStorerCondition = new SimpleComponentCondition(new BasicExpression(
-                PigOutputConstant.STORER_PARAMETER, EqualityOperator.EQ, PigOutputConstant.RCFILE_STORER_VALUE));
-        ComponentCondition sequencefileStorerCondition = new SimpleComponentCondition(new BasicExpression(
-                PigOutputConstant.STORER_PARAMETER, EqualityOperator.EQ, PigOutputConstant.SEQUENCEFILE_STORER_VALUE));
-        ComponentCondition hbaseStorerCondition = new SimpleComponentCondition(new BasicExpression(
-                PigOutputConstant.STORER_PARAMETER, EqualityOperator.EQ, PigOutputConstant.HBASE_STORER_VALUE));
+        ComponentCondition hcatStorerCondition =
+                new SimpleComponentCondition(new BasicExpression(PigOutputConstant.STORER_PARAMETER,
+                        EqualityOperator.EQ, PigOutputConstant.HCAT_STORER_VALUE));
+        ComponentCondition avroStorerCondition =
+                new SimpleComponentCondition(new BasicExpression(PigOutputConstant.STORER_PARAMETER,
+                        EqualityOperator.EQ, PigOutputConstant.AVRO_STORER_VALUE));
+        ComponentCondition rcfileStorerCondition =
+                new SimpleComponentCondition(new BasicExpression(PigOutputConstant.STORER_PARAMETER,
+                        EqualityOperator.EQ, PigOutputConstant.RCFILE_STORER_VALUE));
+        ComponentCondition sequencefileStorerCondition =
+                new SimpleComponentCondition(new BasicExpression(PigOutputConstant.STORER_PARAMETER,
+                        EqualityOperator.EQ, PigOutputConstant.SEQUENCEFILE_STORER_VALUE));
+        ComponentCondition hbaseStorerCondition =
+                new SimpleComponentCondition(new BasicExpression(PigOutputConstant.STORER_PARAMETER,
+                        EqualityOperator.EQ, PigOutputConstant.HBASE_STORER_VALUE));
 
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        hs.add(new DistributionModuleGroup(EMR5150PigModuleGroup.PIG_HCATALOG_GROUP_NAME, false, hcatStorerCondition));
-        hs.add(new DistributionModuleGroup(EMR5150PigModuleGroup.PIG_AVRO_GROUP_NAME, false, avroStorerCondition));
-        hs.add(new DistributionModuleGroup(EMR5150PigModuleGroup.PIG_RCFILE_GROUP_NAME, false, rcfileStorerCondition));
-        hs.add(new DistributionModuleGroup(EMR5150PigModuleGroup.PIG_SEQUENCEFILE_GROUP_NAME, false, sequencefileStorerCondition));
-        hs.add(new DistributionModuleGroup(EMR5150HBaseModuleGroup.MODULE_GROUP_NAME, false, hbaseStorerCondition));
-        hs.add(new DistributionModuleGroup(EMR5150PigModuleGroup.PIG_HBASE_GROUP_NAME, false, hbaseStorerCondition));
+        hs.add(new DistributionModuleGroup(EMR5150Constant.PIG_HCATALOG_MODULE_GROUP.getModuleName(), false,
+                hcatStorerCondition));
+        hs.add(new DistributionModuleGroup(EMR5150Constant.PIG_AVRO_MODULE_GROUP.getModuleName(), false,
+                avroStorerCondition));
+        hs.add(new DistributionModuleGroup(EMR5150Constant.PIG_RCFILE_MODULE_GROUP.getModuleName(), false,
+                rcfileStorerCondition));
+        hs.add(new DistributionModuleGroup(EMR5150Constant.PIG_SEQUENCEFILE_MODULE_GROUP.getModuleName(), false,
+                sequencefileStorerCondition));
+        hs.add(new DistributionModuleGroup(EMR5150Constant.HBASE_MODULE_GROUP.getModuleName(), false,
+                hbaseStorerCondition));
+        hs.add(new DistributionModuleGroup(EMR5150Constant.PIG_HBASE_MODULE_GROUP.getModuleName(), false,
+                hbaseStorerCondition));
         return hs;
     }
 

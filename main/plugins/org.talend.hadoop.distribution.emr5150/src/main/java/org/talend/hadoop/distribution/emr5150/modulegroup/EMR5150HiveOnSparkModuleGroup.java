@@ -16,17 +16,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
-
+import org.talend.hadoop.distribution.emr5150.EMR5150Constant;
 
 public class EMR5150HiveOnSparkModuleGroup {
 
-    public static final String MODULE_GROUP_NAME = "SPARK-HIVE-LIB-EMR_5_15_0_LATEST"; //$NON-NLS-1$
-
-    public static final String MRREQUIRED_MODULE_GROUP_NAME = "SPARK-HIVE-LIB-MRREQUIRED-EMR_5_15_0_LATEST"; //$NON-NLS-1$
-
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        hs.add(new DistributionModuleGroup(MODULE_GROUP_NAME, true, null));
+        hs.add(new DistributionModuleGroup(EMR5150Constant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), true,
+                null));
         return hs;
     }
 }

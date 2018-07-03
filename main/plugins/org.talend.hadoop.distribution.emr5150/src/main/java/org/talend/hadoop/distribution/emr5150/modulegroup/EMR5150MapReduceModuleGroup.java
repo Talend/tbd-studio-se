@@ -16,23 +16,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
+import org.talend.hadoop.distribution.emr5150.EMR5150Constant;
 
 public class EMR5150MapReduceModuleGroup {
 
-    public static final String HDFS_GROUP_NAME = "HDFS-LIB-EMR_5_15_0_LATEST"; //$NON-NLS-1$
-
-    public static final String MAPREDUCE_GROUP_NAME = "MAPREDUCE-LIB-EMR_5_15_0_LATEST"; //$NON-NLS-1$
-
-    public static final String MAPREDUCE_PARQUET_MRREQUIRED_GROUP_NAME = "MAPREDUCE-PARQUET-LIB-MRREQUIRED-EMR_5_15_0"; //$NON-NLS-1$
-
-    public static final String MAPREDUCE_AVRO_MRREQUIRED_GROUP_NAME = "MAPREDUCE-AVRO-LIB-MRREQUIRED-EMR_5_15_0"; //$NON-NLS-1$
-
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        hs.add(new DistributionModuleGroup(HDFS_GROUP_NAME));
-        hs.add(new DistributionModuleGroup(MAPREDUCE_GROUP_NAME));
-        hs.add(new DistributionModuleGroup(MAPREDUCE_PARQUET_MRREQUIRED_GROUP_NAME, true, null));
-        hs.add(new DistributionModuleGroup(MAPREDUCE_AVRO_MRREQUIRED_GROUP_NAME, true, null));
+        hs.add(new DistributionModuleGroup(EMR5150Constant.HDFS_MODULE_GROUP.getModuleName()));
+        hs.add(new DistributionModuleGroup(EMR5150Constant.MAPREDUCE_MODULE_GROUP.getModuleName()));
+        hs.add(new DistributionModuleGroup(EMR5150Constant.MAPREDUCE_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName(),
+                true, null));
+        hs.add(new DistributionModuleGroup(EMR5150Constant.MAPREDUCE_AVRO_MRREQUIRED_MODULE_GROUP.getModuleName(),
+                true, null));
         return hs;
     }
 }

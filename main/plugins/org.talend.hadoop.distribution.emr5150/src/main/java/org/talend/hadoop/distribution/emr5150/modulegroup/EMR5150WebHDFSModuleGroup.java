@@ -17,18 +17,16 @@ import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.HDFSLinkedNodeCondition;
-
+import org.talend.hadoop.distribution.emr5150.EMR5150Constant;
 
 public class EMR5150WebHDFSModuleGroup {
-    
-    public static final String WEBHDFS_MODULE_GROUP_NAME = "WEBHDFS-LIB-EMR_5_15_0_LATEST";
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
-        
+
         HDFSLinkedNodeCondition hdfsLinkedNodeCondition = new HDFSLinkedNodeCondition(distribution, version);
-        
+
         DistributionModuleGroup dmgWebHDFS =
-                new DistributionModuleGroup(WEBHDFS_MODULE_GROUP_NAME, true, 
+                new DistributionModuleGroup(EMR5150Constant.WEBHDFS_MODULE_GROUP.getModuleName(), true,
                         hdfsLinkedNodeCondition.getWebHDFSCondition());
 
         Set<DistributionModuleGroup> hs = new HashSet<>();

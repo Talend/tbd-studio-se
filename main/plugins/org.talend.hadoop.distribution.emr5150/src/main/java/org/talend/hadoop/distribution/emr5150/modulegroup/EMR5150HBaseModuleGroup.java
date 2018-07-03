@@ -16,15 +16,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
+import org.talend.hadoop.distribution.emr5150.EMR5150Constant;
 
 public class EMR5150HBaseModuleGroup {
-
-    public static final String MODULE_GROUP_NAME = "HBASE-LIB-EMR_5_15_0_LATEST"; //$NON-NLS-1$
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         // The DistributionModuleGroup is mrrequired for the M/R components. It's not used for the DI components.
-        DistributionModuleGroup dmg = new DistributionModuleGroup(MODULE_GROUP_NAME, true, null);
+        DistributionModuleGroup dmg =
+                new DistributionModuleGroup(EMR5150Constant.HBASE_MODULE_GROUP.getModuleName(), true, null);
         hs.add(dmg);
         return hs;
     }

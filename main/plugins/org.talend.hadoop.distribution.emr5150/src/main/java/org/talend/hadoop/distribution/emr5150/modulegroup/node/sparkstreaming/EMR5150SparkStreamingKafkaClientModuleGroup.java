@@ -18,6 +18,7 @@ import java.util.Set;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.SparkStreamingLinkedNodeCondition;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
+import org.talend.hadoop.distribution.emr5150.EMR5150Constant;
 
 public class EMR5150SparkStreamingKafkaClientModuleGroup {
 
@@ -25,9 +26,10 @@ public class EMR5150SparkStreamingKafkaClientModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        DistributionModuleGroup dmg = new DistributionModuleGroup(KAFKA_CLIENT_GROUP_NAME, true,
-                new SparkStreamingLinkedNodeCondition(distribution, version,
-                        SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition());
+        DistributionModuleGroup dmg =
+                new DistributionModuleGroup(EMR5150Constant.SPARK_KAFKA_CLIENT_MRREQUIRED_MODULE_GROUP.getModuleName(),
+                        true, new SparkStreamingLinkedNodeCondition(distribution, version,
+                                SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition());
         hs.add(dmg);
         return hs;
     }

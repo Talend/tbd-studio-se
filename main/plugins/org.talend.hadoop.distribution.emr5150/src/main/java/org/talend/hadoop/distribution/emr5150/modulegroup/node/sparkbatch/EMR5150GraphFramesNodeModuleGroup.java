@@ -17,15 +17,15 @@ import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.SparkBatchLinkedNodeCondition;
+import org.talend.hadoop.distribution.emr5150.EMR5150Constant;
 
 public class EMR5150GraphFramesNodeModuleGroup {
 
-    public static final String GRAPHFRAMES_GROUP_NAME = "GRAPHFRAMES-LIB-EMR_5_15_0_LATEST"; //$NON-NLS-1$
-
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        DistributionModuleGroup dmg = new DistributionModuleGroup(GRAPHFRAMES_GROUP_NAME, true,
-                new SparkBatchLinkedNodeCondition(distribution, version).getCondition());
+        DistributionModuleGroup dmg =
+                new DistributionModuleGroup(EMR5150Constant.GRAPHFRAMES_MODULE_GROUP.getModuleName(), true,
+                        new SparkBatchLinkedNodeCondition(distribution, version).getCondition());
         hs.add(dmg);
         return hs;
     }

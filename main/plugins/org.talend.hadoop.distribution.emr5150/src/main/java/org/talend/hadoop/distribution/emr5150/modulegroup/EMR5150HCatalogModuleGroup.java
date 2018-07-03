@@ -16,14 +16,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
+import org.talend.hadoop.distribution.emr5150.EMR5150Constant;
 
 public class EMR5150HCatalogModuleGroup {
 
-    public static final String MODULE_GROUP_NAME = "HDFS-LIB-EMR_5_15_0_LATEST"; //$NON-NLS-1$
-
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        hs.add(new DistributionModuleGroup(MODULE_GROUP_NAME));
+        hs.add(new DistributionModuleGroup(EMR5150Constant.HDFS_MODULE_GROUP.getModuleName()));
         return hs;
     }
 

@@ -21,17 +21,17 @@ import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
+import org.talend.hadoop.distribution.emr5150.EMR5150Constant;
 
 public class EMR5150SparkStreamingModuleGroup {
-
-    public static final String MODULE_GROUP_NAME = "SPARK2-LIB-EMR_5_15_0_LATEST"; //$NON-NLS-1$
 
     private final static ComponentCondition condition = new SimpleComponentCondition(new BasicExpression(
             SparkStreamingConstant.SPARKCONFIGURATION_IS_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false")); //$NON-NLS-1$
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        DistributionModuleGroup dmg = new DistributionModuleGroup(MODULE_GROUP_NAME, false, condition);
+        DistributionModuleGroup dmg =
+                new DistributionModuleGroup(EMR5150Constant.SPARK_MODULE_GROUP.getModuleName(), false, condition);
         hs.add(dmg);
         return hs;
     }
