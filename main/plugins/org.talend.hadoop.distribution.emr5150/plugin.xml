@@ -345,9 +345,9 @@
         <!-- Sqoop libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="sqoop-1.4.6.jar"
-            name="sqoop-1.4.6.jar"
-            mvn_uri="mvn:org.talend.libraries/sqoop-1.4.6/6.0.0"/>
+            id="sqoop-1.4.7.jar"
+            name="sqoop-1.4.7.jar"
+            mvn_uri="mvn:org.talend.libraries/sqoop-1.4.7/6.0.0"/>
 
         <!-- Tez -->
         <libraryNeeded
@@ -401,9 +401,9 @@
         <!-- Third parties libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="avro-mapred-1.7.5-hadoop2.jar"
-            name="avro-mapred-1.7.5-hadoop2.jar"
-            mvn_uri="mvn:org.talend.libraries/avro-mapred-1.7.5-hadoop2/6.1.0"/>
+            id="avro-mapred-1.8.1-hadoop2.jar"
+            name="avro-mapred-1.8.1-hadoop2.jar"
+            mvn_uri="mvn:org.talend.libraries/avro-mapred-1.8.1-hadoop2/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -1539,6 +1539,12 @@
             id="avro-1.7.7.jar"
             name="avro-1.7.7.jar"
             mvn_uri="mvn:org.talend.libraries/avro-1.7.7/6.0.0"/>
+            
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr5150"
+            id="avro-1.8.1.jar"
+            name="avro-1.8.1.jar"
+            mvn_uri="mvn:org.talend.libraries/avro-1.8.1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -1977,8 +1983,10 @@
                 description="Sqoop libraries for EMR 5.8.0"
                 id="SQOOP-LIB-EMR_5_15_0_LATEST"
                 name="SQOOP-LIB-EMR_5_15_0_LATEST">
-            <library id="sqoop-1.4.6.jar"/>
-            <library id="avro-mapred-1.7.5-hadoop2.jar"/>
+            <library id="sqoop-1.4.7.jar"/>
+            <library id="avro-mapred-1.8.1-hadoop2.jar"/>
+            <library id="commons-lang3-3.5.jar"/>
+            <library id="avro-1.8.1.jar"/>
         </libraryNeededGroup>
 
         <!-- Sqoop Parquet group -->
