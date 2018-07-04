@@ -143,9 +143,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="hive-common-2.3.0-amzn-0.jar"
-            name="hive-common-2.3.0-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-common-2.3.0-amzn-0/6.0.0"/>
+            id="hive-common-2.3.3-amzn-0.jar"
+            name="hive-common-2.3.3-amzn-0.jar"
+            mvn_uri="mvn:org.talend.libraries/hive-common-2.3.3-amzn-0/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -1864,7 +1864,7 @@
                 description="The latest pig rc file storage libraries for EMR 5.8.0"
                 id="PIG-RCFILE-LIB-EMR_5_15_0_LATEST"
                 name="PIG-RCFILE-LIB-EMR_5_15_0_LATEST">
-            <library id="hive-common-2.3.0-amzn-0.jar"/>
+            <library id="hive-common-2.3.3-amzn-0.jar"/>
             <library id="hive-serde-2.3.0-amzn-0.jar"/>
             <library id="hive-exec-2.3.0-amzn-0.jar"/>
             <library id="elephant-bird-core-4.9.jar"/>
@@ -1934,7 +1934,7 @@
                 description="The latest Hive libraries for EMR 5.8.0"
                 id="HIVE-LIB-EMR_5_15_0_LATEST"
                 name="HIVE-LIB-EMR_5_15_0_LATEST">
-             <library id="hive-common-2.3.0-amzn-0.jar"/>
+             <library id="hive-common-2.3.3-amzn-0.jar"/>
              <library id="hive-exec-2.3.0-amzn-0.jar"/>
              <library id="hive-metastore-2.3.0-amzn-0.jar"/>
            	 <library id="hive-jdbc-2.3.0-amzn-0.jar"/>
