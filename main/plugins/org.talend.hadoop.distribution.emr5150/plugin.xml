@@ -428,10 +428,10 @@
 
         <libraryNeeded
             context="plugin:org.talend.libraries.zookeeper"
-            id="zookeeper-3.4.10.jar"
-            name="zookeeper-3.4.10.jar"
-            mvn_uri="mvn:org.talend.libraries/zookeeper-3.4.10/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.zookeeper/lib/zookeeper-3.4.10.jar"/>
+            id="zookeeper-3.4.12.jar"
+            name="zookeeper-3.4.12.jar"
+            mvn_uri="mvn:org.talend.libraries/zookeeper-3.4.12/6.0.0"
+            uripath="platform:/plugin/org.talend.libraries.zookeeper/lib/zookeeper-3.4.12.jar"/>
             
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -1916,7 +1916,7 @@
              <library id="commons-configuration-1.6.jar" />
              <library id="commons-lang-2.6.jar" />
              <library id="commons-collections-3.2.2.jar" />
-             <library id="zookeeper-3.4.10.jar" />
+             <library id="zookeeper-3.4.12.jar" />
              <library id="htrace-core-3.1.0-incubating.jar" />
              <library id="guava-14.0.1.jar" />
              <library id="jackson-mapper-asl-1.9.14-TALEND.jar" />
@@ -1952,7 +1952,7 @@
              <library id="datanucleus-core-4.1.17.jar"/>
              <library id="datanucleus-rdbms-4.1.19.jar"/>
              <library id="derby-10.12.1.1.jar"/>
-             <library id="zookeeper-3.4.10.jar"/>
+             <library id="zookeeper-3.4.12.jar"/>
              <library id="curator-framework-2.7.1.jar"/>
              <library id="curator-client-2.7.1.jar"/>
         </libraryNeededGroup>
@@ -2321,7 +2321,7 @@
       <!-- EMR 5.8.0 ClassLoaders -->
       <classloader
             index="HIVE2:AMAZON_EMR:EMR_5_15_0:STANDALONE"
-            libraries="antlr-runtime-3.4.jar;commons-cli-1.2.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-httpclient-3.0.1.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.2.jar;curator-client-2.7.1.jar;curator-framework-2.7.1.jar;datanucleus-api-jdo-4.2.4.jar;datanucleus-core-4.1.17.jar;datanucleus-rdbms-4.1.19.jar;derby-10.11.1.1.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-14.0.1.jar;hadoop-auth-2.8.3-amzn-1.jar;hadoop-common-2.8.3-amzn-1.jar;hadoop-hdfs-2.8.3-amzn-1.jar;hadoop-mapreduce-client-common-2.7.3-amzn-3.jar;hadoop-mapreduce-client-core-2.7.3-amzn-3.jar;hadoop-mapreduce-client-jobclient-2.7.3-amzn-3.jar;hadoop-yarn-api-2.7.3-amzn-3.jar;hadoop-yarn-client-2.7.3-amzn-3.jar;hadoop-yarn-common-2.7.3-amzn-3.jar;hive-exec-2.3.3-amzn-0.jar;hive-jdbc-2.3.3-amzn-0.jar;hive-metastore-2.3.3-amzn-0.jar;hive-serde-2.3.3-amzn-0.jar;hive-service-2.3.3-amzn-0.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;jdo-api-3.0.1.jar;libfb303-0.9.3.jar;libthrift-0.9.3.jar;log4j-1.2.17.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;zookeeper-3.4.10.jar">
+            libraries="antlr-runtime-3.4.jar;commons-cli-1.2.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-httpclient-3.0.1.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.2.jar;curator-client-2.7.1.jar;curator-framework-2.7.1.jar;datanucleus-api-jdo-4.2.4.jar;datanucleus-core-4.1.17.jar;datanucleus-rdbms-4.1.19.jar;derby-10.11.1.1.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-14.0.1.jar;hadoop-auth-2.8.3-amzn-1.jar;hadoop-common-2.8.3-amzn-1.jar;hadoop-hdfs-2.8.3-amzn-1.jar;hadoop-mapreduce-client-common-2.7.3-amzn-3.jar;hadoop-mapreduce-client-core-2.7.3-amzn-3.jar;hadoop-mapreduce-client-jobclient-2.7.3-amzn-3.jar;hadoop-yarn-api-2.7.3-amzn-3.jar;hadoop-yarn-client-2.7.3-amzn-3.jar;hadoop-yarn-common-2.7.3-amzn-3.jar;hive-exec-2.3.3-amzn-0.jar;hive-jdbc-2.3.3-amzn-0.jar;hive-metastore-2.3.3-amzn-0.jar;hive-serde-2.3.3-amzn-0.jar;hive-service-2.3.3-amzn-0.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;jdo-api-3.0.1.jar;libfb303-0.9.3.jar;libthrift-0.9.3.jar;log4j-1.2.17.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;zookeeper-3.4.12.jar">
       </classloader>
       <classloader
             index="MAP_REDUCE:AMAZON_EMR:EMR_5_15_0"
@@ -2337,7 +2337,7 @@
       </classloader>
       <classloader
             index="HBASE:AMAZON_EMR:EMR_5_15_0"
-            libraries="hbase-common-1.4.4.jar;hbase-client-1.4.4.jar;hbase-protocol-1.4.4.jar;hadoop-common-2.8.3-amzn-1.jar;hadoop-auth-2.8.3-amzn-1.jar;commons-logging-1.2.jar;commons-codec-1.10.jar;commons-configuration-1.6.jar;commons-lang-2.6.jar;commons-collections-3.2.2.jar;zookeeper-3.4.10.jar;htrace-core-3.1.0-incubating.jar;guava-14.0.1.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-core-asl-1.9.14-TALEND.jar;netty-all-4.0.43.Final.jar;protobuf-java-2.5.0.jar;log4j-1.2.17.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;hbase-server-1.4.4.jar;metrics-core-2.2.0.jar;netty-all-4.1.17.Final.jar">
+            libraries="hbase-common-1.4.4.jar;hbase-client-1.4.4.jar;hbase-protocol-1.4.4.jar;hadoop-common-2.8.3-amzn-1.jar;hadoop-auth-2.8.3-amzn-1.jar;commons-logging-1.2.jar;commons-codec-1.10.jar;commons-configuration-1.6.jar;commons-lang-2.6.jar;commons-collections-3.2.2.jar;zookeeper-3.4.12.jar;htrace-core-3.1.0-incubating.jar;guava-14.0.1.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-core-asl-1.9.14-TALEND.jar;netty-all-4.0.43.Final.jar;protobuf-java-2.5.0.jar;log4j-1.2.17.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;hbase-server-1.4.4.jar;metrics-core-2.2.0.jar;netty-all-4.1.17.Final.jar">
       </classloader>
     </extension>
 </plugin>
