@@ -25,6 +25,7 @@ import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
 import org.talend.hadoop.distribution.component.HDFSComponent;
+import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.MapRDBComponent;
 import org.talend.hadoop.distribution.component.MapROJAIComponent;
@@ -66,7 +67,7 @@ import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SparkStreamingM
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SparkStreamingParquetNodeModuleGroup;
 
 public class MapR601Distribution extends AbstractMapRDistribution implements HDFSComponent, MapROJAIComponent,
-        SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, MapRStreamsComponent, MapRDBComponent, IMapRDistribution {
+        SparkBatchComponent, SparkStreamingComponent, HiveComponent, HiveOnSparkComponent, MapRStreamsComponent, MapRDBComponent, IMapRDistribution {
 
     public final static String VERSION = "MAPR601"; //$NON-NLS-1$
 
@@ -397,6 +398,51 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
     
     @Override
     public boolean doSupportBackpressure() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportStoreAsParquet() {
+        return false;
+    }
+
+    @Override
+    public boolean doSupportTezForHive() {
+        return false;
+    }
+
+    @Override
+    public boolean doSupportHive2() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportHBaseForHive() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportAvroFormat() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportHive1() {
+        return false;
+    }
+
+    @Override
+    public boolean doSupportParquetFormat() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportSSL() {
+        return false;
+    }
+
+    @Override
+    public boolean doSupportORCFormat() {
         return true;
     }
 }
