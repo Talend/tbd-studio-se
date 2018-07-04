@@ -63,39 +63,39 @@
 		<!-- Map/Reduce libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="hadoop-mapreduce-client-common-2.7.3-amzn-3.jar"
-            name="hadoop-mapreduce-client-common-2.7.3-amzn-3.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-common-2.7.3-amzn-3/6.0.0"/>
+            id="hadoop-mapreduce-client-common-2.8.3-amzn-1.jar"
+            name="hadoop-mapreduce-client-common-2.8.3-amzn-1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-common-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="hadoop-mapreduce-client-core-2.7.3-amzn-3.jar"
-            name="hadoop-mapreduce-client-core-2.7.3-amzn-3.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-core-2.7.3-amzn-3/6.0.0"/>
+            id="hadoop-mapreduce-client-core-2.8.3-amzn-1.jar"
+            name="hadoop-mapreduce-client-core-2.8.3-amzn-1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-core-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="hadoop-mapreduce-client-jobclient-2.7.3-amzn-3.jar"
-            name="hadoop-mapreduce-client-jobclient-2.7.3-amzn-3.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-jobclient-2.7.3-amzn-3/6.0.0"/>
+            id="hadoop-mapreduce-client-jobclient-2.8.3-amzn-1.jar"
+            name="hadoop-mapreduce-client-jobclient-2.8.3-amzn-1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-jobclient-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="hadoop-yarn-api-2.7.3-amzn-3.jar"
-            name="hadoop-yarn-api-2.7.3-amzn-3.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-api-2.7.3-amzn-3/6.0.0"/>
+            id="hadoop-yarn-api-2.8.3-amzn-1.jar"
+            name="hadoop-yarn-api-2.8.3-amzn-1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-api-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="hadoop-yarn-client-2.7.3-amzn-3.jar"
-            name="hadoop-yarn-client-2.7.3-amzn-3.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-client-2.7.3-amzn-3/6.0.0"/>
+            id="hadoop-yarn-client-2.8.3-amzn-1.jar"
+            name="hadoop-yarn-client-2.8.3-amzn-1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-client-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="hadoop-yarn-common-2.7.3-amzn-3.jar"
-            name="hadoop-yarn-common-2.7.3-amzn-3.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-common-2.7.3-amzn-3/6.0.0"/>
+            id="hadoop-yarn-common-2.8.3-amzn-1.jar"
+            name="hadoop-yarn-common-2.8.3-amzn-1.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-common-2.8.3-amzn-1/6.0.0"/>
 
         <!-- HBase libraries -->
         <libraryNeeded
@@ -1803,12 +1803,12 @@
                 description="The latest Map Reduce libraries of EMR 5.8.0"
                 id="MAPREDUCE-LIB-EMR_5_15_0_LATEST"
                 name="MAPREDUCE-LIB-EMR_5_15_0_LATEST">
-             <library id="hadoop-mapreduce-client-common-2.7.3-amzn-3.jar"/>
-             <library id="hadoop-mapreduce-client-core-2.7.3-amzn-3.jar"/>
-             <library id="hadoop-mapreduce-client-jobclient-2.7.3-amzn-3.jar"/>
-             <library id="hadoop-yarn-api-2.7.3-amzn-3.jar"/>
-             <library id="hadoop-yarn-client-2.7.3-amzn-3.jar"/>
-             <library id="hadoop-yarn-common-2.7.3-amzn-3.jar"/>
+             <library id="hadoop-mapreduce-client-common-2.8.3-amzn-1.jar"/>
+             <library id="hadoop-mapreduce-client-core-2.8.3-amzn-1.jar"/>
+             <library id="hadoop-mapreduce-client-jobclient-2.8.3-amzn-1.jar"/>
+             <library id="hadoop-yarn-api-2.8.3-amzn-1.jar"/>
+             <library id="hadoop-yarn-client-2.8.3-amzn-1.jar"/>
+             <library id="hadoop-yarn-common-2.8.3-amzn-1.jar"/>
              <library id="commons-codec-1.4.jar"/>
              <library id="gson-2.2.4.jar"/>
              <library id="antlr-runtime-3.4.jar"/>
