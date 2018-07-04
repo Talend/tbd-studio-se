@@ -565,9 +565,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="hive-cli-2.3.0-amzn-0.jar"
-            name="hive-cli-2.3.0-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-cli-2.3.0-amzn-0/6.0.0"/>
+            id="hive-cli-2.3.3-amzn-0.jar"
+            name="hive-cli-2.3.3-amzn-0.jar"
+            mvn_uri="mvn:org.talend.libraries/hive-cli-2.3.3-amzn-0/6.0.0"/>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hive-exec-2.3.3-amzn-0.jar"
@@ -1942,7 +1942,7 @@
 		     <library id="hive-service-rpc-2.3.3-amzn-0.jar"/>
 		     <library id="hive-serde-2.3.3-amzn-0.jar"/>
 		     <library id="hive-beeline-2.3.3-amzn-0.jar"/>
-             <library id="hive-cli-2.3.0-amzn-0.jar"/>
+             <library id="hive-cli-2.3.3-amzn-0.jar"/>
 		     <library id="jdo-api-3.0.1.jar"/>
              <library id="libthrift-0.9.3.jar"/>
              <library id="libfb303-0.9.3.jar"/>
