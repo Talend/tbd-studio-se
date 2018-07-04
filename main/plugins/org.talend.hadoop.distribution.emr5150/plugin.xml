@@ -161,9 +161,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="hive-jdbc-2.3.0-amzn-0.jar"
-            name="hive-jdbc-2.3.0-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-jdbc-2.3.0-amzn-0/6.0.0"/>
+            id="hive-jdbc-2.3.3-amzn-0.jar"
+            name="hive-jdbc-2.3.3-amzn-0.jar"
+            mvn_uri="mvn:org.talend.libraries/hive-jdbc-2.3.3-amzn-0/6.0.0"/>
 
           <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -1359,9 +1359,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="hive-jdbc-2.3.0-amzn-0.jar"
-            name="hive-jdbc-2.3.0-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-jdbc-2.3.0-amzn-0/6.0.0"/>
+            id="hive-jdbc-2.3.3-amzn-0.jar"
+            name="hive-jdbc-2.3.3-amzn-0.jar"
+            mvn_uri="mvn:org.talend.libraries/hive-jdbc-2.3.3-amzn-0/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -1937,7 +1937,7 @@
              <library id="hive-common-2.3.3-amzn-0.jar"/>
              <library id="hive-exec-2.3.3-amzn-0.jar"/>
              <library id="hive-metastore-2.3.3-amzn-0.jar"/>
-           	 <library id="hive-jdbc-2.3.0-amzn-0.jar"/>
+           	 <library id="hive-jdbc-2.3.3-amzn-0.jar"/>
 		     <library id="hive-service-2.3.0-amzn-0.jar"/>
 		     <library id="hive-service-rpc-2.3.0-amzn-0.jar"/>
 		     <library id="hive-serde-2.3.0-amzn-0.jar"/>
@@ -2321,7 +2321,7 @@
       <!-- EMR 5.8.0 ClassLoaders -->
       <classloader
             index="HIVE2:AMAZON_EMR:EMR_5_15_0:STANDALONE"
-            libraries="antlr-runtime-3.4.jar;commons-cli-1.2.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-httpclient-3.0.1.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.2.jar;curator-client-2.7.1.jar;curator-framework-2.7.1.jar;datanucleus-api-jdo-4.2.4.jar;datanucleus-core-4.1.17.jar;datanucleus-rdbms-4.1.19.jar;derby-10.11.1.1.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-14.0.1.jar;hadoop-auth-2.8.3-amzn-1.jar;hadoop-common-2.8.3-amzn-1.jar;hadoop-hdfs-2.8.3-amzn-1.jar;hadoop-mapreduce-client-common-2.7.3-amzn-3.jar;hadoop-mapreduce-client-core-2.7.3-amzn-3.jar;hadoop-mapreduce-client-jobclient-2.7.3-amzn-3.jar;hadoop-yarn-api-2.7.3-amzn-3.jar;hadoop-yarn-client-2.7.3-amzn-3.jar;hadoop-yarn-common-2.7.3-amzn-3.jar;hive-exec-2.3.3-amzn-0.jar;hive-jdbc-2.3.0-amzn-0.jar;hive-metastore-2.3.3-amzn-0.jar;hive-serde-2.3.0-amzn-0.jar;hive-service-2.3.0-amzn-0.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;jdo-api-3.0.1.jar;libfb303-0.9.3.jar;libthrift-0.9.3.jar;log4j-1.2.17.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;zookeeper-3.4.10.jar">
+            libraries="antlr-runtime-3.4.jar;commons-cli-1.2.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-httpclient-3.0.1.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.2.jar;curator-client-2.7.1.jar;curator-framework-2.7.1.jar;datanucleus-api-jdo-4.2.4.jar;datanucleus-core-4.1.17.jar;datanucleus-rdbms-4.1.19.jar;derby-10.11.1.1.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-14.0.1.jar;hadoop-auth-2.8.3-amzn-1.jar;hadoop-common-2.8.3-amzn-1.jar;hadoop-hdfs-2.8.3-amzn-1.jar;hadoop-mapreduce-client-common-2.7.3-amzn-3.jar;hadoop-mapreduce-client-core-2.7.3-amzn-3.jar;hadoop-mapreduce-client-jobclient-2.7.3-amzn-3.jar;hadoop-yarn-api-2.7.3-amzn-3.jar;hadoop-yarn-client-2.7.3-amzn-3.jar;hadoop-yarn-common-2.7.3-amzn-3.jar;hive-exec-2.3.3-amzn-0.jar;hive-jdbc-2.3.3-amzn-0.jar;hive-metastore-2.3.3-amzn-0.jar;hive-serde-2.3.0-amzn-0.jar;hive-service-2.3.0-amzn-0.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;jdo-api-3.0.1.jar;libfb303-0.9.3.jar;libthrift-0.9.3.jar;log4j-1.2.17.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;zookeeper-3.4.10.jar">
       </classloader>
       <classloader
             index="MAP_REDUCE:AMAZON_EMR:EMR_5_15_0"
