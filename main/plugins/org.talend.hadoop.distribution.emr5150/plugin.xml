@@ -414,6 +414,41 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
+            id="parquet-common-1.6.0.jar"
+            name="parquet-common-1.6.0.jar"
+            mvn_uri="mvn:org.apache.parquet/parquet-common/1.6.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr5150"
+            id="parquet-hadoop-1.6.0.jar"
+            name="parquet-hadoop-1.6.0.jar"
+            mvn_uri="mvn:org.apache.parquet/parquet-hadoop/1.6.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr5150"
+            id="parquet-column-1.6.0.jar"
+            name="parquet-column-1.6.0.jar"
+            mvn_uri="mvn:org.apache.parquet/parquet-column/1.6.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr5150"
+            id="parquet-format-2.2.0-rc1.jar"
+            name="parquet-format-2.2.0-rc1.jar"
+            mvn_uri="mvn:org.apache.parquet/parquet-format/2.2.0-rc1">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr5150"
+            id="parquet-encoding-1.6.0.jar"
+            name="parquet-encoding-1.6.0.jar"
+            mvn_uri="mvn:org.apache.parquet/parquet-encoding/1.6.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr5150"
             id="parquet-avro-1.8.2-shaded.jar"
             name="parquet-avro-1.8.2-shaded.jar"
             mvn_uri="mvn:org.talend.libraries/parquet-avro-1.8.2-shaded/6.0.0">
@@ -1994,6 +2029,11 @@
             <library id="jackson-databind-2.5.4.redhat-2.jar"/>
             <library id="jackson-core-2.5.4.jar"/>
             <library id="parquet-hadoop-bundle-1.8.1.jar" />
+            <library id="parquet-common-1.6.0.jar" />
+            <library id="parquet-column-1.6.0.jar" />
+            <library id="parquet-hadoop-1.6.0.jar" />
+            <library id="parquet-encoding-1.6.0.jar" />
+            <library id="parquet-format-2.2.0-rc1.jar" />
             <library id="parquet-avro-1.6.0.jar"/>
         </libraryNeededGroup>
         
