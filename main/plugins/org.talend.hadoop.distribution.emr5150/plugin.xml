@@ -1830,7 +1830,7 @@
                 name="PIG-LIB-EMR_5_15_0_LATEST">
              <library id="pig-0.17.0-core-h2.jar"/>
              <library id="hadoop-lzo-0.4.19.jar"/>
-             <library id="jline-1.0.jar"/>
+             <library id="jline-2.12.jar"/>
              <library id="joda-time-2.9.3.jar"/>
              <library id="automaton-1.11-8.jar"/>
         </libraryNeededGroup>
