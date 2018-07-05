@@ -31,4 +31,6 @@ public class DynamicConstants {
 
     public static final String ATTR_USER_INPUTED_NAME = "userInputedName"; //$NON-NLS-1$
 
+    public static final String ATTR_SELECTED_SPARK_VERSIONS = "selectedSparkVersions"; //$NON-NLS-1$
+
 }

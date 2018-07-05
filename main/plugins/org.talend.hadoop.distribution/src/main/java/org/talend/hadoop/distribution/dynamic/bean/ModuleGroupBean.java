@@ -27,6 +27,8 @@ public class ModuleGroupBean implements IVariable {
 
     public static final String ATTR_DESCRIPTION = "description"; //$NON-NLS-1$
 
+    public static final String ATTR_SUPPORTED_SPARK_VERSIONS = "supportedSparkVersions"; //$NON-NLS-1$
+
     private String id;
 
     private String description;
@@ -34,6 +36,8 @@ public class ModuleGroupBean implements IVariable {
     private List<String> modules;
 
     private List<String> conditions;
+
+    private List<String> supportedSparkVersions;
 
     public String getId() {
         return this.id;
@@ -67,6 +71,14 @@ public class ModuleGroupBean implements IVariable {
         this.conditions = conditions;
     }
 
+    public List<String> getSupportedSparkVersions() {
+        return this.supportedSparkVersions;
+    }
+
+    public void setSupportedSparkVersions(List<String> supportedSparkVersions) {
+        this.supportedSparkVersions = supportedSparkVersions;
+    }
+
     @Override
     public Object getVariableValue(String variable) throws Exception {
         Object value = null;
@@ -83,6 +95,9 @@ public class ModuleGroupBean implements IVariable {
             break;
         case ATTR_MODULES:
             value = getModules();
+            break;
+        case ATTR_SUPPORTED_SPARK_VERSIONS:
+            value = getSupportedSparkVersions();
             break;
         default:
             throw new UnsupportedOperationException(

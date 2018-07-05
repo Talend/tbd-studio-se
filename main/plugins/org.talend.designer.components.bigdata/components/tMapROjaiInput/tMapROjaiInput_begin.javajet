@@ -269,6 +269,15 @@ imports="
 %>
 
            	<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.getByte();
+<%
+                   } else if ("Document".equals(javaType.getLabel())){
+%>
+
+			org.json.JSONObject jsonObj = new org.json.JSONObject(valueObj_<%=cid%>.asJsonString());
+			String xml = "<xml>" + org.json.XML.toString(jsonObj) + "</xml>";
+			org.dom4j.Document doc = org.dom4j.DocumentHelper.parseText(xml);
+			<%=firstConnName %>.<%=column.getLabel() %> = new routines.system.Document();
+           	<%=firstConnName %>.<%=column.getLabel() %>.setDocument(doc);
             
 <%
                    } else {

@@ -60,6 +60,8 @@ public class DynamicDistribConfigAdapter extends AbstractDynamicAdapter {
         pluginConfiguration.setTemplateId(templateId);
         pluginConfiguration.setRepository(configuration.getRemoteRepositoryUrl());
         pluginConfiguration.setAttribute(DynamicConstants.ATTR_PROJECT_TECHNICAL_NAME, projectTechnicalName);
+        pluginConfiguration.setAttribute(DynamicConstants.ATTR_SELECTED_SPARK_VERSIONS,
+                DynamicDistributionUtils.convert2SparkVersions(configuration.getSelectedSparkVersions()));
 
         return pluginConfiguration;
     }

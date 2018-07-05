@@ -37,7 +37,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.talend.hadoop.distribution,
  org.talend.components.api,
  org.talend.libraries.dom4j-jaxen,
- org.talend.designer.maven.aether
+ org.talend.designer.maven.aether,
+ org.eclipse.nebula.widgets.tablecombo
 Bundle-ActivationPolicy: lazy
 Export-Package: org.talend.repository.hadoopcluster.action,
  org.talend.repository.hadoopcluster.action.common,

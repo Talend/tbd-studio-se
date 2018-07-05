@@ -1,0 +1,742 @@
+{
+	"id": "HDP2.X.X",
+	"name": "Hortonworks HDP2.X.X template",
+	"distribution": "HORTONWORKS",
+	"templateId": "HDP2xxDistributionTemplate",
+	"baseVersion": "2.4.0",
+	"topVersion": "3.0.0",
+	"dynamicVersion": "will be filled during runtime",
+	"properties": {
+		"context": "plugin:org.talend.hadoop.distribution.hdpx"
+	},
+	"description": "",
+	"supportedSparkVersions": [
+        "SPARK_2_1",
+        "SPARK_2_2",
+        "SPARK_2_3"
+	],
+	"modules": [
+	    {
+            "id": "commons-lang3-3.4",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "commons-lang3-3.4.jar",
+            "mvnUri": "mvn:org.talend.libraries/commons-lang3-3.4/6.2.0",
+            "useStudioRepository": "true",
+            "supportedSparkVersions": [
+                "SPARK_2_2",
+                "SPARK_2_3"
+            ],
+            "description": ""
+        },
+        {
+			"id": "avro-1.8.0",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "avro-1.8.0.jar",
+			"mvnUri": "mvn:org.talend.libraries/avro-1.8.0/6.0.0",
+			"useStudioRepository": "true",
+			"description": ""
+		},
+        {
+			"id": "hadoop-client",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.hadoop",
+			"artifactId": "hadoop-client",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.mortbay.jetty",
+					"artifactId": "jetty-sslengine",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "hive-jdbc",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.hive",
+			"artifactId": "hive-jdbc",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.apache.curator",
+					"artifactId": "apache-curator",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "org.pentaho",
+					"artifactId": "pentaho-aggdesigner-algorithm",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "org.mortbay.jetty",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "jdk.tools",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "hive-exec",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.hive",
+			"artifactId": "hive-exec",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.apache.curator",
+					"artifactId": "apache-curator",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "org.pentaho",
+					"artifactId": "pentaho-aggdesigner-algorithm",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "org.mortbay.jetty",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "jdk.tools",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "hbase-client",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.hbase",
+			"artifactId": "hbase-client",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.mortbay.jetty",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "jdk.tools",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "hbase-hadoop-compat",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.hbase",
+			"artifactId": "hbase-hadoop-compat",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "jdk.tools",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "hbase-server",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.hbase",
+			"artifactId": "hbase-server",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.mortbay.jetty",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "jdk.tools",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "sqoop",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.sqoop",
+			"artifactId": "sqoop",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.apache.hadoop",
+					"artifactId": "hadoop-core",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "pig",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.pig",
+			"artifactId": "pig",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.mortbay.jetty",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "hive-hcatalog-pig-adapter",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.hive.hcatalog",
+			"artifactId": "hive-hcatalog-pig-adapter",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.apache.curator",
+					"artifactId": "apache-curator",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "org.mortbay.jetty",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "jdk.tools",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "org.pentaho",
+					"artifactId": "pentaho-aggdesigner-algorithm",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "hive-hcatalog-server-extensions",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.hive.hcatalog",
+			"artifactId": "hive-hcatalog-server-extensions",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.apache.curator",
+					"artifactId": "apache-curator",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "org.mortbay.jetty",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "jdk.tools",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "org.pentaho",
+					"artifactId": "pentaho-aggdesigner-algorithm",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "elephant-bird-core",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "com.twitter.elephantbird",
+			"artifactId": "elephant-bird-core",
+			"version": "4.9",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "com.hadoop.gplcompression",
+					"artifactId": "hadoop-lzo",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "com.google.protobuf",
+					"artifactId": "protobuf-java",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "elephant-bird-rcfile",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "com.twitter.elephantbird",
+			"artifactId": "elephant-bird-rcfile",
+			"version": "4.9",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "com.hadoop.gplcompression",
+					"artifactId": "hadoop-lzo",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "com.google.protobuf",
+					"artifactId": "protobuf-java",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "elephant-bird-hadoop-compat",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "com.twitter.elephantbird",
+			"artifactId": "elephant-bird-hadoop-compat",
+			"version": "4.9",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "com.hadoop.gplcompression",
+					"artifactId": "hadoop-lzo",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "com.google.protobuf",
+					"artifactId": "protobuf-java",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "elephant-bird-pig",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "com.twitter.elephantbird",
+			"artifactId": "elephant-bird-pig",
+			"version": "4.9",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "com.hadoop.gplcompression",
+					"artifactId": "hadoop-lzo",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "com.google.protobuf",
+					"artifactId": "protobuf-java",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "piggybank",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.pig",
+			"artifactId": "piggybank",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+			]
+		},
+		{
+			"id": "parquet-pig-bundle",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "com.twitter",
+			"artifactId": "parquet-pig-bundle",
+			"version": "1.6.0",
+			"classifier": "",
+			"description": ""
+		},
+		{
+			"id": "parquet-hadoop-bundle",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "com.twitter",
+			"artifactId": "parquet-hadoop-bundle",
+			"version": "1.6.0",
+			"classifier": "",
+			"description": ""
+		},
+		{
+			"id": "tez-dag",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.tez",
+			"artifactId": "tez-dag",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.mortbay.jetty",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "jdk.tools",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "tez-mapreduce",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.tez",
+			"artifactId": "tez-mapreduce",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.mortbay.jetty",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "jdk.tools",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"id": "jodd",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.jodd",
+			"artifactId": "jodd-core",
+			"version": "3.5.2",
+			"classifier": "",
+			"description": ""
+		},
+		{
+			"id": "avro-mapred",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.avro",
+			"artifactId": "avro-mapred",
+			"version": "1.8.2",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+			]
+		}
+	],
+	"moduleGroups": [
+		{
+			"id": "EXAMPLE-SPARK-RELATED-MODULE-GROUP-DYNAMIC",
+			"description": "",
+			"supportedSparkVersions": [
+                "SPARK_2_2",
+                "SPARK_2_3"
+            ],
+			"modules": [
+			]
+		},
+		{
+			"id": "HDFS-LIB-DYNAMIC",
+			"description": "jars for hdfs, only module.id permitted",
+			"modules": [
+				"commons-lang3-3.4",
+				"hadoop-client"
+			]
+		},
+		{
+			"id": "HIVE-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+				"hive-exec",
+				"hive-jdbc"
+			]
+		},
+		{
+			"id": "HBASE-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+				"hadoop-client",
+				"hbase-client"
+			]
+		},
+		{
+			"id": "MAPREDUCE-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+				"hadoop-client"
+			]
+		},
+		{
+			"id": "MAPREDUCE-PARQUET-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+				"parquet-hadoop-bundle",
+				"jodd"
+			]
+		},
+		{
+			"id": "MAPREDUCE-PARQUET-LIB-MRREQUIRED-DYNAMIC",
+			"description": "",
+			"modules": [
+				"parquet-hadoop-bundle"
+			]
+		},
+		{
+            "id": "MAPREDUCE-AVRO-LIB-MRREQUIRED-DYNAMIC",
+            "description": "",
+            "modules": [
+                "avro-mapred"
+            ]
+        },
+		{
+			"id": "IMPALA-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+			]
+		},
+		{
+			"id": "SQOOP-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+				"avro-1.8.0",
+				"sqoop"
+			]
+		},
+		{
+			"id": "PIG-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+				"pig"
+			]
+		},
+		{
+			"id": "PIG-HCATALOG-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+				"hive-hcatalog-pig-adapter",
+				"hive-hcatalog-server-extensions"
+			]
+		},
+		{
+			"id": "PIG-HBASE-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+				"hbase-server",
+				"hbase-hadoop-compat"
+			]
+		},
+		{
+			"id": "PIG-SEQUENCEFILE-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+				"elephant-bird-core",
+				"elephant-bird-hadoop-compat",
+				"elephant-bird-pig"
+			]
+		},
+		{
+			"id": "PIG-RCFILE-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+				"hive-exec",
+				"hive-jdbc",
+				"elephant-bird-core",
+				"elephant-bird-hadoop-compat",
+				"elephant-bird-pig",
+				"elephant-bird-rcfile"
+			]
+		},
+		{
+			"id": "PIG-AVRO-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+				"piggybank"
+			]
+		},
+		{
+			"id": "PIG-PARQUET-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+				"parquet-pig-bundle"
+			]
+		},
+		{
+			"id": "TEZ-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+				"tez-dag",
+				"tez-mapreduce"
+			]
+		},
+		{
+			"id": "TEZ-SERVER-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+				"tez-dag",
+				"tez-mapreduce"
+			]
+		}
+	],
+	"classLoaders": [
+		{
+			"id": "hadoop-hdfs",
+			"index": "HDFS:{distribution}:{dynamicVersion}",
+			"moduleGroup": "HDFS-LIB-DYNAMIC",
+			"description": ""
+		},
+		{
+			"id": "hadoop-hdfs-with-krb",
+			"index": "HDFS:{distribution}:{dynamicVersion}?USE_KRB",
+			"moduleGroup": "HDFS-LIB-DYNAMIC",
+			"description": ""
+		},
+		{
+			"id": "hive-embedded",
+			"index": "HIVE:{distribution}:{dynamicVersion}:EMBEDDED",
+			"moduleGroup": "HIVE-LIB-DYNAMIC",
+			"description": ""
+		},
+		{
+			"id": "hive-standalone",
+			"index": "HIVE:{distribution}:{dynamicVersion}:STANDALONE",
+			"moduleGroup": "HIVE-LIB-DYNAMIC",
+			"description": ""
+		},
+		{
+			"id": "hive2-embedded",
+			"index": "HIVE2:{distribution}:{dynamicVersion}:EMBEDDED",
+			"moduleGroup": "HIVE-LIB-DYNAMIC",
+			"description": ""
+		},
+		{
+			"id": "hive2-standalone",
+			"index": "HIVE2:{distribution}:{dynamicVersion}:STANDALONE",
+			"moduleGroup": "HIVE-LIB-DYNAMIC",
+			"description": ""
+		},
+		{
+			"id": "hbase",
+			"index": "HBASE:{distribution}:{dynamicVersion}",
+			"moduleGroup": "HBASE-LIB-DYNAMIC",
+			"description": ""
+		},
+		{
+			"id": "mapreduce",
+			"index": "MAP_REDUCE:{distribution}:{dynamicVersion}",
+			"moduleGroup": "MAPREDUCE-LIB-DYNAMIC",
+			"description": ""
+		},
+		{
+			"id": "impala",
+			"index": "IMPALA:{distribution}:{dynamicVersion}",
+			"moduleGroup": "IMPALA-LIB-DYNAMIC",
+			"description": ""
+		},
+		{
+			"id": "impala-with-krb",
+			"index": "IMPALA:{distribution}:{dynamicVersion}?USE_KRB",
+			"moduleGroup": "IMPALA-LIB-DYNAMIC",
+			"description": ""
+		}
+	]
+}

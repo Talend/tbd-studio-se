@@ -72,6 +72,7 @@
         <module>main/plugins/org.talend.hadoop.distribution.altus10</module>
 <!--         <module>main/plugins/org.talend.hadoop.distribution.cdh5100.jars</module>  -->
         <module>main/plugins/org.talend.hadoop.distribution.custom</module>
+        <module>main/plugins/org.talend.hadoop.distribution.databricks</module>
         <module>main/plugins/org.talend.hadoop.distribution.dataproc11</module>
         <module>main/plugins/org.talend.hadoop.distribution.dataproc11.jars</module>
         <module>main/plugins/org.talend.hadoop.distribution.emr103</module>
@@ -103,6 +104,7 @@
         <module>main/plugins/org.talend.hadoop.distribution.hdp250.jars</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdp260</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdp260.jars</module>
+        <module>main/plugins/org.talend.hadoop.distribution.hdpx</module>
         <module>main/plugins/org.talend.hadoop.distribution.mapr200</module>
         <module>main/plugins/org.talend.hadoop.distribution.mapr212</module>
         <module>main/plugins/org.talend.hadoop.distribution.mapr213</module>
@@ -117,6 +119,7 @@
         <module>main/plugins/org.talend.hadoop.distribution.mapr520.jars</module>
         <module>main/plugins/org.talend.hadoop.distribution.mapr600</module>
         <module>main/plugins/org.talend.hadoop.distribution.mapr600.jars</module>
+        <module>main/plugins/org.talend.hadoop.distribution.mapr601</module>
         <module>main/plugins/org.talend.hadoop.distribution.piv101</module>
         <module>main/plugins/org.talend.hadoop.distribution.piv200</module>
         <module>main/plugins/org.talend.hadoop.distribution.qubole</module>
@@ -165,6 +168,7 @@
         <module>test/plugins/org.talend.hadoop.distribution.cdh5100.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.cdh5120.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.custom.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.databricks.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.dataproc11.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.emr103.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.emr240.test</module>
@@ -198,6 +202,7 @@
         <module>test/plugins/org.talend.hadoop.distribution.mapr510.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.mapr520.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.mapr600.test</module>
+	<module>test/plugins/org.talend.hadoop.distribution.mapr601.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.piv101.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.piv200.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.test.base</module>

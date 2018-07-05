@@ -18,19 +18,19 @@ import java.util.List;
 import org.osgi.framework.Bundle;
 import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
 import org.talend.designer.maven.aether.IDynamicMonitor;
-import org.talend.hadoop.distribution.dynamic.AbstractDynamicDistribution;
-import org.talend.hadoop.distribution.dynamic.IDynamicDistributionTemplate;
+import org.talend.hadoop.distribution.cdh6x.CDH6xDistributionTemplate;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
-import org.talend.hadoop.distribution.dynamic.cdh.IDynamicCDHDistribution;
+import org.talend.hadoop.distribution.dynamic.cdh.AbstractDynamicCDHDistribution;
+import org.talend.hadoop.distribution.dynamic.template.IDynamicDistributionTemplate;
 
 /**
  * DOC cmeng  class global comment. Detailled comment
  */
-public class DynamicCDH5xDistribution extends AbstractDynamicDistribution implements IDynamicCDHDistribution {
+public class DynamicCDH5xDistribution extends AbstractDynamicCDHDistribution {
 
-    public static final String TEMPLATE_FOLDER_PATH = "resources/template/cdh5x/"; //$NON-NLS-1$
+    public static final String TEMPLATE_FOLDER_PATH = "resources/template/cdhx/"; //$NON-NLS-1$
 
-    public static final String BUILD_IN_FOLDER_PATH = "resources/builtin/cdh5x/"; //$NON-NLS-1$
+    public static final String BUILD_IN_FOLDER_PATH = "resources/builtin/cdhx/"; //$NON-NLS-1$
 
     @Override
     protected IDynamicDistributionTemplate initTemplate(DynamicPluginAdapter pluginAdapter, IDynamicMonitor monitor)
@@ -41,6 +41,9 @@ public class DynamicCDH5xDistribution extends AbstractDynamicDistribution implem
         switch (templateId) {
         case CDH5xDistributionTemplate.TEMPLATE_ID:
             dynamicDistributionTemplate = new CDH5xDistributionTemplate(pluginAdapter);
+            break;
+        case CDH6xDistributionTemplate.TEMPLATE_ID:
+            dynamicDistributionTemplate = new CDH6xDistributionTemplate(pluginAdapter);
             break;
         default:
             throw new Exception("Unknown templateId: " + templateId);
@@ -53,6 +56,7 @@ public class DynamicCDH5xDistribution extends AbstractDynamicDistribution implem
         List<String> templateIds = new ArrayList<>();
 
         templateIds.add(CDH5xDistributionTemplate.TEMPLATE_ID);
+        templateIds.add(CDH6xDistributionTemplate.TEMPLATE_ID);
 
         return templateIds;
     }
@@ -71,11 +75,6 @@ public class DynamicCDH5xDistribution extends AbstractDynamicDistribution implem
     @Override
     protected String getBuiltinFolderPath() {
         return BUILD_IN_FOLDER_PATH;
-    }
-
-    @Override
-    public String getDistributionName() {
-        return IDynamicCDHDistribution.DISTRIBUTION;
     }
 
 }

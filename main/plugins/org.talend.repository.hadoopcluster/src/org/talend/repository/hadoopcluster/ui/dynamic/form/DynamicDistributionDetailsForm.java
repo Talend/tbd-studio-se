@@ -70,17 +70,18 @@ import org.talend.designer.maven.aether.DummyDynamicMonitor;
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.hadoop.distribution.dynamic.DynamicConstants;
 import org.talend.hadoop.distribution.dynamic.DynamicDistributionManager;
-import org.talend.hadoop.distribution.dynamic.IDynamicDistributionPreference;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicLibraryNeededExtensionAdaper;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicModuleAdapter;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicModuleGroupAdapter;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.dynamic.comparator.DynamicAttributeComparator;
+import org.talend.hadoop.distribution.dynamic.pref.IDynamicDistributionPreference;
 import org.talend.repository.ProjectManager;
 import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.ui.dynamic.DynamicDistributionSetupData;
 import org.talend.repository.hadoopcluster.ui.dynamic.DynamicModuleGroupData;
 import org.talend.repository.hadoopcluster.ui.dynamic.DynamicModuleGroupWizard;
+import org.talend.repository.hadoopcluster.ui.dynamic.form.labelprovider.RowNumberLabelProvider;
 import org.talend.repository.ui.login.LoginDialogV2;
 
 /**

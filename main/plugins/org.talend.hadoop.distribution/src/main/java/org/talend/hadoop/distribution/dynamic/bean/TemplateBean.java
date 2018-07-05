@@ -52,6 +52,8 @@ public class TemplateBean implements IVariable {
 
     public static final String ATTR_DYNAMIC_VERSION = "dynamicVersion"; //$NON-NLS-1$
 
+    public static final String ATTR_SUPPORTED_SPARK_VERSIONS = "supportedSparkVersions"; //$NON-NLS-1$
+
     private String id;
 
     private String name;
@@ -83,6 +85,8 @@ public class TemplateBean implements IVariable {
     private List<ComponentTypeMapEntity> componentTypeMap;
 
     private List<ClassLoaderBean> classLoaders;
+    
+    private List<String> supportedSparkVersions;
 
     public String getId() {
         return this.id;
@@ -211,6 +215,14 @@ public class TemplateBean implements IVariable {
     public void setDynamicVersion(String dynamicVersion) {
         this.dynamicVersion = dynamicVersion;
     }
+    
+    public List<String> getSupportedSparkVersions() {
+        return this.supportedSparkVersions;
+    }
+
+    public void setSupportedSparkVersions(List<String> supportedSparkVersions) {
+        this.supportedSparkVersions = supportedSparkVersions;
+    }
 
     @Override
     public Object getVariableValue(String variable) throws Exception {
@@ -254,6 +266,9 @@ public class TemplateBean implements IVariable {
             break;
         case ATTR_SERVICES:
             value = getServices();
+            break;
+        case ATTR_SUPPORTED_SPARK_VERSIONS:
+            value = getSupportedSparkVersions();
             break;
         case ATTR_TEMPLATE_ID:
             value = getTemplateId();
