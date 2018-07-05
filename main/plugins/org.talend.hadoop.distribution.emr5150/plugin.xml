@@ -243,7 +243,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="pig-0.17.0-core-h2.jar"
             name="pig-0.17.0-core-h2.jar"
-            mvn_uri="mvn:org.talend.libraries/pig-0.17.0-core-h2/6.0.0"/>
+            mvn_uri="mvn:org.apache.pig/pig/0.17.0-core-h2"/>
             
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -1088,9 +1088,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="jline-2.12.1.jar"
-            name="jline-2.12.1.jar"
-            mvn_uri="mvn:org.talend.libraries/jline-2.12.1/6.0.0"/>
+            id="jline-2.11.jar"
+            name="jline-2.11.jar"
+            mvn_uri="mvn:jline/jline/2.11"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -1871,7 +1871,7 @@
                 name="PIG-LIB-EMR_5_15_0_LATEST">
              <library id="pig-0.17.0-core-h2.jar"/>
              <library id="hadoop-lzo-0.4.19.jar"/>
-             <library id="jline-2.12.jar"/>
+             <library id="jline-2.11.jar"/>
              <library id="joda-time-2.9.3.jar"/>
              <library id="automaton-1.11-8.jar"/>
              <library id="jython-standalone-2.7.0.jar"/>
@@ -2209,7 +2209,7 @@
 			<library id="jets3t-0.9.3.jar"/>
 			<library id="jetty-6.1.26-emr.jar"/>
 			<library id="jetty-util-6.1.26-emr.jar"/>
-			<library id="jline-2.12.1.jar"/>
+			<library id="jline-2.11.jar"/>
 			<library id="joda-time-2.9.3.jar"/>
 			<library id="jodd-core-3.5.2.jar"/>
 			<library id="jpam-1.1.jar"/>
