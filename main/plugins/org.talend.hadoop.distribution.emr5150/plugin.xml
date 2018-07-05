@@ -127,6 +127,24 @@
             id="hbase-hadoop-compat-1.4.4.jar"
             name="hbase-hadoop-compat-1.4.4.jar"
             mvn_uri="mvn:org.apache.hbase/hbase-hadoop-compat/1.4.4"/>
+            
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr5150"
+            id="hbase-metrics-1.4.4.jar"
+            name="hbase-metrics-1.4.4.jar"
+            mvn_uri="mvn:org.apache.hbase/hbase-metrics/1.4.4"/>
+            
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr5150"
+            id="hbase-metrics-api-1.4.4.jar"
+            name="hbase-metrics-api-1.4.4.jar"
+            mvn_uri="mvn:org.apache.hbase/hbase-metrics-api/1.4.4"/>
+            
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr5150"
+            id="hbase-hadoop2-compat-1.4.4.jar"
+            name="hbase-hadoop2-compat-1.4.4.jar"
+            mvn_uri="mvn:org.apache.hbase/hbase-hadoop2-compat/1.4.4"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -1939,7 +1957,10 @@
                 id="PIG-HBASE-LIB-EMR_5_15_0_LATEST"
                 name="PIG-HBASE-LIB-EMR_5_15_0_LATEST">
             <library id="hbase-server-1.4.4.jar"/>
-            <library id="hbase-hadoop-compat-1.4.4.jar" />
+            <library id="hbase-hadoop-compat-1.4.4.jar"/>
+            <library id="hbase-hadoop2-compat-1.4.4.jar"/>
+            <library id="hbase-metrics-1.4.4.jar"/>
+            <library id="hbase-metrics-api-1.4.4.jar"/>
         </libraryNeededGroup>
 
         <!-- HBase group  -->
