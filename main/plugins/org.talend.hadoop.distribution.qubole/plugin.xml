@@ -119,6 +119,165 @@
             name="joda-time-2.8.1.jar"
             mvn_uri="mvn:org.talend.libraries/joda-time-2.8.1/6.3.0"/>
             
+        <!-- Talend jars for Spark 2 -->
+		<libraryNeeded
+			context="plugin:org.talend.hadoop.distribution.qubole"
+			id="avro-1.7.7.jar"
+			name="avro-1.7.7.jar"
+			mvn_uri="mvn:org.talend.libraries/avro-1.7.7/6.0.0" />
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.qubole"
+            id="avro-mapred-1.7.7-hadoop2.jar"
+            name="avro-mapred-1.7.7-hadoop2.jar"
+            mvn_uri="mvn:org.talend.libraries/avro-mapred-1.7.7-hadoop2/6.0.0"/>
+              
+        <libraryNeeded 
+         	context="plugin:org.talend.hadoop.distribution.qubole" 
+         	id="commons-codec-1.10.jar" 
+         	name="commons-codec-1.10.jar" 
+         	mvn_uri="mvn:org.talend.libraries/commons-codec-1.10/6.0.0"/>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.qubole"
+            id="commons-lang-2.6.jar"
+            name="commons-lang-2.6.jar"
+            mvn_uri="mvn:org.talend.libraries/commons-lang-2.6/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.qubole"
+            id="commons-lang3-3.5.jar"
+            name="commons-lang3-3.5.jar"
+            mvn_uri="mvn:org.talend.libraries/commons-lang3-3.5/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.qubole"
+            id="commons-logging-1.2.jar"
+            name="commons-logging-1.2.jar"
+            mvn_uri="mvn:org.talend.libraries/commons-logging-1.2/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.qubole"
+            id="hadoop-common-2.7.3.jar"
+            name="hadoop-common-2.7.3.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-common-2.7.3/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.qubole"
+            id="hadoop-mapreduce-client-core-2.7.3.jar"
+            name="hadoop-mapreduce-client-core-2.7.3.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-core-2.7.3/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.qubole"
+            id="kryo-shaded-3.0.3.jar"
+            name="kryo-shaded-3.0.3.jar"
+            mvn_uri="mvn:org.talend.libraries/kryo-shaded-3.0.3/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.qubole"
+            id="scala-library-2.11.8.jar"
+            name="scala-library-2.11.8.jar"
+            mvn_uri="mvn:org.talend.libraries/scala-library-2.11.8/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.qubole"
+            id="scala-reflect-2.11.8.jar"
+            name="scala-reflect-2.11.8.jar"
+            mvn_uri="mvn:org.talend.libraries/scala-reflect-2.11.8/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.qubole"
+            id="slf4j-api-1.7.16.jar"
+            name="slf4j-api-1.7.16.jar"
+            mvn_uri="mvn:org.talend.libraries/slf4j-api-1.7.16/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.qubole"
+            id="spark-catalyst_2.11-2.2.1.jar"
+            name="spark-catalyst_2.11-2.2.1.jar"
+            mvn_uri="mvn:org.apache.spark/spark-catalyst_2.11/2.2.1">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.qubole"
+            id="spark-core_2.11-2.2.1.jar"
+            name="spark-core_2.11-2.2.1.jar"
+            mvn_uri="mvn:org.apache.spark/spark-core_2.11/2.2.1">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.qubole"
+            id="spark-graphx_2.11-2.2.1.jar"
+            name="spark-graphx_2.11-2.2.1.jar"
+            mvn_uri="mvn:org.apache.spark/spark-graphx_2.11/2.2.1">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.qubole"
+            id="spark-hive_2.11-2.2.1.jar"
+            name="spark-hive_2.11-2.2.1.jar"
+            mvn_uri="mvn:org.apache.spark/spark-hive_2.11/2.2.1">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.qubole"
+            id="spark-mllib-local_2.11-2.2.1.jar"
+            name="spark-mllib-local_2.11-2.2.1.jar"
+            mvn_uri="mvn:org.apache.spark/spark-mllib-local_2.11/2.2.1">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.qubole"
+            id="spark-network-common_2.11-2.2.1.jar"
+            name="spark-network-common_2.11-2.2.1.jar"
+            mvn_uri="mvn:org.apache.spark/spark-network-common_2.11/2.2.1">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.qubole"
+            id="spark-sql_2.11-2.2.1.jar"
+            name="spark-sql_2.11-2.2.1.jar"
+            mvn_uri="mvn:org.apache.spark/spark-sql_2.11/2.2.1">
+        </libraryNeeded>
+        
+        <libraryNeeded
+              bundleID="org.apache.servicemix.bundles.wsdl4j"
+              context="plugin:org.talend.libraries.apache.cxf"
+              id="wsdl4j-1.6.3.jar"
+              mvn_uri="mvn:org.talend.libraries/wsdl4j-1.6.3/6.0.0"
+              name="wsdl4j-1.6.3.jar"
+              uripath="platform:/plugin/org.talend.libraries.apache.cxf/lib/wsdl4j-1.6.3.jar">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.libraries.jackson"
+            id="jackson-core-2.8.9.jar"
+            name="jackson-core-2.8.9.jar"
+            mvn_uri="mvn:org.talend.libraries/jackson-core-2.8.9/6.0.0"
+            uripath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-2.8.9.jar">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.libraries.apache.cxf"
+            id="cxf-rt-rs-client-3.2.4.jar"
+            name="cxf-rt-rs-client-3.2.4.jar"
+            mvn_uri="mvn:org.talend.libraries/cxf-rt-rs-client-3.2.4/6.0.0"
+            uripath="platform:/plugin/org.talend.libraries.apache.cxf/lib/cxf-rt-rs-client-3.2.4.jar">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.libraries.apache.cxf"
+            id="cxf-bundle-jaxrs-2.7.18.jar"
+            name="cxf-bundle-jaxrs-2.7.18.jar"
+            mvn_uri="mvn:org.apache.cxf/cxf-bundle-jaxrs/2.7.18"
+            uripath="platform:/plugin/org.talend.libraries.apache.cxf/lib/cxf-bundle-jaxrs-2.7.18.jar">
+        </libraryNeeded>
+        <libraryNeeded
+            context=""
+            id="javax.ws.rs-api-2.0-m10.jar"
+            name="javax.ws.rs-api-2.0-m10.jar"
+            mvn_uri="mvn:org.talend.libraries/javax.ws.rs-api-2.0-m10/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.libraries.jackson"
+            id="json_simple-1.1.jar"
+            name="json_simple-1.1.jar"
+            mvn_uri="mvn:org.talend.libraries/json_simple-1.1/6.0.0"
+            uripath="platform:/plugin/org.talend.libraries.jackson/lib/json_simple-1.1.jar">
+        </libraryNeeded>
+            
 
         <!-- Big Data launcher module group -->
         <libraryNeededGroup description="big-data launcher jar and the wrapped qubole sdk" id="BIGDATA-LAUNCHER-LIB-QUBOLE" name="BIGDATA-LAUNCHER-LIB-QUBOLE ">
@@ -195,6 +354,30 @@
         <!-- Jars for Spark 2 -->
         <libraryNeededGroup
            description="Spark 2 libraries for Qubole" id="SPARK-LIB-QUBOLE" name="SPARK-LIB-QUBOLE">
+			 <library id="avro-1.7.6.jar"/>
+             <library id="avro-mapred-1.7.7-hadoop2.jar"/>
+             <library id="commons-codec-1.10.jar"/>
+             <library id="commons-lang-2.6.jar"/>
+             <library id="commons-lang3-3.5.jar"/>
+             <library id="commons-logging-1.2.jar"/>
+             <library id="cxf-rt-rs-client-3.2.4.jar"/>
+             <library id="cxf-bundle-jaxrs-2.7.18.jar"/>
+             <library id="hadoop-common-2.7.3.jar"/>
+             <library id="hadoop-mapreduce-client-core-2.7.3.jar"/>
+             <library id="kryo-shaded-3.0.3.jar"/>
+             <library id="scala-library-2.11.8.jar"/>
+             <library id="scala-reflect-2.11.8.jar"/>
+             <library id="slf4j-api-1.7.16.jar"/>
+             <library id="spark-catalyst_2.11-2.2.1.jar"/>
+             <library id="spark-core_2.11-2.2.1.jar"/>
+             <library id="spark-graphx_2.11-2.2.1.jar"/>
+             <library id="spark-mllib-local_2.11-2.2.1.jar"/>
+             <library id="spark-sql_2.11-2.2.1.jar"/>
+             <library id="spark-network-common_2.11-2.2.1.jar"/>
+             <library id="wsdl4j-1.6.3.jar"/>
+             <library id="jackson-core-2.8.9.jar"/>
+             <library id="javax.ws.rs-api-2.0-m10.jar"/>
+             <library id="json_simple-1.1.jar"/>
         </libraryNeededGroup>
 
     </extension>
