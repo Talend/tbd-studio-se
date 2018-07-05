@@ -7,6 +7,7 @@ import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
+import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.databricks.DatabricksDistribution;
 
 public class DatabricksDistributionTest {
@@ -36,6 +37,8 @@ public class DatabricksDistributionTest {
         assertTrue(((SparkBatchComponent) distribution).doSupportSparkStandaloneMode());
         assertFalse(((SparkBatchComponent) distribution).doSupportSparkYarnClientMode());
         assertFalse(((SparkBatchComponent) distribution).doSupportSparkYarnClusterMode());
+		assertTrue(((SparkStreamingComponent) distribution).doSupportBackpressure());
+		assertTrue(((SparkStreamingComponent) distribution).doSupportCheckpointing());
         assertTrue(distribution.doSupportCreateServiceConnection());
         assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
         assertTrue(distribution.doSupportAzureDataLakeStorage());
