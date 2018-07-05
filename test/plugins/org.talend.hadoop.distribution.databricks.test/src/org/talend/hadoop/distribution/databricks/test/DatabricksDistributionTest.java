@@ -5,10 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
-import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
-import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.databricks.DatabricksDistribution;
 
 public class DatabricksDistributionTest {
@@ -35,9 +33,11 @@ public class DatabricksDistributionTest {
         assertFalse(((SparkBatchComponent) distribution).getSparkVersions().contains(ESparkVersion.SPARK_1_3));
         assertTrue(((SparkBatchComponent) distribution).doSupportDynamicMemoryAllocation());
         assertFalse(((SparkBatchComponent) distribution).isExecutedThroughSparkJobServer());
-        assertFalse(((SparkBatchComponent) distribution).doSupportSparkStandaloneMode());
+        assertTrue(((SparkBatchComponent) distribution).doSupportSparkStandaloneMode());
         assertFalse(((SparkBatchComponent) distribution).doSupportSparkYarnClientMode());
+        assertFalse(((SparkBatchComponent) distribution).doSupportSparkYarnClusterMode());
         assertTrue(distribution.doSupportCreateServiceConnection());
         assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
+        assertTrue(distribution.doSupportAzureDataLakeStorage());
     }
 }
