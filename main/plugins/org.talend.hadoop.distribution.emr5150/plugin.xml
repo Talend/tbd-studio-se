@@ -1423,6 +1423,12 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
+            id="httpcore-4.4.9.jar"
+            name="httpcore-4.4.9.jar"
+            mvn_uri="mvn:org.apache.httpcomponents/httpcore/4.4.9"/>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr5150"
             id="api-util-1.0.0-M20.jar"
             name="api-util-1.0.0-M20.jar"
             mvn_uri="mvn:org.talend.libraries/api-util-1.0.0-M20/6.0.0"/>
@@ -1447,6 +1453,12 @@
             id="commons-beanutils-core-1.8.0.jar"
             name="commons-beanutils-core-1.8.0.jar"
             mvn_uri="mvn:org.talend.libraries/commons-beanutils-core-1.8.0/6.0.0"/>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr5150"
+            id="httpclient-4.5.5.jar"
+            name="httpclient-4.5.5.jar"
+            mvn_uri="mvn:org.apache.httpcomponents/httpclient/4.5.5"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
