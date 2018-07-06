@@ -179,6 +179,7 @@
         <module>test/plugins/org.talend.hadoop.distribution.emr500.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.emr550.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.emr580.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.emr5150.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdinsight310.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdinsight320.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdinsight340.test</module>
