@@ -550,18 +550,6 @@
             id="curator-framework-2.7.1.jar"
             name="curator-framework-2.7.1.jar"
             mvn_uri="mvn:org.talend.libraries/curator-framework-2.7.1/6.0.0"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="httpclient-4.5.5.jar"
-            name="httpclient-4.5.5.jar"
-            mvn_uri="mvn:org.apache.httpcomponents/httpclient/4.5.5"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="httpcore-4.4.9.jar"
-            name="httpcore-4.4.9.jar"
-            mvn_uri="mvn:org.apache.httpcomponents/httpcore/4.4.9"/>
         
         <!-- GraphFrames libraries -->
         <libraryNeeded
