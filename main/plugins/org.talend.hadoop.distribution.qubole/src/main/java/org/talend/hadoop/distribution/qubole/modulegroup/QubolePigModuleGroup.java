@@ -22,7 +22,6 @@ import org.talend.hadoop.distribution.condition.BooleanOperator;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.MultiComponentCondition;
-import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.PigConstant;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
 
@@ -32,8 +31,6 @@ public class QubolePigModuleGroup {
         Set<DistributionModuleGroup> moduleGroups = new HashSet<>();
         moduleGroups.add(new DistributionModuleGroup(QuboleConstant.PIG_MODULE_GROUP.getModuleName()));
         moduleGroups.add(new DistributionModuleGroup(QuboleConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName()));
-        
-        // to add conditions
         moduleGroups.add(new DistributionModuleGroup(QuboleConstant.S3_MODULE_GROUP.getModuleName()));
         
         ComponentCondition conditionParquet = new MultiComponentCondition(

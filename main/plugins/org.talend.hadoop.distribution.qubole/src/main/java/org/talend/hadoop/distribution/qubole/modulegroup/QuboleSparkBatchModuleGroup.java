@@ -29,9 +29,10 @@ public class QuboleSparkBatchModuleGroup {
             SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false"));
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
-        Set<DistributionModuleGroup> hs = new HashSet<>();
-        hs.add(new DistributionModuleGroup(QuboleConstant.SPARK_MODULE_GROUP.getModuleName(), true, condition));
-        hs.add(new DistributionModuleGroup(QuboleConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), true, condition));
-        return hs;
+        Set<DistributionModuleGroup> moduleGroups = new HashSet<>();
+        moduleGroups.add(new DistributionModuleGroup(QuboleConstant.SPARK_MODULE_GROUP.getModuleName(), true, condition));
+        moduleGroups.add(new DistributionModuleGroup(QuboleConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), true, condition));
+        moduleGroups.add(new DistributionModuleGroup(QuboleConstant.S3_MODULE_GROUP.getModuleName()));
+        return moduleGroups;
     }
 }
