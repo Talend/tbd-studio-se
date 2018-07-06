@@ -485,4 +485,9 @@ public class EMR5150Distribution extends AbstractDistribution implements
     public boolean useOldAWSAPI() {
         return false;
     }
+    
+    @Override
+    public short orderingWeight() {
+        return 10;
+    }
 }
