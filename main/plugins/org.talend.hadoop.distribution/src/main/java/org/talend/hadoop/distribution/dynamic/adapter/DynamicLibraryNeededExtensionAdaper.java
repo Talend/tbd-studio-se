@@ -92,9 +92,11 @@ public class DynamicLibraryNeededExtensionAdaper extends DynamicExtensionAdapter
                 DynamicModuleGroupAdapter libNeededGroupAdapter = new DynamicModuleGroupAdapter(templateBean, configuration,
                         moduleGroupBean, moduleBeanAdapterMap);
                 IDynamicConfiguration dynamicModuleGroup = libNeededGroupAdapter.adapt(monitor);
-                libNeededExtension.addConfiguration(dynamicModuleGroup);
-                String groupId = moduleGroupBean.getId();
-                moduleGroupBeanAdapterMap.put(groupId, libNeededGroupAdapter);
+                if (dynamicModuleGroup != null) {
+                    libNeededExtension.addConfiguration(dynamicModuleGroup);
+                    String groupId = moduleGroupBean.getId();
+                    moduleGroupBeanAdapterMap.put(groupId, libNeededGroupAdapter);
+                }
             }
         }
 

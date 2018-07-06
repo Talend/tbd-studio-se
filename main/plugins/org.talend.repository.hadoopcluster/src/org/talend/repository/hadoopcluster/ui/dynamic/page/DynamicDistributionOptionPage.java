@@ -15,8 +15,9 @@ public class DynamicDistributionOptionPage extends AbstractDynamicDistributionPa
 
     public DynamicDistributionOptionPage(DynamicDistributionSetupData configData) {
         super(DynamicDistributionOptionPage.class.getSimpleName(), configData); // $NON-NLS-1$
-        setTitle(Messages.getString("DynamicDistributionOptionPage.title")); //$NON-NLS-1$
-        setDescription(Messages.getString("DynamicDistributionOptionPage.description")); //$NON-NLS-1$
+        String distribution = configData.getDynamicDistributionsGroup().getDistribution();
+        setTitle(Messages.getString("DynamicDistributionOptionPage.titleWithDistri", distribution)); //$NON-NLS-1$
+        setDescription(Messages.getString("DynamicDistributionOptionPage.descriptionWithDistri", distribution)); //$NON-NLS-1$
     }
 
     @Override

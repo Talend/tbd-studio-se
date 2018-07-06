@@ -28,13 +28,13 @@ public class HadoopDistributionsHelperTest {
     public void testGetHadoopDistributionsDisplay_Sorted() {
         String[] hadoopDistributionsDisplay = HadoopDistributionsHelper.HADOOP.getDistributionsDisplay(false);
         Assert.assertArrayEquals(new String[] { "Amazon EMR", "Cloudera", "Google Cloud Dataproc",
-                "HortonWorks", "MapR", "Microsoft HD Insight", "Qubole" }, hadoopDistributionsDisplay);
+                "HortonWorks", "MapR", "Microsoft HD Insight", "Qubole", "Databricks" }, hadoopDistributionsDisplay);
     }
 
     @Test
     public void testGetHadoopDistributionsDisplay_withCustom__Sorted() {
         String[] hadoopDistributionsDisplay = HadoopDistributionsHelper.HADOOP.getDistributionsDisplay(true);
-        Assert.assertArrayEquals(new String[] { "Amazon EMR", "Cloudera", "Google Cloud Dataproc",
+        Assert.assertArrayEquals(new String[] { "Amazon EMR", "Cloudera", "Databricks", "Google Cloud Dataproc",
                 "HortonWorks", "MapR", "Microsoft HD Insight", "Qubole", "Custom - Unsupported" },
                 hadoopDistributionsDisplay);
     }
@@ -89,6 +89,7 @@ public class HadoopDistributionsHelperTest {
     @Test
     public void testMapRDistribution() {
         testDistributionOnly("MAPR", "MapR", new String[][] {
+                { "MAPR601", "MapR 6.0.1(YARN mode)", "HADOOP_2" },
                 { "MAPR600", "MapR 6.0.0(YARN mode)", "HADOOP_2" },
                 { "MAPR520", "MapR 5.2.0(YARN mode)", "HADOOP_2" },
                 { "MAPR510", "MapR 5.1.0(YARN mode)", "HADOOP_2" },

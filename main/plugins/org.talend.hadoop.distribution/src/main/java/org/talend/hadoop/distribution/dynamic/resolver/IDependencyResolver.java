@@ -16,6 +16,7 @@ import java.util.List;
 
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.designer.maven.aether.node.DependencyNode;
+import org.talend.hadoop.distribution.dynamic.DynamicConfiguration;
 
 /**
  * DOC cmeng  class global comment. Detailled comment
@@ -34,5 +35,11 @@ public interface IDependencyResolver {
 
     public String getLatestVersion(String groupId, String artifactId, String baseVersion, String topVersion,
             IDynamicMonitor monitor) throws Exception;
+
+    public String getDistribution();
+
+    public DynamicConfiguration getConfiguration();
+
+    public void setConfiguration(DynamicConfiguration configuration);
 
 }
