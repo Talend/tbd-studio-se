@@ -86,6 +86,7 @@
         <module>main/plugins/org.talend.hadoop.distribution.emr550</module>
         <module>main/plugins/org.talend.hadoop.distribution.emr550.jars</module>
         <module>main/plugins/org.talend.hadoop.distribution.emr580</module>
+        <module>main/plugins/org.talend.hadoop.distribution.emr5150</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdinsight310</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdinsight320</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdinsight340</module>
