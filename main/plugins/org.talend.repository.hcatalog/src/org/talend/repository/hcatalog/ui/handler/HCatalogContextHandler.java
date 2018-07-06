@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.language.ECodeLanguage;
 import org.talend.core.language.LanguageManager;
@@ -88,6 +89,10 @@ public class HCatalogContextHandler extends AbstractRepositoryContextHandler {
                         break;
                     case HcatalogFileSeparator:
                         ConnectionContextHelper.createParameters(varList, paramName, conn.getFieldSeparator());
+                        break;
+                    case HcatalogMetastore:
+                        ConnectionContextHelper.createParameters(varList, paramName,
+                                (String) conn.getProperties().get(ConnParameterKeys.CONN_PARA_KEY_HCATALOG_METASTORE));
                         break;
                     default:
                     }
@@ -190,6 +195,10 @@ public class HCatalogContextHandler extends AbstractRepositoryContextHandler {
         case HcatalogFileSeparator:
             hcatalogConn.setFieldSeparator(ContextParameterUtils.getNewScriptCode(hcatalogVariableName, LANGUAGE));
             break;
+        case HcatalogMetastore:
+            hcatalogConn.getProperties().put(ConnParameterKeys.CONN_PARA_KEY_HCATALOG_METASTORE,
+                    ContextParameterUtils.getNewScriptCode(hcatalogVariableName, LANGUAGE));
+            break;
         default:
         }
     }
@@ -235,6 +244,8 @@ public class HCatalogContextHandler extends AbstractRepositoryContextHandler {
                     conn.getKrbRealm()));
             String database = TalendQuoteUtils.removeQuotes(ContextParameterUtils.getOriginalValue(contextType,
                     conn.getDatabase()));
+            String metastore = TalendQuoteUtils.removeQuotes(ContextParameterUtils.getOriginalValue(contextType,
+                    (String) conn.getProperties().get(ConnParameterKeys.CONN_PARA_KEY_HCATALOG_METASTORE)));
             String rowSeparator = TalendQuoteUtils.removeQuotes(ContextParameterUtils.getOriginalValue(contextType,
                     conn.getRowSeparator()));
             String fileSeparator = TalendQuoteUtils.removeQuotes(ContextParameterUtils.getOriginalValue(contextType,
@@ -252,6 +263,7 @@ public class HCatalogContextHandler extends AbstractRepositoryContextHandler {
             conn.setKrbPrincipal(kerberosPrin);
             conn.setKrbRealm(kerberosRealm);
             conn.setDatabase(database);
+            conn.getProperties().put(ConnParameterKeys.CONN_PARA_KEY_HCATALOG_METASTORE, metastore);
             conn.setRowSeparator(rowSeparator);
             conn.setFieldSeparator(fileSeparator);
         }
