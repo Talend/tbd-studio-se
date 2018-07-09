@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.util;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -22,9 +23,11 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
+import org.talend.commons.exception.ExceptionHandler;
 import org.talend.core.runtime.maven.MavenUrlHelper;
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.designer.maven.aether.node.DependencyNode;
+import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.dynamic.bean.IVariable;
 import org.talend.hadoop.distribution.i18n.Messages;
 
@@ -32,6 +35,33 @@ import org.talend.hadoop.distribution.i18n.Messages;
  * DOC cmeng  class global comment. Detailled comment
  */
 public class DynamicDistributionUtils {
+
+    public static List<ESparkVersion> convert2ESparkVersions(List<String> sparkVersions) {
+        List<ESparkVersion> versions = new ArrayList<>();
+        for (String sparkVersion : sparkVersions) {
+            try {
+                ESparkVersion eSparkVersion = ESparkVersion.valueOf(sparkVersion);
+                if (eSparkVersion == null) {
+                    throw new Exception(Messages.getString("DynamicDistributionUtils.check.sparkVersion.unsupport", //$NON-NLS-1$
+                            sparkVersion));
+                }
+                versions.add(eSparkVersion);
+            } catch (Exception e) {
+                ExceptionHandler.process(e);
+            }
+        }
+        Collections.sort(versions, Collections.reverseOrder(ESparkVersion.descComparator()));
+        return versions;
+    }
+
+    public static List<String> convert2SparkVersions(List<ESparkVersion> eSparkVersions) {
+        List<String> sparkVersions = new ArrayList<>();
+        for (ESparkVersion eSparkVersion : eSparkVersions) {
+            sparkVersions.add(eSparkVersion.name());
+        }
+        Collections.sort(sparkVersions, Collections.reverseOrder());
+        return sparkVersions;
+    }
 
     public static String fillTemplate(String templateString, String... args) {
         String fullString = templateString;

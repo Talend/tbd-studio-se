@@ -12,7 +12,11 @@
 // ============================================================================
 package org.talend.hadoop.distribution.dynamic;
 
+import java.util.List;
+
 import org.talend.commons.exception.ExceptionHandler;
+import org.talend.hadoop.distribution.ESparkVersion;
+import org.talend.hadoop.distribution.dynamic.pref.IDynamicDistributionPreference;
 import org.talend.repository.ProjectManager;
 
 /**
@@ -29,6 +33,8 @@ public class DynamicConfiguration {
     private String name;
 
     private String description;
+
+    private List<ESparkVersion> selectedSparkVersions;
 
     public String getId() {
         return this.id;
@@ -72,6 +78,14 @@ public class DynamicConfiguration {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<ESparkVersion> getSelectedSparkVersions() {
+        return this.selectedSparkVersions;
+    }
+
+    public void setSelectedSparkVersions(List<ESparkVersion> selectedSparkVersions) {
+        this.selectedSparkVersions = selectedSparkVersions;
     }
 
     public IDynamicDistributionPreference getPreference() {

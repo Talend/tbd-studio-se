@@ -18,6 +18,7 @@ import org.talend.core.model.general.Project;
 import org.talend.core.runtime.dynamic.IDynamicPlugin;
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.hadoop.distribution.dynamic.bean.TemplateBean;
+import org.talend.hadoop.distribution.dynamic.pref.IDynamicDistributionPreference;
 import org.talend.hadoop.distribution.dynamic.resolver.IDependencyResolver;
 
 /**
@@ -32,6 +33,8 @@ public interface IDynamicDistributionsGroup {
     public List<String> getCompatibleVersions(IDynamicMonitor monitor) throws Exception;
 
     public List<TemplateBean> getAllTemplates(IDynamicMonitor monitor) throws Exception;
+
+    public IDynamicDistribution getCompatibleDistribution(IDynamicMonitor monitor, String version) throws Exception;
 
     public IDynamicPlugin buildDynamicPlugin(IDynamicMonitor monitor, DynamicConfiguration configuration) throws Exception;
 

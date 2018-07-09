@@ -23,17 +23,21 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
+import org.talend.hadoop.distribution.databricks.modulegroup.node.sparkbatch.DatabricksSparkBatchAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
+import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
+import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.databricks.IDatabricksDistribution;
 import org.talend.hadoop.distribution.databricks.modulegroup.DatabricksHiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.databricks.modulegroup.DatabricksSparkBatchModuleGroup;
+import org.talend.hadoop.distribution.databricks.modulegroup.DatabricksSparkStreamingModuleGroup;
 
-public class DatabricksDistribution extends AbstractDistribution implements SparkBatchComponent, HiveOnSparkComponent, IDatabricksDistribution {
+public class DatabricksDistribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, IDatabricksDistribution {
 
-    public final static String VERSION = "Databricks";
+    public final static String VERSION = "Databricks_3_5";
 
     public static final String VERSION_DISPLAY = "3.5 LTS (includes Apache Spark 2.2.1, Scala 2.11)";
 
@@ -66,6 +70,7 @@ public class DatabricksDistribution extends AbstractDistribution implements Spar
     protected Map<ComponentType, Set<DistributionModuleGroup>> buildModuleGroups() {
         Map<ComponentType, Set<DistributionModuleGroup>> result = new HashMap<>();
         result.put(ComponentType.SPARKBATCH, DatabricksSparkBatchModuleGroup.getModuleGroups());
+        result.put(ComponentType.SPARKSTREAMING, DatabricksSparkStreamingModuleGroup.getModuleGroups());
         result.put(ComponentType.HIVEONSPARK, DatabricksHiveOnSparkModuleGroup.getModuleGroups());
         return result;
     }
@@ -73,6 +78,12 @@ public class DatabricksDistribution extends AbstractDistribution implements Spar
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(String distribution, String version) {
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
         // Azure
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
+                SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT), DatabricksSparkBatchAzureNodeModuleGroup
+                .getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), DatabricksSparkBatchAzureNodeModuleGroup
+                .getModuleGroups(distribution, version));
         return result;
     }
 
@@ -187,6 +198,16 @@ public class DatabricksDistribution extends AbstractDistribution implements Spar
 
     @Override
     public boolean doSupportAzureDataLakeStorage() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportCheckpointing() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportBackpressure() {
         return true;
     }
 

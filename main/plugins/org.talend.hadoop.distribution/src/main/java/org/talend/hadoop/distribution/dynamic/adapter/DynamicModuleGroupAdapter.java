@@ -18,9 +18,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.talend.commons.exception.ExceptionHandler;
 import org.talend.core.runtime.dynamic.DynamicFactory;
 import org.talend.core.runtime.dynamic.IDynamicConfiguration;
 import org.talend.designer.maven.aether.IDynamicMonitor;
+import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.dynamic.DynamicConfiguration;
 import org.talend.hadoop.distribution.dynamic.bean.ModuleGroupBean;
 import org.talend.hadoop.distribution.dynamic.bean.TemplateBean;
@@ -76,6 +78,26 @@ public class DynamicModuleGroupAdapter extends AbstractDynamicAdapter {
         String id = configuration.getId();
         String moduleGroupId = moduleGroupBean.getId();
         String description = moduleGroupBean.getDescription();
+        List<ESparkVersion> selectedSparkVersions = configuration.getSelectedSparkVersions();
+
+        List<String> sparkVersions = moduleGroupBean.getSupportedSparkVersions();
+        if (sparkVersions != null && !sparkVersions.isEmpty()) {
+            boolean isSupport = false;
+            for (String sparkVersion : sparkVersions) {
+                try {
+                    ESparkVersion eSparkVersion = ESparkVersion.valueOf(sparkVersion);
+                    if (selectedSparkVersions.contains(eSparkVersion)) {
+                        isSupport = true;
+                        break;
+                    }
+                } catch (Exception e) {
+                    ExceptionHandler.process(e);
+                }
+            }
+            if (!isSupport) {
+                return null;
+            }
+        }
 
         runtimeId = DynamicDistributionUtils.getPluginKey(distribution, version, id, moduleGroupId);
 
@@ -94,6 +116,9 @@ public class DynamicModuleGroupAdapter extends AbstractDynamicAdapter {
                 if (moduleAdapter == null) {
                     throw new Exception(Messages.getString("DynamicModuleGroupAdapter.exception.noModuleAdapterFound", module, //$NON-NLS-1$
                             DynamicModuleAdapter.class.getName()));
+                }
+                if (moduleAdapter.isSkipped()) {
+                    continue;
                 }
                 List<String> runtimeIds = moduleAdapter.getRuntimeIds();
                 if (runtimeIds == null || runtimeIds.isEmpty()) {

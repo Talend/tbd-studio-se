@@ -12,12 +12,11 @@
 // ============================================================================
 package org.talend.hadoop.distribution.dynamic.cdh;
 
-import org.talend.core.model.general.Project;
-import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
 import org.talend.hadoop.distribution.dynamic.AbstractDynamicDistributionsGroup;
 import org.talend.hadoop.distribution.dynamic.DynamicConfiguration;
 import org.talend.hadoop.distribution.dynamic.IDynamicDistribution;
-import org.talend.hadoop.distribution.dynamic.IDynamicDistributionPreference;
+import org.talend.hadoop.distribution.dynamic.pref.IDynamicDistributionPreferenceFactory;
+import org.talend.hadoop.distribution.dynamic.pref.cdh.DynamicCDHDistributionPreferenceFactory;
 import org.talend.hadoop.distribution.dynamic.resolver.IDependencyResolver;
 import org.talend.hadoop.distribution.dynamic.resolver.cdh.ClouderaDependencyResolver;
 import org.talend.hadoop.distribution.dynamic.util.DynamicDistributionUtils;
@@ -29,12 +28,12 @@ public class DynamicCDHDistributionsGroup extends AbstractDynamicDistributionsGr
 
     @Override
     public String getDistribution() {
-        return IClouderaDistribution.DISTRIBUTION_NAME;
+        return DISTRIBUTION_NAME;
     }
 
     @Override
     public String getDistributionDisplay() {
-        return IClouderaDistribution.DISTRIBUTION_DISPLAY_NAME;
+        return DISTRIBUTION_DISPLAY_NAME;
     }
 
     @Override
@@ -50,11 +49,6 @@ public class DynamicCDHDistributionsGroup extends AbstractDynamicDistributionsGr
     }
 
     @Override
-    public IDynamicDistributionPreference getDynamicDistributionPreference(Project project) throws Exception {
-        return DynamicCDHDistributionPreference.getDynamicDistributionPreference(project);
-    }
-
-    @Override
     public String generateVersionName(String version) {
         return "Cloudera CDH" + version + " (Dynamic)"; //$NON-NLS-1$//$NON-NLS-2$
     }
@@ -66,8 +60,8 @@ public class DynamicCDHDistributionsGroup extends AbstractDynamicDistributionsGr
     }
 
     @Override
-    public void resetCache() throws Exception {
-        DynamicCDHDistributionPreference.clearAllPreferenceCache();
+    protected IDynamicDistributionPreferenceFactory createPreferenceFactory() {
+        return DynamicCDHDistributionPreferenceFactory.getInstance();
     }
 
 }
