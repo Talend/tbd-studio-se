@@ -52,7 +52,7 @@ public class UnifyPasswordEncryption4NoSQLConnectionMigrationTask extends UnifyP
                 try {
                     if (!noSqlConn.isContextMode()) {
                         String pass = noSqlConn.getAttributes().get(ICassandraAttributies.PASSWORD);
-                        //
+                        pass = cleanPassword(pass);
                         noSqlConn.getAttributes().put(ICassandraAttributies.PASSWORD, noSqlConn.getValue(pass, true));
                         factory.save(item, true);
                         return ExecutionResult.SUCCESS_NO_ALERT;
