@@ -23,7 +23,6 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
-import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
@@ -65,10 +64,10 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
 
     protected Map<ComponentType, String> buildCustomVersionDisplayNames() {
         Map<ComponentType, String> result = new HashMap<>();
-        result.put(ComponentType.HIVE, "Qubole Hadoop2 (Hive 2.1.1 Beta)");
-        result.put(ComponentType.PIG, "Qubole Hadoop2");
-        result.put(ComponentType.PIGOUTPUT, "Qubole Hadoop2");
-        result.put(ComponentType.SPARKBATCH, "Qubole Spark 2.2");
+        result.put(ComponentType.HIVE, "Qubole Hadoop 2 (Hive 2.1.1 Beta)");
+        result.put(ComponentType.PIG, "Qubole Hadoop 2");
+        result.put(ComponentType.PIGOUTPUT, "Qubole Hadoop 2");
+        result.put(ComponentType.SPARKBATCH, "Qubole Spark 2");
         return result;
     }
 
@@ -122,7 +121,7 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
     @Override
     public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
-        version.add(ESparkVersion.SPARK_2_2);
+        version.add(ESparkVersion.SPARK_2_1);
         return version;
     }
 
@@ -198,7 +197,7 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
 
     @Override
     public boolean doSupportSparkYarnClusterMode() {
-        return false;
+        return true;
     }
 
     @Override
