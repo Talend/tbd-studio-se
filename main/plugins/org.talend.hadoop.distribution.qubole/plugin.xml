@@ -203,53 +203,54 @@
             name="slf4j-api-1.7.16.jar"
             mvn_uri="mvn:org.talend.libraries/slf4j-api-1.7.16/6.0.0">
         </libraryNeeded>
+
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.qubole"
             id="spark-catalyst_2.11-2.2.0.jar"
             name="spark-catalyst_2.11-2.2.0.jar"
-            mvn_uri="mvn:org.apache.spark/spark-catalyst_2.11/2.2.0">
+            mvn_uri="mvn:org.talend.libraries/spark-catalyst_2.11/6.0.0">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.qubole"
             id="spark-core_2.11-2.2.0.jar"
             name="spark-core_2.11-2.2.0.jar"
-            mvn_uri="mvn:org.apache.spark/spark-core_2.11/2.2.0">
+            mvn_uri="mvn:org.talend.libraries/spark-core_2.11/6.0.0">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.qubole"
             id="spark-graphx_2.11-2.2.0.jar"
             name="spark-graphx_2.11-2.2.0.jar"
-            mvn_uri="mvn:org.apache.spark/spark-graphx_2.11/2.2.0">
+            mvn_uri="mvn:org.talend.libraries/spark-graphx_2.11/6.0.0">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.qubole"
             id="spark-hive_2.11-2.2.0.jar"
             name="spark-hive_2.11-2.2.0.jar"
-            mvn_uri="mvn:org.apache.spark/spark-hive_2.11/2.2.0">
+            mvn_uri="mvn:org.talend.libraries/spark-hive_2.11/6.0.0">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.qubole"
             id="spark-mllib_2.11-2.2.0.jar"
             name="spark-mllib_2.11-2.2.0.jar"
-            mvn_uri="mvn:org.apache.spark/spark-mllib_2.11/2.2.0">
+            mvn_uri="mvn:org.talend.libraries/spark-mllib_2.11/6.0.0">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.qubole"
             id="spark-mllib-local_2.11-2.2.0.jar"
             name="spark-mllib-local_2.11-2.2.0.jar"
-            mvn_uri="mvn:org.apache.spark/spark-mllib-local_2.11/2.2.0">
+            mvn_uri="mvn:org.talend.libraries/spark-mllib-local_2.11/6.0.0">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.qubole"
             id="spark-network-common_2.11-2.2.0.jar"
             name="spark-network-common_2.11-2.2.0.jar"
-            mvn_uri="mvn:org.apache.spark/spark-network-common_2.11/2.2.0">
+            mvn_uri="mvn:org.talend.libraries/spark-network-common_2.11/6.0.0">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.qubole"
             id="spark-sql_2.11-2.2.0.jar"
             name="spark-sql_2.11-2.2.0.jar"
-            mvn_uri="mvn:org.apache.spark/spark-sql_2.11/2.2.0">
+            mvn_uri="mvn:org.talend.libraries/spark-sql_2.11/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded

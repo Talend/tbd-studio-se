@@ -200,7 +200,7 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
 
     @Override
     public boolean doImportDynamoDBDependencies() {
-        return false;
+        return true;
     }
 
     @Override
