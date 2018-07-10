@@ -29,11 +29,12 @@ public class QuboleSparkBatchModuleGroupTest {
     @Test
     public void testModuleGroups() throws Exception {
         Map<String, String> results = new HashMap<>();
-        results.put(QuboleConstant.SPARK_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
-        results.put(QuboleConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')");
+        results.put(QuboleConstant.SPARK_MODULE_GROUP.getModuleName(), null);
+        results.put(QuboleConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), null);
+        results.put(QuboleConstant.S3_MODULE_GROUP.getModuleName(), null);
 
         Set<DistributionModuleGroup> moduleGroups = QuboleSparkBatchModuleGroup.getModuleGroups();
-        assertEquals(2, moduleGroups.size());
+        assertEquals(3, moduleGroups.size());
 
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$

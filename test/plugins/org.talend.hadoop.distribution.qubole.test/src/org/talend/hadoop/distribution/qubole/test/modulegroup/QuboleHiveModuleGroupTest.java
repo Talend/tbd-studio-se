@@ -30,7 +30,7 @@ public class QuboleHiveModuleGroupTest {
     public void testModuleGroups() throws Exception {
         Map<String, String> results = new HashMap<>();
         results.put(QuboleConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), null);
-        results.put(QuboleConstant.HIVE_MODULE_GROUP.getModuleName(), null); //$NON-NLS-1$
+        results.put(QuboleConstant.HIVE_MODULE_GROUP.getModuleName(), null);
 
         Set<DistributionModuleGroup> moduleGroups = QuboleHiveModuleGroup.getModuleGroups();
         assertEquals(2, moduleGroups.size());

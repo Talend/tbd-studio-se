@@ -12,8 +12,6 @@
 // ============================================================================
 package org.talend.hadoop.distribution.qubole.test;
 
-import org.junit.Test;
-import org.talend.core.hadoop.EHadoopCategory;
 import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.qubole.QuboleDistribution;
 import org.talend.hadoop.distribution.test.classloader.AbstractTest4ClassLoaderProvider;

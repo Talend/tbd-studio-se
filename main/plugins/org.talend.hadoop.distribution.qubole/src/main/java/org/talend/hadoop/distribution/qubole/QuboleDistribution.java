@@ -36,19 +36,17 @@ import org.talend.hadoop.distribution.qubole.modulegroup.QuboleSparkBatchModuleG
 
 public class QuboleDistribution extends AbstractDistribution implements SparkBatchComponent, PigComponent, HiveComponent, IQuboleDistribution {
 
-    public final static String VERSION = "Qubole cloud distribution";
-
-    public static final String VERSION_DISPLAY = "Qubole cloud distribution";
-
     private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*"; //$NON-NLS-1$
+    public final static String VERSION = "Qubole cloud distribution";
+    public static final String VERSION_DISPLAY = "Qubole cloud distribution";
+    public static final String HIVE_VERSION = "Qubole Hadoop 2 (Hive 2.1.1 Beta)";
+    public static final String PIG_VERSION = "Qubole Hadoop 2";
+    public static final String SPARK_VERISON = "Qubole Spark 2";
 
-    protected Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
-
-    protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodeModuleGroups;
-
-    protected Map<ComponentType, ComponentCondition> displayConditions;
-
-    protected Map<ComponentType, String> customVersionDisplayNames;
+    private Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
+    private Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodeModuleGroups;
+    private Map<ComponentType, ComponentCondition> displayConditions;
+    private Map<ComponentType, String> customVersionDisplayNames;
 
     public QuboleDistribution() {
         displayConditions = buildDisplayConditions();
@@ -64,10 +62,10 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
 
     protected Map<ComponentType, String> buildCustomVersionDisplayNames() {
         Map<ComponentType, String> result = new HashMap<>();
-        result.put(ComponentType.HIVE, "Qubole Hadoop 2 (Hive 2.1.1 Beta)");
-        result.put(ComponentType.PIG, "Qubole Hadoop 2");
-        result.put(ComponentType.PIGOUTPUT, "Qubole Hadoop 2");
-        result.put(ComponentType.SPARKBATCH, "Qubole Spark 2");
+        result.put(ComponentType.HIVE, HIVE_VERSION);
+        result.put(ComponentType.PIG, PIG_VERSION);
+        result.put(ComponentType.PIGOUTPUT, PIG_VERSION);
+        result.put(ComponentType.SPARKBATCH, SPARK_VERISON);
         return result;
     }
 
@@ -121,7 +119,7 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
     @Override
     public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
-        version.add(ESparkVersion.SPARK_2_1);
+        version.add(ESparkVersion.SPARK_2_2);
         return version;
     }
 
