@@ -195,7 +195,7 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
 
     @Override
     public boolean doSupportSparkYarnClusterMode() {
-        return true;
+        return false;
     }
 
     @Override
