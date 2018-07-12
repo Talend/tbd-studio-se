@@ -233,4 +233,14 @@ public class CustomDistribution extends AbstractDistribution implements HDFSComp
     public boolean canCreateMapRStream() {
         return true;
     }
+    
+    @Override
+    public boolean doSupportMapRDB() {
+        return true;
+    }
+    
+    @Override
+    public boolean doSupportMaprTicketV52API() {
+        return true;
+    }
 }
