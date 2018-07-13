@@ -26,6 +26,25 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.qubole" id="parquet-pig-1.5.0.jar" name="parquet-pig-1.5.0.jar" mvn_uri="mvn:com.twitter/parquet-pig/1.5.0" />
 
 		<!-- Talend nexus jars -->
+        <libraryNeeded
+            context="plugin:org.talend.libraries.pig"
+            id="pigutil.jar"
+            name="pigutil.jar"
+            mvn_uri="mvn:org.talend.libraries/pigutil/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.libraries.pig"
+            id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
+            name="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
+            mvn_uri="mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.qubole"
+            id="avro-mapred-1.7.7-hadoop2.jar"
+            name="avro-mapred-1.7.7-hadoop2.jar"
+            mvn_uri="mvn:org.talend.libraries/avro-mapred-1.7.7-hadoop2/6.0.0"/>
+
+		<!-- jars to change -->
 		<libraryNeeded
 			context="plugin:org.talend.libraries.pig"
 			id="parquet-pig-bundle-1.5.0.jar"
@@ -58,18 +77,6 @@
             id="elephant-bird-pig-4.9.jar"
             name="elephant-bird-pig-4.9.jar"
             mvn_uri="mvn:org.talend.libraries/elephant-bird-pig-4.9/6.0.0">
-        </libraryNeeded>
-        <libraryNeeded
-            context="plugin:org.talend.libraries.pig"
-            id="pigutil.jar"
-            name="pigutil.jar"
-            mvn_uri="mvn:org.talend.libraries/pigutil/6.0.0">
-        </libraryNeeded>
-        <libraryNeeded
-            context="plugin:org.talend.libraries.pig"
-            id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
-            name="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
-            mvn_uri="mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.pig"
@@ -137,12 +144,6 @@
 			id="avro-1.7.7.jar"
 			name="avro-1.7.7.jar"
 			mvn_uri="mvn:org.talend.libraries/avro-1.7.7/6.0.0" />
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.qubole"
-            id="avro-mapred-1.7.7-hadoop2.jar"
-            name="avro-mapred-1.7.7-hadoop2.jar"
-            mvn_uri="mvn:org.talend.libraries/avro-mapred-1.7.7-hadoop2/6.0.0"/>
-              
         <libraryNeeded 
          	context="plugin:org.talend.hadoop.distribution.qubole" 
          	id="commons-codec-1.10.jar" 
@@ -221,12 +222,6 @@
             id="spark-graphx_2.11-2.2.0.jar"
             name="spark-graphx_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-graphx_2.11/6.0.0">
-        </libraryNeeded>
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.qubole"
-            id="spark-hive_2.11-2.2.0.jar"
-            name="spark-hive_2.11-2.2.0.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-hive_2.11/6.0.0">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.qubole"
