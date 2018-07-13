@@ -3,7 +3,7 @@
 <plugin>
     <extension point="org.talend.core.runtime.librariesNeeded">
         
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.qubole" id="talend-bigdata-launcher-qubole-1.2.5-20180705.jar" name="talend-bigdata-launcher-qubole-1.2.5-20180705.jar" mvn_uri="mvn:org.talend.libraries.libs/talend-bigdata-launcher-qubole-1.2.5-20180705/7.1.0" />
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.qubole" id="talend-bigdata-launcher-qubole-1.2.5-20180705.jar" name="talend-bigdata-launcher-qubole-1.2.5-20180705.jar" mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-qubole-1.2.5-20180705/7.1.0" />
 
 		<!-- Qubole SDK 0.9.1 and it's dependencies -->
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.qubole" id="qds-sdk-java-0.9.1.jar" name="qds-sdk-java-0.9.1.jar" mvn_uri="mvn:com.qubole.qds-sdk-java/qds-sdk-java/0.9.1" />
