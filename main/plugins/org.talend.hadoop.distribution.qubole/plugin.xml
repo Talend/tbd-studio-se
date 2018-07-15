@@ -55,11 +55,6 @@
 			id="avro-1.7.6.jar"
 			name="avro-1.7.6.jar"
 			mvn_uri="mvn:org.talend.libraries/avro-1.7.6/6.0.0" />
-		<libraryNeeded
-			context="plugin:org.talend.libraries.pig"
-			id="json-simple-1.1.jar"
-			name="json-simple-1.1.jar"
-			mvn_uri="mvn:org.talend.libraries/json-simple-1.1/6.0.0" />
         <libraryNeeded
             context="plugin:org.talend.libraries.pig"
             id="elephant-bird-core-4.9.jar"
@@ -139,11 +134,6 @@
             mvn_uri="mvn:org.talend.libraries/joda-time-2.8.1/6.3.0"/>
             
         <!-- Talend jars for Spark 2 -->
-		<libraryNeeded
-			context="plugin:org.talend.hadoop.distribution.qubole"
-			id="avro-1.7.7.jar"
-			name="avro-1.7.7.jar"
-			mvn_uri="mvn:org.talend.libraries/avro-1.7.7/6.0.0" />
         <libraryNeeded 
          	context="plugin:org.talend.hadoop.distribution.qubole" 
          	id="commons-codec-1.10.jar" 
