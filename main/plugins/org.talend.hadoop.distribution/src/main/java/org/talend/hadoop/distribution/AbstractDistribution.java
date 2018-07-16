@@ -349,4 +349,8 @@ public boolean isQuboleDistribution() {
     public boolean useOldAWSAPI() {
         return true;
     }
+    
+    public String getHadoopFullVersionStr() {
+    	return EHadoopFullVersionStr.HADOOP_2_6.toString();
+    };
 }

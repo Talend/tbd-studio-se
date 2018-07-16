@@ -56,6 +56,11 @@ public interface HadoopComponent {
     public EHadoopVersion getHadoopVersion();
 
     /**
+     * @return the full version of the distribution.
+     */
+    public String getHadoopFullVersionStr();
+
+    /**
      * @return true if the distribution uses @link{EHadoopVersion} HADOOP_2.
      */
     public boolean isHadoop2();
