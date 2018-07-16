@@ -31,8 +31,8 @@ import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.MapRDBComponent;
-import org.talend.hadoop.distribution.component.MapRStreamsComponent;
 import org.talend.hadoop.distribution.component.MapROJAIComponent;
+import org.talend.hadoop.distribution.component.MapRStreamsComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
@@ -77,7 +77,9 @@ import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SparkStreamingP
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SqoopModuleGroup;
 
 public class MapR601Distribution extends AbstractMapRDistribution implements HDFSComponent, MapROJAIComponent,
-        SparkBatchComponent, HiveOnSparkComponent, MapRStreamsComponent, MapRDBComponent, IMapRDistribution {
+        SparkBatchComponent, SparkStreamingComponent, HiveComponent, HiveOnSparkComponent, MapRStreamsComponent,
+        MapRDBComponent, IMapRDistribution, HCatalogComponent, MRComponent, PigComponent, SqoopComponent,
+        ImpalaComponent {
 
     public final static String VERSION = "MAPR601"; //$NON-NLS-1$
 
@@ -97,16 +99,22 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
 
         moduleGroups = new HashMap<>();
         moduleGroups.put(ComponentType.HDFS, MapR601HDFSModuleGroup.getModuleGroups());
+        moduleGroups.put(ComponentType.MAPREDUCE, MapR601MapReduceModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HBASE, MapR601HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVE, MapR601HiveModuleGroup.getModuleGroups());
+        moduleGroups.put(ComponentType.PIG, MapR601PigModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.PIGOUTPUT, MapR601PigOutputModuleGroup.getModuleGroups());
 
+        moduleGroups.put(ComponentType.HCATALOG, MapR601HCatalogModuleGroup.getModuleGroups());
+        moduleGroups.put(ComponentType.SQOOP, MapR601SqoopModuleGroup.getModuleGroups());
+        moduleGroups.put(ComponentType.IMPALA, MapR601ImpalaModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SPARKBATCH, MapR601SparkBatchModuleGroup.getModuleGroups());
+        moduleGroups.put(ComponentType.SPARKSTREAMING, MapR601SparkStreamingModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVEONSPARK, MapR601HiveOnSparkModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPRSTREAMS, MapR601MapRStreamsModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPRDB, MapR601HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.OJAI, MapR601OjaiModuleGroup.getModuleGroups());
-        
+
         nodeModuleGroups = new HashMap<>();
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPRSTREAMS,
@@ -379,14 +387,14 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
     public boolean doImportSparkHiveContextDependencies() {
         return true;
     }
-    
+
     @Override
-    public boolean doSupportAvroDeflateProperties(){
+    public boolean doSupportAvroDeflateProperties() {
         return true;
     }
-    
+
     @Override
-    public boolean doSupportWebHDFS(){
+    public boolean doSupportWebHDFS() {
         return false;
     }
 
@@ -398,5 +406,80 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
     @Override
     public boolean doSupportJsonQueries() {
         return true;
+    }
+
+    @Override
+    public boolean doSupportCheckpointing() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportBackpressure() {
+        return true;
+    }
+
+    @Override
+    public boolean doJavaAPISupportStorePasswordInFile() {
+        return false;
+    }
+
+    @Override
+    public boolean doSupportHCatalog() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportHBase() {
+        return true;
+    }
+
+    @Override
+    public boolean pigVersionPriorTo_0_12() {
+        return false;
+    }
+
+    @Override
+    public boolean doSupportHive1() {
+        return false;
+    }
+
+    @Override
+    public boolean doSupportHive2() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportTezForHive() {
+        return false;
+    }
+
+    @Override
+    public boolean doSupportHBaseForHive() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportSSL() {
+        return false;
+    }
+
+    @Override
+    public boolean doSupportORCFormat() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportAvroFormat() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportParquetFormat() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportStoreAsParquet() {
+        return false;
     }
 }
