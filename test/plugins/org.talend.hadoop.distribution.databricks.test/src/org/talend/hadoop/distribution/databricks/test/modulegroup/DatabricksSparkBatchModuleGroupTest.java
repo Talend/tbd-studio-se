@@ -30,12 +30,11 @@ public class DatabricksSparkBatchModuleGroupTest {
     public void testModuleGroups() throws Exception {
         Map<String, String> results = new HashMap<>();
         results.put(DatabricksConstant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
-        results.put(DatabricksConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')");
-        results.put(DatabricksConstant.SPARK_AZURE_MRREQUIRED_MODULE_GROUP.getModuleName(), "(tAzureFSConfiguration=='\"Azure\"')");
-        results.put(DatabricksConstant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')");
+        results.put(DatabricksConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+        results.put(DatabricksConstant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
 
         Set<DistributionModuleGroup> moduleGroups = DatabricksSparkBatchModuleGroup.getModuleGroups();
-        assertEquals(4, moduleGroups.size());
+        assertEquals(results.size(), moduleGroups.size());
 
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$

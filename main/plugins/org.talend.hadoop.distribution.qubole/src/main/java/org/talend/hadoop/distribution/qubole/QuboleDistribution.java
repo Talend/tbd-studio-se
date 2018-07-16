@@ -23,31 +23,30 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
-import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
+import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.qubole.IQuboleDistribution;
 import org.talend.hadoop.distribution.qubole.modulegroup.QuboleHiveModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QubolePigModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QubolePigOutputModuleGroup;
+import org.talend.hadoop.distribution.qubole.modulegroup.QuboleSparkBatchModuleGroup;
 
-public class QuboleDistribution extends AbstractDistribution implements PigComponent, HiveComponent, IQuboleDistribution {
-
-    public final static String VERSION = "Qubole cloud distribution";
-
-    public static final String VERSION_DISPLAY = "Qubole cloud distribution";
+public class QuboleDistribution extends AbstractDistribution implements SparkBatchComponent, PigComponent, HiveComponent, IQuboleDistribution {
 
     private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*"; //$NON-NLS-1$
+    public final static String VERSION = "Qubole cloud distribution";
+    public static final String VERSION_DISPLAY = "Qubole cloud distribution";
+    public static final String HIVE_VERSION = "Qubole Hadoop 2 (Hive 2.1.1 Beta)";
+    public static final String PIG_VERSION = "Qubole Hadoop 2";
+    public static final String SPARK_VERISON = "Qubole Spark 2";
 
-    protected Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
-
-    protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodeModuleGroups;
-
-    protected Map<ComponentType, ComponentCondition> displayConditions;
-
-    protected Map<ComponentType, String> customVersionDisplayNames;
+    private Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
+    private Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodeModuleGroups;
+    private Map<ComponentType, ComponentCondition> displayConditions;
+    private Map<ComponentType, String> customVersionDisplayNames;
 
     public QuboleDistribution() {
         displayConditions = buildDisplayConditions();
@@ -63,9 +62,10 @@ public class QuboleDistribution extends AbstractDistribution implements PigCompo
 
     protected Map<ComponentType, String> buildCustomVersionDisplayNames() {
         Map<ComponentType, String> result = new HashMap<>();
-        result.put(ComponentType.HIVE, "Qubole Hadoop2 (Hive 2.1.1 Beta)");
-        result.put(ComponentType.PIG, "Qubole Hadoop2");
-        result.put(ComponentType.PIGOUTPUT, "Qubole Hadoop2");
+        result.put(ComponentType.HIVE, HIVE_VERSION);
+        result.put(ComponentType.PIG, PIG_VERSION);
+        result.put(ComponentType.PIGOUTPUT, PIG_VERSION);
+        result.put(ComponentType.SPARKBATCH, SPARK_VERISON);
         return result;
     }
 
@@ -77,6 +77,7 @@ public class QuboleDistribution extends AbstractDistribution implements PigCompo
         componentsMap.put(ComponentType.HIVE, QuboleHiveModuleGroup.getModuleGroups());
         componentsMap.put(ComponentType.PIG, QubolePigModuleGroup.getModuleGroups());
         componentsMap.put(ComponentType.PIGOUTPUT, QubolePigOutputModuleGroup.getModuleGroups());
+        componentsMap.put(ComponentType.SPARKBATCH, QuboleSparkBatchModuleGroup.getModuleGroups());
         return componentsMap;
     }
 
@@ -118,7 +119,7 @@ public class QuboleDistribution extends AbstractDistribution implements PigCompo
     @Override
     public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
-        version.add(ESparkVersion.SPARK_2_0);
+        version.add(ESparkVersion.SPARK_2_2);
         return version;
     }
 
@@ -199,7 +200,7 @@ public class QuboleDistribution extends AbstractDistribution implements PigCompo
 
     @Override
     public boolean doImportDynamoDBDependencies() {
-        return false;
+        return true;
     }
 
     @Override
@@ -276,4 +277,19 @@ public class QuboleDistribution extends AbstractDistribution implements PigCompo
     public boolean doSupportHDFSEncryption() {
         return true;
     }
+
+	@Override
+	public boolean doSupportSparkStandaloneMode() {
+		return false;
+	}
+
+	@Override
+	public boolean doSupportSparkYarnClientMode() {
+		return true;
+	}
+
+	@Override
+	public boolean doSupportDynamicMemoryAllocation() {
+		return true;
+	}
 }

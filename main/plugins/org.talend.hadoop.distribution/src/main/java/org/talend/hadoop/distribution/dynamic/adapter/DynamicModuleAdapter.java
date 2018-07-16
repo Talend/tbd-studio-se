@@ -27,6 +27,7 @@ import org.talend.core.runtime.maven.MavenUrlHelper;
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.designer.maven.aether.node.DependencyNode;
 import org.talend.designer.maven.aether.node.ExclusionNode;
+import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.HadoopDistributionPlugin;
 import org.talend.hadoop.distribution.dynamic.DynamicConfiguration;
 import org.talend.hadoop.distribution.dynamic.VersionNotFoundException;
@@ -73,8 +74,10 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
     private List<String> runtimeIds;
 
     private Set<String> registedModules;
-
+    
     private Map<String, ModuleNeeded> existingModuleMap;
+
+    private boolean isSkipped;
 
     public DynamicModuleAdapter(TemplateBean templateBean, DynamicConfiguration configuration, ModuleBean bean,
             IDependencyResolver resolver, Set<String> registedModules) {
@@ -83,6 +86,7 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
         this.dependencyResolver = resolver;
         this.runtimeIds = new ArrayList<>();
         this.registedModules = registedModules;
+        this.isSkipped = false;
         this.existingModuleMap = HadoopDistributionPlugin.getInstance().getExistingModuleMap();
     }
 
@@ -103,8 +107,29 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
         String distribution = configuration.getDistribution();
         String hadoopVersion = configuration.getVersion();
         String id = configuration.getId();
+        List<ESparkVersion> selectedSparkVersions = configuration.getSelectedSparkVersions();
 
         List<IDynamicConfiguration> librariesNeeded = new ArrayList<>();
+
+        List<String> sparkVersions = moduleBean.getSupportedSparkVersions();
+        if (sparkVersions != null && !sparkVersions.isEmpty()) {
+            boolean isSupport = false;
+            for (String sparkVersion : sparkVersions) {
+                try {
+                    ESparkVersion eSparkVersion = ESparkVersion.valueOf(sparkVersion);
+                    if (selectedSparkVersions.contains(eSparkVersion)) {
+                        isSupport = true;
+                        break;
+                    }
+                } catch (Exception e) {
+                    ExceptionHandler.process(e);
+                }
+            }
+            if (!isSupport) {
+                this.isSkipped = true;
+                return librariesNeeded;
+            }
+        }
 
         String type = moduleBean.getType();
         if (ModuleBean.TYPE_BASE.equalsIgnoreCase(type)) {
@@ -402,6 +427,10 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
 
     public void setRuntimeIds(List<String> runtimeIds) {
         this.runtimeIds = runtimeIds;
+    }
+
+    public boolean isSkipped() {
+        return this.isSkipped;
     }
 
     /**

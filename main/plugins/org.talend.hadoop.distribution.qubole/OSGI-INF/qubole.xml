@@ -5,5 +5,6 @@
     <provide interface="org.talend.hadoop.distribution.component.HadoopComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.HiveComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.PigComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.SparkBatchComponent"/>
   </service>
 </component>

@@ -33,7 +33,7 @@ public class DatabricksHiveOnSparkModuleGroupTest {
 
 
         Set<DistributionModuleGroup> moduleGroups = DatabricksHiveOnSparkModuleGroup.getModuleGroups();
-        assertEquals(1, moduleGroups.size());
+        assertEquals(results.size(), moduleGroups.size());
         moduleGroups.iterator();
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$
