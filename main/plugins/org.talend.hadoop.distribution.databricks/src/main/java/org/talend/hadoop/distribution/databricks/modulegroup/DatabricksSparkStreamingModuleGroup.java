@@ -23,7 +23,7 @@ import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.databricks.DatabricksConstant;
 
-public class DatabricksSparkBatchModuleGroup {
+public class DatabricksSparkStreamingModuleGroup {
 
     private final static ComponentCondition condition = new SimpleComponentCondition(new BasicExpression(
             SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false")); //$NON-NLS-1$
@@ -32,6 +32,7 @@ public class DatabricksSparkBatchModuleGroup {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         //hs.add(new DistributionModuleGroup(DatabricksConstant.HDFS_MODULE_GROUP.getModuleName(), false, condition));
         hs.add(new DistributionModuleGroup(DatabricksConstant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
+        hs.add(new DistributionModuleGroup(DatabricksConstant.SPARK_STREAMING_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
         hs.add(new DistributionModuleGroup(DatabricksConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), true, condition));
         hs.add(new DistributionModuleGroup(DatabricksConstant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));        
         return hs;

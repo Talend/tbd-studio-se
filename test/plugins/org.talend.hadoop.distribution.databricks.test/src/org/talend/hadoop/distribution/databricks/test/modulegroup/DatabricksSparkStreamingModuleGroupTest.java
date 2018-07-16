@@ -22,19 +22,21 @@ import java.util.Set;
 import org.junit.Test;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.databricks.DatabricksConstant;
-import org.talend.hadoop.distribution.databricks.modulegroup.DatabricksHiveOnSparkModuleGroup;
+import org.talend.hadoop.distribution.databricks.modulegroup.DatabricksSparkStreamingModuleGroup;
 
-public class DatabricksHiveOnSparkModuleGroupTest {
+public class DatabricksSparkStreamingModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
         Map<String, String> results = new HashMap<>();
-        results.put(DatabricksConstant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
+        results.put(DatabricksConstant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+        results.put(DatabricksConstant.SPARK_STREAMING_MRREQUIRED_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+        results.put(DatabricksConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+        results.put(DatabricksConstant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
 
-
-        Set<DistributionModuleGroup> moduleGroups = DatabricksHiveOnSparkModuleGroup.getModuleGroups();
+        Set<DistributionModuleGroup> moduleGroups = DatabricksSparkStreamingModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());
-        moduleGroups.iterator();
+
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$
             if (results.get(module.getModuleName()) == null) {

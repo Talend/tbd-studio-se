@@ -120,6 +120,12 @@
             name="spark-sql_2.11-2.2.1.jar"
             mvn_uri="mvn:org.apache.spark/spark-sql_2.11/2.2.1">
         </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.databricks"
+            id="spark-streaming_2.11-2.2.1.jar"
+            name="spark-streaming_2.11-2.2.1.jar"
+            mvn_uri="mvn:org.apache.spark/spark-streaming_2.11/2.2.1">
+        </libraryNeeded>
         
         <libraryNeeded
             context="Third party library to connect to Windows Azure"
@@ -202,11 +208,20 @@
              <library id="spark-graphx_2.11-2.2.1.jar"/>
              <library id="spark-mllib-local_2.11-2.2.1.jar"/>
              <library id="spark-sql_2.11-2.2.1.jar"/>
+             <library id="spark-streaming_2.11-2.2.1.jar"/>
              <library id="spark-network-common_2.11-2.2.1.jar"/>
              <library id="wsdl4j-1.6.3.jar"/>
              <library id="jackson-core-2.8.9.jar"/>
              <library id="javax.ws.rs-api-2.0-m10.jar"/>
              <library id="json_simple-1.1.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- Spark Streaming group -->
+        <libraryNeededGroup
+                description="SPARK libraries for Databricks"
+                id="SPARK-STREAMING-LIB-MRREQUIRED-DATABRICKS"
+                name="SPARK-STREAMING-LIB-MRREQUIRED-DATABRICKS">
+             <library id="spark-streaming_2.11-2.2.1.jar"/>
         </libraryNeededGroup>
         
         <!-- HiveOnSpark group -->

@@ -62,6 +62,7 @@
 		}
     }
 	%>
+	<%@ include file="../templates/CosmosDB/ApplicationName.javajet"%>
 	int nb_line_<%=cid %> = 0;
 	<%
   	if(metadatas != null && metadatas.size() > 0){
@@ -94,11 +95,11 @@
                 %>
 
                 // Empty client options
-                com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().build();
+                com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().applicationName(applicationName_<%=cid %>).build();
                 <%
                 if (useSSL) {
                     %>
-                    clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder()
+                    clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().applicationName(applicationName_<%=cid %>)
                     .socketFactory(javax.net.ssl.SSLSocketFactory.getDefault())
                     .build();
                     <%

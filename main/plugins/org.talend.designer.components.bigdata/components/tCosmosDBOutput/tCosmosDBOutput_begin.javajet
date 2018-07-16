@@ -148,12 +148,13 @@
 	 		    String mongoDbDriver = "com.mongodb.MongoClient";
 
 	 		    %>
+				<%@ include file="../templates/CosmosDB/ApplicationName.javajet"%>
 	 		    // Empty client options
-                com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().build();
+                com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().applicationName(applicationName_<%=cid %>).build();
                 <%
                 if (useSSL) {
                     %>
-                    clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder()
+                    clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().applicationName(applicationName_<%=cid %>)
                     .socketFactory(javax.net.ssl.SSLSocketFactory.getDefault())
                     .build();
                     <%

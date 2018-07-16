@@ -4,7 +4,8 @@
   <service>
     <provide interface="org.talend.hadoop.distribution.component.HadoopComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.HiveOnSparkComponent"/>
-    <provide interface="org.talend.hadoop.distribution.component.SparkBatchComponent"/> 
+    <provide interface="org.talend.hadoop.distribution.component.SparkBatchComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.SparkStreamingComponent"/> 
   </service>
   
 </component>

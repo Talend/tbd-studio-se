@@ -1,0 +1,2 @@
+<%@ jet %>
+final String applicationName_<%=cid %> = "Talend";
