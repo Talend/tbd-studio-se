@@ -66,9 +66,7 @@ import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 @SuppressWarnings("nls")
 public class EMR5150Distribution extends AbstractDistribution implements
  HBaseComponent, HDFSComponent, MRComponent,
-        PigComponent, HCatalogComponent, HiveComponent, SqoopComponent, IAmazonEMRDistribution// ,
-                                                                                              // HiveOnSparkComponent,SparkBatchComponent,
-                                                                                              // SparkStreamingComponent
+        PigComponent, HCatalogComponent, HiveComponent, SqoopComponent, IAmazonEMRDistribution
 {
 
     public static final String VERSION = "EMR_5_15_0"; //$NON-NLS-1$
@@ -119,7 +117,6 @@ public class EMR5150Distribution extends AbstractDistribution implements
 				EMR5150HCatalogModuleGroup.getModuleGroups());
 		result.put(ComponentType.HDFS, EMR5150HDFSModuleGroup.getModuleGroups());
 		result.put(ComponentType.HIVE, EMR5150HiveModuleGroup.getModuleGroups());
-        // result.put(ComponentType.HIVEONSPARK, EMR5150HiveOnSparkModuleGroup.getModuleGroups());
 		result.put(ComponentType.MAPREDUCE,
 				EMR5150MapReduceModuleGroup.getModuleGroups());
 		result.put(ComponentType.PIG, EMR5150PigModuleGroup.getModuleGroups());
@@ -129,9 +126,6 @@ public class EMR5150Distribution extends AbstractDistribution implements
 				EMR5150SqoopModuleGroup.getModuleGroups());
 		result.put(ComponentType.HBASE,
 				EMR5150HBaseModuleGroup.getModuleGroups());
-        // result.put(ComponentType.SPARKBATCH, EMR5150SparkBatchModuleGroup.getModuleGroups());
-        // result.put(ComponentType.SPARKSTREAMING, EMR5150SparkStreamingModuleGroup.getModuleGroups());
-
 		return result;
 	}
 
@@ -431,31 +425,6 @@ public class EMR5150Distribution extends AbstractDistribution implements
 		return true;
 	}
 
-    // @Override
-    // public boolean doSupportSparkStandaloneMode() {
-    // return false;
-    // }
-
-    // @Override
-    // public boolean doSupportSparkYarnClientMode() {
-    // return true;
-    // }
-
-    // @Override
-    // public boolean doSupportDynamicMemoryAllocation() {
-    // return true;
-    // }
-
-    // @Override
-    // public boolean doSupportCheckpointing() {
-    // return true;
-    // }
-
-    // @Override
-    // public boolean doSupportBackpressure() {
-    // return true;
-    // }
-    
     @Override
     public boolean doSupportHDFSEncryption() {
         return true;
