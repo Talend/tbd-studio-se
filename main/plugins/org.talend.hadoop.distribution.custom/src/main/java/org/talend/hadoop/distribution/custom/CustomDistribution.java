@@ -241,6 +241,6 @@ public class CustomDistribution extends AbstractDistribution implements HDFSComp
     
     @Override
     public boolean doSupportMaprTicketV52API() {
-        return true;
+        return Boolean.parseBoolean(System.getProperty("com.talend.studio.distribution.custom.mapr.api.usemapr52api", "false"));
     }
 }
