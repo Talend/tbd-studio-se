@@ -350,7 +350,7 @@ public boolean isQuboleDistribution() {
         return true;
     }
     
-    public String getHadoopFullVersionStr() {
-    	return EHadoopFullVersionStr.HADOOP_2_6.toString();
+    public String getWinUtilsName() {
+    	return EWinUtilsName.WINUTILS_HADOOP_2_6.toString();
     };
 }

@@ -56,9 +56,9 @@ public interface HadoopComponent {
     public EHadoopVersion getHadoopVersion();
 
     /**
-     * @return the full version of the distribution.
+     * @return the winutils name.
      */
-    public String getHadoopFullVersionStr();
+    public String getWinUtilsName();
 
     /**
      * @return true if the distribution uses @link{EHadoopVersion} HADOOP_2.

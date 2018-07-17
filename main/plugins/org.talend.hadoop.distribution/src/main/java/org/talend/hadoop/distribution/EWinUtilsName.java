@@ -16,21 +16,21 @@ package org.talend.hadoop.distribution;
 /**
  * Enumeration that describes the exact Hadoop version.
  */
-public enum EHadoopFullVersionStr {
-	HADOOP_2_6("hadoop-2.6.0"),
-	HADOOP_2_7("hadoop-2.7.0");
+public enum EWinUtilsName {
+	WINUTILS_HADOOP_2_6("winutils-hadoop-2.6.0.exe"),
+	WINUTILS_HADOOP_2_7("winutils-hadoop-2.7.0.exe");
 	
-	private String fullVersion;
+	private String winUtilsName;
 	
-	EHadoopFullVersionStr(String fullVersion) {
-		this.fullVersion = fullVersion;
+	EWinUtilsName(String winUtilsName) {
+		this.winUtilsName = winUtilsName;
 	}
 	
-	public String getFullVersionStr() {
-		return fullVersion;
+	public String getWinUtilsName() {
+		return winUtilsName;
 	}
 	
 	public String toString() {
-		return fullVersion;
+		return winUtilsName;
 	}
 }
