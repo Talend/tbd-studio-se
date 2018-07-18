@@ -2,6 +2,14 @@
 <?eclipse version="3.0"?>
 <plugin>
    <extension point="org.talend.core.runtime.librariesNeeded">
+
+        <!-- NAME/ID/URI of winutils MUST equals to value returned by Distribution.getWinUtilsName() -->
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.mapr.6.0.0"
+            id="winutils-hadoop-2.7.0.exe"
+            name="winutils-hadoop-2.7.0.exe"
+            mvn_uri="mvn:org.talend.libraries/winutils-hadoop-2.7.0/6.0.0/exe"/>
+
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.mapr.6.0.0"
             id="mapr-streams-6.0.0-mapr.jar"
@@ -920,6 +928,7 @@
            description="The lastest Spark libraries of MapR 6.0.0 spark 2"
            id="SPARK-LIB-MAPR600"
            name="SPARK-LIB-MAPR600">
+            <library id="winutils-hadoop-2.7.0.exe" />
 			<library id="antlr4-runtime-4.5.3.jar"/>
 			<library id="antlr-2.7.7.jar"/>
 			<library id="antlr-runtime-3.4.jar"/>

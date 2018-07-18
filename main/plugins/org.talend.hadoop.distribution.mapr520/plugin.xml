@@ -3,6 +3,13 @@
 <plugin>
     <extension point="org.talend.core.runtime.librariesNeeded">
 
+        <!-- NAME/ID/URI of winutils MUST equals to value returned by Distribution.getWinUtilsName() -->
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.mapr.6.0.0"
+            id="winutils-hadoop-2.7.0.exe"
+            name="winutils-hadoop-2.7.0.exe"
+            mvn_uri="mvn:org.talend.libraries/winutils-hadoop-2.7.0/6.0.0/exe"/>
+
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.mapr.5.2.0"
             id="ojai-1.1.jar"
@@ -620,6 +627,7 @@
            description="The lastest Spark libraries of MapR 5.2.0"
            id="SPARK-LIB-MAPR520"
            name="SPARK-LIB-MAPR520">
+            <library id="winutils-hadoop-2.7.0.exe" />
             <library id="talend-spark-assembly-1.6.1-mapr-1608-hadoop2.7.0-mapr-1607.jar" />
             <library id="jsr305-3.0.0.jar" />
             <library id="javax.ws.rs-api-2.0.1.jar" />
