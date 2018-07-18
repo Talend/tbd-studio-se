@@ -303,9 +303,14 @@
 				String jarName = entry.getValue();
 				String crc = entry.getKey();
 				String libStringFinder = "../lib/" + jarName;
+				String libStringFinder2 = "./" + jarName; // for the job jar itself.
 				if (line.contains(libStringFinder)) {
 					line = line.replace(libStringFinder, "../../../cache/lib/" + crc + "/" + jarName);
-				} else if (line.contains(":$ROOT_PATH/" + jarName + ":")) {
+				} else if (line.toLowerCase().contains(libStringFinder2)) {
+		            line = line.toLowerCase().replace(libStringFinder2, "../../../cache/lib/" + crc + "/" + jarName);
+		        } else if (line.toLowerCase().equals(jarName)) {
+		            line = "../../../cache/lib/" + crc + "/" + jarName;
+		        } else if (line.contains(":$ROOT_PATH/" + jarName + ":")) {
 					line = line.replace(":$ROOT_PATH/" + jarName + ":", ":$ROOT_PATH/../../../cache/lib/" + crc + "/" + jarName + ":");
 				} else if (line.contains(";" + jarName + ";")) {
 					line = line.replace(";" + jarName + ";", ";../../../cache/lib/" + crc + "/" + jarName + ";");
