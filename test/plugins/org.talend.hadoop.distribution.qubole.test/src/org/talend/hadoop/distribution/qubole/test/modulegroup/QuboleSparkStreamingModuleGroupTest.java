@@ -13,26 +13,30 @@
 package org.talend.hadoop.distribution.qubole.test.modulegroup;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import org.junit.Test;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.qubole.QuboleConstant;
-import org.talend.hadoop.distribution.qubole.modulegroup.QuboleHiveModuleGroup;
+import org.talend.hadoop.distribution.qubole.modulegroup.QuboleSparkBatchModuleGroup;
 
-public class QuboleHiveModuleGroupTest {
+public class QuboleSparkStreamingModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
-        Set<DistributionModuleGroup> moduleGroups = QuboleHiveModuleGroup.getModuleGroups();
-        assertEquals(1, moduleGroups.size());
-        
-        moduleGroups.contains(QuboleConstant.BIGDATALAUNCHER_MODULE_GROUP);
-        
+        Map<String, String> results = new HashMap<>();
+        results.put(QuboleConstant.SPARK_STREAMING_MODULE_GROUP.getModuleName(), null);
+        results.put(QuboleConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), null);
+        results.put(QuboleConstant.S3_MODULE_GROUP.getModuleName(), null);
+
+        Set<DistributionModuleGroup> moduleGroups = QuboleSparkBatchModuleGroup.getModuleGroups();
+        assertEquals(3, moduleGroups.size());
+
         for (DistributionModuleGroup group : moduleGroups) {
-            assertNull(group.getRequiredIf());
+            assertEquals(results.get(group.getModuleName()), group.getRequiredIf() == null ? null : group.getRequiredIf().getConditionString());
         }
     }
 }

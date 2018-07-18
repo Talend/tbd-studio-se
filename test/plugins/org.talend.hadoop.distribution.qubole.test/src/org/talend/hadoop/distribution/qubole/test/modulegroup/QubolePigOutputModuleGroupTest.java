@@ -32,11 +32,9 @@ public class QubolePigOutputModuleGroupTest {
         results.put(QuboleConstant.PIG_AVRO_MODULE_GROUP.getModuleName(), "(STORE=='AVROSTORAGE')");
         results.put(QuboleConstant.PIG_SEQUENCEFILE_MODULE_GROUP.getModuleName(), "(STORE=='SEQUENCEFILESTORAGE')");
         results.put(QuboleConstant.PIG_RCFILE_MODULE_GROUP.getModuleName(), "(STORE=='RCFILEPIGSTORAGE')");
-        results.put(QuboleConstant.PIG_HCATALOG_MODULE_GROUP.getModuleName(), "(STORE=='HCATSTORER')");
-        results.put(QuboleConstant.PIG_HBASE_MODULE_GROUP.getModuleName(), "(STORE=='HBASESTORAGE')");
         
         Set<DistributionModuleGroup> moduleGroups = QubolePigOutputModuleGroup.getModuleGroups();
-        assertEquals(6, moduleGroups.size());
+        assertEquals(4, moduleGroups.size());
 
         for (DistributionModuleGroup group : moduleGroups) {
             assertEquals(results.get(group.getModuleName()), group.getRequiredIf().getConditionString());

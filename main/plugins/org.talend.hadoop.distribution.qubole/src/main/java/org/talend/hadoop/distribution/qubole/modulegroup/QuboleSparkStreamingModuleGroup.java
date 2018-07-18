@@ -10,6 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
+
 package org.talend.hadoop.distribution.qubole.modulegroup;
 
 import java.util.HashSet;
@@ -18,11 +19,13 @@ import java.util.Set;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.qubole.QuboleConstant;
 
-public class QuboleHiveModuleGroup {
+public class QuboleSparkStreamingModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> moduleGroups = new HashSet<>();
+        moduleGroups.add(new DistributionModuleGroup(QuboleConstant.SPARK_STREAMING_MODULE_GROUP.getModuleName()));
         moduleGroups.add(new DistributionModuleGroup(QuboleConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName()));
+        moduleGroups.add(new DistributionModuleGroup(QuboleConstant.S3_MODULE_GROUP.getModuleName()));
         return moduleGroups;
     }
 }

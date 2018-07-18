@@ -44,14 +44,13 @@
             name="avro-mapred-1.7.7-hadoop2.jar"
             mvn_uri="mvn:org.talend.libraries/avro-mapred-1.7.7-hadoop2/6.0.0"/>
 
-		<!-- jars to change -->
+		<!-- Jars for DI Hive/Pig -->
 		<libraryNeeded
 			context="plugin:org.talend.hadoop.distribution.qubole"
 			id="parquet-pig-bundle-1.5.0-cdh5.12.1.jar"
 			name="parquet-pig-bundle-1.5.0-cdh5.12.1.jar"
 			mvn_uri="mvn:com.twitter/parquet-pig-bundle/1.5.0-cdh5.12.1">
 		</libraryNeeded>
-
 		<libraryNeeded
 			context="plugin:org.talend.hadoop.distribution.qubole"
 			id="avro-1.7.6.jar"
@@ -94,7 +93,6 @@
             name="hive-serde-1.1.0.jar"
             mvn_uri="mvn:org.apache.hive/hive-serde/1.1.0">
         </libraryNeeded>
-
 		<libraryNeeded
 			context="plugin:org.talend.hadoop.distribution.qubole"
 			id="aws-java-sdk-s3-1.11.160.jar"
@@ -144,7 +142,7 @@
 			mvn_uri="mvn:joda-time/joda-time/2.8.1">
 		</libraryNeeded>
             
-        <!-- Talend jars for Spark 2 -->
+        <!-- Jars for Spark 2 -->
 		<libraryNeeded
 			context="plugin:org.talend.hadoop.distribution.qubole"
 			id="commons-codec-1.10.jar"
@@ -169,7 +167,6 @@
 			name="commons-logging-1.2.jar"
 			mvn_uri="mvn:commons-logging/commons-logging/1.2">
 		</libraryNeeded>
-        
 		<libraryNeeded
 			context="plugin:org.talend.hadoop.distribution.qubole"
 			id="hadoop-common-2.7.3.jar"
@@ -206,7 +203,6 @@
 			name="slf4j-api-1.7.16.jar"
 			mvn_uri="mvn:org.slf4j/slf4j-api/1.7.16">
 		</libraryNeeded>
-
 		<libraryNeeded
 			context="plugin:org.talend.hadoop.distribution.qubole"
 			id="spark-catalyst_2.11-2.2.0.jar"
@@ -249,7 +245,6 @@
 			name="spark-sql_2.11-2.2.0.jar"
 			mvn_uri="mvn:org.apache.spark/spark-sql_2.11/2.2.0">
 		</libraryNeeded>
-        
 		<libraryNeeded
 			context="plugin:org.talend.hadoop.distribution.qubole"
 			id="wsdl4j-1.6.3.jar"
@@ -287,6 +282,7 @@
 			name="jaxen-1.1.6.jar"
 			mvn_uri="mvn:jaxen/jaxen/1.1.6">
 		</libraryNeeded>
+
 
         <!-- Big data launcher group -->
         <libraryNeededGroup description="qubole big data launcher and its dependencies" id="BIGDATA-LAUNCHER-LIB-QUBOLE" name="BIGDATA-LAUNCHER-LIB-QUBOLE ">
@@ -351,8 +347,8 @@
             <library id="elephant-bird-hadoop-compat-4.9.jar"/>
             <library id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"/>
         </libraryNeededGroup>
-        
-        <!-- Spark 2.2 group -->
+
+        <!-- Spark Batch 2.2 group -->
         <libraryNeededGroup
            description="Spark 2.2 libraries for Qubole" id="SPARK-LIB-QUBOLE" name="SPARK-LIB-QUBOLE">
 			 <library id="avro-1.7.6.jar"/>
@@ -379,11 +375,10 @@
              <library id="spark-network-common_2.11-2.2.0.jar"/>
              <library id="jaxen-1.1.6.jar"/>
         </libraryNeededGroup>
-
-        <libraryNeededGroup description="Hive libraries" id="HIVE-LIB-QUBOLE" name="HIVE-LIB-QUBOLE">
-        </libraryNeededGroup>
-
-        <libraryNeededGroup description="Pig libraries" id="PIG-LIB-QUBOLE" name="PIG-LIB-QUBOLE">
+        
+        <!-- Spark Streaming 2.2 group -->
+        <libraryNeededGroup
+           description="Spark Streaming 2.2 libraries for Qubole" id="SPARK-STREAMING-LIB-QUBOLE" name="SPARK-STREAMING-LIB-QUBOLE">
         </libraryNeededGroup>
 
     </extension>

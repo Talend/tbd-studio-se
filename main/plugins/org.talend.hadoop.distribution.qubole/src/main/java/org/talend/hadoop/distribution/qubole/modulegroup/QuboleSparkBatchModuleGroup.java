@@ -10,6 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
+
 package org.talend.hadoop.distribution.qubole.modulegroup;
 
 import java.util.HashSet;
