@@ -21,6 +21,7 @@ import java.util.Set;
 import org.talend.hadoop.distribution.AbstractMapRDistribution;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
+import org.talend.hadoop.distribution.EWinUtilsName;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
@@ -86,6 +87,10 @@ public class MapR520Distribution extends AbstractMapRDistribution implements HDF
     private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*,$HADOOP_YARN_HOME/share/hadoop/tools/lib/*"; //$NON-NLS-1$
 
     public static final String MAPR_STREAMS_JAR_PATH = "/opt/mapr/lib/mapr-streams-5.2.0-mapr.jar"; //$NON-NLS-1$
+
+    public String getWinUtilsName() {
+    	return EWinUtilsName.WINUTILS_HADOOP_2_7.toString();
+    };
 
     private static Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
 
