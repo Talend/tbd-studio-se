@@ -461,14 +461,14 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="parquet-format-2.2.0-rc1.jar"
             name="parquet-format-2.2.0-rc1.jar"
-            mvn_uri="mvn:org.apache.parquet/parquet-format/2.2.0-rc1">
+            mvn_uri="mvn:com.twitter/parquet-format/2.2.0-rc1">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="parquet-encoding-1.6.0.jar"
             name="parquet-encoding-1.6.0.jar"
-            mvn_uri="mvn:org.apache.parquet/parquet-encoding/1.6.0">
+            mvn_uri="mvn:com.twitter/parquet-encoding/1.6.0">
         </libraryNeeded>
         
         <libraryNeeded
