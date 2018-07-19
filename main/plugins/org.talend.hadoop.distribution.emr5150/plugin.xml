@@ -1747,6 +1747,114 @@
             name="derby-10.12.1.1.jar"
             mvn_uri="mvn:org.apache.derby/derby/10.12.1.1"/>
             
+		<libraryNeeded 
+			context="plugin:org.talend.hadoop.distribution.emr5150" 
+			id="fastutil-6.5.7.jar" 
+			name="fastutil-6.5.7.jar"
+			mvn_uri="mvn:org.talend.libraries/fastutil-6.5.7/6.0.0"/>
+		
+		<libraryNeeded 
+			context="plugin:org.talend.hadoop.distribution.emr5150" 
+			id="zstd-jni-1.3.2-2.jar" 
+			name="zstd-jni-1.3.2-2.jar"
+			mvn_uri="mvn:com.github.luben/zstd-jni/1.3.2-2"/>
+		
+		<libraryNeeded 
+			context="plugin:org.talend.hadoop.distribution.emr5150" 
+			id="serpent-1.12.jar" 
+			name="serpent-1.12.jar"
+			mvn_uri="mvn:net.razorvine/serpent/1.12"/>
+		
+		<libraryNeeded 
+			context="plugin:org.talend.hadoop.distribution.emr5150" 
+			id="jackson-core-asl-1.9.13.jar" 
+			name="jackson-core-asl-1.9.13.jar"
+			mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.13/6.0.0"/>
+		
+		<libraryNeeded 
+			context="plugin:org.talend.hadoop.distribution.emr5150" 
+			id="jackson-mapper-asl-1.9.13.jar" 
+			name="jackson-mapper-asl-1.9.13.jar"
+			mvn_uri="mvn:org.talend.libraries/jackson-mapper-asl-1.9.13/6.0.0"/>
+		
+		<libraryNeeded 
+			context="plugin:org.talend.hadoop.distribution.emr5150" 
+			id="velocity-1.7.jar" 
+			name="velocity-1.7.jar"
+			mvn_uri="mvn:org.apache.velocity/velocity/1.7"/>
+		
+		<libraryNeeded 
+			context="plugin:org.talend.hadoop.distribution.emr5150" 
+			id="commons-crypto-1.0.0.jar" 
+			name="commons-crypto-1.0.0.jar"
+			mvn_uri="mvn:org.talend.libraries/commons-crypto-1.0.0/6.0.0"/>
+		
+		<libraryNeeded 
+			context="plugin:org.talend.hadoop.distribution.emr5150" 
+			id="jna-4.2.2.jar" 
+			name="jna-4.2.2.jar"
+			mvn_uri="mvn:net.java.dev.jna/jna/4.2.2"/>
+		
+		<libraryNeeded 
+			context="plugin:org.talend.hadoop.distribution.emr5150" 
+			id="jsch-0.1.51.jar" 
+			name="jsch-0.1.51.jar"
+			mvn_uri="mvn:org.talend.libraries/jsch-0.1.51/6.0.0"/>
+		
+		<libraryNeeded 
+			context="plugin:org.talend.hadoop.distribution.emr5150" 
+			id="jetty-sslengine-6.1.26.jar" 
+			name="jetty-sslengine-6.1.26.jar"
+			mvn_uri="mvn:org.mortbay.jetty/jetty-sslengine/6.1.26"/>
+		
+		<libraryNeeded 
+			context="plugin:org.talend.hadoop.distribution.emr5150" 
+			id="hadoop-mapreduce-client-app-2.8.1.jar" 
+			name="hadoop-mapreduce-client-app-2.8.1.jar"
+			mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-app/2.8.1"/>
+		
+		<libraryNeeded 
+			context="plugin:org.talend.hadoop.distribution.emr5150" 
+			id="spark-kvstore_2.11-2.3.0.jar" 
+			name="spark-kvstore_2.11-2.3.0.jar"
+			mvn_uri="mvn:org.apache.spark/spark-kvstore_2.11/2.3.0"/>
+		
+		<libraryNeeded 
+			context="plugin:org.talend.hadoop.distribution.emr5150" 
+			id="arrow-vector-0.8.0.jar" 
+			name="arrow-vector-0.8.0.jar"
+			mvn_uri="mvn:org.apache.arrow/arrow-vector/0.8.0"/>
+		
+		<libraryNeeded 
+			context="plugin:org.talend.hadoop.distribution.emr5150" 
+			id="arrow-memory-0.8.0.jar" 
+			name="arrow-memory-0.8.0.jar"
+			mvn_uri="mvn:org.apache.arrow/arrow-memory/0.8.0"/>
+		
+		<libraryNeeded 
+			context="plugin:org.talend.hadoop.distribution.emr5150" 
+			id="arrow-format-0.8.0.jar" 
+			name="arrow-format-0.8.0.jar"
+			mvn_uri="mvn:org.apache.arrow/arrow-format/0.8.0"/>
+		
+		<libraryNeeded 
+			context="plugin:org.talend.hadoop.distribution.emr5150" 
+			id="flatbuffers-1.2.0-3f79e055.jar" 
+			name="flatbuffers-1.2.0-3f79e055.jar"
+			mvn_uri="mvn:com.vlkan/flatbuffers/1.2.0-3f79e055"/>
+		
+		<libraryNeeded 
+			context="plugin:org.talend.hadoop.distribution.emr5150" 
+			id="orc-core-1.4.1.jar" 
+			name="orc-core-1.4.1.jar"
+			mvn_uri="mvn:org.apache.orc/orc-core/1.4.1"/>
+		
+		<libraryNeeded 
+			context="plugin:org.talend.hadoop.distribution.emr5150" 
+			id="orc-mapreduce-1.4.1.jar" 
+			name="orc-mapreduce-1.4.1.jar"
+			mvn_uri="mvn:org.apache.orc/orc-mapreduce/1.4.1"/>
+            
         <!-- Kinesis libraries -->
         
         <libraryNeeded
@@ -2112,12 +2220,10 @@
                 description="The latest Spark libraries for EMR 5.15.0"
                 id="SPARK2-LIB-EMR_5_15_0_LATEST"
                 name="SPARK2-LIB-EMR_5_15_0_LATEST">
-            <library id="aws-java-sdk-s3-1.11.333.jar"/>
-            <library id="aws-java-sdk-core-1.11.333.jar"/>
-            <library id="activation-1.1.1.jar"/>
+			<library id="activation-1.1.1.jar"/>
 			<library id="antlr-2.7.7.jar"/>
-			<library id="antlr4-runtime-4.7.1.jar"/>
 			<library id="antlr-runtime-3.4.jar"/>
+			<library id="antlr4-runtime-4.7.1.jar"/>
 			<library id="aopalliance-1.0.jar"/>
 			<library id="aopalliance-repackaged-2.4.0.jar"/>
 			<library id="apache-log4j-extras-1.2.17.jar"/>
@@ -2126,11 +2232,16 @@
 			<library id="api-asn1-api-1.0.0-M20.jar"/>
 			<library id="api-util-1.0.0-M20.jar"/>
 			<library id="arpack_combined_all-0.1.jar"/>
+			<library id="arrow-format-0.8.0.jar"/>
+			<library id="arrow-memory-0.8.0.jar"/>
+			<library id="arrow-vector-0.8.0.jar"/>
 			<library id="avro-1.7.7.jar"/>
 			<library id="avro-ipc-1.7.7.jar"/>
 			<library id="avro-mapred-1.7.7-hadoop2.jar"/>
+			<library id="aws-java-sdk-core-1.11.333.jar"/>
+			<library id="aws-java-sdk-s3-1.11.333.jar"/>
 			<library id="base64-2.3.8.jar"/>
-	        <library id="bcprov-jdk15on-1.51.jar"/>
+			<library id="bcprov-jdk15on-1.51.jar"/>
 			<library id="bonecp-0.8.0.RELEASE.jar"/>
 			<library id="breeze-macros_2.11-0.13.1.jar"/>
 			<library id="breeze_2.11-0.13.2.jar"/>
@@ -2147,6 +2258,7 @@
 			<library id="commons-compiler-3.0.8.jar"/>
 			<library id="commons-compress-1.4.1.jar"/>
 			<library id="commons-configuration-1.6.jar"/>
+			<library id="commons-crypto-1.0.0.jar"/>
 			<library id="commons-dbcp-1.4.jar"/>
 			<library id="commons-digester-1.8.jar"/>
 			<library id="commons-httpclient-3.1.jar"/>
@@ -2167,38 +2279,43 @@
 			<library id="datanucleus-rdbms-3.2.9.jar"/>
 			<library id="derby-10.12.1.1.jar"/>
 			<library id="eigenbase-properties-1.1.5.jar"/>
+			<library id="fastutil-6.5.7.jar"/>
+			<library id="flatbuffers-1.2.0-3f79e055.jar"/>
 			<library id="gson-2.2.4.jar"/>
 			<library id="guava-14.0.1.jar"/>
 			<library id="guice-3.0.jar"/>
 			<library id="guice-servlet-3.0.jar"/>
 			<library id="hadoop-annotations-2.8.3-amzn-1.jar"/>
 			<library id="hadoop-auth-2.8.3-amzn-1.jar"/>
-            <library id="hadoop-aws-2.8.3-amzn-1.jar"/>
-            <library id="hadoop-client-2.8.3-amzn-1.jar"/>
-            <library id="hadoop-common-2.8.3-amzn-1.jar"/>
-            <library id="hadoop-hdfs-2.8.3-amzn-1.jar"/>
-            <library id="hadoop-mapreduce-client-common-2.8.3-amzn-1.jar"/>
-            <library id="hadoop-mapreduce-client-core-2.8.3-amzn-1.jar"/>
-            <library id="hadoop-mapreduce-client-jobclient-2.8.3-amzn-1.jar"/>
-            <library id="hadoop-mapreduce-client-shuffle-2.8.3-amzn-1.jar"/>
-            <library id="hadoop-yarn-api-2.8.3-amzn-1.jar"/>
-            <library id="hadoop-yarn-client-2.8.3-amzn-1.jar"/>
-            <library id="hadoop-yarn-common-2.8.3-amzn-1.jar"/>
-            <library id="hadoop-yarn-server-common-2.8.3-amzn-1.jar"/>
-            <library id="hadoop-yarn-server-web-proxy-2.8.3-amzn-1.jar"/>
-            <library id="hk2-api-2.4.0.jar"/>
+			<library id="hadoop-aws-2.8.3-amzn-1.jar"/>
+			<library id="hadoop-client-2.8.3-amzn-1.jar"/>
+			<library id="hadoop-common-2.8.3-amzn-1.jar"/>
+			<library id="hadoop-hdfs-2.8.3-amzn-1.jar"/>
+			<library id="hadoop-mapreduce-client-app-2.8.1.jar"/>
+			<library id="hadoop-mapreduce-client-common-2.8.3-amzn-1.jar"/>
+			<library id="hadoop-mapreduce-client-core-2.8.3-amzn-1.jar"/>
+			<library id="hadoop-mapreduce-client-jobclient-2.8.3-amzn-1.jar"/>
+			<library id="hadoop-mapreduce-client-shuffle-2.8.3-amzn-1.jar"/>
+			<library id="hadoop-yarn-api-2.8.3-amzn-1.jar"/>
+			<library id="hadoop-yarn-client-2.8.3-amzn-1.jar"/>
+			<library id="hadoop-yarn-common-2.8.3-amzn-1.jar"/>
+			<library id="hadoop-yarn-server-common-2.8.3-amzn-1.jar"/>
+			<library id="hadoop-yarn-server-web-proxy-2.8.3-amzn-1.jar"/>
+			<library id="hk2-api-2.4.0.jar"/>
 			<library id="hk2-locator-2.4.0.jar"/>
 			<library id="hk2-utils-2.4.0.jar"/>
 			<library id="htrace-core4-4.0.1-incubating.jar"/>
-            <library id="httpcore-4.4.9.jar"/>
-            <library id="httpclient-4.5.5.jar"/>
+			<library id="httpclient-4.5.5.jar"/>
+			<library id="httpcore-4.4.9.jar"/>
 			<library id="ivy-2.4.0.jar"/>
 			<library id="jackson-annotations-2.6.7.jar"/>
 			<library id="jackson-core-2.6.7.jar"/>
+			<library id="jackson-core-asl-1.9.13.jar"/>
 			<library id="jackson-core-asl-1.9.14-TALEND.jar"/>
 			<library id="jackson-databind-2.6.7.1.jar"/>
 			<library id="jackson-dataformat-cbor-2.6.7"/>
 			<library id="jackson-jaxrs-1.9.13.jar"/>
+			<library id="jackson-mapper-asl-1.9.13.jar"/>
 			<library id="jackson-mapper-asl-1.9.14-TALEND.jar"/>
 			<library id="jackson-module-paranamer-2.7.9.jar"/>
 			<library id="jackson-module-scala_2.11-2.6.7.1.jar"/>
@@ -2225,11 +2342,14 @@
 			<library id="jersey-server-2.22.2.jar"/>
 			<library id="jets3t-0.9.4.jar"/>
 			<library id="jetty-6.1.26-emr.jar"/>
+			<library id="jetty-sslengine-6.1.26.jar"/>
 			<library id="jetty-util-6.1.26-emr.jar"/>
 			<library id="jline-2.11.jar"/>
+			<library id="jna-4.2.2.jar"/>
 			<library id="joda-time-2.9.9.jar"/>
 			<library id="jodd-core-3.5.2.jar"/>
 			<library id="jpam-1.1.jar"/>
+			<library id="jsch-0.1.51.jar"/>
 			<library id="json4s-ast_2.11-3.2.11.jar"/>
 			<library id="json4s-core_2.11-3.2.11.jar"/>
 			<library id="json4s-jackson_2.11-3.2.11.jar"/>
@@ -2254,6 +2374,8 @@
 			<library id="netty-all-4.1.17.Final.jar"/>
 			<library id="objenesis-2.1.jar"/>
 			<library id="opencsv-2.3.jar"/>
+			<library id="orc-core-1.4.1.jar"/>
+			<library id="orc-mapreduce-1.4.1.jar"/>
 			<library id="oro-2.0.8.jar"/>
 			<library id="osgi-resource-locator-1.0.1.jar"/>
 			<library id="paranamer-2.8.jar"/>
@@ -2276,6 +2398,7 @@
 			<library id="scala-reflect-2.11.8.jar"/>
 			<library id="scala-xml_2.11-1.0.2.jar"/>
 			<library id="scalap-2.11.8.jar"/>
+			<library id="serpent-1.12.jar"/>
 			<library id="slf4j-api-1.7.16.jar"/>
 			<library id="slf4j-log4j12-1.7.16.jar"/>
 			<library id="snappy-0.2.jar"/>
@@ -2285,6 +2408,7 @@
 			<library id="spark-graphx_2.11-2.3.0.jar"/>
 			<library id="spark-hive-thriftserver_2.11-2.3.0.jar"/>
 			<library id="spark-hive_2.11-2.3.0.jar"/>
+			<library id="spark-kvstore_2.11-2.3.0.jar"/>
 			<library id="spark-launcher_2.11-2.3.0.jar"/>
 			<library id="spark-mllib-local_2.11-2.3.0.jar"/>
 			<library id="spark-mllib_2.11-2.3.0.jar"/>
@@ -2306,11 +2430,13 @@
 			<library id="super-csv-2.2.0.jar"/>
 			<library id="univocity-parsers-2.5.9.jar"/>
 			<library id="validation-api-1.1.0.Final.jar"/>
+			<library id="velocity-1.7.jar"/>
 			<library id="xbean-asm5-shaded-4.4.jar"/>
 			<library id="xercesImpl-2.9.1.jar"/>
 			<library id="xmlenc-0.52.jar"/>
 			<library id="xz-1.0.jar"/>
 			<library id="zookeeper-3.4.6.jar"/>
+			<library id="zstd-jni-1.3.2-2.jar"/>
 		</libraryNeededGroup>
 		
 		<!-- Spark DynamoDB group MRREQUIRED -->
