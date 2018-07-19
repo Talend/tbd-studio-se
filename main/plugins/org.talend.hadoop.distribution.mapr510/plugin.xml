@@ -8,7 +8,7 @@
             context="plugin:org.talend.hadoop.distribution.mapr.6.0.0"
             id="winutils-hadoop-2.7.0.exe"
             name="winutils-hadoop-2.7.0.exe"
-            mvn_uri="mvn:org.talend.libraries/winutils-hadoop-2.7.0/6.0.0/exe"/>
+            mvn_uri="mvn:org.talend.libraries/winutils-hadoop-2.7.0/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
