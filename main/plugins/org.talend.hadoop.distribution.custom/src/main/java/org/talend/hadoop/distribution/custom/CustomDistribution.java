@@ -25,6 +25,7 @@ import org.talend.hadoop.distribution.component.HBaseComponent;
 import org.talend.hadoop.distribution.component.HCatalogComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
+import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.MapRDBComponent;
@@ -36,7 +37,7 @@ import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.constants.custom.ICustomDistribution;
 
 public class CustomDistribution extends AbstractDistribution implements HDFSComponent, MRComponent, HBaseComponent,
-        SqoopComponent, PigComponent, HiveComponent, SparkBatchComponent, SparkStreamingComponent, ImpalaComponent,
+        SqoopComponent, PigComponent, HiveComponent, HiveOnSparkComponent, SparkBatchComponent, SparkStreamingComponent, ImpalaComponent,
         HCatalogComponent, MapRStreamsComponent, MapRDBComponent, ICustomDistribution {
 
     private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*"; //$NON-NLS-1$
@@ -231,5 +232,15 @@ public class CustomDistribution extends AbstractDistribution implements HDFSComp
     @Override
     public boolean canCreateMapRStream() {
         return true;
+    }
+    
+    @Override
+    public boolean doSupportMapRDB() {
+        return true;
+    }
+    
+    @Override
+    public boolean doSupportMaprTicketV52API() {
+        return Boolean.parseBoolean(System.getProperty("com.talend.studio.distribution.custom.mapr.api.usemapr52api", "false"));
     }
 }
