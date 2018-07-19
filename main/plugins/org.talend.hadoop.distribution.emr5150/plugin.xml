@@ -8,25 +8,25 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hadoop-common-2.8.3-amzn-1.jar"
             name="hadoop-common-2.8.3-amzn-1.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-common/2.8.3-amzn-1"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-common-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hadoop-hdfs-2.8.3-amzn-1.jar"
             name="hadoop-hdfs-2.8.3-amzn-1.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-hdfs/2.8.3-amzn-1"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-hdfs-2.8.3-amzn-1/6.0.0"/>
 
 		<libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hadoop-archives-2.8.3-amzn-1.jar"
             name="hadoop-archives-2.8.3-amzn-1.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-archives/2.8.3-amzn-1"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-archives-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hadoop-auth-2.8.3-amzn-1.jar"
             name="hadoop-auth-2.8.3-amzn-1.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-auth/2.8.3-amzn-1"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-auth-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
         	context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -38,7 +38,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hadoop-hdfs-client-2.8.3-amzn-1.jar"
             name="hadoop-hdfs-client-2.8.3-amzn-1.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-hdfs-client/2.8.3-amzn-1"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-hdfs-client-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -52,7 +52,7 @@
         	context="plugin:org.talend.hadoop.distribution.emr5150"
         	id="hadoop-azure-2.8.3-amzn-1.jar"
         	name="hadoop-azure-2.8.3-amzn-1.jar"
-        	mvn_uri="mvn:org.talend.libraries/hadoop-azure/2.8.3-amzn-1"/>
+        	mvn_uri="mvn:org.talend.libraries/hadoop-azure-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
         	context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -65,37 +65,37 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hadoop-mapreduce-client-common-2.8.3-amzn-1.jar"
             name="hadoop-mapreduce-client-common-2.8.3-amzn-1.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-common/2.8.3-amzn-1"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-common-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hadoop-mapreduce-client-core-2.8.3-amzn-1.jar"
             name="hadoop-mapreduce-client-core-2.8.3-amzn-1.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-core/2.8.3-amzn-1"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-core-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hadoop-mapreduce-client-jobclient-2.8.3-amzn-1.jar"
             name="hadoop-mapreduce-client-jobclient-2.8.3-amzn-1.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-jobclient/2.8.3-amzn-1"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-jobclient-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hadoop-yarn-api-2.8.3-amzn-1.jar"
             name="hadoop-yarn-api-2.8.3-amzn-1.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-api/2.8.3-amzn-1"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-api-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hadoop-yarn-client-2.8.3-amzn-1.jar"
             name="hadoop-yarn-client-2.8.3-amzn-1.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-client/2.8.3-amzn-1"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-client-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hadoop-yarn-common-2.8.3-amzn-1.jar"
             name="hadoop-yarn-common-2.8.3-amzn-1.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-common/2.8.3-amzn-1"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-common-2.8.3-amzn-1/6.0.0"/>
 
         <!-- HBase libraries -->
         <libraryNeeded
@@ -157,67 +157,67 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hive-exec-2.3.3-amzn-0.jar"
             name="hive-exec-2.3.3-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-exec/2.3.3-amzn-0"/>
+            mvn_uri="mvn:org.talend.libraries/hive-exec-2.3.3-amzn-0/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hive-common-2.3.3-amzn-0.jar"
             name="hive-common-2.3.3-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-common/2.3.3-amzn-0"/>
+            mvn_uri="mvn:org.talend.libraries/hive-common-2.3.3-amzn-0/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hive-serde-2.3.3-amzn-0.jar"
             name="hive-serde-2.3.3-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-serde/2.3.3-amzn-0"/>
+            mvn_uri="mvn:org.talend.libraries/hive-serde-2.3.3-amzn-0/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hive-metastore-2.3.3-amzn-0.jar"
             name="hive-metastore-2.3.3-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-metastore/2.3.3-amzn-0"/>
+            mvn_uri="mvn:org.talend.libraries/hive-metastore-2.3.3-amzn-0/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hive-jdbc-2.3.3-amzn-0.jar"
             name="hive-jdbc-2.3.3-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-jdbc/2.3.3-amzn-0"/>
+            mvn_uri="mvn:org.talend.libraries/hive-jdbc-2.3.3-amzn-0/6.0.0"/>
 
           <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hive-service-2.3.3-amzn-0.jar"
             name="hive-service-2.3.3-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-service/2.3.3-amzn-0"/>
+            mvn_uri="mvn:org.talend.libraries/hive-service-2.3.3-amzn-0/6.0.0"/>
 
           <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hive-service-rpc-2.3.3-amzn-0.jar"
             name="hive-service-rpc-2.3.3-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-service-rpc/2.3.3-amzn-0"/>
+            mvn_uri="mvn:org.talend.libraries/hive-service-rpc-2.3.3-amzn-0/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hive-hcatalog-core-2.3.3-amzn-0.jar"
             name="hive-hcatalog-core-2.3.3-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-core/2.3.3-amzn-0"/>
+            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-core-2.3.3-amzn-0/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hive-hcatalog-pig-adapter-2.3.3-amzn-0.jar"
             name="hive-hcatalog-pig-adapter-2.3.3-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-pig-adapter/2.3.3-amzn-0"/>
+            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-pig-adapter-2.3.3-amzn-0/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hive-hcatalog-server-extensions-2.3.3-amzn-0.jar"
             name="hive-hcatalog-server-extensions-2.3.3-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-server-extensions/2.3.3-amzn-0"/>
+            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-server-extensions-2.3.3-amzn-0/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hive-hbase-handler-2.3.3-amzn-0.jar"
             name="hive-hbase-handler-2.3.3-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-hbase-handler/2.3.3-amzn-0"/>
+            mvn_uri="mvn:org.talend.libraries/hive-hbase-handler-2.3.3-amzn-0/6.0.0"/>
             
         <!-- Spark2 Hive libraries -->
         <libraryNeeded
@@ -255,7 +255,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hadoop-lzo-0.4.19.jar"
             name="hadoop-lzo-0.4.19.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-lzo/0.4.19"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-lzo-0.4.19/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -273,7 +273,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="piggybank-emr5150.jar"
             name="piggybank-emr5150.jar"
-            mvn_uri="mvn:org.talend.libraries/piggybank/emr5150"/>
+            mvn_uri="mvn:org.talend.libraries/piggybank-emr5150/6.0.0"/>
 
         <libraryNeeded
 			context="plugin:org.talend.libraries.pig"
@@ -293,7 +293,7 @@
             context="plugin:org.talend.libraries.pig"
             id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
             name="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
-            mvn_uri="mvn:org.talend.libraries/elephant-bird-rcfile/4.9-patched-hive-1.x"
+            mvn_uri="mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0"
             uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-rcfile-4.9-patched-hive-1.x.jar"/>
 
 		<libraryNeeded
@@ -316,7 +316,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hadoop-aws-2.8.3-amzn-1.jar"
             name="hadoop-aws-2.8.3-amzn-1.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-aws/2.8.3-amzn-1"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-aws-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.libraries.s3"
@@ -475,14 +475,14 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="parquet-avro-1.8.2-shaded.jar"
             name="parquet-avro-1.8.2-shaded.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-avro/1.8.2-shaded">
+            mvn_uri="mvn:org.talend.libraries/parquet-avro-1.8.2-shaded/6.0.0">
         </libraryNeeded>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="parquet-avro-1.8.2-shaded.jar"
             name="parquet-avro-1.8.2-shaded.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-avro/1.8.2-shaded">
+            mvn_uri="mvn:org.talend.libraries/parquet-avro-1.8.2-shaded/6.0.0">
         </libraryNeeded>
 
         <libraryNeeded
@@ -607,7 +607,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="jackson-core-asl-1.9.14-TALEND.jar"
             name="jackson-core-asl-1.9.14-TALEND.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-core-asl/1.9.14-TALEND"/>
+            mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -625,12 +625,12 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hive-cli-2.3.3-amzn-0.jar"
             name="hive-cli-2.3.3-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-cli/2.3.3-amzn-0"/>
+            mvn_uri="mvn:org.talend.libraries/hive-cli-2.3.3-amzn-0/6.0.0"/>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hive-exec-2.3.3-amzn-0.jar"
             name="hive-exec-2.3.3-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-exec/2.3.3-amzn-0"/>
+            mvn_uri="mvn:org.talend.libraries/hive-exec-2.3.3-amzn-0/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -660,13 +660,13 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hadoop-annotations-2.8.3-amzn-1.jar"
             name="hadoop-annotations-2.8.3-amzn-1.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-annotations/2.8.3-amzn-1"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-annotations-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hadoop-ant-2.8.3-amzn-1.jar"
             name="hadoop-ant-2.8.3-amzn-1.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-ant/2.8.3-amzn-1"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-ant-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -761,7 +761,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hadoop-yarn-server-common-2.8.3-amzn-1.jar"
             name="hadoop-yarn-server-common-2.8.3-amzn-1.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-server-common/2.8.3-amzn-1"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-server-common-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -815,7 +815,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="jetty-6.1.26-emr.jar"
             name="jetty-6.1.26-emr.jar"
-            mvn_uri="mvn:org.talend.libraries/jetty/6.1.26-emr"/>
+            mvn_uri="mvn:org.talend.libraries/jetty-6.1.26-emr/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -845,7 +845,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="jetty-util-6.1.26-emr.jar"
             name="jetty-util-6.1.26-emr.jar"
-            mvn_uri="mvn:org.talend.libraries/jetty-util/6.1.26-emr"/>
+            mvn_uri="mvn:org.talend.libraries/jetty-util-6.1.26-emr/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -1078,7 +1078,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hive-metastore-2.3.3-amzn-0.jar"
             name="hive-metastore-2.3.3-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-metastore/2.3.3-amzn-0"/>
+            mvn_uri="mvn:org.talend.libraries/hive-metastore-2.3.3-amzn-0/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -1192,7 +1192,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hadoop-client-2.8.3-amzn-1.jar"
             name="hadoop-client-2.8.3-amzn-1.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-client/2.8.3-amzn-1"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-client-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -1413,7 +1413,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hive-jdbc-2.3.3-amzn-0.jar"
             name="hive-jdbc-2.3.3-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-jdbc/2.3.3-amzn-0"/>
+            mvn_uri="mvn:org.talend.libraries/hive-jdbc-2.3.3-amzn-0/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -1442,7 +1442,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hadoop-yarn-server-web-proxy-2.8.3-amzn-1.jar"
             name="hadoop-yarn-server-web-proxy-2.8.3-amzn-1.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-server-web-proxy/2.8.3-amzn-1"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-yarn-server-web-proxy-2.8.3-amzn-1/6.0.0"/>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="aopalliance-1.0.jar"
@@ -1602,7 +1602,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hive-beeline-2.3.3-amzn-0.jar"
             name="hive-beeline-2.3.3-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-beeline/2.3.3-amzn-0"/>
+            mvn_uri="mvn:org.talend.libraries/hive-beeline-2.3.3-amzn-0/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -1649,7 +1649,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="hadoop-mapreduce-client-shuffle-2.8.3-amzn-1.jar"
             name="hadoop-mapreduce-client-shuffle-2.8.3-amzn-1.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-shuffle/2.8.3-amzn-1"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-shuffle-2.8.3-amzn-1/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -1709,7 +1709,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="jackson-mapper-asl-1.9.14-TALEND.jar"
             name="jackson-mapper-asl-1.9.14-TALEND.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-mapper-asl/1.9.14-TALEND"/>
+            mvn_uri="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
