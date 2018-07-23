@@ -10,6 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
+
 package org.talend.hadoop.distribution.qubole;
 
 import java.util.HashMap;
@@ -26,6 +27,7 @@ import org.talend.hadoop.distribution.NodeComponentTypeBean;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
+import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.qubole.IQuboleDistribution;
@@ -33,8 +35,9 @@ import org.talend.hadoop.distribution.qubole.modulegroup.QuboleHiveModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QubolePigModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QubolePigOutputModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QuboleSparkBatchModuleGroup;
+import org.talend.hadoop.distribution.qubole.modulegroup.QuboleSparkStreamingModuleGroup;
 
-public class QuboleDistribution extends AbstractDistribution implements SparkBatchComponent, PigComponent, HiveComponent, IQuboleDistribution {
+public class QuboleDistribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent, PigComponent, HiveComponent, IQuboleDistribution {
 
     private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*";
     public final static String VERSION = "Qubole cloud distribution";
@@ -77,6 +80,7 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
         componentsMap.put(ComponentType.PIG, QubolePigModuleGroup.getModuleGroups());
         componentsMap.put(ComponentType.PIGOUTPUT, QubolePigOutputModuleGroup.getModuleGroups());
         componentsMap.put(ComponentType.SPARKBATCH, QuboleSparkBatchModuleGroup.getModuleGroups());
+        componentsMap.put(ComponentType.SPARKSTREAMING, QuboleSparkStreamingModuleGroup.getModuleGroups());
         return componentsMap;
     }
 
@@ -189,7 +193,7 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
 
     @Override
     public boolean doSupportOldImportMode() {
-        return false;
+        return true;
     }
 
     @Override
@@ -291,4 +295,14 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
 	public boolean doSupportDynamicMemoryAllocation() {
 		return true;
 	}
+
+    @Override
+    public boolean doSupportCheckpointing() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportBackpressure() {
+        return false;
+    }
 }

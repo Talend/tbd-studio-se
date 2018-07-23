@@ -21,7 +21,7 @@ import java.util.Set;
 import org.junit.Test;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.qubole.QuboleConstant;
-import org.talend.hadoop.distribution.qubole.modulegroup.QuboleSparkBatchModuleGroup;
+import org.talend.hadoop.distribution.qubole.modulegroup.QuboleSparkStreamingModuleGroup;
 
 public class QuboleSparkStreamingModuleGroupTest {
 
@@ -32,7 +32,7 @@ public class QuboleSparkStreamingModuleGroupTest {
         results.put(QuboleConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), null);
         results.put(QuboleConstant.S3_MODULE_GROUP.getModuleName(), null);
 
-        Set<DistributionModuleGroup> moduleGroups = QuboleSparkBatchModuleGroup.getModuleGroups();
+        Set<DistributionModuleGroup> moduleGroups = QuboleSparkStreamingModuleGroup.getModuleGroups();
         assertEquals(3, moduleGroups.size());
 
         for (DistributionModuleGroup group : moduleGroups) {

@@ -23,7 +23,9 @@ public class QuboleSparkStreamingModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> moduleGroups = new HashSet<>();
+        moduleGroups.add(new DistributionModuleGroup(QuboleConstant.SPARK_MODULE_GROUP.getModuleName()));
         moduleGroups.add(new DistributionModuleGroup(QuboleConstant.SPARK_STREAMING_MODULE_GROUP.getModuleName()));
+        moduleGroups.add(new DistributionModuleGroup(QuboleConstant.SPARK_STREAMING_MRREQUIRED_MODULE_GROUP.getModuleName(), true, null));
         moduleGroups.add(new DistributionModuleGroup(QuboleConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName()));
         moduleGroups.add(new DistributionModuleGroup(QuboleConstant.S3_MODULE_GROUP.getModuleName()));
         return moduleGroups;
