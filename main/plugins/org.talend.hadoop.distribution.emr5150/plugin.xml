@@ -1333,9 +1333,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="lz4-1.4.0.jar"
-            name="lz4-1.4.0.jar"
-            mvn_uri="mvn:net.jpountz.lz4/lz4/1.4.0"/>
+            id="lz4-java-1.4.0.jar"
+            name="lz4-java-1.4.0.jar"
+            mvn_uri="mvn:org.lz4/lz4-java/1.4.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -2362,7 +2362,7 @@
 			<library id="libfb303-0.9.3.jar"/>
 			<library id="libthrift-0.9.3.jar"/>
 			<library id="log4j-1.2.17.jar"/>
-			<library id="lz4-1.4.0.jar"/>
+			<library id="lz4-java-1.4.0.jar"/>
 			<library id="mail-1.4.7.jar"/>
 			<library id="metrics-core-3.1.5.jar"/>
 			<library id="metrics-graphite-3.1.5.jar"/>
@@ -2450,13 +2450,13 @@
              <library id="aws-java-sdk-kms-1.11.333.jar"/>
              <library id="aws-java-sdk-s3-1.11.333.jar"/>
              <library id="emr-core-2.6.0.jar"/>
-             <library id="emr-dynamodb-hadoop-4.4.0.jar"/>
+             <library id="emr-dynamodb-hadoop-4.6.0.jar"/>
              <library id="commons-pool2-2.2.jar"/>
         </libraryNeededGroup>
         
         <!-- Spark Kinesis group MRREQUIRED -->
         <libraryNeededGroup
-                description="Spark DynamoDB libraries for EMR 5.15.0 that are MRREQUIRED"
+                description="Spark Kinesis libraries for EMR 5.15.0 that are MRREQUIRED"
                 id="SPARK-KINESIS-LIB-MRREQUIRED-EMR_5_15_0_LATEST"
                 name="SPARK-KINESIS-LIB-MRREQUIRED-EMR_5_15_0_LATEST">
              <library id="spark-streaming-kinesis-asl_2.11-2.3.0.jar"/>
@@ -2485,8 +2485,9 @@
                 id="SPARK-AZURE-LIB-MRREQUIRED-EMR_5_15_0_LATEST"
                 name="SPARK-AZURE-LIB-MRREQUIRED-EMR_5_15_0_LATEST">
                 <library id="hadoop-azure-2.8.3-amzn-1.jar"/>
+                <library id="hadoop-azure-datalake-2.8.3-amzn-1.jar"/>
                 <library id="jetty-util-6.1.26-emr.jar"/>
-                <library id="azure-storage-5.0.0.jar"/>
+                <library id="azure-storage-2.2.0.jar"/>
         </libraryNeededGroup>
         
         <!-- GraphFrames group MRREQUIRED -->
