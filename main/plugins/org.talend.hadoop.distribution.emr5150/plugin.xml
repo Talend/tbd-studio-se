@@ -2332,7 +2332,6 @@
 			<library id="javolution-5.5.1.jar"/>
 			<library id="jaxb-api-2.2.2.jar"/>
 			<library id="jcl-over-slf4j-1.7.16.jar"/>
-			<library id="jdo-api-3.0.1.jar"/>
 			<library id="jersey-client-2.22.2.jar"/>
 			<library id="jersey-common-2.22.2.jar"/>
 			<library id="jersey-container-servlet-2.22.2.jar"/>
@@ -2347,7 +2346,6 @@
 			<library id="jline-2.11.jar"/>
 			<library id="jna-4.2.2.jar"/>
 			<library id="joda-time-2.9.9.jar"/>
-			<library id="jodd-core-3.5.2.jar"/>
 			<library id="jpam-1.1.jar"/>
 			<library id="jsch-0.1.51.jar"/>
 			<library id="json4s-ast_2.11-3.2.11.jar"/>
@@ -2444,7 +2442,6 @@
                 description="Spark DynamoDB libraries for EMR 5.15.0 that are MRREQUIRED"
                 id="SPARK-DYNAMODB-LIB-MRREQUIRED-EMR_5_15_0"
                 name="SPARK-DYNAMODB-LIB-MRREQUIRED-EMR_5_15_0">
-             <library id="aws-java-sdk-1.11.333.jar"/>
              <library id="aws-java-sdk-core-1.11.333.jar"/>
              <library id="aws-java-sdk-dynamodb-1.11.333.jar"/>
              <library id="aws-java-sdk-kms-1.11.333.jar"/>
@@ -2463,7 +2460,6 @@
             <library id="amazon-kinesis-client-1.8.1.jar"/>
             <library id="aws-java-sdk-kinesis-1.11.333.jar"/>
             <library id="aws-java-sdk-core-1.11.333.jar"/>
-            <library id="joda-time-2.9.9.jar"/>
         </libraryNeededGroup>
 
         <!-- Spark Hive group -->
