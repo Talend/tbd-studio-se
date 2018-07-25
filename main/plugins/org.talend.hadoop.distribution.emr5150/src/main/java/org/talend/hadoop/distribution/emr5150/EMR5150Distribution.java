@@ -61,11 +61,13 @@ import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkbatch.EMR515
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkbatch.EMR5150SparkBatchAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkbatch.EMR5150SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkbatch.EMR5150SparkBatchS3NodeModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkbatch.EMR5150SparkBatchSqlRowHiveNodeModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkstreaming.EMR5150SparkStreamingFlumeNodeModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkstreaming.EMR5150SparkStreamingKafkaAssemblyModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkstreaming.EMR5150SparkStreamingKinesisNodeModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkstreaming.EMR5150SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkstreaming.EMR5150SparkStreamingS3NodeModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkstreaming.EMR5150SparkStreamingSqlRowHiveNodeModuleGroup;
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
@@ -167,6 +169,10 @@ public class EMR5150Distribution extends AbstractDistribution implements HBaseCo
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
                 EMR5150SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
         
+        // Spark Batch tSQLRow nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.SPARK_SQL_ROW_COMPONENT),
+                EMR5150SparkBatchSqlRowHiveNodeModuleGroup.getModuleGroups(distribution, version));
+        
         // Spark Batch S3 nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.S3_CONFIGURATION_COMPONENT),
                 EMR5150SparkBatchS3NodeModuleGroup.getModuleGroups(distribution, version));
@@ -195,6 +201,10 @@ public class EMR5150Distribution extends AbstractDistribution implements HBaseCo
         		EMR5150SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_STREAM_INPUT_COMPONENT),
                 EMR5150SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
+        
+        // Spark Streaming tSQLRow nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.SPARK_SQL_ROW_COMPONENT),
+                EMR5150SparkStreamingSqlRowHiveNodeModuleGroup.getModuleGroups(distribution, version));
 
         // Spark Streaming S3 nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.S3_CONFIGURATION_COMPONENT),

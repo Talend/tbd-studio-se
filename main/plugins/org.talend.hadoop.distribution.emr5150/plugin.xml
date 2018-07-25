@@ -344,12 +344,6 @@
             
         <libraryNeeded
             context="plugin:org.talend.libraries.s3"
-            id="aws-java-sdk-1.11.333.jar"
-            name="aws-java-sdk-1.11.333.jar"
-            mvn_uri="mvn:com.amazonaws/aws-java-sdk/1.11.333"/>
-            
-        <libraryNeeded
-            context="plugin:org.talend.libraries.s3"
             id="aws-java-sdk-dynamodb-1.11.333.jar"
             name="aws-java-sdk-dynamodb-1.11.333.jar"
             mvn_uri="mvn:com.amazonaws/aws-java-sdk-dynamodb/1.11.333"/>
@@ -1859,16 +1853,16 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="emr-dynamodb-hadoop-4.4.0.jar"
-            name="emr-dynamodb-hadoop-4.4.0.jar"
-            mvn_uri="mvn:com.amazon.emr/emr-dynamodb-hadoop/4.4.0">
+            id="emr-dynamodb-hadoop-4.6.0.jar"
+            name="emr-dynamodb-hadoop-4.6.0.jar"
+            mvn_uri="mvn:com.amazon.emr/emr-dynamodb-hadoop/4.6.0">
         </libraryNeeded>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="emr-core-2.6.0.jar"
             name="emr-core-2.6.0.jar"
-            mvn_uri="mvn:org.talend.libraries/emr-core/2.6.0">
+            mvn_uri="mvn:org.talend.libraries/emr-core-2.6.0/6.0.0">
         </libraryNeeded>
 
         <libraryNeeded
