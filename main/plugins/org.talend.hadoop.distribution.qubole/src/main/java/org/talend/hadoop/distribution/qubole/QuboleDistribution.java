@@ -30,6 +30,7 @@ import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
+import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.qubole.IQuboleDistribution;
 import org.talend.hadoop.distribution.qubole.modulegroup.QuboleHiveModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QubolePigModuleGroup;
@@ -72,7 +73,7 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
     }
 
     /**
-     * Add needed libraries (module group) for correspondent components
+     * Add needed libraries (module group) for the types of job
      */
     protected Map<ComponentType, Set<DistributionModuleGroup>> buildModuleGroups() {
         Map<ComponentType, Set<DistributionModuleGroup>> componentsMap = new HashMap<>();
@@ -85,11 +86,13 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
     }
 
     /**
-     * Add needed libraries (module group) for correspondent nodes
+     * Add needed libraries (module group) for the components
      */
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(String distribution, String version) {
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodesMap = new HashMap<>();
         nodesMap.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT), QubolePigOutputModuleGroup.getModuleGroups());
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_CONFIGURATION_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, null));
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_INPUT_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, null));
         return nodesMap;
     }
 

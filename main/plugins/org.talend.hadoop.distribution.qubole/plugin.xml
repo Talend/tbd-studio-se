@@ -288,6 +288,12 @@
 			name="jaxen-1.1.6.jar"
 			mvn_uri="mvn:jaxen/jaxen/1.1.6">
 		</libraryNeeded>
+		<libraryNeeded
+			context="plugin:org.talend.hadoop.distribution.qubole"
+			id="aws-java-sdk-dynamodb-1.11.160.jar"
+			name="aws-java-sdk-dynamodb-1.11.160.jar"
+			mvn_uri="mvn:com.amazonaws/aws-java-sdk-dynamodb-1.11.160/6.0.0">
+		</libraryNeeded>
 
 
         <!-- Big data launcher group -->
@@ -382,6 +388,12 @@
              <library id="jaxen-1.1.6.jar"/>
         </libraryNeededGroup>
         
+        <!-- Spark 2.2 dynamodb group -->
+        <libraryNeededGroup
+           description="Spark 2.2 dynamodb libraries for Qubole" id="SPARK-DYNAMODB-LIB-QUBOLE" name="SPARK-DYNAMODB-LIB-QUBOLE">
+             <library id="aws-java-sdk-dynamodb-1.11.160.jar"/>
+        </libraryNeededGroup>
+
         <!-- Spark Streaming 2.2 group -->
         <libraryNeededGroup
            description="Spark Streaming 2.2 libraries for Qubole" id="SPARK-STREAMING-LIB-QUBOLE" name="SPARK-STREAMING-LIB-QUBOLE">
