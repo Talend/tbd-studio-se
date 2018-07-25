@@ -2465,8 +2465,8 @@
         <!-- Spark Hive group -->
         <libraryNeededGroup
                 description="Spark Hive libraries for EMR 5.15.0"
-                id="SPARK-HIVE-LIB-EMR_5_15_0_LATEST"
-                name="SPARK-HIVE-LIB-EMR_5_15_0_LATEST">
+                id="SPARK-HIVE-LIB-MRREQUIRED-EMR_5_15_0_LATEST"
+                name="SPARK-HIVE-LIB-MRREQUIRED-EMR_5_15_0_LATEST">
             <library id="jdo-api-3.0.1.jar"/>
             <library id="hive-beeline-1.2.1-spark2-amzn-0.jar"/>
             <library id="hive-cli-1.2.1-spark2-amzn-0.jar"/>
