@@ -18,6 +18,7 @@ import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.qubole.QuboleConstant;
+import org.talend.hadoop.distribution.utils.ModuleGroupsUtils;
 
 public class QuboleSparkStreamingModuleGroup {
 
@@ -29,5 +30,10 @@ public class QuboleSparkStreamingModuleGroup {
         moduleGroups.add(new DistributionModuleGroup(QuboleConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName()));
         moduleGroups.add(new DistributionModuleGroup(QuboleConstant.S3_MODULE_GROUP.getModuleName()));
         return moduleGroups;
+    }
+
+    public static Set<DistributionModuleGroup> getKinesisModuleGroups(String distribution, String version, String condition) {
+        return ModuleGroupsUtils.getModuleGroups(distribution, version, condition,
+                QuboleConstant.SPARK_KINESIS_MODULE_GROUP.getModuleName(), true);
     }
 }

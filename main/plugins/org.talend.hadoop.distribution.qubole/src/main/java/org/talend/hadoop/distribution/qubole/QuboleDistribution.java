@@ -31,6 +31,7 @@ import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
+import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.qubole.IQuboleDistribution;
 import org.talend.hadoop.distribution.qubole.modulegroup.QuboleHiveModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QubolePigModuleGroup;
@@ -92,7 +93,14 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodesMap = new HashMap<>();
         nodesMap.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT), QubolePigOutputModuleGroup.getModuleGroups());
         nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_CONFIGURATION_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, null));
-        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_INPUT_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, null));
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_INPUT_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, "USE_EXISTING_CONNECTION == 'false'"));
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_OUTPUT_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, "USE_EXISTING_CONNECTION == 'false'"));
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_CONFIGURATION_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, null));
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_INPUT_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, "USE_EXISTING_CONNECTION == 'false'"));
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_OUTPUT_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, "USE_EXISTING_CONNECTION == 'false'"));
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT), QuboleSparkStreamingModuleGroup.getKinesisModuleGroups(distribution, version, null));
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_COMPONENT), QuboleSparkStreamingModuleGroup.getKinesisModuleGroups(distribution, version, null));
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_AVRO_COMPONENT), QuboleSparkStreamingModuleGroup.getKinesisModuleGroups(distribution, version, null));
         return nodesMap;
     }
 
