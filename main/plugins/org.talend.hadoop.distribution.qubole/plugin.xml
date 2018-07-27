@@ -303,9 +303,9 @@
 		</libraryNeeded>
 		<libraryNeeded
 			context="plugin:org.talend.hadoop.distribution.qubole"
-			id="aws-java-sdk-1.11.160.jar"
-			name="aws-java-sdk-1.11.160.jar"
-			mvn_uri="mvn:com.amazonaws/aws-java-sdk-1.11.160/6.0.0">
+			id="commons-pool2-2.4.2.jar"
+			name="commons-pool2-2.4.2.jar"
+			mvn_uri="mvn:org.apache.commons/commons-pool2-2.4.2/6.0.0">
 		</libraryNeeded>
 		<libraryNeeded
 			context="plugin:org.talend.hadoop.distribution.qubole"
@@ -318,6 +318,12 @@
 			id="amazon-kinesis-client-1.9.1.jar"
 			name="amazon-kinesis-client-1.9.1.jar"
 			mvn_uri="mvn:com.amazonaws/amazon-kinesis-client-1.9.1/6.0.0">
+		</libraryNeeded>
+		<libraryNeeded
+			context="plugin:org.talend.hadoop.distribution.qubole"
+			id="aws-java-sdk-kinesis-1.11.186.jar"
+			name="aws-java-sdk-kinesis-1.11.186.jar"
+			mvn_uri="mvn:com.amazonaws/aws-java-sdk-kinesis-1.11.186/6.0.0">
 		</libraryNeeded>
 
 
@@ -418,12 +424,13 @@
            description="Spark 2.2 dynamodb libraries for Qubole" id="SPARK-DYNAMODB-LIB-QUBOLE" name="SPARK-DYNAMODB-LIB-QUBOLE">
              <library id="aws-java-sdk-dynamodb-1.11.160.jar"/>
              <library id="emr-dynamodb-hadoop-4.2.0.jar"/>
+             <library id="commons-pool2-2.4.2.jar"/>
         </libraryNeededGroup>
 
         <!-- Spark Streaming 2.2 kinesis group -->
         <libraryNeededGroup
            description="Spark 2.2 kinesis libraries for Qubole" id="SPARK-KINESIS-LIB-QUBOLE" name="SPARK-KINESIS-LIB-QUBOLE">
-             <library id="aws-java-sdk-1.11.160.jar"/>
+			 <library id="aws-java-sdk-kinesis-1.11.186.jar"/>
              <library id="spark-streaming-kinesis-asl_2.11-2.2.0.jar"/>
              <library id="amazon-kinesis-client-1.9.1.jar"/>
         </libraryNeededGroup>
