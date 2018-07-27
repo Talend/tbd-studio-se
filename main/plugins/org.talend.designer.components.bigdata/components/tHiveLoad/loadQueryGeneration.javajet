@@ -18,9 +18,15 @@
 			createTableSQL.append("LOCAL ");
 		}
 		createTableSQL.append("INPATH '");
+    	if(isS3File) {
+    	%>
+    		String path_<%=cid%> = "s3://" + <%=s3AccessKey%> + ":" + routines.system.PasswordEncryptUtil.decryptPassword(<%=s3SecretKey%>) + "@" + <%=s3FilePath%>.replaceAll("^/+", "");
+    	<%
+    	} else {
 %>
-		String path_<%=cid%> = <%=path%>;
+			String path_<%=cid%> = <%=path%>;
 <%
+		}
     	createTableSQL.append("\" + ");
     	createTableSQL.append("path_");
     	createTableSQL.append(cid);
