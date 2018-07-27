@@ -37,7 +37,7 @@ public class EMR5150PigOutputModuleGroupTest {
         results.put(EMR5150Constant.HBASE_MODULE_GROUP.getModuleName(), "(STORE=='HBASESTORAGE')"); //$NON-NLS-1$
 
         Set<DistributionModuleGroup> moduleGroups = EMR5150PigOutputModuleGroup.getModuleGroups();
-        assertEquals(6, moduleGroups.size());
+        assertEquals(results.size(), moduleGroups.size());
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$
             if (results.get(module.getModuleName()) == null) {

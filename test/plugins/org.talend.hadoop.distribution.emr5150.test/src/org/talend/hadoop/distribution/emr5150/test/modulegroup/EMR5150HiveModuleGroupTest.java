@@ -12,8 +12,7 @@
 // ============================================================================
 package org.talend.hadoop.distribution.emr5150.test.modulegroup;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,18 +21,19 @@ import java.util.Set;
 import org.junit.Test;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.emr5150.EMR5150Constant;
-import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150MapReduceModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150HiveModuleGroup;
 
-public class EMR5150MapReduceModuleGroupTest {
+public class EMR5150HiveModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
         Map<String, String> results = new HashMap<>();
+        results.put(EMR5150Constant.HIVE_MODULE_GROUP.getModuleName(), null);
+        results.put(EMR5150Constant.HIVE_HBASE_MODULE_GROUP.getModuleName(), null);
         results.put(EMR5150Constant.HDFS_MODULE_GROUP.getModuleName(), null);
         results.put(EMR5150Constant.MAPREDUCE_MODULE_GROUP.getModuleName(), null);
-        results.put(EMR5150Constant.MAPREDUCE_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
-        results.put(EMR5150Constant.MAPREDUCE_AVRO_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
-        Set<DistributionModuleGroup> moduleGroups = EMR5150MapReduceModuleGroup.getModuleGroups();
+        
+        Set<DistributionModuleGroup> moduleGroups = EMR5150HiveModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$
