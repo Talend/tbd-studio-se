@@ -593,9 +593,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="spark-tags_2.11-2.1.0.jar"
-            name="spark-tags_2.11-2.1.0.jar"
-            mvn_uri="mvn:org.apache.spark/Spark-tags_2.11/2.1.0"/>
+            id="spark-tags_2.11-2.3.0.jar"
+            name="spark-tags_2.11-2.3.0.jar"
+            mvn_uri="mvn:org.apache.spark/Spark-tags_2.11/2.3.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
