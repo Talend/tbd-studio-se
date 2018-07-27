@@ -401,7 +401,7 @@
              <library id="slf4j-api-1.7.16.jar"/>
              <library id="wsdl4j-1.6.3.jar"/>
              <library id="jackson-core-2.8.9.jar"/>
-             <library id="json_simple-1.1.jar"/>
+             <library id="json-simple-1.1.jar"/>
              <library id="commons-lang-2.6.jar"/>
              <library id="commons-codec-1.10.jar"/>
              <library id="hadoop-common-2.7.3.jar"/>
