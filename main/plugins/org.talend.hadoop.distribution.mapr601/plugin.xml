@@ -184,7 +184,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1"
             id="hive-exec-1.2.0-mapr-1803-spark.jar"
             name="hive-exec-1.2.0-mapr-1803-spark.jar"
-            mvn_uri="mvn:org.apache.hive/hive-exec/1.2.0-mapr-1803-spark" >
+            mvn_uri="mvn:org.talend.libraries/hive-exec-1.2.0-mapr-1803-spark/6.0.0" >
        </libraryNeeded>
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1"
@@ -208,7 +208,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1"
             id="hive-metastore-1.2.0-mapr-1803-spark.jar"
             name="hive-metastore-1.2.0-mapr-1803-spark.jar"
-            mvn_uri="mvn:org.apache.hive/hive-metastore/1.2.0-mapr-1803-spark" >
+            mvn_uri="mvn:org.talend.libraries/hive-metastore-1.2.0-mapr-1803-spark/6.0.0" >
         </libraryNeeded>
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1"
@@ -220,7 +220,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1"
             id="hive-jdbc-1.2.0-mapr-1803-spark.jar"
             name="hive-jdbc-1.2.0-mapr-1803-spark.jar"
-            mvn_uri="mvn:org.apache.hive/hive-jdbc/1.2.0-mapr-1803-spark" >
+            mvn_uri="mvn:org.talend.libraries/hive-jdbc-1.2.0-mapr-1803-spark/6.0.0" >
         </libraryNeeded>
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1"
