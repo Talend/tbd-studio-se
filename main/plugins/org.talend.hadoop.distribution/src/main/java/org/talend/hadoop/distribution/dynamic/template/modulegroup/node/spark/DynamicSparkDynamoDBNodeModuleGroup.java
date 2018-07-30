@@ -12,8 +12,10 @@
 // ============================================================================
 package org.talend.hadoop.distribution.dynamic.template.modulegroup.node.spark;
 
+import java.util.Collections;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.DynamicModuleGroupConstant;
@@ -35,7 +37,11 @@ public class DynamicSparkDynamoDBNodeModuleGroup extends AbstractNodeModuleGroup
 
         checkRuntimeId(sparkDynamoDBMrRequiredRuntimeId);
 
-        return ModuleGroupsUtils.getModuleGroups(distribution, version, condition, sparkDynamoDBMrRequiredRuntimeId, true);
+        if (StringUtils.isNotBlank(sparkDynamoDBMrRequiredRuntimeId)) {
+            return ModuleGroupsUtils.getModuleGroups(distribution, version, condition, sparkDynamoDBMrRequiredRuntimeId, true);
+        } else {
+            return Collections.EMPTY_SET;
+        }
     }
 
 }

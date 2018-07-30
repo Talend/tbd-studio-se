@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.hdp;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.HDFSLinkedNodeCondition;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
@@ -45,9 +46,11 @@ public class DynamicHDPWebHDFSModuleGroup extends DynamicWebHDFSModuleGroup {
 
         checkRuntimeId(webHdfsRuntimeId);
 
-        HDFSLinkedNodeCondition hdfsLinkedNodeCondition = new HDFSLinkedNodeCondition(distribution, version);
+        if (StringUtils.isNotBlank(webHdfsRuntimeId)) {
+            HDFSLinkedNodeCondition hdfsLinkedNodeCondition = new HDFSLinkedNodeCondition(distribution, version);
 
-        moduleGroups.add(new DistributionModuleGroup(webHdfsRuntimeId, true, hdfsLinkedNodeCondition.getWebHDFSCondition()));
+            moduleGroups.add(new DistributionModuleGroup(webHdfsRuntimeId, true, hdfsLinkedNodeCondition.getWebHDFSCondition()));
+        }
 
         return moduleGroups;
     }

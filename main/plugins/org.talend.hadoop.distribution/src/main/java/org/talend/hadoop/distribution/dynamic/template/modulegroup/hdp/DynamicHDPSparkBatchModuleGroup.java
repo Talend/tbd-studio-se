@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.hdp;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.BasicExpression;
 import org.talend.hadoop.distribution.condition.BooleanOperator;
@@ -66,14 +67,24 @@ public class DynamicHDPSparkBatchModuleGroup extends DynamicSparkBatchModuleGrou
         ComponentCondition atlasSpark1x = new MultiComponentCondition(useAtlas, BooleanOperator.AND, conditionSpark1);
         ComponentCondition atlasSpark2x = new MultiComponentCondition(useAtlas, BooleanOperator.AND, conditionSpark2);
 
-        moduleGroups.add(new DistributionModuleGroup(sparkMRRequiredRuntimeId, true, conditionSpark1));
-        moduleGroups.add(new DistributionModuleGroup(sparkMRRequiredRuntimeId, true, conditionSpark2));
-        moduleGroups.add(new DistributionModuleGroup(hdfsRuntimeId, false, conditionSpark1));
-        moduleGroups.add(new DistributionModuleGroup(hdfsRuntimeId, false, conditionSpark2));
-        moduleGroups.add(new DistributionModuleGroup(mapReduceRuntimeId, false, conditionSpark1));
-        moduleGroups.add(new DistributionModuleGroup(mapReduceRuntimeId, false, conditionSpark2));
-        moduleGroups.add(new DistributionModuleGroup(atlasSpark1RuntimeId, true, atlasSpark1x));
-        moduleGroups.add(new DistributionModuleGroup(atlasSpark2RuntimeId, true, atlasSpark2x));
+        if (StringUtils.isNotBlank(sparkMRRequiredRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(sparkMRRequiredRuntimeId, true, conditionSpark1));
+            moduleGroups.add(new DistributionModuleGroup(sparkMRRequiredRuntimeId, true, conditionSpark2));
+        }
+        if (StringUtils.isNotBlank(hdfsRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(hdfsRuntimeId, false, conditionSpark1));
+            moduleGroups.add(new DistributionModuleGroup(hdfsRuntimeId, false, conditionSpark2));
+        }
+        if (StringUtils.isNotBlank(mapReduceRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(mapReduceRuntimeId, false, conditionSpark1));
+            moduleGroups.add(new DistributionModuleGroup(mapReduceRuntimeId, false, conditionSpark2));
+        }
+        if (StringUtils.isNotBlank(atlasSpark1RuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(atlasSpark1RuntimeId, true, atlasSpark1x));
+        }
+        if (StringUtils.isNotBlank(atlasSpark2RuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(atlasSpark2RuntimeId, true, atlasSpark2x));
+        }
 
         return moduleGroups;
     }

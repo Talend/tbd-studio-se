@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 
@@ -24,6 +25,7 @@ public class DynamicMapReduceModuleGroup extends AbstractModuleGroup {
         super(pluginAdapter);
     }
 
+    @Override
     public Set<DistributionModuleGroup> getModuleGroups() throws Exception {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         DynamicPluginAdapter pluginAdapter = getPluginAdapter();
@@ -47,11 +49,21 @@ public class DynamicMapReduceModuleGroup extends AbstractModuleGroup {
                 .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.MAPREDUCE_AVRO_MRREQUIRED_MODULE_GROUP.getModuleName());
         checkRuntimeId(mrAvroRequired);
 
-        hs.add(new DistributionModuleGroup(hdfsRuntimeId));
-        hs.add(new DistributionModuleGroup(mrRuntimeId));
-        hs.add(new DistributionModuleGroup(mrParquetId));
-        hs.add(new DistributionModuleGroup(mrParquetRequired, true, null));
-        hs.add(new DistributionModuleGroup(mrAvroRequired, true, null));
+        if (StringUtils.isNotBlank(hdfsRuntimeId)) {
+            hs.add(new DistributionModuleGroup(hdfsRuntimeId));
+        }
+        if (StringUtils.isNotBlank(mrRuntimeId)) {
+            hs.add(new DistributionModuleGroup(mrRuntimeId));
+        }
+        if (StringUtils.isNotBlank(mrParquetId)) {
+            hs.add(new DistributionModuleGroup(mrParquetId));
+        }
+        if (StringUtils.isNotBlank(mrParquetRequired)) {
+            hs.add(new DistributionModuleGroup(mrParquetRequired, true, null));
+        }
+        if (StringUtils.isNotBlank(mrAvroRequired)) {
+            hs.add(new DistributionModuleGroup(mrAvroRequired, true, null));
+        }
 
         return hs;
     }

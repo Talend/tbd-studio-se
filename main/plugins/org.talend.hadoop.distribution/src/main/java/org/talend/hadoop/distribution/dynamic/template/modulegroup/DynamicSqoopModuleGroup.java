@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.BasicExpression;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
@@ -29,6 +30,7 @@ public class DynamicSqoopModuleGroup extends AbstractModuleGroup {
         super(pluginAdapter);
     }
 
+    @Override
     public Set<DistributionModuleGroup> getModuleGroups() throws Exception {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         DynamicPluginAdapter pluginAdapter = getPluginAdapter();
@@ -41,10 +43,14 @@ public class DynamicSqoopModuleGroup extends AbstractModuleGroup {
         checkRuntimeId(sqoopRuntimeId);
         checkRuntimeId(sqoopParquetRuntimeId);
 
-        hs.add(new DistributionModuleGroup(sqoopRuntimeId));
-        ComponentCondition parquetOutputCondition = new SimpleComponentCondition(
-                new BasicExpression(SqoopConstant.FILE_FORMAT, EqualityOperator.EQ, SqoopConstant.PAQUET_OUTPUT_FORMAT));
-        hs.add(new DistributionModuleGroup(sqoopParquetRuntimeId, true, parquetOutputCondition));
+        if (StringUtils.isNotBlank(sqoopRuntimeId)) {
+            hs.add(new DistributionModuleGroup(sqoopRuntimeId));
+        }
+        if (StringUtils.isNotBlank(sqoopParquetRuntimeId)) {
+            ComponentCondition parquetOutputCondition = new SimpleComponentCondition(
+                    new BasicExpression(SqoopConstant.FILE_FORMAT, EqualityOperator.EQ, SqoopConstant.PAQUET_OUTPUT_FORMAT));
+            hs.add(new DistributionModuleGroup(sqoopParquetRuntimeId, true, parquetOutputCondition));
+        }
         return hs;
     }
 

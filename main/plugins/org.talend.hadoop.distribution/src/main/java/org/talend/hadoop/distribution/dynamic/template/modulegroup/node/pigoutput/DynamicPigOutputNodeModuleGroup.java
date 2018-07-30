@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.node.pigoutp
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.BasicExpression;
@@ -34,6 +35,7 @@ public class DynamicPigOutputNodeModuleGroup extends AbstractNodeModuleGroup {
         super(pluginAdapter);
     }
 
+    @Override
     public Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) throws Exception {
 
         ComponentCondition condition = new MultiComponentCondition( //
@@ -65,8 +67,12 @@ public class DynamicPigOutputNodeModuleGroup extends AbstractNodeModuleGroup {
         checkRuntimeId(pigParquetRuntimeId);
         checkRuntimeId(pigS3RuntimeId);
 
-        hs.add(new DistributionModuleGroup(pigParquetRuntimeId, false, condition));
-        hs.add(new DistributionModuleGroup(pigS3RuntimeId, false, s3condition));
+        if (StringUtils.isNotBlank(pigParquetRuntimeId)) {
+            hs.add(new DistributionModuleGroup(pigParquetRuntimeId, false, condition));
+        }
+        if (StringUtils.isNotBlank(pigS3RuntimeId)) {
+            hs.add(new DistributionModuleGroup(pigS3RuntimeId, false, s3condition));
+        }
         return hs;
     }
 

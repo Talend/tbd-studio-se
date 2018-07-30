@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.cdh;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.DynamicHiveOnSparkModuleGroup;
@@ -39,8 +40,9 @@ public class DynamicCDHHiveOnSparkModuleGroup extends DynamicHiveOnSparkModuleGr
                 DynamicModuleGroupConstant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName());
 
         checkRuntimeId(sparkHiveRuntimeId);
-
-        moduleGroups.add(new DistributionModuleGroup(sparkHiveRuntimeId, true, null));
+        if (StringUtils.isNotBlank(sparkHiveRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(sparkHiveRuntimeId, true, null));
+        }
 
         return moduleGroups;
     }

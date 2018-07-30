@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.condition.BasicExpression;
@@ -48,6 +49,7 @@ public class DynamicSparkBatchModuleGroup extends AbstractModuleGroup {
                 new BasicExpression("SUPPORTED_SPARK_VERSION", EqualityOperator.EQ, ESparkVersion.SPARK_2_1.getSparkVersion())); //$NON-NLS-1$
     }
 
+    @Override
     public Set<DistributionModuleGroup> getModuleGroups() throws Exception {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         DynamicPluginAdapter pluginAdapter = getPluginAdapter();
@@ -60,8 +62,12 @@ public class DynamicSparkBatchModuleGroup extends AbstractModuleGroup {
         checkRuntimeId(sparkRuntimeId);
         checkRuntimeId(spark2RuntimeId);
 
-        hs.add(new DistributionModuleGroup(sparkRuntimeId, false, conditionSpark1));
-        hs.add(new DistributionModuleGroup(spark2RuntimeId, false, conditionSpark2));
+        if (StringUtils.isNotBlank(sparkRuntimeId)) {
+            hs.add(new DistributionModuleGroup(sparkRuntimeId, false, conditionSpark1));
+        }
+        if (StringUtils.isNotBlank(spark2RuntimeId)) {
+            hs.add(new DistributionModuleGroup(spark2RuntimeId, false, conditionSpark2));
+        }
 
         return hs;
     }

@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.cdh;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.DynamicModuleGroupConstant;
@@ -48,8 +49,12 @@ public class DynamicCDHSqoopModuleGroup extends DynamicSqoopModuleGroup {
         checkRuntimeId(hdfsRuntimeId);
         checkRuntimeId(mrRuntimeId);
 
-        moduleGroups.add(new DistributionModuleGroup(hdfsRuntimeId));
-        moduleGroups.add(new DistributionModuleGroup(mrRuntimeId));
+        if (StringUtils.isNotBlank(hdfsRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(hdfsRuntimeId));
+        }
+        if (StringUtils.isNotBlank(mrRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(mrRuntimeId));
+        }
         return moduleGroups;
     }
 }

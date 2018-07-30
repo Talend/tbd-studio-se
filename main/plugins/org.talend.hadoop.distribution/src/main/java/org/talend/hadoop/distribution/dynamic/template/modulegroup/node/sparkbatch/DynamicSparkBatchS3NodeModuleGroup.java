@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkba
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.SparkBatchLinkedNodeCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
@@ -28,6 +29,7 @@ public class DynamicSparkBatchS3NodeModuleGroup extends AbstractNodeModuleGroup 
         super(pluginAdapter);
     }
 
+    @Override
     public Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) throws Exception {
         Set<DistributionModuleGroup> hs = new HashSet<>();
 
@@ -37,10 +39,12 @@ public class DynamicSparkBatchS3NodeModuleGroup extends AbstractNodeModuleGroup 
                 .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.SPARK_S3_MRREQUIRED_MODULE_GROUP.getModuleName());
         checkRuntimeId(sparkS3MrRequiredRuntimeId);
 
-        DistributionModuleGroup dmg = new DistributionModuleGroup(sparkS3MrRequiredRuntimeId, true,
-                new SparkBatchLinkedNodeCondition(distribution, version,
-                        SparkBatchConstant.SPARK_BATCH_S3_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition());
-        hs.add(dmg);
+        if (StringUtils.isNotBlank(sparkS3MrRequiredRuntimeId)) {
+            DistributionModuleGroup dmg = new DistributionModuleGroup(sparkS3MrRequiredRuntimeId, true,
+                    new SparkBatchLinkedNodeCondition(distribution, version,
+                            SparkBatchConstant.SPARK_BATCH_S3_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition());
+            hs.add(dmg);
+        }
         return hs;
     }
 

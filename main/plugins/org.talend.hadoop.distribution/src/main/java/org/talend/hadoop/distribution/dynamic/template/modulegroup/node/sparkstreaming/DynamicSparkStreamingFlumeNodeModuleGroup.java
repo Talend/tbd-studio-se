@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkst
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.SparkStreamingLinkedNodeCondition;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
@@ -28,6 +29,7 @@ public class DynamicSparkStreamingFlumeNodeModuleGroup extends AbstractNodeModul
         super(pluginAdapter);
     }
 
+    @Override
     public Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) throws Exception {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         DynamicPluginAdapter pluginAdapter = getPluginAdapter();
@@ -37,10 +39,12 @@ public class DynamicSparkStreamingFlumeNodeModuleGroup extends AbstractNodeModul
                         DynamicModuleGroupConstant.SPARK_FLUME_MRREQUIRED_MODULE_GROUP.getModuleName());
         checkRuntimeId(sparkFlumeMrRequiredRuntimeId);
 
-        DistributionModuleGroup dmg = new DistributionModuleGroup(sparkFlumeMrRequiredRuntimeId, true,
-                new SparkStreamingLinkedNodeCondition(distribution, version,
-                        SparkStreamingConstant.FLUME_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition());
-        hs.add(dmg);
+        if (StringUtils.isNotBlank(sparkFlumeMrRequiredRuntimeId)) {
+            DistributionModuleGroup dmg = new DistributionModuleGroup(sparkFlumeMrRequiredRuntimeId, true,
+                    new SparkStreamingLinkedNodeCondition(distribution, version,
+                            SparkStreamingConstant.FLUME_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition());
+            hs.add(dmg);
+        }
         return hs;
     }
 

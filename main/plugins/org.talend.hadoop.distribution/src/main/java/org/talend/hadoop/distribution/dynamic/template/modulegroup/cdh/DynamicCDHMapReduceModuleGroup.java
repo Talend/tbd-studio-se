@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.cdh;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.BasicExpression;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
@@ -47,7 +48,9 @@ public class DynamicCDHMapReduceModuleGroup extends DynamicMapReduceModuleGroup 
                 DynamicCDHModuleGroupConstant.TALEND_CLOUDERA_CDH_NAVIGATOR.getModuleName());
         checkRuntimeId(talendClouderaNaviRuntimeId);
 
-        moduleGroups.add(new DistributionModuleGroup(talendClouderaNaviRuntimeId, true, conditionUseNavigator));
+        if (StringUtils.isNotBlank(talendClouderaNaviRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(talendClouderaNaviRuntimeId, true, conditionUseNavigator));
+        }
         return moduleGroups;
     }
 

@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.condition.BasicExpression;
@@ -61,8 +62,12 @@ public class DynamicSparkStreamingModuleGroup extends AbstractModuleGroup {
         checkRuntimeId(sparkRuntimeId);
         checkRuntimeId(spark2RuntimeId);
 
-        hs.add(new DistributionModuleGroup(sparkRuntimeId, false, spark1Condition));
-        hs.add(new DistributionModuleGroup(spark2RuntimeId, false, spark2Condition));
+        if (StringUtils.isNotBlank(sparkRuntimeId)) {
+            hs.add(new DistributionModuleGroup(sparkRuntimeId, false, spark1Condition));
+        }
+        if (StringUtils.isNotBlank(spark2RuntimeId)) {
+            hs.add(new DistributionModuleGroup(spark2RuntimeId, false, spark2Condition));
+        }
 
         return hs;
     }

@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkst
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.SparkStreamingLinkedNodeCondition;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
@@ -38,10 +39,12 @@ public class DynamicSparkStreamingKafkaAvroModuleGroup extends AbstractNodeModul
                         DynamicModuleGroupConstant.SPARK_KAFKA_AVRO_MRREQUIRED_MODULE_GROUP.getModuleName());
         checkRuntimeId(sparkKafkaAvroMrRequiredRuntimeId);
 
-        DistributionModuleGroup dmg = new DistributionModuleGroup(sparkKafkaAvroMrRequiredRuntimeId, true,
-                new SparkStreamingLinkedNodeCondition(distribution, version,
-                        SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition());
-        hs.add(dmg);
+        if (StringUtils.isNotBlank(sparkKafkaAvroMrRequiredRuntimeId)) {
+            DistributionModuleGroup dmg = new DistributionModuleGroup(sparkKafkaAvroMrRequiredRuntimeId, true,
+                    new SparkStreamingLinkedNodeCondition(distribution, version,
+                            SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition());
+            hs.add(dmg);
+        }
         return hs;
     }
 }

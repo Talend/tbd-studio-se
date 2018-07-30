@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.cdh;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.condition.BasicExpression;
@@ -80,17 +81,29 @@ public class DynamicCDHSparkBatchModuleGroup extends DynamicSparkBatchModuleGrou
         checkRuntimeId(mrRuntimeId);
         checkRuntimeId(talendClouderaNaviRuntimeId);
 
-        moduleGroups.add(new DistributionModuleGroup(sparkMrRequiredRuntimeId, true, conditionSpark1));
-        moduleGroups.add(new DistributionModuleGroup(sparkMrRequiredRuntimeId, true, conditionSpark2));
-        moduleGroups.add(new DistributionModuleGroup(hdfsSpark1_6RuntimeId, false, conditionSpark1));
-        moduleGroups.add(new DistributionModuleGroup(hdfsSpark2_1RuntimeId, false, conditionSpark2));
-        moduleGroups.add(new DistributionModuleGroup(hdfsCommonRuntimeId, false, conditionSpark1));
-        moduleGroups.add(new DistributionModuleGroup(hdfsCommonRuntimeId, false, conditionSpark2));
-        moduleGroups.add(new DistributionModuleGroup(mrRuntimeId, false, conditionSpark1));
-        moduleGroups.add(new DistributionModuleGroup(mrRuntimeId, false, conditionSpark2));
-        ComponentCondition conditionUseNavigator = new SimpleComponentCondition(
-                new BasicExpression(SparkBatchConstant.USE_CLOUDERA_NAVIGATOR));
-        moduleGroups.add(new DistributionModuleGroup(talendClouderaNaviRuntimeId, true, conditionUseNavigator));
+        if (StringUtils.isNotBlank(sparkMrRequiredRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(sparkMrRequiredRuntimeId, true, conditionSpark1));
+            moduleGroups.add(new DistributionModuleGroup(sparkMrRequiredRuntimeId, true, conditionSpark2));
+        }
+        if (StringUtils.isNotBlank(hdfsSpark1_6RuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(hdfsSpark1_6RuntimeId, false, conditionSpark1));
+        }
+        if (StringUtils.isNotBlank(hdfsSpark2_1RuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(hdfsSpark2_1RuntimeId, false, conditionSpark2));
+        }
+        if (StringUtils.isNotBlank(hdfsCommonRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(hdfsCommonRuntimeId, false, conditionSpark1));
+            moduleGroups.add(new DistributionModuleGroup(hdfsCommonRuntimeId, false, conditionSpark2));
+        }
+        if (StringUtils.isNotBlank(mrRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(mrRuntimeId, false, conditionSpark1));
+            moduleGroups.add(new DistributionModuleGroup(mrRuntimeId, false, conditionSpark2));
+        }
+        if (StringUtils.isNotBlank(talendClouderaNaviRuntimeId)) {
+            ComponentCondition conditionUseNavigator = new SimpleComponentCondition(
+                    new BasicExpression(SparkBatchConstant.USE_CLOUDERA_NAVIGATOR));
+            moduleGroups.add(new DistributionModuleGroup(talendClouderaNaviRuntimeId, true, conditionUseNavigator));
+        }
 
         return moduleGroups;
     }
