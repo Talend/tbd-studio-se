@@ -293,37 +293,37 @@
 			context="plugin:org.talend.hadoop.distribution.qubole"
 			id="aws-java-sdk-dynamodb-1.11.160.jar"
 			name="aws-java-sdk-dynamodb-1.11.160.jar"
-			mvn_uri="mvn:com.amazonaws/aws-java-sdk-dynamodb-1.11.160/6.0.0">
+			mvn_uri="mvn:com.amazonaws/aws-java-sdk-dynamodb/1.11.160">
 		</libraryNeeded>
 		<libraryNeeded
 			context="plugin:org.talend.hadoop.distribution.qubole"
 			id="emr-dynamodb-hadoop-4.2.0.jar"
 			name="emr-dynamodb-hadoop-4.2.0.jar"
-			mvn_uri="mvn:com.amazon.emr/emr-dynamodb-hadoop-4.2.0/6.0.0">
+			mvn_uri="mvn:com.amazon.emr/emr-dynamodb-hadoop/4.2.0">
 		</libraryNeeded>
 		<libraryNeeded
 			context="plugin:org.talend.hadoop.distribution.qubole"
 			id="commons-pool2-2.4.2.jar"
 			name="commons-pool2-2.4.2.jar"
-			mvn_uri="mvn:org.apache.commons/commons-pool2-2.4.2/6.0.0">
+			mvn_uri="mvn:org.apache.commons/commons-pool2/2.4.2">
 		</libraryNeeded>
 		<libraryNeeded
 			context="plugin:org.talend.hadoop.distribution.qubole"
 			id="spark-streaming-kinesis-asl_2.11-2.2.0.jar"
 			name="spark-streaming-kinesis-asl_2.11-2.2.0.jar"
-			mvn_uri="mvn:org.apache.spark/spark-streaming-kinesis-asl_2.11-2.2.0/6.0.0">
+			mvn_uri="mvn:org.apache.spark/spark-streaming-kinesis-asl_2.11/2.2.0">
 		</libraryNeeded>
 		<libraryNeeded
 			context="plugin:org.talend.hadoop.distribution.qubole"
 			id="amazon-kinesis-client-1.9.1.jar"
 			name="amazon-kinesis-client-1.9.1.jar"
-			mvn_uri="mvn:com.amazonaws/amazon-kinesis-client-1.9.1/6.0.0">
+			mvn_uri="mvn:com.amazonaws/amazon-kinesis-client/1.9.1">
 		</libraryNeeded>
 		<libraryNeeded
 			context="plugin:org.talend.hadoop.distribution.qubole"
 			id="aws-java-sdk-kinesis-1.11.186.jar"
 			name="aws-java-sdk-kinesis-1.11.186.jar"
-			mvn_uri="mvn:com.amazonaws/aws-java-sdk-kinesis-1.11.186/6.0.0">
+			mvn_uri="mvn:com.amazonaws/aws-java-sdk-kinesis/1.11.186">
 		</libraryNeeded>
 
 
