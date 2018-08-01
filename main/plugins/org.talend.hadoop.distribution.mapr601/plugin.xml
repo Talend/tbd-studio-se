@@ -310,7 +310,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1"
             id="hadoop-aws-2.7.0-mapr-1803.jar"
             name="hadoop-aws-2.7.0-mapr-1803.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-aws/2.7.0-mapr-1803">
+			mvn_uri="mvn:org.apache.hadoop/hadoop-aws/2.7.0-mapr-1803">
         </libraryNeeded>
                        
         <libraryNeeded
@@ -345,7 +345,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1"
             id="hive-hbase-handler-2.1.1-mapr-1803.jar"
             name="hive-hbase-handler-2.1.1-mapr-1803.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-hbase-handler/2.1.1-mapr-1803">
+			mvn_uri="mvn:org.apache.hive/hive-hbase-handler/2.1.1-mapr-1803">
         </libraryNeeded> <!-- was hive-hbase-handler-1.2.0-mapr-1710-->
 
         <libraryNeeded
@@ -387,13 +387,13 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1" 
             id="ojai-2.0.1-mapr-1804.jar" 
             name="ojai-2.0.1-mapr-1804.jar"
-            mvn_uri="mvn:org.talend.libraries/ojai-2.0.1-mapr-1804/6.0.0">
+			mvn_uri="mvn:org.ojai/ojai/2.0.1-mapr-1804">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1" 
             id="mapr-ojai-driver-6.0.1-mapr.jar" 
             name="mapr-ojai-driver-6.0.1-mapr.jar"
-            mvn_uri="mvn:org.talend.libraries/mapr-ojai-driver-6.0.1-mapr/6.0.0">
+			mvn_uri="mvn:com.mapr.ojai/mapr-ojai-driver/6.0.1-mapr">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1" 
@@ -411,31 +411,31 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1" 
             id="jackson-databind-2.9.4.jar" 
             name="jackson-databind-2.9.4.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-databind/2.9.4">
+			mvn_uri="mvn:com.fasterxml.jackson.core/jackson-databind/2.9.4">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1" 
             id="jackson-annotations-2.9.4.jar" 
             name="jackson-annotations-2.9.4.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-annotations/2.9.4">
+			mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.4">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1" 
             id="jackson-core-2.9.4.jar" 
             name="jackson-core-2.9.4.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-core/2.9.4">
+			mvn_uri="mvn:com.fasterxml.jackson.core/jackson-core/2.9.4">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1" 
             id="xercesImpl-2.9.1.jar" 
             name="xercesImpl-2.9.1.jar"
-            mvn_uri="mvn:org.talend.libraries/xercesImpl/2.9.1">
+			mvn_uri="mvn:xerces/xercesImpl/2.9.1">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1" 
             id="xml-apis-1.3.04.jar" 
             name="xml-apis-1.3.04.jar"
-            mvn_uri="mvn:org.talend.libraries/xml-apis/1.3.04">
+			mvn_uri="mvn:xml-apis/xml-apis/1.3.04">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1" 
@@ -447,7 +447,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1" 
             id="serializer-2.7.1.jar" 
             name="serializer-2.7.1.jar"
-            mvn_uri="mvn:org.talend.libraries/serializer/2.7.1">
+			mvn_uri="mvn:xalan/serializer/2.7.1">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1" 
@@ -483,7 +483,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1" 
             id="slf4j-log4j12-1.7.12.jar" 
             name="slf4j-log4j12-1.7.12.jar"
-            mvn_uri="mvn:org.talend.libraries/slf4j-log4j12/1.7.12">
+			mvn_uri="mvn:org.slf4j/slf4j-log4j12/1.7.12">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1" 
@@ -549,13 +549,13 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1"
             id="flume-ng-sdk-1.8.0-mapr-1803.jar"
             name="flume-ng-sdk-1.8.0-mapr-1803.jar"
-            mvn_uri="mvn:org.talend.libraries/flume-ng-sdk/1.8.0-mapr-1803">
+			mvn_uri="mvn:org.apache.flume/flume-ng-sdk/1.8.0-mapr-1803">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1"
             id="flume-ng-core-1.8.0-mapr-1803.jar"
             name="flume-ng-core-1.8.0-mapr-1803.jar"
-            mvn_uri="mvn:org.talend.libraries/flume-ng-core/1.8.0-mapr-1803">
+			mvn_uri="mvn:org.apache.flume/flume-ng-core/1.8.0-mapr-1803">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1"
