@@ -14,6 +14,8 @@ package org.talend.hadoop.distribution.emr5150.test.modulegroup;
 
 import static org.junit.Assert.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import org.junit.Test;
@@ -25,12 +27,21 @@ public class EMR5150HDFSModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
+        Map<String, String> results = new HashMap<>();
+        results.put(EMR5150Constant.HDFS_MODULE_GROUP.getModuleName(), null);
+        
         Set<DistributionModuleGroup> moduleGroups = EMR5150HDFSModuleGroup.getModuleGroups();
-        assertEquals(1, moduleGroups.size());
+        assertEquals(results.size(), moduleGroups.size());
         for (DistributionModuleGroup module : moduleGroups) {
-            assertEquals(EMR5150Constant.HDFS_MODULE_GROUP.getModuleName(), module.getModuleName());
-            assertNull(module.getRequiredIf());
+            assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$
+            if (results.get(module.getModuleName()) == null) {
+                assertTrue("The condition of the module " + module.getModuleName() + " is not null.", //$NON-NLS-1$ //$NON-NLS-2$
+                        results.get(module.getModuleName()) == null);
+            } else {
+                assertTrue("The condition of the module " + module.getModuleName() + " is null, but it should be " //$NON-NLS-1$ //$NON-NLS-2$
+                        + results.get(module.getModuleName()) + ".", results.get(module.getModuleName()) != null); //$NON-NLS-1$
+                assertEquals(results.get(module.getModuleName()), module.getRequiredIf().getConditionString());
+            }
         }
-
     }
 }

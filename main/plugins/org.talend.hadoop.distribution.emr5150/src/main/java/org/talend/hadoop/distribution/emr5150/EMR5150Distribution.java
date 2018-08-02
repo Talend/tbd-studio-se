@@ -29,8 +29,11 @@ import org.talend.hadoop.distribution.component.HBaseComponent;
 import org.talend.hadoop.distribution.component.HCatalogComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
+import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
+import org.talend.hadoop.distribution.component.SparkBatchComponent;
+import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.HDFSConstant;
@@ -43,9 +46,12 @@ import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150HBaseModuleGrou
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150HCatalogModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150HDFSModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150HiveModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150MapReduceModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150PigModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150PigOutputModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150SparkBatchModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150SqoopModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.mr.EMR5150MRS3NodeModuleGroup;
@@ -55,21 +61,20 @@ import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkbatch.EMR515
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkbatch.EMR5150SparkBatchAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkbatch.EMR5150SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkbatch.EMR5150SparkBatchS3NodeModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkbatch.EMR5150SparkBatchSqlRowHiveNodeModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkstreaming.EMR5150SparkStreamingFlumeNodeModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkstreaming.EMR5150SparkStreamingKafkaAssemblyModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkstreaming.EMR5150SparkStreamingKinesisNodeModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkstreaming.EMR5150SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkstreaming.EMR5150SparkStreamingS3NodeModuleGroup;
+import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkstreaming.EMR5150SparkStreamingSqlRowHiveNodeModuleGroup;
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
 @SuppressWarnings("nls")
-public class EMR5150Distribution extends AbstractDistribution implements
- HBaseComponent, HDFSComponent, MRComponent,
-        PigComponent, HCatalogComponent, HiveComponent, SqoopComponent, IAmazonEMRDistribution// ,
-                                                                                              // HiveOnSparkComponent,SparkBatchComponent,
-                                                                                              // SparkStreamingComponent
-{
+public class EMR5150Distribution extends AbstractDistribution implements HBaseComponent, HDFSComponent, MRComponent,
+        PigComponent, HCatalogComponent, HiveComponent, SqoopComponent, IAmazonEMRDistribution, HiveOnSparkComponent,
+        SparkBatchComponent, SparkStreamingComponent {
 
     public static final String VERSION = "EMR_5_15_0"; //$NON-NLS-1$
 
@@ -119,7 +124,7 @@ public class EMR5150Distribution extends AbstractDistribution implements
 				EMR5150HCatalogModuleGroup.getModuleGroups());
 		result.put(ComponentType.HDFS, EMR5150HDFSModuleGroup.getModuleGroups());
 		result.put(ComponentType.HIVE, EMR5150HiveModuleGroup.getModuleGroups());
-        // result.put(ComponentType.HIVEONSPARK, EMR5150HiveOnSparkModuleGroup.getModuleGroups());
+        result.put(ComponentType.HIVEONSPARK, EMR5150HiveOnSparkModuleGroup.getModuleGroups());
 		result.put(ComponentType.MAPREDUCE,
 				EMR5150MapReduceModuleGroup.getModuleGroups());
 		result.put(ComponentType.PIG, EMR5150PigModuleGroup.getModuleGroups());
@@ -129,8 +134,8 @@ public class EMR5150Distribution extends AbstractDistribution implements
 				EMR5150SqoopModuleGroup.getModuleGroups());
 		result.put(ComponentType.HBASE,
 				EMR5150HBaseModuleGroup.getModuleGroups());
-        // result.put(ComponentType.SPARKBATCH, EMR5150SparkBatchModuleGroup.getModuleGroups());
-        // result.put(ComponentType.SPARKSTREAMING, EMR5150SparkStreamingModuleGroup.getModuleGroups());
+        result.put(ComponentType.SPARKBATCH, EMR5150SparkBatchModuleGroup.getModuleGroups());
+        result.put(ComponentType.SPARKSTREAMING, EMR5150SparkStreamingModuleGroup.getModuleGroups());
 
 		return result;
 	}
@@ -164,6 +169,10 @@ public class EMR5150Distribution extends AbstractDistribution implements
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
                 EMR5150SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
         
+        // Spark Batch tSQLRow nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.SPARK_SQL_ROW_COMPONENT),
+                EMR5150SparkBatchSqlRowHiveNodeModuleGroup.getModuleGroups(distribution, version));
+        
         // Spark Batch S3 nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.S3_CONFIGURATION_COMPONENT),
                 EMR5150SparkBatchS3NodeModuleGroup.getModuleGroups(distribution, version));
@@ -192,6 +201,10 @@ public class EMR5150Distribution extends AbstractDistribution implements
         		EMR5150SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_STREAM_INPUT_COMPONENT),
                 EMR5150SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
+        
+        // Spark Streaming tSQLRow nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.SPARK_SQL_ROW_COMPONENT),
+                EMR5150SparkStreamingSqlRowHiveNodeModuleGroup.getModuleGroups(distribution, version));
 
         // Spark Streaming S3 nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.S3_CONFIGURATION_COMPONENT),
@@ -382,7 +395,7 @@ public class EMR5150Distribution extends AbstractDistribution implements
 	@Override
     public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
-        version.add(ESparkVersion.SPARK_2_2);
+        version.add(ESparkVersion.SPARK_2_3);
         return version;
     }
 	
@@ -431,31 +444,31 @@ public class EMR5150Distribution extends AbstractDistribution implements
 		return true;
 	}
 
-    // @Override
-    // public boolean doSupportSparkStandaloneMode() {
-    // return false;
-    // }
+    @Override
+    public boolean doSupportSparkStandaloneMode() {
+        return false;
+    }
 
-    // @Override
-    // public boolean doSupportSparkYarnClientMode() {
-    // return true;
-    // }
+    @Override
+    public boolean doSupportSparkYarnClientMode() {
+        return true;
+    }
 
-    // @Override
-    // public boolean doSupportDynamicMemoryAllocation() {
-    // return true;
-    // }
+    @Override
+    public boolean doSupportDynamicMemoryAllocation() {
+        return true;
+    }
 
-    // @Override
-    // public boolean doSupportCheckpointing() {
-    // return true;
-    // }
+    @Override
+    public boolean doSupportCheckpointing() {
+        return true;
+    }
 
-    // @Override
-    // public boolean doSupportBackpressure() {
-    // return true;
-    // }
-    
+    @Override
+    public boolean doSupportBackpressure() {
+        return true;
+    }
+
     @Override
     public boolean doSupportHDFSEncryption() {
         return true;

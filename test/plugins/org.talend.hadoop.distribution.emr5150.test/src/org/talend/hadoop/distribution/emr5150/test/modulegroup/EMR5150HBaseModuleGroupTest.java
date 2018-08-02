@@ -31,8 +31,7 @@ public class EMR5150HBaseModuleGroupTest {
         results.put(EMR5150Constant.HBASE_MODULE_GROUP.getModuleName(), null);
         results.put(EMR5150Constant.HDFS_MODULE_GROUP.getModuleName(), null);
         Set<DistributionModuleGroup> moduleGroups = EMR5150HBaseModuleGroup.getModuleGroups();
-        assertEquals(2, moduleGroups.size());
-        moduleGroups.iterator();
+        assertEquals(results.size(), moduleGroups.size());
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$
             if (results.get(module.getModuleName()) == null) {

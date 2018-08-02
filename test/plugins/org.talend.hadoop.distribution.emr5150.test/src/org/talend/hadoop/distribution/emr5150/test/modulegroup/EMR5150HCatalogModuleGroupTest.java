@@ -30,7 +30,7 @@ public class EMR5150HCatalogModuleGroupTest {
         Map<String, String> results = new HashMap<>();
         results.put(EMR5150Constant.HDFS_MODULE_GROUP.getModuleName(), null);
         Set<DistributionModuleGroup> moduleGroups = EMR5150HCatalogModuleGroup.getModuleGroups();
-        assertEquals(1, moduleGroups.size());
+        assertEquals(results.size(), moduleGroups.size());
         moduleGroups.iterator();
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$

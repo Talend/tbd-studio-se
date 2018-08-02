@@ -34,18 +34,12 @@ public class QubolePigOutputModuleGroup {
                 PigOutputConstant.STORER_PARAMETER, EqualityOperator.EQ, PigOutputConstant.SEQUENCEFILE_STORER_VALUE));
         ComponentCondition rcfileStorerCondition = new SimpleComponentCondition(new BasicExpression(
                 PigOutputConstant.STORER_PARAMETER, EqualityOperator.EQ, PigOutputConstant.RCFILE_STORER_VALUE));
-        ComponentCondition hcatStorerCondition = new SimpleComponentCondition(new BasicExpression(
-                PigOutputConstant.STORER_PARAMETER, EqualityOperator.EQ, PigOutputConstant.HCAT_STORER_VALUE));
-        ComponentCondition hbaseStorerCondition = new SimpleComponentCondition(new BasicExpression(
-                PigOutputConstant.STORER_PARAMETER, EqualityOperator.EQ, PigOutputConstant.HBASE_STORER_VALUE));
 
         Set<DistributionModuleGroup> moduleGroups = new HashSet<>();
         moduleGroups.add(new DistributionModuleGroup(QuboleConstant.PIG_PARQUET_MODULE_GROUP.getModuleName(), false, parquetStorerCondition));
         moduleGroups.add(new DistributionModuleGroup(QuboleConstant.PIG_AVRO_MODULE_GROUP.getModuleName(), false, avroStorerCondition));
         moduleGroups.add(new DistributionModuleGroup(QuboleConstant.PIG_SEQUENCEFILE_MODULE_GROUP.getModuleName(), false, sequencefileStorerCondition));
         moduleGroups.add(new DistributionModuleGroup(QuboleConstant.PIG_RCFILE_MODULE_GROUP.getModuleName(), false, rcfileStorerCondition));
-        moduleGroups.add(new DistributionModuleGroup(QuboleConstant.PIG_HCATALOG_MODULE_GROUP.getModuleName(), false, hcatStorerCondition));
-        moduleGroups.add(new DistributionModuleGroup(QuboleConstant.PIG_HBASE_MODULE_GROUP.getModuleName(), false, hbaseStorerCondition));
         return moduleGroups;
     }
 }

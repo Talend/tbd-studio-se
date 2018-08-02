@@ -10,10 +10,9 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.emr5150.test.modulegroup;
+package org.talend.hadoop.distribution.emr5150.test.modulegroup.node.sparkbatch;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,19 +20,21 @@ import java.util.Set;
 
 import org.junit.Test;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
+import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.emr5150.EMR5150Constant;
-import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150MapReduceModuleGroup;
+import org.talend.hadoop.distribution.emr5150.EMR5150Distribution;
+import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkbatch.EMR5150SparkBatchAzureNodeModuleGroup;
 
-public class EMR5150MapReduceModuleGroupTest {
+public class EMR5150SparkBatchAzureNodeModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
         Map<String, String> results = new HashMap<>();
-        results.put(EMR5150Constant.HDFS_MODULE_GROUP.getModuleName(), null);
-        results.put(EMR5150Constant.MAPREDUCE_MODULE_GROUP.getModuleName(), null);
-        results.put(EMR5150Constant.MAPREDUCE_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
-        results.put(EMR5150Constant.MAPREDUCE_AVRO_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
-        Set<DistributionModuleGroup> moduleGroups = EMR5150MapReduceModuleGroup.getModuleGroups();
+        results.put(
+                EMR5150Constant.SPARK_AZURE_MRREQUIRED_MODULE_GROUP.getModuleName(),
+                "((#LINK@NODE."+SparkBatchConstant.SPARK_BATCH_AZURE_SPARKCONFIGURATION_LINKEDPARAMETER+".DISTRIBUTION=='AMAZON_EMR') AND (#LINK@NODE."+SparkBatchConstant.SPARK_BATCH_AZURE_SPARKCONFIGURATION_LINKEDPARAMETER+".SPARK_VERSION=='EMR_5_15_0')) AND (#LINK@NODE."+SparkBatchConstant.SPARK_BATCH_AZURE_SPARKCONFIGURATION_LINKEDPARAMETER+".SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+        
+        Set<DistributionModuleGroup> moduleGroups = EMR5150SparkBatchAzureNodeModuleGroup.getModuleGroups(EMR5150Distribution.DISTRIBUTION_NAME, EMR5150Distribution.VERSION);
         assertEquals(results.size(), moduleGroups.size());
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$

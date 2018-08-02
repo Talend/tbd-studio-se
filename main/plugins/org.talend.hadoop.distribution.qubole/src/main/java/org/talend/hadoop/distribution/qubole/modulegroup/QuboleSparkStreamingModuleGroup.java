@@ -20,18 +20,20 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.qubole.QuboleConstant;
 import org.talend.hadoop.distribution.utils.ModuleGroupsUtils;
 
-public class QuboleSparkBatchModuleGroup {
+public class QuboleSparkStreamingModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> moduleGroups = new HashSet<>();
         moduleGroups.add(new DistributionModuleGroup(QuboleConstant.SPARK_MODULE_GROUP.getModuleName()));
+        moduleGroups.add(new DistributionModuleGroup(QuboleConstant.SPARK_STREAMING_MODULE_GROUP.getModuleName()));
+        moduleGroups.add(new DistributionModuleGroup(QuboleConstant.SPARK_STREAMING_MRREQUIRED_MODULE_GROUP.getModuleName(), true, null));
         moduleGroups.add(new DistributionModuleGroup(QuboleConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName()));
         moduleGroups.add(new DistributionModuleGroup(QuboleConstant.S3_MODULE_GROUP.getModuleName()));
         return moduleGroups;
     }
-    
-    public static Set<DistributionModuleGroup> getDynamoModuleGroups(String distribution, String version, String condition) {
+
+    public static Set<DistributionModuleGroup> getKinesisModuleGroups(String distribution, String version, String condition) {
         return ModuleGroupsUtils.getModuleGroups(distribution, version, condition,
-                QuboleConstant.SPARK_DYNAMODB_MODULE_GROUP.getModuleName(), true);
+                QuboleConstant.SPARK_KINESIS_MODULE_GROUP.getModuleName(), true);
     }
 }
