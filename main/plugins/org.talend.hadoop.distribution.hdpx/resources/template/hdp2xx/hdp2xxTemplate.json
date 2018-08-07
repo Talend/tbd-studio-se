@@ -4,7 +4,7 @@
 	"distribution": "HORTONWORKS",
 	"templateId": "HDP2xxDistributionTemplate",
 	"baseVersion": "2.5.0",
-	"topVersion": "3.0.0",
+	"topVersion": "3.0.3",
 	"dynamicVersion": "will be filled during runtime",
 	"properties": {
 		"context": "plugin:org.talend.hadoop.distribution.hdpx"
@@ -688,27 +688,18 @@
 			"context": "{properties.context}",
 			"groupId": "com.amazonaws",
 			"artifactId": "aws-java-sdk-dynamodb",
-			"version": "1.10.6",
+			"version": "1.11.160",
 			"classifier": "",
 			"description": "",
 			"exclusions": [
 			]
 		},
 		{
-			"id": "emr-core-2.4.0",
+			"id": "emr-dynamodb-hadoop-4.2.0",
 			"type": "STANDARD",
 			"context": "{properties.context}",
-			"jarName": "emr-core-2.4.0.jar",
-			"mvnUri": "mvn:org.talend.libraries/emr-core-2.4.0/6.0.0",
-			"useStudioRepository": "true",
-			"description": ""
-		},
-		{
-			"id": "emr-ddb-hadoop-3.0.0",
-			"type": "STANDARD",
-			"context": "{properties.context}",
-			"jarName": "emr-ddb-hadoop-3.0.0.jar",
-			"mvnUri": "mvn:org.talend.libraries/emr-ddb-hadoop-3.0.0/6.2.0",
+			"jarName": "emr-dynamodb-hadoop-4.2.0.jar",
+			"mvnUri": "mvn:com.amazon.emr/emr-dynamodb-hadoop/4.2.0",
 			"useStudioRepository": "true",
 			"description": ""
 		},
@@ -950,8 +941,7 @@
 			"id": "SPARK-DYNAMODB-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
 			"modules": [
-				"emr-core-2.4.0",
-				"emr-ddb-hadoop-3.0.0",
+				"emr-dynamodb-hadoop-4.2.0",
 				"aws-java-sdk-dynamodb"
 			]
 		},
