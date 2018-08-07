@@ -27,6 +27,7 @@ import org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkbat
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkbatch.DynamicSparkBatchAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkbatch.DynamicSparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkbatch.DynamicSparkBatchS3NodeModuleGroup;
+import org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkbatch.DynamicSparkJDBCNodeModuleGroup;
 
 /**
  * DOC cmeng  class global comment. Detailled comment
@@ -79,13 +80,13 @@ public class DynamicSparkBatchModuleGroupTemplate extends AbstractDynamicModuleG
         nodeModuleGroupsMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
                 buildNodeModuleGroups4SparkBatch4GraphFrames(pluginAdapter, distribution, version));
 
-        // DynamoDB ...
+        // DynamoDB module groups
         Set<DistributionModuleGroup> dynamoDBNodeModuleGroups = buildNodeModuleGroup4Spark4DynamoDB(pluginAdapter, distribution,
-                version, "USE_EXISTING_CONNECTION == 'false'"); //$NON-NLS-1$
+                version, "USE_EXISTING_CONNECTION == 'false'");
         Set<DistributionModuleGroup> dynamoDBConfigurationModuleGroups = buildNodeModuleGroup4Spark4DynamoDB(pluginAdapter,
                 distribution, version, null);
 
-        // ... in Spark batch
+        // attach module group to correspondent nodes
         nodeModuleGroupsMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_INPUT_COMPONENT),
                 dynamoDBNodeModuleGroups);
         nodeModuleGroupsMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_OUTPUT_COMPONENT),
@@ -93,7 +94,18 @@ public class DynamicSparkBatchModuleGroupTemplate extends AbstractDynamicModuleG
         nodeModuleGroupsMap.put(
                 new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_CONFIGURATION_COMPONENT),
                 dynamoDBConfigurationModuleGroups);
+        
+        Set<DistributionModuleGroup> jdbcIONodeModuleGroups = buildNodeModuleGroup4Spark4JDBC(pluginAdapter, distribution, version, "USE_EXISTING_CONNECTION == 'false'");
+        Set<DistributionModuleGroup> jdbcConfNodeModuleGroups = buildNodeModuleGroup4Spark4JDBC(pluginAdapter, distribution, version, null);
+        
+        nodeModuleGroupsMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.TERADATA_OUTPUT_COMPONENT), jdbcIONodeModuleGroups);
+        nodeModuleGroupsMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.TERADATA_INPUT_COMPONENT), jdbcIONodeModuleGroups);
+        nodeModuleGroupsMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.ORACLE_OUTPUT_COMPONENT), jdbcIONodeModuleGroups);
+        nodeModuleGroupsMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.ORACLE_INPUT_COMPONENT), jdbcIONodeModuleGroups);
+        nodeModuleGroupsMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.TERADATA_CONFIG_COMPONENT), jdbcConfNodeModuleGroups);
+        nodeModuleGroupsMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.ORACLE_CONFIG_COMPONENT), jdbcConfNodeModuleGroups);
 
+        // TODO: to be removed
         buildNodeModuleGroups4SparkBatch4Kudu(pluginAdapter, nodeModuleGroupsMap, distribution, version);
     }
 
@@ -110,6 +122,11 @@ public class DynamicSparkBatchModuleGroupTemplate extends AbstractDynamicModuleG
     protected Set<DistributionModuleGroup> buildNodeModuleGroup4Spark4DynamoDB(DynamicPluginAdapter pluginAdapter,
             String distribution, String version, String condition) throws Exception {
         return new DynamicSparkDynamoDBNodeModuleGroup(pluginAdapter).getModuleGroups(distribution, version, condition);
+    }
+    
+    protected Set<DistributionModuleGroup> buildNodeModuleGroup4Spark4JDBC(DynamicPluginAdapter pluginAdapter,
+            String distribution, String version, String condition) throws Exception {
+        return new DynamicSparkJDBCNodeModuleGroup(pluginAdapter).getModuleGroups(distribution, version, condition);
     }
 
     protected void buildNodeModuleGroups4SparkBatch4Kudu(DynamicPluginAdapter pluginAdapter,
