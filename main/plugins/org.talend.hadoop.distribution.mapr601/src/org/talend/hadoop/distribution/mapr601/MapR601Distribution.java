@@ -32,7 +32,6 @@ import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.MapRDBComponent;
-import org.talend.hadoop.distribution.component.MapROJAIComponent;
 import org.talend.hadoop.distribution.component.MapRStreamsComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
@@ -77,7 +76,7 @@ import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SparkStreamingM
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SqoopModuleGroup;
 
-public class MapR601Distribution extends AbstractMapRDistribution implements HDFSComponent, MapROJAIComponent,
+public class MapR601Distribution extends AbstractMapRDistribution implements HDFSComponent,
         SparkBatchComponent, SparkStreamingComponent, HiveComponent, HiveOnSparkComponent, MapRStreamsComponent,
         MapRDBComponent, IMapRDistribution, HCatalogComponent, MRComponent, PigComponent, SqoopComponent,
         ImpalaComponent {
@@ -118,7 +117,6 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
         moduleGroups.put(ComponentType.HIVEONSPARK, MapR601HiveOnSparkModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPRSTREAMS, MapR601MapRStreamsModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPRDB, MapR601HBaseModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.OJAI, MapR601OjaiModuleGroup.getModuleGroups());
 
         nodeModuleGroups = new HashMap<>();
 
@@ -401,16 +399,6 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
     @Override
     public boolean doSupportWebHDFS() {
         return false;
-    }
-
-    @Override
-    public boolean doSupportExplicitSorts() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportJsonQueries() {
-        return true;
     }
 
     @Override

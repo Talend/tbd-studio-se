@@ -310,6 +310,35 @@ public abstract class AbstractDistribution {
         return false;
     }
     
+    public boolean isActivated() {
+        return true;
+    }
+    
+    public boolean isDynamicDistribution() {
+        return false;
+    }
+
+    public boolean useS3AProperties() {
+        return false;
+    }
+
+    public boolean doSupportAssumeRole() {
+        return false;
+    }
+
+    public boolean doSupportAvroDeflateProperties(){
+        return false;
+    }
+    
+    public boolean doSupportWebHDFS(){
+        return true;
+    }
+    
+    public boolean useOldAWSAPI() {
+        return true;
+    }
+
+    
     public String getWinUtilsName() {
     	return EWinUtilsName.WINUTILS_HADOOP_2_6.toString();
     };
