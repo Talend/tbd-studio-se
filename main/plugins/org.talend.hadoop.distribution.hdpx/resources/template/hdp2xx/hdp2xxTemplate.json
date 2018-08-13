@@ -1340,7 +1340,10 @@
 				"commons-logging-1.2",
 				"commons-codec-1.9",
 				"paranamer-2.3",
-				"atlas-properties-0.1.1-0.7-0.0.1"
+				"atlas-properties-0.1.1-0.7-0.0.1",
+				"json4s-core_2.11-3.2.11",
+				"json4s-ast_2.11-3.2.11",
+				"json4s-native_2.11-3.2.11"
 			]
 		}
 	],
