@@ -44,8 +44,7 @@ public class DynamicHDPSparkStreamingKinesisNodeModuleGroup extends DynamicSpark
     protected void init() {
         spark2Condition = new SimpleComponentCondition(
                 new LinkedNodeExpression(SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
-                        "SUPPORTED_SPARK_VERSION", EqualityOperator.EQ, //$NON-NLS-1$
-                        ESparkVersion.SPARK_2_1.getSparkVersion()));
+                        "SUPPORTED_SPARK_VERSION", EqualityOperator.EQ, ESparkVersion.SPARK_2_1.getSparkVersion()));
     }
 
     @Override

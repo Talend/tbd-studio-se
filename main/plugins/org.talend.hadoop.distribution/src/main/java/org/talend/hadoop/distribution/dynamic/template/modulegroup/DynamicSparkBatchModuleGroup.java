@@ -63,7 +63,7 @@ public class DynamicSparkBatchModuleGroup extends AbstractModuleGroup {
 
     @Override
     public Set<DistributionModuleGroup> getModuleGroups() throws Exception {
-        Set<DistributionModuleGroup> hs = new HashSet<>();
+        Set<DistributionModuleGroup> moduleGroups = new HashSet<>();
         DynamicPluginAdapter pluginAdapter = getPluginAdapter();
 
         String sparkRuntimeId = pluginAdapter
@@ -75,13 +75,13 @@ public class DynamicSparkBatchModuleGroup extends AbstractModuleGroup {
         checkRuntimeId(spark2RuntimeId);
 
         if (StringUtils.isNotBlank(sparkRuntimeId)) {
-            hs.add(new DistributionModuleGroup(sparkRuntimeId, false, conditionSpark1));
+            moduleGroups.add(new DistributionModuleGroup(sparkRuntimeId, false, conditionSpark1));
         }
         if (StringUtils.isNotBlank(spark2RuntimeId)) {
-            hs.add(new DistributionModuleGroup(spark2RuntimeId, false, conditionSpark2));
+            moduleGroups.add(new DistributionModuleGroup(spark2RuntimeId, false, conditionSpark2));
         }
 
-        return hs;
+        return moduleGroups;
     }
 
 }
