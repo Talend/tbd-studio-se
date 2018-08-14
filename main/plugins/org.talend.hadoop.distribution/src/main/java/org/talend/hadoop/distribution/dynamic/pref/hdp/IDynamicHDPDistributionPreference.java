@@ -26,7 +26,8 @@ public interface IDynamicHDPDistributionPreference extends IDynamicDistributionP
 
     static final String PREF_REPOSITORY = "distribution.dynamic.repository.hdp.repository"; //$NON-NLS-1$
 
-    static final String PREF_REPOSITORY_DEFAULT = "http://repo.hortonworks.com/content/repositories/releases/"; //$NON-NLS-1$
+    // http://repo.hortonworks.com/content/repositories/releases/
+    static final String PREF_REPOSITORY_DEFAULT = "https://talend-update.talend.com/nexus/content/repositories/hortonworks-releases/"; //$NON-NLS-1$
 
     static final String PREF_ANONYMOUS = "distribution.dynamic.repository.hdp.isAnonymous"; //$NON-NLS-1$
 
@@ -38,5 +39,5 @@ public interface IDynamicHDPDistributionPreference extends IDynamicDistributionP
 
     static final String PREF_PASSWORD = "distribution.dynamic.repository.hdp.password"; //$NON-NLS-1$
 
-    static final String PREF_PASSWORD_DEFAULT = "LycrWORKBL7x80mU8ziB6dCFh+ZjAYX/"; //$NON-NLS-1$
+    static final String PREF_PASSWORD_DEFAULT = "TBP1wZ9PnXFE4puY6jrIn67/QMHnRiJGu4RF3/k+EfufRWF7J0u1aw=="; //$NON-NLS-1$
 }
