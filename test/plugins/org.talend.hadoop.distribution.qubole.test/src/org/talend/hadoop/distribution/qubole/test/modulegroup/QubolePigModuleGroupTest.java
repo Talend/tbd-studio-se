@@ -29,7 +29,6 @@ public class QubolePigModuleGroupTest {
     public void testModuleGroups() throws Exception {
         Map<String, String> results = new HashMap<>();
         results.put(QuboleConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), null);
-        results.put(QuboleConstant.PIG_MODULE_GROUP.getModuleName(), null);
         results.put(QuboleConstant.S3_MODULE_GROUP.getModuleName(), null);
         results.put(QuboleConstant.PIG_PARQUET_MODULE_GROUP.getModuleName(), "(LOAD=='PARQUETLOADER') OR (STORE=='PARQUETSTORER')");
         results.put(QuboleConstant.PIG_AVRO_MODULE_GROUP.getModuleName(), "(LOAD=='AVROSTORAGE') OR (STORE=='AVROSTORAGE')");
@@ -37,7 +36,7 @@ public class QubolePigModuleGroupTest {
         results.put(QuboleConstant.PIG_RCFILE_MODULE_GROUP.getModuleName(), "(LOAD=='RCFILEPIGSTORAGE') OR (STORE=='RCFILEPIGSTORAGE')");
         
         Set<DistributionModuleGroup> moduleGroups = QubolePigModuleGroup.getModuleGroups();
-        assertEquals(7, moduleGroups.size());
+        assertEquals(6, moduleGroups.size());
 
         for (DistributionModuleGroup group : moduleGroups) {
             assertEquals(results.get(group.getModuleName()), group.getRequiredIf() == null ? null : group.getRequiredIf().getConditionString());

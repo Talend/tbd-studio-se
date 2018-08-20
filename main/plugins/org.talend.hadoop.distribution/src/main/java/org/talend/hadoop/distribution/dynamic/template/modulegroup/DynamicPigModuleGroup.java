@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.BasicExpression;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
@@ -29,6 +30,7 @@ public class DynamicPigModuleGroup extends AbstractModuleGroup {
         super(pluginAdapter);
     }
 
+    @Override
     public Set<DistributionModuleGroup> getModuleGroups() throws Exception {
         ComponentCondition hbaseLoaderCondition = new SimpleComponentCondition(
                 new BasicExpression(PigConstant.LOADER_PARAMETER, EqualityOperator.EQ, PigConstant.HBASE_LOADER_VALUE));
@@ -81,17 +83,39 @@ public class DynamicPigModuleGroup extends AbstractModuleGroup {
         checkRuntimeId(pigSequenceRuntimeId);
         checkRuntimeId(pigS3RuntimeId);
 
-        hs.add(new DistributionModuleGroup(pigRuntimeId));
-        hs.add(new DistributionModuleGroup(hdfsRuntimeId));
-        hs.add(new DistributionModuleGroup(mrRuntimeId));
-        hs.add(new DistributionModuleGroup(pigHCatRuntimeId, false, hcatLoaderCondition));
-        hs.add(new DistributionModuleGroup(hbaseRuntimeId, false, hbaseLoaderCondition));
-        hs.add(new DistributionModuleGroup(pigHBaseRuntimeId, false, hbaseLoaderCondition));
-        hs.add(new DistributionModuleGroup(pigParquetRuntimeId, false, parquetLoaderCondition));
-        hs.add(new DistributionModuleGroup(pigAvroRuntimeId, false, avroLoaderCondition));
-        hs.add(new DistributionModuleGroup(pigRcfileRuntimeId, false, rcfileLoaderCondition));
-        hs.add(new DistributionModuleGroup(pigSequenceRuntimeId, false, sequencefileLoaderCondition));
-        hs.add(new DistributionModuleGroup(pigS3RuntimeId, false, s3condition));
+        if (StringUtils.isNotBlank(pigRuntimeId)) {
+            hs.add(new DistributionModuleGroup(pigRuntimeId));
+        }
+        if (StringUtils.isNotBlank(hdfsRuntimeId)) {
+            hs.add(new DistributionModuleGroup(hdfsRuntimeId));
+        }
+        if (StringUtils.isNotBlank(mrRuntimeId)) {
+            hs.add(new DistributionModuleGroup(mrRuntimeId));
+        }
+        if (StringUtils.isNotBlank(pigHCatRuntimeId)) {
+            hs.add(new DistributionModuleGroup(pigHCatRuntimeId, false, hcatLoaderCondition));
+        }
+        if (StringUtils.isNotBlank(hbaseRuntimeId)) {
+            hs.add(new DistributionModuleGroup(hbaseRuntimeId, false, hbaseLoaderCondition));
+        }
+        if (StringUtils.isNotBlank(pigHBaseRuntimeId)) {
+            hs.add(new DistributionModuleGroup(pigHBaseRuntimeId, false, hbaseLoaderCondition));
+        }
+        if (StringUtils.isNotBlank(pigParquetRuntimeId)) {
+            hs.add(new DistributionModuleGroup(pigParquetRuntimeId, false, parquetLoaderCondition));
+        }
+        if (StringUtils.isNotBlank(pigAvroRuntimeId)) {
+            hs.add(new DistributionModuleGroup(pigAvroRuntimeId, false, avroLoaderCondition));
+        }
+        if (StringUtils.isNotBlank(pigRcfileRuntimeId)) {
+            hs.add(new DistributionModuleGroup(pigRcfileRuntimeId, false, rcfileLoaderCondition));
+        }
+        if (StringUtils.isNotBlank(pigSequenceRuntimeId)) {
+            hs.add(new DistributionModuleGroup(pigSequenceRuntimeId, false, sequencefileLoaderCondition));
+        }
+        if (StringUtils.isNotBlank(pigS3RuntimeId)) {
+            hs.add(new DistributionModuleGroup(pigS3RuntimeId, false, s3condition));
+        }
 
         return hs;
     }

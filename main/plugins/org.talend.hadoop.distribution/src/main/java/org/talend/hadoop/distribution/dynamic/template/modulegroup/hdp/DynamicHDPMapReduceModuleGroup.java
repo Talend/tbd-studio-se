@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.hdp;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.BasicExpression;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
@@ -47,7 +48,9 @@ public class DynamicHDPMapReduceModuleGroup extends DynamicMapReduceModuleGroup 
                 .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.ATLAS_SPARK_1_MODULE_GROUP.getModuleName());
         checkRuntimeId(atlasSpark1RuntimeId);
 
-        moduleGroups.add(new DistributionModuleGroup(atlasSpark1RuntimeId, false, useAtlas));
+        if (StringUtils.isNotBlank(atlasSpark1RuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(atlasSpark1RuntimeId, false, useAtlas));
+        }
         return moduleGroups;
     }
 

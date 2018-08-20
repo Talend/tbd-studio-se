@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.hdp;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.BasicExpression;
 import org.talend.hadoop.distribution.condition.BooleanOperator;
@@ -60,8 +61,12 @@ public class DynamicHDPPigModuleGroup extends DynamicPigModuleGroup {
         checkRuntimeId(tezRuntimeId);
         checkRuntimeId(tezServerRuntimeId);
 
-        moduleGroups.add(new DistributionModuleGroup(tezRuntimeId, true, tezCondition));
-        moduleGroups.add(new DistributionModuleGroup(tezServerRuntimeId, true, tezServerCondition));
+        if (StringUtils.isNotBlank(tezRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(tezRuntimeId, true, tezCondition));
+        }
+        if (StringUtils.isNotBlank(tezServerRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(tezServerRuntimeId, true, tezServerCondition));
+        }
         return moduleGroups;
     }
 

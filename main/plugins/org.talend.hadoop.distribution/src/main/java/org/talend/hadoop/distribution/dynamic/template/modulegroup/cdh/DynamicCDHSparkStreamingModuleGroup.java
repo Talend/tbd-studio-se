@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.cdh;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.condition.BasicExpression;
@@ -72,12 +73,20 @@ public class DynamicCDHSparkStreamingModuleGroup extends DynamicSparkStreamingMo
         checkRuntimeId(hdfsCommonRuntimeId);
         checkRuntimeId(mrRuntimeId);
 
-        moduleGroups.add(new DistributionModuleGroup(hdfsSpark1RuntimeId, false, spark1Condition));
-        moduleGroups.add(new DistributionModuleGroup(hdfsSpark2RuntimeId, false, spark2Condition));
-        moduleGroups.add(new DistributionModuleGroup(hdfsCommonRuntimeId, false, spark1Condition));
-        moduleGroups.add(new DistributionModuleGroup(hdfsCommonRuntimeId, false, spark2Condition));
-        moduleGroups.add(new DistributionModuleGroup(mrRuntimeId, false, spark1Condition));
-        moduleGroups.add(new DistributionModuleGroup(mrRuntimeId, false, spark2Condition));
+        if (StringUtils.isNotBlank(hdfsSpark1RuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(hdfsSpark1RuntimeId, false, spark1Condition));
+        }
+        if (StringUtils.isNotBlank(hdfsSpark2RuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(hdfsSpark2RuntimeId, false, spark2Condition));
+        }
+        if (StringUtils.isNotBlank(hdfsCommonRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(hdfsCommonRuntimeId, false, spark1Condition));
+            moduleGroups.add(new DistributionModuleGroup(hdfsCommonRuntimeId, false, spark2Condition));
+        }
+        if (StringUtils.isNotBlank(mrRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(mrRuntimeId, false, spark1Condition));
+            moduleGroups.add(new DistributionModuleGroup(mrRuntimeId, false, spark2Condition));
+        }
 
         return moduleGroups;
     }

@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.hdp;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.condition.BooleanOperator;
@@ -72,9 +73,15 @@ public class DynamicHDPHiveOnSparkModuleGroup extends DynamicHiveOnSparkModuleGr
         checkRuntimeId(sparkHiveRuntimeId);
         checkRuntimeId(spark2HiveRuntimeId);
 
-        moduleGroups.add(new DistributionModuleGroup(tezRuntimeId, false, null));
-        moduleGroups.add(new DistributionModuleGroup(sparkHiveRuntimeId, true, spark1Condition));
-        moduleGroups.add(new DistributionModuleGroup(spark2HiveRuntimeId, true, spark2Condition));
+        if (StringUtils.isNotBlank(tezRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(tezRuntimeId, false, null));
+        }
+        if (StringUtils.isNotBlank(sparkHiveRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(sparkHiveRuntimeId, true, spark1Condition));
+        }
+        if (StringUtils.isNotBlank(spark2HiveRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(spark2HiveRuntimeId, true, spark2Condition));
+        }
 
         return moduleGroups;
     }

@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.hdp;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.DynamicModuleGroupConstant;
@@ -46,10 +47,14 @@ public class DynamicHDPSparkStreamingModuleGroup extends DynamicSparkStreamingMo
         checkRuntimeId(hdfsRuntimeId);
         checkRuntimeId(mapreduceRuntimeId);
 
-        moduleGroups.add(new DistributionModuleGroup(hdfsRuntimeId, false, spark1Condition));
-        moduleGroups.add(new DistributionModuleGroup(hdfsRuntimeId, false, spark2Condition));
-        moduleGroups.add(new DistributionModuleGroup(mapreduceRuntimeId, false, spark1Condition));
-        moduleGroups.add(new DistributionModuleGroup(mapreduceRuntimeId, false, spark2Condition));
+        if (StringUtils.isNotBlank(hdfsRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(hdfsRuntimeId, false, spark1Condition));
+            moduleGroups.add(new DistributionModuleGroup(hdfsRuntimeId, false, spark2Condition));
+        }
+        if (StringUtils.isNotBlank(mapreduceRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(mapreduceRuntimeId, false, spark1Condition));
+            moduleGroups.add(new DistributionModuleGroup(mapreduceRuntimeId, false, spark2Condition));
+        }
 
         return moduleGroups;
     }

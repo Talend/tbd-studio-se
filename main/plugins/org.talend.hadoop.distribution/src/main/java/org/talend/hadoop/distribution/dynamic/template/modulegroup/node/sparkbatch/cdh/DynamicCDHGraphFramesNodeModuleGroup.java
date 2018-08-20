@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkba
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.SparkBatchLinkedNodeCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
@@ -42,10 +43,12 @@ public class DynamicCDHGraphFramesNodeModuleGroup extends DynamicGraphFramesNode
                 DynamicModuleGroupConstant.GRAPHFRAMES_MRREQUIRED_MODULE_GROUP.getModuleName());
         checkRuntimeId(graphFramesMrRequiredRuntimeId);
 
-        DistributionModuleGroup dmg = new DistributionModuleGroup(graphFramesMrRequiredRuntimeId, true,
-                new SparkBatchLinkedNodeCondition(distribution, version,
-                        SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition());
-        hs.add(dmg);
+        if (StringUtils.isNotBlank(graphFramesMrRequiredRuntimeId)) {
+            DistributionModuleGroup dmg = new DistributionModuleGroup(graphFramesMrRequiredRuntimeId, true,
+                    new SparkBatchLinkedNodeCondition(distribution, version,
+                            SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition());
+            hs.add(dmg);
+        }
         return hs;
     }
 }

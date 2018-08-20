@@ -27,10 +27,9 @@ public class QuboleHiveModuleGroupTest {
     @Test
     public void testModuleGroups() throws Exception {
         Set<DistributionModuleGroup> moduleGroups = QuboleHiveModuleGroup.getModuleGroups();
-        assertEquals(2, moduleGroups.size());
+        assertEquals(1, moduleGroups.size());
         
         moduleGroups.contains(QuboleConstant.BIGDATALAUNCHER_MODULE_GROUP);
-        moduleGroups.contains(QuboleConstant.HIVE_MODULE_GROUP);
         
         for (DistributionModuleGroup group : moduleGroups) {
             assertNull(group.getRequiredIf());

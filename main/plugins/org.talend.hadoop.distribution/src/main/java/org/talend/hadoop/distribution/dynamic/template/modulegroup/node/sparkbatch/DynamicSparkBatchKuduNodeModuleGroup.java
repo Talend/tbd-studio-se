@@ -12,8 +12,10 @@
 //============================================================================
 package org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkbatch;
 
+import java.util.Collections;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.DynamicModuleGroupConstant;
@@ -35,7 +37,11 @@ public class DynamicSparkBatchKuduNodeModuleGroup extends AbstractNodeModuleGrou
                         DynamicModuleGroupConstant.SPARK2_KUDU_MRREQUIRED_MODULE_GROUP.getModuleName());
         checkRuntimeId(sparkKuduRequiredRuntimeId);
 
-        return ModuleGroupsUtils.getModuleGroups(distribution, version, condition, sparkKuduRequiredRuntimeId, true);
+        if (StringUtils.isNotBlank(sparkKuduRequiredRuntimeId)) {
+            return ModuleGroupsUtils.getModuleGroups(distribution, version, condition, sparkKuduRequiredRuntimeId, true);
+        } else {
+            return Collections.EMPTY_SET;
+        }
     }
 
 }

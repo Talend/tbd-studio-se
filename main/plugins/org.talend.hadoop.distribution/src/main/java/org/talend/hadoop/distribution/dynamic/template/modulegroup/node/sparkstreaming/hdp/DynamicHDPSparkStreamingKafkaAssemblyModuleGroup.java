@@ -12,12 +12,14 @@
 // ============================================================================
 package org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkstreaming.hdp;
 
-import org.talend.hadoop.distribution.ESparkVersion;
-import org.talend.hadoop.distribution.condition.EqualityOperator;
-import org.talend.hadoop.distribution.condition.LinkedNodeExpression;
-import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.talend.hadoop.distribution.DistributionModuleGroup;
+import org.talend.hadoop.distribution.condition.common.SparkStreamingLinkedNodeCondition;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
+import org.talend.hadoop.distribution.dynamic.template.modulegroup.DynamicModuleGroupConstant;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkstreaming.DynamicSparkStreamingKafkaAssemblyModuleGroup;
 
 
@@ -29,14 +31,23 @@ public class DynamicHDPSparkStreamingKafkaAssemblyModuleGroup extends DynamicSpa
     public DynamicHDPSparkStreamingKafkaAssemblyModuleGroup(DynamicPluginAdapter pluginAdapter) {
         super(pluginAdapter);
     }
-
+    
     @Override
-    protected void init() {
-        spark1Condition = new SimpleComponentCondition(new LinkedNodeExpression(
-                SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER, "SUPPORTED_SPARK_VERSION", EqualityOperator.EQ, //$NON-NLS-1$
-                ESparkVersion.SPARK_1_6.getSparkVersion()));
-        spark2Condition = new SimpleComponentCondition(new LinkedNodeExpression(
-                SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER, "SUPPORTED_SPARK_VERSION", EqualityOperator.EQ, //$NON-NLS-1$
-                ESparkVersion.SPARK_2_1.getSparkVersion()));
+    public Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) throws Exception {
+        Set<DistributionModuleGroup> hs = new HashSet<>();
+        DynamicPluginAdapter pluginAdapter = getPluginAdapter();
+
+        String spark2KafkaAssemblyMrRequiredRuntimeId = pluginAdapter
+                .getRuntimeModuleGroupIdByTemplateId(
+                        DynamicModuleGroupConstant.SPARK_KAFKA_ASSEMBLY_MRREQUIRED_MODULE_GROUP.getModuleName());
+
+        checkRuntimeId(spark2KafkaAssemblyMrRequiredRuntimeId);
+
+        DistributionModuleGroup dmgSpark21 = new DistributionModuleGroup(spark2KafkaAssemblyMrRequiredRuntimeId, true,
+                new SparkStreamingLinkedNodeCondition(distribution, version,
+                                SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition());
+        hs.add(dmgSpark21);
+
+        return hs;
     }
 }

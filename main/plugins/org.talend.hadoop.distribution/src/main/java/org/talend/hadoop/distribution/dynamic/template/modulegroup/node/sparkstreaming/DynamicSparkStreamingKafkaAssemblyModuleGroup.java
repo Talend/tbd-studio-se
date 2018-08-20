@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkst
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.condition.BooleanOperator;
@@ -65,21 +66,25 @@ public class DynamicSparkStreamingKafkaAssemblyModuleGroup extends AbstractNodeM
         checkRuntimeId(sparkKafkaAssemblyMrRequiredRuntimeId);
         checkRuntimeId(spark2KafkaAssemblyMrRequiredRuntimeId);
 
-        // Spark 1.6 Kafka assembly
-        DistributionModuleGroup dmgSpark16 = new DistributionModuleGroup(sparkKafkaAssemblyMrRequiredRuntimeId, true,
-                new NestedComponentCondition(new MultiComponentCondition(
-                        new SparkStreamingLinkedNodeCondition(distribution, version,
-                                SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition(),
-                        BooleanOperator.AND, spark1Condition)));
-        hs.add(dmgSpark16);
+        if (StringUtils.isNotBlank(sparkKafkaAssemblyMrRequiredRuntimeId)) {
+            // Spark 1.6 Kafka assembly
+            DistributionModuleGroup dmgSpark16 = new DistributionModuleGroup(sparkKafkaAssemblyMrRequiredRuntimeId, true,
+                    new NestedComponentCondition(new MultiComponentCondition(
+                            new SparkStreamingLinkedNodeCondition(distribution, version,
+                                    SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition(),
+                            BooleanOperator.AND, spark1Condition)));
+            hs.add(dmgSpark16);
+        }
 
-        // Spark 2.1 Kafka assembly
-        DistributionModuleGroup dmgSpark21 = new DistributionModuleGroup(spark2KafkaAssemblyMrRequiredRuntimeId, true,
-                new NestedComponentCondition(new MultiComponentCondition(
-                        new SparkStreamingLinkedNodeCondition(distribution, version,
-                                SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition(),
-                        BooleanOperator.AND, spark2Condition)));
-        hs.add(dmgSpark21);
+        if (StringUtils.isNotBlank(spark2KafkaAssemblyMrRequiredRuntimeId)) {
+            // Spark 2.1 Kafka assembly
+            DistributionModuleGroup dmgSpark21 = new DistributionModuleGroup(spark2KafkaAssemblyMrRequiredRuntimeId, true,
+                    new NestedComponentCondition(new MultiComponentCondition(
+                            new SparkStreamingLinkedNodeCondition(distribution, version,
+                                    SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition(),
+                            BooleanOperator.AND, spark2Condition)));
+            hs.add(dmgSpark21);
+        }
 
         return hs;
     }

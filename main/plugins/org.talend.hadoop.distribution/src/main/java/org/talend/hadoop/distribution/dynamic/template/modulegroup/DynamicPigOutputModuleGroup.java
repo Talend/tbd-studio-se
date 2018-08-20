@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.BasicExpression;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
@@ -29,6 +30,7 @@ public class DynamicPigOutputModuleGroup extends AbstractModuleGroup {
         super(pluginAdapter);
     }
 
+    @Override
     public Set<DistributionModuleGroup> getModuleGroups() throws Exception {
         ComponentCondition hbaseStorerCondition = new SimpleComponentCondition(new BasicExpression(
                 PigOutputConstant.STORER_PARAMETER, EqualityOperator.EQ, PigOutputConstant.HBASE_STORER_VALUE));
@@ -64,12 +66,24 @@ public class DynamicPigOutputModuleGroup extends AbstractModuleGroup {
         checkRuntimeId(pigRcfileRuntimeId);
         checkRuntimeId(pigSequenceRuntimeId);
 
-        hs.add(new DistributionModuleGroup(pigHCatRuntimeId, false, hcatStorerCondition));
-        hs.add(new DistributionModuleGroup(hbaseRuntimeId, false, hbaseStorerCondition));
-        hs.add(new DistributionModuleGroup(pigHBaseRuntimeId, false, hbaseStorerCondition));
-        hs.add(new DistributionModuleGroup(pigAvroRuntimeId, false, avroStorerCondition));
-        hs.add(new DistributionModuleGroup(pigRcfileRuntimeId, false, rcfileStorerCondition));
-        hs.add(new DistributionModuleGroup(pigSequenceRuntimeId, false, sequencefileStorerCondition));
+        if (StringUtils.isNotBlank(pigHCatRuntimeId)) {
+            hs.add(new DistributionModuleGroup(pigHCatRuntimeId, false, hcatStorerCondition));
+        }
+        if (StringUtils.isNotBlank(hbaseRuntimeId)) {
+            hs.add(new DistributionModuleGroup(hbaseRuntimeId, false, hbaseStorerCondition));
+        }
+        if (StringUtils.isNotBlank(pigHBaseRuntimeId)) {
+            hs.add(new DistributionModuleGroup(pigHBaseRuntimeId, false, hbaseStorerCondition));
+        }
+        if (StringUtils.isNotBlank(pigAvroRuntimeId)) {
+            hs.add(new DistributionModuleGroup(pigAvroRuntimeId, false, avroStorerCondition));
+        }
+        if (StringUtils.isNotBlank(pigRcfileRuntimeId)) {
+            hs.add(new DistributionModuleGroup(pigRcfileRuntimeId, false, rcfileStorerCondition));
+        }
+        if (StringUtils.isNotBlank(pigSequenceRuntimeId)) {
+            hs.add(new DistributionModuleGroup(pigSequenceRuntimeId, false, sequencefileStorerCondition));
+        }
         return hs;
     }
 

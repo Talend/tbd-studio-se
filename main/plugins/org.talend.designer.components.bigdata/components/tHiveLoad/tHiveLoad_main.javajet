@@ -126,6 +126,11 @@ imports="
     String partition = ElementParameterParser.getValue(node, "__PARTITION__");
     String dieOnError = ElementParameterParser.getValue(node, "__DIE_ON_ERROR__");
 
+    boolean isS3File = "true".equals(ElementParameterParser.getValue(node, "__QUBOLE_S3__"));
+	String s3FilePath = ElementParameterParser.getValue(node, "__QUBOLE_S3_PATH__");
+	String s3AccessKey = ElementParameterParser.getValue(node, "__QUBOLE_S3_ACCESS_KEY__");
+	String s3SecretKey = ElementParameterParser.getPasswordValue(node, "__QUBOLE_S3_SECRET_KEY__");
+
     boolean useExistingConnection = "true".equals(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"));
 
     String connectionMode = ElementParameterParser.getValue(node, "__CONNECTION_MODE__");
@@ -378,7 +383,13 @@ imports="
         <%
 			if (isLog4jEnabled) {
 %>
-				log.info("<%=cid%> - query added: " + querySQL_<%=cid %>.replace("';'", "'\\;'") + ";");
+				java.util.regex.Pattern pattern_<%=cid%> = java.util.regex.Pattern.compile("(.*s3://)(.*:.*)@(.*)");
+				java.util.regex.Matcher matcher_<%=cid%> = pattern_<%=cid%>.matcher(querySQL_<%=cid %>.replace("';'", "'\\;'") + ";");
+				if (matcher_<%=cid%>.matches()) {
+					log.info("<%=cid%> - query added: " + matcher_<%=cid%>.group(1) + matcher_<%=cid%>.group(3));
+				} else {
+					log.info("<%=cid%> - query added: " + querySQL_<%=cid %>.replace("';'", "'\\;'") + ";");
+				}
 				log.info("<%=cid%> - queries sent to cluster, waiting for execution result ...");
 <%
 			}

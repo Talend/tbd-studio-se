@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkst
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.SparkStreamingLinkedNodeCondition;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
@@ -27,6 +28,7 @@ public class DynamicSparkStreamingParquetNodeModuleGroup extends AbstractNodeMod
         super(pluginAdapter);
     }
 
+    @Override
     public Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) throws Exception {
         Set<DistributionModuleGroup> hs = new HashSet<>();
 
@@ -37,9 +39,11 @@ public class DynamicSparkStreamingParquetNodeModuleGroup extends AbstractNodeMod
                         DynamicModuleGroupConstant.SPARK_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName());
         checkRuntimeId(sparkParquetMrRequiredRuntimeId);
 
-        DistributionModuleGroup dmg = new DistributionModuleGroup(sparkParquetMrRequiredRuntimeId, true,
-                new SparkStreamingLinkedNodeCondition(distribution, version).getCondition());
-        hs.add(dmg);
+        if (StringUtils.isNotBlank(sparkParquetMrRequiredRuntimeId)) {
+            DistributionModuleGroup dmg = new DistributionModuleGroup(sparkParquetMrRequiredRuntimeId, true,
+                    new SparkStreamingLinkedNodeCondition(distribution, version).getCondition());
+            hs.add(dmg);
+        }
         return hs;
     }
 }

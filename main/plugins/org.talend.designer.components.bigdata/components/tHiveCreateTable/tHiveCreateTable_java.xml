@@ -477,7 +477,7 @@
 		</PARAMETER>
 
 		<PARAMETER NAME="QUBOLE_ENDPOINT_URL" FIELD="CLOSED_LIST" NUM_ROW="18" REQUIRED="true" GROUP="CONN" REPOSITORY_VALUE="QUBOLE_ENDPOINT_URL"
-			SHOW_IF="(isShow[QUBOLE_ENDPOINT] (AND QUBOLE_ENDPOINT == 'true'))">
+			SHOW_IF="(isShow[QUBOLE_ENDPOINT] AND (QUBOLE_ENDPOINT == 'true'))">
 		<ITEMS DEFAULT="DEFAULT">
         	<ITEM NAME="DEFAULT" VALUE="&quot;https://api.qubole.com/api&quot;" />
         	<ITEM NAME="EU_CENTRAL" VALUE="&quot;https://eu-central-1.qubole.com/api&quot;" />

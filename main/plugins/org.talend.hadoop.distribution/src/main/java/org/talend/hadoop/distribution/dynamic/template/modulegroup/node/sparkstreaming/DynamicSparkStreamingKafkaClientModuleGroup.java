@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkst
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.condition.BooleanOperator;
@@ -65,21 +66,25 @@ public class DynamicSparkStreamingKafkaClientModuleGroup extends AbstractNodeMod
         checkRuntimeId(sparkKafkaClientMrRequiredRuntimeId);
         checkRuntimeId(spark2KafkaClientMrRequiredRuntimeId);
 
-        // Spark 1
-        DistributionModuleGroup dmgSpark1 = new DistributionModuleGroup(sparkKafkaClientMrRequiredRuntimeId, true,
-                new NestedComponentCondition(new MultiComponentCondition(
-                        new SparkStreamingLinkedNodeCondition(distribution, version,
-                                SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition(),
-                        BooleanOperator.AND, spark1Condition)));
-        hs.add(dmgSpark1);
+        if (StringUtils.isNotBlank(sparkKafkaClientMrRequiredRuntimeId)) {
+            // Spark 1
+            DistributionModuleGroup dmgSpark1 = new DistributionModuleGroup(sparkKafkaClientMrRequiredRuntimeId, true,
+                    new NestedComponentCondition(new MultiComponentCondition(
+                            new SparkStreamingLinkedNodeCondition(distribution, version,
+                                    SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition(),
+                            BooleanOperator.AND, spark1Condition)));
+            hs.add(dmgSpark1);
+        }
 
-        // Spark 2
-        DistributionModuleGroup dmgSpark2 = new DistributionModuleGroup(spark2KafkaClientMrRequiredRuntimeId, true,
-                new NestedComponentCondition(new MultiComponentCondition(
-                        new SparkStreamingLinkedNodeCondition(distribution, version,
-                                SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition(),
-                        BooleanOperator.AND, spark2Condition)));
-        hs.add(dmgSpark2);
+        if (StringUtils.isNotBlank(spark2KafkaClientMrRequiredRuntimeId)) {
+            // Spark 2
+            DistributionModuleGroup dmgSpark2 = new DistributionModuleGroup(spark2KafkaClientMrRequiredRuntimeId, true,
+                    new NestedComponentCondition(new MultiComponentCondition(
+                            new SparkStreamingLinkedNodeCondition(distribution, version,
+                                    SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition(),
+                            BooleanOperator.AND, spark2Condition)));
+            hs.add(dmgSpark2);
+        }
         return hs;
     }
 }

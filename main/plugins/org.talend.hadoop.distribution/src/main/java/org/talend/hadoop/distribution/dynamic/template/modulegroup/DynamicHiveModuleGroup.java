@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.BasicExpression;
 import org.talend.hadoop.distribution.condition.BooleanOperator;
@@ -31,6 +32,7 @@ public class DynamicHiveModuleGroup extends AbstractModuleGroup {
         super(pluginAdapter);
     }
 
+    @Override
     public Set<DistributionModuleGroup> getModuleGroups() throws Exception {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         DynamicPluginAdapter pluginAdapter = getPluginAdapter();
@@ -47,18 +49,26 @@ public class DynamicHiveModuleGroup extends AbstractModuleGroup {
         checkRuntimeId(mrRuntimeId);
         checkRuntimeId(hiveHBaseRuntimeId);
 
-        hs.add(new DistributionModuleGroup(hiveRuntimeId));
-        hs.add(new DistributionModuleGroup(hdfsRuntimeId));
-        hs.add(new DistributionModuleGroup(mrRuntimeId));
+        if (StringUtils.isNotBlank(hiveRuntimeId)) {
+            hs.add(new DistributionModuleGroup(hiveRuntimeId));
+        }
+        if (StringUtils.isNotBlank(hdfsRuntimeId)) {
+            hs.add(new DistributionModuleGroup(hdfsRuntimeId));
+        }
+        if (StringUtils.isNotBlank(mrRuntimeId)) {
+            hs.add(new DistributionModuleGroup(mrRuntimeId));
+        }
 
-        // The following condition instance stands for:
-        // (isShow[STORE_BY_HBASE] AND STORE_BY_HBASE=='true')
-        ComponentCondition hbaseLoaderCondition = new MultiComponentCondition(
-                new SimpleComponentCondition(new BasicExpression(HiveConstant.HIVE_CONFIGURATION_COMPONENT_HBASEPARAMETER)), //
-                BooleanOperator.AND, //
-                new SimpleComponentCondition(new ShowExpression(HiveConstant.HIVE_CONFIGURATION_COMPONENT_HBASEPARAMETER)));
-        // The Hive components need to import some hbase libraries if the "Use HBase storage" is checked.
-        hs.add(new DistributionModuleGroup(hiveHBaseRuntimeId, false, hbaseLoaderCondition));
+        if (StringUtils.isNotBlank(hiveHBaseRuntimeId)) {
+            // The following condition instance stands for:
+            // (isShow[STORE_BY_HBASE] AND STORE_BY_HBASE=='true')
+            ComponentCondition hbaseLoaderCondition = new MultiComponentCondition(
+                    new SimpleComponentCondition(new BasicExpression(HiveConstant.HIVE_CONFIGURATION_COMPONENT_HBASEPARAMETER)), //
+                    BooleanOperator.AND, //
+                    new SimpleComponentCondition(new ShowExpression(HiveConstant.HIVE_CONFIGURATION_COMPONENT_HBASEPARAMETER)));
+            // The Hive components need to import some hbase libraries if the "Use HBase storage" is checked.
+            hs.add(new DistributionModuleGroup(hiveHBaseRuntimeId, false, hbaseLoaderCondition));
+        }
 
         return hs;
     }

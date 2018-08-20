@@ -9,6 +9,8 @@ import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang3.ClassUtils;
+import org.talend.commons.exception.CommonExceptionHandler;
+import org.talend.commons.exception.ExceptionHandler;
 import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
 import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.ComponentType;
@@ -124,7 +126,24 @@ public abstract class AbstractDynamicDistributionTemplate extends AbstractDistri
         for (Map.Entry<ComponentType, IDynamicModuleGroupTemplate> entry : moduleGroupsTemplateMap.entrySet()) {
             Map<ComponentType, Set<DistributionModuleGroup>> groupMap = entry.getValue().getModuleGroups();
             if (groupMap != null && !groupMap.isEmpty()) {
-                moduleGroupsMap.putAll(groupMap);
+                for (Map.Entry<ComponentType, Set<DistributionModuleGroup>> groupEntry : groupMap.entrySet()) {
+                    ComponentType key = groupEntry.getKey();
+                    Set<DistributionModuleGroup> existingGroupSet = moduleGroupsMap.get(key);
+                    if (existingGroupSet != null) {
+                        String name = "";
+                        try {
+                            name = key.name();
+                        } catch (Exception e) {
+                            ExceptionHandler.process(e);
+                        } finally {
+                            CommonExceptionHandler
+                                    .warn(this.getClass().getSimpleName() + " : multiple define of " + name + ", will merge it.");
+                        }
+                        existingGroupSet.addAll(groupEntry.getValue());
+                    } else {
+                        moduleGroupsMap.put(key, groupEntry.getValue());
+                    }
+                }
             }
         }
 
@@ -138,7 +157,28 @@ public abstract class AbstractDynamicDistributionTemplate extends AbstractDistri
         for (Map.Entry<ComponentType, IDynamicModuleGroupTemplate> entry : moduleGroupsTemplateMap.entrySet()) {
             Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> groupMap = entry.getValue().getNodeModuleGroups();
             if (groupMap != null && !groupMap.isEmpty()) {
-                nodeModuleGroupsMap.putAll(groupMap);
+                for (Map.Entry<NodeComponentTypeBean, Set<DistributionModuleGroup>> groupEntry : groupMap.entrySet()) {
+                    NodeComponentTypeBean key = groupEntry.getKey();
+                    Set<DistributionModuleGroup> existingGroupSet = nodeModuleGroupsMap.get(key);
+                    if (existingGroupSet != null) {
+                        String keyStr = "";
+                        try {
+                            ComponentType componentType = key.getComponentType();
+                            if (componentType != null) {
+                                keyStr = keyStr + componentType.name();
+                            }
+                            keyStr = keyStr + ", " + key.getComponentName();
+                        } catch (Exception e) {
+                            ExceptionHandler.process(e);
+                        } finally {
+                            CommonExceptionHandler.warn(
+                                    this.getClass().getSimpleName() + " : multiple define of [" + keyStr + "], will merge it.");
+                        }
+                        existingGroupSet.addAll(groupEntry.getValue());
+                    } else {
+                        nodeModuleGroupsMap.put(key, groupEntry.getValue());
+                    }
+                }
             }
         }
 
@@ -199,7 +239,7 @@ public abstract class AbstractDynamicDistributionTemplate extends AbstractDistri
 
     @Override
     public Set<DistributionModuleGroup> getModuleGroups(ComponentType componentType, String componentName) {
-        return getModuleGroupsMap().get(new NodeComponentTypeBean(componentType, componentName));
+        return getNodeModuleGroupsMap().get(new NodeComponentTypeBean(componentType, componentName));
     }
 
     @Override

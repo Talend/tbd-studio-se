@@ -10,6 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
+
 package org.talend.hadoop.distribution.qubole;
 
 import java.util.HashMap;
@@ -26,17 +27,21 @@ import org.talend.hadoop.distribution.NodeComponentTypeBean;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
+import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
+import org.talend.hadoop.distribution.constants.SparkBatchConstant;
+import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.qubole.IQuboleDistribution;
 import org.talend.hadoop.distribution.qubole.modulegroup.QuboleHiveModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QubolePigModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QubolePigOutputModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QuboleSparkBatchModuleGroup;
+import org.talend.hadoop.distribution.qubole.modulegroup.QuboleSparkStreamingModuleGroup;
 
-public class QuboleDistribution extends AbstractDistribution implements SparkBatchComponent, PigComponent, HiveComponent, IQuboleDistribution {
+public class QuboleDistribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent, PigComponent, HiveComponent, IQuboleDistribution {
 
-    private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*"; //$NON-NLS-1$
+    private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*";
     public final static String VERSION = "Qubole cloud distribution";
     public static final String VERSION_DISPLAY = "Qubole cloud distribution";
     public static final String HIVE_VERSION = "Qubole Hadoop 2 (Hive 2.1.1 Beta)";
@@ -45,11 +50,9 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
 
     private Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
     private Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodeModuleGroups;
-    private Map<ComponentType, ComponentCondition> displayConditions;
     private Map<ComponentType, String> customVersionDisplayNames;
 
     public QuboleDistribution() {
-        displayConditions = buildDisplayConditions();
         customVersionDisplayNames = buildCustomVersionDisplayNames();
         moduleGroups = buildModuleGroups();
         nodeModuleGroups = buildNodeModuleGroups(getDistribution(), getVersion());
@@ -66,11 +69,12 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
         result.put(ComponentType.PIG, PIG_VERSION);
         result.put(ComponentType.PIGOUTPUT, PIG_VERSION);
         result.put(ComponentType.SPARKBATCH, SPARK_VERISON);
+        result.put(ComponentType.SPARKSTREAMING, SPARK_VERISON);
         return result;
     }
 
     /**
-     * Add needed libraries (module group) for correspondent components
+     * Add needed libraries (module group) for the types of job
      */
     protected Map<ComponentType, Set<DistributionModuleGroup>> buildModuleGroups() {
         Map<ComponentType, Set<DistributionModuleGroup>> componentsMap = new HashMap<>();
@@ -78,15 +82,25 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
         componentsMap.put(ComponentType.PIG, QubolePigModuleGroup.getModuleGroups());
         componentsMap.put(ComponentType.PIGOUTPUT, QubolePigOutputModuleGroup.getModuleGroups());
         componentsMap.put(ComponentType.SPARKBATCH, QuboleSparkBatchModuleGroup.getModuleGroups());
+        componentsMap.put(ComponentType.SPARKSTREAMING, QuboleSparkStreamingModuleGroup.getModuleGroups());
         return componentsMap;
     }
 
     /**
-     * Add needed libraries (module group) for correspondent nodes
+     * Add needed libraries (module group) for the components
      */
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(String distribution, String version) {
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodesMap = new HashMap<>();
         nodesMap.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT), QubolePigOutputModuleGroup.getModuleGroups());
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_CONFIGURATION_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, null));
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_INPUT_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, "USE_EXISTING_CONNECTION == 'false'"));
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_OUTPUT_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, "USE_EXISTING_CONNECTION == 'false'"));
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_CONFIGURATION_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, null));
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_INPUT_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, "USE_EXISTING_CONNECTION == 'false'"));
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_OUTPUT_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, "USE_EXISTING_CONNECTION == 'false'"));
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT), QuboleSparkStreamingModuleGroup.getKinesisModuleGroups(distribution, version, null));
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_COMPONENT), QuboleSparkStreamingModuleGroup.getKinesisModuleGroups(distribution, version, null));
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_AVRO_COMPONENT), QuboleSparkStreamingModuleGroup.getKinesisModuleGroups(distribution, version, null));
         return nodesMap;
     }
 
@@ -190,7 +204,7 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
 
     @Override
     public boolean doSupportOldImportMode() {
-        return false;
+        return true;
     }
 
     @Override
@@ -292,4 +306,14 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
 	public boolean doSupportDynamicMemoryAllocation() {
 		return true;
 	}
+
+    @Override
+    public boolean doSupportCheckpointing() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportBackpressure() {
+        return false;
+    }
 }

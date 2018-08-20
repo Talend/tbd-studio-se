@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 
@@ -30,7 +31,9 @@ public class DynamicHCatalogModuleGroup extends AbstractModuleGroup {
         DynamicPluginAdapter pluginAdapter = getPluginAdapter();
         String runtimeId = pluginAdapter.getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.HDFS_MODULE_GROUP.getModuleName());
         checkRuntimeId(runtimeId);
-        hs.add(new DistributionModuleGroup(runtimeId));
+        if (StringUtils.isNotBlank(runtimeId)) {
+            hs.add(new DistributionModuleGroup(runtimeId));
+        }
         return hs;
     }
 

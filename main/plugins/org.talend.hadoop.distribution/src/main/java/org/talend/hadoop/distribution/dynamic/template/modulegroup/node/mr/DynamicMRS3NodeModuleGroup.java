@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.node.mr;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.MRLinkedNodeCondition;
 import org.talend.hadoop.distribution.constants.MRConstant;
@@ -28,6 +29,7 @@ public class DynamicMRS3NodeModuleGroup extends AbstractNodeModuleGroup {
         super(pluginAdapter);
     }
 
+    @Override
     public Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) throws Exception {
         Set<DistributionModuleGroup> hs = new HashSet<>();
 
@@ -37,9 +39,12 @@ public class DynamicMRS3NodeModuleGroup extends AbstractNodeModuleGroup {
                 .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.SPARK_S3_MRREQUIRED_MODULE_GROUP.getModuleName());
         checkRuntimeId(sparkS3MrRequiredRuntimeId);
 
-        DistributionModuleGroup dmg = new DistributionModuleGroup(sparkS3MrRequiredRuntimeId, true,
-                new MRLinkedNodeCondition(distribution, version, MRConstant.MR_MRCONFIGURATION_LINKEDPARAMETER).getCondition());
-        hs.add(dmg);
+        if (StringUtils.isNotBlank(sparkS3MrRequiredRuntimeId)) {
+            DistributionModuleGroup dmg = new DistributionModuleGroup(sparkS3MrRequiredRuntimeId, true,
+                    new MRLinkedNodeCondition(distribution, version, MRConstant.MR_MRCONFIGURATION_LINKEDPARAMETER)
+                            .getCondition());
+            hs.add(dmg);
+        }
         return hs;
     }
 

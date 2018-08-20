@@ -58,6 +58,8 @@ imports="
 	boolean setPartition = "true".equals(ElementParameterParser.getValue(node, "__SET_PARTITIONS__"));
 	String partition = ElementParameterParser.getValue(node, "__PARTITION__");
 	String dieOnError = ElementParameterParser.getValue(node, "__DIE_ON_ERROR__");
+
+    boolean isS3File = false;  // adapt to qubole s3 file option
 %>
 	<%@ include file="@{org.talend.designer.components.bigdata}/components/tHiveLoad/loadQueryGeneration.javajet"%>
 	java.sql.Statement stmt_<%=cid %> = conn_<%=cid %>.createStatement();

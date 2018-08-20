@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkba
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.condition.BooleanOperator;
@@ -72,10 +73,14 @@ public class DynamicHDPGraphFramesNodeModuleGroup extends DynamicGraphFramesNode
         checkRuntimeId(graphFramesMrRequiredRuntimeId);
         checkRuntimeId(graphFramesSpark2MrRequiredRuntimeId);
 
-        dmg.addAll(
-                ModuleGroupsUtils.getModuleGroups(distribution, version, spark1Condition, graphFramesMrRequiredRuntimeId, true));
-        dmg.addAll(ModuleGroupsUtils.getModuleGroups(distribution, version, spark2Condition, graphFramesSpark2MrRequiredRuntimeId,
-                true));
+        if (StringUtils.isNotBlank(graphFramesMrRequiredRuntimeId)) {
+            dmg.addAll(ModuleGroupsUtils.getModuleGroups(distribution, version, spark1Condition, graphFramesMrRequiredRuntimeId,
+                    true));
+        }
+        if (StringUtils.isNotBlank(graphFramesSpark2MrRequiredRuntimeId)) {
+            dmg.addAll(ModuleGroupsUtils.getModuleGroups(distribution, version, spark2Condition,
+                    graphFramesSpark2MrRequiredRuntimeId, true));
+        }
 
         return dmg;
     }
