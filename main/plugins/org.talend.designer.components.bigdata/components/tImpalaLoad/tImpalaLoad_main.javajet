@@ -60,6 +60,9 @@ imports="
 	String dieOnError = ElementParameterParser.getValue(node, "__DIE_ON_ERROR__");
 
     boolean isS3File = false;  // adapt to qubole s3 file option
+    String s3FilePath = "";     // adapt to qubole s3 file path option
+    String s3AccessKey = "";    // adapt to qubole s3 access key option
+    String s3SecretKey = "";    // adapt to qubole s3 secret key option
 %>
 	<%@ include file="@{org.talend.designer.components.bigdata}/components/tHiveLoad/loadQueryGeneration.javajet"%>
 	java.sql.Statement stmt_<%=cid %> = conn_<%=cid %>.createStatement();
