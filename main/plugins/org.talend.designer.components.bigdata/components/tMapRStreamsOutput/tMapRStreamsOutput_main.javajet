@@ -30,7 +30,8 @@ final String cid = node.getUniqueName();
 	rev_cnt_<%=cid%>.getAndIncrement();
 	if (exception != null) {
 		exceptions_<%=cid%>.add(exception);
-	}});
+	}
+});
 
 for (Exception e : exceptions_<%=cid%>) {
 	throw e;
