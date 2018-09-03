@@ -341,6 +341,12 @@
             id="aws-java-sdk-kinesis-1.11.333.jar"
             name="aws-java-sdk-kinesis-1.11.333.jar"
             mvn_uri="mvn:com.amazonaws/aws-java-sdk-kinesis/1.11.333"/>
+        
+        <libraryNeeded
+            context="plugin:org.talend.libraries.s3"
+            id="aws-java-sdk-cloudwatch-1.11.333.jar"
+            name="aws-java-sdk-cloudwatch-1.11.333.jar"
+            mvn_uri="mvn:com.amazonaws/aws-java-sdk-cloudwatch/1.11.333"/>
             
         <libraryNeeded
             context="plugin:org.talend.libraries.s3"
@@ -353,12 +359,6 @@
             id="aws-java-sdk-kms-1.11.333.jar"
             name="aws-java-sdk-kms-1.11.333.jar"
             mvn_uri="mvn:com.amazonaws/aws-java-sdk-kms/1.11.333"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.libraries.s3"
-            id="jets3t-0.9.0"
-            name="jets3t-0.9.0.jar"
-            mvn_uri="mvn:net.java.dev.jets3t/jets3t/0.9.0"/>
 
         <!-- Sqoop libraries -->
         <libraryNeeded
@@ -1447,6 +1447,12 @@
             id="httpclient-4.5.5.jar"
             name="httpclient-4.5.5.jar"
             mvn_uri="mvn:org.apache.httpcomponents/httpclient/4.5.5"/>
+            
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr5150"
+            id="httpcore-4.4.9.jar"
+            name="httpcore-4.4.9.jar"
+            mvn_uri="mvn:org.apache.httpcomponents/httpcore/4.4.9"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -1937,7 +1943,7 @@
              <library id="aws-java-sdk-core-1.11.333.jar"/>
              <library id="aws-java-sdk-s3-1.11.333.jar"/>
              <library id="hadoop-aws-2.8.3-amzn-1.jar"/>
-             <library id="jets3t-0.9.0"/>
+             <library id="jets3t-0.9.4"/>
              <library id="httpclient-4.5.5.jar"/>
              <library id="httpcore-4.4.9.jar"/>
         </libraryNeededGroup>
@@ -2453,7 +2459,7 @@
              <library id="spark-streaming-kinesis-asl_2.11-2.3.0.jar"/>
             <library id="amazon-kinesis-client-1.8.1.jar"/>
             <library id="aws-java-sdk-kinesis-1.11.333.jar"/>
-            <library id="aws-java-sdk-core-1.11.333.jar"/>
+            <library id="aws-java-sdk-cloudwatch-1.11.333.jar"/>
         </libraryNeededGroup>
 
         <!-- Spark Hive group -->
