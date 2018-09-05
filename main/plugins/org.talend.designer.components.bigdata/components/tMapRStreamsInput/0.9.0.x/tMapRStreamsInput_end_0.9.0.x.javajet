@@ -1,3 +1,13 @@
+<%@ jet
+    imports="
+    org.talend.core.model.process.ElementParameterParser
+"
+%>
+
+<%
+boolean isLog4jEnabled = ElementParameterParser.getBooleanValue(node.getProcess(), "__LOG4J_ACTIVATE__");
+%>
+
 <%
 	// This is the tMapRStreamsInput_end javajet part for any MapR Streams version based on Kafka 0.9.0.x
 	
@@ -29,8 +39,9 @@
 // Close the loop scope.
 %>
     } catch (org.apache.kafka.common.KafkaException e) {
-		// Unexpected exception
-		e.printStackTrace();
+    	<%if(isLog4jEnabled){%>	
+			log.error("<%=cid%> - " + e.getMessage());
+		<%}%>
 		break;
 	}
 } // end while(true)

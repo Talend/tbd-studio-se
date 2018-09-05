@@ -25,6 +25,14 @@ final TMapRStreamsOutputUtil tMapRStreamsOutputUtil = new TMapRStreamsOutputUtil
 final String cid = node.getUniqueName();
 %>
 
-<%=cid%>_producer.send(new org.apache.kafka.clients.producer.ProducerRecord<byte[], byte[]>(<%=tMapRStreamsOutputUtil.getTopic()%>, <%=tMapRStreamsOutputUtil.getIncomingConnection().getName()%>.<%=tMapRStreamsOutputUtil.getIncomingColumnName()%>));
+<%=cid%>_producer.send(new org.apache.kafka.clients.producer.ProducerRecord<byte[], byte[]>(<%=tMapRStreamsOutputUtil.getTopic()%>, <%=tMapRStreamsOutputUtil.getIncomingConnection().getName()%>.<%=tMapRStreamsOutputUtil.getIncomingColumnName()%>),
+(recordMetadata, exception) -> {
+	rev_cnt_<%=cid%>.getAndIncrement();
+	if (exception != null) {
+		exceptions_<%=cid%>.add(exception);
+	}
+});
 
-
+for (Exception e : exceptions_<%=cid%>) {
+	throw e;
+}

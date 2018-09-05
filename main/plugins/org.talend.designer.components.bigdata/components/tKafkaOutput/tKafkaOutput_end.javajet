@@ -43,7 +43,6 @@ if (<%=cid%>_counter_send <= <%=cid%>_counter_rev.intValue()) {
 				<%if(isLog4jEnabled){%>	
 					log.error("<%=cid%> - " + e.getMessage());
 				<%}%>
-				System.err.println(e);
 			}
 		<%
 		}

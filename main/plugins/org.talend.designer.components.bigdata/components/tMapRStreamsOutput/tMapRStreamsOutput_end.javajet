@@ -15,9 +15,17 @@
 
 <%
 CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
-INode node = (INode)codeGenArgument.getArgument();
+INode node = (INode) codeGenArgument.getArgument();
 String cid = node.getUniqueName();
 
 //%cid%_kafkaProducer.close();
 %>
 
+long <%=cid%>_startCheckingTime = System.nanoTime();
+
+while (tos_count_<%=node.getUniqueName()%> > rev_cnt_<%=cid%>.get() &&
+	java.util.concurrent.TimeUnit.NANOSECONDS.toSeconds(System.nanoTime() - <%=cid%>_startCheckingTime) < EXCEPTION_CATCH_TIMEOUT_<%=cid%>);
+	
+for (Exception e : exceptions_<%=cid%>) {
+	throw e;
+}

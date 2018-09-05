@@ -1064,6 +1064,7 @@
 			<library id="commons-io-2.4.jar"/>
 			<library id="commons-configuration-1.6.jar"/>
 			<library id="commons-lang-2.6.jar"/>
+			<library id="commons-lang3-3.5.jar"/>
 			<library id="commons-logging-1.1.3.jar"/>
 			<library id="guava-11.0.2.jar"/>
 			<library id="hadoop-auth-HDP_2_6"/>

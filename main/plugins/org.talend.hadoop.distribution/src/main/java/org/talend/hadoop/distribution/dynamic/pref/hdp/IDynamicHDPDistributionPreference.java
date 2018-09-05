@@ -39,5 +39,5 @@ public interface IDynamicHDPDistributionPreference extends IDynamicDistributionP
 
     static final String PREF_PASSWORD = "distribution.dynamic.repository.hdp.password"; //$NON-NLS-1$
 
-    static final String PREF_PASSWORD_DEFAULT = "TBP1wZ9PnXFE4puY6jrIn67/QMHnRiJGu4RF3/k+EfufRWF7J0u1aw=="; //$NON-NLS-1$
+    static final String PREF_PASSWORD_DEFAULT = "LycrWORKBL7x80mU8ziB6dCFh+ZjAYX/"; //$NON-NLS-1$
 }
