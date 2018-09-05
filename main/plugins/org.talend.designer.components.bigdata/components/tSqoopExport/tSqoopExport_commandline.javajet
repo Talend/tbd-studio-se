@@ -12,7 +12,10 @@
    String connection = ElementParameterParser.getValue(node,"__CONNECTION__");
    String table = ElementParameterParser.getValue(node,"__TABLE__");
    String username = ElementParameterParser.getValue(node,"__USERNAME__");
+   String inputSource = ElementParameterParser.getValue(node,"__SOURCE__");
    String exportDir = ElementParameterParser.getValue(node,"__EXPORT_DIR__");
+   String hcatDatabase = ElementParameterParser.getValue(node,"__HCAT_DATABASE__");
+   String hcatTable = ElementParameterParser.getValue(node,"__HCAT_TABLE__");
    boolean printLog = "true".equals(ElementParameterParser.getValue(node,"__PRINT_LOG__"));
    boolean verbose = "true".equals(ElementParameterParser.getValue(node,"__VERBOSE__"));
    boolean direct = "true".equals(ElementParameterParser.getValue(node,"__DIRECT__"));
@@ -84,7 +87,13 @@ if(isUseSpeedParallel && isUseAdditionParams){
 <%} else {%>
 	, "--password", decryptedPassword_<%=cid%>
 <%}%>
+<%if(inputSource.equals("HDFS")) {%>
 , "--export-dir", <%=exportDir%>
+<%} else if(inputSource.equals("HCAT")) {%>
+, "--hcatalog-database", <%=hcatDatabase%>, "--hcatalog-table", <%=hcatTable%>
+<%} else {
+	throw new IllegalArgumentException("input source should be either \"HDFS\" or \"HCAT\", but it is " + inputSource);
+}%>
 <%if(isUseSpeedParallel){%>,"--connection-manager","org.apache.sqoop.teradata.TeradataConnManager"<%}%>
 <%if(printLog && verbose){%>, "--verbose"<%}%>
 <%if(direct && (!defineUpdateMode || "updateonly".equals(updateMode))){%>, "--direct"<%}%>
