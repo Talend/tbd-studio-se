@@ -989,6 +989,12 @@
             id="commons-lang-2.6.jar"
             name="commons-lang-2.6.jar"
             mvn_uri="mvn:commons-lang/commons-lang/2.6"/>
+            
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr5150"
+            id="htrace-core-3.1.0-incubating.jar"
+            name="htrace-core-3.1.0-incubating.jar"
+            mvn_uri="mvn:org.apache.htrace/htrace-core/3.1.0-incubating"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -2083,6 +2089,7 @@
              <library id="commons-lang-2.6.jar" />
              <library id="commons-collections-3.2.2.jar" />
              <library id="zookeeper-3.4.12.jar" />
+             <library id="htrace-core-3.1.0-incubating.jar" />
              <library id="htrace-core4-4.0.1-incubating.jar" />
              <library id="guava-14.0.1.jar" />
              <library id="jackson-mapper-asl-1.9.14-TALEND.jar" />

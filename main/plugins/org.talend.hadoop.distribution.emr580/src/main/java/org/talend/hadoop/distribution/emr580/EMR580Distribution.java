@@ -188,6 +188,13 @@ public class EMR580Distribution extends AbstractDistribution implements
                 dynamoDBNodeModuleGroups);
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_CONFIGURATION_COMPONENT),
                 dynamoDBConfigurationModuleGroups);
+        // ... in Spark streaming
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_INPUT_COMPONENT),
+                dynamoDBNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_OUTPUT_COMPONENT),
+                dynamoDBNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_CONFIGURATION_COMPONENT),
+                dynamoDBConfigurationModuleGroups);
 
         // Spark Streaming Parquet nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_INPUT_COMPONENT),
