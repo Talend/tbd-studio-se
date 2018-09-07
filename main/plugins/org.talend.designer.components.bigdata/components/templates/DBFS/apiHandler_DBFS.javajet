@@ -1,0 +1,441 @@
+<%@ jet%>
+
+
+class DBFSAPI_<%=cid%> {
+	private org.apache.cxf.jaxrs.client.WebClient client;
+	private String token;
+	private String userAgent;
+	private String overwrite;
+	private final int API_MAX_RETRY = 3;
+	private final int API_MAX_SIZE = 512*1024; // 1 MB
+	private final String API_PATH_PREFIX = "/FileStore";
+	
+	public DBFSAPI_<%=cid%>(String endpoint, String token, String userAgent, String overwrite) {
+		createClient(endpoint);
+		this.token = token;
+		this.userAgent = userAgent;
+		this.overwrite = overwrite;
+	}
+	
+	private void createClient(String endpoint) {
+    	org.apache.cxf.jaxrs.client.JAXRSClientFactoryBean factory = new org.apache.cxf.jaxrs.client.JAXRSClientFactoryBean();
+        factory.setAddress(endpoint);
+        client = factory.createWebClient();
+	}
+	
+	private void resetClientForEndpoint(String apiEndpoint) {
+        client.replacePath(apiEndpoint);
+        org.apache.cxf.jaxrs.client.WebClient.getConfig(client).getHttpConduit().getClient().setAllowChunking(false);
+        client.accept("*/*"); //$NON-NLS-1$
+        final String bearer = "Bearer " + token; //$NON-NLS-1$
+        client.header("Authorization", bearer); //$NON-NLS-1$
+        client.header("User-Agent", userAgent); //$NON-NLS-1$
+    }
+    
+    /**
+     * List the content of a folder on DBFS
+     * @param folder is the path of the folder we want to list
+     * @return The content of a DBFS folder
+     * @throws java.lang.Exception
+     */
+    public String list(String folder) throws java.lang.Exception {
+        resetClientForEndpoint("/api/2.0/dbfs/list");
+        client.type("application/json"); //$NON-NLS-1$
+        client.query("path",API_PATH_PREFIX + folder); //$NON-NLS-1$
+
+        javax.ws.rs.core.Response responseAPICall = client.get();
+
+        int statusResult = responseAPICall.getStatus();
+        if (statusResult == 200) {
+            return responseAPICall.readEntity(String.class);
+        } else {
+            throw new java.lang.Exception(responseAPICall.readEntity(String.class));
+        }
+    }
+
+    /**
+     * Check the existence of a file or folder on DBFS
+     * @param file path of the file (or folder) we want to check
+     * @return true if the file (or folder) is found
+     */
+    public boolean exists(String file) {
+        resetClientForEndpoint("/api/2.0/dbfs/get-status");
+        client.type("application/json"); //$NON-NLS-1$
+
+        client.query("path", API_PATH_PREFIX + file); //$NON-NLS-1$
+        javax.ws.rs.core.Response response = client.get();
+
+        return response.getStatus() == 200;
+    }
+    
+    /**
+	 * Check if a file / folder exists and if it has the same size as the new file
+	 * @param localFile is the path to the file on the local machine
+	 * @param remoteFile is the path to the file on DBFS
+	 * @return true if the file doesn't exist on DBFS or if the file has a different size with the local one
+	 */
+    public boolean notExistsOrIsDifferent(String localFile, String remoteFile) {
+        resetClientForEndpoint("/api/2.0/dbfs/get-status");
+        client.type("application/json"); //$NON-NLS-1$
+
+        client.query("path", API_PATH_PREFIX + remoteFile); //$NON-NLS-1$
+        javax.ws.rs.core.Response response = client.get();
+        if (response.getStatus() == 200) {
+            long localSize = new java.io.File(localFile).length();
+            try {
+                long remoteSize = (long)((org.json.simple.JSONObject) new org.json.simple.parser.JSONParser().parse(response.readEntity(String.class))).get("file_size");
+                return localSize != remoteSize;
+            } catch (org.json.simple.parser.ParseException ignored) {
+                return true; // If error file are considered different
+            }
+        } else {
+            return true; // file does not exists remotely
+        }
+    }
+    
+    /**
+     * Read a file
+     * @param stream the stream opened to read file on DBFS
+     * @param path the path of the file on DBFS
+     * @return the stream
+     * @throws ParseException
+     * @throws IOException
+     */
+    private java.io.OutputStream readFile(ByteArrayOutputStream stream, String path) throws org.json.simple.parser.ParseException, java.io.IOException, java.lang.Exception {
+        return readFileBlock(stream, path, 0, API_MAX_RETRY);
+    }
+
+    /**
+     * Read a file block per blocks
+     * @param stream the stream opened to read the file on DBFS
+     * @param path the path of the file on DBFS
+     * @param offset the offset to read from
+     * @param retry the maximum retry time
+     * @return
+     * @throws ParseException
+     * @throws IOException
+     */
+    private java.io.OutputStream readFileBlock(ByteArrayOutputStream stream, String path, int offset, int retry) throws org.json.simple.parser.ParseException, java.io.IOException, java.lang.Exception {
+        resetClientForEndpoint("/api/2.0/dbfs/read");
+        client.type("application/json"); //$NON-NLS-1$
+        client.query("path",path);
+        client.query("offset",offset);
+        client.query("length",API_MAX_SIZE);
+
+        javax.ws.rs.core.Response response = client.get();
+
+        if(response.getStatus() == 200 && retry > 0) {
+            org.apache.commons.codec.binary.Base64 encoder = new org.apache.commons.codec.binary.Base64();
+
+            org.json.simple.JSONObject data = (org.json.simple.JSONObject) new org.json.simple.parser.JSONParser().parse(response.readEntity(String.class));
+
+            int block_size = Integer.parseInt(String.valueOf(data.get("bytes_read")));
+
+            stream.write(encoder.decode(String.valueOf(data.get("data"))));
+
+            if(block_size == API_MAX_SIZE) {
+                return readFileBlock(stream, path, offset + API_MAX_SIZE, API_MAX_RETRY);
+            } else {
+                return stream;
+            }
+        } else if (retry > 0) {
+
+            String content = response.readEntity(String.class);
+
+            return readFileBlock(stream, path, offset, --retry);
+        } else {
+            throw new java.lang.Exception(response.readEntity(String.class));
+        }
+
+        // ERROR
+        //return stream;
+    }
+    
+    /**
+     * Open a stream to read / write a file on DBFS - necessary to avoid the size exception
+     * @param file the path of the file on DBFS
+     * @return the opened stream on the DBFS file
+     */
+    public java.io.InputStream open(String file) throws java.lang.Exception {
+        java.io.ByteArrayOutputStream stream = new java.io.ByteArrayOutputStream();
+
+        try {
+            readFile(stream, API_PATH_PREFIX + file);
+        } catch (org.json.simple.parser.ParseException | java.io.IOException e) {
+            e.printStackTrace();
+            return new java.io.ByteArrayInputStream(new byte[0]);
+        }
+
+        return new java.io.ByteArrayInputStream(stream.toByteArray());
+    }
+
+    /**
+     * Delete a folder / file on DBFS
+     * @param folder is the path of the folder / file on DBFS
+     */
+    public void delete(String folder) throws java.lang.Exception {
+        resetClientForEndpoint("/api/2.0/dbfs/delete");
+        client.type("multipart/form-data"); //$NON-NLS-1$
+
+        // manage file
+        List<org.apache.cxf.jaxrs.ext.multipart.Attachment> atts = new java.util.LinkedList<>();
+
+        org.apache.cxf.jaxrs.ext.multipart.ContentDisposition cd = new org.apache.cxf.jaxrs.ext.multipart.ContentDisposition("form-data; name=\"path\";"); //$NON-NLS-1$
+        atts.add(new org.apache.cxf.jaxrs.ext.multipart.Attachment("path",new java.io.ByteArrayInputStream((API_PATH_PREFIX + folder).getBytes()),cd)); //$NON-NLS-1$
+        org.apache.cxf.jaxrs.ext.multipart.ContentDisposition cd1 = new org.apache.cxf.jaxrs.ext.multipart.ContentDisposition("form-data; name=\"overwrite\";"); //$NON-NLS-1$
+        atts.add(new org.apache.cxf.jaxrs.ext.multipart.Attachment("overwrite",new java.io.ByteArrayInputStream(overwrite.getBytes()),cd1)); //$NON-NLS-1$
+
+        org.apache.cxf.jaxrs.ext.multipart.MultipartBody body = new org.apache.cxf.jaxrs.ext.multipart.MultipartBody(atts);
+
+        javax.ws.rs.core.Response result  = client.post(body);
+
+        if (result.getStatus() != 200) {
+            throw new java.lang.Exception(result.readEntity(String.class));
+        }
+    }
+
+    /**
+     * Create a folder on DBFS
+     * @param folder is the path of the new target folder on DBFS
+     */
+    public void mkdir(String folder)  throws java.lang.Exception {
+        resetClientForEndpoint("/api/2.0/dbfs/mkdirs");
+        client.type("multipart/form-data"); //$NON-NLS-1$
+
+        // manage file
+        List<org.apache.cxf.jaxrs.ext.multipart.Attachment> atts = new java.util.LinkedList<>();
+
+        org.apache.cxf.jaxrs.ext.multipart.ContentDisposition cd = new org.apache.cxf.jaxrs.ext.multipart.ContentDisposition("form-data; name=\"path\";"); //$NON-NLS-1$
+        atts.add(new org.apache.cxf.jaxrs.ext.multipart.Attachment("path",new java.io.ByteArrayInputStream((API_PATH_PREFIX + folder).getBytes()),cd)); //$NON-NLS-1$
+
+        org.apache.cxf.jaxrs.ext.multipart.MultipartBody body = new org.apache.cxf.jaxrs.ext.multipart.MultipartBody(atts);
+
+        javax.ws.rs.core.Response result  = client.post(body);
+
+        if (result.getStatus() != 200) {
+            throw new java.lang.Exception(result.readEntity(String.class));
+        }
+    }
+    
+    /**
+     * Append a block of data to the stream specified by the input handle
+     * @param handle the handle of an open stream
+     * @param block the data to append to the stream
+     */
+    private void sendFileBlock(long handle, final byte[] block) throws java.lang.Exception {
+        sendFileBlock(handle, block, API_MAX_RETRY);
+    }
+
+    /**
+     * Append a block of data to the stream specified by the input handle
+     * @param handle the handle of an open stream
+     * @param block the data to append to the stream
+     * @param retry the maximum retry time to append the block of data
+     */
+    private void sendFileBlock(long handle, final byte[] block, int retry)  throws java.lang.Exception {
+        resetClientForEndpoint("/api/2.0/dbfs/add-block");
+        client.type("application/json"); //$NON-NLS-1$
+
+        org.json.simple.JSONObject body = new org.json.simple.JSONObject();
+        body.put("handle", handle);
+        body.put("data", new String(block));
+
+        javax.ws.rs.core.Response response = client.post(body.toJSONString());
+        if(response.getStatus() != 200 && retry > 0){
+            sendFileBlock(handle, block, --retry);
+        } else if (retry == 0) {
+            throw new java.lang.Exception(response.readEntity(String.class));
+        }
+    }
+    
+    /**
+     * Copy a file from the local machine to DBFS
+     * @param localFile the path of the file to upload on the local machine
+     * @param target the path of the new location of the file on DBFS
+     */
+    public void copyFromLocal(String localFile, String target) throws java.lang.Exception {
+        resetClientForEndpoint("/api/2.0/dbfs/create");
+        client.type("multipart/form-data"); //$NON-NLS-1$
+
+        // manage file
+        List<org.apache.cxf.jaxrs.ext.multipart.Attachment> atts = new java.util.LinkedList<>();
+
+        org.apache.cxf.jaxrs.ext.multipart.ContentDisposition cd = new org.apache.cxf.jaxrs.ext.multipart.ContentDisposition("form-data; name=\"path\";"); //$NON-NLS-1$
+        atts.add(new org.apache.cxf.jaxrs.ext.multipart.Attachment("path",new java.io.ByteArrayInputStream((API_PATH_PREFIX + target).getBytes()),cd)); //$NON-NLS-1$
+        org.apache.cxf.jaxrs.ext.multipart.ContentDisposition cd1 = new org.apache.cxf.jaxrs.ext.multipart.ContentDisposition("form-data; name=\"overwrite\";"); //$NON-NLS-1$
+        atts.add(new org.apache.cxf.jaxrs.ext.multipart.Attachment("overwrite",new java.io.ByteArrayInputStream(overwrite.getBytes()),cd1)); //$NON-NLS-1$
+
+        org.apache.cxf.jaxrs.ext.multipart.MultipartBody body = new org.apache.cxf.jaxrs.ext.multipart.MultipartBody(atts);
+
+        String handle;
+        javax.ws.rs.core.Response result  = client.post(body);
+
+        if (result.getStatus() != 200) {
+            throw new java.lang.Exception(result.readEntity(String.class));
+        } else {
+            handle = parseResultCreate(result.readEntity(String.class)).toStringHandle();
+        }
+
+        // PROCESS BLOCKS
+
+        java.io.File file = new java.io.File(localFile);
+        int file_length = new Long(file.length()).intValue();
+
+        int buffer_size = Math.min(API_MAX_SIZE, file_length);
+
+        byte[] buffer = new byte[buffer_size];
+
+        org.apache.commons.codec.binary.Base64 encoder = new org.apache.commons.codec.binary.Base64();
+
+        try (java.io.FileInputStream fis = new java.io.FileInputStream(file);
+             java.io.BufferedInputStream bis = new java.io.BufferedInputStream(fis)) {
+
+            while (bis.read(buffer) > 0) {
+                byte[] decodedBytes = encoder.encode(buffer);
+                sendFileBlock(Long.parseLong(handle), decodedBytes);
+
+                file_length -= buffer_size;
+
+                if (file_length > 0 && file_length < API_MAX_SIZE) {
+                    buffer_size = file_length;
+                    buffer = new byte[buffer_size];
+                }
+            }
+        } catch (java.io.FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
+
+        // CLOSE STREAM
+        resetClientForEndpoint("/api/2.0/dbfs/close");
+        client.type("multipart/form-data"); //$NON-NLS-1$
+
+        // manage file
+        atts = new java.util.LinkedList<>();
+
+        cd = new org.apache.cxf.jaxrs.ext.multipart.ContentDisposition("form-data; name=\"handle\";"); //$NON-NLS-1$
+        atts.add(new org.apache.cxf.jaxrs.ext.multipart.Attachment("handle",new java.io.ByteArrayInputStream(handle.getBytes()),cd)); //$NON-NLS-1$
+
+        body = new org.apache.cxf.jaxrs.ext.multipart.MultipartBody(atts);
+
+        result = client.post(body);
+
+        if (result.getStatus() != 200) {
+            throw new java.lang.Exception(result.readEntity(String.class));
+        }
+    }
+    
+    /**
+     * Parse the result of the #exists function
+     * @param result the response of the API call
+     * @return the formatted response structure
+     */
+    private ReadReponseExists parseResultExists(String result) {
+        org.json.simple.JSONObject resultObject = ((org.json.simple.JSONObject) org.json.simple.JSONValue.parse(result));
+
+        String path;
+        boolean isDir;
+        long file_size;
+        if (resultObject.get("error_code") != null) { //$NON-NLS-1$
+            path = "path"; //$NON-NLS-1$
+            isDir = false;
+            file_size = 0;
+        } else {
+            path = (String) resultObject.get("path"); //$NON-NLS-1$
+            isDir = (Boolean) resultObject.get("is_dir"); //$NON-NLS-1$
+            file_size = (Long)resultObject.get("file_size"); //$NON-NLS-1$
+        }
+        return new ReadReponseExists(path, isDir, file_size); //$NON-NLS-1$
+    }
+
+    /**
+     * The response structure of the #exists function
+     */
+    class ReadReponseExists {
+        public String path;
+        public boolean isDir;
+        public long file_size;
+
+        public ReadReponseExists(String path, boolean isDir, long file_size){
+            this.path = path;
+            this.isDir = isDir;
+            this.file_size = file_size;
+        }
+
+        public String toString() {
+            String res = "Path read = " + this.path + "\n"; //$NON-NLS-1$
+            res += "Is Directory = " + this.isDir + "\n"; //$NON-NLS-1$
+            res += "file_size =" + this.file_size; //$NON-NLS-1$
+            return res;
+        }
+    }
+
+    /**
+     * Parse the result of the #open function
+     * @param result the response of the API call
+     * @return the formatted response structure
+     */
+    private ReadResponseOpen parseResultOpen(String result) {
+        org.json.simple.JSONObject resultObject = ((org.json.simple.JSONObject) org.json.simple.JSONValue.parse(result));
+        long bytes_read = (Long)resultObject.get("bytes_read"); //$NON-NLS-1$
+        String data = (String)resultObject.get("data"); //$NON-NLS-1$
+        return new ReadResponseOpen(bytes_read,data); //$NON-NLS-1$
+    }
+
+    /**
+     * The response structure of the #open function
+     */
+    class ReadResponseOpen {
+        public long bytes_read;
+        public String data;
+        public ReadResponseOpen(long read, String dataFile){
+            org.apache.commons.codec.binary.Base64 decoder = new org.apache.commons.codec.binary.Base64();
+            byte[] decodedBytes = decoder.decode(dataFile);
+            this.bytes_read = read;
+            this.data = new String(decodedBytes);
+        }
+        public String toString() {
+            String res = "Bytes read = " + this.bytes_read + "\n"; //$NON-NLS-1$
+            res += "Data = " + this.data; //$NON-NLS-1$
+            return res;
+        }
+    }
+
+    /**
+     * Parse the result of the #create function
+     * @param result the response of the API call
+     * @return the formatted response structure
+     */
+    private ReadReponseCreate parseResultCreate(String result) {
+        org.json.simple.JSONObject resultObject = ((org.json.simple.JSONObject) org.json.simple.JSONValue.parse(result));
+        long handle = (Long)resultObject.get("handle"); //$NON-NLS-1$
+
+        return new ReadReponseCreate(handle); //$NON-NLS-1$
+    }
+
+    /**
+     * The response structure of the #create function
+     */
+    class ReadReponseCreate {
+        public long handle;
+        public ReadReponseCreate(long handle){
+            this.handle = handle;
+        }
+
+        public long getHandle(){
+            return this.getHandle();
+        }
+
+        public String toString() {
+            String res = "Handle number = " + this.handle + "\n"; //$NON-NLS-1$
+            return res;
+        }
+
+        public String toStringHandle() {
+            String res = Long.toString(this.handle);
+            return res;
+        }
+    }
+
+}

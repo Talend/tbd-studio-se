@@ -1,0 +1,47 @@
+<%@ jet 
+	imports="
+		org.talend.core.model.process.INode 
+		org.talend.core.model.process.ElementParameterParser
+		org.talend.designer.codegen.config.CodeGeneratorArgument
+		java.util.List
+		java.util.Map
+	"
+%>
+		
+<%
+	CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+	INode node = (INode)codeGenArgument.getArgument();
+	String cid = node.getUniqueName();
+	
+	String localdir = ElementParameterParser.getValue(node, "__LOCALDIR__");	
+	String remotedir = ElementParameterParser.getValue(node, "__DATABRICKS_DBFS_FOLDER__");
+	String endpoint = ElementParameterParser.getValue(node, "__DATABRICKS_ENDPOINT__");
+	String token = ElementParameterParser.getValue(node, "__DATABRICKS_TOKEN__");
+	String overwrite = ElementParameterParser.getValue(node, "__OVERWRITE__");
+	List<Map<String, String>> files = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__FILES__");
+%>
+
+	<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/DBFS/apiHandler_DBFS.javajet"%>
+	
+	DBFSAPI_<%=cid%> apiHandler_<%=cid%> = new DBFSAPI_<%=cid%>(<%=endpoint%>, <%=token%>, routines.system.Constant.getUserAgent("<%=org.talend.commons.utils.VersionUtils.getDisplayVersion()%>"), "<%=overwrite%>");
+
+	int nb_file_<%=cid%> = 0;
+	int nb_success_<%=cid%> = 0;
+	
+	java.util.List<String> msg_<%=cid%> = new java.util.ArrayList<String>();
+    java.util.List<java.util.Map<String,String>> list_<%=cid %> = new java.util.ArrayList<java.util.Map<String,String>>();	
+	<%
+    for (int i=0; i<files.size(); i++) {
+    	Map<String, String> line = files.get(i);
+		%>    
+		java.util.Map<String,String> map_<%=cid %>_<%=i %> = new java.util.HashMap<String,String>();
+		map_<%=cid %>_<%=i %>.put(<%= line.get("FILEMASK") %>,<%= line.get("NEWNAME") %>);		
+	 	list_<%=cid %>.add(map_<%=cid %>_<%=i %>);       
+	<%
+	}
+	%>	
+
+	String localdir_<%=cid %>  = <%=localdir%>;	
+	for (java.util.Map<String, String> map_<%=cid %> : list_<%=cid %>) 
+	{
+
