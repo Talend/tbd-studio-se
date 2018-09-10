@@ -6,6 +6,7 @@ class DBFSAPI_<%=cid%> {
 	private String token;
 	private String userAgent;
 	private String overwrite;
+	private com.google.gson.Gson gson;
 	private final int API_MAX_RETRY = 3;
 	private final int API_MAX_SIZE = 512*1024; // 1 MB
 	private final String API_PATH_PREFIX = "/FileStore";
@@ -15,6 +16,7 @@ class DBFSAPI_<%=cid%> {
 		this.token = token;
 		this.userAgent = userAgent;
 		this.overwrite = overwrite;
+		this.gson = new com.google.gson.GsonBuilder().create();
 	}
 	
 	private void createClient(String endpoint) {
@@ -33,12 +35,34 @@ class DBFSAPI_<%=cid%> {
     }
     
     /**
+     * Retrieves the status of a file or folder on DBFS
+     * @param remoteFile path of the file (or folder) we want to retrieve status of
+     * @return the json result containing the status
+     */
+    public FileInfo getStatus(String remoteFile) {
+        resetClientForEndpoint("/api/2.0/dbfs/get-status"); //$NON-NLS-1$
+        client.type("application/json"); //$NON-NLS-1$
+
+        client.query("path", remoteFile); //$NON-NLS-1$
+        javax.ws.rs.core.Response response = client.get();
+        if (response.getStatus() == 200) {
+            try {
+                return gson.fromJson(response.readEntity(String.class), FileInfo.class);
+            } catch (javax.ws.rs.MessageProcessingException ignored) {
+                return null; // If error file are considered different
+            }
+        } else {
+            return null; // file does not exists remotely
+        }
+    }
+    
+    /**
      * List the content of a folder on DBFS
      * @param folder is the path of the folder we want to list
      * @return The content of a DBFS folder
      * @throws java.lang.Exception
      */
-    public String list(String folder) throws java.lang.Exception {
+    public List<FileInfo> list(String folder) throws java.lang.Exception {
         resetClientForEndpoint("/api/2.0/dbfs/list");
         client.type("application/json"); //$NON-NLS-1$
         client.query("path",API_PATH_PREFIX + folder); //$NON-NLS-1$
@@ -47,7 +71,7 @@ class DBFSAPI_<%=cid%> {
 
         int statusResult = responseAPICall.getStatus();
         if (statusResult == 200) {
-            return responseAPICall.readEntity(String.class);
+            return gson.fromJson(responseAPICall.readEntity(String.class), FileInfoList.class).files;
         } else {
             throw new java.lang.Exception(responseAPICall.readEntity(String.class));
         }
@@ -75,19 +99,9 @@ class DBFSAPI_<%=cid%> {
 	 * @return true if the file doesn't exist on DBFS or if the file has a different size with the local one
 	 */
     public boolean notExistsOrIsDifferent(String localFile, String remoteFile) {
-        resetClientForEndpoint("/api/2.0/dbfs/get-status");
-        client.type("application/json"); //$NON-NLS-1$
-
-        client.query("path", API_PATH_PREFIX + remoteFile); //$NON-NLS-1$
-        javax.ws.rs.core.Response response = client.get();
-        if (response.getStatus() == 200) {
-            long localSize = new java.io.File(localFile).length();
-            try {
-                long remoteSize = (long)((org.json.simple.JSONObject) new org.json.simple.parser.JSONParser().parse(response.readEntity(String.class))).get("file_size");
-                return localSize != remoteSize;
-            } catch (org.json.simple.parser.ParseException ignored) {
-                return true; // If error file are considered different
-            }
+        org.json.simple.JSONObject remoteFileStatus = getStatus(remoteFile);
+        if (remoteFileStatus != null) {
+            return new java.io.File(localFile).length() != (long)remoteFileStatus.get("file_size");
         } else {
             return true; // file does not exists remotely
         }
@@ -273,7 +287,7 @@ class DBFSAPI_<%=cid%> {
         if (result.getStatus() != 200) {
             throw new java.lang.Exception(result.readEntity(String.class));
         } else {
-            handle = parseResultCreate(result.readEntity(String.class)).toStringHandle();
+            handle = gson.fromJson(result.readEntity(String.class), ReadReponseCreate.class).toStringHandle();
         }
 
         // PROCESS BLOCKS
@@ -403,39 +417,34 @@ class DBFSAPI_<%=cid%> {
     }
 
     /**
-     * Parse the result of the #create function
-     * @param result the response of the API call
-     * @return the formatted response structure
-     */
-    private ReadReponseCreate parseResultCreate(String result) {
-        org.json.simple.JSONObject resultObject = ((org.json.simple.JSONObject) org.json.simple.JSONValue.parse(result));
-        long handle = (Long)resultObject.get("handle"); //$NON-NLS-1$
-
-        return new ReadReponseCreate(handle); //$NON-NLS-1$
-    }
-
-    /**
      * The response structure of the #create function
      */
-    class ReadReponseCreate {
-        public long handle;
-        public ReadReponseCreate(long handle){
-            this.handle = handle;
-        }
-
-        public long getHandle(){
-            return this.getHandle();
-        }
+    public static class ReadReponseCreate {
+        public java.lang.Long handle;
 
         public String toString() {
-            String res = "Handle number = " + this.handle + "\n"; //$NON-NLS-1$
-            return res;
+            return "Handle number = " + this.handle + "\n";
         }
 
         public String toStringHandle() {
-            String res = Long.toString(this.handle);
-            return res;
+            return Long.toString(this.handle);
         }
+    }
+    
+    /**
+     * The Databricks structure to describe a file
+     */
+    public class FileInfo {
+        public String path;
+        public java.lang.Boolean is_dir;
+        public java.lang.Long file_size;
+    }
+    
+    /**
+     * The Databricks structure to describe a list of files
+     */
+    public class FileInfoList {
+        public List<FileInfo> files;
     }
 
 }

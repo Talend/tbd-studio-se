@@ -1,0 +1,187 @@
+<%@ jet 
+	imports="
+		org.talend.core.model.process.INode 
+		org.talend.core.model.process.ElementParameterParser
+		org.talend.designer.codegen.config.CodeGeneratorArgument
+		java.util.List
+		java.util.Map
+	"
+%>
+<%
+	String localdir = ElementParameterParser.getValue(node, "__LOCALDIR__");
+	boolean overwrite = ElementParameterParser.getBooleanValue(node, "__OVERWRITE__");
+	String remotedir = ElementParameterParser.getValue(node, "__DATABRICKS_DBFS_FOLDER__");
+	boolean includeSubDir = ElementParameterParser.getBooleanValue(node, "__INCLUDSUBDIR__");
+	List<Map<String, String>> files = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__FILES__");
+%>
+
+	<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/DBFS/apiHandler_DBFS.javajet"%>
+	
+	DBFSAPI_<%=cid%> apiHandler_<%=cid%> = new DBFSAPI_<%=cid%>(<%=endpoint%>, <%=token%>, routines.system.Constant.getUserAgent("<%=org.talend.commons.utils.VersionUtils.getDisplayVersion()%>"), "<%=overwrite%>");
+	
+	int nb_file_<%=cid%> = 0;
+	int nb_success_<%=cid%> = 0;
+	
+	String localPath_<%=cid%> = <%=localdir%>;
+	if(localPath_<%=cid%>!=null&&!"".equals(localPath_<%=cid%>)){
+		java.io.File localDir_<%=cid%> = new java.io.File(localPath_<%=cid%>);
+		localDir_<%=cid%>.mkdirs();
+	}else{
+		throw new RuntimeException("The local Dir required");
+	}
+	java.util.List<String> msg_<%=cid%> = new java.util.ArrayList<String>();
+    java.util.List<java.util.Map<String,String>> list_<%=cid %> = new java.util.ArrayList<java.util.Map<String,String>>();
+	<%
+    for (int i=0; i<files.size(); i++) {
+       	Map<String, String> line = files.get(i);
+	%>    
+		java.util.Map<String,String> map_<%=cid %>_<%=i %> = new java.util.HashMap<String,String>();
+		map_<%=cid %>_<%=i %>.put(<%= line.get("FILEMASK") %>,<%= line.get("NEWNAME") %>);		
+	 	list_<%=cid %>.add(map_<%=cid %>_<%=i %>);       
+	<%
+  	}
+	%>
+
+    class FileUtil_<%=cid%> {
+    	private DBFSAPI_<%=cid%> apiHandler;
+    	private String localOutputDir;
+    	private String subPath;
+    	private String remoteBasePath;
+    	private boolean includeSubDir;
+    	private boolean overwrite;
+    	private int nbFile = 0;
+    	
+    	public FileUtil_<%=cid%>(DBFSAPI_<%=cid%> apiHandler, String localOutputDir, String remoteBasePath, boolean includeSubDir, boolean overwrite) {
+    		this.apiHandler = apiHandler;
+    		this.localOutputDir = localOutputDir;
+    		this.remoteBasePath = remoteBasePath;
+    		this.includeSubDir = includeSubDir;
+    		this.overwrite = overwrite;
+    		this.subPath = "";
+    	}
+    	
+    	
+    	public boolean walkDirectoriesAndCopyToLocal(String fileMask, String fileRename) {
+    		if(!createDirectory(localOutputDir)) return false;
+    		java.util.List<DBFSAPI_<%=cid%>.FileInfo> remoteFileList = apiHandler.list(remoteDir);
+    		for(DBFSAPI_<%=cid%>.FileInfo fileStatus : remoteFileList){
+    			if(fileStatus.is_dir) {
+    				if(includeSubDir) if(!recursiveSubDirReading(fileStatus.path, fileRename, fileMask, fileRename)) return false;
+    			} else {
+    				if(!copyToLocal(fileStatus.path, fileMask, fileRename)) return false;
+    			}
+    		}
+    		return true;
+    	}
+    
+    	public boolean recursiveSubDirReading(String subDir, String fileMask, String fileRename){
+    		int lastSlash = subDir.lastIndexOf("/")
+    		subPath = subDir.substring(0, lastSlash).replaceAll(remoteBasePath, "");
+    		
+    		if(!createDirectory(localOutputDir + subPath)) return false;
+    		java.util.List<DBFSAPI_<%=cid%>.FileInfo> remoteSubDirFileList = apiHandler.list(subDir);
+    		for(DBFSAPI_<%=cid%>.FileInfo fileStatus : remoteSubDirFileList) {
+    			if(fileStatus.is_dir) {
+    				if(!recursiveSubDirReading(fileStatus.path, fileMask, fileRename)) return false;
+    			} else {
+    				if(!copyToLocal(fileStatus.path, fileMask, fileRename)) return false;
+    			}
+    		}
+    		return true;
+    	}
+    	
+    	public boolean copyToLocal(String filePath, String fileMask, String fileRename) {
+    		String newFileName = getNewFileNameOrEmpty(filePath, fileMask, fileRename);
+    		if(newFileName.isEmpty()) return true;
+    		
+    		java.io.InputStream remoteFileStream = apiHandler_<%=cid%>.open(filePath.replaceAll("/FileStore",""));
+    		return writeFile(remoteFileStream, newFileName, localOutputDir + subPath, overwrite);
+    	}
+    	
+    	public boolean deleteDirectory(String folderName) {
+    		java.io.File newFolder = new java.io.File(folderName);
+    		if(newFolder.exists()){
+    			if(newFolder.canWrite() && overwrite) {
+    				newFolder.delete();
+    				return true;
+    			} else {
+    				System.err.println(folderName+" exists, is not overwritten.");
+    				
+    				<%if(isLog4jEnabled) {%>
+                   	log.error("<%=cid%> - file or folder : " + folderName + " exists, is not overwritten.");
+                    <%}%>
+    			}
+    		} else {
+    			return true;
+    		}
+    		return false;
+    	}
+    
+    	public boolean createDirectory(String folderName){
+    		java.io.File newFolder = new java.io.File(folderName);
+    		if(newFolder.exists()){
+    		} else {
+    			newFolder.mkDirs();
+    		}
+    		return true;
+    	}
+    	
+    	public boolean writeFile(java.io.InputStream inputContent, String fileName, String destinationDir) throws java.io.IOException {
+    		java.io.File newFile = checkDest(fileName, new java.io.File(destinationDir), overwrite);
+    		
+    		if(newFile == null) {
+    			return false;
+    		}
+    		
+   			java.io.OutputStream out = null;
+   			try {
+   				out = new java.io.FileOutputStream(newFile);
+   				out.write(new byte[inputcontent.available()]);
+   				out.close();
+   			} catch (java.io.IOException e) {
+   				throw e;
+   			}
+    		return true;
+    	}
+    
+    	private java.io.File checkDest(String fileName, java.io.File destinationDir) {
+    		if (fileName == null || fileName.isEmpty()) {
+    			return null;
+ 			}
+ 			
+ 			java.io.File newFile = new java.io.File(destinationDir, fileName);
+ 			
+    		if (newFile.exists()) {
+    			if (!overwrite) {
+    				System.err.print(destinationDir+"/"+fileName+" exists, is not overwritten.");
+    				
+    				<%if(isLog4jEnabled) {%>
+                   	log.error("<%=cid%> - file or folder : " + destinationDir+"/"+fileName + " exists, is not overwritten.");
+                    <%}%>
+                    
+    				return null;
+    			}
+    		}
+    		return newFile;
+    	}
+    	
+    	private boolean getNewFileNameOrEmpty(String filePath, String fileNameMask, String fileRename) {
+    		int p = filePath.lastIndexOf("/");
+    		String fileName = filePath.substring(p+1);
+    		if(fileName.matches(fileNameMask)){
+    			return fileRename;
+    		}
+    		return "";
+    	}
+    	
+    	public int getNbFile() {return nbFile;}
+
+	}
+	
+	FileUtil_<%=cid%> fileutil_<%=cid%> = new FileUtil_<%=cid%>(apiHandler_<%=cid%>, <%=localdir%>, <%=remotedir%>, <%=includeSubDir%>, <%=overwrite%>);
+	
+	fileutil_<%=cid%>.deleteDirectory(<%=localdir%>);
+
+	for (java.util.Map<String, String> map_<%=cid %> : list_<%=cid %>) 
+	{
+
