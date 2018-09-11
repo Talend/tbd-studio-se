@@ -7,7 +7,7 @@
             context="plugin:org.talend.libraries.s3"
             id="aws-java-sdk-1.7.4"
             name="aws-java-sdk-1.7.4.jar"
-            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-1.7.4/6.1.0"
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-1.7.4/6.0.0"
             uripath="platform:/plugin/org.talend.libraries.s3/lib/aws-java-sdk-1.7.4.jar">
         </libraryNeeded>
             

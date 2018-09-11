@@ -72,7 +72,7 @@
             context="HDFS wizard"
             language="java"
             message="Wizard use for HDFS"
-            name="avro-1.7.6.jar" mvn_uri="mvn:org.talend.libraries/avro-1.7.6/6.0.0" 
+            name="avro-1.7.6.jar" mvn_uri="mvn:org.apache.avro/avro/1.7.6" 
             required="true"
             uripath="platform:/plugin/org.talend.libraries.hadoop.mapr.4.1.0/lib/avro-1.7.6.jar">
       </libraryNeeded>     

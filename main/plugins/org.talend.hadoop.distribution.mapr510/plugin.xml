@@ -39,7 +39,7 @@
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
             id="guava-14.0.1.jar"
-            name="guava-14.0.1.jar" mvn_uri="mvn:org.talend.libraries/guava-14.0.1/6.2.0" >
+            name="guava-14.0.1.jar" mvn_uri="mvn:com.google.guava/guava/14.0.1" >
         </libraryNeeded>
         
        <libraryNeeded
@@ -108,7 +108,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
             id="parquet-hive-bundle-1.6.0.jar"
             name="parquet-hive-bundle-1.6.0.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-hive-bundle-1.6.0/6.2.0" >
+            mvn_uri="mvn:org.talend.libraries/parquet-hive-bundle-1.6.0/6.0.0" >
         </libraryNeeded>
         
         <!-- MapR Streams libraries -->
@@ -137,7 +137,7 @@
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop"
             id="parquet-hadoop-bundle-1.6.0.jar"
-            name="parquet-hadoop-bundle-1.6.0.jar" mvn_uri="mvn:org.talend.libraries/parquet-hadoop-bundle-1.6.0/6.1.0"
+            name="parquet-hadoop-bundle-1.6.0.jar" mvn_uri="mvn:com.twitter/parquet-hadoop-bundle/1.6.0"
             uripath="platform:/plugin/org.talend.libraries.hadoop/lib/parquet-hadoop-bundle-1.6.0.jar">
         </libraryNeeded>
         
@@ -160,7 +160,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
             id="javax.ws.rs-api-2.0.1.jar"
             name="javax.ws.rs-api-2.0.1.jar"
-            mvn_uri="mvn:org.talend.libraries/javax.ws.rs-api-2.0.1/6.2.0">
+            mvn_uri="mvn:org.talend.libraries/javax.ws.rs-api-2.0.1/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
@@ -223,7 +223,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
             id="parquet-pig-bundle-1.6.0.jar"
             name="parquet-pig-bundle-1.6.0.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-pig-bundle-1.6.0/6.2.0">
+            mvn_uri="mvn:org.talend.libraries/parquet-pig-bundle-1.6.0/6.0.0">
         </libraryNeeded>
             
        <libraryNeeded
@@ -237,7 +237,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
             id="automaton-1.11-8.jar"
             name="automaton-1.11-8.jar"
-            mvn_uri="mvn:org.talend.libraries/automaton-1.11-8/6.2.0">
+            mvn_uri="mvn:org.talend.libraries/automaton-1.11-8/6.0.0">
         </libraryNeeded>
 
         <libraryNeeded
@@ -271,7 +271,7 @@
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.hdp.2.3"
             id="netty-all-4.0.23.Final.jar"
-            name="netty-all-4.0.23.Final.jar" mvn_uri="mvn:org.talend.libraries/netty-all-4.0.23.Final/6.1.0"
+            name="netty-all-4.0.23.Final.jar" mvn_uri="mvn:org.talend.libraries/netty-all-4.0.23.Final/6.0.0"
             uripath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.3/lib/netty-all-4.0.23.Final.jar">
         </libraryNeeded>
         
@@ -307,7 +307,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
             id="commons-collections-3.2.2.jar"
             name="commons-collections-3.2.2.jar"
-            mvn_uri="mvn:org.talend.libraries/commons-collections-3.2.2/6.2.0">
+            mvn_uri="mvn:commons-collections/commons-collections/3.2.2">
         </libraryNeeded>
 
        <libraryNeeded

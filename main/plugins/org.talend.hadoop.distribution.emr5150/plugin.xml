@@ -601,7 +601,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="jackson-core-asl-1.9.14-TALEND.jar"
             name="jackson-core-asl-1.9.14-TALEND.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"/>
+            mvn_uri="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -1697,7 +1697,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="jackson-mapper-asl-1.9.14-TALEND.jar"
             name="jackson-mapper-asl-1.9.14-TALEND.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"/>
+            mvn_uri="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -1763,13 +1763,13 @@
 			context="plugin:org.talend.hadoop.distribution.emr5150" 
 			id="jackson-core-asl-1.9.13.jar" 
 			name="jackson-core-asl-1.9.13.jar"
-			mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.13/6.0.0"/>
+			mvn_uri="mvn:org.codehaus.jackson/jackson-core-asl/1.9.13"/>
 		
 		<libraryNeeded 
 			context="plugin:org.talend.hadoop.distribution.emr5150" 
 			id="jackson-mapper-asl-1.9.13.jar" 
 			name="jackson-mapper-asl-1.9.13.jar"
-			mvn_uri="mvn:org.talend.libraries/jackson-mapper-asl-1.9.13/6.0.0"/>
+			mvn_uri="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.13"/>
 		
 		<libraryNeeded 
 			context="plugin:org.talend.hadoop.distribution.emr5150" 

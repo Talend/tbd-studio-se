@@ -14,7 +14,7 @@
       <libraryNeeded
             context="org.talend.libraries.couchbase"
             id="jettison-1.1.jar"
-            mvn_uri="mvn:org.talend.libraries/jettison-1.1/6.0.0"
+            mvn_uri="mvn:org.codehaus.jettison/jettison/1.1"
             name="jettison-1.1.jar"
             uripath="platform:/plugin/org.talend.libraries.couchbase/lib/jettison-1.1.jar">
       </libraryNeeded>

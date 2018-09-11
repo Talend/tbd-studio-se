@@ -324,7 +324,7 @@
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="avro-1.8.0.jar"
             name="avro-1.8.0.jar" 
-            mvn_uri="mvn:org.talend.libraries/avro-1.8.0/6.3.0"
+            mvn_uri="mvn:org.talend.libraries/avro-1.8.0/6.0.0"
             uripath="platform:/plugin/org.talend.libraries.apache/lib/avro-1.8.0.jar">
         </libraryNeeded>
                
@@ -385,21 +385,21 @@
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="parquet-avro-1.4.1"
             name="parquet-avro-1.4.1.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-avro-1.4.1/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/parquet-avro-1.4.1/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="libfb303-0.9.3"
             name="libfb303-0.9.3.jar"
-            mvn_uri="mvn:org.talend.libraries/libfb303-0.9.3/6.3.0">
+            mvn_uri="mvn:org.apache.thrift/libfb303/0.9.3">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="libthrift-0.9.3"
             name="libthrift-0.9.3.jar"
-            mvn_uri="mvn:org.talend.libraries/libthrift-0.9.3/6.3.0">
+            mvn_uri="mvn:org.apache.thrift/libthrift/0.9.3">
         </libraryNeeded>
         
         <libraryNeeded
@@ -413,98 +413,98 @@
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="aws-java-sdk-core-1.10.6"
             name="aws-java-sdk-core-1.10.6.jar"
-            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-core-1.10.6/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-core-1.10.6/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="aws-java-sdk-s3-1.10.6"
             name="aws-java-sdk-s3-1.10.6.jar"
-            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-s3-1.10.6/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-s3-1.10.6/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="datanucleus-api-jdo-4.2.1"
             name="datanucleus-api-jdo-4.2.1.jar"
-            mvn_uri="mvn:org.talend.libraries/datanucleus-api-jdo-4.2.1/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/datanucleus-api-jdo-4.2.1/6.2.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="datanucleus-core-4.1.6"
             name="datanucleus-core-4.1.6.jar"
-            mvn_uri="mvn:org.talend.libraries/datanucleus-core-4.1.6/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/datanucleus-core-4.1.6/6.2.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="datanucleus-rdbms-4.1.7"
             name="datanucleus-rdbms-4.1.7.jar"
-            mvn_uri="mvn:org.talend.libraries/datanucleus-rdbms-4.1.7/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/datanucleus-rdbms-4.1.7/6.2.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="httpclient-4.5.2"
             name="httpclient-4.5.2.jar"
-            mvn_uri="mvn:org.talend.libraries/httpclient-4.5.2/6.3.0">
+            mvn_uri="mvn:org.apache.httpcomponents/httpclient/4.5.2">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="httpcore-4.4.4.jar"
             name="httpcore-4.4.4.jar"
-            mvn_uri="mvn:org.talend.libraries/httpcore-4.4.4/6.3.0">
+            mvn_uri="mvn:org.apache.httpcomponents/httpcore/4.4.4">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="jackson-core-2.5.4"
             name="jackson-core-2.5.4.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-core-2.5.4/6.3.0">
+            mvn_uri="mvn:com.fasterxml.jackson.core/jackson-core/2.5.4">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="jackson-databind-2.5.4.redhat-2"
             name="jackson-databind-2.5.4.redhat-2.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-databind-2.5.4.redhat-2/6.3.0">
+            mvn_uri="mvn:com.fasterxml.jackson.core/jackson-databind/2.5.4.redhat-2">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="jackson-annotations-2.5.4"
             name="jackson-annotations-2.5.4.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-annotations-2.5.4/6.0.0">
+            mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.5.4">
         </libraryNeeded>        
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="parquet-hadoop-bundle-1.8.1"
             name="parquet-hadoop-bundle-1.8.1.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-hadoop-bundle-1.8.1/6.3.0">
+            mvn_uri="mvn:org.apache.parquet/parquet-hadoop-bundle/1.8.1">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="kite-data-core-1.0.0-HDP-25"
             name="kite-data-core-1.0.0.jar"
-            mvn_uri="mvn:org.talend.libraries/kite-data-core-1.0.0/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/kite-data-core-1.0.0/6.1.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="kite-data-mapreduce-1.0.0-HDP-25"
             name="kite-data-mapreduce-1.0.0.jar"
-            mvn_uri="mvn:org.talend.libraries/kite-data-mapreduce-1.0.0/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/kite-data-mapreduce-1.0.0/6.1.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="kite-hadoop-compatibility-1.0.0-HDP-25"
             name="kite-hadoop-compatibility-1.0.0.jar"
-            mvn_uri="mvn:org.talend.libraries/kite-hadoop-compatibility-1.0.0/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/kite-hadoop-compatibility-1.0.0/6.1.0">
         </libraryNeeded>
         
         <libraryNeeded
@@ -560,28 +560,28 @@
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="joda-time-2.8.1.jar"
             name="joda-time-2.8.1.jar"
-            mvn_uri="mvn:org.talend.libraries/joda-time-2.8.1/6.3.0">
+            mvn_uri="mvn:joda-time/joda-time/2.8.1">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="aws-java-sdk-kinesis-1.10.6.jar"
             name="aws-java-sdk-kinesis-1.10.6.jar"
-            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-kinesis-1.10.6/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-kinesis-1.10.6/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="aws-java-sdk-core-1.10.6.jar"
             name="aws-java-sdk-core-1.10.6.jar"
-            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-core-1.10.6/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-core-1.10.6/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
             id="aws-java-sdk-dynamodb-1.10.6.jar"
             name="aws-java-sdk-dynamodb-1.10.6.jar"
-            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-dynamodb-1.10.6/6.3.0">
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-dynamodb-1.10.6/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded

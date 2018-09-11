@@ -164,11 +164,11 @@
 			<IMPORT NAME="neo4j-udc-3.2.6" MODULE="neo4j-udc-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-udc-3.2.6/6.0.0"  REQUIRED="true"/>
 			<IMPORT NAME="neo4j-unsafe-3.2.6" MODULE="neo4j-unsafe-3.2.6.jar"  MVN="mvn:org.talend.libraries/neo4j-unsafe-3.2.6/6.0.0"  REQUIRED="true"/>
 			<IMPORT NAME="netty-all-4.1.15.Final" MODULE="netty-all-4.1.15.Final.jar"  MVN="mvn:org.talend.libraries/netty-all-4.1.15.Final/6.0.0"  REQUIRED="true"/>
-			<IMPORT NAME="opencsv-2.3" MODULE="opencsv-2.3.jar"  MVN="mvn:org.talend.libraries/opencsv-2.3/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="opencsv-2.3" MODULE="opencsv-2.3.jar"  MVN="mvn:net.sf.opencsv/opencsv/2.3"  REQUIRED="true"/>
 			<IMPORT NAME="parboiled-core-1.1.7" MODULE="parboiled-core-1.1.7.jar"  MVN="mvn:org.talend.libraries/parboiled-core-1.1.7/6.0.0"  REQUIRED="true"/>
 			<IMPORT NAME="parboiled-scala_2.11-1.1.7" MODULE="parboiled-scala_2.11-1.1.7.jar"  MVN="mvn:org.talend.libraries/parboiled-scala_2.11-1.1.7/6.0.0"  REQUIRED="true"/>
-			<IMPORT NAME="scala-library-2.11.8" MODULE="scala-library-2.11.8.jar"  MVN="mvn:org.talend.libraries/scala-library-2.11.8/6.0.0"  REQUIRED="true"/>
-			<IMPORT NAME="scala-reflect-2.11.8" MODULE="scala-reflect-2.11.8.jar"  MVN="mvn:org.talend.libraries/scala-reflect-2.11.8/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="scala-library-2.11.8" MODULE="scala-library-2.11.8.jar"  MVN="mvn:org.scala-lang/scala-library/2.11.8"  REQUIRED="true"/>
+			<IMPORT NAME="scala-reflect-2.11.8" MODULE="scala-reflect-2.11.8.jar"  MVN="mvn:org.scala-lang/scala-reflect/2.11.8"  REQUIRED="true"/>
 		</IMPORTS>
     </CODEGENERATION>
 

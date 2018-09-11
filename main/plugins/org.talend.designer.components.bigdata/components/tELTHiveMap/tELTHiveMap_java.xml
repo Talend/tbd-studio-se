@@ -725,7 +725,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/hadoop-0.20.2-dev-core-mapr2.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="log4j-1.2.16" MODULE="log4j-1.2.16.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.16/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.16"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.16.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="hive-exec-0.9.0-mapr2.jar" MODULE="hive-exec-0.9.0-mapr2.jar"
@@ -808,23 +808,23 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/hive-builtins-0.9.0-mapr2.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.6" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/base/plugins/org.apache.commons.lang_2.6.0.v201404270220.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-dbcp-1.4" MODULE="commons-dbcp-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-dbcp-1.4/6.0.0"
+				MVN="mvn:commons-dbcp/commons-dbcp/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-dbcp-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-pool-1.5.4" MODULE="commons-pool-1.5.4.jar"
-				MVN="mvn:org.talend.libraries/commons-pool-1.5.4/6.0.0"
+				MVN="mvn:commons-pool/commons-pool/1.5.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-pool-1.5.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="guava-r09.jar" MODULE="guava-r09.jar"
@@ -1006,15 +1006,15 @@
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_2_4_0_EMR') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 
 			<IMPORT NAME="commons-logging-1.1.3.jar" MODULE="commons-logging-1.1.3.jar"
-				MVN="mvn:org.talend.libraries/commons-logging-1.1.3/6.0.0"
+				MVN="mvn:commons-logging/commons-logging/1.1.3"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-logging-1.1.3.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_2_4_0_EMR') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="protobuf-java-2.5.0" MODULE="protobuf-java-2.5.0.jar"
-				MVN="mvn:org.talend.libraries/protobuf-java-2.5.0/6.0.0"
+				MVN="mvn:com.google.protobuf/protobuf-java/2.5.0"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.0/lib/protobuf-java-2.5.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_2_4_0_EMR') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="commons-httpclient-3.1" MODULE="commons-httpclient-3.1.jar"
-				MVN="mvn:org.talend.libraries/commons-httpclient-3.1/6.0.0"
+				MVN="mvn:commons-httpclient/commons-httpclient/3.1"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.http/lib/commons-httpclient-3.1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_2_4_0_EMR') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="jets3t-0.9.1-emr-2.4.0" MODULE="jets3t-0.9.1-emr-2.4.0.jar"
@@ -1030,7 +1030,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.apache.2.4.0/lib/httpcore-4.3.2.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_2_4_0_EMR') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="commons-lang-2.6" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang-2.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_2_4_0_EMR') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 
@@ -1086,15 +1086,15 @@
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_2_4_0_EMR_0_13_1') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 
 			<IMPORT NAME="commons-logging-1.1.3.jar" MODULE="commons-logging-1.1.3.jar"
-				MVN="mvn:org.talend.libraries/commons-logging-1.1.3/6.0.0"
+				MVN="mvn:commons-logging/commons-logging/1.1.3"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-logging-1.1.3.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_2_4_0_EMR_0_13_1') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="protobuf-java-2.5.0" MODULE="protobuf-java-2.5.0.jar"
-				MVN="mvn:org.talend.libraries/protobuf-java-2.5.0/6.0.0"
+				MVN="mvn:com.google.protobuf/protobuf-java/2.5.0"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.0/lib/protobuf-java-2.5.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_2_4_0_EMR_0_13_1') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="commons-httpclient-3.1" MODULE="commons-httpclient-3.1.jar"
-				MVN="mvn:org.talend.libraries/commons-httpclient-3.1/6.0.0"
+				MVN="mvn:commons-httpclient/commons-httpclient/3.1"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.http/lib/commons-httpclient-3.1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_2_4_0_EMR_0_13_1') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="jets3t-0.9.1-emr-2.4.0" MODULE="jets3t-0.9.1-emr-2.4.0.jar"
@@ -1110,29 +1110,29 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.apache.2.4.0/lib/httpcore-4.3.2.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_2_4_0_EMR_0_13_1') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="commons-lang-2.6" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang-2.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_2_4_0_EMR_0_13_1') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 
 
 			<IMPORT NAME="commons-cli-1.2" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (DISTRIBUTION!='CUSTOM') AND (HIVE_VERSION=='APACHE_2_4_0_EMR_0_13_1') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="commons-configuration-1.6" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (DISTRIBUTION!='CUSTOM') AND (HIVE_VERSION=='APACHE_2_4_0_EMR_0_13_1') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="commons-codec-1.4" MODULE="commons-codec-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-codec-1.4/6.0.0"
+				MVN="mvn:commons-codec/commons-codec/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (DISTRIBUTION!='CUSTOM') AND (HIVE_VERSION=='APACHE_2_4_0_EMR_0_13_1') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (DISTRIBUTION!='CUSTOM') AND (HIVE_VERSION=='APACHE_2_4_0_EMR_0_13_1') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (DISTRIBUTION!='CUSTOM') AND (HIVE_VERSION=='APACHE_2_4_0_EMR_0_13_1') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="guava-11.0.2" MODULE="guava-11.0.2.jar"
@@ -1153,7 +1153,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.7.5.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (DISTRIBUTION!='CUSTOM') AND (HIVE_VERSION=='APACHE_2_4_0_EMR_0_13_1') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="log4j-1.2.17" MODULE="log4j-1.2.17.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.17/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.17"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.17.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (DISTRIBUTION!='CUSTOM') AND (HIVE_VERSION=='APACHE_2_4_0_EMR_0_13_1') AND (USE_EXISTING_CONNECTION == 'false')" />
 
@@ -1184,23 +1184,23 @@
 
 
 			<IMPORT NAME="commons-cli-1.2" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false') AND (HIVE_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="commons-configuration-1.6" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false') AND (HIVE_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="commons-codec-1.4" MODULE="commons-codec-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-codec-1.4/6.0.0"
+				MVN="mvn:commons-codec/commons-codec/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false') AND (HIVE_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false') AND (HIVE_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false') AND (HIVE_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="guava-11.0.2" MODULE="guava-11.0.2.jar"
@@ -1221,7 +1221,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.7.5.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false') AND (HIVE_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="log4j-1.2.17" MODULE="log4j-1.2.17.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.17/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.17"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.17.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false') AND (HIVE_VERSION=='APACHE_2_4_0_EMR')" />
 
@@ -1296,7 +1296,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.apache.2.4.0/lib/derby-10.4.2.0-emr-2.4.0.jar.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_2_4_0_EMR') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false') AND (CONNECTION_MODE=='EMBEDDED')" />
 			<IMPORT NAME="commons-configuration-1.6.jar" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_2_4_0_EMR') AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false') AND (CONNECTION_MODE=='EMBEDDED')" />
 			<IMPORT NAME="hbase-0.94.18.jar" MODULE="hbase-0.94.18.jar"
@@ -1331,11 +1331,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.apache.axis2/lib/antlr-runtime-3.0.1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_1_0_0' OR HIVE_VERSION=='APACHE_1_0_3_EMR') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-dbcp-1.4.jar" MODULE="commons-dbcp-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-dbcp-1.4/6.0.0"
+				MVN="mvn:commons-dbcp/commons-dbcp/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-dbcp-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_1_0_0' OR HIVE_VERSION=='APACHE_1_0_3_EMR') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-pool-1.5.4.jar" MODULE="commons-pool-1.5.4.jar"
-				MVN="mvn:org.talend.libraries/commons-pool-1.5.4/6.0.0"
+				MVN="mvn:commons-pool/commons-pool/1.5.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-pool-1.5.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_1_0_0' OR HIVE_VERSION=='APACHE_1_0_3_EMR') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="derby-10.4.2.0.jar" MODULE="derby-10.4.2.0.jar"
@@ -1343,7 +1343,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.jdbc.derby/lib/derby-10.4.2.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_1_0_0' OR HIVE_VERSION=='APACHE_1_0_3_EMR') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-configuration-1.6.jar" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_1_0_0' OR HIVE_VERSION=='APACHE_1_0_3_EMR') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jdo2-api-2.3-ec.jar" MODULE="jdo2-api-2.3-ec.jar"
@@ -1351,16 +1351,16 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/jdo2-api-2.3-ec.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_1_0_0' OR HIVE_VERSION=='APACHE_1_0_3_EMR') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.6.jar" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/base/plugins/org.apache.commons.lang_2.6.0.v201404270220.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_1_0_0' OR HIVE_VERSION=='APACHE_1_0_3_EMR') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED="false"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_1_0_0' OR HIVE_VERSION=='APACHE_1_0_3_EMR') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED="false"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_1_0_0' OR HIVE_VERSION=='APACHE_1_0_3_EMR') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
@@ -1415,7 +1415,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.1.2/lib/libthrift-0.9.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.6.jar" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/base/plugins/org.apache.commons.lang_2.6.0.v201404270220.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="antlr-runtime-3.0.1.jar" MODULE="antlr-runtime-3.0.1.jar"
@@ -1423,11 +1423,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.apache.axis2/lib/antlr-runtime-3.0.1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-dbcp-1.4.jar" MODULE="commons-dbcp-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-dbcp-1.4/6.0.0"
+				MVN="mvn:commons-dbcp/commons-dbcp/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-dbcp-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-pool-1.5.4.jar" MODULE="commons-pool-1.5.4.jar"
-				MVN="mvn:org.talend.libraries/commons-pool-1.5.4/6.0.0"
+				MVN="mvn:commons-pool/commons-pool/1.5.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-pool-1.5.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="derby-10.4.2.0.jar" MODULE="derby-10.4.2.0.jar"
@@ -1435,7 +1435,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.jdbc.derby/lib/derby-10.4.2.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-configuration-1.6.jar" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jdo2-api-2.3-ec.jar" MODULE="jdo2-api-2.3-ec.jar"
@@ -1443,7 +1443,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/jdo2-api-2.3-ec.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="log4j-1.2.16.jar" MODULE="log4j-1.2.16.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.16/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.16"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.16.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'"
 				BundleID="" />
@@ -1456,11 +1456,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.6.1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_2') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -1510,19 +1510,19 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.1.2/lib/libthrift-0.9.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_3') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.6.jar" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/base/plugins/org.apache.commons.lang_2.6.0.v201404270220.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_3') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="antlr-runtime-3.4.jar" MODULE="antlr-runtime-3.4.jar"
-				MVN="mvn:org.talend.libraries/antlr-runtime-3.4/6.0.0"
+				MVN="mvn:org.antlr/antlr-runtime/3.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.axis2/lib/antlr-runtime-3.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_3') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-dbcp-1.4.jar" MODULE="commons-dbcp-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-dbcp-1.4/6.0.0"
+				MVN="mvn:commons-dbcp/commons-dbcp/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-dbcp-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_3') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-pool-1.5.4.jar" MODULE="commons-pool-1.5.4.jar"
-				MVN="mvn:org.talend.libraries/commons-pool-1.5.4/6.0.0"
+				MVN="mvn:commons-pool/commons-pool/1.5.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-pool-1.5.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_3') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="derby-10.4.2.0.jar" MODULE="derby-10.4.2.0.jar"
@@ -1530,7 +1530,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.jdbc.derby/lib/derby-10.4.2.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_3') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-configuration-1.6.jar" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_3') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jdo2-api-2.3-ec.jar" MODULE="jdo2-api-2.3-ec.jar"
@@ -1538,7 +1538,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/jdo2-api-2.3-ec.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_3') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="log4j-1.2.16.jar" MODULE="log4j-1.2.16.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.16/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.16"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.16.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_3') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'"
 				BundleID="" />
@@ -1551,11 +1551,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.6.1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_3') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_3') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_3') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<!-- HDP 1.3 Hbase -->
@@ -1580,7 +1580,7 @@
 				MVN="mvn:org.talend.libraries/protobuf-java-2.4.1/6.0.0"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_3' AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="servlet-api-2.5-20081211.jar" MODULE="servlet-api-2.5-20081211.jar"
-				MVN="mvn:org.talend.libraries/servlet-api-2.5-20081211/6.0.0"
+				MVN="mvn:org.mortbay.jetty/servlet-api/2.5-20081211"
 				UrlPath="platform:/plugin/org.talend.libraries.servlet/lib/servlet-api-2.5-20081211.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_3' AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<!-- ############## -->
@@ -1609,7 +1609,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/libthrift.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="log4j-1.2.16.jar" MODULE="log4j-1.2.16.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.16/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.16"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.16.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="slf4j-api-1.6.1.jar" MODULE="slf4j-api-1.6.1.jar"
@@ -1653,11 +1653,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.apache.axis2/lib/antlr-runtime-3.0.1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-dbcp-1.4.jar" MODULE="commons-dbcp-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-dbcp-1.4/6.0.0"
+				MVN="mvn:commons-dbcp/commons-dbcp/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-dbcp-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-pool-1.5.4.jar" MODULE="commons-pool-1.5.4.jar"
-				MVN="mvn:org.talend.libraries/commons-pool-1.5.4/6.0.0"
+				MVN="mvn:commons-pool/commons-pool/1.5.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-pool-1.5.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="datanucleus-connectionpool-2.0.3.jar" MODULE="datanucleus-connectionpool-2.0.3.jar"
@@ -1677,7 +1677,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh4/lib/hive-builtins-0.9.0-cdh4.1.2.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-configuration-1.6.jar" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="datanucleus-core-2.0.3.jar" MODULE="datanucleus-core-2.0.3.jar"
@@ -1693,16 +1693,16 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/jdo2-api-2.3-ec.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.6.jar" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/base/plugins/org.apache.commons.lang_2.6.0.v201404270220.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED="false"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED="false"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
@@ -1721,7 +1721,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh4/lib/protobuf-java-2.4.0a.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR2' AND (CONNECTION_MODE != 'EMBEDDED') AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="servlet-api-2.5-20081211.jar" MODULE="servlet-api-2.5-20081211.jar"
-				MVN="mvn:org.talend.libraries/servlet-api-2.5-20081211/6.0.0"
+				MVN="mvn:org.mortbay.jetty/servlet-api/2.5-20081211"
 				UrlPath="platform:/plugin/org.talend.libraries.servlet/lib/servlet-api-2.5-20081211.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR2' AND (CONNECTION_MODE != 'EMBEDDED') AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -1746,7 +1746,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh4/lib/protobuf-java-2.4.0a.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_1_0_0' OR HIVE_VERSION=='APACHE_1_0_3_EMR' AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="servlet-api-2.5-20081211.jar" MODULE="servlet-api-2.5-20081211.jar"
-				MVN="mvn:org.talend.libraries/servlet-api-2.5-20081211/6.0.0"
+				MVN="mvn:org.mortbay.jetty/servlet-api/2.5-20081211"
 				UrlPath="platform:/plugin/org.talend.libraries.servlet/lib/servlet-api-2.5-20081211.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='APACHE_1_0_0' OR HIVE_VERSION=='APACHE_1_0_3_EMR' AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -1771,7 +1771,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh4/lib/protobuf-java-2.4.0a.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_2' AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="servlet-api-2.5-20081211.jar" MODULE="servlet-api-2.5-20081211.jar"
-				MVN="mvn:org.talend.libraries/servlet-api-2.5-20081211/6.0.0"
+				MVN="mvn:org.mortbay.jetty/servlet-api/2.5-20081211"
 				UrlPath="platform:/plugin/org.talend.libraries.servlet/lib/servlet-api-2.5-20081211.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_1_2' AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -1789,7 +1789,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh4/lib/hbase-0.92.1-cdh4.0.1-security.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4' AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="servlet-api-2.5-20081211.jar" MODULE="servlet-api-2.5-20081211.jar"
-				MVN="mvn:org.talend.libraries/servlet-api-2.5-20081211/6.0.0"
+				MVN="mvn:org.mortbay.jetty/servlet-api/2.5-20081211"
 				UrlPath="platform:/plugin/org.talend.libraries.servlet/lib/servlet-api-2.5-20081211.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4' AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -1798,7 +1798,7 @@
 				MVN="mvn:org.talend.libraries/hadoop-0.20.2-dev-core-mapr212/6.0.0"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR212' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="log4j-1.2.16" MODULE="log4j-1.2.16.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.16/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.16"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.16.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR212' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))"
 				BundleID="" />
@@ -1880,23 +1880,23 @@
 				MVN="mvn:org.talend.libraries/hive-builtins-0.10.0/6.0.0"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR212' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="commons-lang-2.6" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/base/plugins/org.apache.commons.lang_2.6.0.v201404270220.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR212' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR212' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR212' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="commons-dbcp-1.4" MODULE="commons-dbcp-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-dbcp-1.4/6.0.0"
+				MVN="mvn:commons-dbcp/commons-dbcp/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-dbcp-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR212' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="commons-pool-1.5.4" MODULE="commons-pool-1.5.4.jar"
-				MVN="mvn:org.talend.libraries/commons-pool-1.5.4/6.0.0"
+				MVN="mvn:commons-pool/commons-pool/1.5.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-pool-1.5.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR212' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="guava-13.0.1.jar" MODULE="guava-13.0.1.jar"
@@ -1917,7 +1917,7 @@
 				MVN="mvn:org.talend.libraries/protobuf-java-2.4.1/6.0.0"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR212' AND STORE_BY_HBASE=='true') AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="servlet-api-2.5-20081211.jar" MODULE="servlet-api-2.5-20081211.jar"
-				MVN="mvn:org.talend.libraries/servlet-api-2.5-20081211/6.0.0"
+				MVN="mvn:org.mortbay.jetty/servlet-api/2.5-20081211"
 				UrlPath="platform:/plugin/org.talend.libraries.servlet/lib/servlet-api-2.5-20081211.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR212' AND STORE_BY_HBASE=='true') AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM')" />
 			<!-- ############## -->
@@ -1927,7 +1927,7 @@
 				MVN="mvn:org.talend.libraries/hadoop-0.20.2-dev-core-mapr213/6.0.0"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR213' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="log4j-1.2.16" MODULE="log4j-1.2.16.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.16/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.16"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.16.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR213' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))"
 				BundleID="" />
@@ -1972,7 +1972,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/jdo2-api-2.3-ec.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR213' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="antlr-runtime-3.4.jar" MODULE="antlr-runtime-3.4.jar"
-				MVN="mvn:org.talend.libraries/antlr-runtime-3.4/6.0.0"
+				MVN="mvn:org.antlr/antlr-runtime/3.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.axis2/lib/antlr-runtime-3.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR213' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="datanucleus-connectionpool-2.0.3" MODULE="datanucleus-connectionpool-2.0.3.jar"
@@ -2003,23 +2003,23 @@
 				UrlPath="platform:/plugin/org.talend.libraries.esb/lib/zookeeper-3.3.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR213' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="commons-lang-2.6" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/base/plugins/org.apache.commons.lang_2.6.0.v201404270220.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR213' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR213' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR213' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="commons-dbcp-1.4" MODULE="commons-dbcp-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-dbcp-1.4/6.0.0"
+				MVN="mvn:commons-dbcp/commons-dbcp/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-dbcp-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR213' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="commons-pool-1.5.4" MODULE="commons-pool-1.5.4.jar"
-				MVN="mvn:org.talend.libraries/commons-pool-1.5.4/6.0.0"
+				MVN="mvn:commons-pool/commons-pool/1.5.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-pool-1.5.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR213' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="guava-13.0.1.jar" MODULE="guava-13.0.1.jar"
@@ -2042,7 +2042,7 @@
 				MVN="mvn:org.talend.libraries/protobuf-java-2.4.1/6.0.0"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR213' AND STORE_BY_HBASE=='true') AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="servlet-api-2.5-20081211.jar" MODULE="servlet-api-2.5-20081211.jar"
-				MVN="mvn:org.talend.libraries/servlet-api-2.5-20081211/6.0.0"
+				MVN="mvn:org.mortbay.jetty/servlet-api/2.5-20081211"
 				UrlPath="platform:/plugin/org.talend.libraries.servlet/lib/servlet-api-2.5-20081211.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR213' AND STORE_BY_HBASE=='true') AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM')" />
 			<!-- ############## -->
@@ -2053,7 +2053,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr.3.0.1/lib/hadoop-0.20.2-dev-core-mapr301.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR301' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="log4j-1.2.16" MODULE="log4j-1.2.16.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.16/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.16"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.16.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR301' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))"
 				BundleID="" />
@@ -2098,7 +2098,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/jdo2-api-2.3-ec.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR301' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="antlr-runtime-3.4.jar" MODULE="antlr-runtime-3.4.jar"
-				MVN="mvn:org.talend.libraries/antlr-runtime-3.4/6.0.0"
+				MVN="mvn:org.antlr/antlr-runtime/3.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.axis2/lib/antlr-runtime-3.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR301' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="datanucleus-connectionpool-2.0.3" MODULE="datanucleus-connectionpool-2.0.3.jar"
@@ -2129,23 +2129,23 @@
 				UrlPath="platform:/plugin/org.talend.libraries.esb/lib/zookeeper-3.3.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR301' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="commons-lang-2.6" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/base/plugins/org.apache.commons.lang_2.6.0.v201404270220.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR301' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR301' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR301' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="commons-dbcp-1.4" MODULE="commons-dbcp-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-dbcp-1.4/6.0.0"
+				MVN="mvn:commons-dbcp/commons-dbcp/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-dbcp-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR301' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="commons-pool-1.5.4" MODULE="commons-pool-1.5.4.jar"
-				MVN="mvn:org.talend.libraries/commons-pool-1.5.4/6.0.0"
+				MVN="mvn:commons-pool/commons-pool/1.5.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-pool-1.5.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR301' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="guava-13.0.1.jar" MODULE="guava-13.0.1.jar"
@@ -2153,7 +2153,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-13.0.1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR301' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="servlet-api-2.5-20081211.jar" MODULE="servlet-api-2.5-20081211.jar"
-				MVN="mvn:org.talend.libraries/servlet-api-2.5-20081211/6.0.0"
+				MVN="mvn:org.mortbay.jetty/servlet-api/2.5-20081211"
 				UrlPath="platform:/plugin/org.talend.libraries.servlet/lib/servlet-api-2.5-20081211.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR301' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<!-- MAPR301 Hbase -->
@@ -2172,7 +2172,7 @@
 				MVN="mvn:org.talend.libraries/protobuf-java-2.4.1/6.0.0"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR301' AND STORE_BY_HBASE=='true') AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="servlet-api-2.5-20081211.jar" MODULE="servlet-api-2.5-20081211.jar"
-				MVN="mvn:org.talend.libraries/servlet-api-2.5-20081211/6.0.0"
+				MVN="mvn:org.mortbay.jetty/servlet-api/2.5-20081211"
 				UrlPath="platform:/plugin/org.talend.libraries.servlet/lib/servlet-api-2.5-20081211.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR301' AND STORE_BY_HBASE=='true') AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM')" />
 			<!-- ############## -->
@@ -2183,7 +2183,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr.3.1.0/lib/hadoop-core-1.0.3-mapr-3.1.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR310' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="log4j-1.2.16" MODULE="log4j-1.2.16.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.16/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.16"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.16.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR310' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))"
 				BundleID="" />
@@ -2229,11 +2229,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-logging-api-1.0.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR310' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="jdo-api-3.0.1.jar" MODULE="jdo-api-3.0.1.jar"
-				MVN="mvn:org.talend.libraries/jdo-api-3.0.1/6.0.0"
+				MVN="mvn:javax.jdo/jdo-api/3.0.1"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.0/lib/jdo-api-3.0.1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR310' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="antlr-runtime-3.4.jar" MODULE="antlr-runtime-3.4.jar"
-				MVN="mvn:org.talend.libraries/antlr-runtime-3.4/6.0.0"
+				MVN="mvn:org.antlr/antlr-runtime/3.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.axis2/lib/antlr-runtime-3.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR310' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="datanucleus-api-jdo-3.2.1.jar" MODULE="datanucleus-api-jdo-3.2.1.jar"
@@ -2260,30 +2260,30 @@
 				UrlPath="platform:/plugin/org.talend.libraries.zookeeper/lib/zookeeper-3.4.5-mapr-1401.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR310' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="commons-lang-2.6" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/base/plugins/org.apache.commons.lang_2.6.0.v201404270220.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR310' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR310' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR310' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="commons-dbcp-1.4" MODULE="commons-dbcp-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-dbcp-1.4/6.0.0"
+				MVN="mvn:commons-dbcp/commons-dbcp/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-dbcp-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR310' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="commons-pool-1.5.4" MODULE="commons-pool-1.5.4.jar"
-				MVN="mvn:org.talend.libraries/commons-pool-1.5.4/6.0.0"
+				MVN="mvn:commons-pool/commons-pool/1.5.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-pool-1.5.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR310' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="guava-13.0.1.jar" MODULE="guava-13.0.1.jar"
 				MVN="mvn:org.talend.libraries/guava-13.0.1/6.0.0"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR310' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="servlet-api-2.5-20081211.jar" MODULE="servlet-api-2.5-20081211.jar"
-				MVN="mvn:org.talend.libraries/servlet-api-2.5-20081211/6.0.0"
+				MVN="mvn:org.mortbay.jetty/servlet-api/2.5-20081211"
 				UrlPath="platform:/plugin/org.talend.libraries.servlet/lib/servlet-api-2.5-20081211.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR310' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="hadoop-auth-1.0.3-mapr-3.1.0.jar" MODULE="hadoop-auth-1.0.3-mapr-3.1.0.jar"
@@ -2291,7 +2291,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr.3.1.0/lib/hadoop-auth-1.0.3-mapr-3.1.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR310' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="commons-httpclient-3.1.jar" MODULE="commons-httpclient-3.1.jar"
-				MVN="mvn:org.talend.libraries/commons-httpclient-3.1/6.0.0"
+				MVN="mvn:commons-httpclient/commons-httpclient/3.1"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.http/lib/commons-httpclient-3.1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR310' AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="httpcore-4.2.4.jar" MODULE="httpcore-4.2.4.jar"
@@ -2326,7 +2326,7 @@
 				MVN="mvn:org.talend.libraries/protobuf-java-2.4.1/6.0.0"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR310' AND STORE_BY_HBASE=='true') AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="servlet-api-2.5-20081211.jar" MODULE="servlet-api-2.5-20081211.jar"
-				MVN="mvn:org.talend.libraries/servlet-api-2.5-20081211/6.0.0"
+				MVN="mvn:org.mortbay.jetty/servlet-api/2.5-20081211"
 				UrlPath="platform:/plugin/org.talend.libraries.servlet/lib/servlet-api-2.5-20081211.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='MAPR310' AND STORE_BY_HBASE=='true') AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM')" />
 			<!-- ############## -->
@@ -2357,7 +2357,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/libthrift.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_1_0_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="log4j-1.2.16.jar" MODULE="log4j-1.2.16.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.16/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.16"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.16.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_1_0_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'"
 				BundleID="" />
@@ -2428,7 +2428,7 @@
 				UrlPath="platform:/base/plugins/org.apache.commons.logging_1.1.1.v201101211721.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_1_0_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_1_0_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -2437,11 +2437,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.apache.axis2/lib/antlr-runtime-3.0.1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_1_0_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-dbcp-1.4.jar" MODULE="commons-dbcp-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-dbcp-1.4/6.0.0"
+				MVN="mvn:commons-dbcp/commons-dbcp/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-dbcp-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_1_0_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-pool-1.5.4.jar" MODULE="commons-pool-1.5.4.jar"
-				MVN="mvn:org.talend.libraries/commons-pool-1.5.4/6.0.0"
+				MVN="mvn:commons-pool/commons-pool/1.5.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-pool-1.5.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_1_0_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="datanucleus-connectionpool-2.0.3.jar" MODULE="datanucleus-connectionpool-2.0.3.jar"
@@ -2461,7 +2461,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.emc.pivotal.1.0/lib/hive-builtins-0.9.1-gphd-2.0.1.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_1_0_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-configuration-1.6.jar" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_1_0_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="datanucleus-core-2.0.3.jar" MODULE="datanucleus-core-2.0.3.jar"
@@ -2481,12 +2481,12 @@
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang-2.5.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_1_0_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED="false"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_1_0_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED="false"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_1_0_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
@@ -2506,7 +2506,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.emc.pivotal.1.0/lib/hive-hbase-handler-0.9.1-gphd-2.0.1.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_1_0_1' AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="servlet-api-2.5-20081211.jar" MODULE="servlet-api-2.5-20081211.jar"
-				MVN="mvn:org.talend.libraries/servlet-api-2.5-20081211/6.0.0"
+				MVN="mvn:org.mortbay.jetty/servlet-api/2.5-20081211"
 				UrlPath="platform:/plugin/org.talend.libraries.servlet/lib/servlet-api-2.5-20081211.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_1_0_1' AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<!-- ############## -->
@@ -2537,7 +2537,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.1.2/lib/libthrift-0.9.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="log4j-1.2.17.jar" MODULE="log4j-1.2.17.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.17/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.17"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.17.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'"
 				BundleID="" />
@@ -2591,7 +2591,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.emc.pivotal.2.0/lib/hadoop-yarn-common-2.2.0-gphd-3.0.0.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="protobuf-java-2.5.0.jar" MODULE="protobuf-java-2.5.0.jar"
-				MVN="mvn:org.talend.libraries/protobuf-java-2.5.0/6.0.0"
+				MVN="mvn:com.google.protobuf/protobuf-java/2.5.0"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.0/lib/protobuf-java-2.5.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="guava-11.0.2.jar" MODULE="guava-11.0.2.jar"
@@ -2603,11 +2603,11 @@
 				UrlPath="platform:/base/plugins/org.apache.commons.logging_1.1.1.v201101211721.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-httpclient-3.1.jar" MODULE="commons-httpclient-3.1.jar"
-				MVN="mvn:org.talend.libraries/commons-httpclient-3.1/6.0.0"
+				MVN="mvn:commons-httpclient/commons-httpclient/3.1"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.http/lib/commons-httpclient-3.1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="httpcore-4.2.4.jar" MODULE="httpcore-4.2.4.jar"
@@ -2623,7 +2623,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-io" MODULE="commons-io-2.4.jar"
-				MVN="mvn:org.talend.libraries/commons-io-2.4/6.0.0"
+				MVN="mvn:commons-io/commons-io/2.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-compress-1.6.jar" MODULE="commons-compress-1.6.jar"
@@ -2632,15 +2632,15 @@
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
 			<IMPORT NAME="antlr-runtime-3.4.jar" MODULE="antlr-runtime-3.4.jar"
-				MVN="mvn:org.talend.libraries/antlr-runtime-3.4/6.0.0"
+				MVN="mvn:org.antlr/antlr-runtime/3.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.axis2/lib/antlr-runtime-3.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-dbcp-1.4.jar" MODULE="commons-dbcp-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-dbcp-1.4/6.0.0"
+				MVN="mvn:commons-dbcp/commons-dbcp/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-dbcp-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-pool-1.5.4.jar" MODULE="commons-pool-1.5.4.jar"
-				MVN="mvn:org.talend.libraries/commons-pool-1.5.4/6.0.0"
+				MVN="mvn:commons-pool/commons-pool/1.5.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-pool-1.5.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="datanucleus-api-jdo-3.2.1.jar" MODULE="datanucleus-api-jdo-3.2.1.jar"
@@ -2660,11 +2660,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.jdbc.derby/lib/derby-10.4.2.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-configuration-1.6.jar" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jdo-api-3.0.1.jar" MODULE="jdo-api-3.0.1.jar"
-				MVN="mvn:org.talend.libraries/jdo-api-3.0.1/6.0.0"
+				MVN="mvn:javax.jdo/jdo-api/3.0.1"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.0/lib/jdo-api-3.0.1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.5.jar" MODULE="commons-lang-2.5.jar"
@@ -2672,11 +2672,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang-2.5.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -2711,7 +2711,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.emc.pivotal.2.0/lib/hive-hbase-handler-0.12.0-gphd-3.0.0.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0' AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="servlet-api-2.5-20081211.jar" MODULE="servlet-api-2.5-20081211.jar"
-				MVN="mvn:org.talend.libraries/servlet-api-2.5-20081211/6.0.0"
+				MVN="mvn:org.mortbay.jetty/servlet-api/2.5-20081211"
 				UrlPath="platform:/plugin/org.talend.libraries.servlet/lib/servlet-api-2.5-20081211.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0' AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="htrace-core-2.01.jar" MODULE="htrace-core-2.01.jar"
@@ -2750,7 +2750,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.1.2/lib/libthrift-0.9.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="log4j-1.2.17.jar" MODULE="log4j-1.2.17.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.17/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.17"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.17.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'"
 				BundleID="" />
@@ -2802,7 +2802,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.0/lib/hadoop-yarn-common-2.2.0.2.0.6.0-76.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="protobuf-java-2.5.0.jar" MODULE="protobuf-java-2.5.0.jar"
-				MVN="mvn:org.talend.libraries/protobuf-java-2.5.0/6.0.0"
+				MVN="mvn:com.google.protobuf/protobuf-java/2.5.0"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.0/lib/protobuf-java-2.5.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="guava-11.0.2.jar" MODULE="guava-11.0.2.jar"
@@ -2814,11 +2814,11 @@
 				UrlPath="platform:/base/plugins/org.apache.commons.logging_1.1.1.v201101211721.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-httpclient-3.0.1.jar" MODULE="commons-httpclient-3.0.1.jar"
-				MVN="mvn:org.talend.libraries/commons-httpclient-3.0.1/6.0.0"
+				MVN="mvn:commons-httpclient/commons-httpclient/3.0.1"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.http/lib/commons-httpclient-3.0.1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="httpcore-4.1.4.jar" MODULE="httpcore-4.1.4.jar"
@@ -2830,11 +2830,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.apache.http/lib/httpclient-4.1.3.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-codec-1.4.jar" MODULE="commons-codec-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-codec-1.4/6.0.0"
+				MVN="mvn:commons-codec/commons-codec/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-io" MODULE="commons-io-2.4.jar"
-				MVN="mvn:org.talend.libraries/commons-io-2.4/6.0.0"
+				MVN="mvn:commons-io/commons-io/2.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-compress-1.6.jar" MODULE="commons-compress-1.6.jar"
@@ -2843,15 +2843,15 @@
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
 			<IMPORT NAME="antlr-runtime-3.4.jar" MODULE="antlr-runtime-3.4.jar"
-				MVN="mvn:org.talend.libraries/antlr-runtime-3.4/6.0.0"
+				MVN="mvn:org.antlr/antlr-runtime/3.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.axis2/lib/antlr-runtime-3.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-dbcp-1.4.jar" MODULE="commons-dbcp-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-dbcp-1.4/6.0.0"
+				MVN="mvn:commons-dbcp/commons-dbcp/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-dbcp-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-pool-1.5.4.jar" MODULE="commons-pool-1.5.4.jar"
-				MVN="mvn:org.talend.libraries/commons-pool-1.5.4/6.0.0"
+				MVN="mvn:commons-pool/commons-pool/1.5.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-pool-1.5.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="datanucleus-api-jdo-3.2.1.jar" MODULE="datanucleus-api-jdo-3.2.1.jar"
@@ -2871,11 +2871,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.jdbc.derby/lib/derby-10.4.2.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-configuration-1.6.jar" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jdo-api-3.0.1.jar" MODULE="jdo-api-3.0.1.jar"
-				MVN="mvn:org.talend.libraries/jdo-api-3.0.1/6.0.0"
+				MVN="mvn:javax.jdo/jdo-api/3.0.1"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.0/lib/jdo-api-3.0.1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.5.jar" MODULE="commons-lang-2.5.jar"
@@ -2883,11 +2883,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang-2.5.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -2922,7 +2922,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.0/lib/hive-hbase-handler-0.12.0.2.0.6.0-76.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0' AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="servlet-api-2.5-20081211.jar" MODULE="servlet-api-2.5-20081211.jar"
-				MVN="mvn:org.talend.libraries/servlet-api-2.5-20081211/6.0.0"
+				MVN="mvn:org.mortbay.jetty/servlet-api/2.5-20081211"
 				UrlPath="platform:/plugin/org.talend.libraries.servlet/lib/servlet-api-2.5-20081211.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_0' AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="htrace-core-2.01.jar" MODULE="htrace-core-2.01.jar"
@@ -2961,7 +2961,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.1.2/lib/libthrift-0.9.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="log4j-1.2.17.jar" MODULE="log4j-1.2.17.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.17/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.17"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.17.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'"
 				BundleID="" />
@@ -3015,7 +3015,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.1/lib/hadoop-yarn-common-2.4.0.2.1.1.0-385.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="protobuf-java-2.5.0.jar" MODULE="protobuf-java-2.5.0.jar"
-				MVN="mvn:org.talend.libraries/protobuf-java-2.5.0/6.0.0"
+				MVN="mvn:com.google.protobuf/protobuf-java/2.5.0"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.0/lib/protobuf-java-2.5.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="guava-11.0.2.jar" MODULE="guava-11.0.2.jar"
@@ -3027,11 +3027,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-logging-1.1.3.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-httpclient-3.0.1.jar" MODULE="commons-httpclient-3.0.1.jar"
-				MVN="mvn:org.talend.libraries/commons-httpclient-3.0.1/6.0.0"
+				MVN="mvn:commons-httpclient/commons-httpclient/3.0.1"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.http/lib/commons-httpclient-3.0.1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-collections-3.2.1.jar" MODULE="commons-collections-3.2.1.jar"
@@ -3047,11 +3047,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.apache.http/lib/httpclient-4.2.5.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-codec-1.4.jar" MODULE="commons-codec-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-codec-1.4/6.0.0"
+				MVN="mvn:commons-codec/commons-codec/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-io-2.4.jar" MODULE="commons-io-2.4.jar"
-				MVN="mvn:org.talend.libraries/commons-io-2.4/6.0.0"
+				MVN="mvn:commons-io/commons-io/2.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="avro-1.5.4.jar" MODULE="avro-1.5.4.jar"
@@ -3059,27 +3059,27 @@
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
 			<IMPORT NAME="antlr-runtime-3.4.jar" MODULE="antlr-runtime-3.4.jar"
-				MVN="mvn:org.talend.libraries/antlr-runtime-3.4/6.0.0"
+				MVN="mvn:org.antlr/antlr-runtime/3.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.axis2/lib/antlr-runtime-3.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-dbcp-1.4.jar" MODULE="commons-dbcp-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-dbcp-1.4/6.0.0"
+				MVN="mvn:commons-dbcp/commons-dbcp/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-dbcp-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-pool-1.5.4.jar" MODULE="commons-pool-1.5.4.jar"
-				MVN="mvn:org.talend.libraries/commons-pool-1.5.4/6.0.0"
+				MVN="mvn:commons-pool/commons-pool/1.5.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-pool-1.5.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="datanucleus-api-jdo-3.2.6.jar" MODULE="datanucleus-api-jdo-3.2.6.jar"
-				MVN="mvn:org.talend.libraries/datanucleus-api-jdo-3.2.6/6.0.0"
+				MVN="mvn:org.datanucleus/datanucleus-api-jdo/3.2.6"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.1/lib/datanucleus-api-jdo-3.2.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="datanucleus-core-3.2.10.jar" MODULE="datanucleus-core-3.2.10.jar"
-				MVN="mvn:org.talend.libraries/datanucleus-core-3.2.10/6.0.0"
+				MVN="mvn:org.datanucleus/datanucleus-core/3.2.10"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.1/lib/datanucleus-core-3.2.10.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="datanucleus-rdbms-3.2.9.jar" MODULE="datanucleus-rdbms-3.2.9.jar"
-				MVN="mvn:org.talend.libraries/datanucleus-rdbms-3.2.9/6.0.0"
+				MVN="mvn:org.datanucleus/datanucleus-rdbms/3.2.9"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.1/lib/datanucleus-rdbms-3.2.9.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="derby-10.4.2.0.jar" MODULE="derby-10.4.2.0.jar"
@@ -3087,23 +3087,23 @@
 				UrlPath="platform:/plugin/org.talend.libraries.jdbc.derby/lib/derby-10.4.2.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-configuration-1.6.jar" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jdo-api-3.0.1.jar" MODULE="jdo-api-3.0.1.jar"
-				MVN="mvn:org.talend.libraries/jdo-api-3.0.1/6.0.0"
+				MVN="mvn:javax.jdo/jdo-api/3.0.1"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.0/lib/jdo-api-3.0.1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.6.jar" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang-2.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -3143,7 +3143,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.1/lib/hive-hbase-handler-0.13.0.2.1.1.0-385.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1' AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="servlet-api-2.5-20081211.jar" MODULE="servlet-api-2.5-20081211.jar"
-				MVN="mvn:org.talend.libraries/servlet-api-2.5-20081211/6.0.0"
+				MVN="mvn:org.mortbay.jetty/servlet-api/2.5-20081211"
 				UrlPath="platform:/plugin/org.talend.libraries.servlet/lib/servlet-api-2.5-20081211.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='HDP_2_1' AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="htrace-core-2.04.jar" MODULE="htrace-core-2.04.jar"
@@ -3186,7 +3186,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh4/lib/libthrift-0.9.0-cdh4-1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4_YARN') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="log4j-1.2.16.jar" MODULE="log4j-1.2.16.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.16/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.16"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.16.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4_YARN') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'"
 				BundleID="" />
@@ -3250,19 +3250,19 @@
 				UrlPath="platform:/base/plugins/org.apache.commons.logging_1.1.1.v201101211721.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4_YARN') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4_YARN') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-httpclient-3.0.1.jar" MODULE="commons-httpclient-3.0.1.jar"
-				MVN="mvn:org.talend.libraries/commons-httpclient-3.0.1/6.0.0"
+				MVN="mvn:commons-httpclient/commons-httpclient/3.0.1"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.http/lib/commons-httpclient-3.0.1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4_YARN') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-codec-1.4.jar" MODULE="commons-codec-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-codec-1.4/6.0.0"
+				MVN="mvn:commons-codec/commons-codec/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4_YARN') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-io" MODULE="commons-io-2.4.jar"
-				MVN="mvn:org.talend.libraries/commons-io-2.4/6.0.0"
+				MVN="mvn:commons-io/commons-io/2.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4_YARN') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="avro-1.5.4.jar" MODULE="avro-1.5.4.jar"
@@ -3270,15 +3270,15 @@
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4_YARN') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
 			<IMPORT NAME="antlr-runtime-3.4.jar" MODULE="antlr-runtime-3.4.jar"
-				MVN="mvn:org.talend.libraries/antlr-runtime-3.4/6.0.0"
+				MVN="mvn:org.antlr/antlr-runtime/3.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.axis2/lib/antlr-runtime-3.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4_YARN') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-dbcp-1.4.jar" MODULE="commons-dbcp-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-dbcp-1.4/6.0.0"
+				MVN="mvn:commons-dbcp/commons-dbcp/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-dbcp-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4_YARN') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-pool-1.5.4.jar" MODULE="commons-pool-1.5.4.jar"
-				MVN="mvn:org.talend.libraries/commons-pool-1.5.4/6.0.0"
+				MVN="mvn:commons-pool/commons-pool/1.5.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-pool-1.5.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4_YARN') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="datanucleus-api-jdo-3.2.1.jar" MODULE="datanucleus-api-jdo-3.2.1.jar"
@@ -3302,7 +3302,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh4/lib/hive-builtins-0.10.0-cdh4.4.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4_YARN') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-configuration-1.6.jar" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4_YARN') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jdo2-api-2.3-ec.jar" MODULE="jdo2-api-2.3-ec.jar"
@@ -3314,12 +3314,12 @@
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang-2.5.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4_YARN') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED="false"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4_YARN') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED="false"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4_YARN') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
@@ -3338,7 +3338,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh4/lib/hive-hbase-handler-0.10.0-cdh4.4.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4_YARN' AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="servlet-api-2.5-20081211.jar" MODULE="servlet-api-2.5-20081211.jar"
-				MVN="mvn:org.talend.libraries/servlet-api-2.5-20081211/6.0.0"
+				MVN="mvn:org.mortbay.jetty/servlet-api/2.5-20081211"
 				UrlPath="platform:/plugin/org.talend.libraries.servlet/lib/servlet-api-2.5-20081211.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH4_YARN' AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<!-- ############## -->
@@ -3369,7 +3369,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh5/lib/libthrift-0.9.0.cloudera.2.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="log4j-1.2.17.jar" MODULE="log4j-1.2.17.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.17/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.17"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.17.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'"
 				BundleID="" />
@@ -3421,7 +3421,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh5/lib/hadoop-yarn-common-2.3.0-cdh5.0.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="protobuf-java-2.5.0.jar" MODULE="protobuf-java-2.5.0.jar"
-				MVN="mvn:org.talend.libraries/protobuf-java-2.5.0/6.0.0"
+				MVN="mvn:com.google.protobuf/protobuf-java/2.5.0"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.0/lib/protobuf-java-2.5.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="guava-11.0.2.jar" MODULE="guava-11.0.2.jar"
@@ -3433,11 +3433,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-logging-1.1.3.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-httpclient-3.0.1.jar" MODULE="commons-httpclient-3.0.1.jar"
-				MVN="mvn:org.talend.libraries/commons-httpclient-3.0.1/6.0.0"
+				MVN="mvn:commons-httpclient/commons-httpclient/3.0.1"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.http/lib/commons-httpclient-3.0.1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-collections-3.2.1.jar" MODULE="commons-collections-3.2.1.jar"
@@ -3453,11 +3453,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.apache.http/lib/httpclient-4.2.5.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-codec-1.4.jar" MODULE="commons-codec-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-codec-1.4/6.0.0"
+				MVN="mvn:commons-codec/commons-codec/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-io-2.4.jar" MODULE="commons-io-2.4.jar"
-				MVN="mvn:org.talend.libraries/commons-io-2.4/6.0.0"
+				MVN="mvn:commons-io/commons-io/2.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="avro-1.7.5-cdh5.0.4.jar" MODULE="avro-1.7.5-cdh5.0.4.jar"
@@ -3466,15 +3466,15 @@
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
 			<IMPORT NAME="antlr-runtime-3.4.jar" MODULE="antlr-runtime-3.4.jar"
-				MVN="mvn:org.talend.libraries/antlr-runtime-3.4/6.0.0"
+				MVN="mvn:org.antlr/antlr-runtime/3.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.axis2/lib/antlr-runtime-3.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-dbcp-1.4.jar" MODULE="commons-dbcp-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-dbcp-1.4/6.0.0"
+				MVN="mvn:commons-dbcp/commons-dbcp/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-dbcp-1.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-pool-1.5.4.jar" MODULE="commons-pool-1.5.4.jar"
-				MVN="mvn:org.talend.libraries/commons-pool-1.5.4/6.0.0"
+				MVN="mvn:commons-pool/commons-pool/1.5.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-pool-1.5.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="datanucleus-api-jdo-3.2.1.jar" MODULE="datanucleus-api-jdo-3.2.1.jar"
@@ -3494,23 +3494,23 @@
 				UrlPath="platform:/plugin/org.talend.libraries.jdbc.derby/lib/derby-10.4.2.0.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-configuration-1.6.jar" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jdo-api-3.0.1.jar" MODULE="jdo-api-3.0.1.jar"
-				MVN="mvn:org.talend.libraries/jdo-api-3.0.1/6.0.0"
+				MVN="mvn:javax.jdo/jdo-api/3.0.1"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.0/lib/jdo-api-3.0.1.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.6.jar" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang-2.6.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND.jar" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND.jar" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -3540,7 +3540,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh5/lib/hive-hbase-handler-0.12.0-cdh5.0.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5' AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="servlet-api-2.5-20081211.jar" MODULE="servlet-api-2.5-20081211.jar"
-				MVN="mvn:org.talend.libraries/servlet-api-2.5-20081211/6.0.0"
+				MVN="mvn:org.mortbay.jetty/servlet-api/2.5-20081211"
 				UrlPath="platform:/plugin/org.talend.libraries.servlet/lib/servlet-api-2.5-20081211.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='Cloudera_CDH5' AND STORE_BY_HBASE=='true') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="htrace-core-2.01.jar" MODULE="htrace-core-2.01.jar"

@@ -732,7 +732,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.pig/lib/pig-0.11.1.1.3.0.0-107.jar"
 				REQUIRED="false" REQUIRED_IF="LOCAL=='true'" />
 			<IMPORT NAME="dom4j" MODULE="dom4j-1.6.1.jar"
-				MVN="mvn:org.talend.libraries/dom4j-1.6.1/6.0.0"
+				MVN="mvn:dom4j/dom4j/1.6.1"
 				UrlPath="platform:/plugin/org.talend.libraries.dom4j-jaxen/lib/dom4j-1.6.1.jar"
 				REQUIRED="true" />
 			<IMPORT NAME="jaxen" MODULE="jaxen-1.1.1.jar"
@@ -752,7 +752,7 @@
 
 			<!-- CDH4 -->
 			<IMPORT NAME="commons-configuration-1.6" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED="false"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH4') AND DISTRIBUTION!='CUSTOM'" />
@@ -767,11 +767,11 @@
 				REQUIRED="false"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH4') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-codec-1.4.jar" MODULE="commons-codec-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-codec-1.4/6.0.0"
+				MVN="mvn:commons-codec/commons-codec/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.4.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH4') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH4') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="hadoop-auth-cdh4.0.1" MODULE="hadoop-auth-2.0.0-cdh4.0.1.jar"
@@ -819,7 +819,7 @@
 
 			<!-- Cloudera_CDH4_YARN -->
 			<IMPORT NAME="commons-configuration-1.6" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH4_YARN') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.5" MODULE="commons-lang-2.5.jar"
@@ -831,11 +831,11 @@
 				UrlPath="platform:/base/plugins/org.apache.commons.logging_1.1.1.v201101211721.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH4_YARN') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH4_YARN') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-codec-1.4.jar" MODULE="commons-codec-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-codec-1.4/6.0.0"
+				MVN="mvn:commons-codec/commons-codec/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.4.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH4_YARN') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="hadoop-auth-2.0.0-cdh4.4.0.jar" MODULE="hadoop-auth-2.0.0-cdh4.4.0.jar"
@@ -869,7 +869,7 @@
 				MVN="mvn:org.talend.libraries/hadoop-yarn-common-2.0.0-cdh4.4.0/6.0.0"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH4_YARN') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="log4j-1.2.17.jar" MODULE="log4j-1.2.17.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.17/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.17"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.17.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH4_YARN') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="pig-0.11.0-cdh4.4.0-withouthadoop.jar" MODULE="pig-0.11.0-cdh4.4.0-withouthadoop.jar"
@@ -892,23 +892,23 @@
 
 			<!-- Cloudera_CDH5 -->
 			<IMPORT NAME="commons-configuration-1.6" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH5') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.6.jar" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang-2.6.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH5') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-logging-1.1.3.jar" MODULE="commons-logging-1.1.3.jar"
-				MVN="mvn:org.talend.libraries/commons-logging-1.1.3/6.0.0"
+				MVN="mvn:commons-logging/commons-logging/1.1.3"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-logging-1.1.3.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH5') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH5') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-codec-1.4.jar" MODULE="commons-codec-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-codec-1.4/6.0.0"
+				MVN="mvn:commons-codec/commons-codec/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.4.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH5') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-collections-3.2.1.jar" MODULE="commons-collections-3.2.1.jar"
@@ -946,14 +946,14 @@
 				MVN="mvn:org.talend.libraries/hadoop-yarn-common-2.3.0-cdh5.0.4/6.0.0"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH5') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="log4j-1.2.17.jar" MODULE="log4j-1.2.17.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.17/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.17"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.17.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH5') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="pig-0.12.0-cdh5.0.4-withouthadoop.jar" MODULE="pig-0.12.0-cdh5.0.4-withouthadoop.jar"
 				MVN="mvn:org.talend.libraries/pig-0.12.0-cdh5.0.4-withouthadoop/6.0.0"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH5') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="protobuf-java-2.5.0.jar" MODULE="protobuf-java-2.5.0.jar"
-				MVN="mvn:org.talend.libraries/protobuf-java-2.5.0/6.0.0"
+				MVN="mvn:com.google.protobuf/protobuf-java/2.5.0"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH5') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="slf4j-api-1.7.5.jar" MODULE="slf4j-api-1.7.5.jar"
 				MVN="mvn:org.talend.libraries/slf4j-api-1.7.5/6.0.0"
@@ -989,7 +989,7 @@
 				MVN="mvn:org.talend.libraries/hive-metastore-0.12.0-cdh5.0.4/6.0.0"
 				REQUIRED_IF="(LOCAL == 'false' AND PIG_VERSION=='Cloudera_CDH5' AND LOAD=='HCATLOADER') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jdo-api-3.0.1.jar" MODULE="jdo-api-3.0.1.jar"
-				MVN="mvn:org.talend.libraries/jdo-api-3.0.1/6.0.0"
+				MVN="mvn:javax.jdo/jdo-api/3.0.1"
 				REQUIRED_IF="(LOCAL == 'false' AND PIG_VERSION=='Cloudera_CDH5' AND LOAD=='HCATLOADER') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="libfb303-0.9.0.jar" MODULE="libfb303-0.9.0.jar"
 				MVN="mvn:org.talend.libraries/libfb303-0.9.0/6.0.0"
@@ -1082,7 +1082,7 @@
 				MVN="mvn:org.talend.libraries/amazon-s3/6.0.0"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR212') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR212') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-logging-1.1.1" MODULE="commons-logging-1.1.1.jar"
@@ -1120,7 +1120,7 @@
 				MVN="mvn:org.talend.libraries/amazon-s3/6.0.0"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR213') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR213') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-logging-1.1.1" MODULE="commons-logging-1.1.1.jar"
@@ -1159,7 +1159,7 @@
 				MVN="mvn:org.talend.libraries/amazon-s3/6.0.0"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR301') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR301') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-logging-1.1.1" MODULE="commons-logging-1.1.1.jar"
@@ -1198,7 +1198,7 @@
 				MVN="mvn:org.talend.libraries/amazon-s3/6.0.0"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR310') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR310') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-logging-1.1.1" MODULE="commons-logging-1.1.1.jar"
@@ -1263,7 +1263,7 @@
 				MVN="mvn:org.talend.libraries/hive-metastore-0.12-mapr-1401-140130/6.0.0"
 				REQUIRED_IF="(LOCAL == 'false' AND PIG_VERSION=='MAPR310' AND LOAD=='HCATLOADER') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jdo-api-3.0.1.jar" MODULE="jdo-api-3.0.1.jar"
-				MVN="mvn:org.talend.libraries/jdo-api-3.0.1/6.0.0"
+				MVN="mvn:javax.jdo/jdo-api/3.0.1"
 				REQUIRED_IF="(LOCAL == 'false' AND PIG_VERSION=='MAPR310' AND LOAD=='HCATLOADER') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="libfb303-0.9.0.jar" MODULE="libfb303-0.9.0.jar"
 				MVN="mvn:org.talend.libraries/libfb303-0.9.0/6.0.0"
@@ -1280,7 +1280,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.6.1.jar"
 				REQUIRED_IF="(LOCAL == 'false' AND PIG_VERSION=='MAPR310' AND LOAD=='HCATLOADER') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.6.jar" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/base/plugins/org.apache.commons.lang_2.6.0.v201404270220.jar"
 				REQUIRED_IF="(LOCAL == 'false' AND PIG_VERSION=='MAPR310' AND LOAD=='HCATLOADER') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -1298,12 +1298,12 @@
 				REQUIRED="false"
 				REQUIRED_IF="(LOCAL=='false' AND (PIG_VERSION=='APACHE_1_0_0' OR PIG_VERSION=='APACHE_1_0_3_EMR')) AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-configuration-1.6" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED="false"
 				REQUIRED_IF="(LOCAL == 'false' AND (PIG_VERSION=='APACHE_1_0_0' OR PIG_VERSION=='APACHE_1_0_3_EMR')) AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.6" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/base/plugins/org.apache.commons.lang_2.6.0.v201404270220.jar"
 				REQUIRED="false"
 				REQUIRED_IF="(LOCAL=='false' AND (PIG_VERSION=='APACHE_1_0_0' OR PIG_VERSION=='APACHE_1_0_3_EMR')) AND DISTRIBUTION!='CUSTOM'" />
@@ -1325,11 +1325,11 @@
 				UrlPath="platform:/base/plugins/org.apache.log4j_1.2.15.v201012070815.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_1_2') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-configuration-1.6" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_1_2') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.6" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/base/plugins/org.apache.commons.lang_2.6.0.v201404270220.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_1_2') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-logging-1.1.1" MODULE="commons-logging-1.1.1.jar"
@@ -1337,7 +1337,7 @@
 				UrlPath="platform:/base/plugins/org.apache.commons.logging_1.1.1.v201101211721.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_1_2') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_1_2') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="hcatalog-core-0.5.0.21.jar" MODULE="hcatalog-core-0.5.0.21.jar"
@@ -1381,11 +1381,11 @@
 				UrlPath="platform:/base/plugins/org.apache.log4j_1.2.15.v201012070815.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_1_3') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-configuration-1.6" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_1_3') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.6" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/base/plugins/org.apache.commons.lang_2.6.0.v201404270220.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_1_3') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-logging-1.1.1" MODULE="commons-logging-1.1.1.jar"
@@ -1393,11 +1393,11 @@
 				UrlPath="platform:/base/plugins/org.apache.commons.logging_1.1.1.v201101211721.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_1_3') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_1_3') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-codec-1.4.jar" MODULE="commons-codec-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-codec-1.4/6.0.0"
+				MVN="mvn:commons-codec/commons-codec/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.4.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_1_3') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="hcatalog-core-0.11.0.1.3.0.0-107.jar" MODULE="hcatalog-core-0.11.0.1.3.0.0-107.jar"
@@ -1433,7 +1433,7 @@
 
 			<!-- HDP_2_0 -->
 			<IMPORT NAME="commons-configuration-1.6" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_2_0') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.5" MODULE="commons-lang-2.5.jar"
@@ -1445,11 +1445,11 @@
 				UrlPath="platform:/base/plugins/org.apache.commons.logging_1.1.1.v201101211721.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_2_0') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_2_0') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-codec-1.4.jar" MODULE="commons-codec-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-codec-1.4/6.0.0"
+				MVN="mvn:commons-codec/commons-codec/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.4.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_2_0') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="hadoop-hdfs-2.2.0.2.0.6.0-76.jar" MODULE="hadoop-hdfs-2.2.0.2.0.6.0-76.jar"
@@ -1483,14 +1483,14 @@
 				MVN="mvn:org.talend.libraries/hadoop-yarn-common-2.2.0.2.0.6.0-76/6.0.0"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_2_0') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="log4j-1.2.17.jar" MODULE="log4j-1.2.17.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.17/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.17"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.17.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_2_0') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="pig-0.12.0.2.0.6.0-76-withouthadoop.jar" MODULE="pig-0.12.0.2.0.6.0-76-withouthadoop.jar"
 				MVN="mvn:org.talend.libraries/pig-0.12.0.2.0.6.0-76-withouthadoop/6.0.0"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_2_0') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="protobuf-java-2.5.0.jar" MODULE="protobuf-java-2.5.0.jar"
-				MVN="mvn:org.talend.libraries/protobuf-java-2.5.0/6.0.0"
+				MVN="mvn:com.google.protobuf/protobuf-java/2.5.0"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_2_0') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="slf4j-api-1.6.1" MODULE="slf4j-api-1.6.1.jar"
 				MVN="mvn:org.talend.libraries/slf4j-api-1.6.1/6.0.0"
@@ -1522,7 +1522,7 @@
 				MVN="mvn:org.talend.libraries/hive-metastore-0.12.0.2.0.6.0-76/6.0.0"
 				REQUIRED_IF="(LOCAL == 'false' AND PIG_VERSION=='HDP_2_0' AND LOAD=='HCATLOADER') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jdo-api-3.0.1.jar" MODULE="jdo-api-3.0.1.jar"
-				MVN="mvn:org.talend.libraries/jdo-api-3.0.1/6.0.0"
+				MVN="mvn:javax.jdo/jdo-api/3.0.1"
 				REQUIRED_IF="(LOCAL == 'false' AND PIG_VERSION=='HDP_2_0' AND LOAD=='HCATLOADER') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="libfb303-0.9.0.jar" MODULE="libfb303-0.9.0.jar"
 				MVN="mvn:org.talend.libraries/libfb303-0.9.0/6.0.0"
@@ -1533,23 +1533,23 @@
 
 			<!-- HDP_2_1 -->
 			<IMPORT NAME="commons-configuration-1.6" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_2_1') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.6.jar" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang-2.6.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_2_1') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-logging-1.1.3.jar" MODULE="commons-logging-1.1.3.jar"
-				MVN="mvn:org.talend.libraries/commons-logging-1.1.3/6.0.0"
+				MVN="mvn:commons-logging/commons-logging/1.1.3"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-logging-1.1.3.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_2_1') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_2_1') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-codec-1.4.jar" MODULE="commons-codec-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-codec-1.4/6.0.0"
+				MVN="mvn:commons-codec/commons-codec/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.4.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_2_1') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-collections-3.2.1.jar" MODULE="commons-collections-3.2.1.jar"
@@ -1589,7 +1589,7 @@
 				MVN="mvn:org.talend.libraries/hadoop-yarn-common-2.4.0.2.1.1.0-385/6.0.0"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_2_1') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="log4j-1.2.17.jar" MODULE="log4j-1.2.17.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.17/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.17"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.17.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_2_1') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="pig-0.12.1.2.1.1.0-385-withouthadoop.jar"
@@ -1597,7 +1597,7 @@
 				MVN="mvn:org.talend.libraries/pig-0.12.1.2.1.1.0-385-withouthadoop/6.0.0"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_2_1') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="protobuf-java-2.5.0.jar" MODULE="protobuf-java-2.5.0.jar"
-				MVN="mvn:org.talend.libraries/protobuf-java-2.5.0/6.0.0"
+				MVN="mvn:com.google.protobuf/protobuf-java/2.5.0"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_2_1') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="slf4j-api-1.7.5.jar" MODULE="slf4j-api-1.7.5.jar"
 				MVN="mvn:org.talend.libraries/slf4j-api-1.7.5/6.0.0"
@@ -1633,7 +1633,7 @@
 				MVN="mvn:org.talend.libraries/hive-metastore-0.13.0.2.1.1.0-385/6.0.0"
 				REQUIRED_IF="(LOCAL == 'false' AND PIG_VERSION=='HDP_2_1' AND LOAD=='HCATLOADER') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="jdo-api-3.0.1.jar" MODULE="jdo-api-3.0.1.jar"
-				MVN="mvn:org.talend.libraries/jdo-api-3.0.1/6.0.0"
+				MVN="mvn:javax.jdo/jdo-api/3.0.1"
 				REQUIRED_IF="(LOCAL == 'false' AND PIG_VERSION=='HDP_2_1' AND LOAD=='HCATLOADER') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="libfb303-0.9.0.jar" MODULE="libfb303-0.9.0.jar"
 				MVN="mvn:org.talend.libraries/libfb303-0.9.0/6.0.0"
@@ -1648,7 +1648,7 @@
 
 			<!-- PIVOTAL_HD_1_0_1 -->
 			<IMPORT NAME="commons-configuration-1.6" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='PIVOTAL_HD_1_0_1') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.5" MODULE="commons-lang-2.5.jar"
@@ -1660,7 +1660,7 @@
 				UrlPath="platform:/base/plugins/org.apache.commons.logging_1.1.1.v201101211721.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='PIVOTAL_HD_1_0_1') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='PIVOTAL_HD_1_0_1') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="hadoop-auth-2.0.2-alpha-gphd-2.0.1.0.jar"
@@ -1701,7 +1701,7 @@
 				MVN="mvn:org.talend.libraries/hadoop-yarn-common-2.0.2-alpha-gphd-2.0.1.0/6.0.0"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='PIVOTAL_HD_1_0_1') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="log4j-1.2.17.jar" MODULE="log4j-1.2.17.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.17/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.17"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.17.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='PIVOTAL_HD_1_0_1') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="pig-0.10.1-gphd-2.0.1.0-withouthadoop.jar"
@@ -1725,7 +1725,7 @@
 
 			<!-- PIVOTAL_HD_2_0 -->
 			<IMPORT NAME="commons-configuration-1.6" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='PIVOTAL_HD_2_0') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.5" MODULE="commons-lang-2.5.jar"
@@ -1737,11 +1737,11 @@
 				UrlPath="platform:/base/plugins/org.apache.commons.logging_1.1.1.v201101211721.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='PIVOTAL_HD_2_0') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='PIVOTAL_HD_2_0') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-codec-1.4.jar" MODULE="commons-codec-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-codec-1.4/6.0.0"
+				MVN="mvn:commons-codec/commons-codec/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.4.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='PIVOTAL_HD_2_0') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="hadoop-hdfs-2.2.0-gphd-3.0.0.0.jar" MODULE="hadoop-hdfs-2.2.0-gphd-3.0.0.0.jar"
@@ -1777,7 +1777,7 @@
 				MVN="mvn:org.talend.libraries/hadoop-yarn-common-2.2.0-gphd-3.0.0.0/6.0.0"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='PIVOTAL_HD_2_0') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="log4j-1.2.17.jar" MODULE="log4j-1.2.17.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.17/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.17"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.17.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='PIVOTAL_HD_2_0') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="pig-0.12.0-gphd-3.0.0.0-withouthadoop.jar"
@@ -1785,7 +1785,7 @@
 				MVN="mvn:org.talend.libraries/pig-0.12.0-gphd-3.0.0.0-withouthadoop/6.0.0"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='PIVOTAL_HD_2_0') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="protobuf-java-2.5.0.jar" MODULE="protobuf-java-2.5.0.jar"
-				MVN="mvn:org.talend.libraries/protobuf-java-2.5.0/6.0.0"
+				MVN="mvn:com.google.protobuf/protobuf-java/2.5.0"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='PIVOTAL_HD_2_0') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="slf4j-api-1.6.1" MODULE="slf4j-api-1.6.1.jar"
 				MVN="mvn:org.talend.libraries/slf4j-api-1.6.1/6.0.0"
@@ -1822,7 +1822,7 @@
 				MVN="mvn:org.talend.libraries/guava-r09/6.0.0" UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-r09.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_1_2' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_1_2' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -1850,7 +1850,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-11.0.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_1_3' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='HDP_1_3' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -1910,7 +1910,7 @@
 				MVN="mvn:org.talend.libraries/guava-r09/6.0.0" UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-r09.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR2' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR2' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -1936,7 +1936,7 @@
 				MVN="mvn:org.talend.libraries/guava-r09/6.0.0" UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-r09.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR212' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR212' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -1964,11 +1964,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-13.0.1.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR213' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR213' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.6" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang-2.6.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR213' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -1996,11 +1996,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-13.0.1.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR301' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR301' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.6" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang-2.6.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR301' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -2028,11 +2028,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-13.0.1.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR310' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR310' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang-2.6" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang-2.6.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='MAPR310' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -2058,7 +2058,7 @@
 				MVN="mvn:org.talend.libraries/guava-r09/6.0.0" UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-r09.jar"
 				REQUIRED_IF="(LOCAL=='false' AND (PIG_VERSION=='APACHE_1_0_0' OR PIG_VERSION=='APACHE_1_0_3_EMR') AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND (PIG_VERSION=='APACHE_1_0_0' OR PIG_VERSION=='APACHE_1_0_3_EMR') AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -2085,7 +2085,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-11.0.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH4' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH4' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -2112,7 +2112,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-11.0.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='PIVOTAL_HD_1_0_1' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='PIVOTAL_HD_1_0_1' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -2140,7 +2140,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-11.0.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH4_YARN' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND PIG_VERSION=='Cloudera_CDH4_YARN' AND LOAD=='HBASESTORAGE') AND DISTRIBUTION!='CUSTOM'" />
 
@@ -2223,7 +2223,7 @@
 				MVN="mvn:org.talend.libraries/pigutil/6.0.0" UrlPath="platform:/plugin/org.talend.libraries.pig/lib/pigutil.jar"
 				REQUIRED_IF="(LOCAL=='false' AND LOAD=='SEQUENCEFILELOADER' AND DISTRIB[DISTRIBUTION, PIG_VERSION].doSupportOldImportMode[]) AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL=='false' AND LOAD=='SEQUENCEFILELOADER' AND DISTRIB[DISTRIBUTION, PIG_VERSION].doSupportOldImportMode[]) AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="slf4j-api-1.6.1.jar" MODULE="slf4j-api-1.6.1.jar"
@@ -2246,11 +2246,11 @@
 				REQUIRED_IF="(LOCAL=='false' AND LOAD=='RCFILEPIGSTORAGE' AND PIG_VERSION!='EMR_4_0_0' AND PIG_VERSION!='HDP_2_3' AND DISTRIB[DISTRIBUTION, PIG_VERSION].doSupportOldImportMode[]) AND DISTRIBUTION!='CUSTOM'" />
 
 			<IMPORT NAME="elephant-bird-core-4.9.jar" MODULE="elephant-bird-core-4.9.jar"
-				MVN="mvn:org.talend.libraries/elephant-bird-core-4.9/6.0.0"
+				MVN="mvn:com.twitter.elephantbird/elephant-bird-core/4.9"
 				UrlPath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-core-4.9.jar"
 				REQUIRED_IF="(LOCAL=='false' AND LOAD=='RCFILEPIGSTORAGE' AND (PIG_VERSION=='EMR_4_0_0' OR PIG_VERSION=='HDP_2_3')) AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="elephant-bird-hadoop-compat-4.9.jar" MODULE="elephant-bird-hadoop-compat-4.9.jar"
-				MVN="mvn:org.talend.libraries/elephant-bird-hadoop-compat-4.9/6.0.0"
+				MVN="mvn:com.twitter.elephantbird/elephant-bird-hadoop-compat/4.9"
 				UrlPath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-hadoop-compat-4.9.jar"
 				REQUIRED_IF="(LOCAL=='false' AND LOAD=='RCFILEPIGSTORAGE' AND (PIG_VERSION=='EMR_4_0_0' OR PIG_VERSION=='HDP_2_3')) AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
@@ -2360,14 +2360,14 @@
 				REQUIRED_IF="(LOCAL == 'false') AND (DISTRIBUTION!='CUSTOM') AND (PIG_VERSION=='APACHE_2_4_0_EMR')" />
 
 			<IMPORT NAME="commons-logging-1.1.3.jar" MODULE="commons-logging-1.1.3.jar"
-				MVN="mvn:org.talend.libraries/commons-logging-1.1.3/6.0.0"
+				MVN="mvn:commons-logging/commons-logging/1.1.3"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-logging-1.1.3.jar"
 				REQUIRED_IF="(LOCAL == 'false') AND (DISTRIBUTION!='CUSTOM') AND (PIG_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="protobuf-java-2.5.0" MODULE="protobuf-java-2.5.0.jar"
-				MVN="mvn:org.talend.libraries/protobuf-java-2.5.0/6.0.0"
+				MVN="mvn:com.google.protobuf/protobuf-java/2.5.0"
 				REQUIRED_IF="(LOCAL == 'false') AND (DISTRIBUTION!='CUSTOM') AND (PIG_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="commons-httpclient-3.1" MODULE="commons-httpclient-3.1.jar"
-				MVN="mvn:org.talend.libraries/commons-httpclient-3.1/6.0.0"
+				MVN="mvn:commons-httpclient/commons-httpclient/3.1"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.http/lib/commons-httpclient-3.1.jar"
 				REQUIRED_IF="(LOCAL == 'false') AND (DISTRIBUTION!='CUSTOM') AND (PIG_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="jets3t-0.9.1-emr-2.4.0" MODULE="jets3t-0.9.1-emr-2.4.0.jar"
@@ -2380,7 +2380,7 @@
 				MVN="mvn:org.talend.libraries/httpcore-4.3.2/6.0.0"
 				REQUIRED_IF="(LOCAL == 'false') AND (DISTRIBUTION!='CUSTOM') AND (PIG_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="commons-lang-2.6" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang-2.6.jar"
 				REQUIRED_IF="(LOCAL == 'false') AND (DISTRIBUTION!='CUSTOM') AND (PIG_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="gson-2.1" MODULE="gson-2.1.jar"
@@ -2388,23 +2388,23 @@
 				REQUIRED_IF="(LOCAL == 'false') AND (DISTRIBUTION!='CUSTOM') AND (PIG_VERSION=='APACHE_2_4_0_EMR')" />
 
 			<IMPORT NAME="commons-cli-1.2" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="(LOCAL == 'false') AND (DISTRIBUTION!='CUSTOM') AND (PIG_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="commons-configuration-1.6" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="(LOCAL == 'false') AND (DISTRIBUTION!='CUSTOM') AND (PIG_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="commons-codec-1.4" MODULE="commons-codec-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-codec-1.4/6.0.0"
+				MVN="mvn:commons-codec/commons-codec/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.4.jar"
 				REQUIRED_IF="(LOCAL == 'false') AND (DISTRIBUTION!='CUSTOM') AND (PIG_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-mapper-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-mapper-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(LOCAL == 'false') AND (DISTRIBUTION!='CUSTOM') AND (PIG_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="jackson-core-asl-1.9.14-TALEND" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
-				MVN="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"
+				MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
 				UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-asl-1.9.14-TALEND.jar"
 				REQUIRED_IF="(LOCAL == 'false') AND (DISTRIBUTION!='CUSTOM') AND (PIG_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="guava-11.0.2" MODULE="guava-11.0.2.jar"
@@ -2425,7 +2425,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.7.5.jar"
 				REQUIRED_IF="(LOCAL == 'false') AND (DISTRIBUTION!='CUSTOM') AND (PIG_VERSION=='APACHE_2_4_0_EMR')" />
 			<IMPORT NAME="log4j-1.2.17" MODULE="log4j-1.2.17.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.17/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.17"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.17.jar"
 				REQUIRED_IF="(LOCAL == 'false') AND (DISTRIBUTION!='CUSTOM') AND (PIG_VERSION=='APACHE_2_4_0_EMR')" />
 
@@ -2625,7 +2625,7 @@
 				REQUIRED_IF="((LOCAL == 'false') AND (LOAD=='AVROSTORAGE') AND ((PIG_VERSION=='HDP_2_0') OR (PIG_VERSION=='HDP_2_1'))) AND DISTRIBUTION!='CUSTOM'" />
 
 			<IMPORT NAME="commons-io" MODULE="commons-io-2.4.jar"
-				MVN="mvn:org.talend.libraries/commons-io-2.4/6.0.0"
+				MVN="mvn:commons-io/commons-io/2.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.4.jar"
 				REQUIRED_IF="((LOCAL == 'false') AND (LOAD=='AVROSTORAGE') AND (PIG_VERSION=='HDP_2_0' OR PIG_VERSION=='HDP_2_1' OR PIG_VERSION=='Cloudera_CDH4_YARN' OR PIG_VERSION=='Cloudera_CDH5' OR PIG_VERSION=='PIVOTAL_HD_2_0')) AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="avro-1.5.4.jar" MODULE="avro-1.5.4.jar"
