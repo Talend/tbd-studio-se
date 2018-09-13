@@ -18,7 +18,7 @@
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
             id="maprdb-5.1.0-mapr.jar"
-            name="maprdb-5.1.0-mapr.jar" mvn_uri="mvn:org.talend.libraries/maprdb-5.1.0-mapr/6.2.0" >
+            name="maprdb-5.1.0-mapr.jar" mvn_uri="mvn:org.talend.libraries/maprdb-5.1.0-mapr/6.0.0" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
@@ -28,13 +28,13 @@
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
             id="hadoop-annotations-2.7.0-mapr-1602.jar"
-            name="hadoop-annotations-2.7.0-mapr-1602.jar" mvn_uri="mvn:org.talend.libraries/hadoop-annotations-2.7.0-mapr-1602/6.2.0" >
+            name="hadoop-annotations-2.7.0-mapr-1602.jar" mvn_uri="mvn:org.talend.libraries/hadoop-annotations-2.7.0-mapr-1602/6.0.0" >
         </libraryNeeded>
 
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
             id="maprfs-5.1.X-lastest"
-            name="maprfs-5.1.0-mapr.jar" mvn_uri="mvn:org.talend.libraries/maprfs-5.1.0-mapr/6.2.0" >
+            name="maprfs-5.1.0-mapr.jar" mvn_uri="mvn:org.talend.libraries/maprfs-5.1.0-mapr/6.0.0" >
         </libraryNeeded>
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"

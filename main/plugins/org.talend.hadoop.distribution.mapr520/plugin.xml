@@ -19,7 +19,7 @@
             context="plugin:org.talend.hadoop.distribution.mapr.5.2.0"
             id="hadoop-annotations-2.7.0-mapr-1607.jar"
             name="hadoop-annotations-2.7.0-mapr-1607.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-annotations-2.7.0-mapr-1607.jar/6.3.0"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-annotations-2.7.0-mapr-1607/6.0.0"/>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.mapr.5.2.0"
             id="mapr-streams-5.2.0-mapr.jar"
@@ -161,7 +161,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.5.2.0"
             id="maprdb-5.2.0-mapr.jar"
             name="maprdb-5.2.0-mapr.jar"
-            mvn_uri="mvn:org.talend.libraries/maprdb-5.2.0-mapr/6.3.0" >
+            mvn_uri="mvn:org.talend.libraries/maprdb-5.2.0-mapr/6.0.0" >
         </libraryNeeded>
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.5.2.0"

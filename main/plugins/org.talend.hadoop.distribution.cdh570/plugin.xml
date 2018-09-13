@@ -543,21 +543,21 @@
             context="plugin:org.talend.hadoop.distribution.cdh570"
             id="kite-data-core-1.0.0-cdh5.7.0.jar"
             name="kite-data-core-1.0.0-cdh5.7.0.jar"
-            mvn_uri="mvn:org.talend.libraries/kite-data-core-1.0.0-cdh5.7.0/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/kite-data-core-1.0.0-cdh5.7.0/6.2.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh570"
             id="kite-data-mapreduce-1.0.0-cdh5.7.0.jar"
             name="kite-data-mapreduce-1.0.0-cdh5.7.0.jar"
-            mvn_uri="mvn:org.talend.libraries/kite-data-mapreduce-1.0.0-cdh5.7.0/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/kite-data-mapreduce-1.0.0-cdh5.7.0/6.2.0">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh570"
             id="kite-hadoop-compatibility-1.0.0-cdh5.7.0.jar"
             name="kite-hadoop-compatibility-1.0.0-cdh5.7.0.jar"
-            mvn_uri="mvn:org.talend.libraries/kite-hadoop-compatibility-1.0.0-cdh5.7.0/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/kite-hadoop-compatibility-1.0.0-cdh5.7.0/6.2.0">
         </libraryNeeded>
                         
         <!-- Groups -->

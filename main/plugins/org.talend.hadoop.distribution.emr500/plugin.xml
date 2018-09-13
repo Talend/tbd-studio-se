@@ -20,7 +20,7 @@
             context="plugin:org.talend.hadoop.distribution.emr500"
             id="hadoop-archives-emr500-latest"
             name="hadoop-archives-2.7.2-amzn-3.jar" 
-            mvn_uri="mvn:org.talend.libraries/hadoop-archives-2.7.2-amzn-3/6.0.0"/>
+            mvn_uri="mvn:org.talend.libraries/hadoop-archives-2.7.2-amzn-3/6.3.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr500"
@@ -344,7 +344,7 @@
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="protobuf-java-2.5.0.jar" name="protobuf-java-2.5.0.jar" mvn_uri="mvn:com.google.protobuf/protobuf-java/2.5.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="hadoop-annotations-2.7.2-amzn-3.jar" name="hadoop-annotations-2.7.2-amzn-3.jar" mvn_uri="mvn:org.talend.libraries/hadoop-annotations-2.7.2-amzn-3/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="hadoop-ant-2.7.2-amzn-3.jar" name="hadoop-ant-2.7.2-amzn-3.jar" mvn_uri="mvn:org.talend.libraries/hadoop-ant-2.7.2-amzn-3/6.0.0"/>
-<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="hadoop-archives-2.7.2-amzn-3.jar" name="hadoop-archives-2.7.2-amzn-3.jar" mvn_uri="mvn:org.talend.libraries/hadoop-archives-2.7.2-amzn-3/6.0.0"/>
+<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="hadoop-archives-2.7.2-amzn-3.jar" name="hadoop-archives-2.7.2-amzn-3.jar" mvn_uri="mvn:org.talend.libraries/hadoop-archives-2.7.2-amzn-3/6.3.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="hadoop-aws-2.7.2-amzn-3.jar" name="hadoop-aws-2.7.2-amzn-3.jar" mvn_uri="mvn:org.talend.libraries/hadoop-aws-2.7.2-amzn-3/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="scalap-2.11.8.jar" name="scalap-2.11.8.jar" mvn_uri="mvn:org.scala-lang/scalap/2.11.8"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="spark-launcher_2.11-2.0.0.jar" name="spark-launcher_2.11-2.0.0.jar" mvn_uri="mvn:org.talend.libraries/spark-launcher_2.11-2.0.0/6.0.0"/>
