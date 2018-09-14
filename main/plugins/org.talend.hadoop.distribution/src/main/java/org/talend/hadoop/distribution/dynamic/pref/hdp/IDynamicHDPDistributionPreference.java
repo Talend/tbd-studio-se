@@ -27,7 +27,7 @@ public interface IDynamicHDPDistributionPreference extends IDynamicDistributionP
     static final String PREF_REPOSITORY = "distribution.dynamic.repository.hdp.repository"; //$NON-NLS-1$
 
     // http://repo.hortonworks.com/content/repositories/releases/
-    static final String PREF_REPOSITORY_DEFAULT = "https://talend-update.talend.com/nexus/content/repositories/hortonworks-releases/"; //$NON-NLS-1$
+    static final String PREF_REPOSITORY_DEFAULT = "https://talend-update.talend.com/nexus/content/groups/dynamicdistribution/"; //$NON-NLS-1$
 
     static final String PREF_ANONYMOUS = "distribution.dynamic.repository.hdp.isAnonymous"; //$NON-NLS-1$
 

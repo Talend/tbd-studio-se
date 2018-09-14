@@ -62,7 +62,7 @@
             context="plugin:org.talend.hadoop.distribution.emr450"
             id="avro-1.7.6.jar"
             name="avro-1.7.6.jar"
-            mvn_uri="mvn:org.talend.libraries/avro-1.7.6/6.0.0"/>            
+            mvn_uri="mvn:org.apache.avro/avro/1.7.6"/>            
             
         <!-- HBase libraries (EMR 4.6.0 only) -->
         <libraryNeeded
@@ -173,7 +173,7 @@
             context="plugin:org.talend.libraries.hadoop"
             id="parquet-pig-bundle-emr450-latest"
             name="parquet-pig-bundle-1.6.0.jar" 
-            mvn_uri="mvn:org.talend.libraries/parquet-pig-bundle-1.6.0/6.2.0"
+            mvn_uri="mvn:org.talend.libraries/parquet-pig-bundle-1.6.0/6.0.0"
             uripath="platform:/plugin/org.talend.libraries.hadoop/lib/parquet-pig-bundle-1.6.0.jar"/>
         
         <libraryNeeded
@@ -186,14 +186,14 @@
             context="plugin:org.talend.libraries.pig"
             id="elephant-bird-core-4.9.jar"
             name="elephant-bird-core-4.9.jar" 
-            mvn_uri="mvn:org.talend.libraries/elephant-bird-core-4.9/6.0.0"
+            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-core/4.9"
             uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-core-4.9.jar"/>
             
         <libraryNeeded
             context="plugin:org.talend.libraries.pig"
             id="elephant-bird-hadoop-compat-4.9.jar"
             name="elephant-bird-hadoop-compat-4.9.jar" 
-            mvn_uri="mvn:org.talend.libraries/elephant-bird-hadoop-compat-4.9/6.0.0"
+            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-hadoop-compat/4.9"
             uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-hadoop-compat-4.9.jar"/>
             
         <libraryNeeded
@@ -207,7 +207,7 @@
             context="plugin:org.talend.libraries.pig"
             id="elephant-bird-pig-4.9.jar"
             name="elephant-bird-pig-4.9.jar"
-            mvn_uri="mvn:org.talend.libraries/elephant-bird-pig-4.9/6.0.0"
+            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-pig/4.9"
             uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-pig-4.9.jar">
         </libraryNeeded>
                         
@@ -248,7 +248,7 @@
             context="plugin:org.talend.hadoop.distribution.emr450"
             id="sqoop-emr450-latest"
             name="sqoop-1.4.6.jar"
-            mvn_uri="mvn:org.talend.libraries/sqoop-1.4.6/6.2.0">
+            mvn_uri="mvn:org.talend.libraries/sqoop-1.4.6/6.0.0">
         </libraryNeeded>    
         
         <!-- Spark libraries -->
@@ -283,7 +283,7 @@
             context="plugin:org.talend.hadoop.distribution.emr450"
             id="aws-java-sdk-dynamodb-emr450-latest"
             name="aws-java-sdk-dynamodb-1.9.16.jar"
-            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-dynamodb-1.9.16/6.2.0"/>
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-dynamodb-1.9.16/6.0.0"/>
             
         <libraryNeeded 
             context="plugin:org.talend.hadoop.distribution.emr450"
@@ -304,7 +304,7 @@
             context="plugin:org.talend.hadoop.distribution.emr450"
             id="graphframes-0.5.0-spark1.6-s_2.10.jar"
             name="graphframes-0.5.0-spark1.6-s_2.10.jar"
-            mvn_uri="mvn:org.talend.libraries/graphframes-0.3.0-spark1.6-s_2.10/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/graphframes-0.5.0-spark1.6-s_2.10/6.0.0">
         </libraryNeeded>
             
         <!-- Third parties libraries -->   
@@ -312,13 +312,13 @@
             context="plugin:org.talend.hadoop.distribution.emr450"
             id="avro-mapred-emr450-latest"
             name="avro-mapred-1.7.5-hadoop2.jar" 
-            mvn_uri="mvn:org.talend.libraries/avro-mapred-1.7.5-hadoop2/6.2.0"/>
+            mvn_uri="mvn:org.talend.libraries/avro-mapred-1.7.5-hadoop2/6.1.0"/>
             
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr450"
             id="parquet-avro-emr450-latest"
             name="parquet-avro-1.4.1.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-avro-1.4.1/6.2.0">
+            mvn_uri="mvn:org.talend.libraries/parquet-avro-1.4.1/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
@@ -337,7 +337,7 @@
             context="plugin:org.talend.libraries.zookeeper"
             id="zookeeper-emr450-latest"
             name="zookeeper-3.4.8.jar" 
-            mvn_uri="mvn:org.talend.libraries/zookeeper-3.4.8/6.2.0"
+            mvn_uri="mvn:org.talend.libraries/zookeeper-3.4.8/6.0.0"
             uripath="platform:/plugin/org.talend.libraries.zookeeper/lib/zookeeper-3.4.8.jar"/>
             
        

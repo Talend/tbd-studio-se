@@ -404,7 +404,7 @@
             context="plugin:org.talend.hadoop.distribution.hdp240"
             id="parquet-avro-1.4.1"
             name="parquet-avro-1.4.1.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-avro-1.4.1/6.1.0">
+            mvn_uri="mvn:org.talend.libraries/parquet-avro-1.4.1/6.0.0">
         </libraryNeeded>
                                    
         <!-- Groups -->

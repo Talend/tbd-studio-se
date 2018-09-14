@@ -305,7 +305,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/hbase-0.92.1.jar"
 				REQUIRED_IF="(HBASE_VERSION=='MAPR2') and (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="log4j-1.2.16.jar" MODULE="log4j-1.2.16.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.16/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.16"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.16.jar"
 				REQUIRED_IF="(HBASE_VERSION=='MAPR2') and (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="zookeeper-3.3.2.jar" MODULE="zookeeper-3.3.2.jar"
@@ -348,7 +348,7 @@
 				MVN="mvn:org.talend.libraries/hbase-0.92.2-mapr/6.0.0"
 				REQUIRED_IF="HBASE_VERSION=='MAPR212'  AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="log4j-1.2.16.jar" MODULE="log4j-1.2.16.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.16/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.16"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.16.jar"
 				REQUIRED_IF="HBASE_VERSION=='MAPR212'  AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="zookeeper-3.3.6.jar" MODULE="zookeeper-3.3.6.jar"
@@ -375,7 +375,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/hbase-0.94.5-mapr.jar"
 				REQUIRED_IF="HBASE_VERSION=='MAPR213'  AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="log4j-1.2.16.jar" MODULE="log4j-1.2.16.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.16/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.16"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.16.jar"
 				REQUIRED_IF="HBASE_VERSION=='MAPR213'  AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="slf4j-api-1.6.1.jar" MODULE="slf4j-api-1.6.1.jar"
@@ -416,7 +416,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr.3.0.1/lib/hbase-0.94.9-mapr-1308.jar"
 				REQUIRED_IF="HBASE_VERSION=='MAPR301'  AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="log4j-1.2.16.jar" MODULE="log4j-1.2.16.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.16/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.16"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.16.jar"
 				REQUIRED_IF="HBASE_VERSION=='MAPR301'  AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="slf4j-api-1.6.1.jar" MODULE="slf4j-api-1.6.1.jar"
@@ -457,7 +457,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr.3.1.0/lib/hbase-0.94.13-mapr-1401.jar"
 				REQUIRED_IF="HBASE_VERSION=='MAPR310'  AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="log4j-1.2.16.jar" MODULE="log4j-1.2.16.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.16/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.16"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.16.jar"
 				REQUIRED_IF="HBASE_VERSION=='MAPR310'  AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="slf4j-api-1.6.1.jar" MODULE="slf4j-api-1.6.1.jar"
@@ -488,7 +488,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr.3.1.0/lib/hadoop-auth-1.0.3-mapr-3.1.0.jar"
 				REQUIRED_IF="HBASE_VERSION=='MAPR310'  AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="commons-codec-1.4.jar" MODULE="commons-codec-1.4.jar"
-				MVN="mvn:org.talend.libraries/commons-codec-1.4/6.0.0"
+				MVN="mvn:commons-codec/commons-codec/1.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.4.jar"
 				REQUIRED_IF="HBASE_VERSION=='MAPR310'  AND (DISTRIBUTION!='CUSTOM') AND (USE_EXISTING_CONNECTION == 'false')" />
 

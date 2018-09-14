@@ -160,7 +160,7 @@
             context="plugin:org.talend.hadoop.distribution.hdinsight340"
             id="avro-hdinsight340"
             name="avro-1.7.7.jar"
-            mvn_uri="mvn:org.talend.libraries/avro-1.7.7/6.0.0">
+            mvn_uri="mvn:org.apache.avro/avro/1.7.7">
         </libraryNeeded>        
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdinsight340"

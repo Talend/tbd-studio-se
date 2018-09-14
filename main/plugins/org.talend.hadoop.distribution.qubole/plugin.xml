@@ -42,7 +42,7 @@
             context="plugin:org.talend.hadoop.distribution.qubole"
             id="avro-mapred-1.7.7-hadoop2.jar"
             name="avro-mapred-1.7.7-hadoop2.jar"
-            mvn_uri="mvn:org.talend.libraries/avro-mapred-1.7.7-hadoop2/6.0.0"/>
+            mvn_uri="mvn:org.apache.avro/avro-mapred/1.7.7-hadoop2"/>
 
 		<!-- Jars for DI Hive/Pig -->
 		<libraryNeeded

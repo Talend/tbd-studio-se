@@ -6,77 +6,77 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
-            id="talend-bigdata-launcher-platform-1.2.4-20180625.jar"
-            name="talend-bigdata-launcher-platform-1.2.4-20180625.jar"
-            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-platform/1.2.4-20180625">
+            id="talend-bigdata-launcher-platform-1.2.7-20180828.jar"
+            name="talend-bigdata-launcher-platform-1.2.7-20180828.jar"
+            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-platform/1.2.7-20180828">
         </libraryNeeded>
                            
 		 <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
             id="avro-mapred-1.7.7-hadoop2.jar"
             name="avro-mapred-1.7.7-hadoop2.jar"
-            mvn_uri="mvn:org.talend.libraries/avro-mapred-1.7.7-hadoop2/6.0.0"/>
+            mvn_uri="mvn:org.apache.avro/avro-mapred/1.7.7-hadoop2"/>
               
          <!--  -->
          <libraryNeeded 
          	context="plugin:org.talend.hadoop.distribution.databricks" 
          	id="commons-codec-1.10.jar" 
          	name="commons-codec-1.10.jar" 
-         	mvn_uri="mvn:org.talend.libraries/commons-codec-1.10/6.0.0"/>
+         	mvn_uri="mvn:commons-codec/commons-codec/1.10"/>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
             id="commons-lang-2.6.jar"
             name="commons-lang-2.6.jar"
-            mvn_uri="mvn:org.talend.libraries/commons-lang-2.6/6.0.0">
+            mvn_uri="mvn:commons-lang/commons-lang/2.6">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
             id="commons-lang3-3.5.jar"
             name="commons-lang3-3.5.jar"
-            mvn_uri="mvn:org.talend.libraries/commons-lang3-3.5/6.0.0">
+            mvn_uri="mvn:org.apache.commons/commons-lang3/3.5">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
             id="commons-logging-1.2.jar"
             name="commons-logging-1.2.jar"
-            mvn_uri="mvn:org.talend.libraries/commons-logging-1.2/6.0.0">
+            mvn_uri="mvn:commons-logging/commons-logging/1.2">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
             id="hadoop-common-2.7.3.jar"
             name="hadoop-common-2.7.3.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-common-2.7.3/6.0.0">
+            mvn_uri="mvn:org.apache.hadoop/hadoop-common/2.7.3">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
             id="hadoop-mapreduce-client-core-2.7.3.jar"
             name="hadoop-mapreduce-client-core-2.7.3.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-mapreduce-client-core-2.7.3/6.0.0">
+            mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-core/2.7.3">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
             id="kryo-shaded-3.0.3.jar"
             name="kryo-shaded-3.0.3.jar"
-            mvn_uri="mvn:org.talend.libraries/kryo-shaded-3.0.3/6.0.0">
+            mvn_uri="mvn:com.esotericsoftware/kryo-shaded/3.0.3">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
             id="scala-library-2.11.8.jar"
             name="scala-library-2.11.8.jar"
-            mvn_uri="mvn:org.talend.libraries/scala-library-2.11.8/6.0.0">
+            mvn_uri="mvn:org.scala-lang/scala-library/2.11.8">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
             id="scala-reflect-2.11.8.jar"
             name="scala-reflect-2.11.8.jar"
-            mvn_uri="mvn:org.talend.libraries/scala-reflect-2.11.8/6.0.0">
+            mvn_uri="mvn:org.scala-lang/scala-reflect/2.11.8">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
             id="slf4j-api-1.7.16.jar"
             name="slf4j-api-1.7.16.jar"
-            mvn_uri="mvn:org.talend.libraries/slf4j-api-1.7.16/6.0.0">
+            mvn_uri="mvn:org.slf4j/slf4j-api/1.7.16">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
@@ -131,13 +131,13 @@
             context="Third party library to connect to Windows Azure"
             id="azure-storage-5.0.0.jar"
             name="azure-storage-5.0.0.jar"
-            mvn_uri="mvn:org.talend.libraries/azure-storage-5.0.0/6.0.0">
+            mvn_uri="mvn:com.microsoft.azure/azure-storage/5.0.0">
         </libraryNeeded>
         <libraryNeeded
               bundleID="org.apache.servicemix.bundles.wsdl4j"
               context="plugin:org.talend.libraries.apache.cxf"
               id="wsdl4j-1.6.3.jar"
-              mvn_uri="mvn:org.talend.libraries/wsdl4j-1.6.3/6.0.0"
+              mvn_uri="mvn:wsdl4j/wsdl4j/1.6.3"
               name="wsdl4j-1.6.3.jar"
               uripath="platform:/plugin/org.talend.libraries.apache.cxf/lib/wsdl4j-1.6.3.jar">
         </libraryNeeded>
@@ -145,14 +145,14 @@
             context="plugin:org.talend.libraries.jackson"
             id="jackson-core-2.8.9.jar"
             name="jackson-core-2.8.9.jar"
-            mvn_uri="mvn:org.talend.libraries/jackson-core-2.8.9/6.0.0"
+            mvn_uri="mvn:com.fasterxml.jackson.core/jackson-core/2.8.9"
             uripath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-2.8.9.jar">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.apache.cxf"
             id="cxf-rt-rs-client-3.2.4.jar"
             name="cxf-rt-rs-client-3.2.4.jar"
-            mvn_uri="mvn:org.talend.libraries/cxf-rt-rs-client-3.2.4/6.0.0"
+            mvn_uri="mvn:org.apache.cxf/cxf-rt-rs-client/3.2.4"
             uripath="platform:/plugin/org.talend.libraries.apache.cxf/lib/cxf-rt-rs-client-3.2.4.jar">
         </libraryNeeded>
         <libraryNeeded
@@ -181,7 +181,7 @@
                 description="Big Data launcher libraries for Databricks"
                 id="BIGDATA-LAUNCHER-LIB-DATABRICKS"
                 name="BIGDATA-LAUNCHER-LIB-DATABRICKS"  >
-			<library id="talend-bigdata-launcher-platform-1.2.4-20180625.jar" />
+			<library id="talend-bigdata-launcher-platform-1.2.7-20180828.jar" />
         </libraryNeededGroup>
         
         <!-- Spark group -->

@@ -197,7 +197,7 @@
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
                 NAME="log4j-1.2.16"
-                MODULE="log4j-1.2.16.jar" MVN="mvn:org.talend.libraries/log4j-1.2.16/6.0.0" 
+                MODULE="log4j-1.2.16.jar" MVN="mvn:log4j/log4j/1.2.16" 
                 UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.16.jar"
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
@@ -212,7 +212,7 @@
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
                 NAME="commons-lang-2.6"
-                MODULE="commons-lang-2.6.jar" MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0" 
+                MODULE="commons-lang-2.6.jar" MVN="mvn:commons-lang/commons-lang/2.6" 
                 UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang-2.6.jar"
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
@@ -237,7 +237,7 @@
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
                 NAME="metrics-core-2.2.0"
-                MODULE="metrics-core-2.2.0.jar" MVN="mvn:org.talend.libraries/metrics-core-2.2.0/6.0.0" 
+                MODULE="metrics-core-2.2.0.jar" MVN="mvn:com.yammer.metrics/metrics-core/2.2.0" 
                 UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/metrics-core-2.2.0.jar"
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
@@ -336,7 +336,7 @@
                     UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/fastutil-6.5.7.jar" />
                 <IMPORT
                     NAME="guava-16.0.1"
-                    MODULE="guava-16.0.1.jar" MVN="mvn:org.talend.libraries/guava-16.0.1/6.0.0" 
+                    MODULE="guava-16.0.1.jar" MVN="mvn:com.google.guava/guava/16.0.1" 
                     UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-16.0.1.jar" />
                 <IMPORT
                     NAME="high-scale-lib-1.0.6"
@@ -363,7 +363,7 @@
                     UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/lz4-1.2.0.jar" />
                 <IMPORT
                     NAME="metrics-core-2.2.0"
-                    MODULE="metrics-core-2.2.0.jar" MVN="mvn:org.talend.libraries/metrics-core-2.2.0/6.0.0" 
+                    MODULE="metrics-core-2.2.0.jar" MVN="mvn:com.yammer.metrics/metrics-core/2.2.0" 
                     UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/metrics-core-2.2.0.jar" />
                 <IMPORT
                     NAME="slf4j-api-1.7.2"
@@ -434,7 +434,7 @@
                     UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/fastutil-6.5.7.jar" />
                 <IMPORT
                     NAME="guava-16.0.1"
-                    MODULE="guava-16.0.1.jar" MVN="mvn:org.talend.libraries/guava-16.0.1/6.0.0" 
+                    MODULE="guava-16.0.1.jar" MVN="mvn:com.google.guava/guava/16.0.1" 
                     UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-16.0.1.jar" />
                 <IMPORT
                     NAME="high-scale-lib-1.0.6"

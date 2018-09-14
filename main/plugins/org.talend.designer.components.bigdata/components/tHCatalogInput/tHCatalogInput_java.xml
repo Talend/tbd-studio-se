@@ -214,7 +214,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.0/lib/hadoop-auth-2.2.0.2.0.6.0-76.jar"
 				REQUIRED_IF="HCAT_VERSION=='HDP_2_0' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="HCAT_VERSION=='HDP_2_0' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="guava-11.0.2.jar" MODULE="guava-11.0.2.jar"
@@ -222,11 +222,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-11.0.2.jar"
 				REQUIRED_IF="HCAT_VERSION=='HDP_2_0' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="log4j-1.2.17.jar" MODULE="log4j-1.2.17.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.17/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.17"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.17.jar"
 				REQUIRED_IF="HCAT_VERSION=='HDP_2_0' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="protobuf-java-2.5.0.jar" MODULE="protobuf-java-2.5.0.jar"
-				MVN="mvn:org.talend.libraries/protobuf-java-2.5.0/6.0.0"
+				MVN="mvn:com.google.protobuf/protobuf-java/2.5.0"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.0/lib/protobuf-java-2.5.0.jar"
 				REQUIRED_IF="HCAT_VERSION=='HDP_2_0' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="slf4j-api-1.6.1.jar" MODULE="slf4j-api-1.6.1.jar"
@@ -254,19 +254,19 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.1/lib/hadoop-auth-2.4.0.2.1.1.0-385.jar"
 				REQUIRED_IF="HCAT_VERSION=='HDP_2_1' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="commons-configuration-1.6.jar" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED_IF="HCAT_VERSION=='HDP_2_1' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="commons-lang-2.6.jar" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang-2.6.jar"
 				REQUIRED_IF="HCAT_VERSION=='HDP_2_1' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="commons-logging-1.1.3.jar" MODULE="commons-logging-1.1.3.jar"
-				MVN="mvn:org.talend.libraries/commons-logging-1.1.3/6.0.0"
+				MVN="mvn:commons-logging/commons-logging/1.1.3"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-logging-1.1.3.jar"
 				REQUIRED_IF="HCAT_VERSION=='HDP_2_1' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="HCAT_VERSION=='HDP_2_1' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="commons-collections-3.2.1.jar" MODULE="commons-collections-3.2.1.jar"
@@ -278,7 +278,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-11.0.2.jar"
 				REQUIRED_IF="HCAT_VERSION=='HDP_2_1' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="protobuf-java-2.5.0.jar" MODULE="protobuf-java-2.5.0.jar"
-				MVN="mvn:org.talend.libraries/protobuf-java-2.5.0/6.0.0"
+				MVN="mvn:com.google.protobuf/protobuf-java/2.5.0"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.0/lib/protobuf-java-2.5.0.jar"
 				REQUIRED_IF="HCAT_VERSION=='HDP_2_1' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="slf4j-api-1.7.5.jar" MODULE="slf4j-api-1.7.5.jar"
@@ -292,7 +292,7 @@
 			<IMPORT NAME="avro-1.5.4.jar" MODULE="avro-1.5.4.jar"
 				MVN="mvn:org.talend.libraries/avro-1.5.4/6.0.0" REQUIRED_IF="HCAT_VERSION=='HDP_2_1' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="log4j-1.2.17.jar" MODULE="log4j-1.2.17.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.17/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.17"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.17.jar"
 				REQUIRED_IF="HCAT_VERSION=='HDP_2_1' AND (DISTRIBUTION!='CUSTOM')" />
 
@@ -318,7 +318,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh5/lib/hadoop-auth-2.3.0-cdh5.0.4.jar"
 				REQUIRED_IF="HCAT_VERSION=='Cloudera_CDH5' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="commons-cli-1.2.jar" MODULE="commons-cli-1.2.jar"
-				MVN="mvn:org.talend.libraries/commons-cli-1.2/6.0.0"
+				MVN="mvn:commons-cli/commons-cli/1.2"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.2.jar"
 				REQUIRED_IF="HCAT_VERSION=='Cloudera_CDH5' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="commons-collections-3.2.1.jar" MODULE="commons-collections-3.2.1.jar"
@@ -330,11 +330,11 @@
 				UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-11.0.2.jar"
 				REQUIRED_IF="HCAT_VERSION=='Cloudera_CDH5' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="log4j-1.2.17.jar" MODULE="log4j-1.2.17.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.17/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.17"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.17.jar"
 				REQUIRED_IF="HCAT_VERSION=='Cloudera_CDH5' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="protobuf-java-2.5.0.jar" MODULE="protobuf-java-2.5.0.jar"
-				MVN="mvn:org.talend.libraries/protobuf-java-2.5.0/6.0.0"
+				MVN="mvn:com.google.protobuf/protobuf-java/2.5.0"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.0/lib/protobuf-java-2.5.0.jar"
 				REQUIRED_IF="HCAT_VERSION=='Cloudera_CDH5' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="slf4j-api-1.7.5.jar" MODULE="slf4j-api-1.7.5.jar"
@@ -398,7 +398,7 @@
 				MVN="mvn:org.talend.libraries/protobuf-java-2.4.1/6.0.0"
 				REQUIRED_IF="HCAT_VERSION=='MAPR310' AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="log4j-1.2.17.jar" MODULE="log4j-1.2.17.jar"
-				MVN="mvn:org.talend.libraries/log4j-1.2.17/6.0.0"
+				MVN="mvn:log4j/log4j/1.2.17"
 				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.17.jar"
 				REQUIRED_IF="HCAT_VERSION=='MAPR310' AND (DISTRIBUTION!='CUSTOM')" />
 
@@ -414,18 +414,18 @@
 				UrlPath="platform:/plugin/org.talend.libraries.apache.axis2/lib/neethi-3.0.1.jar"
 				REQUIRED="false" REQUIRED_IF="DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="WSDL4J-1_6_3" MODULE="wsdl4j-1.6.3.jar"
-				MVN="mvn:org.talend.libraries/wsdl4j-1.6.3/6.0.0" BundleID="org.apache.servicemix.bundles.wsdl4j"
+				MVN="mvn:wsdl4j/wsdl4j/1.6.3" BundleID="org.apache.servicemix.bundles.wsdl4j"
 				REQUIRED="false" REQUIRED_IF="DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-logging" MODULE="commons-logging-1.1.1.jar"
 				MVN="mvn:org.talend.libraries/commons-logging-1.1.1/6.0.0"
 				UrlPath="platform:/base/plugins/org.apache.commons.logging_1.1.1.v201101211721.jar"
 				REQUIRED="false" REQUIRED_IF="DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-configuration" MODULE="commons-configuration-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-configuration-1.6/6.0.0"
+				MVN="mvn:commons-configuration/commons-configuration/1.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-configuration-1.6.jar"
 				REQUIRED="false" REQUIRED_IF="DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-lang" MODULE="commons-lang-2.6.jar"
-				MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0"
+				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/base/plugins/org.apache.commons.lang_2.6.0.v201404270220.jar"
 				REQUIRED="false" REQUIRED_IF="DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="hadoop-conf-kerberos" MODULE="hadoop-conf-kerberos.jar"

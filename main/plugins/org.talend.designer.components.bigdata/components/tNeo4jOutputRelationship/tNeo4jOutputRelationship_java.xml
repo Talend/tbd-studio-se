@@ -361,7 +361,7 @@
                 UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/neo4j-rest-graphdb-2.0.1.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_2_X') AND (USE_EXISTING_CONNECTION == 'false')" />
             <IMPORT NAME="geronimo-jta_1.1_spec-1.1.1" MODULE="geronimo-jta_1.1_spec-1.1.1.jar"
-                MVN="mvn:org.talend.libraries/geronimo-jta_1.1_spec-1.1.1/6.1.0"
+                MVN="mvn:org.talend.libraries/geronimo-jta_1.1_spec-1.1.1/6.0.0"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_2_X') AND (USE_EXISTING_CONNECTION == 'false')" />
             <IMPORT NAME="jsr311-api-1.1.2.r612" MODULE="jsr311-api-1.1.2.r612.jar"
                 MVN="mvn:org.talend.libraries/jsr311-api-1.1.2.r612/6.0.0"
@@ -379,7 +379,7 @@
                 UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/neo4j-io-2.2.5.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_2_X') AND (USE_EXISTING_CONNECTION == 'false')" />
             <IMPORT NAME="slf4j-api-1.7.12" MODULE="slf4j-api-1.7.12.jar"
-                MVN="mvn:org.talend.libraries/slf4j-api-1.7.12/6.1.0"
+                MVN="mvn:org.talend.libraries/slf4j-api-1.7.12/6.0.0"
                 UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/slf4j-api-1.7.12.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_2_X') AND (USE_EXISTING_CONNECTION == 'false')" />
 
@@ -416,7 +416,7 @@
                 UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/neo4j-lucene-index-2.2.5.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_2_X') AND (USE_EXISTING_CONNECTION == 'false')" />
             <IMPORT NAME="concurrentlinkedhashmap-lru-1.4" MODULE="concurrentlinkedhashmap-lru-1.4.jar"
-                MVN="mvn:org.talend.libraries/concurrentlinkedhashmap-lru-1.4/6.1.0"
+                MVN="mvn:org.talend.libraries/concurrentlinkedhashmap-lru-1.4/6.0.0"
                 UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/concurrentlinkedhashmap-lru-1.4.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_2_X') AND (USE_EXISTING_CONNECTION == 'false')" />
             <IMPORT MODULE="scala-library-2.10.5.jar"
@@ -441,7 +441,7 @@
                 UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/parboiled-scala_2.10-1.1.7.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_2_X') AND (USE_EXISTING_CONNECTION == 'false')" />
             <IMPORT NAME="parboiled-core-1.1.7" MODULE="parboiled-core-1.1.7.jar"
-                MVN="mvn:org.talend.libraries/parboiled-core-1.1.7/6.1.0"
+                MVN="mvn:org.talend.libraries/parboiled-core-1.1.7/6.0.0"
                 UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/parboiled-core-1.1.7.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_2_X') AND (USE_EXISTING_CONNECTION == 'false')" />
 
@@ -504,7 +504,7 @@
                 UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/neo4j-lucene-index-2.3.4.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X') AND (USE_EXISTING_CONNECTION == 'false')" />
             <IMPORT NAME="concurrentlinkedhashmap-lru-1.4.2" MODULE="concurrentlinkedhashmap-lru-1.4.2.jar"
-                MVN="mvn:org.talend.libraries/concurrentlinkedhashmap-lru-1.4.2/6.2.0"
+                MVN="mvn:org.talend.libraries/concurrentlinkedhashmap-lru-1.4.2/6.0.0"
                 UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/concurrentlinkedhashmap-lru-1.4.2.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X') AND (USE_EXISTING_CONNECTION == 'false')" />
             <IMPORT MODULE="scala-library-2.11.7.jar"
@@ -516,11 +516,11 @@
                 UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/neo4j-cypher-2.3.4.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X') AND (USE_EXISTING_CONNECTION == 'false')" />
             <IMPORT NAME="parboiled-scala_2.11-1.1.7" MODULE="parboiled-scala_2.11-1.1.7.jar"
-                MVN="mvn:org.talend.libraries/parboiled-scala_2.11-1.1.7/6.2.0"
+                MVN="mvn:org.talend.libraries/parboiled-scala_2.11-1.1.7/6.0.0"
                 UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/parboiled-scala_2.10-1.1.7.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X') AND (USE_EXISTING_CONNECTION == 'false')" />
             <IMPORT NAME="parboiled-core-1.1.7" MODULE="parboiled-core-1.1.7.jar"
-                MVN="mvn:org.talend.libraries/parboiled-core-1.1.7/6.1.0"
+                MVN="mvn:org.talend.libraries/parboiled-core-1.1.7/6.0.0"
                 UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/parboiled-core-1.1.7.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X') AND (USE_EXISTING_CONNECTION == 'false')" />
             <IMPORT NAME="spring-data-neo4j-rest-3.4.4.RELEASE" MODULE="spring-data-neo4j-rest-3.4.4.RELEASE.jar"
@@ -539,27 +539,27 @@
                 MVN="mvn:org.talend.libraries/javax.ws.rs-api-2.0-m10/6.0.0"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X') AND (USE_EXISTING_CONNECTION == 'false')" />
             <IMPORT NAME="jersey-client-1.9" MODULE="jersey-client-1.9.jar"
-                MVN="mvn:org.talend.libraries/jersey-client-1.9/6.2.0"
+                MVN="mvn:com.sun.jersey/jersey-client/1.9"
                 UrlPath="platform:/plugin/org.talend.libraries.jersey/lib/jersey-client-1.9.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X') AND (USE_EXISTING_CONNECTION == 'false')" />
             <IMPORT MODULE="jersey-core-1.9.jar"
-                MVN="mvn:org.talend.libraries/jersey-core-1.9/6.2.0" NAME="jersey-core-1.9"
+                MVN="mvn:com.sun.jersey/jersey-core/1.9" NAME="jersey-core-1.9"
                 UrlPath="platform:/plugin/org.talend.libraries.jersey/lib/jersey-core-1.9.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X') AND (USE_EXISTING_CONNECTION == 'false')" />
             <IMPORT MODULE="jersey-multipart-1.19.jar"
-                MVN="mvn:org.talend.libraries/jersey-multipart-1.19/6.2.0" NAME="jersey-multipart-1.19"
+                MVN="mvn:org.talend.libraries/jersey-multipart-1.19/6.0.0" NAME="jersey-multipart-1.19"
                 UrlPath="platform:/plugin/org.talend.libraries.jersey/lib/jersey-multipart-1.19.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X') AND (USE_EXISTING_CONNECTION == 'false')" />
             <IMPORT MODULE="jersey-servlet-1.19.jar"
-                MVN="mvn:org.talend.libraries/jersey-servlet-1.19/6.2.0" NAME="jersey-servlet-1.19"
+                MVN="mvn:org.talend.libraries/jersey-servlet-1.19/6.0.0" NAME="jersey-servlet-1.19"
                 UrlPath="platform:/plugin/org.talend.libraries.jersey/lib/jersey-servlet-1.19.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X') AND (USE_EXISTING_CONNECTION == 'false')" />
             <IMPORT MODULE="jersey-server-1.19.jar"
-                MVN="mvn:org.talend.libraries/jersey-server-1.19/6.2.0" NAME="jersey-server-1.19"
+                MVN="mvn:org.talend.libraries/jersey-server-1.19/6.0.0" NAME="jersey-server-1.19"
                 UrlPath="platform:/plugin/org.talend.libraries.jersey/lib/jersey-server-1.19.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X') AND (USE_EXISTING_CONNECTION == 'false')" />
             <IMPORT NAME="slf4j-api-1.7.12" MODULE="slf4j-api-1.7.12.jar"
-                MVN="mvn:org.talend.libraries/slf4j-api-1.7.12/6.1.0"
+                MVN="mvn:org.talend.libraries/slf4j-api-1.7.12/6.0.0"
                 UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/slf4j-api-1.7.12.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X') AND (USE_EXISTING_CONNECTION == 'false')" />
             <IMPORT NAME="jackson-mapper-asl-1.9.14-TALEND" MODULE="jackson-mapper-asl-1.9.14-TALEND.jar"

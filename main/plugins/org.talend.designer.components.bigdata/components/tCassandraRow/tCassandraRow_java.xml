@@ -186,7 +186,7 @@
                             NAME="slf4j-log4j12-1.7.5"
                             UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.7.5.jar"/>
                         <IMPORT
-                            MODULE="log4j-1.2.16.jar" MVN="mvn:org.talend.libraries/log4j-1.2.16/6.0.0" 
+                            MODULE="log4j-1.2.16.jar" MVN="mvn:log4j/log4j/1.2.16" 
                             UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.16.jar"
                             NAME="log4j-1.2.16"/>
                         <IMPORT
@@ -198,7 +198,7 @@
                             NAME="guava-14.0"
                             UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-14.0.jar"/>
                         <IMPORT
-                            MODULE="commons-lang-2.6.jar" MVN="mvn:org.talend.libraries/commons-lang-2.6/6.0.0" 
+                            MODULE="commons-lang-2.6.jar" MVN="mvn:commons-lang/commons-lang/2.6" 
                             UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang-2.6.jar"
                             NAME="commons-lang-2.6"/>
                     </IMPORTS>

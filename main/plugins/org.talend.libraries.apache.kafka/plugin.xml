@@ -20,7 +20,7 @@
             context="plugin:org.talend.libraries.apache.kafka"
             id="scala-library-2.10.5.jar"
             name="scala-library-2.10.5.jar" 
-            mvn_uri="mvn:org.talend.libraries/scala-library-2.10.5/6.2.0"
+            mvn_uri="mvn:org.talend.libraries/scala-library-2.10.5/6.0.0"
             uripath="platform:/plugin/org.talend.libraries.apache.kafka/lib/scala-library-2.10.5.jar"/>
         <libraryNeeded
             context="plugin:org.talend.libraries.apache.kafka"
@@ -32,7 +32,7 @@
             context="plugin:org.talend.libraries.apache.kafka"
             id="zkclient-0.7.jar"
             name="zkclient-0.7.jar" 
-            mvn_uri="mvn:org.talend.libraries/zkclient-0.7/6.2.0"
+            mvn_uri="mvn:org.talend.libraries/zkclient-0.7/6.0.0"
             uripath="platform:/plugin/org.talend.libraries.apache.kafka/lib/zkclient-0.7.jar"/>
         <libraryNeeded
             context="plugin:org.talend.libraries.apache.kafka"
@@ -61,7 +61,7 @@
             context="plugin:org.talend.libraries.apache.kafka"
             id="snappy-java-1.1.2.6.jar"
             name="snappy-java-1.1.2.6.jar" 
-            mvn_uri="mvn:org.talend.libraries/snappy-java-1.1.2.6/6.3.0"/>
+            mvn_uri="mvn:org.xerial.snappy/snappy-java/1.1.2.6"/>
         <libraryNeeded
             context="plugin:org.talend.libraries.apache.kafka"
             id="zkclient-0.8.jar"
@@ -81,7 +81,7 @@
             context="plugin:org.talend.libraries.apache.kafka"
             id="jopt-simple-4.9.jar"
             name="jopt-simple-4.9.jar" 
-            mvn_uri="mvn:org.talend.libraries/jopt-simple-4.9/6.3.0"/>
+            mvn_uri="mvn:net.sf.jopt-simple/jopt-simple/4.9"/>
             
         <!-- Kafka 1.1.0 libraries -->
         <libraryNeeded
@@ -123,7 +123,7 @@
             context="plugin:org.talend.libraries"
             id="slf4j-api-1.7.25.jar"
             name="slf4j-api-1.7.25.jar" 
-            mvn_uri="mvn:org.talend.libraries/slf4j-api-1.7.25/6.0.0"/>
+            mvn_uri="mvn:org.slf4j/slf4j-api/1.7.25"/>
         <libraryNeeded
             context="plugin:net.sf.jopt-simple"
             id="jopt-simple-5.0.4.jar"
