@@ -960,7 +960,7 @@
          "id":"javax.inject-1.jar",
          "type":"STANDARD",
          "context":"{properties.context}",
-         "jarName":"javax.inject-1.jar.jar",
+         "jarName":"javax.inject-1.jar",
          "mvnUri":"mvn:org.talend.libraries/javax.inject-1.jar/6.0.0",
          "useStudioRepository":"true",
          "description":""
