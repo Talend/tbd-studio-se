@@ -23,10 +23,10 @@ public class EMR5150SparkStreamingKinesisNodeModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        DistributionModuleGroup dmg =
-                new DistributionModuleGroup(EMR5150Constant.SPARK_KINESIS_MRREQUIRED_MODULE_GROUP.getModuleName(),
-                        true, new SparkStreamingLinkedNodeCondition(distribution, version).getCondition());
-        hs.add(dmg);
+        hs.add(new DistributionModuleGroup(EMR5150Constant.SPARK_KINESIS_MRREQUIRED_MODULE_GROUP.getModuleName(),
+                true, new SparkStreamingLinkedNodeCondition(distribution, version).getCondition()));
+        hs.add(new DistributionModuleGroup(EMR5150Constant.SPARK_DYNAMODB_MRREQUIRED_MODULE_GROUP.getModuleName(),
+                true, new SparkStreamingLinkedNodeCondition(distribution, version).getCondition()));
         return hs;
     }
 }
