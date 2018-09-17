@@ -126,7 +126,7 @@ imports="
     String partition = ElementParameterParser.getValue(node, "__PARTITION__");
     String dieOnError = ElementParameterParser.getValue(node, "__DIE_ON_ERROR__");
 
-    boolean isS3File = "true".equals(ElementParameterParser.getValue(node, "__QUBOLE_S3__"));
+    boolean isS3File = "true".equals(ElementParameterParser.getValue(node, "__QUBOLE_S3__")) && hiveDistrib.isQuboleDistribution();
 	String s3FilePath = ElementParameterParser.getValue(node, "__QUBOLE_S3_PATH__");
 	String s3AccessKey = ElementParameterParser.getValue(node, "__QUBOLE_S3_ACCESS_KEY__");
 	String s3SecretKey = ElementParameterParser.getPasswordValue(node, "__QUBOLE_S3_SECRET_KEY__");
