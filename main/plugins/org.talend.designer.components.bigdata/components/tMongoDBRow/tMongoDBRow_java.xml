@@ -300,7 +300,7 @@
 	<CODEGENERATION>
 		<IMPORTS>
             
-            <IMPORT MODULE="mongo-java-driver-3.5.0.jar" MVN="mvn:org.talend.libraries/mongo-java-driver-3.5.0/6.0.0"  NAME="mongo-java-driver-3.5.0" UrlPath="platform:/plugin/org.talend.libraries.mongo/lib/mongo-java-driver-3.5.0.jar" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false')" />
+            <IMPORT MODULE="mongo-java-driver-3.8.2.jar" MVN="mvn:org.mongodb/mongo-java-driver/3.8.2"  NAME="mongo-java-driver-3.8.2" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false')" />
 
         </IMPORTS>
 	</CODEGENERATION>
