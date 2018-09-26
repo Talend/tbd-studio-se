@@ -15,15 +15,13 @@
 	
 	String localdir = ElementParameterParser.getValue(node, "__LOCALDIR__");	
 	String remotedir = ElementParameterParser.getValue(node, "__DATABRICKS_DBFS_FOLDER__");
-	String endpoint = ElementParameterParser.getValue(node, "__DATABRICKS_ENDPOINT__");
-	String token = ElementParameterParser.getValue(node, "__DATABRICKS_TOKEN__");
 	String overwrite = ElementParameterParser.getValue(node, "__OVERWRITE__");
 	List<Map<String, String>> files = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__FILES__");
 %>
 
-	<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/DBFS/apiHandler_DBFS.javajet"%>
+	<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/DBFS/GetDatabricksFileSystem.javajet"%>
 	
-	DBFSAPI_<%=cid%> apiHandler_<%=cid%> = new DBFSAPI_<%=cid%>(<%=endpoint%>, <%=token%>, routines.system.Constant.getUserAgent("<%=org.talend.commons.utils.VersionUtils.getDisplayVersion()%>"), "<%=overwrite%>");
+	dbfs_<%=cid%>.setOverwrite(<%=overwrite%>);
 
 	int nb_file_<%=cid%> = 0;
 	int nb_success_<%=cid%> = 0;

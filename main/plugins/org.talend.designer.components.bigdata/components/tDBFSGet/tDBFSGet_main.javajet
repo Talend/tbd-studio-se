@@ -31,11 +31,11 @@
 			dir_<%=cid %> = mask_<%=cid %>.substring(0, i_<%=cid %>); 
 			mask_<%=cid %> = mask_<%=cid %>.substring(i_<%=cid %>+1);	 
     	}
-    	if (dir_<%=cid %>!=null && !"".equals(dir_<%=cid %>)) tempdir_<%=cid %> = tempdir_<%=cid %> + "/" + dir_<%=cid %>;  
+    	if (dir_<%=cid %> != null && !dir_<%=cid %>.isEmpty()) tempdir_<%=cid %> = tempdir_<%=cid %> + "/" + dir_<%=cid %>;  
     	mask_<%=cid %> = mask_<%=cid %>.replaceAll("\\.", "\\\\.").replaceAll("\\*", ".*");
     	final String finalMask_<%=cid %> = mask_<%=cid %>;
     	
-    	if(!apiHandler_<%=cid%>.exists(tempdir_<%=cid%>)){
+    	if(!dbfs_<%=cid%>.exists(tempdir_<%=cid%>)){
 			System.err.println("No match file("+key_<%=cid %>+") exists!");
 			
 			<%if(isLog4jEnabled) {%>
@@ -43,18 +43,28 @@
         	<%}%>
 		} else {
 			String localFilePath_<%=cid%> = "";
-			if("".equals(map_<%=cid %>.get(key_<%=cid %>))){
-				localFilePath_<%=cid%> = +"/"+path_<%=cid%>.getName();
-			}else{
-				localFilePath_<%=cid%> = +"/"+map_<%=cid %>.get(key_<%=cid %>);
-			}
 		
-			DBFSAPI_<%=cid%>.FileInfo remoteDirStatus_<%=cid%> = apiHandler_<%=cid%>.getStatus(tempdir_<%=cid%>);
+			org.talend.bigdata.launcher.fs.DatabricksFileSystem.FileInfo remoteDirStatus_<%=cid%> = dbfs_<%=cid%>.getStatus(tempdir_<%=cid%>);
+			if(remoteDirStatus_<%=cid%> == null) throw new RuntimeException("File or folder does not exist on DBFS : " + tempdir_<%=cid%>);
 			boolean success_<%=cid%> = false;
 	    	if(remoteDirStatus_<%=cid%>.is_dir){ // Is a directory so we'll list its files / folders
-				success_<%=cid%> = fileutil_<%=cid%>.walkDirectoriesAndCopyToLocal(apiHandler_<%=cid%>, remoteDirStatus_<%=cid%>.path, <%=localdir%>, finalMask_<%=cid%>, map_<%=cid %>.get(key_<%=cid %>));
+				for(org.talend.bigdata.launcher.fs.DatabricksFileSystem.FileInfo fileInfo : dbfs_<%=cid%>.list(remoteDirStatus_<%=cid%>.path)) {
+					if(fileInfo.is_dir) {
+						// create directory
+					} else if(java.util.regex.Pattern.compile(finalMask_<%=cid %>).matcher(java.nio.file.Paths.get(fileInfo.path).getFileName().toString()).find()) {
+						// copy file
+						if(map_<%=cid %>.get(key_<%=cid %>).isEmpty()){
+							localFilePath_<%=cid%> = <%=localdir%> + fileInfo.path.replaceAll(<%=remotedir%>, "");
+						} else {
+							localFilePath_<%=cid%> = <%=localdir%> + fileInfo.path.replaceAll(<%=remotedir%>, "").replaceAll(java.nio.file.Paths.get(fileInfo.path).getFileName().toString(), map_<%=cid %>.get(key_<%=cid %>));
+						}
+						dbfs_<%=cid%>.copyToLocal(fileInfo.path, localFilePath_<%=cid%>, <%=overwrite%>);
+					}
+				}
+				success_<%=cid%> = true;
 	    	} else { // Is a file so we'll download it directly
-	    		success_<%=cid%> = fileutil_<%=cid%>.copyToLocal(apiHandler_<%=cid%>, remoteDirStatus_<%=cid%>.path, finalMask_<%=cid%>, map_<%=cid %>.get(key_<%=cid %>));
+	    		dbfs_<%=cid%>.copyToLocal(remoteDirStatus_<%=cid%>.path, localFilePath_<%=cid%>, <%=overwrite%>);
+	    		success_<%=cid%> = true;
 	    	}
 	    	
 	    	if(success_<%=cid%>) {
@@ -71,14 +81,14 @@
 		
 		
 		
-			
+			/*
 	    	for(org.apache.hadoop.fs.Path path_<%=cid%> : filePathList_<%=cid%>){
 				if(path_<%=cid%>.getName().matches(finalMask_<%=cid%>)){
 					
 					try{
 						FileUtil_<%=cid%> fileutil_<%=cid%> = new FileUtil_<%=cid%>();
 						 fileutil_<%=cid%>.copyToLocal(fs_<%=cid%>, path_<%=cid%>, new java.io.File(localFilePath_<%=cid%>),
-    						<%=overwrite%>, <%=append%>, <%=includeSubDir%>);
+    						<%=overwrite%>, false, <%=includeSubDir%>);
 					}catch(java.io.IOException e){
 						<%
   							if(dieOnError){
@@ -100,5 +110,6 @@
 					nb_file_<%=cid%>++;
 				}
 			}
+			*/
 		}
 	}

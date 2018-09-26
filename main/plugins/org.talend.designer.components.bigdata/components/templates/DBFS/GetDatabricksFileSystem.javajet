@@ -1,0 +1,26 @@
+<%@ jet 
+imports="
+    org.talend.core.model.process.INode 
+    org.talend.core.model.process.ElementParameterParser 
+    org.talend.designer.codegen.config.CodeGeneratorArgument
+" 
+%>
+<%
+boolean useExistingConnection = "true".equals(ElementParameterParser.getValue(node, "__USE_EXISTING_CONNECTION__"));
+String endpoint = ElementParameterParser.getValue(node, "__DATABRICKS_ENDPOINT__");
+String token = ElementParameterParser.getValue(node, "__DATABRICKS_TOKEN__");
+
+if(useExistingConnection) { // We re use the existing connection, coming from the linked component.
+    String connectionSid = ElementParameterParser.getValue(node, "__CONNECTION__");
+    List<? extends INode> nodes = node.getProcess().getGeneratingNodes();
+    for(INode targetNode : nodes){
+		if (targetNode.getUniqueName().equals(connectionSid)) {
+		    endpoint = ElementParameterParser.getValue(targetNode, "__DATABRICKS_ENDPOINT__");
+		    token = ElementParameterParser.getValue(targetNode, "__DATABRICKS_TOKEN__");
+		    break;
+		}
+	}
+}
+%>
+
+	org.talend.bigdata.launcher.fs.DatabricksFileSystem dbfs_<%=cid%> = new org.talend.bigdata.launcher.fs.DatabricksFileSystem(<%=endpoint%>, <%=token%>, routines.system.Constant.getUserAgent("<%=org.talend.commons.utils.VersionUtils.getDisplayVersion()%>"));

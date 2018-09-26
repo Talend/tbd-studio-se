@@ -22,8 +22,8 @@
             sb_<%=cid %>.append(item_<%=cid %>).append("\n");
         }
     	globalMap.put("<%=cid%>_TRANSFER_MESSAGES", sb_<%=cid %>.toString());
-    	*/
 		globalMap.put("<%=cid %>_NB_FILE",fileutil_<%=cid%>.getNbFile());
+		*/
 		
 <%
 	if(isLog4jEnabled) {

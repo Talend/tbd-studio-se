@@ -56,9 +56,14 @@
 	    		for (int m_<%=cid %> = 0; m_<%=cid %> < listings_<%=cid %>.length; m_<%=cid %>++){ 
 	     			if (listings_<%=cid %>[m_<%=cid %>].getName().matches(mask_<%=cid %>)){    
 	     				localFilePath_<%=cid%> = listings_<%=cid %>[m_<%=cid %>].getAbsolutePath();
-						dbfsFilePath_<%=cid%> = <%=remotedir%>+map_<%=cid %>.get(key_<%=cid %>);
+	     				if(map_<%=cid %>.get(key_<%=cid %>) == null || map_<%=cid %>.get(key_<%=cid %>).isEmpty()){
+	     					int lastSlash = localFilePath_<%=cid%>.lastIndexOf("/");
+	     					dbfsFilePath_<%=cid%> = <%=remotedir%>+localFilePath_<%=cid%>.substring(lastSlash+1);
+	     				} else {
+							dbfsFilePath_<%=cid%> = <%=remotedir%>+map_<%=cid %>.get(key_<%=cid %>);
+						}
 						try{
-							apiHandler_<%=cid%>.copyFromLocal(localFilePath_<%=cid%>, dbfsFilePath_<%=cid%>);
+							dbfs_<%=cid%>.copyFromLocal(localFilePath_<%=cid%>, dbfsFilePath_<%=cid%>);
 		    				// add info to list will return
 		    				msg_<%=cid%>.add("file: " + listings_<%=cid %>[m_<%=cid %>].getAbsolutePath() + ", size: "
 		                    	+ listings_<%=cid %>[m_<%=cid %>].length() + " bytes upload successfully");

@@ -26,6 +26,8 @@ class DBFSAPI_<%=cid%> {
 	}
 	
 	private void resetClientForEndpoint(String apiEndpoint) {
+		client.reset();
+		client.resetQuery();
         client.replacePath(apiEndpoint);
         org.apache.cxf.jaxrs.client.WebClient.getConfig(client).getHttpConduit().getClient().setAllowChunking(false);
         client.accept("*/*"); //$NON-NLS-1$
@@ -99,9 +101,9 @@ class DBFSAPI_<%=cid%> {
 	 * @return true if the file doesn't exist on DBFS or if the file has a different size with the local one
 	 */
     public boolean notExistsOrIsDifferent(String localFile, String remoteFile) {
-        org.json.simple.JSONObject remoteFileStatus = getStatus(remoteFile);
+        DBFSAPI_<%=cid%>.FileInfo remoteFileStatus = getStatus(remoteFile);
         if (remoteFileStatus != null) {
-            return new java.io.File(localFile).length() != (long)remoteFileStatus.get("file_size");
+            return new java.io.File(localFile).length() != remoteFileStatus.file_size;
         } else {
             return true; // file does not exists remotely
         }
@@ -419,7 +421,7 @@ class DBFSAPI_<%=cid%> {
     /**
      * The response structure of the #create function
      */
-    public static class ReadReponseCreate {
+    class ReadReponseCreate {
         public java.lang.Long handle;
 
         public String toString() {
@@ -434,7 +436,7 @@ class DBFSAPI_<%=cid%> {
     /**
      * The Databricks structure to describe a file
      */
-    public class FileInfo {
+    class FileInfo {
         public String path;
         public java.lang.Boolean is_dir;
         public java.lang.Long file_size;
@@ -443,7 +445,7 @@ class DBFSAPI_<%=cid%> {
     /**
      * The Databricks structure to describe a list of files
      */
-    public class FileInfoList {
+    class FileInfoList {
         public List<FileInfo> files;
     }
 
