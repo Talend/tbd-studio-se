@@ -12,6 +12,8 @@
 
 	String distribution = ElementParameterParser.getValue(node, "__DISTRIBUTION__");
 	String pigVersion = ElementParameterParser.getValue(node, "__PIG_VERSION__");
+	
+	final String studioVersion = org.talend.commons.utils.VersionUtils.getDisplayVersion();
 
     boolean isLocal = "true".equals(ElementParameterParser.getValue(node, "__LOCAL__"));
 
@@ -74,23 +76,16 @@
 	}
 	
 	if (inMain && isQuboleDistribution) {
-		if (isLog4jEnabled) {%>
-			log.info("<%=cid%> - start executing statements:  " + statements_<%=cid%>.toString());
-		<%	
-		}
-		if ("".equals(quboleClusterLabel)) {
-		%>
-			String execution_result_<%=cid%> = quboleJob_<%=cid%>.execute(statements_<%=cid%>.toString()).getResults();
+	%>
+		org.talend.bigdata.launcher.qubole.QubolePigClient.Job job_<%=cid%> =
+			new org.talend.bigdata.launcher.qubole.QubolePigClient.Job(statements_<%=cid%>.toString());
+		job_<%=cid%>.setJobName("<%=cid%>");
+		job_<%=cid%>.setUserAgent(routines.system.Constant.getUserAgent("<%=studioVersion%>"));
+		<% if (quboleClusterLabel != null) { %>
+			job_<%=cid%>.setClusterLabel(<%=quboleClusterLabel%>);
+		<% } %>
+		String execution_result_<%=cid%> = quboleClient_<%=cid%>.execute(job_<%=cid%>);
 		<%
-		} else {
-		%>
-			String execution_result_<%=cid%> = quboleJob_<%=cid%>.execute(statements_<%=cid%>.toString(), <%=quboleClusterLabel%>).getResults();
-		<%
-		}
-		if (isLog4jEnabled) {%>
-			log.info("<%=cid%> - statements executed successfully:  " + statements_<%=cid%>.toString());
-			log.info("<%=cid%> - execution result: " + execution_result_<%=cid%>);
-		<%}
 	}
 %>
 	} catch (Exception e) {

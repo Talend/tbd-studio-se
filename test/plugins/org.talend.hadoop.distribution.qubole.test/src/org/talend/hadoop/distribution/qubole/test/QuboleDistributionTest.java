@@ -39,7 +39,7 @@ public class QuboleDistributionTest {
         assertFalse(((SparkBatchComponent) distribution).isExecutedThroughSparkJobServer());
         assertFalse(((SparkBatchComponent) distribution).doSupportSparkStandaloneMode());
         assertTrue(((SparkBatchComponent) distribution).doSupportSparkYarnClientMode());
-        assertTrue(((SparkBatchComponent) distribution).doSupportSparkYarnClusterMode());
+        assertFalse(((SparkBatchComponent) distribution).doSupportSparkYarnClusterMode());
         assertTrue(distribution.doSupportCreateServiceConnection());
     }
 }

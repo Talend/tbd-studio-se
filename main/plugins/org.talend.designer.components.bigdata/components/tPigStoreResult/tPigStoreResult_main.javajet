@@ -355,11 +355,11 @@
 				log.info("<%=cid%> - deleting " + <%=resultFile%> + " on hdfs.");
 			<%}
 			if ("".equals(quboleClusterLabel)) {%>
-			quboleJob_<%=start_node%>.execShell("hadoop fs -rm -r -f " + <%=resultFile%>);
+			quboleClient_<%=start_node%>.execShell("hadoop fs -rm -r -f " + <%=resultFile%>);
 			<%
 			} else {
 			%>
-			quboleJob_<%=start_node%>.execShell("hadoop fs -rm -r -f " + <%=resultFile%>, <%=quboleClusterLabel%>);
+			quboleClient_<%=start_node%>.execShell("hadoop fs -rm -r -f " + <%=resultFile%>, <%=quboleClusterLabel%>);
 			<%
 			}
 			if(isLog4jEnabled) {%>

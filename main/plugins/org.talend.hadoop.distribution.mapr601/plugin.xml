@@ -513,7 +513,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1" 
             id="htrace-core-3.1.0-incubating.jar" 
             name="htrace-core-3.1.0-incubating.jar"
-            mvn_uri="mvn:org.talend.libraries/htrace-core-3.1.0-incubating/6.0.0">
+            mvn_uri="mvn:org.apache.htrace/htrace-core/3.1.0-incubating">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1" 

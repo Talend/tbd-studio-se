@@ -27,8 +27,8 @@ public class HadoopDistributionsHelperTest {
     @Test
     public void testGetHadoopDistributionsDisplay_Sorted() {
         String[] hadoopDistributionsDisplay = HadoopDistributionsHelper.HADOOP.getDistributionsDisplay(false);
-        Assert.assertArrayEquals(new String[] { "Amazon EMR", "Cloudera", "Google Cloud Dataproc",
-                "HortonWorks", "MapR", "Microsoft HD Insight", "Qubole", "Databricks" }, hadoopDistributionsDisplay);
+        Assert.assertArrayEquals(new String[] { "Amazon EMR", "Cloudera", "Databricks", "Google Cloud Dataproc",
+                "HortonWorks", "MapR", "Microsoft HD Insight", "Qubole"}, hadoopDistributionsDisplay);
     }
 
     @Test

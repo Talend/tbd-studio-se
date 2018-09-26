@@ -335,8 +335,8 @@
 		}
 	%>
 
-	try (org.talend.bigdata.launcher.qubole.QubolePigJob quboleJob_<%=cid%> =
-			new org.talend.bigdata.launcher.qubole.QubolePigJob.Builder()
+	try (org.talend.bigdata.launcher.qubole.QubolePigClient quboleClient_<%=cid%> =
+			new org.talend.bigdata.launcher.qubole.QubolePigClient.Builder()
 			.setApiKey(api_token_<%=cid%>)
 			<% if (!"".equals(quboleEndpoint)) {%> .setApiEndpoint(<%=quboleEndpoint%>) <%} %>
 			.build()) {

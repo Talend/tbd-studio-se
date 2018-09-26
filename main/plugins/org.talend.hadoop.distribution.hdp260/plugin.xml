@@ -717,7 +717,7 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="hk2-api-2.4.0-b34.jar" name="hk2-api-2.4.0-b34.jar" mvn_uri="mvn:org.talend.libraries/hk2-api-2.4.0-b34/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="hk2-locator-2.4.0-b34.jar" name="hk2-locator-2.4.0-b34.jar" mvn_uri="mvn:org.talend.libraries/hk2-locator-2.4.0-b34/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="hk2-utils-2.4.0-b34.jar" name="hk2-utils-2.4.0-b34.jar" mvn_uri="mvn:org.talend.libraries/hk2-utils-2.4.0-b34/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="htrace-core-3.1.0-incubating.jar" name="htrace-core-3.1.0-incubating.jar" mvn_uri="mvn:org.talend.libraries/htrace-core-3.1.0-incubating/6.0.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="htrace-core-3.1.0-incubating.jar" name="htrace-core-3.1.0-incubating.jar" mvn_uri="mvn:org.apache.htrace/htrace-core/3.1.0-incubating"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="httpclient-4.5.2.jar" name="httpclient-4.5.2.jar" mvn_uri="mvn:org.apache.httpcomponents/httpclient/4.5.2"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="httpcore-4.4.4.jar" name="httpcore-4.4.4.jar" mvn_uri="mvn:org.apache.httpcomponents/httpcore/4.4.4"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdp260" id="ivy-2.4.0.jar" name="ivy-2.4.0.jar" mvn_uri="mvn:org.apache.ivy/ivy/2.4.0"/>
