@@ -48,15 +48,15 @@
 			if(remoteDirStatus_<%=cid%> == null) throw new RuntimeException("File or folder does not exist on DBFS : " + tempdir_<%=cid%>);
 			boolean success_<%=cid%> = false;
 	    	if(remoteDirStatus_<%=cid%>.is_dir){ // Is a directory so we'll list its files / folders
-				for(org.talend.bigdata.launcher.fs.DatabricksFileSystem.FileInfo fileInfo : dbfs_<%=cid%>.list(remoteDirStatus_<%=cid%>.path)) {
+				for(org.talend.bigdata.launcher.fs.DatabricksFileSystem.FileInfo fileInfo : dbfs_<%=cid%>.list(remoteDirStatus_<%=cid%>.path, <%=includeSubDir%>)) {
 					if(fileInfo.is_dir) {
 						// create directory
 					} else if(java.util.regex.Pattern.compile(finalMask_<%=cid %>).matcher(java.nio.file.Paths.get(fileInfo.path).getFileName().toString()).find()) {
 						// copy file
 						if(map_<%=cid %>.get(key_<%=cid %>).isEmpty()){
-							localFilePath_<%=cid%> = <%=localdir%> + fileInfo.path.replaceAll(<%=remotedir%>, "");
+							localFilePath_<%=cid%> = java.nio.file.Paths.get(<%=localdir%>).resolve(fileInfo.path.replaceAll(<%=remotedir%>, "")).toString().replaceAll("\\\\", "/");
 						} else {
-							localFilePath_<%=cid%> = <%=localdir%> + fileInfo.path.replaceAll(<%=remotedir%>, "").replaceAll(java.nio.file.Paths.get(fileInfo.path).getFileName().toString(), map_<%=cid %>.get(key_<%=cid %>));
+							localFilePath_<%=cid%> = java.nio.file.Paths.get(<%=localdir%>).resolve(fileInfo.path.replaceAll(<%=remotedir%>, "").replaceAll(java.nio.file.Paths.get(fileInfo.path).getFileName().toString(), map_<%=cid %>.get(key_<%=cid %>))).toString().replaceAll("\\\\", "/");
 						}
 						dbfs_<%=cid%>.copyToLocal(fileInfo.path, localFilePath_<%=cid%>, <%=overwrite%>);
 					}

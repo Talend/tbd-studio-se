@@ -13,7 +13,6 @@
 	
 	String localdir = ElementParameterParser.getValue(node, "__LOCALDIR__");
 	String dieOnError = ElementParameterParser.getValue(node, "__DIE_ON_ERROR__");
-	boolean overwrite = ("true").equals(ElementParameterParser.getValue(node, "__OVERWRITE__"));
 	String remotedir = ElementParameterParser.getValue(node, "__DATABRICKS_DBFS_FOLDER__");
 	
 	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
@@ -58,9 +57,9 @@
 	     				localFilePath_<%=cid%> = listings_<%=cid %>[m_<%=cid %>].getAbsolutePath();
 	     				if(map_<%=cid %>.get(key_<%=cid %>) == null || map_<%=cid %>.get(key_<%=cid %>).isEmpty()){
 	     					int lastSlash = localFilePath_<%=cid%>.lastIndexOf("/");
-	     					dbfsFilePath_<%=cid%> = <%=remotedir%>+localFilePath_<%=cid%>.substring(lastSlash+1);
+	     					dbfsFilePath_<%=cid%> = java.nio.file.Paths.get(<%=remotedir%>).resolve(localFilePath_<%=cid%>.substring(lastSlash+1)).toString().replaceAll("\\\\", "/");
 	     				} else {
-							dbfsFilePath_<%=cid%> = <%=remotedir%>+map_<%=cid %>.get(key_<%=cid %>);
+							dbfsFilePath_<%=cid%> = java.nio.file.Paths.get(<%=remotedir%>).resolve(map_<%=cid %>.get(key_<%=cid %>)).toString().replaceAll("\\\\", "/");
 						}
 						try{
 							dbfs_<%=cid%>.copyFromLocal(localFilePath_<%=cid%>, dbfsFilePath_<%=cid%>);
