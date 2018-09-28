@@ -53,11 +53,13 @@
 						// create directory
 					} else if(java.util.regex.Pattern.compile(finalMask_<%=cid %>).matcher(java.nio.file.Paths.get(fileInfo.path).getFileName().toString()).find()) {
 						// copy file
-						if(map_<%=cid %>.get(key_<%=cid %>).isEmpty()){
-							localFilePath_<%=cid%> = java.nio.file.Paths.get(<%=localdir%>).resolve(fileInfo.path.replaceAll(<%=remotedir%>, "")).toString().replaceAll("\\\\", "/");
-						} else {
-							localFilePath_<%=cid%> = java.nio.file.Paths.get(<%=localdir%>).resolve(fileInfo.path.replaceAll(<%=remotedir%>, "").replaceAll(java.nio.file.Paths.get(fileInfo.path).getFileName().toString(), map_<%=cid %>.get(key_<%=cid %>))).toString().replaceAll("\\\\", "/");
+						int baseRemotePathLength_<%=cid%> = java.nio.file.Paths.get(<%=remotedir%>).getNameCount();
+						int remotePathLength_<%=cid%> = java.nio.file.Paths.get(fileInfo.path).getNameCount();
+						String remoteStrippedPath_<%=cid%> = java.nio.file.Paths.get(fileInfo.path).subpath(baseRemotePathLength_<%=cid%>, remotePathLength_<%=cid%>).toString().replaceAll("\\\\", "/");
+						if(map_<%=cid %>.get(key_<%=cid %>) != null && !map_<%=cid %>.get(key_<%=cid %>).isEmpty()) {
+							remoteStrippedPath_<%=cid%> = remoteStrippedPath_<%=cid%>.replaceAll(java.nio.file.Paths.get(fileInfo.path).getFileName().toString(), map_<%=cid %>.get(key_<%=cid %>));
 						}
+						localFilePath_<%=cid%> = java.nio.file.Paths.get(<%=localdir%>).resolve(remoteStrippedPath_<%=cid%>).toString().replaceAll("\\\\", "/");
 						dbfs_<%=cid%>.copyToLocal(fileInfo.path, localFilePath_<%=cid%>, <%=overwrite%>);
 					}
 				}

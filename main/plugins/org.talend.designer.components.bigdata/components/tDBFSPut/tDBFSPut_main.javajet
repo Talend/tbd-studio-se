@@ -56,8 +56,7 @@
 	     			if (listings_<%=cid %>[m_<%=cid %>].getName().matches(mask_<%=cid %>)){    
 	     				localFilePath_<%=cid%> = listings_<%=cid %>[m_<%=cid %>].getAbsolutePath();
 	     				if(map_<%=cid %>.get(key_<%=cid %>) == null || map_<%=cid %>.get(key_<%=cid %>).isEmpty()){
-	     					int lastSlash = localFilePath_<%=cid%>.lastIndexOf("/");
-	     					dbfsFilePath_<%=cid%> = java.nio.file.Paths.get(<%=remotedir%>).resolve(localFilePath_<%=cid%>.substring(lastSlash+1)).toString().replaceAll("\\\\", "/");
+	     					dbfsFilePath_<%=cid%> = java.nio.file.Paths.get(<%=remotedir%>).resolve(java.nio.file.Paths.get(localFilePath_<%=cid%>).getFileName().toString()).toString().replaceAll("\\\\", "/");
 	     				} else {
 							dbfsFilePath_<%=cid%> = java.nio.file.Paths.get(<%=remotedir%>).resolve(map_<%=cid %>.get(key_<%=cid %>)).toString().replaceAll("\\\\", "/");
 						}
