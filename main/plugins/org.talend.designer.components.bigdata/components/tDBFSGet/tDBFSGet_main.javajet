@@ -1,0 +1,117 @@
+<%@ jet 
+	imports="
+		org.talend.core.model.process.INode 
+		org.talend.core.model.process.ElementParameterParser
+		org.talend.designer.codegen.config.CodeGeneratorArgument
+	"
+%>
+
+<%
+	CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+	INode node = (INode)codeGenArgument.getArgument();
+	String cid = node.getUniqueName();
+	
+	String localdir = ElementParameterParser.getValue(node, "__LOCALDIR__");
+	boolean dieOnError = ElementParameterParser.getBooleanValue(node, "__DIE_ON_ERROR__");
+	boolean overwrite = ElementParameterParser.getBooleanValue(node, "__OVERWRITE__");
+	String remotedir = ElementParameterParser.getValue(node, "__DATABRICKS_DBFS_FOLDER__");
+	boolean includeSubDir = ElementParameterParser.getBooleanValue(node, "__INCLUDSUBDIR__");
+	
+	boolean isLog4jEnabled = ElementParameterParser.getBooleanValue(node.getProcess(), "__LOG4J_ACTIVATE__");
+%>
+	
+	java.util.Set<String> keySet_<%=cid %> = map_<%=cid %>.keySet();
+    for (String key_<%=cid %> : keySet_<%=cid %>){     
+		String tempdir_<%=cid %> =  <%=remotedir%>;
+		String filemask_<%=cid %> = key_<%=cid %>; 
+		String dir_<%=cid %> = null;	
+		String mask_<%=cid %> = filemask_<%=cid %>.replaceAll("\\\\", "/") ;	
+		int i_<%=cid %> = mask_<%=cid %>.lastIndexOf('/');
+  		if (i_<%=cid %>!=-1){
+			dir_<%=cid %> = mask_<%=cid %>.substring(0, i_<%=cid %>); 
+			mask_<%=cid %> = mask_<%=cid %>.substring(i_<%=cid %>+1);	 
+    	}
+    	if (dir_<%=cid %> != null && !dir_<%=cid %>.isEmpty()) tempdir_<%=cid %> = tempdir_<%=cid %> + "/" + dir_<%=cid %>;  
+    	mask_<%=cid %> = mask_<%=cid %>.replaceAll("\\.", "\\\\.").replaceAll("\\*", ".*");
+    	final String finalMask_<%=cid %> = mask_<%=cid %>;
+    	
+    	if(!dbfs_<%=cid%>.exists(tempdir_<%=cid%>)){
+			System.err.println("No match file("+key_<%=cid %>+") exists!");
+			
+			<%if(isLog4jEnabled) {%>
+       		log.error("<%=cid%> - No match file("+key_<%=cid %>+") exists.");
+        	<%}%>
+		} else {
+			String localFilePath_<%=cid%> = "";
+		
+			org.talend.bigdata.launcher.fs.DatabricksFileSystem.FileInfo remoteDirStatus_<%=cid%> = dbfs_<%=cid%>.getStatus(tempdir_<%=cid%>);
+			if(remoteDirStatus_<%=cid%> == null) throw new RuntimeException("File or folder does not exist on DBFS : " + tempdir_<%=cid%>);
+			boolean success_<%=cid%> = false;
+	    	if(remoteDirStatus_<%=cid%>.is_dir){ // Is a directory so we'll list its files / folders
+				for(org.talend.bigdata.launcher.fs.DatabricksFileSystem.FileInfo fileInfo : dbfs_<%=cid%>.list(remoteDirStatus_<%=cid%>.path, <%=includeSubDir%>)) {
+					if(fileInfo.is_dir) {
+						// create directory
+					} else if(java.util.regex.Pattern.compile(finalMask_<%=cid %>).matcher(java.nio.file.Paths.get(fileInfo.path).getFileName().toString()).find()) {
+						// copy file
+						int baseRemotePathLength_<%=cid%> = java.nio.file.Paths.get(<%=remotedir%>).getNameCount();
+						int remotePathLength_<%=cid%> = java.nio.file.Paths.get(fileInfo.path).getNameCount();
+						String remoteStrippedPath_<%=cid%> = java.nio.file.Paths.get(fileInfo.path).subpath(baseRemotePathLength_<%=cid%>, remotePathLength_<%=cid%>).toString().replaceAll("\\\\", "/");
+						if(map_<%=cid %>.get(key_<%=cid %>) != null && !map_<%=cid %>.get(key_<%=cid %>).isEmpty()) {
+							remoteStrippedPath_<%=cid%> = remoteStrippedPath_<%=cid%>.replaceAll(java.nio.file.Paths.get(fileInfo.path).getFileName().toString(), map_<%=cid %>.get(key_<%=cid %>));
+						}
+						localFilePath_<%=cid%> = java.nio.file.Paths.get(<%=localdir%>).resolve(remoteStrippedPath_<%=cid%>).toString().replaceAll("\\\\", "/");
+						dbfs_<%=cid%>.copyToLocal(fileInfo.path, localFilePath_<%=cid%>, <%=overwrite%>);
+					}
+				}
+				success_<%=cid%> = true;
+	    	} else { // Is a file so we'll download it directly
+	    		dbfs_<%=cid%>.copyToLocal(remoteDirStatus_<%=cid%>.path, localFilePath_<%=cid%>, <%=overwrite%>);
+	    		success_<%=cid%> = true;
+	    	}
+	    	
+	    	if(success_<%=cid%>) {
+				//msg_<%=cid%>.add("file: " + path_<%=cid%>.toString() + ", size: " + fileutil_<%=cid%>.getSize() + " bytes download successfully");
+				//nb_success_<%=cid%>++;
+			}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			/*
+	    	for(org.apache.hadoop.fs.Path path_<%=cid%> : filePathList_<%=cid%>){
+				if(path_<%=cid%>.getName().matches(finalMask_<%=cid%>)){
+					
+					try{
+						FileUtil_<%=cid%> fileutil_<%=cid%> = new FileUtil_<%=cid%>();
+						 fileutil_<%=cid%>.copyToLocal(fs_<%=cid%>, path_<%=cid%>, new java.io.File(localFilePath_<%=cid%>),
+    						<%=overwrite%>, false, <%=includeSubDir%>);
+					}catch(java.io.IOException e){
+						<%
+  							if(dieOnError){
+						%>
+            			throw(e);
+						<%
+							}else{
+						%>
+						System.err.print(e.getMessage());
+						<%	
+								if(isLog4jEnabled) {
+								%>
+						log.error("<%=cid%> - " +e.getMessage());
+								<%	
+								}
+							} 
+						%>
+					}
+					nb_file_<%=cid%>++;
+				}
+			}
+			*/
+		}
+	}
