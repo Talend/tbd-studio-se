@@ -51,6 +51,8 @@ public class ModuleBean implements IVariable {
 
     public static final String ATTR_EXCLUSIONS = "exclusions"; //$NON-NLS-1$
 
+    public static final String ATTR_EXTENSION = "extension"; //$NON-NLS-1$
+
     public static final String ATTR_EXCLUDE_DEPENDENCIES = "excludeDependencies"; //$NON-NLS-1$
 
     public static final String ATTR_DESCRIPTION = "description"; //$NON-NLS-1$
@@ -80,6 +82,8 @@ public class ModuleBean implements IVariable {
     private String artifactId;
 
     private String version;
+
+    private String extension;
 
     private String classifier;
 
@@ -253,6 +257,14 @@ public class ModuleBean implements IVariable {
         this.exclusions = exclusions;
     }
 
+    public String getExtension() {
+        return this.extension;
+    }
+
+    public void setExtension(String extension) {
+        this.extension = extension;
+    }
+
     public String getUseLatest() {
         return this.useLatest;
     }
@@ -301,6 +313,9 @@ public class ModuleBean implements IVariable {
             break;
         case ATTR_EXCLUSIONS:
             value = getExclusions();
+            break;
+        case ATTR_EXTENSION:
+            value = getExtension();
             break;
         case ATTR_GROUP_ID:
             value = getGroupId();

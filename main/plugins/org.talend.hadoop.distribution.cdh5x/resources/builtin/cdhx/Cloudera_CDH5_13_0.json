@@ -989,10 +989,6 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
-        "id" : "DYNAMIC_Cloudera_CDH5_13_0_apache_curator_2_6_0_pom",
-        "tagName" : "library"
-      }, {
-        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH5_13_0_apache_log4j_extras_1_2_17_jar",
         "tagName" : "library"
       }, {
@@ -10861,14 +10857,6 @@
       "id" : "DYNAMIC_Cloudera_CDH5_13_0_aopalliance_repackaged_2_4_0_b34_jar",
       "mvn_uri" : "mvn:org.glassfish.hk2.external/aopalliance-repackaged/2.4.0-b34",
       "name" : "aopalliance-repackaged-2.4.0-b34.jar",
-      "tagName" : "libraryNeeded"
-    }, {
-      "childNodes" : [ ],
-      "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
-      "excludeDependencies" : "true",
-      "id" : "DYNAMIC_Cloudera_CDH5_13_0_apache_curator_2_6_0_pom",
-      "mvn_uri" : "mvn:org.apache.curator/apache-curator/2.6.0",
-      "name" : "apache-curator-2.6.0.pom",
       "tagName" : "libraryNeeded"
     }, {
       "childNodes" : [ ],
