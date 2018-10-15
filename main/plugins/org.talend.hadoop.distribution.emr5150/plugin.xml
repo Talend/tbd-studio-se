@@ -1767,18 +1767,6 @@
 		
 		<libraryNeeded 
 			context="plugin:org.talend.hadoop.distribution.emr5150" 
-			id="jackson-core-asl-1.9.13.jar" 
-			name="jackson-core-asl-1.9.13.jar"
-			mvn_uri="mvn:org.codehaus.jackson/jackson-core-asl/1.9.13"/>
-		
-		<libraryNeeded 
-			context="plugin:org.talend.hadoop.distribution.emr5150" 
-			id="jackson-mapper-asl-1.9.13.jar" 
-			name="jackson-mapper-asl-1.9.13.jar"
-			mvn_uri="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.13"/>
-		
-		<libraryNeeded 
-			context="plugin:org.talend.hadoop.distribution.emr5150" 
 			id="velocity-1.7.jar" 
 			name="velocity-1.7.jar"
 			mvn_uri="mvn:org.apache.velocity/velocity/1.7"/>
@@ -2311,12 +2299,10 @@
 			<library id="ivy-2.4.0.jar"/>
 			<library id="jackson-annotations-2.6.7.jar"/>
 			<library id="jackson-core-2.6.7.jar"/>
-			<library id="jackson-core-asl-1.9.13.jar"/>
 			<library id="jackson-core-asl-1.9.14-TALEND.jar"/>
 			<library id="jackson-databind-2.6.7.1.jar"/>
 			<library id="jackson-dataformat-cbor-2.6.7"/>
 			<library id="jackson-jaxrs-1.9.13.jar"/>
-			<library id="jackson-mapper-asl-1.9.13.jar"/>
 			<library id="jackson-mapper-asl-1.9.14-TALEND.jar"/>
 			<library id="jackson-module-paranamer-2.7.9.jar"/>
 			<library id="jackson-module-scala_2.11-2.6.7.1.jar"/>
