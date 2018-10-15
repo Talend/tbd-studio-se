@@ -28,11 +28,11 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
 import org.talend.commons.ui.swt.advanced.dataeditor.HadoopPropertiesTableView;
 import org.talend.commons.ui.swt.formtools.Form;
 import org.talend.commons.ui.swt.formtools.LabelledText;
 import org.talend.commons.ui.swt.formtools.UtilsButton;
-import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.model.properties.ConnectionItem;
 import org.talend.core.model.utils.ContextParameterUtils;
 import org.talend.designer.hdfsbrowse.manager.HadoopParameterValidator;
@@ -67,10 +67,6 @@ public class HCatalogForm extends AbstractHCatalogForm {
 
     private LabelledText databaseText;
 
-    private LabelledText metastoreText;
-
-    private final String METASTORE_DEFAULT = "thrift://localhost:9083";
-
     private List<HashMap<String, Object>> properties;
 
     private HadoopPropertiesTableView propertiesTableView;
@@ -91,12 +87,6 @@ public class HCatalogForm extends AbstractHCatalogForm {
             passwordText.setText(getConnection().getPassword());
         }
         databaseText.setText(getConnection().getDatabase());
-        String metastoreValue = (String) getConnection().getProperties().get(ConnParameterKeys.CONN_PARA_KEY_HCATALOG_METASTORE);
-        if (StringUtils.isNotBlank(metastoreValue)) {
-            metastoreText.setText(metastoreValue);
-        } else {
-            metastoreText.setText(METASTORE_DEFAULT);
-        }
         if (enableKerberos) {
             krbPrincipalText.setText(getConnection().getKrbPrincipal());
             krbRealmText.setText(getConnection().getKrbRealm());
@@ -145,7 +135,6 @@ public class HCatalogForm extends AbstractHCatalogForm {
             passwordText.setReadOnly(readOnly);
         }
         databaseText.setReadOnly(readOnly);
-        metastoreText.setReadOnly(readOnly);
         if (enableKerberos) {
             krbPrincipalText.setReadOnly(readOnly);
             krbRealmText.setReadOnly(readOnly);
@@ -165,7 +154,6 @@ public class HCatalogForm extends AbstractHCatalogForm {
             passwordText.setEditable(isEditable);
         }
         databaseText.setEditable(isEditable);
-        metastoreText.setEditable(isEditable);
         if (enableKerberos) {
             krbPrincipalText.setEditable(isEditable);
             krbRealmText.setEditable(isEditable);
@@ -283,7 +271,8 @@ public class HCatalogForm extends AbstractHCatalogForm {
         databaseComposite.setContent(databaseGroupComposite);
 
         databaseText = new LabelledText(databaseGroupComposite, Messages.getString("HCatalogForm.text.database"), 1); //$NON-NLS-1$
-        metastoreText = new LabelledText(databaseGroupComposite, Messages.getString("HCatalogForm.text.metastore"), 1); //$NON-NLS-1$
+        Label spaceLabel = new Label(databaseGroupComposite, SWT.NONE);
+        spaceLabel.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
     }
 
     private void addCheckFields() {
@@ -350,16 +339,6 @@ public class HCatalogForm extends AbstractHCatalogForm {
             @Override
             public void modifyText(final ModifyEvent e) {
                 getConnection().setDatabase(databaseText.getText());
-                checkFieldsValue();
-            }
-        });
-
-        metastoreText.addModifyListener(new ModifyListener() {
-
-            @Override
-            public void modifyText(ModifyEvent e) {
-                // getConnection().setHcatMetastore(metastoreText.getText());
-                getConnection().getProperties().put(ConnParameterKeys.CONN_PARA_KEY_HCATALOG_METASTORE, metastoreText.getText());
                 checkFieldsValue();
             }
         });
@@ -535,10 +514,6 @@ public class HCatalogForm extends AbstractHCatalogForm {
             return false;
         }
 
-        if (!validText(metastoreText.getText())) {
-            updateStatus(IStatus.ERROR, Messages.getString("HCatalogForm.check.metastore")); //$NON-NLS-1$
-        }
-
         checkConnectionBtn.setEnabled(true);
 
         if (!hcatalogSettingIsValide) {
@@ -613,7 +588,6 @@ public class HCatalogForm extends AbstractHCatalogForm {
 
     private void collectDatabaseParameters(boolean isUse) {
         addContextParams(EHadoopParamName.HCatalogDatabase, isUse);
-        addContextParams(EHadoopParamName.HcatalogMetastore, isUse);
     }
 
     private void collectSeparatorParameters(boolean isUse) {
