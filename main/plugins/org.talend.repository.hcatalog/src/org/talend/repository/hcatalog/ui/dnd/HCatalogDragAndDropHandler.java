@@ -206,10 +206,7 @@ public class HCatalogDragAndDropHandler extends AbstractDragAndDropServiceHandle
         } else if (EHCatalogRepositoryToComponent.REMOTE_FOLDER.getRepositoryValue().equals(value)) {
             return getRepositoryValueOfStringType(connection,
                     StringUtils.trimToEmpty(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_DEPLOY_BLOB)));
-        } else if (EHCatalogRepositoryToComponent.THRIFT_SERVER.getRepositoryValue().equals(value)) {
-            return getRepositoryValueOfStringType(connection, StringUtils
-                    .trimToEmpty((String) connection.getProperties().get(ConnParameterKeys.CONN_PARA_KEY_HCATALOG_METASTORE)));
-        } 
+        }
 
         return null;
     }
@@ -350,12 +347,6 @@ public class HCatalogDragAndDropHandler extends AbstractDragAndDropServiceHandle
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setMaprTDuration(value);
-            }
-        } else if (EHCatalogRepositoryToComponent.THRIFT_SERVER.getRepositoryValue().equals(param.getRepositoryValue())) {
-            String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
-            if (value != null) {
-                // connection.setHcatMetastore(value);
-                connection.getProperties().put(ConnParameterKeys.CONN_PARA_KEY_HCATALOG_METASTORE, value);
             }
         }
     }
