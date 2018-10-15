@@ -111,6 +111,7 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
             String groupId = moduleBean.getGroupId();
             String artifactId = moduleBean.getArtifactId();
             String scope = moduleBean.getScope();
+            String extension = moduleBean.getExtension();
             String classifier = moduleBean.getClassifier();
             String moduleVersion = moduleBean.getVersion();
             String useStudioRepository = moduleBean.getUseStudioRepository();
@@ -121,6 +122,9 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
             }
             boolean useLatest = Boolean.valueOf(moduleBean.getUseLatest());
 
+            if (StringUtils.isBlank(extension)) {
+                extension = null;
+            }
             List<ExclusionBean> exclusionBeans = moduleBean.getExclusions();
             List<ExclusionNode> exclusions = null;
             if (exclusionBeans != null && !exclusionBeans.isEmpty()) {
@@ -131,6 +135,7 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
             baseNode.setGroupId(groupId);
             baseNode.setArtifactId(artifactId);
             baseNode.setClassifier(classifier);
+            baseNode.setExtension(extension);
             baseNode.setScope(scope);
             if (useLatest) {
                 moduleVersion = dependencyResolver.getLatestVersion(groupId, artifactId, null, null, monitor);
@@ -335,6 +340,7 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
                 moduleBean.getExcludeDependencies());
         String useStudioRepository = (String) DynamicDistributionUtils.calculate(templateBean,
                 moduleBean.getUseStudioRepository());
+        String extension = (String) DynamicDistributionUtils.calculate(templateBean, moduleBean.getExtension());
 
         moduleBean.setArtifactId(artifactId);
         moduleBean.setBundleID(bundleID);
@@ -354,6 +360,7 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
         moduleBean.setUseLatest(useLatest);
         moduleBean.setExcludeDependencies(excludeDependencies);
         moduleBean.setUseStudioRepository(useStudioRepository);
+        moduleBean.setExtension(extension);
 
         setResolved(true);
     }

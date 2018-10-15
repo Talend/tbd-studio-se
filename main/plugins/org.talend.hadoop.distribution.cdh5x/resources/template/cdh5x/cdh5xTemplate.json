@@ -522,6 +522,13 @@
 			"classifier": "",
 			"description": "",
 			"exclusions": [
+                {
+                    "groupId": "org.apache.curator",
+                    "artifactId": "apache-curator",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
 				{
 					"groupId": "eigenbase",
 					"artifactId": "eigenbase-properties",

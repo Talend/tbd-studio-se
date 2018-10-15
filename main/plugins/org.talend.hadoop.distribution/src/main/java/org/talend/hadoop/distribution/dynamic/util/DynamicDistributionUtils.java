@@ -196,10 +196,14 @@ public class DynamicDistributionUtils {
 
     public static String getMvnUrl(DependencyNode node, String repositoryUri) {
         String classifier = node.getClassifier();
-        if (StringUtils.isEmpty(classifier)) {
+        if (StringUtils.isBlank(classifier)) {
             classifier = null;
         }
-        return MavenUrlHelper.generateMvnUrl(repositoryUri, node.getGroupId(), node.getArtifactId(), node.getVersion(), null,
+        String extension = node.getExtension();
+        if (StringUtils.isBlank(extension)) {
+            extension = null;
+        }
+        return MavenUrlHelper.generateMvnUrl(repositoryUri, node.getGroupId(), node.getArtifactId(), node.getVersion(), extension,
                 classifier);
     }
 
