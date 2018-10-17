@@ -18,6 +18,7 @@ import java.util.Set;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
+import org.talend.commons.CommonsPlugin;
 import org.talend.commons.exception.CommonExceptionHandler;
 import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
@@ -51,16 +52,18 @@ public abstract class AbstractModuleGroup {
     }
 
     protected void checkRuntimeId(String id) throws Exception {
-        if (StringUtils.isEmpty(id)) {
-            String message = this.getClass().getSimpleName()
-                    + ": Can't find runtime id, please make sure that your generated json is not broken and your template has already been configured correctly.";
-            Level level = LogManager.getRootLogger().getLevel();
-            if (level != null) {
-                if (level.getSyslogEquivalent() < Level.INFO_INT) {
-                    System.out.println(message);
+        if (CommonsPlugin.isDebugMode()) {
+            if (StringUtils.isBlank(id)) {
+                String message = this.getClass().getSimpleName()
+                        + ": Can't find runtime id, please make sure that your generated json is not broken and your template has already been configured correctly.";
+                Level level = LogManager.getRootLogger().getLevel();
+                if (level != null) {
+                    if (level.getSyslogEquivalent() < Level.INFO_INT) {
+                        System.out.println(message);
+                    }
                 }
+                CommonExceptionHandler.warn(message);
             }
-            CommonExceptionHandler.warn(message);
         }
     }
 }
