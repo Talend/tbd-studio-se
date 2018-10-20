@@ -226,7 +226,7 @@
             <library id="scala-logging_2.11-3.7.2.jar"/>
             <library id="jackson-core-2.9.5.jar"/>
             <library id="jackson-databind-2.9.5.jar"/>
-            <library id="jackson-annotations-2.9.5.jar"/>
+            <library id="jackson-annotations-2.9.0.jar"/>
             <library id="jopt-simple-5.0.4.jar"/>
             <library id="kafka-clients-1.1.0.jar"/>
             <library id="lz4-java-1.4.jar"/>
