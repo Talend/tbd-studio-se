@@ -415,9 +415,9 @@
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1" 
-            id="jackson-annotations-2.9.5.jar" 
-            name="jackson-annotations-2.9.5.jar"
-			mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.5">
+            id="jackson-annotations-2.9.0.jar" 
+            name="jackson-annotations-2.9.0.jar"
+			mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.0">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1" 

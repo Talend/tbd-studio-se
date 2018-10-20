@@ -141,9 +141,9 @@
             mvn_uri="mvn:com.fasterxml.jackson.core/jackson-databind/2.9.5"/>
         <libraryNeeded
             context="plugin:org.talend.libraries"
-            id="jackson-annotations-2.9.5.jar"
-            name="jackson-annotations-2.9.5.jar" 
-            mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.5"/>
+            id="jackson-annotations-2.9.0.jar"
+            name="jackson-annotations-2.9.0.jar" 
+            mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.0"/>
             
         <!-- Kafka 0.8.2.0 client group (tKafkaOutput) -->
         <libraryNeededGroup
