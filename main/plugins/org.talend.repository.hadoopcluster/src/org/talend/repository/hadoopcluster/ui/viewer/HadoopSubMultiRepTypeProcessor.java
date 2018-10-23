@@ -28,6 +28,7 @@ import org.talend.core.model.properties.Item;
 import org.talend.core.model.repository.ERepositoryObjectType;
 import org.talend.core.model.repository.IRepositoryViewObject;
 import org.talend.hadoop.distribution.component.SparkComponent;
+import org.talend.hadoop.distribution.constants.custom.ICustomDistribution;
 import org.talend.hadoop.distribution.helper.HadoopDistributionsHelper;
 import org.talend.hadoop.distribution.model.DistributionBean;
 import org.talend.hadoop.distribution.model.DistributionVersion;
@@ -158,7 +159,13 @@ public class HadoopSubMultiRepTypeProcessor extends MultiTypesProcessor {
                         }
                         Object useYarn = attributesMap.get(USEYARN);
                         if (useYarn != null && Boolean.valueOf(useYarn.toString())) {
-                            validated = (validated && distributionVersion.hadoopComponent.isHadoop2());
+                            // as for CustomDistribution.doSupportSparkYarnClientMode = true and
+                            // CustomDistribution.doSupportSparkYarnClusterMode = true
+                            if (distributionVersion.hadoopComponent.getDistribution() == ICustomDistribution.DISTRIBUTION_NAME) {
+                                validated = true;
+                            } else {
+                                validated = (validated && distributionVersion.hadoopComponent.isHadoop2());
+                            }
                             if (!validated) {
                                 return false;
                             }
