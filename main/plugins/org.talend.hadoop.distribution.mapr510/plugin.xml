@@ -253,14 +253,7 @@
             name="aws-java-sdk-1.7.4.jar"
             mvn_uri="mvn:org.talend.libraries/aws-java-sdk-1.7.4/6.0.0">
         </libraryNeeded>
-        
-        <libraryNeeded
-            context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
-            id="spark-streaming-kinesis-asl-assembly_2.10-1.5.2.jar"
-            name="spark-streaming-kinesis-asl-assembly_2.10-1.5.2.jar"
-            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-1.7.4/6.2.0">
-        </libraryNeeded>
-        
+                
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
             id="spark-streaming-kafka_2.10-1.5.2.jar"

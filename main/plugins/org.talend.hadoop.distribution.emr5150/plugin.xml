@@ -419,8 +419,8 @@
         <!-- Third parties libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="avro-mapred-1.8.1-hadoop2.jar"
-            name="avro-mapred-1.8.1-hadoop2.jar"
+            id="avro-mapred-1.8.1.jar"
+            name="avro-mapred-1.8.1.jar"
             mvn_uri="mvn:org.apache.avro/avro-mapred/1.8.1"/>
 
         <libraryNeeded
@@ -2133,7 +2133,7 @@
                 id="SQOOP-LIB-EMR_5_15_0_LATEST"
                 name="SQOOP-LIB-EMR_5_15_0_LATEST">
             <library id="sqoop-1.4.7.jar"/>
-            <library id="avro-mapred-1.8.1-hadoop2.jar"/>
+            <library id="avro-mapred-1.8.1.jar"/>
             <library id="commons-lang3-3.5.jar"/>
             <library id="avro-1.8.1.jar"/>
         </libraryNeededGroup>

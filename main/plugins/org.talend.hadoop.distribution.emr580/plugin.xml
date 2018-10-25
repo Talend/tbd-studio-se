@@ -321,7 +321,7 @@
             context="plugin:org.talend.libraries.s3"
             id="aws-java-sdk-1.11.160.jar"
             name="aws-java-sdk-1.11.160.jar"
-            mvn_uri="mvn:com.amazonaws/aws-java-sdk-core/1.11.160"/>
+            mvn_uri="mvn:com.amazonaws/aws-java-sdk/1.11.160"/>
             
         <libraryNeeded
             context="plugin:org.talend.libraries.s3"
