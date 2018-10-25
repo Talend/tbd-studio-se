@@ -888,8 +888,8 @@
          "id":"stax-api-1.0.1.jar",
          "type":"STANDARD",
          "context":"{properties.context}",
-         "jarName":"stax-api-1.0.1.jar.jar",
-         "mvnUri":"mvn:org.talend.libraries/stax-api-1.0.1.jar/6.0.0",
+         "jarName":"stax-api-1.0.1.jar",
+         "mvnUri":"mvn:org.talend.libraries/stax-api-1.0.1/6.0.0",
          "useStudioRepository":"true",
          "description":""
       },
