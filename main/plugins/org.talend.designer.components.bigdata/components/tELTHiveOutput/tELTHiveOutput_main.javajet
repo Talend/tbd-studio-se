@@ -33,6 +33,8 @@ imports="
     boolean isCustom = false;
     INode connectionInformationNode = node;
     boolean isTableNameVariable="true".equals(ElementParameterParser.getValue(node, "__IS_TABLE_NAME_VARIABLE__"));
+    
+    final String studioVersion = org.talend.commons.utils.VersionUtils.getDisplayVersion();
 
     %>
     String select_query_<%=cid %> = null;
@@ -922,26 +924,20 @@ if(originalHadoopUsername_<%=cid%>!=null) {
         }
         <%
     } else if (hiveDistrib.isQuboleDistribution()) {
-			if (isLog4jEnabled) {
 %>
-				log.info("<%=cid%> - query added: " + queries_<%=cid%>);
-				log.info("<%=cid%> - queries sent to cluster, waiting for execution result ...");
+		org.talend.bigdata.launcher.qubole.QuboleHiveClient.Job job_<%=cid%> =
+			new org.talend.bigdata.launcher.qubole.QuboleHiveClient.Job(queries_<%=cid%>);
+		job_<%=cid%>.setJobName("<%=cid%>");
+		job_<%=cid%>.setUserAgent(routines.system.Constant.getUserAgent("<%=studioVersion%>"));
 <%
-			}
-            if (quboleClusterLabel != null) {
+		if (quboleClusterLabel != null) {
 %>
-           		String execution_result_<%=cid%> = instance_<%=cid%>.execute(queries_<%=cid%>, <%=quboleClusterLabel%>).getResults();
+		job_<%=cid%>.setClusterLabel(<%=quboleClusterLabel%>);
 <%
-            } else {
+		}
 %>
-				String execution_result_<%=cid%> = instance_<%=cid%>.execute(queries_<%=cid%>).getResults();
+		String execution_result_<%=cid%> = instance_<%=cid%>.execute(job_<%=cid%>);
 <%
-			}
-			if (isLog4jEnabled) {
-			%>
-				log.info("<%=cid%> - execution finished.");
-			<%
-			}
     } else { // dataproc
         %>
             int exitCode_<%=cid%> = instance_<%=cid%>.executeJob();
