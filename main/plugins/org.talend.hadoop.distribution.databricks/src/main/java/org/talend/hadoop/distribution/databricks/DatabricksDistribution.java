@@ -220,5 +220,10 @@ public class DatabricksDistribution extends AbstractDistribution implements Spar
     public boolean doSupportBackpressure() {
         return true;
     }
+    
+    @Override
+    public boolean doSupportS3() {
+        return true;
+    }
 
 }
