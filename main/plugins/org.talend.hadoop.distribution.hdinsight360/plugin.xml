@@ -228,7 +228,6 @@
                 description="Spark libraries for HDInsight 3.6.0"
                 id="SPARK-LIB-HD_INSIGHT_3_6_0"
                 name="SPARK-LIB-HD_INSIGHT_3_6_0">
-             <library id="talend-bigdata-launcher-1.2.0-20170410" />
              <library id="spark-core_2.11-2.1.0.2.6.0.2-76" />
              <library id="avro-1.7.7" />
              <library id="commons-lang3-3.5" />
@@ -385,7 +384,6 @@
                 description="HD Insight common libraries"
                 id="HD_INSIGHT_36_COMMON_LIBRARIES"
                 name="HD_INSIGHT_36_COMMON_LIBRARIES">
-            <library id="talend-bigdata-launcher-1.2.0-20170410" />
             <library id="cxf-api-2.7.7.jar" />
             <library id="cxf-rt-bindings-xml-2.7.7.jar" />
             <library id="cxf-rt-core-2.7.7.jar" />
