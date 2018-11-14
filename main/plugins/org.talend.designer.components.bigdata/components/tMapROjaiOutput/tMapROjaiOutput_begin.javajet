@@ -227,6 +227,8 @@ imports="
 					            rowType = "INT";
 					        }else if ("Character".equals(typeToGenerate)){
 					        	rowType = "STRING";
+					        }else if ("List".equals(typeToGenerate)){
+					        	rowType = "ARRAY";
 					        }
 					        else{
 					            rowType = typeToGenerate.toUpperCase();
