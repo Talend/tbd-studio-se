@@ -100,6 +100,8 @@ imports="
 					            rowData = conn.getName()+"."+column.getLabel()+".toString()";
 					        }else if ("Document".equals(typeToGenerate)){
 					        	rowData = "com.mapr.db.MapRDB.newDocument(org.json.XML.toJSONObject(" + conn.getName()+"."+column.getLabel()+".getDocument().asXML()).getJSONObject(\"xml\").toString())";
+					        }else if ("byte[]".equals(typeToGenerate)){
+					            rowData = "new String(" + conn.getName()+"."+column.getLabel() + ", \"utf8\")";
 					        }
 					        else{
 					            rowData = conn.getName()+"."+column.getLabel();
