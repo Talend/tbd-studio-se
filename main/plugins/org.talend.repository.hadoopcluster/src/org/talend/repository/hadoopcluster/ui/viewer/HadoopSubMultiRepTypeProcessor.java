@@ -161,7 +161,8 @@ public class HadoopSubMultiRepTypeProcessor extends MultiTypesProcessor {
                         if (useYarn != null && Boolean.valueOf(useYarn.toString())) {
                             // as for CustomDistribution.doSupportSparkYarnClientMode = true and
                             // CustomDistribution.doSupportSparkYarnClusterMode = true
-                            if (distributionVersion.hadoopComponent.getDistribution() == ICustomDistribution.DISTRIBUTION_NAME) {
+                            if (ICustomDistribution.DISTRIBUTION_NAME
+                                    .equals(distributionVersion.hadoopComponent.getDistribution())) {
                                 validated = true;
                             } else {
                                 validated = (validated && distributionVersion.hadoopComponent.isHadoop2());
