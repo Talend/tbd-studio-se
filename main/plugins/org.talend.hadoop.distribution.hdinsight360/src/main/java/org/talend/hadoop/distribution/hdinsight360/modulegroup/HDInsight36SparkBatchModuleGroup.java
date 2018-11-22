@@ -31,7 +31,7 @@ public class HDInsight36SparkBatchModuleGroup {
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         hs.add(new DistributionModuleGroup(HDInsight36Constant.SPARK_MODULE_GROUP.getModuleName(), false, condition));
-        hs.add(new DistributionModuleGroup(HDInsight36Constant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), false, condition));
+        hs.add(new DistributionModuleGroup(HDInsight36Constant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), true, condition));
         hs.add(new DistributionModuleGroup(HDInsight36Constant.HDINSIGHT36COMMON_MODULE_GROUP.getModuleName(), false, condition));
         return hs;
     }
