@@ -61,6 +61,11 @@ public class TextJacksonJsonProvider extends JacksonJsonProvider {
             if (MediaType.TEXT_PLAIN_TYPE.equals(mediaType)) {
                 return true;
             }
+            // after HDP3.0,will include charset => Content-Type: text/plain;charset=utf-8
+            MediaType typeWithCharset = MediaType.TEXT_PLAIN_TYPE.withCharset("utf-8");
+            if (typeWithCharset.equals(mediaType)) {
+                return true;
+            }
         }
         return super.hasMatchingMediaType(mediaType);
     }
