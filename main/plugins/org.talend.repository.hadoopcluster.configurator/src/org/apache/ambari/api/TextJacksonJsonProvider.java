@@ -58,12 +58,10 @@ public class TextJacksonJsonProvider extends JacksonJsonProvider {
     
     protected boolean hasMatchingMediaType(MediaType mediaType) {
         if (mediaType != null) {
-            if (MediaType.TEXT_PLAIN_TYPE.equals(mediaType)) {
-                return true;
-            }
+            // need to compare type and subtype
             // after HDP3.0,will include charset => Content-Type: text/plain;charset=utf-8
-            MediaType typeWithCharset = MediaType.TEXT_PLAIN_TYPE.withCharset("utf-8");
-            if (typeWithCharset.equals(mediaType)) {
+            if (MediaType.TEXT_PLAIN_TYPE.getType().equalsIgnoreCase(mediaType.getType())
+                    && MediaType.TEXT_PLAIN_TYPE.getSubtype().equalsIgnoreCase(mediaType.getSubtype())) {
                 return true;
             }
         }
