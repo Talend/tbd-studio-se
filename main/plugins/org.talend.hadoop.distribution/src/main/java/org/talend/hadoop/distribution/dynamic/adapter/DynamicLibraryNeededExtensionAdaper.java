@@ -12,11 +12,17 @@
 // ============================================================================
 package org.talend.hadoop.distribution.dynamic.adapter;
 
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.talend.commons.utils.threading.TalendCustomThreadPoolExecutor;
 import org.talend.core.runtime.dynamic.DynamicFactory;
 import org.talend.core.runtime.dynamic.IDynamicConfiguration;
 import org.talend.core.runtime.dynamic.IDynamicExtension;
@@ -27,6 +33,7 @@ import org.talend.hadoop.distribution.dynamic.bean.ModuleGroupBean;
 import org.talend.hadoop.distribution.dynamic.bean.TemplateBean;
 import org.talend.hadoop.distribution.dynamic.resolver.IDependencyResolver;
 import org.talend.hadoop.distribution.dynamic.util.DynamicDistributionUtils;
+import org.talend.hadoop.distribution.i18n.Messages;
 
 /**
  * DOC cmeng  class global comment. Detailled comment
@@ -43,13 +50,36 @@ public class DynamicLibraryNeededExtensionAdaper extends DynamicExtensionAdapter
 
     private Map<String, DynamicModuleGroupAdapter> moduleGroupBeanAdapterMap;
 
+    private TalendCustomThreadPoolExecutor threadPool = null;
+
+    private boolean enableMultiThread = false;
+
     public DynamicLibraryNeededExtensionAdaper(TemplateBean templateBean, DynamicConfiguration configuration,
             IDependencyResolver dependencyResolver, Map<String, DynamicModuleAdapter> moduleBeanAdapterMap,
             Map<String, DynamicModuleGroupAdapter> moduleGroupBeanAdapterMap) {
         super(templateBean, configuration);
         this.dependencyResolver = dependencyResolver;
-        this.moduleBeanAdapterMap = moduleBeanAdapterMap;
-        this.moduleGroupBeanAdapterMap = moduleGroupBeanAdapterMap;
+        this.moduleBeanAdapterMap = Collections.synchronizedMap(moduleBeanAdapterMap);
+        this.moduleGroupBeanAdapterMap = Collections.synchronizedMap(moduleGroupBeanAdapterMap);
+    }
+
+    public void enableMultiThread(boolean enable) {
+        this.enableMultiThread = enable;
+    }
+
+    public boolean isEnableMultiThread() {
+        return this.enableMultiThread;
+    }
+
+    public TalendCustomThreadPoolExecutor getThreadPool() {
+        if (threadPool != null) {
+            return threadPool;
+        }
+        synchronized (this) {
+            threadPool = new TalendCustomThreadPoolExecutor(50, 100, 0, TimeUnit.MILLISECONDS,
+                    new ArrayBlockingQueue<Runnable>(200), new ThreadPoolExecutor.CallerRunsPolicy());
+        }
+        return threadPool;
     }
 
     public IDynamicExtension adapt(IDynamicMonitor monitor) throws Exception {
@@ -71,17 +101,76 @@ public class DynamicLibraryNeededExtensionAdaper extends DynamicExtensionAdapter
         List<ModuleBean> modules = templateBean.getModules();
 
         if (modules != null) {
-            Set<String> registedModules = new LinkedHashSet<>();
-            for (ModuleBean moduleBean : modules) {
-                DynamicDistributionUtils.checkCancelOrNot(monitor);
-                DynamicModuleAdapter dynamicModuleAdapter = new DynamicModuleAdapter(templateBean, configuration, moduleBean,
-                        dependencyResolver, registedModules);
-                List<IDynamicConfiguration> librariesNeeded = dynamicModuleAdapter.adapt(monitor);
-                if (librariesNeeded != null && !librariesNeeded.isEmpty()) {
-                    addDynamicConfigurations(libNeededExtension, librariesNeeded);
+            try {
+                Exception ex[] = new Exception[1];
+                Set<String> registedModules = Collections.synchronizedSet(new LinkedHashSet<>());
+                for (ModuleBean moduleBean : modules) {
+                    DynamicDistributionUtils.checkCancelOrNot(monitor);
+                    Runnable runnable = new Runnable() {
+
+                        @Override
+                        public void run() {
+                            try {
+                                DynamicModuleAdapter dynamicModuleAdapter = new DynamicModuleAdapter(templateBean, configuration,
+                                        moduleBean, dependencyResolver, registedModules);
+                                List<IDynamicConfiguration> librariesNeeded = dynamicModuleAdapter.adapt(monitor,
+                                        isEnableMultiThread());
+                                if (librariesNeeded != null && !librariesNeeded.isEmpty()) {
+                                    addDynamicConfigurations(libNeededExtension, librariesNeeded);
+                                }
+                                String beanId = moduleBean.getId();
+                                moduleBeanAdapterMap.put(beanId, dynamicModuleAdapter);
+                            } catch (Exception e) {
+                                ex[0] = e;
+                            }
+                        }
+                    };
+                    if (isEnableMultiThread()) {
+                        getThreadPool().execute(runnable);
+                        continue;
+                    } else {
+                        runnable.run();
+                        if (ex[0] != null) {
+                            throw ex[0];
+                        }
+                    }
                 }
-                String beanId = moduleBean.getId();
-                moduleBeanAdapterMap.put(beanId, dynamicModuleAdapter);
+                if (isEnableMultiThread()) {
+                    int totalTasks = (int) getThreadPool().getTaskCount();
+                    if (monitor != null) {
+                        monitor.beginTask(
+                                Messages.getString("DynamicLibraryNeededExtensionAdaper.monitor.waitAllFinish", totalTasks), //$NON-NLS-1$
+                                totalTasks);
+                    }
+                    int completed = 0;
+                    while (true) {
+                        int activeCount = getThreadPool().getActiveCount();
+                        if (activeCount <= 0) {
+                            break;
+                        }
+                        if (monitor != null) {
+                            int newCompleted = totalTasks - activeCount;
+                            int newWorked = newCompleted - completed;
+                            completed = newCompleted;
+                            monitor.setTaskName(Messages.getString("DynamicLibraryNeededExtensionAdaper.monitor.waitAllFinish", //$NON-NLS-1$
+                                    activeCount));
+                            monitor.worked(newWorked);
+                        }
+                        Thread.sleep(100);
+                        DynamicDistributionUtils.checkCancelOrNot(monitor);
+                        if (ex[0] != null) {
+                            throw ex[0];
+                        }
+                    }
+                }
+            } finally {
+                if (isEnableMultiThread()) {
+                    if (monitor != null) {
+                        monitor.beginTask("", IProgressMonitor.UNKNOWN); //$NON-NLS-1$
+                    }
+                    getThreadPool().clearThreads();
+                    threadPool = null;
+                }
             }
         }
 
@@ -104,8 +193,10 @@ public class DynamicLibraryNeededExtensionAdaper extends DynamicExtensionAdapter
     }
 
     private void addDynamicConfigurations(IDynamicExtension extension, List<IDynamicConfiguration> configurations) {
-        for (IDynamicConfiguration configuration : configurations) {
-            extension.addConfiguration(configuration);
+        synchronized (extension) {
+            for (IDynamicConfiguration configuration : configurations) {
+                extension.addConfiguration(configuration);
+            }
         }
     }
 

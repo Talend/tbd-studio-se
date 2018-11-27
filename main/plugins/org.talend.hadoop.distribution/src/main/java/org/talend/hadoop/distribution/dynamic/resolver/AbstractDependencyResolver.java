@@ -48,7 +48,8 @@ public abstract class AbstractDependencyResolver implements IDependencyResolver 
     abstract protected List<Pattern> getDistributionPatterns();
 
     @Override
-    public DependencyNode collectDependencies(DependencyNode baseNode, IDynamicMonitor monitor) throws Exception {
+    public DependencyNode collectDependencies(DependencyNode baseNode, IDynamicMonitor monitor, boolean multiThread)
+            throws Exception {
         String version = baseNode.getVersion();
         if (StringUtils.isEmpty(version)) {
             String groupId = baseNode.getGroupId();
@@ -73,7 +74,7 @@ public abstract class AbstractDependencyResolver implements IDependencyResolver 
         }
         String localRepositoryPath = getLocalRepositoryPath();
         DependencyNode node = DynamicDistributionAetherUtils.collectDepencencies(remoteRepositoryUrl, username, password,
-                localRepositoryPath, baseNode, monitor);
+                localRepositoryPath, baseNode, monitor, multiThread);
         return node;
     }
 

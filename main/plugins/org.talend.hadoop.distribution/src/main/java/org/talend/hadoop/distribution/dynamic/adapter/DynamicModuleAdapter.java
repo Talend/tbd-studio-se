@@ -90,7 +90,7 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
         this.existingModuleMap = HadoopDistributionPlugin.getInstance().getExistingModuleMap();
     }
 
-    public List<IDynamicConfiguration> adapt(IDynamicMonitor monitor) throws Exception {
+    public List<IDynamicConfiguration> adapt(IDynamicMonitor monitor, boolean multiThread) throws Exception {
         DynamicDistributionUtils.checkCancelOrNot(monitor);
         resolve();
         if (monitor != null) {
@@ -170,7 +170,7 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
                 baseNode.setExclusions(exclusions);
             }
             try {
-                dependencyNode = dependencyResolver.collectDependencies(baseNode, monitor);
+                dependencyNode = dependencyResolver.collectDependencies(baseNode, monitor, multiThread);
                 librariesNeeded = createLibrariesNeeded(dependencyNode, distribution, hadoopVersion, id, moduleBean, runtimeIds,
                         templateBean);
             } catch (VersionNotFoundException e) {
