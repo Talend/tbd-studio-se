@@ -252,7 +252,7 @@ public class HDInsight36Distribution extends AbstractDistribution implements Spa
 
     @Override
     public boolean doSupportSparkYarnClientMode() {
-        return true;
+        return false;
     }
 
     @Override
