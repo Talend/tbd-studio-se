@@ -136,7 +136,7 @@ public class DynamicLibraryNeededExtensionAdaper extends DynamicExtensionAdapter
                     }
                 }
                 if (isEnableMultiThread()) {
-                    int totalTasks = (int) getThreadPool().getTaskCount();
+                    int totalTasks = modules.size();
                     if (monitor != null) {
                         monitor.beginTask(
                                 Messages.getString("DynamicLibraryNeededExtensionAdaper.monitor.waitAllFinish", totalTasks), //$NON-NLS-1$
@@ -149,14 +149,14 @@ public class DynamicLibraryNeededExtensionAdaper extends DynamicExtensionAdapter
                             break;
                         }
                         if (monitor != null) {
-                            int newCompleted = totalTasks - activeCount;
+                            int newCompleted = (int) getThreadPool().getCompletedTaskCount();
                             int newWorked = newCompleted - completed;
                             completed = newCompleted;
                             monitor.setTaskName(Messages.getString("DynamicLibraryNeededExtensionAdaper.monitor.waitAllFinish", //$NON-NLS-1$
                                     activeCount));
                             monitor.worked(newWorked);
                         }
-                        Thread.sleep(100);
+                        Thread.sleep(200);
                         DynamicDistributionUtils.checkCancelOrNot(monitor);
                         if (ex[0] != null) {
                             throw ex[0];
