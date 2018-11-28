@@ -804,7 +804,7 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5120" id="spark-hive-exec_2.11-2.2.0.cloudera1.jar" name="spark-hive-exec_2.11-2.2.0.cloudera1.jar" mvn_uri="mvn:org.talend.libraries/spark-hive-exec_2.11-2.2.0.cloudera1/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5120" id="spark-hive_2.11-2.2.0.cloudera1.jar" name="spark-hive_2.11-2.2.0.cloudera1.jar" mvn_uri="mvn:org.talend.libraries/spark-hive_2.11-2.2.0.cloudera1/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5120" id="spark-launcher_2.11-2.2.0.cloudera1.jar" name="spark-launcher_2.11-2.2.0.cloudera1.jar" mvn_uri="mvn:org.talend.libraries/spark-launcher_2.11-2.2.0.cloudera1/6.0.0"/>
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5120" id="spark-mllib-local_2.11-2.2.0.cloudera1.jar" name="spark-mllib-local_2.11-2.2.0.cloudera1.jar" mvn_uri="mvn:org.talend.libraries/spark-mllib-local_2.11-2.2.0.cloudera1/6.0.0"/>
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5120" id="spark-mllib-local_2.11-2.2.0.cloudera1.jar" name="spark-mllib-local_2.11-2.2.0.cloudera1.jar" mvn_uri="mvn:org.apache.spark/spark-mllib-local_2.11/2.2.0.cloudera1"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5120" id="spark-mllib_2.11-2.2.0.cloudera1.jar" name="spark-mllib_2.11-2.2.0.cloudera1.jar" mvn_uri="mvn:org.talend.libraries/spark-mllib_2.11-2.2.0.cloudera1/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5120" id="spark-network-common_2.11-2.2.0.cloudera1.jar" name="spark-network-common_2.11-2.2.0.cloudera1.jar" mvn_uri="mvn:org.talend.libraries/spark-network-common_2.11-2.2.0.cloudera1/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5120" id="spark-network-shuffle_2.11-2.2.0.cloudera1.jar" name="spark-network-shuffle_2.11-2.2.0.cloudera1.jar" mvn_uri="mvn:org.talend.libraries/spark-network-shuffle_2.11-2.2.0.cloudera1/6.0.0"/>
@@ -1257,8 +1257,8 @@
 			<library id="spark-hive-exec_2.11-2.2.0.cloudera1.jar"/>
 			<library id="spark-hive_2.11-2.2.0.cloudera1.jar"/>
 			<library id="spark-launcher_2.11-2.2.0.cloudera1.jar"/>
-			<library id="spark-mllib-local_2.11-2.2.0.cloudera1.jar"/>
 			<library id="spark-mllib_2.11-2.2.0.cloudera1.jar"/>
+			<library id="spark-mllib-local_2.11-2.2.0.cloudera1.jar"/>
 			<library id="spark-network-common_2.11-2.2.0.cloudera1.jar"/>
 			<library id="spark-network-shuffle_2.11-2.2.0.cloudera1.jar"/>
 			<library id="spark-repl_2.11-2.2.0.cloudera1.jar"/>
