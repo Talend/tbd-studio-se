@@ -47,7 +47,7 @@
         <module>main/features/org.talend.tos.bigdata.feature</module>
         <module>main/features/org.talend.tos.bigdata.libraries.feature</module>
         <module>main/features/org.talend.hadoop.distribution.feature</module>
-        <module>main/plugins/org.talend.hadoop.distribution</module>
+        <!--<module>main/plugins/org.talend.hadoop.distribution</module>-->
         <module>main/plugins/org.talend.hadoop.distribution.apache100</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh4mr1</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh4mr2</module>
@@ -63,7 +63,7 @@
         <module>main/plugins/org.talend.hadoop.distribution.cdh5120</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh5x</module>
         <module>main/plugins/org.talend.hadoop.distribution.altus10</module>
-        <module>main/plugins/org.talend.hadoop.distribution.custom</module>
+        <!--<module>main/plugins/org.talend.hadoop.distribution.custom</module>-->
         <module>main/plugins/org.talend.hadoop.distribution.databricks</module>
         <module>main/plugins/org.talend.hadoop.distribution.dataproc11</module>
         <module>main/plugins/org.talend.hadoop.distribution.emr103</module>
