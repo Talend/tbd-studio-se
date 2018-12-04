@@ -1,6 +1,9 @@
 package org.talend.hadoop.distribution.databricks.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.talend.hadoop.distribution.EHadoopVersion;
@@ -17,7 +20,7 @@ public class DatabricksDistributionTest {
         HadoopComponent distribution = new DatabricksDistribution();
         assertNotNull(distribution.getDistributionName());
         assertNotNull(distribution.getVersionName(null));
-        assertFalse(distribution.doSupportS3());
+        assertTrue(distribution.doSupportS3());
         assertEquals(DatabricksDistribution.DISTRIBUTION_NAME, distribution.getDistribution());
         assertEquals(DatabricksDistribution.VERSION, distribution.getVersion());
         assertEquals(EHadoopVersion.HADOOP_2, distribution.getHadoopVersion());

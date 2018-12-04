@@ -21,6 +21,7 @@ public class HiveMetadataHelper4HortonworksTest extends AbstractDistributionTest
     
     // An exhaustive list of all the versions Studio has been supported, some old versions may have been removed.
     private static final String[] VERSIONS_NON_DYNAMIC = new String[] {
+        "Hortonworks Data Platform V2.6.0.3-8 [Built in]",
         "Hortonworks Data Platform V2.6.0",
         "Hortonworks Data Platform V2.5.0",
         "Hortonworks Data Platform V2.4.0",
