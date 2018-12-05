@@ -225,5 +225,10 @@ public class DatabricksDistribution extends AbstractDistribution implements Spar
     public boolean doSupportS3() {
         return true;
     }
+    
+    @Override
+    public boolean useOldAWSAPI() {
+        return false;
+    }
 
 }
