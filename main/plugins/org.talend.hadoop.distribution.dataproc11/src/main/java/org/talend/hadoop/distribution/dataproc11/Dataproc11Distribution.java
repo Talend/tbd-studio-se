@@ -330,4 +330,9 @@ public class Dataproc11Distribution extends AbstractDistribution implements HDFS
     public boolean doSupportAvroDeflateProperties(){
         return true;
     }
+
+    @Override
+    public boolean isHiveWizardCheckEnabled() {
+        return true;
+    }
 }

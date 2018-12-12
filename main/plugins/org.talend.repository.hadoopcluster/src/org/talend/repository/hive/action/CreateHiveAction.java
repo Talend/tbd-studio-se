@@ -10,6 +10,7 @@ import org.talend.core.hadoop.version.custom.ECustomVersionGroup;
 import org.talend.core.model.metadata.builder.connection.Connection;
 import org.talend.core.model.metadata.builder.connection.DatabaseConnection;
 import org.talend.core.runtime.hd.IHDistributionVersion;
+import org.talend.hadoop.distribution.constants.dataproc.IGoogleDataprocDistribution;
 import org.talend.hadoop.distribution.constants.hdinsight.IMicrosoftHDInsightDistribution;
 import org.talend.hadoop.distribution.helper.HadoopDistributionsHelper;
 import org.talend.hadoop.distribution.model.DistributionBean;
@@ -61,7 +62,8 @@ public class CreateHiveAction extends CreateHadoopDBNodeAction {
             if (hiveDistribution != null) {
                 IHDistributionVersion hdVersion = hiveDistribution.getHDVersion(hcConnection.getDfVersion(), false);
                 if (hdVersion != null
-                        && !IMicrosoftHDInsightDistribution.DISTRIBUTION_NAME.equals(hdVersion.getDistribution().getName())) {
+                        && !IMicrosoftHDInsightDistribution.DISTRIBUTION_NAME.equals(hdVersion.getDistribution().getName())
+                        && !IGoogleDataprocDistribution.DISTRIBUTION_NAME.equals(hdVersion.getDistribution().getName())) {
                     // found and not HD Insight, don't hide
                     return false;
                 }
