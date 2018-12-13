@@ -33,6 +33,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 public class DynamicTemplateAdapter extends AbstractDynamicAdapter {
 
+    private final static String PROPERTY_DISABLE_MULTI_THTREAD = "talend.studio.dynamicDistribution.template.disableMultiThread"; //$NON-NLS-1$
+
     private DynamicDistribConfigAdapter distriConfigAdapter;
 
     private IDynamicPlugin dynamicPlugin;
@@ -74,6 +76,7 @@ public class DynamicTemplateAdapter extends AbstractDynamicAdapter {
 
         DynamicLibraryNeededExtensionAdaper libNeededExtAdapter = new DynamicLibraryNeededExtensionAdaper(templateBean,
                 configuration, dependencyResolver, moduleBeanAdapterMap, moduleGroupBeanAdapterMap);
+        libNeededExtAdapter.enableMultiThread(!Boolean.getBoolean(PROPERTY_DISABLE_MULTI_THTREAD));
         IDynamicExtension dynamicLibNeededExtension = libNeededExtAdapter.adapt(monitor);
         dynamicPlugin.addExtension(dynamicLibNeededExtension);
 

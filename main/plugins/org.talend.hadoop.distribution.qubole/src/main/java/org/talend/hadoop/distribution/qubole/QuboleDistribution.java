@@ -316,4 +316,9 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
     public boolean doSupportBackpressure() {
         return false;
     }
+    
+    @Override
+    public boolean useOldAWSAPI() {
+        return false;
+    }
 }

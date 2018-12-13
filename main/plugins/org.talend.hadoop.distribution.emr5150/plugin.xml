@@ -419,8 +419,8 @@
         <!-- Third parties libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="avro-mapred-1.8.1-hadoop2.jar"
-            name="avro-mapred-1.8.1-hadoop2.jar"
+            id="avro-mapred-1.8.1.jar"
+            name="avro-mapred-1.8.1.jar"
             mvn_uri="mvn:org.apache.avro/avro-mapred/1.8.1"/>
 
         <libraryNeeded
@@ -1393,9 +1393,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="commons-beanutils-1.7.0.jar"
-            name="commons-beanutils-1.7.0.jar"
-            mvn_uri="mvn:commons-beanutils/commons-beanutils/1.7.0"/>
+            id="commons-beanutils-1.8.3.jar"
+            name="commons-beanutils-1.8.3.jar"
+            mvn_uri="mvn:commons-beanutils/commons-beanutils/1.8.3"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -1767,18 +1767,6 @@
 		
 		<libraryNeeded 
 			context="plugin:org.talend.hadoop.distribution.emr5150" 
-			id="jackson-core-asl-1.9.13.jar" 
-			name="jackson-core-asl-1.9.13.jar"
-			mvn_uri="mvn:org.codehaus.jackson/jackson-core-asl/1.9.13"/>
-		
-		<libraryNeeded 
-			context="plugin:org.talend.hadoop.distribution.emr5150" 
-			id="jackson-mapper-asl-1.9.13.jar" 
-			name="jackson-mapper-asl-1.9.13.jar"
-			mvn_uri="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.13"/>
-		
-		<libraryNeeded 
-			context="plugin:org.talend.hadoop.distribution.emr5150" 
 			id="velocity-1.7.jar" 
 			name="velocity-1.7.jar"
 			mvn_uri="mvn:org.apache.velocity/velocity/1.7"/>
@@ -2145,7 +2133,7 @@
                 id="SQOOP-LIB-EMR_5_15_0_LATEST"
                 name="SQOOP-LIB-EMR_5_15_0_LATEST">
             <library id="sqoop-1.4.7.jar"/>
-            <library id="avro-mapred-1.8.1-hadoop2.jar"/>
+            <library id="avro-mapred-1.8.1.jar"/>
             <library id="commons-lang3-3.5.jar"/>
             <library id="avro-1.8.1.jar"/>
         </libraryNeededGroup>
@@ -2251,7 +2239,7 @@
 			<library id="calcite-linq4j-1.2.0-incubating.jar"/>
 			<library id="chill-java-0.8.4.jar"/>
 			<library id="chill_2.11-0.8.4.jar"/>
-			<library id="commons-beanutils-1.7.0.jar"/>
+			<library id="commons-beanutils-1.8.3.jar"/>
 			<library id="commons-beanutils-core-1.8.0.jar"/>
 			<library id="commons-cli-1.2.jar"/>
 			<library id="commons-codec-1.10.jar"/>
@@ -2311,12 +2299,10 @@
 			<library id="ivy-2.4.0.jar"/>
 			<library id="jackson-annotations-2.6.7.jar"/>
 			<library id="jackson-core-2.6.7.jar"/>
-			<library id="jackson-core-asl-1.9.13.jar"/>
 			<library id="jackson-core-asl-1.9.14-TALEND.jar"/>
 			<library id="jackson-databind-2.6.7.1.jar"/>
 			<library id="jackson-dataformat-cbor-2.6.7"/>
 			<library id="jackson-jaxrs-1.9.13.jar"/>
-			<library id="jackson-mapper-asl-1.9.13.jar"/>
 			<library id="jackson-mapper-asl-1.9.14-TALEND.jar"/>
 			<library id="jackson-module-paranamer-2.7.9.jar"/>
 			<library id="jackson-module-scala_2.11-2.6.7.1.jar"/>

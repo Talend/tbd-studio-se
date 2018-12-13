@@ -613,7 +613,7 @@
             context="plugin:org.talend.hadoop.distribution.cdh5100"
             id="spark-streaming-kafka_2.10-1.6.0-cdh5.10.1"
             name="spark-streaming-kafka_2.10-1.6.0-cdh5.10.1.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka_2.10-1.6.0-cdh5.10.1.jar/6.1.0">
+            mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka_2.10-1.6.0-cdh5.10.1/6.1.0">
         </libraryNeeded>
 
         <libraryNeeded

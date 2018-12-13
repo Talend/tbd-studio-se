@@ -59,18 +59,6 @@
             NUM_ROW="8" SHOW_IF="USE_EXISTING_CONNECTION == 'false'" />
 
 		<PARAMETER
-			NAME="DB_VERSION"
-			FIELD="CLOSED_LIST"
-			NUM_ROW="10"
-			REPOSITORY_VALUE="DB_VERSION"
-			SHOW_IF="USE_EXISTING_CONNECTION == 'false'"
-		>
-			<ITEMS DEFAULT="HDB_1_0">
-				<ITEM NAME="HDB_1_0" VALUE="HDB_1_0" />
-			</ITEMS>
-		</PARAMETER>
-
-		<PARAMETER
 			NAME="HOST"
 			FIELD="TEXT"
 			NUM_ROW="15"
@@ -349,7 +337,7 @@
 
 	<CODEGENERATION>
 		<IMPORTS>
-			<IMPORT NAME="SAPHANA_1_0"	MODULE="ngdbc.jar" MVN="mvn:org.talend.libraries/ngdbc/6.0.0"  UrlPath="platform:/plugin/org.talend.libraries.jdbc.saphana/lib/ngdbc.jar" REQUIRED_IF="(DB_VERSION == 'HDB_1_0') AND (USE_EXISTING_CONNECTION == 'false')" />
+			<IMPORT NAME="SAPHANA_1_0"	MODULE="ngdbc.jar" MVN="mvn:org.talend.libraries/ngdbc/6.0.0"  UrlPath="platform:/plugin/org.talend.libraries.jdbc.saphana/lib/ngdbc.jar" REQUIRED="true" />
 		</IMPORTS>
 	</CODEGENERATION>
 

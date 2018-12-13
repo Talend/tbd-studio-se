@@ -40,17 +40,7 @@
 			REPOSITORY_VALUE="DATABASE:SAPHANA"
 			NUM_ROW="10"
 		/>
-		<PARAMETER
-			NAME="DB_VERSION"
-			FIELD="CLOSED_LIST"
-			NUM_ROW="20"
-			REPOSITORY_VALUE="DB_VERSION"
-		>
-			<ITEMS DEFAULT="HDB_1_0">
-				<ITEM NAME="HDB_1_0" VALUE="HDB_1_0" />
-			</ITEMS>
-		</PARAMETER>
-
+		
 		<PARAMETER
 			NAME="HOST"
 			FIELD="TEXT"
@@ -147,7 +137,7 @@
 
 	<CODEGENERATION>
 		<IMPORTS>
-			<IMPORT NAME="SAPHANA_1_0"  MODULE="ngdbc.jar" MVN="mvn:org.talend.libraries/ngdbc/6.0.0"  UrlPath="platform:/plugin/org.talend.libraries.jdbc.saphana/lib/ngdbc.jar" REQUIRED_IF="(DB_VERSION == 'HDB_1_0')" />
+			<IMPORT NAME="SAPHANA_1_0"  MODULE="ngdbc.jar" MVN="mvn:org.talend.libraries/ngdbc/6.0.0"  UrlPath="platform:/plugin/org.talend.libraries.jdbc.saphana/lib/ngdbc.jar" REQUIRED="true" />
 		</IMPORTS>
 	</CODEGENERATION>
 

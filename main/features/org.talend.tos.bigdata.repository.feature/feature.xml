@@ -2,7 +2,7 @@
 <feature
       id="org.talend.tos.bigdata.repository.feature"
       label="Repository_feature"
-      version="7.1.1.qualifier">
+      version="7.2.1.qualifier">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -887,12 +887,6 @@
 
    <plugin
          id="org.talend.libraries.jexcel"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.talend.libraries.jdbc.jtds"
          download-size="0"
          install-size="0"
          version="0.0.0"/>

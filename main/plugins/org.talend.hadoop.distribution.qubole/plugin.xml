@@ -3,7 +3,7 @@
 <plugin>
     <extension point="org.talend.core.runtime.librariesNeeded">
         
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.qubole" id="talend-bigdata-launcher-qubole-1.2.7-20180914.jar" name="talend-bigdata-launcher-qubole-1.2.7-20180914.jar" mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-qubole-1.2.7-20180914/7.1.1" />
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.qubole" id="talend-bigdata-launcher-qubole-1.2.7-20181108.jar" name="talend-bigdata-launcher-qubole-1.2.7-20181108.jar" mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-qubole-1.2.7-20181108/7.1.1" />
 
 		<!-- Qubole SDK 0.9.1 and it's dependencies -->
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.qubole" id="qds-sdk-java-0.9.1.jar" name="qds-sdk-java-0.9.1.jar" mvn_uri="mvn:com.qubole.qds-sdk-java/qds-sdk-java/0.9.1" />
@@ -329,7 +329,7 @@
 
         <!-- Big data launcher group -->
         <libraryNeededGroup description="qubole big data launcher and its dependencies" id="BIGDATA-LAUNCHER-LIB-QUBOLE" name="BIGDATA-LAUNCHER-LIB-QUBOLE ">
-            <library id="talend-bigdata-launcher-qubole-1.2.7-20180914.jar" />
+            <library id="talend-bigdata-launcher-qubole-1.2.7-20181108.jar" />
             <library id="qds-sdk-java-0.9.1.jar" />
             <library id="javax.ws.rs-api-2.0.jar" />
             <library id="jersey-client-2.5.jar" />
@@ -444,7 +444,7 @@
         <!-- Spark Streaming 2.2 MRREQUIRED group -->
         <libraryNeededGroup
            description="Spark Streaming 2.2 MRREQUIRED libraries for Qubole" id="SPARK-STREAMING-LIB-MRREQUIRED-QUBOLE" name="SPARK-STREAMING-LIB-QUBOLE">
-           	 <library id="talend-bigdata-launcher-qubole-1.2.7-20180914.jar" />
+           	 <library id="talend-bigdata-launcher-qubole-1.2.7-20181108.jar" />
         </libraryNeededGroup>
 
     </extension>
