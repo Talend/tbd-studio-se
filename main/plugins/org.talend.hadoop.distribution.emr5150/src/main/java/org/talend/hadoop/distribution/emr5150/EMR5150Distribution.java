@@ -510,4 +510,9 @@ public class EMR5150Distribution extends AbstractDistribution implements HBaseCo
     public short orderingWeight() {
         return 10;
     }
+
+    @Override
+    public boolean useS3AProperties() {
+        return true;
+    }
 }
