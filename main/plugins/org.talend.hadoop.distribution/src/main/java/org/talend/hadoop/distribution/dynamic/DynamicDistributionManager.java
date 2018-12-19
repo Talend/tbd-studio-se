@@ -548,6 +548,27 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
         return this.isLoaded;
     }
 
+    @Override
+    public void load(IProgressMonitor monitor, boolean resetModulesCache) throws Exception {
+        if (isLoaded()) {
+            return;
+        }
+        synchronized (this) {
+            if (isLoaded()) {
+                return;
+            }
+            IDynamicMonitor dynMonitor = new AbsDynamicProgressMonitor(monitor) {
+
+                @Override
+                public void writeMessage(String message) {
+                    // nothing to do
+                }
+            };
+            registerAll(dynMonitor, resetModulesCache);
+            setLoaded(true);
+        }
+    }
+
     public void setLoaded(boolean isLoaded) {
         this.isLoaded = isLoaded;
     }

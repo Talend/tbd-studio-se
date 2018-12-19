@@ -21,6 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
 import org.osgi.framework.FrameworkUtil;
@@ -31,8 +32,6 @@ import org.osgi.framework.ServiceReference;
 import org.talend.commons.exception.CommonExceptionHandler;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.core.runtime.hd.IDistributionsManager;
-import org.talend.designer.maven.aether.DummyDynamicMonitor;
-import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionFactory;
 import org.talend.hadoop.distribution.component.HadoopComponent;
@@ -55,16 +54,7 @@ public final class DistributionsManager implements IDistributionsManager {
 
     static {
         try {
-
-            DynamicDistributionManager dynamicDistributionManager = DynamicDistributionManager.getInstance();
-            try {
-                IDynamicMonitor monitor = new DummyDynamicMonitor();
-                dynamicDistributionManager.registerAll(monitor, true);
-                dynamicDistributionManager.setLoaded(true);
-            } catch (Throwable e) {
-                ExceptionHandler.process(e);
-            }
-
+            DynamicDistributionManager.getInstance().load(new NullProgressMonitor(), true);
         } catch (Exception e) {
             ExceptionHandler.process(e);
         }
