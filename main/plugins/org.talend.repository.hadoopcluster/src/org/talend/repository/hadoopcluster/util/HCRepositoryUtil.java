@@ -890,7 +890,65 @@ public class HCRepositoryUtil {
         if (defaultJobResultFolder != null) {
             connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_JOB_RESULT_FOLDER, defaultJobResultFolder);
         }
+        String quboleAPIToken = hiveVersion.getDefaultConfig(distribution, EHadoopProperties.QUBOLE_API_TOKEN.getName());
+        if (quboleAPIToken != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_API_TOKEN, quboleAPIToken);
+        }
+        String quboleCluster = hiveVersion.getDefaultConfig(distribution, EHadoopProperties.QUBOLE_CLUSTER.getName());
+        if (quboleCluster != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_CLUSTER, quboleCluster);
+        }
+        String quboleClusterLabel = hiveVersion.getDefaultConfig(distribution, EHadoopProperties.QUBOLE_CLUSTER_LABEL.getName());
+        if (quboleClusterLabel != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_CLUSTER_LABEL, quboleClusterLabel);
+        }
+        String quboleEndpoint = hiveVersion.getDefaultConfig(distribution, EHadoopProperties.QUBOLE_ENDPOINT.getName());
+        if (quboleEndpoint != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_ENDPOINT, quboleEndpoint);
+        }
+        String quboleEndpointURL = hiveVersion.getDefaultConfig(distribution, EHadoopProperties.QUBOLE_ENDPOINT_URL.getName());
+        if (quboleEndpointURL != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_ENDPOINT_URL, quboleEndpointURL);
+        }
+        String quboleAccessKey = hiveVersion.getDefaultConfig(distribution, EHadoopProperties.QUBOLE_S3_ACCESS_KEY.getName());
+        if (quboleAccessKey != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_ACCESS_KEY, quboleAccessKey);
+        }
+        String quboleSecretKey = hiveVersion.getDefaultConfig(distribution, EHadoopProperties.QUBOLE_S3_SECRET_KEY.getName());
+        if (quboleSecretKey != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_SECRET_KEY, quboleSecretKey);
+        }
+        String quboleBucketName = hiveVersion.getDefaultConfig(distribution, EHadoopProperties.QUBOLE_S3_BUCKET_NAME.getName());
+        if (quboleBucketName != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_BUCKET_NAME, quboleBucketName);
+        }
+        String quboleBucketKey = hiveVersion.getDefaultConfig(distribution, EHadoopProperties.QUBOLE_S3_BUCKET_KEY.getName());
+        if (quboleBucketKey != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_BUCKET_KEY, quboleBucketKey);
+        }
+        String quboleRegion = hiveVersion.getDefaultConfig(distribution, EHadoopProperties.QUBOLE_S3_REGION.getName());
+        if (quboleRegion != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_REGION, quboleRegion);
+        }
 
+        String dataBricksEndpoint = hiveVersion.getDefaultConfig(distribution, EHadoopProperties.DATABRICKS_ENDPOINT.getName());
+        if (dataBricksEndpoint != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_ENDPOINT, dataBricksEndpoint);
+        }
+        String dataBricksClusterID = hiveVersion.getDefaultConfig(distribution,
+                EHadoopProperties.DATABRICKS_CLUSTER_ID.getName());
+        if (dataBricksClusterID != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLUSTER_ID, dataBricksClusterID);
+        }
+        String databricksToken = hiveVersion.getDefaultConfig(distribution, EHadoopProperties.DATABRICKS_TOKEN.getName());
+        if (databricksToken != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_TOKEN, databricksToken);
+        }
+        String databricksDBFSDepFolder = hiveVersion.getDefaultConfig(distribution,
+                EHadoopProperties.DATABRICKS_DBFS_DEP_FOLDER.getName());
+        if (databricksDBFSDepFolder != null) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_DBFS_DEP_FOLDER, databricksDBFSDepFolder);
+        }
     }
 
     public static String getRepositoryTypeOfHadoopSubItem(Item item) {

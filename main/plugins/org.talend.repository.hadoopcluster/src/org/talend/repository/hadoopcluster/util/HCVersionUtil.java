@@ -21,8 +21,11 @@ import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.util.EMap;
+import org.talend.commons.ui.runtime.exception.ExceptionHandler;
 import org.talend.core.hadoop.version.EHadoopDistributions;
 import org.talend.core.hadoop.version.custom.ECustomVersionGroup;
+import org.talend.hadoop.distribution.component.HadoopComponent;
+import org.talend.hadoop.distribution.helper.HadoopDistributionsHelper;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
 import org.talend.repository.model.hadoopcluster.HadoopSubConnection;
 
@@ -143,6 +146,38 @@ public class HCVersionUtil {
         if (connection != null) {
             if (EHadoopDistributions.GOOGLE_CLOUD_DATAPROC.getName().equals(connection.getDistribution())) {
                 return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isQubole(HadoopClusterConnection connection) {
+        if (connection != null) {
+            HadoopComponent hadoopComponent;
+            try {
+                hadoopComponent = HadoopDistributionsHelper.buildDistribution(connection.getDistribution(),
+                        connection.getDfVersion());
+                if (hadoopComponent != null && hadoopComponent.isQuboleDistribution()) {
+                    return true;
+                }
+            } catch (Exception e) {
+                ExceptionHandler.process(e);
+            }
+        }
+        return false;
+    }
+
+    public static boolean isDataBricks(HadoopClusterConnection connection) {
+        if (connection != null) {
+            HadoopComponent hadoopComponent;
+            try {
+                hadoopComponent = HadoopDistributionsHelper.buildDistribution(connection.getDistribution(),
+                        connection.getDfVersion());
+                if (hadoopComponent != null && hadoopComponent.isDatabricksDistribution()) {
+                    return true;
+                }
+            } catch (Exception e) {
+                ExceptionHandler.process(e);
             }
         }
         return false;

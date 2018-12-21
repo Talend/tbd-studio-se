@@ -228,6 +228,12 @@ public class HadoopClusterForm extends AbstractHadoopForm<HadoopClusterConnectio
         } else if (HCVersionUtil.isGoogleDataproc(getConnection())) {
             hcInfoForm = new GoogleDataprocInfoForm(this, connectionItem, existingNamesArray, creation, hadoopDistribution,
                     hadoopVersion);
+        } else if (HCVersionUtil.isQubole(getConnection())) {
+            hcInfoForm = new QuboleInfoForm(this, connectionItem, existingNamesArray, creation, hadoopDistribution,
+                    hadoopVersion);
+        } else if (HCVersionUtil.isDataBricks(getConnection())) {
+            hcInfoForm = new DataBricksInfoForm(this, connectionItem, existingNamesArray, creation, hadoopDistribution,
+                    hadoopVersion);
         } else {
             hcInfoForm = new StandardHCInfoForm(this, connectionItem, existingNamesArray, creation, hadoopDistribution,
                     hadoopVersion);

@@ -39,6 +39,7 @@ import org.talend.core.model.utils.IComponentName;
 import org.talend.core.repository.RepositoryComponentSetting;
 import org.talend.designer.hdfsbrowse.util.EHDFSRepositoryToComponent;
 import org.talend.repository.hadoopcluster.node.model.HadoopClusterRepositoryNodeType;
+import org.talend.repository.hadoopcluster.ui.QuboleInfoForm;
 import org.talend.repository.hadoopcluster.util.HCVersionUtil;
 import org.talend.repository.model.RepositoryNode;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
@@ -219,7 +220,51 @@ public class HadoopClusterDragAndDropHandler extends AbstractDragAndDropServiceH
         } else if (EHDFSRepositoryToComponent.PATH_TO_GOOGLE_CREDENTIALS.getRepositoryValue().equals(value)) {
             return getRepositoryValueOfStringType(hcConnection,
                     hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_PATH_TO_GOOGLE_CREDENTIALS));
+        } else if (EHDFSRepositoryToComponent.QUBOLE_API_TOKEN.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_API_TOKEN));
+        } else if (EHDFSRepositoryToComponent.QUBOLE_CLUSTER.getRepositoryValue().equals(value)) {
+            return Boolean.valueOf(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_CLUSTER));
+        } else if (EHDFSRepositoryToComponent.QUBOLE_CLUSTER_LABEL.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_CLUSTER_LABEL));
+        } else if (EHDFSRepositoryToComponent.QUBOLE_ENDPOINT.getRepositoryValue().equals(value)) {
+            return Boolean.valueOf(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_ENDPOINT));
+        } else if (EHDFSRepositoryToComponent.QUBOLE_ENDPOINT_URL.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_ENDPOINT_URL));
+        } else if (EHDFSRepositoryToComponent.QUBOLE_S3_ACCESS_KEY.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_ACCESS_KEY));
+        } else if (EHDFSRepositoryToComponent.QUBOLE_S3_SECRET_KEY.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_SECRET_KEY));
+        } else if (EHDFSRepositoryToComponent.QUBOLE_S3_BUCKET_NAME.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_BUCKET_NAME));
+        } else if (EHDFSRepositoryToComponent.QUBOLE_S3_BUCKET_KEY.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_BUCKET_KEY));
+        } else if (EHDFSRepositoryToComponent.QUBOLE_S3_REGION.getRepositoryValue().equals(value)) {
+            String regionValue = hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_REGION);
+            if (QuboleInfoForm.QUBOLE_S3_REGION_DEFAULT.equalsIgnoreCase(regionValue)) {
+                return regionValue;
+            }
+            return getRepositoryValueOfStringType(hcConnection, regionValue);
+        } else if (EHDFSRepositoryToComponent.DATABRICKS_ENDPOINT.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_ENDPOINT));
+        } else if (EHDFSRepositoryToComponent.DATABRICKS_CLUSTER_ID.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLUSTER_ID));
+        } else if (EHDFSRepositoryToComponent.DATABRICKS_TOKEN.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_TOKEN));
+        } else if (EHDFSRepositoryToComponent.DATABRICKS_DBFS_DEP_FOLDER.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_DBFS_DEP_FOLDER));
         }
+
         return null;
     }
 
