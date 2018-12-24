@@ -227,7 +227,7 @@ public class QuboleInfoForm extends AbstractHadoopForm<HadoopClusterConnection> 
         return regionList;
     }
 
-    private String getRegionValue(int index) {
+    public static String getRegionValue(int index) {
         String value = QUBOLE_S3_REGION_DEFAULT;
         if (index == 0) {
             value = QUBOLE_S3_REGION_DEFAULT;
@@ -560,6 +560,7 @@ public class QuboleInfoForm extends AbstractHadoopForm<HadoopClusterConnection> 
                 getRegionValue(regionCombo.getSelectionIndex()));
 
         useSparkPropertiesBtn.setSelection(getConnection().isUseSparkProperties());
+        updateForm();
         updateStatus(IStatus.OK, EMPTY_STRING);
     }
 
