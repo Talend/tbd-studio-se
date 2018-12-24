@@ -185,7 +185,7 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                         break;
                     case QuboleAPIToken:
                         ConnectionContextHelper.createParameters(varList, paramName,
-                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_API_TOKEN));
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_API_TOKEN), JavaTypesManager.PASSWORD);
                         break;  
                     case QuboleCluster:
                         ConnectionContextHelper.createParameters(varList, paramName,
@@ -209,7 +209,7 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                         break;
                     case QuboleS3SecretKey:
                         ConnectionContextHelper.createParameters(varList, paramName,
-                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_SECRET_KEY));
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_SECRET_KEY), JavaTypesManager.PASSWORD);
                         break;
                     case QuboleS3BucketName:
                         ConnectionContextHelper.createParameters(varList, paramName,
@@ -233,7 +233,7 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                         break;    
                     case DataBricksToken:
                         ConnectionContextHelper.createParameters(varList, paramName,
-                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_TOKEN));
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_TOKEN), JavaTypesManager.PASSWORD);
                         break;    
                     case DataBricksDBFSDepFolder:
                         ConnectionContextHelper.createParameters(varList, paramName,
