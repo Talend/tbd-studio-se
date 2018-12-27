@@ -861,9 +861,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="jackson-module-scala_2.11-2.6.7.1.jar"
-            name="jackson-module-scala_2.11-2.6.7.1.jar"
-            mvn_uri="mvn:com.fasterxml.jackson.module/jackson-module-scala_2.11/2.6.7.1"/>
+            id="jackson-module-scala_2.11-2.9.4.jar"
+            name="jackson-module-scala_2.11-2.9.4.jar"
+            mvn_uri="mvn:com.fasterxml.jackson.module/jackson-module-scala_2.11/2.9.4"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -879,21 +879,21 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="jackson-module-paranamer-2.7.9.jar"
-            name="jackson-module-paranamer-2.7.9.jar"
-            mvn_uri="mvn:com.fasterxml.jackson.module/jackson-module-paranamer/2.7.9"/>
+            id="jackson-module-paranamer-2.9.4.jar"
+            name="jackson-module-paranamer-2.9.4.jar"
+            mvn_uri="mvn:com.fasterxml.jackson.module/jackson-module-paranamer/2.9.4"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="jackson-core-2.6.7.jar"
-            name="jackson-core-2.6.7.jar"
-            mvn_uri="mvn:com.fasterxml.jackson.core/jackson-core/2.6.7"/>
+            id="jackson-core-2.9.4.jar"
+            name="jackson-core-2.9.4.jar"
+            mvn_uri="mvn:com.fasterxml.jackson.core/jackson-core/2.9.4"/>
             
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="jackson-databind-2.6.7.1.jar"
-            name="jackson-databind-2.6.7.1.jar"
-            mvn_uri="mvn:com.fasterxml.jackson.core/jackson-databind/2.6.7.1"/>
+            id="jackson-databind-2.9.4.jar"
+            name="jackson-databind-2.9.4.jar"
+            mvn_uri="mvn:com.fasterxml.jackson.core/jackson-databind/2.9.4"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -960,13 +960,7 @@
             id="stringtemplate-3.2.1.jar"
             name="stringtemplate-3.2.1.jar"
             mvn_uri="mvn:org.antlr/stringtemplate/3.2.1"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="jackson-databind-2.6.7.1.jar"
-            name="jackson-databind-2.6.7.1.jar"
-            mvn_uri="mvn:com.fasterxml.jackson.core/jackson-databind/2.6.7.1"/>
-
+        
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
             id="scala-library-2.11.8.jar"
@@ -1375,15 +1369,15 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="jackson-annotations-2.6.7.jar"
-            name="jackson-annotations-2.6.7.jar"
-            mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.6.7"/>
+            id="jackson-annotations-2.9.4.jar"
+            name="jackson-annotations-2.9.4.jar"
+            mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.4"/>
             
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="jackson-dataformat-cbor-2.6.7.jar"
-            name="jackson-dataformat-cbor-2.6.7.jar"
-            mvn_uri="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-cbor/2.6.7"/>
+            id="jackson-dataformat-cbor-2.9.4.jar"
+            name="jackson-dataformat-cbor-2.9.4.jar"
+            mvn_uri="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-cbor/2.9.4"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
@@ -2297,15 +2291,15 @@
 			<library id="httpclient-4.5.5.jar"/>
 			<library id="httpcore-4.4.9.jar"/>
 			<library id="ivy-2.4.0.jar"/>
-			<library id="jackson-annotations-2.6.7.jar"/>
-			<library id="jackson-core-2.6.7.jar"/>
+			<library id="jackson-annotations-2.9.4.jar"/>
+			<library id="jackson-core-2.9.4.jar"/>
 			<library id="jackson-core-asl-1.9.14-TALEND.jar"/>
-			<library id="jackson-databind-2.6.7.1.jar"/>
-			<library id="jackson-dataformat-cbor-2.6.7"/>
+			<library id="jackson-databind-2.9.4.jar"/>
+			<library id="jackson-dataformat-cbor-2.9.4"/>
 			<library id="jackson-jaxrs-1.9.13.jar"/>
 			<library id="jackson-mapper-asl-1.9.14-TALEND.jar"/>
-			<library id="jackson-module-paranamer-2.7.9.jar"/>
-			<library id="jackson-module-scala_2.11-2.6.7.1.jar"/>
+			<library id="jackson-module-paranamer-2.9.4.jar"/>
+			<library id="jackson-module-scala_2.11-2.9.4.jar"/>
 			<library id="jackson-xc-1.9.13.jar"/>
 			<library id="janino-3.0.8.jar"/>
 			<library id="java-xmlbuilder-1.0.jar"/>
