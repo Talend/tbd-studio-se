@@ -36,10 +36,13 @@ import org.talend.commons.ui.swt.formtools.LabelledText;
 import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.model.properties.ConnectionItem;
+import org.talend.core.model.utils.ContextParameterUtils;
+import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
 import org.talend.hadoop.distribution.model.DistributionBean;
 import org.talend.hadoop.distribution.model.DistributionVersion;
 import org.talend.metadata.managment.ui.dialog.HadoopPropertiesDialog;
 import org.talend.metadata.managment.ui.dialog.SparkPropertiesDialog;
+import org.talend.metadata.managment.ui.utils.ConnectionContextHelper;
 import org.talend.metadata.managment.ui.utils.ExtendedNodeConnectionContextUtils.EHadoopParamName;
 import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopForm;
@@ -206,7 +209,7 @@ public class QuboleInfoForm extends AbstractHadoopForm<HadoopClusterConnection> 
                 return i;
             }
         }
-        return 0;
+        return -1;
     }
 
     private List<String> getRegionList() {
@@ -266,7 +269,7 @@ public class QuboleInfoForm extends AbstractHadoopForm<HadoopClusterConnection> 
                 return i;
             }
         }
-        return 0;
+        return -1;
     }
 
     private void addHadoopPropertiesFields() {
@@ -384,6 +387,9 @@ public class QuboleInfoForm extends AbstractHadoopForm<HadoopClusterConnection> 
                 hideChangeAPIComboControl(!changeAPIButton.getSelection());
                 if (changeAPIButton.getSelection()) {
                     getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_ENDPOINT, "true"); //$NON-NLS-1$
+                    if (changeAPICombo.getSelectionIndex() < 0) {
+                        changeAPICombo.select(0);
+                    }
                     getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_ENDPOINT_URL,
                             getAPIEndPointValue(changeAPICombo.getSelectionIndex()));
                 } else {
@@ -531,10 +537,13 @@ public class QuboleInfoForm extends AbstractHadoopForm<HadoopClusterConnection> 
 
         String apiEndPoint = StringUtils
                 .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_ENDPOINT_URL));
+        if (isContextMode()) {
+            apiEndPoint = getContextValue(apiEndPoint);
+        }
         int index = this.getAPIEndPointIndex(apiEndPoint);
-        this.changeAPICombo.select(index);
-        getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_ENDPOINT_URL,
-                getAPIEndPointValue(changeAPICombo.getSelectionIndex()));
+        if (index >= 0) {
+            this.changeAPICombo.select(index);
+        }
 
         String accessKey = StringUtils
                 .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_ACCESS_KEY));
@@ -554,10 +563,13 @@ public class QuboleInfoForm extends AbstractHadoopForm<HadoopClusterConnection> 
 
         String region = StringUtils
                 .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_REGION));
+        if (isContextMode()) {
+            region = getContextValue(region);
+        }
         int regionIndex = this.getRegionIndex(region);
-        this.regionCombo.select(regionIndex);
-        getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_REGION,
-                getRegionValue(regionCombo.getSelectionIndex()));
+        if (regionIndex >= 0) {
+            this.regionCombo.select(regionIndex);
+        }
 
         useSparkPropertiesBtn.setSelection(getConnection().isUseSparkProperties());
         updateForm();
@@ -639,10 +651,8 @@ public class QuboleInfoForm extends AbstractHadoopForm<HadoopClusterConnection> 
 
     private void collectConfigurationParameters(boolean isUse) {
         addContextParams(EHadoopParamName.QuboleAPIToken, isUse);
-        addContextParams(EHadoopParamName.QuboleCluster, isUse);
-        addContextParams(EHadoopParamName.QuboleClusterLabel, isUse);
-        addContextParams(EHadoopParamName.QuboleEndpoint, isUse);
-        addContextParams(EHadoopParamName.QuboleEndpointUrl, isUse);
+        addContextParams(EHadoopParamName.QuboleClusterLabel, useClusterLabelButton.getSelection());
+        addContextParams(EHadoopParamName.QuboleEndpointUrl, changeAPIButton.getSelection());
     }
 
     private void collectAuthenticationParameters(boolean isUse) {
@@ -657,6 +667,16 @@ public class QuboleInfoForm extends AbstractHadoopForm<HadoopClusterConnection> 
         HadoopClusterConnection connection = getConnection();
         if (creation && !connection.isUseCustomConfs()) {
             HCRepositoryUtil.fillDefaultValuesOfHadoopCluster(connection);
+            getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_REGION, getRegionValue(0));
         }
+    }
+
+    private String getContextValue(String parameter) {
+        ContextType contextType = ConnectionContextHelper.getContextTypeForContextMode(getShell(), connectionItem.getConnection(),
+                true);
+        if (contextType != null) {
+            return ContextParameterUtils.getOriginalValue(contextType, parameter);
+        }
+        return "";
     }
 }
