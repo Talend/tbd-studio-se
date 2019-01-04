@@ -52,6 +52,7 @@ import org.talend.designer.rowgenerator.data.Function;
 import org.talend.designer.rowgenerator.data.FunctionManager;
 import org.talend.designer.runprocess.IRunProcessService;
 import org.talend.repository.ProjectManager;
+import org.talend.utils.xml.XmlUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -139,8 +140,8 @@ public class PigFunctionParser extends AbstractTalendFunctionParser {
      * @param fileUrl
      */
     public void useDomParse(String fileUrl) {
-        DocumentBuilderFactory domfac = DocumentBuilderFactory.newInstance();
         try {
+            DocumentBuilderFactory domfac = XmlUtils.getSecureDocumentBuilderFactory(false);
             DocumentBuilder dombuilder = domfac.newDocumentBuilder();
             InputStream is = new FileInputStream(fileUrl);
             Document doc = dombuilder.parse(is);
