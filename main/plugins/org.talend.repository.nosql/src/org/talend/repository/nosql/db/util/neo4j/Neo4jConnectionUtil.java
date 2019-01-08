@@ -32,7 +32,6 @@ import org.talend.repository.nosql.exceptions.NoSQLServerException;
 import org.talend.repository.nosql.factory.NoSQLClassLoaderFactory;
 import org.talend.repository.nosql.i18n.Messages;
 import org.talend.repository.nosql.reflection.NoSQLReflection;
-import org.talend.utils.security.CryptoHelper;
 
 /**
  *
@@ -50,6 +49,7 @@ public class Neo4jConnectionUtil {
     public static synchronized boolean checkConnection(NoSQLConnection connection) throws NoSQLServerException {
         boolean canConnect = true;
         final ClassLoader classLoader = NoSQLClassLoaderFactory.getClassLoader(connection);
+        Thread.currentThread().setContextClassLoader(classLoader);
         Object dbConnection = null;
         try {
             boolean isRemote = Boolean.valueOf(connection.getAttributes().get(INeo4jAttributes.REMOTE_SERVER));

@@ -12,11 +12,16 @@
 // ============================================================================
 package org.talend.repository.nosql.ui.common;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.commons.lang.exception.ExceptionUtils;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
@@ -37,6 +42,7 @@ import org.talend.metadata.managment.ui.utils.ExtendedNodeConnectionContextUtils
 import org.talend.repository.nosql.RepositoryNoSQLPlugin;
 import org.talend.repository.nosql.constants.INoSQLConstants;
 import org.talend.repository.nosql.context.NoSQLConnectionContextManager;
+import org.talend.repository.nosql.exceptions.NoSQLServerException;
 import org.talend.repository.nosql.factory.NoSQLRepositoryFactory;
 import org.talend.repository.nosql.i18n.Messages;
 import org.talend.repository.nosql.metadata.IMetadataProvider;
@@ -136,9 +142,30 @@ public abstract class AbstractNoSQLConnForm extends AbstractNoSQLForm {
                 public void widgetSelected(SelectionEvent e) {
                     try {
                         if (getConnection() != null) {
-                            IMetadataProvider metadataProvider = NoSQLRepositoryFactory.getInstance().getMetadataProvider(
-                                    getConnection().getDbType());
-                            if (metadataProvider != null && metadataProvider.checkConnection(getConnection())) {
+                            final AtomicBoolean checkedResult = new AtomicBoolean(false);
+                            IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
+
+                                @Override
+                                public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+                                    IMetadataProvider metadataProvider = NoSQLRepositoryFactory.getInstance().getMetadataProvider(
+                                            getConnection().getDbType());
+                                    if (metadataProvider != null) {
+                                        try {
+                                            checkedResult.set(metadataProvider.checkConnection(getConnection()));
+                                        } catch (NoSQLServerException e) {
+                                            new ErrorDialogWidthDetailArea(getShell(), RepositoryNoSQLPlugin.PLUGIN_ID, Messages
+                                                    .getString("AbstractNoSQLConnForm.checkFailed"), //$NON-NLS-1$
+                                                    ExceptionUtils.getFullStackTrace(e));
+                                            ExceptionHandler.process(e);
+                                        }
+                                    }
+                                }
+
+                            };
+                            ProgressMonitorDialog dialog = new ProgressMonitorDialog(getShell());
+                            dialog.run(true, true, runnableWithProgress);
+                            
+                            if (checkedResult.get()) {
                                 MessageDialog.openInformation(
                                         getShell(),
                                         Messages.getString("AbstractNoSQLConnForm.checkConn"), Messages.getString("AbstractNoSQLConnForm.checkSuccessful")); //$NON-NLS-1$ //$NON-NLS-2$
