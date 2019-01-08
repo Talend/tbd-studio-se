@@ -142,30 +142,42 @@ public abstract class AbstractNoSQLConnForm extends AbstractNoSQLForm {
                 public void widgetSelected(SelectionEvent e) {
                     try {
                         if (getConnection() != null) {
-                            final AtomicBoolean checkedResult = new AtomicBoolean(false);
+                            final AtomicBoolean checkedResult = new AtomicBoolean(true);
+                            final Thread t[] = new Thread[1];
+                            final Exception exception[] = new Exception[1];
                             IRunnableWithProgress runnableWithProgress = new IRunnableWithProgress() {
 
                                 @Override
                                 public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+                                    t[0] = Thread.currentThread();
                                     IMetadataProvider metadataProvider = NoSQLRepositoryFactory.getInstance().getMetadataProvider(
                                             getConnection().getDbType());
                                     if (metadataProvider != null) {
                                         try {
                                             checkedResult.set(metadataProvider.checkConnection(getConnection()));
                                         } catch (NoSQLServerException e) {
-                                            new ErrorDialogWidthDetailArea(getShell(), RepositoryNoSQLPlugin.PLUGIN_ID, Messages
-                                                    .getString("AbstractNoSQLConnForm.checkFailed"), //$NON-NLS-1$
-                                                    ExceptionUtils.getFullStackTrace(e));
+                                            exception[0] = e;
+                                            checkedResult.set(false);
                                             ExceptionHandler.process(e);
                                         }
                                     }
                                 }
 
                             };
-                            ProgressMonitorDialog dialog = new ProgressMonitorDialog(getShell());
+                            ProgressMonitorDialog dialog = new ProgressMonitorDialog(getShell()) {
+
+                                protected void cancelPressed() {
+                                    super.cancelPressed();
+                                    t[0].interrupt();
+                                };
+                            };
                             dialog.run(true, true, runnableWithProgress);
                             
-                            if (checkedResult.get()) {
+                            if (!checkedResult.get() && exception[0] != null) {
+                                new ErrorDialogWidthDetailArea(getShell(), RepositoryNoSQLPlugin.PLUGIN_ID,
+                                        Messages.getString("AbstractNoSQLConnForm.checkFailed"), //$NON-NLS-1$
+                                        ExceptionUtils.getFullStackTrace(exception[0]));
+                            } else {
                                 MessageDialog.openInformation(
                                         getShell(),
                                         Messages.getString("AbstractNoSQLConnForm.checkConn"), Messages.getString("AbstractNoSQLConnForm.checkSuccessful")); //$NON-NLS-1$ //$NON-NLS-2$

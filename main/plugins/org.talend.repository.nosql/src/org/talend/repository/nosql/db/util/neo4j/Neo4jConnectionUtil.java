@@ -67,11 +67,19 @@ public class Neo4jConnectionUtil {
                 }else {
                     password = connection.getValue(password, false);
                 }
+                // if cancel to interrupt check connection, throw exception
+                if (Thread.currentThread().interrupted()) {
+                    throw new InterruptedException();
+                }
                 Object basic = NoSQLReflection.invokeStaticMethod("org.neo4j.driver.v1.AuthTokens", "basic", 
                         new Object[] { usename, password }, classLoader, String.class, String.class);
                 NoSQLReflection.invokeStaticMethod("org.neo4j.driver.v1.GraphDatabase", "driver", new Object[] {serverUrl, basic }, 
                         classLoader, String.class, Class.forName("org.neo4j.driver.v1.AuthToken", true, classLoader));
                 return canConnect;
+            }
+            // if cancel to interrupt check connection, throw exception
+            if (Thread.currentThread().interrupted()) {
+                throw new InterruptedException(); // $NON-NLS-1$
             }
             final Object db = getDB(connection);
             dbConnection = db;
@@ -95,7 +103,11 @@ public class Neo4jConnectionUtil {
         } catch (Exception e) {
             canConnect = false;
             resetAll();
-            throw new NoSQLServerException(Messages.getString("Neo4jConnectionUtil.cannotConnectDatabase"), e); //$NON-NLS-1$
+            if (e instanceof InterruptedException) {
+                throw new NoSQLServerException(Messages.getString("noSQLConnectionTest.cancelCheckConnection"), e); //$NON-NLS-1$
+            } else {
+                throw new NoSQLServerException(Messages.getString("Neo4jConnectionUtil.cannotConnectDatabase"), e); //$NON-NLS-1$
+            }
         } finally {
             if (dbConnection != null) {
                 shutdownNeo4JDb(dbConnection);

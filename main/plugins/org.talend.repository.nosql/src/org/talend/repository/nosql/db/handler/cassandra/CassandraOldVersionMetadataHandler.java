@@ -32,6 +32,7 @@ import org.talend.repository.nosql.db.common.cassandra.ICassandraConstants;
 import org.talend.repository.nosql.exceptions.NoSQLReflectionException;
 import org.talend.repository.nosql.exceptions.NoSQLServerException;
 import org.talend.repository.nosql.factory.NoSQLClassLoaderFactory;
+import org.talend.repository.nosql.i18n.Messages;
 import org.talend.repository.nosql.reflection.NoSQLReflection;
 
 /**
@@ -72,6 +73,10 @@ public class CassandraOldVersionMetadataHandler implements ICassandraMetadataHan
                 ksName = ContextParameterUtils.getOriginalValue(contextType, ksName);
             }
             Object cCluster = getOrCreateCluster(connection);
+            // if cancel to interrupt check connection, throw exception
+            if (Thread.currentThread().interrupted()) {
+                throw new InterruptedException(); // $NON-NLS-1$
+            }
             if (StringUtils.isEmpty(ksName)) {
                 NoSQLReflection.invokeMethod(cCluster, "describeClusterName"); //$NON-NLS-1$
             } else {
@@ -82,7 +87,11 @@ public class CassandraOldVersionMetadataHandler implements ICassandraMetadataHan
             }
             return true;
         } catch (Exception e) {
-            throw new NoSQLServerException(e);
+            if (e instanceof InterruptedException) {
+                throw new NoSQLServerException(Messages.getString("noSQLConnectionTest.cancelCheckConnection"), e); //$NON-NLS-1$
+            } else {
+                throw new NoSQLServerException(e);
+            }
         }
     }
 
