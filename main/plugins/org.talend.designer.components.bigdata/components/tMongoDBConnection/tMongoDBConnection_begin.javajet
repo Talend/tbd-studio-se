@@ -6,6 +6,9 @@
         
         java.util.Map
         java.util.List
+        java.util.Arrays
+        java.util.Set
+        java.util.HashMap
     " 
 %>
 <%
@@ -35,6 +38,7 @@
     String usedAuthenticationDB = useAuthDB ? authDB : dbname;
     boolean queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
     boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
+    boolean applyOptionalAttributes = "true".equals(ElementParameterParser.getValue(node, "__APPLY_OPTIONAL_ATTRIBUTES__"));
     
     String mongoDbDriver = "com.mongodb.MongoClient";
     
@@ -47,29 +51,135 @@
 			java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.SEVERE);
     <%
 		    }
+            
+    List<String> intAttributes = Arrays.asList(
+		"CONNECTIONS_PER_HOST","CONNECT_TIMEOUT","HEARTBEAT_CONNECT_TIMEOUT",
+		"HEARTBEAT_FREQUENCY","HEARTBEAT_SOCKET_TIMEOUT","LOCAL_THRESHOLD",
+		"MAX_CONNECTION_IDLE_TIME","MAX_CONNECTION_LIFE_TIME","MAX_WAIT_TIME",
+		"MIN_CONNECTIONS_PER_HOST","MIN_HEARTBEAT_FREQUENCY",
+        "SERVER_SELECTION_TIMEOUT","SOCKET_TIMEOUT","THREADS_ALLOWED_TO_BLOCK_FOR_CONNECTION_MULTIPLIER"
+		);
+    
+    List<String> booleanAttributes = Arrays.asList(
+		"ALWAYS_USE_MBEANS","CURSOR_FINALIZER_ENABLED","SOCKET_KEEP_ALIVE",
+		"SSL_INVALID_HOSTNAME_ALLOWED"
+		);
+        
+    List<Map<String,String>> additionalList = (List<Map<String, String>>)ElementParameterParser.getObjectValue(node,"__OPTIONAL_ATTRIBUTES__");
+    Map<String,String> optionalConnectionAttributesMap = new HashMap<String,String>();
+ 	for(Map<String,String> map : additionalList){
+		String attributeName = map.get("OPTIONAL_ATTRIBUTES_NAME");
+		String attributeValue = map.get("OPTIONAL_ATTRIBUTES_VALUE");
+		optionalConnectionAttributesMap.put(attributeName, attributeValue);
+	}
+    
     // Client options
     %>
-    // Empty client options
-    com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().build();
-
-    <%
-
-    // Client Credentials
-    %>
-    // Empty client credentials list
-    java.util.List<com.mongodb.MongoCredential> mongoCredentialList_<%=cid%> = new java.util.ArrayList<com.mongodb.MongoCredential>();
-
-    <%
+    com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder()
+<%
+    if(applyOptionalAttributes){
+        for(String key : optionalConnectionAttributesMap.keySet()){
+            String value = optionalConnectionAttributesMap.get(key);
+            boolean isIntType = intAttributes.contains(key);
+            boolean isBooleanType = booleanAttributes.contains(key);
+            if (isIntType || isBooleanType) {
+                value = value.replaceAll("\"","");
+            } 
+            
+            if ("ALWAYS_USE_MBEANS".equals(key)) {
+            %>
+                    .alwaysUseMBeans(<%=value%>)
+            <%
+            } else if ("CONNECTIONS_PER_HOST".equals(key)){
+            %>
+                    .connectionsPerHost(<%=value%>)
+            <%
+            } else if ("CONNECT_TIMEOUT".equals(key)){
+            %>
+                    .connectTimeout(<%=value%>)
+            <%
+            } else if ("CURSORFINALIZERENABLED".equals(key)){
+            %>
+                    .cursorFinalizerEnabled(<%=value%>)
+            <%
+            } else if ("HEARTBEAT_CONNECT_TIMEOUT".equals(key)){
+            %>
+                    .heartbeatConnectTimeout(<%=value%>)
+            <%
+            } else if ("HEARTBEAT_FREQUENCY".equals(key)){
+            %>
+                    .heartbeatFrequency(<%=value%>)
+            <%
+            } else if ("HEARTBEAT_SOCKET_TIMEOUT".equals(key)){
+            %>
+                    .heartbeatSocketTimeout(<%=value%>)
+            <%
+            } else if ("LOCAL_THRESHOLD".equals(key)){
+            %>
+                    .localThreshold(<%=value%>)
+            <%
+            } else if ("MAX_CONNECTION_IDLE_TIME".equals(key)){
+            %>
+                    .maxConnectionIdleTime(<%=value%>)
+            <%
+            } else if ("MAX_CONNECTION_LIFE_TIME".equals(key)){
+            %>
+                    .maxConnectionLifeTime(<%=value%>)
+            <%
+            } else if ("MAX_WAIT_TIME".equals(key)){
+            %>
+                    .maxWaitTime(<%=value%>)
+            <%
+            } else if ("MIN_CONNECTIONS_PER_HOST".equals(key)){
+            %>
+                    .minConnectionsPerHost(<%=value%>)
+            <%
+            } else if ("MIN_HEARTBEAT_FREQUENCY".equals(key)){
+            %>
+                    .minHeartbeatFrequency(<%=value%>)
+            <%
+            } else if ("REQUIRED_REPLICA_SET_NAME".equals(key)){
+            %>
+                    .requiredReplicaSetName(<%=value%>)
+            <%
+            } else if ("SERVER_SELECTION_TIMEOUT".equals(key)){
+            %>
+                    .serverSelectionTimeout(<%=value%>)
+            <%
+            } else if ("SOCKET_KEEP_ALIVE".equals(key)){
+            %>
+                    .socketKeepAlive(<%=value%>)
+            <%
+            } else if ("SOCKET_TIMEOUT".equals(key)){
+            %>
+                    .socketTimeout(<%=value%>)
+            <%
+            } else if ("SSL_INVALID_HOSTNAME_ALLOWED".equals(key)){
+            %>
+                    .sslInvalidHostNameAllowed(<%=value%>)
+            <%
+            } else if ("THREADS_ALLOWED_TO_BLOCK_FOR_CONNECTION_MULTIPLIER".equals(key)){
+            %>
+                    .threadsAllowedToBlockForConnectionMultiplier(<%=value%>)
+            <%
+            }
+        }
+    }
 
     // SSL
     if (useSSL) {
         %>
-        clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder()
-        .socketFactory(javax.net.ssl.SSLSocketFactory.getDefault())
-        .build();
+                    .socketFactory(javax.net.ssl.SSLSocketFactory.getDefault())
         <%
     }
+%>
 
+                    .build();
+
+    // Empty client credentials list
+    java.util.List<com.mongodb.MongoCredential> mongoCredentialList_<%=cid%> = new java.util.ArrayList<com.mongodb.MongoCredential>();
+
+    <%
     // Authentication
     if (authentication){
         %>
