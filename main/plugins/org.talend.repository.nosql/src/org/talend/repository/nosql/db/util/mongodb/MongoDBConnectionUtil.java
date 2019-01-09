@@ -49,7 +49,7 @@ public class MongoDBConnectionUtil {
         try {
             // if cancel to interrupt check connection, throw exception
             if (Thread.currentThread().interrupted()) {
-                throw new InterruptedException(); // $NON-NLS-1$
+                throw new InterruptedException();
             }
             Object db = getDB(connection);
             if (db == null) {
@@ -57,6 +57,10 @@ public class MongoDBConnectionUtil {
                 if (databaseNames != null && databaseNames.size() > 0) {
                     for (String databaseName : databaseNames) {
                         if (StringUtils.isNotEmpty(databaseName)) {
+                            // if cancel to interrupt check connection, throw exception
+                            if (Thread.currentThread().interrupted()) {
+                                throw new InterruptedException();
+                            }
                             db = getDB(connection, databaseName);
                             if (db != null) {
                                 break;
@@ -71,7 +75,7 @@ public class MongoDBConnectionUtil {
             }
             // if cancel to interrupt check connection, throw exception
             if (Thread.currentThread().interrupted()) {
-                throw new InterruptedException(); // $NON-NLS-1$
+                throw new InterruptedException();
             }
             NoSQLReflection.invokeMethod(db, "getStats"); //$NON-NLS-1$
         } catch (Exception e) {
