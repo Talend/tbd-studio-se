@@ -350,6 +350,10 @@ public boolean isQuboleDistribution() {
         return true;
     }
     
+    public boolean isHiveWizardCheckEnabled() {
+        return false;
+    }
+
     public String getWinUtilsName() {
     	return EWinUtilsName.WINUTILS_HADOOP_2_6.toString();
     };

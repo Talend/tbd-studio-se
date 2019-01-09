@@ -321,7 +321,7 @@
             context="plugin:org.talend.libraries.s3"
             id="aws-java-sdk-1.11.160.jar"
             name="aws-java-sdk-1.11.160.jar"
-            mvn_uri="mvn:com.amazonaws/aws-java-sdk-core/1.11.160"/>
+            mvn_uri="mvn:com.amazonaws/aws-java-sdk/1.11.160"/>
             
         <libraryNeeded
             context="plugin:org.talend.libraries.s3"
@@ -454,7 +454,7 @@
             context="plugin:org.talend.hadoop.distribution.emr580"
             id="commons-logging-1.2.jar"
             name="commons-logging-1.2.jar"
-            mvn_uri="mvn:commons-logging/commons-logging/1.1.3"/>
+            mvn_uri="mvn:commons-logging/commons-logging/1.2"/>
             
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
@@ -947,7 +947,7 @@
             context="plugin:org.talend.hadoop.distribution.emr580"
             id="htrace-core-3.1.0-incubating.jar"
             name="htrace-core-3.1.0-incubating.jar"
-            mvn_uri="mvn:org.talend.libraries/htrace-core-3.1.0-incubating/6.0.0"/>
+            mvn_uri="mvn:org.apache.htrace/htrace-core/3.1.0-incubating"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"

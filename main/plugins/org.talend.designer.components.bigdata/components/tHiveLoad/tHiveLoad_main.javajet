@@ -34,6 +34,8 @@ imports="
     String theDistribution = ElementParameterParser.getValue(node, "__DISTRIBUTION__");
     String theVersion = ElementParameterParser.getValue(node, "__HIVE_VERSION__");
 
+	final String studioVersion = org.talend.commons.utils.VersionUtils.getDisplayVersion();
+
 	String quboleClusterLabel = null;
 	String quboleEndpoint = null;
 	String encryptedToken = null;
@@ -380,33 +382,17 @@ imports="
         			<% } %>
         		}
         	}
+		    queries_<%=cid%> = queries_<%=cid%> + querySQL_<%=cid %>.replace("';'", "'\\;'") + ";";
+
+		    org.talend.bigdata.launcher.qubole.QuboleHiveClient.Job job_<%=cid%> =
+		    	new org.talend.bigdata.launcher.qubole.QuboleHiveClient.Job(queries_<%=cid%>);
+			job_<%=cid%>.setJobName("<%=cid%>");
+			job_<%=cid%>.setUserAgent(routines.system.Constant.getUserAgent("<%=studioVersion%>"));
+        	<% if (quboleClusterLabel != null) { %>
+			job_<%=cid%>.setClusterLabel(<%=quboleClusterLabel%>);
+			<% } %>
+			String execution_result_<%=cid%> = instance_<%=cid%>.execute(job_<%=cid%>);
         <%
-			if (isLog4jEnabled) {
-%>
-				java.util.regex.Pattern pattern_<%=cid%> = java.util.regex.Pattern.compile("(.*s3://)(.*:.*)@(.*)");
-				java.util.regex.Matcher matcher_<%=cid%> = pattern_<%=cid%>.matcher(querySQL_<%=cid %>.replace("';'", "'\\;'") + ";");
-				if (matcher_<%=cid%>.matches()) {
-					log.info("<%=cid%> - query added: " + matcher_<%=cid%>.group(1) + matcher_<%=cid%>.group(3));
-				} else {
-					log.info("<%=cid%> - query added: " + querySQL_<%=cid %>.replace("';'", "'\\;'") + ";");
-				}
-				log.info("<%=cid%> - queries sent to cluster, waiting for execution result ...");
-<%
-			}
-            if (quboleClusterLabel != null) {
-%>
-           		String execution_result_<%=cid%> = instance_<%=cid%>.execute(queries_<%=cid%> + querySQL_<%=cid %>.replace("';'", "'\\;'") + ";", <%=quboleClusterLabel%>).getResults();
-            <%
-            } else {
-%>
-				String execution_result_<%=cid%> = instance_<%=cid%>.execute(queries_<%=cid%> + querySQL_<%=cid %>.replace("';'", "'\\;'") + ";").getResults();
-<%
-			}
-			if (isLog4jEnabled) {
-			%>
-				log.info("<%=cid%> - execution finished.");
-			<%
-			}
         } else { // dataproc
             if(isLog4jEnabled) {
 %>

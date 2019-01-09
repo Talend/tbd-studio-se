@@ -238,8 +238,9 @@ imports="
 <%
 					} else if(javaType == JavaTypesManager.BYTE_ARRAY) {
 %>
-
-			<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.getBinary().array();
+				String tmpBytes_<%=cid%> = valueObj_<%=cid%>.getString();
+				byte bytes_<%=cid%>[] = tmpBytes_<%=cid%>.getBytes("utf8");   			
+			<%=firstConnName %>.<%=column.getLabel() %> = bytes_<%=cid%>;
 			
 <%
 					} else if (javaType == JavaTypesManager.STRING) {

@@ -1,0 +1,6 @@
+{
+    "DATABRICKS_ENDPOINT": "https://westeurope.azuredatabricks.net", 
+    "DATABRICKS_CLUSTER_ID": "", 
+    "DATABRICKS_TOKEN": "", 
+    "DATABRICKS_DBFS_DEP_FOLDER": ""
+}

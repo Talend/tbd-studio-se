@@ -57,6 +57,7 @@ import org.talend.repository.hbaseprovider.Activator;
 import org.talend.repository.hbaseprovider.util.HBaseClassLoaderFactory;
 import org.talend.repository.model.IProxyRepositoryFactory;
 import org.talend.repository.ui.wizards.metadata.table.database.SelectorTreeViewerProvider;
+
 import orgomg.cwm.objectmodel.core.TaggedValue;
 import orgomg.cwm.resource.relational.Catalog;
 
@@ -64,6 +65,12 @@ import orgomg.cwm.resource.relational.Catalog;
  * DOC hywang class global comment. Detailled comment
  */
 public class HBaseMetadataProvider implements IDBMetadataProvider {
+
+    private static final String HBASEADMIN_CLASS_NAME = "org.apache.hadoop.hbase.client.HBaseAdmin"; //$NON-NLS-1$
+
+    private static final String HBASEADMIN_CHECKHBASEAVAILABLE_METHOD_NAME = "checkHBaseAvailable"; //$NON-NLS-1$
+
+    private static final String HBASEADMIN_AVAILABLE_METHOD_NAME = "available"; //$NON-NLS-1$
 
     private static String CATALOG_NAME = "HBase"; //$NON-NLS-1$
 
@@ -232,8 +239,15 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
 
             @Override
             public Object call() throws Exception {
-                return ReflectionUtils.invokeStaticMethod("org.apache.hadoop.hbase.client.HBaseAdmin", classLoader, //$NON-NLS-1$
-                        "checkHBaseAvailable", new Object[] { config }); //$NON-NLS-1$
+                String methodName = HBASEADMIN_CHECKHBASEAVAILABLE_METHOD_NAME;
+                Class hbaseAdminClass = ReflectionUtils.getClass(HBASEADMIN_CLASS_NAME, classLoader);
+                if (hbaseAdminClass != null) {
+                    if (!ReflectionUtils.hasMethod(hbaseAdminClass, methodName)) {
+                        methodName = HBASEADMIN_AVAILABLE_METHOD_NAME;
+                    }
+                }
+                return ReflectionUtils.invokeStaticMethod(HBASEADMIN_CLASS_NAME, classLoader,
+                        methodName, new Object[] { config });
             }
         };
 

@@ -23,7 +23,8 @@ import org.talend.hadoop.distribution.dynamic.DynamicConfiguration;
  */
 public interface IDependencyResolver {
 
-    public DependencyNode collectDependencies(DependencyNode baseNode, IDynamicMonitor monitor) throws Exception;
+    public DependencyNode collectDependencies(DependencyNode baseNode, IDynamicMonitor monitor, boolean multiThread)
+            throws Exception;
 
     public String getDependencyVersionByHadoopVersion(String groupId, String artifactId, IDynamicMonitor monitor)
             throws Exception;

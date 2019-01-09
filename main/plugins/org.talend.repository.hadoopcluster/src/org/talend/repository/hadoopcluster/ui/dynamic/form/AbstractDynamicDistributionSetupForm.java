@@ -13,9 +13,9 @@
 package org.talend.repository.hadoopcluster.ui.dynamic.form;
 
 import org.eclipse.swt.widgets.Composite;
+import org.talend.commons.CommonsPlugin;
 import org.talend.commons.exception.LoginException;
 import org.talend.commons.exception.PersistenceException;
-import org.talend.core.CorePlugin;
 import org.talend.core.repository.model.ProxyRepositoryFactory;
 import org.talend.core.runtime.dynamic.IDynamicPlugin;
 import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
@@ -39,7 +39,7 @@ public abstract class AbstractDynamicDistributionSetupForm extends AbstractDynam
 
     public AbstractDynamicDistributionSetupForm(Composite parent, int style, DynamicDistributionSetupData configData) {
         super(parent, style, configData);
-        isDebugging = CorePlugin.getDefault().isDebugging();
+        isDebugging = CommonsPlugin.isDebugMode();
     }
 
     protected void saveDynamicDistribution(IDynamicPlugin dynamicPlugin, IDynamicDistributionsGroup dynDistrGroup,

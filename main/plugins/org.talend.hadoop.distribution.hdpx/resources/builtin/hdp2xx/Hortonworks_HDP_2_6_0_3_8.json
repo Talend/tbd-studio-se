@@ -5,7 +5,7 @@
     "id" : "HDP_2_6_0_3_8",
     "name" : "Hortonworks Data Platform V2.6.0.3-8",
     "projectTechnicalName" : "LOCAL_PROJECT",
-    "repository" : "https://talend-update.talend.com/nexus/content/repositories/hortonworks-releases/",
+    "repository" : "https://talend-update.talend.com/nexus/content/groups/dynamicdistribution/",
     "selectedSparkVersions" : [ "SPARK_2_1" ],
     "tagName" : "dynamicPluginConfiguration",
     "templateId" : "HDP2xxDistributionTemplate",
@@ -78,7 +78,7 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
-        "id" : "DYNAMIC_HDP_2_6_0_3_8_javax_inject_1_jar",
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_javax_inject_1_atlas_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -7770,7 +7770,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.hdpx",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_HDP_2_6_0_3_8_commons_lang3_3_4",
-      "mvn_uri" : "mvn:org.talend.libraries/commons-lang3-3.4/6.0.0",
+      "mvn_uri" : "mvn:org.talend.libraries/commons-lang3-3.4/6.2.0",
       "name" : "commons-lang3-3.4.jar",
       "tagName" : "libraryNeeded",
       "useStudioRepository" : "true"
@@ -8821,19 +8821,19 @@
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.hdpx",
       "excludeDependencies" : "true",
-      "id" : "DYNAMIC_HDP_2_6_0_3_8_javax_inject_1_jar",
-      "mvn_uri" : "mvn:javax.inject/javax.inject/1",
+      "id" : "DYNAMIC_HDP_2_6_0_3_8_javax_inject_1_atlas_jar",
+      "mvn_uri" : "mvn:org.talend.libraries/javax.inject-1.jar/6.0.0",
       "name" : "javax.inject-1.jar",
-      "tagName" : "libraryNeeded"
+      "tagName" : "libraryNeeded",
+      "useStudioRepository" : "true"
     }, {
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.hdpx",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_HDP_2_6_0_3_8_javax_inject_1_jar",
-      "mvn_uri" : "mvn:org.talend.libraries/javax.inject-1.jar/6.0.0",
-      "name" : "javax.inject-1.jar.jar",
-      "tagName" : "libraryNeeded",
-      "useStudioRepository" : "true"
+      "mvn_uri" : "mvn:javax.inject/javax.inject/1",
+      "name" : "javax.inject-1.jar",
+      "tagName" : "libraryNeeded"
     }, {
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.hdpx",
@@ -10100,8 +10100,8 @@
       "context" : "plugin:org.talend.hadoop.distribution.hdpx",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_HDP_2_6_0_3_8_stax_api_1_0_1_jar",
-      "mvn_uri" : "mvn:org.talend.libraries/stax-api-1.0.1.jar/6.0.0",
-      "name" : "stax-api-1.0.1.jar.jar",
+      "mvn_uri" : "mvn:org.talend.libraries/stax-api-1.0.1/6.0.0",
+      "name" : "stax-api-1.0.1.jar",
       "tagName" : "libraryNeeded",
       "useStudioRepository" : "true"
     }, {

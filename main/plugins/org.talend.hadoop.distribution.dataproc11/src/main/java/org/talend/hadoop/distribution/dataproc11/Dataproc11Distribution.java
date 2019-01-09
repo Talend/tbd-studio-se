@@ -270,7 +270,7 @@ public class Dataproc11Distribution extends AbstractDistribution implements HDFS
     @Override
     public boolean doSupportHive2() {
         // use rest API
-        return false;
+        return true;
     }
 
     @Override
@@ -328,6 +328,11 @@ public class Dataproc11Distribution extends AbstractDistribution implements HDFS
     
     @Override
     public boolean doSupportAvroDeflateProperties(){
+        return true;
+    }
+
+    @Override
+    public boolean isHiveWizardCheckEnabled() {
         return true;
     }
 }

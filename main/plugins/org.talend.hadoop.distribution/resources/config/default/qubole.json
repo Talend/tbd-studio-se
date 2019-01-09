@@ -1,0 +1,13 @@
+{
+    "QUBOLE_API_TOKEN": "", 
+    "QUBOLE_CLUSTER": "false", 
+    "QUBOLE_CLUSTER_LABEL": "", 
+    "QUBOLE_ENDPOINT": "false", 
+    "QUBOLE_ENDPOINT_URL": "", 
+    "QUBOLE_S3_ACCESS_KEY": "", 
+    "QUBOLE_S3_SECRET_KEY": "", 
+    "QUBOLE_S3_BUCKET_NAME": "", 
+    "QUBOLE_S3_BUCKET_KEY": "", 
+    "QUBOLE_S3_REGION": ""
+}
+

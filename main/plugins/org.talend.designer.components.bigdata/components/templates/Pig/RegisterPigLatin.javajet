@@ -5,14 +5,14 @@
 	if(inMain) {
 %>
 		<%if (isQuboleDistribution && isQuboleS3Resource) {%>
-        java.util.List<com.amazonaws.services.s3.model.S3ObjectSummary> s3Objects_<%=cid%> = s3Client_<%=start_node%>.listObjectsV2(<%=quboleS3ResourceBucketName%>).getObjectSummaries();
-        java.util.Set<String> s3Keys_<%=cid%> = s3Objects_<%=cid%>.stream().map(obj -> obj.getKey()).collect(java.util.stream.Collectors.toSet());
+        	java.util.List<com.amazonaws.services.s3.model.S3ObjectSummary> s3Objects_<%=cid%> = s3Client_<%=start_node%>.listObjectsV2(<%=quboleS3ResourceBucketName%>).getObjectSummaries();
+        	java.util.Set<String> s3Keys_<%=cid%> = s3Objects_<%=cid%>.stream().map(obj -> obj.getKey()).collect(java.util.stream.Collectors.toSet());
         <%}%>
 
 		for(String[] pigLatin_<%=cid%> : pigLatins_<%=cid%>) {
 			String type_<%=cid%> = pigLatin_<%=cid%>[0];
-			<%if(isLog4jEnabled) {%>
-			log.info("<%=cid%> - register " + type_<%=cid%> + " : " + pigLatin_<%=cid%>[1]);
+			<%if(isLog4jEnabled && !isQuboleDistribution) {%>
+				log.info("<%=cid%> - register " + type_<%=cid%> + ": " + pigLatin_<%=cid%>[1]);
 			<%}%>
 			if("query".equals(type_<%=cid%>)) {
 <%
@@ -53,7 +53,7 @@
 					}
 					statements_<%=start_node%>.append("REGISTER s3a://" + <%=quboleS3ResourceAccessKey%> + ":" + routines.system.PasswordEncryptUtil.decryptPassword(<%=quboleS3ResourceSecretKey%>) + "@" + <%=quboleS3ResourceBucketName%> + "/" + <%=quboleS3ResourceBucketKey%>.replaceAll("^/+|/+$", "") + "/" + jarName_<%=start_node%> + ";");
 					<%if(isLog4jEnabled){%>
-						log.info("<%=cid%> - jar uploaded: " + pigLatin_<%=cid%>[1] + " --> s3a://" + <%=quboleS3ResourceBucketName%> + "/" + <%=quboleS3ResourceBucketKey%>.replaceAll("^/+|/+$", "") + "/" + jarName_<%=start_node%>);
+						log.info("<%=cid%> - upload jar to S3: " + pigLatin_<%=cid%>[1] + " --> s3a://" + <%=quboleS3ResourceBucketName%> + "/" + <%=quboleS3ResourceBucketKey%>.replaceAll("^/+|/+$", "") + "/" + jarName_<%=start_node%>);
 					<%}
 					}
 				} else {

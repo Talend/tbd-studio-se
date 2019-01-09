@@ -122,12 +122,54 @@
             <DEFAULT>false</DEFAULT>
         </PARAMETER>
 
+        
+        <PARAMETER 
+          NAME="APPLY_OPTIONAL_ATTRIBUTES" 
+          FIELD="CHECK" 
+          NUM_ROW="55" 
+          GROUP="DB_OPTIONAL_ATTRIBUTES">
+          <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER 
+          NAME="OPTIONAL_ATTRIBUTES" 
+          FIELD="TABLE"
+          NUM_ROW="60" 
+          NB_LINES="5" 
+          GROUP="DB_OPTIONAL_ATTRIBUTES"
+          SHOW_IF="(APPLY_OPTIONAL_ATTRIBUTES == 'true')">
+          <ITEMS>
+            <ITEM NAME="OPTIONAL_ATTRIBUTES_NAME" FIELD="CLOSED_LIST">
+                <ITEMS DEFAULT="ALWAYS_USE_MBEANS">
+                  <ITEM NAME="ALWAYS_USE_MBEANS" VALUE="ALWAYS_USE_MBEANS"/>
+                  <ITEM NAME="CONNECTIONS_PER_HOST" VALUE="CONNECTIONS_PER_HOST"/>
+                  <ITEM NAME="CONNECT_TIMEOUT" VALUE="CONNECT_TIMEOUT"/>
+                  <ITEM NAME="CURSOR_FINALIZER_ENABLED" VALUE="CURSOR_FINALIZER_ENABLED"/>
+                  <ITEM NAME="HEARTBEAT_CONNECT_TIMEOUT" VALUE="HEARTBEAT_CONNECT_TIMEOUT"/>
+                  <ITEM NAME="HEARTBEAT_FREQUENCY" VALUE="HEARTBEAT_FREQUENCY"/>
+                  <ITEM NAME="HEARTBEAT_SOCKET_TIMEOUT" VALUE="HEARTBEAT_SOCKET_TIMEOUT"/>
+                  <ITEM NAME="LOCAL_THRESHOLD" VALUE="LOCAL_THRESHOLD"/>
+                  <ITEM NAME="MAX_CONNECTION_IDLE_TIME" VALUE="MAX_CONNECTION_IDLE_TIME"/>
+                  <ITEM NAME="MAX_CONNECTION_LIFE_TIME" VALUE="MAX_CONNECTION_LIFE_TIME"/>
+                  <ITEM NAME="MAX_WAIT_TIME" VALUE="MAX_WAIT_TIME"/>
+                  <ITEM NAME="MIN_CONNECTIONS_PER_HOST" VALUE="MIN_CONNECTIONS_PER_HOST"/>
+                  <ITEM NAME="MIN_HEARTBEAT_FREQUENCY" VALUE="MIN_HEARTBEAT_FREQUENCY"/>
+                  <ITEM NAME="REQUIRED_REPLICA_SET_NAME" VALUE="REQUIRED_REPLICA_SET_NAME"/>
+                  <ITEM NAME="SERVER_SELECTION_TIMEOUT" VALUE="SERVER_SELECTION_TIMEOUT"/>
+                  <ITEM NAME="SOCKET_KEEP_ALIVE" VALUE="SOCKET_KEEP_ALIVE"/>
+                  <ITEM NAME="SOCKET_TIMEOUT" VALUE="SOCKET_TIMEOUT"/>
+                  <ITEM NAME="SSL_INVALID_HOSTNAME_ALLOWED" VALUE="SSL_INVALID_HOSTNAME_ALLOWED"/>
+                  <ITEM NAME="THREADS_ALLOWED_TO_BLOCK_FOR_CONNECTION_MULTIPLIER" VALUE="THREADS_ALLOWED_TO_BLOCK_FOR_CONNECTION_MULTIPLIER"/>
+                </ITEMS>
+            </ITEM>
+            <ITEM NAME="OPTIONAL_ATTRIBUTES_VALUE" FIELD="TEXT" />
+          </ITEMS>
+        </PARAMETER>
     </ADVANCED_PARAMETERS>
     <CODEGENERATION>
         <IMPORTS>
-
-            <IMPORT MODULE="mongo-java-driver-3.5.0.jar" MVN="mvn:org.talend.libraries/mongo-java-driver-3.5.0/6.0.0"  NAME="mongo-java-driver-3.5.0" UrlPath="platform:/plugin/org.talend.libraries.mongo/lib/mongo-java-driver-3.5.0.jar" REQUIRED_IF="true" />
-
+            <IMPORT MODULE="mongo-java-driver-3.8.2.jar" MVN="mvn:org.mongodb/mongo-java-driver/3.8.2"  NAME="mongo-java-driver-3.8.2"  REQUIRED_IF="(DB_VERSION != 'MONGODB_2_6_X') AND (DB_VERSION != 'MONGODB_2_5_X')"/>
+            <IMPORT MODULE="mongo-java-driver-3.4.2.jar" MVN="mvn:org.talend.libraries/mongo-java-driver-3.4.2/6.0.0"  NAME="mongo-java-driver-3.4.2" UrlPath="platform:/plugin/org.talend.libraries.mongo/lib/mongo-java-driver-3.4.2.jar" REQUIRED_IF="(DB_VERSION == 'MONGODB_2_6_X') OR (DB_VERSION == 'MONGODB_2_5_X')" />
         </IMPORTS>
     </CODEGENERATION>
     <RETURNS/>

@@ -46,7 +46,7 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
     public static final String VERSION_DISPLAY = "Qubole cloud distribution";
     public static final String HIVE_VERSION = "Qubole Hadoop 2 (Hive 2.1.1 Beta)";
     public static final String PIG_VERSION = "Qubole Hadoop 2";
-    public static final String SPARK_VERISON = "Qubole Spark 2";
+    public static final String SPARK_VERISON = "Qubole Spark";
 
     private Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
     private Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodeModuleGroups;
@@ -314,6 +314,11 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
 
     @Override
     public boolean doSupportBackpressure() {
+        return false;
+    }
+    
+    @Override
+    public boolean useOldAWSAPI() {
         return false;
     }
 }

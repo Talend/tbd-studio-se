@@ -24,6 +24,7 @@ import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
 import org.talend.hadoop.distribution.databricks.modulegroup.node.sparkbatch.DatabricksSparkBatchAzureNodeModuleGroup;
+import org.talend.hadoop.distribution.databricks.modulegroup.node.sparkstreaming.DatabricksSparkStreamingKinesisNodeModuleGroup;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
@@ -84,7 +85,13 @@ public class DatabricksDistribution extends AbstractDistribution implements Spar
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), DatabricksSparkBatchAzureNodeModuleGroup
                 .getModuleGroups(distribution, version));
+        
+        // Kinesis
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT), DatabricksSparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_COMPONENT), DatabricksSparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_AVRO_COMPONENT), DatabricksSparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
         return result;
+
     }
 
 	@Override
@@ -129,12 +136,15 @@ public class DatabricksDistribution extends AbstractDistribution implements Spar
         return true;
 	}
 
-	@Override
-	public Set<DistributionModuleGroup> getModuleGroups(
-			ComponentType componentType) {
-		// TODO Auto-generated method stub
+    @Override
+    public Set<DistributionModuleGroup> getModuleGroups(ComponentType componentType) {
         return moduleGroups.get(componentType);
-	}
+    }
+
+    @Override
+    public Set<DistributionModuleGroup> getModuleGroups(ComponentType componentType, String componentName) {
+        return nodeModuleGroups.get(new NodeComponentTypeBean(componentType, componentName));
+    }
 	
 	@Override
 	public Set<ESparkVersion> getSparkVersions() {
@@ -209,6 +219,16 @@ public class DatabricksDistribution extends AbstractDistribution implements Spar
     @Override
     public boolean doSupportBackpressure() {
         return true;
+    }
+    
+    @Override
+    public boolean doSupportS3() {
+        return true;
+    }
+    
+    @Override
+    public boolean useOldAWSAPI() {
+        return false;
     }
 
 }

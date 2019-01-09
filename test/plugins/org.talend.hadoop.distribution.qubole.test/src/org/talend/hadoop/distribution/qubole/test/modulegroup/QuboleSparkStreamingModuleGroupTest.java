@@ -27,16 +27,18 @@ public class QuboleSparkStreamingModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
-        Map<String, String> results = new HashMap<>();
-        results.put(QuboleConstant.SPARK_STREAMING_MODULE_GROUP.getModuleName(), null);
-        results.put(QuboleConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), null);
-        results.put(QuboleConstant.S3_MODULE_GROUP.getModuleName(), null);
+        Map<String, String> expectedGroups = new HashMap<>();
+        expectedGroups.put(QuboleConstant.SPARK_MODULE_GROUP.getModuleName(), null);
+        expectedGroups.put(QuboleConstant.SPARK_STREAMING_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
+        expectedGroups.put(QuboleConstant.SPARK_STREAMING_MODULE_GROUP.getModuleName(), null);
+        expectedGroups.put(QuboleConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), null);
+        expectedGroups.put(QuboleConstant.S3_MODULE_GROUP.getModuleName(), null);
 
         Set<DistributionModuleGroup> moduleGroups = QuboleSparkStreamingModuleGroup.getModuleGroups();
-        assertEquals(3, moduleGroups.size());
+        assertEquals(expectedGroups.size(), moduleGroups.size());
 
         for (DistributionModuleGroup group : moduleGroups) {
-            assertEquals(results.get(group.getModuleName()), group.getRequiredIf() == null ? null : group.getRequiredIf().getConditionString());
+            assertEquals(expectedGroups.get(group.getModuleName()), group.getRequiredIf() == null ? null : group.getRequiredIf().getConditionString());
         }
     }
 }
