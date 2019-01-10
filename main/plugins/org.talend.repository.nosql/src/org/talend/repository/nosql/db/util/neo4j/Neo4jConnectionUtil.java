@@ -49,6 +49,7 @@ public class Neo4jConnectionUtil {
     public static synchronized boolean checkConnection(NoSQLConnection connection) throws NoSQLServerException {
         boolean canConnect = true;
         final ClassLoader classLoader = NoSQLClassLoaderFactory.getClassLoader(connection);
+        ClassLoader currCL = Thread.currentThread().getContextClassLoader();
         Thread.currentThread().setContextClassLoader(classLoader);
         Object dbConnection = null;
         try {
@@ -112,6 +113,7 @@ public class Neo4jConnectionUtil {
             if (dbConnection != null) {
                 shutdownNeo4JDb(dbConnection);
             }
+            Thread.currentThread().setContextClassLoader(currCL);
         }
 
         return canConnect;
