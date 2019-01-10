@@ -47,7 +47,7 @@ public class Neo4jMetadataProviderTest {
 
         attributes.put(INeo4jAttributes.DATABASE_PATH, tmpFolder.getCanonicalPath());
 
-        attributes.put(INeo4jAttributes.DB_VERSION, INeo4jConstants.NEO4J_2_3_X);
+        attributes.put(INeo4jAttributes.DB_VERSION, INeo4jConstants.NEO4J_2_1_X);
         localConnection.setDbType("NEO4J");
         Neo4jConnectionUtil.checkConnection(localConnection);
         List<MetadataColumn> metadataColumns = new ArrayList<MetadataColumn>();

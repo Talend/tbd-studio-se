@@ -93,7 +93,7 @@ public class Neo4jConnectionUtilTest {
 
         attributes.put(INeo4jAttributes.DATABASE_PATH, tmpFolder.getCanonicalPath());
 
-        attributes.put(INeo4jAttributes.DB_VERSION, INeo4jConstants.NEO4J_2_3_X);
+        attributes.put(INeo4jAttributes.DB_VERSION, INeo4jConstants.NEO4J_2_1_X);
 
         localConnection.setDbType("NEO4J");
         // TUP-15696:"Check Service" for Neo4j does not work after first check.
