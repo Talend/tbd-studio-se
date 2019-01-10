@@ -38,7 +38,6 @@ import org.talend.repository.nosql.exceptions.NoSQLServerException;
 import org.talend.repository.nosql.factory.NoSQLClassLoaderFactory;
 import org.talend.repository.nosql.metadata.AbstractMetadataProvider;
 import org.talend.repository.nosql.reflection.NoSQLReflection;
-import org.talend.utils.security.CryptoHelper;
 
 import orgomg.cwm.objectmodel.core.CoreFactory;
 import orgomg.cwm.objectmodel.core.TaggedValue;
