@@ -46,9 +46,9 @@
 
 int nb_line_<%=cid %> = 0;
 
-com.amazonaws.auth.AWSCredentials credentials_<%=cid%> = new com.amazonaws.auth.BasicAWSCredentials(<%=accessKey%>,	<%=secretKey%>);		
+<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Amazon/CredentialsProvider.javajet"%>	
 com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient dynamoDBClient_<%=cid%> = new com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient(
-    credentials_<%=cid%>,		
+    credentialsProvider_<%=cid%>,		
     com.amazonaws.PredefinedClientConfigurations.dynamoDefault().withUserAgent("<%=AWSTracker%>")
     );
    
