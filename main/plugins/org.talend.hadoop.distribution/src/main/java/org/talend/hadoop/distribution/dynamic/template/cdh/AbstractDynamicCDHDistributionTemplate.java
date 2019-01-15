@@ -16,12 +16,14 @@ import java.util.Map;
 
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
+import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.dynamic.template.AbstractDynamicDistributionTemplate;
+import org.talend.hadoop.distribution.dynamic.template.DynamicImpalaModuleGroupTemplate;
 import org.talend.hadoop.distribution.dynamic.template.IDynamicModuleGroupTemplate;
 
 
@@ -54,6 +56,9 @@ public abstract class AbstractDynamicCDHDistributionTemplate extends AbstractDyn
         }
         if (this instanceof SqoopComponent) {
             groupTemplateMap.put(ComponentType.SQOOP, new DynamicCDHSqoopModuleGroupTemplate(pluginAdapter));
+        }
+        if (this instanceof ImpalaComponent) {
+            groupTemplateMap.put(ComponentType.IMPALA, new DynamicImpalaModuleGroupTemplate(pluginAdapter));
         }
 
         return groupTemplateMap;
