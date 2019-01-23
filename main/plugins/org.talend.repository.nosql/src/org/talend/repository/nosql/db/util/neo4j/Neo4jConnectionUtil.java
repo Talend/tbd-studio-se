@@ -32,7 +32,6 @@ import org.talend.repository.nosql.exceptions.NoSQLServerException;
 import org.talend.repository.nosql.factory.NoSQLClassLoaderFactory;
 import org.talend.repository.nosql.i18n.Messages;
 import org.talend.repository.nosql.reflection.NoSQLReflection;
-import org.talend.utils.security.CryptoHelper;
 
 /**
  *
@@ -50,6 +49,8 @@ public class Neo4jConnectionUtil {
     public static synchronized boolean checkConnection(NoSQLConnection connection) throws NoSQLServerException {
         boolean canConnect = true;
         final ClassLoader classLoader = NoSQLClassLoaderFactory.getClassLoader(connection);
+        ClassLoader currCL = Thread.currentThread().getContextClassLoader();
+        Thread.currentThread().setContextClassLoader(classLoader);
         Object dbConnection = null;
         try {
             boolean isRemote = Boolean.valueOf(connection.getAttributes().get(INeo4jAttributes.REMOTE_SERVER));
@@ -67,11 +68,19 @@ public class Neo4jConnectionUtil {
                 }else {
                     password = connection.getValue(password, false);
                 }
+                // if cancel to interrupt check connection, throw exception
+                if (Thread.currentThread().interrupted()) {
+                    throw new InterruptedException();
+                }
                 Object basic = NoSQLReflection.invokeStaticMethod("org.neo4j.driver.v1.AuthTokens", "basic", 
                         new Object[] { usename, password }, classLoader, String.class, String.class);
                 NoSQLReflection.invokeStaticMethod("org.neo4j.driver.v1.GraphDatabase", "driver", new Object[] {serverUrl, basic }, 
                         classLoader, String.class, Class.forName("org.neo4j.driver.v1.AuthToken", true, classLoader));
                 return canConnect;
+            }
+            // if cancel to interrupt check connection, throw exception
+            if (Thread.currentThread().interrupted()) {
+                throw new InterruptedException(); // $NON-NLS-1$
             }
             final Object db = getDB(connection);
             dbConnection = db;
@@ -95,11 +104,16 @@ public class Neo4jConnectionUtil {
         } catch (Exception e) {
             canConnect = false;
             resetAll();
-            throw new NoSQLServerException(Messages.getString("Neo4jConnectionUtil.cannotConnectDatabase"), e); //$NON-NLS-1$
+            if (e instanceof InterruptedException) {
+                throw new NoSQLServerException(Messages.getString("noSQLConnectionTest.cancelCheckConnection"), e); //$NON-NLS-1$
+            } else {
+                throw new NoSQLServerException(Messages.getString("Neo4jConnectionUtil.cannotConnectDatabase"), e); //$NON-NLS-1$
+            }
         } finally {
             if (dbConnection != null) {
                 shutdownNeo4JDb(dbConnection);
             }
+            Thread.currentThread().setContextClassLoader(currCL);
         }
 
         return canConnect;

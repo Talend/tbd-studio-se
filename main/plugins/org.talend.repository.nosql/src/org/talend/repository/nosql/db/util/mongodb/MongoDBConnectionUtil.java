@@ -39,7 +39,6 @@ import org.talend.repository.nosql.reflection.NoSQLReflection;
 import org.talend.utils.json.JSONArray;
 import org.talend.utils.json.JSONException;
 import org.talend.utils.json.JSONObject;
-import org.talend.utils.security.CryptoHelper;
 
 public class MongoDBConnectionUtil {
 
@@ -48,12 +47,20 @@ public class MongoDBConnectionUtil {
     public static synchronized boolean checkConnection(NoSQLConnection connection) throws NoSQLServerException {
         boolean canConnect = true;
         try {
+            // if cancel to interrupt check connection, throw exception
+            if (Thread.currentThread().interrupted()) {
+                throw new InterruptedException();
+            }
             Object db = getDB(connection);
             if (db == null) {
                 List<String> databaseNames = getDatabaseNames(connection);
                 if (databaseNames != null && databaseNames.size() > 0) {
                     for (String databaseName : databaseNames) {
                         if (StringUtils.isNotEmpty(databaseName)) {
+                            // if cancel to interrupt check connection, throw exception
+                            if (Thread.currentThread().interrupted()) {
+                                throw new InterruptedException();
+                            }
                             db = getDB(connection, databaseName);
                             if (db != null) {
                                 break;
@@ -66,10 +73,18 @@ public class MongoDBConnectionUtil {
             if (db == null) {
                 throw new NoSQLServerException(Messages.getString("MongoDBConnectionUtil.NoAvailableDatabase")); //$NON-NLS-1$
             }
+            // if cancel to interrupt check connection, throw exception
+            if (Thread.currentThread().interrupted()) {
+                throw new InterruptedException();
+            }
             NoSQLReflection.invokeMethod(db, "getStats"); //$NON-NLS-1$
         } catch (Exception e) {
             canConnect = false;
-            throw new NoSQLServerException(Messages.getString("MongoDBConnectionUtil.CanotConnectDatabase"), e); //$NON-NLS-1$
+            if (e instanceof InterruptedException) {
+                throw new NoSQLServerException(Messages.getString("noSQLConnectionTest.cancelCheckConnection"), e); //$NON-NLS-1$
+            } else {
+                throw new NoSQLServerException(Messages.getString("MongoDBConnectionUtil.CanotConnectDatabase"), e); //$NON-NLS-1$
+            }
         }
 
         return canConnect;
