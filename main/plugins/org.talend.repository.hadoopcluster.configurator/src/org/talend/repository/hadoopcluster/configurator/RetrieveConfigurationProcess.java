@@ -21,6 +21,7 @@ import java.util.List;
 
 import org.talend.core.model.components.ComponentCategory;
 import org.talend.core.model.components.IComponent;
+import org.talend.core.model.general.ModuleNeeded;
 import org.talend.core.model.metadata.IMetadataColumn;
 import org.talend.core.model.metadata.IMetadataTable;
 import org.talend.core.model.metadata.MetadataColumn;
@@ -143,6 +144,8 @@ public class RetrieveConfigurationProcess extends org.talend.designer.core.ui.ed
         this.addNodeContainer(outputContainer);       
         NodeContainer javaContainer = new NodeContainer(javaNode);
         this.addNodeContainer(javaContainer);
+        //
+        initTLibraryLoadNode(inputNode);
     }
 
     private Node getInputNode() {
@@ -194,6 +197,25 @@ public class RetrieveConfigurationProcess extends org.talend.designer.core.ui.ed
         node.getElementParameter("CODE").setValue(sb.toString());//$NON-NLS-1$
 
         return node;
+    }
+
+    private void initTLibraryLoadNode(Node node) {
+        for (ModuleNeeded module : node.getModulesNeeded()) {
+            String moduleName = module.getModuleName();
+            if (moduleName != null && moduleName.startsWith("hadoopcluster-runtime")) { //$NON-NLS-1$
+                if (module.isRequired(node.getElementParameters())) {
+                    String componentName = "tLibraryLoad";//$NON-NLS-1$
+                    Node libNode = new Node(
+                            ComponentsFactoryProvider.getInstance().get(componentName, ComponentCategory.CATEGORY_4_DI.getName()),
+                            this);
+                    libNode.setPropertyValue("UNIQUE_NAME", "tLibraryLoad_1"); //$NON-NLS-1$ //$NON-NLS-2$
+                    libNode.setPropertyValue("LIBRARY", "\"" + moduleName + "\""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                    NodeContainer nc = this.loadNodeContainer(libNode, false);
+                    this.addNodeContainer(nc);
+                }
+                break;
+            }
+        }
     }
 
     private MetadataTable getMetadataTable() {
