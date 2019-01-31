@@ -215,6 +215,13 @@
 					"classifier": "",
 					"extension": "",
 					"description": ""
+				},
+				{
+					"groupId": "jdk.tools",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
 				}
 			]
 		},
@@ -229,6 +236,13 @@
 			"exclusions": [
 				{
 					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "jdk.tools",
 					"artifactId": "*",
 					"classifier": "",
 					"extension": "",
@@ -318,6 +332,13 @@
 			"exclusions": [
 				{
 					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "jdk.tools",
 					"artifactId": "*",
 					"classifier": "",
 					"extension": "",
@@ -1023,6 +1044,15 @@
 			"mvnUri": "mvn:com.fasterxml.jackson.core/jackson-databind/2.9.2",
 			"useStudioRepository": "true",
 			"description": ""
+		},
+		{
+			"id": "azure-common-1.7.1",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "azure-common-1.7.1.jar",
+			"mvnUri": "mvn:org.talend.libraries/azure-common-1.7.1/6.0.0",
+			"useStudioRepository": "true",
+			"description": ""
 		}
     ],
     "moduleGroups": [
@@ -1208,6 +1238,16 @@
 			"description": "",
 			"modules": [
 				"kite-data-core"
+			]
+		},
+		{
+			"id": "SPARK-AZURE-LIB-MRREQUIRED-DYNAMIC",
+			"description": "",
+			"modules": [
+				"azure-common-1.7.1",
+				"hadoop-azure",
+				"hadoop-azure-datalake",
+				"hadoop-yarn-server-web-proxy"
 			]
 		}
     ],
