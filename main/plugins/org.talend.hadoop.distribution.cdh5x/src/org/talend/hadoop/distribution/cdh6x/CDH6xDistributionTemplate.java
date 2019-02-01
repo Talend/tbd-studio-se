@@ -159,4 +159,9 @@ HCatalogComponent, PigComponent, MRComponent, HiveComponent, ImpalaComponent, Sq
     public String getSqoopPackageName() {
         return ESqoopPackageName.ORG_APACHE_SQOOP.toString();
     }
+    
+    @Override
+    public boolean doSupportSSLwithKerberos() {
+        return true;
+    }
 }
