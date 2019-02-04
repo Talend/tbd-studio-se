@@ -1232,7 +1232,8 @@
 				"json-20080701",
 				"commons-lang3-3.4",
 				"jackson-core",
-				"jackson-databind"
+				"jackson-databind",
+				"kite-data-core"
 			]
 		},
 		{
