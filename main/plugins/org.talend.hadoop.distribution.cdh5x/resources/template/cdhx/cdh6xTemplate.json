@@ -1119,7 +1119,9 @@
 			"description": "",
 			"modules": [
 				"datafu",
-				"pig"
+				"pig",
+				"jackson-core",
+				"jackson-databind"
 			]
 		},
         {
