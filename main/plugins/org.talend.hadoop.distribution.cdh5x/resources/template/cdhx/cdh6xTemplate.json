@@ -1046,6 +1046,17 @@
 			"description": ""
 		},
 		{
+			"id": "jackson-annotations",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"groupId": "com.fasterxml.jackson.core",
+			"artifactId": "jackson-annotations",
+			"version": "2.9.2",
+			"mvnUri": "mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.2",
+			"useStudioRepository": "true",
+			"description": ""
+		},
+		{
 			"id": "azure-common-1.7.1",
 			"type": "STANDARD",
 			"context": "{properties.context}",
@@ -1076,7 +1087,10 @@
 			"id": "HDFS-LIB-DYNAMIC",
 			"description": "jars for hdfs, only module.id permitted",
 			"modules": [
-				"hadoop-client"
+				"hadoop-client",
+				"jackson-core",
+				"jackson-databind",
+				"jackson-annotations"
 			]
 		},
         {
