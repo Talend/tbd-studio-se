@@ -25,7 +25,16 @@
 		%>
 		// if bulkWriteOperationCounter_<%=cid%> == 1 the ulkWriteOperation_<%=cid%> is empty, do not execute.
 		if (bulkWriteOperationCounter_<%=cid%> != 1) {
-		<%if(dbversion.equals("MONGODB_3_5_X")){%>
+        <%          
+        if ("true".equalsIgnoreCase(useExistingConn)) {
+            List< ? extends INode> nodes =  node.getProcess().getNodesOfType("tMongoDBConnection");
+            for (INode ne : nodes) {
+                if (connectionName.equals(ne.getUniqueName())) {
+                    dbversion = ElementParameterParser.getValue(ne, "__DB_VERSION__");
+                }
+            }
+        }
+		if(dbversion.equals("MONGODB_3_5_X")){%>
 		    coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
 		    <%} else {%>
 		    bulkWriteOperation_<%=cid%>.execute();
