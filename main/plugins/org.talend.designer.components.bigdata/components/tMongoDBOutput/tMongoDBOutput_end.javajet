@@ -3,6 +3,7 @@
 		org.talend.core.model.process.INode
 		org.talend.designer.codegen.config.CodeGeneratorArgument
 		org.talend.core.model.process.ElementParameterParser
+        java.util.List
 	"
 %>
 <%
@@ -12,6 +13,7 @@
 	String useExistingConn = ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__");
 	String dataAction = ElementParameterParser.getValue(node,"__DATA_ACTION__");
 	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+    String connectionName = ElementParameterParser.getValue(node,"__CONNECTION__");
 
 	// BulkWrite is only supportted on Mongo 2.6+ drivers
 	String dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
@@ -33,8 +35,9 @@
                     dbversion = ElementParameterParser.getValue(ne, "__DB_VERSION__");
                 }
             }
-        }
-		if(dbversion.equals("MONGODB_3_5_X")){%>
+        }%>
+        //111: <%=dbversion%>
+		<%if(dbversion.equals("MONGODB_3_5_X")){%>
 		    coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
 		    <%} else {%>
 		    bulkWriteOperation_<%=cid%>.execute();
