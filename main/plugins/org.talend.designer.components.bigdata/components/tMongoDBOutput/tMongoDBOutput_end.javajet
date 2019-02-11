@@ -36,7 +36,6 @@
                 }
             }
         }%>
-        //111: <%=dbversion%>
 		<%if(dbversion.equals("MONGODB_3_5_X")){%>
 		    coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
 		    <%} else {%>
