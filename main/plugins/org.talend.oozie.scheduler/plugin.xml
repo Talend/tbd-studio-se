@@ -8,7 +8,7 @@
             class="org.talend.oozie.scheduler.views.TOozieView"
             icon="icons/oozie_schedule.gif"
             id="org.talend.oozie.scheduler.views.OozieSchedulerView"
-            name="Talend Oozie"
+            name="Talend Oozie (Deprecated)"
             restorable="true">
       </view>
    </extension>
@@ -18,7 +18,7 @@
             category="org.talend.designer.runprocess"
             class="org.talend.oozie.scheduler.ui.prefs.OozieExecutionPreferencePage"
             id="org.talend.oozie.scheduler.ui.prefs.OoziePreferencePage"
-            name="Oozie">
+            name="Oozie (Deprecated)">
       </page>
    </extension>
    <extension

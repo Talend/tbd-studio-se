@@ -109,7 +109,7 @@ public class OozieWizard extends HadoopRepositoryWizard<OozieConnection> {
 
     @Override
     public void addPages() {
-        setWindowTitle(Messages.getString("OozieWizard.oozieConnection")); //$NON-NLS-1$
+        setWindowTitle(Messages.getString("OozieWizard.oozieConnection.deprecated")); //$NON-NLS-1$
         setDefaultPageImageDescriptor(ImageProvider.getImageDesc(EOozieImage.OOZIE_WIZ));
         if (isToolBar) {
             pathToSave = null;

@@ -203,12 +203,12 @@ public class TOozieView extends ViewPart {
                 executeJobComposite.initValues();
                 executeJobComposite.setContextComposite(contextComposite);
             }
-            tabFactory.setTitle(Messages.getString("OozieSchedulerView_Part_title_job", label), null);
-            setPartName(Messages.getString("OozieSchedulerView_Part_name_job", label));
+            tabFactory.setTitle(Messages.getString("OozieSchedulerView_Part_title_job_deprecated", label), null);
+            setPartName(Messages.getString("OozieSchedulerView_Part_name_job_deprecated", label));
             contextComposite.setProcess(process);
         } else {
-            tabFactory.setTitle(Messages.getString("OozieSchedulerView_part_title_name_nojob"), null);
-            setPartName(Messages.getString("OozieSchedulerView_Part_name_nojob"));
+            tabFactory.setTitle(Messages.getString("OozieSchedulerView_part_title_name_nojob_deprecated"), null);
+            setPartName(Messages.getString("OozieSchedulerView_Part_name_nojob_deprecated"));
             if (executeJobComposite != null && !executeJobComposite.isDisposed()) {
                 executeJobComposite.initValues();
             }
