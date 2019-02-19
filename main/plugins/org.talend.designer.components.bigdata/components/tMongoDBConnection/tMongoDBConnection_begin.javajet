@@ -98,7 +98,7 @@
             %>
                     .connectTimeout(<%=value%>)
             <%
-            } else if ("CURSORFINALIZERENABLED".equals(key)){
+            } else if ("CURSOR_FINALIZER_ENABLED".equals(key)){
             %>
                     .cursorFinalizerEnabled(<%=value%>)
             <%
