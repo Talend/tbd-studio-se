@@ -1064,7 +1064,16 @@
 			"mvnUri": "mvn:org.talend.libraries/azure-common-1.7.1/6.0.0",
 			"useStudioRepository": "true",
 			"description": ""
-		}
+		},
+      	{
+            "id": "hbase-mapreduce-2.0.0",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "hbase-mapreduce-2.0.0.jar",
+            "mvnUri": "mvn:org.apache.hbase/hbase-mapreduce/2.0.0",
+            "useStudioRepository": "true",
+            "description": ""
+        }
     ],
     "moduleGroups": [
         {
@@ -1157,7 +1166,8 @@
 			"description": "",
 			"modules": [
 				"hbase-hadoop-compat",
-				"hbase-server"
+				"hbase-server",
+				"hbase-mapreduce-2.0.0"
 			]
 		},
 		{
