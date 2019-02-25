@@ -88,11 +88,15 @@
                         }
 		            }
   				}
-  				// Get the BasicDBObject
+				// Get the BasicDBObject
 				%>
 				com.mongodb.BasicDBObject updateObj_<%=cid%> = updateObjectUtil_<%=cid%>.getObject();
-				<%
-
+<%
+				if (dbversion.equals("MONGODB_2_5_X")) {
+%>
+				try {
+<%
+				}
 				// INSERT operation
 				if ("INSERT".equalsIgnoreCase(dataAction)) {
 					// Bulk Writes
@@ -252,33 +256,33 @@
 				<%
 				}
 
-				// Die on Error 
-				// Used only with MONGODB 2.5
-				// 2.5 doesn't support BulkWrites => No BulkWrites Die and Error
-                if (dbversion.equals("MONGODB_2_5_X")) {
-                    %>
-    				if(resultMessage_<%=cid%>!=null && resultMessage_<%=cid%>.getError()!=null){
-    					<%
-    					if(dieOnError){
-    					%>
-    						throw new Exception(resultMessage_<%=cid%>.getError());
-    					<%
-    					}else{
-    						if(isLog4jEnabled){
-    						%>
-    							log.error("<%=cid%> - " + resultMessage_<%=cid%>.getError());
-    						<%
-    						}
-    						%>
-    						System.err.println(resultMessage_<%=cid%>.getError());
-    					<%
-    					}
-    					%>
-    				}
-    				<%
-                }
-
-    			%>
+			// Die on Error
+			// Used only with MONGODB 2.5
+			// 2.5 doesn't support BulkWrites => No BulkWrites Die and Error
+			if (dbversion.equals("MONGODB_2_5_X")) {
+%>
+				} catch (Exception e) {
+<%
+						if(dieOnError){
+%>
+							throw e;
+<%
+						} else {
+							if(isLog4jEnabled) {
+%>
+								log.error("<%=cid%> - " + e.getMessage());
+<%
+							} else {
+%>
+								System.err.println("<%=cid%> - " + e.getMessage());
+<%
+							}
+						}
+%>
+				}
+<%
+			}
+%>
 				nb_line_<%=cid %> ++;
 				<%
 

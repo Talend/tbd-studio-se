@@ -8,7 +8,7 @@
             folder="metadata/hadoop/oozie"
             icon="icons/Oozie_icon16.png"
             isResouce="true"
-            label="%OOZIE"
+            label="%OOZIE_DEPRECATED"
             ordinal="52"
             products="DI"
             type="OOZIE">

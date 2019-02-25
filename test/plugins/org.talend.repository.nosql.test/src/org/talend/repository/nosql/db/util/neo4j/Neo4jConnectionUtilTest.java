@@ -14,8 +14,12 @@ package org.talend.repository.nosql.db.util.neo4j;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.File;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import org.eclipse.emf.common.util.EMap;
 import org.junit.After;
@@ -28,6 +32,7 @@ import org.talend.repository.model.nosql.NosqlFactory;
 import org.talend.repository.nosql.constants.INoSQLCommonAttributes;
 import org.talend.repository.nosql.db.common.neo4j.INeo4jAttributes;
 import org.talend.repository.nosql.db.common.neo4j.INeo4jConstants;
+import org.talend.repository.nosql.exceptions.NoSQLServerException;
 import org.talend.utils.io.FilesUtils;
 
 /**
@@ -98,8 +103,36 @@ public class Neo4jConnectionUtilTest {
         localConnection.setDbType("NEO4J");
         // TUP-15696:"Check Service" for Neo4j does not work after first check.
         // so check twice here
-        assertTrue(Neo4jConnectionUtil.checkConnection(localConnection));
-        assertTrue(Neo4jConnectionUtil.checkConnection(localConnection));
+
+        ExecutorService threadExecutor = null;
+        try {
+            threadExecutor = Executors.newSingleThreadExecutor();
+            Future future = threadExecutor.submit(new Runnable() {
+
+                public void run() {
+                    try {
+                        Neo4jConnectionUtil.checkConnection(localConnection);
+                        assertTrue(Neo4jConnectionUtil.checkConnection(localConnection));
+                    } catch (NoSQLServerException e) {
+                        fail(e.getMessage());
+                    }
+                }
+            });
+
+            while (true) {
+                if (future.get() == null) {
+                    break;
+                }
+                Thread.sleep(1000);
+            }
+        } catch (Exception exception) {
+            fail(exception.getMessage());
+        } finally {
+            if (threadExecutor != null) {
+                threadExecutor.shutdown();
+            }
+        }
+
     }
     
     @Test

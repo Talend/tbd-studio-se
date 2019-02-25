@@ -6,9 +6,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.databricks"
-            id="talend-bigdata-launcher-platform-1.2.7-20180828.jar"
-            name="talend-bigdata-launcher-platform-1.2.7-20180828.jar"
-            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-platform-1.2.7-20180828/6.0.0">
+            id="talend-bigdata-launcher-platform-1.3.0.jar"
+            name="talend-bigdata-launcher-platform-1.3.0.jar"
+            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-platform-1.3.0/6.0.0">
         </libraryNeeded>
                            
 		 <libraryNeeded
@@ -206,12 +206,34 @@
             name="aws-java-sdk-kinesis-1.11.160.jar"
             mvn_uri="mvn:org.talend.libraries/aws-java-sdk-kinesis-1.11.160/6.0.0"/>
 
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.databricks"
+            id="gson-2.3.jar"
+            name="gson-2.3.jar"
+            mvn_uri="mvn:com.google.code.gson/gson/2.3"/>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.databricks"
+            id="jackson-databind-2.8.9.jar"
+            name="jackson-databind-2.8.9.jar"
+            mvn_uri="mvn:com.fasterxml.jackson.core/jackson-databind/2.8.9"/>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.databricks"
+            id="jackson-annotations-2.8.9.jar"
+            name="jackson-annotations-2.8.9.jar"
+            mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.8.9"/>
+
         <!-- Big Data launcher group -->
         <libraryNeededGroup
                 description="Big Data launcher libraries for Databricks"
                 id="BIGDATA-LAUNCHER-LIB-DATABRICKS"
                 name="BIGDATA-LAUNCHER-LIB-DATABRICKS"  >
-			<library id="talend-bigdata-launcher-platform-1.2.7-20180828.jar" />
+			<library id="talend-bigdata-launcher-platform-1.3.0.jar" />
+			<library id="gson-2.3.jar" />
+			<library id="jackson-core-2.8.9.jar" />
+			<library id="jackson-databind-2.8.9.jar" />
+			<library id="jackson-annotations-2.8.9.jar" />
         </libraryNeededGroup>
         
         <!-- Spark group -->

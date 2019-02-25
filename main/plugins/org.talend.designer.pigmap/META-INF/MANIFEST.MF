@@ -22,7 +22,8 @@ Require-Bundle: org.eclipse.ui,
  org.talend.designer.components.localprovider,
  org.talend.repository,
  org.talend.datatools.xml,
- org.talend.components.api;bundle-version="0.1.0"
+ org.talend.components.api;bundle-version="0.1.0",
+ org.talend.utils
 Bundle-ActivationPolicy: lazy
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
