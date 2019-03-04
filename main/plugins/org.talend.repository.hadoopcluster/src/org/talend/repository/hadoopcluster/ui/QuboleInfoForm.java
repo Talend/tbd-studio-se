@@ -652,7 +652,8 @@ public class QuboleInfoForm extends AbstractHadoopForm<HadoopClusterConnection> 
     private void collectConfigurationParameters(boolean isUse) {
         addContextParams(EHadoopParamName.QuboleAPIToken, isUse);
         addContextParams(EHadoopParamName.QuboleClusterLabel, useClusterLabelButton.getSelection());
-        addContextParams(EHadoopParamName.QuboleEndpointUrl, changeAPIButton.getSelection());
+        //For bug TUP-21662, stop setting EndpointUrl as the context parameter and the value will be set from the wizard.
+        //addContextParams(EHadoopParamName.QuboleEndpointUrl, changeAPIButton.getSelection());
     }
 
     private void collectAuthenticationParameters(boolean isUse) {
@@ -660,7 +661,8 @@ public class QuboleInfoForm extends AbstractHadoopForm<HadoopClusterConnection> 
         addContextParams(EHadoopParamName.QuboleS3SecretKey, isUse);
         addContextParams(EHadoopParamName.QuboleS3BucketName, isUse);
         addContextParams(EHadoopParamName.QuboleS3BucketKey, isUse);
-        addContextParams(EHadoopParamName.QuboleS3Region, isUse);
+        //For bug TUP-21662. stop setting Region as the context parameter and the value will be set from the wizard.
+        //addContextParams(EHadoopParamName.QuboleS3Region, isUse);
     }
 
     private void fillDefaults() {
