@@ -204,7 +204,9 @@ public class OozieMonitoringComposite extends ScrolledComposite implements IDyna
                     // linux swt in eclipse4.10 has a bug that we can't pass empty string or null
                     browser.setUrl(oozieEndPoint);
                 } else {
-                    browser.setUrl("invalid");
+                    String message = Messages.getString("OozieMonitoringComposite.errorUrl");
+                    Exception e = new Exception(message);
+                    ExceptionHandler.process(e);
                 }
             }
         }
