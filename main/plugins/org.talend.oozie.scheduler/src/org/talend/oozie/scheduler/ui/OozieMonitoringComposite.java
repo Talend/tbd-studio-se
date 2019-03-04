@@ -199,7 +199,13 @@ public class OozieMonitoringComposite extends ScrolledComposite implements IDyna
         boolean hasProcess = OozieJobTrackerListener.getProcess() != null;
         if (hasProcess) {
             if (browser != null && !browser.isDisposed()) {
-                browser.setUrl(getOozieEndPoint());
+                String oozieEndPoint = getOozieEndPoint();
+                if (oozieEndPoint != null && !oozieEndPoint.trim().isEmpty()) {
+                    // linux swt in eclipse4.10 has a bug that we can't pass empty string or null
+                    browser.setUrl(oozieEndPoint);
+                } else {
+                    browser.setUrl("invalid");
+                }
             }
         }
     }
