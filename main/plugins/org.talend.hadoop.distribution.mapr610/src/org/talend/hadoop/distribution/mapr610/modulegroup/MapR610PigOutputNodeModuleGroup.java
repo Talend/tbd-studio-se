@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -31,23 +31,23 @@ import org.talend.hadoop.distribution.mapr610.MapR610Distribution;
 public class MapR610PigOutputNodeModuleGroup {
 
     private static final ComponentCondition condition = new MultiComponentCondition(
-    //
+
             new LinkedNodeExpression(PigOutputConstant.PIGSTORE_COMPONENT_LINKEDPARAMETER,
-                    ComponentType.PIG.getDistributionParameter(), EqualityOperator.EQ, EHadoopDistributions.MAPR.getName()), //
-            BooleanOperator.AND, //
+                    ComponentType.PIG.getDistributionParameter(), EqualityOperator.EQ, EHadoopDistributions.MAPR.getName()), 
+            BooleanOperator.AND, 
             new LinkedNodeExpression(PigOutputConstant.PIGSTORE_COMPONENT_LINKEDPARAMETER,
                     ComponentType.PIG.getVersionParameter(), EqualityOperator.EQ, MapR610Distribution.VERSION));
 
-    private static final ComponentCondition s3condition = new MultiComponentCondition( //
-            new MultiComponentCondition( //
-                    condition, //
-                    BooleanOperator.AND, //
-                    new BasicExpression(PigOutputConstant.PIGSTORE_S3_LOCATION)),//
-            BooleanOperator.AND, //
-            new MultiComponentCondition( //
-                    new BasicExpression(PigOutputConstant.PIGSTORE_STORE, EqualityOperator.NOT_EQ, "HCATSTORER"), // $NON-NLS-1$
-                    BooleanOperator.AND, //
-                    new BasicExpression(PigOutputConstant.PIGSTORE_STORE, EqualityOperator.NOT_EQ, "HBASESTORAGE"))); // $NON-NLS-1$
+    private static final ComponentCondition s3condition = new MultiComponentCondition( 
+            new MultiComponentCondition( 
+                    condition, 
+                    BooleanOperator.AND, 
+                    new BasicExpression(PigOutputConstant.PIGSTORE_S3_LOCATION)),
+            BooleanOperator.AND, 
+            new MultiComponentCondition( 
+                    new BasicExpression(PigOutputConstant.PIGSTORE_STORE, EqualityOperator.NOT_EQ, "HCATSTORER"),
+                    BooleanOperator.AND,
+                    new BasicExpression(PigOutputConstant.PIGSTORE_STORE, EqualityOperator.NOT_EQ, "HBASESTORAGE")));
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();

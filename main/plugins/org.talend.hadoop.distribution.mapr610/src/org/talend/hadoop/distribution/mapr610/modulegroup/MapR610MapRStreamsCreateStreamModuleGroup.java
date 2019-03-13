@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -34,8 +34,8 @@ public class MapR610MapRStreamsCreateStreamModuleGroup {
         final ComponentCondition isCurrentDistribution = new NestedComponentCondition(new MultiComponentCondition(
                 new SimpleComponentCondition(new LinkedNodeExpression("CONNECTION",
                         ComponentType.MAPRSTREAMS.getDistributionParameter(), EqualityOperator.EQ,
-                        MapR610Distribution.DISTRIBUTION_NAME)), //
-                BooleanOperator.AND, //
+                        MapR610Distribution.DISTRIBUTION_NAME)), 
+                BooleanOperator.AND, 
                 new SimpleComponentCondition(new LinkedNodeExpression("CONNECTION",
                         ComponentType.MAPRSTREAMS.getVersionParameter(), EqualityOperator.EQ, MapR610Distribution.VERSION))));
 

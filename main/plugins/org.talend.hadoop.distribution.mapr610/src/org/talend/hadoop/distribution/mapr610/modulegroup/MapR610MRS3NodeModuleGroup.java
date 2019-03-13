@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -27,7 +27,7 @@ public class MapR610MRS3NodeModuleGroup {
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         DistributionModuleGroup dmg = new DistributionModuleGroup(
-                MapR610Constant.SPARK_S3_MRREQUIRED_MODULE_GROUP.getModuleName(), true, //
+                MapR610Constant.SPARK_S3_MRREQUIRED_MODULE_GROUP.getModuleName(), true, 
                 new MRLinkedNodeCondition(EHadoopDistributions.MAPR.getName(), MapR610Distribution.VERSION,
                         MRConstant.MR_MRCONFIGURATION_LINKEDPARAMETER).getCondition());
         hs.add(dmg);
