@@ -389,6 +389,11 @@ public class MapR610Distribution extends AbstractMapRDistribution implements HDF
     }
 
     @Override
+    public boolean doSupportAzureDataLakeStorage() {
+        return true;//let try
+    }
+
+    @Override
     public boolean doImportSparkHiveContextDependencies() {
         return true;
     }
