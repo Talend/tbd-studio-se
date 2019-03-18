@@ -21,7 +21,7 @@
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="datanucleus-core-4.1.6.jar"
-            name="datanucleus-core-4.1.6.jar" mvn_uri="mvn:org.talend.libraries/datanucleus-core-4.1.6/*6.2.0" >
+            name="datanucleus-core-4.1.6.jar" mvn_uri="mvn:org.talend.libraries/datanucleus-core-4.1.6/6.2.0" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
@@ -127,7 +127,7 @@
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="zookeeper-3.4.11-mapr-1808.jar"
-            name="zookeeper-3.4.11-mapr-1808.jar" mvn_uri="mvn:org.talend.libraries/zookeeper-3.4.11-mapr-1808/6.0.0" >
+            name="zookeeper-3.4.11-mapr-1808.jar" mvn_uri="mvn:org.talend.libraries/zookeeper/3.4.11-mapr-1808" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
@@ -155,19 +155,19 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hbase-client-1.1.8-mapr-1901.jar"
             name="hbase-client-1.1.8-mapr-1901.jar"
-            mvn_uri="mvn:org.talend.libraries/hbase-client-1.1.8-mapr-1808/6.0.0" >
+            mvn_uri="mvn:org.talend.libraries/hbase-client/1.1.8-mapr-1901" >
         </libraryNeeded>
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hbase-common-1.1.8-mapr-1901.jar"
             name="hbase-common-1.1.8-mapr-1901.jar"
-            mvn_uri="mvn:org.talend.libraries/hbase-common-1.1.8-mapr-1901/6.0.0" >
+            mvn_uri="mvn:org.talend.libraries/hbase-common/1.1.8-mapr-1901" >
         </libraryNeeded>
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hbase-protocol-1.1.8-mapr-1901.jar"
             name="hbase-protocol-1.1.8-mapr-1901.jar"
-            mvn_uri="mvn:org.talend.libraries/hbase-protocol-1.1.8-mapr-1901/6.0.0" >
+            mvn_uri="mvn:org.talend.libraries/hbase-protocol/1.1.8-mapr-1901" >
        </libraryNeeded>
 		<libraryNeeded
              context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
@@ -260,7 +260,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="piggybank-0.16.0-mapr-1901.jar"
             name="piggybank-0.16.0-mapr-1901.jar"
-            mvn_uri="mvn:org.talend.libraries/piggybank/0.16.0-1901">
+            mvn_uri="mvn:org.talend.libraries/piggybank/0.16.0-mapr-1901">
         </libraryNeeded>
         
         <libraryNeeded
@@ -295,7 +295,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="aws-java-sdk-bundle-1.11.199.jar"
             name="aws-java-sdk-bundle-1.11.199.jar"
-            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-bundle-1.11.199/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-bundle/1.11.199">
         </libraryNeeded>
         
         <!--libraryNeeded
@@ -309,14 +309,14 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hbase-server-1.1.8-mapr-1901.jar"
             name="hbase-server-1.1.8-mapr-1901.jar"
-            mvn_uri="mvn:org.talend.libraries/hbase-server-1.1.8-mapr-1901/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/hbase-server/1.1.8-mapr-1901">
         </libraryNeeded>
 
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hbase-hadoop2-compat-1.1.8-mapr-1901.jar"
             name="hbase-hadoop2-compat-1.1.8-mapr-1901.jar"
-            mvn_uri="mvn:org.talend.libraries/hbase-hadoop2-compat-1.1.8-mapr-1901/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/hbase-hadoop2-compat/1.1.8-mapr-1901">
         </libraryNeeded>
         
         <libraryNeeded
@@ -341,9 +341,10 @@
         </libraryNeeded>
 
 		<libraryNeeded
+			context="plugin:org.talend.libraries.apache.common"
             id="commons-math3-3.6.1.jar"
-            name="commons-math3-3.6.1.jar" mvn_uri="mvn:org.talend.libraries/commons-math3/3.6.1"
-            context="plugin:org.talend.libraries.apache.common">
+            name="commons-math3-3.6.1.jar" 
+            mvn_uri="mvn:org.talend.libraries/commons-math3/3.6.1">
         </libraryNeeded>
 
        <libraryNeeded
@@ -377,13 +378,13 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
             id="json-20090211.jar" 
             name="json-20090211.jar"
-            mvn_uri="mvn:org.talend.libraries/json-20090211/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/json/20090211">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
             id="slf4j-api-1.7.25.jar" 
             name="slf4j-api-1.7.25.jar"
-            mvn_uri="mvn:org.talend.libraries/slf4j-api/1.7.25/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/slf4j-api/1.7.25">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
@@ -419,7 +420,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
             id="xalan-2.7.2.jar" 
             name="xalan-2.7.2.jar"
-            mvn_uri="mvn:org.talend.libraries/xalan-2.7.2/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/xalan/2.7.2">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
@@ -538,7 +539,7 @@
             context="plugin:org.talend.hadoop.distribution.cdh5120"
             id="hadoop-azure-datalake-2.7.0-mapr-1808.jar"
             name="hadoop-azure-datalake-2.7.0-mapr-1808.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-azure-datalake-2.7.0-mapr-1808/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/hadoop-azure-datalake/2.7.0-mapr-1808">
         </libraryNeeded>
 		<!-- -->
 		
@@ -744,9 +745,9 @@
 		
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="hadoop-aws-2.7.0-mapr-1808.jar" name="hadoop-aws-2.7.0-mapr-1808.jar" mvn_uri="mvn:org.talend.libraries/hadoop-aws/2.7.0-mapr-1808/6.0.0"/>
 		-->
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="jets3t-0.9.4.jar" name="jets3t-0.9.4.jar" mvn_uri="mvn:org.talend.libraries/jets3t-0.9.4/6.0.0"/>
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="jets3t-0.9.4.jar" name="jets3t-0.9.4.jar" mvn_uri="mvn:org.talend.libraries/jets3t/0.9.4"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="avro-1.8.1.jar" name="avro-1.8.1.jar" mvn_uri="mvn:org.apache.avro/avro/1.8.1"/>
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="aws-java-sdk-bundle-1.11.199.jar" name="aws-java-sdk-bundle-1.11.199.jar" mvn_uri="mvn:org.talend.libraries/aws-java-sdk-bundle-1.11.199/6.0.0"/>
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="aws-java-sdk-bundle-1.11.199.jar" name="aws-java-sdk-bundle-1.11.199.jar" mvn_uri="mvn:org.talend.libraries/aws-java-sdk-bundle/1.11.199"/>
 
 		<!-- Groups -->
         <libraryNeededGroup
