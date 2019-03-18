@@ -743,8 +743,8 @@
 		<!--
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="zkclient-0.10.jar" name="zkclient-0.10.jar" mvn_uri="mvn:com.101tec/zkclient/0.10"/>
 		
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="hadoop-aws-2.7.0-mapr-1808.jar" name="hadoop-aws-2.7.0-mapr-1808.jar" mvn_uri="mvn:org.talend.libraries/hadoop-aws/2.7.0-mapr-1808/6.0.0"/>
 		-->
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="hadoop-aws-2.7.0-mapr-1808.jar" name="hadoop-aws-2.7.0-mapr-1808.jar" mvn_uri="mvn:org.talend.libraries/hadoop-aws/2.7.0-mapr-1808"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="jets3t-0.9.4.jar" name="jets3t-0.9.4.jar" mvn_uri="mvn:org.talend.libraries/jets3t/0.9.4"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="avro-1.8.1.jar" name="avro-1.8.1.jar" mvn_uri="mvn:org.apache.avro/avro/1.8.1"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="aws-java-sdk-bundle-1.11.199.jar" name="aws-java-sdk-bundle-1.11.199.jar" mvn_uri="mvn:org.talend.libraries/aws-java-sdk-bundle/1.11.199"/>
