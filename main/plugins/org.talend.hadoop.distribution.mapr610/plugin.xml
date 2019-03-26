@@ -1029,7 +1029,7 @@
 			<library id="jersey-media-jaxb-2.25.1.jar"/>
 			<library id="jersey-server-2.25.1.jar"/>
 			<library id="jline-2.12.1.jar"/>
-			<library id="joda-time-2.9.9.jar"/>
+			<library id="joda-time-2.9.3.jar"/>
 			<library id="jodd-core-3.5.2.jar"/>
 			<library id="jpam-1.1.jar"/>
 			<library id="json4s-ast_2.11-3.2.11.jar"/>
@@ -1160,13 +1160,14 @@
                 name="PIG-LIB-MAPR610">
             <library id="antlr-runtime-3.5.2.jar"/>
             <library id="jline-1.0.jar"/>
-            <library id="joda-time-2.9.9.jar"/>
+            <library id="joda-time-2.9.3.jar"/>
             <library id="snappy-java-1.0.4.1.jar" />
             <library id="hive-exec-2.3.3-mapr-1901.jar"/> <!-- was hive-exec-1.2.0-mapr-1710.jar-->
             <library id="hive-metastore-2.3.3-mapr-1901.jar"/>
             <library id="flexjson-2.1.jar"/>
             <library id="pig-core-h2.jar"/>
             <library id="automaton-1.11-8.jar"/>
+			<library id="javax.servlet-api-3.1.0.jar"/>
         </libraryNeededGroup>
         
        <!-- Pig HCatalog group -->
