@@ -139,7 +139,7 @@
 <%
 						}else if(javaType == JavaTypesManager.BYTE_ARRAY) {
 %>
-						<%=firstConnName %>.<%=column.getLabel() %> = (new sun.misc.BASE64Decoder()).decodeBuffer(valueCol_<%=cid%>.toString());
+						<%=firstConnName %>.<%=column.getLabel() %> = java.util.Base64.getMimeDecoder().decode(valueCol_<%=cid%>.toString());
 <%
 						} else if(javaType == JavaTypesManager.STRING){
 %>
