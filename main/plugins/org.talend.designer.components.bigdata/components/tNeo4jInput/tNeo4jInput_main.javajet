@@ -312,7 +312,7 @@
 					if (value_<%=cid%> instanceof byte[]) {
 						<%=outgoingConnName%>.<%=column%> = (byte[]) value_<%=cid%>;
 					}else{
-						<%=outgoingConnName%>.<%=column%>=(new sun.misc.BASE64Decoder()).decodeBuffer(value_<%=cid%>.toString());
+						<%=outgoingConnName%>.<%=column%>=java.util.Base64.getMimeDecoder().decode(value_<%=cid%>.toString());
 					}
 					<%
 				} else if (cType.equals("id_Object")) {

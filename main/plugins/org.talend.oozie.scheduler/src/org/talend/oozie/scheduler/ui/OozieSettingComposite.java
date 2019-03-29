@@ -36,9 +36,9 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.talend.commons.ui.command.CommandStackForComposite;
+import org.talend.commons.ui.gmf.util.DisplayUtils;
 import org.talend.commons.ui.runtime.image.EImage;
 import org.talend.commons.ui.runtime.image.ImageProvider;
 import org.talend.commons.ui.swt.formtools.Form;
@@ -701,8 +701,8 @@ public class OozieSettingComposite extends ScrolledComposite {
 
                 @Override
                 public void widgetSelected(SelectionEvent e) {
-                    RepositoryReviewDialog dialog = new RepositoryReviewDialog(new Shell(), ERepositoryObjectType.METADATA,
-                            "OOZIE");
+                    RepositoryReviewDialog dialog = new RepositoryReviewDialog(DisplayUtils.getDefaultShell(false),
+                            ERepositoryObjectType.METADATA, "OOZIE");
                     if (dialog.open() == RepositoryReviewDialog.OK) {
                         String id = dialog.getResult().getObject().getId();
                         repositoryId = id;

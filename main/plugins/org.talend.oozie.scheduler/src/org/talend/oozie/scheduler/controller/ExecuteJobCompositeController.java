@@ -46,6 +46,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.browser.IWebBrowser;
 import org.eclipse.ui.browser.IWorkbenchBrowserSupport;
+import org.talend.commons.ui.gmf.util.DisplayUtils;
 import org.talend.commons.ui.runtime.exception.ExceptionHandler;
 import org.talend.core.CorePlugin;
 import org.talend.core.hadoop.version.EHadoopDistributions;
@@ -672,7 +673,7 @@ public class ExecuteJobCompositeController {
 
                 @Override
                 public void run() {
-                    MessageDialog.openError(new Shell(), title, mesasge);
+                    MessageDialog.openError(DisplayUtils.getDefaultShell(false), title, mesasge);
                 }
             });
         }
