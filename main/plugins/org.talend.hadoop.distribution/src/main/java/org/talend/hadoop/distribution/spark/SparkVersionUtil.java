@@ -58,6 +58,9 @@ public class SparkVersionUtil {
         if ("SPARK_230".equals(apiVersion)) { //$NON-NLS-1$
             return ESparkVersion.SPARK_2_3;
         }
+        if ("SPARK_240".equals(apiVersion)) { //$NON-NLS-1$
+            return ESparkVersion.SPARK_2_4;
+        }
         return null;
     }
 
@@ -85,6 +88,9 @@ public class SparkVersionUtil {
         }
         if ("SPARK_2_3_0".equals(version)) { //$NON-NLS-1$
             return ESparkVersion.SPARK_2_3;
+        }
+        if ("SPARK_2_4_0".equals(version)) { //$NON-NLS-1$
+            return ESparkVersion.SPARK_2_4;
         }
         return null;
     }
