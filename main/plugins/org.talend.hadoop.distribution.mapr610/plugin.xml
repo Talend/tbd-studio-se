@@ -16,128 +16,152 @@
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="datanucleus-api-jdo-4.2.4.jar"
-            name="datanucleus-api-jdo-4.2.4.jar" mvn_uri="mvn:org.datanucleus/datanucleus-api-jdo/4.2.4" >
+            name="datanucleus-api-jdo-4.2.4.jar" 
+            mvn_uri="mvn:org.datanucleus/datanucleus-api-jdo/4.2.4" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="datanucleus-core-4.1.6.jar"
-            name="datanucleus-core-4.1.6.jar" mvn_uri="mvn:org.talend.libraries/datanucleus-core-4.1.6/6.2.0" >
+            name="datanucleus-core-4.1.6.jar" 
+            mvn_uri="mvn:org.talend.libraries/datanucleus-core-4.1.6/6.2.0" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="datanucleus-rdbms-4.1.19.jar"
-            name="datanucleus-rdbms-4.1.19.jar" mvn_uri="mvn:org.datanucleus/datanucleus-rdbms/4.1.19" >
+            name="datanucleus-rdbms-4.1.19.jar" 
+            mvn_uri="mvn:org.datanucleus/datanucleus-rdbms/4.1.19" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="kafka-clients-1.1.1-mapr-1808.jar"
-            name="kafka-clients-1.1.1-mapr-1808.jar" mvn_uri="mvn:org.apache.kafka/kafka-clients/1.1.1-mapr-1808" >
+            name="kafka-clients-1.1.1-mapr-1808.jar" 
+            mvn_uri="mvn:org.apache.kafka/kafka-clients/1.1.1-mapr-1808" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="kafka_2.11-1.1.1-mapr-1808.jar"
-            name="kafka_2.11-1.1.1-mapr-1808.jar" mvn_uri="mvn:org.apache.kafka/kafka_2.11/1.1.1-mapr-1808" >
+            name="kafka_2.11-1.1.1-mapr-1808.jar" 
+            mvn_uri="mvn:org.apache.kafka/kafka_2.11/1.1.1-mapr-1808" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hadoop-hdfs-2.7.0-mapr-1808.jar"
-            name="hadoop-hdfs-2.7.0-mapr-1808.jar" mvn_uri="mvn:org.apache.hadoop/hadoop-hdfs/2.7.0-mapr-1808" >
+            name="hadoop-hdfs-2.7.0-mapr-1808.jar" 
+            mvn_uri="mvn:org.apache.hadoop/hadoop-hdfs/2.7.0-mapr-1808" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hadoop-auth-2.7.0-mapr-1808.jar"
-            name="hadoop-auth-2.7.0-mapr-1808.jar" mvn_uri="mvn:org.apache.hadoop/hadoop-auth/2.7.0-mapr-1808" >
+            name="hadoop-auth-2.7.0-mapr-1808.jar" 
+            mvn_uri="mvn:org.apache.hadoop/hadoop-auth/2.7.0-mapr-1808" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hadoop-common-2.7.0-mapr-1808.jar"
-            name="hadoop-common-2.7.0-mapr-1808.jar" mvn_uri="mvn:org.apache.hadoop/hadoop-common/2.7.0-mapr-1808" >
+            name="hadoop-common-2.7.0-mapr-1808.jar" 
+            mvn_uri="mvn:org.apache.hadoop/hadoop-common/2.7.0-mapr-1808" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="curator-client-2.7.1.jar"
-            name="curator-client-2.7.1.jar" mvn_uri="mvn:org.apache.curator/curator-client/2.7.1" >
+            name="curator-client-2.7.1.jar" 
+            mvn_uri="mvn:org.apache.curator/curator-client/2.7.1" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="curator-framework-2.7.1.jar"
-            name="curator-framework-2.7.1.jar" mvn_uri="mvn:org.apache.curator/curator-framework/2.7.1" >
+            name="curator-framework-2.7.1.jar" 
+            mvn_uri="mvn:org.apache.curator/curator-framework/2.7.1" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hadoop-yarn-server-web-proxy-2.7.0-mapr-1808.jar"
-            name="hadoop-yarn-server-web-proxy-2.7.0-mapr-1808.jar" mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-server-web-proxy/2.7.0-mapr-1808" >
+            name="hadoop-yarn-server-web-proxy-2.7.0-mapr-1808.jar" 
+            mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-server-web-proxy/2.7.0-mapr-1808" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hadoop-mapreduce-client-app-2.7.0-mapr-1808.jar"
-            name="hadoop-mapreduce-client-app-2.7.0-mapr-1808.jar" mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-app/2.7.0-mapr-1808" >
+            name="hadoop-mapreduce-client-app-2.7.0-mapr-1808.jar" 
+            mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-app/2.7.0-mapr-1808" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hadoop-mapreduce-client-common-2.7.0-mapr-1808.jar"
-            name="hadoop-mapreduce-client-common-2.7.0-mapr-1808.jar" mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-common/2.7.0-mapr-1808" >
+            name="hadoop-mapreduce-client-common-2.7.0-mapr-1808.jar" 
+            mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-common/2.7.0-mapr-1808" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hadoop-mapreduce-client-contrib-2.7.0-mapr-1808.jar"
-            name="hadoop-mapreduce-client-contrib-2.7.0-mapr-1808.jar" mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-contrib/2.7.0-mapr-1808" >
+            name="hadoop-mapreduce-client-contrib-2.7.0-mapr-1808.jar" 
+            mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-contrib/2.7.0-mapr-1808" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hadoop-mapreduce-client-core-2.7.0-mapr-1808.jar"
-            name="hadoop-mapreduce-client-core-2.7.0-mapr-1808.jar" mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-core/2.7.0-mapr-1808" >
+            name="hadoop-mapreduce-client-core-2.7.0-mapr-1808.jar" 
+            mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-core/2.7.0-mapr-1808" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hadoop-mapreduce-client-hs-2.7.0-mapr-1808.jar"
-            name="hadoop-mapreduce-client-hs-2.7.0-mapr-1808.jar" mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-hs/2.7.0-mapr-1808" >
+            name="hadoop-mapreduce-client-hs-2.7.0-mapr-1808.jar" 
+            mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-hs/2.7.0-mapr-1808" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hadoop-mapreduce-client-hs-plugins-2.7.0-mapr-1808.jar"
-            name="hadoop-mapreduce-client-hs-plugins-2.7.0-mapr-1808.jar" mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-hs-plugins/2.7.0-mapr-1808" >
+            name="hadoop-mapreduce-client-hs-plugins-2.7.0-mapr-1808.jar" 
+            mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-hs-plugins/2.7.0-mapr-1808" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hadoop-mapreduce-client-jobclient-2.7.0-mapr-1808.jar"
-            name="hadoop-mapreduce-client-jobclient-2.7.0-mapr-1808.jar" mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-jobclient/2.7.0-mapr-1808" >
+            name="hadoop-mapreduce-client-jobclient-2.7.0-mapr-1808.jar" 
+            mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-jobclient/2.7.0-mapr-1808" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hadoop-mapreduce-client-shuffle-2.7.0-mapr-1808.jar"
-            name="hadoop-mapreduce-client-shuffle-2.7.0-mapr-1808.jar" mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-shuffle/2.7.0-mapr-1808" >
+            name="hadoop-mapreduce-client-shuffle-2.7.0-mapr-1808.jar" 
+            mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-shuffle/2.7.0-mapr-1808" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hadoop-yarn-api-2.7.0-mapr-1808.jar"
-            name="hadoop-yarn-api-2.7.0-mapr-1808.jar" mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-api/2.7.0-mapr-1808" >
+            name="hadoop-yarn-api-2.7.0-mapr-1808.jar" 
+            mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-api/2.7.0-mapr-1808" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hadoop-yarn-client-2.7.0-mapr-1808.jar"
-            name="hadoop-yarn-client-2.7.0-mapr-1808.jar" mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-client/2.7.0-mapr-1808" >
+            name="hadoop-yarn-client-2.7.0-mapr-1808.jar" 
+            mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-client/2.7.0-mapr-1808" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hadoop-yarn-common-2.7.0-mapr-1808.jar"
-            name="hadoop-yarn-common-2.7.0-mapr-1808.jar" mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-common/2.7.0-mapr-1808" >
+            name="hadoop-yarn-common-2.7.0-mapr-1808.jar" 
+            mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-common/2.7.0-mapr-1808" >
         </libraryNeeded>
-        
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="zookeeper-3.4.11-mapr-1808.jar"
-            name="zookeeper-3.4.11-mapr-1808.jar" mvn_uri="mvn:org.talend.libraries/zookeeper/3.4.11-mapr-1808" >
+            name="zookeeper-3.4.11-mapr-1808.jar" 
+            mvn_uri="mvn:org.talend.libraries/zookeeper/3.4.11-mapr-1808" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="maprfs-6.1.0-mapr.jar"
-            name="maprfs-6.1.0-mapr.jar" mvn_uri="mvn:com.mapr.hadoop/maprfs/6.1.0-mapr" >
+            name="maprfs-6.1.0-mapr.jar" 
+            mvn_uri="mvn:com.mapr.hadoop/maprfs/6.1.0-mapr" >
         </libraryNeeded>
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="guava-20.0.jar"
-            name="guava-20.0.jar" mvn_uri="mvn:com.google.guava/guava/20.0" >
+            name="guava-20.0.jar" 
+            mvn_uri="mvn:com.google.guava/guava/20.0" >
         </libraryNeeded>
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
@@ -205,14 +229,6 @@
             name="hive-service-2.3.3-mapr-1901.jar"
             mvn_uri="mvn:org.apache.hive/hive-service/2.3.3-mapr-1901" >
         </libraryNeeded>
-
-        <!--libraryNeeded
-            context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
-            id="parquet-hive-bundle-1.6.0.jar"
-            name="parquet-hive-bundle-1.6.0.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-hive-bundle-1.6.0/6.0.0" >
-        </libraryNeeded-->
-
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop"
             id="parquet-hadoop-bundle-1.8.1.jar"
@@ -312,13 +328,6 @@
             name="aws-java-sdk-bundle-1.11.199.jar"
             mvn_uri="mvn:org.talend.libraries/aws-java-sdk-bundle/1.11.199">
         </libraryNeeded>
-        
-        <!--libraryNeeded
-            context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
-            id="spark-streaming-kinesis-asl_2.11-2.1.0.jar"
-            name="spark-streaming-kinesis-asl_2.11-2.1.0.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-streaming-kinesis-asl_2.11-2.1.0/6.0.0">
-        </libraryNeeded-->
 
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
@@ -340,13 +349,6 @@
             name="hive-hbase-handler-2.3.3-mapr-1901.jar"
 			mvn_uri="mvn:org.apache.hive/hive-hbase-handler/2.3.3-mapr-1901">
         </libraryNeeded> <!-- was hive-hbase-handler-1.2.0-mapr-1710-->
-
-        <!--libraryNeeded
-            context="plugin:org.talend.libraries.hadoop.hdp.2.2"
-            id="high-scale-lib-1.1.1.jar"
-            name="high-scale-lib-1.1.1.jar" mvn_uri="mvn:org.talend.libraries/high-scale-lib-1.1.1/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.hadoop.hdp.2.2/lib/high-scale-lib-1.1.1.jar">
-        </libraryNeeded-->
 
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
@@ -545,13 +547,13 @@
 
 		<!--let try datalake on mapr 6.1.0 !!! -->
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh5120"
+            context="plugin:org.talend.hadoop.distribution.mapr.6.1.0"
             id="azure-data-lake-store-sdk-2.1.4.jar"
             name="azure-data-lake-store-sdk-2.1.4.jar"
             mvn_uri="mvn:org.talend.libraries/azure-data-lake-store-sdk/2.1.4">
         </libraryNeeded>
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh5120"
+            context="plugin:org.talend.hadoop.distribution.mapr.6.1.0"
             id="hadoop-azure-datalake-2.7.0-mapr-1808.jar"
             name="hadoop-azure-datalake-2.7.0-mapr-1808.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-azure-datalake/2.7.0-mapr-1808">
@@ -577,14 +579,6 @@
             name="avro-ipc-1.8.1.jar"
             mvn_uri="mvn:org.talend.libraries/avro-ipc/1.8.1">
         </libraryNeeded>
-        
-        <!-- GraphFrames libraries -->
-        <!--libraryNeeded
-            context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
-            id="graphframes-0.5.0-spark2.1-s_2.11.jar"
-            name="graphframes-0.5.0-spark2.1-s_2.11.jar"
-            mvn_uri="mvn:graphframes/graphframes/0.5.0-spark2.1-s_2.11">
-        </libraryNeeded-->
         
         <!-- Spark2 libraries -->
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="antlr4-runtime-4.7.jar" name="antlr4-runtime-4.7.jar" mvn_uri="mvn:org.talend.libraries/antlr4-runtime/4.7"/>
@@ -692,10 +686,6 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="parquet-format-2.3.1.jar" name="parquet-format-2.3.1.jar" mvn_uri="mvn:org.apache.parquet/parquet-format/2.3.1"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="parquet-hadoop-1.8.3.jar" name="parquet-hadoop-1.8.3.jar" mvn_uri="mvn:org.apache.parquet/parquet-hadoop/1.8.3"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="parquet-jackson-1.8.3.jar" name="parquet-jackson-1.8.3.jar" mvn_uri="mvn:org.apache.parquet/parquet-jackson/1.8.3"/>
-		<!-- NOT FOUND in 6.1.0
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="pmml-model-1.2.15.jar" name="pmml-model-1.2.15.jar" mvn_uri="mvn:org.jpmml/pmml-model/1.2.15"/>
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="pmml-schema-1.2.15.jar" name="pmml-schema-1.2.15.jar" mvn_uri="mvn:org.jpmml/pmml-schema/1.2.15"/>
-		-->
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="py4j-0.10.7.jar" name="py4j-0.10.7.jar" mvn_uri="mvn:org.talend.libraries/py4j/0.10.7"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="pyrolite-4.13.jar" name="pyrolite-4.13.jar" mvn_uri="mvn:net.razorvine/pyrolite/4.13"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="RoaringBitmap-0.5.18.jar" name="RoaringBitmap-0.5.18.jar" mvn_uri="mvn:org.roaringbitmap/RoaringBitmap/0.5.18"/>
@@ -792,7 +782,7 @@
             <library id="commons-math3-3.6.1.jar" />
             <library id="xmlenc-0.52.jar" />
             <library id="commons-httpclient-3.1.jar" />
-            <library id="commons-codec-1.10.jar" /><!-- commons-codec-1.4-->
+            <library id="commons-codec-1.10.jar" />
             <library id="commons-io-2.4.jar" />
             <library id="commons-net-3.1.jar" />
             <library id="commons-digester-1.8.jar" />
@@ -810,7 +800,7 @@
         </libraryNeededGroup>
 
          <libraryNeededGroup
-              description="The latest HDFS libraries of MapR 6.1.0"
+              description="Latest HDFS libraries for MapR 6.1.0"
               id="HDFS-LIB-MAPR610"
               name="HDFS-LIB-MAPR610">
            <library id="maprfs-6.1.0-mapr.jar"/>
@@ -836,18 +826,8 @@
            <library id="jackson-mapper-asl-1.9.14-TALEND.jar" />
         </libraryNeededGroup>
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         <libraryNeededGroup
-                description="The latest talend mapreduce hbase storage libraries of MapR 6.1.0"
+                description="Latest Talend MapReduce HBase storage libraries for MapR 6.1.0"
                 id="HBASE-LIB-MAPR610"
                 name="HBASE-LIB-MAPR610" >
            <library id="maprfs-6.1.0-mapr.jar"/>
@@ -878,10 +858,10 @@
         </libraryNeededGroup>
         
         <libraryNeededGroup
-              description="The latest Hive libraries of MapR 6.1.0"
+              description="Latest Hive libraries for MapR 6.1.0"
               id="HIVE-LIB-MAPR610"
               name="HIVE-LIB-MAPR610">
-           <library id="hive-exec-2.3.3-mapr-1901.jar" /> <!-- was hive-exec-1.2.0-mapr-1710.jar-->
+           <library id="hive-exec-2.3.3-mapr-1901.jar" />
            <library id="hive-metastore-2.3.3-mapr-1901.jar" />
            <library id="hive-jdbc-2.3.3-mapr-1901.jar" />
            <library id="hive-service-2.3.3-mapr-1901.jar" />
@@ -912,7 +892,7 @@
         </libraryNeededGroup>
 
         <libraryNeededGroup
-           description="The latest Map Reduce libraries of MapR 6.1.0"
+           description="Latest MapReduce libraries for MapR 6.1.0"
            id="MAPREDUCE-LIB-MAPR610"
            name="MAPREDUCE-LIB-MAPR610">
             <group id="HDFS-LIB-MAPR610" />
@@ -940,7 +920,7 @@
          </libraryNeededGroup>
 
         <libraryNeededGroup
-           description="The avro Reduce libraries of MapR 6.1.0"
+           description="Avro MapReduce libraries for MapR 6.1.0"
            id="MAPREDUCE-AVRO-LIB-MAPR610"
            name="MAPREDUCE-AVRO-LIB-MAPR610">
             <library id="avro-mapred-1.8.1-hadoop2.jar"/>
@@ -957,7 +937,7 @@
 
 		<!-- Spark2 group -->
          <libraryNeededGroup
-           description="The latest Spark libraries of MapR 6.1.0 spark 2"
+           description="Latest Spark libraries for MapR 6.1.0 Spark 2"
            id="SPARK-LIB-MAPR610"
            name="SPARK-LIB-MAPR610">
             <library id="winutils-hadoop-2.7.0.exe" />
@@ -1002,13 +982,13 @@
 			<library id="derby-10.12.1.1.jar"/>
 			<library id="eigenbase-properties-1.1.5.jar"/>
 			<library id="gson-2.7.jar"/>
-			<library id="hive-beeline-1.2.0-mapr-spark-MEP-6.0.0-1808-spark.jar"/> <!-- was hive-beeline-1.2.0-mapr-1710-->
-			<library id="hive-cli-1.2.0-mapr-spark-MEP-6.0.0-1808.jar"/> <!-- was hive-cli-1.2.0-mapr-1710-->
-			<library id="hive-exec-2.3.3-mapr-1901.jar-spark.jar"/> <!-- was hive-exec-1.2.0-mapr-1710.jar-->
-			<library id="hive-jdbc-2.3.3-mapr-1901.jar"/><!-- was -1.2.0 -->
-			<library id="hive-metastore-2.3.3-mapr-1901.jar"/><!-- was -1.2.0-mapr- -->
-			<library id="hive-shims-common-1.2.0-mapr-spark-MEP-6.0.0-1808.jar"/> <!-- was hive-shims-common-1.2.0-mapr-1710.jar-->
-			<library id="hive-shims-scheduler-1.2.0-mapr-spark-MEP-6.0.0-1808.jar"/> <!-- was hive-shims-scheduler-1.2.0-mapr-1710.jar-->
+			<library id="hive-beeline-1.2.0-mapr-spark-MEP-6.0.0-1808-spark.jar"/>
+			<library id="hive-cli-1.2.0-mapr-spark-MEP-6.0.0-1808.jar"/>
+			<library id="hive-exec-2.3.3-mapr-1901.jar-spark.jar"/>
+			<library id="hive-jdbc-2.3.3-mapr-1901.jar"/>
+			<library id="hive-metastore-2.3.3-mapr-1901.jar"/>
+			<library id="hive-shims-common-1.2.0-mapr-spark-MEP-6.0.0-1808.jar"/>
+			<library id="hive-shims-scheduler-1.2.0-mapr-spark-MEP-6.0.0-1808.jar"/>
 			<library id="hk2-api-2.5.0-b32.jar"/>
 			<library id="hk2-locator-2.5.0-b32.jar"/>
 			<library id="hk2-utils-2.5.0-b32.jar"/>
@@ -1073,8 +1053,6 @@
 			<library id="parquet-hadoop-1.8.3.jar"/>
 			<library id="parquet-hadoop-bundle-1.8.1.jar"/>
 			<library id="parquet-jackson-1.8.3.jar"/>
-			<!--<library id="pmml-model-1.2.15.jar"/>
-			<library id="pmml-schema-1.2.15.jar"/>-->
 			<library id="py4j-0.10.7.jar"/>
 			<library id="pyrolite-4.13.jar"/>
 			<library id="RoaringBitmap-0.5.18.jar"/>
@@ -1170,7 +1148,7 @@
             <library id="jline-1.0.jar"/>
             <library id="joda-time-2.9.3.jar"/>
             <library id="snappy-java-1.0.4.1.jar" />
-            <library id="hive-exec-2.3.3-mapr-1901.jar"/> <!-- was hive-exec-1.2.0-mapr-1710.jar-->
+            <library id="hive-exec-2.3.3-mapr-1901.jar"/>
             <library id="hive-metastore-2.3.3-mapr-1901.jar"/>
             <library id="flexjson-2.1.jar"/>
             <library id="pig-core-h2-0.16.0-1901.jar"/>
@@ -1330,20 +1308,6 @@
             <library id="parquet-avro-1.4.1.jar"/>
         </libraryNeededGroup>
         
-        <!-- Spark Kinesis group MRREQUIRED -->
-        <!--libraryNeededGroup
-                description="Spark Kinesis libraries for MapR 6.1.0 that are MRREQUIRED"
-                id="SPARK-KINESIS-LIB-MRREQUIRED-MAPR610"
-                name="SPARK-KINESIS-LIB-MRREQUIRED-MAPR610">
-            <library id="spark-streaming-kinesis-asl_2.11-2.1.0.jar"/>
-            <library id="amazon-kinesis-client-1.2.1.jar"/>
-            <library id="aws-java-sdk-kinesis-1.10.20.jar"/>
-            <library id="aws-java-sdk-core-1.10.20.jar"/>            
-            <library id="aws-java-sdk-dynamodb-1.10.20.jar"/>            
-            <library id="aws-java-sdk-cloudwatch-1.10.20.jar"/>            
-            <library id="joda-time-2.9.9.jar"/>            
-        </libraryNeededGroup-->
-        
         <!-- MapRStreams group -->    
         <libraryNeededGroup
                 description="MapRStreams 6.1.0 libraries (based on Kafka 2.11-1.0.1-mapr-1808)"
@@ -1403,14 +1367,6 @@
             <group id="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-MAPR610" />
             <library id="mapr-streams-6.1.0-mapr.jar" />
         </libraryNeededGroup>
-        
-        <!-- GraphFrames group MRREQUIRED -->
-        <!--libraryNeededGroup
-            description="GraphFrames libraries for MapR 6.1.0 that are MRREQUIRED" 
-            id="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-MAPR610"
-            name="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-MAPR610">
-            <library id="graphframes-0.5.0-spark2.1-s_2.11.jar" />
-        </libraryNeededGroup-->
         
     </extension>
     <extension
