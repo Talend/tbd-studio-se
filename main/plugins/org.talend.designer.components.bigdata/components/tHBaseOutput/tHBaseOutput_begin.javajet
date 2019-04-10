@@ -75,11 +75,11 @@ imports="
 			String cid = node.getUniqueName();
 			if (!hbaseDistrib.doSupportHBase2x()) {
 %>
-                org.apache.hadoop.hbase.HTableDescriptor tableDes_<%=cid%> = new org.apache.hadoop.hbase.HTableDescriptor(<%=table_name%>);
+                		org.apache.hadoop.hbase.HTableDescriptor tableDes_<%=cid%> = new org.apache.hadoop.hbase.HTableDescriptor(<%=table_name%>);
 <%
 			} else {
 %>			
-                org.apache.hadoop.hbase.client.TableDescriptorBuilder tableDesBuilder_<%=cid%> = org.apache.hadoop.hbase.client.TableDescriptorBuilder.newBuilder(org.apache.hadoop.hbase.TableName.valueOf(<%=table_name%>));
+                		org.apache.hadoop.hbase.client.TableDescriptorBuilder tableDesBuilder_<%=cid%> = org.apache.hadoop.hbase.client.TableDescriptorBuilder.newBuilder(org.apache.hadoop.hbase.TableName.valueOf(<%=table_name%>));
 <%
 			}
 %>
