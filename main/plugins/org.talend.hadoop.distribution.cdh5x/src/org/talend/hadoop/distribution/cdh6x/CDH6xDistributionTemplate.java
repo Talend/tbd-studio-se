@@ -45,100 +45,100 @@ HCatalogComponent, PigComponent, MRComponent, HiveComponent, ImpalaComponent, Sq
         return TEMPLATE_ID;
     }
 
-	@Override
-	public boolean doJavaAPISupportStorePasswordInFile() {
-		return true;
-	}
+    @Override
+    public boolean doJavaAPISupportStorePasswordInFile() {
+        return true;
+    }
 
-	@Override
-	public boolean doJavaAPISqoopImportSupportDeleteTargetDir() {
-		return true;
-	}
+    @Override
+    public boolean doJavaAPISqoopImportSupportDeleteTargetDir() {
+        return true;
+    }
 
-	@Override
-	public boolean doJavaAPISqoopImportAllTablesSupportExcludeTable() {
-		return true;
-	}
+    @Override
+    public boolean doJavaAPISqoopImportAllTablesSupportExcludeTable() {
+        return true;
+    }
 
-	@Override
-	public boolean doSupportHive1() {
-		return false;
-	}
+    @Override
+    public boolean doSupportHive1() {
+        return false;
+    }
 
-	@Override
-	public boolean doSupportHive2() {
-		return true;
-	}
+    @Override
+    public boolean doSupportHive2() {
+        return true;
+    }
 
-	@Override
-	public boolean doSupportTezForHive() {
-		return false;
-	}
+    @Override
+    public boolean doSupportTezForHive() {
+        return false;
+    }
 
-	@Override
-	public boolean doSupportHBaseForHive() {
-		return false;
-	}
+    @Override
+    public boolean doSupportHBaseForHive() {
+        return false;
+    }
 
-	@Override
-	public boolean doSupportSSL() {
-		return true;
-	}
+    @Override
+    public boolean doSupportSSL() {
+        return true;
+    }
 
-	@Override
-	public boolean doSupportORCFormat() {
-		return true;
-	}
+    @Override
+    public boolean doSupportORCFormat() {
+        return true;
+    }
 
-	@Override
-	public boolean doSupportAvroFormat() {
-		return true;
-	}
+    @Override
+    public boolean doSupportAvroFormat() {
+        return true;
+    }
 
-	@Override
-	public boolean doSupportParquetFormat() {
-		return true;
-	}
+    @Override
+    public boolean doSupportParquetFormat() {
+        return true;
+    }
 
-	@Override
-	public boolean doSupportStoreAsParquet() {
-		return true;
-	}
+    @Override
+    public boolean doSupportStoreAsParquet() {
+        return true;
+    }
 
-	@Override
-	public boolean doSupportCrossPlatformSubmission() {
-		return true;
-	}
+    @Override
+    public boolean doSupportCrossPlatformSubmission() {
+        return true;
+    }
 
-	@Override
-	public boolean doSupportImpersonation() {
-		return true;
-	}
+    @Override
+    public boolean doSupportImpersonation() {
+        return true;
+    }
 
-	@Override
-	public boolean doSupportHCatalog() {
-		return true;
-	}
+    @Override
+    public boolean doSupportHCatalog() {
+        return true;
+    }
 
-	@Override
-	public boolean doSupportHBase() {
-		return true;
-	}
+    @Override
+    public boolean doSupportHBase() {
+        return true;
+    }
 
-	@Override
-	public boolean pigVersionPriorTo_0_12() {
-		return false;
-	}
+    @Override
+    public boolean pigVersionPriorTo_0_12() {
+        return false;
+    }
 
-	@Override
-	public boolean doSupportNewHBaseAPI() {
-		return true;
-	}
+    @Override
+    public boolean doSupportNewHBaseAPI() {
+        return true;
+    }
 
-	@Override
-	public boolean doSupportSequenceFileShortType() {
-		return true;
-	}
+    @Override
+    public boolean doSupportSequenceFileShortType() {
+        return true;
+    }
 
     @Override
     public boolean doSupportHBase2x() {
