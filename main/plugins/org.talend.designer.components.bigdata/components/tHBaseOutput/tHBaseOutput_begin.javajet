@@ -170,7 +170,7 @@ imports="
 <% 
 				} else {
 %>
-                    tableDesBuilder_<%=cid%>.addColumnFamily(family_<%=cid%>);
+				    tableDesBuilder_<%=cid%>.addColumnFamily(family_<%=cid%>);
 <%
 				}
 			}//for(int familyParamNum=0;familyParamNum<familyParameters.size();familyParamNum++)
