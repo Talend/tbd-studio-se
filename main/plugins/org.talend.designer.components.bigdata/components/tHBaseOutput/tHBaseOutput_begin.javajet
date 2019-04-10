@@ -191,17 +191,17 @@ imports="
 			String table_name = ElementParameterParser.getValue(node, "__TABLE__");
 			if (!hbaseDistrib.doSupportHBase2x()) {
 %>
-		if(!admin_<%=cid %>.isTableDisabled(<%=table_name%>)){
-			admin_<%=cid %>.disableTable(<%=table_name%>);
-		}
-			admin_<%=cid %>.deleteTable(<%=table_name%>);
+				if(!admin_<%=cid %>.isTableDisabled(<%=table_name%>)){
+					admin_<%=cid %>.disableTable(<%=table_name%>);
+				}
+				admin_<%=cid %>.deleteTable(<%=table_name%>);
 <%
 			} else {
 %>
-        if(!admin_<%=cid %>.isTableDisabled(org.apache.hadoop.hbase.TableName.valueOf(<%=table_name%>))){
-            admin_<%=cid %>.disableTable(org.apache.hadoop.hbase.TableName.valueOf(<%=table_name%>));
-        }
-            admin_<%=cid %>.deleteTable(org.apache.hadoop.hbase.TableName.valueOf(<%=table_name%>));
+        			if(!admin_<%=cid %>.isTableDisabled(org.apache.hadoop.hbase.TableName.valueOf(<%=table_name%>))){
+            				admin_<%=cid %>.disableTable(org.apache.hadoop.hbase.TableName.valueOf(<%=table_name%>));
+        			}
+            			admin_<%=cid %>.deleteTable(org.apache.hadoop.hbase.TableName.valueOf(<%=table_name%>));
 <%
 			}
 		}
