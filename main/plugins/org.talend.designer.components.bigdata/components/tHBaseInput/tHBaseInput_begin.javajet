@@ -351,9 +351,9 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 <% 
 		} else { 
 %>
-            org.apache.hadoop.hbase.client.Table table_<%=cid%> = org.apache.hadoop.hbase.client.ConnectionFactory.createConnection(conn_<%=cid %>).getTable(org.apache.hadoop.hbase.TableName.valueOf(<%=table_name%>));
+            	    org.apache.hadoop.hbase.client.Table table_<%=cid%> = org.apache.hadoop.hbase.client.ConnectionFactory.createConnection(conn_<%=cid %>).getTable(org.apache.hadoop.hbase.TableName.valueOf(<%=table_name%>));
 <% 
-        }
+		}
 %>
 		String temp_<%=cid %>=null;
 		byte[] rowResult_<%=cid %> = null;
