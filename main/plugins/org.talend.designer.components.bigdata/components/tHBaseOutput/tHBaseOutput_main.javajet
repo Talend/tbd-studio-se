@@ -126,29 +126,29 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 						boolean isPrimitive = JavaTypesManager.isJavaPrimitiveType( javaType, column.isNullable());
 						if(!isPrimitive){
 						%>
-							temp_<%=cid %> = null;
+							temp_<%=cid%> = null;
 							if(<%=connName %>.<%=column.getLabel() %>!=null){
 						<%
 						}
 						if (javaType == JavaTypesManager.DATE && pattern != null && pattern.trim().length() != 0) {
 						%>
-							temp_<%=cid %> = org.apache.hadoop.hbase.util.Bytes.toBytes(FormatterUtils.format_Date(<%=connName %>.<%=column.getLabel() %>, <%= pattern %>));
+							temp_<%=cid%> = org.apache.hadoop.hbase.util.Bytes.toBytes(FormatterUtils.format_Date(<%=connName %>.<%=column.getLabel() %>, <%= pattern %>));
 						<%
 						}else if (javaType == JavaTypesManager.BYTE_ARRAY) {
 						%>
-							temp_<%=cid %> = <%=connName %>.<%=column.getLabel() %>;
+							temp_<%=cid%> = <%=connName %>.<%=column.getLabel() %>;
 						<%
 						}else if (javaType == JavaTypesManager.BYTE) {
 						%>
-							temp_<%=cid %> = org.apache.hadoop.hbase.util.Bytes.toBytes(<%=connName %>.<%=column.getLabel() %>+"");
+							temp_<%=cid%> = org.apache.hadoop.hbase.util.Bytes.toBytes(<%=connName %>.<%=column.getLabel() %>+"");
 						<%
 						}else if(JavaTypesManager.isJavaPrimitiveType(javaType,column.isNullable())) {
 						%>
-							temp_<%=cid %> = org.apache.hadoop.hbase.util.Bytes.toBytes(<%=connName %>.<%=column.getLabel() %>);
+							temp_<%=cid%> = org.apache.hadoop.hbase.util.Bytes.toBytes(<%=connName %>.<%=column.getLabel() %>);
 						<%
 						}else{
 						%>
-							temp_<%=cid %> = org.apache.hadoop.hbase.util.Bytes.toBytes(<%=connName%>.<%=column.getLabel()%>.toString());
+							temp_<%=cid%> = org.apache.hadoop.hbase.util.Bytes.toBytes(<%=connName%>.<%=column.getLabel()%>.toString());
 						<%
 						}
 						if(!isPrimitive){
@@ -158,11 +158,11 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 						}
 						if (!hbaseDistrib.doSupportHBase2x()) {
 						%>
-						    p_<%=cid%>.add(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=family_column%>), org.apache.hadoop.hbase.util.Bytes.toBytes("<%=column.getOriginalDbColumnName()%>"), temp_<%=cid %>);
+						    p_<%=cid%>.add(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=family_column%>), org.apache.hadoop.hbase.util.Bytes.toBytes("<%=column.getOriginalDbColumnName()%>"), temp_<%=cid%>);
 						<% 
 						} else {
 						%>
-						    p_<%=cid%>.addColumn(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=family_column%>), org.apache.hadoop.hbase.util.Bytes.toBytes("<%=column.getOriginalDbColumnName()%>"), temp_<%=cid %>);						
+						    p_<%=cid%>.addColumn(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=family_column%>), org.apache.hadoop.hbase.util.Bytes.toBytes("<%=column.getOriginalDbColumnName()%>"), temp_<%=cid%>);						
 						<% 
 						}
 						%>
