@@ -23,7 +23,8 @@
             "useStudioRepository": "true",
             "supportedSparkVersions": [
                 "SPARK_2_2",
-                "SPARK_2_3"
+                "SPARK_2_3",
+				"SPARK_2_4"
             ],
             "description": ""
         },
@@ -475,7 +476,7 @@
 				},
 				{
 					"groupId": "org.apache.spark",
-					"artifactId": "spark-core_2.10",
+					"artifactId": "spark-core_2.11",
 					"classifier": "",
 					"extension": "",
 					"description": ""
@@ -1079,7 +1080,8 @@
             "description": "",
             "supportedSparkVersions": [
                 "SPARK_2_2",
-                "SPARK_2_3"
+                "SPARK_2_3",
+				"SPARK_2_4"
             ],
             "modules": [
             ]
