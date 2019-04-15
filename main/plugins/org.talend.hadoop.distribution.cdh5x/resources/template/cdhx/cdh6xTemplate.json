@@ -24,7 +24,7 @@
             "supportedSparkVersions": [
                 "SPARK_2_2",
                 "SPARK_2_3",
-				"SPARK_2_4"
+                "SPARK_2_4"
             ],
             "description": ""
         },
@@ -1081,7 +1081,7 @@
             "supportedSparkVersions": [
                 "SPARK_2_2",
                 "SPARK_2_3",
-				"SPARK_2_4"
+                "SPARK_2_4"
             ],
             "modules": [
             ]
