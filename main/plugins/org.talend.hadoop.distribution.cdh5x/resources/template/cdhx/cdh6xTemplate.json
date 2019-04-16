@@ -84,7 +84,7 @@
 			"context": "{properties.context}",
 			"groupId": "com.cloudera.navigator",
 			"artifactId": "navigator-sdk-client",
-			"version": "2.0",
+			"version": "2.2",
 			"classifier": "",
 			"description": ""
 		},
