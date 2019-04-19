@@ -596,9 +596,9 @@
             <IMPORT NAME="jackson-core-asl-1.9.14-TALEND" MODULE="jackson-core-asl-1.9.14-TALEND.jar"
                 MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-            <IMPORT NAME="commons-lang3-3.3.2.jar" MODULE="commons-lang3-3.3.2.jar"
-                MVN="mvn:org.talend.libraries/commons-lang3-3.3.2/6.0.0"
-                UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang3-3.3.2.jar"
+            <IMPORT NAME="commons-lang3-3.8.1.jar" MODULE="commons-lang3-3.8.1.jar"
+                MVN="mvn:org.apache.commons/commons-lang3/3.8.1"
+                UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang3-3.8.1.jar"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_2_3_X') AND (USE_EXISTING_CONNECTION == 'false')" />
 		</IMPORTS>
 	</CODEGENERATION>

@@ -216,9 +216,9 @@
                 UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang-2.6.jar"
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
-                NAME="commons-lang3-3.1"
-                MODULE="commons-lang3-3.1.jar" MVN="mvn:org.talend.libraries/commons-lang3-3.1/6.0.0" 
-                UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang3-3.1.jar"
+                NAME="commons-lang3-3.8.1"
+                MODULE="commons-lang3-3.8.1.jar" MVN="mvn:org.apache.commons/commons-lang3/3.8.1" 
+                UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang3-3.8.1.jar"
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
                 NAME="antlr-3.2"
@@ -319,9 +319,9 @@
                     MODULE="commons-cli-1.1.jar" MVN="mvn:org.talend.libraries/commons-cli-1.1/6.0.0" 
                     UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.1.jar" />
                 <IMPORT
-                    NAME="commons-lang3-3.1"
-                    MODULE="commons-lang3-3.1.jar" MVN="mvn:org.talend.libraries/commons-lang3-3.1/6.0.0" 
-                    UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang3-3.1.jar" />
+                    NAME="commons-lang3-3.8.1"
+                    MODULE="commons-lang3-3.8.1.jar" MVN="mvn:org.apache.commons/commons-lang3/3.8.1" 
+                    UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang3-3.8.1.jar" />
                 <IMPORT
                     NAME="compress-lzf-0.8.4"
                     MODULE="compress-lzf-0.8.4.jar" MVN="mvn:org.talend.libraries/compress-lzf-0.8.4/6.0.0" 
@@ -417,9 +417,9 @@
                     MODULE="commons-cli-1.1.jar" MVN="mvn:org.talend.libraries/commons-cli-1.1/6.0.0" 
                     UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-cli-1.1.jar" />
                 <IMPORT
-                    NAME="commons-lang3-3.1"
-                    MODULE="commons-lang3-3.1.jar" MVN="mvn:org.talend.libraries/commons-lang3-3.1/6.0.0" 
-                    UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang3-3.1.jar" />
+                    NAME="commons-lang3-3.8.1"
+                    MODULE="commons-lang3-3.8.1.jar" MVN="mvn:org.apache.commons/commons-lang3/3.8.1" 
+                    UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang3-3.8.1.jar" />
                 <IMPORT
                     NAME="compress-lzf-0.8.4"
                     MODULE="compress-lzf-0.8.4.jar" MVN="mvn:org.talend.libraries/compress-lzf-0.8.4/6.0.0" 
