@@ -27,4 +27,9 @@ public interface HBaseComponent extends HadoopComponent {
      * @return true if the distribution does support MapR DB
      */
     public boolean doSupportMapRDB();
+
+    /**
+     * @return true if the distribution does support MapR DB
+     */
+    public boolean doSupportHBase2x();
 }

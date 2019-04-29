@@ -32,6 +32,38 @@ boolean useBatchMode = ElementParameterParser.getBooleanValue(node, "__USE_BATCH
 String batchSize = ElementParameterParser.getValue(node, "__BATCH_SIZE__");
 
 List<IMetadataTable> metadatas = node.getMetadataList();
+
+String useExistingConn = ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__");
+
+String distribution = null;
+String hbaseVersion = null;
+boolean isHadoop2 = false;
+
+if(!"true".equals(useExistingConn)) {
+    distribution = ElementParameterParser.getValue(node, "__DISTRIBUTION__");
+    hbaseVersion = ElementParameterParser.getValue(node, "__HBASE_VERSION__");
+    isHadoop2 = "HADOOP_2".equals(ElementParameterParser.getValue(node, "__HADOOP_CUSTOM_VERSION__"));
+} else {
+    String connectionSid = ElementParameterParser.getValue(node, "__CONNECTION__");
+    List<? extends INode> nodes = node.getProcess().getGeneratingNodes();
+    for(INode targetNode : nodes){
+        if (targetNode.getUniqueName().equals(connectionSid)) {
+            distribution = ElementParameterParser.getValue(targetNode, "__DISTRIBUTION__");
+            hbaseVersion = ElementParameterParser.getValue(targetNode, "__HBASE_VERSION__");
+            isHadoop2 = "HADOOP_2".equals(ElementParameterParser.getValue(targetNode, "__HADOOP_CUSTOM_VERSION__"));
+            break;
+        }
+    }
+}
+
+org.talend.hadoop.distribution.component.HBaseComponent hbaseDistrib = null;
+try {
+    hbaseDistrib = (org.talend.hadoop.distribution.component.HBaseComponent) org.talend.hadoop.distribution.DistributionFactory.buildDistribution(distribution, hbaseVersion);
+} catch (java.lang.Exception e) {
+    e.printStackTrace();
+    return "";
+}
+
 if ((metadatas!=null) && (metadatas.size() > 0)) {
     IMetadataTable metadata = metadatas.get(0);
     if (metadata != null) {
@@ -94,29 +126,29 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 						boolean isPrimitive = JavaTypesManager.isJavaPrimitiveType( javaType, column.isNullable());
 						if(!isPrimitive){
 						%>
-							temp_<%=cid %> = null;
+							temp_<%=cid%> = null;
 							if(<%=connName %>.<%=column.getLabel() %>!=null){
 						<%
 						}
 						if (javaType == JavaTypesManager.DATE && pattern != null && pattern.trim().length() != 0) {
 						%>
-							temp_<%=cid %> = org.apache.hadoop.hbase.util.Bytes.toBytes(FormatterUtils.format_Date(<%=connName %>.<%=column.getLabel() %>, <%= pattern %>));
+							temp_<%=cid%> = org.apache.hadoop.hbase.util.Bytes.toBytes(FormatterUtils.format_Date(<%=connName %>.<%=column.getLabel() %>, <%= pattern %>));
 						<%
 						}else if (javaType == JavaTypesManager.BYTE_ARRAY) {
 						%>
-							temp_<%=cid %> = <%=connName %>.<%=column.getLabel() %>;
+							temp_<%=cid%> = <%=connName %>.<%=column.getLabel() %>;
 						<%
 						}else if (javaType == JavaTypesManager.BYTE) {
 						%>
-							temp_<%=cid %> = org.apache.hadoop.hbase.util.Bytes.toBytes(<%=connName %>.<%=column.getLabel() %>+"");
+							temp_<%=cid%> = org.apache.hadoop.hbase.util.Bytes.toBytes(<%=connName %>.<%=column.getLabel() %>+"");
 						<%
 						}else if(JavaTypesManager.isJavaPrimitiveType(javaType,column.isNullable())) {
 						%>
-							temp_<%=cid %> = org.apache.hadoop.hbase.util.Bytes.toBytes(<%=connName %>.<%=column.getLabel() %>);
+							temp_<%=cid%> = org.apache.hadoop.hbase.util.Bytes.toBytes(<%=connName %>.<%=column.getLabel() %>);
 						<%
 						}else{
 						%>
-							temp_<%=cid %> = org.apache.hadoop.hbase.util.Bytes.toBytes(<%=connName%>.<%=column.getLabel()%>.toString());
+							temp_<%=cid%> = org.apache.hadoop.hbase.util.Bytes.toBytes(<%=connName%>.<%=column.getLabel()%>.toString());
 						<%
 						}
 						if(!isPrimitive){
@@ -124,8 +156,16 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 							}
 						<%
 						}
-						%>						
-						p_<%=cid%>.add(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=family_column%>), org.apache.hadoop.hbase.util.Bytes.toBytes("<%=column.getOriginalDbColumnName()%>"), temp_<%=cid %>);
+						if (!hbaseDistrib.doSupportHBase2x()) {
+						%>
+						    p_<%=cid%>.add(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=family_column%>), org.apache.hadoop.hbase.util.Bytes.toBytes("<%=column.getOriginalDbColumnName()%>"), temp_<%=cid%>);
+						<% 
+						} else {
+						%>
+						    p_<%=cid%>.addColumn(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=family_column%>), org.apache.hadoop.hbase.util.Bytes.toBytes("<%=column.getOriginalDbColumnName()%>"), temp_<%=cid%>);						
+						<% 
+						}
+						%>
 					<%
 					}
 					if (useBatchMode) {

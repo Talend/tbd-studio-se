@@ -11008,7 +11008,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH5_13_0_avro_mapred_1_7_7_hadoop2_jar",
-      "mvn_uri" : "mvn:org.apache.avro/avro-mapred/1.7.7//hadoop2",
+      "mvn_uri" : "mvn:org.apache.avro/avro-mapred/1.7.7-hadoop2",
       "name" : "avro-mapred-1.7.7-hadoop2.jar",
       "tagName" : "libraryNeeded"
     }, {

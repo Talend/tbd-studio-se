@@ -25,7 +25,10 @@ Require-Bundle: org.talend.libraries.apache.common,
  org.talend.designer.core,
  org.talend.core.ui;bundle-version="6.4.0",
  org.eclipse.ui;bundle-version="3.106.0",
- org.talend.components.api;bundle-version="0.18.0"
+ org.talend.components.api;bundle-version="0.18.0",
+ javax.xml.bind,
+ org.talend.commons.runtime,
+ org.talend.core.runtime
 Import-Package: org.eclipse.swt.widgets,
  org.talend.designer.core.generic.model,
  org.talend.designer.rowgenerator.shadow,

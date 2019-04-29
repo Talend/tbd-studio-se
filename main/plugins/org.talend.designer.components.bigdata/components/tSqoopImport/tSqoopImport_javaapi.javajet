@@ -86,14 +86,16 @@
 <%
 	}
 %>
+<%
+	String sqoopPackageName = ((org.talend.hadoop.distribution.AbstractDistribution) sqoopDistrib).getSqoopPackageName();
+%>
+	<%=sqoopPackageName%>.tool.SqoopTool sqoopTool_<%=cid%> = <%=sqoopPackageName%>.tool.SqoopTool.getTool("import");
 
-	com.cloudera.sqoop.tool.SqoopTool sqoopTool_<%=cid%> = com.cloudera.sqoop.tool.SqoopTool.getTool("import");
-
-	com.cloudera.sqoop.SqoopOptions sqoopOptions_<%=cid%> = new com.cloudera.sqoop.SqoopOptions(configuration_<%=cid%>);
+	<%=sqoopPackageName%>.SqoopOptions sqoopOptions_<%=cid%> = new <%=sqoopPackageName%>.SqoopOptions(configuration_<%=cid%>);
 	sqoopOptions_<%=cid%>.setConnectString(<%=connection%>); // __CONNECTION__
 	sqoopOptions_<%=cid%>.setUsername(<%=username%>); // __USERNAME__
 	if((<%=driverClass%> != null) && !"".equals(<%=driverClass%>)) {
-    	com.cloudera.sqoop.metastore.JobData jobData_<%=cid%> = new com.cloudera.sqoop.metastore.JobData(sqoopOptions_<%=cid%>, null);
+    	<%=sqoopPackageName%>.metastore.JobData jobData_<%=cid%> = new <%=sqoopPackageName%>.metastore.JobData(sqoopOptions_<%=cid%>, null);
     	org.apache.sqoop.manager.DefaultManagerFactory defaultManagerFactory_<%=cid%> = new org.apache.sqoop.manager.DefaultManagerFactory();
     	if(null == defaultManagerFactory_<%=cid%>.accept(jobData_<%=cid%>)) {
     		sqoopOptions_<%=cid%>.setDriverClassName(<%=driverClass%>);//driver class name
@@ -132,9 +134,9 @@
 		<%} 
 	}%>
 	<%if(useTarget || useQuery){%>sqoopOptions_<%=cid%>.setTargetDir(<%=target%>);<%}%>
-	<%if(fileFormat.equals("sequencefile")){%>sqoopOptions_<%=cid%>.setFileLayout(com.cloudera.sqoop.SqoopOptions.FileLayout.SequenceFile);<%} else if(fileFormat.equals("textfile")){%>sqoopOptions_<%=cid%>.setFileLayout(com.cloudera.sqoop.SqoopOptions.FileLayout.TextFile);<%}
-	else if(fileFormat.equals("parquetfile")){%>sqoopOptions_<%=cid%>.setFileLayout(com.cloudera.sqoop.SqoopOptions.FileLayout.ParquetFile);<%}
-	else {%>sqoopOptions_<%=cid%>.setFileLayout(com.cloudera.sqoop.SqoopOptions.FileLayout.AvroDataFile);<%}%>
+	<%if(fileFormat.equals("sequencefile")){%>sqoopOptions_<%=cid%>.setFileLayout(<%=sqoopPackageName%>.SqoopOptions.FileLayout.SequenceFile);<%} else if(fileFormat.equals("textfile")){%>sqoopOptions_<%=cid%>.setFileLayout(<%=sqoopPackageName%>.SqoopOptions.FileLayout.TextFile);<%}
+	else if(fileFormat.equals("parquetfile")){%>sqoopOptions_<%=cid%>.setFileLayout(<%=sqoopPackageName%>.SqoopOptions.FileLayout.ParquetFile);<%}
+	else {%>sqoopOptions_<%=cid%>.setFileLayout(<%=sqoopPackageName%>.SqoopOptions.FileLayout.AvroDataFile);<%}%>
 	<%if(useMappers){%>sqoopOptions_<%=cid%>.setNumMappers(Integer.valueOf(<%=mappers%>));<%}%>
 	<%if(useSplit){%>sqoopOptions_<%=cid%>.setSplitByCol(<%=split%>);<%}%>
 	<%if(!isCustom && sqoopDistrib.doJavaAPISqoopImportSupportDeleteTargetDir()) {%>

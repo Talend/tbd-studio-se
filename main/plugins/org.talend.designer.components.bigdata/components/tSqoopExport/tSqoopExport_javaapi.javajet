@@ -63,9 +63,13 @@
 %>
 	<%@ include file="../templates/Sqoop/GetConfig.javajet"%>
 	
-	com.cloudera.sqoop.tool.SqoopTool sqoopTool_<%=cid%> = com.cloudera.sqoop.tool.SqoopTool.getTool("export");
+<%
+	String sqoopPackageName = ((org.talend.hadoop.distribution.AbstractDistribution) sqoopDistrib).getSqoopPackageName();
+%>
+	
+	<%=sqoopPackageName%>.tool.SqoopTool sqoopTool_<%=cid%> = <%=sqoopPackageName%>.tool.SqoopTool.getTool("export");
 
-	com.cloudera.sqoop.SqoopOptions sqoopOptions_<%=cid%> = new com.cloudera.sqoop.SqoopOptions(configuration_<%=cid%>);
+	<%=sqoopPackageName%>.SqoopOptions sqoopOptions_<%=cid%> = new <%=sqoopPackageName%>.SqoopOptions(configuration_<%=cid%>);
 	
 	sqoopOptions_<%=cid%>.setConnectString(<%=connection%>); // __CONNECTION__
 <%	
@@ -78,7 +82,7 @@
 	sqoopOptions_<%=cid%>.setExportDir(<%=exportDir%>);
 	sqoopOptions_<%=cid%>.setUsername(<%=username%>); // __USERNAME__
 	if((<%=driverClass%> != null) && !"".equals(<%=driverClass%>)) {
-    	com.cloudera.sqoop.metastore.JobData jobData_<%=cid%> = new com.cloudera.sqoop.metastore.JobData(sqoopOptions_<%=cid%>, null);
+    	<%=sqoopPackageName%>.metastore.JobData jobData_<%=cid%> = new <%=sqoopPackageName%>.metastore.JobData(sqoopOptions_<%=cid%>, null);
     	org.apache.sqoop.manager.DefaultManagerFactory defaultManagerFactory_<%=cid%> = new org.apache.sqoop.manager.DefaultManagerFactory();
     	if(null == defaultManagerFactory_<%=cid%>.accept(jobData_<%=cid%>)) {
     		sqoopOptions_<%=cid%>.setDriverClassName(<%=driverClass%>);//driver class name
@@ -102,7 +106,7 @@
 	<%if(clearStagingTable && !useColumnForUpdate && !callProcStock){%>sqoopOptions_<%=cid%>.setClearStagingTable(true);<%}%>
 	<%if(callProcStock){%>sqoopOptions_<%=cid%>.setCall(<%=procStock%>);<%}%>
 	<%if(defineStagingTable && !useColumnForUpdate && !callProcStock){%>sqoopOptions_<%=cid%>.setStagingTableName(<%=stagingTable%>);<%}%>
-	<%if(!useColumnForUpdate && defineUpdateMode){%>sqoopOptions_<%=cid%>.setUpdateMode(com.cloudera.sqoop.SqoopOptions.<%="updateonly".equals(updateMode)?"UpdateMode.UpdateOnly":"UpdateMode.AllowInsert"%>);<%}%>
+	<%if(!useColumnForUpdate && defineUpdateMode){%>sqoopOptions_<%=cid%>.setUpdateMode(<%=sqoopPackageName%>.SqoopOptions.<%="updateonly".equals(updateMode)?"UpdateMode.UpdateOnly":"UpdateMode.AllowInsert"%>);<%}%>
 	<%
 		if(useColumnForUpdate && !defineUpdateMode && !callProcStock) {
 			List<Map<String,String>> columnsForUpdate = (List<Map<String, String>>)ElementParameterParser.getObjectValue(node,"__COLUMN_FOR_UPDATE__");

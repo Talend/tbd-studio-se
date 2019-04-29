@@ -63,14 +63,18 @@
 	boolean dieOnError = "true".equals(ElementParameterParser.getValue(node, "__DIE_ON_ERROR__"));	
 %>
 	<%@ include file="../templates/Sqoop/GetConfig.javajet"%>
-	com.cloudera.sqoop.tool.SqoopTool sqoopTool_<%=cid%> = com.cloudera.sqoop.tool.SqoopTool.getTool("import-all-tables");
+	
+<%
+	String sqoopPackageName = ((org.talend.hadoop.distribution.AbstractDistribution) sqoopDistrib).getSqoopPackageName();
+%>
+	<%=sqoopPackageName%>.tool.SqoopTool sqoopTool_<%=cid%> = <%=sqoopPackageName%>.tool.SqoopTool.getTool("import-all-tables");
 
-	com.cloudera.sqoop.SqoopOptions sqoopOptions_<%=cid%> = new com.cloudera.sqoop.SqoopOptions(configuration_<%=cid%>);
+	<%=sqoopPackageName%>.SqoopOptions sqoopOptions_<%=cid%> = new <%=sqoopPackageName%>.SqoopOptions(configuration_<%=cid%>);
 	
 	sqoopOptions_<%=cid%>.setConnectString(<%=connection%>); // __CONNECTION__
 	sqoopOptions_<%=cid%>.setUsername(<%=username%>); // __USERNAME__
 	if((<%=driverClass%> != null) && !"".equals(<%=driverClass%>)) {
-    	com.cloudera.sqoop.metastore.JobData jobData_<%=cid%> = new com.cloudera.sqoop.metastore.JobData(sqoopOptions_<%=cid%>, null);
+    	<%=sqoopPackageName%>.metastore.JobData jobData_<%=cid%> = new <%=sqoopPackageName%>.metastore.JobData(sqoopOptions_<%=cid%>, null);
     	org.apache.sqoop.manager.DefaultManagerFactory defaultManagerFactory_<%=cid%> = new org.apache.sqoop.manager.DefaultManagerFactory();
     	if(null == defaultManagerFactory_<%=cid%>.accept(jobData_<%=cid%>)) {
     		sqoopOptions_<%=cid%>.setDriverClassName(<%=driverClass%>);//driver class name
@@ -100,9 +104,9 @@
 			sqoopOptions_<%=cid%>.setCompressionCodec(<%=hadoopCodec%>);
 		<%} 
 	}%>
-	<%if(fileFormat.equals("sequencefile")){%>sqoopOptions_<%=cid%>.setFileLayout(com.cloudera.sqoop.SqoopOptions.FileLayout.SequenceFile);<%} else if(fileFormat.equals("textfile")){%>sqoopOptions_<%=cid%>.setFileLayout(com.cloudera.sqoop.SqoopOptions.FileLayout.TextFile);<%}
-		else if(fileFormat.equals("parquetfile")){%>sqoopOptions_<%=cid%>.setFileLayout(com.cloudera.sqoop.SqoopOptions.FileLayout.ParquetFile);<%}
-	 else {%>sqoopOptions_<%=cid%>.setFileLayout(com.cloudera.sqoop.SqoopOptions.FileLayout.AvroDataFile);<%}%>
+	<%if(fileFormat.equals("sequencefile")){%>sqoopOptions_<%=cid%>.setFileLayout(<%=sqoopPackageName%>.SqoopOptions.FileLayout.SequenceFile);<%} else if(fileFormat.equals("textfile")){%>sqoopOptions_<%=cid%>.setFileLayout(<%=sqoopPackageName%>.SqoopOptions.FileLayout.TextFile);<%}
+		else if(fileFormat.equals("parquetfile")){%>sqoopOptions_<%=cid%>.setFileLayout(<%=sqoopPackageName%>.SqoopOptions.FileLayout.ParquetFile);<%}
+	 else {%>sqoopOptions_<%=cid%>.setFileLayout(<%=sqoopPackageName%>.SqoopOptions.FileLayout.AvroDataFile);<%}%>
 
 	<%if(useMappers){%>sqoopOptions_<%=cid%>.setNumMappers(Integer.valueOf(<%=mappers%>));<%}%>
 	

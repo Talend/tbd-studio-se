@@ -8,8 +8,17 @@ imports="
 
 <%
 
-if((isCustom && isHadoop2) || (!isCustom && hbaseDistrib != null && hbaseDistrib.doSupportNewHBaseAPI())) {%>
+if((isCustom && isHadoop2) || (!isCustom && hbaseDistrib != null && hbaseDistrib.doSupportNewHBaseAPI())) {
+    if (!hbaseDistrib.doSupportHBase2x()) {
+%>
         org.apache.hadoop.hbase.client.HConnection hConnection_<%=cid%> = org.apache.hadoop.hbase.client.HConnectionManager.getConnection(conn_<%=cid%>);
+<% 
+    } else {
+%>        
+        org.apache.hadoop.hbase.client.Connection hConnection_<%=cid%> = org.apache.hadoop.hbase.client.ConnectionFactory.createConnection(conn_<%=cid%>);
+<% 
+    }
+%>        
         if ((hConnection_<%=cid%> != null) && (!hConnection_<%=cid%>.isClosed())) {
             hConnection_<%=cid%>.close();
         }

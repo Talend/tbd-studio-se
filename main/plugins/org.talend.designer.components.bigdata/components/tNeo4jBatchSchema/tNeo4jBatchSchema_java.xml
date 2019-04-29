@@ -123,7 +123,7 @@
 			<IMPORT NAME="bcprov-jdk15on-1.53" MODULE="bcprov-jdk15on-1.53.jar"  MVN="mvn:org.talend.libraries/bcprov-jdk15on-1.53/6.0.0"  REQUIRED="true"/>
 			<IMPORT NAME="caffeine-2.3.3" MODULE="caffeine-2.3.3.jar"  MVN="mvn:org.talend.libraries/caffeine-2.3.3/6.0.0"  REQUIRED="true"/>
 			<IMPORT NAME="commons-compress-1.12" MODULE="commons-compress-1.12.jar"  MVN="mvn:org.talend.libraries/commons-compress-1.12/6.0.0"  REQUIRED="true"/>
-			<IMPORT NAME="commons-lang3-3.3.2" MODULE="commons-lang3-3.3.2.jar"  MVN="mvn:org.talend.libraries/commons-lang3-3.3.2/6.0.0"  REQUIRED="true"/>
+			<IMPORT NAME="commons-lang3-3.8.1" MODULE="commons-lang3-3.8.1.jar"  MVN="mvn:org.apache.commons/commons-lang3/3.8.1"  REQUIRED="true"/>
 			<IMPORT NAME="concurrentlinkedhashmap-lru-1.4.2" MODULE="concurrentlinkedhashmap-lru-1.4.2.jar"  MVN="mvn:org.talend.libraries/concurrentlinkedhashmap-lru-1.4.2/6.0.0"  REQUIRED="true"/>
 			<IMPORT NAME="lucene-analyzers-common-5.5.0" MODULE="lucene-analyzers-common-5.5.0.jar"  MVN="mvn:org.talend.libraries/lucene-analyzers-common-5.5.0/6.0.0"  REQUIRED="true"/>
 			<IMPORT NAME="lucene-backward-codecs-5.5.0" MODULE="lucene-backward-codecs-5.5.0.jar"  MVN="mvn:org.talend.libraries/lucene-backward-codecs-5.5.0/6.0.0"  REQUIRED="true"/>

@@ -34,7 +34,7 @@ imports="
 	log4jFileUtil.componentStartInfo(node);
 %>
 int nb_line_<%=cid%> = 0;
-org.apache.hadoop.conf.Configuration conn_<%=cid %>=null;
+org.apache.hadoop.conf.Configuration conn_<%=cid%>=null;
 <%
 INode connNode = "true".equals(useExistingConn) ? ElementParameterParser.getLinkedNodeValue(node, "__CONNECTION__") : node;
 String distribution = ElementParameterParser.getValue(connNode, "__DISTRIBUTION__");
@@ -69,11 +69,11 @@ if(!"true".equals(useExistingConn)){
 
     %>
 try{
-	conn_<%=cid %> = org.apache.hadoop.hbase.HBaseConfiguration.create();
-	conn_<%=cid %>.clear();
-	conn_<%=cid %>.set("hbase.zookeeper.quorum", <%=zookeeper_quorum%>); 
-	conn_<%=cid %>.set("hbase.zookeeper.property.clientPort",<%=zookeeper_client_port%>); 
-	conn_<%=cid %>.set("hbase.cluster.distributed","true"); 
+	conn_<%=cid%> = org.apache.hadoop.hbase.HBaseConfiguration.create();
+	conn_<%=cid%>.clear();
+	conn_<%=cid%>.set("hbase.zookeeper.quorum", <%=zookeeper_quorum%>); 
+	conn_<%=cid%>.set("hbase.zookeeper.property.clientPort",<%=zookeeper_client_port%>); 
+	conn_<%=cid%>.set("hbase.cluster.distributed","true"); 
 <%
 	boolean setZNodeParent = "true".equals(ElementParameterParser.getValue(node, "__SET_ZNODE_PARENT__"));
 	String zNodeParent = ElementParameterParser.getValue(node, "__ZNODE_PARENT__");		
@@ -150,22 +150,22 @@ try{
    		String property = map.get("PROPERTY");
    		String value= map.get("VALUE");
 %>
-		conn_<%=cid %>.set(<%=property%>,<%=value%>);
+		conn_<%=cid%>.set(<%=property%>,<%=value%>);
 <%
    }
 }else{// use existing connection
 	String connection = ElementParameterParser.getValue(node,"__CONNECTION__");
 	String conn = "conn_" + connection;
 %>
-	conn_<%=cid %> = (org.apache.hadoop.conf.Configuration)globalMap.get("<%=conn%>");
-	if(conn_<%=cid %> == null){
-		throw new RuntimeException("<%=cid %>'s connection is null!");
+	conn_<%=cid%> = (org.apache.hadoop.conf.Configuration)globalMap.get("<%=conn%>");
+	if(conn_<%=cid%> == null){
+		throw new RuntimeException("<%=cid%>'s connection is null!");
 	}
 <%
 }
 if(hbaseDistrib.doSupportMapRDB() && useTableNsMapping){
 %>
-	conn_<%=cid %>.set("hbase.table.namespace.mappings", <%=tableNsMapping%>);
+	conn_<%=cid%>.set("hbase.table.namespace.mappings", <%=tableNsMapping%>);
 <%
 }
 
@@ -173,11 +173,11 @@ if(defineSelection) {
 	String startRow = ElementParameterParser.getValue(node, "__START_ROW__");
 	String endRow = ElementParameterParser.getValue(node, "__END_ROW__");
 %>
-	org.apache.hadoop.hbase.client.Scan scan_<%=cid %> = new org.apache.hadoop.hbase.client.Scan(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=startRow %>), org.apache.hadoop.hbase.util.Bytes.toBytes(<%=endRow %>));
+	org.apache.hadoop.hbase.client.Scan scan_<%=cid%> = new org.apache.hadoop.hbase.client.Scan(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=startRow %>), org.apache.hadoop.hbase.util.Bytes.toBytes(<%=endRow %>));
 <%
 } else {
 %>
-	org.apache.hadoop.hbase.client.Scan scan_<%=cid %> = new org.apache.hadoop.hbase.client.Scan();
+	org.apache.hadoop.hbase.client.Scan scan_<%=cid%> = new org.apache.hadoop.hbase.client.Scan();
 <%
 }
 List<IMetadataTable> metadatas = node.getMetadataList();
@@ -198,7 +198,7 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 			String family_column= map.get("FAMILY_COLUMN");
 			if(!(retrieveTimestamp && schema_column.equals(timestampColumn))){
 %>
-				scan_<%=cid %>.addColumn(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=family_column%>), org.apache.hadoop.hbase.util.Bytes.toBytes("<%=column.getOriginalDbColumnName()%>"));
+				scan_<%=cid%>.addColumn(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=family_column%>), org.apache.hadoop.hbase.util.Bytes.toBytes("<%=column.getOriginalDbColumnName()%>"));
 <%
 			}
 		}
@@ -216,7 +216,7 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 			}
 			if(hasMultipleColumnPrefixFilterType){
 %>
-				String [] multipleValues_<%=cid %> = null;
+				String [] multipleValues_<%=cid%> = null;
 				byte [][] multipleBytesValues_<%=cid%> = null;
 <%
 			}
@@ -277,7 +277,7 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 				}else if("ColumnPrefixFilter".equals(filterType)){//"Filter Column" value is column name,like:"id" or "name" ....,return column value,filter other columns
 					if(filterFamily!=null && !"".equals(filterFamily)){ 
 %>
-						scan_<%=cid %>.addFamily(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=filterFamily%>));
+						scan_<%=cid%>.addFamily(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=filterFamily%>));
 <%
 					}
 %>
@@ -286,15 +286,15 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 				}else if("MultipleColumnPrefixFilter".equals(filterType)){ //"Filter Column" value is for column name ,like:"id,name" ,"id,name,sex".... , return column value,filter other columns
 					if(filterFamily!=null && !"".equals(filterFamily)){ 
 %>
-						scan_<%=cid %>.addFamily(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=filterFamily%>));
+						scan_<%=cid%>.addFamily(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=filterFamily%>));
 <%
 					}
 %>
 					if(<%=filterColumn%>!=null && !"".equals(<%=filterColumn%>)){
-						multipleValues_<%=cid %> = <%=filterColumn%>.split(",");
-						multipleBytesValues_<%=cid %> = new byte [multipleValues_<%=cid %>.length] [];
-						for(int i = 0 ; i < multipleValues_<%=cid %>.length ; i++){
-							multipleBytesValues_<%=cid %>[i] = org.apache.hadoop.hbase.util.Bytes.toBytes(multipleValues_<%=cid %>[i]);
+						multipleValues_<%=cid%> = <%=filterColumn%>.split(",");
+						multipleBytesValues_<%=cid%> = new byte [multipleValues_<%=cid%>.length] [];
+						for(int i = 0 ; i < multipleValues_<%=cid%>.length ; i++){
+							multipleBytesValues_<%=cid%>[i] = org.apache.hadoop.hbase.util.Bytes.toBytes(multipleValues_<%=cid%>[i]);
 						}
 						filter_<%=cid%> =  new org.apache.hadoop.hbase.filter.MultipleColumnPrefixFilter(multipleBytesValues_<%=cid%>);
 					}
@@ -302,7 +302,7 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 				}else if("ColumnRangeFilter".equals(filterType)){//"Filter Column" value is tow columns name,like: "id,name" ,"id,sex" ....,return columns value ,filter other columns
 					if(filterFamily!=null && !"".equals(filterFamily)){ 
 %>
-						scan_<%=cid %>.addFamily(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=filterFamily%>));
+						scan_<%=cid%>.addFamily(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=filterFamily%>));
 <%
 					}
 %>
@@ -342,14 +342,22 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 <%
 			}
 %>
-			scan_<%=cid %>.setFilter(filterList_<%=cid%>);
+			scan_<%=cid%>.setFilter(filterList_<%=cid%>);
 <%
 		}
+		if (!hbaseDistrib.doSupportHBase2x()) {
 %>		
-		org.apache.hadoop.hbase.client.HTable table_<%=cid %> = new org.apache.hadoop.hbase.client.HTable(conn_<%=cid %>, <%=table_name%>);
-		String temp_<%=cid %>=null;
-		byte[] rowResult_<%=cid %> = null;
-		org.apache.hadoop.hbase.client.ResultScanner scanner_<%=cid %> = table_<%=cid %>.getScanner(scan_<%=cid %>);
+		    org.apache.hadoop.hbase.client.HTable table_<%=cid%> = new org.apache.hadoop.hbase.client.HTable(conn_<%=cid%>, <%=table_name%>);
+<% 
+		} else { 
+%>
+            	    org.apache.hadoop.hbase.client.Table table_<%=cid%> = org.apache.hadoop.hbase.client.ConnectionFactory.createConnection(conn_<%=cid%>).getTable(org.apache.hadoop.hbase.TableName.valueOf(<%=table_name%>));
+<% 
+		}
+%>
+		String temp_<%=cid%>=null;
+		byte[] rowResult_<%=cid%> = null;
+		org.apache.hadoop.hbase.client.ResultScanner scanner_<%=cid%> = table_<%=cid%>.getScanner(scan_<%=cid%>);
 <%
 
     	List< ? extends IConnection> conns = node.getOutgoingSortedConnections();
@@ -357,7 +365,7 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 			if (conns.size()>0){
 				log4jFileUtil.startRetriveDataInfo();
 %>
-				for (org.apache.hadoop.hbase.client.Result rr_<%=cid %> = scanner_<%=cid %>.next(); rr_<%=cid %> != null; rr_<%=cid %> = scanner_<%=cid %>.next()) {
+				for (org.apache.hadoop.hbase.client.Result rr_<%=cid%> = scanner_<%=cid%>.next(); rr_<%=cid%> != null; rr_<%=cid%> = scanner_<%=cid%>.next()) {
 <%
 					IConnection conn = conns.get(0);
 					String connName = conn.getName();
@@ -375,30 +383,30 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 								String patternValue = column.getPattern() == null || column.getPattern().trim().length() == 0 ? null : column.getPattern();
 								boolean isPrimitiveType = JavaTypesManager.isJavaPrimitiveType(javaType, column.isNullable());
 %>
-								rowResult_<%=cid %> = rr_<%=cid %>.getValue(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=family_column%>),org.apache.hadoop.hbase.util.Bytes.toBytes("<%=column.getOriginalDbColumnName()%>"));
-								temp_<%=cid %> = org.apache.hadoop.hbase.util.Bytes.toString(rowResult_<%=cid %>);
-								if(temp_<%=cid %>!=null && temp_<%=cid %>.length() > 0) {
+								rowResult_<%=cid%> = rr_<%=cid%>.getValue(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=family_column%>),org.apache.hadoop.hbase.util.Bytes.toBytes("<%=column.getOriginalDbColumnName()%>"));
+								temp_<%=cid%> = org.apache.hadoop.hbase.util.Bytes.toString(rowResult_<%=cid%>);
+								if(temp_<%=cid%>!=null && temp_<%=cid%>.length() > 0) {
 <%									if(javaType == JavaTypesManager.STRING || javaType == JavaTypesManager.OBJECT) {
 %>
-										<%=connName %>.<%=columnName %>=temp_<%=cid %>.toString();
+										<%=connName %>.<%=columnName %>=temp_<%=cid%>.toString();
 <%									}else if(javaType == JavaTypesManager.BYTE_ARRAY){
 %> 
-										<%=connName%>.<%=columnName%>=rowResult_<%=cid %>;
+										<%=connName%>.<%=columnName%>=rowResult_<%=cid%>;
 <%									}else if(javaType == JavaTypesManager.DATE){
 %> 
-										<%=connName%>.<%=columnName%>=ParserUtils.parseTo_Date(temp_<%=cid %>, <%= patternValue %>);
+										<%=connName%>.<%=columnName%>=ParserUtils.parseTo_Date(temp_<%=cid%>, <%= patternValue %>);
 <%									}else if(isPrimitiveType && javaType == JavaTypesManager.INTEGER){  
 %>
-										<%=connName%>.<%=columnName%>=org.apache.hadoop.hbase.util.Bytes.toInt(rowResult_<%=cid %>);  
+										<%=connName%>.<%=columnName%>=org.apache.hadoop.hbase.util.Bytes.toInt(rowResult_<%=cid%>);  
 <%									}else if(isPrimitiveType && javaType == JavaTypesManager.CHARACTER){  
 %>
-										<%=connName%>.<%=columnName%>=(char)org.apache.hadoop.hbase.util.Bytes.toInt(rowResult_<%=cid %>);  
+										<%=connName%>.<%=columnName%>=(char)org.apache.hadoop.hbase.util.Bytes.toInt(rowResult_<%=cid%>);  
 <%									}else if(isPrimitiveType && (javaType == JavaTypesManager.SHORT || javaType == JavaTypesManager.LONG || javaType == JavaTypesManager.FLOAT || javaType == JavaTypesManager.DOUBLE)) {  
 %>
-										<%=connName%>.<%=columnName%>=org.apache.hadoop.hbase.util.Bytes.to<%=javaType.getNullableClass().getSimpleName()%>(rowResult_<%=cid %>);  
+										<%=connName%>.<%=columnName%>=org.apache.hadoop.hbase.util.Bytes.to<%=javaType.getNullableClass().getSimpleName()%>(rowResult_<%=cid%>);  
 <%									}else{
 %>
-										<%=connName%>.<%=columnName%>=ParserUtils.parseTo_<%= typeToGenerate %>(temp_<%=cid %>);
+										<%=connName%>.<%=columnName%>=ParserUtils.parseTo_<%= typeToGenerate %>(temp_<%=cid%>);
 <%									}
 
 									if(retrieveTimestamp && sourceTimestampColumn.equals(schema_column)){ // TODO separate use of getColumnLatest by distribution as it is deprecated since HBase 1.0, replaced by getColumnLatestCell up to latest (HBase 3.0)
@@ -412,7 +420,7 @@ if ((metadatas!=null) && (metadatas.size() > 0)) {
 										}
 										if(localTimestampColumn != null && JavaTypesManager.getJavaTypeFromId(localTimestampColumn.getTalendType()) == JavaTypesManager.LONG){
 										%>
-											<%=connName %>.<%=timestampColumn %> = rr_<%=cid %>.getColumnLatest(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=family_column%>),org.apache.hadoop.hbase.util.Bytes.toBytes("<%=column.getOriginalDbColumnName()%>")).getTimestamp();
+											<%=connName %>.<%=timestampColumn %> = rr_<%=cid%>.getColumnLatest(org.apache.hadoop.hbase.util.Bytes.toBytes(<%=family_column%>),org.apache.hadoop.hbase.util.Bytes.toBytes("<%=column.getOriginalDbColumnName()%>")).getTimestamp();
 										<%
 										}else{
 										%>

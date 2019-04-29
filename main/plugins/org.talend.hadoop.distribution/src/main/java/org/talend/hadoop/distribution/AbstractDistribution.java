@@ -357,4 +357,12 @@ public boolean isQuboleDistribution() {
     public String getWinUtilsName() {
     	return EWinUtilsName.WINUTILS_HADOOP_2_6.toString();
     };
+
+    public boolean doSupportHBase2x() {
+        return false;
+    }
+    
+    public String getSqoopPackageName() {
+        return ESqoopPackageName.COM_CLOUDERA_SQOOP.toString();
+    }
 }

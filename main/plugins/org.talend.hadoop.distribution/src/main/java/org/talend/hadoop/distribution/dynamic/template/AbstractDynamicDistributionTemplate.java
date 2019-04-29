@@ -24,6 +24,7 @@ import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
+import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.MapRDBComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
@@ -114,6 +115,10 @@ public abstract class AbstractDynamicDistributionTemplate extends AbstractDistri
         }
         if (this instanceof SqoopComponent) {
             moduleGroupsTemplateMap.put(ComponentType.SQOOP, new DynamicSqoopModuleGroupTemplate(pluginAdapter));
+        }
+
+        if (this instanceof ImpalaComponent) {
+            moduleGroupsTemplateMap.put(ComponentType.IMPALA, new DynamicImpalaModuleGroupTemplate(pluginAdapter));
         }
 
         return moduleGroupsTemplateMap;

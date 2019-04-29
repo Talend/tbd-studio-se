@@ -1,3 +1,4 @@
+<%@jet%>
 <%
 	String distribution = ElementParameterParser.getValue(node, "__DISTRIBUTION__");
 	String version = ElementParameterParser.getValue(node, "__DB_VERSION__");
@@ -57,13 +58,16 @@
 	<%@ include file="../templates/Sqoop/GetConfig.javajet"%>
 	String jarFileName_<%=cid%> = <%=jarFile%>;
 <%
+	String sqoopPackageName = ((org.talend.hadoop.distribution.AbstractDistribution) sqoopDistrib).getSqoopPackageName();
+%>
+<%
     if(needGenerateJar){
 %>
-        com.cloudera.sqoop.SqoopOptions needGenereateJarSqoopOptions_<%=cid%> = new com.cloudera.sqoop.SqoopOptions(configuration_<%=cid%>);
+        <%=sqoopPackageName%>.SqoopOptions needGenereateJarSqoopOptions_<%=cid%> = new <%=sqoopPackageName%>.SqoopOptions(configuration_<%=cid%>);
         needGenereateJarSqoopOptions_<%=cid%>.setConnectString(<%=connection%>); // __CONNECTION__
         needGenereateJarSqoopOptions_<%=cid%>.setUsername(<%=username%>);
         if((<%=driverClass%> != null) && !"".equals(<%=driverClass%>)) {
-        	com.cloudera.sqoop.metastore.JobData jobData_<%=cid%> = new com.cloudera.sqoop.metastore.JobData(needGenereateJarSqoopOptions_<%=cid%>, null);
+        	<%=sqoopPackageName%>.metastore.JobData jobData_<%=cid%> = new <%=sqoopPackageName%>.metastore.JobData(needGenereateJarSqoopOptions_<%=cid%>, null);
         	org.apache.sqoop.manager.DefaultManagerFactory defaultManagerFactory_<%=cid%> = new org.apache.sqoop.manager.DefaultManagerFactory();
         	if(null == defaultManagerFactory_<%=cid%>.accept(jobData_<%=cid%>)) {
         		needGenereateJarSqoopOptions_<%=cid%>.setDriverClassName(<%=driverClass%>);//driver class name
@@ -112,11 +116,11 @@
 %>
         needGenereateJarSqoopOptions_<%=cid%>.loadProperties(generateJarAdditionalProperties_<%=cid%>);
         
-        com.cloudera.sqoop.tool.CodeGenTool codeGen_<%=cid%> = new com.cloudera.sqoop.tool.CodeGenTool();
-        com.cloudera.sqoop.Sqoop codeGenerator_<%=cid%> = new com.cloudera.sqoop.Sqoop(codeGen_<%=cid%>,configuration_<%=cid%>, needGenereateJarSqoopOptions_<%=cid%>);
+        <%=sqoopPackageName%>.tool.CodeGenTool codeGen_<%=cid%> = new <%=sqoopPackageName%>.tool.CodeGenTool();
+        <%=sqoopPackageName%>.Sqoop codeGenerator_<%=cid%> = new <%=sqoopPackageName%>.Sqoop(codeGen_<%=cid%>,configuration_<%=cid%>, needGenereateJarSqoopOptions_<%=cid%>);
         
 		try {
-			int ret_<%=cid%> = com.cloudera.sqoop.Sqoop.runSqoop(codeGenerator_<%=cid%>, new String[0]);
+			int ret_<%=cid%> = <%=sqoopPackageName%>.Sqoop.runSqoop(codeGenerator_<%=cid%>, new String[0]);
        	if (0 != ret_<%=cid%>) {
 <%
 				if(dieOnError) {
@@ -175,9 +179,9 @@
 %>
     }
     
-    com.cloudera.sqoop.tool.SqoopTool sqoopTool_<%=cid%> = com.cloudera.sqoop.tool.SqoopTool.getTool("merge");
+    <%=sqoopPackageName%>.tool.SqoopTool sqoopTool_<%=cid%> = <%=sqoopPackageName%>.tool.SqoopTool.getTool("merge");
 
-    com.cloudera.sqoop.SqoopOptions sqoopOptions_<%=cid%> = new com.cloudera.sqoop.SqoopOptions(configuration_<%=cid%>);
+    <%=sqoopPackageName%>.SqoopOptions sqoopOptions_<%=cid%> = new <%=sqoopPackageName%>.SqoopOptions(configuration_<%=cid%>);
 
 	sqoopOptions_<%=cid%>.setMergeOldPath(<%=oldDataDir%>);
 	sqoopOptions_<%=cid%>.setMergeNewPath(<%=newDataDir%>);
