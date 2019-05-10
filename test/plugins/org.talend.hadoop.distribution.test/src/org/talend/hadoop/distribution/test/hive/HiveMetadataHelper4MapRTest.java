@@ -20,6 +20,7 @@ import org.talend.hadoop.distribution.constants.mapr.IMapRDistribution;
 public class HiveMetadataHelper4MapRTest extends AbstractDistributionTest4HiveMetadataHelper {
     
     private static final String[] VERSIONS_NON_DYNAMIC = new String[] {
+    	"MapR 6.1.0(YARN mode)",
         "MapR 6.0.1(YARN mode)",
     	 "MapR 6.0.0(YARN mode)",
         "MapR 5.2.0(YARN mode)",
