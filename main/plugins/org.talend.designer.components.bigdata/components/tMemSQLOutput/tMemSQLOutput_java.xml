@@ -11,15 +11,15 @@
     DATA_AUTO_PROPAGATE="false"
     HAS_CONDITIONAL_OUTPUTS="true"
     PARALLELIZE="true"
-	  PARTITIONING="AUTO"
+	PARTITIONING="AUTO"
     LOG4J_ENABLED="true"
+    VISIBLE="false"
   >
     <SIGNATURE/>
   </HEADER>
 
   <FAMILIES>
-    <FAMILY>Databases/DB Specifics/MemSQL</FAMILY>
-    <FAMILY>Big Data/MemSQL</FAMILY>
+    <FAMILY>Deprecated</FAMILY>
   </FAMILIES>
 
   <DOCUMENTATION>

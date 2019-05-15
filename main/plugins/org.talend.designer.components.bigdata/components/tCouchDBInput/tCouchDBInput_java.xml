@@ -11,15 +11,14 @@
 		AUTHOR="Talend"
 		RELEASE_DATE="20130305A"
 		STARTABLE="true"
-		VISIBLE="true"
+		VISIBLE="false"
 		LOG4J_ENABLED="true"
   	>
     	<SIGNATURE/>
 	</HEADER>
 
 	<FAMILIES>
-	  	<FAMILY>Databases NoSQL/CouchDB</FAMILY>
-		<FAMILY>Big Data/CouchDB</FAMILY>
+	  	<FAMILY>Deprecated</FAMILY>
 	</FAMILIES>
 
 	<DOCUMENTATION>

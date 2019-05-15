@@ -19,8 +19,7 @@
 	</HEADER>
 
 	<FAMILIES>
-	  	<FAMILY>Databases NoSQL/CouchDB</FAMILY>
-		<FAMILY>Big Data/CouchDB</FAMILY>
+	  	<FAMILY>Deprecated</FAMILY>
 	</FAMILIES>
 
 	<DOCUMENTATION>

@@ -13,13 +13,13 @@
     SCHEMA_AUTO_PROPAGATE="false"
 	  PARTITIONING="AUTO"
     LOG4J_ENABLED="true"
+    VISIBLE="false"
   >
     <SIGNATURE/>
   </HEADER>
 
   <FAMILIES>
-    <FAMILY>Databases/DB Specifics/MemSQL</FAMILY>
-    <FAMILY>Big Data/MemSQL</FAMILY>
+    <FAMILY>Deprecated</FAMILY>
   </FAMILIES>
 
   <DOCUMENTATION>
