@@ -824,6 +824,24 @@
 			]
 		},
 		{
+			"id": "httpclient-4.5.3",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "httpclient-4.5.3.jar",
+			"mvnUri": "mvn:org.talend.libraries/httpclient-4.5.3/6.0.0",
+			"useStudioRepository": "true",
+			"description": ""
+		},
+		{
+			"id": "httpcore-4.4.6",
+			"type": "STANDARD",
+			"context": "{properties.context}",
+			"jarName": "httpcore-4.4.6.jar",
+			"mvnUri": "mvn:org.talend.libraries/httpcore-4.4.6/6.3.0",
+			"useStudioRepository": "true",
+			"description": ""
+		},
+		{
 			"id": "jodd",
 			"type": "BASE",
 			"context": "{properties.context}",
@@ -1257,7 +1275,9 @@
 				"commons-lang3-3.4",
 				"jackson-core",
 				"jackson-databind",
-				"kite-data-core"
+				"kite-data-core",
+				"httpclient-4.5.3",
+				"httpcore-4.4.6"
 			]
 		},
 		{
