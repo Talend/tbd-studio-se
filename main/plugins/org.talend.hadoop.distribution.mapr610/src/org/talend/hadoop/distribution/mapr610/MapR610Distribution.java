@@ -28,7 +28,6 @@ import org.talend.hadoop.distribution.NodeComponentTypeBean;
 import org.talend.hadoop.distribution.component.HCatalogComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
-import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.MapRDBComponent;
@@ -50,7 +49,6 @@ import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610HBaseModuleGrou
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610HCatalogModuleGroup;
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610HDFSModuleGroup;
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610HiveModuleGroup;
-import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610ImpalaModuleGroup;
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610MapRStreamsCreateStreamModuleGroup;
@@ -78,7 +76,7 @@ import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610SparkStreamingP
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610SqoopModuleGroup;
 
 public class MapR610Distribution extends AbstractMapRDistribution implements HDFSComponent, MapROJAIComponent,
-        SparkBatchComponent, SparkStreamingComponent, HiveComponent, HiveOnSparkComponent, MapRStreamsComponent,
+        SparkBatchComponent, SparkStreamingComponent, HiveComponent, MapRStreamsComponent,
         MapRDBComponent, IMapRDistribution, HCatalogComponent, MRComponent, PigComponent, SqoopComponent,
         ImpalaComponent {
 
@@ -87,7 +85,7 @@ public class MapR610Distribution extends AbstractMapRDistribution implements HDF
     public static final String VERSION_DISPLAY = "MapR 6.1.0(YARN mode)"; //$NON-NLS-1$
 
     private final static String YARN_APPLICATION_CLASSPATH =
-            "/opt/mapr/spark/spark-2.3.1/jars/*:/opt/mapr/hadoop/hadoop-2.7.0/etc/hadoop:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/common/lib/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/common/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/hdfs:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/hdfs/lib/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/hdfs/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/yarn/lib/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/yarn/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/mapreduce/lib/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/mapreduce/*"; //$NON-NLS-1$
+            "/opt/mapr/spark/spark-2.3.2/jars/*:/opt/mapr/hadoop/hadoop-2.7.0/etc/hadoop:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/common/lib/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/common/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/hdfs:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/hdfs/lib/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/hdfs/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/yarn/lib/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/yarn/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/mapreduce/lib/*:/opt/mapr/hadoop/hadoop-2.7.0/share/hadoop/mapreduce/*"; //$NON-NLS-1$
 
     public static final String MAPR_STREAMS_JAR_PATH = "/opt/mapr/lib/mapr-streams-6.1.0-mapr.jar"; //$NON-NLS-1$
 
@@ -115,7 +113,6 @@ public class MapR610Distribution extends AbstractMapRDistribution implements HDF
         moduleGroups.put(ComponentType.IMPALA, MapR610ImpalaModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SPARKBATCH, MapR610SparkBatchModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SPARKSTREAMING, MapR610SparkStreamingModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.HIVEONSPARK, MapR610HiveOnSparkModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPRSTREAMS, MapR610MapRStreamsModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPRDB, MapR610HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.OJAI, MapR610OjaiModuleGroup.getModuleGroups());
