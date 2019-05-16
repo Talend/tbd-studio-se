@@ -436,21 +436,21 @@
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
-            id="jackson-databind-2.9.5.jar" 
-            name="jackson-databind-2.9.5.jar"
-			mvn_uri="mvn:com.fasterxml.jackson.core/jackson-databind/2.9.5">
+            id="jackson-databind-2.6.7.1.jar" 
+            name="jackson-databind-2.6.7.1.jar"
+			mvn_uri="mvn:com.fasterxml.jackson.core/jackson-databind/2.6.7.1">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
-            id="jackson-annotations-2.9.5.jar" 
-            name="jackson-annotations-2.9.5.jar"
-			mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.5">
+            id="jackson-annotations-2.6.7.jar" 
+            name="jackson-annotations-2.6.7.jar"
+			mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.6.7">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
-            id="jackson-core-2.9.5.jar" 
-            name="jackson-core-2.9.5.jar"
-			mvn_uri="mvn:com.fasterxml.jackson.core/jackson-core/2.9.5">
+            id="jackson-core-2.6.7.jar" 
+            name="jackson-core-2.6.7.jar"
+			mvn_uri="mvn:com.fasterxml.jackson.core/jackson-core/2.6.7">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
@@ -618,6 +618,8 @@
         </libraryNeeded>
         
         <!-- Spark2 libraries -->
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="spark-kvstore_2.11-2.3.1-mapr-1808.jar" name="spark-kvstore_2.11-2.3.1-mapr-1808.jar" mvn_uri="mvn:org.talend.libraries/spark-kvstore_2.11/2.3.1-mapr-1808"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="mapr-security-web-6.1.0-mapr.jar" name="mapr-security-web-6.1.0-mapr.jar" mvn_uri="mvn:org.talend.libraries/mapr-security-web/6.1.0-mapr"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="antlr4-runtime-4.7.jar" name="antlr4-runtime-4.7.jar" mvn_uri="mvn:org.talend.libraries/antlr4-runtime/4.7"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="antlr-2.7.7.jar" name="antlr-2.7.7.jar" mvn_uri="mvn:antlr/antlr/2.7.7"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="antlr-runtime-3.5.2.jar" name="antlr-runtime-3.5.2.jar" mvn_uri="mvn:org.antlr/antlr-runtime/3.5.2"/>
@@ -665,9 +667,9 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="httpclient-4.5.4.jar" name="httpclient-4.5.4.jar" mvn_uri="mvn:org.apache.httpcomponents/httpclient/4.5.4"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="httpcore-4.4.8.jar" name="httpcore-4.4.8.jar" mvn_uri="mvn:org.apache.httpcomponents/httpcore/4.4.8"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="ivy-2.4.0.jar" name="ivy-2.4.0.jar" mvn_uri="mvn:org.apache.ivy/ivy/2.4.0"/>
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="jackson-annotations-2.9.5.jar" name="jackson-annotations-2.9.5.jar" mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.5"/>
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="jackson-core-2.9.5.jar" name="jackson-core-2.9.5.jar" mvn_uri="mvn:com.fasterxml.jackson.core/jackson-core/2.9.5"/>
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="jackson-databind-2.9.5.jar" name="jackson-databind-2.9.5.jar" mvn_uri="mvn:com.fasterxml.jackson.core/jackson-databind/2.9.5"/>
+		<!--libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="jackson-annotations-2.9.5.jar" name="jackson-annotations-2.9.5.jar" mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.5"/-->
+		<!--libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="jackson-core-2.9.5.jar" name="jackson-core-2.9.5.jar" mvn_uri="mvn:com.fasterxml.jackson.core/jackson-core/2.9.5"/-->
+		<!--libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="jackson-databind-2.9.5.jar" name="jackson-databind-2.9.5.jar" mvn_uri="mvn:com.fasterxml.jackson.core/jackson-databind/2.9.5"/-->
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="jackson-module-paranamer-2.7.9.jar" name="jackson-module-paranamer-2.7.9.jar" mvn_uri="mvn:org.talend.libraries/jackson-module-paranamer/2.7.9"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="jackson-module-scala_2.11-2.6.7.1.jar" name="jackson-module-scala_2.11-2.6.7.1.jar" mvn_uri="mvn:com.fasterxml.jackson.module/jackson-module-scala_2.11/2.6.7.1"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="janino-3.0.8.jar" name="janino-3.0.8.jar" mvn_uri="mvn:org.talend.libraries/janino/3.0.8"/>
@@ -807,9 +809,10 @@
             <library id="commons-lang-2.6.jar" />
             <library id="zookeeper-3.4.11-mapr-1808.jar" />
             <library id="antlr4-runtime-4.7.jar" />
-            <library id="jackson-databind-2.9.5.jar" />
-            <library id="jackson-annotations-2.9.5.jar" />
-            <library id="jackson-core-2.9.5.jar" />
+            <!--library id="jackson-databind-2.9.5.jar" /-->
+            <library id="jackson-databind-2.6.7.1.jar" />
+            <library id="jackson-annotations-2.6.7.jar" />
+            <library id="jackson-core-2.6.7.jar" />
             <library id="curator-framework-2.7.1.jar" />
             <library id="xercesImpl-2.11.0.jar" />
             <library id="xml-apis-1.4.01.jar" />
@@ -978,6 +981,8 @@
            id="SPARK-LIB-MAPR610"
            name="SPARK-LIB-MAPR610">
             <library id="winutils-hadoop-2.7.0.exe" />
+			<library id="spark-kvstore_2.11-2.3.1-mapr-1808.jar"/>
+			<library id="mapr-security-web-6.1.0-mapr.jar"/>
 			<library id="antlr4-runtime-4.7.jar"/>
 			<library id="antlr-2.7.7.jar"/>
 			<library id="antlr-runtime-3.5.2.jar"/>
@@ -1021,6 +1026,7 @@
 			<library id="gson-2.7.jar"/>
 			<library id="hive-beeline-1.2.0-mapr-spark-MEP-6.0.0-1808-spark.jar"/>
 			<library id="hive-cli-1.2.0-mapr-spark-MEP-6.0.0-1808.jar"/>
+			<library id="hive-common-2.3.3-mapr-1901.jar"/>
 			<library id="hive-exec-2.3.3-mapr-1901.jar-spark.jar"/>
 			<library id="hive-jdbc-2.3.3-mapr-1901.jar"/>
 			<library id="hive-metastore-2.3.3-mapr-1901.jar"/>
@@ -1032,9 +1038,9 @@
 			<library id="httpclient-4.5.4.jar"/>
 			<library id="httpcore-4.4.8.jar"/>
 			<library id="ivy-2.4.0.jar"/>
-			<library id="jackson-annotations-2.9.5.jar"/>
-			<library id="jackson-core-2.9.5.jar"/>
-			<library id="jackson-databind-2.9.5.jar"/>
+			<library id="jackson-annotations-2.6.7.jar"/>
+			<library id="jackson-core-2.6.7.jar"/>
+			<library id="jackson-databind-2.6.7.1.jar"/>
 			<library id="jackson-module-paranamer-2.7.9.jar"/>
 			<library id="jackson-module-scala_2.11-2.6.7.1.jar"/>
 			<library id="janino-3.0.8.jar"/>
@@ -1339,8 +1345,8 @@
             <library id="kite-data-core-1.0.0.jar"/>
             <library id="kite-data-mapreduce-1.0.0.jar"/>
             <library id="kite-hadoop-compatibility-1.0.0.jar"/>
-            <library id="jackson-databind-2.9.5.jar"/>
-            <library id="jackson-core-2.9.5.jar"/>
+            <library id="jackson-databind-2.6.7.1.jar"/><!--2.3.1-->
+            <library id="jackson-core-2.6.7.jar"/>
             <library id="parquet-hadoop-bundle-1.8.1.jar" />
             <library id="parquet-avro-1.4.1.jar"/>
         </libraryNeededGroup>
