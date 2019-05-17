@@ -1106,9 +1106,9 @@
 			<library id="spark-catalyst_2.11-2.3.2.0-mapr-1901.jar"/>
 			<library id="spark-core_2.11-2.3.2.0-mapr-1901.jar"/>
 			<library id="spark-graphx_2.11-2.3.2.0-mapr-1901.jar"/>
-			<library id="spark-hive_2.11-2.3.1-mapr-1808.jar"/>
+			<library id="spark-hive_2.11-2.3.2.0-mapr-1901.jar"/>
 			<library id="spark-hive-thriftserver_2.11-2.3.2.0-mapr-1901.jar"/>
-			<library id="spark-launcher_2.11-2.3.1-mapr-1808.jar"/>
+			<library id="spark-launcher_2.11-2.3.2.0-mapr-1901.jar"/>
 			<library id="spark-mesos_2.11-2.3.2.0-mapr-1901.jar"/>
 			<library id="spark-mllib_2.11-2.3.2.0-mapr-1901.jar"/>
 			<library id="spark-mllib-local_2.11-2.3.2.0-mapr-1901.jar"/>
