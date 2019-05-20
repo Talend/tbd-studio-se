@@ -6,6 +6,7 @@
     <provide interface="org.talend.hadoop.distribution.component.HDFSComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.MapROJAIComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.HiveComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.HiveOnSparkComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.SparkBatchComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.MapRStreamsComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.MapRDBComponent"/>

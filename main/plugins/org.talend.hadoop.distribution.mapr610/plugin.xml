@@ -1286,6 +1286,17 @@
             <library id="pigutil.jar"/>
         </libraryNeededGroup>        
 
+        <!-- Spark Hive group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Hive libraries for MapR 6.1.0 that are MRREQUIRED"
+                id="SPARK-HIVE-LIB-MRREQUIRED-MAPR610"
+                name="SPARK-HIVE-LIB-MRREQUIRED-MAPR610">
+           <library id="jdo-api-3.0.1.jar" />
+           <library id="datanucleus-api-jdo-4.2.4.jar" />
+           <library id="datanucleus-core-4.1.6.jar" />
+           <library id="datanucleus-rdbms-4.1.19.jar" />
+        </libraryNeededGroup>
+        
         <!-- Spark Flume group MRREQUIRED -->
         <libraryNeededGroup
                 description="Spark Flume libraries for MapR 6.1.0 that are MRREQUIRED"
