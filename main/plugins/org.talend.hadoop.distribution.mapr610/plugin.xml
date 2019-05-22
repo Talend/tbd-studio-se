@@ -576,7 +576,7 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" 
         	id="azure-storage-2.0.0.jar" 
         	name="azure-storage-2.0.0.jar" 
-        	mvn_uri="mvn:org.talend.libraries/azure-storage/2.0.0"/>
+        	mvn_uri="mvn:org.talend.libraries/azure-storage-2.0.0/6.0.0"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" 
         	id="hadoop-azure-2.7.0-mapr-1808.jar" 
