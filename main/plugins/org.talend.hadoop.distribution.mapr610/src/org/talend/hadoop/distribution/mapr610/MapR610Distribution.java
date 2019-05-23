@@ -390,7 +390,7 @@ public class MapR610Distribution extends AbstractMapRDistribution implements HDF
 
     @Override
     public boolean doSupportAzureDataLakeStorage() {
-        return true;//let try
+        return false;//true;//let try
     }
 
     @Override

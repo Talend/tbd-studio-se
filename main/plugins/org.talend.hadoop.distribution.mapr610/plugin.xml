@@ -1155,6 +1155,8 @@
                 name="SPARK-AZURE-LIB-MRREQUIRED-MAPR610">
                 <library id="azure-storage-2.0.0.jar"/>
                 <library id="hadoop-azure-2.7.0-mapr-1808.jar"/>
+                <!--library id="azure-data-lake-store-sdk-2.1.4.jar"/>
+                <library id="hadoop-azure-datalake-2.7.0-mapr-1808.jar"/-->
                 <library id="jetty-util-6.1.26.jar"/>
         </libraryNeededGroup>
 
