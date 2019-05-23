@@ -589,7 +589,7 @@
         	mvn_uri="mvn:org.mortbay.jetty/jetty-util/6.1.26"/>
 
 		<!--let try datalake on mapr 6.1.0 !!! -->
-        <libraryNeeded
+        <!--libraryNeeded
             context="plugin:org.talend.hadoop.distribution.mapr.6.1.0"
             id="azure-data-lake-store-sdk-2.1.4.jar"
             name="azure-data-lake-store-sdk-2.1.4.jar"
@@ -600,7 +600,7 @@
             id="hadoop-azure-datalake-2.7.0-mapr-1808.jar"
             name="hadoop-azure-datalake-2.7.0-mapr-1808.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-azure-datalake/2.7.0-mapr-1808">
-        </libraryNeeded>
+        </libraryNeeded-->
 		<!-- -->
 		
         <!-- Flume libraries -->
@@ -1029,7 +1029,7 @@
 			<library id="hive-beeline-1.2.0-mapr-spark-MEP-6.0.0-1901.jar"/>
 			<library id="hive-cli-1.2.0-mapr-spark-MEP-6.0.0-1901.jar"/>
 			<library id="hive-common-2.3.3-mapr-1901.jar"/>
-			<library id="hive-exec-2.3.3-mapr-1901.jar-spark.jar"/>
+			<library id="hive-exec-2.3.3-mapr-1901.jar"/>
 			<library id="hive-jdbc-2.3.3-mapr-1901.jar"/>
 			<library id="hive-metastore-2.3.3-mapr-1901.jar"/>
 			<library id="hive-shims-common-1.2.0-mapr-spark-MEP-6.0.0-1901.jar"/>
