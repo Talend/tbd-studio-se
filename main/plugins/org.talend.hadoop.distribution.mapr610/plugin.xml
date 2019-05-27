@@ -356,7 +356,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="aws-java-sdk-bundle-1.11.199.jar"
             name="aws-java-sdk-bundle-1.11.199.jar"
-            mvn_uri="mvn:org.talend.libraries/aws-java-sdk-bundle/1.11.199">
+            mvn_uri="mvn:com.amazonaws/aws-java-sdk-bundle/1.11.199">
         </libraryNeeded>
 
         <libraryNeeded
@@ -1026,6 +1026,7 @@
 			<library id="derby-10.12.1.1.jar"/>
 			<library id="eigenbase-properties-1.1.5.jar"/>
 			<library id="gson-2.7.jar"/>
+			<library id="hbase-common-1.1.8-mapr-1901.jar"/>
 			<library id="hive-beeline-1.2.0-mapr-spark-MEP-6.0.0-1901.jar"/>
 			<library id="hive-cli-1.2.0-mapr-spark-MEP-6.0.0-1901.jar"/>
 			<library id="hive-common-2.3.3-mapr-1901.jar"/>
