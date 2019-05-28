@@ -93,6 +93,7 @@ imports="
 		log.info("<%=cid%> - Connection to the database closed.");	
 <%	
 	}
+}
 %>
 	}//of finally
 	globalMap.put("<%=cid%>_QUERY", querySQL_<%=cid %>);
