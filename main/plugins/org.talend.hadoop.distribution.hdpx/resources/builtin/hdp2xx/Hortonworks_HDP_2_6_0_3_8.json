@@ -718,10 +718,6 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
-        "id" : "DYNAMIC_HDP_2_6_0_3_8_jackson_databind_2_6_6_jar",
-        "tagName" : "library"
-      }, {
-        "childNodes" : [ ],
         "id" : "DYNAMIC_HDP_2_6_0_3_8_jackson_jaxrs_1_9_13_jar",
         "tagName" : "library"
       }, {
@@ -861,6 +857,16 @@
       "id" : "DYNAMIC_HDP_2_6_0_3_8_HDFS_LIB_DYNAMIC",
       "tagName" : "libraryNeededGroup",
       "templateId" : "HDFS-LIB-DYNAMIC"
+    }, {
+      "childNodes" : [ {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_jackson_databind_2_6_6_jar",
+        "tagName" : "library"
+      } ],
+      "description" : "Hdfs libraries for every execution engine except Spark 1.6",
+      "id" : "DYNAMIC_HDP_2_6_0_3_8_HDFS-NOT-SPARK-1-6_LIB_DYNAMIC",
+      "tagName" : "libraryNeededGroup",
+      "templateId" : "HDFS-NOT-SPARK-1-6-LIB-DYNAMIC"
     }, {
       "childNodes" : [ {
         "childNodes" : [ ],
@@ -6638,10 +6644,6 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
-        "id" : "DYNAMIC_HDP_2_6_0_3_8_jackson_databind_2_6_6_jar",
-        "tagName" : "library"
-      }, {
-        "childNodes" : [ ],
         "id" : "DYNAMIC_HDP_2_6_0_3_8_jackson_jaxrs_1_9_13_jar",
         "tagName" : "library"
       }, {
@@ -6809,6 +6811,16 @@
       "id" : "DYNAMIC_HDP_2_6_0_3_8_TEZ_LIB_DYNAMIC",
       "tagName" : "libraryNeededGroup",
       "templateId" : "TEZ-LIB-DYNAMIC"
+    }, {
+      "childNodes" : [ {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_jackson_databind_2_6_6_jar",
+        "tagName" : "library"
+      } ],
+      "description" : "Tez libraries for all execution engines except Spark 1.6",
+      "id" : "DYNAMIC_HDP_2_6_0_3_8_TEZ-NOT-SPARK-1-6-LIB-DYNAMIC",
+      "tagName" : "libraryNeededGroup",
+      "templateId" : "TEZ-NOT-SPARK-1-6-LIB-DYNAMIC"
     }, {
       "childNodes" : [ {
         "childNodes" : [ ],
