@@ -84,6 +84,14 @@ HCatalogComponent, PigComponent, MRComponent, HiveComponent, ImpalaComponent, Sq
     public boolean doSupportSSL() {
         return true;
     }
+    
+    @Override 
+    /**
+     * Added in Studio 7.2.1 for CDH 6.x
+     */
+    public boolean doImpalaSupportSSL() {
+        return true;
+    }
 
     @Override
     public boolean doSupportORCFormat() {
