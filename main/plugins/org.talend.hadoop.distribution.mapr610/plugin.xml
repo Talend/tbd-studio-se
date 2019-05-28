@@ -223,12 +223,24 @@
              name="hive-exec-2.3.3-mapr-1901.jar"
              mvn_uri="mvn:org.apache.hive/hive-exec/2.3.3-mapr-1901" >
 		</libraryNeeded>
+		<libraryNeeded
+             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
+             id="hive-exec-1.2.0-mapr-spark-MEP-6.0.0-1901.jar"
+             name="hive-exec-1.2.0-mapr-spark-MEP-6.0.0-1901.jar"
+             mvn_uri="mvn:org.apache.hive/hive-exec/1.2.0-mapr-spark-MEP-6.0.0-1901" >
+		</libraryNeeded>
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hive-common-2.3.3-mapr-1901.jar"
             name="hive-common-2.3.3-mapr-1901.jar"
-            mvn_uri="mvn:org.apache.hive/hive-common/2.3.3-mapr-1901" >
+            mvn_uri="mvn:org.apache.hive/hive-common/2.3.3-mapr-1901">
        </libraryNeeded>
+       <!--libraryNeeded
+            context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
+            id="hive-common-1.2.0-mapr-1710.jar"
+            name="hive-common-1.2.0-mapr-1710.jar"
+            mvn_uri="mvn:org.apache.hive/hive-common/1.2.0-mapr-1710" >
+       </libraryNeeded-->
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hive-serde-2.3.3-mapr-1901.jar"
@@ -239,13 +251,25 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hive-metastore-2.3.3-mapr-1901.jar"
             name="hive-metastore-2.3.3-mapr-1901.jar"
-            mvn_uri="mvn:org.apache.hive/hive-metastore/2.3.3-mapr-1901" >
+            mvn_uri="mvn:org.apache.hive/hive-metastore/2.3.3-mapr-1901">
+        </libraryNeeded>
+       <libraryNeeded
+            context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
+            id="hive-metastore-1.2.0-mapr-spark-MEP-6.0.0-1901.jar"
+            name="hive-metastore-1.2.0-mapr-spark-MEP-6.0.0-1901.jar"
+            mvn_uri="mvn:org.apache.hive/hive-metastore/1.2.0-mapr-spark-MEP-6.0.0-1901" >
         </libraryNeeded>
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hive-jdbc-2.3.3-mapr-1901.jar"
             name="hive-jdbc-2.3.3-mapr-1901.jar"
             mvn_uri="mvn:org.apache.hive/hive-jdbc/2.3.3-mapr-1901" >
+       </libraryNeeded>
+       <libraryNeeded
+            context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
+            id="hive-jdbc-1.2.0-mapr-spark-MEP-6.0.0-1901.jar"
+            name="hive-jdbc-1.2.0-mapr-spark-MEP-6.0.0-1901.jar"
+            mvn_uri="mvn:org.apache.hive/hive-jdbc/1.2.0-mapr-spark-MEP-6.0.0-1901" >
        </libraryNeeded>
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
@@ -1029,10 +1053,10 @@
 			<library id="hbase-common-1.1.8-mapr-1901.jar"/>
 			<library id="hive-beeline-1.2.0-mapr-spark-MEP-6.0.0-1901.jar"/>
 			<library id="hive-cli-1.2.0-mapr-spark-MEP-6.0.0-1901.jar"/>
-			<library id="hive-common-2.3.3-mapr-1901.jar"/>
-			<library id="hive-exec-2.3.3-mapr-1901.jar"/>
-			<library id="hive-jdbc-2.3.3-mapr-1901.jar"/>
-			<library id="hive-metastore-2.3.3-mapr-1901.jar"/>
+			<!--library id="hive-common-1.2.0-mapr-1710.jar"/-->
+			<library id="hive-exec-1.2.0-mapr-spark-MEP-6.0.0-1901.jar"/>
+			<library id="hive-jdbc-1.2.0-mapr-spark-MEP-6.0.0-1901.jar"/>
+			<library id="hive-metastore-1.2.0-mapr-spark-MEP-6.0.0-1901.jar"/>
 			<library id="hive-shims-common-1.2.0-mapr-spark-MEP-6.0.0-1901.jar"/>
 			<library id="hive-shims-scheduler-1.2.0-mapr-spark-MEP-6.0.0-1901.jar"/>
 			<library id="hk2-api-2.5.0-b32.jar"/>
@@ -1199,8 +1223,8 @@
             <library id="jline-1.0.jar"/>
             <library id="joda-time-2.9.3.jar"/>
             <library id="snappy-java-1.1.1.7.jar" />
-            <library id="hive-exec-2.3.3-mapr-1901.jar"/>
-            <library id="hive-metastore-2.3.3-mapr-1901.jar"/>
+            <library id="hive-exec-1.2.0-mapr-spark-MEP-6.0.0-1901.jar"/>
+            <library id="hive-metastore-1.2.0-mapr-spark-MEP-6.0.0-1901.jar"/>
             <library id="flexjson-2.1.jar"/>
             <library id="pig-core-h2-0.16.0-1901.jar"/>
             <library id="automaton-1.11-8.jar"/>
