@@ -118,13 +118,16 @@ public final class DistributionHelper {
         for (Class anInterface : baseClazz.getInterfaces()) {
             try {
                 method = anInterface.getDeclaredMethod(methodName);
+                //FIRST CASE: we found the method. we need to check if is is an implementation
+                //if yes return it else continue the loop
                 if (method != null && method.isDefault()) {
                     return method;
-                }
+                }                
             } catch (NoSuchMethodException | SecurityException e) {
+                //SECOND CASE: we did not found the method. so we look for parent interfaces if any.
                 //look for parent interfaces
                 method = findDefaultMethod(anInterface, methodName);
-                //return the method if found
+                //return the method if found else continue the loop
                 if (method!=null) {
                     return method;
                 }                

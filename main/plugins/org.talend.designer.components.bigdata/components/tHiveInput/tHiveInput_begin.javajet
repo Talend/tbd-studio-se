@@ -72,7 +72,7 @@ imports="
 
 		    if("true".equals(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"))) {
 		        String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
-		        for (INode pNode : node.getProcess().getNodesOfType("tHiveConnection")) {
+		        for (INode pNode : node.getProcess().getNodesOfType("Connection")) {
 		            if(connection!=null && connection.equals(pNode.getUniqueName())) {
 		                theDistribution = ElementParameterParser.getValue(pNode, "__DISTRIBUTION__");
 		                theVersion = ElementParameterParser.getValue(pNode, "__HIVE_VERSION__");

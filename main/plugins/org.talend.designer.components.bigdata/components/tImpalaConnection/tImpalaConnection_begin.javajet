@@ -111,7 +111,7 @@
 				throw new IllegalArgumentException("impala can not work with Hive1");
 			}
 
-          	// When configuraing from the classpath we do not set the variables using System.setProperty
+          	// When configuring from the classpath we do not set the variables using System.setProperty
           	// We set them directly on the Hadoop Configuration object
 			if((hadoopProps!=null && hadoopProps.size() > 0) && (!configureFromClassPath)) {
         		if(securityIsEnabled) {
