@@ -50,7 +50,7 @@ import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610HBaseModuleGrou
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610HCatalogModuleGroup;
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610HDFSModuleGroup;
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610HiveModuleGroup;
-import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610HiveOnSparkModuleGroup;
+//import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610ImpalaModuleGroup;
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610MapRStreamsCreateStreamModuleGroup;
@@ -115,7 +115,7 @@ public class MapR610Distribution extends AbstractMapRDistribution implements HDF
         moduleGroups.put(ComponentType.IMPALA, MapR610ImpalaModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SPARKBATCH, MapR610SparkBatchModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SPARKSTREAMING, MapR610SparkStreamingModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.HIVEONSPARK, MapR610HiveOnSparkModuleGroup.getModuleGroups());
+//        moduleGroups.put(ComponentType.HIVEONSPARK, MapR610HiveOnSparkModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPRSTREAMS, MapR610MapRStreamsModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPRDB, MapR610HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.OJAI, MapR610OjaiModuleGroup.getModuleGroups());

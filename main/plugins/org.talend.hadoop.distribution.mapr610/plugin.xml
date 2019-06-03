@@ -1016,6 +1016,7 @@
 			<library id="apache-log4j-extras-1.2.17.jar"/>
 			<library id="arpack_combined_all-0.1.jar"/>
 			<library id="avro-mapred-1.8.1-hadoop2.jar"/>
+			<library id="avro-1.8.1.jar" />
 			<library id="bonecp-0.8.0.RELEASE.jar"/>
 			<library id="breeze_2.11-0.13.2.jar"/>
 			<library id="breeze-macros_2.11-0.13.2.jar"/>
@@ -1314,7 +1315,7 @@
         </libraryNeededGroup>        
 
         <!-- Spark Hive group MRREQUIRED -->
-        <libraryNeededGroup
+        <!--libraryNeededGroup
                 description="Spark Hive libraries for MapR 6.1.0 that are MRREQUIRED"
                 id="SPARK-HIVE-LIB-MRREQUIRED-MAPR610"
                 name="SPARK-HIVE-LIB-MRREQUIRED-MAPR610">
@@ -1322,7 +1323,7 @@
            <library id="datanucleus-api-jdo-4.2.4.jar" />
            <library id="datanucleus-core-4.1.6.jar" />
            <library id="datanucleus-rdbms-4.1.19.jar" />
-        </libraryNeededGroup>
+        </libraryNeededGroup-->
         
         <!-- Spark Flume group MRREQUIRED -->
         <libraryNeededGroup
