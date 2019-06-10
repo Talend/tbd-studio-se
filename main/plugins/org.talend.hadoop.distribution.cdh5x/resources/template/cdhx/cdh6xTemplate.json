@@ -1663,7 +1663,8 @@
 			"description": "",
 			"modules": [
 				"hadoop-client",
-				"hbase-client"
+				"hbase-client",
+				"hbase-server"
 			]
 		},
 		{
