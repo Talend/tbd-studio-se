@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -27,9 +27,9 @@ import org.talend.repository.ui.actions.routines.AbstractRoutineAction;
 
 /**
  * Action that will edit routines.
- * 
+ *
  * $Id: ReadPigudfAction.java 1863 2007-02-06 06:01:36Z yzhang $
- * 
+ *
  */
 public class ReadPigudfAction extends AbstractRoutineAction {
 
@@ -43,7 +43,7 @@ public class ReadPigudfAction extends AbstractRoutineAction {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.ui.actions.ITreeContextualAction#init(org.eclipse.jface.viewers.TreeViewer,
      * org.eclipse.jface.viewers.IStructuredSelection)
      */
@@ -62,7 +62,7 @@ public class ReadPigudfAction extends AbstractRoutineAction {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.jface.action.Action#run()
      */
     @Override

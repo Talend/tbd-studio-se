@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -137,13 +137,13 @@ public class EMR450Distribution extends AbstractDistribution implements HDFSComp
 
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(String distribution, String version) {
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
-        
+
         // WebHDFS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = EMR450WebHDFSModuleGroup.getModuleGroups(distribution, version);
         for(String hdfsComponent : HDFSConstant.hdfsComponents) {
             result.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
         }
-        
+
         // Mapreduce nodes
         result.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
                 EMR450MRS3NodeModuleGroup.getModuleGroups(distribution, version));
@@ -437,7 +437,7 @@ public class EMR450Distribution extends AbstractDistribution implements HDFSComp
         return false;
     }
     // End
-    
+
     @Override
     public boolean useOldAWSAPI() {
         return false;

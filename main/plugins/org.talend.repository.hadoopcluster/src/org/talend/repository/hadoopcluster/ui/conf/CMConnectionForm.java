@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -39,7 +39,7 @@ public class CMConnectionForm extends AbstractConnectionForm {
         passwordText = new LabelledText(connectionGroup, Messages.getString("HadoopImportRemoteOptionPage.text.password"), 2); //$NON-NLS-1$
         passwordText.getTextControl().setEchoChar('*');
         createAuthenticationFields(connectionGroup);
-        boolean createResult = createRetieveMetaFields(connectionGroup);          
+        boolean createResult = createRetieveMetaFields(connectionGroup);
         connButton = new Button(connectionGroup, SWT.PUSH);
         GridData connBtnGD = new GridData(SWT.END, SWT.CENTER, false, false);
         if (createResult) {

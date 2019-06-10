@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -78,7 +78,7 @@ public interface HiveComponent extends MRComponent {
      * Up to hive 0.12, special input/output/row format classes are required to store data in Parquet format in hive
      * tables, which are found in a parquet-hive-bundle-VERSION.jar. From hive 0.13 on, Parquet is integrated into hive
      * and tables can be created with "STORE AS PARQUET" directly.
-     * 
+     *
      * @see https://cwiki.apache.org/confluence/display/Hive/Parquet,
      * @return true if the distribution requires the deprecated parquet hive bundles to support Parquet storage.
      */
@@ -88,7 +88,7 @@ public interface HiveComponent extends MRComponent {
      * Hive supports SASL-QOP (HIVE-4911) with kerberos to provide a form of data integrity protection. Newer versions
      * of Hive support using SSL (not SASL-QOP) with Kerberos. This should be tested after activating Kerberos and SSL
      * in Hive, using a connection string that looks like :
-     * 
+     *
      * jdbc:hive2://localhost:10000/default;principal=hive/_HOST@ABC.COM;ssl=true;sslTrustStore=my.truststore;
      * trustStorePassword=pass
      */

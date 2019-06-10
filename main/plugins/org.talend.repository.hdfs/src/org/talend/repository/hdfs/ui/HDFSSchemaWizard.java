@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -114,7 +114,7 @@ public class HDFSSchemaWizard extends AbstractRepositoryFileTableWizard implemen
                 public void run(IProgressMonitor monitor) throws CoreException {
                     saveMetaData();
                     Display.getDefault().asyncExec(new Runnable() {
-                        
+
                         @Override
                         public void run() {
                             RepositoryUpdateManager.updateMultiSchema(connectionItem, oldMetadataTable, oldTableMap);
@@ -137,7 +137,7 @@ public class HDFSSchemaWizard extends AbstractRepositoryFileTableWizard implemen
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.ui.wizards.AbstractRepositoryFileTableWizard#performCancel()
      */
     @Override

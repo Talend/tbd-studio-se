@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -78,7 +78,7 @@ public final class ApiUtils {
     /**
      * Calculate the fromDate. If the fromString is not provided, then the fromDate calculated from the toDate and the
      * window.
-     * 
+     *
      * @param fromString A string representation of the from date.
      * @param toDate The to date for this period
      * @param window The duration of this period

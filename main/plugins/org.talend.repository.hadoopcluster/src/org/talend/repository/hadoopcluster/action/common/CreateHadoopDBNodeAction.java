@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -36,13 +36,13 @@ import org.talend.repository.ui.wizards.metadata.connection.database.DatabaseWiz
 
 /**
  * created by ycbai on 2013-3-23 Detailled comment
- * 
+ *
  */
 public abstract class CreateHadoopDBNodeAction extends CreateHadoopNodeAction {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.hadoopcluster.action.common.CreateHadoopNodeAction#getNodeType()
      */
     @Override
@@ -54,7 +54,7 @@ public abstract class CreateHadoopDBNodeAction extends CreateHadoopNodeAction {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.hadoopcluster.action.common.CreateHadoopNodeAction#getNodeImage()
      */
     @Override
@@ -74,7 +74,7 @@ public abstract class CreateHadoopDBNodeAction extends CreateHadoopNodeAction {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.hadoopcluster.action.common.CreateHadoopNodeAction#getWizard(org.eclipse.ui.IWorkbench,
      * boolean, org.talend.repository.model.RepositoryNode, java.lang.String[])
@@ -105,7 +105,7 @@ public abstract class CreateHadoopDBNodeAction extends CreateHadoopNodeAction {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.hadoopcluster.action.common.CreateHadoopNodeAction#init(org.talend.repository.model.
      * RepositoryNode)
      */

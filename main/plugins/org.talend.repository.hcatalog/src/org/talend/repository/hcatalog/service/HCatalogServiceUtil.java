@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -50,9 +50,9 @@ public class HCatalogServiceUtil {
 
     /**
      * DOC ycbai Comment method "testConnection".
-     * 
+     *
      * Test whether can connect to HCatalog.
-     * 
+     *
      * @return
      */
     public static ConnectionStatus testConnection(HCatalogConnection connection) {
@@ -72,7 +72,7 @@ public class HCatalogServiceUtil {
 
     /**
      * DOC ycbai Comment method "getHCatalogDBClient".
-     * 
+     *
      * @param connection
      * @return the HCatalog client of the special database from HCatalogConnection.
      * @throws Exception
@@ -139,7 +139,7 @@ public class HCatalogServiceUtil {
         String mapRHadoopLogin = hcConnection.getMaprTHadoopLogin();
         Long desiredTicketDurInSecs = 86400L;
         if (mapRTicketDuration != null && StringUtils.isNotBlank(mapRTicketDuration)) {
-            if (mapRTicketDuration.endsWith("L")) {//$NON-NLS-1$ 
+            if (mapRTicketDuration.endsWith("L")) {//$NON-NLS-1$
                 mapRTicketDuration = mapRTicketDuration.substring(0, mapRTicketDuration.length() - 1);
                 desiredTicketDurInSecs = Long.valueOf(mapRTicketDuration) + 'L';
             } else if (StringUtils.isNumeric(mapRTicketDuration)) {
@@ -177,7 +177,7 @@ public class HCatalogServiceUtil {
 
     /**
      * DOC ycbai Comment method "getHCatalogClient".
-     * 
+     *
      * @param connection
      * @param path the path must start with database name or "templeton/v1/ddl/database/".
      * @return the HCatalog client with the special path.
@@ -213,7 +213,7 @@ public class HCatalogServiceUtil {
         } else {
             protocol = "http://"; //$NON-NLS-1$
         }
-        String endpoint = protocol + host + ":" + port + "?user.name=" + userName; //$NON-NLS-1$ //$NON-NLS-2$ 
+        String endpoint = protocol + host + ":" + port + "?user.name=" + userName; //$NON-NLS-1$ //$NON-NLS-2$
         JAXRSClientFactoryBean clientFactoryBean = new JAXRSClientFactoryBean();
         clientFactoryBean.setUsername(userName);
         if (isHDI) {
@@ -228,9 +228,9 @@ public class HCatalogServiceUtil {
 
     /**
      * DOC ycbai Comment method "getDataFromHCatalog".
-     * 
+     *
      * Get data from HCatalog client.
-     * 
+     *
      * @param client
      * @return
      * @throws Exception

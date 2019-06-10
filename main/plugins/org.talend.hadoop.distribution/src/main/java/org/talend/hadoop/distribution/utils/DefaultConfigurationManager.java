@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -77,13 +77,13 @@ public class DefaultConfigurationManager {
 
     /**
      * if the keys is empty(String[0]), return null.
-     * 
+     *
      * If the keys only contain empty string (String[1]{""}), will return the whole JSON string directly.
-     * 
+     *
      * if the subKeys is not leaf keys, means, contain some children values, will return the sub JSON string directly.
      * for example, existed "HBASE/PORT", but the subKeys is only "HBASE", means will return the string of JSON which
      * contained the "PORT" or others.
-     * 
+     *
      */
     public static String getValue(JSONObject jsonObject, String... keys) {
         if (keys == null || jsonObject == null) {

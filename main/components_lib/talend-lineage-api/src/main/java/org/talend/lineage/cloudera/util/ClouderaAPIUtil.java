@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -72,10 +72,10 @@ public class ClouderaAPIUtil {
 
     /**
      * Try to extract navigator URL else Fall back to user input.
-     * 
+     *
      * Note : Navigator SDK 2.0 requires URL of the following form : http://subdoamin.doamin.ext:port/
      * (http://quickstart.cloudera:7187/)
-     * 
+     *
      * @param navigatorUrl
      * @return
      */

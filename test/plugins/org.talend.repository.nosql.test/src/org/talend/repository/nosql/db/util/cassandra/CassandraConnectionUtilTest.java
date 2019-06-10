@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -35,7 +35,7 @@ public class CassandraConnectionUtilTest {
 
     /**
      * DOC hwang Comment method "setUp".
-     * 
+     *
      * @throws java.lang.Exception
      */
     @Before
@@ -52,19 +52,19 @@ public class CassandraConnectionUtilTest {
     public void testIsUpgradeVersion() {
         connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, VersionUtils.DEFAULT_VERSION);
         Assert.assertFalse(CassandraConnectionUtil.isUpgradeVersion(connection));
-        
+
         connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, ICassandraConstants.CASSANDRA200);
         Assert.assertFalse(CassandraConnectionUtil.isUpgradeVersion(connection));
-        
+
         connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, "CASSANDRA_1_2_2");
         Assert.assertFalse(CassandraConnectionUtil.isUpgradeVersion(connection));
-        
+
         connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, ICassandraConstants.DBM_DATASTAX_ID);
         Assert.assertFalse(CassandraConnectionUtil.isUpgradeVersion(connection));
-        
+
         connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, "CASSANDRA_2_2");
         Assert.assertTrue(CassandraConnectionUtil.isUpgradeVersion(connection));
-        
+
         connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, "CASSANDRA_3_0");
         Assert.assertTrue(CassandraConnectionUtil.isUpgradeVersion(connection));
     }

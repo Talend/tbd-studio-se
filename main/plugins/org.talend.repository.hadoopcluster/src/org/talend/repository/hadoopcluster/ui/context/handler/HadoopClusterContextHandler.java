@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -186,7 +186,7 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                     case QuboleAPIToken:
                         ConnectionContextHelper.createParameters(varList, paramName,
                                 conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_API_TOKEN), JavaTypesManager.PASSWORD);
-                        break;  
+                        break;
                     case QuboleCluster:
                         ConnectionContextHelper.createParameters(varList, paramName,
                                 conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_CLUSTER));
@@ -218,7 +218,7 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                     case QuboleS3BucketKey:
                         ConnectionContextHelper.createParameters(varList, paramName,
                                 conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_BUCKET_KEY));
-                        break;        
+                        break;
                     case QuboleS3Region:
                         ConnectionContextHelper.createParameters(varList, paramName,
                                 conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_REGION));
@@ -226,19 +226,19 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                     case DataBricksEndpoint:
                         ConnectionContextHelper.createParameters(varList, paramName,
                                 conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_ENDPOINT));
-                        break;    
+                        break;
                     case DataBricksClusterId:
                         ConnectionContextHelper.createParameters(varList, paramName,
                                 conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLUSTER_ID));
-                        break;    
+                        break;
                     case DataBricksToken:
                         ConnectionContextHelper.createParameters(varList, paramName,
                                 conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_TOKEN), JavaTypesManager.PASSWORD );
-                        break;    
+                        break;
                     case DataBricksDBFSDepFolder:
                         ConnectionContextHelper.createParameters(varList, paramName,
                                 conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_DBFS_DEP_FOLDER));
-                        break;          
+                        break;
                     default:
                     }
 
@@ -507,39 +507,39 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
         case QuboleS3AccessKey:
             hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_ACCESS_KEY,
                     ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
-            break;    
+            break;
         case QuboleS3SecretKey:
             hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_SECRET_KEY,
                     ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
-            break; 
+            break;
         case QuboleS3BucketName:
             hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_BUCKET_NAME,
                     ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
-            break; 
+            break;
         case QuboleS3BucketKey:
             hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_BUCKET_KEY,
                     ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
-            break; 
+            break;
         case QuboleS3Region:
             hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_REGION,
                     ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
-            break; 
+            break;
         case DataBricksEndpoint:
             hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_ENDPOINT,
                     ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
-            break; 
+            break;
         case DataBricksClusterId:
             hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLUSTER_ID,
                     ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
-            break; 
+            break;
         case DataBricksToken:
             hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_TOKEN,
                     ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
-            break; 
+            break;
         case DataBricksDBFSDepFolder:
             hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_DBFS_DEP_FOLDER,
                     ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
-            break; 
+            break;
         default:
         }
     }

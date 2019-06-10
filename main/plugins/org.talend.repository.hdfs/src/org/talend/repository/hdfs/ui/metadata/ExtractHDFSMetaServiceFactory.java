@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -20,7 +20,7 @@ import org.talend.repository.model.hdfs.HDFSConnection;
 
 /**
  * created by ycbai on 2014-5-29 Detailled comment
- * 
+ *
  */
 public class ExtractHDFSMetaServiceFactory {
 
@@ -28,9 +28,9 @@ public class ExtractHDFSMetaServiceFactory {
      * Get the appropriate implementation of {@link IExtractSchemaService} for the given {@code path} of file. This
      * method should be improved if there are more types of file to support in the future.
      * <p>
-     * 
+     *
      * DOC ycbai Comment method "getService".
-     * 
+     *
      * @param connectionBean
      * @param path
      * @return

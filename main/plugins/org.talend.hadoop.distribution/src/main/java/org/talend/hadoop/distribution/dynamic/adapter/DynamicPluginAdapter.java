@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -49,7 +49,7 @@ public class DynamicPluginAdapter {
     private IDynamicDistributionPreference preference;
 
     private Map<String, IDynamicConfiguration> moduleGroupTemplateMap;
-    
+
     private Map<String, IDynamicConfiguration> moduleMap;
 
     private VersionStringComparator versionComparator;
@@ -73,7 +73,7 @@ public class DynamicPluginAdapter {
 
     /**
      * Build related informations, and remove attributes not needed
-     * 
+     *
      * @throws Exception
      */
     public void adapt() throws Exception {
@@ -98,7 +98,7 @@ public class DynamicPluginAdapter {
         if (configurations == null || configurations.isEmpty()) {
             throw new Exception("No libraryModuelGroup configured");
         }
-        
+
         String repository = preference.getRepository();
         if (StringUtils.isEmpty(repository)) {
             repository = preference.getDefaultRepository();
@@ -109,7 +109,7 @@ public class DynamicPluginAdapter {
             username = preference.getUsername();
             password = preference.getPassword();
         }
-        
+
         for (IDynamicConfiguration configuration : configurations) {
             if (DynamicModuleGroupAdapter.TAG_NAME.equals(configuration.getTagName())) {
                 String templateId = (String) configuration.getAttribute(DynamicModuleGroupAdapter.ATTR_GROUP_TEMPLATE_ID);
@@ -166,7 +166,7 @@ public class DynamicPluginAdapter {
 
     /**
      * can't use adapt and clean same time
-     * 
+     *
      * @throws Exception
      */
     public void cleanUnusedAndRefresh() throws Exception {
@@ -253,7 +253,7 @@ public class DynamicPluginAdapter {
                 Collections.sort(configurations, new DynamicAttributeComparator());
             }
         }
-        
+
         // 3. refresh classLoader
         IDynamicExtension classLoaderExtension = getClassLoaderExtension(plugin);
         List<IDynamicConfiguration> classLoaders = classLoaderExtension.getConfigurations();

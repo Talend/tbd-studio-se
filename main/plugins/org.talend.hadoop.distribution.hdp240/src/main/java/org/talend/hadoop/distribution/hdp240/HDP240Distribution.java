@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -86,7 +86,7 @@ public class HDP240Distribution extends AbstractDistribution implements HDFSComp
     private static Map<ComponentType, ComponentCondition> displayConditions;
 
     public HDP240Distribution() {
-        
+
         String distribution = getDistribution();
         String version = getVersion();
 
@@ -107,7 +107,7 @@ public class HDP240Distribution extends AbstractDistribution implements HDFSComp
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
         nodeModuleGroups = new HashMap<>();
-        
+
         // WebHDFS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = HDP240WebHDFSModuleGroup.getModuleGroups(distribution, version);
         for(String hdfsComponent : HDFSConstant.hdfsComponents) {

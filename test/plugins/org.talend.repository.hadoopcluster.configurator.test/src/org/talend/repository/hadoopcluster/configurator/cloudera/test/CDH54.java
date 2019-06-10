@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -32,15 +32,15 @@ public class CDH54 {
 
     /**
      * there is a cluster at Bonn
-     * 
+     *
      * 192.168.150.98 tal-qa143.talend.lan tal-qa143
-     * 
+     *
      * 192.168.150.99 tal-qa144.talend.lan tal-qa144
-     * 
+     *
      * 192.168.150.77 tal-qa146.talend.lan tal-qa146
-     * 
+     *
      * 192.168.150.78 tal-qa147.talend.lan tal-qa147
-     * 
+     *
      */
     @Test
     public void test() throws Exception {

@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -47,7 +47,7 @@ public class CassandraWizardPageProvider extends AbstractWizardPageProvider {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.nosql.ui.provider.IWizardPageProvider#createConnectionForm(org.eclipse.swt.widgets.Composite
      * , org.talend.core.model.properties.ConnectionItem, java.lang.String[])
@@ -60,7 +60,7 @@ public class CassandraWizardPageProvider extends AbstractWizardPageProvider {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.nosql.ui.provider.AbstractWizardPageProvider#createRetrieveSchemaForm(org.eclipse.swt.widgets
      * .Composite, org.talend.core.model.properties.ConnectionItem, org.eclipse.jface.wizard.WizardPage)
@@ -73,7 +73,7 @@ public class CassandraWizardPageProvider extends AbstractWizardPageProvider {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.nosql.ui.provider.AbstractWizardPageProvider#createSchemaForm(org.eclipse.swt.widgets.Composite
      * , org.talend.core.model.properties.ConnectionItem,
@@ -87,7 +87,7 @@ public class CassandraWizardPageProvider extends AbstractWizardPageProvider {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.nosql.ui.provider.IWizardPageProvider#createSchemaNodes(org.talend.repository.model.nosql
      * .NoSQLConnection)
@@ -137,7 +137,7 @@ public class CassandraWizardPageProvider extends AbstractWizardPageProvider {
                 scfNames = metadataHandler.getSuperColumnFamilyNames(connection, ksName);
             }else{
                 scfNames = new HashSet<String>();
-                metadataHandler.closeConnections();            
+                metadataHandler.closeConnections();
             }
         } else {
             cfNames = metadataHandler.getColumnFamilyNames(connection);

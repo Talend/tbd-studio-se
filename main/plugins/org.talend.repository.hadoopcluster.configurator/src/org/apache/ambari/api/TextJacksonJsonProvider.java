@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -49,13 +49,13 @@ public class TextJacksonJsonProvider extends JacksonJsonProvider {
     /**
      * Constructor to use when a custom mapper (usually components like serializer/deserializer factories that have been
      * configured) is to be used.
-     * 
+     *
      * @param annotationsToUse Sets of annotations (Jackson, JAXB) that provider should support
      */
     public TextJacksonJsonProvider(ObjectMapper mapper, Annotations[] annotationsToUse) {
         super(mapper, annotationsToUse);
     }
-    
+
     protected boolean hasMatchingMediaType(MediaType mediaType) {
         if (mediaType != null) {
             // need to compare type and subtype

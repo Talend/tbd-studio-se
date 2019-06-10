@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -35,7 +35,7 @@ public class ComponentConditionUtil {
 
     /**
      * This method creates a condition made of other conditions, contained in the given Set of conditions.
-     * 
+     *
      * @param conditions - the Set of conditions to merge in a single condition.
      * @return a new ComponentCondition made of the other conditions. Returns null in case of at least one condition is
      * null.
@@ -66,7 +66,7 @@ public class ComponentConditionUtil {
     /**
      * Generates the "SHOW_IF" condition for the "SUPPORTED_SPARK_VERSION" drop down list. Given a map of Spark versions
      * and corresponding supported hadoop versions, it builds a {@link ComponentCondition} for each entry in the map.
-     * 
+     *
      * @param supportedSparkVersions the map of Spark versions
      * @return an array of a String reprensation of a {@link ComponentCondition}
      */

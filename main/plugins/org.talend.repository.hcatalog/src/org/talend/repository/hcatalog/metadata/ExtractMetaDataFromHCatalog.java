@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -62,9 +62,9 @@ public class ExtractMetaDataFromHCatalog {
 
     /**
      * DOC ycbai Comment method "extractTables".
-     * 
+     *
      * Extract all tables.
-     * 
+     *
      * @param connection
      * @return
      * @throws Exception
@@ -96,9 +96,9 @@ public class ExtractMetaDataFromHCatalog {
 
     /**
      * DOC ycbai Comment method "extractColumns".
-     * 
+     *
      * Extract all columns contains partition columns.
-     * 
+     *
      * @param connection
      * @param tableName
      * @return
@@ -153,9 +153,9 @@ public class ExtractMetaDataFromHCatalog {
 
     /**
      * DOC ycbai Comment method "extractPartitions".
-     * 
+     *
      * Extract partition columns.
-     * 
+     *
      * @param connection
      * @param tableName
      * @return
@@ -173,9 +173,9 @@ public class ExtractMetaDataFromHCatalog {
 
     /**
      * DOC ycbai Comment method "extractPartitionsJsonStr".
-     * 
+     *
      * Extract partition json string.
-     * 
+     *
      * @param connection
      * @param tableName
      * @return
@@ -195,9 +195,9 @@ public class ExtractMetaDataFromHCatalog {
 
     /**
      * DOC ycbai Comment method "extractPartitionsByJsonStr".
-     * 
+     *
      * Extract partition columns from json string.
-     * 
+     *
      * @param jsonString
      * @return
      */

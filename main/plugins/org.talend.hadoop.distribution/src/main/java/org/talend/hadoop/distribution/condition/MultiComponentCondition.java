@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -58,7 +58,7 @@ public class MultiComponentCondition implements ComponentCondition {
     @Override
     public String getConditionString() {
         return this.mLeftCondition.getConditionString()
-                + " " + mBooleanOperator.name() + " " + this.mRightCondition.getConditionString(); //$NON-NLS-1$ //$NON-NLS-2$ 
+                + " " + mBooleanOperator.name() + " " + this.mRightCondition.getConditionString(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
 }

@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -19,7 +19,7 @@ import org.talend.designer.gefabstractmap.model.abstractmap.MapperTable;
 import org.talend.designer.pigmap.model.emf.pigmap.PigMapData;
 
 /**
- * 
+ *
  * DOC hcyi class global comment. Detailled comment
  */
 public class PigMapDataManager extends RootModelManager {
@@ -40,7 +40,7 @@ public class PigMapDataManager extends RootModelManager {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.gefabstractmap.figures.manager.RootModelManager#getInputTables()
      */
     @Override
@@ -50,7 +50,7 @@ public class PigMapDataManager extends RootModelManager {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.gefabstractmap.figures.manager.RootModelManager#getOutputTables()
      */
     @Override
@@ -60,7 +60,7 @@ public class PigMapDataManager extends RootModelManager {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.gefabstractmap.figures.manager.RootModelManager#getVarTables()
      */
     @Override

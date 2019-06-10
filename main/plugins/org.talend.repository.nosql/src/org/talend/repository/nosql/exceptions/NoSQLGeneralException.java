@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -15,9 +15,9 @@ package org.talend.repository.nosql.exceptions;
 import java.lang.reflect.InvocationTargetException;
 
 /**
- * 
+ *
  * created by ycbai on 2014-6-16 Detailled comment
- * 
+ *
  */
 public class NoSQLGeneralException extends Exception {
 

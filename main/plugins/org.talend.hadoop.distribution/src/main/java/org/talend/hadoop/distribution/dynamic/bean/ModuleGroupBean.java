@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -82,7 +82,7 @@ public class ModuleGroupBean implements IVariable {
     @Override
     public Object getVariableValue(String variable) throws Exception {
         Object value = null;
-        
+
         switch (variable) {
         case ATTR_CONDITIONS:
             value = getConditions();
@@ -103,7 +103,7 @@ public class ModuleGroupBean implements IVariable {
             throw new UnsupportedOperationException(
                     "Currently don't support to get " + variable + ", please implement it if needed.");
         }
-        
+
         return value;
     }
 

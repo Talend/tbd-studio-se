@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -71,7 +71,7 @@ public class HDFSNode implements IHDFSNode {
 
     /**
      * Getter for fileType.
-     * 
+     *
      * @return the fileType
      */
     public EHDFSFileTypes getFileType() {
@@ -80,7 +80,7 @@ public class HDFSNode implements IHDFSNode {
 
     /**
      * Sets the fileType.
-     * 
+     *
      * @param fileType the fileType to set
      */
     public void setFileType(EHDFSFileTypes fileType) {
@@ -149,7 +149,7 @@ public class HDFSNode implements IHDFSNode {
 
     /**
      * Getter for parameters.
-     * 
+     *
      * @return the parameters
      */
     public Map<String, String> getParameters() {

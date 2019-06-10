@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -27,7 +27,7 @@ import org.talend.rcp.branding.tos.bigdata.i18n.Messages;
 
 /**
  * DOC hwang class global comment. Detailled comment <br/>
- * 
+ *
  */
 public class HortonBrandingService extends AbstractTalendBrandingService {
 
@@ -57,7 +57,7 @@ public class HortonBrandingService extends AbstractTalendBrandingService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.ui.branding.IBrandingService#getBrandingConfiguration()
      */
     public IBrandingConfiguration getBrandingConfiguration() {

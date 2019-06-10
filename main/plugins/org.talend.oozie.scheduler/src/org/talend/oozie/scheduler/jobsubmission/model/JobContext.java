@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -118,7 +118,7 @@ public class JobContext {
 
     /**
      * Does not include the NameNode scheme://host:port
-     * 
+     *
      * @return job path on hdfs that does not include the NameNode scheme://host:port @
      */
     public String getJobPathOnHDFS() {
@@ -134,7 +134,7 @@ public class JobContext {
 
     /**
      * Plain path that should not include the NameNode scheme://host:port
-     * 
+     *
      * @param jobPathOnHDFS @
      */
     public void setJobPathOnHDFS(String jobPathOnHDFS) {
@@ -147,7 +147,7 @@ public class JobContext {
 
     /**
      * Return the fully qualified Class Name for the ETL Job
-     * 
+     *
      * @return TOS ETL Job's Fully Qualified Class Name @
      */
     public String getJobFQClassName() {
@@ -163,7 +163,7 @@ public class JobContext {
 
     /**
      * Set the fully qualified Class Name for the ETL Job
-     * 
+     *
      * @param jobFQClassName TOS ETL Job's Fully Qualified Class Name @
      */
     public void setJobFQClassName(String jobFQClassName) {

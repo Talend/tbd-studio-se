@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -69,13 +69,13 @@ public interface MRComponent extends HadoopComponent {
      * @return true if the distribution supports/requires basic username/password authentification
      */
     public boolean doSupportBasicAtlasAuthentification();
-    
+
     /**
-     * @return true if avro and avro-mapred are >= 1.7.6 and 
+     * @return true if avro and avro-mapred are >= 1.7.6 and
      * supports that DEFAULT_DEFLATE_LEVEL is in avro instead of avro-mapred
      */
     public boolean doSupportAvroDeflateProperties();
-    
+
     public boolean useOldAWSAPI();
 
 }

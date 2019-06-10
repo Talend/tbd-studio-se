@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -26,7 +26,7 @@ import org.talend.repository.nosql.db.handler.cassandra.CassandraOldVersionMetad
 import org.talend.repository.nosql.db.handler.cassandra.ICassandraMetadataHandler;
 
 /**
- * 
+ *
  * created by ycbai on 2014年11月26日 Detailled comment
  *
  */
@@ -52,7 +52,7 @@ public class CassandraConnectionUtil {
         String dbVersion = connection.getAttributes().get(INoSQLCommonAttributes.DB_VERSION);
         return "CASSANDRA_1_1_2".equals(dbVersion); //$NON-NLS-1$
     }
-    
+
     public static boolean isUpgradeVersion(NoSQLConnection connection) {
         String dbVersion = connection.getAttributes().get(INoSQLCommonAttributes.DB_VERSION);
         try{
@@ -62,7 +62,7 @@ public class CassandraConnectionUtil {
                  String firstStr = matcher.group(1);
                  Integer firstInt = Integer.parseInt(firstStr);
                  if(firstInt>2){
-                     return true; 
+                     return true;
                  }else if(firstInt<2){
                      return false;
                  }else{
@@ -78,7 +78,7 @@ public class CassandraConnectionUtil {
         } catch (Exception ex) {
             //do nothing
         }
-        return false; 
+        return false;
     }
 
 }

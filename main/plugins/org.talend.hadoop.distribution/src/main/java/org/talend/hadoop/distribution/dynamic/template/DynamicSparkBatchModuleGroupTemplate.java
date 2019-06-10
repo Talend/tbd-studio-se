@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -94,10 +94,10 @@ public class DynamicSparkBatchModuleGroupTemplate extends AbstractDynamicModuleG
         nodeModuleGroupsMap.put(
                 new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_CONFIGURATION_COMPONENT),
                 dynamoDBConfigurationModuleGroups);
-        
+
         Set<DistributionModuleGroup> jdbcIONodeModuleGroups = buildNodeModuleGroup4Spark4JDBC(pluginAdapter, distribution, version, "USE_EXISTING_CONNECTION == 'false'");
         Set<DistributionModuleGroup> jdbcConfNodeModuleGroups = buildNodeModuleGroup4Spark4JDBC(pluginAdapter, distribution, version, null);
-        
+
         nodeModuleGroupsMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.TERADATA_OUTPUT_COMPONENT), jdbcIONodeModuleGroups);
         nodeModuleGroupsMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.TERADATA_INPUT_COMPONENT), jdbcIONodeModuleGroups);
         nodeModuleGroupsMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.ORACLE_OUTPUT_COMPONENT), jdbcIONodeModuleGroups);
@@ -123,7 +123,7 @@ public class DynamicSparkBatchModuleGroupTemplate extends AbstractDynamicModuleG
             String distribution, String version, String condition) throws Exception {
         return new DynamicSparkDynamoDBNodeModuleGroup(pluginAdapter).getModuleGroups(distribution, version, condition);
     }
-    
+
     protected Set<DistributionModuleGroup> buildNodeModuleGroup4Spark4JDBC(DynamicPluginAdapter pluginAdapter,
             String distribution, String version, String condition) throws Exception {
         return new DynamicSparkJDBCNodeModuleGroup(pluginAdapter).getModuleGroups(distribution, version, condition);

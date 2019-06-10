@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -395,7 +395,7 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
 
     /**
      * Get DynamicDistributionGroup by distribution name or display name
-     * 
+     *
      * @param distribution name or display name
      * @return
      * @throws Exception

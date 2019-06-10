@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -74,25 +74,25 @@ public class MongoDBConnectionUtilTest {
                     portParam.startsWith(TalendQuoteUtils.QUOTATION_MARK) || portParam.endsWith(TalendQuoteUtils.QUOTATION_MARK));
         }
     }
-    
+
     @Test
     public void testIsUpgradeVersion() {
         NoSQLConnection connection = NosqlFactory.eINSTANCE.createNoSQLConnection();
         connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, VersionUtils.DEFAULT_VERSION);
         Assert.assertFalse(MongoDBConnectionUtil.isUpgradeVersion(connection));
-        
+
         connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, "MONGODB_2_5_X");
         Assert.assertFalse(MongoDBConnectionUtil.isUpgradeVersion(connection));
-        
+
         connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, "MONGODB_2_6_X");
         Assert.assertFalse(MongoDBConnectionUtil.isUpgradeVersion(connection));
-        
+
         connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, "MONGODB_3_2_X");
         Assert.assertFalse(MongoDBConnectionUtil.isUpgradeVersion(connection));
-        
+
         connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, "MONGODB_3_5_X");
         Assert.assertTrue(MongoDBConnectionUtil.isUpgradeVersion(connection));
-        
+
         connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, "MONGODB_4_5_X");
         Assert.assertTrue(MongoDBConnectionUtil.isUpgradeVersion(connection));
     }

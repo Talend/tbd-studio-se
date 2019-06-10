@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -76,7 +76,7 @@ public class HadoopCMConfigurator implements HadoopConfigurator {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.hadoopcluster.configurator.HadoopConfigurator#getAllClusters()
      */
     @Override
@@ -91,7 +91,7 @@ public class HadoopCMConfigurator implements HadoopConfigurator {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.hadoopcluster.configurator.HadoopConfigurator#getCluster(java.lang.String)
      */
     @Override

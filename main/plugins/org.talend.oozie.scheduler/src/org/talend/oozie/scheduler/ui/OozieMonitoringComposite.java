@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -47,7 +47,7 @@ public class OozieMonitoringComposite extends ScrolledComposite implements IDyna
     private Link link;
 
     /**
-     * 
+     *
      * @param parent
      * @param style
      */
@@ -90,7 +90,7 @@ public class OozieMonitoringComposite extends ScrolledComposite implements IDyna
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#getHashCurControls()
      */
     @Override
@@ -100,7 +100,7 @@ public class OozieMonitoringComposite extends ScrolledComposite implements IDyna
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#getElement()
      */
     @Override
@@ -110,7 +110,7 @@ public class OozieMonitoringComposite extends ScrolledComposite implements IDyna
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#getPart()
      */
     @Override
@@ -121,7 +121,7 @@ public class OozieMonitoringComposite extends ScrolledComposite implements IDyna
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#getSection()
      */
     @Override
@@ -132,7 +132,7 @@ public class OozieMonitoringComposite extends ScrolledComposite implements IDyna
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#getComposite()
      */
     @Override
@@ -143,7 +143,7 @@ public class OozieMonitoringComposite extends ScrolledComposite implements IDyna
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#setCurRowSize(int)
      */
     @Override
@@ -154,7 +154,7 @@ public class OozieMonitoringComposite extends ScrolledComposite implements IDyna
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#getCurRowSize()
      */
     @Override
@@ -165,7 +165,7 @@ public class OozieMonitoringComposite extends ScrolledComposite implements IDyna
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#getTableIdAndDbTypeMap()
      */
     @Override
@@ -176,7 +176,7 @@ public class OozieMonitoringComposite extends ScrolledComposite implements IDyna
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#getTableIdAndDbSchemaMap()
      */
     @Override
@@ -187,7 +187,7 @@ public class OozieMonitoringComposite extends ScrolledComposite implements IDyna
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#refresh()
      */
     @Override
@@ -230,7 +230,7 @@ public class OozieMonitoringComposite extends ScrolledComposite implements IDyna
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#getRepositoryAliasName(org.talend.core.model.properties.
      * ConnectionItem)
      */

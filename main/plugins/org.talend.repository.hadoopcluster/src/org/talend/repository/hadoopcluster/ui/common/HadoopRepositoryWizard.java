@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -39,7 +39,7 @@ import org.talend.repository.model.hadoopcluster.HadoopSubConnection;
 
 /**
  * created by ycbai on 2013-1-28 Detailled comment
- * 
+ *
  */
 public abstract class HadoopRepositoryWizard<E extends HadoopSubConnection> extends CheckLastVersionRepositoryWizard {
 
@@ -63,7 +63,7 @@ public abstract class HadoopRepositoryWizard<E extends HadoopSubConnection> exte
 
     /**
      * DOC ycbai HadoopRepositoryWizard constructor comment.
-     * 
+     *
      * @param workbench
      * @param creation
      */
@@ -73,7 +73,7 @@ public abstract class HadoopRepositoryWizard<E extends HadoopSubConnection> exte
 
     /**
      * DOC ycbai HadoopRepositoryWizard constructor comment.
-     * 
+     *
      * @param workbench
      * @param creation
      * @param forceReadOnly
@@ -132,7 +132,7 @@ public abstract class HadoopRepositoryWizard<E extends HadoopSubConnection> exte
 
     /**
      * We will accept the selection in the workbench to see if we can initialize from it.
-     * 
+     *
      * @see IWorkbenchWizard#init(IWorkbench, IStructuredSelection)
      */
     public void init(final IWorkbench workbench, final IStructuredSelection selection2) {
@@ -142,7 +142,7 @@ public abstract class HadoopRepositoryWizard<E extends HadoopSubConnection> exte
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.ui.wizards.RepositoryWizard#getConnectionItem()
      */
     @Override

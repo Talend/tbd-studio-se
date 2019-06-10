@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -43,7 +43,7 @@ import org.talend.repository.ui.views.IJobSettingsView;
 
 /**
  * created by Administrator on 2013-3-13 Detailled comment
- * 
+ *
  */
 public class EditPigudfPropertiesAction extends EditPropertiesAction {
 
@@ -85,7 +85,7 @@ public class EditPigudfPropertiesAction extends EditPropertiesAction {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.ui.actions.EditPropertiesAction#doRun()
      */
     @Override
@@ -129,7 +129,7 @@ public class EditPigudfPropertiesAction extends EditPropertiesAction {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.ui.actions.EditPropertiesAction#processRoutineRenameOperation(java.lang.String,
      * org.talend.repository.model.RepositoryNode, org.eclipse.core.runtime.IPath)
      */

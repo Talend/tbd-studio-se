@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -25,7 +25,7 @@ import org.talend.hadoop.distribution.test.TestUtils;
  * DOC ggu class global comment. Detailled comment
  */
 public class HiveMetadataHelper4ClouderaTest extends AbstractDistributionTest4HiveMetadataHelper {
-    
+
     private static final String[] VERSIONS_NON_DYNAMIC = new String[] {
         "Cloudera CDH5.12(YARN mode)",
         "Cloudera CDH5.10(YARN mode)",
@@ -44,7 +44,7 @@ public class HiveMetadataHelper4ClouderaTest extends AbstractDistributionTest4Hi
     protected String getDistributionDisplay() {
         return IClouderaDistribution.DISTRIBUTION_DISPLAY_NAME;
     }
-    
+
     @Override
     public void testGetDistributionVersionsDisplay() {
         String[] distributionVersionsDisplay = HiveMetadataHelper.getDistributionVersionsDisplay(getDistribution(), false);
@@ -57,7 +57,7 @@ public class HiveMetadataHelper4ClouderaTest extends AbstractDistributionTest4Hi
     protected String[] getDistributionVersionsDisplay() {
         return VERSIONS_NON_DYNAMIC;
     }
-    
+
     private String[] filterDynamicVersions(String[] src) {
         Stream<String> stream = Stream.of(src);
         List<String> versionsFiltered = stream

@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -24,15 +24,15 @@ import org.talend.repository.model.hadoopcluster.HadoopSubConnection;
 import org.talend.repository.model.hcatalog.HCatalogConnection;
 
 /**
- * 
+ *
  * created by ycbai on 2013-1-31 Detailled comment
- * 
+ *
  */
 public class PushHCatalogIntoHadoopClusterMigrationTask extends AbstractHadoopClusterMigrationTask {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.migration.IProjectMigrationTask#getOrder()
      */
     @Override
@@ -43,7 +43,7 @@ public class PushHCatalogIntoHadoopClusterMigrationTask extends AbstractHadoopCl
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.hadoopcluster.model.migration.AbstractHadoopClusterMigrationTask#getType()
      */
     @Override
@@ -53,7 +53,7 @@ public class PushHCatalogIntoHadoopClusterMigrationTask extends AbstractHadoopCl
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.hadoopcluster.model.migration.AbstractHadoopClusterMigrationTask#initCluster(org.talend
      * .repository.model.hadoopcluster.HadoopClusterConnection,
@@ -70,7 +70,7 @@ public class PushHCatalogIntoHadoopClusterMigrationTask extends AbstractHadoopCl
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.hadoopcluster.model.migration.AbstractHadoopClusterMigrationTask#getClusterName(org.talend
      * .repository.model.hadoopcluster.HadoopConnection)

@@ -10,10 +10,46 @@
 	"
 %>
 <%
-	CodeGeneratorArgument inputCodeGenArgument = (CodeGeneratorArgument) argument;
-	INode inputNode = (INode)inputCodeGenArgument.getArgument();
-	String inputCid = inputNode.getUniqueName();
+	CodeGeneratorArgument loadCodeGenArgument = (CodeGeneratorArgument) argument;
+	INode node = (INode)loadCodeGenArgument.getArgument();
+	final String cid = node.getUniqueName();
+	boolean isLog4jEnabled = "true".equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+	boolean useExistingConn = "true".equals(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"));	
 %>
 		}
 	} finally {
+	
+<%
+	if(isLog4jEnabled) {
+%>
+	log.info("<%=cid%> - Closing the statement to the database.");
+<%
+	} 
+%>	
+	stmt_<%=cid %>.close();	
+<%
+	if(!useExistingConn) {
+		if(isLog4jEnabled) {
+%>
+			log.info("<%=cid%> - Closing the connection to the database.");
+<%
+		}
+%>
+		conn_<%=cid %> .close();
+<%
+		if(isLog4jEnabled) {
+%>
+			log.info("<%=cid%> - Connection to the database closed.");
+<%
+		}
 	}
+
+	if(isLog4jEnabled) {
+%>
+		log.info("<%=cid%> - Done.");
+<%
+	}
+%>	
+	}
+	
+	

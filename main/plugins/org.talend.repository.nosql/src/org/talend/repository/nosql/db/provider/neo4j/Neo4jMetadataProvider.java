@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -43,9 +43,9 @@ import orgomg.cwm.objectmodel.core.CoreFactory;
 import orgomg.cwm.objectmodel.core.TaggedValue;
 
 /**
- * 
+ *
  * created by ycbai on Jul 22, 2014 Detailled comment
- * 
+ *
  */
 public class Neo4jMetadataProvider extends AbstractMetadataProvider {
 
@@ -74,7 +74,7 @@ public class Neo4jMetadataProvider extends AbstractMetadataProvider {
         try {
             ClassLoader classLoader = NoSQLClassLoaderFactory.getClassLoader(connection);
             Neo4jConnectionUtil.closeConnections();
-            
+
             Iterator<Map<String, Object>> resultIterator = null;
             if(Neo4jConnectionUtil.isVersionSince32(connection)){
                 return getTheColumns(connection, classLoader, cypher);
@@ -84,7 +84,7 @@ public class Neo4jMetadataProvider extends AbstractMetadataProvider {
                     return metadataColumns;
                 }
                 resultIterator = Neo4jConnectionUtil.getResultIterator(connection, cypher, db);
-                
+
 
                 if (resultIterator == null) {
                     return metadataColumns;
@@ -118,8 +118,8 @@ public class Neo4jMetadataProvider extends AbstractMetadataProvider {
 
         return metadataColumns;
     }
-    
-    private List<MetadataColumn> getTheColumns(NoSQLConnection connection, ClassLoader classLoader, String cypher) 
+
+    private List<MetadataColumn> getTheColumns(NoSQLConnection connection, ClassLoader classLoader, String cypher)
             throws NoSQLReflectionException, ClassNotFoundException, NoSQLServerException{
         List<MetadataColumn> metadataColumns = new ArrayList<MetadataColumn>();
         String usename = StringUtils.trimToEmpty(connection.getAttributes().get(INeo4jAttributes.USERNAME));
@@ -135,9 +135,9 @@ public class Neo4jMetadataProvider extends AbstractMetadataProvider {
         }else {
             password = connection.getValue(password, false);
         }
-        Object basic = NoSQLReflection.invokeStaticMethod("org.neo4j.driver.v1.AuthTokens", "basic", 
+        Object basic = NoSQLReflection.invokeStaticMethod("org.neo4j.driver.v1.AuthTokens", "basic",
                 new Object[] { usename, password}, classLoader, String.class, String.class);
-        Object driver = NoSQLReflection.invokeStaticMethod("org.neo4j.driver.v1.GraphDatabase", "driver", new Object[] {serverUrl, basic }, 
+        Object driver = NoSQLReflection.invokeStaticMethod("org.neo4j.driver.v1.GraphDatabase", "driver", new Object[] {serverUrl, basic },
                 classLoader, String.class, Class.forName("org.neo4j.driver.v1.AuthToken", true, classLoader));
         Object session = NoSQLReflection.invokeMethod(driver, "session");
         Iterator<Map<String, Object>> resultIterator = (Iterator<Map<String, Object>>) NoSQLReflection.
@@ -162,7 +162,7 @@ public class Neo4jMetadataProvider extends AbstractMetadataProvider {
         }
         return metadataColumns;
     }
-    
+
     private void addMetadataColumns(ClassLoader classLoader, String columnKey, Object columnValue,
             List<MetadataColumn> metadataColumns, List<String> columnLabels) throws NoSQLServerException {
         boolean isNode = Neo4jConnectionUtil.isDriverNode(columnValue, classLoader);
@@ -235,7 +235,7 @@ public class Neo4jMetadataProvider extends AbstractMetadataProvider {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.nosql.metadata.IMetadataProvider#checkConnection(org.talend.repository.model.nosql.
      * NoSQLConnection)
      */

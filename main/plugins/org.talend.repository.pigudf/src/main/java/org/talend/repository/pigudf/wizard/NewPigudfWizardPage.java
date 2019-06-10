@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -42,9 +42,9 @@ import org.talend.repository.pigudf.i18n.Messages;
 
 /**
  * Page for new project details. <br/>
- * 
+ *
  * $Id: NewPigudfWizardPage.java 1 2006-09-29 17:06:40 +0000 (ven., 29 sept. 2006) nrousseau $
- * 
+ *
  */
 public class NewPigudfWizardPage extends PropertiesWizardPage {
 
@@ -56,7 +56,7 @@ public class NewPigudfWizardPage extends PropertiesWizardPage {
 
     /**
      * Constructs a new NewPigudfWizardPage.
-     * 
+     *
      */
     public NewPigudfWizardPage(Property property, IPath destinationPath) {
         super("WizardPage", property, destinationPath);
@@ -72,7 +72,7 @@ public class NewPigudfWizardPage extends PropertiesWizardPage {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.ui.wizards.routines.NewRoutineWizardPage#createControl(org.eclipse.swt.widgets.Composite)
      */

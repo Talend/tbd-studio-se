@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -40,7 +40,7 @@ public class HDP260SparkStreamingKinesisNodeModuleGroupTest {
         results.put(
                 HDP260Constant.SPARK_KINESIS_MRREQUIRED_MODULE_GROUP.getModuleName(),
                 "(((#LINK@NODE.SPARK_CONFIGURATION.DISTRIBUTION=='null') AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_VERSION=='null')) AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_LOCAL_MODE=='false') AND (#LINK@NODE.SPARK_CONFIGURATION.SUPPORTED_SPARK_VERSION=='SPARK_1_6_0'))");
-        
+
         Set<DistributionModuleGroup> moduleGroups = HDP260SparkStreamingKinesisNodeModuleGroup.getModuleGroups(null, null);
         assertEquals(2, moduleGroups.size());
         moduleGroups.iterator();

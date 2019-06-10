@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -42,7 +42,7 @@ public class CDH5100SparkStreamingKafkaClientModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        
+
         // Spark 1.6
         DistributionModuleGroup dmgSpark16 = new DistributionModuleGroup(
                 CDH5100Constant.SPARK_KAFKA_CLIENT_MRREQUIRED_MODULE_GROUP.getModuleName(), true, new NestedComponentCondition(new MultiComponentCondition(
@@ -50,7 +50,7 @@ public class CDH5100SparkStreamingKafkaClientModuleGroup {
                                 SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition(),
                         BooleanOperator.AND, spark16Condition)));
         hs.add(dmgSpark16);
-        
+
         // Spark 2.1
         DistributionModuleGroup dmgSpark21 = new DistributionModuleGroup(
                 CDH5100Constant.SPARK2_KAFKA_CLIENT_MRREQUIRED_MODULE_GROUP.getModuleName(), true, new NestedComponentCondition( new MultiComponentCondition(

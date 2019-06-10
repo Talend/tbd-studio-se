@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -176,7 +176,7 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
     public boolean isAltusDistribution() {
         return false;
     }
-    
+
     @Override
     public boolean isQuboleDistribution() {
         return true;
@@ -316,7 +316,7 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
     public boolean doSupportBackpressure() {
         return false;
     }
-    
+
     @Override
     public boolean useOldAWSAPI() {
         return false;

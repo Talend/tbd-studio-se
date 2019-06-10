@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -17,7 +17,7 @@ import org.talend.oozie.scheduler.jobsubmission.model.JobContext.Timeunit;
 /**
  * Created by Marvin Wang on May 6, 2012. The enum provides the time unit for Oozie Coordinator. All the time units are
  * mapping to {@link Timeunit} as follows:
- * 
+ *
  * <pre>
  * <li>{@link TOozieTimeUnit#MINUTE}
  * <li>{@link TOozieTimeUnit#HOUR}

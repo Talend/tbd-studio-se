@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -24,7 +24,7 @@ import com.cloudera.nav.sdk.model.entities.EntityType;
 
 /**
  * Base model to represent Talend components as a Cloudera Navigator entities
- * 
+ *
  */
 @MClass(model = "talend")
 public abstract class TalendEntity extends Entity {

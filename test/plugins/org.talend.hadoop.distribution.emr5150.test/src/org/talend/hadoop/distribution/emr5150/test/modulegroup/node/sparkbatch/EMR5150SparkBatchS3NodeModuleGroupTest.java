@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -33,7 +33,7 @@ public class EMR5150SparkBatchS3NodeModuleGroupTest {
         results.put(
                 EMR5150Constant.S3_MODULE_GROUP.getModuleName(),
                 "((#LINK@NODE."+SparkBatchConstant.SPARK_BATCH_S3_SPARKCONFIGURATION_LINKEDPARAMETER+".DISTRIBUTION=='AMAZON_EMR') AND (#LINK@NODE."+SparkBatchConstant.SPARK_BATCH_S3_SPARKCONFIGURATION_LINKEDPARAMETER+".SPARK_VERSION=='EMR_5_15_0')) AND (#LINK@NODE."+SparkBatchConstant.SPARK_BATCH_S3_SPARKCONFIGURATION_LINKEDPARAMETER+".SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
-        
+
         Set<DistributionModuleGroup> moduleGroups = EMR5150SparkBatchS3NodeModuleGroup.getModuleGroups(EMR5150Distribution.DISTRIBUTION_NAME, EMR5150Distribution.VERSION);
         assertEquals(results.size(), moduleGroups.size());
         for (DistributionModuleGroup module : moduleGroups) {

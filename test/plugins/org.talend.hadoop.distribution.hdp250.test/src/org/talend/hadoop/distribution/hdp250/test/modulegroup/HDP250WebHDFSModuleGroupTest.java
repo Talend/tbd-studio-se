@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -33,14 +33,14 @@ public class HDP250WebHDFSModuleGroupTest {
         Map<String, String> results = new HashMap<>();
 
         results.put(HDP250Constant.WEBHDFS_MODULE_GROUP.getModuleName(), null);
-        
+
         Set<DistributionModuleGroup> moduleGroups =
                 HDP250WebHDFSModuleGroup.getModuleGroups(HDP250Distribution.DISTRIBUTION_NAME,
                         HDP250Distribution.VERSION);
         assertEquals(results.size(), moduleGroups.size());
-        
+
         moduleGroups.iterator();
-        
+
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$
             if (results.get(module.getModuleName()) == null) {

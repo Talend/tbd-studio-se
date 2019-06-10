@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -39,7 +39,7 @@ import org.talend.designer.pigmap.ui.expressionutil.TableEntryLocation;
 import org.talend.metadata.managment.ui.wizard.metadata.xml.utils.StringUtil;
 
 /**
- * 
+ *
  * DOC hcyi class global comment. Detailled comment
  */
 public class PigMapUtil {
@@ -215,7 +215,7 @@ public class PigMapUtil {
 
     /**
      * DOC talend2 Comment method "updateExpression".
-     * 
+     *
      * @param oldName
      * @param newName
      * @param externalEmfData
@@ -249,7 +249,7 @@ public class PigMapUtil {
 
     /**
      * DOC talend2 Comment method "replaceExpression".
-     * 
+     *
      * @param oldName
      * @param newName
      * @param expressionFilter

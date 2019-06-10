@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -21,9 +21,9 @@ import org.talend.commons.utils.threading.TalendCustomThreadPoolExecutor;
 import org.talend.repository.nosql.model.INoSQLSchemaNode;
 
 /**
- * 
+ *
  * created by ycbai on Jul 7, 2014 Detailled comment
- * 
+ *
  */
 public class RetrieveSchemaThreadPoolExecutor extends TalendCustomThreadPoolExecutor {
 
@@ -40,7 +40,7 @@ public class RetrieveSchemaThreadPoolExecutor extends TalendCustomThreadPoolExec
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.util.concurrent.ThreadPoolExecutor#afterExecute(java.lang.Runnable, java.lang.Throwable)
      */
     @Override
@@ -51,7 +51,7 @@ public class RetrieveSchemaThreadPoolExecutor extends TalendCustomThreadPoolExec
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.util.concurrent.ThreadPoolExecutor#beforeExecute(java.lang.Thread, java.lang.Runnable)
      */
     @Override
@@ -62,7 +62,7 @@ public class RetrieveSchemaThreadPoolExecutor extends TalendCustomThreadPoolExec
 
     /**
      * If an node is in the list of runningThreads, it means that the item's related thread is running.
-     * 
+     *
      * @param item
      * @return
      */
@@ -76,7 +76,7 @@ public class RetrieveSchemaThreadPoolExecutor extends TalendCustomThreadPoolExec
 
     /**
      * Find the RetrieveColumnRunnable from map and waiting queue. Map stores running runnables
-     * 
+     *
      * @param key
      * @return
      */

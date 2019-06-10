@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -188,7 +188,7 @@ public class NosqlAdapterFactory extends AdapterFactoryImpl {
      * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>No SQL Attributes</em>}'. <!--
      * begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
      * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see java.util.Map.Entry
      * @generated
@@ -201,7 +201,7 @@ public class NosqlAdapterFactory extends AdapterFactoryImpl {
      * Creates a new adapter for an object of class '{@link orgomg.cwm.objectmodel.core.Element <em>Element</em>}'. <!--
      * begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
      * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see orgomg.cwm.objectmodel.core.Element
      * @generated
@@ -215,7 +215,7 @@ public class NosqlAdapterFactory extends AdapterFactoryImpl {
      * <em>Model Element</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
      * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see orgomg.cwm.objectmodel.core.ModelElement
      * @generated
@@ -253,7 +253,7 @@ public class NosqlAdapterFactory extends AdapterFactoryImpl {
      * Creates a new adapter for an object of class '{@link orgomg.cwm.objectmodel.core.Package <em>Package</em>}'. <!--
      * begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
      * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see orgomg.cwm.objectmodel.core.Package
      * @generated
@@ -280,7 +280,7 @@ public class NosqlAdapterFactory extends AdapterFactoryImpl {
      * <em>Data Manager</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
      * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see orgomg.cwm.foundation.softwaredeployment.DataManager
      * @generated
@@ -294,7 +294,7 @@ public class NosqlAdapterFactory extends AdapterFactoryImpl {
      * <em>Data Provider</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
      * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see orgomg.cwm.foundation.softwaredeployment.DataProvider
      * @generated
@@ -320,7 +320,7 @@ public class NosqlAdapterFactory extends AdapterFactoryImpl {
      * Creates a new adapter for an object of class '{@link org.talend.core.model.properties.Item <em>Item</em>}'. <!--
      * begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
      * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.talend.core.model.properties.Item
      * @generated

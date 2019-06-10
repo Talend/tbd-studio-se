@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -33,7 +33,7 @@ public class SparkClassPathUtils {
      * module group name. Then it proceeds to extract all jars' IDs from the module group. The list of all Spark jars'
      * IDs is then used to generate a new list, from the list of all classpath jars, that only contains classpath jars
      * that are present in the Spark module group. The final list is then transformed to java like classpath string
-     * 
+     *
      * @return A string with all of the Spark jars.
      * @param commandLineJarsPaths the list of all the job's classpath jars
      * @param sparkModuleGroupName The Spark module group name
@@ -50,7 +50,7 @@ public class SparkClassPathUtils {
      * module group name. Then it proceeds to extract all jars' names from the module group. The list of all Spark jars'
      * names is then used to generate a new list, from the list of all classpath jars, that only contains classpath jars
      * that are present in the Spark module group. The final list is then transformed to java like classpath string
-     * 
+     *
      * @return A string with all of the Spark jars.
      * @param commandLineJarsPaths the list of all the job's classpath jars
      * @param sparkModuleGroupName The Spark module group name

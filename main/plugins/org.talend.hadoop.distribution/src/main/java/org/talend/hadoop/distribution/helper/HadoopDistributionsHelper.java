@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -45,49 +45,49 @@ public class HadoopDistributionsHelper {
 
     /**
      * for Hadoop Distributions.
-     * 
+     *
      * @link HadoopComponent
      */
     public static final DistributionsManager HADOOP = new DistributionsManager(HadoopComponent.class.getName(), null, true);
 
     /**
      * for HDFS Distributions.
-     * 
+     *
      * @link HDFSComponent
      */
     public static final DistributionsManager HDFS = new DistributionsManager(HDFSComponent.class.getName(), null, true);
 
     /**
      * for MapReduce Distributions.
-     * 
+     *
      * @link MRComponent
      */
     public static final DistributionsManager MR = new DistributionsManager(MRComponent.class.getName(), null, true);
 
     /**
      * for HBase Distributions.
-     * 
+     *
      * @link HBaseComponent
      */
     public static final DistributionsManager HBASE = new DistributionsManager(HBaseComponent.class.getName(), null, true);
 
     /**
      * for Maprdb Distributions.
-     * 
+     *
      * @link MaprdbComponent
      */
     public static final DistributionsManager MAPRDB = new DistributionsManager(MapRDBComponent.class.getName(), null, true);
 
     /**
      * for HCatalog Distributions.
-     * 
+     *
      * @link HCatalogComponent
      */
     public static final DistributionsManager HCATALOG = new DistributionsManager(HCatalogComponent.class.getName(), null, true);
 
     /**
      * for Spark Streaming Distributions.
-     * 
+     *
      * @link SparkStreamingComponent
      */
     public static final DistributionsManager SPARK_STREAMING = new DistributionsManager(SparkStreamingComponent.class.getName(),
@@ -95,7 +95,7 @@ public class HadoopDistributionsHelper {
 
     /**
      * for Spark Batch Distributions.
-     * 
+     *
      * @link SparkBatchComponent
      */
     public static final DistributionsManager SPARK_BATCH = new DistributionsManager(SparkBatchComponent.class.getName(), null,
@@ -103,14 +103,14 @@ public class HadoopDistributionsHelper {
 
     /**
      * for Hive Distributions.
-     * 
+     *
      * @link HiveComponent
      */
     public static final DistributionsManager HIVE = new DistributionsManager(HiveComponent.class.getName(), null, true);
 
     /**
      * for Impala Distributions.
-     * 
+     *
      * @link ImpalaComponent
      */
     public static final DistributionsManager IMPALA = new DistributionsManager(ImpalaComponent.class.getName(), null, true);

@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -28,7 +28,7 @@ public interface SparkComponent extends MRComponent {
      * (https://spark.apache.org/docs/latest/sql-programming-guide.html#interacting-with
      * -different-versions-of-hive-metastore), If we're using another Hive version for table creation, we need to
      * override default hive version with the one which spark uses.
-     * 
+     *
      * @return true if distribution creates hive tables with hive other than Spark uses internally
      */
     public boolean doRequireMetastoreVersionOverride();
@@ -44,7 +44,7 @@ public interface SparkComponent extends MRComponent {
 
     /**
      * A distribution can be using Spark 1.3 or Spark 1.4. This method returns the supported Spark versions.
-     * 
+     *
      * @return the collection of supported @link{ESparkVersion} in the distribution.
      */
     public Set<ESparkVersion> getSparkVersions();
@@ -90,7 +90,7 @@ public interface SparkComponent extends MRComponent {
      * false, the components themselves are going to import a default version of the dependencies
      */
     public boolean doImportDynamoDBDependencies();
-    
+
     /**
      * @return true if the distribution implementation is responsible for importing the spark hive context dependencies.
      * If false, the components themselves are going to import the default version of dependencies on tSqlRow with module name SPARK-HIVECONTEXT-LIB-ALL_LATEST

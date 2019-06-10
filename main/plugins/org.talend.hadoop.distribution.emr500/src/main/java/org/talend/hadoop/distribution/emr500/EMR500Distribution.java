@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -133,13 +133,13 @@ public class EMR500Distribution extends AbstractDistribution implements HBaseCom
 
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(String distribution, String version) {
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
-        
+
         // WebHDFS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = EMR500WebHDFSModuleGroup.getModuleGroups(distribution, version);
         for(String hdfsComponent : HDFSConstant.hdfsComponents) {
             result.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
         }
-        
+
         // Mapreduce nodes
         result.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
                 EMR500MRS3NodeModuleGroup.getModuleGroups(distribution, version));
@@ -158,7 +158,7 @@ public class EMR500Distribution extends AbstractDistribution implements HBaseCom
         // Spark Batch S3 nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.S3_CONFIGURATION_COMPONENT),
                 EMR500SparkBatchS3NodeModuleGroup.getModuleGroups(distribution, version));
-        
+
         // Spark Batch DQ matching
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
                 EMR500GraphFramesNodeModuleGroup.getModuleGroups(distribution, version));
@@ -448,7 +448,7 @@ public class EMR500Distribution extends AbstractDistribution implements HBaseCom
         return false;
     }
     // End
-    
+
     @Override
     public boolean useOldAWSAPI() {
         return false;

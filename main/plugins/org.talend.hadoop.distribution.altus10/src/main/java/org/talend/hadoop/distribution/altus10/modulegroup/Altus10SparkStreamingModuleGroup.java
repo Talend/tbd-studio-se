@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -38,7 +38,7 @@ public class Altus10SparkStreamingModuleGroup {
 
     private final static ComponentCondition kinesisCondition = new MultiComponentCondition(nonSparkLocalCondition,
             BooleanOperator.AND, awsCondition);
-    
+
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         hs.add(new DistributionModuleGroup(Altus10Constant.HDFS_MODULE_GROUP.getModuleName(), false, nonSparkLocalCondition));

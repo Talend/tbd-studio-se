@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -35,7 +35,7 @@ public class ModuleGroupsUtils {
 
     /**
      * Get all module's libraries IDs
-     * 
+     *
      * @param moduleGroupName The name of the module group
      * @return A list of libraries IDs contained in the module group
      */
@@ -55,10 +55,10 @@ public class ModuleGroupsUtils {
 
         return moduleLibrariesIDs;
     }
-    
+
     /**
      * Get all module's libraries names
-     * 
+     *
      * @param moduleGroupName The name of the module group
      * @return A list of libraries IDs contained in the module group
      */
@@ -82,7 +82,7 @@ public class ModuleGroupsUtils {
     /**
      * Utility method to create the collection of {@link DistributionModuleGroup} with a condition made of a
      * {@link SparkBatchLinkedNodeCondition} and an additional raw condition
-     * 
+     *
      * @param distribution the distribution key
      * @param version the version key
      * @param condition a nullable additional condition
@@ -99,7 +99,7 @@ public class ModuleGroupsUtils {
     /**
      * Utility method to create the collection of {@link DistributionModuleGroup} with a condition made of a
      * {@link SparkBatchLinkedNodeCondition} and an additional raw condition
-     * 
+     *
      * @param distribution the distribution key
      * @param version the version key
      * @param condition a nullable additional condition

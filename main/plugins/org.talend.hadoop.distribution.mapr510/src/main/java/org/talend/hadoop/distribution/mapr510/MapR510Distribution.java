@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -379,7 +379,7 @@ public class MapR510Distribution extends AbstractMapRDistribution implements HDF
     public String getMapRStreamsJarPath() {
         return MAPR_STREAMS_JAR_PATH;
     }
-    
+
     @Override
     public SparkStreamingKafkaVersion getSparkStreamingKafkaVersion(ESparkVersion sparkVersion) {
         return SparkStreamingKafkaVersion.MAPR_5X0_KAFKA;
@@ -399,7 +399,7 @@ public class MapR510Distribution extends AbstractMapRDistribution implements HDF
         return false;
     }
     // End
-    
+
     @Override
     public boolean doSupportWebHDFS(){
         return false;

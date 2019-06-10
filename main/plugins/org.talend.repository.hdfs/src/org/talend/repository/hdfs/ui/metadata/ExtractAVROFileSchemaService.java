@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -53,7 +53,7 @@ import org.talend.repository.model.hdfs.HDFSConnection;
 
 /**
  * created by ycbai on 2014-5-29 Detailled comment
- * 
+ *
  */
 public class ExtractAVROFileSchemaService implements IExtractSchemaService<HDFSConnection> {
 
@@ -83,7 +83,7 @@ public class ExtractAVROFileSchemaService implements IExtractSchemaService<HDFSC
 
     /**
      * DOC cmeng Comment method "isAnAVROFormatedFile".
-     * 
+     *
      * @param fileFullPathName I only want the file name to judge the file format type,<br>
      * means this function don't care whether it is a full path name, but must have the file name with it's file
      * extentions
@@ -157,9 +157,9 @@ public class ExtractAVROFileSchemaService implements IExtractSchemaService<HDFSC
 
     /**
      * DOC ycbai Comment method "createTmpFile".
-     * 
+     *
      * Create a temporary file which contents are readed from the inputStream.
-     * 
+     *
      * @param inputStream the inputStream to read
      * @param fileName the name of temporary file
      * @param maxLineNum the max quantity lines to read. If is "-1" means not limit the quantity.
@@ -211,7 +211,7 @@ public class ExtractAVROFileSchemaService implements IExtractSchemaService<HDFSC
 
     /**
      * For now, it only support primitive types
-     * 
+     *
      * @param avroFields
      * @return
      * @throws ClassNotFoundException
@@ -324,7 +324,7 @@ public class ExtractAVROFileSchemaService implements IExtractSchemaService<HDFSC
 
     /**
      * For now, it only support primitive types
-     * 
+     *
      * @param avroType
      * @return
      * @throws ClassNotFoundException
@@ -373,7 +373,7 @@ public class ExtractAVROFileSchemaService implements IExtractSchemaService<HDFSC
 
     /**
      * DOC cmeng Comment method "getMainTypeFromUnion".
-     * 
+     *
      * @param avroSchema
      * @return
      * @throws NoSuchMethodException
@@ -456,7 +456,7 @@ public class ExtractAVROFileSchemaService implements IExtractSchemaService<HDFSC
 
         /**
          * DOC cmeng ExtractAVROFileSchemaService.ReflectedAVROSchema constructor comment.
-         * 
+         *
          * @throws InvocationTargetException
          * @throws IllegalAccessException
          * @throws InstantiationException

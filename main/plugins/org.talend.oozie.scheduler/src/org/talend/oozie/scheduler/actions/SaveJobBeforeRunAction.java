@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -24,9 +24,9 @@ import org.talend.designer.core.ui.AbstractMultiPageTalendEditor;
 
 /**
  * Save the job if it is refered by a tRunJob. <br/>
- * 
+ *
  * 2007-07-16 17:06:40
- * 
+ *
  */
 public class SaveJobBeforeRunAction extends Action {
 
@@ -34,7 +34,7 @@ public class SaveJobBeforeRunAction extends Action {
 
     /**
      * SaveJobBeforeRunAction constructor comment.
-     * 
+     *
      * @param activeProcess
      */
     public SaveJobBeforeRunAction(IProcess activeProcess) {
@@ -49,8 +49,8 @@ public class SaveJobBeforeRunAction extends Action {
         }
         IEditorPart part = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
               .getActiveEditor();
-        
-     
+
+
         if (part!=null && part instanceof AbstractMultiPageTalendEditor) {
             AbstractMultiPageTalendEditor editor = (AbstractMultiPageTalendEditor) part;
             editor.doSave(new NullProgressMonitor());

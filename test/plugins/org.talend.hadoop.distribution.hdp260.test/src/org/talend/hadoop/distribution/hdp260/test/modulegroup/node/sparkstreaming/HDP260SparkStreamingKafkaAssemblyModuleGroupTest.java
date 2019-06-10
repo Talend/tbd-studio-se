@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -40,7 +40,7 @@ public class HDP260SparkStreamingKafkaAssemblyModuleGroupTest {
         results.put(
                 HDP260Constant.SPARK2_KAFKA_ASSEMBLY_MRREQUIRED_MODULE_GROUP.getModuleName(),
                 "(((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION=='null') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION=='null')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE=='false') AND (#LINK@NODE.STORAGE_CONFIGURATION.SUPPORTED_SPARK_VERSION=='SPARK_2_1_0'))");
-        
+
         Set<DistributionModuleGroup> moduleGroups = HDP260SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(null, null);
         assertEquals(results.size(), moduleGroups.size());
         moduleGroups.iterator();

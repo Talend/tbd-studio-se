@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -27,14 +27,14 @@ public class DatabricksSparkStreamingModuleGroup {
 
     private final static ComponentCondition condition = new SimpleComponentCondition(new BasicExpression(
             SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false")); //$NON-NLS-1$
-    
+
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         //hs.add(new DistributionModuleGroup(DatabricksConstant.HDFS_MODULE_GROUP.getModuleName(), false, condition));
         hs.add(new DistributionModuleGroup(DatabricksConstant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
         hs.add(new DistributionModuleGroup(DatabricksConstant.SPARK_STREAMING_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
         hs.add(new DistributionModuleGroup(DatabricksConstant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), true, condition));
-        hs.add(new DistributionModuleGroup(DatabricksConstant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));        
+        hs.add(new DistributionModuleGroup(DatabricksConstant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
         return hs;
     }
 }

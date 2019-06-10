@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -26,7 +26,7 @@ import org.talend.designer.pigmap.parts.PigMapInputTablePart;
 import org.talend.designer.pigmap.parts.PigMapOutputTablePart;
 
 /**
- * 
+ *
  * DOC hcyi class global comment. Detailled comment
  */
 public class PigMapFiguresManager extends FiguresManager {
@@ -53,7 +53,7 @@ public class PigMapFiguresManager extends FiguresManager {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.gefabstractmap.figures.manager.FiguresManager#getInputTables()
      */
     @Override
@@ -66,7 +66,7 @@ public class PigMapFiguresManager extends FiguresManager {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.gefabstractmap.figures.manager.FiguresManager#getOutputTables()
      */
     @Override
@@ -79,7 +79,7 @@ public class PigMapFiguresManager extends FiguresManager {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.gefabstractmap.figures.manager.FiguresManager#isErrorRejectTable(org.talend.designer.
      * gefabstractmap.model.abstractmap.MapperTable)
      */
@@ -93,7 +93,7 @@ public class PigMapFiguresManager extends FiguresManager {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.designer.gefabstractmap.figures.manager.FiguresManager#isLookup(org.talend.designer.gefabstractmap
      * .model.abstractmap.MapperTable)

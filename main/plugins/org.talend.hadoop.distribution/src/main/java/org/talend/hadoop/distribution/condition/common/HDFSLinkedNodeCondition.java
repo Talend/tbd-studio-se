@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -28,9 +28,9 @@ public class HDFSLinkedNodeCondition {
 
     private ComponentCondition webHDFSCondition = null;
     private ComponentCondition adlsCondition = null;
-    
+
     public HDFSLinkedNodeCondition(String distribution, String version) {
-        
+
         // condition: (SCHEME=='WebHDFS') AND (DB_VERSION==$version) AND (DISTRIBUTION==$distribution)
         webHDFSCondition =
                 new MultiComponentCondition(new MultiComponentCondition(new SimpleComponentCondition(
@@ -38,7 +38,7 @@ public class HDFSLinkedNodeCondition {
                         new SimpleComponentCondition(new BasicExpression(HDFSConstant.VERSION_PARAMETER, EqualityOperator.EQ,
                                 version))), BooleanOperator.AND, new SimpleComponentCondition(
                         new BasicExpression(HDFSConstant.DISTRIBUTION_PARAMETER, EqualityOperator.EQ, distribution)));
-        
+
         // condition: (SCHEME=='ADLS') AND (DB_VERSION==$version) AND (DISTRIBUTION==$distribution)
         adlsCondition =
                 new MultiComponentCondition(new MultiComponentCondition(new SimpleComponentCondition(
@@ -47,11 +47,11 @@ public class HDFSLinkedNodeCondition {
                                 version))), BooleanOperator.AND, new SimpleComponentCondition(
                         new BasicExpression(HDFSConstant.DISTRIBUTION_PARAMETER, EqualityOperator.EQ, distribution)));
     }
-    
+
     public ComponentCondition getWebHDFSCondition() {
         return webHDFSCondition;
     }
-    
+
     public ComponentCondition getAdlsCondition() {
         return adlsCondition;
     }

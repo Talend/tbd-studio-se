@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -114,26 +114,26 @@ public class RetrieveConfigurationProcess extends org.talend.designer.core.ui.ed
         MetadataTable targetTable = getMetadataTable();
 
         Node outputNode = getLogRowNode(targetTable);
-        
+
         Node javaNode = getTJavaNode();
 
         List<IConnection> inputConns = new ArrayList<IConnection>();
         List<IConnection> logConns = new ArrayList<IConnection>();
         List<IConnection> javaConns = new ArrayList<IConnection>();
-        
+
         Connection mainConn = new Connection(inputNode, outputNode, EConnectionType.FLOW_MAIN, "MAIN", "MAIN", "row1", "MAIN", false);//$NON-NLS-1$
         Connection subConn = new Connection(inputNode, javaNode, EConnectionType.ON_SUBJOB_OK, "SUBJOB_OK", "HadoopClusterConfigurationInput_1", "SUBJOB_OK", "SUBJOB_OK", false);//$NON-NLS-1$
 
         inputConns.add(mainConn);
         inputConns.add(subConn);
-        
+
         logConns.add(mainConn);
         javaConns.add(subConn);
-        
+
         inputNode.setOutgoingConnections(inputConns);
         outputNode.setIncomingConnections(logConns);
         javaNode.setIncomingConnections(javaConns);
-        
+
         inputNode.setProcess(this);
         outputNode.setProcess(this);
         javaNode.setProcess(this);
@@ -141,7 +141,7 @@ public class RetrieveConfigurationProcess extends org.talend.designer.core.ui.ed
         NodeContainer inputContainer = new NodeContainer(inputNode);
         this.addNodeContainer(inputContainer);
         NodeContainer outputContainer = new NodeContainer(outputNode);
-        this.addNodeContainer(outputContainer);       
+        this.addNodeContainer(outputContainer);
         NodeContainer javaContainer = new NodeContainer(javaNode);
         this.addNodeContainer(javaContainer);
         //
@@ -185,7 +185,7 @@ public class RetrieveConfigurationProcess extends org.talend.designer.core.ui.ed
 
         return node;
     }
-    
+
     private Node getTJavaNode() {
         String componentName = "tJava";//$NON-NLS-1$
         IComponent component = ComponentsFactoryProvider.getInstance().get(componentName,

@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -88,7 +88,7 @@ public class TalendInputEntity extends TalendEntity {
 
     /**
      * Connects a parent entity to its output using SOURCE -> TARGET relations
-     * Connects the source (previous) entity to itself to follow the new Cloudera Navigator API (2.0) 
+     * Connects the source (previous) entity to itself to follow the new Cloudera Navigator API (2.0)
      */
     @Override
     public void connectToEntity(List<String> inputs, List<String> outputs) {

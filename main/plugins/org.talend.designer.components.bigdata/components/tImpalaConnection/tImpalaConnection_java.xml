@@ -1,5 +1,5 @@
 <COMPONENT>
-	<HEADER PLATEFORM="ALL" SERIAL="" VERSION="0.101" STATUS="ALPHA"
+	<HEADER PLATEFORM="ALL" SERIAL="" VERSION="0.101" STATUS="ALPHA"	
 		COMPATIBILITY="ALL" AUTHOR="Talend" RELEASE_DATE="20050320A"
 		STARTABLE="true">
 		<SIGNATURE></SIGNATURE>
@@ -30,15 +30,33 @@
 			<DEFAULT>Hive</DEFAULT>
 		</PARAMETER>
 
-        <PARAMETER NAME="IMPALA" FIELD="HADOOP_DISTRIBUTION"
-            NUM_ROW="5" GROUP="VERSION" />
+			<PARAMETER NAME="IMPALA" FIELD="HADOOP_DISTRIBUTION"
+				NUM_ROW="5" GROUP="VERSION" />
             
 		<PARAMETER NAME="HADOOP_CUSTOM_JARS" GROUP="VERSION"
 			FIELD="HADOOP_JARS_DIALOG" NUM_ROW="5" SHOW_IF="DISTRIBUTION=='CUSTOM'"
 			REPOSITORY_VALUE="HADOOP_CUSTOM_JARS">
 			<DEFAULT />
 		</PARAMETER>
-
+		
+		<PARAMETER NAME="USE_YARN" FIELD="CHECK" NUM_ROW="11"
+			SHOW_IF="DISTRIBUTION=='CUSTOM'" GROUP="VERSION" REPOSITORY_VALUE="USE_YARN">
+			<DEFAULT>false</DEFAULT>
+		</PARAMETER>		
+		
+		<PARAMETER NAME="IMPALA_DRIVER" FIELD="CLOSED_LIST"
+			NUM_ROW="15" REQUIRED="true" REPOSITORY_VALUE="IMPALA_DRIVER"
+			GROUP="CONNECTION">
+			<ITEMS DEFAULT="HIVE2">
+				<ITEM NAME="HIVE2" VALUE="HIVE2"
+					SHOW_IF="(HIVE_SERVER == 'HIVE2')" />
+				<ITEM NAME="IMPALA40" VALUE="IMPALA40"
+					SHOW_IF="(DISTRIBUTION=='CLOUDERA' AND DISTRIB[DISTRIBUTION, IMPALA_VERSION].doSupportImpalaConnector[])" />
+				<ITEM NAME="IMPALA41" VALUE="IMPALA41"
+					SHOW_IF="(DISTRIBUTION=='CLOUDERA' AND DISTRIB[DISTRIBUTION, IMPALA_VERSION].doSupportImpalaConnector[])" />					
+			</ITEMS>
+		</PARAMETER>		
+		
 		<PARAMETER NAME="HOST" FIELD="TEXT" NUM_ROW="20"
 			REPOSITORY_VALUE="SERVER_NAME" GROUP="CONNECTION">
 			<DEFAULT>""</DEFAULT>
@@ -49,20 +67,26 @@
 			<DEFAULT>"21050"</DEFAULT>
 		</PARAMETER>
 
-		<PARAMETER NAME="USER" FIELD="TEXT" NUM_ROW="25" 
+		<PARAMETER NAME="DBNAME" FIELD="TEXT" NUM_ROW="25"
+			REPOSITORY_VALUE="SID" REQUIRED="true" GROUP="CONNECTION">
+			<DEFAULT>"default"</DEFAULT>
+		</PARAMETER>
+		
+		<PARAMETER NAME="USER" FIELD="TEXT" NUM_ROW="30"
 			REPOSITORY_VALUE="USERNAME" GROUP="CONNECTION" SHOW="true">
 			<DEFAULT>""</DEFAULT>
 		</PARAMETER>
 
-		<PARAMETER NAME="PASS" FIELD="TEXT" NUM_ROW="30" GROUP="CONNECTION"
-			SHOW="false">
+		<PARAMETER NAME="PASS" FIELD="PASSWORD" NUM_ROW="30" GROUP="CONNECTION"
+			SHOW="true">
 			<DEFAULT>""</DEFAULT>
 		</PARAMETER>
 
-		<PARAMETER NAME="DBNAME" FIELD="TEXT" NUM_ROW="30"
-			REPOSITORY_VALUE="SID" REQUIRED="true" GROUP="CONNECTION">
-			<DEFAULT>"default"</DEFAULT>
-		</PARAMETER>
+		<PARAMETER NAME="IMPALA_ADDITIONAL_JDBC" FIELD="TEXT" NUM_ROW="29"
+			REPOSITORY_VALUE="IMPALA_ADDITIONAL_JDBC" REQUIRED="false" GROUP="CONNECTION"
+			SHOW_IF="(!DISTRIB[DISTRIBUTION, IMPALA_VERSION].useCloudLauncher[] AND DISTRIB[DISTRIBUTION, IMPALA_VERSION].doSupportHive2[])">
+			<DEFAULT>""</DEFAULT>
+		</PARAMETER>		
 
 		<PARAMETER NAME="USE_KRB" FIELD="CHECK" NUM_ROW="35"
 			REQUIRED="true" REPOSITORY_VALUE="USE_KRB" GROUP="AUTHENTICATION">
@@ -74,7 +98,65 @@
 			SHOW_IF="(isShow[USE_KRB]) AND USE_KRB=='true'">
 			<DEFAULT>"impala/_HOST@EXAMPLE.COM"</DEFAULT>
 		</PARAMETER>
+		
+		<PARAMETER NAME="USE_KEYTAB" FIELD="CHECK" NUM_ROW="41"
+			REQUIRED="true" REPOSITORY_VALUE="USE_KEYTAB"
+			SHOW_IF="(isShow[USE_KRB]) AND USE_KRB=='true'"
+			GROUP="AUTHENTICATION">
+			<DEFAULT>false</DEFAULT>
+		</PARAMETER>
+
+		<PARAMETER NAME="PRINCIPAL" FIELD="TEXT" NUM_ROW="42"
+			REQUIRED="true" REPOSITORY_VALUE="PRINCIPAL" GROUP="AUTHENTICATION"
+			SHOW_IF="(isShow[USE_KEYTAB]) AND (USE_KEYTAB=='true')">
+			<DEFAULT>"hive"</DEFAULT>
+		</PARAMETER>
+
+		<PARAMETER NAME="KEYTAB_PATH" FIELD="FILE" NUM_ROW="42"
+			REQUIRED="true" REPOSITORY_VALUE="KEYTAB_PATH" GROUP="AUTHENTICATION"
+			SHOW_IF="(isShow[USE_KEYTAB]) AND (USE_KEYTAB=='true')">
+			<DEFAULT>"/tmp/hive.keytab"</DEFAULT>
+		</PARAMETER>    
+
+		<PARAMETER NAME="USE_SSL" FIELD="CHECK" NUM_ROW="49"
+			REPOSITORY_VALUE="USE_SSL" REQUIRED="true"		
+			SHOW_IF="(DISTRIBUTION=='CUSTOM' OR DISTRIB[DISTRIBUTION, IMPALA_VERSION].doSupportSSL[])"	
+			GROUP="ENCRYPTION">
+			<DEFAULT>false</DEFAULT>
+		</PARAMETER>
+
+		<PARAMETER NAME="SSL_TRUST_STORE" FIELD="FILE" NUM_ROW="50"
+			REPOSITORY_VALUE="SSL_TRUST_STORE" REQUIRED="true" GROUP="ENCRYPTION"
+			SHOW_IF="(isShow[USE_SSL]) AND (USE_KRB=='false' OR DISTRIB[DISTRIBUTION, IMPALA_VERSION].doSupportSSLwithKerberos[] OR DISTRIBUTION=='CUSTOM') AND (USE_SSL=='true')">		
+			<DEFAULT>"/home/usr1/ssl/trust_store.jks"</DEFAULT>
+		</PARAMETER>
+
+		<PARAMETER NAME="SSL_TRUST_STORE_PASSWORD" FIELD="PASSWORD"
+			NUM_ROW="50" REPOSITORY_VALUE="SSL_TRUST_STORE_PASSWORD" REQUIRED="true" GROUP="ENCRYPTION"
+			SHOW_IF="(isShow[USE_SSL]) AND (USE_KRB=='false' OR DISTRIB[DISTRIBUTION, IMPALA_VERSION].doSupportSSLwithKerberos[] OR DISTRIBUTION=='CUSTOM') AND (USE_SSL=='true')">
+			<DEFAULT>"********"</DEFAULT>
+		</PARAMETER>
 	</PARAMETERS>
+	<ADVANCED_PARAMETERS>
+		<PARAMETER NAME="HADOOP_ADVANCED_PROPERTIES"
+			REPOSITORY_VALUE="HADOOP_ADVANCED_PROPERTIES" FIELD="TABLE" REQUIRED="false"
+			SHOW_IF="!DISTRIB[DISTRIBUTION, IMPALA_VERSION].useCloudLauncher[]"
+			NUM_ROW="40" NB_LINES="3">
+			<ITEMS>
+				<ITEM NAME="PROPERTY" />
+				<ITEM NAME="VALUE" />
+				<ITEM NAME="BUILDIN" SHOW_IF="false" VALUE="TRUE" />
+			</ITEMS>
+		</PARAMETER>
+
+		<PARAMETER NAME="ADVANCED_PROPERTIES" REPOSITORY_VALUE="ADVANCED_PROPERTIES"
+			FIELD="TABLE" REQUIRED="false" NUM_ROW="50" NB_LINES="3">
+			<ITEMS>
+				<ITEM NAME="PROPERTY" />
+				<ITEM NAME="VALUE" />
+			</ITEMS>
+		</PARAMETER>	
+	</ADVANCED_PARAMETERS>
 
 	<CODEGENERATION>
 		<IMPORTS>
@@ -82,64 +164,6 @@
 				MVN="mvn:org.talend.libraries/hadoop-conf-kerberos/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/hadoop-conf-kerberos.jar"
 				REQUIRED_IF="(DISTRIBUTION!='CUSTOM' AND USE_KRB=='true')" />
-			<IMPORT NAME="commons-logging-1.1.3.jar" MODULE="commons-logging-1.1.3.jar"
-				MVN="mvn:commons-logging/commons-logging/1.1.3"
-				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-logging-1.1.3.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM')"
-				BundleID="" />
-			<IMPORT NAME="hive-common-0.12.0-cdh5.1.2.jar" MODULE="hive-common-0.12.0-cdh5.1.2.jar"
-				MVN="mvn:org.talend.libraries/hive-common-0.12.0-cdh5.1.2/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh5.1/lib/hive-common-0.12.0-cdh5.1.2.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="hadoop-common-2.3.0-cdh5.1.2.jar" MODULE="hadoop-common-2.3.0-cdh5.1.2.jar"
-				MVN="mvn:org.talend.libraries/hadoop-common-2.3.0-cdh5.1.2/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh5.1/lib/hadoop-common-2.3.0-cdh5.1.2.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="hive-jdbc-0.12.0-cdh5.1.2.jar" MODULE="hive-jdbc-0.12.0-cdh5.1.2.jar"
-				MVN="mvn:org.talend.libraries/hive-jdbc-0.12.0-cdh5.1.2/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh5.1/lib/hive-jdbc-0.12.0-cdh5.1.2.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="hive-metastore-0.12.0-cdh5.1.2.jar" MODULE="hive-metastore-0.12.0-cdh5.1.2.jar"
-				MVN="mvn:org.talend.libraries/hive-metastore-0.12.0-cdh5.1.2/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh5.1/lib/hive-metastore-0.12.0-cdh5.1.2.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="hive-service-0.12.0-cdh5.1.2.jar" MODULE="hive-service-0.12.0-cdh5.1.2.jar"
-				MVN="mvn:org.talend.libraries/hive-service-0.12.0-cdh5.1.2/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh5.1/lib/hive-service-0.12.0-cdh5.1.2.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="httpcore-4.1.3.jar" MODULE="httpcore-4.1.3.jar"
-				MVN="mvn:org.talend.libraries/httpcore-4.1.3/6.0.0" REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="httpclient-4.2.5.jar" MODULE="httpclient-4.2.5.jar"
-				MVN="mvn:org.talend.libraries/httpclient-4.2.5/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.apache.http/lib/httpclient-4.2.5.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="libfb303-0.9.0.jar" MODULE="libfb303-0.9.0.jar"
-				MVN="mvn:org.talend.libraries/libfb303-0.9.0/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.1.2/lib/libfb303-0.9.0.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="libthrift-0.9.0.cloudera.2.jar" MODULE="libthrift-0.9.0.cloudera.2.jar"
-				MVN="mvn:org.talend.libraries/libthrift-0.9.0.cloudera.2/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh5/lib/libthrift-0.9.0.cloudera.2.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="log4j-1.2.17.jar" MODULE="log4j-1.2.17.jar"
-				MVN="mvn:log4j/log4j/1.2.17"
-				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.17.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM')"
-				BundleID="" />
-			<IMPORT NAME="slf4j-api-1.7.5.jar" MODULE="slf4j-api-1.7.5.jar"
-				MVN="mvn:org.talend.libraries/slf4j-api-1.7.5/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-api-1.7.5.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM')"
-				BundleID="" />
-			<IMPORT NAME="slf4j-log4j12-1.7.5.jar" MODULE="slf4j-log4j12-1.7.5.jar"
-				MVN="mvn:org.talend.libraries/slf4j-log4j12-1.7.5/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.7.5.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM')"
-				BundleID="" />
-
-			<!-- Cloudera_CDH5_4 -->
-			<IMPORT MODULE_GROUP="IMPALA-LIB-CDH_5_4_LASTEST"
-				REQUIRED_IF="IMPALA_VERSION=='Cloudera_CDH5_4' AND (DISTRIBUTION!='CUSTOM')" />
 		</IMPORTS>
 	</CODEGENERATION>
 

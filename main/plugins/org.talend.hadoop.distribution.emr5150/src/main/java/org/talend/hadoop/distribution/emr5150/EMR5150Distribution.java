@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -143,13 +143,13 @@ public class EMR5150Distribution extends AbstractDistribution implements HBaseCo
 	protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(
 			String distribution, String version) {
 		Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
-		
+
 		// WebHDFS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = EMR5150WebHDFSModuleGroup.getModuleGroups(distribution, version);
         for(String hdfsComponent : HDFSConstant.hdfsComponents) {
             result.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
         }
-        
+
 		// Mapreduce nodes
 		result.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE,
 				MRConstant.S3_INPUT_COMPONENT), EMR5150MRS3NodeModuleGroup
@@ -162,25 +162,25 @@ public class EMR5150Distribution extends AbstractDistribution implements HBaseCo
 				PigOutputConstant.PIGSTORE_COMPONENT),
 				EMR5150PigOutputNodeModuleGroup.getModuleGroups(distribution,
 						version));
-		
+
 		// Spark Batch Parquet nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
                 EMR5150SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
                 EMR5150SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
-        
+
         // Spark Batch tSQLRow nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.SPARK_SQL_ROW_COMPONENT),
                 EMR5150SparkBatchSqlRowHiveNodeModuleGroup.getModuleGroups(distribution, version));
-        
+
         // Spark Batch S3 nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.S3_CONFIGURATION_COMPONENT),
                 EMR5150SparkBatchS3NodeModuleGroup.getModuleGroups(distribution, version));
-        
+
         // Spark Batch DQ matching
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
                 EMR5150GraphFramesNodeModuleGroup.getModuleGroups(distribution, version));
-        
+
         // DynamoDB nodes ...
         Set<DistributionModuleGroup> dynamoDBNodeModuleGroups = EMR5150SparkDynamoDBNodeModuleGroup.getModuleGroups(distribution,
                 version, "USE_EXISTING_CONNECTION == 'false'");
@@ -208,7 +208,7 @@ public class EMR5150Distribution extends AbstractDistribution implements HBaseCo
         		EMR5150SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_STREAM_INPUT_COMPONENT),
                 EMR5150SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
-        
+
         // Spark Streaming tSQLRow nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.SPARK_SQL_ROW_COMPONENT),
                 EMR5150SparkStreamingSqlRowHiveNodeModuleGroup.getModuleGroups(distribution, version));
@@ -238,7 +238,7 @@ public class EMR5150Distribution extends AbstractDistribution implements HBaseCo
         		EMR5150SparkStreamingFlumeNodeModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.FLUME_OUTPUT_COMPONENT),
         		EMR5150SparkStreamingFlumeNodeModuleGroup.getModuleGroups(distribution, version));
-        
+
         // Azure
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
                 SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT), EMR5150SparkBatchAzureNodeModuleGroup
@@ -313,7 +313,7 @@ public class EMR5150Distribution extends AbstractDistribution implements HBaseCo
 	public String getYarnApplicationClasspath() {
 		return YARN_APPLICATION_CLASSPATH;
 	}
-	
+
 	@Override
 	public String generateSparkJarsPaths(List<String> commandLineJarsPaths) {
         return SparkClassPathUtils.generateSparkJarsPaths(commandLineJarsPaths, SPARK_MODULE_GROUP_NAME);
@@ -398,14 +398,14 @@ public class EMR5150Distribution extends AbstractDistribution implements HBaseCo
 	public boolean doSupportStoreAsParquet() {
 		return true;
 	}
-	
+
 	@Override
     public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
         version.add(ESparkVersion.SPARK_2_3);
         return version;
     }
-	
+
     @Override
     public boolean isExecutedThroughSparkJobServer() {
         return false;
@@ -480,7 +480,7 @@ public class EMR5150Distribution extends AbstractDistribution implements HBaseCo
     public boolean doSupportHDFSEncryption() {
         return true;
     }
-    
+
     @Override
     public SparkStreamingKafkaVersion getSparkStreamingKafkaVersion(ESparkVersion version) {
         return SparkStreamingKafkaVersion.KAFKA_0_10;
@@ -500,12 +500,12 @@ public class EMR5150Distribution extends AbstractDistribution implements HBaseCo
     public boolean doSupportAvroDeflateProperties(){
         return true;
     }
-    
+
     @Override
     public boolean useOldAWSAPI() {
         return false;
     }
-    
+
     @Override
     public short orderingWeight() {
         return 10;

@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -27,7 +27,7 @@ import com.cloudera.nav.sdk.model.entities.EntityType;
 import com.cloudera.nav.sdk.model.relations.RelationRole;
 
 /**
- * 
+ *
  * Represents Talend schema element (column) as a Cloudera Navigator entity
  * The new Cloudera navigator API (2.0) impose to connect the entity
  * to its source and its target.

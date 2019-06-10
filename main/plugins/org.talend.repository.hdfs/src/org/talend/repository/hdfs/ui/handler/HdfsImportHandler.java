@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -35,7 +35,7 @@ public class HdfsImportHandler extends MetadataConnectionImportHandler {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.items.importexport.handlers.imports.ImportExecutableBasePathHandler#createImportItem(org
      * .eclipse.core.runtime .IProgressMonitor,
@@ -56,7 +56,7 @@ public class HdfsImportHandler extends MetadataConnectionImportHandler {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.items.importexport.handlers.imports.ImportBasicHandler#checkItem(org.talend.repository.
      * items.importexport.manager.ResourcesManager, org.talend.repository.items.importexport.handlers.model.ImportItem,

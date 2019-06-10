@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -118,7 +118,7 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
         moduleGroups.put(ComponentType.MAPRSTREAMS, MapR600MapRStreamsModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPRDB, MapR600HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.OJAI, MapR600OjaiModuleGroup.getModuleGroups());
-        
+
         nodeModuleGroups = new HashMap<>();
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPRSTREAMS,
@@ -466,12 +466,12 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
     public boolean doImportSparkHiveContextDependencies() {
         return true;
     }
-    
+
     @Override
     public boolean doSupportAvroDeflateProperties(){
         return true;
     }
-    
+
     @Override
     public boolean doSupportWebHDFS(){
         return false;

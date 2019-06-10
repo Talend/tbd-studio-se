@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -29,9 +29,9 @@ import org.talend.repository.nosql.ui.node.NoSQLRepositoryNodeType;
 import org.talend.repository.ui.processor.SingleTypeProcessor;
 
 /**
- * 
+ *
  * created by ycbai on Jul 2, 2014 Detailled comment
- * 
+ *
  */
 public class NoSQLRepositoryTypeProcessor extends SingleTypeProcessor {
 
@@ -41,7 +41,7 @@ public class NoSQLRepositoryTypeProcessor extends SingleTypeProcessor {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.ui.processor.SingleTypeProcessor#getType()
      */
     @Override
@@ -51,7 +51,7 @@ public class NoSQLRepositoryTypeProcessor extends SingleTypeProcessor {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.ui.processor.SingleTypeProcessor#selectRepositoryNode(org.eclipse.jface.viewers.Viewer,
      * org.talend.repository.model.RepositoryNode, org.talend.repository.model.RepositoryNode)

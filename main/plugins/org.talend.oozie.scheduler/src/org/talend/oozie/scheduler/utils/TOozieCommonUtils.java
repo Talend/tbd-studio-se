@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -29,7 +29,7 @@ public class TOozieCommonUtils {
 
     /**
      * If the current OS is Windows, return <code>true</code>, otherwise return <code>false</code>
-     * 
+     *
      * @return
      */
     public static boolean isWindowsOS() {
@@ -68,7 +68,7 @@ public class TOozieCommonUtils {
 
     /**
      * Gets the all time units to display. Refer to the enum {@link TOozieTimeUnit}.
-     * 
+     *
      * @return
      */
     public static String[] getTimeUnitItems() {
@@ -84,7 +84,7 @@ public class TOozieCommonUtils {
 
     /**
      * Looks up the Time Unit by index. Refer to the {@link TOozieTimeUnit}.
-     * 
+     *
      * @param index
      * @return
      */

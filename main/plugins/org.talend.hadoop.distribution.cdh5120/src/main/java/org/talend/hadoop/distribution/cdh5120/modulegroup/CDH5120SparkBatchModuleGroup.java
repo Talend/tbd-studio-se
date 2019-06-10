@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -30,7 +30,7 @@ public class CDH5120SparkBatchModuleGroup {
 
     private final static ComponentCondition condition = new SimpleComponentCondition(
             new BasicExpression(SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false"));
-    
+
     private final static ComponentCondition conditionNavigator = new SimpleComponentCondition(
             new BasicExpression(SparkBatchConstant.USE_CLOUDERA_NAVIGATOR, EqualityOperator.EQ, "true"));
 

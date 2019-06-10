@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -31,7 +31,7 @@ public class CDH57 {
 
     /**
      * use Cloudera 5.7 sandbox vm to test
-     * 
+     *
      * 192.168.31.52 cdh57.talend.com
      */
     @Test
@@ -61,6 +61,6 @@ public class CDH57 {
         assertEquals("hdfs://cdh56.talend.com:8020", services.get(HadoopHostedService.HDFS).getConfigurationValue(key));
         cluster.setBlacklistParams(Arrays.asList(new String[]{key}));
         assertNull(cluster.getHostedServices().get(HadoopHostedService.HDFS).getConfigurationValue(key));
-        
+
     }
 }

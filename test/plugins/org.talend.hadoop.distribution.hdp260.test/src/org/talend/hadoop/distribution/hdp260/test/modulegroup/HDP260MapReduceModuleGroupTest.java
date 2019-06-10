@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -39,7 +39,7 @@ public class HDP260MapReduceModuleGroupTest {
         results.put(HDP260Constant.MAPREDUCE_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
         results.put(HDP260Constant.MAPREDUCE_AVRO_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
         results.put(HDP260Constant.ATLAS_SPARK_1_HDP_2_6.getModuleName(), null);
-        
+
         Set<DistributionModuleGroup> moduleGroups = HDP260MapReduceModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());
         for (DistributionModuleGroup module : moduleGroups) {

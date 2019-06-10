@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -66,7 +66,7 @@ public class PigFunctionParser extends AbstractTalendFunctionParser {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.rowgenerator.data.AbstractFunctionParser#parse()
      */
     @Override
@@ -125,7 +125,7 @@ public class PigFunctionParser extends AbstractTalendFunctionParser {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.rowgenerator.data.AbstractTalendFunctionParser#getPackageFragment()
      */
     @Override
@@ -134,9 +134,9 @@ public class PigFunctionParser extends AbstractTalendFunctionParser {
     }
 
     /**
-     * 
+     *
      * DOC Comment method "useDomParse".
-     * 
+     *
      * @param fileUrl
      */
     public void useDomParse(String fileUrl) {
@@ -288,7 +288,7 @@ public class PigFunctionParser extends AbstractTalendFunctionParser {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see org.talend.commons.ui.utils.loader.MyURLClassLoader.IAssignableClassFilter#filter(java.net.URL[])
          */
         @Override
@@ -298,7 +298,7 @@ public class PigFunctionParser extends AbstractTalendFunctionParser {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see org.talend.commons.ui.utils.loader.MyURLClassLoader.IAssignableClassFilter#filter(java.lang.Class)
          */
         @Override
@@ -313,7 +313,7 @@ public class PigFunctionParser extends AbstractTalendFunctionParser {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see org.talend.commons.ui.utils.loader.MyURLClassLoader.IAssignableClassFilter#filter(java.lang.String)
          */
         @Override

@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -134,7 +134,7 @@ public class NosqlSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>No SQL Connection</em>'. <!-- begin-user-doc
      * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>No SQL Connection</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -148,7 +148,7 @@ public class NosqlSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>No SQL Connection Item</em>'. <!--
      * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>No SQL Connection Item</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -162,7 +162,7 @@ public class NosqlSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>No SQL Attributes</em>'. <!-- begin-user-doc
      * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>No SQL Attributes</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -202,7 +202,7 @@ public class NosqlSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>Abstract Metadata Object</em>'. <!--
      * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Abstract Metadata Object</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -242,7 +242,7 @@ public class NosqlSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>Deployed Component</em>'. <!--
      * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Deployed Component</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -308,7 +308,7 @@ public class NosqlSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>Connection Item</em>'. <!-- begin-user-doc
      * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
-     * 
+     *
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Connection Item</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)

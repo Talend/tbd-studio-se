@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -134,32 +134,32 @@ public class Neo4jConnectionUtilTest {
         }
 
     }
-    
+
     @Test
     public void testIsVersionSince32() throws Exception {
 
         connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, VersionUtils.DEFAULT_VERSION);
         Assert.assertFalse(Neo4jConnectionUtil.isVersionSince32(connection));
-        
+
         connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, INeo4jConstants.NEO4J_2_3_X);
         Assert.assertFalse(Neo4jConnectionUtil.isVersionSince32(connection));
-        
+
         connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, "NEO4J_1_2_2");
         Assert.assertFalse(Neo4jConnectionUtil.isVersionSince32(connection));
-        
+
         connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, INeo4jConstants.NEO4J_2_2_X);
         Assert.assertFalse(Neo4jConnectionUtil.isVersionSince32(connection));
-        
+
         connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, "NEO4J_3_1_X");
         Assert.assertFalse(Neo4jConnectionUtil.isVersionSince32(connection));
-        
+
         connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, INeo4jConstants.NEO4J_3_2_X);
         Assert.assertTrue(Neo4jConnectionUtil.isVersionSince32(connection));
-        
+
         connection.getAttributes().put(INoSQLCommonAttributes.DB_VERSION, "NEO4J_4_1_X");
         Assert.assertTrue(Neo4jConnectionUtil.isVersionSince32(connection));
-    
+
     }
-    
+
 
 }

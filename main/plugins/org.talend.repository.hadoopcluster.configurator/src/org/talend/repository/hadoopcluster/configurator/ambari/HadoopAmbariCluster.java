@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -43,7 +43,7 @@ public class HadoopAmbariCluster implements HadoopCluster {
     ClusterResource cluster;
 
     ServicesResource services;
-    
+
     List<String> blacklistParams;
 
     // if the server support service_config_versions
@@ -64,7 +64,7 @@ public class HadoopAmbariCluster implements HadoopCluster {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.hadoopcluster.configurator.HadoopCluster#getHostedServices()
      */
     @Override

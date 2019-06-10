@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -115,7 +115,7 @@ public class CDH5120Distribution extends AbstractDistribution implements ICloude
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
         nodeModuleGroups = new HashMap<>();
-        
+
         // WebHDFS/ADLS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = CDH5120WebHDFSModuleGroup.getModuleGroups(distribution, version);
         for(String hdfsComponent : HDFSConstant.hdfsComponents) {
@@ -230,7 +230,7 @@ public class CDH5120Distribution extends AbstractDistribution implements ICloude
                 SparkStreamingConstant.DYNAMODB_OUTPUT_COMPONENT), dynamoDBNodeModuleGroups);
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.DYNAMODB_CONFIGURATION_COMPONENT), dynamoDBConfigurationModuleGroups);
-        
+
         displayConditions = new HashMap<>();
     }
 
@@ -517,7 +517,7 @@ public class CDH5120Distribution extends AbstractDistribution implements ICloude
     public boolean doSupportAvroDeflateProperties(){
         return true;
     }
-    
+
     @Override
     public boolean useOldAWSAPI() {
         return false;

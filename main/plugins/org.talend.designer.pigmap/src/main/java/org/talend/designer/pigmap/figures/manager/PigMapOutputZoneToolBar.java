@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -84,7 +84,7 @@ public class PigMapOutputZoneToolBar extends OutputZoneToolBar {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.newabstractmap.figures.treetools.zone.OutputZoneToolBar#addTable()
      */
     @Override
@@ -128,7 +128,7 @@ public class PigMapOutputZoneToolBar extends OutputZoneToolBar {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.newabstractmap.figures.treetools.zone.OutputZoneToolBar#removeTable()
      */
     @Override
@@ -188,7 +188,7 @@ public class PigMapOutputZoneToolBar extends OutputZoneToolBar {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.xmlmap.figures.treetools.zone.ZoneToolBar#moveUp()
      */
     @Override
@@ -213,7 +213,7 @@ public class PigMapOutputZoneToolBar extends OutputZoneToolBar {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.xmlmap.figures.treetools.zone.ZoneToolBar#moveDown()
      */
     @Override
@@ -238,7 +238,7 @@ public class PigMapOutputZoneToolBar extends OutputZoneToolBar {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.xmlmap.figures.treetools.zone.ZoneToolBar#minSize()
      */
     @Override
@@ -270,7 +270,7 @@ public class PigMapOutputZoneToolBar extends OutputZoneToolBar {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.newabstractmap.figures.treetools.zone.OutputZoneToolBar#autoMap()
      */
     @Override

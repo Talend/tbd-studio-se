@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -46,7 +46,7 @@ import org.talend.core.ui.metadata.editor.MetadataToolbarEditorView;
 import org.talend.designer.pigmap.i18n.Messages;
 
 /**
- * 
+ *
  * DOC hcyi class global comment. Detailled comment
  */
 public class TabFolderEditors extends CTabFolder {
@@ -85,7 +85,7 @@ public class TabFolderEditors extends CTabFolder {
     }
 
     /**
-     * 
+     *
      * DOC hcyi Comment method "createComponents".
      */
     private void createComponents() {
@@ -150,7 +150,7 @@ public class TabFolderEditors extends CTabFolder {
     }
 
     /**
-     * 
+     *
      * DOC hcyi Comment method "addListenersToInputButtons".
      */
     private void addListenersToInputButtons() {
@@ -171,7 +171,7 @@ public class TabFolderEditors extends CTabFolder {
 
             /*
              * (non-Javadoc)
-             * 
+             *
              * @see org.eclipse.swt.events.DisposeListener#widgetDisposed(org.eclipse.swt.events.DisposeEvent)
              */
             @Override
@@ -184,7 +184,7 @@ public class TabFolderEditors extends CTabFolder {
     }
 
     /**
-     * 
+     *
      * DOC hcyi Comment method "addListenersToOutputButtons".
      */
     private void addListenersToOutputButtons() {
@@ -229,7 +229,7 @@ public class TabFolderEditors extends CTabFolder {
 
             /*
              * (non-Javadoc)
-             * 
+             *
              * @see org.eclipse.swt.events.DisposeListener#widgetDisposed(org.eclipse.swt.events.DisposeEvent)
              */
             @Override

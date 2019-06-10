@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -45,7 +45,7 @@ public class DynamicHDPSparkBatchModuleGroup extends DynamicSparkBatchModuleGrou
     protected void initConditions() {
         super.initConditions();
         conditionNotSpark16 = new SimpleComponentCondition(
-                new BasicExpression("SUPPORTED_SPARK_VERSION", EqualityOperator.NOT_EQ, ESparkVersion.SPARK_1_6.getSparkVersion())); //$NON-NLS-1$        
+                new BasicExpression("SUPPORTED_SPARK_VERSION", EqualityOperator.NOT_EQ, ESparkVersion.SPARK_1_6.getSparkVersion())); //$NON-NLS-1$
     }
 
     @Override
@@ -56,7 +56,7 @@ public class DynamicHDPSparkBatchModuleGroup extends DynamicSparkBatchModuleGrou
             moduleGroups.addAll(moduleGroupsFromSuper);
         }
         DynamicPluginAdapter pluginAdapter = getPluginAdapter();
-        
+
         String spark2RuntimeId = pluginAdapter
                 .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.SPARK2_MODULE_GROUP.getModuleName());
         String sparkMRRequiredRuntimeId = pluginAdapter

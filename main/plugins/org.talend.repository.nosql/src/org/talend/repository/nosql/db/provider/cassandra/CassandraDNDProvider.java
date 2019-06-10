@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -26,7 +26,7 @@ public class CassandraDNDProvider extends AbstractDNDProvider {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.nosql.ui.dnd.IDNDProvider#getRepositoryValue(org.talend.repository.model.nosql.NoSQLConnection
      * , java.lang.String, org.talend.core.model.metadata.IMetadataTable, java.lang.String)
@@ -58,7 +58,7 @@ public class CassandraDNDProvider extends AbstractDNDProvider {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.nosql.ui.dnd.AbstractDNDProvider#setRepositoryValue(org.talend.repository.model.nosql.
      * NoSQLConnection, org.talend.core.model.process.INode, java.lang.String)
      */

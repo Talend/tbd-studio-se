@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -102,7 +102,7 @@ public class SchedulingDialogController {
 
     /**
      * Check if "Start Time" text has time to display.
-     * 
+     *
      * @return
      */
     private boolean hasStartTimeDisplay() {
@@ -133,7 +133,7 @@ public class SchedulingDialogController {
     /**
      * Checks the input value for frequency, which must be the positive integer. This method uses the regex that is
      * <code>[1-9][0-9]*</code>.
-     * 
+     *
      * @param frequencyValue
      * @return
      */
@@ -225,7 +225,7 @@ public class SchedulingDialogController {
     }
 
     /**
-     * 
+     *
      * @return
      */
     private boolean compareStartTimeToEndTime(Date startTimeValue, Date endTimeValue) {

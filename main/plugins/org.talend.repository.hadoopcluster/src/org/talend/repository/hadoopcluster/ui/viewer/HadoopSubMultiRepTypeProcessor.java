@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -42,25 +42,25 @@ import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
 import org.talend.repository.ui.processor.MultiTypesProcessor;
 
 /**
- * 
+ *
  * created by ycbai on 2013-5-24 Detailled comment
- * 
+ *
  * <P>
  * Use to display multi-types of hadoop subnodes at same time.
  * </P>
- * 
+ *
  */
 public class HadoopSubMultiRepTypeProcessor extends MultiTypesProcessor {
 
     private static final String ISSPARK = "ISSPARK"; //$NON-NLS-1$
 
     private static final String USEYARN = "USEYARN"; //$NON-NLS-1$
-    
+
     private static final String ELEMENT = "ELEMENT"; //$NON-NLS-1$
 
     /**
      * DOC ycbai HadoopSubMultiRepTypeProcessor constructor comment.
-     * 
+     *
      * @param repositoryTypes
      */
     public HadoopSubMultiRepTypeProcessor(String[] repositoryTypes) {
@@ -69,7 +69,7 @@ public class HadoopSubMultiRepTypeProcessor extends MultiTypesProcessor {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.ui.processor.MultiTypesProcessor#getTypes()
      */
     @Override
@@ -83,7 +83,7 @@ public class HadoopSubMultiRepTypeProcessor extends MultiTypesProcessor {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.ui.processor.SingleTypeProcessor#selectRepositoryNode(org.eclipse.jface.viewers.Viewer,
      * org.talend.repository.model.RepositoryNode, org.talend.repository.model.RepositoryNode)
@@ -207,7 +207,7 @@ public class HadoopSubMultiRepTypeProcessor extends MultiTypesProcessor {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.ui.processor.SingleTypeProcessor#isSelectionValid(org.talend.repository.model.
      * RepositoryNode )
      */

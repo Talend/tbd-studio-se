@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -18,14 +18,14 @@ import java.util.Map;
 /**
  * A model to represent Talend components visible on the designer. The model captures all of the metadata associated to
  * a Talend component.
- * 
+ *
  * For a given Talend component we generate a instance of this class with : the component's name, the component's output
  * schema, the list of input components (downstream from the component), and The list of output components (upstream
  * from the component).
- * 
+ *
  * Provider specific mappers (Cloudera Navigator, Atlas, ...) consume instaces of LineageNode to create their own
  * provider specific lineages.
- * 
+ *
  */
 public class NavigatorNode {
 

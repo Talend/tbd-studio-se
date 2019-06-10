@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -29,7 +29,7 @@ public class QuboleSparkBatchModuleGroup {
         moduleGroups.add(new DistributionModuleGroup(QuboleConstant.S3_MODULE_GROUP.getModuleName()));
         return moduleGroups;
     }
-    
+
     public static Set<DistributionModuleGroup> getDynamoModuleGroups(String distribution, String version, String condition) {
         return ModuleGroupsUtils.getModuleGroups(distribution, version, condition,
                 QuboleConstant.SPARK_DYNAMODB_MODULE_GROUP.getModuleName(), true);

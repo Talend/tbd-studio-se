@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -120,7 +120,7 @@ public class PigMapInputTablePart extends InputTablePart implements NodeEditPart
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.gef.NodeEditPart#getSourceConnectionAnchor(org.eclipse.gef.ConnectionEditPart)
      */
     @Override
@@ -131,7 +131,7 @@ public class PigMapInputTablePart extends InputTablePart implements NodeEditPart
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.gef.NodeEditPart#getSourceConnectionAnchor(org.eclipse.gef.Request)
      */
     @Override
@@ -142,7 +142,7 @@ public class PigMapInputTablePart extends InputTablePart implements NodeEditPart
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.gef.NodeEditPart#getTargetConnectionAnchor(org.eclipse.gef.ConnectionEditPart)
      */
     @Override
@@ -167,7 +167,7 @@ public class PigMapInputTablePart extends InputTablePart implements NodeEditPart
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.gef.NodeEditPart#getTargetConnectionAnchor(org.eclipse.gef.Request)
      */
     @Override
@@ -178,7 +178,7 @@ public class PigMapInputTablePart extends InputTablePart implements NodeEditPart
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.gefabstractmap.part.MapperTablePart#highLightHeader(boolean)
      */
     @Override

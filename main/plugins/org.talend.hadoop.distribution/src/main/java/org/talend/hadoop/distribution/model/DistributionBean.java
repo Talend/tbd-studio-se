@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -109,7 +109,7 @@ public class DistributionBean implements IHDistribution {
     }
 
     /**
-     * 
+     *
      * The version can be null, especially for the Custom without any versions, but still need null one to keep the
      * {@link HadoopComponent} object.
      */
@@ -167,7 +167,7 @@ public class DistributionBean implements IHDistribution {
         /*
          * TBD-3338, do it like before,add condition always, even it's null. Because when build condition, will ignore
          * all with the null
-         * 
+         *
          * @see the method getDisplayShowIf with api ComponentConditionUtil.buildDistributionShowIf
          */
         conditions.add(c);

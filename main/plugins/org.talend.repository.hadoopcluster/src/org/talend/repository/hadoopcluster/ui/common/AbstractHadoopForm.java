@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -112,12 +112,12 @@ public abstract class AbstractHadoopForm<T> extends AbstractForm {
 
     /**
      * Generate a string array which contains continuous numbers like { 1, 2, 3, 4 }.
-     * 
+     *
      * You can use getNumberStrings(4,1) to generate the front array.
      * <p>
-     * 
+     *
      * DOC ycbai Comment method "getNumberStrings".
-     * 
+     *
      * @param sum is the amount of the numbers.
      * @param startNum is the number which you want to start from.
      * @return the number string array.
@@ -139,7 +139,7 @@ public abstract class AbstractHadoopForm<T> extends AbstractForm {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.metadata.managment.ui.wizard.AbstractForm#exportAsContext()
      */
     @Override

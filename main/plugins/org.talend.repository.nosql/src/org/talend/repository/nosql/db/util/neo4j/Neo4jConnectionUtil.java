@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -72,9 +72,9 @@ public class Neo4jConnectionUtil {
                 if (Thread.currentThread().interrupted()) {
                     throw new InterruptedException();
                 }
-                Object basic = NoSQLReflection.invokeStaticMethod("org.neo4j.driver.v1.AuthTokens", "basic", 
+                Object basic = NoSQLReflection.invokeStaticMethod("org.neo4j.driver.v1.AuthTokens", "basic",
                         new Object[] { usename, password }, classLoader, String.class, String.class);
-                NoSQLReflection.invokeStaticMethod("org.neo4j.driver.v1.GraphDatabase", "driver", new Object[] {serverUrl, basic }, 
+                NoSQLReflection.invokeStaticMethod("org.neo4j.driver.v1.GraphDatabase", "driver", new Object[] {serverUrl, basic },
                         classLoader, String.class, Class.forName("org.neo4j.driver.v1.AuthToken", true, classLoader));
                 return canConnect;
             }
@@ -118,7 +118,7 @@ public class Neo4jConnectionUtil {
 
         return canConnect;
     }
-    
+
     private static void doCheck(Object db, ClassLoader classLoader, NoSQLConnection connection) throws NoSQLReflectionException, ClassNotFoundException {
         if(connection != null && isVersionSince32(connection)){
             NoSQLReflection.invokeMethod(db, "getAllNodes", //$NON-NLS-1$
@@ -206,7 +206,7 @@ public class Neo4jConnectionUtil {
         } catch (NoSQLReflectionException e) {
             throw new NoSQLServerException(e);
         }
-        
+
         return graphDb = db;
     }
 
@@ -284,7 +284,7 @@ public class Neo4jConnectionUtil {
 
         return propertiesMap;
     }
-    
+
     public static synchronized Map<String, Object> getNodeProperties(final Object node, final ClassLoader classLoader) throws NoSQLServerException {
         final Map<String, Object> propertiesMap = new HashMap<String, Object>();
         try {
@@ -297,7 +297,7 @@ public class Neo4jConnectionUtil {
 
         return propertiesMap;
     }
-    
+
     private static void collectInternalNodeProperties(Map<String, Object> propertiesMap, Object node, ClassLoader classLoader)
             throws NoSQLReflectionException {
         Iterable<String> propertieKeys = (Iterable<String>) NoSQLReflection.invokeMethod(node, "keys"); //$NON-NLS-1$
@@ -334,7 +334,7 @@ public class Neo4jConnectionUtil {
             throw new NoSQLServerException(e);
         }
     }
-    
+
     public static boolean isDriverNode(Object obj, ClassLoader classLoader) throws NoSQLServerException {
         if (obj == null) {
             return false;
@@ -366,7 +366,7 @@ public class Neo4jConnectionUtil {
     private static Object getExecutionEngine(Object db, ClassLoader classLoader) throws NoSQLReflectionException {
         return getExecutionEngine(db, classLoader,null);
     }
-    
+
     private static Object getExecutionEngine(Object db, ClassLoader classLoader, NoSQLConnection connection) throws NoSQLReflectionException {
         Object ee = executionEngine;
         if (ee != null) {
@@ -409,7 +409,7 @@ public class Neo4jConnectionUtil {
         queryEngine = null;
         executionEngine = null;
     }
-    
+
     public static boolean isVersionSince32(NoSQLConnection connection) {
         String dbVersion = connection.getAttributes().get(INoSQLCommonAttributes.DB_VERSION);
         try{
@@ -419,7 +419,7 @@ public class Neo4jConnectionUtil {
                  String firstStr = matcher.group(1);
                  Integer firstInt = Integer.parseInt(firstStr);
                  if(firstInt>3){
-                     return true; 
+                     return true;
                  }else if(firstInt<3){
                      return false;
                  }else{
@@ -435,7 +435,7 @@ public class Neo4jConnectionUtil {
         } catch (Exception ex) {
             //do nothing
         }
-        return false; 
+        return false;
     }
 
 }

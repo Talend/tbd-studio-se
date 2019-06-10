@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -32,7 +32,7 @@ import com.cloudera.api.v3.ServicesResourceV3;
 public class HadoopCMCluster implements HadoopCluster {
 
     ServicesResourceV3 cluster;
-    
+
     List<String> blacklistParams;
 
     /**
@@ -44,7 +44,7 @@ public class HadoopCMCluster implements HadoopCluster {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.hadoopcluster.configurator.HadoopCluster#getHostedServices()
      */
     @Override

@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -28,9 +28,9 @@ import org.talend.designer.hdfsbrowse.ui.provider.FileSelectorTreeViewerProvider
 
 /**
  * DOC ycbai class global comment. Detailled comment
- * 
+ *
  * Local representation of a folder in the DFS.
- * 
+ *
  */
 public class HDFSFolder extends HDFSPath {
 
@@ -88,7 +88,7 @@ public class HDFSFolder extends HDFSPath {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.hdfs.model.HDFSContent#refresh()
      */
     @Override

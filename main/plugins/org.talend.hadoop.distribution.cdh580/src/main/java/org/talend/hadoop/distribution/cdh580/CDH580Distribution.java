@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -111,7 +111,7 @@ public class CDH580Distribution extends AbstractDistribution implements IClouder
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
         nodeModuleGroups = new HashMap<>();
-        
+
         // WebHDFS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = CDH580WebHDFSModuleGroup.getModuleGroups(distribution, version);
         for(String hdfsComponent : HDFSConstant.hdfsComponents) {
@@ -122,9 +122,9 @@ public class CDH580Distribution extends AbstractDistribution implements IClouder
         nodeModuleGroups.put(
                 new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT),
                 CDH580SparkBatchAzureNodeModuleGroup.getModuleGroups(distribution, version));
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), 
+        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT),
                 CDH580SparkBatchAzureNodeModuleGroup.getModuleGroups(distribution, version));
-        
+
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
                 CDH580MRS3NodeModuleGroup.getModuleGroups(distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),
@@ -428,7 +428,7 @@ public class CDH580Distribution extends AbstractDistribution implements IClouder
     public boolean doSupportAzureDataLakeStorage() {
         return false;
     }
-    
+
     @Override
     public boolean doSupportAvroDeflateProperties(){
         return true;

@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -30,7 +30,7 @@ public interface JobSubmission {
 
     /**
      * Submit an ETL job for execution
-     * 
+     *
      * @param jobContext - job context parameters
      * @return external job id or handle
      * @throws JobSubmissionException wrapper for exceptions from HDFS and Oozie
@@ -41,7 +41,7 @@ public interface JobSubmission {
 
     /**
      * Redeploy an ETL job that is already deployed on Oozie
-     * 
+     *
      * @param jobHandle external job handle that was returned as part of the initial job submission
      * @param jobContext job context parameters
      * @return external job id or handle
@@ -54,7 +54,7 @@ public interface JobSubmission {
 
     /**
      * Determine the current status of a previously submitted job
-     * 
+     *
      * @param jobHandle external job handle that was returned as part of the initial job submission
      * @param oozieEndPoint Web Service End Point of Oozie Scheduler Service
      * @return Status Current status of the job submitted
@@ -64,7 +64,7 @@ public interface JobSubmission {
 
     /**
      * Kill a previously submitted job
-     * 
+     *
      * @param jobHandle external job handle that was returned as part of the initial job submission
      * @param oozieEndPoint Web Service End Point of Oozie Scheduler Service
      * @throws JobSubmissionException wrapper for exceptions from HDFS and Oozie
@@ -75,7 +75,7 @@ public interface JobSubmission {
 
     /**
      * Retrieve the logs of a previously submitted job
-     * 
+     *
      * @param jobHandle external job handle that was returned as part of the initial job submission
      * @param oozieEndPoint Web Service End Point of Oozie Scheduler Service
      * @return Log contents as a String

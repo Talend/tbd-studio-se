@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -190,7 +190,7 @@ public class AmbariClientBuilder {
 
     /**
      * Build an ApiRootResource proxy object for communicating with the remote server.
-     * 
+     *
      * @return an ApiRootResource proxy object
      */
     public ApiRootResource build() {
@@ -199,7 +199,7 @@ public class AmbariClientBuilder {
 
     /**
      * Build a client proxy, for a specific proxy type.
-     * 
+     *
      * @param proxyType proxy type class
      * @return client proxy stub
      */

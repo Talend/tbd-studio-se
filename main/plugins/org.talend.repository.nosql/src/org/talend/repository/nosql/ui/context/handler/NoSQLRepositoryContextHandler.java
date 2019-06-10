@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -44,7 +44,7 @@ import org.talend.utils.json.JSONObject;
 
 /**
  * created by ldong on Dec 18, 2014 Detailled comment
- * 
+ *
  */
 public class NoSQLRepositoryContextHandler extends AbstractRepositoryContextHandler {
 
@@ -139,7 +139,7 @@ public class NoSQLRepositoryContextHandler extends AbstractRepositoryContextHand
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.ui.utils.IRepositoryContextHandler#setPropertiesForContextMode(org.talend.core.model.properties
      * .ContextItem, java.util.Map)

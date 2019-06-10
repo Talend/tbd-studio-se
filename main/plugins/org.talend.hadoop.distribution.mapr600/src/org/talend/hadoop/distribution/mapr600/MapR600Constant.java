@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -49,7 +49,7 @@ public enum MapR600Constant {
     SPARK_MAPRSTREAMS_ASSEMBLY_MRREQUIRED_MODULE_GROUP("SPARK-MAPRSTREAMS-ASSEMBLY-LIB-MRREQUIRED-MAPR600"), //$NON-NLS-1$
     SPARK_MAPRSTREAMS_CLIENT_MRREQUIRED_MODULE_GROUP("SPARK-MAPRSTREAMS-CLIENT-LIB-MRREQUIRED-MAPR600"), //$NON-NLS-1$
     SPARK_FLUME_MRREQUIRED_MODULE_GROUP("SPARK-FLUME-LIB-MRREQUIRED-MAPR600"), //$NON-NLS-1$
-    SPARK_AZURE_MRREQUIRED_MODULE_GROUP("SPARK-AZURE-LIB-MRREQUIRED-MAPR600"), //$NON-NLS-1$ 
+    SPARK_AZURE_MRREQUIRED_MODULE_GROUP("SPARK-AZURE-LIB-MRREQUIRED-MAPR600"), //$NON-NLS-1$
     SPARK_DYNAMODB_MRREQUIRED_MODULE_GROUP("SPARK-DYNAMODB-LIB-MRREQUIRED-MAPR600"); //$NON-NLS-1$
 
     private String mModuleName;

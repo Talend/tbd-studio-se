@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2017 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -20,7 +20,7 @@ import org.talend.hadoop.distribution.condition.common.SparkBatchLinkedNodeCondi
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 
 public class EMR580SparkBatchAzureNodeModuleGroup {
-    
+
     public static final String SPARK_AZURE_MRREQUIRED_MODULE_GROUP = "SPARK-AZURE-LIB-MRREQUIRED-EMR_5_8_0_LATEST";
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {

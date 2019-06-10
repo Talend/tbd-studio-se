@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -85,7 +85,7 @@ public class TemplateBean implements IVariable {
     private List<ComponentTypeMapEntity> componentTypeMap;
 
     private List<ClassLoaderBean> classLoaders;
-    
+
     private List<String> supportedSparkVersions;
 
     public String getId() {
@@ -215,7 +215,7 @@ public class TemplateBean implements IVariable {
     public void setDynamicVersion(String dynamicVersion) {
         this.dynamicVersion = dynamicVersion;
     }
-    
+
     public List<String> getSupportedSparkVersions() {
         return this.supportedSparkVersions;
     }

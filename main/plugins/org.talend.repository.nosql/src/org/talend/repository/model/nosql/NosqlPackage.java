@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -116,7 +116,7 @@ public interface NosqlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Namespace</b></em>' container reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -158,7 +158,7 @@ public interface NosqlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Description</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -176,7 +176,7 @@ public interface NosqlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Element Node</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -211,7 +211,7 @@ public interface NosqlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Measurement</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -220,7 +220,7 @@ public interface NosqlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Change Request</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -229,7 +229,7 @@ public interface NosqlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Dasdl Property</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -312,7 +312,7 @@ public interface NosqlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Data Manager</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -329,7 +329,7 @@ public interface NosqlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Machine</b></em>' container reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -355,7 +355,7 @@ public interface NosqlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Is Case Sensitive</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -373,7 +373,7 @@ public interface NosqlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Data Package</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -399,7 +399,7 @@ public interface NosqlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Queries</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */

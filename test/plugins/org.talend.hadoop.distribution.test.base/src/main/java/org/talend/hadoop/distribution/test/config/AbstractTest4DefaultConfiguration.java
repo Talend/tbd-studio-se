@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -62,7 +62,7 @@ public abstract class AbstractTest4DefaultConfiguration extends AbstractTest4Had
     protected static final String CLOUDERA_NAVIGATOR_CLIENT_URL = "CLOUDERA_NAVIGATOR_CLIENT_URL";
 
     /*
-     * 
+     *
      */
     protected static final String PORT = "PORT";
 

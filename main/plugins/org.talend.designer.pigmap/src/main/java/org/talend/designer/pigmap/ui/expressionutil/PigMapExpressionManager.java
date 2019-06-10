@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -28,7 +28,7 @@ import org.apache.oro.text.regex.Util;
 import org.talend.commons.utils.data.text.StringHelper;
 
 /**
- * 
+ *
  * DOC hcyi class global comment. Detailled comment
  */
 public class PigMapExpressionManager {
@@ -36,24 +36,24 @@ public class PigMapExpressionManager {
     private final static String EXPRESSION_PATTERN = "(\\[)\\s*(\\w+)\\s*\\.(\\w+\\s*:\\s*(/.+?)+(/@.+?)*)\\s*(\\])|((?!\\[)\\s*\\w+)\\s*\\.\\s*(\\w+(?!\\]))"; //$NON-NLS-1$
 
     private static final String PREFIX_TABLE_NAME_REGEXP = ""; //$NON-NLS-1$
-    
+
     private static final String SUFFIX_TABLE_NAME = ""; //$NON-NLS-1$
-    
+
     private static final String SUFFIX_TABLE_NAME_REGEXP = SUFFIX_TABLE_NAME;
-    
+
     private static final String DOUBLE_ESCAPE = "\\"; //$NON-NLS-1$
-    
+
     private static final String PREFIX_FIELD_NAME = "."; //$NON-NLS-1$
-    
+
     private static final String PREFIX_FIELD_NAME_REGEXP = DOUBLE_ESCAPE + PREFIX_FIELD_NAME;
-    
+
     private static final String SUFFIX_FIELD_NAME = ""; //$NON-NLS-1$
-    
+
     private static final String SUFFIX_FIELD_NAME_REGEXP = SUFFIX_FIELD_NAME;
-    
+
     private static final String SUBST_PATTERN_FOR_REPLACE_LOCATION = PREFIX_TABLE_NAME_REGEXP + "(\\s*){0}(\\s*)" //$NON-NLS-1$
     + SUFFIX_TABLE_NAME_REGEXP + "(\\s*)" + PREFIX_FIELD_NAME_REGEXP + "(\\s*){1}(\\s*)" + SUFFIX_FIELD_NAME_REGEXP; //$NON-NLS-1$ //$NON-NLS-2$
-    
+
     private Perl5Matcher matcher = new Perl5Matcher();
 
     private Perl5Compiler compiler = new Perl5Compiler();
@@ -125,7 +125,7 @@ public class PigMapExpressionManager {
         }
         return returnedExpression;
     }
-    
+
     private String substitute(PatternMatcher matcher, Pattern pattern, Substitution sub, String input, int numSubs) {
         StringBuffer buffer = new StringBuffer(input.length());
         PatternMatcherInput pinput = new PatternMatcherInput(input);
@@ -137,7 +137,7 @@ public class PigMapExpressionManager {
             return buffer.toString();
         return input;
     }
-    
+
     private int substitute(StringBuffer result, PatternMatcher matcher, Pattern pattern, Substitution sub,
             PatternMatcherInput input, int numSubs) {
         int beginOffset, subCount;

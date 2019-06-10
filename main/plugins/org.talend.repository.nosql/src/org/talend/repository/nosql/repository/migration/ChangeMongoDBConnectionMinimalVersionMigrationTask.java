@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -30,7 +30,7 @@ import org.talend.repository.nosql.db.common.cassandra.ICassandraAttributies;
 import org.talend.repository.nosql.ui.node.NoSQLRepositoryNodeType;
 
 /**
- * 
+ *
  * created by hcyi on Aug 6, 2015 Detailled comment
  *
  */
@@ -49,7 +49,7 @@ public class ChangeMongoDBConnectionMinimalVersionMigrationTask extends Abstract
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.model.migration.AbstractItemMigrationTask#execute(org.talend.core.model.properties.Item)
      */
     @Override

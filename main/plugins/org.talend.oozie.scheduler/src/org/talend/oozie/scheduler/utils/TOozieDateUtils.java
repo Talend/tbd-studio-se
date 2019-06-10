@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -26,7 +26,7 @@ public class TOozieDateUtils {
 
     /**
      * Converts the given date to the specified string pattern "yyyy-MM-dd HH:mm:ss";
-     * 
+     *
      * @param date
      * @return
      */
@@ -54,7 +54,7 @@ public class TOozieDateUtils {
 
     /**
      * Fetches the current date as format "yyyy-MM-dd HH:mm:ss".
-     * 
+     *
      * @return
      */
     public static String fetchCurrentDate() {

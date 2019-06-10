@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -57,5 +57,5 @@ public class CDH5100SparkBatchKuduNodeModuleGroup {
                 CDH5100Constant.SPARK2_KUDU_MRREQUIRED_MODULE_GROUP.getModuleName(), true));
         return dmg;
     }
-    
+
 }

@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -51,7 +51,7 @@ public class MongoDBWizardPageProvider extends AbstractWizardPageProvider {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.nosql.ui.provider.IWizardPageProvider#createRetrieveSchemaForm(org.eclipse.swt.widgets.
      * Composite, org.talend.core.model.properties.ConnectionItem, org.talend.repository.model.nosql.NoSQLConnection,
@@ -65,7 +65,7 @@ public class MongoDBWizardPageProvider extends AbstractWizardPageProvider {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.nosql.ui.provider.IWizardPageProvider#createSchemaForm(org.eclipse.swt.widgets.Composite,
      * org.talend.core.model.properties.ConnectionItem, org.talend.repository.model.nosql.NoSQLConnection,

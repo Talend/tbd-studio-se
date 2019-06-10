@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -85,7 +85,7 @@ public class DatabricksDistribution extends AbstractDistribution implements Spar
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), DatabricksSparkBatchAzureNodeModuleGroup
                 .getModuleGroups(distribution, version));
-        
+
         // Kinesis
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT), DatabricksSparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_COMPONENT), DatabricksSparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
@@ -145,7 +145,7 @@ public class DatabricksDistribution extends AbstractDistribution implements Spar
     public Set<DistributionModuleGroup> getModuleGroups(ComponentType componentType, String componentName) {
         return nodeModuleGroups.get(new NodeComponentTypeBean(componentType, componentName));
     }
-	
+
 	@Override
 	public Set<ESparkVersion> getSparkVersions() {
 		Set<ESparkVersion> version = new HashSet<>();
@@ -170,32 +170,32 @@ public class DatabricksDistribution extends AbstractDistribution implements Spar
 		// TODO Auto-generated method stub
 		return true;
 	}
-	
+
 	@Override
 	public boolean isDatabricksDistribution() {
 	    return true;
 	}
-	
+
 	@Override
 	public boolean isCloudDistribution() {
 	    return true;
     }
-	
+
 	@Override
 	public boolean useCloudLauncher() {
 	    return true;
     }
-	
+
 	@Override
 	public boolean doSupportSparkStandaloneMode() {
 	    return true;
     }
-	
+
 	@Override
 	public boolean doSupportSparkYarnClientMode() {
 	    return false;
     }
-	
+
 	@Override
 	public boolean doSupportSparkYarnClusterMode() {
 	    return false;
@@ -220,17 +220,17 @@ public class DatabricksDistribution extends AbstractDistribution implements Spar
     public boolean doSupportBackpressure() {
         return true;
     }
-    
+
     @Override
     public boolean doSupportS3() {
         return true;
     }
-    
+
     @Override
     public boolean doSupportS3V4() {
         return true;
     }
-    
+
     @Override
     public boolean useOldAWSAPI() {
         return false;

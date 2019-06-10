@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -17,7 +17,7 @@ package org.talend.designer.hdfsbrowse.util;
  * DOC ycbai class global comment. Detailled comment
  */
 public enum EHDFSRepositoryToComponent {
-    
+
     SCHEME("SCHEME", "SCHEME"), //$NON-NLS-1$ //$NON-NLS-2$
 
     DISTRIBUTION("DISTRIBUTION", "DISTRIBUTION"), //$NON-NLS-1$ //$NON-NLS-2$
@@ -156,31 +156,31 @@ public enum EHDFSRepositoryToComponent {
     PATH_TO_GOOGLE_CREDENTIALS("PATH_TO_GOOGLE_CREDENTIALS", "PATH_TO_GOOGLE_CREDENTIALS"),//$NON-NLS-1$ //$NON-NLS-2$
 
     QUBOLE_API_TOKEN("QUBOLE_API_TOKEN", "QUBOLE_API_TOKEN"), //$NON-NLS-1$ //$NON-NLS-2$
-    
+
     QUBOLE_CLUSTER("QUBOLE_CLUSTER", "QUBOLE_CLUSTER"), //$NON-NLS-1$ //$NON-NLS-2$
-    
+
     QUBOLE_CLUSTER_LABEL("QUBOLE_CLUSTER_LABEL", "QUBOLE_CLUSTER_LABEL"), //$NON-NLS-1$ //$NON-NLS-2$
-    
+
     QUBOLE_ENDPOINT("QUBOLE_ENDPOINT", "QUBOLE_ENDPOINT"), //$NON-NLS-1$ //$NON-NLS-2$
-    
+
     QUBOLE_ENDPOINT_URL("QUBOLE_ENDPOINT_URL", "QUBOLE_ENDPOINT_URL"), //$NON-NLS-1$ //$NON-NLS-2$
-    
+
     QUBOLE_S3_ACCESS_KEY("QUBOLE_S3_ACCESS_KEY", "QUBOLE_S3_ACCESS_KEY"), //$NON-NLS-1$ //$NON-NLS-2$
-    
+
     QUBOLE_S3_SECRET_KEY("QUBOLE_S3_SECRET_KEY", "QUBOLE_S3_SECRET_KEY"), //$NON-NLS-1$ //$NON-NLS-2$
-    
+
     QUBOLE_S3_BUCKET_NAME("QUBOLE_S3_BUCKET_NAME", "QUBOLE_S3_BUCKET_NAME"), //$NON-NLS-1$ //$NON-NLS-2$
-    
+
     QUBOLE_S3_BUCKET_KEY("QUBOLE_S3_BUCKET_KEY", "QUBOLE_S3_BUCKET_KEY"), //$NON-NLS-1$ //$NON-NLS-2$
-    
+
     QUBOLE_S3_REGION("QUBOLE_S3_REGION", "QUBOLE_S3_REGION"), //$NON-NLS-1$ //$NON-NLS-2$
-    
+
     DATABRICKS_ENDPOINT("DATABRICKS_ENDPOINT", "DATABRICKS_ENDPOINT"), //$NON-NLS-1$ //$NON-NLS-2$
-    
+
     DATABRICKS_CLUSTER_ID("DATABRICKS_CLUSTER_ID", "DATABRICKS_CLUSTER_ID"), //$NON-NLS-1$ //$NON-NLS-2$
-    
+
     DATABRICKS_TOKEN("DATABRICKS_TOKEN", "DATABRICKS_TOKEN"), //$NON-NLS-1$ //$NON-NLS-2$
-    
+
     DATABRICKS_DBFS_DEP_FOLDER("DATABRICKS_DBFS_DEP_FOLDER", "DATABRICKS_DBFS_DEP_FOLDER"); //$NON-NLS-1$ //$NON-NLS-2$
 
     public final String repositoryValue;

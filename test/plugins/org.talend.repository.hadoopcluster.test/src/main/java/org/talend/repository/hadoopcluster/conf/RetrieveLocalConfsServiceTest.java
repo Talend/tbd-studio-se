@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -43,7 +43,7 @@ import org.talend.repository.hadoopcluster.service.IRetrieveConfsService;
 public class RetrieveLocalConfsServiceTest {
 
     static IRetrieveConfsService confsService;
-    
+
     static File confDir;
 
     @BeforeClass
@@ -80,7 +80,7 @@ public class RetrieveLocalConfsServiceTest {
         confsMap = confsService2.getConfsMap();
         assertTrue(confsMap.containsKey("MAPRDB"));
     }
-    
+
     private void checkFilterProperties(File confFolder, boolean hasFilter) {
         List<String> filterProperties = getTestFilterProperties();
         List<Element> propertyElements = new ArrayList<>();
@@ -110,7 +110,7 @@ public class RetrieveLocalConfsServiceTest {
         filterProps.add("yarn.admin.acl"); //$NON-NLS-1$
         return filterProps;
     }
-    
+
     private static IRetrieveConfsService getServiceWithDistribution(String distributionName, String versionName) {
         DistributionBean distribution = HadoopDistributionsHelper.HADOOP
                 .getDistribution(distributionName, false);

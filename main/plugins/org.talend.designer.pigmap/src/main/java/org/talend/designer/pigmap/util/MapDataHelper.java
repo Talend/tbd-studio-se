@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -48,9 +48,9 @@ public class MapDataHelper {
     public static final Map<String, String> defineFunctionsAlias = new HashMap<String, String>();
 
     /**
-     * 
+     *
      * DOC hcyi Comment method "rebuildXmlMapData".
-     * 
+     *
      * @param mapData
      * @param pigMapComponent
      */
@@ -359,7 +359,7 @@ public class MapDataHelper {
 
     /**
      * Getter for definefunctionsalias.
-     * 
+     *
      * @return the definefunctionsalias
      */
     public static Map<String, String> getDefinefunctionsalias() {

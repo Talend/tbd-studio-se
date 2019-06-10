@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -99,7 +99,7 @@ public class TOozieSettingDialog extends Dialog {
 
             /*
              * (non-Javadoc)
-             * 
+             *
              * @see org.talend.oozie.scheduler.ui.OozieSettingComposite#preInitialization ()
              */
             @Override
@@ -223,7 +223,7 @@ public class TOozieSettingDialog extends Dialog {
 
     /**
      * Getter for enableOoKerberos.
-     * 
+     *
      * @return the enableOoKerberos
      */
     public boolean isEnableOoKerberos() {
@@ -232,7 +232,7 @@ public class TOozieSettingDialog extends Dialog {
 
     /**
      * Sets the enableOoKerberos.
-     * 
+     *
      * @param enableOoKerberos the enableOoKerberos to set
      */
     public void setEnableOoKerberos(boolean enableOoKerberos) {
@@ -259,7 +259,7 @@ public class TOozieSettingDialog extends Dialog {
 
     /**
      * Getter for group.
-     * 
+     *
      * @return the group
      */
     public String getGroup() {
@@ -268,7 +268,7 @@ public class TOozieSettingDialog extends Dialog {
 
     /**
      * Sets the group.
-     * 
+     *
      * @param group the group to set
      */
     public void setGroup(String group) {
@@ -278,7 +278,7 @@ public class TOozieSettingDialog extends Dialog {
 
     /**
      * Getter for useKeytab.
-     * 
+     *
      * @return the useKeytab
      */
     public boolean isUseKeytab() {
@@ -287,7 +287,7 @@ public class TOozieSettingDialog extends Dialog {
 
     /**
      * Sets the useKeytab.
-     * 
+     *
      * @param useKeytab the useKeytab to set
      */
     public void setUseKeytab(boolean useKeytab) {
@@ -297,7 +297,7 @@ public class TOozieSettingDialog extends Dialog {
 
     /**
      * Getter for ktPrincipal.
-     * 
+     *
      * @return the ktPrincipal
      */
     public String getKtPrincipal() {
@@ -327,7 +327,7 @@ public class TOozieSettingDialog extends Dialog {
 
     /**
      * Sets the ktPrincipal.
-     * 
+     *
      * @param ktPrincipal the ktPrincipal to set
      */
     public void setKtPrincipal(String ktPrincipal) {
@@ -337,7 +337,7 @@ public class TOozieSettingDialog extends Dialog {
 
     /**
      * Getter for keytab.
-     * 
+     *
      * @return the keytab
      */
     public String getKeytab() {
@@ -346,7 +346,7 @@ public class TOozieSettingDialog extends Dialog {
 
     /**
      * Sets the keytab.
-     * 
+     *
      * @param keytab the keytab to set
      */
     public void setKeytab(String keytab) {
@@ -356,7 +356,7 @@ public class TOozieSettingDialog extends Dialog {
 
     /**
      * Getter for useYarn.
-     * 
+     *
      * @return the useYarn
      */
     public boolean isUseYarn() {
@@ -365,7 +365,7 @@ public class TOozieSettingDialog extends Dialog {
 
     /**
      * Sets the useYarn.
-     * 
+     *
      * @param useYarn the useYarn to set
      */
     public void setUseYarn(boolean useYarn) {
@@ -374,7 +374,7 @@ public class TOozieSettingDialog extends Dialog {
 
     /**
      * Getter for authMode.
-     * 
+     *
      * @return the authMode
      */
     public String getAuthMode() {
@@ -383,7 +383,7 @@ public class TOozieSettingDialog extends Dialog {
 
     /**
      * Sets the authMode.
-     * 
+     *
      * @param authMode the authMode to set
      */
     public void setAuthMode(String authMode) {

@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -96,10 +96,10 @@ public class SparkVersionUtil {
     }
 
     /**
-     * 
+     *
      * Strongly coupled to a tSparkConfiguration node (in Spark Batch or Streaming), this method returns the
      * {@link ESparkVersion} depending on some parameters value coming from the tSparkConfiguration.
-     * 
+     *
      * @param useLocalMode - a boolean that defines whether the tSparkConfiguration is configured in local mode.
      * @param sparkLocalVersion - the Spark version selected when the local mode set to true.
      * @param sparkDistributionName - the name of the distribution when the local mode is set to false.
@@ -154,7 +154,7 @@ public class SparkVersionUtil {
     /**
      * This method returns the {@link ESparkVersion} depending on some parameters value coming from the
      * tSparkConfiguration in a job.
-     * 
+     *
      * @param node Either a Spark configuration node direction (which is the most effective), or any node in a spark
      * process that can be used to find a Spark configuration node.
      * @return A spark version if one can be found from the node, or the process associated with the node. Otherwise
@@ -187,7 +187,7 @@ public class SparkVersionUtil {
     /**
      * This method returns the {@link ESparkVersion} depending on some parameters value coming from the
      * tSparkConfiguration in a job.
-     * 
+     *
      * @param process a job that contains spark configuration information.
      * @return A spark version if one can be found from the process. Otherwise null.
      */

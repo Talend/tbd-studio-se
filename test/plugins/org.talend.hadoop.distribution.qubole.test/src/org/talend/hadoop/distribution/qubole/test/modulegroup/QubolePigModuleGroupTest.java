@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -34,7 +34,7 @@ public class QubolePigModuleGroupTest {
         results.put(QuboleConstant.PIG_AVRO_MODULE_GROUP.getModuleName(), "(LOAD=='AVROSTORAGE') OR (STORE=='AVROSTORAGE')");
         results.put(QuboleConstant.PIG_SEQUENCEFILE_MODULE_GROUP.getModuleName(), "(LOAD=='SEQUENCEFILELOADER') OR (STORE=='SEQUENCEFILESTORAGE')");
         results.put(QuboleConstant.PIG_RCFILE_MODULE_GROUP.getModuleName(), "(LOAD=='RCFILEPIGSTORAGE') OR (STORE=='RCFILEPIGSTORAGE')");
-        
+
         Set<DistributionModuleGroup> moduleGroups = QubolePigModuleGroup.getModuleGroups();
         assertEquals(6, moduleGroups.size());
 

@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -23,11 +23,11 @@ import org.talend.hadoop.distribution.condition.common.HDFSLinkedNodeCondition;
 public class CDH580WebHDFSModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
-        
+
         HDFSLinkedNodeCondition hdfsLinkedNodeCondition = new HDFSLinkedNodeCondition(distribution, version);
-        
+
         DistributionModuleGroup dmgWebHDFS =
-                new DistributionModuleGroup(CDH580Constant.WEBHDFS_MODULE_GROUP.getModuleName(), true, 
+                new DistributionModuleGroup(CDH580Constant.WEBHDFS_MODULE_GROUP.getModuleName(), true,
                         hdfsLinkedNodeCondition.getWebHDFSCondition());
 
         Set<DistributionModuleGroup> hs = new HashSet<>();

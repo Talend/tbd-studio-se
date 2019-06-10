@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -18,7 +18,7 @@ import org.talend.repository.tester.AbstractNodeTester;
 
 /**
  * created by Administrator on 2013-3-12 Detailled comment
- * 
+ *
  */
 public class PigudfNodeTester extends AbstractNodeTester {
 
@@ -26,7 +26,7 @@ public class PigudfNodeTester extends AbstractNodeTester {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.tester.AbstractNodeTester#testProperty(java.lang.Object, java.lang.String,
      * java.lang.Object[], java.lang.Object)
      */

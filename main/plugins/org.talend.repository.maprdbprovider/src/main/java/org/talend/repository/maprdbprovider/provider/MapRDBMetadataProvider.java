@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -66,7 +66,7 @@ import orgomg.cwm.objectmodel.core.TaggedValue;
 import orgomg.cwm.resource.relational.Catalog;
 
 /**
- * 
+ *
  * created by hcyi on Sep 8, 2016 Detailled comment
  *
  */
@@ -200,7 +200,7 @@ public class MapRDBMetadataProvider implements IDBMetadataProvider {
         String mapRHadoopLogin = (String) metadataConn.getParameter(ConnParameterKeys.CONN_PARA_KEY_MAPRTICKET_MAPRHADOOPLOGIN);
         Long desiredTicketDurInSecs = 86400L;
         if (mapRTicketDuration != null && StringUtils.isNotBlank(mapRTicketDuration)) {
-            if (mapRTicketDuration.endsWith("L")) {//$NON-NLS-1$ 
+            if (mapRTicketDuration.endsWith("L")) {//$NON-NLS-1$
                 mapRTicketDuration = mapRTicketDuration.substring(0, mapRTicketDuration.length() - 1);
                 desiredTicketDurInSecs = Long.valueOf(mapRTicketDuration) + 'L';
             } else if (StringUtils.isNumeric(mapRTicketDuration)) {

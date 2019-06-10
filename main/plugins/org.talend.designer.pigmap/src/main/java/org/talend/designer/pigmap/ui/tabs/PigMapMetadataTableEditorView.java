@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -27,7 +27,7 @@ import org.talend.core.ui.metadata.editor.MetadataToolbarEditorView;
 import org.talend.designer.pigmap.commands.MetadataImportXmlCommand;
 
 /**
- * 
+ *
  * DOC hcyi class global comment. Detailled comment
  */
 public class PigMapMetadataTableEditorView extends MetadataTableEditorView {
@@ -38,7 +38,7 @@ public class PigMapMetadataTableEditorView extends MetadataTableEditorView {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.ui.metadata.editor.MetadataTableEditorView#initToolBar()
      */
     @Override
@@ -48,7 +48,7 @@ public class PigMapMetadataTableEditorView extends MetadataTableEditorView {
     }
 
     /**
-     * 
+     *
      * DOC hcyi PigMapMetadataTableEditorView class global comment. Detailled comment
      */
 

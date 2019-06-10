@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -92,7 +92,7 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
     private Button editExistingConfigBtn;
 
     private Button importConfigBtn;
-    
+
     private TableComboViewer sparkVersionsComboViewer;
 
     private ComboViewer existingConfigsComboViewer;
@@ -126,7 +126,7 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
     private List<IDynamicPlugin> allCurrentUsersDynamicPlugins;
 
     private Map<String, IDynamicPlugin> namePluginMap;
-    
+
     private List<ESparkVersion> selectedSparkVersions;
 
     public DynamicDistributionOptionForm(Composite parent, int style, DynamicDistributionSetupData configData,
@@ -243,7 +243,7 @@ public class DynamicDistributionOptionForm extends AbstractDynamicDistributionSe
         // formData.right = new FormAttachment(showOnlyCompatibleBtn, -1 * ALIGN_HORIZON, SWT.LEFT);
         formData.width = HORZON_WIDTH;
         sparkVersionsComboViewer.getControl().setLayoutData(formData);
-        
+
         editExistingConfigBtn = new Button(container, SWT.RADIO);
         editExistingConfigBtn.setText(Messages.getString("DynamicDistributionOptionForm.form.editExistingConfigBtn")); //$NON-NLS-1$
         formData = new FormData();

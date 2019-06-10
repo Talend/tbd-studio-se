@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -25,13 +25,13 @@ import org.talend.librariesmanager.model.ModulesNeededProvider;
 
 /**
  * created by ycbai on 2013-3-14 Detailled comment
- * 
+ *
  */
 public class HadoopService implements IHadoopService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.hadoop.IHadoopService#getHadoopJars(java.lang.String, java.lang.String)
      */
     @Override
@@ -48,7 +48,7 @@ public class HadoopService implements IHadoopService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.hadoop.IHadoopService#getHadoopLibrariesByType(java.lang.String, java.lang.String)
      */
     @Override

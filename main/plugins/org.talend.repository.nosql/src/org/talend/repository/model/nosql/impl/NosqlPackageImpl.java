@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -58,7 +58,7 @@ public class NosqlPackageImpl extends EPackageImpl implements NosqlPackage {
      * Note: the correct way to create the package is via the static factory method {@link #init init()}, which also
      * performs initialization of the package, or returns the registered package, if one already exists. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see org.talend.repository.model.nosql.NosqlPackage#eNS_URI
      * @see #init()
@@ -76,7 +76,7 @@ public class NosqlPackageImpl extends EPackageImpl implements NosqlPackage {
 
     /**
      * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-     * 
+     *
      * <p>This method is used to initialize {@link NosqlPackage#eINSTANCE} when that field is accessed.
      * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
      * <!-- begin-user-doc -->
@@ -106,7 +106,7 @@ public class NosqlPackageImpl extends EPackageImpl implements NosqlPackage {
         // Mark meta-data to indicate it can't be changed
         theNosqlPackage.freeze();
 
-  
+
         // Update the registry and return the package
         EPackage.Registry.INSTANCE.put(NosqlPackage.eNS_URI, theNosqlPackage);
         return theNosqlPackage;
@@ -271,10 +271,10 @@ public class NosqlPackageImpl extends EPackageImpl implements NosqlPackage {
      * @generated
      */
     protected void createMapEntryAnnotations() {
-        String source = "MapEntry";		
+        String source = "MapEntry";
         addAnnotation
-          (noSQLAttributesEClass, 
-           source, 
+          (noSQLAttributesEClass,
+           source,
            new String[] {
            });
     }

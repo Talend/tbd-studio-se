@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -22,7 +22,7 @@ import org.talend.designer.pigmap.dnd.PigDropTargetListener;
 import org.talend.designer.pigmap.ui.tabs.MapperManager;
 
 /**
- * 
+ *
  * DOC hcyi class global comment. Detailled comment
  */
 public class PigMapEditor extends MapperGraphicalEditor {
@@ -33,7 +33,7 @@ public class PigMapEditor extends MapperGraphicalEditor {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.gefabstractmap.editor.MapperGraphicalEditor#configureGraphicalViewer()
      */
     @Override
@@ -58,7 +58,7 @@ public class PigMapEditor extends MapperGraphicalEditor {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.gefabstractmap.editor.MapperGraphicalEditor#createMapperGraphicalViewer()
      */
     @Override
@@ -68,7 +68,7 @@ public class PigMapEditor extends MapperGraphicalEditor {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.gefabstractmap.editor.MapperGraphicalEditor#createDragSourceListener()
      */
     @Override
@@ -78,7 +78,7 @@ public class PigMapEditor extends MapperGraphicalEditor {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.gefabstractmap.editor.MapperGraphicalEditor#createDropTargetListener()
      */
     @Override

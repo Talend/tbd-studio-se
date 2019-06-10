@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -15,7 +15,7 @@ package org.talend.designer.pigmap.figures.tablesettings;
 import org.talend.designer.gefabstractmap.resource.ImageInfo;
 
 /**
- * 
+ *
  * DOC hcyi class global comment. Detailled comment
  */
 public enum PIG_MAP_JOIN_OPTIMIZATION implements IUIJoinOptimization {
@@ -48,7 +48,7 @@ public enum PIG_MAP_JOIN_OPTIMIZATION implements IUIJoinOptimization {
 
     /**
      * Getter for label.
-     * 
+     *
      * @return the label
      */
     public String getLabel() {
@@ -57,7 +57,7 @@ public enum PIG_MAP_JOIN_OPTIMIZATION implements IUIJoinOptimization {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.mapper.model.table.IUITest#getImageInfo()
      */
     public ImageInfo getImageInfo() {
@@ -66,7 +66,7 @@ public enum PIG_MAP_JOIN_OPTIMIZATION implements IUIJoinOptimization {
 
     /**
      * Getter for menuType.
-     * 
+     *
      * @return the menuType
      */
     public MENU_TYPE getMenuType() {
@@ -75,7 +75,7 @@ public enum PIG_MAP_JOIN_OPTIMIZATION implements IUIJoinOptimization {
 
     /**
      * Getter for multipleMatchingMode.
-     * 
+     *
      * @return the multipleMatchingMode
      */
     public JOIN_OPTIMIZATION getJoinOptimization() {

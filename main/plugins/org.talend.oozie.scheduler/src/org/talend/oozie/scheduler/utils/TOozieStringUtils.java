@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -24,7 +24,7 @@ public class TOozieStringUtils {
      * Formats the date string to the string that begins with "<code>[</code>" and ends with "<code>]</code>". The
      * string of returning is like <code>[2012-5-24 11:39:22]</code>. If <code>dateStr</code> is <code>null</code>, then
      * the returned string is <code>[null]</code>.
-     * 
+     *
      * @param dateStr
      * @return a string.
      */
@@ -39,7 +39,7 @@ public class TOozieStringUtils {
     /**
      * Outputs log as a line beginning with date like "[yyyy-MM-dd HH:mm:ss]Starting job remote running...". If
      * <code>log</code> is <code>null</code>, it will be converted to empty string.
-     * 
+     *
      * @param log
      * @return a string
      */
@@ -53,7 +53,7 @@ public class TOozieStringUtils {
     }
 
     /**
-     * 
+     *
      * @param path
      * @return
      */

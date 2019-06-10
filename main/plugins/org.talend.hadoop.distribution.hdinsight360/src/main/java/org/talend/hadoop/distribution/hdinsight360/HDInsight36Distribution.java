@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -100,10 +100,10 @@ public class HDInsight36Distribution extends AbstractDistribution implements Spa
                 HDInsight36SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
                 HDInsight36SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
-        
+
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
         		HDInsight36SparkBatchGraphFramesNodeModuleGroup.getModuleGroups(distribution, version));
-        
+
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.SPARK_SQL_ROW_COMPONENT),
                 HDInsight36SparkBatchSQLNodeModuleGroup.getModuleGroups(distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.TMODEL_ENCODER_COMPONENT),
@@ -339,7 +339,7 @@ public class HDInsight36Distribution extends AbstractDistribution implements Spa
     public boolean pigVersionPriorTo_0_12() {
         return false;
     }
-    
+
     @Override
     public boolean doSupportAzureBlobStorage() {
         return true;

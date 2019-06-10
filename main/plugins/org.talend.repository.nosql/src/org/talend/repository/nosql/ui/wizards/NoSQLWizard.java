@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -47,9 +47,9 @@ import org.talend.repository.nosql.ui.node.NoSQLRepositoryNodeType;
 import org.talend.repository.nosql.update.NoSQLUpdateManager;
 
 /**
- * 
+ *
  * created by ycbai on 2014-6-12 Detailled comment
- * 
+ *
  */
 public class NoSQLWizard extends AbstractNoSQLWizard {
 
@@ -224,7 +224,7 @@ public class NoSQLWizard extends AbstractNoSQLWizard {
 
     /**
      * We will accept the selection in the workbench to see if we can initialize from it.
-     * 
+     *
      * @see IWorkbenchWizard#init(IWorkbench, IStructuredSelection)
      */
     public void init(final IWorkbench workbench, final IStructuredSelection sel) {
@@ -234,7 +234,7 @@ public class NoSQLWizard extends AbstractNoSQLWizard {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.ui.wizards.RepositoryWizard#getConnectionItem()
      */
     @Override

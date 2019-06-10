@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -20,7 +20,7 @@ import org.talend.core.runtime.hd.IHDConstants;
 
 /**
  * created by ycbai on 2013-3-26 Detailled comment
- * 
+ *
  */
 public class HBaseClassLoaderFactory {
 
@@ -48,7 +48,7 @@ public class HBaseClassLoaderFactory {
 
     private static ClassLoader getCustomClassLoader(IMetadataConnection metadataConnection) {
         String hcId = metadataConnection.getId();
-        String index = "HadoopCustomVersion:HBase:" + hcId; //$NON-NLS-1$ 
+        String index = "HadoopCustomVersion:HBase:" + hcId; //$NON-NLS-1$
         return HadoopClassLoaderFactory2.getHadoopCustomClassLoader(index,
                 metadataConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_HADOOP_CUSTOM_JARS));
     }

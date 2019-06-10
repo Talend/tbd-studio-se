@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -27,9 +27,9 @@ import org.talend.repository.nosql.ui.common.AbstractNoSQLWizardPage;
 import org.talend.repository.nosql.ui.provider.IWizardPageProvider;
 
 /**
- * 
+ *
  * created by ycbai on 2014-6-17 Detailled comment
- * 
+ *
  */
 public class NoSQLRetrieveSchemaWizardPage extends AbstractNoSQLWizardPage {
 

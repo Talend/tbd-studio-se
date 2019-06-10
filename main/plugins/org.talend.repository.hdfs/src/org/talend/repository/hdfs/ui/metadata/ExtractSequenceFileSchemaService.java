@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -39,7 +39,7 @@ import orgomg.cwm.objectmodel.core.TaggedValue;
 
 /**
  * created by ycbai on 2014-5-29 Detailled comment
- * 
+ *
  */
 public class ExtractSequenceFileSchemaService implements IExtractSchemaService<HDFSConnection> {
 
@@ -55,7 +55,7 @@ public class ExtractSequenceFileSchemaService implements IExtractSchemaService<H
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.hadoopcluster.service.IExtractSchemaService#extractColumns(org.talend.repository.model.
      * hadoopcluster.HadoopSubConnection, org.talend.designer.hdfsbrowse.model.IHDFSNode)
@@ -73,7 +73,7 @@ public class ExtractSequenceFileSchemaService implements IExtractSchemaService<H
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.hadoopcluster.service.IExtractSchemaService#extractColumns(org.talend.repository.model.
      * hadoopcluster.HadoopSubConnection, org.talend.core.model.metadata.builder.connection.MetadataTable)

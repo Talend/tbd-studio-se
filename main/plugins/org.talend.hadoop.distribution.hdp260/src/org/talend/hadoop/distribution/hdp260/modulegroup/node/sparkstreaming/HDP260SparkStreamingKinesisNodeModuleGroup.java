@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -29,7 +29,7 @@ import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.hdp260.HDP260Constant;
 
 public class HDP260SparkStreamingKinesisNodeModuleGroup {
-    
+
     private final static ComponentCondition spark16Condition = new SimpleComponentCondition(new LinkedNodeExpression(
             SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, "SUPPORTED_SPARK_VERSION", EqualityOperator.EQ,
             ESparkVersion.SPARK_1_6.getSparkVersion()));
@@ -39,14 +39,14 @@ public class HDP260SparkStreamingKinesisNodeModuleGroup {
             ESparkVersion.SPARK_2_1.getSparkVersion()));
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
-        
+
         Set<DistributionModuleGroup> hs = new HashSet<>();
         DistributionModuleGroup dmgSpark16 = new DistributionModuleGroup(
                 HDP260Constant.SPARK_KINESIS_MRREQUIRED_MODULE_GROUP.getModuleName(), true, new NestedComponentCondition(new MultiComponentCondition(
                         new SparkStreamingLinkedNodeCondition(distribution, version).getCondition(), BooleanOperator.AND,
                         spark16Condition)));
         hs.add(dmgSpark16);
-        
+
         DistributionModuleGroup dmgSpark21 = new DistributionModuleGroup(
                 HDP260Constant.SPARK2_KINESIS_MRREQUIRED_MODULE_GROUP.getModuleName(), true, new NestedComponentCondition(new MultiComponentCondition(
                         new SparkStreamingLinkedNodeCondition(distribution, version).getCondition(), BooleanOperator.AND,

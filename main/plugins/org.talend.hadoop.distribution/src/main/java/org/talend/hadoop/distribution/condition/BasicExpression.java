@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -49,6 +49,6 @@ public class BasicExpression implements Expression {
 
     @Override
     public String getExpressionString() {
-        return "(" + this.mParameter + this.mEqualityOperator.getSymbol() + "'" + this.mValue + "')"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ 
+        return "(" + this.mParameter + this.mEqualityOperator.getSymbol() + "'" + this.mValue + "')"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 }

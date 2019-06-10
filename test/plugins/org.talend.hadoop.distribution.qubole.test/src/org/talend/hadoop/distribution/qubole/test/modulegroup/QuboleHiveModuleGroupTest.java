@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -28,9 +28,9 @@ public class QuboleHiveModuleGroupTest {
     public void testModuleGroups() throws Exception {
         Set<DistributionModuleGroup> moduleGroups = QuboleHiveModuleGroup.getModuleGroups();
         assertEquals(1, moduleGroups.size());
-        
+
         moduleGroups.contains(QuboleConstant.BIGDATALAUNCHER_MODULE_GROUP);
-        
+
         for (DistributionModuleGroup group : moduleGroups) {
             assertNull(group.getRequiredIf());
         }

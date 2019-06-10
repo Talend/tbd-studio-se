@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -30,30 +30,30 @@ public class MapRDBMetadataProviderTest {
         List<String> columnLabels = new ArrayList<String>();
         String columnName = "columnName";
         assertTrue(provider.getUniqueColumnName(columnLabels, columnName).equals(columnName));
-        
+
         columnName = "column&^Name";
         assertTrue(provider.getUniqueColumnName(columnLabels, columnName).equals("column__Name"));
-        
+
         columnName = "public";
         assertTrue(provider.getUniqueColumnName(columnLabels, columnName).equals("_public"));
-        
+
         columnLabels = new ArrayList<String>();
         columnLabels.add("columnName");
         columnName = "columnName";
         assertTrue(provider.getUniqueColumnName(columnLabels, columnName).equals("columnName1"));
-        
+
         columnLabels = new ArrayList<String>();
         columnLabels.add("columnName");
         columnLabels.add("columnName1");
         columnName = "columnName";
         assertTrue(provider.getUniqueColumnName(columnLabels, columnName).equals("columnName2"));
-        
+
         columnLabels = new ArrayList<String>();
         columnLabels.add("column__Name");
         columnLabels.add("column__Name1");
         columnName = "column$$Name";
         assertTrue(provider.getUniqueColumnName(columnLabels, columnName).equals("column__Name2"));
-        
+
     }
 
 }

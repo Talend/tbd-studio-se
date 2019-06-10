@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -32,7 +32,7 @@ public class EMR5150HiveModuleGroupTest {
         results.put(EMR5150Constant.HIVE_HBASE_MODULE_GROUP.getModuleName(), null);
         results.put(EMR5150Constant.HDFS_MODULE_GROUP.getModuleName(), null);
         results.put(EMR5150Constant.MAPREDUCE_MODULE_GROUP.getModuleName(), null);
-        
+
         Set<DistributionModuleGroup> moduleGroups = EMR5150HiveModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());
         for (DistributionModuleGroup module : moduleGroups) {

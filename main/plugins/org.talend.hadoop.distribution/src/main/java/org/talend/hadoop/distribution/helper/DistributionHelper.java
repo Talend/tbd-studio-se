@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -98,8 +98,39 @@ public final class DistributionHelper {
             } catch (NoSuchMethodException | SecurityException e) {
                 // ignore
             }
-            if (method == null) { // can't find in current base class, try parent class.
-                method = findMethod(baseClazz.getSuperclass(), methodName);
+            if (method == null) { // can't find in current base class, try parent class or interfaces.
+                //we look for the classes first as this is where the behavior can be overridden.
+                if (baseClazz.getSuperclass()!=null) {
+                    method = findMethod(baseClazz.getSuperclass(), methodName);
+                }
+                //then we look for default behavior in interfaces.
+                if (method==null) {
+                    method = findDefaultMethod(baseClazz,methodName);
+                }
+            }
+        }
+        return method;
+    }
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    private static Method findDefaultMethod(Class baseClazz, String methodName) {
+        Method method = null;
+        for (Class anInterface : baseClazz.getInterfaces()) {
+            try {
+                method = anInterface.getDeclaredMethod(methodName);
+                //FIRST CASE: we found the method. we need to check if is is an implementation
+                //if yes return it else continue the loop
+                if (method != null && method.isDefault()) {
+                    return method;
+                }
+            } catch (NoSuchMethodException | SecurityException e) {
+                //SECOND CASE: we did not found the method. so we look for parent interfaces if any.
+                //look for parent interfaces
+                method = findDefaultMethod(anInterface, methodName);
+                //return the method if found else continue the loop
+                if (method!=null) {
+                    return method;
+                }
             }
         }
         return method;

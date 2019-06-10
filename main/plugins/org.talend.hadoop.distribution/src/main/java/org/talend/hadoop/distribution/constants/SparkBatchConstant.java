@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -69,7 +69,7 @@ public final class SparkBatchConstant {
     public static final String SPARK_SQL_ROW_COMPONENT = "tSqlRow"; //$NON-NLS-1$
 
     public static final String TMODEL_ENCODER_COMPONENT = "tModelEncoder"; //$NON-NLS-1$
-    
+
     public static final String TERADATA_OUTPUT_COMPONENT = "tTeradataOutput";
     public static final String TERADATA_INPUT_COMPONENT = "tTeradataInput";
     public static final String TERADATA_CONFIG_COMPONENT = "tTeradataConfiguration";

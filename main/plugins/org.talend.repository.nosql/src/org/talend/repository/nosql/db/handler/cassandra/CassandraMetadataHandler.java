@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -67,7 +67,7 @@ public class CassandraMetadataHandler implements ICassandraMetadataHandler {
         }
         return instanceForDataStax;
     }
-    
+
     public static synchronized ICassandraMetadataHandler getInstanceForUpgradeDataStax() {
         if (instanceForDataStax == null) {
             instanceForDataStax = new CassandraMetadataHandler(ICassandraConstants.DBM22_DATASTAX_ID);
@@ -279,7 +279,7 @@ public class CassandraMetadataHandler implements ICassandraMetadataHandler {
         Set<String> scfNames = new HashSet<String>();
         Object session = null;
         ClassLoader classLoader = NoSQLClassLoaderFactory.getClassLoader(connection);
-        
+
         try {
             if (ksName == null) {
                 List<String> ksNames = getKeySpaceNames(connection);

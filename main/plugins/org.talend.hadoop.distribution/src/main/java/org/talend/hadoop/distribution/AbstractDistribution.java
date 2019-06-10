@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -119,7 +119,7 @@ public abstract class AbstractDistribution {
     public boolean doRequireElasticsearchSparkPatch() {
         return false;
     }
-    
+
     public boolean doSupportCustomMRApplicationCP() {
         return false;
     }
@@ -141,7 +141,7 @@ public abstract class AbstractDistribution {
     }
 
     /**
-     * 
+     *
      * for Hive
      */
     public boolean doSupportEmbeddedMode() {
@@ -153,7 +153,7 @@ public abstract class AbstractDistribution {
     }
 
     /**
-     * 
+     *
      * for Hive
      */
     public boolean doSupportStandaloneMode() {
@@ -161,7 +161,7 @@ public abstract class AbstractDistribution {
     }
 
     /**
-     * 
+     *
      * load default
      */
     public String getDefaultConfig(String... keys) {
@@ -317,15 +317,15 @@ public boolean isQuboleDistribution() {
     public boolean doSupportAzureDataLakeStorage() {
         return false;
     }
-    
+
     public boolean doImportSparkHiveContextDependencies() {
         return false;
     }
-    
+
     public boolean isActivated() {
         return true;
     }
-    
+
     public boolean isDynamicDistribution() {
         return false;
     }
@@ -341,15 +341,15 @@ public boolean isQuboleDistribution() {
     public boolean doSupportAvroDeflateProperties(){
         return false;
     }
-    
+
     public boolean doSupportWebHDFS(){
         return true;
     }
-    
+
     public boolean useOldAWSAPI() {
         return true;
     }
-    
+
     public boolean isHiveWizardCheckEnabled() {
         return false;
     }
@@ -361,7 +361,7 @@ public boolean isQuboleDistribution() {
     public boolean doSupportHBase2x() {
         return false;
     }
-    
+
     public String getSqoopPackageName() {
         return ESqoopPackageName.COM_CLOUDERA_SQOOP.toString();
     }

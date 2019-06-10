@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -24,9 +24,9 @@ import org.talend.designer.hdfsbrowse.exceptions.HadoopServerException;
 
 /**
  * DOC ycbai class global comment. Detailled comment
- * 
+ *
  * File handling methods for the DFS
- * 
+ *
  */
 public class HDFSFile extends HDFSPath {
 
@@ -36,7 +36,7 @@ public class HDFSFile extends HDFSPath {
 
     /**
      * Download and view contents of a file
-     * 
+     *
      * @return a InputStream for the file
      * @throws URISyntaxException
      * @throws InterruptedException
@@ -79,7 +79,7 @@ public class HDFSFile extends HDFSPath {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.hdfs.model.HDFSNode#getType()
      */
     @Override

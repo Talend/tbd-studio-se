@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -27,7 +27,7 @@ import org.talend.designer.pigmap.util.PigFunctionParser;
 import org.talend.designer.rowgenerator.data.AbstractTalendFunctionParser;
 
 /**
- * 
+ *
  * DOC hcyi class global comment. Detailled comment
  */
 public class PigMapService implements IPigMapService {
@@ -36,7 +36,7 @@ public class PigMapService implements IPigMapService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.service.IDesignerPigMapService#createExpressionProposalProvider()
      */
     @Override
@@ -67,7 +67,7 @@ public class PigMapService implements IPigMapService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.service.IPigMapService#setPigMapData(org.talend.designer.core.model.utils.emf.talendfile.
      * AbstractExternalData)
      */
@@ -80,7 +80,7 @@ public class PigMapService implements IPigMapService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.service.IPigMapService#pigFunctionParser()
      */
     @Override

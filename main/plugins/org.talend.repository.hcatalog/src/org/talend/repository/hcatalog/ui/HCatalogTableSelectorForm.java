@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -305,7 +305,7 @@ public class HCatalogTableSelectorForm extends AbstractHCatalogForm {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.swt.widgets.Control#setVisible(boolean)
      */
     @Override
@@ -400,7 +400,7 @@ public class HCatalogTableSelectorForm extends AbstractHCatalogForm {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.ui.swt.utils.AbstractForm#checkFieldsValue()
      */
     @Override
@@ -411,7 +411,7 @@ public class HCatalogTableSelectorForm extends AbstractHCatalogForm {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.ui.swt.utils.AbstractForm#addFieldsListeners()
      */
     @Override
@@ -678,7 +678,7 @@ public class HCatalogTableSelectorForm extends AbstractHCatalogForm {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.util.concurrent.ThreadPoolExecutor#afterExecute(java.lang.Runnable, java.lang.Throwable)
          */
         @Override
@@ -689,7 +689,7 @@ public class HCatalogTableSelectorForm extends AbstractHCatalogForm {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.util.concurrent.ThreadPoolExecutor#beforeExecute(java.lang.Thread, java.lang.Runnable)
          */
         @Override
@@ -700,7 +700,7 @@ public class HCatalogTableSelectorForm extends AbstractHCatalogForm {
 
         /**
          * If an item is in the List runningThreads, it means that the item's related thread is running.
-         * 
+         *
          * @param item
          * @return
          */
@@ -710,7 +710,7 @@ public class HCatalogTableSelectorForm extends AbstractHCatalogForm {
 
         /**
          * Find the RetrieveColumnRunnable from map and waiting queue. Map stores running runnables
-         * 
+         *
          * @param key
          * @return
          */
@@ -750,7 +750,7 @@ public class HCatalogTableSelectorForm extends AbstractHCatalogForm {
 
         /**
          * Getter for tableItem.
-         * 
+         *
          * @return the tableItem
          */
         public TreeItem getTreeItem() {
@@ -769,7 +769,7 @@ public class HCatalogTableSelectorForm extends AbstractHCatalogForm {
 
         /**
          * Getter for isCanceled.
-         * 
+         *
          * @return the isCanceled
          */
         public boolean isCanceled() {

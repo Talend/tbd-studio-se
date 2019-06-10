@@ -1,7 +1,7 @@
 // ============================================================================
 //
 
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -47,7 +47,7 @@ public class DistributionFactory {
      * @param methodName the name of the method
      * @param distribution the name of the distribution
      * @param version the name of the version
-     * 
+     *
      * @return
      * @throws Exception
      */

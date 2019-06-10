@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -89,7 +89,7 @@ public class MongoDBConnectionUtil {
 
         return canConnect;
     }
-    
+
     public static synchronized Object getMongo(NoSQLConnection connection, boolean requireAuth) throws NoSQLServerException {
 
         Object mongo = null;
@@ -135,13 +135,13 @@ public class MongoDBConnectionUtil {
         }
         return mongo;
     }
-    
+
     private static synchronized Object getMongo(NoSQLConnection connection, ContextType contextType,
             ClassLoader classLoader, Map<String,String> hosts, boolean requireAuth) throws NoSQLServerException{
         List<Object> addrs = new ArrayList<Object>();
         List<Object> credentials = new ArrayList<Object>();
         Object mongo = null;
-        
+
         String user = connection.getAttributes().get(IMongoDBAttributes.USERNAME);
         String pass = connection.getAttributes().get(IMongoDBAttributes.PASSWORD);
         if (contextType != null) {
@@ -164,7 +164,7 @@ public class MongoDBConnectionUtil {
                         classLoader, List.class);
             }else{
                 String database = connection.getAttributes().get(IMongoDBAttributes.DATABASE);
-                Object credential = NoSQLReflection.invokeStaticMethod("com.mongodb.MongoCredential", 
+                Object credential = NoSQLReflection.invokeStaticMethod("com.mongodb.MongoCredential",
                         "createScramSha1Credential", new Object[] { user, database, pass.toCharArray()}, //$NON-NLS-1$
                         classLoader, String.class, String.class, char[].class);
                 credentials.add(credential);
@@ -178,7 +178,7 @@ public class MongoDBConnectionUtil {
         }
         return mongo;
     }
-    
+
 
     public static synchronized Object getMongo(NoSQLConnection connection) throws NoSQLServerException {
         Object mongo = null;
@@ -263,10 +263,10 @@ public class MongoDBConnectionUtil {
                         boolean authorized = (Boolean) NoSQLReflection.invokeMethod(db,
                                 "authenticate", new Object[] { userName, password.toCharArray() }); //$NON-NLS-1$
                         if (!authorized) {
-                            throw new NoSQLServerException(Messages.getString("MongoDBConnectionUtil.ConnotLogon", dbName)); //$NON-NLS-1$ 
+                            throw new NoSQLServerException(Messages.getString("MongoDBConnectionUtil.ConnotLogon", dbName)); //$NON-NLS-1$
                         }
                     }
-                } 
+                }
             }
         } catch (NoSQLReflectionException e) {
             throw new NoSQLServerException(e);
@@ -359,7 +359,7 @@ public class MongoDBConnectionUtil {
 
         return replicaSet;
     }
-    
+
     public static boolean isUpgradeVersion(NoSQLConnection connection) {
         String dbVersion = connection.getAttributes().get(INoSQLCommonAttributes.DB_VERSION);
         try{
@@ -369,7 +369,7 @@ public class MongoDBConnectionUtil {
                  String firstStr = matcher.group(1);
                  Integer firstInt = Integer.parseInt(firstStr);
                  if(firstInt>3){
-                     return true; 
+                     return true;
                  }else if(firstInt<3){
                      return false;
                  }else{
@@ -385,7 +385,7 @@ public class MongoDBConnectionUtil {
         } catch (Exception ex) {
             //do nothing
         }
-        return false; 
+        return false;
     }
 
 }

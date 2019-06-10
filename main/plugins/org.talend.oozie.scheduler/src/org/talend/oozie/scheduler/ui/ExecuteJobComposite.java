@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -77,7 +77,7 @@ public class ExecuteJobComposite extends ScrolledComposite implements IDynamicPr
     private ProcessContextComposite contextComposite;
 
     /**
-     * 
+     *
      * @param parent
      * @param style
      */
@@ -110,7 +110,7 @@ public class ExecuteJobComposite extends ScrolledComposite implements IDynamicPr
 
     /**
      * Create all button components including Schedul Button, Run Button, Kill Button and Setting Button.
-     * 
+     *
      * @param parent
      */
     private void createButtons(Composite parent) {
@@ -328,7 +328,7 @@ public class ExecuteJobComposite extends ScrolledComposite implements IDynamicPr
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#getHashCurControls()
      */
     @Override
@@ -339,7 +339,7 @@ public class ExecuteJobComposite extends ScrolledComposite implements IDynamicPr
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#getElement()
      */
     @Override
@@ -350,7 +350,7 @@ public class ExecuteJobComposite extends ScrolledComposite implements IDynamicPr
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#getPart()
      */
     @Override
@@ -360,7 +360,7 @@ public class ExecuteJobComposite extends ScrolledComposite implements IDynamicPr
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#getSection()
      */
     @Override
@@ -371,7 +371,7 @@ public class ExecuteJobComposite extends ScrolledComposite implements IDynamicPr
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#getComposite()
      */
     @Override
@@ -382,7 +382,7 @@ public class ExecuteJobComposite extends ScrolledComposite implements IDynamicPr
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#setCurRowSize(int)
      */
     @Override
@@ -393,7 +393,7 @@ public class ExecuteJobComposite extends ScrolledComposite implements IDynamicPr
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#getCurRowSize()
      */
     @Override
@@ -404,7 +404,7 @@ public class ExecuteJobComposite extends ScrolledComposite implements IDynamicPr
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#getTableIdAndDbTypeMap()
      */
     @Override
@@ -415,7 +415,7 @@ public class ExecuteJobComposite extends ScrolledComposite implements IDynamicPr
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#getTableIdAndDbSchemaMap()
      */
     @Override
@@ -426,7 +426,7 @@ public class ExecuteJobComposite extends ScrolledComposite implements IDynamicPr
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.properties.tab.IDynamicProperty#refresh()
      */
     @Override
@@ -438,7 +438,7 @@ public class ExecuteJobComposite extends ScrolledComposite implements IDynamicPr
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.core.properties.tab.IDynamicProperty#getRepositoryAliasName(org.talend.core.properties.tab.ConnectionItem
      * )

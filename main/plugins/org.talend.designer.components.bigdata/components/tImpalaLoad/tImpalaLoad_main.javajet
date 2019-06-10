@@ -65,23 +65,35 @@ imports="
     String s3SecretKey = "";    // adapt to qubole s3 secret key option
 %>
 	<%@ include file="@{org.talend.designer.components.bigdata}/components/tHiveLoad/loadQueryGeneration.javajet"%>
-	java.sql.Statement stmt_<%=cid %> = conn_<%=cid %>.createStatement();
-
-	try {
-		stmt_<%=cid%>.execute(querySQL_<%=cid %>);
+	try (java.sql.Statement stmt_<%=cid %> = conn_<%=cid %>.createStatement()) {
+			stmt_<%=cid%>.execute(querySQL_<%=cid %>);	
 	} catch(java.sql.SQLException e_<%=cid%>) {
 	    <%if(("true").equals(dieOnError)) {
 	    %>
 	    	throw e_<%=cid%>;
 	    <%
-	    }else {
+	    } else {
 	    %> 
 	    	System.err.println("Exception in the component <%=cid%>:" + e_<%=cid%>.getMessage());
 	    <%
 	    }%>
-	}
-	stmt_<%=cid %>.close();	
-	<%if(!useExistingConnection) {%>
+	} finally {
+<%
+	if(!useExistingConnection) {
+		if(isLog4jEnabled) {
+%>
+		log.info("<%=cid%> - Closing the connection to the database.");
+<%
+		}
+%>
 		conn_<%=cid %>.close();
-	<%}%>
+<%
+		if(isLog4jEnabled) {
+%>
+		log.info("<%=cid%> - Connection to the database closed.");	
+<%	
+	}
+}
+%>
+	}//of finally
 	globalMap.put("<%=cid%>_QUERY", querySQL_<%=cid %>);

@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -111,8 +111,8 @@ public abstract class AbstractOozieJobSubmission implements JobSubmission {
                     String property = TalendQuoteUtils.removeQuotesIfExist((String) ((JSONObject) props.get(i)).get("PROPERTY"));//$NON-NLS-1$
                     String value = TalendQuoteUtils.removeQuotesIfExist((String) ((JSONObject) props.get(i)).get("VALUE"));//$NON-NLS-1$
                     if (!StringUtils.isEmpty(property) && !StringUtils.isEmpty(value)) {
-                        action.addArgument("-D");//$NON-NLS-1$ 
-                        action.addArgument(property + "=" + value);//$NON-NLS-1$ 
+                        action.addArgument("-D");//$NON-NLS-1$
+                        action.addArgument(property + "=" + value);//$NON-NLS-1$
                     }
                 }
             } catch (JSONException e) {

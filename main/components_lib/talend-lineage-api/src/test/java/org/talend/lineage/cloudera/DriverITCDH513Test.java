@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -38,7 +38,7 @@ public class DriverITCDH513Test {
 
     @Test
     public void test() {
-        
+
         NavigatorPlugin plugin = NavigatorPlugin.fromConfigFile("src/test/resources/sample.conf");
 
         plugin.registerModels(DriverITCDH513Test.class.getClass().getPackage().getName());
@@ -74,7 +74,7 @@ public class DriverITCDH513Test {
         ResultSet results = plugin.write((Collection)Arrays.asList(myCustomEntity, myCustomEntity2));
         System.out.println("res = " + results.toString());
         assertFalse(results.hasErrors());
-        
+
         // Read and check custom entities from cloudera navigator
 
        String[] test = new String[1];
@@ -82,17 +82,17 @@ public class DriverITCDH513Test {
        MetadataResultIterator metadataResultIterator = new MetadataResultIterator(plugin.getClient(), MetadataType.ENTITIES,
                 "identity:" + myCustomEntity.generateId(), 1, iter);
         assertTrue(metadataResultIterator.hasNext());
-        
+
         Map<String, Object> result = metadataResultIterator.next();
         assertEquals(myCustomEntity.getSourceType().toString(), result.get("sourceType"));
         assertEquals(myCustomEntity.getEntityType().toString(), result.get("type"));
         assertEquals(myCustomEntity.getName().toString(), result.get("originalName"));
-        
+
         metadataResultIterator = new MetadataResultIterator(plugin.getClient(), MetadataType.ENTITIES,
                 "identity:" + myCustomEntity2.generateId(), 1, iter);
-        
+
         assertTrue(metadataResultIterator.hasNext());
-        
+
         result = metadataResultIterator.next();
         assertEquals(myCustomEntity2.getSourceType().toString(), result.get("sourceType"));
         assertEquals(myCustomEntity2.getEntityType().toString(), result.get("type"));

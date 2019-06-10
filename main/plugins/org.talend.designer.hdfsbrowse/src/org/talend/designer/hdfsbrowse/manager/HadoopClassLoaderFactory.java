@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -30,9 +30,9 @@ import org.talend.designer.hdfsbrowse.model.HDFSConnectionBean;
  */
 public class HadoopClassLoaderFactory {
 
-    private static final String STANDALONE = "STANDALONE"; //$NON-NLS-1$ 
+    private static final String STANDALONE = "STANDALONE"; //$NON-NLS-1$
 
-    private static final String EMBEDDED = "EMBEDDED"; //$NON-NLS-1$ 
+    private static final String EMBEDDED = "EMBEDDED"; //$NON-NLS-1$
 
     public static ClassLoader getClassLoader(HDFSConnectionBean connectionBean) {
         ClassLoader loader = null;
@@ -125,7 +125,7 @@ public class HadoopClassLoaderFactory {
 
     public static ClassLoader getCustomClassLoader(HDFSConnectionBean connectionBean) {
         String hcId = connectionBean.getRelativeHadoopClusterId();
-        String index = "HadoopCustomVersion:" + hcId; //$NON-NLS-1$ 
+        String index = "HadoopCustomVersion:" + hcId; //$NON-NLS-1$
         Object jars = connectionBean.getAdditionalProperties().get(ECustomVersionGroup.COMMON.getName());
         if (jars instanceof Set) {
             return ClassLoaderFactory.getCustomClassLoader(index, (Set<String>) jars);

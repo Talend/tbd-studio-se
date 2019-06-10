@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -112,7 +112,7 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
         nodeModuleGroups = new HashMap<>();
-        
+
         // WebHDFS/ADLS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = HDP260WebHDFSModuleGroup.getModuleGroups(distribution, version);
         for(String hdfsComponent : HDFSConstant.hdfsComponents) {
@@ -520,7 +520,7 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
     public boolean doSupportAvroDeflateProperties(){
         return true;
     }
-    
+
     @Override
     public boolean useOldAWSAPI() {
         return false;

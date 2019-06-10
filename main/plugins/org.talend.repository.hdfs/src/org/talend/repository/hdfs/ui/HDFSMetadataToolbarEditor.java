@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -37,13 +37,13 @@ import org.talend.repository.hdfs.util.HDFSConstants;
 
 /**
  * created by ycbai on 2014-6-3 Detailled comment
- * 
+ *
  */
 public class HDFSMetadataToolbarEditor extends MetadataEmfToolbarEditor {
 
     /**
      * DOC ycbai HDFSMetadataToolbarEditor constructor comment.
-     * 
+     *
      * @param parent
      * @param style
      * @param extendedTableViewer
@@ -54,7 +54,7 @@ public class HDFSMetadataToolbarEditor extends MetadataEmfToolbarEditor {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.ui.metadata.editor.MetadataEmfToolbarEditor#createAddPushButton()
      */
     @Override
@@ -70,7 +70,7 @@ public class HDFSMetadataToolbarEditor extends MetadataEmfToolbarEditor {
 
             /*
              * (non-Javadoc)
-             * 
+             *
              * @see org.talend.commons.ui.swt.advanced.dataeditor.button.AddPushButton#getEnabledState()
              */
             @Override
@@ -86,7 +86,7 @@ public class HDFSMetadataToolbarEditor extends MetadataEmfToolbarEditor {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.ui.metadata.editor.MetadataEmfToolbarEditor#createPastePushButton()
      */
     @Override
@@ -100,7 +100,7 @@ public class HDFSMetadataToolbarEditor extends MetadataEmfToolbarEditor {
 
             /*
              * (non-Javadoc)
-             * 
+             *
              * @see org.talend.commons.ui.swt.advanced.dataeditor.button.AddPushButton#getEnabledState()
              */
             @Override
@@ -116,7 +116,7 @@ public class HDFSMetadataToolbarEditor extends MetadataEmfToolbarEditor {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.core.ui.metadata.editor.MetadataEmfToolbarEditor#createImportPushButton()
      */
     @Override
@@ -130,7 +130,7 @@ public class HDFSMetadataToolbarEditor extends MetadataEmfToolbarEditor {
 
             /*
              * (non-Javadoc)
-             * 
+             *
              * @see org.talend.commons.ui.swt.advanced.dataeditor.button.AddPushButton#getEnabledState()
              */
             @Override
@@ -146,7 +146,7 @@ public class HDFSMetadataToolbarEditor extends MetadataEmfToolbarEditor {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.commons.ui.swt.advanced.dataeditor.ExtendedToolbarView#createRemovePushButton()
      */
     @Override
@@ -156,7 +156,7 @@ public class HDFSMetadataToolbarEditor extends MetadataEmfToolbarEditor {
 
             /*
              * (non-Javadoc)
-             * 
+             *
              * @see org.talend.commons.ui.swt.advanced.dataeditor.button.AddPushButton#getEnabledState()
              */
             @Override

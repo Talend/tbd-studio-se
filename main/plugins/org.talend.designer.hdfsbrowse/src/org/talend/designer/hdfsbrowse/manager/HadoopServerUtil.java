@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -67,9 +67,9 @@ public class HadoopServerUtil {
 
     /**
      * DOC ycbai Comment method "getDFS".
-     * 
+     *
      * Provides access to the HDFS System.
-     * 
+     *
      * @param connection
      * @return
      * @throws HadoopServerException
@@ -95,7 +95,7 @@ public class HadoopServerUtil {
             // add the needed jars automatically
             List<String> classIds = EHadoopAdditionalJars.getBaseLoaderClassIds();
             for (String classId : classIds) {
-                Object obj = ReflectionUtils.invokeMethod(conf, "get", new Object[] { classId }, String.class, String.class);//$NON-NLS-1$ 
+                Object obj = ReflectionUtils.invokeMethod(conf, "get", new Object[] { classId }, String.class, String.class);//$NON-NLS-1$
                 if (obj != null && obj instanceof String) {
                     String[] addedJars = EHadoopAdditionalJarsMapping.getAddedJarsByClassName(obj.toString());
                     if (classLoader instanceof DynamicClassLoader) {
@@ -368,9 +368,9 @@ public class HadoopServerUtil {
 
     /**
      * DOC ycbai Comment method "testConnection".
-     * 
+     *
      * Test whether can connect to HDFS.
-     * 
+     *
      * @return
      */
     public static ConnectionStatus testConnection(HDFSConnectionBean connection) {
@@ -420,7 +420,7 @@ public class HadoopServerUtil {
 
     /**
      * DOC Talend Comment method "getMissingJars".
-     * 
+     *
      * @param connection
      * @return
      */
@@ -476,9 +476,9 @@ public class HadoopServerUtil {
 
     /**
      * DOC ycbai Comment method "upload".
-     * 
+     *
      * Upload a local file to the distributed file system
-     * 
+     *
      * @param localFile the file which you want to upload from local
      * @param dfsPath the path on file system which you want to upload.
      * @param fileSystem

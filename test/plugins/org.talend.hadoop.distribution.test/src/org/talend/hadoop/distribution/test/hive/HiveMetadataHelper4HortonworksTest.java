@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -18,7 +18,7 @@ import org.talend.hadoop.distribution.constants.hdp.IHortonworksDistribution;
  * DOC ggu class global comment. Detailled comment
  */
 public class HiveMetadataHelper4HortonworksTest extends AbstractDistributionTest4HiveMetadataHelper {
-    
+
     // An exhaustive list of all the versions Studio has been supported, some old versions may have been removed.
     private static final String[] VERSIONS_NON_DYNAMIC = new String[] {
         "Hortonworks Data Platform V2.6.0.3-8 [Built in]",

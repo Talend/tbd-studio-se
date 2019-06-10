@@ -1,7 +1,7 @@
 // ============================================================================
 //
 
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -50,7 +50,7 @@ public interface HadoopComponent {
 
     /**
      * A distribution can be using Hadoop 1 or Hadoop 2. This method returns the used Hadoop version.
-     * 
+     *
      * @return the @link{EHadoopVersion} of the distribution.
      */
     public EHadoopVersion getHadoopVersion();
@@ -83,7 +83,7 @@ public interface HadoopComponent {
     /**
      * The method getMapRCredentialsViaPassword from maprfs-x.x-mapr.jar By v52 we mean the follwoing signature :
      * getMapRCredentialsViaPassword(STRING, STRING, STRING, LONG, STRING)
-     * 
+     *
      * @return
      */
     public boolean doSupportMaprTicketV52API();
@@ -124,14 +124,14 @@ public interface HadoopComponent {
      * 'automatic' import for conditions that are true for not yet exisiting distributions. For example, there are some
      * conditions that return 'true' if the distribution is 'CLOUDERA', which is true for the new CDH coming versions.
      * We now want each single distribution to be totally autonomous and to be responsible for its own dependencies.
-     * 
+     *
      * @return true if the distribution doesn't use the legacy imports in the java XML files.
      */
     public boolean doSupportOldImportMode();
 
     /**
      * Define whether a distribution supports S3 or not.
-     * 
+     *
      * @return true if the distribution supports S3.
      */
     public boolean doSupportS3();
@@ -183,8 +183,8 @@ public interface HadoopComponent {
     * @return true if the distribution is a databricks cloud distribution
     */
    public boolean isDatabricksDistribution();
-   
-   /** 
+
+   /**
    * @return true if the distribution is a Qubole cloud distribution
     */
    public boolean isQuboleDistribution();
@@ -203,13 +203,13 @@ public interface HadoopComponent {
     public boolean doSupportOozie();
 
     /**
-     * 
+     *
      * @return true if current component support create service connection
      */
     public boolean doSupportCreateServiceConnection();
 
     /**
-     * 
+     *
      * @return only doSupportCreateServiceConnection() return true, return the necessary service name
      */
     public List<String> getNecessaryServiceName();
@@ -220,15 +220,15 @@ public interface HadoopComponent {
      * @return true if the distribution is Hortonworks
      */
     public boolean isHortonworksDistribution();
-    
+
     /**
      * @return true if the distribution is activated
      */
     public boolean isActivated();
-    
+
     public boolean isDynamicDistribution();
-    
+
     public boolean doSupportAzureDataLakeStorage();
-    
+
     public boolean doSupportWebHDFS();
 }

@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -54,7 +54,7 @@ public class HadoopCMClusterService implements HadoopClusterService {
 
     /**
      * DOC bchen HadoopCMClusterService constructor comment.
-     * 
+     *
      * @param cluster
      */
     public HadoopCMClusterService(String serviceName, ServicesResourceV3 cluster, List<String> blacklistParams) {
@@ -132,7 +132,7 @@ public class HadoopCMClusterService implements HadoopClusterService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.hadoopcluster.configurator.HadoopClusterService#getConfiguration()
      */
     @Override
@@ -146,7 +146,7 @@ public class HadoopCMClusterService implements HadoopClusterService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.hadoopcluster.configurator.HadoopClusterService#getConfigurationByRegex(java.lang.String)
      */
@@ -158,7 +158,7 @@ public class HadoopCMClusterService implements HadoopClusterService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.hadoopcluster.configurator.HadoopClusterService#getConfiguration(java.lang.String)
      */
     private Map<String, String> getConfiguration(String confName) {
@@ -168,7 +168,7 @@ public class HadoopCMClusterService implements HadoopClusterService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.hadoopcluster.configurator.HadoopClusterService#exportConfigurationToXml(java.lang.String)
      */
@@ -181,7 +181,7 @@ public class HadoopCMClusterService implements HadoopClusterService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * org.talend.repository.hadoopcluster.configurator.HadoopClusterService#exportConfigurationToXml(java.lang.String,
      * java.lang.String)
@@ -208,7 +208,7 @@ public class HadoopCMClusterService implements HadoopClusterService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.hadoopcluster.configurator.HadoopClusterService#getConfFiles()
      */
     @Override
@@ -218,7 +218,7 @@ public class HadoopCMClusterService implements HadoopClusterService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.hadoopcluster.configurator.HadoopClusterService#hasConfigurations()
      */
     @Override

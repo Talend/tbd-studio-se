@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -64,7 +64,7 @@ import org.talend.designer.pigmap.util.MapDataHelper;
 import org.talend.designer.pigmap.util.PigMapUtil;
 
 /**
- * 
+ *
  * DOC hcyi class global comment. Detailled comment
  */
 public class PigMapNodeDirectEditManager extends DirectEditManager {
@@ -89,7 +89,7 @@ public class PigMapNodeDirectEditManager extends DirectEditManager {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.gef.tools.DirectEditManager#initCellEditor()
      */
     @Override
@@ -414,7 +414,7 @@ public class PigMapNodeDirectEditManager extends DirectEditManager {
     }
 
     /**
-     * 
+     *
      * DOC hcyi PigMapNodeDirectEditManager class global comment. Detailled comment
      */
     class ComboCellEditor extends ComboBoxCellEditor {
@@ -442,7 +442,7 @@ public class PigMapNodeDirectEditManager extends DirectEditManager {
     class TextAreaBehavior extends CellEditorDialogBehavior {
 
         /**
-         * 
+         *
          * DOC hcyi TextAreaBehavior constructor comment.
          */
         public TextAreaBehavior() {

@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -41,7 +41,7 @@ public class HDP260SparkStreamingModuleGroupTest {
         results.put(HDP260Constant.SPARK2_MODULE_GROUP.getModuleName(), new ArrayList<String>( Arrays.asList("(SPARK_LOCAL_MODE=='false') AND (SUPPORTED_SPARK_VERSION=='SPARK_2_1_0')")));
         results.put(HDP260Constant.HDFS_MODULE_GROUP.getModuleName(), new ArrayList<String>( Arrays.asList("(SPARK_LOCAL_MODE=='false') AND (SUPPORTED_SPARK_VERSION=='SPARK_1_6_0')", "(SPARK_LOCAL_MODE=='false') AND (SUPPORTED_SPARK_VERSION=='SPARK_2_1_0')")));
         results.put(HDP260Constant.MAPREDUCE_MODULE_GROUP.getModuleName(), new ArrayList<String>( Arrays.asList("(SPARK_LOCAL_MODE=='false') AND (SUPPORTED_SPARK_VERSION=='SPARK_1_6_0')", "(SPARK_LOCAL_MODE=='false') AND (SUPPORTED_SPARK_VERSION=='SPARK_2_1_0')")));
-        
+
         Set<DistributionModuleGroup> moduleGroups = HDP260SparkStreamingModuleGroup.getModuleGroups();
         assertEquals(6, moduleGroups.size());
         moduleGroups.iterator();
@@ -55,7 +55,7 @@ public class HDP260SparkStreamingModuleGroupTest {
                         "The condition of the module " + module.getModuleName() + " is null, but it should be "
                                 + results.get(module.getModuleName()) + ".", results.get(module.getModuleName()) != null);
 
-                // Test if expected conditions array contains current element condition 
+                // Test if expected conditions array contains current element condition
                 assertTrue(results.get(module.getModuleName()).contains(module.getRequiredIf().getConditionString()));
             }
         }

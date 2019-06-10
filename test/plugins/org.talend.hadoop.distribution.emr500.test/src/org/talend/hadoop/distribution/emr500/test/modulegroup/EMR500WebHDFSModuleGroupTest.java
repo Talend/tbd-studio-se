@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -32,14 +32,14 @@ public class EMR500WebHDFSModuleGroupTest {
         Map<String, String> results = new HashMap<>();
 
         results.put(EMR500WebHDFSModuleGroup.WEBHDFS_MODULE_GROUP_NAME, null);
-        
+
         Set<DistributionModuleGroup> moduleGroups =
                 EMR500WebHDFSModuleGroup.getModuleGroups(EMR500Distribution.DISTRIBUTION_NAME,
                         EMR500Distribution.VERSION);
         assertEquals(results.size(), moduleGroups.size());
-        
+
         moduleGroups.iterator();
-        
+
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$
             if (results.get(module.getModuleName()) == null) {

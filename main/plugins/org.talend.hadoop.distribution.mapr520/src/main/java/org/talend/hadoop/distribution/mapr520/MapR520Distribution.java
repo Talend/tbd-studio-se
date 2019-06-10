@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -164,7 +164,7 @@ public class MapR520Distribution extends AbstractMapRDistribution implements HDF
                 SparkStreamingConstant.KAFKA_AVRO_INPUT_COMPONENT), kafkaAvroModuleGroups);
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT), MapR520SparkStreamingKafkaClientModuleGroup.getModuleGroups());
-        
+
         // Azure
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
                 SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT), MapR520SparkAzureNodeModuleGroup
@@ -422,7 +422,7 @@ public class MapR520Distribution extends AbstractMapRDistribution implements HDF
     public boolean doImportSparkHiveContextDependencies() {
         return true;
     }
-    
+
     @Override
     public boolean doSupportWebHDFS(){
         return false;

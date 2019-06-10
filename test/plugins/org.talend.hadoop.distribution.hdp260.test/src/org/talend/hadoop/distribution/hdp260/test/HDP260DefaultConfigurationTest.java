@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -42,7 +42,7 @@ public class HDP260DefaultConfigurationTest extends AbstractTest4DefaultConfigur
         doTestExistedProperty("yarn/_HOST@EXAMPLE.COM", RESOURCE_MANAGER_PRINCIPAL);
         doTestExistedProperty("mapred/_HOST@EXAMPLE.COM", JOBHISTORY_PRINCIPAL);
 
-        //FIXME what's for HDP? 
+        //FIXME what's for HDP?
         doTestExistedProperty("username", CLOUDERA_NAVIGATOR_USERNAME);
         doTestExistedProperty("", CLOUDERA_NAVIGATOR_PASSWORD);
         doTestExistedProperty("http://localhost:7187/api/v8/", CLOUDERA_NAVIGATOR_URL);

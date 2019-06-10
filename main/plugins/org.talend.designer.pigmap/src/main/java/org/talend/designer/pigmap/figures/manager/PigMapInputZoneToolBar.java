@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -53,7 +53,7 @@ public class PigMapInputZoneToolBar extends InputZoneToolBar {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.newabstractmap.figures.treetools.zone.InputZoneTooBar#changProperty()
      */
     @Override
@@ -63,7 +63,7 @@ public class PigMapInputZoneToolBar extends InputZoneToolBar {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.pigmap.figures.treetools.zone.ZoneToolBar#moveUp()
      */
     @Override
@@ -88,7 +88,7 @@ public class PigMapInputZoneToolBar extends InputZoneToolBar {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.pigmap.figures.treetools.zone.ZoneToolBar#moveDown()
      */
     @Override
@@ -113,7 +113,7 @@ public class PigMapInputZoneToolBar extends InputZoneToolBar {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.pigmap.figures.treetools.zone.ZoneToolBar#minSize()
      */
     @Override
@@ -130,7 +130,7 @@ public class PigMapInputZoneToolBar extends InputZoneToolBar {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.designer.newabstractmap.figures.treetools.zone.ZoneToolBar#isMinSizeEnable()
      */
     @Override

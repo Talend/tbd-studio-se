@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -35,9 +35,9 @@ import com.cloudera.nav.sdk.model.entities.HdfsEntity;
 import com.google.common.collect.ImmutableList;
 
 /**
- * 
+ *
  * Cloudera Navigator lineage creator.
- * 
+ *
  * An instance of this class is created at the beginning of a Talend job that uses Cloudera Navigator. The main role of
  * this class is to hide the Cloudera Navigator implementation details from being directly called in the studio.
  *

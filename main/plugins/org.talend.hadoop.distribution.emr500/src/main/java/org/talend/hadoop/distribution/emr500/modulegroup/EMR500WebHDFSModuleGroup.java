@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -24,11 +24,11 @@ public class EMR500WebHDFSModuleGroup {
     public static final String WEBHDFS_MODULE_GROUP_NAME = "WEBHDFS-LIB-EMR_5_0_0_LATEST";
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
-        
+
         HDFSLinkedNodeCondition hdfsLinkedNodeCondition = new HDFSLinkedNodeCondition(distribution, version);
-        
+
         DistributionModuleGroup dmgWebHDFS =
-                new DistributionModuleGroup(WEBHDFS_MODULE_GROUP_NAME, true, 
+                new DistributionModuleGroup(WEBHDFS_MODULE_GROUP_NAME, true,
                         hdfsLinkedNodeCondition.getWebHDFSCondition());
 
         Set<DistributionModuleGroup> hs = new HashSet<>();

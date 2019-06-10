@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -22,13 +22,13 @@ import org.talend.repository.nosql.model.INoSQLSchemaNode;
 
 /**
  * created by ycbai on 2014-6-18 Detailled comment
- * 
+ *
  */
 public abstract class AbstractMetadataProvider implements IMetadataProvider {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.nosql.metadata.IMetadataProvider#checkConnection(org.talend.repository.model.nosql.
      * NoSQLConnection)
      */
@@ -39,7 +39,7 @@ public abstract class AbstractMetadataProvider implements IMetadataProvider {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.nosql.metadata.IMetadataProvider#extractColumns(org.talend.repository.model.nosql.
      * NoSQLConnection, org.talend.repository.nosql.model.INoSQLSchemaNode)
      */
@@ -51,7 +51,7 @@ public abstract class AbstractMetadataProvider implements IMetadataProvider {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.nosql.metadata.IMetadataProvider#extractColumns(org.talend.repository.model.nosql.
      * NoSQLConnection, org.talend.core.model.metadata.builder.connection.MetadataTable,
      * org.talend.repository.nosql.model.INoSQLSchemaNode)

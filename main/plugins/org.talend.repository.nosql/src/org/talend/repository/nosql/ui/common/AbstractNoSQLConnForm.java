@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -64,7 +64,7 @@ public abstract class AbstractNoSQLConnForm extends AbstractNoSQLForm {
 
     /**
      * DOC PLV AbstractNoSQLConnForm constructor comment.
-     * 
+     *
      * @param parent
      * @param connectionItem
      * @param existingNames
@@ -125,7 +125,7 @@ public abstract class AbstractNoSQLConnForm extends AbstractNoSQLForm {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.ui.swt.utils.AbstractForm#addUtilsButtonListeners()
      */
     @Override
@@ -135,7 +135,7 @@ public abstract class AbstractNoSQLConnForm extends AbstractNoSQLForm {
 
                 /*
                  * (non-Javadoc)
-                 * 
+                 *
                  * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
                  */
                 @Override
@@ -172,7 +172,7 @@ public abstract class AbstractNoSQLConnForm extends AbstractNoSQLForm {
                                 };
                             };
                             dialog.run(true, true, runnableWithProgress);
-                            
+
                             if (!checkedResult.get() && exception[0] != null) {
                                 new ErrorDialogWidthDetailArea(getShell(), RepositoryNoSQLPlugin.PLUGIN_ID,
                                         Messages.getString("AbstractNoSQLConnForm.checkFailed"), //$NON-NLS-1$
@@ -235,7 +235,7 @@ public abstract class AbstractNoSQLConnForm extends AbstractNoSQLForm {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.ui.swt.utils.AbstractForm#exportAsContext()
      */
     @Override
@@ -262,7 +262,7 @@ public abstract class AbstractNoSQLConnForm extends AbstractNoSQLForm {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.talend.repository.ui.swt.utils.AbstractForm#revertContext()
      */
     @Override
