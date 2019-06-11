@@ -53,6 +53,7 @@ import org.talend.hadoop.distribution.cdh5120.modulegroup.node.sparkstreaming.CD
 import org.talend.hadoop.distribution.cdh5120.modulegroup.node.sparkstreaming.CDH5120SparkStreamingKinesisNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5120.modulegroup.node.sparkstreaming.CDH5120SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5120.modulegroup.node.sparkstreaming.CDH5120SparkStreamingS3NodeModuleGroup;
+import org.talend.hadoop.distribution.component.CDHSparkBatchComponent;
 import org.talend.hadoop.distribution.component.HBaseComponent;
 import org.talend.hadoop.distribution.component.HCatalogComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
@@ -61,7 +62,6 @@ import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
-import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
@@ -72,12 +72,13 @@ import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
+import org.talend.hadoop.distribution.kudu.KuduVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
 @SuppressWarnings("nls")
 public class CDH5120Distribution extends AbstractDistribution implements IClouderaDistribution, HDFSComponent,
         HBaseComponent, HCatalogComponent, PigComponent, MRComponent, HiveComponent, HiveOnSparkComponent,
-        ImpalaComponent, SqoopComponent, SparkBatchComponent, SparkStreamingComponent {
+        ImpalaComponent, SqoopComponent, CDHSparkBatchComponent, SparkStreamingComponent {
 
     public final static String VERSION = "Cloudera_CDH5_12";
 
@@ -521,5 +522,10 @@ public class CDH5120Distribution extends AbstractDistribution implements ICloude
     @Override
     public boolean useOldAWSAPI() {
         return false;
+    }
+
+    @Override
+    public KuduVersion getKuduVersion() {
+        return KuduVersion.KUDU_1_7;
     }
 }

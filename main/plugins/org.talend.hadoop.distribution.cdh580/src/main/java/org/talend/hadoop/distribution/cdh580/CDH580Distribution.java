@@ -50,6 +50,7 @@ import org.talend.hadoop.distribution.cdh580.modulegroup.node.sparkstreaming.CDH
 import org.talend.hadoop.distribution.cdh580.modulegroup.node.sparkstreaming.CDH580SparkStreamingKinesisNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.node.sparkstreaming.CDH580SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.node.sparkstreaming.CDH580SparkStreamingS3NodeModuleGroup;
+import org.talend.hadoop.distribution.component.CDHSparkBatchComponent;
 import org.talend.hadoop.distribution.component.HBaseComponent;
 import org.talend.hadoop.distribution.component.HCatalogComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
@@ -58,7 +59,6 @@ import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
-import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
@@ -68,11 +68,12 @@ import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
+import org.talend.hadoop.distribution.kudu.KuduVersion;
 
 @SuppressWarnings("nls")
 public class CDH580Distribution extends AbstractDistribution implements IClouderaDistribution, HDFSComponent, HBaseComponent,
         HCatalogComponent, PigComponent, MRComponent, HiveComponent, HiveOnSparkComponent, ImpalaComponent, SqoopComponent,
-        SparkBatchComponent, SparkStreamingComponent {
+ CDHSparkBatchComponent, SparkStreamingComponent {
 
     public final static String VERSION = "Cloudera_CDH5_8";
 
@@ -432,5 +433,10 @@ public class CDH580Distribution extends AbstractDistribution implements IClouder
     @Override
     public boolean doSupportAvroDeflateProperties(){
         return true;
+    }
+
+    @Override
+    public KuduVersion getKuduVersion() {
+        return KuduVersion.KUDU_1_7;
     }
 }

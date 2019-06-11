@@ -28,6 +28,7 @@ import org.talend.hadoop.distribution.cdh540.modulegroup.CDH540HDFSModuleGroup;
 import org.talend.hadoop.distribution.cdh540.modulegroup.CDH540MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.cdh540.modulegroup.CDH540PigModuleGroup;
 import org.talend.hadoop.distribution.cdh540.modulegroup.CDH540PigOutputNodeModuleGroup;
+import org.talend.hadoop.distribution.component.CDHSparkBatchComponent;
 import org.talend.hadoop.distribution.component.HBaseComponent;
 import org.talend.hadoop.distribution.component.HCatalogComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
@@ -36,16 +37,16 @@ import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.PigComponent;
-import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
+import org.talend.hadoop.distribution.kudu.KuduVersion;
 
 @SuppressWarnings("nls")
 public class CDH540Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, HBaseComponent,
-        SqoopComponent, PigComponent, HiveComponent, ImpalaComponent, HCatalogComponent, SparkBatchComponent,
+        SqoopComponent, PigComponent, HiveComponent, ImpalaComponent, HCatalogComponent, CDHSparkBatchComponent,
         SparkStreamingComponent, HiveOnSparkComponent, IClouderaDistribution {
 
     public final static String VERSION = "Cloudera_CDH5_4";
@@ -284,5 +285,10 @@ public class CDH540Distribution extends AbstractDistribution implements HDFSComp
     @Override
     public boolean isActivated() {
         return false;
+    }
+
+    @Override
+    public KuduVersion getKuduVersion() {
+        return KuduVersion.UNSUPPORTED;
     }
 }

@@ -51,6 +51,7 @@ Export-Package: org.talend.hadoop.distribution,
  org.talend.hadoop.distribution.dynamic.util,
  org.talend.hadoop.distribution.helper,
  org.talend.hadoop.distribution.kafka,
+ org.talend.hadoop.distribution.kudu,
  org.talend.hadoop.distribution.model,
  org.talend.hadoop.distribution.spark,
  org.talend.hadoop.distribution.utils

@@ -10,16 +10,15 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.constants.cdh;
-
+package org.talend.hadoop.distribution.kudu;
 
 /**
- * DOC ggu class global comment. Detailled comment
+ *
+ * This enum lists all the used versions of the spark-streaming-kafka connector.
+ *
  */
-@SuppressWarnings("nls")
-public interface IClouderaDistribution {
-
-    static final String DISTRIBUTION_NAME = "CLOUDERA";
-
-    static final String DISTRIBUTION_DISPLAY_NAME = "Cloudera";
+public enum KuduVersion {
+    UNSUPPORTED,
+    KUDU_1_7,
+    KUDU_1_8
 }

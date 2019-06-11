@@ -1629,6 +1629,15 @@
             "version": "0.10.0-kafka-2.1.2",
             "classifier": "",
             "description": ""
+        },
+        {
+            "id": "kudu-spark2_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.kudu",
+            "artifactId": "kudu-spark2_2.11",
+            "classifier": "",
+            "description": ""
         }
     ],
     "moduleGroups": [
@@ -1900,6 +1909,13 @@
             "description": "",
             "modules": [
                 "kafka-clients"
+            ]
+        },
+        {
+            "id": "SPARK2-KUDU-LIB-MRREQUIRED-DYNAMIC",
+            "description": "",
+            "modules": [
+                "kudu-spark2_2.11"
             ]
         }
     ],

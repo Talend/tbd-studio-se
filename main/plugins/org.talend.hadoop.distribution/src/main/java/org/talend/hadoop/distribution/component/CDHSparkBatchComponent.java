@@ -10,16 +10,19 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.constants.cdh;
+package org.talend.hadoop.distribution.component;
 
+import org.talend.hadoop.distribution.kudu.KuduVersion;
 
 /**
- * DOC ggu class global comment. Detailled comment
+ * Interface that exposes specific CDH Spark Batch methods.
+ *
  */
-@SuppressWarnings("nls")
-public interface IClouderaDistribution {
-
-    static final String DISTRIBUTION_NAME = "CLOUDERA";
-
-    static final String DISTRIBUTION_DISPLAY_NAME = "Cloudera";
+public interface CDHSparkBatchComponent extends SparkBatchComponent {
+    /**
+     * This method defines which version of the kudu_spark connector the distribution does support.
+     *
+     * @return the version of the spark-streaming-kafka connector.
+     */
+    public KuduVersion getKuduVersion();
 }
