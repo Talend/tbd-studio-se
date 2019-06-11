@@ -1600,7 +1600,36 @@
             "mvnUri": "mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-cbor/2.9.5",
             "useStudioRepository": "true",
             "description": ""
-        }                
+        },   
+        {
+            "id": "spark-streaming-kafka",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-streaming-kafka-0-10_2.11",
+            "version": "2.4.0-cdh6.1.1",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "xerces",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "kafka-clients",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.kafka",
+            "artifactId": "kafka-clients",
+            "version": "0.10.0-kafka-2.1.2",
+            "classifier": "",
+            "description": ""
+        }
     ],
     "moduleGroups": [
         {
@@ -1857,7 +1886,21 @@
                 "spark-streaming-kinesis-asl_2.11",
                 "jackson-dataformat-cbor"
             ]
-        }        		
+        }, 
+        {
+            "id": "SPARK2-KAFKA-ASSEMBLY-LIB-MRREQUIRED-DYNAMIC",
+            "description": "",
+            "modules": [
+                "spark-streaming-kafka"
+            ]
+        },
+        {
+            "id": "SPARK2-KAFKA-CLIENT-LIB-MRREQUIRED-DYNAMIC",
+            "description": "",
+            "modules": [
+                "kafka-clients"
+            ]
+        }
     ],
     "classLoaders": [
         {
