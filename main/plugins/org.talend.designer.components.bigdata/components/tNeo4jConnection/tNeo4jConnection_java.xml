@@ -549,8 +549,8 @@
 			<IMPORT NAME="scala-reflect-2.11.8" MODULE="scala-reflect-2.11.8.jar"  MVN="mvn:org.scala-lang/scala-reflect/2.11.8"  REQUIRED_IF="(DB_VERSION=='NEO4J_3_2_X') AND (REMOTE_SERVER == 'false')"/>
 			
 			                <!-- Version 3.2.X -->
-            <IMPORT NAME="neo4j-java-driver-1.4.4.jar" MODULE="neo4j-java-driver-1.4.4.jar"
-                MVN="mvn:org.neo4j.driver/neo4j-java-driver/1.4.4"
+            <IMPORT NAME="neo4j-java-driver-1.7.5.jar" MODULE="neo4j-java-driver-1.7.5.jar"
+                MVN="mvn:org.neo4j.driver/neo4j-java-driver/1.7.5"
                 REQUIRED_IF="(DB_VERSION=='NEO4J_3_2_X') AND (REMOTE_SERVER == 'true')" />
 
 		</IMPORTS>

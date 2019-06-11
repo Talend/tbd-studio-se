@@ -13,13 +13,15 @@
     HAS_CONDITIONAL_OUTPUTS="true"
     PARTITIONING="NONE"
     LOG4J_ENABLED="true"
-    >
-      <SIGNATURE></SIGNATURE>
-   </HEADER>
+          
+        VISIBLE="false"
+        >
+        
+        <SIGNATURE />
+    </HEADER>
 
   <FAMILIES>
-    <FAMILY>Processing/Hadoop</FAMILY>
-    <FAMILY>Big Data/Pig</FAMILY>
+    <FAMILY>Deprecated</FAMILY>
   </FAMILIES>
    <DOCUMENTATION>
       <URL/>
