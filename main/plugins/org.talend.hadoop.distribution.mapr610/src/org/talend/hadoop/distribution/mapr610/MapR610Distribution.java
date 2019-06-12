@@ -51,7 +51,6 @@ import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610HCatalogModuleG
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610HDFSModuleGroup;
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610HiveModuleGroup;
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610HiveOnSparkModuleGroup;
-//import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610ImpalaModuleGroup;
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610MapRStreamsCreateStreamModuleGroup;
