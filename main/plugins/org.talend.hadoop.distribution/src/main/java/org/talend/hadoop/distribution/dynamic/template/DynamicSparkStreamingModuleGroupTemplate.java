@@ -123,7 +123,7 @@ public class DynamicSparkStreamingModuleGroupTemplate extends AbstractDynamicMod
                 kafkaAvroModuleGroups);
         nodeModuleGroupsMap.put(
                 new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT),
-                buildNodeModuleGroups4SparkStreaming4KafkaClient(pluginAdapter, distribution, version));
+ kafkaAssemblyModuleGroups);
 
         // DynamoDB ...
         Set<DistributionModuleGroup> dynamoDBNodeModuleGroups = buildNodeModuleGroup4Spark4DynamoDB(pluginAdapter, distribution,

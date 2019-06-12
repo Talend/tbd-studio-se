@@ -1908,7 +1908,6 @@
             "id": "SPARK2-KAFKA-CLIENT-LIB-MRREQUIRED-DYNAMIC",
             "description": "",
             "modules": [
-                "kafka-clients"
             ]
         },
         {
