@@ -11666,6 +11666,10 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_spark_avro_2_11_2_4_0_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_spark_catalyst_2_11_2_4_0_cdh6_1_1_jar",
         "tagName" : "library"
       }, {
@@ -13319,7 +13323,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_elephant_bird_core_4_9_jar",
-      "mvn_uri" : "mvn:com.twitter.elephantbird/elephant-bird-core/4.9/jar",
+      "mvn_uri" : "mvn:com.twitter.elephantbird/elephant-bird-core/4.9",
       "name" : "elephant-bird-core-4.9.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -13849,7 +13853,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_exec_2_1_1_cdh6_1_1_jar",
-      "mvn_uri" : "mvn:org.apache.hive/hive-exec/2.1.1-cdh6.1.1",
+      "mvn_uri" : "mvn:org.apache.hive/hive-exec/2.1.1-cdh6.1.1/jar",
       "name" : "hive-exec-2.1.1-cdh6.1.1.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -15356,7 +15360,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_pig_0_17_0_cdh6_1_1_jar",
-      "mvn_uri" : "mvn:org.apache.pig/pig/0.17.0-cdh6.1.1/jar",
+      "mvn_uri" : "mvn:org.apache.pig/pig/0.17.0-cdh6.1.1",
       "name" : "pig-0.17.0-cdh6.1.1.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -15502,6 +15506,14 @@
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_snappy_java_1_1_7_1_jar",
       "mvn_uri" : "mvn:org.xerial.snappy/snappy-java/1.1.7.1/jar",
       "name" : "snappy-java-1.1.7.1.jar",
+      "tagName" : "libraryNeeded"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDH6_1_1_spark_avro_2_11_2_4_0_cdh6_1_1_jar",
+      "mvn_uri" : "mvn:org.apache.spark/spark-avro_2.11/2.4.0-cdh6.1.1",
+      "name" : "spark-avro_2.11-2.4.0-cdh6.1.1.jar",
       "tagName" : "libraryNeeded"
     }, {
       "childNodes" : [ ],
