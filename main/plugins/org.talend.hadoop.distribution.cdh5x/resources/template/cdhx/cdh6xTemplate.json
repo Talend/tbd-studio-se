@@ -1387,6 +1387,24 @@
 				}
 			]
 		},
+        {
+            "id": "spark-avro_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-avro_2.11",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "*",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },		
 		{
 			"id": "sqoop",
 			"type": "BASE",
@@ -1789,7 +1807,8 @@
 				"hadoop-mapreduce-client-core",
 				"hadoop-yarn-server-web-proxy",
 				"spark-mllib_2.11",
-				"spark-yarn_2.11"
+				"spark-yarn_2.11",
+				"spark-avro_2.11"
 			]
 		},
         {
