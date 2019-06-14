@@ -468,7 +468,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
             id="json-20090211.jar" 
             name="json-20090211.jar"
-            mvn_uri="mvn:org.talend.libraries/json/20090211">
+            mvn_uri="mvn:org.talend.libraries/json-20090211/6.0.0">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
