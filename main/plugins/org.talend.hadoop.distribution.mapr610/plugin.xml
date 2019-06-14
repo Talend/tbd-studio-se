@@ -20,6 +20,18 @@
             mvn_uri="mvn:org.datanucleus/datanucleus-api-jdo/4.2.4" >
         </libraryNeeded>
         <libraryNeeded
+            context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
+            id="jackson-databind-2.9.9.jar"
+            name="jackson-databind-2.9.9.jar"
+			mvn_uri="mvn:com.fasterxml.jackson.core/jackson-databind/2.9.9">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
+            id="jackson-core-2.9.9.jar"
+            name="jackson-core-2.9.9.jar"
+			mvn_uri="mvn:com.fasterxml.jackson.core/jackson-core/2.9.9">
+        </libraryNeeded>
+        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="datanucleus-core-4.1.6.jar"
             name="datanucleus-core-4.1.6.jar" 
