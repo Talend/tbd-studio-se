@@ -11,14 +11,10 @@
   <plugin id="org.talend.hadoop.distribution" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.altus10" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.apache100" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-  <plugin id="org.talend.hadoop.distribution.cdh4mr1" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-  <plugin id="org.talend.hadoop.distribution.cdh4mr2" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-  <plugin id="org.talend.hadoop.distribution.cdh500mr2" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.cdh5100" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.cdh510mr1" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.cdh510mr2" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.cdh5120" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-  <plugin id="org.talend.hadoop.distribution.cdh540" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.cdh550" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.cdh570" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.cdh580" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
