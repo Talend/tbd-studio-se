@@ -277,7 +277,7 @@ public class CDH6xDistributionTemplate extends AbstractDynamicCDHDistributionTem
 
     @Override
     public boolean useS3AProperties() {
-        return false;
+        return true;
     }
 
     @Override
