@@ -161,7 +161,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="zookeeper-3.4.11-mapr-1808.jar"
             name="zookeeper-3.4.11-mapr-1808.jar" 
-            mvn_uri="mvn:org.talend.libraries/zookeeper/3.4.11-mapr-1808" >
+            mvn_uri="mvn:org.talend.libraries/zookeeper-3.4.11-mapr-1808/6.0.0" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
@@ -215,19 +215,19 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hbase-client-1.1.8-mapr-1901.jar"
             name="hbase-client-1.1.8-mapr-1901.jar"
-            mvn_uri="mvn:org.talend.libraries/hbase-client/1.1.8-mapr-1901" >
+            mvn_uri="mvn:org.talend.libraries/hbase-client-1.1.8-mapr-1901/6.0.0" >
         </libraryNeeded>
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hbase-common-1.1.8-mapr-1901.jar"
             name="hbase-common-1.1.8-mapr-1901.jar"
-            mvn_uri="mvn:org.talend.libraries/hbase-common/1.1.8-mapr-1901" >
+            mvn_uri="mvn:org.talend.libraries/hbase-common-1.1.8-mapr-1901/6.0.0" >
         </libraryNeeded>
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hbase-protocol-1.1.8-mapr-1901.jar"
             name="hbase-protocol-1.1.8-mapr-1901.jar"
-            mvn_uri="mvn:org.talend.libraries/hbase-protocol/1.1.8-mapr-1901" >
+            mvn_uri="mvn:org.talend.libraries/hbase-protocol-1.1.8-mapr-1901/6.0.0" >
        </libraryNeeded>
 		<libraryNeeded
              context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
@@ -406,7 +406,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hbase-hadoop2-compat-1.1.8-mapr-1901.jar"
             name="hbase-hadoop2-compat-1.1.8-mapr-1901.jar"
-            mvn_uri="mvn:org.talend.libraries/hbase-hadoop2-compat/1.1.8-mapr-1901">
+            mvn_uri="mvn:org.talend.libraries/hbase-hadoop2-compat-1.1.8-mapr-1901/6.0.0">
         </libraryNeeded>
         
         <libraryNeeded
@@ -474,7 +474,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
             id="slf4j-api-1.7.25.jar" 
             name="slf4j-api-1.7.25.jar"
-            mvn_uri="mvn:org.talend.libraries/slf4j-api/1.7.25">
+            mvn_uri="mvn:org.talend.libraries/slf4j-api-1.7.25/6.0.0">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
