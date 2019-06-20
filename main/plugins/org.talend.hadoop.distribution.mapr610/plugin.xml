@@ -575,7 +575,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
             id="curator-recipes-2.7.1.jar" 
             name="curator-recipes-2.7.1.jar"
-            mvn_uri="mvn:org.apache.curator/curator-recipes/2.7.1">
+            mvn_uri="mvn:org.talend.libraries/curator-recipes-2.7.1/6.0.0">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
@@ -670,7 +670,7 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="commons-codec-1.10.jar" name="commons-codec-1.10.jar" mvn_uri="mvn:commons-codec/commons-codec/1.10"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="commons-compiler-3.0.8.jar" name="commons-compiler-3.0.8.jar" mvn_uri="mvn:org.codehaus.janino/commons-compiler/3.0.8"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="commons-compress-1.9.jar" name="commons-compress-1.9.jar" mvn_uri="mvn:org.apache.commons/commons-compress/1.9"/>
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="commons-crypto-1.0.0.jar" name="commons-crypto-1.0.0.jar" mvn_uri="mvn:org.apache.commons/commons-crypto/1.0.0"/>
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="commons-crypto-1.0.0.jar" name="commons-crypto-1.0.0.jar" mvn_uri="mvn:org.talend.libraries/commons-crypto-1.0.0/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="commons-dbcp-1.4.jar" name="commons-dbcp-1.4.jar" mvn_uri="mvn:commons-dbcp/commons-dbcp/1.4"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="commons-httpclient-3.1.jar" name="commons-httpclient-3.1.jar" mvn_uri="mvn:commons-httpclient/commons-httpclient/3.1"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="commons-io-2.4.jar" name="commons-io-2.4.jar" mvn_uri="mvn:commons-io/commons-io/2.4"/>
@@ -684,7 +684,7 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="core-1.1.2.jar" name="core-1.1.2.jar" mvn_uri="mvn:com.github.fommil.netlib/core/1.1.2"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="curator-client-2.7.1.jar" name="curator-client-2.7.1.jar" mvn_uri="mvn:org.apache.curator/curator-client/2.7.1"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="curator-framework-2.7.1.jar" name="curator-framework-2.7.1.jar" mvn_uri="mvn:org.apache.curator/curator-framework/2.7.1"/>
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="curator-recipes-2.7.1.jar" name="curator-recipes-2.7.1.jar" mvn_uri="mvn:org.apache.curator/curator-recipes/2.7.1"/>
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="curator-recipes-2.7.1.jar" name="curator-recipes-2.7.1.jar" mvn_uri="mvn:org.talend.libraries/curator-recipes-2.7.1/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="derby-10.12.1.1.jar" name="derby-10.12.1.1.jar" mvn_uri="mvn:org.apache.derby/derby/10.12.1.1"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="eigenbase-properties-1.1.5.jar" name="eigenbase-properties-1.1.5.jar" mvn_uri="mvn:net.hydromatic/eigenbase-properties/1.1.5"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="hive-beeline-1.2.0-mapr-spark-MEP-6.0.0-1901.jar" name="hive-beeline-1.2.0-mapr-spark-MEP-6.0.0-1901.jar" mvn_uri="mvn:org.apache.hive/hive-beeline/1.2.0-mapr-spark-MEP-6.0.0-1901"/>
@@ -788,7 +788,7 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="stream-2.7.0.jar" name="stream-2.7.0.jar" mvn_uri="mvn:com.clearspring.analytics/stream/2.7.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="stringtemplate-3.2.1.jar" name="stringtemplate-3.2.1.jar" mvn_uri="mvn:org.antlr/stringtemplate/3.2.1"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="super-csv-2.2.0.jar" name="super-csv-2.2.0.jar" mvn_uri="mvn:net.sf.supercsv/super-csv/2.2.0"/>
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="transaction-api-1.1.jar" name="transaction-api-1.1.jar" mvn_uri="mvn:javax.transaction/transaction-api/1.1"/>
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="transaction-api-1.1.jar" name="transaction-api-1.1.jar" mvn_uri="mvn:org.talend.libraries/transaction-api-1.1/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="univocity-parsers-2.5.9.jar" name="univocity-parsers-2.5.9.jar" mvn_uri="mvn:com.univocity/univocity-parsers/2.5.9"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="validation-api-1.1.0.Final.jar" name="validation-api-1.1.0.Final.jar" mvn_uri="mvn:javax.validation/validation-api/1.1.0.Final"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="xbean-asm5-shaded-4.4.jar" name="xbean-asm5-shaded-4.4.jar" mvn_uri="mvn:org.apache.xbean/xbean-asm5-shaded/4.4"/>
