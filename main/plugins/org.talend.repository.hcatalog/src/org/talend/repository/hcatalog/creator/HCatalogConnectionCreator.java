@@ -88,7 +88,9 @@ public class HCatalogConnectionCreator extends AbstractHadoopSubConnectionCreato
                 if (StringUtils.isNotEmpty(hiveMetastoreUris)) {
                     URI uri = new URI(hiveMetastoreUris);
                     String host = uri.getHost();
-                    connection.setHostName(host);
+                    if (StringUtils.isNotEmpty(host)) {
+                        connection.setHostName(host);
+                    }
                 }
             }
         } catch (URISyntaxException e) {
