@@ -478,9 +478,9 @@
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
-            id="jackson-annotations-2.6.7.jar" 
-            name="jackson-annotations-2.6.7.jar"
-			mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.6.7">
+            id="jackson-annotations-2.9.5.jar" 
+            name="jackson-annotations-2.9.5.jar"
+			mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.5">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
@@ -836,7 +836,7 @@
             <library id="zookeeper-3.4.11-mapr-1808.jar" />
             <library id="antlr4-runtime-4.7.jar" />
             <library id="jackson-databind-2.9.9.jar" />
-            <library id="jackson-annotations-2.6.7.jar" />
+            <library id="jackson-annotations-2.9.5.jar" />
             <library id="jackson-core-2.9.9.jar" />
             <library id="curator-framework-2.7.1.jar" />
             <library id="xercesImpl-2.11.0.jar" />
@@ -1065,7 +1065,7 @@
 			<library id="httpclient-4.5.4.jar"/>
 			<library id="httpcore-4.4.8.jar"/>
 			<library id="ivy-2.4.0.jar"/>
-			<library id="jackson-annotations-2.6.7.jar"/>
+			<library id="jackson-annotations-2.9.5.jar"/>
 			<library id="jackson-core-2.9.9.jar"/>
 			<library id="jackson-databind-2.9.9.jar"/>
 			<library id="jackson-module-paranamer-2.7.9.jar"/>
