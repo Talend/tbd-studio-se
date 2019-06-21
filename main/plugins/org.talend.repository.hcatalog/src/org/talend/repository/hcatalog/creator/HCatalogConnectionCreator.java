@@ -12,10 +12,13 @@
 // ============================================================================
 package org.talend.repository.hcatalog.creator;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.CoreException;
+import org.talend.commons.exception.ExceptionHandler;
 import org.talend.core.hadoop.conf.EHadoopConfProperties;
 import org.talend.core.hadoop.conf.EHadoopConfs;
 import org.talend.core.model.metadata.builder.connection.Connection;
@@ -77,6 +80,19 @@ public class HCatalogConnectionCreator extends AbstractHadoopSubConnectionCreato
             if (StringUtils.isNotEmpty(principal)) {
                 connection.setKrbPrincipal(principal);
             }
+        }
+        try {
+            Map<String, String> hiveParameters = initParams.get(EHadoopConfs.HIVE.getName());
+            if (hiveParameters != null) {
+                String hiveMetastoreUris = hiveParameters.get(EHadoopConfProperties.HIVE_METASTORE_URIS.getName());
+                if (StringUtils.isNotEmpty(hiveMetastoreUris)) {
+                    URI uri = new URI(hiveMetastoreUris);
+                    String host = uri.getHost();
+                    connection.setHostName(host);
+                }
+            }
+        } catch (URISyntaxException e) {
+            ExceptionHandler.process(e);
         }
     }
 
