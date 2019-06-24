@@ -5,10 +5,10 @@ Bundle-SymbolicName: org.talend.hadoop.distribution.test.base
 Bundle-Version: 7.3.1.qualifier
 Bundle-Vendor: .Talend SA.
 Require-Bundle: org.eclipse.core.runtime,
- org.talend.testutils,
  org.talend.hadoop.distribution,
- org.talend.core.runtime
-Export-Package: org.talend.hadoop.distribution.test,
- org.talend.hadoop.distribution.test.classloader,
- org.talend.hadoop.distribution.test.config,
- org.talend.hadoop.distribution.test.hive
+ org.talend.core.runtime,
+ org.talend.bigdata.se.test.base;bundle-version="7.2.1"
+Export-Package: org.talend.hadoop.distribution.test;uses:="org.talend.hadoop.distribution.model,org.talend.hadoop.distribution.component",
+ org.talend.hadoop.distribution.test.classloader;uses:="org.talend.core.model.metadata.connection.hive,org.talend.hadoop.distribution.test",
+ org.talend.hadoop.distribution.test.config;uses:="org.talend.hadoop.distribution.test",
+ org.talend.hadoop.distribution.test.hive;uses:="org.talend.hadoop.distribution.test"

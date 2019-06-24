@@ -5,7 +5,6 @@ Bundle-SymbolicName: org.talend.hadoop.distribution.test
 Bundle-Version: 7.3.1.qualifier
 Bundle-Vendor: .Talend SA.
 Fragment-Host: org.talend.hadoop.distribution
-Require-Bundle: org.talend.utils,
- org.talend.testutils,
- org.talend.hadoop.distribution.test.base
+Require-Bundle: org.talend.hadoop.distribution.test.base,
+ org.talend.bigdata.se.test.base
 Import-Package: org.apache.commons.io

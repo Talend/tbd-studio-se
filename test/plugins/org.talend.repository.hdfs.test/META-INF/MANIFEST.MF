@@ -5,4 +5,4 @@ Bundle-SymbolicName: org.talend.repository.hdfs.test
 Bundle-Version: 7.3.1.qualifier
 Fragment-Host: org.talend.repository.hdfs
 Bundle-Vendor: .Talend SA.
-Require-Bundle: org.talend.testutils;bundle-version="6.4.0"
+Require-Bundle: org.talend.bigdata.se.test.base

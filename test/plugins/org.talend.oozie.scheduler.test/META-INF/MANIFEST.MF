@@ -5,4 +5,4 @@ Bundle-SymbolicName: org.talend.oozie.scheduler.test
 Bundle-Version: 7.3.1.qualifier
 Bundle-Vendor: Marvin Wang
 Fragment-Host: org.talend.oozie.scheduler
-Require-Bundle: org.talend.testutils
+Require-Bundle: org.talend.bigdata.se.test.base 

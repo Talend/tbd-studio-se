@@ -5,4 +5,4 @@ Bundle-SymbolicName: org.talend.repository.nosql.test
 Bundle-Version: 7.3.1.qualifier
 Fragment-Host: org.talend.repository.nosql
 Bundle-Vendor: .Talend SA.
-Require-Bundle: org.talend.testutils
+Require-Bundle: org.talend.bigdata.se.test.base
