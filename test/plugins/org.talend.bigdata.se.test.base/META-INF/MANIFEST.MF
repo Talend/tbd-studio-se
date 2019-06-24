@@ -20,5 +20,11 @@ Bundle-ClassPath: lib/byte-buddy-1.9.3.jar,
 Export-Package: junit.framework,
  org.hamcrest,
  org.junit,
+ org.junit.runner,
  org.mockito,
- org.powermock
+ org.mockito.invocation,
+ org.mockito.stubbing,
+ org.powermock,
+ org.powermock.api.mockito,
+ org.powermock.core.classloader.annotations,
+ org.powermock.modules.junit4
