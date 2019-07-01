@@ -36,7 +36,7 @@ import org.talend.hadoop.distribution.dbr540.modulegroup.DatabricksSparkStreamin
 import org.talend.hadoop.distribution.dbr540.modulegroup.node.sparkbatch.DatabricksSparkBatchAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.dbr540.modulegroup.node.sparkstreaming.DatabricksSparkStreamingKinesisNodeModuleGroup;
 
-public class DBR540 extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, IDatabricksDistribution {
+public class DBR540Distribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, IDatabricksDistribution {
 
     public final static String VERSION = "Databricks_5_4";
 
@@ -52,7 +52,7 @@ public class DBR540 extends AbstractDistribution implements SparkBatchComponent,
 
     protected Map<ComponentType, String> customVersionDisplayNames;
 
-    public DBR540() {
+    public DBR540Distribution() {
         displayConditions = buildDisplayConditions();
         customVersionDisplayNames = buildCustomVersionDisplayNames();
         moduleGroups = buildModuleGroups();
