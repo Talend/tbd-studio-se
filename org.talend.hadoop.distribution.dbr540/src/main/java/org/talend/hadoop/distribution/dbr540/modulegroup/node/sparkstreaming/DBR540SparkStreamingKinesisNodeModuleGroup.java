@@ -8,7 +8,7 @@ import org.talend.hadoop.distribution.condition.common.SparkStreamingLinkedNodeC
 import org.talend.hadoop.distribution.dbr540.DBR540Constant;
 import org.talend.hadoop.distribution.utils.ModuleGroupsUtils;
 
-public class DatabricksSparkStreamingKinesisNodeModuleGroup {
+public class DBR540SparkStreamingKinesisNodeModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> moduleGroups = new HashSet<>();

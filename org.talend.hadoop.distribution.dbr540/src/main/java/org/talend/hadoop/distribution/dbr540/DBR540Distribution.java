@@ -30,11 +30,11 @@ import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.databricks.IDatabricksDistribution;
-import org.talend.hadoop.distribution.dbr540.modulegroup.DatabricksHiveOnSparkModuleGroup;
-import org.talend.hadoop.distribution.dbr540.modulegroup.DatabricksSparkBatchModuleGroup;
-import org.talend.hadoop.distribution.dbr540.modulegroup.DatabricksSparkStreamingModuleGroup;
-import org.talend.hadoop.distribution.dbr540.modulegroup.node.sparkbatch.DatabricksSparkBatchAzureNodeModuleGroup;
-import org.talend.hadoop.distribution.dbr540.modulegroup.node.sparkstreaming.DatabricksSparkStreamingKinesisNodeModuleGroup;
+import org.talend.hadoop.distribution.dbr540.modulegroup.DBR540HiveOnSparkModuleGroup;
+import org.talend.hadoop.distribution.dbr540.modulegroup.DBR540SparkBatchModuleGroup;
+import org.talend.hadoop.distribution.dbr540.modulegroup.DBR540SparkStreamingModuleGroup;
+import org.talend.hadoop.distribution.dbr540.modulegroup.node.sparkbatch.DBR540SparkBatchAzureNodeModuleGroup;
+import org.talend.hadoop.distribution.dbr540.modulegroup.node.sparkstreaming.DBR540SparkStreamingKinesisNodeModuleGroup;
 
 public class DBR540Distribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, IDatabricksDistribution {
 
@@ -70,9 +70,9 @@ public class DBR540Distribution extends AbstractDistribution implements SparkBat
 
     protected Map<ComponentType, Set<DistributionModuleGroup>> buildModuleGroups() {
         Map<ComponentType, Set<DistributionModuleGroup>> result = new HashMap<>();
-        result.put(ComponentType.SPARKBATCH, DatabricksSparkBatchModuleGroup.getModuleGroups());
-        result.put(ComponentType.SPARKSTREAMING, DatabricksSparkStreamingModuleGroup.getModuleGroups());
-        result.put(ComponentType.HIVEONSPARK, DatabricksHiveOnSparkModuleGroup.getModuleGroups());
+        result.put(ComponentType.SPARKBATCH, DBR540SparkBatchModuleGroup.getModuleGroups());
+        result.put(ComponentType.SPARKSTREAMING, DBR540SparkStreamingModuleGroup.getModuleGroups());
+        result.put(ComponentType.HIVEONSPARK, DBR540HiveOnSparkModuleGroup.getModuleGroups());
         return result;
     }
 
@@ -80,16 +80,16 @@ public class DBR540Distribution extends AbstractDistribution implements SparkBat
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
         // Azure
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
-                SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT), DatabricksSparkBatchAzureNodeModuleGroup
+                SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT), DBR540SparkBatchAzureNodeModuleGroup
                 .getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), DatabricksSparkBatchAzureNodeModuleGroup
+                SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), DBR540SparkBatchAzureNodeModuleGroup
                 .getModuleGroups(distribution, version));
 
         // Kinesis
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT), DatabricksSparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_COMPONENT), DatabricksSparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_AVRO_COMPONENT), DatabricksSparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT), DBR540SparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_COMPONENT), DBR540SparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_AVRO_COMPONENT), DBR540SparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
         return result;
 
     }

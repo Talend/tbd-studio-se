@@ -20,7 +20,7 @@ import org.talend.hadoop.distribution.condition.common.SparkBatchLinkedNodeCondi
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.dbr540.DBR540Constant;
 
-public class DatabricksSparkBatchAzureNodeModuleGroup {
+public class DBR540SparkBatchAzureNodeModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> hs = new HashSet<>();
