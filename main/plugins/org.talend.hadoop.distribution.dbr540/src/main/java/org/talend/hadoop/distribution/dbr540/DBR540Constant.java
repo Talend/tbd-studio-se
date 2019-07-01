@@ -10,10 +10,10 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.databricks;
+package org.talend.hadoop.distribution.dbr540;
 
 
-public enum DatabricksConstant {
+public enum DBR540Constant {
     SPARK_MRREQUIRED_MODULE_GROUP("SPARK-LIB-MRREQUIRED-DATABRICKS"), //$NON-NLS-1$
     SPARK_STREAMING_MRREQUIRED_MODULE_GROUP("SPARK-STREAMING-LIB-MRREQUIRED-DATABRICKS"), //$NON-NLS-1$
     SPARK_STREAMING_KINESIS_MODULE_GROUP("SPARK-STREAMING-LIB-KINESIS-DATABRICKS"), //$NON-NLS-1$
@@ -24,7 +24,7 @@ public enum DatabricksConstant {
 
     private String mModuleName;
 
-    DatabricksConstant(String moduleName) {
+    DBR540Constant(String moduleName) {
         this.mModuleName = moduleName;
     }
 
