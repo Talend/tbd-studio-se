@@ -27,9 +27,13 @@ if(tKafkaInputUtil.isKafkaVersion("KAFKA_0_8_2_0")) {
 %>
 	<%@ include file="@{org.talend.designer.components.bigdata}/components/tKafkaInput/0.8.2.x/tKafkaInput_main_0.8.2.x.javajet"%>
 <%
-} else {
+} else if(tKafkaInputUtil.isKafkaVersion("KAFKA_0_9_0_1")) {
 %>
 	<%@ include file="@{org.talend.designer.components.bigdata}/components/tKafkaInput/0.9.0.x/tKafkaInput_main_0.9.0.x.javajet"%>
+<%
+} else if(tKafkaInputUtil.isKafkaVersion("KAFKA_0_10_0_1") || tKafkaInputUtil.isKafkaVersion("KAFKA_1_1_0")) {
+%>
+	<%@ include file="@{org.talend.designer.components.bigdata}/components/tKafkaInput/0.10.0.x/tKafkaInput_main_0.10.0.x.javajet"%>
 <%
 }
 %>
