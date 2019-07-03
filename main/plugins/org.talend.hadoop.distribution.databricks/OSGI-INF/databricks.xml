@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<component name="DatabricksDistribution">
-  <implementation class="org.talend.hadoop.distribution.databricks.DatabricksDistribution"/>
+<component name="DBR35Distribution">
+  <implementation class="org.talend.hadoop.distribution.dbr35.DBR35Distribution"/>
   <service>
     <provide interface="org.talend.hadoop.distribution.component.HadoopComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.HiveOnSparkComponent"/>
