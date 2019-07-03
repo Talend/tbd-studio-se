@@ -4,7 +4,7 @@ Bundle-Name: Dbr540
 Bundle-SymbolicName: org.talend.hadoop.distribution.dbr540;singleton:=true
 Bundle-Version: 7.3.1.qualifier
 Bundle-Vendor: .Talend SA.
-Service-Component: OSGI-INF/databricks.xml
+Service-Component: OSGI-INF/dbr540.xml
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.talend.core.runtime,
  org.talend.hadoop.distribution
