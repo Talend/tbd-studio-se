@@ -115,8 +115,8 @@
             <!-- Kafka libraries for 2.11-1_1_0 -->
             <IMPORT MODULE_GROUP="KAFKA-LIB-2_11-1_1_0" REQUIRED_IF="(KAFKA_VERSION=='KAFKA_1_1_0')" />
             
-            <!-- Kafka libraries for 2.11-2_2_0 -->
-            <IMPORT MODULE_GROUP="KAFKA-LIB-2_11-1_1_0" REQUIRED_IF="(KAFKA_VERSION=='KAFKA_2_2_0')" />
+            <!-- Kafka libraries for 2.11-2_2_1 -->
+            <IMPORT MODULE_GROUP="KAFKA-LIB-2_11-1_1_0" REQUIRED_IF="(KAFKA_VERSION=='KAFKA_2_2_1')" />
 		</IMPORTS>
 	</CODEGENERATION>
 	<RETURNS />
