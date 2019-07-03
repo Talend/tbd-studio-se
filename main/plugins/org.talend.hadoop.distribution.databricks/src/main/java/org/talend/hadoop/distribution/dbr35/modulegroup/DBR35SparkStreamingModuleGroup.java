@@ -30,7 +30,7 @@ public class DBR35SparkStreamingModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        //hs.add(new DistributionModuleGroup(DatabricksConstant.HDFS_MODULE_GROUP.getModuleName(), false, condition));
+        //hs.add(new DistributionModuleGroup(DBR35Constant.HDFS_MODULE_GROUP.getModuleName(), false, condition));
         hs.add(new DistributionModuleGroup(DBR35Constant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
         hs.add(new DistributionModuleGroup(DBR35Constant.SPARK_STREAMING_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
         hs.add(new DistributionModuleGroup(DBR35Constant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), true, condition));
