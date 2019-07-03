@@ -149,7 +149,7 @@ public class DBR540Distribution extends AbstractDistribution implements SparkBat
 	@Override
 	public Set<ESparkVersion> getSparkVersions() {
 		Set<ESparkVersion> version = new HashSet<>();
-		version.add(ESparkVersion.SPARK_2_2);
+		version.add(ESparkVersion.SPARK_2_4);
         return version;
     }
 
