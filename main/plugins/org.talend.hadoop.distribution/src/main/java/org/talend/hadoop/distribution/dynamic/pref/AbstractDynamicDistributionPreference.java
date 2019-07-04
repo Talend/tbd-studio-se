@@ -175,11 +175,16 @@ public abstract class AbstractDynamicDistributionPreference implements IDynamicD
         return cryptoHelper;
     }
 
-    protected synchronized String encrypt(String str) {
-        return cryptoHelper.encrypt(str);
+    protected String encrypt(String str) {
+        synchronized (CryptoHelper.class) {
+            return cryptoHelper.encrypt(str);
+        }
     }
 
-    protected synchronized String decrypt(String str) {
-        return cryptoHelper.decrypt(str);
+
+    protected String decrypt(String str) {
+        synchronized (CryptoHelper.class) {
+            return cryptoHelper.decrypt(str);
+        }
     }
 }
