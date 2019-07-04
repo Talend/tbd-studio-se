@@ -63,7 +63,7 @@ public abstract class AbstractDynamicDistributionPreference implements IDynamicD
         prefStore.setDefault(getPrefKeyRepository(), getDefaultRepository());
         prefStore.setDefault(getPrefKeyAnonymous(), getDefaultIsAnonymous());
         prefStore.setDefault(getPrefKeyUsername(), getDefaultUsername());
-        prefStore.setDefault(getPrefKeyPassword(), cryptoHelper.encrypt(getDefaultPassword()));
+        prefStore.setDefault(getPrefKeyPassword(), encrypt(getDefaultPassword()));
     }
 
     @Override
@@ -130,7 +130,7 @@ public abstract class AbstractDynamicDistributionPreference implements IDynamicD
     public String getPassword() {
         String password = prefStore.getString(getPrefKeyPassword());
         if (StringUtils.isNotEmpty(password)) {
-            password = cryptoHelper.decrypt(password);
+            password = decrypt(password);
         }
         return password;
     }
@@ -145,7 +145,7 @@ public abstract class AbstractDynamicDistributionPreference implements IDynamicD
         if (password == null) {
             password = ""; //$NON-NLS-1$
         }
-        prefStore.setValue(getPrefKeyPassword(), cryptoHelper.encrypt(password));
+        prefStore.setValue(getPrefKeyPassword(), encrypt(password));
     }
 
     @Override
@@ -173,5 +173,13 @@ public abstract class AbstractDynamicDistributionPreference implements IDynamicD
 
     protected CryptoHelper getCryptoHelper() {
         return cryptoHelper;
+    }
+
+    protected synchronized String encrypt(String str) {
+        return cryptoHelper.encrypt(str);
+    }
+
+    protected synchronized String decrypt(String str) {
+        return cryptoHelper.decrypt(str);
     }
 }
