@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Databricks
-Bundle-SymbolicName: org.talend.hadoop.distribution.dbr35;singleton:=true
+Bundle-SymbolicName: org.talend.hadoop.distribution.dbr350;singleton:=true
 Bundle-Version: 7.3.1.qualifier
 Bundle-Vendor: .Talend SA.
 Service-Component: OSGI-INF/dbr35.xml

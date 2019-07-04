@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.dbr35;
+package org.talend.hadoop.distribution.dbr350;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -30,13 +30,13 @@ import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.databricks.IDatabricksDistribution;
-import org.talend.hadoop.distribution.dbr35.modulegroup.DBR35HiveOnSparkModuleGroup;
-import org.talend.hadoop.distribution.dbr35.modulegroup.DBR35SparkBatchModuleGroup;
-import org.talend.hadoop.distribution.dbr35.modulegroup.DBR35SparkStreamingModuleGroup;
-import org.talend.hadoop.distribution.dbr35.modulegroup.node.sparkbatch.DBR35SparkBatchAzureNodeModuleGroup;
-import org.talend.hadoop.distribution.dbr35.modulegroup.node.sparkstreaming.DBR35SparkStreamingKinesisNodeModuleGroup;
+import org.talend.hadoop.distribution.dbr350.modulegroup.DBR350HiveOnSparkModuleGroup;
+import org.talend.hadoop.distribution.dbr350.modulegroup.DBR350SparkBatchModuleGroup;
+import org.talend.hadoop.distribution.dbr350.modulegroup.DBR350SparkStreamingModuleGroup;
+import org.talend.hadoop.distribution.dbr350.modulegroup.node.sparkbatch.DBR350SparkBatchAzureNodeModuleGroup;
+import org.talend.hadoop.distribution.dbr350.modulegroup.node.sparkstreaming.DBR350SparkStreamingKinesisNodeModuleGroup;
 
-public class DBR35Distribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, IDatabricksDistribution {
+public class DBR350Distribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, IDatabricksDistribution {
 
     public final static String VERSION = "Databricks_3_5";
 
@@ -52,7 +52,7 @@ public class DBR35Distribution extends AbstractDistribution implements SparkBatc
 
     protected Map<ComponentType, String> customVersionDisplayNames;
 
-    public DBR35Distribution() {
+    public DBR350Distribution() {
         displayConditions = buildDisplayConditions();
         customVersionDisplayNames = buildCustomVersionDisplayNames();
         moduleGroups = buildModuleGroups();
@@ -70,9 +70,9 @@ public class DBR35Distribution extends AbstractDistribution implements SparkBatc
 
     protected Map<ComponentType, Set<DistributionModuleGroup>> buildModuleGroups() {
         Map<ComponentType, Set<DistributionModuleGroup>> result = new HashMap<>();
-        result.put(ComponentType.SPARKBATCH, DBR35SparkBatchModuleGroup.getModuleGroups());
-        result.put(ComponentType.SPARKSTREAMING, DBR35SparkStreamingModuleGroup.getModuleGroups());
-        result.put(ComponentType.HIVEONSPARK, DBR35HiveOnSparkModuleGroup.getModuleGroups());
+        result.put(ComponentType.SPARKBATCH, DBR350SparkBatchModuleGroup.getModuleGroups());
+        result.put(ComponentType.SPARKSTREAMING, DBR350SparkStreamingModuleGroup.getModuleGroups());
+        result.put(ComponentType.HIVEONSPARK, DBR350HiveOnSparkModuleGroup.getModuleGroups());
         return result;
     }
 
@@ -80,16 +80,16 @@ public class DBR35Distribution extends AbstractDistribution implements SparkBatc
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
         // Azure
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
-                SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT), DBR35SparkBatchAzureNodeModuleGroup
+                SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT), DBR350SparkBatchAzureNodeModuleGroup
                 .getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), DBR35SparkBatchAzureNodeModuleGroup
+                SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), DBR350SparkBatchAzureNodeModuleGroup
                 .getModuleGroups(distribution, version));
 
         // Kinesis
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT), DBR35SparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_COMPONENT), DBR35SparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_AVRO_COMPONENT), DBR35SparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT), DBR350SparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_COMPONENT), DBR350SparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_AVRO_COMPONENT), DBR350SparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
         return result;
 
     }

@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.dbr35.modulegroup;
+package org.talend.hadoop.distribution.dbr350.modulegroup;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,9 +21,9 @@ import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
-import org.talend.hadoop.distribution.dbr35.DBR35Constant;
+import org.talend.hadoop.distribution.dbr350.DBR350Constant;
 
-public class DBR35SparkBatchModuleGroup {
+public class DBR350SparkStreamingModuleGroup {
 
     private final static ComponentCondition condition = new SimpleComponentCondition(new BasicExpression(
             SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false")); //$NON-NLS-1$
@@ -31,9 +31,10 @@ public class DBR35SparkBatchModuleGroup {
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         //hs.add(new DistributionModuleGroup(DBR35Constant.HDFS_MODULE_GROUP.getModuleName(), false, condition));
-        hs.add(new DistributionModuleGroup(DBR35Constant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
-        hs.add(new DistributionModuleGroup(DBR35Constant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), true, condition));
-        hs.add(new DistributionModuleGroup(DBR35Constant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
+        hs.add(new DistributionModuleGroup(DBR350Constant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
+        hs.add(new DistributionModuleGroup(DBR350Constant.SPARK_STREAMING_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
+        hs.add(new DistributionModuleGroup(DBR350Constant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), true, condition));
+        hs.add(new DistributionModuleGroup(DBR350Constant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
         return hs;
     }
 }
