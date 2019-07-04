@@ -64,9 +64,9 @@
         <module>main/plugins/org.talend.hadoop.distribution.cdh5x</module>
         <module>main/plugins/org.talend.hadoop.distribution.altus10</module>
         <module>main/plugins/org.talend.hadoop.distribution.custom</module>
-        <module>main/plugins/org.talend.hadoop.distribution.dbr350</module>
         <module>main/plugins/org.talend.hadoop.distribution.dataproc11</module>
-        <module>main/plugins/org.talend.hadoop.distribution.dbr540</module>
+        <module>main/plugins/org.talend.hadoop.distribution.dbr350</module>
+	<module>main/plugins/org.talend.hadoop.distribution.dbr540</module>
         <module>main/plugins/org.talend.hadoop.distribution.emr103</module>
         <module>main/plugins/org.talend.hadoop.distribution.emr240</module>
         <module>main/plugins/org.talend.hadoop.distribution.emr240hive0131</module>
