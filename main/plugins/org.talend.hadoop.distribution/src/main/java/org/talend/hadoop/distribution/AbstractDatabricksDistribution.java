@@ -10,12 +10,14 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.constants.databricks;
+package org.talend.hadoop.distribution;
 
-@SuppressWarnings("nls")
-public interface IDatabricksDistribution {
+public abstract class AbstractDatabricksDistribution extends AbstractDistribution {
 
-    static final String DISTRIBUTION_NAME = "DATABRICKS";
-
-    static final String DISTRIBUTION_DISPLAY_NAME = "Databricks";
+    /**
+     * Get the spark version to be passed in rest call for transient cluster creation
+     */
+    public String getTransientClusterSparkVersion() {
+        return "3.5.x-scala2.11";
+    };
 }

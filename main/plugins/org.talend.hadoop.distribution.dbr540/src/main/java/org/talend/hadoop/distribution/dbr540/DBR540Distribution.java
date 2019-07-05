@@ -17,7 +17,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.talend.hadoop.distribution.AbstractDistribution;
+import org.talend.hadoop.distribution.AbstractDatabricksDistribution;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
@@ -36,7 +36,8 @@ import org.talend.hadoop.distribution.dbr540.modulegroup.DBR540SparkStreamingMod
 import org.talend.hadoop.distribution.dbr540.modulegroup.node.sparkbatch.DBR540SparkBatchAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.dbr540.modulegroup.node.sparkstreaming.DBR540SparkStreamingKinesisNodeModuleGroup;
 
-public class DBR540Distribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, IDatabricksDistribution {
+public class DBR540Distribution extends AbstractDatabricksDistribution implements SparkBatchComponent,
+        SparkStreamingComponent, HiveOnSparkComponent, IDatabricksDistribution {
 
     public final static String VERSION = "Databricks_5_4";
 
