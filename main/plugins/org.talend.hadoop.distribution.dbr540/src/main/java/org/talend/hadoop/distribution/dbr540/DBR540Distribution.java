@@ -236,4 +236,8 @@ public class DBR540Distribution extends AbstractDistribution implements SparkBat
         return false;
     }
 
+    @Override
+    public String getTransientClusterSparkVersion() {
+        return "5.4.x-scala2.11";
+    }
 }

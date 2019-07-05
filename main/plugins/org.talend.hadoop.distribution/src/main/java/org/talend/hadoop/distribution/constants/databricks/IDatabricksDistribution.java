@@ -18,4 +18,9 @@ public interface IDatabricksDistribution {
     static final String DISTRIBUTION_NAME = "DATABRICKS";
 
     static final String DISTRIBUTION_DISPLAY_NAME = "Databricks";
+
+    /**
+     * Get the spark version to be passed in rest call for transient cluster creation
+     */
+    public String getTransientClusterSparkVersion();
 }
