@@ -226,9 +226,9 @@
 
         <!-- Big Data launcher group -->
         <libraryNeededGroup
-                description="Big Data launcher libraries for Databricks"
-                id="BIGDATA-LAUNCHER-LIB-DATABRICKS"
-                name="BIGDATA-LAUNCHER-LIB-DATABRICKS"  >
+                description="Big Data launcher libraries for DBR350"
+                id="BIGDATA-LAUNCHER-LIB-DBR350"
+                name="BIGDATA-LAUNCHER-LIB-DBR350"  >
 			<library id="talend-bigdata-launcher-platform-1.3.2.jar" />
 			<library id="gson-2.3.jar" />
 			<library id="jackson-core-2.8.9.jar" />
@@ -238,9 +238,9 @@
         
         <!-- Spark group -->
         <libraryNeededGroup
-                description="SPARK libraries for Databricks"
-                id="SPARK-LIB-MRREQUIRED-DATABRICKS"
-                name="SPARK-LIB-MRREQUIRED-DATABRICKS">
+                description="SPARK libraries for DBR350"
+                id="SPARK-LIB-MRREQUIRED-DBR350"
+                name="SPARK-LIB-MRREQUIRED-DBR350">
              <library id="azure-storage-5.0.0.jar"/>
              <library id="avro-mapred-1.7.7-hadoop2.jar"/>
              <library id="commons-codec-1.10.jar"/>
@@ -271,18 +271,18 @@
 
         <!-- Spark Streaming group -->
         <libraryNeededGroup
-                description="SPARK libraries for Databricks"
-                id="SPARK-STREAMING-LIB-MRREQUIRED-DATABRICKS"
-                name="SPARK-STREAMING-LIB-MRREQUIRED-DATABRICKS">
+                description="SPARK libraries for DBR350"
+                id="SPARK-STREAMING-LIB-MRREQUIRED-DBR350"
+                name="SPARK-STREAMING-LIB-MRREQUIRED-DBR350">
              <library id="spark-streaming_2.11-2.2.1.jar"/>
         </libraryNeededGroup>
         
         
         <!-- Spark Streaming Kinesis group -->
         <libraryNeededGroup
-                description="SPARK libraries for Databricks"
-                id="SPARK-STREAMING-LIB-KINESIS-DATABRICKS"
-                name="SPARK-STREAMING-LIB-KINESIS-DATABRICKS">
+                description="SPARK libraries for DBR350"
+                id="SPARK-STREAMING-LIB-KINESIS-DBR350"
+                name="SPARK-STREAMING-LIB-KINESIS-DBR350">
              <library id="spark-streaming-kinesis-asl_2.11-2.2.0.jar"/>
             <library id="amazon-kinesis-client-1.8.1.jar"/>
             <library id="aws-java-sdk-kinesis-1.11.160.jar"/>
@@ -290,17 +290,17 @@
         </libraryNeededGroup>
         <!-- HiveOnSpark group -->
         <libraryNeededGroup
-                description="Hive On SPARK libraries for Databricks"
-                id="HIVEONSPARK-LIB-MRREQUIRED-DATABRICKS"
-                name="HIVEONSPARK-LIB-MRREQUIRED-DATABRICKS">
+                description="Hive On SPARK libraries for DBR350"
+                id="HIVEONSPARK-LIB-MRREQUIRED-DBR350"
+                name="HIVEONSPARK-LIB-MRREQUIRED-DBR350">
              <library id="spark-hive_2.11-2.2.1.jar"/>
         </libraryNeededGroup>
         
         <!-- Spark Azure group -->
         <libraryNeededGroup
-                description="Hive On SPARK libraries for Databricks"
-                id="SPARK-AZURE-LIB-MRREQUIRED-DATABRICKS"
-                name="SPARK-AZURE-LIB-MRREQUIRED-DATABRICKS">
+                description="Hive On SPARK libraries for DBR350"
+                id="SPARK-AZURE-LIB-MRREQUIRED-DBR350"
+                name="SPARK-AZURE-LIB-MRREQUIRED-DBR350">
              <library id="hadoop-azure-datalake-2.8.1.jar"/>
              <library id="azure-data-lake-store-sdk-2.3.1.jar"/>            
         </libraryNeededGroup>
