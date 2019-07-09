@@ -173,7 +173,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="high-scale-lib-1.1.1.jar"
             name="high-scale-lib-1.1.1.jar" 
-            mvn_uri="mvn:com.mapr.hadoop/high-scale-lib/1.1.1" >
+            mvn_uri="mvn:com.github.stephenc.high-scale-lib/high-scale-lib/1.1.1" >
         </libraryNeeded>
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
@@ -185,19 +185,19 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="parquet-hive-bundle-1.6.0.jar"
             name="parquet-hive-bundle-1.6.0.jar" 
-            mvn_uri="mvn:com.google.guava/parquet-hive-bundle/1.6.0" >
+            mvn_uri="mvn:com.twitter/parquet-hive-bundle/1.6.0" >
         </libraryNeeded>
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="snappy-java-1.1.1.7.jar"
             name="snappy-java-1.1.1.7.jar" 
-            mvn_uri="mvn:com.google.guava/snappy-java/1.1.1.7" >
+            mvn_uri="mvn:org.xerial.snappy/snappy-java/1.1.1.7" >
         </libraryNeeded>
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="protobuf-java-2.5.0.jar"
             name="protobuf-java-2.5.0.jar" 
-            mvn_uri="mvn:com.google.guava/protobuf-java/2.5.0" >
+            mvn_uri="mvn:com.google.protobuf/protobuf-java/2.5.0" >
         </libraryNeeded>
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
@@ -293,7 +293,7 @@
             context="plugin:org.talend.libraries.hadoop"
             id="parquet-hadoop-bundle-1.6.0.jar"
             name="parquet-hadoop-bundle-1.6.0.jar" 
-            mvn_uri="mvn:org.apache.parquet/parquet-hadoop-bundle/1.6.0" >
+            mvn_uri="mvn:com.twitter/parquet-hadoop-bundle/1.6.0" >
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop"
@@ -371,7 +371,7 @@
             context="plugin:org.talend.libraries.hadoop"
             id="hbase-hadoop-compat-1.1.8-mapr-1901.jar"
             name="hbase-hadoop-compat-1.1.8-mapr-1901.jar" 
-            mvn_uri="mvn:org.apache.parquet/hbase-hadoop-compat/1.1.8-mapr-1901" >
+            mvn_uri="mvn:org.apache.hbase/hbase-hadoop-compat/1.1.8-mapr-1901" >
         </libraryNeeded>
 
         <libraryNeeded
@@ -420,7 +420,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="commons-configuration-1.6.jar"
             name="commons-configuration-1.6.jar"
-            mvn_uri="mvn:commons-collections/commons-configuration/1.6">
+            mvn_uri="mvn:commons-configuration/commons-configuration/1.6">
         </libraryNeeded>
 
         <libraryNeeded
@@ -569,7 +569,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
             id="log4j-1.2.17.jar" 
             name="log4j-1.2.17.jar"
-            mvn_uri="mvn:com.google.code.gson/log4j/1.2.17">
+            mvn_uri="mvn:log4j/log4j/1.2.17">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
@@ -731,7 +731,7 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="libfb303-0.9.3.jar" name="libfb303-0.9.3.jar" mvn_uri="mvn:org.apache.thrift/libfb303/0.9.3"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="libthrift-0.9.3.jar" name="libthrift-0.9.3.jar" mvn_uri="mvn:org.apache.thrift/libthrift/0.9.3"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="lz4-1.3.0.jar" name="lz4-1.3.0.jar" mvn_uri="mvn:net.jpountz.lz4/lz4/1.3.0"/>
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="maprdb-spark-2.3.2.0-mapr-1901.jar" name="maprdb-spark-2.3.2.0-mapr-1901.jar" mvn_uri="mvn:org.apache.spark/maprdb-spark/2.3.2.0-mapr-1901"/>
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="maprdb-spark-2.3.2.0-mapr-1901.jar" name="maprdb-spark-2.3.2.0-mapr-1901.jar" mvn_uri="mvn:com.mapr.db/maprdb-spark/2.3.2.0-mapr-1901"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="mesos-1.4.0-shaded-protobuf.jar" name="mesos-1.4.0-shaded-protobuf.jar" mvn_uri="mvn:org.talend.libraries/mesos-1.4.0-shaded-protobuf/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="metrics-core-3.1.5.jar" name="metrics-core-3.1.5.jar" mvn_uri="mvn:io.dropwizard.metrics/metrics-core/3.1.5"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="metrics-core-2.2.0.jar" name="metrics-core-2.2.0.jar" mvn_uri="mvn:com.yammer.metrics/metrics-core/2.2.0"/>
@@ -784,7 +784,7 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="spire_2.11-0.13.0.jar" name="spire_2.11-0.13.0.jar" mvn_uri="mvn:org.spire-math/spire_2.11/0.13.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="spire-macros_2.11-0.13.0.jar" name="spire-macros_2.11-0.13.0.jar" mvn_uri="mvn:org.spire-math/spire-macros_2.11/0.13.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="ST4-4.0.4.jar" name="ST4-4.0.4.jar" mvn_uri="mvn:org.antlr/ST4/4.0.4"/>
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="stax-api-1.0.2.jar" name="stax-api-1.0.2.jar" mvn_uri="mvn:org.talend.libraries/stax-api-1.0.2/6.0.0"/>
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="stax-api-1.0-2.jar" name="stax-api-1.0-2.jar" mvn_uri="mvn:org.talend.libraries/stax-api-1.0-2/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="stream-2.7.0.jar" name="stream-2.7.0.jar" mvn_uri="mvn:com.clearspring.analytics/stream/2.7.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="stringtemplate-3.2.1.jar" name="stringtemplate-3.2.1.jar" mvn_uri="mvn:org.antlr/stringtemplate/3.2.1"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="super-csv-2.2.0.jar" name="super-csv-2.2.0.jar" mvn_uri="mvn:net.sf.supercsv/super-csv/2.2.0"/>
@@ -1155,7 +1155,7 @@
 			<library id="spire_2.11-0.13.0.jar"/>
 			<library id="spire-macros_2.11-0.13.0.jar"/>
 			<library id="ST4-4.0.4.jar"/>
-			<library id="stax-api-1.0.2.jar"/>
+			<library id="stax-api-1.0-2.jar"/>
 			<library id="stream-2.7.0.jar"/>
 			<library id="stringtemplate-3.2.1.jar"/>
 			<library id="super-csv-2.2.0.jar"/>
