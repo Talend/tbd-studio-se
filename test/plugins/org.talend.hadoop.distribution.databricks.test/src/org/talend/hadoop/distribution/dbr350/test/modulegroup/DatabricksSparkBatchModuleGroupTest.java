@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.databricks.test.modulegroup;
+package org.talend.hadoop.distribution.dbr350.test.modulegroup;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -21,20 +21,21 @@ import java.util.Set;
 
 import org.junit.Test;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
-import org.talend.hadoop.distribution.databricks.DatabricksConstant;
-import org.talend.hadoop.distribution.databricks.modulegroup.DatabricksHiveOnSparkModuleGroup;
+import org.talend.hadoop.distribution.dbr350.DBR350Constant;
+import org.talend.hadoop.distribution.dbr350.modulegroup.DBR350SparkBatchModuleGroup;
 
-public class DatabricksHiveOnSparkModuleGroupTest {
+public class DatabricksSparkBatchModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
         Map<String, String> results = new HashMap<>();
-        results.put(DatabricksConstant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
+        results.put(DBR350Constant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+        results.put(DBR350Constant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+        results.put(DBR350Constant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
 
-
-        Set<DistributionModuleGroup> moduleGroups = DatabricksHiveOnSparkModuleGroup.getModuleGroups();
+        Set<DistributionModuleGroup> moduleGroups = DBR350SparkBatchModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());
-        moduleGroups.iterator();
+
         for (DistributionModuleGroup module : moduleGroups) {
             assertTrue("Should contain module " + module.getModuleName(), results.containsKey(module.getModuleName())); //$NON-NLS-1$
             if (results.get(module.getModuleName()) == null) {

@@ -1,4 +1,4 @@
-package org.talend.hadoop.distribution.databricks.test;
+package org.talend.hadoop.distribution.dbr350.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -11,18 +11,18 @@ import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
-import org.talend.hadoop.distribution.databricks.DatabricksDistribution;
+import org.talend.hadoop.distribution.dbr350.DBR350Distribution;
 
-public class DatabricksDistributionTest {
+public class DBR350DistributionTest {
 
     @Test
     public void testDatabricksDistribution() throws Exception {
-        HadoopComponent distribution = new DatabricksDistribution();
+        HadoopComponent distribution = new DBR350Distribution();
         assertNotNull(distribution.getDistributionName());
         assertNotNull(distribution.getVersionName(null));
         assertTrue(distribution.doSupportS3());
-        assertEquals(DatabricksDistribution.DISTRIBUTION_NAME, distribution.getDistribution());
-        assertEquals(DatabricksDistribution.VERSION, distribution.getVersion());
+        assertEquals(DBR350Distribution.DISTRIBUTION_NAME, distribution.getDistribution());
+        assertEquals(DBR350Distribution.VERSION, distribution.getVersion());
         assertEquals(EHadoopVersion.HADOOP_2, distribution.getHadoopVersion());
         assertFalse(distribution.doSupportKerberos());
 

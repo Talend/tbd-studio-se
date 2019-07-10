@@ -7,6 +7,6 @@
     <version>7.3.1-SNAPSHOT</version>
     <relativePath>../../../</relativePath>
   </parent>
-  <artifactId>org.talend.hadoop.distribution.databricks.test</artifactId>
+  <artifactId>org.talend.hadoop.distribution.dbr350.test</artifactId>
   <packaging>eclipse-plugin</packaging>
 </project>

@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.databricks.test.modulegroup.node.sparkbatch;
+package org.talend.hadoop.distribution.dbr350.test.modulegroup;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -21,22 +21,21 @@ import java.util.Set;
 
 import org.junit.Test;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
-import org.talend.hadoop.distribution.databricks.DatabricksConstant;
-import org.talend.hadoop.distribution.databricks.DatabricksDistribution;
-import org.talend.hadoop.distribution.databricks.modulegroup.node.sparkbatch.DatabricksSparkBatchAzureNodeModuleGroup;
+import org.talend.hadoop.distribution.dbr350.DBR350Constant;
+import org.talend.hadoop.distribution.dbr350.modulegroup.DBR350SparkStreamingModuleGroup;
 
-public class DatabricksSparkBatchAzureNodeModuleGroupTest {
+public class DatabricksSparkStreamingModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
         Map<String, String> results = new HashMap<>();
-        results
-                .put(DatabricksConstant.SPARK_AZURE_MRREQUIRED_MODULE_GROUP.getModuleName(),
-                        "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION=='DATABRICKS') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION=='Databricks_3_5')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+        results.put(DBR350Constant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+        results.put(DBR350Constant.SPARK_STREAMING_MRREQUIRED_MODULE_GROUP.getModuleName(),
+                "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+        results.put(DBR350Constant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+        results.put(DBR350Constant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
 
-        Set<DistributionModuleGroup> moduleGroups =
-                DatabricksSparkBatchAzureNodeModuleGroup.getModuleGroups(DatabricksDistribution.DISTRIBUTION_NAME,
-                        DatabricksDistribution.VERSION);
+        Set<DistributionModuleGroup> moduleGroups = DBR350SparkStreamingModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());
 
         for (DistributionModuleGroup module : moduleGroups) {

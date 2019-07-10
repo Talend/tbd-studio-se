@@ -10,19 +10,17 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.databricks.test;
+package org.talend.hadoop.distribution.dbr350.test;
 
-import org.junit.Test;
-import org.talend.core.hadoop.EHadoopCategory;
 import org.talend.hadoop.distribution.component.HadoopComponent;
-import org.talend.hadoop.distribution.databricks.DatabricksDistribution;
+import org.talend.hadoop.distribution.dbr350.DBR350Distribution;
 import org.talend.hadoop.distribution.test.classloader.AbstractTest4ClassLoaderProvider;
 
-public class DatabricksClassLoaderTest extends AbstractTest4ClassLoaderProvider {
+public class DBR350ClassLoaderTest extends AbstractTest4ClassLoaderProvider {
 
     @Override
     protected Class<? extends HadoopComponent> getHadoopComponentClass() {
-        return DatabricksDistribution.class;
+        return DBR350Distribution.class;
     }
 
 

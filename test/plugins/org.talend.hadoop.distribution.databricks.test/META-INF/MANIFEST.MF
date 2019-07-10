@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Azure Databricks Distribution Test
-Bundle-SymbolicName: org.talend.hadoop.distribution.databricks.test
+Bundle-Name: Databricks 3.5.0 Distribution Test
+Bundle-SymbolicName: org.talend.hadoop.distribution.dbr350.test
 Bundle-Version: 7.3.1.qualifier
 Bundle-Vendor: .Talend SA.
-Fragment-Host: org.talend.hadoop.distribution.databricks
+Fragment-Host: org.talend.hadoop.distribution.dbr350
 Require-Bundle: org.junit;bundle-version="4.11.0",
  org.talend.utils;bundle-version="6.0.0",
  org.talend.testutils;bundle-version="6.0.0",
