@@ -26,7 +26,7 @@ public class ClouderaDependencyResolver extends AbstractDependencyResolver imple
     private List<Pattern> clouderaDistributionPatterns;
 
     @Override
-    protected List<Pattern> getDistributionPatterns() {
+    protected synchronized List<Pattern> getDistributionPatterns() {
         if (clouderaDistributionPatterns == null || clouderaDistributionPatterns.isEmpty()) {
             clouderaDistributionPatterns = new ArrayList<>();
             // In this way the version prior to cdh should contain at least 3 characters (ex. 1.0), normally it's always the case
