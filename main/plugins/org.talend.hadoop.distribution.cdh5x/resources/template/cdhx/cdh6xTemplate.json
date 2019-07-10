@@ -1806,6 +1806,8 @@
 			"modules": [
 				"hadoop-mapreduce-client-core",
 				"hadoop-yarn-server-web-proxy",
+				"spark-hive_2.11",
+				"hive-exec",
 				"spark-mllib_2.11",
 				"spark-yarn_2.11",
 				"spark-avro_2.11"
