@@ -657,7 +657,7 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.1" id="libfb303-0.9.3.jar" name="libfb303-0.9.3.jar" mvn_uri="mvn:org.apache.thrift/libfb303/0.9.3"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.1" id="libthrift-0.9.3.jar" name="libthrift-0.9.3.jar" mvn_uri="mvn:org.apache.thrift/libthrift/0.9.3"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.1" id="lz4-1.3.0.jar" name="lz4-1.3.0.jar" mvn_uri="mvn:org.talend.libraries/lz4-1.3.0/6.0.0"/>
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.1" id="maprdb-spark-2.2.1-mapr-1803-r2.jar" name="maprdb-spark-2.2.1-mapr-1803-r2.jar" mvn_uri="mvn:org.apache.spark/maprdb-spark/2.2.1-mapr-1803-r2"/>
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.1" id="maprdb-spark-2.2.1-mapr-1803-r2.jar" name="maprdb-spark-2.2.1-mapr-1803-r2.jar" mvn_uri="mvn:com.mapr.db/maprdb-spark/2.2.1-mapr-1803-r2"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.1" id="mesos-1.0.0-shaded-protobuf.jar" name="mesos-1.0.0-shaded-protobuf.jar" mvn_uri="mvn:org.talend.libraries/mesos-1.0.0-shaded-protobuf/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.1" id="metrics-core-3.1.2.jar" name="metrics-core-3.1.2.jar" mvn_uri="mvn:org.talend.libraries/metrics-core-3.1.2/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.1" id="metrics-core-2.2.0.jar" name="metrics-core-2.2.0.jar" mvn_uri="mvn:com.yammer.metrics/metrics-core/2.2.0"/>

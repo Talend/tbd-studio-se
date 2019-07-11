@@ -26,7 +26,7 @@ public class HortonworksDependencyResolver extends AbstractDependencyResolver im
     private List<Pattern> hortonworksDistributionPatterns;
 
     @Override
-    protected List<Pattern> getDistributionPatterns() {
+    protected synchronized List<Pattern> getDistributionPatterns() {
         if (hortonworksDistributionPatterns == null || hortonworksDistributionPatterns.isEmpty()) {
             hortonworksDistributionPatterns = new ArrayList<>();
             Pattern hortonworksDistributionPattern = Pattern.compile("^(?:\\d+\\.\\d+\\.\\d+\\.)((\\d+\\.){3}\\d+-\\d+)$"); //$NON-NLS-1$
