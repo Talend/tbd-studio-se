@@ -32,7 +32,7 @@ public class DBR540SparkBatchAzureNodeModuleGroupTest {
         Map<String, String> results = new HashMap<>();
         results
                 .put(DBR540Constant.SPARK_AZURE_MRREQUIRED_MODULE_GROUP.getModuleName(),
-                        "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION=='DATABRICKS') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION=='Databricks_3_5')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+                        "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION=='DATABRICKS') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION=='Databricks_5_4')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
 
         Set<DistributionModuleGroup> moduleGroups =
                 DBR540SparkBatchAzureNodeModuleGroup.getModuleGroups(DBR540Distribution.DISTRIBUTION_NAME,
