@@ -365,4 +365,8 @@ public boolean isQuboleDistribution() {
     public String getSqoopPackageName() {
         return ESqoopPackageName.COM_CLOUDERA_SQOOP.toString();
     }
+    
+    public boolean doSupportAzureDataLakeStorageGen2() {
+    	return false;
+    }
 }

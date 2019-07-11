@@ -241,4 +241,9 @@ public class DBR540Distribution extends AbstractDatabricksDistribution implement
     public String getTransientClusterSparkVersion() {
         return "5.4.x-scala2.11";
     }
+    
+    @Override
+    public boolean doSupportAzureDataLakeStorageGen2() {
+    	return true;
+    }
 }
