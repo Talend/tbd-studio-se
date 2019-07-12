@@ -38,4 +38,5 @@ imports="
 	<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/DB/AbstractDBConnection.javajet"%>
 
 	globalMap.put("conn_<%=cid%>",conn_<%=cid%>);
+	globalMap.put("username_<%=cid%>",<%=dbuser%>);
 
