@@ -54,7 +54,7 @@ public class Dataproc14Distribution extends AbstractDistribution implements HDFS
 
     public static final String VERSION = "DATAPROC_1_4"; //$NON-NLS-1$
 
-    public static final String VERSION_DISPLAY = "Dataproc 1.4 (Apache 2.7.3)"; //$NON-NLS-1$
+    public static final String VERSION_DISPLAY = "Dataproc 1.4 (Apache 2.9.2)"; //$NON-NLS-1$
 
     private final static String SPARK_MODULE_GROUP_NAME = "SPARK2-LIB-DATAPROC14"; //$NON-NLS-1$
 
@@ -217,13 +217,13 @@ public class Dataproc14Distribution extends AbstractDistribution implements HDFS
 
     @Override
     public boolean doSupportKerberos() {
-        return false;
+        return true;
     }
 
     @Override
     public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
-        version.add(ESparkVersion.SPARK_2_0);
+        version.add(ESparkVersion.SPARK_2_4);
         return version;
     }
 
