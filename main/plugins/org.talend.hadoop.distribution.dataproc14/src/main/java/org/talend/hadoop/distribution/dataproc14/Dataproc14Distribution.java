@@ -49,7 +49,7 @@ import org.talend.hadoop.distribution.dataproc14.modulegroup.node.sparkstreaming
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
-public class Dataproc14Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, SparkBatchComponent,
+public class Dataproc14Distribution extends AbstractDistribution implements HDFSComponent, /*MRComponent, */SparkBatchComponent,
         HiveComponent, SparkStreamingComponent, HiveOnSparkComponent, IGoogleDataprocDistribution {
 
     public static final String VERSION = "DATAPROC_1_4"; //$NON-NLS-1$
@@ -87,7 +87,7 @@ public class Dataproc14Distribution extends AbstractDistribution implements HDFS
         result.put(ComponentType.HDFS, Dataproc14HDFSModuleGroup.getModuleGroups());
         result.put(ComponentType.HIVE, Dataproc14HiveModuleGroup.getModuleGroups());
         result.put(ComponentType.SPARKBATCH, Dataproc14SparkBatchModuleGroup.getModuleGroups());
-        result.put(ComponentType.MAPREDUCE, Dataproc14MapReduceModuleGroup.getModuleGroups());
+//        result.put(ComponentType.MAPREDUCE, Dataproc14MapReduceModuleGroup.getModuleGroups());
         result.put(ComponentType.SPARKSTREAMING, Dataproc14SparkStreamingModuleGroup.getModuleGroups());
         result.put(ComponentType.HIVEONSPARK, Dataproc14HiveOnSparkModuleGroup.getModuleGroups());
         return result;
