@@ -15,7 +15,7 @@
             context="plugin:org.talend.hadoop.distribution.dbr540"
             id="hadoop-azure-datalake-2.8.1.jar"
             name="hadoop-azure-datalake-2.8.1.jar"
-            mvn_uri="mvn:org.apache.hadoop/hadoop-azure-datalake/2.8.1">
+            mvn_uri="mvn:org.talend.libraries/hadoop-azure-datalake-2.8.1/6.0.0">
         </libraryNeeded>        
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dbr540"
