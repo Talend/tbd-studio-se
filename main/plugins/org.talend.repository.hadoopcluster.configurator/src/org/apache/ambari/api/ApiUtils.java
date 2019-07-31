@@ -22,7 +22,6 @@ import org.joda.time.format.ISODateTimeFormat;
 import org.joda.time.format.ISOPeriodFormat;
 import org.joda.time.format.PeriodFormatter;
 
-import com.cloudera.api.Parameters;
 import com.google.common.base.Preconditions;
 
 /**
@@ -40,6 +39,8 @@ public final class ApiUtils {
 
     private static final PeriodFormatter PERIOD_FORMATTER = ISOPeriodFormat.standard();
 
+    private static final String DATE_TIME_NOW = "now";
+
     /**
      * A special path component contained in the path for an HDFS snapshot dir.
      *
@@ -48,7 +49,7 @@ public final class ApiUtils {
     public final static String DOT_SNAPSHOT_DIR = ".snapshot";
 
     public static Instant newInstantFromString(String value) {
-        if (value.equalsIgnoreCase(Parameters.DATE_TIME_NOW)) {
+        if (value.equalsIgnoreCase(DATE_TIME_NOW)) {
             return new Instant();
         }
 

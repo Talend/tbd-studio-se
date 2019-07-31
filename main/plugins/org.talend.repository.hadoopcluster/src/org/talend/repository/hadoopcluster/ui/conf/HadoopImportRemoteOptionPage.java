@@ -67,6 +67,15 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
         setPageComplete(false);
     }
 
+    private String getSelectedCluster() {
+        List<String> names = (List<String>) clustersCombo.getData();
+        String name = names.get(clustersCombo.getSelectionIndex());
+        String[] nameDisplayNameArray = name.split(HadoopConfigurator.NAME_SEPARATOR_PATTERN);
+        if (nameDisplayNameArray.length > 1) {
+            return nameDisplayNameArray[1];
+        }
+        return nameDisplayNameArray[0];
+    }
     private void addListener() {
         selectClusterButton.addSelectionListener(new SelectionAdapter() {
 
@@ -76,10 +85,10 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
                     IRetrieveConfsJobService retrieveJobServer = connectionForm.getRetrieveJobService();
                     if (retrieveJobServer != null) {
                         retrieveJobServer.setDistributionVersion(distriVersion);
-                        retrieveJobServer.setSelectedCluster(clustersCombo.getText());
+                        retrieveJobServer.setSelectedCluster(getSelectedCluster());
                         confsService = (IRetrieveConfsService) retrieveJobServer;
                     } else if (configurator != null) {
-                        HadoopCluster cluster = configurator.getCluster(clustersCombo.getText());
+                        HadoopCluster cluster = configurator.getCluster(getSelectedCluster());
                         confsService = new RetrieveRemoteConfsService(cluster);
                     }
                     if (confsService != null) {
@@ -131,6 +140,18 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
         return servicesTableComp.getSelectedServices();
     }
 
+    private void bindCombo(List<String> clusters) {
+        if (clusters != null && clusters.size() > 0) {
+            String[] data = new String[clusters.size()];
+            for (int i = 0; i < clusters.size(); i++) {
+                data[i] = clusters.get(i).split(HadoopConfigurator.NAME_SEPARATOR_PATTERN)[0];
+            }
+            clustersCombo.setData(clusters);
+            clustersCombo.setItems(data);
+            clustersCombo.select(0);
+        }
+    }
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         setErrorMessage(null);
@@ -142,10 +163,7 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
                 configurator = (HadoopConfigurator) newValue;
                 try {
                     List<String> clusters = configurator.getAllClusters();
-                    if (clusters != null && clusters.size() > 0) {
-                        clustersCombo.setItems(clusters.toArray(new String[0]));
-                        clustersCombo.select(0);
-                    }
+                    bindCombo(clusters);
                 } catch (Exception e) {
                     exception = e;
                 }
@@ -158,8 +176,7 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
             if (newValue instanceof IRetrieveConfsJobService) {
                 IRetrieveConfsJobService retrieveConfigJobService = (IRetrieveConfsJobService) newValue;
                 List<String> clusters = retrieveConfigJobService.getAllClusterName();
-                clustersCombo.setItems(clusters.toArray(new String[0]));
-                clustersCombo.select(0);
+                bindCombo(clusters);
             } else if (newValue instanceof Exception) {
                 exception = (Exception) newValue;
             }

@@ -12,9 +12,11 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.configurator.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.talend.repository.hadoopcluster.configurator.HadoopClusterService;
@@ -27,11 +29,31 @@ import org.talend.repository.hadoopcluster.configurator.HadoopHostedService;
  */
 public class TestUtil {
 
+    public static String getClusterName(String clusterNameWithDisplayName) {
+        String[] clusterNameArray = clusterNameWithDisplayName.split(HadoopConfigurator.NAME_SEPARATOR_PATTERN);
+        String clusterName = clusterNameArray[0];
+        if (clusterNameArray.length > 1) {
+            clusterName = clusterNameArray[1];
+        }
+        return clusterName;
+    }
+
+    public static String getClusterDisplayName(String clusterNameWithDisplayName) {
+        String[] clusterNameArray = clusterNameWithDisplayName.split(HadoopConfigurator.NAME_SEPARATOR_PATTERN);
+        return clusterNameArray[0];
+    }
+
     public static void checkCluster(HadoopConfigurator configurator, String... clusterNames) throws Exception {
-        String[] allClusters = configurator.getAllClusters().toArray(new String[configurator.getAllClusters().size()]);
-        Arrays.sort(allClusters);
+        List<String> allClusters = configurator.getAllClusters();
+
+        String[] displayNames = new String[allClusters.size()];
+        for (int i = 0; i < allClusters.size(); i++) {
+            displayNames[i] = getClusterDisplayName(allClusters.get(i));
+        }
+
+        Arrays.sort(displayNames);
         Arrays.sort(clusterNames);
-        assertArrayEquals(clusterNames, allClusters);
+        assertArrayEquals(clusterNames, displayNames);
     }
 
     public static void checkService(Map<HadoopHostedService, HadoopClusterService> services,

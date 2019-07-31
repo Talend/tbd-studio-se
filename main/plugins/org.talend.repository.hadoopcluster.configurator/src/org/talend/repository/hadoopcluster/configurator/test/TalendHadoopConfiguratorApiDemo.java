@@ -29,6 +29,15 @@ import org.talend.repository.hadoopcluster.configurator.HadoopHostedService;
  */
 public class TalendHadoopConfiguratorApiDemo {
 
+    public static String getClusterName(String clusterNameWithDisplayName) {
+        String[] clusterNameArray = clusterNameWithDisplayName.split(HadoopConfigurator.NAME_SEPARATOR_PATTERN);
+        String clusterName = clusterNameArray[0];
+        if (clusterNameArray.length > 1) {
+            clusterName = clusterNameArray[1];
+        }
+        return clusterName;
+    }
+
     public static void main(String[] args) {
         try {
             String folder = "/tmp/cm";
@@ -46,7 +55,9 @@ public class TalendHadoopConfiguratorApiDemo {
 
             System.out.println(configurator.getAllClusters());
 
-            HadoopCluster cluster = configurator.getCluster(configurator.getAllClusters().get(0));
+            String clusterName = getClusterName(configurator.getAllClusters().get(0));
+            HadoopCluster cluster = configurator.getCluster(clusterName);
+
             Map<HadoopHostedService, HadoopClusterService> services = cluster.getHostedServices();
             for (HadoopHostedService serviceName : services.keySet()) {
 

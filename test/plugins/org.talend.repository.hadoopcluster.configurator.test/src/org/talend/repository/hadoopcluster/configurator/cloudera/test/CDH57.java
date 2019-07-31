@@ -12,7 +12,8 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.configurator.cloudera.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.net.URL;
 import java.util.Arrays;
@@ -42,7 +43,8 @@ public class CDH57 {
 
         TestUtil.checkCluster(configurator, "Cluster 1");
 
-        HadoopCluster cluster = configurator.getCluster(configurator.getAllClusters().get(0));
+        String clusterName = TestUtil.getClusterName(configurator.getAllClusters().get(0));
+        HadoopCluster cluster = configurator.getCluster(clusterName);
         Map<HadoopHostedService, HadoopClusterService> services = cluster.getHostedServices();
 
         TestUtil.checkService(services, HadoopHostedService.HDFS, HadoopHostedService.YARN, HadoopHostedService.HIVE,
