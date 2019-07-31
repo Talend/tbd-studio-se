@@ -178,6 +178,7 @@
 
         <!-- Spark 2 libraries-->
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="avro-1.7.7" name="avro-1.7.7.jar" mvn_uri="mvn:org.apache.avro/avro/1.7.7"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="avro-mapred-1.7.7-hadoop2" name="avro-mapred-1.7.7-hadoop2.jar" mvn_uri="mvn:org.apache.avro/avro-mapred/1.7.7-hadoop2"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-codec-1.10" name="commons-codec-1.10.jar" mvn_uri="mvn:commons-codec/commons-codec/1.10"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-lang-2.6" name="commons-lang-2.6.jar" mvn_uri="mvn:commons-lang/commons-lang/2.6"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-lang3-3.5" name="commons-lang3-3.5.jar" mvn_uri="mvn:org.apache.commons/commons-lang3/3.5"/>
@@ -230,6 +231,7 @@
                 name="SPARK-LIB-HD_INSIGHT_3_6_0">
              <library id="spark-core_2.11-2.1.0.2.6.0.2-76" />
              <library id="avro-1.7.7" />
+              <library id="avro-mapred-1.7.7-hadoop2"/>
              <library id="commons-lang3-3.5" />
              <library id="spark-network-common_2.11-2.1.0.2.6.0.2-76" />
              <library id="scala-library-2.11.8" />
