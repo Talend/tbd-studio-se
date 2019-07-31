@@ -38,7 +38,7 @@
 		    context="plugin:org.talend.hadoop.distribution.dataproc14"
 		    id="google-api-services-dataproc"
 		    name="google-api-services-dataproc-v1-rev132-1.25.0.jar"
-		    mvn_uri="mvn:com.google.apis/google-api-services-dataproc/v1-rev46-1.22.0">
+		    mvn_uri="mvn:com.google.apis/google-api-services-dataproc/v1-rev132-1.25.0">
         </libraryNeeded>
         <libraryNeeded
 		    context="plugin:org.talend.hadoop.distribution.dataproc14"
@@ -61,8 +61,8 @@
         <libraryNeeded
 		    context="plugin:org.talend.hadoop.distribution.dataproc14"
 		    id="google-cloud-storage"
-		    name="google-cloud-storage-1.83.0.jar"
-		    mvn_uri="mvn:com.google.cloud/google-cloud-storage/1.83.0">
+		    name="google-cloud-storage-1.84.0.jar"
+		    mvn_uri="mvn:com.google.cloud/google-cloud-storage/1.84.0">
         </libraryNeeded>
         <libraryNeeded
 		    context="plugin:org.talend.hadoop.distribution.dataproc14"
@@ -80,7 +80,7 @@
 		    context="plugin:org.talend.hadoop.distribution.dataproc14"
 		    id="google-api-client-1.30.2"
 		    name="google-api-client-1.30.2.jar"
-		    mvn_uri="mvn:com.google.api-client/google-api-client/1.24.1">
+		    mvn_uri="mvn:com.google.api-client/google-api-client/1.30.2">
         </libraryNeeded>
         <libraryNeeded
 		    context="plugin:org.talend.hadoop.distribution.dataproc14"
@@ -541,7 +541,7 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="hadoop-mapreduce-client-core-dataproc14"
             name="hadoop-mapreduce-client-core-2.9.2.jar"
-            mvn_uri="mvn:2.9.2/hadoop-mapreduce-client-core/2.9.2"/>
+            mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-core/2.9.2"/>
             
         <!-- Third parties libraries -->
         <libraryNeeded
