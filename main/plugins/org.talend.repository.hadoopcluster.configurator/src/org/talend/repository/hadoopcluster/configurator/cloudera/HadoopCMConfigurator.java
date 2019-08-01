@@ -76,7 +76,6 @@ public class HadoopCMConfigurator implements HadoopConfigurator {
         StringBuffer caCerts = new StringBuffer();
         for (TrustManager tm : build.tms) {
             if (tm instanceof X509TrustManager) {
-                // take first one found
                 X509TrustManager xtm = (X509TrustManager) tm;
                 buildCaCerts(caCerts, xtm);
             }

@@ -44,6 +44,8 @@ import com.cloudera.api.swagger.client.ApiException;
  */
 public class HadoopCMClusterService implements HadoopClusterService {
 
+    private static final String IGNORE_ERROR_MSG = "does not require a client configuration";
+
     private static final String SUPPORT_FILE = "site.xml"; //$NON-NLS-1$
 
     private ServicesResourceApi serviceAPI;
@@ -136,9 +138,9 @@ public class HadoopCMClusterService implements HadoopClusterService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (ApiException e) {
-            if (e.getCode() == 400 && e.getResponseBody().contains("does not require a client configuration")) {
+            if (e.getCode() == 400 && e.getResponseBody().contains(IGNORE_ERROR_MSG)) {
                 Logger.getLogger(this.getClass())
-                        .info("service: " + this.serviceName + " does not require a client configuration", e);
+                        .info("service: " + this.serviceName + " " + IGNORE_ERROR_MSG);
             } else {
                 throw new RuntimeException(e);
             }
