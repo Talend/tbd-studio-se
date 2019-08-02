@@ -4,23 +4,21 @@ Bundle-Name: Configurator
 Bundle-SymbolicName: org.talend.repository.hadoopcluster.configurator
 Bundle-Version: 7.3.1.qualifier
 Bundle-ClassPath: .,
+ lib/annotations-17.0.0.jar,
  lib/cloudera-manager-api-swagger-6.2.0.jar,
  lib/geronimo-javamail_1.4_spec-1.7.1.jar,
+ lib/gson-2.8.1.jar,
  lib/hamcrest-core-1.3.jar,
- lib/jaxb-impl-2.2.6.jar,
- lib/jsr250-api-1.0.jar,
- lib/joda-time-2.1.jar,
  lib/jackson-jaxrs-base-2.9.4.jar,
  lib/jackson-jaxrs-json-provider-2.9.4.jar,
  lib/jackson-module-jaxb-annotations-2.9.4.jar,
- lib/gson-2.8.5.jar,
+ lib/jaxb-impl-2.2.6.jar,
+ lib/joda-time-2.1.jar,
+ lib/jsr250-api-1.0.jar,
  lib/logging-interceptor-2.7.5.jar,
  lib/okhttp-2.7.5.jar,
- lib/swagger-annotations-1.5.22.jar,
- lib/okio-2.3.0.jar,
- lib/annotations-17.0.0.jar,
- lib/kotlin-stdlib-1.3.41.jar,
- lib/kotlin-stdlib-common-1.3.41.jar
+ lib/okio-1.6.0.jar,
+ lib/swagger-annotations-1.5.15.jar
 Export-Package: org.talend.repository.hadoopcluster.configurator
 Require-Bundle: org.talend.libraries.apache.common,
  org.talend.libraries.apache.cxf,
