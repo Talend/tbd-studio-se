@@ -18,11 +18,24 @@ imports="
 	class DBInputBeginUtil extends DefaultDBInputUtil{
 	    
 		public void setURL(INode node) {
+			String tableschema = ElementParameterParser.getValue(node, "__SCHEMA_DB__");
+			tableschema = tableschema.trim();
+			boolean schemaIsSet = !"\"\"".equals(tableschema) && !"".equals(tableschema);
 %>
-			String url_<%=cid%> = "jdbc:sap://" + <%=dbhost%> + ":" + <%=dbport%> ;
+			String url_<%=cid%> = null;
 			String dbProperties_<%=cid%> = <%=dbproperties%>;
 			if(dbProperties_<%=cid%> != null && dbProperties_<%=cid%>.trim().length() > 0) {
-				url_<%=cid%> = "jdbc:sap://" + <%=dbhost%> + ":" + <%=dbport%> + "/?" + dbProperties_<%=cid%>;
+				<%if(schemaIsSet) {%>
+				if(dbProperties_<%=cid%>.contains("currentschema=") || dbProperties_<%=cid%>.contains("currentSchema=")) {
+					url_<%=cid%> = "jdbc:sap://" + <%=dbhost%> + ":" + <%=dbport%> + "/?" + dbProperties_<%=cid%>;
+				} else {
+					url_<%=cid%> = "jdbc:sap://" + <%=dbhost%> + ":" + <%=dbport%> + "/?currentschema=" + <%=tableschema%> + "&" + dbProperties_<%=cid%>;
+				}
+				<%} else {%>
+					url_<%=cid%> = "jdbc:sap://" + <%=dbhost%> + ":" + <%=dbport%> + "/?" + dbProperties_<%=cid%>;
+				<%}%>
+			} else {
+				url_<%=cid%> = "jdbc:sap://" + <%=dbhost%> + ":" + <%=dbport%><%if(schemaIsSet){%> + "/?currentschema=" + <%=tableschema%><%}%>;
 			}
 <%
 		}

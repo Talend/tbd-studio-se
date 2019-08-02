@@ -21,7 +21,9 @@ imports="
 
     String cid = node.getUniqueName();
 
+
    boolean isLog4jEnabled = ElementParameterParser.getBooleanValue(node.getProcess(), "__LOG4J_ACTIVATE__");
+
 	org.talend.hadoop.distribution.component.ImpalaComponent impalaDistrib = null;
 	String connection = ElementParameterParser.getValue(node,"__CONNECTION__");
 	for (INode pNode : node.getProcess().getNodesOfType("tImpalaConnection")) {
@@ -55,6 +57,7 @@ imports="
 		} catch (java.lang.Exception e) {
 			e.printStackTrace();
 		}		
+
 		<% if(isLog4jEnabled) { %>
 			log.info("<%=cid%> - <%=connection%> closed.");
 		<% } %>

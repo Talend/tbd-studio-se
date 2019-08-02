@@ -284,4 +284,9 @@ public class CDH6xDistributionTemplate extends AbstractDynamicCDHDistributionTem
     public KuduVersion getKuduVersion() {
         return KuduVersion.KUDU_1_8;
     }
+    
+    @Override
+    public boolean doSupportAzureDataLakeStorageGen2() {
+    	return true;
+    }
 }
