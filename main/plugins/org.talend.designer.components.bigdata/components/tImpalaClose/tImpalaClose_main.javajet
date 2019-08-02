@@ -21,7 +21,7 @@ imports="
 
     String cid = node.getUniqueName();
 
-    boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+   boolean isLog4jEnabled = ElementParameterParser.getBooleanValue(node.getProcess(), "__LOG4J_ACTIVATE__");
 	org.talend.hadoop.distribution.component.ImpalaComponent impalaDistrib = null;
 	String connection = ElementParameterParser.getValue(node,"__CONNECTION__");
 	for (INode pNode : node.getProcess().getNodesOfType("tImpalaConnection")) {
@@ -50,7 +50,11 @@ imports="
 	if (impalaDistrib != null && impalaDistrib.isQuboleDistribution()) {
 	%>
 		org.talend.bigdata.launcher.qubole.QuboleHiveClient client_<%=cid%> = (org.talend.bigdata.launcher.qubole.QuboleHiveClient) globalMap.get("<%=conn%>");
-		client_<%=cid%>.close();
+		try {
+			client_<%=cid%>.close();
+		} catch (java.lang.Exception e) {
+			e.printStackTrace();
+		}		
 		<% if(isLog4jEnabled) { %>
 			log.info("<%=cid%> - <%=connection%> closed.");
 		<% } %>
