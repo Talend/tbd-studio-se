@@ -29,15 +29,6 @@ import org.talend.repository.hadoopcluster.configurator.HadoopHostedService;
  */
 public class TestUtil {
 
-    public static String getClusterName(String clusterNameWithDisplayName) {
-        String[] clusterNameArray = clusterNameWithDisplayName.split(HadoopConfigurator.NAME_SEPARATOR_PATTERN);
-        String clusterName = clusterNameArray[0];
-        if (clusterNameArray.length > 1) {
-            clusterName = clusterNameArray[1];
-        }
-        return clusterName;
-    }
-
     public static String getClusterDisplayName(String clusterNameWithDisplayName) {
         String[] clusterNameArray = clusterNameWithDisplayName.split(HadoopConfigurator.NAME_SEPARATOR_PATTERN);
         return clusterNameArray[0];

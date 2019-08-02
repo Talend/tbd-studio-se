@@ -49,8 +49,8 @@ public class CDH54 {
                 .withBaseURL(new URL("http://tal-qa143.talend.lan:7180")).withUsernamePassword("admin", "admin").build();
 
         TestUtil.checkCluster(configurator, "Cluster 1");
-        String clusterName = TestUtil.getClusterName(configurator.getAllClusters().get(0));
-        HadoopCluster cluster = configurator.getCluster(clusterName);
+
+        HadoopCluster cluster = configurator.getCluster(configurator.getAllClusters().get(0));
         Map<HadoopHostedService, HadoopClusterService> services = cluster.getHostedServices();
 
         TestUtil.checkService(services, HadoopHostedService.HDFS, HadoopHostedService.YARN, HadoopHostedService.HIVE,

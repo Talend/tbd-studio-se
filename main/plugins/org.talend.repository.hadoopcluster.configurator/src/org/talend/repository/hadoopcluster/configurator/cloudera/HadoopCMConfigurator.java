@@ -161,7 +161,18 @@ public class HadoopCMConfigurator implements HadoopConfigurator {
      */
     @Override
     public HadoopCluster getCluster(String name) {
-        return new HadoopCMCluster(this.serviceAPI, name);
+        return new HadoopCMCluster(this.serviceAPI, getClusterName(name));
+    }
+
+    private static String getClusterName(String displayNameWithName) {
+        if (displayNameWithName == null) {
+            return "";
+        }
+        String[] names = displayNameWithName.split(NAME_SEPARATOR_PATTERN);
+        if (names.length > 1) {
+            return names[1];
+        }
+        return names[0];
     }
 
 }

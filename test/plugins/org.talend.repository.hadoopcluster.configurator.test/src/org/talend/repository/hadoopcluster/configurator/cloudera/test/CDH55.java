@@ -41,8 +41,7 @@ public class CDH55 {
 
         TestUtil.checkCluster(configurator, "Cloudera QuickStart");
 
-        String clusterName = TestUtil.getClusterName(configurator.getAllClusters().get(0));
-        HadoopCluster cluster = configurator.getCluster(clusterName);
+        HadoopCluster cluster = configurator.getCluster(configurator.getAllClusters().get(0));
         Map<HadoopHostedService, HadoopClusterService> services = cluster.getHostedServices();
 
         TestUtil.checkService(services, HadoopHostedService.HDFS, HadoopHostedService.YARN, HadoopHostedService.HIVE,

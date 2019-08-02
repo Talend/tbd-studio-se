@@ -69,12 +69,7 @@ public class HadoopImportRemoteOptionPage extends AbstractHadoopImportConfsPage 
 
     private String getSelectedCluster() {
         List<String> names = (List<String>) clustersCombo.getData();
-        String name = names.get(clustersCombo.getSelectionIndex());
-        String[] nameDisplayNameArray = name.split(HadoopConfigurator.NAME_SEPARATOR_PATTERN);
-        if (nameDisplayNameArray.length > 1) {
-            return nameDisplayNameArray[1];
-        }
-        return nameDisplayNameArray[0];
+        return names.get(clustersCombo.getSelectionIndex());
     }
     private void addListener() {
         selectClusterButton.addSelectionListener(new SelectionAdapter() {
