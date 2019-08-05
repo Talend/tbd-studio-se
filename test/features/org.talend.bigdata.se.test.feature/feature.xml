@@ -2,7 +2,7 @@
 <feature
       id="org.talend.bigdata.se.test.feature"
       label="BigData SE Test Feature"
-      version="7.3.1.qualifier">
+      version="7.2.1.qualifier">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -19,7 +19,7 @@
    <plugin
          id="org.talend.hadoop.distribution.test"
          download-size="0"
-         install-size="0"
+         install-size="0"l
          version="0.0.0"
          fragment="true"
          unpack="false"/>
