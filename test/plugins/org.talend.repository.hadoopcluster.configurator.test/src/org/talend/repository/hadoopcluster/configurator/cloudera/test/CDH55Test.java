@@ -12,15 +12,12 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.configurator.cloudera.test;
 
-import java.net.URL;
 import java.util.Map;
 
 import org.junit.Test;
 import org.talend.repository.hadoopcluster.configurator.HadoopCluster;
 import org.talend.repository.hadoopcluster.configurator.HadoopClusterService;
-import org.talend.repository.hadoopcluster.configurator.HadoopConfigurationManager;
 import org.talend.repository.hadoopcluster.configurator.HadoopConfigurator;
-import org.talend.repository.hadoopcluster.configurator.HadoopConfiguratorBuilder;
 import org.talend.repository.hadoopcluster.configurator.HadoopHostedService;
 import org.talend.repository.hadoopcluster.configurator.test.TestUtil;
 
@@ -30,16 +27,19 @@ import org.talend.repository.hadoopcluster.configurator.test.TestUtil;
  */
 public class CDH55Test {
 
-    /**
-     * use Cloudera 5.5 sandbox vm to test
-     */
     @Test
     public void test() throws Exception {
         String folder = "/tmp/cm";
-        HadoopConfigurator configurator = new HadoopConfiguratorBuilder().withVendor(HadoopConfigurationManager.CLOUDERA_MANAGER)
-                .withBaseURL(new URL("http://quickstart.cloudera:7180")).withUsernamePassword("admin", "admin").build();
 
-        TestUtil.checkCluster(configurator, "Cloudera QuickStart");
+        // 611
+        String url = "https://tal-qa300.talend.lan:7183";
+        String trustStoreFile = "tal-qa300.jks";
+        String trustStorePwd = "ROv7PbRuQpB4o3KkyY0FUPfn8NAClUCraPF0APHawb8";
+        String trustStoreType = "jks";
+
+        HadoopConfigurator configurator = TestUtil.getConfigurator(url, trustStoreFile, trustStoreType, trustStorePwd);
+
+        TestUtil.checkCluster(configurator, "Cluster 1");
 
         HadoopCluster cluster = configurator.getCluster(configurator.getAllClusters().get(0));
         Map<HadoopHostedService, HadoopClusterService> services = cluster.getHostedServices();

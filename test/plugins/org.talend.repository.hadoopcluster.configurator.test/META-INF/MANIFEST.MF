@@ -7,4 +7,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.talend.utils,
  org.talend.repository.hadoopcluster.configurator,
  org.junit,
- org.talend.testutils
+ org.talend.testutils,
+ org.eclipse.core.runtime

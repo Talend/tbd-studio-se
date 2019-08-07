@@ -12,15 +12,12 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.configurator.cloudera.test;
 
-import java.net.URL;
 import java.util.Map;
 
 import org.junit.Test;
 import org.talend.repository.hadoopcluster.configurator.HadoopCluster;
 import org.talend.repository.hadoopcluster.configurator.HadoopClusterService;
-import org.talend.repository.hadoopcluster.configurator.HadoopConfigurationManager;
 import org.talend.repository.hadoopcluster.configurator.HadoopConfigurator;
-import org.talend.repository.hadoopcluster.configurator.HadoopConfiguratorBuilder;
 import org.talend.repository.hadoopcluster.configurator.HadoopHostedService;
 import org.talend.repository.hadoopcluster.configurator.test.TestUtil;
 
@@ -44,9 +41,16 @@ public class CDH54Test {
      */
     @Test
     public void test() throws Exception {
+
         String folder = "/tmp/cm";
-        HadoopConfigurator configurator = new HadoopConfiguratorBuilder().withVendor(HadoopConfigurationManager.CLOUDERA_MANAGER)
-                .withBaseURL(new URL("http://tal-qa143.talend.lan:7180")).withUsernamePassword("admin", "admin").build();
+
+        // 513
+        String url = "https://tal-qa14.talend.lan:7183";
+        String trustStoreFile = "cdhcn.truststore";
+        String trustStorePwd = "talend";
+        String trustStoreType = "jks";
+
+        HadoopConfigurator configurator = TestUtil.getConfigurator(url, trustStoreFile, trustStoreType, trustStorePwd);
 
         TestUtil.checkCluster(configurator, "Cluster 1");
 
