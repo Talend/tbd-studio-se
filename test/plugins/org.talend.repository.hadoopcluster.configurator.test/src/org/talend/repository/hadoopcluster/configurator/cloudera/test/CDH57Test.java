@@ -12,7 +12,8 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.configurator.cloudera.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.net.URL;
 import java.util.Arrays;
@@ -27,7 +28,7 @@ import org.talend.repository.hadoopcluster.configurator.HadoopConfiguratorBuilde
 import org.talend.repository.hadoopcluster.configurator.HadoopHostedService;
 import org.talend.repository.hadoopcluster.configurator.test.TestUtil;
 
-public class CDH57 {
+public class CDH57Test {
 
     /**
      * use Cloudera 5.7 sandbox vm to test
