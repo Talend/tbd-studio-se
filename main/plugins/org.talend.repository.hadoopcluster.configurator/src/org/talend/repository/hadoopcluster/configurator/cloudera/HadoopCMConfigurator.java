@@ -73,8 +73,9 @@ public class HadoopCMConfigurator implements HadoopConfigurator {
         cmClient.setUsername(build.user);
         cmClient.setPassword(build.password);
 
-        StringBuffer caCerts = new StringBuffer();
+        // trust manager can be null for non https connection
         if (build.tms != null) {
+            StringBuffer caCerts = new StringBuffer();
             for (TrustManager tm : build.tms) {
                 if (tm instanceof X509TrustManager) {
                     X509TrustManager xtm = (X509TrustManager) tm;
