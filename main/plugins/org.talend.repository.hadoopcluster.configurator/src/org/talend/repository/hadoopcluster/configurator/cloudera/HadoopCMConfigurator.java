@@ -74,16 +74,18 @@ public class HadoopCMConfigurator implements HadoopConfigurator {
         cmClient.setPassword(build.password);
 
         StringBuffer caCerts = new StringBuffer();
-        for (TrustManager tm : build.tms) {
-            if (tm instanceof X509TrustManager) {
-                X509TrustManager xtm = (X509TrustManager) tm;
-                buildCaCerts(caCerts, xtm);
+        if (build.tms != null) {
+            for (TrustManager tm : build.tms) {
+                if (tm instanceof X509TrustManager) {
+                    X509TrustManager xtm = (X509TrustManager) tm;
+                    buildCaCerts(caCerts, xtm);
+                }
             }
-        }
 
-        if (caCerts.length() > 0) {
-            cmClient.setVerifyingSsl(true);
-            cmClient.setSslCaCert(new ByteArrayInputStream(caCerts.toString().getBytes()));
+            if (caCerts.length() > 0) {
+                cmClient.setVerifyingSsl(true);
+                cmClient.setSslCaCert(new ByteArrayInputStream(caCerts.toString().getBytes()));
+            }
         }
         return cmClient;
     }
