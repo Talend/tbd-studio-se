@@ -25,7 +25,7 @@ import org.talend.repository.hadoopcluster.configurator.test.TestUtil;
  * created by bchen on Nov 26, 2015 Detailled comment
  *
  */
-public class CDH55Test {
+public class ClouderaHadoopConfig611Test {
 
     @Test
     public void test() throws Exception {
