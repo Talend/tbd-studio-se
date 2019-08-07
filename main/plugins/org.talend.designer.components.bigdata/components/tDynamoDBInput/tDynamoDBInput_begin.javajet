@@ -490,10 +490,15 @@
 					String typeToGenerate = JavaTypesManager.getTypeToGenerate(column.getTalendType(), column.isNullable());
 					JavaType javaType = JavaTypesManager.getJavaTypeFromId(column.getTalendType());
 					String patternValue = column.getPattern() == null || column.getPattern().trim().length() == 0 ? null : column.getPattern();
+					if("JSON".equalsIgnoreCase(column.getType()) && javaType == JavaTypesManager.STRING) {
 %>
-					valueObj_<%=cid%>=item_<%=cid%>.get("<%=column.getLabel() %>");
-
+						valueObj_<%=cid%>=item_<%=cid%>.getJSON("<%=column.getLabel() %>");
 <%
+					} else {
+%>
+						valueObj_<%=cid%>=item_<%=cid%>.get("<%=column.getLabel() %>");
+<%
+					}
           			if(javaType == JavaTypesManager.OBJECT) {
 %>
 						<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>;
