@@ -14,6 +14,7 @@ package org.talend.repository.hadoopcluster.configurator.cloudera.test;
 
 import java.util.Map;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.talend.repository.hadoopcluster.configurator.HadoopCluster;
 import org.talend.repository.hadoopcluster.configurator.HadoopClusterService;
@@ -39,6 +40,7 @@ public class ClouderaHadoopConfig513Test {
      * 192.168.150.78 tal-qa147.talend.lan tal-qa147
      *
      */
+    @Ignore("ignored in buildme system, comment out this line when run locally")
     @Test
     public void testConfigurator_cdh513() throws Exception {
 

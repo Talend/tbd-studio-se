@@ -14,6 +14,7 @@ package org.talend.repository.hadoopcluster.configurator.cloudera.test;
 
 import java.util.Map;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.talend.repository.hadoopcluster.configurator.HadoopCluster;
 import org.talend.repository.hadoopcluster.configurator.HadoopClusterService;
@@ -27,6 +28,7 @@ import org.talend.repository.hadoopcluster.configurator.test.TestUtil;
  */
 public class ClouderaHadoopConfig611Test {
 
+    @Ignore("ignored in buildme system, comment out this line when run locally")
     @Test
     public void testConfigurator_cdh611() throws Exception {
         String folder = "/tmp/cm";
