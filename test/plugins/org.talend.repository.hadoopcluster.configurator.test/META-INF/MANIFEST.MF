@@ -1,11 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.talend.repository.hadoopcluster.configurator.test
+Bundle-Name: Hadoopcluster Configurator Test
 Bundle-SymbolicName: org.talend.repository.hadoopcluster.configurator.test
 Bundle-Version: 7.3.1.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Require-Bundle: org.talend.utils,
- org.talend.repository.hadoopcluster.configurator,
- org.junit,
- org.talend.testutils,
- org.eclipse.core.runtime
+Bundle-Vendor: .Talend SA.
+Fragment-Host: org.talend.repository.hadoopcluster.configurator
+Automatic-Module-Name: org.talend.repository.hadoopcluster.configurator.test
+Require-Bundle: org.talend.testutils;bundle-version="7.3.1"
