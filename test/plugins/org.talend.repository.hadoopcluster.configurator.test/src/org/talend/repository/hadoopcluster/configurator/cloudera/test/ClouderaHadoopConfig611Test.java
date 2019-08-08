@@ -28,7 +28,7 @@ import org.talend.repository.hadoopcluster.configurator.test.TestUtil;
 public class ClouderaHadoopConfig611Test {
 
     @Test
-    public void test() throws Exception {
+    public void testConfigurator_cdh611() throws Exception {
         String folder = "/tmp/cm";
 
         // 611

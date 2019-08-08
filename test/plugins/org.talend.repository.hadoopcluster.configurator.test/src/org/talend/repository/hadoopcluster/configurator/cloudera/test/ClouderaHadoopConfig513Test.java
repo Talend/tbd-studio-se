@@ -40,7 +40,7 @@ public class ClouderaHadoopConfig513Test {
      *
      */
     @Test
-    public void test() throws Exception {
+    public void testConfigurator_cdh513() throws Exception {
 
         String folder = "/tmp/cm";
 
