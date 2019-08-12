@@ -20,7 +20,7 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.talend.core.runtime.CoreRuntimePlugin;
 import org.talend.core.runtime.projectsetting.ProjectPreferenceManager;
-import org.talend.daikon.security.CryptoHelper;
+import org.talend.utils.security.StudioEncryption;
 
 /**
  * DOC cmeng  class global comment. Detailled comment
@@ -28,8 +28,6 @@ import org.talend.daikon.security.CryptoHelper;
 public abstract class AbstractDynamicDistributionPreference implements IDynamicDistributionPreference {
 
     private IPreferenceStore prefStore;
-
-    private CryptoHelper cryptoHelper;
 
     abstract protected String getPrefKeyOverrideDefaultSetup();
 
@@ -53,7 +51,6 @@ public abstract class AbstractDynamicDistributionPreference implements IDynamicD
 
     protected AbstractDynamicDistributionPreference(ScopedPreferenceStore store) {
         prefStore = store;
-        cryptoHelper = CryptoHelper.getDefault();
         initDefaultPreference();
     }
 
@@ -171,20 +168,16 @@ public abstract class AbstractDynamicDistributionPreference implements IDynamicD
         // save();
     }
 
-    protected CryptoHelper getCryptoHelper() {
-        return cryptoHelper;
-    }
-
     protected String encrypt(String str) {
-        synchronized (CryptoHelper.class) {
-            return cryptoHelper.encrypt(str);
+        synchronized (StudioEncryption.class) {
+            return StudioEncryption.encrypt(str);
         }
     }
 
 
     protected String decrypt(String str) {
-        synchronized (CryptoHelper.class) {
-            return cryptoHelper.decrypt(str);
+        synchronized (StudioEncryption.class) {
+            return StudioEncryption.decrypt(str);
         }
     }
 }

@@ -24,6 +24,7 @@ import org.talend.repository.model.nosql.NoSQLConnection;
 import org.talend.repository.model.nosql.NoSQLConnectionItem;
 import org.talend.repository.nosql.db.common.cassandra.ICassandraAttributies;
 import org.talend.repository.nosql.ui.node.NoSQLRepositoryNodeType;
+import org.talend.utils.security.CryptoHelperWrapper;
 
 /**
  * created by ggu on Sep 1, 2014 Detailled comment
@@ -47,6 +48,7 @@ public class UnifyPasswordEncryption4NoSQLConnectionMigrationTask extends UnifyP
     public ExecutionResult execute(Item item) {
         if (item instanceof NoSQLConnectionItem) {
             Connection connection = ((NoSQLConnectionItem) item).getConnection();
+            connection.setEncryptAndDecryptFuncPair(CryptoHelperWrapper.encryptFunc(), CryptoHelperWrapper.decryptFunc());
             if (connection instanceof NoSQLConnection) {
                 NoSQLConnection noSqlConn = (NoSQLConnection) connection;
                 try {
