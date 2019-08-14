@@ -345,8 +345,8 @@
 
         <!-- HDFS libraries -->    
         <libraryNeeded
-            context="plugin:org.talend.hado2op.distribution.dataproc14"
-            id="hadoop-common-2.9.2"
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="hadoop-common-2.9.2.jar"
             name="hadoop-common-2.9.2.jar"
             mvn_uri="mvn:org.apache.hadoop/hadoop-common/2.9.2">
         </libraryNeeded>
@@ -638,12 +638,6 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
-            id="jets3t-0.9.0"
-            name="jets3t-0.9.0.jar"
-            mvn_uri="mvn:net.java.dev.jets3t/jets3t/0.9.0">
-        </libraryNeeded>
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="hive-jdbc-dataproc14"
             name="hive-jdbc-2.3.4.jar"
             mvn_uri="mvn:org.talend.libraries/hive-jdbc-2.3.4/6.0.0">
@@ -660,6 +654,45 @@
             name="hive-service-rpc-2.3.4.jar"
             mvn_uri="mvn:org.talend.libraries/hive-service-rpc-2.3.4/6.0.0">
         </libraryNeeded>
+        
+        <!-- S3 -->
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="aws-java-sdk-bundle-1.11.199.jar"
+            name="aws-java-sdk-bundle-1.11.199.jar"
+            mvn_uri="mvn:com.amazonaws/aws-java-sdk-bundle/1.11.199">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="hadoop-aws-2.9.2-shadowed-jets3t-0.9.0.jar"
+            name="hadoop-aws-2.9.2-shadowed-jets3t-0.9.0.jar"
+            mvn_uri="mvn:org.talend.libraries/hadoop-aws-2.9.2-shadowed-jets3t-0.9.0/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="jets3t-0.9.0.jar"
+            name="jets3t-0.9.0.jar"
+            mvn_uri="mvn:net.java.dev.jets3t/jets3t/0.9.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="joda-time-2.9.3.jar"
+            name="joda-time-2.9.3.jar"
+            mvn_uri="mvn:joda-time/joda-time/2.9.3">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="avro-1.8.2.jar"
+            name="avro-1.8.2.jar"
+            mvn_uri="mvn:org.apache.avro/avro/1.8.2">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="hbase-common"
+            name="hbase-common-1.2.6.jar"
+            mvn_uri="mvn:org.apache.hbase/hbase-common/1.2.6">
+        </libraryNeeded>
+
         <!-- Groups -->
         
         <!-- Big Data launcher group -->
@@ -791,7 +824,7 @@
                 description="Hive libraries for Dataproc 1.1"
                 id="HIVE-LIB-DATAPROC14"
                 name="HIVE-LIB-DATAPROC14">
-	        <library id="jets3t-0.9.0" />
+	        <library id="jets3t-0.9.0.jar" />
             <library id="hive-exec-dataproc14"/>
             <library id="hive-metastore-dataproc14"/>
             <library id="hive-jdbc-dataproc14"/>
@@ -862,7 +895,7 @@
                 description="HDFS libraries for GOOGLE Dataproc 1.4"
                 id="HDFS-LIB-DATAPROC14"
                 name="HDFS-LIB-DATAPROC14"  >
-             <library id="hadoop-common-2.9.2" />
+             <library id="hadoop-common-2.9.2.jar" />
              <library id="hadoop-hdfs-2.9.2" />
              <library id="hadoop-auth-dataproc14" />
              <library id="avro-1.7.7"/>
@@ -887,6 +920,21 @@
             <library id="hadoop-mapreduce-client-core-dataproc14"/>
         </libraryNeededGroup>
         
+        <!-- S3 group -->
+        <libraryNeededGroup
+                description="S3 libraries for GOOGLE Dataproc 1.4"
+                id="S3-LIB-DATAPROC14"
+                name="S3-LIB-DATAPROC14">
+            <library id="aws-java-sdk-bundle-1.11.199.jar" />
+            <library id="hadoop-aws-2.9.2-shadowed-jets3t-0.9.0.jar" />
+            <library id="jets3t-0.9.0.jar" />
+            <library id="httpclient-4.5.9.jar" />
+            <library id="httpcore-4.4.11.jar" />
+            <library id="joda-time-2.9.3.jar" />
+            <library id="avro-1.8.2.jar" />
+            <library id="hbase-common" />
+        </libraryNeededGroup>
+
         <!-- Map/Reduce avro group MRREQUIRED-->
         <libraryNeededGroup
                 description="Map/Reduce libraries for GOOGLE Dataproc 1.4 that are MRREQUIRED"
@@ -898,14 +946,10 @@
          <!-- Spark2 group -->
         <!-- All ids in this module group should imperatively equal to jar file names-->
         <!-- No latest or shortcuts as the jars will be looked up at runtime to construct the real job classpath-->
-        <!-- <library id="spark-streaming-flume_2.11-2.0.0.cloudera1.jar"/>
-             <library id="spark-streaming-flume-sink_2.11-2.0.0.cloudera1.jar"/>
-             <library id="spark-streaming-kafka-0-8_2.11-2.0.0.cloudera1.jar"/>
-             <library id="spark-streaming-kinesis-asl-assembly_2.11-2.0.0.jar"/> -->
          <libraryNeededGroup
                 description="The latest Spark libraries for GOOGLE Dataproc 1.4"
-                id="SPARK-LIB-DATAPROC14"
-                name="SPARK-LIB-DATAPROC14">
+                id="SPARK2-LIB-DATAPROC14"
+                name="SPARK2-LIB-DATAPROC14">
 			 <library id="avro-mapred-1.8.2-hadoop2.jar"/>
 			 <library id="talend-bigdata-launcher" />
 			 <library id="scala-reflect-2.11.8.jar"/>

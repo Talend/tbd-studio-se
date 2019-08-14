@@ -27,7 +27,6 @@ import org.talend.hadoop.distribution.NodeComponentTypeBean;
 import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
-import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
@@ -37,8 +36,8 @@ import org.talend.hadoop.distribution.constants.dataproc.IGoogleDataprocDistribu
 import org.talend.hadoop.distribution.dataproc14.modulegroup.Dataproc14HDFSModuleGroup;
 import org.talend.hadoop.distribution.dataproc14.modulegroup.Dataproc14HiveModuleGroup;
 import org.talend.hadoop.distribution.dataproc14.modulegroup.Dataproc14HiveOnSparkModuleGroup;
-import org.talend.hadoop.distribution.dataproc14.modulegroup.Dataproc14MapReduceModuleGroup;
 import org.talend.hadoop.distribution.dataproc14.modulegroup.Dataproc14SparkBatchModuleGroup;
+import org.talend.hadoop.distribution.dataproc14.modulegroup.Dataproc14SparkBatchS3NodeModuleGroup;
 import org.talend.hadoop.distribution.dataproc14.modulegroup.Dataproc14SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.dataproc14.modulegroup.node.sparkbatch.Dataproc14SparkBatchGraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.dataproc14.modulegroup.node.sparkbatch.Dataproc14SparkBatchParquetNodeModuleGroup;
@@ -49,7 +48,7 @@ import org.talend.hadoop.distribution.dataproc14.modulegroup.node.sparkstreaming
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
-public class Dataproc14Distribution extends AbstractDistribution implements HDFSComponent, /*MRComponent, */SparkBatchComponent,
+public class Dataproc14Distribution extends AbstractDistribution implements HDFSComponent, /*MRComponent,*/ SparkBatchComponent,
         HiveComponent, SparkStreamingComponent, HiveOnSparkComponent, IGoogleDataprocDistribution {
 
     public static final String VERSION = "DATAPROC_1_4"; //$NON-NLS-1$
@@ -97,6 +96,8 @@ public class Dataproc14Distribution extends AbstractDistribution implements HDFS
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
         // Mapreduce node
 
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
+                SparkBatchConstant.S3_CONFIGURATION_COMPONENT), Dataproc14SparkBatchS3NodeModuleGroup.getModuleGroups());
         // Spark Batch Parquet nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
                 Dataproc14SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
@@ -107,6 +108,8 @@ public class Dataproc14Distribution extends AbstractDistribution implements HDFS
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
                 Dataproc14SparkBatchGraphFramesNodeModuleGroup.getModuleGroups(distribution, version));
 
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
+                SparkBatchConstant.S3_CONFIGURATION_COMPONENT), Dataproc14SparkBatchS3NodeModuleGroup.getModuleGroups());
         // Spark Streaming Parquet nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_INPUT_COMPONENT),
                 Dataproc14SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
