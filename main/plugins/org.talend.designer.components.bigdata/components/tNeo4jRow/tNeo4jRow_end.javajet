@@ -29,12 +29,7 @@
 		globalMap.put("<%=cid %>_NB_PROPERTY_UPDATED", nbPropertiesUpdated_<%=cid%>);
 		globalMap.put("<%=cid %>_NB_NODE_DELETED", nbNodeDeleted_<%=cid%>);
 		globalMap.put("<%=cid %>_NB_RELATIONSHIP_DELETED", nbRelationshipDeleted_<%=cid%>);
-    }finally{
-    <%if (!useExistingConnection||(useExistingConnection && shutdownDb)) {%>
-    	driver_<%=cid%>.close();
-
-    <%}%>
-    }
+		
     <%
     } else{
     	 if ("NEO4J_1_X_X".equals(dbVersion)) {

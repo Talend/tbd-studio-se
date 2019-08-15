@@ -34,7 +34,7 @@
         %>
         <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
         org.neo4j.driver.v1.Driver driver_<%=cid%> = org.neo4j.driver.v1.GraphDatabase.driver(<%=serverUrl%>, org.neo4j.driver.v1.AuthTokens.basic(<%=username%>, decryptedPassword_<%=cid%>));
-
+        globalMap.put("dbService_<%=cid%>",driver_<%=cid%>);
         <%
         }else{
         	boolean remoteServer = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REMOTE_SERVER__"));
@@ -69,8 +69,9 @@
     }
 
 if ("NEO4J_3_2_X".equals(dbVersion)){%>
-        try(org.neo4j.driver.v1.Session session_<%=cid%> = driver_<%=cid%>.session()){
+        	org.neo4j.driver.v1.Session session_<%=cid%> = driver_<%=cid%>.session();
             org.neo4j.driver.v1.Transaction transaction_<%=cid%> = session_<%=cid%>.beginTransaction();
+            resourceMap.put("databaseSession_<%=cid%>", session_<%=cid%>); 
 <%
 }else{
 %>   

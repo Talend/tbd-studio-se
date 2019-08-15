@@ -13,13 +13,17 @@
     boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_EXISTING_CONNECTION__"));
     boolean shutdownDb = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SHUTDOWN_DB__"));
     String dbversion = ElementParameterParser.getValue(node,"__DB_VERSION__");
+    String dbconn = "dbService_";
 	if(useExistingConnection){
 	    String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
         INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
+        dbconn +=  connection;
         dbversion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
+    }else {
+    	dbconn +=  cid;
     }
     
-	if (!"NEO4J_3_2_X".equals(dbversion)&&!useExistingConnection||(useExistingConnection && shutdownDb)) {
+	if (!"NEO4J_3_2_X".equals(dbversion)&&(!useExistingConnection||(useExistingConnection && shutdownDb))) {
 %>
 		if(resourceMap.get("finish_<%=cid%>") == null){
 			if(resourceMap.get("databaseService_<%=cid%>") != null){
@@ -27,5 +31,15 @@
 			}
 		}
 <%
+	}else if ("NEO4J_3_2_X".equals(dbversion)&&(!useExistingConnection||(useExistingConnection && shutdownDb))) {
+			%>
+			if(resourceMap.get("databaseSession_<%=cid%>") != null){
+				((org.neo4j.driver.v1.Session)resourceMap.get("databaseSession_<%=cid%>")).close();
+				
+			}
+			if(globalMap.get("<%=dbconn%>")!=null) {
+				((org.neo4j.driver.v1.Driver) globalMap.get("<%=dbconn%>")).close();
+			}
+			<%
 	}
 %>
