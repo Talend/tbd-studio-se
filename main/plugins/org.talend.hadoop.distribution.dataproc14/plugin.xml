@@ -415,6 +415,13 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="failureaccess-1.0.1.jar"
+            name="failureaccess-1.0.1.jar"
+            mvn_uri="mvn:com.google.guava/failureaccess/1.0.1">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="spark-catalyst-dataproc14"
             name="spark-catalyst_2.11-2.4.3.jar"
             mvn_uri="mvn:org.talend.libraries/spark-catalyst_2.11-2.4.3/6.0.0">
@@ -954,6 +961,7 @@
 			 <library id="talend-bigdata-launcher" />
 			 <library id="scala-reflect-2.11.8.jar"/>
              <library id="kryo-shaded-4.0.2"/>
+             <library id="failureaccess-1.0.1.jar"/>
              
              <library id="jodd-core-3.5.2"/>
              <library id="scala-library-2.11.12.jar"/>
