@@ -230,5 +230,6 @@ public interface HadoopComponent {
 
     public boolean doSupportAzureDataLakeStorage();
 
+    public boolean doSupportAzureDataLakeStorageGen2();
     public boolean doSupportWebHDFS();
 }
