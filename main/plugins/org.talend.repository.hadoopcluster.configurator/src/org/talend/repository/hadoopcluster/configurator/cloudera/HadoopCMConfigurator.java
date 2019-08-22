@@ -12,21 +12,27 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.configurator.cloudera;
 
+import java.io.ByteArrayInputStream;
 import java.net.URL;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateEncodingException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import org.talend.repository.hadoopcluster.configurator.HadoopCluster;
 import org.talend.repository.hadoopcluster.configurator.HadoopConfigurator;
 
-import com.cloudera.api.ClouderaManagerClientBuilder;
-import com.cloudera.api.DataView;
-import com.cloudera.api.model.ApiCluster;
-import com.cloudera.api.model.ApiClusterList;
-import com.cloudera.api.v3.RootResourceV3;
-import com.cloudera.api.v3.ServicesResourceV3;
+import com.cloudera.api.swagger.ClustersResourceApi;
+import com.cloudera.api.swagger.ServicesResourceApi;
+import com.cloudera.api.swagger.client.ApiClient;
+import com.cloudera.api.swagger.client.ApiException;
+import com.cloudera.api.swagger.client.Configuration;
+import com.cloudera.api.swagger.model.ApiCluster;
+import com.cloudera.api.swagger.model.ApiClusterList;
 
 /**
  * created by bchen on May 28, 2015 Detailled comment
@@ -34,14 +40,70 @@ import com.cloudera.api.v3.ServicesResourceV3;
  */
 public class HadoopCMConfigurator implements HadoopConfigurator {
 
-    RootResourceV3 api;
+    static final String CERT_BEGIN = "-----BEGIN CERTIFICATE-----";
+    static final String CERT_END = "-----END CERTIFICATE-----";
+    static final char SEPARATOR = '\n';
+    static final String API_VERSION = "v18";
+
+    ServicesResourceApi serviceAPI;
+
+    ClustersResourceApi clusterAPI;
 
     public HadoopCMConfigurator(Builder build) {
-        ClouderaManagerClientBuilder cmBuilder = new ClouderaManagerClientBuilder().withBaseURL(build.url).withUsernamePassword(
-                build.user, build.password);
-        cmBuilder.setTrustManagers(build.tms);
-        api = cmBuilder.build().getRootV3();
+        ApiClient apiClient;
+        try {
+            apiClient = createClient(build);
+            serviceAPI = new ServicesResourceApi(apiClient);
+            clusterAPI = new ClustersResourceApi(apiClient);
+        } catch (CertificateEncodingException e) {
+            throw new RuntimeException(e);
+        }
     }
+
+    private ApiClient createClient(Builder build) throws CertificateEncodingException {
+        ApiClient cmClient = Configuration.getDefaultApiClient();
+
+        StringBuffer sb = new StringBuffer(build.url.toString());
+        if (!sb.toString().endsWith("/")) {
+            sb.append("/");
+        }
+        sb.append("api/");
+        sb.append(API_VERSION);
+        cmClient.setBasePath(sb.toString());
+        cmClient.setUsername(build.user);
+        cmClient.setPassword(build.password);
+
+        // trust manager can be null for non https connection
+        if (build.tms != null) {
+            StringBuffer caCerts = new StringBuffer();
+            for (TrustManager tm : build.tms) {
+                if (tm instanceof X509TrustManager) {
+                    X509TrustManager xtm = (X509TrustManager) tm;
+                    buildCaCerts(caCerts, xtm);
+                }
+            }
+
+            if (caCerts.length() > 0) {
+                cmClient.setVerifyingSsl(true);
+                cmClient.setSslCaCert(new ByteArrayInputStream(caCerts.toString().getBytes()));
+            }
+        }
+        return cmClient;
+    }
+
+    private void buildCaCerts(StringBuffer caCerts, X509TrustManager xtm) throws CertificateEncodingException {
+        if (xtm != null && xtm.getAcceptedIssuers().length > 0) {
+            for (Certificate ca : xtm.getAcceptedIssuers()) {
+                caCerts.append(CERT_BEGIN);
+                caCerts.append(SEPARATOR);
+                caCerts.append(Base64.getEncoder().encodeToString(ca.getEncoded()));
+                caCerts.append(SEPARATOR);
+                caCerts.append(CERT_END);
+                caCerts.append(SEPARATOR);
+            }
+        }
+    }
+
 
     public static class Builder {
 
@@ -81,10 +143,16 @@ public class HadoopCMConfigurator implements HadoopConfigurator {
      */
     @Override
     public List<String> getAllClusters() {
-        ApiClusterList clusters = api.getClustersResource().readClusters(DataView.SUMMARY);
         List<String> names = new ArrayList<String>();
-        for (ApiCluster cluster : clusters.getClusters()) {
-            names.add(cluster.getName());
+        ApiClusterList clusters;
+        try {
+            clusters = clusterAPI.readClusters(null, HadoopCMCluster.DEFAULT_VIEW_NAME);
+            System.out.println(clusters.toString());
+            for (ApiCluster cluster : clusters.getItems()) {
+                names.add(cluster.getDisplayName() + NAME_SEPARATOR + cluster.getName());
+            }
+        } catch (ApiException e) {
+            throw new RuntimeException(e);
         }
         return names;
     }
@@ -96,8 +164,18 @@ public class HadoopCMConfigurator implements HadoopConfigurator {
      */
     @Override
     public HadoopCluster getCluster(String name) {
-        ServicesResourceV3 cluster = api.getClustersResource().getServicesResource(name);
-        return new HadoopCMCluster(cluster);
+        return new HadoopCMCluster(this.serviceAPI, getClusterName(name));
+    }
+
+    private static String getClusterName(String displayNameWithName) {
+        if (displayNameWithName == null) {
+            return "";
+        }
+        String[] names = displayNameWithName.split(NAME_SEPARATOR_PATTERN);
+        if (names.length > 1) {
+            return names[1];
+        }
+        return names[0];
     }
 
 }

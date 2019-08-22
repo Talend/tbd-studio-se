@@ -12,15 +12,13 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.configurator.cloudera.test;
 
-import java.net.URL;
 import java.util.Map;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.talend.repository.hadoopcluster.configurator.HadoopCluster;
 import org.talend.repository.hadoopcluster.configurator.HadoopClusterService;
-import org.talend.repository.hadoopcluster.configurator.HadoopConfigurationManager;
 import org.talend.repository.hadoopcluster.configurator.HadoopConfigurator;
-import org.talend.repository.hadoopcluster.configurator.HadoopConfiguratorBuilder;
 import org.talend.repository.hadoopcluster.configurator.HadoopHostedService;
 import org.talend.repository.hadoopcluster.configurator.test.TestUtil;
 
@@ -28,25 +26,20 @@ import org.talend.repository.hadoopcluster.configurator.test.TestUtil;
  * created by bchen on Nov 26, 2015 Detailled comment
  *
  */
-public class CDH54 {
+public class ClouderaHadoopConfig611Test {
 
-    /**
-     * there is a cluster at Bonn
-     *
-     * 192.168.150.98 tal-qa143.talend.lan tal-qa143
-     *
-     * 192.168.150.99 tal-qa144.talend.lan tal-qa144
-     *
-     * 192.168.150.77 tal-qa146.talend.lan tal-qa146
-     *
-     * 192.168.150.78 tal-qa147.talend.lan tal-qa147
-     *
-     */
+    @Ignore("ignored in buildme system, comment out this line when run locally")
     @Test
-    public void test() throws Exception {
+    public void testConfigurator_cdh611() throws Exception {
         String folder = "/tmp/cm";
-        HadoopConfigurator configurator = new HadoopConfiguratorBuilder().withVendor(HadoopConfigurationManager.CLOUDERA_MANAGER)
-                .withBaseURL(new URL("http://tal-qa143.talend.lan:7180")).withUsernamePassword("admin", "admin").build();
+
+        // 611
+        String url = "https://tal-qa300.talend.lan:7183";
+        String trustStoreFile = "tal-qa300.jks";
+        String trustStorePwd = "ROv7PbRuQpB4o3KkyY0FUPfn8NAClUCraPF0APHawb8";
+        String trustStoreType = "jks";
+
+        HadoopConfigurator configurator = TestUtil.getConfigurator(url, trustStoreFile, trustStoreType, trustStorePwd);
 
         TestUtil.checkCluster(configurator, "Cluster 1");
 
@@ -63,5 +56,4 @@ public class CDH54 {
                 "core-site.xml", "mapred-site.xml");
         TestUtil.checkServiceConf(services.get(HadoopHostedService.HBASE), "hbase-site.xml", "hdfs-site.xml", "core-site.xml");
     }
-
 }

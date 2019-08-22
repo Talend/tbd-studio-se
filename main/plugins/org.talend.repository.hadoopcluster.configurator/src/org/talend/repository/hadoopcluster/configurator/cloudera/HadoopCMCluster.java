@@ -20,10 +20,10 @@ import org.talend.repository.hadoopcluster.configurator.HadoopCluster;
 import org.talend.repository.hadoopcluster.configurator.HadoopClusterService;
 import org.talend.repository.hadoopcluster.configurator.HadoopHostedService;
 
-import com.cloudera.api.DataView;
-import com.cloudera.api.model.ApiService;
-import com.cloudera.api.model.ApiServiceList;
-import com.cloudera.api.v3.ServicesResourceV3;
+import com.cloudera.api.swagger.ServicesResourceApi;
+import com.cloudera.api.swagger.client.ApiException;
+import com.cloudera.api.swagger.model.ApiService;
+import com.cloudera.api.swagger.model.ApiServiceList;
 
 /**
  * created by bchen on May 28, 2015 Detailled comment
@@ -31,15 +31,19 @@ import com.cloudera.api.v3.ServicesResourceV3;
  */
 public class HadoopCMCluster implements HadoopCluster {
 
-    ServicesResourceV3 cluster;
+    static final String DEFAULT_VIEW_NAME = "summary";
+
+    ServicesResourceApi serviceAPI;
+
+    String clusterName;
 
     List<String> blacklistParams;
-
     /**
      * DOC bchen HadoopCMCluster constructor comment.
      */
-    public HadoopCMCluster(ServicesResourceV3 cluster) {
-        this.cluster = cluster;
+    public HadoopCMCluster(ServicesResourceApi serviceAPI, String clusterName) {
+        this.serviceAPI = serviceAPI;
+        this.clusterName = clusterName;
     }
 
     /*
@@ -49,15 +53,21 @@ public class HadoopCMCluster implements HadoopCluster {
      */
     @Override
     public Map<HadoopHostedService, HadoopClusterService> getHostedServices() {
-        ApiServiceList services = cluster.readServices(DataView.SUMMARY);
         Map<HadoopHostedService, HadoopClusterService> servicesMapping = new HashMap<HadoopHostedService, HadoopClusterService>();
-        for (ApiService service : services.getServices()) {
-            if (HadoopHostedService.isSupport(service.getType())) {
-                HadoopCMClusterService clusterService = new HadoopCMClusterService(service.getName(), cluster, blacklistParams);
-                if (clusterService.hasConfigurations()) {
-                    servicesMapping.put(HadoopHostedService.fromString(service.getType()), clusterService);
+        ApiServiceList services;
+        try {
+            services = this.serviceAPI.readServices(this.clusterName, DEFAULT_VIEW_NAME);
+            for (ApiService service : services.getItems()) {
+                if (HadoopHostedService.isSupport(service.getType())) {
+                    HadoopCMClusterService clusterService = new HadoopCMClusterService(this.clusterName, service.getName(),
+                            this.serviceAPI, blacklistParams);
+                    if (clusterService.hasConfigurations()) {
+                        servicesMapping.put(HadoopHostedService.fromString(service.getType()), clusterService);
+                    }
                 }
             }
+        } catch (ApiException e) {
+            throw new RuntimeException(e);
         }
         return servicesMapping;
     }

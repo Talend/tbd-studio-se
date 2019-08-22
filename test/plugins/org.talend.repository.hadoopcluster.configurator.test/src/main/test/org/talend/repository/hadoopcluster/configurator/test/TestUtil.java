@@ -12,13 +12,23 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.configurator.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Platform;
+import org.osgi.framework.Bundle;
 import org.talend.repository.hadoopcluster.configurator.HadoopClusterService;
+import org.talend.repository.hadoopcluster.configurator.HadoopConfigurationManager;
 import org.talend.repository.hadoopcluster.configurator.HadoopConfigurator;
+import org.talend.repository.hadoopcluster.configurator.HadoopConfiguratorBuilder;
 import org.talend.repository.hadoopcluster.configurator.HadoopHostedService;
 
 /**
@@ -27,11 +37,35 @@ import org.talend.repository.hadoopcluster.configurator.HadoopHostedService;
  */
 public class TestUtil {
 
+    public static HadoopConfigurator getConfigurator(String url, String trustStoreFile, String trustStoreType,
+            String trustStorePwd) throws IOException {
+
+        Bundle bundle = Platform.getBundle("org.talend.repository.hadoopcluster.configurator.test"); //$NON-NLS-1$
+        URL confEntry = bundle.getEntry("/resources/conf/" + trustStoreFile);
+        File configFile = new File(FileLocator.toFileURL(confEntry).getFile());
+
+        HadoopConfigurator configurator = new HadoopConfiguratorBuilder().withVendor(HadoopConfigurationManager.CLOUDERA_MANAGER)
+                .withBaseURL(new URL(url)).withUsernamePassword("admin", "admin")
+                .withTrustManagers(configFile.getAbsolutePath(), trustStoreType, trustStorePwd).build();
+        return configurator;
+    }
+
+    public static String getClusterDisplayName(String clusterNameWithDisplayName) {
+        String[] clusterNameArray = clusterNameWithDisplayName.split(HadoopConfigurator.NAME_SEPARATOR_PATTERN);
+        return clusterNameArray[0];
+    }
+
     public static void checkCluster(HadoopConfigurator configurator, String... clusterNames) throws Exception {
-        String[] allClusters = configurator.getAllClusters().toArray(new String[configurator.getAllClusters().size()]);
-        Arrays.sort(allClusters);
+        List<String> allClusters = configurator.getAllClusters();
+
+        String[] displayNames = new String[allClusters.size()];
+        for (int i = 0; i < allClusters.size(); i++) {
+            displayNames[i] = getClusterDisplayName(allClusters.get(i));
+        }
+
+        Arrays.sort(displayNames);
         Arrays.sort(clusterNames);
-        assertArrayEquals(clusterNames, allClusters);
+        assertArrayEquals(clusterNames, displayNames);
     }
 
     public static void checkService(Map<HadoopHostedService, HadoopClusterService> services,

@@ -14,6 +14,7 @@ package org.talend.repository.hadoopcluster.configurator.cloudera;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -29,14 +30,13 @@ import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import javax.ws.rs.BadRequestException;
-
-import org.apache.cxf.jaxrs.ext.multipart.InputStreamDataSource;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
+import org.apache.log4j.Logger;
 import org.talend.repository.hadoopcluster.configurator.HadoopClusterService;
 
-import com.cloudera.api.v3.ServicesResourceV3;
+import com.cloudera.api.swagger.ServicesResourceApi;
+import com.cloudera.api.swagger.client.ApiException;
 
 /**
  * created by bchen on May 28, 2015 Detailled comment
@@ -44,11 +44,15 @@ import com.cloudera.api.v3.ServicesResourceV3;
  */
 public class HadoopCMClusterService implements HadoopClusterService {
 
+    private static final String IGNORE_ERROR_MSG = "does not require a client configuration";
+
     private static final String SUPPORT_FILE = "site.xml"; //$NON-NLS-1$
 
-    private ServicesResourceV3 cluster;
+    private ServicesResourceApi serviceAPI;
 
     private String serviceName;
+
+    private String clusterName;
 
     private Map<String, Configuration> confs;// only contains *-site.xml
 
@@ -57,76 +61,89 @@ public class HadoopCMClusterService implements HadoopClusterService {
      *
      * @param cluster
      */
-    public HadoopCMClusterService(String serviceName, ServicesResourceV3 cluster, List<String> blacklistParams) {
+    public HadoopCMClusterService(String clusterName, String serviceName, ServicesResourceApi serviceAPI,
+            List<String> blacklistParams) {
         this.serviceName = serviceName;
-        this.cluster = cluster;
+        this.clusterName = clusterName;
+        this.serviceAPI = serviceAPI;
         init(blacklistParams);
     }
 
+    private String getConfFileName(String originalName) {
+        if (originalName.contains("/")) {
+            return originalName.substring(originalName.lastIndexOf("/") + 1, originalName.length());
+        }
+        return originalName;
+    }
+
+    private void writeZipIntoFile(ZipInputStream zipInputStream, File file) throws IOException {
+        BufferedWriter configOutput = null;
+        try {
+            int read;
+            configOutput = new BufferedWriter(new FileWriter(file));
+            while (zipInputStream.available() > 0) {
+                if ((read = zipInputStream.read()) != -1) {
+                    configOutput.write(read);
+                }
+            }
+        } finally {
+            if (configOutput != null) {
+                configOutput.close();
+            }
+        }
+    }
+
+    private Configuration filterByBlacklist(Configuration originalConf, List<String> blacklist) {
+        if (blacklist != null && blacklist.size() > 0) {
+            Configuration filteredConf = new Configuration(false);
+            Iterator<Entry<String, String>> iterator = originalConf.iterator();
+            while (iterator.hasNext()) {
+                Entry<String, String> next = iterator.next();
+                if (blacklist.contains(next.getKey())) {
+                    continue;
+                }
+                filteredConf.set(next.getKey(), next.getValue());
+            }
+            originalConf = filteredConf;
+        }
+        return originalConf;
+    }
     /**
      * DOC bchen Comment method "init".
      */
     private void init(List<String> blacklistParams) {
         confs = new HashMap<>();
-        InputStreamDataSource clientConfig = null;
         try {
-            clientConfig = cluster.getClientConfig(serviceName);
-        } catch (BadRequestException e) {
-            // e.printStackTrace();
-            // ignore the exception, because some service don't contains configuration
-        }
-        if (clientConfig == null) {
-            return;
-        }
-        File directory = new File(System.getProperty("java.io.tmpdir"), "Talend_Hadoop_Wizard_" + serviceName //$NON-NLS-1$ //$NON-NLS-2$
-                + String.valueOf(new Date().getTime()) + Thread.currentThread().getId());
-        try {
-            ZipInputStream zipInputStream = new ZipInputStream(clientConfig.getInputStream());
+            File configZipFile = this.serviceAPI.getClientConfig(this.clusterName, this.serviceName);
+            File directory = new File(System.getProperty("java.io.tmpdir"), "Talend_Hadoop_Wizard_" + serviceName
+                    + String.valueOf(new Date().getTime()) + Thread.currentThread().getId());
+            ZipInputStream zipInputStream = new ZipInputStream(new FileInputStream(configZipFile));
             ZipEntry configInputZipEntry = null;
             while ((configInputZipEntry = zipInputStream.getNextEntry()) != null) {
-                String configFile = configInputZipEntry.getName();
-                if (configFile.contains("/")) { //$NON-NLS-1$
-                    configFile = configFile.substring(configFile.lastIndexOf("/") + 1, configFile.length()); //$NON-NLS-1$
-                }
+                String configFile = getConfFileName(configInputZipEntry.getName());
                 if (!configFile.endsWith(SUPPORT_FILE)) {
                     continue;
                 }
                 directory.mkdirs();
                 File file = new File(directory, configFile);
-                BufferedWriter configOutput = null;
-                try {
-                    int read;
-                    configOutput = new BufferedWriter(new FileWriter(file));
-                    while (zipInputStream.available() > 0) {
-                        if ((read = zipInputStream.read()) != -1) {
-                            configOutput.write(read);
-                        }
-                    }
-                } finally {
-                    if (configOutput != null) {
-                        configOutput.close();
-                    }
-                }
+
+                writeZipIntoFile(zipInputStream, file);
+
                 Configuration conf = new Configuration(false);
-                conf.addResource(new Path(file.toURI()));
-                if (blacklistParams != null && blacklistParams.size() > 0) {
-                    Configuration filteredConf = new Configuration(false);
-                    Iterator<Entry<String, String>> iterator = conf.iterator();
-                    while (iterator.hasNext()) {
-                        Entry<String, String> next = iterator.next();
-                        if (blacklistParams.contains(next.getKey())) {
-                            continue;
-                        }
-                        filteredConf.set(next.getKey(), next.getValue());
-                    }
-                    conf = filteredConf;
-                }
+                conf.addResource(new Path(file.toURI())); // build configuration by file
+                conf = filterByBlacklist(conf, blacklistParams);
                 confs.put(configFile, conf);
 
             }
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            throw new RuntimeException(e);
+        } catch (ApiException e) {
+            if (e.getCode() == 400 && e.getResponseBody().contains(IGNORE_ERROR_MSG)) {
+                Logger.getLogger(this.getClass())
+                        .info("service: " + this.serviceName + " " + IGNORE_ERROR_MSG);
+            } else {
+                throw new RuntimeException(e);
+            }
         }
     }
 
