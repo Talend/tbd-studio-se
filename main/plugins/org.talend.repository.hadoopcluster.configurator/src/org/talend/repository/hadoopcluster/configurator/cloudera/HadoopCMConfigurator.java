@@ -93,7 +93,7 @@ public class HadoopCMConfigurator implements HadoopConfigurator {
         if (version.getStatusCode() == 200) {
             // highest version
             client.setBasePath(client.getBasePath() + "/" + version.getData());
-        } else if (version.getStatusCode() == 401) {
+        } else if (version.getStatusCode() == 404) {
             // default version
             client.setBasePath(client.getBasePath() + "/" + DEFAULT_API_VERSION);
         } else {
