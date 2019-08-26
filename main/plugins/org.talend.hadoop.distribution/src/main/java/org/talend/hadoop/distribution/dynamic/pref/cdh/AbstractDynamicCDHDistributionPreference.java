@@ -14,7 +14,6 @@ package org.talend.hadoop.distribution.dynamic.pref.cdh;
 
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.talend.hadoop.distribution.dynamic.pref.AbstractDynamicDistributionPreference;
-import org.talend.utils.security.StudioEncryption;
 
 
 /**
@@ -75,7 +74,7 @@ public abstract class AbstractDynamicCDHDistributionPreference extends AbstractD
     @Override
     protected String getPrefDefaultPassword() {
         if (PREF_PASSWORD_DEFAULT != null && !PREF_PASSWORD_DEFAULT.isEmpty()) {
-            return StudioEncryption.decrypt(PREF_PASSWORD_DEFAULT);
+            return se.decrypt(PREF_PASSWORD_DEFAULT);
         } else {
             return PREF_PASSWORD_DEFAULT;
         }

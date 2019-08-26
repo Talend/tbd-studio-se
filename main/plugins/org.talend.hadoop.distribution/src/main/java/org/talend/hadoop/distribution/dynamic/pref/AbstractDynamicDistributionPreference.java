@@ -49,6 +49,8 @@ public abstract class AbstractDynamicDistributionPreference implements IDynamicD
 
     abstract protected String getPrefDefaultPassword();
 
+    protected StudioEncryption se = StudioEncryption.getStudioEncryption(null);
+
     protected AbstractDynamicDistributionPreference(ScopedPreferenceStore store) {
         prefStore = store;
         initDefaultPreference();
@@ -169,15 +171,11 @@ public abstract class AbstractDynamicDistributionPreference implements IDynamicD
     }
 
     protected String encrypt(String str) {
-        synchronized (StudioEncryption.class) {
-            return StudioEncryption.encrypt(str);
-        }
+        return se.encrypt(str);
     }
 
 
     protected String decrypt(String str) {
-        synchronized (StudioEncryption.class) {
-            return StudioEncryption.decrypt(str);
-        }
+        return se.decrypt(str);
     }
 }
