@@ -126,7 +126,6 @@ public class HadoopCMConfigurator implements HadoopConfigurator {
             }
 
             if (caCerts.length() > 0) {
-                cmClient.setVerifyingSsl(true);
                 cmClient.setSslCaCert(new ByteArrayInputStream(caCerts.toString().getBytes()));
             }
         }
