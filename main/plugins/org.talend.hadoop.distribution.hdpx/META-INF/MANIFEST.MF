@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Service-Component: OSGI-INF/hdp2xx.xml
+Service-Component: OSGI-INF/hdpx.xml
 Bundle-ManifestVersion: 2
 Bundle-Name: Hortonworks Dynamic Distributions
 Bundle-SymbolicName: org.talend.hadoop.distribution.hdpx;singleton:=true
