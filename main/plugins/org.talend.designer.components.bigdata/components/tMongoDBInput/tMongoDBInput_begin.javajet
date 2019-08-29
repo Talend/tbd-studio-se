@@ -292,7 +292,7 @@
 	                    <%
 	                    if(isLog4jEnabled){
 	                        %>
-	                        log.warn("<%=cid%> - The query does not contain any reference an index.  [" + indexList.substring(1) + " ]");
+	                        log.trace("<%=cid%> - The query does not contain any reference an index.  [" + indexList.substring(1) + " ]");
 	                        <%
 	                    } else {
 	                        %>
