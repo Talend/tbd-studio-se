@@ -23,7 +23,7 @@
     	dbconn +=  cid;
     }
     
-	if (!"NEO4J_3_2_X".equals(dbversion)&&(!useExistingConnection||(useExistingConnection && shutdownDb))) {
+	if ((!"NEO4J_3_2_X".equals(dbversion)&&!useExistingConnection)||(useExistingConnection && shutdownDb)) {
 %>
 		if(resourceMap.get("finish_<%=cid%>") == null){
 			if(resourceMap.get("databaseService_<%=cid%>") != null){
@@ -31,7 +31,7 @@
 			}
 		}
 <%
-	}else if ("NEO4J_3_2_X".equals(dbversion)&&(!useExistingConnection||(useExistingConnection && shutdownDb))) {
+	}else if ("NEO4J_3_2_X".equals(dbversion)&&(!useExistingConnection)) {
 			%>
 			if(resourceMap.get("databaseSession_<%=cid%>") != null){
 				((org.neo4j.driver.v1.Session)resourceMap.get("databaseSession_<%=cid%>")).close();
