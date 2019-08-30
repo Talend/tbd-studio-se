@@ -8,5 +8,5 @@
     <relativePath>../../../</relativePath>
   </parent>
   <artifactId>org.talend.hadoop.distribution.test.base</artifactId>
-  <packaging>eclipse-plugin</packaging>
+    <packaging>eclipse-test-plugin</packaging>
 </project>
