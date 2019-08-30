@@ -23,10 +23,10 @@
         <module>i18n/plugins/org.talend.repository.oozie.nl</module>
         <module>i18n/plugins/org.talend.repository.pigudf.nl</module>
 
-        <!--        <module>main/features/org.talend.rcp.branding.tos.bigdata.feature</module>-->
-        <!--        <module>main/features/org.talend.tos.bigdata.feature</module>-->
-        <!--        <module>main/features/org.talend.tos.bigdata.libraries.feature</module>-->
-        <!--        <module>main/features/org.talend.hadoop.distribution.feature</module>-->
+        <module>main/features/org.talend.rcp.branding.tos.bigdata.feature</module>
+        <module>main/features/org.talend.tos.bigdata.feature</module>
+        <module>main/features/org.talend.tos.bigdata.libraries.feature</module>
+        <module>main/features/org.talend.hadoop.distribution.feature</module>
         <module>main/plugins/org.talend.hadoop.distribution</module>
         <module>main/plugins/org.talend.hadoop.distribution.apache100</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh4mr1</module>
