@@ -28,6 +28,14 @@
             ],
             "description": ""
 		},
+		{
+            "id": "commons-httpclient-3.1",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "commons-httpclient-3.1.jar",
+            "mvnUri": "mvn:org.talend.libraries/commons-httpclient-3.1/6.0.0",
+            "useStudioRepository": "true"
+		},
         {
 			"id": "avro-mapred",
 			"type": "BASE",
@@ -1672,7 +1680,8 @@
 				"hadoop-client",
 				"jackson-core",
 				"jackson-databind",
-				"jackson-annotations"
+				"jackson-annotations",
+				"commons-httpclient-3.1"
 			]
 		},
 		{
@@ -1810,7 +1819,8 @@
 				"hive-exec",
 				"spark-mllib_2.11",
 				"spark-yarn_2.11",
-				"spark-avro_2.11"
+				"spark-avro_2.11",
+				"commons-httpclient-3.1"
 			]
 		},
         {
