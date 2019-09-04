@@ -62,7 +62,7 @@ public abstract class AbstractDynamicDistributionPreference implements IDynamicD
         prefStore.setDefault(getPrefKeyRepository(), getDefaultRepository());
         prefStore.setDefault(getPrefKeyAnonymous(), getDefaultIsAnonymous());
         prefStore.setDefault(getPrefKeyUsername(), getDefaultUsername());
-        prefStore.setDefault(getPrefKeyPassword(), encrypt(getDefaultPassword()));
+        prefStore.setDefault(getPrefKeyPassword(), getDefaultPassword());
     }
 
     @Override
