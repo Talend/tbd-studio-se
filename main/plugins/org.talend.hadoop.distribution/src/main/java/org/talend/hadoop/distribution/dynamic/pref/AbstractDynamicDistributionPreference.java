@@ -128,7 +128,7 @@ public abstract class AbstractDynamicDistributionPreference implements IDynamicD
     @Override
     public String getPassword() {
         String password = prefStore.getString(getPrefKeyPassword());
-        if (StringUtils.isNotEmpty(password)) {
+        if (StringUtils.isNotEmpty(password) && !password.equals(getDefaultPassword())) {
             password = decrypt(password);
         }
         return password;
