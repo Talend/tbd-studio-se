@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: CDH 5.7.0 distribution
+Bundle-SymbolicName: org.talend.hadoop.distribution.cdh570;singleton:=true
+Bundle-Version: 7.2.1.qualifier
+Bundle-Vendor: .Talend SA.
+Service-Component: OSGI-INF/cdh570.xml
+Require-Bundle: org.talend.core.runtime,
+ org.talend.hadoop.distribution
+Bundle-ActivationPolicy: lazy
+Export-Package: org.talend.hadoop.distribution.cdh570
