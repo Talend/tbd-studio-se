@@ -219,35 +219,34 @@
 				MVN="mvn:org.talend.libraries/geronimo-jta_1.1_spec-1.1.1/6.0.0"
 				NAME="geronimo-jta_1.1_spec-1.1.1"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT NAME="lucene-core-3.6.2" MODULE="lucene-core-3.6.2.jar"
-				MVN="mvn:org.talend.libraries/lucene-core-3.6.2/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.apache.lucene/lib/lucene-core-3.6.2.jar"
+			<IMPORT MODULE="lucene-core-3.5.0.jar"
+				MVN="mvn:org.talend.libraries/lucene-core-3.5.0/6.0.0" NAME="lucene-core-3.5.0"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="neo4j-cypher-1.9.9.jar"
-				MVN="mvn:org.neo4j/neo4j-cypher/1.9.9" NAME="neo4j-cypher-1.9.9"
+			<IMPORT MODULE="neo4j-cypher-1.9.M01.jar"
+				MVN="mvn:org.talend.libraries/neo4j-cypher-1.9.M01/6.0.0" NAME="neo4j-cypher-1.9.M01"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="neo4j-graph-algo-1.9.9.jar"
-				MVN="mvn:org.neo4j/neo4j-graph-algo/1.9.9" NAME="neo4j-graph-algo-1.9.9"
+			<IMPORT MODULE="neo4j-graph-algo-1.9.M01.jar"
+				MVN="mvn:org.talend.libraries/neo4j-graph-algo-1.9.M01/6.0.0" NAME="neo4j-graph-algo-1.9.M01"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="neo4j-graph-matching-1.9.9.jar"
-				MVN="mvn:org.neo4j/neo4j-graph-matching/1.9.9"
-				NAME="neo4j-graph-matching-1.9.9"
+			<IMPORT MODULE="neo4j-graph-matching-1.9.M01.jar"
+				MVN="mvn:org.talend.libraries/neo4j-graph-matching-1.9.M01/6.0.0"
+				NAME="neo4j-graph-matching-1.9.M01"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="neo4j-jmx-1.9.9.jar"
-				MVN="mvn:org.neo4j/neo4j-jmx/1.9.9" NAME="neo4j-jmx-1.9.9"
+			<IMPORT MODULE="neo4j-jmx-1.9.M01.jar"
+				MVN="mvn:org.talend.libraries/neo4j-jmx-1.9.M01/6.0.0" NAME="neo4j-jmx-1.9.M01"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="neo4j-kernel-1.9.9.jar"
-				MVN="mvn:org.neo4j/neo4j-kernel/1.9.9" NAME="neo4j-kernel-1.9.9"
+			<IMPORT MODULE="neo4j-kernel-1.9.M01.jar"
+				MVN="mvn:org.talend.libraries/neo4j-kernel-1.9.M01/6.0.0" NAME="neo4j-kernel-1.9.M01"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="neo4j-lucene-index-1.9.9.jar"
-				MVN="mvn:org.neo4j/neo4j-lucene-index/1.9.9"
-				NAME="neo4j-lucene-index-1.9.9"
+			<IMPORT MODULE="neo4j-lucene-index-1.9.M01.jar"
+				MVN="mvn:org.talend.libraries/neo4j-lucene-index-1.9.M01/6.0.0"
+				NAME="neo4j-lucene-index-1.9.M01"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="neo4j-shell-1.9.9.jar"
-				MVN="mvn:org.neo4j/neo4j-shell/1.9.9" NAME="neo4j-shell-1.9.9"
+			<IMPORT MODULE="neo4j-shell-1.9.M01.jar"
+				MVN="mvn:org.talend.libraries/neo4j-shell-1.9.M01/6.0.0" NAME="neo4j-shell-1.9.M01"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="neo4j-udc-1.9.9.jar"
-				MVN="mvn:org.neo4j/neo4j-udc/1.9.9" NAME="neo4j-udc-1.9.9"
+			<IMPORT MODULE="neo4j-udc-1.9.M01.jar"
+				MVN="mvn:org.talend.libraries/neo4j-udc-1.9.M01/6.0.0" NAME="neo4j-udc-1.9.M01"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT MODULE="org.apache.servicemix.bundles.jline-0.9.94_1.jar"
 				MVN="mvn:org.talend.libraries/org.apache.servicemix.bundles.jline-0.9.94_1/6.0.0"
@@ -258,8 +257,8 @@
 				MVN="mvn:org.talend.libraries/scala-library-2.9.1-1/6.0.0" NAME="scala-library-2.9.1-1"
 				UrlPath="platform:/plugin/org.talend.libraries.neo4j/lib/scala-library-2.9.1-1.jar"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="server-api-1.9.9.jar"
-				MVN="mvn:org.neo4j/server-api/1.9.9" NAME="server-api-1.9.9"
+			<IMPORT MODULE="server-api-1.9.M01.jar"
+				MVN="mvn:org.talend.libraries/server-api-1.9.M01/6.0.0" NAME="server-api-1.9.M01"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT MODULE="neo4j-rest-graphdb-1.8.1.jar"
 				MVN="mvn:org.talend.libraries/neo4j-rest-graphdb-1.8.1/6.0.0" NAME="neo4j-rest-graphdb-1.8.1.jar"

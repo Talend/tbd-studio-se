@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.talend.studio</groupId>
     <artifactId>tbd-studio-se</artifactId>
-    <version>7.2.1-SNAPSHOT</version>
+    <version>7.2.1</version>
     <relativePath>../../../</relativePath>
   </parent>
   <artifactId>org.talend.repository.hdfs</artifactId>
