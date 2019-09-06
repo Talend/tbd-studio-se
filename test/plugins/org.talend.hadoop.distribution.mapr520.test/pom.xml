@@ -4,9 +4,17 @@
   <parent>
     <groupId>org.talend.studio</groupId>
     <artifactId>tbd-studio-se</artifactId>
+<<<<<<< HEAD
     <version>7.2.1</version>
+=======
+    <version>7.3.1-SNAPSHOT</version>
+>>>>>>> master
     <relativePath>../../../</relativePath>
   </parent>
   <artifactId>org.talend.hadoop.distribution.mapr520.test</artifactId>
-  <packaging>eclipse-plugin</packaging>
+    <packaging>eclipse-test-plugin</packaging>
+    <build>
+        <sourceDirectory>src</sourceDirectory>
+        <outputDirectory>bin</outputDirectory>
+    </build>
 </project>

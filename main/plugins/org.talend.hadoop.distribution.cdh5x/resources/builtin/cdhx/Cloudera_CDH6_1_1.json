@@ -960,6 +960,10 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_commons_httpclient_3_1",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_commons_io_2_6_jar",
         "tagName" : "library"
       }, {
@@ -11014,6 +11018,10 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_ST4_4_0_4_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_accessors_smart_1_2_jar",
         "tagName" : "library"
       }, {
@@ -11022,7 +11030,27 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_aggdesigner_algorithm_6_0_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_ant_1_6_5_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_ant_1_9_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_ant_launcher_1_9_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_antlr4_runtime_4_7_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_antlr_runtime_3_5_2_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -11054,7 +11082,15 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_async_http_client_1_8_16_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_audience_annotations_0_8_0_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_avatica_1_12_0_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -11078,6 +11114,18 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_calcite_core_1_12_0_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_calcite_druid_1_12_0_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_calcite_linq4j_1_12_0_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_chill_2_11_0_9_3_jar",
         "tagName" : "library"
       }, {
@@ -11086,11 +11134,19 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_commons_beanutils_1_9_3_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_commons_cli_1_4_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_commons_codec_1_11_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_commons_collections4_4_1_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -11106,7 +11162,27 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_commons_configuration2_2_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_commons_crypto_1_0_0_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_commons_daemon_1_0_13_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_commons_dbcp_1_4_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_commons_el_1_0_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_commons_httpclient_3_1",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -11115,6 +11191,10 @@
       }, {
         "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_commons_lang3_3_7_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_commons_lang_2_6_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -11154,6 +11234,18 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_datanucleus_core_4_1_6_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_derby_10_14_1_0_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_dropwizard_metrics_hadoop_metrics2_reporter_0_1_2_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_ehcache_3_3_1_jar",
         "tagName" : "library"
       }, {
@@ -11162,7 +11254,19 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_fst_2_50_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_geronimo_jcache_1_0_spec_1_0_alpha_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_groovy_all_2_4_11_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_gson_2_2_4_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -11182,7 +11286,19 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hadoop_archives_3_0_0_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_hadoop_auth_3_0_0_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hadoop_common_3_0_0_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hadoop_hdfs_3_0_0_cdh6_1_1_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -11191,6 +11307,10 @@
       }, {
         "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_hadoop_mapreduce_client_core_3_0_0_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hadoop_shim_0_9_1_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -11206,11 +11326,79 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hadoop_yarn_server_applicationhistoryservice_3_0_0_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_hadoop_yarn_server_common_3_0_0_cdh6_1_1_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hadoop_yarn_server_resourcemanager_3_0_0_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_hadoop_yarn_server_web_proxy_3_0_0_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_ant_2_1_1_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_classification_2_1_1_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_common_2_1_1_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_exec_2_1_1_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_llap_client_2_1_1_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_llap_common_2_1_1_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_llap_tez_2_1_1_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_orc_2_1_1_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_serde_2_1_1_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_service_rpc_2_1_1_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_shims_0_23_2_1_1_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_shims_2_1_1_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_shims_common_2_1_1_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_shims_scheduler_2_1_1_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_storage_api_2_1_1_cdh6_1_1_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -11227,6 +11415,10 @@
       }, {
         "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_hppc_0_7_2_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_htrace_core4_4_2_0_incubating_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -11291,6 +11483,18 @@
       }, {
         "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_janino_3_0_9_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_jasper_compiler_5_5_23_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_jasper_runtime_5_5_23_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_java_util_1_9_0_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -11390,11 +11594,23 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_jetty_client_9_3_20_v20170531_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_jetty_http_9_3_20_v20170531_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_jetty_io_9_3_20_v20170531_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_jetty_rewrite_9_3_20_v20170531_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_jetty_security_9_3_20_v20170531_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -11410,7 +11626,31 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_jetty_util_ajax_9_3_20_v20170531_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_jetty_webapp_9_3_20_v20170531_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_jetty_xml_9_3_20_v20170531_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_jline_2_12_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_joda_time_2_9_9_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_jodd_core_3_5_2_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_jsch_0_1_54_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -11430,7 +11670,23 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_json_20090211_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_json_io_2_5_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_json_smart_2_3_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_jsp_api_2_0_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_jsp_api_2_1_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -11511,6 +11767,14 @@
       }, {
         "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_leveldbjni_all_1_8_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_libfb303_0_9_3_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_libthrift_0_9_3_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -11614,6 +11878,10 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_parquet_hadoop_bundle_1_9_0_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_parquet_jackson_1_9_0_cdh6_1_1_jar",
         "tagName" : "library"
       }, {
@@ -11650,6 +11918,10 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_servlet_api_2_5_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_shapeless_2_11_2_3_2_jar",
         "tagName" : "library"
       }, {
@@ -11659,6 +11931,10 @@
       }, {
         "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_slf4j_log4j12_1_7_25_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_snappy_0_2_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -11679,6 +11955,10 @@
       }, {
         "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_spark_graphx_2_11_2_4_0_cdh6_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_spark_hive_2_11_2_4_0_cdh6_1_1_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -11738,7 +12018,35 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_stax2_api_3_1_4_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_stax_api_1_0_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_stream_2_7_0_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_tez_api_0_9_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_tez_common_0_9_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_tez_mapreduce_0_9_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_tez_runtime_internals_0_9_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_tez_runtime_library_0_9_1_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -11751,6 +12059,14 @@
       }, {
         "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_validation_api_1_1_0_Final_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_velocity_1_7_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_woodstox_core_5_0_3_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -13113,6 +13429,15 @@
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDH6_1_1_commons_httpclient_3_1",
+      "mvn_uri" : "mvn:org.talend.libraries/commons-httpclient-3.1/6.0.0",
+      "name" : "commons-httpclient-3.1.jar",
+      "tagName" : "libraryNeeded",
+      "useStudioRepository" : "true"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
+      "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_commons_httpclient_3_1_jar",
       "mvn_uri" : "mvn:commons-httpclient/commons-httpclient/3.1/jar",
       "name" : "commons-httpclient-3.1.jar",
@@ -13323,7 +13648,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_elephant_bird_core_4_9_jar",
-      "mvn_uri" : "mvn:com.twitter.elephantbird/elephant-bird-core/4.9",
+      "mvn_uri" : "mvn:com.twitter.elephantbird/elephant-bird-core/4.9/jar",
       "name" : "elephant-bird-core-4.9.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -13869,7 +14194,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_hcatalog_core_2_1_1_cdh6_1_1_jar",
-      "mvn_uri" : "mvn:org.apache.hive.hcatalog/hive-hcatalog-core/2.1.1-cdh6.1.1/jar",
+      "mvn_uri" : "mvn:org.apache.hive.hcatalog/hive-hcatalog-core/2.1.1-cdh6.1.1",
       "name" : "hive-hcatalog-core-2.1.1-cdh6.1.1.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -16044,13 +16369,13 @@
     "childNodes" : [ {
       "childNodes" : [ ],
       "index" : "HDFS:CLOUDERA:Cloudera_CDH6_1_1",
-      "libraries" : "DYNAMIC_Cloudera_CDH6_1_1_accessors_smart_1_2_jar;DYNAMIC_Cloudera_CDH6_1_1_asm_5_0_4_jar;DYNAMIC_Cloudera_CDH6_1_1_avro_1_8_2_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_beanutils_1_9_3_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_cli_1_4_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_codec_1_11_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_collections_3_2_2_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_compress_1_11_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_configuration2_2_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_io_2_6_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_lang3_3_7_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_lang_2_6_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_logging_1_2_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_math3_3_6_1_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_net_3_1_jar;DYNAMIC_Cloudera_CDH6_1_1_curator_client_4_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_curator_framework_4_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_curator_recipes_4_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_gson_2_2_4_jar;DYNAMIC_Cloudera_CDH6_1_1_guava_14_0_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_annotations_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_auth_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_client_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_common_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_hdfs_client_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_mapreduce_client_common_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_mapreduce_client_core_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_mapreduce_client_jobclient_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_yarn_api_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_yarn_client_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_yarn_common_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_htrace_core4_4_2_0_incubating_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_annotations_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_core_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_core_asl_1_9_13_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_databind_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_jaxrs_base_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_jaxrs_json_provider_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_mapper_asl_1_9_13_cloudera_1_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_module_jaxb_annotations_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_javax_servlet_api_3_1_0_jar;DYNAMIC_Cloudera_CDH6_1_1_jaxb_api_2_2_12_jar;DYNAMIC_Cloudera_CDH6_1_1_jcip_annotations_1_0_1_jar;DYNAMIC_Cloudera_CDH6_1_1_jersey_client_1_19_jar;DYNAMIC_Cloudera_CDH6_1_1_jersey_core_1_19_jar;DYNAMIC_Cloudera_CDH6_1_1_jersey_servlet_1_19_jar;DYNAMIC_Cloudera_CDH6_1_1_jetty_security_9_3_20_v20170531_jar;DYNAMIC_Cloudera_CDH6_1_1_jetty_servlet_9_3_20_v20170531_jar;DYNAMIC_Cloudera_CDH6_1_1_jetty_util_9_3_20_v20170531_jar;DYNAMIC_Cloudera_CDH6_1_1_jetty_webapp_9_3_20_v20170531_jar;DYNAMIC_Cloudera_CDH6_1_1_jetty_xml_9_3_20_v20170531_jar;DYNAMIC_Cloudera_CDH6_1_1_json_smart_2_3_jar;DYNAMIC_Cloudera_CDH6_1_1_jsp_api_2_1_jar;DYNAMIC_Cloudera_CDH6_1_1_jsr305_3_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_jsr311_api_1_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_admin_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_client_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_common_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_core_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_crypto_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_identity_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_server_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_simplekdc_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_util_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerby_asn1_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerby_config_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerby_pkix_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerby_util_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerby_xdr_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_log4j_1_2_17_jar;DYNAMIC_Cloudera_CDH6_1_1_nimbus_jose_jwt_4_41_1_jar;DYNAMIC_Cloudera_CDH6_1_1_okhttp_2_7_5_jar;DYNAMIC_Cloudera_CDH6_1_1_okio_1_6_0_jar;DYNAMIC_Cloudera_CDH6_1_1_paranamer_2_8_jar;DYNAMIC_Cloudera_CDH6_1_1_protobuf_java_2_5_0_jar;DYNAMIC_Cloudera_CDH6_1_1_re2j_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_slf4j_api_1_7_25_jar;DYNAMIC_Cloudera_CDH6_1_1_snappy_java_1_1_7_1_jar;DYNAMIC_Cloudera_CDH6_1_1_stax2_api_3_1_4_jar;DYNAMIC_Cloudera_CDH6_1_1_woodstox_core_5_0_3_jar;DYNAMIC_Cloudera_CDH6_1_1_xz_1_6_jar",
+      "libraries" : "DYNAMIC_Cloudera_CDH6_1_1_accessors_smart_1_2_jar;DYNAMIC_Cloudera_CDH6_1_1_asm_5_0_4_jar;DYNAMIC_Cloudera_CDH6_1_1_avro_1_8_2_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_beanutils_1_9_3_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_cli_1_4_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_codec_1_11_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_collections_3_2_2_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_compress_1_11_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_configuration2_2_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_httpclient_3_1;DYNAMIC_Cloudera_CDH6_1_1_commons_io_2_6_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_lang3_3_7_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_lang_2_6_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_logging_1_2_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_math3_3_6_1_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_net_3_1_jar;DYNAMIC_Cloudera_CDH6_1_1_curator_client_4_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_curator_framework_4_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_curator_recipes_4_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_gson_2_2_4_jar;DYNAMIC_Cloudera_CDH6_1_1_guava_14_0_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_annotations_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_auth_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_client_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_common_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_hdfs_client_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_mapreduce_client_common_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_mapreduce_client_core_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_mapreduce_client_jobclient_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_yarn_api_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_yarn_client_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_yarn_common_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_htrace_core4_4_2_0_incubating_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_annotations_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_core_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_core_asl_1_9_13_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_databind_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_jaxrs_base_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_jaxrs_json_provider_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_mapper_asl_1_9_13_cloudera_1_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_module_jaxb_annotations_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_javax_servlet_api_3_1_0_jar;DYNAMIC_Cloudera_CDH6_1_1_jaxb_api_2_2_12_jar;DYNAMIC_Cloudera_CDH6_1_1_jcip_annotations_1_0_1_jar;DYNAMIC_Cloudera_CDH6_1_1_jersey_client_1_19_jar;DYNAMIC_Cloudera_CDH6_1_1_jersey_core_1_19_jar;DYNAMIC_Cloudera_CDH6_1_1_jersey_servlet_1_19_jar;DYNAMIC_Cloudera_CDH6_1_1_jetty_security_9_3_20_v20170531_jar;DYNAMIC_Cloudera_CDH6_1_1_jetty_servlet_9_3_20_v20170531_jar;DYNAMIC_Cloudera_CDH6_1_1_jetty_util_9_3_20_v20170531_jar;DYNAMIC_Cloudera_CDH6_1_1_jetty_webapp_9_3_20_v20170531_jar;DYNAMIC_Cloudera_CDH6_1_1_jetty_xml_9_3_20_v20170531_jar;DYNAMIC_Cloudera_CDH6_1_1_json_smart_2_3_jar;DYNAMIC_Cloudera_CDH6_1_1_jsp_api_2_1_jar;DYNAMIC_Cloudera_CDH6_1_1_jsr305_3_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_jsr311_api_1_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_admin_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_client_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_common_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_core_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_crypto_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_identity_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_server_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_simplekdc_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_util_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerby_asn1_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerby_config_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerby_pkix_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerby_util_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerby_xdr_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_log4j_1_2_17_jar;DYNAMIC_Cloudera_CDH6_1_1_nimbus_jose_jwt_4_41_1_jar;DYNAMIC_Cloudera_CDH6_1_1_okhttp_2_7_5_jar;DYNAMIC_Cloudera_CDH6_1_1_okio_1_6_0_jar;DYNAMIC_Cloudera_CDH6_1_1_paranamer_2_8_jar;DYNAMIC_Cloudera_CDH6_1_1_protobuf_java_2_5_0_jar;DYNAMIC_Cloudera_CDH6_1_1_re2j_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_slf4j_api_1_7_25_jar;DYNAMIC_Cloudera_CDH6_1_1_snappy_java_1_1_7_1_jar;DYNAMIC_Cloudera_CDH6_1_1_stax2_api_3_1_4_jar;DYNAMIC_Cloudera_CDH6_1_1_woodstox_core_5_0_3_jar;DYNAMIC_Cloudera_CDH6_1_1_xz_1_6_jar",
       "moduleGroupTemplateId" : "HDFS-LIB-DYNAMIC",
       "tagName" : "classloader"
     }, {
       "childNodes" : [ ],
       "index" : "HDFS:CLOUDERA:Cloudera_CDH6_1_1?USE_KRB",
-      "libraries" : "DYNAMIC_Cloudera_CDH6_1_1_accessors_smart_1_2_jar;DYNAMIC_Cloudera_CDH6_1_1_asm_5_0_4_jar;DYNAMIC_Cloudera_CDH6_1_1_avro_1_8_2_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_beanutils_1_9_3_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_cli_1_4_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_codec_1_11_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_collections_3_2_2_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_compress_1_11_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_configuration2_2_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_io_2_6_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_lang3_3_7_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_lang_2_6_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_logging_1_2_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_math3_3_6_1_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_net_3_1_jar;DYNAMIC_Cloudera_CDH6_1_1_curator_client_4_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_curator_framework_4_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_curator_recipes_4_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_gson_2_2_4_jar;DYNAMIC_Cloudera_CDH6_1_1_guava_14_0_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_annotations_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_auth_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_client_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_common_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_hdfs_client_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_mapreduce_client_common_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_mapreduce_client_core_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_mapreduce_client_jobclient_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_yarn_api_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_yarn_client_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_yarn_common_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_htrace_core4_4_2_0_incubating_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_annotations_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_core_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_core_asl_1_9_13_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_databind_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_jaxrs_base_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_jaxrs_json_provider_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_mapper_asl_1_9_13_cloudera_1_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_module_jaxb_annotations_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_javax_servlet_api_3_1_0_jar;DYNAMIC_Cloudera_CDH6_1_1_jaxb_api_2_2_12_jar;DYNAMIC_Cloudera_CDH6_1_1_jcip_annotations_1_0_1_jar;DYNAMIC_Cloudera_CDH6_1_1_jersey_client_1_19_jar;DYNAMIC_Cloudera_CDH6_1_1_jersey_core_1_19_jar;DYNAMIC_Cloudera_CDH6_1_1_jersey_servlet_1_19_jar;DYNAMIC_Cloudera_CDH6_1_1_jetty_security_9_3_20_v20170531_jar;DYNAMIC_Cloudera_CDH6_1_1_jetty_servlet_9_3_20_v20170531_jar;DYNAMIC_Cloudera_CDH6_1_1_jetty_util_9_3_20_v20170531_jar;DYNAMIC_Cloudera_CDH6_1_1_jetty_webapp_9_3_20_v20170531_jar;DYNAMIC_Cloudera_CDH6_1_1_jetty_xml_9_3_20_v20170531_jar;DYNAMIC_Cloudera_CDH6_1_1_json_smart_2_3_jar;DYNAMIC_Cloudera_CDH6_1_1_jsp_api_2_1_jar;DYNAMIC_Cloudera_CDH6_1_1_jsr305_3_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_jsr311_api_1_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_admin_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_client_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_common_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_core_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_crypto_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_identity_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_server_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_simplekdc_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_util_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerby_asn1_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerby_config_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerby_pkix_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerby_util_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerby_xdr_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_log4j_1_2_17_jar;DYNAMIC_Cloudera_CDH6_1_1_nimbus_jose_jwt_4_41_1_jar;DYNAMIC_Cloudera_CDH6_1_1_okhttp_2_7_5_jar;DYNAMIC_Cloudera_CDH6_1_1_okio_1_6_0_jar;DYNAMIC_Cloudera_CDH6_1_1_paranamer_2_8_jar;DYNAMIC_Cloudera_CDH6_1_1_protobuf_java_2_5_0_jar;DYNAMIC_Cloudera_CDH6_1_1_re2j_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_slf4j_api_1_7_25_jar;DYNAMIC_Cloudera_CDH6_1_1_snappy_java_1_1_7_1_jar;DYNAMIC_Cloudera_CDH6_1_1_stax2_api_3_1_4_jar;DYNAMIC_Cloudera_CDH6_1_1_woodstox_core_5_0_3_jar;DYNAMIC_Cloudera_CDH6_1_1_xz_1_6_jar",
+      "libraries" : "DYNAMIC_Cloudera_CDH6_1_1_accessors_smart_1_2_jar;DYNAMIC_Cloudera_CDH6_1_1_asm_5_0_4_jar;DYNAMIC_Cloudera_CDH6_1_1_avro_1_8_2_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_beanutils_1_9_3_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_cli_1_4_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_codec_1_11_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_collections_3_2_2_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_compress_1_11_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_configuration2_2_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_httpclient_3_1;DYNAMIC_Cloudera_CDH6_1_1_commons_io_2_6_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_lang3_3_7_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_lang_2_6_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_logging_1_2_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_math3_3_6_1_jar;DYNAMIC_Cloudera_CDH6_1_1_commons_net_3_1_jar;DYNAMIC_Cloudera_CDH6_1_1_curator_client_4_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_curator_framework_4_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_curator_recipes_4_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_gson_2_2_4_jar;DYNAMIC_Cloudera_CDH6_1_1_guava_14_0_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_annotations_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_auth_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_client_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_common_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_hdfs_client_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_mapreduce_client_common_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_mapreduce_client_core_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_mapreduce_client_jobclient_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_yarn_api_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_yarn_client_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_hadoop_yarn_common_3_0_0_cdh6_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_htrace_core4_4_2_0_incubating_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_annotations_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_core_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_core_asl_1_9_13_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_databind_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_jaxrs_base_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_jaxrs_json_provider_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_mapper_asl_1_9_13_cloudera_1_jar;DYNAMIC_Cloudera_CDH6_1_1_jackson_module_jaxb_annotations_2_9_5_jar;DYNAMIC_Cloudera_CDH6_1_1_javax_servlet_api_3_1_0_jar;DYNAMIC_Cloudera_CDH6_1_1_jaxb_api_2_2_12_jar;DYNAMIC_Cloudera_CDH6_1_1_jcip_annotations_1_0_1_jar;DYNAMIC_Cloudera_CDH6_1_1_jersey_client_1_19_jar;DYNAMIC_Cloudera_CDH6_1_1_jersey_core_1_19_jar;DYNAMIC_Cloudera_CDH6_1_1_jersey_servlet_1_19_jar;DYNAMIC_Cloudera_CDH6_1_1_jetty_security_9_3_20_v20170531_jar;DYNAMIC_Cloudera_CDH6_1_1_jetty_servlet_9_3_20_v20170531_jar;DYNAMIC_Cloudera_CDH6_1_1_jetty_util_9_3_20_v20170531_jar;DYNAMIC_Cloudera_CDH6_1_1_jetty_webapp_9_3_20_v20170531_jar;DYNAMIC_Cloudera_CDH6_1_1_jetty_xml_9_3_20_v20170531_jar;DYNAMIC_Cloudera_CDH6_1_1_json_smart_2_3_jar;DYNAMIC_Cloudera_CDH6_1_1_jsp_api_2_1_jar;DYNAMIC_Cloudera_CDH6_1_1_jsr305_3_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_jsr311_api_1_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_admin_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_client_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_common_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_core_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_crypto_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_identity_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_server_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_simplekdc_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerb_util_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerby_asn1_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerby_config_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerby_pkix_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerby_util_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_kerby_xdr_1_0_0_jar;DYNAMIC_Cloudera_CDH6_1_1_log4j_1_2_17_jar;DYNAMIC_Cloudera_CDH6_1_1_nimbus_jose_jwt_4_41_1_jar;DYNAMIC_Cloudera_CDH6_1_1_okhttp_2_7_5_jar;DYNAMIC_Cloudera_CDH6_1_1_okio_1_6_0_jar;DYNAMIC_Cloudera_CDH6_1_1_paranamer_2_8_jar;DYNAMIC_Cloudera_CDH6_1_1_protobuf_java_2_5_0_jar;DYNAMIC_Cloudera_CDH6_1_1_re2j_1_1_jar;DYNAMIC_Cloudera_CDH6_1_1_slf4j_api_1_7_25_jar;DYNAMIC_Cloudera_CDH6_1_1_snappy_java_1_1_7_1_jar;DYNAMIC_Cloudera_CDH6_1_1_stax2_api_3_1_4_jar;DYNAMIC_Cloudera_CDH6_1_1_woodstox_core_5_0_3_jar;DYNAMIC_Cloudera_CDH6_1_1_xz_1_6_jar",
       "moduleGroupTemplateId" : "HDFS-LIB-DYNAMIC",
       "tagName" : "classloader"
     }, {

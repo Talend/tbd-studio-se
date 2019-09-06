@@ -2,11 +2,10 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.talend.repository.hadoopcluster;singleton:=true
-Bundle-Version: 7.2.1.qualifier
+Bundle-Version: 7.3.1.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui,
  org.eclipse.emf.ecore;visibility:=reexport,
@@ -57,4 +56,5 @@ Export-Package: org.talend.repository.hadoopcluster.action,
  org.talend.repository.model.hadoopcluster.util
 Bundle-Activator: org.talend.repository.hadoopcluster.HadoopClusterPlugin
 Import-Package: org.talend.core.ui.context.model.table,
- org.talend.core.ui.token
+ org.talend.core.ui.token,
+ org.talend.repository.hadoopcluster.configurator

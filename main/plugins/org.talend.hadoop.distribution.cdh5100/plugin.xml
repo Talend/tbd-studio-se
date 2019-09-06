@@ -860,7 +860,7 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="oro-2.0.8.jar" name="oro-2.0.8.jar" mvn_uri="mvn:oro/oro/2.0.8"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="osgi-resource-locator-1.0.1.jar" name="osgi-resource-locator-1.0.1.jar" mvn_uri="mvn:org.glassfish.hk2/osgi-resource-locator/1.0.1"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="paranamer-2.3.jar" name="paranamer-2.3.jar" mvn_uri="mvn:org.talend.libraries/paranamer-2.3/6.0.0"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="parquet-avro-1.8.1.jar" name="parquet-avro-1.8.1.jar" mvn_uri="mvn:org.talend.libraries/parquet-avro-1.8.1/6.0.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="parquet-avro-1.8.1.jar" name="parquet-avro-1.8.1.jar" mvn_uri="mvn:org.apache.parquet/parquet-avro/1.8.1"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="parquet-column-1.8.1.jar" name="parquet-column-1.8.1.jar" mvn_uri="mvn:org.talend.libraries/parquet-column-1.8.1/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="parquet-common-1.8.1.jar" name="parquet-common-1.8.1.jar" mvn_uri="mvn:org.talend.libraries/parquet-common-1.8.1/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.cdh5100spark2" id="parquet-encoding-1.8.1.jar" name="parquet-encoding-1.8.1.jar" mvn_uri="mvn:org.talend.libraries/parquet-encoding-1.8.1/6.0.0"/>

@@ -45,6 +45,9 @@ public abstract class AbstractDependencyResolver implements IDependencyResolver 
 
     private DynamicConfiguration configuration;
 
+    /**
+     * <font color="red"><b>NOTE!!!: MUST use synchronized if implement this method</b></font>
+     */
     abstract protected List<Pattern> getDistributionPatterns();
 
     @Override

@@ -67,3 +67,24 @@ imports="
 <%
 	}
 %>
+
+	try {
+		if (stmt_<%=cid %> != null) {
+			stmt_<%=cid %>.close();
+		}
+	}
+	catch (java.lang.Exception e) {
+<%
+		if (dieOnError) {
+%>
+			throw e;
+<%
+		} else {
+			dbLog.logPrintedException("e.getMessage()");
+%>
+			System.err.print("Exception in the component <%=cid%>:" + e.getMessage());
+<%
+	} 
+%>
+}
+	

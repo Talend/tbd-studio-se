@@ -20,6 +20,11 @@ import java.util.List;
  */
 public interface HadoopConfigurator {
 
+    // This separator is used to separate cluster display name and name
+    public static final String NAME_SEPARATOR = "??@##@??";
+
+    public static final String NAME_SEPARATOR_PATTERN = "\\?\\?@##@\\?\\?";
+
     public List<String> getAllClusters();
 
     public HadoopCluster getCluster(String name);

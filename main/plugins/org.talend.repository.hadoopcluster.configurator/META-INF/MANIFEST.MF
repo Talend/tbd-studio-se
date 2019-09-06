@@ -1,18 +1,25 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Configurator
+Bundle-Name: %pluginName
+Bundle-Vendor: .Talend SA.
 Bundle-SymbolicName: org.talend.repository.hadoopcluster.configurator
-Bundle-Version: 7.2.1.qualifier
+Bundle-Version: 7.3.1.qualifier
 Bundle-ClassPath: .,
- lib/cloudera-manager-api-5.4.0.jar,
- lib/geronimo-javamail_1.4_spec-1.7.1.jar,
+ lib/annotations-17.0.0.jar,
+ lib/cloudera-manager-api-swagger-6.2.0.jar,
  lib/hamcrest-core-1.3.jar,
+ lib/jackson-jaxrs-base-2.9.9.jar,
+ lib/jackson-jaxrs-json-provider-2.9.9.jar,
+ lib/jackson-module-jaxb-annotations-2.9.9.jar,
  lib/jaxb-impl-2.2.6.jar,
- lib/jsr250-api-1.0.jar,
- lib/joda-time-2.1.jar,
- lib/jackson-jaxrs-base-2.9.4.jar,
- lib/jackson-jaxrs-json-provider-2.9.4.jar,
- lib/jackson-module-jaxb-annotations-2.9.4.jar
+ lib/joda-time-2.8.2.jar,
+ lib/logging-interceptor-2.7.5.jar,
+ lib/okhttp-2.7.5.jar,
+ lib/gson-2.8.1.jar,
+ lib/jackson-annotations-2.9.0.jar,
+ lib/jackson-core-2.9.9.jar,
+ lib/jackson-databind-2.9.9.jar,
+ lib/swagger-annotations-1.5.15.jar
 Export-Package: org.talend.repository.hadoopcluster.configurator
 Require-Bundle: org.talend.libraries.apache.common,
  org.talend.libraries.apache.cxf,
@@ -23,10 +30,9 @@ Require-Bundle: org.talend.libraries.apache.common,
  org.talend.core,
  org.talend.model,
  org.talend.designer.core,
- org.talend.core.ui;bundle-version="6.4.0",
- org.eclipse.ui;bundle-version="3.106.0",
- org.talend.components.api;bundle-version="0.18.0",
- javax.xml.bind,
+ org.talend.core.ui,
+ org.eclipse.ui,
+ org.talend.components.api,
  org.talend.commons.runtime,
  org.talend.core.runtime
 Import-Package: org.eclipse.swt.widgets,

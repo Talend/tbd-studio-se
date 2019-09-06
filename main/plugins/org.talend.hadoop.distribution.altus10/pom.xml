@@ -4,7 +4,11 @@
   <parent>
     <groupId>org.talend.studio</groupId>
     <artifactId>tbd-studio-se</artifactId>
+<<<<<<< HEAD
     <version>7.2.1</version>
+=======
+    <version>7.3.1-SNAPSHOT</version>
+>>>>>>> master
     <relativePath>../../../</relativePath>
   </parent>
   <artifactId>org.talend.hadoop.distribution.altus10</artifactId>

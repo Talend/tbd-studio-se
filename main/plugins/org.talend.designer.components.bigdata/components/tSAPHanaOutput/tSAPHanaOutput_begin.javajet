@@ -38,6 +38,9 @@ boolean isEnableDebug = ("true").equals(ElementParameterParser.getValue(node,"__
 boolean useBatchSize = ("true").equals(ElementParameterParser.getValue(node,"__USE_BATCH_SIZE__"));
 String batchSize=ElementParameterParser.getValue(node,"__BATCH_SIZE__");
 String dbproperties = ElementParameterParser.getValue(node, "__PROPERTIES__");
+
+tableSchema = tableSchema.trim();
+boolean schemaIsSet = !"\"\"".equals(tableSchema) && !"".equals(tableSchema);
 %>
 
 <%
@@ -130,11 +133,22 @@ if(useExistingConnection) {
 
 	String dbPwd_<%=cid %> = decryptedPassword_<%=cid%>;
 
-	String dbschema_<%=cid%>= <%=tableSchema%>;	
+	String dbschema_<%=cid%> = <%=tableSchema%>;
+	
+	String url_<%=cid%> = null;
 	String dbProperties_<%=cid%> = <%=dbproperties%>;
-	String url_<%=cid %> = "jdbc:sap://" + <%=dbhost%> + ":" + <%=dbport%>;
 	if(dbProperties_<%=cid%> != null && dbProperties_<%=cid%>.trim().length() > 0) {
-		url_<%=cid%> = "jdbc:sap://" + <%=dbhost%> + ":" + <%=dbport%> + "/?" + dbProperties_<%=cid%>;
+		<%if(schemaIsSet) {%>
+		if(dbProperties_<%=cid%>.contains("currentschema=") || dbProperties_<%=cid%>.contains("currentSchema=")) {
+			url_<%=cid%> = "jdbc:sap://" + <%=dbhost%> + ":" + <%=dbport%> + "/?" + dbProperties_<%=cid%>;
+		} else {
+			url_<%=cid%> = "jdbc:sap://" + <%=dbhost%> + ":" + <%=dbport%> + "/?currentschema=" + dbschema_<%=cid%> + "&" + dbProperties_<%=cid%>;
+		}
+		<%} else {%>
+			url_<%=cid%> = "jdbc:sap://" + <%=dbhost%> + ":" + <%=dbport%> + "/?" + dbProperties_<%=cid%>;
+		<%}%>
+	} else {
+		url_<%=cid%> = "jdbc:sap://" + <%=dbhost%> + ":" + <%=dbport%><%if(schemaIsSet){%> + "/?currentschema=" + dbschema_<%=cid%><%}%>;
 	}
 	<%dbLog.conn().connTry(dbLog.var("url"), dbLog.var("dbUser"));%>	
 	java.sql.Connection conn_<%=cid%>  = java.sql.DriverManager.getConnection(url_<%=cid %>, dbUser_<%=cid%>, dbPwd_<%=cid%>);
