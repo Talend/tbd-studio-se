@@ -12,14 +12,5 @@
     <relativePath>../../../</relativePath>
   </parent>
   <artifactId>org.talend.repository.hadoopcluster.configurator.test</artifactId>
-    <packaging>eclipse-test-plugin</packaging>
-    <build>
-        <sourceDirectory>src/main/test</sourceDirectory>
-        <outputDirectory>bin</outputDirectory>
-        <resources>
-            <resource>
-                <directory>resources</directory>
-            </resource>
-        </resources>
-    </build>
+  <packaging>eclipse-plugin</packaging>
 </project>

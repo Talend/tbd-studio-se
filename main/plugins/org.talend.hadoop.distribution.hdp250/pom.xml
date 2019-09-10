@@ -13,8 +13,4 @@
   </parent>
   <artifactId>org.talend.hadoop.distribution.hdp250</artifactId>
   <packaging>eclipse-plugin</packaging>
-    <build>
-        <sourceDirectory>src</sourceDirectory>
-        <outputDirectory>bin</outputDirectory>
-    </build>
 </project>

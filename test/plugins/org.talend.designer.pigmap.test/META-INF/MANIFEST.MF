@@ -5,4 +5,4 @@ Bundle-SymbolicName: org.talend.designer.pigmap.test
 Bundle-Version: 7.3.1.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Fragment-Host: org.talend.designer.pigmap
-Require-Bundle: org.talend.bigdata.se.test.base;bundle-version="7.2.1"
+Require-Bundle: org.talend.testutils

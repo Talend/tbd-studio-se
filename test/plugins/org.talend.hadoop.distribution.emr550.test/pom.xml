@@ -12,9 +12,5 @@
     <relativePath>../../../</relativePath>
   </parent>
   <artifactId>org.talend.hadoop.distribution.emr550.test</artifactId>
-    <packaging>eclipse-test-plugin</packaging>
-    <build>
-        <sourceDirectory>src</sourceDirectory>
-        <outputDirectory>bin</outputDirectory>
-    </build>
+  <packaging>eclipse-plugin</packaging>
 </project>
