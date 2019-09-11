@@ -51,11 +51,15 @@
         <module>main/plugins/org.talend.hadoop.distribution.apache100</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh510mr1</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh510mr2</module>
+        <module>main/plugins/org.talend.hadoop.distribution.cdh550</module>
+        <module>main/plugins/org.talend.hadoop.distribution.cdh570</module>
+        <module>main/plugins/org.talend.hadoop.distribution.cdh580</module>
+        <module>main/plugins/org.talend.hadoop.distribution.cdh580spark2</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh5100</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh5120</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh5x</module>
-        <module>main/plugins/org.talend.hadoop.distribution.custom</module>
         <module>main/plugins/org.talend.hadoop.distribution.altus10</module>
+        <module>main/plugins/org.talend.hadoop.distribution.custom</module>
         <module>main/plugins/org.talend.hadoop.distribution.dataproc11</module>
         <module>main/plugins/org.talend.hadoop.distribution.dbr350</module>
         <module>main/plugins/org.talend.hadoop.distribution.dbr540</module>
@@ -112,6 +116,10 @@
         <module>test/plugins/org.talend.hadoop.distribution.apache100.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.cdh510mr1.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.cdh510mr2.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.cdh550.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.cdh570.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.cdh580.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.cdh580spark2.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.cdh5100.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.cdh5120.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.custom.test</module>
@@ -134,13 +142,14 @@
         <module>test/plugins/org.talend.hadoop.distribution.mapr601.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.piv101.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.piv200.test</module>
-        <module>test/plugins/org.talend.designer.pigmap.test</module>
-	      <module>test/plugins/org.talend.repository.maprdbprovider.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.test.base</module>
         <module>test/plugins/org.talend.hadoop.distribution.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.qubole.test</module>
         <module>test/plugins/org.talend.oozie.scheduler.test</module>
         <module>test/plugins/org.talend.repository.nosql.test</module>
+		<module>test/plugins/org.talend.designer.pigmap.test</module>
+		<module>test/plugins/org.talend.repository.maprdbprovider.test</module>
+        <module>test/plugins/org.talend.repository.hadoopcluster.configurator.test</module>
         <module>test/plugins/org.talend.repository.hadoopcluster.test</module>
         <module>test/plugins/org.talend.repository.hdfs.test</module>
     </modules>
