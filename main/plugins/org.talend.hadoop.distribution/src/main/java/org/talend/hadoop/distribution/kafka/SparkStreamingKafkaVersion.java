@@ -28,6 +28,7 @@ package org.talend.hadoop.distribution.kafka;
 public enum SparkStreamingKafkaVersion {
     KAFKA_0_8,
     KAFKA_0_10,
+    KAFKA_2_2_1,
     MAPR_5X0_KAFKA,
     MAPR_600_KAFKA;
 }
