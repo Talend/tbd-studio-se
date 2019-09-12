@@ -153,7 +153,7 @@
         <module>test/plugins/org.talend.hadoop.distribution.cdh5120.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.custom.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.dataproc11.test</module>
-        <module>main/plugins/org.talend.hadoop.distribution.dataproc14.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.dataproc14.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.dbr350.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.dbr540.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.emr103.test</module>
