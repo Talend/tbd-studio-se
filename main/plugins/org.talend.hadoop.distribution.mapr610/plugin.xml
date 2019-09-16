@@ -784,6 +784,7 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="spire_2.11-0.13.0.jar" name="spire_2.11-0.13.0.jar" mvn_uri="mvn:org.spire-math/spire_2.11/0.13.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="spire-macros_2.11-0.13.0.jar" name="spire-macros_2.11-0.13.0.jar" mvn_uri="mvn:org.spire-math/spire-macros_2.11/0.13.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="ST4-4.0.4.jar" name="ST4-4.0.4.jar" mvn_uri="mvn:org.antlr/ST4/4.0.4"/>
+
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="stax-api-1.0-2.jar" name="stax-api-1.0-2.jar" mvn_uri="mvn:org.talend.libraries/stax-api-1.0-2/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="stream-2.7.0.jar" name="stream-2.7.0.jar" mvn_uri="mvn:com.clearspring.analytics/stream/2.7.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="stringtemplate-3.2.1.jar" name="stringtemplate-3.2.1.jar" mvn_uri="mvn:org.antlr/stringtemplate/3.2.1"/>
