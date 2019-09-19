@@ -51,7 +51,7 @@ public class RetrieveLocalConfsServiceTest {
         Bundle bundle = Platform.getBundle("org.talend.repository.hadoopcluster.test"); //$NON-NLS-1$
         URL confEntry = bundle.getEntry("/resources/conf"); //$NON-NLS-1$
         confDir = new File(FileLocator.toFileURL(confEntry).getFile());
-        confsService = getServiceWithDistribution(IHortonworksDistribution.DISTRIBUTION_NAME, "HDP_2_4");
+        confsService = getServiceWithDistribution(IHortonworksDistribution.DISTRIBUTION_NAME, "HDP_2_5");
     }
 
     @Test

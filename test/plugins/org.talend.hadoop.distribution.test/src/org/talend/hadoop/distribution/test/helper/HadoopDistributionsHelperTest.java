@@ -82,8 +82,7 @@ public class HadoopDistributionsHelperTest {
     public void testHortonWorksDistribution() {
         testDistributionOnly("HORTONWORKS", "HortonWorks", new String[][] {
                 { "HDP_2_6", "Hortonworks Data Platform V2.6.0", "HADOOP_2" },
-                { "HDP_2_5", "Hortonworks Data Platform V2.5.0", "HADOOP_2" },
-                { "HDP_2_4", "Hortonworks Data Platform V2.4.0", "HADOOP_2" }});
+                { "HDP_2_5", "Hortonworks Data Platform V2.5.0", "HADOOP_2" }});
     }
 
     @Test
