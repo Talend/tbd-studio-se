@@ -8,5 +8,8 @@
     <relativePath>../../../</relativePath>
   </parent>
   <artifactId>org.talend.hadoop.distribution.cdh510mr1.test</artifactId>
-  <packaging>eclipse-plugin</packaging>
+    <packaging>eclipse-test-plugin</packaging>
+    <build>
+        <sourceDirectory>src</sourceDirectory>
+    </build>
 </project>

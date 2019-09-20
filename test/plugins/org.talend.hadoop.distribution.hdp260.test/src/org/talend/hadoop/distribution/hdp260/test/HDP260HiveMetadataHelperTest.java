@@ -12,8 +12,7 @@
 // ============================================================================
 package org.talend.hadoop.distribution.hdp260.test;
 
-import static org.junit.Assert.assertTrue;
-
+import org.junit.Ignore;
 import org.talend.commons.utils.platform.PluginChecker;
 import org.talend.core.model.metadata.connection.hive.HiveServerVersionInfo;
 import org.talend.core.runtime.hd.hive.HiveMetadataHelper;
@@ -21,9 +20,12 @@ import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.hdp260.HDP260Distribution;
 import org.talend.hadoop.distribution.test.hive.AbstractVersionTest4HiveMetadataHelper;
 
+import static org.junit.Assert.assertTrue;
+
 /**
  * DOC ggu class global comment. Detailled comment
  */
+@Ignore("does not run correctly on tycho: no distribution found")
 public class HDP260HiveMetadataHelperTest extends AbstractVersionTest4HiveMetadataHelper {
 
     private static final String NOT_SUPPORT_TOP_MESSAGE = "Shouldn't support for hive in TOS for DQ product";

@@ -12,6 +12,7 @@
 // ============================================================================
 package org.talend.hadoop.distribution.emr5150.test;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.talend.core.hadoop.EHadoopCategory;
 import org.talend.core.model.metadata.connection.hive.HiveModeInfo;
@@ -19,6 +20,7 @@ import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.emr5150.EMR5150Distribution;
 import org.talend.hadoop.distribution.test.config.AbstractTest4DefaultConfiguration;
 
+@Ignore
 public class EMR5150DefaultConfigurationTest extends AbstractTest4DefaultConfiguration {
 
     @Override

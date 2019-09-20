@@ -4,4 +4,4 @@ Bundle-Name: Ce
 Bundle-SymbolicName: org.talend.demo.bigdata.ce;singleton:=true
 Bundle-Version: 7.3.1.qualifier
 Bundle-Localization: plugin
-Require-Bundle: org.talend.core.runtime;bundle-version="6.0.0"
+Require-Bundle: org.talend.core.runtime;bundle-version="0.0.0"

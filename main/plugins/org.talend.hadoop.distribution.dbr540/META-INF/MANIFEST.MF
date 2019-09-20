@@ -8,3 +8,4 @@ Service-Component: OSGI-INF/dbr540.xml
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.talend.core.runtime,
  org.talend.hadoop.distribution
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

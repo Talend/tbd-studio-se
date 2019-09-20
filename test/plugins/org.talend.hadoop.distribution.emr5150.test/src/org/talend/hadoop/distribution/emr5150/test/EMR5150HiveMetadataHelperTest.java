@@ -12,11 +12,13 @@
 // ============================================================================
 package org.talend.hadoop.distribution.emr5150.test;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.emr5150.EMR5150Distribution;
 import org.talend.hadoop.distribution.test.hive.AbstractVersionTest4HiveMetadataHelper;
 
+@Ignore("does not run correctly on tycho: no distribution found")
 public class EMR5150HiveMetadataHelperTest extends AbstractVersionTest4HiveMetadataHelper {
 
     @Override

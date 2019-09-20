@@ -12,7 +12,7 @@
 // ============================================================================
 package org.talend.hadoop.distribution.test.hive;
 
-import org.junit.Ignore;
+import org.junit.Test;
 import org.talend.hadoop.distribution.constants.custom.ICustomDistribution;
 import org.talend.hadoop.distribution.test.hive.AbstractDistributionTest4HiveMetadataHelper;
 
@@ -36,8 +36,10 @@ public class HiveMetadataHelper4CustomTest extends AbstractDistributionTest4Hive
         return null;
     }
 
+    //this empty test is here to make tycho runner not failed on initialization
+    //because it does not found any test in the final class
     @Override
-    @Ignore
+    @Test
     public void testGetDistributionVersionsDisplay() {
         //
     }
