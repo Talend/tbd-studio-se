@@ -10,7 +10,7 @@
   <artifactId>org.talend.repository.hadoopcluster.test</artifactId>
     <packaging>eclipse-test-plugin</packaging>
     <build>
-        <sourceDirectory>src</sourceDirectory>
-        <outputDirectory>bin</outputDirectory>
+      <sourceDirectory>src/main/java</sourceDirectory>
+      <outputDirectory>target/classes</outputDirectory>
     </build>
 </project>

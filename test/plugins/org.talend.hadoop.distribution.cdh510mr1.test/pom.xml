@@ -11,5 +11,6 @@
     <packaging>eclipse-test-plugin</packaging>
     <build>
         <sourceDirectory>src</sourceDirectory>
+      <outputDirectory>bin</outputDirectory>
     </build>
 </project>

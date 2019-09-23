@@ -9,8 +9,4 @@
   </parent>
     <artifactId>org.talend.hadoop.distribution.hdinsight340</artifactId>
     <packaging>eclipse-plugin</packaging>
-    <build>
-        <sourceDirectory>src</sourceDirectory>
-        <outputDirectory>bin</outputDirectory>
-    </build>
 </project>
