@@ -37,7 +37,6 @@ import org.talend.hadoop.distribution.dataproc14.modulegroup.Dataproc14HDFSModul
 import org.talend.hadoop.distribution.dataproc14.modulegroup.Dataproc14HiveModuleGroup;
 import org.talend.hadoop.distribution.dataproc14.modulegroup.Dataproc14HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.dataproc14.modulegroup.Dataproc14SparkBatchModuleGroup;
-import org.talend.hadoop.distribution.dataproc14.modulegroup.Dataproc14SparkBatchS3NodeModuleGroup;
 import org.talend.hadoop.distribution.dataproc14.modulegroup.Dataproc14SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.dataproc14.modulegroup.node.sparkbatch.Dataproc14SparkBatchGraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.dataproc14.modulegroup.node.sparkbatch.Dataproc14SparkBatchParquetNodeModuleGroup;
@@ -48,7 +47,7 @@ import org.talend.hadoop.distribution.dataproc14.modulegroup.node.sparkstreaming
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
-public class Dataproc14Distribution extends AbstractDistribution implements HDFSComponent, /*MRComponent,*/ SparkBatchComponent,
+public class Dataproc14Distribution extends AbstractDistribution implements HDFSComponent, SparkBatchComponent,
         HiveComponent, SparkStreamingComponent, HiveOnSparkComponent, IGoogleDataprocDistribution {
 
     public static final String VERSION = "DATAPROC_1_4"; //$NON-NLS-1$
@@ -86,7 +85,6 @@ public class Dataproc14Distribution extends AbstractDistribution implements HDFS
         result.put(ComponentType.HDFS, Dataproc14HDFSModuleGroup.getModuleGroups());
         result.put(ComponentType.HIVE, Dataproc14HiveModuleGroup.getModuleGroups());
         result.put(ComponentType.SPARKBATCH, Dataproc14SparkBatchModuleGroup.getModuleGroups());
-//        result.put(ComponentType.MAPREDUCE, Dataproc14MapReduceModuleGroup.getModuleGroups());
         result.put(ComponentType.SPARKSTREAMING, Dataproc14SparkStreamingModuleGroup.getModuleGroups());
         result.put(ComponentType.HIVEONSPARK, Dataproc14HiveOnSparkModuleGroup.getModuleGroups());
         return result;
@@ -94,10 +92,7 @@ public class Dataproc14Distribution extends AbstractDistribution implements HDFS
 
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(String distribution, String version) {
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
-        // Mapreduce node
 
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
-                SparkBatchConstant.S3_CONFIGURATION_COMPONENT), Dataproc14SparkBatchS3NodeModuleGroup.getModuleGroups());
         // Spark Batch Parquet nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
                 Dataproc14SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
@@ -108,8 +103,6 @@ public class Dataproc14Distribution extends AbstractDistribution implements HDFS
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
                 Dataproc14SparkBatchGraphFramesNodeModuleGroup.getModuleGroups(distribution, version));
 
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkBatchConstant.S3_CONFIGURATION_COMPONENT), Dataproc14SparkBatchS3NodeModuleGroup.getModuleGroups());
         // Spark Streaming Parquet nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_INPUT_COMPONENT),
                 Dataproc14SparkStreamingParquetNodeModuleGroup.getModuleGroups(distribution, version));
@@ -247,7 +240,7 @@ public class Dataproc14Distribution extends AbstractDistribution implements HDFS
 
     @Override
     public boolean doSupportS3() {
-        return true;
+        return false;
     }
 
     @Override

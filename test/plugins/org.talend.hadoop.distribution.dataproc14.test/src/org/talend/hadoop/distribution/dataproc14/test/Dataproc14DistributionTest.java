@@ -21,7 +21,7 @@ public class Dataproc14DistributionTest {
         HadoopComponent distribution = new Dataproc14Distribution();
         assertNotNull(distribution.getDistributionName());
         assertNotNull(distribution.getVersionName(null));
-        assertTrue(distribution.doSupportS3());
+        assertFalse(distribution.doSupportS3());
         assertEquals(Dataproc14Distribution.DISTRIBUTION_NAME, distribution.getDistribution());
         assertEquals(Dataproc14Distribution.VERSION, distribution.getVersion());
         assertEquals(EHadoopVersion.HADOOP_2, distribution.getHadoopVersion());
