@@ -22,8 +22,6 @@ import org.talend.hadoop.distribution.dataproc14.Dataproc14Constant;
 
 public class Dataproc14SparkBatchGraphFramesNodeModuleGroup {
 
-    //public static final String SPARK_GRAPHFRAMES_GROUP_NAME = "SPARK-GRAPHFRAMES-LIB-MRREQUIRED-DATAPROC_1_1_LATEST"; //$NON-NLS-1$
-
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         DistributionModuleGroup dmg = new DistributionModuleGroup(

@@ -29,7 +29,6 @@ public class Dataproc14SparkStreamingKafkaAvroModuleGroup {
                 new SparkStreamingLinkedNodeCondition(distribution, version,
                         SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition());
         hs.add(dmg);
-        // Add Spark Streaming Kafka dependencies as well
         hs.addAll(Dataproc14SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(distribution, version));
         return hs;
     }

@@ -76,8 +76,7 @@ public class Dataproc14Distribution extends AbstractDistribution implements HDFS
     }
 
     protected Map<ComponentType, String> buildCustomVersionDisplayNames() {
-        Map<ComponentType, String> result = new HashMap<>();
-        return result;
+        return new HashMap<ComponentType, String>();
     }
 
     protected Map<ComponentType, Set<DistributionModuleGroup>> buildModuleGroups() {
@@ -166,13 +165,11 @@ public class Dataproc14Distribution extends AbstractDistribution implements HDFS
 
     @Override
     public boolean doSupportCrossPlatformSubmission() {
-        // TODO Auto-generated method stub ?
         return false;
     }
 
     @Override
     public boolean doSupportImpersonation() {
-        // ?
         return false;
     }
 
@@ -269,15 +266,21 @@ public class Dataproc14Distribution extends AbstractDistribution implements HDFS
         return true;
     }
 
+    /**
+    * Theoretically tez is supported by Dataproc:
+    * https://github.com/GoogleCloudPlatform/dataproc-initialization-actions/tree/master/tez     
+    * but practically it is not implemented yet 
+    */
     @Override
     public boolean doSupportTezForHive() {
-        // TODO check
         return false;
     }
 
+    /**
+     * No Hbase on Dataproc
+     */
     @Override
     public boolean doSupportHBaseForHive() {
-        // No Hbase
         return false;
     }
 
@@ -303,7 +306,6 @@ public class Dataproc14Distribution extends AbstractDistribution implements HDFS
 
     @Override
     public boolean doSupportStoreAsParquet() {
-        // TODO Auto-generated method stub
         return true;
     }
 
