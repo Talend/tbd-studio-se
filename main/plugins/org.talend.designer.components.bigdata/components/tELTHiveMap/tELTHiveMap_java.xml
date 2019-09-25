@@ -2626,9 +2626,9 @@
 				MVN="mvn:commons-io/commons-io/2.4"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
-			<IMPORT NAME="commons-compress-1.6.jar" MODULE="commons-compress-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-compress-1.6/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-compress-1.6.jar"
+			<IMPORT NAME="commons-compress-1.19.jar" MODULE="commons-compress-1.19.jar"
+				MVN="mvn:org.talend.libraries/commons-compress-1.19/6.0.0"
+				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-compress-1.19.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
 			<IMPORT NAME="antlr-runtime-3.4.jar" MODULE="antlr-runtime-3.4.jar"
