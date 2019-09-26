@@ -17,14 +17,13 @@ import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.SparkBatchLinkedNodeCondition;
+import org.talend.hadoop.distribution.dataproc14.Dataproc14Constant;
 
 public class Dataproc14SparkBatchParquetNodeModuleGroup {
 
-    public static final String SPARK_PARQUET_GROUP_NAME = "SPARK-PARQUET-LIB-MRREQUIRED-DATAPROC_1_1_LATEST"; //$NON-NLS-1$
-
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        DistributionModuleGroup dmg = new DistributionModuleGroup(SPARK_PARQUET_GROUP_NAME, true,
+        DistributionModuleGroup dmg = new DistributionModuleGroup(Dataproc14Constant.SPARK_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName(), true,
                 new SparkBatchLinkedNodeCondition(distribution, version).getCondition());
         hs.add(dmg);
         return hs;
