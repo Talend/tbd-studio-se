@@ -3138,7 +3138,7 @@
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.4.jar"
 				REQUIRED_IF="(HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-compress-1.19.jar" MODULE="commons-compress-1.19.jar"
-				MVN="mvn:org.talend.libraries/commons-compress-1.19/6.0.0"
+				MVN="mvn:org.apache.commons/commons-compress/1.19/"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-compress-1.19.jar"
 				REQUIRED_IF="(HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 
