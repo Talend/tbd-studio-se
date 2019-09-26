@@ -157,12 +157,14 @@
 <%
     }
 %>
-
-    java.net.URLClassLoader sysloader_<%=cid%> = (java.net.URLClassLoader) ClassLoader.getSystemClassLoader();
-    java.lang.reflect.Method method_<%=cid%> = java.net.URLClassLoader.class.getDeclaredMethod("addURL", new Class[] { java.net.URL.class});
-    method_<%=cid%>.setAccessible(true);
+	java.util.List<java.net.URL> libURL_<%=cid%> = new java.util.ArrayList<>();
+	
+    java.net.URL[] libURLArray_<%=cid%> = libURL_<%=cid%>.toArray(new java.net.URL[] {});
+	ClassLoader threadClassLoader_<%=cid%> = Thread.currentThread().getContextClassLoader();
+	java.net.URLClassLoader newthreadClassLoader_<%=cid%> = new java.net.URLClassLoader(libURLArray_<%=cid%>, threadClassLoader_<%=cid%>);
+    
     try {
-		method_<%=cid%>.invoke(sysloader_<%=cid%>, new Object[] { new java.io.File(jarFileName_<%=cid%>).toURL()});
+		Thread.currentThread().setContextClassLoader(newthreadClassLoader_<%=cid %>);
     } catch (Exception e) {
 <%
 		if(dieOnError) {
