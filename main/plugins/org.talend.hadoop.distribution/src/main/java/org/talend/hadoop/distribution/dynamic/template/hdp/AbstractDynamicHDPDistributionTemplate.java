@@ -18,13 +18,11 @@ import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.dynamic.template.AbstractDynamicDistributionTemplate;
-import org.talend.hadoop.distribution.dynamic.template.DynamicPigModuleGroupTemplate;
 import org.talend.hadoop.distribution.dynamic.template.IDynamicModuleGroupTemplate;
 
 
@@ -48,12 +46,6 @@ public abstract class AbstractDynamicHDPDistributionTemplate extends AbstractDyn
         }
         if (this instanceof MRComponent) {
             groupTemplateMap.put(ComponentType.MAPREDUCE, new DynamicHDPMapReduceModuleGroupTemplate(pluginAdapter));
-        }
-        if (this instanceof PigComponent) {
-            DynamicPigModuleGroupTemplate dynamicPigModuleGroupTemplate = new DynamicHDPPigModuleGroupTemplate(pluginAdapter);
-            groupTemplateMap.put(ComponentType.PIG, dynamicPigModuleGroupTemplate);
-            // it is enough that only regist pig template, since the template also contains pigoutput
-            // moduleGroupsTemplateMap.put(ComponentType.PIGOUTPUT, dynamicPigModuleGroupTemplate);
         }
         if (this instanceof SparkBatchComponent) {
             groupTemplateMap.put(ComponentType.SPARKBATCH, new DynamicHDPSparkBatchModuleGroupTemplate(pluginAdapter));
