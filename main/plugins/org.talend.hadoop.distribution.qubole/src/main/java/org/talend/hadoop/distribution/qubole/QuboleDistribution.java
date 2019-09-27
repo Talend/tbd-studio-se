@@ -25,7 +25,6 @@ import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
 import org.talend.hadoop.distribution.component.HiveComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
@@ -36,7 +35,7 @@ import org.talend.hadoop.distribution.qubole.modulegroup.QuboleHiveModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QuboleSparkBatchModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QuboleSparkStreamingModuleGroup;
 
-public class QuboleDistribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent, PigComponent, HiveComponent, IQuboleDistribution {
+public class QuboleDistribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent, HiveComponent, IQuboleDistribution {
 
     private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*";
     public final static String VERSION = "Qubole cloud distribution";
@@ -262,21 +261,6 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
 	@Override
 	public boolean doSupportStoreAsParquet() {
 		return true;
-	}
-
-	@Override
-	public boolean doSupportHCatalog() {
-		return false;
-	}
-
-	@Override
-	public boolean doSupportHBase() {
-		return false;
-	}
-
-	@Override
-	public boolean pigVersionPriorTo_0_12() {
-		return false;
 	}
 
 	@Override

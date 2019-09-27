@@ -98,11 +98,7 @@ public class EMR460Distribution extends EMR450Distribution implements HBaseCompo
         return true;
     }
 
-    @Override
-    public boolean doSupportHBase() {
-        return true;
-    }
-
+    
     @Override
     public boolean doSupportHBaseForHive() {
         return false;

@@ -27,7 +27,6 @@ import org.talend.hadoop.distribution.NodeComponentTypeBean;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.BasicExpression;
@@ -37,7 +36,6 @@ import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.MultiComponentCondition;
 import org.talend.hadoop.distribution.condition.NestedComponentCondition;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
-import org.talend.hadoop.distribution.constants.Constant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.hdinsight.IMicrosoftHDInsightDistribution;
@@ -50,7 +48,7 @@ import org.talend.hadoop.distribution.hdinsight340.modulegroup.node.sparkbatch.H
 import org.talend.hadoop.distribution.hdinsight340.modulegroup.node.sparkbatch.HDInsight34SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.hdinsight340.modulegroup.node.sparkstreaming.HDInsight34SparkStreamingParquetNodeModuleGroup;
 
-public class HDInsight34Distribution extends AbstractDistribution implements MRComponent, PigComponent, HiveComponent,
+public class HDInsight34Distribution extends AbstractDistribution implements MRComponent, HiveComponent,
         SparkBatchComponent, SparkStreamingComponent, IMicrosoftHDInsightDistribution, HiveOnSparkComponent {
 
     public final static String VERSION = "MICROSOFT_HD_INSIGHT_3_4"; //$NON-NLS-1$
@@ -163,20 +161,6 @@ public class HDInsight34Distribution extends AbstractDistribution implements MRC
         return YARN_APPLICATION_CLASSPATH;
     }
 
-    @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return false;
-    }
 
     @Override
     public boolean doSupportImpersonation() {

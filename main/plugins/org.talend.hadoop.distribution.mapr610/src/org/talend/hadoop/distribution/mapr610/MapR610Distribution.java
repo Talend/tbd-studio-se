@@ -34,7 +34,6 @@ import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.MapRDBComponent;
 import org.talend.hadoop.distribution.component.MapROJAIComponent;
 import org.talend.hadoop.distribution.component.MapRStreamsComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
@@ -75,7 +74,7 @@ import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610SqoopModuleGrou
 
 public class MapR610Distribution extends AbstractMapRDistribution implements HDFSComponent, MapROJAIComponent,
         SparkBatchComponent, SparkStreamingComponent, HiveComponent, HiveOnSparkComponent, MapRStreamsComponent,
-        MapRDBComponent, IMapRDistribution, HCatalogComponent, MRComponent, PigComponent, SqoopComponent,
+        MapRDBComponent, IMapRDistribution, HCatalogComponent, MRComponent, SqoopComponent,
         ImpalaComponent {
 
     public final static String VERSION = "MAPR610"; //$NON-NLS-1$
@@ -422,21 +421,6 @@ public class MapR610Distribution extends AbstractMapRDistribution implements HDF
 
     @Override
     public boolean doJavaAPISupportStorePasswordInFile() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
         return false;
     }
 

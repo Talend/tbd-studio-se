@@ -29,7 +29,6 @@ import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
@@ -38,7 +37,6 @@ import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.NestedComponentCondition;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
-import org.talend.hadoop.distribution.constants.Constant;
 import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
@@ -65,7 +63,7 @@ import org.talend.hadoop.distribution.emr450.modulegroup.node.sparkstreaming.EMR
 import org.talend.hadoop.distribution.emr450.modulegroup.node.sparkstreaming.EMR450SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.node.sparkstreaming.EMR450SparkStreamingS3NodeModuleGroup;
 
-public class EMR450Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, PigComponent,
+public class EMR450Distribution extends AbstractDistribution implements HDFSComponent, MRComponent,
         HCatalogComponent, HiveComponent, SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, SqoopComponent,
         IAmazonEMRDistribution {
 
@@ -101,12 +99,7 @@ public class EMR450Distribution extends AbstractDistribution implements HDFSComp
         return result;
     }
 
-    private ComponentCondition getPigOutputDisplayCondition() {
-        BasicExpression storageIsNotHBase = new BasicExpression(Constant.PIG_STORE_PARAMETER, EqualityOperator.NOT_EQ,
-                Constant.PIG_HBASESTORAGE_PARAMETER);
-        return new NestedComponentCondition(new SimpleComponentCondition(storageIsNotHBase));
-    }
-
+    
     protected Map<ComponentType, String> buildCustomVersionDisplayNames() {
         Map<ComponentType, String> result = new HashMap<>();
         result.put(ComponentType.HIVE, HIVE_EMR450_DISPLAY);
@@ -255,20 +248,6 @@ public class EMR450Distribution extends AbstractDistribution implements HDFSComp
         return YARN_APPLICATION_CLASSPATH;
     }
 
-    @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return false;
-    }
 
     @Override
     public boolean doSupportImpersonation() {

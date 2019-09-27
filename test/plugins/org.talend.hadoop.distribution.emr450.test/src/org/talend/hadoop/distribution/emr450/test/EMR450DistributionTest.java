@@ -24,7 +24,6 @@ import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
@@ -63,10 +62,6 @@ public class EMR450DistributionTest extends AbstractDistributionTest {
         assertEquals(((MRComponent) distribution).getYarnApplicationClasspath(), DEFAULT_YARN_APPLICATION_CLASSPATH);
         assertFalse(distribution instanceof HBaseComponent);
         assertTrue(distribution instanceof SqoopComponent);
-        assertTrue(((PigComponent) distribution).doSupportHCatalog());
-        assertFalse(((PigComponent) distribution).pigVersionPriorTo_0_12());
-        assertFalse(((PigComponent) distribution).doSupportHBase());
-        assertFalse(((PigComponent) distribution).doSupportTezForPig());
         assertFalse(((HiveComponent) distribution).doSupportEmbeddedMode());
         assertTrue(((HiveComponent) distribution).doSupportStandaloneMode());
         assertFalse(((HiveComponent) distribution).doSupportHive1());

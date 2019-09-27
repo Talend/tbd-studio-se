@@ -31,7 +31,6 @@ import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
@@ -69,7 +68,7 @@ import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
 @SuppressWarnings("nls")
 public class EMR5150Distribution extends AbstractDistribution implements HBaseComponent, HDFSComponent, MRComponent,
-        PigComponent, HCatalogComponent, HiveComponent, SqoopComponent, IAmazonEMRDistribution, HiveOnSparkComponent,
+        HCatalogComponent, HiveComponent, SqoopComponent, IAmazonEMRDistribution, HiveOnSparkComponent,
         SparkBatchComponent, SparkStreamingComponent {
 
     public static final String VERSION = "EMR_5_15_0"; //$NON-NLS-1$
@@ -307,24 +306,10 @@ public class EMR5150Distribution extends AbstractDistribution implements HBaseCo
     }
 
 	@Override
-	public boolean doSupportHCatalog() {
-		return true;
-	}
-
-	@Override
-	public boolean pigVersionPriorTo_0_12() {
-		return false;
-	}
-
-	@Override
 	public boolean doSupportNewHBaseAPI() {
 		return true;
 	}
 
-	@Override
-	public boolean doSupportHBase() {
-		return true;
-	}
 
 	@Override
 	public boolean doSupportHBaseForHive() {

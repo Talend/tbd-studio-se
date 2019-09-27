@@ -55,7 +55,6 @@ import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
@@ -67,7 +66,7 @@ import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
 import org.talend.hadoop.distribution.kudu.KuduVersion;
 
 @SuppressWarnings("nls")
-public class CDH570Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, HBaseComponent, PigComponent,
+public class CDH570Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, HBaseComponent,
  HiveComponent, ImpalaComponent, HCatalogComponent, CDHSparkBatchComponent,
         SparkStreamingComponent, HiveOnSparkComponent,
         SqoopComponent, IClouderaDistribution {
@@ -248,21 +247,6 @@ public class CDH570Distribution extends AbstractDistribution implements HDFSComp
 
     @Override
     public boolean doSupportNewHBaseAPI() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
         return true;
     }
 

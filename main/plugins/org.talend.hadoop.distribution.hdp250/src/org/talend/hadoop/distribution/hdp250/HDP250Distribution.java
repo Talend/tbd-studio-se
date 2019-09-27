@@ -30,7 +30,6 @@ import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
@@ -63,7 +62,7 @@ import org.talend.hadoop.distribution.hdp250.modulegroup.node.sparkstreaming.HDP
 import org.talend.hadoop.distribution.hdp250.modulegroup.node.sparkstreaming.HDP250SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.hdp250.modulegroup.node.sparkstreaming.HDP250SparkStreamingS3NodeModuleGroup;
 
-public class HDP250Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, HBaseComponent, PigComponent,
+public class HDP250Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, HBaseComponent, 
         HiveComponent, HCatalogComponent, SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, SqoopComponent,
         IHortonworksDistribution {
 
@@ -235,21 +234,6 @@ public class HDP250Distribution extends AbstractDistribution implements HDFSComp
 
     @Override
     public boolean doSupportNewHBaseAPI() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
         return true;
     }
 

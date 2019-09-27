@@ -58,7 +58,6 @@ import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
@@ -73,7 +72,7 @@ import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
 @SuppressWarnings("nls")
 public class CDH5120Distribution extends AbstractDistribution implements IClouderaDistribution, HDFSComponent,
-        HBaseComponent, HCatalogComponent, PigComponent, MRComponent, HiveComponent, HiveOnSparkComponent,
+        HBaseComponent, HCatalogComponent, MRComponent, HiveComponent, HiveOnSparkComponent,
         ImpalaComponent, SqoopComponent, CDHSparkBatchComponent, SparkStreamingComponent {
 
     public final static String VERSION = "Cloudera_CDH5_12";
@@ -315,21 +314,6 @@ public class CDH5120Distribution extends AbstractDistribution implements ICloude
     @Override
     public boolean doSupportStandaloneMode() {
         return super.doSupportStandaloneMode();
-    }
-
-    @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        return false;
     }
 
     @Override

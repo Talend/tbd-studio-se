@@ -27,7 +27,6 @@ import org.talend.hadoop.distribution.NodeComponentTypeBean;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.BasicExpression;
@@ -37,7 +36,6 @@ import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.MultiComponentCondition;
 import org.talend.hadoop.distribution.condition.NestedComponentCondition;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
-import org.talend.hadoop.distribution.constants.Constant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.hdinsight.IMicrosoftHDInsightDistribution;
@@ -55,7 +53,7 @@ import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.sparkstreami
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.sparkstreaming.HDInsight36SparkStreamingTModelEncoderNodeModuleGroup;
 
 public class HDInsight36Distribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent,
-        IMicrosoftHDInsightDistribution, HiveOnSparkComponent, HiveComponent, PigComponent, MRComponent {
+        IMicrosoftHDInsightDistribution, HiveOnSparkComponent, HiveComponent, MRComponent {
 
     public final static String VERSION = "MICROSOFT_HD_INSIGHT_3_6"; //$NON-NLS-1$
 
@@ -309,21 +307,6 @@ public class HDInsight36Distribution extends AbstractDistribution implements Spa
 
     @Override
     public boolean doSupportStoreAsParquet() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return false;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
         return false;
     }
 
