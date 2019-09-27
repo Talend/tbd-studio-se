@@ -29,6 +29,8 @@ public abstract class AbstractDynamicDistributionPreference implements IDynamicD
 
     private IPreferenceStore prefStore;
 
+    private StudioEncryption se = StudioEncryption.getStudioEncryption(StudioEncryption.EnryptionKeyName.SYSTEM);
+
     abstract protected String getPrefKeyOverrideDefaultSetup();
 
     abstract protected String getPrefKeyRepository();
@@ -49,8 +51,6 @@ public abstract class AbstractDynamicDistributionPreference implements IDynamicD
 
     abstract protected String getPrefDefaultPassword();
 
-    protected StudioEncryption se = StudioEncryption.getStudioEncryption(StudioEncryption.EnryptionKeyName.SYSTEM);
-
     protected AbstractDynamicDistributionPreference(ScopedPreferenceStore store) {
         prefStore = store;
         initDefaultPreference();
@@ -62,7 +62,7 @@ public abstract class AbstractDynamicDistributionPreference implements IDynamicD
         prefStore.setDefault(getPrefKeyRepository(), getDefaultRepository());
         prefStore.setDefault(getPrefKeyAnonymous(), getDefaultIsAnonymous());
         prefStore.setDefault(getPrefKeyUsername(), getDefaultUsername());
-        prefStore.setDefault(getPrefKeyPassword(), getDefaultPassword());
+        prefStore.setDefault(getPrefKeyPassword(), encrypt(getDefaultPassword()));
     }
 
     @Override
@@ -128,7 +128,7 @@ public abstract class AbstractDynamicDistributionPreference implements IDynamicD
     @Override
     public String getPassword() {
         String password = prefStore.getString(getPrefKeyPassword());
-        if (StringUtils.isNotEmpty(password) && !password.equals(getDefaultPassword())) {
+        if (StringUtils.isNotEmpty(password)) {
             password = decrypt(password);
         }
         return password;
