@@ -37,12 +37,9 @@ import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.constants.MRConstant;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.mapr.IMapRDistribution;
 import org.talend.hadoop.distribution.mapr500.modulegroup.MapR500MRS3NodeModuleGroup;
-import org.talend.hadoop.distribution.mapr500.modulegroup.MapR500PigModuleGroup;
-import org.talend.hadoop.distribution.mapr500.modulegroup.MapR500PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr500.modulegroup.MapR500SparkBatchS3NodeModuleGroup;
 
 public class MapR500Distribution extends AbstractMapRDistribution implements HDFSComponent, MRComponent, HBaseComponent,
@@ -64,12 +61,9 @@ public class MapR500Distribution extends AbstractMapRDistribution implements HDF
     private static Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodeModuleGroups;
     static {
         moduleGroups = new HashMap<>();
-        moduleGroups.put(ComponentType.PIG, MapR500PigModuleGroup.getModuleGroups());
 
         nodeModuleGroups = new HashMap<>();
 
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
-                MapR500PigOutputNodeModuleGroup.getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
                 MapR500MRS3NodeModuleGroup.getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),

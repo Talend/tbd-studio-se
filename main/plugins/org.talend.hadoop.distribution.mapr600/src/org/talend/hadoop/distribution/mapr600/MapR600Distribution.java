@@ -40,7 +40,6 @@ import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.MapRStreamsConstant;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.mapr.IMapRDistribution;
@@ -57,9 +56,6 @@ import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600MapRStreamsCrea
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600MapRStreamsModuleGroup;
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600MapReduceModuleGroup;
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600OjaiModuleGroup;
-import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600PigModuleGroup;
-import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600PigOutputModuleGroup;
-import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkBatchAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.mapr600.modulegroup.MapR600SparkBatchParquetNodeModuleGroup;
@@ -106,9 +102,7 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
         moduleGroups.put(ComponentType.MAPREDUCE, MapR600MapReduceModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HBASE, MapR600HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVE, MapR600HiveModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIG, MapR600PigModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIGOUTPUT, MapR600PigOutputModuleGroup.getModuleGroups());
-
+        
         moduleGroups.put(ComponentType.HCATALOG, MapR600HCatalogModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SQOOP, MapR600SqoopModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.IMPALA, MapR600ImpalaModuleGroup.getModuleGroups());
@@ -125,8 +119,6 @@ public class MapR600Distribution extends AbstractMapRDistribution implements HDF
                 MapRStreamsConstant.CREATE_STREAM_COMPONENT), MapR600MapRStreamsCreateStreamModuleGroup
                 .getModuleGroups());
 
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
-                MapR600PigOutputNodeModuleGroup.getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
                 MapR600MRS3NodeModuleGroup.getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),
