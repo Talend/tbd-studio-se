@@ -55,10 +55,7 @@ public class Apache100Distribution extends AbstractDistribution implements HDFSC
 
         ComponentCondition c1 = new SimpleComponentCondition(new BasicExpression(Constant.PIG_STORE_PARAMETER,
                 EqualityOperator.NOT_EQ, Constant.PIG_HCATSTORER_PARAMETER));
-        displayConditions.put(ComponentType.PIGOUTPUT, c1);
-
-        customVersionDisplayNames.put(ComponentType.PIGOUTPUT, VERSION_PIG_DISPLAY);
-        customVersionDisplayNames.put(ComponentType.HIVE, VERSION_HIVE_DISPLAY);
+                customVersionDisplayNames.put(ComponentType.HIVE, VERSION_HIVE_DISPLAY);
     }
 
     @Override

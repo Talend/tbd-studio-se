@@ -32,14 +32,11 @@ import org.talend.hadoop.distribution.cdh5120.modulegroup.CDH5120HiveModuleGroup
 import org.talend.hadoop.distribution.cdh5120.modulegroup.CDH5120HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.cdh5120.modulegroup.CDH5120ImpalaModuleGroup;
 import org.talend.hadoop.distribution.cdh5120.modulegroup.CDH5120MapReduceModuleGroup;
-import org.talend.hadoop.distribution.cdh5120.modulegroup.CDH5120PigModuleGroup;
-import org.talend.hadoop.distribution.cdh5120.modulegroup.CDH5120PigOutputModuleGroup;
 import org.talend.hadoop.distribution.cdh5120.modulegroup.CDH5120SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.cdh5120.modulegroup.CDH5120SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.cdh5120.modulegroup.CDH5120SqoopModuleGroup;
 import org.talend.hadoop.distribution.cdh5120.modulegroup.CDH5120WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.cdh5120.modulegroup.node.mr.CDH5120MRS3NodeModuleGroup;
-import org.talend.hadoop.distribution.cdh5120.modulegroup.node.pigoutput.CDH5120PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5120.modulegroup.node.spark.CDH5120SparkDynamoDBNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5120.modulegroup.node.sparkbatch.CDH5120GraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5120.modulegroup.node.sparkbatch.CDH5120SparkBatchAzureNodeModuleGroup;
@@ -67,7 +64,6 @@ import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
@@ -105,8 +101,6 @@ public class CDH5120Distribution extends AbstractDistribution implements ICloude
         moduleGroups.put(ComponentType.HBASE, CDH5120HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HCATALOG, CDH5120HCatalogModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPREDUCE, CDH5120MapReduceModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIG, CDH5120PigModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIGOUTPUT, CDH5120PigOutputModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SQOOP, CDH5120SqoopModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVE, CDH5120HiveModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.IMPALA, CDH5120ImpalaModuleGroup.getModuleGroups());
@@ -127,9 +121,7 @@ public class CDH5120Distribution extends AbstractDistribution implements ICloude
                 CDH5120MRS3NodeModuleGroup.getModuleGroups(distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),
                 CDH5120MRS3NodeModuleGroup.getModuleGroups(distribution, version));
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
-                CDH5120PigOutputNodeModuleGroup.getModuleGroups(distribution, version));
-
+        
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
                 SparkBatchConstant.PARQUET_INPUT_COMPONENT), CDH5120SparkBatchParquetNodeModuleGroup.getModuleGroups(
                 distribution, version));
