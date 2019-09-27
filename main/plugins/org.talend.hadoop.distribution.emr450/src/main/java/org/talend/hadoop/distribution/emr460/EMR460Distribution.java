@@ -22,13 +22,9 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
 import org.talend.hadoop.distribution.component.HBaseComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.emr450.EMR450Distribution;
 import org.talend.hadoop.distribution.emr460.modulegroup.EMR460HBaseModuleGroup;
 import org.talend.hadoop.distribution.emr460.modulegroup.EMR460HiveModuleGroup;
-import org.talend.hadoop.distribution.emr460.modulegroup.EMR460PigModuleGroup;
-import org.talend.hadoop.distribution.emr460.modulegroup.EMR460PigOutputModuleGroup;
-import org.talend.hadoop.distribution.emr460.modulegroup.node.pigoutput.EMR460PigOutputNodeModuleGroup;
 
 // This class extends {@see EMR450Distribution} as it shares the same behaviour and dependencies.
 public class EMR460Distribution extends EMR450Distribution implements HBaseComponent {
@@ -54,15 +50,12 @@ public class EMR460Distribution extends EMR450Distribution implements HBaseCompo
     @Override
     protected Map<ComponentType, ComponentCondition> buildDisplayConditions() {
         Map<ComponentType, ComponentCondition> result = super.buildDisplayConditions();
-        // Clear PIGOUTPUT display condition
-        result.remove(ComponentType.PIGOUTPUT);
         return result;
     }
 
     @Override
     protected Map<ComponentType, String> buildCustomVersionDisplayNames() {
         Map<ComponentType, String> result = new HashMap<>();
-        result.put(ComponentType.PIG, PIG_EMR460_DISPLAY);
         result.put(ComponentType.HIVE, HIVE_EMR460_DISPLAY);
         result.put(ComponentType.SQOOP, SQOOP_EMR460_DISPLAY);
         result.put(ComponentType.HBASE, HBASE_EMR460_DISPLAY);
@@ -79,8 +72,6 @@ public class EMR460Distribution extends EMR450Distribution implements HBaseCompo
 
         // Override few module groups to enable HBase features
         result.put(ComponentType.HIVE, EMR460HiveModuleGroup.getModuleGroups());
-        result.put(ComponentType.PIG, EMR460PigModuleGroup.getModuleGroups());
-        result.put(ComponentType.PIGOUTPUT, EMR460PigOutputModuleGroup.getModuleGroups());
         return result;
     }
 
@@ -88,10 +79,6 @@ public class EMR460Distribution extends EMR450Distribution implements HBaseCompo
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(String distribution, String version) {
         // Re-use EMR 4.5.0 module groups
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = super.buildNodeModuleGroups(distribution, version);
-
-        // Override few module groups to enable HBase features
-        result.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
-                EMR460PigOutputNodeModuleGroup.getModuleGroups(distribution, version));
         return result;
     }
 

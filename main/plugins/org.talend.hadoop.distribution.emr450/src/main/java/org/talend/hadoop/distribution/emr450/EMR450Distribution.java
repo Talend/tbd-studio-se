@@ -41,7 +41,6 @@ import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.Constant;
 import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.emr.IAmazonEMRDistribution;
@@ -50,14 +49,11 @@ import org.talend.hadoop.distribution.emr450.modulegroup.EMR450HDFSModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.EMR450HiveModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.EMR450HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.EMR450MapReduceModuleGroup;
-import org.talend.hadoop.distribution.emr450.modulegroup.EMR450PigModuleGroup;
-import org.talend.hadoop.distribution.emr450.modulegroup.EMR450PigOutputModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.EMR450SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.EMR450SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.EMR450SqoopModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.EMR450WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.node.mr.EMR450MRS3NodeModuleGroup;
-import org.talend.hadoop.distribution.emr450.modulegroup.node.pigoutput.EMR450PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.node.sparkbatch.EMR450GraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.node.sparkbatch.EMR450SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.node.sparkbatch.EMR450SparkBatchS3NodeModuleGroup;
@@ -102,7 +98,6 @@ public class EMR450Distribution extends AbstractDistribution implements HDFSComp
 
     protected Map<ComponentType, ComponentCondition> buildDisplayConditions() {
         Map<ComponentType, ComponentCondition> result = new HashMap<>();
-        result.put(ComponentType.PIGOUTPUT, getPigOutputDisplayCondition());
         return result;
     }
 
@@ -114,7 +109,6 @@ public class EMR450Distribution extends AbstractDistribution implements HDFSComp
 
     protected Map<ComponentType, String> buildCustomVersionDisplayNames() {
         Map<ComponentType, String> result = new HashMap<>();
-        result.put(ComponentType.PIG, PIG_EMR450_DISPLAY);
         result.put(ComponentType.HIVE, HIVE_EMR450_DISPLAY);
         result.put(ComponentType.SQOOP, SQOOP_EMR450_DISPLAY);
         return result;
@@ -127,8 +121,6 @@ public class EMR450Distribution extends AbstractDistribution implements HDFSComp
         result.put(ComponentType.HIVE, EMR450HiveModuleGroup.getModuleGroups());
         result.put(ComponentType.HIVEONSPARK, EMR450HiveOnSparkModuleGroup.getModuleGroups());
         result.put(ComponentType.MAPREDUCE, EMR450MapReduceModuleGroup.getModuleGroups());
-        result.put(ComponentType.PIG, EMR450PigModuleGroup.getModuleGroups());
-        result.put(ComponentType.PIGOUTPUT, EMR450PigOutputModuleGroup.getModuleGroups());
         result.put(ComponentType.SPARKBATCH, EMR450SparkBatchModuleGroup.getModuleGroups());
         result.put(ComponentType.SPARKSTREAMING, EMR450SparkStreamingModuleGroup.getModuleGroups());
         result.put(ComponentType.SQOOP, EMR450SqoopModuleGroup.getModuleGroups());
@@ -149,10 +141,7 @@ public class EMR450Distribution extends AbstractDistribution implements HDFSComp
                 EMR450MRS3NodeModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),
                 EMR450MRS3NodeModuleGroup.getModuleGroups(distribution, version));
-        // Pig nodes
-        result.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
-                EMR450PigOutputNodeModuleGroup.getModuleGroups(distribution, version));
-
+        
         // Spark Batch Parquet nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
                 EMR450SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));

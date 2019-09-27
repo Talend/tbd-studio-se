@@ -38,7 +38,6 @@ import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.emr.IAmazonEMRDistribution;
@@ -48,14 +47,11 @@ import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150HDFSModuleGroup
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150HiveModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150MapReduceModuleGroup;
-import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150PigModuleGroup;
-import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150PigOutputModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150SqoopModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.EMR5150WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.mr.EMR5150MRS3NodeModuleGroup;
-import org.talend.hadoop.distribution.emr5150.modulegroup.node.pigoutput.EMR5150PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.spark.EMR5150SparkDynamoDBNodeModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkbatch.EMR5150GraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkbatch.EMR5150SparkBatchAzureNodeModuleGroup;
@@ -112,7 +108,6 @@ public class EMR5150Distribution extends AbstractDistribution implements HBaseCo
 
 	protected Map<ComponentType, String> buildCustomVersionDisplayNames() {
 		Map<ComponentType, String> result = new HashMap<>();
-		result.put(ComponentType.PIG, PIG_EMR5150_DISPLAY);
 		result.put(ComponentType.HIVE, HIVE_EMR5150_DISPLAY);
 		result.put(ComponentType.SQOOP, SQOOP_EMR5150_DISPLAY);
 		return result;
@@ -127,9 +122,6 @@ public class EMR5150Distribution extends AbstractDistribution implements HBaseCo
         result.put(ComponentType.HIVEONSPARK, EMR5150HiveOnSparkModuleGroup.getModuleGroups());
 		result.put(ComponentType.MAPREDUCE,
 				EMR5150MapReduceModuleGroup.getModuleGroups());
-		result.put(ComponentType.PIG, EMR5150PigModuleGroup.getModuleGroups());
-		result.put(ComponentType.PIGOUTPUT,
-				EMR5150PigOutputModuleGroup.getModuleGroups());
 		result.put(ComponentType.SQOOP,
 				EMR5150SqoopModuleGroup.getModuleGroups());
 		result.put(ComponentType.HBASE,
@@ -157,12 +149,7 @@ public class EMR5150Distribution extends AbstractDistribution implements HBaseCo
 		result.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE,
 				MRConstant.S3_OUTPUT_COMPONENT), EMR5150MRS3NodeModuleGroup
 				.getModuleGroups(distribution, version));
-		// Pig nodes
-		result.put(new NodeComponentTypeBean(ComponentType.PIG,
-				PigOutputConstant.PIGSTORE_COMPONENT),
-				EMR5150PigOutputNodeModuleGroup.getModuleGroups(distribution,
-						version));
-
+		
 		// Spark Batch Parquet nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
                 EMR5150SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
