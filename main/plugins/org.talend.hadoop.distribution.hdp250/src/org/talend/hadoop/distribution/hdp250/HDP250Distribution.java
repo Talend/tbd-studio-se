@@ -37,7 +37,6 @@ import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.hdp.IHortonworksDistribution;
@@ -47,14 +46,11 @@ import org.talend.hadoop.distribution.hdp250.modulegroup.HDP250HDFSModuleGroup;
 import org.talend.hadoop.distribution.hdp250.modulegroup.HDP250HiveModuleGroup;
 import org.talend.hadoop.distribution.hdp250.modulegroup.HDP250HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.hdp250.modulegroup.HDP250MapReduceModuleGroup;
-import org.talend.hadoop.distribution.hdp250.modulegroup.HDP250PigModuleGroup;
-import org.talend.hadoop.distribution.hdp250.modulegroup.HDP250PigOutputModuleGroup;
 import org.talend.hadoop.distribution.hdp250.modulegroup.HDP250SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.hdp250.modulegroup.HDP250SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.hdp250.modulegroup.HDP250SqoopModuleGroup;
 import org.talend.hadoop.distribution.hdp250.modulegroup.HDP250WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.hdp250.modulegroup.node.mr.HDP250MRS3NodeModuleGroup;
-import org.talend.hadoop.distribution.hdp250.modulegroup.node.pigoutput.HDP250PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.hdp250.modulegroup.node.sparkbatch.HDP250GraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.hdp250.modulegroup.node.sparkbatch.HDP250SparkBatchAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.hdp250.modulegroup.node.sparkbatch.HDP250SparkBatchParquetNodeModuleGroup;
@@ -97,8 +93,6 @@ public class HDP250Distribution extends AbstractDistribution implements HDFSComp
         moduleGroups.put(ComponentType.HBASE, HDP250HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HCATALOG, HDP250HCatalogModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPREDUCE, HDP250MapReduceModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIG, HDP250PigModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIGOUTPUT, HDP250PigOutputModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SQOOP, HDP250SqoopModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVE, HDP250HiveModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SPARKBATCH, HDP250SparkBatchModuleGroup.getModuleGroups());
@@ -125,9 +119,7 @@ public class HDP250Distribution extends AbstractDistribution implements HDFSComp
                 HDP250MRS3NodeModuleGroup.getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),
                 HDP250MRS3NodeModuleGroup.getModuleGroups());
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
-                HDP250PigOutputNodeModuleGroup.getModuleGroups());
-
+       
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
                 HDP250SparkBatchParquetNodeModuleGroup.getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),

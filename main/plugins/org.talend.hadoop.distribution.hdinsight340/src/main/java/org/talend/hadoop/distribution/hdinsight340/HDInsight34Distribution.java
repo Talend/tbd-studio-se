@@ -38,18 +38,14 @@ import org.talend.hadoop.distribution.condition.MultiComponentCondition;
 import org.talend.hadoop.distribution.condition.NestedComponentCondition;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.Constant;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.hdinsight.IMicrosoftHDInsightDistribution;
 import org.talend.hadoop.distribution.hdinsight340.modulegroup.HDInsight34HiveModuleGroup;
 import org.talend.hadoop.distribution.hdinsight340.modulegroup.HDInsight34HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.hdinsight340.modulegroup.HDInsight34MapReduceModuleGroup;
-import org.talend.hadoop.distribution.hdinsight340.modulegroup.HDInsight34PigModuleGroup;
-import org.talend.hadoop.distribution.hdinsight340.modulegroup.HDInsight34PigOutputModuleGroup;
 import org.talend.hadoop.distribution.hdinsight340.modulegroup.HDInsight34SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.hdinsight340.modulegroup.HDInsight34SparkStreamingModuleGroup;
-import org.talend.hadoop.distribution.hdinsight340.modulegroup.node.pigoutput.HDInsight34PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.hdinsight340.modulegroup.node.sparkbatch.HDInsight34SparkBatchGraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.hdinsight340.modulegroup.node.sparkbatch.HDInsight34SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.hdinsight340.modulegroup.node.sparkstreaming.HDInsight34SparkStreamingParquetNodeModuleGroup;
@@ -75,8 +71,6 @@ public class HDInsight34Distribution extends AbstractDistribution implements MRC
         // components that have the distribution list.
         moduleGroups = new HashMap<>();
         moduleGroups.put(ComponentType.MAPREDUCE, HDInsight34MapReduceModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIG, HDInsight34PigModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIGOUTPUT, HDInsight34PigOutputModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVE, HDInsight34HiveModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SPARKBATCH, HDInsight34SparkBatchModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVEONSPARK, HDInsight34HiveOnSparkModuleGroup.getModuleGroups());
@@ -84,9 +78,6 @@ public class HDInsight34Distribution extends AbstractDistribution implements MRC
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
         nodeModuleGroups = new HashMap<>();
-
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
-                HDInsight34PigOutputNodeModuleGroup.getModuleGroups());
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
                 HDInsight34SparkBatchParquetNodeModuleGroup.getModuleGroups());
@@ -104,12 +95,7 @@ public class HDInsight34Distribution extends AbstractDistribution implements MRC
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.PARQUET_STREAM_INPUT_COMPONENT), HDInsight34SparkStreamingParquetNodeModuleGroup
                 .getModuleGroups());
-
-        ComponentCondition c1 = new NestedComponentCondition(new MultiComponentCondition(new SimpleComponentCondition(
-                new BasicExpression(Constant.PIG_STORE_PARAMETER, EqualityOperator.NOT_EQ, Constant.PIG_HBASESTORAGE_PARAMETER)),
-                BooleanOperator.AND, new SimpleComponentCondition(new BasicExpression(Constant.PIG_STORE_PARAMETER,
-                        EqualityOperator.NOT_EQ, Constant.PIG_HCATSTORER_PARAMETER))));
-        displayConditions.put(ComponentType.PIGOUTPUT, c1);
+        
     }
 
     @Override

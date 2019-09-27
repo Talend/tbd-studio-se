@@ -38,18 +38,14 @@ import org.talend.hadoop.distribution.condition.MultiComponentCondition;
 import org.talend.hadoop.distribution.condition.NestedComponentCondition;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.Constant;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.hdinsight.IMicrosoftHDInsightDistribution;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.HDInsight36HiveModuleGroup;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.HDInsight36HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.HDInsight36MapReduceModuleGroup;
-import org.talend.hadoop.distribution.hdinsight360.modulegroup.HDInsight36PigModuleGroup;
-import org.talend.hadoop.distribution.hdinsight360.modulegroup.HDInsight36PigOutputModuleGroup;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.HDInsight36SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.HDInsight36SparkStreamingModuleGroup;
-import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.pigoutput.HDInsight36PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.sparkbatch.HDInsight36SparkBatchGraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.sparkbatch.HDInsight36SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.sparkbatch.HDInsight36SparkBatchSQLNodeModuleGroup;
@@ -86,16 +82,12 @@ public class HDInsight36Distribution extends AbstractDistribution implements Spa
         moduleGroups.put(ComponentType.SPARKSTREAMING, HDInsight36SparkStreamingModuleGroup.getModuleGroups());
 
         moduleGroups.put(ComponentType.HIVE, HDInsight36HiveModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIG, HDInsight36PigModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIGOUTPUT, HDInsight36PigOutputModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPREDUCE, HDInsight36MapReduceModuleGroup.getModuleGroups());
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
         nodeModuleGroups = new HashMap<>();
 
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
-                HDInsight36PigOutputNodeModuleGroup.getModuleGroups());
-
+       
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
                 HDInsight36SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
@@ -125,12 +117,7 @@ public class HDInsight36Distribution extends AbstractDistribution implements Spa
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.TMODEL_ENCODER_COMPONENT), HDInsight36SparkStreamingTModelEncoderNodeModuleGroup
                 .getModuleGroups(distribution, version));
-
-        ComponentCondition c1 = new NestedComponentCondition(new MultiComponentCondition(new SimpleComponentCondition(
-                new BasicExpression(Constant.PIG_STORE_PARAMETER, EqualityOperator.NOT_EQ, Constant.PIG_HBASESTORAGE_PARAMETER)),
-                BooleanOperator.AND, new SimpleComponentCondition(new BasicExpression(Constant.PIG_STORE_PARAMETER,
-                        EqualityOperator.NOT_EQ, Constant.PIG_HCATSTORER_PARAMETER))));
-        displayConditions.put(ComponentType.PIGOUTPUT, c1);
+        
     }
 
     @Override

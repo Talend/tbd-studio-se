@@ -38,7 +38,6 @@ import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.hdp.IHortonworksDistribution;
@@ -48,14 +47,11 @@ import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260HDFSModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260HiveModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260MapReduceModuleGroup;
-import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260PigModuleGroup;
-import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260PigOutputModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260SqoopModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.node.mr.HDP260MRS3NodeModuleGroup;
-import org.talend.hadoop.distribution.hdp260.modulegroup.node.pigoutput.HDP260PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.node.spark.HDP260SparkDynamoDBNodeModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.node.sparkbatch.HDP260GraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.node.sparkbatch.HDP260SparkBatchAzureNodeModuleGroup;
@@ -102,8 +98,6 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
         moduleGroups.put(ComponentType.HBASE, HDP260HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HCATALOG, HDP260HCatalogModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPREDUCE, HDP260MapReduceModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIG, HDP260PigModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIGOUTPUT, HDP260PigOutputModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SQOOP, HDP260SqoopModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVE, HDP260HiveModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SPARKBATCH, HDP260SparkBatchModuleGroup.getModuleGroups());
@@ -123,9 +117,7 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
                 HDP260MRS3NodeModuleGroup.getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),
                 HDP260MRS3NodeModuleGroup.getModuleGroups());
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
-                HDP260PigOutputNodeModuleGroup.getModuleGroups());
-
+        
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
                 HDP260SparkBatchParquetNodeModuleGroup.getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
