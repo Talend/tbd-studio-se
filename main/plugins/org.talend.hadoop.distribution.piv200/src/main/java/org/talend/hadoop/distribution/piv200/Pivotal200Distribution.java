@@ -58,8 +58,7 @@ public class Pivotal200Distribution extends AbstractDistribution implements HDFS
                 BooleanOperator.AND,//
                 new SimpleComponentCondition(new BasicExpression(Constant.PIG_STORE_PARAMETER, EqualityOperator.NOT_EQ,
                         Constant.PIG_HCATSTORER_PARAMETER))));
-        displayConditions.put(ComponentType.PIGOUTPUT, c1);
-    }
+     }
 
     @Override
     public String getDistribution() {

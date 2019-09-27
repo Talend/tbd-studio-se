@@ -17,8 +17,6 @@ public class QuboleDistributionTest {
         HadoopComponent distribution = new QuboleDistribution();
         assertEquals(distribution.getDistributionName(), QuboleDistribution.DISTRIBUTION_DISPLAY_NAME);
         assertEquals(distribution.getVersionName(ComponentType.HIVE), QuboleDistribution.HIVE_VERSION);
-        assertEquals(distribution.getVersionName(ComponentType.PIG), QuboleDistribution.PIG_VERSION);
-        assertEquals(distribution.getVersionName(ComponentType.PIGOUTPUT), QuboleDistribution.PIG_VERSION);
         assertEquals(distribution.getVersionName(ComponentType.SPARKBATCH), QuboleDistribution.SPARK_VERISON);
         assertTrue(distribution.doSupportS3());
         assertEquals(QuboleDistribution.DISTRIBUTION_NAME, distribution.getDistribution());

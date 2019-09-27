@@ -29,13 +29,10 @@ import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.qubole.IQuboleDistribution;
 import org.talend.hadoop.distribution.qubole.modulegroup.QuboleHiveModuleGroup;
-import org.talend.hadoop.distribution.qubole.modulegroup.QubolePigModuleGroup;
-import org.talend.hadoop.distribution.qubole.modulegroup.QubolePigOutputModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QuboleSparkBatchModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QuboleSparkStreamingModuleGroup;
 
@@ -66,8 +63,6 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
     protected Map<ComponentType, String> buildCustomVersionDisplayNames() {
         Map<ComponentType, String> result = new HashMap<>();
         result.put(ComponentType.HIVE, HIVE_VERSION);
-        result.put(ComponentType.PIG, PIG_VERSION);
-        result.put(ComponentType.PIGOUTPUT, PIG_VERSION);
         result.put(ComponentType.SPARKBATCH, SPARK_VERISON);
         result.put(ComponentType.SPARKSTREAMING, SPARK_VERISON);
         return result;
@@ -79,8 +74,6 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
     protected Map<ComponentType, Set<DistributionModuleGroup>> buildModuleGroups() {
         Map<ComponentType, Set<DistributionModuleGroup>> componentsMap = new HashMap<>();
         componentsMap.put(ComponentType.HIVE, QuboleHiveModuleGroup.getModuleGroups());
-        componentsMap.put(ComponentType.PIG, QubolePigModuleGroup.getModuleGroups());
-        componentsMap.put(ComponentType.PIGOUTPUT, QubolePigOutputModuleGroup.getModuleGroups());
         componentsMap.put(ComponentType.SPARKBATCH, QuboleSparkBatchModuleGroup.getModuleGroups());
         componentsMap.put(ComponentType.SPARKSTREAMING, QuboleSparkStreamingModuleGroup.getModuleGroups());
         return componentsMap;
@@ -91,7 +84,6 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
      */
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(String distribution, String version) {
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodesMap = new HashMap<>();
-        nodesMap.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT), QubolePigOutputModuleGroup.getModuleGroups());
         nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_CONFIGURATION_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, null));
         nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_INPUT_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, "USE_EXISTING_CONNECTION == 'false'"));
         nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_OUTPUT_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, "USE_EXISTING_CONNECTION == 'false'"));
