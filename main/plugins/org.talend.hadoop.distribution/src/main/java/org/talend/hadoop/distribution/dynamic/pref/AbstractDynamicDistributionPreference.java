@@ -29,7 +29,7 @@ public abstract class AbstractDynamicDistributionPreference implements IDynamicD
 
     private IPreferenceStore prefStore;
 
-    private StudioEncryption se = StudioEncryption.getStudioEncryption(StudioEncryption.EnryptionKeyName.SYSTEM);
+    private StudioEncryption se = StudioEncryption.getStudioEncryption(StudioEncryption.EncryptionKeyName.SYSTEM);
 
     abstract protected String getPrefKeyOverrideDefaultSetup();
 
