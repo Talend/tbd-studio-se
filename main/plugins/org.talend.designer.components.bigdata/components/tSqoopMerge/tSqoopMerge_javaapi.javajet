@@ -157,9 +157,8 @@
 <%
     }
 %>
-	java.util.List<java.net.URL> libURL_<%=cid%> = new java.util.ArrayList<>();
 	
-  	ClassLoader threadClassLoader_<%=cid%> = Thread.currentThread().getContextClassLoader();
+	ClassLoader threadClassLoader_<%=cid%> = Thread.currentThread().getContextClassLoader();
 	java.net.URLClassLoader newthreadClassLoader_<%=cid%> = new java.net.URLClassLoader(jarFileName_<%=cid%>, threadClassLoader_<%=cid%>);
     
     try {
