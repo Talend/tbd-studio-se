@@ -29,7 +29,7 @@ import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
-import org.talend.hadoop.distribution.constants.databricks.IDatabricksDistribution;
+import org.talend.hadoop.distribution.constants.databricks.IDatabricks350Distribution;
 import org.talend.hadoop.distribution.dbr350.modulegroup.DBR350HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.dbr350.modulegroup.DBR350SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.dbr350.modulegroup.DBR350SparkStreamingModuleGroup;
@@ -37,11 +37,7 @@ import org.talend.hadoop.distribution.dbr350.modulegroup.node.sparkbatch.DBR350S
 import org.talend.hadoop.distribution.dbr350.modulegroup.node.sparkstreaming.DBR350SparkStreamingKinesisNodeModuleGroup;
 
 public class DBR350Distribution extends AbstractDatabricksDistribution implements SparkBatchComponent,
-        SparkStreamingComponent, HiveOnSparkComponent, IDatabricksDistribution {
-
-    public final static String VERSION = "Databricks_3_5";
-
-    public static final String VERSION_DISPLAY = "3.5 LTS (includes Apache Spark 2.2.1, Scala 2.11)";
+        SparkStreamingComponent, HiveOnSparkComponent, IDatabricks350Distribution {
 
     private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*"; //$NON-NLS-1$
 
