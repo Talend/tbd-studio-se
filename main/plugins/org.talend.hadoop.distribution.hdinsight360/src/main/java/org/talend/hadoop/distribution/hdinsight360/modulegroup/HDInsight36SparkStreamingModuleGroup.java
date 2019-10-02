@@ -30,10 +30,10 @@ public class HDInsight36SparkStreamingModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        hs.add(new DistributionModuleGroup(HDInsight36Constant.SPARK_MODULE_GROUP.getModuleName(), false, condition));
-        hs.add(new DistributionModuleGroup(HDInsight36Constant.SPARK_STREAMING_MODULE_GROUP.getModuleName(), false, condition));
+        hs.add(new DistributionModuleGroup(HDInsight36Constant.SPARK_MODULE_GROUP.getModuleName(), true, condition));
+        hs.add(new DistributionModuleGroup(HDInsight36Constant.SPARK_STREAMING_MODULE_GROUP.getModuleName(), true, condition));
         hs.add(new DistributionModuleGroup(HDInsight36Constant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), true, condition));
-        hs.add(new DistributionModuleGroup(HDInsight36Constant.HDINSIGHT36COMMON_MODULE_GROUP.getModuleName(), false, condition));
+        hs.add(new DistributionModuleGroup(HDInsight36Constant.HDINSIGHT36COMMON_MODULE_GROUP.getModuleName(), true, condition));
         return hs;
     }
 
