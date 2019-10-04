@@ -492,4 +492,9 @@ public class MapR610Distribution extends AbstractMapRDistribution implements HDF
     public boolean doSupportStoreAsParquet() {
         return false;
     }
+
+    @Override
+    public boolean useOldAWSAPI() {
+        return false;
+    }
 }
