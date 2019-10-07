@@ -34,15 +34,13 @@
     <modules>
         <module>i18n/plugins/org.talend.demo.bigdata.ce.nl</module>
         <module>i18n/plugins/org.talend.designer.hdfsbrowse.nl</module>
-        <module>i18n/plugins/org.talend.designer.pigmap.nl</module>
         <module>i18n/plugins/org.talend.oozie.scheduler.nl</module>
         <module>i18n/plugins/org.talend.repository.hadoopcluster.nl</module>
         <module>i18n/plugins/org.talend.repository.hcatalog.nl</module>
         <module>i18n/plugins/org.talend.repository.hdfs.nl</module>
         <module>i18n/plugins/org.talend.repository.nosql.nl</module>
         <module>i18n/plugins/org.talend.repository.oozie.nl</module>
-        <module>i18n/plugins/org.talend.repository.pigudf.nl</module>
-
+       
         <module>main/features/org.talend.rcp.branding.tos.bigdata.feature</module>
         <module>main/features/org.talend.tos.bigdata.feature</module>
         <module>main/features/org.talend.tos.bigdata.libraries.feature</module>
@@ -87,7 +85,6 @@
         <module>main/plugins/org.talend.designer.components.bigdata</module>
         <module>main/plugins/org.talend.designer.hdfsbrowse</module>
         <module>main/plugins/org.talend.designer.neo4j</module>
-        <module>main/plugins/org.talend.designer.pigmap</module>
         <module>main/plugins/org.talend.libraries.apache.kafka</module>
         <module>main/plugins/org.talend.libraries.couchbase</module>
         <module>main/plugins/org.talend.libraries.couchdb</module>
@@ -96,7 +93,6 @@
         <module>main/plugins/org.talend.libraries.hcatalog</module>
         <module>main/plugins/org.talend.libraries.mongo</module>
         <module>main/plugins/org.talend.libraries.neo4j</module>
-        <module>main/plugins/org.talend.libraries.pig</module>
         <module>main/plugins/org.talend.libraries.s3</module>
         <module>main/plugins/org.talend.libraries.sdsulib</module>
         <module>main/plugins/org.talend.libraries.sqoop</module>
@@ -149,7 +145,6 @@
         <module>test/plugins/org.talend.hadoop.distribution.qubole.test</module>
         <module>test/plugins/org.talend.oozie.scheduler.test</module>
         <module>test/plugins/org.talend.repository.nosql.test</module>
-		<module>test/plugins/org.talend.designer.pigmap.test</module>
 		<module>test/plugins/org.talend.repository.maprdbprovider.test</module>
         <module>test/plugins/org.talend.repository.hadoopcluster.configurator.test</module>
         <module>test/plugins/org.talend.repository.hadoopcluster.test</module>
