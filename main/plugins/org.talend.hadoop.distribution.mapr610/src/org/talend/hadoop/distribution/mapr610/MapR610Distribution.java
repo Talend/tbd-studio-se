@@ -497,4 +497,9 @@ public class MapR610Distribution extends AbstractMapRDistribution implements HDF
     public boolean useOldAWSAPI() {
         return false;
     }
+
+    @Override
+    public boolean useS3AProperties() {
+        return true;
+    }
 }
