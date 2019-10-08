@@ -124,50 +124,6 @@
             mvn_uri="mvn:org.talend.libraries/hive-exec-1.2.1000.2.4.1.0-327/6.0.0">
         </libraryNeeded>
 
-        <!-- Pig libraries -->
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdinsight360"
-            id="parquet-pig-bundle-1.6.0.jar"
-            name="parquet-pig-bundle-1.6.0.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-pig-bundle-1.6.0/6.0.0">
-        </libraryNeeded>
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdinsight360"
-            id="elephant-bird-pig-4.9.jar"
-            name="elephant-bird-pig-4.9.jar"
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-pig/4.9">
-        </libraryNeeded>
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdinsight360"
-            id="pig-0.10.0.jar"
-            name="pig-0.10.0.jar"
-            mvn_uri="mvn:org.talend.libraries/pig-0.10.0/6.0.0">
-        </libraryNeeded>
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdinsight360"
-            id="elephant-bird-pig-4.9.jar"
-            name="elephant-bird-pig-4.9.jar"
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-pig/4.9">
-        </libraryNeeded>
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdinsight360"
-            id="elephant-bird-core-4.9.jar"
-            name="elephant-bird-core-4.9.jar"
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-core/4.9">
-        </libraryNeeded>
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdinsight360"
-            id="elephant-bird-hadoop-compat-4.9.jar"
-            name="elephant-bird-hadoop-compat-4.9.jar"
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-hadoop-compat/4.9">
-        </libraryNeeded>
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdinsight360"
-            id="elephant-bird-rcfile-4.1.jar"
-            name="elephant-bird-rcfile-4.1.jar"
-            mvn_uri="mvn:org.talend.libraries/elephant-bird-rcfile-4.1/6.0.0">
-        </libraryNeeded>
-        
         <!-- GraphFrames libraries -->
 		<libraryNeeded 
 			context="plugin:org.talend.hadoop.distribution.hdinsight360"

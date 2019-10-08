@@ -181,13 +181,6 @@
             name="hive-hbase-handler-2.1.1-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-hbase-handler-2.1.1-amzn-0/6.0.0"/>
 
-        <!-- Pig libraries -->
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr550"
-            id="hadoop-lzo-0.4.19.jar"
-            name="hadoop-lzo-0.4.19.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-lzo-0.4.19/6.0.0"/>
-
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr550"
             id="pig-0.16.0-amzn-0-core-h2.jar"

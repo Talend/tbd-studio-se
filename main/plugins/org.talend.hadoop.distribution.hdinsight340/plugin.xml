@@ -75,20 +75,6 @@
             mvn_uri="mvn:org.talend.libraries/hadoop-yarn-server-web-proxy-2.7.1.2.4.1.0-327/6.0.0">
         </libraryNeeded>
         
-        <!-- Pig libraries -->    
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdinsight340"
-            id="pig-hdinsight340"
-            name="pig-0.15.0.2.4.1.0-327-core-h2.jar"
-            mvn_uri="mvn:org.talend.libraries/pig-0.15.0.2.4.1.0-327-core-h2/6.0.0">
-        </libraryNeeded>
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdinsight340"
-            id="parquet-pig-bundle-1.6.0.jar"
-            name="parquet-pig-bundle-1.6.0.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-pig-bundle-1.6.0/6.0.0">
-        </libraryNeeded>
-        
         <!-- Hive libraries -->    
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdinsight340"

@@ -247,21 +247,6 @@
             mvn_uri="mvn:org.talend.libraries/hive-hbase-handler-1.1.0-cdh5.10.1/6.1.0">
         </libraryNeeded>
 
-        <!-- Pig libraries -->
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh5100"
-            id="parquet-pig-bundle-cdh5.10"
-            name="parquet-pig-bundle-1.5.0-cdh5.10.1.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-pig-bundle-1.5.0-cdh5.10.1/6.1.0">
-        </libraryNeeded>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh5100"
-            id="pig-cdh5.10"
-            name="pig-0.12.0-cdh5.10.1.jar"
-            mvn_uri="mvn:org.talend.libraries/pig-0.12.0-cdh5.10.1/6.1.0">
-        </libraryNeeded>
-
         <!-- Spark libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5100"

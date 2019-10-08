@@ -231,62 +231,7 @@
             name="hive-metastore-1.2.1-spark2-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-metastore-1.2.1-spark2-amzn-0/6.0.0"/>
 
-        <!-- Pig libraries -->
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
-            id="hadoop-lzo-0.4.19.jar"
-            name="hadoop-lzo-0.4.19.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-lzo-0.4.19/6.0.0"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
-            id="pig-0.16.0-amzn-1-core-h2.jar"
-            name="pig-0.16.0-amzn-1-core-h2.jar"
-            mvn_uri="mvn:org.talend.libraries/pig-0.16.0-amzn-1-core-h2/6.0.0"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr580"
-            id="piggybank-emr550.jar"
-            name="piggybank-emr550.jar"
-            mvn_uri="mvn:org.talend.libraries/piggybank-emr550/6.0.0"/>
-
-        <libraryNeeded
-			context="plugin:org.talend.libraries.pig"
-            id="elephant-bird-core-4.9.jar"
-            name="elephant-bird-core-4.9.jar"
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-core/4.9"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-core-4.9.jar"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.libraries.pig"
-            id="elephant-bird-hadoop-compat-4.9.jar"
-            name="elephant-bird-hadoop-compat-4.9.jar"
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-hadoop-compat/4.9"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-hadoop-compat-4.9.jar"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.libraries.pig"
-            id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
-            name="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
-            mvn_uri="mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-rcfile-4.9-patched-hive-1.x.jar"/>
-
-		<libraryNeeded
-			context="plugin:org.talend.libraries.pig"
-            id="elephant-bird-pig-4.9.jar"
-            name="elephant-bird-pig-4.9.jar"
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-pig/4.9"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-pig-4.9.jar"/>
-
-		<libraryNeeded
-			context="plugin:org.talend.libraries.pig"
-			id="pigutil.jar"
-			name="pigutil.jar"
-			mvn_uri="mvn:org.talend.libraries/pigutil/6.0.0"
-			uripath="platform:/plugin/org.talend.libraries.pig/lib/pigutil.jar"/>
-
         <!-- S3 libraries -->
-
          <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
             id="hadoop-aws-2.7.3-amzn-3.jar"

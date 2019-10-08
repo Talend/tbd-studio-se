@@ -343,22 +343,7 @@
             name="hive-hcatalog-server-extensions-2.3.3-mapr-1901.jar"
             mvn_uri="mvn:org.apache.hive/hive-hcatalog-server-extensions/2.3.3-mapr-1901">
         </libraryNeeded>
-
-		<!-- mapr pig pac contains piggybank.jar, but documentation (https://mapr.com/docs/61/DevelopmentGuide/MavenArtifactsPig-0.16.0-1901.html) has piggybank-0.16.0-mapr-1901.jar -->  
-        <libraryNeeded
-            context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
-            id="piggybank-0.16.0-mapr-1901.jar"
-            name="piggybank-0.16.0-mapr-1901.jar"
-            mvn_uri="mvn:org.talend.libraries/piggybank-0.16.0-mapr-1901/6.0.0">
-        </libraryNeeded>
-        
-        <libraryNeeded
-            context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
-            id="parquet-pig-bundle-1.6.0.jar"
-            name="parquet-pig-bundle-1.6.0.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-pig-bundle-1.6.0/6.0.0">
-        </libraryNeeded>
-            
+		   
 		<!-- mapr pig pac contains pig-core-h2.jar, but to distinguish it from old versions, total pig version added -->  
        <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
