@@ -356,16 +356,6 @@
         </libraryNeededGroup>
 
         
-        <!-- Pig RCFile loader/storer group -->
-        <libraryNeededGroup description="Pig RCFile libraries for Qubole" id="PIG-RCFILE-LIB-QUBOLE" name="PIG-RCFILE-LIB-QUBOLE">
-            <library id="hive-common-1.1.0.jar"/>
-            <library id="hive-exec-1.1.0.jar"/>
-            <library id="hive-serde-1.1.0.jar"/>
-            <library id="elephant-bird-core-4.9.jar"/>
-            <library id="elephant-bird-hadoop-compat-4.9.jar"/>
-            <library id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"/>
-        </libraryNeededGroup>
-
         <!-- Spark Batch 2.2 group -->
         <libraryNeededGroup
            description="Spark 2.2 libraries for Qubole" id="SPARK-LIB-QUBOLE" name="SPARK-LIB-QUBOLE">

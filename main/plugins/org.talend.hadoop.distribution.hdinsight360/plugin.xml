@@ -297,46 +297,7 @@
              <library id="jodd-core-3.5.2" />
         </libraryNeededGroup>
 
-        <!-- Pig common group -->
-        <libraryNeededGroup
-                description="Pig Parquet libraries for HDInsight 3.6.0"
-                id="PIG-LIB-HD_INSIGHT_3_6_0"
-                name="PIG-LIB-HD_INSIGHT_3_6_0">
-            <library id="elephant-bird-pig-4.9.jar"/>
-            <library id="elephant-bird-core-4.9.jar"/>
-            <library id="pig-0.10.0.jar"/>
-            <library id="parquet-pig-bundle-1.6.0.jar"/>
-            <library id="datafu-1.2.0.jar"/>
-        </libraryNeededGroup>
-
-        <!-- Pig parquet group -->
-        <libraryNeededGroup
-                description="Pig Parquet libraries for HDInsight 3.6.0"
-                id="PIG-PARQUET-LIB-HD_INSIGHT_3_6_0"
-                name="PIG-PARQUET-LIB-HD_INSIGHT_3_6_0">
-            <library id="parquet-pig-bundle-1.6.0.jar"/>
-        </libraryNeededGroup>
-
-        <!-- Pig parquet SequenceFile group -->
-        <libraryNeededGroup
-                description="Pig Parquet libraries for HDInsight 3.6.0"
-                id="PIG-SEQUENCEFILE-LIB-HD_INSIGHT_3_6_0"
-                name="PIG-SEQUENCEFILE-LIB-HD_INSIGHT_3_6_0">
-            <library id="elephant-bird-hadoop-compat-4.9.jar"/>
-        </libraryNeededGroup>
-
-        <!-- Pig parquet RCFilePigStorage group -->
-        <libraryNeededGroup
-                description="Pig Parquet libraries for HDInsight 3.6.0"
-                id="PIG-RCFILE-LIB-HD_INSIGHT_3_6_0"
-                name="PIG-RCFILE-LIB-HD_INSIGHT_3_6_0">
-            <library id="elephant-bird-rcfile-4.1.jar"/>
-            <library id="elephant-bird-hadoop-compat-4.9.jar"/>
-            <library id="hive-serde-1.2.1000.2.4.1.0-327.jar"/>
-            <library id="hive-common-1.2.1000.2.4.1.0-327.jar"/>
-            <library id="hive-exec-1.2.1000.2.4.1.0-327.jar"/>
-        </libraryNeededGroup>
-
+       
         <!-- group of HD Insight 3.6.0 common libraries -->
         <libraryNeededGroup
                 description="HD Insight common libraries"

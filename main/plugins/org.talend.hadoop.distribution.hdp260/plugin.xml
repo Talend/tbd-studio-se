@@ -1449,18 +1449,6 @@
                 <library id="jackson-core-2.6.7.jar" />
         </libraryNeededGroup>
         
-        <!-- Pig S3 group -->
-        <libraryNeededGroup
-                description="Pig S3 libraries for HDP 2.6"
-                id="PIG-S3-LIB-HDP_2_6"
-                name="PIG-S3-LIB-HDP_2_6">
-             <library id="hadoop-aws-2.7.3.2.6.0.3-8"/>
-             <library id="aws-java-sdk-1.10.52.jar"/>
-             <library id="jets3t-0.9.0" />
-             <library id="httpclient-4.3.3.jar" />
-             <library id="httpcore-4.3.3.jar" />
-        </libraryNeededGroup>        
-        
         <!-- Spark Parquet group MRREQUIRED -->
         <libraryNeededGroup
                 description="Spark libraries for HDP 2.6 that are MRREQUIRED"
