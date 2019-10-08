@@ -96,11 +96,6 @@ public class HDP2xxDistributionTemplate extends AbstractDynamicHDPDistributionTe
     }
 
     @Override
-    public boolean doSupportTezForPig() {
-        return true;
-    }
-
-    @Override
     public boolean doSupportHBaseForHive() {
         return true;
     }

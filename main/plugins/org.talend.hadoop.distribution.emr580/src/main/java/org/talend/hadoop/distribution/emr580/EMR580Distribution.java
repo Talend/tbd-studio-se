@@ -74,8 +74,6 @@ public class EMR580Distribution extends AbstractDistribution implements
 
 	public static final String VERSION_DISPLAY = "EMR 5.8.0 (Apache 2.7.3)"; //$NON-NLS-1$
 
-	public static final String PIG_EMR580_DISPLAY = "EMR 5.8.0 (Pig 0.16.0)";//$NON-NLS-1$
-
 	public static final String SQOOP_EMR580_DISPLAY = "EMR 5.8.0 (Sqoop 1.4.6)"; //$NON-NLS-1$
 
 	public static final String HIVE_EMR580_DISPLAY = "EMR 5.8.0 (Hive 2.3.0)"; //$NON-NLS-1$

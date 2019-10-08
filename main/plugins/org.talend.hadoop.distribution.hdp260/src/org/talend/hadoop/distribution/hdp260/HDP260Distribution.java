@@ -300,11 +300,6 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
     }
 
     @Override
-    public boolean doSupportTezForPig() {
-        return true;
-    }
-
-    @Override
     public boolean doSupportHBaseForHive() {
         return true;
     }

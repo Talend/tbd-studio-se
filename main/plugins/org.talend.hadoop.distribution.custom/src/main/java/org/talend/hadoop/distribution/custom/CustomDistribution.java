@@ -117,11 +117,6 @@ public class CustomDistribution extends AbstractDistribution implements HDFSComp
     }
 
     @Override
-    public boolean doSupportTezForPig() {
-        return true;
-    }
-
-    @Override
     public boolean doSupportImpersonation() {
         return true;
     }

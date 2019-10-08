@@ -71,8 +71,6 @@ public class EMR450Distribution extends AbstractDistribution implements HDFSComp
 
     public static final String VERSION_DISPLAY = "EMR 4.5.0 (Apache 2.7.2)"; //$NON-NLS-1$
 
-    public static final String PIG_EMR450_DISPLAY = "EMR 4.5.0 (Pig 0.14.0)";//$NON-NLS-1$
-
     public static final String SQOOP_EMR450_DISPLAY = "EMR 4.5.0 (Sqoop 1.4.6)"; //$NON-NLS-1$
 
     public static final String HIVE_EMR450_DISPLAY = "EMR 4.5.0 (Hive 1.0.0)"; //$NON-NLS-1$

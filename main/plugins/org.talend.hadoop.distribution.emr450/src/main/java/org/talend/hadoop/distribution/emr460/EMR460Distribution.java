@@ -35,8 +35,6 @@ public class EMR460Distribution extends EMR450Distribution implements HBaseCompo
     @SuppressWarnings("hiding")
     public static final String VERSION_DISPLAY = "EMR 4.6.0 (Apache 2.7.2)"; //$NON-NLS-1$
 
-    public static final String PIG_EMR460_DISPLAY = "EMR 4.6.0 (Pig 0.14.0)";//$NON-NLS-1$
-
     public static final String SQOOP_EMR460_DISPLAY = "EMR 4.6.0 (Sqoop 1.4.6)"; //$NON-NLS-1$
 
     public static final String HIVE_EMR460_DISPLAY = "EMR 4.6.0 (Hive 1.0.0)"; //$NON-NLS-1$

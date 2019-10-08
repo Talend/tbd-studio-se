@@ -75,8 +75,6 @@ public class EMR5150Distribution extends AbstractDistribution implements HBaseCo
 
     public static final String VERSION_DISPLAY = "EMR 5.15.0 (Hadoop 2.8.3)"; //$NON-NLS-1$
 
-    public static final String PIG_EMR5150_DISPLAY = "EMR 5.15.0 (Pig 0.17.0)";//$NON-NLS-1$
-
     public static final String SQOOP_EMR5150_DISPLAY = "EMR 5.15.0 (Sqoop 1.4.7)"; //$NON-NLS-1$
 
     public static final String HIVE_EMR5150_DISPLAY = "EMR 5.15.0 (Hive 2.3.2)"; //$NON-NLS-1$

@@ -38,8 +38,6 @@ public class Apache100Distribution extends AbstractDistribution implements HDFSC
 
     public static final String VERSION_DISPLAY = "Apache 1.0.0 - DEPRECATED";
 
-    public static final String VERSION_PIG_DISPLAY = "Apache 1.0.0 (Pig 0.9.2) - DEPRECATED";
-
     public static final String VERSION_HIVE_DISPLAY = "Apache 1.0.0 (Hive 0.9.0) - DEPRECATED";
 
     private static Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;

@@ -72,8 +72,6 @@ public class EMR500Distribution extends AbstractDistribution implements HBaseCom
 
     public static final String VERSION_DISPLAY = "EMR 5.0.0 (Apache 2.7.2)"; //$NON-NLS-1$
 
-    public static final String PIG_EMR500_DISPLAY = "EMR 5.0.0 (Pig 0.16.0)";//$NON-NLS-1$
-
     public static final String SQOOP_EMR500_DISPLAY = "EMR 5.0.0 (Sqoop 1.4.6)"; //$NON-NLS-1$
 
     public static final String HIVE_EMR500_DISPLAY = "EMR 5.0.0 (Hive 2.1.0)"; //$NON-NLS-1$

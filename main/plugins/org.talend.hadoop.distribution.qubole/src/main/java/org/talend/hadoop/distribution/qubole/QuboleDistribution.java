@@ -41,7 +41,6 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
     public final static String VERSION = "Qubole cloud distribution";
     public static final String VERSION_DISPLAY = "Qubole cloud distribution";
     public static final String HIVE_VERSION = "Qubole Hadoop 2 (Hive 2.1.1 Beta)";
-    public static final String PIG_VERSION = "Qubole Hadoop 2";
     public static final String SPARK_VERISON = "Qubole Spark";
 
     private Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
