@@ -7,6 +7,6 @@
     <version>7.3.1-SNAPSHOT</version>
     <relativePath>../../../</relativePath>
   </parent>
-  <artifactId>org.talend.hadoop.distribution.hdinsight340</artifactId>
-  <packaging>eclipse-plugin</packaging>
+    <artifactId>org.talend.hadoop.distribution.hdinsight340</artifactId>
+    <packaging>eclipse-plugin</packaging>
 </project>

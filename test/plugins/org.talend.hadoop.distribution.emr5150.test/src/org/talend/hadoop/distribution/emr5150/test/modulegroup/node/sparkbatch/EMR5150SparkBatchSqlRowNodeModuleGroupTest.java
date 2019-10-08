@@ -12,18 +12,20 @@
 // ============================================================================
 package org.talend.hadoop.distribution.emr5150.test.modulegroup.node.sparkbatch;
 
-import static org.junit.Assert.*;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
+import org.junit.Ignore;
 import org.junit.Test;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.emr5150.EMR5150Constant;
 import org.talend.hadoop.distribution.emr5150.EMR5150Distribution;
 import org.talend.hadoop.distribution.emr5150.modulegroup.node.sparkbatch.EMR5150SparkBatchSqlRowHiveNodeModuleGroup;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import static org.junit.Assert.*;
+
+@Ignore
 public class EMR5150SparkBatchSqlRowNodeModuleGroupTest {
 
     @Test

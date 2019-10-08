@@ -12,11 +12,6 @@
 // ============================================================================
 package org.talend.hadoop.distribution.dynamic.template;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.talend.core.runtime.dynamic.DynamicFactory;
@@ -38,10 +33,15 @@ import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.dynamic.pref.cdh.DynamicCDHDistributionPreferenceFactory;
 import org.talend.repository.ProjectManager;
 
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 /**
  * DOC cmeng  class global comment. Detailled comment
  */
-public class AbstractDynamicDistributionTemplateTest {
+public abstract class AbstractDynamicDistributionTemplateTest {
 
     private static final String DISTRIBUTION = "DummyDistribution";
 

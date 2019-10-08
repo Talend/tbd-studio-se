@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Pig UDF Plug-in
+Bundle-SymbolicName: org.talend.repository.pigudf;singleton:=true
+Bundle-Version: 7.3.1.qualifier
+Bundle-Activator: org.talend.repository.pigudf.PigudfPlugin
+Bundle-Localization: plugin
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: .Talend SA.
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui,
+ org.eclipse.ui.ide,
+ org.eclipse.ui.navigator,
+ org.eclipse.core.expressions,
+ org.eclipse.jdt.core,
+ org.talend.core,
+ org.talend.core.runtime,
+ org.talend.core.repository,
+ org.talend.commons.ui,
+ org.talend.repository,
+ org.talend.repository.view,
+ org.talend.repository.view.di,
+ org.talend.metadata.managment.ui,
+ org.talend.designer.core,
+ org.apache.commons.lang,
+ org.talend.repository.items.importexport
+

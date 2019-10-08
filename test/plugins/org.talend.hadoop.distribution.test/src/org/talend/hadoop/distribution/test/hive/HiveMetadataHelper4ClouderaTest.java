@@ -12,13 +12,14 @@
 // ============================================================================
 package org.talend.hadoop.distribution.test.hive;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
+import org.junit.Test;
 import org.talend.core.runtime.hd.hive.HiveMetadataHelper;
 import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
 import org.talend.hadoop.distribution.test.TestUtils;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 /**
@@ -65,5 +66,11 @@ public class HiveMetadataHelper4ClouderaTest extends AbstractDistributionTest4Hi
                 .collect(Collectors.toList());
         return versionsFiltered.toArray(new String[0]);
     }
+
+    //this empty test is here to make tycho runner not failed on initialization
+    //because it does not found any test in the final class
+    @Test
+    public void emptyTest() {
+    }    
 
 }

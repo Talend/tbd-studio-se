@@ -9,4 +9,8 @@
   </parent>
   <artifactId>org.talend.designer.neo4j</artifactId>
   <packaging>eclipse-plugin</packaging>
+    <build>
+        <sourceDirectory>src</sourceDirectory>
+        <outputDirectory>bin</outputDirectory>
+    </build>
 </project>

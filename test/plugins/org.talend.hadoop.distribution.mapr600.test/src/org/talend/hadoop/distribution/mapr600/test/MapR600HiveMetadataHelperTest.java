@@ -12,14 +12,13 @@
 // ============================================================================
 package org.talend.hadoop.distribution.mapr600.test;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.mapr600.MapR600Distribution;
 import org.talend.hadoop.distribution.test.hive.AbstractVersionTest4HiveMetadataHelper;
 
-/**
- * DOC ggu class global comment. Detailled comment
- */
+@Ignore("does not run correctly on tycho: no distribution found")
 public class MapR600HiveMetadataHelperTest extends AbstractVersionTest4HiveMetadataHelper {
 
     @Override
