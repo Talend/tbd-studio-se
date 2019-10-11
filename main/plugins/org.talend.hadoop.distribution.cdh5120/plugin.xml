@@ -373,48 +373,42 @@
             context="plugin:org.talend.libraries.pig"
             id="datafu-1.2.0.jar"
             name="datafu-1.2.0.jar"
-            mvn_uri="mvn:org.talend.libraries/datafu-1.2.0/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/datafu-1.2.0.jar">
+            mvn_uri="mvn:org.talend.libraries/datafu-1.2.0/6.0.0">           
         </libraryNeeded>
 
         <libraryNeeded
             context="plugin:org.talend.libraries.pig"
             id="elephant-bird-core-4.9.jar"
             name="elephant-bird-core-4.9.jar"
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-core/4.9"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-core-4.9.jar">
+            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-core/4.9">            
         </libraryNeeded>
 
         <libraryNeeded
             context="plugin:org.talend.libraries.pig"
             id="elephant-bird-hadoop-compat-4.9.jar"
             name="elephant-bird-hadoop-compat-4.9.jar"
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-hadoop-compat/4.9"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-hadoop-compat-4.9.jar">
+            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-hadoop-compat/4.9">            
         </libraryNeeded>
 
         <libraryNeeded
             context="plugin:org.talend.libraries.pig"
             id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
             name="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
-            mvn_uri="mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-rcfile-4.9-patched-hive-1.x.jar">
+            mvn_uri="mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0">            
         </libraryNeeded>
 
         <libraryNeeded
             context="plugin:org.talend.libraries.pig"
             id="elephant-bird-pig-4.9.jar"
             name="elephant-bird-pig-4.9.jar"
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-pig/4.9"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-pig-4.9.jar">
+            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-pig/4.9">            
         </libraryNeeded>
 
         <libraryNeeded
             context="plugin:org.talend.libraries.pig"
             id="pigutil.jar"
             name="pigutil.jar"
-            mvn_uri="mvn:org.talend.libraries/pigutil/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/pigutil.jar">
+            mvn_uri="mvn:org.talend.libraries/pigutil/6.0.0">            
         </libraryNeeded>
 
         <libraryNeeded
