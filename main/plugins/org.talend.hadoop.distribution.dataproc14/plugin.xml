@@ -858,7 +858,7 @@
 			<library id="jackson-core-2.9.9" />
 			<library id="jackson-core-asl-1.9.14-TALEND" />
 			<library id="jackson-mapper-asl-1.9.14-TALEND" />
-            <library id="failureaccess-1.0.1.jar"/>
+			<library id="failureaccess-1.0.1.jar"/>
         </libraryNeededGroup>
 
         <!-- HDFS group -->
