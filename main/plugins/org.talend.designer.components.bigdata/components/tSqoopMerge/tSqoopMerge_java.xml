@@ -432,7 +432,6 @@
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/hadoop-conf-kerberos.jar"
 				REQUIRED="false"
 				REQUIRED_IF="((USE_KRB=='true') AND (USE_JAVAAPI=='true') AND DISTRIB[DISTRIBUTION, DB_VERSION].doSupportKerberos[] AND (DISTRIBUTION!='CUSTOM'))" />
-
 		</IMPORTS>
 	</CODEGENERATION>
 
