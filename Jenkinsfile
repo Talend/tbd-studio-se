@@ -26,8 +26,7 @@ pipeline {
     }
 
     stages {
-
-        stage('sanity check before build') {
+        stage('Sanity check') {
             steps {
                 container('python2') {
                     sh '''
