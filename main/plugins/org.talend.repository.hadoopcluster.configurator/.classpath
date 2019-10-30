@@ -16,6 +16,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/jsr250-api-1.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/logging-interceptor-2.7.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/okhttp-2.7.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/okio-1.6.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/swagger-annotations-1.5.15.jar"/>
 	<classpathentry kind="output" path="bin/"/>
 </classpath>
