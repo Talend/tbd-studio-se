@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.dbr540.test.modulegroup;
+package org.talend.hadoop.distribution.dbr550.test.modulegroup;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -21,18 +21,18 @@ import java.util.Set;
 
 import org.junit.Test;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
-import org.talend.hadoop.distribution.dbr540.DBR540Constant;
-import org.talend.hadoop.distribution.dbr540.modulegroup.DBR540HiveOnSparkModuleGroup;
+import org.talend.hadoop.distribution.dbr550.DBR550Constant;
+import org.talend.hadoop.distribution.dbr550.modulegroup.DBR550HiveOnSparkModuleGroup;
 
-public class DBR540HiveOnSparkModuleGroupTest {
+public class DBR550HiveOnSparkModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
         Map<String, String> results = new HashMap<>();
-        results.put(DBR540Constant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
+        results.put(DBR550Constant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
 
 
-        Set<DistributionModuleGroup> moduleGroups = DBR540HiveOnSparkModuleGroup.getModuleGroups();
+        Set<DistributionModuleGroup> moduleGroups = DBR550HiveOnSparkModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());
         moduleGroups.iterator();
         for (DistributionModuleGroup module : moduleGroups) {

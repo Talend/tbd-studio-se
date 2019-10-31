@@ -10,17 +10,17 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.dbr540.test;
+package org.talend.hadoop.distribution.dbr550.test;
 
 import org.talend.hadoop.distribution.component.HadoopComponent;
-import org.talend.hadoop.distribution.dbr540.DBR540Distribution;
+import org.talend.hadoop.distribution.dbr550.DBR550Distribution;
 import org.talend.hadoop.distribution.test.classloader.AbstractTest4ClassLoaderProvider;
 
-public class DBR540ClassLoaderTest extends AbstractTest4ClassLoaderProvider {
+public class DBR550ClassLoaderTest extends AbstractTest4ClassLoaderProvider {
 
     @Override
     protected Class<? extends HadoopComponent> getHadoopComponentClass() {
-        return DBR540Distribution.class;
+        return DBR550Distribution.class;
     }
 
 

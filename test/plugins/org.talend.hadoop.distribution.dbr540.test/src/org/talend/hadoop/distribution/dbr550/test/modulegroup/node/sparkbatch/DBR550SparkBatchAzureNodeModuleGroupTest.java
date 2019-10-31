@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.dbr540.test.modulegroup.node.sparkbatch;
+package org.talend.hadoop.distribution.dbr550.test.modulegroup.node.sparkbatch;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -21,22 +21,22 @@ import java.util.Set;
 
 import org.junit.Test;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
-import org.talend.hadoop.distribution.dbr540.DBR540Constant;
-import org.talend.hadoop.distribution.dbr540.DBR540Distribution;
-import org.talend.hadoop.distribution.dbr540.modulegroup.node.sparkbatch.DBR540SparkBatchAzureNodeModuleGroup;
+import org.talend.hadoop.distribution.dbr550.DBR550Constant;
+import org.talend.hadoop.distribution.dbr550.DBR550Distribution;
+import org.talend.hadoop.distribution.dbr550.modulegroup.node.sparkbatch.DBR550SparkBatchAzureNodeModuleGroup;
 
-public class DBR540SparkBatchAzureNodeModuleGroupTest {
+public class DBR550SparkBatchAzureNodeModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
         Map<String, String> results = new HashMap<>();
         results
-                .put(DBR540Constant.SPARK_AZURE_MRREQUIRED_MODULE_GROUP.getModuleName(),
-                        "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION=='DATABRICKS') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION=='Databricks_5_4')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+                .put(DBR550Constant.SPARK_AZURE_MRREQUIRED_MODULE_GROUP.getModuleName(),
+                        "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION=='DATABRICKS') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION=='Databricks_5_5')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
 
         Set<DistributionModuleGroup> moduleGroups =
-                DBR540SparkBatchAzureNodeModuleGroup.getModuleGroups(DBR540Distribution.DISTRIBUTION_NAME,
-                        DBR540Distribution.VERSION);
+                DBR550SparkBatchAzureNodeModuleGroup.getModuleGroups(DBR550Distribution.DISTRIBUTION_NAME,
+                        DBR550Distribution.VERSION);
         assertEquals(results.size(), moduleGroups.size());
 
         for (DistributionModuleGroup module : moduleGroups) {

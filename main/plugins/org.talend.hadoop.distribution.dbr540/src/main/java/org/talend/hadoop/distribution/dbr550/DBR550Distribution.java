@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.dbr540;
+package org.talend.hadoop.distribution.dbr550;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -30,18 +30,18 @@ import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.databricks.IDatabricksDistribution;
-import org.talend.hadoop.distribution.dbr540.modulegroup.DBR540HiveOnSparkModuleGroup;
-import org.talend.hadoop.distribution.dbr540.modulegroup.DBR540SparkBatchModuleGroup;
-import org.talend.hadoop.distribution.dbr540.modulegroup.DBR540SparkStreamingModuleGroup;
-import org.talend.hadoop.distribution.dbr540.modulegroup.node.sparkbatch.DBR540SparkBatchAzureNodeModuleGroup;
-import org.talend.hadoop.distribution.dbr540.modulegroup.node.sparkstreaming.DBR540SparkStreamingKinesisNodeModuleGroup;
+import org.talend.hadoop.distribution.dbr550.modulegroup.DBR550HiveOnSparkModuleGroup;
+import org.talend.hadoop.distribution.dbr550.modulegroup.DBR550SparkBatchModuleGroup;
+import org.talend.hadoop.distribution.dbr550.modulegroup.DBR550SparkStreamingModuleGroup;
+import org.talend.hadoop.distribution.dbr550.modulegroup.node.sparkbatch.DBR550SparkBatchAzureNodeModuleGroup;
+import org.talend.hadoop.distribution.dbr550.modulegroup.node.sparkstreaming.DBR550SparkStreamingKinesisNodeModuleGroup;
 
-public class DBR540Distribution extends AbstractDatabricksDistribution implements SparkBatchComponent,
+public class DBR550Distribution extends AbstractDatabricksDistribution implements SparkBatchComponent,
         SparkStreamingComponent, HiveOnSparkComponent, IDatabricksDistribution {
 
-    public final static String VERSION = "Databricks_5_4";
+    public final static String VERSION = "Databricks_5_5";
 
-    public static final String VERSION_DISPLAY = "5.4 (includes Apache Spark 2.4.3, Scala 2.11)";
+    public static final String VERSION_DISPLAY = "5.5 LTS (includes Apache Spark 2.4.3, Scala 2.11)";
 
     private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*"; //$NON-NLS-1$
 
@@ -53,7 +53,7 @@ public class DBR540Distribution extends AbstractDatabricksDistribution implement
 
     protected Map<ComponentType, String> customVersionDisplayNames;
 
-    public DBR540Distribution() {
+    public DBR550Distribution() {
         displayConditions = buildDisplayConditions();
         customVersionDisplayNames = buildCustomVersionDisplayNames();
         moduleGroups = buildModuleGroups();
@@ -71,9 +71,9 @@ public class DBR540Distribution extends AbstractDatabricksDistribution implement
 
     protected Map<ComponentType, Set<DistributionModuleGroup>> buildModuleGroups() {
         Map<ComponentType, Set<DistributionModuleGroup>> result = new HashMap<>();
-        result.put(ComponentType.SPARKBATCH, DBR540SparkBatchModuleGroup.getModuleGroups());
-        result.put(ComponentType.SPARKSTREAMING, DBR540SparkStreamingModuleGroup.getModuleGroups());
-        result.put(ComponentType.HIVEONSPARK, DBR540HiveOnSparkModuleGroup.getModuleGroups());
+        result.put(ComponentType.SPARKBATCH, DBR550SparkBatchModuleGroup.getModuleGroups());
+        result.put(ComponentType.SPARKSTREAMING, DBR550SparkStreamingModuleGroup.getModuleGroups());
+        result.put(ComponentType.HIVEONSPARK, DBR550HiveOnSparkModuleGroup.getModuleGroups());
         return result;
     }
 
@@ -81,16 +81,16 @@ public class DBR540Distribution extends AbstractDatabricksDistribution implement
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
         // Azure
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
-                SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT), DBR540SparkBatchAzureNodeModuleGroup
+                SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT), DBR550SparkBatchAzureNodeModuleGroup
                 .getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), DBR540SparkBatchAzureNodeModuleGroup
+                SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT), DBR550SparkBatchAzureNodeModuleGroup
                 .getModuleGroups(distribution, version));
 
         // Kinesis
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT), DBR540SparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_COMPONENT), DBR540SparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_AVRO_COMPONENT), DBR540SparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT), DBR550SparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_COMPONENT), DBR550SparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_AVRO_COMPONENT), DBR550SparkStreamingKinesisNodeModuleGroup.getKinesisModuleGroups(distribution, version, null));
         return result;
 
     }
@@ -239,7 +239,7 @@ public class DBR540Distribution extends AbstractDatabricksDistribution implement
 
     @Override
     public String getTransientClusterSparkVersion() {
-        return "5.4.x-scala2.11";
+        return "5.5.x-scala2.11";
     }
     
     @Override

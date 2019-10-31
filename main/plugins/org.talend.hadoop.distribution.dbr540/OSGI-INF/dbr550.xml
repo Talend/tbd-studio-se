@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<component name="DBR540Distribution">
-  <implementation class="org.talend.hadoop.distribution.dbr540.DBR540Distribution"/>
+<component name="DBR550Distribution">
+  <implementation class="org.talend.hadoop.distribution.dbr550.DBR550Distribution"/>
   <service>
     <provide interface="org.talend.hadoop.distribution.component.HadoopComponent"/>
     <provide interface="org.talend.hadoop.distribution.component.HiveOnSparkComponent"/>

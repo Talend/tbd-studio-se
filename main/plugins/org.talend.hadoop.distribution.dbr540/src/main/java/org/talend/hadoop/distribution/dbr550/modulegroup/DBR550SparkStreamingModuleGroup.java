@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.dbr540.modulegroup;
+package org.talend.hadoop.distribution.dbr550.modulegroup;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,9 +21,9 @@ import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
-import org.talend.hadoop.distribution.dbr540.DBR540Constant;
+import org.talend.hadoop.distribution.dbr550.DBR550Constant;
 
-public class DBR540SparkStreamingModuleGroup {
+public class DBR550SparkStreamingModuleGroup {
 
     private final static ComponentCondition condition = new SimpleComponentCondition(new BasicExpression(
             SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false")); //$NON-NLS-1$
@@ -31,10 +31,10 @@ public class DBR540SparkStreamingModuleGroup {
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         //hs.add(new DistributionModuleGroup(DatabricksConstant.HDFS_MODULE_GROUP.getModuleName(), false, condition));
-        hs.add(new DistributionModuleGroup(DBR540Constant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
-        hs.add(new DistributionModuleGroup(DBR540Constant.SPARK_STREAMING_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
-        hs.add(new DistributionModuleGroup(DBR540Constant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), true, condition));
-        hs.add(new DistributionModuleGroup(DBR540Constant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
+        hs.add(new DistributionModuleGroup(DBR550Constant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
+        hs.add(new DistributionModuleGroup(DBR550Constant.SPARK_STREAMING_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
+        hs.add(new DistributionModuleGroup(DBR550Constant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), true, condition));
+        hs.add(new DistributionModuleGroup(DBR550Constant.SPARK_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(), true, condition));
         return hs;
     }
 }

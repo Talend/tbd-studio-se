@@ -10,7 +10,7 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.dbr540.modulegroup.node.sparkbatch;
+package org.talend.hadoop.distribution.dbr550.modulegroup.node.sparkbatch;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,14 +18,14 @@ import java.util.Set;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.common.SparkBatchLinkedNodeCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
-import org.talend.hadoop.distribution.dbr540.DBR540Constant;
+import org.talend.hadoop.distribution.dbr550.DBR550Constant;
 
-public class DBR540SparkBatchAzureNodeModuleGroup {
+public class DBR550SparkBatchAzureNodeModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         DistributionModuleGroup dmg = new DistributionModuleGroup(
-                DBR540Constant.SPARK_AZURE_MRREQUIRED_MODULE_GROUP.getModuleName(), true,
+                DBR550Constant.SPARK_AZURE_MRREQUIRED_MODULE_GROUP.getModuleName(), true,
                 new SparkBatchLinkedNodeCondition(distribution, version,
                         SparkBatchConstant.SPARK_BATCH_AZURE_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition());
         hs.add(dmg);
