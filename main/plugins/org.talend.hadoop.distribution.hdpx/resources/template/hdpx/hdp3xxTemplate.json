@@ -59,6 +59,13 @@
           "groupId": "ch.qos.logback",
           "artifactId": "*",
           "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
         }
       ]
     },
@@ -133,6 +140,13 @@
           "classifier": "",
           "extension": "",
           "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
         }
       ]
     },
@@ -207,6 +221,13 @@
           "classifier": "",
           "extension": "",
           "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
         }
       ]
     },
@@ -1844,6 +1865,48 @@
       "classifier": "",
       "description": "",
       "exclusions": [
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
       ]
     },
     {
@@ -1999,6 +2062,48 @@
       "classifier": "",
       "description": "",
       "exclusions": [
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }      
       ]
     },
     {
@@ -2010,13 +2115,6 @@
       "classifier": "",
       "description": "",
       "exclusions": [
-        {
-          "groupId": "org.slf4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": ""
-        },
         {
           "groupId": "org.slf4j",
           "artifactId": "*",
@@ -2071,13 +2169,6 @@
       "classifier": "",
       "description": "",
       "exclusions": [
-        {
-          "groupId": "org.slf4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": ""
-        },
         {
           "groupId": "org.slf4j",
           "artifactId": "*",
@@ -2298,13 +2389,6 @@
           "artifactId": "*",
           "classifier": "",
           "extension": "",
-          "description": ""
-        },
-        {
-          "groupId": "org.slf4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
           "description": "remove any slf4j implementation"
         },
         {
@@ -2391,13 +2475,6 @@
       "artifactId": "avatica",
       "description": "",
       "exclusions": [
-        {
-          "groupId": "org.slf4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": ""
-        },
         {
           "groupId": "org.slf4j",
           "artifactId": "*",
