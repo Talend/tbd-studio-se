@@ -17,6 +17,16 @@
   ],
   "modules": [
     {
+      "id": "org-slf4j-log4j12",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.slf4j",
+      "artifactId": "slf4j-log4j12",
+      "version": "1.7.28",
+      "classifier": "",
+      "description": ""
+    },   
+    {
       "id": "commons-lang3-3.6",
       "type": "BASE",
       "context": "{properties.context}",
@@ -122,13 +132,6 @@
         },
         {
           "groupId": "apache-logging",
-          "artifactId": "commons-logging",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any commons-logging implementation."
-        },
-        {
-          "groupId": "commons-logging",
           "artifactId": "commons-logging",
           "classifier": "",
           "extension": "",
@@ -2537,6 +2540,7 @@
       "modules": [
         "commons-lang3-3.6",
         "hadoop-client",
+        "org-slf4j-log4j12",
         "avro-mapred-1.8.2",
         "hadoop-aws"
       ]
@@ -2564,6 +2568,7 @@
       "description": "",
       "modules": [
         "hadoop-client",
+        "org-slf4j-log4j12",
         "avro-mapred-1.8.2"
       ]
     },
