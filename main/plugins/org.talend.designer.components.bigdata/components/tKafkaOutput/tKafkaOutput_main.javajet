@@ -27,13 +27,14 @@ final String cid = node.getUniqueName();
 
 final boolean dieOnError = "true".equals(ElementParameterParser.getValue(node, "__DIE_ON_ERROR__"));
 final boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
-final boolean isHeaderEnabled = ("KAFKA_2_2_1").equals(ElementParameterParser.getValue(node, "__KAFKA_VERSION__")) || ("KAFKA_1_1_0").equals(ElementParameterParser.getValue(node, "__KAFKA_VERSION__"));
+final boolean isHeaderEnabled = ("true").equals(ElementParameterParser.getValue(node, "__HEADERS__"));
+final boolean isKafkaVersionSupportHeaders = ("KAFKA_2_2_1").equals(ElementParameterParser.getValue(node, "__KAFKA_VERSION__")) || ("KAFKA_1_1_0").equals(ElementParameterParser.getValue(node, "__KAFKA_VERSION__"));
 
 
 %>
 org.apache.kafka.clients.producer.ProducerRecord<byte[], byte[]> record = new org.apache.kafka.clients.producer.ProducerRecord<byte[], byte[]>(<%=tKafkaOutputUtil.getKafkaTopic()%>, <%=tKafkaOutputUtil.getIncomingConnection().getName()%>.<%=tKafkaOutputUtil.getIncomingColumnName()%>);
 <%
-        if(isHeaderEnabled){
+        if(isHeaderEnabled && isKafkaVersionSupportHeaders){
         List<Map<String, String>> headers = (List<Map<String, String>>) ElementParameterParser
                 .getObjectValue(node, "__KAFKA_HEADERS_PROPERTIES__");
 
