@@ -41,7 +41,14 @@ org.apache.kafka.clients.producer.ProducerRecord<byte[], byte[]> record = new or
             if(headers != null) {
 	            for (Map<String, String> header : headers) {
 %>
-  		            record.headers().add(<%=header.get("KEY")%>, <%=header.get("VALUE")%>.getBytes());
+                    //<%=header.get("VALUE")%>
+  		            record.headers().add(<%=header.get("KEY")%>, 
+                    <%if (header.get("VALUE").equals("null")) {%> 
+                        (byte[]) null
+                    <%} else {%> 
+                        <%=header.get("VALUE")%>.getBytes()
+                    <%}%>
+                    );
 <%
 	            }
             }
