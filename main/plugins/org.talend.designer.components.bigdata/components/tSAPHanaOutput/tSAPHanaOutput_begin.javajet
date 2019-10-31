@@ -39,6 +39,7 @@ boolean useBatchSize = ("true").equals(ElementParameterParser.getValue(node,"__U
 String batchSize=ElementParameterParser.getValue(node,"__BATCH_SIZE__");
 String dbproperties = ElementParameterParser.getValue(node, "__PROPERTIES__");
 boolean useAlternateSchema = "true".equals(ElementParameterParser.getValue(node, "__USE_ALTERNATE_SCHEMA__"));
+String alternateSchema = ElementParameterParser.getValue(node,"__ALTERNATE_SCHEMA__");
 
 tableSchema = tableSchema.trim();
 boolean schemaIsSet = !"\"\"".equals(tableSchema) && !"".equals(tableSchema);
@@ -117,7 +118,7 @@ if(useExistingConnection) {
 	String conn = "conn_" + connection;
 	if(useAlternateSchema) {
 	%>
-	String dbschema_<%=cid%> = <%=tableSchema%>;
+	String dbschema_<%=cid%> = <%=alternateSchema%>;
 	<%
 	} else {
 		String schema = "dbschema_" + connection;
