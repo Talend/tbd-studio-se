@@ -2,6 +2,7 @@ import argparse
 import javaproperties
 import os
 import xml.etree.ElementTree as xml
+import sys
 
 COLOR_RED = '\033[1;31m'
 COLOR_YELLOW = '\033[1;33m'
@@ -84,6 +85,7 @@ def get_directories_on_filesystem(plugin_path, source_directory_in_pom, output_d
 
 
 def check_consistency(plugin_path):
+    result = 0
     source_directory_in_pom, output_directory_in_pom = get_directories_in_pom(plugin_path)
     source_directory_in_properties, output_directory_in_properties = get_directories_in_properties(plugin_path)
     source_directory_on_filesystem, output_directory_on_filesystem = get_directories_on_filesystem(plugin_path,
@@ -112,6 +114,8 @@ def check_consistency(plugin_path):
             source_directory_on_filesystem, source_directory_in_pom, source_directory_in_properties))
         print("ERROR : output  : system: %6s, pom: %6s, properties: %6s" % (
             output_directory_on_filesystem, output_directory_in_pom, output_directory_in_properties))
+        result = 1
+    return result
 
 
 def sanity_check(directories):
@@ -128,8 +132,10 @@ def sanity_check(directories):
         print("found %s plugins" % yellow(nb_plugins))
     else:
         print("found %s plugins" % red(nb_plugins))
+    errors = 0
     for plugin_path in plugins:
-        check_consistency(plugin_path)
+        errors += check_consistency(plugin_path)
+    return errors
 
 
 if __name__ == '__main__':
@@ -137,7 +143,11 @@ if __name__ == '__main__':
         description='check consistency between directory structure, pom.xml and build.properties')
     parser.add_argument('-d', '--directories', dest='directories', type=str,
                         help='list of directory where plugins are located',
-                        default='../main/plugins:../test/plugins')
+                        default='main/plugins:test/plugins')
     args = parser.parse_args()
     plugin_directories = args.directories.split(':')
-    sanity_check(plugin_directories)
+    nb_errors = sanity_check(plugin_directories)
+    if nb_errors != 0:
+        print("%sProject is not correctly configured (%s %s found).%s" % (
+            COLOR_RED, nb_errors, 'error' if nb_errors == 1 else 'errors', END_COLOR))
+    sys.exit(nb_errors)
