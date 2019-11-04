@@ -73,11 +73,7 @@ public abstract class AbstractDynamicCDHDistributionPreference extends AbstractD
 
     @Override
     protected String getPrefDefaultPassword() {
-        if (PREF_PASSWORD_DEFAULT != null && !PREF_PASSWORD_DEFAULT.isEmpty()) {
-            return getCryptoHelper().decrypt(PREF_PASSWORD_DEFAULT);
-        } else {
-            return PREF_PASSWORD_DEFAULT;
-        }
+        return PREF_PASSWORD_DEFAULT;
     }
 
 }
