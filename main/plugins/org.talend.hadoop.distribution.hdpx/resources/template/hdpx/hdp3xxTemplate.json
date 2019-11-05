@@ -2551,7 +2551,8 @@
       "modules": [
         "hive-exec",
         "hive-jdbc",
-        "avro-mapred-1.8.2"
+        "avro-mapred-1.8.2",
+        "avatica"
       ]
     },
     {
@@ -2560,7 +2561,8 @@
       "modules": [
         "hadoop-client",
         "hbase-client",
-        "avro-mapred-1.8.2"
+        "avro-mapred-1.8.2",
+        "avatica"
       ]
     },
     {
