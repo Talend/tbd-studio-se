@@ -114,21 +114,42 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${project.basedir}/lib</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.8</version>
                 <executions>
                     <execution>
-                        <id>copy-maven-repository</id>
+                        <id>copy-dependencies</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
                             <outputDirectory>${project.basedir}/lib</outputDirectory>
+                            <includeGroupIds>
+                                org.apache.geronimo.specs,javax.annotation,com.cloudera.api.swagger,io.swagger,com.google,com.squareup.okhttp,com.squareup.okio,joda-time,com.sun.xml.bind,com.fasterxml.jackson,org.jetbrains,org.hamcrest
+                            </includeGroupIds>
+
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
+        <sourceDirectory>src</sourceDirectory>
+        <outputDirectory>bin</outputDirectory>
     </build>
 </project>

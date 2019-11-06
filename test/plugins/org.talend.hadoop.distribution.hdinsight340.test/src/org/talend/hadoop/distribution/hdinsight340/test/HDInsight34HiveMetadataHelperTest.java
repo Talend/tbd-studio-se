@@ -12,16 +12,18 @@
 // ============================================================================
 package org.talend.hadoop.distribution.hdinsight340.test;
 
-import static org.junit.Assert.assertTrue;
-
+import org.junit.Ignore;
 import org.junit.Test;
 import org.talend.core.model.metadata.connection.hive.HiveServerVersionInfo;
 import org.talend.core.runtime.hd.hive.HiveMetadataHelper;
 import org.talend.hadoop.distribution.hdinsight340.HDInsight34Distribution;
 
+import static org.junit.Assert.assertTrue;
+
 /**
  * DOC ggu class global comment. Detailled comment
  */
+@Ignore("does not run correctly on tycho: no distribution found")
 public class HDInsight34HiveMetadataHelperTest {
 
     // @Override

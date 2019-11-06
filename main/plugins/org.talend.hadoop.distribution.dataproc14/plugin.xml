@@ -1,0 +1,1018 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+    <extension point="org.talend.core.runtime.librariesNeeded">
+        
+		<!-- Big Data launcher libraries -->
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="talend-bigdata-launcher"
+            name="talend-bigdata-launcher-platform-1.4.0.jar"
+            mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-platform/1.4.0">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-api-services-storage-v1-rev20181109-1.27.0.jar"
+		    name="google-api-services-storage-v1-rev20181109-1.27.0.jar"
+		    mvn_uri="mvn:com.google.apis/google-api-services-storage/v1-rev20181109-1.27.0">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="guava-27.0.1-jre"
+		    name="guava-27.0.1-jre.jar"
+		    mvn_uri="mvn:com.google.guava/guava/27.0.1-jre">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-api-client-1.27.0"
+		    name="google-api-client-1.27.0.jar"
+		    mvn_uri="mvn:com.google.api-client/google-api-client/1.27.0">
+        </libraryNeeded>
+		<libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-http-client-jackson2-1.27.0"
+		    name="google-http-client-jackson2-1.27.0.jar"
+		    mvn_uri="mvn:com.google.http-client/google-http-client-jackson2/1.27.0">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-http-client-1.27.0"
+		    name="google-http-client-1.27.0.jar"
+		    mvn_uri="mvn:com.google.http-client/google-http-client/1.27.0">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-oauth-client-1.27.0"
+		    name="google-oauth-client-1.27.0.jar"
+		    mvn_uri="mvn:com.google.oauth-client/google-oauth-client/1.27.0">
+        </libraryNeeded>
+        
+        <!-- 1.62.0 -->
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-cloud-storage-1.73.0"
+		    name="google-cloud-storage-1.73.0.jar"
+		    mvn_uri="mvn:com.google.cloud/google-cloud-storage/1.73.0">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-cloud-core-1.73.0"
+		    name="google-cloud-core-1.73.0.jar"
+		    mvn_uri="mvn:com.google.cloud/google-cloud-core/1.73.0">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-cloud-core-http-1.73.0"
+		    name="google-cloud-core-http-1.73.0.jar"
+		    mvn_uri="mvn:com.google.cloud/google-cloud-core-http/1.73.0">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-http-client-apache-2.1.0.jar"
+		    name="google-http-client-apache-2.1.0.jar"
+		    mvn_uri="mvn:com.google.http-client/google-http-client-apache/2.1.0">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="gax"
+		    name="gax-1.47.1.jar"
+		    mvn_uri="mvn:com.google.api/gax/1.47.1">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="gax-httpjson"
+		    name="gax-httpjson-0.64.1.jar"
+		    mvn_uri="mvn:com.google.api/gax-httpjson/0.64.1">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="threetenbp"
+		    name="threetenbp-1.3.3.jar"
+		    mvn_uri="mvn:org.threeten/threetenbp/1.3.3">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-api-services-dataproc"
+		    name="google-api-services-dataproc-v1-rev132-1.25.0.jar"
+		    mvn_uri="mvn:com.google.apis/google-api-services-dataproc/v1-rev132-1.25.0">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="api-common"
+		    name="api-common-1.8.1.jar"
+		    mvn_uri="mvn:com.google.api/api-common/1.8.1">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-auth-library-oauth2-http"
+		    name="google-auth-library-oauth2-http-0.16.2.jar"
+		    mvn_uri="mvn:com.google.auth/google-auth-library-oauth2-http/0.16.2">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="google-auth-library-credentials"
+            name="google-auth-library-credentials-0.16.2.jar"
+            mvn_uri="mvn:com.google.auth/google-auth-library-credentials/0.16.2">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-api-client-appengine-1.30.2"
+		    name="google-api-client-appengine-1.30.2.jar"
+		    mvn_uri="mvn:com.google.api-client/google-api-client-appengine/1.30.2">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-api-client-servlet-1.30.2"
+		    name="google-api-client-servlet-1.30.2.jar"
+		    mvn_uri="mvn:com.google.api-client/google-api-client-servlet/1.30.2">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-api-client-gson-1.30.2"
+		    name="google-api-client-gson-1.30.2.jar"
+		    mvn_uri="mvn:com.google.api-client/google-api-client-gson/1.30.2">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-api-client-jackson2-1.30.2"
+		    name="google-api-client-jackson2-1.30.2.jar"
+		    mvn_uri="mvn:com.google.api-client/google-api-client-jackson2/1.30.2">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-api-client-java6-1.30.2"
+		    name="google-api-client-java6-1.30.2.jar"
+		    mvn_uri="mvn:com.google.api-client/google-api-client-java6/1.30.2">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-api-client-protobuf-1.30.2"
+		    name="google-api-client-protobuf-1.30.2.jar"
+		    mvn_uri="mvn:com.google.api-client/google-api-client-protobuf/1.30.2">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-api-client-xml-1.30.2"
+		    name="google-api-client-xml-1.30.2.jar"
+		    mvn_uri="mvn:com.google.api-client/google-api-client-xml/1.30.2">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="animal-sniffer-annotations-1.14.jar"
+		    name="animal-sniffer-annotations-1.14.jar"
+		    mvn_uri="mvn:org.codehaus.mojo/animal-sniffer-annotations/1.14">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="checker-compat-qual-2.5.2.jar"
+		    name="checker-compat-qual-2.5.2.jar"
+		    mvn_uri="mvn:org.checkerframework/checker-compat-qual/2.5.2">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="commons-codec-1.11"
+            name="commons-codec-1.11.jar"
+            mvn_uri="mvn:commons-codec/commons-codec/1.11">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="commons-logging-1.2"
+            name="commons-logging-1.2.jar"
+            mvn_uri="mvn:commons-logging/commons-logging/1.2">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="error_prone_annotations-2.1.3.jar"
+            name="error_prone_annotations-2.1.3.jar"
+            mvn_uri="mvn:com.google.errorprone/error_prone_annotations/2.1.3">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-http-client-appengine-1.30.2"
+		    name="google-http-client-appengine-1.30.2.jar"
+		    mvn_uri="mvn:com.google.http-client/google-http-client-appengine/1.30.2">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-http-client-gson-1.30.2.jar"
+		    name="google-http-client-gson-1.30.2.jar"
+		    mvn_uri="mvn:com.google.http-client/google-http-client-gson/1.30.2">
+        </libraryNeeded>
+		<libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-http-client-protobuf-1.30.2.jar"
+		    name="google-http-client-protobuf-1.30.2.jar"
+		    mvn_uri="mvn:com.google.http-client/google-http-client-protobuf/1.30.2">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-oauth-client-appengine-1.30.1.jar"
+		    name="google-oauth-client-appengine-1.30.1.jar"
+		    mvn_uri="mvn:com.google.oauth-client/google-oauth-client-appengine/1.30.1">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-oauth-client-java6-1.30.1.jar"
+		    name="google-oauth-client-java6-1.30.1.jar"
+		    mvn_uri="mvn:com.google.oauth-client/google-oauth-client-java6/1.30.1">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-oauth-client-jetty-1.30.1.jar"
+		    name="google-oauth-client-jetty-1.30.1.jar"
+		    mvn_uri="mvn:com.google.oauth-client/google-oauth-client-jetty/1.30.1">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-oauth-client-servlet-1.30.1.jar"
+		    name="google-oauth-client-servlet-1.30.1.jar"
+		    mvn_uri="mvn:com.google.oauth-client/google-oauth-client-servlet/1.30.1">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="grpc-context-1.19.0.jar"
+		    name="grpc-context-1.19.0.jar"
+		    mvn_uri="mvn:io.grpc/grpc-context/1.19.0">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="gson-2.8.5.jar"
+		    name="gson-2.8.5.jar"
+		    mvn_uri="mvn:com.google.code.gson/gson/2.8.5">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="httpclient-4.5.9.jar"
+		    name="httpclient-4.5.9.jar"
+		    mvn_uri="mvn:org.apache.httpcomponents/httpclient/4.5.9">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="httpcore-4.4.11.jar"
+		    name="httpcore-4.4.11.jar"
+		    mvn_uri="mvn:org.apache.httpcomponents/httpcore/4.4.11">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="j2objc-annotations-1.3.jar"
+		    name="j2objc-annotations-1.3.jar"
+		    mvn_uri="mvn:com.google.j2objc/j2objc-annotations/1.3">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="jdo2-api-2.3-eb.jar"
+		    name="jdo2-api-2.3-eb.jar"
+		    mvn_uri="mvn:javax.jdo/jdo2-api/2.3-eb">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="jetty-6.1.26.jar"
+		    name="jetty-6.1.26.jar"
+		    mvn_uri="mvn:org.mortbay.jetty/jetty/6.1.26">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="jetty-util-6.1.26.jar"
+		    name="jetty-util-6.1.26.jar"
+		    mvn_uri="mvn:org.mortbay.jetty/jetty-util/6.1.26">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="jsr305-3.0.2.jar"
+		    name="jsr305-3.0.2.jar"
+		    mvn_uri="mvn:com.google.code.findbugs/jsr305/3.0.2">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="opencensus-api-0.21.0.jar"
+		    name="opencensus-api-0.21.0.jar"
+		    mvn_uri="mvn:io.opencensus/opencensus-api/0.21.0">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="opencensus-contrib-http-util-0.21.0.jar"
+		    name="opencensus-contrib-http-util-0.21.0.jar"
+		    mvn_uri="mvn:io.opencensus/opencensus-contrib-http-util/0.21.0">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="protobuf-java-3.6.1.jar"
+		    name="protobuf-java-3.6.1.jar"
+		    mvn_uri="mvn:com.google.protobuf/protobuf-java/3.6.1">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="transaction-api-1.1.jar"
+		    name="transaction-api-1.1.jar"
+		    mvn_uri="mvn:javax.transaction/transaction-api/1.1">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="xpp3-1.1.4c.jar"
+		    name="xpp3-1.1.4c.jar"
+		    mvn_uri="mvn:xpp3/xpp3/1.1.4c">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="google-cloud-datastore-1.83.0.jar"
+		    name="google-cloud-datastore-1.83.0.jar"
+		    mvn_uri="mvn:com.google.cloud/google-cloud-datastore/1.83.0">
+        </libraryNeeded>
+       
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="json-20170516"
+		    name="json-20170516.jar"
+		    mvn_uri="mvn:org.json/json/20170516">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="jackson-core-2.9.9"
+		    name="jackson-core-2.9.9.jar"
+		    mvn_uri="mvn:com.fasterxml.jackson.core/jackson-core/2.9.9">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="jackson-core-asl-1.9.14-TALEND"
+		    name="jackson-core-asl-1.9.14-TALEND.jar"
+		    mvn_uri="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND">
+        </libraryNeeded>
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="jackson-mapper-asl-1.9.14-TALEND"
+		    name="jackson-mapper-asl-1.9.14-TALEND.jar"
+		    mvn_uri="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND">
+        </libraryNeeded>
+
+        <!-- HDFS libraries -->    
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="hadoop-common-2.9.2.jar"
+            name="hadoop-common-2.9.2.jar"
+            mvn_uri="mvn:org.apache.hadoop/hadoop-common/2.9.2">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="hadoop-hdfs-2.9.2"
+            name="hadoop-hdfs-2.9.2.jar"
+            mvn_uri="mvn:org.apache.hadoop/hadoop-hdfs/2.9.2">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="hadoop-auth-2.9.2"
+            name="hadoop-auth-2.9.2.jar"
+            mvn_uri="mvn:org.apache.hadoop/hadoop-auth/2.9.2">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="snappy-java-1.1.7.3"
+            name="snappy-java-1.1.7.3.jar"
+            mvn_uri="mvn:org.xerial.snappy/snappy-java/1.1.7.3">
+        </libraryNeeded>
+        
+        <!-- Parquet -->
+ 
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="jodd-core-3.5.2"
+            name="jodd-core-3.5.2.jar"
+            mvn_uri="mvn:org.jodd/jodd-core/3.5.2">
+        </libraryNeeded> 	 
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="parquet-hadoop-bundle-1.6.0"
+            name="parquet-hadoop-bundle-1.6.0.jar"
+            mvn_uri="mvn:com.twitter/parquet-hadoop-bundle/1.6.0">
+        </libraryNeeded>
+                
+        <!-- GraphFrames libraries -->
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="graphframes-0.5.0-spark2.0-s_2.11"
+            name="graphframes-0.5.0-spark2.0-s_2.11.jar"
+            mvn_uri="mvn:org.talend.libraries/graphframes-0.5.0-spark2.0-s_2.11/6.0.0">
+		</libraryNeeded>
+		
+       <!-- Kafka libraries -->    
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="spark-streaming-kafka-dataproc14"
+            name="spark-streaming-kafka-0-10-assembly_2.11-2.4.3.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka-0-10-assembly_2.11-2.4.3/6.0.0">
+        </libraryNeeded>
+        
+         <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="kafka-clients-dataproc14"
+            name="kafka-clients-0.10.0.1.jar"
+            mvn_uri="mvn:org.talend.libraries/kafka-clients-0.10.0.1/6.3.0">
+        </libraryNeeded>
+            
+        <!-- SPARK libraries --> 
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="failureaccess-1.0.1.jar"
+            name="failureaccess-1.0.1.jar"
+            mvn_uri="mvn:com.google.guava/failureaccess/1.0.1">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="spark-catalyst-dataproc14"
+            name="spark-catalyst_2.11-2.4.3.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-catalyst_2.11-2.4.3/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="spark-core-dataproc14"
+            name="spark-core_2.11-2.4.3.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-core_2.11-2.4.3/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="spark-graphx-dataproc14"
+            name="spark-graphx_2.11-2.4.3.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-graphx_2.11-2.4.3/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="spark-hive-dataproc14"
+            name="spark-hive_2.11-2.4.3.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-hive_2.11-2.4.3/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="spark-launcher-dataproc14"
+            name="spark-launcher_2.11-2.4.3.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-launcher_2.11-2.4.3/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="spark-mllib-dataproc14"
+            name="spark-mllib_2.11-2.4.3.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-mllib_2.11-2.4.3/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="spark-mllib-local-dataproc14"
+            name="spark-mllib-local_2.11-2.4.3.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-mllib-local_2.11-2.4.3/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="spark-network-common-dataproc14"
+            name="spark-network-common_2.11-2.4.3.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-network-common_2.11-2.4.3/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="spark-network-shuffle-dataproc14"
+            name="spark-network-shuffle_2.11-2.4.3.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-network-shuffle_2.11-2.4.3/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="spark-repl-dataproc14"
+            name="spark-repl_2.11-2.4.3.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-repl_2.11-2.4.3/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="spark-sketch-dataproc14"
+            name="spark-sketch_2.11-2.4.3.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-sketch_2.11-2.4.3/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="spark-sql-dataproc14"
+            name="spark-sql_2.11-2.4.3.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-sql_2.11-2.4.3/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="spark-streaming-dataproc14"
+            name="spark-streaming_2.11-2.4.3.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-streaming_2.11-2.4.3/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="spark-tags-dataproc14"
+            name="spark-tags_2.11-2.4.3.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-tags_2.11-2.4.3/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="spark-unsafe-dataproc14"
+            name="spark-unsafe_2.11-2.4.3.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-unsafe_2.11-2.4.3/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="spark-yarn-dataproc14"
+            name="spark-yarn_2.11-2.4.3.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-yarn_2.11-2.4.3/6.0.0">
+        </libraryNeeded>
+        
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="kryo-shaded-4.0.2"
+            name="kryo-shaded-4.0.2.jar"
+            mvn_uri="mvn:com.esotericsoftware/kryo-shaded/4.0.2">
+        </libraryNeeded>
+        
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="scala-library-2.11.12.jar"
+            name="scala-library-2.11.12.jar"
+            mvn_uri="mvn:org.scala-lang/scala-library/2.11.12"/>
+            
+        <!-- Map/Reduce libraries -->
+            
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="hadoop-mapreduce-client-core-dataproc14"
+            name="hadoop-mapreduce-client-core-2.9.2.jar"
+            mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-core/2.9.2"/>
+            
+        <!-- Third parties libraries -->
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="avro-1.7.7"
+            name="avro-1.7.7.jar"
+            mvn_uri="mvn:org.apache.avro/avro/1.7.7">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="avro-mapred-1.8.2-hadoop2.jar"
+            name="avro-mapred-1.8.2-hadoop2.jar"
+            mvn_uri="mvn:org.apache.avro/avro-mapred/1.8.2-hadoop2">
+        </libraryNeeded><!--avro-mapred-1.7.7-->
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="slf4j-api-1.7.16"
+            name="slf4j-api-1.7.16.jar"
+            mvn_uri="mvn:org.codehouse.mojo/slf4j-api/1.7.16">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="jackson-core-asl-1.9.14-TALEND"
+            name="jackson-core-asl-1.9.14-TALEND.jar"
+            mvn_uri="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="jackson-mapper-asl-1.9.14-TALEND"
+            name="jackson-mapper-asl-1.9.14-TALEND.jar"
+            mvn_uri="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="commons-lang3-3.5"
+            name="commons-lang3-3.5.jar"
+            mvn_uri="mvn:org.apache.commons/commons-lang3/3.5">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="commons-lang-2.6"
+            name="commons-lang-2.6.jar"
+            mvn_uri="mvn:commons-lang/commons-lang/2.6">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="commons-configuration-1.6"
+            name="commons-configuration-1.6.jar"
+            mvn_uri="mvn:commons-configuration/commons-configuration/1.6">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="slf4j-log4j12-1.7.25"
+            name="slf4j-log4j12-1.7.25.jar"
+            mvn_uri="mvn:org.slf4j/slf4j-log4j12/1.7.25">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="commons-collections-3.2.2"
+            name="commons-collections-3.2.2.jar"
+            mvn_uri="mvn:commons-collections/commons-collections/3.2.2">
+        </libraryNeeded>
+
+		<!-- hive on spark -->
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="hive-exec-dataproc14"
+            name="hive-exec-2.3.4.jar"
+            mvn_uri="mvn:org.talend.libraries/hive-exec-2.3.4/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="hive-metastore-dataproc14"
+            name="hive-metastore-2.3.4.jar"
+            mvn_uri="mvn:org.talend.libraries/hive-metastore-2.3.4/6.0.0">
+        </libraryNeeded>
+
+		<!-- hive -->
+        <libraryNeeded
+		    context="plugin:org.talend.hadoop.distribution.dataproc14"
+		    id="libfb303-0.9.3"
+		    name="libfb303-0.9.3.jar"
+		    mvn_uri="mvn:org.talend.libraries/libfb303-0.9.3/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="hive-jdbc-dataproc14"
+            name="hive-jdbc-2.3.4.jar"
+            mvn_uri="mvn:org.talend.libraries/hive-jdbc-2.3.4/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="hive-service-dataproc14"
+            name="hive-service-2.3.4.jar"
+            mvn_uri="mvn:org.talend.libraries/hive-service-2.3.4/6.0.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="hive-service-rpc-dataproc14"
+            name="hive-service-rpc-2.3.4.jar"
+            mvn_uri="mvn:org.talend.libraries/hive-service-rpc-2.3.4/6.0.0">
+        </libraryNeeded>
+        
+        <!-- Groups -->
+        
+        <!-- Big Data launcher group -->
+        <libraryNeededGroup
+                description="Big Data launcher libraries for Dataproc 1.4"
+                id="BIGDATA-LAUNCHER-LIB-DATAPROC14"
+                name="BIGDATA-LAUNCHER-LIB-DATAPROC14"  >
+			<library id="talend-bigdata-launcher" />
+			<library id="google-auth-library-credentials" />
+			<library id="google-api-services-storage-v1-rev20181109-1.27.0.jar" />
+			<library id="google-api-services-dataproc" />
+			<library id="google-cloud-core-1.73.0" />
+			<library id="google-auth-library-oauth2-http" />
+			<library id="google-cloud-storage-1.73.0" />
+			<library id="gax" />
+			<library id="gax-httpjson" />
+			<library id="threetenbp" />
+			<library id="api-common" />
+			<library id="google-cloud-core-http-1.73.0" />
+
+			<library id="google-api-client-1.27.0" />
+			<library id="google-api-client-appengine-1.30.2" />
+			<library id="google-api-client-servlet-1.30.2" />
+			<library id="google-api-client-gson-1.30.2" />
+			<library id="google-api-client-jackson2-1.30.2" />
+			<library id="google-api-client-java6-1.30.2" />
+			<library id="google-api-client-protobuf-1.30.2" />
+			<library id="google-api-client-xml-1.30.2" />
+			<library id="animal-sniffer-annotations-1.14.jar" />
+			<library id="checker-compat-qual-2.5.2.jar" />
+			<library id="error_prone_annotations-2.1.3.jar" />
+			<library id="google-http-client-apache-2.1.0.jar" />
+			<library id="j2objc-annotations-1.3.jar" />
+			<library id="jdo2-api-2.3-eb.jar" />
+			<library id="jetty-6.1.26.jar" />
+			<library id="jetty-util-6.1.26.jar" />
+			<library id="jsr305-3.0.2.jar" />
+			<library id="opencensus-api-0.21.0.jar" />
+			<library id="opencensus-contrib-http-util-0.21.0.jar" />
+			<library id="protobuf-java-3.6.1.jar" />
+			<library id="transaction-api-1.1.jar" />
+			<library id="xpp3-1.1.4c.jar" />
+			
+			<library id="google-http-client-1.27.0" />
+			<library id="google-http-client-appengine-1.30.2" />
+			<library id="google-http-client-jackson-1.21.0" />
+			<library id="google-http-client-jackson2-1.27.0" />
+			<library id="google-oauth-client-1.27.0" />
+			<library id="google-oauth-client-appengine-1.30.1.jar" />
+			<library id="google-oauth-client-java6-1.30.1.jar" />
+			<library id="google-oauth-client-jetty-1.30.1.jar" />
+			<library id="google-oauth-client-servlet-1.30.1.jar" />
+			<library id="grpc-context-1.19.0.jar" />
+			<library id="gson-2.8.5.jar" />
+			<library id="google-http-client-gson-1.30.2.jar" />
+			<library id="google-http-client-protobuf-1.30.2.jar" />
+
+			<library id="json-20170516" />
+			<library id="guava-27.0.1-jre" />
+			<library id="jackson-core-2.9.9" />
+			<library id="jackson-core-asl-1.9.14-TALEND" />
+			<library id="jackson-mapper-asl-1.9.14-TALEND" />
+			<library id="commons-lang-2.6"/>
+        </libraryNeededGroup>
+        
+        <!-- tGoogleDataprocManage group -->
+        <libraryNeededGroup
+                description="tGoogleDataprocManage libraries for Dataproc 1.4"
+                id="GOOGLE-DATAPROC-MANAGE-LIB-DATAPROC14"
+                name="GOOGLE-DATAPROC-MANAGE-LIB-DATAPROC14"  >
+            <library id="talend-bigdata-launcher" />
+			<library id="google-auth-library-credentials" />
+			<library id="google-api-services-storage-v1-rev20181109-1.27.0.jar" />
+			<library id="google-api-services-dataproc" />
+			<library id="google-cloud-core-1.73.0" />
+			<library id="google-cloud-storage-1.73.0" />
+			<library id="gax" />
+			<library id="gax-httpjson" />
+			<library id="threetenbp" />
+			<library id="api-common" />
+			<library id="google-cloud-core-http-1.73.0" />
+
+			<library id="google-auth-library-oauth2-http" />
+            <library id="google-api-client-1.27.0" />
+            <library id="google-api-client-appengine-1.30.2" />
+            <library id="google-api-client-servlet-1.30.2" />
+			<library id="google-api-client-gson-1.30.2" />
+			<library id="google-api-client-jackson2-1.30.2" />
+			<library id="google-api-client-java6-1.30.2" />
+			<library id="google-api-client-protobuf-1.30.2" />
+			<library id="google-api-client-xml-1.30.2" />
+			<library id="animal-sniffer-annotations-1.14.jar" />
+			<library id="checker-compat-qual-2.5.2.jar" />
+			<library id="error_prone_annotations-2.1.3.jar" />
+			<library id="google-http-client-apache-2.1.0.jar" />
+			<library id="j2objc-annotations-1.3.jar" />
+			<library id="jdo2-api-2.3-eb.jar" />
+			<library id="jetty-6.1.26.jar" />
+			<library id="jetty-util-6.1.26.jar" />
+			<library id="jsr305-3.0.2.jar" />
+			<library id="opencensus-api-0.21.0.jar" />
+			<library id="opencensus-contrib-http-util-0.21.0.jar" />
+			<library id="protobuf-java-3.6.1.jar" />
+			<library id="transaction-api-1.1.jar" />
+			<library id="xpp3-1.1.4c.jar" />
+						
+            <library id="google-http-client-1.27.0" />
+            <library id="google-http-client-appengine-1.30.2" />
+			<library id="google-http-client-gson-1.30.2.jar" />
+            <library id="google-http-client-jackson2-1.27.0" />
+			<library id="google-http-client-protobuf-1.30.2.jar" />
+            <library id="google-oauth-client-1.27.0" />
+			<library id="google-oauth-client-appengine-1.30.1.jar" />
+			<library id="google-oauth-client-java6-1.30.1.jar" />
+			<library id="google-oauth-client-jetty-1.30.1.jar" />
+			<library id="google-oauth-client-servlet-1.30.1.jar" />
+			<library id="grpc-context-1.19.0.jar" />
+			<library id="gson-2.8.5.jar" />
+            <library id="json-20170516" />
+            <library id="guava-27.0.1-jre" />
+            <library id="jackson-core-2.9.9" />
+            <library id="jackson-core-asl-1.9.14-TALEND" />
+            <library id="jackson-mapper-asl-1.9.14-TALEND" />
+            <library id="commons-lang-2.6"/>
+        </libraryNeededGroup>
+
+        <!-- Hive group -->
+        <libraryNeededGroup
+                description="Hive libraries for Dataproc 1.1"
+                id="HIVE-LIB-DATAPROC14"
+                name="HIVE-LIB-DATAPROC14">
+	        <library id="jets3t-0.9.0.jar" />
+            <library id="hive-exec-dataproc14"/>
+            <library id="hive-metastore-dataproc14"/>
+            <library id="hive-jdbc-dataproc14"/>
+            <library id="hive-service-dataproc14"/>
+            <library id="hive-service-rpc-dataproc14"/>
+            <library id="libfb303-0.9.3"/>
+            <library id="httpcore-4.4.11.jar"/>
+            <library id="httpclient-4.5.9.jar"/>
+
+			<library id="talend-bigdata-launcher" />
+			<library id="google-auth-library-credentials" />
+			<library id="google-api-services-storage-v1-rev20181109-1.27.0.jar" />
+			<library id="google-api-services-dataproc" />
+			<library id="google-cloud-core-1.73.0" />
+			<library id="google-cloud-storage-1.73.0" />
+			<library id="google-auth-library-oauth2-http" />
+			<library id="gax" />
+			<library id="gax-httpjson" />
+			<library id="threetenbp" />
+			<library id="api-common" />
+			<library id="google-cloud-core-http-1.73.0" />
+
+			<library id="google-api-client-1.27.0" />
+			<library id="google-api-client-appengine-1.30.2" />
+			<library id="google-api-client-servlet-1.30.2" />
+			<library id="google-api-client-gson-1.30.2" />
+			<library id="google-api-client-jackson2-1.30.2" />
+			<library id="google-api-client-java6-1.30.2" />
+			<library id="google-api-client-protobuf-1.30.2" />
+			<library id="google-api-client-xml-1.30.2" />
+			<library id="animal-sniffer-annotations-1.14.jar" />
+			<library id="checker-compat-qual-2.5.2.jar" />
+			<library id="error_prone_annotations-2.1.3.jar" />
+			<library id="google-http-client-apache-2.1.0.jar" />
+			<library id="j2objc-annotations-1.3.jar" />
+			<library id="jdo2-api-2.3-eb.jar" />
+			<library id="jetty-6.1.26.jar" />
+			<library id="jetty-util-6.1.26.jar" />
+			<library id="jsr305-3.0.2.jar" />
+			<library id="opencensus-api-0.21.0.jar" />
+			<library id="opencensus-contrib-http-util-0.21.0.jar" />
+			<library id="protobuf-java-3.6.1.jar" />
+			<library id="transaction-api-1.1.jar" />
+			<library id="xpp3-1.1.4c.jar" />
+			
+			<library id="google-http-client-1.27.0" />
+			<library id="google-http-client-appengine-1.30.2" />
+			<library id="google-http-client-jackson2-1.27.0" />
+			<library id="google-oauth-client-1.27.0" />
+			<library id="google-oauth-client-appengine-1.30.1.jar" />
+			<library id="google-oauth-client-java6-1.30.1.jar" />
+			<library id="google-oauth-client-jetty-1.30.1.jar" />
+			<library id="google-oauth-client-servlet-1.30.1.jar" />
+			<library id="grpc-context-1.19.0.jar" />
+			<library id="gson-2.8.5.jar" />
+			<library id="google-http-client-gson-1.30.2.jar" />
+			<library id="google-http-client-protobuf-1.30.2.jar" />
+
+			<library id="json-20170516" />
+			<library id="guava-27.0.1-jre" />
+			<library id="jackson-core-2.9.9" />
+			<library id="jackson-core-asl-1.9.14-TALEND" />
+			<library id="jackson-mapper-asl-1.9.14-TALEND" />
+			<library id="failureaccess-1.0.1.jar"/>
+        </libraryNeededGroup>
+
+        <!-- HDFS group -->
+        <libraryNeededGroup
+                description="HDFS libraries for GOOGLE Dataproc 1.4"
+                id="HDFS-LIB-DATAPROC14"
+                name="HDFS-LIB-DATAPROC14"  >
+             <library id="hadoop-common-2.9.2.jar" />
+             <library id="hadoop-hdfs-2.9.2" />
+             <library id="hadoop-auth-dataproc14" />
+             <library id="avro-1.7.7"/>
+             <library id="slf4j-api-1.7.16" />
+             <library id="slf4j-log4j12-1.7.25" />
+             <library id="commons-logging-1.2" />
+             <library id="commons-lang3-3.5" />
+             <library id="commons-codec-1.11" />
+             <library id="commons-lang-2.6" />
+             <library id="commons-configuration-1.6" />
+             <library id="commons-collections-3.2.2" />
+             <library id="jackson-core-asl-1.9.14-TALEND" />
+             <library id="jackson-mapper-asl-1.9.14-TALEND" />
+             <library id="guava-27.0.1-jre" />
+        </libraryNeededGroup>
+
+        <!-- Map/Reduce group -->
+        <libraryNeededGroup
+                description="Map/Reduce libraries for GOOGLE Dataproc 1.4"
+                id="MAPREDUCE-LIB-DATAPROC14"
+                name="MAPREDUCE-LIB-DATAPROC14">
+            <library id="hadoop-mapreduce-client-core-dataproc14"/>
+        </libraryNeededGroup>
+        
+        <!-- Map/Reduce avro group MRREQUIRED-->
+        <libraryNeededGroup
+                description="Map/Reduce libraries for GOOGLE Dataproc 1.4 that are MRREQUIRED"
+                id="MAPREDUCE-AVRO-LIB-MRREQUIRED-DATAPROC14"
+                name="MAPREDUCE-AVRO-LIB-MRREQUIRED-DATAPROC14">
+            <library id="avro-mapred-1.8.2-hadoop2.jar"/>
+        </libraryNeededGroup>
+        
+         <!-- Spark2 group -->
+        <!-- All ids in this module group should imperatively equal to jar file names-->
+        <!-- No latest or shortcuts as the jars will be looked up at runtime to construct the real job classpath-->
+         <libraryNeededGroup
+                description="The latest Spark libraries for GOOGLE Dataproc 1.4"
+                id="SPARK2-LIB-DATAPROC14"
+                name="SPARK2-LIB-DATAPROC14">
+			 <library id="avro-mapred-1.8.2-hadoop2.jar"/>
+			 <library id="talend-bigdata-launcher" />
+			 <library id="scala-reflect-2.11.8.jar"/>
+             <library id="kryo-shaded-4.0.2"/>
+             <library id="failureaccess-1.0.1.jar"/>
+             
+             <library id="jodd-core-3.5.2"/>
+             <library id="scala-library-2.11.12.jar"/>
+             <library id="parquet-hadoop-bundle-1.6.0"/>
+                  
+             <library id="spark-catalyst-dataproc14"/>
+             <library id="spark-core-dataproc14"/>
+             <library id="spark-graphx-dataproc14"/>
+             <library id="spark-hive-dataproc14"/>
+             <library id="spark-launcher-dataproc14"/>
+             <library id="spark-mllib-dataproc14"/>
+             <library id="spark-mllib-local-dataproc14"/>
+             <library id="spark-network-common-dataproc14"/>
+             <library id="spark-network-shuffle-dataproc14"/>
+             <library id="spark-repl-dataproc14"/>
+             <library id="spark-sketch-dataproc14"/>
+             <library id="spark-sql-dataproc14"/>
+             <library id="spark-streaming-dataproc14"/>
+             <library id="spark-tags-dataproc14"/>
+             <library id="spark-unsafe-dataproc14"/>
+             <library id="spark-yarn-dataproc14"/>
+          </libraryNeededGroup>
+        
+        <!-- Spark group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark libraries for GOOGLE Dataproc 1.4 that are MRREQUIRED"
+                id="SPARK-LIB-MRREQUIRED-DATAPROC14"
+                name="SPARK-LIB-MRREQUIRED-DATAPROC14">
+             <library id="snappy-java-1.1.7.3"/>
+        </libraryNeededGroup>
+
+        <!-- Spark Hive group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Hive libraries for GOOGLE Dataproc 1.4 that are MRREQUIRED"
+                id="SPARK-HIVE-LIB-MRREQUIRED-DATAPROC14"
+                name="SPARK-HIVE-LIB-MRREQUIRED-DATAPROC14">
+            <library id="hive-exec-dataproc14"/>
+            <library id="hive-metastore-dataproc14"/>
+            <library id="libfb303-0.9.3"/>
+        </libraryNeededGroup>
+        
+        <!-- Spark Parquet group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark libraries for GOOGLE Dataproc 1.4 that are MRREQUIRED"
+                id="SPARK-PARQUET-LIB-MRREQUIRED-DATAPROC14"
+                name="SPARK-PARQUET-LIB-MRREQUIRED-DATAPROC14">
+             <library id="parquet-hadoop-bundle-1.6.0"/>
+             <library id="jodd-core-3.5.2"/>      
+        </libraryNeededGroup>
+        
+        <!-- Spark GraphFrames group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark libraries for GOOGLE Dataproc 1.4 that are MRREQUIRED"
+                id="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-DATAPROC14"
+                name="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-DATAPROC14">
+             <library id="graphframes-0.5.0-spark2.0-s_2.11"/>
+        </libraryNeededGroup>
+      
+         <!-- Spark Kafka group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Kafka assembly libraries for Dataproc 1.4 that are MRREQUIRED"
+                id="SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-DATAPROC14"
+                name="SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-DATAPROC14">
+            <library id="spark-streaming-kafka-dataproc14"/>
+        </libraryNeededGroup>
+        
+        <!-- Spark Kafka Avro group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Kafka Avro libraries for Dataproc 1.4 that are MRREQUIRED"
+                id="SPARK-KAFKA-AVRO-LIB-MRREQUIRED-DATAPROC14"
+                name="SPARK-KAFKA-AVRO-LIB-MRREQUIRED-DATAPROC14">
+            <library id="avro-1.7.7"/>
+            <library id="jackson-mapper-asl-1.9.14-TALEND" />
+            <library id="jackson-core-asl-1.9.14-TALEND" />
+        </libraryNeededGroup>
+        
+        <!-- Spark Kafka Client group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Kafka client libraries for Dataproc 1.4 that are MRREQUIRED"
+                id="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-DATAPROC14"
+                name="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-DATAPROC14">
+            <library id="kafka-clients-dataproc14"/>
+        </libraryNeededGroup>     
+
+    </extension>
+    <extension
+          point="org.talend.core.runtime.classloader_provider">
+      <classloader
+            index="HDFS:GOOGLE_CLOUD_DATAPROC:DATAPROC_1_4"
+            libraries="google-api-client-1.27.0.jar;google-api-client-appengine-1.30.2.jar;google-api-client-servlet-1.30.2.jar;opencensus-api-0.21.0.jar;xpp3-1.1.4c.jar;transaction-api-1.1.jar;protobuf-java-3.6.1.jar;opencensus-contrib-http-util-0.21.0.jar;jsr305-3.0.2.jar;jetty-util-6.1.26.jar;jetty-6.1.26.jar;jdo2-api-2.3-eb.jar;google-api-client-gson-1.30.2.jar;google-http-client-apache-2.1.0.jar;error_prone_annotations-2.1.3.jar;checker-compat-qual-2.5.2.jar;animal-sniffer-annotations-1.14.jar;j2objc-annotations-1.3.jar;google-api-client-xml-1.30.2.jar;google-api-client-protobuf-1.30.2.jar;google-api-client-java6-1.30.2.jar;google-api-client-jackson2-1.30.2.jar;google-http-client-1.27.0.jar;google-http-client-appengine-1.30.2.jar;google-http-client-gson-1.30.2.jar;google-http-client-protobuf-1.30.2.jar;gson-2.8.5.jar;grpc-context-1.19.0.jar;google-oauth-client-servlet-1.30.1.jar;google-http-client-jackson2-1.27.0.jar;google-oauth-client-jetty-1.30.1.jar;google-oauth-client-java6-1.30.1.jar;google-oauth-client-appengine-1.30.1.jar;google-oauth-client-1.27.0.jar;google-http-client-jackson-1.21.0.jar;jackson-core-2.9.9.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-mapper-asl-1.9.14-TALEND.jar;hadoop-common-2.9.2.jar;hadoop-hdfs-2.9.2.jar;hadoop-auth-2.7.3.jar;avro-1.7.7.jar;slf4j-api-1.7.16.jar;slf4j-log4j12-1.7.25.jar;commons-logging-1.2.jar;commons-lang3-3.5.jar;commons-codec-1.11.jar;commons-lang-2.6.jar;commons-configuration-1.6.jar;commons-collections-3.2.2.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-mapper-asl-1.9.14-TALEND.jar;guava-27.0.1-jre.jar;google-auth-library-credentials-0.16.2.jar;google-api-services-storage-v1-rev20181109-1.27.0.jar;google-cloud-core-1.73.0.jar;google-auth-library-oauth2-http-0.16.2.jar;google-cloud-storage-1.73.0.jar;gax-1.47.1.jar;threetenbp-1.3.3.jar;api-common-1.8.1.jar;google-cloud-core-http-1.73.0.jar;gax-httpjson-0.64.1.jar">
+      </classloader>
+      <classloader
+            index="HDFS:GOOGLE_CLOUD_DATAPROC:DATAPROC_1_4?USE_KRB"
+            libraries="google-api-client-1.27.0.jar;google-api-client-appengine-1.30.2.jar;google-api-client-servlet-1.30.2.jar;opencensus-api-0.21.0.jar;xpp3-1.1.4c.jar;transaction-api-1.1.jar;protobuf-java-3.6.1.jar;opencensus-contrib-http-util-0.21.0.jar;jsr305-3.0.2.jar;jetty-util-6.1.26.jar;jetty-6.1.26.jar;jdo2-api-2.3-eb.jar;google-api-client-gson-1.30.2.jar;google-http-client-apache-2.1.0.jar;error_prone_annotations-2.1.3.jar;checker-compat-qual-2.5.2.jar;animal-sniffer-annotations-1.14.jar;j2objc-annotations-1.3.jar;google-api-client-xml-1.30.2.jar;google-api-client-protobuf-1.30.2.jar;google-api-client-java6-1.30.2.jar;google-api-client-jackson2-1.30.2.jar;google-http-client-1.27.0.jar;google-http-client-appengine-1.30.2.jar;google-http-client-gson-1.30.2.jar;google-http-client-jackson-1.21.0.jar;google-http-client-protobuf-1.30.2.jar;google-http-client-jackson2-1.27.0.jar;gson-2.8.5.jar;grpc-context-1.19.0.jar;google-oauth-client-servlet-1.30.1.jar;google-oauth-client-jetty-1.30.1.jar;google-oauth-client-java6-1.30.1.jar;google-oauth-client-appengine-1.30.1.jar;google-oauth-client-1.27.0.jar;json-20170516.jar;guava-27.0.1-jre.jar;jackson-core-2.9.9.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-mapper-asl-1.9.14-TALEND.jar;hadoop-common-2.9.2.jar;hadoop-hdfs-2.9.2.jar;hadoop-auth-2.7.3.jar;avro-1.7.7.jar;slf4j-api-1.7.16.jar;slf4j-log4j12-1.7.25.jar;commons-logging-1.2.jar;commons-lang3-3.5.jar;commons-codec-1.11.jar;commons-lang-2.6.jar;commons-configuration-1.6.jar;commons-collections-3.2.2.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-mapper-asl-1.9.14-TALEND.jar;hadoop-conf-kerberos.jar;google-auth-library-credentials-0.16.2.jar;google-api-services-storage-v1-rev20181109-1.27.0.jar;google-cloud-core-1.73.0.jar;google-auth-library-oauth2-http-0.16.2.jar;google-cloud-storage-1.73.0.jar;gax-1.47.1.jar;threetenbp-1.3.3.jar;api-common-1.8.1.jar;google-cloud-core-http-1.73.0.jar;gax-httpjson-0.64.1.jar">
+      </classloader>
+      <classloader
+            index="HIVE:GOOGLE_CLOUD_DATAPROC:DATAPROC_1_4:STANDALONE"
+            libraries="avro-1.7.7.jar;commons-codec-1.11.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;opencensus-api-0.21.0.jar;xpp3-1.1.4c.jar;transaction-api-1.1.jar;protobuf-java-3.6.1.jar;opencensus-contrib-http-util-0.21.0.jar;jsr305-3.0.2.jar;jetty-util-6.1.26.jar;jetty-6.1.26.jar;jdo2-api-2.3-eb.jar;google-api-client-gson-1.30.2.jar;commons-lang-2.6.jar;commons-lang3-3.5.jar;commons-logging-1.2.jar;google-api-client-1.27.0.jar;google-api-client-appengine-1.30.2.jar;google-api-client-servlet-1.30.2.jar;google-http-client-apache-2.1.0.jar;error_prone_annotations-2.1.3.jar;checker-compat-qual-2.5.2.jar;animal-sniffer-annotations-1.14.jar;j2objc-annotations-1.3.jar;google-api-client-xml-1.30.2.jar;google-api-client-protobuf-1.30.2.jar;google-api-client-java6-1.30.2.jar;google-api-client-jackson2-1.30.2.jar;google-http-client-1.27.0.jar;google-http-client-gson-1.30.2.jar;google-http-client-appengine-1.30.2.jar;google-http-client-jackson-1.21.0.jar;google-http-client-protobuf-1.30.2.jar;google-http-client-jackson2-1.27.0.jar;gson-2.8.5.jar;grpc-context-1.19.0.jar;google-oauth-client-servlet-1.30.1.jar;google-oauth-client-jetty-1.30.1.jar;google-oauth-client-java6-1.30.1.jar;google-oauth-client-appengine-1.30.1.jar;google-oauth-client-1.27.0.jar;guava-27.0.1-jre.jar;hadoop-auth-2.7.3-dataproc14.jar;hadoop-common-2.9.2.jar;hadoop-hdfs-2.9.2.jar;hadoop-mapreduce-client-core-2.7.3-dataproc14.jar;hive-common-2.1.1-dataproc14.jar;hive-exec-2.1.1-dataproc14.jar;hive-jdbc-2.1.1-dataproc14.jar;hive-metastore-2.1.1-dataproc14.jar;hive-service-2.1.1-dataproc14.jar;hive-service-rpc-2.1.1-dataproc14.jar;httpclient-4.5.9.jar;httpcore-4.4.11.jar;jackson-core-2.9.9.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jets3t-0.9.0.jar;json-20170516.jar;libfb303-0.9.3.jar;slf4j-api-1.7.16.jar;slf4j-log4j12-1.7.25.jar;talend-bigdata-launcher.jar;libthrift-0.9.3.jar;log4j-1.2.17.jar;google-auth-library-credentials-0.16.2.jar;google-api-services-storage-v1-rev20181109-1.27.0.jar;google-cloud-core-1.73.0.jar;google-auth-library-oauth2-http-0.16.2.jar;google-cloud-storage-1.73.0.jar;gax-1.47.1.jar;threetenbp-1.3.3.jar;api-common-1.8.1.jar;google-cloud-core-http-1.73.0.jar;gax-httpjson-0.64.1.jar">
+      </classloader> 
+      <classloader
+            index="HIVE2:GOOGLE_CLOUD_DATAPROC:DATAPROC_1_4:STANDALONE"
+            libraries="avro-1.7.7.jar;commons-codec-1.11.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;opencensus-api-0.21.0.jar;xpp3-1.1.4c.jar;transaction-api-1.1.jar;protobuf-java-3.6.1.jar;opencensus-contrib-http-util-0.21.0.jar;jsr305-3.0.2.jar;jetty-util-6.1.26.jar;jetty-6.1.26.jar;jdo2-api-2.3-eb.jar;google-api-client-gson-1.30.2.jar;commons-lang-2.6.jar;commons-lang3-3.5.jar;commons-logging-1.2.jar;google-api-client-1.27.0.jar;google-api-client-appengine-1.30.2.jar;google-api-client-servlet-1.30.2.jar;google-http-client-apache-2.1.0.jar;error_prone_annotations-2.1.3.jar;checker-compat-qual-2.5.2.jar;animal-sniffer-annotations-1.14.jar;j2objc-annotations-1.3.jar;google-api-client-xml-1.30.2.jar;google-api-client-protobuf-1.30.2.jar;google-api-client-java6-1.30.2.jar;google-api-client-jackson2-1.30.2.jar;google-http-client-1.27.0.jar;google-http-client-appengine-1.30.2.jar;google-http-client-gson-1.30.2.jar;google-http-client-jackson-1.21.0.jar;google-http-client-protobuf-1.30.2.jar;google-http-client-jackson2-1.27.0.jar;gson-2.8.5.jar;grpc-context-1.19.0.jar;google-oauth-client-servlet-1.30.1.jar;google-oauth-client-jetty-1.30.1.jar;google-oauth-client-java6-1.30.1.jar;google-oauth-client-appengine-1.30.1.jar;google-oauth-client-1.27.0.jar;guava-27.0.1-jre.jar;hadoop-auth-2.7.3-dataproc14.jar;hadoop-common-2.9.2.jar;hadoop-hdfs-2.9.2.jar;hadoop-mapreduce-client-core-2.7.3-dataproc14.jar;hive-common-2.1.1-dataproc14.jar;hive-exec-2.1.1-dataproc14.jar;hive-jdbc-2.1.1-dataproc14.jar;hive-metastore-2.1.1-dataproc14.jar;hive-service-2.1.1-dataproc14.jar;hive-service-rpc-2.1.1-dataproc14.jar;httpclient-4.5.9.jar;httpcore-4.4.11.jar;jackson-core-2.9.9.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jets3t-0.9.0.jar;json-20170516.jar;libfb303-0.9.3.jar;slf4j-api-1.7.16.jar;slf4j-log4j12-1.7.25.jar;talend-bigdata-launcher.jar;libthrift-0.9.3.jar;log4j-1.2.17.jar;google-auth-library-credentials-0.16.2.jar;google-api-services-storage-v1-rev20181109-1.27.0.jar;google-cloud-core-1.73.0.jar;google-auth-library-oauth2-http-0.16.2.jar;google-cloud-storage-1.73.0.jar;gax-1.47.1.jar;threetenbp-1.3.3.jar;api-common-1.8.1.jar;google-cloud-core-http-1.73.0.jar;gax-httpjson-0.64.1.jar">
+      </classloader>    
+    </extension>
+</plugin>
