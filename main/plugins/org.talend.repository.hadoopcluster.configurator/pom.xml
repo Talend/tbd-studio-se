@@ -140,9 +140,8 @@
                         </goals>
                         <configuration>
                             <outputDirectory>${project.basedir}/lib</outputDirectory>
-
                             <includeGroupIds>
-                                org.apache.geronimo.specs,javax.annotation,com.cloudera.api.swagger,io.swagger,com.google,com.squareup.okhttp,joda-time,com.sun.xml.bind,com.fasterxml.jackson,org.jetbrains,org.hamcrest
+                                org.apache.geronimo.specs,javax.annotation,com.cloudera.api.swagger,io.swagger,com.google,com.squareup.okhttp,com.squareup.okio,joda-time,com.sun.xml.bind,com.fasterxml.jackson,org.jetbrains,org.hamcrest
                             </includeGroupIds>
 
                         </configuration>

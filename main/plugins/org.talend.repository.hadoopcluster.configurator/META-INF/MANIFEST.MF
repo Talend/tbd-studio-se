@@ -18,6 +18,7 @@ Bundle-ClassPath: .,
  lib/jsr250-api-1.0.jar,
  lib/logging-interceptor-2.7.5.jar,
  lib/okhttp-2.7.5.jar,
+ lib/okio-1.6.0.jar,
  lib/swagger-annotations-1.5.15.jar
 Export-Package: org.talend.repository.hadoopcluster.configurator
 Require-Bundle: org.talend.libraries.apache.cxf,
