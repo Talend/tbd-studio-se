@@ -1565,10 +1565,17 @@
       "context": "{properties.context}",
       "groupId": "org.apache.spark",
       "artifactId": "spark-streaming-kinesis-asl_2.11",
-      "version": "2.1.0",
+      "version": "2.3.2",
       "classifier": "",
       "description": "",
       "exclusions": [
+        {
+          "groupId": "org.apache.spark",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
         {
           "groupId": "org.mortbay.jetty",
           "artifactId": "*",
@@ -2051,60 +2058,6 @@
           "extension": "",
           "description": "remove any log4j2 implementation."
         }
-      ]
-    },
-    {
-      "id": "amazon-kinesis-client",
-      "type": "BASE",
-      "context": "{properties.context}",
-      "groupId": "com.amazonaws",
-      "artifactId": "amazon-kinesis-client",
-      "version": "1.6.2",
-      "classifier": "",
-      "description": "",
-      "exclusions": [
-        {
-          "groupId": "org.slf4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any slf4j implementation"
-        },
-        {
-          "groupId": "log4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any log4j implementation"
-        },
-        {
-          "groupId": "apache-logging",
-          "artifactId": "commons-logging",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any commons-logging implementation."
-        },
-        {
-          "groupId": "commons-logging",
-          "artifactId": "commons-logging",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any commons-logging implementation."
-        },
-        {
-          "groupId": "ch.qos.logback",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any logback implementation."
-        },
-        {
-          "groupId": "org.apache.logging.log4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any log4j2 implementation."
-        }      
       ]
     },
     {
@@ -2720,7 +2673,6 @@
       "description": "",
       "modules": [
         "spark-streaming-kinesis-asl_2.11",
-        "amazon-kinesis-client",
         "avro-mapred-1.8.2"
       ]
     },
