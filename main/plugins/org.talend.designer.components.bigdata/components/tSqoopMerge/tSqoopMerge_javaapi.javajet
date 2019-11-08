@@ -190,7 +190,7 @@
     <%if(customClassName){%>
 		sqoopOptions_<%=cid%>.setClassName(<%=className%>);
     <%}else{%>
-		sqoopOptions_<%=cid%>.setClassName("SqoopMerge_<%=cid%>");
+		sqoopOptions_<%=cid%>.setClassName("<%=sqoopPackageName%>.SqoopOptions");
     <%}%>
 		
 	org.apache.sqoop.Sqoop sqoop_<%=cid%> = new org.apache.sqoop.Sqoop(sqoopTool_<%=cid%>, configuration_<%=cid%>, sqoopOptions_<%=cid%>);
