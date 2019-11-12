@@ -25,7 +25,7 @@ public class Dataproc14DistributionTest {
         assertEquals(Dataproc14Distribution.DISTRIBUTION_NAME, distribution.getDistribution());
         assertEquals(Dataproc14Distribution.VERSION, distribution.getVersion());
         assertEquals(EHadoopVersion.HADOOP_2, distribution.getHadoopVersion());
-        assertTrue(distribution.doSupportKerberos());
+        assertFalse(distribution.doSupportKerberos());
 
         assertTrue(distribution.doSupportUseDatanodeHostname());
         assertFalse(distribution.doSupportGroup());

@@ -210,7 +210,7 @@ public class Dataproc14Distribution extends AbstractDistribution implements HDFS
 
     @Override
     public boolean doSupportKerberos() {
-        return true;
+        return false;
     }
 
     @Override
