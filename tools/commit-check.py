@@ -2,13 +2,13 @@ import os
 import re
 
 team_tickets = "TBD|TDI|TUP|DEVOPS"
-semantics = "chore|docs|feat|fix|refactor|style|test"
+semantic_prefixs = "chore|docs|feat|fix|refactor|style|test"
 
-tbd_commit_regex = "(?:%s)[\(\[\:](?:%s)-(?:\d{4})([)\]]:|:).**" % (semantics, team_tickets)
-
-# feat(TBD-9011): tata
-# chore[TBD-9011]: titi
-# refactor:TBD-9011: toto
+tbd_commit_regex = "(%s)[\(\[\:]((?:%s)-(?:\d{3,7}))(?:[)\]]:|:)(.*)" % (semantic_prefixs, team_tickets)
+# this regex will extract some information based on the accepted convention
+# feat(TBD-901): tata       ==> group1: feat,     group2: TBD-901,   group3: tata
+# chore[TBD-9011]: titi     ==> group1: chore,    group2: TBD-9011,  group3: titi
+# refactor:TBD-99011: toto  ==> group1: refactor, group2: TBD-99011, group3: toto
 
 COLOR_RED = '\033[1;31m'
 END_COLOR = '\033[1;m'
