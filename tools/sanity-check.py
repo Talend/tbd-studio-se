@@ -138,6 +138,23 @@ def sanity_check(directories):
     return errors
 
 
+def check_commit_message():
+    print(os.environ['CHANGE_TITLE'])
+    print(os.environ['CHANGE_URL'])
+    print(os.environ['CHANGE_FORK'])
+    print(os.environ['CHANGE_AUTHOR'])
+    print(os.environ['CHANGE_AUTHOR_DISPLAY_NAME'])
+    print(os.environ['CHANGE_AUTHOR_EMAIL'])
+    print(os.environ['CHANGE_BRANCH'])
+    print(os.environ['CHANGE_TARGET'])
+    print(os.environ['CHANGE_ID'])
+    print(os.environ['BRANCH_NAME'])
+    print(os.environ['TAG_NAME'])
+    print(os.environ['TAG_TIMESTAMP'])
+    print(os.environ['TAG_UNIXTIME'])
+    print(os.environ['TAG_UNIXTIME'])
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='check consistency between directory structure, pom.xml and build.properties')
@@ -146,6 +163,7 @@ if __name__ == '__main__':
                         default='main/plugins:test/plugins')
     args = parser.parse_args()
     plugin_directories = args.directories.split(':')
+    check_commit_message()
     nb_errors = sanity_check(plugin_directories)
     if nb_errors != 0:
         print("%sProject is not correctly configured (%s %s found).%s" % (
