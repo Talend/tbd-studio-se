@@ -141,19 +141,20 @@ def sanity_check(directories):
 def check_commit_message():
     print(os.environ['CHANGE_TITLE'])
     print(os.environ['CHANGE_URL'])
+    print('CHANGE_AUTHOR=%s' % os.environ['CHANGE_AUTHOR'])
+    print('CHANGE_AUTHOR_DISPLAY_NAME=%s' % os.environ['CHANGE_AUTHOR_DISPLAY_NAME'])
+    print('CHANGE_AUTHOR_EMAIL=%s' % os.environ['CHANGE_AUTHOR_EMAIL'])
+    print('CHANGE_BRANCH=%s' % os.environ['CHANGE_BRANCH'])
+    print('CHANGE_TARGET=%s' % os.environ['CHANGE_TARGET'])
+    print('CHANGE_ID=%s' % os.environ['CHANGE_ID'])
+    print('BRANCH_NAME=%s' % os.environ['BRANCH_NAME'])
     if 'CHANGE_FORK' in os.environ:
         print("CHANGE_FORK=%s" % os.environ['CHANGE_FORK'])
-    print(os.environ['CHANGE_AUTHOR'])
-    print(os.environ['CHANGE_AUTHOR_DISPLAY_NAME'])
-    print(os.environ['CHANGE_AUTHOR_EMAIL'])
-    print(os.environ['CHANGE_BRANCH'])
-    print(os.environ['CHANGE_TARGET'])
-    print(os.environ['CHANGE_ID'])
-    print(os.environ['BRANCH_NAME'])
-    print(os.environ['TAG_NAME'])
-    print(os.environ['TAG_TIMESTAMP'])
-    print(os.environ['TAG_UNIXTIME'])
-    print(os.environ['TAG_UNIXTIME'])
+    if 'TAG_NAME' in os.environ:
+        print(os.environ['TAG_NAME'])
+        print(os.environ['TAG_TIMESTAMP'])
+        print(os.environ['TAG_UNIXTIME'])
+        print(os.environ['TAG_UNIXTIME'])
 
 
 if __name__ == '__main__':
