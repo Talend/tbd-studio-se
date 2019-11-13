@@ -141,7 +141,8 @@ def sanity_check(directories):
 def check_commit_message():
     print(os.environ['CHANGE_TITLE'])
     print(os.environ['CHANGE_URL'])
-    print(os.environ['CHANGE_FORK'])
+    if 'CHANGE_FORK' in os.environ:
+        print("CHANGE_FORK=%s" % os.environ['CHANGE_FORK'])
     print(os.environ['CHANGE_AUTHOR'])
     print(os.environ['CHANGE_AUTHOR_DISPLAY_NAME'])
     print(os.environ['CHANGE_AUTHOR_EMAIL'])
