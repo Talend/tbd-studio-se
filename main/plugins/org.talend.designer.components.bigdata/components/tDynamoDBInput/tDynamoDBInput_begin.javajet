@@ -492,11 +492,11 @@
 					String patternValue = column.getPattern() == null || column.getPattern().trim().length() == 0 ? null : column.getPattern();
 					if("JSON".equalsIgnoreCase(column.getType()) && javaType == JavaTypesManager.STRING) {
 %>
-						valueObj_<%=cid%>=item_<%=cid%>.getJSON("<%=column.getLabel() %>");
+						valueObj_<%=cid%>=item_<%=cid%>.getJSON("<%=column.getOriginalDbColumnName() %>");
 <%
 					} else {
 %>
-						valueObj_<%=cid%>=item_<%=cid%>.get("<%=column.getLabel() %>");
+						valueObj_<%=cid%>=item_<%=cid%>.get("<%=column.getOriginalDbColumnName() %>");
 <%
 					}
           			if(javaType == JavaTypesManager.OBJECT) {
