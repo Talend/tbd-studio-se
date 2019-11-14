@@ -57,7 +57,7 @@ def check_commit_message():
     #     print(os.environ['TAG_UNIXTIME'])
     result = re.search(tbd_commit_regex, os.environ['CHANGE_TITLE'])
     if result is None:
-        print("")
+        print()
         print("%s: the message does not follow convention. '%s'" % (red('ERROR'), red(os.environ['CHANGE_TITLE'])))
         print()
         print('check tickets prefix is in [%s]' % yellow(team_tickets))
