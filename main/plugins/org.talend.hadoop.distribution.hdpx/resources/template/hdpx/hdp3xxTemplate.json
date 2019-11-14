@@ -682,13 +682,6 @@
           "description": "remove any commons-logging implementation."
         },
         {
-          "groupId": "commons-logging",
-          "artifactId": "commons-logging",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any commons-logging implementation."
-        },
-        {
           "groupId": "ch.qos.logback",
           "artifactId": "*",
           "classifier": "",
@@ -750,13 +743,6 @@
         },
         {
           "groupId": "apache-logging",
-          "artifactId": "commons-logging",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any commons-logging implementation."
-        },
-        {
-          "groupId": "commons-logging",
           "artifactId": "commons-logging",
           "classifier": "",
           "extension": "",
@@ -1323,7 +1309,6 @@
       "context": "{properties.context}",
       "groupId": "com.twitter",
       "artifactId": "parquet-hadoop-bundle",
-      "version": "1.6.0",
       "classifier": "",
       "description": ""
     },
@@ -1537,13 +1522,6 @@
           "description": "remove any commons-logging implementation."
         },
         {
-          "groupId": "commons-logging",
-          "artifactId": "commons-logging",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any commons-logging implementation."
-        },
-        {
           "groupId": "ch.qos.logback",
           "artifactId": "*",
           "classifier": "",
@@ -1651,6 +1629,20 @@
       "description": "",
       "exclusions": [
         {
+          "groupId": "com.twitter",
+          "artifactId": "parquet-hadoop-bundle",
+          "classifier": "",
+          "extension": "",
+          "description": "remove as wrong version is imported (1.6.0 instead of patched hortonworks distribution version)"
+        },
+        {
+          "groupId": "org.apache.avatica",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove as wrong version is imported (1.2.0-incubating instead of patched hortonworks distribution version)"
+        },
+        {
           "groupId": "org.mortbay.jetty",
           "artifactId": "*",
           "classifier": "",
@@ -1669,7 +1661,7 @@
           "artifactId": "*",
           "classifier": "",
           "extension": "",
-          "description": ""
+          "description": "we use a specific avro-mapred version (1.8.2)"
         },
         {
           "groupId": "org.slf4j",
@@ -1743,7 +1735,7 @@
           "artifactId": "*",
           "classifier": "",
           "extension": "",
-          "description": ""
+          "description": "we use a specific avro-mapred version (1.8.2)"
         },
         {
           "groupId": "org.slf4j",
@@ -1817,7 +1809,7 @@
           "artifactId": "*",
           "classifier": "",
           "extension": "",
-          "description": ""
+          "description": "we use a specific avro-mapred version (1.8.2)"
         },
         {
           "groupId": "org.slf4j",
@@ -1869,7 +1861,7 @@
       "context": "{properties.context}",
       "groupId": "com.amazonaws",
       "artifactId": "aws-java-sdk-dynamodb",
-      "version": "1.11.160",
+      "version": "1.11.673",
       "classifier": "",
       "description": "",
       "exclusions": [
@@ -2694,7 +2686,7 @@
     },
     {
       "id": "SPARK-JDBC-LIB-MRREQUIRED-DYNAMIC",
-      "description": "",
+      "description": "used by Oracle and Teradata Components in batch mode",
       "modules": [
         "avatica",
         "avro-mapred-1.8.2"
