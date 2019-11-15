@@ -27,9 +27,33 @@ final String cid = node.getUniqueName();
 
 final boolean dieOnError = "true".equals(ElementParameterParser.getValue(node, "__DIE_ON_ERROR__"));
 final boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
-%>
+final boolean isHeaderEnabled = ("true").equals(ElementParameterParser.getValue(node, "__HEADERS__"));
+final boolean isKafkaVersionSupportHeaders = ("KAFKA_2_2_1").equals(ElementParameterParser.getValue(node, "__KAFKA_VERSION__")) || ("KAFKA_1_1_0").equals(ElementParameterParser.getValue(node, "__KAFKA_VERSION__"));
 
-<%=cid%>_kafkaProducer.send(new org.apache.kafka.clients.producer.ProducerRecord<byte[], byte[]>(<%=tKafkaOutputUtil.getKafkaTopic()%>, <%=tKafkaOutputUtil.getIncomingConnection().getName()%>.<%=tKafkaOutputUtil.getIncomingColumnName()%>), new org.apache.kafka.clients.producer.Callback() {
+
+%>
+org.apache.kafka.clients.producer.ProducerRecord<byte[], byte[]> record = new org.apache.kafka.clients.producer.ProducerRecord<byte[], byte[]>(<%=tKafkaOutputUtil.getKafkaTopic()%>, <%=tKafkaOutputUtil.getIncomingConnection().getName()%>.<%=tKafkaOutputUtil.getIncomingColumnName()%>);
+<%
+        if(isHeaderEnabled && isKafkaVersionSupportHeaders){
+        List<Map<String, String>> headers = (List<Map<String, String>>) ElementParameterParser
+                .getObjectValue(node, "__KAFKA_HEADERS_PROPERTIES__");
+
+            if(headers != null) {
+	            for (Map<String, String> header : headers) {
+%>
+  		            record.headers().add(<%=header.get("KEY")%>, 
+                    <%if (header.get("VALUE").equals("null")) {%> 
+                        (byte[]) null
+                    <%} else {%> 
+                        <%=header.get("VALUE")%>.getBytes()
+                    <%}%>
+                    );
+<%
+	            }
+            }
+        }
+%>
+<%=cid%>_kafkaProducer.send(record, new org.apache.kafka.clients.producer.Callback() {
 	public void onCompletion(org.apache.kafka.clients.producer.RecordMetadata metadata, Exception e) {
 		if (e != null) {
 			<%=cid%>_producerExceptions.add(e);
