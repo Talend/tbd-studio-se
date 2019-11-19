@@ -1637,7 +1637,7 @@
         },
         {
           "groupId": "org.apache.calcite",
-          "artifactId": "calcite-avatica",
+          "artifactId": "*",
           "classifier": "",
           "extension": "",
           "description": "remove as wrong version is imported (1.2.0-incubating instead of patched hortonworks distribution version)"
