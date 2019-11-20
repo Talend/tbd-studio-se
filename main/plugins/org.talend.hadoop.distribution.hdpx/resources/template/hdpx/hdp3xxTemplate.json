@@ -1312,24 +1312,14 @@
       "description": ""
     },
     {
-      "id": "parquet-hadoop",
+      "id": "parquet-hive-bundle",
       "type": "BASE",
       "context": "{properties.context}",
       "groupId": "org.apache.parquet",
-      "artifactId": "parquet-hadoop",
+      "artifactId": "parquet-hive-bundle",
       "classifier": "",
       "description": ""
     },
-    {
-      "id": "parquet-column",
-      "type": "BASE",
-      "context": "{properties.context}",
-      "groupId": "org.apache.parquet",
-      "artifactId": "parquet-column",
-      "classifier": "",
-      "description": ""
-    },
-
     {
       "id": "tez-dag",
       "type": "BASE",
@@ -2504,12 +2494,10 @@
       "description": "",
       "modules": [
         "spark-hive_2.11",
-        "parquet-hadoop-bundle",
         "spark-mllib_2.11",
-        "parquet-hadoop",
-        "parquet-column",
         "spark-yarn_2.11",
-        "avro-mapred-1.8.2"
+        "avro-mapred-1.8.2",
+        "parquet-hadoop-bundle"
       ]
     },
     {
@@ -2529,6 +2517,7 @@
       "modules": [
         "hive-exec",
         "hive-jdbc",
+        "parquet-hive-bundle",
         "avro-mapred-1.8.2",
         "avatica"
       ]
