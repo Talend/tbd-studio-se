@@ -1297,9 +1297,8 @@
       "id": "parquet-pig-bundle",
       "type": "BASE",
       "context": "{properties.context}",
-      "groupId": "com.twitter",
+      "groupId": "org.apache.parquet",
       "artifactId": "parquet-pig-bundle",
-      "version": "1.6.0",
       "classifier": "",
       "description": ""
     },
@@ -1307,11 +1306,30 @@
       "id": "parquet-hadoop-bundle",
       "type": "BASE",
       "context": "{properties.context}",
-      "groupId": "com.twitter",
+      "groupId": "org.apache.parquet",
       "artifactId": "parquet-hadoop-bundle",
       "classifier": "",
       "description": ""
     },
+    {
+      "id": "parquet-hadoop",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.parquet",
+      "artifactId": "parquet-hadoop",
+      "classifier": "",
+      "description": ""
+    },
+    {
+      "id": "parquet-column",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.parquet",
+      "artifactId": "parquet-column",
+      "classifier": "",
+      "description": ""
+    },
+
     {
       "id": "tez-dag",
       "type": "BASE",
@@ -1636,6 +1654,13 @@
           "description": "remove as wrong version is imported (1.6.0 instead of patched hortonworks distribution version)"
         },
         {
+          "groupId": "org.apache.parquet",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove parquet as wrong version imported (1.8.3) instead of hortonworks patched version"
+        },
+        {
           "groupId": "org.apache.calcite",
           "artifactId": "*",
           "classifier": "",
@@ -1716,6 +1741,13 @@
       "classifier": "",
       "description": "",
       "exclusions": [
+        {
+          "groupId": "org.apache.parquet",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove parquet as wrong version imported (1.8.3) instead of hortonworks patched version"
+        },
         {
           "groupId": "org.mortbay.jetty",
           "artifactId": "*",
@@ -2472,7 +2504,10 @@
       "description": "",
       "modules": [
         "spark-hive_2.11",
+        "parquet-hadoop-bundle",
         "spark-mllib_2.11",
+        "parquet-hadoop",
+        "parquet-column",
         "spark-yarn_2.11",
         "avro-mapred-1.8.2"
       ]
@@ -2561,6 +2596,7 @@
       "description": "",
       "modules": [
         "pig",
+        "parquet-pig-bundle",
         "avro-mapred-1.8.2"
       ]
     },
