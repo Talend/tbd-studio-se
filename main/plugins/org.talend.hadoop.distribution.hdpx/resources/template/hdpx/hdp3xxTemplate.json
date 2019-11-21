@@ -1637,13 +1637,6 @@
       "description": "",
       "exclusions": [
         {
-          "groupId": "com.twitter",
-          "artifactId": "parquet-hadoop-bundle",
-          "classifier": "",
-          "extension": "",
-          "description": "remove as wrong version is imported (1.6.0 instead of patched hortonworks distribution version)"
-        },
-        {
           "groupId": "org.apache.parquet",
           "artifactId": "*",
           "classifier": "",
