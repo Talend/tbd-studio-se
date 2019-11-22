@@ -23,7 +23,27 @@
       "version": "1.7.28",
       "classifier": "",
       "description": ""
-    },   
+    },
+    {
+      "id": "org-slf4j-jcl-over-slf4j",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.slf4j",
+      "artifactId": "jcl-over-slf4j",
+      "version": "1.7.28",
+      "classifier": "",
+      "description": ""
+    },
+    {
+      "id": "org-slf4j-jul-to-slf4j",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.slf4j",
+      "artifactId": "jul-to-slf4j",
+      "version": "1.7.28",
+      "classifier": "",
+      "description": ""
+    },
     {
       "id": "commons-lang3-3.6",
       "type": "BASE",
@@ -2490,7 +2510,9 @@
         "spark-mllib_2.11",
         "spark-yarn_2.11",
         "avro-mapred-1.8.2",
-        "parquet-hadoop-bundle"
+        "parquet-hadoop-bundle",
+        "org-slf4j-jcl-over-slf4j",
+        "org-slf4j-jul-to-slf4j"
       ]
     },
     {
@@ -2531,6 +2553,8 @@
       "modules": [
         "hadoop-client",
         "org-slf4j-log4j12",
+        "org-slf4j-jcl-over-slf4j",
+        "org-slf4j-jul-to-slf4j",
         "avro-mapred-1.8.2"
       ]
     },
