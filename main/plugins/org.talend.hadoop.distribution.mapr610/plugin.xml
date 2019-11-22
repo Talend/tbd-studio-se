@@ -320,7 +320,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="avro-1.8.1.jar"
             name="avro-1.8.1.jar"
-            mvn_uri="mvn:org.apache.avro/avro-mapred/1.8.1">
+            mvn_uri="mvn:org.apache.avro/avro/1.8.1">
         </libraryNeeded>
 
         <libraryNeeded
