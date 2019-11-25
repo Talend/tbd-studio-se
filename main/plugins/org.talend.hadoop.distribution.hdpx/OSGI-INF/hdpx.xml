@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<component name="DynamicHDP2xxDistribution">
-  <implementation class="org.talend.hadoop.distribution.hdpx.DynamicHDP2xxDistribution"/>
+<component name="DynamicHDPDistribution">
+    <implementation class="org.talend.hadoop.distribution.hdpx.DynamicHDPDistribution"/>
   <service>
     <provide interface="org.talend.hadoop.distribution.dynamic.hdp.IDynamicHDPDistribution"/>
   </service>
