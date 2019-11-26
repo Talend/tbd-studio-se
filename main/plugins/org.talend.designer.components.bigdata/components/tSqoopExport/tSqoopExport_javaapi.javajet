@@ -75,7 +75,12 @@
 <%	
 	if(!callProcStock) {
 %>
-		sqoopOptions_<%=cid%>.setTableName(<%=table%>);
+	sqoopOptions_<%=cid%>.setTableName(<%=table%>);
+<%
+	}
+    if (verbose) {
+%>
+	sqoopOptions_<%=cid%>.setVerbose(true);  // __VERBOSE__
 <%
 	}
 %>

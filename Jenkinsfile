@@ -36,5 +36,14 @@ pipeline {
                 }
             }
         }
+        stage('Commit check'){
+            steps {
+                container('python2') {
+                    sh '''
+                        python ./tools/commit-check.py
+                        '''
+                }
+            }
+        }
     }
 }

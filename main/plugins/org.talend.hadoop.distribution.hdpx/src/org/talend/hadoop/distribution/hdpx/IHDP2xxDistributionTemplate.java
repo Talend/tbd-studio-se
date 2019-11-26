@@ -14,9 +14,5 @@ package org.talend.hadoop.distribution.hdpx;
 
 import org.talend.hadoop.distribution.dynamic.template.hdp.IDynamicHDPDistributionTemplate;
 
-/**
- * DOC cmeng  class global comment. Detailled comment
- */
 public interface IHDP2xxDistributionTemplate extends IDynamicHDPDistributionTemplate {
-
 }

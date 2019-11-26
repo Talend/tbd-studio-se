@@ -237,7 +237,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.talend.hadoop.distribution.dbr540.test"
+         id="org.talend.hadoop.distribution.dbr550.test"
          download-size="0"
          install-size="0"
          version="0.0.0"

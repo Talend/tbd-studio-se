@@ -41,7 +41,7 @@
         <module>main/plugins/org.talend.hadoop.distribution.dataproc11</module>
         <module>main/plugins/org.talend.hadoop.distribution.dataproc14</module>
         <module>main/plugins/org.talend.hadoop.distribution.dbr350</module>
-        <module>main/plugins/org.talend.hadoop.distribution.dbr540</module>
+        <module>main/plugins/org.talend.hadoop.distribution.dbr550</module>
         <module>main/plugins/org.talend.hadoop.distribution.emr450</module>
         <module>main/plugins/org.talend.hadoop.distribution.emr500</module>
         <module>main/plugins/org.talend.hadoop.distribution.emr550</module>
@@ -102,7 +102,7 @@
         <module>test/plugins/org.talend.hadoop.distribution.dataproc11.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.dataproc14.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.dbr350.test</module>
-        <module>test/plugins/org.talend.hadoop.distribution.dbr540.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.dbr550.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.emr450.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.emr500.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.emr550.test</module>

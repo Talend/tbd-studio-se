@@ -320,7 +320,7 @@
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="avro-1.8.1.jar"
             name="avro-1.8.1.jar"
-            mvn_uri="mvn:org.apache.avro/avro-mapred/1.8.1">
+            mvn_uri="mvn:org.apache.avro/avro/1.8.1">
         </libraryNeeded>
 
         <libraryNeeded
@@ -704,7 +704,7 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="joda-time-2.9.3.jar" name="joda-time-2.9.3.jar" mvn_uri="mvn:joda-time/joda-time/2.9.3"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="jodd-core-3.5.2.jar" name="jodd-core-3.5.2.jar" mvn_uri="mvn:org.jodd/jodd-core/3.5.2"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="jpam-1.1.jar" name="jpam-1.1.jar" mvn_uri="mvn:net.sf.jpam/jpam/1.1"/>
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="json4s-ast_2.11-3.6.7.jar" name="json4s-ast_2.11-3.6.7.jar" mvn_uri="mvn:org.json4s/json4s-ast_2.11/3.6.7"/>
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="json4s-ast_2.11-3.3.0.jar" name="json4s-ast_2.11-3.3.0.jar" mvn_uri="mvn:org.json4s/json4s-ast_2.11/3.3.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="json4s-core_2.11-3.2.11.jar" name="json4s-core_2.11-3.2.11.jar" mvn_uri="mvn:org.json4s/json4s-core_2.11/3.2.11"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="json4s-jackson_2.11-3.2.11.jar" name="json4s-jackson_2.11-3.2.11.jar" mvn_uri="mvn:org.json4s/json4s-jackson_2.11/3.2.11"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="jsr305-3.0.0.jar" name="jsr305-3.0.0.jar" mvn_uri="mvn:com.google.code.findbugs/jsr305/3.0.0"/>
@@ -1076,7 +1076,7 @@
 			<library id="joda-time-2.9.3.jar"/>
 			<library id="jodd-core-3.5.2.jar"/>
 			<library id="jpam-1.1.jar"/>
-			<library id="json4s-ast_2.11-3.6.7.jar"/>
+			<library id="json4s-ast_2.11-3.3.0.jar"/>
 			<library id="json4s-core_2.11-3.2.11.jar"/>
 			<library id="json4s-jackson_2.11-3.2.11.jar"/>
 			<library id="jsr305-3.0.0.jar"/>
