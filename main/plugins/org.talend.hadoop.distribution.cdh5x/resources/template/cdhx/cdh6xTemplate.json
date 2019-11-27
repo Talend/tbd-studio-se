@@ -1230,6 +1230,16 @@
 			"description": ""
 		},
 		{
+			"id": "parquet-hadoop-bundle_1_6_0",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "com.twitter",
+			"artifactId": "parquet-hadoop-bundle",
+			"version": "1.6.0",
+			"classifier": "",
+			"description": ""
+		},
+		{
 			"id": "parquet-pig-bundle",
 			"type": "BASE",
 			"context": "{properties.context}",
@@ -1694,6 +1704,7 @@
 			"id": "HDFS-SPARK2_1-LIB-DYNAMIC",
 			"description": "",
 			"modules": [
+				"parquet-hadoop-bundle_1_6_0"
 			]
 		},
         {
@@ -1746,7 +1757,8 @@
 			"id": "MAPREDUCE-PARQUET-LIB-DYNAMIC",
 			"description": "",
 			"modules": [
-				"parquet-hadoop-bundle"
+				"parquet-hadoop-bundle",
+				"parquet-hadoop-bundle_1_6_0"
 			]
 		},
 		{
@@ -1807,6 +1819,7 @@
 			"id": "SPARK-PARQUET-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
 			"modules": [
+				parquet-hadoop-bundle_1_6_0"
 			]
 		},
 		{
@@ -1836,7 +1849,8 @@
 			"description": "",
 			"modules": [
 				"hadoop-client",
-				"jodd"
+				"jodd",
+				parquet-hadoop-bundle_1_6_0"
 			]
 		},
         {
