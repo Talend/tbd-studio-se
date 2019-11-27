@@ -9,3 +9,4 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: org.talend.core.runtime,
  org.talend.hadoop.distribution
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.talend.hadoop.distribution.dbr350

@@ -18,4 +18,8 @@ public interface IDatabricksDistribution {
     static final String DISTRIBUTION_NAME = "DATABRICKS";
 
     static final String DISTRIBUTION_DISPLAY_NAME = "Databricks";
+    
+    static final String DBR350 = "Databricks_3_5";
+    		
+    static final String DBR550 = "Databricks_5_5";
 }
