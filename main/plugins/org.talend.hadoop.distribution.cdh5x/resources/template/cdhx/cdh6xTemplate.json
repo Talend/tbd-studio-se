@@ -1819,7 +1819,7 @@
 			"id": "SPARK-PARQUET-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
 			"modules": [
-				parquet-hadoop-bundle_1_6_0"
+				"parquet-hadoop-bundle_1_6_0"
 			]
 		},
 		{
@@ -1850,7 +1850,7 @@
 			"modules": [
 				"hadoop-client",
 				"jodd",
-				parquet-hadoop-bundle_1_6_0"
+				"parquet-hadoop-bundle_1_6_0"
 			]
 		},
         {
