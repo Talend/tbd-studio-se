@@ -38,12 +38,11 @@ import org.talend.metadata.managment.ui.dialog.HadoopPropertiesDialog;
 import org.talend.metadata.managment.ui.dialog.SparkPropertiesDialog;
 import org.talend.metadata.managment.ui.utils.ExtendedNodeConnectionContextUtils.EHadoopParamName;
 import org.talend.repository.hadoopcluster.i18n.Messages;
-import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopForm;
-import org.talend.repository.hadoopcluster.ui.common.IHadoopClusterInfoForm;
+import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopClusterInfoForm;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
 
-public class DataBricksInfoForm extends AbstractHadoopForm<HadoopClusterConnection> implements IHadoopClusterInfoForm {
+public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConnection> {
 
     private LabelledText endpointText;
 
