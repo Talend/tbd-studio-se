@@ -239,6 +239,15 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                         ConnectionContextHelper.createParameters(varList, paramName,
                                 conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_DBFS_DEP_FOLDER));
                         break;
+                    case setHadoopConf:
+                        ConnectionContextHelper.createParameters(varList, paramName,
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_SET_HADOOP_CONF),
+                                JavaTypesManager.BOOLEAN);
+                        break;
+                    case hadoopConfSpecificJar:
+                        ConnectionContextHelper.createParameters(varList, paramName,
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HADOOP_CONF_SPECIFIC_JAR));
+                        break;
                     default:
                     }
 
@@ -538,6 +547,14 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
             break;
         case DataBricksDBFSDepFolder:
             hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_DBFS_DEP_FOLDER,
+                    ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
+            break;
+        case setHadoopConf:
+            hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_SET_HADOOP_CONF,
+                    ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
+            break;
+        case hadoopConfSpecificJar:
+            hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_HADOOP_CONF_SPECIFIC_JAR,
                     ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
             break;
         default:

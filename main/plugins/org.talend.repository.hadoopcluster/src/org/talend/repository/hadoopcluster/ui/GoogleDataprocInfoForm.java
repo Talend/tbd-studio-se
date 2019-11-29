@@ -46,8 +46,7 @@ import org.talend.metadata.managment.ui.dialog.SparkPropertiesDialog;
 import org.talend.metadata.managment.ui.utils.ConnectionContextHelper;
 import org.talend.metadata.managment.ui.utils.ExtendedNodeConnectionContextUtils.EHadoopParamName;
 import org.talend.repository.hadoopcluster.i18n.Messages;
-import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopForm;
-import org.talend.repository.hadoopcluster.ui.common.IHadoopClusterInfoForm;
+import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopClusterInfoForm;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
 
@@ -55,7 +54,7 @@ import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
  * created by hcyi on Mar 24, 2017 Detailled comment
  *
  */
-public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConnection> implements IHadoopClusterInfoForm {
+public class GoogleDataprocInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConnection> {
 
     private LabelledText projectIdNameText;
 
@@ -502,4 +501,5 @@ public class GoogleDataprocInfoForm extends AbstractHadoopForm<HadoopClusterConn
             HCRepositoryUtil.fillDefaultValuesOfHadoopCluster(connection);
         }
     }
+
 }
