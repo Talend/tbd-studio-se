@@ -1703,8 +1703,7 @@
 		{
 			"id": "HDFS-SPARK2_1-LIB-DYNAMIC",
 			"description": "",
-			"modules": [
-				"parquet-hadoop-bundle_1_6_0"
+			"modules": [				
 			]
 		},
         {
@@ -1818,8 +1817,7 @@
 		{
 			"id": "SPARK-PARQUET-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": [
-				"parquet-hadoop-bundle_1_6_0"
+			"modules": [				
 			]
 		},
 		{
