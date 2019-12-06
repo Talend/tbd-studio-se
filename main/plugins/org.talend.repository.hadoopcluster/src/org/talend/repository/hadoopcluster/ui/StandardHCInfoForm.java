@@ -45,7 +45,6 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.talend.commons.exception.ExceptionHandler;
-import org.talend.commons.ui.runtime.ColorConstants;
 import org.talend.commons.ui.runtime.image.EImage;
 import org.talend.commons.ui.runtime.image.ImageProvider;
 import org.talend.commons.ui.swt.formtools.Form;
@@ -737,7 +736,7 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         hadoopConfsComposite.setLayoutData(gridData);
 
         useCustomConfBtn = new Button(hadoopConfsComposite, SWT.CHECK);
-        useCustomConfBtn.setText(Messages.getString("HadoopClusterForm.button.useCustomConf")); //$NON-NLS-1$
+        useCustomConfBtn.setText(Messages.getString("HadoopClusterForm.button.useCustomConf.label")); //$NON-NLS-1$
         useCustomConfBtn.setLayoutData(new GridData());
 
         hadoopConfsGroup = new Group(hadoopConfsComposite, SWT.NONE);
@@ -1574,16 +1573,16 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
     @Override
     public boolean checkFieldsValue() {
         checkServicesBtn.setEnabled(false);
-        hadoopConfSpecificJarText
-                .setBackground(hadoopConfSpecificJarText.getEditable() ? ColorConstants.WHITE_COLOR : ColorConstants.GREY_COLOR);
+        // hadoopConfSpecificJarText
+        // .setBackground(hadoopConfSpecificJarText.getEditable() ? null : ColorConstants.GREY_COLOR);
         updateStatus(IStatus.OK, null);
 
-        if (useCustomConfBtn.getSelection() && setHadoopConfBtn.getSelection()) {
-            String tooltip = Messages.getString("HadoopClusterForm.check.overrideCustomConf.warn");
-            updateStatus(IStatus.WARNING, tooltip);
-            hadoopConfSpecificJarText.setBackground(ColorConstants.YELLOW_COLOR);
-            hadoopConfSpecificJarText.setToolTipText(tooltip);
-        }
+        // if (useCustomConfBtn.getSelection() && setHadoopConfBtn.getSelection()) {
+        // String tooltip = Messages.getString("HadoopClusterForm.check.overrideCustomConf.warn");
+        // updateStatus(IStatus.WARNING, tooltip);
+        // hadoopConfSpecificJarText.setBackground(ColorConstants.YELLOW_COLOR);
+        // hadoopConfSpecificJarText.setToolTipText(tooltip);
+        // }
 
         if (getConnection().isUseCustomVersion()) {
             if (authenticationCombo.getSelectionIndex() == -1) {
