@@ -246,6 +246,12 @@
             id="jackson-annotations-2.6.7.jar"
             name="jackson-annotations-2.6.7.jar"
             mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.6.7"/>
+            
+         <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dbr550"
+            id="parquet-hadoop-bundle-1.6.0.jar"
+            name="parquet-hadoop-bundle-1.6.0.jar"
+            mvn_uri="mvn:com.twitter/parquet-hadoop-bundle/1.6.0"/>
 
         <!-- Big Data launcher group -->
         <libraryNeededGroup
@@ -292,6 +298,7 @@
              <library id="jackson-core-2.6.7.jar"/>
              <library id="javax.ws.rs-api-2.0-m10.jar"/>
              <library id="json_simple-1.1.jar"/>
+             <library id="parquet-hadoop-bundle-1.6.0.jar"/>
         </libraryNeededGroup>
 
         <!-- Spark Streaming group -->
