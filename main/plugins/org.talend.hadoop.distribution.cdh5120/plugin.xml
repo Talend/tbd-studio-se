@@ -652,9 +652,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5120"
-            id="talend-lineage-api-0.2.1.jar"
-            name="talend-lineage-api-0.2.1.jar"
-            mvn_uri="mvn:org.talend.libraries/talend-lineage-api/0.2.1">
+            id="talend-lineage-api-0.2.0.jar"
+            name="talend-lineage-api-0.2.0.jar"
+            mvn_uri="mvn:org.talend.libraries/talend-lineage-api-0.2.1/6.0.0">
         </libraryNeeded>
 
         <!-- Kudu libraries -->
