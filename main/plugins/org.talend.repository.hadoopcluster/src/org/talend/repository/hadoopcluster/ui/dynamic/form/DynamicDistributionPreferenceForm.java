@@ -55,6 +55,7 @@ import org.talend.commons.exception.LoginException;
 import org.talend.commons.exception.PersistenceException;
 import org.talend.commons.ui.runtime.exception.ExceptionMessageDialog;
 import org.talend.core.hadoop.BigDataBasicUtil;
+import org.talend.core.prefs.ITalendCorePrefConstants;
 import org.talend.core.repository.model.ProxyRepositoryFactory;
 import org.talend.core.runtime.dynamic.IDynamicPlugin;
 import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
@@ -104,8 +105,11 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
 
     private String passwordCache;
 
-    public DynamicDistributionPreferenceForm(Composite parent, int style, IDynamicMonitor monitor) {
+    private int showPart;
+
+    public DynamicDistributionPreferenceForm(Composite parent, int style, IDynamicMonitor monitor,int showPart) {
         super(parent, style, null);
+        this.showPart = showPart;
         createControl();
         loadData(monitor);
         addListeners();
@@ -113,319 +117,320 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
 
     private void createControl() {
         Composite parent = this;
-
         Composite container = createFormContainer(parent);
         int ALIGN_HORIZON = getAlignHorizon();
         int ALIGN_VERTICAL_INNER = getAlignVerticalInner();
         int ALIGN_VERTICAL_INNER2 = ALIGN_VERTICAL_INNER - ALIGN_VERTICAL_INNER / 2;
         int ALIGN_VERTICAL = getAlignVertical();
         int MARGIN_GROUP = 5;
-
-        Group group = new Group(container, SWT.NONE);
-        group.setText(Messages.getString("DynamicDistributionPreferenceForm.group.existing")); //$NON-NLS-1$
-        FormData formData = new FormData();
-        formData.left = new FormAttachment(0);
-        formData.top = new FormAttachment(0);
-        formData.right = new FormAttachment(100);
-        group.setLayoutData(formData);
         FormLayout formLayout = new FormLayout();
         formLayout.marginTop = MARGIN_GROUP;
         formLayout.marginBottom = MARGIN_GROUP;
         formLayout.marginLeft = MARGIN_GROUP;
         formLayout.marginRight = MARGIN_GROUP;
-        group.setLayout(formLayout);
-
-        Group nexusSetupGroup = new Group(container, SWT.NONE);
-        nexusSetupGroup.setText(Messages.getString("DynamicDistributionPreferenceForm.group.nexusSetup")); //$NON-NLS-1$
-        formData = new FormData();
-        formData.left = new FormAttachment(group, 0, SWT.LEFT);
-        formData.top = new FormAttachment(group, ALIGN_VERTICAL, SWT.BOTTOM);
-        formData.right = new FormAttachment(group, 0, SWT.RIGHT);
-        nexusSetupGroup.setLayoutData(formData);
-        formLayout = new FormLayout();
-        formLayout.marginTop = MARGIN_GROUP;
-        formLayout.marginBottom = MARGIN_GROUP;
-        formLayout.marginLeft = MARGIN_GROUP;
-        formLayout.marginRight = MARGIN_GROUP;
-        nexusSetupGroup.setLayout(formLayout);
-
-        Label distributionLabel = new Label(group, SWT.NONE);
-        distributionLabel.setText(Messages.getString("DynamicDistributionPreferenceForm.label.existing.distribution")); //$NON-NLS-1$
-        Point distributionLabelSize = distributionLabel.computeSize(SWT.DEFAULT, SWT.DEFAULT);
-
-        Label nexusSetupDistriLabel = new Label(nexusSetupGroup, SWT.NONE);
-        nexusSetupDistriLabel.setText(Messages.getString("DynamicDistributionPreferenceForm.label.nexusSetup.distribution")); //$NON-NLS-1$
-        Point nexusSetupDistriLabelSize = nexusSetupDistriLabel.computeSize(SWT.DEFAULT, SWT.DEFAULT);
-
-        Label repositoryLabel = new Label(nexusSetupGroup, SWT.NONE);
-        repositoryLabel.setText(Messages.getString("DynamicDistributionPreferenceForm.label.nexusSetup.repository")); //$NON-NLS-1$
-        Point repositoryLabelSize = repositoryLabel.computeSize(SWT.DEFAULT, SWT.DEFAULT);
-
-        int labelWidth = distributionLabelSize.x;
-        if (labelWidth < nexusSetupDistriLabelSize.x) {
-            labelWidth = nexusSetupDistriLabelSize.x;
-        }
-        if (labelWidth < repositoryLabelSize.x) {
-            labelWidth = repositoryLabelSize.x;
-        }
-
-        distributionCombo = new ComboViewer(group, SWT.READ_ONLY);
-        distributionCombo.setContentProvider(ArrayContentProvider.getInstance());
-        distributionCombo.setLabelProvider(new LabelProvider());
-        formData = new FormData();
-        formData.top = new FormAttachment(0);
         int distriAlignHorizon = ALIGN_HORIZON;
-        formData.left = new FormAttachment(distributionLabel, distriAlignHorizon, SWT.RIGHT);
-        formData.right = new FormAttachment(distributionLabel, distriAlignHorizon + 180, SWT.RIGHT);
-        distributionCombo.getControl().setLayoutData(formData);
+        if (ITalendCorePrefConstants.DYNAMIC_DISTRIBUTION_SETTING == showPart) {
+            Group group = new Group(container, SWT.NONE);
+            group.setText(Messages.getString("DynamicDistributionPreferenceForm.group.existing")); //$NON-NLS-1$
+            FormData formData = new FormData();
+            formData.left = new FormAttachment(0);
+            formData.top = new FormAttachment(0);
+            formData.right = new FormAttachment(100);
+            group.setLayoutData(formData);
+            group.setLayout(formLayout);
 
-        formData = new FormData();
-        formData.top = new FormAttachment(distributionCombo.getControl(), 0, SWT.CENTER);
-        formData.left = new FormAttachment(0);
-        formData.width = labelWidth;
-        distributionLabel.setLayoutData(formData);
+            Label distributionLabel = new Label(group, SWT.NONE);
+            distributionLabel.setText(Messages.getString("DynamicDistributionPreferenceForm.label.existing.distribution")); //$NON-NLS-1$
+            Point distributionLabelSize = distributionLabel.computeSize(SWT.DEFAULT, SWT.DEFAULT);
 
-        Label versionLabel = new Label(group, SWT.NONE);
-        versionLabel.setText(Messages.getString("DynamicDistributionPreferenceForm.label.existing.version")); //$NON-NLS-1$
-        formData = new FormData();
-        formData.top = new FormAttachment(distributionCombo.getControl(), 0, SWT.CENTER);
-        formData.left = new FormAttachment(distributionCombo.getControl(), ALIGN_HORIZON * 2, SWT.RIGHT);
-        versionLabel.setLayoutData(formData);
+            distributionCombo = new ComboViewer(group, SWT.READ_ONLY);
+            distributionCombo.setContentProvider(ArrayContentProvider.getInstance());
+            distributionCombo.setLabelProvider(new LabelProvider());
+            formData = new FormData();
+            formData.top = new FormAttachment(0);
+            formData.left = new FormAttachment(distributionLabel, distriAlignHorizon, SWT.RIGHT);
+            formData.right = new FormAttachment(distributionLabel, distriAlignHorizon + 180, SWT.RIGHT);
+            distributionCombo.getControl().setLayoutData(formData);
+            formData = new FormData();
+            formData.top = new FormAttachment(distributionCombo.getControl(), 0, SWT.CENTER);
+            formData.left = new FormAttachment(0);
+            formData.width = distributionLabelSize.x;// TODO
+            distributionLabel.setLayoutData(formData);
 
-        versionCombo = new ComboViewer(group, SWT.READ_ONLY);
-        deleteBtn = new Button(group, SWT.PUSH);
+            Label versionLabel = new Label(group, SWT.NONE);
+            versionLabel.setText(Messages.getString("DynamicDistributionPreferenceForm.label.existing.version")); //$NON-NLS-1$
+            formData = new FormData();
+            formData.top = new FormAttachment(distributionCombo.getControl(), 0, SWT.CENTER);
+            formData.left = new FormAttachment(distributionCombo.getControl(), ALIGN_HORIZON * 2, SWT.RIGHT);
+            versionLabel.setLayoutData(formData);
 
-        versionCombo.setContentProvider(ArrayContentProvider.getInstance());
-        versionCombo.setLabelProvider(new DynamicDistributionsLabelProvider());
-        formData = new FormData();
-        formData.top = new FormAttachment(versionLabel, 0, SWT.CENTER);
-        formData.left = new FormAttachment(versionLabel, ALIGN_HORIZON, SWT.RIGHT);
-        formData.right = new FormAttachment(deleteBtn, -1 * ALIGN_HORIZON, SWT.LEFT);
-        versionCombo.getControl().setLayoutData(formData);
+            versionCombo = new ComboViewer(group, SWT.READ_ONLY);
+            deleteBtn = new Button(group, SWT.PUSH);
 
-        deleteBtn.setText(Messages.getString("DynamicDistributionPreferenceForm.label.existing.delete")); //$NON-NLS-1$
-        formData = new FormData();
-        formData.top = new FormAttachment(versionCombo.getControl(), 0, SWT.CENTER);
-        formData.right = new FormAttachment(100);
-        formData.width = getNewButtonSize(deleteBtn).x;
-        deleteBtn.setLayoutData(formData);
+            versionCombo.setContentProvider(ArrayContentProvider.getInstance());
+            versionCombo.setLabelProvider(new DynamicDistributionsLabelProvider());
+            formData = new FormData();
+            formData.top = new FormAttachment(versionLabel, 0, SWT.CENTER);
+            formData.left = new FormAttachment(versionLabel, ALIGN_HORIZON, SWT.RIGHT);
+            formData.right = new FormAttachment(deleteBtn, -1 * ALIGN_HORIZON, SWT.LEFT);
+            versionCombo.getControl().setLayoutData(formData);
 
-        buildConfigBtn = new Button(group, SWT.PUSH);
-        buildConfigBtn.setText(Messages.getString("DynamicDistributionPreferenceForm.button.existing.buildConfig")); //$NON-NLS-1$
-        formData = new FormData();
-        formData.top = new FormAttachment(versionCombo.getControl(), ALIGN_VERTICAL_INNER, SWT.BOTTOM);
-        formData.left = new FormAttachment(0);
-        formData.right = new FormAttachment(0, getNewButtonSize(buildConfigBtn).x);
-        buildConfigBtn.setLayoutData(formData);
+            deleteBtn.setText(Messages.getString("DynamicDistributionPreferenceForm.label.existing.delete")); //$NON-NLS-1$
+            formData = new FormData();
+            formData.top = new FormAttachment(versionCombo.getControl(), 0, SWT.CENTER);
+            formData.right = new FormAttachment(100);
+            formData.width = getNewButtonSize(deleteBtn).x;
+            deleteBtn.setLayoutData(formData);
 
-        setupDistriCombo = new ComboViewer(nexusSetupGroup, SWT.READ_ONLY);
-        setupDistriCombo.setContentProvider(ArrayContentProvider.getInstance());
-        setupDistriCombo.setLabelProvider(new LabelProvider());
-        formData = new FormData();
-        formData.top = new FormAttachment(0);
-        formData.left = new FormAttachment(nexusSetupDistriLabel, distriAlignHorizon, SWT.RIGHT);
-        formData.right = new FormAttachment(nexusSetupDistriLabel, distriAlignHorizon + 180, SWT.RIGHT);
-        setupDistriCombo.getControl().setLayoutData(formData);
+            buildConfigBtn = new Button(group, SWT.PUSH);
+            buildConfigBtn.setText(Messages.getString("DynamicDistributionPreferenceForm.button.existing.buildConfig")); //$NON-NLS-1$
+            formData = new FormData();
+            formData.top = new FormAttachment(versionCombo.getControl(), ALIGN_VERTICAL_INNER, SWT.BOTTOM);
+            formData.left = new FormAttachment(0);
+            formData.right = new FormAttachment(0, getNewButtonSize(buildConfigBtn).x);
+            buildConfigBtn.setLayoutData(formData);
+        } else {
+            // nexus artifactory setup part========================================
+            Group nexusSetupGroup = new Group(container, SWT.NONE);
+            nexusSetupGroup.setText(Messages.getString("DynamicDistributionPreferenceForm.group.nexusSetup")); //$NON-NLS-1$
+            FormData formData = new FormData();
+            formData.left = new FormAttachment(0);
+            formData.top = new FormAttachment(0);
+            formData.right = new FormAttachment(100);
+            nexusSetupGroup.setLayoutData(formData);
+            nexusSetupGroup.setLayout(formLayout);
 
-        formData = new FormData();
-        formData.top = new FormAttachment(setupDistriCombo.getControl(), 0, SWT.CENTER);
-        formData.left = new FormAttachment(0);
-        formData.width = labelWidth;
-        nexusSetupDistriLabel.setLayoutData(formData);
+            Label nexusSetupDistriLabel = new Label(nexusSetupGroup, SWT.NONE);
+            nexusSetupDistriLabel.setText(Messages.getString("DynamicDistributionPreferenceForm.label.nexusSetup.distribution")); //$NON-NLS-1$
+            Point nexusSetupDistriLabelSize = nexusSetupDistriLabel.computeSize(SWT.DEFAULT, SWT.DEFAULT);
 
-        overrideDefaultSetupBtn = new Button(nexusSetupGroup, SWT.CHECK);
-        overrideDefaultSetupBtn
-                .setText(Messages.getString("DynamicDistributionPreferenceForm.label.nexusSetup.overrideDefaultSetup")); //$NON-NLS-1$
-        formData = new FormData();
-        formData.top = new FormAttachment(setupDistriCombo.getControl(), ALIGN_VERTICAL_INNER, SWT.BOTTOM);
-        formData.left = new FormAttachment(nexusSetupDistriLabel, 0, SWT.LEFT);
-        overrideDefaultSetupBtn.setLayoutData(formData);
+            Label repositoryLabel = new Label(nexusSetupGroup, SWT.NONE);
+            repositoryLabel.setText(Messages.getString("DynamicDistributionPreferenceForm.label.nexusSetup.repository")); //$NON-NLS-1$
+            Point repositoryLabelSize = repositoryLabel.computeSize(SWT.DEFAULT, SWT.DEFAULT);
+            Point distributionLabelSize = nexusSetupDistriLabel.computeSize(SWT.DEFAULT, SWT.DEFAULT);
+            int labelWidth = distributionLabelSize.x;
+            if (labelWidth < nexusSetupDistriLabelSize.x) {
+                labelWidth = nexusSetupDistriLabelSize.x;
+            }
+            if (labelWidth < repositoryLabelSize.x) {
+                labelWidth = repositoryLabelSize.x;
+            }
+            // ??? TODO
+            setupDistriCombo = new ComboViewer(nexusSetupGroup, SWT.READ_ONLY);
+            setupDistriCombo.setContentProvider(ArrayContentProvider.getInstance());
+            setupDistriCombo.setLabelProvider(new LabelProvider());
+            formData = new FormData();
+            formData.top = new FormAttachment(0);
+            formData.left = new FormAttachment(nexusSetupDistriLabel, distriAlignHorizon, SWT.RIGHT);
+            formData.right = new FormAttachment(nexusSetupDistriLabel, distriAlignHorizon + 180, SWT.RIGHT);
+            setupDistriCombo.getControl().setLayoutData(formData);
 
-        repositoryText = new Text(nexusSetupGroup, SWT.BORDER);
+            formData = new FormData();
+            formData.top = new FormAttachment(setupDistriCombo.getControl(), 0, SWT.CENTER);
+            formData.left = new FormAttachment(0);
+            formData.width = labelWidth;
+            nexusSetupDistriLabel.setLayoutData(formData);
 
-        formData = new FormData();
-        formData.top = new FormAttachment(repositoryText, 0, SWT.CENTER);
-        formData.left = new FormAttachment(overrideDefaultSetupBtn, 0, SWT.LEFT);
-        formData.width = labelWidth;
-        repositoryLabel.setLayoutData(formData);
+            overrideDefaultSetupBtn = new Button(nexusSetupGroup, SWT.CHECK);
+            overrideDefaultSetupBtn
+                    .setText(Messages.getString("DynamicDistributionPreferenceForm.label.nexusSetup.overrideDefaultSetup")); //$NON-NLS-1$
+            formData = new FormData();
+            formData.top = new FormAttachment(setupDistriCombo.getControl(), ALIGN_VERTICAL_INNER, SWT.BOTTOM);
+            formData.left = new FormAttachment(nexusSetupDistriLabel, 0, SWT.LEFT);
+            overrideDefaultSetupBtn.setLayoutData(formData);
 
-        formData = new FormData();
-        formData.top = new FormAttachment(overrideDefaultSetupBtn, ALIGN_VERTICAL_INNER, SWT.BOTTOM);
-        formData.left = new FormAttachment(repositoryLabel, ALIGN_HORIZON, SWT.RIGHT);
-        formData.right = new FormAttachment(100);
-        repositoryText.setLayoutData(formData);
+            repositoryText = new Text(nexusSetupGroup, SWT.BORDER);
 
-        anonymousBtn = new Button(nexusSetupGroup, SWT.CHECK);
-        anonymousBtn.setText(Messages.getString("DynamicDistributionPreferenceForm.label.nexusSetup.anonymous")); //$NON-NLS-1$
-        formData = new FormData();
-        formData.top = new FormAttachment(repositoryText, ALIGN_VERTICAL_INNER, SWT.BOTTOM);
-        formData.left = new FormAttachment(repositoryText, 0, SWT.LEFT);
-        anonymousBtn.setLayoutData(formData);
+            formData = new FormData();
+            formData.top = new FormAttachment(repositoryText, 0, SWT.CENTER);
+            formData.left = new FormAttachment(overrideDefaultSetupBtn, 0, SWT.LEFT);
+            formData.width = labelWidth;
+            repositoryLabel.setLayoutData(formData);
 
-        Label userLabel = new Label(nexusSetupGroup, SWT.NONE);
-        userLabel.setText(Messages.getString("DynamicDistributionPreferenceForm.label.nexusSetup.user")); //$NON-NLS-1$
+            formData = new FormData();
+            formData.top = new FormAttachment(overrideDefaultSetupBtn, ALIGN_VERTICAL_INNER, SWT.BOTTOM);
+            formData.left = new FormAttachment(repositoryLabel, ALIGN_HORIZON, SWT.RIGHT);
+            formData.right = new FormAttachment(100);
+            repositoryText.setLayoutData(formData);
 
-        userText = new Text(nexusSetupGroup, SWT.BORDER);
-        formData = new FormData();
-        formData.top = new FormAttachment(anonymousBtn, ALIGN_VERTICAL_INNER2, SWT.BOTTOM);
-        formData.left = new FormAttachment(anonymousBtn, ALIGN_HORIZON, SWT.RIGHT);
-        formData.width = 180;
-        userText.setLayoutData(formData);
+            anonymousBtn = new Button(nexusSetupGroup, SWT.CHECK);
+            anonymousBtn.setText(Messages.getString("DynamicDistributionPreferenceForm.label.nexusSetup.anonymous")); //$NON-NLS-1$
+            formData = new FormData();
+            formData.top = new FormAttachment(repositoryText, ALIGN_VERTICAL_INNER, SWT.BOTTOM);
+            formData.left = new FormAttachment(repositoryText, 0, SWT.LEFT);
+            anonymousBtn.setLayoutData(formData);
 
-        formData = new FormData();
-        formData.top = new FormAttachment(userText, 0, SWT.CENTER);
-        formData.right = new FormAttachment(userText, -1 * ALIGN_HORIZON, SWT.LEFT);
-        userLabel.setLayoutData(formData);
+            Label userLabel = new Label(nexusSetupGroup, SWT.NONE);
+            userLabel.setText(Messages.getString("DynamicDistributionPreferenceForm.label.nexusSetup.user")); //$NON-NLS-1$
 
-        Label passwordLabel = new Label(nexusSetupGroup, SWT.NONE);
-        passwordLabel.setText(Messages.getString("DynamicDistributionPreferenceForm.label.nexusSetup.password")); //$NON-NLS-1$
+            userText = new Text(nexusSetupGroup, SWT.BORDER);
+            formData = new FormData();
+            formData.top = new FormAttachment(anonymousBtn, ALIGN_VERTICAL_INNER2, SWT.BOTTOM);
+            formData.left = new FormAttachment(anonymousBtn, ALIGN_HORIZON, SWT.RIGHT);
+            formData.width = 180;
+            userText.setLayoutData(formData);
 
-        passwordText = new Text(nexusSetupGroup, SWT.BORDER | SWT.PASSWORD);
-        formData = new FormData();
-        formData.top = new FormAttachment(userText, ALIGN_VERTICAL_INNER2, SWT.BOTTOM);
-        formData.left = new FormAttachment(userText, 0, SWT.LEFT);
-        formData.right = new FormAttachment(userText, 0, SWT.RIGHT);
-        passwordText.setLayoutData(formData);
+            formData = new FormData();
+            formData.top = new FormAttachment(userText, 0, SWT.CENTER);
+            formData.right = new FormAttachment(userText, -1 * ALIGN_HORIZON, SWT.LEFT);
+            userLabel.setLayoutData(formData);
 
-        formData = new FormData();
-        formData.top = new FormAttachment(passwordText, 0, SWT.CENTER);
-        formData.right = new FormAttachment(userLabel, 0, SWT.RIGHT);
-        passwordLabel.setLayoutData(formData);
+            Label passwordLabel = new Label(nexusSetupGroup, SWT.NONE);
+            passwordLabel.setText(Messages.getString("DynamicDistributionPreferenceForm.label.nexusSetup.password")); //$NON-NLS-1$
+
+            passwordText = new Text(nexusSetupGroup, SWT.BORDER | SWT.PASSWORD);
+            formData = new FormData();
+            formData.top = new FormAttachment(userText, ALIGN_VERTICAL_INNER2, SWT.BOTTOM);
+            formData.left = new FormAttachment(userText, 0, SWT.LEFT);
+            formData.right = new FormAttachment(userText, 0, SWT.RIGHT);
+            passwordText.setLayoutData(formData);
+
+            formData = new FormData();
+            formData.top = new FormAttachment(passwordText, 0, SWT.CENTER);
+            formData.right = new FormAttachment(userLabel, 0, SWT.RIGHT);
+            passwordLabel.setLayoutData(formData);
+        }
+
+
+
+
     }
 
     private void addListeners() {
-        distributionCombo.addSelectionChangedListener(new ISelectionChangedListener() {
+        if (ITalendCorePrefConstants.DYNAMIC_DISTRIBUTION_SETTING == showPart) {
+            distributionCombo.addSelectionChangedListener(new ISelectionChangedListener() {
 
-            @Override
-            public void selectionChanged(SelectionChangedEvent event) {
-                refreshVersionList(new DummyDynamicMonitor());
-                updateButtons();
-            }
-        });
+                @Override
+                public void selectionChanged(SelectionChangedEvent event) {
+                    refreshVersionList(new DummyDynamicMonitor());
+                    updateButtons();
+                }
+            });
 
-        versionCombo.addSelectionChangedListener(new ISelectionChangedListener() {
+            versionCombo.addSelectionChangedListener(new ISelectionChangedListener() {
 
-            @Override
-            public void selectionChanged(SelectionChangedEvent event) {
-                updateButtons();
-            }
-        });
+                @Override
+                public void selectionChanged(SelectionChangedEvent event) {
+                    updateButtons();
+                }
+            });
 
-        buildConfigBtn.addSelectionListener(new SelectionAdapter() {
+            buildConfigBtn.addSelectionListener(new SelectionAdapter() {
 
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                try {
-                    IStructuredSelection selection = (IStructuredSelection) distributionCombo.getSelection();
-                    if (selection == null) {
-                        ExceptionHandler.process(new Exception(
-                                Messages.getString("DynamicDistributionPreferenceForm.exception.noDistributionSelected"))); //$NON-NLS-1$
+                @Override
+                public void widgetSelected(SelectionEvent e) {
+                    try {
+                        IStructuredSelection selection = (IStructuredSelection) distributionCombo.getSelection();
+                        if (selection == null) {
+                            ExceptionHandler.process(new Exception(
+                                    Messages.getString("DynamicDistributionPreferenceForm.exception.noDistributionSelected"))); //$NON-NLS-1$
+                            return;
+                        }
+                        String distribution = (String) selection.getFirstElement();
+                        if (distribution == null) {
+                            ExceptionHandler.process(new Exception(
+                                    Messages.getString("DynamicDistributionPreferenceForm.exception.noDistributionSelected"))); //$NON-NLS-1$
+                            return;
+                        }
+                        IDynamicDistributionsGroup dynamicDistributionsGroup = DynamicDistributionManager.getInstance()
+                                .getDynamicDistributionGroup(distribution);
+                        DynamicDistributionSetupData configData = new DynamicDistributionSetupData();
+                        configData.setDynamicDistributionsGroup(dynamicDistributionsGroup);
+                        DynamicDistributionSetupWizard wizard = new DynamicDistributionSetupWizard(configData);
+                        WizardDialog wizardDialog = new WizardDialog(
+                                PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
+                        wizardDialog.setMinimumPageSize(600, 400);
+                        wizardDialog.create();
+                        if (wizardDialog.open() == IDialogConstants.OK_ID) {
+                            // nothing to do
+                        }
+                        IDynamicMonitor monitor = new DummyDynamicMonitor();
+                        refreshVersionList(monitor);
+                    } catch (Throwable ex) {
+                        ExceptionHandler.process(ex);
+                    }
+                    updateButtons();
+                }
+
+            });
+
+            deleteBtn.addSelectionListener(new SelectionAdapter() {
+
+                @Override
+                public void widgetSelected(SelectionEvent e) {
+                    onDeleteBtnPressed();
+                    updateButtons();
+                }
+            });
+        } else {
+            setupDistriCombo.addSelectionChangedListener(new ISelectionChangedListener() {
+
+                @Override
+                public void selectionChanged(SelectionChangedEvent event) {
+                    try {
+                        loadRepositorySetupGroup();
+                    } catch (Exception e) {
+                        ExceptionHandler.process(e);
+                    }
+                    updateButtons();
+                }
+            });
+
+            overrideDefaultSetupBtn.addSelectionListener(new SelectionAdapter() {
+
+                @Override
+                public void widgetSelected(SelectionEvent e) {
+                    updateButtons();
+                }
+            });
+
+            repositoryText.addModifyListener(new ModifyListener() {
+
+                @Override
+                public void modifyText(ModifyEvent e) {
+                    String newRepositoryText = repositoryText.getText();
+                    if (StringUtils.equals(newRepositoryText, repositoryUrlCache)) {
                         return;
                     }
-                    String distribution = (String) selection.getFirstElement();
-                    if (distribution == null) {
-                        ExceptionHandler.process(new Exception(
-                                Messages.getString("DynamicDistributionPreferenceForm.exception.noDistributionSelected"))); //$NON-NLS-1$
+                    repositoryUrlCache = newRepositoryText;
+                    updateButtons();
+                }
+            });
+
+            anonymousBtn.addSelectionListener(new SelectionAdapter() {
+
+                @Override
+                public void widgetSelected(SelectionEvent e) {
+                    updateButtons();
+                }
+            });
+
+            userText.addModifyListener(new ModifyListener() {
+
+                @Override
+                public void modifyText(ModifyEvent e) {
+                    String newUsername = userText.getText();
+                    if (StringUtils.equals(newUsername, usernameCache)) {
                         return;
                     }
-                    IDynamicDistributionsGroup dynamicDistributionsGroup = DynamicDistributionManager.getInstance()
-                            .getDynamicDistributionGroup(distribution);
-                    DynamicDistributionSetupData configData = new DynamicDistributionSetupData();
-                    configData.setDynamicDistributionsGroup(dynamicDistributionsGroup);
-                    DynamicDistributionSetupWizard wizard = new DynamicDistributionSetupWizard(configData);
-                    WizardDialog wizardDialog = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                            wizard);
-                    wizardDialog.setMinimumPageSize(600, 400);
-                    wizardDialog.create();
-                    if (wizardDialog.open() == IDialogConstants.OK_ID) {
-                        // nothing to do
+                    usernameCache = newUsername;
+                    updateButtons();
+                }
+            });
+
+            passwordText.addModifyListener(new ModifyListener() {
+
+                @Override
+                public void modifyText(ModifyEvent e) {
+                    String newPassword = passwordText.getText();
+                    if (StringUtils.equals(newPassword, passwordCache)) {
+                        return;
                     }
-                    IDynamicMonitor monitor = new DummyDynamicMonitor();
-                    refreshVersionList(monitor);
-                } catch (Throwable ex) {
-                    ExceptionHandler.process(ex);
+                    passwordCache = newPassword;
+                    updateButtons();
                 }
-                updateButtons();
-            }
-
-        });
-
-        deleteBtn.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                onDeleteBtnPressed();
-                updateButtons();
-            }
-        });
-
-        setupDistriCombo.addSelectionChangedListener(new ISelectionChangedListener() {
-
-            @Override
-            public void selectionChanged(SelectionChangedEvent event) {
-                try {
-                    loadRepositorySetupGroup();
-                } catch (Exception e) {
-                    ExceptionHandler.process(e);
-                }
-                updateButtons();
-            }
-        });
-
-        overrideDefaultSetupBtn.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                updateButtons();
-            }
-        });
-
-        repositoryText.addModifyListener(new ModifyListener() {
-
-            @Override
-            public void modifyText(ModifyEvent e) {
-                String newRepositoryText = repositoryText.getText();
-                if (StringUtils.equals(newRepositoryText, repositoryUrlCache)) {
-                    return;
-                }
-                repositoryUrlCache = newRepositoryText;
-                updateButtons();
-            }
-        });
-
-        anonymousBtn.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                updateButtons();
-            }
-        });
-
-        userText.addModifyListener(new ModifyListener() {
-
-            @Override
-            public void modifyText(ModifyEvent e) {
-                String newUsername = userText.getText();
-                if (StringUtils.equals(newUsername, usernameCache)) {
-                    return;
-                }
-                usernameCache = newUsername;
-                updateButtons();
-            }
-        });
-
-        passwordText.addModifyListener(new ModifyListener() {
-
-            @Override
-            public void modifyText(ModifyEvent e) {
-                String newPassword = passwordText.getText();
-                if (StringUtils.equals(newPassword, passwordCache)) {
-                    return;
-                }
-                passwordCache = newPassword;
-                updateButtons();
-            }
-        });
+            });
+        }
     }
 
     private void loadData(IDynamicMonitor monitor) {
@@ -439,16 +444,23 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
                     distributionDisplayNames.add(displayName);
                 }
                 Collections.sort(distributionDisplayNames);
-                distributionCombo.setInput(distributionDisplayNames);
-                setupDistriCombo.setInput(distributionDisplayNames);
+                if (ITalendCorePrefConstants.DYNAMIC_DISTRIBUTION_SETTING == showPart) {
+                    distributionCombo.setInput(distributionDisplayNames);
+                } else {
+                    setupDistriCombo.setInput(distributionDisplayNames);
+                }
                 if (0 < distributionDisplayNames.size()) {
-                    distributionCombo.setSelection(new StructuredSelection(distributionDisplayNames.get(0)));
-                    refreshVersionList(monitor);
-
-                    setupDistriCombo.setSelection(new StructuredSelection(distributionDisplayNames.get(0)));
+                    if (ITalendCorePrefConstants.DYNAMIC_DISTRIBUTION_SETTING == showPart) {
+                        distributionCombo.setSelection(new StructuredSelection(distributionDisplayNames.get(0)));
+                        refreshVersionList(monitor);
+                    } else {
+                        setupDistriCombo.setSelection(new StructuredSelection(distributionDisplayNames.get(0)));
+                    }
                 }
             }
-            loadRepositorySetupGroup();
+            if (ITalendCorePrefConstants.DYNAMIC_DISTRIBUTION_SETTING != showPart) {
+                loadRepositorySetupGroup();
+            }
         } catch (Exception e) {
             ExceptionHandler.process(e);
         }
@@ -493,7 +505,10 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
     private IDynamicDistributionsGroup getSelectedSetupDynamicDistriGroup() {
         IDynamicDistributionsGroup selectedSetupDistriGroup = null;
         try {
-            IStructuredSelection setupDistriSelection = (IStructuredSelection) setupDistriCombo.getSelection();
+            IStructuredSelection setupDistriSelection = null;
+            if (ITalendCorePrefConstants.DYNAMIC_DISTRIBUTION_SETTING != showPart) {
+                setupDistriSelection = (IStructuredSelection) setupDistriCombo.getSelection();
+            }
             if (setupDistriSelection != null) {
                 String selectedSetupDistriDisplayName = (String) setupDistriSelection.getFirstElement();
                 if (StringUtils.isNotEmpty(selectedSetupDistriDisplayName)) {
@@ -739,10 +754,11 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
     @Override
     public boolean isComplete() {
         showMessage(null, WizardPage.NONE);
-        boolean checkVersion = checkVersionSelection();
-        boolean checkRepository = checkRepository();
-        boolean checkUsernamePassword = checkUsernamePassword();
-        return checkVersion && checkRepository && checkUsernamePassword;
+        if (ITalendCorePrefConstants.DYNAMIC_DISTRIBUTION_SETTING == showPart) {
+            return checkVersionSelection();
+        } else {
+            return checkRepository() && checkUsernamePassword();
+        }
     }
 
     @Override

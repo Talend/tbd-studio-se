@@ -16,6 +16,7 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
+import org.talend.core.prefs.ITalendCorePrefConstants;
 import org.talend.core.ui.services.IHadoopUiService;
 import org.talend.core.ui.services.IPreferenceForm;
 import org.talend.designer.maven.aether.DummyDynamicMonitor;
@@ -30,13 +31,15 @@ import org.talend.repository.hadoopcluster.ui.dynamic.form.DynamicDistributionPr
  */
 public class HadoopUiService implements IHadoopUiService {
 
+    DynamicDistributionPreferenceForm existingConfigForm = null;
     /* (non-Javadoc)
      * @see org.talend.core.ui.services.IHadoopUiService#createDynamicDistributionPrefForm(org.eclipse.swt.widgets.Composite)
      */
     @Override
     public IPreferenceForm createDynamicDistributionPrefForm(Composite parent, PreferencePage prefPage) {
         IDynamicMonitor monitor = new DummyDynamicMonitor();
-        DynamicDistributionPreferenceForm existingConfigForm = new DynamicDistributionPreferenceForm(parent, SWT.NONE, monitor);
+        existingConfigForm = new DynamicDistributionPreferenceForm(parent, SWT.NONE, monitor,
+                ITalendCorePrefConstants.ARTIFACT_PROXY_SETTING);
         AbstractDynamicDistributionForm.ICheckListener checkListener = new ICheckListener() {
 
             @Override
@@ -62,7 +65,24 @@ public class HadoopUiService implements IHadoopUiService {
 
         };
         existingConfigForm.setCheckListener(checkListener);
-        return null;
+        return new IPreferenceForm() {
+
+            @Override
+            public void setLayoutData(Object layoutData) {
+                existingConfigForm.setLayoutData(layoutData);
+            }
+
+            @Override
+            public boolean performApply() {
+                return existingConfigForm.performApply();
+            }
+
+            @Override
+            public void performDefaults() {
+                existingConfigForm.performDefaults();
+            }
+
+        };
     }
 
 }
