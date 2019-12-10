@@ -78,8 +78,8 @@ public class HadoopUiService implements IHadoopUiService {
             }
 
             @Override
-            public void performDefaults() {
-                existingConfigForm.performDefaults();
+            public boolean performDefaults() {
+                return existingConfigForm.performDefaults();
             }
 
         };

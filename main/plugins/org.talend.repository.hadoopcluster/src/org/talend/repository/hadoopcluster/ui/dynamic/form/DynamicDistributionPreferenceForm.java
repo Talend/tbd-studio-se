@@ -190,9 +190,9 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
             formData.right = new FormAttachment(0, getNewButtonSize(buildConfigBtn).x);
             buildConfigBtn.setLayoutData(formData);
         } else {
-            // nexus artifactory setup part========================================
+            // nexus artifactory setup part
             Group nexusSetupGroup = new Group(container, SWT.NONE);
-            nexusSetupGroup.setText(Messages.getString("DynamicDistributionPreferenceForm.group.nexusSetup")); //$NON-NLS-1$
+            nexusSetupGroup.setText(Messages.getString("DynamicDistributionPreferenceForm.group.dynamicDistribution")); //$NON-NLS-1$
             FormData formData = new FormData();
             formData.left = new FormAttachment(0);
             formData.top = new FormAttachment(0);
@@ -841,17 +841,17 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
     }
 
     @Override
-    public void performDefaults() {
+    public boolean performDefaults() {
         boolean isReadonly = isReadonly();
         if (isReadonly) {
             super.performDefaults();
-            return;
+            return false;
         }
         boolean agree = MessageDialog.openConfirm(getShell(),
                 Messages.getString("DynamicDistributionPreferenceForm.performDefaults.confirm.title"), //$NON-NLS-1$
                 Messages.getString("DynamicDistributionPreferenceForm.performDefaults.confirm.message")); //$NON-NLS-1$
         if (!agree) {
-            return;
+            return false;
         }
         try {
             IDynamicDistributionsGroup selectedSetupDynamicDistriGroup = getSelectedSetupDynamicDistriGroup();
@@ -899,7 +899,7 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
             }
             ExceptionMessageDialog.openError(getShell(), Messages.getString("ExceptionDialog.title"), message, e); //$NON-NLS-1$
         }
-        super.performDefaults();
+        return super.performDefaults();
     }
 
     private void reloadDynamicDistributions() throws Throwable {
