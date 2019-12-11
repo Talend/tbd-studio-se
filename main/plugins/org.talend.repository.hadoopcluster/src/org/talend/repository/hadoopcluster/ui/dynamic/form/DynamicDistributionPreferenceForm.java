@@ -154,7 +154,7 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
             formData = new FormData();
             formData.top = new FormAttachment(distributionCombo.getControl(), 0, SWT.CENTER);
             formData.left = new FormAttachment(0);
-            formData.width = distributionLabelSize.x;// TODO
+            formData.width = distributionLabelSize.x;
             distributionLabel.setLayoutData(formData);
 
             Label versionLabel = new Label(group, SWT.NONE);
@@ -215,7 +215,6 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
             if (labelWidth < repositoryLabelSize.x) {
                 labelWidth = repositoryLabelSize.x;
             }
-            // ??? TODO
             setupDistriCombo = new ComboViewer(nexusSetupGroup, SWT.READ_ONLY);
             setupDistriCombo.setContentProvider(ArrayContentProvider.getInstance());
             setupDistriCombo.setLabelProvider(new LabelProvider());
