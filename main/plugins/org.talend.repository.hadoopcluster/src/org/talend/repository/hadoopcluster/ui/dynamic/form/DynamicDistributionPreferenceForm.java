@@ -20,6 +20,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.eclipse.aether.resolution.VersionRangeResult;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -54,6 +55,7 @@ import org.talend.commons.exception.ExceptionHandler;
 import org.talend.commons.exception.LoginException;
 import org.talend.commons.exception.PersistenceException;
 import org.talend.commons.ui.runtime.exception.ExceptionMessageDialog;
+import org.talend.commons.ui.swt.dialogs.ErrorDialogWidthDetailArea;
 import org.talend.core.hadoop.BigDataBasicUtil;
 import org.talend.core.prefs.ITalendCorePrefConstants;
 import org.talend.core.repository.model.ProxyRepositoryFactory;
@@ -62,6 +64,7 @@ import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
 import org.talend.designer.maven.aether.AbsDynamicProgressMonitor;
 import org.talend.designer.maven.aether.DummyDynamicMonitor;
 import org.talend.designer.maven.aether.IDynamicMonitor;
+import org.talend.designer.maven.aether.util.DynamicDistributionAetherUtils;
 import org.talend.hadoop.distribution.dynamic.DynamicConstants;
 import org.talend.hadoop.distribution.dynamic.DynamicDistributionManager;
 import org.talend.hadoop.distribution.dynamic.IDynamicDistributionsGroup;
@@ -69,10 +72,12 @@ import org.talend.hadoop.distribution.dynamic.comparator.DynamicPluginComparator
 import org.talend.hadoop.distribution.dynamic.pref.IDynamicDistributionPreference;
 import org.talend.repository.ProjectManager;
 import org.talend.repository.RepositoryWorkUnit;
+import org.talend.repository.hadoopcluster.HadoopClusterPlugin;
 import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.ui.dynamic.DynamicDistributionSetupData;
 import org.talend.repository.hadoopcluster.ui.dynamic.DynamicDistributionSetupWizard;
 import org.talend.repository.hadoopcluster.ui.dynamic.form.labelprovider.DynamicDistributionsLabelProvider;
+import org.talend.utils.sugars.TypedReturnCode;
 
 /**
  * DOC cmeng class global comment. Detailled comment
@@ -106,6 +111,8 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
     private String passwordCache;
 
     private int showPart;
+
+    private Button checkConnectionBtn;
 
     public DynamicDistributionPreferenceForm(Composite parent, int style, IDynamicMonitor monitor,int showPart) {
         super(parent, style, null);
@@ -288,6 +295,14 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
             formData.top = new FormAttachment(passwordText, 0, SWT.CENTER);
             formData.right = new FormAttachment(userLabel, 0, SWT.RIGHT);
             passwordLabel.setLayoutData(formData);
+
+            checkConnectionBtn = new Button(nexusSetupGroup, SWT.NONE);
+            checkConnectionBtn.setText(Messages.getString("DynamicDistributionPreferenceForm.button.checkConnection"));
+            formData = new FormData();
+            formData.top = new FormAttachment(passwordText, ALIGN_VERTICAL_INNER, SWT.BOTTOM);
+            formData.right = new FormAttachment(100);
+            checkConnectionBtn.setLayoutData(formData);
+
         }
 
 
@@ -429,6 +444,38 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
                     updateButtons();
                 }
             });
+
+            checkConnectionBtn.addSelectionListener(new SelectionAdapter() {
+
+                @Override
+                public void widgetSelected(SelectionEvent e) {
+                    if (!isComplete()) {
+                        return;
+                    }
+                    TypedReturnCode<VersionRangeResult> tc = new TypedReturnCode<VersionRangeResult>();
+                    try {
+                        tc = DynamicDistributionAetherUtils.checkConnection(
+                                repositoryText.getText(),
+                                userText.getText(), passwordText.getText(), "log4j", "log4j", null,
+                                null,
+                                null);
+                    } catch (Exception e1) {
+                        e1.printStackTrace();
+                    }
+                    showCheckConnectionInformation(true, tc);
+                }
+            });
+        }
+    }
+
+    private void showCheckConnectionInformation(boolean show, TypedReturnCode<VersionRangeResult> result) {
+        if (!result.isOk()) {
+            String mainMsg = Messages.getString("DynamicDistributionPreferenceForm.checkConnection.connectionFailureMsg"); //$NON-NLS-1$
+            new ErrorDialogWidthDetailArea(getShell(), HadoopClusterPlugin.PLUGIN_ID, mainMsg, result.getMessage());
+        } else if (result.isOk() && show) {
+            MessageDialog.openInformation(getShell(),
+                    Messages.getString("DynamicDistributionPreferenceForm.messageBox.checkConnection"), //$NON-NLS-1$
+                    Messages.getString("DynamicDistributionPreferenceForm.checkConnection.successMsg"));
         }
     }
 
