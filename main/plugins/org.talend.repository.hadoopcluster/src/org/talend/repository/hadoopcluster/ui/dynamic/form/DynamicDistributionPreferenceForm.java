@@ -456,9 +456,7 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
                     try {
                         tc = DynamicDistributionAetherUtils.checkConnection(
                                 repositoryText.getText(),
-                                userText.getText(), passwordText.getText(), "log4j", "log4j", null,
-                                null,
-                                null);
+                                userText.getText(), passwordText.getText(), "log4j", "log4j", null, null, null);
                     } catch (Exception e1) {
                         e1.printStackTrace();
                     }
