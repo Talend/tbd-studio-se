@@ -2416,6 +2416,9 @@
       "groupId": "org.apache.httpcomponents",
       "artifactId": "httpclient",
       "version": "4.5.6",
+      "jarName": "httpclient-4.5.6.jar",
+      "mvnUri": "mvn:org.apache.httpcomponents/httpclient/4.5.6",
+      "useStudioRepository": "true",
       "classifier": "",
       "description": ""
     },
@@ -2426,6 +2429,9 @@
       "groupId": "org.apache.httpcomponents",
       "artifactId": "httpcore",
       "version": "4.4.10",
+      "jarName": "httpcore-4.4.10.jar",
+      "mvnUri": "mvn:org.apache.httpcomponents/httpcore/4.4.10",
+      "useStudioRepository": "true",
       "classifier": "",
       "description": "dependency for httpclient"
     },
@@ -2436,6 +2442,9 @@
       "groupId": "commons-codec",
       "artifactId": "commons-codec",
       "version": "1.10",
+      "jarName": "commons-codec-1.10.jar",
+      "mvnUri": "mvn:commons-codec/commons-codec/1.10",
+      "useStudioRepository": "true",
       "classifier": "",
       "description": "dependency for httpclient"
     },
