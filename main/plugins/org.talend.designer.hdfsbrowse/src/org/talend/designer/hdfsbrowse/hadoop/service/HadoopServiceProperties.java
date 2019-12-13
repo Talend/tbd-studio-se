@@ -395,7 +395,7 @@ public class HadoopServiceProperties {
     }
 
     public String getWebHDFSSSLTrustStorePassword() {
-        return this.webHDFSSSLTrustStorePassword;
+        return getRealValue(this.webHDFSSSLTrustStorePassword);
     }
 
     public void setWebHDFSSSLTrustStorePassword(String webHDFSSSLTrustStorePassword) {
@@ -403,7 +403,7 @@ public class HadoopServiceProperties {
     }
 
     public String getWebHDFSSSLTrustStorePath() {
-        return this.webHDFSSSLTrustStorePath;
+        return getRealValue(this.webHDFSSSLTrustStorePath);
     }
 
     public void setWebHDFSSSLTrustStorePath(String webHDFSSSLTrustStorePath) {

@@ -46,6 +46,7 @@ import org.talend.core.prefs.SSLPreferenceConstants;
 import org.talend.core.repository.model.connection.ConnectionStatus;
 import org.talend.core.utils.ReflectionUtils;
 import org.talend.core.utils.TalendQuoteUtils;
+import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
 import org.talend.designer.hdfsbrowse.exceptions.HadoopServerException;
 import org.talend.designer.hdfsbrowse.model.EHadoopAdditionalJars;
 import org.talend.designer.hdfsbrowse.model.EHadoopAdditionalJarsMapping;
@@ -178,9 +179,15 @@ public class HadoopServerUtil {
             if (StringUtils.isNotBlank(hcId) && hadoopClusterService != null) {
                 Map<String, String> parameters = hadoopClusterService.getHadoopDbParameters(hcId);
                 if (parameters.size() > 0) {
+                    ContextType contextType = hadoopClusterService.getHadoopClusterContextType(hcId);
+                    if (contextType != null) {
+                        connection.setParentContextType(contextType);
+                    }
                     boolean isUseSSL = Boolean.parseBoolean(parameters.get(ConnParameterKeys.CONN_PARA_KEY_USE_WEBHDFS_SSL));
-                    String trustStorePath = parameters.get(ConnParameterKeys.CONN_PARA_KEY_WEBHDFS_SSL_TRUST_STORE_PATH);
-                    String trustStorePassword = parameters.get(ConnParameterKeys.CONN_PARA_KEY_WEBHDFS_SSL_TRUST_STORE_PASSWORD);
+                    String trustStorePath = connection
+                            .getRealValue(parameters.get(ConnParameterKeys.CONN_PARA_KEY_WEBHDFS_SSL_TRUST_STORE_PATH), true);
+                    String trustStorePassword = connection
+                            .getRealValue(parameters.get(ConnParameterKeys.CONN_PARA_KEY_WEBHDFS_SSL_TRUST_STORE_PASSWORD), true);
                     setSSLSystemProperty(isUseSSL, nameNodeURI, trustStorePath, trustStorePassword);
                 }
             }
