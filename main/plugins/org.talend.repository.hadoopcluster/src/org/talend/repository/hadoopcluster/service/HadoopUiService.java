@@ -31,14 +31,13 @@ import org.talend.repository.hadoopcluster.ui.dynamic.form.DynamicDistributionPr
  */
 public class HadoopUiService implements IHadoopUiService {
 
-    DynamicDistributionPreferenceForm existingConfigForm = null;
     /* (non-Javadoc)
      * @see org.talend.core.ui.services.IHadoopUiService#createDynamicDistributionPrefForm(org.eclipse.swt.widgets.Composite)
      */
     @Override
     public IPreferenceForm createDynamicDistributionPrefForm(Composite parent, PreferencePage prefPage) {
         IDynamicMonitor monitor = new DummyDynamicMonitor();
-        existingConfigForm = new DynamicDistributionPreferenceForm(parent, SWT.NONE, monitor,
+        DynamicDistributionPreferenceForm existingConfigForm = new DynamicDistributionPreferenceForm(parent, SWT.NONE, monitor,
                 ITalendCorePrefConstants.ARTIFACT_PROXY_SETTING);
         AbstractDynamicDistributionForm.ICheckListener checkListener = new ICheckListener() {
 

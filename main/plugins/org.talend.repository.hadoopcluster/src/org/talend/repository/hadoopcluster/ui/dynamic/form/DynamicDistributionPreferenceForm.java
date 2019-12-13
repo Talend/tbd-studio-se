@@ -20,7 +20,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import org.eclipse.aether.resolution.VersionRangeResult;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -452,13 +451,13 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
                     if (!isComplete()) {
                         return;
                     }
-                    TypedReturnCode<VersionRangeResult> tc = new TypedReturnCode<VersionRangeResult>();
+                    TypedReturnCode tc = new TypedReturnCode();
                     try {
                         tc = DynamicDistributionAetherUtils.checkConnection(
                                 repositoryText.getText(),
                                 userText.getText(), passwordText.getText(), "log4j", "log4j", null, null, null);
                     } catch (Exception e1) {
-                        e1.printStackTrace();
+                        ExceptionHandler.process(e1);
                     }
                     showCheckConnectionInformation(true, tc);
                 }
@@ -466,7 +465,7 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
         }
     }
 
-    private void showCheckConnectionInformation(boolean show, TypedReturnCode<VersionRangeResult> result) {
+    private void showCheckConnectionInformation(boolean show, TypedReturnCode result) {
         if (!result.isOk()) {
             String mainMsg = Messages.getString("DynamicDistributionPreferenceForm.checkConnection.connectionFailureMsg"); //$NON-NLS-1$
             new ErrorDialogWidthDetailArea(getShell(), HadoopClusterPlugin.PLUGIN_ID, mainMsg, result.getMessage());
