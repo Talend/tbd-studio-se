@@ -453,6 +453,11 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
                     }
                     TypedReturnCode tc = new TypedReturnCode();
                     try {
+                        // because the url of dynamic distribution is a standard maven api,it doesn't depend on the
+                        // artifact repositoy type.So just try to resolve one jar and get the highest version,judging
+                        // from the result of the response to tell if it can connect successfully.
+                        // Here we use log4j to try resolve because this jar is needed for dynamic distribution
+                        // module.And even if the log4j is not exsit.We can still judge by the MetadataNotFoundException
                         tc = DynamicDistributionAetherUtils.checkConnection(
                                 repositoryText.getText(),
                                 userText.getText(), passwordText.getText(), "log4j", "log4j", null, null, null);
