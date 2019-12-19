@@ -298,6 +298,26 @@ public class DynamicModuleAdapter extends AbstractDynamicAdapter {
             String excludeDependencies = bean.getExcludeDependencies();
             String useStudioRepository = bean.getUseStudioRepository();
 
+            if (StringUtils.isBlank(mvnUri) && StringUtils.isNotBlank(bean.getGroupId())
+                    && StringUtils.isNotBlank(bean.getArtifactId()) && StringUtils.isNotBlank(bean.getVersion())) {
+                String extension = null;
+                if (StringUtils.isNotBlank(bean.getExtension())) {
+                    extension = bean.getExtension();
+                }
+                String classifier = null;
+                if (StringUtils.isNotBlank(bean.getClassifier())) {
+                    classifier = bean.getClassifier();
+                }
+                mvnUri = MavenUrlHelper.generateMvnUrl(bean.getGroupId(), bean.getArtifactId(), bean.getVersion(), extension,
+                        classifier);
+            }
+            if (StringUtils.isBlank(mvnUri)) {
+                throw new RuntimeException(Messages.getString("DynamicModuleAdapter.exception.wrongConfig", bean.getId()));
+            }
+            if (StringUtils.isBlank(jarName)) {
+                jarName = MavenUrlHelper.parseMvnUrl(mvnUri).getFileName(false);
+            }
+
             libraryNeeded.setAttribute(ATTR_BUNDLE_ID, bundleID);
             libraryNeeded.setAttribute(ATTR_CONTEXT, context);
             libraryNeeded.setAttribute(ATTR_ID, id);
