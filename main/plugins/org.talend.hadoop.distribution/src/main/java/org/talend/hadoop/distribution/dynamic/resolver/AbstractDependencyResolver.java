@@ -164,8 +164,7 @@ public abstract class AbstractDependencyResolver implements IDependencyResolver 
         // Here we use org.apache.hadoop/hadoop-client to try resolve because currently this jar is needed for dynamic
         // distribution
         // If furture we have new Dynamic distribution ,please modify here
-        // module.And even if the log4j is not exsit.We can still judge by the MetadataNotFoundException
-        String groupId = "org.apache.hadoop";
+        String groupId = "org.apache.hadoop";// these two vars are the same with listHadoopVersions currently.
         String artifactId = "hadoop-client";
         TypedReturnCode tc = DynamicDistributionAetherUtils.checkConnection(remoteUrl, username, password, groupId, artifactId,
                 null, null,
