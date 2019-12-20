@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Consumer;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IPath;
@@ -368,10 +369,16 @@ public class HadoopClusterService implements IHadoopClusterService {
         if (item instanceof HadoopClusterConnectionItem) {
             HadoopClusterConnectionItem connectionItem = (HadoopClusterConnectionItem) item;
             HadoopClusterConnection connection = (HadoopClusterConnection) connectionItem.getConnection();
-            if (connection.isUseCustomConfs() && !HCParameterUtil.isOverrideHadoopConfs(connection)) {
+            if (connection.isUseCustomConfs()) {
                 Set<String> confsJarNames = HadoopConfsUtils.getConfsJarDefaultNames(connectionItem, true);
+                Consumer<String> action = null;
+                if (HCParameterUtil.isOverrideHadoopConfs(connection)) {
+                    action = (confsJarName) -> removeHadoopConfJar(modulesNeeded, confsJarName);
+                } else {
+                    action = (confsJarName) -> addConfsModule(modulesNeeded, connection, confsJarName);
+                }
                 for (String confsJarName : confsJarNames) {
-                    addConfsModule(modulesNeeded, connection, confsJarName);
+                    action.accept(confsJarName);
                 }
             }
         }
@@ -380,6 +387,14 @@ public class HadoopClusterService implements IHadoopClusterService {
     private void addConfsModule(List<ModuleNeeded> modulesNeeded, HadoopClusterConnection connection, String customConfsJarName) {
         String context = customConfsJarName.substring(0, customConfsJarName.lastIndexOf(".")); //$NON-NLS-1$
         ModuleNeeded customConfsModule = new ModuleNeeded(context, customConfsJarName, null, true);
+        removeHadoopConfJar(modulesNeeded, customConfsJarName);
+        if (connection.isContextMode()) {
+            customConfsModule.getExtraAttributes().put(HadoopConstants.IS_DYNAMIC_JAR, true);
+        }
+        modulesNeeded.add(customConfsModule);
+    }
+
+    private void removeHadoopConfJar(List<ModuleNeeded> modulesNeeded, String customConfsJarName) {
         Iterator<ModuleNeeded> moduleIterator = modulesNeeded.iterator();
         while (moduleIterator.hasNext()) {
             ModuleNeeded module = moduleIterator.next();
@@ -389,10 +404,6 @@ public class HadoopClusterService implements IHadoopClusterService {
                 moduleIterator.remove();
             }
         }
-        if (connection.isContextMode()) {
-            customConfsModule.getExtraAttributes().put(HadoopConstants.IS_DYNAMIC_JAR, true);
-        }
-        modulesNeeded.add(customConfsModule);
     }
 
     @Override
