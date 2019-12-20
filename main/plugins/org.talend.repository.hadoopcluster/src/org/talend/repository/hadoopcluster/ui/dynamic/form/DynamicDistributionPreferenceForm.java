@@ -63,12 +63,13 @@ import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
 import org.talend.designer.maven.aether.AbsDynamicProgressMonitor;
 import org.talend.designer.maven.aether.DummyDynamicMonitor;
 import org.talend.designer.maven.aether.IDynamicMonitor;
-import org.talend.designer.maven.aether.util.DynamicDistributionAetherUtils;
+import org.talend.hadoop.distribution.dynamic.DynamicConfiguration;
 import org.talend.hadoop.distribution.dynamic.DynamicConstants;
 import org.talend.hadoop.distribution.dynamic.DynamicDistributionManager;
 import org.talend.hadoop.distribution.dynamic.IDynamicDistributionsGroup;
 import org.talend.hadoop.distribution.dynamic.comparator.DynamicPluginComparator;
 import org.talend.hadoop.distribution.dynamic.pref.IDynamicDistributionPreference;
+import org.talend.hadoop.distribution.dynamic.resolver.IDependencyResolver;
 import org.talend.repository.ProjectManager;
 import org.talend.repository.RepositoryWorkUnit;
 import org.talend.repository.hadoopcluster.HadoopClusterPlugin;
@@ -453,16 +454,17 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
                     }
                     TypedReturnCode tc = new TypedReturnCode();
                     try {
-                        // because the url of dynamic distribution is a standard maven api,it doesn't depend on the
-                        // artifact repositoy type.So just try to resolve one jar and get the highest version,judging
-                        // from the result of the response to tell if it can connect successfully.
-                        // Here we use log4j to try resolve because this jar is needed for dynamic distribution
-                        // module.And even if the log4j is not exsit.We can still judge by the MetadataNotFoundException
-                        tc = DynamicDistributionAetherUtils.checkConnection(
-                                repositoryText.getText(),
-                                userText.getText(), passwordText.getText(), "log4j", "log4j", null, null, null);
+                        IDynamicDistributionsGroup distriGroup = getSelectedSetupDynamicDistriGroup();
+                        DynamicConfiguration dynamicConfiguration = new DynamicConfiguration();
+                        dynamicConfiguration.setDistribution(distriGroup.getDistribution());
+                        IDependencyResolver dependencyResolver = distriGroup.getDependencyResolver(dynamicConfiguration);
+                        tc = dependencyResolver.checkConnection(repositoryText.getText(), userText.getText(),
+                                passwordText.getText());
+
                     } catch (Exception e1) {
                         ExceptionHandler.process(e1);
+                        tc.setOk(false);
+                        tc.setMessage(e1.getMessage());
                     }
                     showCheckConnectionInformation(true, tc);
                 }

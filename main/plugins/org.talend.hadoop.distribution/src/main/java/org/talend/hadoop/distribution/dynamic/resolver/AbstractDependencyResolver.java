@@ -29,6 +29,7 @@ import org.talend.designer.maven.aether.util.DynamicDistributionAetherUtils;
 import org.talend.hadoop.distribution.dynamic.DynamicConfiguration;
 import org.talend.hadoop.distribution.dynamic.VersionNotFoundException;
 import org.talend.hadoop.distribution.dynamic.pref.IDynamicDistributionPreference;
+import org.talend.utils.sugars.TypedReturnCode;
 
 /**
  * DOC cmeng class global comment. Detailled comment
@@ -153,6 +154,23 @@ public abstract class AbstractDependencyResolver implements IDependencyResolver 
         List<String> versionRange = DynamicDistributionAetherUtils.versionRange(remoteRepositoryUrl, username, password,
                 localRepositoryPath, groupId, artifactId, baseVersion, topVersion, monitor);
         return getCleanHadoopVersion(versionRange);
+    }
+
+    @Override
+    public TypedReturnCode checkConnection(String remoteUrl, String username, String password) throws Exception {
+        // because the url of dynamic distribution is a standard maven api,it doesn't depend on the
+        // artifact repositoy type.So just try to resolve one jar and get the highest version,judging
+        // from the result of the response to tell if it can connect successfully.
+        // Here we use org.apache.hadoop/hadoop-client to try resolve because currently this jar is needed for dynamic
+        // distribution
+        // If furture we have new Dynamic distribution ,please modify here
+        // module.And even if the log4j is not exsit.We can still judge by the MetadataNotFoundException
+        String groupId = "org.apache.hadoop";
+        String artifactId = "hadoop-client";
+        TypedReturnCode tc = DynamicDistributionAetherUtils.checkConnection(remoteUrl, username, password, groupId, artifactId,
+                null, null,
+                null);
+        return tc;
     }
 
     protected List<String> getCleanHadoopVersion(List<String> versionRange) throws Exception {
