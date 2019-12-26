@@ -106,18 +106,20 @@ public abstract class AbstractCheckedServiceProvider implements ICheckedServiceP
                 Set<String> addedJarSet = new HashSet<>();
                 Set<String> excludedJarSet = new HashSet<>();
                 Consumer<DynamicClassLoader> afterLoaded = null;
-                String hadoopConfSpecificJarPath = serviceProperties.getHadoopConfSpecificJar();
-                boolean jarInvalid = false;
-                if (StringUtils.isBlank(hadoopConfSpecificJarPath) || !new File(hadoopConfSpecificJarPath).exists()) {
-                    jarInvalid = true;
+                if (serviceProperties.isSetHadoopConf()) {
+                    String hadoopConfSpecificJarPath = serviceProperties.getHadoopConfSpecificJar();
+                    boolean jarInvalid = false;
+                    if (StringUtils.isBlank(hadoopConfSpecificJarPath) || !new File(hadoopConfSpecificJarPath).exists()) {
+                        jarInvalid = true;
+                    }
+                    if (jarInvalid) {
+                        ExceptionHandler
+                                .process(new Exception("Hadoop configuration JAR path invalid: " + hadoopConfSpecificJarPath));
+                    } else {
+                        afterLoaded = (t) -> t.addLibrary(hadoopConfSpecificJarPath);
+                        rebuildClassloader = true;
+                    }
                 }
-                if (jarInvalid) {
-                    ExceptionHandler
-                            .process(new Exception("Hadoop configuration JAR path invalid: " + hadoopConfSpecificJarPath));
-                } else {
-                    afterLoaded = (t) -> t.addLibrary(hadoopConfSpecificJarPath);
-                }
-                rebuildClassloader = true;
                 if (!confFileExist) {
                     addedJarSet.add(customConfsJarName);
                     // remove the default jars, since it will be conflict with the new jars
