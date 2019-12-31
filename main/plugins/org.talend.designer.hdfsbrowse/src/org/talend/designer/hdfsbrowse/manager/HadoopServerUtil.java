@@ -35,18 +35,25 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.core.classloader.ClassLoaderFactory;
 import org.talend.core.classloader.DynamicClassLoader;
+import org.talend.core.database.conn.ConnParameterKeys;
+import org.talend.core.hadoop.HadoopClassLoaderUtil;
+import org.talend.core.hadoop.IHadoopClusterService;
 import org.talend.core.hadoop.conf.EHadoopConfProperties;
+import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.model.general.ModuleNeeded;
 import org.talend.core.model.general.ModuleNeeded.ELibraryInstallStatus;
+import org.talend.core.prefs.SSLPreferenceConstants;
 import org.talend.core.repository.model.connection.ConnectionStatus;
 import org.talend.core.utils.ReflectionUtils;
 import org.talend.core.utils.TalendQuoteUtils;
+import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
 import org.talend.designer.hdfsbrowse.exceptions.HadoopServerException;
 import org.talend.designer.hdfsbrowse.model.EHadoopAdditionalJars;
 import org.talend.designer.hdfsbrowse.model.EHadoopAdditionalJarsMapping;
 import org.talend.designer.hdfsbrowse.model.ELinuxAuthority;
 import org.talend.designer.hdfsbrowse.model.HDFSConnectionBean;
 import org.talend.librariesmanager.model.ModulesNeededProvider;
+import org.talend.utils.security.StudioEncryption;
 
 /**
  * DOC ycbai class global comment. Detailled comment
@@ -166,6 +173,25 @@ public class HadoopServerUtil {
             keytab = TalendQuoteUtils.removeQuotesIfExist(keytab);
         }
 
+        if (HadoopClassLoaderUtil.isWebHDFS(nameNodeURI)) {
+            IHadoopClusterService hadoopClusterService = HadoopRepositoryUtil.getHadoopClusterService();
+            String hcId = connection.getRelativeHadoopClusterId();
+            if (StringUtils.isNotBlank(hcId) && hadoopClusterService != null) {
+                Map<String, String> parameters = hadoopClusterService.getHadoopDbParameters(hcId);
+                if (parameters.size() > 0) {
+                    ContextType contextType = hadoopClusterService.getHadoopClusterContextType(hcId);
+                    if (contextType != null) {
+                        connection.setParentContextType(contextType);
+                    }
+                    boolean isUseSSL = Boolean.parseBoolean(parameters.get(ConnParameterKeys.CONN_PARA_KEY_USE_WEBHDFS_SSL));
+                    String trustStorePath = connection
+                            .getRealValue(parameters.get(ConnParameterKeys.CONN_PARA_KEY_WEBHDFS_SSL_TRUST_STORE_PATH), true);
+                    String trustStorePassword = connection
+                            .getRealValue(parameters.get(ConnParameterKeys.CONN_PARA_KEY_WEBHDFS_SSL_TRUST_STORE_PASSWORD), true);
+                    setSSLSystemProperty(isUseSSL, nameNodeURI, trustStorePath, trustStorePassword);
+                }
+            }
+        }
         ClassLoader classLoader = currentClassLoader;
         ClassLoader oldClassLoaderLoader = Thread.currentThread().getContextClassLoader();
         try {
@@ -548,4 +574,17 @@ public class HadoopServerUtil {
         }
     }
 
+    public static void setSSLSystemProperty(boolean isUseSSL, String nameNodeURI, String trustStorePath,
+            String trustStorePassword) {
+        if (isUseSSL) {
+            System.setProperty(SSLPreferenceConstants.TRUSTSTORE_FILE, trustStorePath);
+            System.setProperty(SSLPreferenceConstants.TRUSTSTORE_PASSWORD,
+                    StudioEncryption.getStudioEncryption(StudioEncryption.EncryptionKeyName.SYSTEM).decrypt(trustStorePassword));
+        } else {
+            if (HadoopClassLoaderUtil.isWebHDFS(nameNodeURI)) {
+                System.clearProperty(SSLPreferenceConstants.TRUSTSTORE_FILE);
+                System.clearProperty(SSLPreferenceConstants.TRUSTSTORE_PASSWORD);
+            }
+        }
+    }
 }

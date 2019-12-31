@@ -13,20 +13,57 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
+import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.talend.core.model.metadata.builder.connection.ConnectionPackage;
 
 import org.talend.core.model.properties.PropertiesPackage;
 
+import org.talend.designer.business.model.business.BusinessPackage;
+import org.talend.designer.core.model.utils.emf.component.ComponentPackage;
+import org.talend.designer.core.model.utils.emf.talendfile.TalendFilePackage;
+import org.talend.designer.joblet.model.JobletPackage;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnectionItem;
 import org.talend.repository.model.hadoopcluster.HadoopClusterFactory;
 import org.talend.repository.model.hadoopcluster.HadoopClusterPackage;
 import org.talend.repository.model.hadoopcluster.HadoopSubConnection;
 import org.talend.repository.model.hadoopcluster.HadoopSubConnectionItem;
+import orgomg.cwm.analysis.businessnomenclature.BusinessnomenclaturePackage;
+import orgomg.cwm.analysis.datamining.DataminingPackage;
+import orgomg.cwm.analysis.informationvisualization.InformationvisualizationPackage;
+import orgomg.cwm.analysis.olap.OlapPackage;
+import orgomg.cwm.analysis.transformation.TransformationPackage;
+import orgomg.cwm.foundation.businessinformation.BusinessinformationPackage;
+import orgomg.cwm.foundation.datatypes.DatatypesPackage;
+import orgomg.cwm.foundation.expressions.ExpressionsPackage;
+import orgomg.cwm.foundation.keysindexes.KeysindexesPackage;
+import orgomg.cwm.foundation.softwaredeployment.SoftwaredeploymentPackage;
+import orgomg.cwm.foundation.typemapping.TypemappingPackage;
+import orgomg.cwm.management.warehouseoperation.WarehouseoperationPackage;
+import orgomg.cwm.management.warehouseprocess.WarehouseprocessPackage;
+import orgomg.cwm.objectmodel.behavioral.BehavioralPackage;
+import orgomg.cwm.objectmodel.core.CorePackage;
+import orgomg.cwm.objectmodel.instance.InstancePackage;
+import orgomg.cwm.objectmodel.relationships.RelationshipsPackage;
+import orgomg.cwm.resource.multidimensional.MultidimensionalPackage;
+import orgomg.cwm.resource.record.RecordPackage;
+import orgomg.cwm.resource.relational.RelationalPackage;
+import orgomg.cwm.resource.xml.XmlPackage;
+import orgomg.cwmmip.CwmmipPackage;
+import orgomg.cwmx.analysis.informationreporting.InformationreportingPackage;
+import orgomg.cwmx.analysis.informationset.InformationsetPackage;
+import orgomg.cwmx.foundation.er.ErPackage;
+import orgomg.cwmx.resource.coboldata.CoboldataPackage;
+import orgomg.cwmx.resource.dmsii.DmsiiPackage;
+import orgomg.cwmx.resource.essbase.EssbasePackage;
+import orgomg.cwmx.resource.express.ExpressPackage;
+import orgomg.cwmx.resource.imsdatabase.ImsdatabasePackage;
+import orgomg.mof.model.ModelPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -105,7 +142,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
 
     /**
      * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-     * 
+     *
      * <p>This method is used to initialize {@link HadoopClusterPackage#eINSTANCE} when that field is accessed.
      * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
      * <!-- begin-user-doc -->
@@ -119,12 +156,51 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
         if (isInited) return (HadoopClusterPackage)EPackage.Registry.INSTANCE.getEPackage(HadoopClusterPackage.eNS_URI);
 
         // Obtain or create and register package
-        HadoopClusterPackageImpl theHadoopClusterPackage = (HadoopClusterPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof HadoopClusterPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new HadoopClusterPackageImpl());
+        Object registeredHadoopClusterPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+        HadoopClusterPackageImpl theHadoopClusterPackage = registeredHadoopClusterPackage instanceof HadoopClusterPackageImpl ? (HadoopClusterPackageImpl)registeredHadoopClusterPackage : new HadoopClusterPackageImpl();
 
         isInited = true;
 
         // Initialize simple dependencies
+        BusinessPackage.eINSTANCE.eClass();
+        ComponentPackage.eINSTANCE.eClass();
+        CorePackage.eINSTANCE.eClass();
+        BehavioralPackage.eINSTANCE.eClass();
+        RelationshipsPackage.eINSTANCE.eClass();
+        InstancePackage.eINSTANCE.eClass();
+        BusinessinformationPackage.eINSTANCE.eClass();
+        DatatypesPackage.eINSTANCE.eClass();
+        ExpressionsPackage.eINSTANCE.eClass();
+        KeysindexesPackage.eINSTANCE.eClass();
+        SoftwaredeploymentPackage.eINSTANCE.eClass();
+        TypemappingPackage.eINSTANCE.eClass();
+        RelationalPackage.eINSTANCE.eClass();
+        RecordPackage.eINSTANCE.eClass();
+        MultidimensionalPackage.eINSTANCE.eClass();
+        XmlPackage.eINSTANCE.eClass();
+        TransformationPackage.eINSTANCE.eClass();
+        OlapPackage.eINSTANCE.eClass();
+        DataminingPackage.eINSTANCE.eClass();
+        InformationvisualizationPackage.eINSTANCE.eClass();
+        BusinessnomenclaturePackage.eINSTANCE.eClass();
+        WarehouseprocessPackage.eINSTANCE.eClass();
+        WarehouseoperationPackage.eINSTANCE.eClass();
+        ErPackage.eINSTANCE.eClass();
+        CoboldataPackage.eINSTANCE.eClass();
+        DmsiiPackage.eINSTANCE.eClass();
+        ImsdatabasePackage.eINSTANCE.eClass();
+        EssbasePackage.eINSTANCE.eClass();
+        ExpressPackage.eINSTANCE.eClass();
+        InformationsetPackage.eINSTANCE.eClass();
+        InformationreportingPackage.eINSTANCE.eClass();
+        CwmmipPackage.eINSTANCE.eClass();
+        ModelPackage.eINSTANCE.eClass();
+        EcorePackage.eINSTANCE.eClass();
+        JobletPackage.eINSTANCE.eClass();
+        ConnectionPackage.eINSTANCE.eClass();
+        NotationPackage.eINSTANCE.eClass();
         PropertiesPackage.eINSTANCE.eClass();
+        TalendFilePackage.eINSTANCE.eClass();
         XMLTypePackage.eINSTANCE.eClass();
 
         // Create package meta-data objects
@@ -136,7 +212,6 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
         // Mark meta-data to indicate it can't be changed
         theHadoopClusterPackage.freeze();
 
-  
         // Update the registry and return the package
         EPackage.Registry.INSTANCE.put(HadoopClusterPackage.eNS_URI, theHadoopClusterPackage);
         return theHadoopClusterPackage;
@@ -147,6 +222,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EClass getHadoopClusterConnection() {
         return hadoopClusterConnectionEClass;
     }
@@ -156,6 +232,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_Distribution() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(0);
     }
@@ -165,6 +242,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_DfVersion() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(1);
     }
@@ -174,6 +252,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_UseCustomVersion() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(2);
     }
@@ -183,6 +262,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_UseYarn() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(3);
     }
@@ -192,6 +272,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_Server() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(4);
     }
@@ -201,6 +282,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_NameNodeURI() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(5);
     }
@@ -210,6 +292,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_JobTrackerURI() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(6);
     }
@@ -219,6 +302,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_EnableKerberos() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(7);
     }
@@ -228,6 +312,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_Principal() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(8);
     }
@@ -237,6 +322,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_JtOrRmPrincipal() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(9);
     }
@@ -246,6 +332,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_JobHistoryPrincipal() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(10);
     }
@@ -255,6 +342,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_UserName() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(11);
     }
@@ -264,6 +352,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_Group() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(12);
     }
@@ -273,6 +362,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_AuthMode() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(13);
     }
@@ -282,6 +372,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_ConnectionList() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(14);
     }
@@ -291,6 +382,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EReference getHadoopClusterConnection_Parameters() {
         return (EReference)hadoopClusterConnectionEClass.getEStructuralFeatures().get(15);
     }
@@ -300,6 +392,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_UseKeytab() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(16);
     }
@@ -309,6 +402,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_KeytabPrincipal() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(17);
     }
@@ -318,6 +412,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_Keytab() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(18);
     }
@@ -327,6 +422,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_HadoopProperties() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(19);
     }
@@ -336,6 +432,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_UseSparkProperties() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(20);
     }
@@ -345,6 +442,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_SparkProperties() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(21);
     }
@@ -354,6 +452,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_RmScheduler() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(22);
     }
@@ -363,6 +462,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_JobHistory() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(23);
     }
@@ -372,6 +472,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_StagingDirectory() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(24);
     }
@@ -381,6 +482,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_UseDNHost() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(25);
     }
@@ -390,6 +492,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_UseCustomConfs() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(26);
     }
@@ -399,6 +502,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_UseClouderaNavi() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(27);
     }
@@ -408,6 +512,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_ClouderaNaviUserName() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(28);
     }
@@ -417,6 +522,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_ClouderaNaviPassword() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(29);
     }
@@ -426,6 +532,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_ClouderaNaviUrl() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(30);
     }
@@ -435,6 +542,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_ClouderaNaviMetadataUrl() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(31);
     }
@@ -444,6 +552,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_ClouderaNaviClientUrl() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(32);
     }
@@ -453,6 +562,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_ClouderaDisableSSL() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(33);
     }
@@ -462,6 +572,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_ClouderaAutoCommit() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(34);
     }
@@ -471,6 +582,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_ClouderaDieNoError() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(35);
     }
@@ -480,6 +592,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_EnableMaprT() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(36);
     }
@@ -489,6 +602,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_MaprTPassword() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(37);
     }
@@ -498,6 +612,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_MaprTCluster() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(38);
     }
@@ -507,6 +622,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_MaprTDuration() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(39);
     }
@@ -516,6 +632,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_SetMaprTHomeDir() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(40);
     }
@@ -525,6 +642,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_MaprTHomeDir() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(41);
     }
@@ -534,6 +652,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_SetHadoopLogin() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(42);
     }
@@ -543,6 +662,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_MaprTHadoopLogin() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(43);
     }
@@ -552,6 +672,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_PreloadAuthentification() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(44);
     }
@@ -561,6 +682,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopClusterConnection_ConfFile() {
         return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(45);
     }
@@ -570,6 +692,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EReference getHadoopClusterConnection_ConfFiles() {
         return (EReference)hadoopClusterConnectionEClass.getEStructuralFeatures().get(46);
     }
@@ -579,6 +702,37 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
+    public EAttribute getHadoopClusterConnection_UseWebHDFSSSL() {
+        return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(47);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EAttribute getHadoopClusterConnection_WebHDFSSSLTrustStorePath() {
+        return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(48);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EAttribute getHadoopClusterConnection_WebHDFSSSLTrustStorePassword() {
+        return (EAttribute)hadoopClusterConnectionEClass.getEStructuralFeatures().get(49);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
     public EClass getHadoopClusterConnectionItem() {
         return hadoopClusterConnectionItemEClass;
     }
@@ -588,6 +742,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EClass getHadoopAdditionalProperties() {
         return hadoopAdditionalPropertiesEClass;
     }
@@ -597,6 +752,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopAdditionalProperties_Key() {
         return (EAttribute)hadoopAdditionalPropertiesEClass.getEStructuralFeatures().get(0);
     }
@@ -606,6 +762,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopAdditionalProperties_Value() {
         return (EAttribute)hadoopAdditionalPropertiesEClass.getEStructuralFeatures().get(1);
     }
@@ -615,6 +772,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EClass getHadoopSubConnection() {
         return hadoopSubConnectionEClass;
     }
@@ -624,6 +782,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopSubConnection_RelativeHadoopClusterId() {
         return (EAttribute)hadoopSubConnectionEClass.getEStructuralFeatures().get(0);
     }
@@ -633,6 +792,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopSubConnection_HadoopProperties() {
         return (EAttribute)hadoopSubConnectionEClass.getEStructuralFeatures().get(1);
     }
@@ -642,6 +802,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EClass getHadoopSubConnectionItem() {
         return hadoopSubConnectionItemEClass;
     }
@@ -651,6 +812,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EClass getHadoopConfJarEntry() {
         return hadoopConfJarEntryEClass;
     }
@@ -660,6 +822,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopConfJarEntry_Key() {
         return (EAttribute)hadoopConfJarEntryEClass.getEStructuralFeatures().get(0);
     }
@@ -669,6 +832,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getHadoopConfJarEntry_Value() {
         return (EAttribute)hadoopConfJarEntryEClass.getEStructuralFeatures().get(1);
     }
@@ -678,6 +842,7 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public HadoopClusterFactory getHadoopClusterFactory() {
         return (HadoopClusterFactory)getEFactoryInstance();
     }
@@ -749,6 +914,9 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
         createEAttribute(hadoopClusterConnectionEClass, HADOOP_CLUSTER_CONNECTION__PRELOAD_AUTHENTIFICATION);
         createEAttribute(hadoopClusterConnectionEClass, HADOOP_CLUSTER_CONNECTION__CONF_FILE);
         createEReference(hadoopClusterConnectionEClass, HADOOP_CLUSTER_CONNECTION__CONF_FILES);
+        createEAttribute(hadoopClusterConnectionEClass, HADOOP_CLUSTER_CONNECTION__USE_WEB_HDFSSSL);
+        createEAttribute(hadoopClusterConnectionEClass, HADOOP_CLUSTER_CONNECTION__WEB_HDFSSSL_TRUST_STORE_PATH);
+        createEAttribute(hadoopClusterConnectionEClass, HADOOP_CLUSTER_CONNECTION__WEB_HDFSSSL_TRUST_STORE_PASSWORD);
 
         hadoopClusterConnectionItemEClass = createEClass(HADOOP_CLUSTER_CONNECTION_ITEM);
 
@@ -854,6 +1022,9 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
         initEAttribute(getHadoopClusterConnection_PreloadAuthentification(), theXMLTypePackage.getBoolean(), "preloadAuthentification", null, 0, 1, HadoopClusterConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getHadoopClusterConnection_ConfFile(), ecorePackage.getEByteArray(), "confFile", null, 0, 1, HadoopClusterConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getHadoopClusterConnection_ConfFiles(), this.getHadoopConfJarEntry(), null, "confFiles", null, 0, -1, HadoopClusterConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getHadoopClusterConnection_UseWebHDFSSSL(), theXMLTypePackage.getBoolean(), "useWebHDFSSSL", null, 0, 1, HadoopClusterConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getHadoopClusterConnection_WebHDFSSSLTrustStorePath(), theXMLTypePackage.getString(), "webHDFSSSLTrustStorePath", "", 0, 1, HadoopClusterConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getHadoopClusterConnection_WebHDFSSSLTrustStorePassword(), theXMLTypePackage.getString(), "webHDFSSSLTrustStorePassword", "", 0, 1, HadoopClusterConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(hadoopClusterConnectionItemEClass, HadoopClusterConnectionItem.class, "HadoopClusterConnectionItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -886,15 +1057,15 @@ public class HadoopClusterPackageImpl extends EPackageImpl implements HadoopClus
      * @generated
      */
     protected void createMapEntryAnnotations() {
-        String source = "MapEntry";	
+        String source = "MapEntry";
         addAnnotation
-          (hadoopAdditionalPropertiesEClass, 
-           source, 
+          (hadoopAdditionalPropertiesEClass,
+           source,
            new String[] {
-           });	
+           });
         addAnnotation
-          (hadoopConfJarEntryEClass, 
-           source, 
+          (hadoopConfJarEntryEClass,
+           source,
            new String[] {
            });
     }

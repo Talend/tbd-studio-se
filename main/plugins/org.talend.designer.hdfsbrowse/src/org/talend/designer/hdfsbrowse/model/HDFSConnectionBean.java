@@ -71,7 +71,7 @@ public class HDFSConnectionBean {
         return getRealValue(value, false);
     }
 
-    private String getRealValue(String value, boolean isParentParam) {
+    public String getRealValue(String value, boolean isParentParam) {
         ContextType ct = null;
         if (isParentParam) {
             ct = parentContextType;

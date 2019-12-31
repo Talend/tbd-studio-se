@@ -579,4 +579,16 @@ public class HadoopClusterService implements IHadoopClusterService {
         return updated;
     }
 
+    @Override
+    public ContextType getHadoopClusterContextType(String id) {
+        Item item = getHadoopClusterItemById(id);
+        if (item instanceof HadoopClusterConnectionItem) {
+            HadoopClusterConnectionItem hcItem = (HadoopClusterConnectionItem) item;
+            HadoopClusterConnection hcConnection = (HadoopClusterConnection) hcItem.getConnection();
+            if (hcConnection != null && hcConnection.isContextMode()) {
+                return ConnectionContextHelper.getContextTypeForContextMode(hcConnection, true);
+            }
+        }
+        return null;
+    }
 }

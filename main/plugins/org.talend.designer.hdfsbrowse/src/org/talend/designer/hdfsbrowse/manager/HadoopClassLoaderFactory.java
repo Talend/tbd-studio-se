@@ -21,7 +21,9 @@ import org.apache.commons.lang.StringUtils;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.core.classloader.ClassLoaderFactory;
 import org.talend.core.classloader.DynamicClassLoader;
+import org.talend.core.hadoop.EHadoopCategory;
 import org.talend.core.hadoop.EHadoopConfigurationJars;
+import org.talend.core.hadoop.HadoopClassLoaderUtil;
 import org.talend.core.hadoop.HadoopConfJarBean;
 import org.talend.core.hadoop.IHadoopClusterService;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
@@ -92,6 +94,8 @@ public class HadoopClassLoaderFactory {
                         }
                     }
                 }
+                // Add webhdfs extra jars
+                loader = HadoopClassLoaderUtil.addExtraJars(loader, EHadoopCategory.HDFS, connectionBean.getNameNodeURI());
             } catch (MalformedURLException e) {
                 ExceptionHandler.process(e);
             }
