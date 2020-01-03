@@ -229,8 +229,11 @@
 		<IMPORT NAME="commons-lang-2.6.jar" MODULE="commons-lang-2.6.jar"
 			MVN="mvn:commons-lang/commons-lang/2.6"
 			REQUIRED="true" />
-		<IMPORT NAME="aws-java-sdk-1.11.406.jar" MODULE="aws-java-sdk-1.11.406.jar"
-			MVN="mvn:com.amazonaws/aws-java-sdk/1.11.406"
+		<IMPORT NAME="aws-java-sdk-core-1.11.160.jar" MODULE="aws-java-sdk-core-1.11.160.jar"
+			MVN="mvn:com.amazonaws/aws-java-sdk-core/1.11.160"
+			REQUIRED="true" />
+		<IMPORT NAME="aws-java-sdk-dynamodb-1.11.160.jar" MODULE="aws-java-sdk-dynamodb-1.11.160.jar"
+			MVN="mvn:com.amazonaws/aws-java-sdk-dynamodb/1.11.160"
 			REQUIRED="true" />
 		<IMPORT NAME="jackson-core-2.10.1.jar" MODULE="jackson-core-2.10.1.jar"
 			MVN="mvn:com.fasterxml.jackson.core/jackson-core/2.10.1"
