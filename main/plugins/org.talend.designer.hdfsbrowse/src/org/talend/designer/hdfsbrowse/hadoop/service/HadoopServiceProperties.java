@@ -96,6 +96,12 @@ public class HadoopServiceProperties {
 
     private String clusterName;
 
+    private boolean useWebHDFSSSL;
+
+    private String webHDFSSSLTrustStorePassword;
+
+    private String webHDFSSSLTrustStorePath;
+
     public ConnectionItem getItem() {
         return this.item;
     }
@@ -378,5 +384,29 @@ public class HadoopServiceProperties {
 
     public void setClusterName(String clusterName) {
         this.clusterName = clusterName;
+    }
+
+    public boolean isUseWebHDFSSSL() {
+        return this.useWebHDFSSSL;
+    }
+
+    public void setUseWebHDFSSSL(boolean useWebHDFSSSL) {
+        this.useWebHDFSSSL = useWebHDFSSSL;
+    }
+
+    public String getWebHDFSSSLTrustStorePassword() {
+        return getRealValue(this.webHDFSSSLTrustStorePassword);
+    }
+
+    public void setWebHDFSSSLTrustStorePassword(String webHDFSSSLTrustStorePassword) {
+        this.webHDFSSSLTrustStorePassword = webHDFSSSLTrustStorePassword;
+    }
+
+    public String getWebHDFSSSLTrustStorePath() {
+        return getRealValue(this.webHDFSSSLTrustStorePath);
+    }
+
+    public void setWebHDFSSSLTrustStorePath(String webHDFSSSLTrustStorePath) {
+        this.webHDFSSSLTrustStorePath = webHDFSSSLTrustStorePath;
     }
 }

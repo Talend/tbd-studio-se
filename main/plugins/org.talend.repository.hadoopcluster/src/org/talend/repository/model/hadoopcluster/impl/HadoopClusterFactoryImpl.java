@@ -78,6 +78,7 @@ public class HadoopClusterFactoryImpl extends EFactoryImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public HadoopClusterConnection createHadoopClusterConnection() {
         HadoopClusterConnectionImpl hadoopClusterConnection = new HadoopClusterConnectionImpl();
         return hadoopClusterConnection;
@@ -88,6 +89,7 @@ public class HadoopClusterFactoryImpl extends EFactoryImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public HadoopClusterConnectionItem createHadoopClusterConnectionItem() {
         HadoopClusterConnectionItemImpl hadoopClusterConnectionItem = new HadoopClusterConnectionItemImpl();
         return hadoopClusterConnectionItem;
@@ -108,6 +110,7 @@ public class HadoopClusterFactoryImpl extends EFactoryImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public HadoopSubConnection createHadoopSubConnection() {
         HadoopSubConnectionImpl hadoopSubConnection = new HadoopSubConnectionImpl();
         return hadoopSubConnection;
@@ -118,6 +121,7 @@ public class HadoopClusterFactoryImpl extends EFactoryImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public HadoopSubConnectionItem createHadoopSubConnectionItem() {
         HadoopSubConnectionItemImpl hadoopSubConnectionItem = new HadoopSubConnectionItemImpl();
         return hadoopSubConnectionItem;
@@ -138,6 +142,7 @@ public class HadoopClusterFactoryImpl extends EFactoryImpl implements HadoopClus
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public HadoopClusterPackage getHadoopClusterPackage() {
         return (HadoopClusterPackage)getEPackage();
     }
