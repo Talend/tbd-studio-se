@@ -22,7 +22,7 @@
         <module>i18n/plugins/org.talend.repository.nosql.nl</module>
         <module>i18n/plugins/org.talend.repository.oozie.nl</module>
         <module>i18n/plugins/org.talend.repository.pigudf.nl</module>
-
+        <module>main/features/org.talend.help.bd.feature</module>
         <module>main/features/org.talend.rcp.branding.tos.bigdata.feature</module>
         <module>main/features/org.talend.tos.bigdata.feature</module>
         <module>main/features/org.talend.tos.bigdata.libraries.feature</module>

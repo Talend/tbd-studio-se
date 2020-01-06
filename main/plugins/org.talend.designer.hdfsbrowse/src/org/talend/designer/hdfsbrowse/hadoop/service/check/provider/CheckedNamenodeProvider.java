@@ -17,10 +17,12 @@ import java.net.URI;
 import org.apache.commons.lang.StringUtils;
 import org.talend.core.hadoop.EHadoopCategory;
 import org.talend.core.hadoop.HadoopClassLoaderFactory2;
+import org.talend.core.hadoop.HadoopClassLoaderUtil;
 import org.talend.core.hadoop.conf.EHadoopConfProperties;
 import org.talend.core.utils.ReflectionUtils;
 import org.talend.designer.hdfsbrowse.hadoop.service.HadoopServiceProperties;
 import org.talend.designer.hdfsbrowse.hadoop.service.check.AbstractCheckedServiceProvider;
+import org.talend.designer.hdfsbrowse.manager.HadoopServerUtil;
 
 /**
  * created by ycbai on Aug 6, 2014 Detailled comment
@@ -38,6 +40,8 @@ public class CheckedNamenodeProvider extends AbstractCheckedServiceProvider {
             ReflectionUtils.invokeMethod(conf, "set", new Object[] { String.format("fs.%s.impl.disable.cache", scheme), "true" }); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
             ReflectionUtils.invokeMethod(conf, "set", new Object[] { "dfs.client.retry.policy.enabled", "false" }); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
             ReflectionUtils.invokeMethod(conf, "set", new Object[] { "ipc.client.connect.max.retries", "0" }); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
+            HadoopServerUtil.setSSLSystemProperty(serviceProperties.isUseWebHDFSSSL(), serviceProperties.getNameNode(),
+                    serviceProperties.getWebHDFSSSLTrustStorePath(), serviceProperties.getWebHDFSSSLTrustStorePassword());
             setHadoopProperties(conf, serviceProperties);
             ReflectionUtils.invokeStaticMethod("org.apache.hadoop.security.UserGroupInformation", classLoader, //$NON-NLS-1$
                     "setConfiguration", new Object[] { conf }); //$NON-NLS-1$
@@ -99,6 +103,8 @@ public class CheckedNamenodeProvider extends AbstractCheckedServiceProvider {
             loader = HadoopClassLoaderFactory2.getHDFSClassLoader(serviceProperties.getRelativeHadoopClusterId(),
                     serviceProperties.getDistribution(), serviceProperties.getVersion(), serviceProperties.isUseKrb());
             loader = addCustomConfsJarIfNeeded(loader, serviceProperties, EHadoopCategory.HDFS);
+            // Add webhdfs extra jars
+            loader = HadoopClassLoaderUtil.addExtraJars(loader, EHadoopCategory.HDFS, serviceProperties.getNameNode());
         }
 
         return loader;

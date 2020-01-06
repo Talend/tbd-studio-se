@@ -351,9 +351,9 @@
                     if (currentElement instanceof <%=objectType%>) {
                         // Start index at 1, in order to remove the first unwanted or empty string.
                         processTree((<%=objectType%>)currentElement, path, 1, pattern);
-                   } else if (currentElement instanceof com.mongodb.BasicDBList) {
+                   } else if (currentElement instanceof java.util.List) {
                        // Start index at 1, in order to remove the first unwanted or empty string.
-                       processTree((com.mongodb.BasicDBList) currentElement, path, 1, pattern);
+                       processTree((java.util.List<Object>) currentElement, path, 1, pattern);
                    }
                 }
 
@@ -362,24 +362,24 @@
                         Object nextElement = currentElement.get(path[index]);
                         if (nextElement instanceof <%=objectType%>) {
                              processTree((<%=objectType%>)nextElement, path, index + 1, pattern);
-                        } else if (nextElement instanceof com.mongodb.BasicDBList) {
-                            processTree((com.mongodb.BasicDBList) nextElement, path, index + 1, pattern);
+                        } else if (nextElement instanceof java.util.List) {
+                            processTree((java.util.List<Object>) nextElement, path, index + 1, pattern);
                         } else if (nextElement == null && index > 0) {
                             // some loop are not reported by the XML tree
                             nextElement = currentElement.get(path[index - 1]);
                             if (nextElement != null) {
                                 if (nextElement instanceof <%=objectType%>) {
                                     processTree((<%=objectType%>)nextElement, path, index, pattern);
-                               } else if (nextElement instanceof com.mongodb.BasicDBList) {
-                                   processTree((com.mongodb.BasicDBList) nextElement, path, index, pattern);
+                               } else if (nextElement instanceof java.util.List) {
+                                   processTree((java.util.List<Object>) nextElement, path, index, pattern);
                                }
                             }
                         }
                     } else {
                         // process leaf
-                        if (currentElement.get(path[path.length - 1]) instanceof com.mongodb.BasicDBList) {
+                        if (currentElement.get(path[path.length - 1]) instanceof java.util.List) {
                             // if the leaf is a list
-                            com.mongodb.BasicDBList finalObjects = (com.mongodb.BasicDBList) currentElement.get(path[path.length - 1]);
+                            java.util.List<Object> finalObjects = (java.util.List<Object>) currentElement.get(path[path.length - 1]);
                             com.mongodb.BasicDBList convertedElements = new com.mongodb.BasicDBList();
                             for (Object finalObject: finalObjects) {
                                 if (pattern == null) {
@@ -416,13 +416,13 @@
                     }
                 }
 
-                public void processTree(com.mongodb.BasicDBList currentElements, String[] path, int index, String pattern) {
+                public void processTree(java.util.List<Object> currentElements, String[] path, int index, String pattern) {
                     if (index  < path.length - 1) {
                         for (Object currentElement: currentElements) {
                             if (currentElement instanceof <%=objectType%>) {
                                 processTree((<%=objectType%>)currentElement, path, index + 1, pattern);
-                            } else if (currentElement instanceof com.mongodb.BasicDBList) {
-                                processTree((com.mongodb.BasicDBList) currentElement, path, index + 1, pattern);
+                            } else if (currentElement instanceof java.util.List) {
+                                processTree((java.util.List<Object>) currentElement, path, index + 1, pattern);
                             }
                         }
                     } else {

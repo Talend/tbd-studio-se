@@ -28,6 +28,8 @@ Package hadoopcluster <http://www.talend.org/hadoopcluster>
     Attribute keytabPrincipal : String
     Attribute keytab : String
     Attribute hadoopProperties : String
+    Attribute useSparkProperties : Boolean
+    Attribute sparkProperties : String
     Attribute rmScheduler : String
     Attribute jobHistory : String
     Attribute stagingDirectory : String
@@ -42,6 +44,20 @@ Package hadoopcluster <http://www.talend.org/hadoopcluster>
     Attribute clouderaDisableSSL : Boolean
     Attribute clouderaAutoCommit : Boolean
     Attribute clouderaDieNoError : Boolean
+    Attribute enableMaprT : Boolean
+    Attribute maprTPassword : String
+    Attribute maprTCluster : String
+    Attribute maprTDuration : String
+    Attribute setMaprTHomeDir : Boolean
+    Attribute maprTHomeDir : String
+    Attribute setHadoopLogin : Boolean
+    Attribute maprTHadoopLogin : String
+    Attribute preloadAuthentification : Boolean
+    Attribute confFile : EByteArray
+    Reference confFiles : HadoopConfJarEntry<<0..*>>
+    Attribute useWebHDFSSSL : Boolean
+    Attribute webHDFSSSLTrustStorePath : String
+    Attribute webHDFSSSLTrustStorePassword : String
 
   Class HadoopClusterConnectionItem -> ConnectionItem
 
@@ -54,3 +70,7 @@ Package hadoopcluster <http://www.talend.org/hadoopcluster>
     Attribute hadoopProperties : String
 
   Class HadoopSubConnectionItem -> ConnectionItem
+
+  Class HadoopConfJarEntry
+    Attribute key : String
+    Attribute value : EByteArray

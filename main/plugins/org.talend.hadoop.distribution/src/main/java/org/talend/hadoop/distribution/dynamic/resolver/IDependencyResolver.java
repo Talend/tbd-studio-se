@@ -17,6 +17,7 @@ import java.util.List;
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.designer.maven.aether.node.DependencyNode;
 import org.talend.hadoop.distribution.dynamic.DynamicConfiguration;
+import org.talend.utils.sugars.TypedReturnCode;
 
 /**
  * DOC cmeng  class global comment. Detailled comment
@@ -42,5 +43,7 @@ public interface IDependencyResolver {
     public DynamicConfiguration getConfiguration();
 
     public void setConfiguration(DynamicConfiguration configuration);
+
+    public TypedReturnCode checkConnection(String remoteUrl, String username, String password) throws Exception;
 
 }

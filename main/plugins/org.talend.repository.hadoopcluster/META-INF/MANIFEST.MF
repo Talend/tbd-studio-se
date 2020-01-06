@@ -2,6 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.talend.repository.hadoopcluster;singleton:=true
+Automatic-Module-Name: org.talend.repository.hadoopcluster
 Bundle-Version: 7.3.1.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
@@ -37,7 +38,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.talend.components.api,
  org.talend.libraries.dom4j-jaxen,
  org.talend.designer.maven.aether,
- org.eclipse.nebula.widgets.tablecombo
+ org.eclipse.nebula.widgets.tablecombo,
+ org.talend.core.ui
 Bundle-ActivationPolicy: lazy
 Export-Package: org.talend.repository.hadoopcluster.action,
  org.talend.repository.hadoopcluster.action.common,
