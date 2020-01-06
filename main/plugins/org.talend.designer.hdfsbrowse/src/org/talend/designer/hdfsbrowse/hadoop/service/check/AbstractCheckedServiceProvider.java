@@ -117,18 +117,14 @@ public abstract class AbstractCheckedServiceProvider implements ICheckedServiceP
                                 .process(new Exception("Hadoop configuration JAR path invalid: " + hadoopConfSpecificJarPath));
                     } else {
                         afterLoaded = (t) -> t.addLibrary(hadoopConfSpecificJarPath);
+                        rebuildClassloader = true;
                     }
-                    excludedJarSet.add(customConfsJarName);
+                }
+                if (!confFileExist) {
+                    addedJarSet.add(customConfsJarName);
                     // remove the default jars, since it will be conflict with the new jars
                     excludedJarSet.addAll(Arrays.asList(HadoopClassLoaderFactory2.getSecurityJars(category)));
                     rebuildClassloader = true;
-                } else {
-                    if (!confFileExist) {
-                        addedJarSet.add(customConfsJarName);
-                        // remove the default jars, since it will be conflict with the new jars
-                        excludedJarSet.addAll(Arrays.asList(HadoopClassLoaderFactory2.getSecurityJars(category)));
-                        rebuildClassloader = true;
-                    }
                 }
                 if (rebuildClassloader) {
                     try {

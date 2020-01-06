@@ -79,11 +79,10 @@ public class HadoopClassLoaderFactory {
                         } else {
                             afterLoad = (t) -> t.addLibrary(overrideCustomConfPath);
                         }
-                    } else {
-                        String customConfsJarName = confJarBean.getCustomConfJarName();
-                        if (customConfsJarName != null) {
-                            addingJars = new String[] { customConfsJarName };
-                        }
+                    }
+                    String customConfsJarName = confJarBean.getCustomConfJarName();
+                    if (customConfsJarName != null) {
+                        addingJars = new String[] { customConfsJarName };
                     }
                     if (afterLoad != null || addingJars != null) {
                         loader = DynamicClassLoader.createNewOneBaseLoader((DynamicClassLoader) loader, addingJars,
