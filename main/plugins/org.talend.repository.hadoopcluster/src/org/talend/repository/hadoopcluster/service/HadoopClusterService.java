@@ -14,6 +14,7 @@ package org.talend.repository.hadoopcluster.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -22,8 +23,10 @@ import java.util.Set;
 import java.util.function.Consumer;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Priority;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.EMap;
+import org.talend.commons.CommonsPlugin;
 import org.talend.commons.exception.BusinessException;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.commons.exception.PersistenceException;
@@ -348,14 +351,26 @@ public class HadoopClusterService implements IHadoopClusterService {
                     extraIds = contextType.getName();
                 }
                 String defaultName = null;
-                if (extraIds == null) {
-                    defaultName = HadoopConfsUtils.getConfsJarDefaultName(item, createJarIfNotExist);
+                EMap<String, byte[]> confFiles = connection.getConfFiles();
+                boolean isUseDefaultCustomConfJar = false;
+                if (confFiles == null || confFiles.isEmpty()) {
+                    isUseDefaultCustomConfJar = true;
+                    defaultName = getDefaultHadoopConfigJarName(connection);
+                    if (CommonsPlugin.isDebugMode()) {
+                        ExceptionHandler.process(new Exception(
+                                "Custom Hadoop configuration is not retrieved yet, will use the default one: " + defaultName),
+                                Priority.WARN);
+                    }
                 } else {
-                    defaultName = HadoopConfsUtils.getConfsJarDefaultName(item, createJarIfNotExist, extraIds);
+                    if (extraIds == null) {
+                        defaultName = HadoopConfsUtils.getConfsJarDefaultName(item, createJarIfNotExist);
+                    } else {
+                        defaultName = HadoopConfsUtils.getConfsJarDefaultName(item, createJarIfNotExist, extraIds);
+                    }
                 }
                 return Optional.of(new HadoopConfJarBean(isContextMode,
                         connection.isUseCustomConfs() && HCParameterUtil.isOverrideHadoopConfs(connection),
-                        HCParameterUtil.getHadoopConfSpecificJar(connection, false),
+                        isUseDefaultCustomConfJar, HCParameterUtil.getHadoopConfSpecificJar(connection, false),
                         HCParameterUtil.getHadoopConfSpecificJar(connection, true), defaultName));
             }
         }
@@ -370,9 +385,28 @@ public class HadoopClusterService implements IHadoopClusterService {
             HadoopClusterConnectionItem connectionItem = (HadoopClusterConnectionItem) item;
             HadoopClusterConnection connection = (HadoopClusterConnection) connectionItem.getConnection();
             if (connection.isUseCustomConfs()) {
+                boolean isDynamicJar = connection.isContextMode();
+                EMap<String, byte[]> confFiles = connection.getConfFiles();
                 Set<String> confsJarNames = HadoopConfsUtils.getConfsJarDefaultNames(connectionItem, true);
+                if (confFiles == null || confFiles.isEmpty()) {
+                    isDynamicJar = false;
+                    String defaultJarName = getDefaultHadoopConfigJarName(connection);
+                    if (CommonsPlugin.isDebugMode()) {
+                        ExceptionHandler.process(new Exception(
+                                "Custom Hadoop configuration is not retrieved yet, will use the default: " + defaultJarName),
+                                Priority.WARN);
+                    }
+                    if (confsJarNames != null) {
+                        for (String jarName : confsJarNames) {
+                            removeHadoopConfJar(modulesNeeded, jarName);
+                        }
+                    }
+                    confsJarNames = new HashSet<>();
+                    confsJarNames.add(defaultJarName);
+                }
                 Consumer<String> action = null;
-                action = (confsJarName) -> addConfsModule(modulesNeeded, connection, confsJarName);
+                final boolean fIsDynamicJar = isDynamicJar;
+                action = (confsJarName) -> addConfsModule(modulesNeeded, connection, confsJarName, fIsDynamicJar);
                 for (String confsJarName : confsJarNames) {
                     action.accept(confsJarName);
                 }
@@ -380,13 +414,25 @@ public class HadoopClusterService implements IHadoopClusterService {
         }
     }
 
-    private void addConfsModule(List<ModuleNeeded> modulesNeeded, HadoopClusterConnection connection, String customConfsJarName) {
+    private String getDefaultHadoopConfigJarName(HadoopClusterConnection connection) {
+        String defaultName = null;
+        if (connection.isEnableKerberos()) {
+            defaultName = "hadoop-conf-kerberos.jar";
+        } else {
+            defaultName = "hadoop-conf.jar";
+        }
+        return defaultName;
+    }
+
+    private void addConfsModule(List<ModuleNeeded> modulesNeeded, HadoopClusterConnection connection, String customConfsJarName,
+            boolean isDynamicJar) {
         String context = customConfsJarName.substring(0, customConfsJarName.lastIndexOf(".")); //$NON-NLS-1$
         ModuleNeeded customConfsModule = new ModuleNeeded(context, customConfsJarName, null, true);
         removeHadoopConfJar(modulesNeeded, customConfsJarName);
-        if (connection.isContextMode()) {
-            customConfsModule.getExtraAttributes().put(HadoopConstants.IS_DYNAMIC_JAR, true);
-        }
+
+        // set dynamic jar will exclude it from classpath, bigdata code will load it dynamically
+        customConfsModule.getExtraAttributes().put(HadoopConstants.IS_DYNAMIC_JAR, isDynamicJar);
+
         modulesNeeded.add(customConfsModule);
     }
 
