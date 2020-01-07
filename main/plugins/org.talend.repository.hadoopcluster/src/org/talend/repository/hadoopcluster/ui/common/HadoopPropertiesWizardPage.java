@@ -20,9 +20,9 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.PlatformUI;
 import org.talend.core.model.properties.Property;
 import org.talend.core.model.repository.ERepositoryObjectType;
+import org.talend.designer.core.utils.HelpUtil;
 import org.talend.designer.hdfsbrowse.manager.HadoopParameterValidator;
 import org.talend.metadata.managment.ui.i18n.Messages;
 import org.talend.metadata.managment.ui.wizard.PropertiesWizardPage;
@@ -135,6 +135,6 @@ public class HadoopPropertiesWizardPage extends PropertiesWizardPage {
 
     @Override
     public void performHelp() {
-        PlatformUI.getWorkbench().getHelpSystem().displayHelp("org.talend.help.hadoop_cluster_metadata"); //$NON-NLS-1$
+        HelpUtil.displayHelp("org.talend.help.hadoop_cluster_metadata"); //$NON-NLS-1$
     }
 }
