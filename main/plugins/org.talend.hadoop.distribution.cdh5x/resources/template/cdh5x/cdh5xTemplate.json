@@ -119,8 +119,8 @@
 			"id": "talend-lineage-api",
 			"type": "STANDARD",
 			"context": "{properties.context}",
-			"jarName": "talend-lineage-api-0.2.0.jar",
-			"mvnUri": "mvn:org.talend.libraries/talend-lineage-api-0.2.0/6.0.0",
+			"jarName": "talend-lineage-api-0.2.1.jar",
+			"mvnUri": "mvn:org.talend.libraries/talend-lineage-api-0.2.1/6.0.0",
 			"useStudioRepository": "true"
 		},
 		{
