@@ -13,6 +13,7 @@
 package org.talend.repository.hbaseprovider.provider;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -242,7 +243,13 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
      */
     @SuppressWarnings("unchecked")
     protected List<Object> getTableDescriptors(Object /*org.apache.hadoop.hbase.client.Admin*/ hAdmin) throws Exception {
-        return (List<Object>) ReflectionUtils.invokeMethod(hAdmin, "listTableDescriptors", EMPTY_ARRAY); //$NON-NLS-1$
+        try {
+            return (List<Object>) ReflectionUtils.invokeMethod(hAdmin, "listTableDescriptors", EMPTY_ARRAY); //$NON-NLS-1$
+        } catch (NoSuchMethodException nsme) {
+            //try old one
+            Object[] tables = (Object[]) ReflectionUtils.invokeMethod(hAdmin, "listTables", EMPTY_ARRAY); //$NON-NLS-1$
+            return Arrays.asList(tables);
+        }
     }
 
     /**
@@ -253,7 +260,12 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
      * @throws Exception
      */
     protected Object /*org.apache.hadoop.hbase.client.TableDescriptor*/ getTableDescriptor(Object hTable) throws Exception {
-        return ReflectionUtils.invokeMethod(hTable, "getDescriptor", EMPTY_ARRAY); //$NON-NLS-1$
+        try {
+            return ReflectionUtils.invokeMethod(hTable, "getDescriptor", EMPTY_ARRAY); //$NON-NLS-1$
+        } catch (NoSuchMethodException nsme) {
+            //try old one
+            return ReflectionUtils.invokeMethod(hTable, "getTableDescriptor", EMPTY_ARRAY); //$NON-NLS-1$
+        }
     }
 
 

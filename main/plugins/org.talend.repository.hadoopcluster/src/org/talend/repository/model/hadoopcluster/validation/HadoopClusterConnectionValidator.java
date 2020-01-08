@@ -36,6 +36,10 @@ public interface HadoopClusterConnectionValidator {
     boolean validateKeytabPrincipal(String value);
     boolean validateKeytab(String value);
     boolean validateHadoopProperties(String value);
+    boolean validateUseSparkProperties(boolean value);
+
+    boolean validateSparkProperties(String value);
+
     boolean validateRmScheduler(String value);
     boolean validateJobHistory(String value);
     boolean validateStagingDirectory(String value);
@@ -52,6 +56,34 @@ public interface HadoopClusterConnectionValidator {
     boolean validateClouderaAutoCommit(boolean value);
 
     boolean validateClouderaDieNoError(boolean value);
+
+    boolean validateEnableMaprT(boolean value);
+
+    boolean validateMaprTPassword(String value);
+
+    boolean validateMaprTCluster(String value);
+
+    boolean validateMaprTDuration(String value);
+
+    boolean validateSetMaprTHomeDir(boolean value);
+
+    boolean validateMaprTHomeDir(String value);
+
+    boolean validateSetHadoopLogin(boolean value);
+
+    boolean validateMaprTHadoopLogin(String value);
+
+    boolean validatePreloadAuthentification(boolean value);
+
+    boolean validateConfFile(byte[] value);
+
+    boolean validateConfFiles(EMap<String, byte[]> value);
+
+    boolean validateUseWebHDFSSSL(boolean value);
+
+    boolean validateWebHDFSSSLTrustStorePath(String value);
+
+    boolean validateWebHDFSSSLTrustStorePassword(String value);
 
     boolean validateUseClouderaDisableSSL(boolean value);
     boolean validateUseClouderaAutoCommit(boolean value);

@@ -225,17 +225,18 @@
 	</ADVANCED_PARAMETERS>
 	<CODEGENERATION>
      <IMPORTS>
-	 
-		<IMPORT NAME="commons-lang-2.6.jar" MODULE="commons-lang-2.6.jar"
-			MVN="mvn:commons-lang/commons-lang/2.6"
-			REQUIRED="true" />
-		<IMPORT NAME="aws-java-sdk-1.11.406.jar" MODULE="aws-java-sdk-1.11.406.jar"
-			MVN="mvn:com.amazonaws/aws-java-sdk/1.11.406"
-			REQUIRED="true" />
-		<IMPORT NAME="jackson-core-2.10.1.jar" MODULE="jackson-core-2.10.1.jar"
-			MVN="mvn:com.fasterxml.jackson.core/jackson-core/2.10.1"
-			REQUIRED="true" />
-		<IMPORT NAME="jackson-databind-2.10.1.jar" MODULE="jackson-databind-2.10.1.jar"
+         <IMPORT NAME="log4j-1.2.17" MODULE="log4j-1.2.17.jar"
+                 MVN="mvn:log4j/log4j/1.2.17"/>
+         <IMPORT NAME="commons-lang-2.6.jar" MODULE="commons-lang-2.6.jar"
+                 MVN="mvn:commons-lang/commons-lang/2.6"
+                 REQUIRED="true"/>
+         <IMPORT NAME="aws-java-sdk-1.11.406.jar" MODULE="aws-java-sdk-1.11.406.jar"
+                 MVN="mvn:com.amazonaws/aws-java-sdk/1.11.406"
+                 REQUIRED="true"/>
+         <IMPORT NAME="jackson-core-2.10.1.jar" MODULE="jackson-core-2.10.1.jar"
+                 MVN="mvn:com.fasterxml.jackson.core/jackson-core/2.10.1"
+                 REQUIRED="true"/>
+         <IMPORT NAME="jackson-databind-2.10.1.jar" MODULE="jackson-databind-2.10.1.jar"
 			MVN="mvn:com.fasterxml.jackson.core/jackson-databind/2.10.1"
 			REQUIRED="true" />
 		<IMPORT NAME="jackson-annotations-2.10.1.jar" MODULE="jackson-annotations-2.10.1.jar"
