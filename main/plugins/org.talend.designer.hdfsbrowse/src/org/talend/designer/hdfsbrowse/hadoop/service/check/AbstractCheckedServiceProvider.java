@@ -124,7 +124,6 @@ public abstract class AbstractCheckedServiceProvider implements ICheckedServiceP
                     addedJarSet.add(customConfsJarName);
                     // remove the default jars, since it will be conflict with the new jars
                     excludedJarSet.addAll(Arrays.asList(HadoopClassLoaderFactory2.getSecurityJars(category)));
-                    excludedJarSet.remove(customConfsJarName);
                     rebuildClassloader = true;
                 }
                 if (rebuildClassloader) {
