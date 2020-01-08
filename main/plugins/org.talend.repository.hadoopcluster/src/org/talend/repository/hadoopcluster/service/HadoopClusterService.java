@@ -372,7 +372,11 @@ public class HadoopClusterService implements IHadoopClusterService {
             if (connection.isUseCustomConfs()) {
                 Set<String> confsJarNames = HadoopConfsUtils.getConfsJarDefaultNames(connectionItem, true);
                 Consumer<String> action = null;
-                action = (confsJarName) -> addConfsModule(modulesNeeded, connection, confsJarName);
+                if (HCParameterUtil.isOverrideHadoopConfs(connection)) {
+                    action = (confsJarName) -> removeHadoopConfJar(modulesNeeded, confsJarName);
+                } else {
+                    action = (confsJarName) -> addConfsModule(modulesNeeded, connection, confsJarName);
+                }
                 for (String confsJarName : confsJarNames) {
                     action.accept(confsJarName);
                 }
