@@ -488,16 +488,19 @@
 	</ADVANCED_PARAMETERS>
 	<CODEGENERATION>
         <IMPORTS>
+            <IMPORT NAME="log4j-1.2.17" MODULE="log4j-1.2.17.jar"
+                    MVN="mvn:log4j/log4j/1.2.17"/>
             <IMPORTS REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false')">
-        		<IMPORTS REQUIRED_IF="((DB_VERSION == 'CASSANDRA_2_0_0') AND (API_TYPE == 'HECTOR'))">
+                <IMPORTS REQUIRED_IF="((DB_VERSION == 'CASSANDRA_2_0_0') AND (API_TYPE == 'HECTOR'))">
                     <IMPORTS REQUIRED_IF="(DB_VERSION == 'CASSANDRA_2_0_0')">
                         <!-- Cassandra 2.1.x with latest = 2.0.8 / 2.1 -->
                         <IMPORT
-                            MODULE="hector-core-2.0-0.jar" MVN="mvn:org.talend.libraries/hector-core-2.0-0/6.0.0" 
-                            NAME="hector-core-2.0-0"
-                            UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/hector-core-2.0-0.jar"/>
+                                MODULE="hector-core-2.0-0.jar" MVN="mvn:org.talend.libraries/hector-core-2.0-0/6.0.0"
+                                NAME="hector-core-2.0-0"
+                                UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/hector-core-2.0-0.jar"/>
                         <IMPORT
-                            MODULE="cassandra-thrift-2.0.4.jar" MVN="mvn:org.talend.libraries/cassandra-thrift-2.0.4/6.0.0" 
+                                MODULE="cassandra-thrift-2.0.4.jar"
+                                MVN="mvn:org.talend.libraries/cassandra-thrift-2.0.4/6.0.0"
                             UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/cassandra-thrift-2.0.4.jar"
                             NAME="cassandra-thrift-2.0.4"/>
                         <IMPORT
@@ -508,10 +511,6 @@
                             MODULE="slf4j-log4j12-1.7.5.jar" MVN="mvn:org.talend.libraries/slf4j-log4j12-1.7.5/6.0.0" 
                             NAME="slf4j-log4j12-1.7.5"
                             UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.7.5.jar"/>
-                        <IMPORT
-                            MODULE="log4j-1.2.16.jar" MVN="mvn:log4j/log4j/1.2.16" 
-                            UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.16.jar"
-                            NAME="log4j-1.2.16"/>
                         <IMPORT
                             NAME="libthrift-0.9.1"
                             MODULE="libthrift-0.9.1.jar" MVN="mvn:org.talend.libraries/libthrift-0.9.1/6.0.0" 

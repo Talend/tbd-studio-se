@@ -225,8 +225,8 @@
 	</ADVANCED_PARAMETERS>
 	<CODEGENERATION>
      <IMPORTS>
-	 
-		<IMPORT NAME="commons-lang-2.6.jar" MODULE="commons-lang-2.6.jar"
+	 	
+     <IMPORT NAME="commons-lang-2.6.jar" MODULE="commons-lang-2.6.jar"
 			MVN="mvn:commons-lang/commons-lang/2.6"
 			REQUIRED="true" />
 		<IMPORT NAME="aws-java-sdk-core-1.11.160.jar" MODULE="aws-java-sdk-core-1.11.160.jar"
@@ -239,8 +239,13 @@
 			MVN="mvn:com.fasterxml.jackson.core/jackson-core/2.10.1"
 			REQUIRED="true" />
 		<IMPORT NAME="jackson-databind-2.10.1.jar" MODULE="jackson-databind-2.10.1.jar"
-			MVN="mvn:com.fasterxml.jackson.core/jackson-databind/2.10.1"
+      MVN="mvn:com.fasterxml.jackson.core/jackson-databind/2.10.1"
 			REQUIRED="true" />
+     <IMPORT NAME="log4j-1.2.17" MODULE="log4j-1.2.17.jar"
+        MVN="mvn:log4j/log4j/1.2.17"/>
+     <IMPORT NAME="commons-lang-2.6.jar" MODULE="commons-lang-2.6.jar"
+        MVN="mvn:commons-lang/commons-lang/2.6"
+      REQUIRED="true"/>         		
 		<IMPORT NAME="jackson-annotations-2.10.1.jar" MODULE="jackson-annotations-2.10.1.jar"
 			MVN="mvn:com.fasterxml.jackson.core/jackson-annotations/2.10.1"
 			REQUIRED="true" />

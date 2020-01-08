@@ -138,16 +138,18 @@
     <ADVANCED_PARAMETERS/>
     <CODEGENERATION>
         <IMPORTS>
-             <!-- Cassandra 2.1.X with latest == 2.0.8/2.1-->
+            <IMPORT NAME="log4j-1.2.17" MODULE="log4j-1.2.17.jar"
+                    MVN="mvn:log4j/log4j/1.2.17"/>
+            <!-- Cassandra 2.1.X with latest == 2.0.8/2.1-->
             <IMPORT
-                NAME="cassandra-all-2.0.14"
-                MODULE="cassandra-all-2.0.14.jar" MVN="mvn:org.talend.libraries/cassandra-all-2.0.14/6.0.0" 
-                UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/cassandra-all-2.0.14.jar"
-                REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
+                    NAME="cassandra-all-2.0.14"
+                    MODULE="cassandra-all-2.0.14.jar" MVN="mvn:org.talend.libraries/cassandra-all-2.0.14/6.0.0"
+                    UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/cassandra-all-2.0.14.jar"
+                    REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'"/>
             <IMPORT
-                NAME="cassandra-2-0-8-conf"
-                MODULE="cassandra-2-0-8-conf.jar" MVN="mvn:org.talend.libraries/cassandra-2-0-8-conf/6.0.0" 
-                UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/cassandra-2-0-8-conf.jar"
+                    NAME="cassandra-2-0-8-conf"
+                    MODULE="cassandra-2-0-8-conf.jar" MVN="mvn:org.talend.libraries/cassandra-2-0-8-conf/6.0.0"
+                    UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/cassandra-2-0-8-conf.jar"
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
                 NAME="cassandra-thrift-2.0.14"
@@ -163,11 +165,6 @@
                 MODULE="slf4j-log4j12-1.7.5.jar" MVN="mvn:org.talend.libraries/slf4j-log4j12-1.7.5/6.0.0" 
                 NAME="slf4j-log4j12-1.7.5"
                 UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.7.5.jar"
-                REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
-            <IMPORT
-                NAME="log4j-1.2.16"
-                MODULE="log4j-1.2.16.jar" MVN="mvn:log4j/log4j/1.2.16" 
-                UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.16.jar"
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
                 NAME="libthrift-0.9.1"
