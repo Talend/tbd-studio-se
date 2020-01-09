@@ -55,32 +55,35 @@ def check_commit_message():
     #     print(os.environ['TAG_TIMESTAMP'])
     #     print(os.environ['TAG_UNIXTIME'])
     #     print(os.environ['TAG_UNIXTIME'])
-    result = re.search(tbd_commit_regex, os.environ['CHANGE_TITLE'])
-    if result is None:
-        print()
-        print("%s: the message does not follow convention. '%s'" % (red('ERROR'), red(os.environ['CHANGE_TITLE'])))
-        print()
-        print('check tickets prefix is in [%s]' % yellow(team_tickets))
-        print('check semantic prefix is in [%s]' % yellow(semantic_prefixes))
-        print('\nsome samples:')
-        print_sample('feat(TBD-007): msg1', 'feat', 'TBD-007', 'msg1')
-        print_sample('chore[TUP-1984]: msg2', 'chore', 'TUP-1984', 'msg2')
-        print_sample('refactor:TDI-199999: msg3', 'refactor', 'TDI-199999', 'msg3')
-        exit(-1)
-    else:
-        (start, end) = result.span()
-        if start != 0:
-            print("%s: unexpected prefix '%s'" % (red('ERROR'), red(result.string[0:start])))
+
+    ## PR-MERGE BUILD : we check the PR title to ensure the commit will follow convention
+    if 'CHANGE_TITLE' in os.environ:
+        result = re.search(tbd_commit_regex, os.environ['CHANGE_TITLE'])
+        if result is None:
+            print('')
+            print("%s: the message does not follow convention. '%s'" % (red('ERROR'), red(os.environ['CHANGE_TITLE'])))
+            print('')
+            print('check tickets prefix is in [%s]' % yellow(team_tickets))
+            print('check semantic prefix is in [%s]' % yellow(semantic_prefixes))
+            print('\nsome samples:')
+            print_sample('feat(TBD-007): msg1', 'feat', 'TBD-007', 'msg1')
+            print_sample('chore[TUP-1984]: msg2', 'chore', 'TUP-1984', 'msg2')
+            print_sample('refactor:TDI-199999: msg3', 'refactor', 'TDI-199999', 'msg3')
+            exit(-1)
         else:
-            semantic = result.group(1)
-            ticket_id = result.group(2)
-            message = result.group(3)
-            print("%s: commit message is valid for %s:\n\tsemantic : %s\n\tticket   : %s\n\tmessage  : %s"
-                  % (green('INFO'),
-                     yellow(os.environ['BRANCH_NAME']),
-                     green(semantic),
-                     green(ticket_id),
-                     green(message.strip())))
+            (start, end) = result.span()
+            if start != 0:
+                print("%s: unexpected prefix '%s'" % (red('ERROR'), red(result.string[0:start])))
+            else:
+                semantic = result.group(1)
+                ticket_id = result.group(2)
+                message = result.group(3)
+                print("%s: commit message is valid for %s:\n\tsemantic : %s\n\tticket   : %s\n\tmessage  : %s"
+                      % (green('INFO'),
+                         yellow(os.environ['BRANCH_NAME'] if 'BRANCH_NAME' in os.environ else 'unknown branch'),
+                         green(semantic),
+                         green(ticket_id),
+                         green(message.strip())))
 
 
 if __name__ == '__main__':

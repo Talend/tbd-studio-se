@@ -14,13 +14,12 @@ package org.talend.lineage.cloudera;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.joda.time.Instant;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.talend.lineage.cloudera.entity.MyCustomEntity;
 
@@ -31,9 +30,8 @@ import com.cloudera.nav.sdk.model.MetadataType;
 import com.cloudera.nav.sdk.model.SourceType;
 import com.cloudera.nav.sdk.model.entities.EndPointProxy;
 import com.cloudera.nav.sdk.model.entities.EntityType;
-import com.google.common.collect.Lists;
 
-
+@Ignore("Depends on local navigator so this should be in Integration test which haven't been implemented yet")
 public class DriverITCDH513Test {
 
     @Test
@@ -41,7 +39,7 @@ public class DriverITCDH513Test {
 
         NavigatorPlugin plugin = NavigatorPlugin.fromConfigFile("src/test/resources/sample.conf");
 
-        plugin.registerModels(DriverITCDH513Test.class.getClass().getPackage().getName());
+        plugin.registerModels(DriverITCDH513Test.class.getPackage().getName());
 
         MyCustomEntity myCustomEntity = new MyCustomEntity(plugin.getNamespace(), "My custom entity 1");
         myCustomEntity.setDescription("My custom entity 1");
@@ -78,7 +76,7 @@ public class DriverITCDH513Test {
         // Read and check custom entities from cloudera navigator
 
        String[] test = new String[1];
-       MyIterableTestCDH513<String> iter = new MyIterable<String>(test);
+       MyIterableTestCDH513<String> iter = new MyIterableTestCDH513<>(test);
        MetadataResultIterator metadataResultIterator = new MetadataResultIterator(plugin.getClient(), MetadataType.ENTITIES,
                 "identity:" + myCustomEntity.generateId(), 1, iter);
         assertTrue(metadataResultIterator.hasNext());
