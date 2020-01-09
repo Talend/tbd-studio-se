@@ -56,6 +56,12 @@ public class HadoopClusterContextUpdateService extends AbstractRepositoryContext
                 hadoopConn.setMaprTHomeDir(newValue);
             } else if (hadoopConn.getMaprTHadoopLogin() != null && hadoopConn.getMaprTHadoopLogin().equals(oldValue)) {
                 hadoopConn.setMaprTHadoopLogin(newValue);
+            } else if (hadoopConn.getWebHDFSSSLTrustStorePath() != null
+                    && hadoopConn.getWebHDFSSSLTrustStorePath().equals(oldValue)) {
+                hadoopConn.setWebHDFSSSLTrustStorePath(newValue);
+            } else if (hadoopConn.getWebHDFSSSLTrustStorePassword() != null
+                    && hadoopConn.getWebHDFSSSLTrustStorePassword().equals(oldValue)) {
+                hadoopConn.setWebHDFSSSLTrustStorePassword(newValue);
             } else {
                 for (String paramKey : hadoopConn.getParameters().keySet()) {
                     if (hadoopConn.getParameters().get(paramKey).equals(oldValue)) {

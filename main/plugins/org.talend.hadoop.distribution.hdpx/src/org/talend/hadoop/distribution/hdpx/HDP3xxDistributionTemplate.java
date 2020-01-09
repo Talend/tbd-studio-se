@@ -251,6 +251,11 @@ public class HDP3xxDistributionTemplate extends AbstractDynamicHDPDistributionTe
     public String getSqoopPackageName() {
         return ESqoopPackageName.ORG_APACHE_SQOOP.toString();
     }
+    
+    @Override
+    public boolean doSupportAzureDataLakeStorageGen2() {
+    	return true;
+    }
 
 
 }

@@ -198,18 +198,33 @@
 	</ADVANCED_PARAMETERS>
 	<CODEGENERATION>
      <IMPORTS>
+       
+		<IMPORT NAME="aws-java-sdk-core-1.11.160.jar" MODULE="aws-java-sdk-core-1.11.160.jar"
+			MVN="mvn:com.amazonaws/aws-java-sdk-core/1.11.160"
+			REQUIRED="true" />
+		<IMPORT NAME="aws-java-sdk-dynamodb-1.11.160.jar" MODULE="aws-java-sdk-dynamodb-1.11.160.jar"
+			MVN="mvn:com.amazonaws/aws-java-sdk-dynamodb/1.11.160"
+			REQUIRED="true" />
+		<IMPORT NAME="jackson-core-2.10.1.jar" MODULE="jackson-core-2.10.1.jar"
+			MVN="mvn:com.fasterxml.jackson.core/jackson-core/2.10.1"
+			REQUIRED="true" />
+		<IMPORT NAME="jackson-databind-2.10.1.jar" MODULE="jackson-databind-2.10.1.jar"
+			MVN="mvn:com.fasterxml.jackson.core/jackson-databind/2.10.1"
+			REQUIRED="true" />		
+		<IMPORT NAME="log4j-1.2.17" MODULE="log4j-1.2.17.jar"
+			MVN="mvn:log4j/log4j/1.2.17"/>
 		<IMPORT NAME="aws-java-sdk-1.11.406.jar" MODULE="aws-java-sdk-1.11.406.jar"
 			MVN="mvn:com.amazonaws/aws-java-sdk/1.11.406"
-			REQUIRED="true" />	 
-		<IMPORT NAME="jackson-core-2.9.9.jar" MODULE="jackson-core-2.9.9.jar"
-			MVN="mvn:com.fasterxml.jackson.core/jackson-core/2.9.9"
-			REQUIRED="true" />
-		<IMPORT NAME="jackson-databind-2.9.9.jar" MODULE="jackson-databind-2.9.9.jar"
-			MVN="mvn:com.fasterxml.jackson.core/jackson-databind/2.9.9"
-			REQUIRED="true" />
-		<IMPORT NAME="jackson-annotations-2.9.0.jar" MODULE="jackson-annotations-2.9.0.jar"
-			MVN="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.0"
-			REQUIRED="true" />
+			REQUIRED="true"/>
+		<IMPORT NAME="jackson-core-2.10.1.jar" MODULE="jackson-core-2.10.1.jar"
+			MVN="mvn:com.fasterxml.jackson.core/jackson-core/2.10.1"
+			REQUIRED="true"/>
+		<IMPORT NAME="jackson-databind-2.10.1.jar" MODULE="jackson-databind-2.10.1.jar"
+			MVN="mvn:com.fasterxml.jackson.core/jackson-databind/2.10.1"
+			REQUIRED="true"/>
+		<IMPORT NAME="jackson-annotations-2.10.1.jar" MODULE="jackson-annotations-2.10.1.jar"
+			 MVN="mvn:com.fasterxml.jackson.core/jackson-annotations/2.10.1"
+			 REQUIRED="true" />
 		<IMPORT NAME="httpcore-4.4.9.jar" MODULE="httpcore-4.4.9.jar"
 			MVN="mvn:org.apache.httpcomponents/httpcore/4.4.9"
 			REQUIRED="true" />
@@ -226,12 +241,12 @@
 		<IMPORT NAME="commons-codec-1.6.jar" MODULE="commons-codec-1.6.jar"
 			MVN="mvn:org.talend.libraries/commons-codec-1.6/6.0.0"
 			UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.6.jar"
-			REQUIRED="true" />					
-        <IMPORT NAME="json-path-1.2.0.jar" MODULE="json-path-1.2.0.jar" MVN="mvn:org.talend.libraries/json-path-1.2.0/6.0.0"  REQUIRED="true" />
-        <IMPORT NAME="json-smart-2.1.0.jar" MODULE="json-smart-2.1.0.jar" MVN="mvn:org.talend.libraries/json-smart-2.1.0/6.0.0"  REQUIRED="true" />
-        <IMPORT NAME="asm-1.0.2.jar" MODULE="asm-1.0.2.jar" MVN="mvn:org.talend.libraries/asm-1.0.2/6.0.0"  REQUIRED="true" />
-        <IMPORT NAME="slf4j-api-1.7.5.jar" MODULE="slf4j-api-1.7.5.jar" MVN="mvn:org.talend.libraries/slf4j-api-1.7.5/6.0.0"  UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-api-1.7.5.jar" REQUIRED="true"  />
-        <IMPORT NAME="slf4j-log4j12-1.7.5.jar" MODULE="slf4j-log4j12-1.7.5.jar" MVN="mvn:org.talend.libraries/slf4j-log4j12-1.7.5/6.0.0"  UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.7.5.jar" REQUIRED="true" />
+			REQUIRED="true" />
+		<IMPORT NAME="json-path-1.2.0.jar" MODULE="json-path-1.2.0.jar" MVN="mvn:org.talend.libraries/json-path-1.2.0/6.0.0"  REQUIRED="true" />
+		<IMPORT NAME="json-smart-2.1.0.jar" MODULE="json-smart-2.1.0.jar" MVN="mvn:org.talend.libraries/json-smart-2.1.0/6.0.0"  REQUIRED="true" />
+		<IMPORT NAME="asm-1.0.2.jar" MODULE="asm-1.0.2.jar" MVN="mvn:org.talend.libraries/asm-1.0.2/6.0.0"  REQUIRED="true" />
+		<IMPORT NAME="slf4j-api-1.7.5.jar" MODULE="slf4j-api-1.7.5.jar" MVN="mvn:org.talend.libraries/slf4j-api-1.7.5/6.0.0"  UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-api-1.7.5.jar" REQUIRED="true"  />
+		<IMPORT NAME="slf4j-log4j12-1.7.5.jar" MODULE="slf4j-log4j12-1.7.5.jar" MVN="mvn:org.talend.libraries/slf4j-log4j12-1.7.5/6.0.0"  UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.7.5.jar" REQUIRED="true" />
 				
      </IMPORTS>
 	</CODEGENERATION>

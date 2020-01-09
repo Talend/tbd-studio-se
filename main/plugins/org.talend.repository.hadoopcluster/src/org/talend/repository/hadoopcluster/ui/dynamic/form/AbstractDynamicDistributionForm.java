@@ -86,8 +86,8 @@ public abstract class AbstractDynamicDistributionForm extends Composite {
         return true;
     }
 
-    public void performDefaults() {
-        // nothing to do
+    public boolean performDefaults() {
+        return true;
     }
 
     public boolean performOk() {

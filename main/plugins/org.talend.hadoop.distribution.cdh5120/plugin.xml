@@ -88,7 +88,7 @@
             name="hbase-hadoop-compat-1.2.0-cdh5.12.1.jar"
             mvn_uri="mvn:org.talend.libraries/hbase-hadoop-compat-1.2.0-cdh5.12.1/6.0.0">
         </libraryNeeded>
-        
+
         <!-- Azure libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5120"
@@ -117,7 +117,7 @@
             name="azure-common-1.7.1.jar"
             mvn_uri="mvn:org.talend.libraries/azure-common-1.7.1/6.0.0">
         </libraryNeeded>
-        
+
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5120"
             id="microsoft-windowsazure-storage-sdk-0.6.0.jar"
@@ -259,6 +259,55 @@
             id="hive-hbase-handler-1.1.0-cdh5.12.1.jar"
             name="hive-hbase-handler-1.1.0-cdh5.12.1.jar"
             mvn_uri="mvn:org.talend.libraries/hive-hbase-handler-1.1.0-cdh5.12.1/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5120"
+            id="parquet-avro-1.5.0-cdh5.12.1.jar"
+            name="parquet-avro-1.5.0-cdh5.12.1.jar"
+            mvn_uri="mvn:org.talend.libraries/parquet-avro-1.5.0-cdh5.12.1/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5120"
+            id="parquet-column-1.5.0-cdh5.12.1.jar"
+            name="parquet-column-1.5.0-cdh5.12.1.jar"
+            mvn_uri="mvn:org.talend.libraries/parquet-column-1.5.0-cdh5.12.1/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5120"
+            id="parquet-common-1.5.0-cdh5.12.1.jar"
+            name="parquet-common-1.5.0-cdh5.12.1.jar"
+            mvn_uri="mvn:org.talend.libraries/parquet-common-1.5.0-cdh5.12.1/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5120"
+            id="parquet-encoding-1.5.0-cdh5.12.1.jar"
+            name="parquet-encoding-1.5.0-cdh5.12.1.jar"
+            mvn_uri="mvn:org.talend.libraries/parquet-encoding-1.5.0-cdh5.12.1/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5150"
+            id="parquet-format-2.1.0-cdh5.12.1.jar"
+            name="parquet-format-2.1.0-cdh5.12.1.jar"
+            mvn_uri="mvn:org.talend.libraries/parquet-format-2.1.0-cdh5.12.1/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5120"
+            id="parquet-hadoop-1.5.0-cdh5.12.1.jar"
+            name="parquet-hadoop-1.5.0-cdh5.12.1.jar"
+            mvn_uri="mvn:org.talend.libraries/parquet-hadoop-1.5.0-cdh5.12.1/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh5120"
+            id="parquet-jackson-1.5.0-cdh5.12.1.jar"
+            name="parquet-jackson-1.5.0-cdh5.12.1.jar"
+            mvn_uri="mvn:org.talend.libraries/parquet-jackson-1.5.0-cdh5.12.1/6.0.0">
         </libraryNeeded>
 
         <!-- Sqoop libraries -->
@@ -431,7 +480,7 @@
             name="aws-java-sdk-dynamodb-1.10.6.jar"
             mvn_uri="mvn:org.talend.libraries/aws-java-sdk-dynamodb-1.10.6/6.0.0">
         </libraryNeeded>
-		
+
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5120"
             id="emr-ddb-hadoop-3.0.0.jar"
@@ -452,7 +501,7 @@
             name="commons-pool2-2.4.2.jar"
             mvn_uri="mvn:org.apache.commons/commons-pool2/2.4.2">
         </libraryNeeded>
-        
+
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5120"
             id="aws-java-sdk-kms-1.10.6.jar"
@@ -557,7 +606,7 @@
             name="spark-streaming-kinesis-asl_2.11-2.2.0.jar"
             mvn_uri="mvn:org.apache.spark/spark-streaming-kinesis-asl_2.11/2.2.0">
         </libraryNeeded>
-        
+
         <!-- Navigator libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5120"
@@ -579,12 +628,12 @@
             name="jackson-datatype-joda-2.5.4.jar"
             mvn_uri="mvn:org.talend.libraries/jackson-datatype-joda-2.5.4/6.0.0">
         </libraryNeeded>
-        
+
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5120"
-            id="talend-lineage-api-0.2.0.jar"
-            name="talend-lineage-api-0.2.0.jar"
-            mvn_uri="mvn:org.talend.libraries/talend-lineage-api-0.2.0/6.0.0">
+            id="talend-lineage-api-0.2.1.jar"
+            name="talend-lineage-api-0.2.1.jar"
+            mvn_uri="mvn:org.talend.libraries/talend-lineage-api-0.2.1/6.0.0">
         </libraryNeeded>
 
         <!-- Kudu libraries -->
@@ -1164,7 +1213,7 @@
              <library id="aws-java-sdk-sts-1.10.6.jar"/>
              <library id="jets3t-0.9.0" />
         </libraryNeededGroup>
-        
+
         <!-- Spark Azure group MRREQUIRED -->
         <libraryNeededGroup
                 description="Spark Azure libraries for CDH 5.12 that are MRREQUIRED"
@@ -1264,7 +1313,7 @@
             <library id="jackson-mapper-asl-1.9.14-TALEND.jar" />
             <library id="jackson-core-asl-1.9.14-TALEND.jar" />
         </libraryNeededGroup>
-        
+
         <!-- Spark2 Kudu group MRREQUIRED -->
         <libraryNeededGroup
                 description="Spark2 Kudu libraries for CDH 5.12 that are MRREQUIRED"
@@ -1272,13 +1321,13 @@
                 name="SPARK2_KUDU_MRREQUIRED_MODULE_GROUP-CDH_5_12">
             <library id="kudu-spark2_2.11-1.4.0-cdh5.12.1.jar"/>
         </libraryNeededGroup>
-        
+
         <!-- group of cloudera navigator libraries -->
         <libraryNeededGroup
                 description="Talend cloudera 5.12 navigator API."
                 id="TALEND_CLOUDERA_CDH_5_12_NAVIGATOR"
                 name="TALEND_CLOUDERA_CDH_5_12_NAVIGATOR"  >
-             <library id="talend-lineage-api-0.2.0.jar" />
+             <library id="talend-lineage-api-0.2.1.jar" />
              <library id="navigator-sdk-client-2.0.jar" />
              <library id="navigator-sdk-model-2.0.jar" />
              <library id="spring-core-4.0.7.RELEASE"/>
@@ -1303,7 +1352,7 @@
             <library id="jackson-core-2.5.4.jar"/>
             <library id="parquet-avro-1.5.0-cdh5.12.1.jar"/>
         </libraryNeededGroup>
-        
+
         <!-- WebHDFS -->
         <libraryNeededGroup
                 description="Librairies for WebHDFS"

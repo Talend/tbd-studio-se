@@ -5,6 +5,7 @@
   <copyright url="http://www.example.com/copyright">[Enter Copyright Description here.]</copyright>  
   <license>[Enter License Description here.]</license>  
   <requires>
+  	<import feature="org.talend.help.bd.feature" version="0.0.0" match="greaterOrEqual"/>
     <import feature="org.talend.tos.bigdata.feature" version="0.0.0" match="greaterOrEqual"/>
     <import feature="org.talend.tos.bigdata.libraries.feature" version="0.0.0" match="greaterOrEqual"/>
     <import feature="org.talend.tos.feature" version="0.0.0" match="greaterOrEqual"/>

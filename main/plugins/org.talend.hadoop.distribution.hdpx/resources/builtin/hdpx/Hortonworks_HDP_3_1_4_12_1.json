@@ -80,11 +80,6 @@
             },
             {
               "childNodes": [],
-              "id": "DYNAMIC_HDP_3_1_4_12_1_commons_codec",
-              "tagName": "library"
-            },
-            {
-              "childNodes": [],
               "id": "DYNAMIC_HDP_3_1_4_12_1_commons_codec_1_11_jar",
               "tagName": "library"
             },
@@ -160,7 +155,7 @@
             },
             {
               "childNodes": [],
-              "id": "DYNAMIC_HDP_3_1_4_12_1_httpclient",
+              "id": "DYNAMIC_HDP_3_1_4_12_1_httpclient_4_5_9_jar",
               "tagName": "library"
             },
             {
@@ -13149,13 +13144,6 @@
           "childNodes": [],
           "context": "plugin:org.talend.hadoop.distribution.hdpx",
           "excludeDependencies": "true",
-          "id": "DYNAMIC_HDP_3_1_4_12_1_commons_codec",
-          "tagName": "libraryNeeded"
-        },
-        {
-          "childNodes": [],
-          "context": "plugin:org.talend.hadoop.distribution.hdpx",
-          "excludeDependencies": "true",
           "id": "DYNAMIC_HDP_3_1_4_12_1_commons_codec_1_11_jar",
           "mvn_uri": "mvn:commons-codec/commons-codec/1.11/jar",
           "name": "commons-codec-1.11.jar",
@@ -13481,7 +13469,7 @@
           "context": "plugin:org.talend.hadoop.distribution.hdpx",
           "excludeDependencies": "true",
           "id": "DYNAMIC_HDP_3_1_4_12_1_elephant_bird_core_4_9_jar",
-          "mvn_uri": "mvn:com.twitter.elephantbird/elephant-bird-core/4.9/jar",
+          "mvn_uri": "mvn:com.twitter.elephantbird/elephant-bird-core/4.9",
           "name": "elephant-bird-core-4.9.jar",
           "tagName": "libraryNeeded"
         },
@@ -13490,7 +13478,7 @@
           "context": "plugin:org.talend.hadoop.distribution.hdpx",
           "excludeDependencies": "true",
           "id": "DYNAMIC_HDP_3_1_4_12_1_elephant_bird_hadoop_compat_4_9_jar",
-          "mvn_uri": "mvn:com.twitter.elephantbird/elephant-bird-hadoop-compat/4.9/jar",
+          "mvn_uri": "mvn:com.twitter.elephantbird/elephant-bird-hadoop-compat/4.9",
           "name": "elephant-bird-hadoop-compat-4.9.jar",
           "tagName": "libraryNeeded"
         },
@@ -13508,7 +13496,7 @@
           "context": "plugin:org.talend.hadoop.distribution.hdpx",
           "excludeDependencies": "true",
           "id": "DYNAMIC_HDP_3_1_4_12_1_elephant_bird_pig_4_9_jar",
-          "mvn_uri": "mvn:com.twitter.elephantbird/elephant-bird-pig/4.9/jar",
+          "mvn_uri": "mvn:com.twitter.elephantbird/elephant-bird-pig/4.9",
           "name": "elephant-bird-pig-4.9.jar",
           "tagName": "libraryNeeded"
         },
@@ -14330,13 +14318,6 @@
           "id": "DYNAMIC_HDP_3_1_4_12_1_htrace_core_3_2_0_incubating_jar",
           "mvn_uri": "mvn:org.apache.htrace/htrace-core/3.2.0-incubating/jar",
           "name": "htrace-core-3.2.0-incubating.jar",
-          "tagName": "libraryNeeded"
-        },
-        {
-          "childNodes": [],
-          "context": "plugin:org.talend.hadoop.distribution.hdpx",
-          "excludeDependencies": "true",
-          "id": "DYNAMIC_HDP_3_1_4_12_1_httpclient",
           "tagName": "libraryNeeded"
         },
         {
