@@ -165,12 +165,6 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr550"
-            id="hive-hcatalog-pig-adapter-2.1.1-amzn-0.jar"
-            name="hive-hcatalog-pig-adapter-2.1.1-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-pig-adapter-2.1.1-amzn-0/6.0.0"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr550"
             id="hive-hcatalog-server-extensions-2.1.1-amzn-0.jar"
             name="hive-hcatalog-server-extensions-2.1.1-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-hcatalog-server-extensions-2.1.1-amzn-0/6.0.0"/>
@@ -180,25 +174,6 @@
             id="hive-hbase-handler-2.1.1-amzn-0.jar"
             name="hive-hbase-handler-2.1.1-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-hbase-handler-2.1.1-amzn-0/6.0.0"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr550"
-            id="pig-0.16.0-amzn-0-core-h2.jar"
-            name="pig-0.16.0-amzn-0-core-h2.jar"
-            mvn_uri="mvn:org.talend.libraries/pig-0.16.0-amzn-0-core-h2/6.0.0"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.libraries.hadoop"
-            id="parquet-pig-bundle-1.6.0.jar"
-            name="parquet-pig-bundle-1.6.0.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-pig-bundle-1.6.0/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.hadoop/lib/parquet-pig-bundle-1.6.0.jar"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr550"
-            id="piggybank-emr550.jar"
-            name="piggybank-emr550.jar"
-            mvn_uri="mvn:org.talend.libraries/piggybank-emr550/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr550"
@@ -223,20 +198,6 @@
         	id="javax.ws.rs-api-2.0.1.jar"
         	name="javax.ws.rs-api-2.0.1.jar"
         	mvn_uri="mvn:org.talend.libraries/javax.ws.rs-api-2.0.1/6.0.0"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr550"
-            id="elephant-bird-pig-4.9.jar"
-            name="elephant-bird-pig-4.9.jar"
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-pig/4.9">            
-        </libraryNeeded>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr550"
-            id="pigutil.jar"
-            name="pigutil.jar"
-            mvn_uri="mvn:org.talend.libraries/pigutil/6.0.0">            
-        </libraryNeeded>
 
         <!-- S3 libraries -->
 
