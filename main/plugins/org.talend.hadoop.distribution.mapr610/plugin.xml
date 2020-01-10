@@ -332,26 +332,11 @@
 
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
-            id="hive-hcatalog-pig-adapter-2.3.3-mapr-1901.jar"
-            name="hive-hcatalog-pig-adapter-2.3.3-mapr-1901.jar"
-            mvn_uri="mvn:org.apache.hive/hive-hcatalog-pig-adapter/2.3.3-mapr-1901">
-        </libraryNeeded>
-
-        <libraryNeeded
-            context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
             id="hive-hcatalog-server-extensions-2.3.3-mapr-1901.jar"
             name="hive-hcatalog-server-extensions-2.3.3-mapr-1901.jar"
             mvn_uri="mvn:org.apache.hive/hive-hcatalog-server-extensions/2.3.3-mapr-1901">
         </libraryNeeded>
 		   
-		<!-- mapr pig pac contains pig-core-h2.jar, but to distinguish it from old versions, total pig version added -->  
-       <libraryNeeded
-            context="plugin:org.talend.libraries.hadoop.mapr.6.1.0"
-            id="pig-core-h2-0.16.0-1901.jar"
-            name="pig-core-h2-0.16.0-1901.jar"
-            mvn_uri="mvn:org.talend.libraries/pig-core-h2-0.16.0-1901/6.0.0">
-        </libraryNeeded>
-
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop"
             id="hbase-hadoop-compat-1.1.8-mapr-1901.jar"
