@@ -140,12 +140,6 @@
             
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr450"
-            id="hive-hcatalog-pig-adapter-emr450-latest"
-            name="hive-hcatalog-pig-adapter-1.0.0-amzn-4.jar" 
-            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-pig-adapter-1.0.0-amzn-4/6.2.0"/>
-            
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr450"
             id="hive-hcatalog-server-extensions-emr450-latest"
             name="hive-hcatalog-server-extensions-1.0.0-amzn-4.jar" 
             mvn_uri="mvn:org.talend.libraries/hive-hcatalog-server-extensions-1.0.0-amzn-4/6.2.0"/>
