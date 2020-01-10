@@ -264,34 +264,13 @@
             mvn_uri="mvn:org.apache.hive/hive-hcatalog-core/2.1.1-mapr-1803">
         </libraryNeeded>
 
-        <libraryNeeded
-            context="plugin:org.talend.libraries.hadoop.mapr.6.0.1"
-            id="hive-hcatalog-pig-adapter-2.1.1-mapr-1803.jar"
-            name="hive-hcatalog-pig-adapter-2.1.1-mapr-1803.jar"
-            mvn_uri="mvn:org.apache.hive/hive-hcatalog-pig-adapter/2.1.1-mapr-1803">
-        </libraryNeeded>
-
-        <libraryNeeded
+       <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1"
             id="hive-hcatalog-server-extensions-2.1.1-mapr-1803.jar"
             name="hive-hcatalog-server-extensions-2.1.1-mapr-1803.jar"
             mvn_uri="mvn:org.apache.hive/hive-hcatalog-server-extensions/2.1.1-mapr-1803">
         </libraryNeeded>
 
-        <libraryNeeded
-            context="plugin:org.talend.libraries.hadoop.mapr.6.0.1"
-            id="piggybank-mapr-1803.jar"
-            name="piggybank-mapr-1803.jar"
-            mvn_uri="mvn:org.talend.libraries/piggybank-mapr-1803/6.0.0">
-        </libraryNeeded>
-        
-        <libraryNeeded
-            context="plugin:org.talend.libraries.hadoop.mapr.6.0.1"
-            id="parquet-pig-bundle-1.6.0.jar"
-            name="parquet-pig-bundle-1.6.0.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-pig-bundle-1.6.0/6.0.0">
-        </libraryNeeded>
-            
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.6.0.1"
             id="automaton-1.11-8.jar"
