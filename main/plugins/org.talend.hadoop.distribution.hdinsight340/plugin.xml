@@ -90,12 +90,6 @@
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdinsight340"
-            id="hive-hcatalog-pig-adapter-hdinsight340"
-            name="hive-hcatalog-pig-adapter-1.2.1000.2.4.1.0-327.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-pig-adapter-1.2.1000.2.4.1.0-327/6.0.0">
-        </libraryNeeded>
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdinsight340"
             id="hive-hcatalog-server-extensions-hdinsight340"
             name="hive-hcatalog-server-extensions-1.2.1000.2.4.1.0-327.jar"
             mvn_uri="mvn:org.talend.libraries/hive-hcatalog-server-extensions-1.2.1000.2.4.1.0-327/6.0.0">
