@@ -23,15 +23,8 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.qubole" id="jackson-xc-1.9.13.jar" name="jackson-xc-1.9.13.jar" mvn_uri="mvn:org.codehaus.jackson/jackson-xc/1.9.13" />
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.qubole" id="guava-16.0.1.jar" name="guava-16.0.1.jar" mvn_uri="mvn:com.google.guava/guava/16.0.1" />
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.qubole" id="jackson-annotations-2.6.0.jar" name="jackson-annotations-2.6.0.jar" mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.6.0" />
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.qubole" id="parquet-pig-1.5.0.jar" name="parquet-pig-1.5.0.jar" mvn_uri="mvn:com.twitter/parquet-pig/1.5.0" />
-
+		
 		<!-- Talend nexus jars -->
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.qubole"
-            id="pigutil.jar"
-            name="pigutil.jar"
-            mvn_uri="mvn:org.talend.libraries/pigutil/6.0.0">
-        </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.qubole"
             id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
@@ -62,13 +55,7 @@
 			id="elephant-bird-hadoop-compat-4.9.jar"
 			name="elephant-bird-hadoop-compat-4.9.jar"
 			mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-hadoop-compat/4.9">
-		</libraryNeeded>
-		<libraryNeeded
-			context="plugin:org.talend.hadoop.distribution.qubole"
-			id="elephant-bird-pig-4.9.jar"
-			name="elephant-bird-pig-4.9.jar"
-			mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-pig/4.9">
-		</libraryNeeded>
+		</libraryNeeded>		
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.qubole"
             id="hive-common-1.1.0.jar"
