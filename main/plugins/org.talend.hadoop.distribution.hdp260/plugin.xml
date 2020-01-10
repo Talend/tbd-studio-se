@@ -154,13 +154,6 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp260"
-            id="hive-hcatalog-pig-adapter-HDP_2_6"
-            name="hive-hcatalog-pig-adapter-1.2.1000.2.6.0.3-8.jar" 
-            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-pig-adapter-1.2.1000.2.6.0.3-8/6.4.0">
-        </libraryNeeded>
-        
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdp260"
             id="hive-hcatalog-server-extensions-HDP_2_6"
             name="hive-hcatalog-server-extensions-1.2.1000.2.6.0.3-8.jar" 
             mvn_uri="mvn:org.talend.libraries/hive-hcatalog-server-extensions-1.2.1000.2.6.0.3-8/6.4.0">
@@ -386,13 +379,6 @@
             id="libfb303-0.9.3"
             name="libfb303-0.9.3.jar"
             mvn_uri="mvn:org.apache.thrift/libfb303/0.9.3">
-        </libraryNeeded>
-        
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdp260"
-            id="piggybank-hdp2.5"
-            name="piggybank-hdp2.5.jar"
-            mvn_uri="mvn:org.talend.libraries/piggybank-hdp2.5/6.3.0">
         </libraryNeeded>
         
         <libraryNeeded
