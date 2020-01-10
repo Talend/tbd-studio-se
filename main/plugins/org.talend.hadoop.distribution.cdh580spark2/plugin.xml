@@ -428,20 +428,6 @@
                         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh580spark2"
-            id="elephant-bird-pig-4.9.jar"
-            name="elephant-bird-pig-4.9.jar"
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-pig/4.9">            
-        </libraryNeeded>
-                        
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh580spark2"
-            id="pigutil.jar"
-            name="pigutil.jar"
-            mvn_uri="mvn:org.talend.libraries/pigutil/6.0.0">            
-        </libraryNeeded>
-        
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh580spark2"
             id="hadoop-aws-cdh5.8.1"
             name="hadoop-aws-2.6.0-cdh5.8.1.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-aws-2.6.0-cdh5.8.1/6.1.0">
@@ -793,18 +779,6 @@
                 name="SPARK-S3-LIB-MRREQUIRED-CDH580_SPARK2">
              <library id="hadoop-aws-cdh5.8.1"/>
              <library id="aws-java-sdk-1.7.4.jar"/>
-             <library id="jets3t-0.9.0" />
-             <library id="httpclient-4.3.3.jar" />
-             <library id="httpcore-4.3.3.jar" />
-        </libraryNeededGroup>
-        
-        <!-- Pig S3 group -->
-        <libraryNeededGroup
-                description="Pig S3 libraries for CDH 5.8"
-                id="PIG-S3-LIB-CDH580_SPARK2"
-                name="PIG-S3-LIB-CDH580_SPARK2">
-             <library id="hadoop-aws-cdh5.8.1"/>
-             <library id="aws-java-sdk-1.10.52.jar"/>
              <library id="jets3t-0.9.0" />
              <library id="httpclient-4.3.3.jar" />
              <library id="httpcore-4.3.3.jar" />
