@@ -242,13 +242,6 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5120"
-            id="hive-hcatalog-pig-adapter-1.1.0-cdh5.12.1.jar"
-            name="hive-hcatalog-pig-adapter-1.1.0-cdh5.12.1.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-pig-adapter-1.1.0-cdh5.12.1/6.0.0">
-        </libraryNeeded>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh5120"
             id="hive-hcatalog-server-extensions-1.1.0-cdh5.12.1.jar"
             name="hive-hcatalog-server-extensions-1.1.0-cdh5.12.1.jar"
             mvn_uri="mvn:org.talend.libraries/hive-hcatalog-server-extensions-1.1.0-cdh5.12.1/6.0.0">
@@ -444,20 +437,6 @@
             id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
             name="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
             mvn_uri="mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0">            
-        </libraryNeeded>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh5120"
-            id="elephant-bird-pig-4.9.jar"
-            name="elephant-bird-pig-4.9.jar"
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-pig/4.9">            
-        </libraryNeeded>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh5120"
-            id="pigutil.jar"
-            name="pigutil.jar"
-            mvn_uri="mvn:org.talend.libraries/pigutil/6.0.0">            
         </libraryNeeded>
 
         <libraryNeeded
@@ -1225,18 +1204,6 @@
                 <library id="azure-common-1.7.1.jar"/>
                 <library id="microsoft-windowsazure-storage-sdk-0.6.0.jar"/>
                 <library id="jackson-core-2.6.5.jar"/>
-        </libraryNeededGroup>
-
-        <!-- Pig S3 group -->
-        <libraryNeededGroup
-                description="Pig S3 libraries for CDH 5.12"
-                id="PIG-S3-LIB-CDH_5_12"
-                name="PIG-S3-LIB-CDH_5_12">
-             <library id="hadoop-aws-2.6.0-cdh5.12.1.jar"/>
-             <library id="aws-java-sdk-1.10.52.jar"/>
-             <library id="jets3t-0.9.0" />
-             <library id="httpclient-4.5.2.jar" />
-             <library id="httpcore-4.4.4.jar" />
         </libraryNeededGroup>
 
         <!-- GraphFrames group MRREQUIRED -->
