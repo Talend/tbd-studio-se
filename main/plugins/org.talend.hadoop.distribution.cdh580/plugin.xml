@@ -733,18 +733,6 @@
                 <library id="jetty-util-6.1.26.jar"/>
         </libraryNeededGroup>
 
-        <!-- Pig S3 group -->
-        <libraryNeededGroup
-                description="Pig S3 libraries for CDH 5.8"
-                id="PIG-S3-LIB-CDH_5_8"
-                name="PIG-S3-LIB-CDH_5_8">
-             <library id="hadoop-aws-cdh5.8.1"/>
-             <library id="aws-java-sdk-1.10.52.jar"/>
-             <library id="jets3t-0.9.0" />
-             <library id="httpclient-4.3.3.jar" />
-             <library id="httpcore-4.3.3.jar" />
-        </libraryNeededGroup>
-        
         <!-- GraphFrames group MRREQUIRED -->
         <libraryNeededGroup
                 description="GraphFrames libraries for CDH 5.8 that are MRREQUIRED"
