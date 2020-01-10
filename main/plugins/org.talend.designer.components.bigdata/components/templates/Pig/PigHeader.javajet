@@ -1,7 +1,0 @@
-<%@ jet
-%>
-	<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Log4j/Log4jFileUtil.javajet"%>
-<%
-	log4jFileUtil.componentStartInfo(node);
-	final boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
-%>
