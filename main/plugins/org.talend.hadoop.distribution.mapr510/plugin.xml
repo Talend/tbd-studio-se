@@ -200,37 +200,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
-            id="hive-hcatalog-pig-adapter-1.2.0-mapr-1601.jar"
-            name="hive-hcatalog-pig-adapter-1.2.0-mapr-1601.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-pig-adapter-1.2.0-mapr-1601/6.2.0">
-        </libraryNeeded>
-
-        <libraryNeeded
-            context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
             id="hive-hcatalog-server-extensions-1.2.0-mapr-1601.jar"
             name="hive-hcatalog-server-extensions-1.2.0-mapr-1601.jar"
             mvn_uri="mvn:org.talend.libraries/hive-hcatalog-server-extensions-1.2.0-mapr-1601/6.2.0">
-        </libraryNeeded>
-
-        <libraryNeeded
-            context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
-            id="piggybank-MAPR510.jar"
-            name="piggybank-MAPR510.jar"
-            mvn_uri="mvn:org.talend.libraries/piggybank-MAPR510/6.2.0">
-        </libraryNeeded>
-        
-        <libraryNeeded
-            context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
-            id="parquet-pig-bundle-1.6.0.jar"
-            name="parquet-pig-bundle-1.6.0.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-pig-bundle-1.6.0/6.0.0">
-        </libraryNeeded>
-            
-       <libraryNeeded
-            context="plugin:org.talend.libraries.hadoop.mapr.5.1.0"
-            id="pig-core-h2-mapr51.jar"
-            name="pig-core-h2-mapr51.jar"
-            mvn_uri="mvn:org.talend.libraries/pig-core-h2-mapr51/6.2.0">
         </libraryNeeded>
 
         <libraryNeeded
@@ -548,33 +520,6 @@
             <library id="xz-1.0.jar" />
         </libraryNeededGroup>
         
-        <!-- Pig RCFile group -->
-        <libraryNeededGroup
-                description="Pig RCFile libraries for MapR 5.1.0"
-                id="PIG-RCFILE-LIB-MAPR510"
-                name="PIG-RCFILE-LIB-MAPR510">
-            <library id="hive-common-1.2.0-mapr-1601.jar"/>
-            <library id="hive-exec-1.2.0-mapr.jar"/>
-            <library id="hive-serde-1.2.0-mapr-1601.jar"/>
-            <library id="elephant-bird-core-4.9.jar"/>
-            <library id="elephant-bird-hadoop-compat-4.9.jar"/>
-            <library id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"/>
-            <library id="elephant-bird-pig-4.9.jar"/>
-            <library id="elephant-bird-hive-4.9.jar"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig SequenceFile group -->
-        <libraryNeededGroup
-                description="Pig SequenceFile libraries for MapR 5.1.0"
-                id="PIG-SEQUENCEFILE-LIB-MAPR510"
-                name="PIG-SEQUENCEFILE-LIB-MAPR510">
-            <library id="elephant-bird-core-4.9.jar"/>
-            <library id="elephant-bird-hadoop-compat-4.9.jar"/>
-            <library id="elephant-bird-pig-4.9.jar"/>
-            <library id="pigutil.jar"/>
-        </libraryNeededGroup>        
-
-
         <!-- Spark Hive group MRREQUIRED -->
         <libraryNeededGroup
                 description="Spark Hive libraries for MapR 5.1.0 that are MRREQUIRED"
