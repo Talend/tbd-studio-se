@@ -27,8 +27,10 @@ import org.apache.atlas.typesystem.Referenceable;
 import org.apache.atlas.typesystem.persistence.Id;
 import org.apache.commons.lang3.tuple.Pair;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore("Depends on local navigator so this should be in Integration test which haven't been implemented yet")
 public class AtlasLineageCreatorIT {
 
     private static final String ENTITY_DESCRIPTION = "Talend Component";
