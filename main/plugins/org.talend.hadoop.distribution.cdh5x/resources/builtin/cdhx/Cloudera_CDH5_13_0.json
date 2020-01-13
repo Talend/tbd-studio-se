@@ -10874,7 +10874,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH5_13_0_hadoop_mapreduce_client_core_2_6_0_cdh5_13_0_jar",
-      "mvn_uri" : "mvn:org.apache.hadoop/hadoop-mapreduce-client-core/2.6.0-cdh5.13.0/jar",
+      "mvn_uri" : "mvn:org.apache.hadoop/hadoop-mapreduce-client-core/2.6.0-cdh5.13.0",
       "name" : "hadoop-mapreduce-client-core-2.6.0-cdh5.13.0.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -10946,7 +10946,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH5_13_0_hadoop_yarn_server_web_proxy_2_6_0_cdh5_13_0_jar",
-      "mvn_uri" : "mvn:org.apache.hadoop/hadoop-yarn-server-web-proxy/2.6.0-cdh5.13.0/jar",
+      "mvn_uri" : "mvn:org.apache.hadoop/hadoop-yarn-server-web-proxy/2.6.0-cdh5.13.0",
       "name" : "hadoop-yarn-server-web-proxy-2.6.0-cdh5.13.0.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -11106,7 +11106,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH5_13_0_hive_hcatalog_core_1_1_0_cdh5_13_0_jar",
-      "mvn_uri" : "mvn:org.apache.hive.hcatalog/hive-hcatalog-core/1.1.0-cdh5.13.0/jar",
+      "mvn_uri" : "mvn:org.apache.hive.hcatalog/hive-hcatalog-core/1.1.0-cdh5.13.0",
       "name" : "hive-hcatalog-core-1.1.0-cdh5.13.0.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -11138,7 +11138,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH5_13_0_hive_metastore_1_1_0_cdh5_13_0_jar",
-      "mvn_uri" : "mvn:org.apache.hive/hive-metastore/1.1.0-cdh5.13.0/jar",
+      "mvn_uri" : "mvn:org.apache.hive/hive-metastore/1.1.0-cdh5.13.0",
       "name" : "hive-metastore-1.1.0-cdh5.13.0.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -11146,7 +11146,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH5_13_0_hive_serde_1_1_0_cdh5_13_0_jar",
-      "mvn_uri" : "mvn:org.apache.hive/hive-serde/1.1.0-cdh5.13.0/jar",
+      "mvn_uri" : "mvn:org.apache.hive/hive-serde/1.1.0-cdh5.13.0",
       "name" : "hive-serde-1.1.0-cdh5.13.0.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -12133,7 +12133,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH5_13_0_parquet_avro_1_5_0_cdh5_13_0_jar",
-      "mvn_uri" : "mvn:com.twitter/parquet-avro/1.5.0-cdh5.13.0/jar",
+      "mvn_uri" : "mvn:com.twitter/parquet-avro/1.5.0-cdh5.13.0",
       "name" : "parquet-avro-1.5.0-cdh5.13.0.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -12645,8 +12645,8 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH5_13_0_talend_lineage_api",
-      "mvn_uri" : "mvn:org.talend.libraries/talend-lineage-api-0.2.0/6.0.0",
-      "name" : "talend-lineage-api-0.2.0.jar",
+      "mvn_uri" : "mvn:org.talend.libraries/talend-lineage-api-0.2.1/6.0.0",
+      "name" : "talend-lineage-api-0.2.1.jar",
       "tagName" : "libraryNeeded",
       "useStudioRepository" : "true"
     }, {
