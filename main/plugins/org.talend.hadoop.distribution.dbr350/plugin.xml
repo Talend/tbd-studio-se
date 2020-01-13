@@ -8,7 +8,7 @@
             context="plugin:org.talend.hadoop.distribution.dbr350"
             id="talend-bigdata-launcher-platform-1.4.2.jar"
             name="talend-bigdata-launcher-platform-1.4.2.jar"
-            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-platform-1.4.2.jar/6.0.0">
+            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-platform-1.4.2/6.0.0">
         </libraryNeeded>
                            
 		 <libraryNeeded
