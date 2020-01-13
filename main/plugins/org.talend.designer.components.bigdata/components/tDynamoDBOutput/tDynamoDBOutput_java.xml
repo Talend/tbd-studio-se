@@ -1,29 +1,29 @@
 <COMPONENT>
     <HEADER
-        PLATEFORM="ALL"
-        SERIAL=""
-        VERSION="0.101"
-        STATUS="ALPHA"
-        COMPATIBILITY="ALL"
-        AUTHOR="Talend"
-        SCHEMA_AUTO_PROPAGATE="true"
-        DATA_AUTO_PROPAGATE="false"
-        EXTENSION="org.talend.designer.fileoutputxml"
-        RELEASE_DATE="20160329A"
-        STARTABLE="false"
-        PARTITIONING="NONE"
-        LOG4J_ENABLED="true"
-		SUPPORTS_DB_TYPE="true"
+            PLATEFORM="ALL"
+            SERIAL=""
+            VERSION="0.101"
+            STATUS="ALPHA"
+            COMPATIBILITY="ALL"
+            AUTHOR="Talend"
+            SCHEMA_AUTO_PROPAGATE="true"
+            DATA_AUTO_PROPAGATE="false"
+            EXTENSION="org.talend.designer.fileoutputxml"
+            RELEASE_DATE="20160329A"
+            STARTABLE="false"
+            PARTITIONING="NONE"
+            LOG4J_ENABLED="true"
+            SUPPORTS_DB_TYPE="true"
     >
         <SIGNATURE/>
     </HEADER>
-  <FAMILIES>
-    <FAMILY>Databases NoSQL/DynamoDB</FAMILY>
-    <FAMILY>Big Data/DynamoDB</FAMILY>
-  </FAMILIES>
-	<DOCUMENTATION>
-		<URL />
-	</DOCUMENTATION>
+    <FAMILIES>
+        <FAMILY>Databases NoSQL/DynamoDB</FAMILY>
+        <FAMILY>Big Data/DynamoDB</FAMILY>
+    </FAMILIES>
+    <DOCUMENTATION>
+        <URL />
+    </DOCUMENTATION>
     <CONNECTORS>
         <CONNECTOR CTYPE="FLOW" MAX_INPUT="1" MAX_OUTPUT="0"/>
         <CONNECTOR CTYPE="ITERATE" MAX_OUTPUT="0" MAX_INPUT="0"/>
@@ -33,211 +33,211 @@
         <CONNECTOR CTYPE="COMPONENT_ERROR"/>
         <CONNECTOR CTYPE="RUN_IF"/>
     </CONNECTORS>
-	<PARAMETERS>
+    <PARAMETERS>
 
-		<PARAMETER NAME="MAPPING" FIELD="MAPPING_TYPE" NUM_ROW="5" SHOW="false">
-			<DEFAULT>dynamodb_id</DEFAULT>
-		</PARAMETER>
+        <PARAMETER NAME="MAPPING" FIELD="MAPPING_TYPE" NUM_ROW="5" SHOW="false">
+            <DEFAULT>dynamodb_id</DEFAULT>
+        </PARAMETER>
 
-		<PARAMETER NAME="ACCESS_KEY" FIELD="TEXT" NUM_ROW="10"
-			GROUP="AUTHENTICATION"
-			SHOW_IF="INHERIT_CREDENTIALS == 'false'">
-			<DEFAULT>""</DEFAULT>
-		</PARAMETER>
+        <PARAMETER NAME="ACCESS_KEY" FIELD="TEXT" NUM_ROW="10"
+                   GROUP="AUTHENTICATION"
+                   SHOW_IF="INHERIT_CREDENTIALS == 'false'">
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
 
-		<PARAMETER NAME="SECRET_KEY" FIELD="PASSWORD" NUM_ROW="10"
-			GROUP="AUTHENTICATION"
-			SHOW_IF="INHERIT_CREDENTIALS == 'false'">
-			<DEFAULT>""</DEFAULT>
-		</PARAMETER>
-		
-		<PARAMETER NAME="INHERIT_CREDENTIALS" FIELD="CHECK" NUM_ROW="11" REQUIRED="true"
-			GROUP="AUTHENTICATION">
-      		<DEFAULT>false</DEFAULT>
-    	</PARAMETER>
-    	
-    	<PARAMETER NAME="ASSUME_ROLE" FIELD="CHECK" NUM_ROW="12" REQUIRED="true"
-			GROUP="AUTHENTICATION">
-      		<DEFAULT>false</DEFAULT>
-    	</PARAMETER>
-    	
-    	<PARAMETER NAME="ARN" FIELD="TEXT" NUM_ROW="13" REQUIRED="true"
-    		SHOW_IF="ASSUME_ROLE == 'true'"
-			GROUP="AUTHENTICATION">
-			<DEFAULT>""</DEFAULT>
-    	</PARAMETER>
-    	
-    	<PARAMETER NAME="ROLE_SESSION_NAME" FIELD="TEXT" NUM_ROW="14" REQUIRED="true"
-    		SHOW_IF="ASSUME_ROLE == 'true'"
-			GROUP="AUTHENTICATION">
-			<DEFAULT>""</DEFAULT>
-    	</PARAMETER>
-    	
-    	<PARAMETER NAME="SESSION_DURATION" FIELD="TEXT" NUM_ROW="15" REQUIRED="true"
-    		SHOW_IF="ASSUME_ROLE == 'true'"
-			GROUP="AUTHENTICATION">
-			<DEFAULT>15</DEFAULT>
-    	</PARAMETER>		
-			
-		<PARAMETER NAME="USE_ENDPOINT" FIELD="CHECK"
-			NUM_ROW="16" GROUP="CONFIGURATION">
-			<DEFAULT>false</DEFAULT>
-		</PARAMETER>
-		<PARAMETER NAME="ENDPOINT" FIELD="TEXT" NUM_ROW="17"
-			REPOSITORY_VALUE="ENDPOINT"
-			SHOW_IF="USE_ENDPOINT == 'true'" GROUP="CONFIGURATION">
-			<DEFAULT>""</DEFAULT>
-		</PARAMETER>	
-			
-		<PARAMETER NAME="REGION" FIELD="OPENED_LIST" NUM_ROW="20"
-			REQUIRED="true" 
-			SHOW_IF="USE_ENDPOINT == 'false'" GROUP="CONFIGURATION">
-			<ITEMS DEFAULT="DEFAULT">
-				<ITEM NAME="DEFAULT" VALUE="DEFAULT" />
-				<ITEM NAME="AP_SOUTHEAST_1" VALUE="&quot;ap-southeast-1&quot;" />
-				<ITEM NAME="AP_SOUTHEAST_2" VALUE="&quot;ap-southeast-2&quot;" />
-				<ITEM NAME="AP_NORTHEAST_1" VALUE="&quot;ap-northeast-1&quot;" />
-				<ITEM NAME="CN_NORTH_1" VALUE="&quot;cn-north-1&quot;" />
-				<ITEM NAME="EU_WEST_1" VALUE="&quot;eu-west-1&quot;" />
-				<ITEM NAME="EU_CENTRAL_1" VALUE="&quot;eu-central-1&quot;" />
-				<ITEM NAME="GovCloud" VALUE="&quot;us-gov-west-1&quot;" />
-				<ITEM NAME="SA_EAST_1" VALUE="&quot;sa-east-1&quot;" />
-				<ITEM NAME="US_EAST_1" VALUE="&quot;us-east-1&quot;" />
-				<ITEM NAME="US_WEST_1" VALUE="&quot;us-west-1&quot;" />
-				<ITEM NAME="US_WEST_2" VALUE="&quot;us-west-2&quot;" />
-			</ITEMS>
-		</PARAMETER>	
-				
-		<PARAMETER NAME="TYPE" FIELD="TEXT" NUM_ROW="25" SHOW="false"
-			REPOSITORY_VALUE="TYPE" GROUP="CONFIGURATION">
-			<DEFAULT>DynamoDB</DEFAULT>
-		</PARAMETER>
+        <PARAMETER NAME="SECRET_KEY" FIELD="PASSWORD" NUM_ROW="10"
+                   GROUP="AUTHENTICATION"
+                   SHOW_IF="INHERIT_CREDENTIALS == 'false'">
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
 
-		<PARAMETER NAME="SCHEMA" FIELD="SCHEMA_TYPE" NUM_ROW="45" GROUP="CONFIGURATION">
-			<DEFAULT>""</DEFAULT>
-		</PARAMETER>
-		<PARAMETER NAME="TABLE" FIELD="TEXT" NUM_ROW="50" GROUP="CONFIGURATION">
-			<DEFAULT>""</DEFAULT>
-			
-		</PARAMETER>
-		
-		<PARAMETER NAME="PARTITION_KEY" FIELD="TEXT" NUM_ROW="55"
-			REPOSITORY_VALUE="TYPE" GROUP="CONFIGURATION"
-			REQUIRED="true">
-			<DEFAULT>""</DEFAULT>
-		</PARAMETER>
-		
-		<PARAMETER NAME="SORT_KEY" FIELD="TEXT" NUM_ROW="55"
-			REPOSITORY_VALUE="TYPE" GROUP="CONFIGURATION">
-			<DEFAULT>""</DEFAULT>
-		</PARAMETER>
+        <PARAMETER NAME="INHERIT_CREDENTIALS" FIELD="CHECK" NUM_ROW="11" REQUIRED="true"
+                   GROUP="AUTHENTICATION">
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
 
-		
-		<PARAMETER
-            NAME="TABLE_ACTION"
-          FIELD="CLOSED_LIST"
-          NUM_ROW="40"
-		  GROUP="CONFIGURATION"
+        <PARAMETER NAME="ASSUME_ROLE" FIELD="CHECK" NUM_ROW="12" REQUIRED="true"
+                   GROUP="AUTHENTICATION">
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER NAME="ARN" FIELD="TEXT" NUM_ROW="13" REQUIRED="true"
+                   SHOW_IF="ASSUME_ROLE == 'true'"
+                   GROUP="AUTHENTICATION">
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER NAME="ROLE_SESSION_NAME" FIELD="TEXT" NUM_ROW="14" REQUIRED="true"
+                   SHOW_IF="ASSUME_ROLE == 'true'"
+                   GROUP="AUTHENTICATION">
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER NAME="SESSION_DURATION" FIELD="TEXT" NUM_ROW="15" REQUIRED="true"
+                   SHOW_IF="ASSUME_ROLE == 'true'"
+                   GROUP="AUTHENTICATION">
+            <DEFAULT>15</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER NAME="USE_ENDPOINT" FIELD="CHECK"
+                   NUM_ROW="16" GROUP="CONFIGURATION">
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+        <PARAMETER NAME="ENDPOINT" FIELD="TEXT" NUM_ROW="17"
+                   REPOSITORY_VALUE="ENDPOINT"
+                   SHOW_IF="USE_ENDPOINT == 'true'" GROUP="CONFIGURATION">
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER NAME="REGION" FIELD="OPENED_LIST" NUM_ROW="20"
+                   REQUIRED="true"
+                   SHOW_IF="USE_ENDPOINT == 'false'" GROUP="CONFIGURATION">
+            <ITEMS DEFAULT="DEFAULT">
+                <ITEM NAME="DEFAULT" VALUE="DEFAULT" />
+                <ITEM NAME="AP_SOUTHEAST_1" VALUE="&quot;ap-southeast-1&quot;" />
+                <ITEM NAME="AP_SOUTHEAST_2" VALUE="&quot;ap-southeast-2&quot;" />
+                <ITEM NAME="AP_NORTHEAST_1" VALUE="&quot;ap-northeast-1&quot;" />
+                <ITEM NAME="CN_NORTH_1" VALUE="&quot;cn-north-1&quot;" />
+                <ITEM NAME="EU_WEST_1" VALUE="&quot;eu-west-1&quot;" />
+                <ITEM NAME="EU_CENTRAL_1" VALUE="&quot;eu-central-1&quot;" />
+                <ITEM NAME="GovCloud" VALUE="&quot;us-gov-west-1&quot;" />
+                <ITEM NAME="SA_EAST_1" VALUE="&quot;sa-east-1&quot;" />
+                <ITEM NAME="US_EAST_1" VALUE="&quot;us-east-1&quot;" />
+                <ITEM NAME="US_WEST_1" VALUE="&quot;us-west-1&quot;" />
+                <ITEM NAME="US_WEST_2" VALUE="&quot;us-west-2&quot;" />
+            </ITEMS>
+        </PARAMETER>
+
+        <PARAMETER NAME="TYPE" FIELD="TEXT" NUM_ROW="25" SHOW="false"
+                   REPOSITORY_VALUE="TYPE" GROUP="CONFIGURATION">
+            <DEFAULT>DynamoDB</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER NAME="SCHEMA" FIELD="SCHEMA_TYPE" NUM_ROW="45" GROUP="CONFIGURATION">
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+        <PARAMETER NAME="TABLE" FIELD="TEXT" NUM_ROW="50" GROUP="CONFIGURATION">
+            <DEFAULT>""</DEFAULT>
+
+        </PARAMETER>
+
+        <PARAMETER NAME="PARTITION_KEY" FIELD="TEXT" NUM_ROW="55"
+                   REPOSITORY_VALUE="TYPE" GROUP="CONFIGURATION"
+                   REQUIRED="true">
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER NAME="SORT_KEY" FIELD="TEXT" NUM_ROW="55"
+                   REPOSITORY_VALUE="TYPE" GROUP="CONFIGURATION">
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+
+
+        <PARAMETER
+                NAME="TABLE_ACTION"
+                FIELD="CLOSED_LIST"
+                NUM_ROW="40"
+                GROUP="CONFIGURATION"
         >
             <ITEMS DEFAULT="NONE">
                 <ITEM NAME="NONE" VALUE="NONE" />
                 <ITEM NAME="DROP_CREATE" VALUE="DROP_CREATE"/>
                 <ITEM NAME="CREATE" VALUE="CREATE"/>
-				<ITEM NAME="CREATE_IF_NOT_EXISTS" VALUE="CREATE_IF_NOT_EXISTS"/>
-				<ITEM NAME="DROP_IF_EXISTS_AND_CREATE" VALUE="DROP_IF_EXISTS_AND_CREATE"/>
+                <ITEM NAME="CREATE_IF_NOT_EXISTS" VALUE="CREATE_IF_NOT_EXISTS"/>
+                <ITEM NAME="DROP_IF_EXISTS_AND_CREATE" VALUE="DROP_IF_EXISTS_AND_CREATE"/>
 
             </ITEMS>
         </PARAMETER>
-		
-		
-		<PARAMETER
-            NAME="DATA_ACTION"
-          FIELD="CLOSED_LIST"
-          NUM_ROW="40"
-		  GROUP="CONFIGURATION"
+
+
+        <PARAMETER
+                NAME="DATA_ACTION"
+                FIELD="CLOSED_LIST"
+                NUM_ROW="40"
+                GROUP="CONFIGURATION"
         >
             <ITEMS DEFAULT="INSERT">
                 <ITEM NAME="INSERT" VALUE="INSERT" />
                 <ITEM NAME="UPDATE" VALUE="UPDATE"/>
                 <ITEM NAME="DELETE" VALUE="DELETE"/>
             </ITEMS>
-        </PARAMETER>		
+        </PARAMETER>
 
-		<PARAMETER NAME="NAME_MAPPING" FIELD="TABLE" NUM_ROW="100" 
-			SHOW_IF="DATA_ACTION == 'UPDATE'" GROUP="CONFIGURATION">
-	      <ITEMS>		  		
-		  	<ITEM NAME="NAME" FIELD="TEXT" />
-			<ITEM NAME="PLACEHOLDER" FIELD="TEXT" />			
-	      </ITEMS>
-		</PARAMETER>
-		
-	</PARAMETERS>
-	
-	<ADVANCED_PARAMETERS>
-		<PARAMETER NAME="SET_STS_ENDPOINT" FIELD="CHECK" NUM_ROW="1" REQUIRED="true"
-			SHOW_IF="ASSUME_ROLE == 'true'">
-      		<DEFAULT>false</DEFAULT>
-    	</PARAMETER>
-    	
-    	<PARAMETER NAME="STS_ENDPOINT" FIELD="TEXT" NUM_ROW="1" REQUIRED="true"
-    		SHOW_IF="(ASSUME_ROLE == 'true') AND (SET_STS_ENDPOINT == 'true')">
-      		<DEFAULT>""</DEFAULT>
-    	</PARAMETER>
-    	
-		<PARAMETER NAME="RCU" FIELD="TEXT" NUM_ROW="10"
-			REPOSITORY_VALUE="TYPE" GROUP="THROUGHPUT"
-			REQUIRED="true">
-			<DEFAULT>5</DEFAULT>
-		</PARAMETER>
-		
-		<PARAMETER NAME="WCU" FIELD="TEXT" NUM_ROW="11"
-			REPOSITORY_VALUE="TYPE" GROUP="THROUGHPUT"
-			REQUIRED="true">
-			<DEFAULT>5</DEFAULT>
-		</PARAMETER>
-	</ADVANCED_PARAMETERS>
-	<CODEGENERATION>
-     <IMPORTS>
-         <IMPORT NAME="log4j-1.2.17" MODULE="log4j-1.2.17.jar"
-                 MVN="mvn:log4j/log4j/1.2.17"/>
-         <IMPORT NAME="aws-java-sdk-1.11.406.jar" MODULE="aws-java-sdk-1.11.406.jar"
-                 MVN="mvn:com.amazonaws/aws-java-sdk/1.11.406"
-                 REQUIRED="true"/>
-         <IMPORT NAME="jackson-core-2.10.1.jar" MODULE="jackson-core-2.10.1.jar"
-                 MVN="mvn:com.fasterxml.jackson.core/jackson-core/2.10.1"
-                 REQUIRED="true"/>
-         <IMPORT NAME="jackson-databind-2.10.1.jar" MODULE="jackson-databind-2.10.1.jar"
-                 MVN="mvn:com.fasterxml.jackson.core/jackson-databind/2.10.1"
-                 REQUIRED="true"/>
-         <IMPORT NAME="jackson-annotations-2.10.1.jar" MODULE="jackson-annotations-2.10.1.jar"
-			MVN="mvn:com.fasterxml.jackson.core/jackson-annotations/2.10.1"
-			REQUIRED="true" />
-		<IMPORT NAME="httpcore-4.4.9.jar" MODULE="httpcore-4.4.9.jar"
-			MVN="mvn:org.apache.httpcomponents/httpcore/4.4.9"
-			REQUIRED="true" />
-		<IMPORT NAME="httpclient-4.5.5.jar" MODULE="httpclient-4.5.5.jar"
-			MVN="mvn:org.apache.httpcomponents/httpclient/4.5.5"
-			REQUIRED="true" />
-		<IMPORT NAME="joda-time-2.8.1.jar" MODULE="joda-time-2.8.1.jar"
-			MVN="mvn:joda-time/joda-time/2.8.1"
-			REQUIRED="true" />
-		<IMPORT NAME="commons-logging-1.1.3.jar" MODULE="commons-logging-1.1.3.jar"
-			MVN="mvn:commons-logging/commons-logging/1.1.3"
-			UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-logging-1.1.3.jar"
-			REQUIRED="true" />
-		<IMPORT NAME="commons-codec-1.6.jar" MODULE="commons-codec-1.6.jar"
-			MVN="mvn:org.talend.libraries/commons-codec-1.6/6.0.0"
-			UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.6.jar"
-			REQUIRED="true" />
-        <IMPORT NAME="json-path-1.2.0.jar" MODULE="json-path-1.2.0.jar" MVN="mvn:org.talend.libraries/json-path-1.2.0/6.0.0"  REQUIRED="true" />
-        <IMPORT NAME="json-smart-2.1.0.jar" MODULE="json-smart-2.1.0.jar" MVN="mvn:org.talend.libraries/json-smart-2.1.0/6.0.0"  REQUIRED="true" />
-        <IMPORT NAME="asm-1.0.2.jar" MODULE="asm-1.0.2.jar" MVN="mvn:org.talend.libraries/asm-1.0.2/6.0.0"  REQUIRED="true" />
-        <IMPORT NAME="slf4j-api-1.7.5.jar" MODULE="slf4j-api-1.7.5.jar" MVN="mvn:org.talend.libraries/slf4j-api-1.7.5/6.0.0"  UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-api-1.7.5.jar" REQUIRED="true"  />
-        <IMPORT NAME="slf4j-log4j12-1.7.5.jar" MODULE="slf4j-log4j12-1.7.5.jar" MVN="mvn:org.talend.libraries/slf4j-log4j12-1.7.5/6.0.0"  UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.7.5.jar" REQUIRED="true" />
-				
-     </IMPORTS>
-	</CODEGENERATION>
-	<RETURNS>
-		<RETURN NAME="NB_LINE" TYPE="id_Integer" AVAILABILITY="AFTER" />
-	</RETURNS>
+        <PARAMETER NAME="NAME_MAPPING" FIELD="TABLE" NUM_ROW="100"
+                   SHOW_IF="DATA_ACTION == 'UPDATE'" GROUP="CONFIGURATION">
+            <ITEMS>
+                <ITEM NAME="NAME" FIELD="TEXT" />
+                <ITEM NAME="PLACEHOLDER" FIELD="TEXT" />
+            </ITEMS>
+        </PARAMETER>
+
+    </PARAMETERS>
+
+    <ADVANCED_PARAMETERS>
+        <PARAMETER NAME="SET_STS_ENDPOINT" FIELD="CHECK" NUM_ROW="1" REQUIRED="true"
+                   SHOW_IF="ASSUME_ROLE == 'true'">
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER NAME="STS_ENDPOINT" FIELD="TEXT" NUM_ROW="1" REQUIRED="true"
+                   SHOW_IF="(ASSUME_ROLE == 'true') AND (SET_STS_ENDPOINT == 'true')">
+            <DEFAULT>""</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER NAME="RCU" FIELD="TEXT" NUM_ROW="10"
+                   REPOSITORY_VALUE="TYPE" GROUP="THROUGHPUT"
+                   REQUIRED="true">
+            <DEFAULT>5</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER NAME="WCU" FIELD="TEXT" NUM_ROW="11"
+                   REPOSITORY_VALUE="TYPE" GROUP="THROUGHPUT"
+                   REQUIRED="true">
+            <DEFAULT>5</DEFAULT>
+        </PARAMETER>
+    </ADVANCED_PARAMETERS>
+    <CODEGENERATION>
+        <IMPORTS>
+            <IMPORT NAME="log4j-1.2.17" MODULE="log4j-1.2.17.jar"
+                    MVN="mvn:log4j/log4j/1.2.17"/>
+            <IMPORT NAME="aws-java-sdk-1.11.406.jar" MODULE="aws-java-sdk-1.11.406.jar"
+                    MVN="mvn:com.amazonaws/aws-java-sdk/1.11.406"
+                    REQUIRED="true" />
+            <IMPORT NAME="jackson-core-2.10.1.jar" MODULE="jackson-core-2.10.1.jar"
+                    MVN="mvn:com.fasterxml.jackson.core/jackson-core/2.10.1"
+                    REQUIRED="true" />
+            <IMPORT NAME="jackson-databind-2.10.1.jar" MODULE="jackson-databind-2.10.1.jar"
+                    MVN="mvn:com.fasterxml.jackson.core/jackson-databind/2.10.1"
+                    REQUIRED="true" />
+            <IMPORT NAME="jackson-annotations-2.10.1.jar" MODULE="jackson-annotations-2.10.1.jar"
+                    MVN="mvn:com.fasterxml.jackson.core/jackson-annotations/2.10.1"
+                    REQUIRED="true" />
+            <IMPORT NAME="httpcore-4.4.9.jar" MODULE="httpcore-4.4.9.jar"
+                    MVN="mvn:org.apache.httpcomponents/httpcore/4.4.9"
+                    REQUIRED="true" />
+            <IMPORT NAME="httpclient-4.5.5.jar" MODULE="httpclient-4.5.5.jar"
+                    MVN="mvn:org.apache.httpcomponents/httpclient/4.5.5"
+                    REQUIRED="true" />
+            <IMPORT NAME="joda-time-2.8.1.jar" MODULE="joda-time-2.8.1.jar"
+                    MVN="mvn:joda-time/joda-time/2.8.1"
+                    REQUIRED="true" />
+            <IMPORT NAME="commons-logging-1.1.3.jar" MODULE="commons-logging-1.1.3.jar"
+                    MVN="mvn:commons-logging/commons-logging/1.1.3"
+                    UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-logging-1.1.3.jar"
+                    REQUIRED="true" />
+            <IMPORT NAME="commons-codec-1.6.jar" MODULE="commons-codec-1.6.jar"
+                    MVN="mvn:org.talend.libraries/commons-codec-1.6/6.0.0"
+                    UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.6.jar"
+                    REQUIRED="true" />
+            <IMPORT NAME="json-path-1.2.0.jar" MODULE="json-path-1.2.0.jar" MVN="mvn:org.talend.libraries/json-path-1.2.0/6.0.0"  REQUIRED="true" />
+            <IMPORT NAME="json-smart-2.2.1.jar" MODULE="json-smart-2.2.1.jar" MVN="mvn:net.minidev/json-smart/2.2.1"  REQUIRED="true" />
+            <IMPORT NAME="asm-1.0.2.jar" MODULE="asm-1.0.2.jar" MVN="mvn:org.talend.libraries/asm-1.0.2/6.0.0"  REQUIRED="true" />
+            <IMPORT NAME="slf4j-api-1.7.5.jar" MODULE="slf4j-api-1.7.5.jar" MVN="mvn:org.talend.libraries/slf4j-api-1.7.5/6.0.0"  UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-api-1.7.5.jar" REQUIRED="true"  />
+            <IMPORT NAME="slf4j-log4j12-1.7.5.jar" MODULE="slf4j-log4j12-1.7.5.jar" MVN="mvn:org.talend.libraries/slf4j-log4j12-1.7.5/6.0.0"  UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.7.5.jar" REQUIRED="true" />
+
+        </IMPORTS>
+    </CODEGENERATION>
+    <RETURNS>
+        <RETURN NAME="NB_LINE" TYPE="id_Integer" AVAILABILITY="AFTER" />
+    </RETURNS>
 </COMPONENT>
