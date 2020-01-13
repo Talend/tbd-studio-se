@@ -176,7 +176,16 @@
 			"artifactId": "navigator-sdk-client",
 			"version": "2.0",
 			"classifier": "",
-			"description": ""
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+			]
 		},
 		{
 			"id": "datafu",
@@ -189,6 +198,13 @@
 			"exclusions": [
 				{
 					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "com.sun.jersey",
 					"artifactId": "*",
 					"classifier": "",
 					"extension": "",
@@ -296,6 +312,13 @@
 					"classifier": "",
 					"extension": "",
 					"description": ""
+				},
+				{
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
 				}
 			]
 		},
@@ -310,6 +333,13 @@
 			"exclusions": [
 				{
 					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "com.sun.jersey",
 					"artifactId": "*",
 					"classifier": "",
 					"extension": "",
@@ -353,6 +383,13 @@
 					"classifier": "",
 					"extension": "",
 					"description": ""
+				},
+				{
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
 				}
 			]
 		},
@@ -371,6 +408,13 @@
 					"classifier": "",
 					"extension": "",
 					"description": ""
+				},
+				{
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
 				}
 			]
 		},
@@ -385,6 +429,13 @@
 			"exclusions": [
 				{
 					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "com.sun.jersey",
 					"artifactId": "*",
 					"classifier": "",
 					"extension": "",
@@ -417,6 +468,13 @@
 				},
 				{
 					"groupId": "io.netty",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "com.sun.jersey",
 					"artifactId": "*",
 					"classifier": "",
 					"extension": "",
@@ -456,6 +514,13 @@
 				},
 				{
 					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "com.sun.jersey",
 					"artifactId": "*",
 					"classifier": "",
 					"extension": "",
@@ -506,6 +571,13 @@
 					"classifier": "",
 					"extension": "",
 					"description": ""
+				},
+				{
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
 				}
 			]
 		},
@@ -534,6 +606,13 @@
 				},
 				{
 					"groupId": "io.netty",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "com.sun.jersey",
 					"artifactId": "*",
 					"classifier": "",
 					"extension": "",
@@ -568,6 +647,13 @@
 				},
 				{
 					"groupId": "io.netty",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "com.sun.jersey",
 					"artifactId": "*",
 					"classifier": "",
 					"extension": "",
@@ -618,6 +704,13 @@
 					"classifier": "",
 					"extension": "",
 					"description": ""
+				},
+				{
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
 				}
 			]
 		},
@@ -653,6 +746,13 @@
 				},
 				{
 					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "com.sun.jersey",
 					"artifactId": "*",
 					"classifier": "",
 					"extension": "",
@@ -703,6 +803,13 @@
 					"classifier": "",
 					"extension": "",
 					"description": ""
+				},
+				{
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
 				}
 			]
 		},
@@ -742,6 +849,13 @@
 					"classifier": "",
 					"extension": "",
 					"description": ""
+				},
+				{
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
 				}
 			]
 		},
@@ -756,6 +870,13 @@
 			"exclusions": [
 				{
 					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "com.sun.jersey",
 					"artifactId": "*",
 					"classifier": "",
 					"extension": "",
@@ -816,6 +937,13 @@
 					"classifier": "",
 					"extension": "",
 					"description": ""
+				},
+				{
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
 				}
 			]
 		},
@@ -866,6 +994,13 @@
 			"exclusions": [
 				{
 					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "com.sun.jersey",
 					"artifactId": "*",
 					"classifier": "",
 					"extension": "",
@@ -1038,6 +1173,13 @@
 				},
 				{
 					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "com.sun.jersey",
 					"artifactId": "*",
 					"classifier": "",
 					"extension": "",
