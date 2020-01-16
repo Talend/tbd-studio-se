@@ -261,7 +261,7 @@
 			REQUIRED="true" />
 							
         <IMPORT NAME="json-path-1.2.0.jar" MODULE="json-path-1.2.0.jar" MVN="mvn:org.talend.libraries/json-path-1.2.0/6.0.0"  REQUIRED="true" />
-        <IMPORT NAME="json-smart-2.1.0.jar" MODULE="json-smart-2.1.0.jar" MVN="mvn:org.talend.libraries/json-smart-2.1.0/6.0.0"  REQUIRED="true" />
+        <IMPORT NAME="json-smart-2.2.1.jar" MODULE="json-smart-2.2.1.jar" MVN="mvn:net.minidev/json-smart/2.2.1"  REQUIRED="true" />
         <IMPORT NAME="asm-1.0.2.jar" MODULE="asm-1.0.2.jar" MVN="mvn:org.talend.libraries/asm-1.0.2/6.0.0"  REQUIRED="true" />
         <IMPORT NAME="slf4j-api-1.7.5.jar" MODULE="slf4j-api-1.7.5.jar" MVN="mvn:org.talend.libraries/slf4j-api-1.7.5/6.0.0"  UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-api-1.7.5.jar" REQUIRED="true"  />
         <IMPORT NAME="slf4j-log4j12-1.7.5.jar" MODULE="slf4j-log4j12-1.7.5.jar" MVN="mvn:org.talend.libraries/slf4j-log4j12-1.7.5/6.0.0"  UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.7.5.jar" REQUIRED="true" />
