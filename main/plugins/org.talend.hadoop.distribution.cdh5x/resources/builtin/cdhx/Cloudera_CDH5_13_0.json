@@ -4,7 +4,7 @@
     "distribution" : "CLOUDERA",
     "id" : "Cloudera_CDH5_13_0",
     "name" : "Cloudera CDH5.13.0",
-    "repository" : "https://talend-update.talend.com/nexus/content/repositories/cdh-releases-rcs/",
+    "repository" : "https://talend-update.talend.com/nexus/content/groups/dynamicdistribution/",
     "selectedSparkVersions" : [ "SPARK_2_2" ],
     "tagName" : "dynamicPluginConfiguration",
     "templateId" : "CDH5xDistributionTemplate",
@@ -11090,7 +11090,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH5_13_0_hive_exec_1_1_0_cdh5_13_0_jar",
-      "mvn_uri" : "mvn:org.apache.hive/hive-exec/1.1.0-cdh5.13.0",
+      "mvn_uri" : "mvn:org.apache.hive/hive-exec/1.1.0-cdh5.13.0/jar",
       "name" : "hive-exec-1.1.0-cdh5.13.0.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -11106,7 +11106,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH5_13_0_hive_hcatalog_core_1_1_0_cdh5_13_0_jar",
-      "mvn_uri" : "mvn:org.apache.hive.hcatalog/hive-hcatalog-core/1.1.0-cdh5.13.0",
+      "mvn_uri" : "mvn:org.apache.hive.hcatalog/hive-hcatalog-core/1.1.0-cdh5.13.0/jar",
       "name" : "hive-hcatalog-core-1.1.0-cdh5.13.0.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -12213,7 +12213,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH5_13_0_pig_0_12_0_cdh5_13_0_jar",
-      "mvn_uri" : "mvn:org.apache.pig/pig/0.12.0-cdh5.13.0",
+      "mvn_uri" : "mvn:org.apache.pig/pig/0.12.0-cdh5.13.0/jar",
       "name" : "pig-0.12.0-cdh5.13.0.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -12645,8 +12645,8 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH5_13_0_talend_lineage_api",
-      "mvn_uri" : "mvn:org.talend.libraries/talend-lineage-api-0.2.0/6.0.0",
-      "name" : "talend-lineage-api-0.2.0.jar",
+      "mvn_uri" : "mvn:org.talend.libraries/talend-lineage-api-0.2.1/6.0.0",
+      "name" : "talend-lineage-api-0.2.1.jar",
       "tagName" : "libraryNeeded",
       "useStudioRepository" : "true"
     }, {

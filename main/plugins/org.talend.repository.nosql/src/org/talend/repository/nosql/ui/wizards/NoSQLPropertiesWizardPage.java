@@ -17,6 +17,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.talend.commons.ui.utils.InLineHelpUtil;
+// github.com/Talend/tbd-studio-se.git
 import org.talend.core.model.properties.Property;
 import org.talend.core.model.repository.ERepositoryObjectType;
 import org.talend.metadata.managment.ui.wizard.PropertiesWizardPage;

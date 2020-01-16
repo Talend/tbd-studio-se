@@ -15,6 +15,7 @@ package org.talend.repository.hadoopcluster.ui;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.swt.widgets.Composite;
 import org.talend.commons.ui.utils.InLineHelpUtil;
+// github.com/Talend/tbd-studio-se.git
 import org.talend.core.model.properties.ConnectionItem;
 import org.talend.metadata.managment.ui.wizard.AbstractForm;
 import org.talend.repository.hadoopcluster.conf.HadoopConfsUtils;
