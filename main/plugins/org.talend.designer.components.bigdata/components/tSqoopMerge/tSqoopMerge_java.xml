@@ -425,9 +425,7 @@
 	<CODEGENERATION>
 		<IMPORTS>
 			<IMPORT NAME="log4j-1.2.17.jar" MODULE="log4j-1.2.17.jar"
-				MVN="mvn:log4j/log4j/1.2.17"
-				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.17.jar"
-				REQUIRED_IF="USE_JAVAAPI=='true'" />
+					MVN="mvn:log4j/log4j/1.2.17"/>
 
 			<IMPORT NAME="hadoop-conf-kerberos" MODULE="hadoop-conf-kerberos.jar"
 				MVN="mvn:org.talend.libraries/hadoop-conf-kerberos/6.0.0"
@@ -1512,10 +1510,6 @@
 			<IMPORT NAME="slf4j-log4j12-1.7.5.jar" MODULE="slf4j-log4j12-1.7.5.jar"
 				MVN="mvn:org.talend.libraries/slf4j-log4j12-1.7.5/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.7.5.jar"
-				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='APACHE_2_4_0_EMR') AND (DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="log4j-1.2.17" MODULE="log4j-1.2.17.jar"
-				MVN="mvn:log4j/log4j/1.2.17"
-				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/log4j-1.2.17.jar"
 				REQUIRED_IF="(USE_JAVAAPI=='true' AND DB_VERSION=='APACHE_2_4_0_EMR') AND (DISTRIBUTION!='CUSTOM')" />
 
 			<IMPORT NAME="commons-cli-1.2" MODULE="commons-cli-1.2.jar"
