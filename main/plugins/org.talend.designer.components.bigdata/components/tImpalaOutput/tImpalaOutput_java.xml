@@ -194,8 +194,8 @@
 	<ADVANCED_PARAMETERS>
 	</ADVANCED_PARAMETERS>
 	<CODEGENERATION>
-		<IMPORT NAME="log4j-1.2.17" MODULE="log4j-1.2.17.jar" MVN="mvn:log4j/log4j/1.2.17"/>
 		<IMPORTS>
+			<IMPORT NAME="log4j-1.2.17" MODULE="log4j-1.2.17.jar" MVN="mvn:log4j/log4j/1.2.17"/>
 			<IMPORT NAME="hadoop-conf-kerberos" MODULE="hadoop-conf-kerberos.jar"
 					MVN="mvn:org.talend.libraries/hadoop-conf-kerberos/6.0.0"
 					UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/hadoop-conf-kerberos.jar"
