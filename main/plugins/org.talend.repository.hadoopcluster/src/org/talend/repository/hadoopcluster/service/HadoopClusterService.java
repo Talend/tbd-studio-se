@@ -48,6 +48,7 @@ import org.talend.core.repository.model.ProxyRepositoryFactory;
 import org.talend.designer.core.model.components.EParameterName;
 import org.talend.designer.core.model.components.EmfComponent;
 import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
+import org.talend.designer.hdfsbrowse.hadoop.service.HadoopServiceProperties;
 import org.talend.designer.runprocess.ProcessorUtilities;
 import org.talend.metadata.managment.ui.utils.ConnectionContextHelper;
 import org.talend.repository.ProjectManager;
@@ -548,5 +549,32 @@ public class HadoopClusterService implements IHadoopClusterService {
             }
         }
         return null;
+    }
+
+    @Override
+    public Map<String, String> getHadoopSSLParameters(String clusterId) {
+        Map<String, String> sslParameters = new HashMap<>();
+        HadoopClusterConnection hcConnection = HCRepositoryUtil.getRelativeHadoopClusterConnection(clusterId);
+        if (hcConnection == null) {
+            Item hcItem = getHadoopClusterBySubitemId(clusterId);
+            if (hcItem != null) {
+                hcConnection = HCRepositoryUtil.getRelativeHadoopClusterConnection(hcItem.getProperty().getId());
+            }
+        }
+        if (hcConnection != null && hcConnection.isUseWebHDFSSSL()) {
+            HadoopServiceProperties nnProperties = new HadoopServiceProperties();
+            ContextType contextType = null;
+            if (hcConnection.isContextMode()) {
+                contextType = ConnectionContextHelper.getContextTypeForContextMode(hcConnection, true);
+            }
+            nnProperties.setContextType(contextType);
+            nnProperties.setWebHDFSSSLTrustStorePath(hcConnection.getWebHDFSSSLTrustStorePath());
+            nnProperties.setWebHDFSSSLTrustStorePassword(hcConnection.getWebHDFSSSLTrustStorePassword());
+            sslParameters.put(ConnParameterKeys.CONN_PARA_KEY_WEBHDFS_SSL_TRUST_STORE_PATH,
+                    nnProperties.getWebHDFSSSLTrustStorePath());
+            sslParameters.put(ConnParameterKeys.CONN_PARA_KEY_WEBHDFS_SSL_TRUST_STORE_PASSWORD,
+                    nnProperties.getWebHDFSSSLTrustStorePassword());
+        }
+        return sslParameters;
     }
 }
