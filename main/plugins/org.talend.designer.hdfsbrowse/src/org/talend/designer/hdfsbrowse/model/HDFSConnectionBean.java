@@ -59,6 +59,10 @@ public class HDFSConnectionBean {
 
     private boolean useCustomConfs;
 
+    private boolean isOverrideHadoopConf;
+
+    private String overrideHadoopConfPath;
+
     private Map<String, Object> configurations = new HashMap<String, Object>();
 
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -231,6 +235,22 @@ public class HDFSConnectionBean {
 
     public Map<String, Object> getConfigurations() {
         return this.configurations;
+    }
+
+    public boolean isOverrideHadoopConf() {
+        return isOverrideHadoopConf;
+    }
+
+    public void setOverrideHadoopConf(boolean isOverrideHadoopConf) {
+        this.isOverrideHadoopConf = isOverrideHadoopConf;
+    }
+
+    public String getOverrideHadoopConfPath() {
+        return overrideHadoopConfPath;
+    }
+
+    public void setOverrideHadoopConfPath(String overrideHadoopConfPath) {
+        this.overrideHadoopConfPath = overrideHadoopConfPath;
     }
 
 }

@@ -45,7 +45,7 @@
             },
             {
               "childNodes": [],
-              "id": "DYNAMIC_HDP_3_1_4_12_1_atlas_client_1_1_0_3_1_4_12_1_jar",
+              "id": "DYNAMIC_HDP_3_1_4_12_1_atlas_client_1_1_0_3_1_4_12_1_pom",
               "tagName": "library"
             },
             {
@@ -12819,9 +12819,9 @@
           "childNodes": [],
           "context": "plugin:org.talend.hadoop.distribution.hdpx",
           "excludeDependencies": "true",
-          "id": "DYNAMIC_HDP_3_1_4_12_1_atlas_client_1_1_0_3_1_4_12_1_jar",
-          "mvn_uri": "mvn:org.apache.atlas/atlas-client/1.1.0.3.1.4.12-1",
-          "name": "atlas-client-1.1.0.3.1.4.12-1.jar",
+          "id": "DYNAMIC_HDP_3_1_4_12_1_atlas_client_1_1_0_3_1_4_12_1_pom",
+          "mvn_uri": "mvn:org.apache.atlas/atlas-client/1.1.0.3.1.4.12-1/pom",
+          "name": "atlas-client-1.1.0.3.1.4.12-1.pom",
           "tagName": "libraryNeeded"
         },
         {

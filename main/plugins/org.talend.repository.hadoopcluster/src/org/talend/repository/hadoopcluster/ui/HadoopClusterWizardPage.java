@@ -14,7 +14,8 @@ package org.talend.repository.hadoopcluster.ui;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.PlatformUI;
+import org.talend.commons.ui.utils.InLineHelpUtil;
+// github.com/Talend/tbd-studio-se.git
 import org.talend.core.model.properties.ConnectionItem;
 import org.talend.metadata.managment.ui.wizard.AbstractForm;
 import org.talend.repository.hadoopcluster.conf.HadoopConfsUtils;
@@ -81,7 +82,7 @@ public class HadoopClusterWizardPage extends AbstractHadoopClusterWizardPage {
      */
     @Override
     public void performHelp() {
-        PlatformUI.getWorkbench().getHelpSystem().displayHelp("org.talend.help.hadoop_cluster_metadata"); //$NON-NLS-1$
+        InLineHelpUtil.displayHelp("org.talend.help.hadoop_cluster_metadata"); //$NON-NLS-1$
     }
 
     /*

@@ -249,9 +249,7 @@
 			}
 			if(dropExistCollection){
 			%>
-				if(db_<%=cid%>.collectionExists(<%=collection%>)){
 					db_<%=cid%>.getCollection(<%=collection%>).drop();
-				}
 			<%
 			}
 			%>

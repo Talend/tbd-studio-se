@@ -42,7 +42,6 @@ import org.talend.core.hadoop.conf.EHadoopConfProperties;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.model.general.ModuleNeeded;
 import org.talend.core.model.general.ModuleNeeded.ELibraryInstallStatus;
-import org.talend.core.prefs.SSLPreferenceConstants;
 import org.talend.core.repository.model.connection.ConnectionStatus;
 import org.talend.core.utils.ReflectionUtils;
 import org.talend.core.utils.TalendQuoteUtils;
@@ -53,7 +52,6 @@ import org.talend.designer.hdfsbrowse.model.EHadoopAdditionalJarsMapping;
 import org.talend.designer.hdfsbrowse.model.ELinuxAuthority;
 import org.talend.designer.hdfsbrowse.model.HDFSConnectionBean;
 import org.talend.librariesmanager.model.ModulesNeededProvider;
-import org.talend.utils.security.StudioEncryption;
 
 /**
  * DOC ycbai class global comment. Detailled comment
@@ -188,7 +186,7 @@ public class HadoopServerUtil {
                             .getRealValue(parameters.get(ConnParameterKeys.CONN_PARA_KEY_WEBHDFS_SSL_TRUST_STORE_PATH), true);
                     String trustStorePassword = connection
                             .getRealValue(parameters.get(ConnParameterKeys.CONN_PARA_KEY_WEBHDFS_SSL_TRUST_STORE_PASSWORD), true);
-                    setSSLSystemProperty(isUseSSL, nameNodeURI, trustStorePath, trustStorePassword);
+                    HadoopRepositoryUtil.setSSLSystemProperty(isUseSSL, nameNodeURI, trustStorePath, trustStorePassword);
                 }
             }
         }
@@ -570,20 +568,6 @@ public class HadoopServerUtil {
             } catch (IOException e) {
                 e.printStackTrace();
                 // nothing we can do here
-            }
-        }
-    }
-
-    public static void setSSLSystemProperty(boolean isUseSSL, String nameNodeURI, String trustStorePath,
-            String trustStorePassword) {
-        if (isUseSSL) {
-            System.setProperty(SSLPreferenceConstants.TRUSTSTORE_FILE, trustStorePath);
-            System.setProperty(SSLPreferenceConstants.TRUSTSTORE_PASSWORD,
-                    StudioEncryption.getStudioEncryption(StudioEncryption.EncryptionKeyName.SYSTEM).decrypt(trustStorePassword));
-        } else {
-            if (HadoopClassLoaderUtil.isWebHDFS(nameNodeURI)) {
-                System.clearProperty(SSLPreferenceConstants.TRUSTSTORE_FILE);
-                System.clearProperty(SSLPreferenceConstants.TRUSTSTORE_PASSWORD);
             }
         }
     }

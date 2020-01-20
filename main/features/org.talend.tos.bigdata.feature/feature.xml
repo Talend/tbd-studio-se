@@ -197,13 +197,6 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
-   <plugin
-         id="org.talend.help.couchbase"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
          
     <plugin
          id="org.talend.components.marklogic.definition"
@@ -211,11 +204,5 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-      
-   <plugin
-         id="org.talend.help.marklogic"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+         
 </feature>

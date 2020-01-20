@@ -96,6 +96,10 @@ public class HadoopServiceProperties {
 
     private String clusterName;
 
+    private boolean isSetHadoopConf;
+
+    private String hadoopConfSpecificJar;
+
     private boolean useWebHDFSSSL;
 
     private String webHDFSSSLTrustStorePassword;
@@ -386,6 +390,22 @@ public class HadoopServiceProperties {
         this.clusterName = clusterName;
     }
 
+    public boolean isSetHadoopConf() {
+        return isSetHadoopConf;
+    }
+
+    public void setSetHadoopConf(boolean isSetHadoopConf) {
+        this.isSetHadoopConf = isSetHadoopConf;
+    }
+
+    public String getHadoopConfSpecificJar() {
+        return hadoopConfSpecificJar;
+    }
+
+    public void setHadoopConfSpecificJar(String hadoopConfSpecificJar) {
+        this.hadoopConfSpecificJar = hadoopConfSpecificJar;
+    }
+
     public boolean isUseWebHDFSSSL() {
         return this.useWebHDFSSSL;
     }
@@ -409,4 +429,5 @@ public class HadoopServiceProperties {
     public void setWebHDFSSSLTrustStorePath(String webHDFSSSLTrustStorePath) {
         this.webHDFSSSLTrustStorePath = webHDFSSSLTrustStorePath;
     }
+
 }
