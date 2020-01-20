@@ -24,6 +24,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.core.GlobalServiceRegister;
+import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.hadoop.version.custom.ECustomVersionGroup;
 import org.talend.core.model.components.IComponent;
@@ -204,6 +205,11 @@ public class HDFSDragAndDropHandler extends AbstractDragAndDropServiceHandler {
             return HadoopRepositoryUtil.clouderaNaviDisableSSL(connection);
         } else if (EHDFSRepositoryToComponent.CLOUDERA_NAVIGATOR_DIE_ON_ERROR.getRepositoryValue().equals(value)) {
             return HadoopRepositoryUtil.clouderaNaviDieOnError(connection);
+        } else if (EHDFSRepositoryToComponent.SET_HADOOP_CONF.getRepositoryValue().equals(value)) {
+            return Boolean.valueOf(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_SET_HADOOP_CONF));
+        } else if (EHDFSRepositoryToComponent.HADOOP_CONF_SPECIFIC_JAR.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HADOOP_CONF_SPECIFIC_JAR));
         }
 
         return null;

@@ -1,0 +1,710 @@
+<%@ jet
+	imports="
+		org.talend.core.model.process.INode
+		org.talend.core.model.process.IConnection
+		org.talend.core.model.process.ElementParameterParser
+		org.talend.designer.codegen.config.CodeGeneratorArgument
+		java.util.List
+		java.util.ArrayList
+		java.util.Map
+		org.talend.core.model.metadata.IMetadataTable
+		org.talend.core.model.metadata.IMetadataColumn
+		org.talend.designer.runprocess.ProcessorUtilities
+		org.talend.designer.runprocess.ProcessorException
+		org.talend.core.model.metadata.types.Java2STLangTypesHelper
+		org.talend.core.model.utils.NodeUtil
+		"
+%>
+
+<%
+	CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+	INode node = (INode)codeGenArgument.getArgument();
+	String cid = node.getUniqueName();
+	String processId = node.getProcess().getId();
+
+	String previous_node="";
+	String start_node="";
+	String previousOutputConnectionName = "";
+
+	boolean isExecutedThroughWebHCat = false;
+	boolean isQuboleDistribution = false;
+	boolean isCloudDistribution = false;
+	String quboleClusterLabel = "";
+	
+	boolean isQuboleS3Resource = false;
+	String quboleS3ResourceAccessKey = new String();
+	String quboleS3ResourceSecretKey = new String();
+	String quboleS3ResourceBucketName = new String();
+	String quboleS3ResourceBucketKey = new String();
+	
+	if(node.getIncomingConnections()!=null && node.getIncomingConnections().size()>0) {
+		IConnection connection = node.getIncomingConnections().get(0);
+		previous_node = connection.getSource().getUniqueName();
+		INode loadNode = node.getDesignSubjobStartNode();
+		start_node = loadNode.getUniqueName();
+		
+		boolean isLocal = "true".equals(ElementParameterParser.getValue(loadNode, "__LOCAL__"));
+		if(!isLocal) {
+    		String loadDistribution = ElementParameterParser.getValue(loadNode, "__DISTRIBUTION__");
+    		String loadPigVersion = ElementParameterParser.getValue(loadNode, "__PIG_VERSION__");
+    		
+    		org.talend.hadoop.distribution.component.PigComponent loadPigDistrib = null;
+    		try {
+    			loadPigDistrib = (org.talend.hadoop.distribution.component.PigComponent) org.talend.hadoop.distribution.DistributionFactory.buildDistribution(loadDistribution, loadPigVersion);
+    		} catch (java.lang.Exception e) {
+    			e.printStackTrace();
+    			return "";
+    		}
+    
+    		isExecutedThroughWebHCat = !isLocal && loadPigDistrib != null && loadPigDistrib.isExecutedThroughWebHCat();
+			isQuboleDistribution = !isLocal && loadPigDistrib != null && loadPigDistrib.isQuboleDistribution();
+			isCloudDistribution = !isLocal && loadPigDistrib != null && loadPigDistrib.isCloudDistribution();
+			if (isQuboleDistribution && ElementParameterParser.getBooleanValue(loadNode, "__QUBOLE_CLUSTER__")) {
+				quboleClusterLabel = ElementParameterParser.getValue(loadNode, "__QUBOLE_CLUSTER_LABEL__");
+			}
+			isQuboleS3Resource = ElementParameterParser.getBooleanValue(loadNode, "__QUBOLE_S3__");
+			if (isQuboleDistribution && isQuboleS3Resource) {
+				quboleS3ResourceAccessKey = ElementParameterParser.getValue(loadNode, "__QUBOLE_S3_ACCESS_KEY__");
+				quboleS3ResourceSecretKey = ElementParameterParser.getPasswordValue(loadNode, "__QUBOLE_S3_SECRET_KEY__");
+				quboleS3ResourceBucketName = ElementParameterParser.getValue(loadNode, "__QUBOLE_S3_BUCKET_NAME__");
+				quboleS3ResourceBucketKey = ElementParameterParser.getValue(loadNode, "__QUBOLE_S3_BUCKET_KEY__");
+			}
+    	}
+    	
+		previousOutputConnectionName = connection.getName();
+	}
+	
+
+	String distribution = ElementParameterParser.getValue(node, "__DISTRIBUTION__");
+	String pigVersion = ElementParameterParser.getValue(node, "__HBASE_VERSION__");
+	org.talend.hadoop.distribution.component.PigComponent pigDistrib = null;
+	try {
+		pigDistrib = (org.talend.hadoop.distribution.component.PigComponent) org.talend.hadoop.distribution.DistributionFactory.buildDistribution(distribution, pigVersion);
+	} catch (java.lang.Exception e) {
+		e.printStackTrace();
+		return "";
+	}
+
+	boolean isCustom = pigDistrib instanceof org.talend.hadoop.distribution.custom.CustomDistribution;
+	
+	String resultFile = ElementParameterParser.getValue(node, "__OUTPUT_FILENAME__");
+	boolean isS3Location = "true".equals(ElementParameterParser.getValue(node, "__S3_LOCATION__"));
+    String s3bucket = ElementParameterParser.getValue(node, "__S3_BUCKET__");
+    String s3username = ElementParameterParser.getValue(node, "__S3_USERNAME__");
+   	String function = ElementParameterParser.getValue(node, "__STORE__");
+	String fieldSeparator = ElementParameterParser.getValue(node, "__FIELD_SEPARATOR_CHAR__");
+	boolean rmResultDir = "true".equals(ElementParameterParser.getValue(node, "__RM_OUTPUT__"));
+	
+	// Cannot delete directory on S3.
+	if (isS3Location) {
+	    rmResultDir = false;
+	}
+
+	String database = ElementParameterParser.getValue(node, "__DATABASE_NAME__");
+	String table = ElementParameterParser.getValue(node, "__TABLE_NAME__");
+	String partitionFilter = ElementParameterParser.getValue(node, "__PARTITION_KEYVALUE__");
+	
+	String thriftServer = ElementParameterParser.getValue(node, "__THRIFT_SERVER__");
+	
+	boolean defineJarsToRegister = "true".equals(ElementParameterParser.getValue(node, "__DEFINE_REGISTER_JAR__"));
+	List<Map<String, String>> registerJarForHCatalog = (List<Map<String, String>>)ElementParameterParser.getObjectValue(node, "__REGISTER_JAR__");
+	
+	List<Map<String, String>> registerJar = (List<Map<String, String>>)ElementParameterParser.getObjectValue(node, "__DRIVER_JAR__");
+	
+	boolean generateRegisterJarCodeForHCatalog = ("HCatStorer".equals(function) && !defineJarsToRegister);
+	boolean generateRegisterJarCode = registerJar.size() > 0;
+	
+	String hcatPackage = (pigDistrib.pigVersionPriorTo_0_12() && !isCustom) ? "org.apache.hcatalog.pig" : "org.apache.hive.hcatalog.pig";
+	
+	java.util.List<String> jarsToRegister = null;
+	java.util.List<String> jars = null;
+	
+	boolean generateRegisterJarCodeForHBase = "HBaseStorage".equals(function);
+	
+	boolean generateRegisterJarCodeForSequenceFile = "SequenceFileStorage".equals(function);
+	
+	boolean generateRegisterJarCodeForRCFile = "RCFilePigStorage".equals(function);
+	
+	boolean generateRegisterJarCodeForAvroFile = "AvroStorage".equals(function);
+	
+	boolean generateRegisterJarCodeForParquetFile = "ParquetStorer".equals(function);
+	
+	boolean generateRegisterJarCodeForAll = generateRegisterJarCodeForHCatalog || generateRegisterJarCode || generateRegisterJarCodeForHBase || generateRegisterJarCodeForSequenceFile || generateRegisterJarCodeForRCFile || generateRegisterJarCodeForAvroFile || generateRegisterJarCodeForParquetFile;
+	
+	if(generateRegisterJarCodeForAll) {
+		String[] commandLine = new String[] {"<command>"};
+		try {
+			commandLine = ProcessorUtilities.getCommandLine("win32",true, processId, "",org.talend.designer.runprocess.IProcessor.NO_STATISTICS,org.talend.designer.runprocess.IProcessor.NO_TRACES, new String[]{});
+		} catch (ProcessorException e) {
+			e.printStackTrace();
+		}
+
+		jarsToRegister = new java.util.ArrayList();
+		
+		if(generateRegisterJarCode) {
+			for(Map<String, String> jar : registerJar){
+				jarsToRegister.add(jar.get("JAR_NAME"));
+			}
+		}
+		
+		if(generateRegisterJarCodeForHCatalog) {
+			jarsToRegister.add("hcatalog");
+			
+			jarsToRegister.add("hcatalog-core");
+			
+			jarsToRegister.add("hive-hcatalog-core");
+			
+			jarsToRegister.add("hive-exec");
+			jarsToRegister.add("hive-metastore");
+			jarsToRegister.add("libfb303");
+		}
+		
+		if(generateRegisterJarCodeForHBase) {
+			jarsToRegister.add("protobuf-java");
+			jarsToRegister.add("hbase");
+			jarsToRegister.add("hbase-client");
+			jarsToRegister.add("hbase-common");
+			jarsToRegister.add("hbase-hadoop-compat");
+			jarsToRegister.add("hbase-protocol");
+			jarsToRegister.add("hbase-server");
+			jarsToRegister.add("zookeeper");
+			jarsToRegister.add("guava");
+			jarsToRegister.add("htrace-core");
+		}
+		
+		if(generateRegisterJarCodeForSequenceFile) {
+			jarsToRegister.add("elephant-bird-core");
+			jarsToRegister.add("elephant-bird-hadoop-compat");
+			jarsToRegister.add("elephant-bird-pig");
+			jarsToRegister.add("pigutil");
+		}
+		
+		if(generateRegisterJarCodeForRCFile) {
+			jarsToRegister.add("elephant-bird-core");
+			jarsToRegister.add("elephant-bird-hadoop-compat");
+			jarsToRegister.add("elephant-bird-rcfile");
+			jarsToRegister.add("hive-serde");
+			jarsToRegister.add("hive-common");
+			jarsToRegister.add("hive-exec");
+		}
+		
+		if(generateRegisterJarCodeForAvroFile) {
+			jarsToRegister.add("piggybank");
+			jarsToRegister.add("avro");
+			jarsToRegister.add("json_simple");
+		}
+		
+		if(generateRegisterJarCodeForParquetFile) {
+			jarsToRegister.add("parquet-pig");
+			jarsToRegister.add("snappy-java");
+		}
+		
+		for (int j = 0; j < commandLine.length; j++) {
+			if(commandLine[j].contains("jar")) {
+				jars = java.util.Arrays.asList(commandLine[j].split(";"));
+				break;
+			}
+		}
+	}
+%>
+	<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/Pig/PigHeader.javajet"%>
+	
+	<%	
+    if (isS3Location) {
+        String passwordFieldName = "__S3_PASSWORD__";
+        if (ElementParameterParser.canEncrypt(node, passwordFieldName)) {
+            %>
+            String decryptedS3Password_<%=cid%> = routines.system.PasswordEncryptUtil.decryptPassword(<%=ElementParameterParser.getEncryptedValue(node, passwordFieldName)%>);
+            <%
+        } else {
+            %>
+            String decryptedS3Password_<%=cid%> = <%=ElementParameterParser.getValue(node, passwordFieldName)%>; 
+            <%
+        }
+    }
+    if(generateRegisterJarCodeForAll) {
+        %>
+		class GetJarsToRegister_<%=cid%> {
+			private String oozieClasspathLine;
+			private boolean isOozieRuntime;
+			
+			public GetJarsToRegister_<%=cid%>() {
+				try {
+					this.isOozieRuntime = setJarsToRegister("../../job.xml");
+				} catch (java.lang.Exception e) {
+					e.printStackTrace();
+					<%if(isLog4jEnabled) {%>
+					log.error("<%=cid%> - " + e.getMessage());
+					<%}%>					
+				}
+			}
+		
+			public boolean setJarsToRegister(String filename) throws IOException, org.dom4j.DocumentException {
+				String jobXmlPath = new java.io.File(filename).getCanonicalPath();
+				if(isNeedAddLibsPath(jobXmlPath)) {
+					
+					org.dom4j.io.SAXReader reader_oozie = new org.dom4j.io.SAXReader();
+					org.dom4j.Document document_oozie = reader_oozie.read(jobXmlPath);
+					List list_oozie = document_oozie.selectNodes("/configuration/property");
+					for (java.util.Iterator iter_oozie = list_oozie.iterator(); iter_oozie.hasNext();) {
+						org.dom4j.Element element_oozie = (org.dom4j.Element) iter_oozie.next();
+						String name_oozie = element_oozie.elementText("name");
+						if(name_oozie.equals("mapred.cache.localFiles")) {
+							this.oozieClasspathLine = element_oozie.elementText("value");
+							return true;
+						}
+					}
+				}
+				return false;
+			}
+			
+			public String replaceJarPaths(String originalClassPathLine) throws Exception {
+				String classPathLine = "";
+				String crcMapPath = new java.io.File("../crcMap").getCanonicalPath();
+				
+				if (isNeedAddLibsPath(crcMapPath)) {
+					java.util.Map<String, String> crcMap = null;
+					java.io.ObjectInputStream ois = new ObjectInputStream(new java.io.FileInputStream(crcMapPath));
+					crcMap = (java.util.Map<String, String>) ois.readObject();
+					ois.close();
+					classPathLine = addLibsPath(originalClassPathLine, crcMap);
+				} else if(this.isOozieRuntime) {
+					if(this.oozieClasspathLine!=null) {
+						List<String> oozieJars = java.util.Arrays.asList(this.oozieClasspathLine.split(","));
+						for(int j=0; j<oozieJars.size(); j++) {
+							if(oozieJars.get(j).contains(originalClassPathLine.substring(originalClassPathLine.lastIndexOf("/")))) {
+								classPathLine = oozieJars.get(j);
+								break;
+							}
+						}
+					}
+				} else {
+					classPathLine = originalClassPathLine;
+				}
+				return classPathLine;
+			}
+		
+			private boolean isNeedAddLibsPath(String crcMapPath) {
+				if (!(new java.io.File(crcMapPath).exists())) {// when not use cache
+					return false;
+				}
+				return true;
+			}
+		
+		
+			private String addLibsPath(String line, java.util.Map<String, String> crcMap) {
+				for (java.util.Map.Entry<String, String> entry : crcMap.entrySet()) {
+					line = adaptLibPaths(line, entry);
+				}
+				return line;
+			}
+		
+			private String adaptLibPaths(String line, java.util.Map.Entry<String, String> entry) {
+				String jarName = entry.getValue();
+				String crc = entry.getKey();
+				String libStringFinder = "../lib/" + jarName;
+				String libStringFinder2 = "./" + jarName; // for the job jar itself.
+				if (line.contains(libStringFinder)) {
+					line = line.replace(libStringFinder, "../../../cache/lib/" + crc + "/" + jarName);
+				} else if (line.toLowerCase().contains(libStringFinder2)) {
+		            line = line.toLowerCase().replace(libStringFinder2, "../../../cache/lib/" + crc + "/" + jarName);
+		        } else if (line.toLowerCase().equals(jarName)) {
+		            line = "../../../cache/lib/" + crc + "/" + jarName;
+		        } else if (line.contains(":$ROOT_PATH/" + jarName + ":")) {
+					line = line.replace(":$ROOT_PATH/" + jarName + ":", ":$ROOT_PATH/../../../cache/lib/" + crc + "/" + jarName + ":");
+				} else if (line.contains(";" + jarName + ";")) {
+					line = line.replace(";" + jarName + ";", ";../../../cache/lib/" + crc + "/" + jarName + ";");
+				}
+				return line;
+			}
+		
+		}
+
+		GetJarsToRegister_<%=cid%> getJarsToRegister_<%=cid %> = new GetJarsToRegister_<%=cid%>();
+<%
+	}	
+	
+	if(rmResultDir && !("HCatStorer".equals(function)) && !("HBaseStorage".equals(function))){
+		if (isS3Location) {
+		    
+%>
+		    if (pigServer_<%=start_node%>.existsFile("s3n://" + <%=s3username%> + ":" + decryptedS3Password_<%=cid%> + "@" + <%=s3bucket%>)) {
+	            pigServer_<%=start_node%>.deleteFile("s3n://" + <%=s3username%> + ":" + decryptedS3Password_<%=cid%> + "@" + <%=s3bucket%>);
+	        }
+<%
+		}
+		if (!isCloudDistribution) {
+%>
+    		if (pigServer_<%=start_node%>.existsFile(<%=resultFile%>)) {
+    			pigServer_<%=start_node%>.deleteFile(<%=resultFile%>);
+        	}
+<%
+		}
+		if (isExecutedThroughWebHCat) {
+%>
+
+			org.talend.bigdata.launcher.fs.FileSystem azureFs_<%=cid%> = (org.talend.bigdata.launcher.fs.AzureFileSystem)instance_<%=start_node%>.getFileSystem();
+			
+			String resultFolder_<%=cid%> = <%=resultFile%>;
+			azureFs_<%=cid%>.delete(org.talend.bigdata.launcher.utils.Utils.removeFirstSlash(resultFolder_<%=cid%>));
+<%
+		}
+		if (isQuboleDistribution) {
+		%>
+			<% if(isLog4jEnabled) {%>
+				log.info("<%=cid%> - deleting " + <%=resultFile%> + " on hdfs.");
+			<%}
+			if ("".equals(quboleClusterLabel)) {%>
+			quboleClient_<%=start_node%>.execShell("hadoop fs -rm -r -f " + <%=resultFile%>);
+			<%
+			} else {
+			%>
+			quboleClient_<%=start_node%>.execShell("hadoop fs -rm -r -f " + <%=resultFile%>, <%=quboleClusterLabel%>);
+			<%
+			}
+			if(isLog4jEnabled) {%>
+				log.info("<%=cid%> - " + <%=resultFile%> + " deleted.");
+			<%}%>
+		<%
+		}
+	} 
+%>
+	
+	routines.system.PigHelper helper_<%=cid%> = new routines.system.PigHelper();
+	
+	StringBuilder sb_<%=cid%> = new StringBuilder();
+	java.util.regex.Pattern jarPattern_<%=cid%> = java.util.regex.Pattern.compile(".*\\.jar");
+<%	
+	if(generateRegisterJarCodeForAll) {
+		for(int i=0; i<jarsToRegister.size(); i++) {
+			String jarToRegister = jarsToRegister.get(i);
+			for(int j=0; j<jars.size(); j++) {
+				if(jars.get(j).contains(jarToRegister)) {
+%>
+					if (jarPattern_<%=cid%>.matcher(getJarsToRegister_<%=cid %>.replaceJarPaths("<%=jars.get(j)%>")).matches()) {
+						helper_<%=cid%>.add("jar", getJarsToRegister_<%=cid %>.replaceJarPaths("<%=jars.get(j)%>"));
+					}
+<%
+				}
+			}
+		}
+	}
+
+	if("HCatStorer".equals(function)) {
+		if(!generateRegisterJarCodeForHCatalog) {
+			if(defineJarsToRegister && registerJarForHCatalog.size() > 0){
+				for(Map<String, String> item : registerJarForHCatalog){
+%>
+					helper_<%=cid%>.add("jar", <%=item.get("JAR_PATH") %>);
+<% 
+				} 
+			}
+		}
+%>
+		System.setProperty("hive.metastore.local", "false");
+		System.setProperty("hive.metastore.uris", <%=thriftServer%>);
+		System.setProperty("hadoop.clientside.fs.operations", "true");
+		System.setProperty("hive.metastore.execute.setugi", "true");
+		sb_<%=cid%>.append("STORE <%=previous_node%>_<%=previousOutputConnectionName%>_RESULT INTO '"+<%=database%>+"."+<%=table%>+"' using <%=hcatPackage%>.<%=function%>('"+<%=partitionFilter%>+"'");
+<%
+		List<IMetadataTable> metadatas = node.getMetadataList();
+		IMetadataTable metadata = null;
+		if(metadatas != null && metadatas.size() > 0) {
+			metadata = metadatas.get(0);
+		}
+		if(metadata!=null) {
+			if(metadata.getListColumns() != null && metadata.getListColumns().size() > 0) {
+%>
+				sb_<%=cid%>.append(" , '");
+<%
+				for(int i=0; i<metadata.getListColumns().size(); i++) {
+%>
+					sb_<%=cid%>.append("<%=i!=0?", ":""%><%=metadata.getListColumns().get(i).getLabel()%>:<%=Java2STLangTypesHelper.getPigType(metadata, metadata.getListColumns().get(i).getLabel())%>");
+<%
+
+				}
+%>
+				sb_<%=cid%>.append("'");
+<%
+			}
+		}
+%>
+		sb_<%=cid%>.append(");");
+<%
+	} else if("SequenceFileStorage".equals(function)) {
+		List<IMetadataTable> metadatas = node.getMetadataList();
+		IMetadataTable metadata = null;
+		if(metadatas != null && metadatas.size() > 0) {
+			metadata = metadatas.get(0);
+		}
+		
+		String keyColumn = ElementParameterParser.getValue(node,"__KEYCOLUMN__");
+		String valueColumn = ElementParameterParser.getValue(node,"__VALUECOLUMN__");
+		
+		String talendKeyClass = "";
+		String talendValueClass = "";
+		
+		if(metadata!=null) {
+			List<IMetadataColumn> listColumns = metadata.getListColumns();
+			
+			for (IMetadataColumn column : listColumns) {
+				if (column.getLabel().equals(keyColumn)) {
+					talendKeyClass = column.getTalendType();
+				}
+				if (column.getLabel().equals(valueColumn)) {
+					talendValueClass = column.getTalendType();
+				}
+			}
+		}
+		
+		String keyConverterClass="com.twitter.elephantbird.pig.util.TextConverter";
+		if (talendKeyClass.equals("id_Boolean")) keyConverterClass="com.twitter.elephantbird.pig.util.TextConverter";
+		if (talendKeyClass.equals("id_Byte")) keyConverterClass="com.twitter.elephantbird.pig.util.IntWritableConverter";
+		if (talendKeyClass.equals("id_byte[]")) keyConverterClass="com.twitter.elephantbird.pig.util.TextConverter";
+		if (talendKeyClass.equals("id_Double")) keyConverterClass="com.talend.pig.util.DoubleWritableConverter";
+		if (talendKeyClass.equals("id_Float")) keyConverterClass="com.talend.pig.util.FloatWritableConverter";
+		if (talendKeyClass.equals("id_Integer")) keyConverterClass="com.twitter.elephantbird.pig.util.IntWritableConverter";
+		if (talendKeyClass.equals("id_Long")) keyConverterClass="com.twitter.elephantbird.pig.util.LongWritableConverter";
+		if (talendKeyClass.equals("id_Short")) keyConverterClass="com.twitter.elephantbird.pig.util.IntWritableConverter";
+		if (talendKeyClass.equals("id_String")) keyConverterClass="com.twitter.elephantbird.pig.util.TextConverter";
+		
+		String valueConverterClass="com.twitter.elephantbird.pig.util.TextConverter";
+		if (talendValueClass.equals("id_Boolean")) valueConverterClass="com.twitter.elephantbird.pig.util.TextConverter";
+		if (talendValueClass.equals("id_Byte")) valueConverterClass="com.twitter.elephantbird.pig.util.IntWritableConverter";
+		if (talendValueClass.equals("id_byte[]")) valueConverterClass="com.twitter.elephantbird.pig.util.TextConverter";
+		if (talendValueClass.equals("id_Double")) valueConverterClass="com.talend.pig.util.DoubleWritableConverter";
+		if (talendValueClass.equals("id_Float")) valueConverterClass="com.talend.pig.util.FloatWritableConverter";
+		if (talendValueClass.equals("id_Integer")) valueConverterClass="com.twitter.elephantbird.pig.util.IntWritableConverter";
+		if (talendValueClass.equals("id_Long")) valueConverterClass="com.twitter.elephantbird.pig.util.LongWritableConverter";
+		if (talendValueClass.equals("id_Short")) valueConverterClass="com.twitter.elephantbird.pig.util.IntWritableConverter";
+		if (talendValueClass.equals("id_String")) valueConverterClass="com.twitter.elephantbird.pig.util.TextConverter";
+
+		if (isS3Location) {
+            %>
+            sb_<%=cid%>.append("STORE <%=previous_node%>_<%=previousOutputConnectionName%>_RESULT INTO '"
+                    + "s3n://" + <%=s3username%> + ":" + decryptedS3Password_<%=cid%> + "@" + <%=s3bucket%>
+                    + "' using com.twitter.elephantbird.pig.store.SequenceFileStorage('-c <%=keyConverterClass%>','-c <%=valueConverterClass%>');");
+            <%
+        } else {
+            %>
+            sb_<%=cid%>.append("STORE <%=previous_node%>_<%=previousOutputConnectionName%>_RESULT INTO '" + <%=resultFile%>
+                    + "' using com.twitter.elephantbird.pig.store.SequenceFileStorage('-c <%=keyConverterClass%>','-c <%=valueConverterClass%>');");
+            <%
+        }
+	} else {
+		if("CustomStorer".equals(function)) {
+		    String customStorer = ElementParameterParser.getValue(node, "__CUSTOM_STORER__");
+		    if (isS3Location) {
+		        %>
+		        sb_<%=cid%>.append("STORE <%=previous_node%>_<%=previousOutputConnectionName%>_RESULT INTO '"
+		                + "s3n://" + <%=s3username%> + ":" + decryptedS3Password_<%=cid%> + "@" + <%=s3bucket%>
+		                + "' using " + <%=customStorer%> + ";");
+                <%
+		    } else {
+		        %>
+		        sb_<%=cid%>.append("STORE <%=previous_node%>_<%=previousOutputConnectionName%>_RESULT INTO '" + <%=resultFile%>
+		                + "' using " + <%=customStorer%> + ";");
+		        <%
+		    }
+		} else if("ParquetStorer".equals(function)) {
+			String parquetCompression = ElementParameterParser.getValue(node, "__PARQUET_COMPRESSION__");
+%>
+			StringBuilder script_<%=cid%>=new StringBuilder();
+			script_<%=cid%>.append("SET parquet.compression <%=parquetCompression%>;");
+			helper_<%=cid%>.add("script",script_<%=cid%>.toString());
+
+			<%
+			if (isS3Location) {
+                %>
+                sb_<%=cid%>.append("STORE <%=previous_node%>_<%=previousOutputConnectionName%>_RESULT INTO '"
+                        + "s3n://" + <%=s3username%> + ":" + decryptedS3Password_<%=cid%> + "@" + <%=s3bucket%>
+                        + "' using parquet.pig.ParquetStorer;");
+                <%
+            } else {
+                %>
+                sb_<%=cid%>.append("STORE <%=previous_node%>_<%=previousOutputConnectionName%>_RESULT INTO '" + <%=resultFile%>
+                        + "' using parquet.pig.ParquetStorer;");
+                <%
+            }
+		}else if("HBaseStorage".equals(function)) {
+			String zookeeper_quorum = ElementParameterParser.getValue(node, "__ZOOKEEPER_QUORUM__");
+			String zookeeper_client_port = ElementParameterParser.getValue(node, "__ZOOKEEPER_CLIENT_PORT__");
+			
+			boolean setZNodeParent = "true".equals(ElementParameterParser.getValue(node, "__SET_ZNODE_PARENT__"));
+			String zNodeParent = ElementParameterParser.getValue(node, "__ZNODE_PARENT__");			
+%>
+			StringBuilder script_<%=cid%>=new StringBuilder();
+			script_<%=cid%>.append("SET hbase.zookeeper.quorum "+<%=zookeeper_quorum%>+";");
+			script_<%=cid%>.append("SET hbase.zookeeper.property.clientPort "+<%=zookeeper_client_port%>+";");
+<%
+			if(setZNodeParent) {
+%>
+			script_<%=cid%>.append("SET zookeeper.znode.parent "+<%=zNodeParent%>+";");
+<%
+			}
+%>
+			helper_<%=cid%>.add("script",script_<%=cid%>.toString());
+<%
+			
+			String hbasetable = ElementParameterParser.getValue(node, "__HBASE_TABLE__");
+			String rowKeyColumn = ElementParameterParser.getValue(node, "__ROWKEY_COLUMN__");
+			boolean storeRowKeyToColumn = "true".equals(ElementParameterParser.getValue(node, "__CONTAIN_ROW_KEY_COLUMN_IN_HBASE_COLUMN__"));
+			
+			List<Integer> columnOrders = new ArrayList<Integer>();
+			int rowKeyIndex = 0;
+			
+			List<IMetadataTable> metadatas = node.getMetadataList();
+    		IMetadataTable metadata = null;
+    		if(metadatas != null && metadatas.size() > 0) {
+    			metadata = metadatas.get(0);
+    		}
+    		if(metadata!=null) {
+    			if(metadata.getListColumns() != null && metadata.getListColumns().size() > 0) {
+    				for(int i=0; i<metadata.getListColumns().size(); i++) {
+    					String columnName = metadata.getListColumns().get(i).getLabel();
+    					if(columnName!=null && columnName.equals(rowKeyColumn)) {
+    						rowKeyIndex = i;
+    						columnOrders.add(0,i);
+    						if(storeRowKeyToColumn) {
+    							columnOrders.add(i);
+    						}
+    					} else {
+    						columnOrders.add(i);
+    					}
+    					
+    				}
+    			}
+    		}
+    		
+    		if((rowKeyIndex == 0) && !storeRowKeyToColumn) {//the default action
+%>
+				sb_<%=cid%>.append("STORE <%=previous_node%>_<%=previousOutputConnectionName%>_RESULT INTO ");
+<%
+    		} else {
+%>
+				sb_<%=cid%>.append("<%=previous_node%>_<%=previousOutputConnectionName%>_TMP_RESULT = FOREACH <%=previous_node%>_<%=previousOutputConnectionName%>_RESULT GENERATE ");
+<%
+				for(int i=0;i<columnOrders.size();i++) {
+					Integer index = columnOrders.get(i);
+%>
+					sb_<%=cid%>.append("$<%=index%> as column<%=i%>");
+					
+<%
+					if(i<columnOrders.size()-1) {
+%>
+					sb_<%=cid%>.append(",");
+<%
+					}
+				}
+%>
+				sb_<%=cid%>.append(";");
+				sb_<%=cid%>.append("STORE <%=previous_node%>_<%=previousOutputConnectionName%>_TMP_RESULT INTO "); 
+<%
+    		}
+%>
+			sb_<%=cid%>.append("'").append(<%=hbasetable%>).append("' using org.apache.pig.backend.hadoop.hbase.HBaseStorage('");;
+<%
+			List<Map<String, String>> mapping = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node,"__MAPPING__");
+			if(metadata!=null && mapping!=null) {
+				for(int i=0;i<mapping.size();i++){
+    				Map<String, String> map = mapping.get(i);
+        			String schema_column = map.get("SCHEMA_COLUMN");
+        			String family_column= map.get("FAMILY_COLUMN");
+        			if(!storeRowKeyToColumn && (schema_column!=null) && (schema_column.equals(rowKeyColumn))) {
+        				continue;
+        			}
+%>
+					sb_<%=cid%>.append(<%=family_column%>);
+<%
+					if(i < mapping.size()-1) {
+%>
+					sb_<%=cid%>.append(" ");
+<%
+					}
+    			}
+			}
+%>
+			sb_<%=cid%>.append("'");
+<%
+			List<Map<String, String>> hbasestorageParams = (List<Map<String, String>>)ElementParameterParser.getObjectValue(node, "__HBASESTORAGE_PARAMETER__");
+			if(hbasestorageParams!=null) {
+				for(int i=0;i<hbasestorageParams.size();i++) {
+					if(i == 0) {
+%>
+						sb_<%=cid%>.append(",'");
+<%					
+					}
+					Map<String, String> param = hbasestorageParams.get(i);
+					String name = param.get("PARAM_NAME");
+					String value = param.get("PARAM_VALUE");
+%>
+					sb_<%=cid%>.append("-<%=name%> ").append(<%=value%>);
+<%							
+					if(i < hbasestorageParams.size()-1) {
+%>
+					sb_<%=cid%>.append(" ");
+<%							
+					} else {
+%>
+					sb_<%=cid%>.append("'");
+<%					
+					}
+				}
+			}
+%>
+			sb_<%=cid%>.append(");");
+<%
+		} else {
+    		if("RCFilePigStorage".equals(function)) {
+    			function = "com.twitter.elephantbird.pig.store.RCFilePigStorage";
+    		}
+    		
+			if("AvroStorage".equals(function)) {
+				function = "org.apache.pig.piggybank.storage.avro.AvroStorage";
+			}
+			
+			if (isS3Location) {
+                %>
+                sb_<%=cid%>.append("STORE <%=previous_node%>_<%=previousOutputConnectionName%>_RESULT INTO '"
+                        + "s3n://" + <%=s3username%> + ":" + decryptedS3Password_<%=cid%> + "@" + <%=s3bucket%>
+                        + "' using <%=function%>(<%="PigStorage".equals(function)?"'\"+"+fieldSeparator+"+\"'":""%>);");
+                <%
+            } else {
+                %>
+                sb_<%=cid%>.append("STORE <%=previous_node%>_<%=previousOutputConnectionName%>_RESULT INTO '" + <%=resultFile%>
+                        + "' using <%=function%>(<%="PigStorage".equals(function)?"'\"+"+fieldSeparator+"+\"'":""%>);");
+                <%
+            }
+		}
+	}
+%>
+
+	helper_<%=cid%>.add("query",sb_<%=cid%>.toString());
+	
+<%
+	boolean inMain = true;
+%>
+	<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/Pig/RegisterPigLatin.javajet"%>
+	
+<%
+	if(NodeUtil.isSubTreeEnd(node) && !isCloudDistribution) {
+%>
+	pigServer_<%=start_node%>.executeBatch();
+	String currentClientPathSeparator_<%=cid%> = (String)globalMap.get("current_client_path_separator");
+	if(currentClientPathSeparator_<%=cid%>!=null) {
+		System.setProperty("path.separator", currentClientPathSeparator_<%=cid%>);
+		globalMap.put("current_client_path_separator", null);
+	}
+
+	String originalHadoopUsername_<%=cid%> = (String)globalMap.get("HADOOP_USER_NAME_<%=start_node%>");
+    if(originalHadoopUsername_<%=cid%>!=null) {
+    	System.setProperty("HADOOP_USER_NAME", originalHadoopUsername_<%=cid%>);
+    	globalMap.put("HADOOP_USER_NAME_<%=start_node%>", null);
+    } else {
+    	System.clearProperty("HADOOP_USER_NAME");
+    }
+<%
+	}
+%>
+
+

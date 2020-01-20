@@ -7,7 +7,7 @@
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="talend-bigdata-launcher"
-            name="talend-bigdata-launcher-platform-1.4.1.jar"
+            name="talend-bigdata-launcher-platform-1.4.2.jar"
             mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-platform-1.4.2/6.0.0">
         </libraryNeeded>
         <libraryNeeded
