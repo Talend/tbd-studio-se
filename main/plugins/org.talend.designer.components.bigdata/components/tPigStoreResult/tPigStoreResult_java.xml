@@ -240,7 +240,7 @@
 				MVN="mvn:org.dom4j/dom4j/2.1.1"
 				REQUIRED="true" />
 			<IMPORT NAME="jaxen" MODULE="jaxen-1.1.6.jar"
-				MVN="mvn:com.xceptance/jaxen/1.1.6"
+				MVN="mvn:jaxen/jaxen/1.1.6"
 				REQUIRED="true" />
 
 			<!-- HCatalog Support Start -->
