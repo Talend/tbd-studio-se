@@ -16,6 +16,7 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.talend.core.prefs.ITalendCorePrefConstants;
 import org.talend.designer.maven.aether.DummyDynamicMonitor;
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.repository.hadoopcluster.ui.dynamic.form.AbstractDynamicDistributionForm;
@@ -66,7 +67,8 @@ public class DynamicDistributionPreferencePage extends ProjectSettingPage {
         };
 
         IDynamicMonitor monitor = new DummyDynamicMonitor();
-        DynamicDistributionPreferenceForm existingConfigForm = new DynamicDistributionPreferenceForm(parent, SWT.NONE, monitor);
+        DynamicDistributionPreferenceForm existingConfigForm = new DynamicDistributionPreferenceForm(parent, SWT.NONE, monitor,
+                ITalendCorePrefConstants.DYNAMIC_DISTRIBUTION_SETTING);
         existingConfigForm.setCheckListener(checkListener);
         setCurrentForm(existingConfigForm);
         boolean isValid = getCurrentForm().isComplete();

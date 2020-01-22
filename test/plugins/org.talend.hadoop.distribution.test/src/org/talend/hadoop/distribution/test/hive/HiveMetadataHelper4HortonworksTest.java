@@ -12,6 +12,7 @@
 // ============================================================================
 package org.talend.hadoop.distribution.test.hive;
 
+import org.junit.Test;
 import org.talend.hadoop.distribution.constants.hdp.IHortonworksDistribution;
 
 /**
@@ -45,6 +46,12 @@ public class HiveMetadataHelper4HortonworksTest extends AbstractDistributionTest
     @Override
     protected String[] getDistributionVersionsDisplay() {
         return VERSIONS_NON_DYNAMIC;
+    }
+
+    //this empty test is here to make tycho runner not failed on initialization
+    //because it does not found any test in the final class
+    @Test
+    public void emptyTest() {
     }
 
 }

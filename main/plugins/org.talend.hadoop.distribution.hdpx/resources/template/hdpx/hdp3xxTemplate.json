@@ -1,0 +1,2835 @@
+{
+  "id": "HDP3.X.X",
+  "name": "Hortonworks HDP3.X.X template",
+  "distribution": "HORTONWORKS",
+  "templateId": "HDP3xxDistributionTemplate",
+  "baseVersion": "3.0.0",
+  "topVersion": "3.2.0",
+  "dynamicVersion": "will be filled during runtime",
+  "properties": {
+    "context": "plugin:org.talend.hadoop.distribution.hdpx"
+  },
+  "description": "",
+  "supportedSparkVersions": [
+    "SPARK_2_3"
+  ],
+  "modules": [
+    {
+      "id": "org-slf4j-log4j12",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.slf4j",
+      "artifactId": "slf4j-log4j12",
+      "version": "1.7.28",
+      "classifier": "",
+      "description": ""
+    },
+    {
+      "id": "org-slf4j-jcl-over-slf4j",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.slf4j",
+      "artifactId": "jcl-over-slf4j",
+      "version": "1.7.28",
+      "classifier": "",
+      "description": ""
+    },
+    {
+      "id": "org-slf4j-jul-to-slf4j",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.slf4j",
+      "artifactId": "jul-to-slf4j",
+      "version": "1.7.28",
+      "classifier": "",
+      "description": ""
+    },
+    {
+      "id": "commons-lang3-3.6",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.commons",
+      "artifactId": "commons-lang3",
+      "version": "3.6",
+      "classifier": "",
+      "description": ""
+    },
+    {
+      "id": "avro-mapred-1.8.2",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.avro",
+      "artifactId": "avro-mapred",
+      "version": "1.8.2",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "hadoop-client",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.hadoop",
+      "artifactId": "hadoop-client",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "com.sun.jersey",
+          "artifactId": "jersey-json",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "com.sun.jersey",
+          "artifactId": "jersey-server",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.mortbay.jetty",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.avro",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "hadoop-aws",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.hadoop",
+      "artifactId": "hadoop-aws",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "com.sun.jersey",
+          "artifactId": "jersey-json",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "com.sun.jersey",
+          "artifactId": "jersey-server",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "jdk.tools",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.mortbay.jetty",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "hive-jdbc",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.hive",
+      "artifactId": "hive-jdbc",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.apache.curator",
+          "artifactId": "apache-curator",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.pentaho",
+          "artifactId": "pentaho-aggdesigner-algorithm",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.mortbay.jetty",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "jdk.tools",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.hive.shims",
+          "artifactId": "hive-shims-0.20",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.avro",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "hive-exec",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.hive",
+      "artifactId": "hive-exec",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.apache.curator",
+          "artifactId": "apache-curator",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.pentaho",
+          "artifactId": "pentaho-aggdesigner-algorithm",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.mortbay.jetty",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "jdk.tools",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.hive.shims",
+          "artifactId": "hive-shims-0.20",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.avro",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "hbase-client",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.hbase",
+      "artifactId": "hbase-client",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.mortbay.jetty",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "jdk.tools",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.avro",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "hbase-hadoop-compat",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.hbase",
+      "artifactId": "hbase-hadoop-compat",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "jdk.tools",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.commons",
+          "artifactId": "commons-lang3",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.avro",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "hbase-server",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.hbase",
+      "artifactId": "hbase-server",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.mortbay.jetty",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "jdk.tools",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.avro",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "sqoop",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.sqoop",
+      "artifactId": "sqoop",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.apache.hadoop",
+          "artifactId": "hadoop-core",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "pig",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.pig",
+      "artifactId": "pig",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.mortbay.jetty",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.avro",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "junit",
+          "artifactId": "junit",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "hive-hcatalog-pig-adapter",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.hive.hcatalog",
+      "artifactId": "hive-hcatalog-pig-adapter",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.apache.curator",
+          "artifactId": "apache-curator",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.mortbay.jetty",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "jdk.tools",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.pentaho",
+          "artifactId": "pentaho-aggdesigner-algorithm",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.hive.shims",
+          "artifactId": "hive-shims-0.20",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.avro",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "hive-hcatalog-server-extensions",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.hive.hcatalog",
+      "artifactId": "hive-hcatalog-server-extensions",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.apache.curator",
+          "artifactId": "apache-curator",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.mortbay.jetty",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "jdk.tools",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.pentaho",
+          "artifactId": "pentaho-aggdesigner-algorithm",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.hive.shims",
+          "artifactId": "hive-shims-0.20",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.avro",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "elephant-bird-core",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "com.twitter.elephantbird",
+      "artifactId": "elephant-bird-core",
+      "version": "4.9",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "com.hadoop.gplcompression",
+          "artifactId": "hadoop-lzo",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "com.google.protobuf",
+          "artifactId": "protobuf-java",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "elephant-bird-rcfile",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "com.twitter.elephantbird",
+      "artifactId": "elephant-bird-rcfile",
+      "version": "4.9",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "com.hadoop.gplcompression",
+          "artifactId": "hadoop-lzo",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "com.google.protobuf",
+          "artifactId": "protobuf-java",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "elephant-bird-hadoop-compat",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "com.twitter.elephantbird",
+      "artifactId": "elephant-bird-hadoop-compat",
+      "version": "4.9",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "com.hadoop.gplcompression",
+          "artifactId": "hadoop-lzo",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "com.google.protobuf",
+          "artifactId": "protobuf-java",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "elephant-bird-pig",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "com.twitter.elephantbird",
+      "artifactId": "elephant-bird-pig",
+      "version": "4.9",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "com.hadoop.gplcompression",
+          "artifactId": "hadoop-lzo",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "com.google.protobuf",
+          "artifactId": "protobuf-java",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "piggybank",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.pig",
+      "artifactId": "piggybank",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.apache.avro",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "junit",
+          "artifactId": "junit",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "parquet-pig-bundle",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.parquet",
+      "artifactId": "parquet-pig-bundle",
+      "classifier": "",
+      "description": ""
+    },
+    {
+      "id": "parquet-hadoop-bundle",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.parquet",
+      "artifactId": "parquet-hadoop-bundle",
+      "classifier": "",
+      "description": ""
+    },
+    {
+      "id": "parquet-hive-bundle",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.parquet",
+      "artifactId": "parquet-hive-bundle",
+      "classifier": "",
+      "description": ""
+    },
+    {
+      "id": "tez-dag",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.tez",
+      "artifactId": "tez-dag",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.mortbay.jetty",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "jdk.tools",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.avro",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "tez-mapreduce",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.tez",
+      "artifactId": "tez-mapreduce",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.mortbay.jetty",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "jdk.tools",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.avro",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "jodd",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.jodd",
+      "artifactId": "jodd-core",
+      "version": "3.5.2",
+      "classifier": "",
+      "description": ""
+    },
+    {
+      "id": "spark-yarn_2.11",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.spark",
+      "artifactId": "spark-yarn_2.11",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.mortbay.jetty",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "jdk.tools",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.avro",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "spark-streaming-kinesis-asl_2.11",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.spark",
+      "artifactId": "spark-streaming-kinesis-asl_2.11",
+      "version": "2.3.2",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.apache.spark",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.mortbay.jetty",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "jdk.tools",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.avro",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "spark-hive_2.11",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.spark",
+      "artifactId": "spark-hive_2.11",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.apache.parquet",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove parquet as wrong version imported (1.8.3) instead of hortonworks patched version"
+        },
+        {
+          "groupId": "org.apache.calcite",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove as wrong version is imported (1.2.0-incubating instead of patched hortonworks distribution version)"
+        },
+        {
+          "groupId": "org.mortbay.jetty",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "jdk.tools",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.avro",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "we use a specific avro-mapred version (1.8.2)"
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "spark-mllib_2.11",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.spark",
+      "artifactId": "spark-mllib_2.11",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.apache.parquet",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove parquet as wrong version imported (1.8.3) instead of hortonworks patched version"
+        },
+        {
+          "groupId": "org.mortbay.jetty",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "jdk.tools",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.avro",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "we use a specific avro-mapred version (1.8.2)"
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "spark-streaming-kafka",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.spark",
+      "artifactId": "spark-streaming-kafka-0-10_2.11",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.mortbay.jetty",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "jdk.tools",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.apache.avro",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "we use a specific avro-mapred version (1.8.2)"
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "aws-java-sdk-dynamodb",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "com.amazonaws",
+      "artifactId": "aws-java-sdk-dynamodb",
+      "version": "1.11.673",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "emr-dynamodb-hadoop-4.2.0",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "emr-dynamodb-hadoop-4.2.0.jar",
+      "mvnUri": "mvn:com.amazon.emr/emr-dynamodb-hadoop/4.2.0",
+      "useStudioRepository": "true",
+      "description": ""
+    },
+    {
+      "id": "hadoop-azure-datalake",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.hadoop",
+      "artifactId": "hadoop-azure-datalake",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.mortbay.jetty",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "jdk.tools",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "hadoop-azure",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.hadoop",
+      "artifactId": "hadoop-azure",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.mortbay.jetty",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "jdk.tools",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "kafka-clients",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.kafka",
+      "artifactId": "kafka-clients",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "jetty-util",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.mortbay.jetty",
+      "artifactId": "jetty-util",
+      "version": "6.1.21",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "talend-lineage-api-0.1.1",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "talend-lineage-api-0.1.1.jar",
+      "mvnUri": "mvn:org.talend.libraries/talend-lineage-api-0.1.1/6.3.0",
+      "useStudioRepository": "true",
+      "description": ""
+    },
+    {
+      "id": "atlas-client",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.atlas",
+      "artifactId": "atlas-client",
+      "extension": "pom",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "json4s-native_2.11-3.5.3",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.json4s",
+      "artifactId": "json4s-native",
+      "version": "3.5.3",
+      "description": ""
+    },
+    {
+      "id": "jettison-1.3.4",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.codehaus.jettison",
+      "artifactId": "jettison",
+      "version": "1.3.4",
+      "description": ""
+    },
+    {
+      "id": "jline-2.10.4",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.scala-lang",
+      "artifactId": "jline",
+      "version": "2.10.4",
+      "description": ""
+    },
+    {
+      "id": "joda-convert-1.2",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.joda",
+      "artifactId": "joda-convert",
+      "version": "1.2",
+      "description": ""
+    },
+    {
+      "id": "config-1.2.1",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "com.typesafe",
+      "artifactId": "config",
+      "version": "1.2.1",
+      "description": ""
+    },
+    {
+      "id": "gson-2.5",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "com.google.code.gson",
+      "artifactId": "gson",
+      "version": "2.5",
+      "description": ""
+    },
+    {
+      "id": "fastutil-6.5.16",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "it.unimi.dsi",
+      "artifactId": "fastutil",
+      "version": "6.5.16",
+      "description": ""
+    },
+    {
+      "id": "guice-4.0",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "com.google.inject",
+      "artifactId": "guice",
+      "version": "4.0",
+      "description": ""
+    },
+    {
+      "id": "spring-beans-3.1.3.RELEASE",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "spring-beans-3.1.3.RELEASE.jar",
+      "mvnUri": "mvn:org.talend.libraries/spring-beans-3.1.3.RELEASE/6.3.0",
+      "useStudioRepository": "true",
+      "description": ""
+    },
+    {
+      "id": "spring-core-3.1.3.RELEASE",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "spring-core-3.1.3.RELEASE.jar",
+      "mvnUri": "mvn:org.talend.libraries/spring-core-3.1.3.RELEASE/6.3.0",
+      "useStudioRepository": "true",
+      "description": ""
+    },
+    {
+      "id": "spring-asm-3.1.3.RELEASE",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "spring-asm-3.1.3.RELEASE.jar",
+      "mvnUri": "mvn:org.talend.libraries/spring-asm-3.1.3.RELEASE/6.3.0",
+      "useStudioRepository": "true",
+      "description": ""
+    },
+    {
+      "id": "jersey-client",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.glassfish.jersey.core",
+      "artifactId": "jersey-client",
+      "version": "2.25.1",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    },
+    {
+      "id": "httpclient",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "groupId": "org.apache.httpcomponents",
+      "artifactId": "httpclient",
+      "version": "4.5.6",
+      "jarName": "httpclient-4.5.6.jar",
+      "mvnUri": "mvn:org.apache.httpcomponents/httpclient/4.5.6",
+      "useStudioRepository": "true",
+      "classifier": "",
+      "description": ""
+    },
+    {
+      "id": "httpcore",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "groupId": "org.apache.httpcomponents",
+      "artifactId": "httpcore",
+      "version": "4.4.10",
+      "jarName": "httpcore-4.4.10.jar",
+      "mvnUri": "mvn:org.apache.httpcomponents/httpcore/4.4.10",
+      "useStudioRepository": "true",
+      "classifier": "",
+      "description": "dependency for httpclient"
+    },
+    {
+      "id": "commons-codec",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "groupId": "commons-codec",
+      "artifactId": "commons-codec",
+      "version": "1.10",
+      "jarName": "commons-codec-1.10.jar",
+      "mvnUri": "mvn:commons-codec/commons-codec/1.10",
+      "useStudioRepository": "true",
+      "classifier": "",
+      "description": "dependency for httpclient"
+    },
+    {
+      "id": "atlas-properties-0.1.1-0.7-0.0.1",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "atlas-properties-0.1.1-0.7-0.0.1.jar",
+      "mvnUri": "mvn:org.talend.libraries/atlas-properties-0.1.1-0.7-0.0.1/6.3.0",
+      "useStudioRepository": "true",
+      "description": ""
+    },
+    {
+      "id": "avatica",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.calcite.avatica",
+      "artifactId": "avatica",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
+    }
+  ],
+  "moduleGroups": [
+    {
+      "id": "SPARK-LIB-SPARK2-DYNAMIC",
+      "description": "",
+      "modules": [
+        "spark-hive_2.11",
+        "spark-mllib_2.11",
+        "spark-yarn_2.11",
+        "avro-mapred-1.8.2",
+        "parquet-hadoop-bundle",
+        "org-slf4j-jcl-over-slf4j",
+        "org-slf4j-jul-to-slf4j"
+      ]
+    },
+    {
+      "id": "HDFS-LIB-DYNAMIC",
+      "description": "jars for hdfs, only module.id permitted",
+      "modules": [
+        "commons-lang3-3.6",
+        "hadoop-client",
+        "org-slf4j-log4j12",
+        "avro-mapred-1.8.2",
+        "hadoop-aws"
+      ]
+    },
+    {
+      "id": "HIVE-LIB-DYNAMIC",
+      "description": "",
+      "modules": [
+        "hive-exec",
+        "hive-jdbc",
+        "parquet-hive-bundle",
+        "avro-mapred-1.8.2",
+        "avatica"
+      ]
+    },
+    {
+      "id": "HBASE-LIB-DYNAMIC",
+      "description": "",
+      "modules": [
+        "hadoop-client",
+        "hbase-client",
+        "avro-mapred-1.8.2",
+        "avatica"
+      ]
+    },
+    {
+      "id": "MAPREDUCE-LIB-DYNAMIC",
+      "description": "",
+      "modules": [
+        "hadoop-client",
+        "org-slf4j-log4j12",
+        "org-slf4j-jcl-over-slf4j",
+        "org-slf4j-jul-to-slf4j",
+        "avro-mapred-1.8.2"
+      ]
+    },
+    {
+      "id": "MAPREDUCE-PARQUET-LIB-DYNAMIC",
+      "description": "",
+      "modules": [
+        "parquet-hadoop-bundle",
+        "jodd",
+        "avro-mapred-1.8.2"
+      ]
+    },
+    {
+      "id": "MAPREDUCE-PARQUET-LIB-MRREQUIRED-DYNAMIC",
+      "description": "",
+      "modules": [
+        "parquet-hadoop-bundle",
+        "avro-mapred-1.8.2"
+      ]
+    },
+    {
+      "id": "MAPREDUCE-AVRO-LIB-MRREQUIRED-DYNAMIC",
+      "description": "",
+      "modules": [
+        "avro-mapred-1.8.2"
+      ]
+    },
+    {
+      "id": "IMPALA-LIB-DYNAMIC",
+      "description": "",
+      "modules": [
+        "avro-mapred-1.8.2"
+      ]
+    },
+    {
+      "id": "SQOOP-LIB-DYNAMIC",
+      "description": "",
+      "modules": [
+        "avro-mapred-1.8.2",
+        "sqoop"
+      ]
+    },
+    {
+      "id": "PIG-LIB-DYNAMIC",
+      "description": "",
+      "modules": [
+        "pig",
+        "parquet-pig-bundle",
+        "avro-mapred-1.8.2"
+      ]
+    },
+    {
+      "id": "PIG-HCATALOG-LIB-DYNAMIC",
+      "description": "",
+      "modules": [
+        "hive-hcatalog-pig-adapter",
+        "hive-hcatalog-server-extensions",
+        "avro-mapred-1.8.2"
+      ]
+    },
+    {
+      "id": "PIG-HBASE-LIB-DYNAMIC",
+      "description": "",
+      "modules": [
+        "hbase-server",
+        "hbase-hadoop-compat",
+        "commons-lang3-3.6",
+        "avro-mapred-1.8.2"
+      ]
+    },
+    {
+      "id": "PIG-SEQUENCEFILE-LIB-DYNAMIC",
+      "description": "",
+      "modules": [
+        "elephant-bird-core",
+        "elephant-bird-hadoop-compat",
+        "elephant-bird-pig",
+        "avro-mapred-1.8.2"
+      ]
+    },
+    {
+      "id": "PIG-RCFILE-LIB-DYNAMIC",
+      "description": "",
+      "modules": [
+        "hive-exec",
+        "hive-jdbc",
+        "avro-mapred-1.8.2",
+        "elephant-bird-core",
+        "elephant-bird-hadoop-compat",
+        "elephant-bird-pig",
+        "elephant-bird-rcfile",
+        "avro-mapred-1.8.2"
+      ]
+    },
+    {
+      "id": "PIG-AVRO-LIB-DYNAMIC",
+      "description": "",
+      "modules": [
+        "piggybank",
+        "avro-mapred-1.8.2"
+      ]
+    },
+    {
+      "id": "PIG-PARQUET-LIB-DYNAMIC",
+      "description": "",
+      "modules": [
+        "parquet-pig-bundle",
+        "avro-mapred-1.8.2"
+      ]
+    },
+    {
+      "id": "TEZ-LIB-DYNAMIC",
+      "description": "",
+      "modules": [
+        "tez-dag",
+        "tez-mapreduce",
+        "avro-mapred-1.8.2"
+      ]
+    },
+    {
+      "id": "TEZ-SERVER-LIB-DYNAMIC",
+      "description": "",
+      "modules": [
+        "tez-dag",
+        "tez-mapreduce",
+        "avro-mapred-1.8.2"
+      ]
+    },
+    {
+      "id": "SPARK-DYNAMODB-LIB-MRREQUIRED-DYNAMIC",
+      "description": "",
+      "modules": [
+        "emr-dynamodb-hadoop-4.2.0",
+        "aws-java-sdk-dynamodb",
+        "avro-mapred-1.8.2"
+      ]
+    },
+    {
+      "id": "SPARK-AZURE-LIB-MRREQUIRED-DYNAMIC",
+      "description": "",
+      "modules": [
+        "hadoop-azure-datalake",
+        "hadoop-azure",
+        "jetty-util",
+        "avro-mapred-1.8.2"
+      ]
+    },
+    {
+      "id": "SPARK2-KINESIS-LIB-MRREQUIRED-DYNAMIC",
+      "description": "",
+      "modules": [
+        "spark-streaming-kinesis-asl_2.11",
+        "avro-mapred-1.8.2"
+      ]
+    },
+    {
+      "id": "SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-DYNAMIC",
+      "description": "",
+      "modules": [
+        "spark-streaming-kafka",
+        "avro-mapred-1.8.2"
+      ]
+    },
+    {
+      "id": "SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-DYNAMIC",
+      "description": "",
+      "modules": [
+        "kafka-clients",
+        "avro-mapred-1.8.2"
+      ]
+    },
+    {
+      "id": "SPARK-JDBC-LIB-MRREQUIRED-DYNAMIC",
+      "description": "used by Oracle and Teradata Components in batch mode",
+      "modules": [
+        "avatica",
+        "avro-mapred-1.8.2"
+      ]
+    },
+    {
+      "id": "ATLAS-SPARK_2-DYNAMIC",
+      "description": "",
+      "modules": [
+        "talend-lineage-api-0.1.1",
+        "atlas-client",
+        "jettison-1.3.4",
+        "jline-2.10.4",
+        "joda-convert-1.2",
+        "config-1.2.1",
+        "gson-2.5",
+        "fastutil-6.5.16",
+        "guice-4.0",
+        "commons-lang3-3.6",
+        "spring-beans-3.1.3.RELEASE",
+        "spring-core-3.1.3.RELEASE",
+        "spring-asm-3.1.3.RELEASE",
+        "jersey-client",
+        "httpclient",
+        "commons-codec",
+        "atlas-properties-0.1.1-0.7-0.0.1",
+        "json4s-native_2.11-3.5.3",
+        "avro-mapred-1.8.2"
+      ]
+    }
+  ],
+  "classLoaders": [
+    {
+      "id": "hadoop-hdfs",
+      "index": "HDFS:{distribution}:{dynamicVersion}",
+      "moduleGroup": "HDFS-LIB-DYNAMIC",
+      "description": ""
+    },
+    {
+      "id": "hadoop-hdfs-with-krb",
+      "index": "HDFS:{distribution}:{dynamicVersion}?USE_KRB",
+      "moduleGroup": "HDFS-LIB-DYNAMIC",
+      "description": ""
+    },
+    {
+      "id": "hive-embedded",
+      "index": "HIVE:{distribution}:{dynamicVersion}:EMBEDDED",
+      "moduleGroup": "HIVE-LIB-DYNAMIC",
+      "description": ""
+    },
+    {
+      "id": "hive-standalone",
+      "index": "HIVE:{distribution}:{dynamicVersion}:STANDALONE",
+      "moduleGroup": "HIVE-LIB-DYNAMIC",
+      "description": ""
+    },
+    {
+      "id": "hive2-embedded",
+      "index": "HIVE2:{distribution}:{dynamicVersion}:EMBEDDED",
+      "moduleGroup": "HIVE-LIB-DYNAMIC",
+      "description": ""
+    },
+    {
+      "id": "hive2-standalone",
+      "index": "HIVE2:{distribution}:{dynamicVersion}:STANDALONE",
+      "moduleGroup": "HIVE-LIB-DYNAMIC",
+      "description": ""
+    },
+    {
+      "id": "hbase",
+      "index": "HBASE:{distribution}:{dynamicVersion}",
+      "moduleGroup": "HBASE-LIB-DYNAMIC",
+      "description": ""
+    },
+    {
+      "id": "mapreduce",
+      "index": "MAP_REDUCE:{distribution}:{dynamicVersion}",
+      "moduleGroup": "MAPREDUCE-LIB-DYNAMIC",
+      "description": ""
+    },
+    {
+      "id": "impala",
+      "index": "IMPALA:{distribution}:{dynamicVersion}",
+      "moduleGroup": "IMPALA-LIB-DYNAMIC",
+      "description": ""
+    },
+    {
+      "id": "impala-with-krb",
+      "index": "IMPALA:{distribution}:{dynamicVersion}?USE_KRB",
+      "moduleGroup": "IMPALA-LIB-DYNAMIC",
+      "description": ""
+    }
+  ]
+}

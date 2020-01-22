@@ -12,16 +12,7 @@
 // ============================================================================
 package org.talend.hadoop.distribution.test.hive;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-import java.text.MessageFormat;
-import java.util.Arrays;
-
 import org.apache.commons.lang3.ArrayUtils;
-import org.junit.Test;
 import org.talend.commons.utils.platform.PluginChecker;
 import org.talend.core.model.metadata.connection.hive.HiveModeInfo;
 import org.talend.core.model.metadata.connection.hive.HiveServerVersionInfo;
@@ -29,6 +20,11 @@ import org.talend.core.runtime.hd.hive.HiveMetadataHelper;
 import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.test.AbstractTest4HadoopDistribution;
+
+import java.text.MessageFormat;
+import java.util.Arrays;
+
+import static org.junit.Assert.*;
 
 public abstract class AbstractVersionTest4HiveMetadataHelper extends AbstractTest4HadoopDistribution {
 
@@ -57,6 +53,7 @@ public abstract class AbstractVersionTest4HiveMetadataHelper extends AbstractTes
         if (PluginChecker.isOnlyTopLoaded() && ArrayUtils.contains(modeArr, HiveModeInfo.EMBEDDED.getDisplayName())) {
             modeArr = ArrayUtils.removeElement(modeArr, HiveModeInfo.EMBEDDED.getDisplayName());
         }
+        System.out.println("checking hive mode for distribution " + getDistribution() + " with hive version " + hiveVersion + " (" + hiveServer + ")");
         String[] hiveModesDisplay = HiveMetadataHelper.getHiveModesDisplay(getDistribution(), hiveVersion, hiveServer, false);
         doTestArray("Modes are different", modeArr, hiveModesDisplay); //$NON-NLS-1$
     }

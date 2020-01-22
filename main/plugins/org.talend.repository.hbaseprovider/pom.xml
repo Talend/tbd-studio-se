@@ -9,4 +9,8 @@
   </parent>
   <artifactId>org.talend.repository.hbaseprovider</artifactId>
   <packaging>eclipse-plugin</packaging>
+    <build>
+        <sourceDirectory>src</sourceDirectory>
+        <outputDirectory>bin</outputDirectory>
+    </build>
 </project>

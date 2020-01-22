@@ -29,7 +29,10 @@ public class HortonworksDependencyResolver extends AbstractDependencyResolver im
     protected synchronized List<Pattern> getDistributionPatterns() {
         if (hortonworksDistributionPatterns == null || hortonworksDistributionPatterns.isEmpty()) {
             hortonworksDistributionPatterns = new ArrayList<>();
-            Pattern hortonworksDistributionPattern = Pattern.compile("^(?:\\d+\\.\\d+\\.\\d+\\.)((\\d+\\.){3}\\d+-\\d+)$"); //$NON-NLS-1$
+            //samples:
+            //1.4.7.3.1.4.2-2  ==> hdp: 3.1.4.2-2,  component:1.4.7
+            //1.4.6.2.3.5.0-81 ==> hdp: 2.3.5.0-81, component:1.4.6
+            Pattern hortonworksDistributionPattern = Pattern.compile("^(?:\\d+\\.\\d+\\.\\d+\\.)((?:\\d+\\.){3}\\d+-\\d+)$"); //$NON-NLS-1$
             hortonworksDistributionPatterns.add(hortonworksDistributionPattern);
             hortonworksDistributionPattern = Pattern.compile("^(\\d+\\.\\d+\\.\\d+\\.\\d+)$"); //$NON-NLS-1$
             hortonworksDistributionPatterns.add(hortonworksDistributionPattern);

@@ -79,8 +79,10 @@
          point="org.talend.core.runtime.service">
       <Service
             class="org.talend.repository.hadoopcluster.service.HadoopClusterService"
-            serviceId="IHadoopClusterService">
-      </Service>
+            serviceId="IHadoopClusterService" />
+      <Service
+            class="org.talend.repository.hadoopcluster.service.HadoopUiService"
+            serviceId="IHadoopUiService" />
    </extension>
    <extension
          point="org.eclipse.ui.navigator.navigatorContent">

@@ -17,7 +17,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.Consumer;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IPath;
@@ -26,6 +28,7 @@ import org.talend.commons.exception.BusinessException;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.commons.exception.PersistenceException;
 import org.talend.core.database.conn.ConnParameterKeys;
+import org.talend.core.hadoop.HadoopConfJarBean;
 import org.talend.core.hadoop.HadoopConstants;
 import org.talend.core.hadoop.IHadoopClusterService;
 import org.talend.core.model.general.ModuleNeeded;
@@ -45,6 +48,7 @@ import org.talend.core.repository.model.ProxyRepositoryFactory;
 import org.talend.designer.core.model.components.EParameterName;
 import org.talend.designer.core.model.components.EmfComponent;
 import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
+import org.talend.designer.hdfsbrowse.hadoop.service.HadoopServiceProperties;
 import org.talend.designer.runprocess.ProcessorUtilities;
 import org.talend.metadata.managment.ui.utils.ConnectionContextHelper;
 import org.talend.repository.ProjectManager;
@@ -53,6 +57,7 @@ import org.talend.repository.hadoopcluster.node.model.HadoopClusterRepositoryNod
 import org.talend.repository.hadoopcluster.ui.viewer.HadoopSubMultiRepTypeProcessor;
 import org.talend.repository.hadoopcluster.ui.viewer.HadoopSubnodeRepositoryContentManager;
 import org.talend.repository.hadoopcluster.ui.viewer.handler.IHadoopSubnodeRepositoryContentHandler;
+import org.talend.repository.hadoopcluster.util.HCParameterUtil;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.model.IProxyRepositoryFactory;
 import org.talend.repository.model.IRepositoryNode;
@@ -317,39 +322,46 @@ public class HadoopClusterService implements IHadoopClusterService {
     }
 
     @Override
-    public String getCustomConfsJarName(String id) {
-        return getCustomConfsJarName(id, true, true);
+    public Optional<HadoopConfJarBean> getCustomConfsJar(String id) {
+        return getCustomConfsJar(id, true, true);
     }
 
     @Override
-    public String getCustomConfsJarName(String id, boolean createJarIfNotExist, boolean addExtraIds) {
+    public Optional<HadoopConfJarBean> getCustomConfsJar(String id, boolean createJarIfNotExist, boolean addExtraIds) {
         HadoopClusterConnectionItem connectionItem = (HadoopClusterConnectionItem) getHadoopClusterItemById(id);
         if (connectionItem != null) {
-            return getCustomConfsJarName(connectionItem, createJarIfNotExist, addExtraIds);
+            return getCustomConfsJar(connectionItem, createJarIfNotExist, addExtraIds);
         }
-        return null;
+        return Optional.ofNullable(null);
     }
 
     @Override
-    public String getCustomConfsJarName(ConnectionItem connectionItem, boolean createJarIfNotExist, boolean addExtraIds) {
+    public Optional<HadoopConfJarBean> getCustomConfsJar(ConnectionItem connectionItem, boolean createJarIfNotExist,
+            boolean addExtraIds) {
         if (connectionItem instanceof HadoopClusterConnectionItem) {
             HadoopClusterConnectionItem item = (HadoopClusterConnectionItem) connectionItem;
             HadoopClusterConnection connection = (HadoopClusterConnection) item.getConnection();
             if (connection != null && connection.isUseCustomConfs()) {
                 String extraIds = null;
-                if (addExtraIds && connection.isContextMode()) {
+                boolean isContextMode = connection.isContextMode();
+                if (addExtraIds && isContextMode) {
                     ContextType contextType = ConnectionContextHelper.getContextTypeForContextMode(connection, true);
                     extraIds = contextType.getName();
                 }
+                String defaultName = null;
                 if (extraIds == null) {
-                    return HadoopConfsUtils.getConfsJarDefaultName(item, createJarIfNotExist);
+                    defaultName = HadoopConfsUtils.getConfsJarDefaultName(item, createJarIfNotExist);
                 } else {
-                    return HadoopConfsUtils.getConfsJarDefaultName(item, createJarIfNotExist, extraIds);
+                    defaultName = HadoopConfsUtils.getConfsJarDefaultName(item, createJarIfNotExist, extraIds);
                 }
+                return Optional.of(new HadoopConfJarBean(isContextMode,
+                        connection.isUseCustomConfs() && HCParameterUtil.isOverrideHadoopConfs(connection),
+                        HCParameterUtil.getHadoopConfSpecificJar(connection, false),
+                        HCParameterUtil.getHadoopConfSpecificJar(connection, true), defaultName));
             }
         }
 
-        return null;
+        return Optional.ofNullable(null);
     }
 
     @Override
@@ -360,8 +372,14 @@ public class HadoopClusterService implements IHadoopClusterService {
             HadoopClusterConnection connection = (HadoopClusterConnection) connectionItem.getConnection();
             if (connection.isUseCustomConfs()) {
                 Set<String> confsJarNames = HadoopConfsUtils.getConfsJarDefaultNames(connectionItem, true);
+                Consumer<String> action = null;
+                if (HCParameterUtil.isOverrideHadoopConfs(connection)) {
+                    action = (confsJarName) -> removeHadoopConfJar(modulesNeeded, confsJarName);
+                } else {
+                    action = (confsJarName) -> addConfsModule(modulesNeeded, connection, confsJarName);
+                }
                 for (String confsJarName : confsJarNames) {
-                    addConfsModule(modulesNeeded, connection, confsJarName);
+                    action.accept(confsJarName);
                 }
             }
         }
@@ -370,6 +388,14 @@ public class HadoopClusterService implements IHadoopClusterService {
     private void addConfsModule(List<ModuleNeeded> modulesNeeded, HadoopClusterConnection connection, String customConfsJarName) {
         String context = customConfsJarName.substring(0, customConfsJarName.lastIndexOf(".")); //$NON-NLS-1$
         ModuleNeeded customConfsModule = new ModuleNeeded(context, customConfsJarName, null, true);
+        removeHadoopConfJar(modulesNeeded, customConfsJarName);
+        if (connection.isContextMode()) {
+            customConfsModule.getExtraAttributes().put(HadoopConstants.IS_DYNAMIC_JAR, true);
+        }
+        modulesNeeded.add(customConfsModule);
+    }
+
+    private void removeHadoopConfJar(List<ModuleNeeded> modulesNeeded, String customConfsJarName) {
         Iterator<ModuleNeeded> moduleIterator = modulesNeeded.iterator();
         while (moduleIterator.hasNext()) {
             ModuleNeeded module = moduleIterator.next();
@@ -379,10 +405,6 @@ public class HadoopClusterService implements IHadoopClusterService {
                 moduleIterator.remove();
             }
         }
-        if (connection.isContextMode()) {
-            customConfsModule.getExtraAttributes().put(HadoopConstants.IS_DYNAMIC_JAR, true);
-        }
-        modulesNeeded.add(customConfsModule);
     }
 
     @Override
@@ -516,4 +538,43 @@ public class HadoopClusterService implements IHadoopClusterService {
         return updated;
     }
 
+    @Override
+    public ContextType getHadoopClusterContextType(String id) {
+        Item item = getHadoopClusterItemById(id);
+        if (item instanceof HadoopClusterConnectionItem) {
+            HadoopClusterConnectionItem hcItem = (HadoopClusterConnectionItem) item;
+            HadoopClusterConnection hcConnection = (HadoopClusterConnection) hcItem.getConnection();
+            if (hcConnection != null && hcConnection.isContextMode()) {
+                return ConnectionContextHelper.getContextTypeForContextMode(hcConnection, true);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Map<String, String> getHadoopSSLParameters(String clusterId) {
+        Map<String, String> sslParameters = new HashMap<>();
+        HadoopClusterConnection hcConnection = HCRepositoryUtil.getRelativeHadoopClusterConnection(clusterId);
+        if (hcConnection == null) {
+            Item hcItem = getHadoopClusterBySubitemId(clusterId);
+            if (hcItem != null) {
+                hcConnection = HCRepositoryUtil.getRelativeHadoopClusterConnection(hcItem.getProperty().getId());
+            }
+        }
+        if (hcConnection != null && hcConnection.isUseWebHDFSSSL()) {
+            HadoopServiceProperties nnProperties = new HadoopServiceProperties();
+            ContextType contextType = null;
+            if (hcConnection.isContextMode()) {
+                contextType = ConnectionContextHelper.getContextTypeForContextMode(hcConnection, true);
+            }
+            nnProperties.setContextType(contextType);
+            nnProperties.setWebHDFSSSLTrustStorePath(hcConnection.getWebHDFSSSLTrustStorePath());
+            nnProperties.setWebHDFSSSLTrustStorePassword(hcConnection.getWebHDFSSSLTrustStorePassword());
+            sslParameters.put(ConnParameterKeys.CONN_PARA_KEY_WEBHDFS_SSL_TRUST_STORE_PATH,
+                    nnProperties.getWebHDFSSSLTrustStorePath());
+            sslParameters.put(ConnParameterKeys.CONN_PARA_KEY_WEBHDFS_SSL_TRUST_STORE_PASSWORD,
+                    nnProperties.getWebHDFSSSLTrustStorePassword());
+        }
+        return sslParameters;
+    }
 }

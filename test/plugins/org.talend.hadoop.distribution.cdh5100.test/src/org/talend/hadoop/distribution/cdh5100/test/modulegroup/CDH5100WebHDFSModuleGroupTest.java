@@ -12,18 +12,18 @@
 // ============================================================================
 package org.talend.hadoop.distribution.cdh5100.test.modulegroup;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
 import org.junit.Test;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.CDH5100Constant;
 import org.talend.hadoop.distribution.cdh5100.CDH5100Distribution;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100WebHDFSModuleGroup;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class CDH5100WebHDFSModuleGroupTest {
@@ -33,7 +33,6 @@ public class CDH5100WebHDFSModuleGroupTest {
         Map<String, String> results = new HashMap<>();
 
         results.put(CDH5100Constant.WEBHDFS_MODULE_GROUP.getModuleName(), null);
-        results.put(CDH5100Constant.SPARK_AZURE_MRREQUIRED_MODULE_GROUP.getModuleName(), null);
 
         Set<DistributionModuleGroup> moduleGroups =
                 CDH5100WebHDFSModuleGroup.getModuleGroups(CDH5100Distribution.DISTRIBUTION_NAME,

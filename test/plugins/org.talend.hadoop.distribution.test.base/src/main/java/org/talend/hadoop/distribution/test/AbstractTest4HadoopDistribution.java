@@ -12,18 +12,12 @@
 // ============================================================================
 package org.talend.hadoop.distribution.test;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import org.talend.hadoop.distribution.component.HadoopComponent;
 
 import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-import org.talend.hadoop.distribution.component.HadoopComponent;
+import static org.junit.Assert.*;
 
 /**
  * DOC ggu class global comment. Detailled comment
@@ -43,7 +37,8 @@ public abstract class AbstractTest4HadoopDistribution {
                     try {
                         hadoopComponent = getHadoopComponentClass().newInstance();
                     } catch (InstantiationException | IllegalAccessException e) {
-                        //
+                        System.err.print("error instantiating hadoop component " + getHadoopComponentClass().getCanonicalName());
+                        e.printStackTrace();
                     }
                 }
             }

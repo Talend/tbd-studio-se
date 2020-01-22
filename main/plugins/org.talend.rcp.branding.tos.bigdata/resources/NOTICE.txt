@@ -3,8 +3,7 @@ Copyright (c) 2006-2019 Talend Inc. - www.talend.com
 All rights reserved.
 
 This program and the accompanying materials are made available
-under the terms of the Talend Commercial Software License and
-Services Agreement which accompanies this distribution.
+under the terms of the Apache License, Version 2.0
 
 This product includes software developed at
 Talend Inc. (http://www.talend.com).

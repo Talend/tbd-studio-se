@@ -96,6 +96,16 @@ public class HadoopServiceProperties {
 
     private String clusterName;
 
+    private boolean isSetHadoopConf;
+
+    private String hadoopConfSpecificJar;
+
+    private boolean useWebHDFSSSL;
+
+    private String webHDFSSSLTrustStorePassword;
+
+    private String webHDFSSSLTrustStorePath;
+
     public ConnectionItem getItem() {
         return this.item;
     }
@@ -379,4 +389,45 @@ public class HadoopServiceProperties {
     public void setClusterName(String clusterName) {
         this.clusterName = clusterName;
     }
+
+    public boolean isSetHadoopConf() {
+        return isSetHadoopConf;
+    }
+
+    public void setSetHadoopConf(boolean isSetHadoopConf) {
+        this.isSetHadoopConf = isSetHadoopConf;
+    }
+
+    public String getHadoopConfSpecificJar() {
+        return hadoopConfSpecificJar;
+    }
+
+    public void setHadoopConfSpecificJar(String hadoopConfSpecificJar) {
+        this.hadoopConfSpecificJar = hadoopConfSpecificJar;
+    }
+
+    public boolean isUseWebHDFSSSL() {
+        return this.useWebHDFSSSL;
+    }
+
+    public void setUseWebHDFSSSL(boolean useWebHDFSSSL) {
+        this.useWebHDFSSSL = useWebHDFSSSL;
+    }
+
+    public String getWebHDFSSSLTrustStorePassword() {
+        return getRealValue(this.webHDFSSSLTrustStorePassword);
+    }
+
+    public void setWebHDFSSSLTrustStorePassword(String webHDFSSSLTrustStorePassword) {
+        this.webHDFSSSLTrustStorePassword = webHDFSSSLTrustStorePassword;
+    }
+
+    public String getWebHDFSSSLTrustStorePath() {
+        return getRealValue(this.webHDFSSSLTrustStorePath);
+    }
+
+    public void setWebHDFSSSLTrustStorePath(String webHDFSSSLTrustStorePath) {
+        this.webHDFSSSLTrustStorePath = webHDFSSSLTrustStorePath;
+    }
+
 }

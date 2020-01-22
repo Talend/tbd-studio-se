@@ -13,6 +13,7 @@
 package org.talend.repository.hbaseprovider.provider;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -76,9 +77,11 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
 
     private static String COLUMN_FAMILY = "COLUMN FAMILY"; //$NON-NLS-1$
 
+    private static final Object[] EMPTY_ARRAY = new Object[0];
+
     private static ClassLoader classLoader;
 
-    private static Map<IMetadataConnection, Object> adminMap = new HashMap<IMetadataConnection, Object>();
+    private static Map<IMetadataConnection, Object> connectionMap = new HashMap<IMetadataConnection, Object>();
 
     @Override
     public ConnectionStatus testConnection(IMetadataConnection metadataConnection) {
@@ -118,54 +121,35 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
     }
 
     private Object getConfiguration(IMetadataConnection metadataConnection) throws Exception {
-        Object config = ReflectionUtils.invokeStaticMethod("org.apache.hadoop.hbase.HBaseConfiguration", classLoader, "create", //$NON-NLS-1$ //$NON-NLS-2$
-                new Object[0]);
-        ReflectionUtils
-                .invokeMethod(config, "set", new Object[] { "hbase.zookeeper.quorum", metadataConnection.getServerName() }); //$NON-NLS-1$ //$NON-NLS-2$
-        ReflectionUtils.invokeMethod(config, "set", //$NON-NLS-1$
-                new Object[] { "hbase.zookeeper.property.clientPort", metadataConnection.getPort() }); //$NON-NLS-1$
-        ReflectionUtils.invokeMethod(config, "set", new Object[] { "zookeeper.recovery.retry", "1" }); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        Object config = createHBaseConfiguration();
+        setProperty(config, "hbase.zookeeper.quorum", metadataConnection.getServerName()); //$NON-NLS-1$
+        setProperty(config, "hbase.zookeeper.property.clientPort", metadataConnection.getPort()); //$NON-NLS-1$
+        setProperty(config, "zookeeper.recovery.retry", "1"); //$NON-NLS-1$ //$NON-NLS-2$
         // Table Namespace mappings
-        String setTableNSMappingStr = (String) metadataConnection
-                .getParameter(ConnParameterKeys.CONN_PARA_KEY_HBASE_SET_TABLE_NS_MAPPING);
+        String setTableNSMappingStr = (String) metadataConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_HBASE_SET_TABLE_NS_MAPPING);
         String tableNSMapping = (String) metadataConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_HBASE_TABLE_NS_MAPPING);
         boolean check = Boolean.valueOf(setTableNSMappingStr);
         if (check) {
-            ReflectionUtils.invokeMethod(config, "set", new Object[] { "hbase.table.namespace.mappings", //$NON-NLS-1$//$NON-NLS-2$
-                    ConnectionContextHelper.getParamValueOffContext(metadataConnection, tableNSMapping) });
+            setProperty(config, "hbase.table.namespace.mappings", ConnectionContextHelper.getParamValueOffContext(metadataConnection, tableNSMapping)); //$NON-NLS-1$
         }
         boolean useKerberos = Boolean.valueOf((String) metadataConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_USE_KRB));
-        boolean useMaprTicket = Boolean.valueOf((String) metadataConnection
-                .getParameter(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_USE_MAPRTICKET));
+        boolean useMaprTicket = Boolean.valueOf((String) metadataConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_USE_MAPRTICKET));
         if (useMaprTicket) {
-            ReflectionUtils.invokeMethod(config, "set", new Object[] { "hbase.cluster.distributed", "true" }); //$NON-NLS-1$ //$NON-NLS-2$//$NON-NLS-3$
+            setProperty(config, "hbase.cluster.distributed", "true"); //$NON-NLS-1$ //$NON-NLS-2$
             setMaprTicketPropertiesConfig(metadataConnection);
         }
         if (useKerberos) {
-            ReflectionUtils.invokeMethod(config, "set", new Object[] { "hbase.security.authentication", "kerberos" }); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            ReflectionUtils.invokeMethod(config, "set", new Object[] { "hbase.security.authorization", "true" }); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            String masterPrincipal = (String) metadataConnection
-                    .getParameter(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_MASTERPRINCIPAL);
-            ReflectionUtils
-                    .invokeMethod(
-                            config,
-                            "set", new Object[] { "hbase.master.kerberos.principal", ConnectionContextHelper.getParamValueOffContext(metadataConnection, masterPrincipal) }); //$NON-NLS-1$ //$NON-NLS-2$
-            String regionServerPrincipal = (String) metadataConnection
-                    .getParameter(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_REGIONSERVERPRINCIPAL);
-            ReflectionUtils
-                    .invokeMethod(
-                            config,
-                            "set", new Object[] { "hbase.regionserver.kerberos.principal", ConnectionContextHelper.getParamValueOffContext(metadataConnection, regionServerPrincipal) }); //$NON-NLS-1$ //$NON-NLS-2$
-            boolean useKeytab = Boolean.valueOf((String) metadataConnection
-                    .getParameter(ConnParameterKeys.CONN_PARA_KEY_USEKEYTAB));
+            String masterPrincipal = (String) metadataConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_MASTERPRINCIPAL);
+            String regionServerPrincipal = (String) metadataConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_HBASE_AUTHENTICATION_REGIONSERVERPRINCIPAL);
+            boolean useKeytab = Boolean.valueOf((String) metadataConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_USEKEYTAB));
+            setProperty(config, "hbase.security.authentication", "kerberos"); //$NON-NLS-1$ //$NON-NLS-2$
+            setProperty(config, "hbase.security.authorization", "true"); //$NON-NLS-1$ //$NON-NLS-2$
+            setProperty(config, "hbase.master.kerberos.principal", ConnectionContextHelper.getParamValueOffContext(metadataConnection, masterPrincipal)); //$NON-NLS-1$
+            setProperty(config, "hbase.regionserver.kerberos.principal", ConnectionContextHelper.getParamValueOffContext(metadataConnection, regionServerPrincipal)); //$NON-NLS-1$            
             if (useKeytab) {
-                String keytabPrincipal = (String) metadataConnection
-                        .getParameter(ConnParameterKeys.CONN_PARA_KEY_KEYTAB_PRINCIPAL);
+                String keytabPrincipal = (String) metadataConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_KEYTAB_PRINCIPAL);
                 String keytabPath = (String) metadataConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_KEYTAB);
-                ReflectionUtils
-                        .invokeStaticMethod(
-                                "org.apache.hadoop.security.UserGroupInformation", classLoader, //$NON-NLS-1$
-                                "loginUserFromKeytab", new String[] { ConnectionContextHelper.getParamValueOffContext(metadataConnection, keytabPrincipal), ConnectionContextHelper.getParamValueOffContext(metadataConnection, keytabPath) }); //$NON-NLS-1$
+                loginWithKeytab(metadataConnection, keytabPrincipal, keytabPath);
             }
         }
         if (useMaprTicket) {
@@ -174,6 +158,201 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
         updateHadoopProperties(config, metadataConnection);
         return config;
     }
+
+
+    protected Object createHBaseConfiguration() throws Exception {
+        return ReflectionUtils.invokeStaticMethod("org.apache.hadoop.hbase.HBaseConfiguration", classLoader, "create", EMPTY_ARRAY);//$NON-NLS-1$ //$NON-NLS-2$
+
+    }
+
+    protected void setProperty(Object /*HBaseConfiguration*/config, String name, Object value) throws Exception {
+        ReflectionUtils.invokeMethod(config, "set", new Object[]{name, value}); //$NON-NLS-1$
+    }
+
+    protected void loginWithKeytab(IMetadataConnection metadataConnection, String keytabPrincipal, String keytabPath) throws Exception {
+        String principal = ConnectionContextHelper.getParamValueOffContext(metadataConnection, keytabPrincipal);
+        String path = ConnectionContextHelper.getParamValueOffContext(metadataConnection, keytabPath);
+        ReflectionUtils.invokeStaticMethod(
+                "org.apache.hadoop.security.UserGroupInformation", //$NON-NLS-1$ 
+                classLoader,
+                "loginUserFromKeytab", //$NON-NLS-1$
+                new String[]{principal, path});
+    }
+
+    /**
+     * create a HBase connection from the hadoop configuration provided.
+     * <p>
+     * Connection connection = ConnectionFactory.createConnection(configuration);
+     *
+     * @param configuration the hadoop confguration (type : 'org.apache.hadoop.conf.Configuration')
+     * @return a HBase connection (type: org.apache.hadoop.hbase.client.Connection)
+     * @throws Exception any exception that can be thrown during reflective call.
+     */
+    protected Object /*org.apache.hadoop.hbase.client.Connection*/ createConnection(Object /*org.apache.hadoop.conf.Configuration*/ configuration) throws Exception {
+        return ReflectionUtils.invokeStaticMethod("org.apache.hadoop.hbase.client.ConnectionFactory", classLoader, "createConnection", new Object[]{configuration}); //$NON-NLS-1$
+    }
+
+    /**
+     * get Admin utility from the HBase Connection.
+     * <p>
+     * Admin admin = hConnection.getAdmin();
+     *
+     * @param hConnection a HBase connection (type: org.apache.hadoop.hbase.client.Connection)
+     * @return an Admin interface (type: org.apache.hadoop.hbase.client.Admin)
+     * @throws Exception any exception that can be thrown during reflective call.
+     */
+    protected Object /*org.apache.hadoop.hbase.client.Admin*/ getAdmin(Object /*org.apache.hadoop.hbase.client.Connection*/ hConnection) throws Exception {
+        return ReflectionUtils.invokeMethod(hConnection, "getAdmin", EMPTY_ARRAY); //$NON-NLS-1$
+    }
+
+    /**
+     * Configuration configuration = hConnection.getConfiguration();
+     *
+     * @param hConnection
+     * @return
+     * @throws Exception
+     */
+    protected Object /*org.apache.hadoop.conf.Configuration*/ getConfiguration(Object /*org.apache.hadoop.hbase.client.Connection*/  hConnection) throws Exception {
+        return ReflectionUtils.invokeMethod(hConnection, "getConfiguration", EMPTY_ARRAY);
+    }
+
+
+    /**
+     * TableName hTableName = TableName.valueOf(tableName)
+     * Table hTable = hConnection.getTable(hTablename)
+     *
+     * @param hConnection
+     * @param tableName
+     * @param classLoader
+     * @return
+     * @throws Exception
+     */
+    protected Object /*org.apache.hadoop.hbase.client.Table*/ getTable(Object  /*org.apache.hadoop.hbase.client.Connection*/ hConnection, String tableName, ClassLoader classLoader) throws Exception {
+        Object hTableName = ReflectionUtils.invokeStaticMethod("org.apache.hadoop.hbase.TableName", classLoader, "valueOf", new Object[]{tableName});
+        return ReflectionUtils.invokeMethod(hConnection, "getTable", new Object[]{hTableName}); //$NON-NLS-1$
+    }
+
+    /**
+     * get description of all tables contained in the HBase Connection.
+     * <p>
+     * List<TableDescriptor> hTableDescriptors = hAdmin.listTableDescriptors();
+     *
+     * @param hAdmin the admin interface for the connection (type: org.apache.hadoop.hbase.client.Admin)
+     * @return list of descriptors (type: List<org.apache.hadoop.hbase.client.TableDescriptor>)
+     * @throws Exception any exception that can be thrown during reflective call.
+     */
+    @SuppressWarnings("unchecked")
+    protected List<Object> getTableDescriptors(Object /*org.apache.hadoop.hbase.client.Admin*/ hAdmin) throws Exception {
+        try {
+            return (List<Object>) ReflectionUtils.invokeMethod(hAdmin, "listTableDescriptors", EMPTY_ARRAY); //$NON-NLS-1$
+        } catch (NoSuchMethodException nsme) {
+            //try old one
+            Object[] tables = (Object[]) ReflectionUtils.invokeMethod(hAdmin, "listTables", EMPTY_ARRAY); //$NON-NLS-1$
+            return Arrays.asList(tables);
+        }
+    }
+
+    /**
+     * TableDescriptor tableDescriptor = hTable.getDescriptor()
+     *
+     * @param hTable
+     * @return
+     * @throws Exception
+     */
+    protected Object /*org.apache.hadoop.hbase.client.TableDescriptor*/ getTableDescriptor(Object hTable) throws Exception {
+        try {
+            return ReflectionUtils.invokeMethod(hTable, "getDescriptor", EMPTY_ARRAY); //$NON-NLS-1$
+        } catch (NoSuchMethodException nsme) {
+            //try old one
+            return ReflectionUtils.invokeMethod(hTable, "getTableDescriptor", EMPTY_ARRAY); //$NON-NLS-1$
+        }
+    }
+
+
+    /**
+     * get full table name as a 'String'.
+     *
+     * @param tableDescriptor the HBase table description (type: 'org.apache.hadoop.hbase.client.TableDescriptor')
+     * @return the full table name as a string
+     * @throws Exception any exception that can be thrown during reflective call.
+     */
+    protected String getTableName(Object /*org.apache.hadoop.hbase.client.TableDescriptor*/ tableDescriptor) throws Exception {
+        Object tableName = ReflectionUtils.invokeMethod(tableDescriptor, "getTableName", EMPTY_ARRAY); //$NON-NLS-1$
+        return (String) ReflectionUtils.invokeMethod(tableName, "getNameAsString", EMPTY_ARRAY); //$NON-NLS-1$
+    }
+
+    protected Object[] getColumnFamilies(Object /*org.apache.hadoop.hbase.client.TableDescriptor*/ tableDescriptor) throws Exception {
+        return (Object[]) ReflectionUtils.invokeMethod(tableDescriptor, "getColumnFamilies", EMPTY_ARRAY); //$NON-NLS-1$
+    }
+
+    protected String getColumnName(Object /*org.apache.hadoop.hbase.client.ColumnFamilyDescriptor*/ columnFamilyDescriptor) throws Exception {
+        return (String) ReflectionUtils.invokeMethod(columnFamilyDescriptor, "getNameAsString", EMPTY_ARRAY); //$NON-NLS-1$
+    }
+
+    protected Object /*org.apache.hadoop.hbase.client.Scan*/ createScan() throws Exception {
+        return Class.forName("org.apache.hadoop.hbase.client.Scan", true, classLoader).newInstance(); //$NON-NLS-1$
+    }
+
+    protected Object /*org.apache.hadoop.hbase.client.ResultScanner*/ getResultScanner(Object table, Object scan) throws Exception {
+        return ReflectionUtils.invokeMethod(table, "getScanner", new Object[]{scan}); //$NON-NLS-1$
+    }
+
+    protected Object /*org.apache.hadoop.hbase.client.Result*/ nextItem(Object scanner) throws Exception {
+        return ReflectionUtils.invokeMethod(scanner, "next", EMPTY_ARRAY); //$NON-NLS-1$
+    }
+
+    /**
+     * List cells in a result.
+     *
+     * @param result the result of a scanner.
+     * @return list of cells (type: List<org.apache.hadoop.hbase.Cell>)
+     * @throws Exception any exception that can be thrown during reflective call.
+     */
+    @SuppressWarnings("unchecked")
+    protected List<Object> listCells(Object /*org.apache.hadoop.hbase.client.Result*/ result) throws Exception {
+        return (List<Object>) ReflectionUtils.invokeMethod(result, "listCells", EMPTY_ARRAY); //$NON-NLS-1$
+    }
+
+    /**
+     * Retrieve family name (as string) from a cell.
+     *
+     * @param cell the cell we are analysing
+     * @return String the family name of the cell
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    protected String getFamily(Object /*org.apache.hadoop.hbase.Cell*/ cell) throws Exception {
+        byte[] array = (byte[]) ReflectionUtils.invokeMethod(cell, "getFamilyArray", EMPTY_ARRAY); //$NON-NLS-1$
+        int offset = (int) ReflectionUtils.invokeMethod(cell, "getFamilyOffset", EMPTY_ARRAY); //$NON-NLS-1$
+        byte length = (byte) ReflectionUtils.invokeMethod(cell, "getFamilyLength", EMPTY_ARRAY); //$NON-NLS-1$
+        return toStringBinary(array, offset, length);
+    }
+
+    /**
+     * Retrieve qualifier(column) name (as string) from a cell.
+     *
+     * @param cell the cell we are analysing
+     * @return String the qualifier name of the cell
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    protected String getQualifier(Object /*org.apache.hadoop.hbase.Cell*/ cell) throws Exception {
+        byte[] array = (byte[]) ReflectionUtils.invokeMethod(cell, "getQualifierArray", EMPTY_ARRAY); //$NON-NLS-1$
+        int offset = (int) ReflectionUtils.invokeMethod(cell, "getQualifierOffset", EMPTY_ARRAY); //$NON-NLS-1$
+        int length = (int) ReflectionUtils.invokeMethod(cell, "getQualifierLength", EMPTY_ARRAY); //$NON-NLS-1$
+        return toStringBinary(array, offset, length);
+    }
+
+    protected String toStringBinary(byte[] bytes, int offset, int length) throws Exception {
+        return ReflectionUtils
+                .invokeStaticMethod("org.apache.hadoop.hbase.util.Bytes", classLoader, "toStringBinary", new Object[]{bytes, offset, length}, byte[].class, int.class, int.class) //$NON-NLS-1$ //$NON-NLS-2$
+                .toString();
+    }
+
+    protected void addFamily(Object /*org.apache.hadoop.hbase.client.Scan*/ scan, byte[] family) throws Exception {
+        ReflectionUtils.invokeMethod(scan, "addFamily", new Object[]{family}); //$NON-NLS-1$
+    }
+
 
     protected void setMaprTicketPropertiesConfig(IMetadataConnection metadataConn) throws Exception {
         boolean setMapRHomeDir = Boolean.valueOf((String) metadataConn
@@ -207,70 +386,72 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
             }
         }
         Object mapRClientConfig = ReflectionUtils.newInstance(
-                "com.mapr.login.client.MapRLoginHttpsClient", classLoader, new Object[] {}); //$NON-NLS-1$
+                "com.mapr.login.client.MapRLoginHttpsClient", classLoader, new Object[]{}); //$NON-NLS-1$
         if (useKerberos) {
             System.setProperty("hadoop.login", setMapRHadoopLogin ? mapRHadoopLogin : "kerberos");//$NON-NLS-1$ //$NON-NLS-2$
             ReflectionUtils
                     .invokeMethod(
                             mapRClientConfig,
-                            "getMapRCredentialsViaKerberos", new Object[] { ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketCluster), desiredTicketDurInSecs }); //$NON-NLS-1$
+                            "getMapRCredentialsViaKerberos", new Object[]{ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketCluster), desiredTicketDurInSecs}); //$NON-NLS-1$
         } else {
             if (setMapRHadoopLogin) {
                 System.setProperty("hadoop.login", mapRHadoopLogin);//$NON-NLS-1$
             } else {
-                ReflectionUtils.invokeMethod(mapRClientConfig, "setCheckUGI", new Object[] { false }, boolean.class);//$NON-NLS-1$
+                ReflectionUtils.invokeMethod(mapRClientConfig, "setCheckUGI", new Object[]{false}, boolean.class);//$NON-NLS-1$
             }
             String version = (String) metadataConn.getParameter(ConnParameterKeys.CONN_PARA_KEY_HBASE_VERSION);
-            Object[] argsObj = new Object[] { ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketCluster),
+            Object[] argsObj = new Object[]{ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketCluster),
                     ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketUsername),
-                    ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketPassword), desiredTicketDurInSecs };
+                    ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketPassword), desiredTicketDurInSecs};
             if (version != null && "MAPR520".compareTo(version) <= 0) {//$NON-NLS-1$
-                argsObj = new Object[] { ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketCluster),
+                argsObj = new Object[]{ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketCluster),
                         ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketUsername),
                         ConnectionContextHelper.getParamValueOffContext(metadataConn, mapRTicketPassword),
-                        desiredTicketDurInSecs, "" };//$NON-NLS-1$
+                        desiredTicketDurInSecs, ""};//$NON-NLS-1$
             }
             ReflectionUtils.invokeMethod(mapRClientConfig, "getMapRCredentialsViaPassword", argsObj); //$NON-NLS-1$
         }
     }
 
+    /**
+     * Check hbase connection availablility.
+     *
+     * @param config
+     * @return
+     */
     private Callable<Object> checkHBaseAvailable(final Object config) {
         return new Callable<Object>() {
-
             @Override
             public Object call() throws Exception {
-                String methodName = HBASEADMIN_CHECKHBASEAVAILABLE_METHOD_NAME;
+                Object result = null;
+                @SuppressWarnings("rawtypes")
                 Class hbaseAdminClass = ReflectionUtils.getClass(HBASEADMIN_CLASS_NAME, classLoader);
                 if (hbaseAdminClass != null) {
+                    String methodName = HBASEADMIN_CHECKHBASEAVAILABLE_METHOD_NAME;
                     if (!ReflectionUtils.hasMethod(hbaseAdminClass, methodName)) {
                         methodName = HBASEADMIN_AVAILABLE_METHOD_NAME;
                     }
+                    result = ReflectionUtils.invokeStaticMethod(HBASEADMIN_CLASS_NAME, classLoader, methodName, new Object[]{config});
                 }
-                return ReflectionUtils.invokeStaticMethod(HBASEADMIN_CLASS_NAME, classLoader,
-                        methodName, new Object[] { config });
+                return result;
             }
         };
-
     }
 
-    private void updateHadoopProperties(Object hbaseConfiguration, IMetadataConnection metadataConnection) throws Exception {
-        String setZnodeParentStr = (String) metadataConnection
-                .getParameter(ConnParameterKeys.CONN_PARA_KEY_HBASE_SET_ZNODE_PARENT);
-        String znodeParent = (String) metadataConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_HBASE_ZNODE_PARENT);
-        boolean selected_Znode_Parent = Boolean.valueOf(setZnodeParentStr);
-        if (selected_Znode_Parent) {
-            ReflectionUtils.invokeMethod(hbaseConfiguration, "set", //$NON-NLS-1$
-                    new Object[] { "zookeeper.znode.parent", ConnectionContextHelper.getParamValueOffContext(metadataConnection, //$NON-NLS-1$
-                            znodeParent) });
+    private void updateHadoopProperties(Object hbaseConfiguration, IMetadataConnection mConnection) throws Exception {
+        Object tempValue = mConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_HBASE_SET_ZNODE_PARENT);
+        boolean shouldSetZNodeParent = Boolean.valueOf((String) tempValue);
+        if (shouldSetZNodeParent) {
+            String znodeParent = (String) mConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_HBASE_ZNODE_PARENT);
+            String zookeeperNodeParent = ConnectionContextHelper.getParamValueOffContext(mConnection, znodeParent);
+            setProperty(hbaseConfiguration, "zookeeper.znode.parent", zookeeperNodeParent); //$NON-NLS-1$
         } else {
-            String hadoopProperties = (String) metadataConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_HBASE_PROPERTIES);
+            String hadoopProperties = (String) mConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_HBASE_PROPERTIES);
             List<Map<String, Object>> hadoopPropertiesList = HadoopRepositoryUtil.getHadoopPropertiesList(hadoopProperties);
             for (Map<String, Object> hadoopPros : hadoopPropertiesList) {
-                ReflectionUtils
-                        .invokeMethod(hbaseConfiguration,
-                                "set", //$NON-NLS-1$
-                                new Object[] {
-                                        hadoopPros.get("PROPERTY"), ConnectionContextHelper.getParamValueOffContext(metadataConnection, String.valueOf(hadoopPros.get("VALUE"))) }); //$NON-NLS-1$ //$NON-NLS-2$
+                String key = hadoopPros.get("PROPERTY").toString();
+                String value = ConnectionContextHelper.getParamValueOffContext(mConnection, String.valueOf(hadoopPros.get("VALUE")));
+                setProperty(hbaseConfiguration, key, value);
             }
         }
     }
@@ -282,41 +463,34 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
 
     @Override
     public List getTableNodeInfo(IMetadataConnection metadataConnection) {
-        List<TableNode> tableNodes = new ArrayList<TableNode>();
+        List<TableNode> rootElements = new ArrayList<TableNode>();
         ClassLoader oldClassLoaderLoader = Thread.currentThread().getContextClassLoader();
         try {
             Thread.currentThread().setContextClassLoader(classLoader);
-            Object hAdmin = getAdmin(metadataConnection);
-            Object[] allTables = (Object[]) ReflectionUtils.invokeMethod(hAdmin, "listTables", new Object[0]); //$NON-NLS-1$
-            for (Object td : allTables) {
-                String htabName = (String) ReflectionUtils.invokeMethod(td, "getNameAsString", new Object[0]); //$NON-NLS-1$
+            Object hConnection = getRealConnection(metadataConnection);
+            Object hAdmin = getAdmin(hConnection);
+            List<Object> tableDescriptors = getTableDescriptors(hAdmin);
+
+            for (Object tableDescriptor : tableDescriptors) {
+                String htabName = getTableName(tableDescriptor);
                 TdTable tb = getTableFromConnection(metadataConnection, htabName);
                 if (tb == null) {
-                    tb = RelationalFactory.eINSTANCE.createTdTable();
-                    tb.setLabel(htabName);
-                    tb.setName(htabName);
-                    tb.setTableType(ETableTypes.TABLETYPE_TABLE.getName());
+                    tb = createDatabaseTable(htabName);
                 }
-                TableNode tableNode = new TableNode();
-                tableNode.setType(TableNode.TABLE);
-                tableNode.setValue(tb.getLabel());
-                tableNode.setItemType(tb.getTableType());
-                tableNode.setMetadataConn(metadataConnection);
-                tableNode.setTable(tb);
-                tableNodes.add(tableNode);
+                TableNode tableNode = createTableChildNode(rootElements, tb, metadataConnection);
             }
         } catch (Exception e) {
             ExceptionHandler.process(e);
         } finally {
             Thread.currentThread().setContextClassLoader(oldClassLoaderLoader);
         }
-
-        return tableNodes;
+        return rootElements;
     }
 
     private TdTable getTableFromConnection(IMetadataConnection metadataConnection, String tableName) {
-        List<Catalog> catalogs = CatalogHelper.getCatalogs(((DatabaseConnection) metadataConnection.getCurrentConnection())
-                .getDataPackage());
+        List<Catalog> catalogs = CatalogHelper
+                .getCatalogs(((DatabaseConnection) metadataConnection.getCurrentConnection())
+                        .getDataPackage());
         Catalog catalog = null;
         for (Catalog c : catalogs) {
             if (c.getName() != null && c.getName().equals(getDefaultCatalogName())) {
@@ -325,14 +499,13 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
             }
         }
         if (catalog != null) {
-            List<TdTable> exsitTables = CatalogHelper.getTables(catalog);
-            for (TdTable tb : exsitTables) {
+            List<TdTable> existingTables = CatalogHelper.getTables(catalog);
+            for (TdTable tb : existingTables) {
                 if (tableName != null && tb.getLabel().equals(tableName)) {
                     return tb;
                 }
             }
         }
-
         return null;
     }
 
@@ -340,6 +513,107 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
     public AbstractMetadataExtractorViewProvider getMetadataViewProvider() {
         HBaseMetadataViewProvider provider = new HBaseMetadataViewProvider();
         return provider;
+    }
+
+    /**
+     * Create a table representation for the metadata repository.
+     *
+     * @param tableName the name of the table
+     * @return TdTable the table representation
+     */
+    private static TdTable createDatabaseTable(String tableName) {
+        TdTable result = RelationalFactory.eINSTANCE.createTdTable();
+        result.setLabel(tableName);
+        result.setName(tableName);
+        result.setTableType(ETableTypes.TABLETYPE_TABLE.getName());
+        return result;
+    }
+
+    /**
+     * create a TdColumn from information given by HBase column descriptor
+     *
+     * @param columnName
+     * @param familyName
+     * @return
+     */
+    private static TdColumn createDatabaseColumn(String columnName, String familyName) {
+        TdColumn column = RelationalFactory.eINSTANCE.createTdColumn();
+        column.setLabel(columnName);
+        column.setName(columnName);
+        // hbase no type ,just byte[],need to cast the type ourself
+        column.setTalendType("id_String"); //$NON-NLS-1$
+        TaggedValue tv = TaggedValueHelper.createTaggedValue(COLUMN_FAMILY, familyName);
+        column.getTaggedValue().add(tv);
+        return column;
+
+    }
+
+    /**
+     * Create a TableNode that represent a column element.
+     * <p>
+     * The TableNode instance is setup with values for a column
+     * and added the the children of the parent.
+     *
+     * @param parent     the parent TableNode in the TableTreeNode GUI
+     * @param columnName The name of the column
+     * @return TableNode created node.
+     */
+    private static TableNode createColumnChildNode(TableNode parent, String columnName) {
+        TableNode columnNode = new TableNode();
+        columnNode.setParent(parent);
+        columnNode.setType(TableNode.COLUMN);
+        columnNode.setValue(columnName);
+        columnNode.setItemType("COLUMN"); //$NON-NLS-1$
+        columnNode.setTable(parent.getTable());
+        parent.getChildren().add(columnNode);
+        return columnNode;
+    }
+
+    /**
+     * Create a TableNode that represent a column family element.
+     * <p>
+     * The TableNode instance is setup with values for a column family
+     * and added the the children of the parent.
+     *
+     * @param parent             the parent TableNode in the TableTreeNode GUI
+     * @param columnFamilyName   The name of the column family
+     * @param metadataConnection the metadataConnection
+     * @return TableNode created node.
+     */
+
+    private static TableNode createColumnFamilyChildNode(TableNode parent, String columnFamilyName, IMetadataConnection metadataConnection) {
+        TableNode columnFamilyNode = new TableNode();
+        columnFamilyNode.setParent(parent);
+        columnFamilyNode.setType(TableNode.COLUMN_FAMILY);
+        columnFamilyNode.setValue(columnFamilyName);
+        columnFamilyNode.setItemType(COLUMN_FAMILY);
+        columnFamilyNode.setTable(parent.getTable());
+        columnFamilyNode.setMetadataConn(metadataConnection);
+        parent.getChildren().add(columnFamilyNode);
+        return columnFamilyNode;
+    }
+
+    /**
+     * Create a TableNode that represent a column family element.
+     * <p>
+     * The TableNode instance is setup with values for a table
+     * and added the the list of rootElements.
+     *
+     * @param rootElements       the parent TableNode in the TableTreeNode GUI
+     * @param table              The table representation linked to this node
+     * @param metadataConnection the metadataConnection
+     * @return TableNode         created node.
+     */
+    private static TableNode createTableChildNode(List<TableNode> rootElements, TdTable table, IMetadataConnection metadataConnection) {
+        TableNode tableNode = new TableNode();
+        tableNode.setType(TableNode.TABLE);
+        tableNode.setValue(table.getLabel());
+        tableNode.setItemType(table.getTableType());
+        tableNode.setMetadataConn(metadataConnection);
+        tableNode.setTable(table);
+        rootElements.add(tableNode);
+        return tableNode;
+
     }
 
     class HBaseMetadataViewProvider extends SelectorTreeViewerProvider {
@@ -351,7 +625,8 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
 
         @Override
         public Object[] getElements(Object inputElement) {
-            List list = (List) inputElement;
+            @SuppressWarnings("unchecked")
+            List<Object> list = (List<Object>) inputElement;
             return list.toArray();
         }
 
@@ -378,110 +653,74 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
             try {
                 Thread.currentThread().setContextClassLoader(classLoader);
                 IMetadataConnection metadataConnection = tableNode.getMetadataConn();
-                Object hAdmin = getAdmin(metadataConnection);
-                if (tableNode.getType() == TableNode.TABLE) {
-                    // Configuration config = HBaseConfiguration.create();
-                    // config.set("hbase.zookeeper.quorum", metadataConnection.getServerName());
-                    // config.set("hbase.zookeeper.property.clientPort", metadataConnection.getPort());
-                    Object td = ReflectionUtils.invokeMethod(hAdmin, "getTableDescriptor", new Object[] { tableNode.getValue() //$NON-NLS-1$
-                            .getBytes() });
+                Object hConnection = getRealConnection(metadataConnection);
+                switch (tableNode.getType()) {
+                    case TableNode.TABLE:
+                        Object hTable = getTable(hConnection, tableNode.getValue(), classLoader);
+                        Object hTableDescriptor = getTableDescriptor(hTable);
+                        String columnFamily = metadataConnection.getSchema();
+                        Object[] columnFamilies = getColumnFamilies(hTableDescriptor);
 
-                    List<String> familyNames = new ArrayList<String>();
-                    Object[] columnFamilies = (Object[]) ReflectionUtils.invokeMethod(td, "getColumnFamilies", new Object[0]); //$NON-NLS-1$
-                    for (Object columnDescripter : columnFamilies) {
-                        String nameAsString = (String) ReflectionUtils.invokeMethod(columnDescripter, "getNameAsString", //$NON-NLS-1$
-                                new Object[0]);
-                        familyNames.add(nameAsString);
-                    }
-
-                    String columnFamily = metadataConnection.getSchema();
-                    if (columnFamily == null || "".equals(columnFamily)) {
-                        for (String columnFamilyToAdd : familyNames) {
-                            TableNode columnFamilyNode = new TableNode();
-                            columnFamilyNode.setParent(tableNode);
-                            columnFamilyNode.setType(TableNode.COLUMN_FAMILY);
-                            columnFamilyNode.setValue(columnFamilyToAdd);
-                            columnFamilyNode.setItemType(COLUMN_FAMILY);
-                            columnFamilyNode.setTable(tableNode.getTable());
-                            columnFamilyNode.setMetadataConn(metadataConnection);
-                            tableNode.getChildren().add(columnFamilyNode);
+                        List<String> familyNames = new ArrayList<>(columnFamilies.length);
+                        for (Object columnFamilyDescriptor : columnFamilies) {
+                            familyNames.add(getColumnName(columnFamilyDescriptor));
                         }
-                    } else if (columnFamily != null && familyNames.contains(columnFamily)) {
-                        TableNode columnFamilyNode = new TableNode();
-                        columnFamilyNode.setParent(tableNode);
-                        columnFamilyNode.setType(TableNode.COLUMN_FAMILY);
-                        columnFamilyNode.setValue(columnFamily);
-                        columnFamilyNode.setItemType(COLUMN_FAMILY);
-                        columnFamilyNode.setTable(tableNode.getTable());
-                        columnFamilyNode.setMetadataConn(metadataConnection);
-                        tableNode.getChildren().add(columnFamilyNode);
-                    }
-
-                }
-                // retrieve columns from column family
-                if (tableNode.getType() == TableNode.COLUMN_FAMILY) {
-                    Object config = ReflectionUtils.invokeMethod(hAdmin, "getConfiguration", new Object[0]); //$NON-NLS-1$
-                    TableNode parent = tableNode.getParent();
-                    String tableName = null;
-                    if (parent != null) {
-                        tableName = parent.getValue();
-                    }
-                    Object scan = Class.forName("org.apache.hadoop.hbase.client.Scan", true, classLoader).newInstance(); //$NON-NLS-1$
-                    Object table = ReflectionUtils.newInstance("org.apache.hadoop.hbase.client.HTable", classLoader, //$NON-NLS-1$
-                            new Object[] { config, tableName });
-
-                    ReflectionUtils.invokeMethod(scan, "addFamily", new Object[] { tableNode.getValue().getBytes() }); //$NON-NLS-1$
-                    // Limit
-                    int count = 0;
-                    int limit = -1;
-                    if (GlobalServiceRegister.getDefault().isServiceRegistered(IDesignerCoreService.class)) {
-                        IDesignerCoreService designerService = (IDesignerCoreService) GlobalServiceRegister.getDefault()
-                                .getService(IDesignerCoreService.class);
-                        limit = designerService.getHBaseOrMaprDBScanLimit();
-                    }
-                    Object resultSetscanner = ReflectionUtils.invokeMethod(table, "getScanner", new Object[] { scan }); //$NON-NLS-1$
-                    List<String> columnExsit = new ArrayList<String>();
-                    Object result = ReflectionUtils.invokeMethod(resultSetscanner, "next", new Object[0]); //$NON-NLS-1$
-                    while (result != null) {
-                        List<Object> list = (List<Object>) ReflectionUtils.invokeMethod(result, "list", new Object[0]); //$NON-NLS-1$
-                        if (list != null) {
-                            /**
-                             * in hbase data will stored as keyValue,but the kv.getKeyString() which equal
-                             * "kv.getFamily()+kv.getQualifier()+kv.getRow()" can specific a metadata,so need to trim
-                             * the duplicated kv.getQualifier()+kv.getRow()
-                             **/
-                            for (Object kv : list) {
-                                byte[] qualifier = (byte[]) ReflectionUtils.invokeMethod(kv, "getQualifier", new Object[0]); //$NON-NLS-1$
-                                String columnName = (String) ReflectionUtils.invokeStaticMethod(
-                                        "org.apache.hadoop.hbase.util.Bytes", classLoader, "toStringBinary", //$NON-NLS-1$//$NON-NLS-2$
-                                        new Object[] { qualifier });
-
-                                if (StringUtils.isEmpty(columnName)) {
-                                    continue;
-                                }
-                                byte[] family = (byte[]) ReflectionUtils.invokeMethod(kv, "getFamily", new Object[0]); //$NON-NLS-1$
-                                String familyName = (String) ReflectionUtils.invokeStaticMethod(
-                                        "org.apache.hadoop.hbase.util.Bytes", classLoader, "toStringBinary", //$NON-NLS-1$ //$NON-NLS-2$
-                                        new Object[] { family });
-                                String exsistColumn = columnName + "_" + familyName; //$NON-NLS-1$
-                                if (!columnExsit.contains(exsistColumn)) {
-                                    TableNode columnNode = new TableNode();
-                                    columnNode.setParent(tableNode);
-                                    columnNode.setType(TableNode.COLUMN);
-                                    columnNode.setValue(columnName);
-                                    columnNode.setItemType("COLUMN"); //$NON-NLS-1$
-                                    columnNode.setTable(tableNode.getTable());
-                                    tableNode.getChildren().add(columnNode);
-                                    columnExsit.add(exsistColumn);
+                        if (columnFamily == null || "".equals(columnFamily)) {
+                            for (String familyName : familyNames) {
+                                createColumnFamilyChildNode(tableNode, familyName, metadataConnection);
+                            }
+                        } else if (familyNames.contains(columnFamily)) {
+                            createColumnFamilyChildNode(tableNode, columnFamily, metadataConnection);
+                        }
+                        break;
+                    case TableNode.COLUMN_FAMILY:
+                        TableNode parent = tableNode.getParent();
+                        String tableName = null;
+                        if (parent != null) {
+                            tableName = parent.getValue();
+                        }
+                        Object scan = createScan();
+                        Object table = getTable(hConnection, tableName, classLoader);
+                        addFamily(scan, tableNode.getValue().getBytes());
+                        // Limit
+                        int count = 0;
+                        int limit = -1;
+                        if (GlobalServiceRegister.getDefault().isServiceRegistered(IDesignerCoreService.class)) {
+                            IDesignerCoreService designerService = (IDesignerCoreService) GlobalServiceRegister.getDefault()
+                                    .getService(IDesignerCoreService.class);
+                            limit = designerService.getHBaseOrMaprDBScanLimit();
+                        }
+                        Object scanner = getResultScanner(table, scan);
+                        List<String> columnExsit = new ArrayList<String>();
+                        Object result = nextItem(scanner);
+                        while (result != null) {
+                            List<Object> list = listCells(result);
+                            if (list != null) {
+                                /**
+                                 * in hbase data will stored as keyValue,but the kv.getKeyString() which equal
+                                 * "kv.getFamily()+kv.getQualifier()+kv.getRow()" can specific a metadata,so need to trim
+                                 * the duplicated kv.getQualifier()+kv.getRow()
+                                 **/
+                                for (Object cell : list) {
+                                    String columnName = getQualifier(cell);
+                                    if (StringUtils.isEmpty(columnName)) {
+                                        continue;
+                                    }
+                                    String familyName = getFamily(cell);
+                                    String exsistColumn = columnName + "_" + familyName; //$NON-NLS-1$
+                                    if (!columnExsit.contains(exsistColumn)) {
+                                        TableNode columnNode = createColumnChildNode(tableNode, columnName);
+                                        columnExsit.add(exsistColumn);
+                                    }
                                 }
                             }
+                            count++;
+                            if (count == limit) {
+                                break;
+                            }
+                            result = nextItem(scanner);
                         }
-                        count++;
-                        if (count == limit) {
-                            break;
-                        }
-                        result = ReflectionUtils.invokeMethod(resultSetscanner, "next", new Object[0]); //$NON-NLS-1$
-                    }
+                        break;
                 }
             } catch (Exception e) {
                 ExceptionHandler.process(e);
@@ -519,28 +758,28 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
             List<Object> columnData = tableNode.getColumnDataList();
             int type = tableNode.getType();
             switch (columnIndex) {
-            case 0:
-                String value = tableNode.getValue();
-                if (value == null) {
-                    return ""; //$NON-NLS-1$
-                }
-                return value;
-            case 1:
-                if (type == TableNode.CATALOG) {
-                    return "CATALOG"; //$NON-NLS-1$
-                } else if (type == TableNode.SCHEMA) {
-                    return "SCHEMA"; //$NON-NLS-1$
-                } else {
-                    return tableNode.getItemType();
-                }
-            default:
-                if (columnData != null && columnIndex < columnData.size()) {
-                    Object columnObj = columnData.get(columnIndex);
-                    if (columnObj != null) {
-                        return columnObj.toString();
+                case 0:
+                    String value = tableNode.getValue();
+                    if (value == null) {
+                        return ""; //$NON-NLS-1$
                     }
-                }
-                return ""; //$NON-NLS-1$
+                    return value;
+                case 1:
+                    if (type == TableNode.CATALOG) {
+                        return "CATALOG"; //$NON-NLS-1$
+                    } else if (type == TableNode.SCHEMA) {
+                        return "SCHEMA"; //$NON-NLS-1$
+                    } else {
+                        return tableNode.getItemType();
+                    }
+                default:
+                    if (columnData != null && columnIndex < columnData.size()) {
+                        Object columnObj = columnData.get(columnIndex);
+                        if (columnObj != null) {
+                            return columnObj.toString();
+                        }
+                    }
+                    return ""; //$NON-NLS-1$
             }
         }
 
@@ -548,25 +787,23 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
 
     /**
      * returns the node type which will access a runnable when click the node.
-     * **/
+     **/
     @Override
     public int getRunnableAccessNodeType() {
         return TableNode.COLUMN;
     }
 
-    /** run method in Runnable will execute this **/
+    /**
+     * run method in Runnable will execute this
+     **/
     @Override
     public void executeInRunnable(IMetadataConnection metadataConnection, Object currentNode, DatabaseConnection dbconn) {
-        Object hAdmin = getAdmin(metadataConnection);
-        Object config = null;
+        Object hConnection = getRealConnection(metadataConnection);
         MetadataTable metadataTable = null;
         TableNode columnNode = null;
         ClassLoader oldClassLoaderLoader = Thread.currentThread().getContextClassLoader();
         try {
             Thread.currentThread().setContextClassLoader(classLoader);
-            if (hAdmin != null) {
-                config = ReflectionUtils.invokeMethod(hAdmin, "getConfiguration", new Object[0]); //$NON-NLS-1$
-            }
             if (currentNode instanceof TableNode) {
                 columnNode = (TableNode) currentNode;
             }
@@ -586,79 +823,65 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
                 }
             }
             if (columnNode != null && columnNode.getType() == TableNode.COLUMN) {
-                Object scan = Class.forName("org.apache.hadoop.hbase.client.Scan", true, classLoader).newInstance(); //$NON-NLS-1$
-                Object table = ReflectionUtils.newInstance("org.apache.hadoop.hbase.client.HTable", classLoader, new Object[] { //$NON-NLS-1$
-                        config, tableName });
-                ReflectionUtils.invokeMethod(scan, "addFamily", new Object[] { columnFamilyName.getBytes() }); //$NON-NLS-1$
+                Object scan = createScan();
+                Object table = getTable(hConnection, tableName, classLoader);
+                addFamily(scan, columnFamilyName.getBytes());
                 // Limit
                 int count = 0;
                 int limit = -1;
                 if (GlobalServiceRegister.getDefault().isServiceRegistered(IDesignerCoreService.class)) {
-                    IDesignerCoreService designerService = (IDesignerCoreService) GlobalServiceRegister.getDefault().getService(
-                            IDesignerCoreService.class);
-                    limit = designerService.getHBaseOrMaprDBScanLimit();
+                    limit = GlobalServiceRegister
+                            .getDefault()
+                            .getService(IDesignerCoreService.class)
+                            .getHBaseOrMaprDBScanLimit();
                 }
-                List<String> columnNameExsit = new ArrayList<String>();
-                Object resultSetscanner = ReflectionUtils.invokeMethod(table, "getScanner", new Object[] { scan }); //$NON-NLS-1$
-                Object result = ReflectionUtils.invokeMethod(resultSetscanner, "next", new Object[0]); //$NON-NLS-1$
+                List<String> existingColumns = new ArrayList<String>();
+                Object scanner = getResultScanner(table, scan);
+                Object result = nextItem(scanner);
                 while (result != null) {
-                    List<Object> list = (List<Object>) ReflectionUtils.invokeMethod(result, "list", new Object[0]); //$NON-NLS-1$
+                    List<Object> list = listCells(result);
                     if (list != null) {
-                        for (Object kv : list) {
-                            byte[] family = (byte[]) ReflectionUtils.invokeMethod(kv, "getFamily", new Object[0]); //$NON-NLS-1$
-                            String familyName = (String) ReflectionUtils.invokeStaticMethod("org.apache.hadoop.hbase.util.Bytes", //$NON-NLS-1$
-                                    classLoader, "toStringBinary", new Object[] { family }); //$NON-NLS-1$
-                            if (familyName.equals(columnFamilyNode.getValue())) {
-                                byte[] qualifier = (byte[]) ReflectionUtils.invokeMethod(kv, "getQualifier", new Object[0]); //$NON-NLS-1$
-                                String columnName = (String) ReflectionUtils.invokeStaticMethod(
-                                        "org.apache.hadoop.hbase.util.Bytes", classLoader, "toStringBinary", //$NON-NLS-1$ //$NON-NLS-2$
-                                        new Object[] { qualifier });
-                                if (columnName != null && columnName.equals(columnNode.getValue())
-                                        && !columnNameExsit.contains(columnName)) {
-                                    TdColumn column = RelationalFactory.eINSTANCE.createTdColumn();
-                                    column.setLabel(columnName);
-                                    column.setName(columnName);
-                                    column.setTalendType("id_String"); //$NON-NLS-1$
-                                    TaggedValue tv = TaggedValueHelper.createTaggedValue(COLUMN_FAMILY, columnFamilyName);
-                                    column.getTaggedValue().add(tv);
-                                    List<MetadataColumn> columns = metadataTable.getColumns();
-                                    columns.add(column);
-                                    columnNameExsit.add(columnName);
-                                    List<Catalog> catalogs = ConnectionHelper.getCatalogs(dbconn);
-                                    Catalog catalogToWrite = null;
-                                    for (Catalog c : catalogs) {
-                                        if (c.getName() != null && c.getName().equals(getDefaultCatalogName())) {
-                                            catalogToWrite = c;
-                                            break;
+                        for (Object cell : list) {
+                            String familyName = getFamily(cell);
+                            String columnName = getQualifier(cell);
+                            if (familyName.equals(columnFamilyNode.getValue())
+                                    && columnName != null
+                                    && columnName.equals(columnNode.getValue())
+                                    && !existingColumns.contains(columnName)) {
+                                TdColumn column = createDatabaseColumn(columnName, columnFamilyName);
+                                List<MetadataColumn> columns = metadataTable.getColumns();
+                                columns.add(column);
+                                existingColumns.add(columnName);
+                                List<Catalog> catalogs = ConnectionHelper.getCatalogs(dbconn);
+                                Catalog catalogToWrite = null;
+                                for (Catalog c : catalogs) {
+                                    if (c.getName() != null && c.getName().equals(getDefaultCatalogName())) {
+                                        catalogToWrite = c;
+                                        break;
+                                    }
+                                }
+                                if (catalogToWrite != null) {
+                                    boolean findTable = false;
+                                    List<TdTable> existingTables = CatalogHelper.getTables(catalogToWrite);
+                                    for (TdTable tb : existingTables) {
+                                        if (tableName != null && tb.getLabel().equals(tableName)) {
+                                            List<MetadataColumn> columnsExsit = tb.getColumns();
+                                            /*
+                                             * can add into column list directly because it will delete the same
+                                             * name column when deselect
+                                             */
+                                            columnsExsit.add(column);
+                                            findTable = true;
                                         }
                                     }
-                                    if (catalogToWrite != null) {
-                                        boolean findTable = false;
-                                        List exsitTables = CatalogHelper.getTables(catalogToWrite);
-
-                                        for (Object obj : exsitTables) {
-                                            if (obj instanceof TdTable) {
-                                                TdTable tb = (TdTable) obj;
-                                                if (tableName != null && tb.getLabel().equals(tableName)) {
-                                                    List<MetadataColumn> columnsExsit = tb.getColumns();
-                                                    /*
-                                                     * can add into column list directly because it will delete the same
-                                                     * name column when deselect
-                                                     */
-                                                    columnsExsit.add(column);
-                                                    findTable = true;
-                                                }
-                                            }
+                                    if (!findTable) {
+                                        if (metadataTable.getId() == null) {
+                                            IProxyRepositoryFactory factory = ProxyRepositoryFactory.getInstance();
+                                            metadataTable.setId(factory.getNextId());
                                         }
-                                        if (!findTable) {
-                                            if (metadataTable.getId() == null) {
-                                                IProxyRepositoryFactory factory = ProxyRepositoryFactory.getInstance();
-                                                metadataTable.setId(factory.getNextId());
-                                            }
-                                            PackageHelper.addMetadataTable(metadataTable, catalogToWrite);
-                                        }
-
+                                        PackageHelper.addMetadataTable(metadataTable, catalogToWrite);
                                     }
+
                                 }
                             }
                         }
@@ -667,7 +890,7 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
                     if (count == limit) {
                         break;
                     }
-                    result = ReflectionUtils.invokeMethod(resultSetscanner, "next", new Object[0]); //$NON-NLS-1$
+                    result = nextItem(scanner);
                 }
             }
         } catch (Exception e) {
@@ -678,8 +901,8 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
     }
 
     @Override
-    public Map getConnectionMap() {
-        return adminMap;
+    public Map<IMetadataConnection, Object> getConnectionMap() {
+        return connectionMap;
     }
 
     @Override
@@ -699,7 +922,6 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
         TableNode columnNode = null;
         if (node == null) {
             return;
-
         }
         if (node instanceof TableNode) {
             columnNode = (TableNode) node;
@@ -748,7 +970,6 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
         TableNode columnNode = null;
         if (node == null) {
             return false;
-
         }
         if (node instanceof TableNode) {
             columnNode = (TableNode) node;
@@ -830,56 +1051,46 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
         ClassLoader oldClassLoaderLoader = Thread.currentThread().getContextClassLoader();
         try {
             Thread.currentThread().setContextClassLoader(classLoader);
-            Object hAdmin = getAdmin(metadataConnection);
-            Object config = ReflectionUtils.invokeMethod(hAdmin, "getConfiguration", new Object[0]); //$NON-NLS-1$
-            Object scan = Class.forName("org.apache.hadoop.hbase.client.Scan", true, classLoader).newInstance(); //$NON-NLS-1$
-            Object table = ReflectionUtils.newInstance("org.apache.hadoop.hbase.client.HTable", classLoader, new Object[] { //$NON-NLS-1$
-                    config, tableName });
+            Object hConnection = getRealConnection(metadataConnection);
+            Object config = getConfiguration(hConnection);
+            Object scan = createScan();
+            Object table = getTable(hConnection, tableName, classLoader);
             String schema = metadataConnection.getSchema();
             if (StringUtils.isNotEmpty(schema)) {
-                ReflectionUtils.invokeMethod(scan, "addFamily", new Object[] { schema.getBytes() }); //$NON-NLS-1$
+                addFamily(scan, schema.getBytes());
             }
             // Limit
             int count = 0;
             int limit = -1;
             if (GlobalServiceRegister.getDefault().isServiceRegistered(IDesignerCoreService.class)) {
-                IDesignerCoreService designerService = (IDesignerCoreService) GlobalServiceRegister.getDefault().getService(
-                        IDesignerCoreService.class);
+                IDesignerCoreService designerService = (IDesignerCoreService) GlobalServiceRegister
+                        .getDefault()
+                        .getService(IDesignerCoreService.class);
                 limit = designerService.getHBaseOrMaprDBScanLimit();
             }
-            List<String> columnExsit = new ArrayList<String>();
-            Object resultSetscanner = ReflectionUtils.invokeMethod(table, "getScanner", new Object[] { scan }); //$NON-NLS-1$
-            Object result = ReflectionUtils.invokeMethod(resultSetscanner, "next", new Object[0]); //$NON-NLS-1$
+            List<String> existingColumns = new ArrayList<String>();
+            Object scanner = getResultScanner(table, scan);
+            Object result = nextItem(scanner);
             while (result != null) {
-                List<Object> list = (List<Object>) ReflectionUtils.invokeMethod(result, "list", new Object[0]); //$NON-NLS-1$
+                List<Object> list = listCells(result);
                 if (list != null) {
                     /**
                      * in hbase data will stored as keyValue,but the kv.getKeyString() which equal
                      * "kv.getFamily()+kv.getQualifier()+kv.getRow()" can specific a metadata,so need to trim the
                      * duplicated kv.getQualifier()+kv.getRow()
                      **/
-                    for (Object kv : list) {
-                        byte[] qualifier = (byte[]) ReflectionUtils.invokeMethod(kv, "getQualifier", new Object[0]); //$NON-NLS-1$
-                        String columnName = (String) ReflectionUtils.invokeStaticMethod("org.apache.hadoop.hbase.util.Bytes", //$NON-NLS-1$
-                                classLoader, "toStringBinary", new Object[] { qualifier }); //$NON-NLS-1$
+                    for (Object cell : list) {
+                        String columnName = getQualifier(cell);
                         if (StringUtils.isEmpty(columnName)) {
                             continue;
                         }
-                        byte[] family = (byte[]) ReflectionUtils.invokeMethod(kv, "getFamily", new Object[0]); //$NON-NLS-1$
-                        String familyName = (String) ReflectionUtils.invokeStaticMethod("org.apache.hadoop.hbase.util.Bytes", //$NON-NLS-1$
-                                classLoader, "toStringBinary", new Object[] { family }); //$NON-NLS-1$
+                        String familyName = getFamily(cell);
                         if (columnName != null) {
                             String exsistColumn = columnName + "_" + familyName; //$NON-NLS-1$
-                            if (!columnExsit.contains(exsistColumn)) {
-                                TdColumn column = RelationalFactory.eINSTANCE.createTdColumn();
-                                column.setLabel(columnName);
-                                column.setName(columnName);
-                                // hbase no type ,just byte[],need to cast the type ourself
-                                column.setTalendType("id_String"); //$NON-NLS-1$
-                                TaggedValue tv = TaggedValueHelper.createTaggedValue(COLUMN_FAMILY, familyName);
-                                column.getTaggedValue().add(tv);
+                            if (!existingColumns.contains(exsistColumn)) {
+                                TdColumn column = createDatabaseColumn(columnName, familyName);
                                 toReturn.add(column);
-                                columnExsit.add(exsistColumn);
+                                existingColumns.add(exsistColumn);
                             }
                         }
                     }
@@ -888,7 +1099,7 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
                 if (count == limit) {
                     break;
                 }
-                result = ReflectionUtils.invokeMethod(resultSetscanner, "next", new Object[0]); //$NON-NLS-1$
+                result = nextItem(scanner);
             }
         } catch (Exception e) {
             ExceptionHandler.process(e);
@@ -901,35 +1112,42 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
         return toReturn;
     }
 
-    private Object getAdmin(IMetadataConnection metadataConnection) {
-        Object hAdmin = adminMap.get(metadataConnection);
-        if (hAdmin == null) {
+
+    /**
+     * get or create the HBase Connection from the MetadataConnection.
+     *
+     * @param metadataConnection the connection to get or create
+     * @return the real connection to HBase (HBaseConnection)
+     */
+    protected Object getRealConnection(IMetadataConnection metadataConnection) {
+        Object hConnection = connectionMap.get(metadataConnection);
+        if (hConnection == null) {
             ClassLoader oldClassLoaderLoader = Thread.currentThread().getContextClassLoader();
             try {
                 Thread.currentThread().setContextClassLoader(classLoader);
                 Object config = getConfiguration(metadataConnection);
-                hAdmin = ReflectionUtils.newInstance("org.apache.hadoop.hbase.client.HBaseAdmin", classLoader, //$NON-NLS-1$
-                        new Object[] { config });
-                adminMap.put(metadataConnection, hAdmin);
+                hConnection = createConnection(config);
+                connectionMap.put(metadataConnection, hConnection);
             } catch (Exception e) {
                 ExceptionHandler.process(e);
             } finally {
                 Thread.currentThread().setContextClassLoader(oldClassLoaderLoader);
             }
         }
-        return hAdmin;
+        return hConnection;
     }
 
     @Override
     public List<String> returnTablesFormConnection(IMetadataConnection metadataConnection) {
-        List<String> toReturn = new ArrayList<String>();
+        List<String> result = new ArrayList<String>();
         ClassLoader oldClassLoaderLoader = Thread.currentThread().getContextClassLoader();
         try {
             Thread.currentThread().setContextClassLoader(classLoader);
-            Object hAdmin = getAdmin(metadataConnection);
-            Object[] allTables = (Object[]) ReflectionUtils.invokeMethod(hAdmin, "listTables", new Object[0]); //$NON-NLS-1$
-            for (Object td : allTables) {
-                toReturn.add((String) ReflectionUtils.invokeMethod(td, "getNameAsString", new Object[0])); //$NON-NLS-1$
+            Object hConnection = getRealConnection(metadataConnection);
+            Object hAdmin = getAdmin(hConnection);
+            List<Object> allTables = getTableDescriptors(hAdmin);
+            for (Object tableDescriptor : allTables) {
+                result.add(getTableName(tableDescriptor)); //$NON-NLS-1$
             }
         } catch (Exception e) {
             ExceptionHandler.process(e);
@@ -937,7 +1155,7 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
             Thread.currentThread().setContextClassLoader(oldClassLoaderLoader);
         }
 
-        return toReturn;
+        return result;
     }
 
     @Override
