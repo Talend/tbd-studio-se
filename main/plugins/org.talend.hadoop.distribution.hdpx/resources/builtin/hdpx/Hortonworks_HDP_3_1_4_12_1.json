@@ -8889,7 +8889,7 @@
             },
             {
               "childNodes": [],
-              "id": "DYNAMIC_HDP_3_1_4_12_1_jackson_dataformat_cbor_2_6_7_jar",
+              "id": "DYNAMIC_HDP_3_1_4_12_1_jackson_dataformat_cbor_2_10_1_jar",
               "tagName": "library"
             },
             {
@@ -9565,7 +9565,7 @@
             },
             {
               "childNodes": [],
-              "id": "DYNAMIC_HDP_3_1_4_12_1_jackson_dataformat_cbor_2_6_7_jar",
+              "id": "DYNAMIC_HDP_3_1_4_12_1_jackson_dataformat_cbor_2_10_1_jar",
               "tagName": "library"
             },
             {
@@ -14432,9 +14432,9 @@
           "childNodes": [],
           "context": "plugin:org.talend.hadoop.distribution.hdpx",
           "excludeDependencies": "true",
-          "id": "DYNAMIC_HDP_3_1_4_12_1_jackson_dataformat_cbor_2_6_7_jar",
-          "mvn_uri": "mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-cbor/2.6.7/jar",
-          "name": "jackson-dataformat-cbor-2.6.7.jar",
+          "id": "DYNAMIC_HDP_3_1_4_12_1_jackson_dataformat_cbor_2_10_1_jar",
+          "mvn_uri": "mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-cbor/2.10.1/jar",
+          "name": "jackson-dataformat-cbor-2.10.1.jar",
           "tagName": "libraryNeeded"
         },
         {
