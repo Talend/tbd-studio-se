@@ -34,13 +34,11 @@ import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.MapRDBComponent;
 import org.talend.hadoop.distribution.component.MapROJAIComponent;
 import org.talend.hadoop.distribution.component.MapRStreamsComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.MapRStreamsConstant;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.mapr.IMapRDistribution;
@@ -57,9 +55,6 @@ import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610MapRStreamsCrea
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610MapRStreamsModuleGroup;
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610MapReduceModuleGroup;
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610OjaiModuleGroup;
-import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610PigModuleGroup;
-import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610PigOutputModuleGroup;
-import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610SparkBatchAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610SparkBatchParquetNodeModuleGroup;
@@ -79,7 +74,7 @@ import org.talend.hadoop.distribution.mapr610.modulegroup.MapR610SqoopModuleGrou
 
 public class MapR610Distribution extends AbstractMapRDistribution implements HDFSComponent, MapROJAIComponent,
         SparkBatchComponent, SparkStreamingComponent, HiveComponent, HiveOnSparkComponent, MapRStreamsComponent,
-        MapRDBComponent, IMapRDistribution, HCatalogComponent, MRComponent, PigComponent, SqoopComponent,
+        MapRDBComponent, IMapRDistribution, HCatalogComponent, MRComponent, SqoopComponent,
         ImpalaComponent {
 
     public final static String VERSION = "MAPR610"; //$NON-NLS-1$
@@ -107,9 +102,7 @@ public class MapR610Distribution extends AbstractMapRDistribution implements HDF
         moduleGroups.put(ComponentType.MAPREDUCE, MapR610MapReduceModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HBASE, MapR610HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVE, MapR610HiveModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIG, MapR610PigModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIGOUTPUT, MapR610PigOutputModuleGroup.getModuleGroups());
-
+       
         moduleGroups.put(ComponentType.HCATALOG, MapR610HCatalogModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SQOOP, MapR610SqoopModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.IMPALA, MapR610ImpalaModuleGroup.getModuleGroups());
@@ -126,8 +119,6 @@ public class MapR610Distribution extends AbstractMapRDistribution implements HDF
                 MapRStreamsConstant.CREATE_STREAM_COMPONENT), MapR610MapRStreamsCreateStreamModuleGroup
                 .getModuleGroups());
 
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
-                MapR610PigOutputNodeModuleGroup.getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
                 MapR610MRS3NodeModuleGroup.getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),
@@ -430,21 +421,6 @@ public class MapR610Distribution extends AbstractMapRDistribution implements HDF
 
     @Override
     public boolean doJavaAPISupportStorePasswordInFile() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
         return false;
     }
 

@@ -159,13 +159,6 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
-            id="hive-hcatalog-pig-adapter-HDP_2_5"
-            name="hive-hcatalog-pig-adapter-1.2.1000.2.5.0.0-1245.jar" 
-            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-pig-adapter-1.2.1000.2.5.0.0-1245/6.3.0">
-        </libraryNeeded>
-        
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdp250"
             id="hive-hcatalog-server-extensions-HDP_2_5"
             name="hive-hcatalog-server-extensions-1.2.1000.2.5.0.0-1245.jar" 
             mvn_uri="mvn:org.talend.libraries/hive-hcatalog-server-extensions-1.2.1000.2.5.0.0-1245/6.3.0">
@@ -199,23 +192,6 @@
             mvn_uri="mvn:org.talend.libraries/hive-service-1.2.1000.2.5.0.0-1245/6.3.0">
         </libraryNeeded>
         
-        <!-- Pig libraries -->
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdp250"
-            id="pig-HDP_2_5"
-            name="pig-0.16.0.2.5.0.0-1245-core-h2.jar" 
-            mvn_uri="mvn:org.talend.libraries/pig-0.16.0.2.5.0.0-1245-core-h2/6.3.0">
-        </libraryNeeded>
-        
-        <!-- no need define this jar here, as it has been defined in hdp 2.4.0 -->
-        <!--libraryNeeded
-            context="plugin:org.talend.libraries.pig"
-            id="parquet-pig-bundle-1.3.2.jar"
-            name="parquet-pig-bundle-1.3.2.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-pig-bundle-1.3.2/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.hadoop/lib/parquet-pig-bundle-1.3.2.jar">
-        </libraryNeeded-->       
-                
         <!-- Sqoop libraries -->        
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
@@ -400,13 +376,6 @@
             id="libthrift-0.9.3"
             name="libthrift-0.9.3.jar"
             mvn_uri="mvn:org.apache.thrift/libthrift/0.9.3">
-        </libraryNeeded>
-        
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdp250"
-            id="piggybank-hdp2.5"
-            name="piggybank-hdp2.5.jar"
-            mvn_uri="mvn:org.talend.libraries/piggybank-hdp2.5/6.3.0">
         </libraryNeeded>
         
         <libraryNeeded
@@ -703,90 +672,6 @@
             <library id="netty-all-4.0.23.Final.jar"/>
         </libraryNeededGroup>
         
-        <!-- Pig group -->
-        <libraryNeededGroup
-                description="Pig libraries for HDP 2.5"
-                id="PIG-LIB-HDP_2_5"
-                name="PIG-LIB-HDP_2_5">
-            <group id="MAPREDUCE-LIB-HDP_2_5"/>
-            <library id="antlr-runtime-3.4.jar"/>
-            <library id="automaton-1.11-8.jar"/>
-            <library id="jline-1.0.jar"/>
-            <library id="joda-time-2.5.jar"/>
-            <library id="pig-HDP_2_5"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig HCatalog group -->
-        <libraryNeededGroup
-                description="Pig HCatalog libraries for HDP 2.5"
-                id="PIG-HCATALOG-LIB-HDP_2_5"
-                name="PIG-HCATALOG-LIB-HDP_2_5">
-            <library id="hive-exec-HDP_2_5"/>
-            <library id="hive-hcatalog-core-HDP_2_5"/>
-            <library id="hive-hcatalog-pig-adapter-HDP_2_5"/>
-            <library id="hive-hcatalog-server-extensions-HDP_2_5"/>
-            <library id="hive-metastore-HDP_2_5"/>
-            <library id="jdo-api-3.0.1.jar"/>
-            <library id="libfb303-0.9.3.jar"/>
-            <library id="libthrift-0.9.3.jar"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig HBase group -->
-        <libraryNeededGroup
-                description="Pig HBase libraries for HDP 2.5"
-                id="PIG-HBASE-LIB-HDP_2_5"
-                name="PIG-HBASE-LIB-HDP_2_5">
-            <library id="guava-12.0.1.jar"/>
-            <library id="hbase-client-HDP_2_5"/>
-            <library id="hbase-common-HDP_2_5"/>
-            <library id="hbase-protocol-HDP_2_5"/>
-            <library id="hbase-server-HDP_2_5"/>
-            <library id="htrace-core-3.1.0-incubating.jar"/>
-            <library id="netty-all-4.0.23.Final.jar"/>
-            <library id="zookeeper-HDP_2_5"/>
-        </libraryNeededGroup>
-
-        <!-- Pig parquet group (snappy-java-1.0.5.jar is imported by tPigLoad)-->
-        <libraryNeededGroup
-                description="Pig Parquet libraries for HDP 2.5"
-                id="PIG-PARQUET-LIB-HDP_2_5"
-                name="PIG-PARQUET-LIB-HDP_2_5">
-            <library id="parquet-pig-bundle-1.3.2.jar"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig avro group -->
-        <libraryNeededGroup
-                description="Pig Avro libraries for HDP 2.5"
-                id="PIG-AVRO-LIB-HDP_2_5"
-                name="PIG-AVRO-LIB-HDP_2_5">
-            <library id="avro-1.7.5.jar"/>
-            <library id="commons-io-2.4.jar"/>
-            <library id="piggybank-hdp2.5.jar"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig RCFile group -->
-        <libraryNeededGroup
-                description="Pig RCFile libraries for HDP 2.5"
-                id="PIG-RCFILE-LIB-HDP_2_5"
-                name="PIG-RCFILE-LIB-HDP_2_5">
-            <library id="hive-common-HDP_2_5"/>
-            <library id="hive-exec-HDP_2_5"/>
-            <library id="hive-serde-HDP_2_5"/>
-            <library id="elephant-bird-core-4.9.jar"/>
-            <library id="elephant-bird-hadoop-compat-4.9.jar"/>
-            <library id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig SequenceFile group -->
-        <libraryNeededGroup
-                description="Pig SequenceFile libraries for HDP 2.5"
-                id="PIG-SEQUENCEFILE-LIB-HDP_2_5"
-                name="PIG-SEQUENCEFILE-LIB-HDP_2_5">
-            <library id="elephant-bird-core-4.9.jar"/>
-            <library id="elephant-bird-hadoop-compat-4.9.jar"/>
-            <library id="elephant-bird-pig-4.9.jar"/>
-            <library id="pigutil.jar"/>
-        </libraryNeededGroup>
         
         <!-- Sqoop group -->
         <libraryNeededGroup
@@ -1019,18 +904,6 @@
              <library id="httpclient-4.2.5.jar" />
              <library id="httpcore-4.2.5.jar" />
         </libraryNeededGroup>
-        
-        <!-- Pig S3 group -->
-        <libraryNeededGroup
-                description="Pig S3 libraries for HDP 2.5"
-                id="PIG-S3-LIB-HDP_2_5"
-                name="PIG-S3-LIB-HDP_2_5">
-             <library id="hadoop-aws-HDP_2_5"/>
-             <library id="aws-java-sdk-1.10.52.jar"/>
-             <library id="jets3t-0.9.0" />
-             <library id="httpclient-4.3.3.jar" />
-             <library id="httpcore-4.3.3.jar" />
-        </libraryNeededGroup>        
         
         <!-- Spark Parquet group MRREQUIRED -->
         <libraryNeededGroup

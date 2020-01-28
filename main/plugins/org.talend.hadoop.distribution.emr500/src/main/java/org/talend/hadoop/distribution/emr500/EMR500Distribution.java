@@ -31,14 +31,12 @@ import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.emr.IAmazonEMRDistribution;
@@ -48,14 +46,11 @@ import org.talend.hadoop.distribution.emr500.modulegroup.EMR500HDFSModuleGroup;
 import org.talend.hadoop.distribution.emr500.modulegroup.EMR500HiveModuleGroup;
 import org.talend.hadoop.distribution.emr500.modulegroup.EMR500HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.emr500.modulegroup.EMR500MapReduceModuleGroup;
-import org.talend.hadoop.distribution.emr500.modulegroup.EMR500PigModuleGroup;
-import org.talend.hadoop.distribution.emr500.modulegroup.EMR500PigOutputModuleGroup;
 import org.talend.hadoop.distribution.emr500.modulegroup.EMR500SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.emr500.modulegroup.EMR500SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.emr500.modulegroup.EMR500SqoopModuleGroup;
 import org.talend.hadoop.distribution.emr500.modulegroup.EMR500WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.emr500.modulegroup.node.mr.EMR500MRS3NodeModuleGroup;
-import org.talend.hadoop.distribution.emr500.modulegroup.node.pigoutput.EMR500PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.emr500.modulegroup.node.sparkbatch.EMR500GraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.emr500.modulegroup.node.sparkbatch.EMR500SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.emr500.modulegroup.node.sparkbatch.EMR500SparkBatchS3NodeModuleGroup;
@@ -69,15 +64,13 @@ import org.talend.hadoop.distribution.emr500.modulegroup.node.sparkstreaming.EMR
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
-public class EMR500Distribution extends AbstractDistribution implements HBaseComponent, HDFSComponent, MRComponent, PigComponent,
+public class EMR500Distribution extends AbstractDistribution implements HBaseComponent, HDFSComponent, MRComponent,
         HCatalogComponent, HiveComponent, SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, SqoopComponent,
         IAmazonEMRDistribution {
 
     public static final String VERSION = "EMR_5_0_0"; //$NON-NLS-1$
 
     public static final String VERSION_DISPLAY = "EMR 5.0.0 (Apache 2.7.2)"; //$NON-NLS-1$
-
-    public static final String PIG_EMR500_DISPLAY = "EMR 5.0.0 (Pig 0.16.0)";//$NON-NLS-1$
 
     public static final String SQOOP_EMR500_DISPLAY = "EMR 5.0.0 (Sqoop 1.4.6)"; //$NON-NLS-1$
 
@@ -108,7 +101,6 @@ public class EMR500Distribution extends AbstractDistribution implements HBaseCom
 
     protected Map<ComponentType, String> buildCustomVersionDisplayNames() {
         Map<ComponentType, String> result = new HashMap<>();
-        result.put(ComponentType.PIG, PIG_EMR500_DISPLAY);
         result.put(ComponentType.HIVE, HIVE_EMR500_DISPLAY);
         result.put(ComponentType.SQOOP, SQOOP_EMR500_DISPLAY);
         return result;
@@ -121,8 +113,6 @@ public class EMR500Distribution extends AbstractDistribution implements HBaseCom
         result.put(ComponentType.HIVE, EMR500HiveModuleGroup.getModuleGroups());
         result.put(ComponentType.HIVEONSPARK, EMR500HiveOnSparkModuleGroup.getModuleGroups());
         result.put(ComponentType.MAPREDUCE, EMR500MapReduceModuleGroup.getModuleGroups());
-        result.put(ComponentType.PIG, EMR500PigModuleGroup.getModuleGroups());
-        result.put(ComponentType.PIGOUTPUT, EMR500PigOutputModuleGroup.getModuleGroups());
         result.put(ComponentType.SPARKBATCH, EMR500SparkBatchModuleGroup.getModuleGroups());
         result.put(ComponentType.SPARKSTREAMING, EMR500SparkStreamingModuleGroup.getModuleGroups());
         result.put(ComponentType.SQOOP, EMR500SqoopModuleGroup.getModuleGroups());
@@ -145,10 +135,7 @@ public class EMR500Distribution extends AbstractDistribution implements HBaseCom
                 EMR500MRS3NodeModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),
                 EMR500MRS3NodeModuleGroup.getModuleGroups(distribution, version));
-        // Pig nodes
-        result.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
-                EMR500PigOutputNodeModuleGroup.getModuleGroups(distribution, version));
-
+        
         // Spark Batch Parquet nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
                 EMR500SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
@@ -267,26 +254,13 @@ public class EMR500Distribution extends AbstractDistribution implements HBaseCom
         return SparkClassPathUtils.generateSparkJarsPaths(commandLineJarsPaths, SPARK_MODULE_GROUP_NAME);
     }
 
-    @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        return false;
-    }
-
+    
     @Override
     public boolean doSupportNewHBaseAPI() {
         return true;
     }
 
-    @Override
-    public boolean doSupportHBase() {
-        return true;
-    }
-
+    
     @Override
     public boolean doSupportHBaseForHive() {
         return false;

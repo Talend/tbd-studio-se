@@ -19,7 +19,6 @@ import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
@@ -28,7 +27,7 @@ import org.talend.hadoop.distribution.dynamic.template.hdp.AbstractDynamicHDPDis
 
 @SuppressWarnings("nls")
 public class HDP2xxDistributionTemplate extends AbstractDynamicHDPDistributionTemplate
-        implements HDFSComponent, MRComponent, HBaseComponent, PigComponent, HiveComponent, HCatalogComponent,
+        implements HDFSComponent, MRComponent, HBaseComponent, HiveComponent, HCatalogComponent,
         SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, SqoopComponent, IHDP2xxDistributionTemplate {
 
     public final static String TEMPLATE_ID = "HDP2xxDistributionTemplate";
@@ -67,21 +66,6 @@ public class HDP2xxDistributionTemplate extends AbstractDynamicHDPDistributionTe
     }
 
     @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return true;
-    }
-
-    @Override
     public boolean doSupportImpersonation() {
         return true;
     }
@@ -108,11 +92,6 @@ public class HDP2xxDistributionTemplate extends AbstractDynamicHDPDistributionTe
 
     @Override
     public boolean doSupportTezForHive() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportTezForPig() {
         return true;
     }
 

@@ -31,14 +31,12 @@ import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.emr.IAmazonEMRDistribution;
@@ -58,28 +56,23 @@ import org.talend.hadoop.distribution.emr580.modulegroup.EMR580HDFSModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.EMR580HiveModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.EMR580HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.EMR580MapReduceModuleGroup;
-import org.talend.hadoop.distribution.emr580.modulegroup.EMR580PigModuleGroup;
-import org.talend.hadoop.distribution.emr580.modulegroup.EMR580PigOutputModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.EMR580SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.EMR580SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.EMR580SqoopModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.EMR580WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.emr580.modulegroup.node.mr.EMR580MRS3NodeModuleGroup;
-import org.talend.hadoop.distribution.emr580.modulegroup.node.pigoutput.EMR580PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
 @SuppressWarnings("nls")
 public class EMR580Distribution extends AbstractDistribution implements
-		HBaseComponent, HDFSComponent, MRComponent, PigComponent,
+		HBaseComponent, HDFSComponent, MRComponent, 
 		HCatalogComponent, HiveComponent, HiveOnSparkComponent, SqoopComponent, SparkBatchComponent, SparkStreamingComponent,
 		IAmazonEMRDistribution {
 
 	public static final String VERSION = "EMR_5_8_0"; //$NON-NLS-1$
 
 	public static final String VERSION_DISPLAY = "EMR 5.8.0 (Apache 2.7.3)"; //$NON-NLS-1$
-
-	public static final String PIG_EMR580_DISPLAY = "EMR 5.8.0 (Pig 0.16.0)";//$NON-NLS-1$
 
 	public static final String SQOOP_EMR580_DISPLAY = "EMR 5.8.0 (Sqoop 1.4.6)"; //$NON-NLS-1$
 
@@ -111,7 +104,6 @@ public class EMR580Distribution extends AbstractDistribution implements
 
 	protected Map<ComponentType, String> buildCustomVersionDisplayNames() {
 		Map<ComponentType, String> result = new HashMap<>();
-		result.put(ComponentType.PIG, PIG_EMR580_DISPLAY);
 		result.put(ComponentType.HIVE, HIVE_EMR580_DISPLAY);
 		result.put(ComponentType.SQOOP, SQOOP_EMR580_DISPLAY);
 		return result;
@@ -126,9 +118,6 @@ public class EMR580Distribution extends AbstractDistribution implements
 		result.put(ComponentType.HIVEONSPARK, EMR580HiveOnSparkModuleGroup.getModuleGroups());
 		result.put(ComponentType.MAPREDUCE,
 				EMR580MapReduceModuleGroup.getModuleGroups());
-		result.put(ComponentType.PIG, EMR580PigModuleGroup.getModuleGroups());
-		result.put(ComponentType.PIGOUTPUT,
-				EMR580PigOutputModuleGroup.getModuleGroups());
 		result.put(ComponentType.SQOOP,
 				EMR580SqoopModuleGroup.getModuleGroups());
 		result.put(ComponentType.HBASE,
@@ -156,12 +145,7 @@ public class EMR580Distribution extends AbstractDistribution implements
 		result.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE,
 				MRConstant.S3_OUTPUT_COMPONENT), EMR580MRS3NodeModuleGroup
 				.getModuleGroups(distribution, version));
-		// Pig nodes
-		result.put(new NodeComponentTypeBean(ComponentType.PIG,
-				PigOutputConstant.PIGSTORE_COMPONENT),
-				EMR580PigOutputNodeModuleGroup.getModuleGroups(distribution,
-						version));
-
+		
 		// Spark Batch Parquet nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
                 EMR580SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
@@ -310,23 +294,9 @@ public class EMR580Distribution extends AbstractDistribution implements
         return SparkClassPathUtils.generateSparkJarsPaths(commandLineJarsPaths, SPARK_MODULE_GROUP_NAME);
     }
 
-	@Override
-	public boolean doSupportHCatalog() {
-		return true;
-	}
-
-	@Override
-	public boolean pigVersionPriorTo_0_12() {
-		return false;
-	}
-
+	
 	@Override
 	public boolean doSupportNewHBaseAPI() {
-		return true;
-	}
-
-	@Override
-	public boolean doSupportHBase() {
 		return true;
 	}
 

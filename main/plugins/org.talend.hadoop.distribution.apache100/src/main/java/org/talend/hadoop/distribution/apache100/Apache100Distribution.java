@@ -24,23 +24,19 @@ import org.talend.hadoop.distribution.component.HBaseComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.condition.BasicExpression;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
-import org.talend.hadoop.distribution.constants.Constant;
 import org.talend.hadoop.distribution.constants.apache.IApacheDistribution;
 
 @SuppressWarnings("nls")
 public class Apache100Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, HBaseComponent,
-        PigComponent, HiveComponent, IApacheDistribution {
+        HiveComponent, IApacheDistribution {
 
     public static final String VERSION = "APACHE_1_0_0";
 
     public static final String VERSION_DISPLAY = "Apache 1.0.0 - DEPRECATED";
-
-    public static final String VERSION_PIG_DISPLAY = "Apache 1.0.0 (Pig 0.9.2) - DEPRECATED";
 
     public static final String VERSION_HIVE_DISPLAY = "Apache 1.0.0 (Hive 0.9.0) - DEPRECATED";
 
@@ -52,12 +48,6 @@ public class Apache100Distribution extends AbstractDistribution implements HDFSC
 
     static {
         moduleGroups = new HashMap<>();
-
-        ComponentCondition c1 = new SimpleComponentCondition(new BasicExpression(Constant.PIG_STORE_PARAMETER,
-                EqualityOperator.NOT_EQ, Constant.PIG_HCATSTORER_PARAMETER));
-        displayConditions.put(ComponentType.PIGOUTPUT, c1);
-
-        customVersionDisplayNames.put(ComponentType.PIGOUTPUT, VERSION_PIG_DISPLAY);
         customVersionDisplayNames.put(ComponentType.HIVE, VERSION_HIVE_DISPLAY);
     }
 
@@ -117,22 +107,7 @@ public class Apache100Distribution extends AbstractDistribution implements HDFSC
         return false;
     }
 
-    @Override
-    public boolean doSupportHCatalog() {
-        return false;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        // return false because this distribution doesn't support HCatalog.
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return true;
-    }
-
+    
     @Override
     public boolean doSupportImpersonation() {
         return false;

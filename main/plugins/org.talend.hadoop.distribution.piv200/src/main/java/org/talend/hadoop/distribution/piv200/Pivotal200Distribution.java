@@ -25,7 +25,6 @@ import org.talend.hadoop.distribution.component.HBaseComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.BasicExpression;
 import org.talend.hadoop.distribution.condition.BooleanOperator;
@@ -34,11 +33,10 @@ import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.MultiComponentCondition;
 import org.talend.hadoop.distribution.condition.NestedComponentCondition;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
-import org.talend.hadoop.distribution.constants.Constant;
 import org.talend.hadoop.distribution.constants.piv.IPivotalHDDistribution;
 
 public class Pivotal200Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, HBaseComponent,
-        SqoopComponent, PigComponent, HiveComponent, IPivotalHDDistribution {
+        SqoopComponent, HiveComponent, IPivotalHDDistribution {
 
     public static final String VERSION = "PIVOTAL_HD_2_0";
 
@@ -52,14 +50,8 @@ public class Pivotal200Distribution extends AbstractDistribution implements HDFS
 
     static {
         moduleGroups = new HashMap<>();
-
-        ComponentCondition c1 = new NestedComponentCondition(new MultiComponentCondition(new SimpleComponentCondition(
-                new BasicExpression(Constant.PIG_STORE_PARAMETER, EqualityOperator.NOT_EQ, Constant.PIG_HBASESTORAGE_PARAMETER)), //
-                BooleanOperator.AND,//
-                new SimpleComponentCondition(new BasicExpression(Constant.PIG_STORE_PARAMETER, EqualityOperator.NOT_EQ,
-                        Constant.PIG_HCATSTORER_PARAMETER))));
-        displayConditions.put(ComponentType.PIGOUTPUT, c1);
-    }
+        
+     }
 
     @Override
     public String getDistribution() {
@@ -134,22 +126,6 @@ public class Pivotal200Distribution extends AbstractDistribution implements HDFS
     @Override
     public boolean doJavaAPISqoopImportAllTablesSupportExcludeTable() {
         return true;
-    }
-
-    @Override
-    public boolean doSupportHCatalog() {
-        return false;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        // return false because this distribution doesn't support HCatalog.
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return false;
     }
 
     @Override

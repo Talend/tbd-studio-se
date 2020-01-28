@@ -17,7 +17,18 @@ import org.junit.Test;
 import org.talend.core.runtime.dynamic.DynamicFactory;
 import org.talend.core.runtime.dynamic.IDynamicPlugin;
 import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
-import org.talend.hadoop.distribution.component.*;
+import org.talend.hadoop.distribution.component.HBaseComponent;
+import org.talend.hadoop.distribution.component.HCatalogComponent;
+import org.talend.hadoop.distribution.component.HDFSComponent;
+import org.talend.hadoop.distribution.component.HadoopComponent;
+import org.talend.hadoop.distribution.component.HiveComponent;
+import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
+import org.talend.hadoop.distribution.component.MRComponent;
+import org.talend.hadoop.distribution.component.MapRDBComponent;
+import org.talend.hadoop.distribution.component.SparkBatchComponent;
+import org.talend.hadoop.distribution.component.SparkComponent;
+import org.talend.hadoop.distribution.component.SparkStreamingComponent;
+import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.dynamic.pref.cdh.DynamicCDHDistributionPreferenceFactory;
 import org.talend.repository.ProjectManager;
@@ -229,47 +240,6 @@ public abstract class AbstractDynamicDistributionTemplateTest {
     }
 
     @Test
-    public void getServices_PigComponent() throws Exception {
-        class Template1 extends BasicTemplate implements PigComponent {
-
-            public Template1(DynamicPluginAdapter pluginAdapter) throws Exception {
-                super(pluginAdapter);
-            }
-
-            @Override
-            public boolean doSupportCrossPlatformSubmission() {
-                return false;
-            }
-
-            @Override
-            public boolean doSupportImpersonation() {
-                return false;
-            }
-
-            @Override
-            public boolean doSupportHCatalog() {
-                return false;
-            }
-
-            @Override
-            public boolean doSupportHBase() {
-                return false;
-            }
-
-            @Override
-            public boolean pigVersionPriorTo_0_12() {
-                return false;
-            }
-        }
-        Template1 t = new Template1(dynamicPluginAdapter);
-        List<String> services = t.getServices();
-        assertEquals(3, services.size());
-        assertTrue(services.contains(HadoopComponent.class.getName()));
-        assertTrue(services.contains(PigComponent.class.getName()));
-        assertTrue(services.contains(MRComponent.class.getName()));
-    }
-
-    @Test
     public void getServices_SparkBatchComponent() throws Exception {
         class Template1 extends BasicTemplate implements SparkBatchComponent {
 
@@ -450,7 +420,7 @@ public abstract class AbstractDynamicDistributionTemplateTest {
     public void getServices() throws Exception {
         class Template1 extends BasicTemplate
                 implements HDFSComponent, HBaseComponent, HCatalogComponent, HiveComponent, HiveOnSparkComponent, MapRDBComponent,
-                MRComponent, PigComponent, SparkBatchComponent, SparkStreamingComponent, SqoopComponent {
+                MRComponent, SparkBatchComponent, SparkStreamingComponent, SqoopComponent {
 
             public Template1(DynamicPluginAdapter pluginAdapter) throws Exception {
                 super(pluginAdapter);
@@ -493,21 +463,6 @@ public abstract class AbstractDynamicDistributionTemplateTest {
 
             @Override
             public boolean doSupportBackpressure() {
-                return false;
-            }
-
-            @Override
-            public boolean doSupportHCatalog() {
-                return false;
-            }
-
-            @Override
-            public boolean doSupportHBase() {
-                return false;
-            }
-
-            @Override
-            public boolean pigVersionPriorTo_0_12() {
                 return false;
             }
 
@@ -587,7 +542,6 @@ public abstract class AbstractDynamicDistributionTemplateTest {
         assertTrue(services.contains(HiveOnSparkComponent.class.getName()));
         assertTrue(services.contains(MapRDBComponent.class.getName()));
         assertTrue(services.contains(MRComponent.class.getName()));
-        assertTrue(services.contains(PigComponent.class.getName()));
         assertTrue(services.contains(SparkBatchComponent.class.getName()));
         assertTrue(services.contains(SparkComponent.class.getName()));
         assertTrue(services.contains(SparkStreamingComponent.class.getName()));

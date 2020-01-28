@@ -164,12 +164,6 @@
             
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr500"
-            id="hive-hcatalog-pig-adapter-emr500-latest"
-            name="hive-hcatalog-pig-adapter-2.1.0-amzn-0.jar" 
-            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-pig-adapter-2.1.0-amzn-0/6.0.0"/>
-            
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr500"
             id="hive-hcatalog-server-extensions-emr500-latest"
             name="hive-hcatalog-server-extensions-2.1.0-amzn-0.jar" 
             mvn_uri="mvn:org.talend.libraries/hive-hcatalog-server-extensions-2.1.0-amzn-0/6.0.0"/>
@@ -180,75 +174,6 @@
             name="hive-hbase-handler-2.1.0-amzn-0.jar" 
             mvn_uri="mvn:org.talend.libraries/hive-hbase-handler-2.1.0-amzn-0/6.0.0"/>
                     
-        <!-- Pig libraries -->
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr500"
-            id="hadoop-lzo-emr500-latest"
-            name="hadoop-lzo-0.4.19.jar" 
-            mvn_uri="mvn:org.talend.libraries/hadoop-lzo-0.4.19/6.0.0"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr500"
-            id="pig-emr500-latest"
-            name="pig-0.16.0-amzn-0-core-h2.jar" 
-            mvn_uri="mvn:org.talend.libraries/pig-0.16.0-amzn-0-core-h2/6.0.0"/>
-            
-        <libraryNeeded
-            context="plugin:org.talend.libraries.hadoop"
-            id="parquet-pig-bundle-emr500-latest"
-            name="parquet-pig-bundle-1.6.0.jar" 
-            mvn_uri="mvn:org.talend.libraries/parquet-pig-bundle-1.6.0/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.hadoop/lib/parquet-pig-bundle-1.6.0.jar"/>
-        
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr500"
-            id="piggybank-emr500-latest"
-            name="piggybank-emr500.jar" 
-            mvn_uri="mvn:org.talend.libraries/piggybank-emr500/6.0.0"/>
-            
-        <libraryNeeded
-            context="plugin:org.talend.libraries.pig"
-            id="elephant-bird-core-4.9.jar"
-            name="elephant-bird-core-4.9.jar" 
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-core/4.9"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-core-4.9.jar"/>
-            
-        <libraryNeeded
-            context="plugin:org.talend.libraries.pig"
-            id="elephant-bird-hadoop-compat-4.9.jar"
-            name="elephant-bird-hadoop-compat-4.9.jar" 
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-hadoop-compat/4.9"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-hadoop-compat-4.9.jar"/>
-            
-        <libraryNeeded
-            context="plugin:org.talend.libraries.pig"
-            id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
-            name="elephant-bird-rcfile-4.9-patched-hive-1.x.jar" 
-            mvn_uri="mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-rcfile-4.9-patched-hive-1.x.jar"/>
-         
-        <libraryNeeded 
-        	context="plugin:org.talend.hadoop.distribution.emr500" 
-        	id="javax.ws.rs-api-2.0.1.jar" 
-        	name="javax.ws.rs-api-2.0.1.jar" 
-        	mvn_uri="mvn:org.talend.libraries/javax.ws.rs-api-2.0.1/6.0.0"/>
-            
-            
-        <libraryNeeded
-            context="plugin:org.talend.libraries.pig"
-            id="elephant-bird-pig-4.9.jar"
-            name="elephant-bird-pig-4.9.jar"
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-pig/4.9"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-pig-4.9.jar">
-        </libraryNeeded>
-                        
-        <libraryNeeded
-            context="plugin:org.talend.libraries.pig"
-            id="pigutil.jar"
-            name="pigutil.jar"
-            mvn_uri="mvn:org.talend.libraries/pigutil/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/pigutil.jar">
-        </libraryNeeded>
         
         <!-- S3 libraries -->
          <libraryNeeded
@@ -740,120 +665,6 @@
              <library id="avro-mapred-emr500-latest"/>
         </libraryNeededGroup>
 
-        <!-- Pig group -->
-        <libraryNeededGroup
-                description="The lastest Pig libraries for EMR 5.0.0"
-                id="PIG-LIB-EMR_5_0_0_LATEST"
-                name="PIG-LIB-EMR_5_0_0_LATEST">
-             <library id="pig-emr500-latest"/>
-             <library id="hadoop-lzo-emr500-latest"/>
-             <library id="hadoop-common-emr500-latest"/>
-             <library id="hadoop-hdfs-emr500-latest"/>
-             <library id="hadoop-auth-emr500-latest"/>
-             <library id="hadoop-mapreduce-client-common-emr500-latest"/>
-             <library id="hadoop-mapreduce-client-core-emr500-latest"/>
-             <library id="hadoop-mapreduce-client-jobclient-emr500-latest"/>
-             <library id="hadoop-yarn-api-emr500-latest"/>
-             <library id="hadoop-yarn-client-emr500-latest"/>
-             <library id="hadoop-yarn-common-emr500-latest"/>
-             <library id="avro-1.7.5.jar"/>
-             <library id="commons-configuration-1.6.jar"/>
-             <library id="commons-lang-2.6.jar"/>
-             <library id="commons-logging-1.1.3.jar"/>
-             <library id="commons-cli-1.2.jar"/>
-             <library id="commons-codec-1.4.jar"/>
-             <library id="commons-collections-3.2.2.jar"/>
-             <library id="commons-io-2.4.jar"/>
-             <library id="protobuf-java-2.5.0.jar"/>
-             <library id="slf4j-api-1.7.10.jar"/>
-             <library id="slf4j-log4j12-1.7.10.jar"/>
-             <library id="jackson-mapper-asl-1.9.14-TALEND.jar"/>
-             <library id="jackson-core-asl-1.9.14-TALEND.jar"/>
-             <library id="jackson-jaxrs-1.9.13.jar"/>
-             <library id="jackson-xc-1.9.13.jar"/>
-             <library id="jersey-client-1.9.jar"/>
-             <library id="jersey-core-1.9.jar"/>
-             <library id="log4j-1.2.17.jar"/>
-             <library id="gson-2.2.4.jar"/>
-             <library id="httpcore-4.3.2.jar"/>
-             <library id="httpclient-4.3.4.jar"/>
-             <library id="jetty-util-emr500-latest"/>
-             <library id="emr-metrics-client-emr500-latest"/>
-             <library id="htrace-core-3.1.0-incubating.jar"/>
-             <library id="guava-11.0.2.jar"/>
-             <library id="jline-1.0.jar"/>
-             <library id="antlr-runtime-3.4.jar"/>
-             <library id="joda-time-2.9.3.jar"/>
-             <library id="automaton-1.11-8.jar"/>
-             <library id="servlet-api-2.5.jar"/>
-             <library id="commons-io-2.4.jar"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig Parquet group -->
-        <libraryNeededGroup
-                description="Pig Parquet libraries for EMR 5.0.0"
-                id="PIG-PARQUET-LIB-EMR_5_0_0_LATEST"
-                name="PIG-PARQUET-LIB-EMR_5_0_0_LATEST">
-            <library id="parquet-pig-bundle-emr500-latest"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig HCatalog group -->
-        <libraryNeededGroup
-                description="Pig HCatalog libraries for EMR 5.0.0"
-                id="PIG-HCATALOG-LIB-EMR_5_0_0_LATEST"
-                name="PIG-HCATALOG-LIB-EMR_5_0_0_LATEST">
-            <library id="hive-exec-emr500-latest"/>
-            <library id="hive-hcatalog-core-emr500-latest"/>
-            <library id="hive-hcatalog-pig-adapter-emr500-latest"/>
-            <library id="hive-hcatalog-server-extensions-emr500-latest"/>
-            <library id="hive-metastore-emr500-latest"/>
-            <library id="jdo-api-3.0.1.jar"/>
-            <library id="libfb303-0.9.3.jar"/>
-            <library id="libthrift-0.9.3.jar"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig RCFile group -->
-        <libraryNeededGroup
-                description="The latest pig rc file storage libraries for EMR 5.0.0"
-                id="PIG-RCFILE-LIB-EMR_5_0_0_LATEST"
-                name="PIG-RCFILE-LIB-EMR_5_0_0_LATEST">
-            <library id="hive-common-emr500-latest"/>
-            <library id="hive-serde-emr500-latest"/>
-            <library id="hive-exec-emr500-latest"/>
-            <library id="elephant-bird-core-4.9.jar"/>
-            <library id="elephant-bird-hadoop-compat-4.9.jar"/>
-            <library id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig Avro group -->
-        <libraryNeededGroup
-                description="The latest pig avro storage libraries for EMR 5.0.0"
-                id="PIG-AVRO-LIB-EMR_5_0_0_LATEST"
-                name="PIG-AVRO-LIB-EMR_5_0_0_LATEST">
-             <library id="piggybank-emr500-latest"/>
-             <library id="commons-io-2.4.jar"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig SequenceFile group -->
-        <libraryNeededGroup
-                description="Pig SequenceFile libraries for EMR 5.0.0"
-                id="PIG-SEQUENCEFILE-LIB-EMR_5_0_0_LATEST"
-                name="PIG-SEQUENCEFILE-LIB-EMR_5_0_0_LATEST">
-            <library id="elephant-bird-core-4.9.jar"/>
-            <library id="elephant-bird-hadoop-compat-4.9.jar"/>
-            <library id="elephant-bird-pig-4.9.jar"/>
-            <library id="pigutil.jar"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig HBase group  -->
-        <libraryNeededGroup
-                description="Pig HBase libraries for EMR 5.0.0"
-                id="PIG-HBASE-LIB-EMR_5_0_0_LATEST"
-                name="PIG-HBASE-LIB-EMR_5_0_0_LATEST">
-            <library id="hbase-server-emr500-latest"/>
-            <library id="hbase-hadoop-compat-emr500-latest" />
-        </libraryNeededGroup>
-        
         <!-- HBase group  -->
         <libraryNeededGroup
                 description="HBase libraries for EMR 5.0.0"

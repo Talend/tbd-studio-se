@@ -20,7 +20,7 @@ import org.talend.hadoop.distribution.dynamic.template.hdp.AbstractDynamicHDPDis
 
 @SuppressWarnings("nls")
 public class HDP3xxDistributionTemplate extends AbstractDynamicHDPDistributionTemplate
-        implements HDFSComponent, MRComponent, HBaseComponent, PigComponent, HiveComponent, HCatalogComponent,
+        implements HDFSComponent, MRComponent, HBaseComponent, HiveComponent, HCatalogComponent,
         SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, SqoopComponent, IHDP3xxDistributionTemplate {
 
     public final static String TEMPLATE_ID = "HDP3xxDistributionTemplate";
@@ -59,21 +59,6 @@ public class HDP3xxDistributionTemplate extends AbstractDynamicHDPDistributionTe
     }
 
     @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return true;
-    }
-
-    @Override
     public boolean doSupportHBase2x() {
         return true;
     }    
@@ -105,11 +90,6 @@ public class HDP3xxDistributionTemplate extends AbstractDynamicHDPDistributionTe
 
     @Override
     public boolean doSupportTezForHive() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportTezForPig() {
         return true;
     }
 

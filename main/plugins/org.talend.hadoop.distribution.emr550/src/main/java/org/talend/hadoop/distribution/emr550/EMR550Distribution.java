@@ -31,14 +31,12 @@ import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.emr.IAmazonEMRDistribution;
@@ -48,14 +46,11 @@ import org.talend.hadoop.distribution.emr550.modulegroup.EMR550HDFSModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.EMR550HiveModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.EMR550HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.EMR550MapReduceModuleGroup;
-import org.talend.hadoop.distribution.emr550.modulegroup.EMR550PigModuleGroup;
-import org.talend.hadoop.distribution.emr550.modulegroup.EMR550PigOutputModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.EMR550SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.EMR550SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.EMR550SqoopModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.EMR550WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.node.mr.EMR550MRS3NodeModuleGroup;
-import org.talend.hadoop.distribution.emr550.modulegroup.node.pigoutput.EMR550PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.node.spark.EMR550SparkDynamoDBNodeModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.node.sparkbatch.EMR550GraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.node.sparkbatch.EMR550SparkBatchParquetNodeModuleGroup;
@@ -71,15 +66,13 @@ import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
 @SuppressWarnings("nls")
-public class EMR550Distribution extends AbstractDistribution implements HBaseComponent, HDFSComponent, MRComponent, PigComponent,
+public class EMR550Distribution extends AbstractDistribution implements HBaseComponent, HDFSComponent, MRComponent, 
         HCatalogComponent, HiveComponent, SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, SqoopComponent,
         IAmazonEMRDistribution {
 
     public static final String VERSION = "EMR_5_5_0"; //$NON-NLS-1$
 
     public static final String VERSION_DISPLAY = "EMR 5.5.0 (Apache 2.7.3)"; //$NON-NLS-1$
-
-    public static final String PIG_EMR550_DISPLAY = "EMR 5.5.0 (Pig 0.16.0)";//$NON-NLS-1$
 
     public static final String SQOOP_EMR550_DISPLAY = "EMR 5.5.0 (Sqoop 1.4.6)"; //$NON-NLS-1$
 
@@ -110,7 +103,6 @@ public class EMR550Distribution extends AbstractDistribution implements HBaseCom
 
     protected Map<ComponentType, String> buildCustomVersionDisplayNames() {
         Map<ComponentType, String> result = new HashMap<>();
-        result.put(ComponentType.PIG, PIG_EMR550_DISPLAY);
         result.put(ComponentType.HIVE, HIVE_EMR550_DISPLAY);
         result.put(ComponentType.SQOOP, SQOOP_EMR550_DISPLAY);
         return result;
@@ -123,8 +115,6 @@ public class EMR550Distribution extends AbstractDistribution implements HBaseCom
         result.put(ComponentType.HIVE, EMR550HiveModuleGroup.getModuleGroups());
         result.put(ComponentType.HIVEONSPARK, EMR550HiveOnSparkModuleGroup.getModuleGroups());
         result.put(ComponentType.MAPREDUCE, EMR550MapReduceModuleGroup.getModuleGroups());
-        result.put(ComponentType.PIG, EMR550PigModuleGroup.getModuleGroups());
-        result.put(ComponentType.PIGOUTPUT, EMR550PigOutputModuleGroup.getModuleGroups());
         result.put(ComponentType.SPARKBATCH, EMR550SparkBatchModuleGroup.getModuleGroups());
         result.put(ComponentType.SPARKSTREAMING, EMR550SparkStreamingModuleGroup.getModuleGroups());
         result.put(ComponentType.SQOOP, EMR550SqoopModuleGroup.getModuleGroups());
@@ -147,10 +137,7 @@ public class EMR550Distribution extends AbstractDistribution implements HBaseCom
                 EMR550MRS3NodeModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),
                 EMR550MRS3NodeModuleGroup.getModuleGroups(distribution, version));
-        // Pig nodes
-        result.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
-                EMR550PigOutputNodeModuleGroup.getModuleGroups(distribution, version));
-
+        
         // Spark Batch Parquet nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
                 EMR550SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
@@ -287,26 +274,6 @@ public class EMR550Distribution extends AbstractDistribution implements HBaseCom
     @Override
     public String generateSparkJarsPaths(List<String> commandLineJarsPaths) {
         return SparkClassPathUtils.generateSparkJarsPaths(commandLineJarsPaths, SPARK_MODULE_GROUP_NAME);
-    }
-
-    @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportNewHBaseAPI() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return true;
     }
 
     @Override
@@ -485,4 +452,10 @@ public class EMR550Distribution extends AbstractDistribution implements HBaseCom
     public boolean useOldAWSAPI() {
         return false;
     }
+
+	@Override
+	public boolean doSupportNewHBaseAPI() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

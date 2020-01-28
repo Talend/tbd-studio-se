@@ -2553,6 +2553,7 @@
       "modules": [
         "hadoop-client",
         "hbase-client",
+        "hbase-server",
         "avro-mapred-1.8.2",
         "avatica"
       ]
