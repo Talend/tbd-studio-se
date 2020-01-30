@@ -455,7 +455,6 @@ public class EMR550Distribution extends AbstractDistribution implements HBaseCom
 
 	@Override
 	public boolean doSupportNewHBaseAPI() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 }
