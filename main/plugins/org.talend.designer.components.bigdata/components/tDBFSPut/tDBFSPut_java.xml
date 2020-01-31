@@ -90,12 +90,10 @@
                     MVN="mvn:commons-codec/commons-codec/1.4"/>
             <IMPORT NAME="cxf-rt-frontend-jaxrs-3.3.4.jar" MODULE="cxf-rt-frontend-jaxrs-3.3.4.jar"
                     MVN="mvn:org.apache.cxf/cxf-rt-frontend-jaxrs/3.3.4"/>
-            <IMPORT NAME="cxf-api-3.3.4.jar" MODULE="cxf-api-3.3.4.jar"
-                    MVN="mvn:org.apache.cxf/cxf-api/3.3.4"/>
             <IMPORT NAME="cxf-rt-bindings-xml-3.3.4.jar" MODULE="cxf-rt-bindings-xml-3.3.4.jar"
                     MVN="mvn:org.apache.cxf/cxf-rt-bindings-xml/3.3.4"/>
-            <IMPORT NAME="cxf-rt-core-3.3.4.jar" MODULE="cxf-rt-core-3.3.4.jar"
-                    MVN="mvn:org.apache.cxf/cxf-rt-core/3.3.4"/>
+            <IMPORT NAME="cxf-core-3.3.4.jar" MODULE="cxf-core-3.3.4.jar"
+                    MVN="mvn:org.apache.cxf/cxf-core/3.3.4"/>
             <IMPORT NAME="cxf-rt-transports-http-3.3.4.jar" MODULE="cxf-rt-transports-http-3.3.4.jar"
                     MVN="mvn:org.apache.cxf/cxf-rt-transports-http/3.3.4"/>
             <IMPORT NAME="wsdl4j-1.6.3.jar" MODULE="wsdl4j-1.6.3.jar" MVN="mvn:wsdl4j/wsdl4j/1.6.3"/>

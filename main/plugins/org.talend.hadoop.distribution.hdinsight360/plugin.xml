@@ -6,21 +6,15 @@
          <!-- hd insight common libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdinsight360"
-            id="cxf-api-3.3.4.jar"
-            name="cxf-api-3.3.4.jar"
-            mvn_uri="mvn:org.apache.cxf/cxf/3.3.4">
-        </libraryNeeded>
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdinsight360"
             id="cxf-rt-bindings-xml-3.3.4.jar"
             name="cxf-rt-bindings-xml-3.3.4.jar"
             mvn_uri="mvn:org.apache.cxf/cxf-rt-bindings-xml/3.3.4">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdinsight360"
-            id="cxf-rt-core-3.3.4.jar"
-            name="cxf-rt-core-3.3.4.jar"
-            mvn_uri="mvn:org.apache.cxf/cxf-rt-core/3.3.4">
+            id="cxf-core-3.3.4.jar"
+            name="cxf-core-3.3.4.jar"
+            mvn_uri="mvn:org.apache.cxf/cxf-core/3.3.4">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdinsight360"
@@ -298,9 +292,8 @@
                 description="HD Insight common libraries"
                 id="HD_INSIGHT_36_COMMON_LIBRARIES"
                 name="HD_INSIGHT_36_COMMON_LIBRARIES">
-            <library id="cxf-api-3.3.4.jar" />
             <library id="cxf-rt-bindings-xml-3.3.4.jar" />
-            <library id="cxf-rt-core-3.3.4.jar" />
+            <library id="cxf-core-3.3.4.jar" />
             <library id="cxf-rt-frontend-jaxrs-3.3.4.jar" />
             <library id="cxf-rt-transports-http-3.3.4.jar" />
             <library id="json_simple-1.1.jar" />
