@@ -24,7 +24,6 @@ import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
@@ -57,10 +56,6 @@ public class Apache100DistributionTest {
         assertEquals(EMPTY, ((MRComponent) apache100).getYarnApplicationClasspath());
         assertFalse(((HBaseComponent) apache100).doSupportNewHBaseAPI());
         assertFalse(apache100 instanceof SqoopComponent);
-        assertFalse(((PigComponent) apache100).doSupportHCatalog());
-        assertFalse(((PigComponent) apache100).pigVersionPriorTo_0_12());
-        assertTrue(((PigComponent) apache100).doSupportHBase());
-        assertFalse(((PigComponent) apache100).doSupportTezForPig());
         assertTrue(((HiveComponent) apache100).doSupportEmbeddedMode());
         assertTrue(((HiveComponent) apache100).doSupportStandaloneMode());
         assertTrue(((HiveComponent) apache100).doSupportHive1());

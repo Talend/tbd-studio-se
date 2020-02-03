@@ -75,20 +75,6 @@
             mvn_uri="mvn:org.talend.libraries/hadoop-yarn-server-web-proxy-2.7.1.2.4.1.0-327/6.0.0">
         </libraryNeeded>
         
-        <!-- Pig libraries -->    
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdinsight340"
-            id="pig-hdinsight340"
-            name="pig-0.15.0.2.4.1.0-327-core-h2.jar"
-            mvn_uri="mvn:org.talend.libraries/pig-0.15.0.2.4.1.0-327-core-h2/6.0.0">
-        </libraryNeeded>
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdinsight340"
-            id="parquet-pig-bundle-1.6.0.jar"
-            name="parquet-pig-bundle-1.6.0.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-pig-bundle-1.6.0/6.0.0">
-        </libraryNeeded>
-        
         <!-- Hive libraries -->    
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdinsight340"
@@ -101,12 +87,6 @@
             id="hive-hcatalog-core-hdinsight340"
             name="hive-hcatalog-core-1.2.1000.2.4.1.0-327.jar"
             mvn_uri="mvn:org.talend.libraries/hive-hcatalog-core-1.2.1000.2.4.1.0-327/6.0.0">
-        </libraryNeeded>
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdinsight340"
-            id="hive-hcatalog-pig-adapter-hdinsight340"
-            name="hive-hcatalog-pig-adapter-1.2.1000.2.4.1.0-327.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-pig-adapter-1.2.1000.2.4.1.0-327/6.0.0">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdinsight340"
@@ -235,77 +215,6 @@
              <library id="parquet-hadoop-bundle-1.6.0.jar" />
              <library id="snappy-java-1.0.5.jar" />
              <library id="jodd-core-3.5.2.jar" />
-        </libraryNeededGroup>
-        
-        <!-- Pig group -->
-        <libraryNeededGroup
-                description="Pig libraries for HDInsight 3.4.0"
-                id="PIG-LIB-HD_INSIGHT_3_4_0"
-                name="PIG-LIB-HD_INSIGHT_3_4_0">
-            <library id="pig-hdinsight340"/>
-            <library id="antlr-runtime-3.4.jar"/>
-            <library id="jline-2.11.jar"/>
-            <library id="joda-time-2.5.jar"/>
-            <library id="snappy-java-1.0.5.jar"/>
-            <library id="datafu-1.2.0.jar"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig HCatalog group -->
-        <libraryNeededGroup
-                description="Pig HCatalog libraries for HDInsight 3.4.0"
-                id="PIG-HCATALOG-LIB-HD_INSIGHT_3_4_0"
-                name="PIG-HCATALOG-LIB-HD_INSIGHT_3_4_0">
-            <library id="hive-exec-hdinsight340"/>
-            <library id="hive-hcatalog-core-hdinsight340"/>
-            <library id="hive-hcatalog-pig-adapter-hdinsight340"/>
-            <library id="hive-hcatalog-server-extensions-hdinsight340"/>
-            <library id="hive-metastore-hdinsight340"/>
-            <library id="jdo-api-3.0.1.jar"/>
-            <library id="libfb303-0.9.2.jar"/>
-            <library id="libthrift-0.9.2.jar"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig parquet group -->
-        <libraryNeededGroup
-                description="Pig Parquet libraries for HDInsight 3.4.0"
-                id="PIG-PARQUET-LIB-HD_INSIGHT_3_4_0"
-                name="PIG-PARQUET-LIB-HD_INSIGHT_3_4_0">
-            <library id="parquet-pig-bundle-1.6.0.jar"/>
-            <library id="snappy-java-1.0.5.jar" />
-        </libraryNeededGroup>
-        
-        <!-- Pig avro group -->
-        <libraryNeededGroup
-                description="Pig Avro libraries for HDInsight 3.4.0"
-                id="PIG-AVRO-LIB-HD_INSIGHT_3_4_0"
-                name="PIG-AVRO-LIB-HD_INSIGHT_3_4_0">
-            <library id="avro-hdinsight340" />
-            <library id="commons-io-2.4.jar"/>
-            <library id="piggybank-cdh5.4.jar"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig RCFile group -->
-        <libraryNeededGroup
-                description="Pig RCFile libraries for HDInsight 3.4.0"
-                id="PIG-RCFILE-LIB-HD_INSIGHT_3_4_0"
-                name="PIG-RCFILE-LIB-HD_INSIGHT_3_4_0">
-            <library id="hive-common-hdinsight340"/>
-            <library id="hive-exec-hdinsight340"/>
-            <library id="hive-serde-hdinsight340"/>
-            <library id="elephant-bird-core-4.9.jar"/>
-            <library id="elephant-bird-hadoop-compat-4.9.jar"/>
-            <library id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig SequenceFile group -->
-        <libraryNeededGroup
-                description="Pig SequenceFile libraries for HDInsight 3.4.0"
-                id="PIG-SEQUENCEFILE-LIB-HD_INSIGHT_3_4_0"
-                name="PIG-SEQUENCEFILE-LIB-HD_INSIGHT_3_4_0">
-            <library id="elephant-bird-core-4.9.jar"/>
-            <library id="elephant-bird-hadoop-compat-4.9.jar"/>
-            <library id="elephant-bird-pig-4.9.jar"/>
-            <library id="pigutil.jar"/>
         </libraryNeededGroup>
         
         <!-- Hive parquet group -->

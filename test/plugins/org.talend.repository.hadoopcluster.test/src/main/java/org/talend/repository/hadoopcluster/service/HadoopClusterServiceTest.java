@@ -12,6 +12,14 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.service;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -27,12 +35,6 @@ import org.talend.designer.runprocess.ProcessorUtilities;
 import org.talend.repository.hadoopcluster.util.ClusterTestUtil;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnectionItem;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * created by ycbai on 2017年2月20日 Detailled comment
@@ -139,7 +141,8 @@ public class HadoopClusterServiceTest {
         hadoopClusterConnection.setContextMode(true);
         hadoopClusterConnection.setContextId(contextItem.getProperty().getId());
         hadoopClusterConnection.setContextName("DEV"); //$NON-NLS-1$
-        String jarName = service.getCustomConfsJarName(hadoopClusterItem, false, true);
+        String jarName = service.getCustomConfsJar(hadoopClusterItem, false, true).map(b -> b.getCustomConfJarName())
+                .orElse(null);
         assertTrue(jarName.contains(clusterLabel + "_" + contextItem.getDefaultContext())); //$NON-NLS-1$
         ClusterTestUtil.deleteItem(contextItem);
     }

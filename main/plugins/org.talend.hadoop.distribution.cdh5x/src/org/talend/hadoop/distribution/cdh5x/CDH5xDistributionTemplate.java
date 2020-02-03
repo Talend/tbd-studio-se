@@ -25,7 +25,6 @@ import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
@@ -34,7 +33,7 @@ import org.talend.hadoop.distribution.kudu.KuduVersion;
 
 @SuppressWarnings("nls")
 public class CDH5xDistributionTemplate extends AbstractDynamicCDHDistributionTemplate implements HDFSComponent, HBaseComponent,
-        HCatalogComponent, PigComponent, MRComponent, HiveComponent, HiveOnSparkComponent, ImpalaComponent, SqoopComponent,
+        HCatalogComponent, MRComponent, HiveComponent, HiveOnSparkComponent, ImpalaComponent, SqoopComponent,
  CDHSparkBatchComponent, SparkStreamingComponent, ICDH5xDistributionTemplate {
 
     public final static String TEMPLATE_ID = "CDH5xDistributionTemplate";
@@ -84,22 +83,7 @@ public class CDH5xDistributionTemplate extends AbstractDynamicCDHDistributionTem
     public boolean doSupportStandaloneMode() {
         return super.doSupportStandaloneMode();
     }
-
-    @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        return false;
-    }
-
+   
     @Override
     public boolean doSupportHive1() {
         return false;

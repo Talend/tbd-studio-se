@@ -283,7 +283,7 @@ Note : If you are running on a Sharded Cluster, please make sure to include the 
     <CODEGENERATION>
         <IMPORTS>
 
-            <IMPORT MODULE="mongo-java-driver-3.8.2.jar" MVN="mvn:org.mongodb/mongo-java-driver/3.8.2"  NAME="mongo-java-driver-3.8.2" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (API=='MONGODB')" />
+            <IMPORT MODULE="mongo-java-driver-3.12.0.jar" MVN="mvn:org.mongodb/mongo-java-driver/3.12.0"  NAME="mongo-java-driver-3.12.0" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (API=='MONGODB')" />
             
         </IMPORTS>
     </CODEGENERATION>

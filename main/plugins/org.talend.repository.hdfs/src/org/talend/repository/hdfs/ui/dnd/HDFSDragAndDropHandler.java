@@ -24,6 +24,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.core.GlobalServiceRegister;
+import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.hadoop.version.custom.ECustomVersionGroup;
 import org.talend.core.model.components.IComponent;
@@ -97,9 +98,7 @@ public class HDFSDragAndDropHandler extends AbstractDragAndDropServiceHandler {
             ECustomVersionGroup versionGroup = ECustomVersionGroup.COMMON;
             if (targetComponent == null) { // Indicate target is a mapreduce process.
                 versionGroup = ECustomVersionGroup.MAP_REDUCE;
-            } else if (targetComponent.startsWith("tPig")) { //$NON-NLS-1$
-                versionGroup = ECustomVersionGroup.PIG;
-            }
+            } 
             return HCVersionUtil.getCompCustomJarsParamFromRep(hcConnection, versionGroup);
         } else if (EHDFSRepositoryToComponent.HADOOP_CUSTOM_JARS_FOR_SPARK.getRepositoryValue().equals(value)) {
             return HCVersionUtil.getCompCustomJarsParamFromRep(hcConnection, ECustomVersionGroup.SPARK);
@@ -159,16 +158,12 @@ public class HDFSDragAndDropHandler extends AbstractDragAndDropServiceHandler {
             return false;
         } else if (EHDFSRepositoryToComponent.MAPREDUCE.getRepositoryValue().equals(value)) {
             return true;
-        } else if (EHDFSRepositoryToComponent.PIG_VERSION.getRepositoryValue().equals(value)) {
-            return hcConnection.getDfVersion();
         } else if (EHDFSRepositoryToComponent.MAPRED_JOB_TRACKER.getRepositoryValue().equals(value)
                 || EHDFSRepositoryToComponent.MAPRED_RESOURCE_MANAGER.getRepositoryValue().equals(value)
                 || EHDFSRepositoryToComponent.RESOURCE_MANAGER.getRepositoryValue().equals(value)) {
             return getRepositoryValueOfStringType(hcConnection, StringUtils.trimToNull(hcConnection.getJobTrackerURI()));
         } else if (EHDFSRepositoryToComponent.FIELD_SEPARATOR_CHAR.getRepositoryValue().equals(value)) {
             return getRepositoryValueOfStringType(connection, StringUtils.trimToNull(connection.getFieldSeparator()));
-        } else if (EHDFSRepositoryToComponent.LOAD.getRepositoryValue().equals(value)) {
-            return "PigStorage"; //$NON-NLS-1$
         } else if (EHDFSRepositoryToComponent.HADOOP_ADVANCED_PROPERTIES.getRepositoryValue().equals(value)) {
             return HadoopRepositoryUtil.getHadoopPropertiesFullList(connection, connection.getHadoopProperties(), true);
         } else if (EHDFSRepositoryToComponent.SPARK_ADVANCED_PROPERTIES.getRepositoryValue().equals(value)) {
@@ -210,6 +205,11 @@ public class HDFSDragAndDropHandler extends AbstractDragAndDropServiceHandler {
             return HadoopRepositoryUtil.clouderaNaviDisableSSL(connection);
         } else if (EHDFSRepositoryToComponent.CLOUDERA_NAVIGATOR_DIE_ON_ERROR.getRepositoryValue().equals(value)) {
             return HadoopRepositoryUtil.clouderaNaviDieOnError(connection);
+        } else if (EHDFSRepositoryToComponent.SET_HADOOP_CONF.getRepositoryValue().equals(value)) {
+            return Boolean.valueOf(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_SET_HADOOP_CONF));
+        } else if (EHDFSRepositoryToComponent.HADOOP_CONF_SPECIFIC_JAR.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HADOOP_CONF_SPECIFIC_JAR));
         }
 
         return null;

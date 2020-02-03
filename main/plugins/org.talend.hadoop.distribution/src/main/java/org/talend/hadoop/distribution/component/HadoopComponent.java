@@ -22,7 +22,7 @@ import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 
 /**
- * Base interface that exposes generic methods for all Hadoop components (eg. HDFS, M/R, Pig).
+ * Base interface that exposes generic methods for all Hadoop components (eg. HDFS, M/R).
  *
  */
 public interface HadoopComponent {

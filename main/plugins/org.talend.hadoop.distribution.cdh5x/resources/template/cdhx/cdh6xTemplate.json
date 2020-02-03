@@ -1691,7 +1691,8 @@
 				"jackson-core",
 				"jackson-databind",
 				"jackson-annotations",
-				"commons-httpclient-3.1"
+				"commons-httpclient-3.1",
+				"parquet-hadoop-bundle_1_6_0"
 			]
 		},
 		{

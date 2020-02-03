@@ -100,10 +100,6 @@ public abstract class AbstractDistribution {
         return version;
     }
 
-    public boolean doSupportTezForPig() {
-        return false;
-    }
-
     public ComponentCondition getDisplayCondition(ComponentType componentType) {
         return null;
     }

@@ -212,13 +212,6 @@
                         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh550"
-            id="hive-hcatalog-pig-adapter-cdh5.5.2"
-            name="hive-hcatalog-pig-adapter-1.1.0-cdh5.5.2.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-pig-adapter-1.1.0-cdh5.5.2/6.1.0">
-        </libraryNeeded>                
-                        
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh550"
             id="hive-hcatalog-server-extensions-cdh5.5.2"
             name="hive-hcatalog-server-extensions-1.1.0-cdh5.5.2.jar"
             mvn_uri="mvn:org.talend.libraries/hive-hcatalog-server-extensions-1.1.0-cdh5.5.2/6.1.0">
@@ -230,22 +223,6 @@
             name="hive-hbase-handler-1.1.0-cdh5.5.2.jar"
             mvn_uri="mvn:org.talend.libraries/hive-hbase-handler-1.1.0-cdh5.5.2/6.1.0">
         </libraryNeeded>   
-        
-        <!-- Pig libraries -->
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh550"
-            id="parquet-pig-bundle-cdh5.5.2"
-            name="parquet-pig-bundle-1.5.0-cdh5.5.2.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-pig-bundle-1.5.0-cdh5.5.2/6.1.0">
-        </libraryNeeded>
-        
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.cdh550"
-            id="pig-cdh5.5.2"
-            name="pig-0.12.0-cdh5.5.2-withoutHadoopAndJoda.jar"
-            mvn_uri="mvn:org.talend.libraries/pig-0.12.0-cdh5.5.2-withoutHadoopAndJoda/6.1.0">
-        </libraryNeeded>
-        
         
         <!-- Spark libraries -->
         <libraryNeeded
@@ -364,53 +341,33 @@
         </libraryNeeded>
         
         <libraryNeeded
-            context="plugin:org.talend.libraries.pig"
+            context="plugin:org.talend.hadoop.distribution.cdh550"
             id="datafu-1.2.0.jar"
             name="datafu-1.2.0.jar"
-            mvn_uri="mvn:org.talend.libraries/datafu-1.2.0/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/datafu-1.2.0.jar">
+            mvn_uri="mvn:org.talend.libraries/datafu-1.2.0/6.0.0">            
         </libraryNeeded>
                         
         <libraryNeeded
-            context="plugin:org.talend.libraries.pig"
+            context="plugin:org.talend.hadoop.distribution.cdh550"
             id="elephant-bird-core-4.9.jar"
             name="elephant-bird-core-4.9.jar"
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-core/4.9"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-core-4.9.jar">
+            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-core/4.9">            
         </libraryNeeded>                
                         
         <libraryNeeded
-            context="plugin:org.talend.libraries.pig"
+            context="plugin:org.talend.hadoop.distribution.cdh550"
             id="elephant-bird-hadoop-compat-4.9.jar"
             name="elephant-bird-hadoop-compat-4.9.jar"
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-hadoop-compat/4.9"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-hadoop-compat-4.9.jar">
+            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-hadoop-compat/4.9">            
         </libraryNeeded>                
                         
         <libraryNeeded
-            context="plugin:org.talend.libraries.pig"
+            context="plugin:org.talend.hadoop.distribution.cdh550"
             id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
             name="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
-            mvn_uri="mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-rcfile-4.9-patched-hive-1.x.jar">
+            mvn_uri="mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0">            
         </libraryNeeded>
                         
-        <libraryNeeded
-            context="plugin:org.talend.libraries.pig"
-            id="elephant-bird-pig-4.9.jar"
-            name="elephant-bird-pig-4.9.jar"
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-pig/4.9"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-pig-4.9.jar">
-        </libraryNeeded>
-                        
-        <libraryNeeded
-            context="plugin:org.talend.libraries.pig"
-            id="pigutil.jar"
-            name="pigutil.jar"
-            mvn_uri="mvn:org.talend.libraries/pigutil/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/pigutil.jar">
-        </libraryNeeded>
-        
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh550"
             id="hadoop-aws-cdh5.5.2"
@@ -673,84 +630,6 @@
              <library id="slf4j-log4j12-1.7.5.jar" />
         </libraryNeededGroup>
         
-        <!-- Pig group -->
-        <libraryNeededGroup
-                description="Pig libraries for CDH 5.5"
-                id="PIG-LIB-CDH_5_5"
-                name="PIG-LIB-CDH_5_5">
-            <library id="pig-cdh5.5.2"/>
-            <library id="antlr-runtime-3.4.jar"/>
-            <library id="jline-2.11.jar"/>
-            <library id="joda-time-2.8.1.jar"/>
-            <library id="snappy-java-1.0.4.1.jar"/>
-            <library id="datafu-1.2.0.jar"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig HCatalog group -->
-        <libraryNeededGroup
-                description="Pig HCatalog libraries for CDH 5.5"
-                id="PIG-HCATALOG-LIB-CDH_5_5"
-                name="PIG-HCATALOG-LIB-CDH_5_5">
-            <library id="hive-exec-cdh5.5.2"/>
-            <library id="hive-hcatalog-core-cdh5.5.2"/>
-            <library id="hive-hcatalog-pig-adapter-cdh5.5.2"/>
-            <library id="hive-hcatalog-server-extensions-cdh5.5.2"/>
-            <library id="hive-metastore-cdh5.5.2"/>
-            <library id="jdo-api-3.0.1.jar"/>
-            <library id="libfb303-0.9.2.jar"/>
-            <library id="libthrift-0.9.2.jar"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig HBase group -->
-        <libraryNeededGroup
-                description="Pig HBase libraries for CDH 5.5"
-                id="PIG-HBASE-LIB-CDH_5_5"
-                name="PIG-HBASE-LIB-CDH_5_5">
-            <library id="hbase-server-cdh5.5.2"/>
-        </libraryNeededGroup>
-
-        <!-- Pig parquet group -->
-        <libraryNeededGroup
-                description="Pig Parquet libraries for CDH 5.5"
-                id="PIG-PARQUET-LIB-CDH_5_5"
-                name="PIG-PARQUET-LIB-CDH_5_5">
-            <library id="parquet-pig-bundle-cdh5.5.2"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig avro group -->
-        <libraryNeededGroup
-                description="Pig Avro libraries for CDH 5.5"
-                id="PIG-AVRO-LIB-CDH_5_5"
-                name="PIG-AVRO-LIB-CDH_5_5">
-            <library id="avro-cdh5.5.2" />
-            <library id="commons-io-2.4.jar"/>
-            <library id="piggybank-cdh5.4.jar"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig RCFile group -->
-        <libraryNeededGroup
-                description="Pig RCFile libraries for CDH 5.5"
-                id="PIG-RCFILE-LIB-CDH_5_5"
-                name="PIG-RCFILE-LIB-CDH_5_5">
-            <library id="hive-common-cdh5.5.2"/>
-            <library id="hive-exec-cdh5.5.2"/>
-            <library id="hive-serde-cdh5.5.2"/>
-            <library id="elephant-bird-core-4.9.jar"/>
-            <library id="elephant-bird-hadoop-compat-4.9.jar"/>
-            <library id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"/>
-        </libraryNeededGroup>
-        
-        <!-- Pig SequenceFile group -->
-        <libraryNeededGroup
-                description="Pig SequenceFile libraries for CDH 5.5"
-                id="PIG-SEQUENCEFILE-LIB-CDH_5_5"
-                name="PIG-SEQUENCEFILE-LIB-CDH_5_5">
-            <library id="elephant-bird-core-4.9.jar"/>
-            <library id="elephant-bird-hadoop-compat-4.9.jar"/>
-            <library id="elephant-bird-pig-4.9.jar"/>
-            <library id="pigutil.jar"/>
-        </libraryNeededGroup>
-        
         <!-- Sqoop group -->
         <libraryNeededGroup
                 description="Sqoop libraries for CDH 5.5"
@@ -850,18 +729,6 @@
                 name="SPARK-S3-LIB-MRREQUIRED-CDH_5_5">
              <library id="hadoop-aws-cdh5.5.2"/>
              <library id="aws-java-sdk-1.7.4.jar"/>
-             <library id="jets3t-0.9.0" />
-             <library id="httpclient-4.3.3.jar" />
-             <library id="httpcore-4.3.3.jar" />
-        </libraryNeededGroup>
-        
-        <!-- Pig S3 group -->
-        <libraryNeededGroup
-                description="Pig S3 libraries for CDH 5.5"
-                id="PIG-S3-LIB-CDH_5_5"
-                name="PIG-S3-LIB-CDH_5_5">
-             <library id="hadoop-aws-cdh5.5.2"/>
-             <library id="aws-java-sdk-1.10.52.jar"/>
              <library id="jets3t-0.9.0" />
              <library id="httpclient-4.3.3.jar" />
              <library id="httpcore-4.3.3.jar" />

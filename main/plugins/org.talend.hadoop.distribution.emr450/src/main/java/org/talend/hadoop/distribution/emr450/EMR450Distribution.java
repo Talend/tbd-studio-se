@@ -29,7 +29,6 @@ import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
@@ -38,10 +37,8 @@ import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.NestedComponentCondition;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
-import org.talend.hadoop.distribution.constants.Constant;
 import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.emr.IAmazonEMRDistribution;
@@ -50,14 +47,11 @@ import org.talend.hadoop.distribution.emr450.modulegroup.EMR450HDFSModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.EMR450HiveModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.EMR450HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.EMR450MapReduceModuleGroup;
-import org.talend.hadoop.distribution.emr450.modulegroup.EMR450PigModuleGroup;
-import org.talend.hadoop.distribution.emr450.modulegroup.EMR450PigOutputModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.EMR450SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.EMR450SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.EMR450SqoopModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.EMR450WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.node.mr.EMR450MRS3NodeModuleGroup;
-import org.talend.hadoop.distribution.emr450.modulegroup.node.pigoutput.EMR450PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.node.sparkbatch.EMR450GraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.node.sparkbatch.EMR450SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.node.sparkbatch.EMR450SparkBatchS3NodeModuleGroup;
@@ -69,15 +63,13 @@ import org.talend.hadoop.distribution.emr450.modulegroup.node.sparkstreaming.EMR
 import org.talend.hadoop.distribution.emr450.modulegroup.node.sparkstreaming.EMR450SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.emr450.modulegroup.node.sparkstreaming.EMR450SparkStreamingS3NodeModuleGroup;
 
-public class EMR450Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, PigComponent,
+public class EMR450Distribution extends AbstractDistribution implements HDFSComponent, MRComponent,
         HCatalogComponent, HiveComponent, SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, SqoopComponent,
         IAmazonEMRDistribution {
 
     public static final String VERSION = "EMR_4_5_0"; //$NON-NLS-1$
 
     public static final String VERSION_DISPLAY = "EMR 4.5.0 (Apache 2.7.2)"; //$NON-NLS-1$
-
-    public static final String PIG_EMR450_DISPLAY = "EMR 4.5.0 (Pig 0.14.0)";//$NON-NLS-1$
 
     public static final String SQOOP_EMR450_DISPLAY = "EMR 4.5.0 (Sqoop 1.4.6)"; //$NON-NLS-1$
 
@@ -102,19 +94,12 @@ public class EMR450Distribution extends AbstractDistribution implements HDFSComp
 
     protected Map<ComponentType, ComponentCondition> buildDisplayConditions() {
         Map<ComponentType, ComponentCondition> result = new HashMap<>();
-        result.put(ComponentType.PIGOUTPUT, getPigOutputDisplayCondition());
         return result;
     }
 
-    private ComponentCondition getPigOutputDisplayCondition() {
-        BasicExpression storageIsNotHBase = new BasicExpression(Constant.PIG_STORE_PARAMETER, EqualityOperator.NOT_EQ,
-                Constant.PIG_HBASESTORAGE_PARAMETER);
-        return new NestedComponentCondition(new SimpleComponentCondition(storageIsNotHBase));
-    }
-
+    
     protected Map<ComponentType, String> buildCustomVersionDisplayNames() {
         Map<ComponentType, String> result = new HashMap<>();
-        result.put(ComponentType.PIG, PIG_EMR450_DISPLAY);
         result.put(ComponentType.HIVE, HIVE_EMR450_DISPLAY);
         result.put(ComponentType.SQOOP, SQOOP_EMR450_DISPLAY);
         return result;
@@ -127,8 +112,6 @@ public class EMR450Distribution extends AbstractDistribution implements HDFSComp
         result.put(ComponentType.HIVE, EMR450HiveModuleGroup.getModuleGroups());
         result.put(ComponentType.HIVEONSPARK, EMR450HiveOnSparkModuleGroup.getModuleGroups());
         result.put(ComponentType.MAPREDUCE, EMR450MapReduceModuleGroup.getModuleGroups());
-        result.put(ComponentType.PIG, EMR450PigModuleGroup.getModuleGroups());
-        result.put(ComponentType.PIGOUTPUT, EMR450PigOutputModuleGroup.getModuleGroups());
         result.put(ComponentType.SPARKBATCH, EMR450SparkBatchModuleGroup.getModuleGroups());
         result.put(ComponentType.SPARKSTREAMING, EMR450SparkStreamingModuleGroup.getModuleGroups());
         result.put(ComponentType.SQOOP, EMR450SqoopModuleGroup.getModuleGroups());
@@ -149,10 +132,7 @@ public class EMR450Distribution extends AbstractDistribution implements HDFSComp
                 EMR450MRS3NodeModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),
                 EMR450MRS3NodeModuleGroup.getModuleGroups(distribution, version));
-        // Pig nodes
-        result.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
-                EMR450PigOutputNodeModuleGroup.getModuleGroups(distribution, version));
-
+        
         // Spark Batch Parquet nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
                 EMR450SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
@@ -266,20 +246,6 @@ public class EMR450Distribution extends AbstractDistribution implements HDFSComp
         return YARN_APPLICATION_CLASSPATH;
     }
 
-    @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return false;
-    }
 
     @Override
     public boolean doSupportImpersonation() {

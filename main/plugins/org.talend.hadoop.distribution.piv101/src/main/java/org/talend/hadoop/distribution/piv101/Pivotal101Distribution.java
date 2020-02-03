@@ -25,17 +25,15 @@ import org.talend.hadoop.distribution.component.HBaseComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.BasicExpression;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
-import org.talend.hadoop.distribution.constants.Constant;
 import org.talend.hadoop.distribution.constants.piv.IPivotalHDDistribution;
 
 public class Pivotal101Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, HBaseComponent,
-        SqoopComponent, PigComponent, HiveComponent, IPivotalHDDistribution {
+        SqoopComponent, HiveComponent, IPivotalHDDistribution {
 
     public static final String VERSION = "PIVOTAL_HD_1_0_1";
 
@@ -48,11 +46,7 @@ public class Pivotal101Distribution extends AbstractDistribution implements HDFS
     private static Map<ComponentType, ComponentCondition> displayConditions = new HashMap<>();
 
     static {
-        moduleGroups = new HashMap<>();
-
-        ComponentCondition c1 = new SimpleComponentCondition(new BasicExpression(Constant.PIG_STORE_PARAMETER,
-                EqualityOperator.NOT_EQ, Constant.PIG_HCATSTORER_PARAMETER));
-        displayConditions.put(ComponentType.PIGOUTPUT, c1);
+        moduleGroups = new HashMap<>();        
     }
 
     @Override
@@ -128,22 +122,6 @@ public class Pivotal101Distribution extends AbstractDistribution implements HDFS
     @Override
     public boolean doJavaAPISqoopImportAllTablesSupportExcludeTable() {
         return false;
-    }
-
-    @Override
-    public boolean doSupportHCatalog() {
-        return false;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        // return false because this distribution doesn't support HCatalog.
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return true;
     }
 
     @Override
