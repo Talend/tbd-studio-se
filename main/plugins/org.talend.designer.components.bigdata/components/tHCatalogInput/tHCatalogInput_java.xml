@@ -432,6 +432,9 @@
 			<IMPORT NAME="cxf-core-3.3.4" MODULE="cxf-core-3.3.4.jar"
 				MVN="mvn:org.apache.cxf/cxf-core/3.3.4"
 				REQUIRED="false" REQUIRED_IF="DISTRIBUTION!='CUSTOM'" />
+			<IMPORT NAME="cxf-rt-rs-client-3.3.4" MODULE="cxf-rt-rs-client-3.3.4.jar"
+				MVN="mvn:org.apache.cxf/cxf-rt-rs-client/3.3.4"
+				REQUIRED="false" REQUIRED_IF="DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="cxf-rt-bindings-xml-3.3.4" MODULE="cxf-rt-bindings-xml-3.3.4.jar"
 				MVN="mvn:org.apache.cxf/cxf-rt-bindings-xml/3.3.4"
 				REQUIRED="false" REQUIRED_IF="DISTRIBUTION!='CUSTOM'" />
