@@ -497,8 +497,8 @@
 			<IMPORT NAME="cxf-rt-frontend-jaxrs-3.3.4" MODULE="cxf-rt-frontend-jaxrs-3.3.4.jar"
 				MVN="mvn:org.apache.cxf/cxf-rt-frontend-jaxrs/3.3.4"				
 				REQUIRED="false" REQUIRED_IF="DISTRIBUTION!='CUSTOM'" />
-			<IMPORT NAME="javax.ws.rs-api-2.0-m10" MODULE="javax.ws.rs-api-2.0-m10.jar"
-				MVN="mvn:org.talend.libraries/javax.ws.rs-api-2.0-m10/6.0.0"
+			<IMPORT NAME="javax.ws.rs-api-2.0.1.jar" MODULE="javax.ws.rs-api-2.0.1.jar"
+                MVN="mvn:org.talend.libraries/javax.ws.rs-api-2.0.1/6.0.0"
 				REQUIRED="false" REQUIRED_IF="DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="cxf-core-3.3.4" MODULE="cxf-core-3.3.4.jar"
 				MVN="mvn:org.apache.cxf/cxf-core/3.3.4"				
