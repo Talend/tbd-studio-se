@@ -450,7 +450,7 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
 
         addCustomFields();
         addConnectionFields(bigComposite);
-        addWebHDFSEncryptionFields();
+        addWebHDFSEncryptionFields(bigComposite);
         addAuthenticationFields(bigComposite);
 
         propertiesScroll = new ScrolledComposite(downsash, SWT.V_SCROLL | SWT.H_SCROLL);
@@ -524,8 +524,8 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         useDNHostBtn.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 2, 1));
     }
 
-    private void addWebHDFSEncryptionFields() {
-        webHDFSSSLEncryptionGrp = Form.createGroup(this, 1, Messages.getString("HadoopClusterForm.webHDFS.encryption"), 110); //$NON-NLS-1$
+    private void addWebHDFSEncryptionFields(Composite downsash) {
+        webHDFSSSLEncryptionGrp = Form.createGroup(downsash, 1, Messages.getString("HadoopClusterForm.webHDFS.encryption"), 110); //$NON-NLS-1$
         webHDFSSSLEncryptionGrp.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         useWebHDFSSSLEncryptionBtn = new Button(webHDFSSSLEncryptionGrp, SWT.CHECK);
         useWebHDFSSSLEncryptionBtn.setText(Messages.getString("HadoopClusterForm.webHDFS.encryption.useSSLEncryption")); //$NON-NLS-1$
@@ -546,7 +546,7 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
     }
 
     private void addAuthenticationFields(Composite downsash) {
-        authGroup = Form.createGroup(this, 1, Messages.getString("HadoopClusterForm.authenticationSettings"), 110); //$NON-NLS-1$
+        authGroup = Form.createGroup(downsash, 1, Messages.getString("HadoopClusterForm.authenticationSettings"), 110); //$NON-NLS-1$
         authGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
         authPartComposite = new Composite(authGroup, SWT.NULL);
