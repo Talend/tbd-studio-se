@@ -83,9 +83,9 @@
 	<CODEGENERATION>
 		<IMPORTS REQUIRED_IF="(USE_EXISTING_CONNECTION=='false')">
             <IMPORT NAME="log4j-1.2.17" MODULE="log4j-1.2.17.jar" MVN="mvn:log4j/log4j/1.2.17"/>
-            <IMPORT NAME="talend-bigdata-launcher-platform-1.2.8-20180926.jar"
-                    MODULE="talend-bigdata-launcher-platform-1.2.8-20180926.jar"
-                    MVN="mvn:org.talend.libraries/talend-bigdata-launcher-platform-1.2.8-20180926/6.0.0"/>
+            <IMPORT NAME="talend-bigdata-launcher-platform-2.0.1.jar"
+                    MODULE="talend-bigdata-launcher-platform-2.0.1.jar"
+                    MVN="mvn:org.talend.libraries/talend-bigdata-launcher-platform-2.0.1/6.0.0"/>
             <IMPORT NAME="json-simple-1.1.1.jar" MODULE="json-simple-1.1.1.jar"
                     MVN="mvn:com.googlecode.json-simple/json-simple/1.1.1"/>
             <IMPORT NAME="javax.ws.rs-api-2.0-m10.jar" MODULE="javax.ws.rs-api-2.0-m10.jar"
