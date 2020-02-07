@@ -16,7 +16,6 @@ import org.talend.core.model.metadata.builder.connection.Connection;
 import org.talend.core.model.repository.ERepositoryObjectType;
 import org.talend.core.service.INOSQLService;
 import org.talend.repository.model.nosql.NoSQLConnection;
-import org.talend.repository.nosql.db.common.cassandra.ICassandraAttributies;
 import org.talend.repository.nosql.db.common.mongodb.IMongoDBAttributes;
 import org.talend.repository.nosql.ui.node.NoSQLRepositoryNodeType;
 import org.talend.utils.security.PasswordMigrationUtil;
@@ -66,10 +65,10 @@ public class NOSQLService implements INOSQLService {
     public boolean updateNoSqlConnection(Connection connection) throws Exception{
         if (isNoSQLConnection(connection)) {
             NoSQLConnection noSqlConn = (NoSQLConnection)connection;
-            String pass = noSqlConn.getAttributes().get(ICassandraAttributies.PASSWORD);
+            String pass = noSqlConn.getAttributes().get(IMongoDBAttributes.PASSWORD);
             if(pass != null) {
                 pass = PasswordMigrationUtil.encryptPasswordIfNeeded(pass);
-                noSqlConn.getAttributes().put(ICassandraAttributies.PASSWORD, noSqlConn.getValue(pass, true));
+                noSqlConn.getAttributes().put(IMongoDBAttributes.PASSWORD, noSqlConn.getValue(pass, true));
                 return true; 
             }
         }
