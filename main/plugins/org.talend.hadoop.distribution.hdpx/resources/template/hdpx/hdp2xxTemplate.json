@@ -1096,6 +1096,30 @@
       "jarName": "avatica-1.8.0.jar",
       "mvnUri": "mvn:org.apache.calcite.avatica/avatica/1.8.0",
       "description": ""
+    },
+    {
+      "id": "kite-data-core-1.0.0",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "kite-data-core-1.0.0.jar",
+      "mvnUri": "mvn:org.kitesdk/kite-data-core/1.0.0",
+      "description": ""
+    },
+    {
+      "id": "kite-data-mapreduce-1.0.0",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "kite-data-mapreduce-1.0.0.jar",
+      "mvnUri": "mvn:org.kitesdk/kite-data-mapreduce/1.0.0",
+      "description": ""
+    },
+    {
+      "id": "kite-hadoop-compatibility-1.0.0",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "kite-hadoop-compatibility-1.0.0.jar",
+      "mvnUri": "mvn:org.kitesdk/kite-hadoop-compatibility/1.0.0",
+      "description": ""
     }
   ],
   "moduleGroups": [
@@ -1173,7 +1197,12 @@
       "description": "",
       "modules": [
         "avro-1.8.0",
-        "sqoop"
+        "avro-mapred",
+        "sqoop",
+        "kite-data-core-1.0.0",
+        "kite-data-mapreduce-1.0.0",
+        "kite-hadoop-compatibility-1.0.0",
+        "parquet-hadoop-bundle"
       ]
     },
     {
