@@ -18,6 +18,7 @@ import org.talend.core.service.INOSQLService;
 import org.talend.repository.model.nosql.NoSQLConnection;
 import org.talend.repository.nosql.db.common.mongodb.IMongoDBAttributes;
 import org.talend.repository.nosql.ui.node.NoSQLRepositoryNodeType;
+import org.talend.utils.security.PasswordMigrationUtil;
 
 /**
  * created by hwang on Apr 15, 2015 Detailled comment
@@ -58,6 +59,20 @@ public class NOSQLService implements INOSQLService {
             return ((NoSQLConnection) connection).getAttributes().get(IMongoDBAttributes.REPLICA_SET);
         }
         return null;
+    }
+
+    @Override
+    public boolean updateNoSqlConnection(Connection connection) throws Exception{
+        if (isNoSQLConnection(connection)) {
+            NoSQLConnection noSqlConn = (NoSQLConnection)connection;
+            String pass = noSqlConn.getAttributes().get(IMongoDBAttributes.PASSWORD);
+            if(pass != null) {
+                pass = PasswordMigrationUtil.encryptPasswordIfNeeded(pass);
+                noSqlConn.getAttributes().put(IMongoDBAttributes.PASSWORD, noSqlConn.getValue(pass, true));
+                return true; 
+            }
+        }
+        return false;
     }
 
 }
