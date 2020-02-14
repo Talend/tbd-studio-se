@@ -290,7 +290,6 @@
             <library id="datanucleus-core-3.2.10.jar"/>
             <library id="datanucleus-rdbms-3.2.9.jar"/>
         </libraryNeededGroup>
-        `
         <!-- Spark Azure group MRREQUIRED 
              Azure Blob & Datalake support have been disabled for now on this distribution
              New versions of this distribution should be tested for Azure support and
