@@ -8,7 +8,7 @@
             context=""
             id="javax.ws.rs-api-2.1.jar"
             name="javax.ws.rs-api-2.1.jar"
-            mvn_uri="mvn:org.talend.libraries/javax.ws.rs-api-2.1/6.0.0">
+            mvn_uri="mvn:javax.ws.rs/javax.ws.rs-api/2.1">
         </libraryNeeded>
         <libraryNeeded
               bundleID="org.apache.servicemix.bundles.wsdl4j"

@@ -10,7 +10,7 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.qubole" id="jersey-client-2.5.jar" name="jersey-client-2.5.jar" mvn_uri="mvn:org.glassfish.jersey.core/jersey-client/2.5" />
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.qubole" id="jersey-common-2.5.jar" name="jersey-common-2.5.jar" mvn_uri="mvn:org.glassfish.jersey.core/jersey-common/2.5" />
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.qubole" id="javax.annotation-api-1.2.jar" name="javax.annotation-api-1.2.jar" mvn_uri="mvn:javax.annotation/javax.annotation-api/1.2" />
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.qubole" id="javax.ws.rs-api-2.1.jar" name="javax.ws.rs-api-2.1.jar" mvn_uri="mvn:org.talend.libraries/javax.ws.rs-api-2.1/6.0.0" />
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.qubole" id="javax.ws.rs-api-2.1.jar" name="javax.ws.rs-api-2.1.jar" mvn_uri="mvn:javax.ws.rs/javax.ws.rs-api/2.1" />
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.qubole" id="hk2-api-2.2.0-b21.jar" name="hk2-api-2.2.0-b21.jar" mvn_uri="mvn:org.glassfish.hk2/hk2-api/2.2.0-b21" />
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.qubole" id="hk2-utils-2.2.0-b21.jar" name="hk2-utils-2.2.0-b21.jar" mvn_uri="mvn:org.glassfish.hk2/hk2-utils/2.2.0-b21" />
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.qubole" id="hk2-locator-2.2.0-b21.jar" name="hk2-locator-2.2.0-b21.jar" mvn_uri="mvn:org.glassfish.hk2/hk2-locator/2.2.0-b21" />
