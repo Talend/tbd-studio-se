@@ -6,8 +6,8 @@
          <!-- hd insight common libraries -->
         <libraryNeeded
             context=""
-            id="javax.ws.rs-api-2.1-6.0.0.jar"
-            name="javax.ws.rs-api-2.1-6.0.0.jar"
+            id="javax.ws.rs-api-2.1.jar"
+            name="javax.ws.rs-api-2.1.jar"
             mvn_uri="mvn:org.talend.libraries/javax.ws.rs-api-2.1/6.0.0">
         </libraryNeeded>
         <libraryNeeded
@@ -262,7 +262,7 @@
                 id="HD_INSIGHT_36_COMMON_LIBRARIES"
                 name="HD_INSIGHT_36_COMMON_LIBRARIES">
             <library id="json_simple-1.1.jar" />
-            <library id="javax.ws.rs-api-2.1-6.0.0.jar" />
+            <library id="javax.ws.rs-api-2.1.jar" />
             <library id="wsdl4j-1.6.3.jar" />
             <library id="azure-storage-5.0.0.jar" />
             <library id="jackson-core-2.8.9.jar" />
