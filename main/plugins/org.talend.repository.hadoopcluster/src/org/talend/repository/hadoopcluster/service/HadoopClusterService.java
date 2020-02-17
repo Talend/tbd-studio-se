@@ -508,7 +508,7 @@ public class HadoopClusterService implements IHadoopClusterService {
         if (item instanceof HadoopClusterConnectionItem) {
             HadoopClusterConnectionItem hcItem = (HadoopClusterConnectionItem) item;
             HadoopClusterConnection hcConnection = (HadoopClusterConnection) hcItem.getConnection();
-            return hcConnection.isUseCustomConfs()  && !ProcessorUtilities.isExportAsOSGI();
+            return hcConnection.isUseCustomConfs() && hcConnection.isContextMode() && !ProcessorUtilities.isExportAsOSGI();
         }
         return false;
     }
