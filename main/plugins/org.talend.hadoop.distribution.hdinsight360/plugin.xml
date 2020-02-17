@@ -70,30 +70,33 @@
             mvn_uri="mvn:org.talend.libraries/hive-serde-1.2.1000.2.4.1.0-327/6.0.0">
         </libraryNeeded>
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdinsight360"
-            id="hive-common-1.2.1000.2.4.1.0-327.jar"
-            name="hive-common-1.2.1000.2.4.1.0-327.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-common-1.2.1000.2.4.1.0-327/6.0.0">
+                context="plugin:org.talend.hadoop.distribution.hdinsight360"
+                id="hive-common-1.2.1000.2.4.1.0-327.jar"
+                name="hive-common-1.2.1000.2.4.1.0-327.jar"
+                mvn_uri="mvn:org.talend.libraries/hive-common-1.2.1000.2.4.1.0-327/6.0.0">
         </libraryNeeded>
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdinsight360"
-            id="hive-exec-1.2.1000.2.4.1.0-327.jar"
-            name="hive-exec-1.2.1000.2.4.1.0-327.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-exec-1.2.1000.2.4.1.0-327/6.0.0">
+                context="plugin:org.talend.hadoop.distribution.hdinsight360"
+                id="hive-exec-1.2.1000.2.4.1.0-327.jar"
+                name="hive-exec-1.2.1000.2.4.1.0-327.jar"
+                mvn_uri="mvn:org.talend.libraries/hive-exec-1.2.1000.2.4.1.0-327/6.0.0">
         </libraryNeeded>
 
         <!-- GraphFrames libraries -->
-		<libraryNeeded 
-			context="plugin:org.talend.hadoop.distribution.hdinsight360"
-			id="graphframes-0.5.0-spark2.1-s_2.11.jar" 
-			name="graphframes-0.5.0-spark2.1-s_2.11.jar"
-			mvn_uri="mvn:graphframes/graphframes/0.5.0-spark2.1-s_2.11">
-		</libraryNeeded>
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.hdinsight360"
+                id="graphframes-0.5.0-spark2.1-s_2.11.jar"
+                name="graphframes-0.5.0-spark2.1-s_2.11.jar"
+                mvn_uri="mvn:graphframes/graphframes/0.5.0-spark2.1-s_2.11">
+        </libraryNeeded>
 
         <!-- Spark 2 libraries-->
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="avro-1.7.7" name="avro-1.7.7.jar" mvn_uri="mvn:org.apache.avro/avro/1.7.7"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="avro-mapred-1.7.7-hadoop2" name="avro-mapred-1.7.7-hadoop2.jar" mvn_uri="mvn:org.apache.avro/avro-mapred/1.7.7-hadoop2"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-codec-1.10" name="commons-codec-1.10.jar" mvn_uri="mvn:commons-codec/commons-codec/1.10"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="avro-1.7.7"
+                       name="avro-1.7.7.jar" mvn_uri="mvn:org.apache.avro/avro/1.7.7"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="avro-mapred-1.7.7-hadoop2"
+                       name="avro-mapred-1.7.7-hadoop2.jar" mvn_uri="mvn:org.apache.avro/avro-mapred/1.7.7-hadoop2"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-codec-1.10"
+                       name="commons-codec-1.10.jar" mvn_uri="mvn:commons-codec/commons-codec/1.10"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-lang-2.6" name="commons-lang-2.6.jar" mvn_uri="mvn:commons-lang/commons-lang/2.6"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-lang3-3.5" name="commons-lang3-3.5.jar" mvn_uri="mvn:org.apache.commons/commons-lang3/3.5"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight360" id="commons-logging-1.1.3" name="commons-logging-1.1.3.jar" mvn_uri="mvn:commons-logging/commons-logging/1.1.3"/>
@@ -122,10 +125,10 @@
 
         <!-- Big Data launcher libraries -->
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdinsight360"
-            id="talend-bigdata-launcher-platform-2.0.1"
-            name="talend-bigdata-launcher-platform-2.0.1.jar"
-            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-platform-2.0.1/6.0.0">
+                context="plugin:org.talend.hadoop.distribution.hdinsight360"
+                id="talend-bigdata-launcher-platform-2.0.2"
+                name="talend-bigdata-launcher-platform-2.0.2.jar"
+                mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-platform-2.0.2/6.0.0">
         </libraryNeeded>
 
         <!-- Groups -->
@@ -135,7 +138,7 @@
                 description="Big Data launcher libraries for HDInsight 3.6.0"
                 id="BIGDATA-LAUNCHER-LIB-HD_INSIGHT_3_6_0"
                 name="BIGDATA-LAUNCHER-LIB-HD_INSIGHT_3_6_0"  >
-             <library id="talend-bigdata-launcher-platform-2.0.1" />
+            <library id="talend-bigdata-launcher-platform-2.0.2"/>
         </libraryNeededGroup>
 
         <!-- Spark group -->
@@ -212,10 +215,10 @@
              <library id="parquet-hadoop-1.8.1" />
              <library id="parquet-hadoop-bundle-1.6.0" />
         </libraryNeededGroup>
-        
+
         <!-- GraphFrames group MRREQUIRED -->
         <libraryNeededGroup
-                description="GraphFrames libraries for HDInsight 3.6.0 that are MRREQUIRED" 
+                description="GraphFrames libraries for HDInsight 3.6.0 that are MRREQUIRED"
                 id="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-HD_INSIGHT_3_6_0"
                 name="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-HD_INSIGHT_3_6_0">
              <library id="graphframes-0.5.0-spark2.1-s_2.11.jar" />
@@ -255,23 +258,23 @@
              <library id="jodd-core-3.5.2" />
         </libraryNeededGroup>
 
-       
+
         <!-- group of HD Insight 3.6.0 common libraries -->
         <libraryNeededGroup
                 description="HD Insight common libraries"
                 id="HD_INSIGHT_36_COMMON_LIBRARIES"
                 name="HD_INSIGHT_36_COMMON_LIBRARIES">
-            <library id="json_simple-1.1.jar" />
-            <library id="javax.ws.rs-api-2.1.jar" />
-            <library id="wsdl4j-1.6.3.jar" />
-            <library id="azure-storage-5.0.0.jar" />
-            <library id="jackson-core-2.8.9.jar" />
-            <library id="jackson-databind-2.8.9.jar" />
-        	<library id="jackson-core-asl-1.9.14-TALEND" />
-        	<library id="commons-logging-1.1.3" />
+            <library id="json_simple-1.1.jar"/>
+            <library id="javax.ws.rs-api-2.1.jar"/>
+            <library id="wsdl4j-1.6.3.jar"/>
+            <library id="azure-storage-5.0.0.jar"/>
+            <library id="jackson-core-2.8.9.jar"/>
+            <library id="jackson-databind-2.8.9.jar"/>
+            <library id="jackson-core-asl-1.9.14-TALEND"/>
+            <library id="commons-logging-1.1.3"/>
         </libraryNeededGroup>
-        
-        <!-- Spark Azure group MRREQUIRED 
+
+        <!-- Spark Azure group MRREQUIRED
              Azure Blob & Datalake support have been disabled for now on this distribution
              New versions of this distribution should be tested for Azure support and
              the changes backported to all earlier versions
