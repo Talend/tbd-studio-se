@@ -8070,6 +8070,11 @@
             },
             {
               "childNodes": [],
+              "id": "DYNAMIC_HDP_2_6_0_3_8_avro_mapred_1_8_2_jar",
+              "tagName": "library"
+            },
+            {
+              "childNodes": [],
               "id": "DYNAMIC_HDP_2_6_0_3_8_aws_java_sdk_core_1_11_160_jar",
               "tagName": "library"
             },
@@ -8390,6 +8395,21 @@
             },
             {
               "childNodes": [],
+              "id": "DYNAMIC_HDP_2_6_0_3_8_kite-data-core-1.0.0_jar",
+              "tagName": "library"
+            },
+            {
+              "childNodes": [],
+              "id": "DYNAMIC_HDP_2_6_0_3_8_kite-data-mapreduce-1.0.0_jar",
+              "tagName": "library"
+            },
+            {
+              "childNodes": [],
+              "id": "DYNAMIC_HDP_2_6_0_3_8_kite-hadoop-compatibility-1.0.0_jar",
+              "tagName": "library"
+            },
+            {
+              "childNodes": [],
               "id": "DYNAMIC_HDP_2_6_0_3_8_leveldbjni_all_1_8_jar",
               "tagName": "library"
             },
@@ -8426,6 +8446,16 @@
             {
               "childNodes": [],
               "id": "DYNAMIC_HDP_2_6_0_3_8_paranamer_2_7_jar",
+              "tagName": "library"
+            },
+            {
+              "childNodes": [],
+              "id": "DYNAMIC_HDP_2_6_0_3_8_parquet_hadoop_bundle_1_6_0_jar",
+              "tagName": "library"
+            },
+            {
+              "childNodes": [],
+              "id": "DYNAMIC_HDP_2_6_0_3_8_parquet_hadoop_1_8_1_jar",
               "tagName": "library"
             },
             {
@@ -9333,7 +9363,7 @@
           "context": "plugin:org.talend.hadoop.distribution.hdpx",
           "excludeDependencies": "true",
           "id": "DYNAMIC_HDP_2_6_0_3_8_avro_mapred_1_7_7_hadoop2_jar",
-          "mvn_uri": "mvn:org.apache.avro/avro-mapred/1.7.7//hadoop2",
+          "mvn_uri": "mvn:org.apache.avro/avro-mapred/1.7.7/hadoop2",
           "name": "avro-mapred-1.7.7-hadoop2.jar",
           "tagName": "libraryNeeded"
         },
@@ -11741,6 +11771,33 @@
           "id": "DYNAMIC_HDP_2_6_0_3_8_parquet_hadoop_bundle_1_8_1_jar",
           "mvn_uri": "mvn:org.apache.parquet/parquet-hadoop-bundle/1.8.1",
           "name": "parquet-hadoop-bundle-1.8.1.jar",
+          "tagName": "libraryNeeded"
+        },
+        {
+          "childNodes": [],
+          "context": "plugin:org.talend.hadoop.distribution.hdpx",
+          "excludeDependencies": "true",
+          "id": "DYNAMIC_HDP_2_6_0_3_8_kite-data-core-1.0.0_jar",
+          "mvn_uri": "mvn:org.kitesdk/kite-data-core/1.0.0",
+          "name": "kite-data-core-1.0.0.jar",
+          "tagName": "libraryNeeded"
+        },
+        {
+          "childNodes": [],
+          "context": "plugin:org.talend.hadoop.distribution.hdpx",
+          "excludeDependencies": "true",
+          "id": "DYNAMIC_HDP_2_6_0_3_8_kite-data-mapreduce-1.0.0_jar",
+          "mvn_uri": "mvn:org.kitesdk/kite-data-mapreduce/1.0.0",
+          "name": "kite-data-mapreduce-1.0.0.jar",
+          "tagName": "libraryNeeded"
+        },
+        {
+          "childNodes": [],
+          "context": "plugin:org.talend.hadoop.distribution.hdpx",
+          "excludeDependencies": "true",
+          "id": "DYNAMIC_HDP_2_6_0_3_8_kite-hadoop-compatibility-1.0.0_jar",
+          "mvn_uri": "mvn:org.kitesdk/kite-hadoop-compatibility/1.0.0",
+          "name": "kite-hadoop-compatibility-1.0.0.jar",
           "tagName": "libraryNeeded"
         },
         {
