@@ -24,6 +24,7 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 import org.talend.core.model.utils.ContextParameterUtils;
+import org.talend.core.prefs.SSLPreferenceConstants;
 import org.talend.core.utils.TalendQuoteUtils;
 import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
 import org.talend.metadata.managment.ui.utils.ConnectionContextHelper;
@@ -39,6 +40,7 @@ import org.talend.repository.nosql.reflection.NoSQLReflection;
 import org.talend.utils.json.JSONArray;
 import org.talend.utils.json.JSONException;
 import org.talend.utils.json.JSONObject;
+import org.talend.utils.security.StudioEncryption;
 
 public class MongoDBConnectionUtil {
 
@@ -147,7 +149,7 @@ public class MongoDBConnectionUtil {
         if (contextType != null) {
             user = ContextParameterUtils.getOriginalValue(contextType, user);
             pass = ContextParameterUtils.getOriginalValue(contextType, pass);
-        }else{
+        } else {
             pass = connection.getValue(pass, false);
         }
         try {
@@ -246,6 +248,19 @@ public class MongoDBConnectionUtil {
         try {
             String requireAuthAttr = connection.getAttributes().get(IMongoDBAttributes.REQUIRED_AUTHENTICATION);
             boolean requireAuth = requireAuthAttr == null ? false : Boolean.valueOf(requireAuthAttr);
+            //
+            String requireEncryptionAttr = connection.getAttributes().get(IMongoDBAttributes.REQUIRED_ENCRYPTION);
+            boolean requireEncryption = requireEncryptionAttr == null ? false : Boolean.valueOf(requireEncryptionAttr);
+            String trustStorePath = connection.getAttributes().get(IMongoDBAttributes.TRUSTSTORE_FILE);
+            String trustStorePassword = connection
+                    .getValue(connection.getAttributes().get(IMongoDBAttributes.TRUSTSTORE_PASSWORD), false);
+            if (connection.isContextMode()) {
+                ContextType contextType = ConnectionContextHelper.getContextTypeForContextMode(connection);
+                trustStorePath = ContextParameterUtils.getOriginalValue(contextType, trustStorePath);
+                trustStorePassword = ContextParameterUtils.getOriginalValue(contextType, trustStorePassword);
+            }
+            setSSLSystemProperty(requireEncryption, trustStorePath, trustStorePassword);
+
             if(isUpgradeVersion(connection)){
                 db = NoSQLReflection.invokeMethod(getMongo(connection, requireAuth), "getDB", new Object[] { dbName}); //$NON-NLS-1$
             }else{
@@ -388,4 +403,14 @@ public class MongoDBConnectionUtil {
         return false;
     }
 
+    public static void setSSLSystemProperty(boolean isUseSSL, String trustStorePath, String trustStorePassword) {
+        if (isUseSSL) {
+            System.setProperty(SSLPreferenceConstants.TRUSTSTORE_FILE, trustStorePath);
+            System.setProperty(SSLPreferenceConstants.TRUSTSTORE_PASSWORD,
+                    StudioEncryption.getStudioEncryption(StudioEncryption.EncryptionKeyName.SYSTEM).decrypt(trustStorePassword));
+        } else {
+            System.clearProperty(SSLPreferenceConstants.TRUSTSTORE_FILE);
+            System.clearProperty(SSLPreferenceConstants.TRUSTSTORE_PASSWORD);
+        }
+    }
 }

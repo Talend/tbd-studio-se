@@ -31,6 +31,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.talend.commons.ui.swt.formtools.Form;
 import org.talend.commons.ui.swt.formtools.LabelledCombo;
+import org.talend.commons.ui.swt.formtools.LabelledFileField;
 import org.talend.commons.ui.swt.formtools.LabelledText;
 import org.talend.commons.ui.swt.tableviewer.IModifiedBeanListener;
 import org.talend.commons.ui.swt.tableviewer.ModifiedBeanEvent;
@@ -89,6 +90,16 @@ public class MongoDBConnForm extends AbstractNoSQLConnForm {
 
     private Composite replicaComposite;
 
+    protected Group encryptionGroup;
+
+    protected Button checkRequireEncryptionBtn;
+
+    protected Composite encryptionDetailComposite;
+
+    protected LabelledFileField trustStorePath;
+
+    protected LabelledText trustStorePassword;
+
     /**
      * DOC PLV MongoDBConnForm constructor comment.
      *
@@ -116,6 +127,9 @@ public class MongoDBConnForm extends AbstractNoSQLConnForm {
         String database = conn.getAttributes().get(INoSQLCommonAttributes.DATABASE);
         String user = conn.getAttributes().get(INoSQLCommonAttributes.USERNAME);
         String passwd = conn.getValue(conn.getAttributes().get(INoSQLCommonAttributes.PASSWORD), false);
+        String truststoreFile = conn.getAttributes().get(IMongoDBAttributes.TRUSTSTORE_FILE);
+        String truststorePassword = conn.getValue(conn.getAttributes().get(IMongoDBAttributes.TRUSTSTORE_PASSWORD), false);
+        boolean isUseRequireEncryption = Boolean.parseBoolean(conn.getAttributes().get(IMongoDBAttributes.REQUIRED_ENCRYPTION));
         boolean isUseRequireAuth = Boolean.parseBoolean(conn.getAttributes().get(INoSQLCommonAttributes.REQUIRED_AUTHENTICATION));
         boolean isUseReplicaSet = Boolean.parseBoolean(conn.getAttributes().get(IMongoDBAttributes.USE_REPLICA_SET));
         if (validText(dbVersion)) {
@@ -132,12 +146,18 @@ public class MongoDBConnForm extends AbstractNoSQLConnForm {
             userText.setText(user == null ? "" : user); //$NON-NLS-1$
             pwdText.setText(passwd == null ? "" : passwd); //$NON-NLS-1$
         }
+        checkRequireEncryptionBtn.setSelection(isUseRequireEncryption);
+        if (checkRequireEncryptionBtn.getSelection()) {
+            trustStorePath.setText(truststoreFile == null ? "" : truststoreFile); //$NON-NLS-1$
+            trustStorePassword.setText(truststorePassword == null ? "" : truststorePassword); //$NON-NLS-1$
+        }
         initReplicaField();
         if (replicaTableView != null) {
             replicaTableView.getModel().registerDataList(replicaList);
         }
         updateReplicaField();
         updateAuthGroup();
+        updateEncryptionGroup();
     }
 
     @Override
@@ -152,6 +172,10 @@ public class MongoDBConnForm extends AbstractNoSQLConnForm {
                 String.valueOf(checkRequireAuthBtn.getSelection()));
         conn.getAttributes().put(INoSQLCommonAttributes.USERNAME, userText.getText());
         conn.getAttributes().put(INoSQLCommonAttributes.PASSWORD, conn.getValue(pwdText.getText(), true));
+        conn.getAttributes().put(IMongoDBAttributes.REQUIRED_ENCRYPTION,
+                String.valueOf(checkRequireEncryptionBtn.getSelection()));
+        conn.getAttributes().put(IMongoDBAttributes.TRUSTSTORE_FILE, trustStorePath.getText());
+        conn.getAttributes().put(IMongoDBAttributes.TRUSTSTORE_PASSWORD, conn.getValue(trustStorePassword.getText(), true));
         conn.getAttributes().put(IMongoDBAttributes.USE_REPLICA_SET, String.valueOf(checkUseReplicaBtn.getSelection()));
         saveReplicaModel();
     }
@@ -169,6 +193,10 @@ public class MongoDBConnForm extends AbstractNoSQLConnForm {
         if (checkRequireAuthBtn.getSelection()) {
             attributes.add(INoSQLCommonAttributes.USERNAME);
             attributes.add(INoSQLCommonAttributes.PASSWORD);
+        }
+        if (checkRequireEncryptionBtn.getSelection()) {
+            attributes.add(IMongoDBAttributes.TRUSTSTORE_FILE);
+            attributes.add(IMongoDBAttributes.TRUSTSTORE_PASSWORD);
         }
     }
 
@@ -198,6 +226,7 @@ public class MongoDBConnForm extends AbstractNoSQLConnForm {
     protected void addConnFields(Composite parent) {
         addConnectionGroup(parent);
         addAuthGroup(parent);
+        addEncryptionGroup(parent);
     }
 
     /**
@@ -286,6 +315,27 @@ public class MongoDBConnForm extends AbstractNoSQLConnForm {
         pwdText.getTextControl().setEchoChar('*');
     }
 
+    private void addEncryptionGroup(Composite composite) {
+        encryptionGroup = Form.createGroup(composite, 1, Messages.getString("MongoDBConnForm.encryption"), 110); //$NON-NLS-1$
+        encryptionGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        checkRequireEncryptionBtn = new Button(encryptionGroup, SWT.CHECK);
+        checkRequireEncryptionBtn.setText(Messages.getString("MongoDBConnForm.encryption.requireSSLEncryption")); //$NON-NLS-1$
+        checkRequireEncryptionBtn.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 5, 1));
+
+        encryptionDetailComposite = new Composite(encryptionGroup, SWT.NULL);
+        GridLayout encryptionDetailCompLayout = new GridLayout(5, false);
+        encryptionDetailCompLayout.marginWidth = 0;
+        encryptionDetailCompLayout.marginHeight = 0;
+        encryptionDetailComposite.setLayout(encryptionDetailCompLayout);
+        encryptionDetailComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        String[] extensions = { "*.*" }; //$NON-NLS-1$
+        trustStorePath = new LabelledFileField(encryptionDetailComposite,
+                Messages.getString("MongoDBConnForm.encryption.trustStorePath"), extensions); //$NON-NLS-1$
+        trustStorePassword = new LabelledText(encryptionDetailComposite,
+                Messages.getString("MongoDBConnForm.encryption.trustStorePassword"), 1, SWT.PASSWORD | SWT.BORDER | SWT.SINGLE); //$NON-NLS-1$
+        trustStorePassword.getTextControl().setEchoChar('*');
+    }
+
     /**
      * DOC PLV Comment method "updateAuthGroup".
      */
@@ -302,6 +352,23 @@ public class MongoDBConnForm extends AbstractNoSQLConnForm {
                 pwdText.getTextControl().setEchoChar('\0');
             }
         }
+    }
+
+    private void updateEncryptionGroup() {
+        boolean selection = checkRequireEncryptionBtn.getSelection();
+        if (!isContextMode()) {
+            trustStorePath.setEditable(selection);
+            trustStorePassword.setEditable(selection);
+            trustStorePassword.getTextControl().setEchoChar('*');
+        } else {
+            trustStorePath.setEditable(false);
+            trustStorePassword.setEditable(false);
+            if (trustStorePassword.getText().startsWith(ContextParameterUtils.JAVA_NEW_CONTEXT_PREFIX)) {
+                trustStorePassword.getTextControl().setEchoChar('\0');
+            }
+        }
+        hideControl(encryptionDetailComposite, !selection);
+        hideControl(encryptionGroup, false);
     }
 
     /*
@@ -439,6 +506,41 @@ public class MongoDBConnForm extends AbstractNoSQLConnForm {
                 saveReplicaModel();
             }
         });
+
+        checkRequireEncryptionBtn.addSelectionListener(new SelectionAdapter() {
+
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                boolean hide = !checkRequireEncryptionBtn.getSelection();
+                hideControl(encryptionDetailComposite, hide);
+                hideControl(encryptionGroup, false);
+                checkFieldsValue();
+                updateEncryptionGroup();
+                updateAttributes();
+                getConnection().getAttributes().put(IMongoDBAttributes.REQUIRED_ENCRYPTION,
+                        String.valueOf(checkRequireEncryptionBtn.getSelection()));
+            }
+        });
+
+        trustStorePath.addModifyListener(new ModifyListener() {
+
+            @Override
+            public void modifyText(ModifyEvent e) {
+                checkFieldsValue();
+                getConnection().getAttributes().put(IMongoDBAttributes.TRUSTSTORE_FILE, trustStorePath.getText());
+            }
+        });
+
+        trustStorePassword.addModifyListener(new ModifyListener() {
+
+            @Override
+            public void modifyText(ModifyEvent e) {
+                checkFieldsValue();
+                NoSQLConnection conn = getConnection();
+                getConnection().getAttributes().put(IMongoDBAttributes.TRUSTSTORE_PASSWORD,
+                        conn.getValue(trustStorePassword.getText(), true));
+            }
+        });
     }
 
     private void saveReplicaModel() {
@@ -476,6 +578,7 @@ public class MongoDBConnForm extends AbstractNoSQLConnForm {
     protected void collectConParameters() {
         collectReplicaParameters(checkUseReplicaBtn.getSelection());
         collectAuthParams(checkRequireAuthBtn.getSelection());
+        collectEncryptionParameters(checkRequireEncryptionBtn.getSelection());
     }
 
     private void collectReplicaParameters(boolean isReplica) {
@@ -487,6 +590,11 @@ public class MongoDBConnForm extends AbstractNoSQLConnForm {
             addContextParams(EHadoopParamName.Server, true);
             addContextParams(EHadoopParamName.Port, true);
         }
+    }
+
+    private void collectEncryptionParameters(boolean isEncryption) {
+        addContextParams(EHadoopParamName.TrustStorePath, isEncryption);
+        addContextParams(EHadoopParamName.TrustStorePassword, isEncryption);
     }
 
     /*
@@ -508,6 +616,10 @@ public class MongoDBConnForm extends AbstractNoSQLConnForm {
         if (checkRequireAuthBtn.getSelection()) {
             getConnection().getAttributes().put(INoSQLCommonAttributes.USERNAME, userText.getText());
             getConnection().getAttributes().put(INoSQLCommonAttributes.PASSWORD, pwdText.getText());
+        }
+        if (checkRequireEncryptionBtn.getSelection()) {
+            getConnection().getAttributes().put(IMongoDBAttributes.TRUSTSTORE_FILE, trustStorePath.getText());
+            getConnection().getAttributes().put(IMongoDBAttributes.TRUSTSTORE_PASSWORD, trustStorePassword.getText());
         }
     }
 }
