@@ -77,6 +77,8 @@ public class DynamicHDPSparkBatchModuleGroup extends DynamicSparkBatchModuleGrou
                 .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.SQOOP_MODULE_GROUP.getModuleName());
         String sqoopParquetRuntimeId = pluginAdapter
                 .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.SQOOP_PARQUET_MODULE_GROUP.getModuleName());
+        String hBaseRuntimeId = pluginAdapter
+                .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.HBASE_MODULE_GROUP.getModuleName());
 
         checkRuntimeId(spark2RuntimeId);
         checkRuntimeId(sparkMRRequiredRuntimeId);
@@ -88,6 +90,7 @@ public class DynamicHDPSparkBatchModuleGroup extends DynamicSparkBatchModuleGrou
         checkRuntimeId(atlasSpark2RuntimeId);
         checkRuntimeId(sqoopRuntimeId);
         checkRuntimeId(sqoopParquetRuntimeId);
+        checkRuntimeId(hBaseRuntimeId);
 
         ComponentCondition useAtlas = new SimpleComponentCondition(new BasicExpression(MRConstant.USE_ATLAS));
         ComponentCondition atlasSpark1x = new MultiComponentCondition(useAtlas, BooleanOperator.AND, conditionSpark1);
@@ -125,7 +128,10 @@ public class DynamicHDPSparkBatchModuleGroup extends DynamicSparkBatchModuleGrou
             moduleGroups.add(new DistributionModuleGroup(sqoopParquetRuntimeId, false, conditionSpark1));
             moduleGroups.add(new DistributionModuleGroup(sqoopParquetRuntimeId, false, conditionSpark2));
         }
-
+        if (StringUtils.isNotBlank(hBaseRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(hBaseRuntimeId, true, conditionSpark1));
+            moduleGroups.add(new DistributionModuleGroup(hBaseRuntimeId, true, conditionSpark2));
+        }
         return moduleGroups;
     }
 }
