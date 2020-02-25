@@ -45,5 +45,13 @@ pipeline {
                 }
             }
         }
+
+        stage ('build') {
+            steps {
+                build job: '/tbd-studio-se/tbd-studio-se-build', parameters: [
+                        string(name: 'BRANCH_NAME', value: env.BRANCH_NAME)
+                ]
+            }
+        }
     }
 }
