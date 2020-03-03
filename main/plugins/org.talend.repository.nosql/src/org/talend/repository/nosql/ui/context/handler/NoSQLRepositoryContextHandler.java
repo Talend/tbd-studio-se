@@ -128,14 +128,6 @@ public class NoSQLRepositoryContextHandler extends AbstractRepositoryContextHand
                             }
                         }
                         break;
-                    case TrustStorePath:
-                        ConnectionContextHelper.createParameters(varList, paramName,
-                                conn.getAttributes().get(IMongoDBAttributes.TRUSTSTORE_FILE), javaType);
-                        break;
-                    case TrustStorePassword:
-                        ConnectionContextHelper.createParameters(varList, paramName,
-                                conn.getAttributes().get(IMongoDBAttributes.TRUSTSTORE_PASSWORD), JavaTypesManager.PASSWORD);
-                        break;
                     default:
                     }
                 }
@@ -311,14 +303,6 @@ public class NoSQLRepositoryContextHandler extends AbstractRepositoryContextHand
             } catch (JSONException e) {
                 ExceptionHandler.process(e);
             }
-            break;
-        case TrustStorePath:
-            noSqlConn.getAttributes().put(IMongoDBAttributes.TRUSTSTORE_FILE,
-                    ContextParameterUtils.getNewScriptCode(noSqlVariableName, LANGUAGE));
-            break;
-        case TrustStorePassword:
-            noSqlConn.getAttributes().put(IMongoDBAttributes.TRUSTSTORE_PASSWORD,
-                    ContextParameterUtils.getNewScriptCode(noSqlVariableName, LANGUAGE));
             break;
         default:
         }
