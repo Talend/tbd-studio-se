@@ -12,19 +12,25 @@
 // ============================================================================
 package org.talend.repository.nosql.db.util.mongodb;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.jface.preference.IPreferenceStore;
+import org.talend.commons.exception.ExceptionHandler;
 import org.talend.core.model.utils.ContextParameterUtils;
 import org.talend.core.prefs.SSLPreferenceConstants;
+import org.talend.core.runtime.CoreRuntimePlugin;
+import org.talend.core.ui.utils.PluginUtil;
 import org.talend.core.utils.TalendQuoteUtils;
 import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
 import org.talend.metadata.managment.ui.utils.ConnectionContextHelper;
@@ -92,7 +98,8 @@ public class MongoDBConnectionUtil {
         return canConnect;
     }
 
-    public static synchronized Object getMongo(NoSQLConnection connection, boolean requireAuth) throws NoSQLServerException {
+    public static synchronized Object getMongo(NoSQLConnection connection, boolean requireAuth, boolean requireEncryption)
+            throws NoSQLServerException {
 
         Object mongo = null;
         ClassLoader classLoader = NoSQLClassLoaderFactory.getClassLoader(connection);
@@ -118,7 +125,7 @@ public class MongoDBConnectionUtil {
                         hosts.put(host, port);
                     }
                 }
-                mongo = getMongo(connection, contextType, classLoader, hosts, requireAuth);
+                mongo = getMongo(connection, contextType, classLoader, hosts, requireAuth, requireEncryption);
             }else{
                 String host = connection.getAttributes().get(IMongoDBAttributes.HOST);
                 String port = connection.getAttributes().get(IMongoDBAttributes.PORT);
@@ -130,7 +137,7 @@ public class MongoDBConnectionUtil {
                 if (host != null && port != null) {
                     hosts.put(host, port);
                 }
-                mongo = getMongo(connection, contextType, classLoader, hosts, requireAuth);
+                mongo = getMongo(connection, contextType, classLoader, hosts, requireAuth, requireEncryption);
             }
         } catch (Exception e) {
             throw new NoSQLServerException(e);
@@ -139,7 +146,8 @@ public class MongoDBConnectionUtil {
     }
 
     private static synchronized Object getMongo(NoSQLConnection connection, ContextType contextType,
-            ClassLoader classLoader, Map<String,String> hosts, boolean requireAuth) throws NoSQLServerException{
+            ClassLoader classLoader, Map<String, String> hosts, boolean requireAuth, boolean requireEncryption)
+            throws NoSQLServerException {
         List<Object> addrs = new ArrayList<Object>();
         List<Object> credentials = new ArrayList<Object>();
         Object mongo = null;
@@ -153,6 +161,10 @@ public class MongoDBConnectionUtil {
             pass = connection.getValue(pass, false);
         }
         try {
+            Object builder = NoSQLReflection.newInstance("com.mongodb.MongoClientOptions$Builder", new Object[0], classLoader); //$NON-NLS-1$
+            NoSQLReflection.invokeMethod(builder, "sslEnabled", new Object[] { requireEncryption }, boolean.class); //$NON-NLS-1$
+            Object build = NoSQLReflection.invokeMethod(builder, "build", new Object[0]); //$NON-NLS-1$
+
             for(String host : hosts.keySet()){
                 String port = hosts.get(host);
                 Object serverAddress = NoSQLReflection.newInstance(
@@ -160,20 +172,16 @@ public class MongoDBConnectionUtil {
                         classLoader, String.class, int.class);
                 addrs.add(serverAddress);
             }
-            if(!requireAuth){
-                mongo = NoSQLReflection.newInstance(
-                        "com.mongodb.MongoClient", new Object[] { addrs}, //$NON-NLS-1$
-                        classLoader, List.class);
-            }else{
-                String database = connection.getAttributes().get(IMongoDBAttributes.DATABASE);
-                Object credential = NoSQLReflection.invokeStaticMethod("com.mongodb.MongoCredential",
-                        "createScramSha1Credential", new Object[] { user, database, pass.toCharArray()}, //$NON-NLS-1$
-                        classLoader, String.class, String.class, char[].class);
+            String database = connection.getAttributes().get(IMongoDBAttributes.DATABASE);
+            if (requireAuth) {
+                Object credential = NoSQLReflection.invokeStaticMethod("com.mongodb.MongoCredential", "createScramSha1Credential", //$NON-NLS-1$ //$NON-NLS-2$
+                        new Object[] { user, database, pass.toCharArray() }, classLoader, String.class, String.class,
+                        char[].class);
                 credentials.add(credential);
-                mongo = NoSQLReflection.newInstance(
-                        "com.mongodb.MongoClient", new Object[] { addrs, credentials}, //$NON-NLS-1$
-                        classLoader, List.class, List.class);
             }
+            mongo = NoSQLReflection.newInstance("com.mongodb.MongoClient", new Object[] { addrs, credentials, build }, //$NON-NLS-1$
+                    classLoader, List.class, List.class,
+                    Class.forName("com.mongodb.MongoClientOptions", true, classLoader)); //$NON-NLS-1$
             mongos.add(mongo);
         } catch (Exception e) {
             throw new NoSQLServerException(e);
@@ -251,18 +259,12 @@ public class MongoDBConnectionUtil {
             //
             String requireEncryptionAttr = connection.getAttributes().get(IMongoDBAttributes.REQUIRED_ENCRYPTION);
             boolean requireEncryption = requireEncryptionAttr == null ? false : Boolean.valueOf(requireEncryptionAttr);
-            String trustStorePath = connection.getAttributes().get(IMongoDBAttributes.TRUSTSTORE_FILE);
-            String trustStorePassword = connection
-                    .getValue(connection.getAttributes().get(IMongoDBAttributes.TRUSTSTORE_PASSWORD), false);
-            if (connection.isContextMode()) {
-                ContextType contextType = ConnectionContextHelper.getContextTypeForContextMode(connection);
-                trustStorePath = ContextParameterUtils.getOriginalValue(contextType, trustStorePath);
-                trustStorePassword = ContextParameterUtils.getOriginalValue(contextType, trustStorePassword);
-            }
-            setSSLSystemProperty(requireEncryption, trustStorePath, trustStorePassword);
+
+            updateConfigProperties(requireEncryption);
 
             if(isUpgradeVersion(connection)){
-                db = NoSQLReflection.invokeMethod(getMongo(connection, requireAuth), "getDB", new Object[] { dbName}); //$NON-NLS-1$
+                db = NoSQLReflection.invokeMethod(getMongo(connection, requireAuth, requireEncryption), "getDB", //$NON-NLS-1$
+                        new Object[] { dbName });
             }else{
                 db = NoSQLReflection.invokeMethod(getMongo(connection), "getDB", new Object[] { dbName }); //$NON-NLS-1$
                 // Do authenticate
@@ -294,7 +296,8 @@ public class MongoDBConnectionUtil {
         List<String> databaseNames = null;
         try {
             if(isUpgradeVersion(connection)){
-                databaseNames = (List<String>) NoSQLReflection.invokeMethod(getMongo(connection, false), "getDatabaseNames"); //$NON-NLS-1$
+                databaseNames = (List<String>) NoSQLReflection.invokeMethod(getMongo(connection, false, false),
+                        "getDatabaseNames"); //$NON-NLS-1$
             }else{
                 databaseNames = (List<String>) NoSQLReflection.invokeMethod(getMongo(connection), "getDatabaseNames"); //$NON-NLS-1$
             }
@@ -403,14 +406,23 @@ public class MongoDBConnectionUtil {
         return false;
     }
 
-    public static void setSSLSystemProperty(boolean isUseSSL, String trustStorePath, String trustStorePassword) {
+    public static void updateConfigProperties(boolean isUseSSL) {
         if (isUseSSL) {
-            System.setProperty(SSLPreferenceConstants.TRUSTSTORE_FILE, trustStorePath);
-            System.setProperty(SSLPreferenceConstants.TRUSTSTORE_PASSWORD,
-                    StudioEncryption.getStudioEncryption(StudioEncryption.EncryptionKeyName.SYSTEM).decrypt(trustStorePassword));
-        } else {
-            System.clearProperty(SSLPreferenceConstants.TRUSTSTORE_FILE);
-            System.clearProperty(SSLPreferenceConstants.TRUSTSTORE_PASSWORD);
+            try {
+                IPreferenceStore store = CoreRuntimePlugin.getInstance().getCoreService().getPreferenceStore();
+                File configFile = PluginUtil.getStudioConfigFile();
+                Properties configProperties = PluginUtil.readProperties(configFile);
+                configProperties.setProperty(SSLPreferenceConstants.TRUSTSTORE_TYPE,
+                        store.getString(SSLPreferenceConstants.TRUSTSTORE_TYPE));
+                configProperties.setProperty(SSLPreferenceConstants.TRUSTSTORE_FILE,
+                        store.getString(SSLPreferenceConstants.TRUSTSTORE_FILE));
+                configProperties.setProperty(SSLPreferenceConstants.TRUSTSTORE_PASSWORD,
+                        StudioEncryption.getStudioEncryption(StudioEncryption.EncryptionKeyName.SYSTEM)
+                                .decrypt(store.getString(SSLPreferenceConstants.TRUSTSTORE_PASSWORD)));
+                PluginUtil.saveProperties(configFile, configProperties, null);
+            } catch (Exception e) {
+                ExceptionHandler.process(e);
+            }
         }
     }
 }
