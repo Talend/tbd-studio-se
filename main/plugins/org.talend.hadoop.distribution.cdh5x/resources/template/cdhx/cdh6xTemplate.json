@@ -412,6 +412,13 @@
 			"description": "",
 			"exclusions": [
 				{
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-exec",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
 					"groupId": "io.netty",
 					"artifactId": "*",
 					"classifier": "",
@@ -574,77 +581,12 @@
 		},
 		{
 			"id": "hive-exec",
-			"type": "BASE",
+			"type": "STANDARD",
 			"context": "{properties.context}",
-			"groupId": "org.apache.hive",
-			"artifactId": "hive-exec",
-			"classifier": "",
-			"description": "",
-			"exclusions": [
-				{
-					"groupId": "org.apache.curator",
-					"artifactId": "apache-curator",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
-					"groupId": "eigenbase",
-					"artifactId": "eigenbase-properties",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
-					"groupId": "org.pentaho",
-					"artifactId": "pentaho-aggdesigner-algorithm",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
-					"groupId": "xerces",
-					"artifactId": "*",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
-					"groupId": "org.apache.spark",
-					"artifactId": "spark-core_2.11",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
-					"groupId": "jdk.tools",
-					"artifactId": "*",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-                {
-                    "groupId": "org.glassfish",
-                    "artifactId": "javax.el",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                },
-				{
-					"groupId": "org.cloudera.logredactor",
-					"artifactId": "*",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-                {
-                    "groupId": "org.apache.logging.log4j",
-                    "artifactId": "*",
-					"classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-			]
+			"jarName": "hive-exec-shade-2.1.1-cdh6.1.1.jar",
+			"mvnUri": "mvn:org.talend.libraries/hive-exec-shade-2.1.1-cdh6.1.1/6.0.0",
+			"useStudioRepository": "true",
+			"description": ""
 		},
 		{
 			"id": "hive-hbase-handler",
@@ -655,6 +597,13 @@
 			"classifier": "",
 			"description": "",
 			"exclusions": [
+				{
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-exec",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
 				{
 					"groupId": "eigenbase",
 					"artifactId": "eigenbase-properties",
@@ -794,6 +743,13 @@
 			"description": "",
 			"exclusions": [
 				{
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-exec",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
 					"groupId": "org.apache.curator",
 					"artifactId": "apache-curator",
 					"classifier": "",
@@ -868,6 +824,13 @@
 			"description": "",
 			"exclusions": [
 				{
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-exec",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
 					"groupId": "org.apache.curator",
 					"artifactId": "apache-curator",
 					"classifier": "",
@@ -934,6 +897,13 @@
 			"classifier": "",
 			"description": "",
 			"exclusions": [
+				{
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-exec",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
 				{
 					"groupId": "org.apache.curator",
 					"artifactId": "apache-curator",
@@ -1432,6 +1402,13 @@
 			"classifier": "",
 			"description": "",
 			"exclusions": [
+				{
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-exec",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
 				{
 					"groupId": "org.apache.curator",
 					"artifactId": "apache-curator",
