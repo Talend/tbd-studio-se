@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<component name="DynamicCDPDistribution">
+  <implementation class="org.talend.hadoop.distribution.cdp.DynamicCDPDistribution"/>
+  <service>
+    <provide interface="org.talend.hadoop.distribution.dynamic.cdp.IDynamicCDPDistribution"/>
+  </service>
+</component>
