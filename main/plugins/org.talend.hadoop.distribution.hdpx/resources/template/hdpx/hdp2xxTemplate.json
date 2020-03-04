@@ -23,7 +23,14 @@
       "mvnUri": "mvn:org.talend.libraries/commons-lang3-3.5/6.2.0",
       "useStudioRepository": "true",
       "supportedSparkVersions": [
-        "SPARK_2_2",antlr
+       "SPARK_2_2",
+       "SPARK_2_3"	
+      ],	
+      "description": ""	
+    },	
+    {	
+      "id": "avro-1.8.0",	
+      "type": "STANDARD",
       "context": "{properties.context}",
       "jarName": "avro-1.8.0.jar",
       "mvnUri": "mvn:org.talend.libraries/avro-1.8.0/6.0.0",
