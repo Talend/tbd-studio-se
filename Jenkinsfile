@@ -48,10 +48,12 @@ pipeline {
 
         stage ('build') {
             steps {
-                script {
-                    // CHANGE_ID is set only for pull requests, so it is safe to access the pullRequest global variable
-                    if (env.CHANGE_ID) {
-                        pullRequest.addLabel('Build Running')
+                step {
+                    script {
+                        // CHANGE_ID is set only for pull requests, so it is safe to access the pullRequest global variable
+                        if (env.CHANGE_ID) {
+                            pullRequest.addLabel('Build Running')
+                        }
                     }
                 }
 
@@ -61,8 +63,10 @@ pipeline {
             }
             post {
                 always {
-                    if (env.CHANGE_ID) {
-                        pullRequest.removeLabel('Build Running')
+                    script {
+                        if (env.CHANGE_ID) {
+                            pullRequest.removeLabel('Build Running')
+                        }
                     }
                 }
             }
