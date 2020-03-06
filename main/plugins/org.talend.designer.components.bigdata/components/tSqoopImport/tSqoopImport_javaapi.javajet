@@ -239,6 +239,7 @@
 	}
 	
 	sqoopOptions_<%=cid%>.loadProperties(additionalProperties_<%=cid%>);
+	sqoopOptions_<%=cid%>.setExtraArgs(new String[] {"-Dmapreduce.job.user.classpath.first=true"});
 	
 	//restoring java/hive mapping because SqoopOptions.loadProperties() rewrites it completely
 	//all mapping from additional properties are preserved
