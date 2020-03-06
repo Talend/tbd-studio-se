@@ -2,16 +2,16 @@
 <?eclipse version="3.2"?>
 <plugin>
     <extension point="org.talend.core.runtime.librariesNeeded">
-        
-        <!-- Big Data launcher libraries -->    
+
+        <!-- Big Data launcher libraries -->
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdinsight340"
-            id="talend-bigdata-launcher-1.1.0-20160405"
-            name="talend-bigdata-launcher-1.1.0-20160405.jar"
-            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-1.1.0-20160405/6.0.0">
+                context="plugin:org.talend.hadoop.distribution.hdinsight340"
+                id="talend-bigdata-launcher-platform-2.0.2"
+                name="talend-bigdata-launcher-platform-2.0.2.jar"
+                mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-platform-2.0.2/6.0.0">
         </libraryNeeded>
-        
-        <!-- HDFS libraries -->    
+
+        <!-- HDFS libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdinsight340"
             id="hadoop-hdfs-hdinsight340"
@@ -30,8 +30,8 @@
             name="hadoop-auth-2.7.1.2.4.1.0-327.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-auth-2.7.1.2.4.1.0-327/6.0.0">
         </libraryNeeded>
-        
-        <!-- Map/Reduce libraries -->    
+
+        <!-- Map/Reduce libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdinsight340"
             id="hadoop-mapreduce-client-core-hdinsight340"
@@ -74,8 +74,8 @@
             name="hadoop-yarn-server-web-proxy-2.7.1.2.4.1.0-327.jar"
             mvn_uri="mvn:org.talend.libraries/hadoop-yarn-server-web-proxy-2.7.1.2.4.1.0-327/6.0.0">
         </libraryNeeded>
-        
-        <!-- Hive libraries -->    
+
+        <!-- Hive libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdinsight340"
             id="hive-exec-hdinsight340"
@@ -118,7 +118,7 @@
             name="parquet-hive-bundle-1.6.0.jar"
             mvn_uri="mvn:org.talend.libraries/parquet-hive-bundle-1.6.0/6.0.0">
         </libraryNeeded>
-        
+
         <!-- Spark libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdinsight340"
@@ -126,11 +126,11 @@
             name="spark-assembly-1.6.0.2.4.0.0-169-hadoop2.7.1.2.4.0.0-169.jar"
             mvn_uri="mvn:org.talend.libraries/spark-assembly-1.6.0.2.4.0.0-169-hadoop2.7.1.2.4.0.0-169/6.0.0">
         </libraryNeeded>
-        
+
         <!-- GraphFrames libraries -->
-		<libraryNeeded 
+		<libraryNeeded
 			context="plugin:org.talend.hadoop.distribution.hdinsight340"
-			id="graphframes-0.5.0-spark1.6-s_2.10.jar" 
+			id="graphframes-0.5.0-spark1.6-s_2.10.jar"
 			name="graphframes-0.5.0-spark1.6-s_2.10.jar"
 			mvn_uri="mvn:org.talend.libraries/graphframes-0.5.0-spark1.6-s_2.10/6.0.0">
 		</libraryNeeded>
@@ -141,30 +141,30 @@
             id="avro-hdinsight340"
             name="avro-1.7.7.jar"
             mvn_uri="mvn:org.apache.avro/avro/1.7.7">
-        </libraryNeeded>        
+        </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdinsight340"
             id="avro-compiler-hdinsight340"
             name="avro-compiler-1.7.7.jar"
             mvn_uri="mvn:org.talend.libraries/avro-compiler-1.7.7/6.0.0">
-        </libraryNeeded>   
+        </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.libraries.esb"
             id="joda-time-2.7.jar"
             name="joda-time-2.7.jar"
             mvn_uri="mvn:org.talend.libraries/joda-time-2.7/6.0.0">
-        </libraryNeeded>        
-        
+        </libraryNeeded>
+
         <!-- Groups -->
-        
+
         <!-- Big Data launcher group -->
         <libraryNeededGroup
                 description="Big Data launcher libraries for HDInsight 3.4.0"
                 id="BIGDATA-LAUNCHER-LIB-HD_INSIGHT_3_4_0"
                 name="BIGDATA-LAUNCHER-LIB-HD_INSIGHT_3_4_0"  >
-             <library id="talend-bigdata-launcher-1.1.0-20160405" />
+            <library id="talend-bigdata-launcher-platform-2.0.2"/>
         </libraryNeededGroup>
-        
+
         <!-- HDFS group -->
         <libraryNeededGroup
                 description="HDFS libraries for HDInsight 3.4.0"
@@ -188,7 +188,7 @@
              <library id="jackson-mapper-asl-1.9.14-TALEND.jar" />
              <library id="jackson-core-asl-1.9.14-TALEND.jar" />
         </libraryNeededGroup>
-        
+
         <!-- Map/Reduce group -->
         <libraryNeededGroup
                 description="Map/Reduce libraries for HDInsight 3.4.0"
@@ -206,7 +206,7 @@
              <library id="jackson-core-asl-1.9.14-TALEND.jar" />
              <library id="htrace-core-3.2.0-incubating.jar" />
         </libraryNeededGroup>
-        
+
         <!-- Map/Reduce parquet group -->
         <libraryNeededGroup
                 description="Map/Reduce parquet libraries for HDInsight 3.4.0"
@@ -216,7 +216,7 @@
              <library id="snappy-java-1.0.5.jar" />
              <library id="jodd-core-3.5.2.jar" />
         </libraryNeededGroup>
-        
+
         <!-- Hive parquet group -->
         <libraryNeededGroup
                 description="Hive Parquet libraries for HDInsight 3.4.0"
@@ -225,7 +225,7 @@
             <library id="parquet-hive-bundle-1.6.0.jar" />
             <library id="snappy-java-1.0.5.jar" />
         </libraryNeededGroup>
-        
+
         <!-- Spark group -->
         <libraryNeededGroup
                 description="Spark libraries for HDInsight 3.4.0"
@@ -241,8 +241,8 @@
              <library id="parquet-hadoop-bundle-cdh5.5.0"/>
              <library id="avro-hdinsight340" />
              <library id="avro-compiler-hdinsight340" />
-        </libraryNeededGroup>    
-        
+        </libraryNeededGroup>
+
         <!-- Spark Parquet group MRREQUIRED -->
         <libraryNeededGroup
                 description="Spark libraries for HDInsight 3.4.0 that are MRREQUIRED"
@@ -252,7 +252,7 @@
              <library id="parquet-hadoop-bundle-hdinsight340"/>
              <library id="jodd-core-3.5.2.jar" />
         </libraryNeededGroup>
-        
+
         <!-- S3 group -->
         <libraryNeededGroup
                 description="S3 libraries for HDInsight 3.4.0"
@@ -260,7 +260,7 @@
                 name="S3-LIB-HD_INSIGHT_3_4_0">
              <library id="jets3t-0.9.0" />
         </libraryNeededGroup>
-        
+
         <!-- Spark S3 group MRREQUIRED -->
         <libraryNeededGroup
                 description="Spark S3 libraries for HDInsight 3.4.0 that are MRREQUIRED"
@@ -272,10 +272,10 @@
              <library id="httpclient-4.2.5.jar" />
              <library id="httpcore-4.2.5.jar" />
         </libraryNeededGroup>
-        
+
         <!-- GraphFrames group MRREQUIRED -->
 		<libraryNeededGroup
-			description="GraphFrames libraries for HDInsight 3.4.0 that are MRREQUIRED" 
+			description="GraphFrames libraries for HDInsight 3.4.0 that are MRREQUIRED"
 			id="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-HD_INSIGHT_3_4_0"
 			name="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-HD_INSIGHT_3_4_0">
 			<library id="graphframes-0.5.0-spark1.6-s_2.10.jar" />
@@ -290,8 +290,7 @@
             <library id="datanucleus-core-3.2.10.jar"/>
             <library id="datanucleus-rdbms-3.2.9.jar"/>
         </libraryNeededGroup>
-        
-        <!-- Spark Azure group MRREQUIRED 
+        <!-- Spark Azure group MRREQUIRED
              Azure Blob & Datalake support have been disabled for now on this distribution
              New versions of this distribution should be tested for Azure support and
              the changes backported to all earlier versions
@@ -307,9 +306,9 @@
     </extension>
     <extension
           point="org.talend.core.runtime.classloader_provider">
-      <classloader
-            index="MAP_REDUCE:MICROSOFT_HD_INSIGHT:MICROSOFT_HD_INSIGHT_3_4"
-            libraries="azure-storage-1.2.0.jar;commons-cli-1.2.jar;commons-codec-1.9.jar;commons-collections-3.2.1.jar;commons-configuration-1.6.jar;commons-lang-2.6.jar;commons-logging-1.2.jar;cxf-api-2.7.7.jar;cxf-rt-bindings-xml-2.7.7.jar;cxf-rt-core-2.7.7.jar;cxf-rt-frontend-jaxrs-2.7.7.jar;cxf-rt-transports-http-2.7.7.jar;guava-12.0.1.jar;hadoop-auth-2.7.1.2.4.1.0-327.jar;hadoop-common-2.7.1.2.4.1.0-327.jar;hadoop-hdfs-2.7.1.2.4.1.0-327.jar;hadoop-mapreduce-client-common-2.7.1.2.4.1.0-327.jar;hadoop-mapreduce-client-core-2.7.1.2.4.1.0-327.jar;hadoop-mapreduce-client-jobclient-2.7.1.2.4.1.0-327.jar;hadoop-yarn-api-2.7.1.2.4.1.0-327.jar;hadoop-yarn-client-2.7.1.2.4.1.0-327.jar;hadoop-yarn-common-2.7.1.2.4.1.0-327.jar;hadoop-yarn-server-web-proxy-2.7.1.2.4.1.0-327.jar;htrace-core-3.2.0-incubating.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-mapper-asl-1.9.14-TALEND.jar;javax.ws.rs-api-2.0-m10.jar;json_simple-1.1.jar;org.apache.commons.httpclient_3.1.0.v201012070820.jar;parquet-hadoop-bundle-1.6.0.jar;protobuf-java-2.5.0.jar;slf4j-api-1.7.5.jar;slf4j-log4j12-1.7.5.jar;snappy-java-1.0.5.jar;talend-bigdata-launcher-1.1.0-2016040.jar;talend-bigdata-launcher-1.1.0-20160405.jar;wsdl4j-1.6.3.jar">
-      </classloader>             
+        <classloader
+                index="MAP_REDUCE:MICROSOFT_HD_INSIGHT:MICROSOFT_HD_INSIGHT_3_4"
+                libraries="azure-storage-1.2.0.jar;commons-cli-1.2.jar;commons-codec-1.9.jar;commons-collections-3.2.1.jar;commons-configuration-1.6.jar;commons-lang-2.6.jar;commons-logging-1.2.jar;guava-12.0.1.jar;hadoop-auth-2.7.1.2.4.1.0-327.jar;hadoop-common-2.7.1.2.4.1.0-327.jar;hadoop-hdfs-2.7.1.2.4.1.0-327.jar;hadoop-mapreduce-client-common-2.7.1.2.4.1.0-327.jar;hadoop-mapreduce-client-core-2.7.1.2.4.1.0-327.jar;hadoop-mapreduce-client-jobclient-2.7.1.2.4.1.0-327.jar;hadoop-yarn-api-2.7.1.2.4.1.0-327.jar;hadoop-yarn-client-2.7.1.2.4.1.0-327.jar;hadoop-yarn-common-2.7.1.2.4.1.0-327.jar;hadoop-yarn-server-web-proxy-2.7.1.2.4.1.0-327.jar;htrace-core-3.2.0-incubating.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-mapper-asl-1.9.14-TALEND.jar;javax.ws.rs-api-2.1.jar;json_simple-1.1.jar;org.apache.commons.httpclient_3.1.0.v201012070820.jar;parquet-hadoop-bundle-1.6.0.jar;protobuf-java-2.5.0.jar;slf4j-api-1.7.5.jar;slf4j-log4j12-1.7.5.jar;snappy-java-1.0.5.jar;talend-bigdata-launcher-platform-2.0.2.jar;wsdl4j-1.6.3.jar">
+        </classloader>
     </extension>
 </plugin>

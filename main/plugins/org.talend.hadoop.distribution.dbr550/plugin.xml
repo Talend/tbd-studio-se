@@ -19,9 +19,9 @@
         </libraryNeeded>        
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dbr550"
-            id="talend-bigdata-launcher-platform-2.0.1.jar"
-            name="talend-bigdata-launcher-platform-2.0.1.jar"
-            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-platform-2.0.1/6.0.0">
+            id="talend-bigdata-launcher-platform-2.0.4.jar"
+            name="talend-bigdata-launcher-platform-2.0.4.jar"
+            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-platform-2.0.4/6.0.0">
         </libraryNeeded>
 		<libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dbr550"
@@ -178,20 +178,6 @@
             uripath="platform:/plugin/org.talend.libraries.jackson/lib/jackson-core-2.6.7.jar">
         </libraryNeeded>
         <libraryNeeded
-            context="plugin:org.talend.libraries.apache.cxf"
-            id="cxf-rt-rs-client-3.2.4.jar"
-            name="cxf-rt-rs-client-3.2.4.jar"
-            mvn_uri="mvn:org.apache.cxf/cxf-rt-rs-client/3.2.4"
-            uripath="platform:/plugin/org.talend.libraries.apache.cxf/lib/cxf-rt-rs-client-3.2.4.jar">
-        </libraryNeeded>
-        <libraryNeeded
-            context="plugin:org.talend.libraries.apache.cxf"
-            id="cxf-bundle-jaxrs-2.7.18.jar"
-            name="cxf-bundle-jaxrs-2.7.18.jar"
-            mvn_uri="mvn:org.apache.cxf/cxf-bundle-jaxrs/2.7.18"
-            uripath="platform:/plugin/org.talend.libraries.apache.cxf/lib/cxf-bundle-jaxrs-2.7.18.jar">
-        </libraryNeeded>
-        <libraryNeeded
             context=""
             id="javax.ws.rs-api-2.0-m10.jar"
             name="javax.ws.rs-api-2.0-m10.jar"
@@ -258,7 +244,7 @@
                 description="Big Data launcher libraries for DBR550"
                 id="BIGDATA-LAUNCHER-LIB-DBR550"
                 name="BIGDATA-LAUNCHER-LIB-DBR550"  >
-			<library id="talend-bigdata-launcher-platform-2.0.1.jar" />
+			<library id="talend-bigdata-launcher-platform-2.0.4.jar" />
 			<library id="gson-2.2.4.jar" />
 			<library id="jackson-core-2.6.7.jar" />
 			<library id="jackson-databind-2.6.7.1.jar" />
@@ -276,8 +262,6 @@
              <library id="commons-lang-2.6.jar"/>
              <library id="commons-lang3-3.5.jar"/>
              <library id="commons-logging-1.1.3.jar"/>
-             <library id="cxf-rt-rs-client-3.2.4.jar"/>
-             <library id="cxf-bundle-jaxrs-2.7.18.jar"/>
              <library id="hadoop-common-2.7.3.jar"/>
              <library id="hadoop-mapreduce-client-core-2.7.3.jar"/>
              <library id="kryo-shaded-4.0.2.jar"/>
