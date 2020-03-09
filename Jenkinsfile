@@ -74,14 +74,17 @@ pipeline {
                     def build_job = build job: '/tbd-studio-se/tbd-studio-se-build', parameters: [
                             string(name: 'BRANCH_NAME', value: env.BRANCH_NAME)
                     ]
+
+                    env.DOWNSTREAM_URL=build_job.BUILD_URL
+                    env.DOWNSTREAM_BUILD_NUMBER=build_job.BUILD_NUMBER
                 }
             }
             post {
                 success {
                     script {
                         if (env.CHANGE_ID) {
-                            pullRequest.createStatus('success', 'tbd-studio-se-build','tests results', "${build_job.BUILD_URL}/testReport/")
-                            pullRequest.createStatus('success', 'tbd-studio-se-build','build pipeline', "'${build_job.BUILD_URL}/../../../../../blue/organizations/jenkins/tbd-studio-se%2Ftbd-studio-se-build/detail/tbd-studio-se-build/${build_job.BUILD_NUMBER}/pipeline'")
+                            pullRequest.createStatus('success', 'tbd-studio-se-build','tests results', "${env.DOWNSTREAM_URL}/testReport/")
+                            pullRequest.createStatus('success', 'tbd-studio-se-build','build pipeline', "'${env.DOWNSTREAM_URL}/../../../../../blue/organizations/jenkins/tbd-studio-se%2Ftbd-studio-se-build/detail/tbd-studio-se-build/${env.DOWNSTREAM_BUILD_NUMBER}/pipeline'")
                         }
                     }
                 }
@@ -97,7 +100,6 @@ pipeline {
                     script {
                         if (env.CHANGE_ID) {
                             pullRequest.removeLabel('Build Running')
-
                         }
                     }
                 }
