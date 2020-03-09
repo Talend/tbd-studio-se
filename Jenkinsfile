@@ -22,8 +22,8 @@ pipeline {
             label "tbd-studio-se"
             yamlFile 'podTemplate.yaml'
             activeDeadlineSeconds 60
+            defaultContainer 'python2'
         }
-        defaultContainer 'python2'
     }
 
     stages {
