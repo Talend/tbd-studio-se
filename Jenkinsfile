@@ -77,7 +77,7 @@ pipeline {
             }
             post {
                 success {
-                    copyArtifacts filter: 'tbd-studio-se/working-dir/tbd-studio-se-eclipse-repository/target/*.zip', projectName: '/tbd-studio-se/tbd-studio-se-build', selector: lastSuccessful(), target: 'target'
+                    copyArtifacts filter: 'tbd-studio-se/working-dir/tbd-studio-se-eclipse-repository/target/*.zip', flatten: true, projectName: '/tbd-studio-se/tbd-studio-se-build', selector: lastSuccessful(), target: 'target'
                     archiveArtifacts artifacts: 'target/*.zip', onlyIfSuccessful: true
                 }
                 always {
