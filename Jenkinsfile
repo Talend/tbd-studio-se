@@ -23,6 +23,7 @@ pipeline {
             yamlFile 'podTemplate.yaml'
             activeDeadlineSeconds 60
         }
+        defaultContainer 'python2'
     }
 
     stages {
@@ -36,17 +37,13 @@ pipeline {
                 }
             }
         }
-        stage('Commit check'){
+        stage('Commit check') {
             steps {
-                container('python2') {
-                    sh '''
-                        python ./tools/commit-check.py
-                        '''
-                }
+                sh 'python ./tools/commit-check.py'
             }
         }
 
-        stage ('build') {
+        stage('build') {
             steps {
 
                 script {
@@ -57,11 +54,18 @@ pipeline {
                 }
 
                 build job: '/tbd-studio-se/tbd-studio-se-build', parameters: [
-                        string(name: 'BRANCH_NAME', value: env.BRANCH_NAME)
+                    string(name: 'BRANCH_NAME', value: env.BRANCH_NAME)
                 ]
+
             }
             post {
+                success {
+                    copyArtifacts filter: 'tbd-studio-se/working-dir/tbd-studio-se-eclipse-repository/target/*.zip', projectName: '/tbd-studio-se/tbd-studio-se-build', selector: lastSuccessful(), target: 'target'
+                    archiveArtifacts artifacts: 'target/*.zip', onlyIfSuccessful: true
+                }
                 always {
+                    copyArtifacts filter: 'tbd-studio-se/working-dir/test/plugins/*/target/surefire-reports/TEST-*.xml', projectName: '/tbd-studio-se/tbd-studio-se-build', selector: lastSuccessful(), target: 'target/surefire-reports'
+                    junit 'tbd-studio-se/working-dir/test/plugins/*/target/surefire-reports/TEST-*.xml'
                     script {
                         if (env.CHANGE_ID) {
                             pullRequest.removeLabel('Build Running')
