@@ -72,22 +72,33 @@ pipeline {
                     }
                 }
 
-                build job: '/tbd-studio-se/tbd-studio-se-build', parameters: [
+                def build_job = build job: '/tbd-studio-se/tbd-studio-se-build', parameters: [
                     string(name: 'BRANCH_NAME', value: env.BRANCH_NAME)
                 ]
 
             }
             post {
                 success {
-                    copyArtifacts filter: 'tbd-studio-se/working-dir/tbd-studio-se-eclipse-repository/target/*.zip', flatten: true, projectName: '/tbd-studio-se/tbd-studio-se-build', selector: lastSuccessful(), target: 'target'
-                    archiveArtifacts artifacts: 'target/*.zip', onlyIfSuccessful: true
+                    script {
+                        if (env.CHANGE_ID) {
+                            pullRequest.createStatus('success', 'tbd-studio-se-build','tests results', "${build_job.BUILD_URL}/testReport/")
+                            pullRequest.createStatus('success', 'tbd-studio-se-build','build pipeline', "'${build_job.BUILD_URL}/../../../../../blue/organizations/jenkins/tbd-studio-se%2Ftbd-studio-se-build/detail/tbd-studio-se-build/${build_job.BUILD_NUMBER}/pipeline'")
+                        }
+                    }
+                }
+                failure {
+                    script {
+                        if (env.CHANGE_ID) {
+                            pullRequest.createStatus('failure', 'tbd-studio-se-build', 'tests results', "${build_job.BUILD_URL}/testReport/")
+                            pullRequest.createStatus('failure', 'tbd-studio-se-build', 'build pipeline', "'${build_job.BUILD_URL}/../../../../../blue/organizations/jenkins/tbd-studio-se%2Ftbd-studio-se-build/detail/tbd-studio-se-build/${build_job.BUILD_NUMBER}/pipeline'")
+                        }
+                    }
                 }
                 always {
-                    copyArtifacts filter: 'tbd-studio-se/working-dir/test/plugins/*/target/surefire-reports/TEST-*.xml', projectName: '/tbd-studio-se/tbd-studio-se-build', selector: lastSuccessful(), target: 'target/surefire-reports'
-                    junit 'tbd-studio-se/working-dir/test/plugins/*/target/surefire-reports/TEST-*.xml'
                     script {
                         if (env.CHANGE_ID) {
                             pullRequest.removeLabel('Build Running')
+
                         }
                     }
                 }
