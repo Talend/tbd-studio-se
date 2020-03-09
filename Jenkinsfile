@@ -46,7 +46,7 @@ pipeline {
     stages {
         stage('Sanity check') {
             steps {
-                container('python2') {
+                ansiColor('xterm') {
                     sh '''
                         pip install javaproperties
                         python ./tools/sanity-check.py
@@ -56,7 +56,9 @@ pipeline {
         }
         stage('Commit check') {
             steps {
-                sh 'python ./tools/commit-check.py'
+                ansiColor('xterm') {
+                    sh 'python ./tools/commit-check.py'
+                }
             }
         }
 
