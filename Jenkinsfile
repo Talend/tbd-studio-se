@@ -20,7 +20,24 @@ pipeline {
     agent {
         kubernetes {
             label "tbd-studio-se"
-            yamlFile 'podTemplate.yaml'
+            yaml '''
+                apiVersion: v1
+                kind: Pod
+                spec:
+                  containers:
+                    - name: python2
+                      image: jenkinsxio/builder-python2
+                      command:
+                        - cat
+                      tty: true
+                      resources:
+                        requests:
+                          memory: "128M"
+                          cpu: "1"
+                        limits:
+                          memory: "1G"
+                          cpu: "3"  
+                    '''
             activeDeadlineSeconds 60
             defaultContainer 'python2'
         }
