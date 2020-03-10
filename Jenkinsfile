@@ -83,16 +83,16 @@ pipeline {
                 success {
                     script {
                         if (env.CHANGE_ID) {
-                            pullRequest.createStatus('success', 'tbd-studio-se-build','tests results', "${env.DOWNSTREAM_URL}/testReport/")
-                            pullRequest.createStatus('success', 'tbd-studio-se-build','build pipeline', "'${env.DOWNSTREAM_URL}/../../../../../blue/organizations/jenkins/tbd-studio-se%2Ftbd-studio-se-build/detail/tbd-studio-se-build/${env.DOWNSTREAM_BUILD_NUMBER}/pipeline'")
+                            pullRequest.createStatus('success', 'tbd-studio-se-build','tests results', "${env.DOWNSTREAM_URL}testReport/")
+                            pullRequest.createStatus('success', 'tbd-studio-se-build','build pipeline', "${env.DOWNSTREAM_URL}../../../../../blue/organizations/jenkins/tbd-studio-se%2Ftbd-studio-se-build/detail/tbd-studio-se-build/${env.DOWNSTREAM_BUILD_NUMBER}/pipeline")
                         }
                     }
                 }
                 failure {
                     script {
                         if (env.CHANGE_ID) {
-                            pullRequest.createStatus('failure', 'tbd-studio-se-build', 'tests results', "${env.DOWNSTREAM_URL}/testReport/")
-                            pullRequest.createStatus('failure', 'tbd-studio-se-build', 'build pipeline', "'${env.DOWNSTREAM_URL}/../../../../../blue/organizations/jenkins/tbd-studio-se%2Ftbd-studio-se-build/detail/tbd-studio-se-build/${env.DOWNSTREAM_BUILD_NUMBER}/pipeline'")
+                            pullRequest.createStatus('failure', 'tbd-studio-se-build', 'tests results', "${env.DOWNSTREAM_URL}testReport/")
+                            pullRequest.createStatus('failure', 'tbd-studio-se-build', 'build pipeline', "${env.DOWNSTREAM_URL}../../../../../blue/organizations/jenkins/tbd-studio-se%2Ftbd-studio-se-build/detail/tbd-studio-se-build/${env.DOWNSTREAM_BUILD_NUMBER}/pipeline")
                         }
                     }
                 }
