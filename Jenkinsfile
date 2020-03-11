@@ -74,28 +74,9 @@ pipeline {
                     def build_job = build job: '/tbd-studio-se/tbd-studio-se-build', parameters: [
                             string(name: 'BRANCH_NAME', value: env.BRANCH_NAME)
                     ]
-
-                    env.DOWNSTREAM_URL=build_job.getAbsoluteUrl().replace('http://','https://')
-                    env.DOWNSTREAM_BUILD_NUMBER=build_job.getNumber()
                 }
             }
             post {
-                success {
-                    script {
-                        if (env.CHANGE_ID) {
-                            pullRequest.createStatus('success', 'tbd-studio-se tests','tests result', "${env.DOWNSTREAM_URL}testReport/")
-                            pullRequest.createStatus('success', 'tbd-studio-se artifacts','artifacts built', "${env.DOWNSTREAM_URL}../../../../../blue/organizations/jenkins/tbd-studio-se%2Ftbd-studio-se-build/detail/tbd-studio-se-build/${env.DOWNSTREAM_BUILD_NUMBER}/artifacts")
-                        }
-                    }
-                }
-                failure {
-                    script {
-                        if (env.CHANGE_ID) {
-                            pullRequest.createStatus('failure', 'tbd-studio-se tests', 'tests result', "${env.DOWNSTREAM_URL}testReport/")
-                            pullRequest.createStatus('failure', 'tbd-studio-se build', 'build pipeline', "${env.DOWNSTREAM_URL}../../../../../blue/organizations/jenkins/tbd-studio-se%2Ftbd-studio-se-build/detail/tbd-studio-se-build/${env.DOWNSTREAM_BUILD_NUMBER}/pipeline")
-                        }
-                    }
-                }
                 always {
                     script {
                         if (env.CHANGE_ID) {
