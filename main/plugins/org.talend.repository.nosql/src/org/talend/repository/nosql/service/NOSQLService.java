@@ -75,4 +75,13 @@ public class NOSQLService implements INOSQLService {
         return false;
     }
 
+    @Override
+    public boolean isUseSSL(Connection connection) {
+        if (isNoSQLConnection(connection)) {
+            String isUseSSL = ((NoSQLConnection) connection).getAttributes().get(IMongoDBAttributes.REQUIRED_ENCRYPTION);
+            return Boolean.valueOf(isUseSSL);
+        }
+        return false;
+    }
+
 }
