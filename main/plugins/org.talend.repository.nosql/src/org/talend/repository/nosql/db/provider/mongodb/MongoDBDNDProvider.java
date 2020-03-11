@@ -59,6 +59,9 @@ public class MongoDBDNDProvider extends AbstractDNDProvider {
             } catch (JSONException e) {
                 ExceptionHandler.process(e);
             }
+        } else if ("USE_SSL".equals(value)) { //$NON-NLS-1$
+            return getCanonicalRepositoryValue(connection, connection.getAttributes().get(IMongoDBAttributes.REQUIRED_ENCRYPTION),
+                    false);
         }
 
         return null;
@@ -100,6 +103,11 @@ public class MongoDBDNDProvider extends AbstractDNDProvider {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.getAttributes().put(IMongoDBAttributes.REPLICA_SET, value);
+            }
+        } else if ("USE_SSL".equals(param.getRepositoryValue())) { //$NON-NLS-1$
+            String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
+            if (value != null) {
+                connection.getAttributes().put(IMongoDBAttributes.REQUIRED_ENCRYPTION, value);
             }
         }
     }
