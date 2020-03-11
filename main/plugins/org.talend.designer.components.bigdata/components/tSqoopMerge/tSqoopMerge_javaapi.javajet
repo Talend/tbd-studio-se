@@ -158,11 +158,12 @@
     }
 %>
 	
-	ClassLoader threadClassLoader_<%=cid%> = Thread.currentThread().getContextClassLoader();
-	java.net.URLClassLoader newthreadClassLoader_<%=cid%> = new java.net.URLClassLoader(jarFileName_<%=cid%>, threadClassLoader_<%=cid%>);
+	java.net.URL[] jars = new java.net.URL[] { new java.io.File(jarFileName_<%=cid%>).toURI().toURL() };
+	ClassLoader threadClassLoader = Thread.currentThread().getContextClassLoader();
+	java.net.URLClassLoader newthreadClassLoader_<%=cid%> = new java.net.URLClassLoader(jars, threadClassLoader);
     
     try {
-		Thread.currentThread().setContextClassLoader(newthreadClassLoader_<%=cid %>);
+		Thread.currentThread().setContextClassLoader(newthreadClassLoader_<%=cid%>);
     } catch (Exception e) {
 <%
 		if(dieOnError) {
