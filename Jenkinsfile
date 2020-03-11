@@ -75,7 +75,7 @@ pipeline {
                             string(name: 'BRANCH_NAME', value: env.BRANCH_NAME)
                     ]
 
-                    env.DOWNSTREAM_URL=build_job.getAbsoluteUrl()
+                    env.DOWNSTREAM_URL=build_job.getAbsoluteUrl().replace('http://','https://')
                     env.DOWNSTREAM_BUILD_NUMBER=build_job.getNumber()
                 }
             }
