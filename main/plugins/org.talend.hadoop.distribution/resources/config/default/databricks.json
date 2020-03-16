@@ -1,4 +1,5 @@
 {
+    "DATABRICKS_CLOUD_PROVIDER":"AWS",
     "DATABRICKS_ENDPOINT": "https://westeurope.azuredatabricks.net", 
     "DATABRICKS_CLUSTER_ID": "", 
     "DATABRICKS_TOKEN": "", 
