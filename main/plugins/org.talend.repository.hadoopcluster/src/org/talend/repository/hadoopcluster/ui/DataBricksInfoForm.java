@@ -12,6 +12,7 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.ui;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +29,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.talend.commons.ui.swt.formtools.Form;
+import org.talend.commons.ui.swt.formtools.LabelledCombo;
 import org.talend.commons.ui.swt.formtools.LabelledText;
 import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
@@ -45,6 +47,10 @@ import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
 public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConnection> {
 
     private LabelledText endpointText;
+
+    private LabelledCombo labelledCombo;
+
+    private List<String> cloudProviders = Arrays.asList("AWS", "Azure");
 
     private LabelledText clusterIDText;
 
@@ -102,6 +108,7 @@ public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
     private void addConfigurationFields() {
         Group configGroup = Form.createGroup(this, 2, Messages.getString("DataBricksInfoForm.text.configuration"), 110); //$NON-NLS-1$
         configGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        labelledCombo = new LabelledCombo(configGroup, "Cloud provider", "", cloudProviders);
         endpointText = new LabelledText(configGroup, Messages.getString("DataBricksInfoForm.text.endPoint"), 1); //$NON-NLS-1$
 
         clusterIDText = new LabelledText(configGroup, Messages.getString("DataBricksInfoForm.text.clusterID"), 1); //$NON-NLS-1$
@@ -188,6 +195,16 @@ public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
 
     @Override
     protected void addFieldsListeners() {
+        labelledCombo.getCombo().addSelectionListener(new SelectionAdapter() {
+
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                int index = labelledCombo.getSelectionIndex();
+                String provider = cloudProviders.get(index);
+                getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLOUD, provider);
+                checkFieldsValue();
+            }
+        });
         endpointText.addModifyListener(new ModifyListener() {
 
             @Override
@@ -279,6 +296,13 @@ public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         if (isContextMode()) {
             adaptFormToEditable();
         }
+        String provider = getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLOUD);
+        int indexOf = cloudProviders.indexOf(provider);
+        if (indexOf != -1) {
+            labelledCombo.select(indexOf);
+        }
+
+        getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_ENDPOINT);
         String endPoint = StringUtils
                 .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_ENDPOINT));
         endpointText.setText(endPoint);
@@ -346,6 +370,7 @@ public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
 
     private void collectConfigurationParameters(boolean isUse) {
         addContextParams(EHadoopParamName.DataBricksEndpoint, isUse);
+        addContextParams(EHadoopParamName.DataBricksCloudProvider, isUse);
         addContextParams(EHadoopParamName.DataBricksClusterId, isUse);
         addContextParams(EHadoopParamName.DataBricksToken, isUse);
         addContextParams(EHadoopParamName.DataBricksDBFSDepFolder, isUse);
