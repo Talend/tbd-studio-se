@@ -6458,6 +6458,10 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_parquet_avro_1_8_2_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_HDP_2_6_0_3_8_parquet_common_1_8_2_jar",
         "tagName" : "library"
       }, {
@@ -9698,6 +9702,14 @@
       "id" : "DYNAMIC_HDP_2_6_0_3_8_paranamer_2_7_jar",
       "mvn_uri" : "mvn:com.thoughtworks.paranamer/paranamer/2.7",
       "name" : "paranamer-2.7.jar",
+      "tagName" : "libraryNeeded"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.hdpx",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_HDP_2_6_0_3_8_parquet_avro_1_8_2_jar",
+      "mvn_uri" : "mvn:org.apache.parquet/parquet-avro/1.8.2",
+      "name" : "parquet-avro-1.8.2.jar",
       "tagName" : "libraryNeeded"
     }, {
       "childNodes" : [ ],

@@ -484,6 +484,16 @@
       ]
     },
     {
+      "id": "parquet-avro-1.8.2",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.parquet",
+      "artifactId": "parquet-avro",
+      "version": "1.8.2",
+      "classifier": "",
+      "description": ""
+    },
+    {
       "id": "parquet-pig-bundle",
       "type": "BASE",
       "context": "{properties.context}",
@@ -1212,6 +1222,7 @@
         "kite-data-core-1.0.0",
         "kite-data-mapreduce-1.0.0",
         "kite-hadoop-compatibility-1.0.0",
+        "parquet-avro-1.8.2",
         "parquet-hadoop-bundle",
         "parquet-hadoop-1.8.2"
       ]
