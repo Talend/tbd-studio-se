@@ -945,7 +945,7 @@ public class HCRepositoryUtil {
         String dataBricksCloudProvider = hiveVersion.getDefaultConfig(distribution,
                 EHadoopProperties.DATABRICKS_CLOUD_PROVIDER.getName());
         if (dataBricksCloudProvider != null) {
-            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLOUD, dataBricksCloudProvider);
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLOUD_PROVIDER, dataBricksCloudProvider);
         }
         String dataBricksClusterID = hiveVersion.getDefaultConfig(distribution,
                 EHadoopProperties.DATABRICKS_CLUSTER_ID.getName());
