@@ -229,7 +229,7 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                         break;
                     case DataBricksCloudProvider:
                         ConnectionContextHelper.createParameters(varList, paramName,
-                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLOUD));
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLOUD_PROVIDER));
                         break;
                     case DataBricksClusterId:
                         ConnectionContextHelper.createParameters(varList, paramName,
@@ -548,7 +548,7 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                     ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
             break;
         case DataBricksCloudProvider:
-            hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLOUD,
+            hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLOUD_PROVIDER,
                     ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
             break;
         case DataBricksClusterId:
