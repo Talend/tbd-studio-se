@@ -32,6 +32,7 @@ import org.talend.core.prefs.SSLPreferenceConstants;
 import org.talend.core.runtime.CoreRuntimePlugin;
 import org.talend.core.ui.utils.PluginUtil;
 import org.talend.core.utils.TalendQuoteUtils;
+import org.talend.daikon.security.CryptoHelper;
 import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
 import org.talend.metadata.managment.ui.utils.ConnectionContextHelper;
 import org.talend.repository.model.nosql.NoSQLConnection;
@@ -46,7 +47,6 @@ import org.talend.repository.nosql.reflection.NoSQLReflection;
 import org.talend.utils.json.JSONArray;
 import org.talend.utils.json.JSONException;
 import org.talend.utils.json.JSONObject;
-import org.talend.utils.security.StudioEncryption;
 
 public class MongoDBConnectionUtil {
 
@@ -410,6 +410,7 @@ public class MongoDBConnectionUtil {
         if (isUseSSL) {
             try {
                 IPreferenceStore store = CoreRuntimePlugin.getInstance().getCoreService().getPreferenceStore();
+                CryptoHelper cryptoHelper = CryptoHelper.getDefault();
                 File configFile = PluginUtil.getStudioConfigFile();
                 Properties configProperties = PluginUtil.readProperties(configFile);
                 configProperties.setProperty(SSLPreferenceConstants.TRUSTSTORE_TYPE,
@@ -417,8 +418,7 @@ public class MongoDBConnectionUtil {
                 configProperties.setProperty(SSLPreferenceConstants.TRUSTSTORE_FILE,
                         store.getString(SSLPreferenceConstants.TRUSTSTORE_FILE));
                 configProperties.setProperty(SSLPreferenceConstants.TRUSTSTORE_PASSWORD,
-                        StudioEncryption.getStudioEncryption(StudioEncryption.EncryptionKeyName.SYSTEM)
-                                .decrypt(store.getString(SSLPreferenceConstants.TRUSTSTORE_PASSWORD)));
+                        cryptoHelper.decrypt(store.getString(SSLPreferenceConstants.TRUSTSTORE_PASSWORD)));
                 PluginUtil.saveProperties(configFile, configProperties, null);
             } catch (Exception e) {
                 ExceptionHandler.process(e);
