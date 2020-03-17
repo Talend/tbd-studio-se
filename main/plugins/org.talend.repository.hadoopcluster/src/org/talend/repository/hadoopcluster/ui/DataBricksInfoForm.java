@@ -12,7 +12,6 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.ui;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -34,6 +33,7 @@ import org.talend.commons.ui.swt.formtools.LabelledText;
 import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.model.properties.ConnectionItem;
+import org.talend.hadoop.distribution.constants.databricks.IDatabricksDistribution;
 import org.talend.hadoop.distribution.model.DistributionBean;
 import org.talend.hadoop.distribution.model.DistributionVersion;
 import org.talend.metadata.managment.ui.dialog.HadoopPropertiesDialog;
@@ -49,8 +49,6 @@ public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
     private LabelledText endpointText;
 
     private LabelledCombo labelledCombo;
-
-    private List<String> cloudProviders = Arrays.asList("AWS", "Azure");
 
     private LabelledText clusterIDText;
 
@@ -108,7 +106,8 @@ public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
     private void addConfigurationFields() {
         Group configGroup = Form.createGroup(this, 2, Messages.getString("DataBricksInfoForm.text.configuration"), 110); //$NON-NLS-1$
         configGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-        labelledCombo = new LabelledCombo(configGroup, "Cloud provider", "", cloudProviders);
+        labelledCombo = new LabelledCombo(configGroup, Messages.getString("DataBricksInfoForm.text.cloudProvider"), "", //$NON-NLS-1$ $NON-NLS-2$
+                IDatabricksDistribution.DATABRICKS_CLOUD_PROVIDERS);
         endpointText = new LabelledText(configGroup, Messages.getString("DataBricksInfoForm.text.endPoint"), 1); //$NON-NLS-1$
 
         clusterIDText = new LabelledText(configGroup, Messages.getString("DataBricksInfoForm.text.clusterID"), 1); //$NON-NLS-1$
@@ -199,9 +198,8 @@ public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
 
             @Override
             public void widgetSelected(SelectionEvent e) {
-                int index = labelledCombo.getSelectionIndex();
-                String provider = cloudProviders.get(index);
-                getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLOUD, provider);
+                String provider = labelledCombo.getText();
+                getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLOUD_PROVIDER, provider);
                 checkFieldsValue();
             }
         });
@@ -296,13 +294,13 @@ public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         if (isContextMode()) {
             adaptFormToEditable();
         }
-        String provider = getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLOUD);
-        int indexOf = cloudProviders.indexOf(provider);
-        if (indexOf != -1) {
-            labelledCombo.select(indexOf);
+        String provider = getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLOUD_PROVIDER);
+        if (provider != null) {
+            labelledCombo.setText(provider);
+        } else {
+            labelledCombo.setText(IDatabricksDistribution.AWS);
         }
 
-        getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_ENDPOINT);
         String endPoint = StringUtils
                 .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_ENDPOINT));
         endpointText.setText(endPoint);
@@ -370,7 +368,6 @@ public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
 
     private void collectConfigurationParameters(boolean isUse) {
         addContextParams(EHadoopParamName.DataBricksEndpoint, isUse);
-        addContextParams(EHadoopParamName.DataBricksCloudProvider, isUse);
         addContextParams(EHadoopParamName.DataBricksClusterId, isUse);
         addContextParams(EHadoopParamName.DataBricksToken, isUse);
         addContextParams(EHadoopParamName.DataBricksDBFSDepFolder, isUse);
