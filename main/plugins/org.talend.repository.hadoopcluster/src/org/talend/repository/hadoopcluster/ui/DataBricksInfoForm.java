@@ -382,7 +382,6 @@ public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
     }
 
     private List<String> getProviders() {
-        EDatabriksLocalProvider.values();
         return Arrays.asList(EDatabriksLocalProvider.AWS.getProviderName(), EDatabriksLocalProvider.AZURE.getProviderName());
     }
 }
