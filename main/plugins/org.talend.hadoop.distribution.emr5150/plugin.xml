@@ -298,9 +298,15 @@
         <!-- Sqoop libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="sqoop-emr515-uber.jar"
-            name="sqoop-emr515-uber.jar"
-            mvn_uri="mvn:org.talend.libraries/sqoop-emr515-uber/6.0.0"/>
+            id="parquet-sqoop-1.4.7.jar"
+            name="parquet-sqoop-1.4.7.jar"
+            mvn_uri="mvn:org.talend.libraries/parquet-sqoop-1.4.7/6.0.0"/>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr5150"
+            id="avro-sqoop-uber.jar"
+            name="avro-sqoop-uber.jar"
+            mvn_uri="mvn:org.talend.libraries/avro-sqoop-uber/6.0.0"/>
 
         <!-- Tez -->
         <libraryNeeded
@@ -1979,8 +1985,8 @@
                 description="Sqoop libraries for EMR 5.15.0"
                 id="SQOOP-LIB-EMR_5_15_0_LATEST"
                 name="SQOOP-LIB-EMR_5_15_0_LATEST">
-            <library id="sqoop-emr515-uber.jar"/>
             <library id="commons-lang3-3.5.jar"/>
+            <library id="avro-sqoop-uber.jar"/>
         </libraryNeededGroup>
 
         <!-- Sqoop Parquet group -->
@@ -2001,6 +2007,7 @@
             <library id="parquet-encoding-1.6.0.jar" />
             <library id="parquet-format-2.2.0-rc1.jar" />
             <library id="parquet-avro-1.6.0.jar"/>
+            <library id="parquet-sqoop-1.4.7.jar"/>
         </libraryNeededGroup>
         
         <!-- Spark Parquet group MRREQUIRED -->
