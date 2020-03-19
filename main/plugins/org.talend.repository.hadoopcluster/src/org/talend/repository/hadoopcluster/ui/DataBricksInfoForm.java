@@ -12,6 +12,7 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.ui;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +34,6 @@ import org.talend.commons.ui.swt.formtools.LabelledText;
 import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.model.properties.ConnectionItem;
-import org.talend.hadoop.distribution.constants.databricks.IDatabricksDistribution;
 import org.talend.hadoop.distribution.model.DistributionBean;
 import org.talend.hadoop.distribution.model.DistributionVersion;
 import org.talend.metadata.managment.ui.dialog.HadoopPropertiesDialog;
@@ -41,6 +41,7 @@ import org.talend.metadata.managment.ui.dialog.SparkPropertiesDialog;
 import org.talend.metadata.managment.ui.utils.ExtendedNodeConnectionContextUtils.EHadoopParamName;
 import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopClusterInfoForm;
+import org.talend.repository.hadoopcluster.ui.provider.EDatabriksLocalProvider;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
 
@@ -107,7 +108,7 @@ public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         Group configGroup = Form.createGroup(this, 2, Messages.getString("DataBricksInfoForm.text.configuration"), 110); //$NON-NLS-1$
         configGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         labelledCombo = new LabelledCombo(configGroup, Messages.getString("DataBricksInfoForm.text.cloudProvider"), "", //$NON-NLS-1$ $NON-NLS-2$
-                IDatabricksDistribution.DATABRICKS_CLOUD_PROVIDERS);
+                getProviders());
         endpointText = new LabelledText(configGroup, Messages.getString("DataBricksInfoForm.text.endPoint"), 1); //$NON-NLS-1$
 
         clusterIDText = new LabelledText(configGroup, Messages.getString("DataBricksInfoForm.text.clusterID"), 1); //$NON-NLS-1$
@@ -298,7 +299,7 @@ public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         if (provider != null) {
             labelledCombo.setText(provider);
         } else {
-            labelledCombo.setText(IDatabricksDistribution.AWS);
+            labelledCombo.setText(EDatabriksLocalProvider.AWS.getProviderName());
         }
 
         String endPoint = StringUtils
@@ -378,5 +379,10 @@ public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         if (creation && !connection.isUseCustomConfs()) {
             HCRepositoryUtil.fillDefaultValuesOfHadoopCluster(connection);
         }
+    }
+
+    private List<String> getProviders() {
+        EDatabriksLocalProvider.values();
+        return Arrays.asList(EDatabriksLocalProvider.AWS.getProviderName(), EDatabriksLocalProvider.AZURE.getProviderName());
     }
 }

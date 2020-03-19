@@ -12,9 +12,6 @@
 // ============================================================================
 package org.talend.hadoop.distribution.constants.databricks;
 
-import java.util.Arrays;
-import java.util.List;
-
 @SuppressWarnings("nls")
 public interface IDatabricksDistribution {
 
@@ -22,9 +19,4 @@ public interface IDatabricksDistribution {
 
     static final String DISTRIBUTION_DISPLAY_NAME = "Databricks";
 
-    static final String AWS = "AWS";
-
-    static final String AZURE = "Azure";
-
-    static final List<String> DATABRICKS_CLOUD_PROVIDERS = Arrays.asList(AWS, AZURE);
 }
