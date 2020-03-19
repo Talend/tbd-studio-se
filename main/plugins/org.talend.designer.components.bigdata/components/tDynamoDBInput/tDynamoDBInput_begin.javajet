@@ -491,7 +491,7 @@
 					JavaType javaType = JavaTypesManager.getJavaTypeFromId(column.getTalendType());
 					String patternValue = column.getPattern() == null || column.getPattern().trim().length() == 0 ? null : column.getPattern();
 %>
-					valueObj_<%=cid%>=item_<%=cid%>.get("<%=column.getLabel() %>");
+					valueObj_<%=cid%>=item_<%=cid%>.get("<%=column.getOriginalDbColumnName() %>");
 
 <%
           			if(javaType == JavaTypesManager.OBJECT) {
