@@ -1,9 +1,9 @@
 {
-	"id": "CDP",
-	"name": "Cloudera CDP template",
-	"distribution": "CLOUDERA",
+	"id": "CDP7.X.3",
+	"name": "Cloudera CDP7.X.Y template",
+	"distribution": "CDP",
 	"templateId": "CDPDistributionTemplate",
-	"baseVersion": "7.0.0",
+	"baseVersion": "7.0.3",
 	"topVersion": "8.0.0",
 	"dynamicVersion": "will be filled during runtime",
 	"properties": {
@@ -19,21 +19,19 @@
             "type": "STANDARD",
             "context": "{properties.context}",
             "jarName": "commons-lang3-3.4.jar",
-            "mvnUri": "mvn:org.talend.libraries/commons-lang3-3.4/6.2.0",
+            "mvnUri": "mvn:org.apache.commons/commons-lang3/3.4",
             "useStudioRepository": "true",
             "supportedSparkVersions": [
-                "SPARK_2_2",
-                "SPARK_2_3",
                 "SPARK_2_4"
             ],
             "description": ""
 		},
 		{
-            "id": "commons-httpclient-3.1",
+            "id": "commons-httpclient-4.5.12",
             "type": "STANDARD",
             "context": "{properties.context}",
-            "jarName": "commons-httpclient-3.1.jar",
-            "mvnUri": "mvn:org.talend.libraries/commons-httpclient-3.1/6.0.0",
+            "jarName": "commons-httpclient-4.5.12.jar",
+            "mvnUri": "mvn:org.apache.httpcomponents/httpclient/4.5.12",
             "useStudioRepository": "true"
 		},
         {
@@ -105,32 +103,7 @@
                 }
 			]
 		},
-		{
-			"id": "datafu",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "com.linkedin.datafu",
-			"artifactId": "datafu",
-			"classifier": "",
-			"version":"1.1.0-cdh5.16.1",
-			"description": "",
-			"exclusions": [
-				{
-					"groupId": "xerces",
-					"artifactId": "*",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-                {
-                    "groupId": "commons-lang",
-                    "artifactId": "*",
-					"classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-			]
-		},
+		
 		{
 			"id": "elephant-bird-core",
 			"type": "BASE",
@@ -580,15 +553,6 @@
 			]
 		},
 		{
-			"id": "hive-exec",
-			"type": "STANDARD",
-			"context": "{properties.context}",
-			"jarName": "hive-exec-shade-2.1.1-cdh6.1.1.jar",
-			"mvnUri": "mvn:org.talend.libraries/hive-exec-shade-2.1.1-cdh6.1.1/6.0.0",
-			"useStudioRepository": "true",
-			"description": ""
-		},
-		{
 			"id": "hive-hbase-handler",
 			"type": "BASE",
 			"context": "{properties.context}",
@@ -766,80 +730,6 @@
 				{
 					"groupId": "javax.jms",
 					"artifactId": "jms",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
-					"groupId": "org.pentaho",
-					"artifactId": "pentaho-aggdesigner-algorithm",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
-					"groupId": "xerces",
-					"artifactId": "*",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-                {
-                    "groupId": "jdk.tools",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                },
-				{
-					"groupId": "org.cloudera.logredactor",
-					"artifactId": "*",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-                {
-                    "groupId": "org.apache.logging.log4j",
-                    "artifactId": "*",
-					"classifier": "",
-                    "extension": "",
-                    "description": ""
-                },
-                {
-                    "groupId": "commons-lang",
-                    "artifactId": "*",
-					"classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-			]
-		},
-		{
-			"id": "hive-hcatalog-pig-adapter",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "org.apache.hive.hcatalog",
-			"artifactId": "hive-hcatalog-pig-adapter",
-			"classifier": "",
-			"description": "",
-			"exclusions": [
-				{
-					"groupId": "org.apache.hive",
-					"artifactId": "hive-exec",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
-					"groupId": "org.apache.curator",
-					"artifactId": "apache-curator",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
-					"groupId": "eigenbase",
-					"artifactId": "eigenbase-properties",
 					"classifier": "",
 					"extension": "",
 					"description": ""
@@ -1115,57 +1005,7 @@
 			"classifier": "",
 			"description": ""
 		},
-		{
-			"id": "pig",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "org.apache.pig",
-			"artifactId": "pig",
-			"classifier": "",
-			"description": "",
-			"exclusions": [
-				{
-					"groupId": "xerces",
-					"artifactId": "*",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
-					"groupId": "jdk.tools",
-					"artifactId": "*",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-                {
-                    "groupId": "commons-lang",
-                    "artifactId": "*",
-					"classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-			]
-		},
-		{
-			"id": "parquet-pig",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "org.apache.parquet",
-			"artifactId": "parquet-pig",
-			"classifier": "",
-			"description": "",
-			"exclusions": [
-                {
-                    "groupId": "commons-lang",
-                    "artifactId": "*",
-					"classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-			]
-		},
-		{
+	    {
 			"id": "parquet-avro",
 			"type": "BASE",
 			"context": "{properties.context}",
@@ -1210,47 +1050,6 @@
 			"description": ""
 		},
 		{
-			"id": "parquet-pig-bundle",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "org.apache.parquet",
-			"artifactId": "parquet-pig-bundle",
-			"classifier": "",
-			"description": ""
-		},
-		{
-			"id": "piggybank",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "org.apache.pig",
-			"artifactId": "piggybank",
-			"classifier": "",
-			"description": "",
-			"exclusions": [
-				{
-					"groupId": "xerces",
-					"artifactId": "*",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-                {
-                    "groupId": "jdk.tools",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                },
-                {
-                    "groupId": "commons-lang",
-                    "artifactId": "*",
-					"classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-			]
-		},
-		{
 			"id": "spark-hive_2.11",
 			"type": "BASE",
 			"context": "{properties.context}",
@@ -1287,14 +1086,7 @@
 					"extension": "",
 					"description": ""
 				},
-				{
-                    "groupId": "org.apache.hive",
-                    "artifactId": "*",
-                    "classifier": "",
-					"extension": "",
-					"version": "1.1.0-cdh5.13.3",
-                    "description": ""
-				},
+				
                 {
                     "groupId": "commons-lang",
                     "artifactId": "*",
@@ -1548,15 +1340,6 @@
             "description": ""
         },
         {
-            "id": "hadoop-aws",
-            "type": "STANDARD",
-            "context": "{properties.context}",
-            "jarName": "hadoop-aws-3.0.0-cdh6.1.1.jar",
-            "mvnUri": "mvn:org.apache.hadoop/hadoop-aws/3.0.0-cdh6.1.1",
-            "useStudioRepository": "true",
-            "description": ""
-        },      
-        {
             "id": "aws-java-sdk-bundle",
             "type": "STANDARD",
             "context": "{properties.context}",
@@ -1614,25 +1397,6 @@
             "useStudioRepository": "true",
             "description": ""
         },   
-        {
-            "id": "spark-streaming-kafka",
-            "type": "BASE",
-            "context": "{properties.context}",
-            "groupId": "org.apache.spark",
-            "artifactId": "spark-streaming-kafka-0-10_2.11",
-            "version": "2.4.0-cdh6.1.1",
-            "classifier": "",
-            "description": "",
-            "exclusions": [
-                {
-                    "groupId": "xerces",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-        },
         {
             "id": "kafka-clients",
             "type": "BASE",
@@ -1720,76 +1484,13 @@
 				"hbase-server"
 			]
 		},
-		{
-			"id": "PIG-LIB-DYNAMIC",
-			"description": "",
-			"modules": [
-				"datafu",
-				"pig",
-				"jackson-core",
-				"jackson-databind"
-			]
-		},
+
         {
 			"id": "MAPREDUCE-PARQUET-LIB-DYNAMIC",
 			"description": "",
 			"modules": [
 				"parquet-hadoop-bundle",
 				"parquet-hadoop-bundle_1_6_0"
-			]
-		},
-		{
-			"id": "PIG-AVRO-LIB-DYNAMIC",
-			"description": "",
-			"modules": [
-				"piggybank"
-			]
-		},
-		{
-			"id": "PIG-HBASE-LIB-DYNAMIC",
-			"description": "",
-			"modules": [
-				"hbase-hadoop-compat",
-				"hbase-server",
-				"hbase-mapreduce-2.0.0"
-			]
-		},
-		{
-			"id": "PIG-HCATALOG-LIB-DYNAMIC",
-			"description": "",
-			"modules": [
-				"hive-exec",
-				"hive-hcatalog-core",
-				"hive-hcatalog-pig-adapter",
-				"hive-hcatalog-server-extensions",
-				"hive-metastore"
-			]
-		},
-		{
-			"id": "PIG-PARQUET-LIB-DYNAMIC",
-			"description": "",
-			"modules": [
-				"parquet-pig-bundle"
-			]
-		},
-		{
-			"id": "PIG-RCFILE-LIB-DYNAMIC",
-			"description": "",
-			"modules": [
-				"hive-exec",
-				"hive-serde",
-				"elephant-bird-core",
-				"elephant-bird-hadoop-compat",
-				"elephant-bird-rcfile"
-			]
-		},
-		{
-			"id": "PIG-SEQUENCEFILE-LIB-DYNAMIC",
-			"description": "",
-			"modules": [
-				"elephant-bird-core",
-				"elephant-bird-hadoop-compat",
-				"elephant-bird-pig"
 			]
 		},
 		{
@@ -1836,13 +1537,6 @@
                 "avro-mapred"
             ]
         },
-        {
-			"id": "PIG-S3-LIB-DYNAMIC",
-			"description": "",
-			"modules": [
-				"hadoop-client"
-			]
-		},
 		{
 			"id": "SPARK-GRAPHFRAMES-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",

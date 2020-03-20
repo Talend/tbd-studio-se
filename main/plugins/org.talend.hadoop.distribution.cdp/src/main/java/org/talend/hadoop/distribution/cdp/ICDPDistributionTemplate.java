@@ -12,12 +12,12 @@
 // ============================================================================
 package org.talend.hadoop.distribution.cdp;
 
-import org.talend.hadoop.distribution.dynamic.template.cdh.IDynamicCDHDistributionTemplate;
+import org.talend.hadoop.distribution.dynamic.template.cdp.IDynamicCDPDistributionTemplate;
 
 
 /**
- * DOC cmeng  class global comment. Detailled comment
+ * DOC   class global comment. Detailled comment
  */
-public interface ICDPDistributionTemplate extends IDynamicCDHDistributionTemplate {
+public interface ICDPDistributionTemplate extends IDynamicCDPDistributionTemplate {
 
 }

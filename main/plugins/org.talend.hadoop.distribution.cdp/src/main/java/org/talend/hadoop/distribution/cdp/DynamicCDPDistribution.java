@@ -19,41 +19,26 @@ import org.osgi.framework.Bundle;
 import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
-import org.talend.hadoop.distribution.dynamic.cdh.AbstractDynamicCDHDistribution;
+import org.talend.hadoop.distribution.dynamic.cdp.AbstractDynamicCDPDistribution;
 import org.talend.hadoop.distribution.dynamic.template.IDynamicDistributionTemplate;
 
 /**
- * DOC cmeng class global comment. Detailled comment
+ * DOC class global comment. Detailled comment
  */
-public class DynamicCDPDistribution extends AbstractDynamicCDHDistribution {
+public class DynamicCDPDistribution extends AbstractDynamicCDPDistribution {
 
+	private List<String> templateIds = new ArrayList<>();
 	public static final String TEMPLATE_FOLDER_PATH = "resources/template/cdp/"; //$NON-NLS-1$
-
 	public static final String BUILD_IN_FOLDER_PATH = "resources/builtin/cdp/"; //$NON-NLS-1$
+
+	public DynamicCDPDistribution() {
+		templateIds.add(CDPDistributionTemplate.TEMPLATE_ID);
+	}
 
 	@Override
 	protected IDynamicDistributionTemplate initTemplate(DynamicPluginAdapter pluginAdapter, IDynamicMonitor monitor)
 			throws Exception {
-		IDynamicDistributionTemplate dynamicDistributionTemplate = null;
-		IDynamicPluginConfiguration pluginConfiguration = pluginAdapter.getPluginConfiguration();
-		String templateId = pluginConfiguration.getTemplateId();
-		switch (templateId) {
-		case CDPDistributionTemplate.TEMPLATE_ID:
-			dynamicDistributionTemplate = new CDPDistributionTemplate(pluginAdapter);
-			break;
-		default:
-			throw new Exception("Unknown templateId: " + templateId);
-		}
-		return dynamicDistributionTemplate;
-	}
-
-	@Override
-	public List<String> getSupportedTemplateIds(IDynamicMonitor monitor) throws Exception {
-		List<String> templateIds = new ArrayList<>();
-
-		templateIds.add(CDPDistributionTemplate.TEMPLATE_ID);
-
-		return templateIds;
+		return new CDPDistributionTemplate(pluginAdapter);
 	}
 
 	@Override
@@ -70,6 +55,11 @@ public class DynamicCDPDistribution extends AbstractDynamicCDHDistribution {
 	@Override
 	protected String getBuiltinFolderPath() {
 		return BUILD_IN_FOLDER_PATH;
+	}
+
+	@Override
+	public List<String> getSupportedTemplateIds(IDynamicMonitor monitor) throws Exception {
+		return templateIds;
 	}
 
 }
