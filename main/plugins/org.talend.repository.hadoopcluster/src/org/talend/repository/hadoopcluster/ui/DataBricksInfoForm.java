@@ -12,9 +12,10 @@
 // ============================================================================
 package org.talend.repository.hadoopcluster.ui;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IStatus;
@@ -34,6 +35,8 @@ import org.talend.commons.ui.swt.formtools.LabelledText;
 import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.model.properties.ConnectionItem;
+import org.talend.hadoop.distribution.constants.databricks.EDatabriksCloudProvider;
+import org.talend.hadoop.distribution.constants.databricks.IDatabricksDistribution;
 import org.talend.hadoop.distribution.model.DistributionBean;
 import org.talend.hadoop.distribution.model.DistributionVersion;
 import org.talend.metadata.managment.ui.dialog.HadoopPropertiesDialog;
@@ -41,7 +44,6 @@ import org.talend.metadata.managment.ui.dialog.SparkPropertiesDialog;
 import org.talend.metadata.managment.ui.utils.ExtendedNodeConnectionContextUtils.EHadoopParamName;
 import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopClusterInfoForm;
-import org.talend.repository.hadoopcluster.ui.provider.EDatabriksLocalProvider;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
 
@@ -49,7 +51,7 @@ public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
 
     private LabelledText endpointText;
 
-    private LabelledCombo labelledCombo;
+    private LabelledCombo cloudProviderCombo;
 
     private LabelledText clusterIDText;
 
@@ -71,11 +73,17 @@ public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
 
     private final boolean creation;
 
+    private IDatabricksDistribution databricksDistribution;
+
     public DataBricksInfoForm(Composite parent, ConnectionItem connectionItem, String[] existingNames, boolean creation,
             DistributionBean hadoopDistribution, DistributionVersion hadoopVersison) {
         super(parent, SWT.NONE, existingNames);
         this.connectionItem = connectionItem;
         this.creation = creation;
+
+        if (hadoopVersison != null && hadoopVersison.hadoopComponent instanceof IDatabricksDistribution) {
+            this.databricksDistribution = (IDatabricksDistribution) hadoopVersison.hadoopComponent;
+        }
         setConnectionItem(connectionItem);
         setupForm(true);
         init();
@@ -107,7 +115,7 @@ public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
     private void addConfigurationFields() {
         Group configGroup = Form.createGroup(this, 2, Messages.getString("DataBricksInfoForm.text.configuration"), 110); //$NON-NLS-1$
         configGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-        labelledCombo = new LabelledCombo(configGroup, Messages.getString("DataBricksInfoForm.text.cloudProvider"), "", //$NON-NLS-1$ $NON-NLS-2$
+        cloudProviderCombo = new LabelledCombo(configGroup, Messages.getString("DataBricksInfoForm.text.cloudProvider"), "", //$NON-NLS-1$ $NON-NLS-2$
                 getProviders());
         endpointText = new LabelledText(configGroup, Messages.getString("DataBricksInfoForm.text.endPoint"), 1); //$NON-NLS-1$
 
@@ -195,13 +203,14 @@ public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
 
     @Override
     protected void addFieldsListeners() {
-        labelledCombo.getCombo().addSelectionListener(new SelectionAdapter() {
+        cloudProviderCombo.getCombo().addSelectionListener(new SelectionAdapter() {
 
             @Override
             public void widgetSelected(SelectionEvent e) {
-                String provider = labelledCombo.getText();
-                getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLOUD_PROVIDER, provider);
-                checkFieldsValue();
+                String providerLableName = cloudProviderCombo.getText();
+                    getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLOUD_PROVIDER,
+                        getDatabriksCloudProviderByName(providerLableName).getProviderValue());
+                    checkFieldsValue();
             }
         });
         endpointText.addModifyListener(new ModifyListener() {
@@ -295,11 +304,12 @@ public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         if (isContextMode()) {
             adaptFormToEditable();
         }
-        String provider = getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLOUD_PROVIDER);
-        if (provider != null) {
-            labelledCombo.setText(provider);
+        String providerValue = getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLOUD_PROVIDER);
+        if (providerValue != null) {
+            cloudProviderCombo.setText(getDatabriksCloudProviderByVaule(providerValue).getProviderLableName());
         } else {
-            labelledCombo.setText(EDatabriksLocalProvider.AWS.getProviderName());
+
+            cloudProviderCombo.setText(EDatabriksCloudProvider.AWS.getProviderLableName());
         }
 
         String endPoint = StringUtils
@@ -382,6 +392,39 @@ public class DataBricksInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
     }
 
     private List<String> getProviders() {
-        return Arrays.asList(EDatabriksLocalProvider.AWS.getProviderName(), EDatabriksLocalProvider.AZURE.getProviderName());
+        List<String> providerLableNames = new ArrayList<String>();
+        if (databricksDistribution != null) {
+            List<EDatabriksCloudProvider> supportCloudProviders = databricksDistribution.getSupportCloudProviders();
+            if (supportCloudProviders != null) {
+                providerLableNames = supportCloudProviders.stream().map(provider -> {
+                    return provider.getProviderLableName();
+                }).collect(Collectors.toList());
+            }
+        }
+        return providerLableNames;
+    }
+
+    private EDatabriksCloudProvider getDatabriksCloudProviderByName(String providerLableName) {
+        if (databricksDistribution != null) {
+            List<EDatabriksCloudProvider> supportCloudProviders = databricksDistribution.getSupportCloudProviders();
+            for (EDatabriksCloudProvider provider : supportCloudProviders) {
+                if (StringUtils.equals(provider.getProviderLableName(), providerLableName)) {
+                    return provider;
+                }
+            }
+        }
+        return EDatabriksCloudProvider.AWS;
+    }
+
+    private EDatabriksCloudProvider getDatabriksCloudProviderByVaule(String providerValue) {
+        if (databricksDistribution != null) {
+            List<EDatabriksCloudProvider> supportCloudProviders = databricksDistribution.getSupportCloudProviders();
+            for (EDatabriksCloudProvider provider : supportCloudProviders) {
+                if (StringUtils.equals(provider.getProviderValue(), providerValue)) {
+                    return provider;
+                }
+            }
+        }
+        return EDatabriksCloudProvider.AWS;
     }
 }
