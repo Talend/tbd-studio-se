@@ -29,7 +29,6 @@ public class CDPDependencyResolver extends AbstractDependencyResolver implements
     protected synchronized List<Pattern> getDistributionPatterns() {
     	 if (cdpDistributionPatterns.isEmpty()) {
              cdpDistributionPatterns.add(Pattern.compile("^(?:\\d+\\.\\d+\\.\\d+\\.)((?:\\d+\\.){3}\\d+-\\d+)$"));
-             cdpDistributionPatterns.add(Pattern.compile("^(\\d+\\.\\d+\\.\\d+\\.\\d+)$"));
          }
          return cdpDistributionPatterns;
     }
