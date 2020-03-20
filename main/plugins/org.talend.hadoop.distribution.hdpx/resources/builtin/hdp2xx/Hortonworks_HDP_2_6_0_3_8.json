@@ -6382,6 +6382,18 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_avro_1_8_2_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_avro_ipc_1_8_2_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_avro_mapred_1_8_2_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_HDP_2_6_0_3_8_commons_cli_1_2_jar",
         "tagName" : "library"
       }, {
@@ -6398,7 +6410,83 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_jackson_core_asl_1_9_13_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_jackson_mapper_asl_1_9_13_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_kite_data_core_1_0_0",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_kite_data_mapreduce_1_0_0",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_kite_hadoop_compatibility_1_0_0",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_HDP_2_6_0_3_8_log4j_1_2_17_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_netty_3_8_0_Final_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_paranamer_2_7_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_parquet_avro_1_4_1",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_parquet_avro_1_8_2_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_parquet_column_1_8_2_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_parquet_common_1_8_2_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_parquet_encoding_1_8_2_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_parquet_format_2_3_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_parquet_hadoop_1_8_2_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_parquet_hadoop_bundle_1_6_0_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_parquet_jackson_1_8_2_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_slf4j_api_1_7_21_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_slf4j_simple_1_7_7_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_snappy_java_1_1_2_6_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -6641,6 +6729,10 @@
       }, {
         "childNodes" : [ ],
         "id" : "DYNAMIC_HDP_2_6_0_3_8_jackson_core_asl_1_9_13_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_jackson_databind_2_6_6_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -9372,6 +9464,30 @@
       "id" : "DYNAMIC_HDP_2_6_0_3_8_kafka_clients_0_10_1_2_6_0_3_8_jar",
       "mvn_uri" : "mvn:org.apache.kafka/kafka-clients/0.10.1.2.6.0.3-8",
       "name" : "kafka-clients-0.10.1.2.6.0.3-8.jar",
+      "tagName" : "libraryNeeded"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.hdpx",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_HDP_2_6_0_3_8_kite_data_core_1_0_0",
+      "mvn_uri" : "mvn:org.kitesdk/kite-data-core/1.0.0",
+      "name" : "kite-data-core-1.0.0.jar",
+      "tagName" : "libraryNeeded"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.hdpx",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_HDP_2_6_0_3_8_kite_data_mapreduce_1_0_0",
+      "mvn_uri" : "mvn:org.kitesdk/kite-data-mapreduce/1.0.0",
+      "name" : "kite-data-mapreduce-1.0.0.jar",
+      "tagName" : "libraryNeeded"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.hdpx",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_HDP_2_6_0_3_8_kite_hadoop_compatibility_1_0_0",
+      "mvn_uri" : "mvn:org.kitesdk/kite-hadoop-compatibility/1.0.0",
+      "name" : "kite-hadoop-compatibility-1.0.0.jar",
       "tagName" : "libraryNeeded"
     }, {
       "childNodes" : [ ],
