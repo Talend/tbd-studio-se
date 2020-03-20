@@ -9,5 +9,8 @@
   </parent>
   <artifactId>org.talend.hadoop.distribution.cdp</artifactId>
   <packaging>eclipse-plugin</packaging>
-
+  <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <outputDirectory>bin</outputDirectory>
+    </build>
 </project>
