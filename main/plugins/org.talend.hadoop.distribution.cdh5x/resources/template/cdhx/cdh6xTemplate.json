@@ -589,6 +589,18 @@
 			"description": ""
 		},
 		{
+			"id": "hive-exec-spark",
+			"type": "BASE",
+			"context": "{properties.context}",			
+			"groupId": "org.spark-project.hive",
+			"artifactId": "hive-exec",
+			"version": "1.2.1",
+			"jarName": "hive-exec-1.2.1.spark2.jar",
+			"classifier": "",
+			"mvnUri": "mvn:org.spark-project.hive/hive-exec/1.2.1.spark2",
+			"description": ""
+		},
+		{
 			"id": "hive-hbase-handler",
 			"type": "BASE",
 			"context": "{properties.context}",
@@ -1803,9 +1815,10 @@
 			"description": "",
 			"modules": [
 				"hadoop-mapreduce-client-core",
-				"hadoop-yarn-server-web-proxy",
-				"spark-hive_2.11",
+				"hadoop-yarn-server-web-proxy",				
 				"hive-exec",
+				"spark-hive_2.11",
+				"hive-exec-spark"
 				"spark-mllib_2.11",
 				"spark-yarn_2.11",
 				"spark-avro_2.11",

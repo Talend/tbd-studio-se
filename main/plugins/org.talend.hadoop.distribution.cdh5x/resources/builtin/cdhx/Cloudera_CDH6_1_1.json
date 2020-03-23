@@ -2280,6 +2280,10 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_exec_spark",
+        "tagName" : "library"
+      },  {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_jdbc_2_1_1_cdh6_1_1_jar",
         "tagName" : "library"
       }, {
@@ -13036,6 +13040,15 @@
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_exec",
       "mvn_uri" : "mvn:org.talend.libraries/hive-exec-shade-2.1.1-cdh6.1.1/6.0.0",
       "name" : "hive-exec-shade-2.1.1-cdh6.1.1.jar",
+      "tagName" : "libraryNeeded",
+      "useStudioRepository" : "true"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_exec_spark",
+      "mvn_uri" : "mvn:org.spark-project.hive/hive-exec/1.2.1.spark2",
+      "name" : "hive-exec-1.2.1.spark2.jar",
       "tagName" : "libraryNeeded",
       "useStudioRepository" : "true"
     }, {
