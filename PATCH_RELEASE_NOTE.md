@@ -67,10 +67,14 @@ The following files are installed by this patch:
 - {Talend\_Studio\_path}/plugins/org.talend.designer.components.localprovider_7.3.1.20200213_1003/components/tFileInputJSON/tFileInputJSON\_java.xml
 - {Talend\_Studio\_path}/plugins/org.talend.designer.components.localprovider_7.3.1.20200213_1003/components/tWriteJSONFieldIn/tWriteJSONFieldIn\_java.xml
 - {Talend\_Studio\_path}/plugins/org.talend.designer.components.localprovider_7.3.1.20200213_1003/components/tWriteXMLField/tWriteXMLField\_java.xml
+- {Talend\_Studio\_path}/plugins/org.talend.designer.components.localprovider_7.3.1.20200213_1003/components/tWriteXMLField/tWriteXMLField\_messages.properties
 - {Talend\_Studio\_path}/plugins/org.talend.designer.components.localprovider_7.3.1.20200213_1003/components/tWriteXMLFieldOut/tWriteXMLFieldOut\_java.xml
 - {Talend\_Studio\_path}/plugins/org.talend.designer.components.localprovider_7.3.1.20200213_1003/components/tWriteXMLFieldOut/tWriteXMLFieldOut\_begin.javajet
+- {Talend\_Studio\_path}/plugins/org.talend.designer.components.localprovider_7.3.1.20200213_1003/components/tWriteXMLFieldOut/tWriteXMLFieldOut\_messages.properties
 - {Talend\_Studio\_path}/plugins/org.talend.designer.components.tisprovider_7.3.1.20200213_0125/components/tDataprepOut/tDataprepOut\_java.xml
 - {Talend\_Studio\_path}/plugins/org.talend.designer.components.bigdata_7.3.1.20200214_1052/components/tCosmosDBOutput/tCosmosDBOutput\_java.xml
+- {Talend\_Studio\_path}/plugins/org.talend.designer.components.bigdata_7.3.1.20200214_1052/components/tCosmosDBOutput/tCosmosDBOutput\_messages.properties
 - {Talend\_Studio\_path}/plugins/org.talend.designer.components.bigdata_7.3.1.20200214_1052/components/tCosmosDBWriteConf/tCosmosDBWriteConf\_java.xml
 - {Talend\_Studio\_path}/plugins/org.talend.designer.components.bigdata_7.3.1.20200214_1052/components/tMongoDBOutput/tMongoDBOutput\_java.xml
+- {Talend\_Studio\_path}/plugins/org.talend.designer.components.bigdata_7.3.1.20200214_1052/components/tMongoDBOutput/tMongoDBOutput\_messages.properties
 - {Talend\_Studio\_path}/plugins/org.talend.designer.components.bigdata_7.3.1.20200214_1052/components/tMongoDBWriteConf/tMongoDBWriteConf\_java.xml
