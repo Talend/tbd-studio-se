@@ -79,7 +79,7 @@ String passwordFieldName = "__PASSWORD__";
 
 <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>	
 
-String[] cmd_<%=cid %> = new String[] {"sqoop", "import"
+String[] cmd_<%=cid %> = new String[] {"sqoop", "import", "-Dmapreduce.job.user.classpath.first=true"
 <%
 boolean isNull=false; 
 if(isUseSpeedParallel && specificParams!=null){
