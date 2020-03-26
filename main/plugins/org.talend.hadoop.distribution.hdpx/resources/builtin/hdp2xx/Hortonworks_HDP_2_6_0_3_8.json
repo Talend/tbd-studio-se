@@ -6707,21 +6707,22 @@
         "id" : "DYNAMIC_HDP_2_6_0_3_8_jsr305_3_0_0_jar",
         "tagName" : "library"
       }, {
-              "childNodes": [],
-              "id": "DYNAMIC_HDP_2_6_0_3_8_kite-data-core-1.0.0_jar",
-              "tagName": "library"
-      },
-            {
-              "childNodes": [],
-              "id": "DYNAMIC_HDP_2_6_0_3_8_kite-data-mapreduce-1.0.0_jar",
-              "tagName": "library"
-            },
-            {
-              "childNodes": [],
-              "id": "DYNAMIC_HDP_2_6_0_3_8_kite-hadoop-compatibility-1.0.0_jar",
-              "tagName": "library"
-            },
-{
+		"childNodes": [],
+		"id": "DYNAMIC_HDP_2_6_0_3_8_kite-data-core-1.0.0_jar",
+		"tagName": "library"
+      }, {
+		"childNodes": [],
+		"id": "DYNAMIC_HDP_2_6_0_3_8_kite-data-mapreduce-1.0.0_jar",
+		"tagName": "library"
+	 },	{
+		"childNodes": [],
+		"id": "DYNAMIC_HDP_2_6_0_3_8_kite-hadoop-compatibility-1.0.0_jar",
+		"tagName": "library"
+ 	}, {
+ 		"childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_parquet_avro_1_4_1",
+        "tagName" : "library"
+ 	}, {
         "childNodes" : [ ],
         "id" : "DYNAMIC_HDP_2_6_0_3_8_leveldbjni_all_1_8_jar",
         "tagName" : "library"

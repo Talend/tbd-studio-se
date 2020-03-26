@@ -1132,7 +1132,15 @@
       "jarName": "kite-hadoop-compatibility-1.0.0.jar",
       "mvnUri": "mvn:org.kitesdk/kite-hadoop-compatibility/1.0.0",
       "description": ""
-      }
+      },
+     {
+      "id": "parquet-avro-1.4.1",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "parquet-avro-1.4.1.jar",
+      "mvnUri": "mvn:com.twitter/parquet-avro/1.4.1",
+      "description": ""
+    }
 	],
 	"moduleGroups": [
 		{
@@ -1209,13 +1217,14 @@
 			"description": "",
 			"modules": [
 				"avro-1.8.0",
-        "avro-mapred",
-        "sqoop",
-        "kite-data-core-1.0.0",
-        "kite-data-mapreduce-1.0.0",
-        "kite-hadoop-compatibility-1.0.0",
-        "parquet-hadoop-bundle",
-        "parquet-hadoop-1.8.2"
+        		"avro-mapred",
+        		"sqoop",
+        		"kite-data-core-1.0.0",
+        		"kite-data-mapreduce-1.0.0",
+        		"kite-hadoop-compatibility-1.0.0",
+        		"parquet-hadoop-bundle",
+        		"parquet-hadoop-1.8.2",
+        		"parquet-avro-1.4.1"
 			]
 		},
 		{
