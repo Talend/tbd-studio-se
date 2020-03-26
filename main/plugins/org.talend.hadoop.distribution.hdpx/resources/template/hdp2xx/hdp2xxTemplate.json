@@ -506,6 +506,16 @@
 			"description": ""
 		},
 		{
+      		"id": "parquet-hadoop-1.8.2",
+      		"type": "BASE",
+      		"context": "{properties.context}",
+      		"groupId": "org.apache.parquet",
+      		"artifactId": "parquet-hadoop",
+      		"version": "1.8.2",
+      		"classifier": "",
+      		"description": ""
+    	},
+    	{
 			"id": "tez-dag",
 			"type": "BASE",
 			"context": "{properties.context}",
@@ -1090,8 +1100,7 @@
          "mvnUri":"mvn:org.talend.libraries/atlas-properties-0.1.1-0.7-0.0.1/6.3.0",
          "useStudioRepository":"true",
          "description":""
-      },
-      
+      },      
       {
          "id":"avatica-1.8.0",
          "type":"STANDARD",
@@ -1099,6 +1108,30 @@
          "jarName":"avatica-1.8.0.jar",
          "mvnUri":"mvn:org.apache.calcite.avatica/avatica/1.8.0",
          "description":""
+    },
+    {
+      "id": "kite-data-core-1.0.0",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "kite-data-core-1.0.0.jar",
+      "mvnUri": "mvn:org.kitesdk/kite-data-core/1.0.0",
+      "description": ""
+    },
+    {
+      "id": "kite-data-mapreduce-1.0.0",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "kite-data-mapreduce-1.0.0.jar",
+      "mvnUri": "mvn:org.kitesdk/kite-data-mapreduce/1.0.0",
+      "description": ""
+    },
+    {
+      "id": "kite-hadoop-compatibility-1.0.0",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "kite-hadoop-compatibility-1.0.0.jar",
+      "mvnUri": "mvn:org.kitesdk/kite-hadoop-compatibility/1.0.0",
+      "description": ""
       }
 	],
 	"moduleGroups": [
@@ -1176,7 +1209,13 @@
 			"description": "",
 			"modules": [
 				"avro-1.8.0",
-				"sqoop"
+        "avro-mapred",
+        "sqoop",
+        "kite-data-core-1.0.0",
+        "kite-data-mapreduce-1.0.0",
+        "kite-hadoop-compatibility-1.0.0",
+        "parquet-hadoop-bundle",
+        "parquet-hadoop-1.8.2"
 			]
 		},
 		{
