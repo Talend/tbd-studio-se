@@ -19,15 +19,27 @@
         </libraryNeeded>        
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dbr550"
-            id="talend-bigdata-launcher-platform-2.0.1.jar"
-            name="talend-bigdata-launcher-platform-2.0.1.jar"
-            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-platform-2.0.1/6.0.0">
+            id="talend-bigdata-launcher-platform-2.0.4.jar"
+            name="talend-bigdata-launcher-platform-2.0.4.jar"
+            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-platform-2.0.4/6.0.0">
         </libraryNeeded>
 		<libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dbr550"
             id="avro-mapred-1.8.2-hadoop2.jar"
             name="avro-mapred-1.8.2-hadoop2.jar"
             mvn_uri="mvn:org.apache.avro/avro-mapred/1.8.2-hadoop2">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dbr550"
+            id="avro-1.8.2.jar"
+            name="avro-1.8.2.jar"
+            mvn_uri="mvn:org.apache.avro/avro/1.8.2">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dbr550"
+            id="avro-compiler-1.8.2.jar"
+            name="avro-compiler-1.8.2.jar"
+            mvn_uri="mvn:org.apache.avro/avro-compiler/1.8.2">
         </libraryNeeded>
         <libraryNeeded 
          	context="plugin:org.talend.hadoop.distribution.dbr550" 
@@ -244,7 +256,7 @@
                 description="Big Data launcher libraries for DBR550"
                 id="BIGDATA-LAUNCHER-LIB-DBR550"
                 name="BIGDATA-LAUNCHER-LIB-DBR550"  >
-			<library id="talend-bigdata-launcher-platform-2.0.1.jar" />
+			<library id="talend-bigdata-launcher-platform-2.0.4.jar" />
 			<library id="gson-2.2.4.jar" />
 			<library id="jackson-core-2.6.7.jar" />
 			<library id="jackson-databind-2.6.7.1.jar" />
@@ -258,6 +270,8 @@
                 name="SPARK-LIB-MRREQUIRED-DBR550">
              <library id="azure-storage-5.2.0.jar"/>
              <library id="avro-mapred-1.8.2-hadoop2.jar"/>
+             <library id="avro-1.8.2.jar"/>
+             <library id="avro-compiler-1.8.2.jar"/>
              <library id="commons-codec-1.10.jar"/>
              <library id="commons-lang-2.6.jar"/>
              <library id="commons-lang3-3.5.jar"/>
