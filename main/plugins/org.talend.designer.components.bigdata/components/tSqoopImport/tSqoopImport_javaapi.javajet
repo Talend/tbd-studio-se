@@ -77,6 +77,7 @@
 	String passwordFieldName = "";
 %>
 	<%@ include file="../templates/Sqoop/GetConfig.javajet"%>
+	configuration_<%=cid%>.set("mapreduce.job.classloader","true");
 	java.util.List<String> lColumns_<%=cid%> = new java.util.ArrayList<String>();
 <%
 	for (Map<String, String> row : columns) {
@@ -241,7 +242,6 @@
 	}
 	
 	sqoopOptions_<%=cid%>.loadProperties(additionalProperties_<%=cid%>);
-	sqoopOptions_<%=cid%>.setExtraArgs(new String[] {"-Dmapreduce.job.user.classpath.first=true"});
 	
 	//restoring java/hive mapping because SqoopOptions.loadProperties() rewrites it completely
 	//all mapping from additional properties are preserved
