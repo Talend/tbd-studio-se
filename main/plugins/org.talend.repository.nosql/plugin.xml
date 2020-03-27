@@ -147,7 +147,7 @@
             dbDNDProvider="org.talend.repository.nosql.db.provider.mongodb.MongoDBDNDProvider"
             dbMetadataProvider="org.talend.repository.nosql.db.provider.mongodb.MongoDBMetadataProvider"
             dbType="MONGODB"
-            dbVersions="MONGODB_3_5_X;MONGODB_3_2_X;MONGODB_3_0_X;MONGODB_2_6_X;MONGODB_2_5_X;"
+            dbVersions="MONGODB_3_5_X_AND_LATER;MONGODB_3_2_X;MONGODB_3_0_X;MONGODB_2_6_X;MONGODB_2_5_X;"
             dbWizPageProvider="org.talend.repository.nosql.db.provider.mongodb.MongoDBWizardPageProvider"
             description="MongoDB">
       </factory>
