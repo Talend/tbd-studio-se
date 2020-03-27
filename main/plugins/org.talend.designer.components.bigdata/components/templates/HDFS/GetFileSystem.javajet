@@ -76,6 +76,13 @@ if(!useExistingConnection) { // if we don't use an existing connection, we creat
 	org.apache.hadoop.conf.Configuration conf_<%=cid%> = new org.apache.hadoop.conf.Configuration();
 	
 	<%
+	if (hadoopProps != null && hadoopProps.size() > 0) {
+		for(Map<String, String> item : hadoopProps){
+		%>
+			conf_<%=cid%>.set(<%=item.get("PROPERTY") %> ,<%=item.get("VALUE") %>);
+		<% 
+		}
+	}
 	if(useSchemeADLS) {
 	%>
 		conf_<%=cid%>.set("<%=fsDefalutName%>", <%=adlsFSDefaultName%>);
@@ -95,13 +102,6 @@ if(!useExistingConnection) { // if we don't use an existing connection, we creat
 	        conf_<%=cid%>.set("dfs.client.use.datanode.hostname", "true");
 	        <%
 	    }
-		if(hadoopProps!=null && hadoopProps.size() > 0){
-			for(Map<String, String> item : hadoopProps){
-			%>
-				conf_<%=cid%>.set(<%=item.get("PROPERTY") %> ,<%=item.get("VALUE") %>);
-			<% 
-			}
-		}
 		
 		if(!((!isCustom && hdfsDistrib.doSupportKerberos() && useKrb) || (isCustom && "KRB".equals(auth)))) {
 			user = ElementParameterParser.getValue(node, "__USERNAME__");
