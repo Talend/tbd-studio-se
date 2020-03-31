@@ -28,4 +28,6 @@ public final class SqoopConstant {
 
     public static final String PAQUET_OUTPUT_FORMAT = "parquetfile";//$NON-NLS-1$
 
+    public static final String AVRO_OUTPUT_FORMAT = "avrofile";//$NON-NLS-1$
+
 }
