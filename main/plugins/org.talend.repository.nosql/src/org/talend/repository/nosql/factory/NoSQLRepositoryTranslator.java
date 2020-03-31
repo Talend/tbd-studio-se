@@ -46,7 +46,11 @@ public class NoSQLRepositoryTranslator {
         if (value2LabelMap.containsKey(value)) {
             return (String) value2LabelMap.get(value);
         }
-        String label = Messages.getString(FACTORY_MSG_PREFIX + value);
+        String messageKey = value;
+        if("MONGODB_3_5_X".equals(value)) {//$NON-NLS-1$
+        	messageKey = "MONGODB_3_5_X_AND_LATER";//$NON-NLS-1$
+        }
+        String label = Messages.getString(FACTORY_MSG_PREFIX + messageKey);
         value2LabelMap.put(value, label);
 
         return label;
