@@ -1996,6 +1996,24 @@
             <library id="avro-sqoop-uber.jar"/>
         </libraryNeededGroup>
 
+        <!-- Sqoop Text group -->
+        <!-- jackson jars are defined localprovider plugin.xml -->
+        <libraryNeededGroup
+                description="Sqoop Text libraries for EMR 5.15.0"
+                id="SQOOP-TEXT-LIB-EMR_5_15_0_LATEST"
+                name="SQOOP-TEXT-LIB-EMR_5_15_0_LATEST">
+            <library id="sqoop-1.4.7.jar"/>
+        </libraryNeededGroup>
+
+        <!-- Sqoop Text group -->
+        <!-- jackson jars are defined localprovider plugin.xml -->
+        <libraryNeededGroup
+                description="Sqoop Sequence libraries for EMR 5.15.0"
+                id="SQOOP-SEQUENCE-LIB-EMR_5_15_0_LATEST"
+                name="SQOOP-SEQUENCE-LIB-EMR_5_15_0_LATEST">
+            <library id="sqoop-1.4.7.jar"/>
+        </libraryNeededGroup>
+
         <!-- Sqoop Parquet group -->
         <!-- jackson jars are defined localprovider plugin.xml -->
         <libraryNeededGroup
