@@ -11,5 +11,4 @@
 
     <artifactId>tbd-target-platform-configuration</artifactId>
     <packaging>eclipse-target-definition</packaging>
-
 </project>
