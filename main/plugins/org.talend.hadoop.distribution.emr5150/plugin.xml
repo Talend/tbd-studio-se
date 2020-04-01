@@ -1997,7 +1997,7 @@
         </libraryNeededGroup>
 
         <!-- Sqoop Text group -->
-        <!-- jackson jars are defined localprovider plugin.xml -->
+        <!-- jackson jars are defined inside the localprovider plugin.xml -->
         <libraryNeededGroup
                 description="Sqoop Text libraries for EMR 5.15.0"
                 id="SQOOP-TEXT-LIB-EMR_5_15_0_LATEST"
@@ -2006,7 +2006,7 @@
         </libraryNeededGroup>
 
         <!-- Sqoop Text group -->
-        <!-- jackson jars are defined localprovider plugin.xml -->
+        <!-- jackson jars are defined inside the localprovider plugin.xml -->
         <libraryNeededGroup
                 description="Sqoop Sequence libraries for EMR 5.15.0"
                 id="SQOOP-SEQUENCE-LIB-EMR_5_15_0_LATEST"
@@ -2015,7 +2015,7 @@
         </libraryNeededGroup>
 
         <!-- Sqoop Parquet group -->
-        <!-- jackson jars are defined localprovider plugin.xml -->
+        <!-- jackson jars are defined inside the localprovider plugin.xml -->
         <libraryNeededGroup
                 description="Sqoop Parquet libraries for EMR 5.15.0"
                 id="SQOOP-PARQUET-LIB-EMR_5_15_0_LATEST"
