@@ -295,7 +295,8 @@ imports="
 %>
     <%@ include file="@{org.talend.designer.components.bigdata}/components/tHiveLoad/loadQueryGeneration.javajet"%>
 	<%
-    if(!hiveDistrib.useCloudLauncher()) {
+    boolean setApplicationName=ElementParameterParser.getBooleanValue(node, "__SET_APPLICATION_NAME__");
+    if(!hiveDistrib.useCloudLauncher() && setApplicationName) {
     %>
         java.sql.Statement stmt_<%=cid %> = conn_<%=cid %>.createStatement();
         try {

@@ -37,6 +37,8 @@ imports="
 
 	final String studioVersion = org.talend.commons.utils.VersionUtils.getDisplayVersion();
 
+    boolean setApplicationName=ElementParameterParser.getBooleanValue(node, "__SET_APPLICATION_NAME__");
+
 	String quboleClusterLabel = null;
 	String quboleEndpoint = null;
 	String encryptedToken = null;
@@ -329,7 +331,7 @@ if(likeTable) {
 %>
     String querySQL_<%=cid %> = "<%=createTableSQL.toString()%>";
 <%
-        if(!hiveDistrib.useCloudLauncher()) {
+        if(!hiveDistrib.useCloudLauncher() && setApplicationName) {
 %>
             try {
 				<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/SetQueryName.javajet"%>
@@ -690,7 +692,7 @@ if(asSelect) {
 %>
 String querySQL_<%=cid %> = "<%=createTableSQL.toString()%>";
 <%
-    if(!hiveDistrib.useCloudLauncher()) {
+    if(!hiveDistrib.useCloudLauncher() && setApplicationName) {
 %>
 		try {
 			<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/SetQueryName.javajet"%>
