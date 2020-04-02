@@ -652,7 +652,7 @@
 			<IMPORT NAME="commons-lang-2.6.jar" MODULE="commons-lang-2.6.jar"
 				MVN="mvn:commons-lang/commons-lang/2.6"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang-2.6.jar"
-				REQUIRED_IF="(USE_COMMANDLINE=='true')" />
+				REQUIRED_IF="USE_COMMANDLINE=='true'" />
 
 			<IMPORT NAME="hadoop-conf-kerberos" MODULE="hadoop-conf-kerberos.jar"
 				MVN="mvn:org.talend.libraries/hadoop-conf-kerberos/6.0.0"
