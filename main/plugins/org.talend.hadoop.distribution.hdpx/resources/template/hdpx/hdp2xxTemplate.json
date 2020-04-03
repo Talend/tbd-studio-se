@@ -23,13 +23,13 @@
       "mvnUri": "mvn:org.talend.libraries/commons-lang3-3.5/6.2.0",
       "useStudioRepository": "true",
       "supportedSparkVersions": [
-        "SPARK_2_2",
-        "SPARK_2_3"
-      ],
-      "description": ""
-    },
-    {
-      "id": "avro-1.8.0",
+       "SPARK_2_2",
+       "SPARK_2_3"	
+      ],	
+      "description": ""	
+    },	
+    {	
+      "id": "avro-1.8.0",	
       "type": "STANDARD",
       "context": "{properties.context}",
       "jarName": "avro-1.8.0.jar",
@@ -903,15 +903,6 @@
       "description": ""
     },
     {
-      "id": "stax-api-1.0.1.jar",
-      "type": "STANDARD",
-      "context": "{properties.context}",
-      "jarName": "stax-api-1.0.1.jar",
-      "mvnUri": "mvn:org.talend.libraries/stax-api-1.0.1/6.0.0",
-      "useStudioRepository": "true",
-      "description": ""
-    },
-    {
       "id": "jline-2.10.4",
       "type": "STANDARD",
       "context": "{properties.context}",
@@ -1025,6 +1016,15 @@
       "context": "{properties.context}",
       "jarName": "hadoop-annotations-2.7.3.2.6.0.3-8.jar",
       "mvnUri": "mvn:org.talend.libraries/hadoop-annotations-2.7.3.2.6.0.3-8/6.4.0",
+      "useStudioRepository": "true",
+      "description": ""
+    },
+    {
+      "id": "jackson-core-2.6.6",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "jackson-core-2.6.6.jar",
+      "mvnUri": "mvn:com.fasterxml.jackson.core/jackson-core/2.6.6",
       "useStudioRepository": "true",
       "description": ""
     },
@@ -1166,7 +1166,24 @@
       "modules": [
         "commons-lang3-3.5",
         "hadoop-client",
-        "hadoop-aws"
+        "hadoop-aws",
+      ],
+      "exclusions": [
+        {
+          "groupId": "com.fasterxml.jackson.core",
+          "artifactId": "jackson-core",
+          "classifier": "",
+          "version": "2.6.6",
+          "extension": "",
+          "description": ""
+        },
+      ]
+    },
+    {
+      "id": "HDFS-NOT-SPARK-1-6-LIB-DYNAMIC",
+      "description": "Hdfs libraries for every execution engine except Spark 1.6",
+      "modules": [
+      	"jackson-core-2.6.6"
       ]
     },
     {
@@ -1300,6 +1317,23 @@
       "modules": [
         "tez-dag",
         "tez-mapreduce"
+      ],
+      "exclusions": [
+        {
+          "groupId": "com.fasterxml.jackson.core",
+          "artifactId": "jackson-core",
+          "classifier": "",
+          "extension": "",
+          "version": "2.6.6",
+          "description": ""
+        },
+      ]
+    },
+    {
+      "id": "TEZ-NOT-SPARK-1-6-LIB-DYNAMIC",
+      "description": "",
+      "modules": [
+        "jackson-core-2.6.6"
       ]
     },
     {
