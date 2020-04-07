@@ -35,7 +35,6 @@ import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.hdinsight.IMicrosoftHDInsightDistribution;
 import org.talend.hadoop.distribution.hdinsight400.modulegroup.HDInsight40HiveModuleGroup;
 import org.talend.hadoop.distribution.hdinsight400.modulegroup.HDInsight40HiveOnSparkModuleGroup;
-import org.talend.hadoop.distribution.hdinsight400.modulegroup.HDInsight40MapReduceModuleGroup;
 import org.talend.hadoop.distribution.hdinsight400.modulegroup.HDInsight40SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.hdinsight400.modulegroup.HDInsight40SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.hdinsight400.modulegroup.node.sparkbatch.HDInsight40SparkBatchGraphFramesNodeModuleGroup;
@@ -72,7 +71,6 @@ public class HDInsight40Distribution extends AbstractDistribution implements Spa
         moduleGroups.put(ComponentType.SPARKSTREAMING, HDInsight40SparkStreamingModuleGroup.getModuleGroups());
 
         moduleGroups.put(ComponentType.HIVE, HDInsight40HiveModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.MAPREDUCE, HDInsight40MapReduceModuleGroup.getModuleGroups());
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
         nodeModuleGroups = new HashMap<>();

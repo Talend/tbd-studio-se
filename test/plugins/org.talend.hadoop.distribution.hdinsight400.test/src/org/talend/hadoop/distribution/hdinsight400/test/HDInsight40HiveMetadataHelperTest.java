@@ -23,12 +23,10 @@ import static org.junit.Assert.assertTrue;
 @Ignore("does not run correctly on tycho: no distribution found")
 public class HDInsight40HiveMetadataHelperTest {
 
-    // @Override
     protected String getDistribution() {
         return HDInsight40Distribution.DISTRIBUTION_NAME;
     }
 
-    // @Override
     protected String getDistributionVersion() {
         return HDInsight40Distribution.VERSION;
     }

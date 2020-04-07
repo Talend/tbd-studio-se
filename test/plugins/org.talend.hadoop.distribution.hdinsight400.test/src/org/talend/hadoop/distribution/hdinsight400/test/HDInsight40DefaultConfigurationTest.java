@@ -37,11 +37,6 @@ public class HDInsight40DefaultConfigurationTest extends AbstractTest4DefaultCon
         assertNotNull("Can't load hadoop distribution", hadoopComponent);
     }
 
-    // @Test
-    public void testBasic() {
-        //
-    }
-
     @Test
     public void testHive_NotSupport() {
         HadoopComponent hadoopComponent = getHadoopComponent();
