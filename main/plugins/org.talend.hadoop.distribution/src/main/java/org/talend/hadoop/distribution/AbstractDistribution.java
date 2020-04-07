@@ -365,4 +365,8 @@ public boolean isQuboleDistribution() {
     public boolean doSupportAzureDataLakeStorageGen2() {
     	return false;
     }
+    
+    public String getSuffixParquetPackage() {
+        return "";
+    }
 }

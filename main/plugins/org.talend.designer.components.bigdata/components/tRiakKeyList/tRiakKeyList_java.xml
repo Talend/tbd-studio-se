@@ -86,10 +86,10 @@
 
 	<CODEGENERATION>
 	    <IMPORTS>
-			<IMPORT NAME="commons-codec" MODULE="commons-codec-1.7.jar" MVN="mvn:org.talend.libraries/commons-codec-1.7/6.0.0"  UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.7.jar" REQUIRED="true"/>
-			<IMPORT NAME="commons-logging" MODULE="commons-logging-1.1.jar" MVN="mvn:org.talend.libraries/commons-logging-1.1/6.0.0"  UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-logging-1.1.jar" REQUIRED="true" />
-			<IMPORT NAME="httpcore" MODULE="httpcore-4.2.2.jar" MVN="mvn:org.talend.libraries/httpcore-4.2.2/6.0.0"  UrlPath="platform:/plugin/org.talend.libraries.apache.http/lib/httpcore-4.2.2.jar" REQUIRED="true"/>
-			<IMPORT NAME="httpclient" MODULE="httpclient-4.2.1.jar" MVN="mvn:org.talend.libraries/httpclient-4.2.1/6.0.0"  UrlPath="platform:/plugin/org.talend.libraries.apache.http/lib/httpclient-4.2.1.jar" REQUIRED="true"/>
+			<IMPORT NAME="commons-codec" MODULE="commons-codec-1.11.jar" MVN="mvn:commons-codec/commons-codec/1.11" REQUIRED="true"/>
+			<IMPORT NAME="commons-logging" MODULE="commons-logging-1.2.jar" MVN="mvn:commons-logging/commons-logging/1.2" REQUIRED="true" />
+			<IMPORT NAME="httpcore" MODULE="httpcore-4.4.11.jar" MVN="mvn:org.apache.httpcomponents/httpcore/4.4.11" REQUIRED="true"/>
+			<IMPORT NAME="httpclient" MODULE="httpclient-4.5.9.jar" MVN="mvn:org.apache.httpcomponents/httpclient/4.5.9" REQUIRED="true"/>
 			<IMPORT NAME="jackson-annotations" MODULE="jackson-annotations-2.10.1.jar" MVN="mvn:com.fasterxml.jackson.core/jackson-annotations/2.10.1" REQUIRED="true"/>
 			<IMPORT NAME="jackson-core" MODULE="jackson-core-2.10.1.jar" MVN="mvn:com.fasterxml.jackson.core/jackson-core/2.10.1" REQUIRED="true"/>
 			<IMPORT NAME="jackson-databind" MODULE="jackson-databind-2.10.1.jar" MVN="mvn:com.fasterxml.jackson.core/jackson-databind/2.10.1" REQUIRED="true"/>

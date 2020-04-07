@@ -29,6 +29,18 @@
             name="avro-mapred-1.8.2-hadoop2.jar"
             mvn_uri="mvn:org.apache.avro/avro-mapred/1.8.2-hadoop2">
         </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dbr550"
+            id="avro-1.8.2.jar"
+            name="avro-1.8.2.jar"
+            mvn_uri="mvn:org.apache.avro/avro/1.8.2">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dbr550"
+            id="avro-compiler-1.8.2.jar"
+            name="avro-compiler-1.8.2.jar"
+            mvn_uri="mvn:org.apache.avro/avro-compiler/1.8.2">
+        </libraryNeeded>
         <libraryNeeded 
          	context="plugin:org.talend.hadoop.distribution.dbr550" 
          	id="commons-codec-1.10.jar" 
@@ -258,6 +270,8 @@
                 name="SPARK-LIB-MRREQUIRED-DBR550">
              <library id="azure-storage-5.2.0.jar"/>
              <library id="avro-mapred-1.8.2-hadoop2.jar"/>
+             <library id="avro-1.8.2.jar"/>
+             <library id="avro-compiler-1.8.2.jar"/>
              <library id="commons-codec-1.10.jar"/>
              <library id="commons-lang-2.6.jar"/>
              <library id="commons-lang3-3.5.jar"/>

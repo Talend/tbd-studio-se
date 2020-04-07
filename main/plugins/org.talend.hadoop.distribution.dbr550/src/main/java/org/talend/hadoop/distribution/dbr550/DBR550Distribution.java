@@ -29,7 +29,6 @@ import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
-import org.talend.hadoop.distribution.constants.databricks.IDatabricksDistribution;
 import org.talend.hadoop.distribution.dbr550.modulegroup.DBR550HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.dbr550.modulegroup.DBR550SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.dbr550.modulegroup.DBR550SparkStreamingModuleGroup;
@@ -37,7 +36,7 @@ import org.talend.hadoop.distribution.dbr550.modulegroup.node.sparkbatch.DBR550S
 import org.talend.hadoop.distribution.dbr550.modulegroup.node.sparkstreaming.DBR550SparkStreamingKinesisNodeModuleGroup;
 
 public class DBR550Distribution extends AbstractDatabricksDistribution implements SparkBatchComponent,
-        SparkStreamingComponent, HiveOnSparkComponent, IDatabricksDistribution {
+        SparkStreamingComponent, HiveOnSparkComponent {
 
     public final static String VERSION = "Databricks_5_5";
 

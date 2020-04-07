@@ -281,4 +281,17 @@ public abstract class AbstractNoSQLConnForm extends AbstractNoSQLForm {
         }
     }
 
+    @Override
+    protected void hideControl(Control control, boolean hide) {
+        Object layoutData = control.getLayoutData();
+        if (layoutData instanceof GridData) {
+            GridData data = (GridData) layoutData;
+            data.exclude = hide;
+            control.setLayoutData(data);
+            control.setVisible(!hide);
+            if (control.getParent() != null) {
+                control.getParent().layout();
+            }
+        }
+    }
 }
