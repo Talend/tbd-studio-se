@@ -44,7 +44,7 @@ int nb_line_<%=cid %> = 0;
 
 <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Amazon/CredentialsProvider.javajet"%>	
 com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient dynamoDBClient_<%=cid%> = new com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient(
-    credentialsProvider_<%=cid%>,		
+    credentialsProvider_<%=cid%>
     );
 
    
