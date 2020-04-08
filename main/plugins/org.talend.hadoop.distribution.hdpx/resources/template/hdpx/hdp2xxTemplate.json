@@ -148,6 +148,24 @@
       ]
     },
     {
+      "id": "hive-metastore",
+      "type": "BASE",
+      "context": "{properties.context}",
+      "groupId": "org.apache.hive",
+      "artifactId": "hive-metastore",
+      "classifier": "",
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "*",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        }
+      ]
+    },
+    {
       "id": "hive-exec",
       "type": "BASE",
       "context": "{properties.context}",
@@ -903,6 +921,15 @@
       "description": ""
     },
     {
+      "id": "stax-api-1.0.1.jar",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "stax-api-1.0.1.jar",
+      "mvnUri": "mvn:org.talend.libraries/stax-api-1.0.1/6.0.0",
+      "useStudioRepository": "true",
+      "description": ""
+    },
+    {
       "id": "jline-2.10.4",
       "type": "STANDARD",
       "context": "{properties.context}",
@@ -1141,6 +1168,14 @@
       "mvnUri": "mvn:org.kitesdk/kite-hadoop-compatibility/1.0.0",
       "description": ""
     },
+	{
+      "id": "kite-data-hive-1.0.0",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "kite-data-hive-1.0.0.jar",
+      "mvnUri": "mvn:org.kitesdk/kite-data-hive/1.0.0",
+      "description": ""
+    },  
     {
       "id": "parquet-avro-1.4.1",
       "type": "STANDARD",
@@ -1166,17 +1201,7 @@
       "modules": [
         "commons-lang3-3.5",
         "hadoop-client",
-        "hadoop-aws",
-      ],
-      "exclusions": [
-        {
-          "groupId": "com.fasterxml.jackson.core",
-          "artifactId": "jackson-core",
-          "classifier": "",
-          "version": "2.6.6",
-          "extension": "",
-          "description": ""
-        },
+        "hadoop-aws"
       ]
     },
     {
@@ -1250,7 +1275,10 @@
         "parquet-avro-1.8.2",
         "parquet-hadoop-bundle",
         "parquet-hadoop-1.8.2",
-        "parquet-avro-1.4.1"
+        "parquet-avro-1.4.1",
+        "kite-data-hive-1.0.0",
+        "hive-metastore",
+        "hive-exec"
       ]
     },
     {
@@ -1317,16 +1345,6 @@
       "modules": [
         "tez-dag",
         "tez-mapreduce"
-      ],
-      "exclusions": [
-        {
-          "groupId": "com.fasterxml.jackson.core",
-          "artifactId": "jackson-core",
-          "classifier": "",
-          "extension": "",
-          "version": "2.6.6",
-          "description": ""
-        },
       ]
     },
     {
