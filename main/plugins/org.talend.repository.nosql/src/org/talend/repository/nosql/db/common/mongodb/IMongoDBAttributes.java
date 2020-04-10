@@ -27,5 +27,4 @@ public interface IMongoDBAttributes extends INoSQLCommonAttributes {
 
     public final static String COLLECTION = "COLLECTION"; //$NON-NLS-1$
 
-    public final static String REQUIRED_ENCRYPTION = "REQUIRED_ENCRYPTION"; //$NON-NLS-1$
 }
