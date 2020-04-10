@@ -228,7 +228,7 @@
 	      FIELD="TEXT"
 	      NUM_ROW="1"
 	      GROUP="ASSUME_ROLE_CONFIG"
-	      SHOW_IF="isShow[(SET_STS_ENDPOINT] AND (SET_STS_ENDPOINT == 'true')"
+	      SHOW_IF="isShow[SET_STS_ENDPOINT] AND (SET_STS_ENDPOINT == 'true')"
 	    >
 	      <DEFAULT>""</DEFAULT>
 	    </PARAMETER>
