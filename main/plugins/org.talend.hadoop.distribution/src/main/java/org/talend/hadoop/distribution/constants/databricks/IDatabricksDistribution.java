@@ -12,15 +12,10 @@
 // ============================================================================
 package org.talend.hadoop.distribution.constants.databricks;
 
-import java.util.List;
-
 @SuppressWarnings("nls")
 public interface IDatabricksDistribution {
 
     static final String DISTRIBUTION_NAME = "DATABRICKS";
 
     static final String DISTRIBUTION_DISPLAY_NAME = "Databricks";
-
-    List<EDatabriksCloudProvider> getSupportCloudProviders();
-
 }
