@@ -1275,7 +1275,13 @@
         "parquet-avro-1.8.2",
         "parquet-hadoop-bundle",
         "parquet-hadoop-1.8.2",
-        "parquet-avro-1.4.1",
+        "parquet-avro-1.4.1"
+      ]
+    },
+    {
+      "id": "SQOOP-HIVE-LIB-DYNAMIC",
+      "description": "",
+      "modules": [
         "kite-data-hive-1.1.0",
         "hive-metastore",
         "hive-exec"

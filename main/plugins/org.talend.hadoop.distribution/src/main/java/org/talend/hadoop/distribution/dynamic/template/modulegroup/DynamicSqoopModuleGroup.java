@@ -20,6 +20,7 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.condition.BasicExpression;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.condition.EqualityOperator;
+import org.talend.hadoop.distribution.condition.RawExpression;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.SqoopConstant;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
@@ -39,6 +40,8 @@ public class DynamicSqoopModuleGroup extends AbstractModuleGroup {
                 .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.SQOOP_MODULE_GROUP.getModuleName());
         String sqoopParquetRuntimeId = pluginAdapter
                 .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.SQOOP_PARQUET_MODULE_GROUP.getModuleName());
+        String sqoopHiveRuntimeId = pluginAdapter
+                .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.SQOOP_HIVE_MODULE_GROUP.getModuleName());
 
         checkRuntimeId(sqoopRuntimeId);
         checkRuntimeId(sqoopParquetRuntimeId);
@@ -51,6 +54,10 @@ public class DynamicSqoopModuleGroup extends AbstractModuleGroup {
                     new BasicExpression(SqoopConstant.FILE_FORMAT, EqualityOperator.EQ, SqoopConstant.PAQUET_OUTPUT_FORMAT));
             hs.add(new DistributionModuleGroup(sqoopParquetRuntimeId, true, parquetOutputCondition));
         }
+        if (StringUtils.isNotBlank(sqoopHiveRuntimeId)) {
+            ComponentCondition hiveOutputCondition = new SimpleComponentCondition(new RawExpression("ADDITIONAL_JAVA CONTAINS {ADDITIONAL_ARGUMENT=\"hive.import\", ADDITIONAL_VALUE=\"true\"}"));
+            hs.add(new DistributionModuleGroup(sqoopHiveRuntimeId, true, hiveOutputCondition));
+        }        
         return hs;
     }
 

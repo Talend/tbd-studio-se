@@ -3,8 +3,16 @@
 <%
 	// Register jars to handle Hive integration.
 	
-	boolean hiveImport = true; // to be checked using hive.import property - TODO
-		
+	List<Map<String, String>> additionalParams = ElementParameterParser.getTableValue(node, "__ADDITIONAL_JAVA__");
+	boolean hiveImport = false;
+	for (Map<String, String> additionalParam : additionalParams) {
+		System.out.println(additionalParam.toString());
+		if ("{ADDITIONAL_VALUE=\"true\", ADDITIONAL_ARGUMENT=\"hive.import\"}".equals(additionalParam.toString())) {
+			hiveImport = true;
+			break;
+		}
+	}
+	
 	java.util.List<String> hiveJarsToRegister = null;
 	java.util.List<String> hiveJars = null;
 	if(hiveImport) {
