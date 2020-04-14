@@ -45,6 +45,7 @@ public class DynamicSqoopModuleGroup extends AbstractModuleGroup {
 
         checkRuntimeId(sqoopRuntimeId);
         checkRuntimeId(sqoopParquetRuntimeId);
+        checkRuntimeId(sqoopHiveRuntimeId);
 
         if (StringUtils.isNotBlank(sqoopRuntimeId)) {
             hs.add(new DistributionModuleGroup(sqoopRuntimeId));
