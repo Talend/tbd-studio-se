@@ -29,6 +29,5 @@ Bundle-ClassPath: .,
  lib/hadoop-auth-2.0.2-alpha.jar,
  lib/json-simple-1.1.jar,
  lib/oozie-client-3.3.0.jar,
- lib/xercesImpl-2.10.0.jar,
  lib/xml-apis-1.4.01.jar
 Bundle-Vendor: .Talend SA.
