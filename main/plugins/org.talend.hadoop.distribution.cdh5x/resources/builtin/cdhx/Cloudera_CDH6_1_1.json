@@ -13038,8 +13038,8 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_exec",
-      "mvn_uri" : "mvn:org.talend.libraries/hive-exec-shade-2.1.1-cdh6.1.1/6.0.0",
-      "name" : "hive-exec-shade-2.1.1-cdh6.1.1.jar",
+      "mvn_uri" : "mvn:org.talend.libraries/hive-exec-shade-2.1.1-cdh6.1.1-talend/6.0.0",
+      "name" : "hive-exec-shade-2.1.1-cdh6.1.1-talend.jar",
       "tagName" : "libraryNeeded",
       "useStudioRepository" : "true"
     }, {
