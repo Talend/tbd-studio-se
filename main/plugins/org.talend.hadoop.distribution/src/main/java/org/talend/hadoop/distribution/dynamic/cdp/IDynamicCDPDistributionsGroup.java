@@ -12,7 +12,7 @@
 // ============================================================================
 package org.talend.hadoop.distribution.dynamic.cdp;
 
-import org.talend.hadoop.distribution.constants.cdp.ICDPDistribution;
+import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
 import org.talend.hadoop.distribution.dynamic.IDynamicDistributionsGroup;
 
 
@@ -21,7 +21,7 @@ import org.talend.hadoop.distribution.dynamic.IDynamicDistributionsGroup;
  */
 public interface IDynamicCDPDistributionsGroup extends IDynamicDistributionsGroup {
 
-    public static final String DISTRIBUTION_NAME = ICDPDistribution.DISTRIBUTION_NAME;
+    public static final String DISTRIBUTION_NAME = IClouderaDistribution.DISTRIBUTION_NAME;
 
-    public static final String DISTRIBUTION_DISPLAY_NAME = ICDPDistribution.DISTRIBUTION_DISPLAY_NAME;
+    public static final String DISTRIBUTION_DISPLAY_NAME = IClouderaDistribution.DISTRIBUTION_DISPLAY_NAME;
 }

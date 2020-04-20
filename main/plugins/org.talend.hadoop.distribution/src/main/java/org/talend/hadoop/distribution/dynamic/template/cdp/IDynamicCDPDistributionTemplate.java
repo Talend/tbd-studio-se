@@ -12,13 +12,13 @@
 // ============================================================================
 package org.talend.hadoop.distribution.dynamic.template.cdp;
 
-import org.talend.hadoop.distribution.constants.cdp.ICDPDistribution;
+import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
 import org.talend.hadoop.distribution.dynamic.template.IDynamicDistributionTemplate;
 
 
 /**
  * DOC  class global comment. Detailled comment
  */
-public interface IDynamicCDPDistributionTemplate extends IDynamicDistributionTemplate, ICDPDistribution {
+public interface IDynamicCDPDistributionTemplate extends IDynamicDistributionTemplate, IClouderaDistribution {
 
 }
