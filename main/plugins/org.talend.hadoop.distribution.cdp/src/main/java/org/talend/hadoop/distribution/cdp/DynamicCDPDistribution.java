@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.osgi.framework.Bundle;
-import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.dynamic.cdp.AbstractDynamicCDPDistribution;
