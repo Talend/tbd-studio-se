@@ -42,7 +42,6 @@ public class CDPDistributionTemplate extends AbstractDynamicCDPDistributionTempl
     private final static String YARN_APPLICATION_CLASSPATH = "/opt/cloudera/parcels/CDH/lib/spark/jars/*," + 
     		"/opt/cloudera/parcels/CDH/lib/hive/lib/*," + 
     		"/opt/cloudera/parcels/CDH/lib/impala/lib/*";
-    		//+ "/opt/cloudera/parcels/CDH/lib/hadoop-hdfs/*"; 
 
     public CDPDistributionTemplate(DynamicPluginAdapter pluginAdapter) throws Exception {
         super(pluginAdapter);
