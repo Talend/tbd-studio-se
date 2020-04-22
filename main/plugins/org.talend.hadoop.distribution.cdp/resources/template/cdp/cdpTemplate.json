@@ -15,26 +15,6 @@
 	"description": "",
     "modules": [
         {
-            "id": "commons-lang3-3.4",
-            "type": "STANDARD",
-            "context": "{properties.context}",
-            "jarName": "commons-lang3-3.4.jar",
-            "mvnUri": "mvn:org.apache.commons/commons-lang3/3.4",
-            "useStudioRepository": "true",
-            "supportedSparkVersions": [
-                "SPARK_2_4"
-            ],
-            "description": ""
-		},
-		{
-            "id": "commons-httpclient-4.5.12",
-            "type": "STANDARD",
-            "context": "{properties.context}",
-            "jarName": "commons-httpclient-4.5.12.jar",
-            "mvnUri": "mvn:org.apache.httpcomponents/httpclient/4.5.12",
-            "useStudioRepository": "true"
-		},
-        {
 			"id": "avro-mapred",
 			"type": "BASE",
 			"context": "{properties.context}",
@@ -72,7 +52,6 @@
 			"context": "{properties.context}",
 			"groupId": "org.apache.commons",
 			"artifactId": "commons-pool2",
-			"version": "2.4.2",
 			"classifier": "",
 			"description": ""
 		},
@@ -90,7 +69,6 @@
 			"context": "{properties.context}",
 			"groupId": "com.cloudera.navigator",
 			"artifactId": "navigator-sdk-client",
-			"version": "2.2",
 			"classifier": "",
 			"description": "",
 			"exclusions": [
@@ -110,7 +88,6 @@
 			"context": "{properties.context}",
 			"groupId": "com.twitter.elephantbird",
 			"artifactId": "elephant-bird-core",
-			"version": "4.9",
 			"classifier": "",
 			"description": "",
 			"exclusions": [
@@ -136,7 +113,6 @@
 			"context": "{properties.context}",
 			"groupId": "com.twitter.elephantbird",
 			"artifactId": "elephant-bird-hadoop-compat",
-			"version": "4.9",
 			"classifier": "",
 			"description": "",
 			"exclusions": [
@@ -162,7 +138,6 @@
 			"context": "{properties.context}",
 			"groupId": "com.twitter.elephantbird",
 			"artifactId": "elephant-bird-pig",
-			"version": "4.9",
 			"classifier": "",
 			"description": "",
 			"exclusions": [
@@ -321,6 +296,65 @@
                     "description": ""
                 }
             ]
+        },{
+            "id": "hive-exec",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hive",
+            "artifactId": "hive-exec",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "jdk.tools",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "org.apache.curator",
+                    "artifactId": "apache-curator",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "eigenbase",
+                    "artifactId": "eigenbase-properties",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "org.pentaho",
+                    "artifactId": "pentaho-aggdesigner-algorithm",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "xerces",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "org.apache.spark",
+                    "artifactId": "spark-core_2.10",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "com.sun.jersey",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
         },
 		{
 			"id": "hadoop-client",
@@ -413,6 +447,14 @@
                     "description": ""
                 }
 			]
+		},
+		{
+		    "id" : "hadoop_yarn_server_resourcemanager",
+		    "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hadoop",
+            "artifactId": "hadoop-yarn-server-resourcemanager",
+            "description": ""
 		},
 		{
 			"id": "hadoop-yarn-server-web-proxy",
@@ -982,7 +1024,6 @@
 			"context": "{properties.context}",
 			"groupId": "org.jodd",
 			"artifactId": "jodd-core",
-			"version": "3.5.2",
 			"classifier": "",
 			"description": ""
 		},
@@ -992,19 +1033,10 @@
 			"context": "{properties.context}",
 			"groupId": "org.apache.kafka",
 			"artifactId": "kafka-clients",
-			"version": "0.10.0-kafka-2.1.2",
 			"classifier": "",
 			"description": ""
 		},
-		{
-			"id": "kite-data-core",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "org.kitesdk",
-			"artifactId": "kite-data-core",
-			"classifier": "",
-			"description": ""
-		},
+		
 	    {
 			"id": "parquet-avro",
 			"type": "BASE",
@@ -1036,16 +1068,6 @@
 			"context": "{properties.context}",
 			"groupId": "org.apache.parquet",
 			"artifactId": "parquet-hadoop-bundle",
-			"classifier": "",
-			"description": ""
-		},
-		{
-			"id": "parquet-hadoop-bundle_1_6_0",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "com.twitter",
-			"artifactId": "parquet-hadoop-bundle",
-			"version": "1.6.0",
 			"classifier": "",
 			"description": ""
 		},
@@ -1278,57 +1300,37 @@
 			"description": ""
 		},
 		{
-			"id": "json-20080701",
-			"type": "STANDARD",
-			"context": "{properties.context}",
-			"groupId": "org.json",
-			"artifactId": "json",
-			"version": "20080701",
-			"mvnUri": "mvn:org.json/json/20080701",
-			"useStudioRepository": "true",
-			"description": ""
-		},
-		{
 			"id": "jackson-core",
-			"type": "STANDARD",
+			"type": "BASE",
 			"context": "{properties.context}",
 			"groupId": "com.fasterxml.jackson.core",
 			"artifactId": "jackson-core",
-			"version": "2.9.2",
-			"mvnUri": "mvn:com.fasterxml.jackson.core/jackson-core/2.9.2",
-			"useStudioRepository": "true",
 			"description": ""
 		},
 		{
 			"id": "jackson-databind",
-			"type": "STANDARD",
+			"type": "BASE",
 			"context": "{properties.context}",
 			"groupId": "com.fasterxml.jackson.core",
 			"artifactId": "jackson-databind",
-			"version": "2.9.2",
-			"mvnUri": "mvn:com.fasterxml.jackson.core/jackson-databind/2.9.2",
-			"useStudioRepository": "true",
 			"description": ""
 		},
 		{
 			"id": "jackson-annotations",
-			"type": "STANDARD",
+			"type": "BASE",
 			"context": "{properties.context}",
 			"groupId": "com.fasterxml.jackson.core",
 			"artifactId": "jackson-annotations",
-			"version": "2.9.2",
-			"mvnUri": "mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.2",
-			"useStudioRepository": "true",
 			"description": ""
 		},
 		{
 			"id": "azure-common-1.7.1",
-			"type": "STANDARD",
-			"context": "{properties.context}",
-			"jarName": "azure-common-1.7.1.jar",
-			"mvnUri": "mvn:org.talend.libraries/azure-common-1.7.1/6.0.0",
-			"useStudioRepository": "true",
-			"description": ""
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "azure-common-1.7.1.jar",
+            "mvnUri": "mvn:org.talend.libraries/azure-common-1.7.1/6.0.0",
+            "useStudioRepository": "true",
+            "description": ""
 		},
       	{
             "id": "hbase-mapreduce-2.0.0",
@@ -1403,7 +1405,6 @@
             "context": "{properties.context}",
             "groupId": "org.apache.kafka",
             "artifactId": "kafka-clients",
-            "version": "0.10.0-kafka-2.1.2",
             "classifier": "",
             "description": ""
         },
@@ -1421,138 +1422,91 @@
         {
 			"id": "HDFS-COMMON-LIB-DYNAMIC",
 			"modules": [
-				"hadoop-client"
+				"hadoop-client",				
+                "hadoop-mapreduce-client-core",
+                "hadoop-yarn-server-web-proxy",
+                "spark-hive_2.11",
+                "hive-exec",
+                "spark-mllib_2.11",
+                "spark-yarn_2.11",
+                "spark-avro_2.11",
+                "jackson-core",
+                "jackson-databind",
+                "jackson-annotations",
+                "parquet-hadoop-bundle"
 			]
 		},
         		{
 			"id": "HDFS-LIB-DYNAMIC",
 			"description": "jars for hdfs, only module.id permitted",
-			"modules": [
-				"hadoop-client",
-				"jackson-core",
-				"jackson-databind",
-				"jackson-annotations",
-				"commons-httpclient-3.1",
-				"parquet-hadoop-bundle_1_6_0"
-			]
-		},
-		{
-			"id": "HDFS-SPARK1_6-LIB-DYNAMIC",
-			"description": "",
-			"modules": [
-			]
+			"modules": []
 		},
 		{
 			"id": "HDFS-SPARK2_1-LIB-DYNAMIC",
 			"description": "",
-			"modules": [				
-			]
+			"modules": []
 		},
         {
 			"id": "IMPALA-LIB-DYNAMIC",
 			"description": "",
-			"modules": [
-				"hadoop-client",
-				"hive-jdbc",
-				"hive-exec"
-			]
+			"modules": []
 		},
 		{
 			"id": "HIVE-LIB-DYNAMIC",
 			"description": "",
-			"modules": [
-				"hive-jdbc",
-				"hive-exec"
-			]
+			"modules": []
 		},
 		{
 			"id": "HIVE-HBASE-LIB-DYNAMIC",
 			"description": "",
-			"modules": [
-				"hbase-server",
-				"hbase-hadoop-compat",
-				"hive-hbase-handler",
-				"parquet-avro"
-			]
+			"modules": []
 		},
         {
 			"id": "HBASE-LIB-DYNAMIC",
 			"description": "",
-			"modules": [
-				"hadoop-client",
-				"hbase-client",
-				"hbase-server"
-			]
+			"modules": []
 		},
 
         {
 			"id": "MAPREDUCE-PARQUET-LIB-DYNAMIC",
 			"description": "",
-			"modules": [
-				"parquet-hadoop-bundle",
-				"parquet-hadoop-bundle_1_6_0"
-			]
+			"modules": []
 		},
 		{
 			"id": "SPARK-PARQUET-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": [				
-			]
+			"modules": []
 		},
 		{
 			"id": "SPARK-LIB-SPARK2-DYNAMIC",
 			"description": "",
 			"modules": [
-				"hadoop-mapreduce-client-core",
-				"hadoop-yarn-server-web-proxy",
-				"spark-hive_2.11",
-				"hive-exec",
-				"spark-mllib_2.11",
-				"spark-yarn_2.11",
-				"spark-avro_2.11",
-				"commons-httpclient-3.1"
 			]
 		},
         {
 			"id": "MAPREDUCE-LIB-DYNAMIC",
 			"description": "",
-			"modules": [
-				"hadoop-client",
-				"jodd"
-			]
+			"modules": []
 		},
         {
 			"id": "MAPREDUCE-PARQUET-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": [
-				"hadoop-client",
-				"jodd",
-				"parquet-hadoop-bundle_1_6_0"
-			]
+			"modules": []
 		},
         {
             "id": "MAPREDUCE-AVRO-LIB-MRREQUIRED-DYNAMIC",
             "description": "",
-            "modules": [
-                "avro-mapred"
-            ]
+            "modules": []
         },
 		{
 			"id": "SPARK-GRAPHFRAMES-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": [
-				"graphframes"
-			]
+			"modules": []
 		},
 		{
 			"id": "SPARK-HIVE-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": [
-			    "spark-hive_2.11",
-			    "hive-common",
-				"hadoop-client",
-				"hive-exec"
-			]
+			"modules": []
 		},
         {
 			"id": "TALEND_CLOUDERA_NAVIGATOR-DYNAMIC",
@@ -1566,71 +1520,43 @@
         {
 			"id": "SQOOP-LIB-DYNAMIC",
 			"description": "",
-			"modules": [
-				"avro-mapred",
-				"sqoop_only",
-				"json-20080701",
-				"commons-lang3-3.4",
-				"jackson-core",
-				"jackson-databind",
-				"kite-data-core",
-				"httpclient-4.5.3",
-				"httpcore-4.4.6"
-			]
+			"modules": []
 		},
 		{
 			"id": "SQOOP-PARQUET-LIB-DYNAMIC",
 			"description": "",
 			"modules": [
-				"kite-data-core"
 			]
 		},
 		{
 			"id": "SPARK-AZURE-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": [
-				"azure-common-1.7.1",
-				"hadoop-azure",
-				"hadoop-azure-datalake",
-				"hadoop-yarn-server-web-proxy"
-			]
+			"modules": []
 		},
         {
             "id": "SPARK-S3-LIB-MRREQUIRED-DYNAMIC",
             "description": "",
-            "modules": [
-                "hadoop-aws",
-                "aws-java-sdk-bundle"
-            ]
+            "modules": []
         },
         {
             "id": "SPARK2-KINESIS-LIB-MRREQUIRED-DYNAMIC",
             "description": "",
-            "modules": [
-                "hadoop-client",
-                "spark-streaming-kinesis-asl_2.11",
-                "jackson-dataformat-cbor"
-            ]
+            "modules": []
         }, 
         {
             "id": "SPARK2-KAFKA-ASSEMBLY-LIB-MRREQUIRED-DYNAMIC",
             "description": "",
-            "modules": [
-                "spark-streaming-kafka"
-            ]
+            "modules": []
         },
         {
             "id": "SPARK2-KAFKA-CLIENT-LIB-MRREQUIRED-DYNAMIC",
             "description": "",
-            "modules": [
-            ]
+            "modules": [ ]
         },
         {
             "id": "SPARK2-KUDU-LIB-MRREQUIRED-DYNAMIC",
             "description": "",
-            "modules": [
-                "kudu-spark2_2.11"
-            ]
+            "modules": []
         }
     ],
     "classLoaders": [
