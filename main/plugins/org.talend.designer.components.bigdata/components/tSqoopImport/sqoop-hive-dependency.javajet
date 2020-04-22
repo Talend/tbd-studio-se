@@ -39,6 +39,7 @@
         
     if (hiveJarsToRegister != null && hiveJars != null) {
         if ((parquetJarsToRegister == null || parquetJars == null) && (jarsToRegister == null || jars == null)) {
+
 %>
             routines.system.GetJarsToRegister getJarsToRegister_<%=cid %> = new routines.system.GetJarsToRegister();
             java.lang.StringBuilder sb_<%=cid%> = new java.lang.StringBuilder();
