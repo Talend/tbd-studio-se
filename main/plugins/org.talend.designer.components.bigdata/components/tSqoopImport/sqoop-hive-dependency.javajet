@@ -6,7 +6,6 @@
     List<Map<String, String>> additionalParams = ElementParameterParser.getTableValue(node, "__ADDITIONAL_JAVA__");
     boolean hiveImport = false;
     for (Map<String, String> additionalParam : additionalParams) {
-        System.out.println(additionalParam.toString());
         if ("{ADDITIONAL_VALUE=\"true\", ADDITIONAL_ARGUMENT=\"hive.import\"}".equals(additionalParam.toString())) {
             hiveImport = true;
             break;
