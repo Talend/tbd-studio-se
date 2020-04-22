@@ -21,5 +21,5 @@ public interface ICDPDistribution {
 
     static final String DISTRIBUTION_NAME = "CDP";
 
-    static final String DISTRIBUTION_DISPLAY_NAME = "CDP";
+    static final String DISTRIBUTION_DISPLAY_NAME = "Cloudera Data Platform";
 }

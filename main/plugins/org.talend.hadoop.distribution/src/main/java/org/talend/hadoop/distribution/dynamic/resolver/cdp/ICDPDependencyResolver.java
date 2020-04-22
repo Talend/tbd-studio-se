@@ -13,7 +13,7 @@
 package org.talend.hadoop.distribution.dynamic.resolver.cdp;
 
 
-import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
+import org.talend.hadoop.distribution.constants.cdp.ICDPDistribution;
 import org.talend.hadoop.distribution.dynamic.resolver.IDependencyResolver;
 
 /**
@@ -21,6 +21,6 @@ import org.talend.hadoop.distribution.dynamic.resolver.IDependencyResolver;
  */
 public interface ICDPDependencyResolver extends IDependencyResolver {
 
-    public static final String DISTRIBUTION = IClouderaDistribution.DISTRIBUTION_NAME;
+    public static final String DISTRIBUTION = ICDPDistribution.DISTRIBUTION_NAME;
 
 }
