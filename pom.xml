@@ -35,6 +35,7 @@
         <module>main/plugins/org.talend.hadoop.distribution.cdh5100</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh5120</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh5x</module>
+        <module>main/plugins/org.talend.hadoop.distribution.cdp</module>
         <module>main/plugins/org.talend.hadoop.distribution.altus10</module>
         <module>main/plugins/org.talend.hadoop.distribution.custom</module>
         <module>main/plugins/org.talend.hadoop.distribution.dataproc11</module>
