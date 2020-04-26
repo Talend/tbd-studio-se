@@ -47,13 +47,13 @@ public class HadoopClusterContextUpdateService extends AbstractRepositoryContext
                 } else if (hadoopConn.getJtOrRmPrincipal() != null && hadoopConn.getJtOrRmPrincipal().equals(oldValue)) {
                     hadoopConn.setJtOrRmPrincipal(newValue);
                     isModified = true;
-                } else if (hadoopConn.getGroup().equals(oldValue)) {
+                } else if (hadoopConn.getGroup() != null && hadoopConn.getGroup().equals(oldValue)) {
                     hadoopConn.setGroup(newValue);
                     isModified = true;
-                } else if (hadoopConn.getKeytabPrincipal().equals(oldValue)) {
+                } else if (hadoopConn.getKeytabPrincipal() != null && hadoopConn.getKeytabPrincipal().equals(oldValue)) {
                     hadoopConn.setKeytabPrincipal(newValue);
                     isModified = true;
-                } else if (hadoopConn.getKeytab().equals(oldValue)) {
+                } else if (hadoopConn.getKeytab() != null && hadoopConn.getKeytab().equals(oldValue)) {
                     hadoopConn.setKeytab(newValue);
                     isModified = true;
                 } else if (hadoopConn.getMaprTPassword() != null && hadoopConn.getMaprTPassword().equals(oldValue)) {

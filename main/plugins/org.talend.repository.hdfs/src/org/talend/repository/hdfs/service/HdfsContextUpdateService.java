@@ -32,13 +32,13 @@ public class HdfsContextUpdateService extends AbstractRepositoryContextUpdateSer
         if (conn.isContextMode()) {
             if (conn instanceof HDFSConnection) {
                 HDFSConnection hdfsConn = (HDFSConnection) conn;
-                if (hdfsConn.getUserName().equals(oldValue)) {
+                if (hdfsConn.getUserName() != null && hdfsConn.getUserName().equals(oldValue)) {
                     hdfsConn.setUserName(newValue);
                     isModified = true;
-                } else if (hdfsConn.getRowSeparator().equals(oldValue)) {
+                } else if (hdfsConn.getRowSeparator() != null && hdfsConn.getRowSeparator().equals(oldValue)) {
                     hdfsConn.setRowSeparator(newValue);
                     isModified = true;
-                } else if (hdfsConn.getHeaderValue().equals(oldValue)) {
+                } else if (hdfsConn.getHeaderValue() != null && hdfsConn.getHeaderValue().equals(oldValue)) {
                     hdfsConn.setHeaderValue(newValue);
                     isModified = true;
                 } else {

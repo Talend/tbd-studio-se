@@ -32,31 +32,31 @@ public class HCatalogContextUpdateService extends AbstractRepositoryContextUpdat
         if (conn.isContextMode()) {
             if (conn instanceof HCatalogConnection) {
                 HCatalogConnection hcatalogConn = (HCatalogConnection) conn;
-                if (hcatalogConn.getHostName().equals(oldValue)) {
+                if (hcatalogConn.getHostName() != null && hcatalogConn.getHostName().equals(oldValue)) {
                     hcatalogConn.setHostName(newValue);
                     isModified = true;
-                } else if (hcatalogConn.getPort().equals(oldValue)) {
+                } else if (hcatalogConn.getPort() != null && hcatalogConn.getPort().equals(oldValue)) {
                     hcatalogConn.setPort(newValue);
                     isModified = true;
-                } else if (hcatalogConn.getUserName().equals(oldValue)) {
+                } else if (hcatalogConn.getUserName() != null && hcatalogConn.getUserName().equals(oldValue)) {
                     hcatalogConn.setUserName(newValue);
                     isModified = true;
-                } else if (hcatalogConn.getPassword().equals(oldValue)) {
+                } else if (hcatalogConn.getPassword() != null && hcatalogConn.getPassword().equals(oldValue)) {
                     hcatalogConn.setPassword(newValue);
                     isModified = true;
-                } else if (hcatalogConn.getKrbPrincipal().equals(oldValue)) {
+                } else if (hcatalogConn.getKrbPrincipal() != null && hcatalogConn.getKrbPrincipal().equals(oldValue)) {
                     hcatalogConn.setKrbPrincipal(newValue);
                     isModified = true;
-                } else if (hcatalogConn.getKrbRealm().equals(oldValue)) {
+                } else if (hcatalogConn.getKrbRealm() != null && hcatalogConn.getKrbRealm().equals(oldValue)) {
                     hcatalogConn.setKrbRealm(newValue);
                     isModified = true;
-                } else if (hcatalogConn.getDatabase().equals(oldValue)) {
+                } else if (hcatalogConn.getDatabase() != null && hcatalogConn.getDatabase().equals(oldValue)) {
                     hcatalogConn.setDatabase(newValue);
                     isModified = true;
-                } else if (hcatalogConn.getRowSeparator().equals(oldValue)) {
+                } else if (hcatalogConn.getRowSeparator() != null && hcatalogConn.getRowSeparator().equals(oldValue)) {
                     hcatalogConn.setRowSeparator(newValue);
                     isModified = true;
-                } else if (hcatalogConn.getFieldSeparator().equals(oldValue)) {
+                } else if (hcatalogConn.getFieldSeparator() != null && hcatalogConn.getFieldSeparator().equals(oldValue)) {
                     hcatalogConn.setFieldSeparator(newValue);
                     isModified = true;
                 } else {

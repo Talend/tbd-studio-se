@@ -32,10 +32,10 @@ public class OozieContextUpdateService extends AbstractRepositoryContextUpdateSe
         if (conn.isContextMode()) {
             if (conn instanceof OozieConnection) {
                 OozieConnection oozieConn = (OozieConnection) conn;
-                if (oozieConn.getUserName().equals(oldValue)) {
+                if (oozieConn.getUserName() != null && oozieConn.getUserName().equals(oldValue)) {
                     oozieConn.setUserName(newValue);
                     isModified = true;
-                } else if (oozieConn.getOozieEndPoind().equals(oldValue)) {
+                } else if (oozieConn.getOozieEndPoind() != null && oozieConn.getOozieEndPoind().equals(oldValue)) {
                     oozieConn.setOozieEndPoind(newValue);
                     isModified = true;
                 } else {
