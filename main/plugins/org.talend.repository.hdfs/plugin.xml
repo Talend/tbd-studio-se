@@ -103,7 +103,7 @@
    <extension
          point="org.talend.core.runtime.service">
       <Service
-            class="org.talend.repository.hdfs.ui.handler.HdfsContextUpdateService"
+            class="org.talend.repository.hdfs.service.HdfsContextUpdateService"
             serviceId="IRepositoryContextUpdateService">
          </Service>
       <Service
