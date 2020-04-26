@@ -17,8 +17,12 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
+import org.talend.commons.exception.ExceptionHandler;
+import org.talend.commons.exception.PersistenceException;
 import org.talend.commons.ui.runtime.image.ImageProvider;
+import org.talend.core.model.properties.ConnectionItem;
 import org.talend.core.model.repository.ERepositoryObjectType;
+import org.talend.core.model.update.RepositoryUpdateManager;
 import org.talend.core.repository.model.ProxyRepositoryFactory;
 import org.talend.core.repository.ui.actions.metadata.AbstractCreateAction;
 import org.talend.repository.ProjectManager;
@@ -81,6 +85,14 @@ public class CreateNoSQLConnectionAction extends AbstractCreateAction {
 
         }
 
+        if (!creation) {
+            ConnectionItem conntectionItem = (ConnectionItem) repositoryNode.getObject().getProperty().getItem();
+            try {
+                RepositoryUpdateManager.updateConnectionContextParam(conntectionItem);
+            } catch (PersistenceException ex) {
+                ExceptionHandler.process(ex);
+            }
+        }
         IWizard wizard = new NoSQLWizard(PlatformUI.getWorkbench(), creation, repositoryNode, getExistingNames());
         WizardDialog wizardDialog = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
         if (Platform.getOS().equals(Platform.OS_LINUX)) {
