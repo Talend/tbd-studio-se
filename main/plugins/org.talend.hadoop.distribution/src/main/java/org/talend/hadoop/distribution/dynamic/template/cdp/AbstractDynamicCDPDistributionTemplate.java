@@ -45,9 +45,6 @@ public abstract class AbstractDynamicCDPDistributionTemplate extends AbstractDyn
         if (this instanceof HiveOnSparkComponent) {
             groupTemplateMap.put(ComponentType.HIVEONSPARK, new DynamicCDPHiveOnSparkModuleGroupTemplate(pluginAdapter));
         }
-        if (this instanceof MRComponent) {
-            groupTemplateMap.put(ComponentType.MAPREDUCE, new DynamicCDPMapReduceModuleGroupTemplate(pluginAdapter));
-        }
         if (this instanceof SparkBatchComponent) {
             groupTemplateMap.put(ComponentType.SPARKBATCH, new DynamicCDPSparkBatchModuleGroupTemplate(pluginAdapter));
         }

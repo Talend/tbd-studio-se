@@ -3,11 +3,11 @@ package org.talend.hadoop.distribution.cdp;
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
 
-public class CDPPlugin extends Plugin {
+public class CDP7Plugin extends Plugin {
 
-    private static CDPPlugin instance;
+    private static CDP7Plugin instance;
 
-    public static CDPPlugin getInstance() {
+    public static CDP7Plugin getInstance() {
         return instance;
     }
 

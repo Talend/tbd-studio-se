@@ -31,13 +31,13 @@ public class DynamicCDPDistribution extends AbstractDynamicCDPDistribution {
 	public static final String BUILD_IN_FOLDER_PATH = "resources/builtin/cdp/"; //$NON-NLS-1$
 
 	public DynamicCDPDistribution() {
-		templateIds.add(CDPDistributionTemplate.TEMPLATE_ID);
+		templateIds.add(CDP7xDistributionTemplate.TEMPLATE_ID);
 	}
 
 	@Override
 	protected IDynamicDistributionTemplate initTemplate(DynamicPluginAdapter pluginAdapter, IDynamicMonitor monitor)
 			throws Exception {
-		return new CDPDistributionTemplate(pluginAdapter);
+		return new CDP7xDistributionTemplate(pluginAdapter);
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class DynamicCDPDistribution extends AbstractDynamicCDPDistribution {
 
 	@Override
 	protected Bundle getBundle() {
-		CDPPlugin cdpPlugin = CDPPlugin.getInstance();
+		CDP7Plugin cdpPlugin = CDP7Plugin.getInstance();
 		return cdpPlugin.getBundle();
 	}
 

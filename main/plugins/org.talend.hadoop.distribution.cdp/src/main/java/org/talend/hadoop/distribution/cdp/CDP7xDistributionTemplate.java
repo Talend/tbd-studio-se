@@ -33,9 +33,9 @@ import org.talend.hadoop.distribution.dynamic.template.cdp.AbstractDynamicCDPDis
 import org.talend.hadoop.distribution.kudu.KuduVersion;
 
 @SuppressWarnings("nls")
-public class CDPDistributionTemplate extends AbstractDynamicCDPDistributionTemplate implements HDFSComponent, HBaseComponent,
+public class CDP7xDistributionTemplate extends AbstractDynamicCDPDistributionTemplate implements HDFSComponent, HBaseComponent,
         HCatalogComponent, MRComponent, HiveComponent, HiveOnSparkComponent, ImpalaComponent, SqoopComponent,
- CDPSparkBatchComponent, SparkStreamingComponent, ICDPDistributionTemplate {
+ CDPSparkBatchComponent, SparkStreamingComponent, ICDP7xDistributionTemplate {
 
     public final static String TEMPLATE_ID = "CDPDistributionTemplate";
   
@@ -43,7 +43,7 @@ public class CDPDistributionTemplate extends AbstractDynamicCDPDistributionTempl
     		"/opt/cloudera/parcels/CDH/lib/hive/lib/*," + 
     		"/opt/cloudera/parcels/CDH/lib/impala/lib/*";
 
-    public CDPDistributionTemplate(DynamicPluginAdapter pluginAdapter) throws Exception {
+    public CDP7xDistributionTemplate(DynamicPluginAdapter pluginAdapter) throws Exception {
         super(pluginAdapter);
     }
 

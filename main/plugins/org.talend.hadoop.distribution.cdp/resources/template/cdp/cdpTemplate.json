@@ -1,9 +1,9 @@
 {
-	"id": "CDP7.X.3",
+	"id": "CDP7.X.Y",
 	"name": "Cloudera CDP7.X.Y template",
 	"distribution": "CDP",
 	"templateId": "CDPDistributionTemplate",
-	"baseVersion": "7.0.3",
+	"baseVersion": "7.0.0",
 	"topVersion": "8.0.0",
 	"dynamicVersion": "will be filled during runtime",
 	"properties": {
@@ -46,15 +46,6 @@
 				}
 			]
 		},
-		{
-			"id": "commons-pool2",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "org.apache.commons",
-			"artifactId": "commons-pool2",
-			"classifier": "",
-			"description": ""
-		},
         {
             "id": "talend-lineage-api",
             "type": "STANDARD",
@@ -80,90 +71,6 @@
                     "description": ""
                 }
 			]
-		},
-		
-		{
-			"id": "elephant-bird-core",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "com.twitter.elephantbird",
-			"artifactId": "elephant-bird-core",
-			"classifier": "",
-			"description": "",
-			"exclusions": [
-				{
-					"groupId": "com.hadoop.gplcompression",
-					"artifactId": "hadoop-lzo",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
-					"groupId": "com.google.protobuf",
-					"artifactId": "protobuf-java",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				}
-			]
-		},
-		{
-			"id": "elephant-bird-hadoop-compat",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "com.twitter.elephantbird",
-			"artifactId": "elephant-bird-hadoop-compat",
-			"classifier": "",
-			"description": "",
-			"exclusions": [
-				{
-					"groupId": "com.hadoop.gplcompression",
-					"artifactId": "hadoop-lzo",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
-					"groupId": "com.google.protobuf",
-					"artifactId": "protobuf-java",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				}
-			]
-		},
-		{
-			"id": "elephant-bird-pig",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "com.twitter.elephantbird",
-			"artifactId": "elephant-bird-pig",
-			"classifier": "",
-			"description": "",
-			"exclusions": [
-				{
-					"groupId": "com.hadoop.gplcompression",
-					"artifactId": "hadoop-lzo",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
-					"groupId": "com.google.protobuf",
-					"artifactId": "protobuf-java",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				}
-			]
-		},
-		{
-            "id": "elephant-bird-rcfile",
-            "type": "STANDARD",
-            "context": "{properties.context}",
-            "jarName": "elephant-bird-rcfile-4.9-patched-hive-1.x.jar",
-            "mvnUri": "mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0",
-            "useStudioRepository": "true"
 		},
 		{
 			"id": "graphframes",
@@ -1019,15 +926,6 @@
 			"description": ""
 		},
 		{
-			"id": "jodd",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "org.jodd",
-			"artifactId": "jodd-core",
-			"classifier": "",
-			"description": ""
-		},
-		{
 			"id": "kafka-clients",
 			"type": "BASE",
 			"context": "{properties.context}",
@@ -1300,30 +1198,6 @@
 			"description": ""
 		},
 		{
-			"id": "jackson-core",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "com.fasterxml.jackson.core",
-			"artifactId": "jackson-core",
-			"description": ""
-		},
-		{
-			"id": "jackson-databind",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "com.fasterxml.jackson.core",
-			"artifactId": "jackson-databind",
-			"description": ""
-		},
-		{
-			"id": "jackson-annotations",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "com.fasterxml.jackson.core",
-			"artifactId": "jackson-annotations",
-			"description": ""
-		},
-		{
 			"id": "azure-common-1.7.1",
             "type": "STANDARD",
             "context": "{properties.context}",
@@ -1430,9 +1304,6 @@
                 "spark-mllib_2.11",
                 "spark-yarn_2.11",
                 "spark-avro_2.11",
-                "jackson-core",
-                "jackson-databind",
-                "jackson-annotations",
                 "parquet-hadoop-bundle"
 			]
 		},

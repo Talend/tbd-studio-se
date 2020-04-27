@@ -18,6 +18,6 @@ import org.talend.hadoop.distribution.dynamic.template.cdp.IDynamicCDPDistributi
 /**
  * DOC   class global comment. Detailled comment
  */
-public interface ICDPDistributionTemplate extends IDynamicCDPDistributionTemplate {
+public interface ICDP7xDistributionTemplate extends IDynamicCDPDistributionTemplate {
 
 }
