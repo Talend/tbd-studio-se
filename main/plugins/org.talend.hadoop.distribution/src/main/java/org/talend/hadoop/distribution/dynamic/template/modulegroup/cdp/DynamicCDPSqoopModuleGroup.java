@@ -43,17 +43,11 @@ public class DynamicCDPSqoopModuleGroup extends DynamicSqoopModuleGroup {
 
         String hdfsRuntimeId = pluginAdapter
                 .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.HDFS_MODULE_GROUP.getModuleName());
-        String mrRuntimeId = pluginAdapter
-                .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.MAPREDUCE_MODULE_GROUP.getModuleName());
 
         checkRuntimeId(hdfsRuntimeId);
-        checkRuntimeId(mrRuntimeId);
 
         if (StringUtils.isNotBlank(hdfsRuntimeId)) {
             moduleGroups.add(new DistributionModuleGroup(hdfsRuntimeId));
-        }
-        if (StringUtils.isNotBlank(mrRuntimeId)) {
-            moduleGroups.add(new DistributionModuleGroup(mrRuntimeId));
         }
         return moduleGroups;
     }
