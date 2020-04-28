@@ -1818,7 +1818,7 @@
 				"hadoop-yarn-server-web-proxy",				
 				"hive-exec",
 				"spark-hive_2.11",
-				"hive-exec-spark"
+				"hive-exec-spark",
 				"spark-mllib_2.11",
 				"spark-yarn_2.11",
 				"spark-avro_2.11",
