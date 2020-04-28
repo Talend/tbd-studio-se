@@ -37,7 +37,7 @@ public class CDP7xDistributionTemplate extends AbstractDynamicCDPDistributionTem
         HCatalogComponent, MRComponent, HiveComponent, HiveOnSparkComponent, ImpalaComponent, SqoopComponent,
  CDPSparkBatchComponent, SparkStreamingComponent, ICDP7xDistributionTemplate {
 
-    public final static String TEMPLATE_ID = "CDPDistributionTemplate";
+    public final static String TEMPLATE_ID = "CDP7xDistributionTemplate";
   
     private final static String YARN_APPLICATION_CLASSPATH = "/opt/cloudera/parcels/CDH/lib/spark/jars/*," + 
     		"/opt/cloudera/parcels/CDH/lib/hive/lib/*," + 

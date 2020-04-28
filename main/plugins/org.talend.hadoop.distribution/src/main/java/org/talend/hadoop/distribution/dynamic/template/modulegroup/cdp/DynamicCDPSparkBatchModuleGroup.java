@@ -29,9 +29,8 @@ import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.DynamicModuleGroupConstant;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.DynamicSparkBatchModuleGroup;
 
-
 /**
- * DOC cmeng  class global comment. Detailled comment
+ * DOC cmeng class global comment. Detailled comment
  */
 public class DynamicCDPSparkBatchModuleGroup extends DynamicSparkBatchModuleGroup {
 
@@ -41,19 +40,10 @@ public class DynamicCDPSparkBatchModuleGroup extends DynamicSparkBatchModuleGrou
 
     @Override
     protected void initConditions() {
-        conditionSpark1 = new MultiComponentCondition(
-                new BasicExpression(SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false"), //$NON-NLS-1$
-                BooleanOperator.AND,
-                new BasicExpression("SUPPORTED_SPARK_VERSION", EqualityOperator.EQ, ESparkVersion.SPARK_1_6.getSparkVersion())); //$NON-NLS-1$
-
         conditionSpark2 = new MultiComponentCondition(
                 new BasicExpression(SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false"), //$NON-NLS-1$
-                BooleanOperator.AND,
-                new MultiComponentCondition(
-                		new BasicExpression("SUPPORTED_SPARK_VERSION", EqualityOperator.EQ, ESparkVersion.SPARK_2_2.getSparkVersion()), //$NON-NLS-1$
-                        BooleanOperator.OR,
-                        new BasicExpression("SUPPORTED_SPARK_VERSION", EqualityOperator.EQ, ESparkVersion.SPARK_2_4.getSparkVersion())) //$NON-NLS-1$
-        		);
+                BooleanOperator.AND, new BasicExpression("SUPPORTED_SPARK_VERSION", EqualityOperator.EQ, //$NON-NLS-1$
+                        ESparkVersion.SPARK_2_4.getSparkVersion()));
     }
 
     @Override
@@ -67,8 +57,6 @@ public class DynamicCDPSparkBatchModuleGroup extends DynamicSparkBatchModuleGrou
 
         String sparkMrRequiredRuntimeId = pluginAdapter
                 .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName());
-        String hdfsSpark1_6RuntimeId = pluginAdapter
-                .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.HDFS_MODULE_GROUP_SPARK1_6.getModuleName());
         String hdfsSpark2_1RuntimeId = pluginAdapter
                 .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.HDFS_MODULE_GROUP_SPARK2_1.getModuleName());
         String hdfsCommonRuntimeId = pluginAdapter
@@ -79,7 +67,6 @@ public class DynamicCDPSparkBatchModuleGroup extends DynamicSparkBatchModuleGrou
                 DynamicCDPModuleGroupConstant.TALEND_CLOUDERA_CDP_NAVIGATOR.getModuleName());
 
         checkRuntimeId(sparkMrRequiredRuntimeId);
-        checkRuntimeId(hdfsSpark1_6RuntimeId);
         checkRuntimeId(hdfsSpark2_1RuntimeId);
         checkRuntimeId(hdfsCommonRuntimeId);
         checkRuntimeId(mrRuntimeId);
@@ -88,9 +75,6 @@ public class DynamicCDPSparkBatchModuleGroup extends DynamicSparkBatchModuleGrou
         if (StringUtils.isNotBlank(sparkMrRequiredRuntimeId)) {
             moduleGroups.add(new DistributionModuleGroup(sparkMrRequiredRuntimeId, true, conditionSpark1));
             moduleGroups.add(new DistributionModuleGroup(sparkMrRequiredRuntimeId, true, conditionSpark2));
-        }
-        if (StringUtils.isNotBlank(hdfsSpark1_6RuntimeId)) {
-            moduleGroups.add(new DistributionModuleGroup(hdfsSpark1_6RuntimeId, false, conditionSpark1));
         }
         if (StringUtils.isNotBlank(hdfsSpark2_1RuntimeId)) {
             moduleGroups.add(new DistributionModuleGroup(hdfsSpark2_1RuntimeId, false, conditionSpark2));
