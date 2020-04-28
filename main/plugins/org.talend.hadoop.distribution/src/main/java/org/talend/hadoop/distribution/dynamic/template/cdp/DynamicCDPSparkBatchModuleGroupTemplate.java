@@ -27,7 +27,7 @@ import org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkbat
 
 
 /**
- * DOC cmeng  class global comment. Detailled comment
+ * DOC rhaddou  class global comment. Detailled comment
  */
 public class DynamicCDPSparkBatchModuleGroupTemplate extends DynamicSparkBatchModuleGroupTemplate {
 

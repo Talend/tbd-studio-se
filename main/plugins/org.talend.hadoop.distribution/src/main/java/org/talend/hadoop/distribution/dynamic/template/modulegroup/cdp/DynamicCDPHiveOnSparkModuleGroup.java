@@ -23,7 +23,7 @@ import org.talend.hadoop.distribution.dynamic.template.modulegroup.DynamicModule
 
 
 /**
- * DOC cmeng  class global comment. Detailled comment
+ * DOC rhaddou  class global comment. Detailled comment
  */
 public class DynamicCDPHiveOnSparkModuleGroup extends DynamicHiveOnSparkModuleGroup {
 

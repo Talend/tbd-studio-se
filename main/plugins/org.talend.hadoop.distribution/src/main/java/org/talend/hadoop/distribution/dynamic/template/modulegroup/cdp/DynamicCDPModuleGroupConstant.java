@@ -15,7 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup.cdp;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.IDynamicModuleGroupConstant;
 
 /**
- * DOC cmeng  class global comment. Detailled comment
+ * DOC rhaddou  class global comment. Detailled comment
  */
 public enum DynamicCDPModuleGroupConstant implements IDynamicModuleGroupConstant {
 

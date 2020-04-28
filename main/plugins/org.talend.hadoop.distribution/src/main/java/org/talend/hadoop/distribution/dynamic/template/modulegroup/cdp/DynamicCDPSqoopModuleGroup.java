@@ -23,7 +23,7 @@ import org.talend.hadoop.distribution.dynamic.template.modulegroup.DynamicSqoopM
 
 
 /**
- * DOC cmeng  class global comment. Detailled comment
+ * DOC rhaddou  class global comment. Detailled comment
  */
 public class DynamicCDPSqoopModuleGroup extends DynamicSqoopModuleGroup {
 

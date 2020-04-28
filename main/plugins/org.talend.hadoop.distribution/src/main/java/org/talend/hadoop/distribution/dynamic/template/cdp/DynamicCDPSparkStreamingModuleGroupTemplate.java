@@ -25,7 +25,7 @@ import org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkstr
 
 
 /**
- * DOC cmeng  class global comment. Detailled comment
+ * DOC rhaddou  class global comment. Detailled comment
  */
 public class DynamicCDPSparkStreamingModuleGroupTemplate extends DynamicSparkStreamingModuleGroupTemplate {
 

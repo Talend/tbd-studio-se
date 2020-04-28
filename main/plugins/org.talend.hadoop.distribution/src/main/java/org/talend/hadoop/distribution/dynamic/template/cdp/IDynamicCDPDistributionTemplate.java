@@ -17,7 +17,7 @@ import org.talend.hadoop.distribution.dynamic.template.IDynamicDistributionTempl
 
 
 /**
- * DOC  class global comment. Detailled comment
+ * DOC rhaddou class global comment. Detailled comment
  */
 public interface IDynamicCDPDistributionTemplate extends IDynamicDistributionTemplate, IClouderaDistribution {
 
