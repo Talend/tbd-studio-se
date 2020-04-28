@@ -73,18 +73,15 @@ public class DynamicCDPSparkBatchModuleGroup extends DynamicSparkBatchModuleGrou
         checkRuntimeId(talendClouderaNaviRuntimeId);
 
         if (StringUtils.isNotBlank(sparkMrRequiredRuntimeId)) {
-            moduleGroups.add(new DistributionModuleGroup(sparkMrRequiredRuntimeId, true, conditionSpark1));
             moduleGroups.add(new DistributionModuleGroup(sparkMrRequiredRuntimeId, true, conditionSpark2));
         }
         if (StringUtils.isNotBlank(hdfsSpark2_1RuntimeId)) {
             moduleGroups.add(new DistributionModuleGroup(hdfsSpark2_1RuntimeId, false, conditionSpark2));
         }
         if (StringUtils.isNotBlank(hdfsCommonRuntimeId)) {
-            moduleGroups.add(new DistributionModuleGroup(hdfsCommonRuntimeId, false, conditionSpark1));
             moduleGroups.add(new DistributionModuleGroup(hdfsCommonRuntimeId, false, conditionSpark2));
         }
         if (StringUtils.isNotBlank(mrRuntimeId)) {
-            moduleGroups.add(new DistributionModuleGroup(mrRuntimeId, false, conditionSpark1));
             moduleGroups.add(new DistributionModuleGroup(mrRuntimeId, false, conditionSpark2));
         }
         if (StringUtils.isNotBlank(talendClouderaNaviRuntimeId)) {

@@ -27,71 +27,53 @@ import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.DynamicModuleGroupConstant;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.DynamicSparkStreamingModuleGroup;
 
-
 /**
- * DOC rhaddou  class global comment. Detailled comment
+ * DOC rhaddou class global comment. Detailled comment
  */
 public class DynamicCDPSparkStreamingModuleGroup extends DynamicSparkStreamingModuleGroup {
 
-    public DynamicCDPSparkStreamingModuleGroup(DynamicPluginAdapter pluginAdapter) {
-        super(pluginAdapter);
-    }
+	public DynamicCDPSparkStreamingModuleGroup(DynamicPluginAdapter pluginAdapter) {
+		super(pluginAdapter);
+	}
 
-    @Override
-    protected void init() {
-        spark1Condition = new MultiComponentCondition(
-                new BasicExpression(SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false"), //$NON-NLS-1$
-                BooleanOperator.AND,
-                new BasicExpression("SUPPORTED_SPARK_VERSION", EqualityOperator.EQ, ESparkVersion.SPARK_1_6.getSparkVersion())); //$NON-NLS-1$
+	@Override
+	protected void init() {
+		spark2Condition = new MultiComponentCondition(
+				new BasicExpression(SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false"), //$NON-NLS-1$
+				BooleanOperator.AND, new BasicExpression("SUPPORTED_SPARK_VERSION", EqualityOperator.EQ,
+						ESparkVersion.SPARK_2_4.getSparkVersion())); // $NON-NLS-1$
+	}
 
-        spark2Condition = new MultiComponentCondition(
-                new BasicExpression(SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false"), //$NON-NLS-1$
-                BooleanOperator.AND,
-                new MultiComponentCondition(
-                		new BasicExpression("SUPPORTED_SPARK_VERSION", EqualityOperator.EQ, ESparkVersion.SPARK_2_2.getSparkVersion()),
-                		BooleanOperator.OR,
-                		new BasicExpression("SUPPORTED_SPARK_VERSION", EqualityOperator.EQ, ESparkVersion.SPARK_2_4.getSparkVersion())
-                )); //$NON-NLS-1$
-    }
+	@Override
+	public Set<DistributionModuleGroup> getModuleGroups() throws Exception {
+		Set<DistributionModuleGroup> moduleGroups = new HashSet<>();
+		Set<DistributionModuleGroup> moduleGroupsFromSuper = super.getModuleGroups();
+		if (moduleGroupsFromSuper != null && !moduleGroupsFromSuper.isEmpty()) {
+			moduleGroups.addAll(moduleGroupsFromSuper);
+		}
+		DynamicPluginAdapter pluginAdapter = getPluginAdapter();
 
-    @Override
-    public Set<DistributionModuleGroup> getModuleGroups() throws Exception {
-        Set<DistributionModuleGroup> moduleGroups = new HashSet<>();
-        Set<DistributionModuleGroup> moduleGroupsFromSuper = super.getModuleGroups();
-        if (moduleGroupsFromSuper != null && !moduleGroupsFromSuper.isEmpty()) {
-            moduleGroups.addAll(moduleGroupsFromSuper);
-        }
-        DynamicPluginAdapter pluginAdapter = getPluginAdapter();
+		String hdfsSpark2RuntimeId = pluginAdapter.getRuntimeModuleGroupIdByTemplateId(
+				DynamicModuleGroupConstant.HDFS_MODULE_GROUP_SPARK2_1.getModuleName());
+		String hdfsCommonRuntimeId = pluginAdapter.getRuntimeModuleGroupIdByTemplateId(
+				DynamicModuleGroupConstant.HDFS_MODULE_GROUP_COMMON.getModuleName());
+		String mrRuntimeId = pluginAdapter
+				.getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.MAPREDUCE_MODULE_GROUP.getModuleName());
 
-        String hdfsSpark1RuntimeId = pluginAdapter
-                .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.HDFS_MODULE_GROUP_SPARK1_6.getModuleName());
-        String hdfsSpark2RuntimeId = pluginAdapter
-                .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.HDFS_MODULE_GROUP_SPARK2_1.getModuleName());
-        String hdfsCommonRuntimeId = pluginAdapter
-                .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.HDFS_MODULE_GROUP_COMMON.getModuleName());
-        String mrRuntimeId = pluginAdapter
-                .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.MAPREDUCE_MODULE_GROUP.getModuleName());
+		checkRuntimeId(hdfsSpark2RuntimeId);
+		checkRuntimeId(hdfsCommonRuntimeId);
+		checkRuntimeId(mrRuntimeId);
 
-        checkRuntimeId(hdfsSpark1RuntimeId);
-        checkRuntimeId(hdfsSpark2RuntimeId);
-        checkRuntimeId(hdfsCommonRuntimeId);
-        checkRuntimeId(mrRuntimeId);
+		if (StringUtils.isNotBlank(hdfsSpark2RuntimeId)) {
+			moduleGroups.add(new DistributionModuleGroup(hdfsSpark2RuntimeId, false, spark2Condition));
+		}
+		if (StringUtils.isNotBlank(hdfsCommonRuntimeId)) {
+			moduleGroups.add(new DistributionModuleGroup(hdfsCommonRuntimeId, false, spark2Condition));
+		}
+		if (StringUtils.isNotBlank(mrRuntimeId)) {
+			moduleGroups.add(new DistributionModuleGroup(mrRuntimeId, false, spark2Condition));
+		}
 
-        if (StringUtils.isNotBlank(hdfsSpark1RuntimeId)) {
-            moduleGroups.add(new DistributionModuleGroup(hdfsSpark1RuntimeId, false, spark1Condition));
-        }
-        if (StringUtils.isNotBlank(hdfsSpark2RuntimeId)) {
-            moduleGroups.add(new DistributionModuleGroup(hdfsSpark2RuntimeId, false, spark2Condition));
-        }
-        if (StringUtils.isNotBlank(hdfsCommonRuntimeId)) {
-            moduleGroups.add(new DistributionModuleGroup(hdfsCommonRuntimeId, false, spark1Condition));
-            moduleGroups.add(new DistributionModuleGroup(hdfsCommonRuntimeId, false, spark2Condition));
-        }
-        if (StringUtils.isNotBlank(mrRuntimeId)) {
-            moduleGroups.add(new DistributionModuleGroup(mrRuntimeId, false, spark1Condition));
-            moduleGroups.add(new DistributionModuleGroup(mrRuntimeId, false, spark2Condition));
-        }
-
-        return moduleGroups;
-    }
+		return moduleGroups;
+	}
 }
