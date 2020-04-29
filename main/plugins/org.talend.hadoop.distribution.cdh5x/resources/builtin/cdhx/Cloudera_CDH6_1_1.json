@@ -4,7 +4,6 @@
     "distribution" : "CLOUDERA",
     "id" : "Cloudera_CDH6_1_1",
     "name" : "Cloudera CDH6.1.1",
-    "projectTechnicalName" : "local",
     "repository" : "https://talend-update.talend.com/nexus/content/groups/dynamicdistribution/",
     "selectedSparkVersions" : [ "SPARK_2_4" ],
     "tagName" : "dynamicPluginConfiguration",
@@ -12025,7 +12024,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_avro_mapred_1_8_2_cdh6_1_1_hadoop2_jar",
-      "mvn_uri" : "mvn:org.apache.avro/avro-mapred/1.8.2-cdh6.1.1//hadoop2",
+      "mvn_uri" : "mvn:org.apache.avro/avro-mapred/1.8.2-cdh6.1.1/jar/hadoop2",
       "name" : "avro-mapred-1.8.2-cdh6.1.1-hadoop2.jar",
       "tagName" : "libraryNeeded"
     }, {
