@@ -29,6 +29,8 @@
 	
     String endPoint   = ElementParameterParser.getValue(node, "__ENDPOINT__");
     String table   = ElementParameterParser.getValue(node, "__TABLE__");
+	boolean useIndex = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_INDEX__"));
+	String index   = ElementParameterParser.getValue(node, "__INDEX__");
 	String action = ElementParameterParser.getValue(node, "__ACTION__");
 	
 	String advancedKeyConditionExpression = ElementParameterParser.getValue(node, "__ADVANCED_KEY_CONDITION_EXPRESSION__");
@@ -83,6 +85,9 @@
 							
 			com.amazonaws.services.dynamodbv2.document.DynamoDB dynamoDB_<%=cid%> = new com.amazonaws.services.dynamodbv2.document.DynamoDB(dynamoDBClient_<%=cid%>);
 			com.amazonaws.services.dynamodbv2.document.Table table_<%=cid%> = dynamoDB_<%=cid%>.getTable(<%=table%>);
+			<%if(useIndex){%>
+			com.amazonaws.services.dynamodbv2.document.Index index_<%=cid%> = table_<%=cid%>.getIndex(<%=index%>);
+			<%}%>
 		
 
 		<%
@@ -319,8 +324,11 @@
 			}
 			
 			com.amazonaws.services.dynamodbv2.document.ItemCollection<com.amazonaws.services.dynamodbv2.document.QueryOutcome> items_<%=cid%> = null;
-
-			items_<%=cid%> = table_<%=cid%>.query(querySpec_<%=cid%>);
+			<%if(useIndex){%>
+			    items_<%=cid%> = index_<%=cid%>.query(querySpec_<%=cid%>);
+			<%} else {%>
+			    items_<%=cid%> = table_<%=cid%>.query(querySpec_<%=cid%>);
+			<%}%>
 		<%
 		}
 		else {
@@ -463,7 +471,11 @@
 			}
 			%>
 			com.amazonaws.services.dynamodbv2.document.ItemCollection<com.amazonaws.services.dynamodbv2.document.ScanOutcome> items_<%=cid%> = null;
-			items_<%=cid%> = table_<%=cid%>.scan(scanSpec_<%=cid%>);
+			<%if(useIndex){%>
+			    items_<%=cid%> = index_<%=cid%>.scan(scanSpec_<%=cid%>);
+			<%} else {%>
+			    items_<%=cid%> = table_<%=cid%>.scan(scanSpec_<%=cid%>);
+			<%}%>
 			
 		<%
 		}
