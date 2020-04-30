@@ -1375,9 +1375,8 @@
 			<IMPORT NAME="httpclient-4.5.9.jar" MODULE="httpclient-4.5.9.jar"
                 MVN="mvn:org.apache.httpcomponents/httpclient/4.5.9"
 				REQUIRED_IF="(HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
-			<IMPORT NAME="commons-codec-1.6.jar" MODULE="commons-codec-1.6.jar"
-				MVN="mvn:org.talend.libraries/commons-codec-1.6/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-codec-1.6.jar"
+			<IMPORT NAME="commons-codec" MODULE="commons-codec-1.11.jar" 
+				MVN="mvn:commons-codec/commons-codec/1.11"
 				REQUIRED_IF="(HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-io" MODULE="commons-io-2.4.jar"
 				MVN="mvn:commons-io/commons-io/2.4"
