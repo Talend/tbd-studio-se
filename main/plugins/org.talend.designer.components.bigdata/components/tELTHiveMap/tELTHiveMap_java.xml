@@ -1170,9 +1170,8 @@
 				MVN="mvn:org.talend.libraries/httpcore-4.2.4/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.apache.http/lib/httpcore-4.2.4.jar"
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
-			<IMPORT NAME="httpclient-4.2.5.jar" MODULE="httpclient-4.2.5.jar"
-				MVN="mvn:org.talend.libraries/httpclient-4.2.5/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.apache.http/lib/httpclient-4.2.5.jar"
+			<IMPORT NAME="httpclient-4.5.9.jar" MODULE="httpclient-4.5.9.jar"
+                MVN="mvn:org.apache.httpcomponents/httpclient/4.5.9"		
 				REQUIRED_IF="(#LINK@CONNECTOR.OUT.TABLE_REF == '0') AND (HIVE_VERSION=='PIVOTAL_HD_2_0') and (USE_EXISTING_CONNECTION == 'false') AND DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="commons-codec-1.6.jar" MODULE="commons-codec-1.6.jar"
 				MVN="mvn:org.talend.libraries/commons-codec-1.6/6.0.0"
