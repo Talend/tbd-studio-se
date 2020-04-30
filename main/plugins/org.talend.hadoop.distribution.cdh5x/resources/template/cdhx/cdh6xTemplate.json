@@ -583,8 +583,8 @@
 			"id": "hive-exec",
 			"type": "STANDARD",
 			"context": "{properties.context}",
-			"jarName": "hive-exec-shade-2.1.1-cdh6.1.1.jar",
-			"mvnUri": "mvn:org.talend.libraries/hive-exec-shade-2.1.1-cdh6.1.1/6.0.0",
+			"jarName": "hive-exec-shade-2.1.1-cdh6.1.1-talend.jar",
+			"mvnUri": "mvn:org.talend.libraries/hive-exec-shade-2.1.1-cdh6.1.1-talend/6.0.0",
 			"useStudioRepository": "true",
 			"description": ""
 		},
@@ -1818,7 +1818,7 @@
 				"hadoop-yarn-server-web-proxy",				
 				"hive-exec",
 				"spark-hive_2.11",
-				"hive-exec-spark"
+				"hive-exec-spark",
 				"spark-mllib_2.11",
 				"spark-yarn_2.11",
 				"spark-avro_2.11",

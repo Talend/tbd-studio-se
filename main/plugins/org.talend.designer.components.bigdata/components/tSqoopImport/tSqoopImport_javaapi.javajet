@@ -77,6 +77,7 @@
 	String passwordFieldName = "";
 %>
 	<%@ include file="../templates/Sqoop/GetConfig.javajet"%>
+	configuration_<%=cid%>.set("mapreduce.job.user.classpath.first","true");
 	java.util.List<String> lColumns_<%=cid%> = new java.util.ArrayList<String>();
 <%
 	for (Map<String, String> row : columns) {
@@ -259,6 +260,7 @@
 	org.apache.sqoop.Sqoop sqoop_<%=cid%> = new org.apache.sqoop.Sqoop(sqoopTool_<%=cid%>, configuration_<%=cid%>, sqoopOptions_<%=cid%>);
 	<%@ include file="@{org.talend.designer.components.bigdata}/components/tSqoopImport/sqoop-avro-dependency.javajet"%>
 	<%@ include file="@{org.talend.designer.components.bigdata}/components/tSqoopImport/sqoop-parquet-dependency.javajet"%>
+	<%@ include file="@{org.talend.designer.components.bigdata}/components/tSqoopImport/sqoop-hive-dependency.javajet"%>
 	try {
 <%
 		if(!emptyStringBuilder) {
