@@ -47,7 +47,7 @@ public class DynamicCDPDistribution extends AbstractDynamicCDPDistribution {
 
 	@Override
 	protected Bundle getBundle() {
-		CDP7Plugin cdpPlugin = CDP7Plugin.getInstance();
+		CDPPlugin cdpPlugin = CDPPlugin.getInstance();
 		return cdpPlugin.getBundle();
 	}
 
