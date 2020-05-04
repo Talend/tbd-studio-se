@@ -35,6 +35,8 @@ imports="
     boolean isTableNameVariable="true".equals(ElementParameterParser.getValue(node, "__IS_TABLE_NAME_VARIABLE__"));
     
     final String studioVersion = org.talend.commons.utils.VersionUtils.getDisplayVersion();
+    
+    boolean setApplicationName=ElementParameterParser.getBooleanValue(node, "__SET_APPLICATION_NAME__");
 
     %>
     String select_query_<%=cid %> = null;
@@ -823,7 +825,7 @@ if(columnList != null && columnList.size()>0){
             log.debug("Insert query for <%=cid%>: " + insertQuery_<%=cid %>);
             <%
         }
-        if (!hiveDistrib.useCloudLauncher()) {
+        if (!hiveDistrib.useCloudLauncher() && setApplicationName) {
 %>
 			<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/SetQueryName.javajet"%>
             stmt_<%=cid %>.execute(insertQuery_<%=cid %>);
@@ -850,7 +852,7 @@ if(columnList != null && columnList.size()>0){
             log.debug("Overwrite query for <%=cid%>: " + overwriteQuery_<%=cid %>);
             <%
         }
-        if (!hiveDistrib.useCloudLauncher()) {
+        if (!hiveDistrib.useCloudLauncher() && setApplicationName) {
 %>
 			<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/SetQueryName.javajet"%>
             stmt_<%=cid %>.execute(overwriteQuery_<%=cid %>);
