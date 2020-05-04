@@ -282,10 +282,6 @@
 				MVN="mvn:org.talend.libraries/hadoop-conf-kerberos/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/hadoop-conf-kerberos.jar"
 				REQUIRED_IF="DISTRIB[DISTRIBUTION, HBASE_VERSION].doSupportKerberos[] AND (USE_KRB=='true') AND (USE_EXISTING_CONNECTION=='false') AND (DISTRIBUTION!='CUSTOM')" />
-
-			<!-- MAPR500 -->
-			<IMPORT MODULE_GROUP="HBASE-LIB-MAPR50X_LASTEST"
-				REQUIRED_IF="(HBASE_VERSION=='MAPR500') AND (USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM')" />						
 		</IMPORTS>
 	</CODEGENERATION>
 	<RETURNS>
