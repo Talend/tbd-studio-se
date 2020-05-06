@@ -1440,7 +1440,65 @@
       "artifactId": "parquet-pig-bundle",
       "version": "1.11.0",
       "classifier": "",
-      "description": ""
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.apache.avro",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "junit",
+          "artifactId": "junit",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
     },
     {
       "id": "parquet-hadoop-bundle",
@@ -1450,7 +1508,65 @@
       "artifactId": "parquet-hadoop-bundle",
       "version": "1.11.0",
       "classifier": "",
-      "description": ""
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.apache.avro",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "junit",
+          "artifactId": "junit",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
     },
     {
       "id": "parquet-hive-bundle",
@@ -1460,7 +1576,65 @@
       "artifactId": "parquet-hive-bundle",
       "version": "1.11.0",
       "classifier": "",
-      "description": ""
+      "description": "",
+      "exclusions": [
+        {
+          "groupId": "org.apache.avro",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "junit",
+          "artifactId": "junit",
+          "classifier": "",
+          "extension": "",
+          "description": ""
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any slf4j implementation"
+        },
+        {
+          "groupId": "log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j implementation"
+        },
+        {
+          "groupId": "apache-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "commons-logging",
+          "artifactId": "commons-logging",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any commons-logging implementation."
+        },
+        {
+          "groupId": "ch.qos.logback",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any logback implementation."
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "*",
+          "classifier": "",
+          "extension": "",
+          "description": "remove any log4j2 implementation."
+        }
+      ]
     },
     {
       "id": "tez-dag",
