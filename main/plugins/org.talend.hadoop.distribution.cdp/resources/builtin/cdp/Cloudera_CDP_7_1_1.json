@@ -7,7 +7,7 @@
     "repository" : "https://talend-update.talend.com/nexus/content/groups/dynamicdistribution/",
     "selectedSparkVersions" : [ "SPARK_2_4" ],
     "tagName" : "dynamicPluginConfiguration",
-    "templateId" : "CDPDistributionTemplate",
+    "templateId" : "CDP7xDistributionTemplate",
     "version" : "7.1.1"
   }, {
     "childNodes" : [ {
