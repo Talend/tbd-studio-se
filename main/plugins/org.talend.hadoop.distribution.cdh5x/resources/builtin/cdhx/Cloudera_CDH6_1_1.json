@@ -2280,10 +2280,6 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
-        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_exec_spark",
-        "tagName" : "library"
-      },  {
-        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_jdbc_2_1_1_cdh6_1_1_jar",
         "tagName" : "library"
       }, {
@@ -10442,6 +10438,10 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_exec_1_2_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_hk2_api_2_5_0_b32_jar",
         "tagName" : "library"
       }, {
@@ -12339,25 +12339,9 @@
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
-      "id" : "DYNAMIC_Cloudera_CDH6_1_1_commons_lang_2_4_jar",
-      "mvn_uri" : "mvn:commons-lang/commons-lang/2.4/jar",
-      "name" : "commons-lang-2.4.jar",
-      "tagName" : "libraryNeeded"
-    }, {
-      "childNodes" : [ ],
-      "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
-      "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_commons_lang_2_6_jar",
       "mvn_uri" : "mvn:commons-lang/commons-lang/2.6/jar",
       "name" : "commons-lang-2.6.jar",
-      "tagName" : "libraryNeeded"
-    }, {
-      "childNodes" : [ ],
-      "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
-      "excludeDependencies" : "true",
-      "id" : "DYNAMIC_Cloudera_CDH6_1_1_commons_logging_1_1_1_jar",
-      "mvn_uri" : "mvn:commons-logging/commons-logging/1.1.1/jar",
-      "name" : "commons-logging-1.1.1.jar",
       "tagName" : "libraryNeeded"
     }, {
       "childNodes" : [ ],
@@ -12612,14 +12596,6 @@
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
-      "id" : "DYNAMIC_Cloudera_CDH6_1_1_guava_11_0_1_jar",
-      "mvn_uri" : "mvn:com.google.guava/guava/11.0.1/jar",
-      "name" : "guava-11.0.1.jar",
-      "tagName" : "libraryNeeded"
-    }, {
-      "childNodes" : [ ],
-      "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
-      "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_guava_14_0_1_jar",
       "mvn_uri" : "mvn:com.google.guava/guava/14.0.1/jar",
       "name" : "guava-14.0.1.jar",
@@ -12758,7 +12734,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_hadoop_mapreduce_client_core_3_0_0_cdh6_1_1_jar",
-      "mvn_uri" : "mvn:org.apache.hadoop/hadoop-mapreduce-client-core/3.0.0-cdh6.1.1/jar",
+      "mvn_uri" : "mvn:org.apache.hadoop/hadoop-mapreduce-client-core/3.0.0-cdh6.1.1",
       "name" : "hadoop-mapreduce-client-core-3.0.0-cdh6.1.1.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -12838,7 +12814,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_hadoop_yarn_server_web_proxy_3_0_0_cdh6_1_1_jar",
-      "mvn_uri" : "mvn:org.apache.hadoop/hadoop-yarn-server-web-proxy/3.0.0-cdh6.1.1/jar",
+      "mvn_uri" : "mvn:org.apache.hadoop/hadoop-yarn-server-web-proxy/3.0.0-cdh6.1.1",
       "name" : "hadoop-yarn-server-web-proxy-3.0.0-cdh6.1.1.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -12862,7 +12838,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_hbase_client_2_1_0_cdh6_1_1_jar",
-      "mvn_uri" : "mvn:org.apache.hbase/hbase-client/2.1.0-cdh6.1.1",
+      "mvn_uri" : "mvn:org.apache.hbase/hbase-client/2.1.0-cdh6.1.1/jar",
       "name" : "hbase-client-2.1.0-cdh6.1.1.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -13030,7 +13006,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_common_2_1_1_cdh6_1_1_jar",
-      "mvn_uri" : "mvn:org.apache.hive/hive-common/2.1.1-cdh6.1.1/jar",
+      "mvn_uri" : "mvn:org.apache.hive/hive-common/2.1.1-cdh6.1.1",
       "name" : "hive-common-2.1.1-cdh6.1.1.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -13038,19 +13014,18 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_exec",
-      "mvn_uri" : "mvn:org.talend.libraries/hive-exec-shade-2.1.1-cdh6.1.1/6.0.0",
-      "name" : "hive-exec-shade-2.1.1-cdh6.1.1.jar",
+      "mvn_uri" : "mvn:org.talend.libraries/hive-exec-shade-2.1.1-cdh6.1.1-talend/6.0.0",
+      "name" : "hive-exec-shade-2.1.1-cdh6.1.1-talend.jar",
       "tagName" : "libraryNeeded",
       "useStudioRepository" : "true"
     }, {
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
-      "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_exec_spark",
-      "mvn_uri" : "mvn:org.spark-project.hive/hive-exec/1.2.1.spark2",
-      "name" : "hive-exec-1.2.1.spark2.jar",
-      "tagName" : "libraryNeeded",
-      "useStudioRepository" : "true"
+      "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_exec_1_2_1_jar",
+      "mvn_uri" : "mvn:org.spark-project.hive/hive-exec/1.2.1",
+      "name" : "hive-exec-1.2.1.jar",
+      "tagName" : "libraryNeeded"
     }, {
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
@@ -13128,7 +13103,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_metastore_2_1_1_cdh6_1_1_jar",
-      "mvn_uri" : "mvn:org.apache.hive/hive-metastore/2.1.1-cdh6.1.1/jar",
+      "mvn_uri" : "mvn:org.apache.hive/hive-metastore/2.1.1-cdh6.1.1",
       "name" : "hive-metastore-2.1.1-cdh6.1.1.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -13144,7 +13119,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_serde_2_1_1_cdh6_1_1_jar",
-      "mvn_uri" : "mvn:org.apache.hive/hive-serde/2.1.1-cdh6.1.1/jar",
+      "mvn_uri" : "mvn:org.apache.hive/hive-serde/2.1.1-cdh6.1.1",
       "name" : "hive-serde-2.1.1-cdh6.1.1.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -13283,14 +13258,6 @@
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_httpclient_4_5_6_jar",
       "mvn_uri" : "mvn:org.apache.httpcomponents/httpclient/4.5.6/jar",
       "name" : "httpclient-4.5.6.jar",
-      "tagName" : "libraryNeeded"
-    }, {
-      "childNodes" : [ ],
-      "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
-      "excludeDependencies" : "true",
-      "id" : "DYNAMIC_Cloudera_CDH6_1_1_httpcore_4_0_1_jar",
-      "mvn_uri" : "mvn:org.apache.httpcomponents/httpcore/4.0.1/jar",
-      "name" : "httpcore-4.0.1.jar",
       "tagName" : "libraryNeeded"
     }, {
       "childNodes" : [ ],
@@ -14026,14 +13993,6 @@
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
-      "id" : "DYNAMIC_Cloudera_CDH6_1_1_json_simple_1_1_jar",
-      "mvn_uri" : "mvn:com.googlecode.json-simple/json-simple/1.1/jar",
-      "name" : "json-simple-1.1.jar",
-      "tagName" : "libraryNeeded"
-    }, {
-      "childNodes" : [ ],
-      "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
-      "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_json_smart_2_3_jar",
       "mvn_uri" : "mvn:net.minidev/json-smart/2.3/jar",
       "name" : "json-smart-2.3.jar",
@@ -14125,14 +14084,6 @@
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_jython_standalone_2_7_0_jar",
       "mvn_uri" : "mvn:org.python/jython-standalone/2.7.0/jar",
       "name" : "jython-standalone-2.7.0.jar",
-      "tagName" : "libraryNeeded"
-    }, {
-      "childNodes" : [ ],
-      "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
-      "excludeDependencies" : "true",
-      "id" : "DYNAMIC_Cloudera_CDH6_1_1_kafka_clients_0_10_0_kafka_2_1_2_jar",
-      "mvn_uri" : "mvn:org.apache.kafka/kafka-clients/0.10.0-kafka-2.1.2",
-      "name" : "kafka-clients-0.10.0-kafka-2.1.2.jar",
       "tagName" : "libraryNeeded"
     }, {
       "childNodes" : [ ],
@@ -14309,14 +14260,6 @@
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_libfb303_0_9_3_jar",
       "mvn_uri" : "mvn:org.apache.thrift/libfb303/0.9.3/jar",
       "name" : "libfb303-0.9.3.jar",
-      "tagName" : "libraryNeeded"
-    }, {
-      "childNodes" : [ ],
-      "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
-      "excludeDependencies" : "true",
-      "id" : "DYNAMIC_Cloudera_CDH6_1_1_libthrift_0_7_0_jar",
-      "mvn_uri" : "mvn:org.apache.thrift/libthrift/0.7.0/jar",
-      "name" : "libthrift-0.7.0.jar",
       "tagName" : "libraryNeeded"
     }, {
       "childNodes" : [ ],
@@ -14685,14 +14628,6 @@
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_servlet_api_2_5_6_1_14_jar",
       "mvn_uri" : "mvn:org.mortbay.jetty/servlet-api-2.5/6.1.14/jar",
       "name" : "servlet-api-2.5-6.1.14.jar",
-      "tagName" : "libraryNeeded"
-    }, {
-      "childNodes" : [ ],
-      "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
-      "excludeDependencies" : "true",
-      "id" : "DYNAMIC_Cloudera_CDH6_1_1_servlet_api_2_5_jar",
-      "mvn_uri" : "mvn:javax.servlet/servlet-api/2.5/jar",
-      "name" : "servlet-api-2.5.jar",
       "tagName" : "libraryNeeded"
     }, {
       "childNodes" : [ ],
