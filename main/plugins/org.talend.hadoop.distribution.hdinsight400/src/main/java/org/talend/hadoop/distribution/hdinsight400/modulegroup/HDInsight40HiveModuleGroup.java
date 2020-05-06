@@ -25,15 +25,11 @@ import org.talend.hadoop.distribution.hdinsight400.HDInsight40Constant;
 
 public class HDInsight40HiveModuleGroup {
 	
-	private final static ComponentCondition condition = new SimpleComponentCondition(new BasicExpression(
-            SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false")); //$NON-NLS-1$
-
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         hs.add(new DistributionModuleGroup(HDInsight40Constant.HIVE_PARQUET_MODULE_GROUP.getModuleName()));
-        hs.add(new DistributionModuleGroup(HDInsight40Constant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), true, condition));
+        hs.add(new DistributionModuleGroup(HDInsight40Constant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName()));
         hs.add(new DistributionModuleGroup(HDInsight40Constant.HDINSIGHT400COMMON_MODULE_GROUP.getModuleName()));
-
         return hs;
     }
 }
