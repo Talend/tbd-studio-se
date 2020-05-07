@@ -74,7 +74,7 @@ public class HCatalogContextUpdateService extends AbstractRepositoryContextUpdat
     }
 
     @Override
-    public boolean isAccept(Connection connection) {
+    public boolean accept(Connection connection) {
         if (connection instanceof HCatalogConnection) {
             return true;
         }

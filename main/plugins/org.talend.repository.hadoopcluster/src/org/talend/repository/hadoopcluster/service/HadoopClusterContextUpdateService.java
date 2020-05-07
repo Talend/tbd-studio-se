@@ -100,7 +100,7 @@ public class HadoopClusterContextUpdateService extends AbstractRepositoryContext
     }
 
     @Override
-    public boolean isAccept(Connection connection) {
+    public boolean accept(Connection connection) {
         if (connection instanceof HadoopClusterConnection) {
             return true;
         }

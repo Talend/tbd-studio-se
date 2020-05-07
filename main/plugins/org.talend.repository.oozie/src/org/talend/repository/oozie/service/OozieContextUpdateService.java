@@ -54,7 +54,7 @@ public class OozieContextUpdateService extends AbstractRepositoryContextUpdateSe
     }
 
     @Override
-    public boolean isAccept(Connection connection) {
+    public boolean accept(Connection connection) {
         if (connection instanceof OozieConnection) {
             return true;
         }

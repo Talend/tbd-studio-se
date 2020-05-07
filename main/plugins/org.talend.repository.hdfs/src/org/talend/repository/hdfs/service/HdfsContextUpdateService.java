@@ -57,7 +57,7 @@ public class HdfsContextUpdateService extends AbstractRepositoryContextUpdateSer
     }
 
     @Override
-    public boolean isAccept(Connection connection) {
+    public boolean accept(Connection connection) {
         if (connection instanceof HDFSConnection) {
             return true;
         }
