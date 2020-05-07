@@ -58,24 +58,25 @@ imports="
 	    // without connection
 	    encryptedToken = ElementParameterParser.getEncryptedValue(node, "__QUBOLE_API_TOKEN__");
 		if (ElementParameterParser.getBooleanValue(node, "__QUBOLE_ENDPOINT__")) {
-			quboleEndpoint = ElementParameterParser.getValue(node, "__QUBOLE_ENDPOINT_URL__");
-		}
-		if (ElementParameterParser.getBooleanValue(node, "__QUBOLE_CLUSTER__")) {
-			quboleClusterLabel = ElementParameterParser.getValue(node, "__QUBOLE_CLUSTER_LABEL__");
-		}
-	}
+            quboleEndpoint = ElementParameterParser.getValue(node, "__QUBOLE_ENDPOINT_URL__");
+        }
+        if (ElementParameterParser.getBooleanValue(node, "__QUBOLE_CLUSTER__")) {
+            quboleClusterLabel = ElementParameterParser.getValue(node, "__QUBOLE_CLUSTER_LABEL__");
+        }
+    }
 
 
     org.talend.hadoop.distribution.component.HiveComponent hiveDistrib = null;
     try {
-        hiveDistrib = (org.talend.hadoop.distribution.component.HiveComponent) org.talend.hadoop.distribution.DistributionFactory.buildDistribution(theDistribution, theVersion);
+        hiveDistrib = (org.talend.hadoop.distribution.component.HiveComponent) org.talend.hadoop.distribution.DistributionFactory
+                .buildDistribution(theDistribution, theVersion);
     } catch (java.lang.Exception e) {
         e.printStackTrace();
         return "";
     }
     boolean isCustom = hiveDistrib instanceof org.talend.hadoop.distribution.custom.CustomDistribution;
-    
-    if(hiveDistrib.isExecutedThroughWebHCat()) {
+    String parquetPrefixPackageName = hiveDistrib.getParquetPrefixPackageName();
+    if (hiveDistrib.isExecutedThroughWebHCat()) {
 %>
         <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/GetAzureConnection.javajet"%>
 <%
@@ -345,7 +346,7 @@ if(likeTable) {
             }
             stmt_<%=cid %>.close();
             globalMap.put("<%=cid%>_QUERY", querySQL_<%=cid %>);
-        
+
             String currentClientPathSeparator_<%=cid%> = (String)globalMap.get("current_client_path_separator");
             if(currentClientPathSeparator_<%=cid%>!=null) {
                 System.setProperty("path.separator", currentClientPathSeparator_<%=cid%>);
@@ -354,28 +355,28 @@ if(likeTable) {
 <%
             if(!("true").equals(useExistingConn)) {
 %>
-                conn_<%=cid %>.close();
+conn_<%=cid %>.close();
 <%
-            }
-        } else { // cloud distribution
-            if(hiveDistrib.isExecutedThroughWebHCat()) {
+    }
+} else { // cloud distribution
+    if (hiveDistrib.isExecutedThroughWebHCat()) {
 %>
-                bw_<%=cid%>.write(querySQL_<%=cid %> + ";");
-                globalMap.put("<%=cid%>_QUERY", querySQL_<%=cid %>);
-    
-                bw_<%=cid%>.close();
-    
-                if(libjars_<%=cid%>.length() > 0) {
-                    instance_<%=cid%>.setLibJars(libjars_<%=cid%>.toString().substring(0, libjars_<%=cid%>.length()-1));
-                }
-                instance_<%=cid%>.callWS(instance_<%=cid%>.sendFiles());
-                int exitCode_<%=cid%> = instance_<%=cid%>.execute();
-                if(exitCode_<%=cid%> > 0) {
+bw_<%=cid%>.write(querySQL_<%=cid %> + ";");
+globalMap.put("<%=cid%>_QUERY", querySQL_<%=cid %>);
+
+bw_<%=cid%>.close();
+
+if(libjars_<%=cid%>.length() > 0) {
+instance_<%=cid%>.setLibJars(libjars_<%=cid%>.toString().substring(0, libjars_<%=cid%>.length()-1));
+}
+instance_<%=cid%>.callWS(instance_<%=cid%>.sendFiles());
+int exitCode_<%=cid%> = instance_<%=cid%>.execute();
+if(exitCode_<%=cid%> > 0) {
 
 <%
-                    if(("true").equals(dieOnError)) {
+    if (("true").equals(dieOnError)) {
 %>
-                        throw new Exception("The Hive job failed. Please read the logs for more details");
+throw new Exception("The Hive job failed. Please read the logs for more details");
 <%
                     } else {
 %>
@@ -581,22 +582,22 @@ if(storeAsAvro || !hiveDistrib.doSupportStoreAsParquet() && storeAsParquet) {
 %>
         String serdeName_<%=cid%> = <%=serdeName%>;
 <%
-        createTableSQL.append("serdeName_");
-        createTableSQL.append(cid);
-        createTableSQL.append(" + \"\\\"");
+            createTableSQL.append("serdeName_");
+            createTableSQL.append(cid);
+            createTableSQL.append(" + \"\\\"");
 
-        util.generatePros(" WITH SERDEPROPERTIES ", serdeProps, createTableSQL);
+            util.generatePros(" WITH SERDEPROPERTIES ", serdeProps, createTableSQL);
+        }
     }
-}
 
-if (storeAsAvro || !hiveDistrib.doSupportStoreAsParquet() && storeAsParquet) {
-    createTableSQL.append(" STORED AS INPUTFORMAT '" + (storeAsAvro?"org.apache.hadoop.hive.ql.io.avro.AvroContainerInputFormat":"parquet.hive.DeprecatedParquetInputFormat") + "'");
-    createTableSQL.append(" OUTPUTFORMAT '" + (storeAsAvro?"org.apache.hadoop.hive.ql.io.avro.AvroContainerOutputFormat":"parquet.hive.DeprecatedParquetOutputFormat") + "'");
-} else if(!"STORAGE".equals(storedFormat)) {
-    createTableSQL.append(" STORED AS ");
-    if("INPUTFORMAT_AND_OUTPUTFORMAT".equals(storedFormat)) {
-        String inputClass = ElementParameterParser.getValue(node, "__INPUTFORMAT_CLASS__");
-        String outputClass = ElementParameterParser.getValue(node, "__OUTPUTFORMAT_CLASS__");
+    if (storeAsAvro || !hiveDistrib.doSupportStoreAsParquet() && storeAsParquet) {
+        createTableSQL.append(" STORED AS INPUTFORMAT '" + (storeAsAvro ? "org.apache.hadoop.hive.ql.io.avro.AvroContainerInputFormat" : "parquet.hive.DeprecatedParquetInputFormat") + "'");
+        createTableSQL.append(" OUTPUTFORMAT '" + (storeAsAvro ? "org.apache.hadoop.hive.ql.io.avro.AvroContainerOutputFormat" : parquetPrefixPackageName + "parquet.hive.DeprecatedParquetOutputFormat") + "'");
+    } else if (!"STORAGE".equals(storedFormat)) {
+        createTableSQL.append(" STORED AS ");
+        if ("INPUTFORMAT_AND_OUTPUTFORMAT".equals(storedFormat)) {
+            String inputClass = ElementParameterParser.getValue(node, "__INPUTFORMAT_CLASS__");
+            String outputClass = ElementParameterParser.getValue(node, "__OUTPUTFORMAT_CLASS__");
 %>
         String inputClass_<%=cid%> = <%=inputClass%>;
         String outputClass_<%=cid%> = <%=outputClass%>;
@@ -705,56 +706,56 @@ String querySQL_<%=cid %> = "<%=createTableSQL.toString()%>";
 <%
     		} else {
 %>
-        		System.err.println(e_<%=cid%>.getMessage());
+System.err.println(e_<%=cid%>.getMessage());
 <%
-    		}
+    }
 %>
-        }
-		stmt_<%=cid %>.close();
-		<%if(!("true").equals(useExistingConn)) {%>
-		    conn_<%=cid %>.close();
-		<%}%>
-		globalMap.put("<%=cid%>_QUERY", querySQL_<%=cid %>);
-		
-		String currentClientPathSeparator_<%=cid%> = (String)globalMap.get("current_client_path_separator");
-		if(currentClientPathSeparator_<%=cid%>!=null) {
-		    System.setProperty("path.separator", currentClientPathSeparator_<%=cid%>);
-		    globalMap.put("current_client_path_separator", null);
-		}
-		
-		String currentClientUsername_<%=cid%> = (String)globalMap.get("current_client_user_name");
-		if(currentClientUsername_<%=cid%>!=null) {
-		    System.setProperty("user.name", currentClientUsername_<%=cid%>);
-		    globalMap.put("current_client_user_name", null);
-		}
-		
-		String originalHadoopUsername_<%=cid%> = (String)globalMap.get("HADOOP_USER_NAME_<%=cid%>");
-		if(originalHadoopUsername_<%=cid%>!=null) {
-		    System.setProperty("HADOOP_USER_NAME", originalHadoopUsername_<%=cid%>);
-		    globalMap.put("HADOOP_USER_NAME_<%=cid%>", null);
-		} else {
-		    System.clearProperty("HADOOP_USER_NAME");
-		}
+}
+stmt_<%=cid %>.close();
+<%if (!("true").equals(useExistingConn)) {%>
+conn_<%=cid %>.close();
+<%}%>
+globalMap.put("<%=cid%>_QUERY", querySQL_<%=cid %>);
+
+String currentClientPathSeparator_<%=cid%> = (String)globalMap.get("current_client_path_separator");
+if(currentClientPathSeparator_<%=cid%>!=null) {
+System.setProperty("path.separator", currentClientPathSeparator_<%=cid%>);
+globalMap.put("current_client_path_separator", null);
+}
+
+String currentClientUsername_<%=cid%> = (String)globalMap.get("current_client_user_name");
+if(currentClientUsername_<%=cid%>!=null) {
+System.setProperty("user.name", currentClientUsername_<%=cid%>);
+globalMap.put("current_client_user_name", null);
+}
+
+String originalHadoopUsername_<%=cid%> = (String)globalMap.get("HADOOP_USER_NAME_<%=cid%>");
+if(originalHadoopUsername_<%=cid%>!=null) {
+System.setProperty("HADOOP_USER_NAME", originalHadoopUsername_<%=cid%>);
+globalMap.put("HADOOP_USER_NAME_<%=cid%>", null);
+} else {
+System.clearProperty("HADOOP_USER_NAME");
+}
 <%
-    } else { // useCloudLauncher
-        if(hiveDistrib.isExecutedThroughWebHCat()) {
+} else { // useCloudLauncher
+    if (hiveDistrib.isExecutedThroughWebHCat()) {
 %>
-            bw_<%=cid%>.write(querySQL_<%=cid %> + ";");
-            globalMap.put("<%=cid%>_QUERY", querySQL_<%=cid %>);
-    
-            bw_<%=cid%>.close();
-    
-            if(libjars_<%=cid%>.length() > 0) {
-                instance_<%=cid%>.setLibJars(libjars_<%=cid%>.toString().substring(0, libjars_<%=cid%>.length()-1));
-            }
-            instance_<%=cid%>.callWS(instance_<%=cid%>.sendFiles());
-            int exitCode_<%=cid%> = instance_<%=cid%>.execute();
-            if(exitCode_<%=cid%> > 0) {
-    
+bw_<%=cid%>.write(querySQL_<%=cid %> + ";");
+globalMap.put("<%=cid%>_QUERY", querySQL_<%=cid %>);
+
+bw_<%=cid%>.close();
+
+if(libjars_<%=cid%>.length() > 0) {
+instance_<%=cid%>.setLibJars(libjars_<%=cid%>.toString().substring(0, libjars_<%=cid%>.length()-1));
+}
+instance_<%=cid%>.callWS(instance_<%=cid%>.sendFiles());
+int exitCode_<%=cid%> = instance_<%=cid%>.execute();
+if(exitCode_<%=cid%> > 0) {
+
 <%
-                if(("true").equals(dieOnError)) {
+    if (("true").equals(dieOnError)) {
 %>
-                    throw new Exception("The Hive job failed. Please read the logs for more details");
+throw new Exception("The Hive job failed. Please read the logs for more details");
 <%
                 } else {
 %>
@@ -803,7 +804,7 @@ String querySQL_<%=cid %> = "<%=createTableSQL.toString()%>";
             int exitCode_<%=cid%> = instance_<%=cid%>.executeJob();
             System.out.println(instance_<%=cid%>.getJobLog());
             if(exitCode_<%=cid%> > 0) {
-    
+
 <%
                 if(("true").equals(dieOnError)) {
 %>
@@ -822,6 +823,6 @@ String querySQL_<%=cid %> = "<%=createTableSQL.toString()%>";
 %>
             }
 <%
-        } // else part of if(hiveDistrib.isExecutedThroughWebHCat()) 
+        } // else part of if(hiveDistrib.isExecutedThroughWebHCat())
     } // else port of useCloudLauncher
 %>
