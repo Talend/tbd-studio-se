@@ -17,685 +17,162 @@
         {
             "childNodes": [
                 {
-                    "childNodes": [ 
-                         
-                        {
-                            "id": "accessors_smart_1_2_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "aopalliance_1_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "aopalliance_repackaged_2_5_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "asm_6_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "audience_annotations_0_7_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "avro_1_8_2_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "commons_beanutils_1_9_4_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "commons_cli_1_2_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "commons_codec_1_11_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "commons_collections_3_2_2_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "commons_compress_1_19_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "commons_configuration2_2_1_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "commons_crypto_1_0_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "commons_daemon_1_0_13_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "commons_io_2_5_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "commons_lang3_3_9_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "commons_lang_2_6_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "commons_logging_1_2_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "commons_math3_3_6_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "commons_net_3_6_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "curator_client_4_2_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "curator_framework_4_2_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "curator_recipes_4_2_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "disruptor_3_3_6_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "error_prone_annotations_2_3_3_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "findbugs_annotations_1_3_9_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "gson_2_2_4_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "guava_19_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "guice_4_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "guice_servlet_4_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hadoop_annotations_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hadoop_auth_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hadoop_client_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hadoop_common_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hadoop_distcp_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hadoop_hdfs_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hadoop_hdfs_client_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hadoop_mapreduce_client_common_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hadoop_mapreduce_client_core_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hadoop_mapreduce_client_jobclient_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hadoop_yarn_api_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hadoop_yarn_client_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hadoop_yarn_common_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_client_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_common_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_hadoop2_compat_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_hadoop_compat_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_http_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_metrics_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_metrics_api_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_procedure_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_protocol_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_protocol_shaded_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_replication_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_server_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_shaded_miscellaneous_2_2_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_shaded_netty_2_2_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_shaded_protobuf_2_2_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_zookeeper_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hk2_api_2_5_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hk2_locator_2_5_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hk2_utils_2_5_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "htrace_core4_4_2_0_incubating_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "httpclient_4_5_6_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "httpcore_4_4_10_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jackson_annotations_2_9_10_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jackson_core_2_9_10_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jackson_core_asl_1_9_13_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jackson_databind_2_9_10_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jackson_jaxrs_base_2_9_10_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jackson_jaxrs_json_provider_2_9_10_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jackson_mapper_asl_1_9_13_cloudera_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jackson_module_jaxb_annotations_2_9_10_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jamon_runtime_2_4_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "javassist_3_22_0_CR2_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "javax_activation_api_1_2_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "javax_annotation_api_1_3_2_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "javax_inject_2_5_0_b32_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "javax_servlet_api_3_1_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "javax_servlet_jsp_2_3_2_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "javax_servlet_jsp_api_2_3_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "javax_ws_rs_api_2_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jaxb_api_2_2_12_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jaxb_impl_2_2_3_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jcip_annotations_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jcodings_1_0_18_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jersey_client_1_19_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jersey_client_2_29_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jersey_common_2_29_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jersey_container_servlet_core_2_29_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jersey_core_1_19_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jersey_guava_2_25_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jersey_guice_1_19_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jersey_json_1_19_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jersey_media_jaxb_2_29_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jersey_server_1_19_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jersey_server_2_29_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jersey_servlet_1_19_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jettison_1_3_8_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jetty_http_9_3_27_v20190418_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jetty_io_9_3_27_v20190418_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jetty_security_9_3_27_v20190418_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jetty_server_9_3_27_v20190418_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jetty_servlet_9_3_27_v20190418_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jetty_util_9_3_27_v20190418_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jetty_util_ajax_9_3_27_v20190418_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jetty_webapp_9_3_27_v20190418_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jetty_xml_9_3_27_v20190418_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "joni_2_1_11_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jsch_0_1_54_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "json_smart_2_3_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jsp_api_2_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jsr305_3_0_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "jsr311_api_1_1_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "kerb_admin_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "kerb_client_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "kerb_common_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "kerb_core_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "kerb_crypto_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "kerb_identity_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "kerb_server_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "kerb_simplekdc_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "kerb_util_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "kerby_asn1_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "kerby_config_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "kerby_pkix_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "kerby_util_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "kerby_xdr_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "leveldbjni_all_1_8_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "log4j_1_2_17_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "metrics_core_3_2_6_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "nimbus_jose_jwt_4_41_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "okhttp_2_7_5_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "okio_1_6_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "osgi_resource_locator_1_0_3_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "paranamer_2_8_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "protobuf_java_2_5_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "re2j_1_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "slf4j_api_1_7_25_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "slf4j_log4j12_1_7_25_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "snappy_java_1_1_7_3_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "stax2_api_3_1_4_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "token_provider_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "validation_api_2_0_1_Final_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "woodstox_core_5_0_3_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "zookeeper_3_5_5_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "zookeeper_jute_3_5_5_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hadoop_common_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "stax2_api_3_1_4_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "stax_api_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_annotations_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_client_2_2_0_7_0_3_0_79_tests_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_client_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_common_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_hadoop2_compat_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_hadoop2_compat_2_2_0_7_0_3_0_79_tests_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_hadoop_compat_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_http_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_mapreduce_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_metrics_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_metrics_api_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_procedure_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_protocol_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_protocol_shaded_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_replication_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_server_2_2_0_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_shaded_miscellaneous_2_2_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_shaded_netty_2_2_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "id": "hbase_shaded_protobuf_2_2_1_jar",
-                            "tagName": "library"
-                        }
-                    ],
+                    "childNodes": [
+                            {"id" : "accessors_smart_1_2_jar", "tagName" : "library"},
+                            {"id" : "aopalliance_1_0_jar", "tagName" : "library"},
+                            {"id" : "aopalliance_repackaged_2_5_0_jar", "tagName" : "library"},
+                            {"id" : "asm_6_0_jar", "tagName" : "library"},  
+                            {"id" : "audience_annotations_0_7_0_jar", "tagName" : "library"},
+                            {"id" : "avro_1_8_2_7_0_3_0_79_jar", "tagName" : "library"},
+                            {"id" : "commons_beanutils_1_9_4_jar", "tagName" : "library"},
+                            {"id" : "commons_cli_1_2_jar", "tagName" : "library"},
+                            {"id" : "commons_codec_1_11_jar", "tagName" : "library"},
+                            {"id" : "commons_collections_3_2_2_jar", "tagName" : "library"},
+                            {"id" : "commons_compress_1_19_jar", "tagName" : "library"},
+                            {"id" : "commons_configuration2_2_1_1_jar", "tagName" : "library"}, 
+                            {"id" : "commons_crypto_1_0_0_jar", "tagName" : "library"},
+                            {"id" : "commons_daemon_1_0_13_jar", "tagName" : "library"},
+                            {"id" : "commons_httpclient_3_1", "tagName" : "library"},  
+                            {"id" : "commons_io_2_5_jar", "tagName" : "library"}, 
+                            {"id" : "commons_lang_2_6_jar", "tagName" : "library"}, 
+                            {"id" : "commons_lang3_3_9_jar", "tagName" : "library"},
+                            {"id" : "commons_logging_1_2_jar", "tagName" : "library"},
+                            {"id" : "commons_math3_3_6_1_jar", "tagName" : "library"}, 
+                            {"id" : "commons_net_3_6_jar", "tagName" : "library"}, 
+                            {"id" : "curator_client_4_2_0_jar", "tagName" : "library"},  
+                            {"id" : "curator_framework_4_2_0_jar", "tagName" : "library"}, 
+                            {"id" : "curator_recipes_4_2_0_jar", "tagName" : "library"},
+                            {"id" : "disruptor_3_3_6_jar", "tagName" : "library"},
+                            {"id" : "error_prone_annotations_2_3_3_jar", "tagName" : "library"},
+                            {"id" : "findbugs_annotations_1_3_9_1_jar", "tagName" : "library"},
+                            {"id" : "gson_2_2_4_jar", "tagName" : "library"},
+                            {"id" : "guava_19_0_jar", "tagName" : "library"},
+                            {"id" : "guice_4_0_jar", "tagName" : "library"},
+                            {"id" : "guice_servlet_4_0_jar", "tagName" : "library"},
+                            {"id" : "hadoop_annotations_3_1_1_7_0_3_0_79_jar", "tagName" : "library"},  
+                            {"id" : "hadoop_auth_3_1_1_7_0_3_0_79_jar", "tagName" : "library"},  
+                            {"id" : "hadoop_client_3_1_1_7_0_3_0_79_jar", "tagName" : "library"}, 
+                            {"id" : "hadoop_common_3_1_1_7_0_3_0_79_jar", "tagName" : "library"}, 
+                            {"id" : "hadoop_distcp_3_1_1_7_0_3_0_79_jar", "tagName" : "library"},
+                            {"id" : "hadoop_hdfs_3_1_1_7_0_3_0_79_jar", "tagName" : "library"}, 
+                            {"id" : "hadoop_hdfs_client_3_1_1_7_0_3_0_79_jar", "tagName" : "library"},
+                            {"id" : "hadoop_mapreduce_client_common_3_1_1_7_0_3_0_79_jar", "tagName" : "library"}, 
+                            {"id" : "hadoop_mapreduce_client_core_3_1_1_7_0_3_0_79_jar", "tagName" : "library"},  
+                            {"id" : "hadoop_mapreduce_client_jobclient_3_1_1_7_0_3_0_79_jar", "tagName" : "library"}, 
+                            {"id" : "hadoop_yarn_api_3_1_1_7_0_3_0_79_jar", "tagName" : "library"},  
+                            {"id" : "hadoop_yarn_client_3_1_1_7_0_3_0_79_jar", "tagName" : "library"}, 
+                            {"id" : "hadoop_yarn_common_3_1_1_7_0_3_0_79_jar", "tagName" : "library"},  
+                            {"id" : "hbase_annotations_2_2_0_7_0_3_0_79_jar", "tagName" : "library"},
+                            {"id" : "hbase_client_2_2_0_7_0_3_0_79_jar", "tagName" : "library"},
+                            {"id" : "hbase_client_2_2_0_7_0_3_0_79_tests_jar", "tagName" : "library"},
+                            {"id" : "hbase_common_2_2_0_7_0_3_0_79_jar", "tagName" : "library"},
+                            {"id" : "hbase_hadoop2_compat_2_2_0_7_0_3_0_79_jar", "tagName" : "library"},
+                            {"id" : "hbase_hadoop2_compat_2_2_0_7_0_3_0_79_tests_jar", "tagName" : "library"},
+                            {"id" : "hbase_hadoop_compat_2_2_0_7_0_3_0_79_jar", "tagName" : "library"},
+                            {"id" : "hbase_http_2_2_0_7_0_3_0_79_jar", "tagName" : "library"},
+                            {"id" : "hbase_mapreduce_2_2_0_7_0_3_0_79_jar", "tagName" : "library"},
+                            {"id" : "hbase_metrics_2_2_0_7_0_3_0_79_jar", "tagName" : "library"},
+                            {"id" : "hbase_metrics_api_2_2_0_7_0_3_0_79_jar", "tagName" : "library"},
+                            {"id" : "hbase_procedure_2_2_0_7_0_3_0_79_jar", "tagName" : "library"},
+                            {"id" : "hbase_protocol_2_2_0_7_0_3_0_79_jar", "tagName" : "library"},
+                            {"id" : "hbase_protocol_shaded_2_2_0_7_0_3_0_79_jar", "tagName" : "library"},
+                            {"id" : "hbase_replication_2_2_0_7_0_3_0_79_jar", "tagName" : "library"},
+                            {"id" : "hbase_server_2_2_0_7_0_3_0_79_jar", "tagName" : "library"},
+                            {"id" : "hbase_shaded_miscellaneous_2_2_1_jar", "tagName" : "library"},
+                            {"id" : "hbase_shaded_netty_2_2_1_jar", "tagName" : "library"},
+                            {"id" : "hbase_shaded_protobuf_2_2_1_jar", "tagName" : "library"},
+                            {"id" : "hbase_zookeeper_2_2_0_7_0_3_0_79_jar", "tagName" : "library"},
+                            {"id" : "hk2_api_2_5_0_jar", "tagName" : "library"},
+                            {"id" : "hk2_locator_2_5_0_jar", "tagName" : "library"},
+                            {"id" : "hk2_utils_2_5_0_jar", "tagName" : "library"},
+                            {"id" : "htrace_core4_4_2_0_incubating_jar", "tagName" : "library"}, 
+                            {"id" : "httpclient_4_5_6_jar", "tagName" : "library"},
+                            {"id" : "httpcore_4_4_10_jar", "tagName" : "library"},
+                            {"id" : "jackson_annotations_2_9_10_jar", "tagName" : "library"}, 
+                            {"id" : "jackson_core_2_9_10_jar", "tagName" : "library"}, 
+                            {"id" : "jackson_core_asl_1_9_13_jar", "tagName" : "library"}, 
+                            {"id" : "jackson_databind_2_9_10_jar", "tagName" : "library"}, 
+                            {"id" : "jackson_jaxrs_base_2_9_10_jar", "tagName" : "library"}, 
+                            {"id" : "jackson_jaxrs_json_provider_2_9_10_jar", "tagName" : "library"},  
+                            {"id" : "jackson_mapper_asl_1_9_13_cloudera_1_jar", "tagName" : "library"}, 
+                            {"id" : "jackson_module_jaxb_annotations_2_9_10_jar", "tagName" : "library"}, 
+                            {"id" : "jamon_runtime_2_4_1_jar", "tagName" : "library"},
+                            {"id" : "javassist_3_22_0_CR2_jar", "tagName" : "library"},
+                            {"id" : "javax_activation_api_1_2_0_jar", "tagName" : "library"},
+                            {"id" : "javax_annotation_api_1_3_2_jar", "tagName" : "library"},
+                            {"id" : "javax_inject_2_5_0_b32_jar", "tagName" : "library"},
+                            {"id" : "javax_servlet_api_3_1_0_jar", "tagName" : "library"}, 
+                            {"id" : "javax_servlet_jsp_2_3_2_jar", "tagName" : "library"},
+                            {"id" : "javax_servlet_jsp_api_2_3_1_jar", "tagName" : "library"},
+                            {"id" : "javax_ws_rs_api_2_0_1_jar", "tagName" : "library"},
+                            {"id" : "jaxb_api_2_2_12_jar", "tagName" : "library"}, 
+                            {"id" : "jaxb_impl_2_2_3_1_jar", "tagName" : "library"},
+                            {"id" : "jcip_annotations_1_0_1_jar", "tagName" : "library"}, 
+                            {"id" : "jcodings_1_0_18_jar", "tagName" : "library"},
+                            {"id" : "jersey_client_1_19_jar", "tagName" : "library"}, 
+                            {"id" : "jersey_client_2_29_jar", "tagName" : "library"},
+                            {"id" : "jersey_common_2_29_jar", "tagName" : "library"},
+                            {"id" : "jersey_container_servlet_core_2_29_jar", "tagName" : "library"},
+                            {"id" : "jersey_core_1_19_jar", "tagName" : "library"}, 
+                            {"id" : "jersey_guava_2_25_1_jar", "tagName" : "library"},
+                            {"id" : "jersey_guice_1_19_jar", "tagName" : "library"},
+                            {"id" : "jersey_json_1_19_jar", "tagName" : "library"},
+                            {"id" : "jersey_media_jaxb_2_29_jar", "tagName" : "library"},
+                            {"id" : "jersey_server_1_19_jar", "tagName" : "library"},
+                            {"id" : "jersey_server_2_29_jar", "tagName" : "library"},
+                            {"id" : "jersey_servlet_1_19_jar", "tagName" : "library"}, 
+                            {"id" : "jettison_1_3_8_jar", "tagName" : "library"},
+                            {"id" : "jetty_http_9_3_27_v20190418_jar", "tagName" : "library"},
+                            {"id" : "jetty_io_9_3_27_v20190418_jar", "tagName" : "library"},
+                            {"id" : "jetty_security_9_3_27_v20190418_jar", "tagName" : "library"}, 
+                            {"id" : "jetty_server_9_3_27_v20190418_jar", "tagName" : "library"},
+                            {"id" : "jetty_servlet_9_3_27_v20190418_jar", "tagName" : "library"},  
+                            {"id" : "jetty_util_9_3_27_v20190418_jar", "tagName" : "library"},  
+                            {"id" : "jetty_util_ajax_9_3_27_v20190418_jar", "tagName" : "library"},
+                            {"id" : "jetty_webapp_9_3_27_v20190418_jar", "tagName" : "library"},  
+                            {"id" : "jetty_xml_9_3_27_v20190418_jar", "tagName" : "library"}, 
+                            {"id" : "joni_2_1_11_jar", "tagName" : "library"},
+                            {"id" : "jsch_0_1_54_jar", "tagName" : "library"},
+                            {"id" : "json_smart_2_3_jar", "tagName" : "library"}, 
+                            {"id" : "jsp_api_2_1_jar", "tagName" : "library"}, 
+                            {"id" : "jsr305_3_0_0_jar", "tagName" : "library"},
+                            {"id" : "jsr311_api_1_1_1_jar", "tagName" : "library"},
+                            {"id" : "kerb_admin_1_0_1_jar", "tagName" : "library"},  
+                            {"id" : "kerb_client_1_0_1_jar", "tagName" : "library"},  
+                            {"id" : "kerb_common_1_0_1_jar", "tagName" : "library"}, 
+                            {"id" : "kerb_core_1_0_1_jar", "tagName" : "library"}, 
+                            {"id" : "kerb_crypto_1_0_1_jar", "tagName" : "library"}, 
+                            {"id" : "kerb_identity_1_0_1_jar", "tagName" : "library"},
+                            {"id" : "kerb_server_1_0_1_jar", "tagName" : "library"},  
+                            {"id" : "kerb_simplekdc_1_0_1_jar", "tagName" : "library"}, 
+                            {"id" : "kerb_util_1_0_1_jar", "tagName" : "library"}, 
+                            {"id" : "kerby_asn1_1_0_1_jar", "tagName" : "library"}, 
+                            {"id" : "kerby_config_1_0_1_jar", "tagName" : "library"}, 
+                            {"id" : "kerby_pkix_1_0_1_jar", "tagName" : "library"}, 
+                            {"id" : "kerby_util_1_0_1_jar", "tagName" : "library"}, 
+                            {"id" : "kerby_xdr_1_0_1_jar", "tagName" : "library"},  
+                            {"id" : "leveldbjni_all_1_8_jar", "tagName" : "library"},
+                            {"id" : "log4j_1_2_17_jar", "tagName" : "library"},  
+                            {"id" : "metrics_core_3_2_6_jar", "tagName" : "library"},
+                            {"id" : "nimbus_jose_jwt_4_41_1_jar", "tagName" : "library"}, 
+                            {"id" : "okhttp_2_7_5_jar", "tagName" : "library"},  
+                            {"id" : "okio_1_6_0_jar", "tagName" : "library"},
+                            {"id" : "osgi_resource_locator_1_0_3_jar", "tagName" : "library"},
+                            {"id" : "paranamer_2_8_jar", "tagName" : "library"}, 
+                            {"id" : "parquet_hadoop_bundle_1_6_0_jar", "tagName" : "library"},  
+                            {"id" : "protobuf_java_2_5_0_jar", "tagName" : "library"},
+                            {"id" : "re2j_1_1_jar", "tagName" : "library"}, 
+                            {"id" : "slf4j_api_1_7_25_jar", "tagName" : "library"},  
+                            {"id" : "slf4j_log4j12_1_7_25_jar", "tagName" : "library"},
+                            {"id" : "snappy_java_1_1_7_3_jar", "tagName" : "library"},
+                            {"id" : "stax2_api_3_1_4_jar", "tagName" : "library"}, 
+                            {"id" : "stax_api_1_0_1_jar", "tagName" : "library"},
+                            {"id" : "token_provider_1_0_1_jar", "tagName" : "library"}, 
+                            {"id" : "validation_api_2_0_1_Final_jar", "tagName" : "library"},
+                            {"id" : "woodstox_core_5_2_1_jar", "tagName" : "library"},
+                            {"id" : "zookeeper_3_5_5_7_0_3_0_79_jar", "tagName" : "library"},
+                            {"id" : "zookeeper_jute_3_5_5_7_0_3_0_79_jar", "tagName" : "library"}
+                            ],
                     "description": "",
                     "id": "HBASE_LIB",
                     "tagName": "libraryNeededGroup",
@@ -703,480 +180,85 @@
                 },
                 {
                     "childNodes": [
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "accessors_smart_1_2_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "asm_6_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "avro_1_8_2_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "commons_beanutils_1_9_4_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "commons_cli_1_2_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "commons_codec_1_11_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "commons_collections_3_2_2_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "commons_compress_1_19_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "commons_configuration2_2_1_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "commons_io_2_5_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "commons_lang3_3_9_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "commons_lang_2_6_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "commons_logging_1_2_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "commons_math3_3_6_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "commons_net_3_6_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "curator_client_4_2_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "curator_framework_4_2_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "curator_recipes_4_2_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "gson_2_2_4_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "guava_19_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "hadoop_annotations_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "hadoop_auth_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "hadoop_client_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "hadoop_common_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "hadoop_hdfs_client_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "hadoop_mapreduce_client_common_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "hadoop_mapreduce_client_core_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "hadoop_mapreduce_client_jobclient_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "hadoop_yarn_api_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "hadoop_yarn_client_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "hadoop_yarn_common_3_1_1_7_0_3_0_79_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "htrace_core4_4_2_0_incubating_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "jackson_core_asl_1_9_13_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "jackson_jaxrs_base_2_9_10_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "jackson_jaxrs_json_provider_2_9_10_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "jackson_mapper_asl_1_9_13_cloudera_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "jackson_module_jaxb_annotations_2_9_10_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "javax_activation_api_1_2_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "javax_servlet_api_3_1_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "jaxb_api_2_2_12_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "jcip_annotations_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "jersey_client_1_19_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "jersey_core_1_19_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "jersey_servlet_1_19_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "jetty_security_9_3_27_v20190418_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "jetty_servlet_9_3_27_v20190418_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "jetty_util_9_3_27_v20190418_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "jetty_webapp_9_3_27_v20190418_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "jetty_xml_9_3_27_v20190418_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "json_smart_2_3_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "jsp_api_2_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "jsr305_3_0_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "jsr311_api_1_1_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "kerb_admin_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "kerb_client_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "kerb_common_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "kerb_core_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "kerb_crypto_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "kerb_identity_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "kerb_server_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "kerb_simplekdc_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "kerb_util_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "kerby_asn1_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "kerby_config_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "kerby_pkix_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "kerby_util_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "kerby_xdr_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "log4j_1_2_17_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "nimbus_jose_jwt_4_41_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "okhttp_2_7_5_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "okio_1_6_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "paranamer_2_8_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "protobuf_java_2_5_0_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "re2j_1_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "slf4j_api_1_7_25_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "snappy_java_1_1_7_3_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "stax2_api_3_1_4_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "token_provider_1_0_1_jar",
-                            "tagName": "library"
-                        },
-                        {
-                            "childNodes": [
-                            ],
-                            "id": "woodstox_core_5_2_1_jar",
-                            "tagName": "library"
-                        }
+                             {"id": "accessors_smart_1_2_jar", "tagName": "library"},  
+                             {"id": "asm_6_0_jar", "tagName": "library"},  
+                             {"id": "avro_1_8_2_7_0_3_0_79_jar", "tagName": "library"},  
+                             {"id": "commons_beanutils_1_9_4_jar", "tagName": "library"},  
+                             {"id": "commons_cli_1_2_jar", "tagName": "library"},  
+                             {"id": "commons_codec_1_11_jar", "tagName": "library"},  
+                             {"id": "commons_collections_3_2_2_jar", "tagName": "library"},  
+                             {"id": "commons_compress_1_19_jar", "tagName": "library"},  
+                             {"id": "commons_configuration2_2_1_1_jar", "tagName": "library"},  
+                             {"id": "commons_io_2_5_jar", "tagName": "library"},  
+                             {"id": "commons_lang3_3_9_jar", "tagName": "library"},  
+                             {"id": "commons_lang_2_6_jar", "tagName": "library"},  
+                             {"id": "commons_logging_1_2_jar", "tagName": "library"},  
+                             {"id": "commons_math3_3_6_1_jar", "tagName": "library"},  
+                             {"id": "commons_net_3_6_jar", "tagName": "library"},  
+                             {"id": "curator_client_4_2_0_jar", "tagName": "library"},  
+                             {"id": "curator_framework_4_2_0_jar", "tagName": "library"},  
+                             {"id": "curator_recipes_4_2_0_jar", "tagName": "library"},  
+                             {"id": "gson_2_2_4_jar", "tagName": "library"},  
+                             {"id": "guava_19_0_jar", "tagName": "library"},  
+                             {"id": "hadoop_annotations_3_1_1_7_0_3_0_79_jar", "tagName": "library"},  
+                             {"id": "hadoop_auth_3_1_1_7_0_3_0_79_jar", "tagName": "library"},  
+                             {"id": "hadoop_client_3_1_1_7_0_3_0_79_jar", "tagName": "library"},  
+                             {"id": "hadoop_common_3_1_1_7_0_3_0_79_jar", "tagName": "library"},  
+                             {"id": "hadoop_hdfs_client_3_1_1_7_0_3_0_79_jar", "tagName": "library"},  
+                             {"id": "hadoop_mapreduce_client_common_3_1_1_7_0_3_0_79_jar", "tagName": "library"},  
+                             {"id": "hadoop_mapreduce_client_core_3_1_1_7_0_3_0_79_jar", "tagName": "library"},  
+                             {"id": "hadoop_mapreduce_client_jobclient_3_1_1_7_0_3_0_79_jar", "tagName": "library"},  
+                             {"id": "hadoop_yarn_api_3_1_1_7_0_3_0_79_jar", "tagName": "library"},  
+                             {"id": "hadoop_yarn_client_3_1_1_7_0_3_0_79_jar", "tagName": "library"},  
+                             {"id": "hadoop_yarn_common_3_1_1_7_0_3_0_79_jar", "tagName": "library"},  
+                             {"id": "htrace_core4_4_2_0_incubating_jar", "tagName": "library"},  
+                             {"id": "jackson_core_asl_1_9_13_jar", "tagName": "library"},  
+                             {"id": "jackson_jaxrs_base_2_9_10_jar", "tagName": "library"},  
+                             {"id": "jackson_jaxrs_json_provider_2_9_10_jar", "tagName": "library"},  
+                             {"id": "jackson_mapper_asl_1_9_13_cloudera_1_jar", "tagName": "library"},  
+                             {"id": "jackson_module_jaxb_annotations_2_9_10_jar", "tagName": "library"},  
+                             {"id": "javax_activation_api_1_2_0_jar", "tagName": "library"},  
+                             {"id": "javax_servlet_api_3_1_0_jar", "tagName": "library"},  
+                             {"id": "jaxb_api_2_2_12_jar", "tagName": "library"},  
+                             {"id": "jcip_annotations_1_0_1_jar", "tagName": "library"},  
+                             {"id": "jersey_client_1_19_jar", "tagName": "library"},  
+                             {"id": "jersey_core_1_19_jar", "tagName": "library"},  
+                             {"id": "jersey_servlet_1_19_jar", "tagName": "library"},  
+                             {"id": "jetty_security_9_3_27_v20190418_jar", "tagName": "library"},  
+                             {"id": "jetty_servlet_9_3_27_v20190418_jar", "tagName": "library"},  
+                             {"id": "jetty_util_9_3_27_v20190418_jar", "tagName": "library"},  
+                             {"id": "jetty_webapp_9_3_27_v20190418_jar", "tagName": "library"},  
+                             {"id": "jetty_xml_9_3_27_v20190418_jar", "tagName": "library"},  
+                             {"id": "json_smart_2_3_jar", "tagName": "library"},  
+                             {"id": "jsp_api_2_1_jar", "tagName": "library"},  
+                             {"id": "jsr305_3_0_0_jar", "tagName": "library"},  
+                             {"id": "jsr311_api_1_1_1_jar", "tagName": "library"},  
+                             {"id": "kerb_admin_1_0_1_jar", "tagName": "library"},  
+                             {"id": "kerb_client_1_0_1_jar", "tagName": "library"},  
+                             {"id": "kerb_common_1_0_1_jar", "tagName": "library"},  
+                             {"id": "kerb_core_1_0_1_jar", "tagName": "library"},  
+                             {"id": "kerb_crypto_1_0_1_jar", "tagName": "library"},  
+                             {"id": "kerb_identity_1_0_1_jar", "tagName": "library"},  
+                             {"id": "kerb_server_1_0_1_jar", "tagName": "library"},  
+                             {"id": "kerb_simplekdc_1_0_1_jar", "tagName": "library"},  
+                             {"id": "kerb_util_1_0_1_jar", "tagName": "library"},  
+                             {"id": "kerby_asn1_1_0_1_jar", "tagName": "library"},  
+                             {"id": "kerby_config_1_0_1_jar", "tagName": "library"},  
+                             {"id": "kerby_pkix_1_0_1_jar", "tagName": "library"},  
+                             {"id": "kerby_util_1_0_1_jar", "tagName": "library"},  
+                             {"id": "kerby_xdr_1_0_1_jar", "tagName": "library"},  
+                             {"id": "log4j_1_2_17_jar", "tagName": "library"},  
+                             {"id": "nimbus_jose_jwt_4_41_1_jar", "tagName": "library"},  
+                             {"id": "okhttp_2_7_5_jar", "tagName": "library"},  
+                             {"id": "okio_1_6_0_jar", "tagName": "library"},  
+                             {"id": "paranamer_2_8_jar", "tagName": "library"},  
+                             {"id": "protobuf_java_2_5_0_jar", "tagName": "library"},  
+                             {"id": "re2j_1_1_jar", "tagName": "library"},  
+                             {"id": "slf4j_api_1_7_25_jar", "tagName": "library"},  
+                             {"id": "snappy_java_1_1_7_3_jar", "tagName": "library"},  
+                             {"id": "stax2_api_3_1_4_jar", "tagName": "library"},  
+                             {"id": "token_provider_1_0_1_jar", "tagName": "library"},  
+                             {"id": "woodstox_core_5_2_1_jar", "tagName": "library"}                      
                     ],
                     "id": "HDFS_COMMON_LIB",
                     "tagName": "libraryNeededGroup",
@@ -8074,7 +7156,7 @@
                     "childNodes": [
                     ],
                     "index": "HBASE_LIB:CLOUDERA:Cloudera_CDP7_0_3_0_79",
-                    "libraries": "accessors_smart_1_2_jar;aopalliance_1_0_jar;aopalliance_repackaged_2_5_0_jar;asm_6_0_jar;audience_annotations_0_7_0_jar;avro_1_8_2_7_0_3_0_79_jar;commons_beanutils_1_9_4_jar;commons_cli_1_2_jar;commons_codec_1_11_jar;commons_collections_3_2_2_jar;commons_compress_1_19_jar;commons_configuration2_2_1_1_jar;commons_crypto_1_0_0_jar;commons_daemon_1_0_13_jar;commons_io_2_5_jar;commons_lang3_3_9_jar;commons_lang_2_6_jar;commons_logging_1_2_jar;commons_math3_3_6_1_jar;commons_net_3_6_jar;curator_client_4_2_0_jar;curator_framework_4_2_0_jar;curator_recipes_4_2_0_jar;disruptor_3_3_6_jar;error_prone_annotations_2_3_3_jar;findbugs_annotations_1_3_9_1_jar;gson_2_2_4_jar;guava_19_0_jar;guice_4_0_jar;guice_servlet_4_0_jar;hadoop_annotations_3_1_1_7_0_3_0_79_jar;hadoop_auth_3_1_1_7_0_3_0_79_jar;hadoop_client_3_1_1_7_0_3_0_79_jar;hadoop_common_3_1_1_7_0_3_0_79_jar;hadoop_distcp_3_1_1_7_0_3_0_79_jar;hadoop_hdfs_3_1_1_7_0_3_0_79_jar;hadoop_hdfs_client_3_1_1_7_0_3_0_79_jar;hadoop_mapreduce_client_common_3_1_1_7_0_3_0_79_jar;hadoop_mapreduce_client_core_3_1_1_7_0_3_0_79_jar;hadoop_mapreduce_client_jobclient_3_1_1_7_0_3_0_79_jar;hadoop_yarn_api_3_1_1_7_0_3_0_79_jar;hadoop_yarn_client_3_1_1_7_0_3_0_79_jar;hadoop_yarn_common_3_1_1_7_0_3_0_79_jar;hbase_client_2_2_0_7_0_3_0_79_jar;hbase_common_2_2_0_7_0_3_0_79_jar;hbase_hadoop2_compat_2_2_0_7_0_3_0_79_jar;hbase_hadoop_compat_2_2_0_7_0_3_0_79_jar;hbase_http_2_2_0_7_0_3_0_79_jar;hbase_metrics_2_2_0_7_0_3_0_79_jar;hbase_metrics_api_2_2_0_7_0_3_0_79_jar;hbase_procedure_2_2_0_7_0_3_0_79_jar;hbase_protocol_2_2_0_7_0_3_0_79_jar;hbase_protocol_shaded_2_2_0_7_0_3_0_79_jar;hbase_replication_2_2_0_7_0_3_0_79_jar;hbase_server_2_2_0_7_0_3_0_79_jar;hbase_shaded_miscellaneous_2_2_1_jar;hbase_shaded_netty_2_2_1_jar;hbase_shaded_protobuf_2_2_1_jar;hbase_zookeeper_2_2_0_7_0_3_0_79_jar;hk2_api_2_5_0_jar;hk2_locator_2_5_0_jar;hk2_utils_2_5_0_jar;htrace_core4_4_2_0_incubating_jar;httpclient_4_5_6_jar;httpcore_4_4_10_jar;jackson_annotations_2_9_10_jar;jackson_core_2_9_10_jar;jackson_core_asl_1_9_13_jar;jackson_databind_2_9_10_jar;jackson_jaxrs_base_2_9_10_jar;jackson_jaxrs_json_provider_2_9_10_jar;jackson_mapper_asl_1_9_13_cloudera_1_jar;jackson_module_jaxb_annotations_2_9_10_jar;jamon_runtime_2_4_1_jar;javassist_3_22_0_CR2_jar;javax_activation_api_1_2_0_jar;javax_annotation_api_1_3_2_jar;javax_inject_2_5_0_b32_jar;javax_servlet_api_3_1_0_jar;javax_servlet_jsp_2_3_2_jar;javax_servlet_jsp_api_2_3_1_jar;javax_ws_rs_api_2_0_1_jar;jaxb_api_2_2_12_jar;jaxb_impl_2_2_3_1_jar;jcip_annotations_1_0_1_jar;jcodings_1_0_18_jar;jersey_client_1_19_jar;jersey_client_2_29_jar;jersey_common_2_29_jar;jersey_container_servlet_core_2_29_jar;jersey_core_1_19_jar;jersey_guava_2_25_1_jar;jersey_guice_1_19_jar;jersey_json_1_19_jar;jersey_media_jaxb_2_29_jar;jersey_server_1_19_jar;jersey_server_2_29_jar;jersey_servlet_1_19_jar;jettison_1_3_8_jar;jetty_http_9_3_27_v20190418_jar;jetty_io_9_3_27_v20190418_jar;jetty_security_9_3_27_v20190418_jar;jetty_server_9_3_27_v20190418_jar;jetty_servlet_9_3_27_v20190418_jar;jetty_util_9_3_27_v20190418_jar;jetty_util_ajax_9_3_27_v20190418_jar;jetty_webapp_9_3_27_v20190418_jar;jetty_xml_9_3_27_v20190418_jar;joni_2_1_11_jar;jsch_0_1_54_jar;json_smart_2_3_jar;jsp_api_2_1_jar;jsr305_3_0_0_jar;jsr311_api_1_1_1_jar;kerb_admin_1_0_1_jar;kerb_client_1_0_1_jar;kerb_common_1_0_1_jar;kerb_core_1_0_1_jar;kerb_crypto_1_0_1_jar;kerb_identity_1_0_1_jar;kerb_server_1_0_1_jar;kerb_simplekdc_1_0_1_jar;kerb_util_1_0_1_jar;kerby_asn1_1_0_1_jar;kerby_config_1_0_1_jar;kerby_pkix_1_0_1_jar;kerby_util_1_0_1_jar;kerby_xdr_1_0_1_jar;leveldbjni_all_1_8_jar;log4j_1_2_17_jar;metrics_core_3_2_6_jar;nimbus_jose_jwt_4_41_1_jar;okhttp_2_7_5_jar;okio_1_6_0_jar;osgi_resource_locator_1_0_3_jar;paranamer_2_8_jar;protobuf_java_2_5_0_jar;re2j_1_1_jar;slf4j_api_1_7_25_jar;slf4j_log4j12_1_7_25_jar;snappy_java_1_1_7_3_jar;stax2_api_3_1_4_jar;token_provider_1_0_1_jar;validation_api_2_0_1_Final_jar;woodstox_core_5_2_1_jar;zookeeper_3_5_5_7_0_3_0_79_jar;zookeeper_jute_3_5_5_7_0_3_0_79_jar",
+                    "libraries": "accessors_smart_1_2_jar;aopalliance_1_0_jar;aopalliance_repackaged_2_5_0_jar;asm_6_0_jar;audience_annotations_0_7_0_jar;avro_1_8_2_7_0_3_0_79_jar;commons_beanutils_1_9_4_jar;commons_cli_1_2_jar;commons_codec_1_11_jar;commons_collections_3_2_2_jar;commons_compress_1_19_jar;commons_configuration2_2_1_1_jar;commons_crypto_1_0_0_jar;commons_daemon_1_0_13_jar;commons_httpclient_3_1;commons_io_2_5_jar;commons_lang_2_6_jar;commons_lang3_3_9_jar;commons_logging_1_2_jar;commons_math3_3_6_1_jar;commons_net_3_6_jar;curator_client_4_2_0_jar;curator_framework_4_2_0_jar;curator_recipes_4_2_0_jar;disruptor_3_3_6_jar;error_prone_annotations_2_3_3_jar;findbugs_annotations_1_3_9_1_jar;gson_2_2_4_jar;guava_19_0_jar;guice_4_0_jar;guice_servlet_4_0_jar;hadoop_annotations_3_1_1_7_0_3_0_79_jar;hadoop_auth_3_1_1_7_0_3_0_79_jar;hadoop_client_3_1_1_7_0_3_0_79_jar;hadoop_common_3_1_1_7_0_3_0_79_jar;hadoop_distcp_3_1_1_7_0_3_0_79_jar;hadoop_hdfs_3_1_1_7_0_3_0_79_jar;hadoop_hdfs_client_3_1_1_7_0_3_0_79_jar;hadoop_mapreduce_client_common_3_1_1_7_0_3_0_79_jar;hadoop_mapreduce_client_core_3_1_1_7_0_3_0_79_jar;hadoop_mapreduce_client_jobclient_3_1_1_7_0_3_0_79_jar;hadoop_yarn_api_3_1_1_7_0_3_0_79_jar;hadoop_yarn_client_3_1_1_7_0_3_0_79_jar;hadoop_yarn_common_3_1_1_7_0_3_0_79_jar;hbase_annotations_2_2_0_7_0_3_0_79_jar;hbase_client_2_2_0_7_0_3_0_79_jar;hbase_client_2_2_0_7_0_3_0_79_tests_jar;hbase_common_2_2_0_7_0_3_0_79_jar;hbase_hadoop2_compat_2_2_0_7_0_3_0_79_jar;hbase_hadoop2_compat_2_2_0_7_0_3_0_79_tests_jar;hbase_hadoop_compat_2_2_0_7_0_3_0_79_jar;hbase_http_2_2_0_7_0_3_0_79_jar;hbase_mapreduce_2_2_0_7_0_3_0_79_jar;hbase_metrics_2_2_0_7_0_3_0_79_jar;hbase_metrics_api_2_2_0_7_0_3_0_79_jar;hbase_procedure_2_2_0_7_0_3_0_79_jar;hbase_protocol_2_2_0_7_0_3_0_79_jar;hbase_protocol_shaded_2_2_0_7_0_3_0_79_jar;hbase_replication_2_2_0_7_0_3_0_79_jar;hbase_server_2_2_0_7_0_3_0_79_jar;hbase_shaded_miscellaneous_2_2_1_jar;hbase_shaded_netty_2_2_1_jar;hbase_shaded_protobuf_2_2_1_jar;hbase_zookeeper_2_2_0_7_0_3_0_79_jar;hk2_api_2_5_0_jar;hk2_locator_2_5_0_jar;hk2_utils_2_5_0_jar;htrace_core4_4_2_0_incubating_jar;httpclient_4_5_6_jar;httpcore_4_4_10_jar;jackson_annotations_2_9_10_jar;jackson_core_2_9_10_jar;jackson_core_asl_1_9_13_jar;jackson_databind_2_9_10_jar;jackson_jaxrs_base_2_9_10_jar;jackson_jaxrs_json_provider_2_9_10_jar;jackson_mapper_asl_1_9_13_cloudera_1_jar;jackson_module_jaxb_annotations_2_9_10_jar;jamon_runtime_2_4_1_jar;javassist_3_22_0_CR2_jar;javax_activation_api_1_2_0_jar;javax_annotation_api_1_3_2_jar;javax_inject_2_5_0_b32_jar;javax_servlet_api_3_1_0_jar;javax_servlet_jsp_2_3_2_jar;javax_servlet_jsp_api_2_3_1_jar;javax_ws_rs_api_2_0_1_jar;jaxb_api_2_2_12_jar;jaxb_impl_2_2_3_1_jar;jcip_annotations_1_0_1_jar;jcodings_1_0_18_jar;jersey_client_1_19_jar;jersey_client_2_29_jar;jersey_common_2_29_jar;jersey_container_servlet_core_2_29_jar;jersey_core_1_19_jar;jersey_guava_2_25_1_jar;jersey_guice_1_19_jar;jersey_json_1_19_jar;jersey_media_jaxb_2_29_jar;jersey_server_1_19_jar;jersey_server_2_29_jar;jersey_servlet_1_19_jar;jettison_1_3_8_jar;jetty_http_9_3_27_v20190418_jar;jetty_io_9_3_27_v20190418_jar;jetty_security_9_3_27_v20190418_jar;jetty_server_9_3_27_v20190418_jar;jetty_servlet_9_3_27_v20190418_jar;jetty_util_9_3_27_v20190418_jar;jetty_util_ajax_9_3_27_v20190418_jar;jetty_webapp_9_3_27_v20190418_jar;jetty_xml_9_3_27_v20190418_jar;joni_2_1_11_jar;jsch_0_1_54_jar;json_smart_2_3_jar;jsp_api_2_1_jar;jsr305_3_0_0_jar;jsr311_api_1_1_1_jar;kerb_admin_1_0_1_jar;kerb_client_1_0_1_jar;kerb_common_1_0_1_jar;kerb_core_1_0_1_jar;kerb_crypto_1_0_1_jar;kerb_identity_1_0_1_jar;kerb_server_1_0_1_jar;kerb_simplekdc_1_0_1_jar;kerb_util_1_0_1_jar;kerby_asn1_1_0_1_jar;kerby_config_1_0_1_jar;kerby_pkix_1_0_1_jar;kerby_util_1_0_1_jar;kerby_xdr_1_0_1_jar;leveldbjni_all_1_8_jar;log4j_1_2_17_jar;metrics_core_3_2_6_jar;nimbus_jose_jwt_4_41_1_jar;okhttp_2_7_5_jar;okio_1_6_0_jar;osgi_resource_locator_1_0_3_jar;paranamer_2_8_jar;parquet_hadoop_bundle_1_6_0_jar;protobuf_java_2_5_0_jar;re2j_1_1_jar;slf4j_api_1_7_25_jar;slf4j_log4j12_1_7_25_jar;snappy_java_1_1_7_3_jar;stax2_api_3_1_4_jar;stax_api_1_0_1_jar;token_provider_1_0_1_jar;validation_api_2_0_1_Final_jar;woodstox_core_5_2_1_jar;zookeeper_3_5_5_7_0_3_0_79_jar;zookeeper_jute_3_5_5_7_0_3_0_79_jar",
                     "moduleGroupTemplateId": "HBASE-LIB-DYNAMIC",
                     "tagName": "classloader"
                 },

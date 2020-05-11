@@ -55,9 +55,6 @@ public abstract class AbstractDynamicCDPDistributionTemplate extends AbstractDyn
             groupTemplateMap.put(ComponentType.SQOOP, new DynamicCDPSqoopModuleGroupTemplate(pluginAdapter));
         }
         
-        // don't need to send dependencies, on CDP we get thoses from parcels
-        groupTemplateMap.remove(ComponentType.HBASE);
-        groupTemplateMap.remove(ComponentType.IMPALA);
         return groupTemplateMap;
     }
 
