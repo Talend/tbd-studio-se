@@ -89,6 +89,10 @@ public class MongoDBConnForm extends AbstractNoSQLConnForm {
 
     private Composite replicaComposite;
 
+    protected Group encryptionGroup;
+
+    protected Button checkRequireEncryptionBtn;
+
     /**
      * DOC PLV MongoDBConnForm constructor comment.
      *
@@ -116,6 +120,7 @@ public class MongoDBConnForm extends AbstractNoSQLConnForm {
         String database = conn.getAttributes().get(INoSQLCommonAttributes.DATABASE);
         String user = conn.getAttributes().get(INoSQLCommonAttributes.USERNAME);
         String passwd = conn.getValue(conn.getAttributes().get(INoSQLCommonAttributes.PASSWORD), false);
+        boolean isUseRequireEncryption = Boolean.parseBoolean(conn.getAttributes().get(IMongoDBAttributes.REQUIRED_ENCRYPTION));
         boolean isUseRequireAuth = Boolean.parseBoolean(conn.getAttributes().get(INoSQLCommonAttributes.REQUIRED_AUTHENTICATION));
         boolean isUseReplicaSet = Boolean.parseBoolean(conn.getAttributes().get(IMongoDBAttributes.USE_REPLICA_SET));
         if (validText(dbVersion)) {
@@ -132,6 +137,7 @@ public class MongoDBConnForm extends AbstractNoSQLConnForm {
             userText.setText(user == null ? "" : user); //$NON-NLS-1$
             pwdText.setText(passwd == null ? "" : passwd); //$NON-NLS-1$
         }
+        checkRequireEncryptionBtn.setSelection(isUseRequireEncryption);
         initReplicaField();
         if (replicaTableView != null) {
             replicaTableView.getModel().registerDataList(replicaList);
@@ -152,6 +158,8 @@ public class MongoDBConnForm extends AbstractNoSQLConnForm {
                 String.valueOf(checkRequireAuthBtn.getSelection()));
         conn.getAttributes().put(INoSQLCommonAttributes.USERNAME, userText.getText());
         conn.getAttributes().put(INoSQLCommonAttributes.PASSWORD, conn.getValue(pwdText.getText(), true));
+        conn.getAttributes().put(IMongoDBAttributes.REQUIRED_ENCRYPTION,
+                String.valueOf(checkRequireEncryptionBtn.getSelection()));
         conn.getAttributes().put(IMongoDBAttributes.USE_REPLICA_SET, String.valueOf(checkUseReplicaBtn.getSelection()));
         saveReplicaModel();
     }
@@ -198,6 +206,7 @@ public class MongoDBConnForm extends AbstractNoSQLConnForm {
     protected void addConnFields(Composite parent) {
         addConnectionGroup(parent);
         addAuthGroup(parent);
+        addEncryptionGroup(parent);
     }
 
     /**
@@ -284,6 +293,14 @@ public class MongoDBConnForm extends AbstractNoSQLConnForm {
         pwdText = new LabelledText(authGroup,
                 Messages.getString("MongoDBConnForm.password"), 1, SWT.PASSWORD | SWT.BORDER | SWT.SINGLE); //$NON-NLS-1$
         pwdText.getTextControl().setEchoChar('*');
+    }
+
+    private void addEncryptionGroup(Composite composite) {
+        encryptionGroup = Form.createGroup(composite, 1, Messages.getString("MongoDBConnForm.encryption"), 110); //$NON-NLS-1$
+        encryptionGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        checkRequireEncryptionBtn = new Button(encryptionGroup, SWT.CHECK);
+        checkRequireEncryptionBtn.setText(Messages.getString("MongoDBConnForm.encryption.requireSSLEncryption")); //$NON-NLS-1$
+        checkRequireEncryptionBtn.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 5, 1));
     }
 
     /**
@@ -437,6 +454,19 @@ public class MongoDBConnForm extends AbstractNoSQLConnForm {
             @Override
             public void handleEvent(ModifiedBeanEvent<HashMap<String, Object>> event) {
                 saveReplicaModel();
+            }
+        });
+
+        checkRequireEncryptionBtn.addSelectionListener(new SelectionAdapter() {
+
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                boolean hide = !checkRequireEncryptionBtn.getSelection();
+                hideControl(encryptionGroup, false);
+                checkFieldsValue();
+                updateAttributes();
+                getConnection().getAttributes().put(IMongoDBAttributes.REQUIRED_ENCRYPTION,
+                        String.valueOf(checkRequireEncryptionBtn.getSelection()));
             }
         });
     }
