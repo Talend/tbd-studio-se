@@ -14,6 +14,7 @@ package org.talend.repository.hbaseprovider.util;
 
 import org.apache.commons.lang.StringUtils;
 import org.talend.core.database.conn.ConnParameterKeys;
+import org.talend.core.hadoop.EHadoopCategory;
 import org.talend.core.hadoop.HadoopClassLoaderFactory2;
 import org.talend.core.model.metadata.IMetadataConnection;
 import org.talend.core.runtime.hd.IHDConstants;
@@ -49,7 +50,13 @@ public class HBaseClassLoaderFactory {
     private static ClassLoader getCustomClassLoader(IMetadataConnection metadataConnection) {
         String hcId = metadataConnection.getId();
         String index = "HadoopCustomVersion:HBase:" + hcId; //$NON-NLS-1$
-        return HadoopClassLoaderFactory2.getHadoopCustomClassLoader(index,
-                metadataConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_HADOOP_CUSTOM_JARS));
+        String clusterId = null;
+        if (Boolean.valueOf((String) metadataConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_USE_CUSTOM_CONFS))
+                && Boolean.valueOf((String) metadataConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_SET_HADOOP_CONF))) {
+            clusterId = hcId;
+        }
+        return HadoopClassLoaderFactory2.getHadoopCustomClassLoader(index, clusterId, EHadoopCategory.HBASE,
+                metadataConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_HADOOP_CUSTOM_JARS),
+                Boolean.valueOf((String) metadataConnection.getParameter(ConnParameterKeys.CONN_PARA_KEY_USE_KRB)));
     }
 }

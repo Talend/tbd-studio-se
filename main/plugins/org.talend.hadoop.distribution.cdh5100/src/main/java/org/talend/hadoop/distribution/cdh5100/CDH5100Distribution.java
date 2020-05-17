@@ -32,14 +32,11 @@ import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100HiveModuleGroup
 import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100ImpalaModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100MapReduceModuleGroup;
-import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100PigModuleGroup;
-import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100PigOutputModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100SqoopModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.mr.CDH5100MRS3NodeModuleGroup;
-import org.talend.hadoop.distribution.cdh5100.modulegroup.node.pigoutput.CDH5100PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.spark.CDH5100SparkDynamoDBNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.sparkbatch.CDH5100GraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.node.sparkbatch.CDH5100SparkBatchAzureNodeModuleGroup;
@@ -61,13 +58,11 @@ import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
@@ -77,7 +72,7 @@ import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
 @SuppressWarnings("nls")
 public class CDH5100Distribution extends AbstractDistribution implements IClouderaDistribution, HDFSComponent,
-        HBaseComponent, HCatalogComponent, PigComponent, MRComponent, HiveComponent, HiveOnSparkComponent,
+        HBaseComponent, HCatalogComponent, MRComponent, HiveComponent, HiveOnSparkComponent,
         ImpalaComponent, SqoopComponent, CDHSparkBatchComponent, SparkStreamingComponent {
 
     public final static String VERSION = "Cloudera_CDH5_10";
@@ -105,8 +100,6 @@ public class CDH5100Distribution extends AbstractDistribution implements ICloude
         moduleGroups.put(ComponentType.HBASE, CDH5100HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HCATALOG, CDH5100HCatalogModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPREDUCE, CDH5100MapReduceModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIG, CDH5100PigModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIGOUTPUT, CDH5100PigOutputModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SQOOP, CDH5100SqoopModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVE, CDH5100HiveModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.IMPALA, CDH5100ImpalaModuleGroup.getModuleGroups());
@@ -127,9 +120,7 @@ public class CDH5100Distribution extends AbstractDistribution implements ICloude
                 CDH5100MRS3NodeModuleGroup.getModuleGroups(distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),
                 CDH5100MRS3NodeModuleGroup.getModuleGroups(distribution, version));
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
-                CDH5100PigOutputNodeModuleGroup.getModuleGroups(distribution, version));
-
+        
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
                 SparkBatchConstant.PARQUET_INPUT_COMPONENT), CDH5100SparkBatchParquetNodeModuleGroup.getModuleGroups(
                 distribution, version));
@@ -324,22 +315,7 @@ public class CDH5100Distribution extends AbstractDistribution implements ICloude
     public boolean doSupportStandaloneMode() {
         return super.doSupportStandaloneMode();
     }
-
-    @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        return false;
-    }
-
+    
     @Override
     public String generateSparkJarsPaths(List<String> commandLineJarsPaths) {
         return SparkClassPathUtils.generateSparkJarsPaths(commandLineJarsPaths,

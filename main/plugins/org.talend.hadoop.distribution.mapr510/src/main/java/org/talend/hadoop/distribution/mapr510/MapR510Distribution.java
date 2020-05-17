@@ -35,12 +35,10 @@ import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.MapRDBComponent;
 import org.talend.hadoop.distribution.component.MapRStreamsComponent;
 import org.talend.hadoop.distribution.component.MapROJAIComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.constants.MRConstant;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.mapr.IMapRDistribution;
@@ -54,9 +52,6 @@ import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510ImpalaModuleGro
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510MRS3NodeModuleGroup;
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510MapRStreamsModuleGroup;
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510MapReduceModuleGroup;
-import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510PigModuleGroup;
-import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510PigOutputModuleGroup;
-import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510SparkBatchS3NodeModuleGroup;
@@ -72,7 +67,7 @@ import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510SqoopModuleGrou
 import org.talend.hadoop.distribution.mapr510.modulegroup.MapR510OjaiModuleGroup;
 
 public class MapR510Distribution extends AbstractMapRDistribution implements HDFSComponent, MRComponent, HBaseComponent, MapROJAIComponent,
-        SqoopComponent, PigComponent, HiveComponent, HCatalogComponent, SparkBatchComponent, SparkStreamingComponent,
+        SqoopComponent, HiveComponent, HCatalogComponent, SparkBatchComponent, SparkStreamingComponent,
         HiveOnSparkComponent, ImpalaComponent, MapRStreamsComponent, MapRDBComponent, IMapRDistribution {
 
     public final static String VERSION = "MAPR510"; //$NON-NLS-1$
@@ -96,10 +91,7 @@ public class MapR510Distribution extends AbstractMapRDistribution implements HDF
         moduleGroups.put(ComponentType.MAPREDUCE, MapR510MapReduceModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HBASE, MapR510HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVE, MapR510HiveModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIG, MapR510PigModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIGOUTPUT, MapR510PigOutputModuleGroup.getModuleGroups());
-
-        moduleGroups.put(ComponentType.HCATALOG, MapR510HCatalogModuleGroup.getModuleGroups());
+                moduleGroups.put(ComponentType.HCATALOG, MapR510HCatalogModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SQOOP, MapR510SqoopModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.IMPALA, MapR510ImpalaModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SPARKBATCH, MapR510SparkBatchModuleGroup.getModuleGroups());
@@ -111,8 +103,6 @@ public class MapR510Distribution extends AbstractMapRDistribution implements HDF
 
         nodeModuleGroups = new HashMap<>();
 
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
-                MapR510PigOutputNodeModuleGroup.getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
                 MapR510MRS3NodeModuleGroup.getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),
@@ -241,21 +231,6 @@ public class MapR510Distribution extends AbstractMapRDistribution implements HDF
     @Override
     public boolean doJavaAPISupportStorePasswordInFile() {
         return false;
-    }
-
-    @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return true;
     }
 
     @Override

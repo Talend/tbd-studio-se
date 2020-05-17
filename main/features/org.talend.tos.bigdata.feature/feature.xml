@@ -2,7 +2,7 @@
 <feature
       id="org.talend.tos.bigdata.feature"
       label="Bigdata_feature"
-      version="7.3.1.qualifier">
+      version="7.4.1.qualifier">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -118,41 +118,11 @@
          fragment="true"
          unpack="false"/>
 
-   <plugin
-         id="org.talend.designer.pigmap"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
+     <plugin
          id="org.talend.designer.neo4j"
          download-size="0"
          install-size="0"
          version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.talend.repository.pigudf"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.talend.designer.pigmap.nl"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
-
-   <plugin
-         id="org.talend.repository.pigudf.nl"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
          unpack="false"/>
 
    <plugin

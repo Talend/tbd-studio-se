@@ -12,7 +12,13 @@
 // ============================================================================
 package org.talend.hadoop.distribution;
 
-public abstract class AbstractDatabricksDistribution extends AbstractDistribution {
+import java.util.Arrays;
+import java.util.List;
+
+import org.talend.hadoop.distribution.constants.databricks.EDatabriksCloudProvider;
+import org.talend.hadoop.distribution.constants.databricks.IDatabricksDistribution;
+
+public abstract class AbstractDatabricksDistribution extends AbstractDistribution implements IDatabricksDistribution {
 
     /**
      * Get the spark version to be passed in rest call for transient cluster creation
@@ -20,4 +26,8 @@ public abstract class AbstractDatabricksDistribution extends AbstractDistributio
     public String getTransientClusterSparkVersion() {
         return "3.5.x-scala2.11";
     };
+
+    public List<EDatabriksCloudProvider> getSupportCloudProviders() {
+        return Arrays.asList(EDatabriksCloudProvider.values());
+    }
 }

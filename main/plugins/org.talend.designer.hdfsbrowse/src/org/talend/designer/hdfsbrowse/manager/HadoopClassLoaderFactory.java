@@ -12,15 +12,19 @@
 // ============================================================================
 package org.talend.designer.hdfsbrowse.manager;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.util.Set;
+import java.util.function.Consumer;
 
+import org.apache.commons.lang.StringUtils;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.core.classloader.ClassLoaderFactory;
 import org.talend.core.classloader.DynamicClassLoader;
 import org.talend.core.hadoop.EHadoopCategory;
 import org.talend.core.hadoop.EHadoopConfigurationJars;
 import org.talend.core.hadoop.HadoopClassLoaderUtil;
+import org.talend.core.hadoop.HadoopConfJarBean;
 import org.talend.core.hadoop.IHadoopClusterService;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.hadoop.version.custom.ECustomVersionGroup;
@@ -43,7 +47,9 @@ public class HadoopClassLoaderFactory {
         }
 
         if (connectionBean.isUseCustomVersion()) {
-            return getCustomClassLoader(connectionBean);
+            loader = getCustomClassLoader(connectionBean);
+            loader = loadCustomConfJar(connectionBean, loader);
+            return loader;
         }
 
         String distribution = connectionBean.getDistribution();
@@ -54,13 +60,40 @@ public class HadoopClassLoaderFactory {
         }
 
         loader = getClassLoader(distribution, version, enableKerberos, true);
+        loader = loadCustomConfJar(connectionBean, loader);
+
+        return loader;
+    }
+
+    private static ClassLoader loadCustomConfJar(HDFSConnectionBean connectionBean, ClassLoader loader) {
         if ((connectionBean.getRelativeHadoopClusterId() != null || connectionBean.isUseCustomConfs())
                 && loader instanceof DynamicClassLoader) {
             try {
-                String customConfsJarName = getCustomConfsJarName(connectionBean.getRelativeHadoopClusterId());
-                if (customConfsJarName != null) {
-                    loader = DynamicClassLoader.createNewOneBaseLoader((DynamicClassLoader) loader,
-                            new String[] { customConfsJarName }, EHadoopConfigurationJars.HDFS.getEnableSecurityJars());
+                HadoopConfJarBean confJarBean = getCustomConfsJarName(connectionBean.getRelativeHadoopClusterId());
+                if (confJarBean != null) {
+                    Consumer<DynamicClassLoader> afterLoad = null;
+                    String[] addingJars = null;
+                    if (confJarBean.isOverrideCustomConf()) {
+                        String overrideCustomConfPath = confJarBean.getOriginalOverrideCustomConfPath();
+                        if (StringUtils.isBlank(overrideCustomConfPath) || !new File(overrideCustomConfPath).exists()) {
+                            ExceptionHandler.process(
+                                    new Exception("Set Hadoop configuration JAR path is invalid: " + overrideCustomConfPath));
+                        } else {
+                            afterLoad = (t) -> t.addLibrary(overrideCustomConfPath);
+                        }
+                    } else {
+                        String customConfsJarName = confJarBean.getCustomConfJarName();
+                        if (customConfsJarName != null) {
+                            addingJars = new String[] { customConfsJarName };
+                        }
+                    }
+                    if (afterLoad != null || addingJars != null) {
+                        loader = DynamicClassLoader.createNewOneBaseLoader((DynamicClassLoader) loader, addingJars,
+                                EHadoopConfigurationJars.HDFS.getEnableSecurityJars());
+                        if (afterLoad != null) {
+                            afterLoad.accept((DynamicClassLoader) loader);
+                        }
+                    }
                 }
                 // Add webhdfs extra jars
                 loader = HadoopClassLoaderUtil.addExtraJars(loader, EHadoopCategory.HDFS, connectionBean.getNameNodeURI());
@@ -68,14 +101,13 @@ public class HadoopClassLoaderFactory {
                 ExceptionHandler.process(e);
             }
         }
-
         return loader;
     }
 
-    private static String getCustomConfsJarName(String clusterId) {
+    private static HadoopConfJarBean getCustomConfsJarName(String clusterId) {
         IHadoopClusterService hadoopClusterService = HadoopRepositoryUtil.getHadoopClusterService();
         if (hadoopClusterService != null) {
-            return hadoopClusterService.getCustomConfsJarName(clusterId);
+            return hadoopClusterService.getCustomConfsJar(clusterId).orElse(null);
         }
         return null;
     }

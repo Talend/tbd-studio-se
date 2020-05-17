@@ -115,8 +115,6 @@ public class HCatalogDragAndDropHandler extends AbstractDragAndDropServiceHandle
             return false;
         } else if (EHCatalogRepositoryToComponent.MAPREDUCE.getRepositoryValue().equals(value)) {
             return true;
-        } else if (EHCatalogRepositoryToComponent.PIG_VERSION.getRepositoryValue().equals(value)) {
-            return hcConnection.getDfVersion();
         } else if (EHCatalogRepositoryToComponent.MAPRED_JOB_TRACKER.getRepositoryValue().equals(value)
                 || EHCatalogRepositoryToComponent.MAPRED_RESOURCE_MANAGER.getRepositoryValue().equals(value)
                 || EHCatalogRepositoryToComponent.RESOURCE_MANAGER.getRepositoryValue().equals(value)) {
@@ -129,11 +127,6 @@ public class HCatalogDragAndDropHandler extends AbstractDragAndDropServiceHandle
             return HCATALOG_LOAD;
         } else if (EHCatalogRepositoryToComponent.STORE.getRepositoryValue().equals(value)) {
             return HCATALOG_STORE;
-        } else if (EHCatalogRepositoryToComponent.HADOOP_CUSTOM_JARS.getRepositoryValue().equals(value)) {
-            if (targetComponent != null && targetComponent.startsWith("tPig")) {
-                return hcConnection.getParameters().get(ECustomVersionGroup.PIG_HCATALOG.getName());
-            }
-            return HCVersionUtil.getCompCustomJarsParamFromRep(hcConnection, ECustomVersionGroup.COMMON);
         } else if (EHCatalogRepositoryToComponent.HADOOP_ADVANCED_PROPERTIES.getRepositoryValue().equals(value)) {
             return HadoopRepositoryUtil.getHadoopPropertiesFullList(connection, connection.getHadoopProperties(), true);
         } else if (EHDFSRepositoryToComponent.SET_SCHEDULER_ADDRESS.getRepositoryValue().equals(value)) {

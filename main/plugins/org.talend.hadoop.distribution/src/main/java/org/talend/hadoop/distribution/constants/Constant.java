@@ -17,13 +17,5 @@ import org.talend.core.runtime.hd.IHDConstants;
 public interface Constant {
 
     static final String DISTRIBUTION_CUSTOM = IHDConstants.DISTRIBUTION_CUSTOM;
-
-    public static final String PIG_STORE_PARAMETER = "STORE"; //$NON-NLS-1$
-
-    public static final String PIG_HCATSTORER_PARAMETER = "HCATSTORER"; //$NON-NLS-1$
-
-    public static final String PIG_HBASESTORAGE_PARAMETER = "HBASESTORAGE"; //$NON-NLS-1$
-
-    public static final String PIG_PARQUETSTORER_PARAMETER = "PARQUETSTORER";//$NON-NLS-1$
-
+    
 }

@@ -114,8 +114,6 @@ public class HadoopClusterDragAndDropHandler extends AbstractDragAndDropServiceH
             return false;
         } else if (EHDFSRepositoryToComponent.MAPREDUCE.getRepositoryValue().equals(value)) {
             return true;
-        } else if (EHDFSRepositoryToComponent.PIG_VERSION.getRepositoryValue().equals(value)) {
-            return hcConnection.getDfVersion();
         } else if (EHDFSRepositoryToComponent.MAPRED_JOB_TRACKER.getRepositoryValue().equals(value)
                 || EHDFSRepositoryToComponent.MAPRED_RESOURCE_MANAGER.getRepositoryValue().equals(value)
                 || EHDFSRepositoryToComponent.RESOURCE_MANAGER.getRepositoryValue().equals(value)) {
@@ -254,6 +252,9 @@ public class HadoopClusterDragAndDropHandler extends AbstractDragAndDropServiceH
         } else if (EHDFSRepositoryToComponent.DATABRICKS_ENDPOINT.getRepositoryValue().equals(value)) {
             return getRepositoryValueOfStringType(hcConnection,
                     hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_ENDPOINT));
+        } else if (EHDFSRepositoryToComponent.DATABRICKS_CLOUD_PROVIDER.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLOUD_PROVIDER));
         } else if (EHDFSRepositoryToComponent.DATABRICKS_CLUSTER_ID.getRepositoryValue().equals(value)) {
             return getRepositoryValueOfStringType(hcConnection,
                     hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_CLUSTER_ID));
@@ -263,6 +264,11 @@ public class HadoopClusterDragAndDropHandler extends AbstractDragAndDropServiceH
         } else if (EHDFSRepositoryToComponent.DATABRICKS_DBFS_DEP_FOLDER.getRepositoryValue().equals(value)) {
             return getRepositoryValueOfStringType(hcConnection,
                     hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DATABRICKS_DBFS_DEP_FOLDER));
+        } else if (EHDFSRepositoryToComponent.SET_HADOOP_CONF.getRepositoryValue().equals(value)) {
+            return Boolean.valueOf(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_SET_HADOOP_CONF));
+        } else if (EHDFSRepositoryToComponent.HADOOP_CONF_SPECIFIC_JAR.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HADOOP_CONF_SPECIFIC_JAR));
         }
 
         return null;

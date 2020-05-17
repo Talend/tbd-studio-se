@@ -33,8 +33,6 @@ public class ComponentTypeTest {
         assertFalse(ComponentType.isSparkComponent(ComponentType.MAPRDB));
         assertFalse(ComponentType.isSparkComponent(ComponentType.MAPREDUCE));
         assertFalse(ComponentType.isSparkComponent(ComponentType.MAPRSTREAMS));
-        assertFalse(ComponentType.isSparkComponent(ComponentType.PIG));
-        assertFalse(ComponentType.isSparkComponent(ComponentType.PIGOUTPUT));
         assertFalse(ComponentType.isSparkComponent(ComponentType.SQOOP));
     }
 

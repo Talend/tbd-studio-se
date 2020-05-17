@@ -165,12 +165,6 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr550"
-            id="hive-hcatalog-pig-adapter-2.1.1-amzn-0.jar"
-            name="hive-hcatalog-pig-adapter-2.1.1-amzn-0.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-hcatalog-pig-adapter-2.1.1-amzn-0/6.0.0"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr550"
             id="hive-hcatalog-server-extensions-2.1.1-amzn-0.jar"
             name="hive-hcatalog-server-extensions-2.1.1-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-hcatalog-server-extensions-2.1.1-amzn-0/6.0.0"/>
@@ -181,74 +175,29 @@
             name="hive-hbase-handler-2.1.1-amzn-0.jar"
             mvn_uri="mvn:org.talend.libraries/hive-hbase-handler-2.1.1-amzn-0/6.0.0"/>
 
-        <!-- Pig libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr550"
-            id="hadoop-lzo-0.4.19.jar"
-            name="hadoop-lzo-0.4.19.jar"
-            mvn_uri="mvn:org.talend.libraries/hadoop-lzo-0.4.19/6.0.0"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr550"
-            id="pig-0.16.0-amzn-0-core-h2.jar"
-            name="pig-0.16.0-amzn-0-core-h2.jar"
-            mvn_uri="mvn:org.talend.libraries/pig-0.16.0-amzn-0-core-h2/6.0.0"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.libraries.hadoop"
-            id="parquet-pig-bundle-1.6.0.jar"
-            name="parquet-pig-bundle-1.6.0.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-pig-bundle-1.6.0/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.hadoop/lib/parquet-pig-bundle-1.6.0.jar"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr550"
-            id="piggybank-emr550.jar"
-            name="piggybank-emr550.jar"
-            mvn_uri="mvn:org.talend.libraries/piggybank-emr550/6.0.0"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.libraries.pig"
             id="elephant-bird-core-4.9.jar"
             name="elephant-bird-core-4.9.jar"
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-core/4.9"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-core-4.9.jar"/>
-
+            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-core/4.9"/>
+            
         <libraryNeeded
-            context="plugin:org.talend.libraries.pig"
+            context="plugin:org.talend.hadoop.distribution.emr550"
             id="elephant-bird-hadoop-compat-4.9.jar"
             name="elephant-bird-hadoop-compat-4.9.jar"
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-hadoop-compat/4.9"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-hadoop-compat-4.9.jar"/>
-
+            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-hadoop-compat/4.9"/>
+            
         <libraryNeeded
-            context="plugin:org.talend.libraries.pig"
+            context="plugin:org.talend.hadoop.distribution.emr550"
             id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
             name="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"
-            mvn_uri="mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-rcfile-4.9-patched-hive-1.x.jar"/>
-
+            mvn_uri="mvn:org.talend.libraries/elephant-bird-rcfile-4.9-patched-hive-1.x/6.0.0"/>
+            
         <libraryNeeded
         	context="plugin:org.talend.hadoop.distribution.emr550"
         	id="javax.ws.rs-api-2.0.1.jar"
         	name="javax.ws.rs-api-2.0.1.jar"
         	mvn_uri="mvn:org.talend.libraries/javax.ws.rs-api-2.0.1/6.0.0"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.libraries.pig"
-            id="elephant-bird-pig-4.9.jar"
-            name="elephant-bird-pig-4.9.jar"
-            mvn_uri="mvn:com.twitter.elephantbird/elephant-bird-pig/4.9"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/elephant-bird-pig-4.9.jar">
-        </libraryNeeded>
-
-        <libraryNeeded
-            context="plugin:org.talend.libraries.pig"
-            id="pigutil.jar"
-            name="pigutil.jar"
-            mvn_uri="mvn:org.talend.libraries/pigutil/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.pig/lib/pigutil.jar">
-        </libraryNeeded>
 
         <!-- S3 libraries -->
 
@@ -1585,8 +1534,8 @@
              <library id="commons-collections-3.2.2.jar"/>
              <library id="commons-io-2.4.jar"/>
              <library id="gson-2.2.4.jar"/>
-             <library id="httpcore-4.3.2.jar"/>
-             <library id="httpclient-4.3.4.jar"/>
+             <library id="httpcore-4.4.9.jar"/>
+             <library id="httpclient-4.5.5.jar"/>
              <library id="guava-14.0.1.jar"/>
              <library id="protobuf-java-2.5.0.jar"/>
              <library id="slf4j-api-1.7.16.jar"/>
@@ -1658,83 +1607,6 @@
              <library id="avro-mapred-1.7.7-hadoop2.jar"/>
         </libraryNeededGroup>
 
-
-        <!-- Pig group -->
-        <libraryNeededGroup
-                description="The lastest Pig libraries for EMR 5.5.0"
-                id="PIG-LIB-EMR_5_5_0_LATEST"
-                name="PIG-LIB-EMR_5_5_0_LATEST">
-             <library id="pig-0.16.0-amzn-0-core-h2.jar"/>
-             <library id="hadoop-lzo-0.4.19.jar"/>
-             <library id="jline-1.0.jar"/>
-             <library id="joda-time-2.9.3.jar"/>
-             <library id="automaton-1.11-8.jar"/>
-        </libraryNeededGroup>
-
-        <!-- Pig Parquet group -->
-        <libraryNeededGroup
-                description="Pig Parquet libraries for EMR 5.5.0"
-                id="PIG-PARQUET-LIB-EMR_5_5_0_LATEST"
-                name="PIG-PARQUET-LIB-EMR_5_5_0_LATEST">
-            <library id="parquet-pig-bundle-1.6.0.jar"/>
-        </libraryNeededGroup>
-
-        <!-- Pig HCatalog group -->
-        <libraryNeededGroup
-                description="Pig HCatalog libraries for EMR 5.5.0"
-                id="PIG-HCATALOG-LIB-EMR_5_5_0_LATEST"
-                name="PIG-HCATALOG-LIB-EMR_5_5_0_LATEST">
-            <library id="hive-exec-2.1.1-amzn-0.jar"/>
-            <library id="hive-hcatalog-core-2.1.1-amzn-0.jar"/>
-            <library id="hive-hcatalog-pig-adapter-2.1.1-amzn-0.jar"/>
-            <library id="hive-hcatalog-server-extensions-2.1.1-amzn-0.jar"/>
-            <library id="hive-metastore-2.1.1-amzn-0.jar"/>
-            <library id="jdo-api-3.0.1.jar"/>
-            <library id="libfb303-0.9.3.jar"/>
-            <library id="libthrift-0.9.3.jar"/>
-        </libraryNeededGroup>
-
-        <!-- Pig RCFile group -->
-        <libraryNeededGroup
-                description="The latest pig rc file storage libraries for EMR 5.5.0"
-                id="PIG-RCFILE-LIB-EMR_5_5_0_LATEST"
-                name="PIG-RCFILE-LIB-EMR_5_5_0_LATEST">
-            <library id="hive-common-2.1.1-amzn-0.jar"/>
-            <library id="hive-serde-2.1.1-amzn-0.jar"/>
-            <library id="hive-exec-2.1.1-amzn-0.jar"/>
-            <library id="elephant-bird-core-4.9.jar"/>
-            <library id="elephant-bird-hadoop-compat-4.9.jar"/>
-            <library id="elephant-bird-rcfile-4.9-patched-hive-1.x.jar"/>
-        </libraryNeededGroup>
-
-        <!-- Pig Avro group -->
-        <libraryNeededGroup
-                description="The latest pig avro storage libraries for EMR 5.5.0"
-                id="PIG-AVRO-LIB-EMR_5_5_0_LATEST"
-                name="PIG-AVRO-LIB-EMR_5_5_0_LATEST">
-             <library id="piggybank-emr550.jar"/>
-             <library id="commons-io-2.4.jar"/>
-        </libraryNeededGroup>
-
-        <!-- Pig SequenceFile group -->
-        <libraryNeededGroup
-                description="Pig SequenceFile libraries for EMR 5.5.0"
-                id="PIG-SEQUENCEFILE-LIB-EMR_5_5_0_LATEST"
-                name="PIG-SEQUENCEFILE-LIB-EMR_5_5_0_LATEST">
-            <library id="elephant-bird-core-4.9.jar"/>
-            <library id="elephant-bird-hadoop-compat-4.9.jar"/>
-            <library id="elephant-bird-pig-4.9.jar"/>
-            <library id="pigutil.jar"/>
-        </libraryNeededGroup>
-
-        <!-- Pig HBase group  -->
-        <libraryNeededGroup
-                description="Pig HBase libraries for EMR 5.5.0"
-                id="PIG-HBASE-LIB-EMR_5_5_0_LATEST"
-                name="PIG-HBASE-LIB-EMR_5_5_0_LATEST">
-            <library id="hbase-server-1.3.0.jar"/>
-            <library id="hbase-hadoop-compat-1.3.0.jar" />
-        </libraryNeededGroup>
 
         <!-- HBase group  -->
         <libraryNeededGroup
@@ -1904,8 +1776,8 @@
 			<library id="hk2-locator-2.4.0-b34.jar"/>
 			<library id="hk2-utils-2.4.0-b34.jar"/>
 			<library id="htrace-core-3.1.0-incubating.jar"/>
-            <library id="httpcore-4.3.2.jar"/>
-            <library id="httpclient-4.3.4.jar"/>
+            <library id="httpcore-4.4.9.jar"/>
+            <library id="httpclient-4.5.5.jar"/>
 			<library id="ivy-2.4.0.jar"/>
 			<library id="jackson-annotations-2.6.7.jar"/>
 			<library id="jackson-core-2.6.7.jar"/>
@@ -2167,19 +2039,19 @@
       <!-- EMR 5.5.0 ClassLoaders -->
       <classloader
             index="HIVE2:AMAZON_EMR:EMR_5_5_0:STANDALONE"
-            libraries="antlr-runtime-3.4.jar;avro-1.7.7.jar;commons-cli-1.2.jar;commons-codec-1.4.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-httpclient-3.0.1.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.2.jar;curator-client-2.6.0.jar;curator-framework-2.6.0.jar;datanucleus-api-jdo-4.2.1.jar;datanucleus-core-4.1.6.jar;datanucleus-rdbms-4.1.7.jar;derby-10.11.1.1.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-14.0.1.jar;hadoop-auth-2.7.3-amzn-2.jar;hadoop-common-2.7.3-amzn-2.jar;hadoop-hdfs-2.7.3-amzn-2.jar;hadoop-mapreduce-client-common-2.7.3-amzn-2.jar;hadoop-mapreduce-client-core-2.7.3-amzn-2.jar;hadoop-mapreduce-client-jobclient-2.7.3-amzn-2.jar;hadoop-yarn-api-2.7.3-amzn-2.jar;hadoop-yarn-client-2.7.3-amzn-2.jar;hadoop-yarn-common-2.7.3-amzn-2.jar;hive-exec-2.1.1-amzn-0-talend-nolang3.jar;hive-jdbc-2.1.1-amzn-0.jar;hive-metastore-2.1.1-amzn-0.jar;hive-serde-2.1.1-amzn-0.jar;hive-service-2.1.1-amzn-0.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.3.4.jar;httpcore-4.3.2.jar;jdo-api-3.0.1.jar;libfb303-0.9.3.jar;libthrift-0.9.3.jar;log4j-1.2.17.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;zookeeper-3.4.8.jar">
+            libraries="antlr-runtime-3.4.jar;avro-1.7.7.jar;commons-cli-1.2.jar;commons-codec-1.4.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-httpclient-3.0.1.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.2.jar;curator-client-2.6.0.jar;curator-framework-2.6.0.jar;datanucleus-api-jdo-4.2.1.jar;datanucleus-core-4.1.6.jar;datanucleus-rdbms-4.1.7.jar;derby-10.11.1.1.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-14.0.1.jar;hadoop-auth-2.7.3-amzn-2.jar;hadoop-common-2.7.3-amzn-2.jar;hadoop-hdfs-2.7.3-amzn-2.jar;hadoop-mapreduce-client-common-2.7.3-amzn-2.jar;hadoop-mapreduce-client-core-2.7.3-amzn-2.jar;hadoop-mapreduce-client-jobclient-2.7.3-amzn-2.jar;hadoop-yarn-api-2.7.3-amzn-2.jar;hadoop-yarn-client-2.7.3-amzn-2.jar;hadoop-yarn-common-2.7.3-amzn-2.jar;hive-exec-2.1.1-amzn-0-talend-nolang3.jar;hive-jdbc-2.1.1-amzn-0.jar;hive-metastore-2.1.1-amzn-0.jar;hive-serde-2.1.1-amzn-0.jar;hive-service-2.1.1-amzn-0.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;jdo-api-3.0.1.jar;libfb303-0.9.3.jar;libthrift-0.9.3.jar;log4j-1.2.17.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;zookeeper-3.4.8.jar">
       </classloader>
       <classloader
             index="MAP_REDUCE:AMAZON_EMR:EMR_5_5_0"
-            libraries="avro-1.7.5.jar;commons-cli-1.2.jar;commons-codec-1.4.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-11.0.2.jar;hadoop-auth-2.7.3-amzn-2.jar;hadoop-common-2.7.3-amzn-2.jar;hadoop-hdfs-2.7.3-amzn-2.jar;hadoop-mapreduce-client-common-2.7.3-amzn-2.jar;hadoop-mapreduce-client-core-2.7.3-amzn-2.jar;hadoop-mapreduce-client-jobclient-2.7.3-amzn-2.jar;hadoop-yarn-api-2.7.3-amzn-2.jar;hadoop-yarn-client-2.7.3-amzn-2.jar;hadoop-yarn-common-2.7.3-amzn-2.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.3.4.jar;httpcore-4.3.2.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-jaxrs-1.9.13.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-xc-1.9.13.jar;jersey-client-1.9.jar;jersey-core-1.9.jar;jetty-util-6.1.26-emr.jar;jodd-core-3.5.2.jar;log4j-1.2.17.jar;parquet-hadoop-bundle-1.6.0.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;snappy-java-1.1.2.6.jar">
+            libraries="avro-1.7.5.jar;commons-cli-1.2.jar;commons-codec-1.4.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-11.0.2.jar;hadoop-auth-2.7.3-amzn-2.jar;hadoop-common-2.7.3-amzn-2.jar;hadoop-hdfs-2.7.3-amzn-2.jar;hadoop-mapreduce-client-common-2.7.3-amzn-2.jar;hadoop-mapreduce-client-core-2.7.3-amzn-2.jar;hadoop-mapreduce-client-jobclient-2.7.3-amzn-2.jar;hadoop-yarn-api-2.7.3-amzn-2.jar;hadoop-yarn-client-2.7.3-amzn-2.jar;hadoop-yarn-common-2.7.3-amzn-2.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-jaxrs-1.9.13.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-xc-1.9.13.jar;jersey-client-1.9.jar;jersey-core-1.9.jar;jetty-util-6.1.26-emr.jar;jodd-core-3.5.2.jar;log4j-1.2.17.jar;parquet-hadoop-bundle-1.6.0.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;snappy-java-1.1.2.6.jar">
       </classloader>
       <classloader
             index="HDFS:AMAZON_EMR:EMR_5_5_0"
-            libraries="avro-1.7.5.jar;commons-cli-1.2.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-11.0.2.jar;hadoop-auth-2.7.3-amzn-2.jar;hadoop-common-2.7.3-amzn-2.jar;hadoop-hdfs-2.7.3-amzn-2.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.3.4.jar;httpcore-4.3.2.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-jaxrs-1.9.13.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-xc-1.9.13.jar;jersey-core-1.9.jar;jetty-util-6.1.26-emr.jar;log4j-1.2.17.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;jersey-client-1.9.jar">
+            libraries="avro-1.7.5.jar;commons-cli-1.2.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-11.0.2.jar;hadoop-auth-2.7.3-amzn-2.jar;hadoop-common-2.7.3-amzn-2.jar;hadoop-hdfs-2.7.3-amzn-2.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-jaxrs-1.9.13.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-xc-1.9.13.jar;jersey-core-1.9.jar;jetty-util-6.1.26-emr.jar;log4j-1.2.17.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;jersey-client-1.9.jar">
       </classloader>
       <classloader
             index="HDFS:AMAZON_EMR:EMR_5_5_0?USE_KRB"
-            libraries="avro-1.7.5.jar;commons-cli-1.2.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-11.0.2.jar;hadoop-auth-2.7.3-amzn-2.jar;hadoop-common-2.7.3-amzn-2.jar;hadoop-hdfs-2.7.3-amzn-2.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.3.4.jar;httpcore-4.3.2.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-jaxrs-1.9.13.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-xc-1.9.13.jar;jersey-core-1.9.jar;jetty-util-6.1.26-emr.jar;log4j-1.2.17.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;hadoop-conf-kerberos.jar;jersey-client-1.9.jar">
+            libraries="avro-1.7.5.jar;commons-cli-1.2.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-11.0.2.jar;hadoop-auth-2.7.3-amzn-2.jar;hadoop-common-2.7.3-amzn-2.jar;hadoop-hdfs-2.7.3-amzn-2.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-jaxrs-1.9.13.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-xc-1.9.13.jar;jersey-core-1.9.jar;jetty-util-6.1.26-emr.jar;log4j-1.2.17.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;hadoop-conf-kerberos.jar;jersey-client-1.9.jar">
       </classloader>
       <classloader
             index="HBASE:AMAZON_EMR:EMR_5_5_0"

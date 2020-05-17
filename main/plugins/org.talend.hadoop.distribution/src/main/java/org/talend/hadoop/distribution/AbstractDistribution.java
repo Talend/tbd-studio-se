@@ -100,10 +100,6 @@ public abstract class AbstractDistribution {
         return version;
     }
 
-    public boolean doSupportTezForPig() {
-        return false;
-    }
-
     public ComponentCondition getDisplayCondition(ComponentType componentType) {
         return null;
     }
@@ -368,5 +364,9 @@ public boolean isQuboleDistribution() {
     
     public boolean doSupportAzureDataLakeStorageGen2() {
     	return false;
+    }
+    
+    public String getSuffixParquetPackage() {
+        return "";
     }
 }

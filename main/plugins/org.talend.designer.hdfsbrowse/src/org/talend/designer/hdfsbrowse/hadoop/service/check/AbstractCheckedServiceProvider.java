@@ -12,10 +12,14 @@
 // ============================================================================
 package org.talend.designer.hdfsbrowse.hadoop.service.check;
 
+import java.io.File;
 import java.net.MalformedURLException;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 
 import org.apache.commons.lang.StringUtils;
 import org.talend.commons.exception.ExceptionHandler;
@@ -84,7 +88,8 @@ public abstract class AbstractCheckedServiceProvider implements ICheckedServiceP
                 String customConfsJarName;
                 IHadoopClusterService hadoopClusterService = getHadoopClusterService();
                 if (hadoopClusterService != null) {
-                    customConfsJarName = hadoopClusterService.getCustomConfsJarName(serviceProperties.getItem(), true, true);
+                    customConfsJarName = hadoopClusterService.getCustomConfsJar(serviceProperties.getItem(), true, true)
+                            .map(b -> b.getCustomConfJarName()).orElse(null);
                 } else {
                     customConfsJarName = HadoopParameterUtil.getConfsJarDefaultName(serviceProperties
                             .getRelativeHadoopClusterLabel());
@@ -97,12 +102,41 @@ public abstract class AbstractCheckedServiceProvider implements ICheckedServiceP
                         break;
                     }
                 }
-                if (!confFileExist) {
-                    try {
+                boolean rebuildClassloader = false;
+                Set<String> addedJarSet = new HashSet<>();
+                Set<String> excludedJarSet = new HashSet<>();
+                Consumer<DynamicClassLoader> afterLoaded = null;
+                if (serviceProperties.isSetHadoopConf()) {
+                    String hadoopConfSpecificJarPath = serviceProperties.getHadoopConfSpecificJar();
+                    boolean jarInvalid = false;
+                    if (StringUtils.isBlank(hadoopConfSpecificJarPath) || !new File(hadoopConfSpecificJarPath).exists()) {
+                        jarInvalid = true;
+                    }
+                    if (jarInvalid) {
+                        ExceptionHandler
+                                .process(new Exception("Hadoop configuration JAR path invalid: " + hadoopConfSpecificJarPath));
+                    } else {
+                        afterLoaded = (t) -> t.addLibrary(hadoopConfSpecificJarPath);
+                    }
+                    excludedJarSet.add(customConfsJarName);
+                    // remove the default jars, since it will be conflict with the new jars
+                    excludedJarSet.addAll(Arrays.asList(HadoopClassLoaderFactory2.getSecurityJars(category)));
+                    rebuildClassloader = true;
+                } else {
+                    if (!confFileExist) {
+                        addedJarSet.add(customConfsJarName);
                         // remove the default jars, since it will be conflict with the new jars
-                        String[] excludedJars = HadoopClassLoaderFactory2.getSecurityJars(category);
+                        excludedJarSet.addAll(Arrays.asList(HadoopClassLoaderFactory2.getSecurityJars(category)));
+                        rebuildClassloader = true;
+                    }
+                }
+                if (rebuildClassloader) {
+                    try {
                         classLoader = DynamicClassLoader.createNewOneBaseLoader((DynamicClassLoader) baseLoader,
-                                new String[] { customConfsJarName }, excludedJars);
+                                addedJarSet.toArray(new String[0]), excludedJarSet.toArray(new String[0]));
+                        if (afterLoaded != null) {
+                            afterLoaded.accept((DynamicClassLoader) classLoader);
+                        }
                     } catch (MalformedURLException e) {
                         ExceptionHandler.process(e);
                     }

@@ -25,7 +25,6 @@ import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
@@ -58,9 +57,6 @@ public class CDH5100DistributionTest {
         assertTrue(((SqoopComponent) distribution).doJavaAPISupportStorePasswordInFile());
         assertTrue(((SqoopComponent) distribution).doJavaAPISqoopImportSupportDeleteTargetDir());
         assertTrue(((SqoopComponent) distribution).doJavaAPISqoopImportAllTablesSupportExcludeTable());
-        assertTrue(((PigComponent) distribution).doSupportHCatalog());
-        assertFalse(((PigComponent) distribution).pigVersionPriorTo_0_12());
-        assertTrue(((PigComponent) distribution).doSupportHBase());
         assertFalse(((HiveComponent) distribution).doSupportEmbeddedMode());
         assertTrue(((HiveComponent) distribution).doSupportStandaloneMode());
         assertFalse(((HiveComponent) distribution).doSupportHive1());

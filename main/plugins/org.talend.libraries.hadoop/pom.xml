@@ -4,9 +4,42 @@
   <parent>
     <groupId>org.talend.studio</groupId>
     <artifactId>tbd-studio-se</artifactId>
-    <version>7.3.1-SNAPSHOT</version>
+    <version>7.4.1-SNAPSHOT</version>
     <relativePath>../../../</relativePath>
   </parent>
   <artifactId>org.talend.libraries.hadoop</artifactId>
   <packaging>eclipse-plugin</packaging>
+  <build>
+		<plugins>
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-maven-repository</id>
+                        <phase>prepare-package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<stripVersion>true</stripVersion>
+							<outputDirectory>${project.basedir}/lib</outputDirectory>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.talend.libraries</groupId>
+									<artifactId>hadoop-conf</artifactId>
+									<version>6.0.0</version>
+								</artifactItem>
+								<artifactItem>
+									<groupId>org.talend.libraries</groupId>
+									<artifactId>hadoop-conf-kerberos</artifactId>
+									<version>6.0.0</version>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+  </build>
 </project>

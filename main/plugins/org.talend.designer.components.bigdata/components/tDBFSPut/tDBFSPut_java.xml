@@ -79,27 +79,10 @@
 	<CODEGENERATION>
 		<IMPORTS REQUIRED_IF="(USE_EXISTING_CONNECTION=='false')">
             <IMPORT NAME="log4j-1.2.17" MODULE="log4j-1.2.17.jar" MVN="mvn:log4j/log4j/1.2.17"/>
-            <IMPORT NAME="talend-bigdata-launcher-platform-1.2.8-20180926.jar"
-                    MODULE="talend-bigdata-launcher-platform-1.2.8-20180926.jar"
-                    MVN="mvn:org.talend.libraries/talend-bigdata-launcher-platform-1.2.8-20180926/6.0.0"/>
-            <IMPORT NAME="json-simple-1.1.1.jar" MODULE="json-simple-1.1.1.jar"
-                    MVN="mvn:com.googlecode.json-simple/json-simple/1.1.1"/>
-            <IMPORT NAME="javax.ws.rs-api-2.0-m10.jar" MODULE="javax.ws.rs-api-2.0-m10.jar"
-                    MVN="mvn:org.talend.libraries/javax.ws.rs-api-2.0-m10/6.0.0"/>
-            <IMPORT NAME="commons-codec-1.4.jar" MODULE="commons-codec-1.4.jar"
-                    MVN="mvn:commons-codec/commons-codec/1.4"/>
-            <IMPORT NAME="cxf-rt-frontend-jaxrs-2.7.7.jar" MODULE="cxf-rt-frontend-jaxrs-2.7.7.jar"
-                    MVN="mvn:org.talend.libraries/cxf-rt-frontend-jaxrs-2.7.7/6.0.0"/>
-            <IMPORT NAME="cxf-api-2.7.7.jar" MODULE="cxf-api-2.7.7.jar"
-                    MVN="mvn:org.talend.libraries/cxf-api-2.7.7/6.0.0"/>
-            <IMPORT NAME="cxf-rt-bindings-xml-2.7.7.jar" MODULE="cxf-rt-bindings-xml-2.7.7.jar"
-                    MVN="mvn:org.talend.libraries/cxf-rt-bindings-xml-2.7.7/6.0.0"/>
-            <IMPORT NAME="cxf-rt-core-2.7.7.jar" MODULE="cxf-rt-core-2.7.7.jar"
-                    MVN="mvn:org.talend.libraries/cxf-rt-core-2.7.7/6.0.0"/>
-            <IMPORT NAME="cxf-rt-transports-http-2.7.7.jar" MODULE="cxf-rt-transports-http-2.7.7.jar"
-                    MVN="mvn:org.talend.libraries/cxf-rt-transports-http-2.7.7/6.0.0"/>
-            <IMPORT NAME="wsdl4j-1.6.3.jar" MODULE="wsdl4j-1.6.3.jar" MVN="mvn:wsdl4j/wsdl4j/1.6.3"/>
-			<IMPORT NAME="gson-2.2.4.jar" MODULE="gson-2.2.4.jar" MVN="mvn:com.google.code.gson/gson/2.2.4"/>
+            <IMPORT NAME="talend-bigdata-launcher-platform-2.0.1.jar"
+                    MODULE="talend-bigdata-launcher-platform-2.0.1.jar"
+                    MVN="mvn:org.talend.libraries/talend-bigdata-launcher-platform-2.0.1/6.0.0"/>
+            <IMPORT NAME="gson-2.2.4.jar" MODULE="gson-2.2.4.jar" MVN="mvn:com.google.code.gson/gson/2.2.4"/>
 		</IMPORTS>
 	</CODEGENERATION>
 	<RETURNS>

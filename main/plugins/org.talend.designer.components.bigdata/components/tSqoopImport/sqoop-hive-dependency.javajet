@@ -1,0 +1,58 @@
+<%@ jet 
+%>
+<%
+    // Register jars to handle Hive integration.
+    
+    List<Map<String, String>> additionalParams = ElementParameterParser.getTableValue(node, "__ADDITIONAL_JAVA__");
+    boolean hiveImport = false;
+    for (Map<String, String> additionalParam : additionalParams) {
+        if ("{ADDITIONAL_VALUE=\"true\", ADDITIONAL_ARGUMENT=\"hive.import\"}".equals(additionalParam.toString())) {
+            hiveImport = true;
+            break;
+        }
+    }
+    
+    java.util.List<String> hiveJarsToRegister = null;
+    java.util.List<String> hiveJars = null;
+    if (hiveImport) {
+        String[] commandLine = new String[] {"<command>"};
+        try {
+            commandLine = ProcessorUtilities.getCommandLine("win32" ,true, processId, "", org.talend.designer.runprocess.IProcessor.NO_STATISTICS, org.talend.designer.runprocess.IProcessor.NO_TRACES, new String[]{});
+        } catch (ProcessorException e) {
+            e.printStackTrace();
+        }
+    
+        hiveJarsToRegister = new java.util.ArrayList();
+        hiveJarsToRegister.add("kite-data-hive");
+        hiveJarsToRegister.add("hive-exec");
+        hiveJarsToRegister.add("hive-metastore");
+        hiveJarsToRegister.add("libfb303");
+    
+        for (int j = 0; j < commandLine.length; j++) {
+            if(commandLine[j].contains("jar")) {
+                hiveJars = java.util.Arrays.asList(commandLine[j].split(";"));
+                break;
+            }
+        }
+    }
+        
+    if (hiveJarsToRegister != null && hiveJars != null) {
+        if ((parquetJarsToRegister == null || parquetJars == null) && (jarsToRegister == null || jars == null)) {
+%>
+            routines.system.GetJarsToRegister getJarsToRegister_<%=cid %> = new routines.system.GetJarsToRegister();
+            java.lang.StringBuilder sb_<%=cid%> = new java.lang.StringBuilder();
+<%
+        }
+        for (int i = 0; i < hiveJarsToRegister.size(); i++) {
+            String hiveJarToRegister = hiveJarsToRegister.get(i);
+            for(int j = 0; j < hiveJars.size(); j++) {
+                if (hiveJars.get(j).contains(hiveJarToRegister)) {
+                    emptyStringBuilder = false;
+%>
+                    sb_<%=cid%>.append(getJarsToRegister_<%=cid %>.replaceJarPaths("<%=hiveJars.get(j)%>", "file:///") + ",");
+<%
+                }
+            }
+        }
+    }
+%>

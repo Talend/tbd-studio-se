@@ -31,14 +31,11 @@ import org.talend.hadoop.distribution.cdh550.modulegroup.CDH550HiveModuleGroup;
 import org.talend.hadoop.distribution.cdh550.modulegroup.CDH550HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.cdh550.modulegroup.CDH550ImpalaModuleGroup;
 import org.talend.hadoop.distribution.cdh550.modulegroup.CDH550MapReduceModuleGroup;
-import org.talend.hadoop.distribution.cdh550.modulegroup.CDH550PigModuleGroup;
-import org.talend.hadoop.distribution.cdh550.modulegroup.CDH550PigOutputModuleGroup;
 import org.talend.hadoop.distribution.cdh550.modulegroup.CDH550SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.cdh550.modulegroup.CDH550SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.cdh550.modulegroup.CDH550SqoopModuleGroup;
 import org.talend.hadoop.distribution.cdh550.modulegroup.CDH550WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.cdh550.modulegroup.node.mr.CDH550MRS3NodeModuleGroup;
-import org.talend.hadoop.distribution.cdh550.modulegroup.node.pigoutput.CDH550PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh550.modulegroup.node.sparkbatch.CDH550SparkBatchAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh550.modulegroup.node.sparkbatch.CDH550SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.cdh550.modulegroup.node.sparkbatch.CDH550SparkBatchS3NodeModuleGroup;
@@ -57,20 +54,18 @@ import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
 import org.talend.hadoop.distribution.kudu.KuduVersion;
 
 @SuppressWarnings("nls")
-public class CDH550Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, HBaseComponent, PigComponent,
+public class CDH550Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, HBaseComponent,
  HiveComponent, ImpalaComponent, HCatalogComponent, CDHSparkBatchComponent,
         SparkStreamingComponent, HiveOnSparkComponent,
         SqoopComponent, IClouderaDistribution {
@@ -99,8 +94,6 @@ public class CDH550Distribution extends AbstractDistribution implements HDFSComp
         moduleGroups.put(ComponentType.HBASE, CDH550HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HCATALOG, CDH550HCatalogModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPREDUCE, CDH550MapReduceModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIG, CDH550PigModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIGOUTPUT, CDH550PigOutputModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SQOOP, CDH550SqoopModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVE, CDH550HiveModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.IMPALA, CDH550ImpalaModuleGroup.getModuleGroups());
@@ -128,8 +121,6 @@ public class CDH550Distribution extends AbstractDistribution implements HDFSComp
                 CDH550MRS3NodeModuleGroup.getModuleGroups(distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),
                 CDH550MRS3NodeModuleGroup.getModuleGroups(distribution, version));
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
-                CDH550PigOutputNodeModuleGroup.getModuleGroups(distribution, version));
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
                 CDH550SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
@@ -252,21 +243,6 @@ public class CDH550Distribution extends AbstractDistribution implements HDFSComp
 
     @Override
     public boolean doSupportNewHBaseAPI() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
         return true;
     }
 

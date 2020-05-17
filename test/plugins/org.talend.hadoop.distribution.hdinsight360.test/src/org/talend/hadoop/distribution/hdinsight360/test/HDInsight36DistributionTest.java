@@ -24,7 +24,6 @@ import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
@@ -98,11 +97,7 @@ public class HDInsight36DistributionTest extends AbstractDistributionTest {
         assertTrue(((HiveComponent) distribution).doSupportAvroFormat());
         assertTrue(((HiveComponent) distribution).doSupportParquetFormat());
         assertFalse(((HiveComponent) distribution).doSupportStoreAsParquet());
-        // Pig
-        assertFalse(((PigComponent) distribution).doSupportHBase());
-        assertTrue(((PigComponent) distribution).doSupportHCatalog());
-        assertFalse(((PigComponent) distribution).pigVersionPriorTo_0_12());
-
+        
         assertFalse(distribution instanceof HCatalogComponent);
         assertFalse(distribution instanceof ImpalaComponent);
         assertTrue(distribution.doSupportHDFSEncryption());

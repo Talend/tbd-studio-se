@@ -26,13 +26,12 @@ import org.talend.hadoop.distribution.component.HCatalogComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
 
 @SuppressWarnings("nls")
 public class CDH510MR1Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, HBaseComponent,
-        SqoopComponent, PigComponent, HiveComponent, HCatalogComponent, IClouderaDistribution {
+        SqoopComponent, HiveComponent, HCatalogComponent, IClouderaDistribution {
 
     public static final String VERSION = "Cloudera_CDH5_1_MR1";
 
@@ -114,21 +113,7 @@ public class CDH510MR1Distribution extends AbstractDistribution implements HDFSC
         return false;
     }
 
-    @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return true;
-    }
-
+    
     @Override
     public boolean doSupportImpersonation() {
         return true;

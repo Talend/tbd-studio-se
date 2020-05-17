@@ -27,7 +27,6 @@ import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.MapRDBComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
@@ -99,12 +98,6 @@ public abstract class AbstractDynamicDistributionTemplate extends AbstractDistri
         }
         if (this instanceof MRComponent) {
             moduleGroupsTemplateMap.put(ComponentType.MAPREDUCE, new DynamicMapReduceModuleGroupTemplate(pluginAdapter));
-        }
-        if (this instanceof PigComponent) {
-            DynamicPigModuleGroupTemplate dynamicPigModuleGroupTemplate = new DynamicPigModuleGroupTemplate(pluginAdapter);
-            moduleGroupsTemplateMap.put(ComponentType.PIG, dynamicPigModuleGroupTemplate);
-            // it is enough that only regist pig template, since the template also contains pigoutput
-            // moduleGroupsTemplateMap.put(ComponentType.PIGOUTPUT, dynamicPigModuleGroupTemplate);
         }
         if (this instanceof SparkBatchComponent) {
             moduleGroupsTemplateMap.put(ComponentType.SPARKBATCH, new DynamicSparkBatchModuleGroupTemplate(pluginAdapter));

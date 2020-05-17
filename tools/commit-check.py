@@ -2,7 +2,7 @@
 import os
 import re
 
-team_tickets = "TBD|TDI|TUP|DEVOPS"
+team_tickets = "TBD|TDI|TUP|DEVOPS|TPS"
 semantic_prefixes = "chore|docs|feat|fix|refactor|style|test"
 
 tbd_commit_regex = "(%s)[\(\[\:]((?:%s)-(?:\d{3,7}))(?:[)\]]:|:)(.*)" % (semantic_prefixes, team_tickets)

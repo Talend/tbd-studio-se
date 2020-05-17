@@ -45,12 +45,11 @@ import org.talend.metadata.managment.ui.dialog.SparkPropertiesDialog;
 import org.talend.metadata.managment.ui.utils.ConnectionContextHelper;
 import org.talend.metadata.managment.ui.utils.ExtendedNodeConnectionContextUtils.EHadoopParamName;
 import org.talend.repository.hadoopcluster.i18n.Messages;
-import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopForm;
-import org.talend.repository.hadoopcluster.ui.common.IHadoopClusterInfoForm;
+import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopClusterInfoForm;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
 
-public class QuboleInfoForm extends AbstractHadoopForm<HadoopClusterConnection> implements IHadoopClusterInfoForm {
+public class QuboleInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConnection> {
 
     public static String QUBOLE_S3_REGION_DEFAULT = "com.amazonaws.regions.Regions.DEFAULT_REGION.getName()"; //$NON-NLS-1$
 
@@ -359,6 +358,7 @@ public class QuboleInfoForm extends AbstractHadoopForm<HadoopClusterConnection> 
 
         useClusterLabelButton.addSelectionListener(new SelectionAdapter() {
 
+            @Override
             public void widgetSelected(SelectionEvent e) {
                 hideClusterLabelControl(!useClusterLabelButton.getSelection());
                 if (useClusterLabelButton.getSelection()) {
@@ -383,6 +383,7 @@ public class QuboleInfoForm extends AbstractHadoopForm<HadoopClusterConnection> 
         });
         changeAPIButton.addSelectionListener(new SelectionAdapter() {
 
+            @Override
             public void widgetSelected(SelectionEvent e) {
                 hideChangeAPIComboControl(!changeAPIButton.getSelection());
                 if (changeAPIButton.getSelection()) {
@@ -401,6 +402,7 @@ public class QuboleInfoForm extends AbstractHadoopForm<HadoopClusterConnection> 
 
         changeAPICombo.addSelectionListener(new SelectionAdapter() {
 
+            @Override
             public void widgetSelected(SelectionEvent e) {
                 getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_ENDPOINT_URL,
                         getAPIEndPointValue(changeAPICombo.getSelectionIndex()));
@@ -447,6 +449,7 @@ public class QuboleInfoForm extends AbstractHadoopForm<HadoopClusterConnection> 
 
         regionCombo.getCombo().addSelectionListener(new SelectionAdapter() {
 
+            @Override
             public void widgetSelected(SelectionEvent e) {
                 getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_QUBOLE_S3_REGION,
                         getRegionValue(regionCombo.getSelectionIndex()));
@@ -681,4 +684,5 @@ public class QuboleInfoForm extends AbstractHadoopForm<HadoopClusterConnection> 
         }
         return "";
     }
+
 }

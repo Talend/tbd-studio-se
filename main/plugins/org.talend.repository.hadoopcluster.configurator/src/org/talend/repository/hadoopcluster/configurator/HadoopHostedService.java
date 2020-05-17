@@ -26,7 +26,6 @@ public enum HadoopHostedService {
     OOZIE,
     SPARK, // CDH
     MAPREDUCE2, // AMBARI
-    PIG, // AMBARI
     SQOOP, // AMBARI
     STORM, // AMBARI
     TEZ, // AMBARI

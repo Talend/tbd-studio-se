@@ -23,8 +23,6 @@ import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.MapRDBConstant;
 import org.talend.hadoop.distribution.constants.MapRStreamsConstant;
 import org.talend.hadoop.distribution.constants.MapROJAIConstant;
-import org.talend.hadoop.distribution.constants.PigConstant;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.SqoopConstant;
@@ -47,12 +45,6 @@ public enum ComponentType {
          HDFSConstant.DISTRIBUTION_REPOSITORYVALUE,
          HDFSConstant.VERSION_PARAMETER,
          HDFSConstant.VERSION_REPOSITORYVALUE),
-    PIG(
-        PigConstant.SERVICE,
-        PigConstant.DISTRIBUTION_PARAMETER,
-        PigConstant.DISTRIBUTION_REPOSITORYVALUE,
-        PigConstant.VERSION_PARAMETER,
-        PigConstant.VERSION_REPOSITORYVALUE),
     HBASE(
           HBaseConstant.SERVICE,
           HBaseConstant.DISTRIBUTION_PARAMETER,
@@ -77,12 +69,6 @@ public enum ComponentType {
               MRConstant.DISTRIBUTION_REPOSITORYVALUE,
               MRConstant.VERSION_PARAMETER,
               MRConstant.VERSION_REPOSITORYVALUE),
-    PIGOUTPUT(
-              PigOutputConstant.SERVICE,
-              PigOutputConstant.DISTRIBUTION_PARAMETER,
-              PigOutputConstant.DISTRIBUTION_REPOSITORYVALUE,
-              PigOutputConstant.VERSION_PARAMETER,
-              PigOutputConstant.VERSION_REPOSITORYVALUE),
     SQOOP(
           SqoopConstant.SERVICE,
           SqoopConstant.DISTRIBUTION_PARAMETER,

@@ -33,8 +33,7 @@ import org.talend.core.model.utils.ContextParameterUtils;
 import org.talend.metadata.managment.ui.dialog.HadoopPropertiesDialog;
 import org.talend.metadata.managment.ui.utils.ExtendedNodeConnectionContextUtils.EHadoopParamName;
 import org.talend.repository.hadoopcluster.i18n.Messages;
-import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopForm;
-import org.talend.repository.hadoopcluster.ui.common.IHadoopClusterInfoForm;
+import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopClusterInfoForm;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
 
@@ -43,7 +42,7 @@ import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
  * created by ycbai on 2014年9月16日 Detailled comment
  *
  */
-public class HDIInfoForm extends AbstractHadoopForm<HadoopClusterConnection> implements IHadoopClusterInfoForm {
+public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConnection> {
 
     private Composite parentForm;
 

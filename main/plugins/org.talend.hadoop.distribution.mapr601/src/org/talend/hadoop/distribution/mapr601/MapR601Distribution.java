@@ -34,13 +34,11 @@ import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.MapRDBComponent;
 import org.talend.hadoop.distribution.component.MapROJAIComponent;
 import org.talend.hadoop.distribution.component.MapRStreamsComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.MapRStreamsConstant;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.mapr.IMapRDistribution;
@@ -57,9 +55,6 @@ import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601MapRStreamsCrea
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601MapRStreamsModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601MapReduceModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601OjaiModuleGroup;
-import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601PigModuleGroup;
-import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601PigOutputModuleGroup;
-import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SparkBatchAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SparkBatchParquetNodeModuleGroup;
@@ -79,7 +74,7 @@ import org.talend.hadoop.distribution.mapr601.modulegroup.MapR601SqoopModuleGrou
 
 public class MapR601Distribution extends AbstractMapRDistribution implements HDFSComponent, MapROJAIComponent,
         SparkBatchComponent, SparkStreamingComponent, HiveComponent, HiveOnSparkComponent, MapRStreamsComponent,
-        MapRDBComponent, IMapRDistribution, HCatalogComponent, MRComponent, PigComponent, SqoopComponent,
+        MapRDBComponent, IMapRDistribution, HCatalogComponent, MRComponent, SqoopComponent,
         ImpalaComponent {
 
     public final static String VERSION = "MAPR601"; //$NON-NLS-1$
@@ -107,8 +102,6 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
         moduleGroups.put(ComponentType.MAPREDUCE, MapR601MapReduceModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HBASE, MapR601HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVE, MapR601HiveModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIG, MapR601PigModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIGOUTPUT, MapR601PigOutputModuleGroup.getModuleGroups());
 
         moduleGroups.put(ComponentType.HCATALOG, MapR601HCatalogModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SQOOP, MapR601SqoopModuleGroup.getModuleGroups());
@@ -126,8 +119,6 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
                 MapRStreamsConstant.CREATE_STREAM_COMPONENT), MapR601MapRStreamsCreateStreamModuleGroup
                 .getModuleGroups());
 
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
-                MapR601PigOutputNodeModuleGroup.getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
                 MapR601MRS3NodeModuleGroup.getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),
@@ -425,21 +416,6 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
 
     @Override
     public boolean doJavaAPISupportStorePasswordInFile() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
         return false;
     }
 

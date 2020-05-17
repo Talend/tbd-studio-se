@@ -26,7 +26,6 @@ import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.MapROJAIComponent;
 import org.talend.hadoop.distribution.component.MapRStreamsComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;

@@ -31,14 +31,12 @@ import org.talend.hadoop.distribution.component.HDFSComponent;
 import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
-import org.talend.hadoop.distribution.component.PigComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.HDFSConstant;
 import org.talend.hadoop.distribution.constants.MRConstant;
-import org.talend.hadoop.distribution.constants.PigOutputConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.hdp.IHortonworksDistribution;
@@ -48,14 +46,11 @@ import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260HDFSModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260HiveModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260MapReduceModuleGroup;
-import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260PigModuleGroup;
-import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260PigOutputModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260SparkBatchModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260SqoopModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.node.mr.HDP260MRS3NodeModuleGroup;
-import org.talend.hadoop.distribution.hdp260.modulegroup.node.pigoutput.HDP260PigOutputNodeModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.node.spark.HDP260SparkDynamoDBNodeModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.node.sparkbatch.HDP260GraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.node.sparkbatch.HDP260SparkBatchAzureNodeModuleGroup;
@@ -72,7 +67,7 @@ import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
 @SuppressWarnings("nls")
-public class HDP260Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, HBaseComponent, PigComponent,
+public class HDP260Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, HBaseComponent,
         HiveComponent, HCatalogComponent, SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, SqoopComponent,
         IHortonworksDistribution {
 
@@ -102,8 +97,6 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
         moduleGroups.put(ComponentType.HBASE, HDP260HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HCATALOG, HDP260HCatalogModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPREDUCE, HDP260MapReduceModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIG, HDP260PigModuleGroup.getModuleGroups());
-        moduleGroups.put(ComponentType.PIGOUTPUT, HDP260PigOutputModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SQOOP, HDP260SqoopModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HIVE, HDP260HiveModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.SPARKBATCH, HDP260SparkBatchModuleGroup.getModuleGroups());
@@ -123,9 +116,7 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
                 HDP260MRS3NodeModuleGroup.getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_OUTPUT_COMPONENT),
                 HDP260MRS3NodeModuleGroup.getModuleGroups());
-        nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.PIG, PigOutputConstant.PIGSTORE_COMPONENT),
-                HDP260PigOutputNodeModuleGroup.getModuleGroups());
-
+        
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
                 HDP260SparkBatchParquetNodeModuleGroup.getModuleGroups());
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
@@ -277,20 +268,6 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
         return true;
     }
 
-    @Override
-    public boolean doSupportHCatalog() {
-        return true;
-    }
-
-    @Override
-    public boolean pigVersionPriorTo_0_12() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportHBase() {
-        return true;
-    }
 
     @Override
     public boolean doSupportImpersonation() {
@@ -319,11 +296,6 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
 
     @Override
     public boolean doSupportTezForHive() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportTezForPig() {
         return true;
     }
 
