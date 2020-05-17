@@ -30,7 +30,7 @@ public class HDInsight40SparkBatchModuleGroup {
 
     private final static ComponentCondition condition = new SimpleComponentCondition(new BasicExpression(
             SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false")); //$NON-NLS-1$
-    
+
     private final static ComponentCondition conditionSpark2_3 = new MultiComponentCondition(
             new BasicExpression(SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false"), //$NON-NLS-1$
             BooleanOperator.AND,
@@ -45,6 +45,7 @@ public class HDInsight40SparkBatchModuleGroup {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         hs.add(new DistributionModuleGroup(HDInsight40Constant.SPARK23_MODULE_GROUP.getModuleName(), false, conditionSpark2_3));
         hs.add(new DistributionModuleGroup(HDInsight40Constant.SPARK24_MODULE_GROUP.getModuleName(), false, conditionSpark2_4));
+        //should be true because job is using FileSystem
         hs.add(new DistributionModuleGroup(HDInsight40Constant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(), true, condition));
         hs.add(new DistributionModuleGroup(HDInsight40Constant.HDINSIGHT400COMMON_MODULE_GROUP.getModuleName(), false, condition));
         return hs;
