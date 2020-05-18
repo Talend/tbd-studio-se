@@ -59,25 +59,30 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="guava-20.0"
                        name="guava-20.0.jar" mvn_uri="mvn:com.google.guava/guava/20.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="jackson-annotations-2.10.2"
-                       name="com.fasterxml.jackson.jackson-annotations-2.10.2.jar"
+                       name="jackson-annotations-2.10.2.jar"
                        mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.10.2"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="jackson-core-2.10.2"
-                       name="com.fasterxml.jackson.jackson-core-2.10.2.jar"
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="jackson-core-2.10.2"
+                       name="jackson-core-2.10.2.jar"
                        mvn_uri="mvn:com.fasterxml.jackson.core/jackson-core/2.10.2"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="jackson-databind-2.10.2"
-                       name="com.fasterxml.jackson.jackson-databind-2.10.2.jar"
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="jackson-databind-2.10.2"
+                       name="jackson-databind-2.10.2.jar"
                        mvn_uri="mvn:com.fasterxml.jackson.databind/jackson-databind/2.10.2"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="jackson-dataformat-xml-2.10.2"
-                       name="com.fasterxml.jackson.jackson-dataformat-xml-2.10.2.jar"
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="jackson-dataformat-xml-2.10.2"
+                       name="jackson-dataformat-xml-2.10.2.jar"
                        mvn_uri="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-xml/2.10.2"/>
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="jackson-datatype-jsr310-2.10.2"
-                       name="com.fasterxml.jackson.jackson-datatype-jsr310-2.10.2.jar"
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="jackson-datatype-jsr310-2.10.2"
+                       name="jackson-datatype-jsr310-2.10.2.jar"
                        mvn_uri="mvn:com.fasterxml.jackson.datatype/jackson-datatype-jsr310/2.10.2"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
-                       id="jackson-module-jaxb-annotations-2.10.2" name="jackson-module-jaxb-annotations-2.10.2.jar"
+                       id="jackson-module-jaxb-annotations-2.10.2"
+                       name="jackson-module-jaxb-annotations-2.10.2.jar"
                        mvn_uri="mvn:com.fasterxml.jackson.module/jackson-module-jaxb-annotations/2.10.2"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="reactive-streams-1.0.3"
-                       name="reactive-streams-com.fasterxml.jackson.1.0.3.jar"
+                       name="reactive-streams-1.0.3.jar"
                        mvn_uri="mvn:org.reactivestreams/reactive-streams/1.0.3"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="reactor-netty-0.9.4.RELEASE"
                        name="reactor-netty-0.9.4.RELEASE.jar"
