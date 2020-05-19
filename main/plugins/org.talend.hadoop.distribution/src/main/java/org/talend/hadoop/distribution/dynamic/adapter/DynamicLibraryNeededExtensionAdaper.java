@@ -55,8 +55,6 @@ public class DynamicLibraryNeededExtensionAdaper extends DynamicExtensionAdapter
 
     private boolean enableMultiThread = false;
 
-    private int count = 0;
-
     public DynamicLibraryNeededExtensionAdaper(TemplateBean templateBean, DynamicConfiguration configuration,
             IDependencyResolver dependencyResolver, Map<String, DynamicModuleAdapter> moduleBeanAdapterMap,
             Map<String, DynamicModuleGroupAdapter> moduleGroupBeanAdapterMap) {
@@ -108,9 +106,10 @@ public class DynamicLibraryNeededExtensionAdaper extends DynamicExtensionAdapter
                 Exception ex[] = new Exception[1];
                 Set<String> registedModules = Collections.synchronizedSet(new LinkedHashSet<>());
                 for (ModuleBean moduleBean : modules) {
-                    count = 0;
                     DynamicDistributionUtils.checkCancelOrNot(monitor);
                     Runnable runnable = new Runnable() {
+
+                        int count = 0;
 
                         @Override
                         public void run() {
