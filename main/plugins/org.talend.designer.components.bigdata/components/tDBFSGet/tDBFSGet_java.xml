@@ -88,6 +88,7 @@
                    MVN="mvn:org.talend.libraries/talend-bigdata-launcher-platform-2.0.1/6.0.0"/>
            <IMPORT NAME="gson-2.2.4.jar" MODULE="gson-2.2.4.jar" MVN="mvn:com.google.code.gson/gson/2.2.4"/>
 		</IMPORTS>
+
 	</CODEGENERATION>
 	<RETURNS>
 		<RETURN NAME="NB_FILE" TYPE="id_Integer" AVAILABILITY="AFTER" />

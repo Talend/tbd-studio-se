@@ -30,7 +30,7 @@
       "context": "{properties.context}",
       "groupId": "org.slf4j",
       "artifactId": "jcl-over-slf4j",
-      "version": "1.7.28",
+      "version": "1.7.28","hbase-client"
       "classifier": "",
       "description": ""
     },
