@@ -273,4 +273,9 @@ public class CDH6xDistributionTemplate extends AbstractDynamicCDHDistributionTem
     public boolean doSupportAzureDataLakeStorageGen2() {
     	return true;
     }
+    
+    @Override
+    public String getSuffixParquetPackage() {
+        return "org.apache.";
+    }
 }

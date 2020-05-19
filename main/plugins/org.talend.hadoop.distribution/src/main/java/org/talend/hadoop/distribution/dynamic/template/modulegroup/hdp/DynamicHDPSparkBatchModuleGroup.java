@@ -73,6 +73,10 @@ public class DynamicHDPSparkBatchModuleGroup extends DynamicSparkBatchModuleGrou
                 .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.ATLAS_SPARK_1_MODULE_GROUP.getModuleName());
         String atlasSpark2RuntimeId = pluginAdapter
                 .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.ATLAS_SPARK_2_MODULE_GROUP.getModuleName());
+        String sqoopRuntimeId = pluginAdapter
+                .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.SQOOP_MODULE_GROUP.getModuleName());
+        String sqoopParquetRuntimeId = pluginAdapter
+                .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.SQOOP_PARQUET_MODULE_GROUP.getModuleName());
         String hBaseRuntimeId = pluginAdapter
                 .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.HBASE_MODULE_GROUP.getModuleName());
 
@@ -84,6 +88,8 @@ public class DynamicHDPSparkBatchModuleGroup extends DynamicSparkBatchModuleGrou
         checkRuntimeId(mapReduceRuntimeId);
         checkRuntimeId(atlasSpark1RuntimeId);
         checkRuntimeId(atlasSpark2RuntimeId);
+        checkRuntimeId(sqoopRuntimeId);
+        checkRuntimeId(sqoopParquetRuntimeId);
         checkRuntimeId(hBaseRuntimeId);
 
         ComponentCondition useAtlas = new SimpleComponentCondition(new BasicExpression(MRConstant.USE_ATLAS));
@@ -113,6 +119,14 @@ public class DynamicHDPSparkBatchModuleGroup extends DynamicSparkBatchModuleGrou
         }
         if (StringUtils.isNotBlank(atlasSpark2RuntimeId)) {
             moduleGroups.add(new DistributionModuleGroup(atlasSpark2RuntimeId, true, atlasSpark2x));
+        }
+        if (StringUtils.isNotBlank(sqoopRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(sqoopRuntimeId, false, conditionSpark1));
+            moduleGroups.add(new DistributionModuleGroup(sqoopRuntimeId, false, conditionSpark2));
+        }
+        if (StringUtils.isNotBlank(sqoopParquetRuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(sqoopParquetRuntimeId, false, conditionSpark1));
+            moduleGroups.add(new DistributionModuleGroup(sqoopParquetRuntimeId, false, conditionSpark2));
         }
         if (StringUtils.isNotBlank(hBaseRuntimeId)) {
             moduleGroups.add(new DistributionModuleGroup(hBaseRuntimeId, true, conditionSpark1));
