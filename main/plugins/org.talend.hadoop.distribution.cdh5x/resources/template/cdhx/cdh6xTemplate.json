@@ -412,6 +412,13 @@
 			"description": "",
 			"exclusions": [
 				{
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-exec",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
 					"groupId": "io.netty",
 					"artifactId": "*",
 					"classifier": "",
@@ -574,77 +581,24 @@
 		},
 		{
 			"id": "hive-exec",
-			"type": "BASE",
+			"type": "STANDARD",
 			"context": "{properties.context}",
-			"groupId": "org.apache.hive",
+			"jarName": "hive-exec-shade-2.1.1-cdh6.1.1.jar",
+			"mvnUri": "mvn:org.talend.libraries/hive-exec-shade-2.1.1-cdh6.1.1/6.0.0",
+			"useStudioRepository": "true",
+			"description": ""
+		},
+		{
+			"id": "hive-exec-spark",
+			"type": "BASE",
+			"context": "{properties.context}",			
+			"groupId": "org.spark-project.hive",
 			"artifactId": "hive-exec",
+			"version": "1.2.1",
+			"jarName": "hive-exec-1.2.1.spark2.jar",
 			"classifier": "",
-			"description": "",
-			"exclusions": [
-				{
-					"groupId": "org.apache.curator",
-					"artifactId": "apache-curator",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
-					"groupId": "eigenbase",
-					"artifactId": "eigenbase-properties",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
-					"groupId": "org.pentaho",
-					"artifactId": "pentaho-aggdesigner-algorithm",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
-					"groupId": "xerces",
-					"artifactId": "*",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
-					"groupId": "org.apache.spark",
-					"artifactId": "spark-core_2.11",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
-					"groupId": "jdk.tools",
-					"artifactId": "*",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-                {
-                    "groupId": "org.glassfish",
-                    "artifactId": "javax.el",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                },
-				{
-					"groupId": "org.cloudera.logredactor",
-					"artifactId": "*",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-                {
-                    "groupId": "org.apache.logging.log4j",
-                    "artifactId": "*",
-					"classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-			]
+			"mvnUri": "mvn:org.spark-project.hive/hive-exec/1.2.1.spark2",
+			"description": ""
 		},
 		{
 			"id": "hive-hbase-handler",
@@ -655,6 +609,13 @@
 			"classifier": "",
 			"description": "",
 			"exclusions": [
+				{
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-exec",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
 				{
 					"groupId": "eigenbase",
 					"artifactId": "eigenbase-properties",
@@ -794,6 +755,13 @@
 			"description": "",
 			"exclusions": [
 				{
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-exec",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
 					"groupId": "org.apache.curator",
 					"artifactId": "apache-curator",
 					"classifier": "",
@@ -868,6 +836,13 @@
 			"description": "",
 			"exclusions": [
 				{
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-exec",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
 					"groupId": "org.apache.curator",
 					"artifactId": "apache-curator",
 					"classifier": "",
@@ -934,6 +909,13 @@
 			"classifier": "",
 			"description": "",
 			"exclusions": [
+				{
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-exec",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
 				{
 					"groupId": "org.apache.curator",
 					"artifactId": "apache-curator",
@@ -1433,6 +1415,13 @@
 			"description": "",
 			"exclusions": [
 				{
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-exec",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
 					"groupId": "org.apache.curator",
 					"artifactId": "apache-curator",
 					"classifier": "",
@@ -1826,9 +1815,10 @@
 			"description": "",
 			"modules": [
 				"hadoop-mapreduce-client-core",
-				"hadoop-yarn-server-web-proxy",
-				"spark-hive_2.11",
+				"hadoop-yarn-server-web-proxy",				
 				"hive-exec",
+				"spark-hive_2.11",
+				"hive-exec-spark",
 				"spark-mllib_2.11",
 				"spark-yarn_2.11",
 				"spark-avro_2.11",

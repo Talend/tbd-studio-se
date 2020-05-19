@@ -1171,6 +1171,11 @@
             },
             {
               "childNodes": [],
+              "id": "DYNAMIC_HDP_3_1_4_12_1_hbase_server_2_0_2_3_1_4_12_1_jar",
+              "tagName": "library"
+            },
+            {
+              "childNodes": [],
               "id": "DYNAMIC_HDP_3_1_4_12_1_htrace_core4_4_2_0_incubating_jar",
               "tagName": "library"
             },
