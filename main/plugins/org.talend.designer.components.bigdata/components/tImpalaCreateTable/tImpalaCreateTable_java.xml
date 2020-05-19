@@ -339,61 +339,7 @@
 			<IMPORT NAME="hadoop-conf-kerberos" MODULE="hadoop-conf-kerberos.jar"
 					MVN="mvn:org.talend.libraries/hadoop-conf-kerberos/6.0.0"
 					UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/hadoop-conf-kerberos.jar"
-					REQUIRED_IF="(USE_EXISTING_CONNECTION=='false' AND DISTRIBUTION!='CUSTOM' AND USE_KRB=='true')"/>
-			<IMPORT NAME="commons-logging-1.1.3.jar" MODULE="commons-logging-1.1.3.jar"
-					MVN="mvn:commons-logging/commons-logging/1.1.3"
-					UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-logging-1.1.3.jar"
-					REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM' AND USE_EXISTING_CONNECTION=='false')"
-					BundleID=""/>
-			<IMPORT NAME="hive-common-0.12.0-cdh5.1.2.jar" MODULE="hive-common-0.12.0-cdh5.1.2.jar"
-				MVN="mvn:org.talend.libraries/hive-common-0.12.0-cdh5.1.2/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh5.1/lib/hive-common-0.12.0-cdh5.1.2.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM' AND USE_EXISTING_CONNECTION=='false')" />
-			<IMPORT NAME="hadoop-common-2.3.0-cdh5.1.2.jar" MODULE="hadoop-common-2.3.0-cdh5.1.2.jar"
-				MVN="mvn:org.talend.libraries/hadoop-common-2.3.0-cdh5.1.2/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh5.1/lib/hadoop-common-2.3.0-cdh5.1.2.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM' AND USE_EXISTING_CONNECTION=='false')" />
-			<IMPORT NAME="hive-jdbc-0.12.0-cdh5.1.2.jar" MODULE="hive-jdbc-0.12.0-cdh5.1.2.jar"
-				MVN="mvn:org.talend.libraries/hive-jdbc-0.12.0-cdh5.1.2/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh5.1/lib/hive-jdbc-0.12.0-cdh5.1.2.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM' AND USE_EXISTING_CONNECTION=='false')" />
-			<IMPORT NAME="hive-metastore-0.12.0-cdh5.1.2.jar" MODULE="hive-metastore-0.12.0-cdh5.1.2.jar"
-				MVN="mvn:org.talend.libraries/hive-metastore-0.12.0-cdh5.1.2/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh5.1/lib/hive-metastore-0.12.0-cdh5.1.2.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM' AND USE_EXISTING_CONNECTION=='false')" />
-			<IMPORT NAME="hive-service-0.12.0-cdh5.1.2.jar" MODULE="hive-service-0.12.0-cdh5.1.2.jar"
-				MVN="mvn:org.talend.libraries/hive-service-0.12.0-cdh5.1.2/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh5.1/lib/hive-service-0.12.0-cdh5.1.2.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM' AND USE_EXISTING_CONNECTION=='false')" />
-			<IMPORT NAME="httpcore-4.1.3.jar" MODULE="httpcore-4.1.3.jar"
-				MVN="mvn:org.talend.libraries/httpcore-4.1.3/6.0.0"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM' AND USE_EXISTING_CONNECTION=='false')" />
-			<IMPORT NAME="httpclient-4.2.5.jar" MODULE="httpclient-4.2.5.jar"
-				MVN="mvn:org.talend.libraries/httpclient-4.2.5/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.apache.http/lib/httpclient-4.2.5.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM' AND USE_EXISTING_CONNECTION=='false')" />
-			<IMPORT NAME="libfb303-0.9.0.jar" MODULE="libfb303-0.9.0.jar"
-				MVN="mvn:org.talend.libraries/libfb303-0.9.0/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.hadoop.hdp.1.2/lib/libfb303-0.9.0.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM' AND USE_EXISTING_CONNECTION=='false')" />
-			<IMPORT NAME="libthrift-0.9.0.cloudera.2.jar" MODULE="libthrift-0.9.0.cloudera.2.jar"
-				MVN="mvn:org.talend.libraries/libthrift-0.9.0.cloudera.2/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.hadoop.cloudera.cdh5/lib/libthrift-0.9.0.cloudera.2.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM' AND USE_EXISTING_CONNECTION=='false')" />
-			<IMPORT NAME="slf4j-api-1.7.5.jar" MODULE="slf4j-api-1.7.5.jar"
-				MVN="mvn:org.talend.libraries/slf4j-api-1.7.5/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-api-1.7.5.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM' AND USE_EXISTING_CONNECTION=='false')"
-				BundleID="" />
-			<IMPORT NAME="slf4j-log4j12-1.7.5.jar" MODULE="slf4j-log4j12-1.7.5.jar"
-				MVN="mvn:org.talend.libraries/slf4j-log4j12-1.7.5/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.slf4j/lib/slf4j-log4j12-1.7.5.jar"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_1' AND DISTRIBUTION!='CUSTOM' AND USE_EXISTING_CONNECTION=='false')"
-				BundleID="" />
-
-			<!-- Cloudera_CDH5_4 -->
-			<IMPORT MODULE_GROUP="IMPALA-LIB-CDH_5_4_LASTEST"
-				REQUIRED_IF="(IMPALA_VERSION=='Cloudera_CDH5_4' AND DISTRIBUTION!='CUSTOM' AND USE_EXISTING_CONNECTION=='false')" />
+					REQUIRED_IF="(USE_EXISTING_CONNECTION=='false' AND DISTRIBUTION!='CUSTOM' AND USE_KRB=='true')"/>			
 		</IMPORTS>
 	</CODEGENERATION>
 
