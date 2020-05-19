@@ -836,6 +836,16 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
                             .getHBaseOrMaprDBScanLimit();
                 }
                 List<String> existingColumns = new ArrayList<String>();
+                List<MetadataTable> tables = ConnectionHelper.getTablesWithOrders(dbconn);
+                for(MetadataTable t : tables){
+                	if(t.getName().equals(metadataTable.getName())) {
+                		List<MetadataColumn> existColumns = t.getColumns();
+                		for(MetadataColumn c : existColumns) {
+                			existingColumns.add(c.getName());
+                		}
+                		break;
+                	}
+                }
                 Object scanner = getResultScanner(table, scan);
                 Object result = nextItem(scanner);
                 while (result != null) {
