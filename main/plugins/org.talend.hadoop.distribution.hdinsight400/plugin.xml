@@ -8,11 +8,16 @@
                        name="commons-codec-1.14.jar" mvn_uri="mvn:commons-codec/commons-codec/1.14"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="commons-lang-2.6"
                        name="commons-lang-2.6.jar" mvn_uri="mvn:commons-lang/commons-lang/2.6"/>
-
+        <!-- needed by avro related code and routines -->
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                id="jackson-core-asl-1.9.14-TALEND"
+                name="jackson-core-asl-1.9.14-TALEND.jar"
+                mvn_uri="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"/>
 
         <!-- Hive libraries -->
         <libraryNeeded
-                context="plugin:org.talend.hadoop.distribution.hdinsight340"
+                context="plugin:org.talend.hadoop.distribution.hdinsight400"
                 id="parquet-hive-bundle-1.6.0.jar"
                 name="parquet-hive-bundle-1.6.0.jar"
                 mvn_uri="mvn:org.talend.libraries/parquet-hive-bundle-1.6.0">
@@ -472,6 +477,8 @@
             <!-- specific to Talend generated code -->
             <library id="commons-lang-2.6"/>
             <library id="commons-codec-1.14"/>
+            <!-- needed by avro structures generated in jobs -->
+            <library id="jackson-core-asl-1.9.14-TALEND"/>
         </libraryNeededGroup>
 
     </extension>
