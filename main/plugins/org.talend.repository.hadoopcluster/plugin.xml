@@ -267,7 +267,7 @@
     <extension
           point="org.talend.core.runtime.service">
        <Service
-             class="org.talend.repository.hadoopcluster.ui.context.handler.HadoopClusterContextUpdateService"
+             class="org.talend.repository.hadoopcluster.service.HadoopClusterContextUpdateService"
              serviceId="IRepositoryContextUpdateService">
        </Service>
     </extension>

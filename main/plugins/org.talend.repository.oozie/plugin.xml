@@ -82,7 +82,7 @@
    <extension
          point="org.talend.core.runtime.service">
       <Service
-            class="org.talend.core.IRepositoryContextUpdateService.OozieContextUpdateService"
+            class="org.talend.repository.oozie.service.OozieContextUpdateService"
             serviceId="IRepositoryContextUpdateService">
       </Service>
    </extension>
