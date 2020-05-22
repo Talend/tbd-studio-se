@@ -20,5 +20,6 @@ package org.talend.hadoop.distribution.kudu;
 public enum KuduVersion {
     UNSUPPORTED,
     KUDU_1_7,
-    KUDU_1_8
+    KUDU_1_8,
+    KUDU_1_12
 }

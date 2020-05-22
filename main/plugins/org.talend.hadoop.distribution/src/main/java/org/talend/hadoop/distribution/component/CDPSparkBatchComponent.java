@@ -12,17 +12,10 @@
 // ============================================================================
 package org.talend.hadoop.distribution.component;
 
-import org.talend.hadoop.distribution.kudu.KuduVersion;
-
 /**
  * Interface that exposes specific CDP Spark Batch methods.
  *
  */
-public interface CDPSparkBatchComponent extends SparkBatchComponent {
-    /**
-     * This method defines which version of the kudu_spark connector the distribution does support.
-     *
-     * @return the version of the spark-streaming-kafka connector.
-     */
-    public KuduVersion getKuduVersion();
+public interface CDPSparkBatchComponent extends CDHSparkBatchComponent {
+
 }

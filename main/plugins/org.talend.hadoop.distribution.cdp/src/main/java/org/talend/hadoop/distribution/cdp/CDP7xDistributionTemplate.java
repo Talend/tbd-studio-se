@@ -254,6 +254,6 @@ public class CDP7xDistributionTemplate extends AbstractDynamicCDPDistributionTem
     }
     @Override
     public KuduVersion getKuduVersion() {
-        return KuduVersion.KUDU_1_8;
+        return KuduVersion.KUDU_1_12;
     }
 }
