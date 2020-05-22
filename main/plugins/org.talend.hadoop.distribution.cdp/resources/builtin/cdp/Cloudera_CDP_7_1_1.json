@@ -661,7 +661,7 @@
                             {"id" : "zookeeper_jute_3_5_5_7_0_3_0_79_jar", "tagName" : "library" },
                             {"id" : "zstd_jni_1_3_2_2_jar", "tagName" : "library" },
                             {"id" : "audience_annotations_0_7_0_jar", "tagName" : "library"},
-                            {"id" : "kudu_spark2_2_11_1_11_0_7_0_3_0_79_jar", "tagName" : "library" }
+                            {"id" : "kudu_spark2_2_11_1_12_0_jar", "tagName" : "library" }
                         ],
                     "description": "",
                     "id" : "SPARK_LIB_SPARK2",
@@ -703,7 +703,7 @@
                 {
                     "childNodes": [
                         {"id" : "audience_annotations_0_7_0_jar", "tagName" : "library"},
-                        {"id" : "kudu_spark2_2_11_1_11_0_7_0_3_0_79_jar", "tagName" : "library" }
+                        {"id" : "kudu_spark2_2_11_1_12_0_jar", "tagName" : "library" }
                     ],
                     "description": "",
                     "id" : "SPARK2_KUDU_LIB_MRREQUIRED",
@@ -4041,9 +4041,9 @@
                     "childNodes": [],
                     "context": "plugin:org.talend.hadoop.distribution.cdp",
                     "excludeDependencies": "true",
-                    "id" : "kudu_spark2_2_11_1_11_0_7_0_3_0_79_jar",
-                    "mvn_uri": "mvn:org.apache.kudu/kudu-spark2_2.11/1.11.0.7.0.3.0-79",
-                    "name": "kudu-spark2_2.11-1.11.0.7.0.3.0-79.jar",
+                    "id" : "kudu_spark2_2_11_1_12_0_jar",
+                    "mvn_uri": "mvn:org.apache.kudu/kudu-spark2_2.11/1.12.0",
+                    "name": "kudu-spark2_2.11-1.12.0.jar",
                     "tagName" : "libraryNeeded"
                 },
                 {
