@@ -364,14 +364,23 @@
 							System.out.println(line);
 						<%
 					    }
-						%>				
+						%>
+						int tab = line.indexOf("\t");
 						int im=line.indexOf("imported");
 						int obj=line.indexOf("object");
 						int doc=line.indexOf("document");
 						if(im > 0 && obj > 0){
-							line = line.substring(im+8, obj).trim();
+							try{
+								line = line.substring(im+8, obj).trim();
+							} catch (java.lang.StringIndexOutOfBoundsException ex) {
+								line = line.substring(tab, obj).trim();
+							}
 						} else if(im > 0 && doc > 0){
-							line = line.substring(im+8, doc).trim();
+							try {
+								line = line.substring(im+8, doc).trim();
+							} catch (java.lang.StringIndexOutOfBoundsException ex) {
+								line = line.substring(tab, doc).trim();
+							}
 						}
 						if(line.matches("^[\\d]+$")){
 							globalMap.put("<%=cid %>_NB_LINE", Integer.parseInt(line));
