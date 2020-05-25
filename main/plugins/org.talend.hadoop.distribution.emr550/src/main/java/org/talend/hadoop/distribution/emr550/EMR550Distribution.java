@@ -457,4 +457,9 @@ public class EMR550Distribution extends AbstractDistribution implements HBaseCom
 	public boolean doSupportNewHBaseAPI() {
 		return true;
 	}
+
+    @Override
+    public boolean doSupportEMRFS() {
+        return false;
+    }
 }

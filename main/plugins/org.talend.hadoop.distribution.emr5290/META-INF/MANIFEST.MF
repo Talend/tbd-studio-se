@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Amazon EMR 5.29.0 distribution
+Bundle-SymbolicName: org.talend.hadoop.distribution.emr5290;singleton:=true
+Bundle-Version: 7.4.1.qualifier
+Bundle-Vendor: .Talend SA.
+Service-Component: OSGI-INF/emr5290.xml
+Require-Bundle: org.talend.core.runtime,
+ org.talend.hadoop.distribution
+Bundle-ActivationPolicy: lazy
