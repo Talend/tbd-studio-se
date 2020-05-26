@@ -466,4 +466,9 @@ public class EMR580Distribution extends AbstractDistribution implements
     public boolean useOldAWSAPI() {
         return false;
     }
+
+    @Override
+    public boolean doSupportEMRFS() {
+        return false;
+    }
 }

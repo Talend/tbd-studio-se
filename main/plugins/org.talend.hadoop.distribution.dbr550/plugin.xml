@@ -4,7 +4,6 @@
    <extension
          point="org.talend.core.runtime.librariesNeeded">
 
-
 		<libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dbr550"
             id="azure-data-lake-store-sdk-2.3.1.jar"
@@ -19,9 +18,15 @@
         </libraryNeeded>        
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dbr550"
-            id="talend-bigdata-launcher-platform-2.0.4.jar"
-            name="talend-bigdata-launcher-platform-2.0.4.jar"
-            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-platform-2.0.4/6.0.0">
+            id="talend-bigdata-launcher"
+            name="talend-bigdata-launcher-core-2.0.6.jar"
+            mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.0.6">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dbr550"
+            id="talend-bigdata-launcher-databricks"
+            name="talend-bigdata-launcher-databricks-2.0.6.jar"
+            mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-databricks/2.0.6">
         </libraryNeeded>
 		<libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dbr550"
@@ -256,7 +261,8 @@
                 description="Big Data launcher libraries for DBR550"
                 id="BIGDATA-LAUNCHER-LIB-DBR550"
                 name="BIGDATA-LAUNCHER-LIB-DBR550"  >
-			<library id="talend-bigdata-launcher-platform-2.0.4.jar" />
+			<library id="talend-bigdata-launcher" />
+			<library id="talend-bigdata-launcher-databricks" />
 			<library id="gson-2.2.4.jar" />
 			<library id="jackson-core-2.6.7.jar" />
 			<library id="jackson-databind-2.6.7.1.jar" />
