@@ -1293,6 +1293,15 @@
     ],
     "moduleGroups": [
         {
+            "id": "HBASE-LIB-DYNAMIC",
+            "description": "",
+            "modules": [
+                "hadoop-client",
+                "hbase-client",
+                "hbase-server"
+            ]
+        },
+        {
             "id": "HDFS-COMMON-LIB-DYNAMIC",
             "modules": [
                 "hadoop-client",
@@ -1314,31 +1323,89 @@
             ]
         },
         {
-            "id": "HDFS-SPARK2_1-LIB-DYNAMIC",
+            "id": "HIVE-LIB-DYNAMIC",
+            "description": "",
+            "modules": [ 
+                "hive-exec",
+                "hive-jdbc"
+            ]
+        },
+        {
+            "id": "SPARK-LIB-SPARK2-DYNAMIC",
             "description": "",
             "modules": [
+                "hbase-client",
+                "hbase-server",
+                "hadoop-client",
+                "hadoop-mapreduce-client-core",
+                "hadoop-yarn-server-web-proxy",
+                "spark-hive_2.11",
+                "hive-exec",
+                "hive-jdbc",
+                "spark-mllib_2.11",
+                "spark-yarn_2.11",
+                "spark-avro_2.11",
+                "parquet-hadoop-bundle",
+                "azure-common-1.7.1",
+                "kudu-spark2_2.11",
+                "azure-common-1.7.1"            
+            ]
+        },
+        {
+            "id": "SPARK-AZURE-LIB-MRREQUIRED-DYNAMIC",
+            "description": "",
+            "modules": [
+                "azure-common-1.7.1",
+                "hadoop-azure",
+                "hadoop-azure-datalake",
+                "hadoop-yarn-server-web-proxy"
+            ]
+        },
+        {
+            "id": "SPARK2-KAFKA-ASSEMBLY-LIB-MRREQUIRED-DYNAMIC",
+            "description": "",
+            "modules": [
+            ]
+        },
+        {
+            "id": "SPARK2-KAFKA-CLIENT-LIB-MRREQUIRED-DYNAMIC",
+            "description": "",
+            "modules": [
+            ]
+        },
+        {
+            "id": "SPARK2-KUDU-LIB-MRREQUIRED-DYNAMIC",
+            "description": "",
+            "modules": [
+                "kudu-spark2_2.11"
             ]
         },
         {
             "id": "IMPALA-LIB-DYNAMIC",
             "description": "",
             "modules": [
+                "hadoop-client",
+                "hive-jdbc",
+                "hive-exec"
             ]
         },
         {
-            "id": "HIVE-LIB-DYNAMIC",
+            "id": "TALEND_CLOUDERA_NAVIGATOR-DYNAMIC",
+            "description": "",
+            "modules": [
+                "hadoop-client",
+                "cloudera-navigator",
+                "talend-lineage-api"
+            ]
+        },
+        {
+            "id": "HDFS-SPARK2_1-LIB-DYNAMIC",
             "description": "",
             "modules": [
             ]
         },
         {
             "id": "HIVE-HBASE-LIB-DYNAMIC",
-            "description": "",
-            "modules": [
-            ]
-        },
-        {
-            "id": "HBASE-LIB-DYNAMIC",
             "description": "",
             "modules": [
             ]
@@ -1351,12 +1418,6 @@
         },
         {
             "id": "SPARK-PARQUET-LIB-MRREQUIRED-DYNAMIC",
-            "description": "",
-            "modules": [
-            ]
-        },
-        {
-            "id": "SPARK-LIB-SPARK2-DYNAMIC",
             "description": "",
             "modules": [
             ]
@@ -1392,15 +1453,6 @@
             ]
         },
         {
-            "id": "TALEND_CLOUDERA_NAVIGATOR-DYNAMIC",
-            "description": "",
-            "modules": [
-                "hadoop-client",
-                "cloudera-navigator",
-                "talend-lineage-api"
-            ]
-        },
-        {
             "id": "SQOOP-LIB-DYNAMIC",
             "description": "",
             "modules": [
@@ -1413,12 +1465,6 @@
             ]
         },
         {
-            "id": "SPARK-AZURE-LIB-MRREQUIRED-DYNAMIC",
-            "description": "",
-            "modules": [
-            ]
-        },
-        {
             "id": "SPARK-S3-LIB-MRREQUIRED-DYNAMIC",
             "description": "",
             "modules": [
@@ -1426,24 +1472,6 @@
         },
         {
             "id": "SPARK2-KINESIS-LIB-MRREQUIRED-DYNAMIC",
-            "description": "",
-            "modules": [
-            ]
-        },
-        {
-            "id": "SPARK2-KAFKA-ASSEMBLY-LIB-MRREQUIRED-DYNAMIC",
-            "description": "",
-            "modules": [
-            ]
-        },
-        {
-            "id": "SPARK2-KAFKA-CLIENT-LIB-MRREQUIRED-DYNAMIC",
-            "description": "",
-            "modules": [
-            ]
-        },
-        {
-            "id": "SPARK2-KUDU-LIB-MRREQUIRED-DYNAMIC",
             "description": "",
             "modules": [
             ]
