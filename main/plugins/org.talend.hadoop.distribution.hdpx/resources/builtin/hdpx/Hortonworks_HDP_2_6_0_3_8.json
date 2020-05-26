@@ -851,6 +851,16 @@
     }, {
       "childNodes" : [ {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_jackson_core_2_6_6_jar",
+        "tagName" : "library"
+      } ],
+      "description" : "Hdfs libraries for every execution engine except Spark 1.6",
+      "id" : "DYNAMIC_HDP_2_6_0_3_8_HDFS_NOT_SPARK_1_6_LIB_DYNAMIC",
+      "tagName" : "libraryNeededGroup",
+      "templateId" : "HDFS-NOT-SPARK-1-6-LIB-DYNAMIC"
+    }, {
+      "childNodes" : [ {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_HDP_2_6_0_3_8_HikariCP_2_5_1_jar",
         "tagName" : "library"
       }, {
@@ -6415,7 +6425,19 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_jackson_databind_2_6_6_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_jackson_jaxrs_1_9_13_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_HDP_2_6_0_3_8_jackson_mapper_asl_1_9_13_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_HDP_2_6_0_3_8_jackson_module_scala_2_10_2_4_4_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -6730,10 +6752,6 @@
       }, {
         "childNodes" : [ ],
         "id" : "DYNAMIC_HDP_2_6_0_3_8_jackson_annotations_2_6_5_jar",
-        "tagName" : "library"
-      }, {
-        "childNodes" : [ ],
-        "id" : "DYNAMIC_HDP_2_6_0_3_8_jackson_core_2_6_6_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -7128,10 +7146,6 @@
       }, {
         "childNodes" : [ ],
         "id" : "DYNAMIC_HDP_2_6_0_3_8_jackson_annotations_2_6_5_jar",
-        "tagName" : "library"
-      }, {
-        "childNodes" : [ ],
-        "id" : "DYNAMIC_HDP_2_6_0_3_8_jackson_core_2_6_6_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
