@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Amazon EMR 5.29.0 Distribution Test
+Bundle-SymbolicName: org.talend.hadoop.distribution.emr5290.test
+Bundle-Version: 7.4.1.qualifier
+Bundle-Vendor: .Talend SA.
+Fragment-Host: org.talend.hadoop.distribution.emr5290
+Require-Bundle: org.talend.hadoop.distribution.test.base
+Import-Package: org.junit;version="4.12.0",
+ org.talend.hadoop.distribution
+

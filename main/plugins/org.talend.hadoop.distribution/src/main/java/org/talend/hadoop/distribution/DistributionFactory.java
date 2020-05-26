@@ -14,9 +14,8 @@
 
 package org.talend.hadoop.distribution;
 
-import org.talend.core.hadoop.version.EHadoopDistributions;
-import org.talend.core.hadoop.version.EHadoopVersion4Drivers;
 import org.talend.hadoop.distribution.component.HadoopComponent;
+import org.talend.hadoop.distribution.constants.emr.IAmazonEMRDistribution;
 import org.talend.hadoop.distribution.helper.DistributionHelper;
 import org.talend.hadoop.distribution.helper.HadoopDistributionsHelper;
 
@@ -42,7 +41,7 @@ public class DistributionFactory {
     }
 
     /**
-     * Execute a methode for a given distribution and version. This function must return a booelan
+     * Executes a method for a given distribution and version. This function must return a boolean
      *
      * @param methodName the name of the method
      * @param distribution the name of the distribution
@@ -56,4 +55,17 @@ public class DistributionFactory {
         return DistributionHelper.doSupportMethod(hadoopComponent, methodName);
     }
 
+    /**
+    *
+    * Builds a {@link IAmazonEMRDistribution} distribution.
+    *
+    * @param distribution The name of the distribution
+    * @param version The version of the distribution
+    * @return an implementation of {@link IAmazonEMRDistribution}.
+    * @throws Exception
+    */
+    
+    public static IAmazonEMRDistribution buildEMRDistribution(String version) throws Exception{
+        return HadoopDistributionsHelper.buildEMRDistribution(version);
+    }
 }

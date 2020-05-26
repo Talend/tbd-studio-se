@@ -18,4 +18,8 @@ public interface IAmazonEMRDistribution {
     static final String DISTRIBUTION_NAME = "AMAZON_EMR";
 
     static final String DISTRIBUTION_DISPLAY_NAME = "Amazon EMR";
+
+    public boolean doSupportEMRFS();
+    
+    public String getVersion();
 }

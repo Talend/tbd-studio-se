@@ -35,6 +35,7 @@ import org.talend.hadoop.distribution.component.MapRDBComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.constants.Constant;
+import org.talend.hadoop.distribution.constants.emr.IAmazonEMRDistribution;
 
 /**
  * DOC ggu class global comment. Detailled comment
@@ -42,6 +43,8 @@ import org.talend.hadoop.distribution.constants.Constant;
 public class HadoopDistributionsHelper {
 
     private static Collection<ServiceReference<HadoopComponent>> hadoopDistributions;
+    
+    private static Collection<ServiceReference<IAmazonEMRDistribution>> emrDistributions;
 
     /**
      * for Hadoop Distributions.
@@ -144,10 +147,40 @@ public class HadoopDistributionsHelper {
                 }
             }
         };
+        
+        ServiceListener emrServiceListener = new ServiceListener() {
+
+            @Override
+            public void serviceChanged(ServiceEvent event) {
+                if (event.getType() == ServiceEvent.REGISTERED) {
+                    ServiceReference<? extends Object> sr = event.getServiceReference();
+                    if (sr != null) {
+                        BundleContext bc = getBundleContext();
+                        Object obj = bc.getService(sr);
+                        if (obj instanceof IAmazonEMRDistribution) {
+                            emrDistributions = null;
+                        }
+                    }
+                } else if (event.getType() == ServiceEvent.UNREGISTERING) {
+                    ServiceReference<? extends Object> sr = event.getServiceReference();
+                    if (sr != null) {
+                        BundleContext bc = getBundleContext();
+                        Object obj = bc.getService(sr);
+                        if (obj instanceof IAmazonEMRDistribution) {
+                            emrDistributions = null;
+                        }
+                    }
+                }
+            }
+        };
+        
         try {
             getBundleContext().addServiceListener(serviceListener, "(" //$NON-NLS-1$
                     + Constants.OBJECTCLASS + "=" //$NON-NLS-1$
                     + HadoopComponent.class.getName() + ")"); //$NON-NLS-1$
+            getBundleContext().addServiceListener(emrServiceListener, "(" //$NON-NLS-1$
+                    + Constants.OBJECTCLASS + "=" //$NON-NLS-1$
+                    + IAmazonEMRDistribution.class.getName() + ")"); //$NON-NLS-1$
         } catch (InvalidSyntaxException e) {
             ExceptionHandler.process(e);
         }
@@ -200,5 +233,38 @@ public class HadoopDistributionsHelper {
 
     public static String getCacheVersion() {
         return cacheVersion;
+    }
+
+    /**
+     * Builds a {@link IAmazonEMRDistribution} distribution.
+     * 
+     * @param version ELR version to look after
+     * @return an implementation of {@link IAmazonEMRDistribution}
+     * @throws Exception
+     */
+    public static IAmazonEMRDistribution buildEMRDistribution(String version) throws Exception {
+        final BundleContext bc = FrameworkUtil.getBundle(DistributionFactory.class).getBundleContext();
+
+        // find EMR distributions
+        if (emrDistributions == null) {
+            synchronized (HadoopDistributionsHelper.class) {
+                if (emrDistributions == null) {
+                    try {
+                        emrDistributions = bc.getServiceReferences(IAmazonEMRDistribution.class, null);
+                    } catch (InvalidSyntaxException e) {
+                        CommonExceptionHandler.process(e);
+                    }
+                }
+            }
+        }
+
+        for (ServiceReference<IAmazonEMRDistribution> sr : emrDistributions) {
+            IAmazonEMRDistribution np = bc.getService(sr);
+                String thatVersion = np.getVersion();
+                if (thatVersion != null && thatVersion.equals(version)) {
+                    return np;
+                }
+        }
+        throw new Exception("The distribution " + IAmazonEMRDistribution.DISTRIBUTION_NAME + " with the version " + version + " doesn't exist."); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 }
