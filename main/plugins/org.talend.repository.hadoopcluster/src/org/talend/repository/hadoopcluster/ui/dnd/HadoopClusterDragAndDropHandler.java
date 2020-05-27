@@ -143,6 +143,11 @@ public class HadoopClusterDragAndDropHandler extends AbstractDragAndDropServiceH
         } else if (EParameterNameForComponent.PARA_NAME_HDINSIGHT_PASSWORD.getName().equals(value)) {
             return getRepositoryValueOfStringType(hcConnection,
                     hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_PASSWORD));
+        } else if (EParameterNameForComponent.PARA_NAME_HDINSIGHT_STORAGE.getName().equals(value)) {
+            return hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HDINSIGHT_STORAGE);
+        } else if (EParameterNameForComponent.PARA_NAME_HDINSIGHT_STORAGE_USE_TLS.getName().equals(value)) {
+            return Boolean
+                    .valueOf(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HDINSIGHT_STORAGE_USE_TLS));
         } else if (EParameterNameForComponent.PARA_NAME_WASB_HOST.getName().equals(value)) {
             return getRepositoryValueOfStringType(hcConnection,
                     hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HOSTNAME));
@@ -280,7 +285,7 @@ public class HadoopClusterDragAndDropHandler extends AbstractDragAndDropServiceH
         if (!(item instanceof HadoopClusterConnectionItem)) {
             return neededComponents;
         }
-        IComponentsService service = (IComponentsService) GlobalServiceRegister.getDefault().getService(IComponentsService.class);
+        IComponentsService service = GlobalServiceRegister.getDefault().getService(IComponentsService.class);
         Collection<IComponent> components = service.getComponentsFactory().readComponents();
         for (IComponent component : components) {
             if (isValid(item, type, seletetedNode, component, HadoopClusterRepositoryNodeType.HADOOPCLUSTER.name())
