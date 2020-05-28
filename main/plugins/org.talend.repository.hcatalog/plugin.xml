@@ -109,7 +109,7 @@
    <extension
          point="org.talend.core.runtime.service">
       <Service
-            class="org.talend.repository.hcatalog.ui.handler.HCatalogContextUpdateService"
+            class="org.talend.repository.hcatalog.service.HCatalogContextUpdateService"
             serviceId="IRepositoryContextUpdateService">
       </Service>
       <Service
