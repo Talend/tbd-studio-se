@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<component name="HDInsight40Distribution">
+  <implementation class="org.talend.hadoop.distribution.hdinsight400.HDInsight40Distribution"/>
+  <service>
+    <provide interface="org.talend.hadoop.distribution.component.HadoopComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.SparkBatchComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.HiveOnSparkComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.SparkStreamingComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.HiveComponent"/>
+  </service>
+</component>
