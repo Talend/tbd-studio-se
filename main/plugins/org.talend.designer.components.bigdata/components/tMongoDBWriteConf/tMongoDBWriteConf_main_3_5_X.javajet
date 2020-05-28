@@ -7,6 +7,8 @@
         org.talend.core.model.metadata.IMetadataColumn
         java.util.List
         java.util.Map
+        java.util.Set
+        java.util.HashSet
 	    org.talend.core.model.metadata.types.JavaTypesManager
 	    org.talend.core.model.metadata.types.JavaType
 "
@@ -23,10 +25,10 @@
     String bulkWriteOperationSize = ElementParameterParser.getValue(node, "__BULK_WRITE_SIZE__");
     boolean bulkWriteType = "Ordered".equalsIgnoreCase(ElementParameterParser.getValue(node, "__BULK_WRITE_TYPE__"));
     boolean removeRoot = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REMOVE_ROOT__"));
-    List<Map<String, String>> rootTable = 
-        (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__ROOT__");
-    List<Map<String, String>> loopTable = 
-        (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__LOOP__");
+    Set<Map<String, String>> rootTable = new HashSet(
+        (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__ROOT__"));
+    Set<Map<String, String>> loopTable = new HashSet(
+        (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__LOOP__"));
     List<Map<String, String>> groupTable = 
             (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__GROUP__");
 

@@ -7,6 +7,8 @@
         org.talend.core.model.metadata.IMetadataColumn
         java.util.List
         java.util.Map
+        java.util.Set
+        java.util.HashSet
 	    org.talend.core.model.metadata.types.JavaTypesManager
 	    org.talend.core.model.metadata.types.JavaType
 		org.talend.core.model.utils.NodeUtil
