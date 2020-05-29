@@ -12,7 +12,8 @@
 // ============================================================================
 package org.talend.hadoop.distribution.emr5150.test.modulegroup;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,6 +33,9 @@ public class EMR5150SqoopModuleGroupTest {
         results.put(EMR5150Constant.MAPREDUCE_MODULE_GROUP.getModuleName(), null);
         results.put(EMR5150Constant.HDFS_MODULE_GROUP.getModuleName(), null);
         results.put(EMR5150Constant.SQOOP_PARQUET_MODULE_GROUP.getModuleName(), null);
+        results.put(EMR5150Constant.SQOOP_TEXT_MODULE_GROUP.getModuleName(), null);
+        results.put(EMR5150Constant.SQOOP_SEQUENCE_MODULE_GROUP.getModuleName(), null);
+        results.put(EMR5150Constant.SQOOP_AVRO_MODULE_GROUP.getModuleName(), null);
 
         Set<DistributionModuleGroup> moduleGroups = EMR5150SqoopModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());

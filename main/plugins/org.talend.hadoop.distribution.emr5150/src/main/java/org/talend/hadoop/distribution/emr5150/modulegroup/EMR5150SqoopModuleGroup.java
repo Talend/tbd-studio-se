@@ -35,6 +35,21 @@ public class EMR5150SqoopModuleGroup {
                         SqoopConstant.PAQUET_OUTPUT_FORMAT));
         hs.add(new DistributionModuleGroup(EMR5150Constant.SQOOP_PARQUET_MODULE_GROUP.getModuleName(), true,
                 parquetOutputCondition));
+        ComponentCondition textOutputCondition =
+                new SimpleComponentCondition(new BasicExpression(SqoopConstant.FILE_FORMAT, EqualityOperator.EQ,
+                        SqoopConstant.TEXT_OUTPUT_FORMAT));
+        hs.add(new DistributionModuleGroup(EMR5150Constant.SQOOP_TEXT_MODULE_GROUP.getModuleName(), true,
+                textOutputCondition));
+        ComponentCondition sequenceOutputCondition =
+                new SimpleComponentCondition(new BasicExpression(SqoopConstant.FILE_FORMAT, EqualityOperator.EQ,
+                        SqoopConstant.SEQUENCE_OUTPUT_FORMAT));
+        hs.add(new DistributionModuleGroup(EMR5150Constant.SQOOP_SEQUENCE_MODULE_GROUP.getModuleName(), true,
+                sequenceOutputCondition));
+        ComponentCondition avroOutputCondition = 
+                new SimpleComponentCondition(new BasicExpression(SqoopConstant.FILE_FORMAT, EqualityOperator.EQ, 
+                        SqoopConstant.AVRO_OUTPUT_FORMAT));
+        hs.add(new DistributionModuleGroup(EMR5150Constant.SQOOP_AVRO_MODULE_GROUP.getModuleName(), true,
+                avroOutputCondition));
         return hs;
     }
 
