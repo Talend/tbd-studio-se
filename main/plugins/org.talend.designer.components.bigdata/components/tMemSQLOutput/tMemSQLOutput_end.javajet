@@ -4,6 +4,7 @@ imports="
 	org.talend.core.model.process.INode
 	org.talend.core.model.process.ElementParameterParser
     org.talend.core.model.process.IConnection
+    org.talend.core.model.process.IProcess
     java.util.List
 "
 %>
@@ -12,11 +13,14 @@ imports="
 	CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
 	INode node = (INode)codeGenArgument.getArgument();
           dbLog = new DBLogUtil(node);
+	IProcess process = node.getProcess();
 	String cid = node.getUniqueName();
 
 	String dataAction = ElementParameterParser.getValue(node,"__DATA_ACTION__");
 
-	boolean useExistingConn = "true".equals(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"));
+	boolean setAutoCommit = false;
+
+	boolean useExistingConnection = "true".equals(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"));
 
     boolean useBatchSize = "true".equals(ElementParameterParser.getValue(node,"__USE_BATCH_SIZE__"));
 
@@ -28,6 +32,17 @@ imports="
     if(rejectConns != null && rejectConns.size() > 0) {
         IConnection rejectConn = rejectConns.get(0);
         rejectConnName = rejectConn.getName();
+    }
+
+    String connection = ElementParameterParser.getValue(node,"__CONNECTION__");
+    if(useExistingConnection) {
+        List<? extends INode> nodes = process.getNodesOfType("tMemSQLConnection");
+        for (INode ne:nodes) {
+            if (connection.equals(ne.getUniqueName())) {
+                setAutoCommit = "true".equals(ElementParameterParser.getValue(ne, "__AUTO_COMMIT__"));
+                break;
+            }
+        }
     }
 
     if(("INSERT_OR_UPDATE").equals(dataAction)) {
@@ -135,7 +150,7 @@ imports="
     %>
     resourceMap.put("statementClosed_<%=cid%>", true);
     <%
-    if(!useExistingConn) {
+    if(!useExistingConnection) {
         %>
         if(conn_<%=cid%> != null && !conn_<%=cid%>.isClosed()) {
                 <%dbLog.conn().closeTry(null);%>

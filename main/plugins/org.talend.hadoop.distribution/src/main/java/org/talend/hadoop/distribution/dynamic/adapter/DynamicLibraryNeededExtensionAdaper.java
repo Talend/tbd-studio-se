@@ -12,6 +12,7 @@
 // ============================================================================
 package org.talend.hadoop.distribution.dynamic.adapter;
 
+import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -108,6 +109,8 @@ public class DynamicLibraryNeededExtensionAdaper extends DynamicExtensionAdapter
                     DynamicDistributionUtils.checkCancelOrNot(monitor);
                     Runnable runnable = new Runnable() {
 
+                        int count = 0;
+
                         @Override
                         public void run() {
                             try {
@@ -121,7 +124,16 @@ public class DynamicLibraryNeededExtensionAdaper extends DynamicExtensionAdapter
                                 String beanId = moduleBean.getId();
                                 moduleBeanAdapterMap.put(beanId, dynamicModuleAdapter);
                             } catch (Exception e) {
-                                ex[0] = e;
+                                if (e instanceof FileNotFoundException) {
+                                    if (count < 5) {
+                                        count++;
+                                        run();
+                                    } else {
+                                        ex[0] = e;
+                                    }
+                                } else {
+                                    ex[0] = e;
+                                }
                             }
                         }
                     };

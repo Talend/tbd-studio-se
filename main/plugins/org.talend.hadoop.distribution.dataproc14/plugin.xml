@@ -7,8 +7,14 @@
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="talend-bigdata-launcher"
-            name="talend-bigdata-launcher-platform-2.0.1.jar"
-            mvn_uri="mvn:org.talend.libraries/talend-bigdata-launcher-platform-2.0.1/6.0.0">
+            name="talend-bigdata-launcher-core-2.0.6.jar"
+            mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.0.6">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="talend-bigdata-launcher-dataproc"
+            name="talend-bigdata-launcher-dataproc-2.0.6.jar"
+            mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-dataproc/2.0.6">
         </libraryNeeded>
         <libraryNeeded
 		    context="plugin:org.talend.hadoop.distribution.dataproc14"
@@ -671,6 +677,7 @@
                 id="BIGDATA-LAUNCHER-LIB-DATAPROC14"
                 name="BIGDATA-LAUNCHER-LIB-DATAPROC14"  >
 			<library id="talend-bigdata-launcher" />
+			<library id="talend-bigdata-launcher-dataproc" />
 			<library id="google-auth-library-credentials" />
 			<library id="google-api-services-storage-v1-rev20181109-1.27.0.jar" />
 			<library id="google-api-services-dataproc" />
@@ -734,6 +741,7 @@
                 id="GOOGLE-DATAPROC-MANAGE-LIB-DATAPROC14"
                 name="GOOGLE-DATAPROC-MANAGE-LIB-DATAPROC14"  >
             <library id="talend-bigdata-launcher" />
+			<library id="talend-bigdata-launcher-dataproc" />
 			<library id="google-auth-library-credentials" />
 			<library id="google-api-services-storage-v1-rev20181109-1.27.0.jar" />
 			<library id="google-api-services-dataproc" />
@@ -805,6 +813,7 @@
             <library id="httpclient-4.5.9.jar"/>
 
 			<library id="talend-bigdata-launcher" />
+			<library id="talend-bigdata-launcher-dataproc" />
 			<library id="google-auth-library-credentials" />
 			<library id="google-api-services-storage-v1-rev20181109-1.27.0.jar" />
 			<library id="google-api-services-dataproc" />
@@ -908,6 +917,7 @@
                 name="SPARK2-LIB-DATAPROC14">
 			 <library id="avro-mapred-1.8.2-hadoop2.jar"/>
 			 <library id="talend-bigdata-launcher" />
+    		 <library id="talend-bigdata-launcher-dataproc" />
 			 <library id="scala-reflect-2.11.8.jar"/>
              <library id="kryo-shaded-4.0.2"/>
              <library id="failureaccess-1.0.1.jar"/>
