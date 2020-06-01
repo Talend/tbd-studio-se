@@ -13,14 +13,14 @@
                 context="plugin:org.talend.hadoop.distribution.hdinsight400"
                 id="jackson-core-asl-1.9.14-TALEND"
                 name="jackson-core-asl-1.9.14-TALEND.jar"
-                mvn_uri="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"/>
+                mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"/>
 
         <!-- Hive libraries -->
         <libraryNeeded
                 context="plugin:org.talend.hadoop.distribution.hdinsight400"
                 id="parquet-hive-bundle-1.6.0.jar"
                 name="parquet-hive-bundle-1.6.0.jar"
-                mvn_uri="mvn:org.talend.libraries/parquet-hive-bundle-1.6.0">
+                mvn_uri="mvn:org.talend.libraries/parquet-hive-bundle-1.6.0/6.0.0">
         </libraryNeeded>
 
         <!-- GraphFrames libraries -->
@@ -265,16 +265,16 @@
         <!-- do not include the talend-bigdata-core as it is not relocated (ie see maven shade relocation) to org.talend. ="otherwise, it will fail on finding parent class of HDInsight credentials -->
         <libraryNeeded
                 context="plugin:org.talend.hadoop.distribution.hdinsight400"
-                id="talend-bigdata-launcher-hdinsight-2.0.7"
-                name="talend-bigdata-launcher-hdinsight-2.0.7.jar"
-                mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-hdinsight/2.0.7">
+                id="talend-bigdata-launcher-hdinsight-2.0.8"
+                name="talend-bigdata-launcher-hdinsight-2.0.8.jar"
+                mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-hdinsight/2.0.8">
         </libraryNeeded>
         <!-- waiting for 2.0.6 of bigdata-launcher to be merge in master -->
         <libraryNeeded
                 context="plugin:org.talend.hadoop.distribution.hdinsight400"
-                id="log4j-1.2.17"
-                name="log4j-1.2.17.jar"
-                mvn_uri="mvn:log4j/log4j/1.2.17">
+                id="logback-classic-1.2.3"
+                name="logback-classic-1.2.3.jar"
+                mvn_uri="mvn:ch.qos.logback/logback-classic/1.2.3">
         </libraryNeeded>
         <libraryNeeded
                 context="plugin:org.talend.hadoop.distribution.hdinsight400"
