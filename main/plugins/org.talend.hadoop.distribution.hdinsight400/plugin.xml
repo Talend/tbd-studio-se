@@ -269,7 +269,6 @@
                 name="talend-bigdata-launcher-hdinsight-2.0.8.jar"
                 mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-hdinsight/2.0.8">
         </libraryNeeded>
-        <!-- waiting for 2.0.6 of bigdata-launcher to be merge in master -->
         <libraryNeeded
                 context="plugin:org.talend.hadoop.distribution.hdinsight400"
                 id="logback-classic-1.2.3"
@@ -288,8 +287,8 @@
                 description="Big Data launcher libraries for HDInsight 4.0.0"
                 id="BIGDATA-LAUNCHER-LIB-HD_INSIGHT_4_0_0"
                 name="BIGDATA-LAUNCHER-LIB-HD_INSIGHT_4_0_0">
-            <library id="talend-bigdata-launcher-hdinsight-2.0.7"/>
-            <library id="log4j-1.2.17"/>
+            <library id="talend-bigdata-launcher-hdinsight-2.0.8"/>
+            <library id="logback-classic-1.2.3"/>
             <library id="commons-logging-1.2"/>
         </libraryNeededGroup>
 
