@@ -1943,7 +1943,8 @@
 				"azure-common-1.7.1",
 				"hadoop-azure",
 				"hadoop-azure-datalake",
-				"hadoop-yarn-server-web-proxy"
+				"hadoop-yarn-server-web-proxy",
+				"hive-exec-1.2.1-talend"
 			]
 		},
         {
