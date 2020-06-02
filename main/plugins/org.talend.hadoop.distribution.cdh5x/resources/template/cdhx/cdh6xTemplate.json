@@ -600,7 +600,7 @@
 			"type": "STANDARD",
 			"context": "{properties.context}",
 			"jarName": "hive-exec-1.2.1-talend.jar",
-			"mvnUri": "mvn:org.talend.libraries/hive-exec-1.1.1-talend/6.0.0",
+			"mvnUri": "mvn:org.talend.libraries/hive-exec-1.2.1-talend/6.0.0",
 			"useStudioRepository": "true",
 			"description": ""
 		},
