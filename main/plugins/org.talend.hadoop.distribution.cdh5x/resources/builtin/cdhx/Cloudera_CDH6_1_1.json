@@ -9072,6 +9072,10 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_exec_1_2_1_talend",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_httpclient_4_5_6_jar",
         "tagName" : "library"
       }, {
@@ -14539,7 +14543,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_pig_0_17_0_cdh6_1_1_jar",
-      "mvn_uri" : "mvn:org.apache.pig/pig/0.17.0-cdh6.1.1",
+      "mvn_uri" : "mvn:org.apache.pig/pig/0.17.0-cdh6.1.1/jar",
       "name" : "pig-0.17.0-cdh6.1.1.jar",
       "tagName" : "libraryNeeded"
     }, {
