@@ -237,7 +237,7 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
                        id="spark-network-common_2.11-2.3.1.3.0.2.1-8"
                        name="spark-network-common_2.11-2.3.1.3.0.2.1-8.jar"
-                       mvn_uri="mvn:org.apache.spark/spark-network-common_2.11:2.3.1.3.0.2.1-8"/>
+                       mvn_uri="mvn:org.apache.spark/spark-network-common_2.11/2.3.1.3.0.2.1-8"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
                        id="spark-network-common_2.11-2.4.0.3.1.2.2-1"
                        name="spark-network-common_2.11-2.4.0.3.1.2.2-1.jar"
