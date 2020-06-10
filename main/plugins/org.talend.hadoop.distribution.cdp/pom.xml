@@ -10,4 +10,10 @@
 	</parent>
 	<artifactId>org.talend.hadoop.distribution.cdp</artifactId>
 	<packaging>eclipse-plugin</packaging>
+<<<<<<< HEAD
+=======
+	 <build>
+        <outputDirectory>bin</outputDirectory>
+    </build>
+>>>>>>> d3c79b80d0fa10131e8d672af3db627ba55eda76
 </project>
