@@ -756,12 +756,14 @@
                 "hbase-server",
                 "hive-exec",
                 "hive-jdbc",
+                "kafka-clients",                
                 "kudu-spark2_2.11",
                 "parquet-hadoop-bundle",
                 "spark-avro_2.11",
                 "spark-hive_2.11",
                 "spark-mllib_2.11",
-                "spark-yarn_2.11"
+                "spark-yarn_2.11",
+                "spark-streaming-kafka"
             ]
         },
         {
