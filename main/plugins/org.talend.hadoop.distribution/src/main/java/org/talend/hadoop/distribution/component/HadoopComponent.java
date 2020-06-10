@@ -61,6 +61,11 @@ public interface HadoopComponent {
     public String getWinUtilsName();
 
     /**
+     * @return true if the distribution uses @link{EHadoopVersion} HADOOP_3.
+     */
+    public boolean isHadoop3();
+
+    /**
      * @return true if the distribution uses @link{EHadoopVersion} HADOOP_2.
      */
     public boolean isHadoop2();
