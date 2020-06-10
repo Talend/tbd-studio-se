@@ -1597,7 +1597,7 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         boolean supportYarn = false;
         final DistributionVersion distributionVersion = getDistributionVersion();
         if (distributionVersion != null && distributionVersion.hadoopComponent != null) {
-            supportYarn = distributionVersion.hadoopComponent.isHadoop2();
+            supportYarn = distributionVersion.hadoopComponent.isHadoop2() || distributionVersion.hadoopComponent.isHadoop3();
         }
         return supportYarn;
     }

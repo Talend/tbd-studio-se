@@ -151,7 +151,7 @@ public class HadoopConfsUtils {
                 connection.setConfFile(confFileByteArray);
             }
             if (GlobalServiceRegister.getDefault().isServiceRegistered(ILibrariesService.class)) {
-                ILibrariesService service = (ILibrariesService) GlobalServiceRegister.getDefault().getService(
+                ILibrariesService service = GlobalServiceRegister.getDefault().getService(
                         ILibrariesService.class);
                 if (service != null) {
                     // Only deploy a new jar, no need to reset all
@@ -297,11 +297,11 @@ public class HadoopConfsUtils {
             File confFile = new File(confsTempFolder, confJarName);
             FileUtils.writeByteArrayToFile(confFile, confFileBA);
             if (GlobalServiceRegister.getDefault().isServiceRegistered(ILibraryManagerService.class)) {
-                ILibraryManagerService libService = (ILibraryManagerService) GlobalServiceRegister.getDefault().getService(
+                ILibraryManagerService libService = GlobalServiceRegister.getDefault().getService(
                         ILibraryManagerService.class);
                 if (libService != null && libService.isJarNeedToBeDeployed(confFile)) {
                     if (GlobalServiceRegister.getDefault().isServiceRegistered(ILibrariesService.class)) {
-                        ILibrariesService service = (ILibrariesService) GlobalServiceRegister.getDefault().getService(
+                        ILibrariesService service = GlobalServiceRegister.getDefault().getService(
                                 ILibrariesService.class);
                         if (service != null) {
                             // Only deploy a new jar, no need to reset all
@@ -342,7 +342,8 @@ public class HadoopConfsUtils {
         connection.setUseCustomConfs(confsService != null);
         connection.setDistribution(distribution.name);
         connection.setDfVersion(distributionVersion.version);
-        boolean supportYARN = distributionVersion.hadoopComponent != null && distributionVersion.hadoopComponent.isHadoop2();
+        boolean supportYARN = distributionVersion.hadoopComponent != null
+                && (distributionVersion.hadoopComponent.isHadoop2() || distributionVersion.hadoopComponent.isHadoop3());
         boolean supportMR1 = distributionVersion.hadoopComponent != null && distributionVersion.hadoopComponent.isHadoop1();
         connection.setUseYarn(supportYARN && !supportMR1);
         HCRepositoryUtil.fillDefaultValuesOfHadoopCluster(connection);
