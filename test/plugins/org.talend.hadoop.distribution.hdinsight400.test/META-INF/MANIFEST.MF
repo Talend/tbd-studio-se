@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Microsoft HD Insight 4.0.0 Distribution Test
+Bundle-SymbolicName: org.talend.hadoop.distribution.hdinsight400.test
+Bundle-Version: 7.3.1.qualifier
+Bundle-Vendor: .Talend SA.
+Fragment-Host: org.talend.hadoop.distribution.hdinsight400
+Require-Bundle: org.talend.hadoop.distribution.test.base
+Import-Package: org.junit;version="4.12.0"
+

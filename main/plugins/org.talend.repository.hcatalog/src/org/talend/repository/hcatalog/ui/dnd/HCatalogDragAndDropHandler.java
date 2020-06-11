@@ -14,7 +14,6 @@ import org.talend.core.GlobalServiceRegister;
 import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
 import org.talend.core.hadoop.version.EHadoopDistributions;
-import org.talend.core.hadoop.version.custom.ECustomVersionGroup;
 import org.talend.core.model.components.IComponent;
 import org.talend.core.model.components.IComponentsService;
 import org.talend.core.model.metadata.IMetadataTable;
@@ -30,7 +29,6 @@ import org.talend.core.model.utils.IComponentName;
 import org.talend.core.repository.RepositoryComponentSetting;
 import org.talend.designer.hdfsbrowse.util.EHDFSRepositoryToComponent;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
-import org.talend.repository.hadoopcluster.util.HCVersionUtil;
 import org.talend.repository.hcatalog.i18n.Messages;
 import org.talend.repository.hcatalog.metadata.ExtractMetaDataFromHCatalog;
 import org.talend.repository.hcatalog.node.HCatalogRepositoryNodeType;
@@ -184,6 +182,11 @@ public class HCatalogDragAndDropHandler extends AbstractDragAndDropServiceHandle
         } else if (EHCatalogRepositoryToComponent.HDINSIGHT_PASSWORD.getRepositoryValue().equals(value)) {
             return getRepositoryValueOfStringType(connection,
                     StringUtils.trimToEmpty(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_PASSWORD)));
+        } else if (EHCatalogRepositoryToComponent.HDINSIGHT_STORAGE.getRepositoryValue().equals(value)) {
+            return hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HDINSIGHT_STORAGE);
+        } else if (EHCatalogRepositoryToComponent.HDINSIGHT_STORAGE_USE_TLS.getRepositoryValue().equals(value)) {
+            return Boolean
+                    .valueOf(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HDINSIGHT_STORAGE_USE_TLS));
         } else if (EHCatalogRepositoryToComponent.WASB_HOST.getRepositoryValue().equals(value)) {
             return getRepositoryValueOfStringType(connection,
                     StringUtils.trimToEmpty(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HOSTNAME)));
@@ -210,7 +213,7 @@ public class HCatalogDragAndDropHandler extends AbstractDragAndDropServiceHandle
         if (!(item instanceof HCatalogConnectionItem)) {
             return neededComponents;
         }
-        IComponentsService service = (IComponentsService) GlobalServiceRegister.getDefault().getService(IComponentsService.class);
+        IComponentsService service = GlobalServiceRegister.getDefault().getService(IComponentsService.class);
         Collection<IComponent> components = service.getComponentsFactory().readComponents();
         for (IComponent component : components) {
             if (isValid(item, type, seletetedNode, component, HCATALOG) && !neededComponents.contains(component)) {
