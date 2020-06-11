@@ -10,16 +10,12 @@
 // 9 rue Pages 92150 Suresnes, France
 //
 // ============================================================================
-package org.talend.hadoop.distribution.kudu;
+package org.talend.hadoop.distribution.component;
 
 /**
- *
- * This enum lists all the used versions of the spark-streaming-kafka connector.
+ * Interface that exposes specific CDP Spark Batch methods.
  *
  */
-public enum KuduVersion {
-    UNSUPPORTED,
-    KUDU_1_7,
-    KUDU_1_8,
-    KUDU_1_12
+public interface CDPSparkBatchComponent extends CDHSparkBatchComponent {
+
 }

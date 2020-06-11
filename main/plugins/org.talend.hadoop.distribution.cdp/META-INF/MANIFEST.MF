@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: cdp
+Bundle-SymbolicName: org.talend.hadoop.distribution.cdp;singleton:=true
+Bundle-Version: 7.3.1.qualifier
+Bundle-Vendor: .Talend SA.
+Service-Component: OSGI-INF/cdp.xml
+Bundle-Activator: org.talend.hadoop.distribution.cdp.CDPPlugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.talend.core.runtime,
+ org.talend.hadoop.distribution,
+ org.eclipse.ui,
+ org.talend.designer.maven.aether,
+ org.talend.libraries.jackson
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.talend.hadoop.distribution.cdp
+
