@@ -9072,10 +9072,6 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
-        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_exec_1_2_1_talend",
-        "tagName" : "library"
-      }, {
-        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_httpclient_4_5_6_jar",
         "tagName" : "library"
       }, {
@@ -10439,10 +10435,6 @@
       }, {
         "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_exec",
-        "tagName" : "library"
-      }, {
-        "childNodes" : [ ],
-        "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_exec_1_2_1_talend",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -12512,7 +12504,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_elephant_bird_core_4_9_jar",
-      "mvn_uri" : "mvn:com.twitter.elephantbird/elephant-bird-core/4.9/jar",
+      "mvn_uri" : "mvn:com.twitter.elephantbird/elephant-bird-core/4.9",
       "name" : "elephant-bird-core-4.9.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -12842,7 +12834,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_hbase_client_2_1_0_cdh6_1_1_jar",
-      "mvn_uri" : "mvn:org.apache.hbase/hbase-client/2.1.0-cdh6.1.1",
+      "mvn_uri" : "mvn:org.apache.hbase/hbase-client/2.1.0-cdh6.1.1/jar",
       "name" : "hbase-client-2.1.0-cdh6.1.1.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -13020,15 +13012,6 @@
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_exec",
       "mvn_uri" : "mvn:org.talend.libraries/hive-exec-shade-2.1.1-cdh6.1.1-talend/6.0.0",
       "name" : "hive-exec-shade-2.1.1-cdh6.1.1-talend.jar",
-      "tagName" : "libraryNeeded",
-      "useStudioRepository" : "true"
-    }, {
-      "childNodes" : [ ],
-      "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
-      "excludeDependencies" : "true",
-      "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_exec_1_2_1_talend",
-      "mvn_uri" : "mvn:org.talend.libraries/hive-exec-1.2.1-talend/6.0.0",
-      "name" : "hive-exec-1.2.1-talend.jar",
       "tagName" : "libraryNeeded",
       "useStudioRepository" : "true"
     }, {
