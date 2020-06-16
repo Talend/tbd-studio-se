@@ -96,7 +96,7 @@
                        name="reactor-core-3.3.0.RELEASE.jar"
                        mvn_uri="mvn:io.projectreactor/reactor-core/3.3.0.RELEASE"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="slf4j-api-1.7.30"
-                       name="slf4j-api-1.7.30.jar" mvn_uri="mvn:org.slf4j:slf4j-api/1.7.30"/>
+                       name="slf4j-api-1.7.30.jar" mvn_uri="mvn:org.slf4j/slf4j-api/1.7.30"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="netty-handler-4.1.44.Final"
                        name="netty-handler-4.1.44.Final.jar" mvn_uri="mvn:io.netty/netty-handler/4.1.44.Final"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="netty-resolver-4.1.44.Final"
