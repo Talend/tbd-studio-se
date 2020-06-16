@@ -30,7 +30,6 @@ import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
-import org.talend.hadoop.distribution.constants.HiveOnSparkConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.hdinsight.IMicrosoftHDInsightDistribution;

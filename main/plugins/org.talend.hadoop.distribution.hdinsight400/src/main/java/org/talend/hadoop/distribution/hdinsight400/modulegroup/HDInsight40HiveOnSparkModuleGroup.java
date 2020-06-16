@@ -25,37 +25,60 @@ import org.talend.hadoop.distribution.condition.LinkedNodeExpression;
 import org.talend.hadoop.distribution.condition.MultiComponentCondition;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
+import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.hdinsight400.HDInsight40Constant;
 
 public class HDInsight40HiveOnSparkModuleGroup {
 
-    private final static ComponentCondition conditionSpark2_3 = new SimpleComponentCondition(
-            new LinkedNodeExpression(
-                    SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER,
-                    "SUPPORTED_SPARK_VERSION",  //$NON-NLS-1$
-                    EqualityOperator.EQ,
-                    ESparkVersion.SPARK_2_3.getSparkVersion()
-            )
-    );
+	private final static ComponentCondition conditionSpark2_3 = new MultiComponentCondition(
+			new SimpleComponentCondition(
+					new LinkedNodeExpression(
+							SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER,
+							"SUPPORTED_SPARK_VERSION",   //$NON-NLS-1$
+							EqualityOperator.EQ,
+							ESparkVersion.SPARK_2_3.getSparkVersion()
+					)
+			),
+			BooleanOperator.OR,
+			new SimpleComponentCondition(
+					new LinkedNodeExpression(
+							SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
+							"SUPPORTED_SPARK_VERSION",  //$NON-NLS-1$
+							EqualityOperator.EQ,
+							ESparkVersion.SPARK_2_3.getSparkVersion()
+					)
+			)
+	);
 
-    private final static ComponentCondition conditionSpark2_4 = new SimpleComponentCondition(
-            new LinkedNodeExpression(
-                    SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER,
-                    "SUPPORTED_SPARK_VERSION",   //$NON-NLS-1$
-                    EqualityOperator.EQ,
-                    ESparkVersion.SPARK_2_4.getSparkVersion()
-            )
-    );
+	private final static ComponentCondition conditionSpark2_4 = new MultiComponentCondition(
+			new SimpleComponentCondition(
+					new LinkedNodeExpression(
+							SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER,
+							"SUPPORTED_SPARK_VERSION",   //$NON-NLS-1$
+							EqualityOperator.EQ,
+							ESparkVersion.SPARK_2_4.getSparkVersion()
+					)
+			),
+			BooleanOperator.OR,
+			new SimpleComponentCondition(
+					new LinkedNodeExpression(
+							SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
+							"SUPPORTED_SPARK_VERSION",  //$NON-NLS-1$
+							EqualityOperator.EQ,
+							ESparkVersion.SPARK_2_4.getSparkVersion()
+					)
+			)
+	);
 
-    public static Set<DistributionModuleGroup> getModuleGroups() {
-        Set<DistributionModuleGroup> hs = new HashSet<>();
-        hs.add(new DistributionModuleGroup(
-                HDInsight40Constant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(),
-                true,
-                null
-        ));
-        hs.add(new DistributionModuleGroup(
-                HDInsight40Constant.SPARK23_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(),
+	public static Set<DistributionModuleGroup> getModuleGroups() {
+		Set<DistributionModuleGroup> hs = new HashSet<>();
+		hs.add(new DistributionModuleGroup(
+				HDInsight40Constant.BIGDATALAUNCHER_MODULE_GROUP.getModuleName(),
+				true,
+				null
+		));
+		hs.add(new DistributionModuleGroup(
+				HDInsight40Constant.SPARK23_HIVE_MRREQUIRED_MODULE_GROUP.getModuleName(),
                 false,
                 conditionSpark2_3
         ));
