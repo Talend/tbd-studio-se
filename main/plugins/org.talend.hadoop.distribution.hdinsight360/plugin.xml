@@ -125,16 +125,10 @@
 
         <!-- Big Data launcher libraries -->
         <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdinsight360"
-            id="talend-bigdata-launcher"
-            name="talend-bigdata-launcher-core-2.0.6.jar"
-            mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.0.6">
-        </libraryNeeded>
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.hdinsight360"
-            id="talend-bigdata-launcher-hdinsight"
-            name="talend-bigdata-launcher-hdinsight-2.0.6.jar"
-            mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-hdinsight/2.0.6">
+                context="plugin:org.talend.hadoop.distribution.hdinsight360"
+                id="talend-bigdata-launcher-hdinsight"
+                name="talend-bigdata-launcher-hdinsight-2.0.8.jar"
+                mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-hdinsight/2.0.8">
         </libraryNeeded>
 
         <!-- Groups -->

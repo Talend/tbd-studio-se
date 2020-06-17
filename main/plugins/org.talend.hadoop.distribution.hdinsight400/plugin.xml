@@ -96,7 +96,7 @@
                        name="reactor-core-3.3.0.RELEASE.jar"
                        mvn_uri="mvn:io.projectreactor/reactor-core/3.3.0.RELEASE"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="slf4j-api-1.7.30"
-                       name="slf4j-api-1.7.30.jar" mvn_uri="mvn:org.slf4j:slf4j-api/1.7.30"/>
+                       name="slf4j-api-1.7.30.jar" mvn_uri="mvn:org.slf4j/slf4j-api/1.7.30"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="netty-handler-4.1.44.Final"
                        name="netty-handler-4.1.44.Final.jar" mvn_uri="mvn:io.netty/netty-handler/4.1.44.Final"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="netty-resolver-4.1.44.Final"
@@ -372,13 +372,26 @@
             <library id="spark-hive_2.11-2.4.0.3.1.2.2-1"/>
         </libraryNeededGroup>
 
+        <libraryNeededGroup
+                id="SPARK24-SQL-LIB-MRREQUIRED-HD_INSIGHT_4_0_0"
+                name="SPARK24-SQL-LIB-MRREQUIRED-HD_INSIGHT_4_0_0">
+            <library id="spark-sql_2.11-2.4.0.3.1.2.2-1"/>
+        </libraryNeededGroup>
+
+        <libraryNeededGroup
+                id="SPARK23-SQL-LIB-MRREQUIRED-HD_INSIGHT_4_0_0"
+                name="SPARK23-SQL-LIB-MRREQUIRED-HD_INSIGHT_4_0_0">
+            <library id="spark-sql_2.11-2.3.1.3.0.2.1-8"/>
+        </libraryNeededGroup>
+
         <!-- Spark 2.3 Streaming group -->
         <libraryNeededGroup
                 description="Spark Streaming libraries for HDInsight 4.0.0"
                 id="SPARK23-STREAMING-LIB-HD_INSIGHT_4_0_0"
                 name="SPARK23-STREAMING-LIB-HD_INSIGHT_4_0_0">
-             <library id="spark-streaming_2.11-2.3.1.3.0.2.1-8"/>
-             <library id="jodd-core-3.5.2"/>
+            <library id="spark-streaming_2.11-2.3.1.3.0.2.1-8"/>
+            <library id="spark-hive_2.11-2.3.1.3.0.2.1-8"/>
+            <library id="jodd-core-3.5.2"/>
         </libraryNeededGroup>
 
         <!-- Spark 2.4 Streaming group -->
@@ -387,6 +400,7 @@
                 id="SPARK24-STREAMING-LIB-HD_INSIGHT_4_0_0"
                 name="SPARK24-STREAMING-LIB-HD_INSIGHT_4_0_0">
              <library id="spark-streaming_2.11-2.4.0.3.1.2.2-1"/>
+            <library id="spark-hive_2.11-2.4.0.3.1.2.2-1"/>
              <library id="jodd-core-3.5.2"/>
         </libraryNeededGroup>
 
