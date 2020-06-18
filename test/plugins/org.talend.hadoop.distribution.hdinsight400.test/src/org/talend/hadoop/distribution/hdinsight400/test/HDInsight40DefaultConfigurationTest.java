@@ -37,7 +37,7 @@ public class HDInsight40DefaultConfigurationTest extends AbstractTest4DefaultCon
         assertNotNull("Can't load hadoop distribution", hadoopComponent);
     }
 
-    @Test
+    @Ignore
     public void testHive_NotSupport() {
         HadoopComponent hadoopComponent = getHadoopComponent();
         String defaultValue = hadoopComponent.getDefaultConfig(hadoopComponent.getDistribution(), EHadoopCategory.HIVE.getName());
