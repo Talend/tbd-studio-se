@@ -28,15 +28,16 @@ public interface IDynamicCDPDistributionPreference extends IDynamicDistributionP
 
     static final String PREF_REPOSITORY_DEFAULT = "https://talend-update.talend.com/nexus/content/groups/dynamicdistribution/"; //$NON-NLS-1$
 
-    static final String PREF_ANONYMOUS = "distribution.dynamic.repository.cdh.isAnonymous"; //$NON-NLS-1$
+    static final String PREF_ANONYMOUS = "distribution.dynamic.repository.cdp.isAnonymous"; //$NON-NLS-1$
 
     static final boolean PREF_ANONYMOUS_DEFAULT = false;
 
-    static final String PREF_USERNAME = "distribution.dynamic.repository.cdh.username"; //$NON-NLS-1$
+    static final String PREF_USERNAME = "distribution.dynamic.repository.cdp.username"; //$NON-NLS-1$
 
     static final String PREF_USERNAME_DEFAULT = "studio-dl-client"; //$NON-NLS-1$
 
-    static final String PREF_PASSWORD = "distribution.dynamic.repository.cdh.password"; //$NON-NLS-1$
+    static final String PREF_PASSWORD = "distribution.dynamic.repository.cdp.password"; //$NON-NLS-1$
 
     static final String PREF_PASSWORD_DEFAULT = PREF_USERNAME_DEFAULT; // $NON-NLS-1$
+    
 }
