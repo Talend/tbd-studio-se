@@ -39,4 +39,5 @@ public interface IDynamicCDPDistributionPreference extends IDynamicDistributionP
     static final String PREF_PASSWORD = "distribution.dynamic.repository.cdp.password"; //$NON-NLS-1$
 
     static final String PREF_PASSWORD_DEFAULT = PREF_USERNAME_DEFAULT; // $NON-NLS-1$
+    
 }
