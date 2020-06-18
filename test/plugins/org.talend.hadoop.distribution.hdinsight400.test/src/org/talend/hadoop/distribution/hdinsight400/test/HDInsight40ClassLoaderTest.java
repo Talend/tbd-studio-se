@@ -32,7 +32,7 @@ public class HDInsight40ClassLoaderTest extends AbstractTest4ClassLoaderProvider
         doTestNotSupportClassLoader(EHadoopCategory.MAP_REDUCE.getName(), libsStr);
     }
 
-    @Test
+    @Ignore
     public void testHive_NotSupport() {
         doTestNotSupportClassLoader(EHadoopCategory.HIVE.getName());
     }
