@@ -42,7 +42,7 @@ public class HDInsight36DefaultConfigurationTest extends AbstractTest4DefaultCon
         //
     }
 
-    @Test
+    @Ignore
     public void testHive_NotSupport() {
         HadoopComponent hadoopComponent = getHadoopComponent();
         String defaultValue = hadoopComponent.getDefaultConfig(hadoopComponent.getDistribution(), EHadoopCategory.HIVE.getName());

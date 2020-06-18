@@ -93,15 +93,15 @@ public class HDInsight40DistributionTest extends AbstractDistributionTest {
         assertFalse(((SparkStreamingComponent) distribution).doSupportBackpressure());
         // Hive
         assertFalse(((HiveComponent) distribution).doSupportHive1());
-        assertFalse(((HiveComponent) distribution).doSupportHive2());
-        assertFalse(((HiveComponent) distribution).doSupportTezForHive());
+        assertTrue(((HiveComponent) distribution).doSupportHive2());
+        assertTrue(((HiveComponent) distribution).doSupportTezForHive());
         assertFalse(((HiveComponent) distribution).doSupportHBaseForHive());
         assertFalse(((HiveComponent) distribution).doSupportSSL());
         assertTrue(((HiveComponent) distribution).doSupportORCFormat());
         assertTrue(((HiveComponent) distribution).doSupportAvroFormat());
         assertTrue(((HiveComponent) distribution).doSupportParquetFormat());
         assertFalse(((HiveComponent) distribution).doSupportStoreAsParquet());
-        
+
         assertFalse(distribution instanceof HCatalogComponent);
         assertFalse(distribution instanceof ImpalaComponent);
         assertTrue(distribution.doSupportHDFSEncryption());
