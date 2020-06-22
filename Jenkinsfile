@@ -67,21 +67,21 @@ pipeline {
 
                 script {
                     // CHANGE_ID is set only for pull requests, so it is safe to access the pullRequest global variable
-                    if (env.CHANGE_ID) {
-                        pullRequest.addLabel('Build Running')
-                    }
-
-                    def build_job = build job: '/tbd-studio-se/tbd-studio-se-build', parameters: [
-                            string(name: 'BRANCH_NAME', value: env.BRANCH_NAME)
-                    ]
+//                    if (env.CHANGE_ID) {
+//                        pullRequest.addLabel('Build Running')
+//                    }
+//
+//                    def build_job = build job: '/tbd-studio-se/tbd-studio-se-build', parameters: [
+//                            string(name: 'BRANCH_NAME', value: env.BRANCH_NAME)
+//                    ]
                 }
             }
             post {
                 always {
                     script {
-                        if (env.CHANGE_ID) {
-                            pullRequest.removeLabel('Build Running')
-                        }
+//                        if (env.CHANGE_ID) {
+//                            pullRequest.removeLabel('Build Running')
+//                        }
                     }
                 }
             }
