@@ -1213,14 +1213,7 @@
       "modules": [
         "commons-lang3-3.5",
         "hadoop-client",
-        "hadoop-aws",
-      ]
-    },
-    {
-      "id": "HDFS-NOT-SPARK-1-6-LIB-DYNAMIC",
-      "description": "Hdfs libraries for every execution engine except Spark 1.6",
-      "modules": [
-      	"jackson-core-2.6.6"
+        "hadoop-aws"
       ]
     },
     {
@@ -1383,13 +1376,6 @@
       "modules": [
         "tez-dag",
         "tez-mapreduce"
-      ]
-    },
-    {
-      "id": "TEZ-NOT-SPARK-1-6-LIB-DYNAMIC",
-      "description": "",
-      "modules": [
-        "jackson-core-2.6.6"
       ]
     },
     {
