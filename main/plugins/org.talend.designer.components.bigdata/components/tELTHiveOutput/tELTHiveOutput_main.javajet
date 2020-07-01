@@ -799,7 +799,7 @@ imports="
                    if (columnValue!=null && !"".equals(columnValue)) {
 %>
                        bodyPartition_<%=cid%> = bodyPartition_<%=cid%> + "=";
-                       bodyPartition_<%=cid%> = bodyPartition_<%=cid%> + <%=columnValue%>;
+                       bodyPartition_<%=cid%> = bodyPartition_<%=cid%> + "'" + <%=columnValue%> + "'";
 <%
                 }
                 if(count < fieldPartitions.size()){

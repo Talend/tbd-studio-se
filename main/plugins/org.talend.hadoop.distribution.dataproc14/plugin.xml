@@ -13,8 +13,8 @@
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="talend-bigdata-launcher-dataproc"
-            name="talend-bigdata-launcher-dataproc-2.0.6.jar"
-            mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-dataproc/2.0.6">
+            name="talend-bigdata-launcher-dataproc-2.0.9.jar"
+            mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-dataproc/2.0.9">
         </libraryNeeded>
         <libraryNeeded
 		    context="plugin:org.talend.hadoop.distribution.dataproc14"
