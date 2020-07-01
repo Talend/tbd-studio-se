@@ -422,11 +422,11 @@
     }
 	%>			
 	process_<%=cid %>.waitFor();
-	normal_<%=cid%>.interrupt();
+	normal_<%=cid%>.join();
 	<%
     if(printLog){
 	%>
-		error_<%=cid%>.interrupt();
+		error_<%=cid%>.join();
 	<%
     }
     if(isLog4jEnabled){
