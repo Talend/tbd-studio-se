@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<component name="DBR640Distribution">
+    <implementation class="org.talend.hadoop.distribution.dbr640.Dbr640Distribution"/>
+    <service>
+        <provide interface="org.talend.hadoop.distribution.component.HadoopComponent"/>
+        <provide interface="org.talend.hadoop.distribution.component.HiveOnSparkComponent"/>
+        <provide interface="org.talend.hadoop.distribution.component.SparkBatchComponent"/>
+        <provide interface="org.talend.hadoop.distribution.component.SparkStreamingComponent"/>
+    </service>
+
+</component>
