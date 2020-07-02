@@ -85,7 +85,7 @@ public class HDInsight36Distribution extends AbstractDistribution implements Spa
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
         nodeModuleGroups = new HashMap<>();
 
-       
+
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
                 HDInsight36SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
@@ -115,7 +115,7 @@ public class HDInsight36Distribution extends AbstractDistribution implements Spa
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.TMODEL_ENCODER_COMPONENT), HDInsight36SparkStreamingTModelEncoderNodeModuleGroup
                 .getModuleGroups(distribution, version));
-        
+
     }
 
     @Override
@@ -267,7 +267,7 @@ public class HDInsight36Distribution extends AbstractDistribution implements Spa
 
     @Override
     public boolean doSupportHive1() {
-        return false;
+        return true;
     }
 
     @Override

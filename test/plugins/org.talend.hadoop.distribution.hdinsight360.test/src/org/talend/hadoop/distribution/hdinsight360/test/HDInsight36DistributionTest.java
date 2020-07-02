@@ -88,7 +88,7 @@ public class HDInsight36DistributionTest extends AbstractDistributionTest {
         assertTrue(((SparkStreamingComponent) distribution).doSupportSparkYarnClusterMode());
         assertFalse(((SparkStreamingComponent) distribution).doSupportBackpressure());
         // Hive
-        assertFalse(((HiveComponent) distribution).doSupportHive1());
+        assertTrue(((HiveComponent) distribution).doSupportHive1());
         assertFalse(((HiveComponent) distribution).doSupportHive2());
         assertFalse(((HiveComponent) distribution).doSupportTezForHive());
         assertFalse(((HiveComponent) distribution).doSupportHBaseForHive());

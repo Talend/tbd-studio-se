@@ -175,7 +175,7 @@ public class HadoopClusterForm extends AbstractHadoopForm<HadoopClusterConnectio
                 DistributionVersion hadoopVersion = hadoopDistribution.getVersion(newVersionDisplayName, true);
 
                 getConnection().setDfVersion(hadoopVersion.version);
-                if (hadoopVersion.hadoopComponent.isHadoop2()) {
+                if (hadoopVersion.hadoopComponent.isHadoop2() || hadoopVersion.hadoopComponent.isHadoop3()) {
                     getConnection().setUseYarn(true);
                 } else {
                     getConnection().setUseYarn(false);

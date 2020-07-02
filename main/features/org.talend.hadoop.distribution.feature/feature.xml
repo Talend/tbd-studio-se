@@ -33,6 +33,7 @@
   <plugin id="org.talend.hadoop.distribution.emr580" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.hdinsight340" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.hdinsight360" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+  <plugin id="org.talend.hadoop.distribution.hdinsight400" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.hdp250" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.hdp260" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.hdpx" download-size="0" install-size="0" version="0.0.0" unpack="false"/>

@@ -165,7 +165,8 @@ public class HadoopSubMultiRepTypeProcessor extends MultiTypesProcessor {
                                     .equals(distributionVersion.hadoopComponent.getDistribution())) {
                                 validated = true;
                             } else {
-                                validated = (validated && distributionVersion.hadoopComponent.isHadoop2());
+                                validated = (validated && (distributionVersion.hadoopComponent.isHadoop2()
+                                        || distributionVersion.hadoopComponent.isHadoop3()));
                             }
                             if (!validated) {
                                 return false;

@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+    <extension point="org.talend.core.runtime.librariesNeeded">
+
+        <!-- Talend generated code related -->
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="commons-codec-1.14"
+                       name="commons-codec-1.14.jar" mvn_uri="mvn:commons-codec/commons-codec/1.14"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="commons-lang-2.6"
+                       name="commons-lang-2.6.jar" mvn_uri="mvn:commons-lang/commons-lang/2.6"/>
+        <!-- needed by avro related code and routines -->
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                id="jackson-core-asl-1.9.14-TALEND"
+                name="jackson-core-asl-1.9.14-TALEND.jar"
+                mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"/>
+
+        <!-- Hive libraries -->
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                id="parquet-hive-bundle-1.6.0.jar"
+                name="parquet-hive-bundle-1.6.0.jar"
+                mvn_uri="mvn:org.talend.libraries/parquet-hive-bundle-1.6.0/6.0.0">
+        </libraryNeeded>
+
+        <!-- GraphFrames libraries -->
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                id="graphframes-0.7.0-spark2.3-s_2.11.jar"
+                name="graphframes-0.7.0-spark2.3-s_2.11.jar"
+                mvn_uri="mvn:graphframes/graphframes/0.7.0-spark2.3-s_2.11">
+        </libraryNeeded>
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                id="graphframes-0.7.0-spark2.4-s_2.11.jar"
+                name="graphframes-0.7.0-spark2.4-s_2.11.jar"
+                mvn_uri="mvn:graphframes/graphframes/0.7.0-spark2.4-s_2.11">
+        </libraryNeeded>
+
+
+        <!-- hd insight filesystem libraries -->
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="httpcore-4.4.12"
+                       name="httpcore-4.4.12.jar" mvn_uri="mvn:org.apache.httpcomponents/httpcore/4.4.12"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="httpclient-4.5.10"
+                       name="httpclient-4.5.10.jar" mvn_uri="mvn:org.apache.httpcomponents/httpclient/4.5.10"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="azure-core-1.3.0"
+                       name="azure-core-1.3.0.jar" mvn_uri="mvn:com.azure/azure-core/1.3.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="azure-keyvault-core-1.0.0"
+                       name="azure-keyvault-core-1.0.0.jar"
+                       mvn_uri="mvn:com.microsoft.azure/azure-keyvault-core/1.0.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="azure-storage-8.6.0"
+                       name="azure-storage-8.6.0.jar" mvn_uri="mvn:com.microsoft.azure/azure-storage/8.6.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="azure-storage-blob-12.5.0"
+                       name="azure-storage-blob-12.5.0.jar" mvn_uri="mvn:com.azure/azure-storage-blob/12.5.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="azure-storage-common-12.5.0"
+                       name="azure-storage-common-12.5.0.jar" mvn_uri="mvn:com.azure/azure-storage-common/12.5.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="azure-storage-file-datalake-12.0.1" name="azure-storage-file-datalake-12.0.1.jar"
+                       mvn_uri="mvn:com.azure/azure-storage-file-datalake/12.0.1"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="azure-core-http-netty-1.4.0"
+                       name="azure-core-http-netty-1.4.0.jar" mvn_uri="mvn:com.azure/azure-core-http-netty/1.4.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="commons-lang3-3.9"
+                       name="commons-lang3-3.9.jar" mvn_uri="mvn:org.apache.commons/commons-lang3/3.9"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="guava-20.0"
+                       name="guava-20.0.jar" mvn_uri="mvn:com.google.guava/guava/20.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="jackson-annotations-2.10.2"
+                       name="jackson-annotations-2.10.2.jar"
+                       mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.10.2"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="jackson-core-2.10.2"
+                       name="jackson-core-2.10.2.jar"
+                       mvn_uri="mvn:com.fasterxml.jackson.core/jackson-core/2.10.2"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="jackson-databind-2.10.2"
+                       name="jackson-databind-2.10.2.jar"
+                       mvn_uri="mvn:com.fasterxml.jackson.core/jackson-databind/2.10.2"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="jackson-dataformat-xml-2.10.2"
+                       name="jackson-dataformat-xml-2.10.2.jar"
+                       mvn_uri="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-xml/2.10.2"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="jackson-datatype-jsr310-2.10.2"
+                       name="jackson-datatype-jsr310-2.10.2.jar"
+                       mvn_uri="mvn:com.fasterxml.jackson.datatype/jackson-datatype-jsr310/2.10.2"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="jackson-module-jaxb-annotations-2.10.2"
+                       name="jackson-module-jaxb-annotations-2.10.2.jar"
+                       mvn_uri="mvn:com.fasterxml.jackson.module/jackson-module-jaxb-annotations/2.10.2"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="reactive-streams-1.0.3"
+                       name="reactive-streams-1.0.3.jar"
+                       mvn_uri="mvn:org.reactivestreams/reactive-streams/1.0.3"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="reactor-netty-0.9.4.RELEASE"
+                       name="reactor-netty-0.9.4.RELEASE.jar"
+                       mvn_uri="mvn:io.projectreactor.netty/reactor-netty/0.9.4.RELEASE"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="reactor-core-3.3.0.RELEASE"
+                       name="reactor-core-3.3.0.RELEASE.jar"
+                       mvn_uri="mvn:io.projectreactor/reactor-core/3.3.0.RELEASE"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="slf4j-api-1.7.30"
+                       name="slf4j-api-1.7.30.jar" mvn_uri="mvn:org.slf4j/slf4j-api/1.7.30"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="netty-handler-4.1.44.Final"
+                       name="netty-handler-4.1.44.Final.jar" mvn_uri="mvn:io.netty/netty-handler/4.1.44.Final"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="netty-resolver-4.1.44.Final"
+                       name="netty-resolver-4.1.44.Final.jar" mvn_uri="mvn:io.netty/netty-resolver/4.1.44.Final"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="netty-common-4.1.44.Final"
+                       name="netty-common-4.1.44.Final.jar" mvn_uri="mvn:io.netty/netty-common/4.1.44.Final"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="netty-transport-4.1.44.Final"
+                       name="netty-transport-4.1.44.Final.jar" mvn_uri="mvn:io.netty/netty-transport/4.1.44.Final"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="netty-codec-4.1.44.Final"
+                       name="netty-codec-4.1.44.Final.jar" mvn_uri="mvn:io.netty/netty-codec/4.1.44.Final"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="netty-handler-proxy-4.1.44.Final" name="netty-handler-proxy-4.1.44.Final.jar"
+                       mvn_uri="mvn:io.netty/netty-handler-proxy/4.1.44.Final"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="netty-codec-socks-4.1.44.Final"
+                       name="netty-codec-socks-4.1.44.Final.jar" mvn_uri="mvn:io.netty/netty-codec-socks/4.1.44.Final"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="netty-buffer-4.1.44.Final"
+                       name="netty-buffer-4.1.44.Final.jar" mvn_uri="mvn:io.netty/netty-buffer/4.1.44.Final"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="netty-codec-http-4.1.44.Final"
+                       name="netty-codec-http-4.1.44.Final.jar" mvn_uri="mvn:io.netty/netty-codec-http/4.1.44.Final"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="netty-codec-http2-4.1.44.Final"
+                       name="netty-codec-http2-4.1.44.Final.jar" mvn_uri="mvn:io.netty/netty-codec-http2/4.1.44.Final"/>
+
+        <!-- Spark 2 libraries: if a library is in double, the first one is for spark 2.3, the second one is for spark 2.4 -->
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="avro-1.7.7"
+                       name="avro-1.7.7.jar" mvn_uri="mvn:org.apache.avro/avro/1.7.7"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="avro-1.8.2"
+                       name="avro-1.8.2.jar" mvn_uri="mvn:org.apache.avro/avro/1.8.2"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="avro-mapred-1.7.7-hadoop2"
+                       name="avro-mapred-1.7.7-hadoop2.jar" mvn_uri="mvn:org.apache.avro/avro-mapred/1.7.7-hadoop2"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="avro-mapred-1.8.2-hadoop2"
+                       name="avro-mapred-1.8.2-hadoop2.jar" mvn_uri="mvn:org.apache.avro/avro-mapred/1.8.2-hadoop2"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="commons-lang-2.6"
+                       name="commons-lang-2.6.jar" mvn_uri="mvn:commons-lang/commons-lang/2.6"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="commons-lang3-3.9"
+                       name="commons-lang3-3.9.jar" mvn_uri="mvn:org.apache.commons/commons-lang3/3.9"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="hadoop-auth-3.1.1.3.0.2.1-8"
+                       name="hadoop-auth-3.1.1.3.0.2.1-8.jar"
+                       mvn_uri="mvn:org.apache.hadoop/hadoop-auth/3.1.1.3.0.2.1-8"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="hadoop-auth-3.1.1.3.1.2.2-1"
+                       name="hadoop-auth-3.1.1.3.1.2.2-1.jar"
+                       mvn_uri="mvn:org.apache.hadoop/hadoop-auth/3.1.1.3.1.2.2-1"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="hadoop-common-3.1.1.3.0.2.1-8"
+                       name="hadoop-common-3.1.1.3.0.2.1-8.jar"
+                       mvn_uri="mvn:org.apache.hadoop/hadoop-common/3.1.1.3.0.2.1-8"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="hadoop-common-3.1.1.3.1.2.2-1"
+                       name="hadoop-common-3.1.1.3.1.2.2-1.jar"
+                       mvn_uri="mvn:org.apache.hadoop/hadoop-common/3.1.1.3.1.2.2-1"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="hadoop-hdfs-client-3.1.1.3.0.2.1-8" name="hadoop-hdfs-client-3.1.1.3.0.2.1-8.jar"
+                       mvn_uri="mvn:org.apache.hadoop/hadoop-hdfs-client/3.1.1.3.0.2.1-8"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="hadoop-hdfs-client-3.1.1.3.1.2.2-1" name="hadoop-hdfs-client-3.1.1.3.1.2.2-1.jar"
+                       mvn_uri="mvn:org.apache.hadoop/hadoop-hdfs-client/3.1.1.3.1.2.2-1"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="hadoop-mapreduce-client-app-3.1.1.3.0.2.1-8"
+                       name="hadoop-mapreduce-client-app-3.1.1.3.0.2.1-8.jar"
+                       mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-app/3.1.1.3.0.2.1-8"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="hadoop-mapreduce-client-app-3.1.1.3.1.2.2-1"
+                       name="hadoop-mapreduce-client-app-3.1.1.3.1.2.2-1.jar"
+                       mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-app/3.1.1.3.1.2.2-1"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="hadoop-mapreduce-client-core-3.1.1.3.0.2.1-8"
+                       name="hadoop-mapreduce-client-core-3.1.1.3.0.2.1-8.jar"
+                       mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-core/3.1.1.3.0.2.1-8"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="hadoop-mapreduce-client-core-3.1.1.3.1.2.2-1"
+                       name="hadoop-mapreduce-client-core-3.1.1.3.1.2.2-1.jar"
+                       mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-core/3.1.1.3.1.2.2-1"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="hadoop-mapreduce-client-jobclient-3.1.1.3.0.2.1-8"
+                       name="hadoop-mapreduce-client-jobclient-3.1.1.3.0.2.1-8.jar"
+                       mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-jobclient/3.1.1.3.0.2.1-8"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="hadoop-mapreduce-client-jobclient-3.1.1.3.1.2.2-1"
+                       name="hadoop-mapreduce-client-jobclient-3.1.1.3.1.2.2-1.jar"
+                       mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-jobclient/3.1.1.3.1.2.2-1"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="jodd-core-3.5.2"
+                       name="jodd-core-3.5.2.jar" mvn_uri="mvn:org.jodd/jodd-core/3.5.2"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="kryo-shaded-3.0.3"
+                       name="kryo-shaded-3.0.3.jar" mvn_uri="mvn:com.esotericsoftware/kryo-shaded/3.0.3"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="kryo-shaded-4.0.2"
+                       name="kryo-shaded-4.0.2.jar" mvn_uri="mvn:com.esotericsoftware/kryo-shaded/4.0.2"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="parquet-format-2.3.1"
+                       name="parquet-format-2.3.1.jar" mvn_uri="mvn:org.apache.parquet/parquet-format/2.3.1"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="parquet-format-2.4.0"
+                       name="parquet-format-2.4.0.jar" mvn_uri="mvn:org.apache.parquet/parquet-format/2.4.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="parquet-hadoop-1.8.3"
+                       name="parquet-hadoop-1.8.3.jar" mvn_uri="mvn:org.apache.parquet/parquet-hadoop/1.8.3"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="parquet-hadoop-1.10.0"
+                       name="parquet-hadoop-1.10.0.jar" mvn_uri="mvn:org.apache.parquet/parquet-hadoop/1.10.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="parquet-hadoop-bundle-1.6.0"
+                       name="parquet-hadoop-bundle-1.6.0.jar" mvn_uri="mvn:com.twitter/parquet-hadoop-bundle/1.6.0"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="scala-library-2.11.8"
+                       name="scala-library-2.11.8.jar" mvn_uri="mvn:org.scala-lang/scala-library/2.11.8"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="scala-library-2.11.12"
+                       name="scala-library-2.11.12.jar" mvn_uri="mvn:org.scala-lang/scala-library/2.11.12"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="scala-reflect-2.11.8"
+                       name="scala-reflect-2.11.8.jar" mvn_uri="mvn:org.scala-lang/scala-reflect/2.11.8"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="scala-reflect-2.11.12"
+                       name="scala-reflect-2.11.12.jar" mvn_uri="mvn:org.scala-lang/scala-reflect/2.11.12"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="spark-catalyst_2.11-2.3.1.3.0.2.1-8" name="spark-catalyst_2.11-2.3.1.3.0.2.1-8.jar"
+                       mvn_uri="mvn:org.apache.spark/spark-catalyst_2.11/2.3.1.3.0.2.1-8"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="spark-catalyst_2.11-2.4.0.3.1.2.2-1" name="spark-catalyst_2.11-2.4.0.3.1.2.2-1.jar"
+                       mvn_uri="mvn:org.apache.spark/spark-catalyst_2.11/2.4.0.3.1.2.2-1"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="spark-core_2.11-2.3.1.3.0.2.1-8"
+                       name="spark-core_2.11-2.3.1.3.0.2.1-8.jar"
+                       mvn_uri="mvn:org.apache.spark/spark-core_2.11/2.3.1.3.0.2.1-8"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="spark-core_2.11-2.4.0.3.1.2.2-1"
+                       name="spark-core_2.11-2.4.0.3.1.2.2-1.jar"
+                       mvn_uri="mvn:org.apache.spark/spark-core_2.11/2.4.0.3.1.2.2-1"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="spark-graphx_2.11-2.3.1.3.0.2.1-8" name="spark-graphx_2.11-2.3.1.3.0.2.1-8.jar"
+                       mvn_uri="mvn:org.apache.spark/spark-graphx_2.11/2.3.1.3.0.2.1-8"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="spark-graphx_2.11-2.4.0.3.1.2.2-1" name="spark-graphx_2.11-2.4.0.3.1.2.2-1.jar"
+                       mvn_uri="mvn:org.apache.spark/spark-graphx_2.11/2.4.0.3.1.2.2-1"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="spark-hive_2.11-2.3.1.3.0.2.1-8"
+                       name="spark-hive_2.11-2.3.1.3.0.2.1-8.jar"
+                       mvn_uri="mvn:org.apache.spark/spark-hive_2.11/2.3.1.3.0.2.1-8"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="spark-hive_2.11-2.4.0.3.1.2.2-1"
+                       name="spark-hive_2.11-2.4.0.3.1.2.2-1.jar"
+                       mvn_uri="mvn:org.apache.spark/spark-hive_2.11/2.4.0.3.1.2.2-1"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="spark-mllib-local_2.11-2.3.1.3.0.2.1-8" name="spark-mllib-local_2.11-2.3.1.3.0.2.1-8.jar"
+                       mvn_uri="mvn:org.apache.spark/spark-mllib-local_2.11/2.3.1.3.0.2.1-8"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="spark-mllib-local_2.11-2.4.0.3.1.2.2-1" name="spark-mllib-local_2.11-2.4.0.3.1.2.2-1.jar"
+                       mvn_uri="mvn:org.apache.spark/spark-mllib-local_2.11/2.4.0.3.1.2.2-1"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="spark-mllib_2.11-2.3.1.3.0.2.1-8" name="spark-mllib_2.11-2.3.1.3.0.2.1-8.jar"
+                       mvn_uri="mvn:org.apache.spark/spark-mllib_2.11/2.3.1.3.0.2.1-8"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="spark-mllib_2.11-2.4.0.3.1.2.2-1" name="spark-mllib_2.11-2.4.0.3.1.2.2-1.jar"
+                       mvn_uri="mvn:org.apache.spark/spark-mllib_2.11/2.4.0.3.1.2.2-1"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="spark-network-common_2.11-2.3.1.3.0.2.1-8"
+                       name="spark-network-common_2.11-2.3.1.3.0.2.1-8.jar"
+                       mvn_uri="mvn:org.apache.spark/spark-network-common_2.11/2.3.1.3.0.2.1-8"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="spark-network-common_2.11-2.4.0.3.1.2.2-1"
+                       name="spark-network-common_2.11-2.4.0.3.1.2.2-1.jar"
+                       mvn_uri="mvn:org.apache.spark/spark-network-common_2.11/2.4.0.3.1.2.2-1"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="spark-sql_2.11-2.3.1.3.0.2.1-8"
+                       name="spark-sql_2.11-2.3.1.3.0.2.1-8.jar"
+                       mvn_uri="mvn:org.apache.spark/spark-sql_2.11/2.3.1.3.0.2.1-8"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400" id="spark-sql_2.11-2.4.0.3.1.2.2-1"
+                       name="spark-sql_2.11-2.4.0.3.1.2.2-1.jar"
+                       mvn_uri="mvn:org.apache.spark/spark-sql_2.11/2.4.0.3.1.2.2-1"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="spark-streaming_2.11-2.3.1.3.0.2.1-8" name="spark-streaming_2.11-2.3.1.3.0.2.1-8.jar"
+                       mvn_uri="mvn:org.apache.spark/spark-streaming_2.11/2.3.1.3.0.2.1-8"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="spark-streaming_2.11-2.4.0.3.1.2.2-1" name="spark-streaming_2.11-2.4.0.3.1.2.2-1.jar"
+                       mvn_uri="mvn:org.apache.spark/spark-streaming_2.11/2.4.0.3.1.2.2-1"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="spark-unsafe_2.11-2.3.1.3.0.2.1-8" name="spark-unsafe_2.11-2.3.1.3.0.2.1-8.jar"
+                       mvn_uri="mvn:org.apache.spark/spark-unsafe_2.11/2.3.1.3.0.2.1-8"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                       id="spark-unsafe_2.11-2.4.0.3.1.2.2-1" name="spark-unsafe_2.11-2.4.0.3.1.2.2-1.jar"
+                       mvn_uri="mvn:org.apache.spark/spark-unsafe_2.11/2.4.0.3.1.2.2-1"/>
+
+
+        <!-- do not include the talend-bigdata-core as it is not relocated (ie see maven shade relocation) to org.talend. ="otherwise, it will fail on finding parent class of HDInsight credentials -->
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                id="talend-bigdata-launcher-hdinsight-2.0.8"
+                name="talend-bigdata-launcher-hdinsight-2.0.8.jar"
+                mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-hdinsight/2.0.8">
+        </libraryNeeded>
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                id="logback-classic-1.2.3"
+                name="logback-classic-1.2.3.jar"
+                mvn_uri="mvn:ch.qos.logback/logback-classic/1.2.3">
+        </libraryNeeded>
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.hdinsight400"
+                id="commons-logging-1.2"
+                name="commons-logging-1.2.jar"
+                mvn_uri="mvn:commons-logging/commons-logging/1.2"/>
+        <!-- Groups -->
+
+        <!-- Big Data launcher group -->
+        <libraryNeededGroup
+                description="Big Data launcher libraries for HDInsight 4.0.0"
+                id="BIGDATA-LAUNCHER-LIB-HD_INSIGHT_4_0_0"
+                name="BIGDATA-LAUNCHER-LIB-HD_INSIGHT_4_0_0">
+            <library id="talend-bigdata-launcher-hdinsight-2.0.8"/>
+            <library id="logback-classic-1.2.3"/>
+            <library id="commons-logging-1.2"/>
+        </libraryNeededGroup>
+
+        <!-- Spark 2.3 group -->
+        <libraryNeededGroup
+                description="Spark libraries for HDInsight 4.0.0"
+                id="SPARK23-LIB-HD_INSIGHT_4_0_0"
+                name="SPARK23-LIB-HD_INSIGHT_4_0_0">
+             <library id="avro-1.7.7"/>
+             <library id="avro-mapred-1.7.7-hadoop2"/>
+             <library id="hadoop-auth-3.1.1.3.0.2.1-8"/>
+             <library id="hadoop-common-3.1.1.3.0.2.1-8"/>
+             <library id="hadoop-hdfs-client-3.1.1.3.0.2.1-8"/>
+             <library id="hadoop-mapreduce-client-core-3.1.1.3.0.2.1-8"/>
+             <library id="hadoop-mapreduce-client-jobclient-3.1.1.3.0.2.1-8"/>
+             <library id="kryo-shaded-3.0.3"/>
+             <library id="parquet-format-2.3.1"/>
+             <library id="parquet-hadoop-1.8.3"/>
+             <library id="scala-library-2.11.8"/>
+             <library id="spark-core_2.11-2.3.1.3.0.2.1-8"/>
+             <library id="spark-graphx_2.11-2.3.1.3.0.2.1-8"/>
+             <library id="spark-mllib-local_2.11-2.3.1.3.0.2.1-8"/>
+             <library id="spark-mllib_2.11-2.3.1.3.0.2.1-8"/>
+             <library id="spark-network-common_2.11-2.3.1.3.0.2.1-8"/>
+             <library id="spark-streaming_2.11-2.3.1.3.0.2.1-8"/>
+             <library id="spark-sql_2.11-2.3.1.3.0.2.1-8"/>
+             <library id="scala-reflect-2.11.8"/>
+             <library id="spark-catalyst_2.11-2.3.1.3.0.2.1-8"/>
+             <library id="spark-unsafe_2.11-2.3.1.3.0.2.1-8.jar"/>
+        </libraryNeededGroup>
+
+        <!-- Spark 2.4 group -->
+        <libraryNeededGroup
+                description="Spark libraries for HDInsight 4.0.0"
+                id="SPARK24-LIB-HD_INSIGHT_4_0_0"
+                name="SPARK24-LIB-HD_INSIGHT_4_0_0">
+             <library id="avro-1.8.2"/>
+             <library id="avro-mapred-1.8.2-hadoop2"/>
+             <library id="hadoop-auth-3.1.1.3.1.2.2-1"/>
+             <library id="hadoop-common-3.1.1.3.1.2.2-1"/>
+             <library id="hadoop-hdfs-client-3.1.1.3.1.2.2-1"/>
+             <library id="hadoop-mapreduce-client-app-3.1.1.3.1.2.2-1"/>
+             <library id="hadoop-mapreduce-client-core-3.1.1.3.1.2.2-1"/>
+             <library id="hadoop-mapreduce-client-jobclient-3.1.1.3.1.2.2-1"/>
+             <library id="kryo-shaded-4.0.2"/>
+             <library id="parquet-format-2.4.0"/>
+             <library id="parquet-hadoop-1.10.0"/>
+             <library id="scala-library-2.11.12"/>
+             <library id="spark-core_2.11-2.4.0.3.1.2.2-1"/>
+             <library id="spark-graphx_2.11-2.4.0.3.1.2.2-1"/>
+             <library id="spark-mllib-local_2.11-2.4.0.3.1.2.2-1"/>
+             <library id="spark-mllib_2.11-2.4.0.3.1.2.2-1"/>
+             <library id="spark-network-common_2.11-2.4.0.3.1.2.2-1"/>
+             <library id="spark-sql_2.11-2.4.0.3.1.2.2-1"/>
+             <library id="scala-reflect-2.11.12"/>
+             <library id="spark-catalyst_2.11-2.4.0.3.1.2.2-1"/>
+             <library id="spark-unsafe_2.11-2.4.0.3.1.2.2-1.jar"/>
+        </libraryNeededGroup>
+
+        <!-- Spark Parquet group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark libraries for HDInsight 4.0.0 that are MRRequired for Parquet"
+                id="SPARK-PARQUET-LIB-MRREQUIRED-HD_INSIGHT_4_0_0"
+                name="SPARK-PARQUET-LIB-MRREQUIRED-HD_INSIGHT_4_0_0">
+            <library id="commons-logging-1.2"/>
+        </libraryNeededGroup>
+
+        <!-- Spark 2.3 Hive group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Hive libraries for HDInsight 4.0.0 that are MRREQUIRED"
+                id="SPARK23-HIVE-LIB-MRREQUIRED-HD_INSIGHT_4_0_0"
+                name="SPARK23-HIVE-LIB-MRREQUIRED-HD_INSIGHT_4_0_0">
+            <library id="spark-hive_2.11-2.3.1.3.0.2.1-8"/>
+        </libraryNeededGroup>
+
+        <!-- Spark 2.4 Hive group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark Hive libraries for HDInsight 4.0.0 that are MRREQUIRED"
+                id="SPARK24-HIVE-LIB-MRREQUIRED-HD_INSIGHT_4_0_0"
+                name="SPARK24-HIVE-LIB-MRREQUIRED-HD_INSIGHT_4_0_0">
+            <library id="spark-hive_2.11-2.4.0.3.1.2.2-1"/>
+        </libraryNeededGroup>
+
+        <libraryNeededGroup
+                id="SPARK24-SQL-LIB-MRREQUIRED-HD_INSIGHT_4_0_0"
+                name="SPARK24-SQL-LIB-MRREQUIRED-HD_INSIGHT_4_0_0">
+            <library id="spark-sql_2.11-2.4.0.3.1.2.2-1"/>
+        </libraryNeededGroup>
+
+        <libraryNeededGroup
+                id="SPARK23-SQL-LIB-MRREQUIRED-HD_INSIGHT_4_0_0"
+                name="SPARK23-SQL-LIB-MRREQUIRED-HD_INSIGHT_4_0_0">
+            <library id="spark-sql_2.11-2.3.1.3.0.2.1-8"/>
+        </libraryNeededGroup>
+
+        <!-- Spark 2.3 Streaming group -->
+        <libraryNeededGroup
+                description="Spark Streaming libraries for HDInsight 4.0.0"
+                id="SPARK23-STREAMING-LIB-HD_INSIGHT_4_0_0"
+                name="SPARK23-STREAMING-LIB-HD_INSIGHT_4_0_0">
+            <library id="spark-streaming_2.11-2.3.1.3.0.2.1-8"/>
+            <library id="spark-hive_2.11-2.3.1.3.0.2.1-8"/>
+            <library id="jodd-core-3.5.2"/>
+        </libraryNeededGroup>
+
+        <!-- Spark 2.4 Streaming group -->
+        <libraryNeededGroup
+                description="Spark Streaming libraries for HDInsight 4.0.0"
+                id="SPARK24-STREAMING-LIB-HD_INSIGHT_4_0_0"
+                name="SPARK24-STREAMING-LIB-HD_INSIGHT_4_0_0">
+             <library id="spark-streaming_2.11-2.4.0.3.1.2.2-1"/>
+            <library id="spark-hive_2.11-2.4.0.3.1.2.2-1"/>
+             <library id="jodd-core-3.5.2"/>
+        </libraryNeededGroup>
+
+        <!-- Spark 2.3 Streaming Parquet group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark libraries for HDInsight 4.0.0 that are MRRequired for Parquet"
+                id="SPARK23-STREAMING-PARQUET-LIB-MRREQUIRED-HD_INSIGHT_4_0_0"
+                name="SPARK23-STREAMING-PARQUET-LIB-MRREQUIRED-HD_INSIGHT_4_0_0">
+            <library id="commons-logging-1.2"/>
+             <library id="parquet-format-2.3.1"/>
+             <library id="parquet-hadoop-1.8.3"/>
+             <library id="parquet-hadoop-bundle-1.6.0"/>
+            <library id="parquet-hadoop-bundle-1.8.3"/>
+        </libraryNeededGroup>
+
+        <!-- Spark 2.4 Streaming Parquet group MRREQUIRED -->
+        <libraryNeededGroup
+                description="Spark libraries for HDInsight 4.0.0 that are MRRequired for Parquet"
+                id="SPARK24-STREAMING-PARQUET-LIB-MRREQUIRED-HD_INSIGHT_4_0_0"
+                name="SPARK24-STREAMING-PARQUET-LIB-MRREQUIRED-HD_INSIGHT_4_0_0">
+            <library id="commons-logging-1.2"/>
+             <library id="parquet-format-2.4.0"/>
+             <library id="parquet-hadoop-1.10.0"/>
+             <library id="parquet-hadoop-bundle-1.6.0"/>
+            <library id="parquet-hadoop-bundle-1.10.0"/>
+        </libraryNeededGroup>
+
+        <!-- GraphFrames group MRREQUIRED -->
+        <libraryNeededGroup
+                description="GraphFrames libraries for HDInsight 4.0.0 that are MRREQUIRED"
+                id="SPARK23-GRAPHFRAMES-LIB-MRREQUIRED-HD_INSIGHT_4_0_0"
+                name="SPARK23-GRAPHFRAMES-LIB-MRREQUIRED-HD_INSIGHT_4_0_0">
+             <library id="graphframes-0.7.0-spark2.3-s_2.11.jar"/>
+        </libraryNeededGroup>
+
+        <libraryNeededGroup
+                description="GraphFrames libraries for HDInsight 4.0.0 that are MRREQUIRED"
+                id="SPARK24-GRAPHFRAMES-LIB-MRREQUIRED-HD_INSIGHT_4_0_0"
+                name="SPARK24-GRAPHFRAMES-LIB-MRREQUIRED-HD_INSIGHT_4_0_0">
+             <library id="graphframes-0.7.0-spark2.4-s_2.11.jar"/>
+        </libraryNeededGroup>
+
+        <!-- Hive parquet group -->
+        <libraryNeededGroup
+                description="Hive Parquet libraries for HDInsight 4.0.0"
+                id="HIVE-PARQUET-LIB-HD_INSIGHT_4_0_0"
+                name="HIVE-PARQUET-LIB-HD_INSIGHT_4_0_0">
+            <library id="parquet-hive-bundle-1.6.0.jar"/>
+        </libraryNeededGroup>
+
+        <!-- group of HD Insight 4.0.0 common libraries -->
+        <!-- note that indentation is used here to show the dependencies tree -->
+        <libraryNeededGroup
+                description="HD Insight common libraries"
+                id="HD_INSIGHT_4_0_0_COMMON_LIBRARIES"
+                name="HD_INSIGHT_4_0_0_COMMON_LIBRARIES">
+            <!-- azure dependencies for Filesystems API -->
+            <library id="slf4j-1.7.30"/>
+            <library id="jackson-datatype-jsr310-2.10.2"/>
+            <library id="jackson-core-2.10.2"/>
+            <library id="jackson-databind-2.10.2"/>
+            <library id="jackson-annotations-2.10.2"/>
+            <library id="jackson-dataformat-xml-2.10.2"/>
+            <library id="jackson-module-jaxb-annotations-2.10.2"/>
+            <library id="azure-storage-8.6.0"/>
+            <library id="commons-lang3-3.9"/>
+            <library id="azure-keyvault-core-1.0.0"/>
+            <library id="guava-20.0"/>
+            <library id="azure-storage-file-datalake-12.0.1"/>
+            <library id="azure-core-http-netty-1.4.0"/>
+            <library id="reactor-netty-0.9.4.RELEASE"/>
+            <library id="netty-handler-4.1.44.Final"/>
+            <library id="netty-common-4.1.44.Final"/>
+            <library id="netty-transport-4.1.44.Final"/>
+            <library id="netty-resolver-4.1.44.Final"/>
+            <library id="netty-codec-4.1.44.Final"/>
+            <library id="netty-handler-proxy-4.1.44.Final"/>
+            <library id="netty-codec-socks-4.1.44.Final"/>
+            <library id="netty-buffer-4.1.44.Final"/>
+            <library id="netty-codec-http-4.1.44.Final"/>
+            <library id="netty-codec-http2-4.1.44.Final"/>
+            <library id="azure-storage-blob-12.5.0"/>
+            <library id="azure-storage-common-12.5.0"/>
+            <library id="azure-core-1.3.0"/>
+            <library id="reactor-core-3.3.0.RELEASE"/>
+            <library id="reactive-streams-1.0.3"/>
+            <!-- specific to Talend generated code -->
+            <library id="commons-lang-2.6"/>
+            <library id="commons-codec-1.14"/>
+            <!-- needed by avro structures generated in jobs -->
+            <library id="jackson-core-asl-1.9.14-TALEND"/>
+        </libraryNeededGroup>
+
+    </extension>
+</plugin>
