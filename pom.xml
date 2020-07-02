@@ -42,12 +42,13 @@
         <module>main/plugins/org.talend.hadoop.distribution.dataproc14</module>
         <module>main/plugins/org.talend.hadoop.distribution.dbr350</module>
         <module>main/plugins/org.talend.hadoop.distribution.dbr550</module>
+        <module>main/plugins/org.talend.hadoop.distribution.dbr640</module>
         <module>main/plugins/org.talend.hadoop.distribution.emr450</module>
         <module>main/plugins/org.talend.hadoop.distribution.emr500</module>
         <module>main/plugins/org.talend.hadoop.distribution.emr550</module>
         <module>main/plugins/org.talend.hadoop.distribution.emr580</module>
         <module>main/plugins/org.talend.hadoop.distribution.emr5150</module>
-		<module>main/plugins/org.talend.hadoop.distribution.emr5290</module>
+        <module>main/plugins/org.talend.hadoop.distribution.emr5290</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdinsight340</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdinsight360</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdinsight400</module>
