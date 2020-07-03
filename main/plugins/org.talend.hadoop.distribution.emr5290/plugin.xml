@@ -577,7 +577,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5290"
             id="xbean-asm6-shaded-4.8.jar"
             name="xbean-asm6-shaded-4.8.jar"
-            mvn_uri="mvn:org.apache.xbean/xbean-asm6-shaded/4.4"/>
+            mvn_uri="mvn:org.apache.xbean/xbean-asm6-shaded/4.8"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5290"
