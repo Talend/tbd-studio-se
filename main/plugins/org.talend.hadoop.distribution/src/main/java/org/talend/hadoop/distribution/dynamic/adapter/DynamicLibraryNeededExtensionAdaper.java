@@ -22,6 +22,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.talend.commons.utils.threading.TalendCustomThreadPoolExecutor;
 import org.talend.core.runtime.dynamic.DynamicFactory;
@@ -124,7 +125,8 @@ public class DynamicLibraryNeededExtensionAdaper extends DynamicExtensionAdapter
                                 String beanId = moduleBean.getId();
                                 moduleBeanAdapterMap.put(beanId, dynamicModuleAdapter);
                             } catch (Exception e) {
-                                if (e instanceof FileNotFoundException) {
+                                Throwable rootCause = ExceptionUtils.getRootCause(e);
+                                if (e instanceof FileNotFoundException || rootCause instanceof FileNotFoundException) {
                                     if (count < 5) {
                                         count++;
                                         run();
