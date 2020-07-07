@@ -71,7 +71,7 @@
                 JavaType javaType = JavaTypesManager.getJavaTypeFromId(column.getTalendType());
                 if ((javaType == JavaTypesManager.DATE) || (javaType == JavaTypesManager.BYTE_ARRAY)) {
                     for (Map<String, String> root: rootTable) {
-                        if (alreadyProcessedPaths.containsKey(root.get("PATH")) && !alreadyProcessedPaths.get(root.get("PATH")).equalsIgnoreCase(column.getPattern())){
+                        if (root.get("COLUMN").equals(column.getLabel()) && alreadyProcessedPaths.containsKey(root.get("PATH")) && !alreadyProcessedPaths.get(root.get("PATH")).equalsIgnoreCase(column.getPattern())){
                             valuesBySamePathContainsDifferentDatePatterns = true;                        
                         }
                         if (root.get("COLUMN").equals(column.getLabel()) && !alreadyProcessedPaths.containsKey(root.get("PATH"))) {
@@ -105,7 +105,7 @@
                     }
 
                     for (Map<String, String> loop: loopTable) {
-                        if (alreadyProcessedPaths.containsKey(loop.get("PATH")) && !alreadyProcessedPaths.get(loop.get("PATH")).equalsIgnoreCase(column.getPattern())){
+                        if (loop.get("COLUMN").equals(column.getLabel()) && alreadyProcessedPaths.containsKey(loop.get("PATH")) && !alreadyProcessedPaths.get(loop.get("PATH")).equalsIgnoreCase(column.getPattern())){
                             valuesBySamePathContainsDifferentDatePatterns = true;                      
                         }
                         if (loop.get("COLUMN").equals(column.getLabel()) && !alreadyProcessedPaths.containsKey(loop.get("PATH"))) {
@@ -139,7 +139,7 @@
                     }
 
                     for (Map<String, String> group: groupTable) {
-                        if (alreadyProcessedPaths.containsKey(group.get("PATH")) && !alreadyProcessedPaths.get(group.get("PATH")).equalsIgnoreCase(column.getPattern())){
+                        if (group.get("COLUMN").equals(column.getLabel()) && alreadyProcessedPaths.containsKey(group.get("PATH")) && !alreadyProcessedPaths.get(group.get("PATH")).equalsIgnoreCase(column.getPattern())){
                             valuesBySamePathContainsDifferentDatePatterns = true;                        
                         }
                         if (group.get("COLUMN").equals(column.getLabel()) && !alreadyProcessedPaths.containsKey(group.get("PATH"))) {
