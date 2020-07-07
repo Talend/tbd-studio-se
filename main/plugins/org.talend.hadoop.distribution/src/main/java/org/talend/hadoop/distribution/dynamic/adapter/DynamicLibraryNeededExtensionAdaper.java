@@ -55,6 +55,7 @@ public class DynamicLibraryNeededExtensionAdaper extends DynamicExtensionAdapter
 
     private boolean enableMultiThread = false;
 
+    // test
     public DynamicLibraryNeededExtensionAdaper(TemplateBean templateBean, DynamicConfiguration configuration,
             IDependencyResolver dependencyResolver, Map<String, DynamicModuleAdapter> moduleBeanAdapterMap,
             Map<String, DynamicModuleGroupAdapter> moduleGroupBeanAdapterMap) {
