@@ -98,7 +98,7 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
             try {
                 int timeout = 15;
                 if (GlobalServiceRegister.getDefault().isServiceRegistered(IDesignerCoreService.class)) {
-                    IDesignerCoreService designerService = (IDesignerCoreService) GlobalServiceRegister.getDefault().getService(
+                    IDesignerCoreService designerService = GlobalServiceRegister.getDefault().getService(
                             IDesignerCoreService.class);
                     timeout = designerService.getDBConnectionTimeout();
                 }
@@ -686,7 +686,7 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
                         int count = 0;
                         int limit = -1;
                         if (GlobalServiceRegister.getDefault().isServiceRegistered(IDesignerCoreService.class)) {
-                            IDesignerCoreService designerService = (IDesignerCoreService) GlobalServiceRegister.getDefault()
+                            IDesignerCoreService designerService = GlobalServiceRegister.getDefault()
                                     .getService(IDesignerCoreService.class);
                             limit = designerService.getHBaseOrMaprDBScanLimit();
                         }
@@ -836,6 +836,16 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
                             .getHBaseOrMaprDBScanLimit();
                 }
                 List<String> existingColumns = new ArrayList<String>();
+                List<MetadataTable> tables = ConnectionHelper.getTablesWithOrders(dbconn);
+                for (MetadataTable t : tables) {
+                    if (t.getName().equals(metadataTable.getName())) {
+                        List<MetadataColumn> existColumns = t.getColumns();
+                        for (MetadataColumn c : existColumns) {
+                            existingColumns.add(c.getName());
+                        }
+                        break;
+                    }
+                }
                 Object scanner = getResultScanner(table, scan);
                 Object result = nextItem(scanner);
                 while (result != null) {
@@ -1063,7 +1073,7 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
             int count = 0;
             int limit = -1;
             if (GlobalServiceRegister.getDefault().isServiceRegistered(IDesignerCoreService.class)) {
-                IDesignerCoreService designerService = (IDesignerCoreService) GlobalServiceRegister
+                IDesignerCoreService designerService = GlobalServiceRegister
                         .getDefault()
                         .getService(IDesignerCoreService.class);
                 limit = designerService.getHBaseOrMaprDBScanLimit();
@@ -1147,7 +1157,7 @@ public class HBaseMetadataProvider implements IDBMetadataProvider {
             Object hAdmin = getAdmin(hConnection);
             List<Object> allTables = getTableDescriptors(hAdmin);
             for (Object tableDescriptor : allTables) {
-                result.add(getTableName(tableDescriptor)); //$NON-NLS-1$
+                result.add(getTableName(tableDescriptor)); 
             }
         } catch (Exception e) {
             ExceptionHandler.process(e);
