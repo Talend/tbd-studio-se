@@ -113,6 +113,15 @@
       ]
     },
     {
+      "id": "aws-java-sdk-bundle",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "aws-java-sdk-bundle-1.11.160.jar",
+      "mvnUri": "mvn:com.amazonaws/aws-java-sdk-bundle/1.11.160",
+      "useStudioRepository": "true",
+      "description": ""
+    },
+    {
       "id": "hive-jdbc",
       "type": "BASE",
       "context": "{properties.context}",
@@ -1469,6 +1478,13 @@
       "description": "",
       "modules": [
         "avatica-1.8.0"
+      ]
+    },
+    {
+      "id": "SPARK-S3-LIB-MRREQUIRED-DYNAMIC",
+      "description": "",
+      "modules": [
+        "aws-java-sdk-bundle"
       ]
     },
     {
