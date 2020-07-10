@@ -376,8 +376,8 @@
 			<IMPORT NAME="gson-2.2.4.jar" MODULE="gson-2.2.4.jar" MVN="mvn:com.google.code.gson/gson/2.2.4"  UrlPath="platform:/plugin/org.talend.libraries.couchdb/lib/gson-2.2.4.jar" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'COUCHDB_1_0_2')" />
 			<IMPORT NAME="commons-codec" MODULE="commons-codec-1.11.jar" MVN="mvn:commons-codec/commons-codec/1.11" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'COUCHDB_1_0_2')"/>
 			<IMPORT NAME="commons-logging" MODULE="commons-logging-1.2.jar" MVN="mvn:commons-logging/commons-logging/1.2" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'COUCHDB_1_0_2')" />
-			<IMPORT NAME="httpcore" MODULE="httpcore-4.4.11.jar" MVN="mvn:org.apache.httpcomponents/httpcore/4.4.11" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'COUCHDB_1_0_2')"/>
-			<IMPORT NAME="httpclient" MODULE="httpclient-4.5.9.jar" MVN="mvn:org.apache.httpcomponents/httpclient/4.5.9" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'COUCHDB_1_0_2')"/>
+			<IMPORT NAME="httpcore" MODULE="httpcore-4.4.13.jar" MVN="mvn:org.apache.httpcomponents/httpcore/4.4.13" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'COUCHDB_1_0_2')"/>
+			<IMPORT NAME="httpclient" MODULE="httpclient-4.5.12.jar" MVN="mvn:org.apache.httpcomponents/httpclient/4.5.12" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'COUCHDB_1_0_2')"/>
 		</IMPORTS>
    </CODEGENERATION>
 
