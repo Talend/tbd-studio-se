@@ -57,14 +57,6 @@
 					javaDbDriver = "org.apache.hive.jdbc.HiveDriver";
 					impalaDbProtocol="hive2";
 				}
-				if ("impala40".equalsIgnoreCase(impalaDriver)) {
-					javaDbDriver = "com.cloudera.impala.jdbc4.Driver";
-					impalaDbProtocol="impala";
-				}	
-				if ("impala41".equalsIgnoreCase(impalaDriver)) {
-					javaDbDriver = "com.cloudera.impala.jdbc41.Driver";
-					impalaDbProtocol="impala";
-				}
 			} else {
 				throw new IllegalArgumentException("impala can not work with Hive1");
 			}
