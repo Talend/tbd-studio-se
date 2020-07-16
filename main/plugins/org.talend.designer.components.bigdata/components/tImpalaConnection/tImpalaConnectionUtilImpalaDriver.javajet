@@ -4,6 +4,15 @@
       // use HiveComponent type to get all necessary methods but there is something to fix about the design on the current typing 
 		private org.talend.hadoop.distribution.component.HiveComponent distrib = null;
 		private boolean isCustom;
+	   final private  java.util.List<String> logLevel =  new java.util.ArrayList<String>() {{
+			 add("OFF");
+			 add("FATAL"); 
+			 add("ERROR");
+			 add("WARN");
+			 add("INFO");
+			 add("DEBUG");
+			 add("TRACE");
+			}};
     
 		public ConnectionUtilImpala(org.talend.hadoop.distribution.component.HadoopComponent distrib) {
 			this.distrib = (org.talend.hadoop.distribution.component.HiveComponent)distrib;
@@ -15,9 +24,17 @@
 			conn_<%=cid%> = java.sql.DriverManager.getConnection(url_<%=cid%>);
 <%
 		}
-
+      private String getLevelDebug(INode node){
+          String res="0";
+          if(isLog4jEnabled){
+              res = ""+logLevel.indexOf(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_RUN_LEVEL__").toUpperCase());
+			 }
+			 System.out.println(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_RUN_LEVEL__") + "=>" +res);
+			 return res;
+      }
 		public void createURL(INode node) {
 			super.createURL(node);
+			String logLevel=";LogLevel="+getLevelDebug(node);
 			
 			String  userName = ElementParameterParser.getValue(node, "__USER__"); 
 			
@@ -97,7 +114,7 @@
 			// User the classpath to infer Kerberos parameters
 			if(configureFromClassPath) {
 %>
-					String url_<%=cid%> = "jdbc:impala://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + ";";
+					String url_<%=cid%> = "jdbc:impala://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + "<%=logLevel%>";
 
 					// Add HADOOP_CONF_DIR to the classpath if it's present
 					String hadoopConfDir_<%=cid%> = System.getenv("HADOOP_CONF_DIR");
@@ -233,18 +250,18 @@
 						                              + ";KrbServiceName=" + krbServiceName_<%=cid%>
 						                              + ";KrbHostFQDN=" + krbHostFQDN_<%=cid%>
 						                              + ";KrbRealm=" + krbRealm_<%=cid%>;
-							String url_<%=cid%> = "jdbc:impala://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + urlKerberosParameter_<%=cid%>+";ssl=1" +";sslTrustStore=" + <%=sslTrustStore%> + ";trustStorePassword=" + decryptedSslStorePassword_<%=cid%>;
+							String url_<%=cid%> = "jdbc:impala://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%>+ "<%=logLevel%>" + urlKerberosParameter_<%=cid%>+";ssl=1" +";sslTrustStore=" + <%=sslTrustStore%> + ";trustStorePassword=" + decryptedSslStorePassword_<%=cid%>;
 <%
 							// Does the distrib support only SASL-QOP + KERBEROS
 							} else {
 						
 %>
-							String url_<%=cid%> = "jdbc:impala://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + urlKerberosParameter_<%=cid%>+";sasl.qop=auth-conf";
+							String url_<%=cid%> = "jdbc:impala://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%>+ "<%=logLevel%>" + urlKerberosParameter_<%=cid%>+";sasl.qop=auth-conf";
 <%
 							}
 						} else {
 %>
-							String url_<%=cid%> = "jdbc:impala://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + urlKerberosParameter_<%=cid%>;
+							String url_<%=cid%> = "jdbc:impala://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%>+ "<%=logLevel%>" + urlKerberosParameter_<%=cid%>;
 <%
 						}
 					} else {
@@ -260,11 +277,11 @@
 <%
 							}
 %>
-							String url_<%=cid%> = "jdbc:impala://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%>+ ";ssl=1"+";UID=" + <%=userName%> +";sslTrustStore=" + <%=sslTrustStore%> + ";trustStorePassword=" + decryptedSslStorePassword_<%=cid%>;
+							String url_<%=cid%> = "jdbc:impala://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%>+ "<%=logLevel%>"+ ";ssl=1"+";UID=" + <%=userName%> +";sslTrustStore=" + <%=sslTrustStore%> + ";trustStorePassword=" + decryptedSslStorePassword_<%=cid%>;
 <%
 						} else {
 %>
-							String url_<%=cid%> = "jdbc:impala://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + ";auth=noSasl";
+							String url_<%=cid%> = "jdbc:impala://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%>+ "<%=logLevel%>" + ";auth=noSasl";
 <%
 						}
 					}
