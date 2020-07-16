@@ -197,7 +197,7 @@ public class CDP7xDistributionTemplate extends AbstractDynamicCDPDistributionTem
 		Set<ESparkVersion> version = new HashSet<>();
 		Set<ESparkVersion> sparkVersions = super.getSparkVersions();
 		if (sparkVersions == null || sparkVersions.isEmpty()) {
-			version.add(ESparkVersion.SPARK_2_2);
+			version.add(ESparkVersion.SPARK_2_4);
 		} else {
 			version.addAll(sparkVersions);
 		}
