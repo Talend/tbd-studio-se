@@ -3,6 +3,7 @@
 	class ConnectionUtilImpala extends DefaultConnectionUtil {
       // use HiveComponent type to get all necessary methods but there is something to fix about the design on the current typing 
 		private org.talend.hadoop.distribution.component.HiveComponent distrib = null;
+		
 		private boolean isCustom;
 	   final private  java.util.List<String> logLevel =  new java.util.ArrayList<String>() {{
 			 add("OFF");
@@ -26,10 +27,10 @@
 		}
       private String getLevelDebug(INode node){
           String res="0";
-          if(isLog4jEnabled){
+          boolean customLogLevel  = "true".equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_RUN_ACTIVATE__"));
+          if(customLogLevel){
               res = ""+logLevel.indexOf(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_RUN_LEVEL__").toUpperCase());
 			 }
-			 System.out.println(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_RUN_LEVEL__") + "=>" +res);
 			 return res;
       }
 		public void createURL(INode node) {
