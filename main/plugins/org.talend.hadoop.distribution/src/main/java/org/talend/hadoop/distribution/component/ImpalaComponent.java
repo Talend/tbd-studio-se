@@ -19,17 +19,6 @@ package org.talend.hadoop.distribution.component;
 public interface ImpalaComponent extends HadoopComponent {
 
     /**
-     * indicate if we support the impala native protocol.
-     * connection with jdbc:impala://[Host]:[Port]/[Schema];[Property1]=[Value];[Property2]=[Value];
-     * @return
-     */
-    default boolean doSupportImpalaConnector() {
-        //only hive2 driver are supported for now (default)
-        //we do not support cloudera impala driver.
-        return false;
-    }
-
-    /**
      * indicate if Impala component support SSL
      *
      * Warning: Prior to CDH 5.5.2 / Impala 2.3.2, user could enable Kerberos authentication

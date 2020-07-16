@@ -283,7 +283,6 @@
                 { "groupId" : "com.sun.jersey", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" }
             ]
         },
-
         {
             "id" : "hive-jdbc",
             "type" : "BASE",
@@ -412,6 +411,17 @@
             "context" : "{properties.context}",
             "jarName" : "httpcore-4.4.6.jar",
             "mvnUri" : "mvn:org.talend.libraries/httpcore-4.4.6/6.3.0",
+            "useStudioRepository" : "true",
+            "description" : ""
+        },
+           {
+            "id" : "impala-jdbc",
+            "type" : "STANDARD",
+            "context" : "{properties.context}",
+            "groupId" : "impala",
+            "artifactId" : "ImpalaJDBC42",
+            "version" : "2.6.17.1020",
+            "mvnUri" : "mvn:Impala/ImpalaJDBC42/2.6.15.1017",
             "useStudioRepository" : "true",
             "description" : ""
         },
@@ -700,6 +710,7 @@
             "description" : "",
             "modules": [
                 "hive-exec",
+                "impala-jdbc",
                 "hive-jdbc"
             ]
         },
@@ -708,7 +719,7 @@
             "description" : "",
             "modules": [
                 "hadoop-client",
-                "hive-exec",
+                "impala-jdbc",
                 "hive-jdbc"
             ]
         },
@@ -838,15 +849,16 @@
             "id" : "SQOOP-LIB-DYNAMIC",
             "description" : "",
             "modules": [
-                
+                "sqoop_only",
+                "parquet-avro"
             ]
         },
         {
             "id" : "SQOOP-PARQUET-LIB-DYNAMIC",
             "description" : "",
             "modules": [
-                "kite-data-core"
-            ]
+				
+			]
         },
         {
             "id" : "TALEND_CLOUDERA_NAVIGATOR-DYNAMIC",

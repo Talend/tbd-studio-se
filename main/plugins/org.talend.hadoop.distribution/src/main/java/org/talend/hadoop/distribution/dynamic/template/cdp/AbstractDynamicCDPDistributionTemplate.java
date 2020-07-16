@@ -17,7 +17,6 @@ import java.util.Map;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
-import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
@@ -54,7 +53,10 @@ public abstract class AbstractDynamicCDPDistributionTemplate extends AbstractDyn
         if (this instanceof SqoopComponent) {
             groupTemplateMap.put(ComponentType.SQOOP, new DynamicCDPSqoopModuleGroupTemplate(pluginAdapter));
         }
-        
+        if (this instanceof ImpalaComponent) {
+            groupTemplateMap.put(ComponentType.IMPALA, new DynamicImpalaModuleGroupTemplate(pluginAdapter));
+        }
+
         return groupTemplateMap;
     }
 

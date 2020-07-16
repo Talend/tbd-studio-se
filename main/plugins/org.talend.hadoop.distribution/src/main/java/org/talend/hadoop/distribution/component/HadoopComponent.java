@@ -237,4 +237,15 @@ public interface HadoopComponent {
 
     public boolean doSupportAzureDataLakeStorageGen2();
     public boolean doSupportWebHDFS();
+    
+    
+    /**
+     * indicate if we support the impala native protocol.
+     * connection with jdbc:impala://[Host]:[Port]/[Schema];[Property1]=[Value];[Property2]=[Value];
+     * false by default, hive2 driver used
+     * @returnD
+     */
+    default boolean doSupportImpalaConnector() {
+        return false;
+    }
 }

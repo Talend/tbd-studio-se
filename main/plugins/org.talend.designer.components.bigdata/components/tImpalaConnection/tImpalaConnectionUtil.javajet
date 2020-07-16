@@ -1,45 +1,28 @@
-<%@ jet 
-	imports="
-		org.talend.core.model.process.INode 
-		org.talend.core.model.process.ElementParameterParser 
-		org.talend.designer.codegen.config.CodeGeneratorArgument
-		org.talend.core.model.metadata.IMetadataTable 
-		org.talend.core.model.metadata.IMetadataColumn
-		org.talend.core.model.process.IConnection
-		org.talend.core.model.process.IConnectionCategory
-		org.talend.core.model.metadata.types.JavaTypesManager
-		java.util.List
-		java.util.Map
-	"
-%>
 <%
-	CodeGeneratorArgument inputCodeGenArgument = (CodeGeneratorArgument) argument;
-	INode inputNode = (INode)inputCodeGenArgument.getArgument();
-	String inputCid = inputNode.getUniqueName();
-	
-	boolean useExistingConnection = "true".equals(ElementParameterParser.getValue(inputNode,"__USE_EXISTING_CONNECTION__"));
-	boolean dieOnError = "true".equals(ElementParameterParser.getValue(inputNode, "__DIE_ON_ERROR__"));
+	class ConnectionUtil extends DefaultConnectionUtil {
+		private String javaDbDriver = "org.apache.hadoop.hive.jdbc.HiveDriver";
+		private org.talend.hadoop.distribution.component.HiveComponent hiveDistrib;
+		private boolean isCustom;
+
+		public ConnectionUtil(org.talend.hadoop.distribution.component.HiveComponent hiveDistrib) {
+			this.hiveDistrib = hiveDistrib;
+			this.isCustom = hiveDistrib instanceof org.talend.hadoop.distribution.custom.CustomDistribution;
+		}
+
+		public void createConnection(INode node) {
+			String connectionMode = ElementParameterParser.getValue(node, "__CONNECTION_MODE__");
+			String hiveVersion = ElementParameterParser.getValue(node, "__HIVE_VERSION__");
+			boolean useKrb = "true".equals(ElementParameterParser.getValue(node, "__USE_KRB__"));
+			boolean securityIsEnabled = useKrb && (isCustom || this.hiveDistrib.doSupportKerberos());
 %>
-	<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/DB/Input/HelpClass.javajet"%>
+			conn_<%=cid%> = java.sql.DriverManager.getConnection(url_<%=cid%>);
 <%
+		}
 
-	class DBInputBeginUtil extends DefaultDBInputUtil {
-		public void setURL(INode node) {
-			String theDistribution = ElementParameterParser.getValue(node, "__DISTRIBUTION__");
-			String theVersion = ElementParameterParser.getValue(node, "__IMPALA_VERSION__");
+		public void createURL(INode node) {
+			super.createURL(node);
 
-			org.talend.hadoop.distribution.component.HiveComponent hiveDistrib = null;
-			try {
-				hiveDistrib = (org.talend.hadoop.distribution.component.HiveComponent) org.talend.hadoop.distribution.DistributionFactory.buildDistribution(theDistribution, theVersion);
-			} catch (java.lang.Exception e) {
-				e.printStackTrace();
-				throw new IllegalStateException("Unexpected Error: Hive Distribution can not be found for '"+theDistribution+"-"+theVersion+"'");
-
-			}
-			boolean isCustom = hiveDistrib instanceof org.talend.hadoop.distribution.custom.CustomDistribution;
-			String javaDbDriver = "org.apache.hadoop.hive.jdbc.HiveDriver";				        
-				        
-			String additionalJdbcSettings = ElementParameterParser.getValue(node, "__IMPALA_ADDITIONAL_JDBC__");	
+			String additionalJdbcSettings = ElementParameterParser.getValue(node, "__IMPALA_ADDITIONAL_JDBC__");
 			
 			String hiveVersion = ElementParameterParser.getValue(node, "__HIVE_VERSION__");
 			String fsDefaultName = "fs.default.name";
@@ -53,7 +36,7 @@
 			boolean useYarn = "true".equals(ElementParameterParser.getValue(node, "__USE_YARN__"));
 
 			boolean useKrb = "true".equals(ElementParameterParser.getValue(node, "__USE_KRB__"));
-			boolean securityIsEnabled = useKrb && ( isCustom || hiveDistrib.doSupportKerberos() );
+			boolean securityIsEnabled = useKrb && ( this.isCustom || this.hiveDistrib.doSupportKerberos() );
 			String impalaPrincipal = ElementParameterParser.getValue(node, "__IMPALA_PRINCIPAL__");
 			
 			boolean useKeytab = "true".equals(ElementParameterParser.getValue(node, "__USE_KEYTAB__"));
@@ -66,25 +49,19 @@
 
 			boolean configureFromClassPath = "true".equals(ElementParameterParser.getValue(node, "__CONFIGURATIONS_FROM_CLASSPATH__"));
 			boolean storeByHBase = "true".equals(ElementParameterParser.getValue(node, "__STORE_BY_HBASE__"));
-		   String sslSyntaxe=""; 
+		    
 
-			if(impalaDriver!=null && !"".equals(impalaDriver.trim()) && (isCustom || hiveDistrib.doSupportHive2())) {
+			if(impalaDriver!=null && !"".equals(impalaDriver.trim()) && (this.isCustom || this.hiveDistrib.doSupportHive2())) {
 			    impalaDriver = impalaDriver.toLowerCase();
 				if ("hive2".equalsIgnoreCase(impalaDriver)) {
 					javaDbDriver = "org.apache.hive.jdbc.HiveDriver";
 					impalaDbProtocol="hive2";
-					sslSyntaxe=";ssl=true";
 				}
-				if ("impala".equalsIgnoreCase(impalaDriver)) {
-					javaDbDriver = "com.cloudera.impala.jdbc.Driver";
-					impalaDbProtocol="impala";
-					sslSyntaxe=";ssl=1";
-				}	
 			} else {
 				throw new IllegalArgumentException("impala can not work with Hive1");
 			}
 
-          	// When configuraing from the classpath we do not set the variables using System.setProperty
+          	// When configuring from the classpath we do not set the variables using System.setProperty
           	// We set them directly on the Hadoop Configuration object
 			if((hadoopProps!=null && hadoopProps.size() > 0) && (!configureFromClassPath)) {
         		if(securityIsEnabled) {
@@ -141,7 +118,7 @@
 					if(hadoopConfDir_<%=cid%> != null){
 						final java.net.URL[] urlHadoop = new java.net.URL[] { new java.io.File(hadoopConfDir_<%=cid%>).toURI().toURL() };
 						final ClassLoader threadClassLoader = Thread.currentThread().getContextClassLoader();
-						final java.net.URLClassLoader newThreadClassLoader = new java.net.URLClassLoader(urlHadoop, threadClassLoader);
+						final java.net.URLClassLoader newThreadClassLoader = new java.net.URLClassLoader(urlHadoop, threadClassLoader);						
 						Thread.currentThread().setContextClassLoader(newThreadClassLoader);
 					}
 					org.apache.hadoop.conf.Configuration conf_<%=cid%> = new org.apache.hadoop.conf.Configuration();
@@ -200,18 +177,8 @@
 
 
 						String hiveServer2KerberosPrincipal = conf_<%=cid%>.get("hive.server2.authentication.kerberos.principal", "");
-						String urlKerberosParameter = "";
-						<%if("impala".equalsIgnoreCase(impalaDbProtocol)){%>
-						 String krbServiceName_<%=cid%>  = (hiveServer2KerberosPrincipal.split("/")[0]);
-		             String krbHostFQDN_<%=cid%> = (hiveServer2KerberosPrincipal.split("/")[1].split("@")[0]);
-		             String krbRealm_<%=cid%> = (hiveServer2KerberosPrincipal.split("/")[1].split("@")[1]);
-						 urlKerberosParameter_<%=cid%> = ";AuthMech=1" 
-						                              + ";KrbServiceName=" + krbServiceName_<%=cid%>
-						                              + ";KrbHostFQDN=" + krbHostFQDN_<%=cid%>
-						                              + ";KrbRealm=" + krbRealm_<%=cid%>;
-						<%}else{%>
-						 urlKerberosParameter = ";principal=" + hiveServer2KerberosPrincipal;
-                  <%}%> 
+						String urlKerberosParameter = "principal=" + hiveServer2KerberosPrincipal;
+
 						// Keytab configurations
 						if(tldHiveKerberosAuth.equalsIgnoreCase("keytab")){
 							org.apache.hadoop.security.UserGroupInformation.loginUserFromKeytab(tldHiveKerberosKtPrincipal, tldHiveKerberosKtPath);
@@ -220,9 +187,9 @@
 						// SSL configurations
 						if(tldHiveEnc.equalsIgnoreCase("ssl")){
 <%
-							if (hiveDistrib.doSupportSSLwithKerberos()) {
+							if (this.hiveDistrib.doSupportSSLwithKerberos()) {
 %>
-								url_<%=cid%> += urlKerberosParameter + "<%=sslSyntaxe%>" +";sslTrustStore=" + tldHiveSslTsPath + ";trustStorePassword=" + tldHiveSslTsPassword;
+								url_<%=cid%> += urlKerberosParameter + ";ssl=true" +";sslTrustStore=" + tldHiveSslTsPath + ";trustStorePassword=" + tldHiveSslTsPassword;
 <%
 							} else {
 %>
@@ -238,7 +205,7 @@
 
 						// SSL configurations
 						if(tldHiveEnc.equalsIgnoreCase("ssl")){
-							url_<%=cid%> += ";ssl=1" +";sslTrustStore=" + tldHiveSslTsPath + ";trustStorePassword=" + tldHiveSslTsPassword;
+							url_<%=cid%> += ";ssl=true" +";sslTrustStore=" + tldHiveSslTsPath + ";trustStorePassword=" + tldHiveSslTsPassword;
 						}
 					}
 <%
@@ -253,9 +220,9 @@
 <%
 						}
 						// Using SSL in Secure Mode
-						if (useSsl && hiveDistrib.doSupportSSL()) {
+						if (useSsl && this.hiveDistrib.doSupportSSL()) {
 							// Does the distrib support SSL + KERBEROS
-							if (hiveDistrib.doSupportSSLwithKerberos()) {
+							if (this.hiveDistrib.doSupportSSLwithKerberos()) {
 								if (ElementParameterParser.canEncrypt(node, sslStorepasswordFieldName)) {
 %>
 							String decryptedSslStorePassword_<%=cid%> = routines.system.PasswordEncryptUtil.decryptPassword(<%=ElementParameterParser.getEncryptedValue(node, sslStorepasswordFieldName)%>);
@@ -265,37 +232,26 @@
 							String decryptedSslStorePassword_<%=cid%> = <%= ElementParameterParser.getValue(node, sslStorepasswordFieldName)%>;
 <%
 								}
-%>                 String kerberosPart_<%=cid%>="";
-                   <%if("impala".equalsIgnoreCase(impalaDbProtocol)){%>
-						 String krbServiceName_<%=cid%>  = (<%=impalaPrincipal%>.split("/")[0]);
-		             String krbHostFQDN_<%=cid%> = (<%=impalaPrincipal%>.split("/")[1].split("@")[0]);
-		             String krbRealm_<%=cid%> = (<%=impalaPrincipal%>.split("/")[1].split("@")[1]);
-		             kerberosPart_<%=cid%> = ";AuthMech=1" 
-						                              + ";KrbServiceName=" + krbServiceName_<%=cid%>
-						                              + ";KrbHostFQDN=" + krbHostFQDN_<%=cid%>
-						                              + ";KrbRealm=" + krbRealm_<%=cid%>;
-						<%}else{%>
-						 kerberosPart_<%=cid%> = ";principal=" + hiveServer2KerberosPrincipal;
-                  <%}%> 
-							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + kerberosPart_<%=cid%> +"<%=sslSyntaxe%>" +";sslTrustStore=" + <%=sslTrustStore%> + ";trustStorePassword=" + decryptedSslStorePassword_<%=cid%>;
+%>
+							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + ";principal=" + <%=impalaPrincipal%>+";ssl=true" +";sslTrustStore=" + <%=sslTrustStore%> + ";trustStorePassword=" + decryptedSslStorePassword_<%=cid%>;
 <%
 							// Does the distrib support only SASL-QOP + KERBEROS
 							} else {
 						
 %>
-							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> +kerberosPart_<%=cid%>+";sasl.qop=auth-conf";
+							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + ";principal=" + <%=impalaPrincipal%>+";sasl.qop=auth-conf";
 <%
 							}
 						} else {
 %>
-							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + kerberosPart_<%=cid%>;
+							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + ";principal=" + <%=impalaPrincipal%>;
 <%
 						}
 					// END IF06
 					// BEGIN IF07
 					} else {
 						//Using SSL in non Secure Mode
-						if(useSsl && hiveDistrib.doSupportSSL()){
+						if(useSsl && this.hiveDistrib.doSupportSSL()){
 							if (ElementParameterParser.canEncrypt(node, sslStorepasswordFieldName)) {
 %>
 							String decryptedSslStorePassword_<%=cid%> = routines.system.PasswordEncryptUtil.decryptPassword(<%=ElementParameterParser.getEncryptedValue(node, sslStorepasswordFieldName)%>);
@@ -306,7 +262,7 @@
 <%
 							}
 %>
-							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%>+ "<%=sslSyntaxe%>" +";sslTrustStore=" + <%=sslTrustStore%> + ";trustStorePassword=" + decryptedSslStorePassword_<%=cid%>;
+							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%>+ ";ssl=true" +";sslTrustStore=" + <%=sslTrustStore%> + ";trustStorePassword=" + decryptedSslStorePassword_<%=cid%>;
 <%
 						} else {
 %>
@@ -325,57 +281,21 @@
 					}
 					url_<%=cid%> += additionalJdbcSettings_<%=cid%>;
 				}
-<%	
-		}
-	
-		public String getDirverClassName(INode node){
-			return "org.apache.hive.jdbc.HiveDriver";
-		}
-		
-		public void afterUseExistConnection(INode node) {
-			String connection = ElementParameterParser.getValue(node,"__CONNECTION__");
-			String db = "db_" + connection;
-%>
-			String dbname_<%=cid%> = (String)globalMap.get("<%=db%>");
-			if(dbname_<%=cid%>!=null && !"".equals(dbname_<%=cid%>.trim()) && !"default".equals(dbname_<%=cid%>.trim())) {
-				java.sql.Statement goToDatabase_<%=cid%> = conn_<%=cid%>.createStatement();
-				goToDatabase_<%=cid%>.execute("use " + dbname_<%=cid%>);
-				goToDatabase_<%=cid%>.close();
-		    }
 <%
 		}
-		
-		public void afterUseNewConnection(INode node) {
+
+		public void setAutoCommit(INode node) {
+			boolean useTransaction = false;//("true").equals(ElementParameterParser.getValue(node,"__IS_USE_AUTO_COMMIT__"));
+			boolean setAutoCommit = "true".equals(ElementParameterParser.getValue(node, "__AUTO_COMMIT__"));
+			if (useTransaction) {
 %>
-			String dbname_<%=cid%> = <%=dbname%>;
-			if(dbname_<%=cid%>!=null && !"".equals(dbname_<%=cid%>.trim()) && !"default".equals(dbname_<%=cid%>.trim())) {
-				java.sql.Statement goToDatabase_<%=cid%> = conn_<%=cid%>.createStatement();
-				goToDatabase_<%=cid%>.execute("use " + dbname_<%=cid%>);
-				goToDatabase_<%=cid%>.close();
-		    }
+			conn_<%=cid%>.setAutoCommit(<%=setAutoCommit%>);
 <%
-	    }
-	}
-	
-	dbInputBeginUtil = new DBInputBeginUtil();
-	
-	String impalaVersion = ElementParameterParser.getValue(inputNode, "__IMPALA_VERSION__");
-	String distribution = ElementParameterParser.getValue(inputNode, "__DISTRIBUTION__");
-	
-	if(useExistingConnection) {
-		distribution = "";
-		impalaVersion = "";
-		String connection = ElementParameterParser.getValue(inputNode, "__CONNECTION__");
-		for (INode pNode : inputNode.getProcess().getNodesOfType("tHiveConnection")) {
-			if(connection!=null && connection.equals(pNode.getUniqueName())) {
-				distribution = ElementParameterParser.getValue(pNode, "__DISTRIBUTION__");
-				impalaVersion = ElementParameterParser.getValue(pNode, "__HIVE_VERSION__");
-				break;
 			}
 		}
-	}
-	
-	boolean isCustom = "CUSTOM".equals(distribution);
-%>
 
-	<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/DB/Input/AbstractDBInputBegin.javajet"%>
+		public String getDirverClassName(INode node){
+			return javaDbDriver;
+		}
+	}//end class
+%>
