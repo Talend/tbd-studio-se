@@ -111,10 +111,7 @@
             }
 		    %>
           globalMap.put("HADOOP_USER_NAME_<%=cid%>", System.getProperty("HADOOP_USER_NAME"));
-<<<<<<< HEAD
            String urlKerberosParameter_<%=cid%> = "";
-=======
->>>>>>> 84ed04002f1c9b5adbd3e23d2b1bd3569751c568
 			<%
 			// User the classpath to infer Kerberos parameters
 			if(configureFromClassPath) {
@@ -180,11 +177,7 @@
 						}
 <%
 					}
-<<<<<<< HEAD
-%>             
-=======
 %>
->>>>>>> 84ed04002f1c9b5adbd3e23d2b1bd3569751c568
 					if(org.apache.hadoop.security.UserGroupInformation.isSecurityEnabled()){
 						String hiveServer2KerberosPrincipal = conf_<%=cid%>.get("hive.server2.authentication.kerberos.principal", "");
 						
@@ -194,11 +187,7 @@
 						
 						
 						
-<<<<<<< HEAD
-						 urlKerberosParameter_<%=cid%> = ";AuthMech=1" 
-=======
-						String urlKerberosParameter_<%=cid%> = ";AuthMech=1" 
->>>>>>> 84ed04002f1c9b5adbd3e23d2b1bd3569751c568
+						urlKerberosParameter_<%=cid%> = ";AuthMech=1"
 						                              + ";KrbServiceName=" + krbServiceName_<%=cid%>
 						                              + ";KrbHostFQDN=" + krbHostFQDN_<%=cid%>
 						                              + ";KrbRealm=" + krbRealm_<%=cid%>;
@@ -259,11 +248,7 @@
 						 String krbServiceName_<%=cid%>  = (<%=impalaPrincipal%>.split("/")[0]);
 		             String krbHostFQDN_<%=cid%> = (<%=impalaPrincipal%>.split("/")[1].split("@")[0]);
 		             String krbRealm_<%=cid%> = (<%=impalaPrincipal%>.split("/")[1].split("@")[1]);
-<<<<<<< HEAD
 		             urlKerberosParameter_<%=cid%> = ";AuthMech=1" 
-=======
-		             String urlKerberosParameter_<%=cid%> = ";AuthMech=1" 
->>>>>>> 84ed04002f1c9b5adbd3e23d2b1bd3569751c568
 						                              + ";KrbServiceName=" + krbServiceName_<%=cid%>
 						                              + ";KrbHostFQDN=" + krbHostFQDN_<%=cid%>
 						                              + ";KrbRealm=" + krbRealm_<%=cid%>;
