@@ -111,6 +111,7 @@
             }
 		    %>
           globalMap.put("HADOOP_USER_NAME_<%=cid%>", System.getProperty("HADOOP_USER_NAME"));
+           String urlKerberosParameter_<%=cid%> = "";
 			<%
 			// User the classpath to infer Kerberos parameters
 			if(configureFromClassPath) {
@@ -186,7 +187,7 @@
 						
 						
 						
-						String urlKerberosParameter_<%=cid%> = ";AuthMech=1" 
+						urlKerberosParameter_<%=cid%> = ";AuthMech=1"
 						                              + ";KrbServiceName=" + krbServiceName_<%=cid%>
 						                              + ";KrbHostFQDN=" + krbHostFQDN_<%=cid%>
 						                              + ";KrbRealm=" + krbRealm_<%=cid%>;
@@ -247,7 +248,7 @@
 						 String krbServiceName_<%=cid%>  = (<%=impalaPrincipal%>.split("/")[0]);
 		             String krbHostFQDN_<%=cid%> = (<%=impalaPrincipal%>.split("/")[1].split("@")[0]);
 		             String krbRealm_<%=cid%> = (<%=impalaPrincipal%>.split("/")[1].split("@")[1]);
-		             String urlKerberosParameter_<%=cid%> = ";AuthMech=1" 
+                     urlKerberosParameter_<%=cid%> = ";AuthMech=1" 
 						                              + ";KrbServiceName=" + krbServiceName_<%=cid%>
 						                              + ";KrbHostFQDN=" + krbHostFQDN_<%=cid%>
 						                              + ";KrbRealm=" + krbRealm_<%=cid%>;
