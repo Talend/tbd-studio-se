@@ -312,9 +312,9 @@
                 if(isAggregationQuery){
 	                %>
 	                	<%if(version_3_5_X) {%>
-							java.util.List<org.bson.Document> aggregationStages = new java.util.ArrayList<org.bson.Document>();
+							java.util.List<org.bson.Document> aggregationStages_<%=cid %> = new java.util.ArrayList<org.bson.Document>();
 						<%} else {%>
-							java.util.List<com.mongodb.DBObject> aggregationStages = new java.util.ArrayList<com.mongodb.DBObject>();
+							java.util.List<com.mongodb.DBObject> aggregationStages_<%=cid %> = new java.util.ArrayList<com.mongodb.DBObject>();
 						<%}%>
 	                	
 	                <%
@@ -322,18 +322,18 @@
 	                %>
 	                	<%if(version_3_5_X) {
 	                	%>
-							aggregationStages.add(org.bson.Document.parse(<%=aggregationStages.get(i).get("AGGREGATION_STAGE")%>));
+							aggregationStages_<%=cid %>.add(org.bson.Document.parse(<%=aggregationStages.get(i).get("AGGREGATION_STAGE")%>));
 						<%} else {%>
-							aggregationStages.add((com.mongodb.DBObject) com.mongodb.util.JSON.parse(<%=aggregationStages.get(i).get("AGGREGATION_STAGE")%>));
+							aggregationStages_<%=cid %>.add((com.mongodb.DBObject) com.mongodb.util.JSON.parse(<%=aggregationStages.get(i).get("AGGREGATION_STAGE")%>));
 						<%}%>
 	                	
 	                <%
 	                }
 	                %>
 	                	<%if(version_3_5_X) {%>
-							com.mongodb.client.MongoCursor<org.bson.Document> cursor_<%=cid%> = coll_<%=cid%>.aggregate(aggregationStages).allowDiskUse(<%=useExternalSort%>).iterator();
+							com.mongodb.client.MongoCursor<org.bson.Document> cursor_<%=cid%> = coll_<%=cid%>.aggregate(aggregationStages_<%=cid %>).allowDiskUse(<%=useExternalSort%>).iterator();
 						<%} else {%>
-							com.mongodb.Cursor cursor_<%=cid%> = coll_<%=cid%>.aggregate(aggregationStages, com.mongodb.AggregationOptions.builder().outputMode(com.mongodb.AggregationOptions.OutputMode.CURSOR).allowDiskUse(<%=useExternalSort%>).build());
+							com.mongodb.Cursor cursor_<%=cid%> = coll_<%=cid%>.aggregate(aggregationStages_<%=cid %>, com.mongodb.AggregationOptions.builder().outputMode(com.mongodb.AggregationOptions.OutputMode.CURSOR).allowDiskUse(<%=useExternalSort%>).build());
 						<%}%>
 	                
 	                <%
