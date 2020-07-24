@@ -87,9 +87,10 @@ imports="
 				<%dbLog.batch().executeTry(dbLog.str(dataAction));%>
 				for(int countEach_<%=cid%>: pstmt_<%=cid %>.executeBatch()) {
 					countSum_<%=cid%> += (countEach_<%=cid%> < 0 ? 0 : countEach_<%=cid%>);
-				}  
-				<%dbLog.batch().executeDone(dbLog.str(dataAction));%>               	
+				}
+				<%dbLog.batch().executeDone(dbLog.str(dataAction));%>
 			}
+			rowsToCommitCount_<%=cid%> += countSum_<%=cid%>;
 	    	<%if (("INSERT").equals(dataAction)) {
 	    	%>
 	    		insertedCount_<%=cid%> += countSum_<%=cid%>; 
@@ -114,6 +115,7 @@ imports="
 		for(int countEach_<%=cid%>: e_<%=cid%>.getUpdateCounts()) {
 			countSum_<%=cid%> += (countEach_<%=cid%> < 0 ? 0 : countEach_<%=cid%>);
 		}
+		rowsToCommitCount_<%=cid%> += countSum_<%=cid%>;
 		<%if (("INSERT").equals(dataAction)) {
     	%>
     		insertedCount_<%=cid%> += countSum_<%=cid%>; 
@@ -131,10 +133,10 @@ imports="
     	%> 
     	System.err.println(e_<%=cid%>.getMessage());
     	<%
-    	}%>                	
-	}                                  
+    	}%>
+	}
     <%
-    }%>   
+    }%>
 
         if(pstmt_<%=cid %> != null) {
 
@@ -149,13 +151,15 @@ imports="
     if(!useExistingConnection) {
         if(!("").equals(commitEvery) && !("0").equals(commitEvery)) {
         %>
-        if(commitCounter_<%=cid%> > 0){
-        	<%dbLog.commit().commitTry(null, dbLog.var("commitCounter"));%>
-            conn_<%=cid%>.commit();
-            <%dbLog.commit().commitDone(null);%>
+        if(commitCounter_<%=cid%> > 0 && rowsToCommitCount_<%=cid%> != 0){
+        	<%dbLog.commit().commitTry(null, dbLog.var("rowsToCommitCount"));%>
+        	conn_<%=cid%>.commit();
+        	<%dbLog.commit().commitDone(null);%>
+        	rowsToCommitCount_<%=cid%> = 0;
+        	commitCounter_<%=cid%> = 0;
         }
         <%
-        }        
+        }
         %>
         <%dbLog.conn().closeTry(null);%>
         conn_<%=cid%> .close();
