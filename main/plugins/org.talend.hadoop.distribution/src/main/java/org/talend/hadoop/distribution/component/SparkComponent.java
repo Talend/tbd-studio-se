@@ -84,6 +84,8 @@ public interface SparkComponent extends MRComponent {
      * @return A string with all of the Spark jars (from the module group SPARK) mapped to local Studio paths.
      */
     public String generateSparkJarsPaths(List<String> commandLineJarsPaths);
+    
+    public String generateSparkJarsPaths(List<String> commandLineJarsPaths, boolean isLightWeight);
 
     /**
      * @return true if the distribution implementation is responsible for importing the Dynamo DB dependencies. If
