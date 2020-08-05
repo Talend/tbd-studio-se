@@ -277,7 +277,7 @@ public abstract class AbstractDynamicDistributionTemplate extends AbstractDistri
         	String customDependencies = getPluginAdapter()
                     .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.LIGHTWEIGHT_DEPENDENCIES.getModuleName());
             if (!StringUtils.isEmpty(customDependencies)) {
-                clusterLibs += "," + customDependencies;
+                clusterLibs += "," + SparkClassPathUtils.generateSparkJarsPathsWithNames(commandLineJarsPaths, customDependencies);
             }
             return clusterLibs;
     	} else {
