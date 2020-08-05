@@ -8,7 +8,6 @@
     <import feature="org.talend.libraries.jdbc.feature" version="0.0.0" match="greaterOrEqual"/>
   </requires>
   <plugin id="org.talend.libraries.apache.cassandra" download-size="0" install-size="0" version="0.0.0"/>
-  <plugin id="org.talend.libraries.apache.kafka" download-size="0" install-size="0" version="0.0.0"/>
   <plugin id="org.talend.libraries.couchbase" download-size="0" install-size="0" version="0.0.0"/>
   <plugin id="org.talend.libraries.couchdb" download-size="0" install-size="0" version="0.0.0"/>
   <plugin id="org.talend.libraries.hcatalog" download-size="0" install-size="0" version="0.0.0"/>
