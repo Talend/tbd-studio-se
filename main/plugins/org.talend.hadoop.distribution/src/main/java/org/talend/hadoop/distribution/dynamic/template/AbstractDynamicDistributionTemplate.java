@@ -290,6 +290,20 @@ public abstract class AbstractDynamicDistributionTemplate extends AbstractDistri
 	        return SparkClassPathUtils.generateSparkJarsPathsWithNames(commandLineJarsPaths, spark2RuntimeId);
     	}
     }
+    
+    public String generateSparkJarsPaths(List<String> commandLineJarsPaths, boolean isLightWeight, String customYarnClassPath) {
+    	if (isLightWeight) {
+    		String noQuotationMarkCustomYarnClassPath = customYarnClassPath.replaceAll("^\"|\"$", "");
+    		String customDependencies = getPluginAdapter()
+                    .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.LIGHTWEIGHT_DEPENDENCIES.getModuleName());
+            if (!StringUtils.isEmpty(customDependencies)) {
+            	noQuotationMarkCustomYarnClassPath += "," + SparkClassPathUtils.generateSparkJarsPathsWithNames(commandLineJarsPaths, customDependencies);
+            }
+            return noQuotationMarkCustomYarnClassPath;
+    	} else {
+            throw new RuntimeException("You need to use lightweight to customize the yarn class path");
+    	}
+    }
 
     @Override
     public SparkStreamingKafkaVersion getSparkStreamingKafkaVersion(ESparkVersion sparkVersion) {
