@@ -3430,6 +3430,21 @@
             },
             {
               "childNodes": [],
+              "id": "DYNAMIC_HDP_3_1_4_12_1_commons_codec_1_11_jar",
+              "tagName": "library"
+            },
+            {
+              "childNodes": [],
+              "id": "DYNAMIC_HDP_3_1_4_12_1_httpclient_4_5_9_jar",
+              "tagName": "library"
+            },
+            {
+              "childNodes": [],
+              "id": "DYNAMIC_HDP_3_1_4_12_1_httpcore_4_4_11_jar",
+              "tagName": "library"
+            },
+            {
+              "childNodes": [],
               "id": "DYNAMIC_HDP_3_1_4_12_1_jackson_core_asl_1_9_13_jar",
               "tagName": "library"
             },
