@@ -3435,6 +3435,11 @@
             },
             {
               "childNodes": [],
+              "id": "DYNAMIC_HDP_3_1_4_12_1_commons_logging_1_2_jar",
+              "tagName": "library"
+            },
+            {
+              "childNodes": [],
               "id": "DYNAMIC_HDP_3_1_4_12_1_httpclient_4_5_9_jar",
               "tagName": "library"
             },
