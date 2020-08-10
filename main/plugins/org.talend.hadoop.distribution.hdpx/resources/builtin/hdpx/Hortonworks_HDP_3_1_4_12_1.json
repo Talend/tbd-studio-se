@@ -3440,6 +3440,41 @@
             },
             {
               "childNodes": [],
+              "id": "DYNAMIC_HDP_3_1_4_12_1_curator_client_4_0_0_jar",
+              "tagName": "library"
+            },
+            {
+              "childNodes": [],
+              "id": "DYNAMIC_HDP_3_1_4_12_1_curator_framework_4_0_0_jar",
+              "tagName": "library"
+            },
+            {
+              "childNodes": [],
+              "id": "DYNAMIC_HDP_3_1_4_12_1_curator_recipes_4_0_0_jar",
+              "tagName": "library"
+            },
+            {
+              "childNodes": [],
+              "id": "DYNAMIC_HDP_3_1_4_12_1_hive_exec_1_21_2_3_1_4_12_1_jar",
+              "tagName": "library"
+            },
+            {
+              "childNodes": [],
+              "id": "DYNAMIC_HDP_3_1_4_12_1_hive_common_3_1_0_3_1_4_12_1_jar",
+              "tagName": "library"
+            },
+            {
+              "childNodes": [],
+              "id": "DYNAMIC_HDP_3_1_4_12_1_hive_exec_3_1_0_3_1_4_12_1_jar",
+              "tagName": "library"
+            },
+            {
+              "childNodes": [],
+              "id": "DYNAMIC_HDP_3_1_4_12_1_hive_jdbc_3_1_0_3_1_4_12_1_jar",
+              "tagName": "library"
+            },
+            {
+              "childNodes": [],
               "id": "DYNAMIC_HDP_3_1_4_12_1_httpclient_4_5_9_jar",
               "tagName": "library"
             },
