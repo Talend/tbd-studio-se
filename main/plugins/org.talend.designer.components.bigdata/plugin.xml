@@ -121,62 +121,62 @@
             
         <!-- Kafka 1.1.0 libraries -->
         <libraryNeeded
-            context="plugin:org.apache.kafka"
+            context="org.talend.designer.components.bigdata"
             id="kafka_2.11-1.1.0.jar"
             name="kafka_2.11-1.1.0.jar"
             mvn_uri="mvn:org.apache.kafka/kafka_2.11/1.1.0"/>
         <libraryNeeded
-            context="plugin:org.apache.kafka"
+            context="org.talend.designer.components.bigdata"
             id="kafka-clients-1.1.0.jar"
             name="kafka-clients-1.1.0.jar"
             mvn_uri="mvn:org.apache.kafka/kafka-clients/1.1.0"/>
         <libraryNeeded
-            context="plugin:org.scala-lang"
+            context="org.talend.designer.components.bigdata"
             id="scala-library-2.11.12.jar"
             name="scala-library-2.11.12.jar" 
             mvn_uri="mvn:org.scala-lang/scala-library/2.11.12"/>
         <libraryNeeded
-            context="plugin:com.typesafe.scala-logging"
+            context="org.talend.designer.components.bigdatag"
             id="scala-logging_2.11-3.7.2.jar"
             name="scala-logging_2.11-3.7.2.jar" 
             mvn_uri="mvn:com.typesafe.scala-logging/scala-logging_2.11/3.7.2"/>
         <libraryNeeded
-            context="plugin:org.xerial.snappy"
+            context="org.talend.designer.components.bigdata"
             id="snappy-java-1.1.7.1.jar"
             name="snappy-java-1.1.7.1.jar" 
             mvn_uri="mvn:org.xerial.snappy/snappy-java/1.1.7.1"/>
         <libraryNeeded
-            context="plugin:com.101tec"
+            context="org.talend.designer.components.bigdata"
             id="zkclient-0.10.jar"
             name="zkclient-0.10.jar" 
             mvn_uri="mvn:com.101tec/zkclient/0.10"/>
         <libraryNeeded
-            context="plugin:org.talend.libraries"
+            context="org.talend.designer.components.bigdatas"
             id="slf4j-log4j12-1.7.25.jar"
             name="slf4j-log4j12-1.7.25.jar" 
             mvn_uri="mvn:org.talend.libraries/slf4j-log4j12-1.7.25/6.0.0"/>
         <libraryNeeded
-            context="plugin:org.talend.libraries"
+            context="org.talend.designer.components.bigdata"
             id="slf4j-api-1.7.25.jar"
             name="slf4j-api-1.7.25.jar" 
             mvn_uri="mvn:org.slf4j/slf4j-api/1.7.25"/>
         <libraryNeeded
-            context="plugin:net.sf.jopt-simple"
+            context="org.talend.designer.components.bigdata"
             id="jopt-simple-5.0.4.jar"
             name="jopt-simple-5.0.4.jar" 
             mvn_uri="mvn:net.sf.jopt-simple/jopt-simple/5.0.4"/>
         <libraryNeeded
-            context="plugin:com.fasterxml.jackson.core"
+            context="org.talend.designer.components.bigdata"
             id="jackson-core-2.9.5.jar"
             name="jackson-core-2.9.5.jar" 
             mvn_uri="mvn:com.fasterxml.jackson.core/jackson-core/2.9.5"/>
         <libraryNeeded
-            context="plugin:com.fasterxml.jackson.core"
+            context="org.talend.designer.components.bigdata"
             id="jackson-databind-2.9.5.jar"
             name="jackson-databind-2.9.5.jar" 
             mvn_uri="mvn:com.fasterxml.jackson.core/jackson-databind/2.9.5"/>
         <libraryNeeded
-            context="plugin:org.talend.libraries"
+            context="org.talend.designer.components.bigdata"
             id="jackson-annotations-2.9.0.jar"
             name="jackson-annotations-2.9.0.jar" 
             mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.0"/>
