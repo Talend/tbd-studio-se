@@ -47,74 +47,74 @@
       
       <!-- Kafka 0.9.0.1 libraries -->
         <libraryNeeded
-            context="plugin:org.talend.libraries.apache.kafka"
+            context="org.talend.designer.components.bigdata"
             id="kafka_2.10-0.9.0.1.jar"
             name="kafka_2.10-0.9.0.1.jar"
             mvn_uri="mvn:org.talend.libraries/kafka_2.10-0.9.0.1/6.2.0"/>
         <libraryNeeded
-            context="plugin:org.talend.libraries.apache.kafka"
+            context="org.talend.designer.components.bigdata"
             id="kafka-clients-0.9.0.1.jar"
             name="kafka-clients-0.9.0.1.jar"
             mvn_uri="mvn:org.talend.libraries/kafka-clients-0.9.0.1/6.2.0"/>
         <libraryNeeded
-            context="plugin:org.talend.libraries.apache.kafka"
+            context="org.talend.designer.components.bigdata"
             id="scala-library-2.10.5.jar"
             name="scala-library-2.10.5.jar" 
             mvn_uri="mvn:org.talend.libraries/scala-library-2.10.5/6.0.0"/>
         <libraryNeeded
-            context="plugin:org.talend.libraries.apache.kafka"
+            context="org.talend.designer.components.bigdata"
             id="snappy-java-1.1.1.7.jar"
             name="snappy-java-1.1.1.7.jar" 
             mvn_uri="mvn:org.talend.libraries/snappy-java-1.1.1.7/6.2.0"/>
         <libraryNeeded
-            context="plugin:org.talend.libraries.apache.kafka"
+            context="org.talend.designer.components.bigdata"
             id="zkclient-0.7.jar"
             name="zkclient-0.7.jar" 
             mvn_uri="mvn:org.talend.libraries/zkclient-0.7/6.0.0"/>
         <libraryNeeded
-            context="plugin:org.talend.libraries.apache.kafka"
+            context="org.talend.designer.components.bigdata"
             id="slf4j-log4j12-1.7.6.jar"
             name="slf4j-log4j12-1.7.6.jar" 
             mvn_uri="mvn:org.talend.libraries/slf4j-log4j12-1.7.6/6.2.0"/>
             
         <!-- Kafka 0.10.0.1 libraries -->
         <libraryNeeded
-            context="plugin:org.talend.libraries.apache.kafka"
+            context="org.talend.designer.components.bigdata"
             id="kafka_2.10-0.10.0.1.jar"
             name="kafka_2.10-0.10.0.1.jar"
             mvn_uri="mvn:org.talend.libraries/kafka_2.10-0.10.0.1/6.3.0"/>
         <libraryNeeded
-            context="plugin:org.talend.libraries.apache.kafka"
+            context="org.talend.designer.components.bigdata"
             id="kafka-clients-0.10.0.1.jar"
             name="kafka-clients-0.10.0.1.jar"
             mvn_uri="mvn:org.talend.libraries/kafka-clients-0.10.0.1/6.3.0"/>
         <libraryNeeded
-            context="plugin:org.talend.libraries.apache.kafka"
+            context="org.talend.designer.components.bigdata"
             id="scala-library-2.10.6.jar"
             name="scala-library-2.10.6.jar" 
             mvn_uri="mvn:org.talend.libraries/scala-library-2.10.6/6.3.0"/>
         <libraryNeeded
-            context="plugin:org.talend.libraries.apache.kafka"
+            context="org.talend.designer.components.bigdata"
             id="snappy-java-1.1.2.6.jar"
             name="snappy-java-1.1.2.6.jar" 
             mvn_uri="mvn:org.xerial.snappy/snappy-java/1.1.2.6"/>
         <libraryNeeded
-            context="plugin:org.talend.libraries.apache.kafka"
+            context="org.talend.designer.components.bigdata"
             id="zkclient-0.8.jar"
             name="zkclient-0.8.jar" 
             mvn_uri="mvn:org.talend.libraries/zkclient-0.8/6.3.0"/>
         <libraryNeeded
-            context="plugin:org.talend.libraries.apache.kafka"
+            context="org.talend.designer.components.bigdata"
             id="slf4j-log4j12-1.7.21.jar"
             name="slf4j-log4j12-1.7.21.jar" 
             mvn_uri="mvn:org.talend.libraries/slf4j-log4j12-1.7.21/6.3.0"/>
         <libraryNeeded
-            context="plugin:org.talend.libraries.apache.kafka"
+            context="org.talend.designer.components.bigdata"
             id="slf4j-api-1.7.21.jar"
             name="slf4j-api-1.7.21.jar" 
             mvn_uri="mvn:org.talend.libraries/slf4j-api-1.7.21/6.3.0"/>
         <libraryNeeded
-            context="plugin:org.talend.libraries.apache.kafka"
+            context="org.talend.designer.components.bigdata"
             id="jopt-simple-4.9.jar"
             name="jopt-simple-4.9.jar" 
             mvn_uri="mvn:net.sf.jopt-simple/jopt-simple/4.9"/>
