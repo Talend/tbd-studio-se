@@ -1709,11 +1709,6 @@
           "childNodes": [
             {
               "childNodes": [],
-              "id": "DYNAMIC_HDP_3_1_4_12_1_HikariCP_2_6_1_jar",
-              "tagName": "library"
-            },
-            {
-              "childNodes": [],
               "id": "DYNAMIC_HDP_3_1_4_12_1_HikariCP_java7_2_4_12_jar",
               "tagName": "library"
             },
