@@ -4,6 +4,7 @@
 		org.talend.designer.codegen.config.CodeGeneratorArgument
 		org.talend.core.model.process.ElementParameterParser
         java.util.List
+        java.util.Map
 	"
 %>
 <%
@@ -32,16 +33,40 @@
         }
     }
     final boolean bulkWrite = setBulkWrite & (!"MONGODB_2_5_X".equalsIgnoreCase(dbversion));
-        
+	
+	List<Map<String, String>> mappings = (List<Map<String,String>>)ElementParameterParser.getObjectValueXML(node, "__MAPPING__");
+	
+	boolean upsert_with_set = "UPSERT_WITH_SET".equalsIgnoreCase(dataAction);
+	boolean updateOnlyColumnExists = false;
+	if(upsert_with_set) {
+		for (java.util.Map<String, String> mapping: mappings) {
+			boolean updatable = "true".equals(mapping.get("UPDATABLE"));
+			boolean insertable = "true".equals(mapping.get("INSERTABLE"));
+			
+			if(updatable && !insertable) {
+				updateOnlyColumnExists = true;
+				break;
+			}
+		}
+	}
+
 	if(bulkWrite){
+		if(dbversion.equals("MONGODB_3_5_X") && updateOnlyColumnExists){
+		%>
+		if (bulkWriteOperationCounterForUpdateOnlyColumn_<%=cid%> != 1) {
+			coll_<%=cid%>.bulkWrite(bulkWriteOperationForUpdateOnlyColumn_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
+		}
+		<%
+		}
+		
 		%>
 		// if bulkWriteOperationCounter_<%=cid%> == 1 the ulkWriteOperation_<%=cid%> is empty, do not execute.
 		if (bulkWriteOperationCounter_<%=cid%> != 1) {
 		<%if(dbversion.equals("MONGODB_3_5_X")){%>
-		    coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
-		    <%} else {%>
-		    bulkWriteOperation_<%=cid%>.execute();
-		    <%}%>
+			coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
+		<%} else {%>
+			bulkWriteOperation_<%=cid%>.execute();
+		<%}%>
 		}
 		<%
 	}
