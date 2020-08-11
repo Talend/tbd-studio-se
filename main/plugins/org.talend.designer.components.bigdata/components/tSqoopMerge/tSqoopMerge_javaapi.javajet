@@ -81,11 +81,7 @@
         
         needGenereateJarSqoopOptions_<%=cid%>.setPassword(decryptedPassword_<%=cid%>);
         needGenereateJarSqoopOptions_<%=cid%>.setTableName(<%=table%>);
-        <%if(customClassName){%>
-            needGenereateJarSqoopOptions_<%=cid%>.setClassName(<%=className%>);
-        <%}else{%>
-            needGenereateJarSqoopOptions_<%=cid%>.setClassName("SqoopMerge_<%=cid%>");
-        <%}%>
+        needGenereateJarSqoopOptions_<%=cid%>.setClassName("SqoopMerge_<%=cid%>");
 
 	java.util.Properties generateJarAdditionalProperties_<%=cid%> = new java.util.Properties();
 	<%
@@ -187,12 +183,17 @@
 	sqoopOptions_<%=cid%>.setMergeOldPath(<%=oldDataDir%>);
 	sqoopOptions_<%=cid%>.setMergeNewPath(<%=newDataDir%>);
 	sqoopOptions_<%=cid%>.setMergeKeyCol(<%=key%>);
-	sqoopOptions_<%=cid%>.setTargetDir(<%=targetDir%>); 
-    <%if(customClassName){%>
-		sqoopOptions_<%=cid%>.setClassName(<%=className%>);
-    <%}else{%>
-		sqoopOptions_<%=cid%>.setClassName("<%=sqoopPackageName%>.SqoopOptions");
-    <%}%>
+	sqoopOptions_<%=cid%>.setTargetDir(<%=targetDir%>);
+	sqoopOptions_<%=cid%>.setExistingJarName(jarFileName_<%=cid%>);
+<% if(needGenerateJar){ %>
+	sqoopOptions_<%=cid%>.setClassName("SqoopMerge_<%=cid%>");
+<% } else {
+	if(customClassName){
+%>
+	sqoopOptions_<%=cid%>.setClassName(<%=className%>);
+<% 	}
+   }
+%>
 		
 	org.apache.sqoop.Sqoop sqoop_<%=cid%> = new org.apache.sqoop.Sqoop(sqoopTool_<%=cid%>, configuration_<%=cid%>, sqoopOptions_<%=cid%>);
 	try {
