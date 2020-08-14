@@ -51,10 +51,11 @@
 	List<Map<String,String>> genericArgs = new java.util.ArrayList<Map<String,String>>();
 	List<Map<String,String>> toolSpecificArgs = new java.util.ArrayList<Map<String,String>>();
 	if (additionalList != null) { 
-		for (Map<String,String> additionalMap : additionalList) { 
-			if (additionalMap.get("ADDITIONAL_ARGUMENT").replaceAll("\"","").startsWith("--")) {
+		for (Map<String,String> additionalMap : additionalList) {
+			String additionalArg = additionalMap.get("ADDITIONAL_ARGUMENT").replaceAll("\"","");
+			if (additionalArg.startsWith("--")) {
 				toolSpecificArgs.add(additionalMap);
-			} else if (additionalMap.get("ADDITIONAL_ARGUMENT").replaceAll("\"","").startsWith("-")) {
+			} else if (additionalArg.startsWith("-")) {
 				genericArgs.add(additionalMap);
 			}
 		}
@@ -100,7 +101,7 @@ for (Map<String,String> genericArg : genericArgs) {
 <%
 	}
 }
-if (isUseSpeedParallel && specificParams!=null) {
+if (isUseSpeedParallel && specificParams != null) {
 	for (Map<String,String> specificArg : specificParams) { 
 	 	if (!"".equals(specificArg.get("SPECIFIC_PARAM_VALUE"))) { 
 %> 
@@ -188,7 +189,7 @@ for(Map<String,String> toolArg : toolSpecificArgs){
 
 if(overrideJavaMapping) {
 	List<Map<String,String>> javaMappings = (List<Map<String, String>>)ElementParameterParser.getObjectValue(node,"__JAVA_TYPE_MAPPING__");
-	if(javaMappings!=null && javaMappings.size()>0) {
+	if(javaMappings != null && javaMappings.size() > 0) {
 %>
 		,"--map-column-java"
 <%
@@ -210,7 +211,7 @@ if(overrideJavaMapping) {
 
 if(overrideHiveMapping) {
 	List<Map<String,String>> hiveMappings = (List<Map<String, String>>)ElementParameterParser.getObjectValue(node,"__HIVE_TYPE_MAPPING__");
-	if(hiveMappings!=null && hiveMappings.size()>0) {
+	if(hiveMappings != null && hiveMappings.size() > 0) {
 %>
 		,"--map-column-hive"
 <%	
