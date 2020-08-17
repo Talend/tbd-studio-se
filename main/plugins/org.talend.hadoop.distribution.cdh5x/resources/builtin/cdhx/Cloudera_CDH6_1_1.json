@@ -12834,7 +12834,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_hbase_client_2_1_0_cdh6_1_1_jar",
-      "mvn_uri" : "mvn:org.apache.hbase/hbase-client/2.1.0-cdh6.1.1/jar",
+      "mvn_uri" : "mvn:org.apache.hbase/hbase-client/2.1.0-cdh6.1.1",
       "name" : "hbase-client-2.1.0-cdh6.1.1.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -13002,7 +13002,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_common_2_1_1_cdh6_1_1_jar",
-      "mvn_uri" : "mvn:org.apache.hive/hive-common/2.1.1-cdh6.1.1",
+      "mvn_uri" : "mvn:org.apache.hive/hive-common/2.1.1-cdh6.1.1/jar",
       "name" : "hive-common-2.1.1-cdh6.1.1.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -13010,8 +13010,8 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_exec",
-      "mvn_uri" : "mvn:org.talend.libraries/hive-exec-shade-2.1.1-cdh6.1.1-talend/6.0.0",
-      "name" : "hive-exec-shade-2.1.1-cdh6.1.1-talend.jar",
+      "mvn_uri" : "mvn:org.talend.bigdata.libs/hive-exec-shade-2.1.1-cdh6.1.1-talend/1.1",
+      "name" : "hive-exec-shade-2.1.1-cdh6.1.1-talend-1.1.jar",
       "tagName" : "libraryNeeded",
       "useStudioRepository" : "true"
     }, {
@@ -13027,7 +13027,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_hcatalog_core_2_1_1_cdh6_1_1_jar",
-      "mvn_uri" : "mvn:org.apache.hive.hcatalog/hive-hcatalog-core/2.1.1-cdh6.1.1/jar",
+      "mvn_uri" : "mvn:org.apache.hive.hcatalog/hive-hcatalog-core/2.1.1-cdh6.1.1",
       "name" : "hive-hcatalog-core-2.1.1-cdh6.1.1.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -14526,7 +14526,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_pig_0_17_0_cdh6_1_1_jar",
-      "mvn_uri" : "mvn:org.apache.pig/pig/0.17.0-cdh6.1.1/jar",
+      "mvn_uri" : "mvn:org.apache.pig/pig/0.17.0-cdh6.1.1",
       "name" : "pig-0.17.0-cdh6.1.1.jar",
       "tagName" : "libraryNeeded"
     }, {
