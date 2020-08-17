@@ -102,7 +102,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -399,7 +406,14 @@
                     "classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -438,7 +452,15 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+                
 			]
 		},
 		{
@@ -470,7 +492,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -516,7 +545,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -576,7 +612,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -586,7 +629,16 @@
 			"jarName": "hive-exec-shade-2.1.1-cdh6.1.1-talend-1.1.jar",
 			"mvnUri": "mvn:org.talend.bigdata.libs/hive-exec-shade-2.1.1-cdh6.1.1-talend/1.1",
 			"useStudioRepository": "true",
-			"description": ""
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-exec",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+				]
 		},
 		{
 			"id": "hive-hbase-handler",
@@ -652,7 +704,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-exec",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}	
 			]
 		},
 		{
@@ -684,7 +743,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
             ]
 		},
 		{
@@ -730,7 +796,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -811,7 +884,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -966,7 +1046,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -1026,7 +1113,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -1065,7 +1159,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
