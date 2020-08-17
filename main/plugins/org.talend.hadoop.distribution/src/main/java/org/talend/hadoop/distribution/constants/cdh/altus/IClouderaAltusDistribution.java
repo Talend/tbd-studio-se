@@ -20,5 +20,5 @@ public interface IClouderaAltusDistribution {
 
     static final String DISTRIBUTION_NAME = "CLOUDERA_ALTUS";
 
-    static final String DISTRIBUTION_DISPLAY_NAME = "Cloudera Altus";
+    static final String DISTRIBUTION_DISPLAY_NAME = "Cloudera Altus (Deprecated)";
 }

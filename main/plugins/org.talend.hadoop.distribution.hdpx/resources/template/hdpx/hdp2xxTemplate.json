@@ -12,7 +12,8 @@
   "description": "",
   "supportedSparkVersions": [
     "SPARK_1_6",
-    "SPARK_2_1"
+    "SPARK_2_1",
+    "SPARK_2_3"
   ],
   "modules": [
     {
@@ -1224,6 +1225,13 @@
       ]
     },
     {
+      "id": "HDFS-NOT-SPARK-1-6-LIB-DYNAMIC",
+      "description": "Hdfs libraries for every execution engine except Spark 1.6",
+      "modules": [
+      	"jackson-core-2.6.6"
+      ]
+    },
+    {
       "id": "HIVE-LIB-DYNAMIC",
       "description": "",
       "modules": [
@@ -1369,6 +1377,13 @@
       "modules": [
         "tez-dag",
         "tez-mapreduce"
+      ]
+    },
+    {
+      "id": "TEZ-NOT-SPARK-1-6-LIB-DYNAMIC",
+      "description": "",
+      "modules": [
+        "jackson-core-2.6.6"
       ]
     },
     {

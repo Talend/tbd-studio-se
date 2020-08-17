@@ -102,7 +102,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -399,7 +406,14 @@
                     "classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -438,7 +452,15 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+                
 			]
 		},
 		{
@@ -450,13 +472,6 @@
 			"classifier": "",
 			"description": "",
 			"exclusions": [
-				{
-					"groupId": "org.apache.hive",
-					"artifactId": "hive-exec",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
 				{
 					"groupId": "xerces",
 					"artifactId": "*",
@@ -477,7 +492,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -523,7 +545,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -583,26 +612,33 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
 			"id": "hive-exec",
 			"type": "STANDARD",
 			"context": "{properties.context}",
-			"jarName": "hive-exec-shade-2.1.1-cdh6.1.1-talend.jar",
-			"mvnUri": "mvn:org.talend.libraries/hive-exec-shade-2.1.1-cdh6.1.1-talend/6.0.0",
+			"jarName": "hive-exec-shade-2.1.1-cdh6.1.1-talend-1.1.jar",
+			"mvnUri": "mvn:org.talend.bigdata.libs/hive-exec-shade-2.1.1-cdh6.1.1-talend/1.1",
 			"useStudioRepository": "true",
-			"description": ""
-		},
-		{
-			"id": "hive-exec-1.2.1-talend",
-			"type": "STANDARD",
-			"context": "{properties.context}",
-			"jarName": "hive-exec-1.2.1-talend.jar",
-			"mvnUri": "mvn:org.talend.libraries/hive-exec-1.2.1-talend/6.0.0",
-			"useStudioRepository": "true",
-			"description": ""
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-exec",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+				]
 		},
 		{
 			"id": "hive-hbase-handler",
@@ -668,7 +704,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-exec",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}	
 			]
 		},
 		{
@@ -700,7 +743,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
             ]
 		},
 		{
@@ -746,7 +796,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -827,7 +884,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -982,7 +1046,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -1042,7 +1113,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -1081,7 +1159,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -1276,13 +1361,6 @@
 			"description": "",
 			"exclusions": [
 				{
-					"groupId": "org.apache.hive",
-					"artifactId": "hive-exec",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
 					"groupId": "org.apache.hadoop",
 					"artifactId": "*",
 					"classifier": "",
@@ -1337,13 +1415,6 @@
 			"description": "",
 			"exclusions": [
 				{
-					"groupId": "org.apache.hive",
-					"artifactId": "hive-exec",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
 					"groupId": "org.apache.hadoop",
 					"artifactId": "*",
 					"classifier": "",
@@ -1383,13 +1454,6 @@
 			"description": "",
 			"exclusions": [
 				{
-					"groupId": "org.apache.hive",
-					"artifactId": "hive-exec",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
-				{
 					"groupId": "org.apache.hadoop",
 					"artifactId": "*",
 					"classifier": "",
@@ -1421,13 +1485,6 @@
             "classifier": "",
             "description": "",
             "exclusions": [
-				{
-					"groupId": "org.apache.hive",
-					"artifactId": "hive-exec",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
                 {
                     "groupId": "*",
                     "artifactId": "*",
@@ -1698,6 +1755,11 @@
         }
     ],
     "moduleGroups": [
+		{
+			"id": "LIGHTWEIGHT_DEPENDENCIES",
+			"modules": [
+			]
+		},
         {
 			"id": "HDFS-COMMON-LIB-DYNAMIC",
 			"modules": [
@@ -1849,7 +1911,6 @@
 				"hadoop-mapreduce-client-core",
 				"hadoop-yarn-server-web-proxy",				
 				"hive-exec",
-				"hive-exec-1.2.1-talend",
 				"spark-hive_2.11",
 				"spark-mllib_2.11",
 				"spark-yarn_2.11",
@@ -1943,8 +2004,7 @@
 				"azure-common-1.7.1",
 				"hadoop-azure",
 				"hadoop-azure-datalake",
-				"hadoop-yarn-server-web-proxy",
-				"hive-exec-1.2.1-talend"
+				"hadoop-yarn-server-web-proxy"
 			]
 		},
         {

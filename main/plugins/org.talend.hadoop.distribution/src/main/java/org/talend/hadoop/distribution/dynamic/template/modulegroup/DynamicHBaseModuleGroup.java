@@ -32,7 +32,7 @@ public class DynamicHBaseModuleGroup extends AbstractModuleGroup {
         String runtimeId = pluginAdapter.getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.HBASE_MODULE_GROUP.getModuleName());
         checkRuntimeId(runtimeId);
         if (StringUtils.isNotBlank(runtimeId)) {
-            DistributionModuleGroup dmg = new DistributionModuleGroup(runtimeId, true, null);
+            DistributionModuleGroup dmg = new DistributionModuleGroup(runtimeId, false, null);
             hs.add(dmg);
         }
         return hs;

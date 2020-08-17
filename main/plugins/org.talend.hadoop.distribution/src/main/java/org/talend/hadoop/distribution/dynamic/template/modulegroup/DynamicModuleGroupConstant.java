@@ -16,7 +16,8 @@ package org.talend.hadoop.distribution.dynamic.template.modulegroup;
  * DOC cmeng  class global comment. Detailled comment
  */
 public enum DynamicModuleGroupConstant implements IDynamicModuleGroupConstant {
-
+	
+	LIGHTWEIGHT_DEPENDENCIES("LIGHTWEIGHT_DEPENDENCIES"), //$NON-NLS-1$
     ATLAS_SPARK_1_MODULE_GROUP("ATLAS-SPARK_1-DYNAMIC"), //$NON-NLS-1$
     ATLAS_SPARK_2_MODULE_GROUP("ATLAS-SPARK_2-DYNAMIC"), //$NON-NLS-1$
     GRAPHFRAMES_MRREQUIRED_MODULE_GROUP("SPARK-GRAPHFRAMES-LIB-MRREQUIRED-DYNAMIC"), //$NON-NLS-1$

@@ -45,6 +45,51 @@ try{
 				// Create the BasicDBObject
 				%>
 				updateObjectUtil_<%=cid%>.setObject(new org.bson.Document());
+				
+				<%
+				boolean upsert_with_set = "UPSERT_WITH_SET".equalsIgnoreCase(dataAction);
+				boolean insertOnlyColumnExists = false;
+				boolean updateOnlyColumnExists = false;
+				boolean allColumnOnlyUpdate = true;
+				boolean allColumnOnlyInsert = true;
+				
+				boolean ignoredColumnExists = false;//not insertable, also not updatable
+				
+				if(upsert_with_set) {
+					for (java.util.Map<String, String> mapping: mappings) {
+						boolean updatable = "true".equals(mapping.get("UPDATABLE"));
+						boolean insertable = "true".equals(mapping.get("INSERTABLE"));
+						
+						if(updatable && !insertable) {
+							updateOnlyColumnExists = true;
+						} else {
+							allColumnOnlyUpdate = false;
+						}
+						
+						if(insertable && !updatable) {
+							insertOnlyColumnExists = true;
+						} else {
+							allColumnOnlyInsert = false;
+						}
+						
+						if(!insertable && !updatable) {
+							ignoredColumnExists = true;
+						}
+					}
+					
+					if(insertOnlyColumnExists)  {
+					%>
+					insertObjectOnlyUtil_<%=cid%>.setObject(new org.bson.Document());
+					<%
+					}
+					
+					if(updateOnlyColumnExists)  {
+					%>
+					updateObjectOnlyUtil_<%=cid%>.setObject(new org.bson.Document());
+					<%
+					}
+				}
+				%>
 
 				<%
 				if(!"INSERT".equalsIgnoreCase(dataAction)){
@@ -53,12 +98,16 @@ try{
 					int countKey_<%=cid%>=0;
 				<%
 				}
+				
 				// Set key/values of the BasicObject
 				for (int i = 0; i < sizeColumns; i++) {
 					IMetadataColumn column = columnList.get(i);
 					
 					for (java.util.Map<String, String> mapping: mappings) {
-					    if (column.getLabel().equals(mapping.get("SCHEMA_COLUMN"))) {
+						if (column.getLabel().equals(mapping.get("SCHEMA_COLUMN"))) {
+							boolean updatable = (upsert_with_set ? "true".equals(mapping.get("UPDATABLE")) : true);
+							boolean insertable = (upsert_with_set ? "true".equals(mapping.get("INSERTABLE")) : true);
+							
 	                        if ("true".equals(mapping.get("REMOVE_NULL_FIELD"))) {
 	                            %>
 	                            if (<%=conn.getName() %>.<%=column.getLabel() %> != null) {
@@ -69,8 +118,27 @@ try{
     	                                    countKey_<%=cid%>++;
     	                                <%
                                     }
+                                    
+                                    if(insertable && updatable) {//insert or update column
+                                        if(insertOnlyColumnExists || updateOnlyColumnExists || ignoredColumnExists) {
+                                        %>
+                                            updateObjectUtil_<%=cid%>.putkeyNode(pathMap_<%=cid%>.get("<%=column.getLabel() %>"),"<%=column.getOriginalDbColumnName() %>", <%=conn.getName() %>.<%=column.getLabel() %>);
+                                        <%
+                                        } else {
+                                        %>
+                                            updateObjectUtil_<%=cid%>.put(pathMap_<%=cid%>.get("<%=column.getLabel() %>"),"<%=column.getOriginalDbColumnName() %>", <%=conn.getName() %>.<%=column.getLabel() %>);
+                                        <%
+                                        }
+                                    } else if(updatable && !insertable)  {//update only column
                                     %>
-                                    updateObjectUtil_<%=cid%>.put(pathMap_<%=cid%>.get("<%=column.getLabel() %>"),"<%=column.getOriginalDbColumnName() %>", <%=conn.getName() %>.<%=column.getLabel() %>);
+                                    updateObjectOnlyUtil_<%=cid%>.putkeyNode(pathMap_<%=cid%>.get("<%=column.getLabel() %>"),"<%=column.getOriginalDbColumnName() %>", <%=conn.getName() %>.<%=column.getLabel() %>);
+                                    <%
+                                    } else if(insertable && !updatable) {//insert only column
+                                    %>
+                                    insertObjectOnlyUtil_<%=cid%>.putkeyNode(pathMap_<%=cid%>.get("<%=column.getLabel() %>"),"<%=column.getOriginalDbColumnName() %>", <%=conn.getName() %>.<%=column.getLabel() %>);
+                                    <%
+                                    }
+                                    %>
 	                            }
                                 <%
                             } else {
@@ -80,9 +148,27 @@ try{
                                         countKey_<%=cid%>++;
                                     <%
                                 }
+                                
+                                if(insertable && updatable) {//insert or update column
+                                    if(insertOnlyColumnExists || updateOnlyColumnExists || ignoredColumnExists) {
+                                    %>
+                                        updateObjectUtil_<%=cid%>.putkeyNode(pathMap_<%=cid%>.get("<%=column.getLabel() %>"),"<%=column.getOriginalDbColumnName() %>", <%=conn.getName() %>.<%=column.getLabel() %>);
+                                    <%
+                                    } else {
+                                    %>
+                                        updateObjectUtil_<%=cid%>.put(pathMap_<%=cid%>.get("<%=column.getLabel() %>"),"<%=column.getOriginalDbColumnName() %>", <%=conn.getName() %>.<%=column.getLabel() %>);
+                                    <%
+                                    }
+                                } else if(updatable && !insertable)  {//update only column
                                 %>
-                                updateObjectUtil_<%=cid%>.put(pathMap_<%=cid%>.get("<%=column.getLabel() %>"),"<%=column.getOriginalDbColumnName() %>", <%=conn.getName() %>.<%=column.getLabel() %>);
+                                updateObjectOnlyUtil_<%=cid%>.putkeyNode(pathMap_<%=cid%>.get("<%=column.getLabel() %>"),"<%=column.getOriginalDbColumnName() %>", <%=conn.getName() %>.<%=column.getLabel() %>);
                                 <%
+                                } else if(insertable && !updatable) {//insert only column
+                                %>
+                                insertObjectOnlyUtil_<%=cid%>.putkeyNode(pathMap_<%=cid%>.get("<%=column.getLabel() %>"),"<%=column.getOriginalDbColumnName() %>", <%=conn.getName() %>.<%=column.getLabel() %>);
+                                <%
+                                }
+                                
                             }
                             break;
                         }
@@ -205,30 +291,77 @@ try{
                                 <%
                             }
                         // UPSERT WITH SET
-                        } else if("UPSERT_WITH_SET".equalsIgnoreCase(dataAction)){
-                            // Bulk Upsert
-                            if(bulkWrite){
-                                %>
-                                if(bulkWriteOperationCounter_<%=cid%> < bulkWriteOperationSize_<%=cid%>){
-                                    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.UpdateOneModel<org.bson.Document>(queryObj_<%=cid%>,new org.bson.Document("$set", updateObj_<%=cid%>),new com.mongodb.client.model.UpdateOptions().upsert(true)));
-                                    bulkWriteOperationCounter_<%=cid%>++;
-                                }else{
-                                    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.UpdateOneModel<org.bson.Document>(queryObj_<%=cid%>,new org.bson.Document("$set", updateObj_<%=cid%>),new com.mongodb.client.model.UpdateOptions().upsert(true)));
-                                    coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
-                                    bulkWriteOperationCounter_<%=cid%>=1;
-                                    bulkWriteOperation_<%=cid%> = new java.util.ArrayList();
-                                }
-                                <%
-                            }else{
-                                if(updateAll){
-                            	%>
-                                coll_<%=cid%>.updateMany(queryObj_<%=cid%>,new org.bson.Document("$set", updateObj_<%=cid%>),new com.mongodb.client.model.UpdateOptions().upsert(true));
-                                <%
-                                } else {
-                                %>
-                                coll_<%=cid%>.updateOne(queryObj_<%=cid%>,new org.bson.Document("$set", updateObj_<%=cid%>),new com.mongodb.client.model.UpdateOptions().upsert(true));
-                                <%
-                                }
+                        } else if(upsert_with_set){
+                            if(updateOnlyColumnExists) {
+                            %>
+                            org.bson.Document updateOnlyObj_<%=cid%> = updateObjectOnlyUtil_<%=cid%>.getObject();
+                            <%
+                                 if(bulkWrite){
+                                     %>
+                                     if(bulkWriteOperationCounterForUpdateOnlyColumn_<%=cid%> < bulkWriteOperationSize_<%=cid%>){
+                                         bulkWriteOperationForUpdateOnlyColumn_<%=cid%>.add(new com.mongodb.client.model.UpdateOneModel<org.bson.Document>(queryObj_<%=cid%>,new org.bson.Document("$set", updateOnlyObj_<%=cid%>)));
+                                         bulkWriteOperationCounterForUpdateOnlyColumn_<%=cid%>++;
+                                     }else{
+                                         bulkWriteOperationForUpdateOnlyColumn_<%=cid%>.add(new com.mongodb.client.model.UpdateOneModel<org.bson.Document>(queryObj_<%=cid%>,new org.bson.Document("$set", updateOnlyObj_<%=cid%>)));
+                                         coll_<%=cid%>.bulkWrite(bulkWriteOperationForUpdateOnlyColumn_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
+                                         bulkWriteOperationCounterForUpdateOnlyColumn_<%=cid%>=1;
+                                         bulkWriteOperationForUpdateOnlyColumn_<%=cid%> = new java.util.ArrayList();
+                                     }
+                                     <%
+                                 }else{
+                                     if(updateAll){
+                                     %>
+                                     coll_<%=cid%>.updateMany(queryObj_<%=cid%>,new org.bson.Document("$set", updateOnlyObj_<%=cid%>));
+                                     <%
+                                     } else {
+                                     %>
+                                     coll_<%=cid%>.updateOne(queryObj_<%=cid%>,new org.bson.Document("$set", updateOnlyObj_<%=cid%>));
+                                     <%
+                                     }
+                                 }
+                            }
+                            
+                            if(!allColumnOnlyUpdate) {//if all columns are only updateable, then no need to do the upsert action
+                                if(!allColumnOnlyInsert) {//if all columns are only insertable, then no need $set as it's empty
+	                            %>
+	                            org.bson.Document setObj_<%=cid%> = new org.bson.Document("$set", updateObj_<%=cid%>);
+	                            <%
+	                            } else {
+	                            %>
+	                            org.bson.Document setObj_<%=cid%> = new org.bson.Document();
+	                            <%
+	                            }
+	                            
+	                            if(insertOnlyColumnExists) {
+	                            %>
+	                            org.bson.Document insertOnlyObj_<%=cid%> = insertObjectOnlyUtil_<%=cid%>.getObject();
+	                            setObj_<%=cid%>.put("$setOnInsert",insertOnlyObj_<%=cid%>);
+	                            <%
+	                            }
+	                            
+	                            if(bulkWrite){
+	                                %>
+	                                if(bulkWriteOperationCounter_<%=cid%> < bulkWriteOperationSize_<%=cid%>){
+	                                    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.UpdateOneModel<org.bson.Document>(queryObj_<%=cid%>,setObj_<%=cid%>,new com.mongodb.client.model.UpdateOptions().upsert(true)));
+	                                    bulkWriteOperationCounter_<%=cid%>++;
+	                                }else{
+	                                    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.UpdateOneModel<org.bson.Document>(queryObj_<%=cid%>,setObj_<%=cid%>,new com.mongodb.client.model.UpdateOptions().upsert(true)));
+	                                    coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
+	                                    bulkWriteOperationCounter_<%=cid%>=1;
+	                                    bulkWriteOperation_<%=cid%> = new java.util.ArrayList();
+	                                }
+	                                <%
+	                            }else{
+	                                if(updateAll){
+	                            	%>
+	                                coll_<%=cid%>.updateMany(queryObj_<%=cid%>,setObj_<%=cid%>,new com.mongodb.client.model.UpdateOptions().upsert(true));
+	                                <%
+	                                } else {
+	                                %>
+	                                coll_<%=cid%>.updateOne(queryObj_<%=cid%>,setObj_<%=cid%>,new com.mongodb.client.model.UpdateOptions().upsert(true));
+	                                <%
+	                                }
+	                            }
                             }
                         // DELETE
                         } else if("DELETE".equalsIgnoreCase(dataAction)){

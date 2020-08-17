@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Big Data Test base plugin
 Bundle-Vendor: .Talend SA.
 Bundle-SymbolicName: org.talend.bigdata.se.test.base
-Bundle-Version: 7.4.1.qualifier
+Bundle-Version: 7.3.1.qualifier
 Bundle-ClassPath: lib/byte-buddy-1.9.3.jar,
  lib/byte-buddy-agent-1.9.3.jar,
  lib/hamcrest-core-1.3.jar,

@@ -139,6 +139,12 @@
 	    		%>
 	    			<%=connName%>.<%=columnName%> = row_<%=cid%>.getShort("<%=dbColumnName%>");	
 	    		<%
+	    		}else if(javaType == JavaTypesManager.CHARACTER){
+	    			if("ascii".equals(dbType) || "text".equals(dbType) || "varchar".equals(dbType)){
+	    			%>
+	    			<%=connName%>.<%=columnName%> = row_<%=cid%>.getString("<%=dbColumnName%>").charAt(0);
+	    			<%
+	    			}
 	    		}
 	    		%>
 	    	}		

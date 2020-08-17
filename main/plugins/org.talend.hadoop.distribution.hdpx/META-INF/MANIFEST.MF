@@ -3,7 +3,7 @@ Service-Component: OSGI-INF/hdpx.xml
 Bundle-ManifestVersion: 2
 Bundle-Name: Hortonworks Dynamic Distributions
 Bundle-SymbolicName: org.talend.hadoop.distribution.hdpx;singleton:=true
-Bundle-Version: 7.4.1.qualifier
+Bundle-Version: 7.3.1.qualifier
 Bundle-Activator: org.talend.hadoop.distribution.hdpx.HortonworksDynamicDistributionPlugin
 Require-Bundle: org.eclipse.core.runtime,
  org.talend.hadoop.distribution,

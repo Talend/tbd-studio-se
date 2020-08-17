@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Repository NoSQL Plug-in
 Bundle-SymbolicName: org.talend.repository.nosql;singleton:=true
-Bundle-Version: 7.4.1.qualifier
+Bundle-Version: 7.3.1.qualifier
 Bundle-Activator: org.talend.repository.nosql.RepositoryNoSQLPlugin
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,

@@ -66,22 +66,20 @@
 
 			boolean configureFromClassPath = "true".equals(ElementParameterParser.getValue(node, "__CONFIGURATIONS_FROM_CLASSPATH__"));
 			boolean storeByHBase = "true".equals(ElementParameterParser.getValue(node, "__STORE_BY_HBASE__"));
-		    
+		   String sslSyntaxe=""; 
 
 			if(impalaDriver!=null && !"".equals(impalaDriver.trim()) && (isCustom || hiveDistrib.doSupportHive2())) {
 			    impalaDriver = impalaDriver.toLowerCase();
 				if ("hive2".equalsIgnoreCase(impalaDriver)) {
 					javaDbDriver = "org.apache.hive.jdbc.HiveDriver";
 					impalaDbProtocol="hive2";
+					sslSyntaxe=";ssl=true";
 				}
-				if ("impala40".equalsIgnoreCase(impalaDriver)) {
-					javaDbDriver = "com.cloudera.impala.jdbc4.Driver";
+				if ("impala".equalsIgnoreCase(impalaDriver)) {
+					javaDbDriver = "com.cloudera.impala.jdbc.Driver";
 					impalaDbProtocol="impala";
+					sslSyntaxe=";ssl=1";
 				}	
-				if ("impala41".equalsIgnoreCase(impalaDriver)) {
-					javaDbDriver = "com.cloudera.impala.jdbc41.Driver";
-					impalaDbProtocol="impala";
-				}
 			} else {
 				throw new IllegalArgumentException("impala can not work with Hive1");
 			}
@@ -141,9 +139,9 @@
 					// Add HADOOP_CONF_DIR to the classpath if it's present
 					String hadoopConfDir_<%=cid%> = System.getenv("HADOOP_CONF_DIR");
 					if(hadoopConfDir_<%=cid%> != null){
-						java.net.URL[] urlHadoop = new java.net.URL[] { new java.io.File(hadoopConfDir_<%=cid%>).toURI().toURL() };
-						Class cl = Class.forName("java.net.URLClassLoader", true, new URLClassLoader(urlHadoop));
-						ClassLoader newThreadClassLoader = cl.getClassLoader();
+						final java.net.URL[] urlHadoop = new java.net.URL[] { new java.io.File(hadoopConfDir_<%=cid%>).toURI().toURL() };
+						final ClassLoader threadClassLoader = Thread.currentThread().getContextClassLoader();
+						final java.net.URLClassLoader newThreadClassLoader = new java.net.URLClassLoader(urlHadoop, threadClassLoader);
 						Thread.currentThread().setContextClassLoader(newThreadClassLoader);
 					}
 					org.apache.hadoop.conf.Configuration conf_<%=cid%> = new org.apache.hadoop.conf.Configuration();
@@ -202,8 +200,18 @@
 
 
 						String hiveServer2KerberosPrincipal = conf_<%=cid%>.get("hive.server2.authentication.kerberos.principal", "");
-						String urlKerberosParameter = "principal=" + hiveServer2KerberosPrincipal;
-
+						String urlKerberosParameter = "";
+						<%if("impala".equalsIgnoreCase(impalaDbProtocol)){%>
+						 String krbServiceName_<%=cid%>  = (hiveServer2KerberosPrincipal.split("/")[0]);
+		             String krbHostFQDN_<%=cid%> = (hiveServer2KerberosPrincipal.split("/")[1].split("@")[0]);
+		             String krbRealm_<%=cid%> = (hiveServer2KerberosPrincipal.split("/")[1].split("@")[1]);
+						 urlKerberosParameter_<%=cid%> = ";AuthMech=1" 
+						                              + ";KrbServiceName=" + krbServiceName_<%=cid%>
+						                              + ";KrbHostFQDN=" + krbHostFQDN_<%=cid%>
+						                              + ";KrbRealm=" + krbRealm_<%=cid%>;
+						<%}else{%>
+						 urlKerberosParameter = ";principal=" + hiveServer2KerberosPrincipal;
+                  <%}%> 
 						// Keytab configurations
 						if(tldHiveKerberosAuth.equalsIgnoreCase("keytab")){
 							org.apache.hadoop.security.UserGroupInformation.loginUserFromKeytab(tldHiveKerberosKtPrincipal, tldHiveKerberosKtPath);
@@ -214,7 +222,7 @@
 <%
 							if (hiveDistrib.doSupportSSLwithKerberos()) {
 %>
-								url_<%=cid%> += urlKerberosParameter + ";ssl=true" +";sslTrustStore=" + tldHiveSslTsPath + ";trustStorePassword=" + tldHiveSslTsPassword;
+								url_<%=cid%> += urlKerberosParameter + "<%=sslSyntaxe%>" +";sslTrustStore=" + tldHiveSslTsPath + ";trustStorePassword=" + tldHiveSslTsPassword;
 <%
 							} else {
 %>
@@ -230,7 +238,7 @@
 
 						// SSL configurations
 						if(tldHiveEnc.equalsIgnoreCase("ssl")){
-							url_<%=cid%> += ";ssl=true" +";sslTrustStore=" + tldHiveSslTsPath + ";trustStorePassword=" + tldHiveSslTsPassword;
+							url_<%=cid%> += ";ssl=1" +";sslTrustStore=" + tldHiveSslTsPath + ";trustStorePassword=" + tldHiveSslTsPassword;
 						}
 					}
 <%
@@ -257,19 +265,30 @@
 							String decryptedSslStorePassword_<%=cid%> = <%= ElementParameterParser.getValue(node, sslStorepasswordFieldName)%>;
 <%
 								}
-%>
-							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + ";principal=" + <%=impalaPrincipal%>+";ssl=true" +";sslTrustStore=" + <%=sslTrustStore%> + ";trustStorePassword=" + decryptedSslStorePassword_<%=cid%>;
+%>                 String kerberosPart_<%=cid%>="";
+                   <%if("impala".equalsIgnoreCase(impalaDbProtocol)){%>
+						 String krbServiceName_<%=cid%>  = (<%=impalaPrincipal%>.split("/")[0]);
+		             String krbHostFQDN_<%=cid%> = (<%=impalaPrincipal%>.split("/")[1].split("@")[0]);
+		             String krbRealm_<%=cid%> = (<%=impalaPrincipal%>.split("/")[1].split("@")[1]);
+		             kerberosPart_<%=cid%> = ";AuthMech=1" 
+						                              + ";KrbServiceName=" + krbServiceName_<%=cid%>
+						                              + ";KrbHostFQDN=" + krbHostFQDN_<%=cid%>
+						                              + ";KrbRealm=" + krbRealm_<%=cid%>;
+						<%}else{%>
+						 kerberosPart_<%=cid%> = ";principal=" + hiveServer2KerberosPrincipal;
+                  <%}%> 
+							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + kerberosPart_<%=cid%> +"<%=sslSyntaxe%>" +";sslTrustStore=" + <%=sslTrustStore%> + ";trustStorePassword=" + decryptedSslStorePassword_<%=cid%>;
 <%
 							// Does the distrib support only SASL-QOP + KERBEROS
 							} else {
 						
 %>
-							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + ";principal=" + <%=impalaPrincipal%>+";sasl.qop=auth-conf";
+							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> +kerberosPart_<%=cid%>+";sasl.qop=auth-conf";
 <%
 							}
 						} else {
 %>
-							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + ";principal=" + <%=impalaPrincipal%>;
+							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + kerberosPart_<%=cid%>;
 <%
 						}
 					// END IF06
@@ -287,7 +306,7 @@
 <%
 							}
 %>
-							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%>+ ";ssl=true" +";sslTrustStore=" + <%=sslTrustStore%> + ";trustStorePassword=" + decryptedSslStorePassword_<%=cid%>;
+							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%>+ "<%=sslSyntaxe%>" +";sslTrustStore=" + <%=sslTrustStore%> + ";trustStorePassword=" + decryptedSslStorePassword_<%=cid%>;
 <%
 						} else {
 %>

@@ -7,6 +7,9 @@
         org.talend.core.model.metadata.IMetadataColumn
         java.util.List
         java.util.Map
+        java.util.Set
+        java.util.HashSet
+        java.util.HashMap
 	    org.talend.core.model.metadata.types.JavaTypesManager
 	    org.talend.core.model.metadata.types.JavaType
 "
@@ -23,10 +26,10 @@
     String bulkWriteOperationSize = ElementParameterParser.getValue(node, "__BULK_WRITE_SIZE__");
     boolean bulkWriteType = "Ordered".equalsIgnoreCase(ElementParameterParser.getValue(node, "__BULK_WRITE_TYPE__"));
     boolean removeRoot = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REMOVE_ROOT__"));
-    List<Map<String, String>> rootTable = 
-        (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__ROOT__");
-    List<Map<String, String>> loopTable = 
-        (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__LOOP__");
+    Set<Map<String, String>> rootTable = new HashSet(
+        (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__ROOT__"));
+    Set<Map<String, String>> loopTable = new HashSet(
+        (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__LOOP__"));
     List<Map<String, String>> groupTable = 
             (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__GROUP__");
 
@@ -57,16 +60,27 @@
 			// Replace Date and Bytes by true mongoDB types.
             Object <%=cid%>_dbobject = data_<%=cid%>;
             String pathString_<%=cid%> = "";
-            String[] path_<%=cid%>;
+            String[] path_<%=cid%>;            
 			<%
+            boolean valuesBySamePathContainsDifferentDatePatterns = false;
+            Map<String, String> alreadyProcessedPaths = new HashMap<String,String>();
+            //key   - path to data
+            //value - date pattern
+
             for (IMetadataColumn column: metadata.getListColumns()) {
                 JavaType javaType = JavaTypesManager.getJavaTypeFromId(column.getTalendType());
                 if ((javaType == JavaTypesManager.DATE) || (javaType == JavaTypesManager.BYTE_ARRAY)) {
                     for (Map<String, String> root: rootTable) {
-                        if (root.get("COLUMN").equals(column.getLabel())) {
+                        if (root.get("COLUMN").equals(column.getLabel()) && alreadyProcessedPaths.containsKey(root.get("PATH")) && !alreadyProcessedPaths.get(root.get("PATH")).equalsIgnoreCase(column.getPattern())){
+                            valuesBySamePathContainsDifferentDatePatterns = true;                        
+                        }
+                        if (root.get("COLUMN").equals(column.getLabel()) && !alreadyProcessedPaths.containsKey(root.get("PATH"))) {
                             %>
                             // root
                             <%=cid%>_dbobject = (org.bson.Document) data_<%=cid%>;
+                            <%
+                            alreadyProcessedPaths.put(root.get("PATH"), column.getPattern());
+                            %>
                             pathString_<%=cid%> = "<%=root.get("PATH")%>";
                             <%
                             if (removeRoot) {
@@ -91,10 +105,16 @@
                     }
 
                     for (Map<String, String> loop: loopTable) {
-                        if (loop.get("COLUMN").equals(column.getLabel())) {
+                        if (loop.get("COLUMN").equals(column.getLabel()) && alreadyProcessedPaths.containsKey(loop.get("PATH")) && !alreadyProcessedPaths.get(loop.get("PATH")).equalsIgnoreCase(column.getPattern())){
+                            valuesBySamePathContainsDifferentDatePatterns = true;                      
+                        }
+                        if (loop.get("COLUMN").equals(column.getLabel()) && !alreadyProcessedPaths.containsKey(loop.get("PATH"))) {
                             %>
                             // loop
                             <%=cid%>_dbobject = (org.bson.Document) data_<%=cid%>;
+                            <%
+                            alreadyProcessedPaths.put(loop.get("PATH"), column.getPattern());
+                            %>
                             pathString_<%=cid%> = "<%=loop.get("PATH")%>";
                             <%
                             if (removeRoot) {
@@ -119,10 +139,16 @@
                     }
 
                     for (Map<String, String> group: groupTable) {
-                        if (group.get("COLUMN").equals(column.getLabel())) {
+                        if (group.get("COLUMN").equals(column.getLabel()) && alreadyProcessedPaths.containsKey(group.get("PATH")) && !alreadyProcessedPaths.get(group.get("PATH")).equalsIgnoreCase(column.getPattern())){
+                            valuesBySamePathContainsDifferentDatePatterns = true;                        
+                        }
+                        if (group.get("COLUMN").equals(column.getLabel()) && !alreadyProcessedPaths.containsKey(group.get("PATH"))) {
                             %>
                             // group
                             <%=cid%>_dbobject = (org.bson.Document) data_<%=cid%>;
+                            <%
+                            alreadyProcessedPaths.put(group.get("PATH"), column.getPattern());
+                            %>
                             pathString_<%=cid%> = "<%=group.get("PATH")%>";
                             <%
                             if (removeRoot) {
@@ -145,6 +171,11 @@
                             // note: we cannot break here, they may be multiple values
                         }
                     }
+                    %>
+                    if (<%=valuesBySamePathContainsDifferentDatePatterns%>){
+                                throw new Exception("Values by same path can't have different date patterns.");
+                    }
+                    <%
                 }
             }
 			%>

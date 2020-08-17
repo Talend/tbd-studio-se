@@ -2,6 +2,6 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Neo4j
 Bundle-SymbolicName: org.talend.libraries.neo4j
-Bundle-Version: 7.4.1.qualifier
+Bundle-Version: 7.3.1.qualifier
 Bundle-ActivationPolicy: lazy
 Eclipse-BundleShape: dir

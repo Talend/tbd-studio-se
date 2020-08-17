@@ -13,8 +13,8 @@
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dbr350"
             id="talend-bigdata-launcher-databricks"
-            name="talend-bigdata-launcher-databricks-2.0.6.jar"
-            mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-databricks/2.0.6">
+            name="talend-bigdata-launcher-databricks-2.0.7.jar"
+            mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-databricks/2.0.7">
         </libraryNeeded>
 
 		 <libraryNeeded

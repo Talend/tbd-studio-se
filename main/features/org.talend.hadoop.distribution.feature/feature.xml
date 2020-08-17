@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<feature id="org.talend.hadoop.distribution.feature" label="Talend Hadoop distributions Feature" version="7.4.1.qualifier" provider-name=".Talend SA."> 
+<feature id="org.talend.hadoop.distribution.feature" label="Talend Hadoop distributions Feature" version="7.3.1.qualifier" provider-name=".Talend SA."> 
   <description url="http://www.talend.com/online/featuresdescription.html#hadoop-distribution">Complete description about this feature at http://www.talend.com/online/featuresdescription.html#hadoop-distribution</description>  
   <copyright url="http://www.talend.com/online/copyright.txt">Copyright Talend 2006, 2007</copyright>  
   <license>The licence are describe in branding feature</license>  
@@ -20,6 +20,7 @@
   <plugin id="org.talend.hadoop.distribution.cdh580" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.cdh580spark2" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.cdh5x" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+  <plugin id="org.talend.hadoop.distribution.cdp" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.custom" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.dbr350" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.dbr550" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
@@ -33,6 +34,7 @@
   <plugin id="org.talend.hadoop.distribution.emr580" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.hdinsight340" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.hdinsight360" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+  <plugin id="org.talend.hadoop.distribution.hdinsight400" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.hdp250" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.hdp260" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.talend.hadoop.distribution.hdpx" download-size="0" install-size="0" version="0.0.0" unpack="false"/>

@@ -18,5 +18,6 @@ package org.talend.hadoop.distribution;
  */
 public enum EHadoopVersion {
     HADOOP_1, // Hadoop 1 stands for the JobTracker implementation of M/R.
-    HADOOP_2; // Hadoop 2 stands for the YARN implementation of M/R.
+    HADOOP_2, // Hadoop 2 stands for the YARN implementation of M/R.
+    HADOOP_3;
 }

@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: .Talend SA.
 Bundle-SymbolicName: org.talend.repository.hadoopcluster.configurator
-Bundle-Version: 7.4.1.qualifier
+Bundle-Version: 7.3.1.qualifier
 Bundle-ClassPath: .,
  lib/annotations-17.0.0.jar,
  lib/cloudera-manager-api-swagger-6.2.0.jar,

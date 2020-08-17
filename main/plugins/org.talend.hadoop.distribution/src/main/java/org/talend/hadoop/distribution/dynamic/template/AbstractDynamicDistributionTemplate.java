@@ -267,13 +267,42 @@ public abstract class AbstractDynamicDistributionTemplate extends AbstractDistri
 
     @Override
     public String generateSparkJarsPaths(List<String> commandLineJarsPaths) {
-        String spark2RuntimeId = getPluginAdapter()
-                .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.SPARK2_MODULE_GROUP.getModuleName());
-        if (StringUtils.isEmpty(spark2RuntimeId)) {
-            throw new RuntimeException(
-                    "Can't find configuration for " + DynamicModuleGroupConstant.SPARK2_MODULE_GROUP.getModuleName());
-        }
-        return SparkClassPathUtils.generateSparkJarsPathsWithNames(commandLineJarsPaths, spark2RuntimeId);
+        return generateSparkJarsPaths(commandLineJarsPaths, false);
+    }
+    
+    @Override
+    public String generateSparkJarsPaths(List<String> commandLineJarsPaths, boolean isLightWeight) {
+    	if (isLightWeight) {
+    		String clusterLibs = getYarnApplicationClasspath(); //this must be overriden in lightWeight distro
+        	String customDependencies = getPluginAdapter()
+                    .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.LIGHTWEIGHT_DEPENDENCIES.getModuleName());
+            if (!StringUtils.isEmpty(customDependencies)) {
+                clusterLibs += "," + SparkClassPathUtils.generateSparkJarsPathsWithNames(commandLineJarsPaths, customDependencies);
+            }
+            return clusterLibs;
+    	} else {
+	        String spark2RuntimeId = getPluginAdapter()
+	                .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.SPARK2_MODULE_GROUP.getModuleName());
+	        if (StringUtils.isEmpty(spark2RuntimeId)) {
+	            throw new RuntimeException(
+	                    "Can't find configuration for " + DynamicModuleGroupConstant.SPARK2_MODULE_GROUP.getModuleName());
+	        }
+	        return SparkClassPathUtils.generateSparkJarsPathsWithNames(commandLineJarsPaths, spark2RuntimeId);
+    	}
+    }
+    
+    public String generateSparkJarsPaths(List<String> commandLineJarsPaths, boolean isLightWeight, String customYarnClassPath) {
+    	if (isLightWeight) {
+    		String noQuotationMarkCustomYarnClassPath = customYarnClassPath.replaceAll("^\"|\"$", "");
+    		String customDependencies = getPluginAdapter()
+                    .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.LIGHTWEIGHT_DEPENDENCIES.getModuleName());
+            if (!StringUtils.isEmpty(customDependencies)) {
+            	noQuotationMarkCustomYarnClassPath += "," + SparkClassPathUtils.generateSparkJarsPathsWithNames(commandLineJarsPaths, customDependencies);
+            }
+            return noQuotationMarkCustomYarnClassPath;
+    	} else {
+            throw new RuntimeException("You need to use lightweight to customize the yarn class path");
+    	}
     }
 
     @Override

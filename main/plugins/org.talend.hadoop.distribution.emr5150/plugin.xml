@@ -298,9 +298,21 @@
         <!-- Sqoop libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="sqoop-1.4.7.jar"
-            name="sqoop-1.4.7.jar"
-            mvn_uri="mvn:org.apache.sqoop/sqoop/1.4.7"/>
+            id="parquet-sqoop-1.4.7.jar"
+            name="parquet-sqoop-1.4.7.jar"
+            mvn_uri="mvn:org.talend.libraries/parquet-sqoop-1.4.7/6.0.0"/>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr5150"
+            id="avro-sqoop-uber.jar"
+            name="avro-sqoop-uber.jar"
+            mvn_uri="mvn:org.talend.libraries/avro-sqoop-uber/6.0.0"/>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr5150"
+            id="avro-sqoop-uber.jar"
+            name="avro-sqoop-uber.jar"
+            mvn_uri="mvn:org.talend.libraries/avro-sqoop-uber/6.0.0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"

@@ -61,6 +61,11 @@ public interface HadoopComponent {
     public String getWinUtilsName();
 
     /**
+     * @return true if the distribution uses @link{EHadoopVersion} HADOOP_3.
+     */
+    public boolean isHadoop3();
+
+    /**
      * @return true if the distribution uses @link{EHadoopVersion} HADOOP_2.
      */
     public boolean isHadoop2();
@@ -232,4 +237,15 @@ public interface HadoopComponent {
 
     public boolean doSupportAzureDataLakeStorageGen2();
     public boolean doSupportWebHDFS();
+    
+    
+    /**
+     * indicate if we support the impala native protocol.
+     * connection with jdbc:impala://[Host]:[Port]/[Schema];[Property1]=[Value];[Property2]=[Value];
+     * false by default, hive2 driver used
+     * @returnD
+     */
+    default boolean doSupportImpalaConnector() {
+        return false;
+    }
 }

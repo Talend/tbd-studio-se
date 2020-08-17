@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Hadoopcluster Repository Test
 Bundle-SymbolicName: org.talend.repository.hadoopcluster.test
-Bundle-Version: 7.4.1.qualifier
+Bundle-Version: 7.3.1.qualifier
 Fragment-Host: org.talend.repository.hadoopcluster
 Bundle-Vendor: .Talend SA.
 Require-Bundle: org.talend.bigdata.se.test.base

@@ -20,16 +20,24 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.talend.commons.ui.swt.formtools.Form;
+import org.talend.commons.ui.swt.formtools.LabelledCombo;
 import org.talend.commons.ui.swt.formtools.LabelledText;
 import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
+import org.talend.core.hadoop.version.EHdinsightStorage;
 import org.talend.core.model.properties.ConnectionItem;
 import org.talend.core.model.utils.ContextParameterUtils;
+import org.talend.hadoop.distribution.helper.HadoopDistributionsHelper;
+import org.talend.hadoop.distribution.model.DistributionBean;
+import org.talend.hadoop.distribution.model.DistributionVersion;
 import org.talend.metadata.managment.ui.dialog.HadoopPropertiesDialog;
 import org.talend.metadata.managment.ui.utils.ExtendedNodeConnectionContextUtils.EHadoopParamName;
 import org.talend.repository.hadoopcluster.i18n.Messages;
@@ -55,6 +63,12 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
     private LabelledText hdiUsernameText;
 
     private LabelledText hdiPasswordText;
+
+    private Composite storagePartComposite;
+
+    private LabelledCombo storageCombo;
+
+    private Button storageUseTLSBtn;
 
     private LabelledText azureHostnameText;
 
@@ -135,11 +149,25 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
         String hdiPassword = StringUtils.trimToEmpty(getConnection().getParameters().get(
                 ConnParameterKeys.CONN_PARA_KEY_HDI_PASSWORD));
         hdiPasswordText.setText(hdiPassword);
-        String azureHostname = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_AZURE_HOSTNAME));
+        String azureHdinsightStorage = StringUtils
+                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HDINSIGHT_STORAGE));
+        if (azureHdinsightStorage != null) {
+            EHdinsightStorage storage = EHdinsightStorage.getHdinsightStorageByName(azureHdinsightStorage, false);
+            if (storage != null) {
+                storageCombo.setText(storage.getDisplayName());
+            } else {
+                storageCombo.select(0);
+            }
+        } else {
+            storageCombo.select(0);
+        }
+        storageUseTLSBtn.setSelection(Boolean.valueOf(StringUtils.trimToEmpty(
+                getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HDINSIGHT_STORAGE_USE_TLS))));
+        String azureHostname = StringUtils
+                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HOSTNAME));
         azureHostnameText.setText(azureHostname);
-        String azureContainer = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_AZURE_CONTAINER));
+        String azureContainer = StringUtils
+                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_CONTAINER));
         azureContainerText.setText(azureContainer);
         String azureUsername = StringUtils.trimToEmpty(getConnection().getParameters().get(
                 ConnParameterKeys.CONN_PARA_KEY_AZURE_USERNAME));
@@ -164,6 +192,7 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
         whcJobResultFolderText.setReadOnly(readOnly);
         hdiUsernameText.setReadOnly(readOnly);
         hdiPasswordText.setReadOnly(readOnly);
+        storageUseTLSBtn.setEnabled(!readOnly);
         azureHostnameText.setReadOnly(readOnly);
         azureContainerText.setReadOnly(readOnly);
         azureUsernameText.setReadOnly(readOnly);
@@ -180,6 +209,7 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
         whcJobResultFolderText.setEditable(isEditable);
         hdiUsernameText.setEditable(isEditable);
         hdiPasswordText.setEditable(isEditable);
+        storageCombo.setEnabled(isEditable);
         azureHostnameText.setEditable(isEditable);
         azureContainerText.setEditable(isEditable);
         azureUsernameText.setEditable(isEditable);
@@ -224,15 +254,40 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
     }
 
     private void addAzureFields() {
-        Group azureGroup = Form.createGroup(this, 4, Messages.getString("HadoopClusterForm.azureSettings"), 110); //$NON-NLS-1$
+        Group azureGroup = Form.createGroup(this, 1, Messages.getString("HadoopClusterForm.azureSettings"), 110); //$NON-NLS-1$
         azureGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-        azureHostnameText = new LabelledText(azureGroup, Messages.getString("HadoopClusterForm.text.azure.hostname"), 1); //$NON-NLS-1$
-        azureContainerText = new LabelledText(azureGroup, Messages.getString("HadoopClusterForm.text.azure.container"), 1); //$NON-NLS-1$
-        azureUsernameText = new LabelledText(azureGroup, Messages.getString("HadoopClusterForm.text.azure.username"), 1); //$NON-NLS-1$
-        azurePasswordText = new LabelledText(azureGroup,
+
+        storagePartComposite = new Composite(azureGroup, SWT.NULL);
+        GridLayout storagePartLayout = new GridLayout(4, false);
+        storagePartLayout.marginWidth = 0;
+        storagePartLayout.marginHeight = 0;
+        storagePartComposite.setLayout(storagePartLayout);
+        storagePartComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+
+        storageCombo = new LabelledCombo(storagePartComposite, Messages.getString("HadoopClusterForm.text.azure.storage"), //$NON-NLS-1$
+                Messages.getString("HadoopClusterForm.text.azure.storage.tip"), //$NON-NLS-1$
+                EHdinsightStorage.getAllHdinsightStorageDisplayNames().toArray(new String[0]), 1, true);
+
+        storageUseTLSBtn = new Button(storagePartComposite, SWT.CHECK);
+        storageUseTLSBtn.setText(Messages.getString("HadoopClusterForm.text.azure.storageUseTLS")); //$NON-NLS-1$
+        storageUseTLSBtn.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 2, 1));
+
+        Composite azurePartComposite = new Composite(azureGroup, SWT.NULL);
+        GridLayout azurePartLayout = new GridLayout(4, false);
+        azurePartLayout.marginWidth = 0;
+        azurePartLayout.marginHeight = 0;
+        azurePartComposite.setLayout(azurePartLayout);
+        azurePartComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+
+        azureHostnameText = new LabelledText(azurePartComposite, Messages.getString("HadoopClusterForm.text.azure.hostname"), 1); //$NON-NLS-1$
+        azureContainerText = new LabelledText(azurePartComposite, Messages.getString("HadoopClusterForm.text.azure.container"), //$NON-NLS-1$
+                1);
+        azureUsernameText = new LabelledText(azurePartComposite, Messages.getString("HadoopClusterForm.text.azure.username"), 1); //$NON-NLS-1$
+        azurePasswordText = new LabelledText(azurePartComposite,
                 Messages.getString("HadoopClusterForm.text.azure.password"), 1, SWT.PASSWORD | SWT.BORDER | SWT.SINGLE); //$NON-NLS-1$
         azurePasswordText.getTextControl().setEchoChar('*');
-        azureDeployBlobText = new LabelledText(azureGroup, Messages.getString("HadoopClusterForm.text.azure.deployBlob"), 1); //$NON-NLS-1$
+        azureDeployBlobText = new LabelledText(azurePartComposite, Messages.getString("HadoopClusterForm.text.azure.deployBlob"), //$NON-NLS-1$
+                1);
     }
 
     private void addHadoopPropertiesFields() {
@@ -323,6 +378,28 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
                 checkFieldsValue();
             }
         });
+
+        storageCombo.getCombo().addSelectionListener(new SelectionAdapter() {
+
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                String storage = storageCombo.getText();
+                getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_AZURE_HDINSIGHT_STORAGE,
+                        EHdinsightStorage.getHdinsightStoragenByDisplayName(storage).getName());
+                checkFieldsValue();
+            }
+        });
+
+        storageUseTLSBtn.addSelectionListener(new SelectionAdapter() {
+
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_AZURE_HDINSIGHT_STORAGE_USE_TLS,
+                        String.valueOf(storageUseTLSBtn.getSelection()));
+                checkFieldsValue();
+            }
+        });
+
         azureHostnameText.addModifyListener(new ModifyListener() {
 
             @Override
@@ -369,6 +446,7 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
 
     @Override
     public void updateForm() {
+        hideHdinsightStorageControl(!isCurrentHadoopVersionSupportStorage());
         adaptFormToEditable();
     }
 
@@ -474,4 +552,28 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
         }
     }
 
+    private void hideHdinsightStorageControl(boolean hide) {
+        hideControl(storagePartComposite, hide);
+    }
+
+    private boolean isCurrentHadoopVersionSupportStorage() {
+        boolean supportStorage = false;
+        final DistributionVersion distributionVersion = getDistributionVersion();
+        if (distributionVersion != null && distributionVersion.hadoopComponent != null) {
+            supportStorage = "MICROSOFT_HD_INSIGHT_4_0".equals(distributionVersion.getVersion()); //$NON-NLS-1$
+        }
+        return supportStorage;
+    }
+
+    private DistributionBean getDistribution() {
+        return HadoopDistributionsHelper.HADOOP.getDistribution(getConnection().getDistribution(), false);
+    }
+
+    private DistributionVersion getDistributionVersion() {
+        final DistributionBean distribution = getDistribution();
+        if (distribution != null) {
+            return distribution.getVersion(getConnection().getDfVersion(), false);
+        }
+        return null;
+    }
 }

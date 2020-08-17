@@ -5,12 +5,11 @@
     <parent>
         <groupId>org.talend.studio</groupId>
         <artifactId>parent-pom</artifactId>
-        <version>7.4.1-SNAPSHOT</version>
-        <relativePath/>
+        <version>7.3.1-PATCH</version>
+        <relativePath />
     </parent>
     <artifactId>tbd-studio-se</artifactId>
     <packaging>pom</packaging>
-
     <modules>
         <module>i18n/plugins/org.talend.demo.bigdata.ce.nl</module>
         <module>i18n/plugins/org.talend.designer.hdfsbrowse.nl</module>
@@ -36,6 +35,7 @@
         <module>main/plugins/org.talend.hadoop.distribution.cdh5100</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh5120</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh5x</module>
+        <module>main/plugins/org.talend.hadoop.distribution.cdp</module>
         <module>main/plugins/org.talend.hadoop.distribution.altus10</module>
         <module>main/plugins/org.talend.hadoop.distribution.custom</module>
         <module>main/plugins/org.talend.hadoop.distribution.dataproc11</module>
@@ -50,6 +50,7 @@
 		<module>main/plugins/org.talend.hadoop.distribution.emr5290</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdinsight340</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdinsight360</module>
+        <module>main/plugins/org.talend.hadoop.distribution.hdinsight400</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdp250</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdp260</module>
         <module>main/plugins/org.talend.hadoop.distribution.hdpx</module>
@@ -110,6 +111,7 @@
 	    <module>test/plugins/org.talend.hadoop.distribution.emr5290.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdinsight340.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdinsight360.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.hdinsight400.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdp250.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdp260.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.mapr500.test</module>

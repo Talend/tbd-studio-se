@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Hadoop distribution
 Bundle-SymbolicName: org.talend.hadoop.distribution;singleton:=true
-Bundle-Version: 7.4.1.qualifier
+Bundle-Version: 7.3.1.qualifier
 Require-Bundle: org.eclipse.core.runtime,
  org.apache.commons.collections,
  org.talend.core.runtime,
@@ -20,6 +20,7 @@ Export-Package: org.talend.hadoop.distribution,
  org.talend.hadoop.distribution.condition.common,
  org.talend.hadoop.distribution.constants,
  org.talend.hadoop.distribution.constants.apache,
+ org.talend.hadoop.distribution.constants.cdp,
  org.talend.hadoop.distribution.constants.cdh,
  org.talend.hadoop.distribution.constants.cdh.altus,
  org.talend.hadoop.distribution.constants.custom,
@@ -35,12 +36,14 @@ Export-Package: org.talend.hadoop.distribution,
  org.talend.hadoop.distribution.dynamic.adapter,
  org.talend.hadoop.distribution.dynamic.bean,
  org.talend.hadoop.distribution.dynamic.cdh,
+ org.talend.hadoop.distribution.dynamic.cdp,
  org.talend.hadoop.distribution.dynamic.comparator,
  org.talend.hadoop.distribution.dynamic.hdp,
  org.talend.hadoop.distribution.dynamic.pref,
  org.talend.hadoop.distribution.dynamic.resolver,
  org.talend.hadoop.distribution.dynamic.template,
  org.talend.hadoop.distribution.dynamic.template.cdh,
+ org.talend.hadoop.distribution.dynamic.template.cdp,
  org.talend.hadoop.distribution.dynamic.template.hdp,
  org.talend.hadoop.distribution.dynamic.template.modulegroup,
  org.talend.hadoop.distribution.dynamic.template.modulegroup.node,

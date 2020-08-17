@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Hadoop library
 Bundle-SymbolicName: org.talend.libraries.hadoop;singleton:=true
-Bundle-Version: 7.4.1.qualifier
+Bundle-Version: 7.3.1.qualifier
 Bundle-ClassPath: .,
  lib/hadoop-core-1.0.0.jar
 Require-Bundle: org.talend.libraries.apache

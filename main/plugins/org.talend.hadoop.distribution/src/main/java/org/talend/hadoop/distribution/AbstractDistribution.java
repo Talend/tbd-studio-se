@@ -47,6 +47,10 @@ public abstract class AbstractDistribution {
         return getHadoopVersion() == EHadoopVersion.HADOOP_2;
     }
 
+    public boolean isHadoop3() {
+        return getHadoopVersion() == EHadoopVersion.HADOOP_3;
+    }
+
     public abstract boolean doSupportKerberos();
 
     /**
@@ -253,6 +257,14 @@ public abstract class AbstractDistribution {
     public String generateSparkJarsPaths(List<String> commandLineJarsPaths) {
         return ""; //$NON-NLS-1$
     }
+    
+    public String generateSparkJarsPaths(List<String> commandLineJarsPaths, boolean isLightWeight) {
+        return ""; //$NON-NLS-1$
+    }
+    
+    public String generateSparkJarsPaths(List<String> commandLineJarsPaths, boolean isLightWeight, String customYarnClassPath) {
+        return ""; //$NON-NLS-1$
+    }
 
     public boolean isCloudDistribution() {
         return false;
@@ -368,5 +380,9 @@ public boolean isQuboleDistribution() {
     
     public String getSuffixParquetPackage() {
         return "";
+    }
+    
+    public boolean doSupportLightWeight() {
+    	return false;
     }
 }
