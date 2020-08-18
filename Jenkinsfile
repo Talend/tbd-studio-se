@@ -48,7 +48,7 @@ pipeline {
             steps {
                 ansiColor('xterm') {
                     sh '''
-                        pip3 install javaproperties
+                        pip3.6 install javaproperties
                         python3 ./tools/sanity-check.py
                         '''
                 }
