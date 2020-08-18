@@ -629,16 +629,7 @@
 			"jarName": "hive-exec-shade-2.1.1-cdh6.1.1-talend.jar",
 			"mvnUri": "mvn:org.talend.libraries/hive-exec-shade-2.1.1-cdh6.1.1-talend/6.0.0",
 			"useStudioRepository": "true",
-			"description": "",
-			"exclusions": [
-				{
-					"groupId": "org.apache.hive",
-					"artifactId": "hive-exec",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				}
-				]
+			"description": ""
 		},
 		{
 			"id": "hive-hbase-handler",
