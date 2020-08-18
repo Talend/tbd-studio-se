@@ -25,7 +25,7 @@ pipeline {
                 kind: Pod
                 spec:
                   containers:
-                    - name: python2
+                    - name: python3
                       image: jenkinsxio/builder-python
                       command:
                         - cat
@@ -39,7 +39,7 @@ pipeline {
                           cpu: "3"  
                     '''
             activeDeadlineSeconds 60
-            defaultContainer 'python2'
+            defaultContainer 'python3'
         }
     }
 
