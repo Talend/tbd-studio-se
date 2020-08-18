@@ -48,7 +48,7 @@ pipeline {
             steps {
                 ansiColor('xterm') {
                     sh '''
-                        pip install javaproperties
+                        pip3 install javaproperties
                         python3 ./tools/sanity-check.py
                         '''
                 }
@@ -65,7 +65,7 @@ pipeline {
         stage('Version check') {
             steps {
                 ansiColor('xterm') {
-                    sh 'python ./tools/version-check.py'
+                    sh 'python3 ./tools/version-check.py'
                 }
             }
         }
