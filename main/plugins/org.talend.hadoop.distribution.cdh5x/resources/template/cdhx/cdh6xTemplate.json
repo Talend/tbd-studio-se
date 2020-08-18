@@ -413,7 +413,14 @@
 					"classifier": "",
 					"extension": "",
 					"description": ""
-				}
+				},
+				{
+                    "groupId": "commons-lang",
+                    "artifactId": "*",
+					"classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
 			]
 		},
 		{
@@ -637,8 +644,15 @@
 					"classifier": "",
 					"extension": "",
 					"description": ""
-				}
-				]
+				}, 
+				{
+                    "groupId": "commons-lang",
+                    "artifactId": "*",
+					"classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+			]
 		},
 		{
 			"id": "hive-hbase-handler",
@@ -1298,7 +1312,16 @@
 			"groupId": "org.apache.parquet",
 			"artifactId": "parquet-hadoop-bundle",
 			"classifier": "",
-			"description": ""
+			"description": "",
+			"exclusions": [			
+                {
+                    "groupId": "commons-lang",
+                    "artifactId": "*",
+					"classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+			]
 		},
 		{
 			"id": "parquet-hadoop-bundle_1_6_0",
@@ -1308,7 +1331,16 @@
 			"artifactId": "parquet-hadoop-bundle",
 			"version": "1.6.0",
 			"classifier": "",
-			"description": ""
+			"description": "",
+			"exclusions": [			
+                {
+                    "groupId": "commons-lang",
+                    "artifactId": "*",
+					"classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+			]
 		},
 		{
 			"id": "parquet-pig-bundle",
@@ -1473,7 +1505,14 @@
 					"classifier": "",
 					"extension": "",
 					"description": ""
-				}
+				},
+				{
+                    "groupId": "commons-lang",
+                    "artifactId": "*",
+					"classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
 			]
 		},
         {
