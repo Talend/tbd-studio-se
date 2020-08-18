@@ -62,6 +62,14 @@ pipeline {
             }
         }
 
+        stage('Version check') {
+            steps {
+                ansiColor('xterm') {
+                    sh 'python ./tools/version-check.py'
+                }
+            }
+        }
+
         stage('build') {
             steps {
 
