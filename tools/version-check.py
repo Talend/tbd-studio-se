@@ -88,7 +88,6 @@ if __name__ == '__main__':
     print("pom version for the branch must be", pom_version)
     print("manifest version for the branch must be", manifest_version)
     version_check(args.directory, pom_version, manifest_version)
-    print(errors)
     nb_errors = len(errors)
     if nb_errors > 0:
         print("%sProject is not correctly configured (%s %s found).%s" % (
