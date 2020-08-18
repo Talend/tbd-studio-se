@@ -26,7 +26,7 @@ pipeline {
                 spec:
                   containers:
                     - name: python2
-                      image: jenkinsxio/builder-python2
+                      image: jenkinsxio/builder-python
                       command:
                         - cat
                       tty: true
