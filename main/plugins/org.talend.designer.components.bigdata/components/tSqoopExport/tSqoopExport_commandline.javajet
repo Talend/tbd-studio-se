@@ -73,7 +73,17 @@ String[] cmd_<%=cid %> = new String[] {"sqoop", "export"
 <%
 for (Map<String,String> genericArg : genericArgs) {
 	if (!"".equals(genericArg.get("ADDITIONAL_VALUE"))) {
-	String arg = genericArg.get("ADDITIONAL_ARGUMENT").replaceAll("\"","") + "=" + genericArg.get("ADDITIONAL_VALUE").replaceAll("\"","");
+	String param = genericArg.get("ADDITIONAL_ARGUMENT");
+	param = param.substring(1, param.length()-1);
+	String conn;
+	if (param.startsWith("-D")){
+		conn = "=";
+	} else {
+		conn = " ";
+	}
+	String value = genericArg.get("ADDITIONAL_VALUE");
+	value = value.substring(1, value.length()-1);
+	String arg = param + conn + value;
 %>
 		,"<%=arg%>"
 <%
