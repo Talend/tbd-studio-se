@@ -58,7 +58,10 @@ String[] cmd_<%=cid %> = new String[] {"sqoop", "import-all-tables"
 <%
 for (Map<String,String> genericArg : genericArgs) {
 	if (!"".equals(genericArg.get("ADDITIONAL_VALUE"))) {
-	String arg = genericArg.get("ADDITIONAL_ARGUMENT").replaceAll("\"","") + "=" + genericArg.get("ADDITIONAL_VALUE").replaceAll("\"","");
+	String param = genericArg.get("ADDITIONAL_ARGUMENT").replaceAll("\"","");
+	String conn = (param.startsWith("-D")) ? "=" : " ";
+	String value = genericArg.get("ADDITIONAL_VALUE").replaceAll("\"","");
+	String arg = param + conn + value;
 %>
 		,"<%=arg%>"
 <%
