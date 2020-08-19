@@ -25,8 +25,8 @@ pipeline {
                 kind: Pod
                 spec:
                   containers:
-                    - name: python2
-                      image: jenkinsxio/builder-python2
+                    - name: python3
+                      image: jenkinsxio/builder-python
                       command:
                         - cat
                       tty: true
@@ -39,7 +39,7 @@ pipeline {
                           cpu: "3"  
                     '''
             activeDeadlineSeconds 60
-            defaultContainer 'python2'
+            defaultContainer 'python3'
         }
     }
 
@@ -48,8 +48,8 @@ pipeline {
             steps {
                 ansiColor('xterm') {
                     sh '''
-                        pip install javaproperties
-                        python ./tools/sanity-check.py
+                        pip3.6 install javaproperties
+                        python3 ./tools/sanity-check.py
                         '''
                 }
             }
@@ -57,7 +57,15 @@ pipeline {
         stage('Commit check') {
             steps {
                 ansiColor('xterm') {
-                    sh 'python ./tools/commit-check.py'
+                    sh 'python3 ./tools/commit-check.py'
+                }
+            }
+        }
+
+        stage('Version check') {
+            steps {
+                ansiColor('xterm') {
+                    sh 'python3 ./tools/version-check.py'
                 }
             }
         }

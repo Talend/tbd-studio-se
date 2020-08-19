@@ -41,6 +41,7 @@ import org.talend.designer.maven.aether.AbsDynamicProgressMonitor;
 import org.talend.designer.maven.aether.DummyDynamicMonitor;
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.hadoop.distribution.dynamic.cdh.DynamicCDHDistributionsGroup;
+import org.talend.hadoop.distribution.dynamic.cdp.DynamicCDPDistributionsGroup;
 import org.talend.hadoop.distribution.dynamic.hdp.DynamicHDPDistributionsGroup;
 import org.talend.hadoop.distribution.dynamic.pref.IDynamicDistributionPreference;
 import org.talend.hadoop.distribution.dynamic.resolver.IDependencyResolver;
@@ -95,9 +96,11 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
 
         dynamicDistributionsGroups = new ArrayList<>();
 
+        
+        dynamicDistributionsGroups.add(new DynamicCDPDistributionsGroup());
         dynamicDistributionsGroups.add(new DynamicCDHDistributionsGroup());
         dynamicDistributionsGroups.add(new DynamicHDPDistributionsGroup());
-
+        
         return dynamicDistributionsGroups;
 
     }
