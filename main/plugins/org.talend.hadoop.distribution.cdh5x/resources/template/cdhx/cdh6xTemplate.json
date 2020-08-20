@@ -102,7 +102,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -399,6 +406,20 @@
                     "classifier": "",
                     "extension": "",
                     "description": ""
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+                    "groupId": "commons-lang",
+                    "artifactId": "*",
+					"classifier": "",
+                    "extension": "",
+                    "description": ""
                 }
 			]
 		},
@@ -438,7 +459,15 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
+                
 			]
 		},
 		{
@@ -470,7 +499,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -516,7 +552,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -576,15 +619,22 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
 			"id": "hive-exec",
 			"type": "STANDARD",
 			"context": "{properties.context}",
-			"jarName": "hive-exec-shade-2.1.1-cdh6.1.1-talend.jar",
-			"mvnUri": "mvn:org.talend.libraries/hive-exec-shade-2.1.1-cdh6.1.1-talend/6.0.0",
+			"jarName": "hive-exec-shade-2.1.1-cdh6.1.1-talend-1.1.jar",
+			"mvnUri": "mvn:org.talend.bigdata.libs/hive-exec-shade-2.1.1-cdh6.1.1-talend/1.1",
 			"useStudioRepository": "true",
 			"description": ""
 		},
@@ -652,7 +702,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-exec",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}	
 			]
 		},
 		{
@@ -684,7 +741,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
             ]
 		},
 		{
@@ -730,7 +794,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -811,7 +882,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -966,7 +1044,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -1026,7 +1111,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -1065,7 +1157,14 @@
 					"classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -1197,7 +1296,16 @@
 			"groupId": "org.apache.parquet",
 			"artifactId": "parquet-hadoop-bundle",
 			"classifier": "",
-			"description": ""
+			"description": "",
+			"exclusions": [			
+                {
+                    "groupId": "commons-lang",
+                    "artifactId": "*",
+					"classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+			]
 		},
 		{
 			"id": "parquet-hadoop-bundle_1_6_0",
@@ -1207,7 +1315,16 @@
 			"artifactId": "parquet-hadoop-bundle",
 			"version": "1.6.0",
 			"classifier": "",
-			"description": ""
+			"description": "",
+			"exclusions": [			
+                {
+                    "groupId": "commons-lang",
+                    "artifactId": "*",
+					"classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+			]
 		},
 		{
 			"id": "parquet-pig-bundle",
@@ -1372,7 +1489,14 @@
 					"classifier": "",
 					"extension": "",
 					"description": ""
-				}
+				},
+				{
+                    "groupId": "commons-lang",
+                    "artifactId": "*",
+					"classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
 			]
 		},
         {
@@ -1654,6 +1778,11 @@
         }
     ],
     "moduleGroups": [
+		{
+			"id": "LIGHTWEIGHT_DEPENDENCIES",
+			"modules": [
+			]
+		},
         {
 			"id": "HDFS-COMMON-LIB-DYNAMIC",
 			"modules": [

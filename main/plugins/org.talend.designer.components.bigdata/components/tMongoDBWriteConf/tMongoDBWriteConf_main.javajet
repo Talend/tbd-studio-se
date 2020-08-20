@@ -9,6 +9,7 @@
         java.util.Map
         java.util.Set
         java.util.HashSet
+		java.util.HashMap
 	    org.talend.core.model.metadata.types.JavaTypesManager
 	    org.talend.core.model.metadata.types.JavaType
 		org.talend.core.model.utils.NodeUtil

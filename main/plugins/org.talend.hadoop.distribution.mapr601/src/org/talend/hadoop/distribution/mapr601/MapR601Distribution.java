@@ -463,4 +463,9 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
     public boolean doSupportStoreAsParquet() {
         return false;
     }
+    
+    @Override
+    public boolean doSupportHBase2x() {
+    	return true;
+    }
 }
