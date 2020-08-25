@@ -57,18 +57,18 @@ String passwordFieldName = "__PASSWORD__";
 String[] cmd_<%=cid %> = new String[] {"sqoop", "import-all-tables"
 <%
 for (Map<String,String> genericArg : genericArgs) {
-	if (!"".equals(genericArg.get("ADDITIONAL_VALUE"))) {
-	String param = genericArg.get("ADDITIONAL_ARGUMENT");
-	param = param.substring(1, param.length()-1);
-	String conn;
-	if (param.startsWith("-D")){
-		conn = "=";
-	} else {
-		conn = " ";
-	}
 	String value = genericArg.get("ADDITIONAL_VALUE");
-	value = value.substring(1, value.length()-1);
-	String arg = param + conn + value;
+		if (!"\"\"".equals(value)) {
+			String param = genericArg.get("ADDITIONAL_ARGUMENT");
+			param = param.substring(1, param.length()-1);
+			String conn;
+				if (param.startsWith("-D")){
+					conn = "=";
+				} else {
+					conn = " ";
+				}
+			value = value.substring(1, value.length()-1);
+			String arg = param + conn + value;
 %>
 		,"<%=arg%>"
 <%
@@ -133,7 +133,7 @@ if(excludeTable) {
 }
 
 for (Map<String,String> toolSpecificArg : toolSpecificArgs) { 
-    if (!"".equals(toolSpecificArg.get("ADDITIONAL_VALUE"))) { 
+    if (!"\"\"".equals(toolSpecificArg.get("ADDITIONAL_VALUE"))) { 
 %> 
        ,<%=toolSpecificArg.get("ADDITIONAL_ARGUMENT")%>, <%=toolSpecificArg.get("ADDITIONAL_VALUE")%> 
 <% 

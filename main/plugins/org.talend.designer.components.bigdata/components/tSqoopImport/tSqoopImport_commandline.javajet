@@ -94,18 +94,19 @@ String passwordFieldName = "__PASSWORD__";
 String[] cmd_<%=cid %> = new String[] {"sqoop", "import", "-Dmapreduce.job.user.classpath.first=true" 
 <%
 for (Map<String,String> genericArg : genericArgs) {
-	if (!"".equals(genericArg.get("ADDITIONAL_VALUE"))) {
-	String param = genericArg.get("ADDITIONAL_ARGUMENT");
-	param = param.substring(1, param.length()-1);
-	String conn;
-	if (param.startsWith("-D")){
-		conn = "=";
-	} else {
-		conn = " ";
-	}
 	String value = genericArg.get("ADDITIONAL_VALUE");
-	value = value.substring(1, value.length()-1);
-	String arg = param + conn + value;
+		if (!"\"\"".equals(value)) {
+			String param = genericArg.get("ADDITIONAL_ARGUMENT");
+			param = param.substring(1, param.length()-1);
+			String conn;
+				if (param.startsWith("-D")){
+					conn = "=";
+				} else {
+					conn = " ";
+				}
+			
+			value = value.substring(1, value.length()-1);
+			String arg = param + conn + value;
 %>
 		,"<%=arg%>"
 <%
@@ -187,7 +188,7 @@ if(direct){
 <%if(useSplit){%>, "--split-by", <%=split%><%}%>
 <%
 for(Map<String,String> toolArg : toolSpecificArgs){ 
-	 if(!"".equals(toolArg.get("ADDITIONAL_VALUE"))) { 
+	 if(!"\"\"".equals(toolArg.get("ADDITIONAL_VALUE"))) { 
 %> 
 		,<%=toolArg.get("ADDITIONAL_ARGUMENT")%>, <%=toolArg.get("ADDITIONAL_VALUE")%> 
 <% 
