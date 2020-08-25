@@ -295,7 +295,7 @@ public class MapR611Distribution extends AbstractMapRDistribution implements HDF
     @Override
     public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
-//        version.add(ESparkVersion.SPARK_2_3);
+        version.add(ESparkVersion.SPARK_2_3);
         return version;
     }
 

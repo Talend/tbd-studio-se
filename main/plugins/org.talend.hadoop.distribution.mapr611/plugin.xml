@@ -759,8 +759,8 @@
 		<!-- Groups -->
         <libraryNeededGroup
                 description="S3 libraries for MapR 6.1.1"
-                id="S3-LIB-MAPR610"
-                name="S3-LIB-MAPR610">
+                id="S3-LIB-MAPR611"
+                name="S3-LIB-MAPR611">
             <!--library id="aws-java-sdk-bundle-1.11.199.jar" />
             <library id="hadoop-aws-2.7.0-mapr-1808.jar" />
             <library id="jets3t-0.9.4.jar" />
@@ -772,14 +772,16 @@
  
         <libraryNeededGroup
                 description="OJAI libraries for MapR 6.1.1"
-                id="OJAI-LIB-MAPR610"
-                name="OJAI-LIB-MAPR610">
+                id="OJAI-LIB-MAPR611"
+                name="OJAI-LIB-MAPR611">
+            <library id="hadoop-common-2.7.0-mapr-1808.jar" />
+            <library id="commons-lang-2.6.jar" />
+            <library id="commons-codec-1.10.jar" />
             <!--library id="ojai-3.0-mapr-1808.jar" />
             <library id="mapr-ojai-driver-6.1.1-mapr.jar" />
             <library id="maprdb-6.1.1-mapr.jar" />
             <library id="maprfs-6.1.1-mapr.jar" />
             <library id="hadoop-auth-2.7.0-mapr-1808.jar" />
-            <library id="hadoop-common-2.7.0-mapr-1808.jar" />
             <library id="json-20090211.jar" /-->
             
             <!-- common part -->
@@ -790,7 +792,6 @@
             <library id="commons-collections-3.2.2.jar" />
             <library id="protobuf-java-2.5.0.jar" />
             <library id="commons-configuration-1.6.jar" />
-            <library id="commons-lang-2.6.jar" />
             <library id="zookeeper-3.4.11-mapr-1808.jar" />
             <library id="antlr4-runtime-4.7.jar" />
             <library id="jackson-databind-2.6.7.1.jar" />
@@ -805,7 +806,6 @@
             <library id="commons-math3-3.6.1.jar" />
             <library id="xmlenc-0.52.jar" />
             <library id="commons-httpclient-3.1.jar" />
-            <library id="commons-codec-1.10.jar" />
             <library id="commons-io-2.4.jar" />
             <library id="commons-net-3.1.jar" />
             <library id="commons-digester-1.8.jar" />
@@ -824,12 +824,13 @@
 
          <libraryNeededGroup
               description="Latest HDFS libraries for MapR 6.1.1"
-              id="HDFS-LIB-MAPR610"
-              name="HDFS-LIB-MAPR610">
+              id="HDFS-LIB-MAPR611"
+              name="HDFS-LIB-MAPR611">
+           <library id="hadoop-common-2.7.0-mapr-1808.jar"/>
+           <library id="commons-lang-2.6.jar"/>
            <!--library id="maprfs-6.1.1-mapr.jar"/>
            <library id="hadoop-hdfs-2.7.0-mapr-1808.jar" />
            <library id="hadoop-auth-2.7.0-mapr-1808.jar"/>
-           <library id="hadoop-common-2.7.0-mapr-1808.jar"/>
            <library id="zookeeper-3.4.11-mapr-1808.jar"/>
            <library id="json-20090211.jar"/>
            <library id="guava-20.0.jar"/>
@@ -840,7 +841,6 @@
            <library id="commons-logging-1.1.3.jar"/>
            <library id="commons-collections-3.2.2.jar"/>
            <library id="commons-configuration-1.6.jar"/>
-           <library id="commons-lang-2.6.jar"/>
            <library id="commons-io-2.4.jar"/>
            <library id="flexjson-2.1.jar"/>
            <library id="httpclient-4.5.4.jar" />
@@ -851,8 +851,11 @@
         
         <libraryNeededGroup
                 description="Latest Talend MapReduce HBase storage libraries for MapR 6.1.1"
-                id="HBASE-LIB-MAPR610"
-                name="HBASE-LIB-MAPR610" >
+                id="HBASE-LIB-MAPR611"
+                name="HBASE-LIB-MAPR611" >
+           <library id="hadoop-common-2.7.0-mapr-1808.jar"/>
+           <library id="commons-lang-2.6.jar"/>
+           <library id="commons-codec-1.10.jar" />
            <!--library id="maprfs-6.1.1-mapr.jar"/>
            <library id="mapr-hbase-6.1.1-mapr.jar" />
            <library id="hbase-hadoop2-compat-1.1.8-mapr-1901.jar" />
@@ -860,15 +863,12 @@
            <library id="hbase-common-1.1.8-mapr-1901.jar" />
            <library id="hbase-protocol-1.1.8-mapr-1901.jar" />
            <library id="htrace-core-3.1.0-incubating.jar" />
-           <library id="commons-codec-1.10.jar" />
            <library id="protobuf-java-2.5.0.jar"/>
            <library id="hadoop-hdfs-2.7.0-mapr-1808.jar" />
            <library id="hadoop-auth-2.7.0-mapr-1808.jar"/>
-           <library id="hadoop-common-2.7.0-mapr-1808.jar"/>
            <library id="commons-logging-1.1.3.jar"/>
            <library id="commons-collections-3.2.2.jar"/>
            <library id="commons-configuration-1.6.jar"/>
-           <library id="commons-lang-2.6.jar"/>
            <library id="commons-io-2.4.jar"/>
            <library id="zookeeper-3.4.11-mapr-1808.jar"/>
            <library id="guava-20.0.jar"/>
@@ -882,8 +882,8 @@
         
         <libraryNeededGroup
               description="Latest Hive libraries for MapR 6.1.1"
-              id="HIVE-LIB-MAPR610"
-              name="HIVE-LIB-MAPR610">
+              id="HIVE-LIB-MAPR611"
+              name="HIVE-LIB-MAPR611">
            <!--library id="hive-exec-2.3.3-mapr-1901.jar" />
            <library id="hive-metastore-2.3.3-mapr-1901.jar" />
            <library id="hive-jdbc-2.3.3-mapr-1901.jar" />
@@ -902,8 +902,8 @@
         <!-- Hive HBase group -->
         <libraryNeededGroup
                 description="Hive HBase libraries for MapR 6.1.1"
-                id="HIVE-HBASE-LIB-MAPR610"
-                name="HIVE-HBASE-LIB-MAPR610">
+                id="HIVE-HBASE-LIB-MAPR611"
+                name="HIVE-HBASE-LIB-MAPR611">
             <!--library id="hbase-client-1.1.8-mapr-1901.jar" />
             <library id="hbase-common-1.1.8-mapr-1901.jar" />
             <library id="hbase-protocol-1.1.8-mapr-1901.jar" />
@@ -916,15 +916,16 @@
 
         <libraryNeededGroup
            description="Latest MapReduce libraries for MapR 6.1.1"
-           id="MAPREDUCE-LIB-MAPR610"
-           name="MAPREDUCE-LIB-MAPR610">
-            <group id="HDFS-LIB-MAPR610" />
+           id="MAPREDUCE-LIB-MAPR611"
+           name="MAPREDUCE-LIB-MAPR611">
+            <group id="HDFS-LIB-MAPR611" />
+            <library id="hadoop-mapreduce-client-core-2.7.0-mapr-1808.jar" />
+            <library id="commons-codec-1.10.jar" />
             <!--library id="hadoop-hdfs-2.7.0-mapr-1808.jar" />
             <library id="hadoop-yarn-server-web-proxy-2.7.0-mapr-1808.jar" />
             <library id="hadoop-mapreduce-client-app-2.7.0-mapr-1808.jar" />
             <library id="hadoop-mapreduce-client-common-2.7.0-mapr-1808.jar" />
             <library id="hadoop-mapreduce-client-contrib-2.7.0-mapr-1808.jar" />
-            <library id="hadoop-mapreduce-client-core-2.7.0-mapr-1808.jar" />
             <library id="hadoop-mapreduce-client-hs-2.7.0-mapr-1808.jar" />
             <library id="hadoop-mapreduce-client-hs-plugins-2.7.0-mapr-1808.jar" />
             <library id="hadoop-mapreduce-client-jobclient-2.7.0-mapr-1808.jar" />
@@ -933,7 +934,6 @@
             <library id="hadoop-yarn-client-2.7.0-mapr-1808.jar" />
             <library id="hadoop-yarn-common-2.7.0-mapr-1808.jar" />
             <library id="commons-cli-1.2.jar" />
-            <library id="commons-codec-1.10.jar" />
             <library id="commons-io-2.4.jar" />
             <library id="commons-math3-3.6.1.jar" />
             <library id="jackson-core-asl-1.9.14-TALEND.jar" />
@@ -944,16 +944,16 @@
 
         <libraryNeededGroup
            description="Avro MapReduce libraries for MapR 6.1.1"
-           id="MAPREDUCE-AVRO-LIB-MAPR610"
-           name="MAPREDUCE-AVRO-LIB-MAPR610">
+           id="MAPREDUCE-AVRO-LIB-MAPR611"
+           name="MAPREDUCE-AVRO-LIB-MAPR611">
             <!--library id="avro-mapred-1.8.1-hadoop2.jar"/-->
          </libraryNeededGroup>
 
          <!-- Spark2 DynamoDB group MRREQUIRED -->
         <libraryNeededGroup
                 description="Spark DynamoDB libraries for MapR 6.1.1 that are MRREQUIRED"
-                id="SPARK-DYNAMODB-LIB-MRREQUIRED-MAPR610"
-                name="SPARK-DYNAMODB-LIB-MRREQUIRED-MAPR610">
+                id="SPARK-DYNAMODB-LIB-MRREQUIRED-MAPR611"
+                name="SPARK-DYNAMODB-LIB-MRREQUIRED-MAPR611">
              <!--library id="aws-java-sdk-bundle-1.11.199.jar"/>
              <library id="commons-pool2-2.4.2.jar"/-->
         </libraryNeededGroup>
@@ -961,8 +961,17 @@
 		<!-- Spark2 group -->
          <libraryNeededGroup
            description="Latest Spark libraries for MapR 6.1.1 Spark 2"
-           id="SPARK-LIB-MAPR610"
-           name="SPARK-LIB-MAPR610">
+           id="SPARK-LIB-MAPR611"
+           name="SPARK-LIB-MAPR611">
+			<library id="commons-lang-2.6.jar"/>
+			<library id="spark-mllib_2.11-2.3.3.100-mapr-1904.jar"/>
+			<library id="spark-mllib-local_2.11-2.3.3.100-mapr-1904.jar"/>
+			<library id="commons-codec-1.10.jar"/>
+			<library id="scala-library-2.11.12.jar"/>
+			<library id="spark-core_2.11-2.3.3.100-mapr-1904.jar"/>
+			<library id="spark-sql_2.11-2.3.3.100-mapr-1904.jar"/>
+			<library id="kryo-shaded-3.0.3.jar"/>
+			<library id="commons-lang3-3.5.jar"/>
             <!--library id="winutils-hadoop-2.7.0.exe" />
 			<library id="spark-kvstore_2.11-2.3.3.100-mapr-1904.jar"/>
 			<library id="mapr-security-web-6.1.1-mapr.jar"/>
@@ -984,15 +993,12 @@
 			<library id="chill-java-0.8.4.jar"/>
 			<library id="classpath-filter_2.11-2.3.3.100-mapr-1904.jar"/>
 			<library id="commons-cli-1.2.jar"/>
-			<library id="commons-codec-1.10.jar"/>
 			<library id="commons-compiler-3.0.8.jar"/>
 			<library id="commons-compress-1.9.jar"/>
 			<library id="commons-crypto-1.0.0.jar"/>
 			<library id="commons-dbcp-1.4.jar"/>
 			<library id="commons-httpclient-3.1.jar"/>
 			<library id="commons-io-2.4.jar"/>
-			<library id="commons-lang3-3.5.jar"/>
-			<library id="commons-lang-2.6.jar"/>
 			<library id="commons-logging-1.1.3.jar"/>
 			<library id="commons-math3-3.6.1.jar"/>
 			<library id="commons-net-3.1.jar"/>
@@ -1054,7 +1060,6 @@
 			<library id="jta-1.1.jar"/>
 			<library id="jtransforms-2.4.0.jar"/>
 			<library id="jul-to-slf4j-1.7.16.jar"/>
-			<library id="kryo-shaded-3.0.3.jar"/>
 			<library id="leveldbjni-all-1.8.jar"/>
 			<library id="libfb303-0.9.3.jar"/>
 			<library id="libthrift-0.9.3.jar"/>
@@ -1085,26 +1090,21 @@
 			<library id="pyrolite-4.13.jar"/>
 			<library id="RoaringBitmap-0.5.18.jar"/>
 			<library id="scala-compiler-2.11.8.jar"/>
-			<library id="scala-library-2.11.12.jar"/>
 			<library id="scalap-2.11.8.jar"/>
 			<library id="scala-parser-combinators_2.11-1.0.4.jar"/>
 			<library id="scala-reflect-2.11.12.jar"/>
 			<library id="scala-xml_2.11-1.0.5.jar"/>
 			<library id="shapeless_2.11-2.3.2.jar"/>
 			<library id="spark-catalyst_2.11-2.3.3.100-mapr-1904.jar"/>
-			<library id="spark-core_2.11-2.3.3.100-mapr-1904.jar"/>
 			<library id="spark-graphx_2.11-2.3.3.100-mapr-1904.jar"/>
 			<library id="spark-hive_2.11-2.3.3.100-mapr-1904.jar"/>
 			<library id="spark-hive-thriftserver_2.11-2.3.3.100-mapr-1904.jar"/>
 			<library id="spark-launcher_2.11-2.3.3.100-mapr-1904.jar"/>
 			<library id="spark-mesos_2.11-2.3.3.100-mapr-1904.jar"/>
-			<library id="spark-mllib_2.11-2.3.3.100-mapr-1904.jar"/>
-			<library id="spark-mllib-local_2.11-2.3.3.100-mapr-1904.jar"/>
 			<library id="spark-network-common_2.11-2.3.3.100-mapr-1904.jar"/>
 			<library id="spark-network-shuffle_2.11-2.3.3.100-mapr-1904.jar"/>
 			<library id="spark-repl_2.11-2.3.3.100-mapr-1904.jar"/>
 			<library id="spark-sketch_2.11-2.3.3.100-mapr-1904.jar"/>
-			<library id="spark-sql_2.11-2.3.3.100-mapr-1904.jar"/>
 			<library id="spark-streaming_2.11-2.3.3.100-mapr-1904.jar"/>
 			<library id="spark-tags_2.11-2.3.3.100-mapr-1904.jar"/>
 			<library id="spark-unsafe_2.11-2.3.3.100-mapr-1904.jar"/>
@@ -1125,16 +1125,16 @@
 
          <libraryNeededGroup
          	description="Spark yarn cluster libraries for MapR 6.1.1"
-         	id="SPARK-YARN-CLUSTER-LIB-MAPR610"
-         	name="SPARK-YARN-CLUSTER-LIB-MAPR610" >
+         	id="SPARK-YARN-CLUSTER-LIB-MAPR611"
+         	name="SPARK-YARN-CLUSTER-LIB-MAPR611" >
          	<!--library id="flexjson-2.1.jar"/-->
          </libraryNeededGroup>
 
         <!-- Spark Azure group MRREQUIRED -->
         <libraryNeededGroup
                 description="Spark Azure libraries for MapR 6.1.1"
-                id="SPARK-AZURE-LIB-MRREQUIRED-MAPR610"
-                name="SPARK-AZURE-LIB-MRREQUIRED-MAPR610">
+                id="SPARK-AZURE-LIB-MRREQUIRED-MAPR611"
+                name="SPARK-AZURE-LIB-MRREQUIRED-MAPR611">
                 <!--library id="azure-storage-2.0.0.jar"/>
                 <library id="hadoop-azure-2.7.0-mapr-1808.jar"/>
                 <library id="jetty-util-6.1.26.jar"/-->
@@ -1142,8 +1142,8 @@
 
         <libraryNeededGroup
                 description="MapReduce parquet libraries for MapR 6.1.1"
-                id="MAPREDUCE-PARQUET-LIB-MAPR610"
-                name="MAPREDUCE-PARQUET-LIB-MAPR610" >
+                id="MAPREDUCE-PARQUET-LIB-MAPR611"
+                name="MAPREDUCE-PARQUET-LIB-MAPR611" >
             <!--library id="jodd-core-3.5.2.jar" />
             <library id="parquet-hadoop-bundle-1.6.0.jar" />
             <library id="parquet-hadoop-1.8.3.jar"/>
@@ -1152,8 +1152,8 @@
         
         <libraryNeededGroup
                 description="Spark parquet libraries for MapR 6.1.1"
-                id="SPARK-PARQUET-LIB-MRREQUIRED-MAPR610"
-                name="SPARK-PARQUET-LIB-MRREQUIRED-MAPR610" >
+                id="SPARK-PARQUET-LIB-MRREQUIRED-MAPR611"
+                name="SPARK-PARQUET-LIB-MRREQUIRED-MAPR611" >
             <!--library id="parquet-hadoop-bundle-1.6.0.jar" />
             <library id="parquet-hadoop-1.8.3.jar"/>
             <library id="snappy-java-1.1.1.7.jar" /-->
@@ -1161,10 +1161,10 @@
         
         <libraryNeededGroup
                 description="Sqoop libraries for MapR 6.1.1"
-                id="SQOOP-LIB-MAPR610"
-                name="SQOOP-LIB-MAPR610">
+                id="SQOOP-LIB-MAPR611"
+                name="SQOOP-LIB-MAPR611">
+            <library id="commons-lang3-3.5.jar" />
             <!--library id="sqoop-1.4.7-mapr-1808.jar"/>
-            <library id="commons-lang3-3.4.jar" />
             <library id="avro-mapred-1.8.1-hadoop2.jar"/>
             <library id="avro-1.8.1.jar"/-->
         </libraryNeededGroup>
@@ -1172,8 +1172,8 @@
         <!-- Spark Hive group MRREQUIRED -->
         <libraryNeededGroup
                 description="Spark Hive libraries for MapR 6.1.1 that are MRREQUIRED"
-                id="SPARK-HIVE-LIB-MRREQUIRED-MAPR610"
-                name="SPARK-HIVE-LIB-MRREQUIRED-MAPR610">
+                id="SPARK-HIVE-LIB-MRREQUIRED-MAPR611"
+                name="SPARK-HIVE-LIB-MRREQUIRED-MAPR611">
            <!--library id="jdo-api-3.0.1.jar" />
            <library id="datanucleus-api-jdo-4.2.4.jar" />
            <library id="datanucleus-core-4.1.6.jar" />
@@ -1183,19 +1183,19 @@
         <!-- Spark Flume group MRREQUIRED -->
         <libraryNeededGroup
                 description="Spark Flume libraries for MapR 6.1.1 that are MRREQUIRED"
-                id="SPARK-FLUME-LIB-MRREQUIRED-MAPR610"
-                name="SPARK-FLUME-LIB-MRREQUIRED-MAPR610">
+                id="SPARK-FLUME-LIB-MRREQUIRED-MAPR611"
+                name="SPARK-FLUME-LIB-MRREQUIRED-MAPR611">
             <!--library id="flume-ng-sdk-1.8.0-mapr-1901.jar"/> 
             <library id="flume-ng-core-1.8.0-mapr-1901.jar"/>
             <library id="avro-ipc-1.8.1.jar"/-->
         </libraryNeededGroup>
 
         <!-- Spark Kafka group MRREQUIRED -->
-        <!-- EMPTY since MAPR610 spark assembly contains the required kafka utils -->
+        <!-- EMPTY since MAPR611 spark assembly contains the required kafka utils -->
         <libraryNeededGroup
                 description="Spark Kafka assembly libraries for MapR 6.1.1 that are MRREQUIRED"
-                id="SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-MAPR610"
-                name="SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-MAPR610">
+                id="SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-MAPR611"
+                name="SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-MAPR611">
             <!--library id="spark-streaming-kafka-0-9_2.11-2.3.3.100-mapr-1904.jar"/>
             <library id="kafka_2.11-1.1.1-mapr-1901.jar"/>
             <library id="kafka-clients-1.1.1-mapr-1901.jar"/>
@@ -1203,19 +1203,19 @@
         </libraryNeededGroup>
         
         <!-- Spark Kafka Client group MRREQUIRED -->
-        <!-- EMPTY since MAPR610 spark assembly contains the required kafka clients -->
+        <!-- EMPTY since MAPR611 spark assembly contains the required kafka clients -->
         <libraryNeededGroup
                 description="Spark Kafka client libraries for MapR 6.1.1 that are MRREQUIRED"
-                id="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-MAPR610"
-                name="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-MAPR610">
+                id="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-MAPR611"
+                name="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-MAPR611">
             <!--library id="kafka-clients-1.1.1-mapr-1901.jar"/-->
         </libraryNeededGroup>
         
         <!-- Spark Kafka Avro group MRREQUIRED -->
         <libraryNeededGroup
                 description="Spark Kafka Avro libraries for MapR 6.1.1 that are MRREQUIRED"
-                id="SPARK-KAFKA-AVRO-LIB-MRREQUIRED-MAPR610"
-                name="SPARK-KAFKA-AVRO-LIB-MRREQUIRED-MAPR610">
+                id="SPARK-KAFKA-AVRO-LIB-MRREQUIRED-MAPR611"
+                name="SPARK-KAFKA-AVRO-LIB-MRREQUIRED-MAPR611">
             <!--library id="jackson-core-asl-1.9.14-TALEND.jar" />
             <library id="jackson-mapper-asl-1.9.14-TALEND.jar" />
             <library id="avro-1.8.1.jar" /-->
@@ -1227,7 +1227,7 @@
         <!-- parquet-avro jar is defined in HDP240 -->
         <libraryNeededGroup
                 description="Sqoop Parquet libraries for MapR 6.1.1"
-                id="SQOOP-PARQUET-LIB-MAPR610"
+                id="SQOOP-PARQUET-LIB-MAPR611"
                 name="SQOOP-PARQUET-LIB-MAPR510">
             <!--library id="kite-data-core-1.0.0.jar"/>
             <library id="kite-data-mapreduce-1.0.0.jar"/>
@@ -1242,20 +1242,20 @@
         <!-- MapRStreams group -->    
         <libraryNeededGroup
                 description="MapRStreams 6.1.1 libraries (based on Kafka 2.11-1.0.1-mapr-1808)"
-                id="MAPRSTREAMS-LIB-MAPR610"
-                name="MAPRSTREAMS-LIB-MAPR610">
-            <!--library id="maprfs-6.1.1-mapr.jar"/>
+                id="MAPRSTREAMS-LIB-MAPR611"
+                name="MAPRSTREAMS-LIB-MAPR611">
             <library id="hadoop-common-2.7.0-mapr-1808.jar"/>
+            <library id="commons-lang-2.6.jar"/>
+            <library id="scala-library-2.11.12.jar"/>
+            <!--library id="maprfs-6.1.1-mapr.jar"/>
             <library id="hadoop-auth-2.7.0-mapr-1808.jar"/>   
             <library id="commons-logging-1.1.3.jar"/>
             <library id="commons-collections-3.2.2.jar"/>
             <library id="commons-configuration-1.6.jar"/>
-            <library id="commons-lang-2.6.jar"/>
             <library id="commons-io-2.4.jar"/>
             <library id="protobuf-java-2.5.0.jar"/>
             <library id="mapr-streams-6.1.1-mapr.jar"/>
             <library id="kafka_2.11-1.1.1-mapr-1901.jar"/>
-            <library id="scala-library-2.11.12.jar"/>
             <library id="jopt-simple-3.2.jar"/>
             <library id="kafka-clients-1.1.1-mapr-1901.jar"/>
             <library id="lz4-1.2.0.jar"/>
@@ -1274,8 +1274,8 @@
          <!-- MapRStreams CreateStreams group -->    
          <libraryNeededGroup
                 description="Additional MapRStreams 6.1.1 libraries for tMapRStreamsCreateStream"
-                id="MAPRSTREAMS-CREATESTREAM-LIB-MAPR610"
-                name="MAPRSTREAMS-CREATESTREAM-LIB-MAPR610">
+                id="MAPRSTREAMS-CREATESTREAM-LIB-MAPR611"
+                name="MAPRSTREAMS-CREATESTREAM-LIB-MAPR611">
             <!--library id="ojai-3.0-mapr-1808.jar"/>
             <library id="maprdb-6.1.1-mapr.jar"/>
             <library id="antlr4-runtime-4.7.jar"/-->
@@ -1284,18 +1284,18 @@
         <!-- Spark MapR Streams group MRREQUIRED -->
         <libraryNeededGroup
                 description="Spark MapR Streams libraries for MapR 6.1.1 that are MRREQUIRED"
-                id="SPARK-MAPRSTREAMS-ASSEMBLY-LIB-MRREQUIRED-MAPR610"
-                name="SPARK-MAPRSTREAMS-ASSEMBLY-LIB-MRREQUIRED-MAPR610">
-            <group id="SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-MAPR610" />
+                id="SPARK-MAPRSTREAMS-ASSEMBLY-LIB-MRREQUIRED-MAPR611"
+                name="SPARK-MAPRSTREAMS-ASSEMBLY-LIB-MRREQUIRED-MAPR611">
+            <group id="SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-MAPR611" />
             <!--library id="mapr-streams-6.1.1-mapr.jar" /-->
         </libraryNeededGroup>
         
         <!-- Spark MapR Streams Client group MRREQUIRED -->
         <libraryNeededGroup
                 description="Spark MapR Streams client libraries for MapR 6.1.1 that are MRREQUIRED"
-                id="SPARK-MAPRSTREAMS-CLIENT-LIB-MRREQUIRED-MAPR610"
-                name="SPARK-MAPRSTREAMS-CLIENT-LIB-MRREQUIRED-MAPR610">
-            <group id="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-MAPR610" />
+                id="SPARK-MAPRSTREAMS-CLIENT-LIB-MRREQUIRED-MAPR611"
+                name="SPARK-MAPRSTREAMS-CLIENT-LIB-MRREQUIRED-MAPR611">
+            <group id="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-MAPR611" />
             <!--library id="mapr-streams-6.1.1-mapr.jar" /-->
         </libraryNeededGroup>
         
