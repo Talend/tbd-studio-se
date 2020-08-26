@@ -98,19 +98,17 @@ for (Map<String,String> genericArg : genericArgs) {
 		if (!"\"\"".equals(value)) {
 			String param = genericArg.get("ADDITIONAL_ARGUMENT");
 			param = param.substring(1, param.length()-1);
-			String conn;
-				if (param.startsWith("-D")){
-					conn = "=";
-				} else {
-					conn = " ";
-				}
-			
 			value = value.substring(1, value.length()-1);
-			String arg = param + conn + value;
+			if(!param.startsWith("-D")){
 %>
-		,"<%=arg%>"
+		,"<%=param%>", "<%=value%>"
 <%
-	}
+			} else {
+%>
+		,"<%=param%>=<%=value%>"
+<%
+			}
+		}
 }
 if (isUseSpeedParallel && specificParams != null) {
 	for (Map<String,String> specificArg : specificParams) { 
