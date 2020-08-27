@@ -2954,7 +2954,10 @@
         "hive-jdbc",
         "parquet-hive-bundle",
         "avro-mapred-1.8.2",
-        "avatica"
+        "avatica",
+        "httpclient",
+		"commons-codec",
+		"httpcore"
       ]
     },
     {

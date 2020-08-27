@@ -852,6 +852,14 @@
       "description": ""
     },
     {
+      "id": "kafka_2.11-0.10.0.1",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "kafka_2.11-0.10.0.1.jar",
+      "mvnUri": "mvn:org.apache.kafka/kafka_2.11/0.10.0.1",
+      "description": ""
+    }, 
+    {
       "id": "jetty-util",
       "type": "BASE",
       "context": "{properties.context}",
@@ -1439,7 +1447,9 @@
       "id": "SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-DYNAMIC",
       "description": "",
       "modules": [
-        "spark-streaming-kafka"
+        "spark-streaming-kafka",
+        "kafka-clients",
+        "kafka_2.11-0.10.0.1"
       ]
     },
     {
