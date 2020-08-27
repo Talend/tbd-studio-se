@@ -470,6 +470,6 @@ public class MapR611Distribution extends AbstractMapRDistribution implements HDF
     }
 
     public boolean doSupportLightWeight() {
-        return true;
+        return false;
     }
 }
