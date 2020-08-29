@@ -413,14 +413,7 @@
 					"classifier": "",
 					"extension": "",
 					"description": ""
-				},
-				{
-                    "groupId": "commons-lang",
-                    "artifactId": "*",
-					"classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
+				}
 			]
 		},
 		{
