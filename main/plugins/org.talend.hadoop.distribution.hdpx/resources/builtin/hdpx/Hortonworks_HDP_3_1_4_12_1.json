@@ -16752,7 +16752,7 @@
           "libraries": "DYNAMIC_HDP_3_1_4_12_1_avro_1_8_2_jar;DYNAMIC_HDP_3_1_4_12_1_avro_ipc_1_8_2_jar;DYNAMIC_HDP_3_1_4_12_1_avro_mapred_1_8_2_jar;DYNAMIC_HDP_3_1_4_12_1_commons_codec_1_11_jar;DYNAMIC_HDP_3_1_4_12_1_commons_collections_3_2_2_jar;DYNAMIC_HDP_3_1_4_12_1_commons_compress_1_18_jar;DYNAMIC_HDP_3_1_4_12_1_commons_lang_2_6_jar;DYNAMIC_HDP_3_1_4_12_1_jackson_core_asl_1_9_13_jar;DYNAMIC_HDP_3_1_4_12_1_jackson_mapper_asl_1_9_13_jar;DYNAMIC_HDP_3_1_4_12_1_jetty_6_1_26_jar;DYNAMIC_HDP_3_1_4_12_1_jetty_util_6_1_26_jar;DYNAMIC_HDP_3_1_4_12_1_netty_3_10_5_Final_jar;DYNAMIC_HDP_3_1_4_12_1_paranamer_2_8_jar;DYNAMIC_HDP_3_1_4_12_1_servlet_api_2_5_20081211_jar;DYNAMIC_HDP_3_1_4_12_1_snappy_java_1_1_7_1_jar;DYNAMIC_HDP_3_1_4_12_1_velocity_1_7_jar;DYNAMIC_HDP_3_1_4_12_1_xz_1_5_jar",
           "moduleGroupTemplateId": "IMPALA-LIB-DYNAMIC",
           "tagName": "classloader"
-        }
+         }
       ],
       "id": "DYNAMIC_HDP_3_1_4_12_1_org_talend_core_runtime_classloader_provider.extensionId",
       "point": "org.talend.core.runtime.classloader_provider",
