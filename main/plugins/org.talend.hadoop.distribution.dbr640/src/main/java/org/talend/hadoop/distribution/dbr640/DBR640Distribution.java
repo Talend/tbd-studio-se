@@ -30,14 +30,14 @@ import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 
-import org.talend.hadoop.distribution.dbr640.modulegroup.Dbr640HiveOnSparkModuleGroup;
-import org.talend.hadoop.distribution.dbr640.modulegroup.Dbr640SparkBatchModuleGroup;
-import org.talend.hadoop.distribution.dbr640.modulegroup.Dbr640SparkStreamingModuleGroup;
-import org.talend.hadoop.distribution.dbr640.modulegroup.node.Dbr640AzureNodeModuleGroup;
-import org.talend.hadoop.distribution.dbr640.modulegroup.node.Dbr640KinesisNodeModuleGroup;
+import org.talend.hadoop.distribution.dbr640.modulegroup.DBR640HiveOnSparkModuleGroup;
+import org.talend.hadoop.distribution.dbr640.modulegroup.DBR640SparkBatchModuleGroup;
+import org.talend.hadoop.distribution.dbr640.modulegroup.DBR640SparkStreamingModuleGroup;
+import org.talend.hadoop.distribution.dbr640.modulegroup.node.DBR640AzureNodeModuleGroup;
+import org.talend.hadoop.distribution.dbr640.modulegroup.node.DBR640KinesisNodeModuleGroup;
 
 
-public class Dbr640Distribution extends AbstractDatabricksDistribution implements SparkBatchComponent,
+public class DBR640Distribution extends AbstractDatabricksDistribution implements SparkBatchComponent,
         SparkStreamingComponent, HiveOnSparkComponent {
 
     public final static String VERSION = "Databricks_6_4" ;
@@ -59,7 +59,7 @@ public class Dbr640Distribution extends AbstractDatabricksDistribution implement
 
     protected Map<ComponentType, String> customVersionDisplayNames;
 
-    public Dbr640Distribution() {
+    public DBR640Distribution() {
         displayConditions = buildDisplayConditions();
         customVersionDisplayNames = buildCustomVersionDisplayNames();
         moduleGroups = buildModuleGroups();
@@ -77,9 +77,9 @@ public class Dbr640Distribution extends AbstractDatabricksDistribution implement
 
     protected Map<ComponentType, Set<DistributionModuleGroup>> buildModuleGroups() {
         Map<ComponentType, Set<DistributionModuleGroup>> result = new HashMap<>();
-        result.put(ComponentType.HIVEONSPARK, Dbr640HiveOnSparkModuleGroup.getModuleGroups());
-        result.put(ComponentType.SPARKBATCH, Dbr640SparkBatchModuleGroup.getModuleGroups());
-        result.put(ComponentType.SPARKSTREAMING, Dbr640SparkStreamingModuleGroup.getModuleGroups());
+        result.put(ComponentType.HIVEONSPARK, DBR640HiveOnSparkModuleGroup.getModuleGroups());
+        result.put(ComponentType.SPARKBATCH, DBR640SparkBatchModuleGroup.getModuleGroups());
+        result.put(ComponentType.SPARKSTREAMING, DBR640SparkStreamingModuleGroup.getModuleGroups());
         return result;
     }
 
@@ -90,28 +90,28 @@ public class Dbr640Distribution extends AbstractDatabricksDistribution implement
         result.put(new NodeComponentTypeBean(
                 ComponentType.SPARKBATCH,
                 SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT
-        ), Dbr640AzureNodeModuleGroup
+        ), DBR640AzureNodeModuleGroup
                 .getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(
                 ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT
-        ), Dbr640AzureNodeModuleGroup
+        ), DBR640AzureNodeModuleGroup
                 .getModuleGroups(distribution, version));
         //Kinesis
         result.put(new NodeComponentTypeBean(
                 ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT
-        ), Dbr640KinesisNodeModuleGroup
+        ), DBR640KinesisNodeModuleGroup
                 .getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(
                 ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.KINESIS_INPUT_COMPONENT
-        ), Dbr640KinesisNodeModuleGroup
+        ), DBR640KinesisNodeModuleGroup
                 .getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(
                 ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.KINESIS_INPUT_AVRO_COMPONENT
-        ), Dbr640KinesisNodeModuleGroup
+        ), DBR640KinesisNodeModuleGroup
                 .getModuleGroups(distribution, version));
         return result;
 

@@ -26,9 +26,9 @@ import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
-import org.talend.hadoop.distribution.dbr640.Dbr640Constant;
-import org.talend.hadoop.distribution.dbr640.Dbr640Distribution;
-import org.talend.hadoop.distribution.dbr640.modulegroup.node.Dbr640AzureNodeModuleGroup;
+import org.talend.hadoop.distribution.dbr640.DBR640Constant;
+import org.talend.hadoop.distribution.dbr640.DBR640Distribution;
+import org.talend.hadoop.distribution.dbr640.modulegroup.node.DBR640AzureNodeModuleGroup;
 
 public class DBR640SparkBatchAzureNodeModuleGroupTest {
 
@@ -36,13 +36,13 @@ public class DBR640SparkBatchAzureNodeModuleGroupTest {
     public void testModuleGroups() throws Exception {
         Map<String, String> expected = new HashMap<>();
         expected
-                .put(Dbr640Constant.SPARK_AZURE_LIB_MRREQUIRED_DBR640.getModuleName(),
+                .put(DBR640Constant.SPARK_AZURE_LIB_MRREQUIRED_DBR640.getModuleName(),
                         "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION=='DATABRICKS') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION=='Databricks_6_4')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
         
         
         Set<DistributionModuleGroup> moduleGroups =
-                Dbr640AzureNodeModuleGroup.getModuleGroups(Dbr640Distribution.DISTRIBUTION_NAME,
-                		Dbr640Distribution.VERSION);
+        		DBR640AzureNodeModuleGroup.getModuleGroups(DBR640Distribution.DISTRIBUTION_NAME,
+                		DBR640Distribution.VERSION);
         assertEquals(expected.size(), moduleGroups.size());
 
         for (DistributionModuleGroup module : moduleGroups) {
