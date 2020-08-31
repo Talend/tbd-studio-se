@@ -21,19 +21,19 @@ import java.util.Set;
 
 import org.junit.Test;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
-import org.talend.hadoop.distribution.dbr640.Dbr640Constant;
-import org.talend.hadoop.distribution.dbr640.modulegroup.Dbr640SparkBatchModuleGroup;
+import org.talend.hadoop.distribution.dbr640.DBR640Constant;
+import org.talend.hadoop.distribution.dbr640.modulegroup.DBR640SparkBatchModuleGroup;
 
 public class DBR640SparkBatchModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
         Map<String, String> results = new HashMap<>();
-        results.put(Dbr640Constant.SPARK_LIB_MRREQUIRED_DBR640.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
-        results.put(Dbr640Constant.BIGDATA_LAUNCHER_LIB_DBR640.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
-        results.put(Dbr640Constant.HIVEONSPARK_LIB_MRREQUIRED_DBR640.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+        results.put(DBR640Constant.SPARK_LIB_MRREQUIRED_DBR640.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+        results.put(DBR640Constant.BIGDATA_LAUNCHER_LIB_DBR640.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+        results.put(DBR640Constant.HIVEONSPARK_LIB_MRREQUIRED_DBR640.getModuleName(), "(SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
 
-        Set<DistributionModuleGroup> moduleGroups = Dbr640SparkBatchModuleGroup.getModuleGroups();
+        Set<DistributionModuleGroup> moduleGroups = DBR640SparkBatchModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());
 
         for (DistributionModuleGroup module : moduleGroups) {

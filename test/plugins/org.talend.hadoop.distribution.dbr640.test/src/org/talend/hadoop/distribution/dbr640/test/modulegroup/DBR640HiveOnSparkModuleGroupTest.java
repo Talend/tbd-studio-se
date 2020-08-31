@@ -21,18 +21,18 @@ import java.util.Set;
 
 import org.junit.Test;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
-import org.talend.hadoop.distribution.dbr640.Dbr640Constant;
-import org.talend.hadoop.distribution.dbr640.modulegroup.Dbr640HiveOnSparkModuleGroup;
+import org.talend.hadoop.distribution.dbr640.DBR640Constant;
+import org.talend.hadoop.distribution.dbr640.modulegroup.DBR640HiveOnSparkModuleGroup;
 
 public class DBR640HiveOnSparkModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
         Map<String, String> results = new HashMap<>();
-        results.put(Dbr640Constant.HIVEONSPARK_LIB_MRREQUIRED_DBR640.getModuleName(), null);
+        results.put(DBR640Constant.HIVEONSPARK_LIB_MRREQUIRED_DBR640.getModuleName(), null);
 
 
-        Set<DistributionModuleGroup> moduleGroups = Dbr640HiveOnSparkModuleGroup.getModuleGroups();
+        Set<DistributionModuleGroup> moduleGroups = DBR640HiveOnSparkModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());
         moduleGroups.iterator();
         for (DistributionModuleGroup module : moduleGroups) {

@@ -16,15 +16,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
-import org.talend.hadoop.distribution.dbr640.Dbr640Constant;
+import org.talend.hadoop.distribution.dbr640.DBR640Constant;
 import org.talend.hadoop.distribution.utils.ModuleGroupsUtils;
 
-public class Dbr640KinesisNodeModuleGroup {
+public class DBR640KinesisNodeModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> moduleGroups = new HashSet<>();
         moduleGroups.add(new DistributionModuleGroup(
-                Dbr640Constant.SPARK_STREAMING_LIB_KINESIS_DBR640.getModuleName(),
+                DBR640Constant.SPARK_STREAMING_LIB_KINESIS_DBR640.getModuleName(),
                 true,
                 null
         ));

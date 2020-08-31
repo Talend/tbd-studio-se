@@ -21,9 +21,9 @@ import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
-import org.talend.hadoop.distribution.dbr640.Dbr640Constant;
+import org.talend.hadoop.distribution.dbr640.DBR640Constant;
 
-public class Dbr640SparkStreamingModuleGroup {
+public class DBR640HiveOnSparkModuleGroup {
 
     private final static ComponentCondition condition = new SimpleComponentCondition(new BasicExpression(
             SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false")); //$NON-NLS-1$
@@ -31,22 +31,7 @@ public class Dbr640SparkStreamingModuleGroup {
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         hs.add(new DistributionModuleGroup(
-                Dbr640Constant.SPARK_STREAMING_LIB_MRREQUIRED_DBR640.getModuleName(),
-                true,
-                condition
-        ));
-        hs.add(new DistributionModuleGroup(
-                Dbr640Constant.HIVEONSPARK_LIB_MRREQUIRED_DBR640.getModuleName(),
-                true,
-                condition
-        ));
-        hs.add(new DistributionModuleGroup(
-                Dbr640Constant.SPARK_LIB_MRREQUIRED_DBR640.getModuleName(),
-                true,
-                condition
-        ));
-        hs.add(new DistributionModuleGroup(
-                Dbr640Constant.BIGDATA_LAUNCHER_LIB_DBR640.getModuleName(),
+                DBR640Constant.HIVEONSPARK_LIB_MRREQUIRED_DBR640.getModuleName(),
                 true,
                 condition
         ));

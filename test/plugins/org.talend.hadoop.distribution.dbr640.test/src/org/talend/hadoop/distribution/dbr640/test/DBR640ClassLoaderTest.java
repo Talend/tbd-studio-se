@@ -13,14 +13,14 @@
 package org.talend.hadoop.distribution.dbr640.test;
 
 import org.talend.hadoop.distribution.component.HadoopComponent;
-import org.talend.hadoop.distribution.dbr640.Dbr640Distribution;
+import org.talend.hadoop.distribution.dbr640.DBR640Distribution;
 import org.talend.hadoop.distribution.test.classloader.AbstractTest4ClassLoaderProvider;
 
 public class DBR640ClassLoaderTest extends AbstractTest4ClassLoaderProvider {
 
     @Override
     protected Class<? extends HadoopComponent> getHadoopComponentClass() {
-        return Dbr640Distribution.class;
+        return DBR640Distribution.class;
     }
 
 

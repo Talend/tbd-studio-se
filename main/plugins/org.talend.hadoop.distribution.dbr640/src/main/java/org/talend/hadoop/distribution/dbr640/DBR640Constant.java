@@ -12,7 +12,7 @@
 // ============================================================================
 package org.talend.hadoop.distribution.dbr640;
 
-public enum Dbr640Constant {
+public enum DBR640Constant {
 
     BIGDATA_LAUNCHER_LIB_DBR640("BIGDATA-LAUNCHER-LIB-DBR640"),  //$NON-NLS-1$
     HIVEONSPARK_LIB_MRREQUIRED_DBR640("HIVEONSPARK-LIB-MRREQUIRED-DBR640"),  //$NON-NLS-1$
@@ -24,7 +24,7 @@ public enum Dbr640Constant {
 
     private String mModuleName;
 
-    Dbr640Constant(String moduleName) {
+    DBR640Constant(String moduleName) {
         this.mModuleName = moduleName;
     }
 
