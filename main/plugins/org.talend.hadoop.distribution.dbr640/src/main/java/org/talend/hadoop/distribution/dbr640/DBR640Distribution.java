@@ -180,6 +180,12 @@ public class DBR640Distribution extends AbstractDatabricksDistribution implement
     }
 
     @Override
+    public boolean doSupportSparkYarnClusterMode() {
+        return false;
+    }
+
+
+    @Override
     public boolean doSupportAzureDataLakeStorage() {
         return true;
     }
