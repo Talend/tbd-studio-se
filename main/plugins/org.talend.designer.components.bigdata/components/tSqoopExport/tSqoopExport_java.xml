@@ -411,38 +411,9 @@
 		<PARAMETER NAME="ADDITIONAL_ARGUMENTS" FIELD="TABLE"
 			NUM_ROW="15" NB_LINES="5" SHOW_IF="USE_COMMANDLINE=='true'" GROUP="ADDITIONAL">
 			<ITEMS>
-				<ITEM NAME="ADDITIONAL_ARGUMENT" FIELD="CLOSED_LIST">
-					<ITEMS DEFAULT="--driver">
-						<ITEM NAME="--bindir" VALUE="--bindir" />
-						<ITEM NAME="--class-name" VALUE="--class-name" />
-						<ITEM NAME="--connection-manager" VALUE="--connection-manager" />
-						<ITEM NAME="--driver" VALUE="--driver" />
-						<ITEM NAME="--enclosed-by" VALUE="--enclosed-by" />
-						<ITEM NAME="--escaped-by" VALUE="--escaped-by" />
-						<ITEM NAME="--fields-terminated-by" VALUE="--fields-terminated-by" />
-						<ITEM NAME="--hadoop-home" VALUE="--hadoop-home" />
-						<ITEM NAME="--hadoop-mapred-home" VALUE="--hadoop-mapred-home" />
-						<ITEM NAME="--input-enclosed-by" VALUE="--input-enclosed-by" />
-						<ITEM NAME="--input-escaped-by" VALUE="--input-escaped-by" />
-						<ITEM NAME="--input-fields-terminated-by" VALUE="--input-fields-terminated-by" />
-						<ITEM NAME="--input-lines-terminated-by" VALUE="--input-lines-terminated-by" />
-						<ITEM NAME="--input-null-non-string" VALUE="--input-null-non-string" />
-						<ITEM NAME="--input-null-string" VALUE="--input-null-string" />
-						<ITEM NAME="--input-optionally-enclosed-by" VALUE="--input-optionally-enclosed-by" />
-						<ITEM NAME="--jar-file" VALUE="--jar-file" />
-						<ITEM NAME="--lines-terminated-by" VALUE="--lines-terminated-by" />
-						<ITEM NAME="--optionally-enclosed-by" VALUE="--optionally-enclosed-by" />
-						<ITEM NAME="--outdir" VALUE="--outdir" />
-						<ITEM NAME="--package-name" VALUE="--package-name" />
-					</ITEMS>
-				</ITEM>
+				<ITEM NAME="ADDITIONAL_ARGUMENT" FIELD="TEXT" />
 				<ITEM NAME="ADDITIONAL_VALUE" FIELD="TEXT" />
 			</ITEMS>
-		</PARAMETER>
-
-		<PARAMETER NAME="ADDITIONAL_COMMANDLINE_ARGUMENTS" FIELD="TEXT"
-			NUM_ROW="20" SHOW_IF="USE_COMMANDLINE=='true'" GROUP="ADDITIONAL">
-			<DEFAULT>""</DEFAULT>
 		</PARAMETER>
 
 		<PARAMETER NAME="ADDITIONAL_JAVA" FIELD="TABLE" NUM_ROW="30"

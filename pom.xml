@@ -67,7 +67,6 @@
         <module>main/plugins/org.talend.designer.components.bigdata</module>
         <module>main/plugins/org.talend.designer.hdfsbrowse</module>
         <module>main/plugins/org.talend.designer.neo4j</module>
-        <module>main/plugins/org.talend.libraries.apache.kafka</module>
         <module>main/plugins/org.talend.libraries.couchbase</module>
         <module>main/plugins/org.talend.libraries.couchdb</module>
         <module>main/plugins/org.talend.libraries.hadoop</module>

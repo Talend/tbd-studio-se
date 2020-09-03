@@ -72,7 +72,9 @@
 	<%=sqoopPackageName%>.SqoopOptions sqoopOptions_<%=cid%> = new <%=sqoopPackageName%>.SqoopOptions(configuration_<%=cid%>);
 	
 	sqoopOptions_<%=cid%>.setConnectString(<%=connection%>); // __CONNECTION__
+<% if(!username.replaceAll("\"","").isEmpty()) {%>		
 	sqoopOptions_<%=cid%>.setUsername(<%=username%>); // __USERNAME__
+<%}%>	
 	if((<%=driverClass%> != null) && !"".equals(<%=driverClass%>)) {
     	<%=sqoopPackageName%>.metastore.JobData jobData_<%=cid%> = new <%=sqoopPackageName%>.metastore.JobData(sqoopOptions_<%=cid%>, null);
     	org.apache.sqoop.manager.DefaultManagerFactory defaultManagerFactory_<%=cid%> = new org.apache.sqoop.manager.DefaultManagerFactory();
@@ -84,10 +86,13 @@
    <%if(!passwordStoredInFile || !sqoopDistrib.doJavaAPISupportStorePasswordInFile()) {%>
 		<%
     		passwordFieldName = "__PASSWORD__";
+    		if(!ElementParameterParser.getValue(node, "__PASSWORD__").replaceAll("\"","").isEmpty()){
     	%>
 		<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
 		sqoopOptions_<%=cid%>.setPassword(decryptedPassword_<%=cid%>); // __PASSWORD__
-	<%} else {%>
+	<%		}
+	} else {
+	%>
 		sqoopOptions_<%=cid%>.setPasswordFilePath(<%=(String)ElementParameterParser.getValue(node, "__PASSWORD_FILE__")%>);
 		sqoopOptions_<%=cid%>.setPassword(org.apache.sqoop.util.CredentialsUtil.fetchPassword<%=sqoopDistrib.doSupportFetchPasswordFromFile()?"FromFile":""%>(sqoopOptions_<%=cid%>));
 	<%}%>

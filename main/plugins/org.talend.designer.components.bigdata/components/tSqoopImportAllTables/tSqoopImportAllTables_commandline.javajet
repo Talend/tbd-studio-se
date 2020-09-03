@@ -28,6 +28,19 @@
     boolean excludeTable = "true".equals(ElementParameterParser.getValue(node, "__EXCLUDE_TABLE__"));
 
     boolean dieOnError = "true".equals(ElementParameterParser.getValue(node, "__DIE_ON_ERROR__"));
+    
+    List<Map<String,String>> genericArgs = new java.util.ArrayList<Map<String,String>>();
+    List<Map<String,String>> toolSpecificArgs = new java.util.ArrayList<Map<String,String>>();
+	if (additionalList != null) { 
+		for (Map<String,String> additionalMap : additionalList) {
+			String additionalArg = additionalMap.get("ADDITIONAL_ARGUMENT").replaceAll("\"","");
+			if (additionalArg.startsWith("--")) {
+				toolSpecificArgs.add(additionalMap);
+			} else if (additionalArg.startsWith("-")) {
+				genericArgs.add(additionalMap);
+			}
+		}
+	}
 %>
 
 <%@ include file="@{org.talend.designer.components.bigdata}/components/templates/Sqoop/SqoopAdditionalArgumentParser.javajet"%>
@@ -41,10 +54,32 @@ String passwordFieldName = "__PASSWORD__";
 
 <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>		
 
-String[] cmd_<%=cid %> = new String[] {"sqoop", "import-all-tables", "--connect", <%=connection%>, "--username", <%=username%>
-<%if(passwordStoredInFile) {%>
+String[] cmd_<%=cid %> = new String[] {"sqoop", "import-all-tables"
+<%
+for (Map<String,String> genericArg : genericArgs) {
+	String value = genericArg.get("ADDITIONAL_VALUE");
+		if (!"\"\"".equals(value)) {
+			String param = genericArg.get("ADDITIONAL_ARGUMENT");
+			param = param.substring(1, param.length()-1);
+			value = value.substring(1, value.length()-1);
+			if(!param.startsWith("-D")){
+%>
+		,"<%=param%>", "<%=value%>"
+<%
+			} else {
+%>
+		,"<%=param%>=<%=value%>"
+<%			}
+		}
+}
+%>
+, "--connect", <%=connection%>
+<% if (!username.replaceAll("\"","").isEmpty()) {%>
+, "--username", <%=username%>
+<%}
+if(passwordStoredInFile) {%>
 	, "--password-file", <%=(String)ElementParameterParser.getValue(node, "__PASSWORD_FILE__")%>
-<%} else {%>
+<%} else if (!ElementParameterParser.getValue(node, "__PASSWORD__").replaceAll("\"","").isEmpty()) {%>
 	, "--password", decryptedPassword_<%=cid%>
 <%}%>
 <%if(printLog && verbose){%>, "--verbose"<%}%>
@@ -75,7 +110,7 @@ String[] cmd_<%=cid %> = new String[] {"sqoop", "import-all-tables", "--connect"
 
 if(excludeTable) {
 	List<Map<String,String>> tablesToExclude = (List<Map<String, String>>)ElementParameterParser.getObjectValue(node,"__TABLE_TO_EXCLUDE__");
-	if(tablesToExclude!=null && tablesToExclude.size()>0) {
+	if(tablesToExclude != null && tablesToExclude.size() > 0) {
 %>
 		,"--exclude-tables"
 <%
@@ -95,28 +130,21 @@ if(excludeTable) {
 	}
 }
 
-boolean isNull=false; 
-if(additionalList != null){ 
-    for(Map<String,String> additionalMap : additionalList){ 
-        isNull=false; 
-        if(additionalMap.get("ADDITIONAL_VALUE")==null || "".equals(additionalMap.get("ADDITIONAL_VALUE"))) { 
-            isNull=true; 
-        } 
-        if(!isNull) { 
+for (Map<String,String> toolSpecificArg : toolSpecificArgs) { 
+    if (!"\"\"".equals(toolSpecificArg.get("ADDITIONAL_VALUE"))) { 
 %> 
-            ,"<%=additionalMap.get("ADDITIONAL_ARGUMENT")%>", <%=additionalMap.get("ADDITIONAL_VALUE")%> 
+       ,<%=toolSpecificArg.get("ADDITIONAL_ARGUMENT")%>, <%=toolSpecificArg.get("ADDITIONAL_VALUE")%> 
 <% 
-        } else { 
+    } else {
 %> 
-            ,"<%=additionalMap.get("ADDITIONAL_ARGUMENT")%>" 
+       ,<%=toolSpecificArg.get("ADDITIONAL_ARGUMENT")%>
 <% 
-        } 
     } 
 } 
 
 if(overrideHiveMapping) {
 	List<Map<String,String>> hiveMappings = (List<Map<String, String>>)ElementParameterParser.getObjectValue(node,"__HIVE_TYPE_MAPPING__");
-	if(hiveMappings!=null && hiveMappings.size()>0) {
+	if(hiveMappings != null && hiveMappings.size() > 0) {
 %>
 		,"--map-column-hive"
 <%	
@@ -137,9 +165,6 @@ if(overrideHiveMapping) {
 }
 %>
 };
-
-String[] additionalArgs_<%=cid%> = parser_<%=cid%>.parse(<%=additionalCommandLineArguments%>);
-cmd_<%=cid %> = (String[]) org.apache.commons.lang.ArrayUtils.addAll(cmd_<%=cid %>, additionalArgs_<%=cid%>);
 
 <%if(isLog4jEnabled) {%>
 java.lang.StringBuilder stringBuilder_<%=cid%> = new java.lang.StringBuilder();
@@ -220,7 +245,7 @@ try {
 	}
 %>
 
-if(sb_<%=cid%>!=null) {
+if(sb_<%=cid%> != null) {
 	globalMap.put("<%=cid%>_OUTPUT_MESSAGE", sb_<%=cid%>.toString());
 	<%if(isLog4jEnabled) {%>
 		log.info("<%=cid%> - " + sb_<%=cid%>.toString());
