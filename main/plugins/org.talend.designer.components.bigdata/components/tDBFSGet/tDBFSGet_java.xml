@@ -89,9 +89,17 @@
            <IMPORT NAME="commons-logging-1.2.jar" MODULE="commons-logging-1.2.jar" 
                    MVN="mvn:commons-logging/commons-logging/1.2"/>
 
-           <IMPORT NAME="talend-bigdata-launcher-platform-2.0.1.jar"
-                   MODULE="talend-bigdata-launcher-platform-2.0.1.jar"
-                   MVN="mvn:org.talend.libraries/talend-bigdata-launcher-platform-2.0.1/6.0.0"/>
+           <IMPORT NAME="talend-bigdata-launcher-core-2.0.11.jar"
+                   MODULE="talend-bigdata-launcher-core-2.0.11.jar"
+                   MVN="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.0.11"/>
+
+           <IMPORT NAME="talend-bigdata-launcher-databricks-2.0.11.jar"
+                   MODULE="talend-bigdata-launcher-databricks-2.0.11.jar"
+                   MVN="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-databricks/2.0.11"/>
+
+           <IMPORT NAME="talend-bigdata-launcher-jobserver-2.0.11.jar"
+                   MODULE="talend-bigdata-launcher-jobserver-2.0.11.jar"
+                   MVN="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-jobserver/2.0.11"/>
 
            <IMPORT NAME="gson-2.2.4.jar" MODULE="gson-2.2.4.jar" 
                    MVN="mvn:com.google.code.gson/gson/2.2.4"/>

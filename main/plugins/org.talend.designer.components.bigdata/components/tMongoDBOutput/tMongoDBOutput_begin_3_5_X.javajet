@@ -116,6 +116,40 @@
 				}
 			
 			}
+			
+			<%
+			boolean upsert_with_set = "UPSERT_WITH_SET".equalsIgnoreCase(dataAction);
+			boolean insertOnlyColumnExists = false;
+			boolean updateOnlyColumnExists = false;
+			if(upsert_with_set) {
+				for (java.util.Map<String, String> map: mapping) {
+					boolean updatable = "true".equals(map.get("UPDATABLE"));
+					boolean insertable = "true".equals(map.get("INSERTABLE"));
+					
+					if(insertable && !updatable) {
+						insertOnlyColumnExists = true;
+						continue;
+					}
+					
+					if(updatable && !insertable) {
+						updateOnlyColumnExists = true;
+						continue;
+					}
+				}
+				
+				if(insertOnlyColumnExists)  {
+				%>
+				DBObjectUtil_<%=cid%> insertObjectOnlyUtil_<%=cid%>=new DBObjectUtil_<%=cid%>();
+				<%
+				}
+				
+				if(updateOnlyColumnExists)  {
+				%>
+				DBObjectUtil_<%=cid%> updateObjectOnlyUtil_<%=cid%>=new DBObjectUtil_<%=cid%>();
+				<%
+				}
+			}
+			%>
 
 			DBObjectUtil_<%=cid%> updateObjectUtil_<%=cid%>=new DBObjectUtil_<%=cid%>();
 			DBObjectUtil_<%=cid%> queryObjectUtil_<%=cid%>=new DBObjectUtil_<%=cid%>();
@@ -269,13 +303,23 @@
 				List<com.mongodb.client.model.ReplaceOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.ReplaceOneModel<org.bson.Document>>();
 				<%}else if("DELETE".equalsIgnoreCase(dataAction)){%>
 				List<com.mongodb.client.model.DeleteOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.DeleteOneModel<org.bson.Document>>();
-				<%}else { //update set upset_with_set
+				<%}else if(upsert_with_set) {
 				%>
 				List<com.mongodb.client.model.UpdateOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.UpdateOneModel<org.bson.Document>>();
-				<%}%>
+					<%if(updateOnlyColumnExists) {
+					%>
+					List<com.mongodb.client.model.UpdateOneModel<org.bson.Document>> bulkWriteOperationForUpdateOnlyColumn_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.UpdateOneModel<org.bson.Document>>();
+					int bulkWriteOperationCounterForUpdateOnlyColumn_<%=cid%> = 1;
+					<%
+					}%>
+				<%} else {//set
+				%>
+				List<com.mongodb.client.model.UpdateOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.UpdateOneModel<org.bson.Document>>();
+				<%
+				}%>
 				
 				int bulkWriteOperationCounter_<%=cid%> = 1;
-				int bulkWriteOperationSize_<%=cid%> = Integer.parseInt(<%=bulkWriteOperationSize%>);
+				final int bulkWriteOperationSize_<%=cid%> = Integer.parseInt(<%=bulkWriteOperationSize%>);
 				<%
 			}
 
