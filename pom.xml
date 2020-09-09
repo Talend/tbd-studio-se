@@ -10,7 +10,6 @@
     </parent>
     <artifactId>tbd-studio-se</artifactId>
     <packaging>pom</packaging>
-
     <modules>
         <module>i18n/plugins/org.talend.demo.bigdata.ce.nl</module>
         <module>i18n/plugins/org.talend.designer.hdfsbrowse.nl</module>
