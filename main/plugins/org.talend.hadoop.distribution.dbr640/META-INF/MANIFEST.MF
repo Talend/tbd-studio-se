@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Dbr640
+Bundle-SymbolicName: org.talend.hadoop.distribution.dbr640;singleton:=true
+Bundle-Version: 7.4.1.qualifier
+Bundle-Vendor: .Talend SA.
+Service-Component: OSGI-INF/dbr640.xml
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.talend.core.runtime,
+  org.talend.hadoop.distribution
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.talend.hadoop.distribution.dbr640
