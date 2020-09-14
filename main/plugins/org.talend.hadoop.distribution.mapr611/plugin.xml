@@ -1228,7 +1228,7 @@
         <libraryNeededGroup
                 description="Sqoop Parquet libraries for MapR 6.1.1"
                 id="SQOOP-PARQUET-LIB-MAPR611"
-                name="SQOOP-PARQUET-LIB-MAPR510">
+                name="SQOOP-PARQUET-LIB-MAPR611">
             <library id="kite-data-core-1.0.0.jar"/>
             <library id="kite-data-mapreduce-1.0.0.jar"/>
             <library id="kite-hadoop-compatibility-1.0.0.jar"/>
