@@ -120,6 +120,8 @@
                        context="plugin:org.talend.hadoop.distribution.dbr640"/>
         <libraryNeeded id="wsdl4j-1.6.3.jar" name="wsdl4j-1.6.3.jar" mvn_uri="mvn:wsdl4j/wsdl4j/1.6.3"
                        context="plugin:org.talend.hadoop.distribution.dbr640"/>
+        <libraryNeeded id="guava-27.1-jre.jar" name="guava-27.1-jre.jar" mvn_uri="mvn:com.google.guava/guava/27.1-jre"
+                       context="plugin:org.talend.hadoop.distribution.dbr640"/>
         <libraryNeededGroup id="BIGDATA-LAUNCHER-LIB-DBR640" name="BIGDATA-LAUNCHER-LIB-DBR640"
                             description="Big Data launcher libraries for DBR640">
             <library id="gson-2.2.4.jar"/>
@@ -169,6 +171,7 @@
             <library id="spark-streaming_2.11-2.4.5.jar"/>
             <library id="spark-unsafe_2.11-2.4.5.jar"/>
             <library id="wsdl4j-1.6.3.jar"/>
+            <library id="guava-27.1-jre.jar"/>
         </libraryNeededGroup>
         <libraryNeededGroup id="SPARK-STREAMING-LIB-KINESIS-DBR640" name="SPARK-STREAMING-LIB-KINESIS-DBR640"
                             description="SPARK libraries for DBR640">
