@@ -496,7 +496,7 @@
         </libraryNeeded>          
                 
         <libraryNeeded
-            context="plugin:org.talend.libraries.apache.kafka"
+            context="org.talend.designer.components.bigdata"
             id="kafka-clients-0.8.2.1.jar"
             name="kafka-clients-0.8.2.1.jar"
             mvn_uri="mvn:org.talend.libraries/kafka-clients-0.8.2.1/6.0.0">

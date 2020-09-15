@@ -24,35 +24,45 @@ def check_pom_version(pom_path, expected_version):
     if project_version != expected_version:
         errors[pom_path] = project_version
         raise ValueError(
-            "the pom %s is not consistent with this branch. expected version %s" % (pom_path, expected_version))
+            "the pom %s%s%s is not consistent with this branch. expected version %s" % (
+            COLOR_RED, pom_path, END_COLOR, expected_version))
 
 
 def check_manifest_version(manifest_path, expected_version):
     properties = {}
     project_version = None
-    if 'test%splugins' % os.sep not in manifest_path and 'target' not in manifest_path:
-        with open(manifest_path, 'r') as file:
-            for line in file:
-                if ':' in line and 'Bundle-Version' in line:
-                    key, value = line.split(':', 1)
-                    project_version = value.strip()
-        if project_version is None:
-            print('WARNING: the Bundle-Version is missing in file', manifest_path)
-        if project_version is not None and project_version != expected_version:
-            errors[manifest_path] = project_version
-            raise ValueError("the manifest %s is not consistent with this branch. expected version %s" % (
-                manifest_path, expected_version))
+    with open(manifest_path, 'r') as file:
+        for line in file:
+            if ':' in line and 'Bundle-Version' in line:
+                key, value = line.split(':', 1)
+                project_version = value.strip()
+    if project_version is None:
+        print('WARNING: the Bundle-Version is missing in file', COLOR_CYAN, manifest_path, END_COLOR)
+    if project_version is not None and project_version != expected_version:
+        errors[manifest_path] = project_version
+        raise ValueError("the manifest %s%s%s is not consistent with this branch. expected version %s%s%s" % (
+            COLOR_RED, manifest_path, END_COLOR, COLOR_BLUE, expected_version, END_COLOR))
 
 
-def version_check(directory, pom_version, manifest_version):
+def log(verbose, message):
+    if verbose:
+        print(message)
+
+
+def version_check(directory, pom_version, manifest_version, verbose):
     poms = glob.glob(directory + "/**/pom.xml", recursive=True)
+    poms = [pom for pom in poms if 'components_lib' not in pom]
+    log(verbose, "found %s%d%s pom.xml files" % (COLOR_BLUE, len(poms), END_COLOR))
     manifests = glob.glob(directory + "/**/MANIFEST.MF", recursive=True)
+    manifests = [manifest for manifest in manifests if
+                 # 'test%splugins' % os.sep not in manifest and
+                 'target' not in manifest]
+    log(verbose, "found %s%d%s MANIFEST.MF files" % (COLOR_BLUE, len(manifests), END_COLOR))
     for pom_path in poms:
-        if 'components_lib' not in pom_path:
-            try:
-                check_pom_version(pom_path, pom_version)
-            except ValueError as e:
-                print(e)
+        try:
+            check_pom_version(pom_path, pom_version)
+        except ValueError as e:
+            print(e)
     for manifest in manifests:
         try:
             check_manifest_version(manifest, manifest_version)
@@ -82,14 +92,18 @@ if __name__ == '__main__':
     parser.add_argument('-d', '--directory', dest='directory', type=str,
                         help='directory where project is located',
                         default='.')
+    parser.add_argument('-v', '--verbose', action='store_true', help='some more messages')
     args = parser.parse_args()
     pom_version = read_version(args.directory + "/pom.xml")
     manifest_version = calculate_manifest_version(pom_version)
-    print("pom version for the branch must be", pom_version)
-    print("manifest version for the branch must be", manifest_version)
-    version_check(args.directory, pom_version, manifest_version)
+    print("pom version for the branch must be", COLOR_BLUE, pom_version, END_COLOR)
+    print("manifest version for the branch must be", COLOR_BLUE, manifest_version, END_COLOR)
+    version_check(args.directory, pom_version, manifest_version, args.verbose)
     nb_errors = len(errors)
+    print('')
     if nb_errors > 0:
-        print("%sProject is not correctly configured (%s %s found).%s" % (
-            COLOR_RED, nb_errors, 'error' if nb_errors == 1 else 'errors', END_COLOR))
+        print("%sProject is not correctly configured (%s %s found).%s" %
+              (COLOR_RED, nb_errors, 'error' if nb_errors == 1 else 'errors', END_COLOR))
+    else:
+        print("%sProject is correctly configured.%s" % (COLOR_GREEN, END_COLOR))
     sys.exit(nb_errors)
