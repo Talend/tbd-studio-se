@@ -325,28 +325,7 @@
           "description": ""
         },
         {
-          "groupId": "org.slf4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any slf4j implementation"
-        },
-        {
-          "groupId": "log4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any log4j implementation"
-        },
-        {
           "groupId": "apache-logging",
-          "artifactId": "commons-logging",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any commons-logging implementation."
-        },
-        {
-          "groupId": "commons-logging",
           "artifactId": "commons-logging",
           "classifier": "",
           "extension": "",
@@ -358,13 +337,6 @@
           "classifier": "",
           "extension": "",
           "description": "remove any logback implementation."
-        },
-        {
-          "groupId": "org.apache.logging.log4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any log4j2 implementation."
         },
         {
           "groupId": "org.apache.parquet",
@@ -427,46 +399,11 @@
           "description": ""
         },
         {
-          "groupId": "org.slf4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any slf4j implementation"
-        },
-        {
-          "groupId": "log4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any log4j implementation"
-        },
-        {
-          "groupId": "apache-logging",
-          "artifactId": "commons-logging",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any commons-logging implementation."
-        },
-        {
-          "groupId": "commons-logging",
-          "artifactId": "commons-logging",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any commons-logging implementation."
-        },
-        {
           "groupId": "ch.qos.logback",
           "artifactId": "*",
           "classifier": "",
           "extension": "",
           "description": "remove any logback implementation."
-        },
-        {
-          "groupId": "org.apache.logging.log4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any log4j2 implementation."
         },
         {
           "groupId": "org.apache.parquet",
@@ -2869,28 +2806,7 @@
       "description": "",
       "exclusions": [
         {
-          "groupId": "org.slf4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any slf4j implementation"
-        },
-        {
-          "groupId": "log4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any log4j implementation"
-        },
-        {
           "groupId": "apache-logging",
-          "artifactId": "commons-logging",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any commons-logging implementation."
-        },
-        {
-          "groupId": "commons-logging",
           "artifactId": "commons-logging",
           "classifier": "",
           "extension": "",
@@ -2902,13 +2818,6 @@
           "classifier": "",
           "extension": "",
           "description": "remove any logback implementation."
-        },
-        {
-          "groupId": "org.apache.logging.log4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any log4j2 implementation."
         },
         {
           "groupId": "org.apache.parquet",
