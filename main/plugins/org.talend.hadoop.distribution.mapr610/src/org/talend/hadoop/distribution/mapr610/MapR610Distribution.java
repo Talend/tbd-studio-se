@@ -478,4 +478,9 @@ public class MapR610Distribution extends AbstractMapRDistribution implements HDF
     public boolean useS3AProperties() {
         return true;
     }
+    
+    @Override
+    public boolean doSupportHBase2x() {
+    	return true;
+    }
 }
