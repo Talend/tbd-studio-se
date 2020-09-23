@@ -233,7 +233,7 @@ public class DBR350Distribution extends AbstractDatabricksDistribution implement
 
     @Override
     public boolean useOldAWSAPI() {
-        return false;
+        return true;
     }
 
     @Override

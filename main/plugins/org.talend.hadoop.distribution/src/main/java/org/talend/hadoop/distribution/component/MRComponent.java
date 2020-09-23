@@ -78,4 +78,6 @@ public interface MRComponent extends HadoopComponent {
 
     public boolean useOldAWSAPI();
 
+    public String getParquetPrefixPackageName();
+
 }
