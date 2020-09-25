@@ -222,9 +222,9 @@
 				MVN="mvn:org.talend.libraries/hadoop-conf-kerberos/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/hadoop-conf-kerberos.jar"
 				REQUIRED_IF="(USE_KRB=='true') AND (DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="Talen File Enhanced" MODULE="talend_file_enhanced-1.0.jar" 
-				MVN="mvn:org.talend.components.lib/talend_file_enhanced/1.0"  
-				UrlPath="platform:/plugin/org.talend.libraries.custom/lib/talend_file_enhanced-1.0.jar" 
+			<IMPORT NAME="Talend File Enhanced" MODULE="talend_file_enhanced-1.0.jar"
+				MVN="mvn:org.talend.components.lib/talend_file_enhanced/1.0"
+				UrlPath="platform:/plugin/org.talend.libraries.custom/lib/talend_file_enhanced-1.0.jar"
 				REQUIRED="true" />	
 			<IMPORT NAME="cxf-rt-frontend-jaxrs-3.3.4" MODULE="cxf-rt-frontend-jaxrs-3.3.4.jar"
 				MVN="mvn:org.apache.cxf/cxf-rt-frontend-jaxrs/3.3.4"
