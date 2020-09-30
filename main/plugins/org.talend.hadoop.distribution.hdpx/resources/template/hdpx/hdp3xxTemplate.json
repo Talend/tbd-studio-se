@@ -2790,11 +2790,11 @@
       "description": ""
     },
     {
-      "id": "talend-bigdata-aws-1.0.0-20180116",
+      "id": "talend-bigdata-aws-lib-1.0.1",
       "type": "STANDARD",
       "context": "{properties.context}",
-      "jarName": "talend-bigdata-aws-1.0.0-20180116.jar",
-      "mvnUri": "mvn:org.talend.libraries/talend-bigdata-aws-1.0.0-20180116/6.0.0",
+      "jarName": "talend-bigdata-aws-lib-1.0.1.jar",
+      "mvnUri": "mvn:org.talend.bigdata.libs/talend-bigdata-aws-lib/1.0.1",
       "description": ""
     },
     {
@@ -2852,7 +2852,7 @@
         "org-slf4j-log4j12",
         "avro-mapred-1.8.2",
         "hadoop-aws",
-        "talend-bigdata-aws-1.0.0-20180116"
+        "talend-bigdata-aws-lib-1.0.1"
       ]
     },
     {

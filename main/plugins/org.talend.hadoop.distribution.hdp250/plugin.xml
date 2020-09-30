@@ -282,9 +282,9 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdp250"
-            id="talend-bigdata-aws-1.0.0-20180116.jar"
-            name="talend-bigdata-aws-1.0.0-20180116.jar"
-            mvn_uri="mvn:org.talend.libraries/talend-bigdata-aws-1.0.0-20180116/6.0.0">
+            id="talend-bigdata-aws-lib-1.0.1.jar"
+            name="talend-bigdata-aws-lib-1.0.1.jar"
+            mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-aws-lib/1.0.1">
         </libraryNeeded>
         
         <!-- GraphFrames libraries -->
@@ -906,7 +906,7 @@
                 id="SPARK-S3-LIB-MRREQUIRED-HDP_2_5"
                 name="SPARK-S3-LIB-MRREQUIRED-HDP_2_5">
              <library id="hadoop-aws-HDP_2_5"/>
-             <library id="talend-bigdata-aws-1.0.0-20180116.jar"/>
+             <library id="talend-bigdata-aws-lib-1.0.1.jar"/>
              <library id="aws-java-sdk-core-1.10.6.jar"/>
              <library id="jets3t-0.9.0" />
              <library id="httpclient-4.2.5.jar" />
