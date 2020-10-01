@@ -70,7 +70,16 @@ pipeline {
         }
         stage('initialization') {
             steps {
-                def branchType = getBranchType "${env.BRANCH_NAME}"
+                script {
+                    def branchType = getBranchType "${env.BRANCH_NAME}"
+                    def targetBranchType = getBranchType "${env.CHANGE_TARGET}"
+                    env.branchType = branchType
+                    env.targetBranchType = targetBranchType
+                    echo "branch name is ${env.BRANCH_NAME}"
+                    echo "branch type is ${env.branchType}"
+                    echo "target branch name is ${env.CHANGE_TARGET}"
+                    echo "target branch type is ${env.targetBranchType}"
+                }
             }
         }
         stage('build') {
@@ -79,13 +88,12 @@ pipeline {
                 script {
                     if (env.branchType == 'pull-request') {
                         pullRequest.addLabel('Build Running')
-                        def targetBranchType = getBranchType "${env.CHANGE_TARGET}"
-                        if (targetBranchType=='maintenance') {
+                        if (env.targetBranchType == 'maintenance') {
                             //PR on maintenance
                             def build_job = build job: '/Patches/patch-manual-build', parameters: [
-                                string(name: 'branches', value: "${env.CHANGE_BRANCH},${env.CHANGE_TARGET}"),
-                                string(name: 'patch_name', value: env.BRANCH_NAME),
-                                string(name: 'patch_version', value: "v1"),
+                                    string(name: 'branches', value: "${env.CHANGE_BRANCH},${env.CHANGE_TARGET}"),
+                                    string(name: 'patch_name', value: env.BRANCH_NAME),
+                                    string(name: 'patch_version', value: "v1"),
                             ]
                         } else {
                             //PR on master or unknown branch
@@ -96,14 +104,14 @@ pipeline {
                     } else if (env.branchType == 'maintenance') {
                         //maintenance branch
                         def build_job = build job: '/Patches/patch-manual-build', parameters: [
-                            string(name: 'branches', value: env.BRANCH_NAME),
-                            string(name: 'patch_name', value: env.BRANCH_NAME),
-                            string(name: 'patch_version', value: "v1"),
+                                string(name: 'branches', value: env.BRANCH_NAME),
+                                string(name: 'patch_name', value: env.BRANCH_NAME),
+                                string(name: 'patch_version', value: "v1"),
                         ]
                     } else {
                         //master or unknown branch
                         def build_job = build job: '/tbd-studio-se/tbd-studio-se-build', parameters: [
-                            string(name: 'BRANCH_NAME', value: env.BRANCH_NAME)
+                                string(name: 'BRANCH_NAME', value: env.BRANCH_NAME)
                         ]
                     }
                 }
@@ -126,7 +134,7 @@ pipeline {
 static def getBranchType(String branchName) {
     def pr_pattern = 'PR-.*'
     def release_pattern = ".*master*"
-    def maintenance_pattern = ".*maintenance-*"
+    def maintenance_pattern = "maintenance/.*"
 
     def branchType
     switch (branchName) {
