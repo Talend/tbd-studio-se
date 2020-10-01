@@ -43,6 +43,10 @@ pipeline {
         }
     }
 
+    triggers {
+        issueCommentTrigger('[Bb]uild-?[pP]atch')
+    }
+
     stages {
         stage('Sanity check') {
             steps {
