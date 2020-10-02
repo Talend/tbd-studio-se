@@ -530,6 +530,12 @@
             mvn_uri="mvn:com.google.code.gson/gson/2.7"><!--2.2.4-->
         </libraryNeeded> 
         <libraryNeeded 
+            context="plugin:org.talend.libraries.hadoop.mapr.6.1.0" 
+            id="log4j-1.2.17.jar" 
+            name="log4j-1.2.17.jar"
+            mvn_uri="mvn:log4j/log4j/1.2.17">
+        </libraryNeeded> 
+        <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.1" 
             id="curator-recipes-2.7.1.jar" 
             name="curator-recipes-2.7.1.jar"
@@ -791,7 +797,7 @@
             <library id="json-20090211.jar" />
             
             <!-- common part -->
-            <!--library id="log4j-1.2.17.jar" /-->
+            <library id="log4j-1.2.17.jar" />
             <library id="zookeeper-3.4.11-mapr-1808.jar" />
             <library id="antlr4-runtime-4.7.jar" />
             <library id="jackson-databind-2.6.7.1.jar" />
@@ -839,7 +845,7 @@
            <library id="protobuf-java-2.5.0.jar"/>
            <library id="zookeeper-3.4.11-mapr-1808.jar"/>
            <library id="json-20090211.jar"/>
-           <!--library id="log4j-1.2.17.jar"/-->
+           <library id="log4j-1.2.17.jar"/>
            <library id="slf4j-log4j12-1.7.12.jar"/>
            <library id="commons-io-2.4.jar"/>
            <library id="flexjson-2.1.jar"/>
@@ -874,7 +880,7 @@
            <library id="htrace-core-3.1.0-incubating.jar" />
            <library id="commons-io-2.4.jar"/>
            <library id="zookeeper-3.4.11-mapr-1808.jar"/>
-           <!--library id="log4j-1.2.17.jar"/-->
+           <library id="log4j-1.2.17.jar"/>
            <library id="slf4j-log4j12-1.7.12.jar"/>
             <library id="json-20090211.jar"/>
            <library id="flexjson-2.1.jar"/>
@@ -1265,7 +1271,7 @@
             <library id="snappy-java-1.1.1.7.jar"/>
             <library id="zkclient-0.10.jar"/>
             <library id="zookeeper-3.4.11-mapr-1808.jar"/>
-            <!--library id="log4j-1.2.17.jar"/-->
+            <library id="log4j-1.2.17.jar"/>
             <library id="slf4j-log4j12-1.7.12.jar"/>
             <library id="json-20090211.jar"/>
             <library id="flexjson-2.1.jar"/>
