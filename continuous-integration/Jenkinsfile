@@ -93,9 +93,10 @@ pipeline {
                     if (env.branchType == 'pull-request') {
                         pullRequest.addLabel('Build Running')
                         if (env.targetBranchType == 'maintenance') {
+                            def releaseBranch = getReleaseBranch "${env.CHANGE_TARGET}"
                             //PR on maintenance
                             def build_job = build job: '/Patches/patch-manual-build', parameters: [
-                                    string(name: 'branches', value: "${env.CHANGE_BRANCH},${env.CHANGE_TARGET}"),
+                                    string(name: 'branches', value: "${env.CHANGE_BRANCH},${env.CHANGE_TARGET},${releaseBranch}"),
                                     string(name: 'patch_name', value: env.BRANCH_NAME),
                                     string(name: 'patch_version', value: "v1"),
                             ]
@@ -155,4 +156,9 @@ static def getBranchType(String branchName) {
             branchType = 'unknown'
     }
     branchType
+}
+
+@NonCPS
+static def getReleaseBranch(String targetBranchName) {
+    'release/'+targetBranchName.split("/")[1]+'.1'
 }
