@@ -94,6 +94,7 @@ pipeline {
                         pullRequest.addLabel('Build Running')
                         if (env.targetBranchType == 'maintenance') {
                             def releaseBranch = getReleaseBranch "${env.CHANGE_TARGET}"
+                            echo "${env.CHANGE_BRANCH},${env.CHANGE_TARGET},${releaseBranch}"
                             //PR on maintenance
                             def build_job = build job: '/Patches/patch-manual-build', parameters: [
                                     string(name: 'branches', value: "${env.CHANGE_BRANCH},${env.CHANGE_TARGET},${releaseBranch}"),
