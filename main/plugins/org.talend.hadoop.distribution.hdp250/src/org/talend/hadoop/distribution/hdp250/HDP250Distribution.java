@@ -103,7 +103,7 @@ public class HDP250Distribution extends AbstractDistribution implements HDFSComp
 
         // WebHDFS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = HDP250WebHDFSModuleGroup.getModuleGroups(distribution, version);
-        for(String hdfsComponent : HDFSConstant.hdfsComponents) {
+        for(String hdfsComponent : HDFSConstant.HDFS_COMPONENTS) {
             nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
         }
 

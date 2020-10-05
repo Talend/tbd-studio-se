@@ -65,7 +65,7 @@ public class DynamicHDFSModuleGroupTemplate extends AbstractDynamicModuleGroupTe
         // WebHDFS/ADLS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = buildNodeModuleGroups4WebHDFS(pluginAdapter, distribution,
                 version);
-        for (String hdfsComponent : HDFSConstant.hdfsComponents) {
+        for (String hdfsComponent : HDFSConstant.HDFS_COMPONENTS) {
             nodeModuleGroupsMap.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
         }
     }

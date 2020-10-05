@@ -112,7 +112,7 @@ public class CDH5100Distribution extends AbstractDistribution implements ICloude
 
         // WebHDFS/ADLS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = CDH5100WebHDFSModuleGroup.getModuleGroups(distribution, version);
-        for(String hdfsComponent : HDFSConstant.hdfsComponents) {
+        for(String hdfsComponent : HDFSConstant.HDFS_COMPONENTS) {
             nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
         }
 
