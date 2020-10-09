@@ -111,12 +111,12 @@
         <libraryNeeded id="spark-unsafe_2.11-2.4.5.jar" name="spark-unsafe_2.11-2.4.5.jar"
                        mvn_uri="mvn:org.apache.spark/spark-unsafe_2.11/2.4.5"
                        context="plugin:org.talend.hadoop.distribution.dbr640"/>
-        <libraryNeeded id="talend-bigdata-launcher-core-2.0.6.jar" name="talend-bigdata-launcher-core-2.0.6.jar"
-                       mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.0.6"
+        <libraryNeeded id="talend-bigdata-launcher-jobserver-2.0.11.jar" name="talend-bigdata-launcher-jobserver-2.0.11.jar"
+                       mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-jobserver/2.0.11"
                        context="plugin:org.talend.hadoop.distribution.dbr640"/>
-        <libraryNeeded id="talend-bigdata-launcher-databricks-2.0.7.jar"
-                       name="talend-bigdata-launcher-databricks-2.0.7.jar"
-                       mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-databricks/2.0.7"
+        <libraryNeeded id="talend-bigdata-launcher-databricks-2.0.11.jar"
+                       name="talend-bigdata-launcher-databricks-2.0.11.jar"
+                       mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-databricks/2.0.11"
                        context="plugin:org.talend.hadoop.distribution.dbr640"/>
         <libraryNeeded id="wsdl4j-1.6.3.jar" name="wsdl4j-1.6.3.jar" mvn_uri="mvn:wsdl4j/wsdl4j/1.6.3"
                        context="plugin:org.talend.hadoop.distribution.dbr640"/>
@@ -128,8 +128,8 @@
             <library id="jackson-annotations-2.6.7.jar"/>
             <library id="jackson-core-2.6.7.jar"/>
             <library id="jackson-databind-2.6.7.1.jar"/>
-            <library id="talend-bigdata-launcher-core-2.0.6.jar"/>
-            <library id="talend-bigdata-launcher-databricks-2.0.7.jar"/>
+            <library id="talend-bigdata-launcher-jobserver-2.0.11.jar"/>
+            <library id="talend-bigdata-launcher-databricks-2.0.11.jar"/>
         </libraryNeededGroup>
         <libraryNeededGroup id="HIVEONSPARK-LIB-MRREQUIRED-DBR640" name="HIVEONSPARK-LIB-MRREQUIRED-DBR640"
                             description="Hive On SPARK libraries for DBR640">
