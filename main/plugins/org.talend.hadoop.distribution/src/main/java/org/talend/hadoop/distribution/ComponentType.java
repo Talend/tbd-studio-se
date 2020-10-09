@@ -118,32 +118,6 @@ public enum ComponentType {
            HBaseConstant.VERSION_PARAMETER,
            HBaseConstant.VERSION_REPOSITORYVALUE);
 
-    /**
-     * @param service - the interface of the service
-     * @param distributionParameter - the name of the parameter to create for the distribution on the component side.
-     * @param distributionRepositoryValueParameter - the name of the repository value parameter for the distribution on
-     * the component side.
-     * @param versionParameter - the name of the parameter to create for the version on the component side.
-     * @param versionRepositoryValueParameter - the name of the repository value parameter for the version on the
-     * component side.
-     */
-    ComponentType(String service, String distributionParameter, String distributionRepositoryValueParameter,
-            String versionParameter, String versionRepositoryValueParameter, List<String> componentLists) {
-        this.mService = service;
-        this.mDistributionParameter = distributionParameter;
-        this.mVersionParameter = versionParameter;
-        this.mDistributionRepositoryValueParameter = distributionRepositoryValueParameter;
-        this.mVersionRepositoryValueParameter = versionRepositoryValueParameter;
-        this.mComponentList = componentLists;
-    }
-    
-    ComponentType(String service, String distributionParameter, String distributionRepositoryValueParameter,
-            String versionParameter, String versionRepositoryValueParameter) {
-        
-        this(service,  distributionParameter,  distributionRepositoryValueParameter,
-                 versionParameter,  versionRepositoryValueParameter, new ArrayList<String>());
-    }
-
     private String mService;
 
     private String mDistributionParameter;
@@ -156,16 +130,42 @@ public enum ComponentType {
     
     private List<String> mComponentList;
 
-    
-    public List<String> getComponentList() {
-        return mComponentList;
+    /**
+     * @param service - the interface of the service
+     * @param distributionParameter - the name of the parameter to create for the distribution on the component side.
+     * @param distributionRepositoryValueParameter - the name of the repository value parameter for the distribution on
+     * the component side.
+     * @param versionParameter - the name of the parameter to create for the version on the component side.
+     * @param versionRepositoryValueParameter - the name of the repository value parameter for the version on the
+     * component side.
+     */
+    ComponentType(String service, String distributionParameter, String distributionRepositoryValueParameter,
+            String versionParameter, String versionRepositoryValueParameter) {
+        
+        this(service,  distributionParameter,  distributionRepositoryValueParameter,
+                 versionParameter,  versionRepositoryValueParameter, new ArrayList<String>());
     }
 
-    
-    public void setComponentList(List<String> mComponentList) {
-        this.mComponentList = mComponentList;
+    /**
+     * @param service - the interface of the service
+     * @param distributionParameter - the name of the parameter to create for the distribution on the component side.
+     * @param distributionRepositoryValueParameter - the name of the repository value parameter for the distribution on
+     * the component side.
+     * @param versionParameter - the name of the parameter to create for the version on the component side.
+     * @param versionRepositoryValueParameter - the name of the repository value parameter for the version on the
+     * component side.
+     * @param componentLists - list of all the components using the enum value
+     */
+    ComponentType(String service, String distributionParameter, String distributionRepositoryValueParameter,
+            String versionParameter, String versionRepositoryValueParameter, List<String> componentLists) {
+        this.mService = service;
+        this.mDistributionParameter = distributionParameter;
+        this.mVersionParameter = versionParameter;
+        this.mDistributionRepositoryValueParameter = distributionRepositoryValueParameter;
+        this.mVersionRepositoryValueParameter = versionRepositoryValueParameter;
+        this.mComponentList = new ArrayList<String>( componentLists );
     }
-
+  
     public static ComponentType getComponentType(String type) {
         for (ComponentType ct : values()) {
             if (ct.name().equals(type)) {
@@ -193,6 +193,10 @@ public enum ComponentType {
 
     public String getVersionRepositoryValueParameter() {
         return this.mVersionRepositoryValueParameter;
+    }
+    
+    public List<String> getComponentList() {
+        return new ArrayList<>( mComponentList );
     }
 
     /**
