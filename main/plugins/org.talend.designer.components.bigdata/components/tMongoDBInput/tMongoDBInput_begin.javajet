@@ -279,7 +279,7 @@
 	                        // - contain the db DBcolumnName between two backslashed quotes
 	                        // - is followed at some point by a colon
 	                        // - there is no comma between the the DBcolumnName and the colon
-	                        if  ((<%=query%>).matches(".*" + key + "[^,]*:.*")) {
+	                        if  ((<%=query%>).matches(".*" + key.replace("*","\\*") + "[^,]*:.*")) {
 	                            // We have an index, do not print error message
 	                            needIndexWarning = false;
 	                        } else {
