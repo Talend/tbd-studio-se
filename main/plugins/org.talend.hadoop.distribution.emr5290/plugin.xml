@@ -397,7 +397,7 @@
             context="plugin:org.talend.hadoop.distribution.emr5290"
             id="parquet-avro-1.6.0.jar"
             name="parquet-avro-1.6.0.jar"
-            mvn_uri="mvn:org.apache.parquet/parquet-avro/1.6.0">
+            mvn_uri="mvn:com.twitter/parquet-avro/1.6.0">
         </libraryNeeded>
         
         <libraryNeeded
