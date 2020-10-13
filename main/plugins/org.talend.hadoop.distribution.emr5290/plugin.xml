@@ -395,9 +395,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5290"
-            id="parquet-avro-1.8.2.jar"
-            name="parquet-avro-1.8.2.jar"
-            mvn_uri="mvn:com.twitter/parquet-avro/1.8.2">
+            id="parquet-avro-1.6.0.jar"
+            name="parquet-avro-1.6.0.jar"
+            mvn_uri="mvn:org.apache.parquet/parquet-avro/1.6.0">
         </libraryNeeded>
         
         <libraryNeeded
@@ -435,13 +435,6 @@
             mvn_uri="mvn:com.twitter/parquet-encoding/1.6.0">
         </libraryNeeded>
         
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr5290"
-            id="parquet-avro-1.8.2-shaded.jar"
-            name="parquet-avro-1.8.2-shaded.jar"
-            mvn_uri="mvn:org.talend.libraries/parquet-avro-1.8.2-shaded/6.0.0">
-        </libraryNeeded>
-
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5290"
             id="parquet-avro-1.8.2-shaded.jar"
@@ -2048,7 +2041,7 @@
             <library id="parquet-hadoop-1.6.0.jar" />
             <library id="parquet-encoding-1.6.0.jar" />
             <library id="parquet-format-2.2.0-rc1.jar" />
-            <library id="parquet-avro-1.8.2.jar"/>
+            <library id="parquet-avro-1.6.0.jar"/>
         </libraryNeededGroup>
         
         <!-- Spark Parquet group MRREQUIRED -->
