@@ -1230,7 +1230,13 @@
       "modules": [
         "commons-lang3-3.5",
         "hadoop-client",
-        "hadoop-aws",
+        "hadoop-aws"
+      ]
+    },
+    {
+      "id": "SPARK-S3-LIB-MRREQUIRED-DYNAMIC",
+      "description": "jars for extended-aws-support",
+      "modules": [
         "talend-bigdata-aws-lib-1.0.1"
       ]
     },

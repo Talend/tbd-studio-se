@@ -2851,7 +2851,13 @@
         "hadoop-client",
         "org-slf4j-log4j12",
         "avro-mapred-1.8.2",
-        "hadoop-aws",
+        "hadoop-aws"
+      ]
+    },
+    {
+      "id": "SPARK-S3-LIB-MRREQUIRED-DYNAMIC",
+      "description": "jars for extended AWS feature support",
+      "modules": [
         "talend-bigdata-aws-lib-1.0.1"
       ]
     },
