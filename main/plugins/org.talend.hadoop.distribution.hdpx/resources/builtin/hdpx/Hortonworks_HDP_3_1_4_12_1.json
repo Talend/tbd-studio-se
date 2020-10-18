@@ -1693,10 +1693,6 @@
               "id": "DYNAMIC_HDP_3_1_4_12_1_stax2_api_3_1_4_jar",
               "tagName": "library"
             }, {
-              "childNodes" : [ ],
-              "id" : "DYNAMIC_HDP_3_1_4_12_1_talend_bigdata_aws_lib_1_0_1",
-              "tagName" : "library"
-            }, {
               "childNodes": [],
               "id": "DYNAMIC_HDP_3_1_4_12_1_token_provider_1_0_1_jar",
               "tagName": "library"
@@ -10277,6 +10273,19 @@
           "id": "DYNAMIC_HDP_3_1_4_12_1_SPARK_KAFKA_CLIENT_LIB_MRREQUIRED_DYNAMIC",
           "tagName": "libraryNeededGroup",
           "templateId": "SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-DYNAMIC"
+        },
+        {
+          "childNodes": [
+            {
+              "childNodes" : [ ],
+              "id" : "DYNAMIC_HDP_3_1_4_12_1_talend_bigdata_aws_lib_1_0_1",
+              "tagName" : "library"
+            }
+          ],
+          "description": "",
+          "id": "DYNAMIC_HDP_3_1_4_12_1_SPARK-S3-LIB-MRREQUIRED-DYNAMIC",
+          "tagName": "libraryNeededGroup",
+          "templateId": "SPARK-S3-LIB-MRREQUIRED-DYNAMIC"
         },
         {
           "childNodes": [
