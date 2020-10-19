@@ -626,8 +626,8 @@
 			"id": "hive-exec",
 			"type": "STANDARD",
 			"context": "{properties.context}",
-			"jarName": "hive-exec-shade-2.1.1-cdh6.1.1-talend-1.1.jar",
-			"mvnUri": "mvn:org.talend.bigdata.libs/hive-exec-shade-2.1.1-cdh6.1.1-talend/1.1",
+			"jarName": "hive-exec-shade-2.1.1-cdh6.1.1-talend-1.2.jar",
+			"mvnUri": "mvn:org.talend.bigdata.libs/hive-exec-shade-2.1.1-cdh6.1.1-talend/1.2",
 			"useStudioRepository": "true",
 			"description": ""
 		},
@@ -1791,7 +1791,9 @@
 				"jackson-databind",
 				"jackson-annotations",
 				"commons-httpclient-3.1",
-				"parquet-hadoop-bundle_1_6_0"
+				"parquet-hadoop-bundle_1_6_0",
+				"httpcore-4.4.6",
+				"httpclient-4.5.3"
 			]
 		},
 		{
