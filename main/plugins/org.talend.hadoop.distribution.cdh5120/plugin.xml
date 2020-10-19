@@ -489,6 +489,13 @@
         </libraryNeeded>
 
         <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.cdh5120"
+                id="talend-bigdata-aws-1.0.0-20180116.jar"
+                name="talend-bigdata-aws-1.0.0-20180116.jar"
+                mvn_uri="mvn:org.talend.libraries/talend-bigdata-aws-1.0.0-20180116/6.0.0">
+        </libraryNeeded>
+
+        <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh5120"
             id="aws-java-sdk-s3-1.10.6.jar"
             name="aws-java-sdk-s3-1.10.6.jar"
@@ -1185,6 +1192,7 @@
                 description="Spark S3 libraries for CDH 5.12 that are MRREQUIRED"
                 id="SPARK-S3-LIB-MRREQUIRED-CDH_5_12"
                 name="SPARK-S3-LIB-MRREQUIRED-CDH_5_12">
+             <library id="talend-bigdata-aws-1.0.0-20180116.jar"/>
              <library id="hadoop-aws-2.6.0-cdh5.12.1.jar"/>
              <library id="aws-java-sdk-core-1.10.6.jar"/>
              <library id="aws-java-sdk-kms-1.10.6.jar"/>

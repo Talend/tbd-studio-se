@@ -346,6 +346,10 @@ public boolean isQuboleDistribution() {
         return false;
     }
 
+    public boolean doSupportExtendedAssumeRole() {
+        return false;
+    }
+
     public boolean doSupportAvroDeflateProperties(){
         return false;
     }
