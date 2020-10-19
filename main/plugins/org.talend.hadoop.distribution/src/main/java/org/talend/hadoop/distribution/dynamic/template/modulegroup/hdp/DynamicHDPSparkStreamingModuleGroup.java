@@ -44,8 +44,12 @@ public class DynamicHDPSparkStreamingModuleGroup extends DynamicSparkStreamingMo
                 .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.HDFS_MODULE_GROUP.getModuleName());
         String mapreduceRuntimeId = pluginAdapter
                 .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.MAPREDUCE_MODULE_GROUP.getModuleName());
+        String sparkS3RuntimeId = pluginAdapter
+                .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.SPARK_S3_MRREQUIRED_MODULE_GROUP.getModuleName());
+
         checkRuntimeId(hdfsRuntimeId);
         checkRuntimeId(mapreduceRuntimeId);
+        checkRuntimeId(sparkS3RuntimeId);
 
         if (StringUtils.isNotBlank(hdfsRuntimeId)) {
             moduleGroups.add(new DistributionModuleGroup(hdfsRuntimeId, false, spark1Condition));
@@ -55,7 +59,9 @@ public class DynamicHDPSparkStreamingModuleGroup extends DynamicSparkStreamingMo
             moduleGroups.add(new DistributionModuleGroup(mapreduceRuntimeId, false, spark1Condition));
             moduleGroups.add(new DistributionModuleGroup(mapreduceRuntimeId, false, spark2Condition));
         }
-
+        if (StringUtils.isNotBlank(sparkS3RuntimeId)) {
+            moduleGroups.add(new DistributionModuleGroup(sparkS3RuntimeId, true, null));
+        }
         return moduleGroups;
     }
 
