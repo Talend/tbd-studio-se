@@ -1799,37 +1799,37 @@
 			]
 		},
         {
-            "id": "HDFS-COMMON-LIB-DYNAMIC",
-            "modules": [
-                "hadoop-client"
-            ]
-        },
-        {
-            "id": "HDFS-LIB-DYNAMIC",
-            "description": "jars for hdfs, only module.id permitted",
-            "modules": [
-                "hadoop-client",
-                "jackson-core",
-                "jackson-databind",
-                "jackson-annotations",
-                "commons-httpclient-3.1",
-                "parquet-hadoop-bundle_1_6_0",
-                "httpcore-4.4.6",
+			"id": "HDFS-COMMON-LIB-DYNAMIC",
+			"modules": [
+				"hadoop-client"
+			]
+		},
+        		{
+			"id": "HDFS-LIB-DYNAMIC",
+			"description": "jars for hdfs, only module.id permitted",
+			"modules": [
+				"hadoop-client",
+				"jackson-core",
+				"jackson-databind",
+				"jackson-annotations",
+				"commons-httpclient-3.1",
+				"parquet-hadoop-bundle_1_6_0",
+				"httpcore-4.4.6",
 				"httpclient-4.5.3"
-            ]
-        },
-        {
-            "id": "HDFS-SPARK1_6-LIB-DYNAMIC",
-            "description": "",
-            "modules": [
-            ]
-        },
-        {
-            "id": "HDFS-SPARK2_1-LIB-DYNAMIC",
-            "description": "",
-            "modules": [
-            ]
-        },
+			]
+		},
+		{
+			"id": "HDFS-SPARK1_6-LIB-DYNAMIC",
+			"description": "",
+			"modules": [
+			]
+		},
+		{
+			"id": "HDFS-SPARK2_1-LIB-DYNAMIC",
+			"description": "",
+			"modules": [				
+			]
+		},
         {
             "id": "IMPALA-LIB-DYNAMIC",
             "description": "",
