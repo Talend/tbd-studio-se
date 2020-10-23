@@ -8069,6 +8069,10 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_amazon_kinesis_client",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_aopalliance_repackaged_2_5_0_b32_jar",
         "tagName" : "library"
       }, {
@@ -11408,6 +11412,15 @@
       "mvn_uri" : "mvn:javax.activation/activation/1.1.1/jar",
       "name" : "activation-1.1.1.jar",
       "tagName" : "libraryNeeded"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDH6_1_1_amazon_kinesis_client",
+      "mvn_uri" : "mvn:com.amazonaws/amazon-kinesis-client/1.8.10",
+      "name" : "amazon-kinesis-client-1.8.10.jar",
+      "tagName" : "libraryNeeded",
+      "useStudioRepository" : "true"
     }, {
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
