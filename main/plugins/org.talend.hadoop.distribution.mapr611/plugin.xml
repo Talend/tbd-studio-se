@@ -694,7 +694,7 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.1" id="leveldbjni-all-1.8.jar" name="leveldbjni-all-1.8.jar" mvn_uri="mvn:org.fusesource.leveldbjni/leveldbjni-all/1.8"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.1" id="libfb303-0.9.3.jar" name="libfb303-0.9.3.jar" mvn_uri="mvn:org.apache.thrift/libfb303/0.9.3"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.1" id="libthrift-0.9.3.jar" name="libthrift-0.9.3.jar" mvn_uri="mvn:org.apache.thrift/libthrift/0.9.3"/>
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.1" id="lz4-1.3.0.jar" name="lz4-1.3.0.jar" mvn_uri="mvn:net.jpountz.lz4/lz4/1.3.0"/>
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.1" id="lz4-java-1.4.0.jar" name="lz4-java-1.4.0.jar" mvn_uri="mvn:net.jpountz.lz4/lz4-java/1.4.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.1" id="maprdb-spark-2.3.3.100-mapr-611.jar" name="maprdb-spark-2.3.3.100-mapr-611.jar" mvn_uri="mvn:com.mapr.db/maprdb-spark/2.3.3.100-mapr-611"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.1" id="mesos-1.4.0-shaded-protobuf.jar" name="mesos-1.4.0-shaded-protobuf.jar" mvn_uri="mvn:org.talend.libraries/mesos-1.4.0-shaded-protobuf/6.0.0"/>
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.1" id="metrics-core-3.1.5.jar" name="metrics-core-3.1.5.jar" mvn_uri="mvn:io.dropwizard.metrics/metrics-core/3.1.5"/>
@@ -1077,7 +1077,7 @@
 			<library id="leveldbjni-all-1.8.jar"/>
 			<library id="libfb303-0.9.3.jar"/>
 			<library id="libthrift-0.9.3.jar"/>
-			<library id="lz4-1.3.0.jar"/>
+			<library id="lz4-java-1.4.0.jar"/>
 			<library id="maprdb-spark-2.3.3.100-mapr-611.jar"/>
 			<library id="mesos-1.4.0-shaded-protobuf.jar"/>
 			<library id="metrics-graphite-3.1.5.jar"/>
@@ -1267,7 +1267,7 @@
             <library id="kafka_2.11-1.1.1-mapr-1901.jar"/>
             <library id="jopt-simple-3.2.jar"/>
             <library id="kafka-clients-1.1.1-mapr-1901.jar"/>
-            <library id="lz4-1.2.0.jar"/>
+            <library id="lz4-java-1.4.0.jar"/>
             <library id="snappy-java-1.1.1.7.jar"/>
             <library id="zkclient-0.10.jar"/>
             <library id="zookeeper-3.4.11-mapr-1808.jar"/>
