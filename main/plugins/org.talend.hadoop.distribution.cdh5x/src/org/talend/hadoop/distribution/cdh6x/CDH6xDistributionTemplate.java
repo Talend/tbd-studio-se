@@ -12,6 +12,7 @@
 // ============================================================================
 package org.talend.hadoop.distribution.cdh6x;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -46,21 +47,26 @@ public class CDH6xDistributionTemplate extends AbstractDynamicCDHDistributionTem
         ImpalaComponent, SqoopComponent, CDHSparkBatchComponent, SparkStreamingComponent, ICDH6xDistributionTemplate {
 
     public final static String TEMPLATE_ID = "CDH6xDistributionTemplate";
-    private final static String SEPARATOR = ",";
-	public final static String DEFAULT_LIB_ROOT = "/opt/cloudera/parcels/CDH/lib";
-
-	private final static String YARN_APPLICATION_CLASSPATH =
-			DEFAULT_LIB_ROOT + "/spark/jars/*" + SEPARATOR
-			+ DEFAULT_LIB_ROOT + "/hive/lib/*" + SEPARATOR
-			+ DEFAULT_LIB_ROOT + "/impala/lib/*" + SEPARATOR
-			+ DEFAULT_LIB_ROOT + "/hbase/lib/*" + SEPARATOR
-			+ DEFAULT_LIB_ROOT + "/sqoop/lib/*" + SEPARATOR
-			+ DEFAULT_LIB_ROOT + "/kudu/*" + SEPARATOR
-			+ DEFAULT_LIB_ROOT + "/hadoop-mapreduce/*" + SEPARATOR
-			+ DEFAULT_LIB_ROOT + "/hadoop-yarn/*" + SEPARATOR
-			+ DEFAULT_LIB_ROOT + "/hadoop-yarn/lib/*" + SEPARATOR
-			+ DEFAULT_LIB_ROOT + "/avro/*" + SEPARATOR
-			+ DEFAULT_LIB_ROOT + "/hadoop/lib/*";
+    private final static String CLASSPATH_SEPARATOR = ",";
+    private final static String YARN_APPLICATION_CLASSPATH = String.join(CLASSPATH_SEPARATOR, Arrays.asList(
+            "$HADOOP_CONF_DIR",
+            "$HADOOP_COMMON_HOME/*",
+            "$HADOOP_COMMON_HOME/lib/*",
+            "$HADOOP_HDFS_HOME/*",
+            "$HADOOP_HDFS_HOME/lib/*",
+            "$HADOOP_MAPRED_HOME/*",
+            "$HADOOP_MAPRED_HOME/lib/*",
+            "$YARN_HOME/*",
+            "$YARN_HOME/lib/*",
+            "$HADOOP_YARN_HOME/*",
+            "$HADOOP_YARN_HOME/lib/*",
+            "$HADOOP_COMMON_HOME/share/hadoop/common/*",
+            "$HADOOP_COMMON_HOME/share/hadoop/common/lib/*",
+            "$HADOOP_HDFS_HOME/share/hadoop/hdfs/*",
+            "$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*",
+            "$HADOOP_YARN_HOME/share/hadoop/yarn/*",
+            "$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*"
+    ));
 
     public CDH6xDistributionTemplate(DynamicPluginAdapter pluginAdapter) throws Exception {
         super(pluginAdapter);
