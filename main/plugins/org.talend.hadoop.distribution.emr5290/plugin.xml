@@ -284,9 +284,21 @@
 
         <libraryNeeded
             context="plugin:org.talend.libraries.s3"
-            id="aws-java-sdk-s3-1.11.682.jar"
-            name="aws-java-sdk-s3-1.11.682.jar"
-            mvn_uri="mvn:com.amazonaws/aws-java-sdk-s3/1.11.682"/>
+            id="aws-java-sdk-s3-1.11.700.jar"
+            name="aws-java-sdk-s3-1.11.700.jar"
+            mvn_uri="mvn:com.amazonaws/aws-java-sdk-s3/1.11.700"/>
+
+        <libraryNeeded
+            context="plugin:org.talend.libraries.s3"
+            id="talend-bigdata-aws-lib-1.1.0.jar"
+            name="talend-bigdata-aws-lib-1.1.0.jar"
+            mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-aws-lib/1.1.0"/>
+
+        <libraryNeeded
+            context="plugin:org.talend.libraries.s3"
+            id="aws-java-sdk-sts-1.11.760.jar"
+            name="aws-java-sdk-sts-1.11.760.jar"
+            mvn_uri="mvn:com.amazonaws/aws-java-sdk-sts/1.11.760"/>
 
         <libraryNeeded
             context="plugin:org.talend.libraries.s3"
@@ -302,9 +314,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.libraries.s3"
-            id="aws-java-sdk-core-1.11.682.jar"
-            name="aws-java-sdk-core-1.11.682.jar"
-            mvn_uri="mvn:com.amazonaws/aws-java-sdk-core/1.11.682"/>
+            id="aws-java-sdk-core-1.11.700.jar"
+            name="aws-java-sdk-core-1.11.700.jar"
+            mvn_uri="mvn:com.amazonaws/aws-java-sdk-core/1.11.700"/>
 
         <libraryNeeded
             context="plugin:org.talend.libraries.s3"
@@ -1899,8 +1911,10 @@
                 id="S3-LIB-EMR_5_29_0_LATEST"
                 name="S3-LIB-EMR_5_29_0_LATEST">
              <library id="hadoop-aws-2.8.5-amzn-5.jar"/>
-             <library id="aws-java-sdk-core-1.11.682.jar"/>
-             <library id="aws-java-sdk-s3-1.11.682.jar"/>
+             <library id="aws-java-sdk-core-1.11.700.jar"/>
+             <library id="aws-java-sdk-s3-1.11.700.jar"/>
+             <library id="aws-java-sdk-sts-1.11.760.jar"/>
+             <library id="talend-bigdata-aws-lib-1.1.0.jar"/>
         </libraryNeededGroup>
 
         <!-- Map/Reduce group -->
@@ -2310,10 +2324,10 @@
                 description="Spark DynamoDB libraries for EMR 5.29.0 that are MRREQUIRED"
                 id="SPARK-DYNAMODB-LIB-MRREQUIRED-EMR_5_29_0"
                 name="SPARK-DYNAMODB-LIB-MRREQUIRED-EMR_5_29_0">
-             <library id="aws-java-sdk-core-1.11.682.jar"/>
+             <library id="aws-java-sdk-core-1.11.700.jar"/>
              <library id="aws-java-sdk-dynamodb-1.11.682.jar"/>
              <library id="aws-java-sdk-kms-1.11.682.jar"/>
-             <library id="aws-java-sdk-s3-1.11.682.jar"/>
+             <library id="aws-java-sdk-s3-1.11.700.jar"/>
              <library id="emr-core-2.6.0.jar"/>
              <library id="emr-dynamodb-hadoop-4.6.0.jar"/>
              <library id="commons-pool2-2.2.jar"/>
