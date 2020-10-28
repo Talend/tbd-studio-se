@@ -269,8 +269,7 @@
             context="plugin:org.talend.libraries.zookeeper"
             id="zookeeper-emr450-latest"
             name="zookeeper-3.4.8.jar" 
-            mvn_uri="mvn:org.talend.libraries/zookeeper-3.4.8/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.zookeeper/lib/zookeeper-3.4.8.jar"/>
+            mvn_uri="mvn:org.talend.libraries/zookeeper-3.4.8/6.0.0"/>
             
        
         <!-- Groups -->
