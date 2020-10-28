@@ -21,9 +21,9 @@ import java.util.Set;
 import org.talend.hadoop.distribution.AbstractMapRDistribution;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
-import org.talend.hadoop.distribution.EWinUtilsName;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
+import org.talend.hadoop.distribution.EWinUtilsName;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
 import org.talend.hadoop.distribution.component.HCatalogComponent;
 import org.talend.hadoop.distribution.component.HDFSComponent;
@@ -477,10 +477,5 @@ public class MapR610Distribution extends AbstractMapRDistribution implements HDF
     @Override
     public boolean useS3AProperties() {
         return true;
-    }
-    
-    @Override
-    public boolean doSupportHBase2x() {
-    	return true;
     }
 }

@@ -86,8 +86,6 @@ public interface SparkComponent extends MRComponent {
     public String generateSparkJarsPaths(List<String> commandLineJarsPaths);
     
     public String generateSparkJarsPaths(List<String> commandLineJarsPaths, boolean isLightWeight);
-    
-    public String generateSparkJarsPaths(List<String> commandLineJarsPaths, boolean isLightWeight, String customYarnClassPath);
 
     /**
      * @return true if the distribution implementation is responsible for importing the Dynamo DB dependencies. If
