@@ -1698,6 +1698,15 @@
             "description": ""
         },
         {
+            "id": "amazon-kinesis-client",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "amazon-kinesis-client-1.8.10.jar",
+            "mvnUri": "mvn:com.amazonaws/amazon-kinesis-client/1.8.10",
+            "useStudioRepository": "true",
+            "description": ""
+        },
+        {
             "id": "spark-streaming-kinesis-asl_2.11",
             "type": "BASE",
             "context": "{properties.context}",
@@ -2064,6 +2073,7 @@
                 "hadoop-client",
                 "aws-java-sdk-bundle",
                 "spark-streaming-kinesis-asl_2.11",
+                "amazon-kinesis-client",
                 "jackson-dataformat-cbor"
             ]
         },
