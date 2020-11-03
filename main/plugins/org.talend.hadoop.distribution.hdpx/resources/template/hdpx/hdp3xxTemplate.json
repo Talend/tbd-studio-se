@@ -2790,6 +2790,14 @@
       "description": ""
     },
     {
+      "id": "talend-bigdata-aws-lib-1.0.1",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "talend-bigdata-aws-lib-1.0.1.jar",
+      "mvnUri": "mvn:org.talend.bigdata.libs/talend-bigdata-aws-lib/1.0.1",
+      "description": ""
+    },
+    {
       "id": "avatica",
       "type": "BASE",
       "context": "{properties.context}",
@@ -2844,6 +2852,13 @@
         "org-slf4j-log4j12",
         "avro-mapred-1.8.2",
         "hadoop-aws"
+      ]
+    },
+    {
+      "id": "SPARK-S3-LIB-MRREQUIRED-DYNAMIC",
+      "description": "jars for extended AWS feature support",
+      "modules": [
+        "talend-bigdata-aws-lib-1.0.1"
       ]
     },
     {
