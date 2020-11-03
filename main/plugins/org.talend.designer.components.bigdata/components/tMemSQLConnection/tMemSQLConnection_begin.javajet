@@ -1,0 +1,35 @@
+<%@ jet
+imports="
+    org.talend.core.model.process.INode
+    org.talend.core.model.process.ElementParameterParser
+    org.talend.designer.codegen.config.CodeGeneratorArgument
+"
+%>
+	<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/DB/HelpClass/HelpClass.javajet"%>
+<%
+	class ConnectionUtil extends DefaultConnectionUtil{
+
+		public void createURL(INode node) {
+			super.createURL(node);
+			String additionalJdbcParameters = ElementParameterParser.getValue(node, "__PROPERTIES__");
+%>
+		String url_<%=cid %> ="jdbc:mysql://" + <%=dbhost%> + ":" + <%if(!"".equals(dbport) && !"\"\"".equals(dbport)){%> <%=dbport%> + <%}%>"/" +  <%=dbname%> <%if(additionalJdbcParameters!=null && !"\"\"".equals(additionalJdbcParameters) && !"".equals(additionalJdbcParameters)){%> +"?"+<%= additionalJdbcParameters %><%}%>;
+<%
+		}
+
+		@Override
+		public void setAutoCommit(INode node){
+
+		}
+
+		public String getDirverClassName(INode node){
+			return "com.mysql.jdbc.Driver";
+		}
+	}//end class
+	connUtil = new ConnectionUtil();
+%>
+<%//----------------------------component codes-----------------------------------------%>
+
+	<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/DB/AbstractDBConnection.javajet"%>
+
+	globalMap.put("conn_" + "<%=cid%>",conn_<%=cid%>);
