@@ -611,6 +611,39 @@
             mvn_uri="mvn:org.apache.avro/avro-ipc/1.8.1">
         </libraryNeeded>
         
+        <!-- Sqoop parquet -->
+        <libraryNeeded
+            context="plugin:org.talend.libraries.hadoop.mapr.6.1.1"
+            id="kite-data-core-1.1.0.jar"
+            name="kite-data-core-1.1.0.jar"
+			mvn_uri="mvn:org.kitesdk/kite-data-core/1.1.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.libraries.hadoop.mapr.6.1.1"
+            id="kite-data-maprfs-1.1.0.jar"
+            name="kite-data-maprfs-1.1.0.jar"
+			mvn_uri="mvn:org.kitesdk/kite-data-maprfs/1.1.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.libraries.hadoop.mapr.6.1.1"
+            id="kite-data-hive-1.1.0.jar"
+            name="kite-data-hive-1.1.0.jar"
+			mvn_uri="mvn:org.kitesdk/kite-data-hive/1.1.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.libraries.hadoop.mapr.6.1.1"
+            id="kite-data-mapreduce-1.1.0.jar"
+            name="kite-data-mapreduce-1.1.0.jar"
+			mvn_uri="mvn:org.kitesdk/kite-data-mapreduce/1.1.0">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.libraries.hadoop.mapr.6.1.1"
+            id="kite-hadoop-compatibility-1.1.0.jar"
+            name="kite-hadoop-compatibility-1.1.0.jar"
+			mvn_uri="mvn:org.kitesdk/kite-hadoop-compatibility/1.1.0">
+        </libraryNeeded>
+        
+        
         <!-- Spark2 libraries -->
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.1" id="spark-kvstore_2.11-2.3.3.100-mapr-611.jar" name="spark-kvstore_2.11-2.3.3.100-mapr-611.jar" mvn_uri="mvn:org.talend.libraries/spark-kvstore_2.11-2.3.3.100-mapr-611/6.0.0"/>
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.1" id="mapr-security-web-6.1.0-mapr.jar" name="mapr-security-web-6.1.0-mapr.jar" mvn_uri="mvn:org.talend.libraries/mapr-security-web-6.1.0-mapr/6.0.0"/>
@@ -1228,16 +1261,18 @@
         </libraryNeededGroup>
         
         <!-- Sqoop Parquet group -->
-        <!-- Kite jars are defined in HDP240 -->
+        <!--                           jars are defined in HDP240 -->
         <!-- jackson jars are defined localprovider plugin.xml -->
         <!-- parquet-avro jar is defined in HDP240 -->
         <libraryNeededGroup
                 description="Sqoop Parquet libraries for MapR 6.1.1"
                 id="SQOOP-PARQUET-LIB-MAPR611"
                 name="SQOOP-PARQUET-LIB-MAPR611">
-            <library id="kite-data-core-1.0.0.jar"/>
-            <library id="kite-data-mapreduce-1.0.0.jar"/>
-            <library id="kite-hadoop-compatibility-1.0.0.jar"/>
+            <library id="kite-data-core-1.1.0.jar"/>
+            <library id="kite-data-maprfs-1.1.0.jar"/>
+            <library id="kite-data-hive-1.1.0.jar"/>
+            <library id="kite-data-mapreduce-1.1.0.jar"/>
+            <library id="kite-hadoop-compatibility-1.1.0.jar"/>
             <library id="jackson-databind-2.6.7.1.jar"/>
             <library id="jackson-core-2.6.7.jar"/>
             <library id="parquet-hadoop-bundle-1.6.0.jar" />
