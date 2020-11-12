@@ -35,7 +35,7 @@
     	mask_<%=cid %> = mask_<%=cid %>.replaceAll("\\.", "\\\\.").replaceAll("\\*", ".*");
     	final String finalMask_<%=cid %> = mask_<%=cid %>;
     	
-    	if(!dbfs_<%=cid%>.exists(tempdir_<%=cid%>)){
+    	if(dbfs_<%=cid%>.getStatus(tempdir_<%=cid%> + key_<%=cid%>) == null){
 			System.err.println("No match file("+key_<%=cid %>+") exists!");
 			
 			<%if(isLog4jEnabled) {%>
@@ -47,6 +47,7 @@
 			org.talend.bigdata.launcher.fs.DatabricksFileSystem.FileInfo remoteDirStatus_<%=cid%> = dbfs_<%=cid%>.getStatus(tempdir_<%=cid%>);
 			if(remoteDirStatus_<%=cid%> == null) throw new RuntimeException("File or folder does not exist on DBFS : " + tempdir_<%=cid%>);
 			boolean success_<%=cid%> = false;
+			// it verifies if value specified in "DBFS directory" is a directory or a file. 
 	    	if(remoteDirStatus_<%=cid%>.is_dir){ // Is a directory so we'll list its files / folders
 				for(org.talend.bigdata.launcher.fs.DatabricksFileSystem.FileInfo fileInfo : dbfs_<%=cid%>.list(remoteDirStatus_<%=cid%>.path, <%=includeSubDir%>)) {
 					if(fileInfo.is_dir) {
