@@ -28,7 +28,7 @@
 				&& dbfsSchemeStartStr_<%=cid%>.length() < remoteDir_<%=cid%>.length()) {
 			remoteDir_<%=cid%> = remoteDir_<%=cid%>.substring(dbfsSchemeStartStr_<%=cid%>.length());
 		}
-		String tempdir_<%=cid %> =  <%=remotedir%>;
+		String tempdir_<%=cid %> =  remoteDir_<%=cid%>;
 		String filemask_<%=cid %> = key_<%=cid %>; 
 		String dir_<%=cid %> = null;	
 		String mask_<%=cid %> = filemask_<%=cid %>.replaceAll("\\\\", "/") ;	
@@ -60,7 +60,7 @@
 						// create directory
 					} else if(java.util.regex.Pattern.compile(finalMask_<%=cid %>).matcher(java.nio.file.Paths.get(fileInfo.path).getFileName().toString()).find()) {
 						// copy file
-						int baseRemotePathLength_<%=cid%> = java.nio.file.Paths.get(<%=remotedir%>).getNameCount();
+						int baseRemotePathLength_<%=cid%> = java.nio.file.Paths.get(remoteDir_<%=cid%>).getNameCount();
 						int remotePathLength_<%=cid%> = java.nio.file.Paths.get(fileInfo.path).getNameCount();
 						String remoteStrippedPath_<%=cid%> = java.nio.file.Paths.get(fileInfo.path).subpath(baseRemotePathLength_<%=cid%>, remotePathLength_<%=cid%>).toString().replaceAll("\\\\", "/");
 						if(map_<%=cid %>.get(key_<%=cid %>) != null && !map_<%=cid %>.get(key_<%=cid %>).isEmpty()) {
