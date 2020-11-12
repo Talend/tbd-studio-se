@@ -22,6 +22,12 @@
 	
 	java.util.Set<String> keySet_<%=cid %> = map_<%=cid %>.keySet();
     for (String key_<%=cid %> : keySet_<%=cid %>){     
+		String remoteDir_<%=cid%> = <%=remotedir%>;
+		String dbfsSchemeStartStr_<%=cid%> = "dbfs:";
+		if (remoteDir_<%=cid%>.toLowerCase().startsWith(dbfsSchemeStartStr_<%=cid%>) 
+				&& dbfsSchemeStartStr_<%=cid%>.length() < remoteDir_<%=cid%>.length()) {
+			remoteDir_<%=cid%> = remoteDir_<%=cid%>.substring(dbfsSchemeStartStr_<%=cid%>.length());
+		}
 		String tempdir_<%=cid %> =  <%=remotedir%>;
 		String filemask_<%=cid %> = key_<%=cid %>; 
 		String dir_<%=cid %> = null;	
