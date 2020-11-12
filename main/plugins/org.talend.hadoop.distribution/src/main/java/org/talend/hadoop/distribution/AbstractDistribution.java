@@ -259,7 +259,7 @@ public abstract class AbstractDistribution {
     }
     
     public String generateSparkJarsPaths(List<String> commandLineJarsPaths, boolean isLightWeight) {
-        return ""; //$NON-NLS-1$
+        return generateSparkJarsPaths(commandLineJarsPaths);
     }
 
     public boolean isCloudDistribution() {
