@@ -67,6 +67,20 @@ public class CDH6xDistributionTemplate extends AbstractDynamicCDHDistributionTem
             "$HADOOP_YARN_HOME/share/hadoop/yarn/*",
             "$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*"
     ));
+    
+    public final static String DEFAULT_LIB_ROOT = "/opt/cloudera/parcels/CDH/lib";
+	private final static String LIGHTWEIGHT_CLASSPATH = String.join(CLASSPATH_SEPARATOR, Arrays.asList(
+			DEFAULT_LIB_ROOT + "/spark/jars/*",
+			DEFAULT_LIB_ROOT + "/hive/lib/*",
+			DEFAULT_LIB_ROOT + "/impala/lib/*",
+			DEFAULT_LIB_ROOT + "/hbase/lib/*",
+			DEFAULT_LIB_ROOT + "/sqoop/lib/*",
+			DEFAULT_LIB_ROOT + "/kudu/*",
+			DEFAULT_LIB_ROOT + "/hadoop-mapreduce/*",
+			DEFAULT_LIB_ROOT + "/hadoop-yarn/*",
+			DEFAULT_LIB_ROOT + "/hadoop-yarn/lib/*",
+			DEFAULT_LIB_ROOT + "/avro/*",
+			DEFAULT_LIB_ROOT + "/hadoop/lib/*"));
 
     public CDH6xDistributionTemplate(DynamicPluginAdapter pluginAdapter) throws Exception {
         super(pluginAdapter);
@@ -198,6 +212,11 @@ public class CDH6xDistributionTemplate extends AbstractDynamicCDHDistributionTem
     @Override
     public String getYarnApplicationClasspath() {
         return YARN_APPLICATION_CLASSPATH;
+    }
+    
+    @Override
+    public String getLightWeightClasspath() {
+        return LIGHTWEIGHT_CLASSPATH;
     }
 
     @Override

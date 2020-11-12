@@ -385,4 +385,8 @@ public boolean isQuboleDistribution() {
     public boolean doSupportLightWeight() {
     	return false;
     }
+    
+    public String getLightWeightClasspath() {
+    	return "";
+    }
 }
