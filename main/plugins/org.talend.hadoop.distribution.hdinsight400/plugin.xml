@@ -265,19 +265,13 @@
         <!-- do not include the talend-bigdata-core as it is not relocated (ie see maven shade relocation) to org.talend. ="otherwise, it will fail on finding parent class of HDInsight credentials -->
         <libraryNeeded
                 context="plugin:org.talend.hadoop.distribution.hdinsight400"
-                id="talend-bigdata-launcher"
-                name="talend-bigdata-launcher-core-2.0.11.jar"
-                mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.0.11">
-        </libraryNeeded>
-        <libraryNeeded
-                context="plugin:org.talend.hadoop.distribution.hdinsight400"
-                id="talend-bigdata-launcher-hdinsight"
+                id="talend-bigdata-launcher-hdinsight-2.0.11"
                 name="talend-bigdata-launcher-hdinsight-2.0.11.jar"
                 mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-hdinsight/2.0.11">
         </libraryNeeded>
         <libraryNeeded
                 context="plugin:org.talend.hadoop.distribution.hdinsight400"
-                id="talend-bigdata-launcher-jobserver"
+                id="talend-bigdata-launcher-jobserver-2.0.11"
                 name="talend-bigdata-launcher-jobserver-2.0.11.jar"
                 mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-jobserver/2.0.11">
         </libraryNeeded>
@@ -299,9 +293,8 @@
                 description="Big Data launcher libraries for HDInsight 4.0.0"
                 id="BIGDATA-LAUNCHER-LIB-HD_INSIGHT_4_0_0"
                 name="BIGDATA-LAUNCHER-LIB-HD_INSIGHT_4_0_0">
-            <library id="talend-bigdata-launcher"/>
-            <library id="talend-bigdata-launcher-hdinsight"/>
-            <library id="talend-bigdata-launcher-jobserver"/>
+            <library id="talend-bigdata-launcher-hdinsight-2.0.11"/>
+            <library id="talend-bigdata-launcher-jobserver-2.0.11"/>
             <library id="logback-classic-1.2.3"/>
             <library id="commons-logging-1.2"/>
         </libraryNeededGroup>

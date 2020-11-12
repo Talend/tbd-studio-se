@@ -259,11 +259,7 @@ public abstract class AbstractDistribution {
     }
     
     public String generateSparkJarsPaths(List<String> commandLineJarsPaths, boolean isLightWeight) {
-        return ""; //$NON-NLS-1$
-    }
-    
-    public String generateSparkJarsPaths(List<String> commandLineJarsPaths, boolean isLightWeight, String customYarnClassPath) {
-        return ""; //$NON-NLS-1$
+        return generateSparkJarsPaths(commandLineJarsPaths);
     }
 
     public boolean isCloudDistribution() {
@@ -346,6 +342,10 @@ public boolean isQuboleDistribution() {
         return false;
     }
 
+    public boolean doSupportExtendedAssumeRole() {
+        return false;
+    }
+
     public boolean doSupportAvroDeflateProperties(){
         return false;
     }
@@ -384,5 +384,9 @@ public boolean isQuboleDistribution() {
     
     public boolean doSupportLightWeight() {
     	return false;
+    }
+    
+    public String getLightWeightClasspath() {
+    	return "";
     }
 }

@@ -222,15 +222,15 @@
 				MVN="mvn:org.talend.libraries/hadoop-conf-kerberos/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/hadoop-conf-kerberos.jar"
 				REQUIRED_IF="(USE_KRB=='true') AND (DISTRIBUTION!='CUSTOM')" />
-			<IMPORT NAME="Talen File Enhanced" MODULE="talend_file_enhanced_20070724.jar"
-				MVN="mvn:org.talend.libraries/talend_file_enhanced_20070724/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.custom/lib/talend_file_enhanced_20070724.jar"
-				REQUIRED="true" />
+			<IMPORT NAME="Talend File Enhanced" MODULE="talend_file_enhanced-1.0.jar"
+				MVN="mvn:org.talend.components.lib/tHCatalogInput_java.xml/1.0"
+				UrlPath="platform:/plugin/org.talend.libraries.custom/lib/talend_file_enhanced-1.0.jar"
+				REQUIRED="true" />	
 			<IMPORT NAME="cxf-rt-frontend-jaxrs-3.3.6" MODULE="cxf-rt-frontend-jaxrs-3.3.6.jar"
 				MVN="mvn:org.apache.cxf/cxf-rt-frontend-jaxrs/3.3.6"
 				REQUIRED="false" REQUIRED_IF="DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="javax.ws.rs-api-2.1" MODULE="javax.ws.rs-api-2.1.jar"
-	        	MVN="mvn:javax.ws.rs/javax.ws.rs-api/2.1"
+	      MVN="mvn:javax.ws.rs/javax.ws.rs-api/2.1"
 				REQUIRED="false" REQUIRED_IF="DISTRIBUTION!='CUSTOM'" />
 			<IMPORT NAME="cxf-core-3.3.6" MODULE="cxf-core-3.3.6.jar"
 				MVN="mvn:org.apache.cxf/cxf-core/3.3.6"

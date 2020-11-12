@@ -473,6 +473,16 @@ public class EMR5290Distribution extends AbstractDistribution implements HBaseCo
     public boolean useS3AProperties() {
         return true;
     }
+
+    @Override
+    public boolean doSupportAssumeRole() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportExtendedAssumeRole() {
+        return true;
+    }
     
     @Override
     public boolean doSupportEMRFS() {
