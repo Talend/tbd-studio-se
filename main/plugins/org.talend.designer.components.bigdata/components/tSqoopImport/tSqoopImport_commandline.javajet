@@ -32,7 +32,6 @@
 	boolean overrideHiveMapping = "true".equals(ElementParameterParser.getValue(node, "__DEFINE_HIVE_MAPPING__"));
 	boolean isUseAdditionParams = "true".equals(ElementParameterParser.getValue(node,"__USE_ADDITION_PARAM__"));
 	String specificAdditionParams=ElementParameterParser.getValue(node,"__SPECIFIC_ADDITION_PARAM__");
-	String additionalCommandLineArguments = ElementParameterParser.getValue(node,"__ADDITIONAL_COMMANDLINE_ARGUMENTS__");
 	
 	boolean useWhere = "true".equals(ElementParameterParser.getValue(node,"__USE_WHERE__"));
 	String where = ElementParameterParser.getValue(node,"__WHERE__");
@@ -48,6 +47,19 @@
 	String split = ElementParameterParser.getValue(node,"__SPLIT__");
 	
 	boolean dieOnError = "true".equals(ElementParameterParser.getValue(node, "__DIE_ON_ERROR__"));
+	
+	List<Map<String,String>> genericArgs = new java.util.ArrayList<Map<String,String>>();
+	List<Map<String,String>> toolSpecificArgs = new java.util.ArrayList<Map<String,String>>();
+	if (additionalList != null) { 
+		for (Map<String,String> additionalMap : additionalList) {
+			String additionalArg = additionalMap.get("ADDITIONAL_ARGUMENT").replaceAll("\"","");
+			if (additionalArg.startsWith("--")) {
+				toolSpecificArgs.add(additionalMap);
+			} else if (additionalArg.startsWith("-")) {
+				genericArgs.add(additionalMap);
+			}
+		}
+	}
 %>
 
 <%@ include file="@{org.talend.designer.components.bigdata}/components/templates/Sqoop/SqoopAdditionalArgumentParser.javajet"%>
@@ -81,19 +93,30 @@ String passwordFieldName = "__PASSWORD__";
 
 String[] cmd_<%=cid %> = new String[] {"sqoop", "import", "-Dmapreduce.job.user.classpath.first=true" 
 <%
-boolean isNull=false; 
-if(isUseSpeedParallel && specificParams!=null){
-	boolean isFirstParam=true;
-	for(Map<String,String> specificArg : specificParams){ 
-		isNull=false; 
-	 	if(specificArg.get("SPECIFIC_PARAM_VALUE")==null || "".equals(specificArg.get("SPECIFIC_PARAM_VALUE"))) { 
-	 		isNull=true; 
-	 	} 
-	 	if(!isNull) { 
+for (Map<String,String> genericArg : genericArgs) {
+	String value = genericArg.get("ADDITIONAL_VALUE");
+		if (!"\"\"".equals(value)) {
+			String param = genericArg.get("ADDITIONAL_ARGUMENT");
+			param = param.substring(1, param.length()-1);
+			value = value.substring(1, value.length()-1);
+			if(!param.startsWith("-D")){
+%>
+		,"<%=param%>", "<%=value%>"
+<%
+			} else {
+%>
+		,"<%=param%>=<%=value%>"
+<%
+			}
+		}
+}
+if (isUseSpeedParallel && specificParams != null) {
+	for (Map<String,String> specificArg : specificParams) { 
+	 	if (!"".equals(specificArg.get("SPECIFIC_PARAM_VALUE"))) { 
 %> 
 			,"-D<%=specificArg.get("SPECIFIC_PARAM")%>="+<%=specificArg.get("SPECIFIC_PARAM_VALUE")%>
 <% 
-		} 
+	 	}
 	} 
 } 
 if(isUseSpeedParallel && isUseAdditionParams){
@@ -103,22 +126,40 @@ if(isUseSpeedParallel && isUseAdditionParams){
 }
 %>
 
-, "--connect", <%=connection%>, "--username", <%=username%>
-<%if(passwordStoredInFile) {%>
+, "--connect", <%=connection%>
+<%if (!username.replaceAll("\"","").isEmpty()){%>
+	, "--username", <%=username%>
+<%}
+if(passwordStoredInFile) {%>
 	, "--password-file", <%=(String)ElementParameterParser.getValue(node, "__PASSWORD_FILE__")%>
-<%} else {%>
+<%} else if (!ElementParameterParser.getValue(node, "__PASSWORD__").replaceAll("\"","").isEmpty()) {%>
 	, "--password", decryptedPassword_<%=cid%>
-<%}%>
-<%if(isUseSpeedParallel){%>,"--connection-manager","org.apache.sqoop.teradata.TeradataConnManager"<%}%>
-<%if(useQuery){%>, "--query", <%=query%><%} else {%>
+<%}
+if(isUseSpeedParallel){%>
+	,"--connection-manager","org.apache.sqoop.teradata.TeradataConnManager"
+<%}
+if(useQuery){%>
+	, "--query", <%=query%>
+<%} else if (!table.replaceAll("\"","").isEmpty()) {%>
 	, "--table", <%=table%>
-    <%if(useColumns){%>, "--columns", "<%=sColumns%>"<%}%>
-    <%if(useWhere){%>, "--where", <%=where%><%}%>
-<%}%>
-<%if(printLog && verbose){%>, "--verbose"<%}%>
-<%if(append){%>, "--append"<%}%>
-<%if(deleteTargetDirectory){%>, "--delete-target-dir"<%}%>
-<%if(direct){%>
+	<%if(useColumns){%>
+	, "--columns", "<%=sColumns%>"
+	<%}
+	if(useWhere){%>
+	, "--where", <%=where%>
+<%	}
+}
+if(printLog && verbose){%>
+	, "--verbose"
+<%}
+if(append){%>
+, "--append"
+<%}
+if(deleteTargetDirectory){%>
+, "--delete-target-dir"
+<%}
+if(direct){
+%>
 	, "--direct"
 <%
 	if(splitInputStreamDirect) {
@@ -144,27 +185,20 @@ if(isUseSpeedParallel && isUseAdditionParams){
 <%if(useMappers){%>, "--num-mappers", <%=mappers%><%}%>
 <%if(useSplit){%>, "--split-by", <%=split%><%}%>
 <%
-if(additionalList != null){ 
-	for(Map<String,String> additionalMap : additionalList){ 
-		isNull=false; 
-	 	if(additionalMap.get("ADDITIONAL_VALUE")==null || "".equals(additionalMap.get("ADDITIONAL_VALUE"))) { 
-	 		isNull=true; 
-	 	} 
-	 	if(!isNull) { 
+for(Map<String,String> toolArg : toolSpecificArgs){ 
+	 if(!"\"\"".equals(toolArg.get("ADDITIONAL_VALUE"))) { 
 %> 
-			,"<%=additionalMap.get("ADDITIONAL_ARGUMENT")%>", <%=additionalMap.get("ADDITIONAL_VALUE")%> 
+		,<%=toolArg.get("ADDITIONAL_ARGUMENT")%>, <%=toolArg.get("ADDITIONAL_VALUE")%> 
 <% 
-		} else { 
+	 } else {
 %> 
-			,"<%=additionalMap.get("ADDITIONAL_ARGUMENT")%>" 
-<% 
-		} 
-	} 
+		,<%=toolArg.get("ADDITIONAL_ARGUMENT")%> 
+<% 	 }	 	
 } 
 
 if(overrideJavaMapping) {
 	List<Map<String,String>> javaMappings = (List<Map<String, String>>)ElementParameterParser.getObjectValue(node,"__JAVA_TYPE_MAPPING__");
-	if(javaMappings!=null && javaMappings.size()>0) {
+	if(javaMappings != null && javaMappings.size() > 0) {
 %>
 		,"--map-column-java"
 <%
@@ -186,7 +220,7 @@ if(overrideJavaMapping) {
 
 if(overrideHiveMapping) {
 	List<Map<String,String>> hiveMappings = (List<Map<String, String>>)ElementParameterParser.getObjectValue(node,"__HIVE_TYPE_MAPPING__");
-	if(hiveMappings!=null && hiveMappings.size()>0) {
+	if(hiveMappings != null && hiveMappings.size() > 0) {
 %>
 		,"--map-column-hive"
 <%	
@@ -207,9 +241,6 @@ if(overrideHiveMapping) {
 }
 %>
 };
-
-String[] additionalArgs_<%=cid%> = parser_<%=cid%>.parse(<%=additionalCommandLineArguments%>);
-cmd_<%=cid %> = (String[]) org.apache.commons.lang.ArrayUtils.addAll(cmd_<%=cid %>, additionalArgs_<%=cid%>);
 
 <%if(isLog4jEnabled) {%>
 java.lang.StringBuilder stringBuilder_<%=cid%> = new java.lang.StringBuilder();

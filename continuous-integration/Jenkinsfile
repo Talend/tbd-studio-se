@@ -1,0 +1,165 @@
+#!/usr/bin/groovy
+
+/**
+ * Build pipeline for the remote-engine project.
+ *
+ * The pod template definition is in the companion file agentPodTemplate.yaml
+ *
+ */
+
+pipeline {
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '20', artifactNumToKeepStr: '5'))
+        timeout(time: 120, unit: 'MINUTES')
+        skipStagesAfterUnstable()
+        disableConcurrentBuilds()
+    }
+
+
+    agent {
+        kubernetes {
+            label "tbd-studio-se"
+            yaml '''
+                apiVersion: v1
+                kind: Pod
+                spec:
+                  containers:
+                    - name: python3
+                      image: jenkinsxio/builder-python
+                      command:
+                        - cat
+                      tty: true
+                      resources:
+                        requests:
+                          memory: "128M"
+                          cpu: "1"
+                        limits:
+                          memory: "1G"
+                          cpu: "3"  
+                    '''
+            activeDeadlineSeconds 60
+            defaultContainer 'python3'
+        }
+    }
+
+    triggers {
+        issueCommentTrigger('[Bb]uild-?[pP]atch')
+    }
+
+    stages {
+        stage('Sanity check') {
+            steps {
+                ansiColor('xterm') {
+                    sh '''
+                        pip3.6 install javaproperties
+                        python3 ./continuous-integration/sanity-check.py
+                        '''
+                }
+            }
+        }
+        stage('Commit check') {
+            steps {
+                ansiColor('xterm') {
+                    sh 'python3 ./continuous-integration/commit-check.py'
+                }
+            }
+        }
+        stage('Version check') {
+            steps {
+                ansiColor('xterm') {
+                    sh 'python3 ./continuous-integration/version-check.py'
+                }
+            }
+        }
+        stage('initialization') {
+            steps {
+                script {
+                    def branchType = getBranchType "${env.BRANCH_NAME}"
+                    def targetBranchType = getBranchType "${env.CHANGE_TARGET}"
+                    env.branchType = branchType
+                    env.targetBranchType = targetBranchType
+                    echo "branch name is ${env.BRANCH_NAME}"
+                    echo "branch type is ${env.branchType}"
+                    echo "target branch name is ${env.CHANGE_TARGET}"
+                    echo "target branch type is ${env.targetBranchType}"
+                }
+            }
+        }
+        stage('build') {
+            steps {
+
+                script {
+                    if (env.branchType == 'pull-request') {
+                        pullRequest.addLabel('Build Running')
+                        if (env.targetBranchType == 'maintenance') {
+                            def releaseBranch = getReleaseBranch "${env.CHANGE_TARGET}"
+                            echo "${env.CHANGE_BRANCH},${env.CHANGE_TARGET},${releaseBranch}"
+                            //PR on maintenance
+                            def build_job = build job: '/Patches/patch-manual-build', parameters: [
+                                    string(name: 'branches', value: "${env.CHANGE_BRANCH},${env.CHANGE_TARGET},${releaseBranch}"),
+                                    string(name: 'patch_name', value: env.BRANCH_NAME),
+                                    string(name: 'patch_version', value: "v1"),
+                            ]
+                        } else {
+                            //PR on master or unknown branch
+                            def build_job = build job: '/tbd-studio-se/tbd-studio-se-build', parameters: [
+                                    string(name: 'BRANCH_NAME', value: env.BRANCH_NAME)
+                            ]
+                        }
+                    } else if (env.branchType == 'maintenance') {
+                        //maintenance branch
+                        def build_job = build job: '/Patches/patch-manual-build', parameters: [
+                                string(name: 'branches', value: env.BRANCH_NAME),
+                                string(name: 'patch_name', value: env.BRANCH_NAME),
+                                string(name: 'patch_version', value: "v1"),
+                        ]
+                    } else {
+                        //master or unknown branch
+                        def build_job = build job: '/tbd-studio-se/tbd-studio-se-build', parameters: [
+                                string(name: 'BRANCH_NAME', value: env.BRANCH_NAME)
+                        ]
+                    }
+                }
+            }
+            post {
+                always {
+                    script {
+                        // CHANGE_ID is set only for pull requests, so it is safe to access the pullRequest global variable
+                        if (env.CHANGE_ID) {
+                            pullRequest.removeLabel('Build Running')
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@NonCPS
+static def getBranchType(String branchName) {
+    def pr_pattern = 'PR-.*'
+    def release_pattern = ".*master*"
+    def maintenance_pattern = "maintenance/.*"
+
+    def branchType
+    switch (branchName) {
+        case ~pr_pattern:
+            branchType = 'pull-request'
+            break
+        case ~maintenance_pattern:
+            branchType = 'maintenance'
+            break
+        case ~release_pattern:
+            branchType = 'release'
+            break
+        default:
+            branchType = 'unknown'
+    }
+    branchType
+}
+
+@NonCPS
+static def getReleaseBranch(String targetBranchName) {
+    'release/'+targetBranchName.split("/")[1]+'.1'
+}

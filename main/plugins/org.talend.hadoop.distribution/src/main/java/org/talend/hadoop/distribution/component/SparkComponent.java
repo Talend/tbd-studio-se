@@ -84,6 +84,8 @@ public interface SparkComponent extends MRComponent {
      * @return A string with all of the Spark jars (from the module group SPARK) mapped to local Studio paths.
      */
     public String generateSparkJarsPaths(List<String> commandLineJarsPaths);
+    
+    public String generateSparkJarsPaths(List<String> commandLineJarsPaths, boolean isLightWeight);
 
     /**
      * @return true if the distribution implementation is responsible for importing the Dynamo DB dependencies. If
@@ -106,4 +108,9 @@ public interface SparkComponent extends MRComponent {
      * The distribution supports STS Assume Role.
      */
     public boolean doSupportAssumeRole();
+    
+    /**
+     * returns the class path used by lightweight on cluster side
+     */
+    public String getLightWeightClasspath();
 }

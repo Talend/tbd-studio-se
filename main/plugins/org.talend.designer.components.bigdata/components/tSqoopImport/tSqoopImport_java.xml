@@ -441,64 +441,11 @@
 		</PARAMETER>
 
 		<PARAMETER NAME="ADDITIONAL_ARGUMENTS" FIELD="TABLE"
-			NUM_ROW="60" NB_LINES="5" SHOW_IF="USE_COMMANDLINE=='true'" GROUP="ADDITIONAL">
+			NUM_ROW="60" NB_LINES="3" SHOW_IF="USE_COMMANDLINE=='true'" GROUP="ADDITIONAL">
 			<ITEMS>
-				<ITEM NAME="ADDITIONAL_ARGUMENT" FIELD="CLOSED_LIST">
-					<ITEMS DEFAULT="--driver">
-						<ITEM NAME="--bindir" VALUE="--bindir" />
-						<ITEM NAME="--boundary-query" VALUE="--boundary-query" />
-						<ITEM NAME="--class-name" VALUE="--class-name" />
-						<ITEM NAME="--column-family" VALUE="--column-family" />
-						<ITEM NAME="--connection-manager" VALUE="--connection-manager" />
-						<ITEM NAME="--create-hcatalog-table" VALUE="--create-hcatalog-table" />
-						<ITEM NAME="--create-hive-table" VALUE="--create-hive-table" />
-						<ITEM NAME="--direct-split-size" VALUE="--direct-split-size" />
-						<ITEM NAME="--driver" VALUE="--driver" />
-						<ITEM NAME="--enclosed-by" VALUE="--enclosed-by" />
-						<ITEM NAME="--escaped-by" VALUE="--escaped-by" />
-						<ITEM NAME="--fetch-size" VALUE="--fetch-size" />
-						<ITEM NAME="--fields-terminated-by" VALUE="--fields-terminated-by" />
-						<ITEM NAME="--hadoop-mapred-home" VALUE="--hadoop-mapred-home" />
-						<ITEM NAME="--hadoop-home" VALUE="--hadoop-home" />
-						<ITEM NAME="--hbase-create-table" VALUE="--hbase-create-table" />
-						<ITEM NAME="--hbase-row-key" VALUE="--hbase-row-key" />
-						<ITEM NAME="--hbase-table" VALUE="--hbase-table" />
-						<ITEM NAME="--hcatalog-database" VALUE="--hcatalog-database" />
-						<ITEM NAME="--hcatalog-home" VALUE="--hcatalog-home" />
-						<ITEM NAME="--hcatalog-storage-stanza" VALUE="--hcatalog-storage-stanza" />
-						<ITEM NAME="--hcatalog-table" VALUE="--hcatalog-table" />
-						<ITEM NAME="--hive-delims-replacement" VALUE="--hive-delims-replacement" />
-						<ITEM NAME="--hive-drop-import-delims" VALUE="--hive-drop-import-delims" />
-						<ITEM NAME="--hive-home" VALUE="--hive-home" />
-						<ITEM NAME="--hive-import" VALUE="--hive-import" />
-						<ITEM NAME="--hive-overwrite" VALUE="--hive-overwrite" />
-						<ITEM NAME="--hive-partition-key" VALUE="--hive-partition-key" />
-						<ITEM NAME="--hive-partition-value" VALUE="--hive-partition-value" />
-						<ITEM NAME="--hive-table" VALUE="--hive-table" />
-						<ITEM NAME="--inline-lob-limit" VALUE="--inline-lob-limit" />
-						<ITEM NAME="--input-enclosed-by" VALUE="--input-enclosed-by" />
-						<ITEM NAME="--input-escaped-by" VALUE="--input-escaped-by" />
-						<ITEM NAME="--input-fields-terminated-by" VALUE="--input-fields-terminated-by" />
-						<ITEM NAME="--input-lines-terminated-by" VALUE="--input-lines-terminated-by" />
-						<ITEM NAME="--input-optionally-enclosed-by" VALUE="--input-optionally-enclosed-by" />
-						<ITEM NAME="--lines-terminated-by" VALUE="--lines-terminated-by" />
-						<ITEM NAME="--jar-file" VALUE="--jar-file" />
-						<ITEM NAME="--null-non-string" VALUE="--null-non-string" />
-						<ITEM NAME="--null-string" VALUE="--null-string" />
-						<ITEM NAME="--optionally-enclosed-by" VALUE="--optionally-enclosed-by" />
-						<ITEM NAME="--outdir" VALUE="--outdir" />
-						<ITEM NAME="--package-name" VALUE="--package-name" />
-						<ITEM NAME="--split-by" VALUE="--split-by" SHOW_IF="USE_SPLIT=='false'" />
-						<ITEM NAME="--warehouse-dir" VALUE="--warehouse-dir" />
-					</ITEMS>
-				</ITEM>
+				<ITEM NAME="ADDITIONAL_ARGUMENT" FIELD="TEXT" />
 				<ITEM NAME="ADDITIONAL_VALUE" FIELD="TEXT" />
 			</ITEMS>
-		</PARAMETER>
-
-		<PARAMETER NAME="ADDITIONAL_COMMANDLINE_ARGUMENTS" FIELD="TEXT"
-			NUM_ROW="62" SHOW_IF="USE_COMMANDLINE=='true'" GROUP="ADDITIONAL">
-			<DEFAULT>""</DEFAULT>
 		</PARAMETER>
 
 		<PARAMETER NAME="ADDITIONAL_JAVA" FIELD="TABLE" NUM_ROW="60"

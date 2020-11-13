@@ -839,6 +839,7 @@
               description="Latest HDFS libraries for MapR 6.1.0"
               id="HDFS-LIB-MAPR610"
               name="HDFS-LIB-MAPR610">
+           <library id="avro-1.8.1.jar"/>
            <library id="maprfs-6.1.0-mapr.jar"/>
            <library id="hadoop-hdfs-2.7.0-mapr-1808.jar" />
            <library id="hadoop-auth-2.7.0-mapr-1808.jar"/>
@@ -1245,7 +1246,7 @@
         <libraryNeededGroup
                 description="Sqoop Parquet libraries for MapR 6.1.0"
                 id="SQOOP-PARQUET-LIB-MAPR610"
-                name="SQOOP-PARQUET-LIB-MAPR510">
+                name="SQOOP-PARQUET-LIB-MAPR610">
             <library id="kite-data-core-1.0.0.jar"/>
             <library id="kite-data-mapreduce-1.0.0.jar"/>
             <library id="kite-hadoop-compatibility-1.0.0.jar"/>

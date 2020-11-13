@@ -13,6 +13,7 @@
 
 package org.talend.hadoop.distribution.hdpx;
 
+import org.talend.hadoop.distribution.EParquetPackagePrefix;
 import org.talend.hadoop.distribution.ESqoopPackageName;
 import org.talend.hadoop.distribution.component.*;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
@@ -61,7 +62,7 @@ public class HDP3xxDistributionTemplate extends AbstractDynamicHDPDistributionTe
     @Override
     public boolean doSupportHBase2x() {
         return true;
-    }    
+    }
 
     @Override
     public boolean doSupportImpersonation() {
@@ -251,11 +252,14 @@ public class HDP3xxDistributionTemplate extends AbstractDynamicHDPDistributionTe
     public String getSqoopPackageName() {
         return ESqoopPackageName.ORG_APACHE_SQOOP.toString();
     }
-    
+
     @Override
     public boolean doSupportAzureDataLakeStorageGen2() {
-    	return true;
+        return true;
     }
 
-
+    @Override
+    public String getParquetPrefixPackageName() {
+        return EParquetPackagePrefix.APACHE.toString();
+    }
 }

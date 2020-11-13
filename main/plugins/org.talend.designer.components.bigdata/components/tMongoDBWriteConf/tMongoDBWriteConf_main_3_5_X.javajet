@@ -48,7 +48,9 @@
 			<%
 			}
 			%>
-			org.bson.Document data_<%=cid%>=org.bson.Document.parse(json_<%=cid%>.toString());
+			final String jsonSerialize_<%= cid %> = json_<%=cid%>.toString()
+			     .replace("__DOLLAR__", "$"); // to manage $oid (and all mongo db extended json) on mongo db side.
+			org.bson.Document data_<%=cid%>=org.bson.Document.parse(jsonSerialize_<%= cid %>);
 			<%
 			if(isLog4jEnabled){
 			%>

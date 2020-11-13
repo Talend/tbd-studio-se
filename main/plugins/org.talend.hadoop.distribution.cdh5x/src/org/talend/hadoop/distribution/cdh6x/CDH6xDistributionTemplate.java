@@ -12,9 +12,14 @@
 // ============================================================================
 package org.talend.hadoop.distribution.cdh6x;
 
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
+
+import org.talend.hadoop.distribution.EParquetPackagePrefix;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.ESqoopPackageName;
 import org.talend.hadoop.distribution.component.CDHSparkBatchComponent;
@@ -29,6 +34,7 @@ import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.dynamic.template.cdh.AbstractDynamicCDHDistributionTemplate;
+import org.talend.hadoop.distribution.dynamic.template.modulegroup.DynamicModuleGroupConstant;
 import org.talend.hadoop.distribution.kudu.KuduVersion;
 
 
@@ -41,11 +47,48 @@ public class CDH6xDistributionTemplate extends AbstractDynamicCDHDistributionTem
         ImpalaComponent, SqoopComponent, CDHSparkBatchComponent, SparkStreamingComponent, ICDH6xDistributionTemplate {
 
     public final static String TEMPLATE_ID = "CDH6xDistributionTemplate";
-
-    private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*"; //$NON-NLS-1$
+    private final static String CLASSPATH_SEPARATOR = ",";
+    private final static String YARN_APPLICATION_CLASSPATH = String.join(CLASSPATH_SEPARATOR, Arrays.asList(
+            "$HADOOP_CONF_DIR",
+            "$HADOOP_COMMON_HOME/*",
+            "$HADOOP_COMMON_HOME/lib/*",
+            "$HADOOP_HDFS_HOME/*",
+            "$HADOOP_HDFS_HOME/lib/*",
+            "$HADOOP_MAPRED_HOME/*",
+            "$HADOOP_MAPRED_HOME/lib/*",
+            "$YARN_HOME/*",
+            "$YARN_HOME/lib/*",
+            "$HADOOP_YARN_HOME/*",
+            "$HADOOP_YARN_HOME/lib/*",
+            "$HADOOP_COMMON_HOME/share/hadoop/common/*",
+            "$HADOOP_COMMON_HOME/share/hadoop/common/lib/*",
+            "$HADOOP_HDFS_HOME/share/hadoop/hdfs/*",
+            "$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*",
+            "$HADOOP_YARN_HOME/share/hadoop/yarn/*",
+            "$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*"
+    ));
+    
+    public final static String DEFAULT_LIB_ROOT = "/opt/cloudera/parcels/CDH/lib";
+	private final static String LIGHTWEIGHT_CLASSPATH = String.join(CLASSPATH_SEPARATOR, Arrays.asList(
+			DEFAULT_LIB_ROOT + "/spark/jars/*",
+			DEFAULT_LIB_ROOT + "/hive/lib/*",
+			DEFAULT_LIB_ROOT + "/impala/lib/*",
+			DEFAULT_LIB_ROOT + "/hbase/lib/*",
+			DEFAULT_LIB_ROOT + "/sqoop/lib/*",
+			DEFAULT_LIB_ROOT + "/kudu/*",
+			DEFAULT_LIB_ROOT + "/hadoop-mapreduce/*",
+			DEFAULT_LIB_ROOT + "/hadoop-yarn/*",
+			DEFAULT_LIB_ROOT + "/hadoop-yarn/lib/*",
+			DEFAULT_LIB_ROOT + "/avro/*",
+			DEFAULT_LIB_ROOT + "/hadoop/lib/*"));
 
     public CDH6xDistributionTemplate(DynamicPluginAdapter pluginAdapter) throws Exception {
         super(pluginAdapter);
+    }
+
+    @Override
+    public boolean doSupportLightWeight() {
+    	return true;
     }
 
     @Override
@@ -62,7 +105,7 @@ public class CDH6xDistributionTemplate extends AbstractDynamicCDHDistributionTem
     public boolean doJavaAPISqoopImportSupportDeleteTargetDir() {
         return true;
     }
-    
+
     @Override
     public boolean doSupportParquetOutput() {
         return true;
@@ -72,7 +115,7 @@ public class CDH6xDistributionTemplate extends AbstractDynamicCDHDistributionTem
     public boolean doJavaAPISqoopImportAllTablesSupportExcludeTable() {
         return true;
     }
-    
+
     @Override
     public boolean doSupportClouderaNavigator() {
         return true;
@@ -140,12 +183,12 @@ public class CDH6xDistributionTemplate extends AbstractDynamicCDHDistributionTem
     public boolean doSupportImpersonation() {
         return true;
     }
-    
+
     @Override
     public boolean doSupportEmbeddedMode() {
         return false;
     }
-    
+
     @Override
     public boolean doSupportStandaloneMode() {
         return super.doSupportStandaloneMode();
@@ -170,6 +213,11 @@ public class CDH6xDistributionTemplate extends AbstractDynamicCDHDistributionTem
     public String getYarnApplicationClasspath() {
         return YARN_APPLICATION_CLASSPATH;
     }
+    
+    @Override
+    public String getLightWeightClasspath() {
+        return LIGHTWEIGHT_CLASSPATH;
+    }
 
     @Override
     public short orderingWeight() {
@@ -180,22 +228,27 @@ public class CDH6xDistributionTemplate extends AbstractDynamicCDHDistributionTem
     public boolean doImportDynamoDBDependencies() {
         return true;
     }
-    
+
     @Override
     public boolean doSupportAssumeRole() {
         return true;
     }
-    
+
+    @Override
+    public boolean doSupportExtendedAssumeRole() {
+        return true;
+    }
+
     @Override
     public boolean useOldAWSAPI() {
         return false;
     }
-    
+
     @Override
     public boolean doSupportAvroDeflateProperties() {
         return true;
     }
-    
+
     @Override
     public String getSqoopPackageName() {
         return ESqoopPackageName.ORG_APACHE_SQOOP.toString();
@@ -220,17 +273,17 @@ public class CDH6xDistributionTemplate extends AbstractDynamicCDHDistributionTem
 	public boolean doSupportDynamicMemoryAllocation() {
 		return true;
 	}
-	
+
     @Override
     public boolean isExecutedThroughSparkJobServer() {
         return false;
     }
-    
+
     @Override
     public boolean doSupportAzureBlobStorage() {
         return true;
     }
-    
+
     @Override
     public int getClouderaNavigatorAPIVersion() {
         return 13;
@@ -246,7 +299,7 @@ public class CDH6xDistributionTemplate extends AbstractDynamicCDHDistributionTem
 	public boolean doSupportBackpressure() {
 		return true;
 	}
-	
+
 	@Override
     public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
@@ -268,14 +321,14 @@ public class CDH6xDistributionTemplate extends AbstractDynamicCDHDistributionTem
     public KuduVersion getKuduVersion() {
         return KuduVersion.KUDU_1_8;
     }
-    
+
     @Override
     public boolean doSupportAzureDataLakeStorageGen2() {
     	return true;
     }
-    
+
     @Override
-    public String getSuffixParquetPackage() {
-        return "org.apache.";
+    public String getParquetPrefixPackageName() {
+        return EParquetPackagePrefix.APACHE.toString();
     }
 }

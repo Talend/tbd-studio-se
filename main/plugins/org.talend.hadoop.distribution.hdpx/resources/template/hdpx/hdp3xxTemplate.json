@@ -325,28 +325,7 @@
           "description": ""
         },
         {
-          "groupId": "org.slf4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any slf4j implementation"
-        },
-        {
-          "groupId": "log4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any log4j implementation"
-        },
-        {
           "groupId": "apache-logging",
-          "artifactId": "commons-logging",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any commons-logging implementation."
-        },
-        {
-          "groupId": "commons-logging",
           "artifactId": "commons-logging",
           "classifier": "",
           "extension": "",
@@ -358,13 +337,6 @@
           "classifier": "",
           "extension": "",
           "description": "remove any logback implementation."
-        },
-        {
-          "groupId": "org.apache.logging.log4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any log4j2 implementation."
         },
         {
           "groupId": "org.apache.parquet",
@@ -427,46 +399,11 @@
           "description": ""
         },
         {
-          "groupId": "org.slf4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any slf4j implementation"
-        },
-        {
-          "groupId": "log4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any log4j implementation"
-        },
-        {
-          "groupId": "apache-logging",
-          "artifactId": "commons-logging",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any commons-logging implementation."
-        },
-        {
-          "groupId": "commons-logging",
-          "artifactId": "commons-logging",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any commons-logging implementation."
-        },
-        {
           "groupId": "ch.qos.logback",
           "artifactId": "*",
           "classifier": "",
           "extension": "",
           "description": "remove any logback implementation."
-        },
-        {
-          "groupId": "org.apache.logging.log4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any log4j2 implementation."
         },
         {
           "groupId": "org.apache.parquet",
@@ -2853,6 +2790,14 @@
       "description": ""
     },
     {
+      "id": "talend-bigdata-aws-lib-1.0.1",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "talend-bigdata-aws-lib-1.0.1.jar",
+      "mvnUri": "mvn:org.talend.bigdata.libs/talend-bigdata-aws-lib/1.0.1",
+      "description": ""
+    },
+    {
       "id": "avatica",
       "type": "BASE",
       "context": "{properties.context}",
@@ -2861,28 +2806,7 @@
       "description": "",
       "exclusions": [
         {
-          "groupId": "org.slf4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any slf4j implementation"
-        },
-        {
-          "groupId": "log4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any log4j implementation"
-        },
-        {
           "groupId": "apache-logging",
-          "artifactId": "commons-logging",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any commons-logging implementation."
-        },
-        {
-          "groupId": "commons-logging",
           "artifactId": "commons-logging",
           "classifier": "",
           "extension": "",
@@ -2894,13 +2818,6 @@
           "classifier": "",
           "extension": "",
           "description": "remove any logback implementation."
-        },
-        {
-          "groupId": "org.apache.logging.log4j",
-          "artifactId": "*",
-          "classifier": "",
-          "extension": "",
-          "description": "remove any log4j2 implementation."
         },
         {
           "groupId": "org.apache.parquet",
@@ -2935,6 +2852,13 @@
         "org-slf4j-log4j12",
         "avro-mapred-1.8.2",
         "hadoop-aws"
+      ]
+    },
+    {
+      "id": "SPARK-S3-LIB-MRREQUIRED-DYNAMIC",
+      "description": "jars for extended AWS feature support",
+      "modules": [
+        "talend-bigdata-aws-lib-1.0.1"
       ]
     },
     {
