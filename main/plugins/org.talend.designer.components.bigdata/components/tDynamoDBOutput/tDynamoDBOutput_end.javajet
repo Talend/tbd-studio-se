@@ -12,17 +12,47 @@
 CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
 INode node = (INode)codeGenArgument.getArgument();
 String cid = node.getUniqueName();
-List<IMetadataTable> metadatas = node.getMetadataList();
-if ((metadatas!=null) && (metadatas.size() > 0)) {
-	IMetadataTable metadata = metadatas.get(0);
-	if (metadata != null) {
-	%>
-	
-			
-<%	
-	}
-}
+
+boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+
+boolean use_batch = ("true").equals(ElementParameterParser.getValue(node, "__USE_BATCH__"));
+
+String dataAction = ElementParameterParser.getValue(node,"__DATA_ACTION__");
+String table = ElementParameterParser.getValue(node, "__TABLE__");
 %>
 
+<%if("INSERT".equalsIgnoreCase(dataAction) && use_batch) {%>
+	if (batchSizeCounter_<%=cid%> > 0) {
+		com.amazonaws.services.dynamodbv2.document.BatchWriteItemOutcome outcome_<%=cid%> = null;
+		try {
+			outcome_<%=cid%> = dynamoDB_<%=cid%>.batchWriteItem(new com.amazonaws.services.dynamodbv2.document.TableWriteItems(<%=table%>).withItemsToPut(batchData_<%=cid%>));
+			do {
+				java.util.Map<String, java.util.List<com.amazonaws.services.dynamodbv2.model.WriteRequest>> unprocessedItems_<%=cid%> = outcome_<%=cid%>.getUnprocessedItems();
+	
+				if (outcome_<%=cid%>.getUnprocessedItems().size() == 0) {
+					<%if(isLog4jEnabled) { %>
+						log.debug("Finish to process all items as no unprocessed items found in current batch");
+					<%}%>
+				} else {
+					<%if(isLog4jEnabled) { %>	
+						log.debug("Retrieving the unprocessed items in current batch");
+					<%}%>
+					outcome_<%=cid%> = dynamoDB_<%=cid%>.batchWriteItemUnprocessed(unprocessedItems_<%=cid%>);
+				}
+	
+			} while (outcome_<%=cid%>.getUnprocessedItems().size() > 0);
+		} catch(java.lang.Exception e_<%=cid%>) {
+			batchData_<%=cid%> = null;
+			<%if(isLog4jEnabled) { %>
+			if(outcome_<%=cid%>!=null && outcome_<%=cid%>.getUnprocessedItems()!=null) {
+				log.warn(outcome_<%=cid%>.getUnprocessedItems().size() + " rows are not processed as exception happen in current batch");
+			}
+			<%}%>
+			throw e_<%=cid%>;
+		}
+		
+		batchData_<%=cid%> = null;
+	}
+<%}%>
 
 globalMap.put("<%=cid %>_NB_LINE", nb_line_<%=cid%>);
