@@ -157,10 +157,24 @@ if(!"NONE".equalsIgnoreCase(tableAction))	{	%>
 	
 <% } %>
 
+<%
+boolean use_batch = ("true").equals(ElementParameterParser.getValue(node, "__USE_BATCH__"));
 
-<% if ("INSERT".equalsIgnoreCase(dataAction)) {  %>
-		com.amazonaws.services.dynamodbv2.document.Item item_<%=cid%> = new com.amazonaws.services.dynamodbv2.document.Item(); 
+if(use_batch && "INSERT".equalsIgnoreCase(dataAction)) {
+%>
+int batchSize_<%=cid%> = 25;
+int batchSizeCounter_<%=cid%> = 0;
+<%
+}
+%>
+
+<% if ("INSERT".equalsIgnoreCase(dataAction)) {%>
+		<%if(use_batch){%>
+		java.util.List<com.amazonaws.services.dynamodbv2.document.Item> batchData_<%=cid%> = new java.util.ArrayList<>();
+		<%} else {%>
+		com.amazonaws.services.dynamodbv2.document.Item item_<%=cid%> = new com.amazonaws.services.dynamodbv2.document.Item();
 		com.amazonaws.services.dynamodbv2.document.spec.PutItemSpec putItemSpec_<%=cid%>;
+		<%}%>
 <% } else if ("UPDATE".equalsIgnoreCase(dataAction)) {	%>
 		com.amazonaws.services.dynamodbv2.document.spec.UpdateItemSpec updateItemSpec_<%=cid%> = new com.amazonaws.services.dynamodbv2.document.spec.UpdateItemSpec();
 <%	} else if ("DELETE".equalsIgnoreCase(dataAction)) { %>
