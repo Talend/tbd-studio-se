@@ -19,7 +19,6 @@ import java.util.Optional;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
@@ -32,18 +31,13 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.layout.FormAttachment;
-import org.eclipse.swt.layout.FormData;
-import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.commons.ui.runtime.image.EImage;
 import org.talend.commons.ui.runtime.image.ImageProvider;
@@ -161,14 +155,6 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
     private Button hadoopConfsButton;
 
     private Button useCustomConfBtn;
-
-    private Button setHadoopConfBtn;
-
-    private Button browseHadoopConfBtn;
-
-    private Text hadoopConfSpecificJarText;
-
-    private Group hadoopConfsGroup;
 
     private ScrolledComposite propertiesScroll;
 
@@ -291,17 +277,10 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         maprTHomeDirText.setText(connection.getMaprTHomeDir());
         maprTHadoopLoginText.setText(connection.getMaprTHadoopLogin());
 
-        setHadoopConfBtn.setSelection(
-                Boolean.valueOf(HCParameterUtil.isOverrideHadoopConfs(connection)));
-        hadoopConfSpecificJarText.setText(Optional
-                .ofNullable(connection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HADOOP_CONF_SPECIFIC_JAR))
-                .orElse(""));
-
         needInitializeContext = true;
         updateStatus(IStatus.OK, EMPTY_STRING);
 
         onUseCustomConfBtnSelected(null);
-        onOverrideHadoopConfBtnSelected(null);
     }
 
     @Override
@@ -316,7 +295,7 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         useSparkPropertiesBtn.setEnabled(!readOnly);
         sparkPropertiesDialog.propertyButton.setEnabled(!readOnly && useSparkPropertiesBtn.getSelection());
         useCustomConfBtn.setEnabled(!readOnly);
-        hadoopConfsButton.setEnabled(!readOnly && useCustomConfBtn.getSelection() && !setHadoopConfBtn.getSelection());
+        hadoopConfsButton.setEnabled(!readOnly && useCustomConfBtn.getSelection());
         if (useClouderaNaviBtn != null) {
             useClouderaNaviBtn.setEnabled(!readOnly);
             clouderaNaviButton.setEnabled(!readOnly && useClouderaNaviBtn.getSelection());
@@ -337,8 +316,6 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         maprTHomeDirText.setReadOnly(readOnly);
         maprTHadoopLoginText.setReadOnly(readOnly);
         // setHadoopConfBtn.setEnabled(!readOnly);
-        hadoopConfSpecificJarText.setEditable(!readOnly && setHadoopConfBtn.getSelection());
-        browseHadoopConfBtn.setEnabled(!readOnly && setHadoopConfBtn.getSelection());
     }
 
     @Override
@@ -388,8 +365,6 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         ((HadoopClusterForm) this.getParent()).updateEditableStatus(isEditable);
 
         // setHadoopConfBtn.setEnabled(isEditable);
-        hadoopConfSpecificJarText.setEditable(isEditable && setHadoopConfBtn.getSelection());
-        browseHadoopConfBtn.setEnabled(isEditable && setHadoopConfBtn.getSelection());
     }
 
     @Override
@@ -727,58 +702,20 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
 
     private void addHadoopConfsFields() {
         Composite hadoopConfsComposite = new Composite(propertiesComposite, SWT.NONE);
-        GridLayout hadoopConfsCompLayout = new GridLayout(1, false);
+        GridLayout hadoopConfsCompLayout = new GridLayout(3, false);
         hadoopConfsCompLayout.marginWidth = 5;
         hadoopConfsCompLayout.marginHeight = 5;
         hadoopConfsComposite.setLayout(hadoopConfsCompLayout);
-        GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
-        gridData.horizontalSpan = 2;
-        hadoopConfsComposite.setLayoutData(gridData);
+        hadoopConfsComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
         useCustomConfBtn = new Button(hadoopConfsComposite, SWT.CHECK);
         useCustomConfBtn.setText(Messages.getString("HadoopClusterForm.button.useCustomConf.label")); //$NON-NLS-1$
         useCustomConfBtn.setLayoutData(new GridData());
 
-        hadoopConfsGroup = new Group(hadoopConfsComposite, SWT.NONE);
-        hadoopConfsGroup.setText(Messages.getString("HadoopClusterForm.group.customConf")); //$NON-NLS-1$
-        FormLayout hadoopConfsGroupLayout = new FormLayout();
-        hadoopConfsGroupLayout.marginHeight = 5;
-        hadoopConfsGroupLayout.marginWidth = 5;
-        hadoopConfsGroup.setLayout(hadoopConfsGroupLayout);
-        GridData fieldsGridData = new GridData(GridData.FILL_HORIZONTAL);
-        fieldsGridData.horizontalSpan = 2;
-        hadoopConfsGroup.setLayoutData(fieldsGridData);
-
-        hadoopConfsButton = new Button(hadoopConfsGroup, SWT.NONE);
-        hadoopConfsButton.setText(Messages.getString("HadoopClusterForm.button.config")); //$NON-NLS-1$
+        hadoopConfsButton = new Button(hadoopConfsComposite, SWT.NONE);
+        hadoopConfsButton.setText("..."); //$NON-NLS-1$
+        hadoopConfsButton.setLayoutData(new GridData(30, 25));
         hadoopConfsButton.setEnabled(false);
-        FormData formData = new FormData();
-        formData.left = new FormAttachment(0);
-        formData.top = new FormAttachment(0);
-        hadoopConfsButton.setLayoutData(formData);
-
-        setHadoopConfBtn = new Button(hadoopConfsGroup, SWT.CHECK);
-        setHadoopConfBtn.setText(Messages.getString("HadoopClusterForm.button.overrideCustomConf")); //$NON-NLS-1$
-        formData = new FormData();
-        formData.left = new FormAttachment(hadoopConfsButton, 0, SWT.LEFT);
-        formData.top = new FormAttachment(hadoopConfsButton, 5, SWT.BOTTOM);
-        setHadoopConfBtn.setLayoutData(formData);
-
-        browseHadoopConfBtn = new Button(hadoopConfsGroup, SWT.NONE);
-        browseHadoopConfBtn.setText("...");
-        browseHadoopConfBtn.setToolTipText(Messages.getString("HadoopClusterForm.button.overrideCustomConfPath.browse")); //$NON-NLS-1$
-        formData = new FormData();
-        formData.top = new FormAttachment(setHadoopConfBtn, 0, SWT.CENTER);
-        formData.right = new FormAttachment(100);
-        browseHadoopConfBtn.setLayoutData(formData);
-        
-        hadoopConfSpecificJarText = new Text(hadoopConfsGroup, SWT.BORDER);
-        formData = new FormData();
-        formData.left = new FormAttachment(setHadoopConfBtn, 5, SWT.RIGHT);
-        formData.top = new FormAttachment(setHadoopConfBtn, 0, SWT.CENTER);
-        formData.right = new FormAttachment(browseHadoopConfBtn, -5, SWT.LEFT);
-        hadoopConfSpecificJarText.setLayoutData(formData);
-
     }
 
     private void addCheckFields() {
@@ -1138,74 +1075,19 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
                 checkFieldsValue();
             }
         });
-        setHadoopConfBtn.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                onOverrideHadoopConfBtnSelected(e);
-            }
-        });
-        hadoopConfSpecificJarText.addModifyListener(new ModifyListener() {
-
-            @Override
-            public void modifyText(ModifyEvent e) {
-                onHadoopConfPathTextModified(e);
-            }
-        });
-        browseHadoopConfBtn.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                onBrowseHadoopConfBtnSelected(e);
-            }
-        });
-
     }
 
     private void onUseCustomConfBtnSelected(SelectionEvent event) {
-        hadoopConfsButton.setEnabled(useCustomConfBtn.getSelection() && !setHadoopConfBtn.getSelection());
+        hadoopConfsButton.setEnabled(useCustomConfBtn.getSelection());
         getConnection().setUseCustomConfs(useCustomConfBtn.getSelection());
         refreshHadoopConfGroup();
         checkFieldsValue();
     }
 
     private void refreshHadoopConfGroup() {
-        hideControl(hadoopConfsGroup, !useCustomConfBtn.getSelection());
         propertiesComposite.layout();
         propertiesScroll.setMinSize(propertiesComposite.computeSize(SWT.DEFAULT, SWT.DEFAULT));
         propertiesScroll.layout();
-    }
-
-    private void onOverrideHadoopConfBtnSelected(SelectionEvent event) {
-        Boolean override = setHadoopConfBtn.getSelection();
-        boolean isContextMode = isContextMode();
-        hadoopConfsButton.setEnabled(!override);
-        hadoopConfSpecificJarText.setEditable(override && !isContextMode);
-        browseHadoopConfBtn.setEnabled(override && !isContextMode);
-        if (!isContextMode) {
-            getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_SET_HADOOP_CONF, override.toString());
-        } else {
-            getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_SET_HADOOP_CONF, override.toString());
-        }
-        checkFieldsValue();
-    }
-
-    private void onHadoopConfPathTextModified(ModifyEvent event) {
-        getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_HADOOP_CONF_SPECIFIC_JAR,
-                hadoopConfSpecificJarText.getText());
-        checkFieldsValue();
-    }
-
-    private void onBrowseHadoopConfBtnSelected(SelectionEvent event) {
-        FileDialog dilaog = new FileDialog(getShell());
-        dilaog.setText(getShell().getText());
-        dilaog.setFilterExtensions(new String[] { "*", "*.*" }); //$NON-NLS-1$ //$NON-NLS-2$
-        String filePath = dilaog.open();
-        if (filePath != null && !filePath.isEmpty()) {
-            String confsPath = new Path(filePath).toPortableString();
-            hadoopConfSpecificJarText.setText(confsPath);
-            checkFieldsValue();
-        }
     }
 
     @Override
