@@ -764,6 +764,7 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         formData.left = new FormAttachment(hadoopConfsButton, 0, SWT.LEFT);
         formData.top = new FormAttachment(hadoopConfsButton, 5, SWT.BOTTOM);
         setHadoopConfBtn.setLayoutData(formData);
+        setHadoopConfBtn.setVisible(false);
 
         browseHadoopConfBtn = new Button(hadoopConfsGroup, SWT.NONE);
         browseHadoopConfBtn.setText("...");
@@ -772,6 +773,7 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         formData.top = new FormAttachment(setHadoopConfBtn, 0, SWT.CENTER);
         formData.right = new FormAttachment(100);
         browseHadoopConfBtn.setLayoutData(formData);
+        browseHadoopConfBtn.setVisible(false);
         
         hadoopConfSpecificJarText = new Text(hadoopConfsGroup, SWT.BORDER);
         formData = new FormData();
@@ -779,6 +781,7 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         formData.top = new FormAttachment(setHadoopConfBtn, 0, SWT.CENTER);
         formData.right = new FormAttachment(browseHadoopConfBtn, -5, SWT.LEFT);
         hadoopConfSpecificJarText.setLayoutData(formData);
+        hadoopConfSpecificJarText.setVisible(false);
 
     }
 
