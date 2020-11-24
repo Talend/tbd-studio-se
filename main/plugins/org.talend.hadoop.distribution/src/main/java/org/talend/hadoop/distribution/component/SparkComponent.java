@@ -43,6 +43,12 @@ public interface SparkComponent extends MRComponent {
     public String getHiveMetastoreVersionForSpark();
 
     /**
+     * @return The value to be set in spark.sql.hive.metastore.jars if doRequireMetastoreVersionOverride() returns true 
+     */
+    public String getHiveMetastoreJars();
+
+    
+    /**
      * A distribution can be using Spark 1.3 or Spark 1.4. This method returns the supported Spark versions.
      *
      * @return the collection of supported @link{ESparkVersion} in the distribution.

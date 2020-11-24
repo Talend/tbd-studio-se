@@ -414,8 +414,8 @@
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="spark-streaming-kafka-dataproc14"
-            name="spark-streaming-kafka-0-10-assembly_2.11-2.4.3.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka-0-10-assembly_2.11-2.4.3/6.0.0">
+            name="spark-streaming-kafka-0-10-assembly_2.11-2.4.7.jar"
+            mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka-0-10-assembly_2.11-2.4.7/6.0.0">
         </libraryNeeded>
         
          <libraryNeeded
@@ -437,113 +437,113 @@
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="spark-catalyst-dataproc14"
-            name="spark-catalyst_2.11-2.4.3.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-catalyst_2.11-2.4.3/6.0.0">
+            name="spark-catalyst_2.11-2.4.7.jar"
+            mvn_uri="mvn:org.apache.spark/spark-catalyst_2.11/2.4.7">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="spark-core-dataproc14"
-            name="spark-core_2.11-2.4.3.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-core_2.11-2.4.3/6.0.0">
+            name="spark-core_2.11-2.4.7.jar"
+            mvn_uri="mvn:org.apache.spark/spark-core_2.11/2.4.7">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="spark-graphx-dataproc14"
-            name="spark-graphx_2.11-2.4.3.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-graphx_2.11-2.4.3/6.0.0">
+            name="spark-graphx_2.11-2.4.7.jar"
+            mvn_uri="mvn:org.apache.spark/spark-graphx_2.11/2.4.7">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="spark-hive-dataproc14"
-            name="spark-hive_2.11-2.4.3.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-hive_2.11-2.4.3/6.0.0">
+            name="spark-hive_2.11-2.4.7.jar"
+            mvn_uri="mvn:org.apache.spark/spark-hive_2.11/2.4.7">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="spark-launcher-dataproc14"
-            name="spark-launcher_2.11-2.4.3.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-launcher_2.11-2.4.3/6.0.0">
+            name="spark-launcher_2.11-2.4.7.jar"
+            mvn_uri="mvn:org.apache.spark/spark-launcher_2.11/2.4.7">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="spark-mllib-dataproc14"
-            name="spark-mllib_2.11-2.4.3.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-mllib_2.11-2.4.3/6.0.0">
+            name="spark-mllib_2.11-2.4.7.jar"
+            mvn_uri="mvn:org.apache.spark/spark-mllib_2.11/2.4.7">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="spark-mllib-local-dataproc14"
-            name="spark-mllib-local_2.11-2.4.3.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-mllib-local_2.11-2.4.3/6.0.0">
+            name="spark-mllib-local_2.11-2.4.7.jar"
+            mvn_uri="mvn:org.apache.spark/spark-mllib-local_2.11/2.4.7">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="spark-network-common-dataproc14"
-            name="spark-network-common_2.11-2.4.3.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-network-common_2.11-2.4.3/6.0.0">
+            name="spark-network-common_2.11-2.4.7.jar"
+            mvn_uri="mvn:org.apache.spark/spark-network-common_2.11/2.4.7">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="spark-network-shuffle-dataproc14"
-            name="spark-network-shuffle_2.11-2.4.3.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-network-shuffle_2.11-2.4.3/6.0.0">
+            name="spark-network-shuffle_2.11-2.4.7.jar"
+            mvn_uri="mvn:org.apache.spark/spark-network-shuffle_2.11/2.4.7">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="spark-repl-dataproc14"
-            name="spark-repl_2.11-2.4.3.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-repl_2.11-2.4.3/6.0.0">
+            name="spark-repl_2.11-2.4.7.jar"
+            mvn_uri="mvn:org.apache.spark/spark-repl_2.11/2.4.7">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="spark-sketch-dataproc14"
-            name="spark-sketch_2.11-2.4.3.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-sketch_2.11-2.4.3/6.0.0">
+            name="spark-sketch_2.11-2.4.7.jar"
+            mvn_uri="mvn:org.apache.spark/spark-sketch_2.11/2.4.7">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="spark-sql-dataproc14"
-            name="spark-sql_2.11-2.4.3.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-sql_2.11-2.4.3/6.0.0">
+            name="spark-sql_2.11-2.4.7.jar"
+            mvn_uri="mvn:org.apache.spark/spark-sql_2.11/2.4.7">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="spark-streaming-dataproc14"
-            name="spark-streaming_2.11-2.4.3.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-streaming_2.11-2.4.3/6.0.0">
+            name="spark-streaming_2.11-2.4.7.jar"
+            mvn_uri="mvn:org.apache.spark/spark-streaming_2.11/2.4.7">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="spark-tags-dataproc14"
-            name="spark-tags_2.11-2.4.3.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-tags_2.11-2.4.3/6.0.0">
+            name="spark-tags_2.11-2.4.7.jar"
+            mvn_uri="mvn:org.apache.spark/spark-tags_2.11/2.4.7">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="spark-unsafe-dataproc14"
-            name="spark-unsafe_2.11-2.4.3.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-unsafe_2.11-2.4.3/6.0.0">
+            name="spark-unsafe_2.11-2.4.7.jar"
+            mvn_uri="mvn:org.apache.spark/spark-unsafe_2.11/2.4.7">
         </libraryNeeded>
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="spark-yarn-dataproc14"
-            name="spark-yarn_2.11-2.4.3.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-yarn_2.11-2.4.3/6.0.0">
+            name="spark-yarn_2.11-2.4.7.jar"
+            mvn_uri="mvn:org.apache.spark/spark-yarn_2.11/2.4.7">
         </libraryNeeded>
         
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.dataproc14"
@@ -639,14 +639,14 @@
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="hive-exec-dataproc14"
-            name="hive-exec-2.3.4.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-exec-2.3.4/6.0.0">
+            name="hive-exec-2.3.7.jar"
+            mvn_uri="mvn:org.apache.hive/hive-exec/2.3.7">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="hive-metastore-dataproc14"
-            name="hive-metastore-2.3.4.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-metastore-2.3.4/6.0.0">
+            name="hive-metastore-2.3.7.jar"
+            mvn_uri="mvn:org.apache.hive/hive-metastore/2.3.7">
         </libraryNeeded>
 
 		<!-- hive -->
@@ -660,20 +660,20 @@
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="hive-jdbc-dataproc14"
-            name="hive-jdbc-2.3.4.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-jdbc-2.3.4/6.0.0">
+            name="hive-jdbc-2.3.7.jar"
+            mvn_uri="mvn:org.apache.hive/hive-jdbc/2.3.7">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="hive-service-dataproc14"
-            name="hive-service-2.3.4.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-service-2.3.4/6.0.0">
+            name="hive-service-2.3.7.jar"
+            mvn_uri="mvn:org.apache.hive/hive-service/2.3.7">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="hive-service-rpc-dataproc14"
-            name="hive-service-rpc-2.3.4.jar"
-            mvn_uri="mvn:org.talend.libraries/hive-service-rpc-2.3.4/6.0.0">
+            name="hive-service-rpc-2.3.7.jar"
+            mvn_uri="mvn:org.apache.hive/hive-service-rpc/2.3.7">
         </libraryNeeded>
         
         <!-- Groups -->
