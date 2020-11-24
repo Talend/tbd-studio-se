@@ -1141,29 +1141,26 @@
 			"id": "kite-data-mapreduce",
 			"type": "BASE",
 			"context": "{properties.context}",
-			"groupId": "org.kitesdk",
-			"artifactId": "kite-data-mapreduce",
-			"classifier": "",
+			"jarName": "kite-data-mapreduce-1.1.0.jar",
+			"mvnUri": "mvn:org.kitesdk/kite-data-mapreduce/1.1.0",
 			"description": ""
 		},
 		{
 			"id": "kite-hadoop-compatibility",
-			"type": "BASE",
+			"type": "STANDARD",
 			"context": "{properties.context}",
-			"groupId": "org.kitesdk",
-			"artifactId": "kite-hadoop-compatibility",
-			"classifier": "",
+			"jarName": "kite-hadoop-compatibility-1.1.0.jar",
+			"mvnUri": "mvn:org.kitesdk/kite-hadoop-compatibility/1.1.0",
 			"description": ""
 		},
 		{
-			"id": "kite-data-hive",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "org.kitesdk",
-			"artifactId": "kite-data-hive",
-			"classifier": "",
-			"description": ""
-		},
+      		"id": "kite-data-hive",
+      		"type": "STANDARD",
+      		"context": "{properties.context}",
+      		"jarName": "kite-data-hive-1.1.0.jar",
+      		"mvnUri": "mvn:org.kitesdk/kite-data-hive/1.1.0",
+      		"description": ""
+    	},  
 		{
 			"id": "pig",
 			"type": "BASE",
