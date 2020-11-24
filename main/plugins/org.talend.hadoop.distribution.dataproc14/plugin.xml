@@ -407,7 +407,7 @@
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="graphframes-0.5.0-spark2.0-s_2.11"
             name="graphframes-0.5.0-spark2.0-s_2.11.jar"
-            mvn_uri="mvn:org.talend.libraries/graphframes-0.5.0-spark2.0-s_2.11/6.0.0">
+            mvn_uri="mvn:graphframes/graphframes/0.5.0-spark2.0-s_2.11">
 		</libraryNeeded>
 		
        <!-- Kafka libraries -->    
@@ -415,14 +415,14 @@
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="spark-streaming-kafka-dataproc14"
             name="spark-streaming-kafka-0-10-assembly_2.11-2.4.7.jar"
-            mvn_uri="mvn:org.talend.libraries/spark-streaming-kafka-0-10-assembly_2.11-2.4.7/6.0.0">
+            mvn_uri="mvn:org.apache.spark/spark-streaming-kafka-0-10-assembly_2.11/2.4.7">
         </libraryNeeded>
         
          <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
             id="kafka-clients-dataproc14"
             name="kafka-clients-0.10.0.1.jar"
-            mvn_uri="mvn:org.talend.libraries/kafka-clients-0.10.0.1/6.3.0">
+            mvn_uri="mvn:org.apache.kafka/kafka-clients/0.10.0.1">
         </libraryNeeded>
             
         <!-- SPARK libraries --> 
@@ -654,7 +654,7 @@
 		    context="plugin:org.talend.hadoop.distribution.dataproc14"
 		    id="libfb303-0.9.3"
 		    name="libfb303-0.9.3.jar"
-		    mvn_uri="mvn:org.talend.libraries/libfb303-0.9.3/6.0.0">
+		    mvn_uri="mvn:org.apache.thrift/libfb303/0.9.3">
         </libraryNeeded>
 
         <libraryNeeded
