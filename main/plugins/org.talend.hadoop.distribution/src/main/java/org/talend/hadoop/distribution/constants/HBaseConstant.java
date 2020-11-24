@@ -12,6 +12,9 @@
 // ============================================================================
 package org.talend.hadoop.distribution.constants;
 
+import java.util.Arrays;
+import java.util.List;
+
 public final class HBaseConstant {
 
     public static final String SERVICE = "org.talend.hadoop.distribution.component.HBaseComponent";//$NON-NLS-1$
@@ -23,4 +26,6 @@ public final class HBaseConstant {
     public static final String VERSION_PARAMETER = "HBASE_VERSION";//$NON-NLS-1$
 
     public static final String VERSION_REPOSITORYVALUE = "HBASE_VERSION";//$NON-NLS-1$
+    
+    public static final List<String> HBASE_COMPONENTS = Arrays.asList("tHBaseConfiguration","tHBaseConnection", "tHBaseInput", "tHBaseOutput", "tHBaseLookupInput");
 }

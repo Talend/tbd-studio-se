@@ -26,6 +26,8 @@
 	List<Map<String, String>> nameMappingTable = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__NAME_MAPPING__");
 	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
 	
+	String table = ElementParameterParser.getValue(node, "__TABLE__");
+	
 	List<IMetadataTable> metadatas = node.getMetadataList();
 	List< ? extends IConnection> connections = node.getIncomingConnections();
 	if (connections == null || connections.size() == 0 || metadatas == null || metadatas.size() == 0){
@@ -117,8 +119,15 @@ for(String[] isJSonEntry: isJSONList){
 %>
 
 <%
-	
+boolean use_batch = ("true").equals(ElementParameterParser.getValue(node, "__USE_BATCH__"));
+
 if ("INSERT".equalsIgnoreCase(dataAction)) {
+
+		if(use_batch) {
+		%>
+		com.amazonaws.services.dynamodbv2.document.Item item_<%=cid%> = new com.amazonaws.services.dynamodbv2.document.Item();
+		<%
+		}
 
 		// Add resolved Primary keys to the Item
 		if(sortKey !=null && !sortKey.isEmpty() && !sortKey.equals("\"\"")) { %>	
@@ -141,10 +150,48 @@ if ("INSERT".equalsIgnoreCase(dataAction)) {
 				    item_<%=cid%> = item_<%=cid%>.with(entry.getKey(), entry.getValue());
 			    }
 			}
-		}	
+		}
+		
+		<%if(use_batch) {%>
+		batchData_<%=cid%>.add(item_<%=cid%>);
+		batchSizeCounter_<%=cid%>++;
+		if (batchSizeCounter_<%=cid%> >= batchSize_<%=cid%>) {
+			batchSizeCounter_<%=cid%> = 0;
+			
+			com.amazonaws.services.dynamodbv2.document.BatchWriteItemOutcome outcome_<%=cid%> = null;
+			try {
+				outcome_<%=cid%> = dynamoDB_<%=cid%>.batchWriteItem(new com.amazonaws.services.dynamodbv2.document.TableWriteItems(<%=table%>).withItemsToPut(batchData_<%=cid%>));
+				do {
+					java.util.Map<String, java.util.List<com.amazonaws.services.dynamodbv2.model.WriteRequest>> unprocessedItems_<%=cid%> = outcome_<%=cid%>.getUnprocessedItems();
+	
+					if (outcome_<%=cid%>.getUnprocessedItems().size() == 0) {
+						<%if(isLog4jEnabled) { %>
+							log.debug("Finish to process all items as no unprocessed items found in current batch");
+						<%}%>
+					} else {
+						<%if(isLog4jEnabled) { %>	
+							log.debug("Retrieving the unprocessed items in current batch");
+						<%}%>
+						outcome_<%=cid%> = dynamoDB_<%=cid%>.batchWriteItemUnprocessed(unprocessedItems_<%=cid%>);
+					}
+	
+				} while (outcome_<%=cid%>.getUnprocessedItems().size() > 0);
+			} catch(java.lang.Exception e_<%=cid%>) {
+				batchData_<%=cid%> = null;
+				<%if(isLog4jEnabled) {%>
+				if(outcome_<%=cid%>!=null && outcome_<%=cid%>.getUnprocessedItems()!=null) {
+					log.warn(outcome_<%=cid%>.getUnprocessedItems().size() + " rows are not processed as exception happen in current batch");
+				}
+				<%}%>
+				throw e_<%=cid%>;
+			}
+			
+			batchData_<%=cid%> = new java.util.ArrayList<com.amazonaws.services.dynamodbv2.document.Item>();
+		}
+		<%} else {%>
 		putItemSpec_<%=cid%> = new com.amazonaws.services.dynamodbv2.document.spec.PutItemSpec().withItem(item_<%=cid%>);
 		table_<%=cid%>.putItem(putItemSpec_<%=cid%>);
-        
+		<%}%>
 		
 <% } else if ("UPDATE".equalsIgnoreCase(dataAction)) {	%>
 

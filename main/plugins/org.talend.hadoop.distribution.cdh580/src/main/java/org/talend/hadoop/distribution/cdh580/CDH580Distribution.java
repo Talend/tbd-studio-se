@@ -108,7 +108,7 @@ public class CDH580Distribution extends AbstractDistribution implements IClouder
 
         // WebHDFS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = CDH580WebHDFSModuleGroup.getModuleGroups(distribution, version);
-        for(String hdfsComponent : HDFSConstant.hdfsComponents) {
+        for(String hdfsComponent : HDFSConstant.HDFS_COMPONENTS) {
             nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
         }
 

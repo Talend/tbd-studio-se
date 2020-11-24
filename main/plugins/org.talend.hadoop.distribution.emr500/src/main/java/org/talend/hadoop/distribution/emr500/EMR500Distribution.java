@@ -126,7 +126,7 @@ public class EMR500Distribution extends AbstractDistribution implements HBaseCom
 
         // WebHDFS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = EMR500WebHDFSModuleGroup.getModuleGroups(distribution, version);
-        for(String hdfsComponent : HDFSConstant.hdfsComponents) {
+        for(String hdfsComponent : HDFSConstant.HDFS_COMPONENTS) {
             result.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
         }
 

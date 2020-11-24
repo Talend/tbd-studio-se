@@ -108,4 +108,9 @@ public interface SparkComponent extends MRComponent {
      * The distribution supports STS Assume Role.
      */
     public boolean doSupportAssumeRole();
+    
+    /**
+     * returns the class path used by lightweight on cluster side
+     */
+    public String getLightWeightClasspath();
 }
