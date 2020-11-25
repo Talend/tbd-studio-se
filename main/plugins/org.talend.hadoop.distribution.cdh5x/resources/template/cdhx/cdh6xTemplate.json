@@ -1129,32 +1129,32 @@
 			"description": ""
 		},
 		{
-			"id": "kite-data-core",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "org.kitesdk",
-			"artifactId": "kite-data-core",
-			"classifier": "",
-			"description": ""
-		},
+      		"id": "kite-data-core-1.0.0",
+      		"type": "STANDARD",
+      		"context": "{properties.context}",
+      		"jarName": "kite-data-core-1.0.0.jar",
+      		"mvnUri": "mvn:org.kitesdk/kite-data-core/1.0.0",
+      		"description": ""
+    	},
+    	{
+      		"id": "kite-data-mapreduce-1.0.0",
+      		"type": "STANDARD",
+      		"context": "{properties.context}",
+      		"jarName": "kite-data-mapreduce-1.0.0.jar",
+      		"mvnUri": "mvn:org.kitesdk/kite-data-mapreduce/1.0.0",
+      		"description": ""
+    	},
+    	{
+      		"id": "kite-hadoop-compatibility-1.0.0",
+      		"type": "STANDARD",
+      		"context": "{properties.context}",
+      		"jarName": "kite-hadoop-compatibility-1.0.0.jar",
+      		"mvnUri": "mvn:org.kitesdk/kite-hadoop-compatibility/1.0.0",
+      		"description": ""
+      	},
+      
 		{
-			"id": "kite-data-mapreduce",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"jarName": "kite-data-mapreduce-1.1.0.jar",
-			"mvnUri": "mvn:org.kitesdk/kite-data-mapreduce/1.1.0",
-			"description": ""
-		},
-		{
-			"id": "kite-hadoop-compatibility",
-			"type": "STANDARD",
-			"context": "{properties.context}",
-			"jarName": "kite-hadoop-compatibility-1.1.0.jar",
-			"mvnUri": "mvn:org.kitesdk/kite-hadoop-compatibility/1.1.0",
-			"description": ""
-		},
-		{
-      		"id": "kite-data-hive",
+      		"id": "kite-data-hive-1.0.0",
       		"type": "STANDARD",
       		"context": "{properties.context}",
       		"jarName": "kite-data-hive-1.1.0.jar",
@@ -1901,9 +1901,9 @@
 				"commons-lang3-3.5",
 				"jackson-core",
 				"jackson-databind",
-				"kite-data-core",
-				"kite-data-mapreduce",
-				"kite-hadoop-compatibility",
+				"kite-data-core-1.0.0",
+				"kite-data-mapreduce-1.0.0",
+				"kite-hadoop-compatibility-1.0.0",
 				"httpclient-4.5.3",
 				"httpcore-4.4.6"
 			]
@@ -1912,14 +1912,14 @@
 			"id": "SQOOP-PARQUET-LIB-DYNAMIC",
 			"description": "",
 			"modules": [
-				"kite-data-core"
+				"kite-data-core-1.0.0"
 			]
 		},
 		{
 			"id": "SQOOP-HIVE-LIB-DYNAMIC",
 			"description": "",
 			"modules": [
-				"kite-data-hive",
+				"kite-data-hive-1.0.0",
 				"hive-metastore",
 				"hive-exec"
 				 
