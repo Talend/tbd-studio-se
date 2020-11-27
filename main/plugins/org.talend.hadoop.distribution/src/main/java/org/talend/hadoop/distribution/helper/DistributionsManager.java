@@ -211,7 +211,7 @@ public final class DistributionsManager implements IDistributionsManager {
     private void addDistribution(BundleContext bc, Map<String, DistributionBean> disctributionsMap, ComponentType type,
             ServiceReference<? extends HadoopComponent> sr) {
         HadoopComponent hc = bc.getService(sr);
-        if (hc.isActivated()) {
+        if (hc != null && hc.isActivated()) {
             final String distribution = hc.getDistribution();
             final String distributionName = hc.getDistributionName();
 
