@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
 /**
@@ -61,6 +62,6 @@ public class ApiServiceList extends ApiListBase<ApiService> {
 
     @Override
     public String toString() {
-        return Objects.toStringHelper(this).add("href", href).add("items", getServices()).toString();
+        return MoreObjects.toStringHelper(this).add("href", href).add("items", getServices()).toString();
     }
 }

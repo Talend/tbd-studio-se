@@ -14,6 +14,7 @@ package org.apache.ambari.api.model;
 
 import javax.xml.bind.annotation.XmlElement;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
 /**
@@ -37,7 +38,7 @@ public class ApiCluster {
 
     @Override
     public String toString() {
-        return Objects.toStringHelper(this).add("href", href).add("cluster", info).toString();
+        return MoreObjects.toStringHelper(this).add("href", href).add("cluster", info).toString();
     }
 
     /**
