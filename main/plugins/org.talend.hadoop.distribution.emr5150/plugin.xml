@@ -1755,9 +1755,9 @@
 		
 		<libraryNeeded 
 			context="plugin:org.talend.hadoop.distribution.emr5150" 
-			id="jsch-0.1.51.jar" 
-			name="jsch-0.1.51.jar"
-			mvn_uri="mvn:org.talend.libraries/jsch-0.1.51/6.0.0"/>
+			id="jsch-0.1.55.jar" 
+			name="jsch-0.1.55.jar"
+			mvn_uri="mvn:org.talend.libraries/jsch-0.1.55/6.0.0"/>
 		
 		<libraryNeeded 
 			context="plugin:org.talend.hadoop.distribution.emr5150" 
@@ -2255,7 +2255,7 @@
             <library id="jna-4.2.2.jar"/>
             <library id="joda-time-2.9.9.jar"/>
             <library id="jpam-1.1.jar"/>
-            <library id="jsch-0.1.51.jar"/>
+            <library id="jsch-0.1.55.jar"/>
             <library id="json4s-ast_2.11-3.2.11.jar"/>
             <library id="json4s-core_2.11-3.2.11.jar"/>
             <library id="json4s-jackson_2.11-3.2.11.jar"/>
