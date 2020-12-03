@@ -332,37 +332,37 @@ if(likeTable) {
 %>
     String querySQL_<%=cid %> = "<%=createTableSQL.toString()%>";
 <%
-        if(!hiveDistrib.useCloudLauncher() && setApplicationName) {
-%>
-try {
-    <%
-    if (setApplicationName) {
+    if(!hiveDistrib.useCloudLauncher()) {
         %>
-        <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/SetQueryName.javajet"%>
-        <%
-    }
-    %>
-    stmt_<%=cid%>.execute(querySQL_<%=cid %>);
-    } catch(java.sql.SQLException e_<%=cid%>) {
-        <%if(("true").equals(dieOnError)) {%>
-            throw(e_<%=cid%>);
-        <%}else {%>
-            System.err.println(e_<%=cid%>.getMessage());
-        <%}%>
-    }
-    stmt_<%=cid %>.close();
-    globalMap.put("<%=cid%>_QUERY", querySQL_<%=cid %>);
+        try {
+            <%
+            if (setApplicationName) {
+                %>
+                <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Hive/SetQueryName.javajet"%>
+                <%
+            }
+            %>
+            stmt_<%=cid%>.execute(querySQL_<%=cid %>);
+            } catch(java.sql.SQLException e_<%=cid%>) {
+                <%if(("true").equals(dieOnError)) {%>
+                    throw(e_<%=cid%>);
+                <%}else {%>
+                    System.err.println(e_<%=cid%>.getMessage());
+                <%}%>
+            }
+            stmt_<%=cid %>.close();
+            globalMap.put("<%=cid%>_QUERY", querySQL_<%=cid %>);
 
-    String currentClientPathSeparator_<%=cid%> = (String)globalMap.get("current_client_path_separator");
-    if(currentClientPathSeparator_<%=cid%>!=null) {
-        System.setProperty("path.separator", currentClientPathSeparator_<%=cid%>);
-        globalMap.put("current_client_path_separator", null);
-    }
-<%
-    if(!("true").equals(useExistingConn)) {
-%>
-conn_<%=cid %>.close();
-<%
+            String currentClientPathSeparator_<%=cid%> = (String)globalMap.get("current_client_path_separator");
+            if(currentClientPathSeparator_<%=cid%>!=null) {
+                System.setProperty("path.separator", currentClientPathSeparator_<%=cid%>);
+                globalMap.put("current_client_path_separator", null);
+            }
+        <%
+            if(!("true").equals(useExistingConn)) {
+        %>
+        conn_<%=cid %>.close();
+        <%
     }
 } else { // cloud distribution
     if (hiveDistrib.isExecutedThroughWebHCat()) {
