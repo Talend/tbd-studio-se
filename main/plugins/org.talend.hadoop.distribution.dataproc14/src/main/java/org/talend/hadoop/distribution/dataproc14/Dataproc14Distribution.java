@@ -323,4 +323,20 @@ public class Dataproc14Distribution extends AbstractDistribution implements HDFS
     public boolean isHiveWizardCheckEnabled() {
         return true;
     }
+    
+    @Override
+    public boolean doRequireMetastoreVersionOverride() {
+        return true;
+    }
+    
+    @Override
+    public String getHiveMetastoreVersionForSpark() {
+        return "2.3";
+    }
+    
+    @Override
+    public String getHiveMetastoreJars() {
+        return "/usr/lib/hive/lib/*";
+        
+    }
 }
