@@ -38,7 +38,26 @@
 							</artifactItems>
 						</configuration>
 					</execution>
+					<execution>
+						<id>copy-dependencies</id>
+                        <phase>generate-sources</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.basedir}/lib</outputDirectory>
+							<excludeTransitive>true</excludeTransitive>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.apache.hadoop</groupId>
+								    <artifactId>hadoop-core</artifactId>
+								    <version>1.2.1</version>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
 				</executions>
+					
 			</plugin>
 		</plugins>
   </build>
