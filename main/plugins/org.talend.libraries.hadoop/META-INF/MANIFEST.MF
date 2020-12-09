@@ -4,7 +4,7 @@ Bundle-Name: Hadoop library
 Bundle-SymbolicName: org.talend.libraries.hadoop;singleton:=true
 Bundle-Version: 7.4.1.qualifier
 Bundle-ClassPath: .,
- lib/hadoop-core-1.0.0.jar
+ lib/hadoop-core-1.2.1.jar
 Require-Bundle: org.talend.libraries.apache
 Eclipse-BundleShape: dir
 Export-Package: org.apache.hadoop.conf,
