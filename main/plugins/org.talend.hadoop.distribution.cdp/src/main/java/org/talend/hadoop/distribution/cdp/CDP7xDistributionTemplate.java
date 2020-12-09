@@ -82,6 +82,11 @@ public class CDP7xDistributionTemplate extends AbstractDynamicCDPDistributionTem
 	public String getYarnApplicationClasspath() {
 		return YARN_APPLICATION_CLASSPATH;
 	}
+	
+	@Override
+    public String getLightWeightClasspath() {
+        return YARN_APPLICATION_CLASSPATH;
+    }
 
 	@Override
 	public String generateSparkJarsPaths(List<String> commandLineJarsPaths) {

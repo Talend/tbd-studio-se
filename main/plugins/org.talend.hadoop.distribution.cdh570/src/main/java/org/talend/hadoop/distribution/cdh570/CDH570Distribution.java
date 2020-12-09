@@ -107,7 +107,7 @@ public class CDH570Distribution extends AbstractDistribution implements HDFSComp
 
         // WebHDFS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = CDH570WebHDFSModuleGroup.getModuleGroups(distribution, version);
-        for(String hdfsComponent : HDFSConstant.hdfsComponents) {
+        for(String hdfsComponent : HDFSConstant.HDFS_COMPONENTS) {
             nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
         }
 

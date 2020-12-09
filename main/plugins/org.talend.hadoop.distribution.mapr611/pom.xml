@@ -7,6 +7,10 @@
     <version>7.4.1-SNAPSHOT</version>
     <relativePath>../../../</relativePath>
   </parent>
-  <artifactId>org.talend.libraries.couchbase</artifactId>
+  <artifactId>org.talend.hadoop.distribution.mapr611</artifactId>
   <packaging>eclipse-plugin</packaging>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <outputDirectory>bin</outputDirectory>
+  </build>
 </project>

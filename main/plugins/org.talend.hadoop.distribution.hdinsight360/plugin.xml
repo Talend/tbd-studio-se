@@ -130,16 +130,22 @@
                 name="talend-bigdata-launcher-hdinsight-2.0.8.jar"
                 mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-hdinsight/2.0.8">
         </libraryNeeded>
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.hdinsight360"
+                id="talend-bigdata-launcher-jobserver"
+                name="talend-bigdata-launcher-jobserver-2.0.6.jar"
+                mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-jobserver/2.0.6">
+        </libraryNeeded>
 
         <!-- Groups -->
 
-        <!-- Big Data launcher group -->
+         <!-- Big Data launcher group -->
         <libraryNeededGroup
                 description="Big Data launcher libraries for HDInsight 3.6.0"
                 id="BIGDATA-LAUNCHER-LIB-HD_INSIGHT_3_6_0"
                 name="BIGDATA-LAUNCHER-LIB-HD_INSIGHT_3_6_0"  >
-            <library id="talend-bigdata-launcher"/>
-            <library id="talend-bigdata-launcher-hdinsight"/>
+	            <library id="talend-bigdata-launcher-hdinsight"/>
+	            <library id="talend-bigdata-launcher-jobserver"/>
         </libraryNeededGroup>
 
         <!-- Spark group -->

@@ -62,6 +62,7 @@
         <module>main/plugins/org.talend.hadoop.distribution.mapr600</module>
         <module>main/plugins/org.talend.hadoop.distribution.mapr601</module>
         <module>main/plugins/org.talend.hadoop.distribution.mapr610</module>
+        <module>main/plugins/org.talend.hadoop.distribution.mapr611</module>
         <module>main/plugins/org.talend.hadoop.distribution.piv101</module>
         <module>main/plugins/org.talend.hadoop.distribution.piv200</module>
         <module>main/plugins/org.talend.hadoop.distribution.qubole</module>
@@ -69,7 +70,6 @@
         <module>main/plugins/org.talend.designer.components.bigdata</module>
         <module>main/plugins/org.talend.designer.hdfsbrowse</module>
         <module>main/plugins/org.talend.designer.neo4j</module>
-        <module>main/plugins/org.talend.libraries.couchbase</module>
         <module>main/plugins/org.talend.libraries.couchdb</module>
         <module>main/plugins/org.talend.libraries.hadoop</module>
         <module>main/plugins/org.talend.libraries.mongo</module>
