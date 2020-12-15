@@ -8,4 +8,5 @@ Bundle-ClassPath: .,
 Require-Bundle: org.talend.libraries.apache
 Eclipse-BundleShape: dir
 Export-Package: org.apache.hadoop.conf,
- org.apache.hadoop.fs
+ org.apache.hadoop.fs,
+ org.apache.hadoop.util
