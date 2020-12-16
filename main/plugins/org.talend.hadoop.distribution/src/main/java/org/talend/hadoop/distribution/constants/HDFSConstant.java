@@ -33,7 +33,7 @@ public final class HDFSConstant {
 
     public static final String ADLS = "ADLS"; //$NON-NLS-1$
 
-    public static final List<String> hdfsComponents = Arrays.asList("tHDFSConnection", "tHDFSGet", "tHDFSPut",
+    public static final List<String> HDFS_COMPONENTS = Arrays.asList("tHDFSConnection", "tHDFSGet", "tHDFSPut",
             "tHDFSList", "tHDFSInput", "tHDFSOutput", "tHDFSCopy", "tHDFSRename", "tHDFSExist", "tHDFSDelete",
             "tHDFSRowCount", "tHDFSCompare", "tHDFSOutputRaw", "tHDFSProperties");
 }

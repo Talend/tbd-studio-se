@@ -227,6 +227,11 @@ public class CDH5xDistributionTemplate extends AbstractDynamicCDHDistributionTem
     }
 
     @Override
+    public boolean doSupportExtendedAssumeRole() {
+        return true;
+    }
+
+    @Override
     public boolean doSupportAvroDeflateProperties() {
         return true;
     }

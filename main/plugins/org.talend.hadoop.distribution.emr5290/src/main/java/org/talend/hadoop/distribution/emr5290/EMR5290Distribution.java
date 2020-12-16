@@ -131,7 +131,7 @@ public class EMR5290Distribution extends AbstractDistribution implements HBaseCo
 
 		// WebHDFS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = EMR5290WebHDFSModuleGroup.getModuleGroups(distribution, version);
-        for(String hdfsComponent : HDFSConstant.hdfsComponents) {
+        for(String hdfsComponent : HDFSConstant.HDFS_COMPONENTS) {
             result.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
         }
 		
@@ -471,6 +471,16 @@ public class EMR5290Distribution extends AbstractDistribution implements HBaseCo
 
     @Override
     public boolean useS3AProperties() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportAssumeRole() {
+        return true;
+    }
+
+    @Override
+    public boolean doSupportExtendedAssumeRole() {
         return true;
     }
     
