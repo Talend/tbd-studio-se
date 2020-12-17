@@ -3411,6 +3411,30 @@
           "tagName": "libraryNeeded"
         },
         {
+	      "childNodes" : [ 
+	      {
+	        "childNodes" : [],
+	        "id" : "DYNAMIC_HDP_3_1_4_12_1_parquet_avro_1_8_2_jar",
+	        "tagName" : "library"
+	      }, {
+	        "childNodes" : [],
+	        "id" : "DYNAMIC_HDP_3_1_4_12_1_parquet_column_1_8_2_jar",
+	        "tagName" : "library"
+	      }, {
+	        "childNodes" : [],
+	        "id" : "DYNAMIC_HDP_3_1_4_12_1_parquet_common_1_8_2_jar",
+	        "tagName" : "library"
+	      }, {
+	        "childNodes" : [],
+	        "id" : "DYNAMIC_HDP_3_1_4_12_1_parquet_hadoop_1_8_2_jar",
+	        "tagName" : "library"
+	      } ],
+	      "description" : "",
+	      "id" : "DYNAMIC_HDP_3_1_4_12_1_SQOOP_PARQUET_LIB_DYNAMIC",
+	      "tagName" : "libraryNeededGroup",
+	      "templateId" : "SQOOP-PARQUET-LIB-DYNAMIC"
+	    },
+        {
           "childNodes": [
             {
               "childNodes": [],
@@ -13196,6 +13220,42 @@
           "name": "avro-mapred-1.8.2.jar",
           "tagName": "libraryNeeded"
         },
+                {
+          "childNodes": [],
+          "context": "plugin:org.talend.hadoop.distribution.hdpx",
+          "excludeDependencies": "true",
+          "id": "DYNAMIC_HDP_3_1_4_12_1_parquet_avro_1_8_2_jar",
+          "mvn_uri": "mvn:org.apache.parquet/parquet-avro/1.8.2",
+          "name": "parquet-avro-1.8.2.jar",
+          "tagName": "libraryNeeded"
+        },
+        {
+          "childNodes": [],
+          "context": "plugin:org.talend.hadoop.distribution.hdpx",
+          "excludeDependencies": "true",
+          "id": "DYNAMIC_HDP_3_1_4_12_1_parquet_hadoop_1_8_2_jar",
+          "mvn_uri": "mvn:org.apache.parquet/parquet-hadoop/1.8.2",
+          "name": "parquet-hadoop-1.8.2.jar",
+          "tagName": "libraryNeeded"
+        },
+        {
+          "childNodes": [],
+          "context": "plugin:org.talend.hadoop.distribution.hdpx",
+          "excludeDependencies": "true",
+          "id": "DYNAMIC_HDP_3_1_4_12_1_parquet_column_1_8_2_jar",
+          "mvn_uri": "mvn:org.apache.parquet/parquet-column/1.8.2",
+          "name": "parquet-column-1.8.2.jar",
+          "tagName": "libraryNeeded"
+        },
+        {
+          "childNodes": [],
+          "context": "plugin:org.talend.hadoop.distribution.hdpx",
+          "excludeDependencies": "true",
+          "id": "DYNAMIC_HDP_3_1_4_12_1_parquet_common_1_8_2_jar",
+          "mvn_uri": "mvn:org.apache.parquet/parquet-common/1.8.2",
+          "name": "parquet-common-1.8.2.jar",
+          "tagName": "libraryNeeded"
+        },
         {
           "childNodes": [],
           "context": "plugin:org.talend.hadoop.distribution.hdpx",
@@ -13832,7 +13892,7 @@
           "context": "plugin:org.talend.hadoop.distribution.hdpx",
           "excludeDependencies": "true",
           "id": "DYNAMIC_HDP_3_1_4_12_1_failureaccess_1_0_1_jar",
-          "mvn_uri": "mvn:com.google.guava/failureaccess/1.0.1/jar",
+          "mvn_uri": "mvn:com.google.guava/failureaccess/1.0.1",
           "name": "failureaccess-1.0.1.jar",
           "tagName": "libraryNeeded"
         },

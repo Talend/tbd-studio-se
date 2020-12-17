@@ -23,6 +23,8 @@
 		parquetJarsToRegister.add("jackson-databind-");
 		parquetJarsToRegister.add("jackson-core-");
 		parquetJarsToRegister.add("parquet-");
+		parquetJarsToRegister.add("failureaccess-");
+		parquetJarsToRegister.add("avro-");
 	
 		for (int j = 0; j < commandLine.length; j++) {
 			if(commandLine[j].contains("jar")) {
