@@ -305,6 +305,11 @@
                    REQUIRED="true">
             <DEFAULT>5</DEFAULT>
         </PARAMETER>
+        
+        <PARAMETER NAME="USE_BATCH" FIELD="CHECK" NUM_ROW="30"
+            SHOW_IF="DATA_ACTION == 'INSERT'">
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
     </ADVANCED_PARAMETERS>
     <CODEGENERATION>
         <IMPORTS>

@@ -8,11 +8,8 @@
     <import feature="org.talend.libraries.jdbc.feature" version="0.0.0" match="greaterOrEqual"/>
   </requires>
   <plugin id="org.talend.libraries.apache.cassandra" download-size="0" install-size="0" version="0.0.0"/>
-  <plugin id="org.talend.libraries.couchbase" download-size="0" install-size="0" version="0.0.0"/>
   <plugin id="org.talend.libraries.couchdb" download-size="0" install-size="0" version="0.0.0"/>
   <plugin id="org.talend.libraries.mongo" download-size="0" install-size="0" version="0.0.0"/>
   <plugin id="org.talend.libraries.neo4j" download-size="0" install-size="0" version="0.0.0"/>  
   <plugin id="org.talend.libraries.sdsulib" download-size="0" install-size="0" version="0.0.0"/>
-  <plugin id="org.talend.libraries.sqoop" download-size="0" install-size="0" version="0.0.0"/>
-  <plugin id="org.talend.libraries.zookeeper" download-size="0" install-size="0" version="0.0.0"/>
 </feature>

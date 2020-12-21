@@ -108,7 +108,7 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
 
         // WebHDFS/ADLS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = HDP260WebHDFSModuleGroup.getModuleGroups(distribution, version);
-        for(String hdfsComponent : HDFSConstant.hdfsComponents) {
+        for(String hdfsComponent : HDFSConstant.HDFS_COMPONENTS) {
             nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
         }
 
