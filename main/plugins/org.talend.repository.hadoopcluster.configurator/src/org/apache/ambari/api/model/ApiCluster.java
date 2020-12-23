@@ -15,7 +15,6 @@ package org.apache.ambari.api.model;
 import javax.xml.bind.annotation.XmlElement;
 
 import com.google.common.base.MoreObjects;
-import com.google.common.base.Objects;
 
 /**
  * created by bchen on Jun 2, 2015 Detailled comment
