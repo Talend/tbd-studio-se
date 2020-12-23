@@ -174,7 +174,6 @@
             <IMPORT
                 NAME="guava-15.0"
                 MODULE="guava-15.0.jar" MVN="mvn:org.talend.libraries/guava-15.0/6.0.0" 
-                UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-15.0.jar"
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
                 NAME="commons-lang-2.6"
@@ -297,8 +296,7 @@
                     UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/fastutil-6.5.7.jar" />
                 <IMPORT
                     NAME="guava-16.0.1"
-                    MODULE="guava-16.0.1.jar" MVN="mvn:com.google.guava/guava/16.0.1" 
-                    UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-16.0.1.jar" />
+                    MODULE="guava-16.0.1.jar" MVN="mvn:com.google.guava/guava/16.0.1" />
                 <IMPORT
                     NAME="high-scale-lib-1.0.6"
                     MODULE="high-scale-lib-1.0.6.jar" MVN="mvn:org.talend.libraries/high-scale-lib-1.0.6/6.0.0" />
@@ -399,8 +397,7 @@
 				    UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/fastutil-6.5.7.jar" />
 				<IMPORT
 				    NAME="guava-16.0.1"
-				    MODULE="guava-16.0.1.jar" MVN="mvn:com.google.guava/guava/16.0.1" 
-				    UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-16.0.1.jar" />
+				    MODULE="guava-16.0.1.jar" MVN="mvn:com.google.guava/guava/16.0.1" />
 				<IMPORT
 				    NAME="high-scale-lib-1.0.6"
 				    MODULE="high-scale-lib-1.0.6.jar" MVN="mvn:org.talend.libraries/high-scale-lib-1.0.6/6.0.0" />
