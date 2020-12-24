@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.apache.ambari.api.ApiUtils;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.google.common.collect.Lists;
 
@@ -58,7 +59,7 @@ abstract class ApiListBase<T> implements Iterable<T> {
 
     @Override
     public String toString() {
-        return Objects.toStringHelper(this).add("values", values).toString();
+        return MoreObjects.toStringHelper(this).add("values", values).toString();
     }
 
     @Override

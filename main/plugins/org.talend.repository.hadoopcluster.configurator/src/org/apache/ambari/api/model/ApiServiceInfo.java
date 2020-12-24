@@ -15,7 +15,7 @@ package org.apache.ambari.api.model;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.google.common.base.Objects;
+import com.google.common.base.MoreObjects;
 
 /**
  * created by bchen on Jun 3, 2015 Detailled comment
@@ -52,6 +52,6 @@ public class ApiServiceInfo {
 
     @Override
     public String toString() {
-        return Objects.toStringHelper(this).add("clusterName", clusterName).add("serviceName", serviceName).toString();
+        return MoreObjects.toStringHelper(this).add("clusterName", clusterName).add("serviceName", serviceName).toString();
     }
 }
