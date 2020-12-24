@@ -101,11 +101,11 @@ pipeline {
                                     string(name: 'patch_name', value: env.BRANCH_NAME),
                                     string(name: 'patch_version', value: "v1"),
                             ]
-                        } else {
-                            //PR on master or unknown branch
-                            def build_job = build job: '/tbd-studio-se/tbd-studio-se-build', parameters: [
-                                    string(name: 'BRANCH_NAME', value: env.BRANCH_NAME)
-                            ]
+//                        } else {
+//                            //PR on master or unknown branch
+//                            def build_job = build job: '/tbd-studio-se/tbd-studio-se-build', parameters: [
+//                                    string(name: 'BRANCH_NAME', value: env.BRANCH_NAME)
+//                            ]
                         }
                     } else if (env.branchType == 'maintenance') {
                         //maintenance branch
