@@ -187,7 +187,11 @@
 						
 						
 						
+<<<<<<< HEAD
 						urlKerberosParameter_<%=cid%> = ";AuthMech=1"
+=======
+						String urlKerberosParameter_<%=cid%> = ";AuthMech=1" 
+>>>>>>> 6f97142927f0f11ebb419ffd0e24d3955f4722d2
 						                              + ";KrbServiceName=" + krbServiceName_<%=cid%>
 						                              + ";KrbHostFQDN=" + krbHostFQDN_<%=cid%>
 						                              + ";KrbRealm=" + krbRealm_<%=cid%>;
@@ -248,7 +252,11 @@
 						 String krbServiceName_<%=cid%>  = (<%=impalaPrincipal%>.split("/")[0]);
 		             String krbHostFQDN_<%=cid%> = (<%=impalaPrincipal%>.split("/")[1].split("@")[0]);
 		             String krbRealm_<%=cid%> = (<%=impalaPrincipal%>.split("/")[1].split("@")[1]);
+<<<<<<< HEAD
 		             urlKerberosParameter_<%=cid%> = ";AuthMech=1" 
+=======
+		             String urlKerberosParameter_<%=cid%> = ";AuthMech=1" 
+>>>>>>> 6f97142927f0f11ebb419ffd0e24d3955f4722d2
 						                              + ";KrbServiceName=" + krbServiceName_<%=cid%>
 						                              + ";KrbHostFQDN=" + krbHostFQDN_<%=cid%>
 						                              + ";KrbRealm=" + krbRealm_<%=cid%>;

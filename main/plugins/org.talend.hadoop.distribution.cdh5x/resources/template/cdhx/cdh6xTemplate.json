@@ -152,6 +152,7 @@
                 }
             ]
         },
+
         {
             "id": "elephant-bird-core",
             "type": "BASE",
@@ -439,6 +440,7 @@
             "classifier": "",
             "description": "",
             "exclusions": [
+<<<<<<< HEAD
                 {
                     "groupId": "org.apache.hive",
                     "artifactId": "hive-exec",
@@ -447,6 +449,16 @@
                     "description": ""
                 },
                 {
+=======
+                {
+                    "groupId": "org.apache.hive",
+                    "artifactId": "hive-exec",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+>>>>>>> 6f97142927f0f11ebb419ffd0e24d3955f4722d2
                     "groupId": "io.netty",
                     "artifactId": "*",
                     "classifier": "",
@@ -460,6 +472,7 @@
                     "extension": "",
                     "description": ""
                 },
+<<<<<<< HEAD
                 {
                     "groupId": "commons-lang",
                     "artifactId": "*",
@@ -499,6 +512,8 @@
 					"extension": "",
 					"description": ""
 				},
+=======
+>>>>>>> 6f97142927f0f11ebb419ffd0e24d3955f4722d2
                 {
                     "groupId": "commons-lang",
                     "artifactId": "*",
@@ -525,6 +540,7 @@
 			"description": "",
 			"exclusions": [
 				{
+<<<<<<< HEAD
 					"groupId": "org.apache.hadoop",
 					"artifactId": "hadoop-core",
 					"classifier": "",
@@ -532,6 +548,8 @@
 					"description": ""
 				},
 				{
+=======
+>>>>>>> 6f97142927f0f11ebb419ffd0e24d3955f4722d2
 					"groupId": "xerces",
 					"artifactId": "*",
 					"classifier": "",
@@ -549,6 +567,16 @@
                     "groupId": "jdk.tools",
                     "artifactId": "*",
                     "classifier": "",
+<<<<<<< HEAD
+=======
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "com.sun.jersey",
+                    "artifactId": "*",
+                    "classifier": "",
+>>>>>>> 6f97142927f0f11ebb419ffd0e24d3955f4722d2
                     "extension": "",
                     "description": ""
                 },
@@ -563,6 +591,16 @@
                     "groupId": "com.sun.jersey",
                     "artifactId": "*",
                     "classifier": "",
+<<<<<<< HEAD
+=======
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "com.sun.jersey",
+                    "artifactId": "*",
+                    "classifier": "",
+>>>>>>> 6f97142927f0f11ebb419ffd0e24d3955f4722d2
                     "extension": "",
                     "description": ""
                 }
@@ -747,6 +785,7 @@
                     "classifier": "",
                     "extension": "",
                     "description": ""
+<<<<<<< HEAD
                 },
                 {
 					"groupId": "com.sun.jersey",
@@ -755,6 +794,9 @@
 					"extension": "",
 					"description": ""
 				}
+=======
+                }
+>>>>>>> 6f97142927f0f11ebb419ffd0e24d3955f4722d2
             ]
         },
         {
@@ -868,6 +910,16 @@
                     "extension": "",
                     "description": ""
                 },
+<<<<<<< HEAD
+=======
+                {
+                    "groupId": "org.cloudera.logredactor",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+>>>>>>> 6f97142927f0f11ebb419ffd0e24d3955f4722d2
                 {
                     "groupId": "org.cloudera.logredactor",
                     "artifactId": "*",
@@ -876,13 +928,9 @@
                     "description": ""
                 },
                 {
+<<<<<<< HEAD
                     "groupId": "org.apache.logging.log4j",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                },
-                {
+=======
                     "groupId": "commons-lang",
                     "artifactId": "*",
                     "classifier": "",
@@ -944,6 +992,140 @@
 				},
                 {
                     "groupId": "jdk.tools",
+>>>>>>> 6f97142927f0f11ebb419ffd0e24d3955f4722d2
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+<<<<<<< HEAD
+=======
+                {
+                    "groupId": "org.cloudera.logredactor",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+>>>>>>> 6f97142927f0f11ebb419ffd0e24d3955f4722d2
+                {
+                    "groupId": "commons-lang",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "com.sun.jersey",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+<<<<<<< HEAD
+			]
+		},
+		{
+			"id": "hive-hcatalog-pig-adapter",
+			"type": "BASE",
+			"context": "{properties.context}",
+			"groupId": "org.apache.hive.hcatalog",
+			"artifactId": "hive-hcatalog-pig-adapter",
+			"classifier": "",
+			"description": "",
+			"exclusions": [
+				{
+					"groupId": "org.apache.hive",
+					"artifactId": "hive-exec",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "org.apache.curator",
+					"artifactId": "apache-curator",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "eigenbase",
+					"artifactId": "eigenbase-properties",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "org.pentaho",
+					"artifactId": "pentaho-aggdesigner-algorithm",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+				{
+					"groupId": "xerces",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				},
+=======
+            ]
+        },
+        {
+            "id": "hive-hcatalog-server-extensions",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.hive.hcatalog",
+            "artifactId": "hive-hcatalog-server-extensions",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "org.apache.hive",
+                    "artifactId": "hive-exec",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "org.apache.curator",
+                    "artifactId": "apache-curator",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "eigenbase",
+                    "artifactId": "eigenbase-properties",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "javax.jms",
+                    "artifactId": "jms",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "org.pentaho",
+                    "artifactId": "pentaho-aggdesigner-algorithm",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "xerces",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+>>>>>>> 6f97142927f0f11ebb419ffd0e24d3955f4722d2
+                {
+                    "groupId": "jdk.tools",
                     "artifactId": "*",
                     "classifier": "",
                     "extension": "",
@@ -969,6 +1151,7 @@
                     "classifier": "",
                     "extension": "",
                     "description": ""
+<<<<<<< HEAD
                 }
             ]
         },
@@ -1050,6 +1233,8 @@
                     "classifier": "",
                     "extension": "",
                     "description": ""
+=======
+>>>>>>> 6f97142927f0f11ebb419ffd0e24d3955f4722d2
                 },
                 {
                     "groupId": "com.sun.jersey",
@@ -1375,6 +1560,7 @@
                     "groupId": "commons-lang",
                     "artifactId": "*",
                     "classifier": "",
+<<<<<<< HEAD
                     "extension": "",
                     "description": ""
                 }
@@ -1471,6 +1657,104 @@
                     "extension": "",
                     "description": ""
                 }
+=======
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "spark-hive_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-hive_2.11",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "org.apache.hadoop",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "xerces",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "jdk.tools",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "org.cloudera.logredactor",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "org.apache.hive",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "version": "1.1.0-cdh5.13.3",
+                    "description": ""
+                },
+                {
+                    "groupId": "commons-lang",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "id": "spark-mllib_2.11",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "org.apache.spark",
+            "artifactId": "spark-mllib_2.11",
+            "classifier": "",
+            "description": "",
+            "exclusions": [
+                {
+                    "groupId": "org.apache.hadoop",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "xerces",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "jdk.tools",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "commons-lang",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                }
+>>>>>>> 6f97142927f0f11ebb419ffd0e24d3955f4722d2
 			]
 		},
 		{
@@ -1715,6 +1999,27 @@
             "id": "amazon-kinesis-client",
             "type": "STANDARD",
             "context": "{properties.context}",
+<<<<<<< HEAD
+=======
+            "jarName": "aws-java-sdk-bundle-1.11.760.jar",
+            "mvnUri": "mvn:com.amazonaws/aws-java-sdk-bundle/1.11.760",
+            "useStudioRepository": "true",
+            "description": ""
+        },
+        {
+            "id": "talend-bigdata-aws",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "talend-bigdata-aws-lib-1.1.0.jar",
+            "mvnUri": "mvn:org.talend.bigdata.libs/talend-bigdata-aws-lib/1.1.0",
+            "useStudioRepository": "true",
+            "description": ""
+        },
+        {
+            "id": "amazon-kinesis-client",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+>>>>>>> 6f97142927f0f11ebb419ffd0e24d3955f4722d2
             "jarName": "amazon-kinesis-client-1.8.10.jar",
             "mvnUri": "mvn:com.amazonaws/amazon-kinesis-client/1.8.10",
             "useStudioRepository": "true",
@@ -1816,12 +2121,41 @@
         }
     ],
     "moduleGroups": [
+<<<<<<< HEAD
+=======
 		{
 			"id": "LIGHTWEIGHT_DEPENDENCIES",
 			"modules": [
 			]
 		},
         {
+			"id": "HDFS-COMMON-LIB-DYNAMIC",
+			"modules": [
+				"hadoop-client"
+			]
+		},
+        		{
+			"id": "HDFS-LIB-DYNAMIC",
+			"description": "jars for hdfs, only module.id permitted",
+			"modules": [
+				"hadoop-client",
+				"jackson-core",
+				"jackson-databind",
+				"jackson-annotations",
+				"commons-httpclient-3.1",
+				"parquet-hadoop-bundle_1_6_0",
+				"httpcore-4.4.6",
+				"httpclient-4.5.3"
+			]
+		},
+>>>>>>> 6f97142927f0f11ebb419ffd0e24d3955f4722d2
+		{
+			"id": "LIGHTWEIGHT_DEPENDENCIES",
+			"modules": [
+			]
+		},
+        {
+<<<<<<< HEAD
             "id": "HDFS-COMMON-LIB-DYNAMIC",
             "modules": [
                 "hadoop-client"
@@ -1863,6 +2197,17 @@
             ]
         },
         {
+=======
+            "id": "IMPALA-LIB-DYNAMIC",
+            "description": "",
+            "modules": [
+                "hadoop-client",
+                "hive-jdbc",
+                "hive-exec"
+            ]
+        },
+        {
+>>>>>>> 6f97142927f0f11ebb419ffd0e24d3955f4722d2
             "id": "HIVE-LIB-DYNAMIC",
             "description": "",
             "modules": [

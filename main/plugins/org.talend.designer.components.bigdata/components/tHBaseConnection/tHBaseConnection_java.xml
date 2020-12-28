@@ -179,7 +179,6 @@
 				MVN="mvn:org.talend.libraries/hadoop-conf-kerberos/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/hadoop-conf-kerberos.jar"
 				REQUIRED_IF="(DISTRIB[DISTRIBUTION, HBASE_VERSION].doSupportKerberos[]) AND (USE_KRB=='true') AND (DISTRIBUTION!='CUSTOM') AND (CONFIGURATIONS_FROM_CLASSPATH=='false')" />
-
 		</IMPORTS>
 	</CODEGENERATION>
 	<RETURNS />

@@ -758,7 +758,6 @@
 					UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/hadoop-conf-kerberos.jar"
 					REQUIRED="false"
 					REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM') AND (USE_KRB=='true') AND (DISTRIB[DISTRIBUTION, HIVE_VERSION].doSupportKerberos[] AND ((DISTRIB[DISTRIBUTION, HIVE_VERSION].doSupportHive1[] AND DISTRIB[DISTRIBUTION, HIVE_VERSION].doSupportEmbeddedMode[] AND HIVE_SERVER=='HIVE' AND CONNECTION_MODE=='EMBEDDED') OR (DISTRIB[DISTRIBUTION, HIVE_VERSION].doSupportHive2[] AND HIVE_SERVER=='HIVE2')))"/>
-
 			<!-- PARQUET SUPPORT -->
 			<IMPORT NAME="parquet-hive-bundle-1.5.0" MODULE="parquet-hive-bundle-1.5.0.jar"
 				MVN="mvn:org.talend.libraries/parquet-hive-bundle-1.5.0/6.0.0"

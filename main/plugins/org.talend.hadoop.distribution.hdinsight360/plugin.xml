@@ -139,7 +139,7 @@
 
         <!-- Groups -->
 
-        <!-- Big Data launcher group -->
+         <!-- Big Data launcher group -->
         <libraryNeededGroup
                 description="Big Data launcher libraries for HDInsight 3.6.0"
                 id="BIGDATA-LAUNCHER-LIB-HD_INSIGHT_3_6_0"
