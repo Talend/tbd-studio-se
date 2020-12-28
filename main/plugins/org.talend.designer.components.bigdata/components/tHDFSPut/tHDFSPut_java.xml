@@ -249,7 +249,6 @@
 				REQUIRED_IF="(DISTRIB[DISTRIBUTION, DB_VERSION].doSupportKerberos[] AND (USE_KRB=='true') AND (USE_EXISTING_CONNECTION=='false') AND (DISTRIBUTION!='CUSTOM'))" />
 			<IMPORT NAME="jetty-util" MODULE="jetty-util-6.1.26.jar"
 				MVN="mvn:org.mortbay.jetty/jetty-util/6.1.26"
-				UrlPath="platform:/plugin/org.talend.libraries.jetty/lib/jetty-util-6.1.26.jar"
 				REQUIRED_IF="DISTRIB[DISTRIBUTION, DB_VERSION].doSupportOldImportMode[] AND (DISTRIBUTION=='CLOUDERA') AND (USE_EXISTING_CONNECTION=='false') AND (DISTRIBUTION!='CUSTOM')" />
 			<IMPORT NAME="commons-io" MODULE="commons-io-2.4.jar"
 				MVN="mvn:commons-io/commons-io/2.4"
