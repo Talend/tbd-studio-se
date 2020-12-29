@@ -301,7 +301,6 @@
 				REQUIRED_IF="(USE_KRB=='true') AND (USE_EXISTING_CONNECTION=='false') AND (DISTRIBUTION!='CUSTOM') AND DISTRIB[DISTRIBUTION, DB_VERSION].doSupportKerberos[]" />
 			<IMPORT NAME="jetty-util" MODULE="jetty-util-6.1.26.jar"
 				MVN="mvn:org.mortbay.jetty/jetty-util/6.1.26"
-				UrlPath="platform:/plugin/org.talend.libraries.jetty/lib/jetty-util-6.1.26.jar"
 				REQUIRED_IF="(DISTRIBUTION=='CLOUDERA') AND (USE_EXISTING_CONNECTION=='false') AND (DISTRIBUTION!='CUSTOM') AND DISTRIB[DISTRIBUTION, DB_VERSION].doSupportOldImportMode[]" />
 			<IMPORT NAME="jersey-core" MODULE="jersey-core-1.8.jar"
 				MVN="mvn:org.talend.libraries/jersey-core-1.8/6.0.0"

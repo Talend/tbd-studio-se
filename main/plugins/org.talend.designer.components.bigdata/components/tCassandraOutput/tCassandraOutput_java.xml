@@ -517,8 +517,7 @@
                             UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/libthrift-0.9.1.jar"/>
                         <IMPORT
                             MODULE="guava-14.0.jar" MVN="mvn:org.talend.libraries/guava-14.0/6.0.0" 
-                            NAME="guava-14.0"
-                            UrlPath="platform:/plugin/org.talend.libraries.guava/lib/guava-14.0.jar"/>
+                            NAME="guava-14.0" />
                         <IMPORT
                             MODULE="commons-lang-2.6.jar" MVN="mvn:commons-lang/commons-lang/2.6" 
                             UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-lang-2.6.jar"
