@@ -519,6 +519,14 @@
           id="py4j-0.10.9.1.jar" name="py4j-0.10.9.1.jar"
           mvn_uri="mvn:net.sf.py4j/py4j/0.10.9.1"/>
 
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
+          id="core-1.1.2.jar" name="core-1.1.2.jar"
+          mvn_uri="mvn:com.github.fommil.netlib/core/1.1.2"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
+          id="arpack_combined_all-0.1.jar" name="arpack_combined_all-0.1.jar"
+          mvn_uri="mvn:net.sourceforge.f2j/arpack_combined_all/0.1"/>
+
         <!-- Spark group -->
         <libraryNeededGroup description="SPARK libraries for spl30x" id="SPARK_BATCH_MODULE_GROUP_SPL30x" name="SPARK_BATCH_MODULE_GROUP_SPL30x">
             <library id="antlr4-runtime-4.7.1.jar"/>
@@ -708,6 +716,14 @@
         <!-- TDM group -->
         <libraryNeededGroup description="Snowflake libraries for spl30x" id="SPARK_BATCH_TDM_MODULE_GROUP_SPL30x" name="SPARK_BATCH_TDM_MODULE_GROUP_SPL30x">
         	<library id="avro-mapred-1.8.2.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- spark 3 ML group -->
+        <libraryNeededGroup description="ML libraries for spl30x" id="SPARK_BATCH_ML_MODULE_GROUP_SPL30x" name="SPARK_BATCH_ML_MODULE_GROUP_SPL30x">
+            <library id="spark-mllib_2.12-3.0.1.jar"/>
+            <library id="spark-mllib-local_2.12-3.0.1.jar"/>
+            <library id="arpack_combined_all-0.1.jar"/>
+            <library id="core-1.1.2.jar"/>
         </libraryNeededGroup>
         
         <!-- Spark Streaming group -->
