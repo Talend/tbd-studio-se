@@ -13,9 +13,12 @@
 	
 	String localdir = ElementParameterParser.getValue(node, "__LOCALDIR__");
 	String dieOnError = ElementParameterParser.getValue(node, "__DIE_ON_ERROR__");
-	boolean overwrite = ("true").equals(ElementParameterParser.getValue(node, "__OVERWRITE__"));
+	
+	String fileAction = ElementParameterParser.getValue(node, "__FILE_ACTION__");
+	boolean append = ("APPEND").equals(fileAction);
+	boolean overwrite = append || ("OVERWRITE").equals(fileAction);
+	
 	String remotedir = ElementParameterParser.getValue(node, "__REMOTEDIR__");
-	boolean append = ("true").equals(ElementParameterParser.getValue(node, "__APPEND__"));
 	boolean includeSubDir = ("true").equals(ElementParameterParser.getValue(node, "__INCLUDSUBDIR__"));
 	
 	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
