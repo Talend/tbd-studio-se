@@ -1,7 +1,7 @@
 {
     "id" : "CDP7.X.Y",
     "name" : "Cloudera CDP7.X.Y template",
-    "distribution" : "CDP",
+    "distribution" : "CLOUDERA",
     "templateId" : "CDP7xDistributionTemplate",
     "baseVersion" : "7.0.0",
     "topVersion" : "8.0.0",
