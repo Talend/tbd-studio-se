@@ -40,6 +40,14 @@ public final class SparkBatchConstant {
 
     public static final String PARQUET_OUTPUT_COMPONENT = "tFileOutputParquet"; //$NON-NLS-1$
 
+    public static final String NAIVEBAYES_MODEL_COMPONENT = "tNaiveBayesModel"; //$NON-NLS-1$
+
+    public static final String SVM_MODEL_COMPONENT = "tSVMModel"; //$NON-NLS-1$
+
+    public static final String KMEANS_MODEL_COMPONENT = "tKMeansModel"; //$NON-NLS-1$
+
+    public static final String PREDICT_CLUSTER_COMPONENT = "tPredictCluster"; //$NON-NLS-1$
+
     public static final String S3_CONFIGURATION_COMPONENT = "tS3Configuration"; //$NON-NLS-1$
 
     public static final String AZURE_CONFIGURATION_COMPONENT = "tAzureFSConfiguration"; //$NON-NLS-1$
@@ -102,4 +110,7 @@ public final class SparkBatchConstant {
     public static final String HMAP_FILE_COMPONENT = "tHMapFile";
     public static final String HMAP_INPUT_COMPONENT = "tHMapInput";
     public static final String HCONVERT_FILE_COMPONENT = "tHConvertFile";
+
+    public static final String LINEAR_REGRESSION_MODEL_COMPONENT = "tLinearRegressionModel";
+    public static final String LOGISTIC_REGRESSION_MODEL_COMPONENT = "tLogisticRegressionModel";
 }
