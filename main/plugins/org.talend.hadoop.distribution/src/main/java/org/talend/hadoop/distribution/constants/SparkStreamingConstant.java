@@ -85,4 +85,11 @@ public final class SparkStreamingConstant {
     public static final String TMODEL_ENCODER_COMPONENT = "tModelEncoder"; //$NON-NLS-1$
 
     public static final String HMAP_RECORD_COMPONENT = "tHMapRecord";//$NON-NLS-1$
+
+    public static final String REDSHIFT_CONFIGURATION_COMPONENT = "tRedshiftConfiguration"; //$NON-NLS-1$
+
+    public static final String REDSHIFT_LOOKUP_INPUT_COMPONENT = "tRedshiftLookupInput"; //$NON-NLS-1$
+
+    public static final String REDSHIFT_OUTPUT_COMPONENT = "tRedshiftOutput"; //$NON-NLS-1$
+
 }

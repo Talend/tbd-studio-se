@@ -519,6 +519,18 @@
           id="py4j-0.10.9.1.jar" name="py4j-0.10.9.1.jar"
           mvn_uri="mvn:net.sf.py4j/py4j/0.10.9.1"/>
 
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
+          id="kafka-clients-2.7.0.jar" name="kafka-clients-2.7.0.jar"
+          mvn_uri="mvn:org.apache.kafka/kafka-clients/2.7.0"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
+          id="spark-streaming-kafka-0-10_2.12-3.0.1.jar" name="spark-streaming-kafka-0-10_2.12-3.0.1.jar"
+          mvn_uri="org.apache.spark/spark-streaming-kafka-0-10_2.12/3.0.1"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
+          id="spark-streaming-kinesis-asl_2.12-3.0.1.jar" name="spark-streaming-kinesis-asl_2.12-3.0.1.jar"
+          mvn_uri="org.apache.spark/spark-streaming-kinesis-asl_2.12/3.0.1"/>
+
         <!-- Spark group -->
         <libraryNeededGroup description="SPARK libraries for spl30x" id="SPARK_BATCH_MODULE_GROUP_SPL30x" name="SPARK_BATCH_MODULE_GROUP_SPL30x">
             <library id="antlr4-runtime-4.7.1.jar"/>
@@ -715,6 +727,23 @@
         	<library id="spark-streaming_2.12-3.0.1.jar"/>
         	<group id="SPARK_BATCH_MODULE_GROUP_SPL30x"/>
         	<library id="py4j-0.10.9.1.jar"/>
+        </libraryNeededGroup>
+
+        <!-- Spark Streaming Kafka group -->
+        <libraryNeededGroup description="Spark streaming Kafka libraries for spl30x" id="SPARK_STREAMING_KAFKA_MODULE_GROUP_SPL30x" name="SPARK_STREAMING_KAFKA_MODULE_GROUP_SPL30x">
+        	<library id="kafka-clients-2.7.0.jar"/>
+        	<library id="spark-streaming-kafka-0-10_2.12-3.0.1.jar"/>
+        </libraryNeededGroup>
+
+        <!-- Spark Streaming Kinesis group -->
+        <libraryNeededGroup description="Spark streaming Kinesis libraries for spl30x" id="SPARK_STREAMING_KINESIS_MODULE_GROUP_SPL30x" name="SPARK_STREAMING_KINESIS_MODULE_GROUP_SPL30x">
+        	<library id="spark-streaming-kinesis-asl_2.12-3.0.1.jar"/>
+        	<!--TODO -->
+        </libraryNeededGroup>
+
+        <!-- Spark Streaming Redshift group -->
+        <libraryNeededGroup description="Spark streaming Redshift libraries for spl30x" id="SPARK_STREAMING_REDSHIFT_MODULE_GROUP_SPL30x" name="SPARK_STREAMING_REDSHIFT_MODULE_GROUP_SPL30x">
+        <!-- To be completed when deps are moved away from the components -->
         </libraryNeededGroup>
         
    </extension>
