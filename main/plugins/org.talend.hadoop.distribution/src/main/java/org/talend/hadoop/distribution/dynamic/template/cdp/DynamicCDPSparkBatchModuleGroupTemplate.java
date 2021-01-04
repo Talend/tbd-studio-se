@@ -15,10 +15,12 @@ package org.talend.hadoop.distribution.dynamic.template.cdp;
 import java.util.Map;
 import java.util.Set;
 
+import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
+import org.talend.hadoop.distribution.constants.cdp.ICDPDistribution;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.dynamic.template.DynamicSparkBatchModuleGroupTemplate;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.cdp.DynamicCDPSparkBatchModuleGroup;
@@ -38,6 +40,19 @@ public class DynamicCDPSparkBatchModuleGroupTemplate extends DynamicSparkBatchMo
     @Override
     protected Set<DistributionModuleGroup> buildModuleGroups4SparkBatch(DynamicPluginAdapter pluginAdapter) throws Exception {
         return new DynamicCDPSparkBatchModuleGroup(pluginAdapter).getModuleGroups();
+    }
+    
+    @Override
+    public Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> getNodeModuleGroups() throws Exception {
+        Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodeModuleGroups = super.getNodeModuleGroups();
+        DynamicPluginAdapter pluginAdapter = getPluginAdapter();
+        IDynamicPluginConfiguration configuration = pluginAdapter.getPluginConfiguration();
+        String distribution = ICDPDistribution.DISTRIBUTION_NAME;
+        String version = configuration.getId();
+
+        buildNodeModuleGroups4SparkBatch(pluginAdapter, nodeModuleGroups, distribution, version);
+
+        return nodeModuleGroups;
     }
 
     @Override
