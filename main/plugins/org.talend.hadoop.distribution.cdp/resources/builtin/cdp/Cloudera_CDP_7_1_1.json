@@ -1,7 +1,7 @@
 {
   "childNodes" : [ {
     "childNodes" : [ ],
-    "distribution" : "CDP",
+    "distribution" : "CLOUDERA",
     "id" : "Cloudera_CDP7_1_1_0_565",
     "name" : "Cloudera CDP7.1.1.0-565",
     "repository" : "https://talend-update.talend.com/nexus/content/groups/dynamicdistribution/",
