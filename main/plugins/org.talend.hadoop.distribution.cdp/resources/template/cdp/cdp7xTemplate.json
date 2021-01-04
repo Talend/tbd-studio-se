@@ -41,10 +41,19 @@
             "id" : "aws-java-sdk-bundle",
             "type" : "STANDARD",
             "context" : "{properties.context}",
-            "jarName" : "aws-java-sdk-bundle-1.11.271.jar",
-            "mvnUri" : "mvn:com.amazonaws/aws-java-sdk-bundle/1.11.271",
+            "jarName" : "aws-java-sdk-bundle-1.11.760.jar",
+            "mvnUri" : "mvn:com.amazonaws/aws-java-sdk-bundle/1.11.760",
             "useStudioRepository" : "true",
             "description" : ""
+        },
+        {
+            "id": "talend-bigdata-aws",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "talend-bigdata-aws-lib-1.1.0.jar",
+            "mvnUri": "mvn:org.talend.bigdata.libs/talend-bigdata-aws-lib/1.1.0",
+            "useStudioRepository": "true",
+            "description": ""
         },
         {
             "id" : "cloudera-navigator",
@@ -842,7 +851,8 @@
             "description" : "",
             "modules": [
                 "aws-java-sdk-bundle",
-                "hadoop-aws"
+                "hadoop-aws",
+                "talend-bigdata-aws"
             ]
         },
         {
