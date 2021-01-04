@@ -1745,7 +1745,7 @@
 			context="plugin:org.talend.hadoop.distribution.emr5150" 
 			id="jsch-0.1.55.jar" 
 			name="jsch-0.1.55.jar"
-			mvn_uri="mvn:org.talend.libraries/jsch-0.1.55/6.0.0"/>
+			mvn_uri="mvn:com.jcraft/jsch/0.1.55"/>
 		
 		<libraryNeeded 
 			context="plugin:org.talend.hadoop.distribution.emr5150" 
