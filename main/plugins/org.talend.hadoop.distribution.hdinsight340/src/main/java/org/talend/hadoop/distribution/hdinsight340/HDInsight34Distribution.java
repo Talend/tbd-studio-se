@@ -53,7 +53,7 @@ public class HDInsight34Distribution extends AbstractDistribution implements MRC
 
     public final static String VERSION = "MICROSOFT_HD_INSIGHT_3_4"; //$NON-NLS-1$
 
-    public static final String VERSION_DISPLAY = "Microsoft HD Insight 3.4"; //$NON-NLS-1$
+    public static final String VERSION_DISPLAY = "Microsoft HD Insight 3.4 (Deprecated)"; //$NON-NLS-1$
 
     private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,/usr/hdp/current/hadoop-client/*,/usr/hdp/current/hadoop-client/lib/*,/usr/hdp/current/hadoop-hdfs-client/*,/usr/hdp/current/hadoop-hdfs-client/lib/*,/usr/hdp/current/hadoop-yarn-client/*,/usr/hdp/current/hadoop-yarn-client/lib/*"; //$NON-NLS-1$
 
