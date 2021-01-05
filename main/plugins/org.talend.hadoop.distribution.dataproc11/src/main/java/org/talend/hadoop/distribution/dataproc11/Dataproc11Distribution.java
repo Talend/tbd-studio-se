@@ -54,7 +54,7 @@ public class Dataproc11Distribution extends AbstractDistribution implements HDFS
 
     public static final String VERSION = "DATAPROC_1_1"; //$NON-NLS-1$
 
-    public static final String VERSION_DISPLAY = "Dataproc 1.1 (Apache 2.7.3)"; //$NON-NLS-1$
+    public static final String VERSION_DISPLAY = "Dataproc 1.1 (Deprecated)"; //$NON-NLS-1$
 
     private final static String SPARK_MODULE_GROUP_NAME = "SPARK2-LIB-DATAPROC11"; //$NON-NLS-1$
 

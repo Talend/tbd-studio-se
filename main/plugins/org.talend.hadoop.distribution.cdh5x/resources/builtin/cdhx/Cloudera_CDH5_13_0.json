@@ -3,7 +3,7 @@
     "childNodes" : [ ],
     "distribution" : "CLOUDERA",
     "id" : "Cloudera_CDH5_13_0",
-    "name" : "Cloudera CDH5.13.0",
+    "name" : "Cloudera CDH5.13.0 (Deprecated)",
     "repository" : "https://talend-update.talend.com/nexus/content/groups/dynamicdistribution/",
     "selectedSparkVersions" : [ "SPARK_2_2" ],
     "tagName" : "dynamicPluginConfiguration",
