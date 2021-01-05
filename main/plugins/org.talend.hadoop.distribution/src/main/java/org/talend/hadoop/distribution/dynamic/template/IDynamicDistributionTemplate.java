@@ -14,6 +14,8 @@ package org.talend.hadoop.distribution.dynamic.template;
 
 import java.util.List;
 
+import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
+
 /**
  * DOC cmeng  class global comment. Detailled comment
  */
@@ -22,5 +24,17 @@ public interface IDynamicDistributionTemplate {
     public List<String> getServices();
 
     public String getTemplateId();
+
+    DynamicPluginAdapter getPluginAdapter();
+
+    boolean registOsgiServices();
+
+    boolean unregistOsgiServices();
+
+    boolean isPluginExtensionsRegisted();
+
+    boolean registPluginExtensions();
+
+    boolean unregistPluginExtensions();
 
 }

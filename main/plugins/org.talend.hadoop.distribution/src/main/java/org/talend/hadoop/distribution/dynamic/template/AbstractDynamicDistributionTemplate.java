@@ -9,8 +9,13 @@ import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang3.ClassUtils;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceRegistration;
 import org.talend.commons.exception.CommonExceptionHandler;
 import org.talend.commons.exception.ExceptionHandler;
+import org.talend.core.model.general.ILibrariesService;
+import org.talend.core.runtime.dynamic.DynamicServiceUtil;
+import org.talend.core.runtime.dynamic.IDynamicPlugin;
 import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
 import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.ComponentType;
@@ -35,11 +40,14 @@ import org.talend.hadoop.distribution.dynamic.DynamicConstants;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.DynamicModuleGroupConstant;
 import org.talend.hadoop.distribution.dynamic.util.DynamicDistributionUtils;
+import org.talend.hadoop.distribution.helper.HadoopDistributionsHelper;
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
 public abstract class AbstractDynamicDistributionTemplate extends AbstractDistribution
         implements HadoopComponent, IDynamicDistributionTemplate {
+
+    private static final String OPT_DEBUG_DYNAMIC_DISTRIBUTION_OSGI = "talend.studio.dynamicDistribution.debug.osgi";
 
     private Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
 
@@ -50,6 +58,14 @@ public abstract class AbstractDynamicDistributionTemplate extends AbstractDistri
     private Map<ComponentType, IDynamicModuleGroupTemplate> moduleGroupsTemplateMap;
 
     private DynamicPluginAdapter pluginAdapter;
+
+    private ServiceRegistration osgiService;
+
+    private final Object osgiServiceLock = new Object();
+
+    private DynamicPluginAdapter registedPluginAdapter;
+
+    private final Object registedPluginAdapterLock = new Object();
 
     private String versionId;
 
@@ -199,6 +215,100 @@ public abstract class AbstractDynamicDistributionTemplate extends AbstractDistri
     }
 
     @Override
+    public boolean registOsgiServices() {
+        if (osgiService == null) {
+            synchronized (osgiServiceLock) {
+                if (osgiService == null) {
+                    try {
+                        BundleContext context = getPluginAdapter().getBundle().getBundleContext();
+                        osgiService = DynamicServiceUtil.registOSGiService(context, getServices().toArray(new String[0]), this,
+                                null);
+                        return true;
+                    } catch (Exception e) {
+                        ExceptionHandler.process(e);
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean unregistOsgiServices() {
+        try {
+            if (osgiService != null) {
+                synchronized (osgiServiceLock) {
+                    if (osgiService != null) {
+                        DynamicServiceUtil.unregistOSGiService(osgiService);
+                        osgiService = null;
+                        return true;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            ExceptionHandler.process(e);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean isPluginExtensionsRegisted() {
+        return registedPluginAdapter != null;
+    }
+
+    @Override
+    public boolean registPluginExtensions() {
+        if (registedPluginAdapter == null) {
+            synchronized (registedPluginAdapterLock) {
+                if (registedPluginAdapter == null) {
+                    DynamicPluginAdapter plugAdapter = getPluginAdapter();
+                    IDynamicPlugin plugin = plugAdapter.getPlugin();
+                    IDynamicPluginConfiguration pConfiguration = plugin.getPluginConfiguration();
+                    try {
+                        plugin.setPluginConfiguration(null);
+                        DynamicServiceUtil.addContribution(plugAdapter.getBundle(), plugin);
+                        registedPluginAdapter = plugAdapter;
+                        ILibrariesService libService = ILibrariesService.get();
+                        if (libService != null) {
+                            libService.resetModulesNeeded();
+                        }
+                        HadoopDistributionsHelper.updateCacheVersion();
+                        return true;
+                    } catch (Exception e) {
+                        ExceptionHandler.process(e);
+                    } finally {
+                        plugin.setPluginConfiguration(pConfiguration);
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean unregistPluginExtensions() {
+        if (registedPluginAdapter != null) {
+            synchronized (registedPluginAdapterLock) {
+                if (registedPluginAdapter != null) {
+                    try {
+                        DynamicServiceUtil.removeContribution(registedPluginAdapter.getPlugin());
+                        registedPluginAdapter = null;
+                        ILibrariesService libService = ILibrariesService.get();
+                        if (libService != null) {
+                            libService.resetModulesNeeded();
+                        }
+                        HadoopDistributionsHelper.updateCacheVersion();
+                        return true;
+                    } catch (Exception e) {
+                        ExceptionHandler.process(e);
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    @Override
     public String getVersion() {
         return versionId;
     }
@@ -207,7 +317,8 @@ public abstract class AbstractDynamicDistributionTemplate extends AbstractDistri
         return versionDisplay;
     }
 
-    protected DynamicPluginAdapter getPluginAdapter() {
+    @Override
+    public DynamicPluginAdapter getPluginAdapter() {
         return pluginAdapter;
     }
 

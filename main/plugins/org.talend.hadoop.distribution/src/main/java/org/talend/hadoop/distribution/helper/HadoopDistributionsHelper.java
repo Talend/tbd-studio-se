@@ -235,6 +235,11 @@ public class HadoopDistributionsHelper {
         return cacheVersion;
     }
 
+    public static String updateCacheVersion() {
+        cacheVersion = String.valueOf(System.currentTimeMillis());
+        return cacheVersion;
+    }
+
     /**
      * Builds a {@link IAmazonEMRDistribution} distribution.
      * 

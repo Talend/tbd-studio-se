@@ -50,7 +50,7 @@ public class DistributionVersion implements IHDistributionVersion {
     /**
      * Modules
      */
-    private Set<DistributionVersionModule> modules = new LinkedHashSet<DistributionVersionModule>();
+    protected Set<DistributionVersionModule> modules;
 
     private List<ModuleNeeded> modulesNeeded = new ArrayList<ModuleNeeded>();
 
@@ -61,6 +61,7 @@ public class DistributionVersion implements IHDistributionVersion {
         this.distribution = distribution;
         this.version = version;
         this.displayVersion = displayVersion;
+        this.modules = new LinkedHashSet<DistributionVersionModule>();
     }
 
     @Override
@@ -78,15 +79,19 @@ public class DistributionVersion implements IHDistributionVersion {
         return displayVersion;
     }
 
+    protected Set<DistributionVersionModule> getModules() {
+        return modules;
+    }
+
     public DistributionVersionModule[] getVersionModules() {
-        return modules.toArray(new DistributionVersionModule[0]);
+        return getModules().toArray(new DistributionVersionModule[0]);
     }
 
     public void addModuleGroup(DistributionModuleGroup g) {
         if (g != null) {
             DistributionVersionModule vm = new DistributionVersionModule(this);
             vm.moduleGroup = g;
-            modules.add(vm);
+            getModules().add(vm);
         }
     }
 
@@ -103,7 +108,8 @@ public class DistributionVersion implements IHDistributionVersion {
         if (modulesNeeded.isEmpty()) {
             synchronized (DistributionVersion.class) {
                 if (modulesNeeded.isEmpty()) {
-                    for (DistributionVersionModule vm : modules) {
+                    Set<DistributionVersionModule> moduleSet = getModules();
+                    for (DistributionVersionModule vm : moduleSet) {
                         modulesNeeded.addAll(vm.getModulesNeeded());
                     }
                 }

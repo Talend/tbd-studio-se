@@ -45,7 +45,7 @@ public class DistributionVersionModule {
 
     public DistributionModuleGroup moduleGroup;
 
-    private List<ModuleNeeded> modulesNeeded = new ArrayList<ModuleNeeded>();
+    protected List<ModuleNeeded> modulesNeeded = new ArrayList<ModuleNeeded>();
 
     DistributionVersionModule(DistributionVersion distributionVersion) {
         super();
