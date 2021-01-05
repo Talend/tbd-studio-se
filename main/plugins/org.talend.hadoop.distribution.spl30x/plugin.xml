@@ -543,6 +543,22 @@
           id="aws-java-sdk-core-1.11.655.jar" name="aws-java-sdk-core-1.11.655.jar" 
           mvn_uri="mvn:com.amazonaws/aws-java-sdk-core/1.11.655"/>
 
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
+          id="jackson-dataformat-cbor-2.10.0.jar" name="jackson-dataformat-cbor-2.10.0.jar" 
+          mvn_uri="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-cbor/2.10.0"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
+          id="amazon-kinesis-client-1.12.0.jar" name="amazon-kinesis-client-1.12.0.jar" 
+          mvn_uri="mvn:com.amazonaws/amazon-kinesis-client/1.12.0"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
+          id="aws-java-sdk-cloudwatch-1.11.655.jar" name="aws-java-sdk-cloudwatch-1.11.655.jar" 
+          mvn_uri="mvn:com.amazonaws/aws-java-sdk-cloudwatch/1.11.655"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
+          id="aws-java-sdk-dynamodb-1.11.655.jar" name="aws-java-sdk-dynamodb-1.11.655.jar" 
+          mvn_uri="mvn:com.amazonaws/aws-java-sdk-dynamodb/1.11.655"/>
+
         <!-- Spark group -->
         <libraryNeededGroup description="SPARK libraries for spl30x" id="SPARK_BATCH_MODULE_GROUP_SPL30x" name="SPARK_BATCH_MODULE_GROUP_SPL30x">
             <library id="antlr4-runtime-4.7.1.jar"/>
@@ -725,13 +741,13 @@
         
         <!-- Snowflake group -->
         <libraryNeededGroup description="Snowflake libraries for spl30x" id="SPARK_BATCH_SNOWFLAKE_MODULE_GROUP_SPL30x" name="SPARK_BATCH_SNOWFLAKE_MODULE_GROUP_SPL30x">
-        	<library id="spark-snowflake_2.12-2.8.2-spark_3.0.jar"/>
-        	<library id="snowflake-jdbc-3.12.12.jar"/>
+            <library id="spark-snowflake_2.12-2.8.2-spark_3.0.jar"/>
+            <library id="snowflake-jdbc-3.12.12.jar"/>
         </libraryNeededGroup>
         
         <!-- TDM group -->
         <libraryNeededGroup description="Snowflake libraries for spl30x" id="SPARK_BATCH_TDM_MODULE_GROUP_SPL30x" name="SPARK_BATCH_TDM_MODULE_GROUP_SPL30x">
-        	<library id="avro-mapred-1.8.2.jar"/>
+            <library id="avro-mapred-1.8.2.jar"/>
         </libraryNeededGroup>
         
         <!-- spark 3 ML group -->
@@ -744,28 +760,29 @@
         
         <!-- Spark Streaming group -->
         <libraryNeededGroup description="Spark streaming libraries for spl30x" id="SPARK_STREAMING_MODULE_GROUP_SPL30x" name="SPARK_STREAMING_MODULE_GROUP_SPL30x">
-        	<library id="spark-streaming_2.12-3.0.1.jar"/>
-        	<group id="SPARK_BATCH_MODULE_GROUP_SPL30x"/>
-        	<library id="py4j-0.10.9.1.jar"/>
+            <library id="spark-streaming_2.12-3.0.1.jar"/>
+            <group id="SPARK_BATCH_MODULE_GROUP_SPL30x"/>
+            <library id="py4j-0.10.9.1.jar"/>
         </libraryNeededGroup>
 
         <!-- Spark Streaming Kafka group -->
         <libraryNeededGroup description="Spark streaming Kafka libraries for spl30x" id="SPARK_STREAMING_KAFKA_MODULE_GROUP_SPL30x" name="SPARK_STREAMING_KAFKA_MODULE_GROUP_SPL30x">
-        	<library id="kafka-clients-2.7.0.jar"/>
-        	<library id="spark-streaming-kafka-0-10_2.12-3.0.1.jar"/>
+            <library id="kafka-clients-2.7.0.jar"/>
+            <library id="spark-streaming-kafka-0-10_2.12-3.0.1.jar"/>
         </libraryNeededGroup>
 
         <!-- Spark Streaming Kinesis group -->
         <libraryNeededGroup description="Spark streaming Kinesis libraries for spl30x" id="SPARK_STREAMING_KINESIS_MODULE_GROUP_SPL30x" name="SPARK_STREAMING_KINESIS_MODULE_GROUP_SPL30x">
-        	<library id="spark-streaming-kinesis-asl_2.12-3.0.1.jar"/>
-        	<library id="aws-java-sdk-kinesis-1.11.655.jar"/>
-        	<library id="aws-java-sdk-core-1.11.655.jar"/>
-        	
-        	<!--LAURENT -->
-        	<library id="httpclient-4.5.12.jar"/>
-        	<library id="httpcore-4.4.11.jar"/>
-        	<library id="jackson-dataformat-cbor-2.10.0.jar"/>
-        	<library id="joda-time-2.10.5.jar"/>
+            <library id="spark-streaming-kinesis-asl_2.12-3.0.1.jar"/>
+            <library id="aws-java-sdk-kinesis-1.11.655.jar"/>
+            <library id="aws-java-sdk-core-1.11.655.jar"/>
+            <library id="httpclient-4.5.12.jar"/>
+            <library id="httpcore-4.4.11.jar"/>
+            <library id="jackson-dataformat-cbor-2.10.0.jar"/>
+            <library id="joda-time-2.10.5.jar"/>
+            <library id="amazon-kinesis-client-1.12.0.jar"/>
+            <library id="aws-java-sdk-cloudwatch-1.11.655.jar"/>
+            <library id="aws-java-sdk-dynamodb-1.11.655.jar"/>
         </libraryNeededGroup>
 
         <!-- Spark Streaming Redshift group -->
