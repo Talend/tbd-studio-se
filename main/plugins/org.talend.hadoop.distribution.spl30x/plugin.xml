@@ -559,6 +559,10 @@
           id="aws-java-sdk-dynamodb-1.11.655.jar" name="aws-java-sdk-dynamodb-1.11.655.jar" 
           mvn_uri="mvn:com.amazonaws/aws-java-sdk-dynamodb/1.11.655"/>
 
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
+          id="commons-pool2-2.9.0.jar" name="commons-pool2-2.9.0.jar" 
+          mvn_uri="mvn:org.apache.commons/commons-pool2/2.9.0"/>
+
         <!-- Spark group -->
         <libraryNeededGroup description="SPARK libraries for spl30x" id="SPARK_BATCH_MODULE_GROUP_SPL30x" name="SPARK_BATCH_MODULE_GROUP_SPL30x">
             <library id="antlr4-runtime-4.7.1.jar"/>
@@ -789,7 +793,13 @@
         <libraryNeededGroup description="Spark streaming Redshift libraries for spl30x" id="SPARK_STREAMING_REDSHIFT_MODULE_GROUP_SPL30x" name="SPARK_STREAMING_REDSHIFT_MODULE_GROUP_SPL30x">
         <!-- To be completed when deps are moved away from the components -->
         </libraryNeededGroup>
-        
+
+        <!-- Spark Streaming DynamoDB group -->
+        <libraryNeededGroup description="Spark streaming DynamoDB libraries for spl30x" id="SPARK_STREAMING_DYNAMODB_MODULE_GROUP_SPL30x" name="SPARK_STREAMING_KINESIS_MODULE_GROUP_SPL30x">
+            <group id="SPARK_BATCH_DYNAMODB_MODULE_GROUP_SPL30x" />
+            <library id="commons-pool2-2.9.0.jar"/>
+        </libraryNeededGroup>
+
    </extension>
    <extension
          point="org.talend.core.runtime.classloader_provider">

@@ -162,45 +162,54 @@ public class SPL30xDistribution extends AbstractDistribution implements ISparkLo
                 .getModuleGroup(SPL30xConstant.SPARK_BATCH_ML_MODULE_GROUP.getModuleName(), SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
 
         // Spark Streaming TDM
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.HMAP_RECORD_COMPONENT), SPL30xSparkBatchNodeModuleGroup
-                .getModuleGroup(SPL30xConstant.SPARK_BATCH_TDM_MODULE_GROUP.getModuleName(), SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.HMAP_RECORD_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
+                SPL30xConstant.SPARK_BATCH_TDM_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
 
         // Spark Streaming Parquet
-        // TODO mutualise with batch
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_OUTPUT_COMPONENT), SPL30xSparkBatchNodeModuleGroup
-                .getModuleGroup(SPL30xConstant.SPARK_BATCH_PARQUET_MODULE_GROUP.getModuleName(), SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_OUTPUT_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
+                SPL30xConstant.SPARK_BATCH_PARQUET_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
 
         // Spark Streaming Kafka
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
-                SPL30xConstant.SPARK_STREAMING_KAFKA_MODULE_GROUP.getModuleName(), SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+                SPL30xConstant.SPARK_STREAMING_KAFKA_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_INPUT_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
-                SPL30xConstant.SPARK_STREAMING_KAFKA_MODULE_GROUP.getModuleName(), SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+                SPL30xConstant.SPARK_STREAMING_KAFKA_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_AVRO_INPUT_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
-                SPL30xConstant.SPARK_STREAMING_KAFKA_MODULE_GROUP.getModuleName(), SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+                SPL30xConstant.SPARK_STREAMING_KAFKA_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
 
         // Spark Streaming Kinesis
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
-                SPL30xConstant.SPARK_STREAMING_KINESIS_MODULE_GROUP.getModuleName(), SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+                SPL30xConstant.SPARK_STREAMING_KINESIS_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
-                SPL30xConstant.SPARK_STREAMING_KINESIS_MODULE_GROUP.getModuleName(), SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+                SPL30xConstant.SPARK_STREAMING_KINESIS_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_AVRO_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
-                SPL30xConstant.SPARK_STREAMING_KINESIS_MODULE_GROUP.getModuleName(), SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+                SPL30xConstant.SPARK_STREAMING_KINESIS_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
 
         // Spark Streaming Redshift
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.REDSHIFT_CONFIGURATION_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
-                SPL30xConstant.SPARK_STREAMING_REDSHIFT_MODULE_GROUP.getModuleName(), SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+                SPL30xConstant.SPARK_STREAMING_REDSHIFT_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.REDSHIFT_LOOKUP_INPUT_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
-                SPL30xConstant.SPARK_STREAMING_REDSHIFT_MODULE_GROUP.getModuleName(), SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+                SPL30xConstant.SPARK_STREAMING_REDSHIFT_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.REDSHIFT_OUTPUT_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
-                SPL30xConstant.SPARK_STREAMING_REDSHIFT_MODULE_GROUP.getModuleName(), SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+                SPL30xConstant.SPARK_STREAMING_REDSHIFT_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
 
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PREDICT_CLUSTER_COMPONENT), SPL30xSparkBatchNodeModuleGroup
-                .getModuleGroup(SPL30xConstant.SPARK_BATCH_PARQUET_MODULE_GROUP.getModuleName(), SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PREDICT_COMPONENT), SPL30xSparkBatchNodeModuleGroup
-                .getModuleGroup(SPL30xConstant.SPARK_BATCH_PARQUET_MODULE_GROUP.getModuleName(), SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+        // Spark Streaming Predict
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PREDICT_CLUSTER_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
+                SPL30xConstant.SPARK_BATCH_PARQUET_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PREDICT_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
+                SPL30xConstant.SPARK_BATCH_PARQUET_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
 
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KMEANSSTR_MODEL_COMPONENT), SPL30xSparkBatchNodeModuleGroup
-                .getModuleGroup(SPL30xConstant.SPARK_BATCH_ML_MODULE_GROUP.getModuleName(), SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+        // Spark Streaming KMeans
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KMEANSSTR_MODEL_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
+                SPL30xConstant.SPARK_BATCH_ML_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+
+        // Spark Streaming DynamoDB
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_CONFIGURATION_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
+                SPL30xConstant.SPARK_STREAMING_DYNAMODB_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_OUTPUT_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
+                SPL30xConstant.SPARK_STREAMING_DYNAMODB_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_INPUT_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
+                SPL30xConstant.SPARK_STREAMING_DYNAMODB_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
 
         return result;
 
