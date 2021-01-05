@@ -48,6 +48,8 @@ public final class SparkBatchConstant {
 
     public static final String PREDICT_CLUSTER_COMPONENT = "tPredictCluster"; //$NON-NLS-1$
 
+    public static final String PREDICT_COMPONENT = "tPredict"; //$NON-NLS-1$
+
     public static final String S3_CONFIGURATION_COMPONENT = "tS3Configuration"; //$NON-NLS-1$
 
     public static final String AZURE_CONFIGURATION_COMPONENT = "tAzureFSConfiguration"; //$NON-NLS-1$
