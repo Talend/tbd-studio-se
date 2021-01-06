@@ -1321,25 +1321,6 @@
             ]
 		},
 		{
-			"id": "parquet-hadoop-bundle_1_6_0",
-			"type": "BASE",
-			"context": "{properties.context}",
-			"groupId": "com.twitter",
-			"artifactId": "parquet-hadoop-bundle",
-			"version": "1.6.0",
-			"classifier": "",
-			"description": "",
-            "exclusions": [
-                {
-                    "groupId": "commons-lang",
-                    "artifactId": "*",
-                    "classifier": "",
-                    "extension": "",
-                    "description": ""
-                }
-            ]
-		},
-		{
 			"id": "parquet-pig-bundle",
 			"type": "BASE",
 			"context": "{properties.context}",
@@ -1822,22 +1803,22 @@
 			]
 		},
         {
-            "id": "HDFS-COMMON-LIB-DYNAMIC",
-            "modules": [
-                "hadoop-client"
-            ]
-        },
-        {
-            "id": "HDFS-LIB-DYNAMIC",
-            "description": "jars for hdfs, only module.id permitted",
-            "modules": [
-                "hadoop-client",
-                "jackson-core",
-                "jackson-databind",
-                "jackson-annotations",
-                "commons-httpclient-3.1",
-                "parquet-hadoop-bundle_1_6_0",
-                "httpcore-4.4.6",
+			"id": "HDFS-COMMON-LIB-DYNAMIC",
+			"modules": [
+				"hadoop-client"
+			]
+		},
+        		{
+			"id": "HDFS-LIB-DYNAMIC",
+			"description": "jars for hdfs, only module.id permitted",
+			"modules": [
+				"hadoop-client",
+				"jackson-core",
+				"jackson-databind",
+				"jackson-annotations",
+				"commons-httpclient-3.1",
+				"parquet-hadoop-bundle",
+				"httpcore-4.4.6",
 				"httpclient-4.5.3"
             ]
         },
@@ -1903,8 +1884,7 @@
             "id": "MAPREDUCE-PARQUET-LIB-DYNAMIC",
             "description": "",
             "modules": [
-                "parquet-hadoop-bundle",
-                "parquet-hadoop-bundle_1_6_0"
+                "parquet-hadoop-bundle"
             ]
         },
         {
@@ -1995,7 +1975,7 @@
             "modules": [
                 "hadoop-client",
                 "jodd",
-                "parquet-hadoop-bundle_1_6_0"
+                "parquet-hadoop-bundle"
             ]
         },
         {
