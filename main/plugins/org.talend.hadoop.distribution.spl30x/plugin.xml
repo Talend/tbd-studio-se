@@ -563,6 +563,10 @@
           id="commons-pool2-2.9.0.jar" name="commons-pool2-2.9.0.jar" 
           mvn_uri="mvn:org.apache.commons/commons-pool2/2.9.0"/>
 
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
+          id="commons-math3-3.4.1.jar" name="commons-math3-3.4.1.jar" 
+          mvn_uri="mvn:org.apache.commons/commons-math3/3.4.1"/>
+
         <!-- Spark group -->
         <libraryNeededGroup description="SPARK libraries for spl30x" id="SPARK_BATCH_MODULE_GROUP_SPL30x" name="SPARK_BATCH_MODULE_GROUP_SPL30x">
             <library id="antlr4-runtime-4.7.1.jar"/>
@@ -761,7 +765,12 @@
             <library id="arpack_combined_all-0.1.jar"/>
             <library id="core-1.1.2.jar"/>
         </libraryNeededGroup>
-        
+
+        <!-- commons math3 group -->
+        <libraryNeededGroup description="commons math3 libraries for spl30x" id="SPARK_BATCH_MATH_MODULE_GROUP_SPL30x" name="SPARK_BATCH_MATH_MODULE_GROUP_SPL30x">
+            <library id="commons-math3-3.4.1.jar"/>
+        </libraryNeededGroup>
+
         <!-- Spark Streaming group -->
         <libraryNeededGroup description="Spark streaming libraries for spl30x" id="SPARK_STREAMING_MODULE_GROUP_SPL30x" name="SPARK_STREAMING_MODULE_GROUP_SPL30x">
             <library id="spark-streaming_2.12-3.0.1.jar"/>

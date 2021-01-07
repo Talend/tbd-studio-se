@@ -115,4 +115,7 @@ public final class SparkBatchConstant {
 
     public static final String LINEAR_REGRESSION_MODEL_COMPONENT = "tLinearRegressionModel";
     public static final String LOGISTIC_REGRESSION_MODEL_COMPONENT = "tLogisticRegressionModel";
+
+    public static final String DECISION_TREE_MODEL_COMPONENT = "tDecisionTreeModel"; 
+    public static final String GRADIENT_BOOSTED_TREE_MODEL = "tGradientBoostedTreeModel";
 }

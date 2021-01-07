@@ -161,6 +161,12 @@ public class SPL30xDistribution extends AbstractDistribution implements ISparkLo
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.LOGISTIC_REGRESSION_MODEL_COMPONENT), SPL30xSparkBatchNodeModuleGroup
                 .getModuleGroup(SPL30xConstant.SPARK_BATCH_ML_MODULE_GROUP.getModuleName(), SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
 
+        // Spark Batch Math
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DECISION_TREE_MODEL_COMPONENT), SPL30xSparkBatchNodeModuleGroup
+                .getModuleGroup(SPL30xConstant.SPARK_BATCH_MATH_MODULE_GROUP.getModuleName(), SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.GRADIENT_BOOSTED_TREE_MODEL), SPL30xSparkBatchNodeModuleGroup
+                .getModuleGroup(SPL30xConstant.SPARK_BATCH_MATH_MODULE_GROUP.getModuleName(), SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+
         // Spark Streaming TDM
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.HMAP_RECORD_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
                 SPL30xConstant.SPARK_BATCH_TDM_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
