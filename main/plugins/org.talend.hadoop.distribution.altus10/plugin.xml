@@ -66,7 +66,21 @@
             name="aws-java-sdk-cloudwatch-1.11.132.jar"
             mvn_uri="mvn:org.talend.libraries/aws-java-sdk-cloudwatch-1.11.132/6.0.0">
         </libraryNeeded>
-       
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.altus10"
+            id="gcs-connector-hadoop2-2.1.6-shaded.jar"
+            name="gcs-connector-hadoop2-2.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop2-2.1.6/jar/shaded">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.altus10"
+            id="bigquery-connector-hadoop2-1.1.6-shaded.jar"
+            name="bigquery-connector-hadoop2-1.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop2-1.1.6/jar/shaded">
+        </libraryNeeded>
+
         <!-- HDFS common group -->
         <libraryNeededGroup
                 description="HDFS libraries for Altus 1.0"
@@ -359,7 +373,22 @@
                 <library id="hadoop-azure-2.7.4"/>
                 <library id="jetty-util-6.1.26.cloudera.2.jar"/>
         </libraryNeededGroup>
-                
+
+        <libraryNeededGroup
+                description="Libraries for BigQuery"
+                id="BIGQUERY-GROUP-Cloudera_Altus_CDH5_11"
+                name="BIGQUERY-GROUP-Cloudera_Altus_CDH5_11">
+            <library id="gcs-connector-hadoop2-2.1.6-shaded.jar"/>
+            <library id="bigquery-connector-hadoop2-1.1.6-shaded.jar"/>
+        </libraryNeededGroup>
+
+        <libraryNeededGroup
+                description="Libraries for GCS"
+                id="GCS-GROUP-Cloudera_Altus_CDH5_11"
+                name="GCS-GROUP-Cloudera_Altus_CDH5_11">
+            <library id="gcs-connector-hadoop2-2.1.6-shaded.jar"/>
+        </libraryNeededGroup>
+
    </extension>
    <extension
          point="org.talend.core.runtime.classloader_provider">        

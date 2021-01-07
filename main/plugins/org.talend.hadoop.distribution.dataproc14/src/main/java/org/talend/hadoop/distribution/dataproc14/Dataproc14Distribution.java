@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
@@ -44,10 +43,11 @@ import org.talend.hadoop.distribution.dataproc14.modulegroup.node.sparkstreaming
 import org.talend.hadoop.distribution.dataproc14.modulegroup.node.sparkstreaming.Dataproc14SparkStreamingKafkaAvroModuleGroup;
 import org.talend.hadoop.distribution.dataproc14.modulegroup.node.sparkstreaming.Dataproc14SparkStreamingKafkaClientModuleGroup;
 import org.talend.hadoop.distribution.dataproc14.modulegroup.node.sparkstreaming.Dataproc14SparkStreamingParquetNodeModuleGroup;
+import org.talend.hadoop.distribution.dtp.DTPDistribution;
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
-public class Dataproc14Distribution extends AbstractDistribution implements HDFSComponent, SparkBatchComponent,
+public class Dataproc14Distribution extends DTPDistribution implements HDFSComponent, SparkBatchComponent,
         HiveComponent, SparkStreamingComponent, HiveOnSparkComponent, IGoogleDataprocDistribution {
 
     public static final String VERSION = "DATAPROC_1_4"; //$NON-NLS-1$
@@ -90,7 +90,7 @@ public class Dataproc14Distribution extends AbstractDistribution implements HDFS
     }
 
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(String distribution, String version) {
-        Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
+        Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = super.buildNodeModuleGroups(distribution, version);
 
         // Spark Batch Parquet nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),

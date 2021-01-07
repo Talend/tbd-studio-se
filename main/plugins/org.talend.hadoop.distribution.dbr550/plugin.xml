@@ -256,6 +256,20 @@
             name="parquet-hadoop-bundle-1.6.0.jar"
             mvn_uri="mvn:com.twitter/parquet-hadoop-bundle/1.6.0"/>
 
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dbr550"
+            id="gcs-connector-hadoop2-2.1.6-shaded.jar"
+            name="gcs-connector-hadoop2-2.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop2-2.1.6/jar/shaded">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dbr550"
+            id="bigquery-connector-hadoop2-1.1.6-shaded.jar"
+            name="bigquery-connector-hadoop2-1.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop2-1.1.6/jar/shaded">
+        </libraryNeeded>
+
         <!-- Big Data launcher group -->
         <libraryNeededGroup
                 description="Big Data launcher libraries for DBR550"
@@ -339,6 +353,21 @@
                 name="SPARK-AZURE-LIB-MRREQUIRED-DBR550">
              <library id="hadoop-azure-datalake-2.8.1.jar"/>
              <library id="azure-data-lake-store-sdk-2.3.1.jar"/>            
+        </libraryNeededGroup>
+
+        <libraryNeededGroup
+                description="Libraries for GCS"
+                id="GCS-GROUP-Databricks_5_5"
+                name="GCS-GROUP-Databricks_5_5">
+            <library id="gcs-connector-hadoop2-2.1.6-shaded.jar"/>
+        </libraryNeededGroup>
+
+        <libraryNeededGroup
+                description="Libraries for BigQuery"
+                id="BIGQUERY-GROUP-Databricks_5_5"
+                name="BIGQUERY-GROUP-Databricks_5_5">
+            <library id="gcs-connector-hadoop2-2.1.6-shaded.jar"/>
+            <library id="bigquery-connector-hadoop2-1.1.6-shaded.jar"/>
         </libraryNeededGroup>
 
    </extension>

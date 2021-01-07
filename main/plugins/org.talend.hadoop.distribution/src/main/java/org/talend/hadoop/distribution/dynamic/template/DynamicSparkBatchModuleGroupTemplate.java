@@ -21,8 +21,10 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
+import org.talend.hadoop.distribution.dynamic.template.modulegroup.DynamicModuleGroupConstant;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.DynamicSparkBatchModuleGroup;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.node.spark.DynamicSparkDynamoDBNodeModuleGroup;
+import org.talend.hadoop.distribution.dynamic.template.modulegroup.node.spark.DynamicSparkNodeModuleGroup;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkbatch.DynamicGraphFramesNodeModuleGroup;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkbatch.DynamicSparkBatchAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.dynamic.template.modulegroup.node.sparkbatch.DynamicSparkBatchParquetNodeModuleGroup;
@@ -105,8 +107,10 @@ public class DynamicSparkBatchModuleGroupTemplate extends AbstractDynamicModuleG
         nodeModuleGroupsMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.TERADATA_CONFIG_COMPONENT), jdbcConfNodeModuleGroups);
         nodeModuleGroupsMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.ORACLE_CONFIG_COMPONENT), jdbcConfNodeModuleGroups);
 
-        // TODO: to be removed
         buildNodeModuleGroups4SparkBatch4Kudu(pluginAdapter, nodeModuleGroupsMap, distribution, version);
+        
+        nodeModuleGroupsMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.GCS_CONFIG_COMPONENT), buildModuleGroups4SparkBatch4GCS(pluginAdapter, distribution, version));
+        nodeModuleGroupsMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.BIGQUERY_CONFIG_COMPONENT), buildModuleGroups4SparkBatch4BigQuery(pluginAdapter, distribution, version));
     }
 
     protected Set<DistributionModuleGroup> buildNodeModuleGroups4SparkBatch4GraphFrames(DynamicPluginAdapter pluginAdapter,
@@ -134,4 +138,15 @@ public class DynamicSparkBatchModuleGroupTemplate extends AbstractDynamicModuleG
             throws Exception {
         // nothing to do
     }
+    
+    protected  Set<DistributionModuleGroup> buildModuleGroups4SparkBatch4GCS(DynamicPluginAdapter pluginAdapter,
+            String distribution, String version) throws Exception {
+         return new DynamicSparkNodeModuleGroup(pluginAdapter).getModuleGroups(distribution, version, DynamicModuleGroupConstant.GCS_MODULE_GROUP, null);  
+     }
+
+    protected  Set<DistributionModuleGroup> buildModuleGroups4SparkBatch4BigQuery(DynamicPluginAdapter pluginAdapter,
+            String distribution, String version) throws Exception {
+         return new DynamicSparkNodeModuleGroup(pluginAdapter).getModuleGroups(distribution, version, DynamicModuleGroupConstant.BIGQUERY_MODULE_GROUP, null);  
+     }
+
 }

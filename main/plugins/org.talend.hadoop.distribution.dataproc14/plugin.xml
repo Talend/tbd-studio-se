@@ -675,6 +675,13 @@
             name="hive-service-rpc-2.3.7.jar"
             mvn_uri="mvn:org.apache.hive/hive-service-rpc/2.3.7">
         </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc14"
+            id="bigquery-connector-uber-1.0"
+            name="bigquery-connector-uber-1.0.jar"
+            mvn_uri="mvn:org.talend.libraries/bigquery-connector-uber-1.0/6.0.0">
+        </libraryNeeded>
         
         <!-- Groups -->
         
@@ -1015,6 +1022,13 @@
                 name="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-DATAPROC14">
             <library id="kafka-clients-dataproc14"/>
         </libraryNeededGroup>     
+
+        <libraryNeededGroup
+                description="Libraries for BigQuery"
+                id="BIGQUERY-GROUP-DATAPROC_1_4"
+                name="BIGQUERY-GROUP-DATAPROC_1_4">
+            <library id="bigquery-connector-uber-1.0"/>
+        </libraryNeededGroup>
 
     </extension>
     <extension

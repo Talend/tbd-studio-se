@@ -2827,6 +2827,22 @@
           "description": "remove parquet as wrong version imported"
         }
       ]
+    },
+    {
+        "id": "gcs-connector-hadoop3",
+        "type": "STANDARD",
+        "context": "{properties.context}",
+        "jarName": "gcs-connector-hadoop3-2.1.6-shaded.jar",
+        "mvnUri": "mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop3-2.1.6/jar/shaded",
+        "useStudioRepository": "true"
+    },
+    {
+        "id": "bigquery-connector-hadoop3",
+        "type": "STANDARD",
+        "context": "{properties.context}",
+        "jarName": "bigquery-connector-hadoop3-1.1.6-shaded.jar",
+        "mvnUri": "mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop3-1.1.6/jar/shaded",
+        "useStudioRepository": "true"
     }
   ],
   "moduleGroups": [
@@ -3094,6 +3110,21 @@
         "json4s-native_2.11-3.5.3",
         "avro-mapred-1.8.2"
       ]
+    },
+    {
+        "id": "GCS-LIB-DYNAMIC",
+        "description": "",
+        "modules": [
+            "gcs-connector-hadoop3"
+        ]
+    },
+    {
+        "id": "BIGQUERY-LIB-DYNAMIC",
+        "description": "",
+        "modules": [
+            "gcs-connector-hadoop3",
+            "bigquery-connector-hadoop3"
+        ]
     }
   ],
   "classLoaders": [
