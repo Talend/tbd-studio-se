@@ -20,6 +20,6 @@ import org.talend.hadoop.distribution.dynamic.IDynamicDistribution;
  */
 public interface IDynamicCDPDistribution extends IDynamicDistribution {
 
-    public static final String DISTRIBUTION = ICDPDistribution.DISTRIBUTION_NAME;
+    public static final String DISTRIBUTION = ICDPDistribution.DISTRIBUTION_NAME_WIZARD;
 
 }

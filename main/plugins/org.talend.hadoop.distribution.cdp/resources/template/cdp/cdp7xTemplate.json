@@ -216,6 +216,7 @@
             "classifier" : "",
             "description" : "",
             "exclusions": [
+            	{ "groupId" : "io.netty", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "org.glassfish", "artifactId" : "javax.el", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "jdk.tools", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "commons-lang", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" }
@@ -279,6 +280,8 @@
                 { "groupId" : "eigenbase", "artifactId" : "eigenbase-properties", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "org.pentaho", "artifactId" : "pentaho-aggdesigner-algorithm", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "xerces", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
+                { "groupId" : "org.scala-lang", "artifactId" : "scala-library", "classifier" : "", "extension" : "", "description" : "" },
+                { "groupId" : "org.scala-lang.modules", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "org.apache.spark", "artifactId" : "spark-core_2.10", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "com.sun.jersey", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" }
             ]
@@ -563,6 +566,7 @@
                 { "groupId" : "org.apache.hadoop", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "xerces", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "jdk.tools", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
+                { "groupId" : "io.netty", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "org.cloudera.logredactor", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "commons-lang", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" }
             ]
@@ -577,6 +581,7 @@
             "description" : "",
             "exclusions": [
                 { "groupId" : "org.apache.hadoop", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
+                { "groupId" : "io.netty", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "xerces", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "jdk.tools", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "commons-lang", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" }
@@ -620,6 +625,7 @@
             "description" : "",
             "exclusions": [
                 { "groupId" : "org.apache.hadoop", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
+                { "groupId" : "io.netty", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "xerces", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "jdk.tools", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" }
             ]
