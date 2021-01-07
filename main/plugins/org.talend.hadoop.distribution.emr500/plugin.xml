@@ -554,7 +554,21 @@
             name="joda-time-2.9.3.jar" 
             mvn_uri="mvn:org.talend.libraries/joda-time-2.9.3/6.0.0"/>
          
-       
+ 		<!-- GCS libraries -->
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr500"
+            id="gcs-connector-hadoop2-2.1.6-shaded.jar"
+            name="gcs-connector-hadoop2-2.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop2-2.1.6/jar/shaded">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr500"
+            id="bigquery-connector-hadoop2-1.1.6-shaded.jar"
+            name="bigquery-connector-hadoop2-1.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop2-1.1.6/jar/shaded">
+        </libraryNeeded>
+               
         <!-- Groups -->
         
         <!-- HDFS group -->
@@ -1125,7 +1139,23 @@
                 name="WEBHDFS-LIB-EMR_5_0_0_LATEST">
             <library id="jersey-client-1.9.jar"/>
         </libraryNeededGroup>
-        
+
+        <!-- GCS -->
+        <libraryNeededGroup
+                description="Libraries for GCS"
+                id="GCS-GROUP-EMR_5_0_0"
+                name="GCS-GROUP-EMR_5_0_0">
+            <library id="gcs-connector-hadoop2-2.1.6-shaded.jar"/>
+        </libraryNeededGroup>
+
+        <libraryNeededGroup
+                description="Libraries for BigQuery"
+                id="BIGQUERY-GROUP-EMR_5_0_0"
+                name="BIGQUERY-GROUP-EMR_5_0_0">
+            <library id="gcs-connector-hadoop2-2.1.6-shaded.jar"/>
+            <library id="bigquery-connector-hadoop2-1.1.6-shaded.jar"/>
+        </libraryNeededGroup>
+
     </extension>
     
     <extension

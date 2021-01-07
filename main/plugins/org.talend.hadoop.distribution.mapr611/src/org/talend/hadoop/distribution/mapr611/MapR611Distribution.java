@@ -108,7 +108,7 @@ public class MapR611Distribution extends AbstractMapRDistribution implements HDF
         moduleGroups.put(ComponentType.MAPRDB, MapR611HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.OJAI, MapR611OjaiModuleGroup.getModuleGroups());
 
-        nodeModuleGroups = new HashMap<>();
+        nodeModuleGroups = AbstractMapRDistribution.buildNodeModuleGroups(distribution, version);
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPRSTREAMS,
                 MapRStreamsConstant.CREATE_STREAM_COMPONENT), MapR611MapRStreamsCreateStreamModuleGroup

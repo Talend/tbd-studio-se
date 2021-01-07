@@ -61,7 +61,7 @@ public class MapR500Distribution extends AbstractMapRDistribution implements HDF
     static {
         moduleGroups = new HashMap<>();
 
-        nodeModuleGroups = new HashMap<>();
+        nodeModuleGroups = AbstractMapRDistribution.buildNodeModuleGroups(DISTRIBUTION_NAME, VERSION);
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
                 MapR500MRS3NodeModuleGroup.getModuleGroups());

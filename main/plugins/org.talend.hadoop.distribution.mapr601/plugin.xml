@@ -701,6 +701,22 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.0" id="avro-1.8.1.jar" name="avro-1.8.1.jar" mvn_uri="mvn:org.apache.avro/avro/1.8.1"/>
 		<!--libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.1" id="avro-1.7.7.jar" name="avro-1.7.7.jar" mvn_uri="mvn:org.apache.avro/avro/1.7.7"/-->
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.0.1" id="aws-java-sdk-dynamodb-1.10.20.jar" name="aws-java-sdk-dynamodb-1.10.20.jar" mvn_uri="mvn:org.talend.libraries/aws-java-sdk-dynamodb-1.10.20/6.0.0"/>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.mapr.6.0.1"
+            id="gcs-connector-hadoop2-2.1.6-shaded.jar"
+            name="gcs-connector-hadoop2-2.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop2-2.1.6/jar/shaded">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.mapr.6.0.1"
+            id="bigquery-connector-hadoop2-1.1.6-shaded.jar"
+            name="bigquery-connector-hadoop2-1.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop2-1.1.6/jar/shaded">
+        </libraryNeeded>
+
+		<!-- Groups -->
 		
         <libraryNeededGroup
                 description="S3 libraries for MapR 6.0.1"
@@ -1265,6 +1281,21 @@
             name="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-MAPR601">
             <library id="graphframes-0.5.0-spark2.1-s_2.11.jar" />
         </libraryNeededGroup>
+
+        <libraryNeededGroup
+                description="Libraries for GCS"
+                id="GCS-GROUP-MAPR601"
+                name="GCS-GROUP-MAPR601">
+            <library id="gcs-connector-hadoop2-2.1.6-shaded.jar"/>
+        </libraryNeededGroup>
+
+        <libraryNeededGroup
+                description="Libraries for BigQuery"
+                id="BIGQUERY-GROUP-MAPR601"
+                name="BIGQUERY-GROUP-MAPR601">
+            <library id="gcs-connector-hadoop2-2.1.6-shaded.jar"/>
+            <library id="bigquery-connector-hadoop2-1.1.6-shaded.jar"/>
+        </libraryNeededGroup>        
         
     </extension>
     <extension

@@ -13,6 +13,7 @@
 
 package org.talend.hadoop.distribution.hdpx;
 
+import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.EParquetPackagePrefix;
 import org.talend.hadoop.distribution.ESqoopPackageName;
 import org.talend.hadoop.distribution.component.*;
@@ -262,4 +263,10 @@ public class HDP3xxDistributionTemplate extends AbstractDynamicHDPDistributionTe
     public String getParquetPrefixPackageName() {
         return EParquetPackagePrefix.APACHE.toString();
     }
+    
+    @Override
+    public EHadoopVersion getHadoopVersion() {
+        return EHadoopVersion.HADOOP_3;
+    }
+    
 }

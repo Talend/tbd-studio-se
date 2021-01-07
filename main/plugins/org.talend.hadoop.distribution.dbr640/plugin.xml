@@ -122,6 +122,17 @@
                        context="plugin:org.talend.hadoop.distribution.dbr640"/>
         <libraryNeeded id="guava-27.1-jre.jar" name="guava-27.1-jre.jar" mvn_uri="mvn:com.google.guava/guava/27.1-jre"
                        context="plugin:org.talend.hadoop.distribution.dbr640"/>
+ 		<!-- GCS libraries -->
+        <libraryNeeded id="gcs-connector-hadoop2-2.1.6-shaded.jar" name="gcs-connector-hadoop2-2.1.6-shaded.jar" mvn_uri="mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop2-2.1.6/jar/shaded"
+                       context="plugin:org.talend.hadoop.distribution.dbr640"/> 
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dbr640"
+            id="bigquery-connector-hadoop2-1.1.6-shaded.jar"
+            name="bigquery-connector-hadoop2-1.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop2-1.1.6/jar/shaded">
+        </libraryNeeded>
+                       
         <libraryNeededGroup id="BIGDATA-LAUNCHER-LIB-DBR640" name="BIGDATA-LAUNCHER-LIB-DBR640"
                             description="Big Data launcher libraries for DBR640">
             <library id="gson-2.2.4.jar"/>
@@ -184,6 +195,22 @@
                             description="SPARK libraries for DBR640">
             <library id="spark-streaming_2.11-2.4.5.jar"/>
         </libraryNeededGroup>
+
+        <libraryNeededGroup
+                description="Libraries for GCS"
+                id="GCS-GROUP-Databricks_6_4"
+                name="GCS-GROUP-Databricks_6_4">
+            <library id="gcs-connector-hadoop2-2.1.6-shaded.jar"/>
+        </libraryNeededGroup>
+
+        <libraryNeededGroup
+                description="Libraries for BigQuery"
+                id="BIGQUERY-GROUP-Databricks_6_4"
+                name="BIGQUERY-GROUP-Databricks_6_4">
+            <library id="gcs-connector-hadoop2-2.1.6-shaded.jar"/>
+            <library id="bigquery-connector-hadoop2-1.1.6-shaded.jar"/>
+        </libraryNeededGroup>
+        
     </extension>
     <extension point="org.talend.core.runtime.classloader_provider"/>
 </plugin>

@@ -668,6 +668,22 @@
             "jarName" : "talend-lineage-api-0.2.0.jar",
             "mvnUri" : "mvn:org.talend.libraries/talend-lineage-api-0.2.0/6.0.0",
             "useStudioRepository" : "true"
+        },
+        {
+            "id": "gcs-connector-hadoop3",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "gcs-connector-hadoop3-2.1.6-shaded.jar",
+            "mvnUri": "mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop3-2.1.6/jar/shaded",
+            "useStudioRepository": "true"
+        },
+        {
+            "id": "bigquery-connector-hadoop3",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "bigquery-connector-hadoop3-1.1.6-shaded.jar",
+            "mvnUri": "mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop3-1.1.6/jar/shaded",
+            "useStudioRepository": "true"
         }
     ],
     "moduleGroups": [
@@ -879,6 +895,21 @@
             "id" : "HDFS-SPARK2_1-LIB-DYNAMIC",
             "description" : "",
             "modules": []
+        },
+        {
+            "id": "GCS-LIB-DYNAMIC",
+            "description": "",
+            "modules": [
+                "gcs-connector-hadoop3"
+            ]
+        },
+        {
+            "id": "BIGQUERY-LIB-DYNAMIC",
+            "description": "",
+            "modules": [
+                "gcs-connector-hadoop3",
+                "bigquery-connector-hadoop3"
+            ]
         }
     ],
     "classLoaders": [

@@ -33,6 +33,7 @@ import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.hdinsight.IMicrosoftHDInsightDistribution;
+import org.talend.hadoop.distribution.hdi.HDIDistribution;
 import org.talend.hadoop.distribution.hdinsight400.modulegroup.HDInsight40HiveModuleGroup;
 import org.talend.hadoop.distribution.hdinsight400.modulegroup.HDInsight40HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.hdinsight400.modulegroup.HDInsight40SparkBatchModuleGroup;
@@ -43,7 +44,7 @@ import org.talend.hadoop.distribution.hdinsight400.modulegroup.node.sparkbatch.H
 import org.talend.hadoop.distribution.hdinsight400.modulegroup.node.sparkstreaming.HDInsight40SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.hdinsight400.modulegroup.node.sparkstreaming.HDInsight40SparkStreamingTModelEncoderNodeModuleGroup;
 
-public class HDInsight40Distribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent,
+public class HDInsight40Distribution extends HDIDistribution  implements SparkBatchComponent, SparkStreamingComponent,
         IMicrosoftHDInsightDistribution, HiveOnSparkComponent, HiveComponent, MRComponent {
 
     public final static String VERSION = "MICROSOFT_HD_INSIGHT_4_0"; //$NON-NLS-1$
@@ -73,8 +74,7 @@ public class HDInsight40Distribution extends AbstractDistribution implements Spa
         moduleGroups.put(ComponentType.HIVE, HDInsight40HiveModuleGroup.getModuleGroups());
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
-        nodeModuleGroups = new HashMap<>();
-
+        nodeModuleGroups = super.buildNodeModuleGroups(distribution, version);
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
                 HDInsight40SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));

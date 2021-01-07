@@ -101,7 +101,7 @@ public class MapR510Distribution extends AbstractMapRDistribution implements HDF
         moduleGroups.put(ComponentType.MAPRDB, MapR510HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.OJAI, MapR510OjaiModuleGroup.getModuleGroups());
 
-        nodeModuleGroups = new HashMap<>();
+        nodeModuleGroups = AbstractMapRDistribution.buildNodeModuleGroups(DISTRIBUTION_NAME, VERSION);
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPREDUCE, MRConstant.S3_INPUT_COMPONENT),
                 MapR510MRS3NodeModuleGroup.getModuleGroups());
