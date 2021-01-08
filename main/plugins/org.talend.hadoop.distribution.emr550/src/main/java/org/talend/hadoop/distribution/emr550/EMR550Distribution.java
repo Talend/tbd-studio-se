@@ -40,6 +40,7 @@ import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.emr.IAmazonEMRDistribution;
+import org.talend.hadoop.distribution.emr.EMRDistribution;
 import org.talend.hadoop.distribution.emr550.modulegroup.EMR550HBaseModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.EMR550HCatalogModuleGroup;
 import org.talend.hadoop.distribution.emr550.modulegroup.EMR550HDFSModuleGroup;
@@ -66,7 +67,7 @@ import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
 @SuppressWarnings("nls")
-public class EMR550Distribution extends AbstractDistribution implements HBaseComponent, HDFSComponent, MRComponent, 
+public class EMR550Distribution extends EMRDistribution implements HBaseComponent, HDFSComponent, MRComponent, 
         HCatalogComponent, HiveComponent, SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, SqoopComponent,
         IAmazonEMRDistribution {
 
@@ -124,7 +125,7 @@ public class EMR550Distribution extends AbstractDistribution implements HBaseCom
     }
 
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(String distribution, String version) {
-        Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
+        Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = super.buildNodeModuleGroups(distribution, version);
 
         // WebHDFS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = EMR550WebHDFSModuleGroup.getModuleGroups(distribution, version);

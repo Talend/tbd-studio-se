@@ -15,6 +15,7 @@ package org.talend.hadoop.distribution.dynamic.template.cdp;
 import java.util.Map;
 
 import org.talend.hadoop.distribution.ComponentType;
+import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.ImpalaComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
@@ -68,6 +69,11 @@ public abstract class AbstractDynamicCDPDistributionTemplate extends AbstractDyn
     @Override
     public String getDistributionName() {
         return DISTRIBUTION_DISPLAY_NAME;
+    }
+    
+    @Override
+    public EHadoopVersion getHadoopVersion() {
+        return EHadoopVersion.HADOOP_3;
     }
 
 }

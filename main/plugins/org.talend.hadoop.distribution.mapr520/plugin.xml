@@ -405,6 +405,20 @@
 			mvn_uri="mvn:org.talend.libraries/graphframes-0.5.0-spark1.6-s_2.10/6.0.0">
 		</libraryNeeded>
 
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.mapr.5.2.0"
+            id="gcs-connector-hadoop2-2.1.6-shaded.jar"
+            name="gcs-connector-hadoop2-2.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop2-2.1.6/jar/shaded">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.mapr.5.2.0"
+            id="bigquery-connector-hadoop2-1.1.6-shaded.jar"
+            name="bigquery-connector-hadoop2-1.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop2-1.1.6/jar/shaded">
+        </libraryNeeded>
+
         <libraryNeededGroup
                 description="S3 libraries for MapR 5.2.0"
                 id="S3-LIB-MAPR520"
@@ -779,6 +793,21 @@
 			name="SPARK-GRAPHFRAMES-LIB-MRREQUIRED-MAPR520">
 			<library id="graphframes-0.5.0-spark1.6-s_2.10.jar" />
 		</libraryNeededGroup>
+
+        <libraryNeededGroup
+                description="Libraries for GCS"
+                id="GCS-GROUP-MAPR520"
+                name="GCS-GROUP-MAPR520">
+            <library id="gcs-connector-hadoop2-2.1.6-shaded.jar"/>
+        </libraryNeededGroup>
+
+        <libraryNeededGroup
+                description="Libraries for BigQuery"
+                id="BIGQUERY-GROUP-MAPR520"
+                name="BIGQUERY-GROUP-MAPR520">
+            <library id="gcs-connector-hadoop2-2.1.6-shaded.jar"/>
+            <library id="bigquery-connector-hadoop2-1.1.6-shaded.jar"/>
+        </libraryNeededGroup>        
         
     </extension>
     <extension

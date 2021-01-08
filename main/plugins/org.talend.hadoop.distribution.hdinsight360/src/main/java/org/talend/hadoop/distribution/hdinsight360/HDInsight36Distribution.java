@@ -39,6 +39,7 @@ import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.hdinsight.IMicrosoftHDInsightDistribution;
+import org.talend.hadoop.distribution.hdi.HDIDistribution;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.HDInsight36HiveModuleGroup;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.HDInsight36HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.HDInsight36MapReduceModuleGroup;
@@ -52,7 +53,7 @@ import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.sparkstreami
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.sparkstreaming.HDInsight36SparkStreamingSQLNodeModuleGroup;
 import org.talend.hadoop.distribution.hdinsight360.modulegroup.node.sparkstreaming.HDInsight36SparkStreamingTModelEncoderNodeModuleGroup;
 
-public class HDInsight36Distribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent,
+public class HDInsight36Distribution extends HDIDistribution implements SparkBatchComponent, SparkStreamingComponent,
         IMicrosoftHDInsightDistribution, HiveOnSparkComponent, HiveComponent, MRComponent {
 
     public final static String VERSION = "MICROSOFT_HD_INSIGHT_3_6"; //$NON-NLS-1$
@@ -83,9 +84,8 @@ public class HDInsight36Distribution extends AbstractDistribution implements Spa
         moduleGroups.put(ComponentType.MAPREDUCE, HDInsight36MapReduceModuleGroup.getModuleGroups());
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
-        nodeModuleGroups = new HashMap<>();
-
-
+        nodeModuleGroups = super.buildNodeModuleGroups(distribution, version);
+        
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
                 HDInsight36SparkBatchParquetNodeModuleGroup.getModuleGroups(distribution, version));
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),

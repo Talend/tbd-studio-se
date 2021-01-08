@@ -286,6 +286,21 @@
                 id="commons-logging-1.2"
                 name="commons-logging-1.2.jar"
                 mvn_uri="mvn:commons-logging/commons-logging/1.2"/>
+                
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.hdinsight400"
+            id="gcs-connector-hadoop3-2.1.6-shaded"
+            name="gcs-connector-hadoop3-2.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop3-2.1.6/jar/shaded">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.hdinsight400"
+            id="bigquery-connector-hadoop3-1.1.6-shaded"
+            name="bigquery-connector-hadoop3-1.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop3-1.1.6/jar/shaded">
+        </libraryNeeded>
+                
         <!-- Groups -->
 
         <!-- Big Data launcher group -->
@@ -499,6 +514,21 @@
             <library id="commons-codec-1.14"/>
             <!-- needed by avro structures generated in jobs -->
             <library id="jackson-core-asl-1.9.14-TALEND"/>
+        </libraryNeededGroup>
+        
+        <libraryNeededGroup
+                description="Libraries for GCS"
+                id="GCS-GROUP-MICROSOFT_HD_INSIGHT_4_0"
+                name="GCS-GROUP-MICROSOFT_HD_INSIGHT_4_0">
+            <library id="gcs-connector-hadoop3-2.1.6-shaded"/>
+        </libraryNeededGroup>
+        
+        <libraryNeededGroup
+                description="Libraries for BigQuery"
+                id="BIGQUERY-GROUP-MICROSOFT_HD_INSIGHT_4_0"
+                name="BIGQUERY-MICROSOFT_HD_INSIGHT_4_0">
+            <library id="gcs-connector-hadoop3-2.1.6-shaded"/>
+            <library id="bigquery-connector-hadoop3-1.1.6-shaded"/>
         </libraryNeededGroup>
 
     </extension>

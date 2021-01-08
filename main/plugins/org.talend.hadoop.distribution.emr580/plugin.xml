@@ -1676,7 +1676,21 @@
             name="spark-streaming-flume-assembly_2.11-2.2.0.jar"
             mvn_uri="mvn:org.talend.libraries/spark-streaming-flume-assembly_2.11-2.2.0/6.0.0">
         </libraryNeeded>
-
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr580"
+            id="gcs-connector-hadoop2-2.1.6-shaded.jar"
+            name="gcs-connector-hadoop2-2.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop2-2.1.6/jar/shaded">
+        </libraryNeeded>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr580"
+            id="bigquery-connector-hadoop2-1.1.6-shaded.jar"
+            name="bigquery-connector-hadoop2-1.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop2-1.1.6/jar/shaded">
+        </libraryNeeded>
+                
         <!-- Groups -->
 
         <!-- HDFS group -->
@@ -2172,6 +2186,21 @@
             <library id="jersey-client-1.9.jar"/>
         </libraryNeededGroup>
 
+        <libraryNeededGroup
+                description="Libraries for GCS"
+                id="GCS-GROUP-EMR_5_8_0"
+                name="GCS-GROUP-EMR_5_8_0">
+            <library id="gcs-connector-hadoop2-2.1.6-shaded.jar"/>
+        </libraryNeededGroup>
+
+        <libraryNeededGroup
+                description="Libraries for BigQuery"
+                id="BIGQUERY-GROUP-EMR_5_8_0"
+                name="BIGQUERY-GROUP-EMR_5_8_0">
+            <library id="gcs-connector-hadoop2-2.1.6-shaded.jar"/>
+            <library id="bigquery-connector-hadoop2-1.1.6-shaded.jar"/>
+        </libraryNeededGroup>
+        
     </extension>
 
 	<extension

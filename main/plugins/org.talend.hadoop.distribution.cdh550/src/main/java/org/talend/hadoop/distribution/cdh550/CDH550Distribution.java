@@ -18,12 +18,12 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
+import org.talend.hadoop.distribution.cdh.CDHDistribution;
 import org.talend.hadoop.distribution.cdh550.modulegroup.CDH550HBaseModuleGroup;
 import org.talend.hadoop.distribution.cdh550.modulegroup.CDH550HCatalogModuleGroup;
 import org.talend.hadoop.distribution.cdh550.modulegroup.CDH550HDFSModuleGroup;
@@ -65,7 +65,7 @@ import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
 import org.talend.hadoop.distribution.kudu.KuduVersion;
 
 @SuppressWarnings("nls")
-public class CDH550Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, HBaseComponent,
+public class CDH550Distribution extends CDHDistribution implements HDFSComponent, MRComponent, HBaseComponent,
  HiveComponent, ImpalaComponent, HCatalogComponent, CDHSparkBatchComponent,
         SparkStreamingComponent, HiveOnSparkComponent,
         SqoopComponent, IClouderaDistribution {
@@ -102,7 +102,7 @@ public class CDH550Distribution extends AbstractDistribution implements HDFSComp
         moduleGroups.put(ComponentType.HIVEONSPARK, CDH550HiveOnSparkModuleGroup.getModuleGroups());
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
-        nodeModuleGroups = new HashMap<>();
+        nodeModuleGroups = super.buildNodeModuleGroups(distribution, version);
 
         // WebHDFS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = CDH550WebHDFSModuleGroup.getModuleGroups(distribution, version);

@@ -30,6 +30,11 @@ public class DistributionModuleGroup {
         this.mModuleName = moduleName;
     }
 
+    public DistributionModuleGroup(String moduleName,boolean isMRRequired) {
+        this.mModuleName = moduleName;
+        this.mIsMRRequired = isMRRequired;
+    }
+    
     public DistributionModuleGroup(String moduleName, boolean isMRRequired, ComponentCondition requiredIf) {
         this.mModuleName = moduleName;
         this.mIsMRRequired = isMRRequired;

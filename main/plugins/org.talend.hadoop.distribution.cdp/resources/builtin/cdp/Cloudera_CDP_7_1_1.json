@@ -13,6 +13,30 @@
     "childNodes" : [ {
       "childNodes" : [ {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_bigquery_connector_hadoop3",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gcs_connector_hadoop3",
+        "tagName" : "library"
+      } ],
+      "description" : "",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_BIGQUERY_LIB_DYNAMIC",
+      "tagName" : "libraryNeededGroup",
+      "templateId" : "BIGQUERY-LIB-DYNAMIC"
+    }, {
+      "childNodes" : [ {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gcs_connector_hadoop3",
+        "tagName" : "library"
+      } ],
+      "description" : "",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_GCS_LIB_DYNAMIC",
+      "tagName" : "libraryNeededGroup",
+      "templateId" : "GCS-LIB-DYNAMIC"
+    }, {
+      "childNodes" : [ {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_accessors_smart_1_2_jar",
         "tagName" : "library"
       }, {
@@ -9494,6 +9518,15 @@
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.cdp",
       "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_bigquery_connector_hadoop3",
+      "mvn_uri" : "mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop3-1.1.6/jar/shaded",
+      "name" : "bigquery-connector-hadoop3-1.1.6-shaded.jar",
+      "tagName" : "libraryNeeded",
+      "useStudioRepository" : "true"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdp",
+      "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_bonecp_0_8_0_RELEASE_jar",
       "mvn_uri" : "mvn:com.jolbox/bonecp/0.8.0.RELEASE/jar",
       "name" : "bonecp-0.8.0.RELEASE.jar",
@@ -9935,6 +9968,15 @@
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.cdp",
       "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gcs_connector_hadoop3",
+      "mvn_uri" : "mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop3-2.1.6/jar/shaded",
+      "name" : "gcs-connector-hadoop3-2.1.6-shaded.jar",
+      "tagName" : "libraryNeeded",
+      "useStudioRepository" : "true"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdp",
+      "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_geronimo_jcache_1_0_spec_1_0_alpha_1_jar",
       "mvn_uri" : "mvn:org.apache.geronimo.specs/geronimo-jcache_1.0_spec/1.0-alpha-1/jar",
       "name" : "geronimo-jcache_1.0_spec-1.0-alpha-1.jar",
@@ -10192,7 +10234,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdp",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_hadoop_yarn_server_web_proxy_3_1_1_7_1_1_0_565_jar",
-      "mvn_uri" : "mvn:org.apache.hadoop/hadoop-yarn-server-web-proxy/3.1.1.7.1.1.0-565",
+      "mvn_uri" : "mvn:org.apache.hadoop/hadoop-yarn-server-web-proxy/3.1.1.7.1.1.0-565/jar",
       "name" : "hadoop-yarn-server-web-proxy-3.1.1.7.1.1.0-565.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -10240,7 +10282,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdp",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_hbase_hadoop_compat_2_2_3_7_1_1_0_565_jar",
-      "mvn_uri" : "mvn:org.apache.hbase/hbase-hadoop-compat/2.2.3.7.1.1.0-565",
+      "mvn_uri" : "mvn:org.apache.hbase/hbase-hadoop-compat/2.2.3.7.1.1.0-565/jar",
       "name" : "hbase-hadoop-compat-2.2.3.7.1.1.0-565.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -10368,7 +10410,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdp",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_hive_common_3_1_3000_7_1_1_0_565_jar",
-      "mvn_uri" : "mvn:org.apache.hive/hive-common/3.1.3000.7.1.1.0-565",
+      "mvn_uri" : "mvn:org.apache.hive/hive-common/3.1.3000.7.1.1.0-565/jar",
       "name" : "hive-common-3.1.3000.7.1.1.0-565.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -10440,7 +10482,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdp",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_hive_metastore_3_1_3000_7_1_1_0_565_jar",
-      "mvn_uri" : "mvn:org.apache.hive/hive-metastore/3.1.3000.7.1.1.0-565",
+      "mvn_uri" : "mvn:org.apache.hive/hive-metastore/3.1.3000.7.1.1.0-565/jar",
       "name" : "hive-metastore-3.1.3000.7.1.1.0-565.jar",
       "tagName" : "libraryNeeded"
     }, {

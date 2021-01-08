@@ -1204,7 +1204,23 @@
       "jarName": "talend-bigdata-aws-lib-1.0.1.jar",
       "mvnUri": "mvn:org.talend.bigdata.libs/talend-bigdata-aws-lib/1.0.1",
       "description": ""
-    }
+    },
+    {
+        "id": "gcs-connector-hadoop2",
+        "type": "STANDARD",
+        "context": "{properties.context}",
+        "jarName": "gcs-connector-hadoop2-2.1.6-shaded.jar",
+        "mvnUri": "mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop2-2.1.6/jar/shaded",
+        "useStudioRepository": "true"
+    },
+        {
+            "id": "bigquery-connector-hadoop2",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "bigquery-connector-hadoop2-1.1.6-shaded.jar",
+            "mvnUri": "mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop2-1.1.6/jar/shaded",
+            "useStudioRepository": "true"
+        }        
   ],
   "moduleGroups": [
     {
@@ -1485,7 +1501,22 @@
         "json4s-ast_2.11-3.2.11",
         "json4s-native_2.11-3.2.11"
       ]
-    }
+    },
+    {
+        "id": "GCS-LIB-DYNAMIC",
+        "description": "",
+        "modules": [
+            "gcs-connector-hadoop2"
+        ]
+    },
+        {
+            "id": "BIGQUERY-LIB-DYNAMIC",
+            "description": "",
+            "modules": [
+                "gcs-connector-hadoop2",
+                "bigquery-connector-hadoop2"
+            ]
+        }
   ],
   "classLoaders": [
     {

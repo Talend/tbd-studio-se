@@ -6,9 +6,7 @@
       "id": "HDP_3_1_4_12_1",
       "name": "Hortonworks Data Platform V3.1.4.12-1",
       "repository": "https://talend-update.talend.com/nexus/content/groups/dynamicdistribution/",
-      "selectedSparkVersions": [
-        "SPARK_2_3"
-      ],
+      "selectedSparkVersions": ["SPARK_2_3"],
       "tagName": "dynamicPluginConfiguration",
       "templateId": "HDP3xxDistributionTemplate",
       "version": "3.1.4.12-1"
@@ -343,6 +341,39 @@
           "tagName": "libraryNeededGroup",
           "templateId": "ATLAS-SPARK_2-DYNAMIC"
         },
+
+        {
+          "childNodes": [
+            {
+              "childNodes": [],
+              "id": "DYNAMIC_HDP_3_1_4_12_1_bigquery_connector_hadoop3",
+              "tagName": "library"
+            },
+            {
+              "childNodes": [],
+              "id": "DYNAMIC_HDP_3_1_4_12_1_gcs_connector_hadoop3",
+              "tagName": "library"
+            }
+          ],
+          "description": "",
+          "id": "DYNAMIC_HDP_3_1_4_12_1_BIGQUERY_LIB_DYNAMIC",
+          "tagName": "libraryNeededGroup",
+          "templateId": "BIGQUERY-LIB-DYNAMIC"
+        },
+        {
+          "childNodes": [
+            {
+              "childNodes": [],
+              "id": "DYNAMIC_HDP_3_1_4_12_1_gcs_connector_hadoop3",
+              "tagName": "library"
+            }
+          ],
+          "description": "",
+          "id": "DYNAMIC_HDP_3_1_4_12_1_GCS_LIB_DYNAMIC",
+          "tagName": "libraryNeededGroup",
+          "templateId": "GCS-LIB-DYNAMIC"
+        },
+
         {
           "childNodes": [
             {
@@ -1692,7 +1723,8 @@
               "childNodes": [],
               "id": "DYNAMIC_HDP_3_1_4_12_1_stax2_api_3_1_4_jar",
               "tagName": "library"
-            }, {
+            },
+            {
               "childNodes": [],
               "id": "DYNAMIC_HDP_3_1_4_12_1_token_provider_1_0_1_jar",
               "tagName": "library"
@@ -1990,7 +2022,7 @@
               "id": "DYNAMIC_HDP_3_1_4_12_1_commons_lang_2_6_jar",
               "tagName": "library"
             },
-              {
+            {
               "childNodes": [],
               "id": "DYNAMIC_HDP_3_1_4_12_1_commons_logging_1_2_jar",
               "tagName": "library"
@@ -3409,6 +3441,26 @@
           "mvn_uri": "mvn:com.zaxxer/HikariCP-java7/2.4.12/jar",
           "name": "HikariCP-java7-2.4.12.jar",
           "tagName": "libraryNeeded"
+        },
+        {
+          "childNodes": [],
+          "context": "plugin:org.talend.hadoop.distribution.hdpx",
+          "excludeDependencies": "true",
+          "id": "DYNAMIC_HDP_3_1_4_12_1_gcs_connector_hadoop3",
+          "mvn_uri": "mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop3-2.1.6/jar/shaded",
+          "name": "gcs-connector-hadoop3-2.1.6-shaded.jar",
+          "tagName": "libraryNeeded",
+          "useStudioRepository": "true"
+        },
+        {
+          "childNodes": [],
+          "context": "plugin:org.talend.hadoop.distribution.hdpx",
+          "excludeDependencies": "true",
+          "id": "DYNAMIC_HDP_3_1_4_12_1_bigquery_connector_hadoop3",
+          "mvn_uri": "mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop3-1.1.6/jar/shaded",
+          "name": "bigquery-connector-hadoop3-1.1.6-shaded.jar",
+          "tagName": "libraryNeeded",
+          "useStudioRepository": "true"
         },
         {
           "childNodes": [
@@ -5612,7 +5664,7 @@
               "id": "DYNAMIC_HDP_3_1_4_12_1_commons_lang_2_6_jar",
               "tagName": "library"
             },
-              {
+            {
               "childNodes": [],
               "id": "DYNAMIC_HDP_3_1_4_12_1_commons_logging_1_2_jar",
               "tagName": "library"
@@ -7436,7 +7488,7 @@
               "id": "DYNAMIC_HDP_3_1_4_12_1_commons_lang_2_6_jar",
               "tagName": "library"
             },
-              {
+            {
               "childNodes": [],
               "id": "DYNAMIC_HDP_3_1_4_12_1_commons_logging_1_2_jar",
               "tagName": "library"
@@ -9935,7 +9987,7 @@
               "id": "DYNAMIC_HDP_3_1_4_12_1_commons_lang_2_6_jar",
               "tagName": "library"
             },
-              {
+            {
               "childNodes": [],
               "id": "DYNAMIC_HDP_3_1_4_12_1_commons_logging_1_2_jar",
               "tagName": "library"
@@ -10275,9 +10327,9 @@
         {
           "childNodes": [
             {
-              "childNodes" : [ ],
-              "id" : "DYNAMIC_HDP_3_1_4_12_1_talend_bigdata_aws_lib_1_0_1",
-              "tagName" : "library"
+              "childNodes": [],
+              "id": "DYNAMIC_HDP_3_1_4_12_1_talend_bigdata_aws_lib_1_0_1",
+              "tagName": "library"
             }
           ],
           "description": "",
@@ -10287,7 +10339,6 @@
         },
         {
           "childNodes": [
-            
             {
               "childNodes": [],
               "id": "DYNAMIC_HDP_3_1_4_12_1_HikariCP_java7_2_4_12_jar",
@@ -16500,15 +16551,17 @@
           "mvn_uri": "mvn:org.apache.taglibs/taglibs-standard-spec/1.2.5/jar",
           "name": "taglibs-standard-spec-1.2.5.jar",
           "tagName": "libraryNeeded"
-        }, {
-          "childNodes" : [ ],
-          "context" : "plugin:org.talend.hadoop.distribution.hdpx",
-          "excludeDependencies" : "true",
-          "id" : "DYNAMIC_HDP_3_1_4_12_1_talend_bigdata_aws_lib_1_0_1",
-          "mvn_uri" : "mvn:org.talend.bigdata.libs/talend-bigdata-aws-lib/1.0.1",
-          "name" : "talend-bigdata-aws-lib-1.0.1.jar",
-          "tagName" : "libraryNeeded"
-        }, {
+        },
+        {
+          "childNodes": [],
+          "context": "plugin:org.talend.hadoop.distribution.hdpx",
+          "excludeDependencies": "true",
+          "id": "DYNAMIC_HDP_3_1_4_12_1_talend_bigdata_aws_lib_1_0_1",
+          "mvn_uri": "mvn:org.talend.bigdata.libs/talend-bigdata-aws-lib/1.0.1",
+          "name": "talend-bigdata-aws-lib-1.0.1.jar",
+          "tagName": "libraryNeeded"
+        },
+        {
           "childNodes": [],
           "context": "plugin:org.talend.hadoop.distribution.hdpx",
           "excludeDependencies": "true",

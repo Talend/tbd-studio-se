@@ -1283,7 +1283,23 @@
             "context": "{properties.context}",
             "jarName": "commons-codec-1.10.jar",
             "description": ""
-        }
+        },
+        {
+            "id": "gcs-connector-hadoop2",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "gcs-connector-hadoop2-2.1.6-shaded.jar",
+            "mvnUri": "mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop2-2.1.6/jar/shaded",
+            "useStudioRepository": "true"
+        },
+        {
+            "id": "bigquery-connector-hadoop2",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "bigquery-connector-hadoop2-1.1.6-shaded.jar",
+            "mvnUri": "mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop2-1.1.6/jar/shaded",
+            "useStudioRepository": "true"
+        }        
     ],
     "moduleGroups": [
         {
@@ -1624,6 +1640,21 @@
             "description": "",
             "modules": [
                 "kite-data-core"
+            ]
+        },
+        {
+            "id": "GCS-LIB-DYNAMIC",
+            "description": "",
+            "modules": [
+                "gcs-connector-hadoop2"
+            ]
+        },
+        {
+            "id": "BIGQUERY-LIB-DYNAMIC",
+            "description": "",
+            "modules": [
+                "gcs-connector-hadoop2",
+                "bigquery-connector-hadoop2"
             ]
         }
     ],

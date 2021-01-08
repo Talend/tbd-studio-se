@@ -28,12 +28,14 @@ import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
+import org.talend.hadoop.distribution.constants.ModuleGroupName;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.qubole.IQuboleDistribution;
 import org.talend.hadoop.distribution.qubole.modulegroup.QuboleHiveModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QuboleSparkBatchModuleGroup;
 import org.talend.hadoop.distribution.qubole.modulegroup.QuboleSparkStreamingModuleGroup;
+import org.talend.hadoop.distribution.utils.ModuleGroupsUtils;
 
 public class QuboleDistribution extends AbstractDistribution implements SparkBatchComponent, SparkStreamingComponent, HiveComponent, IQuboleDistribution {
 
@@ -85,6 +87,8 @@ public class QuboleDistribution extends AbstractDistribution implements SparkBat
         nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_CONFIGURATION_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, null));
         nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_INPUT_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, "USE_EXISTING_CONNECTION == 'false'"));
         nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_OUTPUT_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, "USE_EXISTING_CONNECTION == 'false'"));
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.GCS_CONFIG_COMPONENT), ModuleGroupsUtils.getModuleGroups(distribution, version, (String) null, ModuleGroupName.GCS.get(this.getVersion()), true));
+        nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.BIGQUERY_CONFIG_COMPONENT),ModuleGroupsUtils.getModuleGroups(distribution, version, (String) null, ModuleGroupName.BIGQUERY.get(this.getVersion()), true));
         nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_CONFIGURATION_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, null));
         nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_INPUT_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, "USE_EXISTING_CONNECTION == 'false'"));
         nodesMap.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_OUTPUT_COMPONENT), QuboleSparkBatchModuleGroup.getDynamoModuleGroups(distribution, version, "USE_EXISTING_CONNECTION == 'false'"));
