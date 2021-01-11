@@ -286,16 +286,18 @@ public abstract class AbstractDynamicDistributionTemplate extends AbstractDistri
     }
 
     @Override
-    public boolean unregistPluginExtensions() {
+    public boolean unregistPluginExtensions(boolean reloadLibCache) {
         if (registedPluginAdapter != null) {
             synchronized (registedPluginAdapterLock) {
                 if (registedPluginAdapter != null) {
                     try {
                         DynamicServiceUtil.removeContribution(registedPluginAdapter.getPlugin());
                         registedPluginAdapter = null;
-                        ILibrariesService libService = ILibrariesService.get();
-                        if (libService != null) {
-                            libService.resetModulesNeeded();
+                        if (reloadLibCache) {
+                            ILibrariesService libService = ILibrariesService.get();
+                            if (libService != null) {
+                                libService.resetModulesNeeded();
+                            }
                         }
                         HadoopDistributionsHelper.updatePluginExtensionCacheVersion();
                         return true;

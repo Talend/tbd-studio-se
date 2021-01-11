@@ -35,6 +35,6 @@ public interface IDynamicDistributionTemplate {
 
     boolean registPluginExtensions();
 
-    boolean unregistPluginExtensions();
+    boolean unregistPluginExtensions(boolean reloadLibCache);
 
 }

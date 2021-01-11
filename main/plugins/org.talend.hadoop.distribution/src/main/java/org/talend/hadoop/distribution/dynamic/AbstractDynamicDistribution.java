@@ -29,6 +29,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.eclipse.core.runtime.FileLocator;
 import org.osgi.framework.Bundle;
 import org.talend.commons.exception.ExceptionHandler;
+import org.talend.core.model.general.ILibrariesService;
 import org.talend.core.model.general.Project;
 import org.talend.core.runtime.dynamic.DynamicFactory;
 import org.talend.core.runtime.dynamic.DynamicServiceUtil;
@@ -309,7 +310,7 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
         try {
             IDynamicDistributionTemplate existingTemplate = registedDistribution.get(id);
             if (existingTemplate != null) {
-                unloadDistribution(existingTemplate);
+                unloadDistribution(existingTemplate, true);
                 DynamicPluginAdapter existingPluginAdapter = existingTemplate.getPluginAdapter();
                 IDynamicPluginConfiguration existingPluginConfig = existingPluginAdapter.getPluginConfiguration();
                 String existingProjectName = (String) existingPluginConfig
@@ -340,9 +341,9 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
         distributionTemplate.registOsgiServices();
     }
 
-    private void unloadDistribution(IDynamicDistributionTemplate distribution) {
+    private void unloadDistribution(IDynamicDistributionTemplate distribution, boolean reloadLibCache) {
         try {
-            distribution.unregistPluginExtensions();
+            distribution.unregistPluginExtensions(reloadLibCache);
         } catch (Exception e) {
             ExceptionHandler.process(e);
         }
@@ -370,7 +371,7 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
     }
 
     @Override
-    public void unregisterAllBuiltin(IDynamicMonitor monitor) throws Exception {
+    public void unregisterAllBuiltin(IDynamicMonitor monitor, boolean reloadLibCache) throws Exception {
         List<IDynamicPlugin> allBuiltinDynamicPlugins = getAllBuiltinDynamicPlugins(monitor);
         if (allBuiltinDynamicPlugins == null || allBuiltinDynamicPlugins.isEmpty()) {
             ExceptionHandler.log(this.getClass().getSimpleName() + ": no build dynamic plugins found when unregisting");
@@ -378,9 +379,15 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
         }
         for (IDynamicPlugin dynamicPlugin : allBuiltinDynamicPlugins) {
             try {
-                unregister(dynamicPlugin, monitor);
+                unregister(dynamicPlugin, monitor, false);
             } catch (Throwable e) {
                 ExceptionHandler.process(e);
+            }
+        }
+        if (reloadLibCache) {
+            ILibrariesService libService = ILibrariesService.get();
+            if (libService != null) {
+                libService.resetModulesNeeded();
             }
         }
     }
@@ -389,13 +396,13 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
             throws Exception;
 
     @Override
-    public void unregister(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception {
+    public void unregister(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor, boolean reloadLibCache) throws Exception {
         IDynamicPluginConfiguration pluginConfiguration = dynamicPlugin.getPluginConfiguration();
         String id = pluginConfiguration.getId();
 
         IDynamicDistributionTemplate distribution = registedDistribution.remove(id);
         if (distribution != null) {
-            unloadDistribution(distribution);
+            unloadDistribution(distribution, reloadLibCache);
         }
     }
 
