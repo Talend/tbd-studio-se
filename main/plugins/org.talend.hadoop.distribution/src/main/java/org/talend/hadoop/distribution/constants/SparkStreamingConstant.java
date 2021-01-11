@@ -98,4 +98,8 @@ public final class SparkStreamingConstant {
 
     public static final String REDSHIFT_OUTPUT_COMPONENT = "tRedshiftOutput"; //$NON-NLS-1$
 
+    public static final String REST_WS_INPUT_COMPONENT = "tRestWebServiceLookupInput"; //$NON-NLS-1$
+
+    public static final String REST_WS_OUTPUT_COMPONENT = "tRestWebServiceOutput"; //$NON-NLS-1$
+
 }

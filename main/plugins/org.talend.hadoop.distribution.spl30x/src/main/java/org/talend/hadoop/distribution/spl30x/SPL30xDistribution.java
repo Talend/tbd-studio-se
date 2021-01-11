@@ -217,6 +217,12 @@ public class SPL30xDistribution extends AbstractDistribution implements ISparkLo
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_INPUT_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
                 SPL30xConstant.SPARK_STREAMING_DYNAMODB_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
 
+        // Spark Streaming Rest
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.REST_WS_OUTPUT_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
+                SPL30xConstant.SPARK_STREAMING_REST_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.REST_WS_INPUT_COMPONENT), SPL30xSparkBatchNodeModuleGroup.getModuleGroup(
+                SPL30xConstant.SPARK_STREAMING_REST_MODULE_GROUP.getModuleName(), SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+
         return result;
 
     }
