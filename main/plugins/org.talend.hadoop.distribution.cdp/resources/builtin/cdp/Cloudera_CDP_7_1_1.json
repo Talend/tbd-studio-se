@@ -8488,11 +8488,15 @@
     }, {
       "childNodes" : [ {
         "childNodes" : [ ],
-        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_aws_java_sdk_bundle_1_11_563_jar",
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_aws_java_sdk_bundle",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_hadoop_aws_3_1_1_7_1_1_0_565_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_aws",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -9405,10 +9409,11 @@
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.cdp",
       "excludeDependencies" : "true",
-      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_aws_java_sdk_bundle_1_11_563_jar",
-      "mvn_uri" : "mvn:com.amazonaws/aws-java-sdk-bundle/1.11.563/jar",
-      "name" : "aws-java-sdk-bundle-1.11.563.jar",
-      "tagName" : "libraryNeeded"
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_aws_java_sdk_bundle",
+      "mvn_uri" : "mvn:com.amazonaws/aws-java-sdk-bundle/1.11.760",
+      "name" : "aws-java-sdk-bundle-1.11.760.jar",
+      "tagName" : "libraryNeeded",
+      "useStudioRepository" : "true"
     }, {
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.cdp",
@@ -12455,6 +12460,15 @@
       "mvn_uri" : "mvn:org.apache.taglibs/taglibs-standard-spec/1.2.5/jar",
       "name" : "taglibs-standard-spec-1.2.5.jar",
       "tagName" : "libraryNeeded"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdp",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_aws",
+      "mvn_uri" : "mvn:org.talend.bigdata.libs/talend-bigdata-aws-lib/1.1.0",
+      "name" : "talend-bigdata-aws-lib-1.1.0.jar",
+      "tagName" : "libraryNeeded",
+      "useStudioRepository" : "true"
     }, {
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.cdp",
