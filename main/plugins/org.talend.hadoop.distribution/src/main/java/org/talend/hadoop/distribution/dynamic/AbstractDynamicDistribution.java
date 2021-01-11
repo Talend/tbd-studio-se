@@ -314,7 +314,8 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
                 IDynamicPluginConfiguration existingPluginConfig = existingPluginAdapter.getPluginConfiguration();
                 String existingProjectName = (String) existingPluginConfig
                         .getAttribute(DynamicConstants.ATTR_PROJECT_TECHNICAL_NAME);
-                ExceptionHandler.log("Dynamic distribution: " + existingProjectName + "/" + id + " already exists, unloaded.");
+                ExceptionHandler.log("Dynamic distribution: " + existingProjectName + "/" + id
+                        + " already exists, unloaded the old one and reload the new one");
             }
         } catch (Exception e) {
             ExceptionHandler.process(e);
@@ -392,7 +393,7 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
         IDynamicPluginConfiguration pluginConfiguration = dynamicPlugin.getPluginConfiguration();
         String id = pluginConfiguration.getId();
 
-        IDynamicDistributionTemplate distribution = registedDistribution.get(id);
+        IDynamicDistributionTemplate distribution = registedDistribution.remove(id);
         if (distribution != null) {
             unloadDistribution(distribution);
         }

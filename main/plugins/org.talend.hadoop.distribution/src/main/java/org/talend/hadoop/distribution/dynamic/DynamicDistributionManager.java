@@ -625,4 +625,10 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
     public String getDynamicDistributionCacheVersion() {
         return HadoopDistributionsHelper.getCacheVersion();
     }
+
+    @Override
+    public String getPluginExtensionCacheVersion() {
+        return HadoopDistributionsHelper.getPluginExtensionCacheVersion();
+    }
+
 }

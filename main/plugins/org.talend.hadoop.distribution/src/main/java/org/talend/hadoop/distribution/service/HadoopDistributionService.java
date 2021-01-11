@@ -132,7 +132,7 @@ public class HadoopDistributionService implements IHadoopDistributionService {
         if (hadoopDistributionVersion instanceof DynamicDistributionVersion) {
             IDynamicDistributionTemplate distributionTemplate = ((DynamicDistributionVersion) hadoopDistributionVersion)
                     .getDistributionTemplate();
-            if (distributionTemplate != null) {
+            if (distributionTemplate != null && !distributionTemplate.isPluginExtensionsRegisted()) {
                 return distributionTemplate.registPluginExtensions();
             }
         }

@@ -118,14 +118,22 @@ public class HadoopDistributionsHelper {
      */
     public static final DistributionsManager IMPALA = new DistributionsManager(ImpalaComponent.class.getName(), null, true);
 
+    /**
+     * Cache version for osgi
+     */
     private static String cacheVersion = "Initial Cache Version"; //$NON-NLS-1$
+
+    /**
+     * Cache version for plugin extension
+     */
+    private static String pluginExtensionCacheVersion = "Initial Cache Version"; //$NON-NLS-1$
 
     static {
         ServiceListener serviceListener = new ServiceListener() {
 
             @Override
             public void serviceChanged(ServiceEvent event) {
-                cacheVersion = String.valueOf(System.currentTimeMillis());
+                updateCacheVersion();
                 if (event.getType() == ServiceEvent.REGISTERED) {
                     ServiceReference<? extends Object> sr = event.getServiceReference();
                     if (sr != null) {
@@ -231,13 +239,34 @@ public class HadoopDistributionsHelper {
         return FrameworkUtil.getBundle(DistributionFactory.class).getBundleContext();
     }
 
+    /**
+     * Cache version for osgi
+     */
     public static String getCacheVersion() {
         return cacheVersion;
     }
 
+    /**
+     * Cache version for osgi
+     */
     public static String updateCacheVersion() {
         cacheVersion = String.valueOf(System.currentTimeMillis());
         return cacheVersion;
+    }
+
+    /**
+     * Cache version for plugin extension
+     */
+    public static String getPluginExtensionCacheVersion() {
+        return pluginExtensionCacheVersion;
+    }
+
+    /**
+     * Cache version for plugin extension
+     */
+    public static String updatePluginExtensionCacheVersion() {
+        pluginExtensionCacheVersion = String.valueOf(System.currentTimeMillis());
+        return pluginExtensionCacheVersion;
     }
 
     /**
