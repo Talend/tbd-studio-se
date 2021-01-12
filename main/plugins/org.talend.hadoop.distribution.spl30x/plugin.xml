@@ -311,13 +311,15 @@
           id="protobuf-java-2.5.0.jar" name="protobuf-java-2.5.0.jar"
           mvn_uri="mvn:com.google.protobuf/protobuf-java/2.5.0"/>
 
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
-          id="gcs-connector-hadoop3-2.1.4.jar" name="gcs-connector-hadoop3-2.1.4.jar"
-          mvn_uri="mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop3-2.1.4"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+            id="gcs-connector-hadoop3-2.1.6-shaded" name="gcs-connector-hadoop3-2.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop3-2.1.6/jar/shaded">
+        </libraryNeeded>
 
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
-          id="bigquery-connector-hadoop3-1.1.4.jar" name="bigquery-connector-hadoop3-1.1.4.jar"
-          mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop3-1.1.4"/>
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+            id="bigquery-connector-hadoop3-1.1.6-shaded" name="bigquery-connector-hadoop3-1.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop3-1.1.6/jar/shaded">
+        </libraryNeeded>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
           id="google-api-services-bigquery-v2-rev20200625-1.30.10.jar" name="google-api-services-bigquery-v2-rev20200625-1.30.10.jar"
@@ -569,7 +571,7 @@
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
           id="hk2-api-2.6.1.jar" name="hk2-api-2.6.1.jar" 
-          mvn_uri="mvn:	org.glassfish.hk2/hk2-api/2.6.1"/>
+          mvn_uri="mvn:org.glassfish.hk2/hk2-api/2.6.1"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
           id="hk2-locator-2.6.1.jar" name="hk2-locator-2.6.1.jar" 
@@ -699,30 +701,14 @@
 
         <!-- Google Storage group -->
         <libraryNeededGroup description="Google Storage libraries for spl30x" id="SPARK_BATCH_GS_MODULE_GROUP_SPL30x" name="SPARK_BATCH_GS_MODULE_GROUP_SPL30x">
-            <library id="gcs-connector-hadoop3-2.1.4.jar"/>
+            <library id="gcs-connector-hadoop3-2.1.6-shaded"/>
         </libraryNeededGroup>
 
         <!-- Google Big Query group -->
         <libraryNeededGroup description="Google Big Query libraries for spl30x" id="SPARK_BATCH_BIGQUERY_MODULE_GROUP_SPL30x" name="SPARK_BATCH_BIGQUERY_MODULE_GROUP_SPL30x">
-            <library id="bigquery-connector-hadoop3-1.1.4.jar"/>
-            <library id="gcs-connector-hadoop3-2.1.4.jar"/>
-            <library id="google-api-services-bigquery-v2-rev20200625-1.30.10.jar"/>
-            <library id="google-http-client-1.36.0.jar"/>
-            <library id="google-extensions-0.5.1.jar"/>
-            <library id="util-hadoop-hadoop3-2.1.4.jar"/>
-            <library id="flogger-0.5.1.jar"/>
-            <library id="flogger-slf4j-backend-0.5.1.jar"/>
-            <library id="flogger-system-backend-0.5.1.jar"/>
-            <library id="google-api-client-1.30.10.jar"/>
-            <library id="google-http-client-jackson2-1.36.0.jar"/>
-            <library id="google-oauth-client-1.31.0.jar"/>
-            <library id="google-oauth-client-java6-1.31.0.jar"/>
-            <library id="grpc-context-1.30.0.jar"/>
+            <library id="gcs-connector-hadoop3-2.1.6-shaded"/>
+            <library id="bigquery-connector-hadoop3-1.1.6-shaded"/>
             <library id="gson-2.2.4.jar"/>
-            <library id="httpclient-4.5.12.jar"/>
-            <library id="opencensus-api-0.24.0.jar"/>
-            <library id="opencensus-contrib-http-util-0.24.0.jar"/>
-            <library id="util-2.1.4.jar"/>
         </libraryNeededGroup>
 
         <!-- HiveOnSpark group -->
@@ -779,7 +765,7 @@
         <!-- Redshift group -->
         <libraryNeededGroup description="Redshift libraries for spl30x" id="SPARK_BATCH_REDSHIFT_MODULE_GROUP_SPL30x" name="SPARK_BATCH_REDSHIFT_MODULE_GROUP_SPL30x">
             <library id="spark-redshift_2.12-4.2.0.jar"/>
-            <library id="spark-avro_2.12-3.0.1.jar"/>
+            <library id="spark-avro_2.12-3.0.1.jar"/><library id="gson-2.2.4.jar"/>
             <library id="avro-mapred-1.8.2.jar"/>
         </libraryNeededGroup>
         
