@@ -400,4 +400,8 @@ public boolean isQuboleDistribution() {
     public String getLightWeightClasspath() {
     	return "";
     }
+    
+    public boolean doSupportEMRFS() {
+    	return false;
+    }
 }

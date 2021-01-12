@@ -469,6 +469,28 @@
             name="hive-service-rpc-2.1.1-dataproc11.jar"
             mvn_uri="mvn:org.talend.libraries/hive-service-rpc-2.1.1-dataproc11/6.0.0">
         </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc11"
+            id="bigquery-connector-0.10.1-hadoop2"
+            name="bigquery-connector-0.10.1-hadoop2.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/0.10.1-hadoop2">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc11"
+            id="google-api-services-bigquery-v2-rev459-1.25.0"
+            name="google-api-services-bigquery-v2-rev459-1.25.0.jar"
+            mvn_uri="mvn:com.google.apis/google-api-services-bigquery/v2-rev459-1.25.0">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.dataproc11"
+            id="gson-2.3"
+            name="gson-2.3.jar"
+            mvn_uri="mvn:com.google.code.gson/gson/2.3">
+        </libraryNeeded>
+
         <!-- Groups -->
         
         <!-- Big Data launcher group -->
@@ -712,6 +734,16 @@
                 name="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-DATAPROC11">
             <library id="kafka-clients-dataproc11"/>
         </libraryNeededGroup>     
+        
+        <libraryNeededGroup
+                description="Libraries for BigQuery"
+                id="BIGQUERY-GROUP-DATAPROC_1_1"
+                name="BIGQUERY-GROUP-DATAPROC_1_1">
+            <library id="bigquery-connector-0.10.1-hadoop2"/>
+            <library id="google-api-services-bigquery-v2-rev459-1.25.0"/>
+            <library id="gson-2.3"/>
+        </libraryNeededGroup>
+        
         
     </extension>
     <extension

@@ -77,7 +77,7 @@ public class DBR350Distribution extends AbstractDatabricksDistribution implement
     }
 
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(String distribution, String version) {
-        Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
+        Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = super.buildNodeModuleGroups(distribution, version);
         // Azure
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH,
                 SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT), DBR350SparkBatchAzureNodeModuleGroup

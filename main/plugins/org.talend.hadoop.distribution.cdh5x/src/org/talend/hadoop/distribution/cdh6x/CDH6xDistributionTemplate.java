@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
-
+import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.EParquetPackagePrefix;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.ESqoopPackageName;
@@ -331,4 +331,10 @@ public class CDH6xDistributionTemplate extends AbstractDynamicCDHDistributionTem
     public String getParquetPrefixPackageName() {
         return EParquetPackagePrefix.APACHE.toString();
     }
+    
+    @Override
+    public EHadoopVersion getHadoopVersion() {
+        return EHadoopVersion.HADOOP_3;
+    }
+
 }

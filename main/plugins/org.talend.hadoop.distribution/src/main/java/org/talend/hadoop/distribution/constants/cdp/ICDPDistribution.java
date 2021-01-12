@@ -19,7 +19,9 @@ package org.talend.hadoop.distribution.constants.cdp;
 @SuppressWarnings("nls")
 public interface ICDPDistribution {
 
-    static final String DISTRIBUTION_NAME = "CDP";
+    static final String DISTRIBUTION_NAME = "CLOUDERA";
+    
+    static final String DISTRIBUTION_NAME_WIZARD = "CDP";
 
     static final String DISTRIBUTION_DISPLAY_NAME = "Cloudera Data Platform";
 }
