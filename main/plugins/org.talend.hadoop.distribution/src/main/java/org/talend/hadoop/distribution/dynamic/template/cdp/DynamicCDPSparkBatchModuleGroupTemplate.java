@@ -44,7 +44,7 @@ public class DynamicCDPSparkBatchModuleGroupTemplate extends DynamicSparkBatchMo
     protected Set<DistributionModuleGroup> buildModuleGroups4SparkBatch(DynamicPluginAdapter pluginAdapter) throws Exception {
         return new DynamicCDPSparkBatchModuleGroup(pluginAdapter).getModuleGroups();
     }
-    
+
     @Override
     public Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> getNodeModuleGroups() throws Exception {
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodeModuleGroups = super.getNodeModuleGroups();
@@ -82,24 +82,24 @@ public class DynamicCDPSparkBatchModuleGroupTemplate extends DynamicSparkBatchMo
                 new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.KUDU_CONFIGURATION_COMPONENT),
                 kuduConfigurationModuleGroups);
     }
-   
+
     /**
-     * Specific CDP override to bypass inconsistency between "CDP" from ICDPDistribution and "CLOUDERA" used in UI  
+     * Specific CDP override to bypass inconsistency between "CDP" from ICDPDistribution and "CLOUDERA" used in UI
      */
     @Override
     protected  Set<DistributionModuleGroup> buildModuleGroups4SparkBatch4GCS(DynamicPluginAdapter pluginAdapter,
             String distribution, String version) throws Exception {
-         return new DynamicSparkNodeModuleGroup(pluginAdapter).getModuleGroups(IClouderaDistribution.DISTRIBUTION_NAME, version, DynamicModuleGroupConstant.GCS_MODULE_GROUP, null);  
+         return new DynamicSparkNodeModuleGroup(pluginAdapter).getModuleGroups(IClouderaDistribution.DISTRIBUTION_NAME, version, DynamicModuleGroupConstant.GCS_MODULE_GROUP, null);
      }
 
     /**
-     * Specific CDP override to bypass inconsistency between "CDP" from ICDPDistribution and "CLOUDERA" used in UI  
+     * Specific CDP override to bypass inconsistency between "CDP" from ICDPDistribution and "CLOUDERA" used in UI
      */
     @Override
     protected  Set<DistributionModuleGroup> buildModuleGroups4SparkBatch4BigQuery(DynamicPluginAdapter pluginAdapter,
             String distribution, String version) throws Exception {
-         return new DynamicSparkNodeModuleGroup(pluginAdapter).getModuleGroups(IClouderaDistribution.DISTRIBUTION_NAME, version, DynamicModuleGroupConstant.BIGQUERY_MODULE_GROUP, null);  
+         return new DynamicSparkNodeModuleGroup(pluginAdapter).getModuleGroups(IClouderaDistribution.DISTRIBUTION_NAME, version, DynamicModuleGroupConstant.BIGQUERY_MODULE_GROUP, null);
      }
 
-    
+
 }

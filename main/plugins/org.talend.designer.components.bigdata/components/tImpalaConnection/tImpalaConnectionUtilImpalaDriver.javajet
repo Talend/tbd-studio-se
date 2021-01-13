@@ -1,20 +1,20 @@
 <%
 
 	class ConnectionUtilImpala extends DefaultConnectionUtil {
-      // use HiveComponent type to get all necessary methods but there is something to fix about the design on the current typing 
+      // use HiveComponent type to get all necessary methods but there is something to fix about the design on the current typing
 		private org.talend.hadoop.distribution.component.HiveComponent distrib = null;
-		
+
 		private boolean isCustom;
 	   final private  java.util.List<String> logLevel =  new java.util.ArrayList<String>() {{
 			 add("OFF");
-			 add("FATAL"); 
+			 add("FATAL");
 			 add("ERROR");
 			 add("WARN");
 			 add("INFO");
 			 add("DEBUG");
 			 add("TRACE");
 			}};
-    
+
 		public ConnectionUtilImpala(org.talend.hadoop.distribution.component.HadoopComponent distrib) {
 			this.distrib = (org.talend.hadoop.distribution.component.HiveComponent)distrib;
 			this.isCustom = distrib instanceof org.talend.hadoop.distribution.custom.CustomDistribution;
@@ -36,11 +36,11 @@
 		public void createURL(INode node) {
 			super.createURL(node);
 			String logLevel=";LogLevel="+getLevelDebug(node);
-			
-			String  userName = ElementParameterParser.getValue(node, "__USER__"); 
-			
+
+			String  userName = ElementParameterParser.getValue(node, "__USER__");
+
 			String additionalJdbcSettings = ElementParameterParser.getValue(node, "__IMPALA_ADDITIONAL_JDBC__");
-			
+
 			String hiveVersion = ElementParameterParser.getValue(node, "__HIVE_VERSION__");
 			String fsDefaultName = "fs.default.name";
 			String impalaDriver = ElementParameterParser.getValue(node, "__IMPALA_DRIVER__");
@@ -52,11 +52,11 @@
 			boolean useKrb = "true".equals(ElementParameterParser.getValue(node, "__USE_KRB__"));
 			boolean securityIsEnabled = useKrb && ( this.isCustom || this.distrib.doSupportKerberos() );
 			String impalaPrincipal = ElementParameterParser.getValue(node, "__IMPALA_PRINCIPAL__");
-			
+
 			boolean useKeytab = "true".equals(ElementParameterParser.getValue(node, "__USE_KEYTAB__"));
 			String userPrincipal = ElementParameterParser.getValue(node, "__PRINCIPAL__");
 			String keytabPath = ElementParameterParser.getValue(node, "__KEYTAB_PATH__");
-			
+
 			boolean useSsl = "true".equals(ElementParameterParser.getValue(node, "__USE_SSL__"));
 			String sslTrustStore = ElementParameterParser.getValue(node, "__SSL_TRUST_STORE__");
 			String sslStorepasswordFieldName = "__SSL_TRUST_STORE_PASSWORD__";
@@ -64,7 +64,7 @@
 			boolean configureFromClassPath = "true".equals(ElementParameterParser.getValue(node, "__CONFIGURATIONS_FROM_CLASSPATH__"));
 			boolean storeByHBase = "true".equals(ElementParameterParser.getValue(node, "__STORE_BY_HBASE__"));
 
-			
+
 
           	// When configuring from the classpath we do not set the variables using System.setProperty
           	// We set them directly on the Hadoop Configuration object
@@ -97,7 +97,7 @@
 %>
 			System.setProperty("<%=fsDefaultName%>", <%=namenode%>);
 <%
-			} 
+			}
 
 			boolean setHadoopUser = "true".equals(ElementParameterParser.getValue(node, "__SET_HADOOP_USER__"));
 		    if (setHadoopUser) {
@@ -111,6 +111,7 @@
             }
 		    %>
           globalMap.put("HADOOP_USER_NAME_<%=cid%>", System.getProperty("HADOOP_USER_NAME"));
+           String urlKerberosParameter_<%=cid%> = "";
 			<%
 			// User the classpath to infer Kerberos parameters
 			if(configureFromClassPath) {
@@ -122,7 +123,7 @@
 					if(hadoopConfDir_<%=cid%> != null){
 						final java.net.URL[] urlHadoop = new java.net.URL[] { new java.io.File(hadoopConfDir_<%=cid%>).toURI().toURL() };
 						final ClassLoader threadClassLoader = Thread.currentThread().getContextClassLoader();
-						final java.net.URLClassLoader newThreadClassLoader = new java.net.URLClassLoader(urlHadoop, threadClassLoader);						
+						final java.net.URLClassLoader newThreadClassLoader = new java.net.URLClassLoader(urlHadoop, threadClassLoader);
 						Thread.currentThread().setContextClassLoader(newThreadClassLoader);
 					}
 					org.apache.hadoop.conf.Configuration conf_<%=cid%> = new org.apache.hadoop.conf.Configuration();
@@ -179,14 +180,14 @@
 %>
 					if(org.apache.hadoop.security.UserGroupInformation.isSecurityEnabled()){
 						String hiveServer2KerberosPrincipal = conf_<%=cid%>.get("hive.server2.authentication.kerberos.principal", "");
-						
+
 						 String krbServiceName_<%=cid%>  = (hiveServer2KerberosPrincipal.split("/")[0]);
 		             String krbHostFQDN_<%=cid%> = (hiveServer2KerberosPrincipal.split("/")[1].split("@")[0]);
 		             String krbRealm_<%=cid%> = (hiveServer2KerberosPrincipal.split("/")[1].split("@")[1]);
-						
-						
-						
-						String urlKerberosParameter_<%=cid%> = ";AuthMech=1" 
+
+
+
+						urlKerberosParameter_<%=cid%> = ";AuthMech=1"
 						                              + ";KrbServiceName=" + krbServiceName_<%=cid%>
 						                              + ";KrbHostFQDN=" + krbHostFQDN_<%=cid%>
 						                              + ";KrbRealm=" + krbRealm_<%=cid%>;
@@ -247,7 +248,7 @@
 						 String krbServiceName_<%=cid%>  = (<%=impalaPrincipal%>.split("/")[0]);
 		             String krbHostFQDN_<%=cid%> = (<%=impalaPrincipal%>.split("/")[1].split("@")[0]);
 		             String krbRealm_<%=cid%> = (<%=impalaPrincipal%>.split("/")[1].split("@")[1]);
-		             String urlKerberosParameter_<%=cid%> = ";AuthMech=1" 
+		             urlKerberosParameter_<%=cid%> = ";AuthMech=1"
 						                              + ";KrbServiceName=" + krbServiceName_<%=cid%>
 						                              + ";KrbHostFQDN=" + krbHostFQDN_<%=cid%>
 						                              + ";KrbRealm=" + krbRealm_<%=cid%>;
@@ -255,7 +256,7 @@
 <%
 							// Does the distrib support only SASL-QOP + KERBEROS
 							} else {
-						
+
 %>
 							String url_<%=cid%> = "jdbc:impala://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%>+ "<%=logLevel%>" + urlKerberosParameter_<%=cid%>+";sasl.qop=auth-conf";
 <%

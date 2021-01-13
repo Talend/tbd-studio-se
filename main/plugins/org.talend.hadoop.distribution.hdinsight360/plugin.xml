@@ -143,14 +143,14 @@
             name="gcs-connector-hadoop2-2.1.6-shaded.jar"
             mvn_uri="mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop2-2.1.6/jar/shaded">
         </libraryNeeded>
-        
+
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.hdinsight360"
             id="bigquery-connector-hadoop2-1.1.6-shaded.jar"
             name="bigquery-connector-hadoop2-1.1.6-shaded.jar"
             mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop2-1.1.6/jar/shaded">
         </libraryNeeded>
-        
+
         <!-- Groups -->
 
          <!-- Big Data launcher group -->

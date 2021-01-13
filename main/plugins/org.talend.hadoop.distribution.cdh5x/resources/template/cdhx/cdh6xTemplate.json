@@ -492,15 +492,15 @@
 					"extension": "",
 					"description": ""
 				},
-				{
-					"groupId": "jdk.tools",
-					"artifactId": "*",
-					"classifier": "",
-					"extension": "",
-					"description": ""
-				},
                 {
                     "groupId": "commons-lang",
+                    "artifactId": "*",
+                    "classifier": "",
+                    "extension": "",
+                    "description": ""
+                },
+                {
+                    "groupId": "com.sun.jersey",
                     "artifactId": "*",
                     "classifier": "",
                     "extension": "",
@@ -625,7 +625,14 @@
                     "classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
 			]
 		},
 		{
@@ -740,7 +747,14 @@
                     "classifier": "",
                     "extension": "",
                     "description": ""
-                }
+                },
+                {
+					"groupId": "com.sun.jersey",
+					"artifactId": "*",
+					"classifier": "",
+					"extension": "",
+					"description": ""
+				}
             ]
         },
         {
@@ -1824,37 +1838,37 @@
 			]
 		},
         {
-			"id": "HDFS-COMMON-LIB-DYNAMIC",
-			"modules": [
-				"hadoop-client"
-			]
-		},
-        		{
-			"id": "HDFS-LIB-DYNAMIC",
-			"description": "jars for hdfs, only module.id permitted",
-			"modules": [
-				"hadoop-client",
-				"jackson-core",
-				"jackson-databind",
-				"jackson-annotations",
-				"commons-httpclient-3.1",
+            "id": "HDFS-COMMON-LIB-DYNAMIC",
+            "modules": [
+                "hadoop-client"
+            ]
+        },
+        {
+            "id": "HDFS-LIB-DYNAMIC",
+            "description": "jars for hdfs, only module.id permitted",
+            "modules": [
+                "hadoop-client",
+                "jackson-core",
+                "jackson-databind",
+                "jackson-annotations",
+                "commons-httpclient-3.1",
 				"parquet-hadoop-bundle_1_6_0",
 				"httpcore-4.4.6",
 				"httpclient-4.5.3"
-			]
-		},
-		{
-			"id": "HDFS-SPARK1_6-LIB-DYNAMIC",
-			"description": "",
-			"modules": [
-			]
-		},
-		{
-			"id": "HDFS-SPARK2_1-LIB-DYNAMIC",
-			"description": "",
-			"modules": [				
-			]
-		},
+            ]
+        },
+        {
+            "id": "HDFS-SPARK1_6-LIB-DYNAMIC",
+            "description": "",
+            "modules": [
+            ]
+        },
+        {
+            "id": "HDFS-SPARK2_1-LIB-DYNAMIC",
+            "description": "",
+            "modules": [
+            ]
+        },
         {
             "id": "IMPALA-LIB-DYNAMIC",
             "description": "",
@@ -1966,7 +1980,7 @@
         {
 			"id": "SPARK-PARQUET-LIB-MRREQUIRED-DYNAMIC",
 			"description": "",
-			"modules": [				
+			"modules": [
 			]
 		},
 		{
@@ -1974,7 +1988,7 @@
 			"description": "",
 			"modules": [
 				"hadoop-mapreduce-client-core",
-				"hadoop-yarn-server-web-proxy",				
+				"hadoop-yarn-server-web-proxy",
 				"hive-exec",
 				"spark-hive_2.11",
 				"spark-mllib_2.11",

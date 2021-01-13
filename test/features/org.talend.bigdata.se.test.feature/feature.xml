@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feature
-      id="org.talend.bigdata.se.test.feature"
-      label="BigData SE Test Feature"
-      version="7.4.1.qualifier">
+<feature id="org.talend.bigdata.se.test.feature" label="BigData SE Test Feature" version="7.4.1.qualifier">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -16,254 +13,68 @@
       [Enter License Description here.]
    </license>
 
-   <plugin
-         id="org.talend.hadoop.distribution.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.test.base"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.test.base" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.mapr500.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.mapr500.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.mapr510.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.mapr510.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.mapr520.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.mapr520.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.mapr600.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.mapr600.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.dataproc11.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.dataproc11.test" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
          
-   <plugin
-         id="org.talend.hadoop.distribution.dataproc14.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.dataproc14.test" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.emr450.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.emr450.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.emr500.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.emr500.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.emr550.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.emr550.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.emr580.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.emr580.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.hdinsight340.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.hdinsight340.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.hdinsight360.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.hdinsight360.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
          
-   <plugin
-         id="org.talend.hadoop.distribution.hdinsight400.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.hdinsight400.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
          
-   <plugin
-         id="org.talend.oozie.scheduler.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.oozie.scheduler.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.repository.nosql.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.repository.nosql.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.cdh550.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.cdh550.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.cdh570.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.cdh570.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.cdh580.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.cdh580.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.cdh580spark2.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.cdh580spark2.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.custom.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.custom.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.repository.hadoopcluster.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.repository.hadoopcluster.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.repository.hadoopcluster.configurator.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin id="org.talend.repository.hadoopcluster.configurator.test" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
 
-   <plugin
-         id="org.talend.repository.maprdbprovider.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.repository.maprdbprovider.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.repository.hdfs.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.repository.hdfs.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.hdp250.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.hdp250.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.hdp260.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.hdp260.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.dbr350.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.dbr350.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.dbr550.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.dbr550.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin
-         id="org.talend.hadoop.distribution.qubole.test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
+   <plugin id="org.talend.hadoop.distribution.qubole.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-    <plugin
-            id="org.talend.bigdata.se.test.base"
-            download-size="0"
-            install-size="0"
-            version="0.0.0"/>
+    <plugin id="org.talend.bigdata.se.test.base" download-size="0" install-size="0" version="0.0.0"/>
 
 </feature>

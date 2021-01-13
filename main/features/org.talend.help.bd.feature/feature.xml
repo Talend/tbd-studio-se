@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feature
-      id="org.talend.help.bd.feature"
-      label="Talend BD help feature"
-      version="7.4.1.qualifier"
-      provider-name=".Talend SA.">
+<feature id="org.talend.help.bd.feature" label="Talend BD help feature" version="7.4.1.qualifier" provider-name=".Talend SA.">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -21,22 +17,10 @@
       <update label="CORE Talend update site for milestones" url="http://talendforge.org/core/updatesite/testing/"/>
    </url>
 
-   <includes
-         id="org.talend.help.di.feature"
-         version="0.0.0"/>
+   <includes id="org.talend.help.di.feature" version="0.0.0"/>
 
-   <plugin
-         id="org.talend.help.couchbase"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin id="org.talend.help.couchbase" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
 
-   <plugin
-         id="org.talend.help.marklogic"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <plugin id="org.talend.help.marklogic" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
 
 </feature>

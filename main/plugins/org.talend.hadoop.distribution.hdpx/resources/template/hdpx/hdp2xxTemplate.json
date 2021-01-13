@@ -852,6 +852,14 @@
       "description": ""
     },
     {
+      "id": "kafka_2.11-0.10.0.1",
+      "type": "STANDARD",
+      "context": "{properties.context}",
+      "jarName": "kafka_2.11-0.10.0.1.jar",
+      "mvnUri": "mvn:org.apache.kafka/kafka_2.11/0.10.0.1",
+      "description": ""
+    }, 
+    {
       "id": "jetty-util",
       "type": "BASE",
       "context": "{properties.context}",
@@ -1411,6 +1419,13 @@
       ]
     },
     {
+      "id": "TEZ-NOT-SPARK-1-6-LIB-DYNAMIC",
+      "description": "",
+      "modules": [
+        "jackson-core-2.6.6"
+      ]
+    },
+    {
       "id": "TEZ-SERVER-LIB-DYNAMIC",
       "description": "",
       "modules": [
@@ -1447,7 +1462,9 @@
       "id": "SPARK-KAFKA-ASSEMBLY-LIB-MRREQUIRED-DYNAMIC",
       "description": "",
       "modules": [
-        "spark-streaming-kafka"
+        "spark-streaming-kafka",
+        "kafka-clients",
+        "kafka_2.11-0.10.0.1"
       ]
     },
     {

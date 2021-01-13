@@ -12,9 +12,9 @@
 	}
 
 	boolean isCustom = sqoopDistrib instanceof org.talend.hadoop.distribution.custom.CustomDistribution;
-	
+
 	List<Map<String, String>> hadoopProps = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__HADOOP_ADVANCED_PROPERTIES__");
-	
+
 	String namenode = ElementParameterParser.getValue(node, "__FS_DEFAULT_NAME__");
 	String jobtracker = ElementParameterParser.getValue(node, "__MAPRED_JOB_TRACKER__");
 	boolean useKrb = "true".equals(ElementParameterParser.getValue(node, "__USE_KRB__"));
@@ -48,12 +48,12 @@
 
     String fsDefalutName = "fs.default.name";
     String driverClass = ElementParameterParser.getValue(node, "__DRIVER_CLASS__");
-	
+
 	boolean dieOnError = "true".equals(ElementParameterParser.getValue(node, "__DIE_ON_ERROR__"));
-	
+
 
     String passwordFieldName = "";
-    
+
 %>
 	<%@ include file="../templates/Sqoop/GetConfig.javajet"%>
 	String jarFileName_<%=cid%> = <%=jarFile%>;
@@ -76,12 +76,12 @@
         <%
         passwordFieldName = "__PASSWORD__";
         %>
-        
-        <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>		        
-        
+
+        <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
+
         needGenereateJarSqoopOptions_<%=cid%>.setPassword(decryptedPassword_<%=cid%>);
         needGenereateJarSqoopOptions_<%=cid%>.setTableName(<%=table%>);
-        needGenereateJarSqoopOptions_<%=cid%>.setClassName("SqoopMerge_<%=cid%>");
+needGenereateJarSqoopOptions_<%=cid%>.setClassName("SqoopMerge_<%=cid%>");
 
 	java.util.Properties generateJarAdditionalProperties_<%=cid%> = new java.util.Properties();
 	<%
@@ -92,29 +92,29 @@
 
 	<%
 		}
-        if(generateJarAdditionalList != null){ 
+        if(generateJarAdditionalList != null){
             for(Map<String,String> generateJarAdditionalMap : generateJarAdditionalList){
-                if(generateJarAdditionalMap.get("GENERATE_JAR_ADDITIONAL_VALUE")==null || "".equals(generateJarAdditionalMap.get("GENERATE_JAR_ADDITIONAL_VALUE"))) { 
-                    break; 
+                if(generateJarAdditionalMap.get("GENERATE_JAR_ADDITIONAL_VALUE")==null || "".equals(generateJarAdditionalMap.get("GENERATE_JAR_ADDITIONAL_VALUE"))) {
+                    break;
                 }
                 String currentArgument = generateJarAdditionalMap.get("GENERATE_JAR_ADDITIONAL_ARGUMENT");
                 if(currentArgument.contains("delimiters") && !currentArgument.contains("required")) {
-%> 
-                    generateJarAdditionalProperties_<%=cid%>.put(<%=currentArgument%>, ""+<%=generateJarAdditionalMap.get("GENERATE_JAR_ADDITIONAL_VALUE")%>.codePointAt(0)); 
+%>
+                    generateJarAdditionalProperties_<%=cid%>.put(<%=currentArgument%>, ""+<%=generateJarAdditionalMap.get("GENERATE_JAR_ADDITIONAL_VALUE")%>.codePointAt(0));
 <%
                 } else {
-%> 
-                    generateJarAdditionalProperties_<%=cid%>.put(<%=currentArgument%>, <%=generateJarAdditionalMap.get("GENERATE_JAR_ADDITIONAL_VALUE")%>); 
+%>
+                    generateJarAdditionalProperties_<%=cid%>.put(<%=currentArgument%>, <%=generateJarAdditionalMap.get("GENERATE_JAR_ADDITIONAL_VALUE")%>);
 <%
                 }
-            } 
-        } 
+            }
+        }
 %>
         needGenereateJarSqoopOptions_<%=cid%>.loadProperties(generateJarAdditionalProperties_<%=cid%>);
-        
+
         <%=sqoopPackageName%>.tool.CodeGenTool codeGen_<%=cid%> = new <%=sqoopPackageName%>.tool.CodeGenTool();
         <%=sqoopPackageName%>.Sqoop codeGenerator_<%=cid%> = new <%=sqoopPackageName%>.Sqoop(codeGen_<%=cid%>,configuration_<%=cid%>, needGenereateJarSqoopOptions_<%=cid%>);
-        
+
 		try {
 			int ret_<%=cid%> = <%=sqoopPackageName%>.Sqoop.runSqoop(codeGenerator_<%=cid%>, new String[0]);
        	if (0 != ret_<%=cid%>) {
@@ -132,7 +132,7 @@
 				}
 %>
         	}
-        
+
         List<String> jars_<%=cid%> = codeGen_<%=cid%>.getGeneratedJarFiles();
         jarFileName_<%=cid%> = jars_<%=cid%>.get(0);
 		} catch (Exception e) {
@@ -153,11 +153,11 @@
 <%
     }
 %>
-	
+
 	java.net.URL[] jars_<%=cid%> = new java.net.URL[] { new java.io.File(jarFileName_<%=cid%>).toURI().toURL() };
 	ClassLoader threadClassLoader_<%=cid%> = Thread.currentThread().getContextClassLoader();
 	java.net.URLClassLoader newthreadClassLoader_<%=cid%> = new java.net.URLClassLoader(jars_<%=cid%>, threadClassLoader_<%=cid%>);
-    
+
     try {
 		Thread.currentThread().setContextClassLoader(newthreadClassLoader_<%=cid%>);
     } catch (Exception e) {
@@ -175,7 +175,7 @@
 		}
 %>
     }
-    
+
     <%=sqoopPackageName%>.tool.SqoopTool sqoopTool_<%=cid%> = <%=sqoopPackageName%>.tool.SqoopTool.getTool("merge");
 
     <%=sqoopPackageName%>.SqoopOptions sqoopOptions_<%=cid%> = new <%=sqoopPackageName%>.SqoopOptions(configuration_<%=cid%>);
@@ -191,10 +191,10 @@
 	if(customClassName){
 %>
 	sqoopOptions_<%=cid%>.setClassName(<%=className%>);
-<% 	}
+<%	}
    }
 %>
-		
+
 	org.apache.sqoop.Sqoop sqoop_<%=cid%> = new org.apache.sqoop.Sqoop(sqoopTool_<%=cid%>, configuration_<%=cid%>, sqoopOptions_<%=cid%>);
 	try {
 		int result_<%=cid%> = sqoop_<%=cid%>.run(null);
@@ -229,5 +229,5 @@
 		}
 %>
 	}
-	
+
 	<%@ include file="../templates/Sqoop/ResetEnv.javajet"%>
