@@ -99,7 +99,7 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
                     if (curUrl != null) {
                         String templateFilePath = FileLocator.toFileURL(curUrl).getPath();
                         TemplateBean bean = om.readValue(new File(templateFilePath), TemplateBean.class);
-                        if (ICDPDistribution.DISTRIBUTION_NAME.equals(bean.getDistribution())) {
+                        if (ICDPDistribution.DISTRIBUTION_NAME.equals(bean.getDistribution()) && "CDP7xDistributionTemplate".equals(bean.getTemplateId())) {
                         	bean.setDistribution(ICDPDistribution.DISTRIBUTION_NAME_WIZARD);
                         }
                         templates.add(bean);
