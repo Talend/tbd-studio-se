@@ -154,30 +154,24 @@ public class SPL30xDistribution extends AbstractDistribution
 
         // Spark Batch Redshift
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.REDSHIFT_CONFIGURATION_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(
-                        ModuleGroupName.REDSHIFT_BATCH.get(getVersion()),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.REDSHIFT_BATCH.get(getVersion()),
                         SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.REDSHIFT_INPUT_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(
-                        ModuleGroupName.REDSHIFT_BATCH.get(getVersion()),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.REDSHIFT_BATCH.get(getVersion()),
                         SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.REDSHIFT_OUTPUT_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(
-                        ModuleGroupName.REDSHIFT_BATCH.get(getVersion()),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.REDSHIFT_BATCH.get(getVersion()),
                         SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
 
         // Spark Batch Snowflake
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.SNOWFLAKE_CONFIGURATION_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(
-                        ModuleGroupName.SNOWFLAKE.get(getVersion()),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.SNOWFLAKE.get(getVersion()),
                         SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.SNOWFLAKE_INPUT_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(
-                        ModuleGroupName.SNOWFLAKE.get(getVersion()),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.SNOWFLAKE.get(getVersion()),
                         SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.SNOWFLAKE_OUTPUT_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(
-                        ModuleGroupName.SNOWFLAKE.get(getVersion()),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.SNOWFLAKE.get(getVersion()),
                         SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
 
         // Spark Batch TDM
@@ -221,54 +215,45 @@ public class SPL30xDistribution extends AbstractDistribution
 
         // Spark Streaming Kafka
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(
-                        ModuleGroupName.KAFKA.get(getVersion()),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.KAFKA.get(getVersion()),
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
                         SPL30xDistribution.SPARK_VERSION));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_INPUT_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(
-                        ModuleGroupName.KAFKA.get(getVersion()),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.KAFKA.get(getVersion()),
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
                         SPL30xDistribution.SPARK_VERSION));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_AVRO_INPUT_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(
-                        ModuleGroupName.KAFKA.get(getVersion()),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.KAFKA.get(getVersion()),
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
                         SPL30xDistribution.SPARK_VERSION));
 
         // Spark Streaming Kinesis
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(
-                        ModuleGroupName.KINESIS.get(getVersion()),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.KINESIS.get(getVersion()),
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
                         SPL30xDistribution.SPARK_VERSION));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(
-                        ModuleGroupName.KINESIS.get(getVersion()),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.KINESIS.get(getVersion()),
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
                         SPL30xDistribution.SPARK_VERSION));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_AVRO_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(
-                        ModuleGroupName.KINESIS.get(getVersion()),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.KINESIS.get(getVersion()),
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
                         SPL30xDistribution.SPARK_VERSION));
 
         // Spark Streaming Redshift
         result.put(
                 new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.REDSHIFT_CONFIGURATION_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(
-                        ModuleGroupName.REDSHIFT_STREAMING.get(getVersion()),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.REDSHIFT_STREAMING.get(getVersion()),
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
                         SPL30xDistribution.SPARK_VERSION));
         result.put(
                 new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.REDSHIFT_LOOKUP_INPUT_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(
-                        ModuleGroupName.REDSHIFT_STREAMING.get(getVersion()),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.REDSHIFT_STREAMING.get(getVersion()),
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
                         SPL30xDistribution.SPARK_VERSION));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.REDSHIFT_OUTPUT_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(
-                        ModuleGroupName.REDSHIFT_STREAMING.get(getVersion()),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.REDSHIFT_STREAMING.get(getVersion()),
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
                         SPL30xDistribution.SPARK_VERSION));
 
@@ -291,30 +276,25 @@ public class SPL30xDistribution extends AbstractDistribution
         // Spark Streaming DynamoDB
         result.put(
                 new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_CONFIGURATION_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(
-                        ModuleGroupName.DYNAMMODB_STREAMING.get(getVersion()),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.DYNAMODB_STREAMING.get(getVersion()),
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
                         SPL30xDistribution.SPARK_VERSION));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_OUTPUT_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(
-                        ModuleGroupName.DYNAMMODB_STREAMING.get(getVersion()),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.DYNAMODB_STREAMING.get(getVersion()),
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
                         SPL30xDistribution.SPARK_VERSION));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_INPUT_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(
-                        ModuleGroupName.DYNAMMODB_STREAMING.get(getVersion()),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.DYNAMODB_STREAMING.get(getVersion()),
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
                         SPL30xDistribution.SPARK_VERSION));
 
         // Spark Streaming Rest
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.REST_WS_OUTPUT_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(
-                        ModuleGroupName.REST.get(getVersion()),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.REST.get(getVersion()),
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
                         SPL30xDistribution.SPARK_VERSION));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.REST_WS_INPUT_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(
-                        ModuleGroupName.REST.get(getVersion()),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.REST.get(getVersion()),
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
                         SPL30xDistribution.SPARK_VERSION));
 
@@ -427,6 +407,16 @@ public class SPL30xDistribution extends AbstractDistribution
     @Override
     public boolean doSupportBackpressure() {
         return false;
+    }
+
+    @Override
+    public boolean doSupportSparkYarnClusterMode() {
+        return false;
+    }
+
+    @Override
+    public boolean doSupportAzureDataLakeStorage() {
+        return true;
     }
 
     @Override

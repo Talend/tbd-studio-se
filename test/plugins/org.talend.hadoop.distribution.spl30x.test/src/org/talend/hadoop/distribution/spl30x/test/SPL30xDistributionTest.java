@@ -11,17 +11,18 @@ import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
+import org.talend.hadoop.distribution.constants.spl.ISparkLocalDistribution;
 import org.talend.hadoop.distribution.spl30x.SPL30xDistribution;
 
-public class SPL300DistributionTest {
+public class SPL30xDistributionTest {
 
     @Test
-    public void testSPL300Distribution() throws Exception {
+    public void testSPL30xDistribution() throws Exception {
         HadoopComponent distribution = new SPL30xDistribution();
         assertNotNull(distribution.getDistributionName());
         assertNotNull(distribution.getVersionName(null));
         assertTrue(distribution.doSupportS3());
-        assertEquals(SPL30xDistribution.DISTRIBUTION_NAME, distribution.getDistribution());
+        assertEquals(ISparkLocalDistribution.DISTRIBUTION_NAME, distribution.getDistribution());
         assertEquals(SPL30xDistribution.VERSION, distribution.getVersion());
         assertEquals(EHadoopVersion.HADOOP_3, distribution.getHadoopVersion());
         assertFalse(distribution.doSupportKerberos());
@@ -42,11 +43,11 @@ public class SPL300DistributionTest {
         assertFalse(((SparkBatchComponent) distribution).isExecutedThroughSparkJobServer());
         assertFalse(((SparkBatchComponent) distribution).doSupportSparkStandaloneMode());
         assertFalse(((SparkBatchComponent) distribution).doSupportSparkYarnClientMode());
-        //assertFalse(((SparkBatchComponent) distribution).doSupportSparkYarnClusterMode());
-//		assertTrue(((SparkStreamingComponent) distribution).doSupportBackpressure());
-//		assertTrue(((SparkStreamingComponent) distribution).doSupportCheckpointing());
-//        assertTrue(distribution.doSupportCreateServiceConnection());
-//        assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
-//        assertTrue(distribution.doSupportAzureDataLakeStorage());
+        assertFalse(((SparkBatchComponent) distribution).doSupportSparkYarnClusterMode());
+        assertFalse(((SparkStreamingComponent) distribution).doSupportBackpressure());
+        assertFalse(((SparkStreamingComponent) distribution).doSupportCheckpointing());
+        assertTrue(distribution.doSupportCreateServiceConnection());
+        assertTrue((distribution.getNecessaryServiceName() == null ? 0 : distribution.getNecessaryServiceName().size()) == 0);
+        assertTrue(distribution.doSupportAzureDataLakeStorage());
     }
 }

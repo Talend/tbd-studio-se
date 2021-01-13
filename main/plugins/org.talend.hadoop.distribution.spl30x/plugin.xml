@@ -826,7 +826,7 @@
         </libraryNeededGroup>
 
         <!-- Spark Streaming DynamoDB group -->
-        <libraryNeededGroup description="Spark streaming DynamoDB libraries for spl30x" id="DYNAMMODB-STREAMING-GROUP-SPARK_3_0_x" name="DYNAMMODB-STREAMING-GROUP-SPARK_3_0_x">
+        <libraryNeededGroup description="Spark streaming DynamoDB libraries for spl30x" id="DYNAMODB-STREAMING-GROUP-SPARK_3_0_x" name="DYNAMODB-STREAMING-GROUP-SPARK_3_0_x">
             <group id="DYNAMODB-BATCH-GROUP-SPARK_3_0_x" />
             <library id="commons-pool2-2.9.0.jar"/>
         </libraryNeededGroup>
