@@ -606,7 +606,7 @@
           mvn_uri="mvn:org.glassfish.jersey.inject/jersey-hk2/2.30"/>
 
         <!-- Spark group -->
-        <libraryNeededGroup description="SPARK libraries for spl30x" id="SPARK_BATCH_MODULE_GROUP_SPL30x" name="SPARK_BATCH_MODULE_GROUP_SPL30x">
+        <libraryNeededGroup description="SPARK libraries for spl30x" id="SPARK-BATCH-GROUP-SPARK_3_0_x" name="SPARK-BATCH-GROUP-SPARK_3_0_x">
             <library id="antlr4-runtime-4.7.1.jar"/>
             <library id="avro-1.8.2.jar"/>
             <library id="breeze_2.12-1.0.jar"/>
@@ -673,7 +673,7 @@
         </libraryNeededGroup>
 
         <!-- Parquet group -->
-        <libraryNeededGroup description="Parquet libraries for spl30x" id="SPARK_BATCH_PARQUET_MODULE_GROUP_SPL30x" name="SPARK_BATCH_PARQUET_MODULE_GROUP_SPL30x">
+        <libraryNeededGroup description="Parquet libraries for spl30x" id="PARQUET-GROUP-SPARK_3_0_x" name="PARQUET-GROUP-SPARK_3_0_x">
             <library id="jul-to-slf4j-1.7.16.jar"/>
             <library id="parquet-encoding-1.10.1.jar"/>
             <library id="parquet-format-2.4.0.jar"/>
@@ -681,14 +681,14 @@
         </libraryNeededGroup>
 
         <!-- S3 group -->
-        <libraryNeededGroup description="S3 libraries for spl30x" id="SPARK_BATCH_S3_MODULE_GROUP_SPL30x" name="SPARK_BATCH_S3_MODULE_GROUP_SPL30x">
+        <libraryNeededGroup description="S3 libraries for spl30x" id="S3-GROUP-SPARK_3_0_x" name="S3-GROUP-SPARK_3_0_x">
             <library id="hadoop-aws-3.2.1.jar"/>
             <library id="aws-java-sdk-bundle-1.11.375.jar"/>
             <library id="commons-text-1.4.jar"/>
         </libraryNeededGroup>
 
         <!-- Azure group -->
-        <libraryNeededGroup description="Azure libraries for spl30x" id="SPARK_BATCH_AZURE_MODULE_GROUP_SPL30x" name="SPARK_BATCH_AZURE_MODULE_GROUP_SPL30x">
+        <libraryNeededGroup description="Azure libraries for spl30x" id="AZURE-GROUP-SPARK_3_0_x" name="AZURE-GROUP-SPARK_3_0_x">
             <library id="hadoop-azure-3.2.1.jar"/>
             <library id="azure-storage-7.0.0.jar"/>
             <library id="jetty-util-ajax-9.3.24.v20180605.jar"/>
@@ -700,19 +700,19 @@
         </libraryNeededGroup>
 
         <!-- Google Storage group -->
-        <libraryNeededGroup description="Google Storage libraries for spl30x" id="SPARK_BATCH_GS_MODULE_GROUP_SPL30x" name="SPARK_BATCH_GS_MODULE_GROUP_SPL30x">
+        <libraryNeededGroup description="Google Storage libraries for spl30x" id="GCS-GROUP-SPARK_3_0_x" name="GCS-GROUP-SPARK_3_0_x">
             <library id="gcs-connector-hadoop3-2.1.6-shaded"/>
         </libraryNeededGroup>
 
         <!-- Google Big Query group -->
-        <libraryNeededGroup description="Google Big Query libraries for spl30x" id="SPARK_BATCH_BIGQUERY_MODULE_GROUP_SPL30x" name="SPARK_BATCH_BIGQUERY_MODULE_GROUP_SPL30x">
+        <libraryNeededGroup description="Google Big Query libraries for spl30x" id="BIGQUERY-GROUP-SPARK_3_0_x" name="BIGQUERY-GROUP-SPARK_3_0_x">
             <library id="gcs-connector-hadoop3-2.1.6-shaded"/>
             <library id="bigquery-connector-hadoop3-1.1.6-shaded"/>
             <library id="gson-2.2.4.jar"/>
         </libraryNeededGroup>
 
         <!-- HiveOnSpark group -->
-        <libraryNeededGroup description="Hive On SPARK libraries for spl30x" id="SPARK_BATCH_HIVE_MODULE_GROUP_SPL30x" name="SPARK_BATCH_HIVE_MODULE_GROUP_SPL30x">
+        <libraryNeededGroup description="Hive On SPARK libraries for spl30x" id="HIVE-GROUP-SPARK_3_0_x" name="HIVE-GROUP-SPARK_3_0_x">
             <library id="spark-hive_2.12-3.0.1.jar"/>
             <library id="hive-common-2.3.7.jar"/>
             <library id="hive-exec-2.3.7.jar"/>
@@ -738,7 +738,7 @@
         </libraryNeededGroup>
 
         <!-- DeltaLake group -->
-        <libraryNeededGroup description="DeltaLake libraries for spl30x" id="SPARK_BATCH_DELTALAKE_MODULE_GROUP_SPL30x" name="SPARK_BATCH_DELTALAKE_MODULE_GROUP_SPL30x">
+        <libraryNeededGroup description="DeltaLake libraries for spl30x" id="DELTALAKE-GROUP-SPARK_3_0_x" name="DELTALAKE-GROUP-SPARK_3_0_x">
             <library id="delta-core_2.12-0.7.0.jar"/>
             <library id="jul-to-slf4j-1.7.30.jar"/>
             <library id="parquet-hadoop-1.10.1.jar"/>
@@ -747,14 +747,14 @@
         </libraryNeededGroup>
         
         <!-- Cassandra group -->
-        <libraryNeededGroup description="Cassanda libraries for spl30x" id="SPARK_BATCH_CASSANDRA_MODULE_GROUP_SPL30x" name="SPARK_BATCH_CASSANDRA_MODULE_GROUP_SPL30x">
+        <libraryNeededGroup description="Cassanda libraries for spl30x" id="CASSANDRA-GROUP-SPARK_3_0_x" name="CASSANDRA-GROUP-SPARK_3_0_x">
             <library id="spark-cassandra-connector-assembly_2.12-3.0.0-beta.jar"/>
             <library id="jnr-posix-3.1.0.jar"/>
             <library id="joda-time-2.10.5.jar"/>
         </libraryNeededGroup>
         
         <!-- DynamoDB group -->
-        <libraryNeededGroup description="DynamoDB libraries for spl30x" id="SPARK_BATCH_DYNAMODB_MODULE_GROUP_SPL30x" name="SPARK_BATCH_DYNAMODB_MODULE_GROUP_SPL30x">
+        <libraryNeededGroup description="DynamoDB libraries for spl30x" id="DYNAMODB-BATCH-GROUP-SPARK_3_0_x" name="DYNAMODB-BATCH-GROUP-SPARK_3_0_x">
             <library id="emr-dynamodb-hadoop-4.7.0.jar"/>
             <library id="joda-time-2.10.5.jar"/>
             <library id="gson-2.2.4.jar"/>
@@ -763,25 +763,25 @@
         </libraryNeededGroup>
         
         <!-- Redshift group -->
-        <libraryNeededGroup description="Redshift libraries for spl30x" id="SPARK_BATCH_REDSHIFT_MODULE_GROUP_SPL30x" name="SPARK_BATCH_REDSHIFT_MODULE_GROUP_SPL30x">
+        <libraryNeededGroup description="Redshift libraries for spl30x" id="REDSHIFT-BATCH-GROUP-SPARK_3_0_x" name="REDSHIFT-BATCH-GROUP-SPARK_3_0_x">
             <library id="spark-redshift_2.12-4.2.0.jar"/>
             <library id="spark-avro_2.12-3.0.1.jar"/><library id="gson-2.2.4.jar"/>
             <library id="avro-mapred-1.8.2.jar"/>
         </libraryNeededGroup>
         
         <!-- Snowflake group -->
-        <libraryNeededGroup description="Snowflake libraries for spl30x" id="SPARK_BATCH_SNOWFLAKE_MODULE_GROUP_SPL30x" name="SPARK_BATCH_SNOWFLAKE_MODULE_GROUP_SPL30x">
+        <libraryNeededGroup description="Snowflake libraries for spl30x" id="SNOWFLAKE-GROUP-SPARK_3_0_x" name="SNOWFLAKE-GROUP-SPARK_3_0_x">
             <library id="spark-snowflake_2.12-2.8.2-spark_3.0.jar"/>
             <library id="snowflake-jdbc-3.12.12.jar"/>
         </libraryNeededGroup>
         
         <!-- TDM group -->
-        <libraryNeededGroup description="Snowflake libraries for spl30x" id="SPARK_BATCH_TDM_MODULE_GROUP_SPL30x" name="SPARK_BATCH_TDM_MODULE_GROUP_SPL30x">
+        <libraryNeededGroup description="TDM libraries for spl30x" id="TDM-GROUP-SPARK_3_0_x" name="TDM-GROUP-SPARK_3_0_x">
             <library id="avro-mapred-1.8.2.jar"/>
         </libraryNeededGroup>
         
         <!-- spark 3 ML group -->
-        <libraryNeededGroup description="ML libraries for spl30x" id="SPARK_BATCH_ML_MODULE_GROUP_SPL30x" name="SPARK_BATCH_ML_MODULE_GROUP_SPL30x">
+        <libraryNeededGroup description="ML libraries for spl30x" id="ML-GROUP-SPARK_3_0_x" name="ML-GROUP-SPARK_3_0_x">
             <library id="spark-mllib_2.12-3.0.1.jar"/>
             <library id="spark-mllib-local_2.12-3.0.1.jar"/>
             <library id="arpack_combined_all-0.1.jar"/>
@@ -789,25 +789,25 @@
         </libraryNeededGroup>
 
         <!-- commons math3 group -->
-        <libraryNeededGroup description="commons math3 libraries for spl30x" id="SPARK_BATCH_MATH_MODULE_GROUP_SPL30x" name="SPARK_BATCH_MATH_MODULE_GROUP_SPL30x">
+        <libraryNeededGroup description="commons math3 libraries for spl30x" id="MATH-GROUP-SPARK_3_0_x" name="MATH-GROUP-SPARK_3_0_x">
             <library id="commons-math3-3.4.1.jar"/>
         </libraryNeededGroup>
 
         <!-- Spark Streaming group -->
-        <libraryNeededGroup description="Spark streaming libraries for spl30x" id="SPARK_STREAMING_MODULE_GROUP_SPL30x" name="SPARK_STREAMING_MODULE_GROUP_SPL30x">
+        <libraryNeededGroup description="Spark streaming libraries for spl30x" id="SPARK-STREAMING-GROUP-SPARK_3_0_x" name="SPARK-STREAMING-GROUP-SPARK_3_0_x">
             <library id="spark-streaming_2.12-3.0.1.jar"/>
-            <group id="SPARK_BATCH_MODULE_GROUP_SPL30x"/>
+            <group id="SPARK-BATCH-GROUP-SPARK_3_0_x"/>
             <library id="py4j-0.10.9.1.jar"/>
         </libraryNeededGroup>
 
         <!-- Spark Streaming Kafka group -->
-        <libraryNeededGroup description="Spark streaming Kafka libraries for spl30x" id="SPARK_STREAMING_KAFKA_MODULE_GROUP_SPL30x" name="SPARK_STREAMING_KAFKA_MODULE_GROUP_SPL30x">
+        <libraryNeededGroup description="Spark streaming Kafka libraries for spl30x" id="KAFKA-GROUP-SPARK_3_0_x" name="KAFKA-GROUP-SPARK_3_0_x">
             <library id="kafka-clients-2.7.0.jar"/>
             <library id="spark-streaming-kafka-0-10_2.12-3.0.1.jar"/>
         </libraryNeededGroup>
 
         <!-- Spark Streaming Kinesis group -->
-        <libraryNeededGroup description="Spark streaming Kinesis libraries for spl30x" id="SPARK_STREAMING_KINESIS_MODULE_GROUP_SPL30x" name="SPARK_STREAMING_KINESIS_MODULE_GROUP_SPL30x">
+        <libraryNeededGroup description="Spark streaming Kinesis libraries for spl30x" id="KINESIS-GROUP-SPARK_3_0_x" name="KINESIS-GROUP-SPARK_3_0_x">
             <library id="spark-streaming-kinesis-asl_2.12-3.0.1.jar"/>
             <library id="aws-java-sdk-kinesis-1.11.655.jar"/>
             <library id="aws-java-sdk-core-1.11.655.jar"/>
@@ -821,18 +821,18 @@
         </libraryNeededGroup>
 
         <!-- Spark Streaming Redshift group -->
-        <libraryNeededGroup description="Spark streaming Redshift libraries for spl30x" id="SPARK_STREAMING_REDSHIFT_MODULE_GROUP_SPL30x" name="SPARK_STREAMING_REDSHIFT_MODULE_GROUP_SPL30x">
+        <libraryNeededGroup description="Spark streaming Redshift libraries for spl30x" id="REDSHIFT-STREAMING-GROUP-SPARK_3_0_x" name="REDSHIFT-STREAMING-GROUP-SPARK_3_0_x">
         <!-- To be completed when deps are moved away from the components -->
         </libraryNeededGroup>
 
         <!-- Spark Streaming DynamoDB group -->
-        <libraryNeededGroup description="Spark streaming DynamoDB libraries for spl30x" id="SPARK_STREAMING_DYNAMODB_MODULE_GROUP_SPL30x" name="SPARK_STREAMING_DYNAMODB_MODULE_GROUP_SPL30x">
-            <group id="SPARK_BATCH_DYNAMODB_MODULE_GROUP_SPL30x" />
+        <libraryNeededGroup description="Spark streaming DynamoDB libraries for spl30x" id="DYNAMMODB-STREAMING-GROUP-SPARK_3_0_x" name="DYNAMMODB-STREAMING-GROUP-SPARK_3_0_x">
+            <group id="DYNAMODB-BATCH-GROUP-SPARK_3_0_x" />
             <library id="commons-pool2-2.9.0.jar"/>
         </libraryNeededGroup>
 
         <!-- Spark Streaming Rest group -->
-        <libraryNeededGroup description="Spark streaming Rest libraries for spl30x" id="SPARK_STREAMING_REST_MODULE_GROUP_SPL30x" name="SPARK_STREAMING_REST_MODULE_GROUP_SPL30x">
+        <libraryNeededGroup description="Spark streaming Rest libraries for spl30x" id="REST-GROUP-SPARK_3_0_x" name="REST-GROUP-SPARK_3_0_x">
             <library id="hk2-api-2.6.1.jar"/>
             <library id="hk2-locator-2.6.1.jar"/>
             <library id="hk2-utils-2.6.1.jar"/>

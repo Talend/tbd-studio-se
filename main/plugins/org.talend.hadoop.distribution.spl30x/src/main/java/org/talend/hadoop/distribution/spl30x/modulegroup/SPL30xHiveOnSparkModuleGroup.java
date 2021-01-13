@@ -16,18 +16,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
-import org.talend.hadoop.distribution.condition.BasicExpression;
-import org.talend.hadoop.distribution.condition.ComponentCondition;
-import org.talend.hadoop.distribution.condition.EqualityOperator;
-import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
-import org.talend.hadoop.distribution.constants.SparkBatchConstant;
-import org.talend.hadoop.distribution.spl30x.SPL30xConstant;
+import org.talend.hadoop.distribution.constants.ModuleGroupName;
+import org.talend.hadoop.distribution.spl30x.SPL30xDistribution;
 
 public class SPL30xHiveOnSparkModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        hs.add(new DistributionModuleGroup(SPL30xConstant.SPARK_BATCH_HIVE_MODULE_GROUP.getModuleName(), true));
+        hs.add(new DistributionModuleGroup(ModuleGroupName.HIVE.get(SPL30xDistribution.VERSION), true));
         return hs;
     }
 }

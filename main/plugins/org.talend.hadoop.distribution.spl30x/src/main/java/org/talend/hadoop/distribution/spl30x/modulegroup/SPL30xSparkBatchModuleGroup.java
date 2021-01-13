@@ -16,13 +16,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
-import org.talend.hadoop.distribution.spl30x.SPL30xConstant;
+import org.talend.hadoop.distribution.constants.ModuleGroupName;
+import org.talend.hadoop.distribution.spl30x.SPL30xDistribution;
 
 public class SPL30xSparkBatchModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
-        hs.add(new DistributionModuleGroup(SPL30xConstant.SPARK_BATCH_MODULE_GROUP.getModuleName(), true));
+        hs.add(new DistributionModuleGroup(ModuleGroupName.SPARK_BATCH.get(SPL30xDistribution.VERSION), true));
         return hs;
     }
 }
