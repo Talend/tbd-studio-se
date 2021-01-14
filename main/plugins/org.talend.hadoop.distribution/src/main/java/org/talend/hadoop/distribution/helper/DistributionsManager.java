@@ -219,7 +219,8 @@ public final class DistributionsManager implements IDistributionsManager {
             String key = getKey(hc);
             DistributionBean distributionBean = disctributionsMap.get(key);
             if (distributionBean == null) {
-                distributionBean = new DistributionBean(type, distribution, distributionName, ((AbstractDistribution)hc).isSparkLocal());
+                distributionBean = new DistributionBean(type, distribution, distributionName,
+                        ((AbstractDistribution) hc).isSparkLocal());
                 disctributionsMap.put(key, distributionBean);
             } else {// check the name and displayName
                 if (!distribution.equals(distributionBean.name) || !distributionName.equals(distributionBean.displayName)) {
@@ -288,7 +289,7 @@ public final class DistributionsManager implements IDistributionsManager {
     public String[] getDistributionsDisplay(boolean withCustom) {
         List<String> distributionsDisplay = new ArrayList<>();
         for (DistributionBean bean : getDistributions()) {
-            if (!withCustom && bean.useCustom()) {
+            if (!withCustom && bean.useCustom() || bean.isSparkLocal()) {
                 continue;
             }
             if ("CLOUDERA_ALTUS".equals(bean.getName())) {
