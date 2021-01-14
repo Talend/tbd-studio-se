@@ -122,4 +122,8 @@ public final class SparkBatchConstant {
 
     public static final String DECISION_TREE_MODEL_COMPONENT = "tDecisionTreeModel"; 
     public static final String GRADIENT_BOOSTED_TREE_MODEL = "tGradientBoostedTreeModel";
+
+    public static final String ALSM_MODEL_COMPONENT = "tALSModel";
+
+    public static final String RECOMMEND_COMPONENT = "tRecommend";
 }
