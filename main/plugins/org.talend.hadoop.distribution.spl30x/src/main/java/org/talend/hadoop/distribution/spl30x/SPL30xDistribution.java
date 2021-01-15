@@ -108,7 +108,7 @@ public class SPL30xDistribution extends AbstractDistribution
                         SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
 
         result
-                .put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.ALSM_MODEL_COMPONENT),
+                .put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.ALS_MODEL_COMPONENT),
                         SPL30xNodeModuleGroup
                                 .getModuleGroup(ModuleGroupName.PARQUET.get(getVersion()),
                                         SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER,
