@@ -44,6 +44,8 @@ public final class SparkBatchConstant {
 
     public static final String SVM_MODEL_COMPONENT = "tSVMModel"; //$NON-NLS-1$
 
+    public static final String CLASSIFY_SVM_COMPONENT = "tClassifySVM"; //$NON-NLS-1$
+
     public static final String KMEANS_MODEL_COMPONENT = "tKMeansModel"; //$NON-NLS-1$
 
     public static final String PREDICT_CLUSTER_COMPONENT = "tPredictCluster"; //$NON-NLS-1$

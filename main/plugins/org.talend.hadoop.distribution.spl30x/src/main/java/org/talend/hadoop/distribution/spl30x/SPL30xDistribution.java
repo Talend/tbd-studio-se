@@ -97,6 +97,9 @@ public class SPL30xDistribution extends AbstractDistribution
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.SVM_MODEL_COMPONENT),
                 SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.PARQUET.get(getVersion()),
                         SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.CLASSIFY_SVM_COMPONENT),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.PARQUET.get(getVersion()),
+                        SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.KMEANS_MODEL_COMPONENT),
                 SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.PARQUET.get(getVersion()),
                         SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
@@ -212,6 +215,18 @@ public class SPL30xDistribution extends AbstractDistribution
                 SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.PARQUET.get(getVersion()),
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
                         SPL30xDistribution.SPARK_VERSION));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PREDICT_CLUSTER_COMPONENT),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.PARQUET.get(getVersion()),
+                        SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
+                        SPL30xDistribution.SPARK_VERSION));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PREDICT_COMPONENT),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.PARQUET.get(getVersion()),
+                        SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
+                        SPL30xDistribution.SPARK_VERSION));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.CLASSIFY_SVM_COMPONENT),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.PARQUET.get(getVersion()),
+                        SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
+                        SPL30xDistribution.SPARK_VERSION));
 
         // Spark Streaming Kafka
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT),
@@ -257,17 +272,7 @@ public class SPL30xDistribution extends AbstractDistribution
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
                         SPL30xDistribution.SPARK_VERSION));
 
-        // Spark Streaming Predict
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PREDICT_CLUSTER_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.PARQUET.get(getVersion()),
-                        SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
-                        SPL30xDistribution.SPARK_VERSION));
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PREDICT_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.PARQUET.get(getVersion()),
-                        SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
-                        SPL30xDistribution.SPARK_VERSION));
-
-        // Spark Streaming KMeans
+        // Spark Streaming ML
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KMEANSSTR_MODEL_COMPONENT),
                 SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.ML.get(getVersion()),
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
