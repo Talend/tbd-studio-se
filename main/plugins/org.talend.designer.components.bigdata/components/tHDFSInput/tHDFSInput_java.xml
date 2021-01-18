@@ -75,9 +75,6 @@
 			<DEFAULT IF="(DISTRIBUTION=='MAPR')">"maprfs:///"</DEFAULT>
 			<DEFAULT IF="(SCHEME=='HDFS')">"hdfs://localhost:9000/"</DEFAULT>
 			<DEFAULT IF="(SCHEME=='WebHDFS')">"webhdfs://localhost:50070/"</DEFAULT>
-			<DEFAULT
-				IF="(DB_VERSION == 'APACHE_2_4_0_EMR') AND (DISTRIBUTION != 'CUSTOM')">"hdfs://ecX-XXX-XXX-XXX-XXX.compute-XXX.amazonaws.com:9000/"
-			</DEFAULT>
 		</PARAMETER>
 
 		<!-- ADLS params -->
