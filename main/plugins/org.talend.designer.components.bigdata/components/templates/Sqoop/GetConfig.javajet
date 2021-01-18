@@ -26,13 +26,6 @@
 	configuration_<%=cid%>.set("<%=fsDefalutName%>", <%=namenode%>);
 <%
 
-	if(!isCustom && ("MAPR401".equals(version) || "MAPR410".equals(version))) {//set the default properties
-%>
-		configuration_<%=cid%>.set("mapreduce.job.map.output.collector.class", "org.apache.hadoop.mapred.MapRFsOutputBuffer");
-	    configuration_<%=cid%>.set("mapreduce.job.reduce.shuffle.consumer.plugin.class", "org.apache.hadoop.mapreduce.task.reduce.DirectShuffle");
-<%
-	}
-
 	boolean isKerberosAvailableHadoop2 = !isCustom && sqoopDistrib.isHadoop2() && sqoopDistrib.doSupportKerberos();
 	boolean isHadoop2 = !isCustom && sqoopDistrib.isHadoop2();
 	boolean isKerberosAvailableHadoop1 = !isCustom && sqoopDistrib.isHadoop1() && sqoopDistrib.doSupportKerberos();
@@ -99,14 +92,6 @@
 <%
 	}
 
-    if(!isCustom && ("HDP_1_2".equals(version) || "HDP_1_3".equals(version))) {
-        String mapMemory = ElementParameterParser.getValue(node,"__MAPRED_JOB_MAP_MEMORY_MB__");
-        String reduceMemory = ElementParameterParser.getValue(node,"__MAPRED_JOB_REDUCE_MEMORY_MB__");
-%>
-        configuration_<%=cid%>.set("mapred.job.map.memory.mb", <%=mapMemory%>);
-        configuration_<%=cid%>.set("mapred.job.reduce.memory.mb", <%=reduceMemory%>);
-<%
-    }
 	if(hadoopProps!=null && hadoopProps.size() > 0){
 		for(Map<String, String> item : hadoopProps){
 %>
