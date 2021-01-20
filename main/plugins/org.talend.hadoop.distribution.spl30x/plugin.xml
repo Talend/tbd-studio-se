@@ -793,6 +793,12 @@
             <library id="commons-math3-3.4.1.jar"/>
         </libraryNeededGroup>
 
+        <!-- KMeans -->
+        <libraryNeededGroup description="KMeans libraries for spl30x" id="KMEANS-GROUP-SPARK_3_0_x" name="KMEANS-GROUP-SPARK_3_0_x">
+        	<group id="ML-GROUP-SPARK_3_0_x"/>
+            <group id="PARQUET-GROUP-SPARK_3_0_x"/>
+        </libraryNeededGroup>
+
         <!-- Spark Streaming group -->
         <libraryNeededGroup description="Spark streaming libraries for spl30x" id="SPARK-STREAMING-GROUP-SPARK_3_0_x" name="SPARK-STREAMING-GROUP-SPARK_3_0_x">
             <library id="spark-streaming_2.12-3.0.1.jar"/>

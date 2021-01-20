@@ -227,10 +227,6 @@ public class SPL30xDistribution extends AbstractDistribution
                 SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.PARQUET.get(getVersion()),
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
                         SPL30xDistribution.SPARK_VERSION));
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KMEANSSTR_MODEL_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.PARQUET.get(getVersion()),
-                        SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
-                        SPL30xDistribution.SPARK_VERSION));
 
         // Spark Streaming Kafka
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT),
@@ -260,6 +256,12 @@ public class SPL30xDistribution extends AbstractDistribution
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
                         SPL30xDistribution.SPARK_VERSION));
 
+        // Spark Streaming KMeans
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KMEANSSTR_MODEL_COMPONENT),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.KMEANS.get(getVersion()),
+                        SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
+                        SPL30xDistribution.SPARK_VERSION));
+
         // Spark Streaming Redshift
         result.put(
                 new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.REDSHIFT_CONFIGURATION_COMPONENT),
@@ -273,12 +275,6 @@ public class SPL30xDistribution extends AbstractDistribution
                         SPL30xDistribution.SPARK_VERSION));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.REDSHIFT_OUTPUT_COMPONENT),
                 SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.REDSHIFT_STREAMING.get(getVersion()),
-                        SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
-                        SPL30xDistribution.SPARK_VERSION));
-
-        // Spark Streaming ML
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KMEANSSTR_MODEL_COMPONENT),
-                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.ML.get(getVersion()),
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
                         SPL30xDistribution.SPARK_VERSION));
 

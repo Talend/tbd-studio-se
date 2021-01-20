@@ -11,6 +11,7 @@ public enum ModuleGroupName {
     HIVE("HIVE-GROUP"), //$NON-NLS-1$
     KAFKA("KAFKA-GROUP"), //$NON-NLS-1$
     KINESIS("KINESIS-GROUP"), //$NON-NLS-1$
+    KMEANS("KMEANS-GROUP"), //$NON-NLS-1$
     MATH("MATH-GROUP"), //$NON-NLS-1$
     ML("ML-GROUP"), //$NON-NLS-1$
     PARQUET("PARQUET-GROUP"), //$NON-NLS-1$
