@@ -227,6 +227,10 @@ public class SPL30xDistribution extends AbstractDistribution
                 SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.PARQUET.get(getVersion()),
                         SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
                         SPL30xDistribution.SPARK_VERSION));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KMEANSSTR_MODEL_COMPONENT),
+                SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.PARQUET.get(getVersion()),
+                        SparkStreamingConstant.SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER,
+                        SPL30xDistribution.SPARK_VERSION));
 
         // Spark Streaming Kafka
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT),
