@@ -43,7 +43,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="ignore_optional_problems" value="true"/>
 			<attribute name="m2e-apt" value="true"/>
-			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
