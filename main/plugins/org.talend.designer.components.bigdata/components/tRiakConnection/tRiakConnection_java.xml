@@ -61,9 +61,9 @@
 			<IMPORT NAME="commons-logging" MODULE="commons-logging-1.2.jar" MVN="mvn:commons-logging/commons-logging/1.2" REQUIRED="true" />
 			<IMPORT NAME="httpcore" MODULE="httpcore-4.4.13.jar" MVN="mvn:org.apache.httpcomponents/httpcore/4.4.13" REQUIRED="true"/>
 			<IMPORT NAME="httpclient" MODULE="httpclient-4.5.12.jar" MVN="mvn:org.apache.httpcomponents/httpclient/4.5.12" REQUIRED="true"/>
-			<IMPORT NAME="jackson-annotations" MODULE="jackson-annotations-2.10.1.jar" MVN="mvn:com.fasterxml.jackson.core/jackson-annotations/2.10.1" REQUIRED="true"/>
-			<IMPORT NAME="jackson-core" MODULE="jackson-core-2.10.1.jar" MVN="mvn:com.fasterxml.jackson.core/jackson-core/2.10.1" REQUIRED="true"/>
-			<IMPORT NAME="jackson-databind" MODULE="jackson-databind-2.10.1.jar" MVN="mvn:com.fasterxml.jackson.core/jackson-databind/2.10.1" REQUIRED="true"/>
+			<IMPORT NAME="jackson-annotations" MODULE="jackson-annotations-2.11.0.jar" MVN="mvn:com.fasterxml.jackson.core/jackson-annotations/2.11.0" REQUIRED="true"/>
+			<IMPORT NAME="jackson-core" MODULE="jackson-core-2.11.0.jar" MVN="mvn:com.fasterxml.jackson.core/jackson-core/2.11.0" REQUIRED="true"/>
+			<IMPORT NAME="jackson-databind" MODULE="jackson-databind-2.11.0.jar" MVN="mvn:com.fasterxml.jackson.core/jackson-databind/2.11.0" REQUIRED="true"/>
 			<IMPORT NAME="jackson-datatype-joda" MODULE="jackson-datatype-joda-2.9.5.jar" MVN="mvn:com.fasterxml.jackson.datatype/jackson-datatype-joda/2.9.5" REQUIRED="true"/>
 			<IMPORT NAME="java-json" MODULE="java-json.jar" MVN="mvn:org.talend.libraries/java-json/6.0.0"  UrlPath="platform:/plugin/org.talend.libraries.jackson/lib/java-json.jar" REQUIRED="true"/>
 			<IMPORT NAME="joda-time" MODULE="joda-time-2.8.1.jar" MVN="mvn:joda-time/joda-time/2.8.1" REQUIRED="true"/>
