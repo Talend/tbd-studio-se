@@ -214,9 +214,15 @@ cmd_<%=cid %> = (String[]) org.apache.commons.lang.ArrayUtils.addAll(cmd_<%=cid 
 <%if(isLog4jEnabled) {%>
 java.lang.StringBuilder stringBuilder_<%=cid%> = new java.lang.StringBuilder();
 
-for(String parameter_<%=cid%> : cmd_<%=cid %>) {
-	stringBuilder_<%=cid%>.append(parameter_<%=cid%>);
-	stringBuilder_<%=cid%>.append(" ");
+for (int i = 0; i < cmd_<%=cid %>.length; i++) {
+	if (cmd_<%=cid %>[i].startsWith("--password")) {
+		stringBuilder_<%=cid%>.append("--password <hidden> ");
+		i++;//skipping password arg
+	}
+	else {
+		stringBuilder_<%=cid%>.append(cmd_<%=cid %>[i]);
+		stringBuilder_<%=cid%>.append(" ");
+	}
 }
 log.info("<%=cid%> - execute sqoop command: " + stringBuilder_<%=cid%>.toString());
 <%}%>
