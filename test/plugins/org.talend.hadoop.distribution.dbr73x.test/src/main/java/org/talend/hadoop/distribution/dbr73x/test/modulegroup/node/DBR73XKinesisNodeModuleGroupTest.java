@@ -31,7 +31,7 @@ import org.talend.hadoop.distribution.dbr73x.DBR73XConstant;
 import org.talend.hadoop.distribution.dbr73x.DBR73XDistribution;
 import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73XKinesisNodeModuleGroup;
 
-public class DBR73XKinesisNodeModuleGroupTest {
+public class DBR73xKinesisNodeModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
