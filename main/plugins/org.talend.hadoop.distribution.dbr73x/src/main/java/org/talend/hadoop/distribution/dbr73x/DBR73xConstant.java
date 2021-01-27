@@ -25,7 +25,7 @@ public enum DBR73xConstant {
 
     private String mModuleName;
 
-    DBR73XConstant(String moduleName) {
+    DBR73xConstant(String moduleName) {
         this.mModuleName = moduleName;
     }
 

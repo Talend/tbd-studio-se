@@ -21,10 +21,9 @@ import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
+import org.talend.hadoop.distribution.dbr73x.DBR73xConstant;
 
-import org.talend.hadoop.distribution.dbr73x.DBR73XConstant;
-
-public class DBR73xHiveOnSparkModuleGroup {
+public class DBR73xSparkBatchModuleGroup {
 
     private final static ComponentCondition condition = new SimpleComponentCondition(new BasicExpression(
             SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false")); //$NON-NLS-1$
@@ -32,7 +31,17 @@ public class DBR73xHiveOnSparkModuleGroup {
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         hs.add(new DistributionModuleGroup(
-                DBR73XConstant.HIVEONSPARK_LIB_MRREQUIRED_DBR73X.getModuleName(),
+                DBR73xConstant.HIVEONSPARK_LIB_MRREQUIRED_DBR73X.getModuleName(),
+                true,
+                condition
+        ));
+        hs.add(new DistributionModuleGroup(
+                DBR73xConstant.SPARK_LIB_MRREQUIRED_DBR73X.getModuleName(),
+                true,
+                condition
+        ));
+        hs.add(new DistributionModuleGroup(
+                DBR73xConstant.BIGDATA_LAUNCHER_LIB_DBR73X.getModuleName(),
                 true,
                 condition
         ));

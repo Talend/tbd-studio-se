@@ -21,8 +21,7 @@ import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
-
-import org.talend.hadoop.distribution.dbr73x.DBR73XConstant;
+import org.talend.hadoop.distribution.dbr73x.DBR73xConstant;
 
 public class DBR73xSparkStreamingModuleGroup {
 
@@ -32,22 +31,22 @@ public class DBR73xSparkStreamingModuleGroup {
     public static Set<DistributionModuleGroup> getModuleGroups() {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         hs.add(new DistributionModuleGroup(
-                DBR73XConstant.SPARK_STREAMING_LIB_MRREQUIRED_DBR73X.getModuleName(),
+                DBR73xConstant.SPARK_STREAMING_LIB_MRREQUIRED_DBR73X.getModuleName(),
                 true,
                 condition
         ));
         hs.add(new DistributionModuleGroup(
-                DBR73XConstant.HIVEONSPARK_LIB_MRREQUIRED_DBR73X.getModuleName(),
+                DBR73xConstant.HIVEONSPARK_LIB_MRREQUIRED_DBR73X.getModuleName(),
                 true,
                 condition
         ));
         hs.add(new DistributionModuleGroup(
-                DBR73XConstant.SPARK_LIB_MRREQUIRED_DBR73X.getModuleName(),
+                DBR73xConstant.SPARK_LIB_MRREQUIRED_DBR73X.getModuleName(),
                 true,
                 condition
         ));
         hs.add(new DistributionModuleGroup(
-                DBR73XConstant.BIGDATA_LAUNCHER_LIB_DBR73X.getModuleName(),
+                DBR73xConstant.BIGDATA_LAUNCHER_LIB_DBR73X.getModuleName(),
                 true,
                 condition
         ));

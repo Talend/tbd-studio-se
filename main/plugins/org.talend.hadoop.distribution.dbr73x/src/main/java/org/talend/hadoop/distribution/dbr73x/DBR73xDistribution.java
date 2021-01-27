@@ -23,21 +23,17 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
-import org.talend.hadoop.distribution.component.HiveComponent;
 import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
-import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
-
-import org.talend.hadoop.distribution.dbr73x.modulegroup.DBR73XHiveOnSparkModuleGroup;
-import org.talend.hadoop.distribution.dbr73x.modulegroup.DBR73XSparkBatchModuleGroup;
-import org.talend.hadoop.distribution.dbr73x.modulegroup.DBR73XSparkStreamingModuleGroup;
-import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73XAzureNodeModuleGroup;
-import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73XKinesisNodeModuleGroup;
-import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73XTopbyNodeModuleGroup;
+import org.talend.hadoop.distribution.dbr73x.modulegroup.DBR73xHiveOnSparkModuleGroup;
+import org.talend.hadoop.distribution.dbr73x.modulegroup.DBR73xSparkBatchModuleGroup;
+import org.talend.hadoop.distribution.dbr73x.modulegroup.DBR73xSparkStreamingModuleGroup;
+import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73xAzureNodeModuleGroup;
+import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73xKinesisNodeModuleGroup;
 
 public class DBR73xDistribution extends AbstractDatabricksDistribution implements SparkBatchComponent,
         SparkStreamingComponent, HiveOnSparkComponent {
@@ -56,7 +52,7 @@ public class DBR73xDistribution extends AbstractDatabricksDistribution implement
 
     protected Map<ComponentType, String> customVersionDisplayNames;
 
-    public DBR73XDistribution() {
+    public DBR73xDistribution() {
         displayConditions = buildDisplayConditions();
         customVersionDisplayNames = buildCustomVersionDisplayNames();
         moduleGroups = buildModuleGroups();
@@ -74,11 +70,11 @@ public class DBR73xDistribution extends AbstractDatabricksDistribution implement
 
     protected Map<ComponentType, Set<DistributionModuleGroup>> buildModuleGroups() {
         Map<ComponentType, Set<DistributionModuleGroup>> result = new HashMap<>();
-        result.put(ComponentType.HIVEONSPARK, DBR73XHiveOnSparkModuleGroup
+        result.put(ComponentType.HIVEONSPARK, DBR73xHiveOnSparkModuleGroup
                 .getModuleGroups());
-        result.put(ComponentType.SPARKBATCH, DBR73XSparkBatchModuleGroup
+        result.put(ComponentType.SPARKBATCH, DBR73xSparkBatchModuleGroup
                 .getModuleGroups());
-        result.put(ComponentType.SPARKSTREAMING, DBR73XSparkStreamingModuleGroup
+        result.put(ComponentType.SPARKSTREAMING, DBR73xSparkStreamingModuleGroup
                 .getModuleGroups());
         return result;
     }
@@ -90,33 +86,24 @@ public class DBR73xDistribution extends AbstractDatabricksDistribution implement
         result.put(new NodeComponentTypeBean(
                 ComponentType.SPARKBATCH,
                 SparkBatchConstant.AZURE_FS_CONFIGURATION_COMPONENT
-        ), DBR73XAzureNodeModuleGroup.getModuleGroups(distribution, version));
+        ), DBR73xAzureNodeModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(
                 ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.AZURE_FS_CONFIGURATION_COMPONENT
-        ), DBR73XAzureNodeModuleGroup.getModuleGroups(distribution, version));
+        ), DBR73xAzureNodeModuleGroup.getModuleGroups(distribution, version));
         //Kinesis
         result.put(new NodeComponentTypeBean(
                 ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT
-        ), DBR73XKinesisNodeModuleGroup.getModuleGroups(distribution, version));
+        ), DBR73xKinesisNodeModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(
                 ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.KINESIS_INPUT_COMPONENT
-        ), DBR73XKinesisNodeModuleGroup.getModuleGroups(distribution, version));
+        ), DBR73xKinesisNodeModuleGroup.getModuleGroups(distribution, version));
         result.put(new NodeComponentTypeBean(
                 ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.KINESIS_INPUT_AVRO_COMPONENT
-        ), DBR73XKinesisNodeModuleGroup.getModuleGroups(distribution, version));
-        //Topby
-        result.put(new NodeComponentTypeBean(
-                ComponentType.SPARKBATCH,
-                SparkBatchConstant.TOP_BY_COMPONENT
-        ), DBR73XTopbyNodeModuleGroup.getModuleGroups(distribution, version));
-        result.put(new NodeComponentTypeBean(
-                ComponentType.SPARKSTREAMING,
-                SparkStreamingConstant.TOP_BY_COMPONENT
-        ), DBR73XTopbyNodeModuleGroup.getModuleGroups(distribution, version));
+        ), DBR73xKinesisNodeModuleGroup.getModuleGroups(distribution, version));
         return result;
 
     }

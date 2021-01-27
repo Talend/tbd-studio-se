@@ -16,15 +16,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
-import org.talend.hadoop.distribution.dbr73x.DBR73XConstant;
-import org.talend.hadoop.distribution.utils.ModuleGroupsUtils;
+import org.talend.hadoop.distribution.dbr73x.DBR73xConstant;
 
-public class DBR73xKinesisNodeModuleGroup {
+public class DBR73xAzureNodeModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> moduleGroups = new HashSet<>();
         moduleGroups.add(new DistributionModuleGroup(
-                DBR73XConstant.SPARK_STREAMING_LIB_KINESIS_DBR73X.getModuleName(),
+                DBR73xConstant.SPARK_AZURE_LIB_MRREQUIRED_DBR73X.getModuleName(),
                 true,
                 null
         ));

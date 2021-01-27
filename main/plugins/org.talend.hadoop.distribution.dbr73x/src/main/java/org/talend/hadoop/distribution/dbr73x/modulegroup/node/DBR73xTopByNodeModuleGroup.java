@@ -16,15 +16,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
-import org.talend.hadoop.distribution.dbr73x.DBR73XConstant;
-import org.talend.hadoop.distribution.utils.ModuleGroupsUtils;
+import org.talend.hadoop.distribution.dbr73x.DBR73xConstant;
 
 public class DBR73xTopByNodeModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> moduleGroups = new HashSet<>();
         moduleGroups.add(new DistributionModuleGroup(
-                DBR73XConstant.TOPBY_LIB_REQUIRED_DBR73X.getModuleName(),
+                DBR73xConstant.TOPBY_LIB_REQUIRED_DBR73X.getModuleName(),
                 true,
                 null
         ));
