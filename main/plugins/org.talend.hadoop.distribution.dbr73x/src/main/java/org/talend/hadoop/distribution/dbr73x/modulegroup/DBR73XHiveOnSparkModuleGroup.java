@@ -24,7 +24,7 @@ import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 
 import org.talend.hadoop.distribution.dbr73x.DBR73XConstant;
 
-public class DBR73XHiveOnSparkModuleGroup {
+public class DBR73xHiveOnSparkModuleGroup {
 
     private final static ComponentCondition condition = new SimpleComponentCondition(new BasicExpression(
             SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false")); //$NON-NLS-1$
