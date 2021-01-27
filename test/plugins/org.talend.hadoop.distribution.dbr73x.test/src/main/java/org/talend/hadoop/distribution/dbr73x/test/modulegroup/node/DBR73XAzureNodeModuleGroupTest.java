@@ -31,7 +31,7 @@ import org.talend.hadoop.distribution.dbr73x.DBR73XConstant;
 import org.talend.hadoop.distribution.dbr73x.DBR73XDistribution;
 import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73XAzureNodeModuleGroup;
 
-public class DBR73XAzureNodeModuleGroupTest {
+public class DBR73xAzureNodeModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
