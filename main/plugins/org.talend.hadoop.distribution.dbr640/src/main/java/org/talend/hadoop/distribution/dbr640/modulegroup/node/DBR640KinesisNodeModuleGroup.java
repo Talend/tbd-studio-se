@@ -16,6 +16,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.talend.hadoop.distribution.DistributionModuleGroup;
+import org.talend.hadoop.distribution.condition.common.SparkStreamingLinkedNodeCondition;
 import org.talend.hadoop.distribution.dbr640.DBR640Constant;
 import org.talend.hadoop.distribution.utils.ModuleGroupsUtils;
 
@@ -26,9 +27,8 @@ public class DBR640KinesisNodeModuleGroup {
         moduleGroups.add(new DistributionModuleGroup(
                 DBR640Constant.SPARK_STREAMING_LIB_KINESIS_DBR640.getModuleName(),
                 true,
-                null
+                new SparkStreamingLinkedNodeCondition(distribution, version).getCondition()
         ));
         return moduleGroups;
     }
 }
-
