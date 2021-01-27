@@ -34,6 +34,7 @@ import org.talend.hadoop.distribution.dbr73x.modulegroup.DBR73xSparkBatchModuleG
 import org.talend.hadoop.distribution.dbr73x.modulegroup.DBR73xSparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73xAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73xKinesisNodeModuleGroup;
+import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73xTopByNodeModuleGroup;
 
 public class DBR73xDistribution extends AbstractDatabricksDistribution implements SparkBatchComponent,
         SparkStreamingComponent, HiveOnSparkComponent {
@@ -104,6 +105,15 @@ public class DBR73xDistribution extends AbstractDatabricksDistribution implement
                 ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.KINESIS_INPUT_AVRO_COMPONENT
         ), DBR73xKinesisNodeModuleGroup.getModuleGroups(distribution, version));
+        //Topby
+        result.put(new NodeComponentTypeBean(
+                ComponentType.SPARKBATCH,
+                SparkBatchConstant.TOP_BY_COMPONENT
+        ), DBR73xTopByNodeModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(
+                ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.TOP_BY_COMPONENT
+        ), DBR73xTopByNodeModuleGroup.getModuleGroups(distribution, version));
         return result;
 
     }
