@@ -19,7 +19,7 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.dbr73x.DBR73XConstant;
 import org.talend.hadoop.distribution.utils.ModuleGroupsUtils;
 
-public class DBR73XKinesisNodeModuleGroup {
+public class DBR73xKinesisNodeModuleGroup {
 
     public static Set<DistributionModuleGroup> getModuleGroups(String distribution, String version) {
         Set<DistributionModuleGroup> moduleGroups = new HashSet<>();
@@ -31,4 +31,3 @@ public class DBR73XKinesisNodeModuleGroup {
         return moduleGroups;
     }
 }
-
