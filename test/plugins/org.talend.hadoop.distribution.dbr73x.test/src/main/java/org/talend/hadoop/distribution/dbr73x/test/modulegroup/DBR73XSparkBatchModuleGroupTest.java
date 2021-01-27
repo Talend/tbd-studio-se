@@ -25,7 +25,7 @@ import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.dbr73x.DBR73XConstant;
 import org.talend.hadoop.distribution.dbr73x.modulegroup.DBR73XSparkBatchModuleGroup;
 
-public class DBR73XSparkBatchModuleGroupTest {
+public class DBR73xSparkBatchModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
