@@ -12,7 +12,7 @@
 // ============================================================================
 package org.talend.hadoop.distribution.dbr73x;
 
-public enum DBR73XConstant {
+public enum DBR73xConstant {
 
     BIGDATA_LAUNCHER_LIB_DBR73X("BIGDATA-LAUNCHER-LIB-DBR73X"),  //$NON-NLS-1$
     HIVEONSPARK_LIB_MRREQUIRED_DBR73X("HIVEONSPARK-LIB-MRREQUIRED-DBR73X"),  //$NON-NLS-1$
@@ -33,5 +33,4 @@ public enum DBR73XConstant {
         return this.mModuleName;
     }
 }
-
 
