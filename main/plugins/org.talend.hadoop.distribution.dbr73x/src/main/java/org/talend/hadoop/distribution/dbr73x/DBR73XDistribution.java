@@ -39,7 +39,7 @@ import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73XAzureNodeMod
 import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73XKinesisNodeModuleGroup;
 import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73XTopbyNodeModuleGroup;
 
-public class DBR73XDistribution extends AbstractDatabricksDistribution implements SparkBatchComponent,
+public class DBR73xDistribution extends AbstractDatabricksDistribution implements SparkBatchComponent,
         SparkStreamingComponent, HiveOnSparkComponent {
 
     public final static String VERSION = "DATABRICKS_7_3" ;
