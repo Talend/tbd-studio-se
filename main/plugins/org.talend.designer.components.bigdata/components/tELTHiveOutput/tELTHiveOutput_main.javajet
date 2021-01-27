@@ -449,14 +449,6 @@ imports="
 %>
             java.sql.Statement init_<%=cid%> = conn_<%=cid%>.createStatement();
 <%
-            if(!isCustom && ("HDP_1_2".equals(hiveVersion) || "HDP_1_3".equals(hiveVersion))) {
-                String mapMemory = ElementParameterParser.getValue(previousNode,"__MAPRED_JOB_MAP_MEMORY_MB__");
-                String reduceMemory = ElementParameterParser.getValue(previousNode,"__MAPRED_JOB_REDUCE_MEMORY_MB__");
-%>
-                init_<%=cid%>.execute("SET mapred.job.map.memory.mb=" + <%=mapMemory%>);
-                init_<%=cid%>.execute("SET mapred.job.reduce.memory.mb=" + <%=reduceMemory%>);
-<%
-            }
 
             boolean isKerberosAvailableHadoop2 = !isCustom && hiveDistrib.isHadoop2() && hiveDistrib.doSupportKerberos();
             boolean isHadoop2 = !isCustom && hiveDistrib.isHadoop2();
@@ -528,13 +520,6 @@ imports="
                     if((isCustom && useYarn && crossPlatformSubmission) || (!isCustom && hiveDistrib.doSupportCrossPlatformSubmission())) {
 %>
                         init_<%=cid%>.execute("SET mapreduce.app-submission.cross-platform=true");
-<%
-                    }
-
-                    if("MAPR410".equals(hiveVersion)){
-%>
-                        init_<%=cid%>.execute("SET mapreduce.job.map.output.collector.class=org.apache.hadoop.mapred.MapRFsOutputBuffer");
-                        init_<%=cid%>.execute("SET mapreduce.job.reduce.shuffle.consumer.plugin.class=org.apache.hadoop.mapreduce.task.reduce.DirectShuffle");
 <%
                     }
 

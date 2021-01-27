@@ -18,12 +18,12 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
+import org.talend.hadoop.distribution.cdh.CDHDistribution;
 import org.talend.hadoop.distribution.cdh580.modulegroup.CDH580HBaseModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.CDH580HCatalogModuleGroup;
 import org.talend.hadoop.distribution.cdh580.modulegroup.CDH580HDFSModuleGroup;
@@ -66,13 +66,13 @@ import org.talend.hadoop.distribution.constants.cdh.IClouderaDistribution;
 import org.talend.hadoop.distribution.kudu.KuduVersion;
 
 @SuppressWarnings("nls")
-public class CDH580Distribution extends AbstractDistribution implements IClouderaDistribution, HDFSComponent, HBaseComponent,
+public class CDH580Distribution extends CDHDistribution implements IClouderaDistribution, HDFSComponent, HBaseComponent,
         HCatalogComponent, MRComponent, HiveComponent, HiveOnSparkComponent, ImpalaComponent, SqoopComponent,
  CDHSparkBatchComponent, SparkStreamingComponent {
 
     public final static String VERSION = "Cloudera_CDH5_8";
 
-    public static final String VERSION_DISPLAY = "Cloudera CDH5.8(YARN mode)";
+    public static final String VERSION_DISPLAY = "Cloudera CDH5.8(Deprecated)";
 
     private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*"; //$NON-NLS-1$
 
@@ -104,7 +104,7 @@ public class CDH580Distribution extends AbstractDistribution implements IClouder
         // moduleGroups.put(ComponentType.SPARKBATCH, CDH580SparkBatchModuleGroup.getModuleGroups());
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
-        nodeModuleGroups = new HashMap<>();
+        nodeModuleGroups = super.buildNodeModuleGroups(distribution, version);
 
         // WebHDFS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = CDH580WebHDFSModuleGroup.getModuleGroups(distribution, version);

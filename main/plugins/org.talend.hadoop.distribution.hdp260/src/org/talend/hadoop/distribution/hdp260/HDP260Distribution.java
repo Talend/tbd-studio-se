@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
@@ -40,6 +39,7 @@ import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.hdp.IHortonworksDistribution;
+import org.talend.hadoop.distribution.hdp.HDPDistribution;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260HBaseModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260HCatalogModuleGroup;
 import org.talend.hadoop.distribution.hdp260.modulegroup.HDP260HDFSModuleGroup;
@@ -67,11 +67,11 @@ import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
 @SuppressWarnings("nls")
-public class HDP260Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, HBaseComponent,
+public class HDP260Distribution extends HDPDistribution implements HDFSComponent, MRComponent, HBaseComponent,
         HiveComponent, HCatalogComponent, SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, SqoopComponent,
         IHortonworksDistribution {
 
-    public static final String VERSION_DISPLAY = "Hortonworks Data Platform V2.6.0";
+    public static final String VERSION_DISPLAY = "Hortonworks Data Platform V2.6.0 (Deprecated)";
 
     public final static String VERSION = "HDP_2_6";
 
@@ -104,7 +104,7 @@ public class HDP260Distribution extends AbstractDistribution implements HDFSComp
         moduleGroups.put(ComponentType.HIVEONSPARK, HDP260HiveOnSparkModuleGroup.getModuleGroups());
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
-        nodeModuleGroups = new HashMap<>();
+        nodeModuleGroups = super.buildNodeModuleGroups(distribution, version);
 
         // WebHDFS/ADLS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = HDP260WebHDFSModuleGroup.getModuleGroups(distribution, version);

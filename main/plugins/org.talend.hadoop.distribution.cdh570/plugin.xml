@@ -517,6 +517,20 @@
             mvn_uri="mvn:org.talend.libraries/kite-hadoop-compatibility-1.0.0-cdh5.7.0/6.2.0">
         </libraryNeeded>
                         
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh570"
+            id="gcs-connector-hadoop2-2.1.6-shaded.jar"
+            name="gcs-connector-hadoop2-2.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop2-2.1.6/jar/shaded">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.cdh570"
+            id="bigquery-connector-hadoop2-1.1.6-shaded.jar"
+            name="bigquery-connector-hadoop2-1.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop2-1.1.6/jar/shaded">
+        </libraryNeeded>
+
         <!-- Groups -->
         
         <!-- HDFS group -->
@@ -845,6 +859,22 @@
             <library id="jersey-client-1.9.jar"/>
             <library id="jetty-util-6.1.26.jar"/>
         </libraryNeededGroup>
+        
+        <libraryNeededGroup
+                description="Libraries for BigQuery"
+                id="BIGQUERY-GROUP-Cloudera_CDH5_7"
+                name="BIGQUERY-GROUP-Cloudera_CDH5_7">
+            <library id="gcs-connector-hadoop2-2.1.6-shaded.jar"/>
+            <library id="bigquery-connector-hadoop2-1.1.6-shaded.jar"/>
+        </libraryNeededGroup>
+
+        <libraryNeededGroup
+                description="Libraries for GCS"
+                id="GCS-GROUP-Cloudera_CDH5_7"
+                name="GCS-GROUP-Cloudera_CDH5_7">
+            <library id="gcs-connector-hadoop2-2.1.6-shaded.jar"/>
+        </libraryNeededGroup>
+        
     </extension>
     <extension
           point="org.talend.core.runtime.classloader_provider">

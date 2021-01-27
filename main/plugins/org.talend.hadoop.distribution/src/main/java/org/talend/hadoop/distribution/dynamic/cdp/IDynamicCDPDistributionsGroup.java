@@ -21,7 +21,7 @@ import org.talend.hadoop.distribution.dynamic.IDynamicDistributionsGroup;
  */
 public interface IDynamicCDPDistributionsGroup extends IDynamicDistributionsGroup {
 
-    public static final String DISTRIBUTION_NAME = ICDPDistribution.DISTRIBUTION_NAME;
+    public static final String DISTRIBUTION_NAME = ICDPDistribution.DISTRIBUTION_NAME_WIZARD;
 
     public static final String DISTRIBUTION_DISPLAY_NAME = ICDPDistribution.DISTRIBUTION_DISPLAY_NAME;
 }

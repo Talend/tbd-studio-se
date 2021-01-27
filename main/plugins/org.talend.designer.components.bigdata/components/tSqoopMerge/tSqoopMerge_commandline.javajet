@@ -66,9 +66,15 @@
 	if(isLog4jEnabled) {
 %>
 		java.lang.StringBuilder sb_generateJar_<%=cid%> = new java.lang.StringBuilder();
-		for(String parameter_<%=cid%> : generateJar_cmd_<%=cid %>) {
-			sb_generateJar_<%=cid%>.append(parameter_<%=cid%>);
-			sb_generateJar_<%=cid%>.append(" ");
+		for (int i = 0; i < generateJar_cmd_<%=cid %>.length; i++) {
+			if (generateJar_cmd_<%=cid %>[i].startsWith("--password")) {
+				sb_generateJar_<%=cid%>.append("--password <hidden> ");
+				i++;//skipping password arg
+			}
+			else {
+				sb_generateJar_<%=cid%>.append(generateJar_cmd_<%=cid %>[i]);
+				sb_generateJar_<%=cid%>.append(" ");
+			}
 		}
 		log.info("<%=cid%> - execute sqoop command: " + sb_generateJar_<%=cid%>.toString());
 <%

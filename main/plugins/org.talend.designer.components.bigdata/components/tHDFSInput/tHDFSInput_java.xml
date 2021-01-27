@@ -75,9 +75,6 @@
 			<DEFAULT IF="(DISTRIBUTION=='MAPR')">"maprfs:///"</DEFAULT>
 			<DEFAULT IF="(SCHEME=='HDFS')">"hdfs://localhost:9000/"</DEFAULT>
 			<DEFAULT IF="(SCHEME=='WebHDFS')">"webhdfs://localhost:50070/"</DEFAULT>
-			<DEFAULT
-				IF="(DB_VERSION == 'APACHE_2_4_0_EMR') AND (DISTRIBUTION != 'CUSTOM')">"hdfs://ecX-XXX-XXX-XXX-XXX.compute-XXX.amazonaws.com:9000/"
-			</DEFAULT>
 		</PARAMETER>
 		
 		<!-- ADLS params -->
@@ -286,9 +283,9 @@
 				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.4.jar"
 				REQUIRED_IF="DISTRIB[DISTRIBUTION, DB_VERSION].doSupportOldImportMode[] AND (DISTRIBUTION=='CLOUDERA') AND (USE_EXISTING_CONNECTION=='false') AND (DISTRIBUTION!='CUSTOM')" />
 
-			<IMPORT NAME="Talend File Enhanced" MODULE="talend_file_enhanced-1.0.jar"
-				MVN="mvn:org.talend.components.lib/talend_file_enhanced/1.0"
-				UrlPath="platform:/plugin/org.talend.libraries.custom/lib/talend_file_enhanced-1.0.jar"
+			<IMPORT NAME="Talend File Enhanced" MODULE="talend_file_enhanced-1.1.jar"
+				MVN="mvn:org.talend.components.lib/talend_file_enhanced/1.1"
+				UrlPath="platform:/plugin/org.talend.libraries.custom/lib/talend_file_enhanced-1.1.jar"
 				REQUIRED="true" />
 		</IMPORTS>
 	</CODEGENERATION>
