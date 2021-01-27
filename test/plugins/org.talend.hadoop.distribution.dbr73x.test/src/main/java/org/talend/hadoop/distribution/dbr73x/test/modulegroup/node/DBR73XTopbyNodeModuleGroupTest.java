@@ -31,7 +31,7 @@ import org.talend.hadoop.distribution.dbr73x.DBR73XConstant;
 import org.talend.hadoop.distribution.dbr73x.DBR73XDistribution;
 import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73XTopbyNodeModuleGroup;
 
-public class DBR73XTopbyNodeModuleGroupTest {
+public class DBR73xTopByNodeModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
