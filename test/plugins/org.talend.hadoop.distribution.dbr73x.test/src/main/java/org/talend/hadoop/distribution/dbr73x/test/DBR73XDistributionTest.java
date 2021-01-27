@@ -26,7 +26,7 @@ import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 
 import org.talend.hadoop.distribution.dbr73x.DBR73XDistribution;
 
-public class DBR73XDistributionTest {
+public class DBR73xDistributionTest {
 
     @Test
     public void testDatabricksDistribution() throws Exception {
