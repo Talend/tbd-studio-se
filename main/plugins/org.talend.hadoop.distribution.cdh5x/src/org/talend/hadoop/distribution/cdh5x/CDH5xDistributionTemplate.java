@@ -16,6 +16,7 @@ package org.talend.hadoop.distribution.cdh5x;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.component.CDHSparkBatchComponent;
 import org.talend.hadoop.distribution.component.HBaseComponent;
@@ -245,4 +246,9 @@ public class CDH5xDistributionTemplate extends AbstractDynamicCDHDistributionTem
     public KuduVersion getKuduVersion() {
         return KuduVersion.KUDU_1_7;
     }
+
+    @Override
+    public EHadoopVersion getHadoopVersion() {
+        return EHadoopVersion.HADOOP_2;
+    }    
 }

@@ -18,7 +18,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
@@ -39,6 +38,7 @@ import org.talend.hadoop.distribution.constants.MRConstant;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.hdp.IHortonworksDistribution;
+import org.talend.hadoop.distribution.hdp.HDPDistribution;
 import org.talend.hadoop.distribution.hdp250.modulegroup.HDP250HBaseModuleGroup;
 import org.talend.hadoop.distribution.hdp250.modulegroup.HDP250HCatalogModuleGroup;
 import org.talend.hadoop.distribution.hdp250.modulegroup.HDP250HDFSModuleGroup;
@@ -62,11 +62,11 @@ import org.talend.hadoop.distribution.hdp250.modulegroup.node.sparkstreaming.HDP
 import org.talend.hadoop.distribution.hdp250.modulegroup.node.sparkstreaming.HDP250SparkStreamingParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.hdp250.modulegroup.node.sparkstreaming.HDP250SparkStreamingS3NodeModuleGroup;
 
-public class HDP250Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, HBaseComponent, 
+public class HDP250Distribution extends HDPDistribution implements HDFSComponent, MRComponent, HBaseComponent, 
         HiveComponent, HCatalogComponent, SparkBatchComponent, SparkStreamingComponent, HiveOnSparkComponent, SqoopComponent,
         IHortonworksDistribution {
 
-    public static final String VERSION_DISPLAY = "Hortonworks Data Platform V2.5.0"; //$NON-NLS-1$
+    public static final String VERSION_DISPLAY = "Hortonworks Data Platform V2.5.0 (Deprecated)"; //$NON-NLS-1$
 
     public final static String VERSION = "HDP_2_5"; //$NON-NLS-1$
 
@@ -99,7 +99,7 @@ public class HDP250Distribution extends AbstractDistribution implements HDFSComp
         moduleGroups.put(ComponentType.HIVEONSPARK, HDP250HiveOnSparkModuleGroup.getModuleGroups());
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
-        nodeModuleGroups = new HashMap<>();
+        nodeModuleGroups = super.buildNodeModuleGroups(distribution, version);
 
         // WebHDFS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = HDP250WebHDFSModuleGroup.getModuleGroups(distribution, version);

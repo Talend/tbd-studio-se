@@ -13,6 +13,30 @@
     "childNodes" : [ {
       "childNodes" : [ {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_bigquery_connector_hadoop3",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_gcs_connector_hadoop3",
+        "tagName" : "library"
+      } ],
+      "description" : "",
+      "id" : "DYNAMIC_Cloudera_CDH6_1_1_BIGQUERY_LIB_DYNAMIC",
+      "tagName" : "libraryNeededGroup",
+      "templateId" : "BIGQUERY-LIB-DYNAMIC"
+    }, {
+      "childNodes" : [ {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDH6_1_1_gcs_connector_hadoop3",
+        "tagName" : "library"
+      } ],
+      "description" : "",
+      "id" : "DYNAMIC_Cloudera_CDH6_1_1_GCS_LIB_DYNAMIC",
+      "tagName" : "libraryNeededGroup",
+      "templateId" : "GCS-LIB-DYNAMIC"
+    }, {
+      "childNodes" : [ {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_1_1_accessors_smart_1_2_jar",
         "tagName" : "library"
       }, {
@@ -11675,6 +11699,15 @@
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDH6_1_1_bigquery_connector_hadoop3",
+      "mvn_uri" : "mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop3-1.1.6/jar/shaded",
+      "name" : "bigquery-connector-hadoop3-1.1.6-shaded.jar",
+      "tagName" : "libraryNeeded",
+      "useStudioRepository" : "true"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
+      "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_bonecp_0_8_0_RELEASE_jar",
       "mvn_uri" : "mvn:com.jolbox/bonecp/0.8.0.RELEASE/jar",
       "name" : "bonecp-0.8.0.RELEASE.jar",
@@ -12046,7 +12079,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_elephant_bird_core_4_9_jar",
-      "mvn_uri" : "mvn:com.twitter.elephantbird/elephant-bird-core/4.9",
+      "mvn_uri" : "mvn:com.twitter.elephantbird/elephant-bird-core/4.9/jar",
       "name" : "elephant-bird-core-4.9.jar",
       "tagName" : "libraryNeeded"
     }, {
@@ -12106,6 +12139,15 @@
       "mvn_uri" : "mvn:de.ruedigermoeller/fst/2.50/jar",
       "name" : "fst-2.50.jar",
       "tagName" : "libraryNeeded"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDH6_1_1_gcs_connector_hadoop3",
+      "mvn_uri" : "mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop3-2.1.6/jar/shaded",
+      "name" : "gcs-connector-hadoop3-2.1.6-shaded.jar",
+      "tagName" : "libraryNeeded",
+      "useStudioRepository" : "true"
     }, {
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
@@ -12569,7 +12611,7 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_hive_hcatalog_core_2_1_1_cdh6_1_1_jar",
-      "mvn_uri" : "mvn:org.apache.hive.hcatalog/hive-hcatalog-core/2.1.1-cdh6.1.1",
+      "mvn_uri" : "mvn:org.apache.hive.hcatalog/hive-hcatalog-core/2.1.1-cdh6.1.1/jar",
       "name" : "hive-hcatalog-core-2.1.1-cdh6.1.1.jar",
       "tagName" : "libraryNeeded"
     }, {

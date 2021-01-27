@@ -18,7 +18,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
@@ -29,16 +28,11 @@ import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
-import org.talend.hadoop.distribution.condition.BasicExpression;
-import org.talend.hadoop.distribution.condition.BooleanOperator;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
-import org.talend.hadoop.distribution.condition.EqualityOperator;
-import org.talend.hadoop.distribution.condition.MultiComponentCondition;
-import org.talend.hadoop.distribution.condition.NestedComponentCondition;
-import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.hdinsight.IMicrosoftHDInsightDistribution;
+import org.talend.hadoop.distribution.hdi.HDIDistribution;
 import org.talend.hadoop.distribution.hdinsight340.modulegroup.HDInsight34HiveModuleGroup;
 import org.talend.hadoop.distribution.hdinsight340.modulegroup.HDInsight34HiveOnSparkModuleGroup;
 import org.talend.hadoop.distribution.hdinsight340.modulegroup.HDInsight34MapReduceModuleGroup;
@@ -48,12 +42,12 @@ import org.talend.hadoop.distribution.hdinsight340.modulegroup.node.sparkbatch.H
 import org.talend.hadoop.distribution.hdinsight340.modulegroup.node.sparkbatch.HDInsight34SparkBatchParquetNodeModuleGroup;
 import org.talend.hadoop.distribution.hdinsight340.modulegroup.node.sparkstreaming.HDInsight34SparkStreamingParquetNodeModuleGroup;
 
-public class HDInsight34Distribution extends AbstractDistribution implements MRComponent, HiveComponent,
+public class HDInsight34Distribution extends HDIDistribution implements MRComponent, HiveComponent,
         SparkBatchComponent, SparkStreamingComponent, IMicrosoftHDInsightDistribution, HiveOnSparkComponent {
 
     public final static String VERSION = "MICROSOFT_HD_INSIGHT_3_4"; //$NON-NLS-1$
 
-    public static final String VERSION_DISPLAY = "Microsoft HD Insight 3.4"; //$NON-NLS-1$
+    public static final String VERSION_DISPLAY = "Microsoft HD Insight 3.4 (Deprecated)"; //$NON-NLS-1$
 
     private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,/usr/hdp/current/hadoop-client/*,/usr/hdp/current/hadoop-client/lib/*,/usr/hdp/current/hadoop-hdfs-client/*,/usr/hdp/current/hadoop-hdfs-client/lib/*,/usr/hdp/current/hadoop-yarn-client/*,/usr/hdp/current/hadoop-yarn-client/lib/*"; //$NON-NLS-1$
 
@@ -63,8 +57,11 @@ public class HDInsight34Distribution extends AbstractDistribution implements MRC
 
     private static Map<ComponentType, ComponentCondition> displayConditions = new HashMap<>();
 
-    static {
+    public HDInsight34Distribution() {
 
+        String distribution = getDistribution();
+        String version = getVersion();
+        
         // Used to add a module group import for the components that have a HADOOP_DISTRIBUTION parameter, aka. the
         // components that have the distribution list.
         moduleGroups = new HashMap<>();
@@ -75,7 +72,7 @@ public class HDInsight34Distribution extends AbstractDistribution implements MRC
         moduleGroups.put(ComponentType.SPARKSTREAMING, HDInsight34SparkStreamingModuleGroup.getModuleGroups());
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
-        nodeModuleGroups = new HashMap<>();
+        nodeModuleGroups = super.buildNodeModuleGroups(distribution, version);
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
                 HDInsight34SparkBatchParquetNodeModuleGroup.getModuleGroups());

@@ -21,7 +21,7 @@ public class CDH560Distribution extends CDH550Distribution {
 
     public final static String VERSION_56 = "Cloudera_CDH5_6";
 
-    public static final String VERSION_DISPLAY_56 = "Cloudera CDH5.6(YARN mode)";
+    public static final String VERSION_DISPLAY_56 = "Cloudera CDH5.6(Deprecated)";
 
     public CDH560Distribution() {
         super();

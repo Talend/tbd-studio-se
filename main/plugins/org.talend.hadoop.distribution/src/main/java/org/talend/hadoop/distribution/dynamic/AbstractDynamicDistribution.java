@@ -40,6 +40,7 @@ import org.talend.designer.maven.aether.DummyDynamicMonitor;
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.designer.maven.aether.comparator.VersionStringComparator;
 import org.talend.designer.maven.aether.util.DynamicDistributionAetherUtils;
+import org.talend.hadoop.distribution.constants.cdp.ICDPDistribution;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicTemplateAdapter;
 import org.talend.hadoop.distribution.dynamic.bean.TemplateBean;
@@ -98,6 +99,9 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
                     if (curUrl != null) {
                         String templateFilePath = FileLocator.toFileURL(curUrl).getPath();
                         TemplateBean bean = om.readValue(new File(templateFilePath), TemplateBean.class);
+                        if (ICDPDistribution.DISTRIBUTION_NAME.equals(bean.getDistribution()) && "CDP7xDistributionTemplate".equals(bean.getTemplateId())) {
+                        	bean.setDistribution(ICDPDistribution.DISTRIBUTION_NAME_WIZARD);
+                        }
                         templates.add(bean);
                     }
                 } catch (Exception e) {

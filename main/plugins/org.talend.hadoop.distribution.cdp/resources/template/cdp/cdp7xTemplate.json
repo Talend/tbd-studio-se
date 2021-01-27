@@ -1,7 +1,7 @@
 {
     "id" : "CDP7.X.Y",
     "name" : "Cloudera CDP7.X.Y template",
-    "distribution" : "CDP",
+    "distribution" : "CLOUDERA",
     "templateId" : "CDP7xDistributionTemplate",
     "baseVersion" : "7.0.0",
     "topVersion" : "8.0.0",
@@ -41,10 +41,19 @@
             "id" : "aws-java-sdk-bundle",
             "type" : "STANDARD",
             "context" : "{properties.context}",
-            "jarName" : "aws-java-sdk-bundle-1.11.271.jar",
-            "mvnUri" : "mvn:com.amazonaws/aws-java-sdk-bundle/1.11.271",
+            "jarName" : "aws-java-sdk-bundle-1.11.760.jar",
+            "mvnUri" : "mvn:com.amazonaws/aws-java-sdk-bundle/1.11.760",
             "useStudioRepository" : "true",
             "description" : ""
+        },
+        {
+            "id": "talend-bigdata-aws",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "talend-bigdata-aws-lib-1.1.0.jar",
+            "mvnUri": "mvn:org.talend.bigdata.libs/talend-bigdata-aws-lib/1.1.0",
+            "useStudioRepository": "true",
+            "description": ""
         },
         {
             "id" : "cloudera-navigator",
@@ -216,6 +225,7 @@
             "classifier" : "",
             "description" : "",
             "exclusions": [
+            	{ "groupId" : "io.netty", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "org.glassfish", "artifactId" : "javax.el", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "jdk.tools", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "commons-lang", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" }
@@ -279,6 +289,8 @@
                 { "groupId" : "eigenbase", "artifactId" : "eigenbase-properties", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "org.pentaho", "artifactId" : "pentaho-aggdesigner-algorithm", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "xerces", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
+                { "groupId" : "org.scala-lang", "artifactId" : "scala-library", "classifier" : "", "extension" : "", "description" : "" },
+                { "groupId" : "org.scala-lang.modules", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "org.apache.spark", "artifactId" : "spark-core_2.10", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "com.sun.jersey", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" }
             ]
@@ -563,6 +575,7 @@
                 { "groupId" : "org.apache.hadoop", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "xerces", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "jdk.tools", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
+                { "groupId" : "io.netty", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "org.cloudera.logredactor", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "commons-lang", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" }
             ]
@@ -577,6 +590,7 @@
             "description" : "",
             "exclusions": [
                 { "groupId" : "org.apache.hadoop", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
+                { "groupId" : "io.netty", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "xerces", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "jdk.tools", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "commons-lang", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" }
@@ -620,6 +634,7 @@
             "description" : "",
             "exclusions": [
                 { "groupId" : "org.apache.hadoop", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
+                { "groupId" : "io.netty", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "xerces", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
                 { "groupId" : "jdk.tools", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" }
             ]
@@ -662,6 +677,22 @@
             "jarName" : "talend-lineage-api-0.2.0.jar",
             "mvnUri" : "mvn:org.talend.libraries/talend-lineage-api-0.2.0/6.0.0",
             "useStudioRepository" : "true"
+        },
+        {
+            "id": "gcs-connector-hadoop3",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "gcs-connector-hadoop3-2.1.6-shaded.jar",
+            "mvnUri": "mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop3-2.1.6/jar/shaded",
+            "useStudioRepository": "true"
+        },
+        {
+            "id": "bigquery-connector-hadoop3",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "bigquery-connector-hadoop3-1.1.6-shaded.jar",
+            "mvnUri": "mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop3-1.1.6/jar/shaded",
+            "useStudioRepository": "true"
         }
     ],
     "moduleGroups": [
@@ -842,7 +873,8 @@
             "description" : "",
             "modules": [
                 "aws-java-sdk-bundle",
-                "hadoop-aws"
+                "hadoop-aws",
+                "talend-bigdata-aws"
             ]
         },
         {
@@ -873,6 +905,21 @@
             "id" : "HDFS-SPARK2_1-LIB-DYNAMIC",
             "description" : "",
             "modules": []
+        },
+        {
+            "id": "GCS-LIB-DYNAMIC",
+            "description": "",
+            "modules": [
+                "gcs-connector-hadoop3"
+            ]
+        },
+        {
+            "id": "BIGQUERY-LIB-DYNAMIC",
+            "description": "",
+            "modules": [
+                "gcs-connector-hadoop3",
+                "bigquery-connector-hadoop3"
+            ]
         }
     ],
     "classLoaders": [

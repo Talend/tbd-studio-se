@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
@@ -46,15 +45,16 @@ import org.talend.hadoop.distribution.dataproc11.modulegroup.node.sparkstreaming
 import org.talend.hadoop.distribution.dataproc11.modulegroup.node.sparkstreaming.Dataproc11SparkStreamingKafkaAvroModuleGroup;
 import org.talend.hadoop.distribution.dataproc11.modulegroup.node.sparkstreaming.Dataproc11SparkStreamingKafkaClientModuleGroup;
 import org.talend.hadoop.distribution.dataproc11.modulegroup.node.sparkstreaming.Dataproc11SparkStreamingParquetNodeModuleGroup;
+import org.talend.hadoop.distribution.dtp.DTPDistribution;
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
-public class Dataproc11Distribution extends AbstractDistribution implements HDFSComponent, MRComponent, SparkBatchComponent,
+public class Dataproc11Distribution extends DTPDistribution implements HDFSComponent, MRComponent, SparkBatchComponent,
         HiveComponent, SparkStreamingComponent, HiveOnSparkComponent, IGoogleDataprocDistribution {
 
     public static final String VERSION = "DATAPROC_1_1"; //$NON-NLS-1$
 
-    public static final String VERSION_DISPLAY = "Dataproc 1.1 (Apache 2.7.3)"; //$NON-NLS-1$
+    public static final String VERSION_DISPLAY = "Dataproc 1.1 (Deprecated)"; //$NON-NLS-1$
 
     private final static String SPARK_MODULE_GROUP_NAME = "SPARK2-LIB-DATAPROC11"; //$NON-NLS-1$
 
@@ -94,8 +94,7 @@ public class Dataproc11Distribution extends AbstractDistribution implements HDFS
     }
 
     protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(String distribution, String version) {
-        Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
-        // Mapreduce node
+        Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = super.buildNodeModuleGroups(distribution, version);
 
         // Spark Batch Parquet nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),

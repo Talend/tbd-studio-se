@@ -19,6 +19,20 @@
             uripath="platform:/plugin/org.talend.libraries.s3/lib/hadoop-aws-2.7.0-mapr-1506.jar">
         </libraryNeeded>
 
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.mapr500"
+            id="gcs-connector-hadoop2-2.1.6-shaded.jar"
+            name="gcs-connector-hadoop2-2.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop2-2.1.6/jar/shaded">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.mapr500"
+            id="bigquery-connector-hadoop2-1.1.6-shaded.jar"
+            name="bigquery-connector-hadoop2-1.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop2-1.1.6/jar/shaded">
+        </libraryNeeded>
+
         <!-- group of spark libraries -->
         <libraryNeededGroup
                 description="S3 libraries for MapR 5.0.0"
@@ -30,6 +44,22 @@
             <library id="httpclient-4.2.5.jar" />
             <library id="httpcore-4.2.5.jar" />
         </libraryNeededGroup>
+        
+        <libraryNeededGroup
+                description="Libraries for GCS"
+                id="GCS-GROUP-MAPR500"
+                name="GCS-GROUP-MAPR500">
+            <library id="gcs-connector-hadoop2-2.1.6-shaded.jar"/>
+        </libraryNeededGroup>        
+
+        <libraryNeededGroup
+                description="Libraries for BigQuery"
+                id="BIGQUERY-GROUP-MAPR500"
+                name="BIGQUERY-GROUP-MAPR500">
+            <library id="gcs-connector-hadoop2-2.1.6-shaded.jar"/>
+            <library id="bigquery-connector-hadoop2-1.1.6-shaded.jar"/>
+        </libraryNeededGroup>        
+        
     </extension>
     <extension
           point="org.talend.core.runtime.classloader_provider">

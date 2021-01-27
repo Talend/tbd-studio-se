@@ -81,6 +81,10 @@ public final class SparkBatchConstant {
     public static final String ORACLE_CONFIG_COMPONENT = "tOracleConfiguration";  //$NON-NLS-1$
 
     public static final String ALTUS_CLOUD_PROVIDER = "ALTUS_CLOUD_PROVIDER";  //$NON-NLS-1$
+    
+    public static final String GCS_CONFIG_COMPONENT = "tGSConfiguration";  //$NON-NLS-1$
+    
+    public static final String BIGQUERY_CONFIG_COMPONENT = "tBigQueryConfiguration";  //$NON-NLS-1$
 
     public static final String TOP_BY_COMPONENT  ="tTopBy"; //$NON-NLS-1$
 }

@@ -19,12 +19,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
 import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.NodeComponentTypeBean;
+import org.talend.hadoop.distribution.cdh.CDHDistribution;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100HBaseModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100HCatalogModuleGroup;
 import org.talend.hadoop.distribution.cdh5100.modulegroup.CDH5100HDFSModuleGroup;
@@ -71,13 +71,13 @@ import org.talend.hadoop.distribution.kudu.KuduVersion;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 
 @SuppressWarnings("nls")
-public class CDH5100Distribution extends AbstractDistribution implements IClouderaDistribution, HDFSComponent,
+public class CDH5100Distribution extends CDHDistribution implements IClouderaDistribution, HDFSComponent,
         HBaseComponent, HCatalogComponent, MRComponent, HiveComponent, HiveOnSparkComponent,
         ImpalaComponent, SqoopComponent, CDHSparkBatchComponent, SparkStreamingComponent {
 
     public final static String VERSION = "Cloudera_CDH5_10";
 
-    public static final String VERSION_DISPLAY = "Cloudera CDH5.10(YARN mode)";
+    public static final String VERSION_DISPLAY = "Cloudera CDH5.10 (Deprecated)";
 
     private final static String YARN_APPLICATION_CLASSPATH =
             "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*"; //$NON-NLS-1$
@@ -108,7 +108,7 @@ public class CDH5100Distribution extends AbstractDistribution implements ICloude
         moduleGroups.put(ComponentType.HIVEONSPARK, CDH5100HiveOnSparkModuleGroup.getModuleGroups());
 
         // Used to add a module group import for a specific node. The given node must have a HADOOP_LIBRARIES parameter.
-        nodeModuleGroups = new HashMap<>();
+        nodeModuleGroups = super.buildNodeModuleGroups(distribution, version);
 
         // WebHDFS/ADLS
         Set<DistributionModuleGroup> webHDFSNodeModuleGroups = CDH5100WebHDFSModuleGroup.getModuleGroups(distribution, version);

@@ -795,7 +795,22 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.1" id="jets3t-0.9.4.jar" name="jets3t-0.9.4.jar" mvn_uri="mvn:net.java.dev.jets3t/jets3t/0.9.4"/><!--0.9.0-->
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.mapr.6.1.1" id="avro-1.8.1.jar" name="avro-1.8.1.jar" mvn_uri="mvn:org.apache.avro/avro/1.8.1"/>
 
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.mapr.6.1.1"
+            id="gcs-connector-hadoop2-2.1.6-shaded.jar"
+            name="gcs-connector-hadoop2-2.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop2-2.1.6/jar/shaded">
+        </libraryNeeded>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.mapr.6.1.1"
+            id="bigquery-connector-hadoop2-1.1.6-shaded.jar"
+            name="bigquery-connector-hadoop2-1.1.6-shaded.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop2-1.1.6/jar/shaded">
+        </libraryNeeded>
+
 		<!-- Groups -->
+		
         <libraryNeededGroup
                 description="S3 libraries for MapR 6.1.1"
                 id="S3-LIB-MAPR611"
@@ -1339,6 +1354,21 @@
             <group id="SPARK-KAFKA-CLIENT-LIB-MRREQUIRED-MAPR611" />
             <library id="mapr-streams-6.1.0-mapr.jar" />
         </libraryNeededGroup>
+
+        <libraryNeededGroup
+                description="Libraries for GCS"
+                id="GCS-GROUP-MAPR611"
+                name="GCS-GROUP-MAPR611">
+            <library id="gcs-connector-hadoop2-2.1.6-shaded.jar"/>
+        </libraryNeededGroup>
+        
+        <libraryNeededGroup
+                description="Libraries for BigQuery"
+                id="BIGQUERY-GROUP-MAPR611"
+                name="BIGQUERY-GROUP-MAPR611">
+            <library id="gcs-connector-hadoop2-2.1.6-shaded.jar"/>
+            <library id="bigquery-connector-hadoop2-1.1.6-shaded.jar"/>
+        </libraryNeededGroup>        
         
     </extension>
     <extension
@@ -1355,7 +1385,11 @@
             index="HBASE:MAPR:MAPR611"
             libraries="commons-codec-1.10.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;guava-20.0.jar;hadoop-auth-2.7.0-mapr-1808.jar;hadoop-common-2.7.0-mapr-1808.jar;hadoop-hdfs-2.7.0-mapr-1808.jar;hbase-client-1.1.8-mapr-1901.jar;hbase-common-1.1.8-mapr-1901.jar;hbase-protocol-1.1.8-mapr-1901.jar;htrace-core-3.1.0-incubating.jar;json-20090211.jar;log4j-1.2.17.jar;maprfs-6.1.0-mapr.jar;mapr-hbase-6.1.0-mapr.jar;netty-all-4.1.17.Final.jar;protobuf-java-2.5.0.jar;slf4j-api-1.7.25.jar;slf4j-log4j12-1.7.12.jar;zookeeper-3.4.11-mapr-1808.jar;netty-3.9.9.Final.jar;flexjson-2.1.jar"
             parent="HDFS:MAPR:MAPR611">
-      </classloader>   
+      </classloader>
+      <classloader
+              index="MAP_REDUCE:MAPR:MAPR611"
+              libraries="avro-1.8.1.jar;commons-cli-1.2.jar;commons-codec-1.10.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;guava-20.0.jar;hadoop-auth-2.7.0-mapr-1808.jar;hadoop-common-2.7.0-mapr-1808.jar;hadoop-hdfs-2.7.0-mapr-1808.jar;hadoop-mapreduce-client-app-2.7.0-mapr-1808.jar;hadoop-mapreduce-client-common-2.7.0-mapr-1808.jar;hadoop-mapreduce-client-contrib-2.7.0-mapr-1808.jar;hadoop-mapreduce-client-core-2.7.0-mapr-1808.jar;;hadoop-mapreduce-client-hs-plugins-2.7.0-mapr-1808.jar;hadoop-mapreduce-client-jobclient-2.7.0-mapr-1808.jar;hadoop-mapreduce-client-shuffle-2.7.0-mapr-1808.jar;hadoop-yarn-api-2.7.0-mapr-1808.jar;hadoop-yarn-client-2.7.0-mapr-1808.jar;hadoop-yarn-common-2.7.0-mapr-1808.jar;hadoop-yarn-server-web-proxy-2.7.0-mapr-1808.jar;htrace-core-3.1.0-incubating.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-mapper-asl-1.9.14-TALEND.jar;json-20090211.jar;log4j-1.2.17.jar;maprfs-6.1.0-mapr.jar;parquet-hadoop-bundle-1.6.0.jar;parquet-hadoop-1.8.3.jar;protobuf-java-2.5.0.jar;slf4j-api-1.7.25.jar;slf4j-log4j12-1.7.12.jar;snappy-java-1.1.1.7.jar;zookeeper-3.4.11-mapr-1808.jar;flexjson-2.1.jar">
+      </classloader>
       <classloader
             index="HDFS:MAPR:MAPR611"
             libraries="avro-1.8.1.jar;commons-cli-1.2.jar;commons-codec-1.10.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;guava-20.0.jar;hadoop-auth-2.7.0-mapr-1808.jar;hadoop-common-2.7.0-mapr-1808.jar;hadoop-hdfs-2.7.0-mapr-1808.jar;hadoop-mapreduce-client-app-2.7.0-mapr-1808.jar;hadoop-mapreduce-client-common-2.7.0-mapr-1808.jar;hadoop-mapreduce-client-contrib-2.7.0-mapr-1808.jar;hadoop-mapreduce-client-core-2.7.0-mapr-1808.jar;;hadoop-mapreduce-client-hs-plugins-2.7.0-mapr-1808.jar;hadoop-mapreduce-client-jobclient-2.7.0-mapr-1808.jar;hadoop-mapreduce-client-shuffle-2.7.0-mapr-1808.jar;hadoop-yarn-api-2.7.0-mapr-1808.jar;hadoop-yarn-client-2.7.0-mapr-1808.jar;hadoop-yarn-common-2.7.0-mapr-1808.jar;hadoop-yarn-server-web-proxy-2.7.0-mapr-1808.jar;htrace-core-3.1.0-incubating.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-mapper-asl-1.9.14-TALEND.jar;json-20090211.jar;log4j-1.2.17.jar;maprfs-6.1.0-mapr.jar;parquet-hadoop-bundle-1.6.0.jar;parquet-hadoop-1.8.3.jar;protobuf-java-2.5.0.jar;slf4j-api-1.7.25.jar;slf4j-log4j12-1.7.12.jar;snappy-java-1.1.1.7.jar;zookeeper-3.4.11-mapr-1808.jar;flexjson-2.1.jar">

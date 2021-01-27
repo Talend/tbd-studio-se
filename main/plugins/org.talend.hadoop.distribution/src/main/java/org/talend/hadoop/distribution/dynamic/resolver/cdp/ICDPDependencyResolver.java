@@ -21,6 +21,6 @@ import org.talend.hadoop.distribution.dynamic.resolver.IDependencyResolver;
  */
 public interface ICDPDependencyResolver extends IDependencyResolver {
 
-    public static final String DISTRIBUTION = ICDPDistribution.DISTRIBUTION_NAME;
+    public static final String DISTRIBUTION = ICDPDistribution.DISTRIBUTION_NAME_WIZARD;
 
 }
