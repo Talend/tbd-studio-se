@@ -17,7 +17,7 @@ import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.dbr73x.DBR73XDistribution;
 import org.talend.hadoop.distribution.test.classloader.AbstractTest4ClassLoaderProvider;
 
-public class DBR73XClassLoaderTest extends AbstractTest4ClassLoaderProvider {
+public class DBR73xClassLoaderTest extends AbstractTest4ClassLoaderProvider {
 
     @Override
     protected Class<? extends HadoopComponent> getHadoopComponentClass() {
