@@ -12,12 +12,15 @@
 // ============================================================================
 package org.talend.hadoop.distribution.test.condition;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+import org.talend.hadoop.distribution.ESparkVersion;
 import org.talend.hadoop.distribution.condition.BasicExpression;
 import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.Expression;
+import org.talend.hadoop.distribution.condition.LinkedNodeExpression;
+import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 
 /**
  * Test class for the {@link Expression} distribution.
@@ -46,6 +49,10 @@ public class ExpressionTest {
 
         e1 = new BasicExpression(PARAM_1, VALUE_1, EqualityOperator.NOT_EQ);
         assertEquals(e1.getExpressionString(), LEFT_PAR + PARAM_1 + NEQ + SINGLE_QUOTE + VALUE_1 + SINGLE_QUOTE + RIGHT_PAR);
+
+        e1 = new LinkedNodeExpression(SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER,
+                SparkBatchConstant.SPARK_LOCAL_VERSION_PARAMETER, EqualityOperator.GE, ESparkVersion.SPARK_3_0.getSparkVersion());
+        assertEquals("(#LINK@NODE.SPARK_CONFIGURATION.SPARK_LOCAL_VERSION ge 'SPARK_3_0_x')", e1.getExpressionString()); //$NON-NLS-1$
     }
 
 }

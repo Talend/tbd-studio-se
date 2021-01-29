@@ -386,6 +386,13 @@ public boolean isQuboleDistribution() {
         return EParquetPackagePrefix.CLOUDERA.toString();
     }
     
+    /**
+     * The distribution runs in Spark local.
+     */
+    public boolean isSparkLocal() {
+        return false;
+    };
+    
     public boolean doSupportLightWeight() {
     	return false;
     }
