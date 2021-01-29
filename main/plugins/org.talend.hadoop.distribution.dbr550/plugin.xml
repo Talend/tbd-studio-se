@@ -3,7 +3,9 @@
 <plugin>
    <extension
          point="org.talend.core.runtime.librariesNeeded">
-
+		<libraryNeeded id="commons-pool2-2.4.2.jar" name="commons-pool2-2.4.2.jar"
+                       mvn_uri="mvn:org.apache.commons/commons-pool2/2.4.2"
+                       context="plugin:org.talend.hadoop.distribution.dbr550"/>
 		<libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dbr550"
             id="azure-data-lake-store-sdk-2.3.1.jar"
@@ -337,6 +339,7 @@
             <library id="amazon-kinesis-client-1.8.10.jar"/>
             <library id="aws-java-sdk-kinesis-1.11.313.jar"/>
             <library id="aws-java-sdk-core-1.11.313.jar"/>
+            <library id="commons-pool2-2.4.2.jar"/>
         </libraryNeededGroup>
         <!-- HiveOnSpark group -->
         <libraryNeededGroup
