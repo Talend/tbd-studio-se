@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.talend.studio</groupId>
@@ -66,6 +66,7 @@
         <module>main/plugins/org.talend.hadoop.distribution.piv101</module>
         <module>main/plugins/org.talend.hadoop.distribution.piv200</module>
         <module>main/plugins/org.talend.hadoop.distribution.qubole</module>
+        <module>main/plugins/org.talend.hadoop.distribution.spl30x</module>
         <module>main/plugins/org.talend.demo.bigdata.ce</module>
         <module>main/plugins/org.talend.designer.components.bigdata</module>
         <module>main/plugins/org.talend.designer.hdfsbrowse</module>
@@ -113,7 +114,7 @@
         <module>test/plugins/org.talend.hadoop.distribution.emr550.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.emr580.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.emr5150.test</module>
-	    <module>test/plugins/org.talend.hadoop.distribution.emr5290.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.emr5290.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdinsight340.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdinsight360.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdinsight400.test</module>
@@ -129,6 +130,7 @@
         <module>test/plugins/org.talend.hadoop.distribution.test.base</module>
         <module>test/plugins/org.talend.hadoop.distribution.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.qubole.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.spl30x.test</module>
         <module>test/plugins/org.talend.oozie.scheduler.test</module>
         <module>test/plugins/org.talend.repository.nosql.test</module>
         <module>test/plugins/org.talend.repository.maprdbprovider.test</module>

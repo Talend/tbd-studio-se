@@ -34,6 +34,14 @@ public final class SparkStreamingConstant {
 
     public static final String PARQUET_OUTPUT_COMPONENT = "tFileOutputParquet"; //$NON-NLS-1$
 
+    public static final String PREDICT_CLUSTER_COMPONENT = "tPredictCluster"; //$NON-NLS-1$
+
+    public static final String PREDICT_COMPONENT = "tPredict"; //$NON-NLS-1$
+
+    public static final String CLASSIFY_SVM_COMPONENT = "tClassifySVM"; //$NON-NLS-1$
+
+    public static final String KMEANSSTR_MODEL_COMPONENT = "tKMeansStrModel"; //$NON-NLS-1$
+
     public static final String PARQUET_STREAM_INPUT_COMPONENT = "tFileStreamInputParquet"; //$NON-NLS-1$
 
     public static final String MAPRSTREAMS_SPARKCONFIGURATION_LINKEDPARAMETER = "STORAGE_CONFIGURATION"; //$NON-NLS-1$
@@ -87,5 +95,19 @@ public final class SparkStreamingConstant {
     public static final String TMODEL_ENCODER_COMPONENT = "tModelEncoder"; //$NON-NLS-1$
 
     public static final String TOP_BY_COMPONENT = "tTopBy"; //$NON-NLS-1$
+  
+    public static final String HMAP_RECORD_COMPONENT = "tHMapRecord";//$NON-NLS-1$
+
+    public static final String REDSHIFT_CONFIGURATION_COMPONENT = "tRedshiftConfiguration"; //$NON-NLS-1$
+
+    public static final String REDSHIFT_LOOKUP_INPUT_COMPONENT = "tRedshiftLookupInput"; //$NON-NLS-1$
+
+    public static final String REDSHIFT_OUTPUT_COMPONENT = "tRedshiftOutput"; //$NON-NLS-1$
+
+    public static final String REST_WS_INPUT_COMPONENT = "tRestWebServiceLookupInput"; //$NON-NLS-1$
+
+    public static final String REST_WS_OUTPUT_COMPONENT = "tRestWebServiceOutput"; //$NON-NLS-1$
+
+    public static final String RECOMMEND_COMPONENT = "tRecommend"; //$NON-NLS-1$
 
 }
