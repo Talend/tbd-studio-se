@@ -1,6 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <plugin>
     <extension point="org.talend.core.runtime.librariesNeeded">
+    	<libraryNeeded id="commons-pool2-2.4.2.jar" name="commons-pool2-2.4.2.jar"
+                       mvn_uri="mvn:org.apache.commons/commons-pool2/2.4.2"
+                       context="plugin:org.talend.hadoop.distribution.dbr640"/>
         <libraryNeeded id="amazon-kinesis-client-1.8.10.jar" name="amazon-kinesis-client-1.8.10.jar"
                        mvn_uri="mvn:com.amazonaws/amazon-kinesis-client/1.8.10"
                        context="plugin:org.talend.hadoop.distribution.dbr640"/>
@@ -190,6 +193,7 @@
             <library id="aws-java-sdk-core-1.11.595.jar"/>
             <library id="aws-java-sdk-kinesis-1.11.595.jar"/>
             <library id="spark-streaming-kinesis-asl_2.11-2.4.5.jar"/>
+            <library id="commons-pool2-2.4.2.jar"/>
         </libraryNeededGroup>
         <libraryNeededGroup id="SPARK-STREAMING-LIB-MRREQUIRED-DBR640" name="SPARK-STREAMING-LIB-MRREQUIRED-DBR640"
                             description="SPARK libraries for DBR640">
