@@ -24,18 +24,18 @@ import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 
-import org.talend.hadoop.distribution.dbr73x.DBR73XDistribution;
+import org.talend.hadoop.distribution.dbr73x.DBR73xDistribution;
 
 public class DBR73xDistributionTest {
 
     @Test
     public void testDatabricksDistribution() throws Exception {
-        DBR73XDistribution distribution = new DBR73XDistribution();
+        DBR73xDistribution distribution = new DBR73xDistribution();
         assertNotNull(distribution.getDistributionName());
         assertNotNull(distribution.getVersionName(null));
         assertTrue(distribution.doSupportS3());
-        assertEquals(DBR73XDistribution.DISTRIBUTION_NAME, distribution.getDistribution());
-        assertEquals(DBR73XDistribution.VERSION, distribution.getVersion());
+        assertEquals(DBR73xDistribution.DISTRIBUTION_NAME, distribution.getDistribution());
+        assertEquals(DBR73xDistribution.VERSION, distribution.getVersion());
         assertEquals(EHadoopVersion.HADOOP_2, distribution.getHadoopVersion());
         assertFalse(distribution.doSupportKerberos());
 

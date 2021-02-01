@@ -12,8 +12,8 @@
 // ============================================================================
 package org.talend.hadoop.distribution.dbr73x;
 
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -39,7 +39,7 @@ import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73xTopByNodeMod
 public class DBR73xDistribution extends AbstractDatabricksDistribution implements SparkBatchComponent,
         SparkStreamingComponent, HiveOnSparkComponent {
 
-    public final static String VERSION = "DATABRICKS_7_3" ;
+    public static final String VERSION = "DATABRICKS_7_3" ;
 
     public static final String VERSION_DISPLAY = "7.3 LTS (includes Apache Spark 3.0.1, Scala 2.12)" ;
 
@@ -65,8 +65,7 @@ public class DBR73xDistribution extends AbstractDatabricksDistribution implement
     }
 
     protected Map<ComponentType, String> buildCustomVersionDisplayNames() {
-        Map<ComponentType, String> result = new HashMap<>();
-        return result;
+        return new HashMap<>();
     }
 
     protected Map<ComponentType, Set<DistributionModuleGroup>> buildModuleGroups() {
@@ -155,9 +154,7 @@ public class DBR73xDistribution extends AbstractDatabricksDistribution implement
 
     @Override
     public Set<ESparkVersion> getSparkVersions() {
-        Set<ESparkVersion> version = new HashSet<>();
-        version.add(ESparkVersion.SPARK_3_0);
-        return version;
+    	return Collections.singleton(ESparkVersion.SPARK_3_0);
     }
 
     @Override
@@ -247,6 +244,6 @@ public class DBR73xDistribution extends AbstractDatabricksDistribution implement
 
     @Override
     public String getTransientClusterSparkVersion() {
-        return "7.3.x-scala2.12";
+        return DBR73xConstant.TRANSIENT_SPARK_VERSION;
     }
 }

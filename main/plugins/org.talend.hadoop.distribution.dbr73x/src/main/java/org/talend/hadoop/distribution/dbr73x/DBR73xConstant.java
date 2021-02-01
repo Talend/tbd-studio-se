@@ -24,6 +24,8 @@ public enum DBR73xConstant {
     ;
 
     private String mModuleName;
+    
+    public final static String TRANSIENT_SPARK_VERSION = "7.3.x-scala2.12";
 
     DBR73xConstant(String moduleName) {
         this.mModuleName = moduleName;

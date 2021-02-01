@@ -22,19 +22,18 @@ import java.util.Set;
 import org.junit.Test;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 
-import org.talend.hadoop.distribution.dbr73x.DBR73XConstant;
-import org.talend.hadoop.distribution.dbr73x.modulegroup.DBR73XSparkStreamingModuleGroup;
+import org.talend.hadoop.distribution.dbr73x.DBR73xConstant;
+import org.talend.hadoop.distribution.dbr73x.modulegroup.DBR73xSparkBatchModuleGroup;
 
-public class DBR73xSparkStreamingModuleGroupTest {
+public class DBR73xSparkBatchModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
         Map<String, String> expected = new HashMap<>();
-        expected.put(DBR73XConstant.SPARK_STREAMING_LIB_MRREQUIRED_DBR73X.getModuleName(), null);
-        expected.put(DBR73XConstant.HIVEONSPARK_LIB_MRREQUIRED_DBR73X.getModuleName(), null);
-        expected.put(DBR73XConstant.SPARK_LIB_MRREQUIRED_DBR73X.getModuleName(), null);
-        expected.put(DBR73XConstant.BIGDATA_LAUNCHER_LIB_DBR73X.getModuleName(), null);
-        Set<DistributionModuleGroup> moduleGroups = DBR73XSparkStreamingModuleGroup.getModuleGroups();
+        expected.put(DBR73xConstant.HIVEONSPARK_LIB_MRREQUIRED_DBR73X.getModuleName(), null);
+        expected.put(DBR73xConstant.SPARK_LIB_MRREQUIRED_DBR73X.getModuleName(), null);
+        expected.put(DBR73xConstant.BIGDATA_LAUNCHER_LIB_DBR73X.getModuleName(), null);
+        Set<DistributionModuleGroup> moduleGroups = DBR73xSparkBatchModuleGroup.getModuleGroups();
         assertEquals(expected.size(), moduleGroups.size());
         moduleGroups.iterator();
         for (DistributionModuleGroup module : moduleGroups) {

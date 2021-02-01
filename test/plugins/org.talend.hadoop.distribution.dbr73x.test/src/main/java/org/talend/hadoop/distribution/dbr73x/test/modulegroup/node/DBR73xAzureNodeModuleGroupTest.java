@@ -21,31 +21,25 @@ import java.util.Set;
 
 import org.junit.Test;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
-import org.talend.hadoop.distribution.condition.BasicExpression;
-import org.talend.hadoop.distribution.condition.ComponentCondition;
-import org.talend.hadoop.distribution.condition.EqualityOperator;
-import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
-import org.talend.hadoop.distribution.constants.SparkBatchConstant;
+import org.talend.hadoop.distribution.dbr73x.DBR73xConstant;
+import org.talend.hadoop.distribution.dbr73x.DBR73xDistribution;
+import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73xAzureNodeModuleGroup;
 
-import org.talend.hadoop.distribution.dbr73x.DBR73XConstant;
-import org.talend.hadoop.distribution.dbr73x.DBR73XDistribution;
-import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73XTopbyNodeModuleGroup;
-
-public class DBR73xTopByNodeModuleGroupTest {
+public class DBR73xAzureNodeModuleGroupTest {
 
     @Test
     public void testModuleGroups() throws Exception {
         Map<String, String> expected = new HashMap<>();
         expected
                 .put(
-                        DBR73XConstant.TOPBY_LIB_REQUIRED_DBR73X.getModuleName(),
+                        DBR73xConstant.SPARK_AZURE_LIB_MRREQUIRED_DBR73X.getModuleName(),
                         "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION=='DATABRICKS') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION=='DATABRICKS_7_3')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE=='false')"
                 ); //$NON-NLS-1$
 
         Set<DistributionModuleGroup> moduleGroups =
-                DBR73XTopbyNodeModuleGroup.getModuleGroups(
-                        DBR73XDistribution.DISTRIBUTION_NAME,
-                        DBR73XDistribution.VERSION
+                DBR73xAzureNodeModuleGroup.getModuleGroups(
+                        DBR73xDistribution.DISTRIBUTION_NAME,
+                        DBR73xDistribution.VERSION
                 );
         assertEquals(expected.size(), moduleGroups.size());
 
