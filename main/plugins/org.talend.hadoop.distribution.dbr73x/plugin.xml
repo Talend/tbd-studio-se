@@ -43,6 +43,7 @@
     <libraryNeeded id="talend-bigdata-launcher-jobserver-2.0.12.jar" name="talend-bigdata-launcher-jobserver-2.0.12.jar" mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-jobserver/2.0.12" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded id="talend-bigdata-launcher-databricks-2.0.12.jar" name="talend-bigdata-launcher-databricks-2.0.12.jar" mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-databricks/2.0.12" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded id="wsdl4j-1.6.3.jar" name="wsdl4j-1.6.3.jar" mvn_uri="mvn:wsdl4j/wsdl4j/1.6.3" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
+    
     <libraryNeededGroup id="BIGDATA-LAUNCHER-LIB-DBR73X" name="BIGDATA-LAUNCHER-LIB-DBR73X" description="Big Data launcher libraries for DBR73X">
       <library id="gson-2.7.jar"/>
       <library id="jackson-annotations-2.10.0.jar"/>
@@ -51,13 +52,16 @@
       <library id="talend-bigdata-launcher-jobserver-2.0.12.jar"/>
       <library id="talend-bigdata-launcher-databricks-2.0.12.jar"/>
     </libraryNeededGroup>
+    
     <libraryNeededGroup id="HIVEONSPARK-LIB-MRREQUIRED-DBR73X" name="HIVEONSPARK-LIB-MRREQUIRED-DBR73X" description="Hive On SPARK libraries for DBR73X">
       <library id="spark-hive_2.12-3.0.1.jar"/>
     </libraryNeededGroup>
+    
     <libraryNeededGroup id="SPARK-AZURE-LIB-MRREQUIRED-DBR73X" name="SPARK-AZURE-LIB-MRREQUIRED-DBR73X" description="Hive On SPARK libraries for DBR73X">
       <library id="azure-data-lake-store-sdk-2.2.8.jar"/>
       <library id="hadoop-azure-datalake-2.7.4.jar"/>
     </libraryNeededGroup>
+    
     <libraryNeededGroup id="SPARK-LIB-MRREQUIRED-DBR73X" name="SPARK-LIB-MRREQUIRED-DBR73X" description="SPARK libraries for DBR73X">
       <library id="avro-1.8.2.jar"/>
       <library id="avro-compiler-1.8.2.jar"/>
@@ -89,18 +93,22 @@
       <library id="spark-unsafe_2.12-3.0.1.jar"/>
       <library id="wsdl4j-1.6.3.jar"/>
     </libraryNeededGroup>
+    
     <libraryNeededGroup id="SPARK-STREAMING-LIB-KINESIS-DBR73X" name="SPARK-STREAMING-LIB-KINESIS-DBR73X" description="SPARK libraries for DBR73X">
       <library id="amazon-kinesis-client-1.8.10.jar"/>
       <library id="aws-java-sdk-core-1.11.655.jar"/>
       <library id="aws-java-sdk-kinesis-1.11.655.jar"/>
       <library id="spark-streaming-kinesis-asl_2.12-3.0.1.jar"/>
     </libraryNeededGroup>
+    
     <libraryNeededGroup id="SPARK-STREAMING-LIB-MRREQUIRED-DBR73X" name="SPARK-STREAMING-LIB-MRREQUIRED-DBR73X" description="SPARK libraries for DBR73X">
       <library id="spark-streaming_2.12-3.0.1.jar"/>
     </libraryNeededGroup>
+    
     <libraryNeededGroup id="TOPBY-LIB-REQUIRED-DBR73X" name="TOPBY-LIB-REQUIRED-DBR73X" description="tTopBy needed libraries for DBR73X">
       <library id="guava-15.0.jar"/>
     </libraryNeededGroup>
+    
   </extension>
   <extension point="org.talend.core.runtime.classloader_provider"/>
 </plugin>
