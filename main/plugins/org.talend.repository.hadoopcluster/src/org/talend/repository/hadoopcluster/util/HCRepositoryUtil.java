@@ -112,6 +112,12 @@ public class HCRepositoryUtil {
         hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_AUTHENTICATION_MAPRTICKET_PASSWORD);
         hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_AUTHENTICATION_MAPRTICKET_CLUSTER);
         hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_AUTHENTICATION_MAPRTICKET_DURATION);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_HIVE_GOOGLE_PROJECT_ID);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_HIVE_GOOGLE_CLUSTER_ID);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_HIVE_GOOGLE_REGION);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_HIVE_GOOGLE_JARS_BUCKET);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_HIVE_AUTHENTICATION_DEFINE_PATH_TO_GOOGLE_CREDENTIALS);
+        hadoopDbParameters.add(ConnParameterKeys.CONN_PARA_KEY_HIVE_AUTHENTICATION_PATH_TO_GOOGLE_CREDENTIALS);
     }
 
     /**
@@ -592,6 +598,19 @@ public class HCRepositoryUtil {
         parameters.put(ConnParameterKeys.CONN_PARA_KEY_HBASE_VERSION, hcConnection.getDfVersion());
         parameters.put(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_DISTRIBUTION, hcConnection.getDistribution());
         parameters.put(ConnParameterKeys.CONN_PARA_KEY_MAPRDB_VERSION, hcConnection.getDfVersion());
+        //
+        parameters.put(ConnParameterKeys.CONN_PARA_KEY_HIVE_GOOGLE_PROJECT_ID,
+                hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_GOOGLE_PROJECT_ID));
+        parameters.put(ConnParameterKeys.CONN_PARA_KEY_HIVE_GOOGLE_CLUSTER_ID,
+                hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_GOOGLE_CLUSTER_ID));
+        parameters.put(ConnParameterKeys.CONN_PARA_KEY_HIVE_GOOGLE_REGION,
+                hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_GOOGLE_REGION));
+        parameters.put(ConnParameterKeys.CONN_PARA_KEY_HIVE_GOOGLE_JARS_BUCKET,
+                hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_GOOGLE_JARS_BUCKET));
+        parameters.put(ConnParameterKeys.CONN_PARA_KEY_HIVE_AUTHENTICATION_DEFINE_PATH_TO_GOOGLE_CREDENTIALS,
+                hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_DEFINE_PATH_TO_GOOGLE_CREDENTIALS));
+        parameters.put(ConnParameterKeys.CONN_PARA_KEY_HIVE_AUTHENTICATION_PATH_TO_GOOGLE_CREDENTIALS,
+                hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_PATH_TO_GOOGLE_CREDENTIALS));
         if (hcConnection.isEnableKerberos()) {
             parameters.put(ConnParameterKeys.CONN_PARA_KEY_USEKEYTAB, String.valueOf(hcConnection.isUseKeytab()));
             if (hcConnection.isUseKeytab()) {
