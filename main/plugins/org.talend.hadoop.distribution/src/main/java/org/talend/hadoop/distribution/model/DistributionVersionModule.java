@@ -16,18 +16,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.talend.core.GlobalServiceRegister;
+import org.talend.core.hadoop.HadoopConstants;
 import org.talend.core.model.general.ILibrariesService;
 import org.talend.core.model.general.ModuleNeeded;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
+import org.talend.hadoop.distribution.condition.Expression;
+import org.talend.hadoop.distribution.condition.LinkedNodeExpression;
 import org.talend.hadoop.distribution.condition.BasicExpression;
 import org.talend.hadoop.distribution.condition.BooleanOperator;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.MultiComponentCondition;
 import org.talend.hadoop.distribution.condition.NestedComponentCondition;
+import org.talend.hadoop.distribution.condition.RawExpression;
 import org.talend.hadoop.distribution.condition.ShowExpression;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
+import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 
 /**
  * DOC ggu class global comment. Detailled comment
@@ -38,7 +43,7 @@ public class DistributionVersionModule {
 
     public final DistributionVersion distributionVersion;
 
-    public DistributionModuleGroup moduleGrop;
+    public DistributionModuleGroup moduleGroup;
 
     private List<ModuleNeeded> modulesNeeded = new ArrayList<ModuleNeeded>();
 
@@ -48,26 +53,45 @@ public class DistributionVersionModule {
     }
 
     public ComponentCondition getModuleRequiredIf() {
-        final ComponentType componentType = distributionVersion.distribution.componentType;
-        org.talend.hadoop.distribution.condition.Expression e1 = new BasicExpression(componentType.getDistributionParameter(),
-                EqualityOperator.EQ, distributionVersion.distribution.name);
-        org.talend.hadoop.distribution.condition.Expression e2 = new BasicExpression(componentType.getVersionParameter(),
-                EqualityOperator.EQ, distributionVersion.version);
-        org.talend.hadoop.distribution.condition.Expression e3 = new ShowExpression(componentType.getDistributionParameter());
-        org.talend.hadoop.distribution.condition.Expression e4 = new ShowExpression(componentType.getVersionParameter());
-
-        // The import is needed only if the good version and the good distribution are selected, and
-        // if the Distribution and Version parameters are shown. The second condition to take the
-        // USE_EXISTING_CONNECTIOn into account.
-
         ComponentCondition condition;
-        condition = new MultiComponentCondition(new SimpleComponentCondition(e1), BooleanOperator.AND,
-                new MultiComponentCondition(new SimpleComponentCondition(e2), BooleanOperator.AND, new MultiComponentCondition(
-                        new SimpleComponentCondition(e3), BooleanOperator.AND, new SimpleComponentCondition(e4))));
+        if ( !distributionVersion.distribution.isSparkLocal()) {
+            // The import is needed only if the good version and the good distribution are selected, and
+            // if the Distribution and Version parameters are shown. The second condition to take the
+            // USE_EXISTING_CONNECTIOn into account.
 
-        if (moduleGrop.getRequiredIf() != null) {
+            final ComponentType componentType = distributionVersion.distribution.componentType;
+            Expression distributionSelected = new BasicExpression(componentType.getDistributionParameter(), 
+                                                                  EqualityOperator.EQ, distributionVersion.distribution.name);
+            Expression distributionVersionSelected = new BasicExpression(componentType.getVersionParameter(),
+                                                                         EqualityOperator.EQ, distributionVersion.version);
+            Expression distributionShown = new ShowExpression(componentType.getDistributionParameter());
+            Expression distributionVersionShown = new ShowExpression(componentType.getVersionParameter());
+
+            condition = new MultiComponentCondition(new SimpleComponentCondition(distributionSelected), BooleanOperator.AND,
+                    new MultiComponentCondition(new SimpleComponentCondition(distributionVersionSelected), BooleanOperator.AND, new MultiComponentCondition(
+                            new SimpleComponentCondition(distributionShown), BooleanOperator.AND, new SimpleComponentCondition(distributionVersionShown))));
+        } else {
+            // In case of Spark local distribution the import is needed if 
+            // - use Spark local is selected and 
+            // - spark versions from UI and distribution match 
+            // either on node itself (Spark config) or linked Spark Config (tHiveConfig, tHDFSConfig ...)
+            Expression useSparkLocal = new BasicExpression(HadoopConstants.SPARK_LOCAL_MODE);
+            Expression sameSparkVersions = new BasicExpression(HadoopConstants.SPARK_LOCAL_VERSION, EqualityOperator.EQ, distributionVersion.version);
+            ComponentCondition sparkConfigCondition = new MultiComponentCondition(useSparkLocal, BooleanOperator.AND, sameSparkVersions);
+        
+            Expression useSparkLocalLinked = new LinkedNodeExpression(SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, HadoopConstants.SPARK_LOCAL_MODE, EqualityOperator.EQ, "true");
+            Expression sameSparkVersionsLinked = new LinkedNodeExpression(SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, HadoopConstants.SPARK_LOCAL_VERSION, EqualityOperator.EQ, distributionVersion.version);            
+            ComponentCondition linkedSparkConfigCondition = new MultiComponentCondition(useSparkLocalLinked, BooleanOperator.AND, sameSparkVersionsLinked);
+            
+            condition = new MultiComponentCondition(
+                    new NestedComponentCondition(sparkConfigCondition),
+                    BooleanOperator.OR, 
+                    new NestedComponentCondition(linkedSparkConfigCondition));
+        }
+            
+        if (moduleGroup.getRequiredIf() != null) {
             condition = new MultiComponentCondition(condition, BooleanOperator.AND, new NestedComponentCondition(
-                    moduleGrop.getRequiredIf()));
+                    moduleGroup.getRequiredIf()));
         }
         return condition;
     }
@@ -77,7 +101,7 @@ public class DistributionVersionModule {
             if (GlobalServiceRegister.getDefault().isServiceRegistered(ILibrariesService.class)) {
                 ILibrariesService libService = (ILibrariesService) GlobalServiceRegister.getDefault().getService(
                         ILibrariesService.class);
-                modulesNeeded.addAll(libService.getModuleNeeded(moduleGrop.getModuleName(), true));
+                modulesNeeded.addAll(libService.getModuleNeeded(moduleGroup.getModuleName(), true));
             }
         }
         return modulesNeeded;
