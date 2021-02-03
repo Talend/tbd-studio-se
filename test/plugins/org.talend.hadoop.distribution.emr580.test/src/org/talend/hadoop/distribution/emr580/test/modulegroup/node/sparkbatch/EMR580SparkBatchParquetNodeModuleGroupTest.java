@@ -33,7 +33,7 @@ public class EMR580SparkBatchParquetNodeModuleGroupTest {
 
         results.put(
                 EMR580SparkBatchParquetNodeModuleGroup.SPARK_PARQUET_GROUP_NAME,
-                "((#LINK@NODE.SPARK_CONFIGURATION.DISTRIBUTION=='AMAZON_EMR') AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_VERSION=='EMR_5_8_0')) AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+                "((#LINK@NODE.SPARK_CONFIGURATION.DISTRIBUTION == 'AMAZON_EMR') AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_VERSION == 'EMR_5_8_0')) AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_LOCAL_MODE == 'false')"); //$NON-NLS-1$
 
         Set<DistributionModuleGroup> moduleGroups = EMR580SparkBatchParquetNodeModuleGroup.getModuleGroups(
                 EMR580Distribution.DISTRIBUTION_NAME, EMR580Distribution.VERSION);

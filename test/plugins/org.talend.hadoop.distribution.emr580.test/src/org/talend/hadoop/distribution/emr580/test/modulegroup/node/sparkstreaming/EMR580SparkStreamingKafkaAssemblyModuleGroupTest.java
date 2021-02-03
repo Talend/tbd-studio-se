@@ -32,7 +32,7 @@ public class EMR580SparkStreamingKafkaAssemblyModuleGroupTest {
         Map<String, String> results = new HashMap<>();
         results.put(
                 EMR580SparkStreamingKafkaAssemblyModuleGroup.KAFKA_ASSEMBLY_GROUP_NAME,
-                "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION=='AMAZON_EMR') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION=='EMR_5_8_0')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+                "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION == 'AMAZON_EMR') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION == 'EMR_5_8_0')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE == 'false')"); //$NON-NLS-1$
 
         Set<DistributionModuleGroup> moduleGroups = EMR580SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(
                 EMR580Distribution.DISTRIBUTION_NAME, EMR580Distribution.VERSION);

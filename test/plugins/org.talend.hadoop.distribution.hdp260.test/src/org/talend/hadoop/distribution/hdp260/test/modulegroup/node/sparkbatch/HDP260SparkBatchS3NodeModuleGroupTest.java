@@ -35,7 +35,7 @@ public class HDP260SparkBatchS3NodeModuleGroupTest {
 
         results.put(
                 HDP260Constant.SPARK_S3_MRREQUIRED_MODULE_GROUP.getModuleName(),
-                "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION=='HORTONWORKS') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION=='HDP_2_6')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE=='false')");
+                "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION == 'HORTONWORKS') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION == 'HDP_2_6')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE == 'false')");
 
         Set<DistributionModuleGroup> moduleGroups = HDP260SparkBatchS3NodeModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());
