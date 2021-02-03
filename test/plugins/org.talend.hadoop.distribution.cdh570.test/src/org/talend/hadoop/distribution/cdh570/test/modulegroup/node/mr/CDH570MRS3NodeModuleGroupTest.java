@@ -31,7 +31,7 @@ public class CDH570MRS3NodeModuleGroupTest {
         Map<String, String> results = new HashMap<>();
 
         results.put(CDH570Constant.SPARK_S3_MRREQUIRED_MODULE_GROUP.getModuleName(),
-                "((#LINK@NODE.MR_CONFIGURATION.DISTRIBUTION=='CLOUDERA') AND (#LINK@NODE.MR_CONFIGURATION.MR_VERSION=='Cloudera_CDH5_7'))"); //$NON-NLS-1$
+                "((#LINK@NODE.MR_CONFIGURATION.DISTRIBUTION == 'CLOUDERA') AND (#LINK@NODE.MR_CONFIGURATION.MR_VERSION == 'Cloudera_CDH5_7'))"); //$NON-NLS-1$
 
         Set<DistributionModuleGroup> moduleGroups = CDH570MRS3NodeModuleGroup.getModuleGroups(
                 CDH570Distribution.DISTRIBUTION_NAME, CDH570Distribution.VERSION);

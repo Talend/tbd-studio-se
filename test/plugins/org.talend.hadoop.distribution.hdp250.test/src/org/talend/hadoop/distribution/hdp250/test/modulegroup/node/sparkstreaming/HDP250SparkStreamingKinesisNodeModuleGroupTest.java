@@ -35,7 +35,7 @@ public class HDP250SparkStreamingKinesisNodeModuleGroupTest {
 
         results.put(
                 HDP250Constant.SPARK_KINESIS_MRREQUIRED_MODULE_GROUP.getModuleName(),
-                "((#LINK@NODE.SPARK_CONFIGURATION.DISTRIBUTION=='HORTONWORKS') AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_VERSION=='HDP_2_5')) AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_LOCAL_MODE=='false')");
+                "((#LINK@NODE.SPARK_CONFIGURATION.DISTRIBUTION == 'HORTONWORKS') AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_VERSION == 'HDP_2_5')) AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_LOCAL_MODE == 'false')");
 
         Set<DistributionModuleGroup> moduleGroups = HDP250SparkStreamingKinesisNodeModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());
