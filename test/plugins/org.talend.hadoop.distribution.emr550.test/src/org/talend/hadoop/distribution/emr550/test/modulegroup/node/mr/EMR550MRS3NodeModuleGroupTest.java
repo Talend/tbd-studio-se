@@ -30,7 +30,7 @@ public class EMR550MRS3NodeModuleGroupTest {
         Map<String, String> results = new HashMap<>();
 
         results.put(EMR550MRS3NodeModuleGroup.S3_GROUP_NAME,
-                "((#LINK@NODE.MR_CONFIGURATION.DISTRIBUTION=='AMAZON_EMR') AND (#LINK@NODE.MR_CONFIGURATION.MR_VERSION=='EMR_5_5_0'))"); //$NON-NLS-1$
+                "((#LINK@NODE.MR_CONFIGURATION.DISTRIBUTION == 'AMAZON_EMR') AND (#LINK@NODE.MR_CONFIGURATION.MR_VERSION == 'EMR_5_5_0'))"); //$NON-NLS-1$
 
         Set<DistributionModuleGroup> moduleGroups = EMR550MRS3NodeModuleGroup.getModuleGroups(
                 EMR550Distribution.DISTRIBUTION_NAME, EMR550Distribution.VERSION);

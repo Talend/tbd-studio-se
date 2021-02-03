@@ -231,7 +231,6 @@ public class DistributionBean implements IHDistribution {
         return name + ',' + displayName;
     }
 
-    @Override
     public boolean isSparkLocal() {
         return isSparkLocal;
     }
