@@ -35,7 +35,7 @@ public class HDP260SparkBatchParquetNodeModuleGroupTest {
 
         results.put(
                 HDP260Constant.SPARK_PARQUET_MRREQUIRED_MODULE_GROUP.getModuleName(),
-                "((#LINK@NODE.SPARK_CONFIGURATION.DISTRIBUTION=='HORTONWORKS') AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_VERSION=='HDP_2_6')) AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_LOCAL_MODE=='false')");
+                "((#LINK@NODE.SPARK_CONFIGURATION.DISTRIBUTION == 'HORTONWORKS') AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_VERSION == 'HDP_2_6')) AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_LOCAL_MODE == 'false')");
 
         Set<DistributionModuleGroup> moduleGroups = HDP260SparkBatchParquetNodeModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());

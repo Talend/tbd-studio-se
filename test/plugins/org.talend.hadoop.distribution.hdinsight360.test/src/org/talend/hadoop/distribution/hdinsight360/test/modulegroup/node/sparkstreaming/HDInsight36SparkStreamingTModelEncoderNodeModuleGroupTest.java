@@ -32,7 +32,7 @@ public class HDInsight36SparkStreamingTModelEncoderNodeModuleGroupTest {
 
         results.put(
                 HDInsight36Constant.SPARK_SQL_MRREQUIRED_MODULE_GROUP.getModuleName(),
-                "((#LINK@NODE.SPARK_CONFIGURATION.DISTRIBUTION=='MICROSOFT_HD_INSIGHT') AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_VERSION=='MICROSOFT_HD_INSIGHT_3_6')) AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+                "((#LINK@NODE.SPARK_CONFIGURATION.DISTRIBUTION == 'MICROSOFT_HD_INSIGHT') AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_VERSION == 'MICROSOFT_HD_INSIGHT_3_6')) AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_LOCAL_MODE == 'false')"); //$NON-NLS-1$
 
         Set<DistributionModuleGroup> moduleGroups = HDInsight36SparkStreamingTModelEncoderNodeModuleGroup.getModuleGroups(
                 HDInsight36Distribution.DISTRIBUTION_NAME, HDInsight36Distribution.VERSION);

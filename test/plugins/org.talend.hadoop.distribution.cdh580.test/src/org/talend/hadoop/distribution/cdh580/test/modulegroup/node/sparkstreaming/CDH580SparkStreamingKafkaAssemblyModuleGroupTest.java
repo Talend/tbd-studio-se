@@ -32,7 +32,7 @@ public class CDH580SparkStreamingKafkaAssemblyModuleGroupTest {
 
         results.put(
                 CDH580Constant.SPARK_KAFKA_ASSEMBLY_MRREQUIRED_MODULE_GROUP.getModuleName(),
-                "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION=='CLOUDERA') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION=='Cloudera_CDH5_8')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+                "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION == 'CLOUDERA') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION == 'Cloudera_CDH5_8')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE == 'false')"); //$NON-NLS-1$
 
         Set<DistributionModuleGroup> moduleGroups = CDH580SparkStreamingKafkaAssemblyModuleGroup.getModuleGroups(
                 CDH580Distribution.DISTRIBUTION_NAME, CDH580Distribution.VERSION);
