@@ -31,7 +31,7 @@ public class EMR500SparkStreamingS3NodeModuleGroupTest {
         Map<String, String> results = new HashMap<>();
         results.put(
                 EMR500MRS3NodeModuleGroup.S3_GROUP_NAME,
-                "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION=='AMAZON_EMR') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION=='EMR_5_0_0')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+                "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION == 'AMAZON_EMR') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION == 'EMR_5_0_0')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE == 'false')"); //$NON-NLS-1$
 
         Set<DistributionModuleGroup> moduleGroups = EMR500SparkStreamingS3NodeModuleGroup.getModuleGroups(
                 EMR500Distribution.DISTRIBUTION_NAME, EMR500Distribution.VERSION);

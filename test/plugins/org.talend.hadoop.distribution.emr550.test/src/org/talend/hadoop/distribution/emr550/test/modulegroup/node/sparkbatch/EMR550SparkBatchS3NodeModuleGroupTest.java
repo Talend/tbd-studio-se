@@ -32,7 +32,7 @@ public class EMR550SparkBatchS3NodeModuleGroupTest {
 
         results.put(
                 EMR550MRS3NodeModuleGroup.S3_GROUP_NAME,
-                "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION=='AMAZON_EMR') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION=='EMR_5_5_0')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+                "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION == 'AMAZON_EMR') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION == 'EMR_5_5_0')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE == 'false')"); //$NON-NLS-1$
 
         Set<DistributionModuleGroup> moduleGroups = EMR550SparkBatchS3NodeModuleGroup.getModuleGroups(
                 EMR550Distribution.DISTRIBUTION_NAME, EMR550Distribution.VERSION);

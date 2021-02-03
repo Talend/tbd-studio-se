@@ -34,7 +34,7 @@ public class HDP260MRS3NodeModuleGroupTest {
         Map<String, String> results = new HashMap<String, String>();
 
         results.put(HDP260Constant.SPARK_S3_MRREQUIRED_MODULE_GROUP.getModuleName(),
-                "((#LINK@NODE.MR_CONFIGURATION.DISTRIBUTION=='HORTONWORKS') AND (#LINK@NODE.MR_CONFIGURATION.MR_VERSION=='HDP_2_6'))");
+                "((#LINK@NODE.MR_CONFIGURATION.DISTRIBUTION == 'HORTONWORKS') AND (#LINK@NODE.MR_CONFIGURATION.MR_VERSION == 'HDP_2_6'))");
 
         Set<DistributionModuleGroup> moduleGroups = HDP260MRS3NodeModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());
