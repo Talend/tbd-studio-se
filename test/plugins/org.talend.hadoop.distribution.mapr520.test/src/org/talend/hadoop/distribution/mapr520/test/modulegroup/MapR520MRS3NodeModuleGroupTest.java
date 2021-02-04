@@ -30,7 +30,7 @@ public class MapR520MRS3NodeModuleGroupTest {
         Map<String, String> results = new HashMap<String, String>();
 
         results.put(MapR520Constant.SPARK_S3_MRREQUIRED_MODULE_GROUP.getModuleName(),
-                "((#LINK@NODE.MR_CONFIGURATION.DISTRIBUTION=='MAPR') AND (#LINK@NODE.MR_CONFIGURATION.MR_VERSION=='MAPR520'))");
+                "((#LINK@NODE.MR_CONFIGURATION.DISTRIBUTION == 'MAPR') AND (#LINK@NODE.MR_CONFIGURATION.MR_VERSION == 'MAPR520'))");
 
         Set<DistributionModuleGroup> moduleGroups = MapR520MRS3NodeModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());

@@ -31,7 +31,7 @@ public class EMR450SparkBatchParquetNodeModuleGroupTest {
 
         results.put(
                 EMR450SparkBatchParquetNodeModuleGroup.SPARK_PARQUET_GROUP_NAME,
-                "((#LINK@NODE.SPARK_CONFIGURATION.DISTRIBUTION=='AMAZON_EMR') AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_VERSION=='EMR_4_5_0')) AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+                "((#LINK@NODE.SPARK_CONFIGURATION.DISTRIBUTION == 'AMAZON_EMR') AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_VERSION == 'EMR_4_5_0')) AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_LOCAL_MODE == 'false')"); //$NON-NLS-1$
 
         Set<DistributionModuleGroup> moduleGroups = EMR450SparkBatchParquetNodeModuleGroup.getModuleGroups(
                 EMR450Distribution.DISTRIBUTION_NAME, EMR450Distribution.VERSION);
