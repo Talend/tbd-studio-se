@@ -27,7 +27,7 @@
 		    context="plugin:org.talend.hadoop.distribution.dataproc14"
 		    id="google-api-services-storage-v1-rev20181109-1.27.0.jar"
 		    name="google-api-services-storage-v1-rev20181109-1.27.0.jar"
-		    mvn_uri="mvn:com.google.apis/google-api-services-storage/rev20181109-1.27.0">
+		    mvn_uri="mvn:com.google.apis/google-api-services-storage/v1-rev20181109-1.27.0">
         </libraryNeeded>
         <libraryNeeded
 		    context="plugin:org.talend.hadoop.distribution.dataproc14"
