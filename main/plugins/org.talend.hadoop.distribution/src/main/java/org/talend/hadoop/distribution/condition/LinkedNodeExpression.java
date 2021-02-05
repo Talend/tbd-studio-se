@@ -41,6 +41,6 @@ public class LinkedNodeExpression extends BasicExpression {
 
     @Override
     public String getExpressionString() {
-        return "(" + LINK_NODE_TAG.replace(TO_REPLACE, this.mLinkedParameter) + mParameter + this.mEqualityOperator.getSymbol() + "'" + this.mValue + "')"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        return "(" + LINK_NODE_TAG.replace(TO_REPLACE, this.mLinkedParameter) + mParameter + " " + this.mEqualityOperator.getSymbol() + " '" + this.mValue + "')"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 }

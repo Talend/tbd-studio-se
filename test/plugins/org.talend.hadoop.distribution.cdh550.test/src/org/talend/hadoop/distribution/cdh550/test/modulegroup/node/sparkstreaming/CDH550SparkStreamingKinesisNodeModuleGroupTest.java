@@ -36,7 +36,7 @@ public class CDH550SparkStreamingKinesisNodeModuleGroupTest {
 
         results.put(
                 CDH550Constant.SPARK_KINESIS_MRREQUIRED_MODULE_GROUP.getModuleName(),
-                "((#LINK@NODE.SPARK_CONFIGURATION.DISTRIBUTION=='CLOUDERA') AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_VERSION=='Cloudera_CDH5_5')) AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_LOCAL_MODE=='false')");
+                "((#LINK@NODE.SPARK_CONFIGURATION.DISTRIBUTION == 'CLOUDERA') AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_VERSION == 'Cloudera_CDH5_5')) AND (#LINK@NODE.SPARK_CONFIGURATION.SPARK_LOCAL_MODE == 'false')");
 
         Set<DistributionModuleGroup> moduleGroups = CDH550SparkStreamingKinesisNodeModuleGroup.getModuleGroups(
                 CDH550Distribution.DISTRIBUTION_NAME, CDH550Distribution.VERSION);
