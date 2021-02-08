@@ -1817,9 +1817,9 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5150"
-            id="emr-dynamodb-hadoop-4.6.0.jar"
-            name="emr-dynamodb-hadoop-4.6.0.jar"
-            mvn_uri="mvn:com.amazon.emr/emr-dynamodb-hadoop/4.6.0">
+            id="emr-dynamodb-hadoop-4.7.0.jar"
+            name="emr-dynamodb-hadoop-4.7.0.jar"
+            mvn_uri="mvn:com.amazon.emr/emr-dynamodb-hadoop/4.7.0">
         </libraryNeeded>
 
         <libraryNeeded
@@ -2371,7 +2371,7 @@
             <library id="aws-java-sdk-kms-1.11.760.jar"/>
             <library id="aws-java-sdk-s3-1.11.760.jar"/>
             <library id="emr-core-2.6.0.jar"/>
-            <library id="emr-dynamodb-hadoop-4.6.0.jar"/>
+            <library id="emr-dynamodb-hadoop-4.7.0.jar"/>
             <library id="commons-pool2-2.2.jar"/>
             <library id="ion-java-1.0.2.jar"/>
         </libraryNeededGroup>
