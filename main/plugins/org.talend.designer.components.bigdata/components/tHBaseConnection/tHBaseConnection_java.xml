@@ -183,6 +183,10 @@
 		<IMPORTS>
 			<IMPORT NAME="log4j-1.2.17.jar" MODULE="log4j-1.2.17.jar"
 					MVN="mvn:log4j/log4j/1.2.17"/>
+
+           <!-- MAPR500 -->
+           <IMPORT MODULE_GROUP="HBASE-LIB-MAPR50X_LASTEST"
+               REQUIRED_IF="HBASE_VERSION=='MAPR500' AND (DISTRIBUTION!='CUSTOM')" />
 			
 			<IMPORT NAME="hadoop-conf-kerberos" MODULE="hadoop-conf-kerberos.jar"
 				MVN="mvn:org.talend.libraries/hadoop-conf-kerberos/6.0.0"
