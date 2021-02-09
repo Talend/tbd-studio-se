@@ -24,16 +24,10 @@ public class HiveMetadataHelper4MapRTest extends AbstractDistributionTest4HiveMe
             "MapR 6.1.0 - MEP 6.1.1 (YARN mode)", "MapR 6.1.0(YARN mode)",
         "MapR 6.0.1(YARN mode)",
             "MapR 6.0.0(YARN mode)",
-        "MapR 5.2.0(YARN mode)",
-        "MapR 5.1.0(YARN mode)",
-        "MapR 5.0.0(YARN mode)",
-        "MapR 4.1.0(YARN mode)",
-        "MapR 4.0.1(YARN mode)",
-        "MapR 3.1.0",
-        "MapR 3.0.1",
-        "MapR 2.1.3",
-        "MapR 2.1.2",
-        "MapR 2.0.0"};
+        "MapR 5.2.0 (Deprecated)",
+        "MapR 5.1.0 (Deprecated)",
+        "MapR 5.0.0 (Deprecated)"
+       };
 
     @Override
     protected String getDistribution() {
