@@ -2316,7 +2316,7 @@
                 name="SPARK-KINESIS-LIB-MRREQUIRED-EMR_5_29_0_LATEST">
              <library id="spark-streaming-kinesis-asl_2.11-2.4.4.jar"/>
             <library id="amazon-kinesis-client-1.8.1.jar"/>
-            <library id="c-1.11.760.jar"/>
+            <library id="aws-java-sdk-kinesis-1.11.760.jar"/>
             <library id="aws-java-sdk-cloudwatch-1.11.760.jar"/>
         </libraryNeededGroup>
 
