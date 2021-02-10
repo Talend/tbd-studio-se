@@ -34,8 +34,7 @@ public class MapR500SparkStreamingS3NodeModuleGroupTest {
         Map<String, String> results = new HashMap<String, String>();
 
         results.put(MapR500Constant.SPARK_S3_MRREQUIRED_MODULE_GROUP.getModuleName(),
-                "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION=='MAPR') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION=='MAPR500')) "
-                        + "AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE=='false')");
+        		"((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION[=='MAPR') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION=='MAPR500')) AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE==]'false');
 
         Set<DistributionModuleGroup> moduleGroups = MapR500SparkStreamingS3NodeModuleGroup.getModuleGroups();
         assertEquals(results.size(), moduleGroups.size());
