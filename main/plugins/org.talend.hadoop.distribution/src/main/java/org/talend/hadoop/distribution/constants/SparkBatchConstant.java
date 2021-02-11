@@ -55,6 +55,8 @@ public final class SparkBatchConstant {
     public static final String S3_CONFIGURATION_COMPONENT = "tS3Configuration"; //$NON-NLS-1$
 
     public static final String AZURE_CONFIGURATION_COMPONENT = "tAzureFSConfiguration"; //$NON-NLS-1$
+    
+    public static final String AZURE_FS_CONFIGURATION_COMPONENT = "tAzureFSConfiguration"; //$NON-NLS-1$
 
     public static final String GS_CONFIGURATION_COMPONENT = "tGSConfiguration"; //$NON-NLS-1$
 
@@ -90,20 +92,22 @@ public final class SparkBatchConstant {
 
     public static final String TMODEL_ENCODER_COMPONENT = "tModelEncoder"; //$NON-NLS-1$
 
-    public static final String TERADATA_OUTPUT_COMPONENT = "tTeradataOutput";
-    public static final String TERADATA_INPUT_COMPONENT = "tTeradataInput";
-    public static final String TERADATA_CONFIG_COMPONENT = "tTeradataConfiguration";
+    public static final String TERADATA_OUTPUT_COMPONENT = "tTeradataOutput";  //$NON-NLS-1$
+    public static final String TERADATA_INPUT_COMPONENT = "tTeradataInput";  //$NON-NLS-1$
+    public static final String TERADATA_CONFIG_COMPONENT = "tTeradataConfiguration";  //$NON-NLS-1$
 
-    public static final String ORACLE_OUTPUT_COMPONENT = "tOracleOutput";
-    public static final String ORACLE_INPUT_COMPONENT = "tOracleInput";
-    public static final String ORACLE_CONFIG_COMPONENT = "tOracleConfiguration";
+    public static final String ORACLE_OUTPUT_COMPONENT = "tOracleOutput";  //$NON-NLS-1$
+    public static final String ORACLE_INPUT_COMPONENT = "tOracleInput";  //$NON-NLS-1$
+    public static final String ORACLE_CONFIG_COMPONENT = "tOracleConfiguration";  //$NON-NLS-1$
 
-    public static final String ALTUS_CLOUD_PROVIDER = "ALTUS_CLOUD_PROVIDER";
+    public static final String ALTUS_CLOUD_PROVIDER = "ALTUS_CLOUD_PROVIDER";  //$NON-NLS-1$
     
-    public static final String GCS_CONFIG_COMPONENT = "tGSConfiguration";
+    public static final String GCS_CONFIG_COMPONENT = "tGSConfiguration";  //$NON-NLS-1$
     
-    public static final String BIGQUERY_CONFIG_COMPONENT = "tBigQueryConfiguration";
+    public static final String BIGQUERY_CONFIG_COMPONENT = "tBigQueryConfiguration";  //$NON-NLS-1$
 
+    public static final String TOP_BY_COMPONENT = "tTopBy"; //$NON-NLS-1$
+  
     public static final String DELTALAKE_INPUT_COMPONENT = "tDeltaLakeInput";
     public static final String DELTALAKE_OUTPUT_COMPONENT = "tDeltaLakeOutput";
 

@@ -54,6 +54,8 @@ public final class SparkStreamingConstant {
 
     public static final String AZURE_CONFIGURATION_COMPONENT = "tAzureFSConfiguration"; //$NON-NLS-1$
 
+    public static final String AZURE_FS_CONFIGURATION_COMPONENT = "tAzureFSConfiguration"; //$NON-NLS-1$
+
     public static final String SPARK_STREAMING_SPARKCONFIGURATION_LINKEDPARAMETER = "SPARK_CONFIGURATION"; //$NON-NLS-1$
 
     public static final String SPARKCONFIGURATION_IS_LOCAL_MODE_PARAMETER = "SPARK_LOCAL_MODE"; //$NON-NLS-1$
@@ -92,6 +94,8 @@ public final class SparkStreamingConstant {
 
     public static final String TMODEL_ENCODER_COMPONENT = "tModelEncoder"; //$NON-NLS-1$
 
+    public static final String TOP_BY_COMPONENT = "tTopBy"; //$NON-NLS-1$
+  
     public static final String HMAP_RECORD_COMPONENT = "tHMapRecord";//$NON-NLS-1$
 
     public static final String REDSHIFT_CONFIGURATION_COMPONENT = "tRedshiftConfiguration"; //$NON-NLS-1$
