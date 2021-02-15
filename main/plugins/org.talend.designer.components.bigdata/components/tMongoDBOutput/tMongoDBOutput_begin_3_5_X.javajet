@@ -8,38 +8,7 @@
 		java.util.Map
 	" 
 %>
-<% 
 
-    String dbhost   = ElementParameterParser.getValue(node, "__HOST__");
-    String dbname   = ElementParameterParser.getValue(node, "__DATABASE__");
-    boolean authentication="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REQUIRED_AUTHENTICATION__"));
-    String authenticationMechanism = ElementParameterParser.getValue(node, "__AUTHENTICATION_MECHANISM__");
-    String krbUserPrincipal = ElementParameterParser.getValue(node, "__KRB_USER_PRINCIPAL__");
-    String krbRealm = ElementParameterParser.getValue(node, "__KRB_REALM__");
-    String krbKdc = ElementParameterParser.getValue(node, "__KRB_KDC__");
-    String dbuser   = ElementParameterParser.getValue(node, "__USERNAME__");
-    String dbpass   = ElementParameterParser.getValue(node, "__PASSWORD__");
-    String mongoPort = ElementParameterParser.getValue(node, "__PORT__");
-    String dbport = mongoPort.startsWith("context.") ? "Integer.valueOf(" + mongoPort + ").intValue()" : mongoPort.replace("\"", "");
-    String collection=ElementParameterParser.getValue(node, "__COLLECTION__");
-    boolean dropExistCollection="true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__DROP_COLLECTION_CREATE__"));
-    
-    List<Map<String, String>> mapping = (List<Map<String,String>>)ElementParameterParser.getObjectValueXML(node, "__MAPPING__");
-    boolean useReplicaSet="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_REPLICA_SET__"));
-
-    boolean setWriteConcern = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_WRITE_CONCERN__"));
-    String writeConcern = ElementParameterParser.getValue(node, "__WRITE_CONCERN__");
-
-    boolean bulkWrite = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_BULK_WRITE__"));
-    String bulkWriteOperationSize = ElementParameterParser.getValue(node, "__BULK_WRITE_SIZE__");
-    String bulkWriteType = ElementParameterParser.getValue(node, "__BULK_WRITE_TYPE__");
-    boolean useAuthDB = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_AUTHENTICATION_DATABASE__"));
-    String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
-    String usedAuthenticationDB = useAuthDB ? authDB : dbname;
-    String dataAction = ElementParameterParser.getValue(node,"__DATA_ACTION__");
-
-    boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
-	%>
 	int nb_line_<%=cid %> = 0;
 	<%
     List<IMetadataTable> metadatas = node.getMetadataList();
@@ -47,75 +16,7 @@
       	IMetadataTable metadata = metadatas.get(0);
       	if(metadata != null){
 		%>
-			class DBObjectUtil_<%=cid%> {
-				
-				private org.bson.Document object = null;
-				//Put value to embedded document
-				//If have no embedded document, put the value to root document
-				public void put(String parentNode, String curentName, Object value) {
-					if (parentNode == null || "".equals(parentNode)) {
-						object.put(curentName, value);
-					} else {
-						String objNames[]= parentNode.split("\\.");
-						org.bson.Document lastNode = getParentNode(parentNode, objNames.length-1);
-						lastNode.put(curentName, value);
-						org.bson.Document parenttNode = null;
-						for (int i = objNames.length - 1; i >=0; i--) {
-							parenttNode=getParentNode(parentNode, i-1);
-							parenttNode.put(objNames[i], lastNode);
-							lastNode=clone(parenttNode);
-						}
-						object=lastNode;
-					}
-				}
-				
-				private org.bson.Document clone(org.bson.Document source){
-					org.bson.Document to = new org.bson.Document();
-					for(java.util.Map.Entry<String,Object> cur:source.entrySet()) {
-						to.append(cur.getKey(), cur.getValue());
-					}
-					return to;
-				}
-				
-				//Get node(embedded document) by path configuration
-				public org.bson.Document getParentNode(String parentNode, int index) {
-					org.bson.Document document = object;
-					if (parentNode == null || "".equals(parentNode)) {
-						return object;
-					} else {
-						String objNames[] = parentNode.split("\\.");
-						for (int i = 0; i <= index; i++) {
-							document = (org.bson.Document) document
-									.get(objNames[i]);
-							if (document == null) {
-								document = new org.bson.Document();
-								return document;
-							}
-							if (i == index) {
-								break;
-							}
-						}
-						return document;
-					}
-				}
-				
-				public void putkeyNode(String parentNode, String curentName, Object value){
-					if (parentNode == null || "".equals(parentNode) || ".".equals(parentNode)) {
-						put(parentNode, curentName, value);
-					}else{
-						put("", parentNode+"."+curentName, value);
-					}
-				}
-			
-				public org.bson.Document getObject() {
-					return this.object;
-				}
-				
-				public void setObject(org.bson.Document object){
-					this.object=object;
-				}
-			
-			}
+			<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/DBObjectUtil_3_5_X.javajet"%>
 			
 			<%
 			boolean upsert_with_set = "UPSERT_WITH_SET".equalsIgnoreCase(dataAction);
@@ -167,8 +68,10 @@
 				%>
 				pathMap_<%=cid%>.put("<%=schemaColumn%>",<%=path%>);
 				<%
-			}
-      		if (useExistingConnection){
+			}%>
+			
+
+      		<%if (useExistingConnection){
       			String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
 				%>
 				mongo_<%=cid%>=(com.mongodb.MongoClient)globalMap.get("mongo_<%=connection%>");
@@ -181,17 +84,10 @@
 				<%
 				}
 			}else{
-	 			List<Map<String,String>> replicaAddrs= (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__REPLICA_SET__");
-	 		    boolean useSSL = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_SSL__"));
 
 	 		    String mongoDbDriver = "com.mongodb.MongoClient";
 
 	 	  %>
-            <%if(isLog4jEnabled){%>
-			java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.OFF);
-			<%}else{%>
-			java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.SEVERE);
-          <%}%>
 	 		    // Empty client options
                 com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().build();
                 <%
@@ -271,14 +167,14 @@
 				<%
 
 			}
-
+			
 			if(setWriteConcern){
 				%>
 			    db_<%=cid%>.withWriteConcern(com.mongodb.WriteConcern.<%=writeConcern%>);
 				<%
 			}
-
 			%>
+
 			<%
 			if(isLog4jEnabled){
 			%>	

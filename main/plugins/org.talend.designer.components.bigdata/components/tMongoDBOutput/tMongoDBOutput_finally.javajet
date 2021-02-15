@@ -17,8 +17,15 @@
 		if(resourceMap.get("finish_<%=cid%>") == null){
 			if(resourceMap.get("mongo_<%=cid%>") != null){
 
-			
-		    <%if(dbversion.equals("MONGODB_3_5_X")){%>
+		    <%if(dbversion.equals("MONGODB_4_4_X")){%>
+		    			<%if(isLog4jEnabled) {%>
+		                    for (com.mongodb.connection.ServerDescription description : ((com.mongodb.client.MongoClient)resourceMap.get("mongo_<%=cid%>"))
+		                        .getClusterDescription().getServerDescriptions()) {
+		                        log.info("<%=cid%> - Closing the connection " + description.getAddress());
+		                    }
+		    			<%}%>
+		    			       ((com.mongodb.client.MongoClient)resourceMap.get("mongo_<%=cid%>")).close();
+		    <%} else if(dbversion.equals("MONGODB_3_5_X")){%>
 		    			<%if(isLog4jEnabled){%>
 		                       log.info("<%=cid%> - Closing the connection " + ((com.mongodb.MongoClient)resourceMap.get("mongo_<%=cid%>")).getServerAddressList() + ".");
 		    			<%}%>

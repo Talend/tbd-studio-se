@@ -51,7 +51,7 @@
 	}
 
 	if(bulkWrite){
-		if(dbversion.equals("MONGODB_3_5_X") && updateOnlyColumnExists){
+		if((dbversion.equals("MONGODB_3_5_X") || dbversion.equals("MONGODB_4_4_X")) && updateOnlyColumnExists){
 		%>
 		if (bulkWriteOperationCounterForUpdateOnlyColumn_<%=cid%> != 1) {
 			coll_<%=cid%>.bulkWrite(bulkWriteOperationForUpdateOnlyColumn_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
@@ -62,7 +62,7 @@
 		%>
 		// if bulkWriteOperationCounter_<%=cid%> == 1 the ulkWriteOperation_<%=cid%> is empty, do not execute.
 		if (bulkWriteOperationCounter_<%=cid%> != 1) {
-		<%if(dbversion.equals("MONGODB_3_5_X")){%>
+		<%if(dbversion.equals("MONGODB_3_5_X") || dbversion.equals("MONGODB_4_4_X")){%>
 			coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
 		<%} else {%>
 			bulkWriteOperation_<%=cid%>.execute();
@@ -82,7 +82,13 @@
 			<%
 			if(isLog4jEnabled){
 			%>
-				log.info("<%=cid%> - Closing the connection " + mongo_<%=cid%>.getServerAddressList() + ".");
+				<%if (dbversion.equals("MONGODB_4_4_X")) {%>
+					for (com.mongodb.connection.ServerDescription description : mongo_<%=cid%>.getClusterDescription().getServerDescriptions()) {
+						log.info("<%=cid%> - Closing the connection " + description.getAddress());
+					}
+				<%} else { %>
+					log.info("<%=cid%> - Closing the connection " + mongo_<%=cid%>.getServerAddressList() + ".");
+				<%}%>
 			<%
 			}
 			%>
