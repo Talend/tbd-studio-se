@@ -55,8 +55,6 @@
 			DBObjectUtil_<%=cid%> updateObjectUtil_<%=cid%>=new DBObjectUtil_<%=cid%>();
 			DBObjectUtil_<%=cid%> queryObjectUtil_<%=cid%>=new DBObjectUtil_<%=cid%>();
 			java.util.Map<String, String> pathMap_<%=cid%>=new java.util.HashMap<>();
-            com.mongodb.client.MongoClient mongo_<%=cid%>=null;
-            com.mongodb.client.MongoDatabase db_<%=cid%>=null;
 
 			<%
 			for (int i=0;i<mapping.size();i++) {
@@ -70,6 +68,9 @@
 				pathMap_<%=cid%>.put("<%=schemaColumn%>",<%=path%>);
 				<%
 			}%>
+
+            com.mongodb.client.MongoClient mongo_<%=cid%>=null;
+            com.mongodb.client.MongoDatabase db_<%=cid%>=null;
 
             <%if (useExistingConnection) {
                 String connection = ElementParameterParser.getValue(node, "__CONNECTION__");%>
