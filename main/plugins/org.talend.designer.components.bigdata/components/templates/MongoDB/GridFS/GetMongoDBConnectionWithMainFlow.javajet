@@ -57,6 +57,7 @@
         queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
     }
     boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
+    boolean version_4_4_X = "MONGODB_4_4_X".equals(dbversion);
 
     List<IMetadataTable> metadatas = node.getMetadataList();
     List<IMetadataColumn> columnList = null;

@@ -54,6 +54,7 @@
         queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
     }
     boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
+	boolean version_4_4_X = "MONGODB_4_4_X".equals(dbversion);
     boolean useSSL = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_SSL__"));
     boolean givenStringFileName = "STRING_FILENAME".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERY_TYPE__"));
     String stringFileName = ElementParameterParser.getValue(node, "__FILENAME__");
@@ -64,7 +65,7 @@
     String outputLocalPath = ElementParameterParser.getValue(node, "__OUTPUT_LOCAL_PATH__");
     boolean overWriteLocalFiles = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__OVERWRITE_LOCAL_FILES__"));
     boolean idAsFilename = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__ID_AS_FILENAME__"));
-	String fileType = (version_3_5_X || ("MONGODB_4_4_X".equals(dbversion))) ? "com.mongodb.client.gridfs.model.GridFSFile" : "com.mongodb.gridfs.GridFSDBFile";
+	String fileType = (version_3_5_X || version_4_4_X) ? "com.mongodb.client.gridfs.model.GridFSFile" : "com.mongodb.gridfs.GridFSDBFile";
 	%>
 
 	<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GridFS/GetMongoDBConnection.javajet"%>
@@ -83,7 +84,7 @@
 
 			%>
 
-	<%if(version_3_5_X || ("MONGODB_4_4_X".equals(dbversion))){%>
+	<%if(version_3_5_X || version_4_4_X){%>
 			com.mongodb.client.gridfs.GridFSBucket gridfs_<%=cid%> = com.mongodb.client.gridfs.GridFSBuckets.create(db_<%=cid%>, <%=bucketName%>);
 	    	<%if(givenStringFileName){%>
 	    		org.bson.Document gridFSQuery_<%=cid%> = new org.bson.Document("filename",<%=stringFileName%>);

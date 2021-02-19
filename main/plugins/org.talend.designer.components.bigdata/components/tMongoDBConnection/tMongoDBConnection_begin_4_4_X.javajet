@@ -20,7 +20,7 @@
     com.mongodb.connection.ClusterSettings.Builder clusterSettingsBuilder_<%=cid%> = com.mongodb.connection.ClusterSettings.builder();
     com.mongodb.connection.ConnectionPoolSettings.Builder connPoolSettingsBuilder_<%=cid%> = com.mongodb.connection.ConnectionPoolSettings.builder();
     com.mongodb.connection.ServerSettings.Builder serverSettingsBuilder_<%=cid%> = com.mongodb.connection.ServerSettings.builder();
-    com.mongodb.connection.SocketSettings.Builder sockerSettingsBuilder_<%=cid%> = com.mongodb.connection.SocketSettings.builder();
+    com.mongodb.connection.SocketSettings.Builder socketSettingsBuilder_<%=cid%> = com.mongodb.connection.SocketSettings.builder();
     com.mongodb.connection.SslSettings.Builder sslSettingsBuilder_<%=cid%> = com.mongodb.connection.SslSettings.builder();
 
     <%
@@ -127,25 +127,25 @@
         if(connectionAttributesKeySet.contains("SOCKET_CONNECT_TIMEOUT")) {
             isSocSettingsBuilderUsed = true;
             %>
-            sockerSettingsBuilder_<%=cid%>.connectTimeout(<%=optionalConnectionAttributesMap.get("SOCKET_CONNECT_TIMEOUT")%>, java.util.concurrent.TimeUnit.MILLISECONDS);
+            socketSettingsBuilder_<%=cid%>.connectTimeout(<%=optionalConnectionAttributesMap.get("SOCKET_CONNECT_TIMEOUT")%>, java.util.concurrent.TimeUnit.MILLISECONDS);
         <%
         }
         if(connectionAttributesKeySet.contains("SOCKET_READ_TIMEOUT")) {
             isSocSettingsBuilderUsed = true;
             %>
-            sockerSettingsBuilder_<%=cid%>.readTimeout(<%=optionalConnectionAttributesMap.get("SOCKET_READ_TIMEOUT")%>, java.util.concurrent.TimeUnit.MILLISECONDS);
+            socketSettingsBuilder_<%=cid%>.readTimeout(<%=optionalConnectionAttributesMap.get("SOCKET_READ_TIMEOUT")%>, java.util.concurrent.TimeUnit.MILLISECONDS);
         <%
         }
         if(connectionAttributesKeySet.contains("RECEIVE_BUFFER_SIZE")) {
             isSocSettingsBuilderUsed = true;
             %>
-            sockerSettingsBuilder_<%=cid%>.receiveBufferSize(<%=optionalConnectionAttributesMap.get("RECEIVE_BUFFER_SIZE")%>, java.util.concurrent.TimeUnit.MILLISECONDS);
+            socketSettingsBuilder_<%=cid%>.receiveBufferSize(<%=optionalConnectionAttributesMap.get("RECEIVE_BUFFER_SIZE")%>, java.util.concurrent.TimeUnit.MILLISECONDS);
         <%
         }
         if(connectionAttributesKeySet.contains("SEND_BUFFER_SIZE")) {
             isSocSettingsBuilderUsed = true;
             %>
-            sockerSettingsBuilder_<%=cid%>.sendBufferSize(<%=optionalConnectionAttributesMap.get("SEND_BUFFER_SIZE")%>, java.util.concurrent.TimeUnit.MILLISECONDS);
+            socketSettingsBuilder_<%=cid%>.sendBufferSize(<%=optionalConnectionAttributesMap.get("SEND_BUFFER_SIZE")%>, java.util.concurrent.TimeUnit.MILLISECONDS);
         <%
         }
         if(connectionAttributesKeySet.contains("SSL_INVALID_HOSTNAME_ALLOWED")) {
@@ -219,7 +219,7 @@
         clientSettingsBuilder_<%=cid%>.applyToServerSettings(builder -> builder.applySettings(serverSettingsBuilder_<%=cid%>.build()));
     <%}%>
     <%if(isSocSettingsBuilderUsed) {%>
-        clientSettingsBuilder_<%=cid%>.applyToSocketSettings(builder -> builder.applySettings(sockerSettingsBuilder_<%=cid%>.build()));
+        clientSettingsBuilder_<%=cid%>.applyToSocketSettings(builder -> builder.applySettings(socketSettingsBuilder_<%=cid%>.build()));
     <%}%>
 
     mongo_<%=cid%> = com.mongodb.client.MongoClients.create(clientSettingsBuilder_<%=cid%>.build());

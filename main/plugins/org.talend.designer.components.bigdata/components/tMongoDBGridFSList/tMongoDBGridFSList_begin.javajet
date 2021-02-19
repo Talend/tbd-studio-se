@@ -53,6 +53,7 @@
         queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
     }
     boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
+    boolean version_4_4_X = "MONGODB_4_4_X".equals(dbversion);
     boolean givenStringFileName = "STRING_FILENAME".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERY_TYPE__"));
     boolean useSSL = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_SSL__"));
     String stringFileName = ElementParameterParser.getValue(node, "__FILENAME__");
@@ -67,7 +68,7 @@
     <%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GridFS/GetMongoDBConnection.javajet"%>
 
     
-    <%if(version_3_5_X || ("MONGODB_4_4_X".equals(dbversion))) {%>
+    <%if(version_3_5_X || version_4_4_X) {%>
         com.mongodb.client.gridfs.GridFSBucket gridfs_<%=cid%> = com.mongodb.client.gridfs.GridFSBuckets.create(db_<%=cid%>, <%=bucketName%>);
         org.bson.Document gridFSQuery_<%=cid%> = org.bson.Document.parse(<%=query%>);
         org.bson.Document sortField_<%=cid%> = new org.bson.Document("<%=sortBy%>", <%=sortOrder%>);

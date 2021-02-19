@@ -1,3 +1,9 @@
+<%@ jet 
+    imports="
+        java.util.Map
+        java.util.List
+    " 
+%>
 			class DBObjectUtil_<%=cid%> {
 				
 				private org.bson.Document object = null;
