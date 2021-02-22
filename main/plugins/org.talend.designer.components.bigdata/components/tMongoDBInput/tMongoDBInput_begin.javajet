@@ -67,7 +67,9 @@
     boolean version_4_4_X = "MONGODB_4_4_X".equals(dbversion);
     
     String objectType = (version_3_5_X || version_4_4_X) ? "org.bson.Document" : "com.mongodb.DBObject";
+%>
 
+	<%
   	List<IMetadataTable> metadatas = node.getMetadataList();
   	List<IMetadataColumn> columnList = null;
   	List<? extends IConnection> outputs = node.getOutgoingSortedConnections();
@@ -87,10 +89,9 @@
           <%}%>
 	int nb_line_<%=cid %> = 0;
 	<%
-  	if(metadatas != null && metadatas.size() > 0){
+  	if(metadatas != null && metadatas.size() > 0) {
       	IMetadataTable metadata = metadatas.get(0);
-      	if(metadata != null){
-		%>
+      	if(metadata != null) {%>
 
             <%if (version_4_4_X) {%>
                 <%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GridFS/GetMongoDBConnection_4_4_X.javajet"%>

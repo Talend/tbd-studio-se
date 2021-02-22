@@ -87,13 +87,18 @@
 
 			resourceMap.put("mongo_<%=cid%>", mongo_<%=cid%>);
 
-			<%if(isLog4jEnabled){
-			%>	
-				log.info("<%=cid%> - Connecting to " + mongo_<%=cid%>.getServerAddressList() + ".");
-			<%
+			<%if(isLog4jEnabled) {
+				if(version_4_4_X) {%>
+					for (com.mongodb.connection.ServerDescription description : mongo_<%=cid%>.getClusterDescription().getServerDescriptions()) {
+						og.info("<%=cid%> - Connecting to " + description.getAddress());
+					}
+					<%
+				} else {%>
+					log.info("<%=cid%> - Connecting to " + mongo_<%=cid%>.getServerAddressList() + ".");
+					<%
+				}
 			}
-			if(dropExistCollection){
-			%>
+			if(dropExistCollection) {%>
 				<%if(version_4_4_X) {%>
 					com.mongodb.client.MongoIterable<String> collectionNames = db_<%=cid%>.listCollectionNames();
 					for (String name : collectionNames) {

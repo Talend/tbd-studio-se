@@ -5,7 +5,7 @@
 		org.talend.designer.codegen.config.CodeGeneratorArgument
 		org.talend.core.model.utils.NodeUtil
 		java.util.List 
-		java.util.Map		
+		java.util.Map
 	" 
 %>
 <%

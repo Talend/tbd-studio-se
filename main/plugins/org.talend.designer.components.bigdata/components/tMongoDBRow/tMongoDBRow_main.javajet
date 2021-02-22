@@ -36,9 +36,9 @@
   	String jsonCommand = ElementParameterParser.getValue(node,"__JSON_COMMAND__");
   	jsonCommand = jsonCommand.replaceAll("\n"," ");
   	jsonCommand = jsonCommand.replaceAll("\r"," ");
+%>
 
-  	if (isLog4jEnabled) {
-	%>
+  	<%if (isLog4jEnabled) {%>
 		final StringBuffer log4jSb_<%=cid%> = new StringBuffer();
 	<%
 	}

@@ -16,7 +16,7 @@
         IMetadataTable metadata = metadatas.get(0);
         if(metadata != null) {%>
 
-	<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/DBObjectUtil_3_5_X.javajet"%>
+			<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/DBObjectUtil_3_5_X.javajet"%>
 
 			<%
 			boolean upsert_with_set = "UPSERT_WITH_SET".equalsIgnoreCase(dataAction);
@@ -38,7 +38,7 @@
 					}
 				}
 				
-				if(insertOnlyColumnExists)  {
+				if(insertOnlyColumnExists) {
 				%>
 				DBObjectUtil_<%=cid%> insertObjectOnlyUtil_<%=cid%>=new DBObjectUtil_<%=cid%>();
 				<%

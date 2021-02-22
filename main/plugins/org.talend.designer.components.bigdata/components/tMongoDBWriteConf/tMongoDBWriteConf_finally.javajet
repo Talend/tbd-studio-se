@@ -5,7 +5,7 @@
 		org.talend.core.model.process.ElementParameterParser
 		java.util.List
 		org.talend.core.model.metadata.IMetadataTable
-		org.talend.core.model.process.IConnection    
+		org.talend.core.model.process.IConnection
 		org.talend.core.model.process.IConnectionCategory
 		org.talend.core.model.utils.NodeUtil
 		org.talend.core.model.process.EConnectionType
@@ -29,52 +29,39 @@
 	
 	List<IMetadataTable> metadatas = node.getMetadataList();
 	if ((metadatas!=null)&&(metadatas.size()>0)) {
-    	IMetadataTable metadata = metadatas.get(0);
+		IMetadataTable metadata = metadatas.get(0);
 		if (metadata!=null) {
-			if(!useExistingConn){
-				if(!dbversion.equals("MONGODB_4_4_X")) { 
-					%>
-					if(resourceMap.get("finish_<%=cid%>") == null){
-						if(resourceMap.get("mongo_<%=cid%>") != null){
-							<%
-							if(isLog4jEnabled){
-							%>
+			if(!useExistingConn) {
+				if(!dbversion.equals("MONGODB_4_4_X")) {%>
+					if(resourceMap.get("finish_<%=cid%>") == null) {
+						if(resourceMap.get("mongo_<%=cid%>") != null) {
+							<%if(isLog4jEnabled) {%>
 								log.info("<%=cid%> - Closing the connection " + ((com.mongodb.MongoClient)resourceMap.get("mongo_<%=cid%>")).getServerAddressList() + ".");
-							<%
-							}
-							%>
-								((com.mongodb.MongoClient)resourceMap.get("mongo_<%=cid%>")).close();
-							<%
-							if(isLog4jEnabled){
-							%>
+								<%
+							}%>
+							((com.mongodb.MongoClient)resourceMap.get("mongo_<%=cid%>")).close();
+							<%if(isLog4jEnabled) {%>
 								log.info("<%=cid%> - The connection was closed successfully.");
-							<%
-							}
-							%>
+								<%
+							}%>
 						}
 					}
 					<%
 				} else {%>
-					if(resourceMap.get("finish_<%=cid%>") == null){
-						if(resourceMap.get("mongo_<%=cid%>") != null){
+					if(resourceMap.get("finish_<%=cid%>") == null) {
+						if(resourceMap.get("mongo_<%=cid%>") != null) {
 							com.mongodb.client.MongoClient mongo_<%=cid%>=(com.mongodb.client.MongoClient)resourceMap.get("mongo_<%=cid%>");
-							<%
-							if(isLog4jEnabled){
-							%>
+							<%if(isLog4jEnabled) {%>
 								for (com.mongodb.connection.ServerDescription description : mongo_<%=cid%>.getClusterDescription().getServerDescriptions()) {
 									log.info("<%=cid%> - Closing the connection " + description.getAddress());
 								}
-							<%
-							}
-							%>
-								mongo_<%=cid%>.close();
-							<%
-							if(isLog4jEnabled){
-							%>
+								<%
+							}%>
+							mongo_<%=cid%>.close();
+							<%if(isLog4jEnabled) {%>
 								log.info("<%=cid%> - The connection was closed successfully.");
-							<%
-							}
-							%>
+								<%
+							}%>
 						}
 					}
 					<%

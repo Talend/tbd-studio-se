@@ -36,7 +36,7 @@
     // BulkWrite is only supportted on Mongo 2.6+ drivers
     final boolean bulkWrite = setBulkWrite;
     boolean updateAll = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__UPDATE_ALL__"));
-    
+    boolean deleteAll = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__DELETE_ALL__"));
     List<IMetadataTable> metadatas = node.getMetadataList();
   	if(metadatas != null && metadatas.size() > 0){
       	IMetadataTable metadata = metadatas.get(0);
@@ -221,10 +221,14 @@
 									bulkWriteOperation_<%=cid%> = new java.util.ArrayList<>();
 								}
 						<%
-					}else{
-						%>
-								coll_<%=cid%>.deleteOne(data_<%=cid%>);
-						<%
+					} else {
+						if(deleteAll) {%>
+							coll_<%=cid%>.deleteMany(data_<%=cid%>);
+							<%
+						} else {%>
+							coll_<%=cid%>.deleteOne(data_<%=cid%>);
+							<%
+						}
 					}
 				}else{
 				%>
