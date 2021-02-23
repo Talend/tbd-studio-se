@@ -60,6 +60,14 @@
                 <ITEM NAME="MONGODB" VALUE="MONGODB" />
             </ITEMS>
         </PARAMETER>
+        <PARAMETER NAME="DB_VERSION" 
+            FIELD="CLOSED_LIST" REPOSITORY_VALUE="DB_VERSION" NUM_ROW="3" GROUP="CONNECTION" 
+            SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND (API=='MONGODB')">
+            <ITEMS DEFAULT="MONGODB_4_4_X">
+                <ITEM NAME="MONGODB_3_2_X" VALUE="MONGODB_3_2_X"/>
+                <ITEM NAME="MONGODB_4_4_X" VALUE="MONGODB_4_4_X"/>
+            </ITEMS>
+        </PARAMETER>
         <PARAMETER
             FIELD="CHECK"
             NAME="USE_REPLICA_SET"
@@ -229,6 +237,13 @@
             <DEFAULT>false</DEFAULT>
         </PARAMETER>
         <PARAMETER
+            NAME="DELETE_ALL"
+            FIELD="CHECK"
+            NUM_ROW="40"
+            SHOW_IF="((DATA_ACTION=='DELETE') AND ((IS_VIRTUAL_COMPONENT == 'false') AND (DB_VERSION=='MONGODB_4_4_X')))">
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+        <PARAMETER
             NAME="SCHEMA_FLOW"
             FIELD="SCHEMA_TYPE"
             NUM_ROW="45"
@@ -257,7 +272,7 @@
     </PARAMETERS>
     <ADVANCED_PARAMETERS>
         <PARAMETER FIELD="CHECK" NAME="QUERYOPTION_NOTIMEOUT"
-            NUM_ROW="1" GROUP="ADVANCED_QUERY_OPTIONS" SHOW_IF="(USE_EXISTING_CONNECTION == 'false')">
+            NUM_ROW="1" GROUP="ADVANCED_QUERY_OPTIONS" SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION != 'MONGODB_4_4_X')">
             <DEFAULT>false</DEFAULT>
         </PARAMETER>
 
@@ -454,9 +469,10 @@
             
         </TEMPLATES>
         <IMPORTS>
-
-            <IMPORT MODULE="mongo-java-driver-3.12.0.jar" MVN="mvn:org.mongodb/mongo-java-driver/3.12.0"  NAME="mongo-java-driver-3.12.0" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (API=='MONGODB')" />
-
+            <IMPORT MODULE="mongodb-driver-core-4.2.0.jar" MVN="mvn:org.mongodb/mongodb-driver-core/4.2.0" NAME="mongodb-driver-core-4.2.0" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND ((API=='MONGODB') AND (DB_VERSION == 'MONGODB_4_4_X')))" />
+            <IMPORT MODULE="mongodb-driver-sync-4.2.0.jar" MVN="mvn:org.mongodb/mongodb-driver-sync/4.2.0" NAME="mongodb-driver-sync-4.2.0" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND ((API=='MONGODB') AND (DB_VERSION == 'MONGODB_4_4_X')))" />
+            <IMPORT MODULE="bson-4.2.0.jar" MVN="mvn:org.mongodb/bson/4.2.0" NAME="bson-4.2.0" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND ((API=='MONGODB') AND (DB_VERSION == 'MONGODB_4_4_X')))" />
+            <IMPORT MODULE="mongo-java-driver-3.12.0.jar" MVN="mvn:org.mongodb/mongo-java-driver/3.12.0"  NAME="mongo-java-driver-3.12.0" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND ((API=='MONGODB') AND (DB_VERSION != 'MONGODB_4_4_X')))" />
         </IMPORTS>
     </CODEGENERATION>
     <RETURNS>
