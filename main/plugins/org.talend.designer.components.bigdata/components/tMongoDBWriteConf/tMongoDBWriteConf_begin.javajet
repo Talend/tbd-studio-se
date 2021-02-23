@@ -90,7 +90,7 @@
 			<%if(isLog4jEnabled) {
 				if(version_4_4_X) {%>
 					for (com.mongodb.connection.ServerDescription description : mongo_<%=cid%>.getClusterDescription().getServerDescriptions()) {
-						og.info("<%=cid%> - Connecting to " + description.getAddress());
+						log.info("<%=cid%> - Connecting to " + description.getAddress());
 					}
 					<%
 				} else {%>
@@ -101,10 +101,13 @@
 			if(dropExistCollection) {%>
 				<%if(version_4_4_X) {%>
 					com.mongodb.client.MongoIterable<String> collectionNames = db_<%=cid%>.listCollectionNames();
-					for (String name : collectionNames) {
-						if (<%=collection%>.equalsIgnoreCase(name)) {
-							db_<%=cid%>.getCollection(<%=collection%>).drop();
-							break;
+					try(com.mongodb.client.MongoCursor<String> iterator_<%=cid%> = collectionNames.iterator()) {
+						while (iterator_<%=cid%>.hasNext()) {
+							String name = iterator_<%=cid%>.next();
+							if (name.equalsIgnoreCase(<%=collection%>)) {
+								db_<%=cid%>.getCollection(<%=collection%>).drop();
+								break;
+							}
 						}
 					}
 				<%} else if(version_3_5_X) {%>

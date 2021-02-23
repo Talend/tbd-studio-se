@@ -112,10 +112,13 @@
             }
             if(dropExistCollection) {%>
                 com.mongodb.client.MongoIterable<String> collectionNames = db_<%=cid%>.listCollectionNames();
-                for (String name : collectionNames) {
-                    if (<%=collection%>.equalsIgnoreCase(name)) {
-                        db_<%=cid%>.getCollection(<%=collection%>).drop();
-                        break;
+                try(com.mongodb.client.MongoCursor<String> iterator_<%=cid%> = collectionNames.iterator()) {
+                    while (iterator_<%=cid%>.hasNext()) {
+                        String name = iterator_<%=cid%>.next();
+                        if (name.equalsIgnoreCase(<%=collection%>)) {
+                            db_<%=cid%>.getCollection(<%=collection%>).drop();
+                            break;
+                        }
                     }
                 }
                 <%
