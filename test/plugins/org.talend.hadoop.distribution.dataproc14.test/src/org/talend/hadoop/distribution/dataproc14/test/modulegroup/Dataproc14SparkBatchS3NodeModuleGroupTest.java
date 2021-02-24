@@ -29,9 +29,9 @@ public class Dataproc14SparkBatchS3NodeModuleGroupTest {
     @Test
     public void testModuleGroups() throws Exception {
         Map<String, String> results = new HashMap<>();
-        results.put(Dataproc14Constant.SPARK_S3_MRREQUIRED_MODULE_GROUP.getModuleName(), "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION=="
-        		+ "'GOOGLE_CLOUD_DATAPROC') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION=='DATAPROC_1_4')) AND "
-        		+ "(#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE=='false')"); //$NON-NLS-1$
+        results.put(Dataproc14Constant.SPARK_S3_MRREQUIRED_MODULE_GROUP.getModuleName(), "((#LINK@NODE.STORAGE_CONFIGURATION.DISTRIBUTION == "
+        		+ "'GOOGLE_CLOUD_DATAPROC') AND (#LINK@NODE.STORAGE_CONFIGURATION.SPARK_VERSION == 'DATAPROC_1_4')) AND "
+        		+ "(#LINK@NODE.STORAGE_CONFIGURATION.SPARK_LOCAL_MODE == 'false')"); //$NON-NLS-1$
         Set<DistributionModuleGroup> moduleGroups = Dataproc14SparkBatchS3NodeModuleGroup.getModuleGroups();
         assertEquals(1, moduleGroups.size());
 

@@ -73,11 +73,11 @@ public class HadoopDistributionsHelperTest {
     public void testClouderaDistribution() {
         testDistributionOnly("CLOUDERA", "Cloudera", new String[][] {
                 //{ "Cloudera_CDH6_1_1", "Cloudera CDH6.1(YARN mode)", "HADOOP_2" },
-                //{ "Cloudera_CDH5_13_0", "Cloudera CDH5.13(YARN mode)", "HADOOP_2" },
-                {"Cloudera_CDH5_12", "Cloudera CDH5.12(YARN mode)", "HADOOP_2"},
-                { "Cloudera_CDH5_10", "Cloudera CDH5.10(YARN mode)", "HADOOP_2" },
-                { "Cloudera_CDH5_8", "Cloudera CDH5.8(YARN mode)", "HADOOP_2" },
-                { "Cloudera_CDH5_7", "Cloudera CDH5.7(YARN mode)", "HADOOP_2" },
+                { "Cloudera_CDH5_13_0", "Cloudera CDH5.13 (Deprecated)", "HADOOP_2" },
+                {"Cloudera_CDH5_12", "Cloudera CDH5.12 (Deprecated)", "HADOOP_2"},
+                { "Cloudera_CDH5_10", "Cloudera CDH5.10 (Deprecated)", "HADOOP_2" },
+                { "Cloudera_CDH5_8", "Cloudera CDH5.8 (Deprecated)", "HADOOP_2" },
+                { "Cloudera_CDH5_7", "Cloudera CDH5.7 (Deprecated)", "HADOOP_2" },
                 //{ "Cloudera_CDH5_6", "Cloudera CDH5.6(YARN mode)", "HADOOP_2" },
                 //{ "Cloudera_CDH5_5", "Cloudera CDH5.5(YARN mode)", "HADOOP_2" }
         });
@@ -86,8 +86,8 @@ public class HadoopDistributionsHelperTest {
     @Test
     public void testHortonWorksDistribution() {
         testDistributionOnly("HORTONWORKS", "HortonWorks", new String[][] {
-                { "HDP_2_6", "Hortonworks Data Platform V2.6.0", "HADOOP_2" },
-                { "HDP_2_5", "Hortonworks Data Platform V2.5.0", "HADOOP_2" }});
+                { "HDP_2_6", "Hortonworks Data Platform V2.6.0 (Deprecated)", "HADOOP_2" },
+                { "HDP_2_5", "Hortonworks Data Platform V2.5.0 (Deprecated)", "HADOOP_2" }});
     }
 
     @Test
@@ -97,9 +97,9 @@ public class HadoopDistributionsHelperTest {
                 { "MAPR610", "MapR 6.1.0(YARN mode)", "HADOOP_2" },
                 { "MAPR601", "MapR 6.0.1(YARN mode)", "HADOOP_2" },
                 { "MAPR600", "MapR 6.0.0(YARN mode)", "HADOOP_2" },
-                { "MAPR520", "MapR 5.2.0(YARN mode)", "HADOOP_2" },
-                { "MAPR510", "MapR 5.1.0(YARN mode)", "HADOOP_2" },
-                { "MAPR500", "MapR 5.0.0(YARN mode)", "HADOOP_2" }});
+                { "MAPR520", "MapR 5.2.0 (Deprecated)", "HADOOP_2" },
+                { "MAPR510", "MapR 5.1.0 (Deprecated)", "HADOOP_2" },
+                { "MAPR500", "MapR 5.0.0 (Deprecated)", "HADOOP_2" }});
     }
 
     @Test

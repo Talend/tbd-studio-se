@@ -28,13 +28,14 @@ import java.util.stream.Stream;
 public class HiveMetadataHelper4ClouderaTest extends AbstractDistributionTest4HiveMetadataHelper {
 
     private static final String[] VERSIONS_NON_DYNAMIC = new String[] {
-        "Cloudera CDH5.12(YARN mode)",
-        "Cloudera CDH5.10(YARN mode)",
-        "Cloudera CDH5.8(YARN mode)",
-        "Cloudera CDH5.7(YARN mode)",
-        "Cloudera CDH5.6(YARN mode)",
-        "Cloudera CDH5.5(YARN mode)",
-        "Cloudera CDH5.4(YARN mode)"};
+    	"Cloudera CDH5.13 (Deprecated)",
+        "Cloudera CDH5.12 (Deprecated)",
+        "Cloudera CDH5.10 (Deprecated)",
+        "Cloudera CDH5.8(Deprecated)",
+        "Cloudera CDH5.7(Deprecated)",
+        "Cloudera CDH5.6(Deprecated)",
+        "Cloudera CDH5.5(Deprecated)"
+        };
 
     @Override
     protected String getDistribution() {

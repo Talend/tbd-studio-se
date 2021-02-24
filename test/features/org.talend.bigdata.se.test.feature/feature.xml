@@ -72,9 +72,13 @@
    <plugin id="org.talend.hadoop.distribution.dbr350.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
    <plugin id="org.talend.hadoop.distribution.dbr550.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
+   
+   <plugin id="org.talend.hadoop.distribution.dbr73x.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
    <plugin id="org.talend.hadoop.distribution.qubole.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-    <plugin id="org.talend.bigdata.se.test.base" download-size="0" install-size="0" version="0.0.0"/>
+   <plugin id="org.talend.hadoop.distribution.spl30x.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
+
+   <plugin id="org.talend.bigdata.se.test.base" download-size="0" install-size="0" version="0.0.0"/>
 
 </feature>

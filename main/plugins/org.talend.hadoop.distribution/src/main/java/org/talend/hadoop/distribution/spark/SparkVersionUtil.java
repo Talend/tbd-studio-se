@@ -34,65 +34,11 @@ public class SparkVersionUtil {
     }
 
     public static ESparkVersion getSparkAPIVersion(String apiVersion) {
-        if ("SPARK_130".equals(apiVersion)) { //$NON-NLS-1$
-            return ESparkVersion.SPARK_1_3;
-        }
-        if ("SPARK_140".equals(apiVersion)) { //$NON-NLS-1$
-            return ESparkVersion.SPARK_1_4;
-        }
-        if ("SPARK_150".equals(apiVersion)) { //$NON-NLS-1$
-            return ESparkVersion.SPARK_1_5;
-        }
-        if ("SPARK_160".equals(apiVersion)) { //$NON-NLS-1$
-            return ESparkVersion.SPARK_1_6;
-        }
-        if ("SPARK_200".equals(apiVersion)) { //$NON-NLS-1$
-            return ESparkVersion.SPARK_2_0;
-        }
-        if ("SPARK_210".equals(apiVersion)) { //$NON-NLS-1$
-            return ESparkVersion.SPARK_2_1;
-        }
-        if ("SPARK_220".equals(apiVersion)) { //$NON-NLS-1$
-            return ESparkVersion.SPARK_2_2;
-        }
-        if ("SPARK_230".equals(apiVersion)) { //$NON-NLS-1$
-            return ESparkVersion.SPARK_2_3;
-        }
-        if ("SPARK_240".equals(apiVersion)) { //$NON-NLS-1$
-            return ESparkVersion.SPARK_2_4;
-        }
-        return null;
+        return ESparkVersion.getByApiVersion(apiVersion);
     }
 
     public static ESparkVersion getSparkVersion(String version) {
-        if ("SPARK_1_3_0".equals(version)) { //$NON-NLS-1$
-            return ESparkVersion.SPARK_1_3;
-        }
-        if ("SPARK_1_4_0".equals(version)) { //$NON-NLS-1$
-            return ESparkVersion.SPARK_1_4;
-        }
-        if ("SPARK_1_5_0".equals(version)) { //$NON-NLS-1$
-            return ESparkVersion.SPARK_1_5;
-        }
-        if ("SPARK_1_6_0".equals(version)) { //$NON-NLS-1$
-            return ESparkVersion.SPARK_1_6;
-        }
-        if ("SPARK_2_0_0".equals(version)) { //$NON-NLS-1$
-            return ESparkVersion.SPARK_2_0;
-        }
-        if ("SPARK_2_1_0".equals(version)) { //$NON-NLS-1$
-            return ESparkVersion.SPARK_2_1;
-        }
-        if ("SPARK_2_2_0".equals(version)) { //$NON-NLS-1$
-            return ESparkVersion.SPARK_2_2;
-        }
-        if ("SPARK_2_3_0".equals(version)) { //$NON-NLS-1$
-            return ESparkVersion.SPARK_2_3;
-        }
-        if ("SPARK_2_4_0".equals(version)) { //$NON-NLS-1$
-            return ESparkVersion.SPARK_2_4;
-        }
-        return null;
+        return ESparkVersion.getBySparkVersion(version);
     }
 
     /**
@@ -206,6 +152,15 @@ public class SparkVersionUtil {
         List<? extends INode> sparkConfigs = process.getNodesOfType("tSparkConfiguration"); //$NON-NLS-1$
         if (sparkConfigs != null && sparkConfigs.size() > 0) {
             return getSparkVersion(sparkConfigs.get(0), false);
+        }
+        return null;
+    }
+    
+    public static Boolean isSparkLocal(IProcess process) {
+        List<? extends INode> sparkConfigs = process.getNodesOfType("tSparkConfiguration"); //$NON-NLS-1$
+        if (sparkConfigs != null && sparkConfigs.size() > 0) {
+            INode sparkConfiguration = sparkConfigs.get(0);
+            return (Boolean) sparkConfiguration.getElementParameter("SPARK_LOCAL_MODE").getValue();
         }
         return null;
     }

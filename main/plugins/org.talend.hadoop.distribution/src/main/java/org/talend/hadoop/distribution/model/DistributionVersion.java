@@ -85,7 +85,7 @@ public class DistributionVersion implements IHDistributionVersion {
     public void addModuleGroup(DistributionModuleGroup g) {
         if (g != null) {
             DistributionVersionModule vm = new DistributionVersionModule(this);
-            vm.moduleGrop = g;
+            vm.moduleGroup = g;
             modules.add(vm);
         }
     }

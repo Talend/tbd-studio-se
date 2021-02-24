@@ -16,6 +16,7 @@ package org.talend.hadoop.distribution;
 
 import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.constants.emr.IAmazonEMRDistribution;
+import org.talend.hadoop.distribution.constants.spl.ISparkLocalDistribution;
 import org.talend.hadoop.distribution.helper.DistributionHelper;
 import org.talend.hadoop.distribution.helper.HadoopDistributionsHelper;
 
@@ -40,6 +41,25 @@ public class DistributionFactory {
         return HadoopDistributionsHelper.buildDistribution(pDistribution, pVersion);
     }
 
+    /**
+    *
+    * Builds a {@link HadoopComponent} distribution.
+    *
+    * @param sparkLocalVersion
+    * @return an implementation of {@link HadoopComponent}.
+    */
+   public static HadoopComponent buildSparkLocalDistribution(String sparkLocalVersion) {
+       try {
+		return buildDistribution(ISparkLocalDistribution.DISTRIBUTION_NAME, sparkLocalVersion);
+	} catch (Exception e) {
+		// This means targeted Spark local version does not exist as a distribution
+		return null;
+	}
+   }
+    
+        
+    
+    
     /**
      * Executes a method for a given distribution and version. This function must return a boolean
      *

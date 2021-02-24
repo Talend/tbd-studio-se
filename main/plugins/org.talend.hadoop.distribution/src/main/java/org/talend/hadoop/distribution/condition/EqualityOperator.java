@@ -14,8 +14,12 @@ package org.talend.hadoop.distribution.condition;
 
 public enum EqualityOperator {
     EQ("=="), //$NON-NLS-1$
-    NOT_EQ("!="); //$NON-NLS-1$
-
+    NOT_EQ("!="), //$NON-NLS-1
+    GT("gt"),
+    GE("ge"),
+    LT("lt"),
+    LE("le");
+    
     private String mSymbol;
 
     EqualityOperator(String symbol) {
