@@ -74,7 +74,6 @@
                 String connection = ElementParameterParser.getValue(node, "__CONNECTION__");%>
                 mongo_<%=cid%>=(com.mongodb.client.MongoClient)globalMap.get("mongo_<%=connection%>");
                 db_<%=cid%> = (com.mongodb.client.MongoDatabase)globalMap.get("db_<%=connection%>");
-				System.out.println(">>>>>>>> db_<%=connection%>");
                 <%if(isLog4jEnabled) {%>
                     log.info("<%=cid%> - Got an existing client from " + "<%=connection%>" + ".");
                     log.info("<%=cid%> - Got an existing DB from " + "<%=connection%>" + ".");
