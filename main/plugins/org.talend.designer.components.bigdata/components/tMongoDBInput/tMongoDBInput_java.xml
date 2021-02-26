@@ -233,6 +233,17 @@
             </ITEMS>
         </PARAMETER>
 
+        <PARAMETER
+            NAME="SPECIFY_FIELDS"
+            FIELD="CHECK"
+            REPOSITORY_VALUE="SPECIFY_FIELDS"
+            NUM_ROW="39"
+            SHOW_IF="((DB_VERSION == 'MONGODB_3_5_X') OR (DB_VERSION == 'MONGODB_4_4_X'))"
+            GROUP="QUERY_SPECS"
+        >
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+
         <PARAMETER NAME="NOTE_ISOLATION" FIELD="LABEL"
             NUM_ROW="40" GROUP="QUERY_SPECS">
             <DEFAULT>Note : Surround String values in your query with single quotes
@@ -260,6 +271,19 @@ Note : If you are running on a Sharded Cluster, please make sure to include the 
             SHOW_IF="QUERY_TYPE=='AGGREGATION_QUERY'">
             <ITEMS>
                 <ITEM NAME="AGGREGATION_STAGE" FIELD="TEXT" />
+            </ITEMS>
+        </PARAMETER>
+
+        <PARAMETER
+            FIELD="TABLE"
+            NAME="FIELDS_TO_RETURN"
+            REQUIRED="false"
+            NUM_ROW="46"
+            NB_LINES="3"
+            GROUP="QUERY_SPECS"
+            SHOW_IF="(SPECIFY_FIELDS == 'true')">
+            <ITEMS>
+                <ITEM NAME="FIELD_NAME" FIELD="TEXT" VALUE=""/>
             </ITEMS>
         </PARAMETER>
 
