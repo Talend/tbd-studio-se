@@ -1,6 +1,7 @@
 <%@ jet 
 	imports="
 		org.talend.core.model.process.INode 
+		org.talend.core.model.utils.NodeUtil
 		org.talend.core.model.process.ElementParameterParser 
 		org.talend.core.model.metadata.IMetadataTable 
 		org.talend.core.model.metadata.IMetadataColumn 
@@ -87,9 +88,9 @@
       	if(metadata != null) {%>
 
             <%if (version_4_4_X) {%>
-                <%@ include file="@{./tCosmosDBInput_begin_4_4_X.javajet"%>
+                <%@ include file="./tCosmosDBInput_begin_4_4_X.javajet"%>
             <%} else {%>
-                <%@ include file="@{./tCosmosDBInput_begin_below_4_4_X.javajet"%>
+                <%@ include file="./tCosmosDBInput_begin_below_4_4_X.javajet"%>
             <%}%>
 
 

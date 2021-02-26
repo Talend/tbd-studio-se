@@ -40,14 +40,13 @@
 
   	<%if (isLog4jEnabled) {%>
 		final StringBuffer log4jSb_<%=cid%> = new StringBuffer();
-	<%
-	}
-	%>
+		<%
+	}%>
 
 	<%if("MONGODB_4_4_X".equals(dbversion)) {%>
 		<%@ include file="./tCosmosDBRow_main_4_4_X.javajet"%>
 		<%
 	} else {%>
-		<%@ include file="./tCosmosDBRow_main_below_4_4_X.javajet.javajet"%>
+		<%@ include file="./tCosmosDBRow_main_below_4_4_X.javajet"%>
 		<%
 	}%>
