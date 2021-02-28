@@ -91,16 +91,7 @@
 		}
 		if(dropExistCollection) {
 			if(version_4_4_X) {%>
-				com.mongodb.client.MongoIterable<String> collectionNames = db_<%=cid%>.listCollectionNames();
-				try(com.mongodb.client.MongoCursor<String> iterator_<%=cid%> = collectionNames.iterator()) {
-					while (iterator_<%=cid%>.hasNext()) {
-						String name = iterator_<%=cid%>.next();
-						if (name.equalsIgnoreCase(<%=collection%>)) {
-							db_<%=cid%>.getCollection(<%=collection%>).drop();
-							break;
-						}
-					}
-				}
+				db_<%=cid%>.getCollection(<%=collection%>).drop();
 				<%
 			} else {%>
 				if(db_<%=cid%>.collectionExists(<%=collection%>)) {
