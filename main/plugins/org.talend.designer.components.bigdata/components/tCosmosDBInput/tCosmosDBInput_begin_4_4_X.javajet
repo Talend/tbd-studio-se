@@ -36,19 +36,19 @@
 
         <%if (setReadPreference) {
             if (readPreference.equals("PRIMARY")) {%>
-                clientSettingsBuilder_<%=cid%>.setReadPreference(com.mongodb.ReadPreference.primary());
+                clientSettingsBuilder_<%=cid%>.readPreference(com.mongodb.ReadPreference.primary());
                 <%
             } else if (readPreference.equals("PRIMARY_PREFERRED")) {%>
-                clientSettingsBuilder_<%=cid%>.setReadPreference(com.mongodb.ReadPreference.primaryPreferred());
+                clientSettingsBuilder_<%=cid%>.readPreference(com.mongodb.ReadPreference.primaryPreferred());
                 <%
             } else if (readPreference.equals("SECONDARY")) {%>
-                clientSettingsBuilder_<%=cid%>.setReadPreference(com.mongodb.ReadPreference.secondary());
+                clientSettingsBuilder_<%=cid%>.readPreference(com.mongodb.ReadPreference.secondary());
                 <%
             } else if (readPreference.equals("SECONDARY_PREFERRED")) {%>
-                clientSettingsBuilder_<%=cid%>.setReadPreference(com.mongodb.ReadPreference.secondaryPreferred());
+                clientSettingsBuilder_<%=cid%>.readPreference(com.mongodb.ReadPreference.secondaryPreferred());
                 <%
             } else if (readPreference.equals("NEAREST")) {%>
-                clientSettingsBuilder_<%=cid%>.setReadPreference(com.mongodb.ReadPreference.nearest());
+                clientSettingsBuilder_<%=cid%>.readPreference(com.mongodb.ReadPreference.nearest());
                 <%
             }
         }%>
