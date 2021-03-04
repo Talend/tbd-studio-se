@@ -86,7 +86,7 @@
                             bulkWriteOperation_<%=cid%>.insert(updateObj_<%=cid%>);
 							bulkWriteOperation_<%=cid%>.execute();
 							bulkWriteOperationCounter_<%=cid%>=1;
-							bulkWriteOperation_<%=cid%> = coll_<%=cid%>.initialize<%=bulkWriteType%>BulkOperation();
+							bulkWriteOperation_<%=cid%> = coll_<%=cid%>.<%=bulkWriteMethodName%>();
 						}
 						<%
 					// Single Writes
@@ -130,7 +130,7 @@
                                     bulkWriteOperation_<%=cid%>.find(queryObj_<%=cid%>).replaceOne(updateObj_<%=cid%>);
 									bulkWriteOperation_<%=cid%>.execute();
 									bulkWriteOperationCounter_<%=cid%>=1;
-									bulkWriteOperation_<%=cid%> = coll_<%=cid%>.initialize<%=bulkWriteType%>BulkOperation();
+									bulkWriteOperation_<%=cid%> = coll_<%=cid%>.<%=bulkWriteMethodName%>();
 								}
 								<%
 							}else{
@@ -150,7 +150,7 @@
                                     bulkWriteOperation_<%=cid%>.find(queryObj_<%=cid%>).update(new com.mongodb.BasicDBObject("$set", updateObj_<%=cid%>));
                                     bulkWriteOperation_<%=cid%>.execute();
                                     bulkWriteOperationCounter_<%=cid%>=1;
-                                    bulkWriteOperation_<%=cid%> = coll_<%=cid%>.initialize<%=bulkWriteType%>BulkOperation();
+                                    bulkWriteOperation_<%=cid%> = coll_<%=cid%>.<%=bulkWriteMethodName%>();
                                 }
                                 <%
                             }else{
@@ -174,7 +174,7 @@
                                     bulkUpdateRequestBuilder_<%=cid%>.replaceOne(updateObj_<%=cid%>);
                                     bulkWriteOperation_<%=cid%>.execute();
                                     bulkWriteOperationCounter_<%=cid%>=1;
-                                    bulkWriteOperation_<%=cid%> = coll_<%=cid%>.initialize<%=bulkWriteType%>BulkOperation();
+                                    bulkWriteOperation_<%=cid%> = coll_<%=cid%>.<%=bulkWriteMethodName%>();
                                 }
                                 <%
                             }else{
@@ -198,7 +198,7 @@
                                     bulkUpdateRequestBuilder_<%=cid%>.update(new com.mongodb.BasicDBObject("$set", updateObj_<%=cid%>));
                                     bulkWriteOperation_<%=cid%>.execute();
                                     bulkWriteOperationCounter_<%=cid%>=1;
-                                    bulkWriteOperation_<%=cid%> = coll_<%=cid%>.initialize<%=bulkWriteType%>BulkOperation();
+                                    bulkWriteOperation_<%=cid%> = coll_<%=cid%>.<%=bulkWriteMethodName%>();
                                 }
                                 <%
                             }else{
@@ -218,7 +218,7 @@
                                     bulkWriteOperation_<%=cid%>.find(queryObj_<%=cid%>).remove();
 									bulkWriteOperation_<%=cid%>.execute();
 									bulkWriteOperationCounter_<%=cid%>=1;
-									bulkWriteOperation_<%=cid%> = coll_<%=cid%>.initialize<%=bulkWriteType%>BulkOperation();
+									bulkWriteOperation_<%=cid%> = coll_<%=cid%>.<%=bulkWriteMethodName%>();
 								}
 								<%
 							}else{

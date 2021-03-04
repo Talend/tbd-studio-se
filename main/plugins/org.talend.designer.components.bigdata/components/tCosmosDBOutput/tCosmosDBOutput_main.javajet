@@ -24,8 +24,8 @@
     java.util.List<java.util.Map<String, String>> mappings = (java.util.List<java.util.Map<String, String>>)ElementParameterParser.getObjectValueXML(node, "__MAPPING__");
 
     boolean bulkWrite = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_BULK_WRITE__"));
-    String bulkWriteOperationSize = ElementParameterParser.getValue(node, "__BULK_WRITE_SIZE__");
-    String bulkWriteType = ElementParameterParser.getValue(node, "__BULK_WRITE_TYPE__");
+    boolean bulkWriteType = "Ordered".equalsIgnoreCase(ElementParameterParser.getValue(node, "__BULK_WRITE_TYPE__"));
+    String bulkWriteMethodName = bulkWriteType ? "initializeOrderedBulkOperation" : "initializeUnorderedBulkOperation";
     boolean updateAll = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__UPDATE_ALL__"));
     boolean deleteAll = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__DELETE_ALL__"));
     boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"));
