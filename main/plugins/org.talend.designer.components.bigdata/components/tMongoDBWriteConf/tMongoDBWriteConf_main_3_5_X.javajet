@@ -282,23 +282,24 @@
                             }
                         } else if("UPSERT".equalsIgnoreCase(dataAction)){
                             // Bulk Upsert
-							if(bulkWrite){
-								%>
+                            if(bulkWrite){%>
                                 if(bulkWriteOperationCounter_<%=cid%> < bulkWriteOperationSize_<%=cid%>){
-                                    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.ReplaceOneModel<org.bson.Document>(queryObj_<%=cid%>,data_<%=cid%>,new com.mongodb.client.model.UpdateOptions().upsert(true)));
+                                    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.ReplaceOneModel<org.bson.Document>(queryObj_<%=cid%>, data_<%=cid%>,
+                                        new <%= "MONGODB_4_4_X".equals(dbversion) ? "com.mongodb.client.model.ReplaceOptions()" : "com.mongodb.client.model.UpdateOptions()"%>.upsert(true)));
                                     bulkWriteOperationCounter_<%=cid%>++;
                                 }else{
-                                    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.ReplaceOneModel<org.bson.Document>(queryObj_<%=cid%>,data_<%=cid%>,new com.mongodb.client.model.UpdateOptions().upsert(true)));
+                                    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.ReplaceOneModel<org.bson.Document>(queryObj_<%=cid%>, data_<%=cid%>,
+                                        new <%= "MONGODB_4_4_X".equals(dbversion) ? "com.mongodb.client.model.ReplaceOptions()" : "com.mongodb.client.model.UpdateOptions()"%>.upsert(true)));
                                     coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
                                     bulkWriteOperationCounter_<%=cid%>=1;
                                     bulkWriteOperation_<%=cid%> = new java.util.ArrayList<>();
                                 }
-								<%
-							}else{
-								%>
-								coll_<%=cid%>.replaceOne(queryObj_<%=cid%>,data_<%=cid%>,new com.mongodb.client.model.UpdateOptions().upsert(true));
-								<%
-							}
+                                <%
+                            }else{%>
+                                coll_<%=cid%>.replaceOne(queryObj_<%=cid%>, data_<%=cid%>,
+                                    new <%= "MONGODB_4_4_X".equals(dbversion) ? "com.mongodb.client.model.ReplaceOptions()" : "com.mongodb.client.model.UpdateOptions()"%>.upsert(true));
+                                <%
+                            }
                         } else if("UPSERT_WITH_SET".equalsIgnoreCase(dataAction)){
                             // Bulk Upsert
                             if(bulkWrite){
@@ -314,14 +315,12 @@
                                 }
                                 <%
                             }else{
-                                if(updateAll){
-                            	%>
-                                coll_<%=cid%>.updateMany(queryObj_<%=cid%>,new org.bson.Document("$set", data_<%=cid%>),new com.mongodb.client.model.UpdateOptions().upsert(true));
-                                <%
-                                } else {
-                                %>
-                                coll_<%=cid%>.updateOne(queryObj_<%=cid%>,new org.bson.Document("$set", data_<%=cid%>),new com.mongodb.client.model.UpdateOptions().upsert(true));
-                                <%
+                                if(updateAll){%>
+                                    coll_<%=cid%>.updateMany(queryObj_<%=cid%>,new org.bson.Document("$set", data_<%=cid%>),new com.mongodb.client.model.UpdateOptions().upsert(true));
+                                    <%
+                                } else {%>
+                                    coll_<%=cid%>.updateOne(queryObj_<%=cid%>,new org.bson.Document("$set", data_<%=cid%>),new com.mongodb.client.model.UpdateOptions().upsert(true));
+                                    <%
                                 }
                             }
                         }
