@@ -112,7 +112,7 @@
     </libraryNeededGroup>
     
     <!-- Snowflake group -->
-    <libraryNeededGroup description="Snowflake libraries for DBR73X" id="SNOWFLAKE-GROUP-SPARK_3_0_x" name="SNOWFLAKE-GROUP-SPARK_3_0_x">
+    <libraryNeededGroup description="Snowflake libraries for DBR73X" id="SNOWFLAKE-GROUP-DBR73x" name="SNOWFLAKE-GROUP-DBR73x">
         <library id="spark-snowflake_2.12-2.8.2-spark_3.0.jar"/>
         <library id="snowflake-jdbc-3.12.12.jar"/>
     </libraryNeededGroup>
