@@ -1,0 +1,242 @@
+<%@ jet 
+    imports="
+        org.talend.core.model.process.INode 
+        org.talend.core.model.process.ElementParameterParser 
+        org.talend.designer.codegen.config.CodeGeneratorArgument
+        
+        java.util.Map
+        java.util.List
+        java.util.Arrays
+        java.util.Set
+        java.util.HashMap
+    " 
+%>
+
+    <%@ include file="../templates/CosmosDB/ApplicationName.javajet"%>
+
+    // Declarations
+    com.mongodb.client.MongoClient mongo_<%=cid%>=null;
+    com.mongodb.client.MongoDatabase db_<%=cid%>=null;
+    List<com.mongodb.ServerAddress> addrs_<%=cid%> = new java.util.ArrayList<>();
+    com.mongodb.MongoClientSettings.Builder clientSettingsBuilder_<%=cid%> = com.mongodb.MongoClientSettings.builder().applicationName(applicationName_<%=cid %>);
+    com.mongodb.connection.ClusterSettings.Builder clusterSettingsBuilder_<%=cid%> = com.mongodb.connection.ClusterSettings.builder();
+    com.mongodb.connection.ConnectionPoolSettings.Builder connPoolSettingsBuilder_<%=cid%> = com.mongodb.connection.ConnectionPoolSettings.builder();
+    com.mongodb.connection.ServerSettings.Builder serverSettingsBuilder_<%=cid%> = com.mongodb.connection.ServerSettings.builder();
+    com.mongodb.connection.SocketSettings.Builder socketSettingsBuilder_<%=cid%> = com.mongodb.connection.SocketSettings.builder();
+    com.mongodb.connection.SslSettings.Builder sslSettingsBuilder_<%=cid%> = com.mongodb.connection.SslSettings.builder();
+
+    <%
+    List<String> intAttributes = Arrays.asList(
+        "CONNECTIONS_PER_HOST","MIN_CONNECTIONS_PER_HOST","MAINTENANCE_FREQUENCY","MAINTENANCE_INITIAL_DELAY",
+        "MAX_CONNECTION_IDLE_TIME","MAX_CONNECTION_LIFE_TIME","MAX_WAIT_TIME","LOCAL_THRESHOLD",
+        "SERVER_SELECTION_TIMEOUT","HEARTBEAT_FREQUENCY","MIN_HEARTBEAT_FREQUENCY","SOCKET_CONNECT_TIMEOUT",
+        "SOCKET_READ_TIMEOUT","RECEIVE_BUFFER_SIZE","SEND_BUFFER_SIZE"
+    );
+
+    List<String> booleanAttributes = Arrays.asList(
+        "SSL_INVALID_HOSTNAME_ALLOWED"
+    );
+
+    Map<String,String> optionalConnectionAttributesMap = new HashMap<String,String>();
+    for(Map<String,String> map : optionalConnectionAttributes){
+        String attributeName = map.get("OPTIONAL_ATTRIBUTES_NAME");
+        String attributeValue = map.get("OPTIONAL_ATTRIBUTES_VALUE");
+        boolean isIntType = intAttributes.contains(attributeName);
+        boolean isBooleanType = booleanAttributes.contains(attributeName);
+        if (isIntType || isBooleanType) {
+            attributeValue = attributeValue.replaceAll("\"","");
+        }
+        optionalConnectionAttributesMap.put(attributeName, attributeValue);
+    }
+    // clusterSettingsBuilder is always used, no need to check it.
+    boolean isConnPoolBuilderUsed = false;
+    boolean isServSettingsBuilderUsed = false;
+    boolean isSocSettingsBuilderUsed = false;
+    boolean isSslSettingsBuilderUsed = false;
+
+    // Client options
+    %>
+
+    <%if(applyOptionalAttributes) {
+        Set<String> connectionAttributesKeySet = optionalConnectionAttributesMap.keySet();
+        if(connectionAttributesKeySet.contains("CONNECTIONS_PER_HOST")) {
+            isConnPoolBuilderUsed = true;
+            %>
+            connPoolSettingsBuilder_<%=cid%>.maxSize(<%=optionalConnectionAttributesMap.get("CONNECTIONS_PER_HOST")%>);
+        <%
+        }
+        if(connectionAttributesKeySet.contains("MIN_CONNECTIONS_PER_HOST")) {
+            isConnPoolBuilderUsed = true;
+            %>
+            connPoolSettingsBuilder_<%=cid%>.minSize(<%=optionalConnectionAttributesMap.get("MIN_CONNECTIONS_PER_HOST")%>);
+        <%
+        }
+        if(connectionAttributesKeySet.contains("MAINTENANCE_FREQUENCY")) {
+            isConnPoolBuilderUsed = true;
+            %>
+            connPoolSettingsBuilder_<%=cid%>.maintenanceFrequency(<%=optionalConnectionAttributesMap.get("MAINTENANCE_FREQUENCY")%>L, java.util.concurrent.TimeUnit.MILLISECONDS);
+        <%
+        }
+        if(connectionAttributesKeySet.contains("MAINTENANCE_INITIAL_DELAY")) {
+            isConnPoolBuilderUsed = true;
+            %>
+            connPoolSettingsBuilder_<%=cid%>.maintenanceInitialDelay(<%=optionalConnectionAttributesMap.get("MAINTENANCE_INITIAL_DELAY")%>L, java.util.concurrent.TimeUnit.MILLISECONDS);
+        <%
+        }
+        if(connectionAttributesKeySet.contains("MAX_CONNECTION_IDLE_TIME")) {
+            isConnPoolBuilderUsed = true;
+            %>
+            connPoolSettingsBuilder_<%=cid%>.maxConnectionIdleTime(<%=optionalConnectionAttributesMap.get("MAX_CONNECTION_IDLE_TIME")%>L, java.util.concurrent.TimeUnit.MILLISECONDS);
+        <%
+        }
+        if(connectionAttributesKeySet.contains("MAX_CONNECTION_LIFE_TIME")) {
+            isConnPoolBuilderUsed = true;
+            %>
+            connPoolSettingsBuilder_<%=cid%>.maxConnectionLifeTime(<%=optionalConnectionAttributesMap.get("MAX_CONNECTION_LIFE_TIME")%>L, java.util.concurrent.TimeUnit.MILLISECONDS);
+        <%
+        }
+        if(connectionAttributesKeySet.contains("MAX_WAIT_TIME")) {
+            isConnPoolBuilderUsed = true;
+            %>
+            connPoolSettingsBuilder_<%=cid%>.maxWaitTime(<%=optionalConnectionAttributesMap.get("MAX_WAIT_TIME")%>L, java.util.concurrent.TimeUnit.MILLISECONDS);
+        <%
+        }
+        if(connectionAttributesKeySet.contains("LOCAL_THRESHOLD")) {%>
+            clusterSettingsBuilder_<%=cid%>.localThreshold(<%=optionalConnectionAttributesMap.get("LOCAL_THRESHOLD")%>L, java.util.concurrent.TimeUnit.MILLISECONDS);
+        <%
+        }
+        if(connectionAttributesKeySet.contains("REQUIRED_REPLICA_SET_NAME")) {%>
+            clusterSettingsBuilder_<%=cid%>.requiredReplicaSetName(<%=optionalConnectionAttributesMap.get("REQUIRED_REPLICA_SET_NAME")%>);
+        <%
+        }
+        if(connectionAttributesKeySet.contains("SERVER_SELECTION_TIMEOUT")) {%>
+            clusterSettingsBuilder_<%=cid%>.serverSelectionTimeout(<%=optionalConnectionAttributesMap.get("SERVER_SELECTION_TIMEOUT")%>L, java.util.concurrent.TimeUnit.MILLISECONDS);
+        <%
+        }
+        if(connectionAttributesKeySet.contains("HEARTBEAT_FREQUENCY")) {
+            isServSettingsBuilderUsed = true;
+            %>
+            serverSettingsBuilder_<%=cid%>.heartbeatFrequency(<%=optionalConnectionAttributesMap.get("HEARTBEAT_FREQUENCY")%>L, java.util.concurrent.TimeUnit.MILLISECONDS);
+        <%
+        }
+        if(connectionAttributesKeySet.contains("MIN_HEARTBEAT_FREQUENCY")) {
+            isServSettingsBuilderUsed = true;
+            %>
+            serverSettingsBuilder_<%=cid%>.minHeartbeatFrequency(<%=optionalConnectionAttributesMap.get("MIN_HEARTBEAT_FREQUENCY")%>L, java.util.concurrent.TimeUnit.MILLISECONDS);
+        <%
+        }
+        if(connectionAttributesKeySet.contains("SOCKET_CONNECT_TIMEOUT")) {
+            isSocSettingsBuilderUsed = true;
+            %>
+            socketSettingsBuilder_<%=cid%>.connectTimeout(<%=optionalConnectionAttributesMap.get("SOCKET_CONNECT_TIMEOUT")%>, java.util.concurrent.TimeUnit.MILLISECONDS);
+        <%
+        }
+        if(connectionAttributesKeySet.contains("SOCKET_READ_TIMEOUT")) {
+            isSocSettingsBuilderUsed = true;
+            %>
+            socketSettingsBuilder_<%=cid%>.readTimeout(<%=optionalConnectionAttributesMap.get("SOCKET_READ_TIMEOUT")%>, java.util.concurrent.TimeUnit.MILLISECONDS);
+        <%
+        }
+        if(connectionAttributesKeySet.contains("RECEIVE_BUFFER_SIZE")) {
+            isSocSettingsBuilderUsed = true;
+            %>
+            socketSettingsBuilder_<%=cid%>.receiveBufferSize(<%=optionalConnectionAttributesMap.get("RECEIVE_BUFFER_SIZE")%>, java.util.concurrent.TimeUnit.MILLISECONDS);
+        <%
+        }
+        if(connectionAttributesKeySet.contains("SEND_BUFFER_SIZE")) {
+            isSocSettingsBuilderUsed = true;
+            %>
+            socketSettingsBuilder_<%=cid%>.sendBufferSize(<%=optionalConnectionAttributesMap.get("SEND_BUFFER_SIZE")%>, java.util.concurrent.TimeUnit.MILLISECONDS);
+        <%
+        }
+        if(connectionAttributesKeySet.contains("SSL_INVALID_HOSTNAME_ALLOWED")) {
+            isSslSettingsBuilderUsed = true;
+            %>
+            sslSettingsBuilder_<%=cid%>.invalidHostNameAllowed(<%=optionalConnectionAttributesMap.get("SSL_INVALID_HOSTNAME_ALLOWED")%>);
+        <%
+        }
+    }%>
+
+
+    // SSL
+    <%if (useSSL) {
+        isSslSettingsBuilderUsed = true;
+        %>
+        sslSettingsBuilder_<%=cid%>.enabled(true);
+        <%
+    }%>
+
+    // Client Credentials
+    <%if (authentication) {%>
+        // Authentication
+        com.mongodb.MongoCredential mongoCredential_<%=cid%>;
+        <%if((authenticationMechanism.equals("NEGOTIATE_MEC"))||(authenticationMechanism.equals("PLAIN_MEC"))||(authenticationMechanism.equals("SCRAMSHA1_MEC"))) {
+            String passwordFieldName = "__PASSWORD__";
+            %>
+            <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
+            <%if(authenticationMechanism.equals("NEGOTIATE_MEC")) {%>
+                mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createCredential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
+                <%
+            } else if(authenticationMechanism.equals("PLAIN_MEC")) {%>
+                mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createPlainCredential(<%=dbuser%>, "$external", new String(decryptedPassword_<%=cid%>).toCharArray());
+                <%
+            } else if(authenticationMechanism.equals("SCRAMSHA1_MEC")) {%>
+                mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createScramSha1Credential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
+                <%
+            }
+        } else {%> 
+            // GSSAPI SASL (KERBEROS)
+            System.setProperty("java.security.krb5.realm", <%=krbRealm%>);
+            System.setProperty("java.security.krb5.kdc", <%=krbKdc%>);
+            System.setProperty("javax.security.auth.useSubjectCredsOnly", "false");
+            mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createGSSAPICredential(<%=krbUserPrincipal%>);
+            <%
+        }%>
+        clientSettingsBuilder_<%=cid%>.credential(mongoCredential_<%=cid%>);
+        <%
+    }
+
+    // the client
+    if(useReplicaSet){
+        for(Map<String,String> replicaAddr : replicaAddrs) {%>
+            addrs_<%=cid%>.add(new com.mongodb.ServerAddress(<%=replicaAddr.get("REPLICA_HOST")%>,<%=replicaAddr.get("REPLICA_PORT")%>));
+            <%
+        }
+    } else {%>
+        addrs_<%=cid%>.add(new com.mongodb.ServerAddress(<%=dbhost%>, <%=dbport%>));
+        <%
+    }%>
+    clusterSettingsBuilder_<%=cid%>.hosts(addrs_<%=cid%>);
+
+    <%if(isSslSettingsBuilderUsed) {%>
+        clientSettingsBuilder_<%=cid%>.applyToSslSettings(builder -> builder.applySettings(sslSettingsBuilder_<%=cid%>.build()));
+        <%
+    }%>
+    clientSettingsBuilder_<%=cid%>.applyToClusterSettings(builder -> builder.applySettings(clusterSettingsBuilder_<%=cid%>.build()));
+
+    <%if(isConnPoolBuilderUsed) {%>
+        clientSettingsBuilder_<%=cid%>.applyToConnectionPoolSettings(builder -> builder.applySettings(connPoolSettingsBuilder_<%=cid%>.build()));
+        <%
+    }%>
+    <%if(isServSettingsBuilderUsed) {%>
+        clientSettingsBuilder_<%=cid%>.applyToServerSettings(builder -> builder.applySettings(serverSettingsBuilder_<%=cid%>.build()));
+        <%
+    }%>
+    <%if(isSocSettingsBuilderUsed) {%>
+        clientSettingsBuilder_<%=cid%>.applyToSocketSettings(builder -> builder.applySettings(socketSettingsBuilder_<%=cid%>.build()));
+        <%
+    }%>
+
+    mongo_<%=cid%> = com.mongodb.client.MongoClients.create(clientSettingsBuilder_<%=cid%>.build());
+    resourceMap.put("mongo_<%=cid%>", mongo_<%=cid%>);
+    db_<%=cid%> = mongo_<%=cid%>.getDatabase(<%=dbname%>);
+
+    <%if(isLog4jEnabled) {%>
+        for (com.mongodb.connection.ServerDescription description : mongo_<%=cid%>.getClusterDescription().getServerDescriptions()) {
+            log.info("<%=cid%> - Connecting to " + description.getAddress());
+        }
+        <%
+    }%>
+
+    globalMap.put("mongo_<%=cid%>", mongo_<%=cid%>);
+    globalMap.put("db_<%=cid%>", db_<%=cid%>);
