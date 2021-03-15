@@ -65,7 +65,6 @@ Export-Package: org.talend.hadoop.distribution,
  org.talend.hadoop.distribution.model,
  org.talend.hadoop.distribution.spark,
  org.talend.hadoop.distribution.utils
-Import-Package: org.apache.maven.artifact.versioning,
- org.osgi.framework
+Import-Package: org.osgi.framework
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.talend.hadoop.distribution.HadoopDistributionPlugin

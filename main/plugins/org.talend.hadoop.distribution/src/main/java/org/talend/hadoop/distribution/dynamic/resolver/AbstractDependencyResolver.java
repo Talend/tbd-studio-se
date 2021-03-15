@@ -165,8 +165,7 @@ public abstract class AbstractDependencyResolver implements IDependencyResolver 
         // Here we use org.apache.hadoop/hadoop-client to try resolve because currently this jar is needed for dynamic
         // distribution
         // If furture we have new Dynamic distribution ,please modify here
-        String groupId = "org.apache.hadoop";// these two vars are the same with listHadoopVersions //$NON-NLS-1$
-        // currently.
+        String groupId = "org.apache.hadoop";// these two vars are the same with listHadoopVersions currently.
         String artifactId = "hadoop-client"; //$NON-NLS-1$
         TypedReturnCode tc = DynamicDistributionAetherUtils.checkConnection(remoteUrl, username, password, groupId, artifactId,
                 null, null,
