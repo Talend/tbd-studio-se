@@ -13,7 +13,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources,
  org.eclipse.jface,
  org.talend.model,
- org.eclipse.ui.workbench
+ org.eclipse.ui.workbench,
+ org.eclipse.m2e.maven.runtime
 Export-Package: org.talend.hadoop.distribution,
  org.talend.hadoop.distribution.cdh,
  org.talend.hadoop.distribution.component,
@@ -64,6 +65,7 @@ Export-Package: org.talend.hadoop.distribution,
  org.talend.hadoop.distribution.model,
  org.talend.hadoop.distribution.spark,
  org.talend.hadoop.distribution.utils
-Import-Package: org.osgi.framework
+Import-Package: org.apache.maven.artifact.versioning,
+ org.osgi.framework
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.talend.hadoop.distribution.HadoopDistributionPlugin

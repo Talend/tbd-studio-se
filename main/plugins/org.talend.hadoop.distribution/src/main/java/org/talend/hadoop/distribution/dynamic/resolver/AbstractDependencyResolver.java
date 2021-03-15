@@ -21,6 +21,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.maven.artifact.versioning.ComparableVersion;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.osgi.service.datalocation.Location;
 import org.talend.designer.maven.aether.IDynamicMonitor;
@@ -164,8 +165,9 @@ public abstract class AbstractDependencyResolver implements IDependencyResolver 
         // Here we use org.apache.hadoop/hadoop-client to try resolve because currently this jar is needed for dynamic
         // distribution
         // If furture we have new Dynamic distribution ,please modify here
-        String groupId = "org.apache.hadoop";// these two vars are the same with listHadoopVersions currently.
-        String artifactId = "hadoop-client";
+        String groupId = "org.apache.hadoop";// these two vars are the same with listHadoopVersions //$NON-NLS-1$
+        // currently.
+        String artifactId = "hadoop-client"; //$NON-NLS-1$
         TypedReturnCode tc = DynamicDistributionAetherUtils.checkConnection(remoteUrl, username, password, groupId, artifactId,
                 null, null,
                 null);
@@ -191,18 +193,28 @@ public abstract class AbstractDependencyResolver implements IDependencyResolver 
 
     protected String getVersionByHadoopVersion(List<String> versionRange, String hadoopVersion) throws Exception {
         List<Pattern> patterns = getDistributionPatterns();
+        String result = null;
         for (String version : versionRange) {
             for (Pattern pattern : patterns) {
                 Matcher matcher = pattern.matcher(version);
                 if (matcher.find()) {
                     String group = matcher.group(1);
                     if (group.equals(hadoopVersion)) {
+                        // Exact match
                         return version;
+                    } else if (matcher.groupCount() > 1) {
+                        // Fuzzy match - Computing the newest version found for the same Major.Minor.Patch
+                        String majorMinorPatchVersion = matcher.group(2).replaceFirst(".$", ""); //$NON-NLS-1$ //$NON-NLS-2$
+                        if (hadoopVersion.startsWith(majorMinorPatchVersion)) {
+                            if (result == null || new ComparableVersion(version).compareTo(new ComparableVersion(result)) > 0) {
+                                result = version;
+                            }
+                        }
                     }
                 }
             }
         }
-        return null;
+        return result;
     }
 
     @Override
