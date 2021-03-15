@@ -264,6 +264,30 @@ Note : If you are running on a Sharded Cluster, please make sure to include the 
         </PARAMETER>
 
         <PARAMETER
+            NAME="SPECIFY_FIELDS"
+            FIELD="CHECK"
+            REPOSITORY_VALUE="SPECIFY_FIELDS"
+            NUM_ROW="46"
+            SHOW_IF="((DB_VERSION == 'MONGODB_3_5_X') OR (DB_VERSION == 'MONGODB_4_4_X'))"
+            GROUP="QUERY_SPECS"
+        >
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER
+            FIELD="TABLE"
+            NAME="FIELDS_TO_RETURN"
+            REQUIRED="false"
+            NUM_ROW="47"
+            NB_LINES="3"
+            GROUP="QUERY_SPECS"
+            SHOW_IF="(SPECIFY_FIELDS == 'true')">
+            <ITEMS>
+                <ITEM NAME="FIELD_NAME" FIELD="TEXT" VALUE=""/>
+            </ITEMS>
+        </PARAMETER>
+
+        <PARAMETER
             NAME="MAPPING"
             FIELD="TABLE"
             REQUIRED="true"

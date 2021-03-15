@@ -52,6 +52,8 @@
     String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
     String usedAuthenticationDB = useAuthDB ? authDB : dbname;
     boolean useExternalSort = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__EXTERNAL_SORT_AGGREGATION__"));
+    boolean specifyFields="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SPECIFY_FIELDS__"));
+    List<Map<String, String>> filter = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__FIELDS_TO_RETURN__");
     boolean queryOptionNoTimeOut;
 	String dbversion;
 	if(useExistingConnection){
@@ -111,27 +113,26 @@
 					boolean needIndexWarning = true;
 					String indexList = "";
 					java.lang.StringBuilder sb_<%=cid%> = new java.lang.StringBuilder();
-					<%if(version_3_5_X || version_4_4_X) {%>
-					for (com.mongodb.DBObject index: coll_<%=cid%>.listIndexes(com.mongodb.DBObject.class)) {
-					<%} else {%>
-					for (com.mongodb.DBObject index: coll_<%=cid%>.getIndexInfo()) {
-					<%}%>
-	                
-	                    for (String key: ((com.mongodb.DBObject)index.get("key")).keySet()) {
-	                        // The regexp is:
-	                        // - contain the db DBcolumnName between two backslashed quotes
-	                        // - is followed at some point by a colon
-	                        // - there is no comma between the the DBcolumnName and the colon
-	                        if  ((<%=query%>).matches(".*" + key.replace("*","\\*") + "[^,]*:.*")) {
-	                            // We have an index, do not print error message
-	                            needIndexWarning = false;
-	                        } else {
-	                            // This index is not in the query, add it into the indexList
-	                            sb_<%=cid%>.append(", ").append(key);
+	                <%if(version_3_5_X || version_4_4_X) {%>
+	                    for (com.mongodb.DBObject index: coll_<%=cid%>.listIndexes(com.mongodb.DBObject.class)) {
+	                <%} else {%>
+	                    for (com.mongodb.DBObject index: coll_<%=cid%>.getIndexInfo()) {
+	                <%}%> 
+	                        for (String key: ((com.mongodb.DBObject)index.get("key")).keySet()) {
+	                            // The regexp is:
+	                            // - contain the db DBcolumnName between two backslashed quotes
+	                            // - is followed at some point by a colon
+	                            // - there is no comma between the the DBcolumnName and the colon
+	                            if  ((<%=query%>).matches(".*" + key.replace("*","\\*") + "[^,]*:.*")) {
+	                                // We have an index, do not print error message
+	                                needIndexWarning = false;
+	                            } else {
+	                                // This index is not in the query, add it into the indexList
+	                                sb_<%=cid%>.append(", ").append(key);
+	                            }
 	                        }
+	                        indexList = sb_<%=cid%>.toString();
 	                    }
-	                    indexList = sb_<%=cid%>.toString();
-	                }
 	                if ((!"".equals(indexList)) && (needIndexWarning)) {
 	                    <%
 	                    if(isLog4jEnabled){
@@ -156,13 +157,13 @@
                 if(isAggregationQuery){
 	                %>
 	                	<%if(version_3_5_X || version_4_4_X) {%>
-							java.util.List<org.bson.Document> aggregationStages_<%=cid %> = new java.util.ArrayList<>();
+							java.util.List<org.bson.conversions.Bson> aggregationStages_<%=cid %> = new java.util.ArrayList<>();
 						<%} else {%>
 							java.util.List<com.mongodb.DBObject> aggregationStages_<%=cid %> = new java.util.ArrayList<>();
 						<%}%>
 	                	
 	                <%
-	                for (int i=0; i<aggregationStages.size(); i++){
+	                for (int i=0; i <aggregationStages.size(); i++){
 	                %>
 	                	<%if(version_3_5_X || version_4_4_X) {
 	                	%>
@@ -170,37 +171,67 @@
 						<%} else {%>
 							aggregationStages_<%=cid %>.add((com.mongodb.DBObject) com.mongodb.util.JSON.parse(<%=aggregationStages.get(i).get("AGGREGATION_STAGE")%>));
 						<%}%>
-	                	
-	                <%
+						<%
 	                }
-	                %>
-	                	<%if(version_3_5_X || version_4_4_X) {%>
-							com.mongodb.client.MongoCursor<org.bson.Document> cursor_<%=cid%> = coll_<%=cid%>.aggregate(aggregationStages_<%=cid %>).allowDiskUse(<%=useExternalSort%>).iterator();
-						<%} else {%>
-							com.mongodb.Cursor cursor_<%=cid%> = coll_<%=cid%>.aggregate(aggregationStages_<%=cid %>, com.mongodb.AggregationOptions.builder().outputMode(com.mongodb.AggregationOptions.OutputMode.CURSOR).allowDiskUse(<%=useExternalSort%>).build());
-						<%}%>
-	                
-	                <%
+	                if(version_3_5_X || version_4_4_X) {
+						if(specifyFields) {
+							java.lang.StringBuilder projection = new java.lang.StringBuilder();
+							for (int i=0; i <filter.size(); i++) {
+								String name = filter.get(i).get("FIELD_NAME");
+								projection.append(i == filter.size()-1 ? name : name + ", ");
+							}%>
+							aggregationStages_<%=cid %>.add(com.mongodb.client.model.Aggregates.project(com.mongodb.client.model.Projections.include(<%=projection.toString()%>)));
+							<%
+						}%>
+						com.mongodb.client.MongoCursor<org.bson.Document> cursor_<%=cid%> = coll_<%=cid%>.aggregate(aggregationStages_<%=cid %>).allowDiskUse(<%=useExternalSort%>).iterator();
+						<%
+					} else {
+						if(specifyFields) {
+							java.lang.StringBuilder projection = new java.lang.StringBuilder();
+							for (int i=0; i <filter.size(); i++) {
+								String name = filter.get(i).get("FIELD_NAME");
+								projection.append(i == filter.size()-1 ? name : name + ", ");
+							}%>
+							String projectionString_<%=cid%> = com.mongodb.client.model.Aggregates.project(com.mongodb.client.model.Projections.include(<%=projection.toString()%>)).toBsonDocument(org.bson.BsonDocument.class, null).toJson();
+							aggregationStages_<%=cid %>.add((com.mongodb.DBObject) com.mongodb.util.JSON.parse(projectionString_<%=cid%>));
+							<%
+						}%>
+						com.mongodb.Cursor cursor_<%=cid%> = coll_<%=cid%>.aggregate(aggregationStages_<%=cid %>, com.mongodb.AggregationOptions.builder().outputMode(com.mongodb.AggregationOptions.OutputMode.CURSOR).allowDiskUse(<%=useExternalSort%>).build());
+						<%
+					}
 	            // FIND QUERY
                 } else {
-	                %>
-	                
-	                <%if(version_3_5_X || version_4_4_X) {%>
-					org.bson.Document myQuery_<%=cid%> = org.bson.Document.parse(<%=query%>);
-	                com.mongodb.client.FindIterable<org.bson.Document> fi_<%=cid%> = coll_<%=cid%>.find(myQuery_<%=cid%>).noCursorTimeout(<%=queryOptionNoTimeOut%>);
-					<%} else {%>
-					com.mongodb.DBObject myQuery_<%=cid%> = (com.mongodb.DBObject) com.mongodb.util.JSON.parse(<%=query%>);
-		    		com.mongodb.DBObject fields_<%=cid%> = new com.mongodb.BasicDBObject();
-		  			com.mongodb.DBCursor cursor_<%=cid%> = coll_<%=cid%>.find(myQuery_<%=cid%>, fields_<%=cid%>);
-					<%}%>
-	                
-		  			
-		  			
+	                if(version_3_5_X || version_4_4_X) {%>
+						org.bson.Document myQuery_<%=cid%> = org.bson.Document.parse(<%=query%>);
+						<%if(specifyFields) {
+							java.lang.StringBuilder projection = new java.lang.StringBuilder();
+							for (int i=0; i <filter.size(); i++) {
+								String name = filter.get(i).get("FIELD_NAME");
+								projection.append(i == filter.size()-1? name : name + ", ");
+							}%>
+							com.mongodb.client.FindIterable<org.bson.Document> findIterable_<%=cid%> = coll_<%=cid%>.find(myQuery_<%=cid%>).projection(com.mongodb.client.model.Projections.include(<%=projection.toString()%>)).noCursorTimeout(<%=queryOptionNoTimeOut%>);
+							<%
+						} else {%>
+							com.mongodb.client.FindIterable<org.bson.Document> findIterable_<%=cid%> = coll_<%=cid%>.find(myQuery_<%=cid%>).noCursorTimeout(<%=queryOptionNoTimeOut%>);
+							<%
+						}
+					} else {%>
+						com.mongodb.DBObject myQuery_<%=cid%> = (com.mongodb.DBObject) com.mongodb.util.JSON.parse(<%=query%>);
+						com.mongodb.DBObject fields_<%=cid%> = new com.mongodb.BasicDBObject();
+						<%if(specifyFields) {
+							java.lang.StringBuilder projection = new java.lang.StringBuilder();
+							for (int i=0; i <filter.size(); i++) {
+								String name = filter.get(i).get("FIELD_NAME");%>
+								fields_<%=cid%>.put(<%=name%>, true);
+								<%
+							}
+						}%>
+						com.mongodb.DBCursor cursor_<%=cid%> = coll_<%=cid%>.find(myQuery_<%=cid%>, fields_<%=cid%>);
+						<%
+					}
+				}%>
 
-		  			 
-	                <%
-                }
-                %>
+
 				
 				class DBObjectInputUtil_<%=cid%>{
 					// Get the node value in embedded document, 
@@ -253,7 +284,7 @@
 			if (limit != null && !"\"\"".equals(limit) && limit.length() > 0 && !isAggregationQuery){
 %>
 						<%if(version_3_5_X || version_4_4_X) {%>
-					fi_<%=cid%> = fi_<%=cid%>.limit(<%=limit%>);
+					findIterable_<%=cid%> = findIterable_<%=cid%>.limit(<%=limit%>);
 						<%} else {%>
 					cursor_<%=cid%> = cursor_<%=cid%>.limit(<%=limit%>);
 						<%}%>
@@ -282,7 +313,7 @@
 				}
 %>
 						<%if(version_3_5_X || version_4_4_X) {%>
-					fi_<%=cid%>.sort(orderBy_<%=cid%>);
+					findIterable_<%=cid%>.sort(orderBy_<%=cid%>);
 						<%} else {%>
 					cursor_<%=cid%>.sort(orderBy_<%=cid%>);
 						<%}%>
@@ -292,7 +323,7 @@
 %>
 
 						<%if((version_3_5_X || version_4_4_X) && !isAggregationQuery) {%>
-					com.mongodb.client.MongoCursor<org.bson.Document> cursor_<%=cid%> = fi_<%=cid%>.iterator();
+					com.mongodb.client.MongoCursor<org.bson.Document> cursor_<%=cid%> = findIterable_<%=cid%>.iterator();
 						<%}%>
 				while (cursor_<%=cid%>.hasNext()){
 <%
