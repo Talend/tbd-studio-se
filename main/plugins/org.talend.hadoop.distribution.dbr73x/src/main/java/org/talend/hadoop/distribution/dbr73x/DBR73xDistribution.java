@@ -131,6 +131,33 @@ public class DBR73xDistribution extends AbstractDatabricksDistribution implement
                 SparkBatchConstant.SNOWFLAKE_OUTPUT_COMPONENT
         ), DBR73xSnowflakeNodeModuleGroup.getModuleGroups(distribution, version));
         
+        // Spark Batch DynamoDB
+        result.put(new NodeComponentTypeBean(
+                ComponentType.SPARKBATCH,
+                SparkBatchConstant.DYNAMODB_CONFIGURATION_COMPONENT
+        ), DBR73xSnowflakeNodeModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(
+                ComponentType.SPARKBATCH,
+                SparkBatchConstant.DYNAMODB_OUTPUT_COMPONENT
+        ), DBR73xSnowflakeNodeModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(
+                ComponentType.SPARKBATCH,
+                SparkBatchConstant.DYNAMODB_INPUT_COMPONENT
+        ), DBR73xSnowflakeNodeModuleGroup.getModuleGroups(distribution, version));
+        
+        // Spark Streaming DynamoDB
+        result.put(new NodeComponentTypeBean(
+                ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.DYNAMODB_CONFIGURATION_COMPONENT
+        ), DBR73xSnowflakeNodeModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(
+                ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.DYNAMODB_OUTPUT_COMPONENT
+        ), DBR73xSnowflakeNodeModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(
+                ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.DYNAMODB_INPUT_COMPONENT
+        ), DBR73xSnowflakeNodeModuleGroup.getModuleGroups(distribution, version));
         return result;
 
     }
