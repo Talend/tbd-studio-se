@@ -26,10 +26,10 @@
     query = query.replaceAll("\n","");
     query = query.replaceAll("\r","");
     String bucketName = ElementParameterParser.getValue(node, "__BUCKET__");
-    String fileType = version_3_5_X?"com.mongodb.client.gridfs.model.GridFSFile":"com.mongodb.gridfs.GridFSDBFile";
+    String fileType = (version_3_5_X || version_4_4_X) ? "com.mongodb.client.gridfs.model.GridFSFile" : "com.mongodb.gridfs.GridFSDBFile";
 %>
 			
-	<%if(version_3_5_X){%>
+	<%if(version_3_5_X || version_4_4_X){%>
 			com.mongodb.client.gridfs.GridFSBucket gridfs_<%=cid%> = com.mongodb.client.gridfs.GridFSBuckets.create(db_<%=cid%>, <%=bucketName%>);
 	    	<%if(givenStringFileName){%>
 	    		org.bson.Document gridFSQuery_<%=cid%> = new org.bson.Document("filename",<%=stringFileName%>);
@@ -68,7 +68,7 @@
 						String typeToGenerate = JavaTypesManager.getTypeToGenerate(column.getTalendType(), column.isNullable());
 						JavaType javaType = JavaTypesManager.getJavaTypeFromId(column.getTalendType());
 						String patternValue = column.getPattern() == null || column.getPattern().trim().length() == 0 ? null : column.getPattern();
-						if(version_3_5_X){
+						if(version_3_5_X || version_4_4_X){
 						  String columnName = column.getOriginalDbColumnName();
 						    if("_id".equalsIgnoreCase(columnName)){
 						%>
@@ -83,7 +83,7 @@
 							valueObj_<%=cid%> = file.getLength();
 							<%} else if ("contentType".equalsIgnoreCase(columnName)){%>
 							valueObj_<%=cid%> = file.getContentType();
-							<%} else if ("md5".equalsIgnoreCase(columnName)){%>
+							<%} else if (("md5".equalsIgnoreCase(columnName)) && version_3_5_X){%>
 							valueObj_<%=cid%> = file.getMD5();
 							<%} else if ("Metadata".equalsIgnoreCase(columnName)){%>
 							valueObj_<%=cid%> = file.getMetadata();
@@ -158,4 +158,3 @@
 		} // Close first { from GetMongoDBConnectionWithMainFlow.javajet
 	} // Close second { from GetMongoDBConnectionWithMainFlow.javajet
 %>
-

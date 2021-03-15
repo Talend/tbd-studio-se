@@ -34,12 +34,15 @@ import org.talend.hadoop.distribution.dbr73x.modulegroup.DBR73xSparkBatchModuleG
 import org.talend.hadoop.distribution.dbr73x.modulegroup.DBR73xSparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73xAzureNodeModuleGroup;
 import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73xKinesisNodeModuleGroup;
+import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73xSnowflakeNodeModuleGroup;
 import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73xTopByNodeModuleGroup;
 
 public class DBR73xDistribution extends AbstractDatabricksDistribution implements SparkBatchComponent,
         SparkStreamingComponent, HiveOnSparkComponent {
 
-    public static final String VERSION = "DATABRICKS_7_3" ;
+    public static final String VERSION = "Databricks_7_3" ;
+    
+    public final static ESparkVersion SPARK_VERSION = ESparkVersion.SPARK_3_0;
 
     public static final String VERSION_DISPLAY = "7.3 LTS (includes Apache Spark 3.0.1, Scala 2.12)" ;
 
@@ -113,6 +116,21 @@ public class DBR73xDistribution extends AbstractDatabricksDistribution implement
                 ComponentType.SPARKSTREAMING,
                 SparkStreamingConstant.TOP_BY_COMPONENT
         ), DBR73xTopByNodeModuleGroup.getModuleGroups(distribution, version));
+        
+        // Spark Batch Snowflake
+        result.put(new NodeComponentTypeBean(
+                ComponentType.SPARKBATCH,
+                SparkBatchConstant.SNOWFLAKE_CONFIGURATION_COMPONENT
+        ), DBR73xSnowflakeNodeModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(
+                ComponentType.SPARKBATCH,
+                SparkBatchConstant.SNOWFLAKE_INPUT_COMPONENT
+        ), DBR73xSnowflakeNodeModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(
+                ComponentType.SPARKBATCH,
+                SparkBatchConstant.SNOWFLAKE_OUTPUT_COMPONENT
+        ), DBR73xSnowflakeNodeModuleGroup.getModuleGroups(distribution, version));
+        
         return result;
 
     }

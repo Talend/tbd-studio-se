@@ -3,6 +3,7 @@
 		org.talend.core.model.process.INode
 		org.talend.designer.codegen.config.CodeGeneratorArgument
 		org.talend.core.model.process.ElementParameterParser
+		org.talend.core.model.utils.NodeUtil
         java.util.List
         java.util.Map
 	"
@@ -17,7 +18,14 @@
     String connectionName = ElementParameterParser.getValue(node,"__CONNECTION__");
 
 	// BulkWrite is only supportted on Mongo 2.6+ drivers
-	String dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
+	String dbversion;
+	if("true".equalsIgnoreCase(useExistingConn)){
+	    String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+        INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
+        dbversion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
+    } else {
+        dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
+    }
 	boolean setBulkWrite = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_BULK_WRITE__"));
 	boolean bulkWriteType = "Ordered".equalsIgnoreCase(ElementParameterParser.getValue(node, "__BULK_WRITE_TYPE__"));
 
@@ -50,53 +58,50 @@
 		}
 	}
 
-	if(bulkWrite){
-		if(dbversion.equals("MONGODB_3_5_X") && updateOnlyColumnExists){
-		%>
-		if (bulkWriteOperationCounterForUpdateOnlyColumn_<%=cid%> != 1) {
-			coll_<%=cid%>.bulkWrite(bulkWriteOperationForUpdateOnlyColumn_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
-		}
-		<%
-		}
-		
-		%>
+	if(bulkWrite) {
+		if((dbversion.equals("MONGODB_3_5_X") || dbversion.equals("MONGODB_4_4_X")) && updateOnlyColumnExists) {%>
+			if (bulkWriteOperationCounterForUpdateOnlyColumn_<%=cid%> != 1) {
+				coll_<%=cid%>.bulkWrite(bulkWriteOperationForUpdateOnlyColumn_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
+			}
+			<%
+		}%>
 		// if bulkWriteOperationCounter_<%=cid%> == 1 the ulkWriteOperation_<%=cid%> is empty, do not execute.
 		if (bulkWriteOperationCounter_<%=cid%> != 1) {
-		<%if(dbversion.equals("MONGODB_3_5_X")){%>
-			coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
-		<%} else {%>
-			bulkWriteOperation_<%=cid%>.execute();
-		<%}%>
+			<%if(dbversion.equals("MONGODB_3_5_X") || dbversion.equals("MONGODB_4_4_X")) {%>
+				coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
+				<%
+			} else {%>
+				bulkWriteOperation_<%=cid%>.execute();
+				<%
+			}%>
 		}
 		<%
 	}
 
-	if(isLog4jEnabled){
-	%>
+	if(isLog4jEnabled) {%>
 		log.info("<%=cid%> - Has been <%=dataAction.toLowerCase()+(dataAction.endsWith("E")?"d":"ed")%> " + nb_line_<%=cid%> + " records.");
-	<%
+		<%
 	}
-	if(!"true".equals(useExistingConn)){
-	%>
+	if(!"true".equals(useExistingConn)) {%>
 		if(mongo_<%=cid%> != null){
-			<%
-			if(isLog4jEnabled){
-			%>
-				log.info("<%=cid%> - Closing the connection " + mongo_<%=cid%>.getServerAddressList() + ".");
-			<%
-			}
-			%>
+			<%if(isLog4jEnabled) {
+				if (dbversion.equals("MONGODB_4_4_X")) {%>
+					for (com.mongodb.connection.ServerDescription description : mongo_<%=cid%>.getClusterDescription().getServerDescriptions()) {
+						log.info("<%=cid%> - Closing the connection " + description.getAddress());
+					}
+					<%
+				} else { %>
+					log.info("<%=cid%> - Closing the connection " + mongo_<%=cid%>.getServerAddressList() + ".");
+					<%
+				}
+			}%>
 				mongo_<%=cid%>.close();
-			<%
-			if(isLog4jEnabled){
-			%>
+			<%if(isLog4jEnabled) {%>
 				log.info("<%=cid%> - The connection was closed successfully.");
-			<%
-			}
-			%>
+				<%
+			}%>
 		}
 		resourceMap.put("finish_<%=cid%>", true); 
-	<%
-	}
-	%>
+		<%
+	}%>
 	globalMap.put("<%=cid %>_NB_LINE", nb_line_<%=cid%>);

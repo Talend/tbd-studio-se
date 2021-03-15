@@ -43,6 +43,8 @@
     <libraryNeeded id="talend-bigdata-launcher-jobserver-2.0.12.jar" name="talend-bigdata-launcher-jobserver-2.0.12.jar" mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-jobserver/2.0.12" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded id="talend-bigdata-launcher-databricks-2.0.14.jar" name="talend-bigdata-launcher-databricks-2.0.14.jar" mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-databricks/2.0.14" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded id="wsdl4j-1.6.3.jar" name="wsdl4j-1.6.3.jar" mvn_uri="mvn:wsdl4j/wsdl4j/1.6.3" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
+    <libraryNeeded context="plugin:org.talend.hadoop.distribution.dbr73x" id="spark-snowflake_2.12-2.8.2-spark_3.0.jar" name="spark-snowflake_2.12-2.8.2-spark_3.0.jar" mvn_uri="mvn:net.snowflake/spark-snowflake_2.12/2.8.2-spark_3.0"/>
+	<libraryNeeded context="plugin:org.talend.hadoop.distribution.dbr73x" id="snowflake-jdbc-3.12.12.jar" name="snowflake-jdbc-3.12.12.jar" mvn_uri="mvn:net.snowflake/snowflake-jdbc/3.12.12"/>
     
     <libraryNeededGroup id="BIGDATA-LAUNCHER-LIB-DBR73X" name="BIGDATA-LAUNCHER-LIB-DBR73X" description="Big Data launcher libraries for DBR73X">
       <library id="gson-2.7.jar"/>
@@ -107,6 +109,12 @@
     
     <libraryNeededGroup id="TOPBY-LIB-REQUIRED-DBR73X" name="TOPBY-LIB-REQUIRED-DBR73X" description="tTopBy needed libraries for DBR73X">
       <library id="guava-15.0.jar"/>
+    </libraryNeededGroup>
+    
+    <!-- Snowflake group -->
+    <libraryNeededGroup description="Snowflake libraries for DBR73X" id="SNOWFLAKE-GROUP-DBR73x" name="SNOWFLAKE-GROUP-DBR73x">
+        <library id="spark-snowflake_2.12-2.8.2-spark_3.0.jar"/>
+        <library id="snowflake-jdbc-3.12.12.jar"/>
     </libraryNeededGroup>
     
   </extension>

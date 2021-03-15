@@ -1,0 +1,61 @@
+<%@ jet 
+    imports="
+        java.util.Map
+        java.util.List
+    " 
+%>
+                // SSL
+                <%if (useSSL) {
+                    isSslSettingsBuilderUsed = true;
+                    %>
+                    sslSettingsBuilder_<%=cid%>.enabled(true);
+                    <%
+                }%>
+
+                // Client Credentials
+                <%if (authentication) {%>
+                    // Authentication
+                    com.mongodb.MongoCredential mongoCredential_<%=cid%>;
+                    <%if((authenticationMechanism.equals("NEGOTIATE_MEC"))||(authenticationMechanism.equals("PLAIN_MEC"))||(authenticationMechanism.equals("SCRAMSHA1_MEC"))) {
+                        String passwordFieldName = "__PASSWORD__";
+                        %>
+                        <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
+                        
+                        <%if(authenticationMechanism.equals("NEGOTIATE_MEC")) {%>
+                            mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createCredential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
+                            <%
+                        } else if(authenticationMechanism.equals("PLAIN_MEC")) {%>
+                            mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createPlainCredential(<%=dbuser%>, "$external", new String(decryptedPassword_<%=cid%>).toCharArray());
+                            <%
+                        } else if(authenticationMechanism.equals("SCRAMSHA1_MEC")) {%>
+                            mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createScramSha1Credential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
+                            <%
+                        }
+                    } else {%> 
+                        // GSSAPI SASL (KERBEROS)
+                        System.setProperty("java.security.krb5.realm", <%=krbRealm%>);
+                        System.setProperty("java.security.krb5.kdc", <%=krbKdc%>);
+                        System.setProperty("javax.security.auth.useSubjectCredsOnly", "false");
+                        mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createGSSAPICredential(<%=krbUserPrincipal%>);
+                        <%
+                    }%>
+                    clientSettingsBuilder_<%=cid%>.credential(mongoCredential_<%=cid%>);
+                    <%
+                }
+
+                // the client
+                if(useReplicaSet){
+                    for(Map<String,String> replicaAddr : replicaAddrs) {%>
+                        addrs_<%=cid%>.add(new com.mongodb.ServerAddress(<%=replicaAddr.get("REPLICA_HOST")%>,<%=replicaAddr.get("REPLICA_PORT")%>));
+                        <%
+                    }
+                } else {%>
+                    addrs_<%=cid%>.add(new com.mongodb.ServerAddress(<%=dbhost%>, <%=dbport%>));
+                    <%
+                }%>
+                clusterSettingsBuilder_<%=cid%>.hosts(addrs_<%=cid%>);
+
+                <%if(isSslSettingsBuilderUsed) {%>
+                    clientSettingsBuilder_<%=cid%>.applyToSslSettings(builder -> builder.applySettings(sslSettingsBuilder_<%=cid%>.build()));
+                <%}%>
+                clientSettingsBuilder_<%=cid%>.applyToClusterSettings(builder -> builder.applySettings(clusterSettingsBuilder_<%=cid%>.build()));
