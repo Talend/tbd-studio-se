@@ -1,0 +1,35 @@
+<%@ jet 
+	imports="
+		java.util.List
+		java.util.Map
+	"
+%>
+	try{
+		<%if(isKeyValueCommand) {%>
+			com.mongodb.BasicDBObject bsonObjectCommand_<%=cid%> = new com.mongodb.BasicDBObject();
+			<%for(java.util.Map<String, String> keyValue : commandKeyValues) {%>
+				bsonObjectCommand_<%=cid%>.append(<%=keyValue.get("KEY")%>, <%=keyValue.get("VALUE")%>);
+				<%
+			}%>
+			result_<%=cid%>=db_<%=cid%>.runCommand(bsonObjectCommand_<%=cid%>);
+			<%
+		} else if (isJsonCommand) {%>
+			result_<%=cid%> = db_<%=cid%>.runCommand(com.mongodb.BasicDBObject.parse(<%=jsonCommand%>));
+			<%
+		}%>
+
+	} catch(Exception e_<%=cid%>) {
+		<%if (dieOnError) {%>
+			e_<%=cid%>.printStackTrace();
+			throw e_<%=cid%>;
+			<%
+		} else {
+			if(isLog4jEnabled) {%>
+				log.error("<%=cid%> - " + e_<%=cid%>.getMessage());
+				<%
+			} else {%>
+				System.err.println(e_<%=cid%>.getMessage());
+			    <%
+			}
+		}%>
+	}

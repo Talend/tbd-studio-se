@@ -3,35 +3,54 @@
 		org.talend.core.model.process.INode
 		org.talend.designer.codegen.config.CodeGeneratorArgument
 		org.talend.core.model.process.ElementParameterParser
+		org.talend.core.model.utils.NodeUtil
 	"
 %>
 <%
     CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
     INode node = (INode)codeGenArgument.getArgument();
     String cid = node.getUniqueName();
-	String useExistingConn = ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__");
+	boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"));
 	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
-	
-	if(!"true".equals(useExistingConn)){
-	%>
-		if(mongo_<%=cid%> != null){
-			<%
-			if(isLog4jEnabled){
-			%>
-				log.info("<%=cid%> - Closing the connection " + mongo_<%=cid%>.getServerAddressList() + ".");
-			<%
-			}
-			%>
-				mongo_<%=cid%>.close();
-			<%
-			if(isLog4jEnabled){
-			%>
-				log.info("<%=cid%> - The connection was closed successfully.");
-			<%
-			}
-			%>
-		}
-		resourceMap.put("finish_<%=cid%>", true); 
-	<%
+	String dbversion;
+	if(useExistingConnection){
+		String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+		INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
+		dbversion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
+	} else {
+		dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
 	}
-	%>
+	
+	if(!useExistingConnection) {
+		if(!("MONGODB_4_4_X".equals(dbversion))) {%>
+			if(mongo_<%=cid%> != null) {
+				<%if(isLog4jEnabled) {%>
+					log.info("<%=cid%> - Closing the connection " + mongo_<%=cid%>.getServerAddressList() + ".");
+					<%
+				}%>
+				mongo_<%=cid%>.close();
+				<%if(isLog4jEnabled) {%>
+					log.info("<%=cid%> - The connection was closed successfully.");
+					<%
+				}%>
+			}
+			<%
+		} else {%>
+			if(mongo_<%=cid%> != null) {
+				<%if(isLog4jEnabled) {%>
+					for (com.mongodb.connection.ServerDescription description_<%=cid%> : mongo_<%=cid%>.getClusterDescription().getServerDescriptions()) {
+						log.info("<%=cid%> - Closing the connection " + description_<%=cid%>.getAddress());
+					}
+					<%
+				}%>
+				mongo_<%=cid%>.close();
+				<%if(isLog4jEnabled) {%>
+					log.info("<%=cid%> - The connection was closed successfully.");
+					<%
+				}%>
+			}
+			<%
+		}%>
+		resourceMap.put("finish_<%=cid%>", true); 
+		<%
+	}%>

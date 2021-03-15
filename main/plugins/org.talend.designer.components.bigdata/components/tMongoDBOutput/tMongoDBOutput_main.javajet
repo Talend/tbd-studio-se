@@ -28,7 +28,7 @@
     }
 %>
 
-<%if("MONGODB_3_5_X".equals(dbversion)) {%>
+<%if("MONGODB_3_5_X".equals(dbversion) || "MONGODB_4_4_X".equals(dbversion)) {%>
 	<%@ include file="./tMongoDBOutput_main_3_5_X.javajet"%>
 <%} else {%>
 	<%@ include file="./tMongoDBOutput_main_below_3_5.javajet"%>

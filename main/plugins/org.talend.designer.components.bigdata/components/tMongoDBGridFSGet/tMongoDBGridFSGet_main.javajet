@@ -38,7 +38,7 @@
     // Generate output filename
     if(idAsFilename){
 %>
-			    <%if(version_3_5_X){%>
+			    <%if(version_3_5_X || ("MONGODB_4_4_X".equals(dbversion))){%>
 					String outputFileName_<%=cid%> = <%=outputLocalPath%> + "/" + gridFSfile.getObjectId();
 				<%} else {%>
 					String outputFileName_<%=cid%> = <%=outputLocalPath%> + "/" + gridFSfile.getId();
@@ -64,7 +64,7 @@
 				log.error("<%=cid%> - file : " + outputFileName_<%=cid%> + " exists, will not be overwritten.");
 			<%}%>
 		}else{
-			    <%if(version_3_5_X){%>
+			    <%if(version_3_5_X || ("MONGODB_4_4_X".equals(dbversion))){%>
 			    try(java.io.FileOutputStream fos_<%=cid%>=new java.io.FileOutputStream(outputFile_<%=cid%>)){
 					    gridfs_<%=cid%>.downloadToStream(gridFSfile.getId(),fos_<%=cid%>);
 					}
@@ -76,7 +76,7 @@
 <%
 	} else {
 %>
-        <%if(version_3_5_X){%>
+        <%if(version_3_5_X || ("MONGODB_4_4_X".equals(dbversion))){%>
 		
 			try(java.io.FileOutputStream fos_<%=cid%> = new java.io.FileOutputStream(outputFile_<%=cid%>)){
 				 gridfs_<%=cid%>.downloadToStream(gridFSfile.getId(),fos_<%=cid%>);

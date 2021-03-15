@@ -55,12 +55,13 @@
             NUM_ROW="3"
             SHOW_IF="(USE_EXISTING_CONNECTION == 'false')"
             GROUP="CONNECTION">
-            <ITEMS DEFAULT="MONGODB_3_5_X">
+            <ITEMS DEFAULT="MONGODB_4_4_X">
                 <ITEM NAME="MONGODB_2_5_X" VALUE="MONGODB_2_5_X"/>
                 <ITEM NAME="MONGODB_2_6_X" VALUE="MONGODB_2_6_X"/>
                 <ITEM NAME="MONGODB_3_0_X" VALUE="MONGODB_3_0_X"/>
                 <ITEM NAME="MONGODB_3_2_X" VALUE="MONGODB_3_2_X"/>
                 <ITEM NAME="MONGODB_3_5_X" VALUE="MONGODB_3_5_X"/>
+                <ITEM NAME="MONGODB_4_4_X" VALUE="MONGODB_4_4_X"/>
             </ITEMS>
         </PARAMETER>
         <PARAMETER
@@ -123,11 +124,13 @@
             <DEFAULT>"false"</DEFAULT>
         </PARAMETER>
 
-        <PARAMETER FIELD="CHECK" NAME="SET_READ_PREFERENCE" NUM_ROW="9" GROUP="READ_PREFERENCE_GROUP">
+        <PARAMETER FIELD="CHECK" NAME="SET_READ_PREFERENCE" NUM_ROW="9" GROUP="READ_PREFERENCE_GROUP"
+            NOT_SHOW_IF="((USE_EXISTING_CONNECTION == 'true') AND (#LINK@NODE.CONNECTION.DB_VERSION== 'MONGODB_4_4_X'))">
             <DEFAULT>"false"</DEFAULT>
         </PARAMETER>
 
-        <PARAMETER NAME="READ_PREFERENCE" FIELD="CLOSED_LIST" NUM_ROW="10" SHOW_IF="SET_READ_PREFERENCE=='true'" GROUP="READ_PREFERENCE_GROUP">
+        <PARAMETER NAME="READ_PREFERENCE" FIELD="CLOSED_LIST" NUM_ROW="10" GROUP="READ_PREFERENCE_GROUP"
+            SHOW_IF="(((USE_EXISTING_CONNECTION == 'false') AND (SET_READ_PREFERENCE=='true')) OR ((SET_READ_PREFERENCE=='true') AND (USE_EXISTING_CONNECTION == 'true') AND (#LINK@NODE.CONNECTION.DB_VERSION != 'MONGODB_4_4_X')))">
             <ITEMS DEFAULT="PRIMARY">
                 <ITEM NAME="PRIMARY" VALUE="PRIMARY"/>
                 <ITEM NAME="PRIMARY_PREFERRED" VALUE="PRIMARY_PREFERRED"/>
@@ -278,7 +281,7 @@
 
     <ADVANCED_PARAMETERS>
         <PARAMETER FIELD="CHECK" NAME="QUERYOPTION_NOTIMEOUT" REPOSITORY_VALUE="QUERYOPTION_NOTIMEOUT"
-            NUM_ROW="40" GROUP="ADVANCED_QUERY_OPTIONS" SHOW_IF="(USE_EXISTING_CONNECTION == 'false')">
+            NUM_ROW="40" GROUP="ADVANCED_QUERY_OPTIONS" SHOW_IF="((USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION !='MONGODB_4_4_X'))">
             <DEFAULT>false</DEFAULT>
         </PARAMETER>
     </ADVANCED_PARAMETERS>
@@ -286,7 +289,10 @@
     <CODEGENERATION>
         <IMPORTS>
 
-            <IMPORT MODULE="mongo-java-driver-3.12.0.jar" MVN="mvn:org.mongodb/mongo-java-driver/3.12.0"  NAME="mongo-java-driver-3.12.0" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND ((DB_VERSION != 'MONGODB_2_6_X') AND (DB_VERSION != 'MONGODB_2_5_X'))" />
+            <IMPORT MODULE="mongodb-driver-core-4.2.0.jar" MVN="mvn:org.mongodb/mongodb-driver-core/4.2.0" NAME="mongodb-driver-core-4.2.0" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'MONGODB_4_4_X'))" />
+            <IMPORT MODULE="mongodb-driver-sync-4.2.0.jar" MVN="mvn:org.mongodb/mongodb-driver-sync/4.2.0" NAME="mongodb-driver-sync-4.2.0" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'MONGODB_4_4_X'))" />
+            <IMPORT MODULE="bson-4.2.0.jar" MVN="mvn:org.mongodb/bson/4.2.0" NAME="bson-4.2.0" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'MONGODB_4_4_X'))" />
+            <IMPORT MODULE="mongo-java-driver-3.12.0.jar" MVN="mvn:org.mongodb/mongo-java-driver/3.12.0" NAME="mongo-java-driver-3.12.0" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND ((DB_VERSION == 'MONGODB_3_0_X') OR (DB_VERSION == 'MONGODB_3_2_X') OR (DB_VERSION == 'MONGODB_3_5_X')))"/>
             <IMPORT MODULE="mongo-java-driver-3.4.2.jar" MVN="mvn:org.talend.libraries/mongo-java-driver-3.4.2/6.0.0"  NAME="mongo-java-driver-3.4.2" UrlPath="platform:/plugin/org.talend.libraries.mongo/lib/mongo-java-driver-3.4.2.jar" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND ((DB_VERSION == 'MONGODB_2_6_X') OR (DB_VERSION == 'MONGODB_2_5_X'))" />
         </IMPORTS>
     </CODEGENERATION>
