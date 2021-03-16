@@ -33,6 +33,7 @@ import org.talend.hadoop.distribution.dbr73x.modulegroup.DBR73xHiveOnSparkModule
 import org.talend.hadoop.distribution.dbr73x.modulegroup.DBR73xSparkBatchModuleGroup;
 import org.talend.hadoop.distribution.dbr73x.modulegroup.DBR73xSparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73xAzureNodeModuleGroup;
+import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73xDynamoDBNodeModuleGroup;
 import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73xKinesisNodeModuleGroup;
 import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73xSnowflakeNodeModuleGroup;
 import org.talend.hadoop.distribution.dbr73x.modulegroup.node.DBR73xTopByNodeModuleGroup;
@@ -131,6 +132,33 @@ public class DBR73xDistribution extends AbstractDatabricksDistribution implement
                 SparkBatchConstant.SNOWFLAKE_OUTPUT_COMPONENT
         ), DBR73xSnowflakeNodeModuleGroup.getModuleGroups(distribution, version));
         
+        // Spark Batch DynamoDB
+        result.put(new NodeComponentTypeBean(
+                ComponentType.SPARKBATCH,
+                SparkBatchConstant.DYNAMODB_CONFIGURATION_COMPONENT
+        ), DBR73xDynamoDBNodeModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(
+                ComponentType.SPARKBATCH,
+                SparkBatchConstant.DYNAMODB_OUTPUT_COMPONENT
+        ), DBR73xDynamoDBNodeModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(
+                ComponentType.SPARKBATCH,
+                SparkBatchConstant.DYNAMODB_INPUT_COMPONENT
+        ), DBR73xDynamoDBNodeModuleGroup.getModuleGroups(distribution, version));
+        
+        // Spark Streaming DynamoDB
+        result.put(new NodeComponentTypeBean(
+                ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.DYNAMODB_CONFIGURATION_COMPONENT
+        ), DBR73xDynamoDBNodeModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(
+                ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.DYNAMODB_OUTPUT_COMPONENT
+        ), DBR73xDynamoDBNodeModuleGroup.getModuleGroups(distribution, version));
+        result.put(new NodeComponentTypeBean(
+                ComponentType.SPARKSTREAMING,
+                SparkStreamingConstant.DYNAMODB_INPUT_COMPONENT
+        ), DBR73xDynamoDBNodeModuleGroup.getModuleGroups(distribution, version));
         return result;
 
     }

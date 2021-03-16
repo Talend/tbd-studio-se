@@ -50,6 +50,11 @@ public class DBR73xSparkBatchModuleGroup {
                 true,
                 notSparkLocal
         ));
+        hs.add(new DistributionModuleGroup(
+                DBR73xConstant.DYNAMODB_GROUP_DBR73x.getModuleName(),
+                true,
+                notSparkLocal
+        ));
         return hs;
     }
 }
