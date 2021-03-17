@@ -15,7 +15,7 @@
 			boolean useKrb = "true".equals(ElementParameterParser.getValue(node, "__USE_KRB__"));
 			boolean securityIsEnabled = useKrb && (isCustom || this.hiveDistrib.doSupportKerberos());
 %>
-			conn_<%=cid%> = java.sql.DriverManager.getConnection(url_<%=cid%>);
+			conn_<%=cid%> = java.sql.DriverManager.getConnection(url_<%=cid%>, dbUser_<%=cid%> , dbPwd_<%=cid%> );
 <%
 		}
 
