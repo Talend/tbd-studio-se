@@ -24,7 +24,7 @@ public class HiveMetadataHelper4HortonworksTest extends AbstractDistributionTest
     private static final String[] VERSIONS_NON_DYNAMIC = new String[] {
     	"Hortonworks Data Platform V3.1.4.12-1 [Built in]",	
         "Hortonworks Data Platform V2.6.0.3-8 (Deprecated) [Built in]",
-        "Hortonworks Data Platform V2.6.0  (Deprecated)",
+        "Hortonworks Data Platform V2.6.0 (Deprecated)",        
         "Hortonworks Data Platform V2.5.0 (Deprecated)"};
 
     @Override

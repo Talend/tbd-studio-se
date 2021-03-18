@@ -34,7 +34,7 @@ public class HiveMetadataHelper4ClouderaTest extends AbstractDistributionTest4Hi
         "Cloudera CDH5.8(Deprecated)",
         "Cloudera CDH5.7(Deprecated)",
         "Cloudera CDH5.6(Deprecated)",
-        "Cloudera CDH5.5(Deprecated)"
+        "Cloudera CDH5.5 (Deprecated)"
         };
 
     @Override
