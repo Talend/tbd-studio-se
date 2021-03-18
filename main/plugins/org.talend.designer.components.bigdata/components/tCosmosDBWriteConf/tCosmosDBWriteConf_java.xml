@@ -60,6 +60,14 @@
                 <ITEM NAME="MONGODB" VALUE="MONGODB" />
             </ITEMS>
         </PARAMETER>
+        <PARAMETER NAME="DB_VERSION" 
+            FIELD="CLOSED_LIST" REPOSITORY_VALUE="DB_VERSION" NUM_ROW="3" GROUP="CONNECTION" 
+            SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND (API=='MONGODB')">
+            <ITEMS DEFAULT="MONGODB_4_4_X">
+                <ITEM NAME="MONGODB_3_2_X" VALUE="MONGODB_3_2_X"/>
+                <ITEM NAME="MONGODB_4_4_X" VALUE="MONGODB_4_4_X"/>
+            </ITEMS>
+        </PARAMETER>
         <PARAMETER
             FIELD="CHECK"
             NAME="USE_REPLICA_SET"
@@ -114,16 +122,22 @@
             <DEFAULT>true</DEFAULT>
         </PARAMETER>
 
-        <PARAMETER FIELD="CHECK" NAME="SET_WRITE_CONCERN" NUM_ROW="9" GROUP="WRITE_CONCERN_GROUP">
+        <PARAMETER FIELD="CHECK" NAME="SET_WRITE_CONCERN" NUM_ROW="9" GROUP="WRITE_CONCERN_GROUP"
+            NOT_SHOW_IF="((USE_EXISTING_CONNECTION == 'true') AND (#LINK@NODE.CONNECTION.DB_VERSION== 'MONGODB_4_4_X'))">
             <DEFAULT>"false"</DEFAULT>
         </PARAMETER>
 
-        <PARAMETER NAME="WRITE_CONCERN" FIELD="CLOSED_LIST" NUM_ROW="10" SHOW_IF="SET_WRITE_CONCERN=='true'" GROUP="WRITE_CONCERN_GROUP">
+        <PARAMETER NAME="WRITE_CONCERN" FIELD="CLOSED_LIST" NUM_ROW="10" GROUP="WRITE_CONCERN_GROUP"
+            SHOW_IF="(((USE_EXISTING_CONNECTION == 'false') AND (SET_WRITE_CONCERN=='true')) OR ((SET_WRITE_CONCERN=='true') AND (USE_EXISTING_CONNECTION == 'true') AND (#LINK@NODE.CONNECTION.DB_VERSION != 'MONGODB_4_4_X')))">
             <ITEMS DEFAULT="ACKNOWLEDGED">
                 <ITEM NAME="ACKNOWLEDGED" VALUE="ACKNOWLEDGED"/>
                 <ITEM NAME="UNACKNOWLEDGED" VALUE="UNACKNOWLEDGED"/>
                 <ITEM NAME="JOURNALED" VALUE="JOURNALED"/>
-                <ITEM NAME="REPLICA_ACKNOWLEDGED" VALUE="REPLICA_ACKNOWLEDGED"/>
+                <ITEM NAME="REPLICA_ACKNOWLEDGED" VALUE="REPLICA_ACKNOWLEDGED" NOT_SHOW_IF="(((USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'MONGODB_4_4_X')) OR ((USE_EXISTING_CONNECTION == 'true') AND (#LINK@NODE.CONNECTION.DB_VERSION == 'MONGODB_4_4_X')))"/>
+                <ITEM NAME="MAJORITY" VALUE="MAJORITY" SHOW_IF="(((USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'MONGODB_4_4_X')) OR ((USE_EXISTING_CONNECTION == 'true') AND (#LINK@NODE.CONNECTION.DB_VERSION == 'MONGODB_4_4_X')))"/>
+                <ITEM NAME="W1" VALUE="W1" SHOW_IF="(((USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'MONGODB_4_4_X')) OR ((USE_EXISTING_CONNECTION == 'true') AND (#LINK@NODE.CONNECTION.DB_VERSION == 'MONGODB_4_4_X')))"/>
+                <ITEM NAME="W2" VALUE="W2" SHOW_IF="(((USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'MONGODB_4_4_X')) OR ((USE_EXISTING_CONNECTION == 'true') AND (#LINK@NODE.CONNECTION.DB_VERSION == 'MONGODB_4_4_X')))"/>
+                <ITEM NAME="W3" VALUE="W3" SHOW_IF="(((USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'MONGODB_4_4_X')) OR ((USE_EXISTING_CONNECTION == 'true') AND (#LINK@NODE.CONNECTION.DB_VERSION == 'MONGODB_4_4_X')))"/>
             </ITEMS>
         </PARAMETER>
 
@@ -252,10 +266,10 @@
             <DEFAULT>false</DEFAULT>
         </PARAMETER>
 
-	<PARAMETER FIELD="CHECK" NAME="QUERYOPTION_NOTIMEOUT"
-            NUM_ROW="50" GROUP="ADVANCED_QUERY_OPTIONS">
+        <PARAMETER FIELD="CHECK" NAME="QUERYOPTION_NOTIMEOUT"
+            NUM_ROW="50" GROUP="ADVANCED_QUERY_OPTIONS" SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION != 'MONGODB_4_4_X')">
             <DEFAULT>false</DEFAULT>
-	</PARAMETER>
+        </PARAMETER>
 
         <PARAMETER NAME="ROOT" FIELD="TABLE" REQUIRED="true"
             NUM_ROW="70" NB_LINES="3" SHOW="false">
@@ -292,8 +306,10 @@
 	</PARAMETERS>
 	<CODEGENERATION>
 		<IMPORTS>
-            <IMPORT MODULE="mongo-java-driver-3.12.0.jar" MVN="mvn:org.mongodb/mongo-java-driver/3.12.0"  NAME="mongo-java-driver-3.12.0" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (API=='MONGODB')" />
-
+            <IMPORT MODULE="mongodb-driver-core-4.2.0.jar" MVN="mvn:org.mongodb/mongodb-driver-core/4.2.0" NAME="mongodb-driver-core-4.2.0" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND ((API=='MONGODB') AND (DB_VERSION == 'MONGODB_4_4_X')))" />
+            <IMPORT MODULE="mongodb-driver-sync-4.2.0.jar" MVN="mvn:org.mongodb/mongodb-driver-sync/4.2.0" NAME="mongodb-driver-sync-4.2.0" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND ((API=='MONGODB') AND (DB_VERSION == 'MONGODB_4_4_X')))" />
+            <IMPORT MODULE="bson-4.2.0.jar" MVN="mvn:org.mongodb/bson/4.2.0" NAME="bson-4.2.0" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND ((API=='MONGODB') AND (DB_VERSION == 'MONGODB_4_4_X')))" />
+            <IMPORT MODULE="mongo-java-driver-3.12.0.jar" MVN="mvn:org.mongodb/mongo-java-driver/3.12.0"  NAME="mongo-java-driver-3.12.0" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND ((API=='MONGODB') AND (DB_VERSION != 'MONGODB_4_4_X')))" />
             <IMPORT NAME="xom" MODULE="xom-1.2.7.jar" MVN="mvn:org.talend.libraries/xom-1.2.7/6.0.0"  REQUIRED="true" />
             <IMPORT NAME="commons_beanutils" MODULE="commons-beanutils-1.9.4.jar" MVN="mvn:commons-beanutils/commons-beanutils/1.9.4" REQUIRED="true" />
             <IMPORT NAME="commons_collections" MODULE="commons-collections-3.2.2.jar" MVN="mvn:commons-collections/commons-collections/3.2.2"  UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-collections-3.2.2.jar" REQUIRED="true" />

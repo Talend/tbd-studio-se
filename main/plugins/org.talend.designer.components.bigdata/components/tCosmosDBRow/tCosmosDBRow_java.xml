@@ -59,6 +59,14 @@
                 <ITEM NAME="MONGODB" VALUE="MONGODB" />
             </ITEMS>
         </PARAMETER>
+        <PARAMETER NAME="DB_VERSION" 
+            FIELD="CLOSED_LIST" REPOSITORY_VALUE="DB_VERSION" NUM_ROW="3" GROUP="CONNECTION" 
+            SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND (API=='MONGODB')">
+            <ITEMS DEFAULT="MONGODB_4_4_X">
+                <ITEM NAME="MONGODB_3_2_X" VALUE="MONGODB_3_2_X"/>
+                <ITEM NAME="MONGODB_4_4_X" VALUE="MONGODB_4_4_X"/>
+            </ITEMS>
+        </PARAMETER>
 		<PARAMETER
             FIELD="CHECK"
             NAME="USE_REPLICA_SET"
@@ -168,6 +176,7 @@
 		>
 			<DEFAULT>""</DEFAULT>
 		</PARAMETER>
+
 		<PARAMETER
 			NAME="EXECUTE_COMMAND"
 			FIELD="CHECK"
@@ -180,7 +189,7 @@
 			NAME="EXECUTE_KEYVALUECOMMAND"
 			FIELD="CHECK"
 			NUM_ROW="36"
-			SHOW_IF="(EXECUTE_COMMAND == 'true') AND (EXECUTE_JSONCOMMAND == 'false')"
+			SHOW_IF="(((DB_VERSION=='MONGODB_4_4_X') AND (EXECUTE_JSONCOMMAND == 'false')) OR ((EXECUTE_COMMAND == 'true') AND (EXECUTE_JSONCOMMAND == 'false')))"
 		>
 			<DEFAULT>false</DEFAULT>
 		</PARAMETER>
@@ -188,7 +197,7 @@
 			NAME="EXECUTE_JSONCOMMAND"
 			FIELD="CHECK"
 			NUM_ROW="37"
-			SHOW_IF="(EXECUTE_COMMAND == 'true') AND (EXECUTE_KEYVALUECOMMAND == 'false')"
+			SHOW_IF="(((DB_VERSION=='MONGODB_4_4_X') AND (EXECUTE_KEYVALUECOMMAND == 'false')) OR ((EXECUTE_COMMAND == 'true') AND (EXECUTE_KEYVALUECOMMAND == 'false')))"
 		>
 			<DEFAULT>false</DEFAULT>
 		</PARAMETER>
@@ -197,7 +206,7 @@
 			NAME="COMMAND"
 			REQUIRED="true"
 			NUM_ROW="40"
-			SHOW_IF="(EXECUTE_COMMAND == 'true') AND (EXECUTE_KEYVALUECOMMAND == 'false') AND (EXECUTE_JSONCOMMAND == 'false')"
+			SHOW_IF="((DB_VERSION !='MONGODB_4_4_X') AND (EXECUTE_COMMAND == 'true') AND (EXECUTE_KEYVALUECOMMAND == 'false') AND (EXECUTE_JSONCOMMAND == 'false'))"
 		>
 			<DEFAULT>""</DEFAULT>
 		</PARAMETER>
@@ -207,7 +216,7 @@
 			REQUIRED="false"
 			NUM_ROW="41"
 			NB_LINES="5"
-			SHOW_IF="(EXECUTE_COMMAND =='true') AND (EXECUTE_KEYVALUECOMMAND == 'true')"
+			SHOW_IF="(((DB_VERSION=='MONGODB_4_4_X') AND (EXECUTE_KEYVALUECOMMAND == 'true')) OR ((EXECUTE_COMMAND =='true') AND (EXECUTE_KEYVALUECOMMAND == 'true')))"
 		>
 			<ITEMS>
 				<ITEM NAME="KEY" />
@@ -219,7 +228,7 @@
 			NAME="JSON_COMMAND_NOTE"
 			REQUIRED="false"
 			NUM_ROW="42"
-			SHOW_IF="(EXECUTE_COMMAND =='true') AND (EXECUTE_JSONCOMMAND == 'true')"
+			SHOW_IF="(((DB_VERSION=='MONGODB_4_4_X') AND (EXECUTE_JSONCOMMAND == 'true')) OR ((EXECUTE_COMMAND =='true') AND (EXECUTE_JSONCOMMAND == 'true')))"
 		>
 			<DEFAULT>Note : Surround String values with single quotes or escaped double quotes</DEFAULT>
 		</PARAMETER>
@@ -230,7 +239,7 @@
 			REQUIRED="false"
 			NUM_ROW="43"
 			NB_LINES="5"
-			SHOW_IF="(EXECUTE_COMMAND =='true') AND (EXECUTE_JSONCOMMAND == 'true')"
+			SHOW_IF="(((DB_VERSION=='MONGODB_4_4_X') AND (EXECUTE_JSONCOMMAND == 'true')) OR ((EXECUTE_COMMAND =='true') AND (EXECUTE_JSONCOMMAND == 'true')))"
 		>
 			<DEFAULT>"{createIndexes: 'restaurants', indexes : [{key : {restaurant_id: 1}, name: 'id_index_2', unique: true}]}"</DEFAULT>
 		</PARAMETER>
@@ -241,7 +250,7 @@
 			REQUIRED="true"
 			NUM_ROW="45"
 			NB_LINES="5"
-			SHOW_IF="(EXECUTE_COMMAND =='false')"
+			SHOW_IF="(EXECUTE_COMMAND =='false') AND (DB_VERSION != 'MONGODB_4_4_X')"
 		>
 			<DEFAULT>""</DEFAULT>
 		</PARAMETER>
@@ -252,7 +261,7 @@
 			REQUIRED="false"
 			NUM_ROW="50"
 			NB_LINES="5"
-			SHOW_IF="(EXECUTE_COMMAND =='false')"
+			SHOW_IF="(EXECUTE_COMMAND =='false') AND (DB_VERSION != 'MONGODB_4_4_X')"
 		>
 			<ITEMS>
 				<ITEM NAME="PARAMETER" />
@@ -270,10 +279,11 @@
 
 	<CODEGENERATION>
 		<IMPORTS>
-            
-            <IMPORT MODULE="mongo-java-driver-3.12.0.jar" MVN="mvn:org.mongodb/mongo-java-driver/3.12.0"  NAME="mongo-java-driver-3.12.0" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (API=='MONGODB')" />
-
-        </IMPORTS>
+			<IMPORT MODULE="mongodb-driver-core-4.2.0.jar" MVN="mvn:org.mongodb/mongodb-driver-core/4.2.0" NAME="mongodb-driver-core-4.2.0" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND ((API=='MONGODB') AND (DB_VERSION == 'MONGODB_4_4_X')))" />
+			<IMPORT MODULE="mongodb-driver-sync-4.2.0.jar" MVN="mvn:org.mongodb/mongodb-driver-sync/4.2.0" NAME="mongodb-driver-sync-4.2.0" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND ((API=='MONGODB') AND (DB_VERSION == 'MONGODB_4_4_X')))" />
+			<IMPORT MODULE="bson-4.2.0.jar" MVN="mvn:org.mongodb/bson/4.2.0" NAME="bson-4.2.0" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND ((API=='MONGODB') AND (DB_VERSION == 'MONGODB_4_4_X')))" />
+			<IMPORT MODULE="mongo-java-driver-3.12.0.jar" MVN="mvn:org.mongodb/mongo-java-driver/3.12.0"  NAME="mongo-java-driver-3.12.0" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND ((API=='MONGODB') AND (DB_VERSION != 'MONGODB_4_4_X')))" />
+		</IMPORTS>
 	</CODEGENERATION>
 	<RETURNS/>
 </COMPONENT>
