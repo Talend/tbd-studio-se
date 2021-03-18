@@ -15,13 +15,20 @@
     CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
     INode node = (INode)codeGenArgument.getArgument();
     String cid = node.getUniqueName();
-	String useExistingConn = ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__");
+	boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"));
 	String strJobCid=cid.replace("_Out","");
 	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
 	String dataAction = ElementParameterParser.getValue(node,"__DATA_ACTION__");
 
 	// BulkWrite is only supportted on Mongo 2.6+ drivers
-	String dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
+	String dbversion;
+	if(useExistingConnection){
+	    String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+        INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
+        dbversion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
+    } else {
+        dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
+    }
 	boolean setBulkWrite = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_BULK_WRITE__"));
 	final boolean bulkWrite = setBulkWrite & (!"MONGODB_2_5_X".equalsIgnoreCase(dbversion));
 	boolean bulkWriteType = "Ordered".equalsIgnoreCase(ElementParameterParser.getValue(node, "__BULK_WRITE_TYPE__"));
@@ -67,9 +74,9 @@
 			// Last write if number of rows added is less than bulksize
 			if(bulkWrite){
 		        %>
-		        // if bulkWriteOperationCounter_<%=cid%> == 1 the ulkWriteOperation_<%=cid%> is empty, do not execute.
+		        // if bulkWriteOperationCounter_<%=cid%> == 1 the bulkWriteOperation_<%=cid%> is empty, do not execute.
 		        if (bulkWriteOperationCounter_<%=cid%> != 1) {
-		    <%if(dbversion.equals("MONGODB_3_5_X")){%>
+		    <%if(dbversion.equals("MONGODB_3_5_X") || "MONGODB_4_4_X".equals(dbversion)){%>
 		    	coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
 		    <%} else {%>
 		    	bulkWriteOperation_<%=cid%>.execute();
@@ -83,27 +90,27 @@
 				log.info("<%=cid%> - Has been <%=dataAction.toLowerCase()+(dataAction.endsWith("E")?"d":"ed")%> " + nb_line_<%=cid%> + " records.");
 			<%
 			}
-			if(!"true".equals(useExistingConn)){
-			%>
-				if(mongo_<%=cid%> != null ){
-					<%
-					if(isLog4jEnabled){
-					%>
-						log.info("<%=cid%> - Closing the connection " + mongo_<%=cid%>.getServerAddressList() + ".");
-					<%
-					}
-					%>
+			if(!useExistingConnection) {%>
+				if(mongo_<%=cid%> != null){
+					<%if(isLog4jEnabled) {
+						if (dbversion.equals("MONGODB_4_4_X")) {%>
+							for (com.mongodb.connection.ServerDescription description : mongo_<%=cid%>.getClusterDescription().getServerDescriptions()) {
+								log.info("<%=cid%> - Closing the connection " + description.getAddress());
+							}
+							<%
+						} else { %>
+							log.info("<%=cid%> - Closing the connection " + mongo_<%=cid%>.getServerAddressList() + ".");
+							<%
+						}
+					}%>
 						mongo_<%=cid%>.close();
-					<%
-					if(isLog4jEnabled){
-					%>
+					<%if(isLog4jEnabled) {%>
 						log.info("<%=cid%> - The connection was closed successfully.");
-					<%
-					}
-					%>
+						<%
+					}%>
 				}
 				resourceMap.put("finish_<%=cid%>", true); 
-			<%
+				<%
 			}
 			%>
 			globalMap.put(readFinishMarkWithPipeId_<%=cid%>,null);//syn
