@@ -34,7 +34,7 @@
     boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
 %>
 		
-		<%if(version_3_5_X){%>
+		<%if(version_3_5_X || ("MONGODB_4_4_X".equals(dbversion))){%>
 		gridfs_<%=cid%>.delete(gridFSfile.getId());
 		<%} else {%>
 		gridfs_<%=cid%>.remove(new org.bson.types.ObjectId(gridFSfile.getId().toString()));

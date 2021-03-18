@@ -33,7 +33,7 @@
     boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"));
     boolean useReplicaSet="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_REPLICA_SET__"));
     boolean removeRoot="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REMOVE_ROOT__"));
-
+    boolean useSSL = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_SSL__"));
     boolean setWriteConcern = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_WRITE_CONCERN__"));
     String writeConcern = ElementParameterParser.getValue(node, "__WRITE_CONCERN__");
 
@@ -44,6 +44,7 @@
     String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
     String usedAuthenticationDB = useAuthDB ? authDB : dbname;
     String dataAction = ElementParameterParser.getValue(node,"__DATA_ACTION__");
+    List<Map<String,String>> replicaAddrs= (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__REPLICA_SET__");
     boolean queryOptionNoTimeOut;
 	String dbversion;
 	if(useExistingConnection){
@@ -56,7 +57,8 @@
         queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
     }
     boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
-    String objectType = version_3_5_X?"org.bson.Document":"com.mongodb.DBObject";
+    boolean version_4_4_X = "MONGODB_4_4_X".equals(dbversion);
+    String objectType = (version_3_5_X || version_4_4_X) ? "org.bson.Document" : "com.mongodb.DBObject";
         // BulkWrite is only supportted on Mongo 2.6+
     final boolean bulkWrite = setBulkWrite & (!"MONGODB_2_5_X".equalsIgnoreCase(dbversion));
 
@@ -67,170 +69,48 @@
     List<IMetadataTable> metadatas = node.getMetadataList();
   	if(metadatas != null && metadatas.size() > 0){
       	IMetadataTable metadata = metadatas.get(0);
-      	if(metadata != null){
-		%>
-		
-		<%if(version_3_5_X) {%>
-			com.mongodb.MongoClient mongo_<%=cid%>=null;
-			com.mongodb.client.MongoDatabase db_<%=cid%>=null;
-		<%} else {%>
-			com.mongodb.Mongo mongo_<%=cid%>=null;
-			com.mongodb.DB db_<%=cid%>=null;
-		<%}%>
-		
-			<%
-      		if (useExistingConnection){
-      			String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
-				%>
-				
-				<%if(version_3_5_X) {%>
-				mongo_<%=cid%>=(com.mongodb.MongoClient)globalMap.get("mongo_<%=connection%>");
-				db_<%=cid%> = (com.mongodb.client.MongoDatabase) globalMap.get("db_<%=connection%>");
-				<%} else {%>
-				mongo_<%=cid%>=(com.mongodb.Mongo)globalMap.get("mongo_<%=connection%>");
-				db_<%=cid%> = (com.mongodb.DB) globalMap.get("db_<%=connection%>");
-				<%}%>
-				
+      	if(metadata != null){%>
+
+			<%if(isLog4jEnabled){%>
+				java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.OFF);
+				<%}else{%>
+				java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.SEVERE);
+			<%}%>
+
+			<%if(version_4_4_X) {%>
+				<%@ include file="./tMongoDBWriteConf_connection_4_4_X.javajet"%>
 				<%
-				if(isLog4jEnabled){
-				%>	
-					log.info("<%=cid%> - Get an existing client from " + "<%=connection%>" + ".");
-					log.info("<%=cid%> - Get an existing DB from " + "<%=connection%>" + ".");
+			} else {%>
+				<%@ include file="./tMongoDBWriteConf_connection_below_4_4_X.javajet"%>
 				<%
+			}%>
+
+			resourceMap.put("mongo_<%=cid%>", mongo_<%=cid%>);
+
+			<%if(isLog4jEnabled) {
+				if(version_4_4_X) {%>
+					for (com.mongodb.connection.ServerDescription description : mongo_<%=cid%>.getClusterDescription().getServerDescriptions()) {
+						log.info("<%=cid%> - Connecting to " + description.getAddress());
+					}
+					<%
+				} else {%>
+					log.info("<%=cid%> - Connecting to " + mongo_<%=cid%>.getServerAddressList() + ".");
+					<%
 				}
-			}else{
-			%>
-				<%
-	 			List<Map<String,String>> replicaAddrs= (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__REPLICA_SET__");
-		        boolean useSSL = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_SSL__"));
-
-		        String mongoDbDriver = "com.mongodb.MongoClient";
-
-		        %>
-            <%if(isLog4jEnabled){%>
-			java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.OFF);
-			<%}else{%>
-			java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.SEVERE);
-          <%}%>
-                // Empty client options
-                com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().build();
-                <%
-                if (useSSL) {
-                    %>
-                    clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder()
-                    .socketFactory(javax.net.ssl.SSLSocketFactory.getDefault())
-                    .build();
-                    <%
-                }
-                
-                // Client Credentials
-                %>
-                // Empty client credentials list
-                java.util.List<com.mongodb.MongoCredential> mongoCredentialList_<%=cid%> = new java.util.ArrayList<com.mongodb.MongoCredential>();
-
-                <%
-                // Authentication
-                if (authentication){
-                    %>
-                    com.mongodb.MongoCredential mongoCredential_<%=cid%>;
-                    <%
-                    if((authenticationMechanism.equals("NEGOTIATE_MEC"))||(authenticationMechanism.equals("PLAIN_MEC"))||(authenticationMechanism.equals("SCRAMSHA1_MEC"))){
-                        String passwordFieldName = "__PASSWORD__";
-                        %>
-                        <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
-                        <%
-                        if(authenticationMechanism.equals("NEGOTIATE_MEC")){
-                			if(dbversion.equals("MONGODB_3_0_X") || dbversion.equals("MONGODB_3_2_X") || version_3_5_X) {
-%>
-                    			mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createCredential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
-<%                    
-                			} else {
-%>
-                    			mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createMongoCRCredential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
-<%
-			                }
-                        } else if(authenticationMechanism.equals("PLAIN_MEC")){
-                            %>
-                            mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createPlainCredential(<%=dbuser%>, "$external", new String(decryptedPassword_<%=cid%>).toCharArray());
-                            <%
-                        } else if(authenticationMechanism.equals("SCRAMSHA1_MEC")){
-                            %>
-                            mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createScramSha1Credential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
-                            <%
-                        }
-                    } else { // GSSAPI SASL (KERBEROS)
-                        %>
-                        System.setProperty("java.security.krb5.realm", <%=krbRealm%>);
-                        System.setProperty("java.security.krb5.kdc", <%=krbKdc%>);
-                        System.setProperty("javax.security.auth.useSubjectCredsOnly", "false");
-                        mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createGSSAPICredential(<%=krbUserPrincipal%>);
-                        <%
-                    }
-                    %>
-                    mongoCredentialList_<%=cid%>.add(mongoCredential_<%=cid%>);
-                    <%
-                }
-
-                // the client
-                if(useReplicaSet){
-                    %>
-                    List<com.mongodb.ServerAddress> addrs_<%=cid%> = new java.util.ArrayList<com.mongodb.ServerAddress>();
-                    <%
-                    for(Map<String,String> replicaAddr:replicaAddrs){
-                    %>
-                        addrs_<%=cid%>.add(new com.mongodb.ServerAddress(<%=replicaAddr.get("REPLICA_HOST")%>,<%=replicaAddr.get("REPLICA_PORT")%>));
-                    <%
-                    }
-                    %>
-                    mongo_<%=cid%> = new <%=mongoDbDriver%>(addrs_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
-                    <%
-                }else{
-                    %>
-                    com.mongodb.ServerAddress serverAddress_<%=cid%> = new com.mongodb.ServerAddress(<%=dbhost%>, <%=dbport%>);
-                    mongo_<%=cid%> = new <%=mongoDbDriver%>(serverAddress_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
-                    <%
-                }
-                %>
-				resourceMap.put("mongo_<%=cid%>", mongo_<%=cid%>);
-				<%if(version_3_5_X) {%>
-					db_<%=cid%> = mongo_<%=cid%>.getDatabase(<%=dbname%>);
-				<%} else {%>
-					db_<%=cid%> = mongo_<%=cid%>.getDB(<%=dbname%>);
-				<%}%>
-				<%
 			}
-
-			if(queryOptionNoTimeOut){
-		        %>
-		        mongo_<%=cid%>.addOption(com.mongodb.Bytes.QUERYOPTION_NOTIMEOUT);
-		        <%
-    		}
-
-			if(setWriteConcern){
-				%>
-				mongo_<%=cid%>.setWriteConcern(com.mongodb.WriteConcern.<%=writeConcern%>);
-				<%
-			}
-
-			if(isLog4jEnabled){
-			%>	
-				log.info("<%=cid%> - Connecting to " + mongo_<%=cid%>.getServerAddressList() + ".");
-			<%
-			}
-			if(dropExistCollection){
-			%>
-				<%if(version_3_5_X) {%>
+			if(dropExistCollection) {%>
+				<%if(version_4_4_X || version_3_5_X) {%>
 					db_<%=cid%>.getCollection(<%=collection%>).drop();
 				<%} else {%>
-				if(db_<%=cid%>.collectionExists(<%=collection%>)){
-					db_<%=cid%>.getCollection(<%=collection%>).drop();
-				}
+					if(db_<%=cid%>.collectionExists(<%=collection%>)) {
+						db_<%=cid%>.getCollection(<%=collection%>).drop();
+					}
 				<%}%>
 
 			<%
 			}
 			%>
-				<%if(version_3_5_X) {%>
+				<%if(version_3_5_X || version_4_4_X) {%>
 					com.mongodb.client.MongoCollection<org.bson.Document> coll_<%=cid%> = db_<%=cid%>.getCollection(<%=collection%>);
 				<%} else {%>
 					com.mongodb.DBCollection coll_<%=cid%> = db_<%=cid%>.getCollection(<%=collection%>);
@@ -242,7 +122,7 @@
 			%>
 			int bulkWriteOperationCounter_<%=cid%> = 1;
 			int bulkWriteOperationSize_<%=cid%> = Integer.parseInt(<%=bulkWriteOperationSize%>);
-				<%if(version_3_5_X) {
+				<%if(version_3_5_X || version_4_4_X) {
 					if("INSERT".equalsIgnoreCase(dataAction)){%>
 						List<com.mongodb.client.model.InsertOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.InsertOneModel<org.bson.Document>>();
 					<%}else if("UPSERT".equalsIgnoreCase(dataAction)||"UPDATE".equalsIgnoreCase(dataAction)){%>

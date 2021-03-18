@@ -1,0 +1,68 @@
+<%@ jet 
+    imports="
+        org.talend.core.model.process.INode 
+        org.talend.core.model.process.ElementParameterParser 
+        org.talend.designer.codegen.config.CodeGeneratorArgument
+        java.util.Map
+        java.util.List
+    " 
+%>
+
+    // Declarations
+    com.mongodb.client.MongoClient mongo_<%=cid%>=null;
+    com.mongodb.client.MongoDatabase db_<%=cid%>=null;
+
+    <%if (useExistingConnection) {
+        String connection = ElementParameterParser.getValue(node, "__CONNECTION__");%>
+        mongo_<%=cid%>=(com.mongodb.client.MongoClient)globalMap.get("mongo_<%=connection%>");
+        db_<%=cid%> = (com.mongodb.client.MongoDatabase)globalMap.get("db_<%=connection%>");
+        <%if(isLog4jEnabled) {%>
+            log.info("<%=cid%> - Got an existing client from " + "<%=connection%>" + ".");
+            log.info("<%=cid%> - Got an existing DB from " + "<%=connection%>" + ".");
+            <%
+        }
+    } else {%>
+        // Internal declarations
+        List<com.mongodb.ServerAddress> addrs_<%=cid%> = new java.util.ArrayList<>();
+        com.mongodb.MongoClientSettings.Builder clientSettingsBuilder_<%=cid%> = com.mongodb.MongoClientSettings.builder();
+        com.mongodb.connection.ClusterSettings.Builder clusterSettingsBuilder_<%=cid%> = com.mongodb.connection.ClusterSettings.builder();
+        com.mongodb.connection.SslSettings.Builder sslSettingsBuilder_<%=cid%> = com.mongodb.connection.SslSettings.builder();
+        <%
+        // clusterSettingsBuilder is always used, no need to check it
+        boolean isSslSettingsBuilderUsed = false;
+        %>
+
+        <%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GeneralMongoDBConnectionSettings_4_4_X.javajet"%>
+
+        <%if (setReadPreference) {
+            if (readPreference.equals("PRIMARY")) {%>
+                clientSettingsBuilder_<%=cid%>.readPreference(com.mongodb.ReadPreference.primary());
+                <%
+            } else if (readPreference.equals("PRIMARY_PREFERRED")) {%>
+                clientSettingsBuilder_<%=cid%>.readPreference(com.mongodb.ReadPreference.primaryPreferred());
+                <%
+            } else if (readPreference.equals("SECONDARY")) {%>
+                clientSettingsBuilder_<%=cid%>.readPreference(com.mongodb.ReadPreference.secondary());
+                <%
+            } else if (readPreference.equals("SECONDARY_PREFERRED")) {%>
+                clientSettingsBuilder_<%=cid%>.readPreference(com.mongodb.ReadPreference.secondaryPreferred());
+                <%
+            } else if (readPreference.equals("NEAREST")) {%>
+                clientSettingsBuilder_<%=cid%>.readPreference(com.mongodb.ReadPreference.nearest());
+                <%
+            }
+        }%>
+
+        mongo_<%=cid%> = com.mongodb.client.MongoClients.create(clientSettingsBuilder_<%=cid%>.build());
+        db_<%=cid%> = mongo_<%=cid%>.getDatabase(<%=dbname%>);
+        <%
+    }
+
+    if(isLog4jEnabled) {%>
+        for (com.mongodb.connection.ServerDescription description : mongo_<%=cid%>.getClusterDescription().getServerDescriptions()) {
+            log.info("<%=cid%> - Connecting to " + description.getAddress());
+        }
+        <%
+    }
+    log4jFileUtil.startRetriveDataInfo();
+%>

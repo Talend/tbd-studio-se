@@ -11,12 +11,51 @@
 		org.talend.core.model.process.IConnectionCategory
 		org.talend.core.model.utils.NodeUtil
 		java.util.List 
-    	java.util.Map		
-	" 
-%>
-<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GridFS/GetMongoDBConnection.javajet"%>
-<%
+    	java.util.Map
+	"%>
+
+    <%
+    CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+    INode node = (INode)codeGenArgument.getArgument();
+    String cid = node.getUniqueName();
+    String dbhost = ElementParameterParser.getValue(node, "__HOST__");
+    String dbname = ElementParameterParser.getValue(node, "__DATABASE__");
+    String dbuser = ElementParameterParser.getValue(node, "__USERNAME__");
+    boolean authentication="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REQUIRED_AUTHENTICATION__"));
+    String authenticationMechanism = ElementParameterParser.getValue(node, "__AUTHENTICATION_MECHANISM__");
+    String krbUserPrincipal = ElementParameterParser.getValue(node, "__KRB_USER_PRINCIPAL__");
+    String krbRealm = ElementParameterParser.getValue(node, "__KRB_REALM__");
+    String krbKdc = ElementParameterParser.getValue(node, "__KRB_KDC__");
+    String dbpass   = ElementParameterParser.getValue(node, "__PASSWORD__");
+    String mongoPort = ElementParameterParser.getValue(node, "__PORT__");
+    String dbport = mongoPort.startsWith("context.") ? "Integer.valueOf(" + mongoPort + ").intValue()" : mongoPort.replace("\"", "");
+    boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"));
+    String collection = ElementParameterParser.getValue(node,"__COLLECTION__");
+    String limit = ElementParameterParser.getValue(node,"__LIMIT__");
+    List<Map<String, String>> sorts = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__SORT__");
+    boolean useReplicaSet="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_REPLICA_SET__"));
+    List<Map<String,String>> replicaAddrs= (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__REPLICA_SET__");
+    boolean setReadPreference = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_READ_PREFERENCE__"));
+    String readPreference = ElementParameterParser.getValue(node, "__READ_PREFERENCE__");
+    boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+    boolean useAuthDB = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_AUTHENTICATION_DATABASE__"));
+    String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
+    String usedAuthenticationDB = useAuthDB ? authDB : dbname;
+    boolean queryOptionNoTimeOut;
+    String dbversion;
+    if(useExistingConnection) {
+        String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+        INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
+        dbversion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
+        queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(connectionNode, "__QUERYOPTION_NOTIMEOUT__"));
+    } else {
+        dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
+        queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
+    }
+    boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
+    boolean version_4_4_X = "MONGODB_4_4_X".equals(dbversion);
     boolean givenStringFileName = "STRING_FILENAME".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERY_TYPE__"));
+    boolean useSSL = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_SSL__"));
     String stringFileName = ElementParameterParser.getValue(node, "__FILENAME__");
     String query = ElementParameterParser.getValue(node,"__QUERY__");
     query = query.replaceAll("\n","");
@@ -25,60 +64,56 @@
     String sortBy = ElementParameterParser.getValue(node, "__SORTBY__");
     String sortOrder = ElementParameterParser.getValue(node, "__SORTORDER__");
     %>
+
+    <%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GridFS/GetMongoDBConnection.javajet"%>
+
     
-    <%if(version_3_5_X){%>
-    
-    	com.mongodb.client.gridfs.GridFSBucket gridfs_<%=cid%> = com.mongodb.client.gridfs.GridFSBuckets.create(db_<%=cid%>, <%=bucketName%>);
-    	org.bson.Document gridFSQuery_<%=cid%> = org.bson.Document.parse(<%=query%>);
-    	org.bson.Document sortField_<%=cid%> = new org.bson.Document("<%=sortBy%>", <%=sortOrder%>);
-    	com.mongodb.client.MongoCursor<com.mongodb.client.gridfs.model.GridFSFile>	filesCursor_<%=cid%> = gridfs_<%=cid%>.find(gridFSQuery_<%=cid%>).sort(sortField_<%=cid%>).iterator();
-    	
-             while(filesCursor_<%=cid%>.hasNext()){
-                 com.mongodb.client.gridfs.model.GridFSFile file_<%=cid%> = filesCursor_<%=cid%>.next();
-				 nb_line_<%=cid %>++;
-<%
-				if(isLog4jEnabled){
-%>
-					log.info("<%=cid%> - Current file " + file_<%=cid%>.getFilename());
-<%
-				}
-%>
-				globalMap.put("<%=cid%>_CURRENT_FILEID", file_<%=cid%>.getObjectId().toString());
-				globalMap.put("<%=cid%>_CURRENT_FILENAME", file_<%=cid%>.getFilename());
-				globalMap.put("<%=cid%>_CURRENT_FILEUPLOADDATE", file_<%=cid%>.getUploadDate());
-				globalMap.put("<%=cid%>_CURRENT_FILELENGTH", file_<%=cid%>.getLength());
-				globalMap.put("<%=cid%>_CURRENT_FILEMD5", file_<%=cid%>.getMD5());
+    <%if(version_3_5_X || version_4_4_X) {%>
+        com.mongodb.client.gridfs.GridFSBucket gridfs_<%=cid%> = com.mongodb.client.gridfs.GridFSBuckets.create(db_<%=cid%>, <%=bucketName%>);
+        org.bson.Document gridFSQuery_<%=cid%> = org.bson.Document.parse(<%=query%>);
+        org.bson.Document sortField_<%=cid%> = new org.bson.Document("<%=sortBy%>", <%=sortOrder%>);
+        com.mongodb.client.MongoCursor<com.mongodb.client.gridfs.model.GridFSFile> filesCursor_<%=cid%> = gridfs_<%=cid%>.find(gridFSQuery_<%=cid%>).sort(sortField_<%=cid%>).iterator();
+        while(filesCursor_<%=cid%>.hasNext()) {
+            com.mongodb.client.gridfs.model.GridFSFile file_<%=cid%> = filesCursor_<%=cid%>.next();
+            nb_line_<%=cid %>++;
+            <%if(isLog4jEnabled) {%>
+                log.info("<%=cid%> - Current file " + file_<%=cid%>.getFilename());
+                <%
+            }%>
 
-    <%
-    }else{
-%>
-			com.mongodb.gridfs.GridFS gridfs_<%=cid%> = new com.mongodb.gridfs.GridFS(db_<%=cid%>, <%=bucketName%>);
-			com.mongodb.DBObject gridFSQuery_<%=cid%> = com.mongodb.BasicDBObject.parse(<%=query%>);
-			com.mongodb.DBCursor filesCursor_<%=cid%> = gridfs_<%=cid%>.getFileList(gridFSQuery_<%=cid%>);
+            globalMap.put("<%=cid%>_CURRENT_FILEID", file_<%=cid%>.getObjectId().toString());
+            globalMap.put("<%=cid%>_CURRENT_FILENAME", file_<%=cid%>.getFilename());
+            globalMap.put("<%=cid%>_CURRENT_FILEUPLOADDATE", file_<%=cid%>.getUploadDate());
+            globalMap.put("<%=cid%>_CURRENT_FILELENGTH", file_<%=cid%>.getLength());
+            <%if(!"MONGODB_4_4_X".equals(dbversion)) {%>
+                globalMap.put("<%=cid%>_CURRENT_FILEMD5", file_<%=cid%>.getMD5());
+                <%
+            }
+        } else {%>
+            com.mongodb.gridfs.GridFS gridfs_<%=cid%> = new com.mongodb.gridfs.GridFS(db_<%=cid%>, <%=bucketName%>);
+            com.mongodb.DBObject gridFSQuery_<%=cid%> = com.mongodb.BasicDBObject.parse(<%=query%>);
+            com.mongodb.DBCursor filesCursor_<%=cid%> = gridfs_<%=cid%>.getFileList(gridFSQuery_<%=cid%>);
 
-			<%
-			// SORT CURSOR
-			%>
-			com.mongodb.DBObject sortField_<%=cid%> = new com.mongodb.BasicDBObject();
-			sortField_<%=cid%>.put("<%=sortBy%>", <%=sortOrder%>);
-			filesCursor_<%=cid%> = filesCursor_<%=cid%>.sort(sortField_<%=cid%>);
+            <%// SORT CURSOR
+            %>
+            com.mongodb.DBObject sortField_<%=cid%> = new com.mongodb.BasicDBObject();
+            sortField_<%=cid%>.put("<%=sortBy%>", <%=sortOrder%>);
+            filesCursor_<%=cid%> = filesCursor_<%=cid%>.sort(sortField_<%=cid%>);
 
-			while(filesCursor_<%=cid%>.hasNext()){
-				com.mongodb.DBObject file_<%=cid%> = filesCursor_<%=cid%>.next();
-				nb_line_<%=cid %>++;
-<%
-				if(isLog4jEnabled){
-%>
-					log.info("<%=cid%> - Current file " + file_<%=cid%>.get("filename"));
-<%
-				}
-%>
-				globalMap.put("<%=cid%>_CURRENT_FILEID", (String) file_<%=cid%>.get("_id").toString() );
-				globalMap.put("<%=cid%>_CURRENT_FILENAME", (String) file_<%=cid%>.get("filename"));
-				globalMap.put("<%=cid%>_CURRENT_FILEUPLOADDATE", (java.util.Date) file_<%=cid%>.get("uploadDate"));
-				globalMap.put("<%=cid%>_CURRENT_FILELENGTH", (Long) file_<%=cid%>.get("length"));
-				globalMap.put("<%=cid%>_CURRENT_FILEMD5", (String) file_<%=cid%>.get("md5"));
-<%
-}
-%>
+            while(filesCursor_<%=cid%>.hasNext()) {
+                com.mongodb.DBObject file_<%=cid%> = filesCursor_<%=cid%>.next();
+                nb_line_<%=cid %>++;
+                <%if(isLog4jEnabled) {%>
+                    log.info("<%=cid%> - Current file " + file_<%=cid%>.get("filename"));
+                    <%
+                }%>
 
+                globalMap.put("<%=cid%>_CURRENT_FILEID", (String) file_<%=cid%>.get("_id").toString() );
+                globalMap.put("<%=cid%>_CURRENT_FILENAME", (String) file_<%=cid%>.get("filename"));
+                globalMap.put("<%=cid%>_CURRENT_FILEUPLOADDATE", (java.util.Date) file_<%=cid%>.get("uploadDate"));
+                globalMap.put("<%=cid%>_CURRENT_FILELENGTH", (Long) file_<%=cid%>.get("length"));
+                <%if(!"MONGODB_4_4_X".equals(dbversion)) {%>
+                    globalMap.put("<%=cid%>_CURRENT_FILEMD5", (String) file_<%=cid%>.get("md5"));
+                    <%
+                }
+            }%>
