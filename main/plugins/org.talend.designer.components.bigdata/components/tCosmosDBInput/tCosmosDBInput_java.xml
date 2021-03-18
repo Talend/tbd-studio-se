@@ -201,8 +201,8 @@
             <DEFAULT>""</DEFAULT>
         </PARAMETER>
 
-        <PARAMETER NAME="QUERY_TYPE" REPOSITORY_VALUE="QUERY_TYPE" FIELD="CLOSED_LIST" NUM_ROW="39" GROUP="QUERY_SPECS"
-            SHOW_IF="(((USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'MONGODB_4_4_X')) OR ((USE_EXISTING_CONNECTION == 'true') AND (#LINK@NODE.CONNECTION.DB_VERSION== 'MONGODB_4_4_X')))">>
+        <PARAMETER NAME="QUERY_TYPE" REPOSITORY_VALUE="QUERY_TYPE" FIELD="CLOSED_LIST" NUM_ROW="39" GROUP="QUERY_SPECS" 
+            SHOW_IF="(((USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'MONGODB_4_4_X')) OR ((USE_EXISTING_CONNECTION == 'true') AND (#LINK@NODE.CONNECTION.DB_VERSION== 'MONGODB_4_4_X')))">
             <ITEMS DEFAULT="FIND_QUERY">
                 <ITEM NAME="FIND_QUERY" VALUE="FIND_QUERY"/>
                 <ITEM NAME="AGGREGATION_QUERY" VALUE="AGGREGATION_QUERY" />
@@ -236,6 +236,29 @@ Note : If you are running on a Sharded Cluster, please make sure to include the 
             SHOW_IF="QUERY_TYPE=='AGGREGATION_QUERY'">
             <ITEMS>
                 <ITEM NAME="AGGREGATION_STAGE" FIELD="TEXT" />
+            </ITEMS>
+        </PARAMETER>
+
+        <PARAMETER
+            NAME="SPECIFY_FIELDS"
+            FIELD="CHECK"
+            REPOSITORY_VALUE="SPECIFY_FIELDS"
+            NUM_ROW="46"
+            GROUP="QUERY_SPECS"
+        >
+            <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER
+            FIELD="TABLE"
+            NAME="FIELDS_TO_RETURN"
+            REQUIRED="false"
+            NUM_ROW="47"
+            NB_LINES="3"
+            GROUP="QUERY_SPECS"
+            SHOW_IF="(SPECIFY_FIELDS == 'true')">
+            <ITEMS>
+                <ITEM NAME="FIELD_NAME" FIELD="TEXT" VALUE=""/>
             </ITEMS>
         </PARAMETER>
 
