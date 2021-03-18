@@ -6,6 +6,7 @@
     <libraryNeeded id="avro-compiler-1.8.2.jar" name="avro-compiler-1.8.2.jar" mvn_uri="mvn:org.apache.avro/avro-compiler/1.8.2" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded id="avro-mapred-1.8.2-hadoop2.jar" name="avro-mapred-1.8.2-hadoop2.jar" mvn_uri="mvn:org.apache.avro/avro-mapred/1.8.2-hadoop2" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded id="aws-java-sdk-core-1.11.655.jar" name="aws-java-sdk-core-1.11.655.jar" mvn_uri="mvn:com.amazonaws/aws-java-sdk-core/1.11.655" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
+    <libraryNeeded id="aws-java-sdk-dynamodb-1.11.655.jar" name="aws-java-sdk-dynamodb-1.11.655.jar" mvn_uri="mvn:com.amazonaws/aws-java-sdk-dynamodb/1.11.655" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded id="aws-java-sdk-kinesis-1.11.655.jar" name="aws-java-sdk-kinesis-1.11.655.jar" mvn_uri="mvn:com.amazonaws/aws-java-sdk-kinesis/1.11.655" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded id="azure-data-lake-store-sdk-2.2.8.jar" name="azure-data-lake-store-sdk-2.2.8.jar" mvn_uri="mvn:com.microsoft.azure/azure-data-lake-store-sdk/2.2.8" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded id="azure-storage-5.2.0.jar" name="azure-storage-5.2.0.jar" mvn_uri="mvn:com.microsoft.azure/azure-storage/5.2.0" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
@@ -116,6 +117,12 @@
         <library id="spark-snowflake_2.12-2.8.2-spark_3.0.jar"/>
         <library id="snowflake-jdbc-3.12.12.jar"/>
     </libraryNeededGroup>
+    
+    <!-- DynamoDB group -->
+        <libraryNeededGroup description="DynamoDB libraries for DBR73X" id="DYNAMODB-GROUP-DBR73x" name="DYNAMODB-GROUP-DBR73x">
+            <library id="aws-java-sdk-core-1.11.655.jar"/>
+            <library id="aws-java-sdk-dynamodb-1.11.655.jar"/>
+        </libraryNeededGroup>
     
   </extension>
   <extension point="org.talend.core.runtime.classloader_provider"/>
