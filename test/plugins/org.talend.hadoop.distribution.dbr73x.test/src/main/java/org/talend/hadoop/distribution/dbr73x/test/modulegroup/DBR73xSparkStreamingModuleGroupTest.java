@@ -34,6 +34,7 @@ public class DBR73xSparkStreamingModuleGroupTest {
         expected.put(DBR73xConstant.HIVEONSPARK_LIB_MRREQUIRED_DBR73X.getModuleName(), null);
         expected.put(DBR73xConstant.SPARK_LIB_MRREQUIRED_DBR73X.getModuleName(), null);
         expected.put(DBR73xConstant.BIGDATA_LAUNCHER_LIB_DBR73X.getModuleName(), null);
+        expected.put(DBR73xConstant.DYNAMODB_GROUP_DBR73x.getModuleName(), null);
         Set<DistributionModuleGroup> moduleGroups = DBR73xSparkStreamingModuleGroup.getModuleGroups();
         assertEquals(expected.size(), moduleGroups.size());
         moduleGroups.iterator();
