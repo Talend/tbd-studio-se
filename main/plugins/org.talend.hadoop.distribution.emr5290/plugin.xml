@@ -1390,9 +1390,9 @@
             mvn_uri="mvn:aopalliance/aopalliance/1.0"/>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5290"
-            id="commons-beanutils-core-1.8.0.jar"
-            name="commons-beanutils-core-1.8.0.jar"
-            mvn_uri="mvn:commons-beanutils/commons-beanutils-core/1.8.0"/>
+            id="commons-beanutils-core-1.9.4.jar"
+            name="commons-beanutils-core-1.9.4.jar"
+            mvn_uri="mvn:commons-beanutils/commons-beanutils-core/1.9.4"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5290"
@@ -2118,7 +2118,7 @@
 			<library id="chill-java-0.8.4.jar"/>
 			<library id="chill_2.11-0.8.4.jar"/>
 			<library id="commons-beanutils-1.8.3.jar"/>
-			<library id="commons-beanutils-core-1.8.0.jar"/>
+			<library id="commons-beanutils-core-1.9.4.jar"/>
 			<library id="commons-cli-1.2.jar"/>
 			<library id="commons-codec-1.10.jar"/>
 			<library id="commons-collections-3.2.2.jar"/>
