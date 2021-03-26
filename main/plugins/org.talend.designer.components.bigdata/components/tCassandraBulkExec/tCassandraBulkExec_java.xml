@@ -215,12 +215,12 @@
                 UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/lz4-1.2.0.jar"
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
-                NAME="jackson-core-asl-1.9.14-TALEND"
-                MODULE="jackson-core-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND" 
+                NAME="jackson-core-asl-1.9.15-TALEND"
+                MODULE="jackson-core-asl-1.9.15-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.15-TALEND" 
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
-                NAME="jackson-mapper-asl-1.9.14-TALEND"
-                MODULE="jackson-mapper-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
+                NAME="jackson-mapper-asl-1.9.15-TALEND"
+                MODULE="jackson-mapper-asl-1.9.15-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.15-TALEND" 
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
                 NAME="super-csv-2.1.0"
@@ -301,12 +301,12 @@
                     NAME="high-scale-lib-1.0.6"
                     MODULE="high-scale-lib-1.0.6.jar" MVN="mvn:org.talend.libraries/high-scale-lib-1.0.6/6.0.0" />
                 <IMPORT
-                    NAME="jackson-core-asl-1.9.14-TALEND"
-                    MODULE="jackson-core-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND" 
+                    NAME="jackson-core-asl-1.9.15-TALEND"
+                    MODULE="jackson-core-asl-1.9.15-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.15-TALEND" 
                     />
                 <IMPORT
-                    NAME="jackson-mapper-asl-1.9.14-TALEND"
-                    MODULE="jackson-mapper-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
+                    NAME="jackson-mapper-asl-1.9.15-TALEND"
+                    MODULE="jackson-mapper-asl-1.9.15-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.15-TALEND" 
                     />
                 <IMPORT
                     NAME="jamm-0.3.0"
@@ -402,12 +402,12 @@
 				    NAME="high-scale-lib-1.0.6"
 				    MODULE="high-scale-lib-1.0.6.jar" MVN="mvn:org.talend.libraries/high-scale-lib-1.0.6/6.0.0" />
 				<IMPORT
-				    NAME="jackson-core-asl-1.9.14-TALEND"
-				    MODULE="jackson-core-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND" 
+				    NAME="jackson-core-asl-1.9.15-TALEND"
+				    MODULE="jackson-core-asl-1.9.15-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-core-asl/1.9.15-TALEND" 
 				    />
 				<IMPORT
-				    NAME="jackson-mapper-asl-1.9.14-TALEND"
-				    MODULE="jackson-mapper-asl-1.9.14-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND" 
+				    NAME="jackson-mapper-asl-1.9.15-TALEND"
+				    MODULE="jackson-mapper-asl-1.9.15-TALEND.jar" MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.15-TALEND" 
 				    />
 				<IMPORT
 				    NAME="jamm-0.3.0"
