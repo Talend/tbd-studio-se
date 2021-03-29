@@ -74,7 +74,6 @@
         <module>main/plugins/org.talend.libraries.couchdb</module>
         <module>main/plugins/org.talend.libraries.hadoop</module>
         <module>main/plugins/org.talend.libraries.hcatalog</module>
-        <module>main/plugins/org.talend.libraries.mongo</module>
         <module>main/plugins/org.talend.libraries.neo4j</module>
         <module>main/plugins/org.talend.libraries.sdsulib</module>
         <module>main/plugins/org.talend.libraries.sqoop</module>
