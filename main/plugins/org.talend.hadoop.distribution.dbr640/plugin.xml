@@ -117,9 +117,9 @@
         <libraryNeeded id="talend-bigdata-launcher-jobserver-2.0.12.jar" name="talend-bigdata-launcher-jobserver-2.0.12.jar"
                        mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-jobserver/2.0.12"
                        context="plugin:org.talend.hadoop.distribution.dbr640"/>
-        <libraryNeeded id="talend-bigdata-launcher-databricks-2.0.14.jar"
-                       name="talend-bigdata-launcher-databricks-2.0.14.jar"
-                       mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-databricks/2.0.14"
+        <libraryNeeded id="talend-bigdata-launcher-databricks-2.0.15.jar"
+                       name="talend-bigdata-launcher-databricks-2.0.15.jar"
+                       mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-databricks/2.0.15"
                        context="plugin:org.talend.hadoop.distribution.dbr640"/>
         <libraryNeeded id="wsdl4j-1.6.3.jar" name="wsdl4j-1.6.3.jar" mvn_uri="mvn:wsdl4j/wsdl4j/1.6.3"
                        context="plugin:org.talend.hadoop.distribution.dbr640"/>
@@ -143,7 +143,7 @@
             <library id="jackson-core-2.6.7.jar"/>
             <library id="jackson-databind-2.6.7.1.jar"/>
             <library id="talend-bigdata-launcher-jobserver-2.0.12.jar"/>
-            <library id="talend-bigdata-launcher-databricks-2.0.14.jar"/>
+            <library id="talend-bigdata-launcher-databricks-2.0.15.jar"/>
         </libraryNeededGroup>
         <libraryNeededGroup id="HIVEONSPARK-LIB-MRREQUIRED-DBR640" name="HIVEONSPARK-LIB-MRREQUIRED-DBR640"
                             description="Hive On SPARK libraries for DBR640">

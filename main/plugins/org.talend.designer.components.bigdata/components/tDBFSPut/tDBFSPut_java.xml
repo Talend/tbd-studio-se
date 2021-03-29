@@ -85,9 +85,9 @@
            <IMPORT NAME="commons-logging-1.2.jar" MODULE="commons-logging-1.2.jar" 
                    MVN="mvn:commons-logging/commons-logging/1.2"/>
 
-           <IMPORT NAME="talend-bigdata-launcher-databricks-2.0.14.jar"
-                   MODULE="talend-bigdata-launcher-databricks-2.0.14.jar"
-                   MVN="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-databricks/2.0.14"/>
+           <IMPORT NAME="talend-bigdata-launcher-databricks-2.0.15.jar"
+                   MODULE="talend-bigdata-launcher-databricks-2.0.15.jar"
+                   MVN="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-databricks/2.0.15"/>
 
            <IMPORT NAME="talend-bigdata-launcher-jobserver-2.0.12.jar"
                    MODULE="talend-bigdata-launcher-jobserver-2.0.12.jar"
