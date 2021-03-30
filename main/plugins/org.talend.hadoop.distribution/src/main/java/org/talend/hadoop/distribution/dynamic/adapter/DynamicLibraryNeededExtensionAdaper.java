@@ -22,6 +22,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import org.eclipse.aether.collection.DependencyCollectionException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.talend.commons.utils.threading.TalendCustomThreadPoolExecutor;
 import org.talend.core.runtime.dynamic.DynamicFactory;
@@ -113,8 +114,9 @@ public class DynamicLibraryNeededExtensionAdaper extends DynamicExtensionAdapter
 
                         @Override
                         public void run() {
+                            DynamicModuleAdapter dynamicModuleAdapter = null;
                             try {
-                                DynamicModuleAdapter dynamicModuleAdapter = new DynamicModuleAdapter(templateBean, configuration,
+                                dynamicModuleAdapter = new DynamicModuleAdapter(templateBean, configuration,
                                         moduleBean, dependencyResolver, registedModules);
                                 List<IDynamicConfiguration> librariesNeeded = dynamicModuleAdapter.adapt(monitor,
                                         isEnableMultiThread());
@@ -131,6 +133,11 @@ public class DynamicLibraryNeededExtensionAdaper extends DynamicExtensionAdapter
                                     } else {
                                         ex[0] = e;
                                     }
+                                } else if (e instanceof DependencyCollectionException) {
+                                    System.err.print("ERROR " + moduleBean.getArtifactId() + "-" + moduleBean.getVersion());
+                                    e.printStackTrace();
+                                    String beanId = moduleBean.getId();
+                                    moduleBeanAdapterMap.put(beanId, dynamicModuleAdapter);
                                 } else {
                                     ex[0] = e;
                                 }
