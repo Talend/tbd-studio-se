@@ -6,6 +6,7 @@
     <libraryNeeded id="avro-compiler-1.8.2.jar" name="avro-compiler-1.8.2.jar" mvn_uri="mvn:org.apache.avro/avro-compiler/1.8.2" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded id="avro-mapred-1.8.2-hadoop2.jar" name="avro-mapred-1.8.2-hadoop2.jar" mvn_uri="mvn:org.apache.avro/avro-mapred/1.8.2-hadoop2" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded id="aws-java-sdk-core-1.11.655.jar" name="aws-java-sdk-core-1.11.655.jar" mvn_uri="mvn:com.amazonaws/aws-java-sdk-core/1.11.655" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
+    <libraryNeeded id="aws-java-sdk-dynamodb-1.11.655.jar" name="aws-java-sdk-dynamodb-1.11.655.jar" mvn_uri="mvn:com.amazonaws/aws-java-sdk-dynamodb/1.11.655" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded id="aws-java-sdk-kinesis-1.11.655.jar" name="aws-java-sdk-kinesis-1.11.655.jar" mvn_uri="mvn:com.amazonaws/aws-java-sdk-kinesis/1.11.655" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded id="azure-data-lake-store-sdk-2.2.8.jar" name="azure-data-lake-store-sdk-2.2.8.jar" mvn_uri="mvn:com.microsoft.azure/azure-data-lake-store-sdk/2.2.8" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded id="azure-storage-5.2.0.jar" name="azure-storage-5.2.0.jar" mvn_uri="mvn:com.microsoft.azure/azure-storage/5.2.0" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
@@ -41,8 +42,10 @@
     <libraryNeeded id="spark-streaming_2.12-3.0.1.jar" name="spark-streaming_2.12-3.0.1.jar" mvn_uri="mvn:org.apache.spark/spark-streaming_2.12/3.0.1" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded id="spark-unsafe_2.12-3.0.1.jar" name="spark-unsafe_2.12-3.0.1.jar" mvn_uri="mvn:org.apache.spark/spark-unsafe_2.12/3.0.1" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded id="talend-bigdata-launcher-jobserver-2.0.12.jar" name="talend-bigdata-launcher-jobserver-2.0.12.jar" mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-jobserver/2.0.12" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
-    <libraryNeeded id="talend-bigdata-launcher-databricks-2.0.14.jar" name="talend-bigdata-launcher-databricks-2.0.14.jar" mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-databricks/2.0.14" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
+    <libraryNeeded id="talend-bigdata-launcher-databricks-2.0.15.jar" name="talend-bigdata-launcher-databricks-2.0.15.jar" mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-databricks/2.0.15" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded id="wsdl4j-1.6.3.jar" name="wsdl4j-1.6.3.jar" mvn_uri="mvn:wsdl4j/wsdl4j/1.6.3" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
+    <libraryNeeded context="plugin:org.talend.hadoop.distribution.dbr73x" id="spark-snowflake_2.12-2.8.2-spark_3.0.jar" name="spark-snowflake_2.12-2.8.2-spark_3.0.jar" mvn_uri="mvn:net.snowflake/spark-snowflake_2.12/2.8.2-spark_3.0"/>
+	<libraryNeeded context="plugin:org.talend.hadoop.distribution.dbr73x" id="snowflake-jdbc-3.12.12.jar" name="snowflake-jdbc-3.12.12.jar" mvn_uri="mvn:net.snowflake/snowflake-jdbc/3.12.12"/>
     
     <libraryNeededGroup id="BIGDATA-LAUNCHER-LIB-DBR73X" name="BIGDATA-LAUNCHER-LIB-DBR73X" description="Big Data launcher libraries for DBR73X">
       <library id="gson-2.7.jar"/>
@@ -50,7 +53,7 @@
       <library id="jackson-core-2.10.0.jar"/>
       <library id="jackson-databind-2.10.0.jar"/>
       <library id="talend-bigdata-launcher-jobserver-2.0.12.jar"/>
-      <library id="talend-bigdata-launcher-databricks-2.0.14.jar"/>
+      <library id="talend-bigdata-launcher-databricks-2.0.15.jar"/>
     </libraryNeededGroup>
     
     <libraryNeededGroup id="HIVEONSPARK-LIB-MRREQUIRED-DBR73X" name="HIVEONSPARK-LIB-MRREQUIRED-DBR73X" description="Hive On SPARK libraries for DBR73X">
@@ -108,6 +111,18 @@
     <libraryNeededGroup id="TOPBY-LIB-REQUIRED-DBR73X" name="TOPBY-LIB-REQUIRED-DBR73X" description="tTopBy needed libraries for DBR73X">
       <library id="guava-15.0.jar"/>
     </libraryNeededGroup>
+    
+    <!-- Snowflake group -->
+    <libraryNeededGroup description="Snowflake libraries for DBR73X" id="SNOWFLAKE-GROUP-DBR73x" name="SNOWFLAKE-GROUP-DBR73x">
+        <library id="spark-snowflake_2.12-2.8.2-spark_3.0.jar"/>
+        <library id="snowflake-jdbc-3.12.12.jar"/>
+    </libraryNeededGroup>
+    
+    <!-- DynamoDB group -->
+        <libraryNeededGroup description="DynamoDB libraries for DBR73X" id="DYNAMODB-GROUP-DBR73x" name="DYNAMODB-GROUP-DBR73x">
+            <library id="aws-java-sdk-core-1.11.655.jar"/>
+            <library id="aws-java-sdk-dynamodb-1.11.655.jar"/>
+        </libraryNeededGroup>
     
   </extension>
   <extension point="org.talend.core.runtime.classloader_provider"/>

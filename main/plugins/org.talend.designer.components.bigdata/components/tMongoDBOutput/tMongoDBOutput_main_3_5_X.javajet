@@ -23,6 +23,7 @@
     String bulkWriteOperationSize = ElementParameterParser.getValue(node, "__BULK_WRITE_SIZE__");
     boolean bulkWriteType = "Ordered".equalsIgnoreCase(ElementParameterParser.getValue(node, "__BULK_WRITE_TYPE__"));
     boolean updateAll = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__UPDATE_ALL__"));
+    boolean deleteAll = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__DELETE_ALL__"));
 
 	IConnection inConn = null;
 	IMetadataTable metadata = null;
@@ -192,7 +193,7 @@ try{
                             bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.InsertOneModel<org.bson.Document>(updateObj_<%=cid%>));
 							coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
 							bulkWriteOperationCounter_<%=cid%>=1;
-							bulkWriteOperation_<%=cid%> = new java.util.ArrayList();
+							bulkWriteOperation_<%=cid%> = new java.util.ArrayList<>();
 						}
 						<%
 					// Single Writes
@@ -236,7 +237,7 @@ try{
                                     bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.ReplaceOneModel<org.bson.Document>(queryObj_<%=cid%>,updateObj_<%=cid%>));
 									coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
 									bulkWriteOperationCounter_<%=cid%>=1;
-									bulkWriteOperation_<%=cid%> = new java.util.ArrayList();
+									bulkWriteOperation_<%=cid%> = new java.util.ArrayList<>();
 								}
 								<%
 							}else{
@@ -256,7 +257,7 @@ try{
                                     bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.UpdateOneModel<org.bson.Document>(queryObj_<%=cid%>,new org.bson.Document("$set", updateObj_<%=cid%>)));
                                     coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
                                     bulkWriteOperationCounter_<%=cid%>=1;
-                                    bulkWriteOperation_<%=cid%> = new java.util.ArrayList();
+                                    bulkWriteOperation_<%=cid%> = new java.util.ArrayList<>();
                                 }
                                 <%
                             }else{
@@ -271,23 +272,26 @@ try{
                                 }
                             }
                         // UPSERT
-						} else if("UPSERT".equalsIgnoreCase(dataAction)){
+                        } else if("UPSERT".equalsIgnoreCase(dataAction)){
                             // Bulk Upsert
                             if(bulkWrite){
                                 %>
                                 if(bulkWriteOperationCounter_<%=cid%> < bulkWriteOperationSize_<%=cid%>){
-                                    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.ReplaceOneModel<org.bson.Document>(queryObj_<%=cid%>,updateObj_<%=cid%>,new com.mongodb.client.model.UpdateOptions().upsert(true)));
+                                    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.ReplaceOneModel<org.bson.Document>(queryObj_<%=cid%>, updateObj_<%=cid%>,
+                                        new <%= "MONGODB_4_4_X".equals(dbversion) ? "com.mongodb.client.model.ReplaceOptions()" : "com.mongodb.client.model.UpdateOptions()"%>.upsert(true)));
                                     bulkWriteOperationCounter_<%=cid%>++;
                                 }else{
-                                    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.ReplaceOneModel<org.bson.Document>(queryObj_<%=cid%>,updateObj_<%=cid%>,new com.mongodb.client.model.UpdateOptions().upsert(true)));
+                                    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.ReplaceOneModel<org.bson.Document>(queryObj_<%=cid%>, updateObj_<%=cid%>,
+                                        new <%= "MONGODB_4_4_X".equals(dbversion) ? "com.mongodb.client.model.ReplaceOptions()" : "com.mongodb.client.model.UpdateOptions()"%>.upsert(true)));
                                     coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
                                     bulkWriteOperationCounter_<%=cid%>=1;
-                                    bulkWriteOperation_<%=cid%> = new java.util.ArrayList();
+                                    bulkWriteOperation_<%=cid%> = new java.util.ArrayList<>();
                                 }
                                 <%
                             }else{
                                 %>
-                                coll_<%=cid%>.replaceOne(queryObj_<%=cid%>,updateObj_<%=cid%>,new com.mongodb.client.model.UpdateOptions().upsert(true));
+                                coll_<%=cid%>.replaceOne(queryObj_<%=cid%>,updateObj_<%=cid%>,
+                                    new <%= "MONGODB_4_4_X".equals(dbversion) ? "com.mongodb.client.model.ReplaceOptions()" : "com.mongodb.client.model.UpdateOptions()"%>.upsert(true));
                                 <%
                             }
                         // UPSERT WITH SET
@@ -295,30 +299,26 @@ try{
                             if(updateOnlyColumnExists) {
                             %>
                             org.bson.Document updateOnlyObj_<%=cid%> = updateObjectOnlyUtil_<%=cid%>.getObject();
-                            <%
-                                 if(bulkWrite){
-                                     %>
-                                     if(bulkWriteOperationCounterForUpdateOnlyColumn_<%=cid%> < bulkWriteOperationSize_<%=cid%>){
-                                         bulkWriteOperationForUpdateOnlyColumn_<%=cid%>.add(new com.mongodb.client.model.UpdateOneModel<org.bson.Document>(queryObj_<%=cid%>,new org.bson.Document("$set", updateOnlyObj_<%=cid%>)));
-                                         bulkWriteOperationCounterForUpdateOnlyColumn_<%=cid%>++;
-                                     }else{
-                                         bulkWriteOperationForUpdateOnlyColumn_<%=cid%>.add(new com.mongodb.client.model.UpdateOneModel<org.bson.Document>(queryObj_<%=cid%>,new org.bson.Document("$set", updateOnlyObj_<%=cid%>)));
-                                         coll_<%=cid%>.bulkWrite(bulkWriteOperationForUpdateOnlyColumn_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
-                                         bulkWriteOperationCounterForUpdateOnlyColumn_<%=cid%>=1;
-                                         bulkWriteOperationForUpdateOnlyColumn_<%=cid%> = new java.util.ArrayList();
-                                     }
-                                     <%
-                                 }else{
-                                     if(updateAll){
-                                     %>
-                                     coll_<%=cid%>.updateMany(queryObj_<%=cid%>,new org.bson.Document("$set", updateOnlyObj_<%=cid%>));
-                                     <%
-                                     } else {
-                                     %>
-                                     coll_<%=cid%>.updateOne(queryObj_<%=cid%>,new org.bson.Document("$set", updateOnlyObj_<%=cid%>));
-                                     <%
-                                     }
-                                 }
+                                <%if(bulkWrite) {%>
+                                    if(bulkWriteOperationCounterForUpdateOnlyColumn_<%=cid%> < bulkWriteOperationSize_<%=cid%>){
+                                        bulkWriteOperationForUpdateOnlyColumn_<%=cid%>.add(new com.mongodb.client.model.UpdateOneModel<org.bson.Document>(queryObj_<%=cid%>,new org.bson.Document("$set", updateOnlyObj_<%=cid%>)));
+                                        bulkWriteOperationCounterForUpdateOnlyColumn_<%=cid%>++;
+                                    }else{
+                                        bulkWriteOperationForUpdateOnlyColumn_<%=cid%>.add(new com.mongodb.client.model.UpdateOneModel<org.bson.Document>(queryObj_<%=cid%>,new org.bson.Document("$set", updateOnlyObj_<%=cid%>)));
+                                        coll_<%=cid%>.bulkWrite(bulkWriteOperationForUpdateOnlyColumn_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
+                                        bulkWriteOperationCounterForUpdateOnlyColumn_<%=cid%>=1;
+                                        bulkWriteOperationForUpdateOnlyColumn_<%=cid%> = new java.util.ArrayList<>();
+                                    }
+                                    <%
+                                }else{
+                                    if(updateAll){%>
+                                        coll_<%=cid%>.updateMany(queryObj_<%=cid%>,new org.bson.Document("$set", updateOnlyObj_<%=cid%>));
+                                        <%
+                                    } else {%>
+                                        coll_<%=cid%>.updateOne(queryObj_<%=cid%>,new org.bson.Document("$set", updateOnlyObj_<%=cid%>));
+                                        <%
+                                    }
+                                }
                             }
                             
                             if(!allColumnOnlyUpdate) {//if all columns are only updateable, then no need to do the upsert action
@@ -348,7 +348,7 @@ try{
 	                                    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.UpdateOneModel<org.bson.Document>(queryObj_<%=cid%>,setObj_<%=cid%>,new com.mongodb.client.model.UpdateOptions().upsert(true)));
 	                                    coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>, new com.mongodb.client.model.BulkWriteOptions().ordered(<%=bulkWriteType%>));
 	                                    bulkWriteOperationCounter_<%=cid%>=1;
-	                                    bulkWriteOperation_<%=cid%> = new java.util.ArrayList();
+	                                    bulkWriteOperation_<%=cid%> = new java.util.ArrayList<>();
 	                                }
 	                                <%
 	                            }else{
@@ -375,13 +375,17 @@ try{
 								    bulkWriteOperation_<%=cid%>.add(new com.mongodb.client.model.DeleteOneModel<org.bson.Document>(queryObj_<%=cid%>));
 									coll_<%=cid%>.bulkWrite(bulkWriteOperation_<%=cid%>);
 									bulkWriteOperationCounter_<%=cid%>=1;
-									bulkWriteOperation_<%=cid%> = new java.util.ArrayList();
+									bulkWriteOperation_<%=cid%> = new java.util.ArrayList<>();
 								}
 								<%
 							}else{
-								%>
-								coll_<%=cid%>.deleteOne(queryObj_<%=cid%>);
-								<%
+								if(deleteAll) {%>
+									coll_<%=cid%>.deleteMany(queryObj_<%=cid%>);
+									<%
+								} else {%>
+									coll_<%=cid%>.deleteOne(queryObj_<%=cid%>);
+									<%
+								}
 							}
 						}
 						%>

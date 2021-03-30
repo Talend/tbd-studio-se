@@ -6,21 +6,21 @@
         <!-- Big Data launcher libraries -->
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
-            id="talend-bigdata-launcher-core-2.0.11"
-            name="talend-bigdata-launcher-core-2.0.11.jar"
-            mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.0.11">
+            id="talend-bigdata-launcher-core-2.0.14"
+            name="talend-bigdata-launcher-core-2.0.14.jar"
+            mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.0.14">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
-            id="talend-bigdata-launcher-dataproc-2.0.11"
-            name="talend-bigdata-launcher-dataproc-2.0.11.jar"
-            mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-dataproc/2.0.11">
+            id="talend-bigdata-launcher-dataproc-2.0.14"
+            name="talend-bigdata-launcher-dataproc-2.0.14.jar"
+            mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-dataproc/2.0.14">
         </libraryNeeded>
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.dataproc14"
-            id="talend-bigdata-launcher-jobserver-2.0.11"
-            name="talend-bigdata-launcher-jobserver-2.0.11.jar"
-            mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-jobserver/2.0.11">
+            id="talend-bigdata-launcher-jobserver-2.0.14"
+            name="talend-bigdata-launcher-jobserver-2.0.14.jar"
+            mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-jobserver/2.0.14">
         </libraryNeeded>
 
         <libraryNeeded
@@ -690,9 +690,9 @@
                 description="Big Data launcher libraries for Dataproc 1.4"
                 id="BIGDATA-LAUNCHER-LIB-DATAPROC14"
                 name="BIGDATA-LAUNCHER-LIB-DATAPROC14"  >
-			<library id="talend-bigdata-launcher-core-2.0.11" />
-			<library id="talend-bigdata-launcher-dataproc-2.0.11" />
-			<library id="talend-bigdata-launcher-jobserver-2.0.11" />
+			<library id="talend-bigdata-launcher-core-2.0.14" />
+			<library id="talend-bigdata-launcher-dataproc-2.0.14" />
+			<library id="talend-bigdata-launcher-jobserver-2.0.14" />
 			<library id="google-auth-library-credentials" />
 			<library id="google-api-services-storage-v1-rev20181109-1.27.0.jar" />
 			<library id="google-api-services-dataproc" />
@@ -755,9 +755,9 @@
                 description="tGoogleDataprocManage libraries for Dataproc 1.4"
                 id="GOOGLE-DATAPROC-MANAGE-LIB-DATAPROC14"
                 name="GOOGLE-DATAPROC-MANAGE-LIB-DATAPROC14"  >
-			<library id="talend-bigdata-launcher-core-2.0.11" />
-			<library id="talend-bigdata-launcher-dataproc-2.0.11" />
-			<library id="talend-bigdata-launcher-jobserver-2.0.11" />
+			<library id="talend-bigdata-launcher-core-2.0.14" />
+			<library id="talend-bigdata-launcher-dataproc-2.0.14" />
+			<library id="talend-bigdata-launcher-jobserver-2.0.14" />
 			<library id="google-auth-library-credentials" />
 			<library id="google-api-services-storage-v1-rev20181109-1.27.0.jar" />
 			<library id="google-api-services-dataproc" />
@@ -828,9 +828,9 @@
             <library id="httpcore-4.4.11.jar"/>
             <library id="httpclient-4.5.9.jar"/>
 
-			<library id="talend-bigdata-launcher-core-2.0.11" />
-			<library id="talend-bigdata-launcher-dataproc-2.0.11" />
-			<library id="talend-bigdata-launcher-jobserver-2.0.11" />
+			<library id="talend-bigdata-launcher-core-2.0.14" />
+			<library id="talend-bigdata-launcher-dataproc-2.0.14" />
+			<library id="talend-bigdata-launcher-jobserver-2.0.14" />
 			<library id="google-auth-library-credentials" />
 			<library id="google-api-services-storage-v1-rev20181109-1.27.0.jar" />
 			<library id="google-api-services-dataproc" />
@@ -933,9 +933,9 @@
                 id="SPARK2-LIB-DATAPROC14"
                 name="SPARK2-LIB-DATAPROC14">
 			 <library id="avro-mapred-1.8.2-hadoop2.jar"/>
-			 <library id="talend-bigdata-launcher-core-2.0.11" />
-			 <library id="talend-bigdata-launcher-dataproc-2.0.11" />
-			 <library id="talend-bigdata-launcher-jobserver-2.0.11" />
+			 <library id="talend-bigdata-launcher-core-2.0.14" />
+			 <library id="talend-bigdata-launcher-dataproc-2.0.14" />
+			 <library id="talend-bigdata-launcher-jobserver-2.0.14" />
 			 <library id="scala-reflect-2.11.8.jar"/>
              <library id="kryo-shaded-4.0.2"/>
              <library id="failureaccess-1.0.1.jar"/>
@@ -1043,11 +1043,11 @@
       </classloader>
       <classloader
             index="HIVE:GOOGLE_CLOUD_DATAPROC:DATAPROC_1_4:STANDALONE"
-            libraries="avro-1.7.7.jar;commons-codec-1.11.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;opencensus-api-0.21.0.jar;xpp3-1.1.4c.jar;transaction-api-1.1.jar;protobuf-java-3.6.1.jar;opencensus-contrib-http-util-0.21.0.jar;jsr305-3.0.2.jar;jetty-util-6.1.26.jar;jetty-6.1.26.jar;jdo2-api-2.3-eb.jar;google-api-client-gson-1.30.2.jar;commons-lang-2.6.jar;commons-lang3-3.5.jar;commons-logging-1.2.jar;google-api-client-1.30.1.jar;google-api-client-appengine-1.30.2.jar;google-api-client-servlet-1.30.2.jar;google-http-client-apache-2.1.0.jar;error_prone_annotations-2.1.3.jar;checker-compat-qual-2.5.2.jar;animal-sniffer-annotations-1.14.jar;j2objc-annotations-1.3.jar;google-api-client-xml-1.30.2.jar;google-api-client-protobuf-1.30.2.jar;google-api-client-java6-1.30.2.jar;google-api-client-jackson2-1.30.2.jar;google-http-client-1.30.1.jar;google-http-client-gson-1.30.2.jar;google-http-client-appengine-1.30.2.jar;google-http-client-jackson-1.21.0.jar;google-http-client-protobuf-1.30.2.jar;google-http-client-jackson2-1.30.1.jar;gson-2.8.5.jar;grpc-context-1.19.0.jar;google-oauth-client-servlet-1.30.1.jar;google-oauth-client-jetty-1.30.1.jar;google-oauth-client-java6-1.30.1.jar;google-oauth-client-appengine-1.30.1.jar;google-oauth-client-1.30.1.jar;guava-27.0.1-jre.jar;hadoop-auth-2.7.3-dataproc14.jar;hadoop-common-2.9.2.jar;hadoop-hdfs-2.9.2.jar;hadoop-mapreduce-client-core-2.7.3-dataproc14.jar;hive-common-2.1.1-dataproc14.jar;hive-exec-2.1.1-dataproc14.jar;hive-jdbc-2.1.1-dataproc14.jar;hive-metastore-2.1.1-dataproc14.jar;hive-service-2.1.1-dataproc14.jar;hive-service-rpc-2.1.1-dataproc14.jar;httpclient-4.5.9.jar;httpcore-4.4.11.jar;jackson-core-2.9.9.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jets3t-0.9.0.jar;json-20170516.jar;libfb303-0.9.3.jar;slf4j-api-1.7.16.jar;slf4j-log4j12-1.7.25.jar;talend-bigdata-launcher-core-2.0.11;talend-bigdata-launcher-dataproc-2.0.11;talend-bigdata-launcher-jobserver-2.0.11;libthrift-0.9.3.jar;log4j-1.2.17.jar;google-auth-library-credentials-0.16.2.jar;google-api-services-storage-v1-rev20181109-1.27.0.jar;google-cloud-core-1.73.0.jar;google-auth-library-oauth2-http-0.16.2.jar;google-cloud-storage-1.73.0.jar;gax-1.47.1.jar;threetenbp-1.3.3.jar;api-common-1.8.1.jar;google-cloud-core-http-1.73.0.jar;gax-httpjson-0.64.1.jar">
+            libraries="avro-1.7.7.jar;commons-codec-1.11.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;opencensus-api-0.21.0.jar;xpp3-1.1.4c.jar;transaction-api-1.1.jar;protobuf-java-3.6.1.jar;opencensus-contrib-http-util-0.21.0.jar;jsr305-3.0.2.jar;jetty-util-6.1.26.jar;jetty-6.1.26.jar;jdo2-api-2.3-eb.jar;google-api-client-gson-1.30.2.jar;commons-lang-2.6.jar;commons-lang3-3.5.jar;commons-logging-1.2.jar;google-api-client-1.30.1.jar;google-api-client-appengine-1.30.2.jar;google-api-client-servlet-1.30.2.jar;google-http-client-apache-2.1.0.jar;error_prone_annotations-2.1.3.jar;checker-compat-qual-2.5.2.jar;animal-sniffer-annotations-1.14.jar;j2objc-annotations-1.3.jar;google-api-client-xml-1.30.2.jar;google-api-client-protobuf-1.30.2.jar;google-api-client-java6-1.30.2.jar;google-api-client-jackson2-1.30.2.jar;google-http-client-1.30.1.jar;google-http-client-gson-1.30.2.jar;google-http-client-appengine-1.30.2.jar;google-http-client-jackson-1.21.0.jar;google-http-client-protobuf-1.30.2.jar;google-http-client-jackson2-1.30.1.jar;gson-2.8.5.jar;grpc-context-1.19.0.jar;google-oauth-client-servlet-1.30.1.jar;google-oauth-client-jetty-1.30.1.jar;google-oauth-client-java6-1.30.1.jar;google-oauth-client-appengine-1.30.1.jar;google-oauth-client-1.30.1.jar;guava-27.0.1-jre.jar;hadoop-auth-2.7.3-dataproc14.jar;hadoop-common-2.9.2.jar;hadoop-hdfs-2.9.2.jar;hadoop-mapreduce-client-core-2.7.3-dataproc14.jar;hive-common-2.1.1-dataproc14.jar;hive-exec-2.1.1-dataproc14.jar;hive-jdbc-2.1.1-dataproc14.jar;hive-metastore-2.1.1-dataproc14.jar;hive-service-2.1.1-dataproc14.jar;hive-service-rpc-2.1.1-dataproc14.jar;httpclient-4.5.9.jar;httpcore-4.4.11.jar;jackson-core-2.9.9.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jets3t-0.9.0.jar;json-20170516.jar;libfb303-0.9.3.jar;slf4j-api-1.7.16.jar;slf4j-log4j12-1.7.25.jar;talend-bigdata-launcher-core-2.0.14;talend-bigdata-launcher-dataproc-2.0.14;talend-bigdata-launcher-jobserver-2.0.14;libthrift-0.9.3.jar;log4j-1.2.17.jar;google-auth-library-credentials-0.16.2.jar;google-api-services-storage-v1-rev20181109-1.27.0.jar;google-cloud-core-1.73.0.jar;google-auth-library-oauth2-http-0.16.2.jar;google-cloud-storage-1.73.0.jar;gax-1.47.1.jar;threetenbp-1.3.3.jar;api-common-1.8.1.jar;google-cloud-core-http-1.73.0.jar;gax-httpjson-0.64.1.jar">
       </classloader> 
       <classloader
             index="HIVE2:GOOGLE_CLOUD_DATAPROC:DATAPROC_1_4:STANDALONE"
-            libraries="avro-1.7.7.jar;commons-codec-1.11.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;opencensus-api-0.21.0.jar;xpp3-1.1.4c.jar;transaction-api-1.1.jar;protobuf-java-3.6.1.jar;opencensus-contrib-http-util-0.21.0.jar;jsr305-3.0.2.jar;jetty-util-6.1.26.jar;jetty-6.1.26.jar;jdo2-api-2.3-eb.jar;google-api-client-gson-1.30.2.jar;commons-lang-2.6.jar;commons-lang3-3.5.jar;commons-logging-1.2.jar;google-api-client-1.30.1.jar;google-api-client-appengine-1.30.2.jar;google-api-client-servlet-1.30.2.jar;google-http-client-apache-2.1.0.jar;error_prone_annotations-2.1.3.jar;checker-compat-qual-2.5.2.jar;animal-sniffer-annotations-1.14.jar;j2objc-annotations-1.3.jar;google-api-client-xml-1.30.2.jar;google-api-client-protobuf-1.30.2.jar;google-api-client-java6-1.30.2.jar;google-api-client-jackson2-1.30.2.jar;google-http-client-1.30.1.jar;google-http-client-appengine-1.30.2.jar;google-http-client-gson-1.30.2.jar;google-http-client-jackson-1.21.0.jar;google-http-client-protobuf-1.30.2.jar;google-http-client-jackson2-1.30.1.jar;gson-2.8.5.jar;grpc-context-1.19.0.jar;google-oauth-client-servlet-1.30.1.jar;google-oauth-client-jetty-1.30.1.jar;google-oauth-client-java6-1.30.1.jar;google-oauth-client-appengine-1.30.1.jar;google-oauth-client-1.30.1.jar;guava-27.0.1-jre.jar;hadoop-auth-2.7.3-dataproc14.jar;hadoop-common-2.9.2.jar;hadoop-hdfs-2.9.2.jar;hadoop-mapreduce-client-core-2.7.3-dataproc14.jar;hive-common-2.1.1-dataproc14.jar;hive-exec-2.1.1-dataproc14.jar;hive-jdbc-2.1.1-dataproc14.jar;hive-metastore-2.1.1-dataproc14.jar;hive-service-2.1.1-dataproc14.jar;hive-service-rpc-2.1.1-dataproc14.jar;httpclient-4.5.9.jar;httpcore-4.4.11.jar;jackson-core-2.9.9.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jets3t-0.9.0.jar;json-20170516.jar;libfb303-0.9.3.jar;slf4j-api-1.7.16.jar;slf4j-log4j12-1.7.25.jar;talend-bigdata-launcher-core-2.0.11;talend-bigdata-launcher-dataproc-2.0.11;talend-bigdata-launcher-jobserver-2.0.11;libthrift-0.9.3.jar;log4j-1.2.17.jar;google-auth-library-credentials-0.16.2.jar;google-api-services-storage-v1-rev20181109-1.27.0.jar;google-cloud-core-1.73.0.jar;google-auth-library-oauth2-http-0.16.2.jar;google-cloud-storage-1.73.0.jar;gax-1.47.1.jar;threetenbp-1.3.3.jar;api-common-1.8.1.jar;google-cloud-core-http-1.73.0.jar;gax-httpjson-0.64.1.jar">
+            libraries="avro-1.7.7.jar;commons-codec-1.11.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;opencensus-api-0.21.0.jar;xpp3-1.1.4c.jar;transaction-api-1.1.jar;protobuf-java-3.6.1.jar;opencensus-contrib-http-util-0.21.0.jar;jsr305-3.0.2.jar;jetty-util-6.1.26.jar;jetty-6.1.26.jar;jdo2-api-2.3-eb.jar;google-api-client-gson-1.30.2.jar;commons-lang-2.6.jar;commons-lang3-3.5.jar;commons-logging-1.2.jar;google-api-client-1.30.1.jar;google-api-client-appengine-1.30.2.jar;google-api-client-servlet-1.30.2.jar;google-http-client-apache-2.1.0.jar;error_prone_annotations-2.1.3.jar;checker-compat-qual-2.5.2.jar;animal-sniffer-annotations-1.14.jar;j2objc-annotations-1.3.jar;google-api-client-xml-1.30.2.jar;google-api-client-protobuf-1.30.2.jar;google-api-client-java6-1.30.2.jar;google-api-client-jackson2-1.30.2.jar;google-http-client-1.30.1.jar;google-http-client-appengine-1.30.2.jar;google-http-client-gson-1.30.2.jar;google-http-client-jackson-1.21.0.jar;google-http-client-protobuf-1.30.2.jar;google-http-client-jackson2-1.30.1.jar;gson-2.8.5.jar;grpc-context-1.19.0.jar;google-oauth-client-servlet-1.30.1.jar;google-oauth-client-jetty-1.30.1.jar;google-oauth-client-java6-1.30.1.jar;google-oauth-client-appengine-1.30.1.jar;google-oauth-client-1.30.1.jar;guava-27.0.1-jre.jar;hadoop-auth-2.7.3-dataproc14.jar;hadoop-common-2.9.2.jar;hadoop-hdfs-2.9.2.jar;hadoop-mapreduce-client-core-2.7.3-dataproc14.jar;hive-common-2.1.1-dataproc14.jar;hive-exec-2.1.1-dataproc14.jar;hive-jdbc-2.1.1-dataproc14.jar;hive-metastore-2.1.1-dataproc14.jar;hive-service-2.1.1-dataproc14.jar;hive-service-rpc-2.1.1-dataproc14.jar;httpclient-4.5.9.jar;httpcore-4.4.11.jar;jackson-core-2.9.9.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jets3t-0.9.0.jar;json-20170516.jar;libfb303-0.9.3.jar;slf4j-api-1.7.16.jar;slf4j-log4j12-1.7.25.jar;talend-bigdata-launcher-core-2.0.14;talend-bigdata-launcher-dataproc-2.0.14;talend-bigdata-launcher-jobserver-2.0.14;libthrift-0.9.3.jar;log4j-1.2.17.jar;google-auth-library-credentials-0.16.2.jar;google-api-services-storage-v1-rev20181109-1.27.0.jar;google-cloud-core-1.73.0.jar;google-auth-library-oauth2-http-0.16.2.jar;google-cloud-storage-1.73.0.jar;gax-1.47.1.jar;threetenbp-1.3.3.jar;api-common-1.8.1.jar;google-cloud-core-http-1.73.0.jar;gax-httpjson-0.64.1.jar">
       </classloader>    
     </extension>
 </plugin>

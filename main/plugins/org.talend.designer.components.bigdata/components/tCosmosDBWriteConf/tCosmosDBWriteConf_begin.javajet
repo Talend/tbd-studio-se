@@ -12,7 +12,7 @@
 		org.talend.core.model.utils.NodeUtil
 	" 
 %>
-	<% 
+<%
 	CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
 	INode node = (INode)codeGenArgument.getArgument();
   	String cid = node.getUniqueName();
@@ -24,8 +24,8 @@
     String krbUserPrincipal = ElementParameterParser.getValue(node, "__KRB_USER_PRINCIPAL__");
     String krbRealm = ElementParameterParser.getValue(node, "__KRB_REALM__");
     String krbKdc = ElementParameterParser.getValue(node, "__KRB_KDC__");
-    String dbuser   = ElementParameterParser.getValue(node, "__USERNAME__");
-    String dbpass   = ElementParameterParser.getValue(node, "__PASSWORD__");
+    String dbuser = ElementParameterParser.getValue(node, "__USERNAME__");
+    String dbpass = ElementParameterParser.getValue(node, "__PASSWORD__");
     String mongoPort = ElementParameterParser.getValue(node, "__PORT__");
     String dbport = mongoPort.startsWith("context.") ? "Integer.valueOf(" + mongoPort + ").intValue()" : mongoPort.replace("\"", "");
     String collection=ElementParameterParser.getValue(node, "__COLLECTION__");
@@ -33,7 +33,7 @@
     boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"));
     boolean useReplicaSet="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_REPLICA_SET__"));
     boolean removeRoot="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REMOVE_ROOT__"));
-
+    boolean useSSL = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_SSL__"));
     boolean setWriteConcern = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_WRITE_CONCERN__"));
     String writeConcern = ElementParameterParser.getValue(node, "__WRITE_CONCERN__");
 
@@ -43,172 +43,114 @@
     boolean useAuthDB = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_AUTHENTICATION_DATABASE__"));
     String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
     String usedAuthenticationDB = useAuthDB ? authDB : dbname;
-    boolean queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
+    String dataAction = ElementParameterParser.getValue(node,"__DATA_ACTION__");
+    List<Map<String,String>> replicaAddrs= (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__REPLICA_SET__");
+    boolean queryOptionNoTimeOut;
+	String dbversion;
+	if(useExistingConnection){
+	    String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+        INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
+        dbversion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
+        queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(connectionNode, "__QUERYOPTION_NOTIMEOUT__"));
+    }else{
+        dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
+        queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
+    }
+    boolean version_4_4_X = "MONGODB_4_4_X".equals(dbversion);
+    String objectType = (version_4_4_X) ? "org.bson.Document" : "com.mongodb.DBObject";
 
     boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
 	%>
+
 	int nb_line_<%=cid %> = 0;
 	<%
     List<IMetadataTable> metadatas = node.getMetadataList();
-  	if(metadatas != null && metadatas.size() > 0){
-      	IMetadataTable metadata = metadatas.get(0);
-      	if(metadata != null){
-		%>
-			com.mongodb.Mongo mongo_<%=cid%>=null;
-			com.mongodb.DB db_<%=cid%> =null;
+    if(metadatas != null && metadatas.size() > 0) {
+        IMetadataTable metadata = metadatas.get(0);
+        if(metadata != null) {%>
+
+		<%if(version_4_4_X) {%>
+			<%@ include file="./tCosmosDBWriteConf_begin_4_4_X.javajet"%>
 			<%
-      		if (useExistingConnection){
-      			String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
-				%>
-				mongo_<%=cid%>=(com.mongodb.Mongo)globalMap.get("mongo_<%=connection%>");
-				db_<%=cid%> = (com.mongodb.DB) globalMap.get("db_<%=connection%>");
+		} else {%>
+			<%@ include file="./tCosmosDBWriteConf_begin_below_4_4_X.javajet"%>
 				<%
-				if(isLog4jEnabled){
-				%>	
-					log.info("<%=cid%> - Get an existing client from " + "<%=connection%>" + ".");
-					log.info("<%=cid%> - Get an existing DB from " + "<%=connection%>" + ".");
-				<%
+		}%>
+		
+		resourceMap.put("mongo_<%=cid%>", mongo_<%=cid%>);
+
+		<%if(isLog4jEnabled) {
+			if(version_4_4_X) {%>
+				for (com.mongodb.connection.ServerDescription description : mongo_<%=cid%>.getClusterDescription().getServerDescriptions()) {
+					log.info("<%=cid%> - Connecting to " + description.getAddress());
 				}
-			}else{
-			%>
 				<%
-	 			List<Map<String,String>> replicaAddrs= (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__REPLICA_SET__");
-		        boolean useSSL = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_SSL__"));
-
-		        String mongoDbDriver = "com.mongodb.MongoClient";
-
-		        %>
-				<%@ include file="../templates/CosmosDB/ApplicationName.javajet"%>
-                // Empty client options
-                com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().applicationName(applicationName_<%=cid %>).build();
-                <%
-                if (useSSL) {
-                    %>
-                    clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().applicationName(applicationName_<%=cid %>)
-                    .socketFactory(javax.net.ssl.SSLSocketFactory.getDefault())
-                    .build();
-                    <%
-                }
-                
-                // Client Credentials
-                %>
-                // Empty client credentials list
-                java.util.List<com.mongodb.MongoCredential> mongoCredentialList_<%=cid%> = new java.util.ArrayList<com.mongodb.MongoCredential>();
-
-                <%
-                // Authentication
-                if (authentication){
-                    %>
-                    com.mongodb.MongoCredential mongoCredential_<%=cid%>;
-                    <%
-                    if((authenticationMechanism.equals("NEGOTIATE_MEC"))||(authenticationMechanism.equals("PLAIN_MEC"))||(authenticationMechanism.equals("SCRAMSHA1_MEC"))){
-                        String passwordFieldName = "__PASSWORD__";
-                        %>
-                        <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
-                        <%
-                        if(authenticationMechanism.equals("NEGOTIATE_MEC")){
-%>
-                    	    mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createCredential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
-<%                    
-                        } else if(authenticationMechanism.equals("PLAIN_MEC")){
-                            %>
-                            mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createPlainCredential(<%=dbuser%>, "$external", new String(decryptedPassword_<%=cid%>).toCharArray());
-                            <%
-                        } else if(authenticationMechanism.equals("SCRAMSHA1_MEC")){
-                            %>
-                            mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createScramSha1Credential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
-                            <%
-                        }
-                    } else { // GSSAPI SASL (KERBEROS)
-                        %>
-                        System.setProperty("java.security.krb5.realm", <%=krbRealm%>);
-                        System.setProperty("java.security.krb5.kdc", <%=krbKdc%>);
-                        System.setProperty("javax.security.auth.useSubjectCredsOnly", "false");
-                        mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createGSSAPICredential(<%=krbUserPrincipal%>);
-                        <%
-                    }
-                    %>
-                    mongoCredentialList_<%=cid%>.add(mongoCredential_<%=cid%>);
-                    <%
-                }
-
-                // the client
-                if(useReplicaSet){
-                    %>
-                    List<com.mongodb.ServerAddress> addrs_<%=cid%> = new java.util.ArrayList<com.mongodb.ServerAddress>();
-                    <%
-                    for(Map<String,String> replicaAddr:replicaAddrs){
-                    %>
-                        addrs_<%=cid%>.add(new com.mongodb.ServerAddress(<%=replicaAddr.get("REPLICA_HOST")%>,<%=replicaAddr.get("REPLICA_PORT")%>));
-                    <%
-                    }
-                    %>
-                    mongo_<%=cid%> = new <%=mongoDbDriver%>(addrs_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
-                    <%
-                }else{
-                    %>
-                    com.mongodb.ServerAddress serverAddress_<%=cid%> = new com.mongodb.ServerAddress(<%=dbhost%>, <%=dbport%>);
-                    mongo_<%=cid%> = new <%=mongoDbDriver%>(serverAddress_<%=cid%>, mongoCredentialList_<%=cid%>, clientOptions_<%=cid%>);
-                    <%
-                }
-                %>
-				resourceMap.put("mongo_<%=cid%>", mongo_<%=cid%>);
-				db_<%=cid%> = mongo_<%=cid%>.getDB(<%=dbname%>);
-				<%
-			}
-
-			if(queryOptionNoTimeOut){
-		        %>
-		        mongo_<%=cid%>.addOption(com.mongodb.Bytes.QUERYOPTION_NOTIMEOUT);
-		        <%
-    		}
-
-			if(setWriteConcern){
-				%>
-				mongo_<%=cid%>.setWriteConcern(com.mongodb.WriteConcern.<%=writeConcern%>);
-				<%
-			}
-
-			if(isLog4jEnabled){
-			%>	
+			} else {%>
 				log.info("<%=cid%> - Connecting to " + mongo_<%=cid%>.getServerAddressList() + ".");
-			<%
+				<%
 			}
-			if(dropExistCollection){
-			%>
+		}
+		if(dropExistCollection) {
+			if(version_4_4_X) {%>
+				db_<%=cid%>.getCollection(<%=collection%>).drop();
+				<%
+			} else {%>
+				if(db_<%=cid%>.collectionExists(<%=collection%>)) {
 					db_<%=cid%>.getCollection(<%=collection%>).drop();
-			<%
+				}
+				<%
 			}
-			%>
+		}%>
+
+		<%if(version_4_4_X) {%>
+			com.mongodb.client.MongoCollection<org.bson.Document> coll_<%=cid%> = db_<%=cid%>.getCollection(<%=collection%>);
+			<%
+		} else {%>
 			com.mongodb.DBCollection coll_<%=cid%> = db_<%=cid%>.getCollection(<%=collection%>);
+			<%
+		}%>
 
 			<%
 			// BulkWrite
-			if(bulkWrite){
-			%>
-				com.mongodb.BulkWriteOperation bulkWriteOperation_<%=cid%> = coll_<%=cid%>.initialize<%=bulkWriteType%>BulkOperation();
+			if(bulkWrite) {%>
 				int bulkWriteOperationCounter_<%=cid%> = 1;
 				int bulkWriteOperationSize_<%=cid%> = Integer.parseInt(<%=bulkWriteOperationSize%>);
-				<%
-			}
+				<%if(version_4_4_X) {
+					if("INSERT".equalsIgnoreCase(dataAction)) {%>
+						List<com.mongodb.client.model.InsertOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.InsertOneModel<org.bson.Document>>();
+						<%
+					} else if("UPSERT".equalsIgnoreCase(dataAction)||"UPDATE".equalsIgnoreCase(dataAction)) {%>
+						List<com.mongodb.client.model.ReplaceOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.ReplaceOneModel<org.bson.Document>>();
+						<%
+					} else if("DELETE".equalsIgnoreCase(dataAction)) {%>
+						List<com.mongodb.client.model.DeleteOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.DeleteOneModel<org.bson.Document>>();
+						<%
+					} else { //update set upset_with_set
+						%>
+						List<com.mongodb.client.model.UpdateOneModel<org.bson.Document>> bulkWriteOperation_<%=cid%> = new java.util.ArrayList<com.mongodb.client.model.UpdateOneModel<org.bson.Document>>();
+						<%
+					}
+				} else {%>
+					com.mongodb.BulkWriteOperation bulkWriteOperation_<%=cid%> = coll_<%=cid%>.initialize<%=bulkWriteType%>BulkOperation();
+					<%
+				}
+			}%>
 
-			%>
-				
 			net.sf.json.xml.XMLSerializer xmlSerializer_<%=cid%> = new net.sf.json.xml.XMLSerializer(); 
 		    xmlSerializer_<%=cid%>.clearNamespaces();
 		    xmlSerializer_<%=cid%>.setSkipNamespaces(true);
 		    xmlSerializer_<%=cid%>.setForceTopLevelObject(<%=(removeRoot?false:true)%>);
+		    xmlSerializer_<%=cid%>.setUseLongDecimals(true);
 		    <%
 		    INode sourceNode = node.getIncomingConnections(EConnectionType.ON_COMPONENT_OK).get(0).getSource();
 			String virtualSourceCid = sourceNode.getUniqueName();
 			INode startNode = NodeUtil.getSpecificStartNode(sourceNode);
 			String startNodeCid = null; 
-			if(startNode != null){
+			if(startNode != null) {
 				startNodeCid = startNode.getUniqueName();
 			} 
 			IConnection nextMergeConn = NodeUtil.getNextMergeConnection(node);
-			if(nextMergeConn != null && nextMergeConn.getInputId()>1 && startNodeCid != null){
-			%>
+			if(nextMergeConn != null && nextMergeConn.getInputId()>1 && startNodeCid != null) {%>
 				java.util.Queue<String> queue_<%=cid%> = new java.util.concurrent.ConcurrentLinkedQueue<String>();
 				
 				class ThreadXMLField_<%=cid%> extends Thread {
@@ -252,22 +194,17 @@
 				
 				ThreadXMLField_<%=cid%> txf_<%=cid%> = new ThreadXMLField_<%=cid%>(queue_<%=cid%>);
 				txf_<%=cid%>.start();
-			<%
-			}else{
-			%>
+				<%
+			} else {%>
 				java.util.Queue<String> queue_<%=cid%> = (java.util.Queue<String>) globalMap.get("queue_<%=cid%>");
-			<%
-			}
-		    %>
+				<%
+			}%>
 			String readFinishMarkWithPipeId_<%=cid%> = "<%=cid%>_FINISH"+(queue_<%=cid%>==null?"":queue_<%=cid%>.hashCode());
 			String str_<%=cid %> = null;
-			<%
-			if(isLog4jEnabled){
-			%>
+			<%if(isLog4jEnabled) {%>
 				log.info("<%=cid%> - Start to write data into database ["+db_<%=cid%>.getName()+"], data is generated by [<%=virtualSourceCid%>].");
-			<%
-			}
-			%>
+				<%
+			}%>
 	         /**
              * Convert Date and Byte array in mongo DB format
              *
@@ -278,51 +215,49 @@
                  * header method to ease javajet implementation.
                  **/
                 public void processTree(Object currentElement, String[] path, String pattern) {
-                    if (currentElement instanceof com.mongodb.BasicDBObject) {
+                    if (currentElement instanceof <%=objectType%>) {
                         // Start index at 1, in order to remove the first unwanted or empty string.
-                        processTree((com.mongodb.BasicDBObject)currentElement, path, 1, pattern);
-                   } else if (currentElement instanceof com.mongodb.BasicDBList) {
+                        processTree((<%=objectType%>)currentElement, path, 1, pattern);
+                   } else if (currentElement instanceof java.util.List) {
                        // Start index at 1, in order to remove the first unwanted or empty string.
-                       processTree((com.mongodb.BasicDBList) currentElement, path, 1, pattern);
+                       processTree((java.util.List<Object>) currentElement, path, 1, pattern);
                    }
                 }
 
-                public void processTree(com.mongodb.BasicDBObject currentElement, String[] path, int index, String pattern) {
+                public void processTree(<%=objectType%> currentElement, String[] path, int index, String pattern) {
                     if (index  < path.length - 1) {
                         Object nextElement = currentElement.get(path[index]);
-                        if (nextElement instanceof com.mongodb.BasicDBObject) {
-                             processTree((com.mongodb.BasicDBObject)nextElement, path, index + 1, pattern);
-                        } else if (nextElement instanceof com.mongodb.BasicDBList) {
-                            processTree((com.mongodb.BasicDBList) nextElement, path, index + 1, pattern);
+                        if (nextElement instanceof <%=objectType%>) {
+                             processTree((<%=objectType%>)nextElement, path, index + 1, pattern);
+                        } else if (nextElement instanceof java.util.List) {
+                            processTree((java.util.List<Object>) nextElement, path, index + 1, pattern);
                         } else if (nextElement == null && index > 0) {
                             // some loop are not reported by the XML tree
                             nextElement = currentElement.get(path[index - 1]);
                             if (nextElement != null) {
-                                if (nextElement instanceof com.mongodb.BasicDBObject) {
-                                    processTree((com.mongodb.BasicDBObject)nextElement, path, index, pattern);
-                               } else if (nextElement instanceof com.mongodb.BasicDBList) {
-                                   processTree((com.mongodb.BasicDBList) nextElement, path, index, pattern);
+                                if (nextElement instanceof <%=objectType%>) {
+                                    processTree((<%=objectType%>)nextElement, path, index, pattern);
+                               } else if (nextElement instanceof java.util.List) {
+                                   processTree((java.util.List<Object>) nextElement, path, index, pattern);
                                }
                             }
                         }
                     } else {
                         // process leaf
-                        if (currentElement.get(path[path.length - 1]) instanceof com.mongodb.BasicDBList) {
+                        if (currentElement.get(path[path.length - 1]) instanceof java.util.List) {
                             // if the leaf is a list
-                            com.mongodb.BasicDBList finalObjects = (com.mongodb.BasicDBList) currentElement.get(path[path.length - 1]);
+                            java.util.List<Object> finalObjects = (java.util.List<Object>) currentElement.get(path[path.length - 1]);
                             com.mongodb.BasicDBList convertedElements = new com.mongodb.BasicDBList();
                             for (Object finalObject: finalObjects) {
                                 if (pattern == null) {
                                     // no pattern, we want to parse to a byte array.
                                     if (finalObject != null) {
-								                                convertedElements.add(
-								                                        ((String)finalObject).getBytes());
+                                        convertedElements.add(
+                                        ((String)finalObject).getBytes());
                                     }
                                 } else {
                                     if (finalObject != null) {
-                                        convertedElements.add(
-                                                ParserUtils.parseTo_Date((String)finalObject,
-                                                        pattern));
+                                        convertedElements.add(ParserUtils.parseTo_Date((String)finalObject, pattern));
                                     }
                                 }
                             }
@@ -332,40 +267,37 @@
                             if (pattern == null) {
                                 // no pattern, we want to parse to a byte array.
                                 if (currentElement.get(path[path.length - 1]) != null) {
-								                            currentElement.put(path[path.length - 1],
-								                                    ((String)currentElement.get(path[path.length - 1])).getBytes());
+                                    currentElement.put(path[path.length - 1], ((String)currentElement.get(path[path.length - 1])).getBytes());
                                 }
                             } else {
                                 if (currentElement.get(path[path.length - 1]) != null) {
                                     currentElement.put(path[path.length - 1],
-                                            ParserUtils.parseTo_Date((String)(currentElement).get(path[path.length - 1]),
-                                                    pattern));
+                                    ParserUtils.parseTo_Date((String)(currentElement).get(path[path.length - 1]), pattern));
                                 }
                             }
                         }
                     }
                 }
 
-                public void processTree(com.mongodb.BasicDBList currentElements, String[] path, int index, String pattern) {
+                public void processTree(java.util.List<Object> currentElements, String[] path, int index, String pattern) {
                     if (index  < path.length - 1) {
                         for (Object currentElement: currentElements) {
-                            if (currentElement instanceof com.mongodb.BasicDBObject) {
-                                processTree((com.mongodb.BasicDBObject)currentElement, path, index + 1, pattern);
-                            } else if (currentElement instanceof com.mongodb.BasicDBList) {
-                                processTree((com.mongodb.BasicDBList) currentElement, path, index + 1, pattern);
+                            if (currentElement instanceof <%=objectType%>) {
+                                processTree((<%=objectType%>)currentElement, path, index + 1, pattern);
+                            } else if (currentElement instanceof java.util.List) {
+                                processTree((java.util.List<Object>) currentElement, path, index + 1, pattern);
                             }
                         }
                     } else {
                         // process leaf
                         com.mongodb.BasicDBList convertedElements = new com.mongodb.BasicDBList();
                         for (Object finalObject: currentElements) {
-                            if (finalObject instanceof com.mongodb.BasicDBObject) {
-                                com.mongodb.BasicDBObject currentElement = (com.mongodb.BasicDBObject) finalObject;
+                            if (finalObject instanceof <%=objectType%>) {
+                                <%=objectType%> currentElement = (<%=objectType%>) finalObject;
                                 if (pattern == null) {
                                     // no pattern, we want to parse to a byte array.
                                     if (currentElement.get(path[path.length - 1]) != null) {
-								                                currentElement.put(path[path.length - 1],
-								                                        ((String)currentElement.get(path[path.length - 1])).getBytes());
+                                        currentElement.put(path[path.length - 1], ((String)currentElement.get(path[path.length - 1])).getBytes());
                                     }
                                 } else {
                                     if (currentElement.get(path[path.length - 1]) != null) {
@@ -378,14 +310,12 @@
                                 if (pattern == null) {
                                     // no pattern, we want to parse to a byte array.
                                     if (finalObject != null) {
-								                                convertedElements.add(
-								                                        ((String)finalObject).getBytes());
+                                        convertedElements.add(((String)finalObject).getBytes());
                                     }
                                 } else {
                                     if (finalObject != null) {
                                         convertedElements.add(
-                                                ParserUtils.parseTo_Date((String)finalObject,
-                                                        pattern));
+                                        ParserUtils.parseTo_Date((String)finalObject, pattern));
                                     }
                                 }
                             }
@@ -395,9 +325,9 @@
                             currentElements.addAll(convertedElements);
                         }
                     }
-
                 }
             }
+
             MongoDBTreeConverter_<%=cid%> mongoDBTreeConverter_<%=cid%> = new MongoDBTreeConverter_<%=cid%>();
 			while(!globalMap.containsKey(readFinishMarkWithPipeId_<%=cid%>) || !queue_<%=cid%>.isEmpty()) {
 				if (!queue_<%=cid%>.isEmpty()) {
@@ -405,8 +335,6 @@
 					//Convert XML to JSON
 			        net.sf.json.JSON json_<%=cid%> = xmlSerializer_<%=cid%>.read(str_<%=cid %>);
 					nb_line_<%=cid%>++;
-
-		<%
-    	}
-    }
-	%>
+					<%
+				}
+			}%>
