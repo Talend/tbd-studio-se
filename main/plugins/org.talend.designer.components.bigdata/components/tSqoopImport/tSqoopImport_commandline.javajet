@@ -304,7 +304,13 @@ try {
 				try {
 					while((line = reader.readLine()) != null) {
 						<%if(isLog4jEnabled){%>
-							log.error(line);
+							if (line.startsWith("SLF4J: ") || line.contains("INFO")) {
+								log.info(line);
+							} else if (line.contains("WARN")) {
+								log.warn(line);
+							} else {
+								log.error(line);
+							}
 						<%} else {%>
 							System.err.println(line);
 						<%}%>
