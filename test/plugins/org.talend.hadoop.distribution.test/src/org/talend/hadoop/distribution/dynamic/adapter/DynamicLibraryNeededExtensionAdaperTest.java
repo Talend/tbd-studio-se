@@ -18,26 +18,21 @@ public class DynamicLibraryNeededExtensionAdaperTest {
     public void testAdapt() throws Exception {
 
         ModuleBean module = new ModuleBean(ModuleBean.TYPE_BASE, "org.apache.spark", "hive-jdbc", "2.6.0-5000-2");
+        List<ModuleBean> modules = new ArrayList<ModuleBean>();
+        modules.add(module);
+        TemplateBean templateBean = new TemplateBean();
+        templateBean.setId("templateBeanId");
+        templateBean.setModules(modules);
+        DynamicConfiguration configuration = new DynamicConfiguration();
+        configuration.setDistribution("aDistribution");
 
-
-            List<ModuleBean> modules = new ArrayList<ModuleBean>();
-            modules.add(module);
-
-            TemplateBean templateBean = new TemplateBean();
-            templateBean.setId("templateBeanId");
-            templateBean.setModules(modules);
-
-            DynamicConfiguration configuration = new DynamicConfiguration();
-            configuration.setDistribution("aDistribution");
-
-            Map<String, DynamicModuleGroupAdapter> moduleGroupBeanAdapterMap = new HashMap<String, DynamicModuleGroupAdapter>();
-            Map<String, DynamicModuleAdapter> moduleBeanAdapterMap = new HashMap<String, DynamicModuleAdapter>();
-            IDependencyResolver dependencyResolver = null;
-            DynamicLibraryNeededExtensionAdaper adapter = new DynamicLibraryNeededExtensionAdaper(templateBean, configuration,
-                    dependencyResolver, moduleBeanAdapterMap, moduleGroupBeanAdapterMap);
-            IDynamicMonitor monitor = null;
-            adapter.adapt(monitor);
-
-        }
-
+        Map<String, DynamicModuleGroupAdapter> moduleGroupBeanAdapterMap = new HashMap<String, DynamicModuleGroupAdapter>();
+        Map<String, DynamicModuleAdapter> moduleBeanAdapterMap = new HashMap<String, DynamicModuleAdapter>();
+        IDependencyResolver dependencyResolver = null;
+        DynamicLibraryNeededExtensionAdaper adapter = new DynamicLibraryNeededExtensionAdaper(templateBean, configuration,
+                dependencyResolver, moduleBeanAdapterMap, moduleGroupBeanAdapterMap);
+        IDynamicMonitor monitor = null;
+        adapter.adapt(monitor);
     }
+
+}

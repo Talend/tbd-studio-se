@@ -113,9 +113,8 @@ public class DynamicLibraryNeededExtensionAdaper extends DynamicExtensionAdapter
 
                         @Override
                         public void run() {
-                            DynamicModuleAdapter dynamicModuleAdapter = null;
                             try {
-                                dynamicModuleAdapter = new DynamicModuleAdapter(templateBean, configuration,
+                                DynamicModuleAdapter dynamicModuleAdapter = new DynamicModuleAdapter(templateBean, configuration,
                                         moduleBean, dependencyResolver, registedModules);
                                 List<IDynamicConfiguration> librariesNeeded = dynamicModuleAdapter.adapt(monitor,
                                         isEnableMultiThread());
