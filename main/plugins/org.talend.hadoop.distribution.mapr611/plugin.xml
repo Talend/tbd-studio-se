@@ -490,15 +490,9 @@
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.1" 
-            id="commons-beanutils-1.7.0.jar" 
-            name="commons-beanutils-1.7.0.jar"
-            mvn_uri="mvn:commons-beanutils/commons-beanutils/1.7.0">
-        </libraryNeeded> 
-        <libraryNeeded 
-            context="plugin:org.talend.libraries.hadoop.mapr.6.1.1" 
-            id="commons-beanutils-core-1.9.4.jar" 
-            name="commons-beanutils-core-1.9.4.jar"
-            mvn_uri="mvn:commons-beanutils/commons-beanutils-core/1.9.4">
+            id="commons-beanutils-1.9.4.jar" 
+            name="commons-beanutils-1.9.4.jar"
+            mvn_uri="mvn:commons-beanutils/commons-beanutils/1.9.4">
         </libraryNeeded> 
         <libraryNeeded 
             context="plugin:org.talend.libraries.hadoop.mapr.6.1.1" 
@@ -863,8 +857,7 @@
             <library id="commons-io-2.4.jar" />
             <library id="commons-net-3.1.jar" />
             <library id="commons-digester-1.8.jar" />
-            <library id="commons-beanutils-1.7.0.jar" />
-            <library id="commons-beanutils-core-1.9.4.jar" />
+            <library id="commons-beanutils-1.9.4.jar" />
             <library id="slf4j-log4j12-1.7.12.jar" />
             <library id="jackson-core-asl-1.9.14-TALEND.jar" />
             <library id="jackson-mapper-asl-1.9.14-TALEND.jar" />
