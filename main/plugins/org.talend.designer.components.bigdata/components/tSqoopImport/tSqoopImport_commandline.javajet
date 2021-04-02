@@ -310,9 +310,7 @@ try {
 				try {
 					while((line = reader.readLine()) != null) {
 						<%if(isLog4jEnabled){%>
-							if (line.startsWith("SLF4J: ") || line.contains("INFO")) {
-								log.info(line);
-							} else if (line.contains("WARN")) {
+							if (line.contains("WARN")) {
 								log.warn(line);
 							} else if (line.contains("DEBUG")) {
 								log.debug(line);
