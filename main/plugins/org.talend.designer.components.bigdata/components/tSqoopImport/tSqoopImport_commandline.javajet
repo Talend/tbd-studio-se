@@ -316,8 +316,10 @@ try {
 								log.warn(line);
 							} else if (line.contains("DEBUG")) {
 								log.debug(line);
-							} else {
+							} else if (line.contains("ERROR")) {
 								log.error(line);
+							} else {
+								log.info(line);
 							}
 						<%} else {%>
 							System.err.println(line);
