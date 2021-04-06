@@ -274,7 +274,13 @@ try {
 				try {
 					while((line = reader.readLine()) != null) {
 						<%if(isLog4jEnabled){%>
+						if (line.contains("WARN")) {
+							log.warn(line);
+						} else if (line.contains("DEBUG")) {
+							log.debug(line);
+						} else {
 							log.info(line);
+						}
 						<%} else {%>
 							System.out.println(line);
 						<%}%>
@@ -304,7 +310,15 @@ try {
 				try {
 					while((line = reader.readLine()) != null) {
 						<%if(isLog4jEnabled){%>
-							log.error(line);
+							if (line.contains("WARN")) {
+								log.warn(line);
+							} else if (line.contains("DEBUG")) {
+								log.debug(line);
+							} else if (line.contains("ERROR")) {
+								log.error(line);
+							} else {
+								log.info(line);
+							}
 						<%} else {%>
 							System.err.println(line);
 						<%}%>
