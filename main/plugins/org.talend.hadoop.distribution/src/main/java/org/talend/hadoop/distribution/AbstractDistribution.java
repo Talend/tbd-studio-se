@@ -12,16 +12,37 @@
 // ============================================================================
 package org.talend.hadoop.distribution;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.collections.map.MultiKeyMap;
 import org.apache.commons.lang.ArrayUtils;
 import org.talend.commons.utils.platform.PluginChecker;
+import org.talend.hadoop.distribution.condition.BasicExpression;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
+import org.talend.hadoop.distribution.condition.EqualityOperator;
+import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
+import org.talend.hadoop.distribution.condition.common.SparkBatchLinkedNodeCondition;
+import org.talend.hadoop.distribution.condition.common.SparkStreamingLinkedNodeCondition;
+import org.talend.hadoop.distribution.constants.HDFSConstant;
+import org.talend.hadoop.distribution.constants.ModuleGroupName;
+import org.talend.hadoop.distribution.constants.SparkBatchConstant;
+import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
+import org.talend.hadoop.distribution.modulegroup.HBaseModuleGroup;
+import org.talend.hadoop.distribution.modulegroup.HCatalogModuleGroup;
+import org.talend.hadoop.distribution.modulegroup.HDFSModuleGroup;
+import org.talend.hadoop.distribution.modulegroup.HiveModuleGroup;
+import org.talend.hadoop.distribution.modulegroup.HiveOnSparkModuleGroup;
+import org.talend.hadoop.distribution.modulegroup.SparkBatchModuleGroup;
+import org.talend.hadoop.distribution.modulegroup.SparkStreamingModuleGroup;
+import org.talend.hadoop.distribution.modulegroup.SqoopModuleGroup;
+import org.talend.hadoop.distribution.modulegroup.WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.utils.DefaultConfigurationManager;
+import org.talend.hadoop.distribution.utils.ModuleGroupsUtils;
 import org.talend.utils.json.JSONObject;
 import org.talend.utils.json.JSONUtil;
 
@@ -30,7 +51,7 @@ import org.talend.utils.json.JSONUtil;
  *
  */
 public abstract class AbstractDistribution {
-
+    
     protected static final MultiKeyMap defaultConfigsMap = new MultiKeyMap();
 
     public abstract String getDistribution();
@@ -404,4 +425,151 @@ public boolean isQuboleDistribution() {
     public boolean doSupportEMRFS() {
     	return false;
     }
+    
+    protected Map<ComponentType, Set<DistributionModuleGroup>> buildModuleGroups() {
+        
+        Map<ComponentType, Set<DistributionModuleGroup>> result = new HashMap<>();
+        
+        result.put(ComponentType.SPARKBATCH, SparkBatchModuleGroup.getModuleGroups(this.getVersion()));
+        result.put(ComponentType.SPARKSTREAMING, SparkStreamingModuleGroup.getModuleGroups(this.getVersion()));
+        result.put(ComponentType.HIVEONSPARK, HiveOnSparkModuleGroup.getModuleGroups(this.getVersion()));
+        
+        result.put(ComponentType.HCATALOG,HCatalogModuleGroup.getModuleGroups(this.getVersion()));
+        result.put(ComponentType.HDFS, HDFSModuleGroup.getModuleGroups(this.getVersion()));
+        result.put(ComponentType.HIVE, HiveModuleGroup.getModuleGroups(this.getVersion()));
+        
+        result.put(ComponentType.SQOOP, SqoopModuleGroup.getModuleGroups(this.getVersion()));
+        result.put(ComponentType.HBASE, HBaseModuleGroup.getModuleGroups(this.getVersion()));
+        
+
+        return result;
+    }
+    
+    protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups( String distribution, String version) { 
+        
+        Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
+        
+        // Spark Batch  GCS
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.GCS_CONFIG_COMPONENT), 
+                    ModuleGroupsUtils.getModuleGroups(distribution, version, (String) null, ModuleGroupName.GCS.get(this.getVersion()), true));
+        
+        // Spark Batch BigQuery
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.BIGQUERY_CONFIG_COMPONENT), 
+                    ModuleGroupsUtils.getModuleGroups(distribution, version, (String) null, ModuleGroupName.BIGQUERY.get(this.getVersion()), true));
+        
+        // WebHDFS
+        Set<DistributionModuleGroup> webHDFSNodeModuleGroups = WebHDFSModuleGroup.getModuleGroups(distribution, version);
+        
+        for(String hdfsComponent : HDFSConstant.HDFS_COMPONENTS) {
+            result.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
+        }
+        
+        // Spark Batch Parquet nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_INPUT_COMPONENT),
+                    ModuleGroupsUtils.getModuleGroups(distribution, version, (ComponentCondition) null, ModuleGroupName.PARQUET.get(this.getVersion()), true));
+        
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.PARQUET_OUTPUT_COMPONENT),
+                    ModuleGroupsUtils.getModuleGroups(distribution, version, (ComponentCondition) null, ModuleGroupName.PARQUET.get(this.getVersion()), true));
+
+        // Spark Streaming Parquet nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_INPUT_COMPONENT),
+                ModuleGroupsUtils.getModuleGroups(distribution, version, (ComponentCondition) null, ModuleGroupName.PARQUET.get(this.getVersion()), true));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_OUTPUT_COMPONENT),
+                ModuleGroupsUtils.getModuleGroups(distribution, version, (ComponentCondition) null, ModuleGroupName.PARQUET.get(this.getVersion()), true));
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_STREAM_INPUT_COMPONENT),
+                ModuleGroupsUtils.getModuleGroups(distribution, version, (ComponentCondition) null, ModuleGroupName.PARQUET.get(this.getVersion()), true));
+        
+        // Spark Batch tSQLRow nodes
+        ComponentCondition hiveContextCondition = new SimpleComponentCondition(new BasicExpression(
+                "SQL_CONTEXT", EqualityOperator.EQ, "HiveContext")); 
+        
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.SPARK_SQL_ROW_COMPONENT),
+                ModuleGroupsUtils.getModuleGroups(distribution, version, hiveContextCondition, ModuleGroupName.SPARK_HIVE.get(this.getVersion()), true));
+
+        // Spark Streaming tSQLRow nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.SPARK_SQL_ROW_COMPONENT),
+                ModuleGroupsUtils.getModuleGroups(distribution, version, hiveContextCondition, ModuleGroupName.SPARK_HIVE.get(this.getVersion()), true));
+
+        
+        // Spark S3 condition
+        ComponentCondition s3StorageCondition = new SparkBatchLinkedNodeCondition(distribution, version,
+                SparkBatchConstant.SPARK_BATCH_S3_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition();
+        
+        // Spark Batch S3 nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.S3_CONFIGURATION_COMPONENT),
+                ModuleGroupsUtils.getModuleGroups(distribution, version, (ComponentCondition) s3StorageCondition, ModuleGroupName.S3.get(this.getVersion()), true));
+
+        // Spark Streaming S3 nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.S3_CONFIGURATION_COMPONENT),
+                ModuleGroupsUtils.getModuleGroups(distribution, version, (ComponentCondition) s3StorageCondition, ModuleGroupName.S3.get(this.getVersion()), true));
+
+        
+        // Spark Batch DQ matching
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
+                ModuleGroupsUtils.getModuleGroups(distribution, version, (ComponentCondition) null,  ModuleGroupName.GRAPHFRAMES.get(this.getVersion()), true));
+
+        
+        // DynamoDB nodes ...
+        Set<DistributionModuleGroup> dynamoDBBatchNodeModuleGroups = ModuleGroupsUtils.getModuleGroups(distribution, version, "USE_EXISTING_CONNECTION == 'false'", ModuleGroupName.DYNAMODB_STREAMING.get(this.getVersion()), true );
+        Set<DistributionModuleGroup> dynamoDBBatchConfigurationModuleGroups = ModuleGroupsUtils.getModuleGroups(distribution, version, (String) null, ModuleGroupName.DYNAMODB_STREAMING.get(this.getVersion()), true );
+        
+        // ... in Spark batch
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_INPUT_COMPONENT), dynamoDBBatchNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_OUTPUT_COMPONENT), dynamoDBBatchNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DYNAMODB_CONFIGURATION_COMPONENT), dynamoDBBatchConfigurationModuleGroups);
+        
+        Set<DistributionModuleGroup> dynamoDBStreamingNodeModuleGroups = ModuleGroupsUtils.getModuleGroups(distribution, version, "USE_EXISTING_CONNECTION == 'false'", ModuleGroupName.DYNAMODB_STREAMING.get(this.getVersion()), true );
+        Set<DistributionModuleGroup> dynamoDBStreamingConfigurationModuleGroups = ModuleGroupsUtils.getModuleGroups(distribution, version, (String) null, ModuleGroupName.DYNAMODB_STREAMING.get(this.getVersion()), true );
+        
+        // ... in Spark streaming
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_INPUT_COMPONENT), dynamoDBStreamingNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_OUTPUT_COMPONENT), dynamoDBStreamingNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.DYNAMODB_CONFIGURATION_COMPONENT), dynamoDBStreamingConfigurationModuleGroups);
+
+        Set<DistributionModuleGroup> kinesisModuleGroups = new HashSet<>();
+        
+        kinesisModuleGroups.addAll( ModuleGroupsUtils.getStreamingModuleGroups(distribution, version, (ComponentCondition) null, ModuleGroupName.DYNAMODB_STREAMING.get(this.getVersion()), true ));
+        kinesisModuleGroups.addAll( ModuleGroupsUtils.getStreamingModuleGroups(distribution, version, (ComponentCondition) null, ModuleGroupName.KINESIS.get(this.getVersion()), true ));
+                
+        // Spark Streaming Kinesis nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_COMPONENT), kinesisModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_INPUT_AVRO_COMPONENT), kinesisModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KINESIS_OUTPUT_COMPONENT), kinesisModuleGroups);
+
+        ComponentCondition kafkaCondition = new SparkStreamingLinkedNodeCondition(distribution, version, SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition();
+        
+        // Spark Streaming Kafka nodes
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_INPUT_COMPONENT),
+                ModuleGroupsUtils.getModuleGroups(distribution, version, kafkaCondition, ModuleGroupName.KAFKA.get(this.getVersion()), true ));
+        
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_AVRO_INPUT_COMPONENT),
+                ModuleGroupsUtils.getModuleGroups(distribution, version, kafkaCondition, ModuleGroupName.KAFKA.get(this.getVersion()), true ));
+        
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT),
+                ModuleGroupsUtils.getModuleGroups(distribution, version, kafkaCondition, ModuleGroupName.KAFKA.get(this.getVersion()), true ));
+
+        
+        // Spark Streaming Flume nodes
+        ComponentCondition flumeCondition = new SparkStreamingLinkedNodeCondition(distribution, version, SparkStreamingConstant.FLUME_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition();
+        
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.FLUME_INPUT_COMPONENT),
+                ModuleGroupsUtils.getModuleGroups(distribution, version, flumeCondition, ModuleGroupName.FLUME.get(this.getVersion()), true ));
+        
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.FLUME_OUTPUT_COMPONENT),
+                ModuleGroupsUtils.getModuleGroups(distribution, version, flumeCondition, ModuleGroupName.FLUME.get(this.getVersion()), true ));
+
+        
+        // Azure
+        ComponentCondition azureCondition = new SparkStreamingLinkedNodeCondition(distribution, version, SparkBatchConstant.SPARK_BATCH_AZURE_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition();
+
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.AZURE_CONFIGURATION_COMPONENT), 
+                ModuleGroupsUtils.getModuleGroups(distribution, version, flumeCondition, ModuleGroupName.AZURE.get(this.getVersion()), true ));
+        
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.AZURE_CONFIGURATION_COMPONENT),
+                ModuleGroupsUtils.getModuleGroups(distribution, version, flumeCondition, ModuleGroupName.AZURE.get(this.getVersion()), true ));
+
+        return result;
+    }
+    
+    
 }
