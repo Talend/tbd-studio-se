@@ -221,8 +221,8 @@
           mvn_uri="mvn:org.codehaus.janino/commons-compiler/3.0.16"/>
           
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
-          id="univocity-parsers-2.8.3.jar" name="univocity-parsers-2.8.3.jar"
-          mvn_uri="mvn:com.univocity/univocity-parsers/2.8.3"/>
+          id="univocity-parsers-2.9.1.jar" name="univocity-parsers-2.9.1.jar"
+          mvn_uri="mvn:com.univocity/univocity-parsers/2.9.1"/>
           
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
           id="stream-2.9.6.jar" name="stream-2.9.6.jar"
@@ -667,7 +667,7 @@
             <library id="spark-unsafe_2.12-3.0.1.jar"/>
             <library id="stax2-api-4.2.1.jar"/>
             <library id="stream-2.9.6.jar"/>
-            <library id="univocity-parsers-2.8.3.jar"/>
+            <library id="univocity-parsers-2.9.1.jar"/>
             <library id="woodstox-core-5.0.3.jar"/>
             <library id="xbean-asm7-shaded-4.15.jar"/>
         </libraryNeededGroup>
