@@ -484,11 +484,11 @@ public boolean isQuboleDistribution() {
                 "SQL_CONTEXT", EqualityOperator.EQ, "HiveContext")); 
         
         result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.SPARK_SQL_ROW_COMPONENT),
-                ModuleGroupsUtils.getModuleGroups(distribution, version, hiveContextCondition, ModuleGroupName.SPARK_HIVE.get(this.getVersion()), true));
+                ModuleGroupsUtils.getModuleGroups(distribution, version, hiveContextCondition, ModuleGroupName.HIVE.get(this.getVersion()), true));
 
         // Spark Streaming tSQLRow nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.SPARK_SQL_ROW_COMPONENT),
-                ModuleGroupsUtils.getModuleGroups(distribution, version, hiveContextCondition, ModuleGroupName.SPARK_HIVE.get(this.getVersion()), true));
+                ModuleGroupsUtils.getModuleGroups(distribution, version, hiveContextCondition, ModuleGroupName.HIVE.get(this.getVersion()), true));
 
         
         // Spark S3 condition

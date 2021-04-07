@@ -88,11 +88,13 @@ public class MapR611Distribution extends AbstractMapRDistribution implements HDF
         return EWinUtilsName.WINUTILS_HADOOP_2_7.toString();
     };
 
-    private static Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodeModuleGroups;
-    static {
-        String distribution = DISTRIBUTION_NAME;
-        String version = VERSION;
+    private Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodeModuleGroups;
+    
+    String distribution = DISTRIBUTION_NAME;
+    String version = VERSION;
 
+    public MapR611Distribution() {
+        
         moduleGroups = new HashMap<>();
         moduleGroups.put(ComponentType.HDFS, MapR611HDFSModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.HBASE, MapR611HBaseModuleGroup.getModuleGroups());
@@ -108,7 +110,7 @@ public class MapR611Distribution extends AbstractMapRDistribution implements HDF
         moduleGroups.put(ComponentType.MAPRDB, MapR611HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.OJAI, MapR611OjaiModuleGroup.getModuleGroups());
 
-        nodeModuleGroups = AbstractMapRDistribution.buildNodeModuleGroups(distribution, version);
+        nodeModuleGroups = buildNodeModuleGroups(distribution, version);
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPRSTREAMS,
                 MapRStreamsConstant.CREATE_STREAM_COMPONENT), MapR611MapRStreamsCreateStreamModuleGroup
