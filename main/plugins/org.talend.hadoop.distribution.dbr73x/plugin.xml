@@ -42,7 +42,7 @@
     <libraryNeeded id="spark-streaming_2.12-3.0.1.jar" name="spark-streaming_2.12-3.0.1.jar" mvn_uri="mvn:org.apache.spark/spark-streaming_2.12/3.0.1" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded id="spark-unsafe_2.12-3.0.1.jar" name="spark-unsafe_2.12-3.0.1.jar" mvn_uri="mvn:org.apache.spark/spark-unsafe_2.12/3.0.1" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded id="talend-bigdata-launcher-jobserver-2.0.12.jar" name="talend-bigdata-launcher-jobserver-2.0.12.jar" mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-jobserver/2.0.12" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
-    <libraryNeeded id="talend-bigdata-launcher-databricks-2.0.16.jar" name="talend-bigdata-launcher-databricks-2.0.16.jar" mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-databricks/2.0.16" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
+    <libraryNeeded id="talend-bigdata-launcher-databricks-2.1.0.jar" name="talend-bigdata-launcher-databricks-2.1.0.jar" mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-databricks/2.1.0" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded id="wsdl4j-1.6.3.jar" name="wsdl4j-1.6.3.jar" mvn_uri="mvn:wsdl4j/wsdl4j/1.6.3" context="plugin:org.talend.hadoop.distribution.dbr73x"/>
     <libraryNeeded context="plugin:org.talend.hadoop.distribution.dbr73x" id="spark-snowflake_2.12-2.8.2-spark_3.0.jar" name="spark-snowflake_2.12-2.8.2-spark_3.0.jar" mvn_uri="mvn:net.snowflake/spark-snowflake_2.12/2.8.2-spark_3.0"/>
 	<libraryNeeded context="plugin:org.talend.hadoop.distribution.dbr73x" id="snowflake-jdbc-3.12.12.jar" name="snowflake-jdbc-3.12.12.jar" mvn_uri="mvn:net.snowflake/snowflake-jdbc/3.12.12"/>
@@ -53,7 +53,7 @@
       <library id="jackson-core-2.10.0.jar"/>
       <library id="jackson-databind-2.10.0.jar"/>
       <library id="talend-bigdata-launcher-jobserver-2.0.12.jar"/>
-      <library id="talend-bigdata-launcher-databricks-2.0.16.jar"/>
+      <library id="talend-bigdata-launcher-databricks-2.1.0.jar"/>
     </libraryNeededGroup>
     
     <libraryNeededGroup id="HIVEONSPARK-LIB-MRREQUIRED-DBR73X" name="HIVEONSPARK-LIB-MRREQUIRED-DBR73X" description="Hive On SPARK libraries for DBR73X">
