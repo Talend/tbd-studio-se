@@ -89,11 +89,11 @@ public class MapR611Distribution extends AbstractMapRDistribution implements HDF
     };
 
     private Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodeModuleGroups;
-    
-    String distribution = DISTRIBUTION_NAME;
-    String version = VERSION;
 
     public MapR611Distribution() {
+        
+        String distribution = DISTRIBUTION_NAME;
+        String version = VERSION;
         
         moduleGroups = new HashMap<>();
         moduleGroups.put(ComponentType.HDFS, MapR611HDFSModuleGroup.getModuleGroups());

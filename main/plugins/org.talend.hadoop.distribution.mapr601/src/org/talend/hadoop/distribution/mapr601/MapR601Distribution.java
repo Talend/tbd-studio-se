@@ -93,10 +93,12 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
     };
 
     private static Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodeModuleGroups;
-    static {
+
+    public MapR601Distribution() {
+        
         String distribution = DISTRIBUTION_NAME;
         String version = VERSION;
-
+        
         moduleGroups = new HashMap<>();
         moduleGroups.put(ComponentType.HDFS, MapR601HDFSModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.MAPREDUCE, MapR601MapReduceModuleGroup.getModuleGroups());
@@ -113,7 +115,7 @@ public class MapR601Distribution extends AbstractMapRDistribution implements HDF
         moduleGroups.put(ComponentType.MAPRDB, MapR601HBaseModuleGroup.getModuleGroups());
         moduleGroups.put(ComponentType.OJAI, MapR601OjaiModuleGroup.getModuleGroups());
 
-        nodeModuleGroups = AbstractMapRDistribution.buildNodeModuleGroups(distribution, version);
+        nodeModuleGroups = buildNodeModuleGroups(distribution, version);
 
         nodeModuleGroups.put(new NodeComponentTypeBean(ComponentType.MAPRSTREAMS,
                 MapRStreamsConstant.CREATE_STREAM_COMPONENT), MapR601MapRStreamsCreateStreamModuleGroup
