@@ -113,6 +113,16 @@ public class ModuleBean implements IVariable {
 
     private List<ExclusionBean> exclusions;
 
+    public ModuleBean() {
+    }
+
+    public ModuleBean(String type, String groupId, String artifactId, String version) {
+        this.type = type;
+        this.groupId = groupId;
+        this.artifactId = artifactId;
+        this.version = version;
+    }
+
     public String getId() {
         return this.id;
     }
