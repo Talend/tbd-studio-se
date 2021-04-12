@@ -45,7 +45,7 @@ public class EMR62xDistribution extends AbstractDistribution implements HBaseCom
         HCatalogComponent, HiveComponent, SqoopComponent, IAmazonEMRDistribution, HiveOnSparkComponent,
         SparkBatchComponent, SparkStreamingComponent {
 
-    public static final String VERSION = "EMR_62_0"; //$NON-NLS-1$
+    public static final String VERSION = "EMR_62_x"; //$NON-NLS-1$
 
     public static final String VERSION_DISPLAY = "EMR 6.2.0 (Hadoop 3.2.1)"; //$NON-NLS-1$
 
