@@ -896,6 +896,17 @@
             name="commons-lang3-3.5.jar"
             mvn_uri="mvn:org.apache.commons/commons-lang3/3.5"/>
             
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="commons-configuration-1.6.jar"
+            name="commons-configuration-1.6.jar"
+            mvn_uri="mvn:commons-configuration/commons-configuration/1.6"/>
+		
+		<libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="spark-yarn_2.12-3.1.0.jar"
+            name="spark-yarn_2.12-3.1.0.jar"
+            mvn_uri="mvn:org.apache.spark/spark-yarn_2.12/3.1.0"/>
 		
 		<!-- Spark Azure group -->
         <libraryNeededGroup description="Spark Azure libraries for emr62x" id="AZURE-GROUP-EMR_62_x" name="AZURE-GROUP-EMR_62_x">
@@ -1042,7 +1053,7 @@
             <library id="commons-codec-1.11.jar"/>
             <library id="commons-collections-3.2.2.jar"/>
             <library id="commons-compiler-3.0.16.jar"/>
-            <library id="commons-configuration2-2.1.1.jar"/>
+            <library id="commons-configuration-1.6.jar"/>
             <library id="commons-io-2.5.jar"/>
             <library id="commons-lang-2.6.jar"/>
             <library id="commons-lang3-3.9.jar"/>
@@ -1104,6 +1115,7 @@
             <library id="spark-sql_2.12-3.0.1.jar"/>
             <library id="spark-tags_2.12-3.0.1.jar"/>
             <library id="spark-unsafe_2.12-3.0.1.jar"/>
+			<library id="spark-yarn_2.12-3.1.0.jar"/>
             <library id="stax2-api-4.2.1.jar"/>
             <library id="stream-2.9.6.jar"/>
             <library id="univocity-parsers-2.9.1.jar"/>
