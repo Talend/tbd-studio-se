@@ -11745,8 +11745,8 @@
       "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
       "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDH6_1_1_commons_beanutils_1_9_4_jar",
-      "mvn_uri" : "mvn:commons-beanutils/commons-beanutils/1.9.3/jar",
-      "name" : "commons-beanutils-1.9.3.jar",
+      "mvn_uri" : "mvn:commons-beanutils/commons-beanutils/1.9.4/jar",
+      "name" : "commons-beanutils-1.9.4.jar",
       "tagName" : "libraryNeeded"
     }, {
       "childNodes" : [ ],
