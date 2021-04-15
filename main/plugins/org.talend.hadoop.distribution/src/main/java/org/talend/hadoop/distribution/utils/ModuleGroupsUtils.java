@@ -155,7 +155,6 @@ public class ModuleGroupsUtils {
     
     
     public static Set<DistributionModuleGroup> getModuleGroups(ComponentCondition condition, String moduleName, boolean mrRequired) {
-       
         Set<DistributionModuleGroup> hs = new HashSet<>();
         hs.add(new DistributionModuleGroup(moduleName, mrRequired, condition));
         return hs;

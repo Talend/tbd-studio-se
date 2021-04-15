@@ -924,6 +924,56 @@
                 id="hadoop-yarn-timeline-server-3.2.1-amzn-2.jar"
                 name="hadoop-yarn-timeline-server-3.2.1-amzn-2.jar"
                 mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-timeline-server/3.2.1-amzn-2"/>
+                
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="hadoop-mapreduce-client-common-3.2.1-amzn-2.jar" name="hadoop-mapreduce-client-common-3.2.1-amzn-2.jar"
+            mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-common/3.2.1-amzn-2"/>
+		
+		<libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="hadoop-mapreduce-client-core-3.2.1-amzn-2.jar" name="hadoop-mapreduce-client-core-3.2.1-amzn-2.jar"
+            mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-core/3.2.1-amzn-2"/>
+		
+		<libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="hadoop-mapreduce-client-jobclient-3.2.1-amzn-2.jar" name="hadoop-mapreduce-client-jobclient-3.2.1-amzn-2.jar"
+            mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-jobclient/3.2.1-amzn-2"/>
+		
+		<libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="hadoop-mapreduce-client-shuffle-3.2.1-amzn-2.jar"
+            name="hadoop-mapreduce-client-shuffle-3.2.1-amzn-2.jar"
+            mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-shuffle/3.2.1-amzn-2"/>
+		
+		<libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="hadoop-yarn-api-3.2.1-amzn-2.jar"
+            name="hadoop-yarn-api-3.2.1-amzn-2.jar"
+            mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-api/3.2.1-amzn-2"/>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="hadoop-yarn-client-3.2.1-amzn-2.jar"
+            name="hadoop-yarn-client-3.2.1-amzn-2.jar"
+            mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-client/3.2.1-amzn-2"/>
+
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="hadoop-yarn-common-3.2.1-amzn-2.jar"
+            name="hadoop-yarn-common-3.2.1-amzn-2.jar"
+            mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-common/3.2.1-amzn-2"/>
+		
+		<libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="hadoop-yarn-server-common-3.2.1-amzn-2.jar"
+            name="hadoop-yarn-server-common-3.2.1-amzn-2.jar"
+            mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-server-common/3.2.1-amzn-2"/>
+		
+		<libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="hadoop-yarn-server-web-proxy-3.2.1-amzn-2.jar"
+            name="hadoop-yarn-server-web-proxy-3.2.1-amzn-2.jar"
+            mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-server-web-proxy/3.2.1-amzn-2"/>
 		
 		<!-- Spark Azure group -->
         <libraryNeededGroup description="Spark Azure libraries for emr62x" id="AZURE-GROUP-EMR_62_x" name="AZURE-GROUP-EMR_62_x">
@@ -1014,7 +1064,8 @@
             <library id="commons-logging-1.1.3.jar"/>
             <library id="emrfs-2.44.0.jar"/>
             <library id="guava-27.0-jre.jar"/>
-            <library id="hadoop-common-3.2.1-amzn-2.jar"/>
+           
+           	<library id="hadoop-common-3.2.1-amzn-2.jar"/>
             <library id="hadoop-auth-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-aws-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-client-3.2.1-amzn-2.jar"/>
@@ -1028,6 +1079,17 @@
             <library id="hadoop-yarn-nodemanager-3.2.1-amzn-2.jar.jar"/>
 			<library id="hadoop-yarn-resourcemanager-3.2.1-amzn-2.jar..jar"/>
 			<library id="hadoop-yarn-timeline-server-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-hdfs-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-mapreduce-client-common-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-mapreduce-client-core-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-mapreduce-client-jobclient-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-mapreduce-client-shuffle-3.2.1-amzn-2.jar"/>
+            <library id="hadoop-yarn-api-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-yarn-client-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-yarn-common-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-yarn-server-common-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-yarn-server-web-proxy-3.2.1-amzn-2.jar"/>
+           
 			<library id="htrace-core4-4.1.0-incubating.jar"/>
             <library id="jackson-annotations-2.9.0.jar"/>
             <library id="jackson-core-2.10.0.jar"/>

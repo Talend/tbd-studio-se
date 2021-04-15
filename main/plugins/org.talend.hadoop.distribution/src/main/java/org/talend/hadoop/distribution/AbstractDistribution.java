@@ -440,7 +440,7 @@ public boolean isQuboleDistribution() {
         result.put(ComponentType.HIVEONSPARK, ModuleGroupsUtils.getModuleGroups(
                 (ComponentCondition) null, ModuleGroupName.HIVE.get(this.getVersion()), true));
         
-        result.put(ComponentType.HCATALOG,ModuleGroupsUtils.getModuleGroups(
+        result.put(ComponentType.HCATALOG, ModuleGroupsUtils.getModuleGroups(
                 (ComponentCondition) null, ModuleGroupName.HDFS.get(this.getVersion()), false));
         
         result.put(ComponentType.HDFS, ModuleGroupsUtils.getModuleGroups(
