@@ -6627,10 +6627,6 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
-        "id" : "DYNAMIC_Cloudera_CDH6_3_2_dynamic_20201201110315335_0100_commons_beanutils_core_1_8_0_jar",
-        "tagName" : "library"
-      }, {
-        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDH6_3_2_dynamic_20201201110315335_0100_commons_cli_1_4_jar",
         "tagName" : "library"
       }, {
@@ -11926,14 +11922,6 @@
       "id" : "DYNAMIC_Cloudera_CDH6_3_2_dynamic_20201201110315335_0100_commons_beanutils_1_9_4_jar",
       "mvn_uri" : "mvn:commons-beanutils/commons-beanutils/1.9.4/jar",
       "name" : "commons-beanutils-1.9.4.jar",
-      "tagName" : "libraryNeeded"
-    }, {
-      "childNodes" : [ ],
-      "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
-      "excludeDependencies" : "true",
-      "id" : "DYNAMIC_Cloudera_CDH6_3_2_dynamic_20201201110315335_0100_commons_beanutils_core_1_8_0_jar",
-      "mvn_uri" : "mvn:commons-beanutils/commons-beanutils-core/1.8.0/jar",
-      "name" : "commons-beanutils-core-1.8.0.jar",
       "tagName" : "libraryNeeded"
     }, {
       "childNodes" : [ ],
