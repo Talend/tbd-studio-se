@@ -611,91 +611,6 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x" 
 			id="hadoop-mapreduce-client-app-2.8.1.jar" name="hadoop-mapreduce-client-app-2.8.1.jar"
 			mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-app/2.8.1"/>
-		
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="hadoop-annotations-2.8.5-amzn-5.jar" name="hadoop-annotations-2.8.5-amzn-5.jar"
-            mvn_uri="mvn:org.apache.hadoop/hadoop-annotations/2.8.5-amzn-5"/>
-		
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="hadoop-common-2.8.5-amzn-5.jar" name="hadoop-common-2.8.5-amzn-5.jar"
-            mvn_uri="mvn:org.apache.hadoop/hadoop-common/2.8.5-amzn-5"/>
-
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="hadoop-hdfs-2.8.5-amzn-5.jar" name="hadoop-hdfs-2.8.5-amzn-5.jar"
-            mvn_uri="mvn:org.apache.hadoop/hadoop-hdfs/2.8.5-amzn-5"/>
-
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="hadoop-archives-2.8.5-amzn-5.jar" name="hadoop-archives-2.8.5-amzn-5.jar"
-            mvn_uri="mvn:org.apache.hadoop/hadoop-archives/2.8.5-amzn-5"/>
-
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="hadoop-auth-2.8.5-amzn-5.jar" name="hadoop-auth-2.8.5-amzn-5.jar"
-            mvn_uri="mvn:org.apache.hadoop/hadoop-auth/2.8.5-amzn-5"/>
-            
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="hadoop-aws-2.8.5-amzn-5.jar" name="hadoop-aws-2.8.5-amzn-5.jar"
-            mvn_uri="mvn:org.apache.hadoop/hadoop-aws/2.8.5-amzn-5"/>
-            
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="hadoop-client-2.8.5-amzn-5.jar" name="hadoop-client-2.8.5-amzn-5.jar"
-            mvn_uri="mvn:org.apache.hadoop/hadoop-client/2.8.5-amzn-5"/>
-		
-		<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="hadoop-mapreduce-client-common-2.8.5-amzn-5.jar" name="hadoop-mapreduce-client-common-2.8.5-amzn-5.jar"
-            mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-common/2.8.5-amzn-5"/>
-		
-		<libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="hadoop-mapreduce-client-core-2.8.5-amzn-5.jar" name="hadoop-mapreduce-client-core-2.8.5-amzn-5.jar"
-            mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-core/2.8.5-amzn-5"/>
-		
-		<libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="hadoop-mapreduce-client-jobclient-2.8.5-amzn-5.jar" name="hadoop-mapreduce-client-jobclient-2.8.5-amzn-5.jar"
-            mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-jobclient/2.8.5-amzn-5"/>
-		
-		<libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="hadoop-mapreduce-client-shuffle-2.8.5-amzn-5.jar"
-            name="hadoop-mapreduce-client-shuffle-2.8.5-amzn-5.jar"
-            mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-shuffle/2.8.5-amzn-5"/>
-		
-		<libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="hadoop-yarn-api-2.8.5-amzn-5.jar"
-            name="hadoop-yarn-api-2.8.5-amzn-5.jar"
-            mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-api/2.8.5-amzn-5"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="hadoop-yarn-client-2.8.5-amzn-5.jar"
-            name="hadoop-yarn-client-2.8.5-amzn-5.jar"
-            mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-client/2.8.5-amzn-5"/>
-
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="hadoop-yarn-common-2.8.5-amzn-5.jar"
-            name="hadoop-yarn-common-2.8.5-amzn-5.jar"
-            mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-common/2.8.5-amzn-5"/>
-		
-		<libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="hadoop-yarn-server-common-2.8.5-amzn-5.jar"
-            name="hadoop-yarn-server-common-2.8.5-amzn-5.jar"
-            mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-server-common/2.8.5-amzn-5"/>
-		
-		<libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="hadoop-yarn-server-web-proxy-2.8.5-amzn-5.jar"
-            name="hadoop-yarn-server-web-proxy-2.8.5-amzn-5.jar"
-            mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-server-web-proxy/2.8.5-amzn-5"/>
-            
-
-        <libraryNeeded
-        	context="plugin:org.talend.hadoop.distribution.emr62x"
-        	id="hadoop-azure-2.8.5-amzn-5.jar"
-        	name="hadoop-azure-2.8.5-amzn-5.jar"
-        	mvn_uri="mvn:org.apache.hadoop/hadoop-azure/2.8.5-amzn-5"/>
        
 		
 		<libraryNeeded
@@ -925,6 +840,90 @@
             id="avro-mapred-1.8.2-hadoop2.jar"
             name="avro-mapred-1.8.2-hadoop2.jar"
             mvn_uri="mvn:org.apache.avro/avro-mapred/1.8.2-hadoop2"/>
+            
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.emr62x"
+                id="hadoop-common-3.2.1-amzn-2.jar"
+                name="hadoop-common-3.2.1-amzn-2.jar"
+                mvn_uri="mvn:org.apache.hadoop/hadoop-common/3.2.1-amzn-2"/>
+
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.emr62x"
+                id="hadoop-auth-3.2.1-amzn-2.jar"
+                name="hadoop-auth-3.2.1-amzn-2.jar"
+                mvn_uri="mvn:org.apache.hadoop/hadoop-auth/3.2.1-amzn-2"/>
+
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.emr62x"
+                id="hadoop-aws-3.2.1-amzn-2.jar"
+                name="hadoop-aws-3.2.1-amzn-2.jar"
+                mvn_uri="mvn:org.apache.hadoop/hadoop-aws/3.2.1-amzn-2"/>
+
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.emr62x"
+                id="hadoop-client-3.2.1-amzn-2.jar"
+                name="hadoop-client-3.2.1-amzn-2.jar"
+                mvn_uri="mvn:org.apache.hadoop/hadoop-client/3.2.1-amzn-2"/>
+
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.emr62x"
+                id="hadoop-hdfs-datanode-3.2.1-amzn-2.jar"
+                name="hadoop-hdfs-datanode-3.2.1-amzn-2.jar"
+                mvn_uri="mvn:org.apache.hadoop/hadoop-hdfs-datanode/3.2.1-amzn-2"/>
+
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.emr62x"
+                id="hadoop-hdfs-library-3.2.1-amzn-2.jar"
+                name="hadoop-hdfs-library-3.2.1-amzn-2.jar"
+                mvn_uri="mvn:org.apache.hadoop/hadoop-hdfs-library/3.2.1-amzn-2"/>
+
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.emr62x"
+                id="hadoop-hdfs-namenode-3.2.1-amzn-2.jar"
+                name="hadoop-hdfs-namenode-3.2.1-amzn-2.jar"
+                mvn_uri="mvn:org.apache.hadoop/hadoop-hdfs-namenode/3.2.1-amzn-2"/>
+
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.emr62x"
+                id="hadoop-hdfs-journalnode-3.2.1-amzn-2.jar"
+                name="hadoop-hdfs-journalnode-3.2.1-amzn-2.jar"
+                mvn_uri="mvn:org.apache.hadoop/hadoop-hdfs-journalnode/3.2.1-amzn-2"/>
+
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.emr62x"
+                id="hadoop-httpfs-server-3.2.1-amzn-2.jar"
+                name="hadoop-httpfs-server-3.2.1-amzn-2.jar"
+                mvn_uri="mvn:org.apache.hadoop/hadoop-httpfs-server/3.2.1-amzn-2"/>
+
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.emr62x"
+                id="hadoop-kms-server-3.2.1-amzn-2.jar"
+                name="hadoop-kms-server-3.2.1-amzn-2.jar"
+                mvn_uri="mvn:org.apache.hadoop/hadoop-kms-server/3.2.1-amzn-2"/>
+
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.emr62x"
+                id="hadoop-mapred-3.2.1-amzn-2.jar"
+                name="hadoop-mapred-3.2.1-amzn-2.jar"
+                mvn_uri="mvn:org.apache.hadoop/hadoop-mapred/3.2.1-amzn-2"/>
+
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.emr62x"
+                id="hadoop-yarn-nodemanager-3.2.1-amzn-2.jar"
+                name="hadoop-yarn-nodemanager-3.2.1-amzn-2.jar"
+                mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-nodemanager/3.2.1-amzn-2"/>
+
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.emr62x"
+                id="hadoop-yarn-resourcemanager-3.2.1-amzn-2.jar"
+                name="hadoop-yarn-resourcemanager-3.2.1-amzn-2.jar"
+                mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-resourcemanager/3.2.1-amzn-2"/>
+
+        <libraryNeeded
+                context="plugin:org.talend.hadoop.distribution.emr62x"
+                id="hadoop-yarn-timeline-server-3.2.1-amzn-2.jar"
+                name="hadoop-yarn-timeline-server-3.2.1-amzn-2.jar"
+                mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-timeline-server/3.2.1-amzn-2"/>
 		
 		<!-- Spark Azure group -->
         <libraryNeededGroup description="Spark Azure libraries for emr62x" id="AZURE-GROUP-EMR_62_x" name="AZURE-GROUP-EMR_62_x">
@@ -1013,23 +1012,22 @@
 			<library id="commons-lang-2.6.jar"/>
             <library id="commons-lang3-3.9.jar"/>
             <library id="commons-logging-1.1.3.jar"/>
-            <library id="emrfs-hadoop-assembly-2.38.0.jar"/>
+            <library id="emrfs-2.44.0.jar"/>
             <library id="guava-27.0-jre.jar"/>
-			<library id="hadoop-common-2.8.5-amzn-5.jar"/>
-			<library id="hadoop-auth-2.8.5-amzn-5.jar"/>
-			<library id="hadoop-aws-2.8.5-amzn-5.jar"/>
-			<library id="hadoop-client-2.8.5-amzn-5.jar"/>
-			<library id="hadoop-common-2.8.5-amzn-5.jar"/>
-			<library id="hadoop-hdfs-2.8.5-amzn-5.jar"/>
-			<library id="hadoop-mapreduce-client-common-2.8.5-amzn-5.jar"/>
-			<library id="hadoop-mapreduce-client-core-2.8.5-amzn-5.jar"/>
-			<library id="hadoop-mapreduce-client-jobclient-2.8.5-amzn-5.jar"/>
-			<library id="hadoop-mapreduce-client-shuffle-2.8.5-amzn-5.jar"/>
-            <library id="hadoop-yarn-api-2.8.5-amzn-5.jar"/>
-			<library id="hadoop-yarn-client-2.8.5-amzn-5.jar"/>
-			<library id="hadoop-yarn-common-2.8.5-amzn-5.jar"/>
-			<library id="hadoop-yarn-server-common-2.8.5-amzn-5.jar"/>
-			<library id="hadoop-yarn-server-web-proxy-2.8.5-amzn-5.jar"/>
+            <library id="hadoop-common-3.2.1-amzn-2.jar"/>
+            <library id="hadoop-auth-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-aws-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-client-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-hdfs-datanode-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-hdfs-library-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-hdfs-namenode-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-hdfs-journalnode-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-httpfs-server-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-kms-server-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-mapred-3.2.1-amzn-2.jar"/>
+            <library id="hadoop-yarn-nodemanager-3.2.1-amzn-2.jar.jar"/>
+			<library id="hadoop-yarn-resourcemanager-3.2.1-amzn-2.jar..jar"/>
+			<library id="hadoop-yarn-timeline-server-3.2.1-amzn-2.jar"/>
 			<library id="htrace-core4-4.1.0-incubating.jar"/>
             <library id="jackson-annotations-2.9.0.jar"/>
             <library id="jackson-core-2.10.0.jar"/>
