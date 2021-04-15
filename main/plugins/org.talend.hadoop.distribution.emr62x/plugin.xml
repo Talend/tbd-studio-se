@@ -1064,13 +1064,13 @@
 			<library id="commons-codec-1.11.jar"/>
             <library id="commons-collections-3.2.2.jar"/>
             <library id="commons-configuration-1.6.jar"/>
+            <library id="commons-configuration2-2.1.1.jar"/>
             <library id="commons-io-2.5.jar"/>
 			<library id="commons-lang-2.6.jar"/>
             <library id="commons-lang3-3.9.jar"/>
             <library id="commons-logging-1.1.3.jar"/>
             <library id="emrfs-2.44.0.jar"/>
             <library id="guava-27.0-jre.jar"/>
-           
            	<library id="hadoop-common-3.2.1-amzn-2.jar"/>
             <library id="hadoop-auth-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-aws-3.2.1-amzn-2.jar"/>
@@ -1085,7 +1085,6 @@
 			<library id="hadoop-yarn-common-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-yarn-server-common-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-yarn-server-web-proxy-3.2.1-amzn-2.jar"/>
-           
 			<library id="htrace-core4-4.1.0-incubating.jar"/>
             <library id="jackson-annotations-2.9.0.jar"/>
             <library id="jackson-core-2.10.0.jar"/>
@@ -1121,6 +1120,8 @@
             <library id="spark-tags_2.12-3.0.1.jar"/>
             <library id="spark-unsafe_2.12-3.0.1.jar"/>
             <library id="spark-yarn_2.12-3.0.1.jar"/>
+            <library id="stax2-api-4.2.1.jar"/>
+            <library id="woodstox-core-5.0.3.jar"/>
         </libraryNeededGroup>
         
         <!-- Spark Streaming group -->
