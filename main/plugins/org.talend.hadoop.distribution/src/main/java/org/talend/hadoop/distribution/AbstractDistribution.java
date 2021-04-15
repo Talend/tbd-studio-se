@@ -33,12 +33,7 @@ import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.modulegroup.HBaseModuleGroup;
-import org.talend.hadoop.distribution.modulegroup.HCatalogModuleGroup;
-import org.talend.hadoop.distribution.modulegroup.HDFSModuleGroup;
 import org.talend.hadoop.distribution.modulegroup.HiveModuleGroup;
-import org.talend.hadoop.distribution.modulegroup.HiveOnSparkModuleGroup;
-import org.talend.hadoop.distribution.modulegroup.SparkBatchModuleGroup;
-import org.talend.hadoop.distribution.modulegroup.SparkStreamingModuleGroup;
 import org.talend.hadoop.distribution.modulegroup.SqoopModuleGroup;
 import org.talend.hadoop.distribution.modulegroup.WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.utils.DefaultConfigurationManager;
@@ -430,15 +425,31 @@ public boolean isQuboleDistribution() {
         
         Map<ComponentType, Set<DistributionModuleGroup>> result = new HashMap<>();
         
-        result.put(ComponentType.SPARKBATCH, SparkBatchModuleGroup.getModuleGroups(this.getVersion()));
-        result.put(ComponentType.SPARKSTREAMING, SparkStreamingModuleGroup.getModuleGroups(this.getVersion()));
-        result.put(ComponentType.HIVEONSPARK, HiveOnSparkModuleGroup.getModuleGroups(this.getVersion()));
+        ComponentCondition sparkBatchCondition = new SimpleComponentCondition(new BasicExpression(
+                SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false")); //$NON-NLS-1$
         
-        result.put(ComponentType.HCATALOG,HCatalogModuleGroup.getModuleGroups(this.getVersion()));
-        result.put(ComponentType.HDFS, HDFSModuleGroup.getModuleGroups(this.getVersion()));
+        result.put(ComponentType.SPARKBATCH, ModuleGroupsUtils.getModuleGroups(
+                sparkBatchCondition, ModuleGroupName.SPARK_BATCH.get(this.getVersion()), true));
+        
+        ComponentCondition sparkStreamingCondition = new SimpleComponentCondition(new BasicExpression(
+                SparkStreamingConstant.SPARKCONFIGURATION_IS_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false")); //$NON-NLS-1$
+        
+        result.put(ComponentType.SPARKSTREAMING, ModuleGroupsUtils.getModuleGroups(
+                sparkStreamingCondition, ModuleGroupName.SPARK_STREAMING.get(this.getVersion()), true));
+
+        result.put(ComponentType.HIVEONSPARK, ModuleGroupsUtils.getModuleGroups(
+                (ComponentCondition) null, ModuleGroupName.HIVE.get(this.getVersion()), true));
+        
+        result.put(ComponentType.HCATALOG,ModuleGroupsUtils.getModuleGroups(
+                (ComponentCondition) null, ModuleGroupName.HDFS.get(this.getVersion()), false));
+        
+        result.put(ComponentType.HDFS, ModuleGroupsUtils.getModuleGroups(
+                (ComponentCondition) null, ModuleGroupName.HDFS.get(this.getVersion()), false));
+        
         result.put(ComponentType.HIVE, HiveModuleGroup.getModuleGroups(this.getVersion()));
         
         result.put(ComponentType.SQOOP, SqoopModuleGroup.getModuleGroups(this.getVersion()));
+        
         result.put(ComponentType.HBASE, HBaseModuleGroup.getModuleGroups(this.getVersion()));
         
 

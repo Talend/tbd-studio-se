@@ -26,6 +26,7 @@ import org.talend.hadoop.distribution.condition.RawExpression;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.condition.common.SparkBatchLinkedNodeCondition;
 import org.talend.hadoop.distribution.condition.common.SparkStreamingLinkedNodeCondition;
+import org.talend.hadoop.distribution.constants.ModuleGroupName;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.librariesmanager.model.ExtensionModuleManager;
 
@@ -149,6 +150,14 @@ public class ModuleGroupsUtils {
         }
         DistributionModuleGroup dmg = new DistributionModuleGroup(moduleName, mrRequired, cc);
         hs.add(dmg);
+        return hs;
+    }
+    
+    
+    public static Set<DistributionModuleGroup> getModuleGroups(ComponentCondition condition, String moduleName, boolean mrRequired) {
+       
+        Set<DistributionModuleGroup> hs = new HashSet<>();
+        hs.add(new DistributionModuleGroup(moduleName, mrRequired, condition));
         return hs;
     }
 

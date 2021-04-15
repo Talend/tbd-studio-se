@@ -24,7 +24,7 @@ public class HBaseModuleGroup {
         Set<DistributionModuleGroup> hs = new HashSet<>();
         // The DistributionModuleGroup is mrrequired for the M/R components. It's not used for the DI components.
         hs.add(new DistributionModuleGroup(ModuleGroupName.HBASE.get(distributionVersion), true, null));
-        hs.addAll(HDFSModuleGroup.getModuleGroups(distributionVersion));
+        hs.add(new DistributionModuleGroup(ModuleGroupName.HDFS.get(distributionVersion), false, null));
         return hs;
     }
 

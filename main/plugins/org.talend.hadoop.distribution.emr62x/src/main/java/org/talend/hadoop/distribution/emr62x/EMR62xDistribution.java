@@ -348,4 +348,9 @@ public class EMR62xDistribution extends AbstractDistribution implements HBaseCom
     public boolean doSupportEMRFS() {
         return true;
     }
+    
+    @Override
+    public boolean doSupportLightWeight() {
+        return true;
+    }
 }
