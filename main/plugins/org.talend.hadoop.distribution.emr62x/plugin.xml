@@ -1075,16 +1075,6 @@
             <library id="hadoop-auth-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-aws-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-client-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-hdfs-datanode-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-hdfs-library-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-hdfs-namenode-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-hdfs-journalnode-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-httpfs-server-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-kms-server-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-mapred-3.2.1-amzn-2.jar"/>
-            <library id="hadoop-yarn-nodemanager-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-yarn-resourcemanager-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-yarn-timeline-server-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-hdfs-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-mapreduce-client-common-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-mapreduce-client-core-3.2.1-amzn-2.jar"/>
