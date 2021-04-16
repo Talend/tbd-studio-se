@@ -105,7 +105,7 @@ public class EMR62xDistribution extends AbstractDistribution implements HBaseCom
 
 	@Override
 	public EHadoopVersion getHadoopVersion() {
-		return EHadoopVersion.HADOOP_2;
+		return EHadoopVersion.HADOOP_3;
 	}
 
 	@Override
