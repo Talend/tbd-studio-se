@@ -167,10 +167,7 @@ public class EMR62xDistribution extends AbstractDistribution implements HBaseCom
 	
 	@Override
 	public String generateSparkJarsPaths(List<String> commandLineJarsPaths, boolean isLightWeight) {
-	    
-	    List<String> filtered = commandLineJarsPaths.stream().filter( s -> !s.contains("3.2.1-amzn-2")).collect(Collectors.toList());
-	    
-        return generateSparkJarsPaths(filtered);
+        return isLightWeight ? "" : generateSparkJarsPaths(commandLineJarsPaths);
     }
 
 	@Override
