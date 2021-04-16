@@ -13,11 +13,13 @@
 
 package org.talend.hadoop.distribution.emr62x;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.ComponentType;
@@ -55,6 +57,23 @@ public class EMR62xDistribution extends AbstractDistribution implements HBaseCom
 
 	private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,/usr/lib/hadoop-lzo/lib/*,/usr/share/aws/emr/emrfs/conf, /usr/share/aws/emr/emrfs/lib/*,/usr/share/aws/emr/emrfs/auxlib/*,/usr/share/aws/emr/lib/*,/usr/share/aws/emr/ddb/lib/emr-ddb-hadoop.jar, /usr/share/aws/emr/goodies/lib/emr-hadoop-goodies.jar,/usr/share/aws/emr/kinesis/lib/emr-kinesis-hadoop.jar,/usr/lib/spark/yarn/lib/datanucleus-api-jdo.jar,/usr/lib/spark/yarn/lib/datanucleus-core.jar,/usr/lib/spark/yarn/lib/datanucleus-rdbms.jar,/usr/share/aws/emr/cloudwatch-sink/lib/*"; //$NON-NLS-1$
 
+	private final static String CLASSPATH_SEPARATOR = ",";
+	
+	public final static String DEFAULT_LIB_ROOT = "/usr/lib";
+	
+    private final static String LIGHTWEIGHT_CLASSPATH = String.join(CLASSPATH_SEPARATOR, Arrays.asList(
+            DEFAULT_LIB_ROOT + "/spark/jars/*",
+            DEFAULT_LIB_ROOT + "/hive/lib/*",
+            DEFAULT_LIB_ROOT + "/impala/lib/*",
+            DEFAULT_LIB_ROOT + "/hbase/lib/*",
+            DEFAULT_LIB_ROOT + "/sqoop/lib/*",
+            DEFAULT_LIB_ROOT + "/kudu/*",
+            DEFAULT_LIB_ROOT + "/hadoop-mapreduce/*",
+            DEFAULT_LIB_ROOT + "/hadoop-yarn/*",
+            DEFAULT_LIB_ROOT + "/hadoop-yarn/lib/*",
+            DEFAULT_LIB_ROOT + "/avro/*",
+            DEFAULT_LIB_ROOT + "/hadoop/lib/*"));
+	
 	protected Map<ComponentType, Set<DistributionModuleGroup>> moduleGroups;
 
 	protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> nodeModuleGroups;
@@ -145,6 +164,14 @@ public class EMR62xDistribution extends AbstractDistribution implements HBaseCom
 	public String getYarnApplicationClasspath() {
 		return YARN_APPLICATION_CLASSPATH;
 	}
+	
+	@Override
+	public String generateSparkJarsPaths(List<String> commandLineJarsPaths, boolean isLightWeight) {
+	    
+	    List<String> filtered = commandLineJarsPaths.stream().filter( s -> !s.contains("3.2.1-amzn-2")).collect(Collectors.toList());
+	    
+        return generateSparkJarsPaths(filtered);
+    }
 
 	@Override
 	public String generateSparkJarsPaths(List<String> commandLineJarsPaths) {
@@ -352,5 +379,10 @@ public class EMR62xDistribution extends AbstractDistribution implements HBaseCom
     @Override
     public boolean doSupportLightWeight() {
         return true;
+    }
+    
+    @Override
+    public String getLightWeightClasspath() {
+        return LIGHTWEIGHT_CLASSPATH;
     }
 }
