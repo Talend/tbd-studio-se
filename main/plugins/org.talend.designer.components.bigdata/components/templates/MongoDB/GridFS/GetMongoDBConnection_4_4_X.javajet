@@ -53,6 +53,11 @@
             }
         }%>
 
+        <%if(setWriteConcern) {%>
+            clientSettingsBuilder_<%=cid%>.writeConcern(com.mongodb.WriteConcern.<%=writeConcern%>);
+            <%
+        }%>
+
         mongo_<%=cid%> = com.mongodb.client.MongoClients.create(clientSettingsBuilder_<%=cid%>.build());
         db_<%=cid%> = mongo_<%=cid%>.getDatabase(<%=dbname%>);
         <%
@@ -63,6 +68,4 @@
             log.info("<%=cid%> - Connecting to " + description.getAddress());
         }
         <%
-    }
-    log4jFileUtil.startRetriveDataInfo();
-%>
+    }%>

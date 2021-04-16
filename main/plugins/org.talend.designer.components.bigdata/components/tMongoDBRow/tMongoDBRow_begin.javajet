@@ -32,6 +32,13 @@
     String usedAuthenticationDB = useAuthDB ? authDB : dbname;
     boolean useSSL = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_SSL__"));
   	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+
+    // declare read preferences and write concerns for unified connection template
+    boolean setReadPreference = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_READ_PREFERENCE__"));
+    String readPreference = ElementParameterParser.getValue(node, "__READ_PREFERENCE__");
+    boolean setWriteConcern = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_WRITE_CONCERN__"));
+    String writeConcern = ElementParameterParser.getValue(node, "__WRITE_CONCERN__");
+
     String dbversion;
 		if(useExistingConnection){
 	    String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
@@ -40,12 +47,16 @@
     } else {
         dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
     }
-	%>
+    boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
+    boolean version_4_4_X = "MONGODB_4_4_X".equals(dbversion);
+%>
 
-	<%if("MONGODB_4_4_X".equals(dbversion)) {%>
-		<%@ include file="./tMongoDBRow_begin_4_4_X.javajet"%>
-		<%
-	} else {%>
-		<%@ include file="./tMongoDBRow_begin_below_4_4_X.javajet"%>
-		<%
-	}%>
+    <%if("MONGODB_4_4_X".equals(dbversion)) {%>
+        <%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GridFS/GetMongoDBConnection_4_4_X.javajet"%>
+        org.bson.Document result_<%=cid%>=null;
+        <%
+    } else {%>
+        <%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GridFS/GetMongoDBConnection_below_4_4_X.javajet"%>
+        com.mongodb.CommandResult result_<%=cid%>=null;
+        <%
+    }%>
