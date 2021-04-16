@@ -1104,6 +1104,7 @@
 			<library id="metrics-core-4.1.1.jar"/>
 			<library id="netty-all-4.1.47.Final.jar"/>
 			<library id="protobuf-java-2.5.0.jar"/>
+			<library id="re2j-1.1.jar"/>
 			<library id="scala-library-2.12.10.jar"/>
             <library id="scala-reflect-2.12.10.jar"/>
             <library id="scala-xml_2.12-1.2.0.jar"/>

@@ -25,6 +25,7 @@ import org.talend.hadoop.distribution.condition.BasicExpression;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.condition.EqualityOperator;
 import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
+import org.talend.hadoop.distribution.condition.common.HDFSLinkedNodeCondition;
 import org.talend.hadoop.distribution.condition.common.SparkBatchLinkedNodeCondition;
 import org.talend.hadoop.distribution.condition.common.SparkStreamingLinkedNodeCondition;
 import org.talend.hadoop.distribution.constants.HDFSConstant;
@@ -35,7 +36,6 @@ import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 import org.talend.hadoop.distribution.modulegroup.HBaseModuleGroup;
 import org.talend.hadoop.distribution.modulegroup.HiveModuleGroup;
 import org.talend.hadoop.distribution.modulegroup.SqoopModuleGroup;
-import org.talend.hadoop.distribution.modulegroup.WebHDFSModuleGroup;
 import org.talend.hadoop.distribution.utils.DefaultConfigurationManager;
 import org.talend.hadoop.distribution.utils.ModuleGroupsUtils;
 import org.talend.utils.json.JSONObject;
@@ -469,7 +469,9 @@ public boolean isQuboleDistribution() {
                     ModuleGroupsUtils.getModuleGroups(distribution, version, (String) null, ModuleGroupName.BIGQUERY.get(this.getVersion()), true));
         
         // WebHDFS
-        Set<DistributionModuleGroup> webHDFSNodeModuleGroups = WebHDFSModuleGroup.getModuleGroups(distribution, version);
+        HDFSLinkedNodeCondition hdfsLinkedNodeCondition = new HDFSLinkedNodeCondition(distribution, version);
+       
+        Set<DistributionModuleGroup> webHDFSNodeModuleGroups = ModuleGroupsUtils.getModuleGroups(distribution, version, hdfsLinkedNodeCondition.getWebHDFSCondition(), ModuleGroupName.WEBHDFS.get(this.getVersion()), true);
         
         for(String hdfsComponent : HDFSConstant.HDFS_COMPONENTS) {
             result.put(new NodeComponentTypeBean(ComponentType.HDFS, hdfsComponent), webHDFSNodeModuleGroups);
