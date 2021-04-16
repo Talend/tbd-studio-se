@@ -278,8 +278,8 @@
           mvn_uri="mvn:org.apache.commons/commons-text/1.4"/>
           
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="hadoop-hdfs-client-3.2.1.jar" name="hadoop-hdfs-client-3.2.1.jar"
-          mvn_uri="mvn:org.apache.hadoop/hadoop-hdfs-client/3.2.1"/>
+          id="hadoop-hdfs-client-3.2.1-amzn-2.jar" name="hadoop-hdfs-client-3.2.1-amzn-2.jar"
+          mvn_uri="mvn:org.apache.hadoop/hadoop-hdfs-client/3.2.1-amzn-2"/>
          
         <!-- Azure libs -->
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
@@ -1076,6 +1076,7 @@
 			<library id="hadoop-aws-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-client-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-hdfs-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-hdfs-client-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-mapreduce-client-common-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-mapreduce-client-core-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-mapreduce-client-jobclient-3.2.1-amzn-2.jar"/>
@@ -1102,8 +1103,10 @@
             <library id="json4s-jackson_2.12-3.6.6.jar"/>
 			<library id="kryo-shaded-4.0.2.jar"/>
 			<library id="metrics-core-4.1.1.jar"/>
+            <library id="metrics-json-4.1.1.jar"/>
 			<library id="netty-all-4.1.47.Final.jar"/>
 			<library id="protobuf-java-2.5.0.jar"/>
+            <library id="paranamer-2.8.jar"/>
 			<library id="re2j-1.1.jar"/>
 			<library id="scala-library-2.12.10.jar"/>
             <library id="scala-reflect-2.12.10.jar"/>
