@@ -219,7 +219,7 @@
         log.info("<%=cid%> - Connecting to " + mongo_<%=cid%>.getServerAddressList() + ".");
     <%
     }
-    if(queryOptionNoTimeOut&&!version_3_5_X){
+    if(queryOptionNoTimeOut){
         %>
             mongo_<%=cid%>.addOption(com.mongodb.Bytes.QUERYOPTION_NOTIMEOUT);
         <%
