@@ -34,7 +34,7 @@
     } else {%>
         try{ // link with the "finally" on the "finally.javajet"
             // Empty client options
-            com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().build();
+            com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().applicationName(applicationName_<%=cid %>).build();
             <%if (useSSL) {%>
                 clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder()
                 .socketFactory(javax.net.ssl.SSLSocketFactory.getDefault())

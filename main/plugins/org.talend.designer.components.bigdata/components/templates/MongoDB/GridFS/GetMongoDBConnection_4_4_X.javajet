@@ -24,7 +24,7 @@
     } else {%>
         // Internal declarations
         List<com.mongodb.ServerAddress> addrs_<%=cid%> = new java.util.ArrayList<>();
-        com.mongodb.MongoClientSettings.Builder clientSettingsBuilder_<%=cid%> = com.mongodb.MongoClientSettings.builder();
+        com.mongodb.MongoClientSettings.Builder clientSettingsBuilder_<%=cid%> = com.mongodb.MongoClientSettings.builder().applicationName(applicationName_<%=cid %>);
         com.mongodb.connection.ClusterSettings.Builder clusterSettingsBuilder_<%=cid%> = com.mongodb.connection.ClusterSettings.builder();
         com.mongodb.connection.SslSettings.Builder sslSettingsBuilder_<%=cid%> = com.mongodb.connection.SslSettings.builder();
         <%

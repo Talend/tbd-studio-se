@@ -29,8 +29,13 @@
     String mongoPort = ElementParameterParser.getValue(node, "__PORT__");
     String dbport = mongoPort.startsWith("context.") ? "Integer.valueOf(" + mongoPort + ").intValue()" : mongoPort.replace("\"", "");
     List<Map<String,String>> replicaAddrs= (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__REPLICA_SET__");
+
+    // declare read preferences and write concerns for unified connection template
     boolean setReadPreference = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_READ_PREFERENCE__"));
     String readPreference = ElementParameterParser.getValue(node, "__READ_PREFERENCE__");
+    boolean setWriteConcern = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_WRITE_CONCERN__"));
+    String writeConcern = ElementParameterParser.getValue(node, "__WRITE_CONCERN__");
+
     boolean useAuthDB = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_AUTHENTICATION_DATABASE__"));
     String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
     String usedAuthenticationDB = useAuthDB ? authDB : dbname;
@@ -38,11 +43,13 @@
     boolean applyOptionalAttributes = "true".equals(ElementParameterParser.getValue(node, "__APPLY_OPTIONAL_ATTRIBUTES__"));
     String dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
     String mongoDbDriver = "com.mongodb.MongoClient";
+    boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
+    boolean version_4_4_X = "MONGODB_4_4_X".equals(dbversion);
     List<Map<String,String>> optionalConnectionAttributes = (List<Map<String, String>>)ElementParameterParser.getObjectValue(node,"__OPTIONAL_ATTRIBUTES__");
     boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
 %>
 
-    <%if("MONGODB_4_4_X".equals(dbversion)) {%>
+    <%if(version_4_4_X) {%>
         <%@ include file="./tCosmosDBConnection_begin_4_4_X.javajet"%>
     <%} else {%>
         <%@ include file="./tCosmosDBConnection_begin_below_4_4_X.javajet"%>

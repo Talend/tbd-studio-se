@@ -87,6 +87,8 @@
         <%
     }%>
 
+    <%@ include file="../templates/MongoDB/ApplicationName.javajet"%>
+
     int nb_line_<%=cid %> = 0;
     <%
     if(metadatas != null && metadatas.size() > 0) {

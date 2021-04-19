@@ -70,6 +70,7 @@
     String sortOrder = ElementParameterParser.getValue(node, "__SORTORDER__");
     %>
 
+    <%@ include file="../templates/MongoDB/ApplicationName.javajet"%>
     <%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GridFS/GetMongoDBConnection.javajet"%>
 
     <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Log4j/Log4jFileUtil.javajet"%>

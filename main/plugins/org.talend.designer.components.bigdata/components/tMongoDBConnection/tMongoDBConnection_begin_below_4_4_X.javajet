@@ -12,6 +12,8 @@
     " 
 %>
 
+    <%@ include file="../templates/MongoDB/ApplicationName.javajet"%>
+
     <%
     String mongoDbDriver = "com.mongodb.MongoClient";
     List<String> intAttributes = Arrays.asList(
@@ -37,7 +39,7 @@
     
     // Client options
     %>
-    com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder()
+    com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().applicationName(applicationName_<%=cid %>)
 <%
     if(applyOptionalAttributes){
         for(String key : optionalConnectionAttributesMap.keySet()){

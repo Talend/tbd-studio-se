@@ -73,6 +73,8 @@
         <%
     }%>
 
+    <%@ include file="../templates/MongoDB/ApplicationName.javajet"%>
+
     int nb_line_<%=cid %> = 0;
     <%
     List<IMetadataTable> metadatas = node.getMetadataList();

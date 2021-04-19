@@ -71,6 +71,7 @@
     List<Map<String, String>> files = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__FILES__");
     %>
 
+    <%@ include file="../templates/MongoDB/ApplicationName.javajet"%>
     <%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GridFS/GetMongoDBConnection.javajet"%>
 
                 <%if(version_3_5_X || version_4_4_X) {%>
