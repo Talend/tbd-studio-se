@@ -50,8 +50,8 @@ public class NoSQLRepositoryTranslator {
             return (String) value2LabelMap.get(value);
         }
         String messageKey = value;
-        if("MONGODB_3_5_X".equals(value)) {//$NON-NLS-1$
-        	messageKey = "MONGODB_3_5_X_AND_LATER";//$NON-NLS-1$
+        if ("MONGODB_4_4_X".equals(value)) {//$NON-NLS-1$
+            messageKey = "MONGODB_4_4_X_AND_LATER";//$NON-NLS-1$
         } else if (Arrays.asList(deprecatedVersion).contains(value)) {
             messageKey = value + "_DEPRECATED";//$NON-NLS-1$
         }
