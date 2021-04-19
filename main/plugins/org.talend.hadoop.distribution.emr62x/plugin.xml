@@ -957,7 +957,7 @@
 		 <!-- DynamoDB Streaming group -->
         <libraryNeededGroup description="Spark streaming DynamoDB libraries for emr62x" id="DYNAMODB-STREAMING-GROUP-EMR_62_x" name="DYNAMODB-STREAMING-GROUP-EMR_62_x">
             <group id="DYNAMODB-BATCH-GROUP-SPARK_3_0_x" />
-            
+            <library id="commons-pool2-2.9.0.jar"/>
         </libraryNeededGroup>
         
         <!-- Flume group -->
