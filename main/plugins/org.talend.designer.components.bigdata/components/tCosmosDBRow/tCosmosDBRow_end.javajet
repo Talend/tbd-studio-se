@@ -23,16 +23,18 @@
 	
 	if(!useExistingConnection) {
 		if(!("MONGODB_4_4_X".equals(dbversion))) {%>
-			if(mongo_<%=cid%> != null) {
-				<%if(isLog4jEnabled) {%>
-					log.info("<%=cid%> - Closing the connection " + mongo_<%=cid%>.getServerAddressList() + ".");
-					<%
-				}%>
-				mongo_<%=cid%>.close();
-				<%if(isLog4jEnabled) {%>
-					log.info("<%=cid%> - The connection was closed successfully.");
-					<%
-				}%>
+			}finally{
+				if(mongo_<%=cid%> != null) {
+					<%if(isLog4jEnabled) {%>
+						log.info("<%=cid%> - Closing the connection " + mongo_<%=cid%>.getServerAddressList() + ".");
+						<%
+					}%>
+					mongo_<%=cid%>.close();
+					<%if(isLog4jEnabled) {%>
+						log.info("<%=cid%> - The connection was closed successfully.");
+						<%
+					}%>
+				}
 			}
 			<%
 		} else {%>

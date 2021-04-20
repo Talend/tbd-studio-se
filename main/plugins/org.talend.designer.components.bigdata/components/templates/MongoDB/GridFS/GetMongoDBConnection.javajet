@@ -5,8 +5,6 @@
 	" 
 %>
 
-<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Log4j/Log4jFileUtil.javajet"%>
-
     <%if(isLog4jEnabled) {%>
         java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.OFF);
     <%} else {%>
