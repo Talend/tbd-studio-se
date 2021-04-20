@@ -283,8 +283,8 @@
          
         <!-- Azure libs -->
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="hadoop-azure-3.2.1.jar" name="hadoop-azure-3.2.1.jar"
-          mvn_uri="mvn:org.apache.hadoop/hadoop-azure/3.2.1"/>
+          id="hadoop-azure-3.2.1-amzn-2.jar" name="hadoop-azure-3.2.1-amzn-2.jar"
+          mvn_uri="mvn:org.apache.hadoop/hadoop-azure/3.2.1-amzn-2"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
           id="azure-storage-7.0.0.jar" name="azure-storage-7.0.0.jar"
@@ -299,8 +299,8 @@
           mvn_uri="mvn:org.eclipse.jetty/jetty-util/9.3.24.v20180605"/>
           
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="hadoop-azure-datalake-3.2.1.jar" name="hadoop-azure-datalake-3.2.1.jar"
-          mvn_uri="mvn:org.apache.hadoop/hadoop-azure-datalake/3.2.1"/>
+          id="hadoop-azure-datalake-3.2.1-amzn-2.jar" name="hadoop-azure-datalake-3.2.1-amzn-2.jar"
+          mvn_uri="mvn:org.apache.hadoop/hadoop-azure-datalake/3.2.1-amzn-2"/>
           
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
           id="azure-data-lake-store-sdk-2.2.9.jar" name="azure-data-lake-store-sdk-2.2.9.jar"
@@ -316,8 +316,8 @@
         </libraryNeeded>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
-            id="bigquery-connector-hadoop3-1.1.6-shaded" name="bigquery-connector-hadoop3-1.1.6-shaded.jar"
-            mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop3-1.1.6/jar/shaded">
+            id="bigquery-connector-hadoop3-1.1.6.jar" name="bigquery-connector-hadoop3-1.1.6.jar"
+            mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop3-1.1.6/jar">
         </libraryNeeded>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
@@ -387,38 +387,60 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
           id="util-2.1.4.jar" name="util-2.1.4.jar"
           mvn_uri="mvn:com.google.cloud.bigdataoss/util/2.1.4"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+          id="hive-beeline-3.1.2-amzn-3.jar" name="hive-beeline-3.1.2-amzn-3.jar"
+          mvn_uri="mvn:org.apache.hive/hive-beeline/3.1.2-amzn-3"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+          id="hive-cli-3.1.2-amzn-3.jar" name="hive-cli-3.1.2-amzn-3.jar"
+          mvn_uri="mvn:org.apache.hive/hive-cli/3.1.2-amzn-3"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="hive-common-2.3.7.jar" name="hive-common-2.3.7.jar"
-          mvn_uri="mvn:org.apache.hive/hive-common/2.3.7"/>
+          id="hive-common-3.1.2-amzn-3.jar" name="hive-common-3.1.2-amzn-3.jar"
+          mvn_uri="mvn:org.apache.hive/hive-common/3.1.2-amzn-3"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="hive-exec-2.3.7.jar" name="hive-exec-2.3.7.jar"
-          mvn_uri="mvn:org.apache.hive/hive-exec/2.3.7"/>
+          id="hive-exec-3.1.2-amzn-3.jar" name="hive-exec-3.1.2-amzn-3.jar"
+          mvn_uri="mvn:org.apache.hive/hive-exec/3.1.2-amzn-3"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+          id="hive-jdbc-3.1.2-amzn-3.jar" name="hive-jdbc-3.1.2-amzn-3.jar"
+          mvn_uri="mvn:org.apache.hive/hive-jdbc/3.1.2-amzn-3"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="hive-llap-common-2.3.7.jar" name="hive-llap-common-2.3.7.jar"
-          mvn_uri="mvn:org.apache.hive/hive-llap-common/2.3.7"/>
+          id="hive-llap-common-3.1.2-amzn-3.jar" name="hive-llap-common-3.1.2-amzn-3.jar"
+          mvn_uri="mvn:org.apache.hive/hive-llap-common/3.1.2-amzn-3"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="hive-metastore-2.3.7.jar" name="hive-metastore-2.3.7.jar"
-          mvn_uri="mvn:org.apache.hive/hive-metastore/2.3.7"/>
+          id="hive-metastore-3.1.2-amzn-3.jar" name="hive-metastore-3.1.2-amzn-3.jar"
+          mvn_uri="mvn:org.apache.hive/hive-metastore/3.1.2-amzn-3"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="hive-serde-2.3.7.jar" name="hive-serde-2.3.7.jar"
-          mvn_uri="mvn:org.apache.hive/hive-serde/2.3.7"/>
+          id="hive-serde-3.1.2-amzn-3.jar" name="hive-serde-3.1.2-amzn-3.jar"
+          mvn_uri="mvn:org.apache.hive/hive-serde/3.1.2-amzn-3"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+          id="hive-service-3.1.2-amzn-3.jar" name="hive-service-3.1.2-amzn-3.jar"
+          mvn_uri="mvn:org.apache.hive/hive-service/3.1.2-amzn-3"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+          id="hive-service-rpc-3.1.2-amzn-3.jar" name="hive-service-rpc-3.1.2-amzn-3.jar"
+          mvn_uri="mvn:org.apache.hive/hive-service-rpc/3.1.2-amzn-3"/>
+          
+        
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="hive-shims-0.23-2.3.7.jar" name="hive-shims-0.23-2.3.7.jar"
-          mvn_uri="mvn:org.apache.hive/hive-shims/2.3.7"/>
+          id="hive-shims-0.23-3.1.2-amzn-3.jar" name="hive-shims-0.23-3.1.2-amzn-3.jar"
+          mvn_uri="mvn:org.apache.hive/hive-shims/3.1.2-amzn-3"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="hive-shims-common-2.3.7.jar" name="hive-shims-common-2.3.7.jar"
-          mvn_uri="mvn:org.apache.hive/hive-shims-common/2.3.7"/>
+          id="hive-shims-common-3.1.2-amzn-3.jar" name="hive-shims-common-3.1.2-amzn-3.jar"
+          mvn_uri="mvn:org.apache.hive/hive-shims-common/3.1.2-amzn-3"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
           id="hive-storage-api-2.7.1.jar" name="hive-storage-api-2.7.1.jar"
-          mvn_uri="mvn:org.apache.hive/hive-storage-api/2.3.7"/>
+          mvn_uri="mvn:org.apache.hive/hive-storage-api/2.7.1"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
           id="ivy-2.4.0.jar" name="ivy-2.4.0.jar"
@@ -673,23 +695,45 @@
                 name="graphframes-0.8.1-spark3.0-s_2.12.jar"
                 mvn_uri="mvn:graphframes/graphframes/0.8.1-spark3.0-s_2.12"/>
         
+        
+        
+            
+        
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="hbase-common-1.4.10.jar"
-            name="hbase-common-1.4.10.jar"
-            mvn_uri="mvn:org.apache.hbase/hbase-common/1.4.10"/>
+            id="hive-hbase-handler-3.1.2-amzn-3.jar"
+            name="hive-hbase-handler-3.1.2-amzn-3.jar"
+            mvn_uri="mvn:org.apache.hbase/hive-hbase-handler/3.1.2-amzn-3"/>
+        
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="hbase-common-2.2.6-amzn-0.jar"
+            name="hbase-common-2.2.6-amzn-0.jar"
+            mvn_uri="mvn:org.apache.hbase/hbase-common/2.2.6-amzn-0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="hbase-client-1.4.10.jar"
-            name="hbase-client-1.4.10.jar"
-            mvn_uri="mvn:org.apache.hbase/hbase-client/1.4.10"/>
+            id="hbase-client-2.2.6-amzn-0.jar"
+            name="hbase-client-2.2.6-amzn-0.jar"
+            mvn_uri="mvn:org.apache.hbase/hbase-client/2.2.6-amzn-0"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="hbase-protocol-1.4.10.jar"
-            name="hbase-protocol-1.4.10.jar"
-            mvn_uri="mvn:org.apache.hbase/hbase-protocol/1.4.10"/>
+            id="hbase-protocol-2.2.6-amzn-0.jar"
+            name="hbase-protocol-2.2.6-amzn-0.jar"
+            mvn_uri="mvn:org.apache.hbase/hbase-protocol/2.2.6-amzn-0"/>
+            
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="hbase-server-2.2.6-amzn-0.jar"
+            name="hbase-server-2.2.6-amzn-0.jar"
+            mvn_uri="mvn:org.apache.hbase/hbase-server/2.2.6-amzn-0"/>
+            
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="hbase-hadoop-compat-2.2.6-amzn-0.jar"
+            name="hbase-hadoop-compat-2.2.6-amzn-0.jar"
+            mvn_uri="mvn:org.apache.hbase/hbase-hadoop-compat/2.2.6-amzn-0"/>
                 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr62x"
@@ -934,19 +978,33 @@
             mvn_uri="mvn:com.twitter/parquet-hadoop-bundle/1.6.0"/>
             
          <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr5290"
+            context="plugin:org.talend.hadoop.distribution.emr62x"
             id="jodd-core-3.5.2.jar"
             name="jodd-core-3.5.2.jar"
             mvn_uri="mvn:org.jodd/jodd-core/3.5.2"/>
+            
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="google-api-services-bigquery-v2-rev459-1.25.0.jar"
+            name="google-api-services-bigquery-v2-rev459-1.25.0.jar"
+            mvn_uri="mvn:com.google.apis/google-api-services-bigquery/v2-rev459-1.25.0"/>
+            
 		
 		<!-- Spark Azure group -->
         <libraryNeededGroup description="Spark Azure libraries for emr62x" id="AZURE-GROUP-EMR_62_x" name="AZURE-GROUP-EMR_62_x">
-                
+            <library id="azure-data-lake-store-sdk-2.2.9.jar"/>
+            <library id="azure-storage-7.0.0.jar"/>
+            <library id="hadoop-azure-3.2.1-amzn-2.jar"/>
+            <library id="hadoop-azure-datalake-3.2.1-amzn-2.jar"/>
         </libraryNeededGroup>
         
         <!-- Google Big Query group -->
         <libraryNeededGroup description="Google Big Query libraries for emr62x" id="BIGQUERY-GROUP-EMR_62_x" name="BIGQUERY-GROUP-EMR_62_x">
-            
+            <library id="gcs-connector-hadoop3-2.1.6-shaded"/>
+            <library id="bigquery-connector-hadoop3-1.1.6-shaded"/>
+            <library id="google-api-services-bigquery-v2-rev459-1.25.0.jar"/>
+            <library id="google-oauth-client-1.31.0.jar"/>
+            <library id="gson-2.2.4.jar"/>
         </libraryNeededGroup>
 		
 		<!-- DynamoDB Batch group -->
@@ -957,7 +1015,6 @@
 		 <!-- DynamoDB Streaming group -->
         <libraryNeededGroup description="Spark streaming DynamoDB libraries for emr62x" id="DYNAMODB-STREAMING-GROUP-EMR_62_x" name="DYNAMODB-STREAMING-GROUP-EMR_62_x">
             <group id="DYNAMODB-BATCH-GROUP-SPARK_3_0_x" />
-            <library id="commons-pool2-2.9.0.jar"/>
         </libraryNeededGroup>
         
         <!-- Flume group -->
@@ -972,27 +1029,41 @@
 		
 		<!-- GraphFrames group -->
         <libraryNeededGroup description="GraphFrames libraries for emr62x" id="GRAPHFRAMES-GROUP-EMR_62_x" name="GRAPHFRAMES-GROUP-EMR_62_x">
-             
+             <library id="graphframes-0.8.1-spark3.0-s_2.12.jar"/>
         </libraryNeededGroup>
         
         <!-- HBase group  -->
         <libraryNeededGroup description="HBase libraries for emr62x" id="HBASE-GROUP-EMR_62_x" name="HBASE-GROUP-EMR_62_x"  >
-             
+            <library id="hbase-common-2.2.6-amzn-0.jar" />
+            <library id="hbase-client-2.2.6-amzn-0.jar" />
+            <library id="hbase-protocol-2.2.6-amzn-0.jar" />
+            <library id="hbase-server-2.2.6-amzn-0.jar" />
+            <library id="hbase-hadoop-compat-2.2.6-amzn-0.jar" />
+            <library id="hive-hbase-handler-3.1.2-amzn-3.jar"/>
         </libraryNeededGroup>
 
 		<!-- Hive group -->
         <libraryNeededGroup description="The latest Hive libraries for emr62x" id="HIVE-GROUP-EMR_62_x" name="HIVE-GROUP-EMR_62_x">
-             
+            <library id="hive-common-3.1.2-amzn-3.jar"/>
+            <library id="hive-exec-3.1.2-amzn-3.jar"/>
+           	<library id="hive-jdbc-3.1.2-amzn-3.jar"/>
+            <library id="hive-metastore-3.1.2-amzn-3.jar"/>
+		    <library id="hive-service-3.1.2-amzn-3.jar"/>
+		    <library id="hive-service-rpc-3.1.2-amzn-3.jar"/>
+		    <library id="hive-serde-3.1.2-amzn-3.jar"/>
+		    <library id="hive-beeline-3.1.2-amzn-3.jar"/>
+            <library id="hive-cli-3.1.2-amzn-3.jar"/>
         </libraryNeededGroup>
         
          <!-- Spark Streaming Kafka group -->
         <libraryNeededGroup description="Spark streaming Kafka libraries for emr62x" id="KAFKA-GROUP-EMR_62_x" name="KAFKA-GROUP-EMR_62_x">
-            
+            <library id="kafka-clients-2.7.0.jar"/>
+            <library id="spark-streaming-kafka-0-10_2.12-3.0.1.jar"/>
         </libraryNeededGroup>
             
 		<!-- Kinesis group -->
         <libraryNeededGroup description="Spark streaming Kinesis libraries for emr62x" id="KINESIS-GROUP-EMR_62_x" name="KINESIS-GROUP-EMR_62_x">
-            
+            <library id="commons-pool2-2.9.0.jar"/>
         </libraryNeededGroup>
         
         <!-- Map/Reduce group -->
@@ -1011,7 +1082,6 @@
             <library id="parquet-hadoop-bundle-1.6.0.jar"/>
             <library id="jodd-core-3.5.2.jar"/>
             <library id="jul-to-slf4j-1.7.30.jar"/>
-            
         </libraryNeededGroup>
            
         
@@ -1122,7 +1192,6 @@
         </libraryNeededGroup>
         
         <!-- Sqoop Parquet group -->
-        <!-- jackson jars are defined localprovider plugin.xml -->
         <libraryNeededGroup description="Sqoop Parquet libraries for emr62x" id="SQOOP-PARQUET-GROUP-EMR_62_x" name="SQOOP-PARQUET-GROUP-EMR_62_x">
            
         </libraryNeededGroup>
