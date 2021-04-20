@@ -40,12 +40,15 @@
     String writeConcern = ElementParameterParser.getValue(node, "__WRITE_CONCERN__");
 
     String dbversion;
+    boolean queryOptionNoTimeOut;
     if(useExistingConnection){
         String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
         INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
         dbversion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
+        queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(connectionNode, "__QUERYOPTION_NOTIMEOUT__"));
     } else {
         dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
+        queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
     }
     boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
     boolean version_4_4_X = "MONGODB_4_4_X".equals(dbversion);

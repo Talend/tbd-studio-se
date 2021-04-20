@@ -46,9 +46,6 @@
     boolean useAuthDB = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_AUTHENTICATION_DATABASE__"));
     String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
     String usedAuthenticationDB = useAuthDB ? authDB : dbname;
-    // db versions
-    boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
-    boolean version_4_4_X = "MONGODB_4_4_X".equals(dbversion);
 
     boolean queryOptionNoTimeOut;
     String dbversion;
@@ -61,6 +58,9 @@
         dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
         queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
     }
+    // db versions
+    boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
+    boolean version_4_4_X = "MONGODB_4_4_X".equals(dbversion);
     boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
 	%>
 
@@ -107,7 +107,7 @@
                 <%@ include file="./tCosmosDBOutput_begin_4_4_X.javajet"%>
                 <%
             } else {%>
-                <%@ include file="./tCosmosDBOutput_begin_below_4_4.javajet"%>
+                <%@ include file="./tCosmosDBOutput_begin_below_4_4_X.javajet"%>
                 <%
             }%>
 

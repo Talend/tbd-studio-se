@@ -14,7 +14,7 @@
     	java.util.Map		
 	" 
 %>
-<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Log4j/Log4jFileUtil.javajet"%>
+
 <%
   	CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
   	INode node = (INode)codeGenArgument.getArgument();
@@ -59,9 +59,9 @@
     boolean specifyFields="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SPECIFY_FIELDS__"));
     List<Map<String, String>> filter = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__FIELDS_TO_RETURN__");
     boolean queryOptionNoTimeOut;
-	String dbversion;
-	if(useExistingConnection){
-	    String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+    String dbversion;
+    if(useExistingConnection){
+        String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
         INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
         dbversion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
         queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(connectionNode, "__QUERYOPTION_NOTIMEOUT__"));
