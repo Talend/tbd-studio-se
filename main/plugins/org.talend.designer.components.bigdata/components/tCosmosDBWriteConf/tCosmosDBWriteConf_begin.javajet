@@ -49,8 +49,6 @@
     String usedAuthenticationDB = useAuthDB ? authDB : dbname;
     String dataAction = ElementParameterParser.getValue(node,"__DATA_ACTION__");
     List<Map<String,String>> replicaAddrs= (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__REPLICA_SET__");
-    boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
-    boolean version_4_4_X = "MONGODB_4_4_X".equals(dbversion);
     boolean queryOptionNoTimeOut;
 	String dbversion;
 	if(useExistingConnection){
@@ -62,6 +60,8 @@
         dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
         queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
     }
+    boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
+    boolean version_4_4_X = "MONGODB_4_4_X".equals(dbversion);
     String objectType = (version_4_4_X) ? "org.bson.Document" : "com.mongodb.DBObject";
 
     boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
