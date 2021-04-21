@@ -12,12 +12,9 @@ public enum ModuleGroupName {
     GRAPHFRAMES("GRAPHFRAMES-GROUP"), //$NON-NLS-1$
     HBASE("HBASE-GROUP"), //$NON-NLS-1$
     HIVE("HIVE-GROUP"), //$NON-NLS-1$
-    HDFS("HDFS-GROUP"),
-    HIVE_HBASE("HIVE-HBASE-GROUP"), //$NON-NLS-1$ //TODO Verify if we can replace for only hive and hbase
     KAFKA("KAFKA-GROUP"), //$NON-NLS-1$
     KINESIS("KINESIS-GROUP"), //$NON-NLS-1$
     KMEANS("KMEANS-GROUP"), //$NON-NLS-1$
-    MAPREDUCE("MAPREDUCE-GROUP"), //$NON-NLS-1$
     MATH("MATH-GROUP"), //$NON-NLS-1$
     ML("ML-GROUP"), //$NON-NLS-1$
     PARQUET("PARQUET-GROUP"), //$NON-NLS-1$

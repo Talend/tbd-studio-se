@@ -41,8 +41,6 @@ public class SqoopModuleGroup {
         
         Set<DistributionModuleGroup> hs = new HashSet<>();
 
-        hs.add(new DistributionModuleGroup(ModuleGroupName.MAPREDUCE.get(distributionVersion)));
-        hs.add(new DistributionModuleGroup(ModuleGroupName.HDFS.get(distributionVersion)));
         hs.add(new DistributionModuleGroup(ModuleGroupName.SQOOP.get(distributionVersion)));
         
         hs.add(new DistributionModuleGroup(ModuleGroupName.SQOOP_PARQUET.get(distributionVersion), true, parquetOutputCondition));
