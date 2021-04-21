@@ -27,16 +27,16 @@
         
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh570"
-            id="httpclient-4.3.3.jar"
-            name="httpclient-4.3.3.jar"
-            mvn_uri="mvn:org.talend.libraries/httpclient-4.3.3/6.0.0">
+            id="httpclient-4.5.13.jar"
+            name="httpclient-4.5.13.jar"
+            mvn_uri="mvn:org.talend.libraries/httpclient-4.5.13/6.0.0">
         </libraryNeeded>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.cdh570"
-            id="httpcore-4.3.3.jar"
-            name="httpcore-4.3.3.jar"
-            mvn_uri="mvn:org.talend.libraries/httpcore-4.3.3/6.0.0">
+            id="httpcore-4.4.10.jar"
+            name="httpcore-4.4.10.jar"
+            mvn_uri="mvn:org.talend.libraries/httpcore-4.4.10/6.0.0">
         </libraryNeeded>
         
         <!-- Azure libraries -->
@@ -556,8 +556,8 @@
              <library id="jersey-core-1.9.jar" />
              <library id="htrace-core4-4.0.1-incubating.jar" />
              <library id="servlet-api-2.5.jar"/>
-             <library id="httpclient-4.3.3.jar"/>
-             <library id="httpcore-4.3.3.jar"/>
+             <library id="httpclient-4.5.13.jar"/>
+             <library id="httpcore-4.4.10.jar"/>
              <library id="jackson-mapper-asl-1.9.14-TALEND.jar" />
              <library id="jackson-core-asl-1.9.14-TALEND.jar" />
         </libraryNeededGroup>
@@ -731,8 +731,8 @@
              <library id="hadoop-aws-cdh5.7.0"/>
              <library id="aws-java-sdk-1.7.4"/>
              <library id="jets3t-0.9.0" />
-             <library id="httpclient-4.3.3.jar" />
-             <library id="httpcore-4.3.3.jar" />
+             <library id="httpclient-4.5.13.jar" />
+             <library id="httpcore-4.4.10.jar" />
         </libraryNeededGroup>
         
         <!-- GraphFrames group MRREQUIRED -->
