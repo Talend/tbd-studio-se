@@ -706,12 +706,9 @@
 			<library id="hadoop-hdfs-client-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-mapreduce-client-common-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-mapreduce-client-core-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-mapreduce-client-jobclient-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-mapreduce-client-shuffle-3.2.1-amzn-2.jar"/>
-            <library id="hadoop-yarn-api-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-yarn-api-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-yarn-client-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-yarn-common-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-yarn-server-common-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-yarn-server-web-proxy-3.2.1-amzn-2.jar"/>
 			<library id="htrace-core4-4.1.0-incubating.jar"/>
             <library id="jackson-annotations-2.10.0.jar"/>
