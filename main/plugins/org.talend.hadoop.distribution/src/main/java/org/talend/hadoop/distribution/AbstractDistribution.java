@@ -446,24 +446,21 @@ public abstract class AbstractDistribution {
                 ModuleGroupName.HBASE.get(this.getVersion()), true ));
         
         // Hive
-        result.put(ComponentType.HIVE, ModuleGroupsUtils.getModuleGroups(null, 
-                ModuleGroupName.HIVE.get(this.getVersion()), false ));
-        
-        //Hive on Hbase
         ComponentCondition hiveOnHbaseCondition = new MultiComponentCondition(new SimpleComponentCondition(new BasicExpression(
                 HiveConstant.HIVE_CONFIGURATION_COMPONENT_HBASEPARAMETER)), BooleanOperator.AND, //
                 new SimpleComponentCondition(new ShowExpression(HiveConstant.HIVE_CONFIGURATION_COMPONENT_HBASEPARAMETER)));
 
-        result.put(ComponentType.HIVE, ModuleGroupsUtils.getModuleGroups( hiveOnHbaseCondition,
-                ModuleGroupName.HBASE.get(this.getVersion()), false ));
-
+        
+        Set<DistributionModuleGroup> hiveModuleGroups = new HashSet<>();
+        
+        hiveModuleGroups.addAll( ModuleGroupsUtils.getModuleGroups(null, ModuleGroupName.HIVE.get(this.getVersion()), false));
+        hiveModuleGroups.addAll( ModuleGroupsUtils.getModuleGroups(hiveOnHbaseCondition, ModuleGroupName.HBASE.get(this.getVersion()), false));
+        
+        result.put(ComponentType.HIVE, hiveModuleGroups);
         
         //Hive on Spark
         result.put(ComponentType.HIVEONSPARK, ModuleGroupsUtils.getModuleGroups((ComponentCondition) null,
                 ModuleGroupName.HIVE.get(this.getVersion()), true));
-        
-//        result.put(ComponentType.HCATALOG, ModuleGroupsUtils.getModuleGroups(
-//                (ComponentCondition) null, ModuleGroupName.HDFS.get(this.getVersion()), false));
         
         //Sqoop
         result.put(ComponentType.SQOOP, SqoopModuleGroup.getModuleGroups(this.getVersion()));
@@ -521,8 +518,24 @@ public abstract class AbstractDistribution {
                     ModuleGroupsUtils.getModuleGroups(distribution, version, (String) null, ModuleGroupName.GCS.get(this.getVersion()), true));
         
        
-        // TODO GraphFrames
+        // GraphFrames - Spark Batch DQ matching
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
+                ModuleGroupsUtils.getModuleGroups(distribution, version, (ComponentCondition) null,  ModuleGroupName.GRAPHFRAMES.get(this.getVersion()), true));     
         
+        
+        // Spark Streaming Kafka nodes
+        
+        ComponentCondition kafkaCondition = new SparkStreamingLinkedNodeCondition(distribution, version, SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition();
+        
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_INPUT_COMPONENT),
+                ModuleGroupsUtils.getModuleGroups(distribution, version, kafkaCondition, ModuleGroupName.KAFKA.get(this.getVersion()), true ));
+        
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_AVRO_INPUT_COMPONENT),
+                ModuleGroupsUtils.getModuleGroups(distribution, version, kafkaCondition, ModuleGroupName.KAFKA.get(this.getVersion()), true ));
+        
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT),
+                ModuleGroupsUtils.getModuleGroups(distribution, version, kafkaCondition, ModuleGroupName.KAFKA.get(this.getVersion()), true ));
+
         
         // Spark Streaming Kinesis nodes
         Set<DistributionModuleGroup> kinesisModuleGroups =  ModuleGroupsUtils.getStreamingModuleGroups(distribution, version, (ComponentCondition) null, ModuleGroupName.KINESIS.get(this.getVersion()), true );
@@ -545,7 +558,24 @@ public abstract class AbstractDistribution {
                 ModuleGroupsUtils.getModuleGroups(distribution, version, (ComponentCondition) null, ModuleGroupName.PARQUET.get(this.getVersion()), true));
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.PARQUET_STREAM_INPUT_COMPONENT),
                 ModuleGroupsUtils.getModuleGroups(distribution, version, (ComponentCondition) null, ModuleGroupName.PARQUET.get(this.getVersion()), true));
-      
+        
+        // Redshift nodes ...
+        Set<DistributionModuleGroup> redshiftBatchNodeModuleGroups = ModuleGroupsUtils.getModuleGroups(distribution, version, "USE_EXISTING_CONNECTION == 'false'", ModuleGroupName.REDSHIFT_BATCH.get(this.getVersion()), true );
+        Set<DistributionModuleGroup> redshiftBatchConfigurationModuleGroups = ModuleGroupsUtils.getModuleGroups(distribution, version, (String) null, ModuleGroupName.REDSHIFT_BATCH.get(this.getVersion()), true );
+        
+        // ... in Spark batch
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.REDSHIFT_INPUT_COMPONENT), redshiftBatchNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.REDSHIFT_OUTPUT_COMPONENT), redshiftBatchNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.REDSHIFT_CONFIGURATION_COMPONENT), redshiftBatchConfigurationModuleGroups);
+        
+        Set<DistributionModuleGroup> redshiftStreamingNodeModuleGroups = ModuleGroupsUtils.getModuleGroups(distribution, version, "USE_EXISTING_CONNECTION == 'false'", ModuleGroupName.REDSHIFT_STREAMING.get(this.getVersion()), true );
+        Set<DistributionModuleGroup> redshiftStreamingConfigurationModuleGroups = ModuleGroupsUtils.getModuleGroups(distribution, version, (String) null, ModuleGroupName.REDSHIFT_STREAMING.get(this.getVersion()), true );
+        
+        // ... in Spark streaming
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.REDSHIFT_LOOKUP_INPUT_COMPONENT), redshiftStreamingNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.REDSHIFT_OUTPUT_COMPONENT), redshiftStreamingNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.REDSHIFT_CONFIGURATION_COMPONENT), redshiftStreamingConfigurationModuleGroups);           
+        
         // Spark S3 condition
         ComponentCondition s3StorageCondition = new SparkBatchLinkedNodeCondition(distribution, version,
                 SparkBatchConstant.SPARK_BATCH_S3_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition();
@@ -577,23 +607,7 @@ public abstract class AbstractDistribution {
         // Spark Streaming tSQLRow nodes
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.SPARK_SQL_ROW_COMPONENT),
                 ModuleGroupsUtils.getModuleGroups(distribution, version, hiveContextCondition, ModuleGroupName.HIVE.get(this.getVersion()), true));
-        
-        // Spark Batch DQ matching
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.MATCH_PREDICT_COMPONENT),
-                ModuleGroupsUtils.getModuleGroups(distribution, version, (ComponentCondition) null,  ModuleGroupName.GRAPHFRAMES.get(this.getVersion()), true));     
-        
-        ComponentCondition kafkaCondition = new SparkStreamingLinkedNodeCondition(distribution, version, SparkStreamingConstant.KAFKA_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition();
-        
-        // Spark Streaming Kafka nodes
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_INPUT_COMPONENT),
-                ModuleGroupsUtils.getModuleGroups(distribution, version, kafkaCondition, ModuleGroupName.KAFKA.get(this.getVersion()), true ));
-        
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_AVRO_INPUT_COMPONENT),
-                ModuleGroupsUtils.getModuleGroups(distribution, version, kafkaCondition, ModuleGroupName.KAFKA.get(this.getVersion()), true ));
-        
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.KAFKA_OUTPUT_COMPONENT),
-                ModuleGroupsUtils.getModuleGroups(distribution, version, kafkaCondition, ModuleGroupName.KAFKA.get(this.getVersion()), true ));
-
+       
         return result;
     }
     
