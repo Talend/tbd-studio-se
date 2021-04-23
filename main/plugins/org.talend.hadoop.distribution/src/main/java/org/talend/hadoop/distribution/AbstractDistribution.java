@@ -576,6 +576,17 @@ public abstract class AbstractDistribution {
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.REDSHIFT_OUTPUT_COMPONENT), redshiftStreamingNodeModuleGroups);
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.REDSHIFT_CONFIGURATION_COMPONENT), redshiftStreamingConfigurationModuleGroups);           
         
+        
+        // Snowflake nodes ...
+        Set<DistributionModuleGroup> snowFlakeBatchNodeModuleGroups = ModuleGroupsUtils.getModuleGroups(distribution, version, "USE_EXISTING_CONNECTION == 'false'", ModuleGroupName.SNOWFLAKE.get(this.getVersion()), true );
+        Set<DistributionModuleGroup> snowFlakeBatchConfigurationModuleGroups = ModuleGroupsUtils.getModuleGroups(distribution, version, (String) null, ModuleGroupName.SNOWFLAKE.get(this.getVersion()), true );
+        
+        // ... in Spark batch
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.SNOWFLAKE_INPUT_COMPONENT), snowFlakeBatchNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.SNOWFLAKE_OUTPUT_COMPONENT), snowFlakeBatchNodeModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.SNOWFLAKE_CONFIGURATION_COMPONENT), snowFlakeBatchConfigurationModuleGroups);
+        
+        
         // Spark S3 condition
         ComponentCondition s3StorageCondition = new SparkBatchLinkedNodeCondition(distribution, version,
                 SparkBatchConstant.SPARK_BATCH_S3_SPARKCONFIGURATION_LINKEDPARAMETER).getCondition();
