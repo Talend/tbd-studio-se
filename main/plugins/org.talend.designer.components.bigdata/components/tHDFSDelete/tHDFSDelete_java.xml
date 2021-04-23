@@ -218,9 +218,9 @@
 				MVN="mvn:org.talend.libraries/hadoop-conf-kerberos/6.0.0"
 				UrlPath="platform:/plugin/org.talend.libraries.hadoop.mapr2/lib/hadoop-conf-kerberos.jar"
 				REQUIRED_IF="(DISTRIB[DISTRIBUTION, DB_VERSION].doSupportKerberos[] AND (USE_KRB=='true') AND (USE_EXISTING_CONNECTION=='false') AND (DISTRIBUTION!='CUSTOM'))" />
-			<IMPORT NAME="commons-io" MODULE="commons-io-2.4.jar"
-				MVN="mvn:commons-io/commons-io/2.4"
-				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.4.jar"
+			<IMPORT NAME="commons-io" MODULE="commons-io-2.7.jar"
+				MVN="mvn:commons-io/commons-io/2.7"
+				UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-io-2.7.jar"
 				REQUIRED_IF="DISTRIB[DISTRIBUTION, DB_VERSION].doSupportOldImportMode[] AND (DISTRIBUTION=='CLOUDERA') AND (USE_EXISTING_CONNECTION=='false') AND (DISTRIBUTION!='CUSTOM')" />
 		</IMPORTS>
 	</CODEGENERATION>
