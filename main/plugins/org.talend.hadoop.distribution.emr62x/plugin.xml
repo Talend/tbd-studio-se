@@ -594,6 +594,14 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
           id="jakarta.ws.rs-api-2.1.6.jar" name="jakarta.ws.rs-api-2.1.6.jar" 
           mvn_uri="mvn:jakarta.ws.rs/jakarta.ws.rs-api/2.1.6"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+          id="hadoop-client-api-3.2.2.jar" name="hadoop-client-api-3.2.2.jar" 
+          mvn_uri="mvn:org.apache.hadoop/hadoop-client-api/3.2.2"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+          id="hadoop-core-1.2.1.jar" name="hadoop-core-1.2.1.jar" 
+          mvn_uri="mvn:org.apache.hadoop/hadoop-core/1.2.1"/>
 		
 		<!-- Spark Azure group -->
         <libraryNeededGroup description="Spark Azure libraries for emr62x" id="AZURE-GROUP-EMR_62_x" name="AZURE-GROUP-EMR_62_x">
@@ -639,6 +647,12 @@
         <libraryNeededGroup description="GraphFrames libraries for emr62x" id="GRAPHFRAMES-GROUP-EMR_62_x" name="GRAPHFRAMES-GROUP-EMR_62_x">
              <library id="graphframes-0.8.1-spark3.0-s_2.12.jar"/>
         </libraryNeededGroup>
+        
+         <!-- HBase group  -->
+        <libraryNeededGroup description="HDFS libraries for emr62x" id="HDFS-GROUP-EMR_62_x" name="HDFS-GROUP-EMR_62_x"  >
+            <library id="hadoop-client-api-3.2.2.jar"/>
+            <library id="hadoop-core-1.2.1.jar"/>
+        </libraryNeededGroup>            
         
         <!-- HBase group  -->
         <libraryNeededGroup description="HBase libraries for emr62x" id="HBASE-GROUP-EMR_62_x" name="HBASE-GROUP-EMR_62_x"  >

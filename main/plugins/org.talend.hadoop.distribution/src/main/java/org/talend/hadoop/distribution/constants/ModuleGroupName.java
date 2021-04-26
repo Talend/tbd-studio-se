@@ -10,6 +10,7 @@ public enum ModuleGroupName {
     FLUME("FLUME-GROUP"), //$NON-NLS-1$
     GCS("GCS-GROUP"), //$NON-NLS-1$
     GRAPHFRAMES("GRAPHFRAMES-GROUP"), //$NON-NLS-1$
+    HDFS("HDFS-GROUP"), //$NON-NLS-1$
     HBASE("HBASE-GROUP"), //$NON-NLS-1$
     HIVE("HIVE-GROUP"), //$NON-NLS-1$
     KAFKA("KAFKA-GROUP"), //$NON-NLS-1$

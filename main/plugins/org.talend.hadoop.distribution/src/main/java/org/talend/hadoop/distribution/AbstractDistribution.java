@@ -427,19 +427,11 @@ public abstract class AbstractDistribution {
         
         Map<ComponentType, Set<DistributionModuleGroup>> result = new HashMap<>();
         
-        // Spark Batch
-        ComponentCondition sparkBatchCondition = new SimpleComponentCondition(new BasicExpression( 
-                SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false")); //$NON-NLS-1$
+        //HCatalog
+        result.put(ComponentType.HCATALOG, ModuleGroupsUtils.getModuleGroups( null, ModuleGroupName.HDFS.get(this.getVersion()), false));
         
-        result.put(ComponentType.SPARKBATCH, ModuleGroupsUtils.getModuleGroups(sparkBatchCondition, 
-                ModuleGroupName.SPARK_BATCH.get(this.getVersion()), true));
-        
-        // Spark Streaming
-        ComponentCondition sparkStreamingCondition = new SimpleComponentCondition(new BasicExpression(
-                SparkStreamingConstant.SPARKCONFIGURATION_IS_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false")); //$NON-NLS-1$
-        
-        result.put(ComponentType.SPARKSTREAMING, ModuleGroupsUtils.getModuleGroups(sparkStreamingCondition,
-                ModuleGroupName.SPARK_STREAMING.get(this.getVersion()), true));
+        //HDFS
+        result.put(ComponentType.HDFS, ModuleGroupsUtils.getModuleGroups( null, ModuleGroupName.HDFS.get(this.getVersion()), false));
         
         //Hbase
         result.put(ComponentType.HBASE, ModuleGroupsUtils.getModuleGroups(null, 
@@ -465,6 +457,27 @@ public abstract class AbstractDistribution {
         //Sqoop
         result.put(ComponentType.SQOOP, SqoopModuleGroup.getModuleGroups(this.getVersion()));
 
+        
+        // Spark Batch
+        ComponentCondition sparkBatchCondition = new SimpleComponentCondition(new BasicExpression( 
+                SparkBatchConstant.SPARK_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false")); //$NON-NLS-1$
+        
+        result.put(ComponentType.SPARKBATCH, ModuleGroupsUtils.getModuleGroups(sparkBatchCondition, 
+                ModuleGroupName.SPARK_BATCH.get(this.getVersion()), true));
+        
+        // Spark Streaming
+        ComponentCondition sparkStreamingCondition = new SimpleComponentCondition(new BasicExpression(
+                SparkStreamingConstant.SPARKCONFIGURATION_IS_LOCAL_MODE_PARAMETER, EqualityOperator.EQ, "false")); //$NON-NLS-1$
+        
+        result.put(ComponentType.SPARKSTREAMING, ModuleGroupsUtils.getModuleGroups(sparkStreamingCondition,
+                ModuleGroupName.SPARK_STREAMING.get(this.getVersion()), true));
+        
+        
+       
+        
+       
+        
+       
         return result;
     }
     
