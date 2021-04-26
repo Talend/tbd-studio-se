@@ -274,8 +274,8 @@
           mvn_uri="mvn:com.microsoft.azure/azure-data-lake-store-sdk/2.2.9"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="protobuf-java-2.5.0.jar" name="protobuf-java-2.5.0.jar"
-          mvn_uri="mvn:com.google.protobuf/protobuf-java/2.5.0"/>
+          id="protobuf-java-3.15.8.jar" name="protobuf-java-3.15.8.jar"
+          mvn_uri="mvn:com.google.protobuf/protobuf-java/3.15.8"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
             id="gcs-connector-hadoop3-2.1.6-shaded.jar" name="gcs-connector-hadoop3-2.1.6-shaded.jar"
@@ -596,8 +596,12 @@
           mvn_uri="mvn:jakarta.ws.rs/jakarta.ws.rs-api/2.1.6"/>
           
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="hadoop-client-api-3.2.2.jar" name="hadoop-client-api-3.2.2.jar" 
-          mvn_uri="mvn:org.apache.hadoop/hadoop-client-api/3.2.2"/>
+          id="hadoop-client-api-3.2.1.jar" name="hadoop-client-api-3.2.1.jar" 
+          mvn_uri="mvn:org.apache.hadoop/hadoop-client-api/3.2.1"/>
+		
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+          id="hadoop-client-runtime-3.2.1.jar" name="hadoop-client-runtime-3.2.1.jar" 
+          mvn_uri="mvn:org.apache.hadoop/hadoop-client-runtime/3.2.1"/>
           
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
           id="hadoop-core-1.2.1.jar" name="hadoop-core-1.2.1.jar" 
@@ -648,10 +652,27 @@
              <library id="graphframes-0.8.1-spark3.0-s_2.12.jar"/>
         </libraryNeededGroup>
         
-         <!-- HBase group  -->
-        <libraryNeededGroup description="HDFS libraries for emr62x" id="HDFS-GROUP-EMR_62_x" name="HDFS-GROUP-EMR_62_x"  >
-            <library id="hadoop-client-api-3.2.2.jar"/>
-            <library id="hadoop-core-1.2.1.jar"/>
+         <!-- HDFS group  -->
+        <libraryNeededGroup description="HDFS libraries for emr62x" id="HDFS-GROUP-EMR_62_x" name="HDFS-GROUP-EMR_62_x">
+            <library id="commons-collections-3.2.2.jar"/>
+            <library id="commons-logging-1.1.3.jar"/>
+            <library id="commons-configuration-1.6.jar"/>
+            <library id="commons-configuration2-2.1.1.jar"/>
+            <library id="hadoop-common-3.2.1-amzn-2.jar"/>
+            <library id="hadoop-auth-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-aws-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-client-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-hdfs-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-hdfs-client-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-mapreduce-client-common-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-mapreduce-client-core-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-yarn-api-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-yarn-client-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-yarn-common-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-yarn-server-web-proxy-3.2.1-amzn-2.jar"/>
+            <library id="guava-27.0-jre.jar"/>
+            <library id="stax2-api-4.2.1.jar"/>
+            <library id="woodstox-core-5.0.3.jar"/>
         </libraryNeededGroup>            
         
         <!-- HBase group  -->
@@ -723,6 +744,7 @@
 		
 		<!-- Spark batch group -->
         <libraryNeededGroup description="SPARK libraries for emr62x" id="SPARK-BATCH-GROUP-EMR_62_x" name="SPARK-BATCH-GROUP-EMR_62_x">
+            <group id="HDFS-GROUP-EMR_62_x"/>
             <library id="antlr4-runtime-4.7.1.jar"/>
             <library id="aopalliance-1.0.jar"/>
 			<library id="avro-1.8.2.jar"/>
@@ -730,29 +752,12 @@
 			<library id="chill_2.12-0.9.5.jar"/>
             <library id="chill-java-0.9.5.jar"/>
 			<library id="commons-codec-1.11.jar"/>
-            <library id="commons-collections-3.2.2.jar"/>
             <library id="commons-compiler-3.0.16.jar"/>
-            <library id="commons-configuration-1.6.jar"/>
-            <library id="commons-configuration2-2.1.1.jar"/>
             <library id="commons-io-2.5.jar"/>
 			<library id="commons-lang-2.6.jar"/>
             <library id="commons-lang3-3.9.jar"/>
-            <library id="commons-logging-1.1.3.jar"/>
             <library id="emrfs-2.44.0.jar"/>
             <library id="emrfs-hadoop-assembly-2.38.0.jar"/>
-            <library id="guava-27.0-jre.jar"/>
-           	<library id="hadoop-common-3.2.1-amzn-2.jar"/>
-            <library id="hadoop-auth-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-aws-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-client-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-hdfs-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-hdfs-client-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-mapreduce-client-common-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-mapreduce-client-core-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-yarn-api-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-yarn-client-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-yarn-common-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-yarn-server-web-proxy-3.2.1-amzn-2.jar"/>
 			<library id="htrace-core4-4.1.0-incubating.jar"/>
             <library id="jackson-annotations-2.10.0.jar"/>
             <library id="jackson-core-2.10.0.jar"/>
@@ -775,7 +780,7 @@
             <library id="minlog-1.3.0.jar"/>
 			<library id="netty-all-4.1.47.Final.jar"/>
 			<library id="objenesis-2.6.jar"/>
-			<library id="protobuf-java-2.5.0.jar"/>
+			<library id="protobuf-java-3.15.8.jar"/>
             <library id="paranamer-2.8.jar"/>
 			<library id="re2j-1.1.jar"/>
 			<library id="RoaringBitmap-0.7.45.jar"/>
@@ -795,9 +800,7 @@
             <library id="spark-tags_2.12-3.0.1.jar"/>
             <library id="spark-unsafe_2.12-3.0.1.jar"/>
             <library id="spark-yarn_2.12-3.0.1.jar"/>
-            <library id="stax2-api-4.2.1.jar"/>
             <library id="stream-2.9.6.jar"/>
-            <library id="woodstox-core-5.0.3.jar"/>
             <library id="xbean-asm7-shaded-4.15.jar"/>
         </libraryNeededGroup>
         
