@@ -29,7 +29,12 @@
         }
     }%>
 
-    <%if(setWriteConcern) {%>
-        db_<%=cid%>.withWriteConcern(com.mongodb.WriteConcern.<%=writeConcern%>);
-        <%
+    <%if(setWriteConcern) {
+        if(version_3_5_X) {%>
+            db_<%=cid%>.withWriteConcern(com.mongodb.WriteConcern.<%=writeConcern%>);
+            <%
+        } else {%>
+            db_<%=cid%>.setWriteConcern(com.mongodb.WriteConcern.<%=writeConcern%>);
+            <%
+        }
     }%>
