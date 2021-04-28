@@ -382,4 +382,9 @@ public class EMR62xDistribution extends AbstractDistribution implements HBaseCom
     public String getLightWeightClasspath() {
         return LIGHTWEIGHT_CLASSPATH;
     }
+    
+    @Override
+    public boolean doSupportHBase2x() {
+        return true;
+    }
 }

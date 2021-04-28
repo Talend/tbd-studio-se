@@ -348,8 +348,8 @@
           mvn_uri="mvn:org.apache.hive/hive-shims-common/3.1.2-amzn-3"/>
           
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="hive-storage-api-2.6.1-amzn-1.jar" name="hive-storage-api-2.6.1-amzn-1.jar"
-          mvn_uri="mvn:org.apache.hive/hive-storage-api/2.6.1-amzn-1"/>        
+          id="hive-storage-api-2.6.1.jar" name="hive-storage-api-2.6.1.jar"
+          mvn_uri="mvn:org.apache.hive/hive-storage-api/2.6.1"/>        
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
           id="hive-shims-0.23-3.1.2-amzn-3.jar" name="hive-shims-0.23-3.1.2-amzn-3.jar"
@@ -492,6 +492,18 @@
             mvn_uri="mvn:org.apache.hbase/hbase-hadoop-compat/2.2.6-amzn-0"/>
             
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="hbase-shaded-miscellaneous-2.2.1.jar" name="hbase-shaded-miscellaneous-2.2.1.jar"
+            mvn_uri="mvn:org.apache.hbase.thirdparty/hbase-shaded-miscellaneous/2.2.1"/>
+            
+       	<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="hbase-shaded-client-2.2.6-amzn-0.jar" name="hbase-shaded-client-2.2.6-amzn-0.jar"
+            mvn_uri="mvn:org.apache.hbase/hbase-shaded-client/2.2.6-amzn-0"/>
+            
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="hbase-protocol-shaded-2.2.6-amzn-0.jar" name="hbase-protocol-shaded-2.2.6-amzn-0.jar"
+            mvn_uri="mvn:org.apache.hbase/hbase-protocol-shaded/2.2.6-amzn-0"/>
+            
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
             id="jersey-client-1.9.jar" name="jersey-client-1.9.jar"
             mvn_uri="mvn:com.sun.jersey/jersey-client/1.9"/>
 		
@@ -600,12 +612,13 @@
             id="javax.inject-1.jar" name="javax.inject-1.jar"
             mvn_uri="mvn:javax.inject/javax.inject/1"/>
             
-        <libraryNeeded
-            context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="javax.inject-2.4.0.jar"
-            name="javax.inject-2.4.0.jar"
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="javax.inject-2.4.0.jar" name="javax.inject-2.4.0.jar"
             mvn_uri="mvn:org.glassfish.hk2.external/javax.inject/2.4.0"/>
            
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="javax.ws.rs-api-2.0.1.jar" name="javax.ws.rs-api-2.0.1.jar"
+            mvn_uri="mvn:javax.ws.rs/javax.ws.rs-api/2.0.1"/>
           
          <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
             id="parquet-hadoop-bundle-1.6.0.jar" name="parquet-hadoop-bundle-1.6.0.jar"
@@ -632,12 +645,12 @@
           mvn_uri="mvn:jakarta.ws.rs/jakarta.ws.rs-api/3.0.0"/>
           
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="hadoop-client-api-3.2.1.jar" name="hadoop-client-api-3.2.1.jar" 
-          mvn_uri="mvn:org.apache.hadoop/hadoop-client-api/3.2.1"/>
+          id="hadoop-client-api-3.2.1-amzn-2.jar" name="hadoop-client-api-3.2.1-amzn-2.jar" 
+          mvn_uri="mvn:org.apache.hadoop/hadoop-client-api/3.2.1-amzn-2"/>
 		
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="hadoop-client-runtime-3.2.1.jar" name="hadoop-client-runtime-3.2.1.jar" 
-          mvn_uri="mvn:org.apache.hadoop/hadoop-client-runtime/3.2.1"/>
+          id="hadoop-client-runtime-3.2.1-amzn-2.jar" name="hadoop-client-runtime-3.2.1-amzn-2.jar" 
+          mvn_uri="mvn:org.apache.hadoop/hadoop-client-runtime/3.2.1-amzn-2"/>
           
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
           id="hadoop-core-1.2.1.jar" name="hadoop-core-1.2.1.jar" 
@@ -658,6 +671,11 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
             id="libfb303-0.9.3.jar" name="libfb303-0.9.3.jar"
             mvn_uri="mvn:org.apache.thrift/libfb303/0.9.3"/>
+		
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+          id="univocity-parsers-2.9.1.jar" name="univocity-parsers-2.9.1.jar"
+          mvn_uri="mvn:com.univocity/univocity-parsers/2.9.1"/>
+         
 		
 		<!-- Spark Azure group -->
         <libraryNeededGroup description="Spark Azure libraries for emr62x" id="AZURE-GROUP-EMR_62_x" name="AZURE-GROUP-EMR_62_x">
@@ -708,6 +726,7 @@
          <!-- HDFS group  -->
         <libraryNeededGroup description="HDFS libraries for emr62x" id="HDFS-GROUP-EMR_62_x" name="HDFS-GROUP-EMR_62_x">
             <library id="avro-1.8.2.jar"/>
+            <library id="avro-mapred-1.8.2.jar"/>
 			<library id="commons-codec-1.11.jar"/>
             <library id="commons-collections-3.2.2.jar"/>
             <library id="commons-compiler-3.0.16.jar"/>
@@ -752,11 +771,15 @@
         
         <!-- HBase group  -->
         <libraryNeededGroup description="HBase libraries for emr62x" id="HBASE-GROUP-EMR_62_x" name="HBASE-GROUP-EMR_62_x"  >
+            <group id="HDFS-GROUP-EMR_62_x"/>
             <library id="hbase-common-2.2.6-amzn-0.jar" />
             <library id="hbase-client-2.2.6-amzn-0.jar" />
+            <library id="hbase-hadoop-compat-2.2.6-amzn-0.jar"/>
             <library id="hbase-protocol-2.2.6-amzn-0.jar" />
             <library id="hbase-server-2.2.6-amzn-0.jar" />
-            <library id="hbase-hadoop-compat-2.2.6-amzn-0.jar" />
+            <library id="hbase-shaded-miscellaneous-2.2.1.jar"/>
+            <library id="hbase-shaded-client-2.2.6-amzn-0.jar"/>
+            <library id="hbase-protocol-shaded-2.2.6-amzn-0.jar"/>
             <library id="hive-hbase-handler-3.1.2-amzn-3.jar"/>
         </libraryNeededGroup>
 
@@ -772,7 +795,7 @@
 		    <library id="hive-service-rpc-3.1.2-amzn-3.jar"/>
 		    <library id="hive-shims-3.1.2-amzn-3.jar"/>
             <library id="hive-shims-common-3.1.2-amzn-3.jar"/>
-            <library id="hive-storage-api-2.6.1-amzn-1.jar"/>
+            <library id="hive-storage-api-2.6.1.jar"/>
 		    <library id="hive-beeline-3.1.2-amzn-3.jar"/>
             <library id="hive-cli-3.1.2-amzn-3.jar"/>
 			<library id="libfb303-0.9.3.jar"/>
@@ -808,7 +831,6 @@
         <libraryNeededGroup description="Redshift libraries for emr62x" id="REDSHIFT-BATCH-GROUP-EMR_62_x" name="REDSHIFT-BATCH-GROUP-EMR_62_x">
             <group id="DYNAMODB-STREAMING-GROUP-EMR_62_x" />
             <library id="spark-redshift_2.12-4.2.0.jar"/>
-			<library id="avro-mapred-1.8.2.jar"/>
         </libraryNeededGroup>
         
         
@@ -837,6 +859,7 @@
 			<library id="jakarta.ws.rs-api-3.0.0.jar"/>
             <library id="janino-3.0.16.jar"/>
             <library id="javax.servlet-api-3.1.0.jar"/>
+            <library id="javax.ws.rs-api-2.0.1.jar"/>
             <library id="jersey-common-3.0.1.jar"/>
             <library id="jersey-container-servlet-core-2.30.jar"/>
             <library id="jersey-server-2.30.jar"/>
@@ -871,6 +894,7 @@
             <library id="spark-unsafe_2.12-3.0.1.jar"/>
             <library id="spark-yarn_2.12-3.0.1.jar"/>
             <library id="stream-2.9.6.jar"/>
+            <library id="univocity-parsers-2.9.1.jar"/>
             <library id="xbean-asm7-shaded-4.15.jar"/>
         </libraryNeededGroup>
         
