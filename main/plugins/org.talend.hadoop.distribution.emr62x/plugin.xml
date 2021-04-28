@@ -655,6 +655,9 @@
             id="httpcore-4.4.9.jar" name="httpcore-4.4.9.jar"
             mvn_uri="mvn:org.apache.httpcomponents/httpcore/4.4.9"/>
         
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="libfb303-0.9.3.jar" name="libfb303-0.9.3.jar"
+            mvn_uri="mvn:org.apache.thrift/libfb303/0.9.3"/>
 		
 		<!-- Spark Azure group -->
         <libraryNeededGroup description="Spark Azure libraries for emr62x" id="AZURE-GROUP-EMR_62_x" name="AZURE-GROUP-EMR_62_x">
@@ -772,6 +775,7 @@
             <library id="hive-storage-api-2.6.1-amzn-1.jar"/>
 		    <library id="hive-beeline-3.1.2-amzn-3.jar"/>
             <library id="hive-cli-3.1.2-amzn-3.jar"/>
+			<library id="libfb303-0.9.3.jar"/>
             <library id="spark-hive_2.12-3.0.1.jar"/>
         </libraryNeededGroup>
         
