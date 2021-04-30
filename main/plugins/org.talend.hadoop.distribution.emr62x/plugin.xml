@@ -216,8 +216,8 @@
           mvn_uri="mvn:org.lz4/lz4-java/1.7.1"/>
           
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="re2j-1.1.jar" name="re2j-1.1.jar"
-          mvn_uri="mvn:com.google.re2j/re2j/1.1"/>
+          id="re2j-1.1.jar" name="re2j-1.6.jar"
+          mvn_uri="mvn:com.google.re2j/re2j/1.6"/>
           
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
           id="RoaringBitmap-0.7.45.jar" name="RoaringBitmap-0.7.45.jar"
@@ -718,6 +718,14 @@
             id="jackson-dataformat-cbor-2.10.1.jar" name="jackson-dataformat-cbor-2.10.1.jar"
             mvn_uri="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-cbor/2.10.1"/>
           
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="commons-cli-1.2.jar" name="commons-cli-1.2.jar"
+            mvn_uri="mvn:commons-cli/commons-cli/1.2"/>
+            
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="com.google.re2j-1.6.jar" name="com.google.re2j-1.6.jar"
+            mvn_uri="mvn:com.google.re2j/re2j/1.6"/>
+
 
 		<!-- Spark Azure group -->
         <libraryNeededGroup description="Spark Azure libraries for emr62x" id="AZURE-GROUP-EMR_62_x" name="AZURE-GROUP-EMR_62_x">
@@ -771,6 +779,7 @@
         <libraryNeededGroup description="HDFS libraries for emr62x" id="HDFS-GROUP-EMR_62_x" name="HDFS-GROUP-EMR_62_x">
             <library id="avro-1.8.2.jar"/>
             <library id="avro-mapred-1.8.2.jar"/>
+            <library id="commons-cli-1.2.jar"/>
 			<library id="commons-codec-1.11.jar"/>
             <library id="commons-collections-3.2.2.jar"/>
             <library id="commons-compiler-3.0.16.jar"/>
@@ -816,6 +825,7 @@
             <library id="javax.inject-2.4.0.jar"/>
             <library id="log4j-1.2.17.jar"/>
 			<library id="protobuf-java-3.15.8.jar"/>
+			<library id="re2j-1.1.jar"/>
             <library id="slf4j-api-1.7.10.jar"/>
             <library id="slf4j-log4j12-1.7.10.jar"/>
             <library id="stax2-api-4.2.1.jar"/>
