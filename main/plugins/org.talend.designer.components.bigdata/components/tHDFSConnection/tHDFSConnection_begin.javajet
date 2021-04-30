@@ -8,8 +8,6 @@
 	"
 %>
 
-	<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Log4j/Log4jFileUtil.javajet"%>
-	
 	<%
 	CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
 	INode node = (INode)codeGenArgument.getArgument();
@@ -64,8 +62,7 @@
     String adlsClientKey = ElementParameterParser.getEncryptedValue(node, "__ADLS_CLIENT_KEY__");
     adlsClientKey = "routines.system.PasswordEncryptUtil.decryptPassword(" + adlsClientKey + ")";
     
-    log4jFileUtil.componentStartInfo(node);
-	// BEGIN IF01
+    // BEGIN IF01
 	if(configureFromClassPath){
 %>
 		// Add HADOOP_CONF_DIR to the classpath if it's present
