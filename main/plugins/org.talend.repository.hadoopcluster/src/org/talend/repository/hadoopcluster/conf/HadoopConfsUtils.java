@@ -370,6 +370,11 @@ public class HadoopConfsUtils {
         if (StringUtils.isNotEmpty(yarnHostName)) {
             connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_YARN_HOSTNAME, yarnHostName);
         }
+        String hiveMetastoreURIS = confsService.getConfValue(EHadoopConfs.HIVE.getName(),
+                EHadoopConfProperties.HIVE_METASTORE_URIS.getName());
+        if (StringUtils.isNotEmpty(hiveMetastoreURIS)) {
+            connection.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_HIVE_METASTORE_URIS, hiveMetastoreURIS);
+        }
         String rmOrJt = null;
         if (supportYARN) {
             String useRmHa = confsService.getConfValue(EHadoopConfs.YARN.getName(),
