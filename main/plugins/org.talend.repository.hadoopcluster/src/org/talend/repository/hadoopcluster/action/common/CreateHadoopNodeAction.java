@@ -1,8 +1,6 @@
 package org.talend.repository.hadoopcluster.action.common;
 
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.wizard.IWizard;
-import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.talend.commons.exception.ExceptionHandler;
@@ -18,6 +16,7 @@ import org.talend.core.repository.ui.actions.metadata.AbstractCreateAction;
 import org.talend.repository.ProjectManager;
 import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.node.HadoopFolderRepositoryNode;
+import org.talend.repository.hadoopcluster.ui.HadoopClusterWizardDialog;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.model.IProxyRepositoryFactory;
 import org.talend.repository.model.IRepositoryNode.EProperties;
@@ -32,7 +31,7 @@ public abstract class CreateHadoopNodeAction extends AbstractCreateAction {
 
     protected static final int DEFAULT_WIZARD_WIDTH = 700;
 
-    protected static final int DEFAULT_WIZARD_HEIGHT = 400;
+    protected static final int DEFAULT_WIZARD_HEIGHT = 570;
 
     protected boolean creation = true;
 
@@ -76,10 +75,9 @@ public abstract class CreateHadoopNodeAction extends AbstractCreateAction {
             init(repositoryNode);
         }
         initDatabaseType(wizard);
-        WizardDialog wizardDialog = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
-        if (Platform.getOS().equals(Platform.OS_LINUX)) {
-            wizardDialog.setPageSize(getWizardWidth(), getWizardHeight() + 80);
-        }
+        HadoopClusterWizardDialog wizardDialog = new HadoopClusterWizardDialog(
+                PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
+        wizardDialog.setPageSize(getWizardWidth(), getWizardHeight());
         wizardDialog.create();
         wizardDialog.open();
     }

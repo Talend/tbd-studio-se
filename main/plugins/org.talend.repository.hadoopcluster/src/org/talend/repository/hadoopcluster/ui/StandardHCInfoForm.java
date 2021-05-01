@@ -437,7 +437,7 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         downsash = new Composite(sash, SWT.NONE);
         GridLayout downsashLayout = new GridLayout(1, false);
         downsash.setLayout(downsashLayout);
-        sash.setWeights(new int[] { 21, 17 });
+        sash.setWeights(new int[] { 21, 11 });
 
         scrolledComposite = new ScrolledComposite(upsash, SWT.V_SCROLL | SWT.H_SCROLL);
         scrolledComposite.setExpandHorizontal(true);
