@@ -24,8 +24,6 @@ import java.util.Set;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences;
-import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.IWizardPage;
@@ -65,7 +63,6 @@ import org.talend.core.model.metadata.builder.connection.ConnectionFactory;
 import org.talend.core.model.metadata.builder.connection.MetadataColumn;
 import org.talend.core.model.metadata.builder.connection.MetadataTable;
 import org.talend.core.model.properties.ConnectionItem;
-import org.talend.core.prefs.ITalendCorePrefConstants;
 import org.talend.core.repository.model.ProxyRepositoryFactory;
 import org.talend.core.repository.model.connection.ConnectionStatus;
 import org.talend.core.runtime.CoreRuntimePlugin;
@@ -193,7 +190,6 @@ public class HCatalogSchemaForm extends AbstractHCatalogForm {
         }
 
         metadataEditor.setMetadataTable(metadataTable);
-        IEclipsePreferences preferences = new InstanceScope().getNode(ITalendCorePrefConstants.CoreUIPlugin_ID);
         boolean flag = CoreRuntimePlugin.getInstance().getProjectPreferenceManager().isAllowSpecificCharacters();
         if (!flag) {
             List<MetadataColumn> list = metadataEditor.getMetadataColumnList();
