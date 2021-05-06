@@ -29,10 +29,6 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
-        "id" : "DYNAMIC_HDP_2_6_0_3_8_commons_codec_1_9",
-        "tagName" : "library"
-      }, {
-        "childNodes" : [ ],
         "id" : "DYNAMIC_HDP_2_6_0_3_8_commons_logging_1_2",
         "tagName" : "library"
       }, {
@@ -8632,16 +8628,7 @@
       "mvn_uri" : "mvn:commons-codec/commons-codec/1.13/jar",
       "name" : "commons-codec-1.13.jar",
       "tagName" : "libraryNeeded"
-    }, {
-      "childNodes" : [ ],
-      "context" : "plugin:org.talend.hadoop.distribution.hdpx",
-      "excludeDependencies" : "true",
-      "id" : "DYNAMIC_HDP_2_6_0_3_8_commons_codec_1_9",
-      "mvn_uri" : "mvn:org.talend.libraries/commons-codec-1.9/6.0.0",
-      "name" : "commons-codec-1.9.jar",
-      "tagName" : "libraryNeeded",
-      "useStudioRepository" : "true"
-    }, {
+    },{
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.hdpx",
       "excludeDependencies" : "true",
