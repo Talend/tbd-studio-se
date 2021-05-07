@@ -86,7 +86,10 @@ public class MongoDBConnectionUtil {
             if (Thread.currentThread().interrupted()) {
                 throw new InterruptedException();
             }
-            if (!isUpgradeLatestVersion(connection)) {
+            if (isUpgradeLatestVersion(connection)) {
+                Iterable<String> iter = (Iterable<String>) NoSQLReflection.invokeMethod(db, "listCollectionNames"); //$NON-NLS-1$
+                Iterator<String> iterator = iter.iterator();
+            } else {
                 NoSQLReflection.invokeMethod(db, "getStats"); //$NON-NLS-1$
             }
         } catch (Exception e) {
@@ -409,7 +412,7 @@ public class MongoDBConnectionUtil {
         } else {
             try {
                 if(isUpgradeLatestVersion(connection)){
-                    Iterable<String> iter = (Iterable<String>) NoSQLReflection.invokeMethod(db, "listCollectionNames");; //$NON-NLS-1$
+                    Iterable<String> iter = (Iterable<String>) NoSQLReflection.invokeMethod(db, "listCollectionNames"); //$NON-NLS-1$
                     Iterator<String> iterator = iter.iterator();
                     while (iterator.hasNext()) {
                         collectionNames.add(iterator.next());
