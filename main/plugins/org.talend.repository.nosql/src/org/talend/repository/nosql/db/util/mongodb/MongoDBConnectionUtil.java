@@ -86,7 +86,10 @@ public class MongoDBConnectionUtil {
             if (Thread.currentThread().interrupted()) {
                 throw new InterruptedException();
             }
-            if (!isUpgradeLatestVersion(connection)) {
+            if (isUpgradeLatestVersion(connection)) {
+                Iterable<String> iter = (Iterable<String>) NoSQLReflection.invokeMethod(db, "listCollectionNames"); //$NON-NLS-1$
+                Iterator<String> iterator = iter.iterator();
+            } else {
                 NoSQLReflection.invokeMethod(db, "getStats"); //$NON-NLS-1$
             }
         } catch (Exception e) {
@@ -201,50 +204,6 @@ public class MongoDBConnectionUtil {
         return mongo;
     }
 
-    private static synchronized Object getMongo4OlderVersion(NoSQLConnection connection, ContextType contextType,
-            ClassLoader classLoader, Map<String, String> hosts, boolean requireAuth, boolean requireEncryption)
-            throws NoSQLServerException {
-        List<Object> addrs = new ArrayList<Object>();
-        List<Object> credentials = new ArrayList<Object>();
-        Object mongo = null;
-
-        String user = connection.getAttributes().get(IMongoDBAttributes.USERNAME);
-        String pass = connection.getAttributes().get(IMongoDBAttributes.PASSWORD);
-        if (contextType != null) {
-            user = ContextParameterUtils.getOriginalValue(contextType, user);
-            pass = ContextParameterUtils.getOriginalValue(contextType, pass);
-        } else {
-            pass = connection.getValue(pass, false);
-        }
-        try {
-            Object builder = NoSQLReflection.newInstance("com.mongodb.MongoClientOptions$Builder", new Object[0], classLoader); //$NON-NLS-1$
-            NoSQLReflection.invokeMethod(builder, "sslEnabled", new Object[] { requireEncryption }, boolean.class); //$NON-NLS-1$
-            Object build = NoSQLReflection.invokeMethod(builder, "build", new Object[0]); //$NON-NLS-1$
-
-            for (String host : hosts.keySet()) {
-                String port = hosts.get(host);
-                Object serverAddress = NoSQLReflection.newInstance("com.mongodb.ServerAddress", //$NON-NLS-1$
-                        new Object[] { host, Integer.parseInt(port) }, classLoader, String.class, int.class);
-                addrs.add(serverAddress);
-            }
-
-            String database = connection.getAttributes().get(IMongoDBAttributes.DATABASE);
-            if (requireAuth) {
-                Object credential = NoSQLReflection.invokeStaticMethod("com.mongodb.MongoCredential", "createScramSha1Credential", //$NON-NLS-1$ //$NON-NLS-2$
-                        new Object[] { user, database, pass.toCharArray() }, classLoader, String.class, String.class,
-                        char[].class);
-                credentials.add(credential);
-            }
-
-            mongo = NoSQLReflection.newInstance("com.mongodb.MongoClient", new Object[] { addrs, credentials, build }, //$NON-NLS-1$
-                    classLoader, List.class, List.class, Class.forName("com.mongodb.MongoClientOptions", true, classLoader)); //$NON-NLS-1$
-            mongos.add(mongo);
-        } catch (Exception e) {
-            throw new NoSQLServerException(e);
-        }
-        return mongo;
-    }
-
     private static synchronized Object getMongo4LatestVersion(NoSQLConnection connection, ContextType contextType,
             ClassLoader classLoader, Map<String, String> hosts, boolean requireAuth, boolean requireEncryption)
             throws NoSQLServerException {
@@ -295,10 +254,11 @@ public class MongoDBConnectionUtil {
                     if (args[0] != null) {
                         NoSQLReflection.invokeMethod(args[0], "applySettings", new Object[] { clusterSettingsBuild }, //$NON-NLS-1$
                                 Class.forName("com.mongodb.connection.ClusterSettings", true, classLoader)); //$NON-NLS-1$
-                                                }
+                    }
                     return null;
                 default:
-                    throw new NoSQLServerException(Messages.getString("MongoDBConnectionUtil.CannotFindMethod")); //$NON-NLS-1$
+                    throw new NoSQLServerException(
+                            Messages.getString("MongoDBConnectionUtil.CannotFindMethod", method.getName())); //$NON-NLS-1$
                 }
             });
 
@@ -307,6 +267,50 @@ public class MongoDBConnectionUtil {
             mongo = NoSQLReflection.invokeStaticMethod("com.mongodb.client.MongoClients", "create", //$NON-NLS-1$ //$NON-NLS-2$
                     new Object[] { clientSettingsBuild }, classLoader,
                     Class.forName("com.mongodb.MongoClientSettings", true, classLoader)); //$NON-NLS-1$
+            mongos.add(mongo);
+        } catch (Exception e) {
+            throw new NoSQLServerException(e);
+        }
+        return mongo;
+    }
+
+    private static synchronized Object getMongo4OlderVersion(NoSQLConnection connection, ContextType contextType,
+            ClassLoader classLoader, Map<String, String> hosts, boolean requireAuth, boolean requireEncryption)
+            throws NoSQLServerException {
+        List<Object> addrs = new ArrayList<Object>();
+        List<Object> credentials = new ArrayList<Object>();
+        Object mongo = null;
+
+        String user = connection.getAttributes().get(IMongoDBAttributes.USERNAME);
+        String pass = connection.getAttributes().get(IMongoDBAttributes.PASSWORD);
+        if (contextType != null) {
+            user = ContextParameterUtils.getOriginalValue(contextType, user);
+            pass = ContextParameterUtils.getOriginalValue(contextType, pass);
+        } else {
+            pass = connection.getValue(pass, false);
+        }
+        try {
+            Object builder = NoSQLReflection.newInstance("com.mongodb.MongoClientOptions$Builder", new Object[0], classLoader); //$NON-NLS-1$
+            NoSQLReflection.invokeMethod(builder, "sslEnabled", new Object[] { requireEncryption }, boolean.class); //$NON-NLS-1$
+            Object build = NoSQLReflection.invokeMethod(builder, "build", new Object[0]); //$NON-NLS-1$
+
+            for (String host : hosts.keySet()) {
+                String port = hosts.get(host);
+                Object serverAddress = NoSQLReflection.newInstance("com.mongodb.ServerAddress", //$NON-NLS-1$
+                        new Object[] { host, Integer.parseInt(port) }, classLoader, String.class, int.class);
+                addrs.add(serverAddress);
+            }
+
+            String database = connection.getAttributes().get(IMongoDBAttributes.DATABASE);
+            if (requireAuth) {
+                Object credential = NoSQLReflection.invokeStaticMethod("com.mongodb.MongoCredential", "createScramSha1Credential", //$NON-NLS-1$ //$NON-NLS-2$
+                        new Object[] { user, database, pass.toCharArray() }, classLoader, String.class, String.class,
+                        char[].class);
+                credentials.add(credential);
+            }
+
+            mongo = NoSQLReflection.newInstance("com.mongodb.MongoClient", new Object[] { addrs, credentials, build }, //$NON-NLS-1$
+                    classLoader, List.class, List.class, Class.forName("com.mongodb.MongoClientOptions", true, classLoader)); //$NON-NLS-1$
             mongos.add(mongo);
         } catch (Exception e) {
             throw new NoSQLServerException(e);
@@ -408,7 +412,7 @@ public class MongoDBConnectionUtil {
         } else {
             try {
                 if(isUpgradeLatestVersion(connection)){
-                    Iterable<String> iter = (Iterable<String>) NoSQLReflection.invokeMethod(db, "listCollectionNames");; //$NON-NLS-1$
+                    Iterable<String> iter = (Iterable<String>) NoSQLReflection.invokeMethod(db, "listCollectionNames");//$NON-NLS-1$
                     Iterator<String> iterator = iter.iterator();
                     while (iterator.hasNext()) {
                         collectionNames.add(iterator.next());
