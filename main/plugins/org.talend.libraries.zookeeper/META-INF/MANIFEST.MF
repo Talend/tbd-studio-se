@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Zookeeper
-Bundle-SymbolicName: org.talend.libraries.zookeeper
-Bundle-Version: 7.3.1.qualifier
-Bundle-ActivationPolicy: lazy
-Eclipse-BundleShape: dir

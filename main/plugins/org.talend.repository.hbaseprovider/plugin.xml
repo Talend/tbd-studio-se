@@ -40,7 +40,6 @@
             message="Wizard use for HBase"
             name="zookeeper-3.3.3-cdh3u0.jar" mvn_uri="mvn:org.talend.libraries/zookeeper-3.3.3-cdh3u0/6.0.0" 
             required="true"
-            uripath="platform:/plugin/org.talend.libraries.zookeeper/lib/zookeeper-3.3.3-cdh3u0.jar">
       </libraryNeeded>
             <libraryNeeded
             context="HBase wizard"

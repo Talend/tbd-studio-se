@@ -76,8 +76,6 @@
         <module>main/plugins/org.talend.libraries.hcatalog</module>
         <module>main/plugins/org.talend.libraries.neo4j</module>
         <module>main/plugins/org.talend.libraries.sdsulib</module>
-        <module>main/plugins/org.talend.libraries.sqoop</module>
-        <module>main/plugins/org.talend.libraries.zookeeper</module>
         <module>main/plugins/org.talend.oozie.scheduler</module>
         <module>main/plugins/org.talend.rcp.branding.tos.bigdata</module>
         <module>main/plugins/org.talend.repository.hadoopcluster</module>
