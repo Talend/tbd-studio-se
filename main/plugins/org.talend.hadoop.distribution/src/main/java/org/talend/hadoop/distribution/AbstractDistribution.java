@@ -79,6 +79,10 @@ public abstract class AbstractDistribution {
     public boolean isExecutedThroughLivy() {
         return false;
     }
+    
+    public boolean isExecutedThroughKnox() {
+        return false;
+    }
 
     public boolean doSupportClouderaNavigator() {
         return false;
