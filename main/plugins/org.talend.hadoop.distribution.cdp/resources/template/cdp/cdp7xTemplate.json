@@ -712,6 +712,14 @@
             "jarName": "bigquery-connector-hadoop3-1.1.6-shaded.jar",
             "mvnUri": "mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop3-1.1.6/jar/shaded",
             "useStudioRepository": "true"
+        },
+        {
+            "id": "talend-bigdata-launcher-knox",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "talend-bigdata-launcher-knox-2.1.1.jar",
+            "mvnUri": "mvn:org.talend.bigdata.libs/talend-bigdata-launcher-knox/2.1.1/jar",
+            "useStudioRepository": "true"
         }
     ],
     "moduleGroups": [
@@ -824,7 +832,8 @@
                 "spark-hive_2.11",
                 "spark-mllib_2.11",
                 "spark-yarn_2.11",
-                "spark-streaming-kafka"
+                "spark-streaming-kafka",
+                "talend-bigdata-launcher-knox"
             ]
         },
         {
