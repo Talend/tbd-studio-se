@@ -2773,9 +2773,9 @@
       "context": "{properties.context}",
       "groupId": "commons-codec",
       "artifactId": "commons-codec",
-      "version": "1.10",
-      "jarName": "commons-codec-1.10.jar",
-      "mvnUri": "mvn:commons-codec/commons-codec/1.10",
+      "version": "1.13",
+      "jarName": "commons-codec-1.13.jar",
+      "mvnUri": "mvn:commons-codec/commons-codec/1.13",
       "useStudioRepository": "true",
       "classifier": "",
       "description": "dependency for httpclient"
