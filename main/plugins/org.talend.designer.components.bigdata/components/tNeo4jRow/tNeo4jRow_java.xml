@@ -145,11 +145,11 @@
 			<IMPORT MODULE="jackson-mapper-asl-1.9.15-TALEND.jar"
 				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.15-TALEND" NAME="jackson-mapper-asl-1.9.15-TALEND"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="jersey-core-1.13.jar" MVN="mvn:com.sun.jersey/jersey-core/1.13"
-				NAME="jersey-core-1.13"
+			<IMPORT MODULE="jersey-core-1.9.jar" MVN="mvn:com.sun.jersey/jersey-core/1.9"
+				NAME="jersey-core-1.9"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT MODULE="jersey-client-1.13.jar" MVN="mvn:com.sun.jersey/jersey-core/1.13"
-				NAME="jersey-client-1.13"
+			<IMPORT MODULE="jersey-client-1.9.jar" MVN="mvn:com.sun.jersey/jersey-core/1.9"
+				NAME="jersey-client-1.9"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_1_X_X') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT MODULE="jsr311-api-1.1.2.r612.jar"
 				MVN="mvn:org.talend.libraries/jsr311-api-1.1.2.r612/6.0.0" NAME="jsr311-api-1.1.2.r612"
@@ -263,9 +263,9 @@
 			<IMPORT NAME="jsr311-api-1.1.2.r612" MODULE="jsr311-api-1.1.2.r612.jar"
 				MVN="mvn:org.talend.libraries/jsr311-api-1.1.2.r612/6.0.0"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_2_1_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT NAME="jersey-client-1.19" MODULE="jersey-client-1.19.jar" MVN="mvn:com.sun.jersey/jersey-client/1.19"
+			<IMPORT NAME="jersey-client-1.9" MODULE="jersey-client-1.9.jar" MVN="mvn:com.sun.jersey/jersey-client/1.9"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_2_1_X') AND (USE_EXISTING_CONNECTION == 'false')" />
-			<IMPORT NAME="jersey-core-1.19" MODULE="jersey-core-1.19.jar" MVN="mvn:com.sun.jersey/jersey-core/1.19"
+			<IMPORT NAME="jersey-core-1.9" MODULE="jersey-core-1.9.jar" MVN="mvn:com.sun.jersey/jersey-core/1.9"
 				REQUIRED_IF="(DB_VERSION=='NEO4J_2_1_X') AND (USE_EXISTING_CONNECTION == 'false')" />
 			<IMPORT NAME="jackson-mapper-asl-1.9.15-TALEND" MODULE="jackson-mapper-asl-1.9.15-TALEND.jar"
 				MVN="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.15-TALEND"
