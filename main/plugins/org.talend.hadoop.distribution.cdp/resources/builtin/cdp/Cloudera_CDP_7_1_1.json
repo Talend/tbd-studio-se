@@ -1161,7 +1161,15 @@
         "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_zookeeper_jute_3_5_5_7_1_1_0_565_jar",
         "tagName" : "library"
-      } ],
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_launcher_knox_2_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_freemarker_2_3_31_jar",
+        "tagName" : "library"
+      }  ],
       "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_HDFS_COMMON_LIB_DYNAMIC",
       "tagName" : "libraryNeededGroup",
       "templateId" : "HDFS-COMMON-LIB-DYNAMIC"
@@ -12757,6 +12765,22 @@
       "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_zookeeper_jute_3_5_5_7_1_1_0_565_jar",
       "mvn_uri" : "mvn:org.apache.zookeeper/zookeeper-jute/3.5.5.7.1.1.0-565/jar",
       "name" : "zookeeper-jute-3.5.5.7.1.1.0-565.jar",
+      "tagName" : "libraryNeeded"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdp",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_launcher_knox_2_1_1_jar",
+      "mvn_uri" : "mvn:org.talend.bigdata.libs/talend-bigdata-launcher-knox/2.1.1/jar",
+      "name" : "talend-bigdata-launcher-knox-2.1.1.jar",
+      "tagName" : "libraryNeeded"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdp",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_freemarker_2_3_31_jar",
+      "mvn_uri" : "mvn:org.freemarker/freemarker/2.3.31/jar",
+      "name" : "freemarker-2.3.31.jar",
       "tagName" : "libraryNeeded"
     }, {
       "childNodes" : [ ],

@@ -720,6 +720,14 @@
             "jarName": "talend-bigdata-launcher-knox-2.1.1.jar",
             "mvnUri": "mvn:org.talend.bigdata.libs/talend-bigdata-launcher-knox/2.1.1/jar",
             "useStudioRepository": "true"
+        },
+        {
+            "id": "freemarker",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "freemarker-2.3.31.jar",
+            "mvnUri": "mvn:org.freemarker/freemarker/2.3.31/jar",
+            "useStudioRepository": "true"
         }
     ],
     "moduleGroups": [
@@ -833,7 +841,8 @@
                 "spark-mllib_2.11",
                 "spark-yarn_2.11",
                 "spark-streaming-kafka",
-                "talend-bigdata-launcher-knox"
+                "talend-bigdata-launcher-knox",
+                "freemarker"
             ]
         },
         {
