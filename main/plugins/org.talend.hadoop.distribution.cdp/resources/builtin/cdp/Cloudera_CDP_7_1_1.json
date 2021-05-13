@@ -153,6 +153,14 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_shell_1_5_0_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_i18n_1_5_0_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gson_2_2_4_jar",
         "tagName" : "library"
       }, {
@@ -1164,6 +1172,11 @@
       }, {
         "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_launcher_knox_2_1_1_jar",
+        "tagName" : "library"
+      }, {
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_launcher_core_2_0_14_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -9981,6 +9994,24 @@
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.cdp",
       "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_shell_1_5_0_jar",
+      "mvn_uri" : "mvn:org.apache.knox/gateway-shell/1.5.0/jar",
+      "name" : "gateway-shell-1.5.0.jar",
+      "tagName" : "libraryNeeded",
+      "useStudioRepository" : "true"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdp",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_i18n_1_5_0_jar",
+      "mvn_uri" : "mvn:org.apache.knox/gateway-shell/1.5.0/jar",
+      "name" : "gateway-shell-1.5.0.jar",
+      "tagName" : "libraryNeeded",
+      "useStudioRepository" : "true"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdp",
+      "excludeDependencies" : "true",
       "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gcs_connector_hadoop3",
       "mvn_uri" : "mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop3-2.1.6/jar/shaded",
       "name" : "gcs-connector-hadoop3-2.1.6-shaded.jar",
@@ -12773,6 +12804,14 @@
       "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_launcher_knox_2_1_1_jar",
       "mvn_uri" : "mvn:org.talend.bigdata.libs/talend-bigdata-launcher-knox/2.1.1/jar",
       "name" : "talend-bigdata-launcher-knox-2.1.1.jar",
+      "tagName" : "libraryNeeded"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdp",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_launcher_core_2_0_14_jar",
+      "mvn_uri" : "mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.0.14/jar",
+      "name" : "talend-bigdata-launcher-core-2.0.14.jar",
       "tagName" : "libraryNeeded"
     }, {
       "childNodes" : [ ],
