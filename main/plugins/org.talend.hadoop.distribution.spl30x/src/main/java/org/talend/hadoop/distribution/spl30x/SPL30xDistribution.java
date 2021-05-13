@@ -135,7 +135,7 @@ public class SPL30xDistribution extends AbstractDistribution
                         SPL30xDistribution.SPARK_VERSION));
 
         // Spark Batch GCS
-        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.GS_CONFIGURATION_COMPONENT),
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.GCS_CONFIG_COMPONENT),
                 SPL30xNodeModuleGroup.getModuleGroup(ModuleGroupName.GCS.get(getVersion()),
                         SparkBatchConstant.SPARK_BATCH_SPARKCONFIGURATION_LINKEDPARAMETER, SPL30xDistribution.SPARK_VERSION));
 
