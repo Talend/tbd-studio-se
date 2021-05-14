@@ -574,9 +574,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5290"
-            id="jackson-core-asl-1.9.14-TALEND.jar"
-            name="jackson-core-asl-1.9.14-TALEND.jar"
-            mvn_uri="mvn:org.codehaus.jackson/jackson-core-asl/1.9.14-TALEND"/>
+            id="jackson-core-asl-1.9.15-TALEND.jar"
+            name="jackson-core-asl-1.9.15-TALEND.jar"
+            mvn_uri="mvn:org.codehaus.jackson/jackson-core-asl/1.9.15-TALEND"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5290"
@@ -1637,9 +1637,9 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5290"
-            id="jackson-mapper-asl-1.9.14-TALEND.jar"
-            name="jackson-mapper-asl-1.9.14-TALEND.jar"
-            mvn_uri="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.14-TALEND"/>
+            id="jackson-mapper-asl-1.9.15-TALEND.jar"
+            name="jackson-mapper-asl-1.9.15-TALEND.jar"
+            mvn_uri="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.15-TALEND"/>
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr5290"
@@ -1874,8 +1874,8 @@
              <library id="htrace-core4-4.0.1-incubating.jar"/>
              <library id="servlet-api-2.5.jar"/>
              <library id="avro-1.8.2.jar"/>
-             <library id="jackson-mapper-asl-1.9.14-TALEND.jar"/>
-             <library id="jackson-core-asl-1.9.14-TALEND.jar"/>
+             <library id="jackson-mapper-asl-1.9.15-TALEND.jar"/>
+             <library id="jackson-core-asl-1.9.15-TALEND.jar"/>
              <library id="htrace-core4-4.0.1-incubating.jar"/>
         </libraryNeededGroup>
 
@@ -1948,8 +1948,8 @@
              <library id="htrace-core-3.1.0-incubating.jar" />
              <library id="htrace-core4-4.0.1-incubating.jar" />
              <library id="guava-14.0.1.jar" />
-             <library id="jackson-mapper-asl-1.9.14-TALEND.jar" />
-             <library id="jackson-core-asl-1.9.14-TALEND.jar" />
+             <library id="jackson-mapper-asl-1.9.15-TALEND.jar" />
+             <library id="jackson-core-asl-1.9.15-TALEND.jar" />
              <library id="netty-all-4.1.17.Final.jar" />
              <library id="protobuf-java-2.5.0.jar" />
              <library id="metrics-core-2.2.0.jar"/>
@@ -2057,8 +2057,8 @@
                 id="SPARK-KAFKA-AVRO-LIB-MRREQUIRED-EMR_5_29_0_LATEST"
                 name="SPARK-KAFKA-AVRO-LIB-MRREQUIRED-EMR_5_29_0_LATEST">
             <library id="avro-1.8.2.jar"/>
-            <library id="jackson-mapper-asl-1.9.14-TALEND.jar" />
-            <library id="jackson-core-asl-1.9.14-TALEND.jar" />
+            <library id="jackson-mapper-asl-1.9.15-TALEND.jar" />
+            <library id="jackson-core-asl-1.9.15-TALEND.jar" />
         </libraryNeededGroup>
 
         <!-- Spark Kafka Client group MRREQUIRED -->
@@ -2172,11 +2172,11 @@
 			<library id="jackson-annotations-2.10.1.jar"/>
 			<library id="jackson-core-2.10.1.jar"/>
 			<library id="jackson-dataformat-cbor-2.10.1.jar"/>
-			<library id="jackson-core-asl-1.9.14-TALEND.jar"/>
+			<library id="jackson-core-asl-1.9.15-TALEND.jar"/>
 			<library id="jackson-databind-2.10.1.jar"/>
 			<library id="jackson-dataformat-cbor-2.10.1"/>
 			<library id="jackson-jaxrs-1.9.13.jar"/>
-			<library id="jackson-mapper-asl-1.9.14-TALEND.jar"/>
+			<library id="jackson-mapper-asl-1.9.15-TALEND.jar"/>
 			<library id="jackson-module-paranamer-2.10.1.jar"/>			
 			<library id="jackson-module-scala_2.11-2.10.1.jar"/>
 
@@ -2383,19 +2383,19 @@
       </classloader>
       <classloader
             index="MAP_REDUCE:AMAZON_EMR:EMR_5_29_0"
-            libraries="avro-1.8.2.jar;commons-cli-1.2.jar;commons-codec-1.4.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-14.0.1.jar;hadoop-auth-2.8.5-amzn-5.jar;hadoop-common-2.8.5-amzn-5.jar;hadoop-hdfs-2.8.5-amzn-5.jar;hadoop-mapreduce-client-common-2.8.5-amzn-5.jar;hadoop-mapreduce-client-core-2.8.5-amzn-5.jar;hadoop-mapreduce-client-jobclient-2.8.5-amzn-5.jar;hadoop-yarn-api-2.8.5-amzn-5.jar;hadoop-yarn-client-2.8.5-amzn-5.jar;hadoop-yarn-common-2.8.5-amzn-5.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-jaxrs-1.9.13.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-xc-1.9.13.jar;jersey-client-2.22.2.jar;jersey-server-2.22.2.jar;jersey-common-2.22.2.jar;jersey-guava-2.22.2.jar;jetty-util-6.1.26-emr.jar;jodd-core-3.5.2.jar;log4j-1.2.17.jar;parquet-hadoop-bundle-1.8.1.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;snappy-java-1.1.2.6.jar;hadoop-hdfs-client-2.8.5-amzn-5.jar;htrace-core4-4.0.1-incubating.jar">
+            libraries="avro-1.8.2.jar;commons-cli-1.2.jar;commons-codec-1.4.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-14.0.1.jar;hadoop-auth-2.8.5-amzn-5.jar;hadoop-common-2.8.5-amzn-5.jar;hadoop-hdfs-2.8.5-amzn-5.jar;hadoop-mapreduce-client-common-2.8.5-amzn-5.jar;hadoop-mapreduce-client-core-2.8.5-amzn-5.jar;hadoop-mapreduce-client-jobclient-2.8.5-amzn-5.jar;hadoop-yarn-api-2.8.5-amzn-5.jar;hadoop-yarn-client-2.8.5-amzn-5.jar;hadoop-yarn-common-2.8.5-amzn-5.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;jackson-core-asl-1.9.15-TALEND.jar;jackson-jaxrs-1.9.13.jar;jackson-mapper-asl-1.9.15-TALEND.jar;jackson-xc-1.9.13.jar;jersey-client-2.22.2.jar;jersey-server-2.22.2.jar;jersey-common-2.22.2.jar;jersey-guava-2.22.2.jar;jetty-util-6.1.26-emr.jar;jodd-core-3.5.2.jar;log4j-1.2.17.jar;parquet-hadoop-bundle-1.8.1.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;snappy-java-1.1.2.6.jar;hadoop-hdfs-client-2.8.5-amzn-5.jar;htrace-core4-4.0.1-incubating.jar">
       </classloader>
       <classloader
             index="HDFS:AMAZON_EMR:EMR_5_29_0"
-            libraries="avro-1.8.2.jar;commons-cli-1.2.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-11.0.2.jar;hadoop-auth-2.8.5-amzn-5.jar;hadoop-common-2.8.5-amzn-5.jar;hadoop-hdfs-2.8.5-amzn-5.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-jaxrs-1.9.13.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-xc-1.9.13.jar;jersey-client-2.22.2.jar;jersey-server-2.22.2.jar;jersey-common-2.22.2.jar;jersey-guava-2.22.2.jar;jetty-util-6.1.26-emr.jar;log4j-1.2.17.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;htrace-core4-4.0.1-incubating.jar;hadoop-hdfs-client-2.8.5-amzn-5.jar">
+            libraries="avro-1.8.2.jar;commons-cli-1.2.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-11.0.2.jar;hadoop-auth-2.8.5-amzn-5.jar;hadoop-common-2.8.5-amzn-5.jar;hadoop-hdfs-2.8.5-amzn-5.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;jackson-core-asl-1.9.15-TALEND.jar;jackson-jaxrs-1.9.13.jar;jackson-mapper-asl-1.9.15-TALEND.jar;jackson-xc-1.9.13.jar;jersey-client-2.22.2.jar;jersey-server-2.22.2.jar;jersey-common-2.22.2.jar;jersey-guava-2.22.2.jar;jetty-util-6.1.26-emr.jar;log4j-1.2.17.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;htrace-core4-4.0.1-incubating.jar;hadoop-hdfs-client-2.8.5-amzn-5.jar">
       </classloader>
       <classloader
             index="HDFS:AMAZON_EMR:EMR_5_29_0?USE_KRB"
-            libraries="avro-1.8.2.jar;commons-cli-1.2.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-11.0.2.jar;hadoop-auth-2.8.5-amzn-5.jar;hadoop-common-2.8.5-amzn-5.jar;hadoop-hdfs-2.8.5-amzn-5.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-jaxrs-1.9.13.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-xc-1.9.13.jar;jersey-client-2.22.2.jar;jersey-server-2.22.2.jar;jersey-common-2.22.2.jar;jersey-guava-2.22.2.jar;jetty-util-6.1.26-emr.jar;log4j-1.2.17.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;hadoop-hdfs-client-2.8.5-amzn-5.jar;htrace-core4-4.0.1-incubating.jar">
+            libraries="avro-1.8.2.jar;commons-cli-1.2.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-11.0.2.jar;hadoop-auth-2.8.5-amzn-5.jar;hadoop-common-2.8.5-amzn-5.jar;hadoop-hdfs-2.8.5-amzn-5.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;jackson-core-asl-1.9.15-TALEND.jar;jackson-jaxrs-1.9.13.jar;jackson-mapper-asl-1.9.15-TALEND.jar;jackson-xc-1.9.13.jar;jersey-client-2.22.2.jar;jersey-server-2.22.2.jar;jersey-common-2.22.2.jar;jersey-guava-2.22.2.jar;jetty-util-6.1.26-emr.jar;log4j-1.2.17.jar;protobuf-java-2.5.0.jar;servlet-api-2.5.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;hadoop-hdfs-client-2.8.5-amzn-5.jar;htrace-core4-4.0.1-incubating.jar">
       </classloader>
       <classloader
             index="HBASE:AMAZON_EMR:EMR_5_29_0"
-            libraries="hbase-common-1.4.10.jar;hbase-client-1.4.10.jar;hbase-protocol-1.4.10.jar;hadoop-common-2.8.5-amzn-5.jar;hadoop-auth-2.8.5-amzn-5.jar;commons-logging-1.2.jar;commons-codec-1.10.jar;commons-configuration-1.6.jar;commons-lang-2.6.jar;commons-collections-3.2.2.jar;zookeeper-3.4.12.jar;htrace-core-3.1.0-incubating.jar;guava-14.0.1.jar;jackson-mapper-asl-1.9.14-TALEND.jar;jackson-core-asl-1.9.14-TALEND.jar;netty-all-4.0.43.Final.jar;protobuf-java-2.5.0.jar;log4j-1.2.17.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;hbase-server-1.4.4.jar;metrics-core-2.2.0.jar;netty-all-4.1.17.Final.jar;htrace-core4-4.0.1-incubating.jar">
+            libraries="hbase-common-1.4.10.jar;hbase-client-1.4.10.jar;hbase-protocol-1.4.10.jar;hadoop-common-2.8.5-amzn-5.jar;hadoop-auth-2.8.5-amzn-5.jar;commons-logging-1.2.jar;commons-codec-1.10.jar;commons-configuration-1.6.jar;commons-lang-2.6.jar;commons-collections-3.2.2.jar;zookeeper-3.4.12.jar;htrace-core-3.1.0-incubating.jar;guava-14.0.1.jar;jackson-mapper-asl-1.9.15-TALEND.jar;jackson-core-asl-1.9.15-TALEND.jar;netty-all-4.0.43.Final.jar;protobuf-java-2.5.0.jar;log4j-1.2.17.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;hbase-server-1.4.4.jar;metrics-core-2.2.0.jar;netty-all-4.1.17.Final.jar;htrace-core4-4.0.1-incubating.jar">
       </classloader>
     </extension>
 </plugin>
