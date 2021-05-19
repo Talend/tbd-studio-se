@@ -438,6 +438,10 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
             id="aws-java-sdk-core-1.11.880.jar" name="aws-java-sdk-core-1.11.880.jar"
             mvn_uri="mvn:com.amazonaws/aws-java-sdk-core/1.11.880"/>
+            
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="aws-java-sdk-bundle-1.11.880.jar" name="aws-java-sdk-bundle-1.11.880.jar"
+            mvn_uri="mvn:com.amazonaws/aws-java-sdk-bundle/1.11.880"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
             id="aws-java-sdk-kinesis-1.11.880.jar" name="aws-java-sdk-kinesis-1.11.880.jar"
@@ -747,10 +751,8 @@
 		
 		<!-- DynamoDB Batch group -->
         <libraryNeededGroup description="DynamoDB libraries for emr62x" id="DYNAMODB-BATCH-GROUP-EMR_62_x" name="DYNAMODB-BATCH-GROUP-EMR_62_x">
-			<library id="aws-java-sdk-core-1.11.880.jar"/>
             <library id="aws-java-sdk-dynamodb-1.11.880.jar"/>
             <library id="aws-java-sdk-kms-1.11.880.jar"/>
-            <library id="aws-java-sdk-s3-1.11.880.jar"/>
             <library id="emr-dynamodb-hadoop-4.14.0.jar"/>
             <library id="joda-time-2.10.5.jar"/>
             <library id="talend-bigdata-aws-lib-1.1.0.jar"/>
@@ -909,6 +911,7 @@
 		<!-- Spark batch group -->
         <libraryNeededGroup description="SPARK libraries for emr62x" id="SPARK-BATCH-GROUP-EMR_62_x" name="SPARK-BATCH-GROUP-EMR_62_x">
             <group id="HDFS-GROUP-EMR_62_x"/>
+            <library id="aws-java-sdk-bundle-1.11.880.jar"/>
             <library id="antlr4-runtime-4.7.1.jar"/>
             <library id="aopalliance-1.0.jar"/>
             <library id="breeze_2.12-1.0.jar"/>
@@ -962,7 +965,6 @@
             <group id="SPARK-BATCH-GROUP-EMR_62_x"/>
             <library id="commons-text-1.4.jar"/>
             <library id="spark-streaming_2.12-3.0.1.jar"/>
-            <library id="aws-java-sdk-core-1.11.880.jar"/>
             <library id="py4j-0.10.9.1.jar"/>
         </libraryNeededGroup>
 		
