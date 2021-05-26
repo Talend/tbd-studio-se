@@ -28,9 +28,10 @@
 
 	boolean isKerberosAvailableHadoop2 = !isCustom && sqoopDistrib.isHadoop2() && sqoopDistrib.doSupportKerberos();
 	boolean isHadoop2 = !isCustom && sqoopDistrib.isHadoop2();
+	boolean isHadoop3 = !isCustom && sqoopDistrib.isHadoop3();
 	boolean isKerberosAvailableHadoop1 = !isCustom && sqoopDistrib.isHadoop1() && sqoopDistrib.doSupportKerberos();
 
-	if((isCustom && useYarn) || (!isCustom && isHadoop2)) {
+	if((isCustom && useYarn) || (!isCustom && isHadoop2) || (!isCustom && isHadoop3)) {
 %>
     	configuration_<%=cid%>.set("mapreduce.framework.name", "yarn");
     	configuration_<%=cid%>.set("yarn.resourcemanager.address", <%=resourceManager%>);
