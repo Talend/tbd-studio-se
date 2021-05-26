@@ -28,8 +28,8 @@
 
 // Close the loop scope.
 %>
-    } catch (org.apache.kafka.common.errors.AuthenticationException|org.apache.kafka.common.errors.AuthorizationException|org.apache.kafka.common.errors.UnknownServerException|org.apache.kafka.common.errors.UnsupportedVersionException e) {
-    	// the process stops when there is AuthenticationException, AuthorizationException, UnknownServerException or UnsupportedVersionException
+    } catch (org.apache.kafka.common.errors.AuthorizationException | org.apache.kafka.common.errors.UnknownServerException e) {
+    	// the process stops when there is AuthorizationException or UnknownServerException
 		throw e;
 	} catch (org.apache.kafka.common.KafkaException e) {
 		<%if(isLog4jEnabled){%>	
