@@ -281,12 +281,12 @@
           id="protobuf-java-2.5.0.jar" name="protobuf-java-2.5.0.jar"
           mvn_uri="mvn:com.google.protobuf/protobuf-java/2.5.0"/>
 
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
             id="gcs-connector-hadoop3-2.1.6-shaded.jar" name="gcs-connector-hadoop3-2.1.6-shaded.jar"
             mvn_uri="mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop3-2.1.6/jar/shaded">
         </libraryNeeded>
 
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
             id="bigquery-connector-hadoop3-1.1.6.jar" name="bigquery-connector-hadoop3-1.1.6.jar"
             mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop3-1.1.6/jar">
         </libraryNeeded>
@@ -761,9 +761,14 @@
             id="javassist-3.18.1-GA.jar" name="javassist-3.18.1-GA.jar"
             mvn_uri="mvn:org.javassist/javassist/3.18.1-GA"/>
             
-        <libraryNeeded context="plugin:org.talend.libraries.zookeeper"
-            id="zookeeper-3.4.12.jar" name="zookeeper-3.4.14.jar"
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="zookeeper-3.4.14.jar" name="zookeeper-3.4.14.jar"
             mvn_uri="mvn:org.apache.zookeeper/zookeeper/3.4.14"/>
+        
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="talend-mapred-lib-7.2.2.jar" name="talend-mapred-lib-7.2.2.jar"
+            mvn_uri="mvn:org.talend.bigdata.libs/talend-mapred-lib/7.2.2"/>
+            
 
 		<!-- Spark Azure group -->
         <libraryNeededGroup description="Spark Azure libraries for emr62x" id="AZURE-GROUP-EMR_62_x" name="AZURE-GROUP-EMR_62_x">
@@ -863,6 +868,7 @@
             <library id="log4j-1.2.17.jar"/>
             <library id="libthrift-0.12.0.jar"/>
             <library id="metrics-core-4.1.1.jar"/>
+            <library id="metrics-json-4.1.1.jar"/>
 			<library id="protobuf-java-2.5.0.jar"/>
 			<library id="re2j-1.1.jar"/>
             <library id="slf4j-api-1.7.10.jar"/>
@@ -883,7 +889,7 @@
             <library id="hbase-shaded-client-2.2.6-amzn-0.jar"/>
             <library id="hbase-protocol-shaded-2.2.6-amzn-0.jar"/>
             <library id="hive-hbase-handler-3.1.2-amzn-3.jar"/>
-            <library id="zookeeper-3.4.12.jar"/>
+            <library id="zookeeper-3.4.14.jar"/>
         </libraryNeededGroup>
 
 		<!-- Hive group -->
@@ -982,7 +988,6 @@
             <library id="json4s-jackson_2.12-3.6.6.jar"/>
 			<library id="kryo-shaded-4.0.2.jar"/>
 			<library id="lz4-java-1.7.1.jar"/>
-            <library id="metrics-json-4.1.1.jar"/>
             <library id="minlog-1.3.0.jar"/>
 			<library id="netty-all-4.1.47.Final.jar"/>
 			<library id="objenesis-2.6.jar"/>
@@ -1006,6 +1011,7 @@
             <library id="spark-unsafe_2.12-3.0.1.jar"/>
             <library id="spark-yarn_2.12-3.0.1.jar"/>
             <library id="stream-2.9.6.jar"/>
+            <library id="talend-mapred-lib-7.2.2.jar"/>
             <library id="univocity-parsers-2.9.1.jar"/>
             <library id="validation-api-1.1.0.Final.jar"/>
             <library id="xbean-asm7-shaded-4.15.jar"/>
