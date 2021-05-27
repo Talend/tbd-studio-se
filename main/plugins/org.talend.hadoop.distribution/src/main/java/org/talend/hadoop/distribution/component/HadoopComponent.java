@@ -188,7 +188,11 @@ public interface HadoopComponent {
     * @return true if the distribution is a databricks cloud distribution
     */
    public boolean isDatabricksDistribution();
-
+   /**
+   *
+   * @return true if the distribution is a CDP
+   */
+   public boolean isCDPDistribution();
    /**
    * @return true if the distribution is a Qubole cloud distribution
     */

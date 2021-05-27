@@ -331,7 +331,9 @@ public abstract class AbstractDistribution {
     public boolean isHortonworksDistribution() {
         return false;
     }
-
+    public boolean isCDPDistribution() {
+        return false;
+    }
     public boolean doImportDynamoDBDependencies() {
         return false;
     }
