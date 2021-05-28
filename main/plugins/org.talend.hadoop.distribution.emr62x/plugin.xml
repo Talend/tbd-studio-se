@@ -923,11 +923,10 @@
         <!-- Redshift batch group -->
         <libraryNeededGroup description="Redshift libraries for emr62x" id="REDSHIFT-BATCH-GROUP-EMR_62_x" name="REDSHIFT-BATCH-GROUP-EMR_62_x">
             <group id="S3-GROUP-EMR_62_x"/>
-            <library id="spark-redshift_2.12-4.2.0.jar"/>
         </libraryNeededGroup>
         
         <!-- Redshift streaming group -->
-        <libraryNeededGroup description="Redshift libraries for emr62x" id="REDSHIFT-STREAMING-GROUP-EMR_62_x" name="REDSHIFT-BATCH-GROUP-EMR_62_x">
+        <libraryNeededGroup description="Redshift libraries for emr62x" id="REDSHIFT-STREAMING-GROUP-EMR_62_x" name="REDSHIFT-STREAMING-GROUP-EMR_62_x">
             <group id="REDSHIFT-BATCH-GROUP-EMR_62_x"/>
         </libraryNeededGroup>
         
@@ -996,6 +995,7 @@
             <library id="spark-mllib-local_2.12-3.0.1.jar"/>
             <library id="spark-network-common_2.12-3.0.1.jar"/>
             <library id="spark-network-shuffle_2.12-3.0.1.jar"/>
+            <library id="spark-redshift_2.12-4.2.0.jar"/>
             <library id="spark-sql_2.12-3.0.1.jar"/>
             <library id="spark-tags_2.12-3.0.1.jar"/>
             <library id="spark-unsafe_2.12-3.0.1.jar"/>
