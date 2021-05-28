@@ -722,11 +722,11 @@
             "useStudioRepository": "true"
         },
         {
-            "id": "talend-bigdata-launcher-knox",
+            "id": "talend-bigdata-launcher-livy",
             "type": "STANDARD",
             "context": "{properties.context}",
-            "jarName": "talend-bigdata-launcher-knox-2.1.1.jar",
-            "mvnUri": "mvn:org.talend.bigdata.libs/talend-bigdata-launcher-knox/2.1.1/jar",
+            "jarName": "talend-bigdata-launcher-livy-2.1.1.jar",
+            "mvnUri": "mvn:org.talend.bigdata.libs/talend-bigdata-launcher-livy/2.1.1/jar",
             "useStudioRepository": "true"
         },
         {
@@ -866,7 +866,7 @@
                 "spark-yarn_2.11",
                 "spark-streaming-kafka",
                 "talend-bigdata-launcher-core",
-                "talend-bigdata-launcher-knox",
+                "talend-bigdata-launcher-livy",
                 "freemarker",
                 "gateway-shell",
                 "gateway-i18n"
