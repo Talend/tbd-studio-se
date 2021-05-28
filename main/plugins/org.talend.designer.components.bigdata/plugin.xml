@@ -58,7 +58,7 @@
             context="org.talend.designer.components.bigdata"
             id="snappy-java-1.1.1.7.jar"
             name="snappy-java-1.1.1.7.jar" 
-            mvn_uri="mvn:org.talend.libraries/snappy-java-1.1.1.7/6.2.0"/>
+            mvn_uri="mvn:org.xerial.snappy/snappy-java/1.1.1.7"/>
         <libraryNeeded
             context="org.talend.designer.components.bigdata"
             id="zkclient-0.7.jar"
