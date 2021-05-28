@@ -752,6 +752,14 @@
             "jarName": "gateway-i18n-1.5.0.jar",
             "mvnUri": "mvn:org.apache.knox/gateway-i18n/1.5.0/jar",
             "useStudioRepository": "true"
+        },
+        {
+            "id": "fluent-hc",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "fluent-hc-4.5.13.jar",
+            "mvnUri": "mvn:org.apache.httpcomponents/fluent-hc/4.5.13/jar",
+            "useStudioRepository": "true"
         }
     ],
     "moduleGroups": [
@@ -869,7 +877,8 @@
                 "talend-bigdata-launcher-livy",
                 "freemarker",
                 "gateway-shell",
-                "gateway-i18n"
+                "gateway-i18n",
+                "fluent-hc"
             ]
         },
         {
