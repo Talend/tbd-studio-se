@@ -368,8 +368,7 @@
             context="plugin:org.talend.libraries.zookeeper"
             id="zookeeper-3.4.10.jar"
             name="zookeeper-3.4.10.jar"
-            mvn_uri="mvn:org.talend.libraries/zookeeper-3.4.10/6.0.0"
-            uripath="platform:/plugin/org.talend.libraries.zookeeper/lib/zookeeper-3.4.10.jar"/>
+            mvn_uri="mvn:org.talend.libraries/zookeeper-3.4.10/6.0.0"/>
             
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.emr580"
