@@ -24,7 +24,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang.StringUtils;
+import org.osgi.framework.Bundle;
 import org.talend.commons.exception.ExceptionHandler;
+import org.talend.core.model.general.ModuleNeeded;
 import org.talend.core.runtime.dynamic.IDynamicConfiguration;
 import org.talend.core.runtime.dynamic.IDynamicExtension;
 import org.talend.core.runtime.dynamic.IDynamicPlugin;
@@ -42,6 +44,9 @@ public class DynamicPluginAdapter {
 
     private static final String TYPE_POM = "pom";
 
+    private static final String ATTR_DYNAMIC_DISTRIBUTION = "{\"" + ModuleNeeded.ATTR_USED_BY_DYNAMIC_DISTRIBUTION
+            + "\":\"true\"}";
+
     private IDynamicPlugin plugin;
 
     private IDynamicPluginConfiguration pluginConfiguration;
@@ -54,10 +59,13 @@ public class DynamicPluginAdapter {
 
     private VersionStringComparator versionComparator;
 
-    public DynamicPluginAdapter(IDynamicPlugin plugin, IDynamicDistributionPreference preference) {
+    private Bundle bundle;
+
+    public DynamicPluginAdapter(IDynamicPlugin plugin, IDynamicDistributionPreference preference, Bundle bundle) {
         this.plugin = plugin;
         this.pluginConfiguration = this.plugin.getPluginConfiguration();
         this.preference = preference;
+        this.bundle = bundle;
         moduleGroupTemplateMap = new HashMap<>();
         moduleMap = new HashMap<>();
         versionComparator = new VersionStringComparator();
@@ -124,6 +132,7 @@ public class DynamicPluginAdapter {
                     throw new Exception("Module id is empty!");
                 }
                 moduleMap.put(moduleId, configuration);
+
                 String useStudioRepository = (String) configuration
                         .getAttribute(DynamicModuleAdapter.ATTR_TEMP_USE_STUDIO_REPOSITORY);
                 configuration.removeAttribute(DynamicModuleAdapter.ATTR_TEMP_USE_STUDIO_REPOSITORY);
@@ -148,6 +157,11 @@ public class DynamicPluginAdapter {
                             ExceptionHandler.process(e);
                         }
                     }
+                }
+
+                Object attribute = configuration.getAttribute(DynamicModuleAdapter.ATTR_MESSAGE);
+                if (attribute == null || StringUtils.isBlank(attribute.toString())) {
+                    configuration.setAttribute(DynamicModuleAdapter.ATTR_MESSAGE, ATTR_DYNAMIC_DISTRIBUTION);
                 }
             }
         }
@@ -434,6 +448,10 @@ public class DynamicPluginAdapter {
 
     public IDynamicConfiguration getModuleGroupByTemplateId(String templateId) {
         return moduleGroupTemplateMap.get(templateId);
+    }
+
+    public Bundle getBundle() {
+        return bundle;
     }
 
     public String getRuntimeModuleGroupIdByTemplateId(String templateId) {

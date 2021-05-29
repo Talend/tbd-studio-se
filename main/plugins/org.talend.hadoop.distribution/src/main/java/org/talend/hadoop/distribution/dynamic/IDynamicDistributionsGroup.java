@@ -44,7 +44,7 @@ public interface IDynamicDistributionsGroup {
 
     public void registerAllBuiltin(IDynamicMonitor monitor) throws Exception;
 
-    public void unregisterAllBuiltin(IDynamicMonitor monitor) throws Exception;
+    public void unregisterAllBuiltin(IDynamicMonitor monitor, boolean reloadLibCache) throws Exception;
 
     public boolean canRegister(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception;
 
@@ -64,7 +64,7 @@ public interface IDynamicDistributionsGroup {
      * @param monitor
      * @throws Exception
      */
-    public void unregister(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception;
+    public void unregister(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor, boolean reloadLibCache) throws Exception;
 
     /**
      * Filter dynamic plugins for specified distrubtion

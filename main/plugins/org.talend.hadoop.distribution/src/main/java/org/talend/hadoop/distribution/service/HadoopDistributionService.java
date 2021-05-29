@@ -25,10 +25,12 @@ import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.constants.apache.IApacheDistribution;
 import org.talend.hadoop.distribution.constants.emr.IAmazonEMRDistribution;
 import org.talend.hadoop.distribution.dynamic.DynamicDistributionManager;
+import org.talend.hadoop.distribution.dynamic.template.IDynamicDistributionTemplate;
 import org.talend.hadoop.distribution.helper.DistributionHelper;
 import org.talend.hadoop.distribution.helper.DistributionsManager;
 import org.talend.hadoop.distribution.helper.HadoopDistributionsHelper;
 import org.talend.hadoop.distribution.model.DistributionVersion;
+import org.talend.hadoop.distribution.model.DynamicDistributionVersion;
 
 /**
  * created by cmeng on Jan 15, 2016 Detailled comment
@@ -122,6 +124,19 @@ public class HadoopDistributionService implements IHadoopDistributionService {
     @Override
     public IHDistributionVersion getHadoopDistributionVersion(String version, boolean byDisplay) {
         return HadoopDistributionsHelper.HADOOP.getDistributionVersion(version, byDisplay);
+    }
+
+    @Override
+    public boolean checkDynamicDistributionExtensions(String version) {
+        IHDistributionVersion hadoopDistributionVersion = getHadoopDistributionVersion(version, false);
+        if (hadoopDistributionVersion instanceof DynamicDistributionVersion) {
+            IDynamicDistributionTemplate distributionTemplate = ((DynamicDistributionVersion) hadoopDistributionVersion)
+                    .getDistributionTemplate();
+            if (distributionTemplate != null && !distributionTemplate.isPluginExtensionsRegisted()) {
+                return distributionTemplate.registPluginExtensions();
+            }
+        }
+        return false;
     }
 
     @Override
