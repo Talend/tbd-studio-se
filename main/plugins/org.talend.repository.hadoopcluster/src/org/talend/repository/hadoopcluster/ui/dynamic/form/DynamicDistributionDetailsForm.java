@@ -589,7 +589,7 @@ public class DynamicDistributionDetailsForm extends AbstractDynamicDistributionS
                         .getDynamicDistributionGroup(distribution)
                         .getDynamicDistributionPreference(ProjectManager.getInstance().getProjectFromProjectTechLabel(
                                 (String) pluginConfiguration.getAttribute(DynamicConstants.ATTR_PROJECT_TECHNICAL_NAME)));
-                pluginAdapter = new DynamicPluginAdapter(tempDynamicPlugin, dynamicDistributionPreference);
+                pluginAdapter = new DynamicPluginAdapter(tempDynamicPlugin, dynamicDistributionPreference, null);
                 pluginAdapter.buildIdMaps();
                 Set<String> allModuleIds = pluginAdapter.getAllModuleIds();
                 Iterator<String> iter = allModuleIds.iterator();

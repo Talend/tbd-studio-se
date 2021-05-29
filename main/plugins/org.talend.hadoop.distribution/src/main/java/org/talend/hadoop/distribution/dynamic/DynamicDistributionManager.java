@@ -348,7 +348,7 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
 
         for (IDynamicDistributionsGroup dynDistriGroup : dynDistriGroups) {
             try {
-                dynDistriGroup.unregisterAllBuiltin(monitor);
+                dynDistriGroup.unregisterAllBuiltin(monitor, false);
             } catch (Throwable e) {
                 ExceptionHandler.process(e);
             }
@@ -377,7 +377,7 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
             for (IDynamicDistributionsGroup dynDistriGroup : dynDistriGroups) {
                 try {
                     if (dynDistriGroup.canRegister(dynamicPlugin, monitor)) {
-                        dynDistriGroup.unregister(dynamicPlugin, monitor);
+                        dynDistriGroup.unregister(dynamicPlugin, monitor, false);
                         registed = true;
                     }
                 } catch (Throwable e) {
@@ -435,6 +435,27 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
         usersPluginsCache = null;
         registerAll(dynamicMonitor, false);
         resetSystemCache();
+    }
+
+    @Override
+    public void reset(IProgressMonitor monitor) {
+        if (monitor == null) {
+            monitor = new NullProgressMonitor();
+        }
+        IDynamicMonitor dynamicMonitor = new AbsDynamicProgressMonitor(monitor) {
+
+            @Override
+            public void writeMessage(String message) {
+                // nothing to do
+            }
+        };
+        try {
+            unregisterAll(dynamicMonitor, false);
+            usersPluginsCache = null;
+            resetSystemCache();
+        } catch (Exception e) {
+            ExceptionHandler.process(e);
+        }
     }
 
     @Override
@@ -625,4 +646,10 @@ public class DynamicDistributionManager implements IDynamicDistributionManager {
     public String getDynamicDistributionCacheVersion() {
         return HadoopDistributionsHelper.getCacheVersion();
     }
+
+    @Override
+    public String getPluginExtensionCacheVersion() {
+        return HadoopDistributionsHelper.getPluginExtensionCacheVersion();
+    }
+
 }
