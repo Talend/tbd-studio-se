@@ -903,6 +903,7 @@
      		<library id="hive-jdbc-3.1.2-amzn-3.jar"/>
      		<library id="hive-service-3.1.2-amzn-3.jar"/>
 			<library id="libfb303-0.9.3.jar"/>
+			<library id="orc-mapreduce-1.5.5.jar"/>
 			<library id="spark-hive_2.12-3.0.1.jar"/>
         </libraryNeededGroup>
         
