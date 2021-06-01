@@ -12821,9 +12821,9 @@
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.cdp",
       "excludeDependencies" : "true",
-      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_launcher_core_2_0_14_jar",
-      "mvn_uri" : "mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.0.14/jar",
-      "name" : "talend-bigdata-launcher-core-2.0.14.jar",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_launcher_core_2_0_15_jar",
+      "mvn_uri" : "mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.0.15/jar",
+      "name" : "talend-bigdata-launcher-core-2.0.15.jar",
       "tagName" : "libraryNeeded"
     }, {
       "childNodes" : [ ],
