@@ -1163,30 +1163,6 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
-        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_launcher_livy_2_1_1_jar",
-        "tagName" : "library"
-      }, {
-        "childNodes" : [ ],
-        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_launcher_core_2_0_15_jar",
-        "tagName" : "library"
-      }, {
-        "childNodes" : [ ],
-        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_freemarker_2_3_31_jar",
-        "tagName" : "library"
-      }, {
-        "childNodes" : [ ],
-        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_shell_1_5_0_jar",
-        "tagName" : "library"
-      }, {
-        "childNodes" : [ ],
-        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_i18n_1_5_0_jar",
-        "tagName" : "library"
-      }, {
-        "childNodes" : [ ],
-        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_fluent_hc_4_5_13_jar",
-        "tagName" : "library"
-      }, {
-        "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_commons_configuration_1_9_jar",
         "tagName" : "library"
       }  ],
@@ -8501,6 +8477,30 @@
       }, {
         "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_zstd_jni_1_4_3_1_jar",
+        "tagName" : "library"
+      },  {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_launcher_livy_2_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_launcher_core_2_0_15_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_freemarker_2_3_31_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_shell_1_5_0_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_i18n_1_5_0_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_fluent_hc_4_5_13_jar",
         "tagName" : "library"
       } ],
       "description" : "",
