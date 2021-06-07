@@ -246,7 +246,7 @@
 
    <CODEGENERATION>
     <IMPORTS>
-      <IMPORT NAME="Mysql_Driver5"  MODULE="mysql-connector-java-5.1.30-bin.jar" MVN="mvn:org.talend.libraries/mysql-connector-java-5.1.30-bin/6.0.0"  REQUIRED="true"/>
+      <IMPORT NAME="Mysql_Driver5"  MODULE="mysql-connector-java-5.1.49.jar" MVN="mvn:mysql/mysql-connector-java/5.1.49"  REQUIRED="true"/>
     </IMPORTS>
    </CODEGENERATION>
 
