@@ -769,6 +769,9 @@
             id="talend-mapred-lib-7.2.2.jar" name="talend-mapred-lib-7.2.2.jar"
             mvn_uri="mvn:org.talend.bigdata.libs/talend-mapred-lib/7.2.2"/>
             
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x" 
+			id="orc-mapreduce-1.5.5.jar" name="orc-mapreduce-1.5.5.jar"
+			mvn_uri="mvn:org.apache.orc/orc-mapreduce/1.5.5"/>
 
 		<!-- Spark Azure group -->
         <libraryNeededGroup description="Spark Azure libraries for emr62x" id="AZURE-GROUP-EMR_62_x" name="AZURE-GROUP-EMR_62_x">
@@ -900,6 +903,7 @@
      		<library id="hive-jdbc-3.1.2-amzn-3.jar"/>
      		<library id="hive-service-3.1.2-amzn-3.jar"/>
 			<library id="libfb303-0.9.3.jar"/>
+			<library id="orc-mapreduce-1.5.5.jar"/>
 			<library id="spark-hive_2.12-3.0.1.jar"/>
         </libraryNeededGroup>
         
@@ -959,7 +963,6 @@
 		
 		<!-- Spark batch group -->
         <libraryNeededGroup description="SPARK libraries for emr62x" id="SPARK-BATCH-GROUP-EMR_62_x" name="SPARK-BATCH-GROUP-EMR_62_x">
-            <group id="HDFS-GROUP-EMR_62_x"/>
             <group id="HIVE-GROUP-EMR_62_x"/>
             <group id="S3-GROUP-EMR_62_x"/>
             <library id="antlr4-runtime-4.7.1.jar"/>
@@ -1038,7 +1041,7 @@
 
 		<!-- WebHDFS group -->
         <libraryNeededGroup description="WebHDFS libraries for emr62x" id="WEBHDFS-GROUP-EMR_62_x" name="WEBHDFS-GROUP-EMR_62_x">
-            
+            <group id="HDFS-GROUP-EMR_62_x"/>
         </libraryNeededGroup>
 
     </extension>
