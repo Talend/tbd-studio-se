@@ -1161,7 +1161,11 @@
         "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_zookeeper_jute_3_5_5_7_1_1_0_565_jar",
         "tagName" : "library"
-      } ],
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_commons_configuration_1_9_jar",
+        "tagName" : "library"
+      }  ],
       "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_HDFS_COMMON_LIB_DYNAMIC",
       "tagName" : "libraryNeededGroup",
       "templateId" : "HDFS-COMMON-LIB-DYNAMIC"
@@ -8474,6 +8478,30 @@
         "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_zstd_jni_1_4_3_1_jar",
         "tagName" : "library"
+      },  {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_launcher_livy_2_1_1_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_launcher_core_2_0_15_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_freemarker_2_3_31_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_shell_1_5_0_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_i18n_1_5_0_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_fluent_hc_4_5_13_jar",
+        "tagName" : "library"
       } ],
       "description" : "",
       "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_SPARK_LIB_SPARK2_DYNAMIC",
@@ -8687,10 +8715,6 @@
       }, {
         "childNodes" : [ ],
         "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_commons_configuration2_2_1_1_jar",
-        "tagName" : "library"
-      }, {
-        "childNodes" : [ ],
-        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_commons_configuration_1_9_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -9969,6 +9993,33 @@
       "mvn_uri" : "mvn:de.ruedigermoeller/fst/2.50/jar",
       "name" : "fst-2.50.jar",
       "tagName" : "libraryNeeded"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdp",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_shell_1_5_0_jar",
+      "mvn_uri" : "mvn:org.apache.knox/gateway-shell/1.5.0/jar",
+      "name" : "gateway-shell-1.5.0.jar",
+      "tagName" : "libraryNeeded",
+      "useStudioRepository" : "true"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdp",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_fluent_hc_4_5_13_jar",
+      "mvn_uri" : "mvn:org.apache.httpcomponents/fluent-hc/4.5.13/jar",
+      "name" : "fluent-hc-4.5.13.jar",
+      "tagName" : "libraryNeeded",
+      "useStudioRepository" : "true"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdp",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_i18n_1_5_0_jar",
+      "mvn_uri" : "mvn:org.apache.knox/gateway-i18n/1.5.0/jar",
+      "name" : "gateway-i18n-1.5.0.jar",
+      "tagName" : "libraryNeeded",
+      "useStudioRepository" : "true"
     }, {
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.cdp",
@@ -12757,6 +12808,30 @@
       "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_zookeeper_jute_3_5_5_7_1_1_0_565_jar",
       "mvn_uri" : "mvn:org.apache.zookeeper/zookeeper-jute/3.5.5.7.1.1.0-565/jar",
       "name" : "zookeeper-jute-3.5.5.7.1.1.0-565.jar",
+      "tagName" : "libraryNeeded"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdp",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_launcher_livy_2_1_1_jar",
+      "mvn_uri" : "mvn:org.talend.bigdata.libs/talend-bigdata-launcher-livy/2.1.1/jar",
+      "name" : "talend-bigdata-launcher-livy-2.1.1.jar",
+      "tagName" : "libraryNeeded"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdp",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_launcher_core_2_0_15_jar",
+      "mvn_uri" : "mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.0.15/jar",
+      "name" : "talend-bigdata-launcher-core-2.0.15.jar",
+      "tagName" : "libraryNeeded"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdp",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_freemarker_2_3_31_jar",
+      "mvn_uri" : "mvn:org.freemarker/freemarker/2.3.31/jar",
+      "name" : "freemarker-2.3.31.jar",
       "tagName" : "libraryNeeded"
     }, {
       "childNodes" : [ ],

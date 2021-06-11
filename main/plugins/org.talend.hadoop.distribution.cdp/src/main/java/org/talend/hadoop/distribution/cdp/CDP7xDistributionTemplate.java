@@ -297,4 +297,9 @@ public class CDP7xDistributionTemplate extends AbstractDynamicCDPDistributionTem
 	public KuduVersion getKuduVersion() {
 		return KuduVersion.KUDU_1_12;
 	}
+    
+    @Override
+    public boolean isExecutedThroughKnox() {
+        return true;
+    }
 }
