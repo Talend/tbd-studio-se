@@ -717,8 +717,8 @@
             "id": "talend-bigdata-launcher-core",
             "type": "STANDARD",
             "context": "{properties.context}",
-            "jarName": "talend-bigdata-launcher-core-2.0.15.jar",
-            "mvnUri": "mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.0.15/jar",
+            "jarName": "talend-bigdata-launcher-core-2.1.2.jar",
+            "mvnUri": "mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.1.2/jar",
             "useStudioRepository": "true"
         },
         {
