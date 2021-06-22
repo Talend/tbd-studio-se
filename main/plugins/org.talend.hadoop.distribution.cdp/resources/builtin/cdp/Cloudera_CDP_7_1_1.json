@@ -8480,7 +8480,7 @@
         "tagName" : "library"
       },  {
         "childNodes" : [ ],
-        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_launcher_livy_2_1_1_jar",
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_launcher_livy_2_1_2_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -12813,9 +12813,9 @@
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.cdp",
       "excludeDependencies" : "true",
-      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_launcher_livy_2_1_1_jar",
-      "mvn_uri" : "mvn:org.talend.bigdata.libs/talend-bigdata-launcher-livy/2.1.1/jar",
-      "name" : "talend-bigdata-launcher-livy-2.1.1.jar",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_talend_bigdata_launcher_livy_2_1_2_jar",
+      "mvn_uri" : "mvn:org.talend.bigdata.libs/talend-bigdata-launcher-livy/2.1.2/jar",
+      "name" : "talend-bigdata-launcher-livy-2.1.2.jar",
       "tagName" : "libraryNeeded"
     }, {
       "childNodes" : [ ],
