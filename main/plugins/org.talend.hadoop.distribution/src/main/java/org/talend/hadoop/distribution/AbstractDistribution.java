@@ -307,6 +307,10 @@ public abstract class AbstractDistribution {
     public boolean isQuboleDistribution() {
         return false;
     }
+    
+    public boolean isSynapseDistribution() {
+		return false;
+	}
 
     public boolean doSupportOozie() {
         return true;

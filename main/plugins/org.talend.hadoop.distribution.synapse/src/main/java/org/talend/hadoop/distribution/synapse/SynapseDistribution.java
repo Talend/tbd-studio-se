@@ -43,7 +43,7 @@ import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
 import org.talend.hadoop.distribution.constants.synapse.ISynapseDistribution;
 
 @SuppressWarnings("nls")
-public class SynapseDistribution extends AbstractDistribution implements ISynapseDistribution, HadoopComponent, HDFSComponent, MRComponent,
+public class SynapseDistribution extends AbstractDistribution implements ISynapseDistribution, HDFSComponent, MRComponent,
         HiveComponent, SparkBatchComponent, SparkStreamingComponent {
 
     public static final String VERSION = "SYNAPSE"; //$NON-NLS-1$
