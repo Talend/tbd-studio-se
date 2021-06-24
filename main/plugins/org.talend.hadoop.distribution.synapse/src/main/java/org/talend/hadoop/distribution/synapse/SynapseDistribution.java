@@ -164,11 +164,6 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
 
 	
 	@Override
-	public boolean doSupportHBaseForHive() {
-		return false;
-	}
-
-	@Override
 	public boolean doSupportImpersonation() {
 		return true;
 	}
