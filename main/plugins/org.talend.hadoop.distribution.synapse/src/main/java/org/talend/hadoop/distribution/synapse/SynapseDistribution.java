@@ -11,7 +11,7 @@
 //
 // ============================================================================
 
-package org.talend.hadoop.distribution.emr62x;
+package org.talend.hadoop.distribution.synapse;
 
 import java.util.Arrays;
 import java.util.HashMap;
