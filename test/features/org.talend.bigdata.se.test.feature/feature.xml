@@ -65,10 +65,6 @@
 
    <plugin id="org.talend.repository.hdfs.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin id="org.talend.hadoop.distribution.hdp250.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
-
-   <plugin id="org.talend.hadoop.distribution.hdp260.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
-
    <plugin id="org.talend.hadoop.distribution.dbr350.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
    <plugin id="org.talend.hadoop.distribution.dbr550.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
