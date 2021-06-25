@@ -104,8 +104,7 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
 
 	@Override
 	public String getVersionName(ComponentType componentType) {
-		String customVersionName = customVersionDisplayNames.get(componentType);
-		return customVersionName != null ? customVersionName : VERSION_DISPLAY;
+		return VERSION_DISPLAY;
 	}
 
 	@Override
@@ -115,7 +114,7 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
 
 	@Override
 	public boolean doSupportKerberos() {
-		return true;
+		return false;
 	}
 
 	@Override
