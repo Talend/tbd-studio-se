@@ -134,7 +134,12 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
 	public boolean doSupportUseDatanodeHostname() {
 		return true;
 	}
-
+	
+	@Override
+	public boolean doSupportImpersonation() {
+		return false;
+	}
+	
 	@Override
 	public boolean doSupportCrossPlatformSubmission() {
 		return true;
