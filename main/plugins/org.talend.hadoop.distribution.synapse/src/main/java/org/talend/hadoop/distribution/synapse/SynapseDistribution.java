@@ -163,11 +163,6 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
 
 	
 	@Override
-	public boolean doSupportImpersonation() {
-		return true;
-	}
-
-	@Override
     public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
         version.add(ESparkVersion.SPARK_3_0);
@@ -189,16 +184,6 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
 		return false;
 	}
 
-	@Override
-	public boolean doSupportS3() {
-		return true;
-	}
-
-	@Override
-	public boolean doSupportS3V4() {
-		return true;
-	}
-
 	
     @Override
     public boolean doSupportSparkStandaloneMode() {
@@ -207,7 +192,7 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
 
     @Override
     public boolean doSupportSparkYarnClientMode() {
-        return true;
+        return false;
     }
 
     @Override
@@ -226,22 +211,7 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
     }
 
     @Override
-    public boolean doSupportHDFSEncryption() {
-        return true;
-    }
-
-    @Override
-    public boolean doImportDynamoDBDependencies() {
-        return true;
-    }
-
-    @Override
     public boolean doSupportAzureBlobStorage() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportAvroDeflateProperties(){
         return true;
     }
 
@@ -255,22 +225,6 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
         return 10;
     }
 
-    @Override
-    public boolean useS3AProperties() {
-        return false;
-    }
-
-    @Override
-    public boolean doSupportAssumeRole() {
-        return true;
-    }
-
-    @Override
-    public boolean doSupportExtendedAssumeRole() {
-        return true;
-    }
-    
-    
     @Override
     public boolean doSupportLightWeight() {
         return true;
