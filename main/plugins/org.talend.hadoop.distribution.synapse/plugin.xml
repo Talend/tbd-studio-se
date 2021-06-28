@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension
-         point="org.talend.core.runtime.librariesNeeded">
+   <extension point="org.talend.core.runtime.librariesNeeded">
 
          <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
              id="spark-core_2.12-3.0.1.jar" name="spark-core_2.12-3.0.1.jar"
@@ -454,19 +453,19 @@
         <!-- Bigdata launcher group -->
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
           id="talend-bigdata-launcher-synapse-2.1.2.jar" name="talend-bigdata-launcher-synapse-2.1.2.jar" 
-          mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-synapse/2.1.2">
+          mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-synapse/2.1.2"/>
           
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
           id="talend-bigdata-launcher-jobserver-2.0.11.jar" name="talend-bigdata-launcher-jobserver-2.0.11.jar" 
-          mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-jobserver/2.0.11">
+          mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-jobserver/2.0.11"/>
         
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
           id="logback-classic-1.2.3.jar" name="logback-classic-1.2.3.jar" 
-          mvn_uri="mvn:ch.qos.logback/logback-classic/1.2.3">    
+          mvn_uri="mvn:ch.qos.logback/logback-classic/1.2.3"/>    
         
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
           id="commons-logging-1.2.jar" name="commons-logging-1.2.jar" 
-          mvn_uri="mvn:commons-logging/commons-logging/1.2">    
+          mvn_uri="mvn:commons-logging/commons-logging/1.2"/>    
         
         <!-- Spark group -->
         <libraryNeededGroup description="SPARK libraries for synapse" id="SPARK-BATCH-GROUP-SYNAPSE" name="SPARK-BATCH-GROUP-SYNAPSE">
@@ -612,6 +611,7 @@
         </libraryNeededGroup>
         
      </extension>
+     
    <extension
          point="org.talend.core.runtime.classloader_provider">
    </extension>
