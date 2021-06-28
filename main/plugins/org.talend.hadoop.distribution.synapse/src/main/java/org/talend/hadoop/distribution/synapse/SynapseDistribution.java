@@ -34,10 +34,9 @@ import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.ModuleGroupName;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
-import org.talend.hadoop.distribution.constants.synapse.ISynapseDistribution;
 
 @SuppressWarnings("nls")
-public class SynapseDistribution extends AbstractDistribution implements ISynapseDistribution, HDFSComponent, MRComponent,
+public class SynapseDistribution extends AbstractDistribution implements HDFSComponent, MRComponent,
         SparkBatchComponent, SparkStreamingComponent {
 
     public static final String VERSION = "SYNAPSE"; //$NON-NLS-1$
@@ -84,12 +83,12 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
 
 	@Override
 	public String getDistribution() {
-		return DISTRIBUTION_NAME;
+		return "AZURE_SYNAPSE";
 	}
 
 	@Override
 	public String getDistributionName() {
-		return DISTRIBUTION_DISPLAY_NAME;
+		return "Azure Synapse";
 	}
 
 	@Override
