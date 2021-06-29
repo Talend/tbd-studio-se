@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.Collections;
 
 import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.ComponentType;
@@ -42,7 +43,7 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
 
     public static final String VERSION = "SYNAPSE"; //$NON-NLS-1$
 
-    public static final String VERSION_DISPLAY = "AZURE SYNAPSE"; //$NON-NLS-1$
+    public static final String VERSION_DISPLAY = "Azure Synapse Runtime for Apache Spark 3.0"; //$NON-NLS-1$
 
 	private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*" ; //$NON-NLS-1$
 	private final static String CLASSPATH_SEPARATOR = ",";
@@ -67,14 +68,19 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
 
 	public SynapseDistribution() {
 		displayConditions = buildDisplayConditions();
-		moduleGroups = buildModuleGroups();
-		nodeModuleGroups = buildNodeModuleGroups(getDistribution(), getVersion());
+        customVersionDisplayNames = buildCustomVersionDisplayNames();
+        moduleGroups = buildModuleGroups();
+        nodeModuleGroups = buildNodeModuleGroups(getDistribution(), getVersion());        
 	}
 
 	protected Map<ComponentType, ComponentCondition> buildDisplayConditions() {
 		return new HashMap<>();
 	}
 
+	protected Map<ComponentType, String> buildCustomVersionDisplayNames() {
+        return new HashMap<>();
+    }
+	
 	@Override
 	public String getDistribution() {
 		return DISTRIBUTION_NAME;
@@ -161,9 +167,7 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
 	
 	@Override
     public Set<ESparkVersion> getSparkVersions() {
-        Set<ESparkVersion> version = new HashSet<>();
-        version.add(ESparkVersion.SPARK_3_0);
-        return version;
+		return Collections.singleton(ESparkVersion.SPARK_3_0);
     }
 
     @Override
@@ -191,7 +195,12 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
     public boolean doSupportSparkYarnClientMode() {
         return false;
     }
-
+    
+    @Override
+    public boolean doSupportSparkYarnClusterMode() {
+    	return true;
+    };
+    
     @Override
     public boolean doSupportDynamicMemoryAllocation() {
         return true;
