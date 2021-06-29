@@ -34,9 +34,10 @@ import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.ModuleGroupName;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
+import org.talend.hadoop.distribution.constants.synapse;
 
 @SuppressWarnings("nls")
-public class SynapseDistribution extends AbstractDistribution implements HDFSComponent, MRComponent,
+public class SynapseDistribution extends AbstractDistribution implements ISynapseDistribution, HDFSComponent, MRComponent,
         SparkBatchComponent, SparkStreamingComponent {
 
     public static final String VERSION = "SYNAPSE"; //$NON-NLS-1$
@@ -66,7 +67,6 @@ public class SynapseDistribution extends AbstractDistribution implements HDFSCom
 
 	public SynapseDistribution() {
 		displayConditions = buildDisplayConditions();
-		customVersionDisplayNames = buildCustomVersionDisplayNames();
 		moduleGroups = buildModuleGroups();
 		nodeModuleGroups = buildNodeModuleGroups(getDistribution(), getVersion());
 	}
@@ -75,20 +75,14 @@ public class SynapseDistribution extends AbstractDistribution implements HDFSCom
 		return new HashMap<>();
 	}
 
-	protected Map<ComponentType, String> buildCustomVersionDisplayNames() {
-		Map<ComponentType, String> result = new HashMap<>();
-		
-		return result;
-	}
-
 	@Override
 	public String getDistribution() {
-		return "AZURE_SYNAPSE";
+		return DISTRIBUTION_NAME;
 	}
 
 	@Override
 	public String getDistributionName() {
-		return "Azure Synapse";
+		return DISTRIBUTION_DISPLAY_NAME;
 	}
 
 	@Override
