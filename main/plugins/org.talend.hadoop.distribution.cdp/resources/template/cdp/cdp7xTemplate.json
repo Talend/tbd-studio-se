@@ -741,8 +741,8 @@
             "id": "gateway-shell",
             "type": "STANDARD",
             "context": "{properties.context}",
-            "jarName": "gateway-shell-1.5.0.jar",
-            "mvnUri": "mvn:org.apache.knox/gateway-shell/1.5.0/jar",
+            "jarName": "gateway-shell-1.3.0.7.1.0.2-7.jar",
+            "mvnUri": "mvn:org.apache.knox/gateway-shell/1.3.0.7.1.0.2-7/jar",
             "useStudioRepository": "true"
         },
         {
@@ -751,6 +751,14 @@
             "context": "{properties.context}",
             "jarName": "gateway-i18n-1.5.0.jar",
             "mvnUri": "mvn:org.apache.knox/gateway-i18n/1.5.0/jar",
+            "useStudioRepository": "true"
+        },
+        {
+            "id": "gateway-cloud-bindings",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "gateway-cloud-bindings-1.3.0.7.2.10.0-148.jar",
+            "mvnUri": "mvn:org.apache.knox/gateway-cloud-bindings/1.3.0.7.2.10.0-148/jar",
             "useStudioRepository": "true"
         },
         {
@@ -878,6 +886,7 @@
                 "freemarker",
                 "gateway-shell",
                 "gateway-i18n",
+                "gateway-cloud-bindings",
                 "fluent-hc"
             ]
         },

@@ -8492,7 +8492,11 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
-        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_shell_1_5_0_jar",
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_shell_jar",
+        "tagName" : "library"
+      }, {
+        "childNodes" : [ ],
+        "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_cloud_bindings_jar",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -9997,9 +10001,18 @@
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.cdp",
       "excludeDependencies" : "true",
-      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_shell_1_5_0_jar",
-      "mvn_uri" : "mvn:org.apache.knox/gateway-shell/1.5.0/jar",
-      "name" : "gateway-shell-1.5.0.jar",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_shell_jar",
+      "mvn_uri" : "mvn:org.apache.knox/gateway-shell/1.3.0.7.1.0.2-7/jar",
+      "name" : "gateway-shell-1.3.0.7.1.0.2-7.jar",
+      "tagName" : "libraryNeeded",
+      "useStudioRepository" : "true"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdp",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_cloud_bindings_jar",
+      "mvn_uri" : "mvn:org.apache.knox/gateway-cloud-bindings/1.3.0.7.2.10.0-148/jar",
+      "name" : "gateway-cloud-bindings-1.3.0.7.2.10.0-148.jar",
       "tagName" : "libraryNeeded",
       "useStudioRepository" : "true"
     }, {
