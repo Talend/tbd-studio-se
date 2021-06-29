@@ -34,7 +34,7 @@ import org.talend.hadoop.distribution.component.SparkStreamingComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.ModuleGroupName;
 import org.talend.hadoop.distribution.spark.SparkClassPathUtils;
-import org.talend.hadoop.distribution.constants.synapse;
+import org.talend.hadoop.distribution.constants.synapse.ISynapseDistribution;
 
 @SuppressWarnings("nls")
 public class SynapseDistribution extends AbstractDistribution implements ISynapseDistribution, HDFSComponent, MRComponent,
