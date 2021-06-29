@@ -240,5 +240,15 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
     public String getLightWeightClasspath() {
         return LIGHTWEIGHT_CLASSPATH;
     }
+    
+    @Override
+    public boolean doSupportAzureBlobStorage() {
+        return false;
+    }
+
+    @Override
+    public boolean doSupportAzureDataLakeStorage() {
+        return true;
+    }
    
 }
