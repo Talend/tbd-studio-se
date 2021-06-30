@@ -227,6 +227,5 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
     public boolean doSupportLightWeight() {
         return false;
     }
-    
    
 }
