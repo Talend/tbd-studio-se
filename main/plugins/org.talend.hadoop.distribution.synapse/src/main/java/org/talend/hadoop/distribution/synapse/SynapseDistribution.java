@@ -162,7 +162,9 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
 	
 	@Override
     public Set<ESparkVersion> getSparkVersions() {
-		return SynapseDistribution.SPARK_VERSION.getSparkVersion();
+		Set<ESparkVersion> version = new HashSet<>();
+        version.add(SynapseDistribution.SPARK_VERSION.getSparkVersion());
+        return version;
     }
 
     @Override
