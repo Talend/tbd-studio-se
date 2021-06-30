@@ -129,7 +129,6 @@
         <module>test/plugins/org.talend.hadoop.distribution.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.qubole.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.spl30x.test</module>
-        <module>test/plugins/org.talend.hadoop.distribution.synapse.test</module>
         <module>test/plugins/org.talend.oozie.scheduler.test</module>
         <module>test/plugins/org.talend.repository.nosql.test</module>
         <module>test/plugins/org.talend.repository.maprdbprovider.test</module>
