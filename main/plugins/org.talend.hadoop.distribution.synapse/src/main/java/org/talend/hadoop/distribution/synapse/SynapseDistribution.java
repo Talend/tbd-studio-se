@@ -44,8 +44,11 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
     public static final String VERSION = "SYNAPSE"; //$NON-NLS-1$
 
     public static final String VERSION_DISPLAY = "Azure Synapse Runtime for Apache Spark 3.0"; //$NON-NLS-1$
+    
+    public final static ESparkVersion SPARK_VERSION = ESparkVersion.SPARK_3_1;
 
 	private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$YARN_HOME/*,$YARN_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/*,$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*" ; //$NON-NLS-1$
+	
 	private final static String CLASSPATH_SEPARATOR = ",";
 	
 	public final static String DEFAULT_LIB_ROOT = "/usr/lib";
@@ -159,18 +162,13 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
 	
 	@Override
     public Set<ESparkVersion> getSparkVersions() {
-		return Collections.singleton(ESparkVersion.SPARK_3_0);
+		return SynapseDistribution.SPARK_VERSION.getSparkVersion();
     }
 
     @Override
     public boolean isExecutedThroughSparkJobServer() {
         return false;
     }
-
-	@Override
-	public ComponentCondition getDisplayCondition(ComponentType componentType) {
-		return displayConditions.get(componentType);
-	}
 
 	@Override
 	public boolean doSupportOldImportMode() {
