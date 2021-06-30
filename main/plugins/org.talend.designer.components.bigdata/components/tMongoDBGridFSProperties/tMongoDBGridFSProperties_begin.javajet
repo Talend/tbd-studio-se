@@ -1,26 +1,110 @@
 <%@ jet 
-	imports="
-		org.talend.core.model.process.INode 
-		org.talend.core.model.process.ElementParameterParser 
-		org.talend.core.model.metadata.IMetadataTable 
-		org.talend.core.model.metadata.IMetadataColumn 
-		org.talend.core.model.process.IConnection
-		org.talend.designer.codegen.config.CodeGeneratorArgument
-		org.talend.core.model.metadata.types.JavaTypesManager
-		org.talend.core.model.metadata.types.JavaType
-		org.talend.core.model.process.IConnectionCategory
-		org.talend.core.model.utils.NodeUtil
-		java.util.List 
-    	java.util.Map		
-	" 
+    imports="
+        org.talend.core.model.process.INode 
+        org.talend.core.model.process.ElementParameterParser 
+        org.talend.core.model.metadata.IMetadataTable 
+        org.talend.core.model.metadata.IMetadataColumn 
+        org.talend.core.model.process.IConnection
+        org.talend.designer.codegen.config.CodeGeneratorArgument
+        org.talend.core.model.metadata.types.JavaTypesManager
+        org.talend.core.model.metadata.types.JavaType
+        org.talend.core.model.process.IConnectionCategory
+        org.talend.core.model.utils.NodeUtil
+        java.util.List 
+        java.util.Map        
+    " 
 %>
-<%
 
-%>
-    <%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GridFS/GetMongoDBConnectionWithMainFlow.javajet"%>
+<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Log4j/Log4jFileUtil.javajet"%>
 
 <%
-	boolean givenStringFileName = "STRING_FILENAME".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERY_TYPE__"));
+    CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+    INode node = (INode)codeGenArgument.getArgument();
+    String cid = node.getUniqueName();
+
+    String dbhost = ElementParameterParser.getValue(node, "__HOST__");
+    String dbname = ElementParameterParser.getValue(node, "__DATABASE__");
+    String dbuser = ElementParameterParser.getValue(node, "__USERNAME__");
+    boolean authentication="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REQUIRED_AUTHENTICATION__"));
+    String authenticationMechanism = ElementParameterParser.getValue(node, "__AUTHENTICATION_MECHANISM__");
+    String krbUserPrincipal = ElementParameterParser.getValue(node, "__KRB_USER_PRINCIPAL__");
+    String krbRealm = ElementParameterParser.getValue(node, "__KRB_REALM__");
+    String krbKdc = ElementParameterParser.getValue(node, "__KRB_KDC__");
+    String dbpass = ElementParameterParser.getValue(node, "__PASSWORD__");
+    String mongoPort = ElementParameterParser.getValue(node, "__PORT__");
+    String dbport = mongoPort.startsWith("context.") ? "Integer.valueOf(" + mongoPort + ").intValue()" : mongoPort.replace("\"", "");
+    boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"));
+    String collection = ElementParameterParser.getValue(node,"__COLLECTION__");
+    
+    String limit = ElementParameterParser.getValue(node,"__LIMIT__");
+
+    List<Map<String, String>> sorts = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__SORT__");
+    boolean useReplicaSet="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_REPLICA_SET__"));
+    boolean useSSL = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_SSL__"));
+    List<Map<String,String>> replicaAddrs= (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__REPLICA_SET__");
+
+    // declare read preferences and write concerns for unified connection template
+    boolean setReadPreference = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_READ_PREFERENCE__"));
+    String readPreference = ElementParameterParser.getValue(node, "__READ_PREFERENCE__");
+    boolean setWriteConcern = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_WRITE_CONCERN__"));
+    String writeConcern = ElementParameterParser.getValue(node, "__WRITE_CONCERN__");
+
+    boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+    boolean useAuthDB = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_AUTHENTICATION_DATABASE__"));
+    String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
+    String usedAuthenticationDB = useAuthDB ? authDB : dbname;
+    boolean queryOptionNoTimeOut;
+    String dbversion;
+    if(useExistingConnection){
+        String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+        INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
+        dbversion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
+        queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(connectionNode, "__QUERYOPTION_NOTIMEOUT__"));
+    }else{
+        dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
+        queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
+    }
+    boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
+    boolean version_4_4_X = "MONGODB_4_4_X".equals(dbversion);
+
+    List<IMetadataTable> metadatas = node.getMetadataList();
+    List<IMetadataColumn> columnList = null;
+    List<? extends IConnection> outputs = node.getOutgoingSortedConnections();
+    String firstConnName = "";
+    if (outputs.size() > 0){
+        IConnection out = outputs.get(0);
+        if(out!=null && out.getLineStyle().hasConnectionCategory(IConnectionCategory.DATA)){
+            firstConnName = out.getName();
+        }
+    }
+%>
+
+    <%if(isLog4jEnabled) {%>
+        java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.OFF);
+        <%
+    } else {%>
+        java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.SEVERE);
+        <%
+    }%>
+
+    <%@ include file="../templates/MongoDB/ApplicationName.javajet"%>
+
+    int nb_line_<%=cid %> = 0;
+    <%
+    if(metadatas != null && metadatas.size() > 0) {
+        IMetadataTable metadata = metadatas.get(0);
+        if(metadata != null) {%>
+
+            <%if ("MONGODB_4_4_X".equals(dbversion)) {%>
+                <%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GridFS/GetMongoDBConnection_4_4_X.javajet"%>
+                <%
+            } else {%>
+                <%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GridFS/GetMongoDBConnection_below_4_4_X.javajet"%>
+                <%
+            }%>
+
+<%
+    boolean givenStringFileName = "STRING_FILENAME".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERY_TYPE__"));
     String stringFileName = ElementParameterParser.getValue(node, "__FILENAME__");
     String query = ElementParameterParser.getValue(node,"__QUERY__");
     query = query.replaceAll("\n","");
@@ -28,133 +112,126 @@
     String bucketName = ElementParameterParser.getValue(node, "__BUCKET__");
     String fileType = (version_3_5_X || version_4_4_X) ? "com.mongodb.client.gridfs.model.GridFSFile" : "com.mongodb.gridfs.GridFSDBFile";
 %>
-			
-	<%if(version_3_5_X || version_4_4_X){%>
-			com.mongodb.client.gridfs.GridFSBucket gridfs_<%=cid%> = com.mongodb.client.gridfs.GridFSBuckets.create(db_<%=cid%>, <%=bucketName%>);
-	    	<%if(givenStringFileName){%>
-	    		org.bson.Document gridFSQuery_<%=cid%> = new org.bson.Document("filename",<%=stringFileName%>);
-			 <%}else{%>
-			 	org.bson.Document gridFSQuery_<%=cid%> = org.bson.Document.parse(<%=query%>);
-			 <%}%>
-			 com.mongodb.client.gridfs.GridFSFindIterable gridfsFiles_<%=cid%> = gridfs_<%=cid%>.find(gridFSQuery_<%=cid%>);
-    <%}else{%>
-    		com.mongodb.gridfs.GridFS gridfs_<%=cid%> = new com.mongodb.gridfs.GridFS(db_<%=cid%>, <%=bucketName%>);
-			java.util.List<<%=fileType%>> gridfsFiles_<%=cid%>;
-			<%// FIND files with given filename
-			if(givenStringFileName){%>
-				
-				gridfsFiles_<%=cid%> = gridfs_<%=cid%>.find(<%=stringFileName%>);
-				
-				<%}
-			// FIND files from a given Mongo Query 
-			else {
-				%>
-				com.mongodb.DBObject gridFSQuery_<%=cid%> = com.mongodb.BasicDBObject.parse(<%=query%>);
-				gridfsFiles_<%=cid%> = gridfs_<%=cid%>.find(gridFSQuery_<%=cid%>);
-				<%
-			}
-			%>
-    <%}%>
 
-			for(<%=fileType%> file : gridfsFiles_<%=cid%>){
-				nb_line_<%=cid %>++;
-				Object valueObj_<%=cid%>=null;
-				<%
-				if(firstConnName.length()>0){
-					columnList = metadata.getListColumns();
-					int sizeColumns = columnList.size();
-					for (int i = 0; i < sizeColumns; i++) {
-						IMetadataColumn column = columnList.get(i);
-						String typeToGenerate = JavaTypesManager.getTypeToGenerate(column.getTalendType(), column.isNullable());
-						JavaType javaType = JavaTypesManager.getJavaTypeFromId(column.getTalendType());
-						String patternValue = column.getPattern() == null || column.getPattern().trim().length() == 0 ? null : column.getPattern();
-						if(version_3_5_X || version_4_4_X){
-						  String columnName = column.getOriginalDbColumnName();
-						    if("_id".equalsIgnoreCase(columnName)){
-						%>
-							valueObj_<%=cid%> = file.getObjectId();
-							<%} else if ("filename".equalsIgnoreCase(columnName)){%>
-							valueObj_<%=cid%> = file.getFilename();
-							<%} else if ("chunkSize".equalsIgnoreCase(columnName)){%>
-							valueObj_<%=cid%> = file.getChunkSize();
-							<%} else if ("uploadDate".equalsIgnoreCase(columnName)){%>
-							valueObj_<%=cid%> = file.getUploadDate();
-							<%} else if ("length".equalsIgnoreCase(columnName)){%>
-							valueObj_<%=cid%> = file.getLength();
-							<%} else if ("contentType".equalsIgnoreCase(columnName)){%>
-							valueObj_<%=cid%> = file.getContentType();
-							<%} else if (("md5".equalsIgnoreCase(columnName)) && version_3_5_X){%>
-							valueObj_<%=cid%> = file.getMD5();
-							<%} else if ("Metadata".equalsIgnoreCase(columnName)){%>
-							valueObj_<%=cid%> = file.getMetadata();
-							<%}else{%>
-							valueObj_<%=cid%> = null;
-							<%}%>
-						<%
-						}else{%>
-						valueObj_<%=cid%> = file.get("<%=column.getOriginalDbColumnName()%>");
-						<%}
+            <%if(version_3_5_X || version_4_4_X) {%>
+                com.mongodb.client.gridfs.GridFSBucket gridfs_<%=cid%> = com.mongodb.client.gridfs.GridFSBuckets.create(db_<%=cid%>, <%=bucketName%>);
+                <%if(givenStringFileName) {%>
+                    org.bson.Document gridFSQuery_<%=cid%> = new org.bson.Document("filename",<%=stringFileName%>);
+                    <%
+                } else {%>
+                    org.bson.Document gridFSQuery_<%=cid%> = org.bson.Document.parse(<%=query%>);
+                    <%
+                }%>
+                com.mongodb.client.gridfs.GridFSFindIterable gridfsFiles_<%=cid%> = gridfs_<%=cid%>.find(gridFSQuery_<%=cid%>);
+                <%
+            } else {%>
+                com.mongodb.gridfs.GridFS gridfs_<%=cid%> = new com.mongodb.gridfs.GridFS(db_<%=cid%>, <%=bucketName%>);
+                java.util.List<<%=fileType%>> gridfsFiles_<%=cid%>;
+                <%if(givenStringFileName) {
+                    // FIND files with given filename
+                    %>
+                    gridfsFiles_<%=cid%> = gridfs_<%=cid%>.find(<%=stringFileName%>);
+                    <%
+                } else {
+                    // FIND files from a given Mongo Query 
+                    %>
+                    com.mongodb.DBObject gridFSQuery_<%=cid%> = com.mongodb.BasicDBObject.parse(<%=query%>);
+                    gridfsFiles_<%=cid%> = gridfs_<%=cid%>.find(gridFSQuery_<%=cid%>);
+                    <%
+                }
+            }%>
 
-						if(javaType == JavaTypesManager.OBJECT) {
-							%>
-							<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>;
-							<%
-						} else {
-							%>
-							if(valueObj_<%=cid%>!=null && valueObj_<%=cid%>.toString().length() > 0) {
-								<%
-								if(javaType == JavaTypesManager.DATE) {
-									%>
-									<%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_Date((java.util.Date)valueObj_<%=cid%>, <%= patternValue %>);
-									<%
-								} else if(javaType == JavaTypesManager.BYTE_ARRAY) {
-									%>
-									<%=firstConnName %>.<%=column.getLabel() %> = java.nio.charset.Charset.defaultCharset().decode(java.nio.ByteBuffer.wrap((byte[])valueObj_<%=cid%>)).toString().getBytes(utf8Charset);
-									<%
-								} else if(javaType == JavaTypesManager.STRING){
-									%>
-									<%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.toString();
-									<%
-								} else if(javaType == JavaTypesManager.INTEGER){
-									%>
-									if (valueObj_<%=cid%>.getClass().equals(Double.class)) {
-		                                <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_Double(valueObj_<%=cid%>.toString()).intValue();
-		                            } else {
-		                                <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_<%=typeToGenerate %>(valueObj_<%=cid%>.toString());
-		                            }
-									<%
-								} else if(javaType == JavaTypesManager.LONG){
-									%>
-									if (valueObj_<%=cid%>.getClass().equals(Double.class)) {
-		                                <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_Double(valueObj_<%=cid%>.toString()).longValue();
-		                            } else {
-		                                <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_<%=typeToGenerate %>(valueObj_<%=cid%>.toString());
-		                            }
-									<%
-								} else if(javaType == JavaTypesManager.SHORT){
-									%>
-									if (valueObj_<%=cid%>.getClass().equals(Double.class)) {
-		                                <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_Double(valueObj_<%=cid%>.toString()).shortValue();
-		                            } else {
-		                                <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_<%=typeToGenerate %>(valueObj_<%=cid%>.toString());
-		                            }
-									<%
-								} else {
-									%>
-									<%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_<%=typeToGenerate %>(valueObj_<%=cid%>.toString());
-									<%
-								}
-								%>
-							}
-							<%
-						}
+            for(<%=fileType%> file : gridfsFiles_<%=cid%>) {
+                nb_line_<%=cid %>++;
+                Object valueObj_<%=cid%>=null;
+                <%if(firstConnName.length() > 0) {
+                    columnList = metadata.getListColumns();
+                    int sizeColumns = columnList.size();
+                    for (int i = 0; i < sizeColumns; i++) {
+                        IMetadataColumn column = columnList.get(i);
+                        String typeToGenerate = JavaTypesManager.getTypeToGenerate(column.getTalendType(), column.isNullable());
+                        JavaType javaType = JavaTypesManager.getJavaTypeFromId(column.getTalendType());
+                        String patternValue = column.getPattern() == null || column.getPattern().trim().length() == 0 ? null : column.getPattern();
+                        if(version_3_5_X || version_4_4_X) {
+                            String columnName = column.getOriginalDbColumnName();
+                            if("_id".equalsIgnoreCase(columnName)) {%>
+                                valueObj_<%=cid%> = file.getObjectId();
+                                <%
+                            } else if ("filename".equalsIgnoreCase(columnName)) {%>
+                                valueObj_<%=cid%> = file.getFilename();
+                                <%
+                            } else if ("chunkSize".equalsIgnoreCase(columnName)) {%>
+                                valueObj_<%=cid%> = file.getChunkSize();
+                                <%
+                            } else if ("uploadDate".equalsIgnoreCase(columnName)) {%>
+                                valueObj_<%=cid%> = file.getUploadDate();
+                                <%
+                            } else if ("length".equalsIgnoreCase(columnName)) {%>
+                                valueObj_<%=cid%> = file.getLength();
+                                <%
+                            } else if ("contentType".equalsIgnoreCase(columnName)) {%>
+                                valueObj_<%=cid%> = file.getContentType();
+                                <%
+                            } else if (("md5".equalsIgnoreCase(columnName)) && version_3_5_X) {%>
+                                valueObj_<%=cid%> = file.getMD5();
+                                <%
+                            } else if ("Metadata".equalsIgnoreCase(columnName)) {%>
+                                valueObj_<%=cid%> = file.getMetadata();
+                                <%
+                            } else {%>
+                                valueObj_<%=cid%> = null;
+                                <%
+                            }
+                        } else {%>
+                            valueObj_<%=cid%> = file.get("<%=column.getOriginalDbColumnName()%>");
+                            <%
+                        }
 
+                        if(javaType == JavaTypesManager.OBJECT) {%>
+                            <%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>;
+                            <%
+                        } else {%>
+                            if(valueObj_<%=cid%>!=null && valueObj_<%=cid%>.toString().length() > 0) {
+                                <%if(javaType == JavaTypesManager.DATE) {%>
+                                    <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_Date((java.util.Date)valueObj_<%=cid%>, <%= patternValue %>);
+                                    <%
+                                } else if(javaType == JavaTypesManager.BYTE_ARRAY) {%>
+                                    <%=firstConnName %>.<%=column.getLabel() %> = java.nio.charset.Charset.defaultCharset().decode(java.nio.ByteBuffer.wrap((byte[])valueObj_<%=cid%>)).toString().getBytes(utf8Charset);
+                                    <%
+                                } else if(javaType == JavaTypesManager.STRING) {%>
+                                    <%=firstConnName %>.<%=column.getLabel() %> = valueObj_<%=cid%>.toString();
+                                    <%
+                                } else if(javaType == JavaTypesManager.INTEGER) {%>
+                                    if (valueObj_<%=cid%>.getClass().equals(Double.class)) {
+                                        <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_Double(valueObj_<%=cid%>.toString()).intValue();
+                                    } else {
+                                        <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_<%=typeToGenerate %>(valueObj_<%=cid%>.toString());
+                                    }
+                                    <%
+                                } else if(javaType == JavaTypesManager.LONG) {%>
+                                    if (valueObj_<%=cid%>.getClass().equals(Double.class)) {
+                                        <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_Double(valueObj_<%=cid%>.toString()).longValue();
+                                    } else {
+                                        <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_<%=typeToGenerate %>(valueObj_<%=cid%>.toString());
+                                    }
+                                    <%
+                                } else if(javaType == JavaTypesManager.SHORT) {%>
+                                    if (valueObj_<%=cid%>.getClass().equals(Double.class)) {
+                                        <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_Double(valueObj_<%=cid%>.toString()).shortValue();
+                                    } else {
+                                        <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_<%=typeToGenerate %>(valueObj_<%=cid%>.toString());
+                                    }
+                                    <%
+                                } else {%>
+                                    <%=firstConnName %>.<%=column.getLabel() %> = ParserUtils.parseTo_<%=typeToGenerate %>(valueObj_<%=cid%>.toString());
+                                    <%
+                                }%>
+                            }
+                            <%
+                        }
+                    }
+                }
 
-					}
-				}
-				%>
-
-<%
-		} // Close first { from GetMongoDBConnectionWithMainFlow.javajet
-	} // Close second { from GetMongoDBConnectionWithMainFlow.javajet
+        } // Close first { 
+    } // Close second { 
 %>

@@ -31,18 +31,16 @@ boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.ge
 	log4jFileUtil.retrievedDataNumberInfo(node);
 	if(!useExistingConn) {
 		if(!dbversion.equals("MONGODB_4_4_X")){ %>
-			} finally {
-				if(mongo_<%=cid%> != null) {
-					<%if(isLog4jEnabled) {%>
-						log.info("<%=cid%> - Closing the connection " + mongo_<%=cid%>.getServerAddressList() + ".");
-						<%
-					}%>
-					mongo_<%=cid%>.close();
-					<%if(isLog4jEnabled) {%>
-						log.info("<%=cid%> - The connection was closed successfully.");
-						<%
-					}%>
-				}
+			if(mongo_<%=cid%> != null) {
+				<%if(isLog4jEnabled) {%>
+					log.info("<%=cid%> - Closing the connection " + mongo_<%=cid%>.getServerAddressList() + ".");
+					<%
+				}%>
+				mongo_<%=cid%>.close();
+				<%if(isLog4jEnabled) {%>
+					log.info("<%=cid%> - The connection was closed successfully.");
+					<%
+				}%>
 			}
 			<%
 		} else {%>

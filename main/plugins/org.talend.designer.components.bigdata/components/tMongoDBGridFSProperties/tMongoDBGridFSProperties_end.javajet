@@ -34,18 +34,16 @@
             log4jFileUtil.retrievedDataNumberInfo(node);
             if(!useExistingConn){
                 if(!"MONGODB_4_4_X".equalsIgnoreCase(dbversion)) {%>
-                    }finally{
-                        if(mongo_<%=cid%> != null ) {
-                            <%if(isLog4jEnabled) {%>
-                                log.info("<%=cid%> - Closing the connection " + mongo_<%=cid%>.getServerAddressList() + ".");
-                                <%
-                            }%>
-                            mongo_<%=cid%>.close();
-                            <%if(isLog4jEnabled) {%>
-                                log.info("<%=cid%> - The connection was closed successfully.");
-                                <%
-                            }%>
-                        }
+                    if(mongo_<%=cid%> != null ) {
+                        <%if(isLog4jEnabled) {%>
+                            log.info("<%=cid%> - Closing the connection " + mongo_<%=cid%>.getServerAddressList() + ".");
+                            <%
+                        }%>
+                        mongo_<%=cid%>.close();
+                        <%if(isLog4jEnabled) {%>
+                            log.info("<%=cid%> - The connection was closed successfully.");
+                            <%
+                        }%>
                     }
                     <%
                 } else {%>
