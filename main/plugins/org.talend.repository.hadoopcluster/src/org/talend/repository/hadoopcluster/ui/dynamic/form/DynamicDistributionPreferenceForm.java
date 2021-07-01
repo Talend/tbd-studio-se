@@ -666,7 +666,7 @@ public class DynamicDistributionPreferenceForm extends AbstractDynamicDistributi
                             String distribution = pluginConfiguration.getDistribution();
                             IDynamicDistributionsGroup dynamicDistributionGroup = DynamicDistributionManager.getInstance()
                                     .getDynamicDistributionGroup(distribution);
-                            dynamicDistributionGroup.unregister(dynamicPlugin, monitor);
+                            dynamicDistributionGroup.unregister(dynamicPlugin, monitor, false);
 
                             monitor.setTaskName(Messages.getString("DynamicDistributionPreferenceForm.delete.progress.deleteFile", //$NON-NLS-1$
                                     pluginConfiguration.getName()));

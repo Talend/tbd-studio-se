@@ -44,10 +44,10 @@ public interface IDynamicDistribution {
 
     public void register(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception;
 
-    public void unregister(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception;
+    public void unregister(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor, boolean reloadLibCache) throws Exception;
 
     public void registerAllBuiltin(IDynamicMonitor monitor) throws Exception;
 
-    public void unregisterAllBuiltin(IDynamicMonitor monitor) throws Exception;
+    public void unregisterAllBuiltin(IDynamicMonitor monitor, boolean reloadLibCache) throws Exception;
 
 }

@@ -38,8 +38,10 @@ import org.talend.hadoop.distribution.DistributionFactory;
 import org.talend.hadoop.distribution.component.HadoopComponent;
 import org.talend.hadoop.distribution.constants.Constant;
 import org.talend.hadoop.distribution.dynamic.DynamicDistributionManager;
+import org.talend.hadoop.distribution.dynamic.template.AbstractDynamicDistributionTemplate;
 import org.talend.hadoop.distribution.model.DistributionBean;
 import org.talend.hadoop.distribution.model.DistributionVersion;
+import org.talend.hadoop.distribution.model.DynamicDistributionVersion;
 
 public final class DistributionsManager implements IDistributionsManager {
 
@@ -230,9 +232,15 @@ public final class DistributionsManager implements IDistributionsManager {
             }
             clearCache();
 
+            DistributionVersion versionBean = null;
             final String version = hc.getVersion();
-            // if (version!=null){ //sometimes, will be null, like Custom. but still need add the null version.
-            DistributionVersion versionBean = new DistributionVersion(hc, distributionBean, version, hc.getVersionName(type));
+            if (hc instanceof AbstractDynamicDistributionTemplate) {
+                AbstractDynamicDistributionTemplate dynamicDistribution = (AbstractDynamicDistributionTemplate) hc;
+                versionBean = new DynamicDistributionVersion(dynamicDistribution, distributionBean, type, version,
+                        hc.getVersionName(type));
+            } else {
+                versionBean = new DistributionVersion(hc, distributionBean, version, hc.getVersionName(type));
+            }
             versionBean.addModuleGroups(hc.getModuleGroups(type));
             // special condition for current version
             versionBean.displayCondition = hc.getDisplayCondition(type);
@@ -267,9 +275,15 @@ public final class DistributionsManager implements IDistributionsManager {
         clearCache();
 
         final String version = hc.getVersion();
-        // if (version!=null){ //sometimes, will be null, like Custom. but still need add the null version.
-        DistributionVersion versionBean = new DistributionVersion(hc, distributionBean, version, hc.getVersionName(type));
-        versionBean.addModuleGroups(hc.getModuleGroups(type));
+        DistributionVersion versionBean = null;
+        if (hc instanceof AbstractDynamicDistributionTemplate) {
+            AbstractDynamicDistributionTemplate dynamicDistribution = (AbstractDynamicDistributionTemplate) hc;
+            versionBean = new DynamicDistributionVersion(dynamicDistribution, distributionBean, type, version,
+                    hc.getVersionName(type));
+        } else {
+            versionBean = new DistributionVersion(hc, distributionBean, version, hc.getVersionName(type));
+        }
+
         // special condition for current version
         versionBean.displayCondition = hc.getDisplayCondition(type);
         distributionBean.removeVersion(versionBean);
