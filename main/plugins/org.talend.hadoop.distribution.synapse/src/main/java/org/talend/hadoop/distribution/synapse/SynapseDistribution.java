@@ -209,11 +209,6 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
     }
 
     @Override
-    public boolean doSupportAzureBlobStorage() {
-        return true;
-    }
-
-    @Override
     public boolean useOldAWSAPI() {
         return false;
     }
@@ -233,4 +228,8 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
         return true;
     }
    
+    @Override
+    public boolean doSupportAzureDataLakeStorageGen2() {
+        return true;
+    }
 }
