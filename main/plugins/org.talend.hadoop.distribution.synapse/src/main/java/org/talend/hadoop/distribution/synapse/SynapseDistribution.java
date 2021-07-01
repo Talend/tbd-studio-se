@@ -227,5 +227,10 @@ public class SynapseDistribution extends AbstractDistribution implements ISynaps
     public boolean doSupportLightWeight() {
         return false;
     }
+    
+    @Override
+    public boolean isCloudDistribution() {
+        return true;
+    }
    
 }
