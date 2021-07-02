@@ -182,4 +182,20 @@ public class HCVersionUtil {
         }
         return false;
     }
+    
+    public static boolean isClouderaCDP(HadoopClusterConnection connection) {
+        if (connection != null) {
+            HadoopComponent hadoopComponent;
+            try {
+                hadoopComponent = HadoopDistributionsHelper.buildDistribution(connection.getDistribution(),
+                        connection.getDfVersion());
+                if (hadoopComponent != null && hadoopComponent.isExecutedThroughKnox()) {
+                    return true;
+                }
+            } catch (Exception e) {
+                ExceptionHandler.process(e);
+            }
+        }
+        return false;
+    }
 }

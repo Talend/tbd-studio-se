@@ -105,7 +105,17 @@ public class HadoopServiceProperties {
     private String webHDFSSSLTrustStorePassword;
 
     private String webHDFSSSLTrustStorePath;
+    
+    private String knoxURL;
+    
+    private String knoxUser;
 
+    private String knoxPassword;
+    
+    private String knoxGatewayPath;
+    
+
+    
     public ConnectionItem getItem() {
         return this.item;
     }
@@ -428,6 +438,45 @@ public class HadoopServiceProperties {
 
     public void setWebHDFSSSLTrustStorePath(String webHDFSSSLTrustStorePath) {
         this.webHDFSSSLTrustStorePath = webHDFSSSLTrustStorePath;
+    }
+    
+    
+    public String getKnoxURL() {
+        return knoxURL;
+    }
+
+    
+    public void setKnoxURL(String knoxURL) {
+        this.knoxURL = knoxURL;
+    }
+
+    
+    public String getKnoxUser() {
+        return knoxUser;
+    }
+
+    
+    public void setKnoxUser(String knoxUser) {
+        this.knoxUser = knoxUser;
+    }
+
+    
+    public String getKnoxPassword() {
+        return knoxPassword;
+    }
+
+    
+    public void setKnoxPassword(String knoxPassword) {
+        this.knoxPassword = knoxPassword;
+    }
+    
+    public String getKnoxGatewayPath() {
+        return knoxGatewayPath;
+    }
+
+    
+    public void setKnoxGatewayPath(String knoxGatewayPath) {
+        this.knoxGatewayPath = knoxGatewayPath;
     }
 
 }
