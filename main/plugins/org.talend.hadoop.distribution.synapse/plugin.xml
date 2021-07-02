@@ -452,6 +452,10 @@
         
         <!-- Bigdata launcher group -->
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="talend-bigdata-launcher-core-2.1.2.jar" name="talend-bigdata-launcher-core-2.1.2.jar" 
+          mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.1.2"/>
+        
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
           id="talend-bigdata-launcher-synapse-2.1.2.jar" name="talend-bigdata-launcher-synapse-2.1.2.jar" 
           mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-synapse/2.1.2"/>
           
@@ -553,33 +557,7 @@
             <library id="hadoop-azure-datalake-3.2.1.jar"/>
             <library id="azure-data-lake-store-sdk-2.2.9.jar"/>
         </libraryNeededGroup>
-
-        <!-- HiveOnSpark group -->
-        <libraryNeededGroup description="Hive On SPARK libraries for synapse" id="HIVE-GROUP-SYNAPSE" name="HIVE-GROUP-SYNAPSE">
-            <library id="spark-hive_2.12-3.0.1.jar"/>
-            <library id="hive-common-2.3.7.jar"/>
-            <library id="hive-exec-2.3.7.jar"/>
-            <library id="hive-llap-common-2.3.7.jar"/>
-            <library id="hive-metastore-2.3.7.jar"/>
-            <library id="hive-serde-2.3.7.jar"/>
-            <library id="hive-shims-0.23-2.3.7.jar"/>
-            <library id="hive-shims-common-2.3.7.jar"/>
-            <library id="hive-storage-api-2.7.1.jar"/>
-            <library id="ivy-2.4.0.jar"/>
-            <library id="joda-time-2.10.5.jar"/>
-            <library id="libfb303-0.9.3.jar"/>
-            <library id="libthrift-0.12.0.jar"/>
-            <library id="oro-2.0.8.jar"/>
-            <library id="orc-core-1.5.10.jar"/>
-            <library id="orc-mapreduce-1.5.10.jar"/>
-            <library id="orc-shims-1.5.10.jar"/>
-            <library id="aircompressor-0.10.jar"/>
-            <library id="jul-to-slf4j-1.7.16.jar"/>
-            <library id="parquet-encoding-1.10.1.jar"/>
-            <library id="parquet-format-2.4.0.jar"/>
-            <library id="parquet-hadoop-1.10.1.jar"/>
-        </libraryNeededGroup>
-
+      
         <!-- DeltaLake group -->
         <libraryNeededGroup description="DeltaLake libraries for synapse" id="DELTALAKE-GROUP-SYNAPSE" name="DELTALAKE-GROUP-SYNAPSE">
             <library id="delta-core_2.12-0.7.0.jar"/>
@@ -610,6 +588,14 @@
             <library id="py4j-0.10.9.1.jar"/>
         </libraryNeededGroup>
         
+         <!-- Bigdata launcher group -->
+        <libraryNeededGroup description="Bigdata launcher libraries for synapse" id="BIGDATA-LAUNCHER-LIB-SYNAPSE" name="BIGDATA-LAUNCHER-LIB-SYNAPSE">
+        	<library id="talend-bigdata-launcher-core-2.1.2.jar"/>
+            <library id="talend-bigdata-launcher-synapse-2.1.2"/>            
+            <library id="talend-bigdata-launcher-jobserver-2.0.11"/>
+            <library id="logback-classic-1.2.3"/>
+            <library id="commons-logging-1.2"/>
+        </libraryNeededGroup>
      </extension>
      
    <extension
