@@ -27,10 +27,10 @@ public class CDPDependencyResolver extends AbstractDependencyResolver implements
 
     @Override
     protected synchronized List<Pattern> getDistributionPatterns() {
-    	 if (cdpDistributionPatterns.isEmpty()) {
-             cdpDistributionPatterns.add(Pattern.compile("^(?:\\d+\\.\\d+\\.\\d+\\.)((?:\\d+\\.){3}\\d+-\\d+)$"));
-         }
-         return cdpDistributionPatterns;
+        if (cdpDistributionPatterns.isEmpty()) {
+            cdpDistributionPatterns.add(Pattern.compile("^(?:\\d+\\.\\d+\\.\\d+\\.)(((?:\\d+\\.){3})\\d+-\\d+)$")); //$NON-NLS-1$
+        }
+        return cdpDistributionPatterns;
     }
 
     @Override
