@@ -30,14 +30,14 @@ public class HadoopDistributionsHelperTest {
     public void testGetHadoopDistributionsDisplay_Sorted() {
         String[] hadoopDistributionsDisplay = HadoopDistributionsHelper.HADOOP.getDistributionsDisplay(false);
         Assert.assertArrayEquals(new String[] { "Amazon EMR", "Cloudera", "Databricks", "Google Cloud Dataproc",
-                "HortonWorks", "MapR", "Microsoft HD Insight", "Qubole"}, hadoopDistributionsDisplay);
+                "MapR", "Microsoft HD Insight", "Qubole"}, hadoopDistributionsDisplay);
     }
 
     @Test
     public void testGetHadoopDistributionsDisplay_withCustom__Sorted() {
         String[] hadoopDistributionsDisplay = HadoopDistributionsHelper.HADOOP.getDistributionsDisplay(true);
         Assert.assertArrayEquals(new String[] { "Amazon EMR", "Cloudera", "Databricks", "Google Cloud Dataproc",
-                "HortonWorks", "MapR", "Microsoft HD Insight", "Qubole", "Custom - Unsupported" },
+                "MapR", "Microsoft HD Insight", "Qubole", "Custom - Unsupported" },
                 hadoopDistributionsDisplay);
     }
 
@@ -81,13 +81,6 @@ public class HadoopDistributionsHelperTest {
                 //{ "Cloudera_CDH5_6", "Cloudera CDH5.6(YARN mode)", "HADOOP_2" },
                 //{ "Cloudera_CDH5_5", "Cloudera CDH5.5(YARN mode)", "HADOOP_2" }
         });
-    }
-
-    @Test
-    public void testHortonWorksDistribution() {
-        testDistributionOnly("HORTONWORKS", "HortonWorks", new String[][] {
-                { "HDP_2_6", "Hortonworks Data Platform V2.6.0 (Deprecated)", "HADOOP_2" },
-                { "HDP_2_5", "Hortonworks Data Platform V2.5.0 (Deprecated)", "HADOOP_2" }});
     }
 
     @Test
