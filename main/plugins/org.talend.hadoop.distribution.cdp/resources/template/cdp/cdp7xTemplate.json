@@ -428,6 +428,22 @@
             ]
         },
         {
+            "id": "hive-warehouse-connector",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId": "com.hortonworks.hive",
+            "artifactId": "hive-warehouse-connector_2.11",
+            "classifier": "",
+            "description": "",
+            "exclusions": [ 
+                { "groupId" : "commons-lang", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
+                { "groupId" : "io.netty", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
+                { "groupId" : "jdk.tools", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" },
+                { "groupId" : "org.apache.curator", "artifactId" : "apache-curator", "classifier" : "", "extension" : "", "description" : "" },
+                { "groupId" : "org.apache.logging.log4j", "artifactId" : "*", "classifier" : "", "extension" : "", "description" : "" }
+            ]
+        },
+        {
             "id" : "httpclient-4.5.3",
             "type" : "STANDARD",
             "context" : "{properties.context}",
@@ -809,7 +825,8 @@
             "modules": [
                 "hive-exec",
                 "impala-jdbc",
-                "hive-jdbc"
+                "hive-jdbc",
+                "hive-warehouse-connector"
             ]
         },
         {
@@ -865,6 +882,7 @@
                 "hbase-server",
                 "hive-exec",
                 "hive-jdbc",
+                "hive-warehouse-connector",
                 "kafka-clients",                
                 "kudu-spark2_2.11",
                 "parquet-hadoop-bundle",

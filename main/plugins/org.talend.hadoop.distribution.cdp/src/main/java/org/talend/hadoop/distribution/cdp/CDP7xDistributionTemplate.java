@@ -47,17 +47,22 @@ public class CDP7xDistributionTemplate extends AbstractDynamicCDPDistributionTem
 			+ DEFAULT_LIB_ROOT + "/hive/lib/*" + SEPARATOR
 			+ DEFAULT_LIB_ROOT + "/impala/lib/*" + SEPARATOR
 			+ DEFAULT_LIB_ROOT + "/hbase/lib/*" + SEPARATOR
-			+ DEFAULT_LIB_ROOT + "/sqoop/lib/*" + SEPARATOR
-			+ DEFAULT_LIB_ROOT + "/kudu/*" + SEPARATOR
-			+ DEFAULT_LIB_ROOT + "/hadoop-mapreduce/*" + SEPARATOR
-			+ DEFAULT_LIB_ROOT + "/hadoop-yarn/*" + SEPARATOR
-			+ DEFAULT_LIB_ROOT + "/hadoop-yarn/lib/*" + SEPARATOR
-			+ DEFAULT_LIB_ROOT + "/avro/*" + SEPARATOR
+			+ DEFAULT_LIB_ROOT + "/sqoop/lib/*" + SEPARATOR 
+			+ DEFAULT_LIB_ROOT + "/kudu/*" + SEPARATOR 
+			+ DEFAULT_LIB_ROOT + "/hadoop-mapreduce/*" + SEPARATOR 
+			+ DEFAULT_LIB_ROOT + "/hadoop-yarn/*" + SEPARATOR 
+			+ DEFAULT_LIB_ROOT + "/hadoop-yarn/lib/*" + SEPARATOR 
+			+ DEFAULT_LIB_ROOT + "/avro/*" + SEPARATOR 
+			+ DEFAULT_LIB_ROOT + "/hive_warehouse_connector/*" + SEPARATOR 
 			+ DEFAULT_LIB_ROOT + "/hadoop/lib/*";
 
 	public CDP7xDistributionTemplate(DynamicPluginAdapter pluginAdapter) throws Exception {
 		super(pluginAdapter);
 	}
+	@Override
+    public boolean isCDPDistribution() {
+        return true;
+    }
 	@Override
 	public boolean doSupportImpalaConnector() {
 
