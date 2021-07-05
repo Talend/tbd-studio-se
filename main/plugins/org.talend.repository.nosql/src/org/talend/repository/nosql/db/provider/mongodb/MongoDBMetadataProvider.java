@@ -115,6 +115,7 @@ public class MongoDBMetadataProvider extends AbstractMetadataProvider {
                 }
             }
             Object dbCursor = NoSQLReflection.invokeMethod(dbCollection, "find"); //$NON-NLS-1$
+            String documentClassName = "com.mongodb.BasicDBObject"; //$NON-NLS-1$
             int rowNum = 0;
             while ((Boolean) NoSQLReflection.invokeMethod(dbCursor, "hasNext")) { //$NON-NLS-1$
                 if (rowNum > COUNT_ROWS) {
@@ -132,9 +133,12 @@ public class MongoDBMetadataProvider extends AbstractMetadataProvider {
                     column.setLabel(colName);
                     Object value = NoSQLReflection.invokeMethod(dbObject, "get", new Object[] { colName }); //$NON-NLS-1$
                     JavaType javaType = null;
-                    if (value != null) {
+                    if (!documentClassName.equals(value.getClass().getName())) {
                         javaType = JavaTypesManager.getJavaTypeFromName(value.getClass().getSimpleName());
+                    }else {
+                        javaType = JavaTypesManager.OBJECT;
                     }
+                    
                     if (javaType == null) {
                         javaType = JavaTypesManager.STRING;
                     }
@@ -203,6 +207,8 @@ public class MongoDBMetadataProvider extends AbstractMetadataProvider {
                     if (value != null) {
                         if (!documentClassName.equals(value.getClass().getName())) {
                             javaType = JavaTypesManager.getJavaTypeFromName(value.getClass().getSimpleName());
+                        }else {
+                            javaType = JavaTypesManager.OBJECT;
                         }
                     }
                     if (javaType == null) {
