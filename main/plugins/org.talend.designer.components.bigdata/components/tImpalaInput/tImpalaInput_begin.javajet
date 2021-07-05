@@ -295,7 +295,7 @@
 							}
 						} else {
 %>
-							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + kerberosPart_<%=cid%>;
+							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + ";principal=" + <%=impalaPrincipal%>;
 <%
 						}
 					// END IF06
