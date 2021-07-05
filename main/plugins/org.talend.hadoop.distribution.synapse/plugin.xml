@@ -481,8 +481,7 @@
         
         <!-- Spark group -->
         <libraryNeededGroup description="SPARK libraries for synapse" id="SPARK-BATCH-GROUP-SYNAPSE" name="SPARK-BATCH-GROUP-SYNAPSE">
-        	<group id="AZURE-GROUP-SYNAPSE"/>
-            <library id="antlr4-runtime-4.7.1.jar"/>
+        	<library id="antlr4-runtime-4.7.1.jar"/>
             <library id="avro-1.8.2.jar"/>
             <library id="breeze_2.12-1.0.jar"/>
             <library id="chill_2.12-0.9.5.jar"/>
