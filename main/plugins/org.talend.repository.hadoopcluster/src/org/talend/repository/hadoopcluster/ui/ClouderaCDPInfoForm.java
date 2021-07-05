@@ -12,6 +12,7 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.talend.commons.ui.swt.formtools.Form;
@@ -38,8 +39,6 @@ public class ClouderaCDPInfoForm extends AbstractHadoopClusterInfoForm<HadoopClu
     private LabelledText knoxUserText;
     private LabelledText knoxPasswordText;
     private LabelledText knoxGatewayPathText;
-//    private LabelledText pollInterval;
-//    private LabelledText maxStatusMissed;
 
     private UtilsButton checkServicesBtn;
     
@@ -62,6 +61,7 @@ public class ClouderaCDPInfoForm extends AbstractHadoopClusterInfoForm<HadoopClu
     private void addConfigurationFields() {
         Group configGroup = Form.createGroup(this, 2, Messages.getString("ClouderaCDPInfoForm.text.configuration"), 110); //$NON-NLS-1$
         configGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        
         knoxURLText = new LabelledText(configGroup, Messages.getString("ClouderaCDPInfoForm.text.knoxURL"), 1); //$NON-NLS-1$ $NON-NLS-2$
         knoxUserText = new LabelledText(configGroup, Messages.getString("ClouderaCDPInfoForm.text.knoxUser"), 1); //$NON-NLS-1$
 
@@ -69,10 +69,6 @@ public class ClouderaCDPInfoForm extends AbstractHadoopClusterInfoForm<HadoopClu
                 SWT.PASSWORD | SWT.BORDER | SWT.SINGLE);
 
         knoxGatewayPathText = new LabelledText(configGroup, Messages.getString("ClouderaCDPInfoForm.text.knoxGatewayPath"), 1); //$NON-NLS-1$
-
-//        pollInterval = new LabelledText(configGroup, Messages.getString("ClouderaCDPInfoForm.text.pollInterval"), 1); //$NON-NLS-1$
-//        
-//        maxStatusMissed = new LabelledText(configGroup, Messages.getString("ClouderaCDPInfoForm.text.maxStatusMissed"), 1); //$NON-NLS-1$
     }
     
     private void addCheckFields() {
@@ -150,16 +146,6 @@ public class ClouderaCDPInfoForm extends AbstractHadoopClusterInfoForm<HadoopClu
             return false;
         }
         
-//        if (!validText(pollInterval.getText())) {
-//            updateStatus(IStatus.ERROR, Messages.getString("ClouderaCDPInfoForm.check.configuration.pollInterval")); //$NON-NLS-1$
-//            return false;
-//        }
-//        
-//        if (!validText(maxStatusMissed.getText())) {
-//            updateStatus(IStatus.ERROR, Messages.getString("ClouderaCDPInfoForm.check.configuration.maxStatusMissed")); //$NON-NLS-1$
-//            return false;
-//        }
-       
         checkServicesBtn.setEnabled(true);
         updateStatus(IStatus.OK, null);
         return true;
@@ -167,6 +153,7 @@ public class ClouderaCDPInfoForm extends AbstractHadoopClusterInfoForm<HadoopClu
     
     @Override
     protected void addFieldsListeners() {
+        
         knoxURLText.addModifyListener(new ModifyListener() {
 
             @Override
@@ -203,24 +190,6 @@ public class ClouderaCDPInfoForm extends AbstractHadoopClusterInfoForm<HadoopClu
                 checkFieldsValue();
             }
         });
-//        pollInterval.addModifyListener(new ModifyListener() {
-//
-//            @Override
-//            public void modifyText(final ModifyEvent e) {
-//                getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_GOOGLE_JARS_BUCKET,
-//                        pollInterval.getText());
-//                checkFieldsValue();
-//            }
-//        });
-//        maxStatusMissed.addModifyListener(new ModifyListener() {
-//
-//            @Override
-//            public void modifyText(final ModifyEvent e) {
-//                getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_PATH_TO_GOOGLE_CREDENTIALS,
-//                        maxStatusMissed.getText());
-//                checkFieldsValue();
-//            }
-//        });
     }
 
     @Override
@@ -244,6 +213,10 @@ public class ClouderaCDPInfoForm extends AbstractHadoopClusterInfoForm<HadoopClu
         if (isContextMode()) {
             adaptFormToEditable();
         }
+        
+
+        getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_SPARK_MODE,"YARN_CLUSTER");
+        getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_SPARK_MODE,Boolean.TRUE.toString());
         
         String knoxURL = StringUtils.trimToEmpty(getConnection().getParameters().get(
                 ConnParameterKeys.CONN_PARA_KEY_KNOX_URL));
