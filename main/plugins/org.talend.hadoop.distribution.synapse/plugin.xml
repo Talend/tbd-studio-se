@@ -544,6 +544,7 @@
             <library id="univocity-parsers-2.9.1.jar"/>
             <library id="woodstox-core-5.0.3.jar"/>
             <library id="xbean-asm7-shaded-4.15.jar"/>
+            <group id="AZURE-GROUP-SYNAPSE"/>
         </libraryNeededGroup>
 
         <!-- Parquet group -->
