@@ -12,15 +12,15 @@
 // ============================================================================
 package org.talend.hadoop.distribution.hdpx;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.osgi.framework.Bundle;
 import org.talend.core.runtime.dynamic.IDynamicPluginConfiguration;
 import org.talend.designer.maven.aether.IDynamicMonitor;
 import org.talend.hadoop.distribution.dynamic.adapter.DynamicPluginAdapter;
 import org.talend.hadoop.distribution.dynamic.hdp.AbstractDynamicHDPDistribution;
 import org.talend.hadoop.distribution.dynamic.template.IDynamicDistributionTemplate;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class DynamicHDPDistribution extends AbstractDynamicHDPDistribution {
 
@@ -51,7 +51,7 @@ public class DynamicHDPDistribution extends AbstractDynamicHDPDistribution {
     public List<String> getSupportedTemplateIds(IDynamicMonitor monitor) throws Exception {
         List<String> templateIds = new ArrayList<>();
 
-        templateIds.add(HDP2xxDistributionTemplate.TEMPLATE_ID);
+        // templateIds.add(HDP2xxDistributionTemplate.TEMPLATE_ID);
         templateIds.add(HDP3xxDistributionTemplate.TEMPLATE_ID);
 
         return templateIds;
