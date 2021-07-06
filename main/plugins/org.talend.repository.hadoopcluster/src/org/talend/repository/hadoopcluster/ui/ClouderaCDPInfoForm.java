@@ -214,9 +214,8 @@ public class ClouderaCDPInfoForm extends AbstractHadoopClusterInfoForm<HadoopClu
             adaptFormToEditable();
         }
         
-
         getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_SPARK_MODE,"YARN_CLUSTER");
-        getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_SPARK_MODE,Boolean.TRUE.toString());
+        getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_USE_KNOX,Boolean.TRUE.toString());
         
         String knoxURL = StringUtils.trimToEmpty(getConnection().getParameters().get(
                 ConnParameterKeys.CONN_PARA_KEY_KNOX_URL));
