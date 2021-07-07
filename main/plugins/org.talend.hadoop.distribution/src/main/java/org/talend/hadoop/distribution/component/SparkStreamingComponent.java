@@ -22,13 +22,6 @@ import org.talend.hadoop.distribution.kafka.SparkStreamingKafkaVersion;
 public interface SparkStreamingComponent extends SparkComponent {
 
     /**
-     * This method defines if a distribution supports the checkpointing in Spark Streaming
-     *
-     * @return true if the distribution supports the checkpointing
-     */
-    public boolean doSupportCheckpointing();
-
-    /**
      * This method defines if a distribution supports the backpressure feature in Spark Streaming
      *
      * @return true if the distribution supports the backpressure feature
