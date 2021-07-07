@@ -34,6 +34,10 @@
     boolean useReplicaSet="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_REPLICA_SET__"));
     boolean removeRoot="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REMOVE_ROOT__"));
     boolean useSSL = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_SSL__"));
+
+    // declare read preferences and write concerns for unified connection template
+    boolean setReadPreference = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_READ_PREFERENCE__"));
+    String readPreference = ElementParameterParser.getValue(node, "__READ_PREFERENCE__");
     boolean setWriteConcern = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_WRITE_CONCERN__"));
     String writeConcern = ElementParameterParser.getValue(node, "__WRITE_CONCERN__");
 
@@ -56,11 +60,14 @@
         dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
         queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
     }
+    boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
     boolean version_4_4_X = "MONGODB_4_4_X".equals(dbversion);
     String objectType = (version_4_4_X) ? "org.bson.Document" : "com.mongodb.DBObject";
 
     boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
 	%>
+
+    <%@ include file="../templates/CosmosDB/ApplicationName.javajet"%>
 
 	int nb_line_<%=cid %> = 0;
 	<%
@@ -69,14 +76,14 @@
         IMetadataTable metadata = metadatas.get(0);
         if(metadata != null) {%>
 
-		<%if(version_4_4_X) {%>
-			<%@ include file="./tCosmosDBWriteConf_begin_4_4_X.javajet"%>
-			<%
-		} else {%>
-			<%@ include file="./tCosmosDBWriteConf_begin_below_4_4_X.javajet"%>
+			<%if(version_4_4_X) {%>
+				<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GridFS/GetMongoDBConnection_4_4_X.javajet"%>
 				<%
-		}%>
-		
+			} else {%>
+				<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GridFS/GetMongoDBConnection_below_4_4_X.javajet"%>
+				<%
+			}%>
+
 		resourceMap.put("mongo_<%=cid%>", mongo_<%=cid%>);
 
 		<%if(isLog4jEnabled) {

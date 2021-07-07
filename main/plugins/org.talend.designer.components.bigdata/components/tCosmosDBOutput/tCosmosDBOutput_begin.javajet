@@ -33,6 +33,10 @@
     boolean useReplicaSet="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_REPLICA_SET__"));
     List<Map<String,String>> replicaAddrs= (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__REPLICA_SET__");
     boolean useSSL = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_SSL__"));
+
+    // declare read preferences and write concerns for unified connection template
+    boolean setReadPreference = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_READ_PREFERENCE__"));
+    String readPreference = ElementParameterParser.getValue(node, "__READ_PREFERENCE__");
     boolean setWriteConcern = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_WRITE_CONCERN__"));
     String writeConcern = ElementParameterParser.getValue(node, "__WRITE_CONCERN__");
 
@@ -42,7 +46,8 @@
     boolean useAuthDB = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_AUTHENTICATION_DATABASE__"));
     String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
     String usedAuthenticationDB = useAuthDB ? authDB : dbname;
-    boolean queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
+
+    boolean queryOptionNoTimeOut;
     String dbversion;
     if(useExistingConnection){
         String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
@@ -53,11 +58,62 @@
         dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
         queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__QUERYOPTION_NOTIMEOUT__"));
     }
+    // db versions
+    boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
+    boolean version_4_4_X = "MONGODB_4_4_X".equals(dbversion);
     boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
 	%>
 
-    <%if("MONGODB_4_4_X".equals(dbversion)) {%>
-        <%@ include file="./tCosmosDBOutput_begin_4_4_X.javajet"%>
-    <%} else {%>
-        <%@ include file="./tCosmosDBOutput_begin_below_4_4_X.javajet"%>
-    <%}%>
+    <%if(isLog4jEnabled){%>
+        java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.OFF);
+        <%
+    } else {%>
+        java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.SEVERE);
+        <%
+    }%>
+
+    <%@ include file="../templates/CosmosDB/ApplicationName.javajet"%>
+
+    int nb_line_<%=cid %> = 0;
+    <%
+    List<IMetadataTable> metadatas = node.getMetadataList();
+    if(metadatas != null && metadatas.size() > 0) {
+        IMetadataTable metadata = metadatas.get(0);
+        if(metadata != null) {%>
+
+            <%if(version_4_4_X) {%>
+                <%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/DBObjectUtil_3_5_X.javajet"%>
+                <%
+            } else {%>
+                <%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/DBObjectUtil_below_3_5_X.javajet"%>
+                <%
+            }%>
+            DBObjectUtil_<%=cid%> updateObjectUtil_<%=cid%>=new DBObjectUtil_<%=cid%>();
+            DBObjectUtil_<%=cid%> queryObjectUtil_<%=cid%>=new DBObjectUtil_<%=cid%>();
+            java.util.Map<String, String> pathMap_<%=cid%>=new java.util.HashMap<>();
+
+            <%for (int i = 0; i < mapping.size(); i++) {
+                String path = mapping.get(i).get("PARENT_NODE_PATH");
+                if(path == null || "".equals(path)) {
+                    path="\"\"";
+                }
+                String schemaColumn=mapping.get(i).get("SCHEMA_COLUMN");
+                %>
+                pathMap_<%=cid%>.put("<%=schemaColumn%>",<%=path%>);
+                <%
+            }%>
+
+            <%if(version_4_4_X) {%>
+                <%@ include file="./tCosmosDBOutput_begin_4_4_X.javajet"%>
+                <%
+            } else {%>
+                <%@ include file="./tCosmosDBOutput_begin_below_4_4_X.javajet"%>
+                <%
+            }%>
+
+            <%if (isLog4jEnabled) {%>
+                log.info("<%=cid%> - Start to write data into database [" + db_<%=cid%>.getName() + "].");
+                <%
+            }
+        }
+    }%>

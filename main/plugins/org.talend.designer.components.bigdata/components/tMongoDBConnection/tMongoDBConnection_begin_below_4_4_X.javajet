@@ -12,6 +12,8 @@
     " 
 %>
 
+    <%@ include file="../templates/MongoDB/ApplicationName.javajet"%>
+
     <%
     String mongoDbDriver = "com.mongodb.MongoClient";
     List<String> intAttributes = Arrays.asList(
@@ -37,7 +39,7 @@
     
     // Client options
     %>
-    com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder()
+    com.mongodb.MongoClientOptions clientOptions_<%=cid%> = new com.mongodb.MongoClientOptions.Builder().applicationName(applicationName_<%=cid %>)
 <%
     if(applyOptionalAttributes){
         for(String key : optionalConnectionAttributesMap.keySet()){
@@ -219,7 +221,7 @@
         log.info("<%=cid%> - Connecting to " + mongo_<%=cid%>.getServerAddressList() + ".");
     <%
     }
-    if(queryOptionNoTimeOut&&!version_3_5_X){
+    if(queryOptionNoTimeOut){
         %>
             mongo_<%=cid%>.addOption(com.mongodb.Bytes.QUERYOPTION_NOTIMEOUT);
         <%
