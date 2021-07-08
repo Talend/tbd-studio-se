@@ -10020,6 +10020,24 @@
       "name" : "gateway-shell-1.3.0.jar",
       "tagName" : "libraryNeeded",
       "useStudioRepository" : "true"
+    },  {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdp",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_i18n_jar",
+      "mvn_uri" : "mvn:org.apache.knox/gateway-i18n/1.3.0/jar",
+      "name" : "gateway-i18n-1.3.0.jar",
+      "tagName" : "libraryNeeded",
+      "useStudioRepository" : "true"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdp",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_cloud_bindings_jar",
+      "mvn_uri" : "mvn:org.apache.knox/gateway-cloud-bindings/1.3.0.7.2.10.0-148/jar",
+      "name" : "gateway-cloud-bindings-1.3.0.7.2.10.0-148.jar",
+      "tagName" : "libraryNeeded",
+      "useStudioRepository" : "true"
     }, {
       "childNodes" : [ ],
       "context" : "plugin:org.talend.hadoop.distribution.cdp",
@@ -10027,15 +10045,6 @@
       "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_fluent_hc_4_5_13_jar",
       "mvn_uri" : "mvn:org.apache.httpcomponents/fluent-hc/4.5.13/jar",
       "name" : "fluent-hc-4.5.13.jar",
-      "tagName" : "libraryNeeded",
-      "useStudioRepository" : "true"
-    }, {
-      "childNodes" : [ ],
-      "context" : "plugin:org.talend.hadoop.distribution.cdp",
-      "excludeDependencies" : "true",
-      "id" : "DYNAMIC_Cloudera_CDP7_1_1_0_565_gateway_i18n_jar",
-      "mvn_uri" : "mvn:org.apache.knox/gateway-i18n/1.3.0/jar",
-      "name" : "gateway-i18n-1.3.0.jar",
       "tagName" : "libraryNeeded",
       "useStudioRepository" : "true"
     }, {
