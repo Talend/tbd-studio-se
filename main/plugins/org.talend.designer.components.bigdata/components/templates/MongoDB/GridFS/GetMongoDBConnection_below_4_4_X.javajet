@@ -4,35 +4,37 @@
         java.util.List
     " 
 %>
-	<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GeneralMongoDBConnectionSettings_below_4_4_X.javajet"%>
 
-			<%if (setReadPreference) {
-			        if (readPreference.equals("PRIMARY")) {
-			            %>
-			            mongo_<%=cid%>.setReadPreference(com.mongodb.ReadPreference.primary());
-			            <%
-			        } else if (readPreference.equals("PRIMARY_PREFERRED")) {
-			            %>
-			            mongo_<%=cid%>.setReadPreference(com.mongodb.ReadPreference.primaryPreferred());
-			            <%
-			        } else if (readPreference.equals("SECONDARY")) {
-			            %>
-			            mongo_<%=cid%>.setReadPreference(com.mongodb.ReadPreference.secondary());
-			            <%
-			        } else if (readPreference.equals("SECONDARY_PREFERRED")) {
-			            %>
-			            mongo_<%=cid%>.setReadPreference(com.mongodb.ReadPreference.secondaryPreferred());
-			            <%
-			        } else if (readPreference.equals("NEAREST")) {
-			            %>
-			            mongo_<%=cid%>.setReadPreference(com.mongodb.ReadPreference.nearest());
-			            <%
-			        } else {
-			            %>
-			            // Unhandled
-			            <%
-			        }
-			}%>
+    <%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GeneralMongoDBConnectionSettings_below_4_4_X.javajet"%>
 
-			<%log4jFileUtil.startRetriveDataInfo();
-%>
+    <%if (setReadPreference) {
+        if (readPreference.equals("PRIMARY")) {%>
+            mongo_<%=cid%>.setReadPreference(com.mongodb.ReadPreference.primary());
+            <%
+        } else if (readPreference.equals("PRIMARY_PREFERRED")) {%>
+            mongo_<%=cid%>.setReadPreference(com.mongodb.ReadPreference.primaryPreferred());
+            <%
+        } else if (readPreference.equals("SECONDARY")) {%>
+            mongo_<%=cid%>.setReadPreference(com.mongodb.ReadPreference.secondary());
+            <%
+        } else if (readPreference.equals("SECONDARY_PREFERRED")) {%>
+            mongo_<%=cid%>.setReadPreference(com.mongodb.ReadPreference.secondaryPreferred());
+            <%
+        } else if (readPreference.equals("NEAREST")) {%>
+            mongo_<%=cid%>.setReadPreference(com.mongodb.ReadPreference.nearest());
+            <%
+        } else {%>
+            // Unhandled
+            <%
+        }
+    }%>
+
+    <%if(setWriteConcern) {
+        if(version_3_5_X) {%>
+            db_<%=cid%>.withWriteConcern(com.mongodb.WriteConcern.<%=writeConcern%>);
+            <%
+        } else {%>
+            db_<%=cid%>.setWriteConcern(com.mongodb.WriteConcern.<%=writeConcern%>);
+            <%
+        }
+    }%>

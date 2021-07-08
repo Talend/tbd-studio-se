@@ -28,9 +28,8 @@ import java.util.Set;
 import org.apache.commons.lang3.StringUtils;
 import org.eclipse.core.runtime.FileLocator;
 import org.osgi.framework.Bundle;
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.ServiceRegistration;
 import org.talend.commons.exception.ExceptionHandler;
+import org.talend.core.model.general.ILibrariesService;
 import org.talend.core.model.general.Project;
 import org.talend.core.runtime.dynamic.DynamicFactory;
 import org.talend.core.runtime.dynamic.DynamicServiceUtil;
@@ -66,9 +65,7 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
 
     private Map<TemplateBean, List<String>> templateBeanCompatibleVersionMap;
 
-    private Map<String, DynamicPluginAdapter> registedPluginMap = new HashMap<>();
-
-    private Map<String, ServiceRegistration> registedOsgiServiceMap = new HashMap<>();
+    private Map<String, IDynamicDistributionTemplate> registedDistribution = new HashMap<>();
 
     abstract protected Bundle getBundle();
 
@@ -303,11 +300,28 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
                 (String) copiedDynamicPlugin.getPluginConfiguration().getAttribute(DynamicConstants.ATTR_PROJECT_TECHNICAL_NAME));
         IDynamicDistributionPreference dynamicDistributionPreference = dynamicDistributionManager
                 .getDynamicDistributionGroup(getDistributionName()).getDynamicDistributionPreference(project);
+        Bundle bundle = getBundle();
 
-        DynamicPluginAdapter pluginAdapter = new DynamicPluginAdapter(copiedDynamicPlugin, dynamicDistributionPreference);
+        DynamicPluginAdapter pluginAdapter = new DynamicPluginAdapter(copiedDynamicPlugin, dynamicDistributionPreference, bundle);
         pluginAdapter.adapt();
 
         IDynamicPluginConfiguration pluginConfiguration = pluginAdapter.getPluginConfiguration();
+        String id = pluginConfiguration.getId();
+        try {
+            IDynamicDistributionTemplate existingTemplate = registedDistribution.get(id);
+            if (existingTemplate != null) {
+                unloadDistribution(existingTemplate, true);
+                DynamicPluginAdapter existingPluginAdapter = existingTemplate.getPluginAdapter();
+                IDynamicPluginConfiguration existingPluginConfig = existingPluginAdapter.getPluginConfiguration();
+                String existingProjectName = (String) existingPluginConfig
+                        .getAttribute(DynamicConstants.ATTR_PROJECT_TECHNICAL_NAME);
+                ExceptionHandler.log("Dynamic distribution: " + existingProjectName + "/" + id
+                        + " already exists, unloaded the old one and reload the new one");
+            }
+        } catch (Exception e) {
+            ExceptionHandler.process(e);
+        }
+
         boolean isBuiltin = Boolean.parseBoolean((String) pluginConfiguration.getAttribute(DynamicConstants.ATTR_IS_BUILTIN));
         if (isBuiltin) {
             pluginConfiguration.setName(Messages.getString("DynamicDistribution.name.builtin", pluginConfiguration.getName())); //$NON-NLS-1$
@@ -323,49 +337,20 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
         }
 
         IDynamicDistributionTemplate distributionTemplate = initTemplate(pluginAdapter, monitor);
-        IDynamicPlugin plugin = pluginAdapter.getPlugin();
-        IDynamicPluginConfiguration pConfiguration = plugin.getPluginConfiguration();
+        registedDistribution.put(pluginConfiguration.getId(), distributionTemplate);
+        distributionTemplate.registOsgiServices();
+    }
+
+    private void unloadDistribution(IDynamicDistributionTemplate distribution, boolean reloadLibCache) {
         try {
-            Bundle bundle = getBundle();
-
-            String id = pluginConfiguration.getId();
-            String projectName = (String) pluginConfiguration.getAttribute(DynamicConstants.ATTR_PROJECT_TECHNICAL_NAME);
-
-            DynamicPluginAdapter registedPluginAdapter = registedPluginMap.get(id);
-            if (registedPluginAdapter != null) {
-                IDynamicPluginConfiguration oldPluginConfiguration = registedPluginAdapter.getPluginConfiguration();
-                String oldProjectName = "unknown"; //$NON-NLS-1$
-                if (oldPluginConfiguration != null) {
-                    oldProjectName = (String) oldPluginConfiguration.getAttribute(DynamicConstants.ATTR_PROJECT_TECHNICAL_NAME);
-                }
-                ExceptionHandler.log("Plugin " + id + "(project: " + oldProjectName //$NON-NLS-1$ //$NON-NLS-2$
-                        + ") is already registed before, will unregist it and regist the new one(project:" + projectName //$NON-NLS-1$
-                        + ") instead."); //$NON-NLS-1$
-                DynamicServiceUtil.removeContribution(registedPluginAdapter.getPlugin());
-            }
-            ServiceRegistration registedOsgiService = registedOsgiServiceMap.get(id);
-            if (registedOsgiService != null) {
-                IDynamicPluginConfiguration oldPluginConfiguration = registedPluginAdapter.getPluginConfiguration();
-                String oldProjectName = "unknown"; //$NON-NLS-1$
-                if (oldPluginConfiguration != null) {
-                    oldProjectName = (String) oldPluginConfiguration.getAttribute(DynamicConstants.ATTR_PROJECT_TECHNICAL_NAME);
-                }
-                ExceptionHandler.log("OSGi service " + id + "(project: " + oldProjectName //$NON-NLS-1$ //$NON-NLS-2$
-                        + ") is already registed before, will unregist it and regist the new one(project:" + projectName //$NON-NLS-1$
-                        + ") instead."); //$NON-NLS-1$ //$NON-NLS-2$
-                DynamicServiceUtil.unregistOSGiService(registedOsgiService);
-            }
-
-            plugin.setPluginConfiguration(null);
-            DynamicServiceUtil.addContribution(bundle, plugin);
-            registedPluginMap.put(id, pluginAdapter);
-
-            BundleContext context = bundle.getBundleContext();
-            ServiceRegistration osgiService = DynamicServiceUtil.registOSGiService(context,
-                    distributionTemplate.getServices().toArray(new String[0]), distributionTemplate, null);
-            registedOsgiServiceMap.put(id, osgiService);
-        } finally {
-            plugin.setPluginConfiguration(pConfiguration);
+            distribution.unregistPluginExtensions(reloadLibCache);
+        } catch (Exception e) {
+            ExceptionHandler.process(e);
+        }
+        try {
+            distribution.unregistOsgiServices();
+        } catch (Exception e) {
+            ExceptionHandler.process(e);
         }
     }
 
@@ -386,7 +371,7 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
     }
 
     @Override
-    public void unregisterAllBuiltin(IDynamicMonitor monitor) throws Exception {
+    public void unregisterAllBuiltin(IDynamicMonitor monitor, boolean reloadLibCache) throws Exception {
         List<IDynamicPlugin> allBuiltinDynamicPlugins = getAllBuiltinDynamicPlugins(monitor);
         if (allBuiltinDynamicPlugins == null || allBuiltinDynamicPlugins.isEmpty()) {
             ExceptionHandler.log(this.getClass().getSimpleName() + ": no build dynamic plugins found when unregisting");
@@ -394,9 +379,15 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
         }
         for (IDynamicPlugin dynamicPlugin : allBuiltinDynamicPlugins) {
             try {
-                unregister(dynamicPlugin, monitor);
+                unregister(dynamicPlugin, monitor, false);
             } catch (Throwable e) {
                 ExceptionHandler.process(e);
+            }
+        }
+        if (reloadLibCache) {
+            ILibrariesService libService = ILibrariesService.get();
+            if (libService != null) {
+                libService.resetModulesNeeded();
             }
         }
     }
@@ -405,19 +396,13 @@ public abstract class AbstractDynamicDistribution implements IDynamicDistributio
             throws Exception;
 
     @Override
-    public void unregister(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception {
+    public void unregister(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor, boolean reloadLibCache) throws Exception {
         IDynamicPluginConfiguration pluginConfiguration = dynamicPlugin.getPluginConfiguration();
         String id = pluginConfiguration.getId();
 
-        DynamicPluginAdapter registedPluginAdapter = registedPluginMap.get(id);
-        if (registedPluginAdapter != null) {
-            DynamicServiceUtil.removeContribution(registedPluginAdapter.getPlugin());
-            registedPluginMap.remove(id);
-        }
-        ServiceRegistration registedOsgiService = registedOsgiServiceMap.get(id);
-        if (registedOsgiService != null) {
-            DynamicServiceUtil.unregistOSGiService(registedOsgiService);
-            registedOsgiServiceMap.remove(id);
+        IDynamicDistributionTemplate distribution = registedDistribution.remove(id);
+        if (distribution != null) {
+            unloadDistribution(distribution, reloadLibCache);
         }
     }
 

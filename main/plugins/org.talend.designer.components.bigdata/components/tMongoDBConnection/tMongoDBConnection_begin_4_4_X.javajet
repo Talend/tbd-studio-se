@@ -12,11 +12,13 @@
     " 
 %>
 
+    <%@ include file="../templates/MongoDB/ApplicationName.javajet"%>
+
     // Declarations
     com.mongodb.client.MongoClient mongo_<%=cid%>=null;
     com.mongodb.client.MongoDatabase db_<%=cid%>=null;
     List<com.mongodb.ServerAddress> addrs_<%=cid%> = new java.util.ArrayList<>();
-    com.mongodb.MongoClientSettings.Builder clientSettingsBuilder_<%=cid%> = com.mongodb.MongoClientSettings.builder();
+    com.mongodb.MongoClientSettings.Builder clientSettingsBuilder_<%=cid%> = com.mongodb.MongoClientSettings.builder().applicationName(applicationName_<%=cid %>);
     com.mongodb.connection.ClusterSettings.Builder clusterSettingsBuilder_<%=cid%> = com.mongodb.connection.ClusterSettings.builder();
     com.mongodb.connection.ConnectionPoolSettings.Builder connPoolSettingsBuilder_<%=cid%> = com.mongodb.connection.ConnectionPoolSettings.builder();
     com.mongodb.connection.ServerSettings.Builder serverSettingsBuilder_<%=cid%> = com.mongodb.connection.ServerSettings.builder();
@@ -55,162 +57,131 @@
     boolean isSslSettingsBuilderUsed = false;
     %>
 
-    <%
-    if(applyOptionalAttributes){
+    <%if(applyOptionalAttributes) {
         Set<String> connectionAttributesKeySet = optionalConnectionAttributesMap.keySet();
         if(connectionAttributesKeySet.contains("CONNECTIONS_PER_HOST")) {
             isConnPoolBuilderUsed = true;
             %>
             connPoolSettingsBuilder_<%=cid%>.maxSize(<%=optionalConnectionAttributesMap.get("CONNECTIONS_PER_HOST")%>);
-        <%
+            <%
         }
         if(connectionAttributesKeySet.contains("MIN_CONNECTIONS_PER_HOST")) {
             isConnPoolBuilderUsed = true;
             %>
             connPoolSettingsBuilder_<%=cid%>.minSize(<%=optionalConnectionAttributesMap.get("MIN_CONNECTIONS_PER_HOST")%>);
-        <%
+            <%
         }
         if(connectionAttributesKeySet.contains("MAINTENANCE_FREQUENCY")) {
             isConnPoolBuilderUsed = true;
             %>
             connPoolSettingsBuilder_<%=cid%>.maintenanceFrequency(<%=optionalConnectionAttributesMap.get("MAINTENANCE_FREQUENCY")%>L, java.util.concurrent.TimeUnit.MILLISECONDS);
-        <%
+            <%
         }
         if(connectionAttributesKeySet.contains("MAINTENANCE_INITIAL_DELAY")) {
             isConnPoolBuilderUsed = true;
             %>
             connPoolSettingsBuilder_<%=cid%>.maintenanceInitialDelay(<%=optionalConnectionAttributesMap.get("MAINTENANCE_INITIAL_DELAY")%>L, java.util.concurrent.TimeUnit.MILLISECONDS);
-        <%
+            <%
         }
         if(connectionAttributesKeySet.contains("MAX_CONNECTION_IDLE_TIME")) {
             isConnPoolBuilderUsed = true;
             %>
             connPoolSettingsBuilder_<%=cid%>.maxConnectionIdleTime(<%=optionalConnectionAttributesMap.get("MAX_CONNECTION_IDLE_TIME")%>L, java.util.concurrent.TimeUnit.MILLISECONDS);
-        <%
+            <%
         }
         if(connectionAttributesKeySet.contains("MAX_CONNECTION_LIFE_TIME")) {
             isConnPoolBuilderUsed = true;
             %>
             connPoolSettingsBuilder_<%=cid%>.maxConnectionLifeTime(<%=optionalConnectionAttributesMap.get("MAX_CONNECTION_LIFE_TIME")%>L, java.util.concurrent.TimeUnit.MILLISECONDS);
-        <%
+            <%
         }
         if(connectionAttributesKeySet.contains("MAX_WAIT_TIME")) {
             isConnPoolBuilderUsed = true;
             %>
             connPoolSettingsBuilder_<%=cid%>.maxWaitTime(<%=optionalConnectionAttributesMap.get("MAX_WAIT_TIME")%>L, java.util.concurrent.TimeUnit.MILLISECONDS);
-        <%
+            <%
         }
         if(connectionAttributesKeySet.contains("LOCAL_THRESHOLD")) {%>
             clusterSettingsBuilder_<%=cid%>.localThreshold(<%=optionalConnectionAttributesMap.get("LOCAL_THRESHOLD")%>L, java.util.concurrent.TimeUnit.MILLISECONDS);
-        <%
+            <%
         }
         if(connectionAttributesKeySet.contains("REQUIRED_REPLICA_SET_NAME")) {%>
             clusterSettingsBuilder_<%=cid%>.requiredReplicaSetName(<%=optionalConnectionAttributesMap.get("REQUIRED_REPLICA_SET_NAME")%>);
-        <%
+            <%
         }
         if(connectionAttributesKeySet.contains("SERVER_SELECTION_TIMEOUT")) {%>
             clusterSettingsBuilder_<%=cid%>.serverSelectionTimeout(<%=optionalConnectionAttributesMap.get("SERVER_SELECTION_TIMEOUT")%>L, java.util.concurrent.TimeUnit.MILLISECONDS);
-        <%
+            <%
         }
         if(connectionAttributesKeySet.contains("HEARTBEAT_FREQUENCY")) {
             isServSettingsBuilderUsed = true;
             %>
             serverSettingsBuilder_<%=cid%>.heartbeatFrequency(<%=optionalConnectionAttributesMap.get("HEARTBEAT_FREQUENCY")%>L, java.util.concurrent.TimeUnit.MILLISECONDS);
-        <%
+            <%
         }
         if(connectionAttributesKeySet.contains("MIN_HEARTBEAT_FREQUENCY")) {
             isServSettingsBuilderUsed = true;
             %>
             serverSettingsBuilder_<%=cid%>.minHeartbeatFrequency(<%=optionalConnectionAttributesMap.get("MIN_HEARTBEAT_FREQUENCY")%>L, java.util.concurrent.TimeUnit.MILLISECONDS);
-        <%
+            <%
         }
         if(connectionAttributesKeySet.contains("SOCKET_CONNECT_TIMEOUT")) {
             isSocSettingsBuilderUsed = true;
             %>
             socketSettingsBuilder_<%=cid%>.connectTimeout(<%=optionalConnectionAttributesMap.get("SOCKET_CONNECT_TIMEOUT")%>, java.util.concurrent.TimeUnit.MILLISECONDS);
-        <%
+            <%
         }
         if(connectionAttributesKeySet.contains("SOCKET_READ_TIMEOUT")) {
             isSocSettingsBuilderUsed = true;
             %>
             socketSettingsBuilder_<%=cid%>.readTimeout(<%=optionalConnectionAttributesMap.get("SOCKET_READ_TIMEOUT")%>, java.util.concurrent.TimeUnit.MILLISECONDS);
-        <%
+            <%
         }
         if(connectionAttributesKeySet.contains("RECEIVE_BUFFER_SIZE")) {
             isSocSettingsBuilderUsed = true;
             %>
             socketSettingsBuilder_<%=cid%>.receiveBufferSize(<%=optionalConnectionAttributesMap.get("RECEIVE_BUFFER_SIZE")%>, java.util.concurrent.TimeUnit.MILLISECONDS);
-        <%
+            <%
         }
         if(connectionAttributesKeySet.contains("SEND_BUFFER_SIZE")) {
             isSocSettingsBuilderUsed = true;
             %>
             socketSettingsBuilder_<%=cid%>.sendBufferSize(<%=optionalConnectionAttributesMap.get("SEND_BUFFER_SIZE")%>, java.util.concurrent.TimeUnit.MILLISECONDS);
-        <%
+            <%
         }
         if(connectionAttributesKeySet.contains("SSL_INVALID_HOSTNAME_ALLOWED")) {
             isSslSettingsBuilderUsed = true;
             %>
             sslSettingsBuilder_<%=cid%>.invalidHostNameAllowed(<%=optionalConnectionAttributesMap.get("SSL_INVALID_HOSTNAME_ALLOWED")%>);
-        <%
+            <%
         }
     }%>
 
-                // SSL
-                <%if (useSSL) {
-                    isSslSettingsBuilderUsed = true;
-                    %>
-                    sslSettingsBuilder_<%=cid%>.enabled(true);
-                    <%
-                }%>
+    <%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GeneralMongoDBConnectionSettings_4_4_X.javajet"%>
 
-                // Client Credentials
-                <%if (authentication) {%>
-                    // Authentication
-                    com.mongodb.MongoCredential mongoCredential_<%=cid%>;
-                    <%if((authenticationMechanism.equals("NEGOTIATE_MEC"))||(authenticationMechanism.equals("PLAIN_MEC"))||(authenticationMechanism.equals("SCRAMSHA1_MEC"))) {
-                        String passwordFieldName = "__PASSWORD__";
-                        %>
-                        <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
-                        
-                        <%if(authenticationMechanism.equals("NEGOTIATE_MEC")) {%>
-                            mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createCredential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
-                            <%
-                        } else if(authenticationMechanism.equals("PLAIN_MEC")) {%>
-                            mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createPlainCredential(<%=dbuser%>, "$external", new String(decryptedPassword_<%=cid%>).toCharArray());
-                            <%
-                        } else if(authenticationMechanism.equals("SCRAMSHA1_MEC")) {%>
-                            mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createScramSha1Credential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
-                            <%
-                        }
-                    } else {%> 
-                        // GSSAPI SASL (KERBEROS)
-                        System.setProperty("java.security.krb5.realm", <%=krbRealm%>);
-                        System.setProperty("java.security.krb5.kdc", <%=krbKdc%>);
-                        System.setProperty("javax.security.auth.useSubjectCredsOnly", "false");
-                        mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createGSSAPICredential(<%=krbUserPrincipal%>);
-                        <%
-                    }%>
-                    clientSettingsBuilder_<%=cid%>.credential(mongoCredential_<%=cid%>);
-                    <%
-                }
+    <%if (setReadPreference) {
+        if (readPreference.equals("PRIMARY")) {%>
+            clientSettingsBuilder_<%=cid%>.readPreference(com.mongodb.ReadPreference.primary());
+            <%
+        } else if (readPreference.equals("PRIMARY_PREFERRED")) {%>
+            clientSettingsBuilder_<%=cid%>.readPreference(com.mongodb.ReadPreference.primaryPreferred());
+            <%
+        } else if (readPreference.equals("SECONDARY")) {%>
+            clientSettingsBuilder_<%=cid%>.readPreference(com.mongodb.ReadPreference.secondary());
+            <%
+        } else if (readPreference.equals("SECONDARY_PREFERRED")) {%>
+            clientSettingsBuilder_<%=cid%>.readPreference(com.mongodb.ReadPreference.secondaryPreferred());
+            <%
+        } else if (readPreference.equals("NEAREST")) {%>
+            clientSettingsBuilder_<%=cid%>.readPreference(com.mongodb.ReadPreference.nearest());
+            <%
+        }
+    }%>
 
-                // the client
-                if(useReplicaSet){
-                    for(Map<String,String> replicaAddr : replicaAddrs) {%>
-                        addrs_<%=cid%>.add(new com.mongodb.ServerAddress(<%=replicaAddr.get("REPLICA_HOST")%>,<%=replicaAddr.get("REPLICA_PORT")%>));
-                        <%
-                    }
-                } else {%>
-                    addrs_<%=cid%>.add(new com.mongodb.ServerAddress(<%=dbhost%>, <%=dbport%>));
-                    <%
-                }%>
-                clusterSettingsBuilder_<%=cid%>.hosts(addrs_<%=cid%>);
-
-                <%if(isSslSettingsBuilderUsed) {%>
-                    clientSettingsBuilder_<%=cid%>.applyToSslSettings(builder -> builder.applySettings(sslSettingsBuilder_<%=cid%>.build()));
-                <%}%>
-                clientSettingsBuilder_<%=cid%>.applyToClusterSettings(builder -> builder.applySettings(clusterSettingsBuilder_<%=cid%>.build()));
+    <%if(setWriteConcern) {%>
+        clientSettingsBuilder_<%=cid%>.writeConcern(com.mongodb.WriteConcern.<%=writeConcern%>);
+        <%
+    }%>
 
      <%if(isConnPoolBuilderUsed) {%>
         clientSettingsBuilder_<%=cid%>.applyToConnectionPoolSettings(builder -> builder.applySettings(connPoolSettingsBuilder_<%=cid%>.build()));

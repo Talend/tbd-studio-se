@@ -50,7 +50,7 @@
          <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
              id="scala-library-2.12.10.jar" name="scala-library-2.12.10.jar"
              mvn_uri="mvn:org.scala-lang/scala-library/2.12.10"/>
-
+             
          <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
              id="commons-lang3-3.9.jar" name="commons-lang3-3.9.jar"
              mvn_uri="mvn:org.apache.commons/commons-lang3/3.9"/>
@@ -100,8 +100,8 @@
           mvn_uri="mvn:org.scala-lang.modules/scala-xml_2.12/1.2.0"/>
           
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="jersey-container-servlet-core-2.30.jar" name="jersey-container-servlet-core-2.30.jar"
-          mvn_uri="mvn:org.glassfish.jersey.containers/jersey-container-servlet-core/2.30"/>
+          id="jersey-container-servlet-core-2.22.2.jar" name="jersey-container-servlet-core-2.22.2.jar"
+          mvn_uri="mvn:org.glassfish.jersey.containers/jersey-container-servlet-core/2.22.2"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
           id="objenesis-2.6.jar" name="objenesis-2.6.jar"
@@ -148,8 +148,8 @@
           mvn_uri="mvn:javax.servlet/javax.servlet-api/3.1.0"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="jersey-server-2.30.jar" name="jersey-server-2.30.jar"
-          mvn_uri="mvn:org.glassfish.jersey.core/jersey-server/2.30"/>
+          id="jersey-server-2.22.2.jar" name="jersey-server-2.22.2.jar"
+          mvn_uri="mvn:org.glassfish.jersey.core/jersey-server/2.22.2"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
           id="jackson-annotations-2.10.1.jar" name="jackson-annotations-2.10.1.jar"
@@ -253,8 +253,8 @@
           mvn_uri="mvn:org.apache.parquet/parquet-jackson/1.10.1-spark-amzn-2"/>
           
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="commons-text-1.4.jar" name="commons-text-1.4.jar"
-          mvn_uri="mvn:org.apache.commons/commons-text/1.4"/>
+          id="commons-text-1.8.jar" name="commons-text-1.8.jar"
+          mvn_uri="mvn:org.apache.commons/commons-text/1.8"/>
          
         <!-- Azure libs -->
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
@@ -278,15 +278,15 @@
           mvn_uri="mvn:com.microsoft.azure/azure-data-lake-store-sdk/2.2.9"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="protobuf-java-3.15.8.jar" name="protobuf-java-3.15.8.jar"
-          mvn_uri="mvn:com.google.protobuf/protobuf-java/3.15.8"/>
+          id="protobuf-java-2.5.0.jar" name="protobuf-java-2.5.0.jar"
+          mvn_uri="mvn:com.google.protobuf/protobuf-java/2.5.0"/>
 
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
             id="gcs-connector-hadoop3-2.1.6-shaded.jar" name="gcs-connector-hadoop3-2.1.6-shaded.jar"
             mvn_uri="mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop3-2.1.6/jar/shaded">
         </libraryNeeded>
 
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.hdinsight400"
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
             id="bigquery-connector-hadoop3-1.1.6.jar" name="bigquery-connector-hadoop3-1.1.6.jar"
             mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop3-1.1.6/jar">
         </libraryNeeded>
@@ -310,10 +310,10 @@
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
           id="hive-common-3.1.2-amzn-3.jar" name="hive-common-3.1.2-amzn-3.jar"
           mvn_uri="mvn:org.apache.hive/hive-common/3.1.2-amzn-3"/>
-
+          
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="hive-exec-3.1.2-amzn-3.jar" name="hive-exec-3.1.2-amzn-3.jar"
-          mvn_uri="mvn:org.apache.hive/hive-exec/3.1.2-amzn-3.jar"/>
+          id="hive-exec-3.1.2-tlnd-0.jar" name="hive-exec-3.1.2-tlnd-0.jar"
+          mvn_uri="mvn:org.talend.libraries/hive-exec/3.1.2-tlnd-0"/>
           
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
           id="hive-jdbc-3.1.2-amzn-3.jar" name="hive-jdbc-3.1.2-amzn-3.jar"
@@ -432,12 +432,16 @@
           mvn_uri="mvn:org.apache.commons/commons-pool2/2.9.0"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-          id="jersey-common-2.30.jar" name="jersey-common-2.30.jar" 
-          mvn_uri="mvn:org.glassfish.jersey.core/jersey-common/2.30"/>
+          id="jersey-common-2.22.2.jar" name="jersey-common-2.22.2.jar" 
+          mvn_uri="mvn:org.glassfish.jersey.core/jersey-common/2.22.2"/>
 
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
             id="aws-java-sdk-core-1.11.880.jar" name="aws-java-sdk-core-1.11.880.jar"
             mvn_uri="mvn:com.amazonaws/aws-java-sdk-core/1.11.880"/>
+            
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="aws-java-sdk-bundle-1.11.880.jar" name="aws-java-sdk-bundle-1.11.880.jar"
+            mvn_uri="mvn:com.amazonaws/aws-java-sdk-bundle/1.11.880"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
             id="aws-java-sdk-kinesis-1.11.880.jar" name="aws-java-sdk-kinesis-1.11.880.jar"
@@ -504,8 +508,24 @@
             mvn_uri="mvn:org.apache.hbase/hbase-protocol-shaded/2.2.6-amzn-0"/>
             
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="jersey-client-2.30.jar" name="jersey-client-2.30.jar"
-            mvn_uri="mvn:org.glassfish.jersey.core/jersey-client/2.30"/>
+            id="jersey-client-2.22.2.jar" name="jersey-client-2.22.2.jar"
+            mvn_uri="mvn:org.glassfish.jersey.core/jersey-client/2.22.2"/>
+            
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="jersey-guava-2.22.2.jar" name="jersey-guava-2.22.2.jar"
+            mvn_uri="mvn:org.glassfish.jersey.bundles.repackaged/jersey-guava/2.22.2"/>
+            
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="hk2-api-2.4.0.jar" name="hk2-api-2.4.0.jar"
+            mvn_uri="mvn:org.glassfish.hk2/hk2-api/2.4.0"/>
+            
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="hk2-utils-2.4.0.jar" name="hk2-utils-2.4.0.jar"
+            mvn_uri="mvn:org.glassfish.hk2/hk2-utils/2.4.0"/>
+		
+		<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="hk2-locator-2.4.0.jar" name="hk2-locator-2.4.0.jar"
+            mvn_uri="mvn:org.glassfish.hk2/hk2-locator/2.4.0"/>
 		
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
             id="sqoop-1.4.7.jar" name="sqoop-1.4.7.jar"
@@ -528,8 +548,8 @@
             mvn_uri="mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.13"/>
             
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
-            id="hadoop-common-3.2.1-amzn-2.jar" name="hadoop-common-3.2.1-amzn-2.jar"
-            mvn_uri="mvn:org.apache.hadoop/hadoop-common/3.2.1-amzn-2"/>
+            id="hadoop-common-3.2.1.jar" name="hadoop-common-3.2.1.jar"
+            mvn_uri="mvn:org.apache.hadoop/hadoop-common/3.2.1"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
             id="hadoop-auth-3.2.1-amzn-2.jar" name="hadoop-auth-3.2.1-amzn-2.jar"
@@ -564,8 +584,8 @@
             mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-shuffle/3.2.1-amzn-2"/>
 		
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x" 
-			id="hadoop-mapreduce-client-app-2.8.1.jar" name="hadoop-mapreduce-client-app-2.8.1.jar"
-			mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-app/2.8.1"/>
+			id="hadoop-mapreduce-client-app-3.2.1-amzn-2.jar" name="hadoop-mapreduce-client-app-3.2.1-amzn-2.jar"
+			mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-app/3.2.1-amzn-2"/>
 		
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
             id="hadoop-mapreduce-client-jobclient-3.2.1-amzn-2.jar" name="hadoop-mapreduce-client-jobclient-3.2.1-amzn-2.jar"
@@ -728,6 +748,30 @@
 		<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
             id="spark-hive-thriftserver_2.12-3.0.1-amzn-0.jar" name="spark-hive-thriftserver_2.12-3.0.1-amzn-0.jar"
             mvn_uri="mvn:org.apache.spark/spark-hive-thriftserver_2.12/3.0.1-amzn-0"/>
+            
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="javax.annotation-api-1.2.jar" name="javax.annotation-api-1.2.jar"
+            mvn_uri="mvn:javax.annotation/javax.annotation-api/1.2"/>
+            
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="validation-api-1.1.0.Final.jar" name="validation-api-1.1.0.Final.jar"
+            mvn_uri="mvn:javax.validation/validation-api/1.1.0.Final"/>
+            
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="javassist-3.18.1-GA.jar" name="javassist-3.18.1-GA.jar"
+            mvn_uri="mvn:org.javassist/javassist/3.18.1-GA"/>
+            
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="zookeeper-3.4.14.jar" name="zookeeper-3.4.14.jar"
+            mvn_uri="mvn:org.apache.zookeeper/zookeeper/3.4.14"/>
+        
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x"
+            id="talend-mapred-lib-7.2.2.jar" name="talend-mapred-lib-7.2.2.jar"
+            mvn_uri="mvn:org.talend.bigdata.libs/talend-mapred-lib/7.2.2"/>
+            
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr62x" 
+			id="orc-mapreduce-1.5.5.jar" name="orc-mapreduce-1.5.5.jar"
+			mvn_uri="mvn:org.apache.orc/orc-mapreduce/1.5.5"/>
 
 		<!-- Spark Azure group -->
         <libraryNeededGroup description="Spark Azure libraries for emr62x" id="AZURE-GROUP-EMR_62_x" name="AZURE-GROUP-EMR_62_x">
@@ -747,13 +791,10 @@
 		
 		<!-- DynamoDB Batch group -->
         <libraryNeededGroup description="DynamoDB libraries for emr62x" id="DYNAMODB-BATCH-GROUP-EMR_62_x" name="DYNAMODB-BATCH-GROUP-EMR_62_x">
-			<library id="aws-java-sdk-core-1.11.880.jar"/>
+            <group id="S3-GROUP-EMR_62_x"/>
             <library id="aws-java-sdk-dynamodb-1.11.880.jar"/>
-            <library id="aws-java-sdk-kms-1.11.880.jar"/>
-            <library id="aws-java-sdk-s3-1.11.880.jar"/>
             <library id="emr-dynamodb-hadoop-4.14.0.jar"/>
             <library id="joda-time-2.10.5.jar"/>
-            <library id="talend-bigdata-aws-lib-1.1.0.jar"/>
         </libraryNeededGroup>
 		
 		 <!-- DynamoDB Streaming group -->
@@ -793,16 +834,17 @@
             <library id="commons-logging-1.1.3.jar"/>
 			<library id="commons-lang-2.6.jar"/>
             <library id="commons-lang3-3.9.jar"/>
+            <library id="commons-text-1.8.jar"/>
             <library id="curator-client-2.6.0.jar"/>
             <library id="guava-27.0-jre.jar"/>
             <library id="gson-2.2.4.jar"/>
             <library id="hadoop-auth-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-aws-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-client-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-common-3.2.1-amzn-2.jar"/>
+			<library id="hadoop-common-3.2.1.jar"/>
 			<library id="hadoop-hdfs-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-hdfs-client-3.2.1-amzn-2.jar"/>
-			<library id="hadoop-mapreduce-client-app-2.8.1.jar"/>
+			<library id="hadoop-mapreduce-client-app-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-mapreduce-client-common-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-mapreduce-client-core-3.2.1-amzn-2.jar"/>
 			<library id="hadoop-mapreduce-client-jobclient-3.2.1-amzn-2.jar"/>
@@ -828,7 +870,9 @@
             <library id="javax.inject-2.4.0.jar"/>
             <library id="log4j-1.2.17.jar"/>
             <library id="libthrift-0.12.0.jar"/>
-			<library id="protobuf-java-3.15.8.jar"/>
+            <library id="metrics-core-4.1.1.jar"/>
+            <library id="metrics-json-4.1.1.jar"/>
+			<library id="protobuf-java-2.5.0.jar"/>
 			<library id="re2j-1.1.jar"/>
             <library id="slf4j-api-1.7.10.jar"/>
             <library id="slf4j-log4j12-1.7.10.jar"/>
@@ -848,13 +892,18 @@
             <library id="hbase-shaded-client-2.2.6-amzn-0.jar"/>
             <library id="hbase-protocol-shaded-2.2.6-amzn-0.jar"/>
             <library id="hive-hbase-handler-3.1.2-amzn-3.jar"/>
+            <library id="zookeeper-3.4.14.jar"/>
         </libraryNeededGroup>
 
 		<!-- Hive group -->
         <libraryNeededGroup description="The latest Hive libraries for emr62x" id="HIVE-GROUP-EMR_62_x" name="HIVE-GROUP-EMR_62_x">
             <group id="HDFS-GROUP-EMR_62_x"/>
      		<library id="hive-common-3.1.2-amzn-3.jar"/>
+            <library id="hive-exec-3.1.2-tlnd-0.jar"/>
+     		<library id="hive-jdbc-3.1.2-amzn-3.jar"/>
+     		<library id="hive-service-3.1.2-amzn-3.jar"/>
 			<library id="libfb303-0.9.3.jar"/>
+			<library id="orc-mapreduce-1.5.5.jar"/>
 			<library id="spark-hive_2.12-3.0.1.jar"/>
         </libraryNeededGroup>
         
@@ -866,7 +915,7 @@
             
 		<!-- Kinesis group -->
         <libraryNeededGroup description="Spark streaming Kinesis libraries for emr62x" id="KINESIS-GROUP-EMR_62_x" name="KINESIS-GROUP-EMR_62_x">
-            <group id="DYNAMODB-STREAMING-GROUP-EMR_62_x" />
+            <group id="S3-GROUP-EMR_62_x"/>
             <library id="amazon-kinesis-client-1.12.0.jar"/> 
             <library id="aws-java-sdk-cloudwatch-1.11.880.jar"/>
             <library id="aws-java-sdk-kinesis-1.11.880.jar"/>
@@ -887,10 +936,14 @@
             <library id="jul-to-slf4j-1.7.30.jar"/>
         </libraryNeededGroup>
         
-        <!-- Redshift group -->
+        <!-- Redshift batch group -->
         <libraryNeededGroup description="Redshift libraries for emr62x" id="REDSHIFT-BATCH-GROUP-EMR_62_x" name="REDSHIFT-BATCH-GROUP-EMR_62_x">
-            <group id="DYNAMODB-STREAMING-GROUP-EMR_62_x" />
-            <library id="spark-redshift_2.12-4.2.0.jar"/>
+            <group id="S3-GROUP-EMR_62_x"/>
+        </libraryNeededGroup>
+        
+        <!-- Redshift streaming group -->
+        <libraryNeededGroup description="Redshift libraries for emr62x" id="REDSHIFT-STREAMING-GROUP-EMR_62_x" name="REDSHIFT-STREAMING-GROUP-EMR_62_x">
+            <group id="REDSHIFT-BATCH-GROUP-EMR_62_x"/>
         </libraryNeededGroup>
         
          <!-- Snowflake group -->
@@ -901,14 +954,17 @@
         
         <!-- S3 group -->
         <libraryNeededGroup description="The latest S3 libraries for emr62x" id="S3-GROUP-EMR_62_x" name="S3-GROUP-EMR_62_x">
-             <group id="DYNAMODB-STREAMING-GROUP-EMR_62_x" />
+            <library id="aws-java-sdk-bundle-1.11.880.jar"/>
+            <library id="aws-java-sdk-kms-1.11.880.jar"/>
              <library id="aws-java-sdk-sts-1.11.880.jar"/>
 			<library id="hadoop-aws-3.2.1-amzn-2.jar"/>
+			<library id="talend-bigdata-aws-lib-1.1.0.jar"/>
         </libraryNeededGroup>
 		
 		<!-- Spark batch group -->
         <libraryNeededGroup description="SPARK libraries for emr62x" id="SPARK-BATCH-GROUP-EMR_62_x" name="SPARK-BATCH-GROUP-EMR_62_x">
-            <group id="HDFS-GROUP-EMR_62_x"/>
+            <group id="HIVE-GROUP-EMR_62_x"/>
+            <group id="S3-GROUP-EMR_62_x"/>
             <library id="antlr4-runtime-4.7.1.jar"/>
             <library id="aopalliance-1.0.jar"/>
             <library id="breeze_2.12-1.0.jar"/>
@@ -916,19 +972,24 @@
             <library id="chill-java-0.9.5.jar"/>
             <library id="emrfs-hadoop-assembly-2.44.0.jar"/>
             <library id="emrfs-cli-assembly-2.44.0.jar"/>
+            <library id="hk2-api-2.4.0.jar"/>
+			<library id="hk2-locator-2.4.0.jar"/>
+            <library id="hk2-utils-2.4.0.jar"/>
             <library id="janino-3.0.16.jar"/>
+            <library id="javassist-3.18.1-GA.jar"/>
+            <library id="javax.annotation-api-1.2.jar"/>
             <library id="javax.servlet-api-3.1.0.jar"/>
             <library id="javax.ws.rs-api-2.1.1.jar"/>
-            <library id="jersey-common-2.30.jar"/>
-            <library id="jersey-container-servlet-core-2.30.jar"/>
-            <library id="jersey-server-2.30.jar"/>
+            <library id="jersey-client-2.22.2.jar"/>
+            <library id="jersey-common-2.22.2.jar"/>
+            <library id="jersey-container-servlet-core-2.22.2.jar"/>
+            <library id="jersey-guava-2.22.2.jar"/>
+            <library id="jersey-server-2.22.2.jar"/>
             <library id="json4s-ast_2.12-3.6.6.jar"/>
             <library id="json4s-core_2.12-3.6.6.jar"/>
             <library id="json4s-jackson_2.12-3.6.6.jar"/>
 			<library id="kryo-shaded-4.0.2.jar"/>
 			<library id="lz4-java-1.7.1.jar"/>
-			<library id="metrics-core-4.1.1.jar"/>
-            <library id="metrics-json-4.1.1.jar"/>
             <library id="minlog-1.3.0.jar"/>
 			<library id="netty-all-4.1.47.Final.jar"/>
 			<library id="objenesis-2.6.jar"/>
@@ -947,12 +1008,15 @@
             <library id="spark-mllib-local_2.12-3.0.1.jar"/>
             <library id="spark-network-common_2.12-3.0.1.jar"/>
             <library id="spark-network-shuffle_2.12-3.0.1.jar"/>
+            <library id="spark-redshift_2.12-4.2.0.jar"/>
             <library id="spark-sql_2.12-3.0.1.jar"/>
             <library id="spark-tags_2.12-3.0.1.jar"/>
             <library id="spark-unsafe_2.12-3.0.1.jar"/>
             <library id="spark-yarn_2.12-3.0.1.jar"/>
             <library id="stream-2.9.6.jar"/>
+            <library id="talend-mapred-lib-7.2.2.jar"/>
             <library id="univocity-parsers-2.9.1.jar"/>
+            <library id="validation-api-1.1.0.Final.jar"/>
             <library id="xbean-asm7-shaded-4.15.jar"/>
             <library id="zstd-jni-1.4.9-5.jar"/>
         </libraryNeededGroup>
@@ -960,25 +1024,24 @@
         <!-- Spark Streaming group -->
         <libraryNeededGroup description="Spark streaming libraries for emr62x" id="SPARK-STREAMING-GROUP-EMR_62_x" name="SPARK-STREAMING-GROUP-EMR_62_x">
             <group id="SPARK-BATCH-GROUP-EMR_62_x"/>
-            <library id="commons-text-1.4.jar"/>
             <library id="spark-streaming_2.12-3.0.1.jar"/>
-            <library id="aws-java-sdk-core-1.11.880.jar"/>
             <library id="py4j-0.10.9.1.jar"/>
         </libraryNeededGroup>
 		
 		   <!-- Sqoop group -->
         <libraryNeededGroup description="Sqoop libraries for emr62x" id="SQOOP-GROUP-EMR_62_x" name="SQOOP-GROUP-EMR_62_x">
+           <group id="HDFS-GROUP-EMR_62_x"/>
            <library id="sqoop-1.4.7.jar"/>
         </libraryNeededGroup>
         
         <!-- Sqoop Parquet group -->
         <libraryNeededGroup description="Sqoop Parquet libraries for emr62x" id="SQOOP-PARQUET-GROUP-EMR_62_x" name="SQOOP-PARQUET-GROUP-EMR_62_x">
-           
+           <group id="SQOOP-GROUP-EMR_62_x"/>
         </libraryNeededGroup>
 
 		<!-- WebHDFS group -->
         <libraryNeededGroup description="WebHDFS libraries for emr62x" id="WEBHDFS-GROUP-EMR_62_x" name="WEBHDFS-GROUP-EMR_62_x">
-            <library id="jersey-client-2.30.jar"/>
+            <group id="HDFS-GROUP-EMR_62_x"/>
         </libraryNeededGroup>
 
     </extension>
@@ -987,23 +1050,23 @@
 	<extension point="org.talend.core.runtime.classloader_provider">
       <classloader
             index="HIVE2:AMAZON_EMR:EMR_62_x:STANDALONE"
-            libraries="avro-1.8.2.jar;avro-mapred-1.8.2.jar;commons-codec-1.11.jar;commons-collections-3.2.2.jar;commons-compiler-3.0.16.jar;commons-configuration-1.6.jar;commons-configuration2-2.1.1.jar;commons-httpclient-3.1.jar;commons-io-2.5.jar;commons-logging-1.1.3.jar;commons-lang-2.6.jar;commons-lang3-3.9.jar;curator-client-2.6.0.jar;guava-27.0-jre.jar;gson-2.2.4.jar;hadoop-auth-3.2.1-amzn-2.jar;hadoop-aws-3.2.1-amzn-2.jar;hadoop-client-3.2.1-amzn-2.jar;hadoop-common-3.2.1-amzn-2.jar;hadoop-hdfs-3.2.1-amzn-2.jar;hadoop-hdfs-client-3.2.1-amzn-2.jar;hadoop-mapreduce-client-app-2.8.1.jar;hadoop-mapreduce-client-common-3.2.1-amzn-2.jar;hadoop-mapreduce-client-core-3.2.1-amzn-2.jar;hadoop-mapreduce-client-jobclient-3.2.1-amzn-2.jar;hadoop-mapreduce-client-shuffle-3.2.1-amzn-2.jar;hadoop-yarn-api-3.2.1-amzn-2.jar;hadoop-yarn-client-3.2.1-amzn-2.jar;hadoop-yarn-common-3.2.1-amzn-2.jar;hadoop-yarn-server-common-3.2.1-amzn-2.jar;hadoop-yarn-server-web-proxy-3.2.1-amzn-2.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;htrace-core4-4.1.0-incubating.jar;jackson-annotations-2.10.1.jar;jackson-core-2.10.1.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-databind-2.10.1.jar;jackson-mapper-asl-1.9.13.jar;jackson-module-paranamer-2.10.1.jar;jackson-module-scala_2.12-2.10.1.jar;jackson-xc-1.9.13.jar;javax.inject-1.jar;javax.inject-2.4.0.jar;log4j-1.2.17.jar;protobuf-java-3.15.8.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;stax2-api-4.2.1.jar;woodstox-core-5.0.3.jar;hive-beeline-3.1.2-amzn-3.jar;hive-cli-3.1.2-amzn-3.jar;hive-common-3.1.2-amzn-3.jar;hive-exec-3.1.2-amzn-3.jar;hive-jdbc-3.1.2-amzn-3.jar;hive-llap-common-3.1.2-amzn-3.jar;hive-metastore-3.1.2-amzn-3.jar;hive-serde-3.1.2-amzn-3.jar;hive-service-3.1.2-amzn-3.jar;hive-service-rpc-3.1.2-amzn-3.jar;hive-shims-3.1.2-amzn-3.jar;hive-shims-common-3.1.2-amzn-3.jar;hive-storage-api-2.6.1-amzn-1.jar;libfb303-0.9.3.jar;spark-hive_2.12-3.0.1.jar">
+            libraries="avro-1.8.2.jar;avro-mapred-1.8.2.jar;commons-cli-1.2.jar;commons-codec-1.11.jar;commons-collections-3.2.2.jar;commons-compiler-3.0.16.jar;commons-configuration-1.6.jar;commons-configuration2-2.1.1.jar;commons-httpclient-3.1.jar;commons-io-2.5.jar;commons-logging-1.1.3.jar;commons-lang-2.6.jar;commons-lang3-3.9.jar;commons-text-1.8.jar;curator-client-2.6.0.jar;guava-27.0-jre.jar;gson-2.2.4.jar;hadoop-auth-3.2.1-amzn-2.jar;hadoop-aws-3.2.1-amzn-2.jar;hadoop-client-3.2.1-amzn-2.jar;hadoop-common-3.2.1.jar;hadoop-hdfs-3.2.1-amzn-2.jar;hadoop-hdfs-client-3.2.1-amzn-2.jar;hadoop-mapreduce-client-app-3.2.1-amzn-2.jar;hadoop-mapreduce-client-common-3.2.1-amzn-2.jar;hadoop-mapreduce-client-core-3.2.1-amzn-2.jar;hadoop-mapreduce-client-jobclient-3.2.1-amzn-2.jar;hadoop-mapreduce-client-shuffle-3.2.1-amzn-2.jar;hadoop-yarn-api-3.2.1-amzn-2.jar;hadoop-yarn-client-3.2.1-amzn-2.jar;hadoop-yarn-common-3.2.1-amzn-2.jar;hadoop-yarn-server-common-3.2.1-amzn-2.jar;hadoop-yarn-server-web-proxy-3.2.1-amzn-2.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;htrace-core4-4.1.0-incubating.jar;jackson-annotations-2.10.1.jar;jackson-core-2.10.1.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-databind-2.10.1.jar;jackson-dataformat-cbor-2.10.1.jar;jackson-mapper-asl-1.9.13.jar;jackson-module-paranamer-2.10.1.jar;jackson-module-scala_2.12-2.10.1.jar;jackson-xc-1.9.13.jar;javax.inject-1.jar;javax.inject-2.4.0.jar;log4j-1.2.17.jar;libthrift-0.12.0.jar;metrics-core-4.1.1.jar;metrics-json-4.1.1.jar;protobuf-java-2.5.0.jar;re2j-1.1.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;stax2-api-4.2.1.jar;woodstox-core-5.0.3.jar;hive-common-3.1.2-amzn-3.jar;hive-exec-3.1.2-tlnd-0.jar;hive-jdbc-3.1.2-amzn-3.jar;hive-service-3.1.2-amzn-3.jar;libfb303-0.9.3.jar;spark-hive_2.12-3.0.1.jar">
       </classloader>
       <classloader
             index="MAP_REDUCE:AMAZON_EMR:EMR_62_x"
-            libraries="avro-1.8.2.jar;avro-mapred-1.8.2.jar;commons-codec-1.11.jar;commons-collections-3.2.2.jar;commons-compiler-3.0.16.jar;commons-configuration-1.6.jar;commons-configuration2-2.1.1.jar;commons-httpclient-3.1.jar;commons-io-2.5.jar;commons-logging-1.1.3.jar;commons-lang-2.6.jar;commons-lang3-3.9.jar;curator-client-2.6.0.jar;guava-27.0-jre.jar;gson-2.2.4.jar;hadoop-auth-3.2.1-amzn-2.jar;hadoop-aws-3.2.1-amzn-2.jar;hadoop-client-3.2.1-amzn-2.jar;hadoop-common-3.2.1-amzn-2.jar;hadoop-hdfs-3.2.1-amzn-2.jar;hadoop-hdfs-client-3.2.1-amzn-2.jar;hadoop-mapreduce-client-app-2.8.1.jar;hadoop-mapreduce-client-common-3.2.1-amzn-2.jar;hadoop-mapreduce-client-core-3.2.1-amzn-2.jar;hadoop-mapreduce-client-jobclient-3.2.1-amzn-2.jar;hadoop-mapreduce-client-shuffle-3.2.1-amzn-2.jar;hadoop-yarn-api-3.2.1-amzn-2.jar;hadoop-yarn-client-3.2.1-amzn-2.jar;hadoop-yarn-common-3.2.1-amzn-2.jar;hadoop-yarn-server-common-3.2.1-amzn-2.jar;hadoop-yarn-server-web-proxy-3.2.1-amzn-2.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;htrace-core4-4.1.0-incubating.jar;jackson-annotations-2.10.1.jar;jackson-core-2.10.1.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-databind-2.10.1.jar;jackson-mapper-asl-1.9.13.jar;jackson-module-paranamer-2.10.1.jar;jackson-module-scala_2.12-2.10.1.jar;jackson-xc-1.9.13.jar;javax.inject-1.jar;javax.inject-2.4.0.jar;log4j-1.2.17.jar;protobuf-java-3.15.8.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;stax2-api-4.2.1.jar;woodstox-core-5.0.3.jar;">
+            libraries="avro-1.8.2.jar;avro-mapred-1.8.2.jar;commons-cli-1.2.jar;commons-codec-1.11.jar;commons-collections-3.2.2.jar;commons-compiler-3.0.16.jar;commons-configuration-1.6.jar;commons-configuration2-2.1.1.jar;commons-httpclient-3.1.jar;commons-io-2.5.jar;commons-logging-1.1.3.jar;commons-lang-2.6.jar;commons-lang3-3.9.jar;commons-text-1.8.jar;curator-client-2.6.0.jar;guava-27.0-jre.jar;gson-2.2.4.jar;hadoop-auth-3.2.1-amzn-2.jar;hadoop-aws-3.2.1-amzn-2.jar;hadoop-client-3.2.1-amzn-2.jar;hadoop-common-3.2.1.jar;hadoop-hdfs-3.2.1-amzn-2.jar;hadoop-hdfs-client-3.2.1-amzn-2.jar;hadoop-mapreduce-client-app-3.2.1-amzn-2.jar;hadoop-mapreduce-client-common-3.2.1-amzn-2.jar;hadoop-mapreduce-client-core-3.2.1-amzn-2.jar;hadoop-mapreduce-client-jobclient-3.2.1-amzn-2.jar;hadoop-mapreduce-client-shuffle-3.2.1-amzn-2.jar;hadoop-yarn-api-3.2.1-amzn-2.jar;hadoop-yarn-client-3.2.1-amzn-2.jar;hadoop-yarn-common-3.2.1-amzn-2.jar;hadoop-yarn-server-common-3.2.1-amzn-2.jar;hadoop-yarn-server-web-proxy-3.2.1-amzn-2.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;htrace-core4-4.1.0-incubating.jar;jackson-annotations-2.10.1.jar;jackson-core-2.10.1.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-databind-2.10.1.jar;jackson-dataformat-cbor-2.10.1.jar;jackson-mapper-asl-1.9.13.jar;jackson-module-paranamer-2.10.1.jar;jackson-module-scala_2.12-2.10.1.jar;jackson-xc-1.9.13.jar;javax.inject-1.jar;javax.inject-2.4.0.jar;log4j-1.2.17.jar;libthrift-0.12.0.jar;metrics-core-4.1.1.jar;metrics-json-4.1.1.jar;protobuf-java-2.5.0.jar;re2j-1.1.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;stax2-api-4.2.1.jar;woodstox-core-5.0.3.jar">
       </classloader>
       <classloader
             index="HDFS:AMAZON_EMR:EMR_62_x"
-            libraries="avro-1.8.2.jar;avro-mapred-1.8.2.jar;commons-codec-1.11.jar;commons-collections-3.2.2.jar;commons-compiler-3.0.16.jar;commons-configuration-1.6.jar;commons-configuration2-2.1.1.jar;commons-httpclient-3.1.jar;commons-io-2.5.jar;commons-logging-1.1.3.jar;commons-lang-2.6.jar;commons-lang3-3.9.jar;curator-client-2.6.0.jar;guava-27.0-jre.jar;gson-2.2.4.jar;hadoop-auth-3.2.1-amzn-2.jar;hadoop-aws-3.2.1-amzn-2.jar;hadoop-client-3.2.1-amzn-2.jar;hadoop-common-3.2.1-amzn-2.jar;hadoop-hdfs-3.2.1-amzn-2.jar;hadoop-hdfs-client-3.2.1-amzn-2.jar;hadoop-mapreduce-client-app-2.8.1.jar;hadoop-mapreduce-client-common-3.2.1-amzn-2.jar;hadoop-mapreduce-client-core-3.2.1-amzn-2.jar;hadoop-mapreduce-client-jobclient-3.2.1-amzn-2.jar;hadoop-mapreduce-client-shuffle-3.2.1-amzn-2.jar;hadoop-yarn-api-3.2.1-amzn-2.jar;hadoop-yarn-client-3.2.1-amzn-2.jar;hadoop-yarn-common-3.2.1-amzn-2.jar;hadoop-yarn-server-common-3.2.1-amzn-2.jar;hadoop-yarn-server-web-proxy-3.2.1-amzn-2.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;htrace-core4-4.1.0-incubating.jar;jackson-annotations-2.10.1.jar;jackson-core-2.10.1.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-databind-2.10.1.jar;jackson-mapper-asl-1.9.13.jar;jackson-module-paranamer-2.10.1.jar;jackson-module-scala_2.12-2.10.1.jar;jackson-xc-1.9.13.jar;javax.inject-1.jar;javax.inject-2.4.0.jar;log4j-1.2.17.jar;protobuf-java-3.15.8.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;stax2-api-4.2.1.jar;woodstox-core-5.0.3.jar;">
+            libraries="avro-1.8.2.jar;avro-mapred-1.8.2.jar;commons-cli-1.2.jar;commons-codec-1.11.jar;commons-collections-3.2.2.jar;commons-compiler-3.0.16.jar;commons-configuration-1.6.jar;commons-configuration2-2.1.1.jar;commons-httpclient-3.1.jar;commons-io-2.5.jar;commons-logging-1.1.3.jar;commons-lang-2.6.jar;commons-lang3-3.9.jar;commons-text-1.8.jar;curator-client-2.6.0.jar;guava-27.0-jre.jar;gson-2.2.4.jar;hadoop-auth-3.2.1-amzn-2.jar;hadoop-aws-3.2.1-amzn-2.jar;hadoop-client-3.2.1-amzn-2.jar;hadoop-common-3.2.1.jar;hadoop-hdfs-3.2.1-amzn-2.jar;hadoop-hdfs-client-3.2.1-amzn-2.jar;hadoop-mapreduce-client-app-3.2.1-amzn-2.jar;hadoop-mapreduce-client-common-3.2.1-amzn-2.jar;hadoop-mapreduce-client-core-3.2.1-amzn-2.jar;hadoop-mapreduce-client-jobclient-3.2.1-amzn-2.jar;hadoop-mapreduce-client-shuffle-3.2.1-amzn-2.jar;hadoop-yarn-api-3.2.1-amzn-2.jar;hadoop-yarn-client-3.2.1-amzn-2.jar;hadoop-yarn-common-3.2.1-amzn-2.jar;hadoop-yarn-server-common-3.2.1-amzn-2.jar;hadoop-yarn-server-web-proxy-3.2.1-amzn-2.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;htrace-core4-4.1.0-incubating.jar;jackson-annotations-2.10.1.jar;jackson-core-2.10.1.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-databind-2.10.1.jar;jackson-dataformat-cbor-2.10.1.jar;jackson-mapper-asl-1.9.13.jar;jackson-module-paranamer-2.10.1.jar;jackson-module-scala_2.12-2.10.1.jar;jackson-xc-1.9.13.jar;javax.inject-1.jar;javax.inject-2.4.0.jar;log4j-1.2.17.jar;libthrift-0.12.0.jar;metrics-core-4.1.1.jar;metrics-json-4.1.1.jar;protobuf-java-2.5.0.jar;re2j-1.1.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;stax2-api-4.2.1.jar;woodstox-core-5.0.3.jar">
       </classloader>
       <classloader
             index="HDFS:AMAZON_EMR:EMR_62_x?USE_KRB"
-            libraries="avro-1.8.2.jar;avro-mapred-1.8.2.jar;commons-codec-1.11.jar;commons-collections-3.2.2.jar;commons-compiler-3.0.16.jar;commons-configuration-1.6.jar;commons-configuration2-2.1.1.jar;commons-httpclient-3.1.jar;commons-io-2.5.jar;commons-logging-1.1.3.jar;commons-lang-2.6.jar;commons-lang3-3.9.jar;curator-client-2.6.0.jar;guava-27.0-jre.jar;gson-2.2.4.jar;hadoop-auth-3.2.1-amzn-2.jar;hadoop-aws-3.2.1-amzn-2.jar;hadoop-client-3.2.1-amzn-2.jar;hadoop-common-3.2.1-amzn-2.jar;hadoop-hdfs-3.2.1-amzn-2.jar;hadoop-hdfs-client-3.2.1-amzn-2.jar;hadoop-mapreduce-client-app-2.8.1.jar;hadoop-mapreduce-client-common-3.2.1-amzn-2.jar;hadoop-mapreduce-client-core-3.2.1-amzn-2.jar;hadoop-mapreduce-client-jobclient-3.2.1-amzn-2.jar;hadoop-mapreduce-client-shuffle-3.2.1-amzn-2.jar;hadoop-yarn-api-3.2.1-amzn-2.jar;hadoop-yarn-client-3.2.1-amzn-2.jar;hadoop-yarn-common-3.2.1-amzn-2.jar;hadoop-yarn-server-common-3.2.1-amzn-2.jar;hadoop-yarn-server-web-proxy-3.2.1-amzn-2.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;htrace-core4-4.1.0-incubating.jar;jackson-annotations-2.10.1.jar;jackson-core-2.10.1.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-databind-2.10.1.jar;jackson-mapper-asl-1.9.13.jar;jackson-module-paranamer-2.10.1.jar;jackson-module-scala_2.12-2.10.1.jar;jackson-xc-1.9.13.jar;javax.inject-1.jar;javax.inject-2.4.0.jar;log4j-1.2.17.jar;protobuf-java-3.15.8.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;stax2-api-4.2.1.jar;woodstox-core-5.0.3.jar;">
+            libraries="avro-1.8.2.jar;avro-mapred-1.8.2.jar;commons-cli-1.2.jar;commons-codec-1.11.jar;commons-collections-3.2.2.jar;commons-compiler-3.0.16.jar;commons-configuration-1.6.jar;commons-configuration2-2.1.1.jar;commons-httpclient-3.1.jar;commons-io-2.5.jar;commons-logging-1.1.3.jar;commons-lang-2.6.jar;commons-lang3-3.9.jar;commons-text-1.8.jar;curator-client-2.6.0.jar;guava-27.0-jre.jar;gson-2.2.4.jar;hadoop-auth-3.2.1-amzn-2.jar;hadoop-aws-3.2.1-amzn-2.jar;hadoop-client-3.2.1-amzn-2.jar;hadoop-common-3.2.1.jar;hadoop-hdfs-3.2.1-amzn-2.jar;hadoop-hdfs-client-3.2.1-amzn-2.jar;hadoop-mapreduce-client-app-3.2.1-amzn-2.jar;hadoop-mapreduce-client-common-3.2.1-amzn-2.jar;hadoop-mapreduce-client-core-3.2.1-amzn-2.jar;hadoop-mapreduce-client-jobclient-3.2.1-amzn-2.jar;hadoop-mapreduce-client-shuffle-3.2.1-amzn-2.jar;hadoop-yarn-api-3.2.1-amzn-2.jar;hadoop-yarn-client-3.2.1-amzn-2.jar;hadoop-yarn-common-3.2.1-amzn-2.jar;hadoop-yarn-server-common-3.2.1-amzn-2.jar;hadoop-yarn-server-web-proxy-3.2.1-amzn-2.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;htrace-core4-4.1.0-incubating.jar;jackson-annotations-2.10.1.jar;jackson-core-2.10.1.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-databind-2.10.1.jar;jackson-dataformat-cbor-2.10.1.jar;jackson-mapper-asl-1.9.13.jar;jackson-module-paranamer-2.10.1.jar;jackson-module-scala_2.12-2.10.1.jar;jackson-xc-1.9.13.jar;javax.inject-1.jar;javax.inject-2.4.0.jar;log4j-1.2.17.jar;libthrift-0.12.0.jar;metrics-core-4.1.1.jar;metrics-json-4.1.1.jar;protobuf-java-2.5.0.jar;re2j-1.1.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;stax2-api-4.2.1.jar;woodstox-core-5.0.3.jar">
       </classloader>
       <classloader
             index="HBASE:AMAZON_EMR:EMR_62_x"
-            libraries="avro-1.8.2.jar;avro-mapred-1.8.2.jar;commons-codec-1.11.jar;commons-collections-3.2.2.jar;commons-compiler-3.0.16.jar;commons-configuration-1.6.jar;commons-configuration2-2.1.1.jar;commons-httpclient-3.1.jar;commons-io-2.5.jar;commons-logging-1.1.3.jar;commons-lang-2.6.jar;commons-lang3-3.9.jar;curator-client-2.6.0.jar;guava-27.0-jre.jar;gson-2.2.4.jar;hadoop-auth-3.2.1-amzn-2.jar;hadoop-aws-3.2.1-amzn-2.jar;hadoop-client-3.2.1-amzn-2.jar;hadoop-common-3.2.1-amzn-2.jar;hadoop-hdfs-3.2.1-amzn-2.jar;hadoop-hdfs-client-3.2.1-amzn-2.jar;hadoop-mapreduce-client-app-2.8.1.jar;hadoop-mapreduce-client-common-3.2.1-amzn-2.jar;hadoop-mapreduce-client-core-3.2.1-amzn-2.jar;hadoop-mapreduce-client-jobclient-3.2.1-amzn-2.jar;hadoop-mapreduce-client-shuffle-3.2.1-amzn-2.jar;hadoop-yarn-api-3.2.1-amzn-2.jar;hadoop-yarn-client-3.2.1-amzn-2.jar;hadoop-yarn-common-3.2.1-amzn-2.jar;hadoop-yarn-server-common-3.2.1-amzn-2.jar;hadoop-yarn-server-web-proxy-3.2.1-amzn-2.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;htrace-core4-4.1.0-incubating.jar;jackson-annotations-2.10.1.jar;jackson-core-2.10.1.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-databind-2.10.1.jar;jackson-mapper-asl-1.9.13.jar;jackson-module-paranamer-2.10.1.jar;jackson-module-scala_2.12-2.10.1.jar;jackson-xc-1.9.13.jar;javax.inject-1.jar;javax.inject-2.4.0.jar;log4j-1.2.17.jar;protobuf-java-3.15.8.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;stax2-api-4.2.1.jar;woodstox-core-5.0.3.jar;hbase-common-2.2.6-amzn-0.jar;hbase-client-2.2.6-amzn-0.jar;hbase-hadoop-compat-2.2.6-amzn-0.jar;hbase-protocol-2.2.6-amzn-0.jar;hbase-server-2.2.6-amzn-0.jar;hbase-shaded-miscellaneous-2.2.1.jar;hbase-shaded-client-2.2.6-amzn-0.jar;hbase-protocol-shaded-2.2.6-amzn-0.jar;hive-hbase-handler-3.1.2-amzn-3.jar">
+            libraries="avro-1.8.2.jar;avro-mapred-1.8.2.jar;commons-cli-1.2.jar;commons-codec-1.11.jar;commons-collections-3.2.2.jar;commons-compiler-3.0.16.jar;commons-configuration-1.6.jar;commons-configuration2-2.1.1.jar;commons-httpclient-3.1.jar;commons-io-2.5.jar;commons-logging-1.1.3.jar;commons-lang-2.6.jar;commons-lang3-3.9.jar;commons-text-1.8.jar;curator-client-2.6.0.jar;guava-27.0-jre.jar;gson-2.2.4.jar;hadoop-auth-3.2.1-amzn-2.jar;hadoop-aws-3.2.1-amzn-2.jar;hadoop-client-3.2.1-amzn-2.jar;hadoop-common-3.2.1.jar;hadoop-hdfs-3.2.1-amzn-2.jar;hadoop-hdfs-client-3.2.1-amzn-2.jar;hadoop-mapreduce-client-app-3.2.1-amzn-2.jar;hadoop-mapreduce-client-common-3.2.1-amzn-2.jar;hadoop-mapreduce-client-core-3.2.1-amzn-2.jar;hadoop-mapreduce-client-jobclient-3.2.1-amzn-2.jar;hadoop-mapreduce-client-shuffle-3.2.1-amzn-2.jar;hadoop-yarn-api-3.2.1-amzn-2.jar;hadoop-yarn-client-3.2.1-amzn-2.jar;hadoop-yarn-common-3.2.1-amzn-2.jar;hadoop-yarn-server-common-3.2.1-amzn-2.jar;hadoop-yarn-server-web-proxy-3.2.1-amzn-2.jar;httpclient-4.5.5.jar;httpcore-4.4.9.jar;htrace-core4-4.1.0-incubating.jar;jackson-annotations-2.10.1.jar;jackson-core-2.10.1.jar;jackson-core-asl-1.9.14-TALEND.jar;jackson-databind-2.10.1.jar;jackson-dataformat-cbor-2.10.1.jar;jackson-mapper-asl-1.9.13.jar;jackson-module-paranamer-2.10.1.jar;jackson-module-scala_2.12-2.10.1.jar;jackson-xc-1.9.13.jar;javax.inject-1.jar;javax.inject-2.4.0.jar;log4j-1.2.17.jar;libthrift-0.12.0.jar;metrics-core-4.1.1.jar;metrics-json-4.1.1.jar;protobuf-java-2.5.0.jar;re2j-1.1.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;stax2-api-4.2.1.jar;woodstox-core-5.0.3.jar;hbase-common-2.2.6-amzn-0.jar;hbase-client-2.2.6-amzn-0.jar;hbase-hadoop-compat-2.2.6-amzn-0.jar;hbase-protocol-2.2.6-amzn-0.jar;hbase-server-2.2.6-amzn-0.jar;hbase-shaded-miscellaneous-2.2.1.jar;hbase-shaded-client-2.2.6-amzn-0.jar;hbase-protocol-shaded-2.2.6-amzn-0.jar;hive-hbase-handler-3.1.2-amzn-3.jar;zookeeper-3.4.14.jar">
       </classloader>
     </extension>
 

@@ -712,6 +712,54 @@
             "jarName": "bigquery-connector-hadoop3-1.1.6-shaded.jar",
             "mvnUri": "mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop3-1.1.6/jar/shaded",
             "useStudioRepository": "true"
+        },
+        {
+            "id": "talend-bigdata-launcher-core",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "talend-bigdata-launcher-core-2.1.2.jar",
+            "mvnUri": "mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.1.2/jar",
+            "useStudioRepository": "true"
+        },
+        {
+            "id": "talend-bigdata-launcher-livy",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "talend-bigdata-launcher-livy-2.1.2.jar",
+            "mvnUri": "mvn:org.talend.bigdata.libs/talend-bigdata-launcher-livy/2.1.2/jar",
+            "useStudioRepository": "true"
+        },
+        {
+            "id": "freemarker",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "freemarker-2.3.31.jar",
+            "mvnUri": "mvn:org.freemarker/freemarker/2.3.31/jar",
+            "useStudioRepository": "true"
+        },
+        {
+            "id": "gateway-shell",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "gateway-shell-1.5.0.jar",
+            "mvnUri": "mvn:org.apache.knox/gateway-shell/1.5.0/jar",
+            "useStudioRepository": "true"
+        },
+        {
+            "id": "gateway-i18n",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "gateway-i18n-1.5.0.jar",
+            "mvnUri": "mvn:org.apache.knox/gateway-i18n/1.5.0/jar",
+            "useStudioRepository": "true"
+        },
+        {
+            "id": "fluent-hc",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "fluent-hc-4.5.13.jar",
+            "mvnUri": "mvn:org.apache.httpcomponents/fluent-hc/4.5.13/jar",
+            "useStudioRepository": "true"
         }
     ],
     "moduleGroups": [
@@ -824,7 +872,13 @@
                 "spark-hive_2.11",
                 "spark-mllib_2.11",
                 "spark-yarn_2.11",
-                "spark-streaming-kafka"
+                "spark-streaming-kafka",
+                "talend-bigdata-launcher-core",
+                "talend-bigdata-launcher-livy",
+                "freemarker",
+                "gateway-shell",
+                "gateway-i18n",
+                "fluent-hc"
             ]
         },
         {

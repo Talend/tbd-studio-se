@@ -225,6 +225,7 @@
 			<IMPORT NAME="Talend File Enhanced" MODULE="talend_file_enhanced-1.1.jar"
 				MVN="mvn:org.talend.components.lib/talend_file_enhanced/1.1"
 				UrlPath="platform:/plugin/org.talend.libraries.custom/lib/talend_file_enhanced-1.1.jar"
+				REQUIRED="true" />
 			<IMPORT NAME="cxf-rt-frontend-jaxrs-3.3.10" MODULE="cxf-rt-frontend-jaxrs-3.3.10.jar"
 				MVN="mvn:org.apache.cxf/cxf-rt-frontend-jaxrs/3.3.10"
 				REQUIRED="false" REQUIRED_IF="DISTRIBUTION!='CUSTOM'" />

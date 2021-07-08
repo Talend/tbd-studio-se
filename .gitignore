@@ -7,4 +7,5 @@ classes/
 .idea
 *.iml
 lib/
+components.cache
 

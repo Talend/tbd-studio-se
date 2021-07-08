@@ -225,14 +225,14 @@ public abstract class AbstractDynamicDistributionsGroup implements IDynamicDistr
     }
 
     @Override
-    public void unregisterAllBuiltin(IDynamicMonitor monitor) throws Exception {
+    public void unregisterAllBuiltin(IDynamicMonitor monitor, boolean reloadLibCache) throws Exception {
         List<IDynamicDistribution> allRegistedDynamicDistributions = getAllRegisteredDynamicDistributions(monitor);
         if (allRegistedDynamicDistributions == null || allRegistedDynamicDistributions.isEmpty()) {
             return;
         }
         for (IDynamicDistribution dynamicDistribution : allRegistedDynamicDistributions) {
             try {
-                dynamicDistribution.unregisterAllBuiltin(monitor);
+                dynamicDistribution.unregisterAllBuiltin(monitor, reloadLibCache);
             } catch (Throwable e) {
                 ExceptionHandler.process(e);
             }
@@ -296,13 +296,13 @@ public abstract class AbstractDynamicDistributionsGroup implements IDynamicDistr
     }
 
     @Override
-    public void unregister(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor) throws Exception {
+    public void unregister(IDynamicPlugin dynamicPlugin, IDynamicMonitor monitor, boolean reloadLibCache) throws Exception {
         boolean unregisted = false;
         IDynamicPluginConfiguration pluginConfiguration = dynamicPlugin.getPluginConfiguration();
         String templateId = pluginConfiguration.getTemplateId();
         IDynamicDistribution dynamicDistribution = getDynamicDistributionForId(templateId, monitor);
         if (dynamicDistribution != null) {
-            dynamicDistribution.unregister(dynamicPlugin, monitor);
+            dynamicDistribution.unregister(dynamicPlugin, monitor, reloadLibCache);
             unregisted = true;
         }
         if (!unregisted) {
