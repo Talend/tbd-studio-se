@@ -901,13 +901,22 @@
                 "spark-mllib_2.11",
                 "spark-yarn_2.11",
                 "spark-streaming-kafka",
+                "fluent-hc"
+            ]
+        },
+        {
+            "id" : "SPARK-LIB-MRREQUIRED-DYNAMIC",
+            "description" : "",
+            "modules": [
                 "talend-bigdata-launcher-core",
                 "talend-bigdata-launcher-livy",
                 "talend-bigdata-launcher-knox",
+                "gateway-cloud-bindings",
                 "gateway-shell",
                 "gateway-i18n",
                 "commons-configuration",
-                "fluent-hc"
+                "wildfly-openssl",
+                "hadoop-azure"
             ]
         },
         {
