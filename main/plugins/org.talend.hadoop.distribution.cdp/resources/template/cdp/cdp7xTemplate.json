@@ -755,7 +755,7 @@
         },
         {
             "id": "gateway-shell",
-            "type": "STANDARD",
+            "type": "BASE",
             "context": "{properties.context}",
             "groupId" : "org.apache.knox",
             "artifactId" : "gateway-shell",
@@ -765,7 +765,7 @@
         },
         {
             "id": "gateway-i18n",
-            "type": "STANDARD",
+            "type": "BASE",
             "context": "{properties.context}",
             "groupId" : "org.apache.knox",
             "artifactId" : "gateway-i18n",
