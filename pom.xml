@@ -23,6 +23,7 @@
         <module>main/features/org.talend.tos.bigdata.feature</module>
         <module>main/features/org.talend.tos.bigdata.libraries.feature</module>
         <module>main/features/org.talend.hadoop.distribution.feature</module>
+        <module>main/features/org.talend.studio.components.bd.couchbase.feature</module>
         <module>main/plugins/org.talend.hadoop.distribution</module>
         <module>main/plugins/org.talend.hadoop.distribution.apache100</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh510mr1</module>
@@ -85,6 +86,7 @@
         <module>main/plugins/org.talend.repository.hdfs</module>
         <module>main/plugins/org.talend.repository.nosql</module>
         <module>main/plugins/org.talend.repository.oozie</module>
+        <module>main/plugins/org.talend.studio.components.bd.couchbase</module>
 
         <module>test/features/org.talend.bigdata.se.test.feature</module>
         <module>test/plugins/org.talend.bigdata.se.test.base</module>
