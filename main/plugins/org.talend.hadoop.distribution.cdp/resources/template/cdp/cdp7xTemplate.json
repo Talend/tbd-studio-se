@@ -889,13 +889,6 @@
                 "spark-mllib_2.11",
                 "spark-yarn_2.11",
                 "spark-streaming-kafka",
-                "talend-bigdata-launcher-core",
-                "talend-bigdata-launcher-livy",
-                "gateway-cloud-bindings",
-                "gateway-shell",
-                "gateway-i18n",
-                "wildfly-openssl",
-                "hadoop-azure",
                 "fluent-hc"
             ]
         },
