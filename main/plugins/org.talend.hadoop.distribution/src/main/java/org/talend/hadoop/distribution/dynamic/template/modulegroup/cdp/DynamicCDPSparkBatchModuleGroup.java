@@ -56,7 +56,7 @@ public class DynamicCDPSparkBatchModuleGroup extends DynamicSparkBatchModuleGrou
         DynamicPluginAdapter pluginAdapter = getPluginAdapter();
 
         String sparkMrRequiredRuntimeId = pluginAdapter
-                .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.SPARK2_MODULE_GROUP.getModuleName());
+                .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.SPARK_MRREQUIRED_MODULE_GROUP.getModuleName());
         String hdfsSpark2_1RuntimeId = pluginAdapter
                 .getRuntimeModuleGroupIdByTemplateId(DynamicModuleGroupConstant.HDFS_MODULE_GROUP_SPARK2_1.getModuleName());
         String hdfsCommonRuntimeId = pluginAdapter
