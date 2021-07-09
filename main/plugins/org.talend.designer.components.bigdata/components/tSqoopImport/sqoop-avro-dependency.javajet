@@ -12,6 +12,7 @@
 		String[] commandLine = new String[] {"<command>"};
 		try {
 			commandLine = ProcessorUtilities.getCommandLine("win32",true, processId, "",org.talend.designer.runprocess.IProcessor.NO_STATISTICS,org.talend.designer.runprocess.IProcessor.NO_TRACES, new String[]{});
+			System.out.println(commandLine);
 		} catch (ProcessorException e) {
 			e.printStackTrace();
 		}
@@ -32,17 +33,53 @@
 		routines.system.GetJarsToRegister getJarsToRegister_<%=cid %> = new routines.system.GetJarsToRegister();
 		java.lang.StringBuilder sb_<%=cid%> = new java.lang.StringBuilder();
 <%
-		
+        // Map every avro related artifact with a map version -> jar path
+        // Ex [avro -> [1.7.6 -> /path/to/1.7.6, 1.7.7 -> /path/to/1.7.7]
+        java.util.Map<String, java.util.Map<String, String>> avroDeps= new java.util.HashMap<String, Map<String, String>>();
 		for(int i=0; i<jarsToRegister.size(); i++) {
 			String jarToRegister = jarsToRegister.get(i);
 			for(int j=0; j<jars.size(); j++) {
 				if(jars.get(j).contains(jarToRegister)) {
 					emptyStringBuilder = false;
-%>
-					sb_<%=cid%>.append(getJarsToRegister_<%=cid %>.replaceJarPaths("<%=jars.get(j)%>", "file:///") + ",");
-<%
+					String[] tokens = jars.get(i).split("/|\\\\");
+            		String jarName = tokens[tokens.length - 1];
+            		System.out.println("======================================= " + jars.get(i));
+            		System.out.println("======================================= jarName:"+jarName);
+            		java.util.regex.Matcher matcher = java.util.regex.Pattern.compile("^(\\D+)-(.*)\\.jar").matcher(jarName);
+            		if (matcher.matches()) {
+	            		String artifact = matcher.group(1);
+	            		String ver = matcher.group(2);
+			            if (ver.endsWith("-6.0.0")){
+			                ver = ver.substring(0, ver.length() - 6);
+			            }
+			            java.util.Map<String, String> foundVersions = avroDeps.get(artifact);
+			            if (foundVersions == null) {
+			                foundVersions = new java.util.HashMap<String, String>();
+			            }
+			            foundVersions.put(ver,jars.get(i));
+			            avroDeps.put(artifact, foundVersions);
+			        }
+
 				}
 			}
 		}
+
+        // Take first avro-mapred version as a reference
+        java.util.Map<String, String> avroMapRedDeps = avroDeps.get("avro-mapred");
+        String avroMapRedVersion = (String) avroMapRedDeps.keySet().toArray()[0];
+
+        // For each avro dependency try to align with avroMapRedVersion
+        for (Map.Entry<String, Map<String, String>> entry : avroDeps.entrySet()){
+            if (entry.getValue().get(avroMapRedVersion)!=null){
+%>
+				sb_<%=cid%>.append(getJarsToRegister_<%=cid %>.replaceJarPaths("<%=entry.getValue().get(avroMapRedVersion)%>", "file:///") + ",");
+<%
+            } else {
+            	String jarPath = (String) entry.getValue().values().toArray()[0];
+%>
+				sb_<%=cid%>.append(getJarsToRegister_<%=cid %>.replaceJarPaths("<%=jarPath%>", "file:///") + ",");
+<%
+            }
+        }
 	}
 %>
