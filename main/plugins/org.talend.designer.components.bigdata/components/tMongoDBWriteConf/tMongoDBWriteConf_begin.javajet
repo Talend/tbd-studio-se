@@ -34,6 +34,10 @@
     boolean useReplicaSet="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_REPLICA_SET__"));
     boolean removeRoot="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__REMOVE_ROOT__"));
     boolean useSSL = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_SSL__"));
+
+    // declare read preferences and write concerns for unified connection template
+    boolean setReadPreference = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_READ_PREFERENCE__"));
+    String readPreference = ElementParameterParser.getValue(node, "__READ_PREFERENCE__");
     boolean setWriteConcern = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_WRITE_CONCERN__"));
     String writeConcern = ElementParameterParser.getValue(node, "__WRITE_CONCERN__");
 
@@ -64,6 +68,9 @@
 
     boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
 	%>
+
+    <%@ include file="../templates/MongoDB/ApplicationName.javajet"%>
+
 	int nb_line_<%=cid %> = 0;
 	<%
     List<IMetadataTable> metadatas = node.getMetadataList();
@@ -78,27 +85,16 @@
 			<%}%>
 
 			<%if(version_4_4_X) {%>
-				<%@ include file="./tMongoDBWriteConf_connection_4_4_X.javajet"%>
+				<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GridFS/GetMongoDBConnection_4_4_X.javajet"%>
 				<%
 			} else {%>
-				<%@ include file="./tMongoDBWriteConf_connection_below_4_4_X.javajet"%>
+				<%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GridFS/GetMongoDBConnection_below_4_4_X.javajet"%>
 				<%
 			}%>
 
 			resourceMap.put("mongo_<%=cid%>", mongo_<%=cid%>);
 
-			<%if(isLog4jEnabled) {
-				if(version_4_4_X) {%>
-					for (com.mongodb.connection.ServerDescription description : mongo_<%=cid%>.getClusterDescription().getServerDescriptions()) {
-						log.info("<%=cid%> - Connecting to " + description.getAddress());
-					}
-					<%
-				} else {%>
-					log.info("<%=cid%> - Connecting to " + mongo_<%=cid%>.getServerAddressList() + ".");
-					<%
-				}
-			}
-			if(dropExistCollection) {%>
+			<%if(dropExistCollection) {%>
 				<%if(version_4_4_X || version_3_5_X) {%>
 					db_<%=cid%>.getCollection(<%=collection%>).drop();
 				<%} else {%>

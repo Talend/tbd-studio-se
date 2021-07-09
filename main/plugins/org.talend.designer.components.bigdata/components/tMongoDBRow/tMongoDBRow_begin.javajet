@@ -9,9 +9,9 @@
 	" 
 %>
 <%
-  	CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
-  	INode node = (INode)codeGenArgument.getArgument();
-  	String cid = node.getUniqueName();
+    CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+    INode node = (INode)codeGenArgument.getArgument();
+    String cid = node.getUniqueName();
 
     String dbhost   = ElementParameterParser.getValue(node, "__HOST__");
     String dbname   = ElementParameterParser.getValue(node, "__DATABASE__");
@@ -25,27 +25,27 @@
     String mongoPort = ElementParameterParser.getValue(node, "__PORT__");
     String dbport = mongoPort.startsWith("context.") ? "Integer.valueOf(" + mongoPort + ").intValue()" : mongoPort.replace("\"", "");
     boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"));
-  	boolean useReplicaSet="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_REPLICA_SET__"));
+    boolean useReplicaSet="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_REPLICA_SET__"));
     List<Map<String,String>> replicaAddrs= (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__REPLICA_SET__");
     boolean useAuthDB = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_AUTHENTICATION_DATABASE__"));
     String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
     String usedAuthenticationDB = useAuthDB ? authDB : dbname;
     boolean useSSL = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_SSL__"));
-  	boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
+    boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
     String dbversion;
-		if(useExistingConnection){
-	    String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+    if(useExistingConnection){
+        String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
         INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
         dbversion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
     } else {
         dbversion = ElementParameterParser.getValue(node, "__DB_VERSION__");
     }
-	%>
+%>
 
-	<%if("MONGODB_4_4_X".equals(dbversion)) {%>
-		<%@ include file="./tMongoDBRow_begin_4_4_X.javajet"%>
-		<%
-	} else {%>
-		<%@ include file="./tMongoDBRow_begin_below_4_4_X.javajet"%>
-		<%
-	}%>
+    <%if("MONGODB_4_4_X".equals(dbversion)) {%>
+        <%@ include file="./tMongoDBRow_begin_4_4_X.javajet"%>
+        <%
+    } else {%>
+        <%@ include file="./tMongoDBRow_begin_below_4_4_X.javajet"%>
+        <%
+    }%>

@@ -51,7 +51,7 @@ public abstract class AbstractDynamicDistributionSetupForm extends AbstractDynam
         // step 1: clean unused modules
         IDynamicDistributionPreference dynamicDistributionPreference = dynDistrGroup
                 .getDynamicDistributionPreference(ProjectManager.getInstance().getCurrentProject());
-        DynamicPluginAdapter pluginAdapter = new DynamicPluginAdapter(dynamicPlugin, dynamicDistributionPreference);
+        DynamicPluginAdapter pluginAdapter = new DynamicPluginAdapter(dynamicPlugin, dynamicDistributionPreference, null);
         pluginAdapter.cleanUnusedAndRefresh();
 
         // step 2: save
@@ -76,7 +76,7 @@ public abstract class AbstractDynamicDistributionSetupForm extends AbstractDynam
         dMonitor.setTaskName(
                 Messages.getString("AbstractDynamicDistributionSetupForm.progress.registing", pluginConfiguration.getName())); //$NON-NLS-1$
         if (ActionType.EditExisting.equals(actionType)) {
-            dynDistrGroup.unregister(fDynPlugin, dMonitor);
+            dynDistrGroup.unregister(fDynPlugin, dMonitor, false);
         }
         dynDistrGroup.register(fDynPlugin, dMonitor);
 

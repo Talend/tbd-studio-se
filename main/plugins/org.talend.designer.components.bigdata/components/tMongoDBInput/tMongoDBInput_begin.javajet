@@ -14,7 +14,7 @@
     	java.util.Map		
 	" 
 %>
-<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Log4j/Log4jFileUtil.javajet"%>
+
 <%
   	CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
   	INode node = (INode)codeGenArgument.getArgument();
@@ -36,15 +36,19 @@
     String query = ElementParameterParser.getValue(node,"__QUERY__");
     query = query.replaceAll("\n","");
     query = query.replaceAll("\r","");
-  	String limit = ElementParameterParser.getValue(node,"__LIMIT__");
+    String limit = ElementParameterParser.getValue(node,"__LIMIT__");
 
-  	List<Map<String, String>> mapping = (List<Map<String,String>>)ElementParameterParser.getObjectValueXML(node, "__MAPPING__");
-  	List<Map<String, String>> sorts = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__SORT__");
-  	boolean useReplicaSet="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_REPLICA_SET__"));
+    // declare read preferences and write concerns for unified connection template
+    boolean setReadPreference = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_READ_PREFERENCE__"));
+    String readPreference = ElementParameterParser.getValue(node, "__READ_PREFERENCE__");
+    boolean setWriteConcern = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_WRITE_CONCERN__"));
+    String writeConcern = ElementParameterParser.getValue(node, "__WRITE_CONCERN__");
+
+    List<Map<String, String>> mapping = (List<Map<String,String>>)ElementParameterParser.getObjectValueXML(node, "__MAPPING__");
+    List<Map<String, String>> sorts = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__SORT__");
+    boolean useReplicaSet="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_REPLICA_SET__"));
     List<Map<String,String>> replicaAddrs= (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__REPLICA_SET__");
     boolean useSSL = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_SSL__"));
-  	boolean setReadPreference = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_READ_PREFERENCE__"));
-    String readPreference = ElementParameterParser.getValue(node, "__READ_PREFERENCE__");
     boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__"));
     List<Map<String, String>> aggregationStages = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__AGGREGATION_STAGES__");
     boolean isAggregationQuery = "AGGREGATION_QUERY".equals(ElementParameterParser.getValue(node,"__QUERY_TYPE__"));
@@ -55,9 +59,9 @@
     boolean specifyFields="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SPECIFY_FIELDS__"));
     List<Map<String, String>> filter = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__FIELDS_TO_RETURN__");
     boolean queryOptionNoTimeOut;
-	String dbversion;
-	if(useExistingConnection){
-	    String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+    String dbversion;
+    if(useExistingConnection){
+        String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
         INode connectionNode = NodeUtil.getNodeByUniqueName(node.getProcess(), connection);
         dbversion = ElementParameterParser.getValue(connectionNode, "__DB_VERSION__");
         queryOptionNoTimeOut = "true".equalsIgnoreCase(ElementParameterParser.getValue(connectionNode, "__QUERYOPTION_NOTIMEOUT__"));
@@ -83,12 +87,9 @@
 		}
     }
 	%>
-	    <%
-            if(isLog4jEnabled){%>
-			java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.OFF);
-			<%}else{%>
-			java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.SEVERE);
-          <%}%>
+
+    <%@ include file="../templates/MongoDB/ApplicationName.javajet"%>
+
 	int nb_line_<%=cid %> = 0;
 	<%
   	if(metadatas != null && metadatas.size() > 0) {
@@ -100,6 +101,9 @@
             <%} else {%>
                 <%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/GridFS/GetMongoDBConnection_below_4_4_X.javajet"%>
             <%}%>
+
+            <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/Log4j/Log4jFileUtil.javajet"%>
+            <%log4jFileUtil.startRetriveDataInfo();%>
 
 				<%if(version_3_5_X || version_4_4_X) {%>
 					com.mongodb.client.MongoCollection<org.bson.Document> coll_<%=cid%> = db_<%=cid%>.getCollection(<%=collection%>);
@@ -219,7 +223,6 @@
 						com.mongodb.DBObject myQuery_<%=cid%> = (com.mongodb.DBObject) com.mongodb.util.JSON.parse(<%=query%>);
 						com.mongodb.DBObject fields_<%=cid%> = new com.mongodb.BasicDBObject();
 						<%if(specifyFields) {
-							java.lang.StringBuilder projection = new java.lang.StringBuilder();
 							for (int i=0; i <filter.size(); i++) {
 								String name = filter.get(i).get("FIELD_NAME");%>
 								fields_<%=cid%>.put(<%=name%>, true);

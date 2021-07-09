@@ -252,6 +252,9 @@
 							org.apache.hadoop.security.UserGroupInformation.loginUserFromKeytab(<%=userPrincipal%>, <%=keytabPath%>);
 <%
 						}
+%>
+						String kerberosPart_<%=cid%>="";
+<%
 						// Using SSL in Secure Mode
 						if (useSsl && hiveDistrib.doSupportSSL()) {
 							// Does the distrib support SSL + KERBEROS
@@ -265,30 +268,34 @@
 							String decryptedSslStorePassword_<%=cid%> = <%= ElementParameterParser.getValue(node, sslStorepasswordFieldName)%>;
 <%
 								}
-%>                 String kerberosPart_<%=cid%>="";
-                   <%if("impala".equalsIgnoreCase(impalaDbProtocol)){%>
-						 String krbServiceName_<%=cid%>  = (<%=impalaPrincipal%>.split("/")[0]);
-		             String krbHostFQDN_<%=cid%> = (<%=impalaPrincipal%>.split("/")[1].split("@")[0]);
-		             String krbRealm_<%=cid%> = (<%=impalaPrincipal%>.split("/")[1].split("@")[1]);
-		             kerberosPart_<%=cid%> = ";AuthMech=1" 
-						                              + ";KrbServiceName=" + krbServiceName_<%=cid%>
-						                              + ";KrbHostFQDN=" + krbHostFQDN_<%=cid%>
-						                              + ";KrbRealm=" + krbRealm_<%=cid%>;
-						<%}else{%>
-						 kerberosPart_<%=cid%> = ";principal=" + hiveServer2KerberosPrincipal;
-                  <%}%> 
-							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + kerberosPart_<%=cid%> +"<%=sslSyntaxe%>" +";sslTrustStore=" + <%=sslTrustStore%> + ";trustStorePassword=" + decryptedSslStorePassword_<%=cid%>;
+								if("impala".equalsIgnoreCase(impalaDbProtocol)){
+%>
+									String krbServiceName_<%=cid%>  = (<%=impalaPrincipal%>.split("/")[0]);
+						            String krbHostFQDN_<%=cid%> = (<%=impalaPrincipal%>.split("/")[1].split("@")[0]);
+						            String krbRealm_<%=cid%> = (<%=impalaPrincipal%>.split("/")[1].split("@")[1]);
+						            kerberosPart_<%=cid%> = ";AuthMech=1"
+				                          + ";KrbServiceName=" + krbServiceName_<%=cid%>
+				                          + ";KrbHostFQDN=" + krbHostFQDN_<%=cid%>
+				                          + ";KrbRealm=" + krbRealm_<%=cid%>;
+<%
+								} else {
+%>
+									kerberosPart_<%=cid%> = ";principal=" + hiveServer2KerberosPrincipal;
+<%
+                  				}
+%> 
+								String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + kerberosPart_<%=cid%> +"<%=sslSyntaxe%>" +";sslTrustStore=" + <%=sslTrustStore%> + ";trustStorePassword=" + decryptedSslStorePassword_<%=cid%>;
 <%
 							// Does the distrib support only SASL-QOP + KERBEROS
 							} else {
 						
 %>
-							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> +kerberosPart_<%=cid%>+";sasl.qop=auth-conf";
+								String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> +kerberosPart_<%=cid%>+";sasl.qop=auth-conf";
 <%
 							}
 						} else {
 %>
-							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + kerberosPart_<%=cid%>;
+							String url_<%=cid%> = "jdbc:<%=impalaDbProtocol%>://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%> + ";principal=" + <%=impalaPrincipal%>;
 <%
 						}
 					// END IF06
