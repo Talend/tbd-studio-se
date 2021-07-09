@@ -28,6 +28,22 @@
 				</executions>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${project.basedir}/car</directory>
+							<includes>
+								<include>**/*.car</include>
+							</includes>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>com.google.code.maven-replacer-plugin</groupId>
 				<artifactId>maven-replacer-plugin</artifactId>
 				<version>1.3.5</version>
@@ -48,13 +64,13 @@
 							<value>${compGroup}</value>
 						</replacement>
 						<replacement>
-                            <token>@@COMP_ARTIFACT@@</token>
-                            <value>${compArtifact}</value>
-                        </replacement>
-                        <replacement>
-                            <token>@@COMP_VERSION@@</token>
-                            <value>${tacokit.components.version}</value>
-                        </replacement>
+							<token>@@COMP_ARTIFACT@@</token>
+							<value>${compArtifact}</value>
+						</replacement>
+						<replacement>
+							<token>@@COMP_VERSION@@</token>
+							<value>${tacokit.components.version}</value>
+						</replacement>
 					</replacements>
 				</configuration>
 			</plugin>
