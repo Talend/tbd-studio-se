@@ -12,19 +12,6 @@
 // ============================================================================
 package org.talend.studio.components.bd.couchbase;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
-import org.osgi.framework.FrameworkUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.talend.sdk.component.studio.util.TCKComponentInstallerTask;
 
 /**
@@ -33,29 +20,9 @@ import org.talend.sdk.component.studio.util.TCKComponentInstallerTask;
  */
 public class CouchbaseInstaller extends TCKComponentInstallerTask {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CouchbaseInstaller.class);
-
     @Override
-    protected List<File> getCarFiles() {
-        URL carFolder = FileLocator.find(FrameworkUtil.getBundle(CouchbaseInstaller.class), new Path("car"), null);
-        File carDir = null;
-        if (carFolder != null) {
-            try {
-                carDir = new File(FileLocator.toFileURL(carFolder).getPath());
-                if (carDir.isDirectory()) {
-                    File[] cars = carDir.listFiles();
-                    LOGGER.info("Files found: {}", Arrays.toString(cars));
-
-                    List<File> carFiles = Stream.of(cars).filter(f -> f.getName().endsWith(".car")).collect(Collectors.toList());
-                    return carFiles;
-                }
-
-            } catch (IOException e) {
-                LOGGER.error("Can't find car file", e);
-            }
-        }
-        LOGGER.error("Can't find car file from folder {}", carDir);
-        return null;
+    protected Class<? extends TCKComponentInstallerTask> getInstallerClass() {
+        return CouchbaseInstaller.class;
     }
 
 }
