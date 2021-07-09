@@ -112,7 +112,7 @@ public class HadoopServiceProperties {
 
     private String knoxPassword;
     
-    private String knoxGatewayPath;
+    private String knoxDirectory;
     
 
     
@@ -470,13 +470,12 @@ public class HadoopServiceProperties {
         this.knoxPassword = knoxPassword;
     }
     
-    public String getKnoxGatewayPath() {
-        return knoxGatewayPath;
+    public String getKnoxDirectory() {
+        return knoxDirectory;
     }
-
     
-    public void setKnoxGatewayPath(String knoxGatewayPath) {
-        this.knoxGatewayPath = knoxGatewayPath;
+    public void setKnoxDirectory(String knoxDirectory) {
+        this.knoxDirectory = knoxDirectory;
     }
 
 }

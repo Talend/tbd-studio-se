@@ -33,18 +33,18 @@ import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
 
 
-public class ClouderaCDPInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConnection> {
+public class KnoxInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConnection> {
     
     private LabelledText knoxURLText;
     private LabelledText knoxUserText;
     private LabelledText knoxPasswordText;
-    private LabelledText knoxGatewayPathText;
+    private LabelledText knoxDirectoryText;
 
     private UtilsButton checkServicesBtn;
     
     private final boolean creation;
 
-    protected ClouderaCDPInfoForm(Composite parent, ConnectionItem connectionItem, String[] existingNames, boolean creation,
+    protected KnoxInfoForm(Composite parent, ConnectionItem connectionItem, String[] existingNames, boolean creation,
             DistributionBean hadoopDistribution, DistributionVersion hadoopVersison) {
         super(parent, SWT.NONE, existingNames);
         this.connectionItem = connectionItem;
@@ -59,16 +59,16 @@ public class ClouderaCDPInfoForm extends AbstractHadoopClusterInfoForm<HadoopClu
     }
     
     private void addConfigurationFields() {
-        Group configGroup = Form.createGroup(this, 2, Messages.getString("ClouderaCDPInfoForm.text.configuration"), 110); //$NON-NLS-1$
+        Group configGroup = Form.createGroup(this, 2, Messages.getString("KnoxInfoForm.text.configuration"), 110); //$NON-NLS-1$
         configGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         
-        knoxURLText = new LabelledText(configGroup, Messages.getString("ClouderaCDPInfoForm.text.knoxURL"), 1); //$NON-NLS-1$ $NON-NLS-2$
-        knoxUserText = new LabelledText(configGroup, Messages.getString("ClouderaCDPInfoForm.text.knoxUser"), 1); //$NON-NLS-1$
+        knoxURLText = new LabelledText(configGroup, Messages.getString("KnoxInfoForm.text.knoxURL"), 1); //$NON-NLS-1$ $NON-NLS-2$
+        knoxUserText = new LabelledText(configGroup, Messages.getString("KnoxInfoForm.text.knoxUser"), 1); //$NON-NLS-1$
 
-        knoxPasswordText = new LabelledText(configGroup, Messages.getString("ClouderaCDPInfoForm.text.knoxPassword"), 1, //$NON-NLS-1$
+        knoxPasswordText = new LabelledText(configGroup, Messages.getString("KnoxInfoForm.text.knoxPassword"), 1, //$NON-NLS-1$
                 SWT.PASSWORD | SWT.BORDER | SWT.SINGLE);
 
-        knoxGatewayPathText = new LabelledText(configGroup, Messages.getString("ClouderaCDPInfoForm.text.knoxGatewayPath"), 1); //$NON-NLS-1$
+        knoxDirectoryText = new LabelledText(configGroup, Messages.getString("KnoxInfoForm.text.knoxDirectory"), 1); //$NON-NLS-1$
     }
     
     private void addCheckFields() {
@@ -105,7 +105,7 @@ public class ClouderaCDPInfoForm extends AbstractHadoopClusterInfoForm<HadoopClu
         nnProperties.setKnoxURL(knoxURLText.getText());
         nnProperties.setKnoxUser(knoxUserText.getText());
         nnProperties.setKnoxPassword(knoxPasswordText.getText());
-        nnProperties.setKnoxGatewayPath(knoxGatewayPathText.getText());
+        nnProperties.setKnoxDirectory(knoxDirectoryText.getText());
         
         serviceTypeToProperties.put(EHadoopServiceType.KNOX_RESOURCE_MANAGER, nnProperties);
         serviceTypeToProperties.put(EHadoopServiceType.KNOX_NAMENODE, nnProperties);
@@ -130,19 +130,19 @@ public class ClouderaCDPInfoForm extends AbstractHadoopClusterInfoForm<HadoopClu
     public boolean checkFieldsValue() {
         checkServicesBtn.setEnabled(false);
         if (!validText(knoxURLText.getText())) {
-            updateStatus(IStatus.ERROR, Messages.getString("ClouderaCDPInfoForm.check.configuration.knoxURL")); //$NON-NLS-1$
+            updateStatus(IStatus.ERROR, Messages.getString("KnoxInfoForm.check.configuration.knoxURL")); //$NON-NLS-1$
             return false;
         }
         if (!validText(knoxUserText.getText())) {
-            updateStatus(IStatus.ERROR, Messages.getString("ClouderaCDPInfoForm.check.configuration.knoxUser")); //$NON-NLS-1$
+            updateStatus(IStatus.ERROR, Messages.getString("KnoxInfoForm.check.configuration.knoxUser")); //$NON-NLS-1$
             return false;
         }
         if (!validText(knoxPasswordText.getText())) {
-            updateStatus(IStatus.ERROR, Messages.getString("ClouderaCDPInfoForm.check.configuration.knoxPassword")); //$NON-NLS-1$
+            updateStatus(IStatus.ERROR, Messages.getString("KnoxInfoForm.check.configuration.knoxPassword")); //$NON-NLS-1$
             return false;
         }
-        if (!validText(knoxGatewayPathText.getText())) {
-            updateStatus(IStatus.ERROR, Messages.getString("ClouderaCDPInfoForm.check.configuration.knoxGatewayPath")); //$NON-NLS-1$
+        if (!validText(knoxDirectoryText.getText())) {
+            updateStatus(IStatus.ERROR, Messages.getString("KnoxInfoForm.check.configuration.knoxDirectory")); //$NON-NLS-1$
             return false;
         }
         
@@ -181,12 +181,12 @@ public class ClouderaCDPInfoForm extends AbstractHadoopClusterInfoForm<HadoopClu
                 checkFieldsValue();
             }
         });
-        knoxGatewayPathText.addModifyListener(new ModifyListener() {
+        knoxDirectoryText.addModifyListener(new ModifyListener() {
 
             @Override
             public void modifyText(final ModifyEvent e) {
-                getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_KNOX_GATEWAY_PATH,
-                        knoxGatewayPathText.getText());
+                getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_KNOX_DIRECTORY,
+                        knoxDirectoryText.getText());
                 checkFieldsValue();
             }
         });
@@ -229,9 +229,9 @@ public class ClouderaCDPInfoForm extends AbstractHadoopClusterInfoForm<HadoopClu
                 ConnParameterKeys.CONN_PARA_KEY_KNOX_PASSWORD));
         knoxPasswordText.setText(knoxPassword);
         
-        String knoxGatewayPath = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_KNOX_GATEWAY_PATH));
-        knoxGatewayPathText.setText(knoxGatewayPath);
+        String knoxDirectory = StringUtils.trimToEmpty(getConnection().getParameters().get(
+                ConnParameterKeys.CONN_PARA_KEY_KNOX_DIRECTORY));
+        knoxDirectoryText.setText(knoxDirectory);
         
         updateStatus(IStatus.OK, EMPTY_STRING);
     }

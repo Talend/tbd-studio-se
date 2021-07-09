@@ -197,7 +197,7 @@ public enum EHDFSRepositoryToComponent {
     
     KNOX_PASSWORD("KNOX_PASSWORD", "KNOX_PASSWORD"), //$NON-NLS-1$ //$NON-NLS-2$
     
-    KNOX_GATEWAY_PATH("KNOX_GATEWAY_PATH", "KNOX_GATEWAY_PATH"); //$NON-NLS-1$ //$NON-NLS-2$
+    KNOX_DIRECTORY("WEBHDFS_FOLDER", "WEBHDFS_FOLDER"); //$NON-NLS-1$ //$NON-NLS-2$
 
     public final String repositoryValue;
 

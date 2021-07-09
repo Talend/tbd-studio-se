@@ -35,10 +35,9 @@ public class CheckedKnoxNamenodeProvider extends AbstractCheckedServiceProvider 
         String knoxUrl = serviceProperties.getKnoxURL();
         String knoxUser = serviceProperties.getKnoxUser();
         String knoxPassword = serviceProperties.getKnoxPassword();
-        String knoxGatewayPath = serviceProperties.getKnoxGatewayPath();
         
         Object knoxWebHDFS = ReflectionUtils.newInstance(
-                "org.talend.bigdata.launcher.fs.KnoxWebHDFS", classLoader, new Object[] {knoxUser, knoxPassword,knoxUrl, knoxGatewayPath}, String.class, String.class, String.class, String.class); //$NON-NLS-1$
+                "org.talend.bigdata.launcher.fs.KnoxWebHDFS", classLoader, new Object[] {knoxUser, knoxPassword,knoxUrl}, String.class, String.class, String.class); //$NON-NLS-1$
         
         Object response = ReflectionUtils.invokeMethod(knoxWebHDFS, "checkService", new Object[0]); //$NON-NLS-1$
         

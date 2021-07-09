@@ -234,8 +234,8 @@ public class HadoopClusterForm extends AbstractHadoopForm<HadoopClusterConnectio
         } else if (HCVersionUtil.isDataBricks(getConnection())) {
             hcInfoForm = new DataBricksInfoForm(this, connectionItem, existingNamesArray, creation, hadoopDistribution,
                     hadoopVersion);
-        } else if (HCVersionUtil.isClouderaCDP(getConnection())) {
-            hcInfoForm = new ClouderaCDPInfoForm(this, connectionItem, existingNamesArray, creation, hadoopDistribution,
+        } else if (HCVersionUtil.isExecutedThroughKnox(getConnection())) {
+            hcInfoForm = new KnoxInfoForm(this, connectionItem, existingNamesArray, creation, hadoopDistribution,
                     hadoopVersion);
         } else {
             hcInfoForm = new StandardHCInfoForm(this, connectionItem, existingNamesArray, creation, hadoopDistribution,

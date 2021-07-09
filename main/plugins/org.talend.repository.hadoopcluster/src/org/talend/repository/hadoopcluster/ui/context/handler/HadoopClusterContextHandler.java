@@ -278,9 +278,9 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                         ConnectionContextHelper.createParameters(varList, paramName,
                                 conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_KNOX_PASSWORD));
                         break;
-                    case KnoxGatewayPath:
+                    case KnoxDirectory:
                         ConnectionContextHelper.createParameters(varList, paramName,
-                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_KNOX_GATEWAY_PATH));
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_KNOX_DIRECTORY));
                         break;
                     default:
                     }
@@ -621,8 +621,8 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
             hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_KNOX_PASSWORD,
                     ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
             break;
-        case KnoxGatewayPath:
-            hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_KNOX_GATEWAY_PATH,
+        case KnoxDirectory:
+            hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_KNOX_DIRECTORY,
                     ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
             break;
         default:

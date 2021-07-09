@@ -16,10 +16,9 @@ public class CheckedKnoxResourceManagerProvider extends AbstractCheckedServicePr
         String knoxUrl = serviceProperties.getKnoxURL();
         String knoxUser = serviceProperties.getKnoxUser();
         String knoxPassword = serviceProperties.getKnoxPassword();
-        String knoxGatewayPath = serviceProperties.getKnoxGatewayPath();
         
         Object knoxYarn = ReflectionUtils.newInstance(
-                "org.talend.bigdata.launcher.knox.yarn.KnoxYarn", classLoader, new Object[] {knoxUser, knoxPassword,knoxUrl, knoxGatewayPath}, String.class, String.class, String.class, String.class); //$NON-NLS-1$
+                "org.talend.bigdata.launcher.knox.yarn.KnoxYarn", classLoader, new Object[] {knoxUser, knoxPassword,knoxUrl}, String.class, String.class, String.class); //$NON-NLS-1$
         
         Object response = ReflectionUtils.invokeMethod(knoxYarn, "checkService", new Object[0]); //$NON-NLS-1$
 

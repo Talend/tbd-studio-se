@@ -183,7 +183,7 @@ public class HCVersionUtil {
         return false;
     }
     
-    public static boolean isClouderaCDP(HadoopClusterConnection connection) {
+    public static boolean isExecutedThroughKnox(HadoopClusterConnection connection) {
         if (connection != null) {
             HadoopComponent hadoopComponent;
             try {
