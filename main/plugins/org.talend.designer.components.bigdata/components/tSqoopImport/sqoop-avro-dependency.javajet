@@ -41,9 +41,9 @@
 			for(int j=0; j<jars.size(); j++) {
 				if(jars.get(j).contains(jarToRegister)) {
 					emptyStringBuilder = false;
-					String[] tokens = jars.get(i).split("/|\\\\");
+					String[] tokens = jars.get(j).split("/|\\\\");
             		String jarName = tokens[tokens.length - 1];
-            		System.out.println("======================================= " + jars.get(i));
+            		System.out.println("======================================= " + jars.get(j));
             		System.out.println("======================================= jarName:"+jarName);
             		java.util.regex.Matcher matcher = java.util.regex.Pattern.compile("^(\\D+)-(.*)\\.jar").matcher(jarName);
             		if (matcher.matches()) {
@@ -56,7 +56,7 @@
 			            if (foundVersions == null) {
 			                foundVersions = new java.util.HashMap<String, String>();
 			            }
-			            foundVersions.put(ver,jars.get(i));
+			            foundVersions.put(ver,jars.get(j));
 			            avroDeps.put(artifact, foundVersions);
 			        }
 
