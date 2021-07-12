@@ -68,6 +68,7 @@
         <module>main/plugins/org.talend.hadoop.distribution.piv200</module>
         <module>main/plugins/org.talend.hadoop.distribution.qubole</module>
         <module>main/plugins/org.talend.hadoop.distribution.spl30x</module>
+        <module>main/plugins/org.talend.hadoop.distribution.synapse</module>
         <module>main/plugins/org.talend.demo.bigdata.ce</module>
         <module>main/plugins/org.talend.designer.components.bigdata</module>
         <module>main/plugins/org.talend.designer.hdfsbrowse</module>
@@ -115,6 +116,7 @@
         <module>test/plugins/org.talend.hadoop.distribution.hdinsight340.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdinsight360.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdinsight400.test</module>
+        <module>test/plugins/org.talend.hadoop.distribution.synapse.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdp250.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.hdp260.test</module>
         <module>test/plugins/org.talend.hadoop.distribution.mapr500.test</module>

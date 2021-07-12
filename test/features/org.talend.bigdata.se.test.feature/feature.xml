@@ -132,6 +132,14 @@
          version="0.0.0"
          fragment="true"
          unpack="false"/>
+   
+   <plugin
+         id="org.talend.hadoop.distribution.synapse.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>      
 
    <plugin
          id="org.talend.oozie.scheduler.test"
@@ -283,8 +291,8 @@
          version="0.0.0"
          fragment="true"
          unpack="false"/>
-
-    <plugin
+   
+   <plugin
             id="org.talend.bigdata.se.test.base"
             download-size="0"
             install-size="0"

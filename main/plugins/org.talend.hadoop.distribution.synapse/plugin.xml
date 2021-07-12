@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="org.talend.core.runtime.librariesNeeded">
+
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+             id="spark-core_2.12-3.0.1.jar" name="spark-core_2.12-3.0.1.jar"
+             mvn_uri="mvn:org.apache.spark/spark-core_2.12/3.0.1"/>
+
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+             id="spark-hive_2.12-3.0.1.jar" name="spark-hive_2.12-3.0.1.jar"
+             mvn_uri="mvn:org.apache.spark/spark-hive_2.12/3.0.1"/>
+
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+             id="spark-network-common_2.12-3.0.1.jar" name="spark-network-common_2.12-3.0.1.jar"
+             mvn_uri="mvn:org.apache.spark/spark-network-common_2.12/3.0.1"/>
+
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+             id="spark-sql_2.12-3.0.1.jar" name="spark-sql_2.12-3.0.1.jar"
+             mvn_uri="mvn:org.apache.spark/spark-sql_2.12/3.0.1"/>
+
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+             id="spark-unsafe_2.12-3.0.1.jar" name="spark-unsafe_2.12-3.0.1.jar"
+             mvn_uri="mvn:org.apache.spark/spark-unsafe_2.12/3.0.1"/>
+
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+             id="spark-catalyst_2.12-3.0.1.jar" name="spark-catalyst_2.12-3.0.1.jar"
+             mvn_uri="mvn:org.apache.spark/spark-catalyst_2.12/3.0.1"/>
+
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+             id="spark-tags_2.12-3.0.1.jar" name="spark-tags_2.12-3.0.1.jar"
+             mvn_uri="mvn:org.apache.spark/spark-tags_2.12/3.0.1"/>
+
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+             id="breeze_2.12-1.0.jar" name="breeze_2.12-1.0.jar"
+             mvn_uri="mvn:org.scalanlp/breeze_2.12/1.0"/>
+
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+             id="hadoop-common-3.2.1.jar" name="hadoop-common-3.2.1.jar"
+             mvn_uri="mvn:org.apache.hadoop/hadoop-common/3.2.1"/>
+
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+             id="hadoop-mapreduce-client-core-3.2.1.jar" name="hadoop-mapreduce-client-core-3.2.1.jar"
+             mvn_uri="mvn:org.apache.hadoop/hadoop-mapreduce-client-core/3.2.1"/>
+
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+             id="kryo-shaded-4.0.2.jar" name="kryo-shaded-4.0.2.jar"
+             mvn_uri="mvn:com.esotericsoftware/kryo-shaded/4.0.2"/>
+
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+             id="scala-library-2.12.10.jar" name="scala-library-2.12.10.jar"
+             mvn_uri="mvn:org.scala-lang/scala-library/2.12.10"/>
+
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+             id="commons-lang3-3.10.jar" name="commons-lang3-3.10.jar"
+             mvn_uri="mvn:org.apache.commons/commons-lang3/3.10"/>
+
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+             id="scala-reflect-2.12.10.jar" name="scala-reflect-2.12.10.jar"
+             mvn_uri="mvn:org.scala-lang/scala-reflect/2.12.10"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="metrics-core-4.1.1.jar" name="metrics-core-4.1.1.jar"
+          mvn_uri="mvn:io.dropwizard.metrics/metrics-core/4.1.1"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="metrics-json-4.1.1.jar" name="metrics-json-4.1.1.jar"
+          mvn_uri="mvn:io.dropwizard.metrics/metrics-json/4.1.1"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="minlog-1.3.0.jar" name="minlog-1.3.0.jar"
+          mvn_uri="mvn:com.esotericsoftware/minlog/1.3.0"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="spark-kvstore_2.12-3.0.1.jar" name="spark-kvstore_2.12-3.0.1.jar"
+          mvn_uri="mvn:org.apache.spark/spark-kvstore_2.12/3.0.1"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="spark-network-shuffle_2.12-3.0.1.jar" name="spark-network-shuffle_2.12-3.0.1.jar"
+          mvn_uri="mvn:org.apache.spark/spark-network-shuffle_2.12/3.0.1"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="netty-all-4.1.47.Final.jar" name="netty-all-4.1.47.Final.jar"
+          mvn_uri="mvn:io.netty/netty-all/4.1.47.Final"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="chill_2.12-0.9.5.jar" name="chill_2.12-0.9.5.jar"
+          mvn_uri="mvn:com.twitter/chill_2.12/0.9.5"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="chill-java-0.9.5.jar" name="chill-java-0.9.5.jar"
+          mvn_uri="mvn:com.twitter/chill-java/0.9.5"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="json4s-ast_2.12-3.6.6.jar" name="json4s-ast_2.12-3.6.6.jar"
+          mvn_uri="mvn:org.json4s/json4s-ast_2.12/3.6.6"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="scala-xml_2.12-1.2.0.jar" name="scala-xml_2.12-1.2.0.jar"
+          mvn_uri="mvn:org.scala-lang.modules/scala-xml_2.12/1.2.0"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="jersey-container-servlet-core-2.30.jar" name="jersey-container-servlet-core-2.30.jar"
+          mvn_uri="mvn:org.glassfish.jersey.containers/jersey-container-servlet-core/2.30"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="objenesis-2.6.jar" name="objenesis-2.6.jar"
+          mvn_uri="mvn:org.objenesis/objenesis/2.6"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="spark-launcher_2.12-3.0.1.jar" name="spark-launcher_2.12-3.0.1.jar"
+          mvn_uri="mvn:org.apache.spark/spark-launcher_2.12/3.0.1"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="stax2-api-4.2.1.jar" name="stax2-api-4.2.1.jar"
+          mvn_uri="mvn:org.codehaus.woodstox/stax2-api/4.2.1"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="hadoop-auth-3.2.1.jar" name="hadoop-auth-3.2.1.jar"
+          mvn_uri="mvn:org.apache.hadoop/hadoop-auth/3.2.1"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="commons-collections-3.2.2.jar" name="commons-collections-3.2.2.jar"
+          mvn_uri="mvn:commons-collections/commons-collections/3.2.2"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="json4s-core_2.12-3.6.6.jar" name="json4s-core_2.12-3.6.6.jar"
+          mvn_uri="mvn:org.json4s/json4s-core_2.12/3.6.6"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="json4s-jackson_2.12-3.6.6.jar" name="json4s-jackson_2.12-3.6.6.jar"
+          mvn_uri="mvn:org.json4s/json4s-jackson_2.12/3.6.6"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="woodstox-core-5.0.3.jar" name="woodstox-core-5.0.3.jar"
+          mvn_uri="mvn:com.fasterxml.woodstox/woodstox-core/5.0.3"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="commons-configuration2-2.1.1.jar" name="commons-configuration2-2.1.1.jar"
+          mvn_uri="mvn:org.apache.commons/commons-configuration2/2.1.1"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="guava-27.0-jre.jar" name="guava-27.0-jre.jar"
+          mvn_uri="mvn:com.google.guava/guava/27.0-jre"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="commons-io-2.5.jar" name="commons-io-2.5.jar"
+          mvn_uri="mvn:commons-io/commons-io/2.5"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="javax.servlet-api-3.1.0.jar" name="javax.servlet-api-3.1.0.jar"
+          mvn_uri="mvn:javax.servlet/javax.servlet-api/3.1.0"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="jersey-server-2.30.jar" name="jersey-server-2.30.jar"
+          mvn_uri="mvn:org.glassfish.jersey.core/jersey-server/2.30"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="jackson-annotations-2.10.2.jar" name="jackson-annotations-2.10.2.jar"
+          mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/2.10.2"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="commons-logging-1.1.3.jar" name="commons-logging-1.1.3.jar"
+          mvn_uri="mvn:commons-logging/commons-logging/1.1.3"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="htrace-core4-4.1.0-incubating.jar" name="htrace-core4-4.1.0-incubating.jar"
+          mvn_uri="mvn:org.apache.htrace/htrace-core4/4.1.0-incubating"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="avro-1.8.2.jar" name="avro-1.8.2.jar"
+          mvn_uri="mvn:org.apache.avro/avro/1.8.2"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="jackson-databind-2.10.2.jar" name="jackson-databind-2.10.2.jar"
+          mvn_uri="mvn:com.fasterxml.jackson.core/jackson-databind/2.10.2"/>
+          
+       <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="jackson-datatype-jsr310-2.10.2.jar" name="jackson-datatype-jsr310-2.10.2.jar"
+          mvn_uri="mvn:com.fasterxml.jackson.datatype/jackson-datatype-jsr310/2.10.2"/>   
+       
+       <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="jackson-dataformat-xml-2.10.2.jar" name="jackson-dataformat-xml-2.10.2.jar"
+          mvn_uri="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-xml/2.10.2"/>   
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="jackson-core-2.10.2.jar" name="jackson-core-2.10.2.jar"
+          mvn_uri="mvn:com.fasterxml.jackson.core/jackson-core/2.10.2"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="jackson-module-scala_2.12-2.10.0.jar" name="jackson-module-scala_2.12-2.10.0.jar"
+          mvn_uri="mvn:com.fasterxml.jackson.module/jackson-module-scala_2.12/2.10.0"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="paranamer-2.8.jar" name="paranamer-2.8.jar"
+          mvn_uri="mvn:com.thoughtworks.paranamer/paranamer/2.8"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="jackson-module-paranamer-2.10.2.jar" name="jackson-module-paranamer-2.10.2.jar"
+          mvn_uri="mvn:com.fasterxml.jackson.module/jackson-module-paranamer/2.10.2"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="xbean-asm7-shaded-4.15.jar" name="xbean-asm7-shaded-4.15.jar"
+          mvn_uri="mvn:org.apache.xbean/xbean-asm7-shaded/4.15"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="antlr4-runtime-4.7.1.jar" name="antlr4-runtime-4.7.1.jar"
+          mvn_uri="mvn:org.antlr/antlr4-runtime/4.7.1"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="janino-3.0.16.jar" name="janino-3.0.16.jar"
+          mvn_uri="mvn:org.codehaus.janino/janino/3.0.16"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="commons-compiler-3.0.16.jar" name="commons-compiler-3.0.16.jar"
+          mvn_uri="mvn:org.codehaus.janino/commons-compiler/3.0.16"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="univocity-parsers-2.9.1.jar" name="univocity-parsers-2.9.1.jar"
+          mvn_uri="mvn:com.univocity/univocity-parsers/2.9.1"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="stream-2.9.6.jar" name="stream-2.9.6.jar"
+          mvn_uri="mvn:com.clearspring.analytics/stream/2.9.6"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="lz4-java-1.7.1.jar" name="lz4-java-1.7.1.jar"
+          mvn_uri="mvn:org.lz4/lz4-java/1.7.1"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="re2j-1.1.jar" name="re2j-1.1.jar"
+          mvn_uri="mvn:com.google.re2j/re2j/1.1"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="RoaringBitmap-0.7.45.jar" name="RoaringBitmap-0.7.45.jar"
+          mvn_uri="mvn:org.roaringbitmap/RoaringBitmap/0.7.45"/>
+          
+        <!-- Parquet libs -->
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="jul-to-slf4j-1.7.16.jar" name="jul-to-slf4j-1.7.16.jar"
+          mvn_uri="mvn:org.slf4j/jul-to-slf4j/1.7.16"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="parquet-column-1.10.1.jar" name="parquet-column-1.10.1.jar"
+          mvn_uri="mvn:org.apache.parquet/parquet-column/1.10.1"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="parquet-common-1.10.1.jar" name="parquet-common-1.10.1.jar"
+          mvn_uri="mvn:org.apache.parquet/parquet-common/1.10.1"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="parquet-encoding-1.10.1.jar" name="parquet-encoding-1.10.1.jar"
+          mvn_uri="mvn:org.apache.parquet/parquet-encoding/1.10.1"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="parquet-format-2.4.0.jar" name="parquet-format-2.4.0.jar"
+          mvn_uri="mvn:org.apache.parquet/parquet-format/2.4.0"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="parquet-hadoop-1.10.1.jar" name="parquet-hadoop-1.10.1.jar"
+          mvn_uri="mvn:org.apache.parquet/parquet-hadoop/1.10.1"/>
+
+        <!-- S3 libs -->
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="hadoop-hdfs-client-3.2.1.jar" name="hadoop-hdfs-client-3.2.1.jar"
+          mvn_uri="mvn:org.apache.hadoop/hadoop-hdfs-client/3.2.1"/>
+         
+        <!-- Azure libs -->
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse" 
+          id="httpcore-4.4.12.jar" name="httpcore-4.4.12.jar" 
+          mvn_uri="mvn:org.apache.httpcomponents/httpcore/4.4.12"/>
+          
+       <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse" 
+          id="httpclient-4.5.10.jar" name="httpclient-4.5.10.jar" 
+          mvn_uri="mvn:org.apache.httpcomponents/httpclient/4.5.10"/>   
+          
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse" 
+           id="azure-core-1.3.0.jar" name="azure-core-1.3.0.jar" 
+           mvn_uri="mvn:com.azure/azure-core/1.3.0"/>
+           
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse" 
+           id="azure-keyvault-core-1.0.0.jar" name="azure-keyvault-core-1.0.0.jar"
+           mvn_uri="mvn:com.microsoft.azure/azure-keyvault-core/1.0.0"/>
+                       
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+           id="azure-storage-8.6.0.jar" name="azure-storage-8.6.0.jar"
+           mvn_uri="mvn:com.microsoft.azure/azure-storage/8.6.0"/>
+          
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse" 
+           id="azure-storage-blob-12.5.0.jar" name="azure-storage-blob-12.5.0.jar" 
+           mvn_uri="mvn:com.azure/azure-storage-blob/12.5.0"/>
+         
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse" 
+           id="azure-storage-common-12.5.0.jar" name="azure-storage-common-12.5.0.jar" 
+           mvn_uri="mvn:com.azure/azure-storage-common/12.5.0"/>
+           
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+           id="azure-storage-file-datalake-12.0.1.jar" name="azure-storage-file-datalake-12.0.1.jar"
+           mvn_uri="mvn:com.azure/azure-storage-file-datalake/12.0.1"/>
+                       
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse" 
+           id="azure-core-http-netty-1.4.0.jar" name="azure-core-http-netty-1.4.0.jar" 
+           mvn_uri="mvn:com.azure/azure-core-http-netty/1.4.0"/>
+         
+		 <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse" 
+		   id="reactive-streams-1.0.3.jar" name="reactive-streams-1.0.3.jar"
+		   mvn_uri="mvn:org.reactivestreams/reactive-streams/1.0.3"/>
+		   
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse" 
+           id="reactor-netty-0.9.4.RELEASE.jar" name="reactor-netty-0.9.4.RELEASE.jar"
+           mvn_uri="mvn:io.projectreactor.netty/reactor-netty/0.9.4.RELEASE"/>
+           
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse" 
+           id="reactor-core-3.3.0.RELEASE.jar" name="reactor-core-3.3.0.RELEASE.jar"
+           mvn_uri="mvn:io.projectreactor/reactor-core/3.3.0.RELEASE"/>
+
+         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse" 
+           id="slf4j-api-1.7.30" name="slf4j-api-1.7.30.jar" 
+           mvn_uri="mvn:org.slf4j/slf4j-api/1.7.30"/>                      
+                       
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="jetty-util-ajax-9.3.24.v20180605.jar" name="jetty-util-ajax-9.3.24.v20180605.jar"
+          mvn_uri="mvn:org.eclipse.jetty/jetty-util-ajax/9.3.24.v20180605"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="jetty-util-9.3.24.v20180605.jar" name="jetty-util-9.3.24.v20180605.jar"
+          mvn_uri="mvn:org.eclipse.jetty/jetty-util/9.3.24.v20180605"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="azure-data-lake-store-sdk-2.2.9.jar" name="azure-data-lake-store-sdk-2.2.9.jar"
+          mvn_uri="mvn:com.microsoft.azure/azure-data-lake-store-sdk/2.2.9"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="protobuf-java-2.5.0.jar" name="protobuf-java-2.5.0.jar"
+          mvn_uri="mvn:com.google.protobuf/protobuf-java/2.5.0"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="util-hadoop-hadoop3-2.1.4.jar" name="util-hadoop-hadoop3-2.1.4.jar"
+          mvn_uri="mvn:com.google.cloud.bigdataoss/util-hadoop/hadoop3-2.1.4"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="flogger-0.5.1.jar" name="flogger-0.5.1.jar"
+          mvn_uri="mvn:com.google.flogger/flogger/0.5.1"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="flogger-slf4j-backend-0.5.1.jar" name="flogger-slf4j-backend-0.5.1.jar"
+          mvn_uri="mvn:com.google.flogger/flogger-slf4j-backend/0.5.1"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="flogger-system-backend-0.5.1.jar" name="flogger-system-backend-0.5.1.jar"
+          mvn_uri="mvn:com.google.flogger/flogger-system-backend/0.5.1"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="google-api-client-1.30.10.jar" name="google-api-client-1.30.10.jar"
+          mvn_uri="mvn:com.google.api-client/google-api-client/1.30.10"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="google-http-client-jackson2-1.36.0.jar" name="google-http-client-jackson2-1.36.0.jar"
+          mvn_uri="mvn:com.google.http-client/google-http-client-jackson2/1.36.0"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="grpc-context-1.30.0.jar" name="grpc-context-1.30.0.jar"
+          mvn_uri="mvn:io.grpc/grpc-context/1.30.0"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="opencensus-api-0.24.0.jar" name="opencensus-api-0.24.0.jar"
+          mvn_uri="mvn:io.opencensus/opencensus-api/0.24.0"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="opencensus-contrib-http-util-0.24.0.jar" name="opencensus-contrib-http-util-0.24.0.jar"
+          mvn_uri="mvn:io.opencensus/opencensus-contrib-http-util/0.24.0"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="util-2.1.4.jar" name="util-2.1.4.jar"
+          mvn_uri="mvn:com.google.cloud.bigdataoss/util/2.1.4"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="hive-metastore-2.3.7.jar" name="hive-metastore-2.3.7.jar"
+          mvn_uri="mvn:org.apache.hive/hive-metastore/2.3.7"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="ivy-2.4.0.jar" name="ivy-2.4.0.jar"
+          mvn_uri="mvn:org.apache.ivy/ivy/2.4.0"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="joda-time-2.10.5.jar" name="joda-time-2.10.5.jar"
+          mvn_uri="mvn:joda-time/joda-time/2.10.5"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="libfb303-0.9.3.jar" name="libfb303-0.9.3.jar"
+          mvn_uri="mvn:org.apache.thrift/libfb303/0.9.3"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="libthrift-0.12.0.jar" name="libthrift-0.12.0.jar"
+          mvn_uri="mvn:org.apache.thrift/libthrift/0.12.0"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="oro-2.0.8.jar" name="oro-2.0.8.jar"
+          mvn_uri="mvn:oro/oro/2.0.8"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="delta-core_2.12-0.7.0.jar" name="delta-core_2.12-0.7.0.jar"
+          mvn_uri="mvn:io.delta/delta-core_2.12/0.7.0"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="jul-to-slf4j-1.7.30.jar" name="jul-to-slf4j-1.7.30.jar"
+          mvn_uri="mvn:org.slf4j/jul-to-slf4j/1.7.30"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="joda-time-2.10.5.jar" name="joda-time-2.10.5.jar"
+          mvn_uri="mvn:joda-time/joda-time/2.10.5"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="commons-lang-2.6.jar" name="commons-lang-2.6.jar"
+          mvn_uri="mvn:commons-lang/commons-lang/2.6"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="commons-codec-1.11.jar" name="commons-codec-1.11.jar"
+          mvn_uri="mvn:commons-codec/commons-codec/1.11"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="orc-core-1.5.10.jar" name="orc-core-1.5.10.jar"
+          mvn_uri="mvn:org.apache.orc/orc-core/1.5.10"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="orc-mapreduce-1.5.10.jar" name="orc-mapreduce-1.5.10.jar"
+          mvn_uri="mvn:org.apache.orc/orc-mapreduce/1.5.10"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="orc-shims-1.5.10.jar" name="orc-shims-1.5.10.jar"
+          mvn_uri="mvn:org.apache.orc/orc-shims/1.5.10"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="aircompressor-0.10.jar" name="aircompressor-0.10.jar"
+          mvn_uri="mvn:io.airlift/aircompressor/0.10"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="spark-streaming_2.12-3.0.1.jar" name="spark-streaming_2.12-3.0.1.jar"
+          mvn_uri="mvn:org.apache.spark/spark-streaming_2.12/3.0.1"/>
+
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="py4j-0.10.9.1.jar" name="py4j-0.10.9.1.jar"
+          mvn_uri="mvn:net.sf.py4j/py4j/0.10.9.1"/>
+
+        <!-- Bigdata launcher group -->
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="talend-bigdata-launcher-core-2.1.2.jar" name="talend-bigdata-launcher-core-2.1.2.jar" 
+          mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.1.2"/>
+        
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="talend-bigdata-launcher-synapse-2.1.2.jar" name="talend-bigdata-launcher-synapse-2.1.2.jar" 
+          mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-synapse/2.1.2"/>
+          
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="logback-classic-1.2.3.jar" name="logback-classic-1.2.3.jar" 
+          mvn_uri="mvn:ch.qos.logback/logback-classic/1.2.3"/>    
+        
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
+          id="commons-logging-1.2.jar" name="commons-logging-1.2.jar" 
+          mvn_uri="mvn:commons-logging/commons-logging/1.2"/>    
+        
+        <!-- Spark group -->
+        <libraryNeededGroup description="SPARK libraries for synapse" id="SPARK-BATCH-GROUP-SYNAPSE" name="SPARK-BATCH-GROUP-SYNAPSE">
+        	<library id="antlr4-runtime-4.7.1.jar"/>
+            <library id="avro-1.8.2.jar"/>
+            <library id="breeze_2.12-1.0.jar"/>
+            <library id="chill_2.12-0.9.5.jar"/>
+            <library id="chill-java-0.9.5.jar"/>
+            <library id="commons-codec-1.11.jar"/>
+            <library id="commons-collections-3.2.2.jar"/>
+            <library id="commons-compiler-3.0.16.jar"/>
+            <library id="commons-configuration2-2.1.1.jar"/>
+            <library id="commons-io-2.5.jar"/>
+            <library id="commons-lang-2.6.jar"/>
+            <library id="commons-lang3-3.10.jar"/>
+            <library id="commons-logging-1.1.3.jar"/>
+            <library id="guava-27.0-jre.jar"/>
+            <library id="hadoop-auth-3.2.1.jar"/>
+            <library id="hadoop-common-3.2.1.jar"/>
+            <library id="hadoop-hdfs-client-3.2.1.jar"/>
+            <library id="hadoop-mapreduce-client-core-3.2.1.jar"/>
+            <library id="htrace-core4-4.1.0-incubating.jar"/>
+            <library id="jackson-annotations-2.10.2.jar"/>
+            <library id="jackson-core-2.10.2.jar"/>
+            <library id="jackson-databind-2.10.2.jar"/>
+            <library id="jackson-dataformat-xml-2.10.2.jar"/>
+            <library id="jackson-datatype-jsr310-2.10.2.jar"/>
+            <library id="jackson-module-paranamer-2.10.2.jar"/>
+            <library id="jackson-module-scala_2.12-2.10.0.jar"/>
+            <library id="janino-3.0.16.jar"/>
+            <library id="javax.servlet-api-3.1.0.jar"/>
+            <library id="jersey-container-servlet-core-2.30.jar"/>
+            <library id="jersey-server-2.30.jar"/>
+            <library id="json4s-ast_2.12-3.6.6.jar"/>
+            <library id="json4s-core_2.12-3.6.6.jar"/>
+            <library id="json4s-jackson_2.12-3.6.6.jar"/>
+            <library id="kryo-shaded-4.0.2.jar"/>
+            <library id="lz4-java-1.7.1.jar"/>
+            <library id="metrics-core-4.1.1.jar"/>
+            <library id="metrics-json-4.1.1.jar"/>
+            <library id="minlog-1.3.0.jar"/>
+            <library id="netty-all-4.1.47.Final.jar"/>
+            <library id="objenesis-2.6.jar"/>
+            <library id="paranamer-2.8.jar"/>
+            <library id="parquet-column-1.10.1.jar"/>
+            <library id="parquet-common-1.10.1.jar"/>            
+            <library id="protobuf-java-2.5.0.jar"/>
+            <library id="re2j-1.1.jar"/>
+            <library id="RoaringBitmap-0.7.45.jar"/>
+            <library id="scala-library-2.12.10.jar"/>
+            <library id="scala-reflect-2.12.10.jar"/>
+            <library id="scala-xml_2.12-1.2.0.jar"/>
+            <library id="spark-catalyst_2.12-3.0.1.jar"/>
+            <library id="spark-core_2.12-3.0.1.jar"/>
+            <library id="spark-kvstore_2.12-3.0.1.jar"/>
+            <library id="spark-launcher_2.12-3.0.1.jar"/>
+            <library id="spark-network-common_2.12-3.0.1.jar"/>
+            <library id="spark-network-shuffle_2.12-3.0.1.jar"/>
+            <library id="spark-sql_2.12-3.0.1.jar"/>
+            <library id="spark-tags_2.12-3.0.1.jar"/>
+            <library id="spark-unsafe_2.12-3.0.1.jar"/>
+            <library id="stax2-api-4.2.1.jar"/>
+            <library id="stream-2.9.6.jar"/>
+            <library id="univocity-parsers-2.9.1.jar"/>
+            <library id="woodstox-core-5.0.3.jar"/>
+            <library id="xbean-asm7-shaded-4.15.jar"/>
+            <group id="AZURE-GROUP-SYNAPSE"/>
+        </libraryNeededGroup>
+
+        <!-- Parquet group -->
+        <libraryNeededGroup description="Parquet libraries for synapse" id="PARQUET-GROUP-SYNAPSE" name="PARQUET-GROUP-SYNAPSE">
+            <library id="jul-to-slf4j-1.7.16.jar"/>
+            <library id="parquet-encoding-1.10.1.jar"/>
+            <library id="parquet-format-2.4.0.jar"/>
+            <library id="parquet-hadoop-1.10.1.jar"/>
+        </libraryNeededGroup>
+
+        <!-- Azure group -->
+        <libraryNeededGroup description="Azure libraries for synapse" id="AZURE-GROUP-SYNAPSE" name="AZURE-GROUP-SYNAPSE">
+        	<library id="httpcore-4.4.12.jar"/>
+        	<library id="httpclient-4.5.10.jar"/>
+        	<library id="azure-core-1.3.0.jar"/>
+        	<library id="azure-keyvault-core-1.0.0.jar"/>        	
+            <library id="azure-storage-8.6.0.jar"/>            
+            <library id="azure-storage-blob-12.5.0.jar"/>            
+            <library id="azure-storage-common-12.5.0.jar"/>            
+            <library id="azure-storage-file-datalake-12.0.1.jar"/>            
+            <library id="azure-core-http-netty-1.4.0.jar"/>
+            <library id="reactive-streams-1.0.3.jar"/>
+            <library id="reactor-netty-0.9.4.RELEASE.jar"/>
+            <library id="reactor-core-3.3.0.RELEASE.jar"/>
+            <library id="slf4j-api-1.7.30.jar"/>
+            <library id="jetty-util-ajax-9.3.24.v20180605.jar"/>
+            <library id="jetty-util-9.3.24.v20180605.jar"/>
+            <library id="parquet-column-1.10.1.jar"/>
+            <library id="parquet-common-1.10.1.jar"/>
+            <library id="azure-data-lake-store-sdk-2.2.9.jar"/>
+        </libraryNeededGroup>
+      
+        <!-- DeltaLake group -->
+        <libraryNeededGroup description="DeltaLake libraries for synapse" id="DELTALAKE-GROUP-SYNAPSE" name="DELTALAKE-GROUP-SYNAPSE">
+            <library id="delta-core_2.12-0.7.0.jar"/>
+            <library id="jul-to-slf4j-1.7.30.jar"/>
+            <library id="parquet-hadoop-1.10.1.jar"/>
+            <library id="parquet-format-2.4.0.jar"/>
+            <library id="parquet-encoding-1.10.1.jar"/>
+        </libraryNeededGroup>
+        
+        <!-- Spark Streaming group -->
+        <libraryNeededGroup description="Spark streaming libraries for synapse" id="SPARK-STREAMING-GROUP-SYNAPSE" name="SPARK-STREAMING-GROUP-SYNAPSE">
+            <library id="spark-streaming_2.12-3.0.1.jar"/>
+            <group id="SPARK-BATCH-GROUP-SYNAPSE"/>
+            <library id="py4j-0.10.9.1.jar"/>
+        </libraryNeededGroup>
+        
+         <!-- Bigdata launcher group -->
+        <libraryNeededGroup description="Bigdata launcher libraries for synapse" id="BIGDATA-LAUNCHER-LIB-SYNAPSE" name="BIGDATA-LAUNCHER-LIB-SYNAPSE">
+        	<library id="talend-bigdata-launcher-synapse-2.1.2"/>            
+            <library id="talend-bigdata-launcher-core-2.1.2"/>
+            <library id="logback-classic-1.2.3"/>
+            <library id="commons-logging-1.2"/>
+        </libraryNeededGroup>
+     </extension>
+     
+   <extension
+         point="org.talend.core.runtime.classloader_provider">
+   </extension>
+
+</plugin>

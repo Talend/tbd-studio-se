@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<component name="SynapseDistribution">
+  <implementation class="org.talend.hadoop.distribution.synapse.SynapseDistribution"/>
+  <service>
+  	<provide interface="org.talend.hadoop.distribution.component.HadoopComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.HDFSComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.MRComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.SparkBatchComponent"/>
+    <provide interface="org.talend.hadoop.distribution.component.SparkStreamingComponent"/>
+    <provide interface="org.talend.hadoop.distribution.constants.synapse.ISynapseDistribution"/>
+  </service>
+</component>

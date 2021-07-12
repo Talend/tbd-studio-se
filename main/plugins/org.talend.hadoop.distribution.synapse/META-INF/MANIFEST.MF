@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Service-Component: OSGI-INF/synapse.xml
+Bundle-ManifestVersion: 2
+Bundle-Name: Azure Synapse
+Bundle-SymbolicName: org.talend.hadoop.distribution.synapse;singleton:=true
+Bundle-Version: 7.3.1.qualifier
+Bundle-Vendor: .Talend SA.
+Bundle-Activator: org.talend.hadoop.distribution.synapse.SynapsePlugin
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.core.runtime,
+ org.talend.hadoop.distribution,
+ org.talend.core.runtime,
+ org.talend.designer.maven.aether
+Export-Package: org.talend.hadoop.distribution.synapse
