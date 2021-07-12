@@ -12,14 +12,6 @@
              mvn_uri="mvn:org.apache.spark/spark-hive_2.12/3.0.1"/>
 
          <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
-             id="spark-mllib_2.12-3.0.1.jar" name="spark-mllib_2.12-3.0.1.jar"
-             mvn_uri="mvn:org.apache.spark/spark-mllib_2.12/3.0.1"/>
-
-         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
-             id="spark-mllib-local_2.12-3.0.1.jar" name="spark-mllib-local_2.12-3.0.1.jar"
-             mvn_uri="mvn:org.apache.spark/spark-mllib-local_2.12/3.0.1"/>
-
-         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
              id="spark-network-common_2.12-3.0.1.jar" name="spark-network-common_2.12-3.0.1.jar"
              mvn_uri="mvn:org.apache.spark/spark-network-common_2.12/3.0.1"/>
 
@@ -60,8 +52,8 @@
              mvn_uri="mvn:org.scala-lang/scala-library/2.12.10"/>
 
          <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
-             id="commons-lang3-3.9.jar" name="commons-lang3-3.9.jar"
-             mvn_uri="mvn:org.apache.commons/commons-lang3/3.9"/>
+             id="commons-lang3-3.10.jar" name="commons-lang3-3.10.jar"
+             mvn_uri="mvn:org.apache.commons/commons-lang3/3.10"/>
 
          <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
              id="scala-reflect-2.12.10.jar" name="scala-reflect-2.12.10.jar"
@@ -443,14 +435,6 @@
           mvn_uri="mvn:io.airlift/aircompressor/0.10"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
-          id="spark-snowflake_2.12-2.8.2-spark_3.0.jar" name="spark-snowflake_2.12-2.8.2-spark_3.0.jar"
-          mvn_uri="mvn:net.snowflake/spark-snowflake_2.12/2.8.2-spark_3.0"/>
-
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
-          id="snowflake-jdbc-3.12.12.jar" name="snowflake-jdbc-3.12.12.jar"
-          mvn_uri="mvn:net.snowflake/snowflake-jdbc/3.12.12"/>
-
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
           id="spark-streaming_2.12-3.0.1.jar" name="spark-streaming_2.12-3.0.1.jar"
           mvn_uri="mvn:org.apache.spark/spark-streaming_2.12/3.0.1"/>
 
@@ -458,18 +442,6 @@
           id="py4j-0.10.9.1.jar" name="py4j-0.10.9.1.jar"
           mvn_uri="mvn:net.sf.py4j/py4j/0.10.9.1"/>
 
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
-          id="spark-streaming-kafka-0-10_2.12-3.0.1.jar" name="spark-streaming-kafka-0-10_2.12-3.0.1.jar"
-          mvn_uri="mvn:org.apache.spark/spark-streaming-kafka-0-10_2.12/3.0.1"/>
-
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse" 
-          id="core-1.1.2.jar" name="core-1.1.2.jar" 
-          mvn_uri="mvn:com.github.fommil.netlib/core/1.1.2"/>
-
-        <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse" 
-          id="arpack_combined_all-0.1.jar" name="arpack_combined_all-0.1.jar" 
-          mvn_uri="mvn:net.sourceforge.f2j/arpack_combined_all/0.1"/>
-        
         <!-- Bigdata launcher group -->
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.synapse"
           id="talend-bigdata-launcher-core-2.1.2.jar" name="talend-bigdata-launcher-core-2.1.2.jar" 
@@ -500,7 +472,7 @@
             <library id="commons-configuration2-2.1.1.jar"/>
             <library id="commons-io-2.5.jar"/>
             <library id="commons-lang-2.6.jar"/>
-            <library id="commons-lang3-3.9.jar"/>
+            <library id="commons-lang3-3.10.jar"/>
             <library id="commons-logging-1.1.3.jar"/>
             <library id="guava-27.0-jre.jar"/>
             <library id="hadoop-auth-3.2.1.jar"/>
@@ -542,8 +514,6 @@
             <library id="spark-core_2.12-3.0.1.jar"/>
             <library id="spark-kvstore_2.12-3.0.1.jar"/>
             <library id="spark-launcher_2.12-3.0.1.jar"/>
-            <library id="spark-mllib_2.12-3.0.1.jar"/>
-            <library id="spark-mllib-local_2.12-3.0.1.jar"/>
             <library id="spark-network-common_2.12-3.0.1.jar"/>
             <library id="spark-network-shuffle_2.12-3.0.1.jar"/>
             <library id="spark-sql_2.12-3.0.1.jar"/>
@@ -596,20 +566,6 @@
             <library id="parquet-encoding-1.10.1.jar"/>
         </libraryNeededGroup>
         
-        <!-- Snowflake group -->
-        <libraryNeededGroup description="Snowflake libraries for synapse" id="SNOWFLAKE-GROUP-SYNAPSE" name="SNOWFLAKE-GROUP-SYNAPSE">
-            <library id="spark-snowflake_2.12-2.8.2-spark_3.0.jar"/>
-            <library id="snowflake-jdbc-3.12.12.jar"/>
-        </libraryNeededGroup>
-        
-        <!-- spark 3 ML group -->
-        <libraryNeededGroup description="ML libraries for synapse" id="ML-GROUP-SYNAPSE" name="ML-GROUP-SYNAPSE">
-            <library id="spark-mllib_2.12-3.0.1.jar"/>
-            <library id="spark-mllib-local_2.12-3.0.1.jar"/>
-            <library id="arpack_combined_all-0.1.jar"/>
-            <library id="core-1.1.2.jar"/>
-        </libraryNeededGroup>
-
         <!-- Spark Streaming group -->
         <libraryNeededGroup description="Spark streaming libraries for synapse" id="SPARK-STREAMING-GROUP-SYNAPSE" name="SPARK-STREAMING-GROUP-SYNAPSE">
             <library id="spark-streaming_2.12-3.0.1.jar"/>
