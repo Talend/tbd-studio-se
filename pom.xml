@@ -4,8 +4,8 @@
     <parent>
         <groupId>org.talend.studio</groupId>
         <artifactId>parent-pom</artifactId>
-        <version>7.4.1-SNAPSHOT</version>
-        <relativePath/>
+        <version>8.0.1-SNAPSHOT</version>
+        <relativePath />
     </parent>
     <artifactId>tbd-studio-se</artifactId>
     <packaging>pom</packaging>
