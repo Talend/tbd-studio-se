@@ -27,6 +27,7 @@ import org.talend.designer.hdfsbrowse.hadoop.service.check.CheckHadoopServicesDi
 import org.talend.hadoop.distribution.model.DistributionBean;
 import org.talend.hadoop.distribution.model.DistributionVersion;
 import org.talend.metadata.managment.ui.utils.ConnectionContextHelper;
+import org.talend.metadata.managment.ui.utils.ExtendedNodeConnectionContextUtils.EHadoopParamName;
 import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopClusterInfoForm;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
@@ -247,6 +248,18 @@ public class KnoxInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterCon
         if (creation && !connection.isUseCustomConfs()) {
             HCRepositoryUtil.fillDefaultValuesOfHadoopCluster(connection);
         }
+    }
+    
+    @Override
+    protected void collectConParameters() {
+        collectConfigurationParameters(true);
+    }
+
+    private void collectConfigurationParameters(boolean isUse) {
+        addContextParams(EHadoopParamName.KnoxUrl, isUse);
+        addContextParams(EHadoopParamName.KnoxUsername, isUse);
+        addContextParams(EHadoopParamName.KnoxPassword, isUse);
+        addContextParams(EHadoopParamName.KnoxDirectory, isUse);
     }
 
 }
