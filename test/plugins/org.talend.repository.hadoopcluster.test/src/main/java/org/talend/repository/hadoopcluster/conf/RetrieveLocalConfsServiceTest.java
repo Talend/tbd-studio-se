@@ -40,8 +40,6 @@ import static org.junit.Assert.*;
 @Ignore("failed on tycho with NullPointerException")
 public class RetrieveLocalConfsServiceTest {
 
-    static IRetrieveConfsService confsService;
-
     static File confDir;
 
     @BeforeClass
@@ -49,7 +47,6 @@ public class RetrieveLocalConfsServiceTest {
         Bundle bundle = Platform.getBundle("org.talend.repository.hadoopcluster.test"); //$NON-NLS-1$
         URL confEntry = bundle.getEntry("/resources/conf"); //$NON-NLS-1$
         confDir = new File(FileLocator.toFileURL(confEntry).getFile());
-        confsService = getServiceWithDistribution(IHortonworksDistribution.DISTRIBUTION_NAME, "HDP_2_5");
     }
 
     @Test
@@ -60,22 +57,16 @@ public class RetrieveLocalConfsServiceTest {
         services.add(EHadoopConfs.YARN.getName());
         File exportedConfFolder = new File(HadoopConfsUtils.getConfsSitesTempFolder());
 
-        confsService.exportConfs(services);
         checkFilterProperties(exportedConfFolder, false);
 
-        confsService.applyFilter(getTestFilterProperties());
-        confsService.exportConfs(services);
         checkFilterProperties(exportedConfFolder, true);
     }
 
     @Test
     public void testGetConfsMap() throws MalformedURLException {
-        // test HDP
-        Map<String, Map<String, String>> confsMap = confsService.getConfsMap();
-        assertFalse(confsMap.containsKey("MAPRDB"));
         // test MR
         IRetrieveConfsService confsService2 = getServiceWithDistribution(IMapRDistribution.DISTRIBUTION_NAME, "MAPR500");
-        confsMap = confsService2.getConfsMap();
+	Map<String, Map<String, String>> confsMap = confsService2.getConfsMap();
         assertTrue(confsMap.containsKey("MAPRDB"));
     }
 
