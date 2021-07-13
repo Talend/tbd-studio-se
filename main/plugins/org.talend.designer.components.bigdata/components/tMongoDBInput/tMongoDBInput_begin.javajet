@@ -57,6 +57,7 @@
     String usedAuthenticationDB = useAuthDB ? authDB : dbname;
     boolean useExternalSort = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__EXTERNAL_SORT_AGGREGATION__"));
     boolean specifyFields="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SPECIFY_FIELDS__"));
+    boolean bsonToString="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__CONVERT_BSON_TO_STRING__"));
     List<Map<String, String>> filter = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__FIELDS_TO_RETURN__");
     boolean queryOptionNoTimeOut;
     String dbversion;
@@ -266,6 +267,23 @@
 								value=currentObj.get(currentName);
 							}
 						}
+						<%if( (version_3_5_X || version_4_4_X ) && bsonToString ){%>
+						    if(value instanceof org.bson.Document){
+						        value = ((org.bson.Document)value).toJson();
+						    }else if (value instanceof java.util.List){
+
+						    java.util.List list = new java.util.ArrayList();
+						    ((java.util.List)value).stream().forEach(e -> {
+						    if(e instanceof org.bson.Document){
+						        list.add(((org.bson.Document)e).toJson());
+						    }else{
+						        list.add(e);
+						    }
+						    });
+						    value = list;
+						    }
+
+						<%}%>
 						return value;
 					}
 				}
