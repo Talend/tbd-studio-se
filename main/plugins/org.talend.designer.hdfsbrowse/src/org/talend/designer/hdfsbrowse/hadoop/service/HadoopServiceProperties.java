@@ -442,7 +442,7 @@ public class HadoopServiceProperties {
     
     
     public String getKnoxURL() {
-        return knoxURL;
+        return getRealValue(this.knoxURL);
     }
 
     
@@ -452,7 +452,7 @@ public class HadoopServiceProperties {
 
     
     public String getKnoxUser() {
-        return knoxUser;
+        return getRealValue(this.knoxUser);
     }
 
     
@@ -462,7 +462,7 @@ public class HadoopServiceProperties {
 
     
     public String getKnoxPassword() {
-        return knoxPassword;
+        return getRealValue(this.knoxPassword);
     }
 
     
@@ -471,7 +471,7 @@ public class HadoopServiceProperties {
     }
     
     public String getKnoxDirectory() {
-        return knoxDirectory;
+        return getRealValue(this.knoxDirectory);
     }
     
     public void setKnoxDirectory(String knoxDirectory) {

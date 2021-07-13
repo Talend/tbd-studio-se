@@ -195,13 +195,16 @@ public class KnoxInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterCon
 
     @Override
     public void updateForm() {
-        // TODO Auto-generated method stub
         adaptFormToEditable();
 
         if (isContextMode()) {
             adaptFormToEditable();
         }
-        
+    }
+    
+    @Override
+    protected void initialize() {
+        init();
     }
 
     @Override
