@@ -4,8 +4,8 @@
     <parent>
         <groupId>org.talend.studio</groupId>
         <artifactId>parent-pom</artifactId>
-        <version>7.4.1-SNAPSHOT</version>
-        <relativePath/>
+        <version>8.0.1-SNAPSHOT</version>
+        <relativePath />
     </parent>
     <artifactId>tbd-studio-se</artifactId>
     <packaging>pom</packaging>
@@ -22,7 +22,6 @@
         <module>main/features/org.talend.tos.bigdata.feature</module>
         <module>main/features/org.talend.tos.bigdata.libraries.feature</module>
         <module>main/features/org.talend.hadoop.distribution.feature</module>
-        <module>main/features/org.talend.studio.components.bd.couchbase.feature</module>
         <module>main/plugins/org.talend.hadoop.distribution</module>
         <module>main/plugins/org.talend.hadoop.distribution.apache100</module>
         <module>main/plugins/org.talend.hadoop.distribution.cdh510mr1</module>
@@ -86,7 +85,7 @@
         <module>main/plugins/org.talend.repository.nosql</module>
         <module>main/plugins/org.talend.repository.oozie</module>
         <module>main/plugins/org.talend.studio.components.bd.couchbase</module>
-
+        <module>main/features/org.talend.studio.components.bd.couchbase.feature</module>
         <module>test/features/org.talend.bigdata.se.test.feature</module>
         <module>test/plugins/org.talend.bigdata.se.test.base</module>
         <module>test/plugins/org.talend.hadoop.distribution.apache100.test</module>
