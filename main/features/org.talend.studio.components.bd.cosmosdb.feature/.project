@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>org.talend.studio.components.bd.couchbase.feature</name>
+	<name>org.talend.studio.components.bd.cosmosdb.feature</name>
 	<comment></comment>
 	<projects>
 	</projects>
