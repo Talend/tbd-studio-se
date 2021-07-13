@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feature id="org.talend.bigdata.se.test.feature" label="BigData SE Test Feature" version="7.4.1.qualifier">
+<feature id="org.talend.bigdata.se.test.feature" label="BigData SE Test Feature" version="8.0.1.qualifier">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
