@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Microsoft HD Insight 4.0.0 distribution
 Bundle-SymbolicName: org.talend.hadoop.distribution.hdinsight400;singleton:=true
-Bundle-Version: 7.4.1.qualifier
+Bundle-Version: 8.0.1.qualifier
 Bundle-Vendor: .Talend SA.
 Service-Component: OSGI-INF/hdinsight400.xml
 Require-Bundle: org.talend.core.runtime,

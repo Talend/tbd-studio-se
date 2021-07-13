@@ -342,6 +342,16 @@ Note : If you are running on a Sharded Cluster, please make sure to include the 
             NUM_ROW="50" GROUP="ADVANCED_AGGREGATION_OPTIONS" SHOW_IF="QUERY_TYPE=='AGGREGATION_QUERY'">
             <DEFAULT>false</DEFAULT>
         </PARAMETER>
+
+        <PARAMETER
+                NAME="CONVERT_BSON_TO_STRING"
+                FIELD="CHECK"
+                REPOSITORY_VALUE="CONVERT_BSON_TO_STRING"
+                NUM_ROW="46"
+                SHOW_IF="((USE_EXISTING_CONNECTION == 'false') AND ((DB_VERSION == 'MONGODB_3_5_X') OR (DB_VERSION == 'MONGODB_4_4_X'))) OR ((USE_EXISTING_CONNECTION == 'true') AND ((#LINK@NODE.CONNECTION.DB_VERSION== 'MONGODB_4_4_X') OR (#LINK@NODE.CONNECTION.DB_VERSION== 'MONGODB_3_5_X')))"
+        >
+            <DEFAULT>true</DEFAULT>
+        </PARAMETER>
     </ADVANCED_PARAMETERS>
 
     <CODEGENERATION>
