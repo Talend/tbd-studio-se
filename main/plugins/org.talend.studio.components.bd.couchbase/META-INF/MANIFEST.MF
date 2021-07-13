@@ -3,7 +3,7 @@ Automatic-Module-Name: org.talend.studio.components.bd.couchbase
 Bundle-ManifestVersion: 2
 Bundle-Name: Couchbase Plug-in
 Bundle-SymbolicName: org.talend.studio.components.bd.couchbase;singleton:=true
-Bundle-Version: 7.4.1.qualifier
+Bundle-Version: 8.0.1.qualifier
 Bundle-Localization: plugin
 Eclipse-LazyStart: true
 Require-Bundle: org.talend.sdk.component.studio-integration,
