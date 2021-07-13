@@ -37,10 +37,6 @@
 
    <plugin id="org.talend.hadoop.distribution.emr580.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
-   <plugin id="org.talend.hadoop.distribution.hdinsight340.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
-
-   <plugin id="org.talend.hadoop.distribution.hdinsight360.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
-         
    <plugin id="org.talend.hadoop.distribution.hdinsight400.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
          
    <plugin id="org.talend.oozie.scheduler.test" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
