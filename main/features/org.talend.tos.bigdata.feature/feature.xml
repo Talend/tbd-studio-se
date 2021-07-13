@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feature id="org.talend.tos.bigdata.feature" label="Bigdata_feature" version="8.0.1.qualifier">
+<feature
+      id="org.talend.tos.bigdata.feature"
+      label="Bigdata_feature"
+      version="8.0.1.qualifier">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -15,6 +18,10 @@
 
    <includes
          id="org.talend.studio.components.bd.couchbase.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.talend.studio.components.bd.cosmosdb.feature"
          version="0.0.0"/>
 
    <plugin
@@ -164,6 +171,13 @@
 
    <plugin
          id="org.talend.components.marklogic.definition"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.talend.components.couchbase"
          download-size="0"
          install-size="0"
          version="0.0.0"

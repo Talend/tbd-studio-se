@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.talend.studio.components.bd.cosmosdb
+Bundle-ManifestVersion: 2
+Bundle-Name: CosmosDB Plug-in
+Bundle-SymbolicName: org.talend.studio.components.bd.cosmosdb;singleton:=true
+Bundle-Version: 8.0.1.qualifier
+Bundle-Localization: plugin
+Eclipse-LazyStart: true
+Require-Bundle: org.talend.sdk.component.studio-integration,
+ org.talend.core
+Bundle-Vendor: .Talend SA.
+Import-Package: org.apache.commons.collections4.map,
+ org.eclipse.core.runtime,
+ org.osgi.framework,
+ org.slf4j
+Bundle-ClassPath: .
+Eclipse-BundleShape: dir

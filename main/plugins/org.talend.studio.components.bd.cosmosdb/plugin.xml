@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.talend.core.component_installer_task">
+      <componentInstallerTask
+            class="org.talend.studio.components.bd.cosmosdb.CosmosDBInstaller" order="1" g="@@COMP_GROUP@@" a="@@COMP_ARTIFACT@@" v="@@COMP_VERSION@@" c="" t="" ct="TCK">
+      </componentInstallerTask>
+   </extension>
+
+</plugin>

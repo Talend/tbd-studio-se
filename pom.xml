@@ -86,6 +86,8 @@
         <module>main/plugins/org.talend.repository.oozie</module>
         <module>main/plugins/org.talend.studio.components.bd.couchbase</module>
         <module>main/features/org.talend.studio.components.bd.couchbase.feature</module>
+        <module>main/plugins/org.talend.studio.components.bd.cosmosdb</module>
+        <module>main/features/org.talend.studio.components.bd.cosmosdb.feature</module>
         <module>test/features/org.talend.bigdata.se.test.feature</module>
         <module>test/plugins/org.talend.bigdata.se.test.base</module>
         <module>test/plugins/org.talend.hadoop.distribution.apache100.test</module>
