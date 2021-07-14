@@ -63,7 +63,7 @@ public abstract class AbstractDynamicDistributionTemplate extends AbstractDistri
         if ("CDH5xDistributionTemplate".equals(configuration.getTemplateId())
                 || "HDP2xxDistributionTemplate".equals(configuration.getTemplateId())
                 || "HDP3xxDistributionTemplate".equals(configuration.getTemplateId())) {
-        	versionDisplay.replaceAll("Dynamic", "Deprecated");
+            versionDisplay = versionDisplay.replaceAll("Dynamic", "Deprecated");
         }
 
         moduleGroupsTemplateMap = buildModuleGroupsTemplateMap();
