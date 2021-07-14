@@ -14,6 +14,13 @@
 		<compGroup>org.talend.components</compGroup>
 		<compArtifact>couchbase</compArtifact>
 	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>${compGroup}</groupId>
+			<artifactId>${compArtifact}</artifactId>
+			<version>${components.version}</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
@@ -37,6 +44,13 @@
 							<directory>${project.basedir}/car</directory>
 							<includes>
 								<include>**/*.car</include>
+							</includes>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+						<fileset>
+							<directory>${project.basedir}/repository</directory>
+							<includes>
+								<include>**/*</include>
 							</includes>
 							<followSymlinks>false</followSymlinks>
 						</fileset>
@@ -71,6 +85,14 @@
 							<token>@@COMP_VERSION@@</token>
 							<value>${tacokit.components.version}</value>
 						</replacement>
+						<replacement>
+							<token>@@COMP_ARTIFACT_V0@@</token>
+							<value>${compArtifact}</value>
+						</replacement>
+						<replacement>
+							<token>@@COMP_VERSION_V0@@</token>
+							<value>${components.version}</value>
+						</replacement>
 					</replacements>
 				</configuration>
 			</plugin>
@@ -97,6 +119,18 @@
 							<outputDirectory>${project.basedir}/car</outputDirectory>
 							<stripClassifier>true</stripClassifier>
 							<overWriteIfNewer>true</overWriteIfNewer>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-dependencies-jar</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.basedir}/repository</outputDirectory>
+							<includeScope>runtime</includeScope>
+							<useRepositoryLayout>true</useRepositoryLayout>
 						</configuration>
 					</execution>
 				</executions>
