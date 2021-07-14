@@ -38,17 +38,15 @@
             context="MapRDB wizard"
             language="java"
             message="Wizard use for MapRDB"
-            name="zookeeper-3.3.3-cdh3u0.jar" mvn_uri="mvn:org.talend.libraries/zookeeper-3.3.3-cdh3u0/6.0.0" 
-            required="true"
-            uripath="platform:/plugin/org.talend.libraries.zookeeper/lib/zookeeper-3.3.3-cdh3u0.jar">
+            name="zookeeper-3.4.8.jar" mvn_uri="mvn:org.talend.libraries/zookeeper-3.4.8/6.0.0" 
+            required="true">
       </libraryNeeded>
             <libraryNeeded
             context="MapRDB wizard"
             language="java"
             message="Wizard use for MapRDB"
             name="hbase-0.90.1-cdh3u0.jar" mvn_uri="mvn:org.talend.libraries/hbase-0.90.1-cdh3u0/6.0.0" 
-            required="true"
-            uripath="platform:/plugin/org.talend.libraries.hadoop/lib/hbase-0.90.1-cdh3u0.jar">
+            required="true">
       </libraryNeeded>
    </extension>
    <extension
