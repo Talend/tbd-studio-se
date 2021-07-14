@@ -13,11 +13,12 @@
 	<properties>
 		<compGroup>org.talend.components</compGroup>
 		<compArtifact>couchbase</compArtifact>
+		<compArtifactV0>components-couchbase</compArtifactV0>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>${compGroup}</groupId>
-			<artifactId>${compArtifact}</artifactId>
+			<artifactId>${compArtifactV0}</artifactId>
 			<version>${components.version}</version>
 		</dependency>
 	</dependencies>
