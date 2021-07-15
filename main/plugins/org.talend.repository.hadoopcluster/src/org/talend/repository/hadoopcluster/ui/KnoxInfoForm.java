@@ -263,5 +263,22 @@ public class KnoxInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterCon
         addContextParams(EHadoopParamName.KnoxPassword, isUse);
         addContextParams(EHadoopParamName.KnoxDirectory, isUse);
     }
+    
+    @Override
+    protected void adaptFormToReadOnly() {
+        readOnly = isReadOnly();
+        knoxURLText.setReadOnly(readOnly);
+        knoxUserText.setReadOnly(readOnly);
+        knoxPasswordText.setReadOnly(readOnly);
+        knoxDirectoryText.setReadOnly(readOnly);
+    }
+    
+    @Override
+    protected void updateEditableStatus(boolean isEditable) {
+        knoxURLText.setReadOnly(!isEditable);
+        knoxUserText.setReadOnly(!isEditable);
+        knoxPasswordText.setReadOnly(!isEditable);
+        knoxDirectoryText.setReadOnly(!isEditable);
+    }
 
 }
