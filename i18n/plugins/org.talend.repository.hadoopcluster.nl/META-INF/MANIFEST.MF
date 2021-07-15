@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Hadoopcluster Plugin Nl
-Bundle-SymbolicName: org.talend.repository.hadoopcluster.nl
-Bundle-Version: 8.0.1.qualifier
-Fragment-Host: org.talend.repository.hadoopcluster
-Bundle-Vendor: .Talend SA.
