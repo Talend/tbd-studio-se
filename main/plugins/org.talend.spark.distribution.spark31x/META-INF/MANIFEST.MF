@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Spark311
+Bundle-SymbolicName: org.talend.spark.distribution.spark31x;singleton:=true
+Bundle-Version: 8.0.1.qualifier
+Bundle-Vendor: .Talend SA.
+Service-Component: OSGI-INF/spark311.xml
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.talend.core.runtime,
+ org.talend.hadoop.distribution
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.talend.spark.distribution.spark31x

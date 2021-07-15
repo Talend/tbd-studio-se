@@ -7,7 +7,7 @@
       <componentInstallerTask
             class="org.talend.studio.components.bd.couchbase.CouchbaseInstaller" order="1" >
             <componentGAV g="@@COMP_GROUP@@" a="@@COMP_ARTIFACT@@" v="@@COMP_VERSION@@" c="" t="" ct="2" />
-            <componentGAV g="@@COMP_GROUP@@" a="@@COMP_ARTIFACT_V0@@" v="@@COMP_VERSION_V0@@" c="" t="" ct="1" />
+            <!--componentGAV g="@@COMP_GROUP@@" a="@@COMP_ARTIFACT_V0@@" v="@@COMP_VERSION_V0@@" c="" t="" ct="1" /-->
       </componentInstallerTask>
    </extension>
 
