@@ -4,7 +4,7 @@
       "childNodes": [],
       "distribution": "HORTONWORKS",
       "id": "HDP_3_1_4_12_1",
-      "name": "Hortonworks Data Platform V3.1.4.12-1 (Deprecated)",
+      "name": "Hortonworks Data Platform V3.1.4.12-1",
       "repository": "https://talend-update.talend.com/nexus/content/groups/dynamicdistribution/",
       "selectedSparkVersions": ["SPARK_2_3"],
       "tagName": "dynamicPluginConfiguration",
