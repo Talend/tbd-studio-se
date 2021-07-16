@@ -6,6 +6,12 @@
 
         <libraryNeeded
             context="plugin:org.talend.hadoop.distribution.altus10"
+            id="httpclient-4.5.13.jar"
+            name="httpclient-4.5.13.jar"
+            mvn_uri="mvn:org.apache.httpcomponents/httpclient/4.5.13">
+        </libraryNeeded>
+        <libraryNeeded
+            context="plugin:org.talend.hadoop.distribution.altus10"
             id="talend-bigdata-launcher"
             name="talend-bigdata-launcher-core-2.0.6.jar"
             mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.0.6">
@@ -118,7 +124,7 @@
                 description="HDFS libraries for Altus 1.0"
                 id="SPARK-LIB-ALTUS10"
                 name="SPARK-LIB-ALTUS10" >
-        	<library id="httpclient-4.5.2.jar"/>
+        	<library id="httpclient-4.5.13.jar"/>
             <library id="httpcore-4.4.4.jar"/>
             <library id="guava-14.0.1.jar" />
             <library id="commons-codec-1.10.jar" /> <!-- This jar is required for HDFS SSL connection-->

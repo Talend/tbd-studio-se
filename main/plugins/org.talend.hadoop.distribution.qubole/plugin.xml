@@ -107,9 +107,9 @@
 		</libraryNeeded>
 		<libraryNeeded
 			context="plugin:org.talend.hadoop.distribution.qubole"
-			id="httpclient-4.5.2.jar"
-			name="httpclient-4.5.2.jar"
-			mvn_uri="mvn:org.apache.httpcomponents/httpclient/4.5.2">
+			id="httpclient-4.5.13.jar"
+			name="httpclient-4.5.13.jar"
+			mvn_uri="mvn:org.apache.httpcomponents/httpclient/4.5.13">
 		</libraryNeeded>
 		<libraryNeeded
 			context="plugin:org.talend.hadoop.distribution.qubole"
@@ -337,7 +337,7 @@
             <library id="jackson-databind-2.6.5.jar" />
             <library id="jackson-core-2.6.6.jar" />
             <library id="jackson-annotations-2.6.0.jar" />
-            <library id="httpclient-4.5.2.jar" />
+            <library id="httpclient-4.5.13.jar" />
             <library id="httpcore-4.4.4.jar" />
             <library id="joda-time-2.8.1.jar" />
         </libraryNeededGroup>
