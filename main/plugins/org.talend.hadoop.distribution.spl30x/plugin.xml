@@ -65,8 +65,8 @@
              mvn_uri="mvn:org.scala-lang/scala-library/2.12.10"/>
 
          <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
-             id="commons-lang3-3.9.jar" name="commons-lang3-3.9.jar"
-             mvn_uri="mvn:org.apache.commons/commons-lang3/3.9"/>
+             id="commons-lang3-3.10.jar" name="commons-lang3-3.10.jar"
+             mvn_uri="mvn:org.apache.commons/commons-lang3/3.10"/>
 
          <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
              id="scala-reflect-2.12.10.jar" name="scala-reflect-2.12.10.jar"
@@ -271,8 +271,8 @@
           mvn_uri="mvn:org.apache.hadoop/hadoop-aws/3.2.1"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
-          id="aws-java-sdk-bundle-1.11.375.jar" name="aws-java-sdk-bundle-1.11.375.jar"
-          mvn_uri="mvn:com.amazonaws/aws-java-sdk-bundle/1.11.375"/>
+          id="aws-java-sdk-bundle-1.11.760.jar" name="aws-java-sdk-bundle-1.11.760.jar"
+          mvn_uri="mvn:com.amazonaws/aws-java-sdk-bundle/1.11.760"/>
           
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
           id="commons-text-1.4.jar" name="commons-text-1.4.jar"
@@ -538,12 +538,12 @@
           mvn_uri="mvn:net.sourceforge.f2j/arpack_combined_all/0.1"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
-          id="aws-java-sdk-kinesis-1.11.655.jar" name="aws-java-sdk-kinesis-1.11.655.jar" 
-          mvn_uri="mvn:com.amazonaws/aws-java-sdk-kinesis/1.11.655"/>
+          id="aws-java-sdk-kinesis-1.11.760.jar" name="aws-java-sdk-kinesis-1.11.760.jar" 
+          mvn_uri="mvn:com.amazonaws/aws-java-sdk-kinesis/1.11.760"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
-          id="aws-java-sdk-core-1.11.655.jar" name="aws-java-sdk-core-1.11.655.jar" 
-          mvn_uri="mvn:com.amazonaws/aws-java-sdk-core/1.11.655"/>
+          id="aws-java-sdk-core-1.11.760.jar" name="aws-java-sdk-core-1.11.760.jar" 
+          mvn_uri="mvn:com.amazonaws/aws-java-sdk-core/1.11.760"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
           id="jackson-dataformat-cbor-2.10.0.jar" name="jackson-dataformat-cbor-2.10.0.jar" 
@@ -554,12 +554,12 @@
           mvn_uri="mvn:com.amazonaws/amazon-kinesis-client/1.12.0"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
-          id="aws-java-sdk-cloudwatch-1.11.655.jar" name="aws-java-sdk-cloudwatch-1.11.655.jar" 
-          mvn_uri="mvn:com.amazonaws/aws-java-sdk-cloudwatch/1.11.655"/>
+          id="aws-java-sdk-cloudwatch-1.11.760.jar" name="aws-java-sdk-cloudwatch-1.11.760.jar" 
+          mvn_uri="mvn:com.amazonaws/aws-java-sdk-cloudwatch/1.11.760"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
-          id="aws-java-sdk-dynamodb-1.11.655.jar" name="aws-java-sdk-dynamodb-1.11.655.jar" 
-          mvn_uri="mvn:com.amazonaws/aws-java-sdk-dynamodb/1.11.655"/>
+          id="aws-java-sdk-dynamodb-1.11.760.jar" name="aws-java-sdk-dynamodb-1.11.760.jar" 
+          mvn_uri="mvn:com.amazonaws/aws-java-sdk-dynamodb/1.11.760"/>
 
         <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
           id="commons-pool2-2.9.0.jar" name="commons-pool2-2.9.0.jar" 
@@ -605,6 +605,11 @@
           id="jersey-hk2-2.30.jar" name="jersey-hk2-2.30.jar" 
           mvn_uri="mvn:org.glassfish.jersey.inject/jersey-hk2/2.30"/>
 
+        <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
+          id="talend-bigdata-aws-lib-1.1.0.jar" name="talend-bigdata-aws-lib-1.1.0.jar"
+          mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-aws-lib/1.1.0">
+        </libraryNeeded>
+
         <!-- Spark group -->
         <libraryNeededGroup description="SPARK libraries for spl30x" id="SPARK-BATCH-GROUP-SPARK_3_0_x" name="SPARK-BATCH-GROUP-SPARK_3_0_x">
             <library id="antlr4-runtime-4.7.1.jar"/>
@@ -618,7 +623,7 @@
             <library id="commons-configuration2-2.1.1.jar"/>
             <library id="commons-io-2.5.jar"/>
             <library id="commons-lang-2.6.jar"/>
-            <library id="commons-lang3-3.9.jar"/>
+            <library id="commons-lang3-3.10.jar"/>
             <library id="commons-logging-1.1.3.jar"/>
             <library id="guava-27.0-jre.jar"/>
             <library id="hadoop-auth-3.2.1.jar"/>
@@ -683,8 +688,9 @@
         <!-- S3 group -->
         <libraryNeededGroup description="S3 libraries for spl30x" id="S3-GROUP-SPARK_3_0_x" name="S3-GROUP-SPARK_3_0_x">
             <library id="hadoop-aws-3.2.1.jar"/>
-            <library id="aws-java-sdk-bundle-1.11.375.jar"/>
+            <library id="aws-java-sdk-bundle-1.11.760.jar"/>
             <library id="commons-text-1.4.jar"/>
+            <library id="talend-bigdata-aws-lib-1.1.0.jar"/>
         </libraryNeededGroup>
 
         <!-- Azure group -->
@@ -759,7 +765,7 @@
             <library id="joda-time-2.10.5.jar"/>
             <library id="gson-2.2.4.jar"/>
             <library id="hadoop-mapreduce-client-common-3.2.1.jar"/>
-            <library id="aws-java-sdk-bundle-1.11.375.jar"/>
+            <library id="aws-java-sdk-bundle-1.11.760.jar"/>
         </libraryNeededGroup>
         
         <!-- Redshift group -->
@@ -815,15 +821,15 @@
         <!-- Spark Streaming Kinesis group -->
         <libraryNeededGroup description="Spark streaming Kinesis libraries for spl30x" id="KINESIS-GROUP-SPARK_3_0_x" name="KINESIS-GROUP-SPARK_3_0_x">
             <library id="spark-streaming-kinesis-asl_2.12-3.0.1.jar"/>
-            <library id="aws-java-sdk-kinesis-1.11.655.jar"/>
-            <library id="aws-java-sdk-core-1.11.655.jar"/>
+            <library id="aws-java-sdk-kinesis-1.11.760.jar"/>
+            <library id="aws-java-sdk-core-1.11.760.jar"/>
             <library id="httpclient-4.5.12.jar"/>
             <library id="httpcore-4.4.11.jar"/>
             <library id="jackson-dataformat-cbor-2.10.0.jar"/>
             <library id="joda-time-2.10.5.jar"/>
             <library id="amazon-kinesis-client-1.12.0.jar"/>
-            <library id="aws-java-sdk-cloudwatch-1.11.655.jar"/>
-            <library id="aws-java-sdk-dynamodb-1.11.655.jar"/>
+            <library id="aws-java-sdk-cloudwatch-1.11.760.jar"/>
+            <library id="aws-java-sdk-dynamodb-1.11.760.jar"/>
         </libraryNeededGroup>
 
         <!-- Spark Streaming Redshift group -->

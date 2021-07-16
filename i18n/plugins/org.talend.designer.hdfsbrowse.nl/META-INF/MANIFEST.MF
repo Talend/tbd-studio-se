@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: HDFS Browse Plug-in Nl
-Bundle-SymbolicName: org.talend.designer.hdfsbrowse.nl
-Bundle-Version: 8.0.1.qualifier
-Fragment-Host: org.talend.designer.hdfsbrowse
-Bundle-Vendor: .Talend SA.

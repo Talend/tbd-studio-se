@@ -10,14 +10,6 @@
     <artifactId>tbd-studio-se</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>i18n/plugins/org.talend.demo.bigdata.ce.nl</module>
-        <module>i18n/plugins/org.talend.designer.hdfsbrowse.nl</module>
-        <module>i18n/plugins/org.talend.oozie.scheduler.nl</module>
-        <module>i18n/plugins/org.talend.repository.hadoopcluster.nl</module>
-        <module>i18n/plugins/org.talend.repository.hcatalog.nl</module>
-        <module>i18n/plugins/org.talend.repository.hdfs.nl</module>
-        <module>i18n/plugins/org.talend.repository.nosql.nl</module>
-        <module>i18n/plugins/org.talend.repository.oozie.nl</module>
         <module>main/features/org.talend.rcp.branding.tos.bigdata.feature</module>
         <module>main/features/org.talend.tos.bigdata.feature</module>
         <module>main/features/org.talend.tos.bigdata.libraries.feature</module>
@@ -82,6 +74,7 @@
         <module>main/plugins/org.talend.repository.hdfs</module>
         <module>main/plugins/org.talend.repository.nosql</module>
         <module>main/plugins/org.talend.repository.oozie</module>
+        <module>main/plugins/org.talend.spark.distribution.spark31x</module>
 
         <module>test/features/org.talend.bigdata.se.test.feature</module>
         <module>test/plugins/org.talend.bigdata.se.test.base</module>

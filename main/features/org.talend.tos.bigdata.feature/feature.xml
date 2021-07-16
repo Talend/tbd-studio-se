@@ -25,29 +25,15 @@
 
    <plugin id="org.talend.repository.hcatalog" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
 
-   <plugin id="org.talend.oozie.scheduler.nl" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
-
-   <plugin id="org.talend.repository.hcatalog.nl" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
-
-   <plugin id="org.talend.repository.hdfs.nl" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
-
    <plugin id="org.talend.repository.hadoopcluster" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
 
    <plugin id="org.talend.repository.hadoopcluster.configurator" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
 
-   <plugin id="org.talend.repository.hadoopcluster.nl" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
-
    <plugin id="org.talend.repository.oozie" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-
-   <plugin id="org.talend.repository.oozie.nl" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
      <plugin id="org.talend.designer.neo4j" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
 
-   <plugin id="org.talend.designer.hdfsbrowse.nl" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
-
    <plugin id="org.talend.repository.nosql" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-
-   <plugin id="org.talend.repository.nosql.nl" download-size="0" install-size="0" version="0.0.0" fragment="true" unpack="false"/>
 
    <plugin id="org.talend.libraries.hadoop" download-size="0" install-size="0" version="0.0.0"/>
 
