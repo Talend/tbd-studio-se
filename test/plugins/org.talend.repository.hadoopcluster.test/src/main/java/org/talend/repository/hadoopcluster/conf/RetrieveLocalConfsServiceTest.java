@@ -40,7 +40,7 @@ import static org.junit.Assert.*;
 @Ignore("failed on tycho with NullPointerException")
 public class RetrieveLocalConfsServiceTest {
 
-    IRetrieveConfsService confsService;
+	static IRetrieveConfsService confsService;
 
     static File confDir;
 
@@ -49,7 +49,7 @@ public class RetrieveLocalConfsServiceTest {
         Bundle bundle = Platform.getBundle("org.talend.repository.hadoopcluster.test"); //$NON-NLS-1$
         URL confEntry = bundle.getEntry("/resources/conf"); //$NON-NLS-1$
         confDir = new File(FileLocator.toFileURL(confEntry).getFile());
-	confsService = getServiceWithDistribution(IMapRDistribution.DISTRIBUTION_NAME, "MAPR500");
+        confsService = getServiceWithDistribution(IMapRDistribution.DISTRIBUTION_NAME, "MAPR500");
     }
 
     @Test
@@ -60,10 +60,10 @@ public class RetrieveLocalConfsServiceTest {
         services.add(EHadoopConfs.YARN.getName());
         File exportedConfFolder = new File(HadoopConfsUtils.getConfsSitesTempFolder());
 
-	confsService.exportConfs(services);
+        confsService.exportConfs(services);
         checkFilterProperties(exportedConfFolder, false);
 
-	confsService.applyFilter(getTestFilterProperties());
+        confsService.applyFilter(getTestFilterProperties());
         confsService.exportConfs(services);
         checkFilterProperties(exportedConfFolder, true);
     }
