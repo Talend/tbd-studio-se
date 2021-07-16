@@ -16,11 +16,13 @@ import java.io.InputStream;
 import java.net.URI;
 
 import org.apache.commons.lang.StringUtils;
+import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.repository.model.connection.ConnectionStatus;
 import org.talend.core.utils.ReflectionUtils;
 import org.talend.cwm.relational.RelationalFactory;
 import org.talend.cwm.relational.TdTable;
 import org.talend.designer.hdfsbrowse.exceptions.HadoopServerException;
+import org.talend.designer.hdfsbrowse.hadoop.service.check.provider.CheckedKnoxNamenodeProvider;
 import org.talend.designer.hdfsbrowse.model.HDFSConnectionBean;
 import org.talend.designer.hdfsbrowse.model.HDFSFile;
 import org.talend.designer.hdfsbrowse.model.HDFSFolder;
@@ -144,6 +146,11 @@ public class HadoopOperationManager {
     }
 
     public ConnectionStatus testConnection(HDFSConnectionBean connection) {
+        
+        if( "true".equals( connection.getParameters().get( ConnParameterKeys.CONN_PARA_KEY_USE_KNOX ) ) ) {
+            return HadoopServerUtil.testKnoxConnection(connection);
+        }
+        
         return HadoopServerUtil.testConnection(connection);
     }
 

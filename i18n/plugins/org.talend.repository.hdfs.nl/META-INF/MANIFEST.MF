@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: HDFS Repository Plug-in Nl
-Bundle-SymbolicName: org.talend.repository.hdfs.nl
-Bundle-Version: 8.0.1.qualifier
-Fragment-Host: org.talend.repository.hdfs
-Bundle-Vendor: .Talend SA.

@@ -15,6 +15,7 @@ package org.talend.designer.hdfsbrowse.model;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EMap;
 import org.talend.core.model.utils.ContextParameterUtils;
 import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
 
@@ -66,6 +67,18 @@ public class HDFSConnectionBean {
     private Map<String, Object> configurations = new HashMap<String, Object>();
 
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    
+    private EMap<String, String> parameters;    
+
+    
+    public EMap<String, String> getParameters() {
+        return parameters;
+    }
+
+    
+    public void setParameters(EMap<String, String> parameters) {
+        this.parameters = parameters;
+    }
 
     private String getRealValue(String value) {
         return getRealValue(value, false);

@@ -50,7 +50,12 @@ public class DynamicHDPDistributionsGroup extends AbstractDynamicDistributionsGr
 
     @Override
     public String generateVersionName(String version) {
-        return "Hortonworks Data Platform V" + version + " (Dynamic)"; //$NON-NLS-1$//$NON-NLS-2$
+        String postfix = " (Dynamic)";
+
+        if (version.startsWith("2.") || version.startsWith("3.0")) {
+            postfix = " (Deprecated)";
+        }
+        return "Hortonworks Data Platform V" + version + postfix; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     @Override
