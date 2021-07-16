@@ -65,8 +65,8 @@
              mvn_uri="mvn:org.scala-lang/scala-library/2.12.10"/>
 
          <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
-             id="commons-lang3-3.9.jar" name="commons-lang3-3.9.jar"
-             mvn_uri="mvn:org.apache.commons/commons-lang3/3.9"/>
+             id="commons-lang3-3.10.jar" name="commons-lang3-3.10.jar"
+             mvn_uri="mvn:org.apache.commons/commons-lang3/3.10"/>
 
          <libraryNeeded context="plugin:org.talend.hadoop.distribution.spl30x"
              id="scala-reflect-2.12.10.jar" name="scala-reflect-2.12.10.jar"
@@ -623,7 +623,7 @@
             <library id="commons-configuration2-2.1.1.jar"/>
             <library id="commons-io-2.5.jar"/>
             <library id="commons-lang-2.6.jar"/>
-            <library id="commons-lang3-3.9.jar"/>
+            <library id="commons-lang3-3.10.jar"/>
             <library id="commons-logging-1.1.3.jar"/>
             <library id="guava-27.0-jre.jar"/>
             <library id="hadoop-auth-3.2.1.jar"/>
