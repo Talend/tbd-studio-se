@@ -248,4 +248,9 @@ public interface HadoopComponent {
     default boolean doSupportImpalaConnector() {
         return false;
     }
+    
+    /**
+     * @return a boolean that indicates if the distribution supports Knox.
+     */
+    public boolean isExecutedThroughKnox();
 }

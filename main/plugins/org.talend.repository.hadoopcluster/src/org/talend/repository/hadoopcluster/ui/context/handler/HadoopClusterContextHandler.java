@@ -258,6 +258,30 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                     case WebHDFSSSLTrustStorePassword:
                         ConnectionContextHelper.createParameters(varList, paramName, conn.getWebHDFSSSLTrustStorePassword());
                         break;
+                    case UseKnox:
+                        ConnectionContextHelper.createParameters(varList, paramName,
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_USE_KNOX));
+                        break;
+                    case SparkMode:
+                        ConnectionContextHelper.createParameters(varList, paramName,
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_SPARK_MODE));
+                        break;
+                    case KnoxUrl:
+                        ConnectionContextHelper.createParameters(varList, paramName,
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_KNOX_URL));
+                        break;
+                    case KnoxUsername:
+                        ConnectionContextHelper.createParameters(varList, paramName,
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_KNOX_USER));
+                        break;
+                    case KnoxPassword:
+                        ConnectionContextHelper.createParameters(varList, paramName,
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_KNOX_PASSWORD));
+                        break;
+                    case KnoxDirectory:
+                        ConnectionContextHelper.createParameters(varList, paramName,
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_KNOX_DIRECTORY));
+                        break;
                     default:
                     }
 
@@ -575,6 +599,30 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
             break;
         case hadoopConfSpecificJar:
             hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_HADOOP_CONF_SPECIFIC_JAR,
+                    ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
+            break;
+        case UseKnox:
+            hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_USE_KNOX,
+                    ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
+            break;
+        case SparkMode:
+            hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_SPARK_MODE,
+                    ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
+            break;
+        case KnoxUrl:
+            hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_KNOX_URL,
+                    ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
+            break;
+        case KnoxUsername:
+            hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_KNOX_USER,
+                    ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
+            break;
+        case KnoxPassword:
+            hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_KNOX_PASSWORD,
+                    ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
+            break;
+        case KnoxDirectory:
+            hadoopConn.getParameters().put(ConnParameterKeys.CONN_PARA_KEY_KNOX_DIRECTORY,
                     ContextParameterUtils.getNewScriptCode(hadoopVariableName, LANGUAGE));
             break;
         default:
