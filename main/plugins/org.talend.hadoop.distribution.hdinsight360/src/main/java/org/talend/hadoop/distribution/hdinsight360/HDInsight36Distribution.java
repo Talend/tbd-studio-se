@@ -18,7 +18,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.talend.hadoop.distribution.AbstractDistribution;
 import org.talend.hadoop.distribution.ComponentType;
 import org.talend.hadoop.distribution.DistributionModuleGroup;
 import org.talend.hadoop.distribution.EHadoopVersion;
@@ -29,13 +28,7 @@ import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
 import org.talend.hadoop.distribution.component.MRComponent;
 import org.talend.hadoop.distribution.component.SparkBatchComponent;
 import org.talend.hadoop.distribution.component.SparkStreamingComponent;
-import org.talend.hadoop.distribution.condition.BasicExpression;
-import org.talend.hadoop.distribution.condition.BooleanOperator;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
-import org.talend.hadoop.distribution.condition.EqualityOperator;
-import org.talend.hadoop.distribution.condition.MultiComponentCondition;
-import org.talend.hadoop.distribution.condition.NestedComponentCondition;
-import org.talend.hadoop.distribution.condition.SimpleComponentCondition;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.hdinsight.IMicrosoftHDInsightDistribution;
@@ -58,7 +51,7 @@ public class HDInsight36Distribution extends HDIDistribution implements SparkBat
 
     public final static String VERSION = "MICROSOFT_HD_INSIGHT_3_6"; //$NON-NLS-1$
 
-    public static final String VERSION_DISPLAY = "Microsoft HD Insight 3.6"; //$NON-NLS-1$
+    public static final String VERSION_DISPLAY = "Microsoft HD Insight 3.6 (Deprecated)"; //$NON-NLS-1$
 
     private final static String YARN_APPLICATION_CLASSPATH = "$HADOOP_CONF_DIR,/usr/hdp/current/hadoop-client/*,/usr/hdp/current/hadoop-client/lib/*,/usr/hdp/current/hadoop-hdfs-client/*,/usr/hdp/current/hadoop-hdfs-client/lib/*,/usr/hdp/current/hadoop-yarn-client/*,/usr/hdp/current/hadoop-yarn-client/lib/*"; //$NON-NLS-1$
 
