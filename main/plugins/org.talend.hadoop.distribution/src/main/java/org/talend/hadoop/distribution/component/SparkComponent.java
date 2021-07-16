@@ -123,4 +123,19 @@ public interface SparkComponent extends MRComponent {
      * returns the class path used by lightweight on cluster side
      */
     public String getLightWeightClasspath();
+    
+    /**
+     * @return the packages used during K8s' spark submit to upload to S3
+     */
+    public String getS3Packages();
+    
+    /**
+     * @return the packages used during spark submit to upload to blob
+     */
+    public String getBlobPackages();
+    
+    /**
+     * @return the packages used during spark submit to upload to adls gen 2
+     */
+    public String getADLS2Packages();
 }

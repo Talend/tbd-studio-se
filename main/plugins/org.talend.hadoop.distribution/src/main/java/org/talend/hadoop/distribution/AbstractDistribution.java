@@ -153,6 +153,10 @@ public abstract class AbstractDistribution {
     public boolean doSupportSparkYarnClusterMode() {
         return true;
     }
+    
+    public boolean doSupportSparkYarnK8SMode() {
+    	return false;
+    }
 
     public boolean doSupportS3() {
         return false;
@@ -636,8 +640,33 @@ public abstract class AbstractDistribution {
         result.put(new NodeComponentTypeBean(ComponentType.SPARKSTREAMING, SparkStreamingConstant.SPARK_SQL_ROW_COMPONENT),
                 ModuleGroupsUtils.getModuleGroups(distribution, version, hiveContextCondition, ModuleGroupName.HIVE.get(this.getVersion()), true));
        
+        // delta components in Spark batch
+        Set<DistributionModuleGroup> deltaBatchConfigurationModuleGroups = ModuleGroupsUtils.getModuleGroups(distribution, version, (String) null, ModuleGroupName.DELTALAKE.get(this.getVersion()), true);
+        
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DELTALAKE_INPUT_COMPONENT), deltaBatchConfigurationModuleGroups);
+        result.put(new NodeComponentTypeBean(ComponentType.SPARKBATCH, SparkBatchConstant.DELTALAKE_OUTPUT_COMPONENT), deltaBatchConfigurationModuleGroups);
+        
         return result;
     }
     
+    /**
+     * @return the packages used during spark submit to upload to S3
+     */
+    public String getS3Packages() {
+    	return "";
+    }
     
+    /**
+     * @return the packages used during spark submit to upload to blob
+     */
+    public String getBlobPackages() {
+    	return "";
+    }
+    
+    /**
+     * @return the packages used during spark submit to upload to adls gen 2
+     */
+    public String getADLS2Packages() {
+    	return "";
+    }
 }
