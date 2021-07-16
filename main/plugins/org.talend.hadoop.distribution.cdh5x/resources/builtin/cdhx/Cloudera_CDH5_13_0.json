@@ -9244,7 +9244,7 @@
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
-        "id" : "DYNAMIC_Cloudera_CDH5_13_0_avro_mapred_1_7_7_hadoop2_jar",
+        "id" : "DYNAMIC_Cloudera_CDH5_13_0_avro_mapred_1_7_6_cdh5_13_0",
         "tagName" : "library"
       }, {
         "childNodes" : [ ],
@@ -9910,6 +9910,15 @@
       "id" : "DYNAMIC_Cloudera_CDH5_13_0_avro_1_7_6_cdh5_13_0",
       "mvn_uri" : "mvn:org.talend.libraries/avro-1.7.6-cdh5.13.0/6.0.0",
       "name" : "avro-1.7.6-cdh5.13.0.jar",
+      "tagName" : "libraryNeeded",
+      "useStudioRepository" : "true"
+    }, {
+      "childNodes" : [ ],
+      "context" : "plugin:org.talend.hadoop.distribution.cdh5x",
+      "excludeDependencies" : "true",
+      "id" : "DYNAMIC_Cloudera_CDH5_13_0_avro_mapred_1_7_6_cdh5_13_0",
+      "mvn_uri" : "mvn:org.talend.libraries/avro-mapred-1.7.6-cdh5.13.0/6.0.0",
+      "name" : "avro-mapred-1.7.6-cdh5.13.0.jar",
       "tagName" : "libraryNeeded",
       "useStudioRepository" : "true"
     }, {
