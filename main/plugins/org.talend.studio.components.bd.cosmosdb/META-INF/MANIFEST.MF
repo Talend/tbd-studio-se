@@ -9,9 +9,7 @@ Eclipse-LazyStart: true
 Require-Bundle: org.talend.sdk.component.studio-integration,
  org.talend.core
 Bundle-Vendor: .Talend SA.
-Import-Package: org.apache.commons.collections4.map,
- org.eclipse.core.runtime,
- org.osgi.framework,
+Import-Package: org.eclipse.core.runtime,
  org.slf4j
 Bundle-ClassPath: .
 Eclipse-BundleShape: dir
