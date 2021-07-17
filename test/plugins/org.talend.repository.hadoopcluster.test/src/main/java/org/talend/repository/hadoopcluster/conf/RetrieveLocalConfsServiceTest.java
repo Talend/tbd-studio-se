@@ -70,7 +70,9 @@ public class RetrieveLocalConfsServiceTest {
 
     @Test
     public void testGetConfsMap() throws MalformedURLException {
-        // test MR
+    	Map<String, Map<String, String>> confsMap = confsService.getConfsMap();
+    	assertFalse(confsMap.containsKey("MAPRDB"));
+        IRetrieveConfsService confsService2 = getServiceWithDistribution(IMapRDistribution.DISTRIBUTION_NAME, "MAPR500");
         confsMap = confsService.getConfsMap();
         assertTrue(confsMap.containsKey("MAPRDB"));
     }
