@@ -213,6 +213,13 @@
                 args_<%=cid%>.add("--authenticationDatabase");
                 args_<%=cid%>.add("'$external'");
                 <%
+            } else if(authenticationMechanism.equals("SCRAMSHA256_MEC")) {
+            	%>
+                args_<%=cid%>.add("--authenticationMechanism");
+                args_<%=cid%>.add("SCRAM-SHA-256");
+                args_<%=cid%>.add("--authenticationDatabase");
+                args_<%=cid%>.add(<%=usedAuthenticationDB%>);
+                <%
             }
         } else { // GSSAPI SASL (KERBEROS)
         	// SSL is not compatible with Kerberos in mongoimport
