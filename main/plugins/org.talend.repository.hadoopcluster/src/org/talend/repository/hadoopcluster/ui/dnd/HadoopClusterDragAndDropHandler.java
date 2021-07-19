@@ -274,7 +274,25 @@ public class HadoopClusterDragAndDropHandler extends AbstractDragAndDropServiceH
         } else if (EHDFSRepositoryToComponent.HADOOP_CONF_SPECIFIC_JAR.getRepositoryValue().equals(value)) {
             return getRepositoryValueOfStringType(hcConnection,
                     hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HADOOP_CONF_SPECIFIC_JAR));
+        } else if (EHDFSRepositoryToComponent.SPARK_MODE.getRepositoryValue().equals(value)) {
+            return  hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_SPARK_MODE);
+        } else if (EHDFSRepositoryToComponent.USE_KNOX.getRepositoryValue().equals(value)) {
+            return Boolean.parseBoolean(hcConnection.getParameters().get(
+                    ConnParameterKeys.CONN_PARA_KEY_USE_KNOX));
+        } else if (EHDFSRepositoryToComponent.KNOX_URL.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_KNOX_URL));
+        } else if (EHDFSRepositoryToComponent.KNOX_USERNAME.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_KNOX_USER));
+        } else if (EHDFSRepositoryToComponent.KNOX_PASSWORD.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_KNOX_PASSWORD));
+        } else if (EHDFSRepositoryToComponent.KNOX_DIRECTORY.getRepositoryValue().equals(value)) {
+            return getRepositoryValueOfStringType(hcConnection,
+                    hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_KNOX_DIRECTORY));
         }
+        
 
         return null;
     }
