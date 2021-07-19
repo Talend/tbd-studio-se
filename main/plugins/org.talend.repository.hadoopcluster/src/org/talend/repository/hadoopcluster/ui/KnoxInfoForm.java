@@ -20,6 +20,7 @@ import org.talend.commons.ui.swt.formtools.LabelledText;
 import org.talend.commons.ui.swt.formtools.UtilsButton;
 import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.model.properties.ConnectionItem;
+import org.talend.core.model.utils.ContextParameterUtils;
 import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
 import org.talend.designer.hdfsbrowse.hadoop.service.EHadoopServiceType;
 import org.talend.designer.hdfsbrowse.hadoop.service.HadoopServiceProperties;
@@ -271,6 +272,7 @@ public class KnoxInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterCon
         knoxUserText.setReadOnly(readOnly);
         knoxPasswordText.setReadOnly(readOnly);
         knoxDirectoryText.setReadOnly(readOnly);
+        ((HadoopClusterForm) this.getParent()).adaptFormToReadOnly();
     }
     
     @Override
@@ -279,6 +281,8 @@ public class KnoxInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterCon
         knoxUserText.setReadOnly(!isEditable);
         knoxPasswordText.setReadOnly(!isEditable);
         knoxDirectoryText.setReadOnly(!isEditable);
+        ((HadoopClusterForm) this.getParent()).updateEditableStatus(isEditable);
     }
+    
 
 }
