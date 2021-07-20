@@ -765,7 +765,7 @@
             "classifier" : "",
             "description" : ""
         },
-		{
+        {
             "id": "wildfly-openssl",
             "type": "BASE",
             "context": "{properties.context}",
