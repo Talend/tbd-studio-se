@@ -21,6 +21,7 @@ import java.util.Set;
 import org.apache.commons.collections.map.MultiKeyMap;
 import org.apache.commons.lang.ArrayUtils;
 import org.talend.commons.utils.platform.PluginChecker;
+import org.talend.core.model.process.INode;
 import org.talend.hadoop.distribution.condition.BasicExpression;
 import org.talend.hadoop.distribution.condition.BooleanOperator;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
@@ -667,6 +668,17 @@ public abstract class AbstractDistribution {
      * @return the packages used during spark submit to upload to adls gen 2
      */
     public String getADLS2Packages() {
+    	return "";
+    }
+    
+    /**
+     * @return if the distribution uses spark submit for yarn
+     */
+    public boolean doSendBySparkSubmit() {
+    	return false;
+    }
+    
+    public String getSparkClasspath(List<? extends INode> nodes) {
     	return "";
     }
 }

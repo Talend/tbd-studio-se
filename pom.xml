@@ -80,6 +80,7 @@
         <module>main/features/org.talend.studio.components.bd.couchbase.feature</module>
         <module>main/plugins/org.talend.studio.components.bd.cosmosdb</module>
         <module>main/features/org.talend.studio.components.bd.cosmosdb.feature</module>
+        <module>main/plugins/org.talend.spark.distribution.spark24x</module>
         <module>main/plugins/org.talend.spark.distribution.spark31x</module>
 
         <module>test/features/org.talend.bigdata.se.test.feature</module>

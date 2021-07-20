@@ -31,7 +31,8 @@ public enum ESparkVersion {
     SPARK_2_2("SPARK_2_2_0", "2.2", "SPARK_220"), //$NON-NLS-1$ //$NON-NLS-2$
     SPARK_2_3("SPARK_2_3_0", "2.3", "SPARK_230"), //$NON-NLS-1$ //$NON-NLS-2$
     SPARK_2_4("SPARK_2_4_0", "2.4", "SPARK_240"), //$NON-NLS-1$ //$NON-NLS-2$
-    SPARK_3_0("SPARK_3_0_x", "3.0.1", "SPARK_30x"), //$NON-NLS-1$ //$NON-NLS-2$c
+    SPARK_2_4_X("SPARK_2_4_x", "2.4.x", "SPARK_24x"), //$NON-NLS-1$ //$NON-NLS-2$
+    SPARK_3_0("SPARK_3_0_x", "3.0.1", "SPARK_30x"), //$NON-NLS-1$ //$NON-NLS-2$
 	SPARK_3_1("SPARK_3_1_x", "3.1.x", "SPARK_31x"); //$NON-NLS-1$ //$NON-NLS-2$
 
     private static final Map<String, ESparkVersion> lookupBySparkVersion = new HashMap<String, ESparkVersion>();
