@@ -767,7 +767,7 @@
         },
         {
             "id": "wildfly-openssl",
-            "type": "BASE",
+            "type": "STANDARD",
             "context": "{properties.context}",
             "jarName": "wildfly-openssl-1.0.7.Final",
             "mvnUri": "mvn:org.wildfly.openssl/wildfly-openssl/1.0.7.Final/jar",
