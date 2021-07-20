@@ -17,6 +17,7 @@ import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -26,6 +27,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
@@ -47,6 +49,8 @@ import org.talend.core.utils.ReflectionUtils;
 import org.talend.core.utils.TalendQuoteUtils;
 import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
 import org.talend.designer.hdfsbrowse.exceptions.HadoopServerException;
+import org.talend.designer.hdfsbrowse.hadoop.service.HadoopServiceProperties;
+import org.talend.designer.hdfsbrowse.hadoop.service.check.provider.CheckedKnoxNamenodeProvider;
 import org.talend.designer.hdfsbrowse.model.EHadoopAdditionalJars;
 import org.talend.designer.hdfsbrowse.model.EHadoopAdditionalJarsMapping;
 import org.talend.designer.hdfsbrowse.model.ELinuxAuthority;
@@ -388,6 +392,41 @@ public class HadoopServerUtil {
         }
 
         return groupBuf.toString();
+    }
+    
+    /**
+     * DOC ycbai Comment method "testConnection".
+     *
+     * Test whether can connect to HDFS.
+     *
+     * @return
+     */
+    public static ConnectionStatus testKnoxConnection(HDFSConnectionBean connection) {
+        ConnectionStatus connectionStatus = new ConnectionStatus();
+        connectionStatus.setResult(false);
+        String errorMsg = "Cannot connect to HDFS \"" + connection.getNameNodeURI()
+                + "\". Please check the connection parameters. ";
+
+        try {
+            
+            HadoopServiceProperties serviceProperties = new HadoopServiceProperties();
+            BeanUtils.copyProperties(serviceProperties, connection);
+            serviceProperties.setVersion(connection.getDfVersion());
+
+            serviceProperties.setKnoxURL( connection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_KNOX_URL));
+            serviceProperties.setKnoxUser( connection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_KNOX_USER));
+            serviceProperties.setKnoxPassword( connection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_KNOX_PASSWORD));
+            serviceProperties.setKnoxDirectory( connection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_KNOX_DIRECTORY));
+            
+            CheckedKnoxNamenodeProvider hadoopKnox = new CheckedKnoxNamenodeProvider();
+            connectionStatus.setResult(hadoopKnox.checkService(serviceProperties, 1000));
+            connectionStatus.setMessageException("Connection successful"); 
+            
+        } catch (HadoopServerException | InvocationTargetException | IllegalAccessException e) {
+            connectionStatus.setMessageException(ExceptionUtils.getFullStackTrace(e));
+        }       
+
+        return connectionStatus;
     }
 
     /**

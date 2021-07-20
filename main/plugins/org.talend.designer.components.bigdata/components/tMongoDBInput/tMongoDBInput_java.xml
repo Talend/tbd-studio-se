@@ -140,11 +140,16 @@
             </ITEMS>
         </PARAMETER>
 
+        <PARAMETER NAME="READ_PREFERENCE_NOTE" FIELD="LABEL" NUM_ROW="12" GROUP="READ_PREFERENCE_GROUP"
+            SHOW_IF="((USE_EXISTING_CONNECTION == 'true') AND (#LINK@NODE.CONNECTION.DB_VERSION== 'MONGODB_4_4_X'))">
+            <DEFAULT>Note : Use Connection component to set Read Preference</DEFAULT>
+        </PARAMETER>
+
         <PARAMETER
             NAME="REQUIRED_AUTHENTICATION"
             FIELD="CHECK"
             REPOSITORY_VALUE="REQUIRED_AUTHENTICATION"
-            NUM_ROW="11"
+            NUM_ROW="14"
             SHOW_IF="USE_EXISTING_CONNECTION == 'false'"
             GROUP="AUTHENTICATION"
         >
@@ -329,13 +334,23 @@ Note : If you are running on a Sharded Cluster, please make sure to include the 
 
     <ADVANCED_PARAMETERS>
         <PARAMETER FIELD="CHECK" NAME="QUERYOPTION_NOTIMEOUT" REPOSITORY_VALUE="QUERYOPTION_NOTIMEOUT"
-            NUM_ROW="40" GROUP="ADVANCED_QUERY_OPTIONS" SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND ((QUERY_TYPE != 'AGGREGATION_QUERY') OR ((DB_VERSION != 'MONGODB_3_5_X') AND (DB_VERSION != 'MONGODB_4_4_X')))">
+            NUM_ROW="40" GROUP="ADVANCED_QUERY_OPTIONS" SHOW_IF="(USE_EXISTING_CONNECTION == 'false') AND ((QUERY_TYPE != 'AGGREGATION_QUERY') AND (DB_VERSION != 'MONGODB_4_4_X'))">
             <DEFAULT>false</DEFAULT>
         </PARAMETER>
 
         <PARAMETER FIELD="CHECK" NAME="EXTERNAL_SORT_AGGREGATION" REPOSITORY_VALUE="EXTERNAL_SORT_AGGREGATION"
             NUM_ROW="50" GROUP="ADVANCED_AGGREGATION_OPTIONS" SHOW_IF="QUERY_TYPE=='AGGREGATION_QUERY'">
             <DEFAULT>false</DEFAULT>
+        </PARAMETER>
+
+        <PARAMETER
+                NAME="CONVERT_BSON_TO_STRING"
+                FIELD="CHECK"
+                REPOSITORY_VALUE="CONVERT_BSON_TO_STRING"
+                NUM_ROW="46"
+                SHOW_IF="((USE_EXISTING_CONNECTION == 'false') AND ((DB_VERSION == 'MONGODB_3_5_X') OR (DB_VERSION == 'MONGODB_4_4_X'))) OR ((USE_EXISTING_CONNECTION == 'true') AND ((#LINK@NODE.CONNECTION.DB_VERSION== 'MONGODB_4_4_X') OR (#LINK@NODE.CONNECTION.DB_VERSION== 'MONGODB_3_5_X')))"
+        >
+            <DEFAULT>true</DEFAULT>
         </PARAMETER>
     </ADVANCED_PARAMETERS>
 
@@ -346,7 +361,7 @@ Note : If you are running on a Sharded Cluster, please make sure to include the 
             <IMPORT MODULE="mongodb-driver-sync-4.2.0.jar" MVN="mvn:org.mongodb/mongodb-driver-sync/4.2.0" NAME="mongodb-driver-sync-4.2.0" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'MONGODB_4_4_X'))" />
             <IMPORT MODULE="bson-4.2.0.jar" MVN="mvn:org.mongodb/bson/4.2.0" NAME="bson-4.2.0" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND (DB_VERSION == 'MONGODB_4_4_X'))" />
             <IMPORT MODULE="mongo-java-driver-3.12.0.jar" MVN="mvn:org.mongodb/mongo-java-driver/3.12.0" NAME="mongo-java-driver-3.12.0" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND ((DB_VERSION == 'MONGODB_3_0_X') OR (DB_VERSION == 'MONGODB_3_2_X') OR (DB_VERSION == 'MONGODB_3_5_X')))"/>
-            <IMPORT MODULE="mongo-java-driver-3.4.2.jar" MVN="mvn:org.talend.libraries/mongo-java-driver-3.4.2/6.0.0"  NAME="mongo-java-driver-3.4.2" UrlPath="platform:/plugin/org.talend.libraries.mongo/lib/mongo-java-driver-3.4.2.jar" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND ((DB_VERSION == 'MONGODB_2_6_X') OR (DB_VERSION == 'MONGODB_2_5_X'))" />
+            <IMPORT MODULE="mongo-java-driver-3.4.2.jar" MVN="mvn:org.talend.libraries/mongo-java-driver-3.4.2/6.0.0"  NAME="mongo-java-driver-3.4.2" REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND ((DB_VERSION == 'MONGODB_2_6_X') OR (DB_VERSION == 'MONGODB_2_5_X'))" />
             
         </IMPORTS>
     </CODEGENERATION>

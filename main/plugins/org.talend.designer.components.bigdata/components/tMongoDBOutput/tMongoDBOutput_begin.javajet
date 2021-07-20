@@ -29,8 +29,13 @@
     List<Map<String, String>> mapping = (List<Map<String,String>>)ElementParameterParser.getObjectValueXML(node, "__MAPPING__");
     boolean useReplicaSet="true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__USE_REPLICA_SET__"));
     List<Map<String,String>> replicaAddrs= (List<Map<String,String>>)ElementParameterParser.getObjectValue(node, "__REPLICA_SET__");
+
+    // declare read preferences and write concerns for unified connection template
+    boolean setReadPreference = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_READ_PREFERENCE__"));
+    String readPreference = ElementParameterParser.getValue(node, "__READ_PREFERENCE__");
     boolean setWriteConcern = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_WRITE_CONCERN__"));
     String writeConcern = ElementParameterParser.getValue(node, "__WRITE_CONCERN__");
+
     boolean useAuthDB = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_AUTHENTICATION_DATABASE__"));
     String authDB = ElementParameterParser.getValue(node, "__AUTHENTICATION_DATABASE__");
     String usedAuthenticationDB = useAuthDB ? authDB : dbname;
@@ -52,20 +57,67 @@
     boolean setBulkWrite = "true".equalsIgnoreCase(ElementParameterParser.getValue(node, "__SET_BULK_WRITE__"));
     String bulkWriteOperationSize = ElementParameterParser.getValue(node, "__BULK_WRITE_SIZE__");
     String bulkWriteType = ElementParameterParser.getValue(node, "__BULK_WRITE_TYPE__");
+
+    // db versions
+    boolean version_3_5_X = "MONGODB_3_5_X".equals(dbversion);
+    boolean version_4_4_X = "MONGODB_4_4_X".equals(dbversion);
     // BulkWrite is only supported on Mongo 2.6+ drivers
     final boolean bulkWrite = setBulkWrite & (!"MONGODB_2_5_X".equalsIgnoreCase(dbversion));
 %>
 
     <%if(isLog4jEnabled){%>
         java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.OFF);
-    <%} else {%>
+        <%
+    } else {%>
         java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.SEVERE);
-    <%}%>
+        <%
+    }%>
 
-<%if("MONGODB_4_4_X".equals(dbversion)) {%>
-	<%@ include file="./tMongoDBOutput_begin_4_4_X.javajet"%>
-<%} else if("MONGODB_3_5_X".equals(dbversion)) {%>
-	<%@ include file="./tMongoDBOutput_begin_3_5_X.javajet"%>
-<%} else {%>
-	<%@ include file="./tMongoDBOutput_begin_below_3_5.javajet"%>
-<%}%>
+    <%@ include file="../templates/MongoDB/ApplicationName.javajet"%>
+
+    int nb_line_<%=cid %> = 0;
+    <%
+    List<IMetadataTable> metadatas = node.getMetadataList();
+    if(metadatas != null && metadatas.size() > 0) {
+        IMetadataTable metadata = metadatas.get(0);
+        if(metadata != null) {%>
+
+            <%if(version_3_5_X || version_4_4_X) {%>
+                <%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/DBObjectUtil_3_5_X.javajet"%>
+                <%
+            } else {%>
+                <%@ include file="@{org.talend.designer.components.bigdata}/components/templates/MongoDB/DBObjectUtil_below_3_5_X.javajet"%>
+                <%
+            }%>
+            DBObjectUtil_<%=cid%> updateObjectUtil_<%=cid%>=new DBObjectUtil_<%=cid%>();
+            DBObjectUtil_<%=cid%> queryObjectUtil_<%=cid%>=new DBObjectUtil_<%=cid%>();
+            java.util.Map<String, String> pathMap_<%=cid%>=new java.util.HashMap<>();
+
+            <%for (int i = 0; i < mapping.size(); i++) {
+                String path = mapping.get(i).get("PARENT_NODE_PATH");
+                if(path == null || "".equals(path)) {
+                    path="\"\"";
+                }
+                String schemaColumn=mapping.get(i).get("SCHEMA_COLUMN");
+                %>
+                pathMap_<%=cid%>.put("<%=schemaColumn%>",<%=path%>);
+                <%
+            }%>
+
+            <%if(version_4_4_X) {%>
+                <%@ include file="./tMongoDBOutput_begin_4_4_X.javajet"%>
+                <%
+            } else if(version_3_5_X) {%>
+                <%@ include file="./tMongoDBOutput_begin_3_5_X.javajet"%>
+                <%
+            } else {%>
+                <%@ include file="./tMongoDBOutput_begin_below_3_5.javajet"%>
+                <%
+            }%>
+
+            <%if (isLog4jEnabled) {%>
+                log.info("<%=cid%> - Start to write data into database [" + db_<%=cid%>.getName() + "].");
+                <%
+            }
+        }
+    }%>

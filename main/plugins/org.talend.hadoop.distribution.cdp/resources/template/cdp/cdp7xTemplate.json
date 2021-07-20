@@ -428,7 +428,7 @@
             ]
         },
         {
-            "id" : "httpclient-4.5.3",
+            "id" : "httpclient",
             "type" : "STANDARD",
             "context" : "{properties.context}",
             "jarName" : "httpclient-4.5.3.jar",
@@ -437,7 +437,7 @@
             "description" : ""
         },
         {
-            "id" : "httpcore-4.4.6",
+            "id" : "httpcore",
             "type" : "STANDARD",
             "context" : "{properties.context}",
             "jarName" : "httpcore-4.4.6.jar",
@@ -712,6 +712,82 @@
             "jarName": "bigquery-connector-hadoop3-1.1.6-shaded.jar",
             "mvnUri": "mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop3-1.1.6/jar/shaded",
             "useStudioRepository": "true"
+        },
+        {
+            "id": "talend-bigdata-launcher-core",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "talend-bigdata-launcher-core-2.2.0.jar",
+            "mvnUri": "mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.2.0/jar",
+            "useStudioRepository": "true"
+        },
+        {
+            "id": "talend-bigdata-launcher-livy",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "talend-bigdata-launcher-livy-2.2.0.jar",
+            "mvnUri": "mvn:org.talend.bigdata.libs/talend-bigdata-launcher-livy/2.2.0/jar",
+            "useStudioRepository": "true"
+        },
+        {
+            "id": "talend-bigdata-launcher-knox",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "talend-bigdata-launcher-knox-2.2.0.jar",
+            "mvnUri": "mvn:org.talend.bigdata.libs/talend-bigdata-launcher-knox/2.2.0/jar",
+            "useStudioRepository": "true"
+        },
+        {
+            "id": "gateway-cloud-bindings",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "jarName": "gateway-cloud-bindings-1.3.0.7.2.10.0-148.jar",
+            "mvnUri": "mvn:org.apache.knox/gateway-cloud-bindings/1.3.0.7.2.10.0-148/jar",
+            "useStudioRepository": "true"
+        },
+        {
+            "id": "gateway-shell",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId" : "org.apache.knox",
+            "artifactId" : "gateway-shell",
+            "version" : "1.3",
+            "classifier" : "",
+            "description" : ""
+        },
+        {
+            "id": "gateway-i18n",
+            "type": "BASE",
+            "context": "{properties.context}",
+            "groupId" : "org.apache.knox",
+            "artifactId" : "gateway-i18n",
+            "version" : "1.3",
+            "classifier" : "",
+            "description" : ""
+        },
+        {
+            "id": "wildfly-openssl",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "wildfly-openssl-1.0.7.Final",
+            "mvnUri": "mvn:org.wildfly.openssl/wildfly-openssl/1.0.7.Final/jar",
+            "useStudioRepository": "true"
+        },
+        {
+            "id": "commons-configuration",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "commons-configuration-1.9.jar",
+            "mvnUri": "mvn:commons-configuration/commons-configuration/1.9/jar",
+            "useStudioRepository": "true"
+        },
+        {
+            "id": "fluent-hc",
+            "type": "STANDARD",
+            "context": "{properties.context}",
+            "jarName": "fluent-hc-4.5.13.jar",
+            "mvnUri": "mvn:org.apache.httpcomponents/fluent-hc/4.5.13/jar",
+            "useStudioRepository": "true"
         }
     ],
     "moduleGroups": [
@@ -738,7 +814,15 @@
             "description" : "jars for hdfs, only module.id permitted",
             "modules": [
                 "commons-httpclient-3.1",
+                "httpcore",
+                "httpclient",
                 "hadoop-client",
+                "talend-bigdata-launcher-core",
+                "talend-bigdata-launcher-livy",
+                "talend-bigdata-launcher-knox",
+                "commons-configuration",
+                "gateway-shell",
+                "gateway-i18n",
                 "jackson-core",
                 "jackson-databind",
                 "jackson-annotations",
@@ -824,7 +908,23 @@
                 "spark-hive_2.11",
                 "spark-mllib_2.11",
                 "spark-yarn_2.11",
-                "spark-streaming-kafka"
+                "spark-streaming-kafka",
+                "fluent-hc"
+            ]
+        },
+        {
+            "id" : "SPARK-LIB-MRREQUIRED-DYNAMIC",
+            "description" : "",
+            "modules": [
+                "talend-bigdata-launcher-core",
+                "talend-bigdata-launcher-livy",
+                "talend-bigdata-launcher-knox",
+                "gateway-cloud-bindings",
+                "gateway-shell",
+                "gateway-i18n",
+                "commons-configuration",
+                "wildfly-openssl",
+                "hadoop-azure"
             ]
         },
         {

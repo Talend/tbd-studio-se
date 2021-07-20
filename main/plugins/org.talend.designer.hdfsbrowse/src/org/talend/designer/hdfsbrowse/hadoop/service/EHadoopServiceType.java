@@ -25,6 +25,10 @@ public enum EHadoopServiceType {
     RESOURCE_MANAGER,
 
     GOOGLE_DATAPROC,
+    
+    KNOX_RESOURCE_MANAGER,
+    
+    KNOX_NAMENODE
     ;
 
     public String getName() {

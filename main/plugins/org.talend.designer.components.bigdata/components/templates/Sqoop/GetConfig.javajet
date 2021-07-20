@@ -26,8 +26,8 @@
 	configuration_<%=cid%>.set("<%=fsDefalutName%>", <%=namenode%>);
 <%
 
-	boolean isKerberosAvailableHadoop2 = !isCustom && sqoopDistrib.isHadoop2() && sqoopDistrib.doSupportKerberos();
-	boolean isHadoop2 = !isCustom && sqoopDistrib.isHadoop2();
+	boolean isKerberosAvailableHadoop2 = !isCustom && ( sqoopDistrib.isHadoop2() || sqoopDistrib.isHadoop3() )  && sqoopDistrib.doSupportKerberos();
+	boolean isHadoop2 = sqoopDistrib.isHadoop2() || sqoopDistrib.isHadoop3();
 	boolean isKerberosAvailableHadoop1 = !isCustom && sqoopDistrib.isHadoop1() && sqoopDistrib.doSupportKerberos();
 
 	if((isCustom && useYarn) || (!isCustom && isHadoop2)) {

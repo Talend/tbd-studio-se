@@ -84,6 +84,11 @@ public interface SparkComponent extends MRComponent {
      * @return true if the distribution executes its Spark job through Livy.
      */
     public boolean isExecutedThroughLivy();
+    
+    /**
+     * @return true if the distribution executes its Spark job through Knox.
+     */
+    public boolean isExecutedThroughKnox();
 
     /**
      * @return A string with all of the Spark jars (from the module group SPARK) mapped to local Studio paths.

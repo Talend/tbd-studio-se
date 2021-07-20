@@ -39,7 +39,7 @@ public abstract class AbstractMapRDistribution extends AbstractDistribution {
         return false;
     }
     
-    protected static  Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(
+    protected Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> buildNodeModuleGroups(
             String distribution, String version) {
         Map<NodeComponentTypeBean, Set<DistributionModuleGroup>> result = new HashMap<>();
         // GCS

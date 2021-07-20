@@ -14,6 +14,7 @@ package org.talend.repository.nosql.db.provider.mongodb;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -29,6 +30,7 @@ import org.talend.repository.nosql.db.common.mongodb.IMongoDBAttributes;
 import org.talend.repository.nosql.db.util.mongodb.MongoDBConnectionUtil;
 import org.talend.repository.nosql.exceptions.NoSQLExtractSchemaException;
 import org.talend.repository.nosql.exceptions.NoSQLServerException;
+import org.talend.repository.nosql.factory.NoSQLClassLoaderFactory;
 import org.talend.repository.nosql.metadata.AbstractMetadataProvider;
 import org.talend.repository.nosql.metadata.NoSQLSchemaUtil;
 import org.talend.repository.nosql.model.INoSQLSchemaNode;
@@ -59,7 +61,11 @@ public class MongoDBMetadataProvider extends AbstractMetadataProvider {
                     return metadataColumns;
                 }
                 String collectionName = node.getName();
-                metadataColumns.addAll(extractTheColumns(connection, dbName, collectionName));
+                if (MongoDBConnectionUtil.isUpgradeLatestVersion(connection)) {
+                    metadataColumns.addAll(extractTheColumns4Upgrade(connection, dbName, collectionName));
+                } else {
+                    metadataColumns.addAll(extractTheColumns(connection, dbName, collectionName));
+                }
             }
         } catch (Exception e) {
             throw new NoSQLExtractSchemaException(e);
@@ -77,7 +83,11 @@ public class MongoDBMetadataProvider extends AbstractMetadataProvider {
         try {
             String dbName = NoSQLSchemaUtil.getSchemaNameByTableLabel(connection, tableName);
             dbName = ConnectionContextHelper.getParamValueOffContext(connection, dbName);
-            metadataColumns.addAll(extractTheColumns(connection, dbName, tableName));
+            if (MongoDBConnectionUtil.isUpgradeLatestVersion(connection)) {
+                metadataColumns.addAll(extractTheColumns4Upgrade(connection, dbName, tableName));
+            } else {
+                metadataColumns.addAll(extractTheColumns(connection, dbName, tableName));
+            }
         } catch (Exception e) {
             throw new NoSQLExtractSchemaException(e);
         }
@@ -105,6 +115,7 @@ public class MongoDBMetadataProvider extends AbstractMetadataProvider {
                 }
             }
             Object dbCursor = NoSQLReflection.invokeMethod(dbCollection, "find"); //$NON-NLS-1$
+            String documentClassName = "com.mongodb.BasicDBObject"; //$NON-NLS-1$
             int rowNum = 0;
             while ((Boolean) NoSQLReflection.invokeMethod(dbCursor, "hasNext")) { //$NON-NLS-1$
                 if (rowNum > COUNT_ROWS) {
@@ -123,8 +134,13 @@ public class MongoDBMetadataProvider extends AbstractMetadataProvider {
                     Object value = NoSQLReflection.invokeMethod(dbObject, "get", new Object[] { colName }); //$NON-NLS-1$
                     JavaType javaType = null;
                     if (value != null) {
-                        javaType = JavaTypesManager.getJavaTypeFromName(value.getClass().getSimpleName());
+                        if (!documentClassName.equals(value.getClass().getName())) {
+                            javaType = JavaTypesManager.getJavaTypeFromName(value.getClass().getSimpleName());
+                        } else {
+                            javaType = JavaTypesManager.OBJECT;
+                        }
                     }
+                    
                     if (javaType == null) {
                         javaType = JavaTypesManager.STRING;
                     }
@@ -142,6 +158,77 @@ public class MongoDBMetadataProvider extends AbstractMetadataProvider {
             throw new NoSQLExtractSchemaException(e);
         }
 
+        return metadataColumns;
+    }
+    
+    private List<MetadataColumn> extractTheColumns4Upgrade(NoSQLConnection connection, String dbName, String collectionName)
+            throws NoSQLExtractSchemaException {
+        List<MetadataColumn> metadataColumns = new ArrayList<MetadataColumn>();
+        try {
+            Object db = MongoDBConnectionUtil.getDB(connection, dbName);
+            if (db == null) {
+                return metadataColumns;
+            }
+            ClassLoader classLoader = NoSQLClassLoaderFactory.getClassLoader(connection);
+            Class<?> dbObjectClasszz = Class.forName("com.mongodb.DBObject", true, classLoader); //$NON-NLS-1$
+            Class<?> documentClasszz = Class.forName("org.bson.Document", true, classLoader); //$NON-NLS-1$
+            String documentClassName = documentClasszz.getName();
+
+            List<String> existColumnNames = new ArrayList<String>();
+            Object dbCollection = NoSQLReflection.invokeMethod(db, "getCollection", new Object[] { collectionName }); //$NON-NLS-1$
+            Set<String> indexColNames = new HashSet<String>();
+            Iterable<Object> indexIter = (Iterable<Object>) NoSQLReflection.invokeMethod(dbCollection, "listIndexes", new Object[] { dbObjectClasszz}); //$NON-NLS-1$
+            Iterator<Object> indexIterator = indexIter.iterator();
+            while (indexIterator.hasNext()) {
+                Object index = indexIterator.next();
+                Object keyObj = NoSQLReflection.invokeMethod(index, "get", new Object[] { "key" }); //$NON-NLS-1$//$NON-NLS-2$
+                if (keyObj != null) {
+                    Set<String> indexKeys = (Set<String>) NoSQLReflection.invokeMethod(keyObj, "keySet", new Object[0]); //$NON-NLS-1$
+                    indexColNames.addAll(indexKeys);
+                }
+            }
+            int rowNum = 0;
+            Iterable<Object> dbCursorIter = (Iterable<Object>)NoSQLReflection.invokeMethod(dbCollection, "find"); //$NON-NLS-1$
+            Iterator<Object> dbCursorIterator = dbCursorIter.iterator();
+            while (dbCursorIterator.hasNext()) {
+                if (rowNum > COUNT_ROWS) {
+                    break;
+                }
+                Object dbObject = dbCursorIterator.next();
+                Set<String> columnNames = (Set<String>) NoSQLReflection.invokeMethod(dbObject, "keySet"); //$NON-NLS-1$
+                for (String colName : columnNames) {
+                    colName = MetadataToolHelper.validateValue(colName);
+                    if (existColumnNames.contains(colName)) {
+                        continue;
+                    }
+                    MetadataColumn column = ConnectionFactory.eINSTANCE.createMetadataColumn();
+                    column.setName(colName);
+                    column.setLabel(colName);
+                    Object value = NoSQLReflection.invokeMethod(dbObject, "get", new Object[] { colName }, Object.class); //$NON-NLS-1$
+                    JavaType javaType = null;
+                    if (value != null) {
+                        if (!documentClassName.equals(value.getClass().getName())) {
+                            javaType = JavaTypesManager.getJavaTypeFromName(value.getClass().getSimpleName());
+                        }else {
+                            javaType = JavaTypesManager.OBJECT;
+                        }
+                    }
+                    if (javaType == null) {
+                        javaType = JavaTypesManager.STRING;
+                    }
+                    column.setTalendType(javaType.getId());
+                    if (indexColNames.contains(colName)) {
+                        column.setKey(true);
+                        column.setNullable(false);
+                    }
+                    metadataColumns.add(column);
+                    existColumnNames.add(colName);
+                }
+                rowNum++;
+            }
+        } catch (Exception e) {
+            throw new NoSQLExtractSchemaException(e);
+        }
         return metadataColumns;
     }
 

@@ -11,9 +11,9 @@
         <!-- needed by avro related code and routines -->
         <libraryNeeded
                 context="plugin:org.talend.hadoop.distribution.hdinsight400"
-                id="jackson-core-asl-1.9.14-TALEND"
-                name="jackson-core-asl-1.9.14-TALEND.jar"
-                mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.14-TALEND/6.0.0"/>
+                id="jackson-core-asl-1.9.15-TALEND"
+                name="jackson-core-asl-1.9.15-TALEND.jar"
+                mvn_uri="mvn:org.talend.libraries/jackson-core-asl-1.9.15-TALEND/6.0.0"/>
 
         <!-- Hive libraries -->
         <libraryNeeded
@@ -513,7 +513,7 @@
             <library id="commons-lang-2.6"/>
             <library id="commons-codec-1.14"/>
             <!-- needed by avro structures generated in jobs -->
-            <library id="jackson-core-asl-1.9.14-TALEND"/>
+            <library id="jackson-core-asl-1.9.15-TALEND"/>
         </libraryNeededGroup>
         
         <libraryNeededGroup
