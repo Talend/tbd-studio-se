@@ -67,8 +67,8 @@ public class KnoxInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterCon
         knoxURLText = new LabelledText(configGroup, Messages.getString("KnoxInfoForm.text.knoxURL"), 1); //$NON-NLS-1$ $NON-NLS-2$
         knoxUserText = new LabelledText(configGroup, Messages.getString("KnoxInfoForm.text.knoxUser"), 1); //$NON-NLS-1$
 
-        knoxPasswordText = new LabelledText(configGroup, Messages.getString("KnoxInfoForm.text.knoxPassword"), 1, //$NON-NLS-1$
-                SWT.PASSWORD | SWT.BORDER | SWT.SINGLE);
+        knoxPasswordText = new LabelledText(configGroup, Messages.getString("KnoxInfoForm.text.knoxPassword"), 1); //$NON-NLS-1$
+        knoxPasswordText.getTextControl().setEchoChar('*');
 
         knoxDirectoryText = new LabelledText(configGroup, Messages.getString("KnoxInfoForm.text.knoxDirectory"), 1); //$NON-NLS-1$
     }
@@ -282,6 +282,16 @@ public class KnoxInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterCon
         knoxPasswordText.setReadOnly(!isEditable);
         knoxDirectoryText.setReadOnly(!isEditable);
         ((HadoopClusterForm) this.getParent()).updateEditableStatus(isEditable);
+    }
+    
+    @Override
+    protected void adaptFormToEditable() {
+        super.adaptFormToEditable();
+        if (isContextMode()) {
+            knoxPasswordText.getTextControl().setEchoChar('\0');
+        } else {
+            knoxPasswordText.getTextControl().setEchoChar('*');
+        }
     }
     
 
