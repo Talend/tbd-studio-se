@@ -22,7 +22,7 @@
 
 		public void createConnection(INode node) {
 %>
-			conn_<%=cid%> = java.sql.DriverManager.getConnection(url_<%=cid%>);
+			conn_<%=cid%> = java.sql.DriverManager.getConnection(url_<%=cid%>, dbUser_<%=cid%> , dbPwd_<%=cid%> );
 <%
 		}
       private String getLevelDebug(INode node){
