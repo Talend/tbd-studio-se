@@ -147,7 +147,7 @@ public class HadoopOperationManager {
 
     public ConnectionStatus testConnection(HDFSConnectionBean connection) {
         
-        if( "true".equals( connection.getParameters().get( ConnParameterKeys.CONN_PARA_KEY_USE_KNOX ) ) ) {
+        if( connection.getParameters() != null && "true".equals( connection.getParameters().get( ConnParameterKeys.CONN_PARA_KEY_USE_KNOX ) ) ) {
             return HadoopServerUtil.testKnoxConnection(connection);
         }
         
