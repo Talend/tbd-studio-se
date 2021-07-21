@@ -40,7 +40,7 @@ import static org.junit.Assert.*;
 @Ignore("failed on tycho with NullPointerException")
 public class RetrieveLocalConfsServiceTest {
 
-    static IRetrieveConfsService confsService;
+	static IRetrieveConfsService confsService;
 
     static File confDir;
 
@@ -49,7 +49,7 @@ public class RetrieveLocalConfsServiceTest {
         Bundle bundle = Platform.getBundle("org.talend.repository.hadoopcluster.test"); //$NON-NLS-1$
         URL confEntry = bundle.getEntry("/resources/conf"); //$NON-NLS-1$
         confDir = new File(FileLocator.toFileURL(confEntry).getFile());
-        confsService = getServiceWithDistribution(IHortonworksDistribution.DISTRIBUTION_NAME, "HDP_2_5");
+        confsService = getServiceWithDistribution(IMapRDistribution.DISTRIBUTION_NAME, "MAPR500");
     }
 
     @Test
@@ -70,12 +70,10 @@ public class RetrieveLocalConfsServiceTest {
 
     @Test
     public void testGetConfsMap() throws MalformedURLException {
-        // test HDP
-        Map<String, Map<String, String>> confsMap = confsService.getConfsMap();
-        assertFalse(confsMap.containsKey("MAPRDB"));
-        // test MR
+    	Map<String, Map<String, String>> confsMap = confsService.getConfsMap();
+    	assertFalse(confsMap.containsKey("MAPRDB"));
         IRetrieveConfsService confsService2 = getServiceWithDistribution(IMapRDistribution.DISTRIBUTION_NAME, "MAPR500");
-        confsMap = confsService2.getConfsMap();
+        confsMap = confsService.getConfsMap();
         assertTrue(confsMap.containsKey("MAPRDB"));
     }
 

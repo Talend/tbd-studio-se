@@ -84,13 +84,6 @@ public class HadoopDistributionsHelperTest {
     }
 
     @Test
-    public void testHortonWorksDistribution() {
-        testDistributionOnly("HORTONWORKS", "HortonWorks", new String[][] {
-                { "HDP_2_6", "Hortonworks Data Platform V2.6.0 (Deprecated)", "HADOOP_2" },
-                { "HDP_2_5", "Hortonworks Data Platform V2.5.0 (Deprecated)", "HADOOP_2" }});
-    }
-
-    @Test
     public void testMapRDistribution() {
         testDistributionOnly("MAPR", "MapR", new String[][] {
                 { "MAPR611", "MapR 6.1.0 - MEP 6.1.1 (YARN mode)", "HADOOP_2" },
