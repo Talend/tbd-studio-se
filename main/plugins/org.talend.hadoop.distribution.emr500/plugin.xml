@@ -261,7 +261,7 @@
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="jackson-core-asl-1.9.15-TALEND.jar" name="jackson-core-asl-1.9.15-TALEND.jar" mvn_uri="mvn:org.codehaus.jackson/jackson-core-asl/1.9.15-TALEND"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="xbean-asm5-shaded-4.4.jar" name="xbean-asm5-shaded-4.4.jar" mvn_uri="mvn:org.apache.xbean/xbean-asm5-shaded/4.4"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="apache-log4j-extras-1.2.17.jar" name="apache-log4j-extras-1.2.17.jar" mvn_uri="mvn:log4j/apache-log4j-extras/1.2.17"/>
-<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="derby-10.11.1.1.jar" name="derby-10.11.1.1.jar" mvn_uri="mvn:org.talend.libraries/derby-10.11.1.1/6.0.0"/>
+<libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="derby-10.12.1.1.jar" name="derby-10.12.1.1.jar" mvn_uri="mvn:org.talend.libraries/derby-10.12.1.1/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="hive-cli-1.2.1.spark2.jar" name="hive-cli-1.2.1.spark2.jar" mvn_uri="mvn:org.talend.libraries/hive-cli-1.2.1.spark2/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="hive-exec-1.2.1.spark2.jar" name="hive-exec-1.2.1.spark2.jar" mvn_uri="mvn:org.talend.libraries/hive-exec-1.2.1.spark2/6.0.0"/>
 <libraryNeeded context="plugin:org.talend.hadoop.distribution.emr500" id="jackson-jaxrs-1.9.13.jar" name="jackson-jaxrs-1.9.13.jar" mvn_uri="mvn:org.codehaus.jackson/jackson-jaxrs/1.9.13"/>
@@ -750,7 +750,7 @@
              <library id="datanucleus-api-jdo-4.2.1.jar"/>
              <library id="datanucleus-core-4.1.6.jar"/>
              <library id="datanucleus-rdbms-4.1.7.jar"/>
-             <library id="derby-10.11.1.1.jar"/>
+             <library id="derby-10.12.1.1.jar"/>
              <library id="zookeeper-emr500-latest"/>
              <library id="curator-framework-2.6.0.jar"/>
              <library id="curator-client-2.6.0.jar"/>
@@ -842,7 +842,7 @@
 			 <library id="datanucleus-api-jdo-3.2.6.jar"/>
 			 <library id="datanucleus-core-3.2.10.jar"/>
 			 <library id="datanucleus-rdbms-3.2.9.jar"/>
-			 <library id="derby-10.11.1.1.jar"/>
+			 <library id="derby-10.12.1.1.jar"/>
 			 <library id="eigenbase-properties-1.1.5.jar"/>
 			 <library id="gson-2.2.4.jar"/>
 			 <library id="guava-14.0.1.jar"/> 
@@ -1162,7 +1162,7 @@
       <!-- EMR 5.0.0 ClassLoaders -->
       <classloader
             index="HIVE2:AMAZON_EMR:EMR_5_0_0:STANDALONE"
-            libraries="antlr-runtime-3.4.jar;avro-1.7.7.jar;commons-cli-1.2.jar;commons-codec-1.4.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-httpclient-3.0.1.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.2.jar;curator-client-2.6.0.jar;curator-framework-2.6.0.jar;datanucleus-api-jdo-4.2.1.jar;datanucleus-core-4.1.6.jar;datanucleus-rdbms-4.1.7.jar;derby-10.11.1.1.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-14.0.1.jar;hadoop-auth-2.7.2-amzn-3.jar;hadoop-common-2.7.2-amzn-3.jar;hadoop-hdfs-2.7.2-amzn-3.jar;hadoop-mapreduce-client-common-2.7.2-amzn-3.jar;hadoop-mapreduce-client-core-2.7.2-amzn-3.jar;hadoop-mapreduce-client-jobclient-2.7.2-amzn-3.jar;hadoop-yarn-api-2.7.2-amzn-3.jar;hadoop-yarn-client-2.7.2-amzn-3.jar;hadoop-yarn-common-2.7.2-amzn-3.jar;hive-exec-2.1.0-talend-nolang3.jar;hive-jdbc-2.1.0-amzn-0.jar;hive-metastore-2.1.0-amzn-0.jar;hive-serde-2.1.0-amzn-0.jar;hive-service-2.1.0-amzn-0.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.3.4.jar;httpcore-4.3.2.jar;jdo-api-3.0.1.jar;libfb303-0.9.3.jar;libthrift-0.9.3.jar;log4j-1.2.17.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;zookeeper-3.4.8.jar">
+            libraries="antlr-runtime-3.4.jar;avro-1.7.7.jar;commons-cli-1.2.jar;commons-codec-1.4.jar;commons-collections-3.2.2.jar;commons-configuration-1.6.jar;commons-httpclient-3.0.1.jar;commons-io-2.4.jar;commons-lang-2.6.jar;commons-logging-1.2.jar;curator-client-2.6.0.jar;curator-framework-2.6.0.jar;datanucleus-api-jdo-4.2.1.jar;datanucleus-core-4.1.6.jar;datanucleus-rdbms-4.1.7.jar;derby-10.12.1.1.jar;emr-metrics-client-2.1.0.jar;gson-2.2.4.jar;guava-14.0.1.jar;hadoop-auth-2.7.2-amzn-3.jar;hadoop-common-2.7.2-amzn-3.jar;hadoop-hdfs-2.7.2-amzn-3.jar;hadoop-mapreduce-client-common-2.7.2-amzn-3.jar;hadoop-mapreduce-client-core-2.7.2-amzn-3.jar;hadoop-mapreduce-client-jobclient-2.7.2-amzn-3.jar;hadoop-yarn-api-2.7.2-amzn-3.jar;hadoop-yarn-client-2.7.2-amzn-3.jar;hadoop-yarn-common-2.7.2-amzn-3.jar;hive-exec-2.1.0-talend-nolang3.jar;hive-jdbc-2.1.0-amzn-0.jar;hive-metastore-2.1.0-amzn-0.jar;hive-serde-2.1.0-amzn-0.jar;hive-service-2.1.0-amzn-0.jar;htrace-core-3.1.0-incubating.jar;httpclient-4.3.4.jar;httpcore-4.3.2.jar;jdo-api-3.0.1.jar;libfb303-0.9.3.jar;libthrift-0.9.3.jar;log4j-1.2.17.jar;slf4j-api-1.7.10.jar;slf4j-log4j12-1.7.10.jar;zookeeper-3.4.8.jar">
       </classloader>
       <classloader
             index="MAP_REDUCE:AMAZON_EMR:EMR_5_0_0"
