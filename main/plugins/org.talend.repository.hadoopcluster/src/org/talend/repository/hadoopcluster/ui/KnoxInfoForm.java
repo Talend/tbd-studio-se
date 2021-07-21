@@ -20,6 +20,7 @@ import org.talend.commons.ui.swt.formtools.LabelledText;
 import org.talend.commons.ui.swt.formtools.UtilsButton;
 import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.model.properties.ConnectionItem;
+import org.talend.core.model.utils.ContextParameterUtils;
 import org.talend.designer.core.model.utils.emf.talendfile.ContextType;
 import org.talend.designer.hdfsbrowse.hadoop.service.EHadoopServiceType;
 import org.talend.designer.hdfsbrowse.hadoop.service.HadoopServiceProperties;
@@ -66,8 +67,8 @@ public class KnoxInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterCon
         knoxURLText = new LabelledText(configGroup, Messages.getString("KnoxInfoForm.text.knoxURL"), 1); //$NON-NLS-1$ $NON-NLS-2$
         knoxUserText = new LabelledText(configGroup, Messages.getString("KnoxInfoForm.text.knoxUser"), 1); //$NON-NLS-1$
 
-        knoxPasswordText = new LabelledText(configGroup, Messages.getString("KnoxInfoForm.text.knoxPassword"), 1, //$NON-NLS-1$
-                SWT.PASSWORD | SWT.BORDER | SWT.SINGLE);
+        knoxPasswordText = new LabelledText(configGroup, Messages.getString("KnoxInfoForm.text.knoxPassword"), 1); //$NON-NLS-1$
+        knoxPasswordText.getTextControl().setEchoChar('*');
 
         knoxDirectoryText = new LabelledText(configGroup, Messages.getString("KnoxInfoForm.text.knoxDirectory"), 1); //$NON-NLS-1$
     }
@@ -271,6 +272,7 @@ public class KnoxInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterCon
         knoxUserText.setReadOnly(readOnly);
         knoxPasswordText.setReadOnly(readOnly);
         knoxDirectoryText.setReadOnly(readOnly);
+        ((HadoopClusterForm) this.getParent()).adaptFormToReadOnly();
     }
     
     @Override
@@ -279,6 +281,18 @@ public class KnoxInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterCon
         knoxUserText.setReadOnly(!isEditable);
         knoxPasswordText.setReadOnly(!isEditable);
         knoxDirectoryText.setReadOnly(!isEditable);
+        ((HadoopClusterForm) this.getParent()).updateEditableStatus(isEditable);
     }
+    
+    @Override
+    protected void adaptFormToEditable() {
+        super.adaptFormToEditable();
+        if (isContextMode()) {
+            knoxPasswordText.getTextControl().setEchoChar('\0');
+        } else {
+            knoxPasswordText.getTextControl().setEchoChar('*');
+        }
+    }
+    
 
 }

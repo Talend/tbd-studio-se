@@ -256,7 +256,7 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                         ConnectionContextHelper.createParameters(varList, paramName, conn.getWebHDFSSSLTrustStorePath());
                         break;
                     case WebHDFSSSLTrustStorePassword:
-                        ConnectionContextHelper.createParameters(varList, paramName, conn.getWebHDFSSSLTrustStorePassword());
+                        ConnectionContextHelper.createParameters(varList, paramName, conn.getWebHDFSSSLTrustStorePassword(),JavaTypesManager.PASSWORD);
                         break;
                     case UseKnox:
                         ConnectionContextHelper.createParameters(varList, paramName,
@@ -276,7 +276,7 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                         break;
                     case KnoxPassword:
                         ConnectionContextHelper.createParameters(varList, paramName,
-                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_KNOX_PASSWORD));
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_KNOX_PASSWORD), JavaTypesManager.PASSWORD);
                         break;
                     case KnoxDirectory:
                         ConnectionContextHelper.createParameters(varList, paramName,
