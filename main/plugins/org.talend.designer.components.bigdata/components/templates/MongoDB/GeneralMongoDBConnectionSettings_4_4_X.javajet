@@ -16,7 +16,7 @@
                 <%if (authentication) {%>
                     // Authentication
                     com.mongodb.MongoCredential mongoCredential_<%=cid%>;
-                    <%if((authenticationMechanism.equals("NEGOTIATE_MEC"))||(authenticationMechanism.equals("PLAIN_MEC"))||(authenticationMechanism.equals("SCRAMSHA1_MEC"))) {
+                    <%if((authenticationMechanism.equals("NEGOTIATE_MEC"))||(authenticationMechanism.equals("PLAIN_MEC"))||(authenticationMechanism.equals("SCRAMSHA1_MEC"))||(authenticationMechanism.equals("SCRAMSHA256_MEC"))) {
                         String passwordFieldName = "__PASSWORD__";
                         %>
                         <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
@@ -30,7 +30,10 @@
                         } else if(authenticationMechanism.equals("SCRAMSHA1_MEC")) {%>
                             mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createScramSha1Credential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
                             <%
-                        }
+                        } else if(authenticationMechanism.equals("SCRAMSHA256_MEC")) {%>
+	                        mongoCredential_<%=cid%> = com.mongodb.MongoCredential.createScramSha256Credential(<%=dbuser%>, <%=usedAuthenticationDB%>, new String(decryptedPassword_<%=cid%>).toCharArray());
+	                        <%
+	                    }
                     } else {%> 
                         // GSSAPI SASL (KERBEROS)
                         System.setProperty("java.security.krb5.realm", <%=krbRealm%>);
